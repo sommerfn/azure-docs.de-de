@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/18/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: bcce9c53e2618f9501dde63905fb834bce7985ee
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204438"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719512"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Node.js
 
@@ -171,9 +171,9 @@ Definieren Sie die Hilfsfunktion `formatRectFaces`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
-### <a name="detect-adult-or-racy-content"></a>Erkennen von nicht jugendfreien oder freizügigen Inhalten
+### <a name="detect-adult-racy-or-gory-content"></a>Erkennen von jugendgefährdenden, rassistischen oder gewaltverherrlichenden Inhalten
 
-Der folgende Code gibt an, ob nicht jugendfreie oder freizügige Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Erkennen von nicht jugendfreien und freizügigen Inhalten](../concept-detecting-adult-content.md).
+Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Nicht jugendfreie, rassistische und gewaltverherrlichende Inhalte](../concept-detecting-adult-content.md).
 
 Definieren Sie die URL des zu verwendenden Bilds:
 

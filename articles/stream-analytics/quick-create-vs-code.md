@@ -4,15 +4,15 @@ description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erst
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 05/06/2019
+ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 894f43a7da0abd129123d5c4ddf2bb95347c42c5
-ms.sourcegitcommit: be9fcaace62709cea55beb49a5bebf4f9701f7c6
+ms.openlocfilehash: 3301be3a067982cb90e663fe3782319eb0b90ba0
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65825368"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673128"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-cloud-job-in-visual-studio-code-preview"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Cloudauftrags in Visual Studio Code (Vorschauversion)
 
@@ -54,14 +54,14 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)** > **IoT Hub** aus.
+2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)**  > **IoT Hub** aus.
 
 3. Geben Sie im Bereich **IoT Hub** die folgenden Informationen ein:
    
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
-   |Abonnement  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
-   |Ressourcengruppe   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
+   |Subscription  | \<Ihr Abonnement\> |  Wählen Sie das gewünschte Azure-Abonnement aus. |
+   |Resource group   |   asaquickstart-resourcegroup  |   Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein. |
    |Region  |  \<Die Region, die Ihren Benutzern am nächsten liegt\> | Wählen Sie einen geografischen Standort aus, an dem Sie Ihre IoT Hub-Instanz hosten können. Verwenden Sie den Standort, der Ihren Benutzern am nächsten ist. |
    |IoT Hub-Name  | MyASAIoTHub  |   Wählen Sie einen Namen für Ihre IoT Hub-Instanz aus.   |
 
@@ -109,7 +109,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
     ![Projektnamen erstellen](./media/quick-create-vs-code/create-project-name.png)
 
-3. Das neue Projekt wird Ihrem Arbeitsbereich hinzugefügt. Ein ASA-Projekt besteht aus dem Abfrageskript **(*.asaql)**, einer **JobConfig.json**-Datei und einer **asaproj.json**-Konfigurationsdatei.
+3. Das neue Projekt wird Ihrem Arbeitsbereich hinzugefügt. Ein ASA-Projekt besteht aus dem Abfrageskript **(*.asaql)** , einer **JobConfig.json**-Datei und einer **asaproj.json**-Konfigurationsdatei.
 
    ![Stream Analytics-Projektdateien in VS Code](./media/quick-create-vs-code/asa-project-files.png)
 
@@ -119,6 +119,25 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 > [!Note]
 > Beim Hinzufügen von Eingaben und Ausgaben aus der Befehlspalette werden die entsprechenden Pfade automatisch zu **asaproj.json** hinzugefügt. Wenn Sie Eingaben oder Ausgaben direkt auf einem Datenträger hinzufügen oder entfernen, müssen Sie sie manuell zu **asaproj.json** hinzufügen bzw. aus ihr entfernen. Sie können sich auch entscheiden, die Eingaben und Ausgaben an einem Ort zu versammeln und dann in verschiedenen Aufträgen auf sie verweisen, indem Sie in jeder **asaproj.json** die Pfade angeben.
+
+## <a name="define-the-transformation-query"></a>Definieren der Transformationsabfrage
+
+1. Öffnen Sie **myASAproj.asaql** aus Ihrem Projektordner.
+
+2. Fügen Sie die folgende Abfrage hinzu:
+
+   ```sql
+   SELECT * 
+   INTO Output
+   FROM Input
+   HAVING Temperature > 27
+   ```
+## <a name="test-with-sample-data"></a>Test mit Beispieldaten
+Vor dem Ausführen der Abfrage in der Cloud können Sie die Abfrage mit lokalen Beispieldaten testen, um die Abfragelogik zu prüfen.
+
+Befolgen Sie die Anweisungen in [Test mit Beispieldaten](vscode-local-run.md), um weitere Einzelheiten zu erhalten. 
+
+ ![Test mit Beispieldaten in VS Code](./media/quick-create-vs-code/vscode-localrun.gif)
 
 ## <a name="define-an-input"></a>Definieren einer Eingabe
 
@@ -134,7 +153,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
    ![Auswählen eines ASA-Skripts in Visual Studio Code](./media/quick-create-vs-code/asa-script.png)
 
-4. Geben Sie den Namen der Eingabedatei als **IotHub.json** ein.
+4. Geben Sie als Namen der Eingabedatei **IotHub** ein.
 
 5. Bearbeiten Sie **IoTHub.json** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die unten nicht aufgeführt sind. Sie können CodeLens verwenden, um sich bei der Eingabe einer Zeichenfolge, der Auswahl aus einer Dropdownliste oder der direkten Änderungen von Text in der Datei unterstützen zu lassen.
 
@@ -142,8 +161,11 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
    |-------|---------------|-----------|
    |NAME|Eingabe|Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.|
    |IotHubNamespace|MyASAIoTHub|Wählen Sie den Namen Ihrer IoT Hub-Instanz aus, oder geben Sie ihn ein. IoT Hub-Namen werden automatisch erkannt, wenn sie unter demselben Abonnement erstellt werden.|
-   |EndPoint|Nachrichten| |
    |SharedAccessPolicyName|iothubowner| |
+
+   ![Konfigurieren von Eingaben in Visual Studio Code](./media/quick-create-vs-code/configure-input.png)
+
+
 
 ## <a name="define-an-output"></a>Definieren einer Ausgabe
 
@@ -155,9 +177,9 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
 3. Wählen Sie das ASA-Abfrageskript aus, das diese Eingabe verwenden soll.
 
-4. Geben Sie den Namen der Ausgabedatei als **BlobStorage.json** ein.
+4. Geben Sie als Namen der Ausgabedatei **BlobStorage** ein.
 
-5. Bearbeiten Sie **BlobStorage.json** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die unten nicht aufgeführt sind. Verwenden Sie CodeLens, um Sie bei der Eingabe einer Zeichenfolge oder der Auswahl aus einer Dropdownliste zu unterstützen.
+5. Bearbeiten Sie **BlobStorage** mit den folgenden Werten. Behalten Sie die Standardwerte für Felder bei, die unten nicht aufgeführt sind. CodeLens unterstützt Sie beim Auswählen aus einer Dropdownliste oder beim Eingeben einer Zeichenfolge. 
 
    |Einstellung|Empfohlener Wert|BESCHREIBUNG|
    |-------|---------------|-----------|
@@ -166,18 +188,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
    |Container|container1|Wählen Sie den vorhandenen Container aus, den Sie in Ihrem Speicherkonto erstellt haben.|
    |Pfadmuster|output|Geben Sie den Namen eines Dateipfads ein, der innerhalb des Containers erstellt werden soll.|
 
-## <a name="define-the-transformation-query"></a>Definieren der Transformationsabfrage
-
-1. Öffnen Sie **myASAproj.asaql** aus Ihrem Projektordner.
-
-2. Fügen Sie die folgende Abfrage hinzu:
-
-   ```sql
-   SELECT * 
-   INTO Output
-   FROM Input
-   HAVING Temperature > 27
-   ```
+ ![Konfigurieren von Ausgaben in Visual Studio Code](./media/quick-create-vs-code/configure-output.png)
 
 ## <a name="compile-the-script"></a>Kompilieren des Skripts
 
@@ -211,7 +222,10 @@ Es gibt zwei Möglichkeiten, die Skriptkompilierung auszulösen:
 
 5. Wählen Sie **An Azure übermitteln** aus. Die Protokolle finden Sie im Ausgabefenster. 
 
-6. Wenn der Auftrag erstellt wurde, wird er im Stream Analytics-Explorer angezeigt.
+6. Wenn der Auftrag erstellt wurde, wird er im **Stream Analytics-Explorer** angezeigt.
+
+![Auflisten des Auftrags im Stream Analytics-Explorer](./media/quick-create-vs-code/list-job.png)
+
 
 ## <a name="run-the-iot-simulator"></a>Ausführen des IoT-Simulators
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: 8d47ae84fd489b4841d8bcf7755da6c30cf6035d
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: ab6a0d5c2a4c4623506d90b76b77462abb8fe4af
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966995"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719494"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Python
 
@@ -64,7 +64,7 @@ Erstellen Sie dann Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Resso
 Sie können die Clientbibliothek wie folgt installieren:
 
 ```console
-pip install --upgrade azure-cognitiveservices-Computer Vision
+pip install --upgrade azure-cognitiveservices-vision-computervision
 ```
 
 ## <a name="object-model"></a>Objektmodell
@@ -120,15 +120,15 @@ Mit dem folgenden Code werden die erkannten Tags im Bild abgerufen. Weitere Info
 
 ### <a name="detect-objects"></a>Erkennen von Objekten
 
-Der folgende Code erkennt alltägliche Objekte im Bild und druckt sie in der Konsole. Weitere Informationen finden Sie unter [Objekterkennung](../concept-object-detection.md).
+Der folgende Code erkennt alltägliche Objekte im Bild und gibt sie in der Konsole aus. Weitere Informationen finden Sie unter [Objekterkennung](../concept-object-detection.md).
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
 
 ### <a name="detect-brands"></a>Erkennen von Marken
 
-Der folgende Code erkennt Marken und Firmenlogos im Bild und druckt sie in der Konsole. Weitere Informationen finden Sie unter [Markenerkennung](../concept-brand-detection.md).
+Der folgende Code erkennt Marken und Firmenlogos im Bild und gibt sie in der Konsole aus. Weitere Informationen finden Sie unter [Markenerkennung](../concept-brand-detection.md).
 
-[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_objects)]
+[!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_brands)]
 
 ### <a name="detect-faces"></a>Erkennen von Gesichtern
 
@@ -136,9 +136,9 @@ Mit dem folgenden Code werden die erkannten Gesichter im Bild mit den Rechteckko
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
 
-### <a name="detect-adult-or-racy-content"></a>Erkennen von nicht jugendfreien oder freizügigen Inhalten
+### <a name="detect-adult-racy-or-gory-content"></a>Erkennen von jugendgefährdenden, rassistischen oder gewaltverherrlichenden Inhalten
 
-Der folgende Code gibt an, ob nicht jugendfreie oder freizügige Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Erkennen von nicht jugendfreien und freizügigen Inhalten](../concept-detecting-adult-content.md).
+Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Nicht jugendfreie, rassistische und gewaltverherrlichende Inhalte](../concept-detecting-adult-content.md).
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
 

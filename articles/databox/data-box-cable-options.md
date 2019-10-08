@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 661cec672aa02f62b479b7f5831adfdaff9e6b21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077546"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316550"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Verkabelungsoptionen für Azure Data Box
 
@@ -74,7 +74,7 @@ Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 
 Gehen Sie zur Verkabelung Ihres Geräts wie folgt vor:
 
-1. Verbinden Sie den Server für die Konfiguration direkt über ein RJ45-Ethernetkabel mit dem MGMT-Anschluss.
+1. Verbinden Sie den separaten Computer für die Konfiguration direkt über ein RJ45-Ethernetkabel mit dem MGMT-Anschluss.
 2. Verwenden Sie ein RJ45-Kabel für DATA 3 oder ein SFP+-Kabel, um DATA 1 oder DATA 2 mit dem Server zu verbinden. Aus Leistungsgründen empfiehlt sich die Verwendung eines der 10-GbE-Anschlüsse (DATA 1 oder DATA 2). Die Datenanschlüsse werden über einen 10-GbE-Switch mit dem Datenserver verbunden.
 3. Konfigurieren Sie den Ethernet-Adapter des Laptops, über den Sie eine Verbindung mit dem Gerät herstellen, wie folgt:
 

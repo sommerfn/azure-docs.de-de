@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern, Microservices und Node.js in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8148f7858ac9de458daa1c15220507b0de1bad19
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b53e18d4b759bc86dd0bc8f913e02b9523fb328b
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772637"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815807"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Schnellstart: Debuggen und Iterieren mit Visual Studio Code und Node.js in Kubernetes mithilfe von Azure Dev Spaces
 
@@ -24,6 +24,11 @@ In diesem Leitfaden lernen Sie Folgendes:
 - Einrichten von Azure Dev Spaces mit einem verwalteten Kubernetes-Cluster in Azure
 - Iteratives Entwickeln von Code in Containern mit Visual Studio Code
 - Debuggen des Codes in Ihrem Entwicklerbereich über Visual Studio Code
+
+Azure Dev Spaces ermöglicht außerdem das Debuggen und Durchlaufen mit:
+- [Java und Visual Studio Code](quickstart-java.md)
+- [.NET Core und Visual Studio Code](quickstart-netcore.md)
+- [.NET Core und Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,6 +49,9 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Aktivieren von Azure Dev Spaces in Ihrem AKS-Cluster
 
 Verwenden Sie den Befehl `use-dev-spaces`, um Dev Spaces in Ihrem AKS-Cluster zu aktivieren, und befolgen Sie die angezeigten Anweisungen. Mit dem unten angegebenen Befehl wird Dev Spaces im Cluster *MyAKS* in der Gruppe *MyResourceGroup* aktiviert und der Entwicklerbereich *default* erstellt.
+
+> [!NOTE]
+> Mit dem Befehl `use-dev-spaces` wird außerdem die Azure Dev Spaces-Befehlszeilenschnittstelle installiert, falls diese nicht bereits installiert ist. Die Azure Dev Spaces-Befehlszeilenschnittstelle kann nicht in Azure Cloud Shell installiert werden.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS

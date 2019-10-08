@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490280"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326940"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -28,7 +28,7 @@ Das Guthaben Ihrer Organisation schließt Ihre finanzielle Verpflichtung ein. De
 
 Dieser Abschnitt gilt nicht für Azure-Kunden in Australien, Japan oder Singapur. Wenn Sie sich in einem dieser Länder/Regionen befinden, lesen Sie [Rechnungen für andere Kunden](#invoices-for-other-customers).
 
-Wenn einer der folgenden Punkte während des Abrechnungszyklus auftritt, erhalten Sie eine Azure-Rechnung:
+Wenn eines der folgenden Ereignisse während des Abrechnungszyklus auftritt, erhalten Sie eine Azure-Rechnung:
 
 - **Dienstüberschreitung:** Die Kosten für die Nutzung durch Ihre Organisation überschreiten Ihr Guthaben.
 - **Separat abgerechnete Gebühren:** Die von Ihrer Organisation genutzten Dienste sind nicht durch das Guthaben abgedeckt. Die folgenden Dienste werden Ihnen unabhängig von Ihrem Guthaben in Rechnung gestellt:
@@ -43,7 +43,7 @@ Wenn einer der folgenden Punkte während des Abrechnungszyklus auftritt, erhalte
     - Visual Studio Enterprise (jährlich)
     - Visual Studio Professional (monatlich)
     - Visual Studio Professional (jährlich)
-- **Marketplace-Gebühren:** Käufe und Nutzung im Azure Marketplace sind nicht durch das Guthaben Ihrer Organisation abgedeckt. Das bedeutet, dass Marketplace-Gebühren Ihnen unabhängig von Ihrem Guthaben in Rechnung gestellt werden. Im Enterprise Portal kann ein Unternehmensadministrator Marketplace-Käufe aktivieren und deaktivieren.
+- **Marketplace-Gebühren:** Käufe und Nutzung im Azure Marketplace sind nicht durch das Guthaben Ihrer Organisation abgedeckt. Daher werden Ihnen Marketplace-Gebühren unabhängig von Ihrem Guthaben in Rechnung gestellt. Im Enterprise Portal kann ein Unternehmensadministrator Marketplace-Käufe aktivieren und deaktivieren.
 
 ## <a name="review-charges-for-most-customers"></a>Überprüfen der Gebühren für die meisten Kunden
 Dieser Abschnitt gilt nicht für Azure-Kunden in Australien, Japan oder Singapur. Wenn Sie in einem dieser Länder sind, lesen Sie [Überprüfen von Gebühren für andere Kunden](#review-charges-for-other-customers).
@@ -66,10 +66,10 @@ Vergleichen Sie den im Enterprise-Portal unter **Berichte** > **Nutzungszusammen
 
 Dieser Abschnitt gilt nur für Azure-Kunden in Australien, Japan oder Singapur.
 
-Sie erhalten in den folgenden Fällen eine oder mehrere Azure-Rechnungen:
+Bei folgenden Ereignissen erhalten Sie eine oder mehrere Azure-Rechnungen:
 
 - **Dienstüberschreitung:** Die Kosten für die Nutzung durch Ihre Organisation überschreiten Ihr Guthaben.
-- **Separat abgerechnete Gebühren:** Die von Ihrer Organisation genutzten Dienste sind nicht durch das Guthaben abgedeckt. Die folgenden Dienste werden Ihnen unabhängig von Ihrem Guthaben in Rechnung gestellt:
+- **Separat abgerechnete Gebühren:** Die von Ihrer Organisation genutzten Dienste sind nicht durch das Guthaben abgedeckt. Die folgenden Dienste werden Ihnen in Rechnung gestellt:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop

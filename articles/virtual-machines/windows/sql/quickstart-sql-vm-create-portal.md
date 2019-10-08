@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3ba804f76f8d443c0b49a9b4e5425333f01f0b9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102306"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828364"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Windows-Computer mit SQL Server 2017 im Azure-Portal
 
@@ -81,9 +81,10 @@ Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Information
 Konfigurieren Sie auf der Registerkarte **SQL Server-Einstellungen** die folgenden Optionen:
 
 1. Wählen Sie unter **Sicherheit + Netzwerkbetrieb** für **SQL-Konnektivität** die Option _Öffentlich (Internet)_ aus, und ändern Sie den Port in `1401`, um eine bekannte Portnummer im öffentlichen Szenario zu vermeiden. 
-1. Wählen Sie unter **SQL-Authentifizierung** die Option **Aktivieren** aus. Für die SQL-Anmeldung werden der gleiche Benutzername und das gleiche Kennwort festgelegt, die Sie für den virtuellen Computer konfiguriert haben. Verwenden Sie die Standardeinstellungen für **Azure Key Vault-Integration** und **Speicherkonfiguration**.  
+1. Wählen Sie unter **SQL-Authentifizierung** die Option **Aktivieren** aus. Für die SQL-Anmeldung werden der gleiche Benutzername und das gleiche Kennwort festgelegt, die Sie für den virtuellen Computer konfiguriert haben. Verwenden Sie die Standardeinstellung für [**Azure Key Vault-Integration**](virtual-machines-windows-ps-sql-keyvault.md). **Speicherkonfiguration** ist für das SQL Server-VM-Basisimage nicht verfügbar. Weitere Informationen zu verfügbaren Optionen für andere Images finden Sie jedoch unter [Speicherkonfiguration](virtual-machines-windows-sql-server-storage-configuration.md#new-vms).  
 
    ![Sicherheitseinstellungen für SQL Server](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+
 
 1. Ändern Sie ggf. weitere Einstellungen, und wählen Sie dann **Bewerten + erstellen** aus. 
 

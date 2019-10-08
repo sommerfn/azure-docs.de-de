@@ -2,18 +2,18 @@
 title: 'Schnellstart: Erstellen eines Spark-Clusters in HDInsight mithilfe von Azure PowerShell'
 description: Dieses Schnellstarttutorial zeigt, wie Sie Azure PowerShell verwenden, um einen Apache Spark-Cluster in Azure HDInsight zu erstellen, und wie Sie eine einfache Spark-SQL-Abfrage ausführen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 185d87bfaf909fdffaa56c2dd6ad29838ce635f7
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f4f876c6a0e208c949f8aec2781dda39ba66fb00
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885134"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337596"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>Schnellstart: Erstellen eines Apache Spark-Clusters in Azure HDInsight mithilfe von PowerShell
 
@@ -34,7 +34,7 @@ Das PowerShell-[Az-Modul](https://docs.microsoft.com/powershell/azure/overview) 
 
 Die Erstellung eines HDInsight-Clusters umfasst die Erstellung der folgenden Azure-Objekte und -Ressourcen:
 
-- Eine Azure-Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein Container für Azure-Ressourcen. 
+- Eine Azure-Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein Container für Azure-Ressourcen.
 - Ein Azure-Speicherkonto oder einen Azure Data Lake Store.  Jeder HDInsight-Cluster erfordert einen abhängigen Datenspeicher. In diesem Schnellstarttutorial erstellen Sie ein Speicherkonto.
 - Ein HDInsight-Cluster mit verschiedenen Clustertypen.  In diesem Schnellstarttutorial erstellen Sie einen Spark 2.3-Cluster.
 
@@ -60,14 +60,14 @@ Sie verwenden ein PowerShell-Skript, um die Ressourcen zu erstellen.  Wenn Sie d
     $clusterSizeInNodes = "1"
     $clusterVersion = "3.6"
     $clusterType = "Spark"
-    
+
     # Create the resource group
     $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
     $location = Read-Host -Prompt "Enter the Azure region to create resources in, such as 'Central US'"
     $defaultStorageAccountName = Read-Host -Prompt "Enter the default storage account name"
-    
+
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-    
+
     # Create an Azure storage account and container
     # Note: Storage account kind BlobStorage can only be used as secondary storage for HDInsight clusters.
     New-AzStorageAccount `
@@ -81,28 +81,28 @@ Sie verwenden ein PowerShell-Skript, um die Ressourcen zu erstellen.  Wenn Sie d
     $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
                                     -Name $defaultStorageAccountName)[0].Value
-    
+
     $defaultStorageContext = New-AzStorageContext `
                                     -StorageAccountName $defaultStorageAccountName `
                                     -StorageAccountKey $defaultStorageAccountKey
-    
+
     # Create a Spark 2.3 cluster
     $clusterName = Read-Host -Prompt "Enter the name of the HDInsight cluster"
 
     # Cluster login is used to secure HTTPS services hosted on the cluster
     $httpCredential = Get-Credential -Message "Enter Cluster login credentials" -UserName "admin"
-    
+
     # SSH user is used to remotely connect to the cluster using SSH clients
     $sshCredentials = Get-Credential -Message "Enter SSH user credentials" -UserName "sshuser"
-    
+
     # Set the storage container name to the cluster name
     $defaultBlobContainerName = $clusterName
-    
+
     # Create a blob container. This holds the default data store for the cluster.
     New-AzStorageContainer `
         -Name $clusterName `
-        -Context $defaultStorageContext 
-    
+        -Context $defaultStorageContext
+
     $sparkConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
     $sparkConfig.Add("spark", "2.3")
 
@@ -120,12 +120,13 @@ Sie verwenden ein PowerShell-Skript, um die Ressourcen zu erstellen.  Wenn Sie d
         -DefaultStorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
         -DefaultStorageAccountKey $defaultStorageAccountKey `
         -DefaultStorageContainer $clusterName `
-        -SshCredential $sshCredentials 
-    
+        -SshCredential $sshCredentials
+
     Get-AzHDInsightCluster `
         -ResourceGroupName $resourceGroupName `
         -ClusterName $clusterName
     ```
+
    Das Erstellen des Clusters dauert ca. 20 Minuten. Der Cluster muss erstellt werden, bevor Sie mit dem nächsten Abschnitt fortfahren können.
 
 Sollte bei der HDInsight-Clustererstellung ein Problem auftreten, verfügen Sie unter Umständen nicht über die erforderlichen Berechtigungen. Weitere Informationen finden Sie unter [Voraussetzungen für die Zugriffssteuerung](../hdinsight-hadoop-customize-cluster-linux.md#access-control).
@@ -135,20 +136,20 @@ Sollte bei der HDInsight-Clustererstellung ein Problem auftreten, verfügen Sie 
 [Jupyter Notebook](https://jupyter.org/) ist eine interaktive Notebook-Umgebung, die verschiedene Programmiersprachen unterstützt. Das Notebook ermöglicht Ihnen, mit Ihren Daten zu interagieren, Code mit Markdowntext zu kombinieren und einfache Visualisierungen durchzuführen.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie **HDInsight-Cluster** und dann den von Ihnen erstellten Cluster aus.
+
+1. Wählen Sie **HDInsight-Cluster** und dann den von Ihnen erstellten Cluster aus.
 
     ![Öffnen eines HDInsight-Clusters im Azure-Portal](./media/apache-spark-jupyter-spark-sql/azure-portal-open-hdinsight-cluster.png)
 
-3. Wählen Sie im Portal **Clusterdashboards** und dann **Jupyter Notebook** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
+1. Wählen Sie im Portal **Clusterdashboards** und dann **Jupyter Notebook** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
    ![Öffnen von Jupyter Notebook zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Öffnen von Jupyter Notebook zum Ausführen einer interaktiven Spark SQL-Abfrage")
 
-4. Wählen Sie **Neu** > **PySpark** aus, um ein Notebook zu erstellen. 
+1. Wählen Sie **Neu** > **PySpark** aus, um ein Notebook zu erstellen.
 
    ![Erstellen eines Jupyter Notebooks zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Erstellen eines Jupyter Notebooks zum Ausführen einer interaktiven Spark SQL-Abfrage")
 
    Ein neues Notebook mit dem Namen „Untitled“ (Untitled.pynb) wird erstellt und geöffnet.
-
 
 ## <a name="run-spark-sql-statements"></a>Ausführen von Spark SQL-Anweisungen
 
@@ -159,37 +160,39 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
     ![Kernel-Status](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Kernel-Status")
 
     Wenn Sie das Notebook zum ersten Mal starten, führt der Kernel im Hintergrund einige Aufgaben durch. Warten Sie, bis der Kernel bereit ist. 
-2. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE** , um den Code auszuführen. Der Befehl listet die Hive-Tabellen im Cluster auf:
+1. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE** , um den Code auszuführen. Der Befehl listet die Hive-Tabellen im Cluster auf:
 
     ```PySpark
     %%sql
     SHOW TABLES
     ```
-    Wenn Sie ein Jupyter Notebook mit Ihrem HDInsight Spark-Cluster verwenden, erhalten Sie einen vordefinierten `sqlContext`, den Sie zum Ausführen von Hive-Abfragen mit Spark SQL verwenden können. `%%sql` weist Jupyter Notebook an, den vordefinierten `sqlContext` für die Ausführung der Hive-Abfrage zu verwenden. Die Abfrage ruft die ersten zehn Zeilen aus einer Hive-Tabelle (**hivesampletable**) ab, die standardmäßig in allen HDInsight-Clustern enthalten ist. Es dauert ungefähr 30 Sekunden, bis die Ergebnisse angezeigt werden. Die Ausgabe sieht wie folgt aus: 
 
-    ![Hive-Abfrage in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive-Abfrage in HDInsight Spark")
+    Wenn Sie ein Jupyter Notebook mit Ihrem HDInsight Spark-Cluster verwenden, erhalten Sie einen vordefinierten `sqlContext`, den Sie zum Ausführen von Hive-Abfragen mit Spark SQL verwenden können. `%%sql` weist Jupyter Notebook an, den vordefinierten `sqlContext` für die Ausführung der Hive-Abfrage zu verwenden. Die Abfrage ruft die ersten zehn Zeilen aus einer Hive-Tabelle (**hivesampletable**) ab, die standardmäßig in allen HDInsight-Clustern enthalten ist. Es dauert ungefähr 30 Sekunden, bis die Ergebnisse angezeigt werden. Die Ausgabe sieht wie folgt aus:
+
+    ![Apache Hive-Abfrage in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive-Abfrage in HDInsight Spark")
 
     Bei jeder Ausführung einer Abfrage in Jupyter wird auf der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der rechten oberen Ecke einen ausgefüllten Kreis neben dem Text **PySpark**.
-    
-2. Führen Sie eine weitere Abfrage aus, um die Daten in `hivesampletable` anzuzeigen.
+
+1. Führen Sie eine weitere Abfrage aus, um die Daten in `hivesampletable` anzuzeigen.
 
     ```PySpark
     %%sql
     SELECT * FROM hivesampletable LIMIT 10
     ```
-    
+
     Der Bildschirm wird aktualisiert, und die Ausgabe der Abfrage wird angezeigt.
 
     ![Hive-Abfrageausgabe in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "Hive-Abfrageausgabe in HDInsight Spark")
 
-2. Wählen Sie im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Durch Herunterfahren des Notebooks werden die Clusterressourcen freigegeben.
+1. Wählen Sie im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Durch Herunterfahren des Notebooks werden die Clusterressourcen freigegeben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 HDInsight speichert Ihre Daten in Azure Storage oder Azure Data Lake Storage, sodass Sie einen Cluster ohne Weiteres löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. Wenn Sie vorhaben, sofort mit dem Tutorial unter [Nächste Schritte](#next-steps) fortzufahren, können Sie den Cluster beibehalten.
 
 Wechseln Sie zurück zum Azure-Portal, und wählen Sie **Löschen** aus.
 
-![Löschen eines HDInsight-Clusters](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
+![Löschen eines HDInsight-Clusters im Azure-Portal](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight Spark-Cluster als auch das Standardspeicherkonto.
 
@@ -221,4 +224,4 @@ Remove-AzResourceGroup `
 In diesem Schnellstarttutorial haben Sie erfahren, wie Sie einen HDInsight Spark-Cluster erstellen und eine einfache Spark SQL-Abfrage ausführen. Im nächsten Tutorial erfahren Sie, wie Sie mithilfe eines HDInsight Spark-Clusters interaktive Abfragen für Beispieldaten ausführen.
 
 > [!div class="nextstepaction"]
->[Ausführen von interaktiven Abfragen für Apache Spark](./apache-spark-load-data-run-query.md)
+> [Ausführen von interaktiven Abfragen für Apache Spark](./apache-spark-load-data-run-query.md)

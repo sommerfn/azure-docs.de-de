@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
 ms.openlocfilehash: 3074ed30c5e1f6edae78a8ef3c3d655e302a2663
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 09/30/2019
 ms.locfileid: "70997280"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) und strenge Kundenauthentifizierung (SCA) für Azure-Kunden
@@ -36,7 +36,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie die mehrstufige Authentif
 
 Sie können die aktive Zahlungsmethode Ihres Azure-Kontos ändern, indem Sie die folgenden Schritte ausführen:
 
-1. Melden Sie sich beim Azure-Portal als Kontoadministrator an, und navigieren Sie zu „Cost Management + Billing“ (Kostenverwaltung und Abrechnung).
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Kontoadministrator an, und navigieren Sie zu **Cost Management + Billing** (Kostenverwaltung und Abrechnung).
 2. Wählen Sie auf der Seite **Übersicht** das entsprechende Abonnement aus dem Raster **Meine Abonnements** aus.
 3. Wählen Sie unter „Abrechnung“ die Option **Zahlungsmethoden** aus. Sie können eine neue Kreditkarte hinzufügen oder eine vorhandene Karte als aktive Zahlungsmethode für das Abonnement festlegen. Wenn Ihre Bank die mehrstufige Authentifizierung erfordert, werden Sie aufgefordert, während des Vorgangs eine Authentifizierung durchzuführen.
 

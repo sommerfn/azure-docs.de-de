@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 05/21/2018
+ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 964f5624a3a588a1520a08365c5fa9c783114e48
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 67ebce2130bf5594d3c8c671934f7141a02eb60d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958829"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694665"
 ---
 # <a name="introduction-to-classroom-labs"></a>Einführung in Classroom-Labs
 Mithilfe von Azure Lab Services können Sie schnell eine Classroom-Lab-Umgebung in der Cloud einrichten. Ein Lehrer/Dozent erstellt ein Classroom-Lab, stellt virtuelle Windows- oder Linux-Computer bereit, installiert die erforderlichen Programm- und Tool-Labs in der Klasse und macht sie für Schüler/Studenten verfügbar. Die Schüler/Studenten stellen eine Verbindung mit virtuellen Computern (virtual machines, VMs) im Lab her und nutzen sie für ihre Projekte, Aufgaben oder Classroom-Übungen. 
@@ -33,6 +33,9 @@ Benutzer, die in Ihr Lab eingeladen werden, erhalten sofort Zugriff auf die Ress
 
 ## <a name="cost-optimization-and-tracking"></a>Kostenoptimierung und Nachverfolgung  
 Halten Sie Ihr Budget im Rahmen, indem Sie genau festlegen, wie viele Stunden Ihre virtuellen Computer von den Labbenutzern verwendet werden können. Richten Sie Zeitpläne im Lab ein, damit Benutzer die virtuellen Computer nur während der festgelegten Zeitfenster nutzen können, oder richten Sie wiederkehrende Zeiten für das automatische Herunterfahren und Starten ein. Verfolgen Sie die Nutzung und die festgelegten Limits für einzelne Benutzer nach.
+
+## <a name="example-class-types"></a>Beispiele für Klassentypen
+Sie können mit Azure Lab Services Labs für verschiedene Typen von Klassen einrichten. Im Artikel [Beispiele für Klassentypen für Azure Lab Services](class-types.md) finden Sie einige Beispiele für Klassentypen, für die Sie mit Azure Lab Services Labs einrichten können. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Machen Sie sich mit dem Einrichten eines Labkontos vertraut, das benötigt wird, um ein Classroom-Lab unter Verwendung von Azure Lab Services zu erstellen:

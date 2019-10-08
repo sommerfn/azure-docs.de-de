@@ -4,16 +4,16 @@ description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105482"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308103"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -31,7 +31,7 @@ Wenn neue Kontobesitzer (Account Owners, AO) erstmals zu einer Azure EA-Registr
 
 Nachdem ein Azure EA-Administrator eine Abteilung erstellt hat, kann der Azure-Unternehmensadministrator Abteilungsadministratoren hinzufügen und diese einer Abteilung zuordnen. Ein Abteilungsadministrator kann neue Konten erstellen. Neue Konten sind erforderlich, damit Azure EA-Abonnements erstellt werden können.
 
-Weitere Informationen zum Hinzufügen einer Abteilung finden Sie unter „Erstellen einer Azure EA-Abteilung“.
+Weitere Informationen zum Hinzufügen eines Abteilungsadministrators finden Sie unter [Erstellen eines Azure EA-Abteilungsadministrators](billing-ea-portal-get-started.md#add-a-department-admin).
 
 ## <a name="enterprise-user-roles"></a>Unternehmensbenutzerrollen
 
@@ -124,8 +124,8 @@ Während der Kontoübertragung entstehen keine Ausfallzeiten. Sie kann am Tag Ih
 
 Wenn Sie eine Registrierungsübertragung anfordern, geben Sie die folgenden Informationen an:
 
-- Für die Quellregistrierung: Registrierungsnummer und zu übertragendes Konto
-- Für die Zielregistrierung: die Registrierungsnummer, an die die Übertragung erfolgen soll
+- Für die Quellregistrierung: Registrierungsnummer und zu übertragendes Konto.
+- Für die Zielregistrierung: die Registrierungsnummer, an die die Übertragung erfolgen soll.
 - Das effektive Datum der Registrierungsübertragung kann ein Datum ab dem Startdatum der Zielregistrierung sein. Das ausgewählte Datum wirkt sich nicht auf die Nutzung aus, für die bereits eine Überschreitungsrechnung ausgestellt wurde.
 
 Andere Punkte, die vor einer Registrierungsübertragung zu beachten sind:
@@ -208,7 +208,7 @@ Wenn ein Benutzer keine Benachrichtigung erhält, überprüfen Sie anhand der fo
 6. Fügen Sie bei Bedarf einen Kontakt hinzu, und klicken Sie auf **Hinzufügen**.
 7. Klicken Sie auf **Speichern**.
 
-![Beispiel zum Hinzufügen eines Kontakts ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![Beispiel für Feld „Kontakt hinzufügen“ ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-Angebot
 Das Azure Sponsorship-Angebot ist ein eingeschränktes gesponsertes Microsoft Azure-Konto. Es ist per E-Mail-Einladung nur für bestimmte, von Microsoft ausgewählte Kunden verfügbar. Wenn Sie berechtigt sind, das Microsoft Azure Sponsorship-Angebot zu nutzen, erhalten Sie eine E-Mail-Einladung für Ihre Konto-ID.

@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b8637bb1a1ba397750bd04c88c6535fa3d1caa0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309632"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345537"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
@@ -92,13 +92,13 @@ Navigieren Sie in einem Terminalfenster zu dem Ordner, der das heruntergeladene 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Extrahieren Sie die ZIP-Datei, und öffnen Sie das Projekt in XCode.
-> 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kClientID“ beginnt, durch den folgenden Codeausschnitt. Sie müssen den Wert für <ph id="ph1">`kClientID`</ph> durch die Client-ID ersetzen, die Sie zuvor im Schnellstart beim Registrieren Ihrer App im Portal gespeichert haben:
+> 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kClientID“ beginnt, durch den folgenden Codeausschnitt. Sie müssen den Wert für `kClientID` durch die Client-ID ersetzen, die Sie zuvor im Schnellstart beim Registrieren Ihrer App im Portal gespeichert haben:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
-> 1. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt <bpt id="p1">**</bpt>Identität<ept id="p1">**</ept> den Wert für <bpt id="p2">**</bpt>Bundle Identifier<ept id="p2">**</ept> (Paket-ID) ein, den Sie im Portal angegeben haben.
+> 1. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt **Identität** den Wert für **Bundle Identifier** (Paket-ID) ein, den Sie im Portal angegeben haben.
 > 1. Nur iOS: Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
-> 1. Nur iOS: Ersetzen Sie unter dem dict-Stammknoten <ph id="ph1">`Enter_the_bundle_Id_Here`</ph> durch den Wert für <bpt id="p1">***</bpt>Bundle Id<ept id="p1">***</ept> (Paket-ID), den Sie im Portal eingegeben haben.
+> 1. Nur iOS: Ersetzen Sie unter dem dict-Stammknoten `CFBundleURLSchemes` durch den Wert für ***Bundle Id*** (Paket-ID), die Sie im Portal eingegeben haben.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -120,11 +120,11 @@ Navigieren Sie in einem Terminalfenster zu dem Ordner, der das heruntergeladene 
 > 1. Extrahieren Sie die ZIP-Datei, und öffnen Sie das Projekt in XCode.
 > 1. Bearbeiten Sie **ViewController.swift**, und ersetzen Sie die Zeile, die mit „let kClientID“ beginnt, durch den folgenden Codeausschnitt. Sie müssen den Wert für `kClientID` durch die Client-ID ersetzen, die Sie zuvor im Schnellstart beim Registrieren Ihrer App im Portal gespeichert haben:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Öffnen Sie die Projekteinstellungen. Geben Sie im Abschnitt **Identität** den Wert für **Bundle Identifier** (Paket-ID) ein, den Sie im Portal angegeben haben.
 > 1. Nur iOS: Klicken Sie mit der rechten Maustaste auf **Info.plist**, und wählen Sie **Öffnen als** > **Quellcode** aus.
-> 1. Nur iOS: Ersetzen Sie unter dem dict-Stammknoten `Enter_the_bundle_Id_Here`durch den Wert für ***Bundle Id*** (Paket-ID), den Sie im Portal verwendet haben.
+> 1. Nur iOS: Ersetzen Sie unter dem dict-Stammknoten `Enter_the_bundle_Id_Here` durch den Wert für ***Bundle Id*** (Paket-ID), den Sie im Portal verwendet haben.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

@@ -12,42 +12,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: banders
-ms.openlocfilehash: 730238d62e4ee4aad1807a4461c9b26ee1c8485d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 79e65932699242de2f161e6858189cf0bf562903
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69656837"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718672"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Behandeln von Problemen mit einer abgelehnten Karte bei der Azure-Registrierung
 
-Dieser Artikel hilft Ihnen, Probleme zu beheben, bei denen eine Kreditkarte bei der Azure-Registrierung beim Azure-Portal oder Azure-Kontocenter abgelehnt wird. Bevor Sie mit der Problembehandlung beginnen, überprüfen Sie die folgenden Punkte:
+Unter Umständen tritt ein Problem oder Fehler auf, wobei im Microsoft Azure-Portal oder im Azure-Kontocenter bei der Azure-Anmeldung eine Kreditkarte abgelehnt wird.
 
-- Stellen Sie sicher, dass die für Ihr Azure-Kontoprofil angegebenen Informationen (einschließlich Kontakt-E-Mail-Adresse, Anschrift und Telefonnummer) korrekt sind.
-- Stellen Sie sicher, dass die Kreditkarteninformationen korrekt sind.
-- Stellen Sie sicher, dass Sie nicht bereits über ein Microsoft-Konto mit denselben Informationen verfügen.
-- Debitkarten werden nicht akzeptiert
+Wählen Sie zum Beheben des Problems unten den Artikel aus, in dem der aufgetretene Fehler am ehesten beschrieben wird.
 
-## <a name="issues"></a>Probleme
-
-Im folgenden sind häufige Probleme aufgeführt, die dazu führen können, dass eine Kreditkarte bei der Azure-Registrierung abgelehnt wird.
-
-### <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Der Anbieter der Kreditkarte wird für Ihr Land nicht akzeptiert
+## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Der Anbieter der Kreditkarte wird für Ihr Land nicht akzeptiert
 
 Beim Auswählen einer Karte zeigt Azure jeweils nur die Kartenoptionen an, die für das ausgewählte Land gültig sind. Wenden Sie sich an Ihre Bank oder den Kartenaussteller, um sicherzustellen, dass Ihre Kreditkarte für internationale Transaktionen aktiviert ist. Weitere Informationen zu unterstützten Ländern und Währungen finden Sie in den [häufig gestellten Fragen zu Azure Purchase](https://azure.microsoft.com/pricing/faq/).
 
 >[!Note]
 >American Express-Kreditkarten werden in Indien derzeit nicht als Zahlungsinstrument unterstützt. Es gibt keinen Zeitrahmen, ab wann sie ggf. als akzeptierte Form der Zahlung eingeführt werden.
 
-### <a name="youre-using-a-virtual-or-prepaid-card"></a>Sie verwenden eine virtuelle Karte oder eine Prepaid-Karte 
+## <a name="youre-using-a-virtual-or-prepaid-card"></a>Sie verwenden eine virtuelle Karte oder eine Prepaid-Karte 
 
 Virtuelle oder Prepaid-Kreditkarten oder -Debitkarten werden als Zahlungsmittel für Azure-Abonnements nicht akzeptiert.
 
-### <a name="your-credit-information-is-inaccurate-or-incomplete"></a>Die Informationen für Ihre Kreditkarte sind fehlerhaft oder unvollständig 
+## <a name="your-credit-information-is-inaccurate-or-incomplete"></a>Die Informationen für Ihre Kreditkarte sind fehlerhaft oder unvollständig 
 
 Der Name, die Adresse und die Kreditkartenprüfnummer, die Sie eingeben, müssen den Angaben auf der Karte genau entsprechen.
 
-### <a name="the-card-is-inactive-or-blocked"></a>Die Karte ist inaktiv oder gesperrt 
+## <a name="the-card-is-inactive-or-blocked"></a>Die Karte ist inaktiv oder gesperrt 
 
 Wenden Sie sich an Ihre Bank, um sicherzustellen, dass die Karte aktiv ist.
 
@@ -57,13 +50,13 @@ Weitere Informationen zum Beheben von Problemen bei der Azure-Registrierung find
 
 [Sie können sich beim Azure-Portal oder Azure-Kontocenter nicht für Azure registrieren](billing-troubleshoot-azure-sign-up.md)
 
-### <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Sie repräsentieren ein Unternehmen, das nicht per Karte bezahlen möchte 
+## <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>Sie repräsentieren ein Unternehmen, das nicht per Karte bezahlen möchte 
 
 Wenn Sie Mitarbeiter eines Unternehmens sind, können Sie die Rechnungen für das Azure-Abonnement auch per Scheck, Express-Scheck und Überweisung begleichen. Nachdem Sie das Konto für die Zahlung per Rechnung eingerichtet haben, können Sie nicht mehr zu einer anderen Zahlungsoption wechseln, es sei denn, Sie verfügen über eine Microsoft-Kundenvereinbarung und haben sich über die Azure-Website bei Azure registriert.
 
 Weitere Informationen zum Bezahlen per Rechnung finden Sie unter [Stellen eines Antrags zum Zahlen eines Azure-Abonnements auf Rechnung](billing-how-to-pay-by-invoice.md).
 
-### <a name="your-credit-card-information-is-outdated"></a>Die Kreditkarteninformationen sind veraltet 
+## <a name="your-credit-card-information-is-outdated"></a>Die Kreditkarteninformationen sind veraltet 
 
 Informationen zum Verwalten Ihrer Karteninformationen, einschließlich dem Ändern oder Entfernen einer Karte, finden Sie unter [Hinzufügen, Aktualisieren oder Entfernen einer Kreditkarte für Azure](billing-how-to-change-credit-card.md).
 

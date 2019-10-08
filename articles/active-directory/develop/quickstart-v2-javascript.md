@@ -16,25 +16,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 988c73236d9f5ef360ded03bca36a4bb24ebd308
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290821"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827110"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens von einer JavaScript-Single-Page-Webanwendung
 
-In diesem Schnellstart wird die Verwendung eines Codebeispiels beschrieben, mit dem veranschaulicht wird, wie in einer JavaScript-Single-Page-Anwendung (SPA) Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können. Eine JavaScript-Single-Page-Anwendung kann zudem ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen.
-
-![Funktionsweise der Beispiel-App in diesem Schnellstart](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer JavaScript-Single-Page-Anwendung (SPA) Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können. Eine JavaScript-Single-Page-Anwendung kann zudem ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diesen Schnellstart ist folgende Einrichtung erforderlich:
-* Zum Ausführen des Projekts mit einem Node.js-Server müssen Sie [Node.js](https://nodejs.org/en/download/) herunterladen und installieren.
-* Zum Bearbeiten der Projektdateien müssen Sie [Visual Studio Code](https://code.visualstudio.com/download) herunterladen und installieren.
-* Zum Ausführen des Projekts als Visual Studio-Projektmappe müssen Sie [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) herunterladen und installieren.
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Node.js](https://nodejs.org/en/download/).
+* Entweder [Visual Studio Code](https://code.visualstudio.com/download) (zum Bearbeiten von Projektdateien) oder [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (zum Ausführen des Projekts als Visual Studio-Projektmappe).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Registrieren und Herunterladen Ihrer Schnellstartanwendung
@@ -81,8 +78,6 @@ Wählen Sie die Option aus, die für Ihre Entwicklungsumgebung geeignet ist:
 * Um das Projekt mit einem Webserver unter Verwendung von Node.js auszuführen, [laden Sie die Kernprojektdateien herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip). Verwenden Sie zum Öffnen der Dateien einen Editor wie z. B. [Visual Studio Code](https://code.visualstudio.com/).
 
 * (Optional:) Um das Projekt mit dem IIS-Server auszuführen, [laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Extrahieren Sie die ZIP-Datei in einen lokalen Ordner (z.B. *C:\Azure-Samples*).
-
-
 
 #### <a name="step-3-configure-your-javascript-app"></a>Schritt 3: Konfigurieren Ihrer JavaScript-App
 
@@ -144,6 +139,10 @@ var msalConfig = {
 Wählen Sie **Anmelden** aus, wenn die Anwendung im Browser geladen wurde. Bei der ersten Anmeldung werden Sie aufgefordert, Ihre Zustimmung zu geben, dass die Anwendung auf Ihr Profil zugreifen und Sie anmelden darf. Bei erfolgreicher Anmeldung sollten Ihre Benutzerprofilinformationen auf der Seite angezeigt werden.
 
 ## <a name="more-information"></a>Weitere Informationen
+
+### <a name="how-the-sample-works"></a>Funktionsweise des Beispiels
+
+![Funktionsweise der Beispiel-App in diesem Schnellstart](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
 ### <a name="msaljs"></a>msal.js
 

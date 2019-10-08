@@ -12,12 +12,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, H
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: ece47c86fba6bc975a4146f596fa001014352a4f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725847"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695488"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Schnellstart: Debuggen und Iterieren mit Visual Studio und .NET Core in Kubernetes mit Azure Dev Spaces
 
@@ -26,6 +26,11 @@ In diesem Leitfaden lernen Sie Folgendes:
 - Einrichten von Azure Dev Spaces mit einem verwalteten Kubernetes-Cluster in Azure
 - Iteratives Entwickeln von Code in Containern mit Visual Studio
 - Debuggen von Code in Ihrem Cluster mit Visual Studio
+
+Azure Dev Spaces ermöglicht außerdem das Debuggen und Durchlaufen mit:
+- [Java und Visual Studio Code](quickstart-java.md)
+- [Node.js und Visual Studio Code](quickstart-nodejs.md)
+- [.NET Core und Visual Studio Code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

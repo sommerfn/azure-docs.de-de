@@ -111,7 +111,7 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
 1. Neustarten oder Aktualisieren von sysctl durch Ausführen von <br>
     `sysctl -p`
 
-Weitere Informationen zu Linux-Kernelkonfigurationen (einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`) finden Sie hier: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) (Dokumentation zu /proc/sys/kernel/*). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
+Weitere Informationen zu Linux-Kernelkonfigurationen (einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`) finden Sie hier: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) (Dokumentation zu /proc/sys/kernel/) Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

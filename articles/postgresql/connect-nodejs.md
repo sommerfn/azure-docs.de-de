@@ -4,18 +4,18 @@ description: Dieser Schnellstart enthält ein Node.js-Codebeispiel, das Sie nutz
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: seo-javascript-september2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 7e59e9b53143dcbea1c78f4c6131080ec8e9ea2c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 072e2fca4d7d0c90e9e4e66b9ba2b63ef45723db
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966749"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719957"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von Node.js zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden von Node.js zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver und zum Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit einer [Node.j](https://nodejs.org/)s-Anwendung eine Verbindung mit Azure Database for PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for PostgreSQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen

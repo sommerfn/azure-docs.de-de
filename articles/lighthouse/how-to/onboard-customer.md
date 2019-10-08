@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie einen Kunden für delegierte Azure-Ressourcen
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a199dde6b9e36683b817f908e385aabcc431ce16
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: b2e935a3a5ff2b6da99ad693f2d4e924ae811caf
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155130"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694844"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
 
@@ -113,11 +113,11 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="create-an-azure-resource-manager-template"></a>Erstellen einer Azure Resource Manager-Vorlage
 
-Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/)-Vorlage erstellen, die Folgendes enthält:
+Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/)-Vorlage für das Angebot erstellen, die folgende Informationen enthält: Die Werte von **mspOfferName** und **mspOfferDescription** sind für den Kunden sichtbar, wenn Angebotsdetails auf der Seite [Dienstanbieter](view-manage-service-providers.md) des Azure-Portals angezeigt werden.
 
 |Feld  |Definition  |
 |---------|---------|
-|**mspName**     |Dienstanbietername         |
+|**mspOfferName**     |Ein Name, der diese Definition beschreibt. Dieser Wert wird für den Kunden als Titel des Angebots angezeigt.         |
 |**mspOfferDescription**     |Eine kurze Beschreibung Ihres Angebots (z. B. „Angebot für die Verwaltung von virtuellen Contoso-Computern“)      |
 |**managedByTenantId**     |Ihre Mandanten-ID         |
 |**authorizations**     |Die **principalId**-Werte für die Benutzer/Gruppen/SPNs Ihres Mandanten, jeweils mit einem **principalIdDisplayName**, um Ihrem Kunden zu helfen, den Zweck der Autorisierung zu verstehen, und einem integrierten **roleDefinitionId**-Wert zugeordnet, um die Zugriffsebene anzugeben.         |
@@ -132,9 +132,9 @@ Verwenden Sie für das Onboarding des Abonnements eines Kunden die entsprechende
 |Abonnement (bei Verwendung eines in Azure Marketplace veröffentlichten Angebots)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Der hier beschriebene Prozess erfordert für jedes Abonnement, das integriert wird, eine separate Bereitstellung.
-> 
-> Gesonderte Bereitstellungen sind auch erforderlich, wenn Sie mehrere Ressourcengruppen innerhalb verschiedener Abonnements integrieren. Das Onboarding mehrerer Ressourcengruppen innerhalb eines einzelnen Abonnements kann jedoch in einer einzigen Bereitstellung erfolgen.
+> Der hier beschriebene Prozess erfordert für jedes Abonnement, das integriert wird, eine separate Bereitstellung. Gesonderte Bereitstellungen sind auch erforderlich, wenn Sie mehrere Ressourcengruppen innerhalb verschiedener Abonnements integrieren. Das Onboarding mehrerer Ressourcengruppen innerhalb eines einzelnen Abonnements kann jedoch in einer einzigen Bereitstellung erfolgen.
+>
+> Separate Bereitstellungen sind auch erforderlich für mehrere Angebote, die auf dasselbe Abonnement (oder dieselben Ressourcengruppen in einem Abonnement) angewendet werden. Für jedes angewendete Angebot muss ein anderer **mspOfferName** verwendet werden.
 
 Das folgende Beispiel zeigt eine geänderte **resourceprojection.parameters.json**-Datei, die für das Onboarding eines Abonnements verwendet wird. Die Ressourcengruppen-Parameterdateien (im Ordner [rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management)) sind ähnlich, enthalten aber auch einen **rgName**-Parameter, um die spezifische(n) Ressourcengruppe(n) zu identifizieren, die integriert werden soll(en).
 
@@ -143,7 +143,7 @@ Das folgende Beispiel zeigt eine geänderte **resourceprojection.parameters.json
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "mspName": {
+        "mspOfferName": {
             "value": "Fabrikam Managed Services - Interstellar"
         },
         "mspOfferDescription": {

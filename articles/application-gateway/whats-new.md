@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 6755825aa123b3d7d1eed23291790ff3dc477ac5
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 5ae7aa2dfbab5ff62f9ce56bc3a790294e369529
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382478"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686820"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Neuerungen in Azure Application Gateway
 
@@ -28,7 +28,7 @@ Azure Application Gateway wird fortlaufend aktualisiert. Damit Sie bezüglich de
 |Feature  |BESCHREIBUNG  |Hinzufügedatum  |
 |---------|---------|---------|
 |Weitere Metriken |Wir haben die folgenden neuen Metriken hinzugefügt, mit denen Sie Ihre Application Gateway v2-SKU überwachen können: [„Zeitmetriken“](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics), „Back-End-Antwortstatus“, „Empfangene Bytes“, „Gesendete Bytes“, „Client-TLS-Protokoll“ und „Aktuelle Compute-Einheiten“. Informationen finden Sie unter [Von der Application Gateway V2-SKU unterstützte Metriken](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku). |August 2019 |
-|Benutzerdefinierte WAF-Regeln |Application Gateway WAF_v2 unterstützt nun die Erstellung von benutzerdefinierten Regeln. Siehe [Custom rules for Web Application Firewall v2](custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall v2) |Juni 2019 |
+|Benutzerdefinierte WAF-Regeln |Application Gateway WAF_v2 unterstützt nun das Erstellen von benutzerdefinierten Regeln. Siehe [Custom rules for Web Application Firewall v2](custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall v2) |Juni 2019 |
 |Automatische Skalierung, Zonenredundanz, Unterstützung von statischen VIPs (allgemeine Verfügbarkeit) |Allgemeine Verfügbarkeit für v2 SKU, die automatische Skalierung, Zonenredundanz, Verbesserung der Leistung, statische VIPs, Schlüsseltresor und Neugenerierung von Headern unterstützt. Siehe die [Dokumentation zur automatischen Skalierung per Application Gateway](application-gateway-autoscaling-zone-redundant.md). |April 2019 |
 |Schlüsseltresor-Integration |Application Gateway unterstützt jetzt die Integration mit Key Vault (in der öffentlichen Vorschau) für Serverzertifikate, die an HTTPS-fähige Listener angefügt sind. Siehe [SSL-Terminierung mit Key Vault-Zertifikaten](key-vault-certs.md). |April 2019 |
 |CRUD/Umschreibungen von Headern     |Sie können die HTTP-Header jetzt umschreiben. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen eines Application Gateways und erneutes Generieren eines HTTP-Headers](tutorial-http-header-rewrite-powershell.md).|Dezember 2018|

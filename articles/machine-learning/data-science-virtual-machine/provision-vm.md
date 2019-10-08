@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: e08287fec79ec634d6e2353328854e19565533ca
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fcd115b672e4e2677cb7ad48fc94905747d66781
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204068"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675108"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Schnellstart: Einrichten der Data Science Virtual Machine für Windows
 
@@ -21,6 +21,7 @@ Es wird beschrieben, wie Sie die Betriebsbereitschaft mit einer Data Science Vir
 ## <a name="prerequisite"></a>Voraussetzung
 
 Zum Erstellen einer Data Science VM-Instanz unter Windows benötigen Sie ein Azure-Abonnement. [Testen Sie Azure kostenlos](https://azure.com/free).
+Beachten Sie, dass kostenlose Azure-Konten keine GPU-fähigen VM-SKUs unterstützen.
 
 ## <a name="create-your-dsvm"></a>Erstellen Ihrer DSVM
 

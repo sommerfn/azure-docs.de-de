@@ -1,22 +1,22 @@
 ---
-title: Was ist Windows Virtual Desktop (Vorschauversion)?  - Azure
-description: Eine Übersicht über Windows Virtual Desktop (Vorschauversion).
+title: Was ist Windows Virtual Desktop?  - Azure
+description: Eine Übersicht über Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301000"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676553"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>Was ist Windows Virtual Desktop (Vorschauversion)? 
+# <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
-Windows Virtual Desktop ist jetzt als Vorschauversion verfügbar. Bei Windows Virtual Desktop handelt es sich um einen in der Cloud ausgeführten Dienst für die Desktop- und App-Virtualisierung.
+Bei Windows Virtual Desktop handelt es sich um einen in der Cloud ausgeführten Dienst für die Desktop- und App-Virtualisierung.
 
 Windows Virtual Desktop in Azure ermöglicht Folgendes:
 
@@ -88,7 +88,19 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 >[!NOTE]
 >Sollten Sie ein Azure-Abonnement benötigen, können Sie sich [für eine einmonatige kostenlose Testversion registrieren](https://azure.microsoft.com/free/). Bei Verwendung der kostenlosen Testversion von Azure müssen Sie Azure AD Domain Services verwenden, um Ihre Windows Server Active Directory-Instanz mit Azure Active Directory zu synchronisieren.
 
-Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Benutzer bereitstellen, sowie die Verwaltungslösung. Letztere wird von Microsoft in Azure gehostet. Während der Public Preview-Phase können Desktops und Apps auf virtuellen Computern (VMs) in einer beliebigen Azure-Region bereitgestellt werden. Die Verwaltungslösung und Daten für diese virtuellen Computer befinden sich dagegen in den Vereinigten Staaten (in der Region „USA, Osten 2“). Dadurch werden ggf. Daten in die Vereinigten Staaten übertragen, wenn Sie den Dienst während der Public Preview-Phase testen. Wenn das Feature allgemein verfügbar wird, werden die Verwaltungslösung und die Datenlokalisierung auf alle Azure-Regionen erweitert.
+Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen über ausgehenden TCP 443-Zugriff auf die folgenden URLs verfügen:
+
+* *.wvd.microsoft.com
+* *.blob.core.windows.net
+* *.core.windows.net
+* *.servicebus.windows.net
+* prod.warmpath.msftcloudes.com
+* catalogartifact.azureedge.net
+
+>[!NOTE]
+>Das Aufrufen dieser URLs ist für die zuverlässige Bereitstellung von Windows Virtual Desktop von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs entsprechen lediglich Windows Virtual Desktop-Websites und -Ressourcen, und sie schließen keine URLs zu anderen Diensten wie Azure AD ein.
+
+Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Benutzer bereitstellen, sowie die Verwaltungslösung. Letztere wird von Microsoft in Azure gehostet. Desktops und Apps können auf virtuellen Computern (VMs) in einer beliebigen Azure-Region bereitgestellt werden. Die Verwaltungslösung und Daten für diese virtuellen Computer befinden sich dagegen in den Vereinigten Staaten (in der Region „USA, Osten 2“). Dies kann zu Datenübertragungen in die USA führen.
 
 Ihr Netzwerk muss folgende Anforderungen erfüllen, um eine optimale Leistung zu erzielen:
 
@@ -108,11 +120,28 @@ Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
 Windows Virtual Desktop unterstützt die folgenden Betriebssysteme:
 
 * Windows 10 Enterprise (mehrere Sitzungen)
+* Windows 10 Enterprise
+* Windows 7 Enterprise
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+
+Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab, welches Betriebssystem und welche Version gewählt werden; siehe dazu die folgende Tabelle: 
+
+|Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|Updates für Windows Virtual Desktop-Agents|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Windows 10, Multisession, Version 1903|Ja|Ja|Ja|Ja|Automatisch|
+|Windows 10, Multisession, Version 1809|Ja|Ja|Nein|Nein|Automatisch|
+|Windows 10 Enterprise, Version 1903|Ja|Ja|Ja|Ja|Automatisch|
+|Windows 10 Enterprise, Version 1809|Ja|Ja|Nein|Nein|Automatisch|
+|Windows 7 Enterprise|Ja|Ja|Nein|Nein|Manuell|
+|Windows Server 2019|Ja|Ja|Nein|Nein|Automatisch|
+|Windows Server 2016|Ja|Ja|Ja|Ja|Automatisch|
+|Windows Server 2012 R2|Ja|Ja|Nein|Nein|Automatisch|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erstellen Sie zunächst einen Mandanten. Weitere Informationen zum Erstellen eines Mandanten finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion)](tenant-setup-azure-active-directory.md)
+> [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)

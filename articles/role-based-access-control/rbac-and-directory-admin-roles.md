@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: e9ce71f12d50aa414579e5fc7c2961156965a337
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1fe1d50f24c70c89ea0fbaa952673cdeacc4f1bf
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037524"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803162"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
 
@@ -45,7 +45,7 @@ Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Rolle
 | Administrator für klassisches Abonnement | Begrenzung | Berechtigungen | Notizen |
 | --- | --- | --- | --- |
 | Kontoadministrator | 1 pro Azure-Konto | <ul><li>Zugreifen auf das [Azure-Kontocenter](https://account.azure.com/Subscriptions)</li><li>Verwalten aller Abonnements in einem Konto</li><li>Erstellen neuer Abonnements</li><li>Kündigen von Abonnements</li><li>Ändern der Abrechnung für ein Abonnement</li><li>Ändern des Dienstadministrators</li></ul> | Vom Konzept her der für die Abrechnung zuständige Besitzer des Abonnements.<br>Der Kontoadministrator kann nicht auf das Azure-Portal zugreifen. |
-| Dienstadministrator | 1 pro Azure-Abonnement | <ul><li>Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)</li><li>Zuweisen von Benutzern zur Rolle „CO-Administrator“</li></ul> | Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator.<br>Der Dienstadministrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist.<br>Der Dienstadministrator hat Vollzugriff auf das Azure-Portal. |
+| Dienstadministrator | 1 pro Azure-Abonnement | <ul><li>Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)</li><li>Kündigen des Abonnements</li><li>Zuweisen von Benutzern zur Rolle „CO-Administrator“</li></ul> | Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator.<br>Der Dienstadministrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist.<br>Der Dienstadministrator hat Vollzugriff auf das Azure-Portal. |
 | Co-Administrator | 200 pro Abonnement | <ul><li>Gleiche Zugriffsrechte wie der Dienstadministrator, aber kann die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern</li><li>Zuweisen von Benutzern zur Rolle „Co-Administrator“, aber kann den Dienstadministrator nicht ändern</li></ul> | Der Co-Administrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. |
 
 Im Azure-Portal können Sie auf der Registerkarte **Klassische Administratoren** Co-Administratoren verwalten oder den Dienstadministrator anzeigen.
@@ -63,6 +63,8 @@ Weitere Informationen finden Sie unter [Verwaltung von Azure-Abonnements im klas
 Ein Azure-Konto stellt eine Abrechnungsbeziehung dar. Ein Azure-Konto umfasst eine Benutzeridentität, mindestens ein Azure-Abonnement und verschiedene zugeordnete Azure-Ressourcen. Die Person, die das Konto erstellt, ist der Kontoadministrator für alle Abonnements, die unter diesem Konto erstellt werden. Diese Person ist auch der Standard-Dienstadministrator für das Abonnement.
 
 Mit Azure-Abonnements können Sie den Zugriff auf Azure-Ressourcen organisieren. Mit diesen Abonnements können Sie darüber hinaus steuern, wie die Ressourcennutzung gemeldet, abgerechnet und bezahlt wird. Jedes Abonnement kann in Bezug auf Abrechnung und Zahlung unterschiedlich eingerichtet sein, sodass Sie je nach Büro, Abteilung, Projekt usw. verschiedene Abonnements und verschiedene Pläne haben. Jeder Dienst gehört zu einem Abonnement, und die Abonnement-ID kann für programmgesteuerte Vorgänge erforderlich sein.
+
+Jedes Abonnement ist einem Azure AD-Verzeichnis zugeordnet. Sie finden das Verzeichnis, dem das Abonnement zugeordnet ist, indem Sie im Azure-Portal zu **Abonnements** navigieren und ein Abonnement auswählen, um das Verzeichnis anzuzeigen.
 
 Konten und Abonnements werden im [Azure-Kontocenter](https://account.azure.com/Subscriptions) verwaltet.
 

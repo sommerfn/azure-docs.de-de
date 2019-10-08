@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 943cad871330e2f3b6e13b33dca582ab545fe4be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726570"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720061"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Tutorial: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit dem Azure-Portal
 
@@ -52,8 +52,8 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |---|---|
     |NAME|myVirtualNetwork1|
     |Adressraum|10.0.0.0/16|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
     |Location| Wählen Sie **USA, Osten** aus.|
     |Subnetzname|Subnet1|
     |Subnetzadressbereich|10.0.0.0/24|
@@ -66,7 +66,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |---|---|
     |NAME|myVirtualNetwork2|
     |Adressraum|10.1.0.0/16|
-    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
+    |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
     |Subnetzadressbereich|10.1.0.0/24|
 
 ## <a name="peer-virtual-networks"></a>Einrichten eines Peerings von virtuellen Netzwerken
@@ -80,27 +80,18 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
     |Einstellung|Wert|
     |---|---|
-    |NAME|myVirtualNetwork1-myVirtualNetwork2|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Virtuelles Netzwerk|myVirtualNetwork2: Wählen Sie zum Auswählen des virtuellen Netzwerks *myVirtualNetwork2* die Option **Virtuelles Netzwerk** und dann **myVirtualNetwork2**. Sie können ein virtuelles Netzwerk in derselben Region oder in einer anderen Region auswählen.|
+    |Name des Peerings von myVirtualNetwork1 zum virtuellen Remotenetzwerk|myVirtualNetwork1-myVirtualNetwork2: Beim Laden der ersten Seite wird hier der Text „remote virtual network“ (virtuelles Remotenetzwerk) angezeigt. Wenn Sie das virtuelle Remotenetzwerk ausgewählt haben, wird der Text „remote virtual network“ durch den Namen des virtuellen Remotenetzwerks ersetzt.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Virtuelles Netzwerk|myVirtualNetwork2: Wählen Sie zum Auswählen des virtuellen Netzwerks *myVirtualNetwork2* die Option **Virtuelles Netzwerk** und anschließend **myVirtualNetwork2 (myResourceGroup)** aus. Sie können ein virtuelles Netzwerk in derselben Region oder in einer anderen Region auswählen.|
+    |Name des Peerings von myVirtualNetwork2 zu myVirtualNetwork1|myVirtualNetwork2-myVirtualNetwork1|
 
-    ![Peeringeinstellungen](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
+    ![Peeringeinstellungen](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
 
-    Der **PEERINGSTATUS** lautet *Initiiert*, wie in der folgenden Abbildung gezeigt wird:
+    Der **PEERINGSTATUS** lautet *Verbunden*, wie in der folgenden Abbildung gezeigt wird:
 
-    ![Peeringstatus](./media/tutorial-connect-virtual-networks-portal/peering-status.png)
+    ![Peeringstatus](./media/tutorial-connect-virtual-networks-portal/peering-status-connected.png)
 
     Wenn der Status nicht angezeigt wird, aktualisieren Sie Ihren Browser.
-
-4. Beginnen Sie oben im Azure-Portal im Feld **Suchen** mit der Eingabe von *MyVirtualNetwork2*. Wenn **myVirtualNetwork2** in den Suchergebnissen angezeigt wird, können Sie den Eintrag auswählen.
-5. Führen Sie die Schritte 2 bis 3 mit den folgenden Änderungen erneut aus, und klicken Sie anschließend auf **OK**:
-
-    |Einstellung|Wert|
-    |---|---|
-    |NAME|myVirtualNetwork2-myVirtualNetwork1|
-    |Virtuelles Netzwerk|myVirtualNetwork1|
-
-    Der **PEERINGSTATUS** lautet *Verbunden*. Azure hat zudem den Peeringstatus für das Peering *myVirtualNetwork2-myVirtualNetwork1* von *Initiiert* in *Verbunden* geändert. Das Peering für die virtuellen Netzwerke wird erst erstellt, wenn der Peeringstatus für beide virtuellen Netzwerke *Verbunden* lautet. 
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
@@ -117,7 +108,7 @@ Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Sch
     |NAME|myVm1|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
+    |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
     |Location| Wählen Sie **USA, Osten** aus.|
 4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
 5. Wählen Sie die folgenden Werte unter **Einstellungen** aus, und wählen Sie anschließend **OK**:
@@ -125,7 +116,7 @@ Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Sch
     |Einstellung|Wert|
     |---|---|
     |Virtuelles Netzwerk| myVirtualNetwork1: Falls dieses Element noch nicht ausgewählt ist, wählen Sie die Option **Virtuelles Netzwerk** und unter **Virtuelles Netzwerk auswählen** dann **myVirtualNetwork1**.|
-    |Subnetz| Subnet1: Wählen Sie die Option **Subnetz** und dann unter **Subnetz auswählen** die Option **Subnet1**, falls sie nicht bereits ausgewählt ist.|
+    |Subnet| Subnet1: Wählen Sie die Option **Subnetz** und dann unter **Subnetz auswählen** die Option **Subnet1**, falls sie nicht bereits ausgewählt ist.|
     
     ![Einstellungen des virtuellen Computers](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
  

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004037"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828015"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Tutorial: Trainieren Ihres ersten ML-Modells
 
@@ -35,21 +35,15 @@ Die einzige Voraussetzung ist die Ausführung von Teil 1 des Tutorials [Einrich
 
 In diesem Teil des Tutorials führen Sie den Code im Jupyter-Beispielnotebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` aus, das am Ende von Teil 1 geöffnet wurde. In diesem Artikel wird der gleiche Code wie im Notebook verwendet.
 
-## <a name="launch-jupyter-web-interface"></a>Starten der Jupyter-Webschnittstelle
+## <a name="open-the-notebook"></a>Öffnen des Notebooks
 
-1. Wählen Sie auf der Arbeitsbereichseite im Azure-Portal links **Notebook-VMs** aus.
+1. Melden Sie sich auf der [Angebotsseite des Arbeitsbereichs](https://ml.azure.com/) an.
 
-1. Wählen Sie in der Spalte **URI** für den in Teil 1 dieses Tutorials erstellten virtuellen Computer die Option **Jupyter** aus.
+1. Öffnen Sie in Ihrem Ordner **tutorial-1st-experiment-sdk-train.ipynb**, wie in [Teil 1](tutorial-1st-experiment-sdk-setup.md#open) veranschaulicht.
 
-    ![Starten des Jupyter Notebook-Servers](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-   Der Link startet Ihren Notebook-Server und öffnet die Jupyter Notebook-Webseite im Browser auf einer neuen Registerkarte.  Dieser Link funktioniert nur für die Person, die die VM erstellt. Jeder Benutzer des Arbeitsbereichs muss seinen eigenen virtuellen Computer erstellen.
-
-1. Wählen Sie auf der Jupyter Notebook-Webseite den obersten Ordnernamen aus (enthält Ihren Benutzernamen).  
-
-   Dieser Ordner ist im [Speicherkonto](concept-workspace.md#resources) des Arbeitsbereichs und nicht auf der Notebook-VM selbst vorhanden.  Wenn Sie die Notebook-VM löschen, behalten Sie dennoch Ihre gesamte Arbeit.  Wenn Sie später eine neue Notebook-VM erstellen, wird der gleiche Ordner geladen. Wenn Sie Ihren Arbeitsbereich mit anderen teilen, werden Ihr Ordner und die Ordner der anderen Benutzer angezeigt.
-
-1. Öffnen Sie das Unterverzeichnis `samples-*`, und öffnen Sie die Jupyter Notebook-Instanz `tutorials/tutorial-1st-experiment-sdk-train.ipynb`, **nicht** die Datei `.yml` mit dem gleichen Namen. 
+> [!Warning]
+> Erstellen Sie **kein** *neues* Notebook über die Jupyter-Schnittstelle! Das Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` enthält **sämtlichen Code und alle Daten**, die für dieses Tutorial benötigt werden.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Herstellen einer Verbindung für den Arbeitsbereich und Erstellen des Experiments
 
@@ -57,7 +51,7 @@ In diesem Teil des Tutorials führen Sie den Code im Jupyter-Beispielnotebook `t
 > Der Rest dieses Artikels enthält denselben Inhalt, den Sie auch im Notebook sehen.  
 >
 > Wechseln Sie nun zur Jupyter Notebook-Instanz, wenn Sie während der Ausführung des Codes mitlesen möchten. 
-> Klicken Sie zum Ausführen einer einzelnen Codezelle in einem Notebook auf die gewünschte Codezelle, und drücken Sie **UMSCHALT+EINGABE**. Oder führen Sie das gesamte Notebook aus, indem Sie im oberen Menü **Zelle > Alle ausführen** auswählen.
+> Klicken Sie zum Ausführen einer einzelnen Codezelle in einem Notebook auf die gewünschte Codezelle, und drücken Sie **UMSCHALT+EINGABE**. Oder führen Sie das gesamte Notebook aus, indem Sie auf der oberen Symbolleiste **Alle ausführen** auswählen.
 
 Importieren Sie die Klasse `Workspace`, und laden Sie Ihre Abonnementinformationen aus der Datei `config.json` mithilfe der Funktion `from_config().` Diese Funktion durchsucht standardmäßig das aktuelle Verzeichnis nach der JSON-Datei. Sie können jedoch auch einen Pfadparameter angeben, um auf die Datei zu verweisen: `from_config(path="your/file/path")`. Bei einem cloudbasierten Notebook-Server befindet sich die Datei automatisch im Stammverzeichnis.
 

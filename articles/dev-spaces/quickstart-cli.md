@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Hier erfahren Sie, wie Sie unter Verwendung von Azure Dev Spaces einen Microservice in AKS bereitstellen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b845a176497891f55990c560e719832c6eaebb73
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842526"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815818"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Schnellstart: Entwickeln einer Anwendung in Kubernetes unter Verwendung von Azure Dev Spaces
 In diesem Leitfaden lernen Sie Folgendes:
@@ -40,6 +40,9 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Aktivieren von Azure Dev Spaces in Ihrem AKS-Cluster
 
 Verwenden Sie den Befehl `use-dev-spaces`, um Dev Spaces in Ihrem AKS-Cluster zu aktivieren, und befolgen Sie die angezeigten Anweisungen. Mit dem unten angegebenen Befehl wird Dev Spaces im Cluster *MyAKS* in der Gruppe *MyResourceGroup* aktiviert und der Entwicklerbereich *default* erstellt.
+
+> [!NOTE]
+> Mit dem Befehl `use-dev-spaces` wird außerdem die Azure Dev Spaces-Befehlszeilenschnittstelle installiert, falls diese nicht bereits installiert ist. Die Azure Dev Spaces-Befehlszeilenschnittstelle kann nicht in Azure Cloud Shell installiert werden.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS

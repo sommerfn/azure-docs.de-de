@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 4f039fde275e5dca49b3c78550722d827bead062
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 3ccc5c7c0def7ec1d8d2f8927dc8f8e5d3678a52
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155113"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718981"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Schnellstart: Azure Key Vault-Clientbibliothek für .NET
 
@@ -93,7 +93,8 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Eine cloudbasierte .NET-Anwendung kann am einfachsten mit einer verwalteten Identität authentifiziert werden. Ausführliche Informationen finden Sie unter [Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET](service-to-service-authentication.md). Der Einfachheit halber wird in dieser Schnellstartanleitung allerdings eine .NET-Konsolenanwendung erstellt. Für die Authentifizierung einer Desktopanwendung mit Azure muss ein Dienstprinzipal verwendet werden.
+Eine cloudbasierte .NET-Anwendung kann am einfachsten mit einer verwalteten Identität authentifiziert werden. Einzelheiten hierzu finden Sie unter [Verwenden einer verwalteten App Service-Identität für den Zugriff auf Azure Key Vault](managed-identity.md). Der Einfachheit halber wird in dieser Schnellstartanleitung allerdings eine .NET-Konsolenanwendung erstellt. Zum Authentifizieren einer Desktopanwendung mit Azure müssen ein Dienstprinzipal und eine Zugriffssteuerungsrichtlinie verwendet werden.
+
 Erstellen Sie mithilfe des Azure CLI-Befehls [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) einen Dienstprinzipal:
 
 ```azurecli

@@ -9,20 +9,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 8e87bcb9f7d05fd5041623693c96f8c737758c32
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e382b4bf12b53573f3506474837093456f9b84c6
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490984"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709633"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Ändern Ihres Azure-Abonnements in ein anderes Angebot
 
 Als Kunde mit einem [einzelnen Abonnement mit Preisen für nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) können Sie Ihr Azure-Abonnement im [Kontocenter](https://account.windowsazure.com/Subscriptions) auf ein anderes Angebot umstellen. Mithilfe dieses Features können Sie beispielsweise von den [monatlichen Gutschriften für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) profitieren.
 
-**Sie möchten nur Ihre kostenlose Testversion aktualisieren?** Informationen hierzu finden Sie im Artikel zum [Durchführen eines Upgrades für Ihr Abonnement](billing-upgrade-azure-subscription.md).
+**Sie möchten nur Ihre kostenlose Testversion aktualisieren?** Siehe [Upgrade Sie Ihr Abonnement](billing-upgrade-azure-subscription.md).
 
 ## <a name="whats-supported"></a>Unterstützte Umstellungen:
 
@@ -101,7 +101,7 @@ Beim Wechseln von Angeboten werden alle [Grenzwerte oder Kontingenterhöhungen o
 
 An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühren eine Rechnung generiert. Anschließend wird Ihr Abonnement gemäß den Preisinformationen für das neue Angebot abgerechnet. Der Stichtag Ihrer Abonnementabrechnung wird in das Datum geändert, an dem Sie das Angebot gewechselt haben. Die Nutzungs- und Abrechnungsdaten von vor der Angebotsänderung werden nicht beibehalten. Daher empfiehlt es sich, vor dem Wechsel eine Kopie davon herunterzuladen.
 
-### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Kann ich von einem Abonnement mit Preisen für nutzungsbasierte Bezahlung zu [Cloudlösungsanbieter](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (Cloud Solution Provider, CSP) oder [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) migrieren?
+### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kann ich von einem Abonnement mit Preisen für nutzungsbasierte Bezahlung zu Cloudlösungsanbieter (Cloud Solution Provider, CSP) oder Enterprise Agreement (EA) migrieren?
 
 * Informationen zum Migrieren zu CSP finden Sie unter [Migrieren von Azure-Abonnements von nutzungsbasierter Bezahlung zu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
 * Um zu EA zu migrieren, muss Ihr Registrierungsadministrator Ihr Konto in EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben. Weitere Informationen finden Sie unter [Associate an Existing Account](https://ea.azure.com/helpdocs/associateExistingAccount) (Zuordnen eines vorhandenen Kontos) im EA-Portal.

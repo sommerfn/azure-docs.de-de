@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/21/2018
+ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 98c183d65a18c186b515df8ec02ba26b8c2c4143
-ms.sourcegitcommit: 25a60179840b30706429c397991157f27de9e886
+ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "66258302"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679390"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Was sind Skalierungsgruppen für virtuelle Computer?
 Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe von identischen virtuellen Computern mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren einer großen Zahl von VMs. Mit VM-Skalierungsgruppen können Sie umfassende Dienste für Bereiche wie Compute, Big Data und Containerworkloads erstellen.
@@ -62,6 +62,11 @@ Skalierungsgruppen werden aus virtuellen Computern erstellt. Mit Skalierungsgrup
 
 Für Skalierungsgruppen fallen keine zusätzlichen Kosten an. Sie zahlen nur für die zugrunde liegenden Computeressourcen, z.B. die VM-Instanzen, den Lastenausgleich oder Speicher für verwaltete Datenträger. Für die Verwaltungs- und Automatisierungsfeatures, z.B. automatische Skalierung und Redundanz, fallen bei der Nutzung von VMs keine weiteren Gebühren an.
 
+## <a name="how-to-monitor-your-scale-sets"></a>Überwachen von Skalierungsgruppen
+
+Verwenden Sie [Azure Monitor für VMs](../azure-monitor/insights/vminsights-overview.md), das einen einfachen Onboarding-Prozess enthält und die Erfassung wichtiger Leistungsindikatoren für CPU, Arbeitsspeicher, Datenträger und Netzwerk der VMs in der Skalierungsgruppe automatisiert. Außerdem sind weitere Überwachungsfunktionen und vordefinierte Visualisierungen verfügbar, mit der Sie sich auf Verfügbarkeit und Leistung Ihrer Skalierungsgruppen konzentrieren können.
+
+Aktivieren Sie die Überwachung für Ihre [VM-Skalierungsgruppenanwendung](../azure-monitor/app/azure-vm-vmss-apps.md) mit Application Insights, um ausführliche Informationen zur Anwendung zu erfassen, einschließlich der Anzahl der Seitenaufrufe, Anwendungsanforderungen und Ausnahmen. Überprüfen Sie darüber hinaus die Verfügbarkeit Ihrer Anwendung, indem Sie einen [Verfügbarkeitstest](../azure-monitor/app/monitor-web-app-availability.md) konfigurieren, um Benutzerdatenverkehr zu simulieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erstellen Sie im Azure-Portal Ihre erste VM-Skalierungsgruppe, um zu beginnen.

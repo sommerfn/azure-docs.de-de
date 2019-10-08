@@ -2,18 +2,18 @@
 title: 'Schnellstart: Erstellen eines Spark-Clusters in HDInsight mithilfe einer Vorlage'
 description: Dieses Schnellstarttutorial zeigt, wie Sie eine Resource Manager-Vorlage verwenden, um einen Apache Spark-Cluster in Azure HDInsight zu erstellen, und wie Sie eine einfache Spark SQL-Abfrage ausführen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: d0d6d091a955f37a12fe6c4066f0e4f999696e21
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e3e8a61e07f3d61bd69bd9bb12db72a613eeff99
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884545"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337578"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Schnellstart: Erstellen eines Apache Spark-Clusters in Azure HDInsight mit einer Resource Manager-Vorlage
 
@@ -54,9 +54,11 @@ Erstellen Sie einen HDInsight Spark-Cluster unter Verwendung einer Azure Resourc
 Sollte bei der HDInsight-Clustererstellung ein Problem auftreten, verfügen Sie unter Umständen nicht über die erforderlichen Berechtigungen. Weitere Informationen finden Sie unter [Voraussetzungen für die Zugriffssteuerung](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="install-intellijeclipse-for-spark-application"></a>Installieren von IntelliJ/Eclipse für Spark-Anwendungen
+
 Verwenden Sie das Plug-In „Azure-Toolkit für IntelliJ“/„Azure-Toolkit für Eclipse“, um in [Scala](https://www.scala-lang.org/) geschriebene Spark-Anwendungen zu entwickeln und diese dann direkt aus der IntelliJ-/Eclipse-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) an einen Azure HDInsight Spark-Cluster zu senden. Weitere Informationen finden Sie unter [Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ](./apache-spark-intellij-tool-plugin.md) bzw. unter [Erstellen von Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse](./apache-spark-eclipse-tool-plugin.md).
 
 ## <a name="install-vscode-for-pysparkhive-applications"></a>Installieren von VS Code für PySpark-/Hive-Anwendungen
+
 Hier erfahren Sie, wie Sie Azure HDInsight Tools for Visual Studio Code (VS Code) verwenden, um Hive-Batchaufträge, interaktive Hive-Abfragen, einen PySpark-Batch und interaktive PySpark-Skripts zu erstellen und zu übermitteln. Azure HDInsight Tools kann auf den von VS Code unterstützten Plattformen installiert werden. Hierzu zählen Windows, Linux und macOS. Weitere Informationen finden Sie unter [Verwenden von Azure HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md).
 
 ## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks
@@ -64,6 +66,7 @@ Hier erfahren Sie, wie Sie Azure HDInsight Tools for Visual Studio Code (VS Code
 [Jupyter Notebook](https://jupyter.org/) ist eine interaktive Notebook-Umgebung, die verschiedene Programmiersprachen unterstützt. Das Notebook ermöglicht Ihnen, mit Ihren Daten zu interagieren, Code mit Markdowntext zu kombinieren und einfache Visualisierungen durchzuführen.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+
 2. Wählen Sie **HDInsight-Cluster** und dann den von Ihnen erstellten Cluster aus.
 
     ![Öffnen eines HDInsight-Clusters im Azure-Portal](./media/apache-spark-jupyter-spark-sql/azure-portal-open-hdinsight-cluster.png)
@@ -78,7 +81,6 @@ Hier erfahren Sie, wie Sie Azure HDInsight Tools for Visual Studio Code (VS Code
 
    Ein neues Notebook mit dem Namen „Untitled“ (Untitled.pynb) wird erstellt und geöffnet.
 
-
 ## <a name="run-spark-sql-statements"></a>Ausführen von Spark SQL-Anweisungen
 
 SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete Sprache zum Abfragen und Transformieren von Daten. Spark SQL fungiert als Erweiterung von Apache Spark für die Verarbeitung strukturierter Daten mit der vertrauten SQL-Syntax.
@@ -88,37 +90,39 @@ SQL (Structured Query Language) ist die gängigste und am häufigsten verwendete
     ![Kernel-Status](./media/apache-spark-jupyter-spark-sql/jupyter-spark-kernel-status.png "Kernel-Status")
 
     Wenn Sie das Notebook zum ersten Mal starten, führt der Kernel im Hintergrund einige Aufgaben durch. Warten Sie, bis der Kernel bereit ist.
-2. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE** , um den Code auszuführen. Der Befehl listet die Hive-Tabellen im Cluster auf:
+1. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE** , um den Code auszuführen. Der Befehl listet die Hive-Tabellen im Cluster auf:
 
     ```sql
     %%sql
     SHOW TABLES
     ```
+
     Wenn Sie eine Jupyter Notebook-Instanz mit Ihrem HDInsight Spark-Cluster verwenden, erhalten Sie eine vordefinierte `spark`-Sitzung, den Sie zum Ausführen von Hive-Abfragen mit Spark SQL verwenden können. `%%sql` weist Jupyter Notebook an, die vordefinierte `spark`-Sitzung für die Ausführung der Hive-Abfrage zu verwenden. Die Abfrage ruft die ersten zehn Zeilen aus einer Hive-Tabelle (**hivesampletable**) ab, die standardmäßig in allen HDInsight-Clustern enthalten ist. Wenn Sie die Abfrage erstmals übermitteln, erstellt Jupyter eine Spark-Anwendung für das Notebook. Dieser Vorgang dauert ungefähr 30 Sekunden. Sobald die Spark-Anwendung bereit ist, wird die Abfrage innerhalb etwa einer Sekunde ausgeführt, und die Ergebnisse werden zurückgegeben. Die Ausgabe sieht wie folgt aus:
 
-    ![Hive-Abfrage in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive-Abfrage in HDInsight Spark")
+    ![Apache Hive-Abfrage in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive-Abfrage in HDInsight Spark")
 
     Bei jeder Ausführung einer Abfrage in Jupyter wird auf der Titelleiste Ihres Webbrowserfensters neben dem Notebooktitel der Status **(Beschäftigt)** angezeigt. Außerdem sehen Sie in der rechten oberen Ecke einen ausgefüllten Kreis neben dem Text **PySpark**.
 
-2. Führen Sie eine weitere Abfrage aus, um die Daten in `hivesampletable` anzuzeigen.
+1. Führen Sie eine weitere Abfrage aus, um die Daten in `hivesampletable` anzuzeigen.
 
     ```sql
     %%sql
     SELECT * FROM hivesampletable LIMIT 10
     ```
-    
+
     Der Bildschirm wird aktualisiert, und die Ausgabe der Abfrage wird angezeigt.
 
     ![Hive-Abfrageausgabe in HDInsight Spark](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "Hive-Abfrageausgabe in HDInsight Spark")
 
-2. Wählen Sie im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Durch Herunterfahren des Notebooks werden die Clusterressourcen freigegeben (einschließlich der Spark-Anwendung).
+1. Wählen Sie im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Durch Herunterfahren des Notebooks werden die Clusterressourcen freigegeben (einschließlich der Spark-Anwendung).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 HDInsight speichert Ihre Daten und Jupyter-Notebooks in Azure Storage oder Azure Data Lake Store, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. Wenn Sie vorhaben, sofort mit dem Tutorial unter [Nächste Schritte](#next-steps) fortzufahren, können Sie den Cluster beibehalten.
 
 Wechseln Sie zurück zum Azure-Portal, und wählen Sie **Löschen** aus.
 
-![Löschen eines HDInsight-Clusters](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
+![Löschen eines HDInsight-Clusters im Azure-Portal](./media/apache-spark-jupyter-spark-sql/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight Spark-Cluster als auch das Standardspeicherkonto.
 
@@ -128,5 +132,3 @@ In diesem Schnellstarttutorial haben Sie erfahren, wie Sie einen HDInsight Spark
 
 > [!div class="nextstepaction"]
 >[Ausführen von interaktiven Abfragen für Apache Spark](./apache-spark-load-data-run-query.md)
-
-

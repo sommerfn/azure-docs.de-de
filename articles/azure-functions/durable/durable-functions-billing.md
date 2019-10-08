@@ -9,16 +9,18 @@ ms.devlang: multiple
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b79d50adf932bd5c316fbda9d0964eea7c0484ca
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f2de6bdf24aa1a0a11349c8f0ec9b3995b026a47
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935458"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694897"
 ---
 # <a name="durable-functions-billing"></a>Abrechnung von Durable Functions
 
-[Durable Functions](durable-functions-overview.md) wird genau wie Azure Functions in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/). Beim Ausführen von Orchestratorfunktionen im [Nutzungsplan](../functions-scale.md#consumption-plan) von Azure Functions sind einige Verhaltensweisen zu beachten, die bei der Abrechnung auftreten. In den folgenden Abschnitten werden diese Verhaltensweisen und ihre Auswirkungen ausführlicher beschrieben.
+[Durable Functions](durable-functions-overview.md) wird auf dieselbe Weise wie Azure Functions in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
+
+Beim Ausführen von Orchestratorfunktionen im [Nutzungsplan](../functions-scale.md#consumption-plan) von Azure Functions sind einige Verhaltensweisen zu beachten, die bei der Abrechnung auftreten. In den folgenden Abschnitten werden diese Verhaltensweisen und ihre Auswirkungen ausführlicher beschrieben.
 
 ## <a name="orchestrator-function-replay-billing"></a>Abrechnung für die Wiedergabe von Orchestratorfunktionen
 
@@ -26,27 +28,31 @@ ms.locfileid: "70935458"
 
 ## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Warten und Anhalten in Orchestratorfunktionen
 
-Wenn eine Orchestratorfunktion darauf wartet, dass eine asynchrone Aktion mithilfe von `await` (C#) oder `yield` (JavaScript) abgeschlossen wird, wird die jeweilige Ausführung von der Runtime als abgeschlossen betrachtet. Die Abrechnung für die Orchestratorfunktion wird an diesem Punkt angehalten und erst bei der nächsten Wiedergabe einer Orchestratorfunktion wiederaufgenommen. Die Zeit, in der Sie warten oder die eine Orchestratorfunktion angehalten ist, wird Ihnen nicht in Rechnung gestellt.
+Wenn eine Orchestratorfunktion darauf wartet, dass eine asynchrone Aktion mithilfe von **await** in C# oder **yield** in JavaScript abgeschlossen wird, wird die jeweilige Ausführung von der Runtime als abgeschlossen betrachtet. An diesem Punkt wird die Abrechnung für die Orchestratorfunktion beendet. Sie wird erst wieder aufgenommen, wenn die nächste Orchestratorfunktion wiedergegeben wird. Die Zeit, in der Sie warten oder die eine Orchestratorfunktion angehalten ist, wird Ihnen nicht in Rechnung gestellt.
 
 > [!NOTE]
-> Funktionen, die andere Funktionen aufrufen, werden manchmal als Antimuster betrachtet. Der Grund dafür ist die sogenannte _doppelte Abrechnung_. Wenn eine Funktion eine andere Funktion direkt aufruft, werden beide gleichzeitig ausgeführt. Die aufgerufene Funktion führt aktiv Code aus, während die aufrufende Funktion auf eine Antwort wartet. In dem Fall wird Ihnen die Zeit in Rechnung gestellt, während der die aufrufende Funktion darauf wartet, dass die aufgerufene Funktion ausgeführt wird. Orchestratorfunktionen werden von dieser doppelten Abrechnung nicht beeinträchtigt, da die Abrechnung der Orchestratorfunktion angehalten wird, während sie auf das Ergebnis einer Aktivitätsfunktion (oder einer untergeordneten Orchestrierung) wartet.
+> Funktionen, die andere Funktionen aufrufen, werden manchmal als Antimuster betrachtet. Der Grund dafür ist die sogenannte _doppelte Abrechnung_. Wenn eine Funktion eine andere Funktion direkt aufruft, werden beide gleichzeitig ausgeführt. Die aufgerufene Funktion führt aktiv Code aus, während die aufrufende Funktion auf eine Antwort wartet. In dem Fall wird Ihnen die Zeit in Rechnung gestellt, während der die aufrufende Funktion auf die Ausführung der aufgerufenen Funktion wartet.
+>
+> Es gibt keine doppelte Abrechnung für Orchestratorfunktionen. Die Abrechnung der Orchestratorfunktion wird angehalten, während sie auf das Ergebnis einer Aktivitätsfunktion oder einer untergeordneten Orchestrierung wartet.
 
 ## <a name="durable-http-polling"></a>Durable HTTP-Abruf
 
-Orchestratorfunktionen können HTTP-Aufrufe mit langer Ausführungszeit an externe Endpunkte durchführen, wie im Artikel [HTTP-Features](durable-functions-http-features.md) beschrieben. Die `CallHttpAsync`-Methode (C#) und die `callHttp`-Methode (JavaScript) können einen HTTP-Endpunkt intern abfragen, wenn das [asynchrone 202-Muster](durable-functions-http-features.md#http-202-handling) befolgt wird. Für interne HTTP-Abrufvorgänge gibt es derzeit keine direkte Abrechnung. Interne Abrufe führen jedoch unter Umständen zu einer periodischen Wiedergabe der Orchestratorfunktion, und für diese internen Funktionswiedergaben werden Ihnen Standardgebühren in Rechnung gestellt.
+Orchestratorfunktionen können HTTP-Aufrufe mit langer Ausführungszeit an externe Endpunkte durchführen, wie im Artikel [HTTP-Features](durable-functions-http-features.md) beschrieben. Die **CallHttpAsync**-Methode in C# und die **callHttp**-Methode in JavaScript können intern einen HTTP-Endpunkt abrufen, während das [asynchrone 202-Muster](durable-functions-http-features.md#http-202-handling) verfolgt wird.
 
-## <a name="azure-storage-transactions"></a>Azure-Speichertransaktionen
+Für interne HTTP-Abrufvorgänge gibt es derzeit keine direkte Abrechnung. Interne Abrufe können jedoch bewirken, dass die Orchestratorfunktion regelmäßig wiedergegeben wird. Ihnen werden Standardgebühren für diese internen Funktionswiedergaben in Rechnung gestellt.
 
-Durable Functions verwendet standardmäßig Azure Storage, um den Zustand beizubehalten, Nachrichten zu verarbeiten und Partitionen über Blob-Leases zu verwalten. Dieses Speicherkonto befindet sich in Ihrem Besitz, sodass alle Transaktionskosten in Ihrem Azure-Abonnement abgerechnet werden. Weitere Informationen zu den von Durable Functions verwendeten Azure Storage Artefakten finden Sie im Artikel [Aufgabenhubs](durable-functions-task-hubs.md).
+## <a name="azure-storage-transactions"></a>Transaktionen in Azure Storage
 
-Mehrere Faktoren tragen zu den tatsächlichen Azure Storage-Kosten bei, die durch Ihre Durable Functions-Anwendung entstehen.
+Durable Functions verwendet standardmäßig Azure Storage, um den Zustand beizubehalten, Nachrichten zu verarbeiten und Partitionen über Blobleases zu verwalten. Da sich dieses Speicherkonto in Ihrem Besitz befindet, werden alle Transaktionskosten in Ihrem Azure-Abonnement abgerechnet. Weitere Informationen zu den von Durable Functions verwendeten Azure Storage Artefakten finden Sie im Artikel [Aufgabenhubs](durable-functions-task-hubs.md).
+
+Mehrere Faktoren tragen zu den tatsächlichen Azure Storage-Kosten bei, die durch Ihre Durable Functions-App entstehen:
 
 * Eine einzelne Funktions-App ist einem einzelnen Aufgabenhub zugeordnet, der einen Azure Storage-Ressourcensatz nutzt. Diese Ressourcen werden von allen Durable Functions in einer Funktions-App gemeinsam verwendet. Die tatsächliche Anzahl von Funktionen in der Funktions-App wirkt sich nicht auf Azure Storage-Transaktionskosten aus.
-* Jede Funktions-App-Instanz ruft mithilfe eines Abrufalgorithmus für exponentielles Backoff intern mehrere Warteschlangen im Speicherkonto ab. Eine im Leerlauf befindliche Anwendungsinstanz fragt die Warteschlangen seltener ab als eine aktive Anwendung, weshalb die Transaktionskosten niedriger sind. Weitere Informationen zum Verhalten von Durable Functions beim Abrufen von Warteschlangen finden Sie im Abschnitt zum Abrufen von Warteschlangen im Artikel [Leistung und Skalierbarkeit](durable-functions-perf-and-scale.md#queue-polling).
-* Wenn die Ausführung im Nutzungs- oder Premium-Plan von Azure Functions erfolgt, ruft der Azure Functions-Skalierungscontroller in regelmäßigen Abständen alle Aufgabenhubwarteschlangen im Hintergrund ab. Bei einer leichten bis mittleren Skalierung werden diese Warteschlangen nur von einer einzelnen Skalierungscontroller-Instanz abgefragt. Wenn die Funktions-App auf eine große Anzahl von Instanzen erweitert wird, können mehr Skalierungscontroller-Instanzen hinzugefügt werden. Diese zusätzlichen Skalierungscontroller-Instanzen können die Gesamtkosten für die Warteschlangentransaktion erhöhen.
-* Jede Funktions-App-Instanz konkurriert um einen Satz von Blob-Leases. Diese Instanzen führen in regelmäßigen Abständen Aufrufe an den Azure-Blob-Dienst aus, um gehaltene Leases zu erneuern oder neue Leases abzurufen. Die Anzahl der Blob-Leases hängt von der konfigurierten Partitionsanzahl des Aufgabenhubs ab. Das horizontale Hochskalieren auf eine größere Anzahl von Funktions-App-Instanzen erhöht wahrscheinlich die Azure Storage-Transaktionskosten für diese Leasevorgänge.
+* Jede Funktions-App-Instanz ruft mithilfe eines Abrufalgorithmus für exponentielles Backoff intern mehrere Warteschlangen im Speicherkonto ab. Eine App-Instanz im Leerlauf ruft die Warteschlangen seltener als eine aktive App ab, wodurch geringere Transaktionskosten anfallen. Weitere Informationen zum Verhalten von Durable Functions beim Abrufen von Warteschlangen finden Sie im Abschnitt zum Abrufen von Warteschlangen im Artikel [Leistung und Skalierbarkeit](durable-functions-perf-and-scale.md#queue-polling).
+* Wenn die Ausführung im Nutzungs- oder Premium-Plan von Azure Functions erfolgt, ruft der [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-and-premium-plans-work) in regelmäßigen Abständen alle Aufgabenhubwarteschlangen im Hintergrund ab. Bei einer leichten bis mittleren Skalierung einer Funktions-App werden diese Warteschlangen nur von einer einzelnen Skalierungscontroller-Instanz abgefragt. Wenn die Funktions-App auf eine große Anzahl von Instanzen erweitert wird, können weitere Skalierungscontroller-Instanzen hinzugefügt werden. Diese zusätzlichen Skalierungscontroller-Instanzen können die Gesamtkosten für die Warteschlangentransaktion erhöhen.
+* Jede Funktions-App-Instanz konkurriert um einen Satz von Blob-Leases. Diese Instanzen rufen in regelmäßigen Abständen den Azure-Blob-Dienst auf, um gehaltene Leases zu erneuern oder um neue Leases abzurufen. Die Anzahl der Blobleases hängt von der konfigurierten Partitionsanzahl des Aufgabenhubs ab. Das horizontale Hochskalieren auf eine größere Anzahl von Funktions-App-Instanzen erhöht wahrscheinlich die Azure Storage-Transaktionskosten für diese Leasevorgänge.
 
-Weitere Informationen zu den Preisen für Azure Storage finden Sie in der [Übersicht über die Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+Weitere Informationen zu den Preisen für Azure Storage finden Sie in der [Übersicht über die Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
