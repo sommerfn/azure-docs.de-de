@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 7479be6a14c7d1ace5d60defad0eda51d2aa814b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296560"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695192"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -33,7 +33,7 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
 
 ## <a name="limits"></a>Einschränkungen
 
-* Standardmäßig können SFTP-SSH-Aktionen Dateien lesen oder schreiben, die *1 GB oder kleiner* sind, aber jeweils nur in Blöcken von *15 MB*. Um Dateien mit einer Größe von mehr als 15 MB zu verarbeiten, unterstützen SFTP-SSH-Aktionen [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md), mit Ausnahme der Aktion „Copy File“ (Datei kopieren), die nur 15 MB große Dateien verarbeiten kann. Die Aktion **Get file content** (Dateiinhalt abrufen) verwendet implizit Nachrichtensegmentierung. 
+* Standardmäßig können SFTP-SSH-Aktionen Dateien lesen oder schreiben, die *1 GB oder kleiner* sind, aber jeweils nur in Blöcken von *15 MB*. Um Dateien mit einer Größe von mehr als 15 MB zu verarbeiten, unterstützen SFTP-SSH-Aktionen [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md), mit Ausnahme der Aktion „Copy File“ (Datei kopieren), die nur 15 MB große Dateien verarbeiten kann. Die Aktion **Get file content** (Dateiinhalt abrufen) verwendet implizit Nachrichtensegmentierung.
 
 * SFTP-SSH-Trigger unterstützen keine Segmentierung. Trigger wählen beim Anfordern von Dateiinhalten nur Dateien aus, die 15 MB oder kleiner sind. Verwenden Sie stattdessen das folgende Muster, um Dateien abzurufen, die größer als 15 MB sind:
 
@@ -48,14 +48,6 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
 Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector, bei denen der SFTP-SSH-Connector diese Funktionen bietet:
 
 * Er verwendet die [SSH.NET](https://github.com/sshnet/SSH.NET)-Bibliothek, die eine Open Source-SSH-Bibliothek (Secure Shell) mit Unterstützung für .NET ist.
-
-  > [!NOTE]
-  >
-  > Der SFTP-SSH-Connector unterstützt *nur* diese privaten Schlüssel, Formate, Algorithmen und Fingerabdrücke:
-  >
-  > * **Formate für private Schlüssel**: Die Schlüssel „RSA“ (Rivest Shamir-Adleman) und „DSA“ (Digital Signature Algorithm) und OpenSSH- und ssh.com-Formate
-  > * **Verschlüsselungsalgorithmen**: DES-EDE3-CBC, DES EDE3 CFB, DES-CBC, AES-128-CBC, AES-192-CBC und AES-256-CBC
-  > * **Fingerabdruck**: MD5
 
 * Standardmäßig können SFTP-SSH-Aktionen Dateien lesen oder schreiben, die *1 GB oder kleiner* sind, aber jeweils nur in Blöcken von *15 MB*. Um Dateien zu verarbeiten, die größer als 15 MB sind, können Aktionen auf [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. Die Aktion „Copy File“ (Datei kopieren) unterstützt jedoch nur 15 MB große Dateien, da diese Aktion keine Nachrichtensegmentierung unterstützt. SFTP-SSH-Trigger unterstützen keine Segmentierung.
 
@@ -75,13 +67,14 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
   >
   > Der SFTP-SSH-Connector unterstützt *nur* diese privaten Schlüssel, Formate, Algorithmen und Fingerabdrücke:
   >
-  > * **Formate für private Schlüssel**: Die Schlüssel „RSA“ (Rivest Shamir-Adleman) und „DSA“ (Digital Signature Algorithm) und OpenSSH- und ssh.com-Formate
+  > * **Formate für private Schlüssel**: Die Schlüssel „RSA“ (Rivest Shamir-Adleman) und „DSA“ (Digital Signature Algorithm) und OpenSSH- und ssh.com-Formate. Wenn Ihr privater Schlüssel im PuTTY-Dateiformat (PPK) vorliegt, [konvertieren Sie den Schlüssel zuerst in das OpenSSH-Dateiformat (PEM)](#convert-to-openssh).
+  >
   > * **Verschlüsselungsalgorithmen**: DES-EDE3-CBC, DES EDE3 CFB, DES-CBC, AES-128-CBC, AES-192-CBC und AES-256-CBC
+  >
   > * **Fingerabdruck**: MD5
   >
-  > Wenn Sie Ihre Logik-App erstellen, müssen Sie nach dem Hinzufügen des SFTP-SSH-Triggers oder der gewünschten Aktion Verbindungsinformationen für Ihren SFTP-Server bereitstellen. 
-  > Wenn Sie einen privaten SSH-Schlüssel verwenden, stellen Sie sicher, dass Sie ***den Schlüssel aus Ihrer privaten SSH-Schlüsseldatei kopieren*** und diesen Schlüssel in die Verbindungsdetails ***einfügen***. ***Der Schlüssel darf nicht manuell eingegeben oder bearbeitet werden***, da anderenfalls ein Verbindungsfehler auftritt. 
-  > Weitere Informationen finden Sie weiter unten in diesem Artikel.
+  > Nach dem Hinzufügen des SFTP-SSH-Triggers oder der gewünschten Aktion zu Ihrer Logik-App müssen Sie Verbindungsinformationen für Ihren SFTP-Server bereitstellen. Wenn Sie Ihren privaten SSH-Schlüssel für diese Verbindung angeben, ***geben Sie den Schlüssel nicht manuell ein, oder bearbeiten Sie ihn manuell***, was zum Fehlschlagen der Verbindung führen könnte. Stellen Sie stattdessen sicher, dass Sie ***den Schlüssel aus Ihrer Datei für private SSH-Schlüssel kopieren*** und diesen Schlüssel in die Verbindungsdetails ***einfügen***. 
+  > Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung zu SFTP mit SSH](#connect) weiter unten in diesem Artikel.
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -98,6 +91,44 @@ SFTP-SSH-Trigger rufen das SFTP-Dateisystem ab und suchen nach jeder Datei, die 
 |||
 
 Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei vollständig ist und nicht nur teilweise geschrieben wurde. Zum Beispiel werden bei einer Datei möglicherweise gerade Änderungen vorgenommen, wenn der Trigger den Dateiserver überprüft. Um zu vermeiden, dass eine nur zum Teil geschriebene Datei zurückgegeben wird, vermerkt der Trigger den Zeitstempel für die Datei mit den kürzlichen Änderungen, gibt diese Datei jedoch nicht sofort zurück. Der Trigger gibt die Datei erst dann zurück, wenn der Server erneut abgerufen wird. Dieses Verhalten kann in manchen Fällen zu Verzögerungen führen, die bis zu zweimal länger als das Abrufintervall des Triggers sein können.
+
+<a name="convert-to-openssh"></a>
+
+## <a name="convert-putty-based-key-to-openssh"></a>PuTTY-basierten Schlüssel in OpenSSH konvertieren
+
+Wenn Ihr privater Schlüssel im PuTTY-Format vorliegt das die Dateinamenerweiterung PPK (PuTTY Private Key) verwendet, konvertieren Sie zunächst den Schlüssel in das OpenSSH-Format, das die Dateinamenerweiterung PEM (Privacy Enhanced Mail) verwendet.
+
+### <a name="unix-based-os"></a>Unix-basiertes Betriebssystem
+
+1. Wenn die PuTTY-Tools nicht bereits auf Ihrem System installiert sind, holen Sie dies jetzt nach, z. B.:
+
+   `sudo apt-get install -y putty`
+
+1. Führen Sie diesen Befehl aus, der eine Datei erstellt, die Sie mit dem SFTP-SSH-Connector verwenden können:
+
+   `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
+
+   Beispiel:
+
+   `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
+
+### <a name="windows-os"></a>Windows-Betriebssystem
+
+1. Wenn Sie dies noch nicht getan haben, [laden Sie das neueste PuTTY-Generator-Tool (PuTTYgen.exe) herunter](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), und starten Sie dann das Tool.
+
+1. Wählen Sie in diesem Bildschirm **Laden** aus.
+
+   ![„Laden“ auswählen](./media/connectors-sftp-ssh/puttygen-load.png)
+
+1. Navigieren Sie zu Ihrer privaten Schlüsseldatei im PuTTY-Format, und wählen Sie **Öffnen** aus.
+
+1. Wählen Sie im Menü **Konvertierungen** den Eintrag **OpenSSH-Schlüssel exportieren** aus.
+
+   ![„OpenSSH-Schlüssel exportieren“ auswählen](./media/connectors-sftp-ssh/export-openssh-key.png)
+
+1. Speichern Sie die private Schlüsseldatei mit der Dateinamenerweiterung `.pem`.
+
+<a name="connect"></a>
 
 ## <a name="connect-to-sftp-with-ssh"></a>Herstellen einer Verbindung zu SFTP mit SSH
 
@@ -117,14 +148,13 @@ Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei volls
 
    > [!IMPORTANT]
    >
-   > Wenn Sie Ihren privaten SSH-Schlüssel in der Eigenschaft **SSH private key** eingeben, führen Sie diese zusätzlichen Schritte aus, um sicherzustellen, dass Sie den vollständigen und korrekten Wert für diese Eigenschaft angeben. 
-   > Ein ungültiger Schlüssel führt zu einem Verbindungsfehler.
+   > Wenn Sie Ihren privaten SSH-Schlüssel in der Eigenschaft **SSH private key** eingeben, führen Sie diese zusätzlichen Schritte aus, um sicherzustellen, dass Sie den vollständigen und korrekten Wert für diese Eigenschaft angeben. Ein ungültiger Schlüssel führt zu einem Verbindungsfehler.
 
    Sie können jeden Text-Editor verwenden. Hier finden Sie Beispielschritte, die zeigen, wie Sie Ihren Schlüssel am Beispiel von Notepad.exe korrekt kopieren und einfügen.
 
    1. Öffnen Sie die Datei für den privaten SSH-Schlüssel in einem Text-Editor. Bei diesen Schritten verwenden wir als Beispiel Editor.
 
-   1. Wählen Sie im Menü **Bearbeiten** von Editor die Option **Alles markieren** aus.
+   1. Wählen Sie im Editor-Menü **Bearbeiten** die Option **Alles markieren** aus.
 
    1. Klicken Sie auf **Bearbeiten** > **Kopieren**.
 

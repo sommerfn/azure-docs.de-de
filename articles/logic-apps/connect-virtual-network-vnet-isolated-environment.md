@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 15e1f1c4c8757ca55ec27659a4ca11b1729aebc2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099468"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701946"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -44,36 +44,42 @@ In diesem Artikel wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Wenn Sie kein virtuelles Netzwerk besitzen, erfahren Sie, wie Sie [ein virtuelles Azure-Netzwerk erstellen](../virtual-network/quick-create-portal.md).
+* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Wenn Sie kein virtuelles Netzwerk besitzen, erfahren Sie, wie Sie [ein virtuelles Azure-Netzwerk erstellen](../virtual-network/quick-create-portal.md). 
 
   * Ihr virtuelles Netzwerk muss vier *leere* Subnetze aufweisen, um Ressourcen in Ihrer ISE erstellen und bereitstellen zu können. Sie können diese Subnetze im Voraus erstellen oder warten, bis Sie Ihre ISE erstellt haben, in der Sie Subnetze parallel erstellen können. Erfahren Sie mehr über die [Voraussetzungen für Subnetze](#create-subnet).
-  
-    > [!NOTE]
-    > Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) verwenden, das eine private Verbindung mit Microsoft Cloud Services bereitstellt, müssen Sie [eine Routentabelle](../virtual-network/manage-route-table.md) erstellen, die die folgende Route enthält, und diese Tabelle mit jedem von Ihrer ISE verwendeten Subnetz verknüpfen:
-    > 
-    > **Name**: <*Routenname*><br>
-    > **Adresspräfix**: 0.0.0.0/0<br>
-    > **Nächster Hop:** Internet
+
+  * Subnetznamen müssen entweder mit einem alphabetischen Zeichen oder einem Unterstrich beginnen und können keins der folgenden Zeichen verwenden: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
 
   * Achten Sie darauf, [dass Ihr virtuelles Netzwerk diese Ports zur Verfügung stellt](#ports), damit Ihre ISE ordnungsgemäß funktioniert und der Zugriff darauf gewährleistet ist.
 
-* Wenn Sie benutzerdefinierte DNS-Server für Ihr virtuelles Azure-Netzwerk verwenden möchten, [richten Sie diese Server gemäß dieser Schritte ein](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md), bevor Sie Ihre ISE in Ihrem virtuellen Netzwerk bereitstellen. Andernfalls müssen Sie bei jeder Änderung Ihres DNS-Servers auch Ihre Integrationsdienstumgebung neu starten, was eine Funktion ist, die in der öffentlichen Vorschau der Integrationsdienstumgebung verfügbar ist.
+  * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) verwenden, das eine private Verbindung mit Microsoft Cloud Services bereitstellt, müssen Sie [eine Routentabelle](../virtual-network/manage-route-table.md) erstellen, die die folgende Route enthält, und diese Tabelle mit jedem von Ihrer ISE verwendeten Subnetz verknüpfen:
+
+    **Name**: <*Routenname*><br>
+    **Adresspräfix**: 0.0.0.0/0<br>
+    **Nächster Hop:** Internet
+
+* Wenn Sie benutzerdefinierte DNS-Server für Ihr virtuelles Azure-Netzwerk verwenden möchten, [richten Sie diese Server gemäß dieser Schritte ein](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md), bevor Sie Ihre ISE in Ihrem virtuellen Netzwerk bereitstellen. Andernfalls müssen Sie bei jeder Änderung Ihres DNS-Servers auch Ihre Integrationsdienstumgebung neu starten.
+
+  > [!IMPORTANT]
+  > Wenn Sie Ihre DNS-Servereinstellungen ändern, nachdem Sie eine ISE erstellt haben, stellen Sie sicher, dass Sie die ISE neu starten. Weitere Informationen zum Verwalten von DNS-Servereinstellungen finden Sie unter [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 <a name="ports"></a>
 
 ## <a name="check-network-ports"></a>Überprüfen von Netzwerkports
 
-Wenn Sie eine ISE mit einem vorhandenen virtuellen Netzwerk verwenden, besteht ein häufiges Einrichtungsproblem darin, dass ein oder mehrere Ports blockiert sind. Die Connectors, die Sie zum Herstellen von Verbindungen zwischen Ihrer Integrationsdienstumgebung und dem Zielsystem verwenden, können außerdem eigene Portanforderungen aufweisen. Wenn Sie beispielsweise über den FTP-Connector mit einem FTP-System kommunizieren, stellen Sie sicher, dass der Port, den Sie auf diesem FTP-System verwenden, wie z.B. Port 21 zum Senden von Befehlen, verfügbar ist.
-
-Wenn Sie ein neues virtuelles Netzwerk und Subnetze ohne Einschränkungen erstellt haben, müssen Sie keine [Netzwerksicherheitsgruppen (NSG)](../virtual-network/security-overview.md) in Ihrem virtuellen Netzwerk einrichten, um den Datenverkehr über Subnetze steuern zu können. Für ein vorhandenes virtuelles Netzwerk können Sie Netzwerksicherheitsgruppen *optional* einrichten, indem Sie den [Netzwerkdatenverkehr über Subnetze filtern](../virtual-network/tutorial-filter-network-traffic.md). Wenn Sie diese Route wählen, stellen Sie sicher, dass Ihre ISE bestimmte Ports, wie in der folgenden Tabelle beschrieben, in dem virtuellen Netzwerk öffnet, das die Netzwerksicherheitsgruppen enthält. Wenn in Ihrem virtuellen Netzwerk bereits Netzwerksicherheitsgruppen oder Firewalls vorhanden sind, müssen Sie daher sicherstellen, dass sie diese Ports öffnen. Auf diese Weise bleibt Ihre Integrationsdienstumgebung im Zugriff und kann ordnungsgemäß funktionieren, sodass Sie den Zugriff auf Ihre Integrationsdienstumgebung nicht verlieren. Andernfalls, wenn erforderlichen Ports nicht verfügbar sind, funktioniert Ihre Integrationsdienstumgebung nicht mehr.
+Wenn Sie eine ISE mit einem virtuellen Azure-Netzwerk verwenden, besteht ein häufiges Einrichtungsproblem darin, dass ein oder mehrere Ports blockiert sind. Die Connectors, die Sie zum Herstellen von Verbindungen zwischen Ihrer Integrationsdienstumgebung und dem Zielsystem verwenden, können außerdem eigene Portanforderungen aufweisen. Wenn Sie beispielsweise über den FTP-Connector mit einem FTP-System kommunizieren, stellen Sie sicher, dass der Port, den Sie auf Ihrem FTP-System verwenden, wie z.B. Port 21 zum Senden von Befehlen, verfügbar ist. Um sicherzustellen, dass Ihre ISE zugänglich bleibt und ordnungsgemäß funktionieren kann, öffnen Sie die Ports, die in der folgenden Tabelle angegeben sind. Andernfalls, wenn erforderlichen Ports nicht verfügbar sind, funktioniert Ihre Integrationsdienstumgebung nicht mehr.
 
 > [!IMPORTANT]
+> Quellports sind kurzlebig. Legen Sie sie also für alle Regeln auf `*` fest.
 > Für die interne Kommunikation in Ihren Subnetzen ist es für die ISE erforderlich, dass Sie alle Ports in diesen Subnetzen öffnen.
 
-In dieser Tabelle werden die Ports in Ihrem virtuellen Netzwerk beschrieben, die Ihre Integrationsdienstumgebung verwendet, und es wird angegeben wo diese Ports verwendet werden. Die [Resource Manager-Diensttags](../virtual-network/security-overview.md#service-tags) stellen eine Gruppe von IP-Adresspräfixen dar, deren Aufgabe es ist, die Komplexität bei der Erstellung von Sicherheitsregeln zu verringern.
+* Wenn Sie ein neues virtuelles Netzwerk und Subnetze ohne Einschränkungen erstellt haben, müssen Sie keine [Netzwerksicherheitsgruppen (NSG)](../virtual-network/security-overview.md#network-security-groups) in Ihrem virtuellen Netzwerk einrichten, um den Datenverkehr über Subnetze zu steuern.
 
-> [!NOTE]
-> Quellports sind kurzlebig. Legen Sie sie also für alle Regeln auf `*` fest.
+* In einem vorhandenen virtuellen Netzwerk können Sie Netzwerksicherheitsgruppen *optional* einrichten, indem Sie den [Netzwerkdatenverkehr über Subnetze filtern](../virtual-network/tutorial-filter-network-traffic.md). Wenn Sie diese Route auswählen, stellen Sie in dem virtuellen Netzwerk, in dem Sie die NSGs einrichten möchten, sicher, dass Sie die in der folgenden Tabelle angegebenen Ports öffnen. Wenn Sie [NSG-Sicherheitsregeln](../virtual-network/security-overview.md#security-rules) verwenden, benötigen Sie TCP- als auch UDP-Protokolle.
+
+* Wenn in Ihrem virtuellen Netzwerk bereits NSGs oder Firewalls vorhanden sind, stellen Sie sicher, dass sie die in der folgenden Tabelle angegebenen Ports öffnen. Wenn Sie [NSG-Sicherheitsregeln](../virtual-network/security-overview.md#security-rules) verwenden, benötigen Sie TCP- als auch UDP-Protokolle.
+
+Dies ist die Tabelle, in der die Ports in Ihrem virtuellen Netzwerk beschrieben werden, die Ihre Integrationsdienstumgebung verwendet, und es wird angegeben wo diese Ports verwendet werden. Die [Resource Manager-Diensttags](../virtual-network/security-overview.md#service-tags) stellen eine Gruppe von IP-Adresspräfixen dar, deren Aufgabe es ist, die Komplexität bei der Erstellung von Sicherheitsregeln zu verringern.
 
 | Zweck | Direction | Zielports | Quelldiensttag | Zieldiensttag | Notizen |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
@@ -134,9 +140,13 @@ Geben Sie in das Suchfeld „Integrationsdienstumgebung“ als Ihren Filter ein.
 
    **Erstellen eines Subnetzes**
 
-   Für Ihre ISE sind vier *leere* Subnetze erforderlich, die an keinen Dienst delegiert wurden, um eine Ressource in Ihrer Umgebung zu erstellen und bereitzustellen. Sie können diese Subnetzadressen *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben. Jedes Subnetz muss diese Kriterien erfüllen:
-
-   * Einen Namen, der mit einem alphabetischen Zeichen oder Unterstrich beginnt und keines der folgenden Zeichen beinhaltet: `<`, `>`, `%`, `&`, `\\`, `?`, `/`
+   Für Ihre ISE sind vier *leere* Subnetze erforderlich, die an keinen Dienst delegiert wurden, um eine Ressource in Ihrer Umgebung zu erstellen und bereitzustellen. Sie können diese Subnetzadressen *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben.
+   
+   > [!IMPORTANT]
+   > 
+   > Subnetznamen müssen entweder mit einem alphabetischen Zeichen oder einem Unterstrich (keine Zahlen) beginnen und können keins der folgenden Zeichen verwenden: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
+   
+   Außerdem muss jedes Subnetz diese Anforderungen erfüllen:
 
    * Das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) und einen Class B-Adressraum
 
@@ -150,7 +160,7 @@ Geben Sie in das Suchfeld „Integrationsdienstumgebung“ als Ihren Filter ein.
 
      Weitere Informationen zum Berechnen der Adressen finden Sie unter [Übersicht für IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) verwenden, müssen Sie daran denken, [eine Routentabelle](../virtual-network/manage-route-table.md) zu erstellen, die die folgende Route enthält, und diese Tabelle mit jedem von Ihrer ISE verwendeten Subnetz verknüpfen:
+   * Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) verwenden, müssen Sie [eine Routentabelle](../virtual-network/manage-route-table.md) erstellen, die die folgende Route enthält, und diese Tabelle mit jedem von Ihrer ISE verwendeten Subnetz verknüpfen:
 
      **Name**: <*Routenname*><br>
      **Adresspräfix**: 0.0.0.0/0<br>
