@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390872"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802823"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen unter Verwendung von C#
 
@@ -41,7 +41,7 @@ In dieser Schnellstartanleitung werden QnA Maker-REST-APIs aufgerufen:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Aktuelle [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/)
-* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie zum Abrufen des Schlüssels auf Ihrem Dashboard unter **Ressourcenverwaltung** die Option **Schlüssel** aus. 
+* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre QnA Maker-Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Ressourcennamen abzurufen. 
 
 > [!NOTE] 
 > Die vollständigen Projektmappendateien sind über das [GitHub-Repository **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base) verfügbar.
@@ -146,13 +146,13 @@ Der API-Aufruf gibt den Status 204 für eine erfolgreiche Veröffentlichung ohne
 Für alle anderen Antworten wird diese Antwort unverändert zurückgegeben.
 
 ## <a name="generating-an-answer"></a>Generieren einer Antwort
-Damit das Programm auf die Wissensdatenbank zugreifen kann, um eine Frage zu senden und die bestmögliche Antwort zu erhalten, benötigt es den _Endpunkthost_ aus der Detail-API der Wissensdatenbank sowie den _Schlüssel des primären Endpunkts_ aus der Endpunkte-API. Diese Methoden sind in den folgenden Abschnitten angegeben – zusammen mit der Methode für die Antwortgenerierung. 
+Damit das Programm auf die Wissensdatenbank zugreifen kann, um eine Frage zu senden und die bestmögliche Antwort zu erhalten, benötigt es den _Ressourcennamen_ aus der Detail-API der Wissensdatenbank sowie den _Schlüssel des primären Endpunkts_ aus der Endpunkte-API. Diese Methoden sind in den folgenden Abschnitten angegeben – zusammen mit der Methode für die Antwortgenerierung. 
 
 Die folgende Tabelle zeigt, wie die Daten verwendet werden, um den URI zu erstellen:
 
 |Generieren einer Antwort-URI-Vorlage|
 |--|
-|https://**HOSTNAME**.azurewebsites.net/qnamaker/knowledgebases/**WISSENSDATENBANK-ID**/generateAnswer|
+|https://**Ressourcenname**.azurewebsites.net/qnamaker/knowledgebases/**KB-ID**/generateAnswer|
 
 Der _primäre Endpunkt_ wird als Header übergeben, um die Anforderung für die Antwortgenerierung zu authentifizieren:
 
@@ -169,7 +169,7 @@ Der Hauptteil der Anforderung muss den korrekten JSON-Code übergeben:
 ```
 
 ## <a name="get-kb-details"></a>Abrufen der Details der Wissensdatenbank
-Fügen Sie die folgende Methode hinzu, um die Details der Wissensdatenbank abzurufen. Diese Details enthalten den Hostnamen der Wissensdatenbank. Der Hostname ist der Name des QnA Maker-Azure-Webdiensts, den Sie beim Erstellen der QnA Maker-Ressource eingegeben haben. 
+Fügen Sie die folgende Methode hinzu, um die Details der Wissensdatenbank abzurufen. Diese Details enthalten den Ressourcennamen der Wissensdatenbank (`hostName` im folgenden JSON-Code). Der Ressourcenname ist der Name der QnA Maker-Ressource, den Sie beim Erstellen der QnA Maker-Ressource eingegeben haben. 
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 

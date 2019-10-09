@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0c7d88d76a3fea87b3cfe4032186140f38c263d3
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240973"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693407"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Windows-Geräte
 
@@ -134,7 +134,7 @@ Mit der Erweiterung „Azure IoT Edge-Tools“ werden Projektvorlagen für alle 
    | ----- | ----- |
    | Visual Studio-Vorlage | Wählen Sie die Option **C#-Modul** aus. | 
    | Modulname | Übernehmen Sie den Standardnamen **IotEdgeModule1**. | 
-   | Repository-URL | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für Ihr Containerimage ist der Wert des Modulprojektnamens bereits vorhanden. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln. <br><br> Das endgültige Imagerepository sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/iotedgemodule1. |
+   | Repository-URL | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für Ihr Containerimage ist der Wert des Modulprojektnamens bereits vorhanden. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Wert für den **Anmeldeserver** finden Sie im Azure-Portal auf der Seite **Übersicht** Ihrer Containerregistrierung. <br><br> Das endgültige Imagerepository sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/iotedgemodule1. |
 
       ![Konfigurieren von Zielgerät, Modultyp und Containerregistrierung für Ihr Projekt](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -143,33 +143,38 @@ Mit der Erweiterung „Azure IoT Edge-Tools“ werden Projektvorlagen für alle 
 Nehmen Sie sich nach dem Laden Ihres neuen Projekts im Visual Studio-Fenster etwas Zeit, um sich mit den erstellten Dateien vertraut zu machen: 
 
 * Ein IoT Edge-Projekt mit dem Namen **CSharpTutorialApp**.
-    * Der Ordner **Module** enthält Zeiger zu den im Projekt enthaltenen Modulen. In diesem Fall sollte nur „IotEdgeModule1“ vorhanden sein. 
-    * Die Datei **deployment.template.json** ist eine Vorlage für die Erstellung eines Bereitstellungsmanifests. Ein *Bereitstellungsmanifest* ist eine Datei, mit der Folgendes genau definiert wird: welche Module auf einem Gerät bereitgestellt werden sollen, wie sie konfiguriert werden sollen und wie diese miteinander und mit der Cloud kommunizieren können. 
+  * Der Ordner **Module** enthält Zeiger zu den im Projekt enthaltenen Modulen. In diesem Fall sollte nur „IotEdgeModule1“ vorhanden sein. 
+  * Die ausgeblendete Datei vom Typ **.env** enthält die Anmeldeinformationen für Ihre Containerregistrierung. Diese Anmeldeinformationen werden auch für Ihr IoT Edge-Gerät genutzt, damit Zugriff zum Abrufen der Containerimages per Pullvorgang besteht.
+  * Die Datei **deployment.template.json** ist eine Vorlage für die Erstellung eines Bereitstellungsmanifests. Ein *Bereitstellungsmanifest* ist eine Datei, mit der Folgendes genau definiert wird: welche Module auf einem Gerät bereitgestellt werden sollen, wie sie konfiguriert werden sollen und wie diese miteinander und mit der Cloud kommunizieren können.
+    > [!TIP]
+    > Im Abschnitt mit den Anmeldeinformationen für die Registrierung wird die Adresse automatisch anhand der Informationen eingefügt, die Sie beim Erstellen der Projektmappe angegeben haben. Der Benutzername und das Kennwort basieren aber auf Variablen, die in der ENV-Datei gespeichert sind. Der Grund hierfür ist die Sicherheit, da die ENV-Datei von Git ignoriert wird, während dies für die Bereitstellungsvorlage nicht der Fall ist.
 * Ein IoT Edge-Modulprojekt mit dem Namen **IotEdgeModule1**.
-    * Die Datei **program.cs** enthält den C#-Standardmodulcode, der in der Projektvorlage enthalten ist. Das Standardmodul leitet die Eingabe einer Quelle an IoT Hub weiter. 
-    * Die Datei **module.json** enthält Details zum Modul, z. B. vollständiges Imagerepository, Imageversion und die Information, welche Dockerfile für die einzelnen unterstützten Plattformen verwendet werden soll.
+  * Die Datei **program.cs** enthält den C#-Standardmodulcode, der in der Projektvorlage enthalten ist. Das Standardmodul leitet die Eingabe einer Quelle an IoT Hub weiter. 
+  * Die Datei **module.json** enthält Details zum Modul, z. B. vollständiges Imagerepository, Imageversion und die Information, welche Dockerfile für die einzelnen unterstützten Plattformen verwendet werden soll.
 
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Angeben Ihrer Anmeldeinformationen für die Registrierung über den IoT Edge-Agent
 
-Die IoT Edge-Runtime benötigt die Anmeldeinformationen für Ihre Registrierung, um Ihre Containerimages per Pullvorgang auf das IoT Edge-Gerät zu übertragen. Fügen Sie diese Anmeldeinformationen der Bereitstellungsvorlage hinzu. 
+Die IoT Edge-Runtime benötigt die Anmeldeinformationen für Ihre Registrierung, um Ihre Containerimages per Pullvorgang auf das IoT Edge-Gerät zu übertragen. Die IoT Edge-Erweiterung versucht, Ihre Informationen für die Containerregistrierung per Pullvorgang aus Azure abzurufen und in die Bereitstellungsvorlage einzufügen.
 
-1. Öffnen Sie die Datei **deployment.template.json**.
+1. Öffnen Sie die Datei **deployment.template.json** in Ihrer Modulprojektmappe.
 
-2. Suchen Sie unter den gewünschten Eigenschaften von „$edgeAgent“ nach der **registryCredentials**-Eigenschaft. 
-
-3. Aktualisieren Sie die Eigenschaft mit Ihren Anmeldeinformationen, und verwenden Sie das folgende Format: 
+1. Suchen Sie unter den gewünschten Eigenschaften von „$edgeAgent“ nach der **registryCredentials**-Eigenschaft, und vergewissern Sie sich, dass sie die richtigen Informationen enthält.
 
    ```json
    "registryCredentials": {
      "<registry name>": {
-       "username": "<username>",
-       "password": "<password>",
+       "username": "$CONTAINER_REGISTRY_USERNAME_<registry name>",
+       "password": "$CONTAINER_REGISTRY_PASSWORD_<registry name>",
        "address": "<registry name>.azurecr.io"
      }
    }
    ```
 
-4. Speichern Sie die Datei „deployment.template.json“. 
+1. Öffnen Sie in Ihrer Modulprojektmappe die **.env**-Datei. (Sie ist im Projektmappen-Explorer standardmäßig ausgeblendet, daher müssen Sie unter Umständen auf die Schaltfläche **Alle Dateien anzeigen** klicken, um sie anzuzeigen.)
+
+1. Fügen Sie die Werte für **Benutzername** und **Kennwort** hinzu, die Sie aus der Azure-Containerregistrierung kopiert haben.
+
+1. Speichern Sie die Änderungen an der ENV-Datei.
 
 ### <a name="review-the-sample-code"></a>Überprüfen des Beispielcodes
 

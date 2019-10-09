@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390305"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351149"
 ---
 # <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
 Projekt Akustik ist eine Wellenakustik-Engine für interaktive 3D-Erfahrungen. Sie modelliert Welleneffekte wie Verdeckungs-, Hindernis-, Portal- und Halleffekte in komplexen Szenen ohne manuelle Zonenmarkierung oder CPU-intensives Raytracing. Außerdem schließt sie eine Integration von Spiele-Engines und Audiomiddleware ein. Die Philosophie hinter Projekt Akustik ist vergleichbar mit einer statischen Beleuchtung: Das Baking einer detaillierten Physik wird offline ausgeführt, um eine physische Baseline bereitzustellen, und die künstlerischen Ziele für die Akustik Ihrer virtuellen Welt werden mithilfe einer einfachen Runtime mit ausdrucksstarken Entwurfssteuerelementen erreicht.
@@ -31,7 +31,7 @@ Die zentrale Innovation von Projekt Akustik besteht darin, eine auf echten Schal
 ![Animation mit einem horizontalen 2D-Segment mit Wellenausbreitung in einer Szene](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Video Präsentation von der GDC 2019 (ca. 30 Minuten)
-[![Projekt Akustik-Video](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Klicken Sie hier, um das Video wiederzugeben.")
+[![Projekt Akustik: Video](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Zum Abspielen des Videos klicken")
 
 ## <a name="setup"></a>Einrichtung
 Die [Unity-Integration von Projekt Akustik](unity-integration.md) unterstützt Drag & Drop und enthält ein Unity-Audio-Engine-Plug-In. Erweitern Sie die Audioquellen-Steuerelemente von Unity, indem Sie eine Komponente für Projekt Akustik-C#-Steuerelemente an jedes Audioobjekt anfügen.
@@ -58,11 +58,10 @@ Das Projekt Akustik-Editor-Plug-In ist für die folgenden Plattformen verfügbar
 ## <a name="download"></a>Download
 * [Projekt Akustik (Unity-Plug-Ins und -Beispiele)](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Projekt Akustik (Unreal- und Wwise-Plug-Ins und -Beispiele)](https://www.microsoft.com/download/details.aspx?id=58090)
-  * Um Binärdateien und Support für die Xbox zu erhalten, kontaktieren Sie uns über das nachstehende Registrierungsformular.
+  * Um Binärdateien und sonstigen Support für die Xbox zu erhalten, kontaktieren Sie uns über das [Forum](https://github.com/microsoft/ProjectAcoustics/issues).
 
 ## <a name="contact-us"></a>Kontakt
 * [Erläuterung zum Projekt Akustik und Meldung von Problemen](https://github.com/microsoft/ProjectAcoustics/issues)
-* [Melden Sie sich an, um aktuelle Informationen zu Projekt Akustik zu erhalten.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Probieren Sie einen [Projekt Akustik-Schnellstart für Unity](unity-quickstart.md) oder [Unreal](unreal-quickstart.md) aus.

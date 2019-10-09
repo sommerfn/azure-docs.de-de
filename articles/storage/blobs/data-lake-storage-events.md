@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle | Microsoft-Dokumentation'
+title: 'Tutorial: Implementieren des Data Lake-Erfassungsmusters zum Aktualisieren einer Azure Databricks Delta-Tabelle | Microsoft-Dokumentation'
 description: In diesem Tutorial wird veranschaulicht, wie Sie ein Event Grid-Abonnement, eine Azure-Funktion und einen Azure Databricks-Auftrag verwenden, um Zeilen mit Daten in eine Tabelle einzufügen, die in Azure DataLake Storage Gen2 gespeichert ist.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904659"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326992"
 ---
-# <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle
+# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Tutorial: Implementieren des Data Lake-Erfassungsmusters zum Aktualisieren einer Databricks Delta-Tabelle
 
 In diesem Tutorial wird veranschaulicht, wie Sie Ereignisse in einem Speicherkonto mit einem hierarchischen Namespace verarbeiten.
 

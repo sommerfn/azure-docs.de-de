@@ -7,16 +7,16 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 5d823059842bf539f00ad372127fc8b636c74b65
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70745967"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351162"
 ---
 # <a name="azure-storage-samples-using-python"></a>Azure Storage-Beispiele mit Python
 
-Die folgende Tabelle enthält eine Übersicht über unser Beispielrepository und in jedem Beispiel behandelten Szenarien. Klicken Sie auf die Links, um den zugehörigen Beispielcode in GitHub anzuzeigen.
+Die folgenden Tabellen enthalten eine Übersicht über unser Beispielrepository und in jedem Beispiel behandelten Szenarien. Klicken Sie auf die Links, um den zugehörigen Beispielcode in GitHub anzuzeigen.
 
 ## <a name="blob-samples"></a>Blobbeispiele
 
@@ -99,4 +99,5 @@ Weitere Informationen zu Beispielen für andere Sprachen:
 
 * .NET: [Azure Storage-Beispiele mit .NET](storage-samples-dotnet.md)
 * Java: [Azure Storage-Beispiele mit Java](storage-samples-java.md)
+* JavaScript/Node.js: [Azure Storage-Beispiele mit JavaScript](storage-samples-javascript.md)
 * Alle anderen Sprachen: [Beispiele für Azure Storage](storage-samples.md)

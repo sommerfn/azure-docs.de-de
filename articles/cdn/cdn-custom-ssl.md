@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 10e0f24642d54c43d6c818773d0eb17815ab784b
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: b6ac528d0d2916f513be4e2a72bff061bdad8e58
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996920"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718650"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -190,7 +190,7 @@ Die automatische Überprüfung dauert normalerweise einige Stunden. Öffnen Sie 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt nicht zugeordnet
 
 >[!NOTE]
->Wenn Sie **Azure CDN von Akamai** verwenden, muss Ihre benutzerdefinierte Domäne wie oben beschrieben mit einem CNAME-Eintrag Ihrem CDN-Endpunkt zugeordnet werden.  Dieses Feature befindet sich momentan in unserem Backlog. 
+>Bei der Verwendung von **Azure CDN von Akamai** muss der folgende CNAME-Eintrag eingerichtet werden, um die automatisierte Domänenüberprüfung zu aktivieren: „_acme-challenge.<custom domain hostname> -> CNAME -> <custom domain hostname>.ak-acme-challenge.azureedge.net“.
 
 Wenn der CNAME-Eintrag die cdnverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
 

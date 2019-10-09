@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 01a2b9d5bad7d490f5ee9f6a21af5bc1308bdab1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d87fd06b45d1d3636c442d962daa79cf526e74f2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553650"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803285"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Speech SDK
+
+Schnellstarts sind auch für [Sprachsynthese](quickstart-text-to-speech-objectivec-ios.md) verfügbar.
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -34,8 +36,6 @@ Folgendes wird vorausgesetzt:
 ## <a name="get-the-speech-sdk-for-ios"></a>Abrufen des Speech SDK für iOS
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.6.0`.
 
 Das Cognitive Services Speech SDK für iOS wird derzeit als Cocoa-Framework bereitgestellt.
 Es kann [hier](https://aka.ms/csspeech/iosbinary) heruntergeladen werden. Laden Sie die Datei in Ihr Basisverzeichnis herunter.
@@ -87,7 +87,7 @@ Ersetzen Sie den automatisch generierten XML-Code durch diesen Code:
     <string>Need microphone access for speech recognition from microphone.</string>
     ```
 
-## <a name="building-and-running-the-sample"></a>Erstellen und Ausführen des Beispiels
+## <a name="build-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
 1. Zeigen Sie die Debugausgabe an (**Ansicht** > **Debugbereich** > **Konsole aktivieren**).
 1. Wählen Sie als Ziel für die App in der Liste des Menüs **Produkt** > **Ziel** entweder den iOS-Simulator oder ein mit dem Entwicklungscomputer verbundenes iOS-Gerät aus.

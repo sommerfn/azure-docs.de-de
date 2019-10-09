@@ -1,25 +1,25 @@
 ---
 title: Bereitstellen eines Verwaltungstools – Azure
-description: Erfahren Sie, wie Sie ein Benutzeroberflächentool zum Verwalten von Windows Virtual Desktop-Ressourcen (Vorschauversion) installieren.
+description: Hier erfahren Sie, wie Sie ein Benutzeroberflächentool zum Verwalten von Windows Virtual Desktop-Ressourcen installieren.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: e0f9dbd9bf6b0c12d3e3f028ab9cd4c80cdb5124
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816505"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679486"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Bereitstellen eines Verwaltungstools
 
-Das Verwaltungstool umfasst eine Benutzeroberfläche (UI) zum Verwalten von Microsoft Virtual Desktop-Ressourcen (Vorschauversion). In diesem Tutorial erfahren Sie, wie Sie das Verwaltungstool bereitstellen und eine Verbindung damit herstellen.
+Das Verwaltungstool umfasst eine Benutzeroberfläche zum Verwalten von Microsoft Virtual Desktop-Ressourcen. In diesem Tutorial erfahren Sie, wie Sie das Verwaltungstool bereitstellen und eine Verbindung damit herstellen.
 
 >[!NOTE]
->Diese Anleitung gilt für eine Konfiguration, die für Windows Virtual Desktop (Vorschauversion) spezifisch ist und für die vorhandenen Prozesse Ihrer Organisation genutzt werden kann.
+>Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
 
 ## <a name="important-considerations"></a>Wichtige Hinweise
 

@@ -1,22 +1,22 @@
 ---
-title: Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion) – Azure
-description: Hier erfahren Sie, wie Sie in Azure Active Directory Mandanten mit Windows Virtual Desktop (Vorschauversion) einrichten.
+title: 'Erstellen eines Mandanten in Windows Virtual Desktop: Azure'
+description: Hier erfahren Sie, wie Sie in Azure Active Directory Windows Virtual Desktop-Mandanten einrichten.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 04a65442e86168239f08fb71303b8d9e9e152e72
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734464"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679471"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop (Vorschauversion)
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop
 
-Die Erstellung eines Mandanten in Windows Virtual Desktop (Vorschauversion) ist der erste Schritt zur Entwicklung Ihrer Lösung für die Desktopvirtualisierung. Ein Mandant umfasst eine Gruppe mit mindestens einem Hostpool. Jeder Hostpool besteht aus mehreren Sitzungshosts, die als virtuelle Computer in Azure ausgeführt und für den Windows Virtual Desktop-Dienst registriert werden. Darüber hinaus umfasst jeder Hostpool mindestens eine App-Gruppe, die verwendet wird, um Remotedesktop- und Remoteanwendungsressourcen für Benutzer zu veröffentlichen. Mit einem Mandanten können Sie Hostpools und App-Gruppen erstellen, Benutzer zuweisen und Verbindungen über den Dienst herstellen.
+Die Erstellung eines Mandanten in Windows Virtual Desktop ist der erste Schritt zur Entwicklung Ihrer Lösung für die Desktopvirtualisierung. Ein Mandant umfasst eine Gruppe mit mindestens einem Hostpool. Jeder Hostpool besteht aus mehreren Sitzungshosts, die als virtuelle Computer in Azure ausgeführt und für den Windows Virtual Desktop-Dienst registriert werden. Darüber hinaus umfasst jeder Hostpool mindestens eine App-Gruppe, die verwendet wird, um Remotedesktop- und Remoteanwendungsressourcen für Benutzer zu veröffentlichen. Mit einem Mandanten können Sie Hostpools und App-Gruppen erstellen, Benutzer zuweisen und Verbindungen über den Dienst herstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -107,7 +107,7 @@ So ermitteln Sie Ihre Azure-Abonnement-ID:
 3. Zeigen Sie auf den Wert der **Abonnement-ID**, bis ein Symbol für die Zwischenablage angezeigt wird. Wählen Sie das Symbol für die Zwischenablage aus, und fügen Sie den Wert an einem gut erreichbaren Ort ein, um ihn später als Wert für **AzureSubscriptionId** verwenden zu können.
    ![Screenshot: Eigenschaften des Azure-Abonnements. Der Mauszeiger zeigt auf das Symbol, mit dem die Abonnement-ID in die Zwischenablage kopiert werden kann.](media/tenant-subscription-id.png)
 
-## <a name="create-a-windows-virtual-desktop-preview-tenant"></a>Erstellen eines Windows Virtual Desktop-Mandanten (Vorschauversion)
+## <a name="create-a-windows-virtual-desktop-tenant"></a>Erstellen eines Windows Virtual Desktop-Mandanten
 
 Nachdem Sie nun die Windows Virtual Desktop-Dienstberechtigungen zum Abfragen der Azure Active Directory-Instanz gewährt und die Rolle „TenantCreator“ einem Benutzerkonto zugewiesen haben, können Sie einen Windows Virtual Desktop-Mandanten erstellen.
 

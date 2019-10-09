@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259326"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350502"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen
 
@@ -50,7 +50,7 @@ Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Ko
 
 ## <a name="create-and-run-the-experiment"></a>Erstellen und Ausführen des Experiments
 
-Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf der Angebotsseite des Arbeitsbereichs aus. Diese konsolidierte Oberfläche enthält Tools für maschinelles Lernen zur Durchführung von datenwissenschaftlichen Szenarien für Datenwissenschaftler aller Fachrichtungen.
+Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf der Angebotsseite des Arbeitsbereichs aus. Diese konsolidierte Oberfläche enthält Tools für maschinelles Lernen zur Durchführung von datenwissenschaftlichen Szenarien für Datenwissenschaftler aller Fachrichtungen. Die Landing Page des Arbeitsbereichs wird in Internet Explorer-Browsern nicht unterstützt.
 
 1. Melden Sie sich auf der [Angebotsseite des Arbeitsbereichs](https://ml.azure.com/workspaceportal/) an.
 
@@ -58,7 +58,7 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf de
 
 1. Wählen Sie **Erste Schritte** aus.
 
-1. Wählen Sie im linken Bereich im Abschnitt **Erstellung** die Option **Automatisiertes maschinelles Lernen** aus.
+1. Wählen Sie im linken Bereich im Abschnitt **Ersteller** die Option **Automatisiertes maschinelles Lernen** aus.
 
    Da dies Ihr erstes automatisiertes Machine Learning-Experiment ist, wird der Bildschirm „Erste Schritte“ angezeigt.
 
@@ -99,23 +99,21 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf de
        
     1. Überprüfen Sie, ob das Formular **Einstellungen und Vorschau** wie folgt ausgefüllt ist, und klicken Sie auf **Weiter**.
         
-        Feld|Wert für das Tutorial
-        ---|---
-        Dateiformat| Durch Trennzeichen getrennt
-        Trennzeichen| Komma
-        Codieren| UTF-8
-        Spaltenüberschriften| Alle Dateien weisen dieselben Header auf.
-        Zeilen überspringen | Keine
+        Feld|BESCHREIBUNG| Wert für das Tutorial
+        ---|---|---
+        Dateiformat|Definiert das Layout und den Typ der in einer Datei gespeicherten Daten.| Durch Trennzeichen getrennt
+        Trennzeichen|Mindestens ein&nbsp;Zeichen zum Angeben der Grenze zwischen separaten, unabhängigen Regionen in Nur-Text-Datenströmen oder anderen Datenströmen. |Komma
+        Codieren|Gibt an, welche Bit-zu-Zeichen-Schematabelle verwendet werden soll, um Ihr Dataset zu lesen.| UTF-8
+        Spaltenüberschriften| Gibt an, wie die Header des Datasets, sofern vorhanden, behandelt werden.| Alle Dateien weisen dieselben Header auf.
+        Zeilen überspringen | Gibt an, wie viele Zeilen im Dataset übersprungen werden.| Keine
     
-    1. Das Formular **Schema** ermöglicht eine weitere Konfiguration der Daten für dieses Experiment. Wählen Sie für dieses Beispiel den Umschalter für das Feature **day_of_week** aus, um es für dieses Experiment nicht einzuschließen. Wählen Sie **Fertig** aus, um das Hochladen von Dateien und das Erstellen des Datasets für Ihr Experiment abzuschließen.
-
         ![Konfiguration der Registerkarte „Preview“ (Vorschau)](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
 1. Wählen Sie **Classification** (Klassifizierung) als Vorhersageaufgabe aus.
 
 1. Wählen Sie **y** als Zielspalte aus, in der Sie Vorhersagen ausführen möchten. Diese Spalte gibt an, ob der Kunde eine Termineinlage bei der Bank gezeichnet hat.
 
-1. Erweitern Sie **Advanced Settings** (Erweiterte Einstellungen), und füllen Sie die Felder wie folgt aus.
+1. Erweitern Sie **Advanced Settings** (Erweiterte Einstellungen), und füllen Sie die Felder wie folgt aus. Mit diesen Einstellungen können Sie den Trainingsauftrag besser steuern. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet.
 
    >[!NOTE]
    > Für dieses Tutorial legen Sie keine Metrikbewertung oder maximale Anzahl von Kernen pro Iteration fest. Sie verhindern auch nicht, dass Algorithmen getestet werden.
@@ -138,10 +136,10 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf de
 
 ##  <a name="explore-iteration-results"></a>Untersuchen der Iterationsergebnisse
 
-Während der Experimentausführung werden das **Iterationsdiagramm** und die **Iterationsliste** beim Abschluss der verschiedenen Iterationen (Modelle) auf dem Bildschirm aktualisiert und nach der Metrikbewertung sortiert. Standardmäßig steht das Modell, das für die ausgewählte **AUC_weighted**-Metrik die höchste Bewertung erhält, ganz oben in der Liste.
+Während der Experimentausführung aktualisiert der Bildschirm beim Abschluss das **Iterationsdiagramm** und die **Iterationsliste** mit den verschiedenen Iterationen (Modellen). Die Iterationen ist standardmäßig nach Metrikbewertungen sortiert. In diesem Tutorial steht das Modell, das für die ausgewählte **AUC_weighted**-Metrik die höchste Bewertung erhält, ganz oben in der Liste.
 
 Während Sie auf den Abschluss aller Experimentiterationen warten, können Sie den **Namen** einer abgeschlossenen Iteration auswählen und sich die zugehörigen Leistungsdetails ansehen. 
-   
+
 Im Folgenden sehen Sie die Diagramme und Ausführungsmetriken, die für jede Iteration generiert werden, z. B. eine Kurve zur Genauigkeit und Trefferquote, eine Konfusionsmatrix, gewichtete Genauigkeitsbewertungen usw. 
 
 ![Details zur Iterationsausführung](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
@@ -199,6 +197,7 @@ In diesem Tutorial zu automatisierten Machine Learning haben Sie auf der Angebot
 + Weitere Informationen zur [Vorverarbeitung](how-to-create-portal-experiments.md#preprocess).
 + Weitere Informationen zur [Datenprofilerstellung](how-to-create-portal-experiments.md#profile).
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
++ Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md#classification).
 
 >[!NOTE]
 > Dieses Bank Marketing-Dataset wird unter der [Creative Commons (CCO: Public Domain)-Lizenz](https://creativecommons.org/publicdomain/zero/1.0/) zur Verfügung gestellt. Alle Rechte in den einzelnen Inhalten der Datenbank sind gemäß der [Database Contents License](https://creativecommons.org/publicdomain/zero/1.0/) lizenziert und auf [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset) verfügbar. Dieses Dataset war ursprünglich in der [UCI Machine Learning Database](https://archive.ics.uci.edu/ml/datasets/bank+marketing) verfügbar.<br><br>

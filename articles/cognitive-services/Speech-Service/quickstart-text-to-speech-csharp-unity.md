@@ -1,41 +1,40 @@
 ---
 title: 'Schnellstart: Sprachsynthese, Unity – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: In dieser Anleitung erfahren Sie, wie Sie mit Unity und dem Speech SDK für Unity (Beta) eine Sprachsyntheseanwendung erstellen. Mit dieser Anleitung können Sie Sprache aus Text zur Wiedergabe über den Lautsprecher Ihres Geräts in Echtzeit synthetisieren.
+description: In dieser Anleitung erfahren Sie, wie Sie mit Unity und dem Speech SDK für Unity eine Sprachsyntheseanwendung erstellen. Mit dieser Anleitung können Sie Sprache aus Text zur Wiedergabe über den Lautsprecher Ihres Geräts in Echtzeit synthetisieren.
 services: cognitive-services
 author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 6/26/2019
+ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 507ab9ef9bb3e482e5a33d2406424dfb9116de54
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be5f07b8ea58d0d62c70e0e9dc8ab187ce4a0f63
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553617"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803200"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity-beta"></a>Schnellstart: Sprachsynthese mit dem Speech SDK für Unity (Beta)
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity"></a>Schnellstart: Sprachsynthese mit dem Speech SDK für Unity
 
 Schnellstarts sind auch für [Spracherkennung](quickstart-csharp-unity.md) verfügbar.
 
-In dieser Anleitung erfahren Sie, wie Sie mit [Unity](https://unity3d.com/) und dem Speech SDK für Unity (Beta) eine Sprachsyntheseanwendung erstellen.
+In dieser Anleitung erfahren Sie, wie Sie mit [Unity](https://unity3d.com/) und dem Speech SDK für Unity eine Sprachsyntheseanwendung erstellen.
 Mit dieser Anleitung können Sie Sprache aus Text zur Wiedergabe über den Lautsprecher Ihres Geräts in Echtzeit synthetisieren.
 Sollten Sie noch keine Erfahrung mit Unity haben, machen Sie sich zunächst mit dem [Unity-Benutzerhandbuch](https://docs.unity3d.com/Manual/UnityManual.html) vertraut, bevor Sie mit der Anwendungsentwicklung beginnen.
 
 > [!NOTE]
-> Das Speech SDK für Unity befindet sich derzeit in der Betaphase.
-> Es unterstützt Windows Desktop (x86 und x64) oder universelle Windows-Plattform (x86, x64, ARM/ARM64) sowie Android (x86, ARM32/64).
+> Unity unterstützt Windows Desktop (x86 und x64) oder die universelle Windows-Plattform (x86, x64, ARM/ARM64) sowie Android (x86, ARM32/64) und iOS (x64-Simulator, ARM32 und ARM64).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Projekt benötigen Sie Folgendes:
 
 * [Unity 2018.3 oder höher](https://store.unity.com/), wobei [Unity 2019.1 auch UWP ARM64 unterstützt](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * Installieren Sie zur Unterstützung von ARM64 die [optionalen Buildtools für ARM64 und das Windows 10 SDK für ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/). 
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/). Visual Studio 2017 ab Version 15.9 ist ebenfalls akzeptabel.
+* Installieren Sie zur Unterstützung von Windows ARM64 die [optionalen Buildtools für ARM64 und das Windows 10 SDK für ARM64](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/). 
 * Ein Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-unity-project"></a>Erstellen eines Unity-Projekts

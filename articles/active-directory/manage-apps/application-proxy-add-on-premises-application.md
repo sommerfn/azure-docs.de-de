@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/30/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe6da9b1557293ee9002681c6ce90c1c6c62a25b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c3f3d7eb0fe544316aec1ce1ece45b2c7c1d9085
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231257"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694718"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -50,6 +50,9 @@ Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Window
 
 1. Platzieren Sie den Connectorserver physisch in der Nähe des Anwendungsservers, um die Leistung zwischen Connector und Anwendung zu optimieren. Weitere Informationen finden Sie unter [Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys](application-proxy-network-topology.md).
 1. Der Connectorserver und die Webanwendungsserver müssen derselben Active Directory-Domäne angehören bzw. vertrauenswürdige Domänen umfassen. Dass die Server zu derselben Domäne oder zu vertrauenswürdigen Domänen gehören, ist eine Voraussetzung für die Verwendung des einmaligen Anmeldens (Single Sign-On, SSO) mit integrierter Windows-Authentifizierung (IWA) und eingeschränkter Kerberos-Delegierung (Kerberos Constrained Delegation, KCD). Wenn der Connector- und Webanwendungsserver sich in unterschiedlichen Active Directory-Domänen befinden, müssen Sie die ressourcenbasierte Delegierung für einmaliges Anmelden verwenden. Weitere Informationen finden Sie unter [Eingeschränkte Kerberos-Delegierung für das einmalige Anmelden mit Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md).
+
+> [!WARNING]
+> Falls Sie den Proxy für den Azure AD-Kennwortschutz bereitgestellt haben, installieren Sie den Azure AD-Anwendungsproxy und den Proxy für den Azure AD-Kennwortschutz nicht auf dem gleichen Computer. Der Azure AD-Anwendungsproxy und der Proxy für den Azure AD-Kennwortschutz installieren verschiedene Versionen des Azure AD Connect Agent Updater-Diensts. Diese unterschiedlichen Versionen sind nicht kompatibel, wenn sie auf demselben Computer installiert werden.
 
 #### <a name="tls-requirements"></a>TLS-Anforderungen
 

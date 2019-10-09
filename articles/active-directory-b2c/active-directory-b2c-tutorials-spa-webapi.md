@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064692"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694577"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über eine Single-Page-Webanwendung mithilfe von Azure Active Directory B2C
 
@@ -38,32 +38,15 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="add-a-web-api-application"></a>Hinzufügen einer Web-API-Anwendung
 
-Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie geschützte Ressourcenanforderungen von Clientanwendungen, die ein Zugriffstoken bereitstellen, akzeptieren und darauf reagieren können.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-1. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
-1. Geben Sie einen Namen für die Anwendung ein. Beispiel: *webapi1*.
-1. Wählen Sie für **Web-App/Web-API einschließen** und n**Impliziten Ablauf zulassen** die Option **Ja**.
-1. Geben Sie für **Antwort-URLs** einen Endpunkt ein, an den Azure AD B2C von Ihrer App angeforderte Token zurückgibt. Das Beispiel in diesem Tutorial wird lokal ausgeführt und lauscht an `https://localhost:5000`.
-1. Geben Sie für **App-ID-URI** eine API-Endpunkt-ID für die angezeigte URI ein. Geben Sie für das Tutorial `api` ein, sodass der vollständige URI ähnlich wie `https://contosotenant.onmicrosoft.com/api` ist.
-1. Klicken Sie auf **Create**.
-1. Wählen Sie die Anwendung *webapi1* aus, um die Eigenschaftenseite zu öffnen.
-1. Notieren Sie sich die auf der Eigenschaftenseite angezeigte **Anwendungs-ID**. Diese ID benötigen Sie in einem späteren Schritt bei der Konfiguration der Webanwendung.
+[!INCLUDE [active-directory-b2c-appreg-webapi](../../includes/active-directory-b2c-appreg-webapi.md)]
 
 ## <a name="configure-scopes"></a>Konfigurieren von Bereichen
 
 Bereiche ermöglichen die Steuerung des Zugriffs auf geschützte Ressourcen. Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. So können beispielsweise einige Benutzer Lese- und Schreibzugriff haben, während andere Benutzer nur über Leseberechtigungen verfügen. In diesem Tutorial definieren Sie Lese- und Schreibberechtigungen für die Web-API.
 
-1. Wählen Sie **Anwendungen** und dann *webapi1* aus, um die Eigenschaftenseite zu öffnen, wenn sie nicht bereits geöffnet ist.
-1. Wählen Sie **Veröffentlichte Bereiche** aus.
-1. Geben Sie unter **BEREICH** den Bereich `Hello.Read` und als **BESCHREIBUNG** `Read access to hello` ein.
-1. Geben Sie unter **BEREICH** den Bereich `Hello.Write` und als **BESCHREIBUNG** `Write access to hello` ein.
-1. Wählen Sie **Speichern** aus.
-1. Notieren Sie sich den Wert **VOLLSTÄNDIGER BEREICHSWERT** für den Bereich `Hello.Read`, der in einem späteren Schritt bei der Konfiguration der Single-Page-Webanwendung verwendet werden soll. Der vollständige Bereichswert ist ähnlich wie bei `https://yourtenant.onmicrosoft.com/api/Hello.Read`.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Mit den veröffentlichten Bereichen können einer Client-App Berechtigungen für die Web-API gewährt werden.
+Notieren Sie sich den Wert **VOLLSTÄNDIGER BEREICHSWERT** für den Bereich `demo.read`, der in einem späteren Schritt bei der Konfiguration der Single-Page-Webanwendung verwendet werden soll. Der vollständige Bereichswert ist ähnlich wie bei `https://yourtenant.onmicrosoft.com/api/demo.read`.
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
@@ -71,12 +54,7 @@ Wenn Sie über eine andere Anwendung eine geschützte Web-API aufrufen möchten,
 
 Im vorbereitenden Tutorial haben Sie eine Webanwendung namens *webapp1* erstellt. In diesem Tutorial konfigurieren Sie diese Anwendung so, dass sie die Web-API aufruft, die Sie in einem vorherigen Abschnitt, *webapi1*, erstellt haben.
 
-1. Navigieren zum B2C-Mandanten im Azure-Portal
-1. Wählen Sie **Anwendungen** und dann *webapp1* aus.
-1. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-1. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
-1. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Hello.Read** und **Hello.Write** aus, die Sie zuvor festgelegt haben.
-1. Klicken Sie auf **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Ihre Singe-Page-Webanwendung ist für den Aufruf der geschützten Web-API registriert. Ein Benutzer authentifiziert sich mit Azure AD B2C, um die Single-Page-Webanwendung zu verwenden. Die Single-Page-Webanwendung holt eine Autorisierungsgewährung von Azure AD B2C ein, um auf die geschützte Web-API zuzugreifen.
 
@@ -101,8 +79,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
       "ClientId": "<webapi-application-ID>",
       "Policy": "B2C_1_signupsignin1",
 
-      "ScopeRead": "Hello.Read",
-      "ScopeWrite": "Hello.Write"
+      "ScopeRead": "demo.read",
+      "ScopeWrite": "demo.write"
     },
     ```
 
@@ -154,7 +132,7 @@ In diesem Abschnitt aktualisieren Sie die Single-Page-Webanwendung, um die ASP.N
 So ändern Sie die Einstellungen in der SPA
 
 1. Öffnen Sie die Datei *index.html* im Projekt [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa], das Sie im vorherigen Tutorial heruntergeladen oder kopiert haben.
-1. Konfigurieren Sie das Beispiel mit dem URI für den zuvor erstellten Bereich *Hello.Read* und der URL der Web-API.
+1. Konfigurieren Sie das Beispiel mit dem URI für den zuvor erstellten Bereich *demo.read* und der URL der Web-API.
     1. Ersetzen Sie in der `appConfig`-Definition den Wert `b2cScopes` durch den vollständigen URI für den Bereich (den **VOLLSTÄNDIGEN BEREICHSWERT**, den Sie zuvor aufgezeichnet haben).
     1. Ändern Sie den Wert `webApi` in den Wert `applicationURL`, den Sie im vorherigen Abschnitt angegeben haben.
 
@@ -163,7 +141,7 @@ So ändern Sie die Einstellungen in der SPA
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
     var appConfig = {
-      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/Hello.Read"],
+      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/demo.read"],
       webApi: "http://localhost:5000/"
     };
     ```

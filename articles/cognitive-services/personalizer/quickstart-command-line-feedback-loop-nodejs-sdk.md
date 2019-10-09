@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265957"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345246"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Schnellstart: Personalisierungsclientbibliothek für Node.js
 
@@ -31,11 +31,21 @@ Hier finden Sie Informationen zu den ersten Schritten mit der Personalisierungsc
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Die aktuelle Version von [Node.js](https://nodejs.org).
+* Die aktuelle Version von [Node.js](https://nodejs.org) und npm
 
-## <a name="setting-up"></a>Einrichten
+## <a name="using-this-quickstart"></a>Verwenden dieser Schnellstartanleitung
 
-### <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
+
+Diese Schnellstartanleitung umfasst mehrere Schritte:
+
+* Erstellen Sie im Azure-Portal eine Personalisierungsressource.
+* Ändern Sie im Azure-Portal auf der Seite **Einstellungen** für die Personalisierungsressource die Häufigkeit der Modellaktualisierung.
+* Erstellen Sie in einem Code-Editor eine Codedatei, und bearbeiten Sie sie.
+* Installieren Sie in der Befehlszeile oder im Terminal das SDK über die Befehlszeile.
+* Führen Sie die Codedatei in der Befehlszeile oder im Terminal aus.
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
 
 Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Weitere Funktionen:
 
@@ -50,7 +60,7 @@ Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalte
 Die Schlüssel- und Endpunktwerte finden Sie im Azure-Portal auf der Seite **Schnellstart**.
 
 
-### <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
+## <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
 
 Erstellen Sie in einem Konsolenfenster (etwa cmd, PowerShell oder Bash) ein neues Verzeichnis für Ihre App, und rufen Sie es auf. 
 
@@ -64,7 +74,7 @@ Führen Sie den Befehl `npm init -y` aus, um die Datei `package.json` zu erstell
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>Installieren der Node.js-Bibliothek für die Personalisierung
+## <a name="install-the-nodejs-library-for-personalizer"></a>Installieren der Node.js-Bibliothek für die Personalisierung
 
 Installieren Sie mit dem folgenden Befehl die Personalisierungsclientbibliothek für Node.js:
 
@@ -78,9 +88,9 @@ Installieren Sie die verbleibenden NPM-Pakete für diese Schnellstartanleitung:
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
+## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
-Ändern Sie in der Personalisierungsressource im Azure-Portal die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
+Ändern Sie im Azure-Portal auf der Seite **Einstellungen** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 
 ![Ändern der Häufigkeit der Modellaktualisierung](./media/settings/configure-model-update-frequency-settings.png)
 

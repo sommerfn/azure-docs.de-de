@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, Java (Windows, Linux) – Speech-Dienst'
+title: 'Schnellstart: Spracherkennung, Java (Windows, Linux, macOS) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine einfache Java-Anwendung erstellen, mit der die Sprache des Benutzers über das Mikrofon Ihres Computers erfasst und transkribiert wird.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554112"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802465"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für Java
 
-Schnellstarts sind auch für [Sprachübersetzung](quickstart-translate-speech-java-jre.md) und den [virtuellen Voice-First-Assistenten](quickstart-virtual-assistant-java-jre.md) verfügbar.
+Schnellstarts sind auch für [Sprachübersetzung](quickstart-translate-speech-java-jre.md), [Sprachsynthese](quickstart-virtual-assistant-java-jre.md) und den [virtuellen Voice-First-Assistenten](quickstart-text-to-speech-java-jre.md) verfügbar.
 
 Wählen Sie bei Bedarf eine andere Programmiersprache und/oder Umgebung:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -95,6 +95,7 @@ Weitere Beispiele, z.B. das Auslesen von Sprache aus einer Audiodatei, sind auf 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Schnellstart: Übersetzen von Sprache, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Schnellstart: Übersetzen von Sprache, Java (Windows, Linux, macOS)](quickstart-translate-speech-java-jre.md)
+- [Schnellstart: Sprachsynthese, Java (Windows, Linux, macOS)](quickstart-text-to-speech-java-jre.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

@@ -1,22 +1,22 @@
 ---
-title: Erstellen eines Hostpools für die Vorschauversion von Windows Virtual Desktop mit Azure Marketplace – Azure
-description: Erstellen eines Hostpools für die Vorschauversion von Windows Virtual Desktop mit Azure Marketplace.
+title: 'Erstellen eines Hostpools für Windows Virtual Desktop mit dem Azure Marketplace: Azure'
+description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool mit dem Azure Marketplace erstellen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c0b93529872de774e1a6e915ef8254c5c0e0a1a9
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208388"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676709"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace
 
-Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Mandantenumgebungen mit Windows Virtual Desktop (Vorschauversion). Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
+Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Windows Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 
 In diesem Tutorial erfahren Sie, wie Sie innerhalb eines Windows Virtual Desktop-Mandanten einen Hostpool unter Verwendung eines Microsoft Azure Marketplace-Angebots erstellen. Zu diesen Aufgaben zählen:
 
@@ -80,7 +80,7 @@ Gehen Sie auf dem Blatt mit den **VM-Einstellungen** wie folgt vor:
 3. Wählen Sie das virtuelle Netzwerk aus, das mit dem Active Directory-Server verbunden ist, und wählen Sie anschließend ein Subnetz als Host für die virtuellen Computer aus.
 4. Klicken Sie auf **OK**.
 
-### <a name="windows-virtual-desktop-preview-tenant-information"></a>Informationen zum Mandanten mit Windows Virtual Desktop (Vorschauversion)
+### <a name="windows-virtual-desktop-tenant-information"></a>Informationen zum Windows Virtual Desktop-Mandanten
 
 Gehen Sie auf dem Blatt mit den **Informationen zum Windows Virtual Desktop-Mandanten** wie folgt vor:
 

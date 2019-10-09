@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Freigeben von Daten für Kunden und Partner mit Azure Data Share (Vorschauversion)'
+title: 'Tutorial: Freigeben außerhalb Ihrer Organisation: Azure Data Share (Vorschauversion)'
 description: 'Tutorial: Freigeben von Daten für Kunden und Partner mit Azure Data Share (Vorschauversion)'
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838424"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327420"
 ---
 # <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Tutorial: Freigeben von Daten mit Azure Data Share (Vorschauversion)
 
-Im Tutorial wird beschrieben, wie Sie eine neue Azure Data Share-Instanz (Datenfreigabe) einrichten und mit dem Freigeben Ihrer Daten für Kunden und Partner außerhalb Ihrer Azure-Organisation beginnen. 
+In diesem Tutorial wird beschrieben, wie Sie eine neue Azure Data Share-Instanz einrichten und mit dem Freigeben Ihrer Daten für Kunden und Partner außerhalb Ihrer Azure-Organisation beginnen. 
 
 In diesem Tutorial lernen Sie Folgendes:
 

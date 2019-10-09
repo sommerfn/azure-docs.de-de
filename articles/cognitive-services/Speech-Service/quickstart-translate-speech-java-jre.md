@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 402bf198981641db74a86bbc420fab83124f0b47
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553396"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802020"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>Schnellstart: Übersetzen von Sprache mit dem Speech-SDK für Java
 
-Schnellstarts sind auch für [Spracherkennung](quickstart-java-jre.md) und den [virtuellen Voice-First-Assistenten](quickstart-virtual-assistant-java-jre.md) verfügbar.
+Schnellstarts sind auch für [Spracherkennung](quickstart-java-jre.md), [Sprachsynthese](quickstart-text-to-speech-java-jre.md) und den [virtuellen Voice-First-Assistenten](quickstart-virtual-assistant-java-jre.md) verfügbar.
 
 In dieser Schnellstartanleitung erstellen Sie eine einfache Java-Anwendung, mit der die Spracheingabe des Benutzers über das Mikrofon Ihres Computers erfasst, die Sprache übersetzt und der übersetzte Text in Echtzeit in der Befehlszeile transkribiert wird. Diese Anwendung ist für die Ausführung unter 64-Bit-Versionen von Windows oder 64-Bit-Versionen von Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) bzw. unter macOS 10.13 oder höher ausgelegt. Sie wird mit dem Maven-Paket für das Speech SDK und der Eclipse Java-IDE erstellt.
 

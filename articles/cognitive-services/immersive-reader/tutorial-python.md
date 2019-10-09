@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 5e33108c9fc674abaf980a1272cca31aa21cffff
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68991128"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326444"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Tutorial: Starten des plastischen Readers unter Verwendung des Python-Beispielprojekts
 
@@ -113,7 +113,7 @@ pip install jinja2
 Installieren Sie virtualenv. Hierbei handelt es sich um ein Tool zum Erstellen isolierter Python-Umgebungen.
 
 ```cmd
-pip install pip install virtualenv
+pip install virtualenv
 ```
 
 Installieren Sie virtualenvwrapper-win. virtualenvwrapper dient zur Vereinfachung der Verwendung von virtualenv.
@@ -126,6 +126,12 @@ Installieren Sie das requests-Modul. requests ist eine Apache2-lizenzierte, in P
 
 ```cmd
 pip install requests
+```
+
+Installieren Sie das Modul „python-dotenv“. Dieses Modul liest das Schlüssel-Wert-Paar aus der ENV-Datei und fügt es der Umgebungsvariablen hinzu.
+
+```cmd
+pip install python-dotenv
 ```
 
 Erstellen Sie eine virtuelle Umgebung.
@@ -251,6 +257,12 @@ Installieren Sie das requests-Modul. requests ist eine Apache2-lizenzierte, in P
 
 ```bash
 pip install requests --user
+```
+
+Installieren Sie das Modul „python-dotenv“. Dieses Modul liest das Schlüssel-Wert-Paar aus der ENV-Datei und fügt es der Umgebungsvariablen hinzu.
+
+```bash
+pip install python-dotenv --user
 ```
 
 Wählen Sie einen Ordner für Ihre virtuellen Umgebungen, und führen Sie den folgenden Befehl aus:

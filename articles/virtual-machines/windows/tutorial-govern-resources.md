@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 8c551e5c61c091e46870efcc8bffcb669aa78ea9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cb0050f79f2f6a38b9cd58ee87aa88899f0f5a15
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100330"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71674987"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Tutorial: Informationen zur Verwaltung von virtuellen Windows-Computern mit Azure PowerShell
 
@@ -235,8 +235,8 @@ In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Comp
 > * Schützen wichtiger Ressourcen mit Sperren
 > * Markieren von Ressourcen mit Tags für die Abrechnung und Verwaltung
 
-Im nächsten Tutorial erhalten Sie Informationen zu hoch verfügbaren virtuellen Computern.
+Im nächsten Tutorial erfahren Sie, wie Sie auf einem virtuellen Linux-Computer Änderungen ermitteln und Paketupdates verwalten.
 
 > [!div class="nextstepaction"]
-> [Überwachen virtueller Computer](tutorial-monitoring.md)
+> [Verwalten virtueller Computer](tutorial-config-management.md)
 

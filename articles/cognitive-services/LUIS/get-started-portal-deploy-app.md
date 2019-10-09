@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257077"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703219"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -87,43 +87,50 @@ Trainieren Sie die App, wenn Sie bereit sind, sie zu testen. Veröffentlichen Si
 
 1. Wählen Sie die Endpunkt-URL aus, die Ihrem neuen Ressourcennamen zugeordnet ist. Diese Aktion öffnet einen Webbrowser mit einer ordnungsgemäß aufgebauten URL, um eine `GET`-Anforderung an die Laufzeit des Vorhersageendpunkts zu senden.
 
-1. Die Zeichenfolge `q=` am Ende der URL ist die Kurzform für **Abfrage** (query). Dort wird die Äußerung des Benutzers an die GET-Anforderung angefügt. Geben Sie nach `q=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
+## <a name="prediction-endpoint-request"></a>Anforderung für Vorhersageendpunkt
 
-    ```Is there a form named hrf-234098```
+<!-- V3FIX -->
 
-    Im Browser wird die Antwort angezeigt, bei der es sich um die gleiche JSON handelt, die Ihre Clientanwendung erhält:
+Die Zeichenfolge `q=` am Ende der URL ist die Kurzform für **Abfrage** (query). Dort wird die Äußerung des Benutzers an die GET-Anforderung angefügt. Geben Sie nach `q=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
 
-    ```JSON
+```Is there a form named hrf-234098```
+
+Im Browser wird die Antwort angezeigt, bei der es sich um die gleiche JSON handelt, die Ihre Clientanwendung erhält:
+
+```JSON
+{
+"query": "Is there a form named hrf-234098",
+"topScoringIntent": {
+    "intent": "FindForm",
+    "score": 0.9768753
+},
+"intents": [
     {
-    "query": "Is there a form named hrf-234098",
-    "topScoringIntent": {
-        "intent": "FindForm",
-        "score": 0.9768753
+    "intent": "FindForm",
+    "score": 0.9768753
     },
-    "intents": [
-        {
-        "intent": "FindForm",
-        "score": 0.9768753
-        },
-        {
-        "intent": "None",
-        "score": 0.0216071066
-        }
-    ],
-    "entities": [
-        {
-        "entity": "hrf-234098",
-        "type": "Human Resources Form Number",
-        "startIndex": 22,
-        "endIndex": 31
-        }
-      ]
+    {
+    "intent": "None",
+    "score": 0.0216071066
     }
-    ```
+],
+"entities": [
+    {
+    "entity": "hrf-234098",
+    "type": "Human Resources Form Number",
+    "startIndex": 22,
+    "endIndex": 31
+    }
+    ]
+}
+```
 
-    Diese Antwort bietet Ihnen mehr Informationen als der Standardtestbereich im vorherigen Tutorial. Um im Testbereich die gleiche Informationsmenge anzuzeigen, müssen Sie die App veröffentlichen. Wählen Sie nach dem Veröffentlichen der App im Testbereich **Compare with published** (Mit veröffentlichtem Element vergleichen) aus. Verwenden Sie im Testbereich für die Veröffentlichung die Option **JSON-Ansicht anzeigen**, um dieselbe JSON wie im vorherigen Schritt anzuzeigen. Auf diese Weise können Sie die aktuelle App, die Sie bearbeiten, mit der App vergleichen, die am Endpunkt veröffentlicht wird.
+Diese Antwort bietet Ihnen mehr Informationen als der Standardtestbereich im vorherigen Tutorial. Um im Testbereich die gleiche Informationsmenge anzuzeigen, müssen Sie die App veröffentlichen. Wählen Sie nach dem Veröffentlichen der App im Testbereich **Compare with published** (Mit veröffentlichtem Element vergleichen) aus. Verwenden Sie im Testbereich für die Veröffentlichung die Option **JSON-Ansicht anzeigen**, um dieselbe JSON wie im vorherigen Schritt anzuzeigen. Auf diese Weise können Sie die aktuelle App, die Sie bearbeiten, mit der App vergleichen, die am Endpunkt veröffentlicht wird.
 
-    [![Aktuell bearbeitete Version mit der veröffentlichten Version der App vergleichen](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![Aktuell bearbeitete Version mit der veröffentlichten Version der App vergleichen](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+
+
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

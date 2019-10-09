@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266253"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802531"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Schnellstart: Personalisierungsclientbibliothek für Python
 
@@ -33,9 +33,19 @@ Hier erhalten Sie Informationen zu den ersten Schritten mit der Personalisierung
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>Einrichten
+## <a name="using-this-quickstart"></a>Verwenden dieser Schnellstartanleitung
 
-### <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
+
+Diese Schnellstartanleitung umfasst mehrere Schritte:
+
+* Erstellen Sie im Azure-Portal eine Personalisierungsressource.
+* Ändern Sie im Azure-Portal auf der Seite **Einstellungen** für die Personalisierungsressource die Häufigkeit der Modellaktualisierung.
+* Erstellen Sie in einem Code-Editor eine Codedatei, und bearbeiten Sie sie.
+* Installieren Sie in der Befehlszeile oder im Terminal das SDK über die Befehlszeile.
+* Führen Sie die Codedatei in der Befehlszeile oder im Terminal aus.
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
 
 Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://portal.azure.com/) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Weitere Informationen finden Sie unter [Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Weitere Funktionen:
 
@@ -50,7 +60,7 @@ Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalte
 Die Schlüssel- und Endpunktwerte finden Sie im Azure-Portal auf der Seite **Schnellstart**.
 
 
-### <a name="install-the-python-library-for-personalizer"></a>Installieren der Python-Bibliothek für die Personalisierung
+## <a name="install-the-python-library-for-personalizer"></a>Installieren der Python-Bibliothek für die Personalisierung
 
 Installieren Sie mit dem folgenden Befehl die Personalisierungsclientbibliothek für Python:
 
@@ -58,11 +68,9 @@ Installieren Sie mit dem folgenden Befehl die Personalisierungsclientbibliothek 
 pip install azure-cognitiveservices-personalizer
 ```
 
-Bei Verwendung der Visual Studio-IDE ist die Clientbibliothek als herunterladbares NuGet-Paket verfügbar.
+## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
-### <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
-
-Ändern Sie in der Personalisierungsressource im Azure-Portal die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
+Ändern Sie im Azure-Portal auf der Seite **Einstellungen** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 
 ![Ändern der Häufigkeit der Modellaktualisierung](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,13 +100,15 @@ Erstellen Sie eine neue Python-Anwendung namens `sample.py` in Ihrem bevorzugten
 
 ## <a name="add-the-dependencies"></a>Hinzufügen der Abhängigkeiten
 
-Öffnen Sie aus dem Projektverzeichnis die Datei **Program.cs** in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Ersetzen Sie den vorhandenen `using`-Code durch die folgenden `using`-Anweisungen:
+Öffnen Sie über das Projektverzeichnis die Datei **sample.py** in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Fügen Sie Folgendes hinzu:
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Hinzufügen von Informationen zur Personalisierungsressource
 
-Erstellen Sie in der Klasse **Program** Variablen für den Azure-Schlüssel und den Endpunkt Ihrer Ressource, die aus den Umgebungsvariablen gepullt wurden, und nennen Sie sie `PERSONALIZER_RESOURCE_KEY` und `PERSONALIZER_RESOURCE_ENDPOINT`. Wenn Sie die Umgebungsvariablen nach dem Start der Anwendung erstellen, muss der Editor, die IDE oder die Shell, in dem bzw. in der sie ausgeführt wird, geschlossen und erneut geladen werden, damit auf die Variable zugegriffen werden kann. Die Methoden werden später in dieser Schnellstartanleitung erstellt.
+Erstellen Sie Variablen für den Azure-Schlüssel und -Endpunkt Ihrer Ressource, die aus den Umgebungsvariablen gepullt wurden, und nennen Sie sie `PERSONALIZER_RESOURCE_KEY` und `PERSONALIZER_RESOURCE_ENDPOINT`. Wenn Sie die Umgebungsvariablen nach dem Start der Anwendung erstellen, muss der Editor, die IDE oder die Shell, in dem bzw. in der sie ausgeführt wird, geschlossen und erneut geladen werden, damit auf die Variable zugegriffen werden kann. Die Methoden werden später in dieser Schnellstartanleitung erstellt.
+
+Der Ressourcenname ist Teil der Endpunkt-URL: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
@@ -110,7 +120,7 @@ Erstellen Sie als Nächstes eine Methode zum Zurückgeben eines Personalisierung
 
 ## <a name="get-content-choices-represented-as-actions"></a>Abrufen von Inhaltsoptionen, dargestellt als Aktionen
 
-Aktionen stellen die Inhaltsoptionen dar, denen die Personalisierung einen Rang zuweisen soll. Fügen Sie der Klasse „Program“ die folgenden Methoden hinzu, um die Benutzereingaben für Tageszeit und aktuellen Essenswunsch aus der Befehlszeile abzurufen.
+Aktionen stellen die Inhaltsoptionen dar, denen die Personalisierung einen Rang zuweisen soll. Fügen Sie die folgenden Methoden hinzu, um die Benutzereingaben für Tageszeit und aktuellen Essenswunsch über die Befehlszeile abzurufen.
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -122,7 +132,7 @@ Aktionen stellen die Inhaltsoptionen dar, denen die Personalisierung einen Rang 
 
 Die Lernschleife der Personalisierung ist ein Zyklus aus [Rangfolge-](#request-a-rank) und [Relevanzaufrufen](#send-a-reward). In dieser Schnellstartanleitung folgt auf jeden Rangfolgeaufruf zur Personalisierung des Inhalts ein Relevanzaufruf, um der Personalisierung mitzuteilen, wie hoch der Dienst den Inhalt bewertet hat. 
 
-Der folgende Code in der Methode `main` des Programms durchläuft einen Zyklus in Form einer Schleife: Der Benutzer wird an der Befehlszeile nach seinen Präferenzen befragt, die Angaben werden zur Bewertung an die Personalisierung gesendet, die bewertete Auswahl wird dem Kunden in einer Auswahlliste angezeigt, und anschließend wird eine Relevanz an die Personalisierung gesendet, die angibt, wie gut der Dienst bei der Bewertung der Auswahl abgeschnitten hat.
+Der folgende Code durchläuft einen Zyklus in Form einer Schleife: Der Benutzer wird an der Befehlszeile nach seinen Präferenzen befragt, die Angaben werden zur Bewertung an die Personalisierung gesendet, die bewertete Auswahl wird dem Kunden in einer Auswahlliste angezeigt, und anschließend wird eine Relevanz an die Personalisierung gesendet, die angibt, wie gut der Dienst bei der Bewertung der Auswahl abgeschnitten hat.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 06/21/2019
-ms.openlocfilehash: 32e253b4e131d753ab6937d0aa2a49bda471e091
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466555"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327650"
 ---
 # <a name="c-tutorial-order-the-results---azure-search"></a>C#-Tutorial: Reihenfolge der Ergebnisse – Azure Search
 
@@ -320,7 +320,7 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Die Ansi
 
     ![Anzeigen von Zimmerpreisbereichen](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
-Die **OrderBy**-Eigenschaft der Suchparameter akzeptiert keinen Eintrag wie **Rooms.BaseRate**, um den günstigsten Zimmerpreis bereitzustellen, auch wenn die Zimmer bereits nach Preis sortiert waren (was sie nicht sind). Um Hotels im Beispieldatensatz nach Zimmerpreis sortiert anzuzeigen, müssten Sie die Ergebnisse in Ihrem Home-Controller sortieren und diese Ergebnisse in der gewünschten Reihenfolge an die Ansicht senden.
+Die **OrderBy**-Eigenschaft der Suchparameter akzeptiert keinen Eintrag wie **Rooms.BaseRate**, um den günstigsten Zimmerpreis bereitzustellen, auch wenn die Zimmer bereits nach Preis sortiert waren. In diesem Fall werden die Zimmer nicht nach Preis sortiert. Um Hotels im Beispieldatensatz nach Zimmerpreis sortiert anzuzeigen, müssten Sie die Ergebnisse in Ihrem Home-Controller sortieren und diese Ergebnisse in der gewünschten Reihenfolge an die Ansicht senden.
 
 ## <a name="order-results-based-on-multiple-values"></a>Sortieren von Ergebnissen basierend auf mehreren Werten
 

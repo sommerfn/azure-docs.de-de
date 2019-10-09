@@ -1,22 +1,22 @@
 ---
-title: Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion) – Azure
-description: Hier erfahren Sie, wie Sie in Azure Active Directory Mandanten mit Windows Virtual Desktop (Vorschauversion) einrichten.
+title: 'Verwalten von App-Gruppen für Windows Virtual Desktop: Azure'
+description: Hier erfahren Sie, wie Sie in Azure Active Directory Windows Virtual Desktop-Mandanten einrichten.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163257"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679454"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion)
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop
 
-Die Standard-App-Gruppe, die für einen neuen Hostpool für Windows Virtual Desktop (Vorschauversion) erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle **Startmenü**-Apps veröffentlichen.
+Die Standard-App-Gruppe, die für einen neuen Windows Virtual Desktop-Hostpool erstellt wird, veröffentlicht auch den vollständigen Desktop. Zusätzlich können Sie RemoteApp-Anwendungsgruppen für den Hostpool erstellen. In diesem Tutorial erfahren Sie, wie Sie eine RemoteApp-Gruppe erstellen und individuelle **Startmenü**-Apps veröffentlichen.
 
 In diesem Tutorial lernen Sie Folgendes:
 

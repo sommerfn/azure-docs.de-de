@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 2289c21fcc172c8dffd7d6b3f9c0e2e11736e71a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266002"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345234"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Schnellstart: Personalisierungsclientbibliothek für .NET
 
@@ -33,9 +33,17 @@ Erste Schritte mit der Personalisierungsclientbibliothek für .NET. Führen Sie 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 * Aktuelle Version von [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
-## <a name="setting-up"></a>Einrichten
+## <a name="using-this-quickstart"></a>Verwenden dieser Schnellstartanleitung
 
-### <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
+Diese Schnellstartanleitung umfasst mehrere Schritte:
+
+* Erstellen Sie im Azure-Portal eine Personalisierungsressource.
+* Ändern Sie im Azure-Portal auf der Seite **Einstellungen** für die Personalisierungsressource die Häufigkeit der Modellaktualisierung.
+* Erstellen Sie in einem Code-Editor eine Codedatei, und bearbeiten Sie sie.
+* Installieren Sie in der Befehlszeile oder im Terminal das SDK über die Befehlszeile.
+* Führen Sie die Codedatei in der Befehlszeile oder im Terminal aus.
+
+## <a name="create-a-personalizer-azure-resource"></a>Erstellen einer Azure-Ressource für die Personalisierung
 
 Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie auf Ihrem lokalen Computer eine Ressource für die Personalisierung (entweder über das [Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)). Weitere Funktionen:
 
@@ -50,15 +58,15 @@ Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalte
 
 Die Schlüssel- und Endpunktwerte finden Sie im Azure-Portal auf der Seite **Schnellstart**.
 
-### <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
+## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
-Ändern Sie in der Personalisierungsressource im Azure-Portal die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
+Ändern Sie im Azure-Portal auf der Seite **Einstellungen** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 
 ![Ändern der Häufigkeit der Modellaktualisierung](./media/settings/configure-model-update-frequency-settings.png)
 
 Bei der Erstinstanziierung einer Personalisierungsschleife ist kein Modell vorhanden, da noch keine Relevanz-API-Aufrufe zum Trainieren ausgeführt wurden. Rangfolgeaufrufe geben gleiche Wahrscheinlichkeiten für jedes Element zurück. Ihre Anwendung sollte dem Inhalt dennoch immer anhand der Ausgabe von RewardActionId einen Rang zuweisen.
 
-### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
+## <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 
 Erstellen Sie eine neue .NET Core-Anwendung in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. 
 
@@ -84,7 +92,7 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-sdk"></a>Installieren des SDKs
+## <a name="install-the-sdk"></a>Installieren des SDKs
 
 Installieren Sie im Anwendungsverzeichnis mit dem folgenden Befehl die Personalisierungsclientbibliothek für .NET:
 
