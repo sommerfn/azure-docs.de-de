@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d72af0c2126ef74f95697755a7ead354214f695c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932560"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677726"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Age-Entität für eine LUIS-App
 Die vorgefertigte Altersentität erfasst den Alterswert sowohl numerisch als auch bezüglich Tagen, Wochen, Monaten und Jahren. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit Altersangaben hinzufügen. Die Altersentität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 
@@ -26,7 +26,7 @@ Die Entität „age“ wird über das GitHub-Repository [Recognizers-text](https
 
 ## <a name="resolution-for-prebuilt-age-entity"></a>Auflösung der vorgefertigten Altersentität
 
-### <a name="api-version-2x"></a>API-Version 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.age** veranschaulicht.
 
@@ -52,7 +52,7 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.age** veranscha
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Vorschau-API-Version 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
@@ -116,6 +116,10 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
 Erfahren Sie mehr zu den [Währungs](luis-reference-prebuilt-currency.md)-, [datetimeV2](luis-reference-prebuilt-datetimev2.md)- und [Dimensionsentitäten](luis-reference-prebuilt-dimension.md). 

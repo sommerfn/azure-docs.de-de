@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662785"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720236"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Richtlinien für die verantwortungsvolle Implementierung der Personalisierung
 
@@ -63,7 +63,8 @@ Bei der Auswahl von Anwendungsfällen für die Personalisierung:
 
 * Starten Sie den Entwurfsprozess unter Berücksichtigung der Aspekte, wie die Personalisierung Ihren Benutzern hilft.
 * Berücksichtigen Sie die negativen Konsequenzen in der realen Welt, wenn wegen Mustern oder Erkundung einigen Elementen für Benutzer keine Relevanz zugewiesen wird.
-* Berücksichtigen Sie Schleifen sich selbst erfüllender Prophezeiungen. Hierzu kann es kommen, wenn eine Personalisierungsrelevanz ein Modell so trainiert, dass es später eine demografische Gruppe weiter vom Zugriff auf relevante Inhalte ausschließt. Beispielsweise erhalten die meisten Menschen in einer einkommensschwachen Nachbarschaft keine Premium-Versicherungsangebote, woraufhin sich langsam die Tendenz entwickelt, dass ein solches Angebot niemandem mehr in der Nachbarschaft angezeigt wird.
+* Berücksichtigen Sie, ob Ihr Anwendungsfall eine automatisierte Verarbeitung darstellt, die die betroffenen Personen erheblich betrifft, die unter der [DSGVO](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) Artikel 22 oder anderen Gesetzen geregelt ist.
+* Berücksichtigen Sie Schleifen sich selbst erfüllender Prophezeiungen. Hierzu kann es kommen, wenn eine Personalisierungsrelevanz ein Modell so trainiert, dass es später eine demografische Gruppe weiter vom Zugriff auf relevante Inhalte ausschließt. Beispielsweise erhalten die meisten Menschen in einer einkommensschwachen Nachbarschaft keine Premium-Versicherungsangebote, woraufhin sich langsam die Tendenz entwickelt, dass ein solches Angebot niemandem mehr in der Nachbarschaft angezeigt wird, wenn keine ausreichende Untersuchung erfolgt.
 * Speichern Sie Kopien von Modellen und Lernrichtlinien für den Fall, dass es erforderlich wird, die Personalisierung in Zukunft zu reproduzieren. Dies können Sie in regelmäßigen Abständen oder bei jeder Modellaktualisierung durchführen.
 * Berücksichtigen Sie die Ebene der Erkundung, die für den Raum angemessen ist, und wie Sie diese als Tool zur Abmilderung von „Echokammer“-Effekten verwenden.
 

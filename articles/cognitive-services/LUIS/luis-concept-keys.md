@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6c87da7ae62af54990e0a1a2c62065717a201a
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256946"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703185"
 ---
 # <a name="authoring-and-runtime-keys"></a>Erstellungs- und Laufzeitschlüssel
 
@@ -85,10 +85,28 @@ Der LUIS-Laufzeitendpunkt akzeptiert zwei Arten von Abfragen, die beide den Vorh
 
 Für den Endpunkt, der für den Zugriff zur Laufzeit verwendet wird, wird eine Unterdomäne verwendet, die für die Region Ihrer Ressource eindeutig ist. In der folgenden Tabelle ist diese Region durch `{region}` gekennzeichnet. 
 
+
+#### <a name="v2-prediction-endpointtabv2"></a>[V2-Vorhersageendpunkt](#tab/V2)
+
 |Verb|Beispiel-URL und Schlüsselposition|
 |--|--|
-|[GET](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>Wert der Abfragezeichenfolge für `runtime-key`<br><br>Ändern Sie den Wert Ihrer Endpunktabfrage für den `runtime-key` vom Erstellungsschlüssel (Startschlüssel) zum neuen Endpunktschlüssel, um das Schlüsselkontingent des LUIS-Endpunkts zu verwenden. Wenn Sie den Schlüssel erstellen und zuweisen, aber nicht den Wert in der Endpunktabfrage für `runtime-key` ändern, nutzen Sie nicht das Kontingent Ihres Endpunktschlüssels.|
-|[POST](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> Headerwert für `Ocp-Apim-Subscription-Key`<br>Wenn Sie den Laufzeitschlüssel erstellen und zuweisen, aber nicht den Endpunktabfragewert für `Ocp-Apim-Subscription-Key` ändern, nutzen Sie nicht Ihren Laufzeitschlüssel.|
+|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
+|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
+
+#### <a name="v3-prediction-endpointtabv3"></a>[V3-Vorhersageendpunkt](#tab/V3)
+
+|Verb|Beispiel-URL und Schlüsselposition|
+|--|--|
+|[GET](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
+|[POST](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
+
+Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
+
+* * * 
+
+**GET**: Ändern Sie den Wert Ihrer Endpunktabfrage für den `runtime-key` vom Erstellungsschlüssel (Startschlüssel) zum neuen Endpunktschlüssel, um das Schlüsselkontingent des LUIS-Endpunkts zu verwenden. Wenn Sie den Schlüssel erstellen und zuweisen, aber nicht den Wert in der Endpunktabfrage für `runtime-key` ändern, nutzen Sie nicht das Kontingent Ihres Endpunktschlüssels.
+
+**POST**: Ändern des Headerwerts für `Ocp-Apim-Subscription-Key`<br>Wenn Sie den Laufzeitschlüssel erstellen und zuweisen, aber nicht den Endpunktabfragewert für `Ocp-Apim-Subscription-Key` ändern, nutzen Sie nicht Ihren Laufzeitschlüssel.
 
 Die App-ID, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, die in den vorherigen URLs verwendet wurde, ist die öffentliche IoT-App für die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
 
@@ -187,7 +205,7 @@ Eine öffentliche App wird in allen Regionen veröffentlicht, so dass ein Benutz
 
 ## <a name="transfer-of-ownership"></a>Übertragen des Besitzes
 
-**Für Apps, die zur [Erstellungsressource migriert](luis-migration-authoring.md) wurden**: 
+**Für Apps, die zur [Erstellungsressource migriert](luis-migration-authoring.md) wurden**: Als Besitzer der Ressource können Sie ein `contributor` hinzufügen.
 
 **Für Apps, die noch nicht migriert wurden**: Exportieren Sie Ihre App als JSON-Datei. Ein anderer LUIS-Benutzer kann die App importieren, wodurch er der App-Besitzer wird. Die neue App hat eine andere App-ID.  
 

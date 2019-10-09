@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 542173a8756b868603c606307c5b682c68d7db25
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4a1bc9ae7ccf48b9dc8b47b57ea43b9259786d01
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933553"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677683"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Vordefinierte E-Mail-Entität für eine LUIS-App
 Die E-Mail-Entität extrahiert die vollständige E-Mail-Adresse aus einer Äußerung. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit E-Mail-Adressen hinzufügen. Die E-Mail-Entität wird nur in der Kultur `en-us` unterstützt. 
 
 ## <a name="resolution-for-prebuilt-email"></a>Auflösung der vorgefertigten E-Mail-Entität
 
-### <a name="api-version-2x"></a>API-Version 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.email** veranschaulicht.
 
 ```json
 {
-  "query": "please send the information to patti.owens@microsoft.com",
+  "query": "please send the information to patti@contoso.com",
   "topScoringIntent": {
     "intent": "None",
     "score": 0.811592042
@@ -42,27 +42,27 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.email** veransc
   ],
   "entities": [
     {
-      "entity": "patti.owens@microsoft.com",
+      "entity": "patti@contoso.com",
       "type": "builtin.email",
       "startIndex": 31,
       "endIndex": 55,
       "resolution": {
-        "value": "patti.owens@microsoft.com"
+        "value": "patti@contoso.com"
       }
     }
   ]
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Vorschau-API-Version 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
 ```json
 {
-    "query": "please send the information to patti.owens@microsoft.com",
+    "query": "please send the information to patti@contoso.com",
     "prediction": {
-        "normalizedQuery": "please send the information to patti.owens@microsoft.com",
+        "normalizedQuery": "please send the information to patti@contoso.com",
         "topIntent": "None",
         "intents": {
             "None": {
@@ -71,7 +71,7 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
         },
         "entities": {
             "email": [
-                "patti.owens@microsoft.com"
+                "patti@contoso.com"
             ]
         }
     }
@@ -83,9 +83,9 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
 {
-    "query": "please send the information to patti.owens@microsoft.com",
+    "query": "please send the information to patti@contoso.com",
     "prediction": {
-        "normalizedQuery": "please send the information to patti.owens@microsoft.com",
+        "normalizedQuery": "please send the information to patti@contoso.com",
         "topIntent": "None",
         "intents": {
             "None": {
@@ -94,13 +94,13 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
         },
         "entities": {
             "email": [
-                "patti.owens@microsoft.com"
+                "patti@contoso.com"
             ],
             "$instance": {
                 "email": [
                     {
                         "type": "builtin.email",
-                        "text": "patti.owens@microsoft.com",
+                        "text": "patti@contoso.com",
                         "startIndex": 31,
                         "length": 25,
                         "modelTypeId": 2,
@@ -113,6 +113,10 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
 Erfahren Sie mehr zu den [Anzahl](luis-reference-prebuilt-number.md)-, [Ordinal](luis-reference-prebuilt-ordinal.md)- und [Prozentsatzentitäten](luis-reference-prebuilt-percentage.md). 

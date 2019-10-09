@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e33b5c766781bc49310dfcae55c3d390a032b522
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e55c0453c117c51e5a8e4986631516d3e61ed10b
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933522"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677595"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>Vordefinierte KeyPhrase-Entität für eine LUIS-App
-Die keyPhrase-Entität extrahiert eine Vielzahl von Schlüsselbegriffen aus einer Äußerung. Sie müssen der App keine Beispieläußerungen hinzufügen, die „keyPhrase“ enthalten. Die keyPhrase-Entität wird für [viele Kulturen](luis-language-support.md#languages-supported) im Rahmen der Funktionen der [Textanalyse](../text-analytics/overview.md) unterstützt. 
+Die keyPhrase-Entität extrahiert eine Vielzahl von Schlüsselbegriffen aus einer Äußerung. Sie müssen der App keine Beispieläußerungen hinzufügen, die „keyPhrase“ enthalten. Die keyPhrase-Entität wird für [viele Kulturen](luis-language-support.md#languages-supported) im Rahmen der Features der [Textanalyse](../text-analytics/overview.md) unterstützt. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Auflösung der vorgefertigten keyPhrase-Entität
 
-### <a name="api-version-2x"></a>API-Version 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.keyPhrase** veranschaulicht.
 
@@ -50,7 +50,83 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.keyPhrase** ver
   ]
 }
 ```
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
+
+```json
+{
+    "query": "where is the educational requirements form for the development and engineering group",
+    "prediction": {
+        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
+        "topIntent": "GetJobInformation",
+        "intents": {
+            "GetJobInformation": {
+                "score": 0.157861546
+            }
+        },
+        "entities": {
+            "keyPhrase": [
+                "educational requirements",
+                "development"
+            ]
+        }
+    }
+}
+```
+
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
+
+```json
+{
+    "query": "where is the educational requirements form for the development and engineering group",
+    "prediction": {
+        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
+        "topIntent": "GetJobInformation",
+        "intents": {
+            "GetJobInformation": {
+                "score": 0.157861546
+            }
+        },
+        "entities": {
+            "keyPhrase": [
+                "educational requirements",
+                "development"
+            ],
+            "$instance": {
+                "keyPhrase": [
+                    {
+                        "type": "builtin.keyPhrase",
+                        "text": "educational requirements",
+                        "startIndex": 13,
+                        "length": 24,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    },
+                    {
+                        "type": "builtin.keyPhrase",
+                        "text": "development",
+                        "startIndex": 51,
+                        "length": 11,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+* * * 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
 Erfahren Sie mehr zu den [Prozentsatz](luis-reference-prebuilt-percentage.md)-, [Anzahl](luis-reference-prebuilt-number.md)- und [Altersentitäten](luis-reference-prebuilt-age.md).

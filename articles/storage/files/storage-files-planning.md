@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212011"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327668"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -96,6 +96,8 @@ Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premiu
 
 > [!IMPORTANT]
 > Premium-Dateifreigaben sind mit LRS in den meisten Regionen verfügbar, in denen Speicherkonten angeboten werden. Mit ZRS sind sie in einer kleineren Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu den Regionen, in denen ZRS unterstützt wird, finden Sie unter [Supportabdeckung und regionale Verfügbarkeit](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+>
+> Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
 
 #### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
 

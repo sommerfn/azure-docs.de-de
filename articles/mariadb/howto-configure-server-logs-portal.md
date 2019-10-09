@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren von Serverprotokollen für Azure Database for MariaDB und Zugreifen auf diese im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal die Serverprotokolle in Azure Database for MariaDB konfigurieren und auf diese zugreifen.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 3dbf7064e409230916668e62ef861c0ce149fdbb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/30/2019
+ms.openlocfilehash: c8be9519d3393330b3022fadd2de6a49e58ecdcf
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065635"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703499"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
 
@@ -61,8 +61,25 @@ Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Prot
 
    ![Klicken Sie auf das Symbol „Download“.](./media/howto-configure-server-logs-portal/5-download.png)
 
+## <a name="set-up-diagnostic-logs"></a>Einrichten von Diagnoseprotokollen
+
+1. Wählen Sie auf der Randleiste im Abschnitt **Überwachung** die Option **Diagnoseeinstellungen** aus.
+
+1. Klicken Sie auf „+ Diagnoseeinstellung hinzufügen“ ![Diagnoseeinstellung hinzufügen](./media/howto-configure-server-logs-portal/add-diagnostic-setting.png)
+
+1. Geben Sie einen Namen für die Diagnoseeinstellung ein.
+
+1. Geben Sie an, an welche Datensenken die langsamen Abfrageprotokolle gesendet werden sollen (Speicherkonto, Event Hub und/oder Log Analytics-Arbeitsbereich).
+
+1. Wählen Sie als Protokolltyp „MySqlSlowLogs“ aus.
+![Konfigurieren der Diagnoseeinstellung](./media/howto-configure-server-logs-portal/configure-diagnostic-setting.png)
+
+1. Nachdem Sie die Datensenken für die langsamen Abfrageprotokolle konfiguriert haben, können Sie auf **Speichern** klicken.
+![Speichern der Diagnoseeinstellung](./media/howto-configure-server-logs-portal/save-diagnostic-setting.png)
+
+1. Greifen Sie auf die langsamen Abfrageprotokolle zu, indem Sie sie in den von Ihnen konfigurierten Datensenken einsehen. Es kann bis zu 10 Minuten dauern, bis die Protokolle angezeigt werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
+- Lesen Sie [Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI](howto-configure-server-logs-cli.md), um zu erfahren, wie Protokolle für langsame Abfragen programmgesteuert heruntergeladen werden können.
 - Erfahren Sie mehr über [Protokolle für langsame Abfragen](concepts-server-logs.md) in Azure Database for MariaDB.
 - Weitere Informationen zu den Parameterdefinitionen und der Protokollierung finden Sie in der MariaDB-Dokumentation unter [Protokolle](https://mariadb.com/kb/en/library/slow-query-log-overview/).
-
-<!--- See [Access Server Logs in CLI](howto-configure-server-logs-in-cli.md) to learn how to download logs programmatically. -->

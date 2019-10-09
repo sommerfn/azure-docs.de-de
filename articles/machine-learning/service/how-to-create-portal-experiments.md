@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034833"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350550"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten über die Landing Page des Arbeitsbereichs von Azure Machine Learning (Vorschau)
 
@@ -32,12 +32,11 @@ ms.locfileid: "71034833"
 
 ## <a name="get-started"></a>Erste Schritte
 
-
 1. Melden Sie sich für [die Landing Page des Arbeitsbereichs](https://ml.azure.com/workspaceportal/) an. 
 
 1. Wählen Sie Ihr Abonnement und Ihren Arbeitsbereich aus. 
 
-1. Navigieren Sie zum linken Bereich. Wählen Sie im Abschnitt **Erstellung** die Option **Automatisiertes ML** aus.
+1. Navigieren Sie zum linken Bereich. Wählen Sie im Abschnitt **Erstellen** die Option **Automatisiertes ML** aus.
 
 [![Navigationsbereich im Azure-Portal](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -59,7 +58,7 @@ Andernfalls wird das Dashboard für **automatisiertes maschinelles Lernen** mit 
     ---|---
     Computename| Geben Sie einen eindeutigen Namen ein, der Ihren Computekontext identifiziert.
     Größe des virtuellen Computers| Wählen Sie die Größe für Ihren Computes aus.
-    Zusätzliche Einstellungen| *Min node* (Mindestanzahl von Knoten): Geben Sie die Mindestanzahl von Knoten für Ihren Compute ein. Die Mindestanzahl von Knoten für AML-Compute ist 0. Zum Aktivieren der Datenprofilerstellung müssen Sie über mindestens einen Knoten verfügen. <br> *Max node* (Maximale Anzahl von Knoten): Geben Sie die maximale Anzahl von Knoten für Ihren Compute ein. Der Standardwert ist 6 Knoten für einen AML-Compute.
+    Min/Max nodes (Min./Max. Knoten) (unter „Erweiterte Einstellungen“)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben. Geben Sie die maximale Anzahl von Knoten für Ihren Compute ein. Der Standardwert ist 6 Knoten für einen AML-Compute.
     
     Klicken Sie auf **Erstellen**. Das Erstellen einer neuen Computeressource kann einige Minuten dauern.
 
@@ -109,7 +108,7 @@ Andernfalls wird das Dashboard für **automatisiertes maschinelles Lernen** mit 
     Erweiterte Einstellungen|BESCHREIBUNG
     ------|------
     Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](how-to-configure-auto-train.md#explore-model-metrics).
-    Exit Criteria (Beendigungskriterien)| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag vor dem vollständigen Abschluss beendet. <br> *Training job time (minutes)* (Dauer des Trainingsauftrags (Minuten)): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll.  <br> *Max number of iterations* (Maximale Anzahl von Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
+    Exit Criteria (Beendigungskriterien)| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag beendet. <br> *Training job time (minutes)* (Dauer des Trainingsauftrags (Minuten)): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll.  <br> *Max number of iterations* (Maximale Anzahl von Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
     Preprocessing (Vorverarbeitung)| Aktivieren oder deaktivieren Sie mit dieser Option die Vorverarbeitung durch automatisiertes Machine Learning. Vorverarbeitung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. [Weitere Informationen zur Vorverarbeitung](#preprocess).
     Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-auto-train.md).
     Parallelität| Wählen Sie die Multi-Core-Grenzwerte aus, die Sie verwenden möchten, wenn Multi-Core-Compute zum Einsatz kommt.

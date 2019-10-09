@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 97a4673be2a611149806855e792c5bf1f7a0942a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955169"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695118"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Lebenszyklus einer Wissensdatenbank in QnA Maker
 QnA Maker lernt am besten in einem iterativen Zyklus aus Modelländerungen, Ausdrucksbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
@@ -61,6 +61,14 @@ Um die Chatprotokolle Ihres Diensts erfassen zu können, müssen Sie beim [Erste
 Sie können verschiedene Analysen Ihrer Dienstnutzung abrufen. Erfahren Sie mehr über die Verwendung von Application Insights zum Abrufen von [Analysen zu Ihrem QnA Maker-Dienst](../How-To/get-analytics-knowledge-base.md).
 
 Je nach den Ergebnissen Ihrer Analysen können Sie entsprechende [Änderungen an Ihrer Knowledge Base](../How-To/edit-knowledge-base.md) vornehmen.
+
+## <a name="version-control-of-a-knowledge-base"></a>Versionskontrolle für eine Wissensdatenbank
+
+Die Versionskontrolle wird nicht von QnA Maker bereitgestellt. Sie müssen Ihre Wissensdatenbank über die Seite **Einstellungen** exportieren und Ihre eigenen Methoden und Tools verwenden.
+
+Das Exportieren der Wissensdatenbank in das TSV- oder XLS-Format wird auf der Seite **Einstellungen** abgeschlossen. 
+
+Wenn Sie zu einer bestimmten Version zurückkehren müssen, müssen Sie diese Datei aus Ihrem lokalen System importieren. Importieren Sie auf der Seite **Einstellungen** die TSV- oder XLS-Datei. Dadurch werden Fragen und Antworten, die sich derzeit in der Wissensdatenbank befinden, durch den Inhalt der importierten Datei ersetzt.   
 
 ## <a name="next-steps"></a>Nächste Schritte
 

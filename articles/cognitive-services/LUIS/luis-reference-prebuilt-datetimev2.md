@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: c4e83ed15c2b15ccb3339ff775b08c8d2dab4c32
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4f46efaeddb0bfe789ef752abdd133c14da514da
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932517"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677689"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte DatetimeV2-Entität für eine LUIS-App
 
@@ -185,6 +185,8 @@ Das Array des Werts enthält zwei time-Elemente, wenn die Uhrzeit oder der Zeitr
 
 Im folgenden Beispiel wird veranschaulicht, wie LUIS **datetimeV2** verwendet, um die Äußerung mit dem Zeitraum aufzulösen.
 
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+
 ```json
   "entities": [
     {
@@ -206,7 +208,7 @@ Im folgenden Beispiel wird veranschaulicht, wie LUIS **datetimeV2** verwendet, u
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>Vorschau-API-Version 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Die JSON-Antwort für DatetimeV2 wurde in der API-Version 3 geändert. 
 
@@ -289,6 +291,9 @@ Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 }
 ```
 
+
+* * * 
+
 ## <a name="deprecated-prebuilt-datetime"></a>Die veraltete vordefinierte datetime-Entität
 
 Die vordefinierte `datetime`-Entität ist veraltet und wurde durch **datetimeV2** ersetzt. 
@@ -301,6 +306,8 @@ Führen Sie folgende Schritte durch, um `datetime` in Ihrer LUIS-App durch `date
 4. Wählen Sie **datetimeV2** aus, und klicken Sie auf **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
 Erfahren Sie mehr über die Entitäten [dimension](luis-reference-prebuilt-dimension.md), [email](luis-reference-prebuilt-email.md) und [number](luis-reference-prebuilt-number.md). 
 

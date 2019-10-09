@@ -6,6 +6,16 @@
       href: resource-group-overview.md
     - name: Vorlagenübersicht
       href: template-deployment-overview.md
+- name: Schnellstart
+  items:
+    - name: Erstellen von Vorlagen – Portal
+      href: resource-manager-quickstart-create-templates-use-the-portal.md
+    - name: Erstellen von Vorlagen – VS Code
+      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - name: Erstellen von Vorlagen – Visual Studio
+      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+    - name: 'Erstellen von Vorlagen: IntelliJ IDEA'
+      href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Lernprogramme
   items:
     - name: Anfänger
@@ -32,14 +42,6 @@
           href: template-tutorial-use-parameter-file.md
     - name: Erweitert
       items:
-        - name: Erstellen von Vorlagen – Portal
-          href: resource-manager-quickstart-create-templates-use-the-portal.md
-        - name: Erstellen von Vorlagen – VS Code
-          href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-        - name: Erstellen von Vorlagen – Visual Studio
-          href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-        - name: 'Erstellen von Vorlagen: IntelliJ IDEA'
-          href: resource-manager-quickstart-create-templates-use-intellij.md
         - name: Nutzen der Vorlagenreferenz
           href: resource-manager-tutorial-create-encrypted-storage-accounts.md
         - name: Erstellen mehrerer Instanzen

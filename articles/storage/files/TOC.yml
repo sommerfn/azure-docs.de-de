@@ -23,9 +23,9 @@
       href: storage-sync-files-extend-servers.md
 - name: Konzepte
   items:
-    - name: Informationen zu Azure Files
+    - name: Planung für eine Azure Files-Bereitstellung
       href: storage-files-planning.md
-    - name: Informationen zur Azure-Dateisynchronisierung
+    - name: Planung für die Bereitstellung einer Azure-Dateisynchronisierung
       href: storage-sync-files-planning.md
     - name: Informationen zum Cloudtiering
       href: storage-sync-cloud-tiering.md

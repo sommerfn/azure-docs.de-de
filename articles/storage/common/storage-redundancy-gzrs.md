@@ -3,17 +3,17 @@ title: 'Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredund
 description: Mit georedundantem Speicher (GZRS) wird die Hochverfügbarkeit von zonenredundantem Speicher (ZRS) mit Schutz vor regionalen Ausfällen kombiniert, der von georedundantem Speicher (GRS) bereitgestellt wird. Daten in einem GZRS-Speicherkonto werden über Azure-Verfügbarkeitszonen in die primäre Region repliziert sowie auch in eine sekundäre geografische Region zum Schutz vor regionalen Notfällen.
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300645"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720356"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau
 
@@ -55,7 +55,7 @@ Wenn Sie ein Speicherkonto erstellen, geben Sie an, wie die Daten in diesem Kont
 
 Wenn Sie RA-GZRS für Ihr Speicherkonto aktivieren, können Ihre Daten sowohl vom sekundären Endpunkt als auch vom primären Endpunkt für Ihr Speicherkonto gelesen werden. Der sekundäre Endpunkt fügt das Suffix  *–secondary*  an den Kontonamen an. Wenn Ihr primärer Endpunkt für den Blob-Dienst z.B.  `myaccount.blob.core.windows.net` ist, dann ist Ihr sekundärer Endpunkt  `myaccount-secondary.blob.core.windows.net`. Die Zugriffsschlüssel für das Speicherkonto sind für die primären und sekundären Endpunkte identisch.
 
-Um RA-GZRS bei einem regionalen Ausfall nutzen zu können, müssen Sie Ihre Anwendung im Vorfeld dafür konzipieren, dieses Szenario zu verarbeiten. Ihre Anwendung sollte vom primären Endpunkt lesen und in ihn schreiben, aber auf den sekundären Endpunkt umschalten, falls die primäre Region nicht verfügbar sein sollte. Anleitungen dazu, wie Sie mit RA-GRS Hochverfügbarkeit erreichen können, finden Sie unter  [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GZRS oder RA-GRS](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Um RA-GZRS bei einem regionalen Ausfall nutzen zu können, müssen Sie Ihre Anwendung im Vorfeld dafür konzipieren, dieses Szenario zu verarbeiten. Ihre Anwendung sollte vom primären Endpunkt lesen und in ihn schreiben, aber auf den sekundären Endpunkt umschalten, falls die primäre Region nicht verfügbar sein sollte. Anleitungen dazu, wie Sie mit RA-GRS Hochverfügbarkeit erreichen können, finden Sie unter  [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GZRS oder RA-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Da Daten asynchron in die sekundären Region repliziert werden, liegt die sekundäre Region oft hinter der primären Region zurück. Um zu ermitteln, welche Schreibvorgänge in die sekundäre Region repliziert wurden, überprüft Ihre Anwendung den Zeitpunkt der letzten Synchronisierung für Ihr Speicherkonto. Alle Schreibvorgänge, die vor der letzten Synchronissierungszeit in die primäre Region geschrieben wurden, wurden erfolgreich in die sekundäre Region repliziert, sodass sie für das Lesen aus der sekundären Region zur Verfügung stehen. Alle Schreibvorgänge, die nach der letzten Synchronisationszeit in die primäre Region geschrieben wurden, können ggf. in die sekundäre Region repliziert worden sein (oder auch nicht), sodass sie möglicherweise nicht für Lesevorgänge zur Verfügung stehen.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: bb816658faff9fb924d075e0fca17e9643c18e40
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648727"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694758"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -27,16 +27,24 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 ## <a name="download-azcopy"></a>Herunterladen von AzCopy
 
-Laden Sie zunächst die ausführbare Datei für AzCopy V10 in ein beliebiges Verzeichnis auf Ihrem Computer herunter.
+Laden Sie zunächst die ausführbare Datei für AzCopy V10 in ein beliebiges Verzeichnis auf Ihrem Computer herunter. AzCopy V10 ist nur eine ausführbare Datei, sodass keine Installation erforderlich ist.
 
 - [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (TAR)
 - [macOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 
-AzCopy V10 ist nur eine ausführbare Datei, sodass keine Installation erforderlich ist.
+Diese Dateien werden als ZIP- (Windows und Mac) oder TAR-Datei (Linux) komprimiert.
+
+Mit diesen Befehlen können Sie die TAR-Datei unter Linux herunterladen und dekomprimieren.
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
+tar -xf azcopy.tar.gz
+```
 
 > [!NOTE]
 > Wenn Sie Daten in und aus Ihrem [Azure Table Storage](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) kopieren möchten, installieren Sie [AzCopy, Version 7.3](https://aka.ms/downloadazcopynet).
+
 
 ## <a name="run-azcopy"></a>Ausführen von AzCopy
 
@@ -95,7 +103,7 @@ Informationen zum Überprüfen und Zuweisen von Rollen finden Sie unter [Gewähr
 > [!NOTE]
 > Denken Sie daran, dass die Rollenzuweisung für die rollenbasierte Zugriffssteuerung bis zu fünf Minuten dauern kann.
 
-Ihrem Sicherheitsprinzipal muss keine dieser Rollen zugewiesen sein, wenn Ihr Sicherheitsprinzipal der Zugriffssteuerungsliste (ACL) des Zielcontainers oder des Verzeichnisses hinzugefügt wurde. In ACL benötigt Ihr Sicherheitsprinzipal Schreibberechtigungen für das Zielverzeichnis und Ausführungsberechtigungen für den Container und jedes übergeordnete Verzeichnis.
+Ihrem Sicherheitsprinzipal muss keine dieser Rollen zugewiesen sein, wenn Ihr Sicherheitsprinzipal der Zugriffssteuerungsliste (ACL) des Zielcontainers oder des Verzeichnisses hinzugefügt wurde. In der Zugriffssteuerungsliste benötigt Ihr Sicherheitsprinzipal Schreibberechtigungen für das Zielverzeichnis und Ausführungsberechtigungen für den Container und jedes übergeordnete Verzeichnis.
 
 Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
@@ -123,13 +131,13 @@ Daraufhin wird ein Anmeldefenster geöffnet. Melden Sie sich in diesem Fenster m
 
 <a id="service-principal" />
 
-#### <a name="authenticate-a-service-principal"></a>Dienstprinzipal authentifizieren
+#### <a name="authenticate-a-service-principal"></a>Authentifizieren eines Dienstprinzipals
 
 Dies ist eine gute Option, wenn Sie AzCopy in einem Skript verwenden möchten, das ohne Benutzerinteraktion ausgeführt wird, vor allem bei der lokalen Ausführung. Wenn Sie AzCopy auf virtuellen Computern ausführen möchten, die in Azure ausgeführt werden, lässt sich eine verwaltete Dienstidentität einfacher verwalten. Weitere Informationen finden Sie im Abschnitt [Authentifizieren einer verwalteten Identität](#managed-identity) in diesem Artikel.
 
 Sie müssen sich interaktiv mindestens ein Mal anmelden, bevor Sie ein Skript ausführen, damit Sie in AzCopy die Anmeldeinformationen Ihres Dienstprinzipals bereitstellen können.  Diese Anmeldedaten werden in einer gesicherten, verschlüsseln Datei gespeichert, damit Ihr Skript diese vertraulichen Daten nicht weitergeben muss.
 
-Sie können sich mit dem geheimen Clientschlüssel in Ihrem Konto anmelden oder mit dem Kennwort eines Zertifikats, das für die Appregistrierung Ihres Dienstprinzipals verwendet wird.
+Sie können sich mit einem geheimen Clientschlüssel oder mit dem Kennwort eines Zertifikats, das für die App-Registrierung Ihres Dienstprinzipals verwendet wird, bei Ihrem Konto anmelden.
 
 Weitere Informationen zum Erstellen eines Dienstprinzipals finden Sie unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
@@ -137,7 +145,7 @@ Weitere Informationen zu Dienstprinzipalen im Allgemeinen finden Sie unter [Anwe
 
 ##### <a name="using-a-client-secret"></a>Verwenden eines geheimen Clientschlüssels
 
-Beginnen Sie, indem Sie die `AZCOPY_SPA_CLIENT_SECRET`-Umgebungsvarible auf den geheimen Clientschlüssel der Appregistrierung Ihres Dienstprinzipals festlegen.
+Beginnen Sie, indem Sie die `AZCOPY_SPA_CLIENT_SECRET`-Umgebungsvarible auf den geheimen Clientschlüssel der App-Registrierung Ihres Dienstprinzipals festlegen.
 
 > [!NOTE]
 > Stellen Sie sicher, dass Sie diesen Wert in Ihrer Eingabeaufforderung einrichten und nicht in den Einstellungen der Umgebungsvariable Ihres Betriebssystems. So ist der Wert nur für die aktuelle Sitzung verfügbar.
@@ -154,16 +162,16 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Geben Sie dann den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id>
+azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der Appregistrierung Ihres Dienstprinzipals.
+Ersetzen Sie den Platzhalter `<application-id>` mit der Anwendungs-ID der App-Registrierung Ihres Dienstprinzipals. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden. 
 
 ##### <a name="using-a-certificate"></a>Verwenden eines Zertifikats
 
-Wenn Sie lieber Ihre eigenen Anmeldedaten für die Autorisierung verwenden möchten, dann können Sie ein Zertifikat in Ihre Appregistrierung hochladen und dieses zum Anmelden verwenden.
+Wenn Sie lieber Ihre eigenen Anmeldedaten für die Autorisierung verwenden möchten, dann können Sie ein Zertifikat in Ihre App-Registrierung hochladen und dieses zum Anmelden verwenden.
 
-Sie müssen nicht nur Ihr Zertifikat in Ihre Appregistrierung hochladen, sondern benötigen außerdem eine Kopie des Zertifikat, die auf dem Computer oder dem virtuellen Computer gespeichert ist, auf dem AzCopy ausgeführt wird. Diese Kopie des Zertifikats sollte das .PFX oder .PEM-Format haben und den privaten Schlüssel enthalten. Der private Schlüssel sollte mit einem Kennwort geschützt sein. Wenn Sie Windows verwenden und Ihre Zertifikat nur in einem Zertifikatspeicher ist, dann stellen Sie sicher, dass Sie das Zertifikat als PFX-Datei exportieren (einschließlich des privaten Schlüssels). Eine Anleitung dazu finden Sie unter [„Export-PfxCertificate“](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
+Sie müssen nicht nur Ihr Zertifikat in Ihre App-Registrierung hochladen, sondern benötigen außerdem eine Kopie des Zertifikat, die auf dem Computer oder dem virtuellen Computer gespeichert ist, auf dem AzCopy ausgeführt wird. Diese Kopie des Zertifikats sollte das .PFX oder .PEM-Format haben und den privaten Schlüssel enthalten. Der private Schlüssel sollte mit einem Kennwort geschützt sein. Wenn Sie Windows verwenden und Ihre Zertifikat nur in einem Zertifikatspeicher ist, dann stellen Sie sicher, dass Sie das Zertifikat als PFX-Datei exportieren (einschließlich des privaten Schlüssels). Eine Anleitung dazu finden Sie unter [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps).
 
 Richten Sie jetzt die `AZCOPY_SPA_CERT_PASSWORD`-Umgebungsvariable mit dem Zertifikatkennwort ein.
 
@@ -179,10 +187,10 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 Geben Sie dann den folgenden Befehl ein, und drücken Sie die EINGABETASTE.
 
 ```azcopy
-azcopy login --service-principal --certificate-path <path-to-certificate-file>
+azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei ein. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist.
+Ersetzen Sie den Platzhalter `<path-to-certificate-file>` mit einem relativen oder vollqualifizierten Pfad zur Zertifikatdatei ein. AzCopy speichert den Pfad zu diesem Zertifikat, speichert jedoch keine Kopie des Zertifikats. Achten Sie darauf, dass das Zertifikat dort bleibt, wo es ist. Ersetzen Sie den Platzhalter `<tenant-id>` mit der Mandanten-ID der Organisation, zu der das Speicherkonto gehört. Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus, um die Mandanten-ID zu finden.
 
 > [!NOTE]
 > Erwägen Sie, eine Eingabeaufforderung wie in diesem Beispiel zu verwenden. So erscheint das Kennwort nicht im Befehlsverlauf Ihrer Konsole. 
@@ -275,7 +283,7 @@ Mit diesem Befehl erhalten Sie den Link:
 > [!NOTE]
 > Bei Linux entfernt `--strip-components=1` im `tar`-Befehl den oberen Ordner, der den Versionsnamen enthält, und extrahiert stattdessen die Binärdatei direkt in den aktuellen Ordner. So kann das Skript mit einer neuen Version von `azcopy` aktualisiert werden, indem nur die `wget`-URL aktualisiert wird.
 
-Die URL erscheint in der Ausgabe dieses Befehls. Ihr Skript kann dann AzCopy anhand dieser URL herunterladen.
+Die URL wird in der Ausgabe dieses Befehls angezeigt. Ihr Skript kann dann AzCopy anhand dieser URL herunterladen.
 
 | Betriebssystem  | Get-Help |
 |--------|-----------|

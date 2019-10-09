@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962517"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827879"
 ---
 # <a name="personalizer-settings"></a>Einstellungen der Personalisierung
 
@@ -87,6 +87,21 @@ Stellen Sie nach dem Ändern dieser Einstellung sicher, dass Sie **Save** (Speic
 
 Importieren Sie im Abschnitt für **Model and Policy** (Modell und Richtlinie) der Ressourcenverwaltung eine neue Lernrichtlinie, oder exportieren Sie die aktuelle Lernrichtlinie.
 Sie können Lernrichtliniendateien aus vorherigen Exporten abrufen oder die optimierten Richtlinien herunterladen, die während Offlineauswertungen erkannt wurden. Manuelle Änderungen an diesen Dateien wirken sich auf die Machine Learning-Leistung und die Genauigkeit von Offlineauswertungen aus, und Microsoft kann sich nicht für die Genauigkeit von Machine Learning und Auswertungen oder Dienstausnahmen, die sich aus manuell bearbeiteten Richtlinien ergeben, verbürgen.
+
+## <a name="clear-data-for-your-learning-loop"></a>Löschen von Daten für Ihre Lernschleife
+
+1. Wählen Sie im Azure-Portal für Ihre Personalisierungsressource auf der Seite **Modell und Richtlinie** die Option **Daten löschen** aus.
+1. Aktivieren Sie alle drei Kontrollkästchen, um alle Daten zu löschen und die Lernschleife in den ursprünglichen Zustand zurückzusetzen.
+
+    ![Löschen Sie im Azure-Portal Daten aus der Personalisierungsressource.](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |Einstellung|Zweck|
+    |--|--|
+    |Protokollierte Personalisierungs- und Relevanzdaten.|Diese Protokolldaten werden in Offline-Auswertungen verwendet. Löschen Sie die Daten, wenn Sie Ihre Ressource zurücksetzen.|
+    |Setzen Sie das Personalisierungsmodell zurück.|Dieses Modell ändert sich bei jedem erneuten Training. Diese Trainingshäufigkeit wird in der **Modellfrequenz für den Upload** auf der Seite **Einstellungen** angegeben. |
+    |Legen Sie die Lernrichtlinie auf die Standardeinstellung fest.|Wenn Sie die Lernrichtlinie im Rahmen einer Offline-Auswertung geändert haben, wird diese auf die ursprüngliche Lernrichtlinie zurückgesetzt.|
+
+1. Wählen Sie **Ausgewählte Daten löschen** aus, um den Löschvorgang zu starten. Der Status wird in den Azure-Benachrichtigungen in der oberen rechten Navigationsleiste angezeigt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
