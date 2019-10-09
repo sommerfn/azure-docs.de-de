@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: ea7880d051303afad01ad8ba4a2d68d7331c6a89
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 9676642e96d437965fef041930b8223241cadeaa
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291145"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349028"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Arbeiten mit Datumsangaben in Azure Cosmos DB
 Azure Cosmos DB bietet Schemaflexibilität und eine umfassende Indizierung über ein natives [JSON](https://www.json.org)-Datenmodell. Alle Azure Cosmos DB-Ressourcen, z.B. Datenbanken, Container, Dokumente und gespeicherte Prozeduren, werden als JSON-Dokumente modelliert und gespeichert. Aufgrund der erforderlichen Portierbarkeit unterstützt JSON (ebenso wie Azure Cosmos DB) nur einen kleinen Satz grundlegender Typen: String, Number, Boolean, Array, Object und Null. JSON ist jedoch flexibel und ermöglicht es Entwicklern und Frameworks, komplexere Daten darzustellen, indem deren Grundtypen verwendet und als Objekte oder Arrays zusammengestellt werden. 
@@ -20,7 +20,9 @@ Zusätzlich zu den grundlegenden Typen benötigen viele Anwendungen den DateTime
 
 ## <a name="storing-datetimes"></a>Speichern von DateTime-Werten
 
-Azure Cosmos DB ist auf die JSON-Typen ausgerichtet, die keinen DateTime-Typ enthalten. Daher müssen in Azure Cosmos DB Daten als Zeichenfolgen gespeichert werden. Derzeit unterstützt Azure Cosmos DB keine Lokalisierung von Daten. Das empfohlene Format für DateTime-Zeichenfolgen in Azure Cosmos DB ist `YYYY-MM-DDThh:mm:ss.sssZ`, das dem ISO 8601 UTC Standard folgt. Die Formatierung der Zeichenfolgen in diesem Format ermöglicht, die Daten lexikographisch zu sortieren. Die Logik zur Behandlung von Nicht-UTC-Daten muss vom Client definiert werden. Die meisten Anwendungen können die standardmäßige Zeichenfolgendarstellung aus folgenden Gründen für DateTime verwenden:
+Azure Cosmos DB unterstützt JSON-Typen wie „String“, „Number“, „Boolean“, „NULL“, „Array“ und „Object“. Ein DateTime-Typ wird nicht direkt unterstützt. Derzeit unterstützt Azure Cosmos DB keine Lokalisierung von Daten. Daher müssen Sie DateTime-Werte als Zeichenfolgen speichern. Das empfohlene Format für DateTime-Zeichenfolgen in Azure Cosmos DB ist `YYYY-MM-DDThh:mm:ss.sssZ`, das dem ISO 8601 UTC Standard folgt. Es wird empfohlen, alle Datumsangaben in Azure Cosmos DB als UTC-Angabe zu speichern. Die Konvertierung der Datumszeichenfolgen in diesem Format ermöglicht das lexikografische Sortieren der Daten. Wenn Datumsangaben in einem anderen Format als UTC gespeichert werden, muss die Logik auf Clientseite behandelt werden. Um einen lokalen DateTime-Wert in UTC zu konvertieren, muss das Offset bekannt und als Eigenschaft im JSON-Format gespeichert sein. Außerdem kann der Client das Offset verwenden, um den DateTime-Wert im UTC-Format zu berechnen.
+
+Die meisten Anwendungen können die standardmäßige Zeichenfolgendarstellung aus folgenden Gründen für DateTime verwenden:
 
 * Zeichenfolgen können verglichen werden, und die relative Reihenfolge der DateTime-Werte wird beibehalten, wenn diese in Zeichenfolgen umgewandelt werden. 
 * Für diesen Ansatz sind weder benutzerdefinierter Code noch Attribute für die JSON-Konvertierung erforderlich.

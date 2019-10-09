@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services-Liveereignis und ein Cloud-DVR | Microsoft-Dokumentation
+title: Verwenden von Timeshift und Live-to-VoD (Video on Demand) in Azure Media Services | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, was eine Liveausgabe ist und wie ein Cloud-DVR verwendet wird.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: a10c76dd7fb4ef1e9a45666ff3a3ca0d937d2c94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffcd279830cb49b64ddbb58a888ad7d653918b1b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231227"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338838"
 ---
-# <a name="using-a-cloud-digital-video-recorder-dvr"></a>Verwenden eines Cloud-DVR (digitaler Videorekorder)
+# <a name="using-time-shifting-and-live-to-vod-video-on-demand"></a>Verwenden von Timeshift und Live-to-VoD (Video on Demand)
 
 In Azure Media Services verhält sich ein [Liveausgabe](https://docs.microsoft.com/rest/api/media/liveoutputs)-Objekt wie ein digitaler Videorekorder, der Ihren Livestream erfasst und in einem Medienobjekt (Asset) in Ihrem Media Services-Konto aufzeichnet. Der aufgezeichnete Inhalt wird in dem Container gespeichert, der durch die [Asset](https://docs.microsoft.com/rest/api/media/assets)-Ressource definiert ist (der Container befindet sich in dem Azure Storage-Konto, das Ihrem Konto zugeordnet ist). Die Liveausgabe ermöglicht Ihnen auch, einige der Eigenschaften des ausgehenden Livestreams zu steuern, etwa welcher Anteil des Streams in der Archivaufzeichnung verwahrt wird (beispielsweise die Kapazität des Cloud-DVR) und ob Zuschauer mit der Wiedergabe des Livestreams beginnen können. Das Archiv auf dem Datenträger ist ein kreisförmiges „Archivfenster“, das nur die Menge an Inhalten enthält, die in der **archiveWindowLength**-Eigenschaft der Liveausgabe angegeben ist. Inhalt außerhalb dieses Fensters wird automatisch aus dem Speichercontainer entfernt und ist nicht wiederherstellbar. Der archiveWindowLength-Wert entspricht einer ISO-8601-Zeitspanne (z.B. PTHH:MM:SS), die die Kapazität des DVRs angibt. Die Zeitspanne kann auf einen Wert von mindestens 3 Minuten bis zu maximal 25 Stunden festgelegt werden.
 

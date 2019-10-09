@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 45fb2daaeaf9ee788207d43d805e070320372ca0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617197"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320441"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 
@@ -90,6 +90,9 @@ Um eine differenzierte Kennwortrichtlinie zu erstellen, verwenden Sie die Active
 1. Klicken Sie auf dem Startbildschirm auf **Verwaltung**. Es wird eine Liste der verfügbaren Verwaltungstools angezeigt, die im Tutorial zum [Erstellen eines virtuellen Verwaltungscomputers][tutorial-create-management-vm] installiert wurden.
 1. Wählen Sie zum Erstellen und Verwalten von Organisationseinheiten **Active Directory-Verwaltungscenter** aus der Liste der Verwaltungstools aus.
 1. Wählen Sie im linken Bereich die verwaltete Azure AD DS-Domäne aus, z. B. *contoso.com*.
+1. Öffnen Sie den Container **System** und dann den Container **Kennworteinstellungen**.
+
+    Eine integrierte FGPP für die verwaltete Azure AD DS-Domäne wird angezeigt. Sie können diese integrierte FGPP nicht ändern. Sie können stattdessen eine neue benutzerdefinierte FGPP zur Außerkraftsetzung der Standard-FGPP erstellen.
 1. Klicken Sie im Bereich **Tasks** auf der rechten Seite auf **Neu > Kennworteinstellungen**.
 1. Geben Sie im Dialogfeld **Kennworteinstellungen erstellen** einen Namen für die Richtlinie ein, z. B. *MyCustomFGPP*. Legen Sie die Rangfolge entsprechend fest, um die Standard-FGPP *200* außer Kraft zu setzen, z. B. *1*.
 

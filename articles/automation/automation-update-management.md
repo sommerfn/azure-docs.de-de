@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240288"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677866"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
 Sie können die Lösung für die Updateverwaltung in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
 
-Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem Azure Automation-Konto aktiviert werden. Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md). Sie können die Updateverwaltung für einen virtuellen Computer auch im Azure-Portal auf der Seite des virtuellen Computers aktivieren. Dieses Szenario ist für virtuelle [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management)- und [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management)-Computer verfügbar.
+Die Updateverwaltung für virtuelle Computer kann direkt in Ihrem Azure Automation-Konto aktiviert werden. Informationen zum Aktivieren der Updateverwaltung für virtuelle Computer über das Automation-Konto finden Sie unter [Verwalten von Updates für mehrere virtuelle Azure-Computer](manage-update-multi.md). Sie können die Updateverwaltung für einen virtuellen Computer auch im Azure-Portal auf der Seite des virtuellen Computers aktivieren. Dieses Szenario ist für virtuelle [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management)- und [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management)-Computer verfügbar.
 
 > [!NOTE]
 > Für die Lösung zur Updateverwaltung muss ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft werden. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](./how-to/region-mappings.md). Die Zuordnung von Regionen wirkt sich nicht auf die Möglichkeit aus, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.

@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/30/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 332ec3930a7654fd5aecf1fc71ccb55c16df127f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105119"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695395"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
-Für Benutzer mit Azure Enterprise Agreements wird die Zugriffsebene auf Daten in Azure Cost Management durch eine Kombination aus im Azure-Portal und im Enterprise-Portal (EA-Portal) gewährten Berechtigungen definiert. Für Benutzer mit anderen Typen von Azure-Konten ist die Zugriffsebene auf Cost Management-Daten einfacher. Dieser Artikel führt Sie durch das Zuweisen des Zugriffs auf Daten in Cost Management. Nachdem die Kombination von Berechtigungen zugewiesen wurde, kann der Benutzer anhand des Bereichs, auf den er Zugriff hat, und des im Azure-Portal ausgewählten Bereichs auf Daten zugreifen.
+Für Benutzer mit Azure Enterprise Agreements wird die Zugriffsebene auf Daten in Azure Cost Management durch eine Kombination aus im Azure-Portal und im Enterprise-Portal (EA-Portal) gewährten Berechtigungen definiert. Für Benutzer mit anderen Typen von Azure-Konten ist das Festlegen der Zugriffsebene auf Cost Management-Daten einfacher, da dort die rollenbasierte Zugriffssteuerung von Azure genutzt werden kann. Dieser Artikel führt Sie durch das Zuweisen des Zugriffs auf Daten in Cost Management. Nachdem die Kombination von Berechtigungen zugewiesen wurde, kann der Benutzer anhand des Bereichs, auf den er Zugriff hat, und des im Azure-Portal ausgewählten Bereichs auf Daten zugreifen.
 
 Der von einem Benutzer ausgewählte Bereich wird im gesamten Cost Management verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Bei Verwendung von Bereichen findet keine Mehrfachauswahl durch Benutzer statt. Stattdessen wählen sie einen größeren Bereich aus, auf den untergeordnete Bereiche erweitert werden, und filtern diese dann nach den gewünschten Elementen für die Anzeige. Diese Datenkonsolidierung sollten Sie verstehen, da einige Personen keinen Zugriff auf einen übergeordneten Bereich haben, in den die untergeordneten Bereiche zusammengefasst werden.
 

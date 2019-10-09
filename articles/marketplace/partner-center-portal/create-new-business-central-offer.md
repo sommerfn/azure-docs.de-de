@@ -1,18 +1,18 @@
 ---
 title: Erstellen Sie eines neuen Dynamics 365 Business Central-Angebots im kommerziellen Marketplace
 description: Erstellen eines neuen Dynamics 365 Business Central-Angebots (Software-as-a-Service) für das Auflisten oder Verkaufen in Azure Marketplace, AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal im Microsoft Partner Center.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/26/2019
+ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033276"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327644"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 Business Central
 
@@ -92,7 +92,7 @@ Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
 Auf der **Eigenschaftenseite** können Sie die Kategorien und Branchen, die zum Gruppieren Ihres Angebots im Marketplace verwendet werden, die Version Ihrer App und die Verträge für Ihr Angebot definieren. Wählen Sie **Speichern** aus, nachdem Sie diese Seite ausgefüllt haben.
 
-### <a name="category"></a>Category (Kategorie)
+### <a name="category"></a>Category
 
 Wählen Sie mindestens eine und höchstens drei Kategorien aus, die zum Platzieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen verwendet werden. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, wie Ihr Angebot diesen Kategorien entspricht. 
 
@@ -194,11 +194,11 @@ Das Herobild ist optional. Wenn Sie ein Herobild angeben, muss es in der Größe
 
 #### <a name="screenshots"></a>Screenshots
 
-Fügen Sie Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Mindestens ein Screenshot ist erforderlich, und Sie können bis zu fünf hinzufügen. Alle Screenshots müssen in der Größe 1280 x 720 Pixel vorliegen.
+Fügen Sie Screenshots hinzu, die zeigen, wie Ihr Angebot funktioniert. Mindestens drei Screenshots sind erforderlich, und Sie können bis zu fünf hinzufügen. Alle Screenshots müssen in der Größe 1280 x 720 Pixel vorliegen.
 
 #### <a name="videos"></a>Videos
 
-Optional können Sie bis zu vier Videos hinzufügen, die Ihr Angebot veranschaulichen. Diese Videos sollten auf YouTube und/oder Vimeo gehostet werden. Geben Sie für jedes Video den Namen, seine URL und ein Miniaturbild (1280 x 720 Pixel) ein.
+Optional können Sie bis zu fünf Videos hinzufügen, die Ihr Angebot veranschaulichen. Diese Videos sollten auf YouTube und/oder Vimeo gehostet werden. Geben Sie für jedes Video den Namen, seine URL und ein Miniaturbild (1280 x 720 Pixel) ein.
 
 #### <a name="additional-marketplace-listing-resources"></a>Zusätzliche Ressourcen für Marketplace-Listen
 

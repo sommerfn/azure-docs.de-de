@@ -7,16 +7,38 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918994"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673021"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
-In diesem Artikel werden die Partner von Windows Virtual Desktop in alphabetischer Reihenfolge aufgelistet.
+Dieser Artikel beinhaltet eine Liste der Windows Virtual Desktop-Partner.
+
+## <a name="citrix"></a>Citrix
+
+![Citrix-Logo](./media/partners/citrix.png)
+
+Citrix ist ein genehmigter Anbieter, der Unternehmen eine zentralisierte Hybridverwaltung von Workloads für virtuelle Apps und Desktops in Azure ermöglicht, und zwar parallel zu lokalen Bereitstellungen. Der Citrix Workspace mit dem Dienst für virtuelle Apps und Desktops ermöglicht Benutzern den Zugriff auf Apps und Desktops von jedem Gerät aus, wobei das erweiterte Citrix HDX-Protokoll genutzt wird, um von überall aus eine hochauflösende Oberfläche bereitzustellen.
+
+Citrix macht Windows Virtual Desktop noch leistungsfähiger mit stabilen Enterprise-Tools, die sowohl Benutzerdichte als auch die Leistung verbessern, Workloads nach Bedarf bereitstellen und die Verwaltung von Images und Apps vereinfachen. Intelligente Skalierungstools helfen, Kosten zu optimieren; gleichzeitig bietet sich Endbenutzern ein unvergleichliches Erlebnis, das an den schwierigsten Apps verschiedenster Branchen getestet wurde.
+
+- [Zur Partnerwebsite](https://more.citrix.com/wvd).
+
+
+## <a name="vmware"></a>VMware
+
+![VMware-Logo](./media/partners/vmware.png)
+
+VMware Horizon Cloud on Microsoft Azure bietet Organisationen die Möglichkeit, eine eigene Instanz von Microsoft Azure mit der einfachen intuitiven Horizon Cloud-Steuerungsebene zu verbinden; und damit eine sichere, umfassende, in der Cloud gehostete Lösung für die Bereitstellung virtualisierter Windows-Anwendungen und-Desktops. Bei der Veröffentlichung von Windows Virtual Desktop hat VMware mit Microsoft zusammengearbeitet, um die Funktionalität von Windows Virtual Desktop auch solchen Kunden zu bieten, die auf Microsoft Azure die Horizon Cloud verwenden.
+
+Als genehmigter Anbieter erhalten Kunden von VMware Horizon Cloud auf Microsoft Azure alle Vorteile von Windows Virtual Desktop, wie z. B. Windows 10 Enterprise für mehrere Sitzungen, Windows 7 mit kostenlosen erweiterten Sicherheitsupdates für bis zu drei Jahren und FSLogix-Funktionen. Dazu kommen sämtliche unternehmensweite Features der Horizon Cloud wie z. B. umfassende Endpunkt-Support, globales, cloudoptimiertes Brokerring, flexible Desktopoptionen und-Konfigurationen, Verwaltung von Benutzerumgebungen und Unterstützung für Hybrid Umgebungen. 
+
+- [Registrieren Sie sich für die Tech Preview von Horizon Cloud auf Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [Zur Partnerwebsite](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
 ## <a name="cloudjumper"></a>CloudJumper
 
@@ -26,8 +48,19 @@ CloudJumper ist ein Windows Virtual Desktop-Dienstleister, der Lösungsanbiete
 
 Cloud Workspace Management Suite (die Software von CloudJumper) erhöht den Nutzen von Windows Virtual Desktop, indem sie die Bereitstellung und die laufenden Verwaltungsaufgaben in Azure vereinfacht. Die IT-Abteilung kann die Infrastruktur für Benutzerarbeitsbereiche über eine zentrale Benutzeroberfläche bereitstellen, verwalten und optimieren. Die Simple Script Triggering Engine von CloudJumper lässt sich in IT-Dienstplattformen integrieren, um Aufgaben bei der Bereitstellung von Windows Virtual Desktop zu automatisieren. Darüber hinaus ermöglichen CloudJumper-APIs eine zusätzliche Erweiterbarkeit und Integration mit anderen Unternehmenssystemen wie ServiceNow und BMC Ready.
 
-- [Zur Übersicht über die gemeinsame Lösung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg)
-- [Zur Partnerwebsite](https://cloudjumper.com/wvd/)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [Zur Partnerwebsite](https://cloudjumper.com/wvd/).
+
+## <a name="controlup"></a>ControlUp
+
+![ControlUp-Logo](./media/partners/controlup.png)
+
+ControlUp ist ein Mehrwert-Dienstanbieter für Windows Virtual Desktop, mit dem IT-Teams Probleme in Ihrer lokalen, Hybrid Cloud -und Cloudinfrastruktur in Echtzeit über eine einzige Konsole überwachen und direkt beheben können. Die Analyse-und Verwaltungsplattform von ControlUp ermöglicht weiterhin die proaktive Automatisierung von Korrekturen für eine schnell wachsende Anzahl von Anwendungsfällen.
+
+Bei Verwendung mit Windows Virtual Desktop bietet ControlUp zusätzliche Funktionen zur Optimierung von Windows Virtual Desktop-Umgebungen und des Endbenutzererlebnisses. Die ControlUp-Konsole bietet IT-Abteilungen Sichtbarkeit auf Endbenutzerumgebungen, um Leistungsprobleme effektiv zu überwachen und zu beheben. Ein intuitives Dashboard bietet Einblicke und Analysen für die Bereitstellung virtueller Desktops sowie Optionen für die automatisierte Berichterstellung, die mit Community-Benchmarks erweitert wird. Mithilfe von ControlUp können mehrere Datenquellen und -Typen verwaltet werden. Diese werden in Hochleistungsdatensätzen organisiert, die über Compute-, Speicher- und Windows Virtual Desktop-Infrastrukturen aggregiert werden, sodass eine differenzierte Sichtbarkeit über eine einzige Benutzeroberfläche ermöglicht wird.
+
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [Zur Partnerwebsite](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="lakeside-software"></a>Lakeside Software
 
@@ -37,8 +70,8 @@ Lakeside Software ist ein Windows Virtual Desktop-Dienstleister, der IT-Teams 
 
 Die digitale Überwachungslösung von Lakeside Software mit Namen SysTrack trägt dank Leistungsüberwachung und Ermittlung idealer Workloads für die Migration zu einer erstklassigen Benutzererfahrung bei. SysTrack steigert den Nutzen von Windows Virtual Desktop durch die Ermittlung der geeigneten Dimensionierung und die kontinuierliche Überwachung von Benutzerumgebungen.
 
-- [Zur Übersicht über die gemeinsame Lösung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q)
-- [Zur Partnerwebsite](https://www.lakesidesoftware.com/assessments/wvd)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [Zur Partnerwebsite](https://www.lakesidesoftware.com/assessments/wvd).
 
 ## <a name="liquidware"></a>Liquidware
 
@@ -48,8 +81,8 @@ Liquidware ist ein Windows Virtual Desktop-Dienstleister, der Verwaltungs- und
 
 Liquidware Essentials steigert den Nutzen von Windows Virtual Desktop, indem es effizient Benutzerprofile sammelt und wichtige Benutzerdaten erfasst, um die Migration von Benutzerumgebungen zu Azure zu optimieren. Darüber hinaus vereinfacht Liquidware Essentials die Imageverwaltung, indem es Benutzerprofile vereinheitlicht und Apps basierend auf konfigurierbaren Einstellungen für die Rechteverwaltung auf Ebenen aufteilt.
 
-- [Zur Übersicht über die gemeinsame Lösung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
-- [Zur Partnerwebsite](https://www.liquidware.com/solutions/solutions-platform/microsoft)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [Zur Partnerwebsite](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -59,8 +92,8 @@ Nerdio ist eine Azure-IT-Automatisierungsplattform, die die Bereitstellung und V
 
 Nerdio steigert den Nutzen von Windows Virtual Desktop, indem es die Bereitstellung von Azure-Ressourcen und die Optimierung der Bereitstellung vereinfacht. Mit Nerdio für Azure kann die IT-Abteilung eine komplette Azure-Umgebung, einschließlich Windows Virtual Desktop, in weniger als zwei Stunden automatisch bereitstellen und verwalten.
 
-- [Zur Übersicht über die gemeinsame Lösung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
-- [Zur Partnerwebsite](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [Zur Partnerwebsite](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -70,8 +103,8 @@ ThinPrint ist ein Windows Virtual Desktop-Dienstleister, der einfaches und sic
 
 Die ezeep-Lösung von ThinPrint steigert den Nutzen von Windows Virtual Desktop, indem sie die Verbindungsherstellung mit der bereits vorhandenen Druckinfrastruktur des Unternehmens ermöglicht. ezeep gibt den Benutzern die Kontrolle über das Drucken im Unternehmen, unabhängig davon, wo sie sich befinden. Mit ezeep können Benutzer die Lücke zwischen Windows Virtual Desktop und der Druckhardware schließen.
 
-- [Zur Übersicht über die gemeinsame Lösung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [Zur Partnerwebsite](https://www.ezeep.com/wvd-printing)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [Zur Partnerwebsite](https://www.ezeep.com/wvd-printing).
 
 ## <a name="workspot"></a>Workspot
 
@@ -81,10 +114,10 @@ Workspot ist ein Windows Virtual Desktop-Dienstleister, der Unternehmen mit le
 
 Workspot steigert den Nutzen von Windows Virtual Desktop, indem es den Bereitstellungsprozess der Clouddesktopinfrastruktur vereinfacht. Mit Workspot können Ressourcen einfach zentral skaliert werden, um den Anforderungen verschiedener Benutzer und Anwendungsfälle gerecht zu werden. Workspot kann Bereitstellungen für leistungsstarke GPU-Workstations für Benutzer im CAD- und Technikbereich sowie Windows-Anwendungen und Windows 10-Desktops für alle geschäftlichen Benutzer optimieren.
 
-- [Zur Übersicht über die gemeinsame Lösung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)
-- [Zur Partnerwebsite](https://www.workspot.com/wvd)
+- [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [Zur Partnerwebsite](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Windows Virtual Desktop finden Sie [hier](overview.md).
-- [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+- [Weitere Informationen zu Windows Virtual Desktop](overview.md).
+- [Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md).

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c357cba8ce2fbe2ad902d5c215f8adbfc99a9f0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 63176c325fd42c46e988ab3798f46089a43e70bf
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813027"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326787"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -97,7 +97,8 @@ Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Planung:
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-* Gültiges Azure AD Premium P1-Abonnement oder höher mit globalem Administratorzugriff
+* Eine gültige Azure AD Premium P1- oder höhere Abonnementlizenz für jeden Benutzer, der aus Workday erstellt und in einer lokalen Active Directory- oder Azure Active Directory-Instanz bereitgestellt wird.
+* Zugriff eines globalen Azure AD-Administrators zum Konfigurieren des Bereitstellungs-Agents
 * Workday-Implementierungsmandant für Test- und Integrationszwecke
 * Administratorberechtigungen in Workday zum Erstellen eines Systemintegrationsbenutzers für Testzwecke und Vornehmen von Änderungen zum Testen von Mitarbeiterdaten
 * Für die Benutzerbereitstellung in Active Directory einen Server mit mindestens Windows Server 2012 und der .NET-Runtime 4.7.1 und höher zum Hosten des [lokalen Bereitstellungs-Agents](https://go.microsoft.com/fwlink/?linkid=847801)

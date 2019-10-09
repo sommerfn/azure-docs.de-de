@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501251"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338821"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v3
 
@@ -65,6 +65,14 @@ Sie können einen [lokalen Liveencoder](recommended-on-premises-live-encoders.md
 Kunden fragen sich oft, ob sie die AES-Verschlüsselung oder ein DRM-System verwenden sollten. Der Hauptunterschied zwischen den beiden Systemen besteht darin, dass bei der AES-Verschlüsselung der Inhaltsschlüssel während der Übertragung ohne zusätzliche Verschlüsselung (als Klartext) an den Client übertragen wird. So kann der Schlüssel zur Entschlüsselung des Inhalts für den Clientplayer zugänglich gemacht und in einer Netzwerkablaufverfolgung auf dem Client als unverschlüsselter Text angezeigt werden. Eine Verschlüsselung mit einem unverschlüsselten AES-128-Schlüssel eignet sich für Anwendungsfälle, in denen der Betrachter vertrauenswürdig ist (z.B. bei Unternehmensvideos, die innerhalb eines Unternehmens verteilt und von Mitarbeitern angesehen werden).
 
 DRM-Systeme wie PlayReady, Widevine und FairPlay bieten eine zusätzliche Verschlüsselungsebene für den Schlüssel, der zum Entschlüsseln des Inhalts verwendet wird (im Vergleich zu einem unverschlüsselten AES-128-Schlüssel). Der Inhaltsschlüssel wird zusätzlich zur Verschlüsselung auf Übertragungsebene durch TLS in einen durch die DRM-Runtime geschützten Schlüssel verschlüsselt. Zusätzlich erfolgt die Entschlüsselung in einer sicheren Umgebung auf Betriebssystemebene, wo ein Angriff durch einen böswilligen Benutzer schwieriger auszuführen ist. DRM wird für Anwendungsfälle empfohlen, in denen der Betrachter möglicherweise nicht vertrauenswürdig ist und Sie ein Höchstmaß an Sicherheit benötigen.
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Anzeigen eines Videos nur für Benutzer mit bestimmten Berechtigungen ohne Verwendung von Azure AD
+
+Sie müssen keinen bestimmten Tokenanbieter (etwa Azure AD) verwenden. Sie können einen eigenen [JWT](https://jwt.io/)-Anbieter (einen sogenannten Sicherheitstokendienst – Secure Token Service, STS) erstellen und dabei eine Verschlüsselung mit asymmetrischem Schlüssel verwenden. Sie können in Ihrem benutzerdefinierten Sicherheitstokendienst Ansprüche basierend auf Ihrer Geschäftslogik hinzufügen.
+
+Stellen Sie sicher, dass der Aussteller, die Zielgruppe und die Ansprüche genau dem Inhalt des JWT und der in ContentKeyPolicy verwendeten ContentKeyPolicyRestriction entsprechen.
+
+Weitere Informationen finden Sie unter [Inhaltsschutz mit der dynamischen Verschlüsselung von Media Services](content-protection-overview.md).
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Wie und wo kann ich JWT-Token abrufen, um damit dann eine Lizenz oder einen Schlüssel anzufordern?
 

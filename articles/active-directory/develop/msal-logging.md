@@ -1,5 +1,5 @@
 ---
-title: Protokollierung in MSAL-Anwendungen | Microsoft Identity Platform
+title: Microsoft Authentication Library (MSAL)-Apps anmelden | Azure
 description: Hier finden Sie Informationen zur Protokollierung in Microsoft Authentication Library-Anwendungen (MSAL-Anwendungen).
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 09/05/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dad8a276cd40b1ff04bbced833b5d70cec4fc87
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268582"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678039"
 ---
 # <a name="logging-in-msal-applications"></a>Protokollierung in MSAL-Anwendungen
 
@@ -44,14 +44,14 @@ Die MSAL-Protokollierung erfasst standardmäßig keine streng vertraulichen pers
 ## <a name="logging-in-msalnet"></a>Protokollierung in MSAL.NET
 
  > [!NOTE]
- > Weitere Informationen zu MSAL.NET finden Sie im [Wiki zu MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki). Hier finden Sie Beispiele zur MSAL.NET-Protokollierung und mehr.
- 
+ > Beispiele für die MSAL.NET-Protokollierung und weitere Infos finden Sie unter [MSAL.NET Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki).
+
 In MSAL 3.x wird die Protokollierung bei der App-Erstellung pro Anwendung mit dem Generatormodifizierer `.WithLogging` festgelegt. Bei dieser Methode können optionale Parameter verwendet werden:
 
-- Mit *Level* können Sie den gewünschten Protokolliergrad festlegen. Wenn Sie den Parameter auf „Errors“ festlegen, werden nur Fehler protokolliert.
-- Mit *PiiLoggingEnabled* können Sie personenbezogene Daten und Organisationsdaten protokollieren, wenn der Parameter auf „true“ festgelegt ist. Dieser Parameter ist standardmäßig auf FALSE festgelegt, damit Ihre Anwendung keine personenbezogenen Daten protokolliert.
-- *LogCallback* ist auf einen Delegaten festgelegt, der die Protokollierung ausführt. Wenn *PiiLoggingEnabled* auf „true“ festgelegt ist, empfängt diese Methode die Nachrichten zweimal: einmal mit dem Parameter *containsPii* gleich „false“ mit der Nachricht ohne personenbezogene Daten und ein zweites Mal mit dem Parameter *containsPii* gleich „true“ mit der Nachricht, die personenbezogene Daten enthalten kann. In einigen Fällen (wenn die Nachricht keine personenbezogenen Daten enthält) ist die Nachricht dieselbe.
-- *DefaultLoggingEnabled* aktiviert die Standardprotokollierung für die Plattform. Der Parameter ist standardmäßig auf „false“ festgelegt. Wenn Sie den Parameter auf „true“ festlegen, wird in Desktop-/UWP-Anwendungen die Ereignisablaufverfolgung, unter iOS NSLog und unter Android Logcat verwendet.
+- Mit `Level` können Sie selbst über die gewünschte Protokollierungsebene entscheiden. Wenn Sie den Parameter auf „Errors“ festlegen, werden nur Fehler protokolliert.
+- Mit `PiiLoggingEnabled` können Sie personenbezogene und organisationsbezogene Daten protokollieren, wenn die Option auf „true“ festgelegt ist. Dieser Parameter ist standardmäßig auf „false“ festgelegt, damit Ihre Anwendung keine personenbezogenen Daten protokolliert.
+- `LogCallback` ist auf einen Delegate festgelegt, der die Protokollierung ausführt. Wenn `PiiLoggingEnabled`auf „true“ festgelegt ist, wird die Meldung von dieser Methode zweimal empfangen: einmal mit dem Parameter `containsPii`gleich „false“ und die Meldung enthält keine personenbezogenen Daten, und ein zweites Mal mit dem Parameter `containsPii`gleich „true“, wobei die Meldung personenbezogene Daten enthalten kann. In einigen Fällen (wenn die Nachricht keine personenbezogenen Daten enthält) ist die Nachricht dieselbe.
+- `DefaultLoggingEnabled`Aktiviert die standardmäßige Protokollierung für die Plattform. Der Parameter ist standardmäßig auf „false“ festgelegt. Wenn Sie den Parameter auf „true“ festlegen, wird in Desktop-/UWP-Anwendungen die Ereignisablaufverfolgung, unter iOS NSLog und unter Android Logcat verwendet.
 
 ```csharp
 class Program
@@ -80,16 +80,54 @@ class Program
  }
  ```
 
- ## <a name="logging-in-msaljs"></a>Protokollierung in MSAL.js
+## <a name="logging-in-msal-for-android-using-java"></a>Protokollierung in MSAL für Android mithilfe von Java
+
+Aktivieren Sie die Protokollierung bei der App-Erstellung durch Erstellen eines Protokollierungsrückrufs. Der Rückruf übernimmt die folgenden Parameter:
+
+- `tag` ist eine Zeichenfolge, die von der Bibliothek an den Rückruf übermittelt wird. Sie ist dem Protokolleintrag zugeordnet und kann zum Sortieren von Protokollierungsmeldungen verwendet werden.
+- Mit `logLevel` können Sie selbst über die gewünschte Protokollierungsebene entscheiden. Die unterstützten Protokollierungsebenen sind: `Error`, `Warning`, `Info` und `Verbose`.
+- `message` ist der Inhalt des Protokolleintrags.
+- `containsPII` gibt an, ob Nachrichten, die personenbezogene Daten oder Organisationsdaten enthalten, protokolliert werden. Dieser Parameter ist standardmäßig auf „false“ festgelegt, damit Ihre Anwendung keine personenbezogenen Daten protokolliert. Wenn `containsPII` aber `true` ist, empfängt diese Methode die Meldung zweimal: einmal mit dem Parameter `containsPII` auf `false` festgelegt und `message` ohne personenbezogene Daten, und ein zweites Mal mit dem Parameter `containsPii` auf `true` festgelegt, wobei die Meldung personenbezogene Daten enthalten könnte. In einigen Fällen (wenn die Nachricht keine personenbezogenen Daten enthält) ist die Nachricht dieselbe.
+
+```java
+private StringBuilder mLogs;
+
+mLogs = new StringBuilder();
+Logger.getInstance().setExternalLogger(new ILoggerCallback()
+{
+   @Override
+   public void log(String tag, Logger.LogLevel logLevel, String message, boolean containsPII)
+   {
+      mLogs.append(message).append('\n');
+   }
+});
+```
+
+Standardmäßig werden von der MSAL-Protokollierung keine personenbezogenen Informationen oder identifizierbaren Informationen für die Organisation erfasst.
+So aktivieren Sie die Protokollierung von personenbezogenen Informationen (PII) und organisationsbezogenen Informationen (OII):
+
+```java
+Logger.getInstance().setEnablePII(true);
+```
+
+So deaktivieren Sie die Protokollierung persönlicher Daten und Organisationsdaten:
+
+```java
+Logger.getInstance().setEnablePII(false);
+```
+
+Standardmäßig ist die Protokollierung für logcat deaktiviert. So aktivieren Sie Firewallregeln: 
+```java
+Logger.getInstance().setEnableLogcatLog(true);
+```
+
+## <a name="logging-in-msaljs"></a>Protokollierung in MSAL.js
 
  Sie können die Protokollierung in MSAL.js aktivieren, indem Sie bei der Konfiguration ein Protokollierungsobjekt zum Erstellen einer `UserAgentApplication`-Instanz übergeben. Dieses Protokollierungsobjekt weist die folgenden Eigenschaften auf:
 
 - `localCallback`: Eine Rückrufinstanz, die vom Entwickler bereitgestellt werden kann, um Protokolle benutzerdefiniert zu verarbeiten und zu veröffentlichen. Implementieren Sie die „localCallback“-Methode abhängig davon, wie Sie Protokolle umleiten möchten.
-
-- `level` (optional): Der konfigurierbare Protokolliergrad. Die folgenden Protokollebenen werden unterstützt: Error, Warning, Info und Verbose. Der Standardwert lautet „Info“.
-
-- `piiLoggingEnabled` (optional): Mit diesem Parameter können Sie personenbezogene Daten und Organisationsdaten protokollieren, wenn er auf TRUE festgelegt ist. Dieser Parameter ist standardmäßig auf FALSE festgelegt, damit Ihre Anwendung keine personenbezogenen Daten protokolliert. Protokolle mit personenbezogenen Daten werden nie in Standardausgaben wie die Konsole, Logcat oder NSLog geschrieben. Standardmäßig ist „false“ festgelegt.
-
+- `level` (optional): Der konfigurierbare Protokolliergrad. Die unterstützten Protokollierungsebenen sind: `Error`, `Warning`, `Info` und `Verbose`. Der Standardwert lautet `Info`.
+- `piiLoggingEnabled` (optional): protokolliert personenbezogene und organisationsbezogene Daten, wenn der Wert auf „true“ festgelegt wird. Dieser Parameter ist standardmäßig auf „false“ festgelegt, damit Ihre Anwendung keine personenbezogenen Daten protokolliert. Protokolle mit personenbezogenen Daten werden nie in Standardausgaben wie die Konsole, Logcat oder NSLog geschrieben.
 - `correlationId` (optional): Ein eindeutiger Bezeichner, der die Anforderung der Antwort zu Debugzwecken zuordnet. Standardmäßig wird ein in RFC 4122 definierter GUID der Version 4 (128 Bit) verwendet.
 
 ```javascript
@@ -99,7 +137,7 @@ function loggerCallback(logLevel, message, containsPii) {
 
 var msalConfig = {
     auth: {
-        clientId: “abcd-ef12-gh34-ikkl-ashdjhlhsdg”,
+        clientId: “<Enter your client id>”,
     },
      system: {
              logger: new Msal.Logger(

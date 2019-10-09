@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100137"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802206"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Einrichten einer direkten Verbindung zwischen Azure und Oracle Cloud Infrastructure  
 
 Microsoft und Oracle bieten mit [ExpressRoute](../../../expressroute/expressroute-introduction.md) und [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm) die Möglichkeit, eine direkte Verbindung zwischen Azure und Oracle Cloud Infrastructure (OCI) herzustellen und so eine [integrierte Multi-Cloud-Umgebung](oracle-oci-overview.md) (Vorschauversion) bereitzustellen. Dank der Integration von ExpressRoute und FastConnect profitieren Kunden von geringer Latenz, hohem Durchsatz und privaten Direktverbindungen zwischen den beiden Clouds.
 
 > [!IMPORTANT]
-> Die Cloudverbindung zwischen Microsoft Azure und OCI befindet sich in der Vorschauphase. Damit Verbindungen mit geringer Latenz zwischen Azure und OCI unterstützt werden, muss diese Funktionalität für Ihr Azure-Abonnement zunächst in die Whitelist aufgenommen werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Die Cloudverbindung zwischen Microsoft Azure und OCI befindet sich in der Vorschauphase. Damit Verbindungen mit geringer Latenz zwischen Azure und OCI eingerichtet werden können, muss diese Funktion zunächst für Ihr Azure-Abonnement aktiviert werden. Sie müssen sich für die Vorschauversion registrieren, indem Sie dieses kurze [Umfrageformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) ausfüllen. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde. Sie können die Funktion erst verwenden, wenn Sie eine Bestätigungs-E-Mail erhalten haben. Sie können sich auch an Ihren Ansprechpartner bei Microsoft wenden, um für diese Vorschauversion aktiviert zu werden. Der Zugriff auf die Vorschaufunktion ist vorbehaltlich der Verfügbarkeit und wird von Microsoft nach eigenem Ermessen beschränkt. Die Beantwortung der Umfrage garantiert keinen Zugriff. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 
@@ -37,7 +37,7 @@ Die folgende Abbildung enthält eine allgemeine Übersicht über die Verbindung:
 
 * Die Verbindung ist nur möglich, wenn sich ein Azure ExpressRoute-Peeringstandort in der Nähe oder am gleichen Peeringstandort wie OCI FastConnect befindet. Siehe [Einschränkungen der Vorschau](oracle-oci-overview.md#preview-limitations).
 
-* Ihr Azure-Abonnement muss für diese Vorschaufunktion in die Whitelist aufgenommen werden.
+* Ihr Azure-Abonnement muss für diese Vorschaufunktion aktiviert werden.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Konfigurieren der direkten Konnektivität zwischen ExpressRoute und FastConnect
 

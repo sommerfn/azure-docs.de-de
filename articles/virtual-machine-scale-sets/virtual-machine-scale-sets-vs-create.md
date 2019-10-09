@@ -14,96 +14,91 @@ ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: d397f81ce29e0ec738156b755948985a4edfc70b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204714"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802266"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Erstellen einer VM-Skalierungsgruppe mit Visual Studio
-In diesem Artikel erfahren Sie, wie eine Azure-VM-Skalierungsgruppe über eine Visual Studio-Ressourcengruppenbereitstellung bereitgestellt wird.
 
-[Azure-VM-Skalierungsgruppen](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) ist eine Azure Compute-Ressource zur Bereitstellung und Verwaltung einer Sammlung ähnlicher virtueller Computer mit automatischer Skalierung und automatischem Lastenausgleich. Sie können VM-Skalierungsgruppen über [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-quickstart-templates) bereitstellen. Azure Resource Manager-Vorlagen können mithilfe der Azure-Befehlszeilenschnittstelle, mit PowerShell, REST und auch direkt über Visual Studio bereitgestellt werden. Visual Studio bietet eine Reihe von Beispielvorlagen, die als Teil eines Azure-Projekts zur Ressourcengruppenbereitstellung bereitgestellt werden können.
+In diesem Artikel erfahren Sie, wie Sie eine Azure-VM-Skalierungsgruppe mithilfe einer Visual Studio Ressourcengruppe bereitstellen.
 
-Azure-Ressourcengruppenbereitstellungen bieten eine Möglichkeit, mehrere zusammengehörige Azure-Ressourcen in einem einzelnen Bereitstellungsvorgang zu gruppieren und zu veröffentlichen. Weitere Informationen zu diesen Bereitstellungen finden Sie hier: [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+[Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) ist eine Azure Compute-Ressource zur Bereitstellung und Verwaltung mehrerer ähnlicher virtueller Computer mit automatischer Skalierung und automatischem Lastenausgleich. Sie können VM-Skalierungsgruppen über [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-quickstart-templates) bereitstellen. Azure Resource Manager-Vorlagen können mithilfe von Azure CLI, PowerShell, REST und auch direkt über Visual Studio bereitgestellt werden. Visual Studio bietet eine Reihe von Beispielvorlagen, die als Teil eines Azure-Projekts zur Ressourcengruppenbereitstellung bereitgestellt werden können.
 
-## <a name="pre-requisites"></a>Voraussetzungen
-Um mit der Bereitstellung von VM-Skalierungsgruppen in Visual Studio zu beginnen, benötigen Sie Folgendes:
+Azure-Ressourcengruppenbereitstellungen bieten eine Möglichkeit, mehrere zusammengehörige Azure-Ressourcen in einem einzelnen Bereitstellungsvorgang zu gruppieren und zu veröffentlichen. [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um mit der Bereitstellung von Microsoft Azure Virtual Machine Scale Sets in Visual Studio zu beginnen, benötigen Sie Folgendes:
 
 * Visual Studio 2013 oder höher
 * Azure SDK 2.7, 2.8 oder 2.9
 
 >[!NOTE]
->In diesen Anweisungen wird davon ausgegangen, dass Sie Visual Studio mit [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) verwenden.
+>In diesem Artikel wird Visual Studio 2019 mit [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) verwendet.
 
-## <a name="creating-a-project"></a>Erstellen eines Projekts
-1. Erstellen Sie ein neues Projekt in Visual Studio durch Auswählen von **Datei | Neu | Projekt**.
-   
-    ![Datei - Neu][file_new]
+## Erstellen eines Projekts <a name="creating-a-project"></a> 
 
-2. Wählen Sie unter **Visual C# | Cloud** die Option **Azure Resource Manager** aus, um ein Projekt zur Bereitstellung einer Azure Resource Manager-Vorlage zu erstellen.
-   
-    ![Projekt erstellen][create_project]
+1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus.
 
-3. Wählen Sie aus der Liste der Vorlagen die VM-Skalierungsgruppenvorlage für Linux oder Windows aus.
-   
-   ![Vorlage auswählen][select_Template]
+1. Wählen Sie in **Neues Projekt erstellen** für C# die **Azure-Ressourcengruppe** und danach **Weiter** aus.
 
-4. Nachdem das Projekt erstellt wurde, werden PowerShell-Bereitstellungsskripts, eine Azure Resource Manager-Vorlage und eine Parameterdatei für die VM-Skalierungsgruppe angezeigt.
-   
-    ![Projektmappen-Explorer][solution_explorer]
+1. Geben Sie der App unter **Neues Projekt konfigurieren** einen Namen, und wählen Sie **Erstellen** aus.
+
+    ![Benennen und Erstellen des Projekts](media/virtual-machine-scale-sets-vs-create/configure-azure-resource-group.png)
+
+1. Wählen Sie aus der Liste der Vorlagen entweder **Windows Virtual Machine Scale Set** oder **Linux Virtual Machine Scale Set** aus. Klicken Sie auf **OK**.
+
+   ![Eine Vorlage für einen virtuellen Computer auswählen](media/virtual-machine-scale-sets-vs-create/select-vm-template.png)
+
+Nachdem das Projekt erstellt wurde, werden im **Projektmappen-Explorer** PowerShell-Bereitstellungsskripts, eine Azure Resource Manager-Vorlage und eine Parameterdatei für die VM-Skalierungsgruppe angezeigt.
 
 ## <a name="customize-your-project"></a>Anpassen Ihres Projekts
-Jetzt können Sie die Vorlage an die Anforderungen Ihrer Anwendung anpassen, beispielsweise VM-Erweiterungseigenschaften hinzufügen oder Lastenausgleichsregeln bearbeiten. Die VM-Skalierungsgruppenvorlagen sind standardmäßig so konfiguriert, dass die AzureDiagnostics-Erweiterung bereitgestellt wird, mit der ganz einfach Regeln für die automatische Skalierung hinzugefügt werden können. Außerdem stellen die Vorlagen einen Load Balancer mit einer öffentlichen IP-Adresse bereit, der mit NAT-Eingangsregeln konfiguriert ist. 
 
-Der Load Balancer ermöglicht es Ihnen, Verbindungen mit den VM-Instanzen über SSH (Linux) oder RDP (Windows) herzustellen. Die Front-End-Portbereich beginnt bei 50000. Für Linux heißt das, dass Sie an den Port 22 des ersten virtuellen Computers in der Skalierungsgruppe weitergeleitet werden, wenn Sie über SSH eine Verbindung mit Port 50000 herstellen. Bei Herstellen einer Verbindung mit Port 50001 werden Sie an Port 22 des zweiten virtuellen Computers weitergeleitet usw.
+Nun können Sie die Vorlage bearbeiten, um Sie an die Anforderungen Ihrer App anzupassen. Sie können Eigenschaften für VM-Erweiterungen hinzufügen oder die Lastenausgleichsregeln bearbeiten. Die VM-Skalierungsgruppenvorlagen sind standardmäßig so konfiguriert, dass die **AzureDiagnostics**-Erweiterung bereitgestellt wird, mit der ganz einfach Regeln für die automatische Skalierung hinzugefügt werden können. Außerdem stellen die Vorlagen einen Lastenausgleich mit einer öffentlichen IP-Adresse bereit, der mit NAT-Regeln für eingehenden Datenverkehr konfiguriert ist.
 
- Eine gute Möglichkeit zum Bearbeiten Ihrer Vorlagen mit Visual Studio besteht darin, die JSON-Gliederung zum Organisieren der Parameter, Variablen und Ressourcen einzusetzen. Mit Kenntnis des Schemas kann Visual Studio Fehler in der Vorlage aufzeigen, bevor Sie sie bereitstellen.
+Der Lastenausgleich ermöglicht es Ihnen, Verbindungen mit den VM-Instanzen über SSH (Linux) oder RDP (Windows) herzustellen. Die Front-End-Portbereich beginnt bei 50000. Wenn Sie für Linux SSH mit Port 50000 herstellen, leitet der Lastenausgleich Sie an Port 22 des ersten virtuellen Computers in der Skalierungsgruppe weiter. Beim Herstellen einer Verbindung mit Port 50001 werden Sie an Port 22 des zweiten virtuellen Computers weitergeleitet usw.
 
-![JSON-Explorer][json_explorer]
+ Eine gute Möglichkeit zum Bearbeiten Ihrer Vorlagen mit Visual Studio bietet die **JSON-Gliederung**. Sie können die Parameter, Variablen und Ressourcen organisieren. Mit Kenntnis des Schemas kann Visual Studio vor der Bereitstellung Fehler in der Vorlage aufzeigen.
+
+![JSON-Explorer](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
 ## <a name="deploy-the-project"></a>Bereitstellen des Projekts
-1. Stellen Sie die Azure Resource Manager-Vorlage bereit, um die VM-Skalierungsgruppenressource zu erstellen. Klicken Sie mit der rechten Maustaste auf den Projektknoten, und wählen Sie **Bereitstellen | Neue Bereitstellung** aus.
-   
-    ![Vorlage bereitstellen][5deploy_Template]
-    
-2. Wählen Sie Ihr Abonnement im Dialogfeld „Für Ressourcengruppe bereitstellen“.
-   
-    ![Vorlage bereitstellen][6deploy_Template]
 
-3. Von hier aus können Sie eine Azure-Ressourcengruppe zum Bereitstellen Ihrer Vorlage erstellen.
-   
-    ![Neue Ressourcengruppe][new_resource]
+Stellen Sie die Azure Resource Manager-Vorlage bereit, um die VM-Skalierungsgruppenressource zu erstellen:
 
-4. Klicken Sie nun auf **Parameter bearbeiten**, um Parameter einzugeben, die an Ihre Vorlage übergeben werden. Geben Sie den Benutzernamen und das Kennwort für das Betriebssystem ein, das zum Erstellen der Bereitstellung erforderlich ist. Falls die PowerShell-Tools für Visual Studio nicht installiert sind, empfiehlt es sich, das Kontrollkästchen **Kennwörter speichern** zu aktivieren, um eine ausgeblendete PowerShell-Eingabeaufforderung zu vermeiden. Alternativ können Sie auch die [Key Vault-Unterstützung](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/) verwenden.
-   
-    ![Parameter bearbeiten][edit_parameters]
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Bereitstellen** > **Neu** aus.
 
-5. Klicken Sie jetzt auf **Bereitstellen**. Das Fenster **Ausgabe** zeigt den Fortschritt der Bereitstellung. Beachten Sie, dass bei der Aktion das Skript **Deploy-AzureResourceGroup.ps1** ausgeführt wird.
-   
-   ![Ausgabefenster][output_window]
+    ![Bereitstellen des Projekts](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
-## <a name="exploring-your-virtual-machine-scale-set"></a>Auswerten der VM-Skalierungsgruppe
-Nachdem die Bereitstellung abgeschlossen ist, sehen Sie die neue VM-Skalierungsgruppe im **Cloud-Explorer** von Visual Studio (aktualisieren Sie die Liste). Mit dem Cloud-Explorer können Sie Azure-Ressourcen in Visual Studio verwalten und gleichzeitig Anwendungen entwickeln. Sie können außerdem Ihre VM-Skalierungsgruppe im [Azure-Portal](https://portal.azure.com) und im [Azure-Ressourcen-Explorer](https://resources.azure.com/) anzeigen.
+1. Markieren Sie unter **Für Ressourcengruppe bereitstellen** das zu verwendende Abonnement, und wählen Sie eine Ressourcengruppe aus. Bei Bedarf kann eine neue Ressourcengruppe erstellt werden.
 
-![Cloud-Explorer][cloud_explorer]
+1. Klicken Sie nun auf **Parameter bearbeiten**, um Parameter einzugeben, die in Ihre Vorlage aufgenommen werden.
 
- Das Portal bietet die beste Möglichkeit, Ihre Azure-Infrastruktur mit einem Webbrowser visuell zu verwalten, während der Azure-Ressourcen-Explorer eine einfache Möglichkeit zum Untersuchen und Debuggen von Azure-Ressourcen bietet. Er bietet Einblicke in die „Instanzsicht“ und führt PowerShell-Befehle für die Ressourcen auf, die Sie gerade anzeigen.
+   ![Abonnement und Ressourcengruppe eingeben](media/virtual-machine-scale-sets-vs-create/deploy-to-resource-group.png)
+
+1. Geben Sie den Benutzernamen und das Kennwort für das Betriebssystem ein. Diese Werte sind erforderlich, um die Bereitstellung zu erstellen. Falls die PowerShell Tools for Visual Studio nicht installiert sind, empfiehlt es sich, das Kontrollkästchen **Kennwörter speichern** zu aktivieren, um eine ausgeblendete PowerShell-Eingabeaufforderung zu vermeiden. Alternativ können Sie auch die [Key Vault-Unterstützung](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/) verwenden. Wählen Sie **Save** (Speichern) aus, um den Vorgang fortzusetzen.
+
+    ![Bearbeiten von Bereitstellungsparametern](media/virtual-machine-scale-sets-vs-create/edit-deployment-parameters.png)
+
+1. Wählen Sie im Dialogfeld **In Ressourcengruppe bereitstellen** dann **Bereitstellen** aus. Beachten Sie, dass bei der Aktion das Skript **Deploy-AzureResourceGroup.ps1** ausgeführt wird. Das Fenster **Ausgabe** zeigt den Fortschritt der Bereitstellung.
+
+   ![Ausgabe der Ergebnisse](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
+
+## Auswerten der VM-Skalierungsgruppe <a name="exploring-your-virtual-machine-scale-set"></a>
+
+Wählen Sie **Ansicht** > **Cloud-Explorer**, um die neue VM-Skalierungsgruppe anzuzeigen. Verwenden Sie falls nötig **Alle aktualisieren**.
+
+![Cloud-Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
+
+Mit dem **Cloud-Explorer** können Sie Azure-Ressourcen in Visual Studio verwalten und gleichzeitig Anwendungen entwickeln. Sie können außerdem Ihre VM-Skalierungsgruppe im [Azure-Portal](https://portal.azure.com) und im [Azure-Ressourcen-Explorer](https://resources.azure.com/) anzeigen.
+
+ Das Portal ist die beste Methode zur Verwaltung Ihrer Azure-Infrastruktur mit einem Webbrowser. Der Azure-Ressourcen-Explorer bietet eine einfache Möglichkeit zum Untersuchen und Debuggen von Azure-Ressourcen. Der Azure-Ressourcen-Explorer bietet die Instanzenansicht und zeigt außerdem PowerShell-Befehle für die Ressourcen an, die Sie sich ansehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie VM-Skalierungsgruppen erfolgreich über Visual Studio bereitgestellt haben, können Sie Ihr Projekt den Anforderungen der Anwendung entsprechend weiter anpassen. Beispielsweise können Sie die automatische Skalierung konfigurieren, indem Sie eine **Insights**-Ressource hinzufügen, Ihrer Vorlage eine Infrastruktur wie z. B. eigenständige VMs hinzufügen oder Anwendungen über die benutzerdefinierte Skripterweiterung bereitstellen. Eine gute Quelle für Beispielvorlagen ist das GitHub-Repository für [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) (suchen Sie nach „vmss“).
 
-[file_new]: ./media/virtual-machine-scale-sets-vs-create/1-FileNew.png
-[create_project]: ./media/virtual-machine-scale-sets-vs-create/2-CreateProject.png
-[select_Template]: ./media/virtual-machine-scale-sets-vs-create/3b-SelectTemplateLin.png
-[solution_explorer]: ./media/virtual-machine-scale-sets-vs-create/4-SolutionExplorer.png
-[json_explorer]: ./media/virtual-machine-scale-sets-vs-create/10-JsonExplorer.png
-[5deploy_Template]: ./media/virtual-machine-scale-sets-vs-create/5-DeployTemplate.png
-[6deploy_Template]: ./media/virtual-machine-scale-sets-vs-create/6-DeployTemplate.png
-[new_resource]: ./media/virtual-machine-scale-sets-vs-create/7-NewResourceGroup.png
-[edit_parameters]: ./media/virtual-machine-scale-sets-vs-create/8-EditParameter.png
-[output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
-[cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
+Nachdem Sie VM-Skalierungsgruppen erfolgreich über Visual Studio bereitgestellt haben, können Sie Ihr Projekt den Anforderungen der Anwendung entsprechend weiter anpassen. Konfigurieren Sie z. B. die automatische Skalierung durch Hinzufügen einer **Insights**-Ressource. Sie können Ihrer Vorlage eine Infrastruktur hinzufügen, z. B. eigenständige virtuelle Computer, oder Anwendungen mithilfe der benutzerdefinierten Skript Erweiterung bereitstellen. Eine gute Quelle für Beispielvorlagen ist das GitHub-Repository für [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates). Suchen Sie nach `vmss`.

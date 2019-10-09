@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/19/2019
+ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c2096b6c5ddb72c8ab5c5d3203a05c94db51f6c5
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444332"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802316"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -56,12 +56,14 @@ In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Admin
 
 Bei [Gastbenutzern](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) mit der Rolle „Co-Administrator“ gibt es im Vergleich zu Mitgliedsbenutzern mit der Rolle „Co-Administrator“ unter Umständen gewisse Unterschiede. Stellen Sie sich folgendes Szenario vor:
 
-- Benutzer A verfügt über ein Geschäfts-, Schul- oder Unikonto für Azure AD und ist Dienstadministrator für ein Azure-Abonnement.
+- Benutzer A verfügt über ein Azure AD-Konto (Geschäfts-, Schul- oder Unikonto) und ist Dienstadministrator für ein Azure-Abonnement.
 - Benutzer B verfügt über ein Microsoft-Konto.
 - Benutzer A weist Benutzer B die Rolle „Co-Administrator“ zu.
 - Benutzer B kann fast alle Aktionen ausführen, aber keine Anwendungen registrieren oder Benutzer im Azure AD-Verzeichnis suchen.
 
-Man würde erwarten, dass Benutzer B alles verwalten kann. Der Grund für den Unterschied ist, dass das Microsoft-Konto dem Abonnement nicht als Mitgliedsbenutzer, sondern als Gastbenutzer hinzugefügt wird. Gastbenutzer haben im Vergleich zu Mitgliedsbenutzern andere Standardberechtigungen in Azure AD. So können Mitgliedsbenutzer im Gegensatz zu Gastbenutzern beispielsweise andere Benutzer in Azure AD lesen. Mitgliedsbenutzer können neue Dienstprinzipale in Azure AD registrieren, Gastbenutzer nicht. Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Administratorrollen zugewiesen werden, die der Gastbenutzer benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+Man würde erwarten, dass Benutzer B alles verwalten kann. Der Grund für den Unterschied ist, dass das Microsoft-Konto dem Abonnement nicht als Mitgliedsbenutzer, sondern als Gastbenutzer hinzugefügt wird. Gastbenutzer haben im Vergleich zu Mitgliedsbenutzern andere Standardberechtigungen in Azure AD. So können Mitgliedsbenutzer im Gegensatz zu Gastbenutzern beispielsweise andere Benutzer in Azure AD lesen. Mitgliedsbenutzer können neue Dienstprinzipale in Azure AD registrieren, Gastbenutzer nicht.
+
+Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Administratorrollen zugewiesen werden, die der Gastbenutzer benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
 
 Beachten Sie, dass sich die [integrierten Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md) von den [Azure AD-Administratorrollen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) unterscheiden. Die integrierten Rollen ermöglichen keinerlei Azure AD-Zugriff. Weitere Informationen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -127,14 +129,16 @@ Es gibt zwei Möglichkeiten zum Ändern des Dienstadministrators. Sie können di
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>Einschränkungen beim Ändern des Dienstadministrators
 
-Jedes Abonnement ist einem Azure AD-Verzeichnis zugeordnet. Sie finden das Verzeichnis, dem das Abonnement zugeordnet ist, indem Sie im Azure-Portal zu **Abonnements** navigieren und ein Abonnement auswählen, um das Verzeichnis anzuzeigen.
+Pro Azure-Abonnement kann es nur einen Dienstadministrator geben. Der Dienstadministrator lässt sich unterschiedlich ändern, je nachdem, ob der Kontoadministrator ein Microsoft-Konto hat oder ob es sich um ein Azure AD-Konto (Geschäfts-, Schul-oder Unikonto) handelt.
 
-Wenn Sie mit einem Geschäfts-, Schul- oder Unikonto angemeldet sind, können Sie andere Konten in Ihrer Organisation als Dienstadministrator hinzufügen. Beispielsweise kann abby@contoso.com das Konto bob@contoso.com als Dienstadministrator hinzufügen, aber nicht john@notcontoso.com, es sei denn, john@notcontoso.com ist im Verzeichnis „contoso.com“ enthalten. Mit einem Geschäfts-, Schul- oder Unikonto angemeldete Benutzer können Benutzer mit Microsoft-Konten weiterhin als Dienstadministrator hinzufügen. Pro Azure-Abonnement kann es nur einen Dienstadministrator geben.
+| Konto für Kontoadministratoren | Kann den Dienstadministrator in ein anderes Microsoft-Konto ändern? | Kann den Dienstadministrator im gleichen Verzeichnis in ein Azure AD-Konto ändern? | Kann den Dienstadministrator in einem anderen Verzeichnis in ein Azure AD-Konto ändern? |
+| --- | --- | --- | --- |
+| Microsoft-Konto | Ja | Nein | Nein |
+| Azure AD-Konto | Ja | Ja | Nein |
 
-  | Anmeldemethode | Microsoft-Kontobenutzer als Dienstadministrator hinzufügen? | Geschäfts-, Schul- oder Unikonto in der gleichen Organisation als Dienstadministrator hinzufügen? | Geschäfts-, Schul- oder Unikonto in einer anderen Organisation als Dienstadministrator hinzufügen? |
-  | --- | --- | --- | --- |
-  |  Microsoft-Konto |Ja |Nein |Nein |
-  |  Geschäfts- oder Schulkonto |Ja |Ja |Nein |
+Wenn der Kontoadministrator ein Azure AD-Konto ist, können Sie den Dienstadministrator in ein Azure AD-Konto in demselben Verzeichnis ändern, aber nicht in einem anderen Verzeichnis. Beispielsweise kann abby@contoso.com den Dienstadministrator in bob@contoso.com ändern, aber nicht den Dienstadministrator in john@notcontoso.com, es sei denn, john@notcontoso.com ist im Verzeichnis contoso.com vorhanden.
+
+Weitere Informationen zu Microsoft-Konten und Azure AD-Konten finden Sie unter [Was ist Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
 ## <a name="view-the-account-administrator"></a>Anzeigen des Kontoadministrators
 

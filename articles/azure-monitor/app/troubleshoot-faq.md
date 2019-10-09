@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875377"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802303"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -59,7 +59,7 @@ Im Enterprise-Plan fallen für jeden Tag, an dem die einzelnen Web-Serverknoten 
 
 Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="how-much-is-it-costing"></a>Wie hoch sind die Kosten?
+## <a name="how-much-does-it-cost"></a>Wie hoch sind die Kosten?
 
 * Öffnen Sie die Seite **Nutzung und geschätzte Kosten** in einer Application Insights-Ressource. Dort finden Sie ein Diagramm der kürzlichen Nutzung. Sie können ggf. eine Obergrenze für das Datenvolumen festlegen.
 * Öffnen Sie das Blatt für die [Azure-Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview), um Ihre Rechnungen für alle Ressourcen anzuzeigen.
@@ -139,6 +139,8 @@ Mit [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) wird die IP-Adres
 
 * Browsertelemetrie: Die IP-Adresse des Absenders wird erfasst.
 * Servertelemetrie: Das Application Insights-Modul erfasst die Client-IP-Adresse. Sie wird nicht gesammelt, wenn `X-Forwarded-For` festgelegt ist.
+* Weitere Informationen zur Erfassung von IP-Adressen und Geolocation-Daten in Application Insights finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
+
 
 Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](https://apmtips.com/blog/2016/07/05/client-ip-address/)
 

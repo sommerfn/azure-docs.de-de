@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865012"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718226"
 ---
 # <a name="testability-scenarios"></a>Testability-Szenarien
 Große verteilte Systeme, z. B. Cloudinfrastrukturen, sind häufig unzuverlässig. Mit Azure Service Fabric können Entwickler Dienste schreiben, die für unzuverlässige Infrastrukturen ausgeführt werden. Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, diese unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können.
@@ -132,6 +132,8 @@ class Test
 ```
 
 PowerShell
+
+Das Service Fabric PowerShell-Modul bietet zwei Möglichkeiten zum Start eines Chaos-Szenarios. Da `Invoke-ServiceFabricChaosTestScenario` clientbasiert ist, werden keine weiteren Fehler eingefügt, falls der Client-Computer während des Tests heruntergefahren wird. Ein alternativer Befehlssatz ist vorhanden, der den Test weiterlaufen lässt, falls der Computer heruntergefahren wird. `Start-ServiceFabricChaos` nutzt einen zustandsbehafteten und zuverlässigen Systemdienst namens FaultAnalysisService, um zu gewährleisten, dass bis zum Ablauf der TimeToRun weitere Fehler eingefügt werden. `Stop-ServiceFabricChaos` kann zum manuellen Abbruch des Szenarios verwendet werden, und `Get-ServiceFabricChaosReport` generiert einen Bericht. Weitere Informationen finden Sie unter [Azure Service Fabric PowerShell-Referenz](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps) und [In Microsoft Azure Service Fabric-Clustern kontrolliertes Chaos erzeugen](service-fabric-controlled-chaos.md).
 
 ```powershell
 $connection = "localhost:19000"

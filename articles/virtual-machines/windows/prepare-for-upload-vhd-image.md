@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: d2922f79c0b2ef7098e0f51e0c3bf6ab18a1b0e3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200282"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695383"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -440,7 +440,8 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
    ```
   Wenn an die VM ein Datenträger angefügt ist, lautet der Laufwerkbuchstabe des Volumes für das temporäre Laufwerk typischerweise *D*. Die Bezeichnung kann abhängig von Ihren Einstellungen und der Anzahl verfügbarer Laufwerke jedoch abweichen.
-
+  * Es wird empfohlen, Skriptblocker zu deaktivieren, die möglicherweise von Antivirussoftware bereitgestellt werden. Diese können die beim Bereitstellen einer neuen VM aus Ihrem Image ausgeführten Skripts des Windows-Bereitstellungs-Agents beeinträchtigen oder blockieren.
+  
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hochladen eines Windows-VM-Images an Azure für Resource Manager-Bereitstellungen](upload-generalized-managed.md)
 * [Beheben von Problemen bei der Aktivierung virtueller Windows-Computer](troubleshoot-activation-problems.md)

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848900"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350352"
 ---
 # <a name="streaming-endpoints"></a>Streamingendpunkte 
 
@@ -31,9 +31,14 @@ Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpun
 
 ## <a name="naming-convention"></a>Benennungskonvention
 
-Für den Standardendpunkt: `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Das Format des Hostnamens der Streaming-URL ist: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, wobei `servicename` = der Streamingendpunktname oder der Liveereignisname. 
 
-Für alle zusätzlichen Endpunkte: `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Bei Verwendung des standardmäßigen Streamingendpunkts wird `servicename` ausgelassen, sodass die URL `{accountname}-{regionname}.streaming.azure.net` lautet. 
+
+### <a name="limitations"></a>Einschränkungen
+
+* Der Streamingendpunktname darf maximal 24 Zeichen lang sein.
+* Der Name sollte diesem [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)-Muster folgen: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
 ## <a name="types"></a>Typen  
 

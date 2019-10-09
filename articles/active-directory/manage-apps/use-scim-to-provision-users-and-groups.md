@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033467"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802357"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
 
@@ -59,7 +59,7 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 
 **So verbinden Sie eine Anwendung, die SCIM unterstützt:**
 
-1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an. 
+1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an. Beachten Sie, dass Sie auf eine kostenlose Testversion für Azure Active Directory mit P2-Lizenzen zugreifen können, indem Sie sich für das [Entwicklerprogramm](https://developer.microsoft.com/office/dev-program) registrieren.
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 1. Wählen Sie **+ Neue Anwendung** > **Alle** > **Nicht-Kataloganwendung**.
 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Hinzufügen**, um ein App-Objekt zu erstellen. Die neue App wird der Liste mit den Unternehmensanwendungen hinzugefügt und mit dem App-Verwaltungsbildschirm geöffnet.
@@ -96,6 +96,9 @@ Nachdem der erste Zyklus gestartet wurde, können Sie im linken Bereich die Opti
 > [!NOTE]
 > Der erste Zyklus dauert länger als spätere Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird.
 
+**So veröffentlichen Sie Ihre Anwendung im Azure AD-Anwendungskatalog**
+
+Wenn Sie eine Anwendung erstellen, die von mehreren Mandanten verwendet wird, können Sie sie im Azure AD-Anwendungskatalog verfügbar machen. Dies erleichtert Organisationen das Auffinden der Anwendung und das Konfigurieren der Bereitstellung. Das Veröffentlichen Ihrer App im Azure AD-Katalog und das Verfügbarmachen der Bereitstellung für andere ist einfach. Die entsprechenden Schritte sind [hier](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) angegeben. 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Verstehen der Azure AD-SCIM-Implementierung
 
 Wenn Sie eine Anwendung erstellen, die eine SCIM 2.0-Benutzerverwaltungs-API unterstützt, ist dieser Abschnitt hilfreich. Darin wird detailliert beschrieben, wie der Azure AD-SCIM-Client implementiert wird und wie Sie die Verarbeitung von SCIM-Protokollanforderungen und -antworten modellieren sollten. Nachdem Sie den SCIM-Endpunkt implementiert haben, können Sie ihn durch Ausführen der im vorherigen Abschnitt beschriebenen Schritte testen.

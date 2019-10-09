@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390479"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350185"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -149,9 +149,9 @@ Wenn Sie einen Pool erstellen, müssen Sie je nach dem Betriebssystem des Basisi
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Benutzerdefinierte Images für Pools virtueller Computer
 
-Wenn Sie ein benutzerdefiniertes Image verwenden möchten, müssen Sie es zunächst generalisieren. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von Azure-VMs finden Sie unter [Generalisieren und Erfassen eines virtuellen Linux-Computers](../virtual-machines/linux/capture-image.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md). 
+Weitere Informationen zum Erstellen eines Pools mit benutzerdefinierten Images finden Sie unter [Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools](batch-sig-images.md).
 
-Ausführliche Informationen zu den Anforderungen und Schritten finden Sie unter [Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
+Alternativ können Sie einen benutzerdefinierten Pool mit virtuellen Computern erstellen, indem Sie eine Ressource mit [verwaltetem Image](batch-custom-images.md) verwenden. Informationen zum Vorbereiten benutzerdefinierter Linux-Images von Azure-VMs finden Sie unter [Generalisieren und Erfassen eines virtuellen Linux-Computers](../virtual-machines/linux/capture-image.md). Informationen zum Vorbereiten benutzerdefinierter Windows-Images von virtuellen Azure-Computern finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Containerunterstützung in VM-Pools
 

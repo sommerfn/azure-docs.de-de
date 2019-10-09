@@ -1,19 +1,20 @@
 ---
 title: Azure HDInsight – Häufig gestellte Fragen
-description: Eine Übersicht zu Azure HDInsight
+description: Häufig gestellte Fragen zu HDInsight
+keywords: Häufig gestellte Fragen, FAQ
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: v-miegge
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 4accd8c2f58dd89fb5f918ca6e58e71caeaed57f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213870"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827607"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -27,7 +28,9 @@ Die verfügbaren HDInsight-Clustertypen und Bereitstellungsmethoden finden Sie u
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Wie lösche ich einen vorhandenen HDInsight-Cluster?
 
-Weitere Informationen zum Löschen eines Clusters, der nicht mehr verwendet wird, finden Sie unter [Löschen eines HDInsight-Clusters mithilfe von Browser, PowerShell oder Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/hdinsight/hdinsight-delete-cluster). Es wird empfohlen, zwischen einem Erstellungs- und Löschvorgang in einem einzelnen Cluster mindestens 30 bis 60 Minuten zu warten. Andernfalls tritt bei dem Vorgang u. U. ein Fehler mit der folgenden Meldung auf:
+Weitere Informationen zum Löschen eines Clusters, der nicht mehr verwendet wird, finden Sie unter [Löschen eines HDInsight-Clusters](hdinsight-delete-cluster.md).
+
+Warten Sie zwischen Erstell- und Löschvorgängen mindestens 30 bis 60 Minuten. Andernfalls tritt bei dem Vorgang unter Umständen ein Fehler mit der folgenden Fehlermeldung auf:
 
 ``Conflict (HTTP Status Code: 409) error when attempting to delete a cluster immediately after creation of a cluster. If you encounter this error, wait until the newly created cluster is in operational state before attempting to delete it.``
 
@@ -55,44 +58,49 @@ Ihr Abonnement kann so konfiguriert werden, dass die Anzahl von Kernen für eine
 
 Führen Sie die folgenden Schritte aus, um eine Erhöhung des Kontingents anzufordern:
 
-1. Navigieren Sie zum Azure-Portal, und wählen Sie „Hilfe und Support“ aus.
-2. Wählen Sie „Neue Supportanfrage“ aus.
-3. Wählen Sie auf der Seite „Neue Supportanfrage“ auf der Registerkarte „Grundlagen“ die folgenden Optionen aus:
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Hilfe und Support** aus.
+   
+1. Wählen Sie **Neue Supportanfrage** aus.
+   
+1. Geben Sie auf der Seite **Neue Supportanfrage** auf der Registerkarte **Grundlagen** die folgenden Informationen an:
+   
+   - **Problemtyp:** Wählen Sie **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
+   - **Abonnement:** Wählen Sie das Abonnement aus, das Sie ändern möchten.
+   - **Kontingenttyp:** Wählen Sie **HDInsight** aus.
 
-   * Problemtyp: Grenzwerte für Dienste und Abonnements (Kontingente)
-   * Abonnement: Das zu ändernde Abonnement
-   * Kontingenttyp: HDInsight
-
-Weitere Informationen finden Sie im Thema zum [Erstellen eines Supporttickets zum Erhöhen der Kernanzahl](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning#quotas).
+Weitere Informationen finden Sie unter [Kontingente](hdinsight-capacity-planning.md#quotas).
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>Welche unterschiedlichen Knotentypen gibt es in einem HDInsight-Cluster?
 
 In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer bzw. Knoten. Jeder Knotentyp spielt eine Rolle beim Betrieb des Systems.
 
-Weitere Informationen finden Sie unter [Ressourcentypen in Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-virtual-network-architecture#resource-types-in-azure-hdinsight-clusters).
+Weitere Informationen finden Sie unter [Ressourcentypen in Azure HDInsight-Clustern](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
 
 ## <a name="individual-components"></a>Einzelne Komponenten
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Kann ich zusätzliche Komponenten in meinem Cluster installieren?
 
-Ja, Sie können zusätzliche Komponenten installieren oder die Clusterkonfiguration mithilfe der folgenden Methoden anpassen:
+Ja. Zum Installieren zusätzlicher Komponenten oder Anpassen der Clusterkonfiguration können Sie Folgendes verwenden:
 
-* Mithilfe von Skripts während oder nach der Erstellung. Diese Skripts werden durch eine [Skriptaktion](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) aufgerufen. Diese Konfigurationsoption kann im Azure-Portal, in HDInsight Windows PowerShell-Cmdlets oder mit dem HDInsight .NET SDK verwendet werden. 
-* Mithilfe von „sudo“ oder anderer Methoden, nachdem der Cluster bereitgestellt wurde.
-* Mithilfe der [HDInsight-Anwendungsplattform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) zur Installation von Ökosystemanwendungen.
+- Skripts während oder nach der Erstellung. Skripts werden mithilfe der Konfigurationsoption [Skriptaktion](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) aufgerufen, die im Azure-Portal, in HDInsight Windows PowerShell-Cmdlets oder mit dem HDInsight .NET SDK verwendet werden kann. Diese Konfigurationsoption kann im Azure-Portal, in HDInsight Windows PowerShell-Cmdlets oder mit dem HDInsight .NET SDK verwendet werden.
+
+- `sudo` oder andere Methoden nach der Bereitstellung des Clusters.
+  
+- [HDInsight-Anwendungsplattform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) zur Installation von Ökosystemanwendungen.
 
 Die Supportteams von Microsoft können jedoch nur Unterstützung für die folgenden Situationen bieten:
 
-* Probleme oder Fehler, die beim Laden des Skripts auftreten. Fehler während der Ausführung von benutzerdefinierten Skripts können nicht über Supporttickets behoben werden. 
-* Zusätzliche Anwendungen, die Teil des Clustererstellungsprozesses sind. 
+- Probleme oder Fehler, die beim Laden des Skripts auftreten. Fehler während der Ausführung von benutzerdefinierten Skripts können nicht über Supporttickets behoben werden.
+
+- Zusätzliche Anwendungen, die Teil des Clustererstellungsprozesses sind. 
 
 Eine Liste der unterstützten Komponenten finden Sie unter [Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions).
 
 Die Unterstützung für einzelne Komponenten kann auch je nach Clustertyp variieren. Beispielsweise wird Spark in einem Kafka-Cluster nicht unterstützt (und umgekehrt).
 
-Wenden Sie sich bei Anwendungen oder Diensten außerhalb des Clustererstellungsprozesses an den jeweiligen Anbieter oder Dienstanbieter, um Unterstützung zu erhalten. Sie können auch Communitywebsites nutzen, um Unterstützung zu diesen Aktionen zu erhalten. Hier kommen zahlreiche Communitys infrage, beispielsweise das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/home?forum=hdinsight) und [Stack Overflow](https://stackoverflow.com/questions/tagged/hdinsight). Für Apache-Projekte stehen auf der [Apache-Website](https://apache.org/) auch Projektwebsites zur Verfügung. Ein Beispiel hierfür ist [Hadoop](https://hadoop.apache.org/).
+Wenden Sie sich bei Anwendungen und Diensten außerhalb des Clustererstellungsprozesses an den jeweiligen Anbieter oder Dienstanbieter, um Unterstützung zu erhalten. Außerdem können Sie zahlreiche Community-Supportwebsites nutzen. Beispiele sind das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) und [Stack Overflow](https://stackoverflow.com/). Für Apache-Projekte stehen auf der [Apache-Website](https://apache.org/) auch Projektwebsites zur Verfügung. Ein Beispiel hierfür ist [Hadoop](https://hadoop.apache.org/). 
 
- Weitere Fragen zum Azure-Support finden Sie in den [häufig gestellten Fragen zum Azure-Support](https://azure.microsoft.com/en-us/support/faq/).
+Weitere Informationen zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kann ich die einzelnen Komponenten aktualisieren, die im Cluster vorinstalliert sind?
 
@@ -102,7 +110,7 @@ Das Aktualisieren von Hive als einzelne Komponente wird beispielsweise nicht unt
 
 ### <a name="can-spark-and-kafka-run-on-the-same-hdinsight-cluster"></a>Können Spark und Kafka im selben HDInsight-Cluster ausgeführt werden?
 
-Nein, Apache Kafka und Apache Spark können nicht im selben HDInsight-Cluster ausgeführt werden. Benutzer sollten jeweils separate Cluster erstellen, um Probleme aufgrund von Ressourcenkonflikten zu vermeiden.
+Nein, Apache Kafka und Apache Spark können nicht im selben HDInsight-Cluster ausgeführt werden. Erstellen Sie separate Cluster für Kafka und Spark, um Probleme aufgrund von Ressourcenkonflikten zu vermeiden.
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Wie ändere ich die Zeitzone in Ambari?
 
@@ -119,7 +127,7 @@ Nein, Apache Kafka und Apache Spark können nicht im selben HDInsight-Cluster au
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Wie kann ich vom vorhandenen Metastore zu Azure SQL Server migrieren? 
 
-Informationen zum Migrieren von SQL Server zu Azure SQL Server finden Sie unter [Tutorial: Offlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
+Informationen zum Migrieren von SQL Server zu Azure SQL Server finden Sie unter [Tutorial: Offlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank mit DMS](../dms/tutorial-sql-server-to-azure-sql.md).
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Wird der Hive-Metastore zusammen mit dem Cluster gelöscht?
 
@@ -129,11 +137,11 @@ Standardmetastore: Der Standardmetastore ist Teil des Clusterlebenszyklus. Wenn 
 
 Benutzerdefinierter Metastore: Der Lebenszyklus des Metastores ist nicht an den Lebenszyklus eines Clusters gebunden. Daher können Sie Cluster erstellen und löschen, ohne Metadaten zu verlieren. Metadaten, wie z. B. Ihre Hive-Schemas, bleiben auch erhalten, nachdem der HDInsight-Cluster gelöscht und neu erstellt wurde.
 
-Weitere Informationen finden Sie unter [Verwenden von externen Metadatenspeichern in Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores).
+Weitere Informationen finden Sie unter [Verwenden von externen Metadatenspeichern in Azure HDInsight](hdinsight-use-external-metadata-stores.md).
 
 ### <a name="does-migrating-a-hive-metastore-also-migrate-the-default-policies-of-the-ranger-database"></a>Werden bei der Migration eines Hive-Metastores auch die Standardrichtlinien der Ranger-Datenbank migriert?
 
-Nein, die Richtliniendefinition ist in der Ranger-Datenbank enthalten. Daher wird die Richtlinie bei der Migration der Ranger-Datenbank nicht migriert.
+Nein, die Richtliniendefinition ist in der Ranger-Datenbank enthalten. Daher wird die Richtlinie bei der Migration der Ranger-Datenbank migriert.
 
 ### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-vice-versa"></a>Kann ich einen Hive-Metastore von einem Cluster mit Enterprise-Sicherheitspaket (ESP) zu einem Cluster ohne ESP migrieren und umgekehrt?
 
@@ -141,7 +149,7 @@ Ja, Sie können eine Hive-Metastore von einem Cluster mit Enterprise-Sicherheits
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Wie kann ich die Größe einer Hive-Metastore-Datenbank schätzen?
 
-In einem Hive-Metastore werden die Metadaten für Datenquellen gespeichert, die vom Hive-Server verwendet werden. Daher richten sich die Größenanforderungen nach der Anzahl der Datenquellen, die Sie u. U. für den Hive benötigen, und nach der Komplexität der Datenquellen. Daher kann die Größe nicht vorab geschätzt werden. Wie unter [Bewährte Methoden für den Hive-Metastore](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores#hive-metastore-best-practices) beschrieben, beginnen Sie mit einem S2-Tarif mit 50 DTUs und 250 GB Speicher. Wenn Sie einen Engpass feststellen, können Sie die Datenbank zentral hochskalieren.
+In einem Hive-Metastore werden die Metadaten für Datenquellen gespeichert, die auf dem Hive-Server verwendet werden. Die Größenanforderungen hängen zum Teil von der Anzahl und der Komplexität der Hive-Datenquellen ab und können nicht vorab geschätzt werden. Wie unter [Bewährte Methoden für den Hive-Metastore](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices) beschrieben, können Sie mit einem S2-Tarif mit 50 DTUs und 250 GB Speicher beginnen. Wenn Sie einen Engpass feststellen, können Sie die Datenbank zentral hochskalieren.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Werden andere Datenbanken als Azure SQL-Datenbank als externer Metastore unterstützt?
 
@@ -159,53 +167,55 @@ Wenn Sie die Ports 22 und 23 blockieren, haben Sie keinen SSH-Zugriff auf den Cl
 
 Weitere Informationen finden Sie in den folgenden Dokumenten:
 
-* [Steuern des Netzwerkdatenverkehrs](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
-* [Sichern des eingehenden Datenverkehrs für HDInsight-Cluster in einem virtuellen Netzwerk mit privatem Endpunkt](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
-* [HDInsight-Verwaltungs-IP-Adressen](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [Steuern des Netzwerkdatenverkehrs](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+
+- [Sichern des eingehenden Datenverkehrs für HDInsight-Cluster in einem virtuellen Netzwerk mit privatem Endpunkt](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+
+- [HDInsight-Verwaltungs-IP-Adressen](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Kann ich einen zusätzlichen virtuellen Computer im selben Subnetz wie einen HDInsight-Cluster bereitstellen?
 
 Ja, Sie können einen zusätzlichen virtuellen Computer im selben Subnetz wie einen HDInsight-Cluster bereitstellen. Die folgenden Konfigurationen sind möglich:
 
-* Edgeknoten: Sie können dem Cluster einen weiteren Edgeknoten hinzufügen, wie unter [Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node) beschrieben. 
-* Eigenständige Knoten:  Sie können demselben Subnetz einen eigenständigen virtuellen Computer hinzufügen und über diesen virtuellen Computer auf den Cluster zugreifen, indem Sie den privaten Endpunkt `https://<CLUSTERNAME>-int.azurehdinsight.net` verwenden. Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic).
+- Edgeknoten: Sie können dem Cluster einen weiteren Edgeknoten hinzufügen, wie unter [Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md) beschrieben.
+
+- Eigenständige Knoten:  Sie können demselben Subnetz einen eigenständigen virtuellen Computer hinzufügen und über diesen virtuellen Computer auf den Cluster zugreifen, indem Sie den privaten Endpunkt `https://<CLUSTERNAME>-int.azurehdinsight.net` verwenden. Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Kann ich einen vorhandenen HDInsight-Cluster einem anderen virtuellen Netzwerk hinzufügen?
 
-Nein, es ist nicht möglich, einen vorhandenen HDInsight-Cluster einem anderen virtuellen Netzwerk hinzuzufügen. Das virtuelle Netzwerk sollte zum Zeitpunkt der Bereitstellung angegeben werden. Wenn während der Bereitstellung kein virtuelles Netzwerk angegeben wird, wird ein internes Netzwerk erstellt, das keine externen Zugriffe unterstützt. Weitere Informationen finden Sie unter [Hinzufügen von HDInsight zu einem vorhandenen virtuellen Netzwerk](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#existingvnet).
+Nein, das ist nicht möglich. Das virtuelle Netzwerk sollte zum Zeitpunkt der Bereitstellung angegeben werden. Wenn während der Bereitstellung kein virtuelles Netzwerk angegeben wird, wird ein internes Netzwerk erstellt, auf das ein externer Zugriff nicht möglich ist. Weitere Informationen finden Sie unter [Hinzufügen von HDInsight zu einem vorhandenen virtuellen Netzwerk](hdinsight-plan-virtual-network-deployment.md#existingvnet).
 
 ## <a name="security-and-certificates"></a>Sicherheit und Zertifikate
 
-Welche Empfehlungen gibt Microsoft für den Schutz vor Schadsoftware in Azure HDInsight-Clustern?
+### <a name="what-are-the-recommendations-for-malware-protection-on-azure-hdinsight-clusters"></a>Welche Empfehlungen gibt es für den Schutz vor Schadsoftware in Azure HDInsight-Clustern?
 
-Informationen zum Schutz vor Schadsoftware finden Sie unter [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
+Informationen zum Schutz vor Schadsoftware finden Sie unter [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../security/fundamentals/antimalware.md).
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>Wie erstelle ich eine Keytab-Datei für einen HDInsight-Cluster mit Enterprise-Sicherheitspaket?
 
-Sie können eine Kerberos-Keytab-Datei für Ihren Domänenbenutzernamen erstellen. Sie können diese Keytab-Datei später für die kennwortlose Authentifizierung bei Remoteclustern verwenden, die in die Domäne eingebunden sind. Beachten Sie die GROSSBUCHSTABEN im Domänennamen:
+Erstellen Sie eine Kerberos-Keytab-Datei für Ihren Domänenbenutzernamen. Sie können diese Keytab-Datei später für die kennwortlose Authentifizierung bei Remoteclustern verwenden, die in die Domäne eingebunden sind. Der Domänenname wird in Großbuchstaben angegeben:
 
-```
-o ktutil 
-o ktutil: addent -password -p stXX@ DOMAIN.COM -k 1 -e RC4-HMAC 
-o Password for stXX@DOMAIN.COM: provided by lab instructors 
-o ktutil: wkt stXX.keytab 
-o ktutil: q
+```shell
+ktutil
+ktutil: addent -password -p <username>@<DOMAIN.COM> -k 1 -e RC4-HMAC
+Password for <username>@<DOMAIN.COM>: <password>
+ktutil: wkt <username>.keytab
+ktutil: q
 ```
 
 ### <a name="can-i-use-an-existing-azure-active-directory-tenant-to-create-an-hdinsight-cluster-that-has-the-esp"></a>Kann ich einen vorhandenen Azure Active Directory-Mandanten verwenden, um einen HDInsight-Cluster mit Enterprise-Sicherheitspaket zu erstellen?
 
-Das Aktivieren von Azure Active Directory Domain Services (AAD DS) ist eine Voraussetzung für das Erstellen eines HDInsight-Clusters mit einem Enterprise-Sicherheitspaket. Open-Source-Hadoop nutzt für die Authentifizierung Kerberos (und nicht OAuth).
+Sie müssen Azure Active Directory Domain Services (Azure AD DS) aktivieren, damit Sie einen HDInsight-Cluster mit Enterprise-Sicherheitspaket erstellen können. Open-Source-Hadoop nutzt für die Authentifizierung Kerberos (und nicht OAuth).
 
-Um virtuelle Computer in eine Domäne einzubinden, ist ein Domänencontroller erforderlich. Der verwaltete Domänencontroller entspricht AAD DS. Er wird als Erweiterung von AAD betrachtet, die alle Kerberos-Anforderungen zum Erstellen eines sicheren Hadoop-Clusters in einer verwalteten Umgebung erfüllt. HDInsight wird als verwalteter Dienst in AAD DS integriert, um End-to-End-Sicherheit zu gewährleisten.
+Um virtuelle Computer in eine Domäne einzubinden, ist ein Domänencontroller erforderlich. Der verwaltete Domänencontroller entspricht Azure AD DS. Er wird als Erweiterung von Azure Active Directory betrachtet, die alle Kerberos-Anforderungen zum Erstellen eines sicheren Hadoop-Clusters in einer verwalteten Umgebung erfüllt. HDInsight wird als verwalteter Dienst in Azure AD DS integriert, um End-to-End-Sicherheit zu gewährleisten.
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>Kann ich in einem AAD DS-Setup mit Secure LDAP ein selbstsigniertes Zertifikat verwenden und einen Cluster mit Enterprise-Sicherheitspaket bereitstellen?
 
-Obwohl empfohlen wird, ein von einer Zertifizierungsstelle (ZS) ausgestelltes Zertifikat zu verwenden, werden bei Verwendung eines Enterprise-Sicherheitspakets auch selbstsignierte Zertifikate unterstützt.
+Es wird empfohlen, ein von einer Zertifizierungsstelle ausgestelltes Zertifikat zu verwenden. Jedoch werden bei Verwendung eines Enterprise-Sicherheitspakets auch selbstsignierte Zertifikate unterstützt. Weitere Informationen finden Sie unter
 
-Weitere Informationen finden Sie unter
+- [Aktivieren von Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-* [Aktivieren von Azure AD DS](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#enable-azure-ad-ds)
-* [Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps)
+- [Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Wie kann ich in Ranger angezeigte Anmeldeaktivitäten abrufen?
 
@@ -220,12 +230,12 @@ Durch diesen Prozess werden weder andere Prozesse beeinträchtigt noch CPU-Zykle
 Für Szenarien, die eine zeitliche Kontrolle erfordern, können Sie die folgenden Schritte ausführen:
 
 1. Deaktivieren Sie die automatische Ausführung mit dem folgenden Befehl:
-
-   ``/usr/local/vbin/azsecd config -s clamav -d Disabled``
-
-2. Erstellen Sie einen Cron-Auftrag, der diesen Befehl als „Root“ ausführt:
-
-   ``/usr/local/bin/azsecd manual -s clamav``
+   
+   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+   
+1. Fügen Sie einen Cron-Auftrag hinzu, der folgenden Befehl als Root ausführt:
+   
+   `/usr/local/bin/azsecd manual -s clamav`
 
 Weitere Informationen zum Einrichten und Ausführen eines Cron-Auftrags finden Sie im Thema zum [Einrichten eines Cron-Auftrags](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job).
 
@@ -233,33 +243,34 @@ Weitere Informationen zum Einrichten und Ausführen eines Cron-Auftrags finden S
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Kann ich einem vorhandenen HDInsight-Cluster Azure Data Lake Storage Gen2 als zusätzliches Speicherkonto hinzufügen?
 
-Nein. Derzeit ist es nicht möglich, einem vorhandenen HDInsight-Cluster, der Blob Storage als primären Speicher nutzt, Azure Data Lake Storage Gen2 hinzuzufügen. Weitere Informationen finden Sie unter [Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options). 
+Nein, derzeit ist es nicht möglich, einem Cluster, der Blob Storage als primären Speicher nutzt, ein Azure Data Lake Storage Gen2-Speicherkonto hinzuzufügen. Weitere Informationen finden Sie unter [Vergleichen von Speicheroptionen](hdinsight-hadoop-compare-storage-options.md).
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>Wie finde ich den Dienstprinzipal für ein Data Lake-Speicherkonto, der aktuell verknüpft ist?
 
-Sie finden diese Einstellungen im Portal in den Clustereigenschaften unter „Data Lake Storage Gen1-Zugriff“. Weitere Informationen finden Sie unter [Überprüfen des Clustersetups](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#verify-cluster-set-up).
+Sie finden Ihre Einstellungen im Azure-Portal in den Clustereigenschaften unter **Data Lake Storage Gen1-Zugriff**. Weitere Informationen finden Sie unter [Überprüfen des Clustersetups](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up).
  
-Wie berechne ich die Verwendung von Speicherkonten und BLOB-Containern für meine HDInsight-Cluster?
-Sie können eines der folgenden Verfahren verwenden:
+### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Wie berechne ich die Verwendung von Speicherkonten und BLOB-Containern für meine HDInsight-Cluster?
 
-* [Verwenden von PowerShell](https://docs.microsoft.com/azure/storage/scripts/storage-blobs-container-calculate-size-powershell)
-* Sie können die Größe des Ordners „/user/hive/.Trash/“ in HDI-Clustern auch mit folgendem Befehl ermitteln:
+Führen Sie einen der folgenden Schritte aus:
 
-   ``hdfs dfs -du -h /user/hive/.Trash/``
+- [Verwenden von PowerShell](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+
+- Ermitteln Sie die Größe des Ordners */user/hive/.Trash/* im HDInsight-Cluster über die folgende Befehlszeile:
+  
+  `hdfs dfs -du -h /user/hive/.Trash/`
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>Wie richte ich die Überwachung für mein BLOB-Speicherkonto ein?
 
-Um BLOB-Speicherkonten zu überwachen, müssen Sie die Überwachung für das BLOB-Speicherkonto konfigurieren. Verwenden Sie dazu das unter [Überwachen eines Speicherkontos im Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account) beschriebene Verfahren. Ein HDFS-Überwachungsprotokoll enthält nur Überwachungsinformationen für das lokale HDFS-Dateisystem (hdfs://mycluster).  Im Remotespeicher ausgeführte Vorgänge werden nicht berücksichtigt.
+Um Blobspeicherkonten zu überwachen, konfigurieren Sie die Überwachung entsprechend den unter [Überwachen eines Speicherkontos im Azure-Portal](../storage/common/storage-monitor-storage-account.md) beschriebenen Schritten. Ein HDFS-Überwachungsprotokoll enthält nur Überwachungsinformationen für das lokale HDFS-Dateisystem (hdfs://mycluster).  Im Remotespeicher ausgeführte Vorgänge werden nicht berücksichtigt.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Wie übertrage ich Dateien zwischen einem BLOB-Container und einem HDInsight-Hauptknoten?
 
-Zur Übertragung von Dateien zwischen einem BLOB-Container und einem HDInsight-Hauptknoten können Sie ein mit dem folgenden Beispiel vergleichbares Shellskript für den Hauptknoten ausführen:
+Führen Sie ein mit dem folgenden Shellskript vergleichbares Skript auf dem Hauptknoten aus:
 
-```
+```shell
 for i in cat filenames.txt
-
 do
-         hadoop fs -get $i <local destination>
+   hadoop fs -get $i <local destination>
 done
 ```
  
@@ -268,44 +279,39 @@ done
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Gibt es Ranger-Plug-Ins für den Speicher?
 
-Derzeit sind keine Ranger-Plug-Ins für Blob Storage, Azure Data Lake Storage (ADLS) Gen1 oder Azure Data Lake Storage Gen2 verfügbar. Für Cluster mit Enterprise-Sicherheitspaket empfiehlt sich ADLS als bewährte Methode. Außerdem sollten Sie auf Dateisystemebene mithilfe der HDFS-Tools manuell differenzierte Berechtigungen festlegen. Darüber hinaus wird der Dateisystemzugriff bei Clustern mit Enterprise-Sicherheitspaket teilweise auch mithilfe von AAD auf Clusterebene gesteuert, wenn Sie ADLS verwenden. 
+Derzeit sind keine Ranger-Plug-Ins für Blob Storage und Azure Data Lake Storage Gen1 oder Gen2 verfügbar. Für Cluster mit Enterprise-Sicherheitspaket empfiehlt sich die Verwendung von Azure Data Lake Storage, da Sie mithilfe der HDFS-Tools zumindest differenzierte Berechtigungen auf Dateisystemebene manuell festlegen können. Darüber hinaus wird bei Verwendung von Azure Data Lake Storage der Dateisystemzugriff bei Clustern mit Enterprise-Sicherheitspaket teilweise auch über Azure Active Directory auf Clusterebene gesteuert. 
 
-Sie sollten in der Lage sein, Sicherheitsgruppen, denen Ihre Benutzer angehören, Datenzugriffsrichtlinien mithilfe des Azure Storage-Explorers zuzuweisen. Verwenden Sie dazu die in den folgenden Artikeln beschriebenen Verfahren:
+Über Azure Storage-Explorer können Sie den Sicherheitsgruppen Ihrer Benutzer Datenzugriffsrichtlinien zuweisen. Weitere Informationen finden Sie unter
 
-* [Wie richte ich Berechtigungen für Azure AD-Benutzer zum Abfragen von Daten in Data Lake Storage Gen2 mit Hive oder anderen Diensten ein?](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-* [Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Wie richte ich Berechtigungen für Azure AD-Benutzer zum Abfragen von Daten in Data Lake Storage Gen2 mit Hive oder anderen Diensten ein?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
+- [Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Kann ich den HDFS-Speicher in einem Cluster vergrößern, ohne dass die Datenträgergröße von Workerknoten zunimmt?
 
-Nein, es ist nicht möglich, die Datenträgergröße eines Workerknotens zu erhöhen. Die einzige Möglichkeit, den Datenträger zu vergrößern, besteht darin, den Cluster zu löschen und auf größeren virtuellen Workercomputern neu zu erstellen.
-
-Microsoft rät davon ab, HDFS zum Speichern von Daten in HDInsight zu verwenden, da beim Löschen des Clusters auch die Daten gelöscht werden. Stattdessen wird empfohlen, Ihre Daten in Azure zu speichern. Sie können die Kapazität des HDInsight-Clusters auch erweitern, indem Sie den Cluster zentral hochskalieren.
+Nein, es ist nicht möglich, die Datenträgergröße eines Workerknotens zu erhöhen. Die einzige Möglichkeit, den Datenträger zu vergrößern, besteht darin, den Cluster zu löschen und auf größeren virtuellen Workercomputern neu zu erstellen. Verwenden Sie HDFS nicht zum Speichern von HDInsight-Daten, da beim Löschen des Clusters auch die Daten gelöscht werden. Speichern Sie die Daten stattdessen in Azure. Sie können die Kapazität des HDInsight-Clusters auch erweitern, indem Sie den Cluster zentral hochskalieren.
 
 ## <a name="edge-nodes"></a>Edgeknoten
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Kann ich nach der Erstellung des Clusters einen Edgeknoten hinzufügen?
 
-Ja. Sie können einem vorhandenen HDInsight-Cluster oder einem neuen Cluster bei der Erstellung einen leeren Edgeknoten hinzufügen.
-
-Weitere Informationen finden Sie unter [Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node).
+Sie können einen vorhandenen HDInsight-Cluster oder einen neuen Cluster bei der Erstellung verwenden. Weitere Informationen finden Sie unter [Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md).
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Wie stelle ich eine Verbindung mit einem Edgeknoten her?
 
-Nachdem Sie einen Edgeknoten erstellt haben, können Sie über SSH an Port 22 eine Verbindung mit dem Edgeknoten herstellen. Sie finden den Namen des Edgeknotens im Clusterportal (die Namen enden im Allgemeinen auf „-ed“).
+Nachdem Sie einen Edgeknoten erstellt haben, können Sie über SSH an Port 22 eine Verbindung mit dem Edgeknoten herstellen. Den Namen des Edgeknotens finden Sie im Clusterportal. Die Namen enden im Allgemeinen auf *-ed*.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Warum werden permanente Skripts auf neu erstellten Edgeknoten nicht automatisch ausgeführt?
 
-Permanente Skripts werden verwendet, um neue Workerknoten anzupassen, die dem Cluster durch Skalierungsvorgänge hinzugefügt werden. Sie gelten nicht für Edgeknoten.
+Sie verwenden permanente Skripts, um mithilfe von Skalierungsvorgängen neue Workerknoten anzupassen, die dem Cluster hinzugefügt wurden. Persistente Skripts gelten nicht für Edgeknoten.
 
 ## <a name="rest-api"></a>REST-API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Wie lauten die REST-API-Aufrufe zum Abrufen einer Tez Query-Ansicht aus dem Cluster?
 
-Sie können die folgenden REST-Endpunkte verwenden, um die erforderlichen Informationen abzurufen. Die Antwort verfügt über das JSON-Format. Um diese Anforderungen auszuführen, können standardmäßige Authentifizierungsheader verwendet werden.
+Sie können die folgenden REST-Endpunkte verwenden, um die erforderlichen Informationen im JSON-Format abzurufen. Verwenden Sie standardmäßige Authentifizierungsheader, um diese Anforderungen auszuführen.
 
-* Tez Query-Ansicht – https://`<cluster name>`.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/
-
-* Tez DAG-Ansicht – https://`<cluster name>`.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/
+- Tez Query-Ansicht: *https:\//\<Clustername>.azurehdinsight.net/ws/v1/timeline/HIVE_QUERY_ID/*
+- Tez Dag-Ansicht: *https:\//\<Clustername>.azurehdinsight.net/ws/v1/timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Wie rufe ich die Konfigurationsdetails aus dem HDI-Cluster mithilfe eines Azure Active Directory-Benutzers ab?
 
@@ -315,15 +321,28 @@ Um mit dem AAD-Benutzer korrekte Authentifizierungstoken auszuhandeln, verwenden
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>Wie verwende ich die RESTful-API von Ambari, um die YARN-Leistung zu überwachen?
 
-Wenn der curl-Befehl im selben VNET oder in einem VNET mit Peering aufgerufen wird, verwenden Sie den folgenden Befehl:
+Wenn Sie den cURL-Befehl im selben virtuellen Netzwerk oder in einem virtuellen Netzwerk mit Peering aufrufen, verwenden Sie folgenden Befehl:
 
-``curl -u <cluster login username> -sS -G http://headnodehost:8080/api/v1/clusters/anssenllap/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+```curl
+curl -u <cluster login username> -sS -G
+http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+```
  
-Wenn der Befehl außerhalb des VNETs oder in einem VNET ohne Peering aufgerufen wird, lautet das Befehlsformat wie folgt:
- 
-* Cluster ohne Enterprise-Sicherheitspaket:  ``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
- 
-* Cluster mit Enterprise-Sicherheitspaket:  ``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+Wenn Sie den Befehl außerhalb des virtuellen Netzwerks oder in einem virtuellen Netzwerk ohne Peering aufrufen, lautet das Befehlsformat wie folgt:
+
+- Cluster ohne Enterprise-Sicherheitspaket:
+  
+  ```curl
+  curl -u <cluster login username> -sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
+
+- Cluster mit Enterprise-Sicherheitspaket:
+  
+  ```curl
+  curl -u <cluster login username>-sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
 
 > [!NOTE]
 > Von Curl wird ein Kennwort angefordert. Sie müssen ein gültiges Kennwort für den Benutzernamen für die Clusteranmeldung eingeben.
@@ -334,13 +353,17 @@ Wenn der Befehl außerhalb des VNETs oder in einem VNET ohne Peering aufgerufen 
 
 Weitere Informationen zu Preisen und häufig gestellte Fragen zur Abrechnung finden Sie auf der Seite [Azure HDInsight: Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
+### <a name="when-does-hdinsight-billing-start--stop"></a>Wann beginnt und endet die HDInsight-Abrechnung?
+
+Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt wurde, und endet mit dem Löschen des Clusters. Die Abrechnung erfolgt pro Minute.
+
 ### <a name="how-do-i-cancel-my-subscription"></a>Wie kann ich mein Abonnement kündigen?
 
 Informationen zum Kündigen Ihres Abonnements finden Sie unter [Kündigen Ihres Azure-Abonnements](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription).
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Was geschieht bei Abonnements mit nutzungsbasierter Bezahlung, nachdem ich mein Abonnement gekündigt habe?
 
-Informationen zu Ihrem gekündigten Abonnement finden Sie unter [Was geschieht, nachdem ich mein Abonnement gekündigt habe?](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription#what-happens-after-i-cancel-my-subscription)
+Informationen zu Ihrem gekündigten Abonnement finden Sie unter [Was geschieht, nachdem ich mein Abonnement gekündigt habe?](/azure/billing/billing-how-to-cancel-azure-subscription)
 
 ## <a name="hive"></a>Hive
 
@@ -352,8 +375,8 @@ Obwohl in der Ambari-Benutzeroberfläche nur 1.2 angezeigt wird, umfasst HDInsig
 
 ### <a name="what-does-hdinsight-offer-in-terms-of-real-time-stream-processing-capabilities"></a>Welche Funktionen bietet HDInsight für die Streamverarbeitung in Echtzeit?
 
-Informationen zu den Integrationsfunktionen für die Streamverarbeitung in Azure HDInsight finden Sie unter [Auswählen einer Technologie für die Datenstromverarbeitung in Azure](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/stream-processing).
+Informationen zu den Integrationsfunktionen für die Streamverarbeitung in Azure HDInsight finden Sie unter [Auswählen einer Technologie für die Datenstromverarbeitung in Azure](/azure/architecture/data-guide/technology-choices/stream-processing).
 
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Gibt es eine Möglichkeit, den Hauptknoten des Clusters dynamisch zu beenden, wenn sich der Cluster eine bestimmte Zeit im Leerlauf befindet?
 
-Nein, der Hauptknoten des Clusters kann nicht dynamisch beendet werden. Für dieses Szenario können Sie Azure Data Factory verwenden.
+Dies ist bei HDInsight-Clustern nicht möglich. Für diese Szenarien können Sie Azure Data Factory verwenden.

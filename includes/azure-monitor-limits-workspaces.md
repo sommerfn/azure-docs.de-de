@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210229"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350859"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -65,9 +65,12 @@ ms.locfileid: "71210229"
 | Verfügbare Regionen | USA, Westen-Mitte | Sie können derzeit keine neuen Arbeitsbereiche in dieser Region erstellen, da deren Kapazitäten vorübergehend ausgeschöpft sind. Diese Einschränkung soll bis Ende Oktober 2019 angegangen werden. |
 | Datenexport | Derzeit nicht verfügbar | Verwenden Sie Azure Functions oder Logic Apps, um Daten zu aggregieren und zu exportieren. | 
 
-**Datenerfassungsrate**
+**Rate für Datenerfassungsvolumen**
 
-Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Der Standardschwellenwert für die Datenerfassungsrate ist auf **500 MB/min** pro Arbeitsbereich festgelegt. Wenn Sie Daten mit einer höheren Rate an einen einzelnen Arbeitsbereich senden, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn das Datenerfassungsvolumen weiterhin das Ratenlimit überschreitet oder Sie es wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine Supportanfrage öffnen.
+
+Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Das Standardratenlimit für das Erfassungsvolumen für Daten, die von Azure-Ressourcen mit [Diagnoseeinstellungen](../articles/azure-monitor/platform/diagnostic-settings.md) gesendet werden, beträgt ungefähr **6 GB/Minute** pro Arbeitsbereich. Dies ist ein ungefährer Wert, da die tatsächliche Größe je nach Protokolllänge und Komprimierungsverhältnis zwischen den Datentypen variieren kann. Dieses Limit gilt nicht für Daten, die von Agents oder der [Data Collector-API](../articles/azure-monitor/platform/data-collector-api.md) gesendet werden.
+
+Wenn Sie Daten mit einer höheren Rate an einen einzelnen Arbeitsbereich senden, werden einige Daten gelöscht, und es wird alle sechs Stunden ein Ereignis an die Tabelle *Vorgang* im Arbeitsbereich gesendet, während der Schwellenwert weiterhin überschritten wird. Wenn das Datenerfassungsvolumen weiterhin das Ratenlimit überschreitet oder Sie es wahrscheinlich in Kürze erreichen werden, können Sie eine Erhöhung für Ihren Arbeitsbereich anfordern, indem Sie eine Supportanfrage öffnen.
  
 Damit Sie bei einem solchen Ereignis in Ihrem Arbeitsbereich benachrichtigt werden, erstellen Sie eine [Protokollwarnungsregel](../articles/azure-monitor/platform/alerts-log.md). Dazu verwenden Sie die folgende Abfrage mit der Warnungslogik basierend auf der Anzahl von Ergebnissen größer null.
 

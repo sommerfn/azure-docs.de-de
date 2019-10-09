@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c42959d46aa522042275456a87e590f9e009348
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: c5fb79fc3aa3297068f93b631d11e967c9345f4c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183070"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71717161"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 
@@ -203,17 +203,17 @@ Wenn Ihnen der Statuscode `401` angezeigt wird, haben Sie überprüft, dass nur 
 
 ## <a name="support-multiple-applications-and-issuers"></a>Unterstützen mehrerer Anwendungen und Aussteller
 
-Mehrere Anwendungen interagieren in der Regel mit einer einzigen REST-API. Damit mehrere Anwendungen Ihre API aufrufen können, fügen Sie deren Anwendungs-IDs zum `<audiences>`-Element in der eingehenden APIM-Richtlinie hinzu.
+Mehrere Anwendungen interagieren in der Regel mit einer einzigen REST-API. Damit Ihre API Tokens für mehrere Apps akzeptieren kann, fügen Sie die entsprechenden App-Kennungen dem Element `<audiences>` in der APIM-Eingangsrichtlinie zu.
 
 ```XML
-<!-- Accept requests from multiple applications -->
+<!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
     <audience>66666666-0000-0000-0000-666666666666</audience>
 </audiences>
 ```
 
-Wenn Sie mehrere Tokenaussteller unterstützen möchten, fügen Sie deren Endpunkt-URIs zum `<audiences>`-Element in der eingehenden APIM-Richtlinie hinzu.
+Wenn Sie mehrere Tokenaussteller unterstützen möchten, fügen Sie deren Endpunkt-URIs zum `<issuers>`-Element in der eingehenden APIM-Richtlinie hinzu.
 
 ```XML
 <!-- Accept tokens from multiple issuers -->

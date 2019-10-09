@@ -6,14 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 34e1d9fe937118a2eafcdd85c153653eb28752d4
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71220116"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677148"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Aktivieren von Notebooks für Azure Cosmos DB-Konten
+
+> [!IMPORTANT]
+> Integrierte Notebooks für Azure Cosmos DB sind zurzeit in den folgenden Azure-Regionen verfügbar: „Australien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Europa, Westen“ und „USA, Westen 2“. Um Notebooks zu verwenden, [erstellen Sie ein neues Konto mit Notebooks](#enable-notebooks-in-a-new-cosmos-account), oder [aktivieren Sie Notebooks für ein vorhandenes Konto](#enable-notebooks-in-an-existing-cosmos-account) in einer dieser Regionen.
 
 Integrierte Jupyter-Notebooks in Azure Cosmos DB ermöglichen es Ihnen, Ihre Daten über das Azure-Portal zu analysieren und zu visualisieren. In diesem Artikel wird beschrieben, wie Sie dieses Feature für Ihr Azure Cosmos DB-Konto aktivieren.
 

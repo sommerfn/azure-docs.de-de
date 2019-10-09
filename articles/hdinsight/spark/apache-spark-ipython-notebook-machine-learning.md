@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Erstellen einer Spark-Machine Learning-Anwendung in Azure HDInsight'
 description: 'Tutorial: Schrittweise Anleitung zum Erstellen einer Apache Spark-Machine Learning-Anwendung in HDInsight Spark-Clustern mit Jupyter Notebook.'
-ms.service: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: e1a52072ab3309454742d2d3e8582b58a33666e3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e77414da964d548b64250bbf98f86bee1529f2ab
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448709"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327016"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Tutorial: Erstellen einer Apache Spark-Machine Learning-Anwendung in Azure HDInsight 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Tutorial: Erstellen einer Apache Spark-Machine Learning-Anwendung in Azure HDInsight
 
 In diesem Tutorial lernen Sie, wie Sie mit [Jupyter Notebook](https://jupyter.org/) eine [Apache Spark](https://spark.apache.org/)-Machine Learning-Anwendung für Azure HDInsight erstellen.
 
@@ -43,7 +43,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
 
 1. Erstellen Sie ein Jupyter Notebook mit dem PySpark-Kernel. Informationen dazu finden Sie unter [Erstellen eines Jupyter Notebooks](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
-1. Importieren Sie die Typen, die für dieses Szenario benötigt werden. Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABETASTE**. 
+1. Importieren Sie die Typen, die für dieses Szenario benötigt werden. Fügen Sie den folgenden Codeausschnitt in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABETASTE**.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -60,7 +60,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
     from numpy import array
     ```
 
-3. Lasen Sie die Daten (hvac.csv), analysieren Sie sie, und verwenden Sie sie zum Trainieren des Modells. 
+1. Lasen Sie die Daten (hvac.csv), analysieren Sie sie, und verwenden Sie sie zum Trainieren des Modells.
 
     ```PySpark
     # Define a type called LabelDocument
@@ -72,7 +72,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
         if (values[3] > values[2]):
             hot = 1.0
         else:
-            hot = 0.0        
+            hot = 0.0
 
         textValue = str(values[4]) + " " + str(values[5])
 
@@ -87,7 +87,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
 
     Im Codeausschnitt definieren Sie eine Funktion, die die Ist-Temperatur mit der Zieltemperatur vergleicht. Wenn die Ist-Temperatur höher ist, wird angegeben, dass es in dem Gebäude zu warm ist (Wert **1,0**). Andernfalls wird angegeben, dass es im Gebäude zu kalt ist (Wert **0.0**).
 
-4. Konfigurieren Sie die Spark Machine Learning-Pipeline, die drei Phasen umfasst: Tokenizer, hashingTF und lr.
+1. Konfigurieren Sie die Spark Machine Learning-Pipeline, die drei Phasen umfasst: Tokenizer, hashingTF und lr.
 
     ```PySpark
     tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -98,18 +98,18 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
 
     Weitere Informationen zur Pipeline und ihrer Funktionsweise finden Sie unter [Apache Spark machine learning pipeline](https://spark.apache.org/docs/latest/ml-pipeline.html) (Apache Spark-Machine Learning-Pipeline).
 
-5. Passen Sie die Pipeline an das Schulungsdokument an.
+1. Passen Sie die Pipeline an das Schulungsdokument an.
 
     ```PySpark
     model = pipeline.fit(training)
     ```
 
-6. Überprüfen Sie das Schulungsdokument, um Ihre Fortschritte in Bezug auf die Anwendung zu ermitteln.
+1. Überprüfen Sie das Schulungsdokument, um Ihre Fortschritte in Bezug auf die Anwendung zu ermitteln.
 
     ```PySpark
     training.show()
     ```
-   
+
     Die Ausgabe sieht in etwa wie folgt aus:
 
     ```output
@@ -145,7 +145,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
 
     Beachten Sie, dass die Ist-Temperatur unterhalb der Zieltemperatur liegt. Im Gebäude ist es also zu kalt. In der Schulungsausgabe lautet der Wert **label** in der ersten Zeile daher **0,0**. Dies bedeutet, dass es im Gebäude nicht zu warm ist.
 
-7. Bereiten Sie ein Dataset vor, für das das Schulungsmodell ausgeführt werden kann. Hierzu übergeben Sie eine System-ID und ein Systemalter (in der Schulungsausgabe als **SystemInfo** bezeichnet). Mit dem Modell wird dann vorhergesagt, ob es im Gebäude mit der jeweiligen System-ID und dem Systemalter wärmer (1,0) oder kälter (0,0) ist.
+1. Bereiten Sie ein Dataset vor, für das das Schulungsmodell ausgeführt werden kann. Hierzu übergeben Sie eine System-ID und ein Systemalter (in der Schulungsausgabe als **SystemInfo** bezeichnet). Mit dem Modell wird dann vorhergesagt, ob es im Gebäude mit der jeweiligen System-ID und dem Systemalter wärmer (1,0) oder kälter (0,0) ist.
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -159,7 +159,7 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
         .map(lambda x: Document(*x)).toDF()
     ```
 
-8. Treffen Sie als Letztes die Vorhersagen für die Testdaten.
+1. Treffen Sie als Letztes die Vorhersagen für die Testdaten.
 
     ```PySpark
     # Make predictions on test documents and print columns of interest
@@ -182,9 +182,10 @@ In dieser Anwendung verwenden Sie eine Spark [ML-Pipeline](https://spark.apache.
 
    In der ersten Zeile der Vorhersage können Sie sehen, dass das Gebäude für ein HVAC-System mit ID 20 und einem Systemalter von 25 Jahren sehr warm ist (**prediction=1.0**). Der erste Wert für DenseVector (0,49999) entspricht der Vorhersage 0,0, und der zweite Wert (0,5001) entspricht der Vorhersage 1,0. Obwohl der zweite Wert in der Ausgabe nur unwesentlich höher ist, zeigt das Modell **prediction=1.0**an.
 
-10. Fahren Sie das Notebook herunter, um die Ressourcen freizugeben. Wählen Sie hierzu im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Mit dieser Aktion wird das Notebook heruntergefahren und geschlossen.
+1. Fahren Sie das Notebook herunter, um die Ressourcen freizugeben. Wählen Sie hierzu im Menü **Datei** des Notebooks die Option **Schließen und Anhalten** aus. Mit dieser Aktion wird das Notebook heruntergefahren und geschlossen.
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Verwenden der Anaconda-scikit-learn-Bibliothek für Spark-Machine Learning
+
 Apache Spark-Cluster in HDInsight enthalten Anaconda-Bibliotheken. Dazu gehört auch die **scikit-learn**-Bibliothek für Machine Learning. Außerdem enthält die Bibliothek verschiedene Datasets, mit denen Sie Beispielanwendungen direkt über ein Jupyter Notebook erstellen können. Beispiele zur Verwendung der scikit-learn-Bibliothek finden Sie unter [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -201,7 +202,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 
 1. Klicken Sie auf **Löschen**. Wählen Sie **Ja** aus.
 
-![Löschen eines HDInsight-Clusters](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
+![Löschen eines HDInsight-Clusters im Azure-Portal](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
 
 ## <a name="next-steps"></a>Nächste Schritte
 

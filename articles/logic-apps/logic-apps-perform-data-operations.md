@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179743"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309393"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Durchführen von Datenvorgängen in Azure Logic Apps
 
@@ -175,55 +175,93 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
 ### <a name="customize-table-format"></a>Tabellenformat anpassen
 
-Standardmäßig wird die Eigenschaft **Spalten** auf das automatische Erstellen der Tabellenspalten basierend auf den Arrayelementen festgelegt. 
-
-Führen Sie die folgenden Schritte aus, um benutzerdefinierte Header und Werte anzugeben:
+Standardmäßig wird die Eigenschaft **Spalten** auf das automatische Erstellen der Tabellenspalten basierend auf den Arrayelementen festgelegt. Führen Sie die folgenden Schritte aus, um benutzerdefinierte Header und Werte anzugeben:
 
 1. Öffnen Sie die Liste **Spalten**, und wählen Sie **Benutzerdefiniert** aus.
 
 1. Geben Sie in der Eigenschaft **Header** den benutzerdefinierten Headertext an, der stattdessen verwendet werden soll.
 
-1. Geben Sie in der Eigenschaft **Schlüssel** den benutzerdefinierten Wert an, der stattdessen verwendet werden soll.
+1. Geben Sie in der **Value**-Eigenschaft den benutzerdefinierten Wert an, der stattdessen verwendet werden soll.
 
-Um auf die Werte aus dem Array zu verweisen und diese zu bearbeiten, können Sie die `@item()`-Funktion in der JSON-Definition der Aktion **Create CSV table** verwenden.
+Um Werte aus dem Array zurückzugeben, können Sie die [`item()`-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#item) mit der Aktion **CSV-Tabelle erstellen** verwenden. In einer `For_each`-Schleife können Sie die [`items()`-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#items) verwenden.
 
-1. Wählen Sie auf der Symbolleiste des Designers **Codeansicht** aus. 
-
-1. Bearbeiten Sie im Code-Editor den Abschnitt `inputs` der Aktion, um die Tabellenausgabe auf die gewünschte Weise anzupassen.
-
-In diesem Beispiel werden nur die Spaltenwerte und nicht die Header aus dem `columns`-Array zurückgegeben, indem die Eigenschaft `header` auf einen leeren Wert festgelegt und jede `value`-Eigenschaft dereferenziert wird:
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Dies ist das Ergebnis, das von diesem Beispiel zurückgegeben wird:
+Angenommen, Sie benötigen z. B. in einem Array die Tabellenspalten, die nur die Eigenschaftswerte und nicht die Eigenschaftennamen enthalten. Um nur diese Werte zurückzugeben, führen Sie die folgenden Schritte aus, um in der Designeransicht oder in der Codeansicht zu arbeiten. Dies ist das Ergebnis, das von diesem Beispiel zurückgegeben wird:
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-Im Designer wird die Aktion **Create CSV table** jetzt wie folgt angezeigt:
+#### <a name="work-in-designer-view"></a>In der Designeransicht
 
-![„Create CSV Table“ ohne Spaltenüberschriften](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+Lassen Sie in der Aktion die Spalte **Header** leer. Dereferenzieren Sie für jede Zeile in der Spalte **Value** alle gewünschten Arrayeigenschaften. Jede Zeile unter **Value** gibt alle Werte für die angegebene Arrayeigenschaft zurück und wird zu einer Spalte in Ihrer Tabelle.
+
+1. Klicken Sie unter **Value** für jede gewünschte Zeile in das Bearbeitungsfeld, um die Liste mit dynamischen Inhalten anzuzeigen.
+
+1. Wählen Sie in der Liste mit den dynamischen Inhalten die Option **Ausdruck** aus.
+
+1. Geben Sie im Ausdrucks-Editor diesen Ausdruck ein, der den gewünschten Arrayeigenschaftswert angibt, und wählen Sie **OK** aus.
+
+   `item()?['<array-property-name>']`
+
+   Beispiel:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Ausdruck zum Dereferenzieren der Eigenschaft](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. Wiederholen Sie die obigen Schritte für jede gewünschte Arrayeigenschaft. Ihre Aktion sieht dann wie im folgenden Beispiel aus:
+
+   ![Fertiggestellte Ausdrücke](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. Wechseln Sie zum Auflösen von Ausdrücken in aussagekräftigere Versionen zur Codeansicht und wieder zurück zur Designeransicht, und öffnen Sie dann die reduzierte Aktion erneut:
+
+   Die Aktion **CSV-Tabelle erstellen** wird jetzt wie im folgenden Beispiel angezeigt:
+
+   ![Aktion „CSV-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>In der Codeansicht
+
+Legen Sie in der JSON-Definition der Aktion innerhalb des `columns`-Arrays die `header`-Eigenschaft auf eine leere Zeichenfolge fest. Dereferenzieren Sie für jede `value`-Eigenschaft alle gewünschten Arrayeigenschaften.
+
+1. Wählen Sie auf der Symbolleiste des Designers **Codeansicht** aus.
+
+1. Fügen Sie im Code-Editor im `columns`-Array der Aktion die leere `header`-Eigenschaft und diesen `value`-Ausdruck für jede gewünschte Spalte von Arraywerten hinzu:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Beispiel:
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Wechseln Sie zurück zur Designeransicht, und öffnen Sie die reduzierte Aktion erneut.
+
+   Die Aktion **CSV-Tabelle erstellen** wird jetzt wie in diesem Beispiel angezeigt, und die Ausdrücke wurden in aussagekräftigere Versionen aufgelöst:
+
+   ![Aktion „CSV-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 Weitere Informationen zu dieser Aktion in Ihrer zugrunde liegenden Workflowdefinition finden Sie unter [Aktion „Table“](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -288,55 +326,93 @@ Falls Sie den Codeansichts-Editor bevorzugen, können Sie die Aktionsdefinitione
 
 ### <a name="customize-table-format"></a>Tabellenformat anpassen
 
-Standardmäßig wird die Eigenschaft **Spalten** auf das automatische Erstellen der Tabellenspalten basierend auf den Arrayelementen festgelegt. 
-
-Führen Sie die folgenden Schritte aus, um benutzerdefinierte Header und Werte anzugeben:
+Standardmäßig wird die Eigenschaft **Spalten** auf das automatische Erstellen der Tabellenspalten basierend auf den Arrayelementen festgelegt. Führen Sie die folgenden Schritte aus, um benutzerdefinierte Header und Werte anzugeben:
 
 1. Öffnen Sie die Liste **Spalten**, und wählen Sie **Benutzerdefiniert** aus.
 
 1. Geben Sie in der Eigenschaft **Header** den benutzerdefinierten Headertext an, der stattdessen verwendet werden soll.
 
-1. Geben Sie in der Eigenschaft **Schlüssel** den benutzerdefinierten Wert an, der stattdessen verwendet werden soll.
+1. Geben Sie in der **Value**-Eigenschaft den benutzerdefinierten Wert an, der stattdessen verwendet werden soll.
 
-Um auf die Werte aus dem Array zu verweisen und diese zu bearbeiten, können Sie die `@item()`-Funktion in der JSON-Definition der Aktion **Create HTML table** verwenden.
+Um Werte aus dem Array zurückzugeben, können Sie die [`item()`-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#item) mit der Aktion **HTML-Tabelle erstellen** verwenden. In einer `For_each`-Schleife können Sie die [`items()`-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#items) verwenden.
 
-1. Wählen Sie auf der Symbolleiste des Designers **Codeansicht** aus. 
-
-1. Bearbeiten Sie im Code-Editor den Abschnitt `inputs` der Aktion, um die Tabellenausgabe auf die gewünschte Weise anzupassen.
-
-In diesem Beispiel werden nur die Spaltenwerte und nicht die Header aus dem `columns`-Array zurückgegeben, indem die Eigenschaft `header` auf einen leeren Wert festgelegt und jede `value`-Eigenschaft dereferenziert wird:
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Dies ist das Ergebnis, das von diesem Beispiel zurückgegeben wird:
+Angenommen, Sie benötigen z. B. in einem Array die Tabellenspalten, die nur die Eigenschaftswerte und nicht die Eigenschaftennamen enthalten. Um nur diese Werte zurückzugeben, führen Sie die folgenden Schritte aus, um in der Designeransicht oder in der Codeansicht zu arbeiten. Dies ist das Ergebnis, das von diesem Beispiel zurückgegeben wird:
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-Im Designer wird die Aktion **Create HTML table** jetzt wie folgt angezeigt:
+#### <a name="work-in-designer-view"></a>In der Designeransicht
 
-![„Create HTML Table“ ohne Spaltenüberschriften](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+Lassen Sie in der Aktion die Spalte **Header** leer. Dereferenzieren Sie für jede Zeile in der Spalte **Value** alle gewünschten Arrayeigenschaften. Jede Zeile unter **Value** gibt alle Werte für die angegebene Eigenschaft zurück und wird zu einer Spalte in Ihrer Tabelle.
+
+1. Klicken Sie unter **Value** für jede gewünschte Zeile in das Bearbeitungsfeld, um die Liste mit dynamischen Inhalten anzuzeigen.
+
+1. Wählen Sie in der Liste mit den dynamischen Inhalten die Option **Ausdruck** aus.
+
+1. Geben Sie im Ausdrucks-Editor diesen Ausdruck ein, der den gewünschten Arrayeigenschaftswert angibt, und wählen Sie **OK** aus.
+
+   `item()?['<array-property-name>']`
+
+   Beispiel:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Ausdruck zum Dereferenzieren der Eigenschaft](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. Wiederholen Sie die obigen Schritte für jede gewünschte Arrayeigenschaft. Ihre Aktion sieht dann wie im folgenden Beispiel aus:
+
+   ![Fertiggestellte Ausdrücke](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. Wechseln Sie zum Auflösen von Ausdrücken in aussagekräftigere Versionen zur Codeansicht und wieder zurück zur Designeransicht, und öffnen Sie dann die reduzierte Aktion erneut:
+
+   Die Aktion **HTML-Tabelle erstellen** wird jetzt wie im folgenden Beispiel angezeigt:
+
+   ![Aktion „HTML-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>In der Codeansicht
+
+Legen Sie in der JSON-Definition der Aktion innerhalb des `columns`-Arrays die `header`-Eigenschaft auf eine leere Zeichenfolge fest. Dereferenzieren Sie für jede `value`-Eigenschaft alle gewünschten Arrayeigenschaften.
+
+1. Wählen Sie auf der Symbolleiste des Designers **Codeansicht** aus.
+
+1. Fügen Sie im Code-Editor im `columns`-Array der Aktion die leere `header`-Eigenschaft und diesen `value`-Ausdruck für jede gewünschte Spalte von Arraywerten hinzu:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Beispiel:
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Wechseln Sie zurück zur Designeransicht, und öffnen Sie die reduzierte Aktion erneut.
+
+   Die Aktion **HTML-Tabelle erstellen** wird jetzt wie in diesem Beispiel angezeigt, und die Ausdrücke wurden in aussagekräftigere Versionen aufgelöst:
+
+   ![Aktion „HTML-Tabelle erstellen“ mit aufgelösten Ausdrücken und ohne Header](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 Weitere Informationen zu dieser Aktion in Ihrer zugrunde liegenden Workflowdefinition finden Sie unter [Aktion „Table“](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3791b2d60b84299fc3b646f7e6585002078b607f
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624257"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350167"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
@@ -359,6 +359,58 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
     </voice>
 </speak>
 ```
+## <a name="say-as-element"></a>say-as-Element  
+
+`say-as` ist ein optionales Element, das den Inhaltstyp (z. B. Zahl oder Datum) für den Text des Elements angibt. Es informiert die Sprachsynthese-Engine, wie der Text ausgesprochen wird. 
+
+**Syntax**
+
+```XML
+<say-as interpret-as="string" format="digit string" detail="string"> <say-as>
+```
+
+**Attribute**
+
+| Attribut | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| interpret-as | Gibt an, welchen Inhaltstyp der Text des Elements darstellt. Die folgende Tabelle listet die unterschiedlichen Typen auf. | Erforderlich |
+| format | Enthält weitere Informationen, wie genau der Elementtext formatiert ist, für Inhaltstypen, die mehrdeutige Formate haben können. SSML definiert Formate für Inhaltstypen, die diese verwenden (siehe Tabelle unten). | Optional |
+| Detail | Gibt die Menge der auszusprechenden Details an. Dieses Attribut könnte beispielsweise bei der Sprachsynthese-Engine die Aussprache von Satzzeichen anfordern. Für `detail` sind keine Standardwerte definiert. | Optional |
+
+<!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
+
+Im Folgenden finden Sie die unterstützten Inhaltstypen für die Attribute `interpret-as` und `format`. Fügen Sie das `format`-Attribut nur dann ein, wenn `interpret-as` auf Datum und Uhrzeit festgelegt ist.
+
+| interpret-as | format | Interpretation |
+|--------------|--------|----------------|
+| address | | Der Text wird als Adresse ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Als „Ich bin am 150th Court Nordost Redmond Washington.“ |
+| cardinal, number | | Der Text wird als Kardinalzahl ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />Als „Es gibt drei Alternativen.“ |
+| characters, spell-out | | Der Text wird als einzelner Buchstabe (buchstabiert) ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />Als „T E S T.“ |
+| date  | TMJ, MTJ, JMT, JTM, JM, MT, TM, T, M, J | Der Text wird als Datum ausgesprochen. Das `format`-Attribut gibt das Datumsformat an (*T = Tag, M = Monat und J = Jahr*). Aussprache der Sprachsynthese-Engine:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />Als „heute ist der neunzehnte Oktober zweitausendsechzehn“. |
+| digits, number_digit | | Der Text wird als Sequenz einzelner Ziffern gesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />Als „1 2 3 4 5 6 7 8 9“. |
+| fraction | | Der Text wird als Bruchzahl ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Als „drei achtel Zoll“. |
+| ordinal  | | Der Text wird als Ordinalzahl ausgesprochen. Aussprache der Sprachsynthese-Engine:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Als „Wählen Sie die dritte Option aus.“ |
+| telephone  | | Der Text wird als Telefonnummer ausgesprochen. Das Attribut `format` kann Ziffern enthalten, die einen Ländercode darstellen. Beispiel: „1“ für die USA oder „39“ für Italien. Die Sprachsynthese-Engine kann sich anhand dieser Informationen orientieren, wie eine Telefonnummer auszusprechen ist. Wenn die Telefonnummer ebenfalls den Ländercode enthält, hat dieser Vorrang vor dem Ländercode in `format`. Aussprache der Sprachsynthese-Engine:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />Als „Meine Nummer lautet Vorwahl acht acht acht fünf fünf fünf eins zwei eins zwei.“ |
+| time | hms12, hms24 | Der Text wird als Uhrzeit ausgesprochen. Das `format`-Attribut gibt an, ob die Uhrzeit im 12-Stunden-Format (hms12) oder 24-Stunden-Format (hms24) angegeben wird. Verwenden Sie einen Doppelpunkt zum Trennen von Zahlen, die Stunden, Minuten und Sekunden darstellen. Beispielsweise ist Folgendes zulässig: 12:35, 1:14:32, 08:15 und 02:50:45. Aussprache der Sprachsynthese-Engine:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Als „Der Zug fährt um vier Uhr morgens.“ |
+
+**Verwendung**
+
+Das `say-as`-Element darf nur Text enthalten.
+
+**Beispiel**
+
+Die Sprachsynthese-Engine spricht den Beispielsatz wie folgt aus: „Ihre erste Anfrage war für ein Zimmer am neunzehnten Oktober zweitausendzehn mit frühzeitiger Ankunft um zwölf Uhr fünfunddreißig nachmittags.“
+ 
+```XML
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice  name="en-US-Jessa24kRUS">
+    <p>
+    Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
+    on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
+    </p>
+</speak>
+```
+
 
 ## <a name="add-recorded-audio"></a>Hinzufügen von Audioaufzeichnungen
 

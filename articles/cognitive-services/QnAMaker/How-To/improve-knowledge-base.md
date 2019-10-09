@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab4447c8c07f8e8315c0258cc3254e5272ab7582
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: e605f2ab0e79fa3d7d3ee3735f47776654566cb6
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272434"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802327"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 
@@ -189,7 +189,7 @@ Content-Type: application/json
 |HTTP-Anforderungseigenschaft|NAME|type|Zweck|
 |--|--|--|--|
 |URL-Routenparameter|Wissensdatenbank-ID|Zeichenfolge|GUID der Knowledge Base|
-|Unterdomäne des Hosts|Name der QnAMaker-Ressource|Zeichenfolge|Der Hostname für Ihren QnA Maker in Ihrem Azure-Abonnement. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. |
+|Benutzerdefinierte Unterdomäne|Name der QnAMaker-Ressource|Zeichenfolge|Der Ressourcenname wird als benutzerdefinierte Unterdomäne für Ihre QnA Maker verwendet. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. Sie wird als `host` aufgeführt.|
 |Header|Content-Type|Zeichenfolge|Medientyp des an die API gesendeten Texts Der Standardwert ist: `application/json`|
 |Header|Authorization|Zeichenfolge|Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Posttext|JSON-Objekt|JSON|Das Feedback zum Training|
@@ -298,14 +298,14 @@ public class FeedbackRecord
 /// <summary>
 /// Method to call REST-based QnAMaker Train API for Active Learning
 /// </summary>
-/// <param name="host">Endpoint host of the runtime</param>
+/// <param name="endpoint">Endpoint URI of the runtime</param>
 /// <param name="FeedbackRecords">Feedback records train API</param>
 /// <param name="kbId">Knowledgebase Id</param>
 /// <param name="key">Endpoint key</param>
 /// <param name="cancellationToken"> Cancellation token</param>
-public async static void CallTrain(string host, FeedbackRecords feedbackRecords, string kbId, string key, CancellationToken cancellationToken)
+public async static void CallTrain(string endpoint, FeedbackRecords feedbackRecords, string kbId, string key, CancellationToken cancellationToken)
 {
-    var uri = host + "/knowledgebases/" + kbId + "/train/";
+    var uri = endpoint + "/knowledgebases/" + kbId + "/train/";
 
     using (var client = new HttpClient())
     {

@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299915"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709972"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Voraussetzungen für Azure HPC Cache (Vorschauversion)
 
@@ -57,15 +57,14 @@ Weitere Informationen zu virtuellen Azure-Netzwerken und DNS-Serverkonfiguration
 Überprüfen Sie diese Voraussetzungen im Hinblick auf Berechtigungen, bevor Sie mit dem Erstellen des Caches beginnen.
 
 * Die Cache-Instanz muss in der Lage sein, virtuelle Netzwerkschnittstellen (NICs) zu erstellen. Der Benutzer, der den Cache erstellt, muss über ausreichende Berechtigungen für das Abonnement verfügen, um NICs zu erstellen.
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
 * Bei der Verwendung von Blobspeicher benötigt Azure HPC Cache die Autorisierung zum Zugriff auf Ihr Speicherkonto. Sie können rollenbasierte Zugriffssteuerung (RBAC) verwenden, um dem Cache Zugriff auf Ihren Blobspeicher zu erteilen. Zwei Rollen sind erforderlich: „Mitwirkender von Speicherkonto“ und „Mitwirkender an Storage-Blobdaten“. Befolgen Sie die Anweisungen unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um die Rollen hinzuzufügen.
 
 ## <a name="storage-infrastructure"></a>Speicherinfrastruktur
 
-Der Cache unterstützt Azure-Blobcontainer oder NFS-Hardwarespeicherexporte. Sie können Speicherziele beim Erstellen des Caches definieren, aber Sie können Speicher auch später hinzufügen.
+Der Cache unterstützt Azure-Blobcontainer oder NFS-Hardwarespeicherexporte. Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu.
 
-Für jeden Speichertyp gelten bestimmte Voraussetzungen. 
+Für jeden Speichertyp gelten bestimmte Voraussetzungen.
 
 ### <a name="nfs-storage-requirements"></a>NFS-Speicheranforderungen
 

@@ -4,20 +4,32 @@ description: Erfahren Sie, wie Sie einen Container in Azure Cosmos DB mit eine
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: a1216daade2df832b606fceb648fca998c3fdec8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5b0d182e09a4978a4d9c1184f085e140e5c698bc
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300133"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811711"
 ---
 # <a name="create-containers-with-large-partition-key"></a>Erstellen von Containern mit großen Partitionsschlüsseln
 
-Azure Cosmos DB verwendet hashbasierte Partitionsschemas, um Daten horizontal skalieren zu können. Alle Azure Cosmos DB-Container, die vor dem 3. März 2019 erstellt wurden, verwenden eine Hashfunktion, die den Hash aus den ersten 100 Byte des Partitionsschlüssels berechnet. Wenn es mehrere Partitionsschlüssel gibt, deren ersten 100 Byte übereinstimmen, werden diese logischen Partitionen vom Dienst als dieselbe logische Partition angesehen. Das kann zu Problemen führen. Z. B. kann es sein, dass das Partitionsgrößenkontingent nicht richtig ist oder dass eindeutige Indizes für alle Partitionsschlüssel angewendet werden. Zur Behebung dieses Problems werden große Partitionsschlüssel eingeführt. Azure Cosmos DB unterstützt jetzt große Partitionsschlüssel mit einer Größe von bis zu 2 KB.
+Azure Cosmos DB verwendet hashbasierte Partitionsschemas, um Daten horizontal skalieren zu können. Bei allen Azure Cosmos Containern, die vor dem 3. Mai 2019 erstellt wurden, kommt eine Hashfunktion zum Einsatz, die den Hash mit Hilfe der ersten 100 Bytes des Partitionsschlüssels ermittelt. Wenn es mehrere Partitionsschlüssel gibt, deren ersten 100 Byte übereinstimmen, werden diese logischen Partitionen vom Dienst als dieselbe logische Partition angesehen. Das kann zu Problemen führen. Z. B. kann es sein, dass das Partitionsgrößenkontingent nicht richtig ist oder dass eindeutige Indizes für alle Partitionsschlüssel angewendet werden. Zur Behebung dieses Problems werden große Partitionsschlüssel eingeführt. Azure Cosmos DB unterstützt jetzt große Partitionsschlüssel mit einer Größe von bis zu 2 KB.
 
-Große Partitionsschlüssel werden durch eine Funktionalität einer verbesserten Version der Hashfunktion unterstützt, durch die ein eindeutiger Hash für große Partitionsschlüssel mit einer Größe von bis zu 2 KB generiert werden kann. Diese Hashversion wird auch für Szenarios mit hoher Partitionsschlüsselkardinalität unabhängig von der Größe des Partitionsschlüssels empfohlen. Die Partitionsschlüsselkardinalität wird als Anzahl der eindeutigen logischen Partitionen definiert, z. B. ~30.000 logische Partitionen in einem Container. In diesem Artikel wird beschrieben, wie Sie einen Container in Azure Cosmos DB mit einem großen Partitionsschlüssel über das Azure-Portal und mithilfe verschiedener SDKs erstellen können. 
+Große Partitionsschlüssel werden durch eine Funktionalität einer verbesserten Version der Hashfunktion unterstützt, durch die ein eindeutiger Hash für große Partitionsschlüssel mit einer Größe von bis zu 2 KB generiert werden kann. Diese Hashversion wird auch für Szenarios mit hoher Partitionsschlüsselkardinalität unabhängig von der Größe des Partitionsschlüssels empfohlen. Die Partitionsschlüsselkardinalität wird als Anzahl der eindeutigen logischen Partitionen definiert, z. B. ~30.000 logische Partitionen in einem Container. In diesem Artikel wird beschrieben, wie Sie einen Container in Azure Cosmos DB mit einem großen Partitionsschlüssel über das Azure-Portal und mithilfe verschiedener SDKs erstellen können.
+
+## <a name="create-a-large-partition-key-azure-portal"></a>Erstellen eines großen Partitionsschlüssels (Azure-Portal)
+
+Aktivieren Sie beim Erstellen eines neuen Containers über das Azure-Portal die Option **My partition key is larger than 100 bytes** (Mein Partitionsschlüssel ist größer als 100 Byte), um einen großen Partitionsschlüssel zu erstellen. Das Verwenden großer Partitionsschlüssel ist für alle neuen Container standardmäßig aktiviert. Deaktivieren Sie das Kontrollkästchen, wenn Sie keine großen Partitionsschlüssel benötigen oder wenn Sie Anwendungen verwenden, die mit SDK-Versionen vor 1.18 ausgeführt werden.
+
+![Erstellen eines großen Partitionsschlüssels über das Azure-Portal](./media/large-partition-keys/large-partition-key-with-portal.png)
+
+## <a name="create-a-large-partition-key-powershell"></a>Erstellen eines großen Partitionsschlüssels (PowerShell)
+
+Informationen zum Erstellen eines Containers mit Unterstützung für große Partitionsschlüssel finden Sie unter
+
+* [Erstellen eines Azure Cosmos DB-Containers mit einem großen Partitionsschlüssel](manage-with-powershell.md##create-container-big-pk)
 
 ## <a name="create-a-large-partition-key-net-sdk"></a>Erstellen eines großen Partitionsschlüssels (.NET SDK)
 
@@ -29,7 +41,7 @@ Wenn Sie mithilfe des .NET SDK einen Container mit einem großen Partitionsschl
 await database.CreateContainerAsync(
     new ContainerProperties(collectionName, $"/longpartitionkey")
     {
-        PartitionKeyDefinitionVersion = PartitionKeyDefinitionVersion.V2, 
+        PartitionKeyDefinitionVersion = PartitionKeyDefinitionVersion.V2,
     })
 ```
 
@@ -48,47 +60,6 @@ database,
            }
          },
       new RequestOptions { OfferThroughput = 400 });
-```
-
-## <a name="create-a-large-partition-key-azure-portal"></a>Erstellen eines großen Partitionsschlüssels (Azure-Portal) 
-
-Aktivieren Sie beim Erstellen eines neuen Containers über das Azure-Portal die Option **My partition key is larger than 100 bytes** (Mein Partitionsschlüssel ist größer als 100 Byte), um einen großen Partitionsschlüssel zu erstellen. Das Verwenden großer Partitionsschlüssel ist für alle neuen Container standardmäßig aktiviert. Deaktivieren Sie das Kontrollkästchen, wenn Sie keine großen Partitionsschlüssel benötigen oder wenn Sie Anwendungen verwenden, die mit SDK-Versionen vor 1.18 ausgeführt werden.
-
-![Erstellen eines großen Partitionsschlüssels über das Azure-Portal](./media/large-partition-keys/large-partition-key-with-portal.png)
-
-## <a name="create-a-large-partition-key-powershell"></a>Erstellen eines großen Partitionsschlüssels (PowerShell)
-
-Wenn Sie mithilfe von PowerShell einen Container mit einem großen Partitionsschlüssel erstellen möchten, müssen Sie `"version" = 2` für das Objekt `partitionKey` einschließen.
-
-```azurepowershell-interactive
-# Create a Cosmos SQL API container with large partition key support (version 2)
-$resourceGroupName = "myResourceGroup"
-$containerName = "mycosmosaccount" + "/sql/" + "myDatabase" + "/" + "myContainer"
-
-# Container with large partition key support (version = 2)
-$containerProperties = @{
-  "resource"=@{
-    "id"=$containerName;
-    "partitionKey"=@{
-        "paths"=@("/myPartitionKey");
-        "kind"="Hash";
-        "version" = 2
-    };
-    "indexingPolicy"=@{
-        "indexingMode"="Consistent";
-        "includedPaths"= @(@{
-            "path"="/*"
-        });
-        "excludedPaths"= @(@{
-            "path"="/myPathToNotIndex/*"
-        })
-    }
-  }
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases/containers" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $containerName -PropertyObject $containerProperties
 ```
 
 ## <a name="supported-sdk-versions"></a>Unterstützte SDK-Versionen
@@ -110,5 +81,3 @@ Derzeit können Sie in Power BI und Azure Logic Apps keine Container mit großem
 * [Anforderungseinheiten in Azure Cosmos DB](request-units.md)
 * [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
 * [Arbeiten mit einem Azure Cosmos-Konto](account-overview.md)
-
-

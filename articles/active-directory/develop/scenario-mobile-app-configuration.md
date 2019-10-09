@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7b731c9936ab85b19428687330044a46c563c49
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 168fbb275f70acd229dfd8f2e3f0d4c325db0f94
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268364"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678016"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobile App zum Aufrufen von Web-APIs – Codekonfiguration
 
@@ -155,9 +155,13 @@ Unter Android und iOS ermöglichen Broker Folgendes:
 - Geräteidentifikation. Ermöglicht Azure AD-gerätebezogene Richtlinien für den bedingten Zugriff durch den Zugriff auf das Gerätezertifikat, das auf dem Gerät erstellt wurde, als es dem Arbeitsplatz beigetreten ist.
 - Überprüfung der Anwendungsidentifikation. Wenn eine Anwendung den Broker aufruft, übergibt sie die Umleitungs-URL, und der Broker überprüft sie.
 
-### <a name="enable-the-brokers-on-xamarin"></a>Aktivieren der Broker in Xamarin
+### <a name="enable-the-broker-on-xamarin"></a>Aktivieren des Brokers in Xamarin
 
 Verwenden Sie zum Aktivieren einer dieser Funktionen den `WithBroker()`-Parameter, wenn Sie die `PublicClientApplicationBuilder.CreateApplication`-Methode aufrufen. `.WithBroker()` ist standardmäßig auf „true“ festgelegt. Führen Sie unter [Xamarin.iOS](#brokered-authentication-for-xamarinios) die folgenden Schritte aus.
+
+### <a name="enable-the-broker-for-msal-for-android"></a>Aktivieren des Brokers für MSAL für Android
+
+Informationen zum Aktivieren eines Brokers in Android finden Sie unter [Brokerauthentifizierung in Android](brokered-auth.md). 
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>Aktivieren des Brokers für MSAL für iOS und macOS
 

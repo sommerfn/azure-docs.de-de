@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291031"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326375"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Bearbeiten und Verwalten eines vorhandenen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -36,7 +36,7 @@ In diesem Artikel wird beschrieben, wie Sie vorhandene Zugriffspakete bearbeiten
 
 ## <a name="add-resource-roles"></a>Hinzufügen von Ressourcenrollen
 
-Eine Ressourcenrolle ist eine Sammlung von Berechtigungen, die einer Ressource zugeordnet sind. Damit Benutzer Ressourcen anfordern können, müssen Sie dem Zugriffspaket Ressourcenrollen hinzufügen. Ressourcenrollen können für Gruppen, Anwendungen und SharePoint-Websites hinzugefügt werden.
+Eine Ressourcenrolle ist eine Sammlung von Berechtigungen, die einer Ressource zugeordnet sind. Damit Benutzer Ressourcen anfordern können, müssen Sie dem Zugriffspaket Ressourcenrollen hinzufügen. Ressourcenrollen können für Gruppen, Teams, Anwendungen und SharePoint-Websites hinzugefügt werden.
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
@@ -50,38 +50,49 @@ Eine Ressourcenrolle ist eine Sammlung von Berechtigungen, die einer Ressource z
 
     ![Zugriffspaket: Ressourcenrollen hinzufügen](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. Je nachdem, ob Sie eine Gruppe, Anwendung oder SharePoint-Website hinzufügen möchten, führen Sie die entsprechenden Schritte in einem der folgenden Abschnitte zum Hinzufügen von Ressourcenrollen aus.
+1. Je nachdem, ob Sie eine Gruppe, ein Team, eine Anwendung oder eine SharePoint-Website hinzufügen möchten, führen Sie die entsprechenden Schritte in einem der folgenden Abschnitte zum Hinzufügen von Ressourcenrollen aus.
 
-### <a name="add-a-group-resource-role"></a>Hinzufügen einer Ressourcenrolle für eine Gruppe
+### <a name="add-a-group-or-team-resource-role"></a>Hinzufügen einer Ressourcenrolle für eine Gruppe oder ein Team
 
-Mit der Azure AD-Berechtigungsverwaltung können Benutzer automatisch einer Gruppe hinzugefügt werden, wenn sie einem Zugriffspaket zugewiesen werden. 
+Mit der Berechtigungsverwaltung können Benutzer automatisch einer Gruppe oder einem Microsoft-Team hinzugefügt werden, wenn sie einem Zugriffspaket zugewiesen werden. 
 
-- Ist eine Gruppe Teil eines Zugriffspakets und wird ein Benutzer diesem Zugriffspaket zugewiesen, wird der Benutzer automatisch dieser Gruppe hinzugefügt (sofern noch nicht vorhanden).
-- Läuft die Zuweisung des Benutzers zu einem Zugriffspaket ab, wird er aus der Gruppe entfernt, sofern er keinem anderen Zugriffspaket zugewiesen ist, dem diese Gruppe angehört.
+- Ist eine Gruppe oder ein Team Teil eines Zugriffspakets und wird ein Benutzer diesem Zugriffspaket zugewiesen, wird der Benutzer automatisch dieser Gruppe oder diesem Team hinzugefügt (sofern noch nicht vorhanden).
+- Läuft die Zuweisung des Benutzers zu einem Zugriffspaket ab, wird er aus der Gruppe oder dem Team entfernt, sofern er keinem anderen Zugriffspaket zugewiesen ist, dem diese Gruppe oder dieses Team angehört.
 
-Sie können eine beliebige Office 365-Gruppe oder Azure AD-Sicherheitsgruppe auswählen.  Administratoren können einem Katalog jede beliebige Gruppe hinzufügen. Das gleiche gilt für Katalogbesitzer, wenn sie Besitzer der Gruppe sind. Beachten Sie beim Auswählen einer Gruppe die folgenden Azure AD-Einschränkungen:
+Sie können eine beliebige [Azure AD-Sicherheitsgruppe oder Office 365-Gruppe](../fundamentals/active-directory-groups-create-azure-portal.md) auswählen.  Administratoren können einem Katalog jede beliebige Gruppe hinzufügen. Das gleiche gilt für Katalogbesitzer, wenn sie Besitzer der Gruppe sind. Beachten Sie beim Auswählen einer Gruppe die folgenden Azure AD-Einschränkungen:
 
-- Wird ein Benutzer (einschließlich eines Gasts) einer Gruppe als Mitglied hinzugefügt, sind alle anderen Mitglieder dieser Gruppe für ihn sichtbar.
+- Wird ein Benutzer (einschließlich eines Gasts) einer Gruppe oder einem Team als Mitglied hinzugefügt, sind alle anderen Mitglieder dieser Gruppe oder dieses Teams für ihn sichtbar.
 - In Azure AD kann die Mitgliedschaft einer Gruppe, die über Windows Server Active Directory mit Azure AD Connect synchronisiert oder in Exchange Online als Verteilergruppe erstellt wurde, nicht geändert werden.  
 - Die Mitgliedschaft von dynamischen Gruppen kann nicht durch Hinzufügen oder Entfernen eines Mitglieds aktualisiert werden. Daher eignen sich dynamische Gruppenmitgliedschaften nicht für die Azure AD-Berechtigungsverwaltung.
 
-1. Klicken Sie auf der Seite **Hinzufügen von Ressourcenrollen zu einem Zugriffspaket** auf **Gruppen**, um den Bereich „Gruppen auswählen“ zu öffnen.
+Weitere Informationen finden Sie unter [Vergleichen von Gruppen](/office365/admin/create-groups/compare-groups) und [Office 365-Gruppen und Microsoft-Teams](/microsoftteams/office-365-groups).
 
-1. Wählen Sie die Gruppen aus, die Sie in das Zugriffspaket einschließen möchten.
+1. Klicken Sie auf der Seite **Hinzufügen von Ressourcenrollen zu einem Zugriffspaket** auf **Gruppen und Teams**, um den Bereich „Gruppen auswählen“ zu öffnen.
+
+1. Wählen Sie die Gruppen und Teams aus, die Sie in das Zugriffspaket einschließen möchten.
 
     ![Zugriffspaket: Ressourcenrollen hinzufügen – Gruppen auswählen](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. Klicken Sie auf **Auswählen**.
 
+    Nachdem Sie die Gruppe oder das Team ausgewählt haben, wird in der Spalte **Untertyp** einer der folgenden Untertypen aufgelistet:
+
+    |  |  |
+    | --- | --- |
+    | Sicherheit | Gewähren des Zugriffs auf Ressourcen |
+    | Distribution | Senden von Benachrichtigungen an eine Gruppe von Personen |
+    | O365 | Office 365-Gruppe, für die Teams nicht aktiviert ist. Wird für die Zusammenarbeit zwischen Benutzern sowohl innerhalb als auch außerhalb des Unternehmens verwendet. |
+    | Team | Office 365-Gruppe, für die Teams aktiviert ist. Wird für die Zusammenarbeit zwischen Benutzern sowohl innerhalb als auch außerhalb des Unternehmens verwendet. |
+
 1. Wählen Sie in der Liste **Rolle** die Option **Besitzer** oder **Mitglied** aus.
 
     In der Regel wird die Rolle „Mitglied“ ausgewählt. Mit der Rolle „Besitzer“ ist es Benutzern erlaubt, andere Mitglieder oder Besitzer hinzuzufügen oder zu entfernen.
 
-    ![Zugriffspaket: Ressourcenrolle für eine Gruppe hinzufügen](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Zugriffspaket: Ressourcenrolle für eine Gruppe oder ein Team hinzufügen](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. Klicken Sie auf **Hinzufügen**.
 
-    Alle Benutzer mit einer bestehenden Zuweisung zu dem Zugriffspaket werden durch das Hinzufügen der Gruppe automatisch Mitglied dieser Gruppe.
+    Alle Benutzer mit einer bestehenden Zuweisung zu dem Zugriffspaket werden durch das Hinzufügen der Gruppe oder des Teams automatisch Mitglied dieser Gruppe.
 
 ### <a name="add-an-application-resource-role"></a>Hinzufügen einer Ressourcenrolle für eine Anwendung
 

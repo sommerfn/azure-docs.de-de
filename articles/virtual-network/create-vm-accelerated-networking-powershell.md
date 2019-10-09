@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: ef6086afa17f1ab864d70678a6da6df2a78e0c16
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190293"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677997"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -44,6 +44,7 @@ Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der
 Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unterstützt:
 * **Windows Server 2016 Datacenter** 
 * **Windows Server 2012 R2 Datacenter**
+* **Windows Server 2019 Datacenter**
 
 ### <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
 Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt.  Folgende Reihen werden unterstützt: D/DSv2 und F/Fs
@@ -230,7 +231,7 @@ Wenn Sie eine VM ohne beschleunigten Netzwerkbetrieb erstellt haben, können Sie
 Beenden Sie die VM, und heben Sie ihre Zuordnung auf. Falls es sich um eine Verfügbarkeitsgruppe handelt, führen Sie diese Vorgänge für alle VMs in der Gruppe aus:
 
 ```azurepowershell
-Stop-AzureRmVM -ResourceGroup "myResourceGroup" `
+Stop-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 
@@ -239,18 +240,18 @@ Wichtiger Hinweis: Wenn Ihre VM einzeln erstellt wurde (ohne Verfügbarkeitsgrup
 Aktivieren Sie dann den beschleunigten Netzwerkbetrieb in der Netzwerkschnittstelle Ihrer VM:
 
 ```azurepowershell
-$nic = Get-AzureRMNetworkInterface -ResourceGroupName "myResourceGroup" `
+$nic = Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     -Name "myNic"
 
 $nic.EnableAcceleratedNetworking = $true
 
-$nic | Set-AzureRMNetworkInterface
+$nic | Set-AzNetworkInterface
 ```
 
 Starten Sie Ihre VM bzw. im Fall einer Verfügbarkeitsgruppe alle VMs in der Gruppe neu, und überprüfen Sie, ob der beschleunigte Netzwerkbetrieb aktiviert wurde:
 
 ```azurepowershell
-Start-AzureRmVM -ResourceGroup "myResourceGroup" `
+Start-AzVM -ResourceGroup "myResourceGroup" `
     -Name "myVM"
 ```
 

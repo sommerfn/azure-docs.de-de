@@ -10,208 +10,208 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 02/20/2019
-ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 9/27/2019
+ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140733"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815874"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
-In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, wollen Sie die Details zum erfolgreichen Kopiervorgang (z.B. die geschriebene Datenmenge) in einer Erfolgsmail senden. Schlägt die Kopieraktivität fehl, wollen Sie die Details zum Fehler beim Kopieren (z.B. die Fehlermeldung) in einer Fehler-E-Mail senden. In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
+In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. Wenn die Kopieraktivität erfolgreich ist, versendet die Pipeline eine E-Mail mit Details zum Kopiervorgang. Dies umfasst beispielsweise die Menge der geschriebenen Daten. Wenn die Kopieraktivität nicht erfolgreich ist, versendet die Pipeline eine E-Mail mit Fehlerdetails, etwa der Fehlermeldung. In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
 
-Eine allgemeine Übersicht über das Szenario: ![Übersicht](media/tutorial-control-flow/overview.png)
+Diese Grafik bietet einen Überblick über das Szenario:
 
-In diesem Tutorial führen Sie die folgenden Schritte aus:
+![Übersicht](media/tutorial-control-flow/overview.png)
+
+Dieses Tutorial beschreibt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory.
-> * Erstellen eines verknüpften Azure Storage Diensts.
+> * Erstellen einer Data Factory
+> * Erstellen eines verknüpften Azure Storage-Diensts
 > * Erstellen eines Azure-Blobdatasets.
 > * Erstellen einer Pipeline, die eine Kopieraktivität und eine Webaktivität enthält.
 > * Senden von Aktivitätsausgaben an nachfolgende Aktivitäten.
-> * Verwenden von Parameterübergabe und Systemvariablen.
+> * Verwenden von Parameterübergabe und Systemvariablen
 > * Starten einer Pipelineausführung.
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
-In diesem Tutorial wird „.NET SDK“ verwendet. Andere Mechanismen zur Interaktion mit Azure Data Factory, finden Sie unter "Schnellstart" im Inhaltsverzeichnis.
+Dieses Tutorial verwendet .NET SDK. Sie können andere Mechanismen zur Interaktion mit Azure Data Factory verwenden. Data Factory-Schnellstarts finden Sie unter [Schnellstarts](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos.
-* **Azure SQL-Datenbank**. Sie verwenden die Datenbank als **Senkendatenspeicher**. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie die Anleitung zum Erstellen einer solchen im Artikel [Create an Azure SQL database (Erstellen einer Azure SQL-Datenbank)](../sql-database/sql-database-get-started-portal.md).
-* **Visual Studio** 2013, 2015 oder 2017 Die Vorgehensweise in diesem Artikel verwendet Visual Studio 2017.
-* **Laden und installieren Sie [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
-* **Create an application in Azure Active Directory (Erstellen Sie eine Anwendung in Azure Active Directory)** , indem Sie [these instructions (diese Anweisungen)](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) befolgen. Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten verwenden: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle „**Mitwirkender**“ zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
+* Azure Storage-Konto. Sie verwenden Blob Storage als Quelldatenspeicher. Falls Sie noch kein Azure-Speicherkonto haben, lesen Sie den Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md).
+* Azure Storage-Explorer. Informationen zum Installieren des Tools finden Sie unter [Azure Storage-Explorer](https://storageexplorer.com/).
+* Azure SQL-Datenbank. Sie verwenden die Datenbank als Senkendatenspeicher. Wenn Sie keine Azure SQL-Datenbank besitzen, finden Sie unter [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) weitere Informationen.
+* Visual Studio. In diesem Artikel wird Visual Studio 2019 verwendet.
+* Azure .NET SDK. Laden Sie das [Azure .NET SDK](https://azure.microsoft.com/downloads/) herunter, und installieren Sie es.
 
-### <a name="create-blob-table"></a>Erstellen Sie eine Blob-Tabelle
+Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die Datenspeicher und Computeressourcen befinden sich unter Umständen in anderen Regionen. Die Speicher umfassen Azure Storage und Azure SQL-Datenbank. Die Computeressourcen umfassen HDInsight (von Data Factory verwendet).
 
-1. Starten Sie den Editor. Kopieren Sie den folgenden Text, und speichern Sie ihn als **input.txt**-Datei auf Ihrem Datenträger.
+Erstellen Sie eine Anwendung, wie unter [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) beschrieben. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen. Später in diesem Tutorial benötigen Sie verschiedene Werte, wie z. B. **Anwendungs-ID (Client)** und **Verzeichnis-ID (Mandant)** .
 
-    ```
-    John|Doe
-    Jane|Doe
-    ```
+### <a name="create-a-blob-table"></a>Erstellen einer Blobtabelle
 
-2. Verwenden Sie Tools wie [Azure Storage-Explorer](https://storageexplorer.com/), um den Container **adfv2branch** zu erstellen und die Datei **input.txt** in den Container hochzuladen.
+1. Öffnen Sie einen Text-Editor. Kopieren Sie den folgenden Text, und speichern Sie ihn lokal unter dem Namen *input.txt*.
 
-## <a name="create-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
+   ```
+   Ethel|Berg
+   Tamika|Walsh
+   ```
 
-Erstellen Sie mithilfe von Visual Studio 2015/2017 eine C# .NET-Konsolenanwendung.
+1. Öffnen Sie den Azure Storage-Explorer. Erweitern Sie Ihr Speicherkonto. Klicken Sie mit der rechten Maustaste auf **Blobcontainer**, und wählen Sie **Blobcontainer erstellen** aus.
+1. Geben Sie dem neuen Container den Namen *adfv2branch*, und wählen Sie **Hochladen** aus, um die Datei *input.txt* zum Container hinzuzufügen.
 
-1. Starten Sie **Visual Studio**.
-2. Klicken Sie auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**. .NET-Version 4.5.2 oder höher ist erforderlich.
-3. Wählen Sie in der Liste der Projekttypen auf der rechten Seite **Visual C#**  -> **Konsolen-App (.NET Framework)** aus.
-4. Geben Sie **ADFv2BranchTutorial** für den Namen ein.
-5. Klicken Sie auf **OK**, um das Projekt zu erstellen.
+## Erstellen eines Visual Studio-Projekts<a name="create-visual-studio-project"></a>
 
-## <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
+Erstellen Sie eine C# .NET-Konsolenanwendung:
 
-1. Klicken Sie auf **Tools** -> **NuGet-Paket-Manager** -> **Paket-Manager-Konsole**.
-2. Führen Sie in der **Paket-Manager-Konsole** die folgenden Befehle zum Installieren von Paketen aus. Ausführliche Informationen finden Sie auf der Seite zum [Microsoft.Azure.Management.DataFactory-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
+1. Starten Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus.
+1. Wählen Sie unter **Neues Projekt erstellen** die Option **Konsolen-App (.NET Framework)** für C# und dann **Weiter** aus.
+1. Nennen Sie das Projekt *ADFv2BranchTutorial*.
+1. Wählen Sie **.NET Version 4.5.2** oder höher aus, und wählen Sie dann **Erstellen** aus.
 
-    ```powershell
-    Install-Package Microsoft.Azure.Management.DataFactory
-    Install-Package Microsoft.Azure.Management.ResourceManager
-    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-    ```
+### <a name="install-nuget-packages"></a>Installieren von NuGet-Paketen
 
-## <a name="create-a-data-factory-client"></a>Erstellen eines Data Factory-Clients
+1. Klicken Sie auf **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+1. Führen Sie in der **Paket-Manager-Konsole** die folgenden Befehle zum Installieren von Paketen aus. Ausführliche Informationen finden Sie auf der Seite zum [Microsoft.Azure.Management.DataFactory-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
-1. Öffnen Sie **Program.cs**, und fügen Sie die folgenden Anweisungen ein, um Verweise auf Namespaces hinzuzufügen.
+   ```powershell
+   Install-Package Microsoft.Azure.Management.DataFactory
+   Install-Package Microsoft.Azure.Management.ResourceManager -IncludePrerelease
+   Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+   ```
 
-    ```csharp
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.Rest;
-    using Microsoft.Azure.Management.ResourceManager;
-    using Microsoft.Azure.Management.DataFactory;
-    using Microsoft.Azure.Management.DataFactory.Models;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    ```
+### <a name="create-a-data-factory-client"></a>Erstellen eines Data Factory-Clients
 
-2. Fügen Sie diese statischen Variablen der **Program**-Klasse hinzu. Ersetzen Sie Platzhalter durch Ihre eigenen Werte. Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
+1. Öffnen Sie *Program.cs*, und fügen Sie die folgenden Anweisungen hinzu:
 
-    ```csharp
-        // Set variables
-        static string tenantID = "<tenant ID>";
-        static string applicationId = "<application ID>";
-        static string authenticationKey = "<Authentication key for your application>";
-        static string subscriptionId = "<Azure subscription ID>";
-        static string resourceGroup = "<Azure resource group name>";
+   ```csharp
+   using System;
+   using System.Collections.Generic;
+   using System.Linq;
+   using Microsoft.Rest;
+   using Microsoft.Azure.Management.ResourceManager;
+   using Microsoft.Azure.Management.DataFactory;
+   using Microsoft.Azure.Management.DataFactory.Models;
+   using Microsoft.IdentityModel.Clients.ActiveDirectory;
+   ```
 
-        static string region = "East US";
-        static string dataFactoryName = "<Data factory name>";
+1. Fügen Sie diese statischen Variablen zur Klasse `Program` hinzu. Ersetzen Sie Platzhalter durch Ihre eigenen Werte.
 
-        // Specify the source Azure Blob information
-        static string storageAccount = "<Azure Storage account name>";
-        static string storageKey = "<Azure Storage account key>";
-        // confirm that you have the input.txt file placed in th input folder of the adfv2branch container. 
-        static string inputBlobPath = "adfv2branch/input";
-        static string inputBlobName = "input.txt";
-        static string outputBlobPath = "adfv2branch/output";
-        static string emailReceiver = "<specify email address of the receiver>";
+   ```csharp
+   // Set variables
+   static string tenantID = "<tenant ID>";
+   static string applicationId = "<application ID>";
+   static string authenticationKey = "<Authentication key for your application>";
+   static string subscriptionId = "<Azure subscription ID>";
+   static string resourceGroup = "<Azure resource group name>";
 
-        static string storageLinkedServiceName = "AzureStorageLinkedService";
-        static string blobSourceDatasetName = "SourceStorageDataset";
-        static string blobSinkDatasetName = "SinkStorageDataset";
-        static string pipelineName = "Adfv2TutorialBranchCopy";
+   static string region = "East US";
+   static string dataFactoryName = "<Data factory name>";
 
-        static string copyBlobActivity = "CopyBlobtoBlob";
-        static string sendFailEmailActivity = "SendFailEmailActivity";
-        static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
-    
-    ```
+   // Specify the source Azure Blob information
+   static string storageAccount = "<Azure Storage account name>";
+   static string storageKey = "<Azure Storage account key>";
+   // confirm that you have the input.txt file placed in th input folder of the adfv2branch container. 
+   static string inputBlobPath = "adfv2branch/input";
+   static string inputBlobName = "input.txt";
+   static string outputBlobPath = "adfv2branch/output";
+   static string emailReceiver = "<specify email address of the receiver>";
 
-3. Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine Instanz der **DataFactoryManagementClient**-Klasse erstellt. Sie verwenden dieses Objekt, um eine Data Factory, einen verknüpften Dienst, Datasets und eine Pipeline zu erstellen. Sie verwenden dieses Objekt ebenfalls zum Überwachen der Ausführungsdetails der Pipeline.
+   static string storageLinkedServiceName = "AzureStorageLinkedService";
+   static string blobSourceDatasetName = "SourceStorageDataset";
+   static string blobSinkDatasetName = "SinkStorageDataset";
+   static string pipelineName = "Adfv2TutorialBranchCopy";
 
-    ```csharp
-    // Authenticate and create a data factory management client
-    var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
-    ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
-    AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
-    ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
-    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
-    ```
+   static string copyBlobActivity = "CopyBlobtoBlob";
+   static string sendFailEmailActivity = "SendFailEmailActivity";
+   static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
+   ```
 
-## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
+1. Fügen Sie der `Main` -Methode den folgenden Code hinzu. Dieser Code erstellt eine Instanz der Klasse `DataFactoryManagementClient`. Sie verwenden dieses Objekt anschließend, um eine Data Factory, einen verknüpften Dienst, Datasets und eine Pipeline zu erstellen. Sie können dieses Objekt auch zum Überwachen der Ausführungsdetails der Pipeline verwenden.
 
-Erstellen Sie eine Funktion „CreateOrUpdateDataFactory“ in Ihrer „Program.cs“-Datei:
+   ```csharp
+   // Authenticate and create a data factory management client
+   var context = new AuthenticationContext("https://login.windows.net/" + tenantID);
+   ClientCredential cc = new ClientCredential(applicationId, authenticationKey);
+   AuthenticationResult result = context.AcquireTokenAsync("https://management.azure.com/", cc).Result;
+   ServiceClientCredentials cred = new TokenCredentials(result.AccessToken);
+   var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
+   ```
 
-```csharp
-static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating data factory " + dataFactoryName + "...");
-    Factory resource = new Factory
-    {
-        Location = region
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
+### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-    Factory response;
-    {
-        response = client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, resource);
-    }
+1. Fügen Sie der Datei *Program.cs* eine `CreateOrUpdateDataFactory`-Methode hinzu:
 
-    while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
-    {
-        System.Threading.Thread.Sleep(1000);
-    }
-    return response;
-}
-```
+   ```csharp
+   static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
+   {
+       Console.WriteLine("Creating data factory " + dataFactoryName + "...");
+       Factory resource = new Factory
+       {
+           Location = region
+       };
+       Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
 
+       Factory response;
+       {
+           response = client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, resource);
+       }
 
+       while (client.Factories.Get(resourceGroup, dataFactoryName).ProvisioningState == "PendingCreation")
+       {
+           System.Threading.Thread.Sleep(1000);
+       }
+       return response;
+   }
+   ```
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Data Factory** erstellt. 
+1. Fügen Sie der Methode `Main` die folgenden Codezeile hinzu, die eine Data Factory erstellt:
 
-```csharp
-Factory df = CreateOrUpdateDataFactory(client);
-```
+   ```csharp
+   Factory df = CreateOrUpdateDataFactory(client);
+   ```
 
 ## <a name="create-an-azure-storage-linked-service"></a>Erstellen eines verknüpften Azure Storage-Diensts
 
-Erstellen Sie eine Funktion „StorageLinkedServiceDefinition“ in Ihrer Datei „Program.cs“:
+1. Fügen Sie der Datei *Program.cs* eine `StorageLinkedServiceDefinition`-Methode hinzu:
 
-```csharp
-static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...");
-    AzureStorageLinkedService storageLinkedService = new AzureStorageLinkedService
-    {
-        ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
-    LinkedServiceResource linkedService = new LinkedServiceResource(storageLinkedService, name:storageLinkedServiceName);
-    return linkedService;
-}
-```
+   ```csharp
+   static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
+   {
+      Console.WriteLine("Creating linked service " + storageLinkedServiceName + "...");
+      AzureStorageLinkedService storageLinkedService = new AzureStorageLinkedService
+      {
+          ConnectionString = new SecureString("DefaultEndpointsProtocol=https;AccountName=" + storageAccount + ";AccountKey=" + storageKey)
+      };
+      Console.WriteLine(SafeJsonConvert.SerializeObject(storageLinkedService, client.SerializationSettings));
+      LinkedServiceResource linkedService = new LinkedServiceResource(storageLinkedService, name:storageLinkedServiceName);
+      return linkedService;
+   }
+   ```
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der einen **verknüpften Azure Storage-Dienst** erstellt. Unter [Eigenschaften von verknüpften Azure Blobdiensten](connector-azure-blob-storage.md#linked-service-properties) erfahren Sie mehr über unterstützte Eigenschaften und Details.
+1. Fügen Sie der Methode `Main` die folgende Codezeile hinzu, die einen verknüpften Azure Storage-Dienst erstellt:
 
-```csharp
-client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
-```
+   ```csharp
+   client.LinkedServices.CreateOrUpdate(resourceGroup, dataFactoryName, storageLinkedServiceName, StorageLinkedServiceDefinition(client));
+   ```
+
+Weitere Informationen zu unterstützten Eigenschaften und Details finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties).
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
 
-In diesem Abschnitt erstellen Sie zwei Datasets: eines für die Quelle und das andere für die Senke. 
+In diesem Abschnitt erstellen Sie zwei Datasets: eines für die Quelle und eines für die Senke.
 
-### <a name="create-a-dataset-for-source-azure-blob"></a>Erstellen eines Datasets für das Azure-Quellblob
+### <a name="create-a-dataset-for-a-source-azure-blob"></a>Erstellen eines Datasets für ein Azure-Quellblob
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure blob dataset (Azure-Blobdataset)** erstellt. Erfahren Sie mehr in [Azure Blob dataset properties(Azure Blobdataset-Eigenschaften)](connector-azure-blob-storage.md#dataset-properties) zum Thema unterstützte Eigenschaften und Details.
+Fügen Sie eine Methode hinzu, die ein *Azure-Blobdataset* erstellt. Weitere Informationen zu unterstützten Eigenschaften und Details finden Sie unter [Dataset-Eigenschaften](connector-azure-blob-storage.md#dataset-properties).
 
-Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses Blobdataset verweist auf den verknüpften Azure Storage-Dienst, den Sie im vorherigen Schritt erstellen und beschreibt:
-
-- Den Speicherort des Blobs, aus dem kopiert werden soll: **FolderPath** (Ordnerpfad) und **FileName** (Dateiname).
-- Beachten Sie die Verwendung von Parametern für den Ordnerpfad. „SourceBlobContainer“ ist der Name des Parameters, und der Ausdruck wird mit den Werten, die während der Pipelineausführung übergeben werden ersetzt. Die Syntax zum Definieren von Parametern ist `@pipeline().parameters.<parameterName>`.
-
-Erstellen Sie eine Funktion „SourceBlobDatasetDefinition” in Ihrer Datei „Program.cs“.
+Fügen Sie der Datei *Program.cs* eine `SourceBlobDatasetDefinition`-Methode hinzu:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -232,44 +232,48 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-### <a name="create-a-dataset-for-sink-azure-blob"></a>Erstellen eines Datasets für eine Azure Blobsenke
+Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses Blobdataset verweist auf den verknüpften Azure Storage-Dienst, den Sie im vorherigen Schritt unterstützt haben. Das Blobdataset beschreibt den Speicherort des Blobs, aus dem kopiert werden soll: *FolderPath* (Ordnerpfad) und *FileName* (Dateiname).
 
-Erstellen Sie eine Funktion „SourceBlobDatasetDefinition” in Ihrer Datei „Program.cs“.
+Beachten Sie die Verwendung von Parametern für *FolderPath*. `sourceBlobContainer` ist der Name des Parameters, und der Ausdruck wird durch die Werte ersetzt, die während der Pipelineausführung übergeben werden. Die Syntax zum Definieren von Parametern ist `@pipeline().parameters.<parameterName>`.
 
-```csharp
-static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
-{
-    Console.WriteLine("Creating dataset " + blobSinkDatasetName + "...");
-    AzureBlobDataset blobDataset = new AzureBlobDataset
-    {
-        FolderPath = new Expression { Value = "@pipeline().parameters.sinkBlobContainer" },
-        LinkedServiceName = new LinkedServiceReference
-        {
-            ReferenceName = storageLinkedServiceName
-        }
-    };
-    Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
-    DatasetResource dataset = new DatasetResource(blobDataset, name: blobSinkDatasetName);
-    return dataset;
-}
-```
+### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Erstellen eines Datasets für ein Azure-Senkenblob
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der sowohl ein Azure Blob-Quelldataset als auch ein -Senkendataset erstellt. 
+1. Fügen Sie der Datei *Program.cs* eine `SourceBlobDatasetDefinition`-Methode hinzu:
 
-```csharp
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
+   ```csharp
+   static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
+   {
+       Console.WriteLine("Creating dataset " + blobSinkDatasetName + "...");
+       AzureBlobDataset blobDataset = new AzureBlobDataset
+       {
+           FolderPath = new Expression { Value = "@pipeline().parameters.sinkBlobContainer" },
+           LinkedServiceName = new LinkedServiceReference
+           {
+               ReferenceName = storageLinkedServiceName
+           }
+       };
+       Console.WriteLine(SafeJsonConvert.SerializeObject(blobDataset, client.SerializationSettings));
+       DatasetResource dataset = new DatasetResource(blobDataset, name: blobSinkDatasetName);
+       return dataset;
+   }
+   ```
 
-client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
-```
+1. Fügen Sie der Methode `Main` den folgenden Code hinzu, der sowohl Azure Blob-Quelldatasets als auch -Senkendatasets erstellt.
+
+   ```csharp
+   client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
+
+   client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
+   ```
 
 ## <a name="create-a-c-class-emailrequest"></a>Erstellen einer C#-Klasse: EmailRequest
 
-Erstellen Sie im C#-Projekt eine Klasse mit dem Namen **EmailRequest**(E-Mail-Anforderung). Hiermit wird definiert, welche Eigenschaften die Pipeline, in der Textanforderung, beim Versenden einer E-Mail sendet. In diesem Tutorial sendet die Pipeline vier Eigenschaften von der Pipeline an die E-Mail:
+Erstellen Sie in Ihrem C#-Projekt eine Klasse mit dem Namen `EmailRequest`. Diese Klasse definiert, welche Eigenschaften die Pipeline in der Textanforderung beim Versenden einer E-Mail sendet. In diesem Tutorial sendet die Pipeline vier Eigenschaften von der Pipeline an die E-Mail:
 
-- **Nachricht**:E-Mail-Text Im Falle eines erfolgreichen Kopiervorgangs enthält diese Eigenschaft die Details der Ausführung (Anzahl der geschriebenen Daten). Im Falle einer fehlgeschlagenen Kopie enthält diese Eigenschaft die Fehlerdetails.
-- **Data factory name** (Data Factory-Name): Name der Data Factory
-- **Pipeline name** (Pipeline-Name): Name der Pipeline
-- **Receiver** (Empfänger): Parameter, der übergeben wird. Diese Eigenschaft gibt den Empfänger der E-Mail an.
+* Message (Nachricht): Der Text der E-Mail. Bei einer erfolgreichen Kopie enthält diese Eigenschaft die Menge der geschriebenen Daten. Bei einer fehlerhaften Kopie enthält diese Eigenschaft die Fehlerdetails.
+* Data Factory-Name. Der Name der Data Factory
+* Pipelinename. Name der Pipeline.
+* Empfänger. Der Parameter, der übergeben wird. Diese Eigenschaft gibt den Empfänger der E-Mail an.
 
 ```csharp
     class EmailRequest
@@ -298,15 +302,11 @@ Erstellen Sie im C#-Projekt eine Klasse mit dem Namen **EmailRequest**(E-Mail-An
 
 ## <a name="create-email-workflow-endpoints"></a>Erstellen von E-Mail-Workflow-Endpunkten
 
-Um das Senden einer E-Mail auszulösen, verwenden Sie [Logic Apps](../logic-apps/logic-apps-overview.md) zum Definieren des Workflows. Ausführliche Informationen zum Erstellen eines Logic-App-Workflows finden Sie unter [How to create a logic app (Vorgehensweise: Erstellen einer Logic-App)](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+Um das Senden einer E-Mail auszulösen, verwenden Sie [Logic Apps](../logic-apps/logic-apps-overview.md) zum Definieren des Workflows. Details zum Erstellen eines Logic Apps-Workflows finden Sie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-### <a name="success-email-workflow"></a>Erfolgs-E-Mail-Workflow 
+### <a name="success-email-workflow"></a>Erfolgs-E-Mail-Workflow
 
-Erstellen Sie einen Logik-App-Workflow mit dem Namen `CopySuccessEmail`. Definieren Sie den Workflow-Trigger als `When an HTTP request is received`, und fügen Sie eine Aktion von `Office 365 Outlook – Send an email` hinzu.
-
-![Erfolgs-E-Mail-Workflow](media/tutorial-control-flow/success-email-workflow.png)
-
-Geben Sie für Ihren Anforderungstrigger das `Request Body JSON Schema` mit dem folgenden JSON ein:
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen Logic Apps-Workflow mit dem Namen *CopySuccessEmail*. Definieren Sie den Workflowtrigger als `When an HTTP request is received`. Geben Sie für Ihren Anforderungstrigger das `Request Body JSON Schema` mit dem folgenden JSON ein:
 
 ```json
 {
@@ -328,39 +328,29 @@ Geben Sie für Ihren Anforderungstrigger das `Request Body JSON Schema` mit dem 
 }
 ```
 
-Dieses entspricht der **EmailRequest**(E-Mail Anforderungs)-Klasse, die Sie im vorherigen Abschnitt erstellt haben. 
+Ihr Workflow sollte in etwa wie im folgenden Beispiel aussehen:
 
-Ihre Anforderung sollte im Logik-App-Designer wie folgt aussehen:
+![Erfolgs-E-Mail-Workflow](media/tutorial-control-flow/success-email-workflow-trigger.png)
 
-![Logik-App-Designer: Anforderung](media/tutorial-control-flow/logic-app-designer-request.png)
+Dieser JSON-Inhalt entspricht der Klasse `EmailRequest`, die Sie im vorherigen Abschnitt erstellt haben.
 
-Für die **Send Email (E-Mail senden)** -Aktion, passen Sie die Formatierungseinstellungen der E-Mail Ihren Bedürfnissen an, indem Sie die Eigenschaften nutzen, die in der Textkörper JSON-Schema-Anforderung übergeben wurden. Beispiel:
+Fügen Sie eine `Office 365 Outlook – Send an email`-Aktion hinzu. Passen Sie für die Aktion **E-Mail senden** die Formatierungseinstellungen der E-Mail an Ihre Bedürfnisse an, indem Sie die Eigenschaften nutzen, die im **Text** des JSON-Anforderungsschemas übergeben wurden. Hier sehen Sie ein Beispiel:
 
-![Logik-App-Designer: E-Mail-Sendeaktion](media/tutorial-control-flow/send-email-action.png)
+![Logik-App-Designer: Aktion zum Senden einer E-Mail](media/tutorial-control-flow/customize-send-email-action.png)
 
-Notieren Sie sich die HTTP-Post-Anforderungs-URL für Ihren Erfolgs-E-Mail-Workflow:
+Nachdem Sie den Workflow gespeichert haben, kopieren Sie den Wert **HTTP-POST-URL** aus dem Trigger, und speichern Sie ihn.
 
-```
-//Success Request Url
-https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
-```
+## <a name="fail-email-workflow"></a>Fehler-E-Mail-Workflow
 
-## <a name="fail-email-workflow"></a>Fehler-E-Mail-Workflow 
+Klonen Sie **CopySuccessEmail**, und erstellen Sie einen weiteren Logic Apps-Workflow mit dem Namen *CopyFailEmail*. Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie das Format Ihrer E-Mail (beispielsweise `Subject`), um eine E-Mail für einen nicht erfolgreichen Vorgang zu erhalten. Beispiel:
 
-Klonen Sie Ihre **CopySuccessEmail** (E-Mail über den Kopiererfolg), und erstellen Sie einen anderen Logik-Apps Workflow von **CopyFailEmail (E-Mail über den fehlgeschlagenen Kopiervorgang)** . Im Anforderungs-Trigger ist `Request Body JSON schema` gleich. Ändern Sie einfach das Format Ihrer E-Mail wie den `Subject`, um diesen an eine Fehler-E-Mail anzupassen. Beispiel:
+![Logik-App-Designer: Workflow für fehlerhafte E-Mail](media/tutorial-control-flow/fail-email-workflow.png)
 
-![Logik-App-Designer: Fehler-E-Mail-Workflow](media/tutorial-control-flow/fail-email-workflow.png)
+Nachdem Sie den Workflow gespeichert haben, kopieren Sie den Wert **HTTP-POST-URL** aus dem Trigger, und speichern Sie ihn.
 
-Notieren Sie sich die HTTP-Post-Anforderungs-URL für Ihren Fehler-E-Mail-Workflow:
+Sie verfügen nun über zwei Workflow-URLs, wie in den folgenden Beispielen gezeigt:
 
-```
-//Fail Request Url
-https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
-```
-
-Sie sollten jetzt über zwei Workflow-URLs verfügen:
-
-```
+```csharp
 //Success Request Url
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 
@@ -370,104 +360,102 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
-Fügen Sie der „Main“-Methode den folgenden Code hinzu, der eine Pipeline mit einer Kopieraktivität und einer „dependsOn“-Eigenschaft erstellt. In diesem Tutorial enthält die Pipeline eine einzige Aktivität: die Kopieraktivität, die das Blobdataset als eine Quelle und ein anderes Blobdataset als eine Senke umfasst. Bei erfolgreicher und fehlgeschlagener Kopieraktivität ruft sie unterschiedliche E-Mail-Aufgaben ab.
+Kehren Sie zu Ihrem Projekt in Visual Studio zurück. Wir fügen nun den Code hinzu, mit dem eine Pipeline mit einer Kopieraktivität und der Eigenschaft `DependsOn` erstellt wird. In diesem Tutorial enthält die Pipeline eine einzige Aktivität: die Kopieraktivität, die das Blobdataset als Quelle und ein anderes Blobdataset als Senke umfasst. Je nachdem, ob die Kopieraktivität erfolgreich ist oder ein Fehler auftritt, ruft sie unterschiedliche E-Mail-Aufgaben ab.
 
 In dieser Pipeline verwenden Sie die folgenden Funktionen:
 
-- Parameter
-- Webaktivität
-- Aktivitätsabhängigkeit
-- Verwenden der Ausgabe aus einer Aktivität als eine Eingabe für die nachfolgende Aktivität.
+* Parameter
+* Webaktivität
+* Aktivitätsabhängigkeit
+* Verwenden der Ausgabe aus einer Aktivität als eine Eingabe für eine andere Aktivität
 
-Nehmen wir nun die Aufschlüsselung der folgenden Pipeline, Abschnitt für Abschnitt vor:
+1. Fügen Sie diese Methode zu Ihrem Projekt hinzu. In den folgenden Abschnitten finden Sie weitere Informationen.
 
-```csharp
-
-static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
-        {
-            Console.WriteLine("Creating pipeline " + pipelineName + "...");
-            PipelineResource resource = new PipelineResource
+    ```csharp
+    static PipelineResource PipelineDefinition(DataFactoryManagementClient client)
             {
-                Parameters = new Dictionary<string, ParameterSpecification>
+                Console.WriteLine("Creating pipeline " + pipelineName + "...");
+                PipelineResource resource = new PipelineResource
                 {
-                    { "sourceBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
-                    { "sinkBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
-                    { "receiver", new ParameterSpecification { Type = ParameterType.String } }
+                    Parameters = new Dictionary<string, ParameterSpecification>
+                    {
+                        { "sourceBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
+                        { "sinkBlobContainer", new ParameterSpecification { Type = ParameterType.String } },
+                        { "receiver", new ParameterSpecification { Type = ParameterType.String } }
 
-                },
-                Activities = new List<Activity>
-                {
-                    new CopyActivity
+                    },
+                    Activities = new List<Activity>
                     {
-                        Name = copyBlobActivity,
-                        Inputs = new List<DatasetReference>
+                        new CopyActivity
                         {
-                            new DatasetReference
+                            Name = copyBlobActivity,
+                            Inputs = new List<DatasetReference>
                             {
-                                ReferenceName = blobSourceDatasetName
+                                new DatasetReference
+                                {
+                                    ReferenceName = blobSourceDatasetName
+                                }
+                            },
+                            Outputs = new List<DatasetReference>
+                            {
+                                new DatasetReference
+                                {
+                                    ReferenceName = blobSinkDatasetName
+                                }
+                            },
+                            Source = new BlobSource { },
+                            Sink = new BlobSink { }
+                        },
+                        new WebActivity
+                        {
+                            Name = sendSuccessEmailActivity,
+                            Method = WebActivityMethod.POST,
+                            Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/00000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000000",
+                            Body = new EmailRequest("@{activity('CopyBlobtoBlob').output.dataWritten}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
+                            DependsOn = new List<ActivityDependency>
+                            {
+                                new ActivityDependency
+                                {
+                                    Activity = copyBlobActivity,
+                                    DependencyConditions = new List<String> { "Succeeded" }
+                                }
                             }
                         },
-                        Outputs = new List<DatasetReference>
+                        new WebActivity
                         {
-                            new DatasetReference
+                            Name = sendFailEmailActivity,
+                            Method =WebActivityMethod.POST,
+                            Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000",
+                            Body = new EmailRequest("@{activity('CopyBlobtoBlob').error.message}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
+                            DependsOn = new List<ActivityDependency>
                             {
-                                ReferenceName = blobSinkDatasetName
-                            }
-                        },
-                        Source = new BlobSource { },
-                        Sink = new BlobSink { }
-                    },
-                    new WebActivity
-                    {
-                        Name = sendSuccessEmailActivity,
-                        Method = WebActivityMethod.POST,
-                        Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/00000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000000",
-                        Body = new EmailRequest("@{activity('CopyBlobtoBlob').output.dataWritten}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
-                        DependsOn = new List<ActivityDependency>
-                        {
-                            new ActivityDependency
-                            {
-                                Activity = copyBlobActivity,
-                                DependencyConditions = new List<String> { "Succeeded" }
-                            }
-                        }
-                    },
-                    new WebActivity
-                    {
-                        Name = sendFailEmailActivity,
-                        Method =WebActivityMethod.POST,
-                        Url = "https://prodxxx.eastus.logic.azure.com:443/workflows/000000000000000000000000000000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0000000000000000000000000000000000000000000",
-                        Body = new EmailRequest("@{activity('CopyBlobtoBlob').error.message}", "@{pipeline().DataFactory}", "@{pipeline().Pipeline}", "@pipeline().parameters.receiver"),
-                        DependsOn = new List<ActivityDependency>
-                        {
-                            new ActivityDependency
-                            {
-                                Activity = copyBlobActivity,
-                                DependencyConditions = new List<String> { "Failed" }
+                                new ActivityDependency
+                                {
+                                    Activity = copyBlobActivity,
+                                    DependencyConditions = new List<String> { "Failed" }
+                                }
                             }
                         }
                     }
-                }
-            };
-            Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
-            return resource;
-        }
-```
+                };
+                Console.WriteLine(SafeJsonConvert.SerializeObject(resource, client.SerializationSettings));
+                return resource;
+            }
+    ```
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine Pipeline erstellt:
+1. Fügen Sie der Methode `Main` die folgenden Codezeile hinzu, die die Pipeline erstellt:
 
-```
-client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
-```
+   ```csharp
+   client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
+   ```
 
 ### <a name="parameters"></a>Parameter
 
-Der erste Abschnitt unserer Pipeline definiert Parameter. 
+Der erste Abschnitt unseres Pipelinecodes definiert Parameter.
 
-- SourceBlobContainer: Parameter in der Pipeline, die vom Quell-Blobdataset verbraucht werden.
-- SinkBlobContainer: Parameter in der Pipeline, die vom Senken-Blobdataset verbraucht werden.
-- receiver: Dieser Parameter wird von den beiden Webaktivitäten in der Pipeline verwendet, die Erfolgs- oder Fehlermeldungen an den Empfänger senden, dessen E-Mail-Adresse durch diesen Parameter angegeben ist.
-
+* `sourceBlobContainer`. Das Quell-Blobdataset verwendet diesen Parameter in der Pipeline.
+* `sinkBlobContainer`. Das Senken-Blobdataset verwendet diesen Parameter in der Pipeline.
+* `receiver`. Die beiden Webaktivitäten in der Pipeline, die Erfolgs- oder Fehlermeldungen an den Empfänger senden, verwenden diesen Parameter.
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -480,7 +468,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
 
 ### <a name="web-activity"></a>Webaktivität
 
-Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. Weitere Informationen zur Aktivität finden Sie unter [Web Activity (Webaktivität)](control-flow-web-activity.md). Diese Pipeline verwendet eine Webaktivität, um den Logik-Apps-E-Mail-Workflow aufzurufen. Sie erstellen zwei Webaktivitäten: eine, die Aufrufe an den **CopySuccessEmail** (E-Mail über den Kopiererfolg)-Workflow sendet und eine, die den **CopyFailWorkFlow** (E-Mail über den fehlgeschlagenen Kopiervorgang-Workflow) aufruft.
+Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. Weitere Informationen zur Aktivität finden Sie unter [Webaktivität in Azure Data Factory](control-flow-web-activity.md). Die Pipeline verwendet eine Webaktivität, um den E-Mail-Workflow von Logic Apps aufzurufen. Sie erstellen zwei Webaktivitäten: eine, die Aufrufe an den Workflow `CopySuccessEmail` sendet, und eine, die `CopyFailWorkFlow` aufruft.
 
 ```csharp
         new WebActivity
@@ -500,18 +488,18 @@ Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. We
         }
 ```
 
-Fügen Sie in der „Url“-Eigenschaft die Anforderungs-URL-Endpunkte aus Ihrem Logic-Apps-Workflow entsprechend ein. Übergeben Sie in der Eigenschaft „Text“ eine Instanz der „EmailRequest"-Klasse. Die E-Mail-Anforderung enthält die folgenden Eigenschaften:
+Fügen Sie in der `Url`-Eigenschaft die **HTTP-POST-URL**-Endpunkte aus Ihrem Logic Apps-Workflow ein. Erstellen Sie in der Eigenschaft `Body` eine Instanz der Klasse `EmailRequest`. Die E-Mail-Anforderung enthält die folgenden Eigenschaften:
 
-- Nachricht: Übergibt den Wert von `@{activity('CopyBlobtoBlob').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zurück, und übergibt den Wert von DataWritten. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
-- Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md)
-- Pipeline-Name: Übergibt den Wert von `@{pipeline().Pipeline}`. Dies ist auch eine Systemvariable, die Ihnen den Zugriff auf den entsprechenden Pipelinenamen ermöglicht. 
-- Empfänger: Übergibt den Wert von „\@pipeline().parameters.receiver“). Zugriff auf die Pipeline-Parameter
- 
-Dieser Code erstellt eine neue Aktivitätsabhängigkeit, abhängig von der vorherigen Kopieraktivität, die erfolgreich abgeschlossen wird.
+* Message (Nachricht): Übergibt den Wert von `@{activity('CopyBlobtoBlob').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zu, und übergibt den Wert von `dataWritten`. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
+* Data Factory-Name. Übergibt den Wert von `@{pipeline().DataFactory}`. Diese Systemvariable ermöglicht Ihnen den Zugriff auf den Namen der entsprechenden Data Factory. Eine Liste der Systemvariablen finden Sie unter [Systemvariablen](control-flow-system-variables.md).
+* Pipelinename. Übergibt den Wert von `@{pipeline().Pipeline}`. Diese Systemvariable ermöglicht Ihnen den Zugriff auf den entsprechenden Pipelinenamen.
+* Empfänger. Übergibt den Wert von `"@pipeline().parameters.receiver"`. Greift auf die Pipelineparameter zu.
+
+Dieser Code erstellt eine neue Aktivitätsabhängigkeit, die von der vorherigen Kopieraktivität abhängt.
 
 ## <a name="create-a-pipeline-run"></a>Erstellen einer Pipelineausführung
 
-Fügen Sie der **Main**-Methode den folgenden Code hinzu, der **eine Pipelineausführung auslöst**.
+Fügen Sie der Methode `Main` den folgenden Code hinzu, der eine Pipelineausführung auslöst.
 
 ```csharp
 // Create a pipeline run
@@ -527,9 +515,9 @@ CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
-## <a name="main-class"></a>Main-Klasse 
+## <a name="main-class"></a>Main-Klasse
 
-Die endgültige Main-Methode sollte wie folgt aussehen. Erstellen Sie Ihr Programm und führen Sie es aus, um die Ausführung einer Pipeline auszulösen!
+Die endgültige Methode `Main` sollte wie folgt aussehen.
 
 ```csharp
 // Authenticate and create a data factory management client
@@ -559,9 +547,11 @@ CreateRunResponse runResponse = client.Pipelines.CreateRunWithHttpMessagesAsync(
 Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ```
 
+Erstellen Sie Ihr Programm und führen Sie es aus, um die Ausführung einer Pipeline auszulösen!
+
 ## <a name="monitor-a-pipeline-run"></a>Überwachen einer Pipelineausführung
 
-1. Fügen Sie der **Main**-Methode den folgenden Code hinzu, um den Status der Pipelineausführung kontinuierlich zu überwachen, bis die Pipeline das Kopieren der Daten beendet hat.
+1. Fügen Sie den folgenden Code in die Methode `Main` ein:
 
     ```csharp
     // Monitor the pipeline run
@@ -578,7 +568,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
     }
     ```
 
-2. Fügen Sie der **Main**-Methode den folgenden Code hinzu, der Ausführungsdetails zur Kopieraktivität abruft, z.B. die Größe der gelesenen/geschriebenen Daten.
+    Dieser Code überprüft kontinuierlich den Status der Ausführung, bis das Kopieren der Daten beendet ist.
+
+1. Fügen Sie der Methode `Main` den folgenden Code hinzu, der Ausführungsdetails zur Kopieraktivität abruft, wie z. B. die Größe der gelesenen/geschriebenen Daten:
 
     ```csharp
     // Check the copy activity run details
@@ -602,9 +594,10 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 ## <a name="run-the-code"></a>Ausführen des Codes
 
 Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
-Die Konsole druckt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie anschließend Tools wie z.B. Azure Storage-Explorer, um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben von „InputBlobPath“ nach „OutputBlobPath“ kopiert werden.
 
-**Beispielausgabe:**
+Die Anwendung zeigt den Fortschritt beim Erstellen der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung an. Danach wird der Status der Pipelineausführung überprüft. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie anschließend Tools wie z. B. Azure Storage-Explorer, um zu überprüfen, ob das Blob wie von Ihnen in den Variablen angegeben von *inputBlobPath* nach *outputBlobPath* kopiert wurde.
+
+Die Ausgabe sollte wie im folgenden Beispiel aussehen:
 
 ```json
 Creating data factory DFTutorialTest...
@@ -758,15 +751,15 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die folgenden Schritte ausgeführt: 
+In diesem Tutorial haben Sie folgende Aufgaben ausgeführt:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory.
-> * Erstellen eines verknüpften Azure Storage Diensts.
+> * Erstellen einer Data Factory
+> * Erstellen eines verknüpften Azure Storage-Diensts
 > * Erstellen eines Azure-Blobdatasets.
 > * Erstellen einer Pipeline, die eine Kopieraktivität und eine Webaktivität enthält.
 > * Senden von Aktivitätsausgaben an nachfolgende Aktivitäten.
-> * Verwenden von Parameterübergabe und Systemvariablen.
+> * Verwenden von Parameterübergabe und Systemvariablen
 > * Starten einer Pipelineausführung.
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 

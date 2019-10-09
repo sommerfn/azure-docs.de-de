@@ -16,20 +16,20 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5844d440da768ae2647ea7f15c4c913f83078ce1
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60244331"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672967"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
 
 > [!WARNING]
-> Wenn Sie Änderungen an den Standardsynchronisierungsregeln vornehmen, werden diese bei der nächsten Aktualisierung von Azure AD Connect überschrieben. Dies kann zu unerwarteten und wahrscheinlich unerwünschten Synchronisierungsergebnissen führen.
+> Wenn Sie Änderungen an den vorkonfigurierten Standardsynchronisierungsregeln vornehmen, werden diese bei der nächsten Aktualisierung von Azure AD Connect überschrieben. Dies kann zu unerwarteten und wahrscheinlich unerwünschten Synchronisierungsergebnissen führen.
 >
-> Die standardmäßigen Synchronisierungsregeln verfügen über einen Fingerabdruck. Wenn Sie diese Regeln ändern, stimmt der Fingerabdruck nicht mehr überein. In Zukunft treten unter Umständen Probleme auf, wenn Sie eine neue Version von Azure AD Connect anwenden möchten. Führen Sie Änderungen nur wie in diesem Artikel beschrieben durch.
+> Die vorkonfigurierten Standardsynchronisierungsregeln verfügen über einen Fingerabdruck. Wenn Sie diese Regeln ändern, stimmt der Fingerabdruck nicht mehr überein. In Zukunft treten unter Umständen Probleme auf, wenn Sie eine neue Version von Azure AD Connect anwenden möchten. Führen Sie Änderungen nur wie in diesem Artikel beschrieben durch.
 
 ## <a name="synchronization-rules-editor"></a>Synchronisierungsregel-Editor
 Der Synchronisierungsregel-Editor dient zum Anzeigen und Ändern der Standardkonfiguration. Sie finden ihn im Menü **Start** in der Gruppe **Azure AD Connect**.  

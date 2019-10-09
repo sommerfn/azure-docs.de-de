@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 9c9b4cdfb77f1605a6730d0735541eeb78dcd323
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: b90650fa2cd343c81b7bbb2fcea24c3a95f537b6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075527"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702049"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -78,14 +78,24 @@ Anschließend speichern und beenden Sie die Datei *hosts* mit dem Befehl `:wq` i
 
 Die VM benötigt einige zusätzliche Pakete, damit sie in die durch Azure AD DS verwalteten Domäne eingebunden werden kann. Zum Installieren und Konfigurieren dieser Pakete aktualisieren und installieren Sie die Tools zum Einbinden in eine Domäne mit `yum`:
 
+ **RHEL 7** 
+
 ```console
 sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
+```
+
+ **RHEL 6** 
+
+```console
+sudo yum install adcli sssd authconfig krb5-workstation
 ```
 
 ## <a name="join-vm-to-the-managed-domain"></a>Einbinden der VM in die verwaltete Domäne
 
 Nachdem Sie die erforderlichen Pakete auf der VM installiert haben, binden Sie die VM in die durch Azure AD DS verwaltete Domäne ein.
-
+ 
+  **RHEL 7**
+     
 1. Verwenden Sie den Befehl `realm discover`, um die durch Azure AD DS verwaltete Domäne zu ermitteln. Im folgenden Beispiel wird der Bereich *CONTOSO.COM* erkannt. Geben Sie den Namen Ihrer eigenen durch Azure AD DS verwalteten Domäne in Großbuchstaben an:
 
     ```console
@@ -93,7 +103,7 @@ Nachdem Sie die erforderlichen Pakete auf der VM installiert haben, binden Sie d
     ```
 
    Wenn mit dem Befehl `realm discover` Ihre durch Azure AD DS verwaltete Domäne nicht gefunden werden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
-
+   
     * Vergewissern Sie sich, dass die VM die Domäne erreichen kann. Versuchen Sie `ping contoso.com`, um zu überprüfen, ob eine positive Antwort zurückgegeben wird.
     * Überprüfen Sie, ob die VM in demselben oder einem mittels Peering verbundenen virtuellen Netzwerk bereitgestellt wurde, in dem die durch Azure AD DS verwaltete Domäne verfügbar ist.
     * Stellen Sie sicher, dass die DNS-Servereinstellungen für das virtuelle Netzwerk so aktualisiert wurden, dass auf die Domänencontroller der durch Azure AD DS verwalteten Domäne verwiesen wird.
@@ -101,10 +111,10 @@ Nachdem Sie die erforderlichen Pakete auf der VM installiert haben, binden Sie d
 1. Initialisieren Sie nun Kerberos mit dem Befehl `kinit`. Geben Sie einen Benutzer an, der zur Gruppe *AAD DC-Administratoren* gehört. Bei Bedarf [fügen Sie ein Benutzerkonto zu einer Gruppe in Azure AD hinzu](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
     Auch hier muss der Name der durch Azure AD DS verwalteten Domäne in Großbuchstaben eingegeben werden. Im folgenden Beispiel wird das Konto mit dem Namen `contosoadmin@contoso.com` zum Initialisieren von Kerberos verwendet. Geben Sie das eigene Benutzerkonto ein, das Mitglied der Gruppe *AAD DC-Administratoren* ist:
-
+    
     ```console
     kinit contosoadmin@CONTOSO.COM
-    ```
+    ``` 
 
 1. Zum Schluss binden Sie den Computer mit dem Befehl `realm join` in die durch Azure AD DS verwaltete Domäne ein. Verwenden Sie dasselbe Benutzerkonto, das Mitglied der Gruppe *AAD DC-Administratoren* ist und im vorherigen Befehl `kinit` angegeben wurde, z.B. `contosoadmin@CONTOSO.COM`:
 
@@ -118,7 +128,108 @@ Das Einbinden der VM in die durch Azure AD DS verwaltete Domäne dauert einen Mo
 Successfully enrolled machine in realm
 ```
 
+  **RHEL 6** 
+
+1. Verwenden Sie den Befehl `adcli info`, um die durch Azure AD DS verwaltete Domäne zu ermitteln. Im folgenden Beispiel wird der Bereich *CONTOSO.COM* erkannt. Geben Sie den Namen Ihrer eigenen durch Azure AD DS verwalteten Domäne in Großbuchstaben an:
+
+    ```console
+    sudo adcli info contoso.com
+    ```
+    
+   Wenn mit dem Befehl `adcli info` Ihre durch Azure AD DS verwaltete Domäne nicht gefunden werden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
+   
+    * Vergewissern Sie sich, dass die VM die Domäne erreichen kann. Versuchen Sie `ping contoso.com`, um zu überprüfen, ob eine positive Antwort zurückgegeben wird.
+    * Überprüfen Sie, ob die VM in demselben oder einem mittels Peering verbundenen virtuellen Netzwerk bereitgestellt wurde, in dem die durch Azure AD DS verwaltete Domäne verfügbar ist.
+    * Stellen Sie sicher, dass die DNS-Servereinstellungen für das virtuelle Netzwerk so aktualisiert wurden, dass auf die Domänencontroller der durch Azure AD DS verwalteten Domäne verwiesen wird.
+
+1. Fügen Sie zunächst die Domäne mit dem Befehl `adcli join` hinzu. Mit diesem Befehl wird auch die Schlüsseltabelle zur Authentifizierung des Computers erstellt. Geben Sie ein Benutzerkonto ein, das Mitglied der Gruppe *AAD DC-Administratoren* ist. 
+
+    ```console
+    sudo adcli join contoso.com -U contosoadmin
+    ```
+
+1. Konfigurieren Sie nun die `/ect/krb5.conf`, und erstellen Sie die `/etc/sssd/sssd.conf`-Dateien, um die `contoso.com` Active Directory-Domäne zu verwenden. 
+   Vergewissern Sie sich, dass `CONTOSO.COM` durch Ihren eigenen Domänennamen ersetzt wird:
+
+    Öffnen Sie die Datei `/ect/krb5.conf` in einem Editor:
+
+    ```console
+    sudo vi /etc/krb5.conf
+    ```
+
+    Aktualisieren Sie die Datei `krb5.conf`, um die folgenden Änderungen vorzunehmen:
+
+    ```console
+    [logging]
+     default = FILE:/var/log/krb5libs.log
+     kdc = FILE:/var/log/krb5kdc.log
+     admin_server = FILE:/var/log/kadmind.log
+    
+    [libdefaults]
+     default_realm = CONTOSO.COM
+     dns_lookup_realm = true
+     dns_lookup_kdc = true
+     ticket_lifetime = 24h
+     renew_lifetime = 7d
+     forwardable = true
+    
+    [realms]
+     CONTOSO.COM = {
+     kdc = CONTOSO.COM
+     admin_server = CONTOSO.COM
+     }
+    
+    [domain_realm]
+     .CONTOSO.COM = CONTOSO.COM
+     CONTOSO.COM = CONTOSO.COM
+    ```
+    
+   Erstellen Sie die Datei `/etc/sssd/sssd.conf`:
+    
+    ```console
+    sudo vi /etc/sssd/sssd.conf
+    ```
+
+    Aktualisieren Sie die Datei `sssd.conf`, um die folgenden Änderungen vorzunehmen:
+
+    ```console
+    [sssd]
+     services = nss, pam, ssh, autofs
+     config_file_version = 2
+     domains = CONTOSO.COM
+    
+    [domain/CONTOSO.COM]
+    
+     id_provider = ad
+    ```
+
+1. Stellen Sie sicher, dass die `/etc/sssd/sssd.conf`-Berechtigungen 600 lauten und dass die Datei im Besitz des Root-Benutzers ist:
+
+    ```console
+    sudo chmod 600 /etc/sssd/sssd.conf
+    sudo chown root:root /etc/sssd/sssd.conf
+    ```
+
+1. Verwenden Sie `authconfig`, um die VM über die AD Linux-Integration anzuweisen:
+
+    ```console
+    sudo authconfig --enablesssd --enablesssdauth --update
+    ```
+    
+1. Starten und aktivieren Sie den SSSD-Dienst:
+
+    ```console
+    sudo service sssd start
+    sudo chkconfig sssd on
+    ```
+
 Wenn für die VM der Prozess der Einbindung in die Domäne nicht erfolgreich abgeschlossen werden kann, stellen Sie sicher, dass die Netzwerksicherheitsgruppe der VM ausgehenden Kerberos-Datenverkehr über TCP und UDP-Port 464 an das Subnetz des virtuellen Netzwerks für Ihre durch Azure AD DS verwaltete Domäne zulässt.
+
+Überprüfen Sie nun, ob Sie mithilfe von `getent` Benutzerinformationen abfragen können
+
+```console
+sudo getent passwd contosoadmin
+```
 
 ## <a name="allow-password-authentication-for-ssh"></a>Zulassen der Kennwortauthentifizierung für SSH
 
@@ -140,8 +251,16 @@ Standardmäßig können sich Benutzer nur mithilfe der auf einen öffentlichen S
 
 1. Starten Sie den SSH-Dienst neu, um die Änderungen zu übernehmen und Benutzern das Anmelden mit einem Kennwort zu ermöglichen:
 
+   **RHEL 7** 
+    
     ```console
     sudo systemctl restart sshd
+    ```
+
+   **RHEL 6** 
+    
+    ```console
+    sudo service sshd restart
     ```
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Erteilen von sudo-Berechtigungen für die Gruppe „AAD DC-Administratoren“

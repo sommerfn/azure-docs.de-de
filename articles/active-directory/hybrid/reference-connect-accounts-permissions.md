@@ -17,12 +17,12 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290965"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812597"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -57,6 +57,9 @@ Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausge
 > Mithilfe dedizierter administrativer Gesamtstrukturen können Organisationen Administratorkonten, Arbeitsstationen und Gruppen in einer Umgebung hosten, die über bessere Sicherheitskontrollen verfügt als die Produktionsumgebung.
 > Weitere Informationen zu dedizierten administrativen Gesamtstrukturen finden Sie unter [ESAE Administrative Forest Design Approach](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) (ESAE-Ansatz für administrative Gesamtstrukturen).
 >>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+
+> [!NOTE]
+> Die Rolle „Globaler Administrator“ ist nach der ersten Installation nicht erforderlich. Das einzige erforderliche Konto ist das Rollenkonto **Verzeichnissynchronisierungskonten**. Dies bedeutet nicht unbedingt, dass Sie das Konto mit der Rolle „Globaler Administrator“ einfach entfernen sollten. Sie sollten stattdessen besser die Rolle in eine Rolle mit weniger Berechtigungen ändern, da das vollständige Entfernen des Kontos zu Problemen führen kann, wenn Sie den Assistenten erneut ausführen müssen. Indem Sie die Berechtigungen der Rolle verringern, können Sie sie jederzeit erneut erhöhen, wenn Sie den Azure AD Connect-Assistenten erneut verwenden müssen. 
 
 ## <a name="installing-azure-ad-connect"></a>Installieren von Azure AD Connect
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147188"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672807"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -76,23 +76,34 @@ Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benöt
 
 ### <a name="resource-reservations"></a>Ressourcenreservierungen
 
-Sie müssen nicht die Kubernetes-Kernkomponenten auf jedem Knoten verwalten, z.B. *kubelet*, *kube-proxy* und *kube-dns*, sie belegen jedoch einige der verfügbaren Computeressourcen. Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf jedem Knoten die folgenden Computeressourcen reserviert:
+Knotenressourcen werden von AKS verwendet, damit der Knoten als Teil Ihres Clusters fungieren kann. Dies kann zu einer Abweichung zwischen den Gesamtressourcen Ihres Knotens und den Ressourcen führen, die bei der Verwendung in AKS zugewiesen werden können. Dies sollte unbedingt beachtet werden, wenn Anforderungen und Grenzwerte für vom Benutzer bereitgestellte Pods festgelegt werden.
 
-- **CPU**: 60 ms
-- **Arbeitsspeicher:** 20 % bis zu 4 GiB
+Führen Sie Folgendes aus, um die Ressourcen, die einem Knoten zugewiesen werden können, zu ermitteln:
+```kubectl
+kubectl describe node [NODE_NAME]
+
+```
+
+Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf jedem Knoten Ressourcen von AKS reserviert. Wenn ein Knoten mehr Ressourcen nutzt, steigt die Anzahl der reservierten Ressourcen aufgrund der höheren Menge an vom Benutzer bereitgestellten Pods, die verwaltet werden müssen.
+
+>[!NOTE]
+> Durch die Verwendung von Add-Ons wie OMS werden zusätzliche Knotenressourcen beansprucht.
+
+- **CPU:** Die reservierten CPU-Ressourcen hängen vom Knotentyp und der Clusterkonfiguration ab. Dies kann dazu führen, dass weniger CPU-Ressourcen zugewiesen werden können, da zusätzliche Features ausgeführt werden.
+
+| CPU-Kerne auf dem Host | 1 | 2 | 4 | 8 | 16 | 32|64|
+|---|---|---|---|---|---|---|---|
+|Kube-reserviert (Millicore)|60|100|140|180|260|420|740|
+
+- **Arbeitsspeicher:** Die Reservierung von Arbeitsspeicher folgt einer progressiven Rate.
+  - 25 % der ersten 4 GB Arbeitsspeicher
+  - 20 % der nächsten 4 GB Arbeitsspeicher (bis 8 GB)
+  - 10 % der nächsten 8 GB Arbeitsspeicher (bis 16 GB)
+  - 6 % der nächsten 112 GB Arbeitsspeicher (bis 128 GB)
+  - 2 % des Arbeitsspeichers oberhalb von 128 GB
 
 Diese Reservierungen führen dazu, dass möglicherweise eine geringere Menge verfügbarer CPU-Leistung und Arbeitsspeicher für Ihre Anwendungen angezeigt wird, als der eigentliche Knoten enthält. Wenn Ressourceneinschränkungen aufgrund der Anzahl von ausgeführten Anwendungen vorliegen, gewährleisten diese Reservierungen, dass für die Kubernetes-Kernkomponenten weiterhin CPU-Leistung und Arbeitsspeicher zur Verfügung stehen. Die Ressourcenreservierungen können nicht geändert werden.
 
-Beispiel:
-
-- Knotengröße **Standard DS2 v2** mit 2 vCPUs und 7 GiB Arbeitsspeicher
-    - 20 % von 7 GiB Arbeitsspeicher = 1,4 GiB
-    - Insgesamt *7 – 1,4 = 5,6 GiB* Arbeitsspeicher für den Knoten verfügbar
-    
-- Knotengröße **Standard E4s v3** mit 4 vCPUs und 32 GiB Arbeitsspeicher
-    - 20 % von 32 GiB Arbeitsspeicher = 6,4 GiB, AKS reserviert jedoch maximal 4 GiB
-    - Insgesamt *32 – 4 = 28 GiB* für den Knoten verfügbar
-    
 Das zugrunde liegende Betriebssystem des Knotens erfordert auch eine gewisse Menge an CPU- und Speicherressourcen für die eigenen Kernfunktionen.
 
 Entsprechende bewährte Methoden finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-scheduler].

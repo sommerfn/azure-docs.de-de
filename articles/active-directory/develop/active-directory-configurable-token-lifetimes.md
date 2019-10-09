@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/17/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9244dfabef8b13105ef830f9f4543da9cb2cca9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b3696ebc216062a6d52fd187819f07dfb0078057
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842637"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812572"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
 
 > [!IMPORTANT]
-> Aufgrund des Kundenfeedbacks während der Vorschauphase haben wir in „Bedingter Azure AD-Zugriff“ [Funktionen zur Verwaltung von Authentifizierungssitzungen](https://go.microsoft.com/fwlink/?linkid=2083106) implementiert. Mithilfe dieses neuen Features können Sie die Lebensdauer von Aktualisierungstoken durch Festlegen der Anmeldehäufigkeit konfigurieren. Nach dem 1. November 2019 können Aktualisierungstoken nicht mehr mithilfe einer Richtlinie für die konfigurierbare Tokengültigkeitsdauer konfiguriert werden. Die Richtlinie kann jedoch weiterhin zum Konfigurieren von Zugriffstoken verwendet werden.
+> Aufgrund des Kundenfeedbacks während der Vorschauphase haben wir in „Bedingter Azure AD-Zugriff“ [Funktionen zur Verwaltung von Authentifizierungssitzungen](https://go.microsoft.com/fwlink/?linkid=2083106) implementiert. Mithilfe dieses neuen Features können Sie die Lebensdauer von Aktualisierungstoken durch Festlegen der Anmeldehäufigkeit konfigurieren. Nach dem 1. November 2019 können Sitzungs- und Aktualisierungstoken nicht mehr mithilfe einer Richtlinie für die konfigurierbare Tokengültigkeitsdauer konfiguriert werden. Die Gültigkeitsdauer von Zugriffstoken kann jedoch auch nach der Einstellung weiterhin konfiguriert werden.
 
 In Azure AD steht ein Richtlinienobjekt für eine Reihe von Regeln, die für einzelne Anwendungen oder alle Anwendungen in einer Organisation erzwungen werden. Jeder Richtlinientyp verfügt über eine eindeutige Struktur mit einem Satz von Eigenschaften, die auf Objekte angewendet werden, denen sie zugewiesen sind.
 

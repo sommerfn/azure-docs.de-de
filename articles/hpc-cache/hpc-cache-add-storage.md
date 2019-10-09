@@ -4,36 +4,28 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300040"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710037"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
-*Speicherziele* sind Back-End-Speicher für Dateien, auf die über eine Azure HPC Cache-Instanz zugegriffen wird. Sie können NFS-Speicher hinzufügen, z. B. ein lokales Hardwaresystem, oder Daten im Azure-Blob speichern.
+*Speicherziele* sind Back-End-Speicher für Dateien, auf die über eine Azure HPC Cache-Instanz zugegriffen wird. Sie können NFS-Speicher hinzufügen, z. B. ein lokales Hardwaresystem, oder Daten in Azure Blob Storage speichern.
 
 Es können bis zu zehn verschiedene Speicherziele für einen Cache definiert werden. Der Cache stellt alle Speicherziele in einem aggregierten Namespace dar.
 
 Beachten Sie, dass der Zugriff auf die Speicherexporte vom virtuellen Netzwerk Ihres Caches aus möglich sein muss. Für einen lokalen Hardwarespeicher müssen Sie möglicherweise einen DNS-Server einrichten, der Hostnamen für den NFS-Speicherzugriff auflösen kann. Weitere Informationen finden Sie unter [DNS-Zugriff](hpc-cache-prereqs.md#dns-access).
 
-Sie können Speicherziele beim Erstellen Ihres Caches oder später hinzufügen. Das Verfahren unterscheidet sich geringfügig, je nachdem, ob Sie Azure Blobspeicher oder einen NFS-Export hinzufügen. Details zu beiden Szenarien finden Sie unten.
+Fügen Sie nach dem Erstellen des Caches Speicherziele hinzu. Das Verfahren unterscheidet sich geringfügig, je nachdem, ob Sie Azure Blobspeicher oder einen NFS-Export hinzufügen. Details zu beiden Szenarien finden Sie unten.
 
-## <a name="add-storage-targets-while-creating-the-cache"></a>Hinzufügen von Speicherzielen beim Erstellen des Caches
+## <a name="open-the-storage-targets-page"></a>Öffnen der Seite „Speicherziele“
 
-Verwenden Sie die Registerkarte **Speicherziele** des Assistenten zur Azure HPC Cache-Erstellung, um Speicher zu definieren, während Sie die Cache-Instanz erstellen.
-
-![Screenshot der Seite „Speicherziele“](media/hpc-cache-storage-targets-pop.png)
-
-Klicken Sie auf den Link **Speicherziel hinzufügen**, um Speicher hinzuzufügen.
-
-## <a name="add-storage-targets-from-the-cache"></a>Hinzufügen von Speicherzielen aus dem Cache
-
-Öffnen Sie im Azure-Portal Ihre Cache-Instanz, und klicken Sie in der linken Seitenleiste auf **Speicherziele**. Auf der Seite „Speicherziel“ werden alle vorhandenen Ziele und ein Link zum Hinzufügen eines neuen Ziels aufgelistet.
+Öffnen Sie im Azure-Portal Ihre Cache-Instanz, und klicken Sie in der linken Seitenleiste auf **Speicherziele**. Auf der Seite „Speicherziele“ werden alle vorhandenen Ziele und ein Link zum Hinzufügen eines neuen Ziels aufgelistet.
 
 ![Screenshot des Links „Speicherziele“ in der Randleiste unter der Überschrift „Konfigurieren“, die sich zwischen den Kategorieüberschriften „Einstellungen“ und „Überwachung“ befindet](media/hpc-cache-storage-targets-sidebar.png)
 
@@ -107,7 +99,7 @@ Ein NFS-Speicherziel kann mehrere virtuelle Pfade aufweisen, solange jeder Pfad 
 Erstellen Sie alle Pfade von einem Speicherziel aus.
 <!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
 
-Geben Sie diese Werte für die einzelnen Namespacepfade ein: 
+Geben Sie diese Werte für die einzelnen Namespacepfade ein:
 
 * **Pfad des virtuellen Namespace**: Legen Sie den clientseitigen Dateipfad für dieses Speicherziel fest. Weitere Informationen zum Feature virtueller Namespace finden Sie unter [Aggregierten Namespace konfigurieren](hpc-cache-namespace.md).
 
@@ -115,7 +107,7 @@ Geben Sie diese Werte für die einzelnen Namespacepfade ein:
 
 * **NFS-Exportpfad**: Geben Sie den Pfad zum NFS-Export ein.
 
-* **Unterverzeichnispfad**: Wenn Sie ein bestimmtes Unterverzeichnis des Exports einbinden möchten, geben Sie es hier ein. Lassen Sie dieses Feld andernfalls leer. 
+* **Unterverzeichnispfad**: Wenn Sie ein bestimmtes Unterverzeichnis des Exports einbinden möchten, geben Sie es hier ein. Lassen Sie dieses Feld andernfalls leer.
 
 Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
@@ -124,7 +116,7 @@ Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
 Wenn Sie ein Speicherziel erstellen, das auf ein NFS-Speichersystem verweist, müssen Sie das *Nutzungsmodell* für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
 
-* Leseintensiv: Wenn Sie den Cache größtenteils zum Beschleunigen des Lesezugriffs für Daten verwenden, wählen Sie diese Option aus. 
+* Leseintensiv: Wenn Sie den Cache größtenteils zum Beschleunigen des Lesezugriffs für Daten verwenden, wählen Sie diese Option aus.
 
 * Lese-/Schreibzugriff: Wenn Clients den Cache zum Lesen und Schreiben verwenden, wählen Sie diese Option aus.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 903492d790cdde93dfe84763de139fe85e26b234
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218282"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802062"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -43,32 +43,17 @@ Sobald Sie über einen Azure AD B2C-Mandanten verfügen, müssen Sie Ihre Verwal
 
 ### <a name="register-application-in-azure-active-directory"></a>Registrieren einer Anwendung in Azure Active Directory
 
-Um die Azure AD Graph-API mit Ihrem B2C-Mandanten zu verwenden, müssen Sie eine Anwendung mit dem Azure Active Directory-Workflow **App-Registrierungen** registrieren.
+Um die Azure AD-Graph-API mit Ihrem B2C-Mandanten zu verwenden, müssen Sie eine Anwendung mit dem Azure Active Directory-Workflow zur App-Registrierungen registrieren.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü den Eintrag **Azure Active Directory** (*nicht* „Azure AD B2C“) aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure Active Directory**, und wählen Sie ihn aus.
-1. Wählen Sie im linken Menü unter **Verwalten** die Option **App-Registrierungen (Legacy)** aus.
-1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie einen Namen für die Anwendung ein. Beispiel: *Verwaltungs-App*.
-1. Geben Sie im Feld **Anmelde-URL** eine gültige URL ein. Beispiel: *https://localhost* Dieser Endpunkt muss nicht erreichbar sein, aber es muss sich dabei um eine gültige URL handeln.
-1. Klicken Sie auf **Erstellen**.
-1. Notieren Sie sich die **Anwendungs-ID**, die auf der Übersichtsseite **Registrierte App** angezeigt wird. Dieser Wert wird in einem späteren Schritt für die Konfiguration verwendet.
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
 ### <a name="assign-api-access-permissions"></a>Zuweisen von API-Zugriffsberechtigungen
 
-1. Wählen Sie auf der Übersichtsseite **Registrierte App** die Option **Einstellungen** aus.
-1. Wählen Sie unter **API-ZUGRIFF** die Option **Erforderliche Berechtigungen** aus.
-1. Wählen Sie die Option **Windows Azure Active Directory**.
-1. Wählen Sie unter **Anwendungsberechtigungen** die Option **Lese- und Schreibzugriff auf Verzeichnisdaten** aus.
-1. Wählen Sie **Speichern** aus.
-1. Wählen Sie **Berechtigungen erteilen** und dann **Ja** aus. Es kann einige Minuten dauern, bis die Berechtigungen vollständig verteilt sind.
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>Erstellen eines geheimen Clientschlüssels
 
-1. Wählen Sie unter **API-ZUGRIFF** die Option **Schlüssel** aus.
-1. Geben Sie im Feld **Schlüsselbeschreibung** eine Beschreibung für den Schlüssel ein. Beispiel: *Verwaltungsschlüssel*.
-1. Wählen Sie eine **Gültigkeitsdauer** und dann **Speichern** aus.
-1. Notieren Sie sich den **WERT** des Schlüssels. Dieser Wert wird in einem späteren Schritt für die Konfiguration verwendet.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Sie verfügen jetzt über eine Anwendung mit der Berechtigung zum *Erstellen*, *Lesen* und *Aktualisieren* von Benutzern in Ihrem Azure AD B2C-Mandanten. Fahren Sie mit dem nächsten Abschnitt fort, um die Berechtigungen *Benutzer löschen* und *Kennwort aktualisieren* hinzuzufügen.
 
@@ -83,7 +68,7 @@ Wenn Sie der Anwendung die Möglichkeit erteilen möchten, Benutzer zu löschen 
 1. Wählen Sie unter **Verwalten** den Eintrag **Rollen und Administratoren** aus.
 1. Wählen Sie die Rolle **Benutzeradministrator** aus.
 1. Wählen Sie **Zuweisung hinzufügen** aus.
-1. Geben Sie im Textfeld **Auswählen** den Namen der zuvor registrierten Anwendung ein, z.B. *Verwaltungs-App*. Wählen Sie Ihre Anwendung aus, wenn sie in den Suchergebnissen angezeigt wird.
+1. Geben Sie im Textfeld **Auswählen** den Namen der zuvor registrierten Anwendung ein, z. B. *managementapp1*. Wählen Sie Ihre Anwendung aus, wenn sie in den Suchergebnissen angezeigt wird.
 1. Wählen Sie **Hinzufügen**. Es kann einige Minuten dauern, bis die Berechtigungen vollständig verteilt sind.
 
 Ihre Azure AD B2C-Anwendung verfügt jetzt über die zusätzlichen Berechtigungen, die zum Löschen von Benutzern oder zum Aktualisieren ihrer Kennwörter in Ihrem Azure AD B2C-Mandanten erforderlich sind.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 527c7120ad2d890c8abf32d29827ed7454b0ebfd
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2aa2ed6fe4d8218737c42bb3d76084c5d677623f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065300"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826947"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Azure Active Directory-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -181,13 +181,7 @@ Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Ak
 
 Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihrem B2C-Mandanten registrieren. In diesem Abschnitt werden optionale Schritte aufgeführt, die Sie ausführen können, um eine Testanwendung zu erstellen, falls Sie dies noch nicht getan haben.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-1. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
-1. Geben Sie einen Namen für die Anwendung ein, z.B. *testapp1*.
-1. Wählen Sie für **Web-App/Web-API** die Option `Yes` aus, und geben Sie dann für die **Antwort-URL** die Zeichenfolge `https://jwt.ms` ein.
-1. Klicken Sie auf **Erstellen**.
+[!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ## <a name="update-and-test-the-relying-party-file"></a>Aktualisieren und Testen der Datei der vertrauenden Seite
 
@@ -196,7 +190,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
 1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Kopie der Datei *SignUpOrSignIn.xml*, und benennen Sie sie um. Benennen Sie die Datei z. B. in *SignUpSignInContoso.xml* um.
 1. Öffnen Sie die neue Datei, und aktualisieren Sie den Wert des Attributs **PolicyId** für **TrustFrameworkPolicy** mit einem eindeutigen Wert. Beispiel: `SignUpSignInContoso`.
 1. Aktualisieren Sie den Wert von **PublicPolicyUri** mit dem URI für die Richtlinie. Beispiel: `http://contoso.com/B2C_1A_signup_signin_contoso`.
-1. Ändern Sie den Wert des Attributs **ReferenceId** im Element **DefaultUserJourney** so, dass er der ID der User Journey entspricht, die Sie zuvor erstellt haben, beispielsweise *SignUpSignInContoso*.
+1. Ändern Sie den Wert des **ReferenceId**-Attributs im **DefaultUserJourney**-Element so, dass er der ID der zuvor erstellten User Journey entspricht, beispielsweise *SignUpSignInContoso*.
 1. Speichern Sie die Änderungen, und laden Sie die Datei hoch.
 1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die neue Richtlinie in der Liste aus.
 1. Wählen Sie in der Dropdownliste **Anwendung auswählen** die Azure AD B2C-Anwendung aus, die Sie zuvor erstellt haben. Zum Beispiel *testapp1*.

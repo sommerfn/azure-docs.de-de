@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032941"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710146"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
@@ -38,12 +38,19 @@ Informationen zu den verfügbaren Dienstebenen und ihren Merkmalen finden Sie un
 
 Programmfehler und bekannte Probleme werden unter [Bekannte Probleme](sql-database-managed-instance-transact-sql-information.md#Issues) erörtert.
 
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>Wo finde ich die neuesten Features sowie die Features in der Public Preview?
+
+Neue Features und Previewfunktionen finden Sie in den [Versionshinweisen](/azure/sql-database/sql-database-release-notes?tabs=managed-instance).
+
+## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>Wie lange dauert es, eine Instanz zu erstellen oder zu aktualisieren oder eine Datenbank wiederherzustellen?
+
+Die erwartete Zeit zum Erstellen einer neuen verwalteten Instanz oder zum Ändern der Dienstebene (virtuelle Kerne, Speicher) hängt von mehreren Faktoren ab. Sehen Sie sich die [Verwaltungsvorgänge](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) an. 
+
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Kann eine verwaltete Instanz den gleichen Namen wie ein lokaler SQL Server haben?
 
 Die Namen verwalteter Instanzen müssen mit *database.windows.net* enden. So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. **mi-another-name**.contoso.com: 
 - Verwenden Sie „CliConfig“ zum Definieren eines Alias. Weil das Tool nur ein Wrapper für Registrierungseinstellungen ist, könnte es auch mithilfe einer Gruppenrichtlinie oder eines Skripts ausgeführt werden.
 - Verwenden Sie *CNAME* mit der Option *TrustServerCertificate=true*.
-
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Wie kann ich eine Datenbank aus einer verwalteten Instanz zurück zu SQL Server oder Azure SQL-Datenbank verschieben?
 
@@ -55,7 +62,7 @@ Native `COPY_ONLY`-Sicherungen einer verwalteten Instanz können nicht in SQL Se
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Wie kann ich meine Instanzdatenbank zu einer einzelnen Azure SQL-Datenbank migrieren?
 
-Eine Option ist das [Exportieren der Datenbank in eine BACPAC-Datei](sql-database-export.md) und das anschließende [Importieren der BACPAC-Datei]( sql-database-import.md). 
+Eine Option ist das [Exportieren der Datenbank in eine BACPAC-Datei](sql-database-export.md) und das anschließende [Importieren der BACPAC-Datei](sql-database-import.md). 
 
 Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist. Transaktionsreplikation kann verwendet werden, wenn alle Tabellen in der Datenbank Primärschlüssel aufweisen.
 
@@ -69,7 +76,7 @@ Es wird dringend empfohlen, vor der Liveschaltung die Leistung der tatsächliche
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>Kann ich für meine verwaltete Instanz online zwischen der Hardwaregeneration Gen 4 und Gen 5 wechseln? 
 
-Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn beide Hardwaregenerationen in der Region verfügbar sind, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall enthält der Tarifabschnitt des Azure-Portals eine Option zum Wechseln zwischen Hardwaregenerationen.
+Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn beide Hardwaregenerationen in der Region verfügbar sind, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall können Sie das [Skript aus dem Blogbeitrag](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) verwenden, in dem erläutert wird, wie Sie zwischen Hardwaregenerationen wechseln.
 
 Dabei handelt es sich um einen Vorgang mit langer Ausführungszeit, da eine neue verwaltete Instanz im Hintergrund bereitgestellt wird und Datenbanken automatisch zwischen der alten und neuen Instanz mit einem schnellen Failover am Ende des Prozesses übertragen werden. 
 
@@ -125,7 +132,8 @@ Kunden wird empfohlen, zum Verringern von Netzwerkrisiken eine Reihe von Sicherh
 Fallstudien zu verwalteten Instanzen:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
 - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
 Es gibt auch eine Forrester-Studie, die ein besseres Verständnis der Vorteile, Kosten und Risiken im Zusammenhang mit der Bereitstellung einer verwalteten Azure SQL-Datenbank-Instanz vermittelt: [Der Total Economic Impact der verwalteten Microsoft Azure SQL-Datenbank-Instanz](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 

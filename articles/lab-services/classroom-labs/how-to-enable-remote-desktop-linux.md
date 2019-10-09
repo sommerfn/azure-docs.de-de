@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 562ad0e5e6088c2fbadc853779b7533c5398e079
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: c67ca111bf87c9dbfa69c93149d29dbd32767fbd
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176644"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350756"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -37,7 +37,8 @@ Wählen Sie im Meldungsfeld **Enabling Remote Desktop Connection** (Aktivieren d
 
 > [!IMPORTANT] 
 > Beim Aktivieren der **Remotedesktopverbindung** wird auf Linux-Computern nur der **RDP**-Port geöffnet. Wenn RDP bereits in dem VM-Image installiert und konfiguriert ist (z. B.: Ubuntu Data Science Virtual Machine-Image), können Sie/Studenten per RDP eine Verbindung mit virtuellen Computern herstellen, ohne weitere Schritte ausführen zu müssen.
-> Wenn in dem VM-Image kein RDP installiert und konfiguriert ist, müssen Sie beim ersten Mal eine Verbindung mit dem Linux-Computer per SSH herstellen und dann RDP- und GUI-Pakete installieren, damit Sie/Studenten später eine Verbindung mit dem Linux-Computer per RDP herstellen können. Anschließend veröffentlichen Sie das Image, damit die Kursteilnehmer per RDP eine Verbindung mit den virtuellen Linux-Computern herstellen können, die für sie bestimmt sind.
+> 
+> Wenn in dem VM-Image kein RDP installiert und konfiguriert ist, müssen Sie beim ersten Mal eine Verbindung mit dem Linux-Computer per SSH herstellen und dann RDP- und GUI-Pakete installieren, damit Sie/Studenten später eine Verbindung mit dem Linux-Computer per RDP herstellen können. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../virtual-machines/linux/use-remote-desktop.md). Anschließend veröffentlichen Sie das Image, damit die Kursteilnehmer per RDP eine Verbindung mit den virtuellen Linux-Computern herstellen können, die für sie bestimmt sind. 
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 Derzeit wird die Remotedesktopverbindung für die folgenden Betriebssysteme unterstützt:

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183146"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802094"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Benutzermigration
 
@@ -49,51 +49,29 @@ Sie erstellen das Azure AD B2C-Benutzerkonto mithilfe der Graph-API (mit dem bek
 
 ### <a name="step-11-register-your-application-in-your-tenant"></a>Schritt 1.1: Registrieren Ihrer Anwendung in Ihrem Mandanten
 
-Um mit der Graph-API zu kommunizieren, benötigen Sie zuerst ein Dienstkonto mit Administratorberechtigungen. In Azure AD registrieren Sie eine Anwendung und eine Authentifizierung für Azure AD. Die Anwendungsanmeldeinformationen bestehen aus **Anwendungs-ID** und **Anwendungsgeheimnis**. Die Anwendung verhält sich beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
+Um mit der Graph-API zu kommunizieren, benötigen Sie zuerst ein Dienstkonto mit Administratorberechtigungen. In Azure AD registrieren Sie eine Anwendung und aktivieren Schreibzugriff auf das Verzeichnis. Die Anwendungsanmeldeinformationen bestehen aus der **Anwendungs-ID** und dem **Anwendungsgeheimnis**. Die Anwendung verhält sich beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
 
-Registrieren Sie zuerst Ihre Migrationsanwendung bei Azure AD. Erstellen Sie anschließend einen Anwendungsschlüssel (Anwendungsgeheimnis), und statten Sie die Anwendung mit Schreibberechtigungen aus.
+Registrieren Sie zunächst eine Anwendung, die Sie für Verwaltungsaufgaben wie die Benutzermigration verwenden können.
 
-1. Melden Sie sich beim [Azure-Portal][Portal] an.
-1. Wählen Sie im oberen rechten Abschnitt des Portals den Filter **Verzeichnis + Abonnement** aus.
-1. Wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Klicken Sie im Menü links auf **Azure Active Directory** (*nicht* auf Azure AD B2C). Unter Umständen müssen Sie **Alle Dienste** auswählen, um die Option zu finden.
-1. Wählen Sie **App-Registrierungen (Legacy)** aus.
-1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
-   ![Azure Active Directory- und App-Registrierungen-Menüelemente hervorgehoben](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
+### <a name="step-12-grant-administrative-permission-to-your-application"></a>Schritt 1.2: Gewähren von Administratorberechtigungen für die Anwendung
 
-1. Erstellen Sie eine neue Anwendung, indem Sie wie folgt vorgehen:
+Gewähren Sie der Anwendung als Nächstes die Berechtigungen für die Azure AD-Graph-API, die zum Schreiben in das Verzeichnis erforderlich sind.
 
-   - Verwenden Sie für **Name** entweder *B2CUserMigration* oder einen anderen beliebigen Namen.
-   - Wählen Sie für **Anwendungstyp** die Option **Web-App/API** aus.
-   - Verwenden Sie als **Anmelde-URL** die URL `https://localhost` (für diese Anwendung nicht relevant).
-   - Klicken Sie auf **Erstellen**.
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-    Nachdem die Anwendung erstellt wurde, wird die Seite **Registrierte App** mit den zugehörigen Eigenschaften angezeigt.
-1. Kopieren Sie die **Anwendungs-ID** der Anwendung, und speichern Sie sie für eine spätere Verwendung.
+### <a name="step-13-create-the-application-secret"></a>Schritt 1.3: Erstellen des Anwendungsgeheimnisses
 
-### <a name="step-12-create-the-application-secret"></a>Schritt 1.2: Erstellen des Anwendungsgeheimnisses
+Erstellen Sie einen geheimen Clientschlüssel (Geheimnis) für die Verwendung durch die Anwendung zur Benutzermigration, die Sie in einem späteren Schritt konfigurieren.
 
-1. Wählen Sie auf der Seite **Registrierte App** die Option **Einstellungen** aus.
-1. Wählen Sie **Schlüssel** aus.
-1. Fügen Sie unter **Kennwörter** einen neuen Schlüssel (auch Clientgeheimnis genannt) namens *MyClientSecret* (Sie können auch einen anderen Namen auswählen) hinzu. Klicken Sie dann auf **Speichern**, und kopieren Sie den Schlüsselwert für eine spätere Verwendung.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
-    ![„Anwendungs-ID“-Wert und Menüelement „Schlüssel“ im Azure-Portal hervorgehoben](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
-
-### <a name="step-13-grant-administrative-permission-to-your-application"></a>Schritt 1.3: Gewähren von Administratorberechtigungen für die Anwendung
-
-1. Klicken Sie im Menü **Einstellungen** auf **Erforderliche Berechtigungen**.
-1. Wählen Sie die Option **Windows Azure Active Directory**.
-1. Wählen Sie im Bereich **Zugriff aktivieren** unter **Anwendungsberechtigungen** die Option **Lese- und Schreibzugriff auf Verzeichnisdaten** und anschließend **Speichern**.
-1. Wählen Sie im Bereich **Erforderliche Berechtigungen** die Option **Berechtigungen erteilen** aus, und klicken Sie auf **Ja**.
-
-   ![Kontrollkästchen zum Lesen/Schreiben des Verzeichnisses, „Speichern“ und „Berechtigungen erteilen“ hervorgehoben](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
-
-Sie verfügen jetzt über eine Anwendung mit Berechtigungen zum Erstellen, Lesen und Aktualisieren von Benutzern über Ihren Azure AD B2C-Mandanten.
+Sie verfügen jetzt über eine Anwendung mit Berechtigungen zum Erstellen, Lesen und Aktualisieren von Benutzern in Ihrem Azure AD B2C-Mandanten.
 
 ### <a name="step-14-optional-environment-cleanup"></a>Schritt 1.4: Bereinigen der Umgebung (optional)
 
-Die Berechtigung „Lese- und Schreibzugriff auf Verzeichnisdaten“ schließt *nicht* die Berechtigung zum Löschen von Benutzern ein. Damit Ihre Anwendung die Möglichkeit zum Löschen von Benutzern erhält (zum Bereinigen Ihrer Umgebung), müssen Sie einen zusätzlichen Schritt ausführen. Dies umfasst auch die Ausführung von PowerShell zum Festlegen von Benutzerkonto-Administratorberechtigungen. Andernfalls können Sie mit dem nächsten Abschnitt fortfahren.
+Die Berechtigung *Lese- und Schreibzugriff auf Verzeichnisdaten* schließt *nicht* die Berechtigung ein, Benutzer zu löschen. Damit Ihre Anwendung die Möglichkeit zum Löschen von Benutzern erhält (zum Bereinigen Ihrer Umgebung), müssen Sie einen zusätzlichen Schritt ausführen. Dies umfasst auch die Ausführung von PowerShell zum Festlegen von Benutzerkonto-Administratorberechtigungen. Andernfalls können Sie mit dem nächsten Abschnitt fortfahren.
 
 > [!IMPORTANT]
 > Sie müssen ein B2C-Mandantenadministratorkonto verwenden, das für den B2C-Mandanten *lokal* angeordnet ist. Die Syntax für den Kontonamen lautet: *admin\@contosob2c.onmicrosoft.com*.

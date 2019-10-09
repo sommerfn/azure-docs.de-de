@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 61a42a8c1176cdd347fd2956a07c295ecf49321e
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067729"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695556"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -23,6 +23,58 @@ In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
+## <a name="2019-09-30"></a>2019-09-30
+
+### <a name="azure-machine-learning-sdk-for-python-v1065"></a>Azure Machine Learning SDK für Python 1.0.65
+
+  + **Neue Features**
+    + Es wurden zusammengestellte Umgebungen hinzugefügt. Diese Umgebungen wurden mit Bibliotheken für gängige Aufgaben für maschinelles Lernen vorkonfiguriert und zur schnelleren Ausführung vorab als Docker-Images erstellt und zwischengespeichert. Sie werden standardmäßig in der Liste der Umgebungen des Arbeitsbereichs mit dem Präfix „AzureML“ angezeigt.
+  
+  + **azureml-train-automl**
+    + Unterstützung für die ONNX-Konvertierung für ADB und HDI wurde hinzugefügt.
+
++ **Vorschaufunktionen**  
+  + **azureml-train-automl**
+    + BERT und BiLSTM werden jetzt als Textfeaturanpassungen unterstützt (nur Vorschauversion).
+    + Featureanpassung für Parameter für Spaltenzweck und Transformationsparameter wird jetzt unterstützt (nur Vorschauversion).
+    + Unformatierte Erklärungen werden jetzt unterstützt, wenn der Benutzer während des Trainings die Modellerklärung aktiviert (nur Vorschauversion).
+    + Prophet wurde für Zeitreihenprognosen als nachverfolgbare Pipeline hinzugefügt (nur Vorschauversion).
+  
+  + **azureml-contrib-datadrift**
+    + Pakete wurden von azureml-contrib-datadrift nach azureml-datadrift verschoben. Das contrib-Paket wird in einem zukünftigen Release entfernt. 
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    + FeaturizationConfig wurde in AutoMLConfig und AutoMLBaseSettings eingeführt.
+      + Spaltenzweck kann für Featureeinordnung mit angegebenen Spalten- und Featuretypen außer Kraft gesetzt werden.
+      + Transformationsparameter können außer Kraft gesetzt werden.
+    + Für explain_model() und retrieve_model_explanations() wurde ein Hinweis zur Veraltung hinzugefügt.
+    + Prophet wurde als trainingsfähige Pipeline hinzugefügt (nur Vorschauversion).
+    + Unterstützung für die automatische Erkennung von Zielverzögerungen, der Größe rollierender Fenster und des maximalen Horizonts wurde hinzugefügt. Wenn einer der Werte target_lags, target_rolling_window_size oder max_horizon auf automatisch festgelegt ist, wird die Heuristik zum Abschätzen des Werts des entsprechenden Parameters basierend auf den Trainingsdaten angewandt.
+    + Die Vorhersage wurde für den Fall korrigiert, dass das Dataset eine Spalte vom Typ „Körnung“ enthält, diese einen numerischen Typ aufweist und eine Lücke zwischen dem Trainings- und dem Testsatz besteht.
+    + Die Fehlermeldung über den duplizierten Index in der Remoteausführung in Prognoseaufgaben wurde korrigiert.
+    + Eine Guardrail wurde zur Überprüfung hinzugefügt, ob ein Dataset unausgeglichen ist. Wenn dies der Fall ist, wird eine Guardrailnachricht in die Konsole geschrieben.
+  + **azureml-core**
+    + Die Möglichkeit zum Abrufen der SAS-URL in das Modell im Speicher über das Modellobjekt wurde hinzugefügt. Beispiel: model.get_sas_url()
+    + `run.get_details()['datasets']` wurde eingeführt, um mit der übermittelten Ausführung verknüpfte Datasets abzurufen.
+    + Die API `Dataset.Tabular.from_json_lines_files` wurde hinzugefügt, um ein TabularDataset aus JSON-Lines-Dateien zu erstellen. Weitere Informationen zu diesen Tabellendaten in den JSON-Lines-Dateien für TabularDataset finden Sie in der Dokumentation unter https://aka.ms/azureml-data.
+    + Der supported_vmsizes()-Funktion wurden zusätzliche VM-Größenfelder (Betriebssystemdatenträger, Anzahl von GPUs) hinzugefügt.
+    + Der list_nodes()-Funktion wurden zusätzliche Felder hinzugefügt, um die Ausführung, die private und die öffentliche IP-Adresse, den Port usw. anzuzeigen.
+    + Die Möglichkeit, bei der Clusterbereitstellung ein neues Feld über --remotelogin_port_public_access anzugeben, wurde hinzugefügt. Dieses kann je nachdem, ob der SSH-Port zum Zeitpunkt der Clustererstellung geöffnet oder geschlossen sein soll, aktiviert oder deaktiviert werden. Wenn keine Angabe erfolgt, öffnet oder schließt der Dienst den Port intelligent in Abhängigkeit davon, ob Sie den Cluster in einem VNET bereitstellen.
+  + **azureml-explain-model**
+    + Die Dokumentation für Erklärungsausgaben im Klassifizierungsszenario wurde verbessert.
+    + Die Möglichkeit, die vorhergesagten y-Werte in der Erklärung für die Evaluierungsbeispiele hochzuladen, wurde hinzugefügt. Weitere nützliche Visualisierungen wurden entsperrt.
+    + MimicWrapper wurde eine Erklärungseigenschaft hinzugefügt, um den zugrunde liegenden MimicExplainer-Wert abzurufen.
+  + **azureml-pipeline-core**
+    + Ein Notebook zum Beschreiben von Module, ModuleVersion und ModuleStep wurde hinzugefügt.
+  + **azureml-pipeline-steps**
+    + RScriptStep zur Unterstützung von R-Skript-Ausführungen über die AML-Pipeline wurde hinzugefügt.
+    + Die Analyse von Metadatenparametern in AzureBatchStep wurde korrigiert. Dies war die Ursache der Fehlermeldung über eine nicht angegebene Zuweisung für den SubscriptionId-Parameter.
+  + **azureml-train-automl**
+    + training_data, validation_data, label_column_name und weight_column_name werden jetzt als Format für die Dateneingabe unterstützt.
+    + Für explain_model() und retrieve_model_explanations() wurde ein Hinweis zur Veraltung hinzugefügt.
+
+  
 ## <a name="2019-09-16"></a>16.09.2019
 
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK für Python v1.0.62
@@ -290,7 +342,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 ### <a name="azure-machine-learning-data-prep-sdk-v1110"></a>Azure Machine Learning Data Prep SDK v1.1.10
 
 + **Neue Features**
-  + Sie können jetzt anfordern, bestimmte Inspektoren (z. B. Histogramm, Punktdiagramm usw.) für bestimmte Spalten auszuführen.
+  + Sie können jetzt die Ausführung bestimmter Inspektoren (z. B. Histogramm, Punktdiagramm usw.) für bestimmte Spalten anfordern.
   + `append_columns`wurde ein prarallelisiertes Argument hinzugefügt. Wenn „True“, werden Daten in den Arbeitsspeicher geladen, aber die Ausführung wird parallel ausgeführt. Wenn „False“, wird die Ausführung gestreamt, aber singlethread.
 
 ## <a name="2019-07-23"></a>2019-07-23

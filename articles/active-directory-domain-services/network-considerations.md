@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086587"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315004"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure AD Domain Services
 
@@ -46,7 +46,7 @@ Eine von Azure AD DS verwaltete Domäne stellt eine Verbindung mit einem Subnetz
 * Azure AD DS muss in einem eigenen Subnetz bereitgestellt werden. Verwenden Sie kein bestehendes Subnetz oder Gatewaysubnetz.
 * Während der Bereitstellung einer von Azure AD DS verwalteten Domäne wird eine Netzwerksicherheitsgruppe erstellt. Diese Netzwerksicherheitsgruppe enthält die erforderlichen Regeln für eine korrekte Dienstkommunikation.
     * Erstellen oder verwenden Sie keine bestehende Netzwerksicherheitsgruppe mit Ihren eigenen benutzerdefinierten Regeln.
-* Azure AD DS benötigt zwischen fünf und sieben IP-Adressen. Stellen Sie sicher, dass der IP-Adressbereich Ihres Subnetzes diese Anzahl von Adressen bereitstellen kann.
+* Azure AD DS erfordert 3–5 IP-Adressen. Stellen Sie sicher, dass der IP-Adressbereich Ihres Subnetzes diese Anzahl von Adressen bereitstellen kann.
     * Die Einschränkung der verfügbaren IP-Adressen kann verhindern, dass Azure AD Domain Services zwei Domänencontroller verwaltet.
 
 Das folgende Beispieldiagramm zeigt einen gültigen Entwurf, bei dem Azure AD DS über ein eigenes Subnetz verfügt, ein Gatewaysubnetz für externe Verbindungen vorhanden ist und Anwendungsworkloads in einem verbundenen Subnetz innerhalb des virtuellen Netzwerks liegen:

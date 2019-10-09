@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Foodee konfigurieren.
+title: 'Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung mithilfe von Azure Active Directory | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie Azure Active Directory zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Foodee konfigurieren.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,156 +15,162 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088091"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812722"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte erläutert, die in Foodee und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Foodee zu konfigurieren.
+In diesem Artikel wird gezeigt, wie Sie Azure Active Directory (Azure AD) in Foodee und Azure AD für die automatische Bereitstellung oder Aufhebung der Bereitstellung von Benutzern oder Gruppen in Foodee konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> Der Artikel enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wenn Sie sich über den Zweck und die Funktionsweise dieses Diensts informieren sowie Antworten auf häufig gestellte Fragen erhalten möchten, lesen Sie [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 >
-> Dieser Connector befindet sich derzeit in der Public Preview-Phase. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Dieser Connector befindet sich derzeit in der Vorschauversion. Weitere Informationen zu den Nutzungsbedingungen von Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
+In diesem Tutorial wird davon ausgegangen, dass Sie die folgenden Voraussetzungen erfüllt haben und verfügen über:
 
-* Einen Azure AD-Mandanten.
+* Einen Azure AD-Mandanten
 * [Einen Foodee-Mandanten](https://www.food.ee/about/)
-* Ein Benutzerkonto in Foodee mit Administratorberechtigungen.
+* Ein Benutzerkonto in Foodee mit Administratorberechtigungen
 
-## <a name="assigning-users-to-foodee"></a>Zuweisen von Benutzern zu Foodee 
+## <a name="assign-users-to-foodee"></a>Zuweisen von Benutzern zu Foodee 
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure AD ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf ausgewählte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
-Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Foodee benötigen. Anschließend können Sie Foodee diese Benutzer und/oder Gruppen zuweisen, indem Sie den folgenden Anweisungen folgen:
-* [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
+Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer oder Gruppen in Azure AD Zugriff auf Foodee benötigen. Nachdem Sie Ihre Entscheidung getroffen haben, können Sie diese Benutzer oder Gruppen entsprechend den Anleitungen unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md) Foodee zuweisen.
 
 ## <a name="important-tips-for-assigning-users-to-foodee"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Foodee 
 
-* Es wird empfohlen, Foodee einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+Beachten Sie beim Zuweisen von Benutzern die folgenden Tipps:
 
-* Beim Zuweisen eines Benutzers zu Foodee müssen Sie im Dialogfeld für die Zuweisung eine gültige anwendungsspezifische Rolle auswählen (sofern verfügbar). Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
+* Wir empfehlen Ihnen, Foodee zuerst nur einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können Sie dann weitere Benutzer oder Gruppen zuweisen.
 
-## <a name="setup-foodee-for-provisioning"></a>Einrichten von Foodee für die Bereitstellung
+* Wenn Sie Foodee einen Benutzer zuweisen, wählen Sie im Bereich **Zuweisung** eine gültige anwendungsspezifische Rolle aus (sofern verfügbar). Benutzer mit der Rolle *Standardzugriff* werden von der Bereitstellung ausgeschlossen.
 
-Bevor Sie Foodee für die automatische Benutzerbereitstellung in Azure AD konfigurieren, müssen Sie in Foodee die SCIM-Bereitstellung aktivieren.
+## <a name="set-up-foodee-for-provisioning"></a>Einrichten von Foodee für die Bereitstellung
 
-1. Melden Sie sich bei [Foodee](https://www.food.ee/login/) an. Klicken Sie auf Ihre **Mandanten-ID**.
+Bevor Sie Foodee für die automatische Benutzerbereitstellung mithilfe von Azure AD konfigurieren, müssen Sie die SCIM-Bereitstellung (System for Cross-Domain Identity Management, System für domänenübergreifendes Identitätsmanagement) in Foodee aktivieren.
+
+1. Melden Sie sich bei [Foodee](https://www.food.ee/login/) an, und wählen Sie dann Ihre Mandanten-ID aus.
 
     ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
 
-2. Wählen Sie unter „Enterprise Portal“ (Unternehmensportal) die Option **Single Sign On** (Einmaliges Anmelden) aus.
+1. Wählen Sie unter **Enterprise Portal** (Unternehmensportal) die Option **Single Sign On** (Einmaliges Anmelden) aus.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/scim.png)
+    ![Das Foodee-Menü „Enterprise Portal“ im linken Bereich](media/Foodee-provisioning-tutorial/scim.png)
 
-3. Kopieren Sie das **API-Token**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Foodee-Anwendung in das Feld **Geheimes Token** eingegeben.
+1. Kopieren Sie den Wert im Feld **API-Token** zur späteren Verwendung. Sie werden ihn im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer Foodee-Anwendung im Feld **Geheimes Token** eingeben.
 
     ![Foodee](media/Foodee-provisioning-tutorial/token.png)
 
-
 ## <a name="add-foodee-from-the-gallery"></a>Hinzufügen von Foodee aus dem Katalog
 
-Um Foodee für die automatische Benutzerbereitstellung in Azure AD konfigurieren zu können, müssen Sie Ihrer Liste der verwalteten SaaS-Anwendungen Foodee aus dem Azure AD-Anwendungskatalog hinzufügen.
+Um Foodee für die automatische Benutzerbereitstellung mithilfe von Azure AD konfigurieren zu können, müssen Sie Ihrer Liste der verwalteten SaaS-Anwendungen Foodee aus dem Azure AD-Anwendungskatalog hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Foodee aus dem Azure AD-Anwendungskatalog hinzuzufügen:**
+Führen Sie die folgenden Schritte aus, um Foodee aus dem Azure AD-Anwendungskatalog hinzuzufügen:
 
-1. Wählen Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich **Azure Active Directory** aus.
+1. Wählen Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) die Option **Azure Active Directory** aus.
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+    ![Der Befehl „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+    ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Wählen Sie oben im Bereich **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld den Namen **Foodee** ein, wählen Sie im Ergebnisbereich die Anwendung **Foodee** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Foodee** ein, wählen Sie im Ergebnisbereich **Foodee** und dann **Hinzufügen** aus, um die Anwendung hinzuzufügen.
 
-    ![Foodee in der Ergebnisliste](common/search-new-app.png)
+    ![„Foodee“ in der Ergebnisliste](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-foodee"></a>Konfigurieren der automatischen Benutzerbereitstellung für Foodee  
+## <a name="configure-automatic-user-provisioning-to-foodee"></a>Konfigurieren der automatischen Benutzerbereitstellung in Foodee 
 
-In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern und/oder Gruppen in Foodee auf der Grundlage von Benutzer- und/oder Gruppenzuweisungen in Azure AD erläutert.
+In diesem Abschnitt konfigurieren Sie den Azure AD-Bereitstellungsdienst für das Erstellen, Aktualisieren und Deaktivieren von Benutzern oder Gruppen in Foodee auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für Foodee aktivieren. Folgen Sie dazu den Anweisungen unter [Tutorial: Integrieren von Foodee in Azure Active Directory](Foodee-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden für Foodee aktivieren. Folgen Sie dazu den Anleitungen unter [Tutorial: Integrieren von Foodee in Azure Active Directory](Foodee-tutorial.md). Sie können einmaliges Anmelden unabhängig von der automatischen Benutzerbereitstellung konfigurieren, obwohl diese beiden Features einander ergänzen.
 
-### <a name="to-configure-automatic-user-provisioning-for-foodee-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure AD:
+Konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure AD, indem Sie die folgenden Schritte ausführen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+    ![Bereich für Unternehmensanwendungen](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **Foodee** aus.
+1. Wählen Sie in der Liste **Anwendungen** den Eintrag **Foodee** aus.
 
-    ![Foodee-Link in der Anwendungsliste](common/all-applications.png)
+    ![Der „Foodee“-Link in der Liste „Anwendungen“](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung**.
+1. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
-4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+1. Wählen Sie in der Dropdownliste **Bereitstellungsmodus** den Eintrag **Automatisch** aus.
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte von ` https://concierge.food.ee/scim/v2` und **API-Token** in das Feld **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Foodee herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Foodee-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
+1. Führen Sie unter **Administratoranmeldeinformationen** die folgenden Schritte aus:
 
-    ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
+   a. Geben Sie im Feld **Mandanten-URL** den zuvor abgerufenen Wert **https://concierge.food.ee/scim/v2** ein.
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+   b. Geben Sie im Feld **Geheimes Token** den zuvor abgerufenen Wert für **API Token** ein.
+   
+   c. Um sicherzustellen, dass Azure AD eine Verbindung mit Foodee herstellen kann, wählen Sie **Verbindung testen** aus. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Foodee-Konto über Administratorberechtigungen verfügt, und versuchen Sie es dann noch einmal.
 
-    ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
+    ![Der Link „Verbindung testen“](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Klicken Sie auf **Speichern**.
+1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
-8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Foodee synchronisieren** aus.
+    ![Das Textfeld „Benachrichtigungs-E-Mail“](common/provisioning-notification-email.png)
+
+1. Wählen Sie **Speichern** aus.
+
+1. Wählen Sie unter **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Foodee synchronisieren** aus.
 
     ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/usermapping.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Foodee synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Foodee für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+1. Überprüfen Sie unter **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Foodee synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Aktualisierungsvorgängen für den Abgleich der *Benutzerkonten* in Foodee verwendet. 
 
-    ![Foodee-Benutzerattribute](media/Foodee-provisioning-tutorial/userattribute.png)
+    ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/userattribute.png)
 
-10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Foodee synchronisieren** aus.
+1. Wenn Sie Ihre Änderungen committen möchten, wählen Sie **Speichern** aus.
+1. Wählen Sie unter **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Foodee synchronisieren** aus.
 
-    ![Foodee-Benutzerattribute](media/Foodee-provisioning-tutorial/groupmapping.png)
+    ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/groupmapping.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Foodee synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppenkonten in Foodee für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** aus, um alle Änderungen zu übernehmen.
+1. Überprüfen Sie unter **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Foodee synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Aktualisierungsvorgängen für den Abgleich der *Gruppenkonten* in Foodee verwendet.
 
-    ![Foodee-Benutzerattribute](media/Foodee-provisioning-tutorial/groupattribute.png)
+    ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/groupattribute.png)
 
-12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Wenn Sie Ihre Änderungen committen möchten, wählen Sie **Speichern** aus.
+1. Konfigurieren Sie die Bereichsfilter. Informationen zur Vorgehensweise finden Sie in den Anleitungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Foodee zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+1. Um den Azure AD-Bereitstellungsdienst für Foodee zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-    ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
+    ![Der Schalter „Bereitstellungsstatus“](common/provisioning-toggle-on.png)
 
-14. Legen Sie die Benutzer und/oder Gruppen fest, die in Foodee bereitgestellt werden sollen, indem Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte auswählen.
+1. Definieren Sie unter **Einstellungen** in der Dropdownliste **Bereich** die Benutzer oder Gruppen, die Sie für Foodee bereitstellen möchten.
 
-    ![Bereitstellungsbereich](common/provisioning-scope.png)
+    ![Die Dropdownliste für den Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus, wenn die Bereitstellung erfolgen kann.
 
-    ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
+    ![Die Schaltfläche „Speichern“ für die Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung nimmt mehr Zeit in Anspruch als die nachfolgenden Synchronisierungen. Unter [Überprüfen des Status der Benutzerbereitstellung](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users) finden Sie weitere Informationen dazu, wie lange das Bereitstellen von Benutzern und/oder Gruppen dauert.
+Durch diesen Vorgang wird die Erstsynchronisierung der Benutzer oder Gruppen gestartet, die Sie in der Dropdownliste **Bereich** definiert haben. Die Erstsynchronisierung nimmt mehr Zeit in Anspruch als die nachfolgenden Synchronisierungen. Weitere Informationen finden Sie unter [Wie lange dauert die Bereitstellung von Benutzern?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Im Abschnitt **Aktueller Status** können Sie den Fortschritt überwachen und Links zu Ihrem Bereitstellungsaktivitätsbericht folgen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst für Foodee ausgeführt werden. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
-
-
+Sie können den Abschnitt **Aktueller Status** verwenden, um den Fortschritt zu überwachen und den Links zu Ihrem Bereitstellungsaktivitätsbericht zu folgen. Der Bericht beschreibt alle vom Azure AD-Bereitstellungsdienst für Foodee ausgeführten Aktionen. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

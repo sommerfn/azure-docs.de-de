@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc1e80433a09d8a56f2900ab6b24dd3804db56ac
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086772"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350107"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Bereitstellen von Linux-Computeknoten in Batch-Pools
 
@@ -38,7 +38,8 @@ Wenn Sie einen Pool von Computeknoten in Batch erstellen, stehen Ihnen zwei Opti
 **Virtual Machine Configuration** stellt sowohl Linux- als auch Windows-Images für Computeknoten bereit. Die verfügbaren Größen für Computeknoten sind unter [Größen für virtuelle Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) und [Größen für virtuelle Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows) aufgelistet. Beim Erstellen eines Pools, der Knoten mit der Konfiguration des virtuellen Computers enthält, müssen Sie die Knotengröße, die VM-Imagereferenz und die Knoten-Agent-SKU von Batch für die Installation auf den Knoten angeben.
 
 ### <a name="virtual-machine-image-reference"></a>VM-Imagereferenz
-Der Batch-Dienst verwendet [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md), um Computeknoten in der VM-Konfiguration bereitzustellen. Sie können ein Image aus dem [Azure Marketplace][vm_marketplace] angeben oder ein benutzerdefiniertes Image bereitstellen, das Sie vorbereitet haben. Ausführlichere Informationen zu benutzerdefinierten Images finden Sie unter [Erstellen eines Pools mit einem benutzerdefinierten Image](batch-custom-images.md).
+
+Der Batch-Dienst verwendet [VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md), um Computeknoten in der VM-Konfiguration bereitzustellen. Sie können ein Image aus dem [Azure Marketplace][vm_marketplace] angeben oder ein benutzerdefiniertes Image bereitstellen, das Sie vorbereitet haben. Ausführlichere Informationen zu benutzerdefinierten Images finden Sie unter [Erstellen eines Pools mit Shared Image Gallery](batch-sig-images.md).
 
 Wenn Sie eine VM-Imagereferenz konfigurieren, müssen Sie die Eigenschaften des VM-Images festlegen. Die folgenden Eigenschaften sind erforderlich, wenn Sie eine VM-Imagereferenz erstellen:
 

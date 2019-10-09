@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 4e12ad64ef277396a101aab6d1bb8f3cc6079cf9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 954ff23997e56249859dd8d35f124324432f2b22
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099594"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672997"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure
 
@@ -62,6 +62,7 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
   * [Übersicht über das Hochverfügbarkeits-Add-On](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
   * [Verwaltung des Hochverfügbarkeits-Add-Ons](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
   * [Referenz zum Hochverfügbarkeits-Add-On](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [Support-Richtlinien für RHEL High Availability Clusters – sbd und fence_sbd](https://access.redhat.com/articles/2800691)
 * Azure-spezifische RHEL-Dokumentation:
   * [Unterstützungsrichtlinien für RHEL-Hochverfügbarkeitscluster – Virtuelle Microsoft Azure-Computer als Clustermitglieder](https://access.redhat.com/articles/3131341)
   * [Installieren und Konfigurieren eines Red Hat Enterprise Linux 7.4-Hochverfügbarkeitclusters (und höher) in Microsoft Azure](https://access.redhat.com/articles/3252491)
@@ -70,6 +71,10 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 ## <a name="cluster-installation"></a>Clusterinstallation
 
 ![Übersicht über Pacemaker unter RHEL](./media/high-availability-guide-rhel-pacemaker/pacemaker-rhel.png)
+
+> [!NOTE]
+> Red Hat unterstützt keinen von der Software emulierten Watchdog. Red Hat unterstützt SBD nicht auf Cloudplattformen. Weitere Informationen finden Sie unter [Support-Richtlinien für RHEL High Availability Clusters – sbd und fence_sbd](https://access.redhat.com/articles/2800691).
+> Der einzige unterstützte Fencing-Mechanismus für Pacemaker Red Hat Enterprise Linux-Cluster in Azure ist Azure Fence Agent.  
 
 Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** – gilt für alle Knoten, **[1]** – gilt nur für Knoten 1, oder **[2]** – gilt nur für Knoten 2.
 

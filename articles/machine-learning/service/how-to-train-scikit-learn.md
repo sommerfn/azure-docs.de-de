@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b05ba7e4d38b596bdf76655fad0736425f8ce89
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002531"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710062"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Erstellen von Scikit-learn-Modellen nach Maß mit Azure Machine Learning
 
@@ -31,7 +31,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
  - Azure Machine Learning Notebook VM: keine Downloads oder Installationen erforderlich
 
     - Absolvieren Sie [Tutorial: Einrichten von Umgebung und Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md), um einen dedizierten Notebook-Server zu erstellen, auf dem das SDK und Beispielrepository vorinstalliert sind.
-    - Suchen Sie im Beispieltrainingsordner auf dem Notebook-Server ein fertiges und erweitertes Notebook. Dazu navigieren Sie zum folgenden Verzeichnis: **how-to-use-azureml > training > train-hyperparameter-tune-deploy-with-sklearn**.
+    - Im Beispieltrainingsordner auf dem Notebookserver finden Sie im folgenden Verzeichnis ein fertiges und erweitertes Notebook: **how-to-use-azureml > ml-frameworks > scikit-learn > training > train-hyperparameter-tune-deploy-with-sklearn**.
 
  - Ihr eigener Jupyter Notebook-Server
 
@@ -40,7 +40,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
     - Herunterladen des Datasets und der Beispielskriptdatei 
         - [Iris-Dataset](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine fertige [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) dieser Anleitung. Das Notebook enthält einen erweiterten Abschnitt, der intelligente Hyperparameteroptimierung und das Abrufen des besten Modells nach primären Metriken behandelt.
+    - Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine fertige [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb) dieser Anleitung. Das Notebook enthält einen erweiterten Abschnitt, der intelligente Hyperparameteroptimierung und das Abrufen des besten Modells nach primären Metriken behandelt.
 
 ## <a name="set-up-the-experiment"></a>Einrichten des Experiments
 
@@ -84,28 +84,20 @@ os.makedirs(project_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='sklearn-iris')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>Hochladen von Dataset und Skripts
+### <a name="prepare-training-script"></a>Vorbereiten des Trainingsskripts
 
-Der [Datenspeicher](how-to-access-data.md) ist ein Ort, an dem Daten gespeichert und abgerufen werden können, indem die Daten auf dem Computeziel bereitgestellt oder dorthin kopiert werden. Jeder Arbeitsbereich stellt einen Standarddatenspeicher bereit. Laden Sie die Daten und Trainingsskripts in den Datenspeicher hoch, sodass während des Trainings leicht darauf zugegriffen werden kann.
+In diesem Tutorial wurde das Trainingsskript **train_iris.py** bereits bereitgestellt. In der Praxis sollten Sie benutzerdefinierte Trainingsskripts unverändert übernehmen und mit Azure ML ausführen können, ohne Ihren Code ändern zu müssen.
 
-1. Erstellen Sie das Verzeichnis für Ihre Daten.
+Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript mit Azure ML-Code.  Das Trainingsskript **train_iris.py** zeigt, wie Sie mit dem `Run`-Objekt innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
 
-    ```Python
-    os.makedirs('./data/iris', exist_ok=True)
-    ```
+Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der `iris = datasets.load_iris()`-Funktion.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md#data-upload)) ausführen, um Daten während des Trainings verfügbar zu machen.
 
-1. Laden Sie das Iris-Dataset in den Standarddatenspeicher hoch.
+Kopieren Sie das Trainingsskript **train_iris.py** in Ihr Projektverzeichnis.
 
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/iris', target_path='iris', overwrite=True, show_progress=True)
-    ```
-
-1. Laden Sie das Scikit-learn-Trainingsskript `train_iris.py` hoch:
-
-    ```Python
-    shutil.copy('./train_iris.py', project_folder)
-    ```
+```
+import shutil
+shutil.copy('./train_iris.py', project_folder)
+```
 
 ## <a name="create-or-get-a-compute-target"></a>Erstellen oder Abrufen eines Computeziels
 

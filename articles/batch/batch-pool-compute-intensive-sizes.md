@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094920"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350134"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -86,7 +86,7 @@ Für das Konfigurieren einer speziellen VM-Größe für Ihren Batch-Pool stehen 
 
     * [Ubuntu Server (mit GPU- und RDMA-Treibern) für Azure Batch-Containerpools](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
 
-* Erstellen Sie ein [benutzerdefiniertes Windows- oder Linux-VM-Image](batch-custom-images.md), auf dem Sie Treiber, Software oder andere erforderliche Einstellungen für die Größe des virtuellen Computers installiert haben. 
+* Erstellen Sie ein [benutzerdefiniertes Windows- oder Linux-VM-Image](batch-sig-images.md), auf dem Sie Treiber, Software oder andere erforderliche Einstellungen für die Größe des virtuellen Computers installiert haben. 
 
 * Erstellen Sie ein Batch-[Anwendungspaket](batch-application-packages.md) aus einem gezippten Treiber oder Anwendungsinstallationsprogramm, und konfigurieren Sie Azure Batch für die Bereitstellung des Pakets auf Poolknoten und für die Installation nach der Erstellung der einzelnen Knoten. Wenn das Anwendungspaket beispielsweise ein Installationsprogramm ist, erstellen Sie eine Befehlszeile für die [Startaufgabe](batch-api-basics.md#start-task), mit der die App auf allen Poolknoten im Hintergrund installiert wird. Ziehen Sie die Verwendung eines Anwendungspakets und einer Poolstartaufgabe in Betracht, wenn Ihre Workload von einer bestimmten Treiberversion abhängig ist.
 
@@ -123,9 +123,9 @@ Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten ausführen zu können, mü
 1. Stellen Sie eine Azure-NC-Serien-VM mit Ubuntu 16.04 LTS bereit. Sie können den virtuellen Computer beispielsweise in der Region „USA, Süden-Mitte“ erstellen. 
 2. Fügen Sie dem VM die [Erweiterung für NVIDIA GPU-Treiber](../virtual-machines/extensions/hpccompute-gpu-linux.md
 ) hinzu. Verwenden Sie dazu das Azure-Portal, einen mit dem Azure-Abonnement verknüpften Clientcomputer oder Azure Cloud Shell. Alternativ können Sie auch die Schritte zum Herstellen einer Verbindung mit dem virtuellen Computer und zum manuellen [Installieren der CUDA-Treiber](../virtual-machines/linux/n-series-driver-setup.md) ausführen.
-3. Führen Sie die Schritte zum Erstellen einer [Momentaufnahme und eines benutzerdefinierten Linux-VM-Image](batch-custom-images.md) für Batch aus.
+3. Befolgen Sie die Schritte zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) für das Batch.
 4. Erstellen Sie ein Batch-Konto in einer Region, die NC-VMs unterstützt.
-5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-custom-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
+5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
 | Einstellung | Wert |
 | ---- | ---- |
@@ -143,8 +143,8 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu 
 ) ausführen oder Azure Cloud Shell verwenden. 
 1. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer her.
 1. Laden Sie das [Setuppaket](https://www.microsoft.com/download/details.aspx?id=57467) („MSMpiSetup.exe“) für die neueste Version von Microsoft MPI herunter, und installieren Sie Microsoft MPI.
-1. Führen Sie die Schritte zum Erstellen einer [Momentaufnahme und eines benutzerdefinierten Windows-VM-Image](batch-custom-images.md) für Batch aus.
-1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-custom-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
+1. Befolgen Sie die Schritte zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) für das Batch.
+1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit der Shared Image Gallery](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
 | Einstellung | Wert |
 | ---- | ---- |

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076418"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710084"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning
 
@@ -34,14 +34,14 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
 - Azure Machine Learning Notebook VM: keine Downloads oder Installationen erforderlich
 
     - Absolvieren Sie [Tutorial: Einrichten von Umgebung und Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md), um einen dedizierten Notebookserver zu erstellen, auf dem das SDK und Beispielrepository vorinstalliert sind.
-    - Wechseln Sie im Deep Learning-Ordner „samples“ auf dem Notebookserver zu einem vervollständigten Notebook und den Dateien im Ordner **how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer**.  Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
+    - Im Ordner mit Deep Learning-Beispielen auf dem Notebookserver finden Sie ein vervollständigtes Notebook und Dateien im Ordner **how-to-use-azureml > ml-frameworks > chainer > deployment > train-hyperparameter-tune-deploy-with-chainer**.  Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
 
 - Ihr eigener Jupyter Notebook-Server
 
     - [Installieren Sie das Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
     - [Erstellen Sie eine Konfigurationsdatei für den Arbeitsbereich.](how-to-configure-environment.md#workspace)
     - Laden Sie die Beispielskriptdatei [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py) herunter.
-     - Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine vervollständigte [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) dieser Anleitung. Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
+     - Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine vervollständigte [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) dieser Anleitung. Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
 
 ## <a name="set-up-the-experiment"></a>Einrichten des Experiments
 
@@ -84,7 +84,7 @@ In diesem Tutorial ist das Trainingsskript **chainer_mnist.py** bereits bereitge
 
 Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript mit Azure ML-Code.  Das Trainingsskript **chainer_mnist.py** zeigt, wie Sie mit dem Objekt `Run` innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
 
-Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der chainer-Funktion `datasets.mnist.get_mnist`.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md)) ausführen, um Daten während des Trainings verfügbar zu machen.
+Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der chainer-Funktion `datasets.mnist.get_mnist`.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md#data-upload)) ausführen, um Daten während des Trainings verfügbar zu machen.
 
 Kopieren Sie das Trainingsskript **chainer_mnist.py** in Ihr Projektverzeichnis.
 

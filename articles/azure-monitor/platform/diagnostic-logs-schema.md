@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: 362b696351e4faca02fa6ea8aed7e7447454cd34
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fdcfcbaf99d48a345d2be4da297be1c9139da15c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262018"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308112"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -66,6 +66,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Azure Firewall | Schema nicht verfügbar. |
 | IoT Hub | [IoT Hub-Vorgänge](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure-Schlüsseltresor-Protokollierung](../../key-vault/key-vault-logging.md) |
+| Kubernetes Service |[Azure Kubernetes-Protokollierung](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Protokollanalysen für den Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md) |

@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172786"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338914"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten 
 Die materialisierten Sichten in Azure SQL Data Warehouse bieten eine niedrige Wartungsmethode für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.
@@ -49,7 +49,7 @@ Eine ordnungsgemäß entworfene materialisierte Sicht kann folgende Vorteile bie
 
 - Der Optimierer in Azure SQL Data Warehouse kann bereitgestellte materialisierte Sichten automatisch verwenden, um Abfrageausführungspläne zu verbessern.  Dieser Prozess ist für Benutzer transparent, die eine schnellere Abfrageleistung bereitstellen, und es ist nicht erforderlich, dass Abfragen einen direkten Verweis auf die materialisierten Sichten erstellen. 
 
-- Geringe Wartung für die Sichten erforderlich.  Eine materialisierte Sicht speichert Daten an zwei Stellen: in einem gruppierten Columnstore-Index für die Anfangsdaten zum Zeitpunkt der Sichterstellung und in einem Deltaspeicher für die inkrementellen Datenänderungen.  Alle Datenänderungen aus den Basistabellen werden dem Deltaspeicher automatisch synchron hinzugefügt.  Ein Hintergrundprozess (Tupelverschiebungsvorgang) verschiebt die Daten in regelmäßigen Abständen aus dem Deltaspeicher in den Columnstore-Index der Sicht.  Dieser Entwurf ermöglicht das Abfragen materialisierter Sichten, damit dieselben Daten wie beim direkten Abfragen der Basistabellen zurückgegeben werden. 
+- Geringe Wartung für die Sichten erforderlich.  Alle inkrementellen Datenänderungen aus den Basistabellen werden den materialisierten Sichten automatisch synchron hinzugefügt.  Dieser Entwurf ermöglicht das Abfragen materialisierter Sichten, damit dieselben Daten wie beim direkten Abfragen der Basistabellen zurückgegeben werden. 
 - Die Daten in einer materialisierten Sicht können aus den Basistabellen unterschiedlich verteilt werden.  
 - Daten in materialisierten Sichten erhalten dieselben Vorteile an hoher Verfügbarkeit und Resilienz wie Daten in regulären Tabellen.  
  
@@ -90,7 +90,7 @@ Benutzer können EXPLAIN WITH_RECOMMENDATIONS < SQL_statement-> für die vom Abf
 
 **Beachten Sie den Kompromiss zwischen schnelleren Abfragen und den Kosten** 
 
-Bei jeder materialisierten Sicht gibt es Kosten für den Datenspeicher und Kosten für die Wartung der Sicht.  Bei Datenänderungen in Basistabellen nimmt die Größe der materialisierten Sicht zu, und die physische Struktur ändert sich ebenfalls.  Um eine Leistungsminderung bei der Abfrage zu vermeiden, wird jede materialisierte Sicht von der Data Warehouse-Engine separat gewartet, einschließlich dem Verschieben von Zeilen aus dem Deltaspeicher in die Columnstore-Indexsegmente und dem Konsolidieren von Datenänderungen.  Die Wartungsworkload wird höher, wenn die Anzahl von materialisierten Sichten und Änderungen an der Basistabelle zunimmt.   Benutzer sollten überprüfen, ob die aus allen materialisierten Sichten anfallenden Kosten durch den Abfrageleistungsgewinn ausgeglichen werden können.  
+Bei jeder materialisierten Sicht gibt es Kosten für den Datenspeicher und Kosten für die Wartung der Sicht.  Bei Datenänderungen in Basistabellen nimmt die Größe der materialisierten Sicht zu, und die physische Struktur ändert sich ebenfalls.  Um Beeinträchtigungen der Abfrageleistung zu vermeiden, wird jede materialisierte Sicht separat von der Data Warehouse-Engine verwaltet.  Die Wartungsworkload wird höher, wenn die Anzahl von materialisierten Sichten und Änderungen an der Basistabelle zunimmt.   Benutzer sollten überprüfen, ob die aus allen materialisierten Sichten anfallenden Kosten durch den Abfrageleistungsgewinn ausgeglichen werden können.  
 
 Sie können diese Abfrage für die Liste von materialisierten Sichten in einer Datenbank ausführen: 
 
@@ -136,7 +136,7 @@ Der Data Warehouse-Optimierer kann bereitgestellte materialisierte Sichten autom
 
 **Überwachen von materialisierten Sichten** 
 
-Eine materialisierte Sicht wird im Data Warehouse wie eine Tabelle mit gruppiertem Columnstore-Index (CCI) gespeichert.  Das Lesen von Daten aus einer materialisierten Sicht besteht aus dem Überprüfen des Indexes und Anwenden von Änderungen aus dem Deltaspeicher.  Wenn die Anzahl der Zeilen im Deltaspeicher zu hoch ist, kann die Auflösung einer Abfrage aus einer materialisierten Sicht länger dauern als das direkte Abfragen der Basistabellen.  Um eine Leistungsbeeinträchtigung bei der Abfrage zu vermeiden, empfiehlt es sich, [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) zur Überwachung von „overhead_ratio (total_rows/base_view_row)“ der Sicht auszuführen.  Wenn der Wert für „overhead_ratio“ zu hoch ist, sollten Sie die materialisierte Sicht neu erstellen, damit alle Zeilen im Deltaspeicher in den Columnstore-Index verschoben werden.  
+Eine materialisierte Sicht wird im Data Warehouse wie eine Tabelle mit gruppiertem Columnstore-Index (CCI) gespeichert.  Das Lesen von Daten aus einer materialisierten Sicht umfasst das Scannen der CCI-Indexsegmente und das Anwenden von inkrementellen Änderungen aus Basistabellen. Wenn die Anzahl der inkrementellen Änderungen zu hoch ist, kann die Auflösung einer Abfrage aus einer materialisierten Sicht länger dauern als das direkte Abfragen der Basistabellen.  Um eine Leistungsbeeinträchtigung bei der Abfrage zu vermeiden, empfiehlt es sich, [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) zur Überwachung von „overhead_ratio (total_rows / max(1, base_view_row))“ der Sicht auszuführen.  Benutzer sollten die materialisierte Sicht neu erstellen, wenn die overhead_ratio zu hoch ist. 
 
 **Materialisierte Sicht und Zwischenspeichern von Resultsets**
 

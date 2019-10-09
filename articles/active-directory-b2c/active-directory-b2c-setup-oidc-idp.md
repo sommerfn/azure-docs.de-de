@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe49a57e74822c0b4349b2919ea8aa89cbfb458d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0303f8c7e18a5c229bc5a8c5e9b90d95cdaccbe7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622291"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672919"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit OpenID Connect mithilfe von Azure Active Directory B2C
 
@@ -48,7 +48,6 @@ Der Bereich definiert die Informationen und Berechtigungen, die Sie bei Ihrem be
 Der Antworttyp beschreibt, welche Art von Informationen beim ersten Aufruf von `authorization_endpoint` des benutzerdefinierten Identitätsanbieters zurückgesendet werden. Die folgenden Antworttypen können verwendet werden:
 
 * `code`: Gemäß [Autorisierungscodeflow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) wird ein Code an Azure AD B2C zurückgegeben. Azure AD B2C fährt damit fort, den `token_endpoint` für den Austausch des Codes für das Token aufzurufen.
-* `token`: Ein Zugriffstoken wird vom benutzerdefinierten Identitätsanbieter an Azure AD B2C zurückgegeben.
 * `id_token`: Ein ID-Token wird vom benutzerdefinierten Identitätsanbieter an Azure AD B2C zurückgegeben.
 
 ## <a name="response-mode"></a>Antwortmodus

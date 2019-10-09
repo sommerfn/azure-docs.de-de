@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace – häufig gestellte Fragen
-description: Antworten zu häufig gestellten Fragen zum Microsoft Azure Marketplace
+title: Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
+description: Antworten auf häufig gestellte Fragen zu Azure Marketplace und Microsoft AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 10/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259957"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827986"
 ---
-# <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
+# <a name="microsoft-commercial-marketplace-faqs"></a>Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
 
-Antworten zu häufig gestellten Fragen zum Microsoft Azure Marketplace.
+Antworten auf häufig gestellte Fragen zu Azure Marketplace und Microsoft AppSource.
 
 ## <a name="faq-for-customers"></a>Häufig gestellte Fragen für Kunden
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Alles Wissenswerte über den Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Was Sie über Azure Marketplace und Microsoft AppSource wissen müssen
 
 **Was ist Azure Marketplace?**
 
@@ -155,7 +155,7 @@ Dies sind die gängigsten Optionen pro Angebotstyp:
 
 **Welche Arten von Testversionen werden unterstützt?**
 
-Angebote für kostenlose Testversionen sind Listings mit einer Handlungsaufforderung zum Initiieren einer Testversion. Diese führen den Kunden zu einer Website, die vom Herausgeber definiert wird, um die Testversion einzurichten. Testversionen können auch kostenpflichtigen Angeboten hinzugefügt werden, bei denen der erste Monat kostenlos ist. 
+Herausgeber können einen kostenlosen Monat für kostenpflichtige SaaS-Angebote und einen oder drei kostenlose Monate für die Nutzung von VM-Images hinzufügen. Angebote für kostenlose Testversionen sind Listings mit einer Handlungsaufforderung zum Initiieren einer Testversion. Diese führen den Kunden zu einer Website, die vom Herausgeber definiert wird, um die Testversion einzurichten. Testversionen können auch kostenpflichtigen Angeboten hinzugefügt werden, bei denen der erste Monat kostenlos ist. 
 
 **Benötige ich ein registriertes Zahlungsinstrument (z. B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
 
@@ -169,6 +169,10 @@ Indirekte Kunden mit Enterprise Agreement (EA) müssen sich bei Preisfragen zu A
 
 Ja, für Enterprise Agreement-Kunden (EA) kann der Beitrittsadministrator die Kaufberechtigungen für alle Konten des Beitritts deaktivieren und sie dann erneut so lange aktivieren, bis der Kauf getätigt wurde. Darüber hinaus können alle Kunden Azure Policy verwenden, um Bereitstellungsoptionen für ihre Azure-Abonnements einzuschränken, einschließlich der Verwaltung von Azure Marketplace-Ressourcen.
 
+**Welche Zahlungsmethoden werden für kommerzielle Marketplace-Käufe unterstützt?**
+
+Kunden können Angebote über Azure Marketplace und Microsoft AppSource mithilfe von Kreditkarten erwerben. Wenn Sie über ein vorhandenes Azure-Abonnement verfügen, wird für Käufe im Azure Marketplace die für das Konto konfigurierte Zahlungsmethode verwendet, und die Käufe werden in derselben Rechnung als separate Positionen angezeigt. Einige Angebote greifen auf die Azure-Zahlungsverpflichtung zu, aber die meisten Käufe im kommerziellen Marketplace nutzen die EA-Verpflichtungen nicht, mit Ausnahme der Nutzung der Azure-Infrastruktur.
+
 **Kann ich Azure-Abonnementguthaben oder Zahlungsverpflichtungsguthaben in meinem Konto für Angebote im Azure Marketplace verwenden?**
 
 Bestimmte Azure Marketplace-Angebote können per Azure-Abonnementguthaben oder Zahlungsverpflichtungsguthaben bezahlt werden. Eine vollständige Liste der Produkte in diesem Programm finden Sie unter [Azure-Zahlungsverpflichtung](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Diese Angebote umfassen keine BYOL- oder BYOS-Optionen. Für alle anderen Azure Marketplace-Angebote können Azure-Abonnementguthaben oder Zahlungsverpflichtungen nicht genutzt werden, z. B. das Guthaben für die kostenlose Testversion für einen Monat, die monatlichen MSDN-Guthaben, Guthaben aus Azure-Werbeaktionen, Saldi von Zahlungsverpflichtungen sowie jegliche weiteren Guthaben, die kostenlos von Azure bereitgestellt wurden.
@@ -176,12 +180,6 @@ Bestimmte Azure Marketplace-Angebote können per Azure-Abonnementguthaben oder Z
 **Gelten Volumenlizenzrabatte auch für Käufe im Azure Marketplace?**
 
 Nein. Der Herausgeber, der Lösungen im Azure Marketplace besitzt, kann die Preise festlegen.  Die üblichen Rabatte für Microsoft-Volumenlizenzen gelten nicht für Käufe im Azure Marketplace.
-
-**Wie kann ich diese Abonnements bezahlen? Erscheinen meine Azure Marketplace-Käufe auf meiner Azure-Rechnung, oder gibt es eine andere Rechnung?**
-
-Für MOSP-Kunden (z. B. direkte Internetkunden, die über das [Microsoft Online Subscription-Programm](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) abonnieren) erfolgt die Abrechnung über die Kreditkarte, die in ihrem Azure-Abonnementprofil registriert ist. Wenn Sie keine Kreditkartendaten hinterlegt haben, können Sie nicht im Azure Marketplace einkaufen. In diesem Fall erhalten Sie eine spezielle Ausnahmegenehmigung, damit Ihre Azure-Gebühren Ihnen in Rechnung gestellt werden können.
-
-Kunden mit Enterprise Agreement werden über ihr EA (Enterprise Agreement) abgerechnet. Bei den hier aufgeführten spezifischen Azure Marketplace-Angeboten werden die Gebühren zuerst von vorhandenen Zahlungsverpflichtungsguthaben abgezogen. Wenn diese erschöpft sind, werden die Gebühren als Überschreitungen auf einer einzigen Quartalsrechnung abgerechnet. Indirekte EA-Kunden, Kunden aus dem Bildungsbereich und Regierungsbehörden erhalten ihre Abrechnung von ihrem Lösungsanbieter für die Lizenzierung.
 
 **Wo kann ich die Details zu meinem Azure Marketplace-Abonnement und die Rechnungsinformationen einsehen?**
 
@@ -197,7 +195,7 @@ Da das Add-On der Azure-VM zugeordnet ist, beenden Sie zuerst die VM, indem Sie 
 
 **Wie oft werden meine Azure Marketplace-Einkäufe abgerechnet?**
 
-Für EA-Kunden gilt Folgendes: Für die spezifischen aufgeführten Dienste werden die Gesamtkosten für diese Dienste aus dem Monat, in dem der Dienst verwendet wurde, zuerst von vorhandenen Zahlungsverpflichtungsguthaben abgezogen. Alle Azure Marketplace-Angebote, die nicht von Zahlungsverpflichtungen abgezogen werden, werden monatlich rückwirkend berechnet. SaaS-Jahresabonnements werden einmal jährlich für die Dienste eines ganzen Jahres abgerechnet.
+Alle Azure Marketplace-Angebote, die nicht von Zahlungsverpflichtungen abgezogen werden, werden monatlich rückwirkend berechnet. SaaS-Jahresabonnements werden einmal jährlich für die Dienste eines ganzen Jahres abgerechnet.
 
 MOSP-Kunden (d. h. direkte Internetkunden, die über das [Microsoft Online Subscription-Programm](https://azure.microsoft.com/support/legal/subscription-agreement/) abonnieren) erfolgt die Abrechnung monatlich über die Kreditkarte, die in ihrem Azure-Abonnementprofil registriert ist. SaaS-Jahresabonnements werden einmal jährlich für die Dienste eines ganzen Jahres abgerechnet.
 
@@ -210,10 +208,6 @@ Um andere Dienste, die Sie im Azure Marketplace erworben haben, zu einem Enterpr
 **Wo liegt der Unterschied zwischen *Preis*, *Softwarepreis* und *Gesamtpreis* in der Kostenstruktur für Virtual Machine-Angebote im Azure Marketplace?**
 
 *Preis* bezieht sich auf die Kosten für das Ausführen der Software mit Azure Virtual Machine. *Softwarepreis* bezieht sich auf die Kosten der Software des Marketplace- Herausgebers, die auf einem virtuellen Azure-Computer ausgeführt wird. *Gesamtpreis* bezieht sich auf die kombinierten Gesamtkosten des virtuellen Azure-Computers und der Software des Marketplace- Herausgebers, die auf einem virtuellen Azure-Computer ausgeführt wird.
-
-**Kann ich Azure-Abonnementguthaben oder Zahlungsverpflichtungsguthaben in meinem Konto für Azure-Produkte und -Dienste verwenden, die für die Ausführung von Azure Marketplace-Angeboten erforderlich sind?**
-
-Ja. Sie können Azure-Abonnementguthaben oder -Zahlungsverpflichtungsguthaben in dem Konto für Azure-Produkte und Azure Marketplace-Angebote verwenden. Beispielsweise können Azure-Zahlungsverpflichtungsguthaben für die Komponente *Preis* eines VM-Angebots im Azure Marketplace verwendet werden. Allerdings können Azure-Abonnementguthaben und Zahlungsverpflichtungsguthaben nur für bestimmte Softwareanwendungen von Marketplace-Herausgebern (*Softwarepreis*) genutzt werden, die auf einem virtuellen Azure-Computer ausgeführt werden.
 
 **Wie finde ich heraus, wie groß der bereits verbrauchte Anteil meiner Azure Marketplace-Einkäufe ist?**
 
@@ -253,9 +247,26 @@ Lizenzen, die einem vorhandenen Abonnement hinzugefügt werden, werden für die 
 
 Gekündigte Lizenzen unterliegen der in diesen FAQ genannten Erstattungsrichtlinie.  Alle Lizenzen, die gekündigt werden, werden sofort aus Ihrem Konto entfernt und stehen nicht mehr zur Verwendung zur Verfügung.
 
+**Werden Erstattungen für nutzungsbasierte Angebote unterstützt?**
+
+Alle auf dem Verbrauch basierenden Gebühren – ob stündliche VMs oder benutzerdefinierte Zähler – sind bei einem Abbruch nicht erstattungsfähig. Nachdem die Nutzung erfolgt ist, werden die Gebühren von der Handelsplattform von Microsoft verarbeitet, und alle Streitigkeiten im Zusammenhang mit der Dienstqualität, bei denen eine Rückerstattung angefordert wird, werden außerhalb von Microsoft-Systemen direkt zwischen dem Herausgeber und dem Kunden behandelt. Für alle Angebote, die eine Pauschalgebühr zuzüglich getaktete Abrechnung unterstützen, gilt die standardmäßige Erstattungsrichtlinie für Pauschalgebühren.
+
+**Ist es möglich, Pläne während der Laufzeit zu ändern?**
+
+Nein, es ist nicht möglich, zwischen monatlich und jährlich zu wechseln.
+
+**Kann ein Kunde zwei Pläne aus dem gleichen Angebot erwerben?**
+
+Ja, das ist möglich. Ein Kunde kann zwei Pläne desselben Angebots gleichzeitig besitzen.
+
+**Unterscheiden sich die Richtlinien für die Erstattung und Planänderung je nach Storefront?**
+
+Nein, über Azure Marketplace und Microsoft AppSource hinweg gelten konsistente Geschäftsrichtlinien. Erfolgt ein Wiederverkauf durch einem Partner im Rahmen des Cloud Solution Provider-Programms, kann der Partner eine andere Richtlinie für seine Kunden erzwingen.
+
+
 ## <a name="faq-for-publishers"></a>Häufig gestellte Fragen für Herausgeber
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Alles Wissenswerte über den Azure Marketplace
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Was Sie über Azure Marketplace und Microsoft AppSource wissen müssen
 
 **Was ist Azure Marketplace?**
 

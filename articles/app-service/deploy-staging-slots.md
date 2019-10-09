@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129713"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720114"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -140,9 +140,6 @@ Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von P
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>Mit Vorschau austauschen (Austausch mit mehreren Phasen)
 
-> [!NOTE]
-> „Mit Vorschau austauschen“ wird in Web-Apps unter Linux nicht unterstützt.
-
 Vergewissern Sie sich, dass die App mit den ausgetauschten Einstellungen funktioniert, bevor Sie einen Austausch mit dem Produktionsslot als Zielslot durchführen. Der Quellslot wird außerdem vor Abschluss des Austauschs vorbereitet, was für unternehmenskritische Anwendungen von Vorteil ist.
 
 Bei einem Austausch mit Vorschau führt App Service den gleichen [Austauschvorgang](#AboutConfiguration) durch, pausiert jedoch nach dem ersten Schritt. Daraufhin können Sie das Ergebnis vor Abschluss des Austauschs im Stagingslot überprüfen. 
@@ -204,7 +201,8 @@ Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von P
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>Angeben der benutzerdefinierten Aufwärmphase
-Bei Verwendung des Features [Automatisch tauschen](#Auto-Swap) müssen für einige Apps vor dem Austausch unter Umständen benutzerdefinierte Vorbereitungsschritte ausgeführt werden. Mithilfe des Konfigurationselements `applicationInitialization` in „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben. Der [Austausch](#AboutConfiguration) mit dem Zielslot erfolgt dann erst nach Abschluss dieser benutzerdefinierten Aufwärmphase. Hier sehen Sie ein Beispielfragment aus „web.config“:
+
+Für einige Apps müssen vor dem Austausch unter Umständen benutzerdefinierte Vorbereitungsschritte ausgeführt werden. Mithilfe des Konfigurationselements `applicationInitialization` in „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben. Der [Austausch](#AboutConfiguration) mit dem Zielslot erfolgt dann erst nach Abschluss dieser benutzerdefinierten Aufwärmphase. Hier sehen Sie ein Beispielfragment aus „web.config“:
 
     <system.webServer>
         <applicationInitialization>
@@ -334,7 +332,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-arm-templates"></a>Automatisieren mit Resource Manager-Vorlagen
+
+[Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
+
+- `buildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die die aktuelle Version der im Slot bereitgestellten App darstellt. Beispiele: „v1“, „1.0.0.1“ oder „2019-09-20T11:53:25.2887393-07:00“.
+- `targetBuildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die angibt, welche `buildVersion` der Slot enthalten soll. Wenn targetBuildVersion nicht mit der aktuellen `buildVersion` identisch ist, wird der Austauschvorgang dadurch ausgelöst, dass der Slot mit der angegebenen `buildVersion` ermittelt wird.
+
+### <a name="example-arm-template"></a>Resource Manager-Beispielvorlage
+
+Mit der folgenden Resource Manager-Vorlage werden die `buildVersion` des Stagingslots aktualisiert und die `targetBuildVersion` für den Produktionsslot festgelegt. Dadurch werden die beiden Slots ausgetauscht. Die Vorlage geht davon aus, dass Sie bereits eine Web-App mit einem Slot mit dem Namen „staging“ erstellt haben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+Diese Resource Manager-Vorlage ist idempotent – das bedeutet, dass sie wiederholt ausgeführt werden kann und dabei denselben Zustand der Slots erzeugt. Nach der ersten Ausführung entspricht `targetBuildVersion` der aktuellen `buildVersion`, sodass kein Austausch ausgelöst wird.
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>

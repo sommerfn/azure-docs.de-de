@@ -1,22 +1,22 @@
 ---
 title: Vorbereiten und Anpassen eines VHD-Masterimages – Azure
-description: Es wird beschrieben, wie Sie ein Windows Virtual Desktop-Masterimage (Vorschauversion) vorbereiten, anpassen und in Azure hochladen.
+description: Vorbereiten, Anpassen und Hochladen eines Windows Virtual Desktop-Masterimage in Azure.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981075"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710183"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
-In diesem Artikel wird beschrieben, wie Sie ein VHD-Masterimage (Virtual Hard Disk) für den Upload in Azure vorbereiten und virtuelle Computer (VMs) erstellen und darauf Software installieren. Diese Anleitung gilt für eine Konfiguration, die für Windows Virtual Desktop (Vorschauversion) spezifisch ist und für die vorhandenen Prozesse Ihrer Organisation genutzt werden kann.
+In diesem Artikel wird beschrieben, wie Sie ein VHD-Masterimage (Virtual Hard Disk) für den Upload in Azure vorbereiten und virtuelle Computer (VMs) erstellen und darauf Software installieren. Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -204,7 +204,7 @@ Stellen Sie nach dem Vorbereiten des Images für den Upload sicher, dass die VM 
 
 Dieser Abschnitt gilt nur, wenn das Masterimage lokal erstellt wurde.
 
-In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azure-Speicherkonto hochladen. Falls Sie nicht bereits über ein Azure-Speicherkonto verfügen, können Sie die Anleitung in [diesem Artikel](https://code.visualstudio.com/tutorials/static-website/create-storage) verwenden, um ein Konto zu erstellen.
+In der folgenden Anleitung wird beschrieben, wie Sie Ihr Masterimage in ein Azure-Speicherkonto hochladen. Falls Sie nicht bereits über ein Azure-Speicherkonto verfügen, können Sie die Anleitung in [diesem Artikel](/azure/javascript/tutorial-vscode-static-website-node-03) verwenden, um ein Konto zu erstellen.
 
 1. Konvertieren Sie das VM-Image (VHD) in „Fixed“ (Fest), falls Sie dies noch nicht getan haben. Wenn Sie das Image nicht in „Fixed“ (Fest) konvertieren, ist die Imageerstellung nicht erfolgreich.
 

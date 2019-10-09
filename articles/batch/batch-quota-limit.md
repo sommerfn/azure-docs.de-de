@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094700"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350096"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -52,7 +52,7 @@ Die Poolgrößenbeschränkungen werden vom Batch-Dienst festgelegt. Im Gegensatz
 | **Serverknoten im Pool mit [aktivierter Kommunikation zwischen den Knoten](batch-mpi.md)**  ||
 | Poolzuordnungsmodus für den Batch-Dienst | 100 |
 | Poolzuordnungsmodus für das Batch-Abonnement | 80 |
-| **Serverknoten im [mit benutzerdefinierten VM-Images erstellten Pool](batch-custom-images.md)** <sup>1</sup> ||
+| **Serverknoten in einem [Pool, der mit einer Ressource mit verwaltetem Image erstellt wurde](batch-custom-images.md)** <sup>1</sup> ||
 | Dedizierte Knoten | 2000 |
 | Knoten mit niedriger Priorität | 1000 |
 

@@ -1,120 +1,126 @@
 ---
-title: 'Azure Active Directory Domain Services: Angehaltene Domänen | Microsoft-Dokumentation'
-description: Anhalten und Löschen verwalteter Domänen
+title: Angehaltene Domänen in Azure AD Domain Services | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die verschiedenen Integritätszustände bei einer von Azure AD DS verwalteten Domäne und wie eine angehaltene Domäne wiederhergestellt wird.
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 781a81589032c290cef7342e7210ee36f388b22a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233989"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693314"
 ---
-# <a name="understand-the-suspended-states-for-an-azure-active-directory-domain-services-managed-domain"></a>Grundlegendes zu angehaltenen Zuständen in einer durch Azure Active Directory Domain Services verwalteten Domäne
+# <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Grundlegendes zu den Integritätszuständen und dem Auflösen von angehaltenen Domänen in Azure Active Directory Domain Services
 
-Wenn Azure Active Directory Domain Services (Azure AD DS) Anforderungen für eine verwaltete Domäne für einen längeren Zeitraum-nicht verarbeiten kann, wird die verwaltete Domäne in den Zustand „Angehalten“ versetzt. In diesem Artikel wird erläutert, weshalb verwaltete Domänen angehalten werden und wie Sie eine angehaltene Domäne bereinigen.
+Wenn Azure Active Directory Domain Services (Azure AD DS) Anforderungen für eine verwaltete Domäne für einen längeren Zeitraum-nicht verarbeiten kann, wird die verwaltete Domäne in den Zustand „Angehalten“ versetzt. Bleibt eine verwaltete Domäne dann im Zustand „Angehalten“, wird sie automatisch gelöscht. Lösen Sie Warnungen so schnell wie möglich auf, um Ihre von Azure AD DS verwaltete Domäne fehlerfrei zu halten und ein Anhalten zu vermeiden.
 
+In diesem Artikel wird erläutert, warum verwaltete Domänen angehalten werden und wie eine angehaltene Domäne wiederhergestellt wird.
 
-## <a name="states-your-managed-domain-can-be-in"></a>Mögliche Zustände für Ihre verwaltete Domäne
+## <a name="overview-of-managed-domain-states"></a>Übersicht über die Zustände einer verwalteten Domäne
 
-![Zeitachse für angehaltene Domänen](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
+Während des Lebenszyklus einer von Azure AD DS verwalteten Domäne gibt es unterschiedliche Zustände zur Angabe von deren Integrität. Wenn die verwaltete Domäne ein Problem meldet, lösen Sie die zugrunde liegende Ursache schnell auf, um zu verhindern, dass sich der Zustand verschlechtert.
 
-In der Grafik oben werden die möglichen Zustände einer von Azure AD DS verwalteten Domäne dargestellt.
+![Der Verlauf von Zuständen bei einer von Azure AD DS verwalteten Domäne, bis sie angehalten wird](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
-### <a name="running-state"></a>Zustand „Wird ausgeführt“
-Eine verwaltete Domäne, die ordnungsgemäß konfiguriert ist und regulär arbeitet, befindet sich im Zustand **Wird ausgeführt**.
+Eine von Azure AD DS verwaltete Domäne kann sich in einem der folgenden Zustände befinden:
 
-**Was ist zu erwarten?**
-* Microsoft kann die Integrität Ihrer verwalteten Domäne regelmäßig überwachen.
-* Domänencontroller für Ihre verwaltete Domäne werden regelmäßig gepatcht und aktualisiert.
-* Änderungen von Azure Active Directory werden regelmäßig mit Ihrer verwalteten Domäne synchronisiert.
-* Für Ihre verwaltete Domäne werden regelmäßige Sicherungen durchgeführt.
+* [Wird ausgeführt](#running-state)
+* [Eingreifen erforderlich](#needs-attention-state)
+* [Angehalten](#suspended-state)
+* [Gelöscht](#deleted-state)
 
+## <a name="running-state"></a>Zustand „Wird ausgeführt“
 
-### <a name="needs-attention-state"></a>Zustand „Eingreifen erforderlich“
-Eine verwaltete Domäne befindet sich im Zustand **Eingreifen erforderlich**, wenn mindestens ein Problem erfordert, dass ein Administrator Maßnahmen ergreift. Auf der Integritätsseite Ihrer verwalteten Domäne wird mindestens Warnung zu diesem Zustand aufgelistet.
+Eine von Azure AD DS verwaltete Domäne, die ordnungsgemäß konfiguriert ist und ohne Probleme ausgeführt wird, befindet sich im Status *Wird ausgeführt*. Dies ist der gewünschte Zustand für eine verwaltete Domäne.
 
-Wenn Sie beispielsweise eine restriktive Netzwerksicherheitsgruppe für Ihr virtuelles Netzwerk konfiguriert haben, ist Microsoft möglicherweise nicht in der Lage, Ihre verwaltete Domäne zu aktualisieren und zu überwachen. Diese ungültige Konfiguration löst eine Warnung aus, die Ihre verwaltete Domäne in den Zustand „Eingreifen erforderlich“ versetzt.
+### <a name="what-to-expect"></a>Ausblick
 
-Jede Warnung verfügt über bestimmte Lösungsschritte. Einige Warnungen sind vorübergehend und werden vom Dienst automatisch aufgelöst. Sie können einige andere Warnungen mithilfe der Anweisungen aus den entsprechenden Lösungsschritten für diese Warnung auflösen. Bei einigen kritischen Warnungen müssen Sie sich an den Microsoft-Support wenden, damit diese aufgelöst werden.
+* Die Azure-Plattform kann die Integrität der verwalteten Domäne regelmäßig überwachen.
+* Domänencontroller für die verwaltete Domäne werden regelmäßig gepatcht und aktualisiert.
+* Änderungen von Azure Active Directory werden mit der verwalteten Domäne regelmäßig synchronisiert.
+* Für die verwaltete Domäne werden regelmäßige Sicherungen durchgeführt.
 
-Weitere Informationen finden Sie unter [Azure AD Domain Services – Problembehandlung von Warnungen](troubleshoot-alerts.md).
+## <a name="needs-attention-state"></a>Zustand „Eingreifen erforderlich“
 
-**Was ist zu erwarten?**
+Eine von Azure AD DS verwaltete Domäne mit einem oder mehreren Problemen, die behoben werden müssen, befindet sich im Zustand *Eingreifen erforderlich*. Auf der Seite „Integrität“ für die verwaltete Domäne werden die Warnungen aufgelistet, und es wird angegeben, wo ein Problem aufgetreten ist. Einige Warnungen sind vorübergehend und werden von der Azure-Plattform automatisch aufgelöst. Bei anderen Warnungen können Sie das Problem beheben, indem Sie die bereitgestellten Schritte zur Auflösung befolgen. Bei einer kritischen Warnung [öffnen Sie eine Azure-Supportanfrage][azure-support], um zusätzliche Hilfe bei der Problembehandlung zu erhalten.
 
-In einigen Fällen (z.B. bei einer ungültigen Netzwerkkonfiguration) sind die Domänencontroller für Ihre verwaltete Domäne möglicherweise nicht erreichbar. Wenn sich Ihre Domäne im Zustand „Eingreifen erforderlich“ befindet, kann Microsoft nicht garantieren, dass die Domäne regelmäßig überwacht, gepatcht, aktualisiert oder gesichert wird.
+Ein Beispiel für eine Warnung ist, wenn es eine eingeschränkte Netzwerksicherheitsgruppe gibt. In dieser Konfiguration kann die Azure-Plattform die verwaltete Domäne möglicherweise nicht aktualisieren und überwachen. Eine Warnung wird generiert, und der Zustand ändert sich in *Eingreifen erforderlich*.
 
-* Ihre verwaltete Domäne befindet sich in einem fehlerhaften Zustand und die fortlaufende Systemüberwachung wird möglicherweise beendet, bis die Warnung aufgelöst wurde.
-* Domänencontroller für Ihre verwaltete Domäne können nicht gepatcht und aktualisiert werden.
-* Änderungen von Azure Active Directory werden möglicherweise nicht mit Ihrer verwalteten Domäne synchronisiert.
-* Nach Möglichkeit werden Sicherungen für Ihre verwalte Domäne durchgeführt.
-* Wenn Sie Warnungen auflösen, die Ihre verwaltete Domäne beeinträchtigen, können Sie die Domäne möglicherweise wieder in den Zustand „Wird ausgeführt“ versetzen.
-* Kritische Warnungen werden für Konfigurationsprobleme ausgelöst, wenn Microsoft nicht auf Ihre Domänencontroller zugreifen kann. Wenn solche Warnungen nicht innerhalb von 15 Tagen aufgelöst werden, wird Ihre verwaltete Domäne in den Zustand „Angehalten“ versetzt.
+Weitere Informationen finden Sie unter [How to troubleshoot alerts for an Azure AD DS managed domain][resolve-alerts] (Problembehandlung bei Warnungen für eine von Azure AD DS verwaltete Domäne).
 
+### <a name="what-to-expect"></a>Ausblick
 
-### <a name="the-suspended-state"></a>Zustand „Angehalten“
-Eine verwaltete Domäne wird aus den folgenden Gründen in den Zustand **Angehalten** versetzt:
+Wenn sich eine von Azure AD DS verwaltete Domäne im Zustand *Eingreifen erforderlich* befindet, kann die Azure-Plattform Daten möglicherweise nicht regelmäßig überwachen, patchen, aktualisieren oder sichern. In einigen Fällen, z.B. bei einer ungültigen Netzwerkkonfiguration, sind die Domänencontroller für die verwaltete Domäne vielleicht nicht erreichbar.
 
-* Mindestens eine kritische Warnung wurde nicht innerhalb von 15 Tagen aufgelöst. Kritische Warnungen können durch eine Fehlkonfiguration verursacht werden, die den Zugriff auf von Azure AD DS benötigte Ressourcen blockiert.
-    * Beispiel: Die Warnung [AADDS104: Netzwerkfehler](alert-nsg.md) wurde in der verwalteten Domäne mehr als 15 Tage lang nicht aufgelöst.
-* Ein Abrechnungsproblem in Bezug auf Ihr Azure-Abonnement liegt vor, oder das Azure-Abonnement ist abgelaufen.
+* Die verwaltete Domäne befindet sich in einem fehlerhaften Zustand, und die fortlaufende Systemüberwachung wird möglicherweise so lange beendet, bis die Warnung aufgelöst wurde.
+* Domänencontroller für die verwaltete Domäne können nicht gepatcht oder aktualisiert werden.
+* Änderungen von Azure Active Directory werden möglicherweise nicht mit der verwalteten Domäne synchronisiert.
+* Sicherungen für die verwaltete Domäne können möglicherweise nicht durchgeführt werden.
+* Wenn Sie nicht kritische Warnungen auflösen, die sich auf die verwaltete Domäne auswirken, sollte die Integrität in den Zustand *Wird ausgeführt* zurückkehren.
+* Kritische Warnungen werden bei Konfigurationsproblemen ausgelöst, wenn die Azure-Plattform die Domänencontroller nicht erreichen kann. Sollten diese kritischen Warnungen nicht innerhalb von 15 Tagen aufgelöst werden, wechselt die verwaltete Domäne in den Zustand *Angehalten*.
 
-Verwaltete Domänen werden angehalten, wenn Microsoft nicht in der Lage ist, die Domäne fortlaufend zu verwalten, zu überwachen, zu patchen oder zu sichern.
+## <a name="suspended-state"></a>Zustand „Angehalten“
 
-**Was ist zu erwarten?**
-* Die Bereitstellung der Domänencontroller für die verwaltete Domäne wird aufgehoben, und die Domänencontroller sind nicht mehr erreichbar im virtuellen Netzwerk.
-* Der Secure LDAP-Zugriff auf Ihre verwaltete Domäne über das Internet (sofern aktiviert) funktioniert nicht mehr.
-* Sie stellen Fehler beim Authentifizieren in der verwalteten Domäne, bei der Anmeldung bei in die Domäne eingebundenen virtuellen Computern oder beim Herstellen einer Verbindung über LDAP/LDAPS fest.
-* Sicherungen für Ihre verwaltete Domäne werden nicht mehr erstellt.
+Eine von Azure AD DS verwaltete Domäne wechselt aus einem der folgenden Gründe in den Zustand **Angehalten**:
+
+* Mindestens eine kritische Warnung wurde nicht innerhalb von 15 Tagen aufgelöst.
+    * Kritische Warnungen können durch eine Fehlkonfiguration verursacht werden, die den Zugriff auf von Azure AD DS benötigte Ressourcen blockiert. Beispiel: Die Warnung [AADDS104: Netzwerkfehler][alert-nsg] wurde in der verwalteten Domäne mehr als 15 Tage lang nicht aufgelöst.
+* Es liegt ein Abrechnungsproblem beim Azure-Abonnement vor, oder das Azure-Abonnement ist abgelaufen.
+
+Verwaltete Domänen werden angehalten, wenn die Azure-Plattform die Domäne nicht verwalten, überwachen, patchen oder sichern kann. Eine verwaltete Domäne bleibt 15 Tage lang im Zustand *Angehalten*. Wenn Sie weiterhin auf die verwaltete Domäne zugreifen möchten, lösen Sie kritische Warnungen sofort auf.
+
+### <a name="what-to-expect"></a>Ausblick
+
+Das folgende Verhalten tritt auf, wenn sich eine von Azure AD DS verwaltete Domäne im Zustand *Angehalten* befindet:
+
+* Die Bereitstellung von Domänencontrollern für die verwaltete Domäne wird aufgehoben, und die Domänencontroller sind im virtuellen Netzwerk nicht mehr erreichbar.
+* Der Secure LDAP-Zugriff auf die verwaltete Domäne über das Internet (sofern aktiviert) funktioniert nicht mehr.
+* Es treten Fehler beim Authentifizieren in der verwalteten Domäne, bei der Anmeldung an in die Domäne eingebundenen VMs oder beim Herstellen einer Verbindung über LDAP/LDAPS auf.
+* Sicherungen für die verwaltete Domäne werden nicht mehr erstellt.
 * Die Synchronisierung mit Azure AD wird beendet.
 
-Nachdem Sie die Warnung aufgelöst haben, wechselt Ihre verwaltete Domäne in den Zustand „Angehalten“. In diesem Fall müssen Sie sich an den Support wenden.
-Der Support kann Ihre verwaltete Domäne möglicherweise wiederherstellen, allerdings nur dann, wenn eine weniger als 30 Tage alte Sicherung vorhanden ist.
+### <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Wie erkennen Sie, dass Ihre verwaltete Domäne angehalten wurde?
 
-Die verwaltete Domäne bleibt nur 15 Tage lang im Zustand „Angehalten“. Zum Wiederherstellen Ihrer verwalteten Domäne empfiehlt Microsoft, dass Sie kritische Warnungen sofort auflösen.
+Sie sehen im Azure-Portal auf der Seite mit Informationen zur Integrität der Azure AD DS eine [Warnung][resolve-alerts], die mitteilt, dass die Domäne angehalten wurde. Der Zustand der Domäne wird ebenfalls als *Angehalten* angezeigt.
 
+### <a name="restore-a-suspended-domain"></a>Wiederherstellen einer angehaltenen Domäne
 
-### <a name="deleted-state"></a>Zustand „Gelöscht“
-Eine verwaltete Domäne, die 15 Tage im Zustand „Angehalten“ verbleibt, wird **gelöscht**.
+Führen Sie die folgenden Schritte aus, um die Integrität einer von Azure AD DS verwalteten Domäne wiederherzustellen, die sich im Zustand *Angehalten* befindet:
 
-**Was ist zu erwarten?**
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Domain Services**, und wählen Sie ihn aus.
+1. Wählen Sie Ihre von Azure AD DS verwaltete Domäne aus der Liste aus, z.B. *contoso.com*. Wählen Sie dann **Integrität** aus.
+1. Wählen Sie die Warnung aus,die je nach dem Grund für das Anhalten z.B. *AADDS503* oder *AADDS504* lautet.
+1. Wählen Sie den Auflösungslink in der Warnung, und führen Sie die Schritte zu deren Auflösung aus.
+
+Eine verwaltete Domäne kann nur auf das Datum der letzten Sicherung wiederhergestellt werden. Das Datum Ihrer letzten Sicherung wird auf der Seite **Integrität** der verwalteten Domäne angezeigt. Alle nach der letzten Sicherung aufgetretenen Änderungen werden nicht wiederhergestellt. Sicherungen für eine verwaltete Domäne werden bis zu 30 Tage lang gespeichert. Sicherungen, die älter als 30 Tage sind, werden gelöscht.
+
+Nachdem Sie Warnungen aufgelöst haben, wenn sich die verwaltete Domäne im Status *Angehalten* befindet, [öffnen Sie eine Azure-Supportanfrage][azure-support], um in einen fehlerfreien Status zurückzukehren. Wenn eine Sicherung weniger als 30 Tage besteht, kann der Azure-Support die verwaltete Domäne wiederherstellen.
+
+## <a name="deleted-state"></a>Zustand „Gelöscht“
+
+Wenn eine von Azure AD DS verwaltete Domäne 15 Tage lang im Status *Angehalten* bleibt, wird sie gelöscht. Dieser Prozess ist nicht wiederherstellbar.
+
+### <a name="what-to-expect"></a>Ausblick
+
+Wenn eine von Azure AD DS verwaltete Domäne in den Status *Gelöscht* wechselt, ist folgendes Verhalten zu sehen:
+
 * Alle Ressourcen und Sicherungen für die verwaltete Domäne werden gelöscht.
-* Sie können die verwaltete Domäne nicht wiederherstellen und müssen eine neue verwaltete Domäne erstellen, um Azure AD DS zu verwenden.
+* Sie können die verwaltete Domäne nicht wiederherstellen und müssen eine verwaltete Ersatzdomäne erstellen, um Azure AD DS erneut verwenden zu können.
 * Nach dem Löschen wird Ihnen die verwaltete Domäne nicht mehr in Rechnung gestellt.
 
-
-## <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Wie erkennen Sie, dass Ihre verwaltete Domäne angehalten wurde?
-Sie sehen im Azure-Portal auf der Seite mit Informationen zur Integrität der Azure AD Domain Services eine [Warnung](troubleshoot-alerts.md), die angibt, dass die Domäne angehalten wurde. Der Zustand der Domäne wird ebenfalls als „Angehalten“ angezeigt.
-
-
-## <a name="restore-a-suspended-domain"></a>Wiederherstellen einer angehaltenen Domäne
-Um eine Domäne im Zustand „Angehalten“ wiederherzustellen, führen Sie die folgenden Schritte aus:
-
-1. Wechseln Sie im Azure-Portal zur Seite der [Azure Active Directory Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices).
-2. Wählen Sie die verwaltete Domäne aus.
-3. Wählen Sie im linken Bereich **Integrität** aus.
-4. Wählen Sie die Warnung aus. Die Warnungs-ID lautet je nach Grund für das Anhalten entweder AADDS503 oder AADDS504.
-5. Klicken Sie in der Warnung auf den Lösungslink. Führen Sie die erforderlichen Schritte aus, um die Warnung aufzulösen.
-
-Ihre verwaltete Domäne kann nur auf das Datum der letzten Sicherung wiederhergestellt werden. Das Datum der letzten Sicherung wird auf der Seite „Integrität“ Ihrer verwalteten Domäne angezeigt. Alle nach der letzten Sicherung aufgetretenen Änderungen werden nicht wiederhergestellt. Sicherungen für eine verwaltete Domäne werden bis zu 30 Tage lang gespeichert. Sicherungen, die älter als 30 Tage sind, werden gelöscht.
-
-
 ## <a name="next-steps"></a>Nächste Schritte
-- [Azure AD Domain Services – Problembehandlung von Warnungen](troubleshoot-alerts.md)
-- [Mehr über die Azure Active Directory Domain Services erfahren](overview.md)
-- [Wenden Sie sich an das Produktteam](contact-us.md)
 
-## <a name="contact-us"></a>Kontakt
-Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](contact-us.md).
+Um Ihre von Azure AD DS verwaltete Domäne fehlerfrei zu halten und das Risiko, dass sie angehalten wird, zu minimieren, informieren Sie sich, [ wie Sie Warnungen für Ihre verwaltete Domäne auflösen][resolve-alerts] können.
+
+<!-- INTERNAL LINKS -->
+[alert-nsg]: alert-nsg.md
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[resolve-alerts]: troubleshoot-alerts.md

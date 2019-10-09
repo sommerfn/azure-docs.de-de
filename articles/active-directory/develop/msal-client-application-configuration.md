@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6cd90ef858fbcd2cfa418a2d7e58975cfa959705
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532915"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678101"
 ---
 # <a name="application-configuration-options"></a>Anwendungskonfigurationsoptionen
 
@@ -36,6 +36,7 @@ In Ihrem Code initialisieren Sie eine neue öffentliche oder vertrauliche Client
 - [Protokollierungsoptionen](#logging), einschließlich Protokollebene, Kontrolle über personenbezogene Daten und des Namens der Komponente, die die Bibliothek verwendet
 
 ## <a name="authority"></a>Authority
+
 Die Autorität ist eine URL, die ein Verzeichnis angibt, aus dem die MSAL Token anfordern kann. Gängige Autoritäten sind folgende:
 
 - https\://login.microsoftonline.com/\<Mandant\>/, wobei &lt;Mandant&gt; die Mandanten-ID des Azure AD-Mandanten (Azure Active Directory) oder eine Domäne ist, die diesem Azure AD-Mandanten zugeordnet ist. Diese wird nur für die Anmeldung von Benutzern einer bestimmten Organisation verwendet.
@@ -61,6 +62,7 @@ Die Instanz und die Zielgruppe können verkettet und als Autoritäts-URL angegeb
 ![Zusammensetzung der Autoritäts-URL](media/msal-client-application-configuration/authority.png)
 
 ## <a name="cloud-instance"></a>Cloudinstanz
+
 Mit der *Instanz* geben Sie an, ob sich Benutzer aus der öffentlichen Azure-Cloud oder aus nationalen Clouds bei Ihrer App anmelden. Wenn Sie in Ihrem Code die MSAL verwenden, können Sie die Azure-Cloudinstanz mithilfe einer Enumeration oder durch Übergabe der URL an die [Instanz einer nationalen Cloud](authentication-national-cloud.md#azure-ad-authentication-endpoints) als `Instance`-Element (sofern bekannt) festlegen.
 
 MSAL.NET löst eine explizite Ausnahme aus, wenn sowohl `Instance` als auch `AzureCloudInstance` angegeben werden.
@@ -74,6 +76,7 @@ Die Zielgruppe für die Anmeldung richtet sich nach den geschäftlichen Anforder
 - Wenn Sie ein unabhängiger Softwareanbieter sind, möchten Sie wahrscheinlich, dass sich Benutzer mit ihren Geschäfts-, Schul- und Unikonten in einer beliebigen Organisation oder in mehreren Organisationen anmelden können (mehrinstanzenfähige App). Möglicherweise möchten Sie aber auch, dass Benutzer sich mit persönlichen Microsoft-Konten anmelden können.
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>Angeben der Zielgruppe im Code bzw. der Konfiguration
+
 Wenn Sie die MSAL in Ihrem Code verwenden, geben Sie die Zielgruppe mit einem der folgenden Werte an:
 - Die Zielgruppenenumeration der Azure AD-Autorität
 - Die Mandanten-ID, bei der es sich um Folgendes handeln kann:
@@ -89,6 +92,7 @@ Die MSAL löst eine aussagekräftige Ausnahme aus, wenn Sie sowohl die Zielgrupp
 Wenn Sie keine Zielgruppe angeben, verwendet Ihre App Azure AD als Ziel und persönliche Microsoft-Konten als Zielgruppe. (Anders gesagt: Die App verhält sich so, als wäre `common` angegeben.)
 
 ### <a name="effective-audience"></a>Effektive Zielgruppe
+
 Die effektive Zielgruppe für Ihre App ist (bei Überschneidungen) mindestens Zielgruppe, die Sie in Ihrer App festlegen, und die Zielgruppe, die in der App-Registrierung angegeben wurde. Tatsächlich können Sie auf der Portalseite [App-Registrierungen](https://aka.ms/appregistrations) die Zielgruppe (unterstützte Kontotypen) für die App angeben. Weitere Informationen finden Sie unter [Quickstart: Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md).
 
 Um eine App so einzurichten, dass sich Benutzer nur mit persönlichen Microsoft-Konten anmelden können, müssen Sie beide folgenden Einstellungen konfigurieren (dies ist zurzeit die einzige Möglichkeit):
@@ -96,12 +100,15 @@ Um eine App so einzurichten, dass sich Benutzer nur mit persönlichen Microsoft-
 - Legen Sie die Zielgruppe im Code bzw. der Konfiguration auf `AadAuthorityAudience.PersonalMicrosoftAccount` (oder `TenantID` ="consumers") fest.
 
 ## <a name="client-id"></a>Client-ID
+
 Die Client-ID ist die eindeutige Anwendungs-ID, die Ihrer App bei der Registrierung von Azure AD zugewiesen wurde.
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
+
 Der Umleitungs-URI ist der URI, an den der Identitätsanbieter die Sicherheitstoken zurücksendet.
 
 ### <a name="redirect-uri-for-public-client-apps"></a>Umleitungs-URI für öffentliche Client-Apps
+
 Wenn Sie eine öffentliche Client-App entwickeln und die MSAL verwenden, gilt Folgendes:
 - Sie verwenden `.WithDefaultRedirectUri()` in Desktop- oder UWP-Anwendungen (MSAL.NET 4.1 und höher). Diese Methode legt die Umleitungs-URI-Eigenschaft der öffentlichen Clientanwendung auf den empfohlenen Standardumleitungs-URI für öffentliche Clientanwendungen fest. 
 
@@ -122,20 +129,24 @@ Sie können den Umleitungs-URI mit der `RedirectUri`-Eigenschaft überschreiben 
 - `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
 - `RedirectUriOnIos` = $"msauth.{Bundle.ID}://auth";
 
-Weitere Informationen dazu finden Sie in der [Dokumentation zu Android und iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS) (in englischer Sprache).
+Weitere Einzelheiten zu iOS finden Sie unter [Migrieren von iOS-Anwendungen mit Microsoft Authenticator von ADAL.NET zu MSAL.NET](msal-net-migration-ios-broker.md) und [Leveraging the broker on iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS) (Verwenden des Brokers in iOS).
+Weitere Einzelheiten zu Android finden Sie unter [Brokerauthentifizierung in Android](brokered-auth.md).
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>Umleitungs-URI für vertrauliche Client-Apps
+
 Bei Web-Apps ist der Umleitungs-URI (oder Antwort-URI) der URI, den Azure AD verwendet, um das Token an die Anwendung zurückzusenden. Dies kann der URI der Web-App/Web-API sein, wenn die vertrauliche App diesem Typ entspricht. Der Umleitungs-URI muss in der App-Registrierung registriert werden. Diese Registrierung ist besonders wichtig, wenn Sie eine App bereitstellen, die Sie zuerst lokal getestet haben. In diesem Fall müssen Sie die Antwort-URL der bereitgestellten App im Anwendungsregistrierungsportal hinzufügen.
 
 Für Daemon-Apps müssen Sie keinen Umleitungs-URI angeben.
 
 ## <a name="client-secret"></a>Geheimer Clientschlüssel
+
 Diese Option gibt den geheimen Clientschlüssel für die vertrauliche Client-App an. Dieser geheime Schlüssel (das App-Kennwort) wird vom Anwendungsregistrierungsportal bereitgestellt oder während der App-Registrierung über PowerShell Azure AD, PowerShell AzureRM oder die Azure CLI an Azure AD übermittelt.
 
 ## <a name="logging"></a>Protokollierung
+
 Die weiteren Konfigurationsoptionen aktivieren die Protokollierung und Problembehandlung. Informationen zur Verwendung finden Sie im Artikel [Protokollierung](msal-logging.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie mehr über das [Instanziieren von Clientanwendungen mithilfe von MSAL.NET](msal-net-initializing-client-applications.md).
 
+Erfahren Sie mehr über das [Instanziieren von Clientanwendungen mithilfe von MSAL.NET](msal-net-initializing-client-applications.md).
 Erfahren Sie mehr über das [Instanziieren von Clientanwendungen mithilfe von MSAL.js](msal-js-initializing-client-applications.md).

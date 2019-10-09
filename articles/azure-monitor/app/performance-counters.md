@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: c681b58b01979b95e35ae57cefde38c56a787543
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fa4e45416e83d933cd21fe482bcead14bfbcae22
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68360254"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349930"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 
@@ -148,11 +148,12 @@ Sowohl ASP.NET- als auch ASP.NET Core-Anwendungen, die in Azure-Web-Apps bereitg
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Leistungsindikatoren in ASP.NET Core-Anwendungen
 
-* Mit dem [ASP.NET Core SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.4.1 und höher werden Leistungsindikatoren erfasst, wenn die Anwendung per Azure-Web-App (Windows) ausgeführt wird.
+Für die Unterstützung von Leistungsindikatoren in ASP.NET Core gelten die folgenden Einschränkungen:
 
-* Mit SDK Version 2.7.0-beta3 und höher werden Leistungsindikatoren erfasst, wenn die Anwendung unter Windows ausgeführt wird und auf `NETSTANDARD2.0` oder höher ausgerichtet ist.
+* Die [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)-Versionen 2.4.1 und höher erfassen Leistungsindikatoren, wenn die Anwendung in Azure-Web-Apps (Windows) ausgeführt wird.
+* Die SDK-Versionen 2.7.1 und höher erfassen Leistungsindikatoren, wenn die Anwendung unter Windows läuft und `NETSTANDARD2.0` oder höher als Zielframework verwendet wird.
 * Für Anwendungen, die für das .NET Framework bestimmt sind, werden Leistungsindikatoren in allen Versionen des SDK unterstützt.
-* Dieser Artikel wird aktualisiert, wenn die Unterstützung von Leistungsindikatoren für andere Betriebssysteme als Windows hinzugefügt wird.
+* Die SDK-Versionen 2.8.0 und höher unterstützen Leistungsindikatoren für CPU und Arbeitsspeicher unter Linux. Es werden kein weiteren Leistungsindikatoren unter Linux unterstützt. Die empfohlene Vorgehensweise für Systemleistungsindikatoren unter Linux (und in anderen Nicht-Windows-Umgebungen) ist die Verwendung von [EventCounters](eventcounters.md).
 
 ## <a name="alerts"></a>Alerts
 Wie bei anderen Metriken können Sie [eine Warnung festlegen](../../azure-monitor/app/alerts.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.

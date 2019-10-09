@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120490"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803402"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -33,7 +33,7 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 | Maximale Anlagengröße pro Konto (Anlagenfeature wird eingestellt) | 2 GB | 
 
 > [!NOTE]
-> Bewährte Methoden für die Verwaltung von Workloads mit Partitionsschlüsseln, die höhere Grenzwerte für Speicher oder Durchsatz benötigen, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).
+> Informationen zu bewährten Methoden für die Verwaltung von Workloads, bei denen Partitionsschlüssel höhere Grenzwerte für Speicher oder Durchsatz erfordern, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).
 >
 
 Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RUs aufweisen. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:

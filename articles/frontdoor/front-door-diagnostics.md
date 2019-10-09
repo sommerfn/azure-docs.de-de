@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5f76df0045fc3939392759ed0edd266380295a85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260175"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677894"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Überwachung von Metriken und Protokollen in Azure Front Door Service
 
 Mit dem Azure Front Door Service können Sie Ressourcen auf die folgenden Arten überwachen:
 
-- **Metriken:** Application Gateway verfügt derzeit über sieben Metriken, um Leistungsindikatoren anzuzeigen.
+- **Metriken:** Azure Front Door verfügt derzeit über sieben Metriken, um Leistungsindikatoren anzuzeigen.
 - **Protokolle**. Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
 ### <a name="metrics"></a>metrics

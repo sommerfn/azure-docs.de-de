@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9a3c11c7303d467a1a993c49d983131639683239
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3740a032db6ca9fd0fb88ce348610684d9f895bc
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064876"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326325"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer nativen Clientanwendung mit Azure Active Directory B2C
 
@@ -37,20 +37,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="add-the-native-client-application"></a>Hinzufügen der nativen Clientanwendung
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
-5. Geben Sie einen Namen für die Anwendung ein. Beispiel: *nativeapp1*.
-6. Wählen Sie für **Web-App/Web-API einschließen** die Option **Nein**.
-7. Wählen Sie für **Nativen Client einschließen** die Option **Ja**.
-8. Geben Sie für **Umleitungs-URI** einen gültigen URI mit einem benutzerdefinierten Schema ein. Bei der Auswahl eines Umleitungs-URIs sind zwei Aspekte zu berücksichtigen:
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-    - **Eindeutigkeit:** Das Schema des Umleitungs-URIS muss für jede Anwendung eindeutig sein. Im Beispiel `com.onmicrosoft.contoso.appname://redirect/path` ist `com.onmicrosoft.contoso.appname` das Schema. Dieses Muster sollte befolgt werden. Wenn zwei Anwendungen dasselbe Schema verwenden, erhält der Benutzer die Möglichkeit, eine Anwendung auszuwählen. Wenn der Benutzer die falsche Auswahl trifft, kann die Anmeldung nicht ausgeführt werden.
-    - **Vollständigkeit:** Der Umleitungs-URI muss ein Schema und einen Pfad aufweisen. Der Pfad muss mindestens einen Schrägstrich nach der Domäne enthalten. Zum Beispiel funktioniert `//contoso/`, bei `//contoso` tritt ein Fehler auf. Stellen Sie sicher, dass der Umleitungs-URI keine Sonderzeichen wie Unterstriche enthält.
-
-9. Klicken Sie auf **Create**.
-10. Notieren Sie sich auf der Eigenschaftenseite die Anwendungs-ID, die Sie beim Konfigurieren des Beispiels verwenden.
+Notieren Sie sich die **ANWENDUNGS-ID** zur Verwendung in einem späteren Schritt.
 
 ## <a name="configure-the-sample"></a>Das Beispiel konfigurieren
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146599"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695035"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -44,7 +44,7 @@ Dieser Artikel soll Ihnen beim Behandeln von häufig bei der Verfügbarkeitsübe
 |    |Die Umleitung von bestimmten IP-Adressen erfolgt über (Lastenausgleichsmodule, Geo-Traffic-Manager, Azure ExpressRoute) 
 |    |Bei der Verwendung von Azure ExpressRoute können Pakete im Fall von [asymmetrischem Routing](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) gelöscht werden.|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Ein zeitweiliger Testfehler aufgrund einer Protokollverletzung
+## <a name="test-failure-with-a-protocol-violation-error"></a>Testfehler aufgrund einer Protokollverletzung
 
 |Symptom/Fehlermeldung| Mögliche Ursachen| Mögliche Lösungen |
 |----|---------|-----|

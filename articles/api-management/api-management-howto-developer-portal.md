@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: da75ca43a2576e3214d4b67f9eb61c7bad3bd5cc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073521"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672788"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Zugriff auf und Anpassen des neuen Entwicklerportals – Azure API Management
 
@@ -86,6 +86,14 @@ Prima. Sie können uns Feedback geben, eine Funktionsanforderung übermitteln od
 Dies ist sowohl in der verwalteten als auch in der selbstgehosteten Portalversion möglich. Das neue Entwicklerportal unterstützt das Extrahieren von Inhalten über die Verwaltungs-API Ihres API Management-Diensts. Die APIs sind im [GitHub-Repository im Abschnitt „Wiki“](https://github.com/Azure/api-management-developer-portal/wiki/) dokumentiert. Wir haben auch [ein Skript](https://github.com/Azure/api-management-developer-portal/blob/master/scripts/migrate.bat) geschrieben, das Ihnen beim Einstieg helfen könnte.
 
 Wir arbeiten noch daran, diesen Prozess auf das API Management DevOps Resource Kit auszurichten.
+
+### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Was muss ich konfigurieren, damit das neue Portal in meinem API Management-Dienst im VNET funktioniert?
+
+Während der Vorschauphase des neuen Entwicklerportals müssen Sie Konnektivität mit den Azure Storage-Diensten in der Region „USA, Westen“ zulassen, damit das verwaltete Portal in einem API Management-Dienst im VNET funktioniert. Weitere Informationen finden Sie in der [Storage-Dokumentation](../storage/common/storage-network-security.md#available-virtual-network-regions).
+
+Das oben beschriebene Setup ist nicht mehr erforderlich, wenn das neue Portal allgemein verfügbar wird.
+
+Die selbstgehostete Version des Portals erfordert abhängig von Ihrem Setup möglicherweise eine zusätzliche Konfiguration der Konnektivität.
 
 ### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Wie kann ich ein *Layout* beim Erstellen einer neuen *Seite* auswählen?
 

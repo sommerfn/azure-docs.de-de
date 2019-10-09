@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 50a4ead58cc70524ec464e52ce546b36f9685df5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 88ce3931d9f47b8c16251a45e54fa96b97f038e2
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064532"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71693286"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Hinzufügen einer Web-API-Anwendung zu Ihrem Azure Active Directory B2C-Mandanten
 
- Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie auf Anforderungen Clientanwendungen reagieren können, die ein Zugriffstoken bereitstellen. In diesem Artikel wird beschrieben, wie Sie eine Anwendung in Azure Active Directory B2C (Azure AD B2C) registrieren.
+ Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie auf Anforderungen von Clientanwendungen reagieren können, die ein Zugriffstoken bereitstellen. In diesem Artikel wird beschrieben, wie Sie eine Anwendung in Azure Active Directory B2C (Azure AD B2C) registrieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Mandanten enthält.
@@ -36,22 +36,12 @@ ms.locfileid: "71064532"
 
 Bereiche ermöglichen die Steuerung des Zugriffs auf geschützte Ressourcen. Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. Benutzer der Web-API können beispielsweise über Lese- und Schreibzugriff oder nur über Lesezugriff verfügen. In diesem Tutorial verwenden Sie Bereiche zum Definieren von Lese- und Schreibberechtigungen für die Web-API.
 
-1. Wählen Sie **Anwendungen** und dann *webapi1* aus.
-2. Wählen Sie **Veröffentlichte Bereiche** aus.
-3. Geben Sie unter **Bereich** den Bereich `Read` und als Beschreibung `Read access to the application` ein.
-4. Geben Sie unter **Bereich** den Bereich `Write` und als Beschreibung `Write access to the application` ein.
-5. Klicken Sie auf **Speichern**.
-
-Mit den veröffentlichten Bereichen können einer Clientanwendung Berechtigungen für die Web-API gewährt werden.
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
 Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müssen Sie Ihrer Anwendung Berechtigungen für die API erteilen. Unter [Tutorial: Registrieren einer Anwendung in Azure Active Directory B2C](tutorial-register-applications.md) wird eine Webanwendung in Azure AD B2C mit dem Namen *webapp1* erstellt. Sie können diese Anwendung für den Aufruf der Web-API verwenden.
 
-1. Wählen Sie **Anwendungen** und anschließend Ihre Webanwendung aus.
-2. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-3. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
-4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Read** und **Write** aus, die Sie zuvor definiert haben.
-5. Klicken Sie auf **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 Ihre Anwendung ist für den Aufruf der geschützten Web-API registriert. Ein Benutzer authentifiziert sich mit Azure AD B2C, um die Anwendung zu verwenden. Die Anwendung bezieht eine Autorisierungsgewährung von Azure AD B2C, um auf die geschützte Web-API zuzugreifen.

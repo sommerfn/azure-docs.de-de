@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033832"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802108"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -37,7 +37,7 @@ Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivit�
 |Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |
 |Anwendung | Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge (Create, Read, Update, Delete, CRUD) für B2C-Anwendungen. |
 |Schlüssel |CRUD-Vorgänge für in einem B2C-Schlüsselcontainer gespeicherte Schlüssel. |
-|Resource |CRUD-Vorgänge für B2C-Ressourcen, z. B. Richtlinien und Identitätsanbieter.
+|Resource |CRUD-Vorgänge für B2C-Ressourcen. Beispielsweise Richtlinien und Identitätsanbieter.
 |Authentication |Überprüfung von Benutzeranmeldeinformationen und Tokenausstellung.|
 
 Informationen zu den CRUD-Aktivitäten des Benutzerobjekts finden Sie in der Kategorie **Hauptverzeichnis**.
@@ -94,30 +94,25 @@ Um den skript- oder anwendungsbasierten Zugriff auf die Azure AD-Berichterstellu
 
 Sie können diese Berechtigungen für eine vorhandene Azure Active Directory-Anwendungsregistrierung in Ihrem B2C-Mandanten aktivieren oder eine neue Anwendung erstellen, die speziell für die Verwendung mit der Überwachungsprotokollautomatisierung verwendet wird.
 
-Um eine neue Anwendung zu erstellen, weisen Sie die erforderlichen API-Berechtigungen zu, und erstellen Sie einen geheimen Clientschlüssel. Führen Sie dazu die folgenden Schritte aus:
+Führen Sie die folgenden Schritte zum Registrieren einer Anwendung aus, erteilen Sie ihr die erforderlichen Microsoft Graph-API-Berechtigungen, und erstellen Sie dann einen geheimen Clientschlüssel.
 
-1. Registrieren einer Anwendung in Azure Active Directory
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wechseln Sie zu dem Verzeichnis, das Ihren Azure AD B2C-Mandanten enthält.
-    1. Wählen Sie im linken Menü die Option **Azure Active Directory** (*nicht* „Azure AD B2C“) aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach **Azure Active Directory**, und wählen Sie dann diese Option aus.
-    1. Wählen Sie im linken Menü unter **Verwalten** die Option **App-Registrierungen (Legacy)** aus.
-    1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
-    1. Geben Sie einen Namen für die Anwendung ein. Beispiel: *Überwachungsprotokoll-App*.
-    1. Geben Sie im Feld **Anmelde-URL** eine gültige URL ein. Beispiel: *https://localhost* Dieser Endpunkt muss nicht erreichbar sein, aber es muss sich dabei um eine gültige URL handeln.
-    1. Klicken Sie auf **Erstellen**.
-    1. Notieren Sie sich die **Anwendungs-ID**, die auf der Seite **Registrierte App** angezeigt wird. Sie benötigen diesen Wert für die Authentifizierung in Automatisierungsskripts wie dem PowerShell-Beispielskript, das in einem späteren Abschnitt gezeigt wird.
-1. Zuweisen von API-Zugriffsberechtigungen
-    1. Wählen Sie auf der Übersichtsseite **Registrierte App** die Option **Einstellungen** aus.
-    1. Wählen Sie unter **API-ZUGRIFF** die Option **Erforderliche Berechtigungen** aus.
-    1. Wählen Sie **Hinzufügen** aus, und wählen Sie dann **Hiermit wählen Sie eine API aus** aus.
-    1. Wählen Sie **Microsoft Graph** aus, und wählen Sie dann **Auswählen** aus.
-    1. Wählen Sie unter **ANWENDUNGSBERECHTIGUNGEN** die Option **Alle Überwachungsprotokolldaten lesen** aus.
-    1. Wählen Sie die Schaltfläche **Auswählen** aus, und wählen Sie dann **Fertig** aus.
-    1. Wählen Sie **Berechtigungen erteilen** und dann **Ja** aus.
-1. Erstellen eines geheimen Clientschlüssels
-    1. Wählen Sie unter **API-ZUGRIFF** die Option **Schlüssel** aus.
-    1. Geben Sie im Feld **Schlüsselbeschreibung** eine Beschreibung für den Schlüssel (z. B. *Überwachungsprotokollschlüssel*) ein.
-    1. Wählen Sie eine **Gültigkeitsdauer** aus, und wählen Sie dann **Speichern** aus.
-    1. Notieren Sie sich den **WERT** des Schlüssels. Sie benötigen diesen Wert für die Authentifizierung in Automatisierungsskripts wie dem PowerShell-Beispielskript, das in einem späteren Abschnitt gezeigt wird.
+### <a name="register-application-in-azure-active-directory"></a>Registrieren einer Anwendung in Azure Active Directory
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>Zuweisen von API-Zugriffsberechtigungen
+
+1. Wählen Sie auf der Übersichtsseite **Registrierte App** die Option **Einstellungen** aus.
+1. Wählen Sie unter **API-ZUGRIFF** die Option **Erforderliche Berechtigungen** aus.
+1. Wählen Sie **Hinzufügen** aus, und wählen Sie dann **Hiermit wählen Sie eine API aus** aus.
+1. Wählen Sie **Microsoft Graph** aus, und wählen Sie dann **Auswählen** aus.
+1. Wählen Sie unter **ANWENDUNGSBERECHTIGUNGEN** die Option **Alle Überwachungsprotokolldaten lesen** aus.
+1. Wählen Sie die Schaltfläche **Auswählen** aus, und wählen Sie dann **Fertig** aus.
+1. Wählen Sie **Berechtigungen erteilen** und dann **Ja** aus.
+
+### <a name="create-client-secret"></a>Erstellen eines geheimen Clientschlüssels
+
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Sie verfügen jetzt über eine Anwendung mit dem erforderlichen API-Zugriff, eine Anwendungs-ID und einen Schlüssel, die/den Sie in Ihren Automatisierungsskripts verwenden können. Ein Beispiel dafür, wie Sie Aktivitätsereignisse mit einem Skript abrufen, finden Sie im Abschnitt „PowerShell-Skript“ weiter unten in diesem Artikel.
 

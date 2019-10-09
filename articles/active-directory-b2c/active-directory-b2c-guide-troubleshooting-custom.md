@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dee0ef768180057452a232436fc295b36fd756c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4893025b7d54dad1f1da6c5967d3c1dec99b499b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963733"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826899"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Beheben von Problemen mit benutzerdefinierten Azure AD B2C-Richtlinien und dem Framework für die Identitätsfunktion
 
@@ -56,13 +56,11 @@ Beispiele für häufige Validierungsfehler:
 
 ## <a name="troubleshoot-the-runtime"></a>Behandeln von Runtimeproblemen
 
-* Verwenden Sie **Jetzt ausführen** und `https://jwt.ms`, um Ihre Richtlinien unabhängig von Ihrer Webanwendung oder mobilen Anwendung zu testen. Diese Website verhält sich wie eine Anwendung der vertrauenden Seite. Sie zeigt den Inhalt des JSON Web Token (JWT) an, das von Ihrer Azure AD B2C-Richtlinie generiert wird. Navigieren Sie zum Erstellen einer Testanwendung im Azure-Portal zu **Azure AD B2C** \> **Anwendungen**, und fügen Sie eine Anwendung mit den folgenden Werten hinzu:
+* Verwenden Sie **Jetzt ausführen** und `https://jwt.ms`, um Ihre Richtlinien unabhängig von Ihrer Webanwendung oder mobilen Anwendung zu testen. Diese Website verhält sich wie eine Anwendung der vertrauenden Seite. Es werden die Inhalte des von Ihrer Azure AD B2C-Richtlinie generierten JSON-Webtokens (JWT) angezeigt.
 
-  * **Name**: TestApp
-  * **Web-App/Web-API:** Nein
-  * **Nativer Client:** Nein
+    So erstellen Sie eine Testanwendung, die für die Tokenüberprüfung an `https://jwt.ms` weiterleiten kann:
 
-  Fügen Sie `https://jwt.ms` als **Antwort-URL** hinzu.
+    [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 * Verwenden Sie [Fiddler](https://www.telerik.com/fiddler), um den Austausch von Nachrichten zwischen Ihrem Clientbrowser und Azure AD B2C nachzuverfolgen. So erhalten Sie Hinweise dazu, an welcher Stelle für Ihre User Journey in den Orchestrierungsschritten ein Fehler auftritt.
 
