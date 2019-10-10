@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 36bcb8f7a3ee75794741b44f91956950179e5544
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 1d8379d0ee54332ae4971cd9abaa8b153d52084a
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162287"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816060"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL-Datenbank – Funktionen
 
@@ -35,7 +35,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | **SQL-Feature** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen und Instanzpools** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ja (siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)) | Ja (siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)) |
-| [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten und [kann nicht vom Benutzer verwaltet werden](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |
+| [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [99,99–99,995 % Verfügbarkeit](sql-database-high-availability.md) sind für jede Datenbank garantiert. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). | [99,99 % Verfügbarkeit](sql-database-high-availability.md) ist für jede Datenbank garantiert und [kann nicht vom Benutzer verwaltet werden](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). Verwenden Sie [Autofailover-Gruppen](sql-database-auto-failover-group.md), um eine sekundäre verwaltete Always On-Instanz in einer anderen Region zu konfigurieren. Andere SQL Server-Instanzen und einzelne Datenbanken können nicht als sekundäre Datenbank für die verwaltete Instanz dienen. |
 | [Anfügen einer Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nein | Nein |
 | [Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Ja](sql-database-auditing.md)| [Ja](sql-database-managed-instance-auditing.md), mit einigen [Unterschieden](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [Authentifizierung über Azure Active Directory (AAD)](sql-database-aad-authentication.md) | Ja. Nur AAD-Benutzer. | Ja. Einschließlich AAD-Anmeldungen auf Serverebene. |
@@ -57,7 +57,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [DDL-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/statements) | Die meisten (siehe einzelne Anweisungen) | Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [DDL-Trigger](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | Nur Datenbank |  Ja |
 | [Verteilte Partitionsansichten](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | Nein | Ja |
-| [Verteilte Transaktionen – MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nein (siehe [Elastische Transaktionen](sql-database-elastic-transactions-overview.md)) |  Nein – siehe [Verknüpfte Server](sql-database-managed-instance-transact-sql-information.md#linked-servers) |
+| [Verteilte Transaktionen – MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | Nein (siehe [Elastische Transaktionen](sql-database-elastic-transactions-overview.md)) |  Nein – siehe [Verknüpfte Server](sql-database-managed-instance-transact-sql-information.md#linked-servers). Versuchen Sie, während der Migration Datenbanken aus verschiedenen verteilten SQL Server-Instanzen in einer verwalteten Instanz zu konsolidieren. |
 | [DML-Trigger](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | Die meisten (siehe einzelne Anweisungen) |  Ja |
 | [DMVs](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Die meisten – siehe einzelne DMVs |  Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Ereignisbenachrichtigungen](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nein (siehe [Warnungen](sql-database-insights-alerts-portal.md)) | Nein |
@@ -90,7 +90,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Wiederherstellen einer Datenbank aus der Sicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Nur auf der Grundlage automatisierter Sicherungen (siehe [SQL-Datenbank-Wiederherstellung](sql-database-recovery-using-backups.md)) | Aus automatisierten Sicherungen – siehe [SQL-Datenbankwiederherstellung](sql-database-recovery-using-backups.md) und aus vollständigen Sicherungen in Azure Blob Storage – siehe [Unterschiede zwischen Sicherungen](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Wiederherstellen der Datenbank für SQL Server](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Nein. Verwenden Sie BACPAC oder BCP statt der nativen Wiederherstellung. | Nein, denn die SQL Server-Datenbank-Engine, die in der verwalteten Instanz verwendet wird, weist eine höhere Version als jede RTM-Version von SQL Server auf, die lokal verwendet wird. Verwenden Sie stattdessen BACPAC, BCP oder Transaktionsreplikation. |
 | [Semantische Suche](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) | Nein | Nein |
-| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | Nein | Ja, aber nur innerhalb der Instanz. Siehe [Service Broker-Unterschiede](sql-database-managed-instance-transact-sql-information.md#service-broker) |
+| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | Nein | Ja, aber nur innerhalb der Instanz. Wenn Sie Service Broker-Remoterouten verwenden, versuchen Sie, Datenbanken aus verschiedenen verteilten SQL Server-Instanzen während der Migration in einer verwalteten Instanz zu konsolidieren und nur lokale Routen zu verwenden. Siehe [Service Broker-Unterschiede](sql-database-managed-instance-transact-sql-information.md#service-broker) |
 | [Serverkonfigurationseinstellungen](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | Nein | Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Set-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | Die meisten (siehe einzelne Anweisungen) | Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md)|
 | [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | Nein (siehe [Elastische Aufträge](elastic-jobs-overview.md)) | Ja – siehe [SQL Server-Agent](sql-database-managed-instance-transact-sql-information.md#sql-server-agent) |
@@ -133,7 +133,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | [Point-in-Time-Wiederherstellung einer Datenbank](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Ja – alle Dienstebenen außer Hyperscale – siehe [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) | Ja: siehe [Wiederherstellung der SQL-Datenbank](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | Ressourcenpools | Ja, als [Pools für elastische Datenbanken](sql-database-elastic-pool.md) | Ja. Eine einzelne verwaltete Instanz kann mehrere Datenbanken aufweisen, die denselben Ressourcenpool gemeinsam nutzen. Darüber hinaus können Sie mehrere verwaltete Instanzen in [Instanzpools (Vorschauversion)](sql-database-instance-pools.md) bereitstellen, die sich die Ressourcen teilen können. |
 | Zentrales Hoch- oder Herunterskalieren (online) | Ja, Sie können bei minimaler Downtime entweder die DTU, die reservierten virtuellen Kerne oder die maximale Speichergröße ändern. | Ja, Sie können bei minimaler Downtime die reservierten virtuellen Kerne oder die maximale Speichergröße ändern. |
-| SQL-Alias | Ja, siehe [DNS-Alias](dns-alias-overview.md) | Nein |
+| [SQL-Alias](https://docs.microsoft.com/sql/database-engine/configure-windows/create-or-delete-a-server-alias-for-use-by-a-client) | Nein, verwenden Sie einen [DNS-Alias](dns-alias-overview.md) | Nein, verwenden Sie [Clicongf](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/Lesson-Learned-33-How-to-make-quot-cliconfg-quot-to-work-with/ba-p/369022), um einen Alias auf den Clientcomputern einzurichten. |
 | [Azure SQL-Analyse](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Ja | Ja |
 | [SQL-Datensynchronisierung](sql-database-get-started-sql-data-sync.md) | Ja | Nein |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nein, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ist ein separater Azure-Clouddienst. | Nein, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ist ein separater Azure-Clouddienst. |
@@ -142,6 +142,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | [Query Performance Insights (QPI)](sql-database-query-performance.md) | Ja | Nein. Verwenden Sie integrierte Berichte in SQL Server Management Studio und Azure Data Studio. |
 | [VNET](../virtual-network/virtual-networks-overview.md) | Teilweise, eingeschränkter Zugriff über [VNET-Endpunkte](sql-database-vnet-service-endpoint-rule-overview.md) ist möglich | Ja, die verwaltete Instanz wird in das VNET des Kunden eingeschleust. Siehe [Subnetz](sql-database-managed-instance-transact-sql-information.md#subnet) und [VNET](sql-database-managed-instance-transact-sql-information.md#vnet) |
 | VNET-Dienstendpunkt | [Ja](sql-database-vnet-service-endpoint-rule-overview.md) | Nein |
+| Globales VNet-Peering | Ja, mithilfe von [privater IP und Dienstendpunkten](sql-database-vnet-service-endpoint-rule-overview.md) | Nein, [verwaltete Instanzen werden nicht unterstützt](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) aufgrund der [Load Balancer-Einschränkung beim globalen VNet-Peering](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
 
 ## <a name="tools"></a>Tools
 Azure SQL-Datenbank unterstützt verschiedene Datentools, die Ihnen bei der Verwaltung Ihrer Daten helfen können.
@@ -161,7 +162,7 @@ Azure SQL-Datenbank unterstützt verschiedene Datentools, die Ihnen bei der Ver
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ja | Ja, [Version 18.0 und höher](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ja | Ja |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nein (siehe [Erweiterte Ereignisse](sql-database-xevent-db-diff-from-svr.md)) | Ja |
-| [System Center Operations Manager – SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Ja, in der [Vorschauversion](https://www.microsoft.com/download/details.aspx?id=100306) |
+| [System Center Operations Manager (SCOM)](https://docs.microsoft.com/system-center/scom/welcome) | [Ja](https://www.microsoft.com/download/details.aspx?id=38829) | Ja, in der [Vorschauversion](https://www.microsoft.com/download/details.aspx?id=100306) |
 
 ## <a name="migration-methods"></a>Migrationsmethoden
 

@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 869c1ed41d7f78df184461bc1d8cab6c6eb8d426
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: fbc6847dd86b7687d477b2bae0deab1389dc8491
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788521"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827063"
 ---
 # <a name="monitor-azure-data-share-preview"></a>Überwachen von Azure Data Share Vorschau 
 
@@ -45,6 +45,10 @@ Auf der Registerkarte „Verlauf“ können Sie die Momentaufnahmen anzeigen, di
 ![Momentaufnahmeverlauf](./media/sent-shares.png "Momentaufnahmeverlauf") 
 
 Sie können weitere Details zu jeder Momentaufnahmeausführung anzeigen, indem Sie auf das Startdatum der Ausführung klicken. 
+
+Der Momentaufnahmeverlauf wird standardmäßig bis zu 30 Tage angezeigt. Wenn Sie den Verlauf über 30 Tage hinaus sehen möchten, navigieren Sie zu „Überwachung -> Diagnoseeinstellungen“ und wählen **Diagnoseeinstellung hinzufügen** aus. Sie müssen ein Speicherkonto auswählen, in dem die Protokolle gespeichert werden sollen. 
+
+![Momentaufnahmeverlauf](./media/diagnostic-settings.png "Diagnoseeinstellungen") 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

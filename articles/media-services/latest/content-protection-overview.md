@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561464"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338783"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Inhaltsschutz mit der dynamischen Verschlüsselung von Media Services
 
@@ -172,7 +172,7 @@ Eine Richtlinie für Inhaltsschlüssel mit offener Einschränkung kann verwendet
 
 Bei einer Richtlinie für Inhaltsschlüssel mit Tokeneinschränkung wird der Inhaltsschlüssel nur an einen Client gesendet, der in der Lizenz-/Schlüsselanforderung ein gültiges JWT-Token oder ein einfaches Webtoken (Simple Web Token, SWT) präsentiert. Dieses Token muss von einem Sicherheitstokendienst (STS) ausgestellt werden. 
 
-Sie können Azure AD als STS verwenden oder einen benutzerdefinierten STS bereitstellen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Der Media Services-Dienst zur Lizenz-/Schlüsselbereitstellung gibt die angeforderte Lizenz bzw. den angeforderten Schlüssel an den Client zurück, wenn die beiden folgenden Bedingungen erfüllt sind:
+Sie können Azure AD als STS verwenden oder einen [benutzerdefinierten STS](#using-a-custom-sts) bereitstellen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Der Media Services-Dienst zur Lizenz-/Schlüsselbereitstellung gibt die angeforderte Lizenz bzw. den angeforderten Schlüssel an den Client zurück, wenn die beiden folgenden Bedingungen erfüllt sind:
 
 * Das Token ist gültig. 
 * Die Ansprüche im Token entsprechen denen, die für die Lizenz oder den Schlüssel konfiguriert sind.
@@ -259,4 +259,4 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 * [Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung](design-multi-drm-system-with-access-control.md)
 * [Speicherseitige Verschlüsselung](storage-account-concept.md#storage-side-encryption)
 * [Häufig gestellte Fragen](frequently-asked-questions.md)
-
+* [JSON Web Token Handler](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

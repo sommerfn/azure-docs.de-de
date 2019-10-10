@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123088"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828230"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -171,7 +171,7 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
 
    |Parameter|Auswahlmöglichkeiten für Werte|Standardwert|
    |---|---|---|---|
-   |Mindestanzahl virtueller Kerne|Beliebiger Wert aus {0,5, 1, 2, 4}, darf Maximalwert für V-Kerne nicht überschreiten|0,5 V-Kerne|
+   |Mindestanzahl virtueller Kerne|Hängt von den konfigurierten maximalen virtuellen Kernen ab (siehe [Ressourceneinschränkungen](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)).|0,5 V-Kerne|
    |Verzögerung für das automatische Anhalten|Minimum: 60 Minuten (1 Stunde)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 60 Minuten<br>Automatisches Anhalten deaktivieren: -1|60 Minuten|
 
 > [!NOTE]

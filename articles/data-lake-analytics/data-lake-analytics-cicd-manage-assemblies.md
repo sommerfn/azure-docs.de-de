@@ -1,21 +1,17 @@
 ---
-title: Best Practices für die Verwaltung von U-SQL-Assemblys in einer CI/CD-Pipeline für Azure Data Lake
+title: Verwalten von U-SQL-Assemblys in einer CI/CD-Pipeline – Azure Data Lake
 description: Lernen Sie die Best Practices für die Verwaltung von U-SQL-C#-Assemblys in der CI/CD-Pipeline mit Azure DevOps kennen.
-services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
-ms.reviewer: ''
-ms.assetid: ''
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e6de10ed712688e4ee9dccc22176e81ad5e574ca
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60334188"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315845"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Best Practices für die Verwaltung von U-SQL-Assemblys in einer CI/CD-Pipeline
 

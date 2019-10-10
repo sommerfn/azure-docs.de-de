@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 585dc03503a61ff6666d3da3374586287e24283f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966701"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695147"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -55,23 +55,37 @@ Wenn Sie eine Wissensdatenbank erstellen, zeigt der Abschnitt **Populate your KB
 
 ![Kontrollkästchen zum Aktivieren der Mehrfachdurchlauf-Extrahierung](../media/conversational-context/enable-multi-turn.png)
 
-Wenn Sie diese Option für ein importiertes Dokument auswählen, kann die Mehrfachdurchlauf-Konversation aus der Dokumentstruktur abgeleitet werden. Wenn diese Struktur vorhanden ist, erstellt QnA Maker im Rahmen des Importvorgangs die Folgeaufforderung, die Fragen und Antworten für Sie als Paare zusammenfügt. 
+Wenn Sie diese Option auswählen, kann die Mehrfachdurchlauf-Konversation aus der Dokumentstruktur abgeleitet werden. Wenn diese Struktur vorhanden ist, erstellt QnA Maker im Rahmen des Importvorgangs die Folgeaufforderung, die Fragen und Antworten für Sie als Paare zusammenfügt. 
 
 Die Mehrfachdurchlauf-Struktur kann nur aus URLs, PDF-Dateien oder DOCX-Dateien abgeleitet werden. Ein Beispiel für eine Struktur zeigt eine Abbildung aus einer [PDF-Datei eines Microsoft Surface-Benutzerhandbuchs](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Aufgrund der Größe dieser PDF-Datei erfordert die QnA Maker-Ressource als **Tarif für die Suche** mindestens **B** (15 Indizes). 
 
 ![![Beispiel für eine Struktur in einem Benutzerhandbuch](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-Beim Importieren des PDF-Dokuments bestimmt QnA Maker Folgeaufforderungen anhand der Struktur, um den Konversationsablauf zu erstellen. 
+### <a name="determine-multi-turn-structure-from-format"></a>Ermitteln der Struktur von Mehrfachdurchläufen aus dem Format
 
-1. Wählen Sie in QnA Maker **Create a knowledge base** (Neue Wissensdatenbank erstellen) aus.
-1. Erstellen Sie einen QnA Maker-Dienst, oder verwenden Sie einen vorhandenen. Weil im vorstehenden Beispiel zu Microsoft Surface die PDF-Datei zu groß für einen kleineren Tarif ist, verwenden Sie einen QnA Maker-Dienst mit einem **Suchdienst** von mindestens **B** (15 Indizes).
-1. Geben Sie einen Namen für Ihre Wissensdatenbank ein, z.B. **Surface-Handbuch**.
-1. Aktivieren Sie das Kontrollkästchen **Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren). 
-1. Wählen Sie die URL-für das Surface-Handbuch, **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** , aus.
+QnA Maker ermittelt die Struktur von Mehrfachdurchläufen wie folgt:
 
-1. Wählen Sie die Schaltfläche **KB erstellen** aus. 
+* Schriftgrad der Überschrift – wenn Sie Stil, Farbe oder einen anderen Mechanismus verwenden, um eine Struktur in Ihrem Dokument anzudeuten, extrahiert QnA Maker die Aufforderungen für Mehrfachdurchläufe nicht. 
 
-    Nachdem die Wissensdatenbank erstellt wurde, wird ein Überblick über die Frage- und Antwortpaare angezeigt.
+Zu den Regeln für Überschriften gehören:
+
+* Beenden Sie eine Überschrift nicht mit einem Fragezeichen, `?`. 
+
+### <a name="add-file-with-multi-turn-prompts"></a>Hinzufügen einer Datei mit Aufforderungen für Mehrfachdurchläufe
+
+Beim Hinzufügen eines Dokuments mit Mehrfachdurchläufen bestimmt QnA Maker Folgeaufforderungen anhand der Struktur, um den Konversationsablauf zu erstellen. 
+
+1. Wählen Sie in QnA Maker eine vorhandene Wissensdatenbank aus, die mit aktivierter Option **Enable multi-turn extraction from URLs, .pdf or .docx files.** (Aktivieren der Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien) erstellt wurde. 
+1. Wechseln Sie zur Seite **Einstellungen**, und wählen Sie die hinzuzufügende Datei oder URL aus. 
+1. **Speichern und trainieren** Sie die Wissensdatenbank.
+
+> [!Caution]
+> Die Unterstützung für die Verwendung einer exportierten TSV- oder XLS-Wissensdatenbankdatei mit Mehrfachdurchläufen als Datenquelle für eine neue oder leere Wissensdatenbank wird nicht unterstützt. Sie müssen den Dateityp auf der Seite **Einstellungen** des QnA Maker-Portals **importieren**, um exportierte Aufforderungen für Mehrfachdurchläufe zu einer Wissensdatenbank hinzuzufügen.
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Erstellen einer Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Create-API
+
+Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `prompts` der `context`-Eigenschaft hinzugefügt. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Anzeigen von Fragen und Antworten mit Kontext
 
@@ -127,29 +141,6 @@ Wenn eine Folgeaufforderung erstellt und ein vorhandenes Frage- und Antwortpaar 
 1. Wenn Sie die Bearbeitung Ihres Anzeigetexts abgeschlossen haben, wählen Sie **Save** (Speichern) aus. 
 1. Wählen Sie in der oberen Navigationsleiste **Save and train** (Speichern und trainieren) aus.
 
-
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
 
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Hinzufügen eines neuen Frage- und Antwortpaars als Folgeaufforderung
 
@@ -375,21 +366,13 @@ Sie haben Eingabeaufforderungen zu Ihrer Wissensdatenbank hinzugefügt und den D
 
 Der in der JSON-Antwort zurückgegebene [Anzeigetext und die Anzeigereihenfolge](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto) können von der [Update-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) bearbeitet werden. 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Erstellen einer Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Create-API
-
-Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Create-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) erstellen. Die Aufforderungen werden im Array `prompts` der `context`-Eigenschaft hinzugefügt. 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Hinzufügen oder Löschen von Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der Update-API
 
 Sie können Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Update-API von QnA Maker](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) hinzufügen oder löschen.  Die Aufforderungen werden im Array `promptsToAdd` der `context`-Eigenschaft und im Array `promptsToDelete` hinzugefügt. 
 
+## <a name="export-knowledge-base-for-version-control"></a>Exportieren der Wissensdatenbank für die Versionskontrolle
+
+QnA Maker [unterstützt die Versionskontrolle](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) im QnA Maker-Portal, indem es Schritte für Konversationen mit Mehrfachdurchläufen in die exportierte Datei einfügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,29 +1,32 @@
 ---
-title: Grundlegendes zur Azure Digital Twins-API-Authentifizierung | Microsoft-Dokumentation
-description: Durchführen der Verbindungsherstellung und Authentifizierung für APIs mithilfe von Azure Digital Twins
-author: lyrana
-manager: alinast
+title: Grundlagen zur API-Authentifizierung mit Azure Digital Twins | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe von Azure Digital Twins eine Verbindung mit APIs herstellen und sich authentifizieren.
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: lyhughes
-ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/30/2019
+ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815550"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949793"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>Durchführen der Verbindungsherstellung und Authentifizierung für APIs
+# <a name="connect-to-and-authenticate-with-apis"></a>Herstellen einer Verbindung und Authentifizieren bei APIs
 
 Für Azure Digital Twins wird Azure Active Directory (Azure AD) verwendet, um Benutzer zu authentifizieren und Anwendungen zu schützen. Azure AD unterstützt die Authentifizierung für eine Vielzahl moderner Architekturen. Diese basieren alle auf den branchenüblichen Protokollen OAuth 2.0 oder OpenID Connect. Darüber hinaus können Entwickler Azure AD dazu verwenden, Anwendungen mit einem Mandanten sowie Branchenanwendungen zu erstellen. Entwickler können Azure AD auch für die Entwicklung mehrinstanzenfähiger Anwendungen nutzen.
 
-Die Seite mit der [Dokumentation mit grundlegenden Informationen zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index) enthält eine Übersicht über Azure AD. Dort finden Sie beispielsweise Schritt-für-Schritt-Anleitungen, Informationen zu Konzepten sowie Schnellstartanleitungen.
+Die Seite mit der [Dokumentation mit grundlegenden Informationen zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/) enthält eine Übersicht über Azure AD. Dort finden Sie beispielsweise Schritt-für-Schritt-Anleitungen, Informationen zu Konzepten sowie Schnellstartanleitungen.
 
-Um eine Anwendung oder einen Dienst in Azure AD zu integrieren, muss ein Entwickler die Anwendung zuerst bei Azure AD registrieren. Ausführliche Anweisungen und Screenshots finden Sie in [dieser Schnellstartanleitung](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+> [!TIP]
+> Folgen Sie dem [Tutorial](tutorial-facilities-setup.md), um eine Azure Digital Twins-Beispielanwendung einzurichten und auszuführen.
 
-Azure AD unterstützt die folgenden [fünf Hauptanwendungsszenarien](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types):
+Um eine Anwendung oder einen Dienst in Azure AD zu integrieren, muss ein Entwickler die Anwendung zuerst bei Azure AD registrieren. Ausführliche Anweisungen und Screenshots finden Sie in [dieser Schnellstartanleitung](../active-directory/develop/quickstart-register-app.md).
+
+Azure AD unterstützt die folgenden [fünf Hauptanwendungsszenarien](../active-directory/develop/v2-app-types.md):
 
 * Single-Page-Webanwendung (SPA): Ein Benutzer muss sich bei einer durch Azure AD geschützten Single-Page-Webanwendung anmelden.
 * Webbrowser zu Webanwendung: Ein Benutzer muss sich bei einer durch Azure AD geschützten Webanwendung anmelden.
@@ -31,7 +34,10 @@ Azure AD unterstützt die folgenden [fünf Hauptanwendungsszenarien](https://doc
 * Webanwendung zu Web-API: Eine Webanwendung muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
 * Daemon- oder Serveranwendung zu Web-API: Eine Daemon- oder Serveranwendung ohne Webbenutzeroberfläche muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.
 
-Die Microsoft Azure-Authentifizierungsbibliothek bietet viele Möglichkeiten zum Beziehen von Active Directory-Token. Ausführliche Informationen zur Bibliothek und zu den Codebeispielen finden Sie in [diesem Artikel](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+> [!IMPORTANT]
+> Azure Digital Twins unterstützt die beiden folgenden Authentifizierungsbibliotheken:
+> * die aktuellere [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * die [Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Aufrufen von Digital Twins über eine Web-API der mittleren Ebene
 

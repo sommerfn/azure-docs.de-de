@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor | Microsoft-Dokumentation
-description: Sie können den Zugriff auf Daten, die in Log Analytics-Arbeitsbereichen in Azure Monitor gespeichert sind, mithilfe von Berechtigungen auf Ressourcen-, Arbeitsbereichs- oder Tabellenebene verwalten. In diesem Artikel wird dies ausführlich erläutert.
+description: Sie können den Zugriff auf Daten, die in einem Log Analytics-Arbeitsbereich in Azure Monitor gespeichert sind, mithilfe von Berechtigungen auf Ressourcen-, Arbeitsbereichs- oder Tabellenebene verwalten. In diesem Artikel wird gezeigt, wie Sie diese Arbeit ausführen.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 9bf278b76846b98f58126957c589df87524bb8a4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 920e470a8bc06050219d0f603ab842cfc267e6ce
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034712"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695002"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -216,11 +216,19 @@ Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weit
 
     * Legen Sie den Zugriffssteuerungsmodus für den Arbeitsbereich auf die **Verwendung von Arbeitsbereichs- oder Ressourcenberechtigungen** fest.
 
-    * Erteilen Sie den Benutzern die folgenden Berechtigungen für den Arbeitsbereich: `Microsoft.OperationalInsights/workspaces/read` und `Microsoft.OperationalInsights/workspaces/sharedKeys/action`. Mit diesen Berechtigungen können Benutzer keine Abfragen auf Arbeitsbereichsebene ausführen.
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für den Arbeitsbereich: `Microsoft.OperationalInsights/workspaces/read` und `Microsoft.OperationalInsights/workspaces/sharedKeys/action`. Mit diesen Berechtigungen können Benutzer keine Abfragen auf Arbeitsbereichsebene ausführen. Sie können den Arbeitsbereich lediglich aufzählen und ihn als Ziel für Diagnoseeinstellungen oder die Agentkonfiguration verwenden.
 
-    * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `Microsoft.Insights/logs/*/read` und `Microsoft.Insights/diagnosticSettings/write`. Wenn den Benutzern bereits die Rolle [Log Analytics-Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) für diese Ressource zugewiesen ist, reicht dies aus.
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `Microsoft.Insights/logs/*/read` und `Microsoft.Insights/diagnosticSettings/write`. Wenn den Benutzern bereits die Rolle [Log Analytics-Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor), die Leserrolle oder `*/read`-Berechtigungen für diese Ressource zugewiesen ist, reicht dies aus.
 
-3. Wenn Sie einem Benutzer Zugriff auf Protokolldaten seiner Ressourcen, das Lesen aller Azure AD-Anmeldeprotokolle sowie das Lesen von Protokolldaten der Updateverwaltungslösung gewähren möchten, führen Sie die folgenden Schritte aus:
+3. Führen Sie die folgenden Schritte aus, um einem Benutzer Zugriff auf Protokolldaten seiner Ressourcen zu erteilen, ohne dass er sicherheitsrelevante Ereignisse lesen oder Daten senden könnte:
+
+    * Legen Sie den Zugriffssteuerungsmodus für den Arbeitsbereich auf die **Verwendung von Arbeitsbereichs- oder Ressourcenberechtigungen** fest.
+
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `Microsoft.Insights/logs/*/read`.
+
+    * Fügen Sie die folgende NonAction hinzu, um das Lesen des SecurityEvent-Typs durch Benutzer zu blockieren: `Microsoft.Insights/logs/SecurityEvent/read`. Die NonAction muss sich in der gleichen benutzerdefinierten Rolle wie die Aktion befinden, die die Leseberechtigung bereitstellt (`Microsoft.Insights/logs/*/read`). Wenn der Benutzer die Leseaktion von einer anderen Rolle erbt, die dieser Ressource, dem Abonnement oder der Ressourcengruppe zugeordnet ist, ist er in der Lage, alle Protokolltypen zu lesen. Dies trifft ebenfalls zu, wenn er `*/read` erbt, beispielsweise aus der Rolle „Leser“ oder „Mitwirkender“.
+
+4. Wenn Sie einem Benutzer Zugriff auf Protokolldaten seiner Ressourcen, das Lesen aller Azure AD-Anmeldeprotokolle sowie das Lesen von Protokolldaten der Updateverwaltungslösung aus dem Arbeitsbereich erteilen möchten, führen Sie die folgenden Schritte aus:
 
     * Legen Sie den Zugriffssteuerungsmodus für den Arbeitsbereich auf die **Verwendung von Arbeitsbereichs- oder Ressourcenberechtigungen** fest.
 
@@ -235,7 +243,7 @@ Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weit
         * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` ist erforderlich, damit die Updateverwaltungslösung verwendet werden kann.
         * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` ist erforderlich, damit die Updateverwaltungslösung verwendet werden kann.
 
-    * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `*/read` oder `Microsoft.Insights/logs/*/read`. Wenn den Benutzern die Rolle [Log Analytics-Leser](../../role-based-access-control/built-in-roles.md#reader) für den Arbeitsbereich zugewiesen ist, reicht dies aus.
+    * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `*/read`, die der Leserrolle zugewiesen ist, oder `Microsoft.Insights/logs/*/read`. 
 
 ## <a name="table-level-rbac"></a>RBAC auf Tabellenebene
 

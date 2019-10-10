@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: Azure Spring Cloud-Dokumentation
+summary: Azure Spring Cloud stellt einen verwalteten Dienst bereit, mit dem Java-Entwickler in Azure ohne Codeänderungen leicht Spring-Boot-basierte Microservices erstellen und ausführen können.
+metadata:
+  title: Azure Spring Cloud
+  description: Azure Spring Cloud stellt einen verwalteten Dienst bereit, mit dem Java-Entwickler in Azure ohne Codeänderungen leicht Spring-Boot-basierte Microservices erstellen und ausführen können.
+  services: spring-cloud
+  ms.service: spring-cloud
+  ms.topic: landing-page
+  ms.collection: collection
+  author: jpconnock
+  ms.author: jpconnock
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 0dcbe8d01761e8feb06cd5705a104d8c9e5196e0
+  ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/08/2019
+  ms.locfileid: "72038600"
+landingContent:
+- title: Informationen zu Azure Spring Cloud
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Spring Cloud?
+      url: spring-cloud-overview.md
+    - text: Grundlegendes zu Azure Spring Cloud-Kontingenten und -Grenzwerten
+      url: spring-cloud-quotas.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Starten einer Java Spring-App über das Portal
+      url: spring-cloud-quickstart-launch-app-portal.md
+    - text: Starten einer Java Spring-App mit der Azure CLI
+      url: spring-cloud-quickstart-launch-app-cli.md
+  - linkListType: tutorial
+    links:
+    - text: Vorbereiten einer Java Spring-App für die Bereitstellung
+      url: spring-cloud-tutorial-prepare-app-deployment.md
+- title: Überwachen Ihrer Anwendung
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Überwachen Ihrer Anwendung mit verteilter Ablaufverfolgung und App Insights
+      url: spring-cloud-tutorial-distributed-tracing.md
+    - text: Aktivieren von Diagnosediensten in Ihrer Java Spring-Anwendung
+      url: diagnostic-services.md
+  - linkListType: concept
+    links:
+    - text: Grundlegendes zu Azure Monitor-Metriken für Spring Cloud
+      url: spring-cloud-concept-metrics.md
+- title: Binden an andere Dienste
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Binden Ihrer Anwendung an Azure Cache for Redis
+      url: spring-cloud-tutorial-bind-redis.md
+    - text: Binden Ihrer Anwendung an eine Azure MySQL-Datenbank
+      url: spring-cloud-tutorial-bind-mysql.md
+    - text: Binden Ihrer Anwendung an Azure Cosmos DB
+      url: spring-cloud-tutorial-bind-cosmos.md
+- title: Konfigurieren Ihres Diensts
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Verwenden des Konfigurationsservers zum Verwalten der Anwendungskonfiguration
+      url: spring-cloud-tutorial-config-server.md
+    - text: Manuelles Skalieren Ihrer Anwendung
+      url: spring-cloud-tutorial-scale-manual.md
+  - linkListType: how-to-guide
+    links:
+    - text: Automatisieren Ihrer CI/CD-Pipeline in Azure Spring Cloud
+      url: spring-cloud-howto-cicd.md
+    - text: Ermöglichen von Blaugrün-Bereitstellungen mit Azure Spring Cloud
+      url: spring-cloud-howto-staging-environment.md
+    - text: Verwenden von beständigem Speicher in Azure Spring Cloud
+      url: spring-cloud-howto-persistent-storage.md

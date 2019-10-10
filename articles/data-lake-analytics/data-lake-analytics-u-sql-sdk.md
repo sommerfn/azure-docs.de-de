@@ -1,5 +1,5 @@
 ---
-title: Lokales Ausführen und Testen von U-SQL-Aufträgen mit dem Azure Data Lake U-SQL SDK
+title: Lokales Ausführen von U-SQL-Aufträgen – Azure Data Lake U-SQL SDK
 description: In diesem Artikel erfahren Sie, wie Sie U-SQL-Aufträge unter Verwendung der Befehlszeile und der Programmierschnittstellen auf Ihrer lokalen Arbeitsstation lokal ausführen und testen.
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813480"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309681"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
 
@@ -332,7 +332,7 @@ Im folgenden finden Sie Beispielcode für den Test des U-SQL-Skripts. Für das T
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|Parameter|Type|BESCHREIBUNG|
+|Parameter|type|BESCHREIBUNG|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|für ausgehende Nachrichten, für die Verwendung von „Console“ auf NULL festgelegt|
 

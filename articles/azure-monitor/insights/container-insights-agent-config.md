@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 2b601825a58fe5739a43df607067acc8d629c5f4
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558907"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709427"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurieren der Datensammlung des Azure Monitor für Container-Agent
 
@@ -187,6 +187,22 @@ Die Ausgabe sieht ähnlich der folgenden mit der Anmerkung „schema-versions“
 ```
 
 ## <a name="review-prometheus-data-usage"></a>Überprüfen der Prometheus-Datenverwendung
+
+Zum Anzeigen von Prometheus-Metriken, die von Azure Monitor erfasst wurden, geben Sie „prometheus“ als Namespace an. Hier sehen Sie eine Beispielabfrage zum Anzeigen von Prometheus-Metriken aus dem `default`-Kubernetes-Namespace.
+
+```
+InsightsMetrics 
+| where Namespace contains "prometheus"
+| extend tags=parse_json(Tags)
+| where tostring(tags.namespace) == "default" 
+```
+
+Prometheus-Daten können außerdem direkt anhand des Namens abgefragt werden.
+
+```
+InsightsMetrics 
+| where Name contains "some_prometheus_metric"
+```
 
 Um das Erfassungsvolumen jeder Metrikgröße in GB pro Tag zu ermitteln, um zu verstehen, ob es hoch ist, wird die folgende Abfrage bereitgestellt.
 

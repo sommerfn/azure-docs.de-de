@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/26/2019
 ms.author: juliako
-ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232594"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672657"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -27,6 +27,26 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Fehlerbehebungen
 * Veraltete Funktionen
+
+## <a name="september-2019"></a>September 2019
+ 
+Auf der IBC 2019 wurden mehrere Verbesserungen angekündigt:
+ 
+* Erkennung animierter Figuren (öffentliche Vorschauversion)
+
+    Die Fähigkeit zum Auffinden, Gruppieren und Erkennen von Figuren in animierten Inhalten mithilfe der Integration in Custom Vision. Weitere Informationen finden Sie unter [Erkennung animierter Figuren](animated-characters-recognition.md).
+* Mehrsprachige Identifikation (öffentliche Vorschauversion)
+
+    Erkennen von Segmenten in mehreren Sprachen in der Audiospur und Erstellen eines mehrsprachigen Transkripts auf ihrer Grundlage. Zu Anfang unterstützt: Englisch, Spanisch, Deutsch und Französisch. Weitere Informationen finden Sie unter [Automatisches Erkennen und Transkribieren mehrsprachiger Inhalte](multi-language-identification-transcription.md).
+* Extraktion benannter Entitäten für Personen und Ort
+
+    Extrahiert mithilfe der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) Marken, Standorte und Personen aus Sprache und visuellem Text.
+* Redaktionelle Typklassifizierung für Aufnahmen
+
+    Markierung von Aufnahmen mit redaktionellen Typen wie Nahaufnahme, Halbtotale, zwei Personen, innen, außen usw. Weitere Informationen finden Sie unter [Erkennung von redaktionellen Aufnahmetypen](scenes-shots-keyframes.md#editorial-shot-type-detection).
+* Verbesserte Themendeduktion – jetzt mit Abdeckung von Stufe 2
+    
+    Das Themendeduktionsmodell unterstützt jetzt mehr Detailebenen der IPTC-Taxonomie. Sämtliche Details finden Sie unter [Azure Media Services new AI-powered innovation](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/) (Neue, KI-gestützte Innovationen in Azure Media Services).
 
 ## <a name="august-2019"></a>August 2019
  

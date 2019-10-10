@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311916"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703028"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe von Azure Advisor
 
@@ -21,9 +21,9 @@ Advisor hilft Ihnen beim Optimieren und Senken Ihrer Gesamtausgaben für Azure, 
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimieren der Kosten für virtuelle Computer durch Ändern der Größe oder Herunterfahren von zu gering ausgelasteten Instanzen 
 
-Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewirken, können Sie häufig Kosten sparen, indem Sie Größe und Anzahl Ihrer virtuellen Computer steuern. Der Advisor überwacht 7 Tage die Verwendung Ihrer virtuellen Computer und ermittelt virtuelle Computer mit geringer Auslastung. Virtuelle Computer gelten als gering ausgelastet, wenn ihre CPU-Auslastung höchstens 5% beträgt und ihre Netzwerkauslastung unter 2% liegt oder die aktuelle Workload von einer kleineren VM-Größe bewältigt werden kann.
+Obwohl bestimmte Anwendungsszenarien zielgerichtet eine geringe Auslastung bewirken, können Sie häufig Kosten sparen, indem Sie Größe und Anzahl Ihrer virtuellen Computer steuern. Erweiterte Advisor-Auswertungsmodelle erachten einen virtuellen Computer als heruntergefahren, wenn das P95-Perzentil des Maximalwerts der CPU-Auslastung weniger als 3 % und die Netzwerkauslastung weniger als 2 % über einen Zeitraum von 7 Tagen beträgt. Virtuelle Computer werden als richtig dimensioniert angesehen, wenn es möglich ist, die aktuelle Auslastung in einer kleineren SKU (aus der gleichen SKU-Familie) oder einer kleineren Anzahl Instanzen so zu betreiben, dass die aktuelle Auslastung 80 % für nicht benutzerbezogene Workloads und 40 % für benutzerbezogene Workloads nicht überschreitet. Hier wird der Typ der Workload durch Analysieren der CPU-Auslastungsmerkmale der Workload bestimmt.
 
-Der Advisor gibt die geschätzten Kosten für die weitere Ausführung des virtuellen Computers an, sodass Sie entscheiden können, ob Sie diesen herunterfahren oder seine Größe ändern.
+Die empfohlenen Aktionen sind Herunterfahren oder neu Dimensionieren, jeweils ressourcenspezifisch. Der Advisor zeigt die geschätzten Kosteneinsparungen für beide empfohlenen Aktionen an – neu Dimensionieren oder Herunterfahren. Außerdem stellt der Advisor für die empfohlene Aktion neu Dimensionieren Informationen zur aktuellen und Ziel-SKU zur Verfügung. 
 
 Wenn Sie konsequenter zu gering ausgelastete virtuelle Computer ermitteln möchten, können Sie die Regel für die CPU-Auslastung auf Abonnementbasis anpassen.
 

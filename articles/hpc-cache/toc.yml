@@ -36,3 +36,5 @@
   items:
     - name: Öffnen eines Supporttickets
       href: hpc-cache-support-ticket.md
+    - name: Durchführen einer Wiederherstellung nach einem regionalen Ausfall
+      href: hpc-region-recovery.md

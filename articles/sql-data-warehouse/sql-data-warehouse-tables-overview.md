@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476749"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310099"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Entwerfen von Tabellen in Azure SQL Data Warehouse
 
@@ -109,6 +109,9 @@ Eine Liste der Columnstore-Funktionen finden Sie unter [Columnstore-Indizes – 
 ## <a name="statistics"></a>Statistiken
 Der Abfrageoptimierer verwendet beim Erstellen des Plans für die Ausführung einer Abfrage Statistiken auf Spaltenebene. Um die Abfrageleistung zu verbessern, ist es wichtig, über Statistiken für einzelne Spalten zu verfügen, insbesondere für in Abfrageverknüpfungen verwendete Spalten. Das [Erstellen von Statistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) erfolgt automatisch.  Die Aktualisierung der Statistiken wird jedoch nicht automatisch ausgeführt. Führen Sie die Statistikaktualisierung durch, wenn eine erhebliche Anzahl von Zeilen hinzugefügt oder geändert wurde. Aktualisieren Sie Statistiken z. B. nach einem Ladevorgang. Weitere Informationen finden Sie unter [Verwalten von Statistiken für Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-statistics.md).
 
+## <a name="primary-key-and-unique-key"></a>Primärschlüssel und eindeutiger Schlüssel
+PRIMARY KEY wird nur unterstützt, wenn sowohl NONCLUSTERED als auch NOT ENFORCED verwendet werden.  Der UNIQUE-Constraint wird nur unterstützt, wenn NOT ENFORCED verwendet wird.  Überprüfen Sie die [SQL Data Warehouse-Tabellenconstraints](sql-data-warehouse-table-constraints.md).
+
 ## <a name="commands-for-creating-tables"></a>Befehle zum Erstellen von Tabellen
 Sie können eine Tabelle als neue leere Tabelle erstellen. Alternativ können Sie eine Tabelle erstellen und mit den Ergebnissen einer SELECT-Anweisung füllen. Es folgen die T-SQL-Befehle zum Erstellen einer Tabelle.
 
@@ -128,8 +131,7 @@ Wenn Daten aus mehreren Datenspeichern stammen, können Sie die Daten in das Dat
 ## <a name="unsupported-table-features"></a>Nicht unterstützte Tabellenfunktionen
 SQL Data Warehouse unterstützt viele, aber nicht alle Tabellenfunktionen anderer Datenbanken.  Die folgende Liste enthält einige der Tabellenfunktionen, die in SQL Data Warehouse nicht unterstützt werden.
 
-- Primary Key, Foreign Key, Unique, Check – [Tabelleneinschränkungen](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-
+- Fremdschlüssel, überprüfen Sie die [Tabellenconstraints](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [Berechnete Spalten](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [Indizierte Sichten](/sql/relational-databases/views/create-indexed-views)
 - [Sequenz](/sql/t-sql/statements/create-sequence-transact-sql)

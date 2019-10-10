@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764945"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812569"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Sammeln von Daten aus CollectD mithilfe von Linux-Agents in Azure Monitor
 [CollectD](https://collectd.org/) ist ein Open-Source-Linux-Deamon, der regelmäßig Leistungsmetriken aus Anwendungen und Informationen aus der Betriebssystemebene sammelt. Beispiele für diese Anwendungen sind Java Virtual Machine (JVM), MySQL Server und Nginx. In diesem Artikel erfahren Sie, wie Sie in Azure Monitor Leistungsdaten aus CollectD sammeln.
@@ -69,6 +69,8 @@ Der Log Analytics-Agent für Linux lauscht an Port 26000 auf CollectD-Metriken u
       type filter_collectd
     </filter>
 
+> [!NOTE]
+> CollectD ist standardmäßig für das Lesen von Werten in einem 10-Sekunden-[Intervall](https://collectd.org/wiki/index.php/Interval) eingestellt. Da sich dies direkt auf die Menge der Daten auswirkt, die an Azure Monitor-Protokolle gesendet werden, müssen Sie dieses Intervall möglicherweise in der CollectD-Konfiguration optimieren, um ein gutes Verhältnis zwischen den Überwachungsanforderungen, den damit verbundenen Kosten und der Nutzung für Azure Monitor-Protokolle zu erreichen.
 
 ## <a name="versions-supported"></a>Unterstützte Versionen
 - Azure Monitor unterstützt derzeit CollectD Version 4.8 und höhere Versionen.

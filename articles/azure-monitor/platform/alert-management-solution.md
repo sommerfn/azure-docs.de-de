@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741278"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702967"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
 ![Symbol „Alert Management“](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor unterstützt jetzt erweiterte Funktionen zum [Verwalten von skalierbaren Warnungen](https://aka.ms/azure-alerts-overview), einschließlich der von [Überwachungstools wie SCOM, Zabbix oder Nagios](https://aka.ms/managing-alerts-other-monitoring-services) generierten.
+>  Azure Monitor unterstützt jetzt erweiterte Funktionen zum [Verwalten von skalierbaren Warnungen](https://aka.ms/azure-alerts-overview), einschließlich der von [Überwachungstools wie System Center Operations Manager, Zabbix oder Nagios](https://aka.ms/managing-alerts-other-monitoring-services) generierten.
 >  
 
 
@@ -74,7 +74,7 @@ Klicken Sie auf die Kachel **Alert Management**, um das Dashboard **Alert Manage
 |:--- |:--- |
 | Kritische Warnungen |Alle Warnungen mit dem Schweregrad „Kritisch“, gruppiert nach Warnungsname.  Klicken Sie auf einen Warnungsnamen, um eine Protokollsuche durchzuführen, mit der alle Datensätze für die Warnung zurückgegeben werden. |
 | Warnungen |Alle Warnungen mit dem Schweregrad „Warnung“, gruppiert nach Warnungsname.  Klicken Sie auf einen Warnungsnamen, um eine Protokollsuche durchzuführen, mit der alle Datensätze für die Warnung zurückgegeben werden. |
-| Aktive SCOM-Warnungen |Alle von Operations Manager gesammelten Warnungen mit einem anderen Zustand als *Geschlossen*, gruppiert nach der Quelle, die die Warnung generiert hat |
+| Aktive System Center Operations Manager-Warnungen |Alle von Operations Manager gesammelten Warnungen mit einem anderen Zustand als *Geschlossen*, gruppiert nach der Quelle, die die Warnung generiert hat |
 | Alle aktiven Warnungen |Alle Warnungen mit einem beliebigen Schweregrad, gruppiert nach dem Namen der Warnung. Umfasst nur Operations Manager-Warnungen mit einem anderen Zustand als *Geschlossen*. |
 
 Wenn Sie nach rechts scrollen, werden im Dashboard mehrere allgemeine Abfragen aufgeführt, auf die Sie klicken können, um eine [Protokollsuche](../../azure-monitor/log-query/log-query-overview.md) nach Warnungsdaten durchzuführen.

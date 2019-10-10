@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: dc01f8556fb1c88899cae1a8767cb23d6b6041eb
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128881"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828739"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -408,7 +408,7 @@ Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, wer
 
 - Momentaufnahmen und bidirektionale Replikationstypen werden unterstützt. Mergereplikation, Peer-zu-Peer-Replikation und aktualisierbare Abonnements werden nicht unterstützt.
 - Die [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md) ist mit einigen Einschränkungen für die öffentliche Vorschauversion der verwalteten Instanz verfügbar:
-    - Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. „Herausgeber“ und „Verteiler“ können dabei aber nicht auf unterschiedlichen Instanzen platziert werden.
+    - Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. Der Herausgeber und der Verteiler müssen dabei entweder beide in der Cloud oder beide lokal platziert sein.
     - Verwaltete Instanzen können mit der neuesten SQL Server-Version kommunizieren. Die unterstützten Versionen finden Sie [hier](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
     - Für die Transaktionsreplikation gibt es einige [zusätzliche Netzwerkanforderungen](sql-database-managed-instance-transactional-replication.md#requirements).
 
@@ -544,7 +544,15 @@ Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen 
 
 ## <a name="Issues"></a> Bekannte Probleme
 
-### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Das Ändern der Dienstebene und Erstellen von Instanzvorgängen wird durch die laufende Datenbankwiederherstellung blockiert
+### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Zurückgegebener Fehler bei dem Versuch, eine nicht leere Datei zu entfernen
+
+**Datum:** Oktober 2019
+
+SQL Server/Verwaltete Instanz [erlaubt Benutzern nicht das Löschen von Dateien, die nicht leer sind](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Wenn Sie versuchen, eine nicht leere Datendatei mithilfe der `ALTER DATABASE REMOVE FILE`-Anweisung zu entfernen, wird der Fehler `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` nicht sofort zurückgegeben. Die verwaltete Instanz versucht fortgesetzt, die Datei zu löschen, und der Vorgang schlägt nach 30 Minuten mit `Internal server error` fehl.
+
+**Problemumgehung**: Entfernen Sie den Inhalt der Datei mit dem `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)`-Befehl. Wenn es sich um die einzige Datei in der Dateigruppe handelt, müssten Sie Daten aus der Tabelle oder Partition löschen, die dieser Dateigruppe zugeordnet ist, bevor Sie die Datei verkleinern, und diese Daten optional in eine andere Tabelle/Partition laden.
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Das Ändern der Dienstebene und Erstellen von Instanzvorgängen wird durch die laufende Datenbankwiederherstellung blockiert
 
 **Datum:** September 2019
 

@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967258"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802682"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Verwalten des Zugriffs auf Azure-Ressourcen für externe Gastbenutzer mit RBAC
 
@@ -206,3 +206,4 @@ Wenn einem Gastbenutzer der Zugriff auf ein Verzeichnis gewährt wurde, er aber 
 - [Add Azure Active Directory B2B collaboration users in the Azure portal](../active-directory/b2b/add-users-administrator.md) (Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal)
 - [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](../active-directory/b2b/user-properties.md)
 - [Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [Hinzufügen eines Gastbenutzers als Co-Administrator](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)

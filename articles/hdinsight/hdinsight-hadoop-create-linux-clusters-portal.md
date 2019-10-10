@@ -1,19 +1,19 @@
 ---
 title: Erstellen von Apache Hadoop-Clustern mit einem Webbrowser – Azure HDInsight
-description: Es wird beschrieben, wie Sie mit einem Webbrowser und dem Azure-Vorschauportal Apache Hadoop-, Apache HBase-, Apache Storm- und Apache Spark-Cluster unter Linux für HDInsight erstellen.
+description: Erfahren Sie, wie Sie mit einem Webbrowser und dem Azure-Portal Apache Hadoop-, Apache HBase-, Apache Storm- oder Apache Spark-Cluster unter Linux für HDInsight erstellen.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: b2a5168cbda209d1d975db5e5f1c810a798ddb97
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 09/28/2019
+ms.openlocfilehash: 687fde2e203ed471e2f0164f1f4a670de4afc74e
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098706"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677082"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal
 
@@ -36,13 +36,13 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe von
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen**.
-
-1. Wählen Sie unter **Azure Marketplace** die Option **Analyse** aus.
-
-1. Wählen Sie unter **Empfohlen** die Option **HDInsight** aus.
+1. Navigieren Sie im Menü auf der linken Seite zu **+ Ressource erstellen** >  **Analytics** > **HDInsight**.
 
     ![Erstellen eines neuen Clusters im Azure-Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster.png "Erstellen eines neuen Clusters im Azure-Portal")
+
+1. Wählen Sie auf der Seite **HDInsight-Cluster erstellen** die Option **Zur klassischen Benutzeroberfläche für die Erstellung wechseln** aus.
+
+    ![Zur klassischen Benutzeroberfläche für die Erstellung wechseln](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-create-classic.png)
 
 1. Wählen Sie auf der Seite **HDInsight** die Option **Benutzerdefiniert (Größe, Einstellungen, Apps)** .
 
@@ -71,13 +71,13 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe von
 
     * Klicken Sie auf **Weiter**, um zur nächsten Seite zu wechseln.
 
-4. Unter **2 Sicherheit + Netzwerkbetrieb** können Sie Ihren Cluster über das Dropdownmenü mit einem virtuellen Netzwerk verbinden. Wählen Sie ein virtuelles Azure-Netzwerk und das Subnetz aus, wenn Sie den Cluster in einem virtuellen Netzwerk platzieren möchten. Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk finden Sie unter [Plan a virtual network for Azure HDInsight (Planen eines virtuellen Netzwerks für Azure HDInsight)](hdinsight-plan-virtual-network-deployment.md). Der Artikel enthält die spezifischen Konfigurationsanforderungen für das virtuelle Netzwerk. 
+1. Unter **2 Sicherheit + Netzwerkbetrieb** können Sie Ihren Cluster über das Dropdownmenü mit einem virtuellen Netzwerk verbinden. Wählen Sie ein virtuelles Azure-Netzwerk und das Subnetz aus, wenn Sie den Cluster in einem virtuellen Netzwerk platzieren möchten. Weitere Informationen zur Verwendung von HDInsight mit einem virtuellen Netzwerk finden Sie unter [Plan a virtual network for Azure HDInsight (Planen eines virtuellen Netzwerks für Azure HDInsight)](hdinsight-plan-virtual-network-deployment.md). Der Artikel enthält die spezifischen Konfigurationsanforderungen für das virtuelle Netzwerk.
 
     Befolgen Sie diese Anleitung, wenn Sie das **Enterprise-Sicherheitspaket** verwenden möchten: [Konfigurieren eines HDInsight-Clusters mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) mithilfe von Azure Active Directory Domain Services](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds).
 
     Klicken Sie auf **Weiter**, um zur nächsten Seite zu wechseln.
 
-5. Geben Sie unter **3 Speicher** an, ob Azure Storage oder Azure Data Lake Storage als Standardspeicher verwendet werden soll. Ausführlichere Informationen finden Sie in der unten stehenden Tabelle.
+1. Geben Sie unter **3 Speicher** an, ob Azure Storage oder Azure Data Lake Storage als Standardspeicher verwendet werden soll. Ausführlichere Informationen finden Sie in der unten stehenden Tabelle.
 
      ![HDInsight – Clusterspeicher erstellen](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-storage.png "Erstellen eines neuen Clusters im Azure-Portal")
 
@@ -92,11 +92,11 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe von
 
      Klicken Sie auf **Weiter**, um zur nächsten Seite zu wechseln.
 
-6. Wählen Sie unter **4 Anwendungen (optional)** alle gewünschten Anwendungen aus. Diese Anwendungen können von Microsoft, unabhängigen Softwareherstellern (Independent Software Vendors, ISVs) oder Ihnen selbst entwickelt werden. Weitere Informationen finden Sie unter [Installieren von Anwendungen während der Clustererstellung](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
+1. Wählen Sie unter **4 Anwendungen (optional)** alle gewünschten Anwendungen aus. Diese Anwendungen können von Microsoft, unabhängigen Softwareherstellern (Independent Software Vendors, ISVs) oder Ihnen selbst entwickelt werden. Weitere Informationen finden Sie unter [Installieren von Anwendungen während der Clustererstellung](hdinsight-apps-install-applications.md#install-applications-during-cluster-creation).
 
     Klicken Sie auf **Weiter**, um zur nächsten Seite zu wechseln.
 
-6. Unter **5 Clustergröße** finden Sie Informationen zu den Knoten, die für diesen Cluster verwendet werden. Legen Sie die Anzahl von Workerknoten fest, die Sie für den Cluster benötigen. Die geschätzten Kosten der Clusterausführung werden ebenfalls angezeigt.
+1. Unter **5 Clustergröße** finden Sie Informationen zu den Knoten, die für diesen Cluster verwendet werden. Legen Sie die Anzahl von Workerknoten fest, die Sie für den Cluster benötigen. Die geschätzten Kosten der Clusterausführung werden ebenfalls angezeigt.
 
     ![HDInsight – Clusterknoten erstellen](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-nodes.png "Angeben der Anzahl von Clusterknoten")
 
@@ -107,18 +107,18 @@ Das Azure-Portal macht die meisten Clustereigenschaften verfügbar. Mithilfe von
 
     Klicken Sie auf **Weiter**, um zur nächsten Seite zu wechseln.
 
-8. Unter **6 Skriptaktionen** können Sie einen Cluster für die Installation von benutzerdefinierten Komponenten anpassen. Diese Option ist geeignet, wenn Sie einen Cluster bei seiner Erstellung mit einem benutzerdefinierten Skript anpassen möchten. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
+1. Unter **6 Skriptaktionen** können Sie einen Cluster für die Installation von benutzerdefinierten Komponenten anpassen. Diese Option ist geeignet, wenn Sie einen Cluster bei seiner Erstellung mit einem benutzerdefinierten Skript anpassen möchten. Weitere Informationen zu Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
    Klicken Sie auf **Weiter**, um zur nächsten Seite zu wechseln.
 
-9. Überprüfen Sie unter **7 Zusammenfassung** die Informationen, die Sie zuvor eingegeben haben. Klicken Sie anschließend auf **Erstellen**.
+1. Überprüfen Sie unter **7 Zusammenfassung** die Informationen, die Sie zuvor eingegeben haben. Klicken Sie anschließend auf **Erstellen**.
 
      ![HDInsight – Clusterzusammenfassung erstellen](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-summary.png "Angeben der Anzahl von Clusterknoten")
     
     > [!NOTE]  
     > Die Erstellung des Clusters dauert in der Regel ca. 20 Minuten. Unter **Benachrichtigungen** können Sie den Bereitstellungsprozess überprüfen.
 
-10. Wählen Sie nach Abschluss des Erstellungsprozesses in der Benachrichtigung **Bereitstellung erfolgreich** die Option **Zu Ressource wechseln**. Im Clusterfenster werden die folgenden Informationen angezeigt.
+1. Wählen Sie nach Abschluss des Erstellungsprozesses in der Benachrichtigung **Bereitstellung erfolgreich** die Option **Zu Ressource wechseln**. Im Clusterfenster werden die folgenden Informationen angezeigt.
 
     ![HDI Azure-Portal – Clusterübersicht](./media/hdinsight-hadoop-create-linux-clusters-portal/hdinsight-create-cluster-completed.png "Clustereigenschaften")
 
@@ -169,4 +169,3 @@ Sie haben die Erstellung eines HDInsight-Clusters erfolgreich abgeschlossen. Als
 * [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](spark/apache-spark-livy-rest-interface.md)
 * [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](spark/apache-spark-use-bi-tools.md)
 * [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
-

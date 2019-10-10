@@ -7,27 +7,23 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: cfe7d5fa82197a05ddadd08a8811dc86067a05d7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806479"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349141"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Power BI ist eine Business Analytics-Lösung, mit der Sie Ihre Daten visualisieren und die Ergebnisse in Ihrer Organisation teilen können.
-
-Azure Data Explorer bietet drei Optionen für die Verbindungsherstellung mit Daten in Power BI: Verwenden des integrierten Connectors, Importieren einer Abfrage aus Azure Data Explorer oder Verwenden einer SQL-Abfrage. In diesem Artikel wird der integrierte Connector verwendet, um Daten abzurufen und in einem Power BI-Bericht zu visualisieren.
-
-Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Power BI ist eine Business Analytics-Lösung, mit der Sie Ihre Daten visualisieren und die Ergebnisse unternehmensweit teilen können. Azure Data Explorer bietet drei Optionen für die Verbindungsherstellung mit Daten in Power BI: Verwenden des integrierten Connectors, Importieren einer Abfrage aus Azure Data Explorer oder Verwenden einer SQL-Abfrage. In diesem Artikel wird der integrierte Connector verwendet, um Daten abzurufen und in einem Power BI-Bericht zu visualisieren. Die Erstellung von Power BI-Dashboards mit dem nativen Azure Data Explorer-Connector ist ganz einfach. Der Power BI-Connector unterstützt [Import- und Direktabfrage-Konnektivitätsmodi](https://docs.microsoft.com/power-bi/desktop-directquery-about). Je nach Szenario, Skalierung und Leistungsanforderungen können Sie Dashboards mit dem Modus **Import** oder **DirectQuery** erstellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Folgendes, um diesen Artikel durchzuarbeiten:
 
+* Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Ein Organisations-E-Mail-Konto, das Azure Active Directory angehört, um eine Verbindung mit dem [Azure Data Explorer-Hilfecluster](https://dataexplorer.azure.com/clusters/help/databases/samples) herstellen zu können.
-
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (wählen Sie **KOSTENLOS HERUNTERLADEN** aus)
 
 ## <a name="get-data-from-azure-data-explorer"></a>Abrufen von Daten aus Azure Data Explorer
@@ -54,8 +50,20 @@ Sie stellen zunächst eine Verbindung mit dem Azure Data Explorer-Hilfecluster h
     | Erweiterte Optionen | Nicht ausfüllen | Optionen für Ihre Abfragen (etwa die Größe des Resultsets). |
     | Datenkonnektivitätsmodus | *DirectQuery* | Bestimmt, ob Power BI die Daten importiert oder direkt eine Verbindung mit der Datenquelle herstellt. Für diesen Connector sind beide Optionen geeignet. |
     | | | |
+    
+    > [!NOTE]
+    > Im **Import**-Modus werden Daten nach Power BI verschoben. Im **DirectQuery**-Modus werden Daten direkt aus dem Azure Data Explorer-Cluster abgefragt.
+    >
+    > Verwenden Sie den **Import**-Modus in folgenden Fällen:
+    > * Ihr Dataset ist klein.
+    > * Sie benötigen keine Fast-Echtzeitdaten. 
+    > * Ihre Daten sind bereits aggregiert, oder Sie führen die [Aggregation in Kusto](/azure/kusto/query/summarizeoperator#list-of-aggregation-functions) aus.    
+    >
+    > Verwenden Sie den **DirectQuery**-Modus in folgenden Fällen:
+    > * Ihr Dataset ist sehr umfangreich. 
+    > * Sie benötigen Fast-Echtzeitdaten.   
 
-1. Falls Sie noch nicht über eine Verbindung mit dem Hilfecluster verfügen, melden Sie sich an. Melden Sie sich mit einem Organisationskonto an, und wählen Sie dann **Verbinden** aus.
+1. Falls Sie noch keine Verbindung mit dem Hilfecluster hergestellt haben, melden Sie sich an. Melden Sie sich mit einem Organisationskonto an, und wählen Sie dann **Verbinden** aus.
 
     ![Anmelden](media/power-bi-connector/sign-in.png)
 
@@ -87,4 +95,4 @@ Wenn Sie den Bericht, den Sie für diesen Artikel erstellt haben, nicht mehr ben
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Visualisieren von Daten mithilfe einer importierten Abfrage in Power BI](power-bi-imported-query.md)
+[Tipps zur Datenabfrage mit dem Azure Data Explorer-Connector für Power BI](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

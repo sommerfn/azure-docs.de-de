@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: cebf5e80ea59a29efed984097a4157f5238fad5c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744980"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686468"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse
 
@@ -38,7 +38,7 @@ Verbindungsversuche über das Internet und Azure müssen die Firewall durchlaufe
 
 ### <a name="server-level-ip-firewall-rules"></a>IP-Firewallregeln auf Serverebene
 
-  Diese Regeln ermöglichen es Clients, auf den gesamten Azure SQL-Server zuzugreifen (also auf alle Datenbanken innerhalb desselben SQL-Datenbank-Servers). Die Regeln sind in der *Masterdatenbank* gespeichert.
+  Diese Regeln ermöglichen es Clients, auf den gesamten Azure SQL-Server zuzugreifen (also auf alle Datenbanken innerhalb desselben SQL-Datenbank-Servers). Die Regeln sind in der *Masterdatenbank* gespeichert. Es können maximal 128 IP-Firewallregeln auf Serverebene für einen Azure SQL Server konfiguriert werden.
   
   IP-Firewallregeln auf Serverebene können über das Azure-Portal, mithilfe von PowerShell oder mithilfe von Transact-SQL-Anwendungen konfiguriert werden.
   - Wenn Sie das Portal oder PowerShell verwenden möchten, müssen Sie der Besitzer oder ein Mitwirkender des Abonnements sein.
@@ -229,7 +229,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 In diesem Abschnitt finden Sie einige Punkte für den Fall, dass sich der Zugriff auf den SQL-Datenbank-Dienst nicht wie erwartet verhält.
 
-- **Lokale Firewallkonfiguration:**
+- **Lokale Firewallkonfiguration**:
 
   Damit Ihr Computer auf SQL-Datenbank zugreifen kann, müssen Sie möglicherweise auf Ihrem Computer eine Firewallausnahme für den TCP-Port 1433 erstellen. Wenn Sie innerhalb der Grenzen der Azure-Cloud Verbindungen herstellen, müssen Sie möglicherweise zusätzliche Ports öffnen. Weitere Informationen finden Sie im Abschnitt „Außerhalb im Vergleich zu innerhalb“ des Artikels [Andere Ports als 1433 für ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
 
@@ -248,7 +248,7 @@ In diesem Abschnitt finden Sie einige Punkte für den Fall, dass sich der Zugrif
 
   Wenn eine Anmeldung nicht über Berechtigungen für den SQL-Datenbank-Server verfügt oder das Kennwort falsch ist, wird die Verbindung mit dem Server verweigert. Durch Erstellen einer Firewalleinstellung wird Clients lediglich die *Möglichkeit* gegeben, eine Verbindung mit dem Server herzustellen. Der Client muss weiterhin die erforderlichen Sicherheitsanmeldeinformationen bereitstellen. Weitere Informationen zum Vorbereiten von Anmeldungen finden Sie unter [Steuern und Gewähren des Datenbankzugriffs für SQL-Datenbank und SQL Data Warehouse](sql-database-manage-logins.md).
 
-- **Dynamische IP-Adresse:**
+- **Dynamische IP-Adresse**:
 
   Wenn Sie über eine Internetverbindung mit dynamischer IP-Adresszuweisung verfügen und Probleme beim Passieren der Firewall haben, versuchen Sie Folgendes:
   

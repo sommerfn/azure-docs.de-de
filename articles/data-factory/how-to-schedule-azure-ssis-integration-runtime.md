@@ -13,19 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d7a4a54f979cd4b14e12c5a57792241f1b2388d2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: b1f963eb804adc0f40749957e9052f2deba08ef6
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734701"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687112"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS Integration Runtime (IR) mithilfe von Azure Data Factory (ADF). Azure-SSIS IR ist eine dedizierte ADF-Computeressource für das Ausführen von SSIS-Paketen (SQL Server Integration Services). Das Ausführen von Azure-SSIS IR ist mit Kosten verbunden. Sie sollten Ihre IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR beenden, wenn Sie sie nicht mehr benötigen. Sie können die ADF-Benutzeroberfläche (UI) oder -App oder Azure PowerShell verwenden, um [die IR manuell zu starten oder zu beenden](manage-azure-ssis-integration-runtime.md).
 
 Alternativ können Sie Webaktivitäten in ADF-Pipelines erstellen, um Ihre IR nach einem Zeitplan zu starten oder zu beenden, z.B. Starten am Morgen vor dem Ausführen Ihrer täglichen ETL-Workloads und Beenden am Nachmittag, wenn diese erledigt sind.  Sie können auch eine Aktivität „SSIS-Paket ausführen“ zwischen zwei Webaktivitäten verketten, die Ihre IR starten und beenden. Auf diese Weise wird Ihre IR nach Bedarf gestartet und beendet, direkt vor und nach der Paketausführung. Weitere Informationen zur Aktivität „SSIS-Paket ausführen“ finden Sie im Artikel [Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in einer ADF-Pipeline](how-to-invoke-ssis-package-ssis-activity.md).
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie Ihre Azure-SSIS IR noch nicht bereitgestellt haben, stellen Sie sie mithilfe der folgenden Anweisungen im [Tutorial](tutorial-create-azure-ssis-runtime-portal.md) bereit. 
@@ -241,15 +241,15 @@ Wenn Sie noch kein Azure Automation-Konto haben, erstellen Sie eines anhand der 
 
 ### <a name="import-adf-modules"></a>Importieren von ADF-Modulen
 
-1. Wählen Sie im linken Menü **Module** im Bereich **Freigegebene Ressourcen** aus, und überprüfen Sie, ob in der Liste der Module **AzureRM.DataFactoryV2** + **AzureRM.Profile** aufgeführt werden.
+1. Wählen Sie im Abschnitt **FREIGEGEBENE RESSOURCEN** im Menü links die Option **Module** aus, und überprüfen Sie, ob in der Liste der Module **Az.DataFactory** + **Az.Profile** enthalten ist.
 
    ![Überprüfen der erforderlichen Module](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  Wenn **AzureRM.DataFactoryV2** nicht vorhanden ist, navigieren Sie zum PowerShell-Katalog für das Modul [AzureRM.DataFactoryV2](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/), und wählen Sie **In Azure Automation bereitstellen**, danach Ihr Azure Automation-Konto und anschließend **OK** aus. Kehren Sie im Menü auf der linken Seite zur Ansicht **Module** unter **Gemeinsame Ressourcen** zurück, und warten Sie, bis der **Status** des Moduls **AzureRM.DataFactoryV2** in **Verfügbar** wechselt.
+2.  Wenn **Az.DataFactory** nicht vorhanden ist, navigieren Sie zum PowerShell-Katalog für das Modul [Az.DataFactory](https://www.powershellgallery.com/packages/Az.DataFactory/), und wählen Sie **In Azure Automation bereitstellen**, danach Ihr Azure Automation-Konto und anschließend **OK** aus. Kehren Sie im Menü links zum Abschnitt **FREIGEGEBENE RESSOURCEN** zurück, und zeigen Sie **Module** an. Warten Sie, bis sich der **STATUS** des Moduls **Az.DataFactory** in **Verfügbar** ändert.
 
     ![Überprüfen des Data Factory-Moduls](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  Wenn **AzureRM.Profile** nicht vorhanden ist, navigieren Sie zum PowerShell-Katalog für das Modul [AzureRM.Profile](https://www.powershellgallery.com/packages/AzureRM.profile/), und wählen Sie **In Azure Automation bereitstellen**, danach Ihr Azure Automation-Konto und schließlich **OK** aus. Kehren Sie im Menü auf der linken Seite zur Ansicht **Module** unter **Gemeinsame Ressourcen** zurück, und warten Sie, bis der **Status** des Moduls **AzureRM.Profile** in **Verfügbar** wechselt.
+3.  Wenn **Az.Profile** nicht vorhanden ist, navigieren Sie zum PowerShell-Katalog für das Modul [Az.Profile](https://www.powershellgallery.com/packages/Az.profile/), und wählen Sie **In Azure Automation bereitstellen**, danach Ihr Azure Automation-Konto und schließlich **OK** aus. Kehren Sie im Menü links zum Abschnitt **FREIGEGEBENE RESSOURCEN** zurück, und zeigen Sie **Module** an. Warten Sie, bis sich der **STATUS** des Moduls **Az.Profile** in **Verfügbar** ändert.
 
     ![Überprüfen des Profile-Moduls](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 

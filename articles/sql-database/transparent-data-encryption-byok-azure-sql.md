@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596698"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348922"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden: Bring Your Own Key-Unterstützung
 
@@ -93,7 +93,7 @@ Wenn TDE erstmals für die Verwendung einer TDE-Schutzvorrichtung aus Key Vault 
    > [!NOTE]
    > Zu Testzwecken ist das Erstellen eines Schlüssels mit Azure Key Vault möglich, dieser Schlüssel kann jedoch nicht hinterlegt werden, da der private Schlüssel den Schlüsseltresor nie verlassen kann.  Schlüssel, die zum Verschlüsseln von Produktionsdaten verwendet werden, müssen Sie immer sichern und hinterlegen, da der Verlust des Schlüssels (z.B. durch versehentliches Löschen aus dem Schlüsseltresor, oder Ablauf) zu endgültigem Datenverlust führt.
 
-- Implementieren Sie bei Verwendung eines Schlüssels mit Ablaufdatum ein Ablaufwarnsystem, damit der Schlüssel vor dem Ablauf rotiert wird: **Nach Ablauf des Schlüssels verlieren die verschlüsselten Datenbanken den Zugriff auf ihre TDE-Schutzvorrichtung, und es kann nicht mehr auf sie zugegriffen werden**. Darüber hinaus werden alle Anmeldungen verweigert, bis zu einem neuen Schlüssel rotiert und dieser als neuer Schlüssel und Standard-TDE-Schutzvorrichtung für den logischen SQL-Server ausgewählt wurde.
+- Implementieren Sie bei Verwendung eines Schlüssels mit Ablaufdatum ein Ablaufwarnsystem, damit der Schlüssel vor dem Ablauf rotiert wird: **Nach Ablauf des Schlüssels verlieren die verschlüsselten Datenbanken den Zugriff auf ihre TDE-Schutzvorrichtung, und es kann nicht mehr auf sie zugegriffen werden.** Darüber hinaus werden alle Anmeldungen verweigert, bis zu einem neuen Schlüssel rotiert und dieser als neuer Schlüssel und TDE-Standardschutzvorrichtung für den logischen SQL-Server ausgewählt wurde.
 - Stellen Sie sicher, dass der Schlüssel aktiviert ist und über Berechtigungen zum Ausführen der *get*-, *wrap key*- und *unwrap key*-Vorgänge verfügt.
 - Erstellen Sie eine Azure Key Vault-Schlüsselsicherung, bevor Sie den Schlüssel zum ersten Mal in Azure Key Vault verwenden. Unter [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) erfahren Sie mehr zu diesem Befehl.
 - Erstellen Sie immer eine neue Sicherung, wenn Änderungen am Schlüssel vorgenommen werden (z.B. Hinzufügen von ACLs, Tags oder Schlüsselattributen).
@@ -149,7 +149,7 @@ Im folgenden Abschnitt werden die Schritte für Einrichtung und Konfiguration au
 - Erstellen Sie zwei Azure Key Vault-Instanzen in zwei verschiedenen Regionen mithilfe von [PowerShell, um die Eigenschaft „soft-delete“ für die Schlüsseltresore zu aktivieren](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) (diese Option ist im AKV-Portal nicht verfügbar, aber für SQL erforderlich).
 - Beide Azure Key Vault-Instanzen müssen sich in den beiden Regionen befinden, die im selben geografischen Azure-Raum verfügbar sind, damit Sichern und Wiederherstellen von Schlüsseln funktioniert.  Wenn sich die beiden Schlüsseltresore in unterschiedlichen geografischen Regionen befinden müssen, um die SQL-Anforderungen für die georedundante Notfallwiederherstellung zu erfüllen, können Sie den [BYOK-Prozess](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) befolgen, der das Importieren von Schlüsseln aus einem lokalen HSM zulässt.
 - Erstellen Sie einen neuen Schlüssel im ersten Schlüsseltresor:  
-  - RSA/RSA-HSA 2048-Schlüssel
+  - RSA/RSA-HSM 2048-Schlüssel
   - Keine Ablaufdaten
   - Schlüssel ist aktiviert und verfügt über Berechtigungen zum Ausführen der get-, wrap key- und unwrap key-Vorgänge
 - Sichern Sie den primären Schlüssel, und stellen Sie den Schlüssel im zweiten Schlüsseltresor wieder her.  Siehe [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) und [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).

@@ -4,20 +4,20 @@ description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 59af553f4080ca86e964b75234e4d812297d8541
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194385"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827335"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
-Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder eine Hauptvorlage mit vielen verwandten Vorlagen verwenden. Bei der verwandten Vorlage kann es sich entweder um eine separate Datei handeln, auf die aus der Hauptvorlage verwiesen wird, oder um eine Vorlage, die in der Hauptvorlage geschachtelt ist.
+Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder eine Hauptvorlage mit vielen verwandten Vorlagen verwenden. Bei den verwandten Vorlagen kann es sich entweder um separate Dateien handeln, auf die aus der Hauptvorlage verwiesen wird, oder um Vorlagen, die in der Hauptvorlage geschachtelt sind.
 
-Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen und Vorlagen wiederverwenden.
+Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Sie können diese Vorlagen mühelos erneut für andere Szenarien verwenden.
 
 Bei Verwendung verknüpfter Vorlagen erstellen Sie eine Hauptvorlage, in der die Parameterwerte während der Bereitstellung empfangen werden. Die Hauptvorlage enthält alle verknüpften Vorlagen und übergibt bei Bedarf Werte an diese Vorlagen.
 
@@ -27,7 +27,7 @@ Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter A
 > Für verknüpfte oder geschachtelte Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](deployment-modes.md) verwenden.
 >
 
-## <a name="link-or-nest-a-template"></a>Verknüpfen oder Schachteln einer Vorlage
+## <a name="deployments-resource"></a>Bereitstellungsressource
 
 Zum Verknüpfen mit einer anderen Vorlage fügen Sie der Hauptvorlage eine **Bereitstellungsressource** hinzu.
 
@@ -47,7 +47,7 @@ Zum Verknüpfen mit einer anderen Vorlage fügen Sie der Hauptvorlage eine **Ber
 
 Die Eigenschaften, die Sie für die Bereitstellungsressource angeben, variieren in Abhängigkeit davon, ob Sie eine externe Vorlage verknüpfen oder eine Inlinevorlage mit der Hauptvorlage schachteln.
 
-### <a name="nested-template"></a>Geschachtelte Vorlage
+## <a name="nested-template"></a>Geschachtelte Vorlage
 
 Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-Eigenschaft, und geben Sie die Vorlagensyntax an.
 
@@ -94,9 +94,17 @@ Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-E
 
 Die geschachtelten Vorlage erfordert [dieselben Eigenschaften](resource-group-authoring-templates.md) wie eine Standardvorlage.
 
-### <a name="external-template-and-external-parameters"></a>Externe Vorlage und externe Parameter
+## <a name="external-template"></a>Externe Vorlage
 
-Um eine externe Vorlage und Parameterdatei zu verknüpfen, verwenden Sie **templateLink** und **parametersLink**. Beim Verknüpfen mit einer Vorlage muss der Resource Manager-Dienst auf die verknüpfte Vorlage zugreifen können. Sie können keine lokale Datei und keine Datei angeben, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie können nur einen URI-Wert bereitstellen, der entweder **http** oder **https** enthält. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
+Verwenden Sie für eine Verknüpfung mit einer externen Vorlage die **templateLink**-Eigenschaft. Sie können keine lokale Datei und keine Datei angeben, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie können nur einen URI-Wert bereitstellen, der entweder **http** oder **https** enthält. Der Resource Manager muss auf die Vorlage zugreifen können.
+
+Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
+
+Sie können die Parameter für die externe Vorlage entweder in einer externen Datei oder inline bereitstellen.
+
+### <a name="external-parameters"></a>Externe Parameter
+
+Verenden Sie zum Bereitstellen einer externen Parameterdatei die **parametersLink**-Eigenschaft:
 
 ```json
 "resources": [
@@ -105,15 +113,15 @@ Um eine externe Vorlage und Parameterdatei zu verknüpfen, verwenden Sie **templ
     "apiVersion": "2018-05-01",
     "name": "linkedTemplate",
     "properties": {
-    "mode": "Incremental",
-    "templateLink": {
+      "mode": "Incremental",
+      "templateLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
         "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
+      },
+      "parametersLink": {
         "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
         "contentVersion":"1.0.0.0"
-    }
+      }
     }
   }
 ]
@@ -121,11 +129,11 @@ Um eine externe Vorlage und Parameterdatei zu verknüpfen, verwenden Sie **templ
 
 Sie müssen die `contentVersion`-Eigenschaft für die Vorlage oder die Parameter nicht angeben. Wenn Sie keinen Wert für die Inhaltsversion bereitstellen, wird die aktuelle Version der Vorlage bereitgestellt. Wenn Sie einen Wert für die Inhaltsversion angeben, muss diese mit der Version in der verknüpften Vorlage übereinstimmen. Andernfalls tritt bei der Bereitstellung ein Fehler auf.
 
-### <a name="external-template-and-inline-parameters"></a>Externe Vorlage und Inlineparameter
+### <a name="inline-parameters"></a>Inlineparameter
 
 Alternativ können Sie den Parameter inline bereitstellen. Sie können nicht sowohl Inlineparameter als auch einen Link auf eine Parameterdatei verwenden. Bei der Bereitstellung tritt ein Fehler auf, wenn sowohl `parametersLink` als auch `parameters` angegeben sind.
 
-Um einen Wert von der Hauptvorlage an die verknüpfte Vorlage zu übergeben, verwenden Sie **parameters**.
+Um einen Wert von der Hauptvorlage an die verknüpfte Vorlage zu übergeben, verwenden Sie die **parameters**-Eigenschaft.
 
 ```json
 "resources": [
@@ -269,7 +277,7 @@ Die Hauptvorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegeb
 }
 ```
 
-Wie andere Ressourcentypen können Sie Abhängigkeiten zwischen der verknüpften Vorlage und anderen Ressourcen festlegen. Wenn also andere Ressourcen einen Ausgabewert aus der verknüpften Vorlage benötigen, stellen Sie sicher, dass die verknüpfte Vorlage vor ihnen bereitgestellt wird. Wenn andererseits die verknüpfte Vorlage von anderen Ressourcen abhängig ist, sorgen Sie dafür, dass andere Ressourcen vor der verknüpften Vorlage bereitgestellt werden.
+Wie andere Ressourcentypen können Sie Abhängigkeiten zwischen der verknüpften Vorlage und anderen Ressourcen festlegen. Wenn andere Ressourcen einen Ausgabewert aus der verknüpften Vorlage benötigen, stellen Sie sicher, dass die verknüpfte Vorlage vor ihnen bereitgestellt wird. Wenn andererseits die verknüpfte Vorlage von anderen Ressourcen abhängig ist, sorgen Sie dafür, dass andere Ressourcen vor der verknüpften Vorlage bereitgestellt werden.
 
 Im folgenden Beispiel ist eine Vorlage dargestellt, die eine öffentliche IP-Adresse bereitstellt und die Ressourcen-ID zurückgibt:
 

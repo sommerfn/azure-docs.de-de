@@ -12,23 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 140a5cba6926e8711f0b70896ade55c11d332e0d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262207"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345297"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
-Azure Monitor maximiert die Verfügbarkeit und Leistung Ihrer Anwendungen durch die Bereitstellung einer umfassenden Lösung für das Sammeln, Analysieren und Reagieren auf Telemetriedaten aus Ihren cloudbasierten und lokalen Umgebungen. Diese Lösung hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen.
+Azure Monitor maximiert die Verfügbarkeit und Leistung Ihrer Anwendungen und Dienste durch die Bereitstellung einer umfassenden Lösung für das Sammeln, Analysieren und Reagieren auf Telemetriedaten aus Ihren cloudbasierten und lokalen Umgebungen. Diese Lösung hilft Ihnen, die Leistung Ihrer Anwendungen zu verstehen, und erkennt proaktiv Probleme, die sich auf sie auswirken, und Ressourcen, von denen sie abhängen.
 
-> [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
+Im Folgenden sind einige Beispiele für die Möglichkeiten von Azure Monitor aufgeführt:
+
+- Erkennen und diagnostizieren Sie Probleme über Anwendungen und Abhängigkeiten hinweg mit [Application Insights](app/app-insights-overview.md).
+- Korrelieren Sie Infrastrukturprobleme mit [Azure Monitor für VMs](insights/vminsights-overview.md) und [Azure Monitor für Container](insights/container-insights-overview.md).
+- Führen Sie zur Problembehandlung und umfassenden Diagnose mit [Log Analytics](log-query/log-query-overview.md) einen Drilldown in Ihre Überwachungsdaten durch.
+- Unterstützen Sie Operations im großen Maßstab mit [intelligenten Warnungen](platform/alerts-smartgroups-overview.md) und [automatisierten Aktionen](platform/alerts-action-rules.md).
+- Erstellen Sie Visualisierungen mit Azure-[Dashboards](learn/tutorial-logs-dashboards.md) und [Arbeitsmappen](app/usage-workbooks.md).
 
 ## <a name="overview"></a>Übersicht
 Das folgende Diagramm zeigt eine allgemeine Übersicht von Azure Monitor. In der Mitte des Diagramms finden Sie die Datenspeicher für Metriken und Protokolle, die beiden grundlegenden Datenarten, mit denen Azure Monitor arbeitet. Auf der linken Seite befinden sich die [Quellen für Überwachungsdaten](platform/data-sources.md), die diese [Datenspeicher](platform/data-platform.md) ausfüllen. Auf der rechten Seite finden Sie die verschiedenen Funktionen, die Azure Monitor mit diesen gesammelten Daten ausführt, wie etwa Analyse, Ausgeben von Warnungen und Streamen auf externe Systeme.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Azure Monitor – Übersicht](media/overview/overview.png)
 

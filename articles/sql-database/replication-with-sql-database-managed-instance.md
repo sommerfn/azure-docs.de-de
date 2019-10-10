@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884077"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338735"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank
 
@@ -41,7 +41,7 @@ Zum Konfigurieren einer verwalteten Instanz, die als Verleger und/oder Verteiler
 - Die verwaltete Verlegerinstanz befindet sich in demselben virtuellen Netzwerk wie der Verteiler und der Abonnent, oder [VNET-Peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) wurde zwischen den virtuellen Netzwerken aller drei Entitäten eingerichtet. 
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet.
 - Ein Azure-Speicherkonto für das Arbeitsverzeichnis für die Replikation.
-- Port 445 (TCP ausgehend) ist in den Sicherheitsregeln von NSG (Netzwerksicherheitsgruppe) für die verwalteten Instanzen geöffnet, um auf die Azure-Dateifreigabe zugreifen zu können. 
+- Port 445 (TCP ausgehend) ist in den Sicherheitsregeln von NSG (Netzwerksicherheitsgruppe) für die verwalteten Instanzen geöffnet, um auf die Azure-Dateifreigabe zugreifen zu können.  Wenn Sie den Fehler „Fehler beim Herstellen einer Verbindung mit dem Azure-Speicher \<Name des Speicherkontos> mit Betriebssystemfehler 53“ erhalten, müssen Sie der NSG des Subnetzes der entsprechenden verwalteten SQL-Instanz eine Ausgangsregel hinzufügen.
 
 
  > [!NOTE]

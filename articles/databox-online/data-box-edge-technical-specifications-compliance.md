@@ -6,18 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910136"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326893"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technische Spezifikationen für Azure Data Box Edge
 
 Die Hardwarekomponenten des Microsoft Azure Data Box Edge-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Netzteile, die Speicherkapazität, Gehäuse und Umgebungsstandards beschrieben. 
+
+## <a name="compute-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
+
+Das Data Box Edge-Gerät verfügt über die folgenden Spezifikationen für Compute- und Arbeitsspeicherressourcen:
+
+| Spezifikation           | Wert                  |
+|-------------------------|----------------------------|
+| CPU    | 2 X 10-Kern-CPU                     |
+| Arbeitsspeicher              | 128 GB RAM                  |
+
+
+## <a name="fpga-specifications"></a>FPGA-Spezifikationen
+
+Auf jedem Data Box Edge Gerät, das Machine Learning (ML)-Szenarien unterstützt, befindet sich ein Field Programmable Gate Array (FPGA). 
+
+| Spezifikation           | Wert                  |
+|-------------------------|----------------------------|
+| FPGA   | Intel Arria 10 <br> Verfügbare Deep Neural Network (DNN)-Modelle sind identisch mit den Modellen, [die von Cloud-FPGA-Instanzen unterstützt werden](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+
 
 ## <a name="power-supply-unit-specifications"></a>Spezifikationen für Netzteile
 

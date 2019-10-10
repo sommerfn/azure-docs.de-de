@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 09/16/2019
-ms.openlocfilehash: 85ab8a61e0aebadf212217bc88e07e0066eca02b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 10/02/2019
+ms.openlocfilehash: c3f8189cf1b09b38b641b92b9234fde618839987
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146808"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828806"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -38,12 +38,27 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen b
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
 | Anzahl der virtuellen Kerne | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | Max. Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne) | 7 GB pro V-Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | 5,1 GB pro virtuellem Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
-| Max. In-Memory-OLTP-Arbeitsspeicher | Grenzwert für Instanzen: 3GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 8 GB pro Datenbank<br/> – 16 Kerne: 20 GB pro Datenbank<br/> – 24 Kerne: 36 GB pro Datenbank | Grenzwert für Instanzen: 2,5 GB pro virtuellem Kern<br/>Grenzwerte für Datenbanken:<br/> – 8 Kerne: 13 GB pro Datenbank<br/> – 16 Kerne: 32 GB pro Datenbank |
+| Max. In-Memory-OLTP-Arbeitsspeicher | Grenzwert für Instanzen: 1–1,5 GB pro virtuellem Kern| Grenzwert für Instanzen: 0,8–1,65 GB pro virtuellem Kern |
 | Maximal reservierter Instanzspeicher |  Allgemein: 8 TB<br/>Unternehmenskritisch: 1 TB | Allgemein: 8 TB<br/> Unternehmenskritisch: 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 > [!IMPORTANT]
 > - Gen4-Hardware wird eingestellt. Es wird empfohlen, neue verwaltete Instanzen auf Gen5-Hardware bereitzustellen.
 > - Gen4-Hardware ist zu diesem Zeitpunkt weiterhin nur in den folgenden Regionen verfügbar: „Europa, Norden“, „Europa, Westen“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen 2“, „USA, Mitte“, „Kanada, Mitte“, „Indien, Süden“, „Asien, Südosten“ und „Südkorea, Mitte“.
+
+#### <a name="in-memory-oltp-available-space"></a>Verfügbarer Speicherplatz für In-Memory-OLTP 
+
+Die Menge des für In-Memory-OLTP verfügbaren Speicherplatzes auf der Dienstebene [Unternehmenskritisch](sql-database-service-tier-business-critical.md) hängt von der Anzahl der virtuellen Kerne und der Hardwaraegeneration ab. In der folgenden Tabelle sind die Grenzwerte für den Arbeitsspeicher aufgelistet, die für In-Memory-OLTP-Objekte verwendet werden können.
+
+| Arbeitsspeicher für In-Memory-OLTP  | **Gen5** | **Gen4** |
+| --- | --- | --- |
+| 4 virtuelle Kerne  | 3,14 GB | |   
+| 8 virtuelle Kerne  | 6,28 GB | 8 GB |
+| 16 virtuelle Kerne | 15,77 GB | 20 GB |
+| 24 virtuelle Kerne | 25,25 GB | 36 GB |
+| 32 virtuelle Kerne | 37,94 GB | |
+| 40 virtuelle Kerne | 52,23 GB | |
+| 64 virtuelle Kerne | 99,9 GB    | |
+| 80 virtuelle Kerne | 131,68 GB| |
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 

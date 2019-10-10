@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900634"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315831"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge
 
@@ -180,7 +180,7 @@ Erstellen Sie eine C#-Lösungsvorlage, die Sie mit eigenem Code anpassen können
     }
     ```
 
-6. Entfernen Sie den Code für die **Pipe message**-Methode, und fügen Sie stattdessen den Code für **FileCopy** ein.
+6. Entfernen Sie den Code für die **PipeMessage-Methode**, und fügen Sie stattdessen den Code für **FileCopy** ein.
 
     ```
         /// <summary>

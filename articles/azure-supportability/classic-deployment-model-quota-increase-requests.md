@@ -7,18 +7,24 @@ ms.date: 06/20/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 70ad44eade871d52591014ee24e645b95c52f1e5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234867"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802662"
 ---
 # <a name="classic-deployment-model"></a>Klassisches Bereitstellungsmodell
 
-Das klassisches Bereitstellungsmodell ist ein älteres Bereitstellungsmodell für Azure. Es erzwingt einen globales Kontingentlimit für vCPUs für VMs und VM-Skalierungsgruppen. Das klassische Bereitstellungsmodell wird nicht mehr empfohlen. Stattdessen eignet sich das Resource Manager-Modell. Weitere Informationen über diese beiden Bereitstellungsmodelle und die Vorteile des Resource Managers finden Sie auf der Seite zum Resource Manager-Bereitstellungsmodell. Sobald ein Abonnement erstellt wird, wird diesem das Standardkontingent für vCPUs zugewiesen. Bei jeder Bereitstellung einer neuen VM über das klassische Bereitstellungsmodell werden die neuen und bereits vorhandenen CPUs für alle Regionen addiert. Dabei darf das für das klassische Bereitstellungsmodell zur Verfügung stehende vCPU-Kontingent nicht überschritten werden. Weitere Informationen zu den Kontingenten erhalten Sie auf der [Seite zu Azure-Abonnements und Diensteinschränkungen](https://aka.ms/quotalimits).
+Das klassische Bereitstellungsmodell ist das Azure-Bereitstellungsmodell der älteren Generation. Es setzt einen globalen Kontingentgrenzwert für vCPUs für virtuelle Computer und Skalierungsgruppen für virtuelle Computer durch. Das klassische Bereitstellungsmodell wird nicht mehr empfohlen, das Resource Manager-Modell ist heute vorzuziehen. 
 
-Über das Blatt „Hilfe und Support“ oder über das Blatt „Usages + Quota“ (Nutzung und Kontingente) können Sie im Portal eine Erhöhung der Grenzwerte für vCPUs für das klassische Bereitstellungsmodell beantragen.
+Weitere Informationen über diese beiden Bereitstellungsmodelle und die Vorteile des Resource Managers finden Sie auf der Seite zu [Resource Manager und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+ 
+Sobald ein Abonnement erstellt wird, wird diesem das Standardkontingent für vCPUs zugewiesen. Bei jeder Bereitstellung einer neuen VM über das klassische Bereitstellungsmodell wird die neue und bereits vorhandene vCPU-Nutzung für alle Regionen addiert. Dabei darf das für das klassische Bereitstellungsmodell zur Verfügung stehende vCPU-Kontingent nicht überschritten werden.
+ 
+Weitere Informationen zu den Kontingenten erhalten Sie auf der Seite zu [Azure-Abonnements und Diensteinschränkungen](https://aka.ms/quotalimits).
+
+Über das Blatt „Hilfe und Support“ oder über das Blatt „Usages + Quota“ (Nutzung und Kontingente) können Sie im Portal eine Erhöhung der Kontigentgrenzwerte für vCPUs für das klassische Bereitstellungsmodell beantragen.
 
 ## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Anfordern einer vCPU-Kontingenterhöhung pro VM-Serie auf Abonnementebene mithilfe des Blatts **Hilfe und Support**
 

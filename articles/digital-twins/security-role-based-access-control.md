@@ -1,19 +1,19 @@
 ---
-title: Grundlegendes zu rollenbasierter Zugriffssteuerung in Azure Digital Twins | Microsoft-Dokumentation
-description: Informationen zur Authentifizierung in Digital Twins mit rollenbasierter Zugriffssteuerung.
-author: lyrana
-manager: alinast
+title: Grundlagen zu rollenbasierter Zugriffssteuerung – Azure Digital Twins | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die rollenbasierte Zugriffssteuerung und die Verwaltung von Berechtigungen in Azure Digital Twins.
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/30/2019
+ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815570"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949018"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Rollenbasierte Zugriffssteuerung in Azure Digital Twins
 
@@ -49,20 +49,20 @@ Ein Entwickler kann RBAC für folgende Aufgaben verwenden:
 
 ### <a name="role-definitions"></a>Rollendefinitionen
 
-Eine Rollendefinition ist eine Sammlung von Berechtigungen und anderen Attributen, die sich zu einer Rolle zusammensetzen. Eine Rollendefinition enthält die zulässigen Vorgänge, wozu *ERSTELLEN*, *LESEN*, *AKTUALISIEREN* und *LÖSCHEN* gehören, die von jedem Objekt mit dieser Rolle ausgeführt werden können. In ihr ist auch angegeben, für welche Objekte die Berechtigungen gelten.
+Eine Rollendefinition ist eine Sammlung von Berechtigungen und anderen Attributen, die sich zu einer Rolle zusammensetzen. Eine Rollendefinition enthält die zulässigen Vorgänge, wozu *ERSTELLEN*, *LESEN*, *AKTUALISIEREN* und *LÖSCHEN* gehören, die von jedem Objekt mit dieser Rolle ausgeführt werden können. Darin ist auch angegeben, für welche Objekttypen diese Berechtigungen gelten.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > Um die vollständigen Definitionen für die vorherigen Rollen abzurufen, fragen Sie die System-/Rollen-API ab.
-> Weitere Informationen finden Sie unter [Erstellen und Verwalten von Rollenzuweisungen](./security-create-manage-role-assignments.md#all).
+> Weitere Informationen finden Sie unter [Erstellen und Verwalten von Rollenzuweisungen](./security-create-manage-role-assignments.md#retrieve-all-roles).
 
 ### <a name="object-identifier-types"></a>Objektbezeichnertypen
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> Weitere Informationen zum Gewähren von Berechtigungen für Ihren Dienstprinzipal finden Sie unter [Erstellen und Verwalten von Rollenzuweisungen](./security-create-manage-role-assignments.md#grant).
+> Weitere Informationen zum Gewähren von Berechtigungen für Ihren Dienstprinzipal finden Sie unter [Erstellen und Verwalten von Rollenzuweisungen](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal).
 
 In den folgenden Referenzartikeln werden die nachfolgenden Themen beschrieben:
 

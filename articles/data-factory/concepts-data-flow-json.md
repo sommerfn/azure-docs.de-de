@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cde42dda47d54c03c50895bc625f99c9350b53e3
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 37db3e153e8dfcbc1120fcb1f6d2f77187edc78e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210512"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029666"
 ---
 # <a name="mapping-data-flow-json-handling"></a>JSON-Verarbeitung mit Mapping Data Flow
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ## <a name="creating-json-structures-in-expression-editor"></a>Erstellen von JSON-Strukturen im Ausdrucks-Editor
 ### <a name="derived-column-transformation"></a>Transformation für abgeleitete Spalten
@@ -50,7 +50,7 @@ Wenn dieser Ausdruck für eine Spalte mit dem Namen „complexColumn“ eingegeb
 }
 ```
 
-#### <a name="sample-manual-dsl"></a>Beispiel für eine manuelle DSL
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Beispiel für ein manuelles Skript für eine vollständige hierarchische Definition
 ```
 @(
     title=Title,
@@ -144,7 +144,7 @@ File3.json
 { "json": "record 3" }
 ```
 
-# <a name="higher-order-functions"></a>Funktionen höherer Ordnung
+## <a name="higher-order-functions"></a>Funktionen höherer Ordnung
 ## <a name="filter"></a>filter
 Filtert Elemente aus dem Array heraus, die dem bereitgestellten Prädikat nicht entsprechen. Die filter-Funktion erwartet einen Verweis auf ein Element in der Prädikatfunktion als #item.
 

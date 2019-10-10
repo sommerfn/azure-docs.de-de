@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736115"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718363"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 
@@ -137,10 +137,10 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Datenziele|HDFS, RDBMS, Kafka, MPP ||
 |**Thema**: **Metadaten**|||
 |Hive-Datenbanktyp|Mysql, Postgres||
-|Nein. der Hive-Metastores|2||
-|Nein. der Hive-Tabellen|100||
-|Nein. der Ranger-Richtlinien|20||
-|Nein. der Oozie-Workflows|100||
+|Anzahl der Hive-Metastores|2||
+|Anzahl der Hive-Tabellen|100||
+|Anzahl der Ranger-Richtlinien|20||
+|Anzahl der Oozie-Workflows|100||
 |**Thema**: **Skalieren**|||
 |Datenvolumen einschließlich Replikation|100 TB||
 |Tägliches Datenerfassungsvolumen|50 GB||
@@ -152,11 +152,11 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Speicherplatznutzung|75 %||
 |Durchschnittliche Netzwerknutzung in %|25%
 |**Thema**: **Personal**|||
-|Nein. der Administratoren|2||
-|Nein. der Entwickler|10||
-|Nein. der Endbenutzer|100||
+|Anzahl der Administratoren|2||
+|Anzahl der Entwickler|10||
+|Anzahl der Endbenutzer|100||
 |Fähigkeiten|Hadoop, Spark||
-|Nein. der verfügbaren Ressourcen für Migrationsaufwand|2||
+|Anzahl der verfügbaren Ressourcen für die Migration|2||
 |**Thema**: **Einschränkungen**|||
 |Aktuelle Einschränkungen|Latenz ist hoch||
 |Aktuelle Herausforderungen|Parallelitätsproblem||
@@ -180,7 +180,7 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Private und geschützte Datenpipeline?|Ja||
 |In die Domäne eingebundener Cluster (ESP)?|     Ja||
 |Synchronisierung von lokalem AD mit Cloud?|     Ja||
-|Nein. zu synchronisierender AD-Benutzer?|          100||
+|Anzahl zu synchronisierender AD-Benutzer?|          100||
 |Dürfen Kennwörter in Cloud synchronisiert werden?|    Ja||
 |Nur Cloudbenutzer?|                 Ja||
 |MFA erforderlich?|                       Nein|| 

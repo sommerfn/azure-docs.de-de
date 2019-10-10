@@ -1,27 +1,24 @@
 ---
-title: Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins | Microsoft-Dokumentation
-description: Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins.
-author: lyrana
-manager: alinast
+title: Erstellen und Verwalten von Rollenzuweisungen – Azure Digital Twins | Microsoft-Dokumentation
+description: Erfahren Sie mehr über das Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins.
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: lyhughes
+ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 968ae62344f99edf8eb46eb62a4cf13f300c868f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815629"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949823"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
 In Azure Digital Twins wird rollenbasierte Zugriffssteuerung ([Role-Based Access Control, RBAC](./security-role-based-access-control.md)) verwendet, um Zugriffe auf Ressourcen zu verwalten.
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>Übersicht der Rollenzuweisungen
 
@@ -63,7 +60,7 @@ Zuvor wurde das Attribut **objectIdType** eingeführt.
 
 Azure Digital Twins unterstützt vollständige *ERSTELLEN*, *LESEN* und *LÖSCHEN*-Vorgänge für Rollenzuweisungen. *AKTUALISIEREN*-Vorgänge werden verarbeitet, indem Rollenzuweisungen hinzugefügt oder entfernt werden oder der Knoten [Raumintelligenzgraph](./concepts-objectmodel-spatialgraph.md), auf den Rollenzuweisungen Zugriff gewähren, geändert wird.
 
-![Rollenzuweisungs-Endpunkte][1]
+[![Rollenzuweisungs-Endpunkte](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
 
 Die bereitgestellte Swagger-Referenzdokumentation enthält weitere Informationen zu allen verfügbaren API-Endpunkten, Anforderungsvorgängen und Definitionen.
 
@@ -71,23 +68,28 @@ Die bereitgestellte Swagger-Referenzdokumentation enthält weitere Informationen
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-<div id="grant"></div>
-
 ### <a name="grant-permissions-to-your-service-principal"></a>Gewähren von Berechtigungen für Ihren Dienstprinzipal
 
 Das Gewähren von Berechtigungen für Ihren Dienstprinzipal ist häufig einer der ersten Schritte, die Sie bei der Arbeit mit Azure Digital Twins ausführen. Er umfasst:
 
-1. Anmelden bei Ihrer Azure-Instanz mithilfe von PowerShell.
+1. Anmelden bei Ihrer Azure-Instanz über die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) oder [PowerShell](https://docs.microsoft.com/powershell/azure/).
 1. Abrufen Ihrer Dienstprinzipalinformationen.
 1. Zuweisen der gewünschten Rolle zu Ihrem Dienstprinzipal.
 
 Ihre Anwendungs-ID wird Ihnen von Azure Active Directory bereitgestellt. Weitere Informationen zum Konfigurieren und Bereitstellen eines Azure Digital Twins in Active Directory finden Sie im [Schnellstart](./quickstart-view-occupancy-dotnet.md).
 
-Nachdem Sie über die Anwendungs-ID verfügen, führen Sie die folgenden PowerShell-Befehle aus:
+Nachdem Sie über die Anwendungs-ID verfügen, führen Sie einen der folgenden Befehle aus: In Azure CLI:
 
-```shell
+```azurecli
+az login
+az ad sp show --id <ApplicationId>
+```
+
+In PowerShell:
+
+```powershell
 Login-AzAccount
-Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
+Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
 Ein Benutzer mit der Rolle **Administrator** kann einem Benutzer die Rolle „Raumadministrator“ zuweisen, indem er eine authentifizierte HTTP-POST-Anforderung an folgende URL stellt:
@@ -108,11 +110,9 @@ Mit folgendem JSON-Text:
 }
 ```
 
-<div id="all"></div>
-
 ### <a name="retrieve-all-roles"></a>Abrufen aller Rollen
 
-![Systemrollen][2]
+[![Systemrollen](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
 
 Um alle verfügbaren Rollen (Rollendefinitionen) aufzulisten, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
 
@@ -153,8 +153,6 @@ Eine erfolgreiche Anforderung gibt ein JSON-Array mit Einträgen für jede Rolle
 ]
 ```
 
-<div id="check"></div>
-
 ### <a name="check-a-specific-role-assignment"></a>Überprüfen einer bestimmten Rollenzuweisung
 
 Um eine bestimmte Rollenzuweisung zu überprüfen, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
@@ -167,8 +165,8 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | Zeichenfolge |   Die objectId für objectIdType „UserId“. |
 | YOUR_PATH | True | Zeichenfolge |   Der ausgewählte Pfad, für den der Zugriff überprüft werden solle. |
-| YOUR_ACCESS_TYPE |  True | Zeichenfolge |   Der Zugriffstyp, auf den überprüft werden soll. |
-| YOUR_RESOURCE_TYPE | True | Zeichenfolge |  Die zu überprüfende Ressource. |
+| YOUR_ACCESS_TYPE |  True | Zeichenfolge |   *Read*, *Create*, *Update* oder *Delete* |
+| YOUR_RESOURCE_TYPE | True | Zeichenfolge |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *Endpoint*, *KeyStore*, *Matcher*, *Ontology*, *Report*, *RoleDefinition*, *Sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *System*, *UerDefinedFunction*, *User*, *UserBlobMetadata* oder *UserExtendedProperty* |
 
 Eine erfolgreiche Anforderung gibt einen booleschen `true`- oder `false`-Wert zurück, um anzuzeigen, ob dem Benutzer der Zugriffstyp für den angegebenen Pfad und die Ressource zugewiesen wurde.
 
@@ -200,7 +198,7 @@ Eine erfolgreiche Anforderung gibt ein JSON-Array mit jeder Rollenzuweisung zur�
 
 ### <a name="revoke-a-permission"></a>Widerrufen einer Berechtigung
 
-Um eine Berechtigung eines Empfängers zu widerrufen, löschen Sie die Rollenzuweisung, indem Sie eine authentifizierte HTTP-DELETE-Anforderung stellen:
+Um eine Berechtigung eines Empfängers zu widerrufen, löschen Sie die Rollenzuweisung, indem Sie eine authentifizierte HTTP-DELETE-Anforderung ausführen:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
@@ -210,7 +208,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | Die **ID** der zu entfernenden Rollenzuweisung |
 
-Eine erfolgreicher DELETE-Anforderung gibt einen Antwortstatus „204“ zurück. Überprüfen Sie das Entfernen der Rollenzuweisung, indem Sie [überprüfen](#check), ob die Rollenzuweisung noch gültig ist.
+Eine erfolgreicher DELETE-Anforderung gibt einen Antwortstatus „204“ zurück. Überprüfen Sie das Entfernen der Rollenzuweisung, indem Sie [überprüfen](#check-a-specific-role-assignment), ob die Rollenzuweisung noch gültig ist.
 
 ### <a name="create-a-role-assignment"></a>Erstellen einer Rollenzuweisung
 
@@ -282,7 +280,3 @@ Die folgenden Beispiele veranschaulichen, wie Sie Ihren JSON-Text in verschieden
 - Informationen zum Überprüfen der rollenbasierten Zugriffssteuerung (RBAC) in Azure Digital Twins finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC)](./security-authenticating-apis.md).
 
 - Informationen zur API-Authentifizierung in Azure Digital Twins finden Sie unter [API-Authentifizierung](./security-authenticating-apis.md).
-
-<!-- Images -->
-[1]: media/security-roles/roleassignments.png
-[2]: media/security-roles/system.png

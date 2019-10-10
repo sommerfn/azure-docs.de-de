@@ -1,17 +1,17 @@
 ---
 title: Hinzufügen von Datasets zu einer vorhandenen Datenfreigabe in Azure Data Share (Vorschauversion)
 description: Hinzufügen von Datasets zu einer vorhandenen Datenfreigabe
-author: madams0013
+author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: jasonh
-ms.openlocfilehash: 75ac837491927881fd8b7547b0f49a069c3f2d47
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: bd8cd7af72c349060eb035dc32e9ddd1a7f9920e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257213"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327522"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Hinzufügen von Datasets zu einer vorhandenen Datenfreigabe in Azure Data Share (Vorschauversion)
 

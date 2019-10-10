@@ -11,24 +11,26 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: aefd3da1908b2be879b5ba500746fab48e43d5bd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 73c31a60fb14df00f50fefb35ca123298241c61d
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566951"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812369"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als Teil der [Hochverfügbarkeitsarchitektur](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) wird jede Datenbank auf den Dienstebenen Premium, Unternehmenskritisch oder Hyperscale automatisch mit einem primären Replikat und mehreren sekundären Replikaten bereitgestellt. Die sekundären Replikate werden mit derselben Computegröße wie das primäre Replikat bereitgestellt. Die Funktion **Horizontale Leseskalierung** ermöglicht es Ihnen, einen Lastenausgleich für schreibgeschützte SQL-Datenbank-Workloads vorzunehmen, indem Sie die Kapazität eines der schreibgeschützten Replikate verwenden, statt das Replikat mit Lese-/Schreibzugriff freizugeben. Auf diese Weise wird die schreibgeschützte Workload von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Die Funktion ist für Anwendungen vorgesehen, die logisch getrennte, schreibgeschützte Workloads (z. B. zur Analyse) enthalten. Für diese könnten Sie mithilfe dieser zusätzlichen Kapazität ohne Zusatzkosten Leistungsvorteile erzielen.
+Als Teil der [Hochverfügbarkeitsarchitektur](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) wird jede Datenbank auf den Dienstebenen Premium und Unternehmenskritisch automatisch mit einem primären Replikat und mehreren sekundären Replikaten bereitgestellt. Die sekundären Replikate werden mit derselben Computegröße wie das primäre Replikat bereitgestellt. Die Funktion **Horizontale Leseskalierung** ermöglicht es Ihnen, einen Lastenausgleich für schreibgeschützte SQL-Datenbank-Workloads vorzunehmen, indem Sie die Kapazität eines der schreibgeschützten Replikate verwenden, statt das Replikat mit Lese-/Schreibzugriff freizugeben. Auf diese Weise wird die schreibgeschützte Workload von der Hauptworkload für Lesen und Schreiben isoliert und beeinträchtigen deren Leistung nicht. Die Funktion ist für Anwendungen vorgesehen, die logisch getrennte, schreibgeschützte Workloads (z. B. zur Analyse) enthalten. In den Diensttarifen Premium und Unternehmenskritisch können Anwendungen Leistungsvorteile erzielen, die diese zusätzliche Kapazität ohne zusätzliche Kosten nutzen.
+
+Das Feature **Leseskalierung** ist auch auf der Hyperscale-Dienstebene verfügbar, wenn mindestens ein sekundäres Replikat erstellt wird. Mehrere sekundäre Replikate können verwendet werden, wenn für schreibgeschützte Workloads mehr Ressourcen erforderlich sind, als auf einem sekundären Replikat zur Verfügung stehen. Die Hochverfügbarkeitsarchitektur der Dienstebenen „Basic“, „Standard“ und „Universell“ enthält keine Replikate. Das Feature **Leseskalierung** ist auf diesen Dienstebenen nicht verfügbar.
 
 Das folgende Diagramm veranschaulicht dies unter Verwendung einer unternehmenskritischen Datenbank.
 
 ![Schreibgeschützte Replikate](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-Die Funktion der horizontalen Leseskalierung ist bei Datenbanken in den Tarifen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert. Wenn Ihre SQL-Verbindungszeichenfolge mit `ApplicationIntent=ReadOnly` konfiguriert wurde, wird die Anwendung vom Gateway zu einem schreibgeschützten Replikat dieser Datenbank umgeleitet. Informationen zur Verwendung der `ApplicationIntent`-Eigenschaft finden Sie unter [Angeben der Anwendungsabsicht](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
+Die Funktion der horizontalen Leseskalierung ist bei Datenbanken in den Tarifen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert. Bei Hyperscale wird für neue Datenbanken standardmäßig ein sekundäres Replikat erstellt. Wenn Ihre SQL-Verbindungszeichenfolge mit `ApplicationIntent=ReadOnly` konfiguriert wurde, wird die Anwendung vom Gateway zu einem schreibgeschützten Replikat dieser Datenbank umgeleitet. Informationen zur Verwendung der `ApplicationIntent`-Eigenschaft finden Sie unter [Angeben der Anwendungsabsicht](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
 Wenn Sie sicherstellen möchten, dass die Anwendung unabhängig von der Einstellung `ApplicationIntent` in der SQL-Verbindungszeichenfolge eine Verbindung mit dem primären Replikat herstellt, müssen Sie die horizontale Leseskalierung beim Erstellen der Datenbank oder beim Ändern ihrer Konfiguration explizit deaktivieren. Wenn Sie Ihre Datenbank z. B. vom Tarif Standard oder Universell auf den Tarif Premium, Unternehmenskritisch oder Hyperscale umstellen und sicherstellen möchten, dass weiterhin alle Verbindungen zum primären Replikat führen, deaktivieren Sie die horizontale Leseskalierung. Weitere Informationen zum Deaktivieren finden Sie unter [Aktivieren und Deaktivieren der horizontalen Leseskalierung](#enable-and-disable-read-scale-out).
 

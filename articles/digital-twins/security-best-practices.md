@@ -1,19 +1,19 @@
 ---
-title: Grundlegendes zu den bewährten Methoden für Azure Digital Twins-Sicherheit | Microsoft-Dokumentation
-description: Bewährte Methoden für Azure Digital Twins-Sicherheit.
-author: kingdomofends
-manager: alinast
+title: Grundlegendes zu bewährten Methoden für die Sicherheit – Azure Digital Twins | Microsoft-Dokumentation
+description: Erfahren Sie mehr über bewährte Methoden für die Azure Digital Twins-Sicherheit und das Internet der Dinge.
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: v-adgera
-ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/30/2019
+ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656524"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948921"
 ---
 # <a name="security-best-practices"></a>Bewährte Methoden für die Sicherheit
 
@@ -46,7 +46,7 @@ Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 > [!div class="checklist"]
 > * Verschlüsseln Sie gespeicherte oder persistente Daten.
 > * Erfordern Sie, dass Kennwörter oder Schlüssel in regelmäßigen Abständen geändert oder aktualisiert werden.
-> * Schränken Sie den Zugriff und die Berechtigungen sorgfältig nach Rollen ein. Weitere Informationen finden Sie im Abschnitt [Rollenbasierte Zugriffssteuerung – bewährte Methoden](#rbac) weiter unten.
+> * Schränken Sie den Zugriff und die Berechtigungen sorgfältig nach Rollen ein. Weitere Informationen finden Sie im Abschnitt [Rollenbasierte Zugriffssteuerung – bewährte Methoden](#role-based-access-control-best-practices) weiter unten.
 > * Erwägen Sie die Einrichtung einer geteilten Netzwerktopologie, sodass die Geräte in den einzelnen Netzwerken von den anderen Netzwerken isoliert sind.
 > * Verwenden Sie leistungsstarke Verschlüsselung. Verlangen Sie lange Kennwörter, und verwenden Sie sichere Protokolle sowie die zweistufige Authentifizierung.
 
@@ -66,8 +66,6 @@ Azure Digital Twins verwendet Azure Active Directory, um Benutzer zu authentifiz
 > * Überprüfen Sie, wie lange ein Token gültig ist und ob ein Token gültig bleibt.
 > * Legen Sie entsprechende Zeitspannen fest, während denen Token gültig sind.
 > * Aktualisieren Sie abgelaufene Token.
-
-<div id="rbac"></div>
 
 ## <a name="role-based-access-control-best-practices"></a>Rollenbasierte Zugriffssteuerung – bewährte Methoden
 

@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zur Ereignisaggregation bei der Lösung „Azure Security Center für IoT“ | Microsoft-Dokumentation
-description: Erfahren Sie, wie Ereignisse im Dienst „Azure Security Center für IoT“ aggregiert werden.
+title: Grundlegendes zur Ereignisaggregation im Azure Security Center für IoT | Microsoft-Dokumentation
+description: Weitere Informationen zur Ereignisaggregation im Azure Security Center für IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933900"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327320"
 ---
-# <a name="security-agent-event-aggregation"></a>Ereignisaggregation des Sicherheits-Agents
+# <a name="azure-security-center-for-iot-event-aggregation"></a>Ereignisaggregation im Azure Security Center für IoT
 
-Azure Security Center für IoT-Sicherheits-Agents erfassen Daten und Systemereignisse von Ihrem lokalen Gerät und senden diese Daten zur Verarbeitung und Analyse an die Azure-Cloud. Der Sicherheits-Agent sammelt viele Arten von Geräteereignissen, einschließlich neuer Prozess- und neuer Verbindungsereignisse. Sowohl neue Prozess- als auch neue Verbindungsereignisse können innerhalb einer Sekunde auf einem Gerät regelmäßig auftreten und sind wichtig für eine stabile und umfassende Sicherheit. Allerdings können aufgrund der Menge an Nachrichten, die die Sicherheits-Agents deshalb senden müssen, Ihr IoT Hub-Kontingent und die Kostengrenzen möglicherweise schnell erreicht oder überschritten werden. Diese Ereignisse enthalten jedoch äußerst wertvolle Sicherheitsinformationen, die für den Schutz Ihres Geräts von entscheidender Bedeutung sind.
+Azure Security Center für IoT-Sicherheits-Agents erfassen Daten und Systemereignisse von Ihrem lokalen Gerät und senden diese Daten zur Verarbeitung und Analyse an die Azure-Cloud. Der Sicherheits-Agent sammelt viele Arten von Geräteereignissen, einschließlich neuer Prozess- und neuer Verbindungsereignisse. Sowohl neue Prozess- als auch neue Verbindungsereignisse können innerhalb einer Sekunde auf einem Gerät regelmäßig auftreten und sind wichtig für eine stabile und umfassende Sicherheit. Allerdings können aufgrund der Anzahl der Nachrichten, die die Sicherheits-Agents deshalb senden müssen, Ihr IoT Hub-Kontingent und die Kostengrenzen möglicherweise schnell erreicht oder überschritten werden. Diese Ereignisse enthalten jedoch äußerst wertvolle Sicherheitsinformationen, die für den Schutz Ihres Geräts von entscheidender Bedeutung sind.
 
 Um das zusätzliche Kontingent und die Kosten zu reduzieren, während Ihre Geräte geschützt bleiben, aggregieren Azure Security Center für IoT-Agents diese Ereignistypen.
 
@@ -44,8 +44,8 @@ Um den Speicherbedarf des Agents zu verringern, erhöht der Agent immer dann die
 
 Ereignisse werden nur dann als identisch betrachtet, wenn die folgenden Bedingungen erfüllt sind: 
 
-* „ProcessCreate“-Ereignisse – Wenn **commandLine**, **executable**, **username** und **userid** identisch sind
-* „ConnectionCreate“-Ereignisse – Wenn **commandLine**, **userId**, **direction**, **local address**, **remote address**, **protocol** und **destination port** identisch sind
+* ProcessCreate-Ereignisse: Wenn **commandLine**, **executable**, **username und **userid** identisch sind
+* ConnectionCreate-Ereignisse: Wenn **commandLine**, **userId**, **direction**, **local address**, **remote address**, **protocol und **destination port** identisch sind
 * „ProcessTerminate“-Ereignisse – Wenn **executable** und **exit status** identisch sind
 
 ### <a name="working-with-aggregated-events"></a>Arbeiten mit aggregierten Ereignissen

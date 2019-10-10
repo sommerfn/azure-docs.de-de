@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933801"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348523"
 ---
 # <a name="pricing-and-associated-costs"></a>Preise und anfallende Kosten
 
@@ -34,20 +34,17 @@ Das Preismodell für Azure Security Center für IoT besteht aus zwei Teilen und 
 
 - Kosten nach Meldung: erweiterte Sicherheitsfunktionen basierend auf Sicherheitsmeldungen von IoT Edge oder Blattgeräten
 
-  >[!Note]
-  > Für Sicherheitsmeldungen fällt außerdem die Kontingentnutzung in IoT Hub an.
 
 Weitere Informationen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Anfallende Kosten
 
-Für Azure Security Center für IoT fallen zwei Arten von Kosten an, die nicht Teil der direkten Preise sind:
+Für Azure Security Center für IoT fallen Kosten an, die nicht Teil der direkten Preise sind:
 
-- Nutzung des IoT Hub-Kontingents
 
 - Kosten für Log Analytics-Speicher
 
-Sie können die anfallenden Kosten reduzieren, indem Sie bestimmte Funktionen deaktivieren und die entsprechenden Änderungen in den Einstellungen vornehmen.
+Sie können die anfallenden Kosten reduzieren, indem Sie bestimmte Funktionen der Lösung deaktivieren. Sie bewirken das, indem Sie Ihre Einstellungen ändern.
 
 So ändern Sie Ihre Einstellungen
 
@@ -61,8 +58,6 @@ Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Au
 
 |     | Verwendung | Comment |
 | --- | --- | --- |
-| **Nutzung des IoT Hub-Kontingents** |  |
-| Auftrag zum [Exportieren von Geräten](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (Export von Gerätezwillingen) | einmal täglich | Deaktivieren von _Twin metadata collection_ (Sammlung mit Gerätezwilling-Metadaten) |
 | **Log Analytics-Speicher** |  |
 | Geräteempfehlungen und -warnungen| Vom Dienst generierte Sicherheitsempfehlungen und -warnungen | Nicht optional |
 | Sicherheitsrohdaten| Sicherheitsrohdaten von IoT-Geräten, erfasst von Sicherheits-Agents | Deaktivieren von _Store raw device security events_ (Sicherheitsrohereignisse für Geräte speichern) |

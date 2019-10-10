@@ -1,6 +1,6 @@
 ---
-title: Artikel zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL | Microsoft-Dokumentation
-description: Informationen zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL.
+title: Artikel zu bekannten Problemen/Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zum Azure Database for PostgreSQL-Einzelserver | Microsoft-Dokumentation
+description: Erfahren Sie mehr über bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zu Azure Database for PostgreSQL.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,21 +10,21 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/03/2019
+ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743542"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802589"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for PostgreSQL
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen von PostgreSQL zum Azure DB for PostgreSQL-Einzelserver
 
-In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemigrationen von PostgreSQL zu Azure Database for PostgreSQL beschrieben.
+In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen bei Onlinemigrationen von PostgreSQL zum Azure Database for PostgreSQL-Einzelserver beschrieben.
 
 ## <a name="online-migration-configuration"></a>Konfiguration der Onlinemigration
 
-- Der PostgreSQL-Quellserver muss Version 9.5.11, 9.6.7, 10.3 oder höher ausführen. Weitere Informationen finden Sie im Artikel [Unterstützte PostgreSQL-Datenbankversionen](../postgresql/concepts-supported-versions.md).
+- Auf dem PostgreSQL-Quellserver muss Version 9.5.11, 9.6.7, 10.3 oder höher ausgeführt werden. Weitere Informationen finden Sie im Artikel [Unterstützte PostgreSQL-Datenbankversionen](../postgresql/concepts-supported-versions.md).
 - Es werden nur Migrationen innerhalb einer Version unterstützt. Das Migrieren von PostgreSQL 9.5.11 zu Azure Database for PostgreSQL 9.6.7 wird z.B. nicht unterstützt.
 
     > [!NOTE]
@@ -32,7 +32,7 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 
 - Um die logische Replikation in der PostgreSQL-Quelldatei **postgresql.config** zu aktivieren, legen Sie die folgenden Parameter fest:
   - **wal_level** = logical
-  - **max_replication_slots** = [maximale Anzahl von Datenbanken für die Migration]. Wenn Sie 4 Datenbanken migrieren möchten, legen Sie den Wert auf 4 fest.
+  - **max_replication_slots** = [maximale Anzahl von Datenbanken für die Migration]. Wenn Sie vier Datenbanken migrieren möchten, legen Sie den Wert auf 4 fest.
   - **max_wal_senders** = [Anzahl der gleichzeitig ausgeführten Datenbanken]. Der empfohlene Wert ist 10.
 - Hinzufügen der IP-Adresse des DMS-Agents zur PostgreSQL-Quelldatei „pg_hba.conf“
   1. Notieren Sie sich die DMS-IP-Adresse, nachdem Sie die Bereitstellung einer Instanz von DMS abgeschlossen haben.
@@ -42,7 +42,7 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 
 - Der Benutzer muss über Administratorberechtigung auf dem Server verfügen, der die Datenbank hostet.
 - Abgesehen davon, dass ENUM im Quelldatenbankschema enthalten ist, müssen das Quell- und das Zieldatenbankschema übereinstimmen.
-- Das Schema in der Azure for PostgreSQL-Zieldatenbank darf keine Fremdschlüssel enthalten. Verwenden Sie die folgende Abfrage, um Fremdschlüssel zu löschen:
+- Das Schema des betreffenden Azure Database for PostgreSQL-Einzelservers darf keine Fremdschlüssel enthalten. Verwenden Sie die folgende Abfrage, um Fremdschlüssel zu löschen:
 
     ```
                                 SELECT Queries.tablename
@@ -73,7 +73,7 @@ In den folgenden Abschnitten werden bekannte Probleme und Einschränkungen in Be
 
     Führen Sie „drop foreign key“ (zweite Spalte) im Abfrageergebnis aus.
 
-- Das Schema in der Azure for PostgreSQL-Zieldatenbank darf keine Trigger enthalten. Führen Sie zum Deaktivieren von Triggern in der Zieldatenbank Folgendes aus:
+- Das Schema des betreffenden Azure Database for PostgreSQL-Einzelservers darf keine Trigger enthalten. Führen Sie zum Deaktivieren von Triggern in der Zieldatenbank Folgendes aus:
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

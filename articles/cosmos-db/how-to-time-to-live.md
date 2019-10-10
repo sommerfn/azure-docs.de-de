@@ -4,14 +4,14 @@ description: Konfigurieren und Verwalten der Gültigkeitsdauer in Azure Cosmos D
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: ddda7b96147892efb38cb0405120db3613e98cf8
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: e36b894ec9c7433bc114145e0de5f519f73486f1
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104870"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815916"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurieren der Gültigkeitsdauer in Azure Cosmos DB
 
@@ -36,10 +36,16 @@ Gehen Sie wie folgt vor, um die Gültigkeitsdauer für einen Container ohne Abla
 
    ![Konfigurieren der Gültigkeitsdauer über das Azure-Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
+* Wenn „DefaultTimeToLive“ auf „0“ festgelegt ist, ist die Gültigkeitsdauer deaktiviert.
+* Wenn „DefaultTimeToLive“ auf „-1“ festgelegt ist, ist die Gültigkeitsdauer aktiviert (ohne Standardwert).
+* Wenn „DefaultTimeToLive“ auf einen beliebigen anderen Wert festgelegt ist (mit Ausnahme von „0“), ist die Gültigkeitsdauer aktiviert.
 
-- Wenn „DefaultTimeToLive“ auf „0“ festgelegt ist, ist die Gültigkeitsdauer deaktiviert.
-- Wenn „DefaultTimeToLive“ auf „-1“ festgelegt ist, ist die Gültigkeitsdauer aktiviert (ohne Standardwert).
-- Wenn „DefaultTimeToLive“ auf einen beliebigen anderen Wert festgelegt ist (mit Ausnahme von „0“), ist die Gültigkeitsdauer aktiviert.
+## <a name="enable-time-to-live-on-a-container-using-azure-cli-or-powershell"></a>Aktivieren der Gültigkeitsdauer für einen Container mithilfe der Azure CLI oder von PowerShell
+
+Informationen zum Erstellen oder Aktivieren der Gültigkeitsdauer für einen Container finden Sie in den Themen zum
+
+* [Erstellen eines Containers mit Gültigkeitsdauer mithilfe der Azure CLI](manage-with-cli.md#create-a-container-with-ttl)
+* [Erstellen eines Containers mit Gültigkeitsdauer mithilfe von PowerShell](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Aktivieren der Gültigkeitsdauer für einen Container per SDK
 
@@ -185,11 +191,10 @@ SalesOrder salesOrder = new SalesOrder
 const itemDefinition = {
           id: "doc",
           name: "sample Item",
-          key: "value", 
+          key: "value",
           ttl: 2
         };
 ```
-
 
 ## <a name="reset-time-to-live"></a>Zurücksetzen der Gültigkeitsdauer
 

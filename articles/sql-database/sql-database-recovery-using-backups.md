@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
-ms.date: 08/27/2019
-ms.openlocfilehash: ab0a622dcb72072621e6696d423a1d4d2917bedc
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.reviewer: mathoma, carlrab, danil
+ms.date: 09/26/2019
+ms.openlocfilehash: 890a9701615a05186b34883f4e953bbc045e906f
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178386"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350087"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 
@@ -81,32 +81,60 @@ Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem fr�
 - **Wiederherstellung der Daten**
 
   Wenn Sie planen, zum Wiederherstellen nach einem Benutzer- oder Anwendungsfehler Daten aus der wiederhergestellten Datenbank abzurufen, müssen Sie ein Datenwiederherstellungsskript schreiben und ausführen, das Daten aus der Datenbank extrahiert und auf die ursprüngliche Datenbank anwendet. Der Wiederherstellungsvorgang kann zwar eine ganze Weile dauern, die wiederherstellende Datenbank wird jedoch während des Wiederherstellungsvorgangs in der Datenbankliste angezeigt. Wenn Sie die Datenbank während der Wiederherstellung löschen, wird der Wiederherstellungsvorgang abgebrochen, und es fallen keine Kosten für die Datenbank an, deren Wiederherstellung nicht abgeschlossen wurde.
+  
+### <a name="point-in-time-restore-using-azure-portal"></a>Point-in-Time-Wiederherstellung mithilfe des Azure-Portals
 
-Um eine Einzel-, Pool- oder Instanzdatenbank mithilfe von Azure-Portal auf den Zustand zu einem bestimmten Zeitpunkt wiederherzustellen, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**.
+Die Wiederherstellung einer einzelnen SQL-Datenbank oder Instanzdatenbank zu einem bestimmten Zeitpunkt wird auf dem Blatt „Übersicht“ der Datenbank ausgeführt, die Sie im Azure-Portal wiederherstellen möchten.
 
-![Point-in-Time-Wiederherstellung](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
+#### <a name="single-azure-sql-database"></a>Azure SQL-Einzeldatenbank
 
-> [!IMPORTANT]
+Um eine Einzel- oder Pooldatenbank mithilfe von Azure-Portal auf den Zustand zu einem bestimmten Zeitpunkt wiederherzustellen, öffnen Sie die Datenbank-Übersichtsseite, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**. Wählen Sie die Sicherungsquelle aus, und wählen Sie den Sicherungspunkt-Zeitpunkt aus, von dem aus eine neue Datenbank erstellt wird. 
+
+  ![point-in-time-restore-single-sql-database](./media/sql-database-recovery-using-backups/pitr-backup-sql-database-annotated.png)
+
+#### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
+
+Um eine verwaltete Instanzdatenbank mithilfe von Azure-Portal auf den Zustand zu einem bestimmten Zeitpunkt wiederherzustellen, öffnen Sie die Datenbank-Übersichtsseite, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**. Wählen Sie den Sicherungspunkt-Zeitpunkt aus, von dem aus eine neue Datenbank erstellt wird. 
+
+  ![point-in-time-restore-managed-instance-database](./media/sql-database-recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+
+> [!TIP]
 > Informationen zum programmgesteuerten Wiederherstellen einer Datenbank aus einer Sicherung finden Sie unter [Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups).
 
 ## <a name="deleted-database-restore"></a>Wiederherstellen einer gelöschten Datenbank
 
-Sie können eine gelöschte Datenbank mithilfe von Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) oder der [REST-API (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) auf demselben SQL-Datenbank-Server auf den Zustand zum Zeitpunkt des Löschens oder früher wiederherstellen. Sie können [mithilfe von PowerShell eine gelöschte Datenbank in einer verwalteten Instanz wiederherstellen](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
+Sie können eine gelöschte Datenbank mithilfe von Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) oder der [REST-API (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) auf demselben SQL-Datenbank-Server oder in der gleichen verwalteten Instanz auf den Zustand zum Zeitpunkt des Löschens oder früher wiederherstellen. Die Wiederherstellung einer gelöschten Datenbank erfolgt durch das Erstellen einer neuen Datenbank aus der Sicherung.
+
+> [!IMPORTANT]
+> Wenn Sie eine Azure SQL-Datenbank-Serverinstanz oder verwaltete Instanz löschen, werden auch alle dazugehörigen Datenbanken gelöscht und können nicht wiederhergestellt werden. Das Wiederherstellen eines gelöschten Servers oder einer gelöschten verwalteten Instanz wird zurzeit nicht unterstützt.
+
+### <a name="deleted-database-restore-using-azure-portal"></a>Wiederherstellen einer gelöschten Datenbank mithilfe des Azure-Portals
+
+Die Wiederherstellung gelöschter Datenbanken aus dem Azure-Portal erfolgt auf der Server- und der Instanzressource.
+
+#### <a name="single-azure-sql-database"></a>Azure SQL-Einzeldatenbank
+
+Zum Wiederherstellen einer gelöschten Einzel- oder Pooldatenbank mithilfe des Azure-Portals öffnen Sie die Serverübersichtsseite, und klicken Sie im Navigationsmenü auf **Gelöschte Datenbanken**. Wählen Sie eine gelöschte Datenbank aus, die Sie wiederherstellen möchten, und geben Sie den Namen für die neue Datenbank ein, die mit den aus der Sicherung wiederhergestellten Daten erstellt wird.
+
+  ![deleted-database-restore](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+
+#### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
+
+Zurzeit ist die Option zum Wiederherstellen gelöschter Datenbanken für eine verwaltete Instanz im Azure-Portal nicht verfügbar. Sie können PowerShell verwenden, um eine gelöschte Datenbank auf einer verwalteten Instanz wiederherzustellen. Mehr dazu erfahren Sie unter [Wiederherstellen einer gelöschten Datenbank auf einer verwalteten Instanz mithilfe von PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance).
+
+### <a name="deleted-database-restore-using-powershell"></a>Wiederherstellen einer gelöschten Datenbank mithilfe von PowerShell
+
+Verwenden Sie die unten angegebenen Beispielskripts, um eine gelöschte Datenbank für Azure SQL-Datenbank und eine verwaltete Instanz mithilfe von PowerShell wiederherzustellen.
+
+#### <a name="single-azure-sql-database"></a>Azure SQL-Einzeldatenbank
+
+Ein PowerShell-Beispielskript, das zeigt, wie eine gelöschte Azure SQL-Datenbank wiederhergestellt wird, finden Sie unter [Wiederherstellen einer gelöschten SQL-Datenbank mithilfe von PowerShell](scripts/sql-database-restore-database-powershell.md).
+
+#### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
+
+Ein PowerShell-Beispielskript, das zeigt, wie eine gelöschte Instanzdatenbank wiederhergestellt wird, finden Sie unter [Wiederherstellen einer gelöschten Datenbank auf einer verwalteten Instanz mithilfe von PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
 
 > [!TIP]
-> Ein PowerShell-Beispielskript, das zeigt, wie eine gelöschten Datenbank wiederhergestellt wird, finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](scripts/sql-database-restore-database-powershell.md).
-> [!IMPORTANT]
-> Wenn Sie eine Azure SQL-Datenbank-Serverinstanz löschen, werden auch alle dazugehörigen Datenbanken gelöscht und können nicht wiederhergestellt werden. Derzeit wird das Wiederherstellen gelöschter Server nicht unterstützt.
-
-### <a name="deleted-database-restore-using-the-azure-portal"></a>Wiederherstellen einer gelöschten Datenbank im Azure-Portal
-
-Öffnen Sie zum Wiederherstellen einer gelöschten Datenbank mithilfe von Azure-Portal die Seite für Ihren Server, und klicken Sie im Bereich „Vorgänge“ auf **Gelöschte Datenbanken**.
-
-![deleted-database-restore-1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
-
-![deleted-database-restore-2](./media/sql-database-recovery-using-backups/deleted-database-restore-2.png)
-
-> [!IMPORTANT]
 > Informationen zum programmgesteuerten Wiederherstellen einer gelöschten Datenbank finden Sie unter [Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen](sql-database-recovery-using-backups.md#programmatically-performing-recovery-using-automated-backups).
 
 ## <a name="geo-restore"></a>Geografische Wiederherstellung
@@ -130,7 +158,7 @@ Wenn Sie eine Azure SQL-Einzeldatenbank mittels Geowiederherstellung aus Azure-P
 3. Klicken Sie unter „Vorhandene Daten verwenden“ auf **Sicherung**.
 4. Wählen Sie aus der Dropdownliste der verfügbaren Geowiederherstellungssicherungen die gewünschte Sicherung aus.
 
-![Geowiederherstellung einer Azure SQL-Einzeldatenbank](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
+    ![Geowiederherstellung einer Azure SQL-Einzeldatenbank](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
 Schließen Sie den Vorgang des Erstellens einer neuen Datenbank ab. Nachdem die Azure SQL-Einzeldatenbank erstellt wurde, enthält sie eine mittels Geowiederherstellung wiederhergestellte Sicherung.
 
@@ -143,7 +171,7 @@ Wenn Sie eine Datenbank der verwalteten Instanz mittels Geowiederherstellung aus
 3. Wählen Sie unter „Vorhandene Daten verwenden“ die Option **Sicherung** aus.
 4. Wählen Sie aus der Dropdownliste der verfügbaren Geowiederherstellungssicherungen die gewünschte Sicherung aus.
 
-![Wiederherstellen der Datenbank einer verwalteten Instanz mittels Geowiederherstellung](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
+    ![Wiederherstellen der Datenbank einer verwalteten Instanz mittels Geowiederherstellung](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
 
 Schließen Sie den Vorgang des Erstellens einer neuen Datenbank ab. Nachdem die Instanzdatenbank erstellt wurde, enthält sie eine mittels Geowiederherstellung wiederhergestellte Sicherung.
 
@@ -172,7 +200,9 @@ Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über Azure-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell-Azure Resource Manager-Modul wird von Azure SQL-Datenbank zwar weiterhin unterstützt, zukünftig wird jedoch für das Az.Sql-Modul entwickelt. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell-Azure Resource Manager-Modul wird von Azure SQL-Datenbank zwar weiterhin unterstützt, zukünftig wird jedoch für das Az.Sql-Modul entwickelt. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind in großen Teilen identisch.
+
+#### <a name="single-azure-sql-database"></a>Azure SQL-Einzeldatenbank
 
 - Wie Sie eine eigenständige Datenbank oder in einem Pool zusammengefasste Datenbank wiederherstellen, erfahren Sie unter [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
@@ -185,6 +215,8 @@ Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über Azure-
 
   > [!TIP]
   > Ein PowerShell-Beispielskript, das zeigt, wie eine Point-in-Time-Wiederherstellung einer Datenbank durchgeführt wird, finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](scripts/sql-database-restore-database-powershell.md).
+
+#### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
 
 - Wie Sie die Datenbank einer verwalteten Instanz wiederherstellen, erfahren Sie unter [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
@@ -205,8 +237,13 @@ So stellen Sie eine Einzel- oder Pooldatenbank mithilfe der REST-API wieder her
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-- Wie Sie eine Einzel- oder Pooldatenbank mithilfe der Azure CLI wiederherstellen, erfahren Sie unter [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
-- Wie Sie eine verwaltete Instanz mithilfe der Azure-Befehlszeilenschnittstelle wiederherstellen, erfahren Sie unter [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore).
+#### <a name="single-azure-sql-database"></a>Azure SQL-Einzeldatenbank
+
+Wie Sie eine Einzel- oder Pooldatenbank mithilfe der Azure CLI wiederherstellen, erfahren Sie unter [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
+
+#### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
+
+Wie Sie eine verwaltete Instanzdatenbank mithilfe der Azure-Befehlszeilenschnittstelle wiederherstellen, erfahren Sie unter [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore).
 
 ## <a name="summary"></a>Zusammenfassung
 
