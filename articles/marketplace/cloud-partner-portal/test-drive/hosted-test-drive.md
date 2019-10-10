@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: b8f9ca96ac9386037460ad5c1c9f56fe7b9c2e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d8421b2e545c951dcbc3280a306514e4b14897
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939998"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030056"
 ---
 # <a name="hosted-test-drive"></a>Gehostete Testversion
 
@@ -52,4 +52,4 @@ Geben Sie die folgenden Felder im Abschnitt \'Technische Konfiguration\' an:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Ihre App erfolgreich die Zertifizierung durchlaufen hat und Sie bereit sind, Ihr Angebot zu  **veröffentlichen** , wird Ihnen eine  **Vorschauversion**  Ihres Angebots angezeigt. Starten Sie eine Testversion in der Benutzeroberfläche, und überprüfen Sie, ob Ihre Testversionen ordnungsgemäß ausgeführt werden. Wenn Sie mit der Vorschauversion Ihres Angebots zufrieden sind, können Sie es  **veröffentlichen**.
+Wenn Sie bereit sind, **veröffentlichen** Sie Ihr Angebot, nachdem Ihre App die Zertifizierung bestanden hat. Sie verfügen jetzt über eine **Vorschauversion** Ihres Angebots. Starten Sie eine Testversion in der Benutzeroberfläche, und überprüfen Sie, ob Ihre Testversionen ordnungsgemäß ausgeführt werden. Sobald Sie mit Ihrem Vorschauangebot zufrieden sind, können Sie **live gehen**.

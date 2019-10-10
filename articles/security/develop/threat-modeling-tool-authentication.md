@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967945"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244633"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
 
@@ -308,7 +308,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | Art der Clientanmeldeinformationen: keine |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **Schritte** | Ohne Authentifizierung kann jeder auf diesen Dienst zugreifen. Ein Dienst ohne Clientauthentifizierung gewährt allen Benutzern Zugriff. Konfigurieren Sie die Anwendung so, dass eine Authentifizierung anhand von Clientanmeldeinformationen erfolgt. Legen Sie hierzu „message clientCredentialType“ auf „Windows“ oder „Certificate“ fest. |
 
 ### <a name="example"></a>Beispiel
@@ -324,7 +324,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Generisch, .NET Framework 3 |
 | **Attribute**              | Art der Clientanmeldeinformationen: keine |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **Schritte** | Ohne Authentifizierung kann jeder auf diesen Dienst zugreifen. Ein Dienst ohne Clientauthentifizierung gewährt allen Benutzern Zugriff auf seine Funktionen. Konfigurieren Sie die Anwendung so, dass eine Authentifizierung anhand von Clientanmeldeinformationen erfolgt. Legen Sie hierzu „transport clientCredentialType“ auf „Windows“ oder „Certificate“ fest. |
 
 ### <a name="example"></a>Beispiel
