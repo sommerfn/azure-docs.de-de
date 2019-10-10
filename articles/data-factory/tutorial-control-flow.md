@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815874"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176004"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
@@ -38,7 +38,7 @@ Dieses Tutorial beschreibt, wie die folgenden Aufgaben ausgeführt werden:
 > * Starten einer Pipelineausführung.
 > * Überwachen der Pipeline- und Aktivitätsausführungen.
 
-Dieses Tutorial verwendet .NET SDK. Sie können andere Mechanismen zur Interaktion mit Azure Data Factory verwenden. Data Factory-Schnellstarts finden Sie unter [Schnellstarts](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts).
+Dieses Tutorial verwendet .NET SDK. Sie können andere Mechanismen zur Interaktion mit Azure Data Factory verwenden. Data Factory-Schnellstarts finden Sie unter [Schnellstarts](/azure/data-factory/quickstart-create-data-factory-portal).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

@@ -11,16 +11,16 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8b38b359821d3d4926085fee8e412fbe06155739
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035701"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350617"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
-Automatisiertes maschinelles Lernen, auch als autoML bezeichnet, ist der Prozess des Automatisierens der zeitaufwändigen, iterativen Aufgaben der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten. Automatisiertes Machine Learning basiert auf einem Durchbruch der [Microsoft Research-Abteilung](https://arxiv.org/abs/1705.05355).
+Automatisiertes maschinelles Lernen, auch als automatisiertes ML bezeichnet, ist der Prozess des Automatisierens der zeitaufwändigen, iterativen Aufgaben der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten. Automatisiertes Machine Learning basiert auf einem Durchbruch der [Microsoft Research-Abteilung](https://arxiv.org/abs/1705.05355).
 
 Die Entwicklung traditioneller Machine Learning-Modelle ist ressourcenintensiv und erfordert viel Fachwissen und Zeit, um Dutzende von Modellen zu erstellen und zu vergleichen. Sie arbeiten mit automatisiertem ML, wenn Sie möchten, dass Azure Machine Learning mit der von Ihnen angegebenen Zielmetrik ein Modell für Sie trainiert und optimiert. Der Dienst durchläuft die ML-Algorithmen dann iterativ im Zusammenspiel mit Featureauswahlen, wobei für jede Iteration ein Modell mit einer Trainingsbewertung erzeugt wird. Je höher die Bewertung ist, desto besser wird das Modell als „passend“ für Ihre Daten angesehen.
 
@@ -115,6 +115,36 @@ Automatisiertes Machine Learning unterstützt Ensemblemodelle, die standardmäß
 Der [Caruana-Algorithmus für die Ensembleauswahl](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) mit sortierter Ensembleinitialisierung wird verwendet, um zu entscheiden, welche Modell innerhalb des Ensembles verwendet werden sollen. Generell initialisiert dieser Algorithmus das Ensemble mit bis zu 5 Modellen mit den besten Einzelbewertungen und überprüft, ob diese Modelle innerhalb des 5 %-Schwellenwerts der besten Bewertung liegen, um ein schlechtes Ausgangsensemble zu vermeiden. Dann wird für jede Ensemble-Iteration ein neues Modell zum vorhandenen Ensemble hinzugefügt, und die resultierende Bewertung wird berechnet. Wenn ein neues Modell die vorhandene Ensemblebewertung verbessert hat, wird das Ensemble so aktualisiert, dass es das neue Modell aufnimmt.
 
 Informationen zum Ändern der Standard-Ensembleeinstellungen beim automatisierten Machine Learning finden Sie unter [Gewusst wie:](how-to-configure-auto-train.md#ensemble).
+
+## <a name="imbalance"></a> Unausgeglichene Daten
+
+Unausgeglichene Daten finden sich häufig in Daten für Klassifizierungsszenarien des maschinellen Lernens und beziehen sich auf Daten, die ein überproportionales Verhältnis von Beobachtungen in den einzelnen Klassen enthalten. Diese Unausgeglichenheit kann zu einem falsch wahrgenommenen positiven Effekt der Genauigkeit eines Modells führen, da die Eingabedaten eine Abweichung zu einer Klasse aufweisen, was dazu führt, dass das trainierte Modell diese Abweichung imitiert. 
+
+Als Teil seines Ziels, den Workflow des maschinellen Lernens zu vereinfachen, verfügt das automatisierte maschinelle Lernen über integrierte Funktionen, die bei der Verarbeitung unausgeglichener Daten helfen. Beispiel: 
+
+- Eine **Gewichtungsspalte**: Das automatisierte maschinelle Lernen unterstützt eine gewichtete Spalte als Eingabe, wodurch Zeilen in den Daten eine höhere oder niedrigere Gewichtung erhalten. Auf diese Weise wird eine Klasse mehr oder weniger „wichtig“. Schauen Sie sich dieses [Notebookbeispiel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/sample-weight/auto-ml-sample-weight.ipynb) an. 
+
+- Die vom automatisierten maschinellen Lernen verwendeten Algorithmen können eine Unausgeglichenheit von bis zu 20:1 verarbeiten. Das bedeutet, dass die häufigste Klasse 20 mal mehr Zeilen in den Daten aufweisen kann als die am wenigsten häufige Klasse.
+
+### <a name="identify-models-with-imbalanced-data"></a>Identifizieren von Modellen mit unausgeglichenen Daten
+
+Da Klassifizierungsalgorithmen häufig nach Genauigkeit bewertet werden, ist die Überprüfung der Genauigkeitsbewertung eines Modells eine geeignete Möglichkeit, um festzustellen, ob es von unausgeglichenen Daten beeinflusst wurde. Hat es für bestimmte Klassen über eine wirklich hohe oder über eine wirklich niedrige Genauigkeit verfügt?
+
+Darüber hinaus generieren Durchläufe des automatisierten maschinellen Lernens automatisch die folgenden Diagramme, die Ihnen helfen können, die Richtigkeit der Klassifizierungen Ihres Modells zu verstehen und Modelle zu identifizieren, die möglicherweise von nicht ausgeglichenen Daten beeinflusst werden.
+
+Diagramm| BESCHREIBUNG
+---|---
+[Konfusionsmatrix](how-to-understand-automated-ml.md#confusion-matrix)| Bewertet die ordnungsgemäß klassifizierten Bezeichnungen anhand der tatsächlichen Bezeichnungen der Daten. 
+[Genauigkeit-Trefferquote](how-to-understand-automated-ml.md#precision-recall-chart)| Bewertet das Verhältnis der richtigen Bezeichnungen anhand des Verhältnisses der gefundenen Bezeichnungsinstanzen der Daten. 
+[ROC-Kurven](how-to-understand-automated-ml.md#roc)| Bewertet das Verhältnis von richtigen Bezeichnungen anhand des Verhältnisses von falsch positiven Bezeichnungen.
+
+### <a name="handle-imbalanced-data"></a>Behandeln von unausgeglichenen Daten 
+
+Die folgenden Verfahren sind zusätzliche Optionen zum Behandeln von unausgeglichenen Daten außerhalb des automatisierten maschinellen Lernens. 
+
+- Erneutes Sampling zum Ausgleichen der Unausgeglichenheit von Klassen, entweder durch Upsampling der kleineren Klassen oder durch Downsampling der größeren Klassen. Diese Methoden erfordern Fachwissen, um sie zu verarbeiten und zu analysieren.
+
+- Verwenden Sie eine Leistungsmetrik, die besser mit unausgeglichenen Daten umgeht. So ist z. B. der F1-Score ein gewichteter Mittelwert aus Genauigkeit und Trefferquote. Die Genauigkeit misst die Präzision eines Klassifizierers. Eine niedrige Genauigkeit zeigt eine hohe Anzahl von falsch positiven Werten an. Die Trefferquote misst hingegen die Vollständigkeit eines Klassifizierers. Eine niedrige Trefferquote zeigt eine hohe Anzahl von falsch negativen Werten an. 
 
 ## <a name="use-with-onnx-in-c-apps"></a>Verwenden von ONNX in C#-Apps
 

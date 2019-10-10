@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3a5f6b5b1f66542a534c9016c5d9d60a1273975f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cf145e04ca0e0ddf336521e72f6dc230dc8fc86b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544799"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024950"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js- und MongoDB-App in Azure App Service unter Linux
 
@@ -186,7 +186,7 @@ Kopieren Sie den Wert von `primaryMasterKey`. Sie benötigen diese Informationen
 
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurieren der Verbindungszeichenfolge in der Node.js-Anwendung
 
-Erstellen Sie in Ihrem lokalen MEAN.js-Repository im _config/env/_-Ordner eine Datei mit dem Namen _local-production.js_. _.gitignore_ ist so konfiguriert, diese Datei aus dem Repository herauszuhalten.
+Erstellen Sie in Ihrem lokalen MEAN.js-Repository im _config/env/_ -Ordner eine Datei mit dem Namen _local-production.js_. _.gitignore_ ist so konfiguriert, diese Datei aus dem Repository herauszuhalten.
 
 Kopieren Sie den folgenden Code in diese Datei ein. Achten Sie darauf, dass Sie die ersten beiden Platzhalter vom Typ *\<cosmosdb-name>* durch den Namen der Cosmos DB-Datenbank und den Platzhalter *\<primary-master-key>* durch den Schlüssel ersetzen, den Sie im vorherigen Schritt kopiert haben.
 
@@ -259,7 +259,7 @@ Standardmäßig integriert das MEAN.js-Projekt die Datei _config/env/local-produ
 
 Verwenden Sie zum Festlegen der App-Einstellungen den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell.
 
-Im folgenden Beispiel wird die App-Einstellung `MONGODB_URI` in der Azure-App konfiguriert. Ersetzen Sie die Platzhalter *\<app-name>*, *\<cosmosdb-name>* und *\<primary-master-key>*.
+Im folgenden Beispiel wird die App-Einstellung `MONGODB_URI` in der Azure-App konfiguriert. Ersetzen Sie die Platzhalter *\<app-name>* , *\<cosmosdb-name>* und *\<primary-master-key>* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
@@ -297,7 +297,7 @@ remote: Handling node.js deployment.
 .
 remote: Deployment successful.
 To https://<app-name>.scm.azurewebsites.net/<app-name>.git
- * [new branch]      master -> master
+ * [new branch]      master -> master
 ```
 
 Sie werden feststellen, dass beim Bereitstellungsprozess [Gulp](https://gulpjs.com/) nach `npm install` ausgeführt wird. App Service führt während der Bereitstellung keine Gulp- oder Grunt-Aufgaben aus. Daher enthält dieses Beispielrepository zwei zusätzliche Dateien im Stammverzeichnis für die Aktivierung:
@@ -486,7 +486,7 @@ Sie haben Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../app-service-web-tutorial-custom-domain.md)
+> [Tutorial: Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer App](../app-service-web-tutorial-custom-domain.md)
 
 Oder sehen Sie sich weitere Ressourcen an:
 

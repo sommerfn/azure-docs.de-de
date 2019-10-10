@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803894"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836326"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)
 
-Azure Maps ist ein Portfolio von nativ in Azure integrierten Geodienst-APIs, mit denen Entwickler, Unternehmen und unabhängige Softwarehersteller (Independent Software Vendor, ISV) standortbezogene Apps sowie Lösungen für IoT, Mobilität, Logistik und Inventarüberwachung erstellen können. Die Rest-APIs von Azure Maps können in Programmiersprachen wie Python und R aufgerufen werden, um Szenarien mit Geodatenanalyse und maschinellem Lernen zu ermöglichen. Azure Maps bietet stabile [Routenplanungs-APIs]([https://docs.microsoft.com/rest/api/maps/route), mit denen Benutzer Routen zwischen mehreren Datenpunkten basierend auf verschiedenen Bedingungen (z. B. Fahrzeugtyp oder erreichbarer Bereich) berechnen können. In diesem Tutorial wird ein Szenario erläutert, das es dem Fahrer eines Elektrofahrzeugs mit niedrigem Akkustand ermöglicht, die in Bezug auf die Fahrtzeit nächstgelegene Ladestation zu finden.
+Azure Maps ist ein Portfolio von nativ in Azure integrierten Geodienst-APIs, mit denen Entwickler, Unternehmen und unabhängige Softwarehersteller (Independent Software Vendor, ISV) standortbezogene Apps sowie Lösungen für IoT, Mobilität, Logistik und Inventarüberwachung erstellen können. Die Rest-APIs von Azure Maps können in Programmiersprachen wie Python und R aufgerufen werden, um Szenarien mit Geodatenanalyse und maschinellem Lernen zu ermöglichen. Azure Maps bietet stabile [Routenplanungs-APIs](https://docs.microsoft.com/rest/api/maps/route), mit denen Benutzer Routen zwischen mehreren Datenpunkten basierend auf verschiedenen Bedingungen (z. B. Fahrzeugtyp oder erreichbarer Bereich) berechnen können. In diesem Tutorial wird ein Szenario erläutert, das es dem Fahrer eines Elektrofahrzeugs mit niedrigem Akkustand ermöglicht, die in Bezug auf die Fahrtzeit nächstgelegene Ladestation zu finden.
 
 In diesem Lernprogramm führen Sie folgende Schritte aus:
 
@@ -39,7 +39,7 @@ Für die Schritte in diesem Tutorial müssen Sie zuerst ein Azure Maps-Konto er
 
 Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure Notebooks-Projekt erstellen und die Jupyter Notebook-Datei herunterladen und ausführen. Die Notebook-Datei enthält Python-Code, der das Szenario in diesem Tutorial implementiert. Führen Sie die folgenden Schritte aus, um ein Azure Notebooks-Projekt zu erstellen und das Jupyter Notebook-Dokument in das Projekt hochzuladen.
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. Weitere Informationen finden Sie im [Schnellstart](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an Weitere Informationen finden Sie im [Schnellstart](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 2. Wählen Sie oben auf Ihrer öffentlichen Profilseite die Option **Meine Projekte** aus.
 
     ![Meine Projekte](./media/tutorial-ev-routing/myproject.png)

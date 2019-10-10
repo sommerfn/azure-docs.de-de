@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: travisw
 ms.openlocfilehash: c676e98eb812a31d6fb8d7cc0f58929f803c868e
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70382009"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Schnellstart: Erstellen eines virtuellen Voice-First-Assistenten mit dem Speech SDK, UWP

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 97d9aa1ed9440011fdaab3aa8eb9d3942b5a8acf
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205723"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170365"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
 
@@ -80,7 +80,7 @@ Es sind zwei Dienste zugeordnet: einer am Standort „USA, Westen“ und einer a
 
 ## <a name="download-the-tutorial-files"></a>Herunterladen der Tutorialdateien
 
-1. Laden Sie die [Vorlagen und Artefakte](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) herunter, die in diesem Tutorial verwendet werden.
+1. Laden Sie die [Vorlagen und Artefakte](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) herunter, die in diesem Tutorial verwendet werden.
 2. Entzippen Sie die Dateien auf Ihrem lokalen Computer.
 
 Unterhalb des Stammordners befinden sich zwei Ordner:

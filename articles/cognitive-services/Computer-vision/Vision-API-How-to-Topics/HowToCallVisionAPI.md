@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103545"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177063"
 ---
 # <a name="call-the-computer-vision-api"></a>Aufrufen der Maschinelles Sehen-API
 
@@ -56,7 +56,7 @@ Sie können den Abonnementschlüssel übergeben, indem Sie eine der folgenden Ak
 * Übergeben Sie ihn wie in diesem Beispiel für die Maschinelles Sehen-API über eine Abfragezeichenfolge:
 
   ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
   ```
 
 * Geben Sie ihn im HTTP-Anforderungsheader an:
@@ -83,7 +83,7 @@ Rufen Sie für ein bestimmtes Bild Tags und eine Beschreibung mithilfe einer der
 ### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Option 1: Abrufen einer Liste mit Tags und einer Beschreibung
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
@@ -105,14 +105,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 Führen Sie für nur Tags Folgendes aus:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 Führen Sie für nur eine Beschreibung Folgendes aus:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
   imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
@@ -123,14 +123,14 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 ### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Option 1: Bereichsbezogene Analyse – Analyse nur für ein angegebenes Modell
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
 ```
 
 Bei dieser Option sind alle anderen Abfrageparameter {VisualFeatures, details} ungültig. Wenn alle unterstützten Modelle angezeigt werden sollen, verwenden Sie:
 
 ```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
+GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
 var models = await visionClient.ListModelsAsync();
 ```
 
@@ -139,7 +139,7 @@ var models = await visionClient.ListModelsAsync();
 Für Anwendungen, bei denen Sie neben Details aus mindestens einem domänenspezifischen Modell auch eine generische Bildanalyse wünschen, erweitern Sie die v1-API mithilfe des Modellabfrageparameters.
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
 ```
 
 Wenn Sie diese Methode aufrufen, rufen Sie zuerst den Klassifizierer [86 Kategorien](../Category-Taxonomy.md) auf. Wenn eine der Kategorien mit der eines bekannten oder übereinstimmenden Modells übereinstimmt, wird der Klassifizierer ein zweites Mal aufgerufen. Wenn beispielsweise „celebrities“ in „details=all“ oder „details“ enthalten ist, rufen Sie nach dem 86-Kategorien-Klassifizierer das Prominentenmodell auf. Das Ergebnis enthält die Kategorieperson. Im Gegensatz zu Option 1 erhöht diese Methode die Wartezeit für Benutzer, die an Prominenten interessiert sind.

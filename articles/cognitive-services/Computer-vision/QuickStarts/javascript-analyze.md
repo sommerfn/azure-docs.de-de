@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 446558c88ee99cf61bd3591b687ebbd7e9710b76
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6a52ff2ff5d5a2c44df3bc6572efd61d120d8f6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376225"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176508"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Schnellstart: Analysieren eines Remotebilds mit der REST-API und JavaScript in der Maschinelles Sehen-API
 
@@ -58,7 +58,7 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
         let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
         if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
         
-        var uriBase = endpoint + "vision/v2.0/analyze";
+        var uriBase = endpoint + "vision/v2.1/analyze";
 
         // Request parameters.
         var params = {

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b2bfbed33433521fd086d474ea4b754f5435f5e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092925"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Tutorial: Azure Active Directory-Integration mit Riskware
 
@@ -170,7 +170,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD b
 
     g. Geben Sie im Textfeld **XML Identity Tag Name** (Tagname der XML-Identität) das Attribut ein, das den eindeutigen Bezeichner in der SAML-Antwort enthält, z.B. „NameID“.
 
-    h. Öffnen Sie die aus dem Azure-Portal heruntergeladene  **Metadaten-XML** im Editor, kopieren Sie das Zertifikat aus der Metadatendatei, und fügen Sie es in das Textfeld **Certificate** (Zertifikat) ein.
+    h. Öffnen Sie im Editor die **Metadaten-XML**-Datei, die Sie im Azure-Portal heruntergeladen haben, kopieren Sie das Zertifikat der Metadatendatei, und fügen Sie es in das Textfeld **Certificate** (Zertifikat) ein.
 
     i. Fügen Sie in das Textfeld **Consumer URL** (Consumer-URL) den Wert der **Antwort-URL** ein, den Sie vom Supportteam erhalten.
 

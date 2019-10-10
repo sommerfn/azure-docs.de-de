@@ -2,17 +2,16 @@
 title: 'Beispiel: Erzwingen eines Tags und des zugehörigen Werts in Ressourcengruppen'
 description: Diese Beispielrichtliniendefinition erzwingt ein Tag und einen Wert für eine Ressourcengruppe.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: a7a76fbde74ab80f8aa0f5e67e6445504c3aafa5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00c94aa6077c8a8599b31e9ab37f925fdfebefb0
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276659"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977175"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Beispiel: Erzwingen eines Tags und des zugehörigen Werts in Ressourcengruppen
 
@@ -50,7 +49,7 @@ Der JSON-Code, der die Richtlinienparameter definiert und von der Azure-Befehlsz
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|NAME |Type |Feld |BESCHREIBUNG |
+|NAME |type |Feld |BESCHREIBUNG |
 |---|---|---|---|
 |tagName |Zeichenfolge |tags |Name des Tags, etwa „costCenter“|
 |tagValue |Zeichenfolge |tags |Wert des Tags, etwa „headquarter“|

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0d430f7c9a6e9d59b20cd1420b65f70d9c6994d5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 350bc95e08aa994e4cb70db6bf1f08d53bbec5a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141436"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177302"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Schnellstart: Generieren einer Miniaturansicht mit der Maschinelles Sehen-REST-API und cURL
 
@@ -38,7 +38,7 @@ Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
 1. Kopieren Sie den folgenden Code in einen Editor.
 1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
 1. Ersetzen Sie `<File>` durch den Pfad und Dateinamen für die Speicherung der Miniaturansicht.
-1. Ändern Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`) ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
+1. Ändern Sie die Anforderungs-URL (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
 1. Ändern Sie optional das Bild (`{\"url\":\"...`), das Sie analysieren möchten.
 1. Öffnen Sie auf einem Computer, auf dem cURL installiert ist, ein Befehlsfenster.
 1. Fügen Sie den Code in das Fenster ein, und führen Sie den Befehl aus.
@@ -61,7 +61,7 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 1. Fügen Sie den Befehl aus dem Text-Editor in das Eingabeaufforderungsfenster ein, und führen Sie den Befehl aus.
 
     ```bash
-    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
+    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
     ```
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
