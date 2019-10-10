@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300684"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947905"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debuggen der Service Fabric-Anwendung mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -76,14 +76,10 @@ Wenn Ihre Service Fabric-Anwendungen auf einem Service Fabric-Cluster in Azure a
 
 > [!NOTE]
 > Die Funktion benötigt [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) und [Azure SDK für .NET 2.9](https://azure.microsoft.com/downloads/).    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > Das Remotedebuggen ist für Entwicklungs-/Testszenarios vorgesehen und sollte aufgrund der Auswirkung auf ausgeführte Anwendungen nicht in Produktionsumgebungen verwendet werden.
-> 
-> 
 
 1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Debuggen aktivieren**.
    
@@ -128,8 +124,6 @@ Sie können Ablaufverfolgungen von einem Remoteclusterknoten aus auch direkt zu 
 > [!WARNING]
 > Das Streaming von Ablaufverfolgungen ist für Entwicklungs-/Testszenarios vorgesehen und sollte aufgrund der Auswirkung auf ausgeführte Anwendungen nicht in Produktionsumgebungen verwendet werden.
 > In einem Produktionsszenario sollten Sie sich auf das Weiterleiten von Ereignissen mithilfe von Azure-Diagnose verlassen.
-> 
-> 
 
 1. Navigieren Sie im **Cloud-Explorer** zu Ihrem Cluster. Klicken Sie mit der rechten Maustaste, und wählen Sie **Streamingablaufverfolgungen aktivieren**.
    

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b7feb1b980054ba224173d5054907879a88cdd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5905afdb9832f32e837dc4496e4a951fca41b8b0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952879"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243552"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Weiterleiten von Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle
 
@@ -78,7 +78,7 @@ Nachdem Sie die Integration in Azure Monitor-Protokolle für Ihre Automation Sta
 
 ![Schaltfläche „Protokollsuche“](media/automation-dsc-diagnostics/log-search-button.png)
 
-Das Blatt **Protokollsuche** wird geöffnet. Dort wird ein Vorgang **DscNodeStatusData** für jeden DSC-Knoten und ein Vorgang **DscResourceStatusData** für jede [DSC-Ressource](/powershell/dsc/resources) angezeigt, die in der Knotenkonfiguration aufgerufen wird.
+Das Blatt **Protokollsuche** wird geöffnet. Dort wird ein Vorgang **DscNodeStatusData** für jeden DSC-Knoten und ein Vorgang **DscResourceStatusData** für jede [DSC-Ressource](/powershell/scripting/dsc/resources/resources) angezeigt, die in der Knotenkonfiguration aufgerufen wird.
 
 Der Vorgang **DscResourceStatusData** enthält Fehlerinformationen für fehlerhafte DSC-Ressourcen.
 
@@ -137,7 +137,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | ConfigurationMode | Gibt an, wie die Konfiguration auf den Knoten angewendet wird. Mögliche Werte sind __ApplyOnly__, __ApplyandMonitior__ und __ApplyandAutoCorrect__. <ul><li>__ApplyOnly__: DSC wendet die Konfiguration an und führt nur dann weitere Schritte durch, wenn eine neue Konfiguration per Push an den Zielknoten übertragen oder eine neue Konfiguration von einem Server abgerufen wird. Nach der ersten Anwendung einer neuen Konfiguration führt DSC keine Überprüfung auf Abweichungen von einem zuvor konfigurierten Zustand durch. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyOnly__ in Kraft tritt. </li><li> __ApplyAndMonitor__: Dies ist der Standardwert. Der LCM wendet alle neuen Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyAndMonitor__ in Kraft tritt.</li><li>__ApplyAndAutoCorrect__: DSC wendet alle neuen Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht, und wendet dann die aktuelle Konfiguration erneut an.</li></ul> |
 | HostName_s | Der Name des verwalteten Knotens. |
 | IPAddress | Die IPv4-Adresse des verwalteten Knotens. |
-| Category (Kategorie) | DscNodeStatus |
+| Category | DscNodeStatus |
 | Resource | Der Name des Azure Automation-Kontos. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | NodeId_g |Eindeutiger Bezeichner (GUID), der den verwalteten Knoten identifiziert. |
@@ -163,7 +163,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | OperationName |DscResourceStatusData|
 | ResultType |Gibt an, ob die Ressource konform ist. |
 | NodeName_s |Der Name des verwalteten Knotens. |
-| Category (Kategorie) | DscNodeStatus |
+| Category | DscNodeStatus |
 | Resource | Der Name des Azure Automation-Kontos. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | NodeId_g |Eindeutiger Bezeichner (GUID), der den verwalteten Knoten identifiziert. |

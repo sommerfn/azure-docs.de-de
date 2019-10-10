@@ -2,18 +2,19 @@
 title: include file
 description: include file
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
-ms.author: v-adgera
+ms.date: 10/02/2019
 ms.custom: include file
-ms.openlocfilehash: f9b1b32775393196a77bef3aa2257f6fb66afdcb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f67f271ee02e38e168ddfaa84ed1309321cf8702
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012136"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949138"
 ---
 > [!NOTE]
 > Mehrteilige Anforderungen umfassen in der Regel drei Informationselemente:
@@ -26,7 +27,7 @@ ms.locfileid: "69012136"
 >
 > **Content-Type** und **Content-Disposition** variieren je nach Verwendungsszenario.
 
-Mehrteilige Anforderungen können programmgesteuert vorgenommen werden (über C#), über einen REST-Client oder Tools wie z.B. [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#multi). REST-Clienttools weisen möglicherweise verschiedene Ebenen der Unterstützung für komplexe mehrteiligen Anforderungen auf. Konfigurationseinstellungen können von Tool zu Tool leicht variieren. Überprüfen Sie, welches Tool am besten für Ihre Anforderungen geeignet ist.
+Mehrteilige Anforderungen können programmgesteuert vorgenommen werden (über C#), über einen REST-Client oder Tools wie z.B. [Postman](https://docs.microsoft.com/azure/digital-twins/how-to-configure-postman#make-a-multipart-post-request). REST-Clienttools weisen möglicherweise verschiedene Ebenen der Unterstützung für komplexe mehrteiligen Anforderungen auf. Konfigurationseinstellungen können von Tool zu Tool leicht variieren. Überprüfen Sie, welches Tool am besten für Ihre Anforderungen geeignet ist.
 
 > [!IMPORTANT]
 > Mehrteilige Anforderungen an Verwaltungs-APIs von Azure Digital Twins bestehen normalerweise aus zwei Teilen:

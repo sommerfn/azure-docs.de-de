@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478590"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168511"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -27,7 +27,7 @@ Das Erstellen eines virtuellen Netzwerks zum Testen ist einfach. Aber die Wahrsc
 
 ## <a name="naming"></a>Benennung
 
-Alle Azure-Ressourcen haben einen Namen. Der Name muss innerhalb eines Bereichs eindeutig sein, der für jeden Ressourcentyp unterschiedlich sein kann. Der Name eines virtuellen Netzwerks muss beispielsweise innerhalb einer [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) eindeutig sein, kann jedoch innerhalb eines [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) oder einer Azure-[Region](https://azure.microsoft.com/regions/#services) dupliziert werden. Das Definieren einer Namenskonvention, die Sie beim Benennen von Ressourcen konsistent verwenden können, ist hilfreich, wenn mit der Zeit mehrere Netzwerkressourcen verwaltet werden. Empfehlungen finden Sie unter [Namenskonventionen](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
+Alle Azure-Ressourcen haben einen Namen. Der Name muss innerhalb eines Bereichs eindeutig sein, der für jeden Ressourcentyp unterschiedlich sein kann. Der Name eines virtuellen Netzwerks muss beispielsweise innerhalb einer [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) eindeutig sein, kann jedoch innerhalb eines [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) oder einer Azure-[Region](https://azure.microsoft.com/regions/#services) dupliziert werden. Das Definieren einer Namenskonvention, die Sie beim Benennen von Ressourcen konsistent verwenden können, ist hilfreich, wenn mit der Zeit mehrere Netzwerkressourcen verwaltet werden. Empfehlungen finden Sie unter [Namenskonventionen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#virtual-networking).
 
 ## <a name="regions"></a>Regions
 

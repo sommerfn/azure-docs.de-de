@@ -2,18 +2,19 @@
 title: include file
 description: include file
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
-ms.author: v-adgera
+ms.date: 10/02/2019
 ms.custom: include file
-ms.openlocfilehash: f4e32599076b284eac15d394b08035c557a3489b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f9fad0f53211fcdedd1796b84e086cff0245cf0b
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012137"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948949"
 ---
 In den folgenden Beispielen bezieht sich `YOUR_MANAGEMENT_API_URL` auf den URI der Digital Twins-APIs:
 

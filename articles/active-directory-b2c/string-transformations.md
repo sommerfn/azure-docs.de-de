@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77f0b196777ae0f2ff0b870eac0a01b11854190b
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063455"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936805"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -29,8 +29,8 @@ Zwei Ansprüche werden miteinander verglichen, und es wird eine Ausnahme ausgel�
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | Zeichenfolge | Der Typ des ersten Anspruchs, der verglichen werden soll. |
-| inputClaim | inputClaim2 | Zeichenfolge | Der Typ des zweiten Anspruchs, der verglichen werden soll. |
+| InputClaim | inputClaim1 | Zeichenfolge | Der Typ des ersten Anspruchs, der verglichen werden soll. |
+| InputClaim | inputClaim2 | Zeichenfolge | Der Typ des zweiten Anspruchs, der verglichen werden soll. |
 | InputParameter | stringComparison | Zeichenfolge | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
 
 Die Anspruchstransformation **AssertStringClaimsAreEqual** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **UserMessageIfClaimsTransformationStringsAreNotEqual** steuern die Fehlermeldung, die dem Benutzer anzeigt wird.
@@ -154,8 +154,8 @@ Bestimmt, ob ein Zeichenfolgen-Anspruch einem anderen entspricht. Das Ergebnis i
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | Zeichenfolge | Der erste Anspruchstyp, der verglichen werden soll. |
-| inputClaim | inputClaim2 | Zeichenfolge | Der zweite Anspruchstyp, der verglichen werden soll. |
+| InputClaim | inputClaim1 | Zeichenfolge | Der erste Anspruchstyp, der verglichen werden soll. |
+| InputClaim | inputClaim2 | Zeichenfolge | Der zweite Anspruchstyp, der verglichen werden soll. |
 | InputParameter | operator | Zeichenfolge | Mögliche Werte: `EQUAL` oder `NOT EQUAL`. |
 | InputParameter | ignoreCase | boolean | Gibt an, ob bei diesem Vergleich die Groß-/Kleinschreibung in den Zeichenfolgen, die miteinander verglichen werden, ignoriert werden soll. |
 | OutputClaim | outputClaim | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
@@ -195,7 +195,7 @@ Bestimmt, ob der Wert eines Anspruchs gleich dem Wert des Eingabeparameters ist.
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim1 | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
+| InputClaim | inputClaim1 | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
 | InputParameter | operator | Zeichenfolge | Mögliche Werte: `EQUAL` oder `NOT EQUAL`. |
 | InputParameter | compareTo | Zeichenfolge | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | boolean | Gibt an, ob bei diesem Vergleich die Groß-/Kleinschreibung in den Zeichenfolgen, die miteinander verglichen werden, ignoriert werden soll. |
@@ -504,7 +504,7 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | inputClaim | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
+| InputClaim | inputClaim | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
 | InputParameter | matchTo | Zeichenfolge | Die Zeichenfolge, die mit `inputClaim` verglichen werden soll. |
 | InputParameter | stringComparison | Zeichenfolge | Mögliche Werte: `Ordinal` oder `OrdinalIgnoreCase`. |
 | InputParameter | stringMatchMsg | Zeichenfolge | Der erste Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
@@ -553,7 +553,7 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | claimToMatch | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
+| InputClaim | claimToMatch | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
 | InputParameter | matchTo | Zeichenfolge | Die Zeichenfolge, die mit „inputClaim“ verglichen werden soll. |
 | InputParameter | stringComparison | Zeichenfolge | Mögliche Werte: `Ordinal` oder `OrdinalIgnoreCase`. |
 | InputParameter | outputClaimIfMatched | Zeichenfolge | Der Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |

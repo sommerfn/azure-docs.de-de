@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 1a3859e1831f64269e7684072ddf166f29566fd9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828969"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71957805"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -254,7 +254,6 @@ Die folgenden Ressourcen verwenden Basic-Load Balancer, d. h. Sie können nicht 
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- AKS
 - App Service-Umgebung
 
 Sie können sich mit diesen Ressourcen über ExpressRoute oder VNET-zu-VNET über VNet-Gateways verbinden.

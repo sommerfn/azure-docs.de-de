@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812597"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960225"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 
@@ -48,10 +48,10 @@ Zusätzlich zu diesen drei Konten, die zum Ausführen von Azure AD Connect ausge
 
 - **SQL SA-Konto (optional)** : Wird zum Erstellen der ADSync-Datenbank verwendet, wenn die Vollversion von SQL Server installiert ist.  Dieser SQL Server kann lokal oder remote zur Azure AD Connect-Installation vorliegen.  Dabei kann es sich um das gleiche Konto handeln wie bei Enterprise Administrator.  Der SQL-Administrator kann nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators](how-to-connect-install-sql-delegation.md).
 
-<<<<<<< HEAD
+
 >[!IMPORTANT]
 > Ab Build 1.4. ###.# wird es nicht mehr unterstützt, wenn Sie ein Unternehmens- oder ein Domänenadministratorkonto als AD DS-Connectorkonto verwenden.  Wenn Sie versuchen, ein Unternehmens- oder Domänenadministratorkonto einzugeben, und dabei **vorhandenes Konto verwenden** nutzen, wird Ihnen eine Fehlermeldung angezeigt.
-=======
+
 > [!NOTE]
 > Es wird unterstützt, um die in Azure AD Connect verwendeten Administratorkonten über eine administrative ESAE-Gesamtstruktur (auch „Red Forest“ genannt) verwalten zu können.
 > Mithilfe dedizierter administrativer Gesamtstrukturen können Organisationen Administratorkonten, Arbeitsstationen und Gruppen in einer Umgebung hosten, die über bessere Sicherheitskontrollen verfügt als die Produktionsumgebung.

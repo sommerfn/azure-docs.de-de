@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a20481ea42a0772ab42322e912cfce67877734d6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8c836582798f40cf6e9ffff264c1612cb4037f74
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830090"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996893"
 ---
 In der folgenden Tabelle finden Sie die Kontingente und Grenzwerte, die für [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gelten. Informationen zu den Preisen von Event Hubs finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -55,5 +55,5 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 | Partitionen | 2000 pro CU |
 | Verbrauchergruppen | Kein Limit pro CU, 1000 pro Event Hub |
 | Brokerverbindungen | 100.000 enthalten |
-| Nachrichtenaufbewahrung | Bis zu 7 Tage, inkl. 10 TB pro CU |
+| Nachrichtenaufbewahrung | 90 Tage, 10 TB enthalten pro CU |
 | Erfassen | Enthalten |

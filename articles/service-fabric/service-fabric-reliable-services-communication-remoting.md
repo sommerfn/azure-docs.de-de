@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: a9ef2cd695f9591f299bb85b95d14d60b987c38d
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1654a7be8c3aba4efa6fcf96024ea987e2957e73
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258686"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173463"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
 
@@ -36,7 +36,7 @@ Für Web-APIs, Windows Communication Foundation und andere Dienste, die nicht an
 Sie können das Remoting für einen Dienst in zwei einfachen Schritten einrichten:
 
 1. Erstellen Sie eine Schnittstelle, die vom Dienst implementiert werden soll. Diese Schnittstelle definiert die Methoden, die für den Remoteprozeduraufruf für Ihren Dienst verfügbar sind. Bei den Methoden muss es sich um asynchrone Methoden handeln, die einen Task zurückgeben. Die Schnittstelle muss `Microsoft.ServiceFabric.Services.Remoting.IService` implementieren, um zu signalisieren, dass der Dienst über eine Remotingschnittstelle verfügt.
-2. Verwenden Sie einen Remoting-Listener in Ihrem Dienst. Ein Remotinglistener ist eine `ICommunicationListener`-Implementierung, die Remotingfunktionen bereitstellt. Der Namespace `Microsoft.ServiceFabric.Services.Remoting.Runtime` enthält die `CreateServiceRemotingListener`-Erweiterungsmethode für zustandslose und zustandsbehaftete Dienste, die zum Erstellen eines Remotinglisteners mit dem standardmäßigen Remotingtransportprotokoll verwendet werden kann.
+2. Verwenden Sie einen Remoting-Listener in Ihrem Dienst. Ein Remotinglistener ist eine `ICommunicationListener`-Implementierung, die Remotingfunktionen bereitstellt. Der Namespace `Microsoft.ServiceFabric.Services.Remoting.Runtime` enthält die `CreateServiceRemotingInstanceListeners`-Erweiterungsmethode für zustandslose und zustandsbehaftete Dienste, die zum Erstellen eines Remotinglisteners mit dem standardmäßigen Remotingtransportprotokoll verwendet werden kann.
 
 >[!NOTE]
 >Der Namespace `Remoting` steht als separates NuGet-Paket mit dem Namen `Microsoft.ServiceFabric.Services.Remoting` zur Verfügung.

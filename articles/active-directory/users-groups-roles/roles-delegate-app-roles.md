@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382487"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025516"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegieren von App-Registrierungsberechtigungen in Azure Active Directory
 
@@ -63,8 +63,8 @@ In einigen Fällen enthalten Unternehmensanwendungen, die über den Anwendungska
 
 1. Melden Sie sich bei Ihrer [Azure AD-Organisation](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit einem Konto an, das für den Anwendungsadministrator oder Cloudanwendungsadministrator für die Organisation berechtigt ist.
 1. Wählen Sie auf der [Seite „App-Registrierungen“](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) für die Organisation eine App aus, um die Seite „Übersicht“ für die App zu öffnen.
-1. Wählen Sie **Besitzer** aus, um die Liste der Besitzer für die App anzuzeigen.
-1. Wählen Sie **Hinzufügen** aus, um der App einen oder mehrere Besitzer hinzuzufügen.
+1. Wählen Sie **Besitzer** aus, um die Liste der Besitzer für die App anzuzeigen.
+1. Wählen Sie **Hinzufügen** aus, um einen oder mehrere Besitzer der App hinzuzufügen.
 
 > [!IMPORTANT]
 > Benutzer und Dienstprinzipale können Besitzer von Anwendungsregistrierungen sein. Nur Benutzer können Besitzer von Unternehmensanwendungen sein. Gruppen können beiden nicht als Besitzer zugewiesen werden.

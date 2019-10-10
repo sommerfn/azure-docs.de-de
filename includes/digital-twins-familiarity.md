@@ -2,18 +2,19 @@
 title: include file
 description: include file
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
-ms.author: v-adgera
+ms.date: 10/02/2019
 ms.custom: include file
-ms.openlocfilehash: 3531d00825cfd866c81039ce9d97522a2088f5f7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 7f40cf10d6357afd6944e7f4a28a20b9b407f698
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012139"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949153"
 ---
 In diesem Artikel wird eine gewisse Vertrautheit mit der Authentifizierung mittels Ihrer Azure Digital Twins-Verwaltungs-APIs vorausgesetzt.
 

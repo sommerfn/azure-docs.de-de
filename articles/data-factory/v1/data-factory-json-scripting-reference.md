@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70736005"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
@@ -371,7 +371,7 @@ Der Abschnitt [Aktivität](#activity) enthielt Beschreibungen für JSON-Elemente
 
 Klicken Sie auf den Link für den Speicher, an dem Sie interessiert sind, um die JSON-Schemas für den verknüpften Dienst, das Dataset und die Quelle/Senke für die Kopieraktivität anzuzeigen.
 
-| Category (Kategorie) | Datenspeicher
+| Category | Datenspeicher
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](#azure-blob-storage) |
 | &nbsp; |Azure Data Lake Store |

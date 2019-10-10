@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035751"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958139"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 
-In diesem Artikel wird beschrieben, wie Sie Azure [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/) mit oder ohne erneute Bereitstellung vertikal skalieren können. Informationen zur vertikalen Skalierung von VMs, die sich nicht in Skalierungsgruppen befinden, finden Sie unter [Vertikales Skalieren von virtuellen Azure-Computern mit Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+In diesem Artikel wird beschrieben, wie Sie Azure [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/) mit oder ohne erneute Bereitstellung vertikal skalieren können. 
 
 Beim vertikalen Skalieren, auch *zentrales Hochskalieren* und *zentrales Herunterskalieren* genannt, wird die Größe eines virtuellen Computers (VM) als Reaktion auf eine Workload vergrößert oder verringert. Vergleichen Sie dies mit dem [horizontalen Skalieren](virtual-machine-scale-sets-autoscale-overview.md), das auch als *horizontales Hochskalieren* und *horizontales Herunterskalieren* bezeichnet wird, bei dem die Anzahl der VMs je nach Workload geändert wird.
 

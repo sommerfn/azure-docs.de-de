@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 84e4cc69d173fd37ecd15f537feadf19c275ef34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b565a48b56162d19a07f0f54bfe780b7dda04b96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086213"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177398"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -74,15 +74,7 @@ Neben Event Grid ist eine weitere Alternative zur Verarbeitung von Blobs des Que
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#trigger---c-example)
-* [C#-Skript (.csx)](#trigger---c-script-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Mit der [C#-Funktion](functions-dotnet-class-library.md) im folgenden Beispiel wird ein Protokoll geschrieben, wenn im Container `samples-workitems` ein Blob hinzugefügt oder aktualisiert wird.
 
@@ -98,9 +90,9 @@ Die Zeichenfolge `{name}` im Blobtriggerpfad `samples-workitems/{name}` erstellt
 
 Weitere Informationen zum Attribut `BlobTrigger` finden Sie unter [Trigger: Attribute](#trigger---attributes).
 
-### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [Python-Code](functions-reference-python.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im `samples-workitems`-[Container ](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) ein Blob hinzugefügt oder aktualisiert wird.
+Das folgende Beispiel zeigt eine Blobtriggerbindung in einer *function.json*-Datei sowie Code, der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im `samples-workitems`-[Container ](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) ein Blob hinzugefügt oder aktualisiert wird.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -145,7 +137,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-### <a name="trigger---javascript-example"></a>Trigger: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [JavaScript-Code](functions-reference-node.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im Container `samples-workitems` ein Blob hinzugefügt oder aktualisiert wird.
 
@@ -179,7 +171,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger: Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [Python-Code](functions-reference-python.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im `samples-workitems`-[Container ](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) ein Blob hinzugefügt oder aktualisiert wird.
 
@@ -216,7 +208,7 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [Java-Code](functions-reference-java.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im Container `myblob` ein Blob hinzugefügt oder aktualisiert wird.
 
@@ -253,8 +245,11 @@ public void run(
 }
 ```
 
+---
 
 ## <a name="trigger---attributes"></a>Trigger: Attribute
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die folgenden Attribute, um einen Blobtrigger zu konfigurieren:
 
@@ -284,7 +279,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
   }
    ```
 
-  Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger---c-example).
+  Ein vollständiges Beispiel finden Sie unter [Triggerbeispiel](#trigger---example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -310,6 +305,24 @@ Das zu verwendende Speicherkonto wird anhand von Folgendem bestimmt (in der ange
 * Das Attribut `StorageAccount`, das auf die Klasse angewendet wird.
 * Das Standardspeicherkonto für die Funktions-App (App-Einstellung „AzureWebJobsStorage“).
 
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das `@BlobTrigger`-Attribut wird verwendet, um Ihnen Zugriff auf das Blob zu gewähren, das die Funktion ausgelöst hat. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#trigger---example).
+
+---
+
 ## <a name="trigger---configuration"></a>Trigger: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `BlobTrigger` festlegen:
@@ -326,25 +339,27 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
 
-In C#- und C#-Skripts können Sie die folgenden Parametertypen für das auslösende Blob verwenden:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* Ein als JSON serialisierbares POCO
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-<sup>1</sup> Erfordert die inout-Bindung `direction` in *function.json* oder `FileAccess.ReadWrite` in einer C#-Klassenbibliothek.
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
-Wenn Sie versuchen, eine Bindung an einen der Storage SDK-Typen herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-Eine Bindung mit `string`, `Byte[]` oder POCO wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter unten in diesem Artikel.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Verwenden Sie in JavaScript `context.bindings.<name from function.json>`, um auf die Eingabeblobdaten zuzugreifen.
+Greifen Sie mit `context.bindings.<name from function.json>` auf Blob-Daten zu.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Greifen Sie über den als [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) typisierten Parameter auf Blob-Daten zu. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#trigger---example).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das `@BlobTrigger`-Attribut wird verwendet, um Ihnen Zugriff auf das Blob zu gewähren, das die Funktion ausgelöst hat. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#trigger---example).
+
+---
 
 ## <a name="trigger---blob-name-patterns"></a>Trigger: Blobnamensmuster
 
@@ -357,6 +372,7 @@ Das folgende Beispiel zeigt, wie Sie den Blobdateinamen und die Erweiterung sepa
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
+
 Wenn das Blob *original-Blob1.txt* heißt, lauten die Werte der Variablen `blobname` und `blobextension` im Funktionscode *original-Blob1* und *txt*.
 
 ### <a name="filter-on-blob-name"></a>Filtern nach Blobname
@@ -389,23 +405,15 @@ Wenn der Blobname *{20140101}-soundfile.mp3* lautet, erhält die Variable `name`
 
 ## <a name="trigger---metadata"></a>Trigger: Metadaten
 
-Der Blobtrigger stellt mehrere Metadateneigenschaften bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Werte haben die gleiche Semantik wie der Typ [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet).
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-|Eigenschaft  |Typ  |BESCHREIBUNG  |
-|---------|---------|---------|
-|`BlobTrigger`|`string`|Der Pfad des auslösenden Blobs.|
-|`Uri`|`System.Uri`|Der Blob-URI für den primären Speicherort|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|Die Systemeigenschaften des Blobs |
-|`Metadata` |`IDictionary<string,string>`|Die benutzerdefinierten Metadaten für das Blob|
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-Beispielsweise protokollieren die folgenden C#-Skript- und JavaScript-Beispiele den Pfad zum auslösenden Blob, einschließlich des Containers:
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
-```csharp
-public static void Run(string myBlob, string blobTrigger, ILogger log)
-{
-    log.LogInformation($"Full blob path: {blobTrigger}");
-} 
-```
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -413,6 +421,16 @@ module.exports = function (context, myBlob) {
     context.done();
 };
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Metadaten sind in Python nicht verfügbar.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Metadaten sind in Java nicht verfügbar.
+
+---
 
 ## <a name="trigger---blob-receipts"></a>Trigger: Blobbelege
 
@@ -464,15 +482,7 @@ Verwenden Sie eine Blobspeicher-Eingabebindung zum Lesen von Blobs.
 
 ## <a name="input---example"></a>Eingabe: Beispiel
 
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#input---c-example)
-* [C#-Skript (.csx)](#input---c-script-example)
-* [Java](#input---java-examples)
-* [JavaScript](#input---javascript-example)
-* [Python](#input---python-example)
-
-### <a name="input---c-example"></a>Eingabe – C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel enthält eine [C#-Funktion](functions-dotnet-class-library.md), bei der ein Warteschlangentrigger und eine Eingabeblobbindung verwendet werden. Die Warteschlangennachricht enthält den Namen des Blobs, und die Funktion protokolliert die Größe des Blobs.
 
@@ -487,7 +497,7 @@ public static void Run(
 }
 ```
 
-### <a name="input---c-script-example"></a>Eingabe: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -536,7 +546,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="input---javascript-example"></a>Eingabe: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -585,7 +595,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="input---python-example"></a>Eingabe: Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -637,16 +647,16 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-examples"></a>Eingabe: Java-Beispiele
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
-* [HTTP-Trigger: Suchen des Blobnamens in einer Abfragezeichenfolge](#http-trigger-look-up-blob-name-from-query-string-java)
-* [Warteschlangentrigger: Empfangen des Blobnamens aus einer Warteschlangennachricht](#queue-trigger-receive-blob-name-from-queue-message-java)
+* [HTTP-Trigger: Suchen des Blobnamens in einer Abfragezeichenfolge](#http-trigger-look-up-blob-name-from-query-string)
+* [Warteschlangentrigger: Empfangen des Blobnamens aus einer Warteschlangennachricht](#queue-trigger-receive-blob-name-from-queue-message)
 
-#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP-Trigger: Suchen des Blobnamens in einer Abfragezeichenfolge (Java)
+#### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP-Trigger: Suchen des Blobnamens in einer Abfragezeichenfolge
 
- Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der Anmerkung ```HttpTrigger``` einen Parameter mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion.
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der Anmerkung `HttpTrigger` einen Parameter mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung `BlobInput` liest dann die Datei und übergibt ihren Inhalt als `byte[]` an die Funktion.
 
 ```java
   @FunctionName("getBlobSizeHttp")
@@ -669,9 +679,9 @@ Dieser Abschnitt enthält folgende Beispiele:
   }
 ```
 
-#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>Warteschlangentrigger: Empfangen des Blobnamens aus einer Warteschlangennachricht (Java)
+#### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>Warteschlangentrigger: Empfangen des Blobnamens aus einer Warteschlangennachricht
 
- Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der ```QueueTrigger```-Anmerkung eine Nachricht mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion.
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der `QueueTrigger`-Anmerkung eine Nachricht mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung `BlobInput` liest dann die Datei und übergibt ihren Inhalt als `byte[]` an die Funktion.
 
 ```java
   @FunctionName("getBlobSize")
@@ -693,7 +703,11 @@ Dieser Abschnitt enthält folgende Beispiele:
 
 Verwenden Sie die `@BlobInput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert aus einem Blob empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit `Optional<T>`, die NULL-Werte annehmen können, verwendet werden.
 
+---
+
 ## <a name="input---attributes"></a>Eingabe: Attribute
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das Attribut [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
@@ -726,6 +740,24 @@ public static void Run(
 
 Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Methoden- oder Parameterebene angeben. Weitere Informationen finden Sie unter [Trigger: Attribute](#trigger---attributes).
 
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das `@BlobInput`-Attribut gewährt Ihnen Zugriff auf das Blob, das die Funktion ausgelöst hat. Wenn Sie ein Bytearray mit dem Attribut verwenden, legen Sie `dataType` auf `binary` fest. Weitere Detailinformationen finden Sie im [Eingabebeispiel](#input---example).
+
+---
+
 ## <a name="input---configuration"></a>Eingabe: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Blob` festlegen:
@@ -743,26 +775,27 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="input---usage"></a>Eingabe: Verwendung
 
-In C#- und C#-Skripts können Sie die folgenden Parametertypen für die Blobeingabebindung verwenden:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* `CloudBlobContainer`
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-<sup>1</sup> Erfordert die inout-Bindung `direction` in *function.json* oder `FileAccess.ReadWrite` in einer C#-Klassenbibliothek.
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
-Wenn Sie versuchen, eine Bindung an einen der Storage SDK-Typen herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-Eine Bindung mit `string` oder `Byte[]` wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter oben in diesem Artikel.
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Verwenden Sie in JavaScript `context.bindings.<name from function.json>`, um auf die Blobdaten zuzugreifen.
+Greifen Sie mit `context.bindings.<name from function.json>` auf Blob-Daten zu.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Greifen Sie über den als [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) typisierten Parameter auf Blob-Daten zu. Weitere Detailinformationen finden Sie im [Eingabebeispiel](#input---example).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das `@BlobInput`-Attribut gewährt Ihnen Zugriff auf das Blob, das die Funktion ausgelöst hat. Wenn Sie ein Bytearray mit dem Attribut verwenden, legen Sie `dataType` auf `binary` fest. Weitere Detailinformationen finden Sie im [Eingabebeispiel](#input---example).
+
+---
 
 ## <a name="output"></a>Output
 
@@ -770,15 +803,7 @@ Verwenden Sie Blobspeicher-Ausgabebindungen, um Blobs zu schreiben.
 
 ## <a name="output---example"></a>Ausgabe: Beispiel
 
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#output---c-example)
-* [C#-Skript (.csx)](#output---c-script-example)
-* [Java](#output---java-examples)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In der [C#-Funktion](functions-dotnet-class-library.md) im folgenden Beispiel werden ein Blobtrigger und zwei Ausgabeblobbindungen verwendet. Die Funktion wird durch die Erstellung eines Bildblobs im Container *sample-images* ausgelöst. Sie erstellt kleine und mittelgroße Kopien der Bildblobs.
 
@@ -828,7 +853,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 };
 ```
 
-### <a name="output---c-script-example"></a>Ausgabe: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -877,7 +902,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="output---javascript-example"></a>Ausgabe: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -926,7 +951,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---python-example"></a>Ausgabe: Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -979,7 +1004,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-examples"></a>Ausgabe: Java-Beispiele
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -988,7 +1013,7 @@ Dieser Abschnitt enthält folgende Beispiele:
 
 #### <a name="http-trigger-using-outputbinding-java"></a>HTTP-Trigger mit OutputBinding (Java)
 
- Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der Anmerkung ```HttpTrigger``` einen Parameter mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion. Die Anmerkung ```BlobOutput``` bindet an ```OutputBinding outputItem```, das dann von der Funktion verwendet wird, um den Inhalt des Eingabeblobs in den konfigurierten Speichercontainer zu schreiben.
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der Anmerkung `HttpTrigger` einen Parameter mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung `BlobInput` liest dann die Datei und übergibt ihren Inhalt als `byte[]` an die Funktion. Die Anmerkung `BlobOutput` bindet an `OutputBinding outputItem`, das dann von der Funktion verwendet wird, um den Inhalt des Eingabeblobs in den konfigurierten Speichercontainer zu schreiben.
 
 ```java
   @FunctionName("copyBlobHttp")
@@ -1020,7 +1045,7 @@ Dieser Abschnitt enthält folgende Beispiele:
 
 #### <a name="queue-trigger-using-function-return-value-java"></a>Warteschlangentrigger mit Funktionsrückgabewert (Java)
 
- Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der ```QueueTrigger```-Anmerkung eine Nachricht mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung ```BlobInput``` liest dann die Datei und übergibt ihren Inhalt als ```byte[]``` an die Funktion. Die ```BlobOutput```-Anmerkung bindet an den Rückgabewert der Funktion, der dann von der Runtime verwendet wird, um den Inhalt des Eingabeblobs in den konfigurierten Speichercontainer zu schreiben.
+ Das folgende Beispiel zeigt eine Java-Funktion, die mithilfe der `QueueTrigger`-Anmerkung eine Nachricht mit dem Namen einer Datei in einem Blob Storage-Container empfängt. Die Anmerkung `BlobInput` liest dann die Datei und übergibt ihren Inhalt als `byte[]` an die Funktion. Die `BlobOutput`-Anmerkung bindet an den Rückgabewert der Funktion, der dann von der Runtime verwendet wird, um den Inhalt des Eingabeblobs in den konfigurierten Speichercontainer zu schreiben.
 
 ```java
   @FunctionName("copyBlobQueueTrigger")
@@ -1046,7 +1071,11 @@ Dieser Abschnitt enthält folgende Beispiele:
 
  Verwenden Sie die `@BlobOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Funktionsparameter, deren Wert in ein Objekt in Blob Storage geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ oder ein POJO steht.
 
+---
+
 ## <a name="output---attributes"></a>Ausgabe: Attribute
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das Attribut [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs).
 
@@ -1074,7 +1103,25 @@ public static void Run(
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das `@BlobOutput`-Attribut gewährt Ihnen Zugriff auf das Blob, das die Funktion ausgelöst hat. Wenn Sie ein Bytearray mit dem Attribut verwenden, legen Sie `dataType` auf `binary` fest. Weitere Detailinformationen finden Sie im [Ausgabebeispiel](#output---example).
+
+---
+
+Ein vollständiges Beispiel finden Sie unter [Ausgabebeispiel](#output---example).
 
 Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Methoden- oder Parameterebene angeben. Weitere Informationen finden Sie unter [Trigger: Attribute](#trigger---attributes).
 
@@ -1095,32 +1142,32 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="output---usage"></a>Ausgabe: Verwendung
 
-In C#- und C#-Skript können Sie sich an die folgenden Typen binden, um Blobs zu schreiben:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `TextWriter`
-* `out string`
-* `out Byte[]`
-* `CloudBlobStream`
-* `Stream`
-* `CloudBlobContainer`<sup>1</sup>
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>2</sup>
-* `CloudBlockBlob`<sup>2</sup>
-* `CloudPageBlob`<sup>2</sup>
-* `CloudAppendBlob`<sup>2</sup>
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-<sup>1</sup> Erfordert die in-Bindung `direction` in *function.json* oder `FileAccess.Read` in einer C#-Klassenbibliothek. Allerdings können Sie das Containerobjekt verwenden, das die Runtime für Schreibvorgänge bereitstellt (z.B. zum Hochladen von Blobs in den Container).
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
-<sup>2</sup> Erfordert die inout-Bindung `direction` in *function.json* oder `FileAccess.ReadWrite` in einer C#-Klassenbibliothek.
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-Wenn Sie versuchen, eine Bindung an einen der Storage SDK-Typen herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
-
-In asynchronen Funktionen verwenden Sie den Rückgabewert oder `IAsyncCollector` anstelle eines `out`-Parameters.
-
-Eine Bindung mit `string` oder `Byte[]` wird nur bei kleinen Blobs empfohlen, da der gesamte Blobinhalt in den Arbeitsspeicher geladen wird. Im Allgemeinen ist es günstiger, die Typen `Stream` oder `CloudBlockBlob` zu verwenden. Weitere Informationen finden Sie unter [Nebenläufigkeit und Arbeitsspeichernutzung](#trigger---concurrency-and-memory-usage) weiter oben in diesem Artikel.
-
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Verwenden Sie in JavaScript `context.bindings.<name from function.json>`, um auf die Blobdaten zuzugreifen.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Sie können Funktionsparameter als die folgenden Typen deklarieren, um Ausgaben in den Blob-Speicher zu schreiben:
+
+* Zeichenfolgen als `func.Out(str)`
+* Streams als `func.Out(func.InputStream)`
+
+Weitere Detailinformationen finden Sie im [Ausgabebeispiel](#output---example).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Das `@BlobOutput`-Attribut gewährt Ihnen Zugriff auf das Blob, das die Funktion ausgelöst hat. Wenn Sie ein Bytearray mit dem Attribut verwenden, legen Sie `dataType` auf `binary` fest. Weitere Detailinformationen finden Sie im [Ausgabebeispiel](#output---example).
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Ausnahmen und Rückgabecodes
 

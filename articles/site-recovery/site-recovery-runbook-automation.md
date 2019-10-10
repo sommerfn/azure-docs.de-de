@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212868"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173493"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Hinzufügen von Azure Automation-Runbooks zu Wiederherstellungsplänen
 
@@ -112,7 +112,7 @@ In Aman Sharmas Blog auf [Harvesting Clouds](http://harvestingclouds.com) finden
 ## <a name="customize-the-recovery-plan"></a>Anpassen des Wiederherstellungsplans
 
 1. Wählen Sie im Tresor **Recovery Plans (Site Recovery)** (Wiederherstellungspläne (Site Recovery)) aus.
-2. Wenn Sie einen Wiederherstellungsplan erstellen möchten, klicken Sie auf **+Wiederherstellungsplan**. [Weitere Informationen](/site-recovery-create-recovery-plans.md) Wenn Sie bereits über einen Wiederherstellungsplan verfügen, öffnen Sie diesen.
+2. Wenn Sie einen Wiederherstellungsplan erstellen möchten, klicken Sie auf **+Wiederherstellungsplan**. [Weitere Informationen](site-recovery-create-recovery-plans.md) Wenn Sie bereits über einen Wiederherstellungsplan verfügen, öffnen Sie diesen.
 3. Klicken Sie auf der Seite „Wiederherstellungsplan“ auf **Anpassen**.
 
     ![Klicken auf die Schaltfläche „Anpassen“](media/site-recovery-runbook-automation-new/custom-rp.png)

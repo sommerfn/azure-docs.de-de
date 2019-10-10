@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137303"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030560"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -75,7 +75,7 @@ typeProperties | Die Typeigenschaften unterscheiden sich je nach Typ (z.B. Azure
 
 ### <a name="data-flow-compatible-dataset"></a>Data Flow-kompatibles Dataset
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Eine Liste der mit dem [Datenfluss](concepts-data-flow-overview.md) kompatiblen Datasettypen, finden Sie unter [Unterstützte Datasettypen](#dataset-type). Mit dem Datenfluss kompatible Datasets erfordern detaillierte Datasetdefinitionen für Transformationen. Daher variiert die JSON-Definition leicht. Anstelle einer _structure_-Eigenschaft verfügen Datasets, die mit dem Datenfluss kompatibel sind, über eine _schema_-Eigenschaft.
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316354"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949546"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -73,7 +73,9 @@ Informationen zu den Sprachen für den Spracherkennungsmodus von Speech finden S
 Eine Liste und den Status der unterstützten Sprachen finden Sie unter [Liste und Status der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) für die Bing-Rechtschreibprüfung.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Seltene oder fremdsprachliche Wörter in einer Anwendung
-In der Kultur `en-us` lernt LUIS, die meisten englischen Wörter zu unterscheiden, einschließlich umgangssprachlicher. In der Kultur `zh-cn` lernt LUIS, die meisten chinesische Zeichen zu unterscheiden. Wenn Sie ein seltenes Wort in `en-us` bzw. ein seltenes Zeichen in `zh-cn` verwenden und sehen, dass LUIS das betreffende Wort bzw. Zeichen offenbar nicht unterscheiden kann, können Sie das Wort oder Zeichen einem [Ausdruckslistenfeature](luis-how-to-add-features.md) hinzufügen. Beispielsweise sollten Wörter außerhalb der Kultur der Anwendung, also fremdsprachliche Wörter, einem Ausdruckslistenfeature hinzugefügt werden. Diese Ausdrucksliste sollte als nicht austauschbar gekennzeichnet werden, um anzugeben, dass die seltenen Wortformen eine Klasse bilden, deren Erkennung LUIS erlernen sollte, die aber keine Synonyme oder untereinander austauschbar sind.
+In der Kultur `en-us` lernt LUIS, die meisten englischen Wörter zu unterscheiden, einschließlich umgangssprachlicher. In der Kultur `zh-cn` lernt LUIS, die meisten chinesische Zeichen zu unterscheiden. Wenn Sie ein seltenes Wort in `en-us` bzw. ein seltenes Zeichen in `zh-cn` verwenden und sehen, dass LUIS das betreffende Wort bzw. Zeichen offenbar nicht unterscheiden kann, können Sie das Wort oder Zeichen einem [Ausdruckslistenfeature](luis-how-to-add-features.md) hinzufügen. Beispielsweise sollten Wörter außerhalb der Kultur der Anwendung, also fremdsprachliche Wörter, einem Ausdruckslistenfeature hinzugefügt werden. 
+
+<!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
 ### <a name="hybrid-languages"></a>Hybridsprachen
 Hybridsprachen kombinieren Wörter aus zwei Kulturen, z.B. Englisch und Chinesisch. Diese Sprachen werden in LUIS nicht unterstützt, da eine App auf einer einzelnen Kultur basiert.

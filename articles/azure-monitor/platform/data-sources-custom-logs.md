@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327459"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177619"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
 
@@ -172,7 +172,7 @@ Benutzerdefinierte Protokolle sind hilfreich, wenn Ihre Daten den oben aufgefüh
 In Fällen, in denen Ihre Daten nicht mit benutzerdefinierten Protokollen gesammelt werden können, gibt es die folgenden alternativen Strategien:
 
 - Verwenden Sie ein benutzerdefiniertes Skript oder eine andere Methode zum Schreiben von Daten in [Windows-Ereignisse](data-sources-windows-events.md) oder [Syslog](data-sources-syslog.md), die von Azure Monitor gesammelt werden. 
-- Senden Sie die Daten mithilfe der [HTTP-Datensammler-API](data-collector-api.md) direkt an Azure Monitor. Ein Beispiel zur Verwendung von Runbooks in Azure Automation finden Sie unter [Sammeln von Protokolldaten in Azure Monitor mit einem Azure Automation-Runbook](runbook-datacollect.md).
+- Senden Sie die Daten mithilfe der [HTTP-Datensammler-API](data-collector-api.md) direkt an Azure Monitor. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Methoden zum Aufschlüsseln der einzelnen importierten Protokolleinträge in mehrere Eigenschaften finden Sie unter [Parse text data in Log Analytics](../log-query/parse-text.md) (Analysieren von Textdaten in Log Analytics).

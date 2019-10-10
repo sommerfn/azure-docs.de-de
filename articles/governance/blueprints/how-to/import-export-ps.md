@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f7bc3610841bcc3c40435f077073ffa0d55acd93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242879"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978439"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Importieren und Exportieren von Blaupausendefinitionen mit PowerShell
 
@@ -64,7 +63,7 @@ Insgesamt sollte die Struktur Ihrer Blaupausendefinition als JSON-Dateien in Ord
 
 Die Schritte zum Exportieren Ihrer Blaupausendefinition sind ganz einfach. Das Exportieren von Blaupausendefinitionen kann nützlich sein, um diese freizugeben, zu sichern oder in die Quellcodeverwaltung zu übernehmen.
 
-- **Blueprint** [erforderlich]
+- **Blaupause** [erforderlich]
   - Gibt die Blaupausendefinition an.
   - Verwenden Sie `Get-AzBlueprint`, um das Verweisobjekt abzurufen.
 - **OutputPath** [erforderlich]

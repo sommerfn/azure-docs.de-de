@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 4702db31ffeb15481584b9638f5be1aa640ff39e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067206"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023629"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure CLI
 Sie können die PostgreSQL-Serverfehlerprotokolle mithilfe der Befehlszeilenschnittstelle (Azure CLI) herunterladen. Der Zugriff auf Transaktionsprotokolle wird jedoch nicht unterstützt. 
@@ -25,7 +25,7 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung
 Sie können den Server für den Zugriff auf Abfrage- und Fehlerprotokolle konfigurieren. Fehlerprotokolle können Informationen über „auto-vacuum“, Verbindungen und Prüfpunkte enthalten.
 1. Aktivieren Sie die Protokollierung.
-2. Um die Abfragenprotokollierung zu aktivieren, aktualisieren Sie **log\_statement** und  **log\_min\_duration\_statement**.
+2. Um die Abfragenprotokollierung zu aktivieren, aktualisieren Sie „**log\_statement**“ und „**log\_min\_duration\_statement**“.
 3. Aktualisieren Sie den Aufbewahrungszeitraum.
 
 Weitere Informationen finden Sie unter [Anpassen der Serverkonfigurationsparameter](howto-configure-server-parameters-using-cli.md).

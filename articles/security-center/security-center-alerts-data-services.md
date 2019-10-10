@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 763349c11a7777bfc807a60e1806c3bb4010245e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202580"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244576"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Bedrohungserkennung für Datendienste in Azure Security Center
 
@@ -27,7 +27,7 @@ ms.locfileid: "71202580"
 
 ## SQL-Datenbank und SQL Data Warehouse <a name="data-sql"></a>
 
-Die SQL-Bedrohungserkennung erkennt anormale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen. Security Center analysiert die SQL-Überwachungsprotokolle und wird nativ in der SQL-Engine ausgeführt.
+Die SQL-Bedrohungserkennung erkennt anormale Aktivitäten, die auf ungewöhnliche und möglicherweise schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu missbrauchen. 
 
 |Warnung|BESCHREIBUNG|
 |---|---|

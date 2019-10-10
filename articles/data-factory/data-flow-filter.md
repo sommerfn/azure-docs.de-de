@@ -7,20 +7,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd29753ff14d16081a46eebbc2ea02d94e5985f1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234410"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029365"
 ---
 # <a name="azure-data-factory-filter-transformation"></a>Azure Data Factory: Filtertransformation
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Die Filtertransformation ermöglicht die Zeilenfilterung. Erstellen Sie einen Ausdruck, der die Filterbedingung definiert. Klicken Sie in das Textfeld, um den Ausdrucks-Generator zu starten. Erstellen Sie im Ausdrucks-Generator einen Filterausdruck, um zu steuern, welche Zeilen aus dem aktuellen Datenstrom zur nächsten Transformation durchlaufen (filtern) dürfen. Stellen Sie sich die Filtertransformation als die WHERE-Klausel einer SQL-Anweisung vor.
 
-## <a name="filter-on-loanstatus-column"></a>Filtern nach der Spalte „loan_status“:
+## <a name="filter-on-loan_status-column"></a>Filtern nach der Spalte „loan_status“:
 
 ```
 in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).

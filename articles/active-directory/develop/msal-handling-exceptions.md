@@ -16,12 +16,12 @@ ms.date: 09/08/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e6356b4f72f08afc2c5b3e5570086fd166a75216
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 635793d18bf33752a2672788bb632571743410b7
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268623"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982762"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Verarbeiten von MSAL-Ausnahmen und -Fehlern
 
@@ -439,8 +439,6 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>Bedingter Zugriff und Anspruchsaufforderungen
-
-Beim automatischen Abruf von Token kann Ihre Anwendung Fehler empfangen, wenn für eine API, auf die Sie zugreifen möchten, eine [Anspruchsaufforderung für bedingten Zugriff](conditional-access-dev-guide.md), wie z. B. eine MFA-Richtlinie, erforderlich ist.
 
 Beim automatischen Abruf von Token kann Ihre Anwendung Fehler empfangen, wenn für eine API, auf die Sie zugreifen möchten, eine [Anspruchsaufforderung für bedingten Zugriff](conditional-access-dev-guide.md), wie z. B. eine MFA-Richtlinie, erforderlich ist.
 

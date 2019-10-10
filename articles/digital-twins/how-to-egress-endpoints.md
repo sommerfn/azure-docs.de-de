@@ -1,19 +1,19 @@
 ---
 title: Ausgang und Endpunkte in Azure Digital Twins | Microsoft-Dokumentation
 description: Leitfaden für die Erstellung von Endpunkten mit Azure Digital Twins.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013937"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959113"
 ---
 # <a name="egress-and-endpoints"></a>Ausgang und Endpunkte
 

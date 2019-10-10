@@ -3,8 +3,8 @@ title: 'Erstellen von Python-Apps unter Linux: Azure App Service | Microsoft-Dok
 description: Stellen Sie in wenigen Minuten Ihre erste Python-App „Hallo Welt“ in Azure App Service unter Linux bereit.
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
@@ -14,18 +14,18 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: false
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071002"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024933"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Erstellen einer Python-App in Azure App Service für Linux (Vorschau)
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Erstellen einer Python-App in Azure App Service für Linux
 
-[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter Linux-Betriebssystemen. Dieser Schnellstart zeigt, wie Sie eine Python-App über dem integrierten Python-Image (Vorschau) in App Service für Linux mithilfe von [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) bereitstellen.
-
-Die Schritte in diesem Artikel können unter Mac, Windows oder Linux ausgeführt werden.
+In dieser Schnellstartanleitung stellen Sie eine einfache Python-App für [App Service für Linux](app-service-linux-intro.md) bereit, mit der ein hoch skalierbarer Webhostingdienst mit Self-Patching bereitgestellt wird. Sie verwenden die Azure-Befehlszeilenschnittstelle ([Azure CLI](/cli/azure/install-azure-cli)) über den interaktiven, browserbasierten Azure Cloud Shell-Dienst und können die Schritte mit einem Mac-, Linux- oder Windows-Computer ausführen.
 
 ![In Azure ausgeführte Beispiel-App](media/quickstart-python/hello-world-in-browser.png)
 
@@ -122,7 +122,7 @@ Der Python-Beispielcode wird in App Service unter Linux mit einem integrierten I
 
 **Glückwunsch!** Sie haben Ihre erste Python-App für App Service unter Linux bereitgestellt.
 
-## <a name="update-locally-and-redeploy-the-code"></a>Lokales Aktualisieren und erneutes Bereitstellen des Codes
+## <a name="update-and-redeploy-the-code"></a>Aktualisieren und erneutes Bereitstellen des Codes
 
 Geben Sie in Cloud Shell `code application.py` ein, um den Cloud Shell-Editor zu öffnen.
 
@@ -163,8 +163,6 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Das integrierte Python-Image in App Service unter Linux ist zurzeit als Vorschauversion verfügbar, und Sie können den zum Starten Ihrer App verwendeten Befehl anpassen. Sie können Python-Apps für die Produktionsumgebung stattdessen auch mit einem benutzerdefinierten Container erstellen.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Python-App mit PostgreSQL](tutorial-python-postgresql-app.md)

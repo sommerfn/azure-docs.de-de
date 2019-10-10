@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 07/11/2019
-ms.openlocfilehash: a8dfe0db5277a995b6e6675381ebeb5aeb243c9b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 65b6b503d107b36813d1716348ce5f11fa840cc0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647211"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937212"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Erste Schritte mit verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -73,6 +73,6 @@ Erfahren Sie mehr über den [empfohlenen Migrationsprozess](sql-database-managed
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Machen Sie sich mit der [allgemeinen Liste mit unterstützten Features in verwalteten Instanzen](sql-database-features.md) sowie mit [Details und bekannten Problemen](sql-database-managed-instance-transact-sql-information.md) vertraut.
-- Informieren Sie sich über [technische Eigenschaften der verwalteten Instanz](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+- Informieren Sie sich über [technische Eigenschaften der verwalteten Instanz](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 - Weiterführende Schrittanleitungen finden Sie unter [Verwenden einer verwalteten Instanz in Azure SQL-Datenbank](sql-database-howto-managed-instance.md).
 - [Identifizieren der richtigen Azure SQL Datenbank-SKU/Verwaltete-Instanz-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).

@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676488"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842768"
 ---
-# <a name="automatically-scale-session-hosts"></a>Automatisches Skalieren von Sitzungshosts
+# <a name="scale-session-hosts-dynamically"></a>Dynamisches Skalieren von Sitzungshosts
 
 Für viele Bereitstellungen von Windows Virtual Desktop in Azure machen die Kosten für virtuelle Computer einen erheblichen Teil der Gesamtkosten einer Bereitstellung aus. Zur Kostenreduzierung ist es am besten, die virtuellen Computer (VMs) von Sitzungshosts außerhalb der Spitzenzeiten herunterzufahren und die Zuordnung dafür aufzuheben und sie für die Spitzenzeiten dann wieder neu zu starten.
 

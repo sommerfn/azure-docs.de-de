@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 9508ce927ef03c83f1c4ef7bf28d2fc02b831a99
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879925"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937307"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -169,7 +169,7 @@ Danach vergleichen Sie die Leistungsparameter mit den Baselinewerten, und ermitt
 Das Ergebnis des Leistungsvergleichs könnte wie folgt aussehen:
 - Die Workloadleistung in der verwalteten Instanz ist gleich der oder besser als die Workloadleistung in SQL Server. In diesem Fall haben Sie bestätigt, dass die Migration erfolgreich ist.
 - Die meisten Leistungsparameter und die Abfragen in der Workload funktionieren ordnungsgemäß, es gibt aber einige Ausnahmen mit beeinträchtigter Leistung. In diesem Fall müssen Sie die Unterschiede und deren Wichtigkeit ermitteln. Gibt es einige wichtige Abfragen mit verminderter Leistung, sollten Sie untersuchen, ob die zugrunde liegenden SQL-Pläne geändert wurden oder ob die Abfragen an einige Ressourcengrenzen stoßen. Abhilfe könnte in diesem Fall sein, einige Hinweise auf die wichtigen Abfragen (z.B. geänderte Kompatibilitätsstufe, Legacy-Kardinalitätsschätzung) entweder direkt oder über Planhinweislisten anzuwenden, wozu Statistiken und Indizes erstellt oder neu erstellt werden, die sich auf die Pläne auswirken können. 
-- Die meisten der Abfragen sind in der verwalteten Instanz im Vergleich zu Ihrer SQL Server-Quellinstanz langsamer. In diesem Fall sollten Sie die Hauptursachen für die Unterschiede ermitteln, etwa das [Erreichen einiger Ressourcengrenzwerte]( sql-database-managed-instance-resource-limits.md#instance-level-resource-limits) wie E/A-Grenzwerte, Arbeitsspeichergrenzwert, Grenzwert der Instanzprotokollrate usw. Gibt es keine Ressourcengrenzwerte, die den Unterschied verursachen können, sollten Sie den Kompatibilitätsgrad der Datenbank oder Datenbankeinstellungen (etwa Legacy-Kardinalitätsschätzung) ändern und den Test neu starten. Lesen Sie die Empfehlungen, die von den „Verwaltete Instanz“- oder „Abfragespeicher“-Sichten bereitgestellt werden, um die Abfragen zu bestimmen, für die sich die Leistung verschlechtert hat.
+- Die meisten der Abfragen sind in der verwalteten Instanz im Vergleich zu Ihrer SQL Server-Quellinstanz langsamer. In diesem Fall sollten Sie die Hauptursachen für die Unterschiede ermitteln, etwa das [Erreichen einiger Ressourcengrenzwerte]( sql-database-managed-instance-resource-limits.md#service-tier-characteristics) wie E/A-Grenzwerte, Arbeitsspeichergrenzwert, Grenzwert der Instanzprotokollrate usw. Gibt es keine Ressourcengrenzwerte, die den Unterschied verursachen können, sollten Sie den Kompatibilitätsgrad der Datenbank oder Datenbankeinstellungen (etwa Legacy-Kardinalitätsschätzung) ändern und den Test neu starten. Lesen Sie die Empfehlungen, die von den „Verwaltete Instanz“- oder „Abfragespeicher“-Sichten bereitgestellt werden, um die Abfragen zu bestimmen, für die sich die Leistung verschlechtert hat.
 
 > [!IMPORTANT]
 > „Verwaltete Instanz“ hat ein integriertes automatische Plankorrekturfeature, das standardmäßig aktiviert ist. Dieses Feature stellt sicher, dass Abfragen, die bisher einwandfrei funktioniert haben, in Zukunft nicht beeinträchtigt werden. Aktivieren Sie dieses Feature, und führen Sie die Workload lange genug mit den alten Einstellungen aus, bevor Sie Einstellungen ändern. So ist sichergestellt, dass die verwaltete Instanz über die Baselineleistung und die Pläne Bescheid weiß.

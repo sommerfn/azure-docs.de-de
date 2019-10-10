@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c759567e4d8c183452eccbbdca8459c8993d1361
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092419"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176650"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
 Der Azure VM-Agent und die dazugehörigen Erweiterungen sind Teil der Microsoft Azure-Infrastrukturdienste. VM-Erweiterungen sind Softwarekomponenten, die die VM-Funktionalität erweitern und verschiedene Verwaltungsvorgänge für virtuelle Computer vereinfachen.
 
 Der primäre Anwendungsfall für die Azure DSC-Erweiterung (Desired State Configuration) besteht im Bootstrap eines virtuellen Computers zum [Azure Automation DSC-Dienst](../../automation/automation-dsc-overview.md).
-Der Dienst bietet [Vorteile](/powershell/dsc/metaconfig#pull-service) wie die fortlaufende Verwaltung der VM-Konfiguration und die Integration mit anderen Betriebstools wie Azure Monitoring.
+Der Dienst bietet [Vorteile](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service) wie die fortlaufende Verwaltung der VM-Konfiguration und die Integration mit anderen Betriebstools wie Azure Monitoring.
 Der Einsatz der Erweiterung zum Registrieren von VMs beim Dienst stellt eine flexible Lösung dar, die sogar übergreifend über Azure-Abonnements funktioniert.
 
 Sie können die DSC-Erweiterung unabhängig vom Automation DSC-Dienst verwenden.
@@ -39,7 +39,7 @@ Dieser Artikel enthält Informationen zu beiden Szenarien: die Verwendung der DS
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - **Lokaler Computer:** Für die Interaktion mit der Erweiterung für virtuelle Azure-Computer müssen Sie das Azure-Portal oder das Azure PowerShell SDK verwenden.
-- **Gast-Agent:** Der mit der DSC-Konfiguration konfigurierte Azure-Computer muss über ein Betriebssystem verfügen, das Version 4.0 oder höher von Windows Management Framework (WMF) unterstützt. Die vollständige Liste der unterstützten Betriebssystemversionen finden Sie im [Versionsverlauf der DSC-Erweiterung](/powershell/dsc/azuredscexthistory).
+- **Gast-Agent:** Der mit der DSC-Konfiguration konfigurierte Azure-Computer muss über ein Betriebssystem verfügen, das Version 4.0 oder höher von Windows Management Framework (WMF) unterstützt. Die vollständige Liste der unterstützten Betriebssystemversionen finden Sie im [Versionsverlauf der DSC-Erweiterung](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
 ## <a name="terms-and-concepts"></a>Begriffe und Konzepte
 
@@ -51,7 +51,7 @@ Für dieses Handbuch müssen Sie mit folgenden Konzepten vertraut sein:
 
 ## <a name="architecture"></a>Architecture
 
-Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung nimmt ein Konfigurationsdokument und einen Satz von Parametern entgegen. Wird keine Datei angegeben, wird ein [Standardkonfigurationsskript](#default-configuration-script) in die Erweiterung eingebettet. Dieses wird ausschließlich zum Festlegen von Metadaten im [lokalen Konfigurations-Manager](/powershell/dsc/metaconfig) verwendet.
+Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung nimmt ein Konfigurationsdokument und einen Satz von Parametern entgegen. Wird keine Datei angegeben, wird ein [Standardkonfigurationsskript](#default-configuration-script) in die Erweiterung eingebettet. Dieses wird ausschließlich zum Festlegen von Metadaten im [lokalen Konfigurations-Manager](/powershell/scripting/dsc/managing-nodes/metaConfig) verwendet.
 
 Wenn die Erweiterung das erste Mal aufgerufen wird, installiert sie mit der folgenden Logik eine Version von Windows Management Framework (WMF):
 
@@ -63,7 +63,7 @@ Für die Installation von WMF ist ein Neustart erforderlich. Nach dem Neustart l
 
 ### <a name="default-configuration-script"></a>Standardkonfigurationsskript
 
-Die Azure-DSC-Erweiterung enthält ein Standardkonfigurationsskript, das für das Onboarding eines virtuellen Computers in den Azure Automation DSC-Dienst vorgesehen ist. Die Skriptparameter sind an den konfigurierbaren Eigenschaften des [lokalen Konfigurations-Managers](/powershell/dsc/metaconfig) ausgerichtet. Informationen zu Skriptparametern erhalten Sie in Abschnitt [Standardkonfigurationsskript](dsc-template.md#default-configuration-script) des Artikels [Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen](dsc-template.md). Das vollständige Skript finden Sie in der [Azure Schnellstartvorlage in GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Die Azure-DSC-Erweiterung enthält ein Standardkonfigurationsskript, das für das Onboarding eines virtuellen Computers in den Azure Automation DSC-Dienst vorgesehen ist. Die Skriptparameter sind an den konfigurierbaren Eigenschaften des [lokalen Konfigurations-Managers](/powershell/scripting/dsc/managing-nodes/metaConfig) ausgerichtet. Informationen zu Skriptparametern erhalten Sie in Abschnitt [Standardkonfigurationsskript](dsc-template.md#default-configuration-script) des Artikels [Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen](dsc-template.md). Das vollständige Skript finden Sie in der [Azure Schnellstartvorlage in GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informationen zum Registrieren beim Azure Automation DSC-Dienst (State Configuration)
 
@@ -194,7 +194,7 @@ Für dieses Portal werden folgende Eingaben erfasst:
 
 - **Datensammlung:** Bestimmt, ob die Erweiterung Telemetriedaten sammelt. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung).
 
-- **Version**: Gibt die Version der zu installierenden DSC-Erweiterung an. Informationen zu Versionen finden Sie unter [Versionsverlauf der Azure Desired State Configuration-Erweiterung](/powershell/dsc/azuredscexthistory).
+- **Version**: Gibt die Version der zu installierenden DSC-Erweiterung an. Informationen zu Versionen finden Sie unter [Versionsverlauf der Azure Desired State Configuration-Erweiterung](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
 - **Nebenversion automatisch aktualisieren:** Dieses Feld entspricht dem **AutoUpdate**-Switch in den Cmdlets und ermöglicht die Erweiterung zum automatischen Aktualisieren auf die neueste Installation während der Installation. **Ja** weist den Erweiterungshandler dazu an, die neueste verfügbare Version zu verwenden, während **Nein** die Installation der angegebenen **Version** erzwingt. Wird weder **Ja** noch **Nein** ausgewählt, so entspricht dies der Auswahl von **Nein**.
 
@@ -204,7 +204,7 @@ Protokolle für die Erweiterung werden am folgenden Speicherort gespeichert: `C:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](/powershell/dsc/overview).
+- Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](/powershell/scripting/dsc/overview/overview).
 - Sehen Sie sich die [Resource Manager-Vorlage für die DSC-Erweiterung](dsc-template.md) an.
 - Weitere Funktionen, die Sie mit PowerShell DSC verwalten können, sowie weitere DSC-Ressourcen finden Sie im [PowerShell-Katalog](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
 - Ausführliche Informationen zum Übergeben von sensiblen Parametern an Konfigurationen finden Sie unter [Übergeben von Anmeldeinformationen an den Azure DSC-Erweiterungshandler](dsc-credentials.md).

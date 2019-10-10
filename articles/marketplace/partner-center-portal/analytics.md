@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036645"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028850"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 
@@ -26,6 +26,7 @@ Um auf die Analysetools im Partner Center zuzugreifen, öffnen Sie das Dashboard
 |[Bestellungen](#orders-dashboard)|Informationen zu Ihren Bestellungen in grafischem und herunterladbarem Format|
 |[Kunden](#customer-dashboard)|Informationen zu Ihrer Kunden, einschließlich Wachstumstrends, in grafischem und herunterladbarem Format dargestellt|
 |[Downloads](#downloads-dashboard)|Eine Liste Ihrer Downloadanforderungen über die letzten 30 Tage|
+|[Bewertungen und Rezensionen](#ratings-and-reviews)| Informationen zu Bewertungen und Rezensionen, die von Ihren Kunden für die von ihnen erworbenen Angebote abgegeben wurden.
 
 ## <a name="summary-dashboard"></a>Dashboard „Zusammenfassung“
 
@@ -285,3 +286,38 @@ Sie erhalten eine Popupbenachrichtigung und eine E-Mail mit einem Link zum Dashb
 | Anbietername| Kunde| Der Name des Anbieters, der an der Beziehung zwischen Microsoft und dem Endkunden beteiligt ist. Beim Lizenztyp „Enterprise über Handelspartner“ ist dies der Handelspartner. Wenn ein Cloud Solution Provider (CSP) beteiligt ist, wird hier der CSP angegeben.|
 | SKU| Reihenfolge| Der bei der Veröffentlichung definierte SKU-Name. Ein Angebot kann mehrere SKUs enthalten, aber eine SKU kann nur einem einzigen Angebot zugeordnet werden.||
 | Enddatum der Testversion| Reihenfolge| Das Datum, an dem der Testzeitraum für die Bestellung endet oder beendet ist.||
+
+## <a name="ratings-and-reviews"></a>Bewertungen und Rezensionen
+
+Beim Suchen, Durchsuchen und Erwerben von Angeboten in beiden Marketplaces können Kunden Bewertungen und Rezensionen für die von ihnen erworbenen Angebote abgeben. Die Kunden können neue Bewertungen und Rezensionen senden oder bereits übermittelte Bewertungen und Rezensionen aktualisieren oder löschen. Rezensionen werden im Azure Marketplace oder in AppSource auf der Registerkarte „Rezensionen“ auf der Produktseite des Angebots veröffentlicht. Kunden können ihre Namen für Bewertungen oder Rezensionen angeben oder anonym posten.  
+
+> [!NOTE]
+> Kunden können nur Änderungen an den Bewertungen und Rezensionen vornehmen, deren Besitzer sie sind.
+
+Im Dashboard **Bewertungen und Rezensionen** werden die Trends und Erkenntnisse von Kundenaktivitäten angezeigt. Es bietet grafische Darstellungen der folgenden Elemente:
+
+- Bewertungen und Rezensionen  
+- Rezensionskommentare
+
+### <a name="marketplace-storefront-tabs"></a>Registerkarten der Marketplace-Storefront
+
+Herausgeber können ihre Angebotsmetriken separat auf den Registerkarte von AppSource und Azure Marketplace anzeigen. Wählen Sie im Dropdownmenü die Option **Angebot** aus, um bestimmte Angebotsmetriken anzuzeigen:
+
+![Partner Center, Dashboard „Analyse“, Dropdownoption „Angebot“](./media/analyze-offer-dropdown.png)
+
+### <a name="ratings-and-reviews-summary"></a>Zusammenfassung von Bewertungen und Rezensionen
+
+Im Abschnitt mit der Zusammenfassung von Bewertungen und Rezensionen werden die folgenden Metriken für einen ausgewählten Datumsbereich angezeigt:
+
+- **Durchschnittliche Bewertung:** Gewichtete durchschnittliche Sternebewertung aller Bewertungen, die von Kunden für das ausgewählte Angebot gesendet wurden.
+- **Aufschlüsselung der Bewertungen:** Aufschlüsselung der Sternebewertung nach Anzahl von Kunden, die Bewertungen gesendet haben. Im Balkendiagramm sind tatsächliche und überarbeitete Bewertungen (Anzahl aktualisierter Bewertungen) gestapelt.
+- **Bewertungen gesamt:** Gesamtanzahl der gesendeten Bewertungen. Diese Anzahl umfasst auch Bewertungen mit und ohne Rezensionen.
+- **Bewertungen mit Rezensionen:** Anzahl gesendeter Rezensionen.
+
+![Partner Center, Dashboard „Analyse“, Zusammenfassung von Bewertungen und Rezensionen](./media/analyze-ratings-summary.png)
+
+### <a name="review-comments"></a>Rezensionskommentare
+
+Rezensionen werden in chronologischer Reihenfolge nach Veröffentlichungsdatum angezeigt. In der Standardansicht werden alle Rezensionen angezeigt. Mit der Option **Filter** im Dropdownmenü können Sie die Rezensionen nach Sternebewertung filtern. Sie können auch nach Schlüsselwörtern suchen, die in der Rezension vorkommen.  
+
+![Partner Center, Dashboard „Analyse“, Rezensionskommentare](./media/analyze-reviews.png)

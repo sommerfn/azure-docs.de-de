@@ -6,16 +6,16 @@ keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für D
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 2d3d37bcb6ee4bae82d82cf676211e9e1546cfad
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 10/3/2019
+ms.openlocfilehash: 47a701cce348e86359947376b3d6a9915dfb2264
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191988"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950159"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Datenerfassungstools für die Data Science-VM
 
@@ -91,15 +91,3 @@ Nachstehend sind einige der Datenverschiebungstools aufgeführt, die in der DSVM
 |  Verwenden und Ausführen    |   Führen Sie _blobfuse_ auf einem Terminal aus.    |
 | Links zu Beispielen      | [blobfuse auf GitHub](https://github.com/Azure/azure-storage-fuse)      |
 | Verwandte Tools auf der DSVM      | Azure-Befehlszeilenschnittstelle      |
-
-
-## <a name="microsoft-data-management-gateway"></a>Microsoft-Datenverwaltungsgateway
-
-|    |           |
-| ------------- | ------------- |
-| Was ist das?   | Ein Tool zum Verknüpfen lokaler Datenquellen mit Clouddiensten, um sie zu nutzen.      |
-| Unterstützte DSVM-Versionen      | Windows      |
-| Typische Verwendung      | Herstellen einer Verbindung zwischen einem virtuellen Computer und einer lokalen Datenquelle      |
-|  Verwendung/Ausführung    |   Öffnen Sie das Microsoft-Datenverwaltungsgateway über das Startmenü.    |
-| Links zu Beispielen      | [Gateway zur Datenverwaltung](https://msdn.microsoft.com/library/dn879362.aspx)      |
-| Verwandte Tools auf der DSVM      | AzCopy, AdlCopy, bcp    |

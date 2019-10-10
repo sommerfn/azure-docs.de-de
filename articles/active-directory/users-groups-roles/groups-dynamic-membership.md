@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673421"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241168"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -342,7 +342,7 @@ Erweiterungsattribute und benutzerdefinierte Erweiterungsattribute werden als Ze
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Benutzerdefinierte Erweiterungseigenschaften werden mit einer lokalen Windows Server AD-Instanz oder einer verbundenen SaaS-Anwendung synchronisiert und weisen das Format `user.extension_[GUID]__[Attribute]` auf. Dabei gilt:
+Benutzerdefinierte Erweiterungseigenschaften werden mit einer lokalen Windows Server AD-Instanz oder einer verbundenen SaaS-Anwendung synchronisiert und weisen das Format `user.extension_[GUID]_[Attribute]` auf. Dabei gilt:
 
 * [GUID] ist der eindeutige Bezeichner in Azure AD für die Anwendung, die die Eigenschaft in Azure AD erstellt hat.
 * [Attribute] ist der Name der Eigenschaft bei ihrer Erstellung.
@@ -350,7 +350,7 @@ Benutzerdefinierte Erweiterungseigenschaften werden mit einer lokalen Windows Se
 Beispiel für eine Regel, die eine benutzerdefinierte Erweiterungseigenschaft verwendet:
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
 Den Namen der benutzerdefinierten Eigenschaft finden Sie im Verzeichnis. Fragen Sie dazu die Eigenschaft eines Benutzers mithilfe des Graph-Explorers ab, und suchen Sie nach dem Eigenschaftennamen. Sie können jetzt im Regel-Generator für dynamische Benutzergruppen auf den Link **Get custom extension properties** (Benutzerdefinierte Erweiterungseigenschaften abrufen) klicken, um Ihre eindeutige App-ID einzugeben und die vollständige Liste mit benutzerdefinierten Erweiterungseigenschaften abzurufen, die Sie beim Erstellen einer dynamischen Mitgliedschaftsregel verwenden. Diese Liste kann auch aktualisiert werden, um neue benutzerdefinierte Erweiterungseigenschaften für diese App zu erhalten.

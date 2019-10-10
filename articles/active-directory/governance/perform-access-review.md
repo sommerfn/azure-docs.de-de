@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be5d6eb443d90d3413510576a9609fe43df7caa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499628"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948242"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
 Azure Active Directory (Azure AD) erleichtert Unternehmen das Verwalten des Zugriffs auf Gruppen und Anwendungen in Azure AD und anderen Microsoft-Onlinediensten durch die Funktion „Zugriffsüberprüfungen“.
 
 In diesem Artikel wird beschrieben, wie ein Reviewer eine Zugriffsüberprüfung für Gruppenmitglieder oder Benutzer mit Zugriffsberechtigungen für eine Anwendung durchführt.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-- Azure AD Premium P2
-
-Weitere Informationen finden Sie unter [Welche Benutzer benötigen Lizenzen?](access-reviews-overview.md#which-users-must-have-licenses)
 
 ## <a name="open-the-access-review"></a>Öffnen der Zugriffsüberprüfung
 

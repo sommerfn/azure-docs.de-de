@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091118"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029993"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Serverprotokolle in Azure Database for PostgreSQL (Einzelserver)
 Azure Database for PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
@@ -24,7 +24,7 @@ Sie können die Protokollierung auf dem Server mithilfe von Serverparametern fü
 Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu PostgreSQL unter [Fehlerberichterstattung und -protokollierung](https://www.postgresql.org/docs/current/static/runtime-config-logging.html). Weitere Informationen dazu, wie Sie Azure Database for PostgreSQL-Parameter konfigurieren, finden Sie in der Dokumentation zum [Portal](howto-configure-server-parameters-using-portal.md) bzw. zur [Befehlszeilenschnittstelle](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Zugreifen auf Serverprotokolle über das Portal oder die Befehlszeilenschnittstelle
-Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure Database for PostgreSQL über das [Azure-Portal](howto-configure-server-logs-in-portal.md), die [Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-using-cli.md) und die Azure-REST-APIs auf sie zugreifen. Die Protokolldateien rotieren jede Stunde oder bei einer Größe von 100 MB, je nachdem, welcher Fall zuerst eintritt. Mithilfe des mit Ihrem Server verknüpften Parameters  **log\_retention\_period** können Sie den Aufbewahrungszeitraum für diesen Protokollspeicher festlegen. Der Standardwert ist 3 Tage. Der Maximalwert beträgt 7 Tage. Ihrem Server muss genügend Speicher zugewiesen sein, damit die Protokolldateien gespeichert werden können. (Dieser retention-Parameter steuert nicht Azure-Diagnoseprotokolle.)
+Wenn Sie Protokolle aktiviert haben, können Sie im Protokollspeicher von Azure Database for PostgreSQL über das [Azure-Portal](howto-configure-server-logs-in-portal.md), die [Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-using-cli.md) und die Azure-REST-APIs auf sie zugreifen. Die Protokolldateien rotieren jede Stunde oder bei einer Größe von 100 MB, je nachdem, welcher Fall zuerst eintritt. Mithilfe des mit Ihrem Server verknüpften Parameters **log\_retention\_period** können Sie die Beibehaltungsdauer für diesen Protokollspeicher festlegen. Der Standardwert ist 3 Tage. Der Maximalwert beträgt 7 Tage. Ihrem Server muss genügend Speicher zugewiesen sein, damit die Protokolldateien gespeichert werden können. (Dieser retention-Parameter steuert nicht Azure-Diagnoseprotokolle.)
 
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle

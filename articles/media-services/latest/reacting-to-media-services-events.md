@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07ad39bdcec6e4b00d3b47553930fc05694ca2af
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147158"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026621"
 ---
 # <a name="handling-event-grid-events"></a>Behandeln von Event Grid-Ereignissen
 
@@ -40,7 +40,7 @@ Anwendungen, die Media Services-Ereignisse behandeln, sollten einige empfohlene 
 * Verwenden Sie Präfix- und Suffixübereinstimmungen für „subject“, um Ereignisse auf ein bestimmtes Ereignis zu beschränken.
 
 > [!NOTE]
-> Ereignisse unterliegen der [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) von Event Grid. Wenn Sie Ereignisbenachrichtigungen mithilfe von APIs erhalten möchten, finden Sie weitere Informationen in den Beispielen zum Verarbeiten von Ereignissen mit dem [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) oder [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey).
+> Ereignisse unterliegen der [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) von Event Grid. Wenn Sie Ereignisbenachrichtigungen mithilfe von APIs erhalten möchten, finden Sie weitere Informationen in den Beispielen zum Verarbeiten von Ereignissen mit dem [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) oder [Java SDK](https://github.com/Azure-Samples/media-services-v3-java).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

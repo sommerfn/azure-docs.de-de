@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1acef92ed5de86d4526d8b5c4bcf338b341c50f7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241153"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029765"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Automatisches Erstellen von Incidents aus Microsoft-Sicherheitswarnungen
 
@@ -35,7 +35,7 @@ Sie müssen [Microsoft-Sicherheitslösungen verbinden](connect-data-sources.md#d
 
 Verwenden Sie die in Azure Sentinel integrierten Regeln, um auszuwählen, welche verbundenen Microsoft-Sicherheitslösungen automatisch Azure Sentinel-Incidents in Echtzeit erstellen sollen. Sie können mithilfe der Regeln auch spezifischere Filteroptionen definieren und somit festlegen, welche der durch die Microsoft-Sicherheitslösung generierten Warnungen automatisch Incidents in Azure Sentinel erstellen sollen. Sie können beispielsweise festlegen, dass Azure Sentinel-Incidents automatisch nur aus Azure Security Center-Benachrichtigungen mit hohem Schweregrad erstellt werden.
 
-1. Wählen Sie im Azure-Portal unter „Azure Sentinel“ die Option **Analytics** aus.
+1. Wählen Sie im Azure-Portal unter „Azure Sentinel“ die Option **Analytics** aus.
 
 1. Wählen Sie die Registerkarte **Rule templates** (Regelvorlagen) aus, um alle integrierten Analyseregeln anzuzeigen.
 
@@ -64,7 +64,7 @@ Verwenden Sie die in Azure Sentinel integrierten Regeln, um auszuwählen, welche
 
    ![Erstellen von Sicherheitsincidents](media/incidents-from-alerts/generate-security-incidents.png)
 
-1. Wählen Sie unter **Incidents erstellen** die Option **Aktivieren** aus, um die standardmäßige Analyseregel zu aktivieren, die automatisch Incidents aus im verbundenen Sicherheitsdienst generierten Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** und anschließend unter **Aktive Regeln** bearbeiten.
+1. Wählen Sie unter **Incidents erstellen** die Option **Aktivieren** aus, um die standardmäßige Analyseregel zu aktivieren, die automatisch Incidents aus im verbundenen Sicherheitsdienst generierten Warnungen erstellt. Anschließend können Sie diese Regel unter **Analytics** und dann unter **Aktive Regeln** bearbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

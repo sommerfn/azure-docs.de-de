@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
-ms.openlocfilehash: 7b238044fd3795ae2f49c2fa21367e6499a65672
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d13c997d3871815ebd541e5985eb9fef726a76
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570118"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029744"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Verwalten von Schemas in einer SaaS-Anwendung mit dem Muster für eine Datenbank pro Mandant in Azure SQL-Datenbank
  
@@ -86,7 +86,7 @@ Zum Erstellen eines neuen Auftrags verwenden Sie eine Gruppe von gespeicherten S
 1. Stellen Sie in SSMS eine Verbindung mit dem Katalogserver her: *catalog-dpt-&lt;Benutzer&gt;.database.windows.net*. 
 1. Öffnen Sie in SSMS die Datei „…\\Learning Modules\\Schema Management\\DeployReferenceData.sql“.
 1. Ändern Sie diese Anweisung: „SET @wtpUser = &lt;Benutzer&gt;“. Ersetzen Sie den Wert „Benutzer“ durch den Benutzer, der beim Bereitstellen der App „Wingtip Tickets SaaS Database Per Tenant“ verwendet wurde.
-1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie  **F5**, um das Skript auszuführen.
+1. Stellen Sie sicher, dass Sie mit der Datenbank _jobagent_ verbunden sind, und drücken Sie **F5**, um das Skript auszuführen.
 
 Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql*:
 * **sp\_add\_target\_group** erstellt den Zielgruppennamen „DemoServerGroup“.

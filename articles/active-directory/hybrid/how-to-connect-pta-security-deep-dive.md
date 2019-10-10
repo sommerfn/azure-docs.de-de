@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348064"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174436"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -148,6 +148,7 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 
    > [!NOTE]
    > Wenn beim Authentifizierungs-Agent während der Anmeldung ein Fehler auftritt, wird die gesamte Anforderung gelöscht. Es erfolgt keine Weitergabe der Anmeldeanforderungen von einem Authentifizierungs-Agent an einen anderen Authentifizierungs-Agent auf lokaler Ebene. Diese Agents kommunizieren nur mit der Cloud und nicht miteinander.
+   
 13. Der Authentifizierungs-Agent leitet das Ergebnis über einen ausgehenden gegenseitig authentifizierten HTTPS-Kanal (Port 443) zurück an den Azure AD STS. Bei der gegenseitigen Authentifizierung wird das Zertifikat verwendet, das zuvor während der Registrierung für den Authentifizierungs-Agent ausgestellt wurde.
 14. Der Azure AD STS überprüft, ob das Ergebnis mit der jeweiligen Anmeldeanforderung auf Ihrem Mandanten korreliert.
 15. Der Azure AD STS fährt gemäß Konfiguration mit dem Anmeldeverfahren fort. Wenn die Kennwortvalidierung erfolgreich war, kann der Benutzer beispielsweise zum Einrichten von Multi-Factor Authentication aufgefordert oder zurück an die Anwendung geleitet werden.

@@ -1,19 +1,19 @@
 ---
 title: Verwenden der Legacy-AAD-App-Registrierung für Azure Digital Twins | Microsoft-Dokumentation
 description: Dieser Artikel zeigt die Verwendung der Legacy-Methode zum Erstellen der App-Registrierung mit Azure Active Directory für Ihr Azure Digital Twins-Setup.
+ms.author: alinast
 author: alinamstanciu
-manager: philmea
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: e9689c71c881c7f5f29ac05fea53bb2c27f75591
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 10/03/2019
+ms.openlocfilehash: c7cf8b042c079aa67ff62a00955d60c27f0e72d4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624764"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978580"
 ---
 # <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>Registrieren Ihrer Azure Digital Twins-App bei Azure Active Directory mit der Legacy-Methode
 

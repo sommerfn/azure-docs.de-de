@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 68c0da5a7fe2b02c6115a8c1bbc24feb95e12adb
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003709"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029406"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Schemaabweichung im Zuordnungsdatenfluss
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Eine Schemaabweichung liegt vor, wenn Ihre Quellen Metadaten häufig ändern. Felder, Spalten und Typen können bei laufendem Betrieb hinzugefügt, entfernt oder geändert werden. Ohne Vorkehrungen bei Schemaabweichungen wird Ihr Datenfluss anfällig für Änderungen an vorgelagerten Datenquellen. Wenn sich eingehende Spalten und Felder ändern, treten bei typischen ETL-Mustern Fehler auf, da sie dazu neigen, an diesen Quellennamen gebunden zu sein.
 

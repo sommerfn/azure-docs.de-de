@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: a437927f6ad43f4c3a90433faa5b9fa6f964aa5c
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: bde68a70ac047433e86b7e06bc5f4a56bdd28595
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839228"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028511"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -96,7 +96,7 @@ Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsuppor
 
 **A:** Das aktuelle Limit für ein Dataset beträgt 2GB. Grund für das Limit ist, dass die Größe einer Datei für den HTTP-Upload begrenzt ist. 
 
-**F: Kann ich meine Textdateien komprimieren (ZIP), damit ich eine größere Textdatei hochladen kann?** 
+**F: Kann ich meine Textdateien komprimieren (ZIP), damit ich eine größere Textdatei hochladen kann?** 
 
 **A:**  Nein. Derzeit sind nur unkomprimierte Textdateien zulässig.
 
@@ -140,7 +140,7 @@ Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsuppor
 
 **A:** Die Ergebnisse stellen einen Vergleich zwischen dem Basismodell und dem von Ihnen angepassten Modell dar. Sie sollten das Basismodell übertreffen, damit sich die Anpassung lohnt.
 
-**F: Wie bestimme ich die Wort-Fehler-Rate (WER) eines Basismodells, damit ich sehen kann, ob es eine Verbesserung gab?** 
+**F: Wie bestimme ich die Wort-Fehler-Rate (WER) eines Basismodells, damit ich sehen kann, ob es eine Verbesserung gab?** 
 
 **A:** Die Offlinetestergebnisse zeigen die Genauigkeit des Basismodells und des benutzerdefinierten Modells sowie die Verbesserung gegenüber dem Basismodell.
 

@@ -9,18 +9,17 @@ editor: ''
 tags: connectors
 ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
 ms.service: logic-apps
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/20/2016
 ms.author: jehollan
-ms.openlocfilehash: 2a82afe396039857e5b9ad6b8a6d0e710573037f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60538242"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973762"
 ---
 # <a name="get-started-with-the-query-action"></a>Erste Schritte mit der Abfrageaktion
 Mit der Abfrageaktion können Sie Batches und Arrays zum Ausführen von Workflows nutzen:
@@ -79,7 +78,7 @@ Im Folgenden werden die Ausgabedetails für die HTTP-Antwort angegeben.
 
 | Eigenschaftenname | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
-| Array gefiltert |Array |Array, das ein Objekt für jedes gefilterte Ergebnis enthält |
+| Array gefiltert |array |Array, das ein Objekt für jedes gefilterte Ergebnis enthält |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Testen Sie nun die Plattform, und [erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Machen Sie sich ggf. anhand unserer [API-Liste](apis-list.md) mit den anderen verfügbaren Connectors für Logik-Apps vertraut.

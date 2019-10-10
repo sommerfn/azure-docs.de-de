@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5146675b6eefd11fc1e6875ed9009ece92753ffb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104096"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028091"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Bereitstellen des Container Network Interface-Plug-Ins von Azure Virtual Network
 
@@ -159,10 +159,10 @@ Die CNI-Netzwerkkonfigurationsdatei wird im JSON-Format beschrieben. Sie ist unt
 
 - **cniVersion**: Das CNI-Plug-In von Azure Virtual Network unterstützt Version 0.3.0 und 0.3.1 der  [CNI-Spezifikation](https://github.com/containernetworking/cni/blob/master/SPEC.md).
 - **name:** Name des Netzwerks. Diese Eigenschaft kann auf einen beliebigen eindeutigen Wert festgelegt werden.
-- **Typ**: Name des Netzwerk-Plug-Ins. Legen Sie diese Eigenschaft auf  *azure-vnet* fest.
+- **Typ**: Name des Netzwerk-Plug-Ins. Legen Sie diese Eigenschaft auf *azure-vnet* fest.
 - **mode**: Betriebsmodus. Dieses Feld ist optional. Es wird lediglich der Modus „bridge“ unterstützt. Weitere Informationen finden Sie unter  [Operational Modes](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md) (Betriebsmodi).
 - **bridge**: Name der Brücke, über die Container mit einem virtuellen Netzwerk verbunden werden. Dieses Feld ist optional. Wenn kein Wert angegeben ist, wählt das Plug-In basierend auf dem Index der Masterschnittstelle automatisch einen eindeutigen Namen aus.
-- **ipam type**: Name des IPAM-Plug-Ins. Legen Sie diese Eigenschaft immer auf  *azure-vnet-ipam* fest.
+- **ipam type**: Name des IPAM-Plug-Ins. Legen Sie diese Eigenschaft immer auf *azure-vnet-ipam* fest.
 
 ## <a name="download-and-install-the-plug-in"></a>Herunterladen und Installieren des Plug-Ins
 

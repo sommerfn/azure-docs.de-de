@@ -1,6 +1,7 @@
 ---
 title: 'Suchen nach verfügbaren Räumen: Azure Digital Twins | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung führen Sie zwei .NET Core-Beispielanwendungen aus, um simulierte Bewegungs- und CO2-Telemetriedaten an einen Bereich in Azure Digital Twins zu senden. Das Ziel besteht darin, über Verwaltungs-APIs verfügbare Räume mit frischer Luft zu finden, nachdem die Verarbeitung in der Cloud durchgeführt wurde.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
@@ -8,14 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: 40a98f915bc11ad17eae27596519cc78539fb2bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 10/03/2019
+ms.openlocfilehash: 3c9a806b936b9f167d1700c95b1e769926abb17b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640291"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958912"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972889"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244768"
 ---
 # <a name="vpn-gateways-overview"></a>Übersicht über VPN-Gateways
 
@@ -63,6 +63,10 @@ Für eine Site-to-Site-VPN-Verbindung werden die folgenden kryptografischen Stan
 | Perfect Forward Secrecy-Gruppe (PFS-Gruppe) | Keine | Keine | Keine |
 | Lebensdauer | 1\.800 Sekunden | 1\.800 Sekunden | 1\.800 Sekunden |
 | Datengröße | 4 GB | 4 GB | 4 GB |
+
+
+> [!IMPORTANT]
+> Legen Sie TCP MSS-Clamping für das VPN-Gerät auf 1200 fest. Wenn Ihre VPN-Geräte MSS-Clamping nicht unterstützen, können Sie stattdessen auch den MTU-Wert der Tunnelschnittstelle auf 1240 Bytes festlegen.
 
 ## <a name="point-to-site-vpn-gateway"></a>Point-to-Site-VPN Gateway
 

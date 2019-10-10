@@ -6,15 +6,15 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774992"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029265"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapping Data Flow: Auswahltransformation
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Verwenden Sie diese Transformation für die Spaltenselektivität (Reduzierung der Anzahl von Spalten), um Aliase für Spalten und Datenstromnamen zuzuweisen und um Spalten neu anzuordnen.
 

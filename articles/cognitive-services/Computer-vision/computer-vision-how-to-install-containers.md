@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/03/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 98330e88b0b94c488fd968d8fc18806ec6908b26
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7c137572fadd07254343b7b4c34b5a63534b9d88
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316194"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936998"
 ---
 # <a name="install-and-run-computer-vision-containers"></a>Installieren und Ausführen von Containern für maschinelles Sehen
 
@@ -44,8 +44,6 @@ Zur Verwendung der Container müssen die folgenden Voraussetzungen erfüllt sein
 ## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
 
 [!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
-
-[!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 

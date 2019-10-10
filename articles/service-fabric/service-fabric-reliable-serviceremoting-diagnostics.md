@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e9aa2bbb99cac2ffc2b57ccb9299bf4ee7a729e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876259"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170479"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose und Leistungsüberwachung für Reliable ServiceRemoting
 Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
@@ -28,7 +28,7 @@ Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](https://msdn.mi
 ## <a name="performance-counters"></a>Leistungsindikatoren
 Die Reliable ServiceRemoting-Runtime definiert die folgenden Leistungsindikatorkategorien:
 
-| Category (Kategorie) | BESCHREIBUNG |
+| Category | BESCHREIBUNG |
 | --- | --- |
 | Service Fabric-Dienst |Leistungsindikatoren für Azure Service Fabric ServiceRemoting, beispielsweise die durchschnittliche Zeit zum Verarbeiten der Anforderung |
 | Service Fabric-Dienstmethode |Leistungsindikatoren für Methoden, die vom Service Fabric Remoting-Dienst implementiert werden, z.B. wie oft eine Dienstmethode aufgerufen wird |

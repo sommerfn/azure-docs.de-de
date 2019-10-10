@@ -4,21 +4,20 @@ description: Übertragen Sie schnell ein Jupyter-Notebook vom lokalen Computer o
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 7df64c3fb70bdf3e7689787ec558bfe0e4942352
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 2151d5b04b0fe5d47e8e2ddfb750ac279b6f74fa
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754007"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970187"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Schnellstart: Migrieren eines lokalen Jupyter Notebooks
 
@@ -30,7 +29,7 @@ Dieser Schnellstart veranschaulicht den Migrationsprozesss für ein Notebook von
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Erstellen eines Projekts auf Azure Notebooks
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (Ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 

@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300462"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166467"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
-In diesem Artikel wird veranschaulicht, wie Sie häufige Probleme beim Verwalten oder Bereitstellen von Containern in Azure Container Instances behandeln. Weitere Informationen finden Sie in den [häufig gestellten Fragen](container-instances-faq.md). 
+In diesem Artikel wird veranschaulicht, wie Sie häufige Probleme beim Verwalten oder Bereitstellen von Containern in Azure Container Instances behandeln. Weitere Informationen finden Sie in den [häufig gestellten Fragen](container-instances-faq.md).
 
 Weitere Unterstützung finden Sie in den verfügbaren Optionen für **Hilfe und Support** im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
@@ -230,7 +230,7 @@ Wenn Sie überprüfen möchten, ob Azure Container Instances an dem Port lausche
 Erfahren Sie, wie Sie [Containerprotokolle und -ereignisse abrufen](container-instances-get-logs.md), um Ihre Container zu debuggen.
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore

@@ -4,21 +4,20 @@ description: Azure Notebooks-Projekte verwalten eine Sammlung von Notebooks und 
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237507"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970088"
 ---
 # <a name="create-and-clone-projects"></a>Erstellen und Klonen von Projekten
 
@@ -81,7 +80,7 @@ Die folgenden reservierten Wörter können nicht allein als Projekt-IDs verwende
 | about | account | administration | api | blog | classroom |
 | Inhalt | Dashboard | explore | faq | help | html |
 | home | Import | Bibliothek | management | Neu | notebook |
-| notebooks | pdf | preview | Preise | Profil | search |
+| notebooks | pdf | preview | Preise | profile | search |
 | status | support | test | | | |
 
 Wenn Sie versuchen, eines dieser Wörter als Projekt-ID zu verwenden, wird in den Popups **Neues Projekt erstellen** und **Projekteinstellungen** „Bibliotheks-ID ist ein reservierter Bezeichner“ angezeigt.

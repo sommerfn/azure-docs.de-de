@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
-ms.author: subramar
-ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 6f8c517c33393647e2dc5205b5a8f4afba4ae3b0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614399"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167572"
 ---
 # <a name="application-upgrade-parameters"></a>Parameter für Anwendungsupgrades
 In diesem Artikel werden die verschiedenen Parameter beschrieben, die während des Upgrades einer Azure Service Fabric-Anwendung gelten. Parameter für Anwendungsupgrades steuern bei Upgrades angewendete Timeouts und Integritätsprüfungen, und geben die Richtlinien an, die bei einem Upgradefehler angewendet werden. Anwendungsparameter gelten für Upgrades mit:

@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 03d67249ef1d74844a7e9019e90f6331ecfdf0c3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 181a3f3a8d3cabb2fdf6caf79cef16201fab0c68
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102976"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177805"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 for Customer Engagement
 
-In diesem Artikel wird beschrieben, wie Sie Dynamics 365 for Customer Engagement (bisher Dynamics CRM Online) einrichten. Zur Verarbeitung von Vertriebsleads von Ihrem Marketplace-Angebot finden Sie [hier](https://docs.microsoft.com/dynamics365/customer-engagement/admin/switch-dynamics-crm-online-dynamics-365) weitere Informationen zu der Änderung. 
+In diesem Artikel wird beschrieben, wie Sie Dynamics 365 for Customer Engagement (bisher Dynamics CRM Online) einrichten. Zur Verarbeitung von Vertriebsleads von Ihrem Marketplace-Angebot finden Sie [hier](https://docs.microsoft.com/dynamics365/customerengagement/on-premises/admin/on-prem-server-based-sharepoint-online) weitere Informationen zu der Änderung. 
 
 >[!Note]
 >Diese Anweisungen gelten speziell für die von Microsoft gehostete Dynamics 365 for Customer Engagement-Cloudumgebung. Eine direkte Verbindung mit einer lokalen Dynamics-Umgebung wird derzeit nicht unterstützt. Es gibt andere Möglichkeiten, Leads zu erhalten, z. B. Konfigurieren eines [HTTPS-Endpunkts](./commercial-marketplace-lead-management-instructions-https.md) oder einer [Azure-Tabelle](./commercial-marketplace-lead-management-instructions-azure-table.md) zum Empfangen von Leads.

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 0c832e272029dc110e156ef89deb908fec02f1b2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264499"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981192"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
@@ -31,7 +31,7 @@ Time Series Insights hat vier Hauptaufgaben bzw. -merkmale:
 - Time Series Insights bietet über den Time Series Insights-Explorer eine standardmäßige Visualisierung. 
 - Time Series Insights bietet einen Abfragedienst, sowohl im Time Series Insights-Explorer als auch durch den Einsatz von APIs, die zum Einbetten Ihrer Zeitreihendaten in benutzerdefinierte Anwendungen einfach integriert werden können.
 
-Wenn Sie eine Anwendung zur internen Nutzung oder für externe Kunden erstellen, können Sie Time Series Insights als Back-End verwenden. Sie können damit Zeitreihendaten indizieren, speichern und aggregieren. Wenn Sie darauf aufbauend eine benutzerdefinierte Visualisierung und Benutzeroberfläche erstellen möchten, können Sie das [Client SDK](tutorial-explore-js-client-lib.md) verwenden. Time Series Insights verfügt außerdem über mehrere [Abfrage-APIs](how-to-shape-query-json.md) für diese kundenspezifischen Szenarien.
+Wenn Sie eine Anwendung zur internen Nutzung oder für externe Kunden erstellen, können Sie Time Series Insights als Back-End verwenden. Sie können damit Zeitreihendaten indizieren, speichern und aggregieren. Wenn Sie darauf aufbauend eine benutzerdefinierte Visualisierung und Benutzeroberfläche erstellen möchten, können Sie das [Client SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) verwenden. Time Series Insights verfügt außerdem über mehrere [Abfrage-APIs](how-to-shape-query-json.md) für diese kundenspezifischen Szenarien.
 
 Zeitreihendaten stellen dar, wie eine Ressource oder ein Prozess sich im Zeitablauf ändert. Zeitreihendaten werden anhand von Zeitstempeln indiziert. Zeit ist die aussagekräftigste Achse für die Organisation solcher Daten. Zeitreihendaten gehen normalerweise in sequenzieller Reihenfolge ein und werden daher als Einfügung und nicht als Aktualisierung der Datenbank behandelt.
 

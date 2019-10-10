@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: eb5de6bf42769e7fd04782fc52d93764d1d7a3d6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e341cc5beeb8e8362a848bb1e208ddf1dc773978
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093923"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976798"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
@@ -65,7 +65,7 @@ Die Datenbank für das Benutzerkonto und die Authentifizierung. Sie speichert di
 Es kann standardmäßig eine lokale Systemdatenbank (MySQL) verwendet werden. Nutzen Sie für die Hochverfügbarkeit und Skalierung die von Azure verwalteten MySQL- oder PostgreSQL-Dienste. Lesen Sie die Anweisung zur [Aktivierung von Azure MySQL/PostgreSQL für CCDB, UAADB und andere Systemdatenbanken mit Open Source-Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service).
 
 ## <a name="5-open-service-broker"></a>5. Open Service Broker
-Der Service Broker von Azure bietet konsistente Schnittstellen, um den Zugriff von Anwendungen auf Azure-Dienste zu verwalten. Der neue [Open Service Broker für Azure-Projekte](https://github.com/Azure/open-service-broker-azure) stellt eine einfache Möglichkeit zur Übermittlung von Diensten an Anwendungen für Cloud Foundry, OpenShift und Kubernetes bereit. Unter [Azure Open Service Broker for PCF](https://network.pivotal.io/products/azure-open-service-broker-pcf/) erhalten Sie Anweisungen zur Bereitstellung auf PCF.
+Der Service Broker von Azure bietet konsistente Schnittstellen, um den Zugriff von Anwendungen auf Azure-Dienste zu verwalten. Der neue [Open Service Broker für Azure-Projekte](https://github.com/Azure/open-service-broker-azure) stellt eine einfache Möglichkeit zur Übermittlung von Diensten an Anwendungen für Cloud Foundry, OpenShift und Kubernetes bereit. Unter [Azure Open Service Broker for PCF](https://pivotal.io/platform/services-marketplace/data-management/microsoft-azure) erhalten Sie Anweisungen zur Bereitstellung auf PCF.
 
 ## <a name="6-metrics-and-logging"></a>6. Metriken und Protokollierung
 Azure Log Analytics Nozzle ist eine Cloud Foundry-Komponente, die Metriken aus der [Firehose-Komponente von Cloud Foundry Loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) an [Azure Monitor-Protokolle weiterleitet](https://azure.microsoft.com/services/log-analytics/). Mithilfe der Nozzle-Komponente können Sie Integritäts- und Leistungsmetriken für Ihr CF-System über mehrere Bereitstellungen hinweg sammeln, anzeigen und analysieren.

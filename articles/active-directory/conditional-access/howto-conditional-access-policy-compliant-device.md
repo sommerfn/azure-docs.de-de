@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 1963d0ad741099fcb6602beb58f62b0eabf01aa0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990516"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170060"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Bedingter Zugriff: Anfordern von kompatiblen Geräten
 
@@ -33,7 +33,7 @@ Diese Informationen zur Richtliniencompliance werden an Azure AD weitergeleitet,
 
 Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, bei der Geräte, die auf Ressourcen zugreifen, als mit den Compliancerichtlinien von Intune Ihres Unternehmens konform gekennzeichnet werden.
 
-1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Conditional Access-Administrator an.
+1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.

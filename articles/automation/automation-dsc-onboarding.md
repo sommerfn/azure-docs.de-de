@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: c05ac7a1894fc3e159ef8fc2b3dd2654714faccf
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965183"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243436"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -56,7 +56,7 @@ Wählen Sie einen virtuellen Azure-Computer aus, der integriert werden soll.
 
 Wenn auf dem Computer nicht die PowerShell-Erweiterung für Konfiguration des gewünschten Zustands installiert ist und der Energiezustand ausgeführt wird, klicken Sie auf **Verbinden**.
 
-Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/managing-nodes/metaconfig) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
+Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
 
 ![Onboarding](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -100,7 +100,7 @@ Windows-Server, die lokal oder in anderen Cloudumgebungen ausgeführt werden, k�
 Linux-Server, die lokal oder in anderen Cloudumgebungen ausgeführt werden, können ebenfalls in Azure Automation State Configuration integriert werden, solange sie über [ausgehenden Zugriff auf Azure](automation-dsc-overview.md#network-planning) verfügen:
 
 1. Überprüfen Sie, ob die neueste Version der [PowerShell Desired State Configuration für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) auf den Computern installiert ist, die Sie in Azure Automation DSC integrieren möchten.
-1. Gehen Sie folgendermaßen vor, wenn die [Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4) zu Ihrem Anwendungsfall passen, und Sie Computer so integrieren möchten, dass diese **sowohl** Informationen von Azure Automation DSC abrufen als auch Informationen an Azure Automation DSC senden:
+1. Gehen Sie folgendermaßen vor, wenn die [Standardwerte des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4) zu Ihrem Anwendungsfall passen, und Sie Computer so integrieren möchten, dass diese **sowohl** Informationen von Azure Automation DSC abrufen als auch Informationen an Azure Automation DSC senden:
 
    - Verwenden Sie auf jedem Linux-Computer, den Sie in Azure Automation State Configuration integrieren möchten, `Register.py` für das Onboarding mit den Standardwerten des lokalen Konfigurations-Managers von PowerShell DSC:
 
@@ -134,7 +134,7 @@ Auf dem Computer, auf dem dieser Befehl ausgeführt wird, muss die neueste Versi
 
 ## <a name="generating-dsc-metaconfigurations"></a>Generieren von DSC-Metakonfigurationen
 
-Sie können eine [DSC-Metakonfiguration](/powershell/dsc/metaconfig) generieren, um einen beliebigen Computer allgemein in Azure Automation DSC zu integrieren, die den DSC-Agent anweist, Informationen von Azure Automation DSC abzurufen und/oder Informationen an Azure Automation DSC zu senden. Die DSC-Metakonfigurationen für Azure Automation DSC können sowohl über eine PowerShell DSC-Konfiguration als auch über die Azure Automation PowerShell-Cmdlets generiert werden.
+Sie können eine [DSC-Metakonfiguration](/powershell/scripting/dsc/managing-nodes/metaConfig) generieren, um einen beliebigen Computer allgemein in Azure Automation DSC zu integrieren, die den DSC-Agent anweist, Informationen von Azure Automation DSC abzurufen und/oder Informationen an Azure Automation DSC zu senden. Die DSC-Metakonfigurationen für Azure Automation DSC können sowohl über eine PowerShell DSC-Konfiguration als auch über die Azure Automation PowerShell-Cmdlets generiert werden.
 
 > [!NOTE]
 > DSC-Metakonfigurationen enthalten die notwendigen geheimen Schlüssel, um einen Computer in ein Automation-Konto für die Verwaltung zu integrieren. Stellen Sie den ordnungsgemäßen Schutz aller von Ihnen generierten DSC-Metakonfigurationen sicher oder löschen Sie diese nach der Verwendung.
@@ -319,7 +319,7 @@ Zur Problembehandlung oder Anzeige des Status der Azure-VM-Erweiterung für DSC 
 Nach der Registrierung eines Computers als DSC-Knoten in Azure Automation DSC gibt es eine Reihe von Gründen, warum Sie diesen Knoten in Zukunft erneut registrieren müssen:
 
 - Für Versionen von Windows Server vor Windows Server 2019 handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, das nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, kann der Knoten nicht mit Azure Automation kommunizieren und wird als „Nicht reagierend“ markiert. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.  Eine Lösung für dieses Problem ist in Windows Server 2019 und höher enthalten.
-- Zum Ändern von [Werten des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4), die während der anfänglichen Registrierung des Knotens festgelegt wurden, z.B. „ConfigurationMode“. Diese DSC-Agent-Werte können derzeit nur über eine erneute Registrierung geändert werden. Die einzige Ausnahme ist die Knotenkonfiguration, die dem Knoten zugewiesen ist. Diese kann in Azure Automation DSC direkt geändert werden.
+- Zum Ändern von [Werten des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4), die während der anfänglichen Registrierung des Knotens festgelegt wurden, z.B. „ConfigurationMode“. Diese DSC-Agent-Werte können derzeit nur über eine erneute Registrierung geändert werden. Die einzige Ausnahme ist die Knotenkonfiguration, die dem Knoten zugewiesen ist. Diese kann in Azure Automation DSC direkt geändert werden.
 
 Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrieren des Knotens mithilfe einer der in diesem Dokument beschriebenen Methoden für die Integration erfolgen. Sie müssen die Registrierung eines Knotens in Azure Automation DSC nicht aufheben, bevor Sie ihn erneut registrieren.
 

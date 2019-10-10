@@ -4,21 +4,20 @@ description: Klonen Sie schnell ein Jupyter-Notebook aus einem GitHub-Repository
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: e180192ed8375e00464ed9ec96080cde10295e5c
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: ed239c470a49fc045bd436668f83dff32eac3a66
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754037"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970131"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Schnellstart: Klonen eines Notebooks
 
@@ -28,7 +27,7 @@ Beim Klonen wird stattdessen eine Kopie eines GitHub-Notebooks in ihrem Azure No
 
 ## <a name="clone-azure-cognitive-services-notebooks"></a>Klonen von Azure Cognitive Services-Notebooks
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (Ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 

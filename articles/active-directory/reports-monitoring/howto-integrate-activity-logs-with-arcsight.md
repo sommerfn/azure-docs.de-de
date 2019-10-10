@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e4f0f81c5f135e885fe06d4fb4fa67514e8781b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8d202cb0cc2d073326a5bcc8fb0d540c232afa98
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988161"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240891"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor
 
@@ -36,7 +36,7 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 * Ein Azure Event Hub, der Azure AD-Aktivitätsprotokolle enthält. Erfahren Sie, [wie Sie Aktivitätsprotokolle an einen Event Hub streamen](quickstart-azure-monitor-stream-logs-to-event-hub.md). 
 * Eine konfigurierte Instanz von ArcSight Syslog NG Daemon SmartConnector (SmartConnector) oder ArcSight Load Balancer. Wenn die Ereignisse an ArcSight Load Balancer gesendet werden, werden sie anschließend von Load Balancer an den SmartConnector gesendet.
 
-Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf) herunter, und öffnen Sie ihn. Dieser Leitfaden enthält die Schritte zum Installieren und Konfigurieren von ArcSight SmartConnector für Azure Monitor. 
+Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf) herunter, und öffnen Sie ihn. Dieser Leitfaden enthält die Schritte zum Installieren und Konfigurieren von ArcSight SmartConnector für Azure Monitor. 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Integrieren von Azure AD-Protokollen in ArcSight
 

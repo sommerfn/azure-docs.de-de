@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9adfc1ef355c31f0bfeeb6c3b194d62426b7b9b3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924597"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244321"
 ---
 # <a name="azure-data-box-edge-limits"></a>Für Azure Data Box Edge geltende Einschränkungen
 
@@ -53,4 +53,4 @@ In der folgenden Tabelle werden die für ein Data Box Edge-Gerät geltenden Eins
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
+- [Vorbereiten der Bereitstellung von Azure Data Box Edge](data-box-edge-deploy-prep.md)

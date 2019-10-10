@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Kubernetes-Entwicklung im Team mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 3509fd32e06117ce3709f110223b38ef0e0eed30
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 15833294e1dd5b75251ad54fa1f33bc4ed5e2c20
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815788"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035165"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces
 
@@ -41,8 +41,6 @@ Sie müssen in einer [unterstützten Region][supported-regions] einen AKS-Cluste
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
-
-Der *MyAKS*-Cluster wird ebenfalls mit einem Knoten unter Verwendung der Größe *Standard_DS2_v2* und mit deaktiviertem RBAC erstellt.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Aktivieren von Azure Dev Spaces in Ihrem AKS-Cluster
 

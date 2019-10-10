@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 6327f0c14b46ceaadbf7adaa58a70c32b39b7c2a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967227"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960490"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Artefakten zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -59,8 +59,7 @@ Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer
 
 ## <a name="create-integration-accounts"></a>Erstellen von Integrationskonten
 
-Basierend auf der während der Erstellung gewählten [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) umfasst Ihre ISE die Nutzung des jeweiligen Integrationskontos ohne weitere Kosten. Logik-Apps, die in einer Integrationsdienstumgebung (ISE) enthalten sind, können nur auf Integrationskonten verweisen, die sich in derselben ISE befinden. Damit ein Integrationskonto mit Logik-Apps in einer ISE funktioniert, muss sowohl für das Integrationskonto als auch für die Logik-Apps *dieselbe Umgebung* als Speicherort verwendet werden. Weitere Informationen zu Integrationskonten und ISEs finden Sie unter [Integrationskonten mit ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
-).
+Basierend auf der während der Erstellung gewählten [ISE-SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) umfasst Ihre ISE die Nutzung des jeweiligen Integrationskontos ohne weitere Kosten. Logik-Apps, die in einer Integrationsdienstumgebung (ISE) enthalten sind, können nur auf Integrationskonten verweisen, die sich in derselben ISE befinden. Damit ein Integrationskonto mit Logik-Apps in einer ISE funktioniert, muss sowohl für das Integrationskonto als auch für die Logik-Apps *dieselbe Umgebung* als Speicherort verwendet werden. Weitere Informationen zu Integrationskonten und ISEs finden Sie unter [Integrationskonten mit ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment).
 
 Führen Sie die folgenden Schritte aus, um ein Integrationskonto zu erstellen, das eine ISE verwendet:
 

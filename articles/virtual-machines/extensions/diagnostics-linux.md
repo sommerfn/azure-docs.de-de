@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 1da5d8aba92ac5cca5f7cdc281e169ce284b202d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 63008de6d29790333764f4dcca27b8dc03cedbdb
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169180"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838177"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -384,7 +384,7 @@ Dieser optionale Abschnitt steuert die Ausführung von beliebigen [OMI](https://
 
 Element | Wert
 ------- | -----
-Namespace | (optional:) Der OMI-Namespace, in dem die Abfrage ausgeführt werden soll. Falls keine Angabe erfolgt, lautet der Standardwert „root/scx“, der von den [plattformübergreifenden System Center-Anbietern](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation) implementiert wird.
+Namespace | (optional:) Der OMI-Namespace, in dem die Abfrage ausgeführt werden soll. Falls keine Angabe erfolgt, lautet der Standardwert „root/scx“, der von den [plattformübergreifenden System Center-Anbietern](https://github.com/Microsoft/SCXcore) implementiert wird.
 query | Die OMI-Abfrage, die ausgeführt werden soll.
 table | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (siehe [geschützte Einstellungen](#protected-settings)).
 frequency | (optional:) Die Anzahl von Sekunden zwischen der Ausführung der Abfrage. Der Standardwert ist 300 (fünf Minuten), der Mindestwert beträgt 15 Sekunden.
@@ -695,7 +695,7 @@ Die an JsonBlob-Senken gesendeten Daten werden in Blobs in dem Speicherkonto ges
 Darüber hinaus können Sie folgende Tools mit grafischer Benutzeroberfläche für den Zugriff auf Daten in Azure Storage verwenden:
 
 * Server-Explorer von Visual Studio
-* [Microsoft Azure Storage-Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage Explorer")
+* [Microsoft Azure Storage-Explorer.](https://azurestorageexplorer.codeplex.com/ "Azure Storage-Explorer")
 
 Diese Momentaufnahme einer Sitzung im Microsoft Azure Storage-Explorer zeigt die generierten Azure Storage-Tabellen und -Container einer ordnungsgemäß konfigurierten LAD 3.0-Erweiterung auf einem virtuellen Testcomputer. Das Bild stimmt nicht genau mit der [LAD 3.0-Beispielkonfiguration](#an-example-lad-30-configuration) überein.
 

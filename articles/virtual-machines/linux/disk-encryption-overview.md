@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14e82bc5f58383c37bfd82d793851fc7e927b2f4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829943"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174704"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -32,7 +32,7 @@ Die Grundlagen von Azure Disk Encryption für Linux können Sie in den Schnellst
 
 ### <a name="supported-vm-sizes"></a>Unterstützte VM-Größen
 
-Linux-VMs sind in [verschiedenen Größen](sizes.md) verfügbar. Azure Disk Encryption ist nicht verfügbar auf [Basic-VMs der A-Serie](/pricing/details/virtual-machines/series/) und auf virtuellen Computern, die diese Mindestanforderungen an den Arbeitsspeicher nicht erfüllen:
+Linux-VMs sind in [verschiedenen Größen](sizes.md) verfügbar. Azure Disk Encryption ist nicht verfügbar auf [Basic-VMs der A-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/) und auf virtuellen Computern, die diese Mindestanforderungen an den Arbeitsspeicher nicht erfüllen:
 
 | Virtueller Computer | Mindestens erforderlicher Arbeitsspeicher |
 |--|--|
@@ -57,6 +57,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | Ubuntu | 18,04| Betriebssystem- und andere Datenträger |
 | Ubuntu | 16.04| Betriebssystem- und andere Datenträger |
 | Ubuntu | 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](disk-encryption-troubleshooting.md) | Betriebssystem- und andere Datenträger |
+| RHEL | 7,7 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 7.6 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 7,5 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 7.4 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
@@ -64,6 +65,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | RHEL | 7.2 | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RHEL | 6,8 | Datenträger für Daten (siehe der Hinweis unten) |
 | RHEL | 6.7 | Datenträger für Daten (siehe der Hinweis unten) |
+| CentOS | 7,7 | Betriebssystem- und andere Datenträger |
 | CentOS | 7.6 | Betriebssystem- und andere Datenträger |
 | CentOS | 7,5 | Betriebssystem- und andere Datenträger |
 | CentOS | 7.4 | Betriebssystem- und andere Datenträger |
