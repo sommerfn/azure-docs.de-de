@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: Informationen zu ExpressRoute Global Reach
       href: expressroute-global-reach.md
+    - name: Informationen zur ExpressRoute-Verschlüsselung
+      href: expressroute-about-encryption.md
     - name: Verbinden von Azure mit der öffentlichen Cloud
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Interoperabilität der Back-End-Konnektivität
@@ -121,6 +123,8 @@
           href: expressroute-howto-erdirect.md
         - name: Azure-Befehlszeilenschnittstelle
           href: expressroute-howto-expressroute-direct-cli.md
+    - name: "Konfigurieren von MACsec für ExpressRoute\_Direct-Ports"
+      href: expressroute-howto-macsec.md
     - name: Konfigurieren von Routenfiltern für das Microsoft-Peering
       items:
         - name: Azure-Portal

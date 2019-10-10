@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c09a751119c1d6effa5795f2dbf7da422b7806
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135798"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827130"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-Synchronisierung: Verhindern eines versehentlichen Löschvorgangs
 In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
@@ -60,6 +60,7 @@ Wenn Sie diese Nachricht unerwartet erhalten haben, untersuchen Sie die Grunde d
 
 [!NOTE] Falls Sie unsicher sind, ob alle Löschvorgänge erwünscht sind, und auf Nummer sicher gehen möchten, können Sie mithilfe des PowerShell-Cmdlets `Enable-ADSyncExportDeletionThreshold` einen neuen Schwellenwert festlegen, anstatt den Schwellenwert zu deaktivieren, was möglicherweise zu unerwünschten Löschungen führt. 
 
+## <a name="if-all-deletes-are-desired"></a>Wenn alle Löschvorgänge erwünscht sind
 Wenn alle Löschvorgänge gewünscht sind, gehen Sie folgendermaßen vor:
 
 1. Führen Sie zum Abrufen des aktuellen Schwellenwerts für Löschungen das PowerShell-Cmdlet `Get-ADSyncExportDeletionThreshold` aus. Geben Sie das Konto und das Kennwort eines globalen Azure AD-Administrators ein. Der Standardwert ist 500.

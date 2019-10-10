@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: cfa8e8c570b47eb6437ed6ca6a53f6c8188e18a2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268666"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314976"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -50,7 +50,7 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
    > Die Bereitstellung von Proxydiensten ist eine obligatorische Voraussetzung für das Bereitstellen des Kennwortschutzes von Azure AD, auch wenn der Domänencontroller möglicherweise über eine direkte ausgehende Internetverbindung verfügt. 
    >
 * Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7 installiert sein.
-  .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
+  .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Laden Sie bei Bedarf das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
 * Alle Computer (auch Domänencontroller), auf denen Azure AD-Kennwortschutzkomponenten installiert sind, müssen über eine Installation der Universal C-Runtime verfügen. Sie können die Runtime abrufen, indem Sie sicherstellen, dass Sie über alle Updates von Windows Update verfügen. Sie können sie auch in einem betriebssystemspezifischen Updatepaket abrufen. Weitere Informationen finden Sie unter [Update für die Universal C-Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Proxydienst für Kennwortschutz hostet. Diese Konnektivität muss es dem Domänencontroller gestatten, auf den RPC-Endpunktzuordnungsport 135 und den RPC-Serverport für den Proxydienst zuzugreifen. Der RPC-Serverport ist standardmäßig ein dynamischer RPC-Port. Er kann jedoch so konfiguriert werden, dass er einen [statischen Port verwendet](#static).
 * Alle Computer, auf denen der Proxydienst für den AD-Kennwortschutz installiert werden soll, müssen Netzwerkzugriff auf die folgenden Endpunkte besitzen:
@@ -59,8 +59,18 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
     | --- | --- |
     |`https://login.microsoftonline.com`|Authentifizierungsanforderungen|
     |`https://enterpriseregistration.windows.net`|Funktion für Azure AD-Kennwortschutz|
+ 
+* Voraussetzungen für Microsoft Azure AD Connect Agent Updater
 
-  Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die in den [Setupprozeduren für die Anwendungsproxyumgebung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) angegeben werden. Diese Konfigurationsschritte sind erforderlich, damit der Microsoft Azure AD Connect-Agent-Updaterdienst funktionieren kann (dieser Dienst wird parallel zum Proxydienst installiert). Es wird nicht empfohlen, den Azure AD-Kennwortschutzproxy und den Anwendungsproxy parallel auf demselben Computer zu installieren, da die Versionen der Microsoft Azure AD Connect-Agent-Updatersoftware inkompatibel sind.
+  Der Microsoft Azure AD Connect Agent Updater-Dienst wird zusammen mit dem Azure AD-Kennwortschutz-Proxydienst installiert. Damit der Microsoft Azure AD Connect Agent Updater-Dienst funktionieren kann, ist eine zusätzliche Konfiguration erforderlich:
+
+  Wenn in Ihrer Umgebung ein HTTP-Proxyserver verwendet wird, müssen Sie die im Artikel [Verwenden von vorhandenen lokalen Proxyservern](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers) angegebenen Richtlinien befolgen.
+
+  Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) angegeben sind.
+
+  > [!WARNING]
+  > Für den Azure AD-Kennwortschutz-Proxy und den Anwendungsproxy werden unterschiedliche Versionen des Microsoft Azure AD Connect Agent Updater-Diensts installiert. Daher beziehen sich die Anweisungen auf Anwendungsproxy-Inhalte. Diese verschiedenen Versionen sind nicht kompatibel, wenn sie parallel installiert werden. Es empfiehlt sich daher nicht, den Azure AD-Kennwortschutz-Proxy und den Anwendungsproxy zusammen auf demselben Computer zu installieren.
+
 * Alle Computer, auf denen der Proxydienst für den Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
 * Ein globales Administratorkonto zum Registrieren des Proxydiensts für Kennwortschutz und der Gesamtstruktur bei Azure AD.
@@ -211,7 +221,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
    Die Registrierung der Active Directory-Gesamtstruktur ist nur ein Mal während der Lebensdauer der Gesamtstruktur erforderlich. Danach führen die Domänencontroller-Agents in der Gesamtstruktur automatisch alle weiteren notwendigen Wartungen durch. Nachdem `Register-AzureADPasswordProtectionForest` erfolgreich für eine Gesamtstruktur ausgeführt wurde, sind weitere Aufrufe des Cmdlets erfolgreich, aber nicht erforderlich.
 
-   Damit `Register-AzureADPasswordProtectionForest` erfolgreich ist, muss mindestens ein Domänencontroller, der Windows Server 2012 oder höher ausführt, in der Domäne des Proxyservers verfügbar sein. Die DC-Agent-Software muss vor diesem Schritt jedoch nicht Domänencontrollern installiert sein.
+   Damit `Register-AzureADPasswordProtectionForest` erfolgreich ist, muss mindestens ein Domänencontroller, der Windows Server 2012 oder höher ausführt, in der Domäne des Proxyservers verfügbar sein. Die DC-Agent-Software muss vor diesem Schritt nicht auf einem Domänencontroller installiert sein.
 
 1. Konfigurieren Sie den Proxydienst für Kennwortschutz so, dass er über einen HTTP-Proxy kommuniziert.
 
@@ -304,7 +314,7 @@ Wenn eine neuere Version der Azure AD-Kennwortschutz-Proxysoftware verfügbar is
 
 Es ist nicht erforderlich, die aktuelle Version der Proxysoftware zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der Proxysoftware sollte kein Neustart erforderlich sein. Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
-Der Proxy-Agent unterstützt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert und kann mit dem Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` aktiviert oder deaktiviert werden. Die aktuelle Einstellung kann mit dem Cmdlet `Get-AzureADPasswordProtectionProxyConfiguration` abgefragt werden. Microsoft empfiehlt, das automatische Upgrade aktiviert zu lassen.
+Der Proxy-Agent unterstützt das automatische Upgrade. Für das automatische Upgrade wird der Microsoft Azure AD Connect Agent Updater-Dienst verwendet, der zusammen mit dem Proxydienst installiert wird. Das automatische Upgrade ist standardmäßig aktiviert und kann mit dem Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration` aktiviert oder deaktiviert werden. Die aktuelle Einstellung kann mit dem Cmdlet `Get-AzureADPasswordProtectionProxyConfiguration` abgefragt werden. Microsoft empfiehlt, die Einstellung für das automatische Upgrade immer aktiviert zu lassen.
 
 Mit dem Cmdlet `Get-AzureADPasswordProtectionProxy` kann die Softwareversion aller aktuell installierten Proxy-Agents in einer Gesamtstruktur abgefragt werden.
 
@@ -312,7 +322,7 @@ Mit dem Cmdlet `Get-AzureADPasswordProtectionProxy` kann die Softwareversion all
 
 Wenn eine neuere Version der DC-Agent-Software für den Azure AD-Kennwortschutz verfügbar ist, wird das Upgrade durch Ausführen der neuesten Version des Softwarepakets `AzureADPasswordProtectionDCAgentSetup.msi` durchgeführt. Die aktuelle Version der Software ist im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071) verfügbar.
 
-Es ist nicht erforderlich, die aktuelle Version der DC-Agent-Software zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der DC-Agent-Software ist immer ein Neustart erforderlich. Dies wird durch das Kernverhalten von Windows verursacht. 
+Es ist nicht erforderlich, die aktuelle Version der DC-Agent-Software zu deinstallieren. Das Installationsprogramm führt ein direktes Upgrade durch. Beim Upgrade der DC-Agent-Software ist immer ein Neustart erforderlich. Diese Anforderung wird durch das Kernverhalten von Windows verursacht. 
 
 Das Softwareupgrade kann mit MSI-Standardprozeduren automatisiert werden, z.B. `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`.
 

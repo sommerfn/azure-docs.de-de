@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571381"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336818"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: Wenn Sie bereits über einen vorhandenen Mandanten verfügen
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
@@ -63,8 +63,9 @@ Für e-mail-aktivierte Gruppen und Kontakte können Sie ein Soft-Match basierend
 Um zu verhindern, dass nicht vertrauenswürdige lokale Benutzer einem Cloudbenutzer mit einer Administratorrolle zugeordnet werden, ordnet Azure AD Connect Objekten mit Administratorrolle keine lokalen Benutzerobjekte zu. Dies ist die Standardeinstellung. Um dieses Verhalten zu umgehen, können Sie die folgenden Schritte ausführen:
 
 1.  Entfernen Sie die Verzeichnisrollen von dem reinen Cloudbenutzerobjekt.
-2.  Führen Sie eine Synchronisierung aus.
-3.  Fügen Sie optional die Verzeichnisrollen dem Benutzerobjekt in der Cloud wieder hinzu, nachdem die Zuordnung stattgefunden hat.
+2.  Wenn bei einem Benutzersynchronisierungsversuch ein Fehler aufgetreten ist, löschen Sie das unter Quarantäne gestellte Objekt in der Cloud endgültig.
+3.  Führen Sie eine Synchronisierung aus.
+4.  Fügen Sie optional die Verzeichnisrollen dem Benutzerobjekt in der Cloud wieder hinzu, nachdem die Zuordnung stattgefunden hat.
 
 
 

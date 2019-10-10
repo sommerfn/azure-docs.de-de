@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476552"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709273"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory
 Erfahren Sie, wie Sie die Art und Weise konfigurieren, in der Benutzer Anwendungsberechtigungen zustimmen. Sie können die Benutzerfreundlichkeit verbessern, indem Sie Administratoreinwilligung erteilen. Dieser Artikel erläutert die verschiedenen Möglichkeiten für die Konfiguration der Benutzereinwilligung. Diese Methoden gelten für alle Endbenutzer in Ihrem Azure AD-Mandanten. 
@@ -63,13 +63,14 @@ So erteilen Sie die Administratoreinwilligung beim Registrieren einer App:
 
 So erteilen Sie die Administratoreinwilligung über eine URL-Anforderung:
 
-1. Erstellen Sie eine Anforderung an *login.microsoftonline.com* mit Ihren App-Konfigurationen, und fügen Sie diese an `&prompt=admin_consent` an. 
+1. Erstellen Sie eine Anforderung an *login.microsoftonline.com* mit Ihren App-Konfigurationen, und fügen Sie diese an `&prompt=admin_consent` an. Diese URL sieht wie folgt aus: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
 2. Nach der Anmeldung als Administrator sollte die App-Zustimmung für alle Benutzer erteilt sein.
 
 
 ## <a name="force-user-consent-through-a-url-request"></a>Erzwingen der Benutzereinwilligung über eine URL-Anforderung
 
 Um zu erzwingen, dass Endbenutzer bei jeder Authentifizierung ihre Einwilligung für eine Anwendung erteilen, fügen Sie `&prompt=consent` an die URL der Authentifizierungsanforderung an.
+Diese URL sieht wie folgt aus: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

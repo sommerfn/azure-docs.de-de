@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241711"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827154"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
 
@@ -122,8 +122,8 @@ Machen Sie sich zum besseren Verständnis der Berechtigungsverwaltung und der da
 | Begriff oder Konzept | BESCHREIBUNG |
 | --- | --- |
 | Berechtigungsverwaltung | Ein Dienst, der Zugriffspakete zuweist, widerruft und verwaltet. |
-| Zugriffspaket | Eine Sammlung von Berechtigungen und Richtlinien für Ressourcen, die Benutzer anfordern können. Zugriffspakete sind immer in einem Katalog enthalten. |
-| Zugriffsanforderung | Eine Anforderung des Zugriffs auf ein Zugriffspaket. Eine Anforderung durchläuft in der Regel einen Workflow. |
+| Zugriffspaket | Ein Ressourcenpaket, das von einem Team oder Projekt benötigt wird und Richtlinien unterliegt. Zugriffspakete sind immer in einem Katalog enthalten. |
+| Zugriffsanforderung | Die Anforderung des Zugriffs auf die Ressourcen in einem Zugriffspaket. Eine Anforderung durchläuft in der Regel einen Workflow. |
 | policy | Ein Satz von Regeln, die den Zugriffslebenszyklus definieren. Sie legen beispielsweise fest, wie Benutzer Zugriff erhalten, wer den Zugriff genehmigen darf und wie lange Benutzer Zugriff haben. Beispielrichtlinien umfassen Mitarbeiterzugriff und externen Zugriff. |
 | catalog | Ein Container verwandter Ressourcen und Zugriffspakete. |
 | Katalog „Allgemein“ | Ein integrierter Katalog, der immer verfügbar ist. Um dem Katalog „Allgemein“ Ressourcen hinzuzufügen, sind bestimmte Berechtigungen erforderlich. |

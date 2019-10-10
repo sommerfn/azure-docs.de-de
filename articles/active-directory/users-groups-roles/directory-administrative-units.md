@@ -15,30 +15,32 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b4bdced50f806367a53881d5ef0abd0a3710496
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 58b61186a876af90c812ec7faf41fa9f5b14bf4e
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736781"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336924"
 ---
-# <a name="administrative-units-management-in-azure-active-directory-public-preview"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory (öffentliche Vorschau)
+# <a name="administrative-units-management-in-azure-active-directory-preview"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory (Vorschau)
 
-In diesem Artikel werden Verwaltungseinheiten in Azure Active Directory (Azure AD) beschrieben. Hierbei handelt es sich um einen Container mit Ressourcen, die zum Delegieren administrativer Berechtigungen und Anwenden von Richtlinien für bestimmte Benutzergruppen verwendet werden können. In Azure AD können Administratoren mithilfe von Verwaltungseinheiten Berechtigungen an regionale Administratoren delegieren oder eine Richtlinie mit hoher Präzision festlegen.
+In diesem Artikel werden Verwaltungseinheiten in Azure Active Directory (Azure AD) beschrieben. Eine Verwaltungseinheit ist eine Azure AD Ressource, bei der es sich um einen Container für andere Azure AD Ressourcen handeln kann. In dieser Vorschauversion können diese Ressourcen nur Benutzer sein. Beispielsweise kann ein einer Verwaltungseinheit zugeordneter Benutzerkontoadministrator nur in seiner Verwaltungseinheit Profilinformationen aktualisieren, Kennwörter zurücksetzen und Benutzern Lizenzen zuweisen.
 
-Dies ist hilfreich in Organisationen mit unabhängigen Bereichen, z.B. eine große Universität, die aus vielen autonomen Fakultäten besteht (eine Wirtschaftsfakultät, eine Ingenieursfakultät, usw.), die unabhängig voneinander sind. Solche Bereiche haben ihre eigenen IT-Administratoren, die den Zugriff kontrollieren, Benutzer verwalten und Richtlinien festlegen, die speziell für die jeweilige Abteilung gelten. Zentrale Administratoren wollen in der Lage sein, den Administratoren der einzelnen Bereiche Berechtigungen für die Benutzer in ihren Bereichen zu erteilen. Genauer gesagt kann ausgehend von diesem Beispiel ein zentraler Administrator z. B. eine Verwaltungseinheit für eine bestimmten Fakultät (Wirtschaftsfakultät) erstellen und sie nur mit den Benutzern der Wirtschaftsfakultät befüllen. Dann kann ein zentraler Administrator den IT-Mitarbeitern der Wirtschaftsfakultät eine bereichsbezogene Rolle hinzufügen. Oder anders ausgedrückt, er kann den IT-Mitarbeitern der Wirtschaftsfakultät Berechtigungen nur für die Verwaltungseinheit „Wirtschaftsfakultät“ gewähren.
+Über Verwaltungseinheiten kann das Delegieren von administrativen Berechtigungen für Teilmengen von Benutzern und das Anwenden von Richtlinien auf eine Teilmenge der Benutzer erfolgen. Mithilfe von Verwaltungseinheiten können Sie Berechtigungen an regionale Administratoren delegieren oder Richtlinien auf granularer Ebene festlegen.
 
-> [!IMPORTANT]
-> Für die Verwendung von Verwaltungseinheiten muss der Verwaltungseinheitenadministrator über eine Azure Active Directory Premium-Lizenz verfügen. Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Premium](../fundamentals/active-directory-get-started-premium.md).
->
+## <a name="deployment-scenario"></a>Bereitstellungsszenario
 
-Aus Sicht des zentralen Administrators ist eine Verwaltungseinheit ein Verzeichnisobjekt, das erstellt und mit Ressourcen aufgefüllt werden kann. **In dieser Vorschauversion können diese Ressourcen nur Benutzer sein.** Sobald erstellt und aufgefüllt, kann die Verwaltungseinheit zum Einschränken der erteilten Berechtigung nur für Ressourcen in der Verwaltungseinheit verwendet werden.
+Verwaltungseinheiten können in Organisationen mit unabhängigen Abteilungen praktisch sein. Nehmen Sie als Beispiel eine große Universität, die aus vielen autonomen Fakultäten (Wirtschaftswissenschaften, Ingenieurwissenschaften usw.) besteht, die jeweils über eigene IT-Administratoren verfügen, die den Zugriff steuern, die Benutzer verwalten und Richtlinien für ihre Fakultät festlegen. Ein zentraler Administrator könnte für die Wirtschaftsfakultät eine Verwaltungseinheit erstellen und diese nur mit den Studenten und Mitarbeitern dieser Fakultät füllen. Dann kann der zentrale Administrator die IT-Mitarbeiter der Wirtschaftsfakultät einer bereichsbezogenen Rolle hinzufügen, die ihnen administrative Berechtigungen nur für die Azure AD-Benutzer in der Verwaltungseinheit „Wirtschaftsfakultät“ gewährt.
+
+## <a name="license-requirements"></a>Lizenzanforderungen
+
+Für die Verwendung von Verwaltungseinheiten ist eine Azure Active Directory Premium-Lizenz für jeden Administrator von Verwaltungseinheiten erforderlich. Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Premium](../fundamentals/active-directory-get-started-premium.md).
 
 ## <a name="managing-administrative-units"></a>Verwalten von Verwaltungseinheiten
 
-In dieser Vorschauversion können Sie Verwaltungseinheiten mit dem Azure Active Directory-Modul für Windows PowerShell-Cmdlets erstellen und verwalten. Weitere Informationen hierzu finden Sie unter [Verwenden von Verwaltungseinheiten](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0).
+In dieser Vorschauversion können Sie Verwaltungseinheiten nur mit dem Azure Active Directory-Modul für Windows PowerShell-Cmdlets erstellen und verwalten, wie unter [Verwenden von Verwaltungseinheiten](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0) beschrieben.
 
-Weitere Informationen zu Softwareanforderungen und der Installation des Azure AD-Moduls sowie Informationen zu den Azure AD-Modul-Cmdlets zur Verwaltung von Verwaltungseinheiten, einschließlich Syntax, Beschreibung der Parameter und Beispielen, finden Sie unter [Working with Administrative Units](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0) (Verwenden von Verwaltungseinheiten).
+Weitere Informationen zu Softwareanforderungen und zur Installation des Azure AD-Moduls finden Sie unter [Verwenden von Verwaltungseinheiten](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0). Hier finden Sie auch Referenzinformationen zu den Cmdlets des Azure AD-Moduls zum Verwalten von Verwaltungseinheiten, einschließlich Syntax, Parameterbeschreibung und Beispielen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
