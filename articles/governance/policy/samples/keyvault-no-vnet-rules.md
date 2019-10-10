@@ -2,17 +2,16 @@
 title: 'Beispiel: Überwachen von Key Vault-Tresoren auf Instanzen ohne Endpunkte im virtuellen Netzwerk'
 description: Diese Beispielrichtliniendefinition überwacht Key Vault-Tresore, um Instanzen VNET-Dienstendpunkte zu ermitteln.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: bc5ce4a6a2e52ed8d21de8db8da1f815293b61f7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276370"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976961"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Beispiel: Key Vault-Tresore mit Instanzen ohne Endpunkte im virtuellen Netzwerk
 

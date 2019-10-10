@@ -2,17 +2,16 @@
 title: 'Beispiel: Überwachung, wenn Anwendungen nicht auf virtuellen Linux-Computern installiert sind'
 description: Die Beispielinitiative und -definitionen dieser Policy-Gastkonfiguration überwachen, ob die angegebenen Anwendungen nicht auf virtuellen Linux-Computern installiert sind.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204014"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977031"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Beispiel: Überwachung, wenn die angegebenen Anwendungen nicht auf virtuellen Linux-Computern installiert sind
 
@@ -45,7 +44,7 @@ Die Initiative wird erstellt, indem Sie die Definitionen **audit** und **deployI
 
 ### <a name="initiative-parameters"></a>Initiativparameter
 
-|NAME |Type |BESCHREIBUNG |
+|NAME |type |BESCHREIBUNG |
 |---|---|---|
 |applicationName |Zeichenfolge |Anwendungsnamen. Beispiel: „python“, „powershell“ oder eine durch Trennzeichen getrennte Liste, z. B. „python,powershell“. Verwenden Sie \* als Platzhalterzeichen, z.B. „power\*“. |
 

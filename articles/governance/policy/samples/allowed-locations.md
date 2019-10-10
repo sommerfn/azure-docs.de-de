@@ -2,17 +2,16 @@
 title: Beispiel – zulässige Speicherorte
 description: Diese Beispielrichtliniendefinition erfordert, dass alle Ressourcen an den genehmigten Standorten bereitgestellt werden.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2823cee863941926fffe332295328d6ecfb54001
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5c4a23b355a4d7841c42d03042399635a55bac03
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264725"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980636"
 ---
 # <a name="sample---allowed-region-locations"></a>Beispiel: Zulässige Regionsstandorte
 
@@ -52,7 +51,7 @@ Der JSON-Code, der die Richtlinienparameter definiert und von der Azure-Befehlsz
 
 ## <a name="parameters"></a>Parameter
 
-|NAME |Type |Feld |BESCHREIBUNG |
+|NAME |type |Feld |BESCHREIBUNG |
 |---|---|---|---|
 |listOfAllowedLocations |Array |locations |Die Liste der zulässigen Speicherorte|
 

@@ -4,21 +4,20 @@ description: Erfahren Sie, wie Sie eine Jupyter Notebook-Datei in Azure Notebook
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 09d4038e705fb3bc4ff2c82daf5dc4c07f346f94
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 827338c299b19d04245d7114a99d946d0332c82f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751757"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973043"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
@@ -28,7 +27,7 @@ Das vollständige Notebook finden Sie unter [GitHub - Azure Notebooks Samples (G
 
 ## <a name="create-the-project"></a>Erstellen des Projekts
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (Ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 
@@ -158,7 +157,7 @@ Im Folgenden werden die Gruppen der Menübefehle aufgeführt:
 | Einfügen | Befehle zum Einfügen einer neuen Zelle ober- oder unterhalb der aktuellen Zelle. Diese Befehle werden Sie beim Erstellen eines Notebooks häufig verwenden. |
 | Cell (Zelle) | Die verschiedenen**Run**-Befehle (Ausführen) werden in einer Zelle oder mehreren Zellen in unterschiedlichen Kombinationen ausgeführt. Die Befehle **Cell Type** (Zellentyp) ändern den Typ einer Zelle zwischen **Code**, **Markdown** und **unformatierte NBConvert**-Zellen (Nur-Text). Die Befehle **Current Outputs** (Aktuelle Ausgaben) und **All Outputs** (Alle Ausgaben) steuern, wie die Ausgabe des ausgeführten Codes angezeigt wird. Zudem wird ein Befehl zum Löschen der gesamten Ausgabe eingefügt. |
 | Kernel | Befehle, mit denen verwaltet werden kann, wie Code im Kernel zusammen mit **Change kernel** (Kernel ändern) ausgeführt wird, um die Sprache der Python-Version zu ändern, die zum Ausführen des Notebook verwendet wird. |
-| Daten | Befehle zum Hochladen und Herunterladen von Dateien aus dem Projekt oder der Sitzung. Weitere Informationen finden Sie unter [Arbeiten mit Datendateien](work-with-project-data-files.md). |
+| Data | Befehle zum Hochladen und Herunterladen von Dateien aus dem Projekt oder der Sitzung. Weitere Informationen finden Sie unter [Arbeiten mit Datendateien](work-with-project-data-files.md). |
 | Widgets | Befehle zum Verwalten von [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), die zusätzliche Funktionen zur Visualisierung, Zuordnung und zum Zeichnen bieten.|
 | Hilfe | Befehle, die Hilfe und Dokumentation für die Jupyter-Schnittstelle bereitstellen. |
 

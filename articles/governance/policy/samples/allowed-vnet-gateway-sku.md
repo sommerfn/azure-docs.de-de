@@ -2,17 +2,16 @@
 title: 'Beispiel: Zulässige SKUs für Gateways für virtuelle Netzwerke'
 description: Diese Beispielrichtliniendefinition setzt voraus, dass Gateways für virtuelle Netzwerke eine zulässige SKU und einen Gatewaytyp festlegen.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 3338117f44639fd8342c4275016461db16a76686
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0ec66dff07d6c0a39517768e7a856d87e346bd90
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280603"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977645"
 ---
 # <a name="sample---allowed-virtual-network-gateway-skus"></a>Beispiel: Zulässige SKUs für Gateways für virtuelle Netzwerke
 

@@ -2,17 +2,16 @@
 title: 'Beispiel: Zulässige SKUs für Speicherkonten und virtuelle Computer'
 description: Diese Beispielrichtliniendefinition erfordert, dass Speicherkonten und virtuelle Computer genehmigte SKUs verwenden.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e84462a930ffad202def1da1e2c923371dde9d58
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59274568"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980601"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Beispiel: Zulässige SKUs für Speicherkonten und virtuelle Computer
 

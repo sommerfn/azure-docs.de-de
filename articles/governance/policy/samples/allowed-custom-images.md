@@ -2,17 +2,16 @@
 title: 'Beispiel: Genehmigte VM-Images'
 description: Diese Beispielrichtliniendefinition erzwingt, dass nur genehmigte benutzerdefinierte Images in Ihrer Umgebung bereitgestellt werden.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8def11c2d92af618054d0353fa2687d2e88e1134
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 34a3cf54879dcf6fc25fab50bcbabde28fff653a
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266714"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980847"
 ---
 # <a name="sample---approved-virtual-machine-images"></a>Beispiel: Unterstützte Images virtueller Computer
 
@@ -52,7 +51,7 @@ Der JSON-Code, der die Richtlinienparameter definiert und von der Azure-Befehlsz
 
 ## <a name="parameters"></a>Parameter
 
-|NAME |Type |Feld |BESCHREIBUNG |
+|NAME |type |Feld |BESCHREIBUNG |
 |---|---|---|---|
 |imageIds |Array |Microsoft.Compute/imageIds |Die Liste der genehmigten VM-Images|
 

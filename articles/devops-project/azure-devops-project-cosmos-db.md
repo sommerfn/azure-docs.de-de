@@ -2,19 +2,19 @@
 title: 'Tutorial: Bereitstellen von auf Azure Cosmos DB basierenden Node.js-Apps mit Azure DevOps Projects'
 description: Azure DevOps Projects erleichtert die ersten Schritte mit Azure. Mit DevOps Projects können Sie Ihre auf Azure Cosmos DB basierende Node.js-App in wenigen Schritten in einer Windows-Web-App bereitstellen.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 38fc4aa04269924ad0acd529e961dd3228ec236e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884417"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969660"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Bereitstellen von auf Azure Cosmos DB basierenden Node.js-Apps mit DevOps Projects
 
