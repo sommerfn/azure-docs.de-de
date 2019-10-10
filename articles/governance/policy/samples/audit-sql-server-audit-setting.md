@@ -2,17 +2,16 @@
 title: 'Beispiel: Überwachen von Einstellungen der Überwachung auf SQL Server-Ebene'
 description: Diese Beispielrichtliniendefinition überwacht SQL Server-Überwachungseinstellungen, wenn diese Einstellungen nicht mit einer angegebenen Einstellung übereinstimmen.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: dcba50cc3ed30940c461312c7f09577e693f9b2e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 158efc86c460cfc96f1cd01294bbd653aff1d0f9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269084"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980595"
 ---
 # <a name="sample---audit-sql-server-level-audit-setting"></a>Beispiel: Überwachen von Einstellungen der Überwachung auf SQL Server-Ebene
 

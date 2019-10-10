@@ -2,17 +2,16 @@
 title: 'Beispiel: mehrere Namensmuster'
 description: Diese Beispielrichtliniendefinition erfordert, dass die Ressource mit einem der bereitgestellten Namensmuster übereinstimmt.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f38b8879a16a5f61b2a31cc7fc2989e2fa228e7a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c178c2a2ef08b5c925261488007accd72a6208f9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280722"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977738"
 ---
 # <a name="sample---allow-multiple-name-patterns"></a>Beispiel: Zulassen mehrerer Namensmuster
 

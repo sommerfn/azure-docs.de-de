@@ -2,19 +2,19 @@
 title: 'Tutorial: Bereitstellen von ASP.NET-Apps in Azure Functions mit Azure DevOps Projects'
 description: Azure DevOps Projects erleichtert die ersten Schritte mit Azure. Mit DevOps Projects können Sie in wenigen Schritten Ihre ASP.NET-App in Azure Functions bereitstellen.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 06/20/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 6894f9bc6c803e2692afb54d7459adf6b0e6dbd6
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 4e7e9428af86f131632650f18d45e7dd48f4b5cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828155"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971572"
 ---
 # <a name="continuously-deploy-to-azure-functions-with-devops-projects"></a>Kontinuierliche Bereitstellung in Azure Functions mit DevOps Projects
 
