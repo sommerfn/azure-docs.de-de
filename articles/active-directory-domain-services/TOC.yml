@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: Konzepte
   items:
+    - name: Verwaltungsgrundlagen
+      href: administration-concepts.md
     - name: Allgemeine Bereitstellungsszenarien
       href: scenarios.md
     - name: Funktionsweise der Azure AD DS-Synchronisierung

@@ -15,8 +15,6 @@
       href: quickstart-download-audit-report.md
     - name: Konfigurieren benannter Orte
       href: quickstart-configure-named-locations.md
-    - name: Installieren des Power BI-Inhaltspakets
-      href: quickstart-install-power-bi-content-pack.md
     - name: Senden von Protokollen an ein Speicherkonto
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: Lernprogramme
@@ -58,8 +56,6 @@
           href: howto-troubleshoot-sign-in-errors.md
         - name: Bereinigen von Benutzern mit Risikomarkierung
           href: howto-remediate-users-flagged-for-risk.md
-        - name: Verwenden des Power BI-Inhaltspakets für Azure AD-Berichte
-          href: howto-power-bi-content-pack.md
         - name: Konfigurieren der Voraussetzungen für die Berichterstellungs-API
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Verwenden von Azure AD-Arbeitsmappen
@@ -86,8 +82,6 @@
           href: troubleshoot-missing-data-download.md
         - name: Kein Zugriff auf Graph-APIs für die Berichterstellung
           href: troubleshoot-graph-api.md
-        - name: Fehler im Power BI-Inhaltspaket
-          href: troubleshoot-content-pack.md
 - name: Verweis
   expanded: true
   items:

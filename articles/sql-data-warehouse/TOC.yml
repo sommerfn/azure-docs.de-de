@@ -1,5 +1,5 @@
 - name: Dokumentation zu SQL Data Warehouse
-  href: index.md
+  href: index.yml
 - name: Übersicht
   items:
     - name: Was ist SQL Data Warehouse?
