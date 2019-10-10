@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: f7d364eb5db5c6d6304944d490468edf8b5ebe2e
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 46d0124eb701b0c2d779a96c8efd50ba43e8fc07
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811665"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034453"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -459,44 +459,34 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 Das `DocumentCollection`-Objekt aus dem [Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-java.md)) macht die Methoden `getIndexingPolicy()` und `setIndexingPolicy()` verfügbar. Mit dem bearbeiteten `IndexingPolicy`-Objekt können Sie den Indizierungsmodus ändern sowie ein- und ausgeschlossene Pfade hinzufügen und entfernen.
 
-Abrufen der Details des Containers
-
 ```java
+// Retrieve the container's details
 Observable<ResourceResponse<DocumentCollection>> containerResponse = client.readCollection(String.format("/dbs/%s/colls/%s", "database", "container"), null);
 containerResponse.subscribe(result -> {
 DocumentCollection container = result.getResource();
 IndexingPolicy indexingPolicy = container.getIndexingPolicy();
-```
 
-Festlegen des Indizierungsmodus auf „Konsistent“
-
-```java
+// Set the indexing mode to consistent
 indexingPolicy.setIndexingMode(IndexingMode.Consistent);
-```
 
-Hinzufügen eines eingeschlossenen Pfads
+// Add an included path
 
-```java
 Collection<IncludedPath> includedPaths = new ArrayList<>();
 ExcludedPath includedPath = new IncludedPath();
-includedPath.setPath("/age/*");
+includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);
-```
 
-Hinzufügen eines ausgeschlossenen Pfads
+// Add an excluded path
 
-```java
 Collection<ExcludedPath> excludedPaths = new ArrayList<>();
 ExcludedPath excludedPath = new ExcludedPath();
 excludedPath.setPath("/name/*");
 excludedPaths.add(excludedPath);
 indexingPolicy.setExcludedPaths(excludedPaths);
-```
 
-Hinzufügen eines räumlichen Index
+// Add a spatial index
 
-```java
 Collection<SpatialSpec> spatialIndexes = new ArrayList<SpatialSpec>();
 Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
 
@@ -508,20 +498,17 @@ spatialIndexes.add(spec);
 
 indexingPolicy.setSpatialIndexes(spatialIndexes);
 
-```
+// Add a composite index
 
-Hinzufügen eines zusammengesetzten Index
-
-```java
 Collection<ArrayList<CompositePath>> compositeIndexes = new ArrayList<>();
 ArrayList<CompositePath> compositePaths = new ArrayList<>();
 
 CompositePath nameCompositePath = new CompositePath();
-nameCompositePath.setPath("/name/*");
+nameCompositePath.setPath("/name");
 nameCompositePath.setOrder(CompositePathSortOrder.Ascending);
 
 CompositePath ageCompositePath = new CompositePath();
-ageCompositePath.setPath("/age/*");
+ageCompositePath.setPath("/age");
 ageCompositePath.setOrder(CompositePathSortOrder.Descending);
 
 compositePaths.add(ageCompositePath);
@@ -529,12 +516,11 @@ compositePaths.add(nameCompositePath);
 
 compositeIndexes.add(compositePaths);
 indexingPolicy.setCompositeIndexes(compositeIndexes);
-```
 
-Aktualisieren des Containers mit Änderungen
+// Update the container with changes
 
-```java
  client.replaceCollection(container, null);
+});
 ```
 
 Zum Nachverfolgen der Fortschritts der Indextransformation für einen Container übergeben Sie ein `RequestOptions`-Objekt, das anfordert, dass die Kontingentinformationen ausgefüllt werden. Anschließend rufen Sie den Wert aus dem `x-ms-documentdb-collection-index-transformation-progress`-Antwortheader ab.

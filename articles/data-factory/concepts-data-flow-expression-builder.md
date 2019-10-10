@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269164"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703407"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow: Ausdrucks-Generator
 
@@ -19,26 +19,29 @@ ms.locfileid: "61269164"
 
 In Azure Data Factory Mapping Data Flow gibt es Ausdrucksfelder, in die Sie Ausdrücke für die Datentransformation eingeben können. In diesen Feldern können Sie Spalten, Felder, Variablen, Parameter und Funktionen Ihres Datenflusses verwenden. Zum Erstellen des Ausdrucks verwenden Sie den Ausdrucks-Generator, der gestartet wird, wenn Sie in der Transformation auf das Ausdruckstextfeld klicken. Manchmal werden auch Optionen für „Berechnete Spalte“ angezeigt, wenn Sie Spalten für die Transformation auswählen. Wenn Sie darauf klicken, wird der Ausdrucks-Generator ebenfalls gestartet.
 
-![Ausdrucks-Generator](media/data-flow/expression.png "Ausdrucks-Generator")
+![Ausdrucks-Generator](media/data-flow/xpb1.png "Ausdrucks-Generator")
 
 Der Ausdrucks-Generator verwendet standardmäßig die Text-Editor-Option. Die Funktion „AutoVervollständigen“ liest aus dem gesamten Azure Data Factory-Datenfluss-Objektmodell mit Syntaxprüfung und -hervorhebungen.
 
 ![Automatische Vervollständigung des Ausdrucks-Generators](media/data-flow/expb1.png "Automatische Vervollständigung des Ausdrucks-Generators")
 
-## <a name="currently-working-on-field"></a>Das Feld, an dem Sie aktuell arbeiten
+## <a name="build-schemas-in-output-schema-pane"></a>Erstellen von Schemas im Ausgabeschemabereich
 
-![Ausdrucks-Generator](media/data-flow/exp3.png "Feld, an dem Sie aktuell arbeiten")
+![Komplexe Spalte hinzufügen](media/data-flow/complexcolumn.png "Spalten hinzufügen")
 
-Oben links auf der Benutzeroberfläche des Ausdrucks-Generators wird ein Feld („Currently Working On“) mit dem Namen des Felds angezeigt, an dem Sie aktuell arbeiten. Der Ausdruck, den Sie über die Benutzeroberfläche erstellen, wird nur auf das Feld angewendet, an dem Sie aktuell arbeiten. Wenn Sie ein anderes Feld transformieren möchten, speichern Sie Ihre aktuelle Arbeit, und verwenden Sie dieses Dropdownmenü, um ein anderes Feld auszuwählen und einen Ausdruck für die anderen Felder zu erstellen.
+Im Ausgabeschemabereich auf der linken Seite werden die Spalten angezeigt, die Sie ändern und dem Schema hinzufügen. Hier können Sie auf interaktive Weise einfache und komplexe Datenstrukturen erstellen. Mit „Spalte hinzufügen“ können Sie zusätzliche Felder hinzufügen und mit „Unterspalte hinzufügen“ Hierarchien erstellen.
+
+![Unterspalte hinzufügen](media/data-flow/addsubcolumn.png "Unterspalte hinzufügen")
 
 ## <a name="data-preview-in-debug-mode"></a>Datenvorschau im Debugmodus
 
 ![Ausdrucks-Generator](media/data-flow/exp4b.png "Ausdrucksdatenvorschau")
 
-Wenn Sie an Ihren Ausdrücken arbeiten, können Sie den Debugmodus optional über die Entwurfsoberfläche von Azure Data Factory-Datenfluss aktivieren, um eine Livevorschau Ihrer Datenergebnisse aus dem von Ihnen erstellten Ausdruck zu erhalten. Für Ihre Ausdrücke ist Livedebugging in Echtzeit aktiviert.
+Wenn Sie mit Datenflussausdrücken arbeiten, können Sie über die Entwurfsoberfläche für Azure Data Factory-Datenflüsse den Debugmodus aktivieren, um eine Livevorschau der Datenergebnisse aus dem von Ihnen erstellten Ausdruck zu erhalten. Für Ihre Ausdrücke ist Livedebugging in Echtzeit aktiviert.
 
 ![Debugmodus](media/data-flow/debugbutton.png "Schaltfläche „Debuggen“")
 
+Klicken Sie auf die Schaltfläche „Aktualisieren“, um die Ergebnisse des Ausdrucks anhand eines Livebeispiels Ihrer Quelle in Echtzeit zu aktualisieren.
 
 ![Ausdrucks-Generator](media/data-flow/exp5.png "Ausdrucksdatenvorschau")
 
