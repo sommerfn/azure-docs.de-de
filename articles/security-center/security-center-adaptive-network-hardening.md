@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202772"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996724"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptive Netzwerkhärtung in Azure Security Center
 Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Azure Security Center konfigurieren.
@@ -131,9 +131,9 @@ Sie können eine Regel vom Typ „Zulassen“ hinzufügen, die nicht von Securit
 
 ### Löschen einer Regel <a name ="delete-rule"> </a>
 
-Bei Bedarf können Sie eine empfohlene Regel löschen. Dies kann beispielsweise erforderlich sein, wenn Sie feststellen, dass eine vorgeschlagene Regel die Blockierung von zulässigem Datenverkehr zur Folge hätte.
+Bei Bedarf können Sie eine empfohlene Regel für die aktuelle Sitzung löschen. Dies kann beispielsweise erforderlich sein, wenn Sie feststellen, dass eine vorgeschlagene Regel die Blockierung von zulässigem Datenverkehr zur Folge hätte.
 
-*So löschen Sie eine Regel der adaptiven Netzwerkhärtung:*
+*So löschen Sie eine Regel der adaptiven Netzwerkhärtung für Ihre aktuelle Sitzung:*
 
 1. Klicken Sie auf der Registerkarte **Regeln** auf die drei Punkte (...) am Ende der Zeile mit der Regel, und klicken Sie anschließend auf **Löschen**.  
 

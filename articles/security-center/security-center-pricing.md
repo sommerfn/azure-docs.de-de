@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: memildin
-ms.openlocfilehash: 0663e97dabe8b5f50ee9605f0bc9319c7a2aa13c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 356bfc28984ecc1bc6990c10378a3df155593e94
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201242"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996705"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
@@ -64,7 +64,7 @@ Security Center bietet mehr Sicherheit und besseren Schutz vor Bedrohungen für 
 In diesem Artikel wurden die Preise für Security Center vorgestellt. Weitere Informationen zur erweiterten Sicherheit und Bedrohungserkennung des Standard-Tarifs finden Sie unter den folgenden Links:
 
 - [Erweiterte Bedrohungserkennung](security-center-threat-report.md)
-- [Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features](security-center-just-in-time.md)
+- [JIT-VM-Zugriffssteuerung](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png

@@ -1,19 +1,19 @@
 ---
 title: 'Dynamics 365 for Operations: Hilfewiki'
-description: 'Dynamics 365 for Operations: Hilfewiki (Informationsseite)'
+description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Dynamics 365 for Operations: Hilfewiki (Informationsseite)“'
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d957055a3545d790b9419ed1523352155ecc3add
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: cf21f0aa42eef089d02632ba9323574768459054
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935175"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034420"
 ---
 # <a name="dynamics-365-for-operations-help-wiki"></a>Dynamics 365 for Operations: Hilfewiki
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943096"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030439"
 ---
 <a name="seller-insights-faq"></a>Seller Insights – häufig gestellte Fragen
 ===================
@@ -41,7 +41,7 @@ Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlun
 <a name="calculate-revenue-by-customer-usage-period"></a>Berechnen des Umsatzes nach Kundennutzungsdauer
 ------------------------------------------
 
-Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlung“ die Spalte mit der Bezeichnung  **Transaktionsstatus** an, und wenden Sie den Filter auf den Wert „Bezahlt“ an.   Für jede aufgelistete Transaktion gibt die Spalte mit der Bezeichnung  **Auszahlungsbetrag (PC)**   den Betrag an, der Ihnen bezahlt wurde.  Um die mit der Transaktion verbundene Nutzungsdauer zu schätzen, verwenden Sie die Spalte  **Abrechnungsdatum**, eine enge Annäherung an den letzten Nutzungstag des Zeitraums, auf den sich die Transaktion bezieht.
+Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlung“ die Spalte mit der Bezeichnung **Transaktionsstatus** an, und wenden Sie den Filter auf den Wert „Bezahlt“ an.   Für jede aufgelistete Transaktion gibt die Spalte mit der Bezeichnung **Auszahlungsbetrag (PC)** den Betrag an, der Ihnen bezahlt wurde.  Um die mit der Transaktion verbundene Nutzungsdauer zu schätzen, verwenden Sie die Spalte **Abrechnungsdatum**, eine enge Annäherung an den letzten Nutzungstag des Zeitraums, auf den sich die Transaktion bezieht.
 
 
 <a name="calculate-your-bad-debt"></a>Berechnen Ihres Forderungsausfalls

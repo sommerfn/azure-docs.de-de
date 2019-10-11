@@ -1,39 +1,21 @@
 ---
 title: Erstellen eines Dynamics 365 for Customer Engagement-Angebots | Azure Marketplace
-description: Erstellen eines neuen Dynamics 365 for Customer Engagement-Anwendungsangebots auf dem AppSource Marketplace.
+description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Erstellen eines neuen Dynamics 365 for Customer Engagement-Anwendungsangebots auf dem AppSource Marketplace“'
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/21/2018
-ms.author: pabutler
-ms.openlocfilehash: ebfef673102878e50f744081ec9b46fd4cd1796b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1682abd3983d3e090b59e6452c4761913e29da3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942688"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034353"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Erstellen eines Dynamics 365 for Customer Engagement-Angebots
 
-In diesem Abschnitt werden das Erstellen und Veröffentlichen eines Dynamics 365 for Customer Engagement-Anwendungsangebots für den AppSource Marketplace beschrieben. Jedes Angebot wird als eigene Entität im Azure Marketplace angezeigt und besteht aus den folgenden Gruppierungen von Ressourcen und unterstützenden Diensten: Angebotsdetails, Paket technischer Informationen, Marketingartefakten, Supportinformationen und optionalen Testversionsspezifikationen. 
+Die Erstellung und Verwaltung von Dynamics 365 Customer Engagement-Angeboten wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="new-offer-form"></a>Formular „Neues Angebot“
-
-Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an, und wählen Sie dann in der linken Menüleiste die Option **+ Neues Angebot**. Wählen Sie im Menü „Neues Angebot“ **Dynamics 365 for Customer Engagement** aus:
-
-![Menüelement „Neues Angebot“ für Dynamics 365 for Customer Engagement-Anwendung](./media/new-dyn365ce-menu-item.png)
-
-Das Formular **Neues Angebot** wird mit der ersten [**Angebotseinstellungen**-Registerkarte](./cpp-offer-settings-tab.md) angezeigt.
-
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Die Seite **Neues Angebot** enthält eine Reihe von Registerkarten und Formularfeldern zum Erstellen eines neuen Angebots. In den folgenden Artikeln wird erläutert, wie Sie die Ressourcengruppen und unterstützenden Informationen für Ihr neues Angebot definieren.
-
-* [Registerkarte „Angebotseinstellungen“](./cpp-offer-settings-tab.md)
-* [Registerkarte „Technische Informationen“](./cpp-technical-info-tab.md)
-* [Registerkarte „Testversion“](./cpp-testdrive-tab.md)
-* [Registerkarte „Storefront Details“ (Storefrontdetails)](./cpp-storefront-details-tab.md)
-* [Registerkarte „Kontakte“](./cpp-contacts-tab.md)
+Bevor Sie mit dem Erstellen eines neuen Dynamics 365 for Customer Engagement-Angebots beginnen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen, und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement & PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer), um Ihr Angebot zu erstellen.

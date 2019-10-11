@@ -1,36 +1,22 @@
 ---
 title: Geschäftsprozessbibliotheken | Azure Marketplace
-description: Erläuterung von Geschäftsprozessbibliotheken und -methodiken.
+description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Erläuterung von Geschäftsprozessbibliotheken und -methodiken“'
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 870e77f3390c820278970f5ffda002b4826b82a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: f29d82a187027c3eee9d89258b6cf6c166089e70
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935623"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034391"
 ---
 # <a name="business-process-libraries"></a>Geschäftsprozessbibliotheken
 
-Geschäftsprozessbibliotheken sind nichts anderes als Aufgabenleitfäden für Ihre Ende-zu-Ende-Szenarien. Die Geschäftsprozessbibliothek sollte direkt auf Ihre Marketinginhalte abgestimmt sein. Jeder Geschäftsprozess in der Geschäftsprozessbibliothek muss eine ihm zugeordnete [Aufgabenaufzeichnung](https://docs.microsoft.com/dynamics365/operations/dev-itpro/user-interface/task-recorder) haben. Wenn Sie Prozesse haben, die sich außerhalb von Dynamics 365 for Operations befinden, sollten Sie ein Visio-Diagramm in Ihre Geschäftsprozessmodellierer-Bibliothek einbinden.
+Die Erstellung und Verwaltung von Dynamics 365 for Finance and Operations-Angeboten wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-Weitere Informationen finden Sie unter [Geschäftsprozessmodellierer](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/business-process-modeler-libraries-lcs-solutions).
-
-## <a name="methodologies"></a>Methodiken
-
-Lifecycle Services (LCS) für Microsoft Dynamics stellt Methodiken bereit, mit denen Sie eine besser wiederholbare und prognostizierbare Vorgehensweise für Implementierungsprojekte sicherstellen können. Sie können eine der bereitgestellten Methodiken verwenden oder eine eigene Methodik erstellen. Mit einer Methodik können Sie Ihren Projektfortschritt einfach nachverfolgen und dokumentieren.
-
-Eine Methodik bestehen aus Phasen, Aufgaben und Meilensteinen. Jede Phase kann eine beliebige Anzahl von Aufgaben haben, von denen einige obligatorisch sind. Wenn alle Aufgaben einer Phase abgeschlossen sind, kann die Phase als abgeschlossen markiert werden. Sie können auch einen Meilenstein für den Punkt erstellen, für den Sie erwarten, dass eine Phase abgeschlossen ist. Die folgenden Methodiken sind in einem LCS-Projekt enthalten:
-
-- Implementierung
-- Sure Step
-- Lernkurve für Entwicklung
-- Migrieren und Erstellen von Lösungen
-- Nutzen von Lösungen
-
-Weitere Informationen finden Sie unter [LCS-Methodiken](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lifecycle-services/create-methodology).
+Bevor Sie mit dem Erstellen von Dynamics 365 for Operations-Angeboten beginnen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen, und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer), um Ihr Angebot zu erstellen.

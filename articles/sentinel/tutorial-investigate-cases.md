@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229417"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024606"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
@@ -44,7 +44,7 @@ Sie können den Vorfall nur untersuchen, wenn Sie beim Einrichten der Analysereg
 
 ## <a name="how-to-investigate-incidents"></a>Untersuchen von Vorfällen
 
-1. Wählen Sie  **Vorfälle** aus. Auf der Seite  **Vorfälle**  werden Sie darüber informiert, wie viele Vorfälle vorhanden sind, wie viele offen sind, für wie viele Sie  **In Bearbeitung** festgelegt haben, und wie viele geschlossen wurden. Für jeden Vorfall wird angezeigt, wann er aufgetreten ist, sowie der Vorfallsstatus. Beurteilen Sie anhand des Schweregrads, welche Fälle zuerst zu bearbeiten sind.
+1. Wählen Sie **Vorfälle** aus. Auf der Seite **Vorfälle** werden Sie darüber informiert, wie viele Vorfälle vorhanden sind, wie viele offen sind, für wie viele Sie **In progress** (In Arbeit) festgelegt haben, und wie viele geschlossen wurden. Für jeden Vorfall wird angezeigt, wann er aufgetreten ist, sowie der Vorfallsstatus. Beurteilen Sie anhand des Schweregrads, welche Fälle zuerst zu bearbeiten sind.
 
     ![Anzeigen des Schweregrads von Vorfällen](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -78,14 +78,14 @@ Das Untersuchungsdiagramm bietet Ihnen Folgendes:
 
 So verwenden Sie das Untersuchungsdiagramm:
 
-1. Wählen Sie einen Vorfall und anschließend  **Untersuchen** aus. Dadurch wird das Untersuchungsdiagramm aufgerufen. Im Diagramm erhalten Sie eine anschauliche Zuordnung der Entitäten, die direkt mit dem Vorfall verbunden sind, sowie aller darüber hinaus damit verbundenen Ressourcen.
+1. Wählen Sie einen Vorfall und anschließend **Untersuchen** aus. Dadurch wird das Untersuchungsdiagramm aufgerufen. Im Diagramm erhalten Sie eine anschauliche Zuordnung der Entitäten, die direkt mit dem Vorfall verbunden sind, sowie aller darüber hinaus damit verbundenen Ressourcen.
 
    > [!IMPORTANT] 
    > Sie können den Vorfall nur untersuchen, wenn Sie beim Einrichten der Analyseregel die Entitätszuordnungsfelder verwendet haben. Das Untersuchungsdiagramm fordert, dass Ihr ursprünglicher Vorfall Entitäten enthält.
 
    ![Anzeigen der Karte](media/tutorial-investigate-cases/map1.png)
 
-1. Wählen Sie eine Entität aus, um den Bereich  **Entitäten**  zu öffnen, in dem Sie Informationen zur betreffenden Entität untersuchen können.
+1. Wählen Sie eine Entität aus, um den Bereich **Entitäten** zu öffnen, in dem Sie Informationen zur betreffenden Entität untersuchen können.
 
     ![Entitäten in der Zuordnung anzeigen](media/tutorial-investigate-cases/map-entities.png)
   

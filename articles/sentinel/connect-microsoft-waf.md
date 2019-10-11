@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e7dc1e6c1bb1ca81ada59cb3dae8fecbc6452b7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240025"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029788"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Verbinden von Daten von Microsoft Web Application Firewall
 
@@ -41,9 +41,9 @@ Sobald Ihre Microsoft Web Application Firewall bereitgestellt ist und Daten empf
 1. Wählen Sie im Azure Sentinel-Portal **Datenconnectors** aus.
 1. Wählen Sie auf der Seite „Datenconnectors“ die Kachel **WAF** aus.
 1. Wechseln Sie zur [Application Gateway-Ressource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) , und wählen Sie Ihre Web Application Firewall aus.
-    1. Wählen Sie  **Diagnoseeinstellungen** aus.
-    1. Klicken Sie unter der Tabelle auf  **+ Diagnoseeinstellung hinzufügen**.
-    1. Geben Sie auf der Seite  **Diagnoseeinstellungen** einen  **Namen** ein, und klicken Sie auf  **An Log Analytics senden**.
+    1. Wählen Sie **Diagnoseeinstellungen** aus.
+    1. Klicken Sie unter der Tabelle auf **+ Diagnoseeinstellung hinzufügen**.
+    1. Geben Sie auf der Seite **Diagnoseeinstellungen** einen **Namen** ein, und klicken Sie auf **An Log Analytics senden**.
     1. Wählen Sie unter **Log Analytics-Arbeitsbereich** den Azure Sentinel-Arbeitsbereich aus.
     1. Wählen Sie die Protokolltypen aus, die Sie analysieren möchten. Folgendes wird empfohlen: ApplicationGatewayAccessLog und ApplicationGatewayFirewallLog.
 1. Um in Log Analytics das relevante Schema für die Microsoft Web Application Firewall-Warnungen zu verwenden, suchen Sie nach **AzureDiagnostics**.

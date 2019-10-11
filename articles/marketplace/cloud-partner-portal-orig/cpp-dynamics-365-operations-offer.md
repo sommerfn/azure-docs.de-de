@@ -1,42 +1,21 @@
 ---
 title: Dynamics 365 for Finance and Operations-Angebot für den Azure Marketplace
-description: Dieser Artikel erläutert, wie Sie ein Dynamics 365 for Finance and Operations-Angebot im Cloud-Partnerportal erstellen.
+description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Dieser Artikel erläutert, wie Sie ein Dynamics 365 for Finance and Operations-Angebot im Cloud-Partnerportal erstellen.“'
 services: Azure Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: bd19723b80fdf4e4fc7e4581a9b8dcb80ca42045
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 6d5777bedd35a25963aec9055a6072222b922e29
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962905"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034927"
 ---
 # <a name="dynamics-365-for-finance-and-operations-offer"></a>Dynamics 365 for Finance and Operations-Angebot
 
-<table> <tr> <td>In diesem Abschnitt wird erläutert wie Sie eine Dynamics 365 for Finance and Operations-Lösung in <a href="https://appsource.microsoft.com">Microsoft AppSource</a> veröffentlichen. Microsoft <a href="https://dynamics.microsoft.com/finance-and-operations">Dynamics 365 for Finance and Operations</a> ist ein ERP-Dienst (Enterprise Resource Planning), der erweiterte Features für Finanzierung, operative Vorgänge, Fertigung und Lieferkettenmanagement unterstützt. </td> <td><img src="./media/publish_d365_new_offer/dynfinance-icon1.png"  alt="Dynamics 365 for Finance and Operations icon" /></td> </tr> </table>
+Die Erstellung und Verwaltung von Dynamics 365 for Finance and Operations-Angeboten wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-
-## <a name="publishing-process"></a>Veröffentlichungsvorgang
-
-Führen Sie die folgenden Schritte aus, um Ihre Dynamics 365 for Finance and Operations-App zu entwickeln und in AppSource zu veröffentlichen:
-
-1. Sie müssen zunächst eine [Dev Center-Zertifizierung](https://dev.windows.com/registration?accountProgram=Azure) erhalten.
-2. Erweitern und aktualisieren Sie Ihren Code.
-3. Verwenden Sie [Lifecycle Services](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lifecycle-services/lcs) (LCS), um Ihre Daten zu erstellen, zu packen und bereitzustellen.
-4. Erstellen Sie eine Implementierungsmethodik in LCS.
-5. Definieren Sie Ihre Geschäftsprozesse in LCS.
-6. Erstellen Sie Ihre Marketinginhalte im Cloud-Partnerportal.
-7.  Lassen Sie die App durch unser Team überprüfen. Informationen hierzu finden Sie unter [Überprüfen von Anwendungen für Finance and Operations](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).
-8. Testen und zertifizieren Sie Ihr Angebot im Cloud-Partnerportal.
-9.  Veröffentlichen Sie Ihr Angebot in AppSource, und schalten Sie es live.
-
-Die nachfolgenden Artikel in diesem Abschnitt beschreiben diese Schritte detaillierter.
-
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Sie müssen sich vergewissern, dass Sie die geschäftlichen und technischen [Anforderungen](./pre-requisites.md) für diesen Angebotstyp erfüllen.
-
+Bevor Sie mit dem Erstellen von Dynamics 365 for Operations-Angeboten beginnen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen, und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer), um Ihr Angebot zu erstellen.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 30f4358bea2670cfa8d825bf1ef75feeba7ea851
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3c63283a1a13e2deb178a53dfc5045d371d6a28a
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202345"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996920"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center-Datensicherheit
 Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle, Absturzabbilddateien und Ähnliches), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.
@@ -80,7 +80,7 @@ Wenn Sie Azure Security Center Free verwenden, können Sie die Datensammlung von
 
 Kunden können wie nachfolgend gezeigt Security Center-Daten aus verschiedenen Datenströmen nutzen:
 
-* **Azure-Aktivität**: Alle Sicherheitswarnungen, von Security Center genehmigte [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)-Anforderungen und alle von [adaptiven Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) generierten Warnungen
+* **Azure-Aktivität**: Alle Sicherheitswarnungen, von Security Center genehmigte [Just-In-Time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)-Anforderungen und alle von [adaptiven Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) generierten Warnungen.
 * **Azure Monitor-Protokolle:** alle Sicherheitswarnungen.
 
 

@@ -1,40 +1,22 @@
 ---
 title: Voraussetzungen für die Anwendungszusammenstellung
-description: Liste der Voraussetzungen für die Anwendungszusammenstellung.
+description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Liste der Voraussetzungen für die Anwendungszusammenstellung“'
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 0219d7e8a94dd6710c553f2133442867e39f6870
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a92d32084dd36433fdc872db66f0f375a770bfda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935546"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034437"
 ---
 # <a name="prerequisites-for-application-curation"></a>Voraussetzungen für die Anwendungszusammenstellung
 
-Microsoft erfordert bestimmte Überprüfungen, um sicherzustellen, dass die folgenden Anforderungen erfüllt sind:
+Die Erstellung und Verwaltung von Dynamics 365 for Finance and Operations-Angeboten wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-- Der benutzerdefinierte Code eines Partners entspricht den Microsoft-Richtlinien.
-- Ein Projektmappenpaket für Microsoft Dynamics Lifecycle Services (LCS) kann erfolgreich bereitgestellt werden.
-- Transaktionen können abgeschlossen werden.
-
-Derzeit müssen die Partner nachweisen, dass diese Anforderungen erfüllt sind, indem sie Testbereitstellungen durchführen und die Ergebnisse dann mit Microsoft teilen. Es wird kein Code in einer Kundenumgebung bereitgestellt, die von Microsoft nicht überprüft wurde. Die Partner müssen die folgenden Zusammenstellungsartefakte und Tests durchführen:
-
-- Codeanalysebericht (CAR)
-- Geschäftsprozessmodellierer (BPM)/Testskripts
-- Projektname und Beschreibung
-- Business-Datenbanksicherung
-- Datenpakete und Prozessdatenpakete (PDPs)
-- Methodik
-- Binärdateien (optional)
-- Bereitstellbare Pakete
-- Modelle (Code und Tests)
-- Marketinginhalte
-
-Weitere Informationen zu technischen oder prozessbezogenen Anforderungen finden Sie unter [Überprüfen von Anwendungen für eine Finance and Operations-Umgebung](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).  Lesen Sie den [Leitfaden zum Veröffentlichen von Office 365-, Dynamics 365-, PowerApps- und Power BI-Angeboten](../appsource-offer-publishing-guide.md), falls Sie dies nicht bereits getan haben.
-
+Bevor Sie mit dem Erstellen von Dynamics 365 for Operations-Angeboten beginnen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen, und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Angebots für Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer), um Ihr Angebot zu erstellen.

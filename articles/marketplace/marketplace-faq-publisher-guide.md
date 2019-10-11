@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 10/2/2019
+ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827986"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969579"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
 
@@ -381,9 +381,9 @@ Weitere Informationen finden Sie unter [Löschen eines Angebots](./cloud-partner
     > [!NOTE]
     > Apps werden aus einem vorhandenen Listing nach 90 Tagen entfernt.
 
-*Power BI-Apps:*
+**Warum werden meine Änderungen im Angebot nicht angezeigt?**
 
-Kontakt: [Anjana Sompur (Slalom Consulting LLC)](mailto:v-ansomp@microsoft.com).
+Änderungen, die im Partner Center vorgenommen werden, werden im System und in den digitalen Ladenzeilen erst aktualisiert, nachdem Sie das Angebot erneut veröffentlicht haben. Stellen Sie sicher, dass Sie das Angebot nach dem Ändern für die Veröffentlichung gesendet haben.
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>Vorteile und Ressourcen für die Markteinführung (GTM, Go-To-Market)
 
@@ -463,6 +463,16 @@ Transaktionen können in den folgenden 17 Währungen durchgeführt werden: AUD, 
 **Worin besteht der Unterschied zwischen dem Free-Tarif und der kostenlosen Testversion?**
 
 Ein Abonnement im Free-Tarif ist unbefristet kostenlos.  Ein Angebot als „Kostenlose Software-Testversion“ („Jetzt testen“) ist ein kostenpflichtiges Abonnement, das nur für einen begrenzten Zeitraum kostenlos ist.
+
+**Wie sieht der Vorgang zum Überprüfen des End-to-End-Abläufe für Kauf und Bereitstellung aus?**
+
+Während des Veröffentlichungsvorgangs erhalten Sie Zugriff auf eine Vorschau Ihres Angebots. Der Zugriff ist auf die Benutzer beschränkt, die Sie auf der Registerkarte „Vorschau“ angegeben haben, und es handelt sich um ein Liveangebot, das für andere Benutzer nicht sichtbar ist. Sie können das Angebot kaufen und den Vorgang testen. Ihnen wird jedoch der gesamte Betrag gemäß der Konfiguration Ihres Angebots in Rechnung gestellt.
+
+Um einen Kauf zu einem sehr niedrigen Preis abzuschließen, empfiehlt Microsoft, einen privaten Plan für Sie selbst zu einem Preis zu veröffentlichen, den Sie als Testkosten akzeptieren können. Null wird unterstützt, veranschaulicht aber nicht die vollständige Erfahrung wie ein kostenpflichtiges Abonnement.
+
+**Stellt Microsoft eine Rückerstattung außerhalb der Standardrichtlinien bereit?**
+
+Ja, auf Anforderung über ein Supportticket verarbeitet Microsoft Guthaben für Ihren Kunden, wenn Sie es für angebracht halten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

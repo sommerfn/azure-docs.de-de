@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 178911390a4cb694171adf6c807369cab0c0499a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202359"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996949"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 
@@ -56,4 +56,5 @@ Die Ansichten und Aktionen sind im Grunde identisch. Hier einige Beispiele:
 In diesem Artikel wird erläutert, wie die mandantenübergreifende Verwaltung in Azure Security Center funktioniert. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Erhöhen Ihres Sicherheitsstatus in Azure Security Center](security-center-monitoring.md): Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Weitere Informationen zu Azure Lighthouse in Unternehmensszenarien](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise): Erfahren Sie, wie Azure Lighthouse die mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, vereinfachen kann.

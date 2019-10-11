@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: b7bb67ec052244689b2775c280ff39a2121da3fa
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 57d47712fe20fac0bf370a9a100a07a37d7aa753
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201699"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996666"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Stärken Ihres Sicherheitsstatus mit Azure Security Center
 Dieser Artikel hilft Ihnen dabei, Ihren Sicherheitsstatus zu stärken. Stellen Sie mithilfe der Überwachungsfunktionen von Azure Security Center möglichst hohe Ressourcensicherheit sicher, und überwachen Sie die Einhaltung von Richtlinien.

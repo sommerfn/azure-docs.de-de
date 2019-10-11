@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218265"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982836"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Verfügbare unterstützte Features in Azure Security Center
 
@@ -39,20 +39,21 @@ Die folgenden Abschnitte enthalten Security Center-Features, die für die [unter
 |----|----|----|----|----|----|----|----|
 |**Umgebung**|**Azure**||**Nicht-Azure**|**Azure**||**Nicht-Azure**||
 ||**Virtueller Computer**|**VM-Skalierungsgruppe**||**Virtueller Computer**|**VM-Skalierungsgruppe**|
-|Warnungen der VMBA-Bedrohungserkennung|✔|✔|✔|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
+|Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen|✔|✔|✔|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
 |Warnungen der netzwerkbasierten Bedrohungserkennung|✔|✔|X|✔|✔|X|Standard|
 |Microsoft Defender ATP-Integration|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|X|X|X|Standard|
 |Fehlende Patches|✔|✔|✔|✔|✔|✔|Kostenlos|
 |Sicherheitskonfigurationen|✔|✔|✔|✔|✔|✔|Kostenlos|
 |Bewertung von Endpoint Protection|✔|✔|✔|X|X|X|Kostenlos|
-|JIT-VM-Zugriff|✔|X|X|✔|X|X|Standard|
+|Just-in-Time-VM-Zugriff|✔|X|X|✔|X|X|Standard|
 |Adaptive Anwendungssteuerungen|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
+|Dateiintegritätsüberwachung|✔|✔|✔|✔|✔|✔|Standard|
 |Bewertung der Datenträgerverschlüsselung|✔|✔|X|✔|✔|X|Kostenlos|
 |Drittanbieterbereitstellung|✔|X|X|✔|X|X|Kostenlos|
 |NSG-Bewertung|✔|✔|X|✔|✔|X|Kostenlos|
 |Erkennung von Fileless-Bedrohungen|✔|✔|✔|X|X|X|Standard|
 |Netzwerkübersicht|✔|✔|X|✔|✔|X|Standard|
+|Adaptives Erhöhen des Netzwerkschutzes|✔|X|X|✔|X|X|Standard|
 |Adaptive Netzwerksteuerungen|✔|✔|X|✔|✔|X|Standard|
 |Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen|✔|✔|✔|✔|✔|✔|Standard|
 |Empfehlungen und Bedrohungserkennung für in Docker gehostete IaaS-Container|X|X|X|✔|✔|✔|Standard|

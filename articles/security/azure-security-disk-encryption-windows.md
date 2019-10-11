@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 376df206d75780a4b814873d72d9c56554f6b0b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 109c954ab877d0b8d348fc4b9d7de01c19e41344
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956617"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958818"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Aktivieren von Azure Disk Encryption für virtuelle Windows-IaaS-Computer
 
@@ -133,7 +133,7 @@ Die folgende Tabelle enthält die Resource Manager-Vorlagenparameter für vorhan
 | vmName | Der Name des virtuellen Computers, der den Verschlüsselungsvorgang ausführt. |
 | keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Sie können ihn abrufen, indem Sie das Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder den Azure CLI-Befehl `az keyvault list --resource-group "MyKeyVaultResourceGroup"` verwenden.|
 | keyVaultResourceGroup | Der Name der Ressourcengruppe mit dem Schlüsseltresor|
-|  keyEncryptionKeyURL | Die URL des KEK, der zum Verschlüsseln des generierten BitLocker-Schlüssels verwendet wird. Dieser Parameter ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option **nokek** auswählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option **kek** auswählen, müssen Sie den Wert _keyEncryptionKeyURL_ eingeben. |
+|  keyEncryptionKeyURL | Die URL des Schlüsselverschlüsselungsschlüssels im Format „https://&lt;keyvault-name&gt;.vault.azure.net/key/&lt;key-name&gt;. Wenn Sie keinen Schlüsselverschlüsselungsschlüssels verwenden möchten, lassen Sie dieses Feld leer. |
 | volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_. 
 | forceUpdateTag | Dient zum Übergeben eines eindeutigen Werts (beispielsweise einer GUID), wenn die Ausführung des Vorgangs erzwungen werden muss. |
 | resizeOSDisk | Gibt an, ob die Größe der Betriebssystempartition angepasst werden soll, um die gesamte Betriebssystem-VHD einzunehmen, bevor das Systemvolume aufgeteilt wird. |
