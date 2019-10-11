@@ -8,10 +8,10 @@ metadata:
   author: ekpgh
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 10/31/2018
-  ms.author: v-erkell
+  ms.date: 10/09/2019
+  ms.author: rohogue
 abstract:
-  description: 'Avere vFXT für Azure bietet eine cloudbasierte Cacheebene für datenintensive HPC-Tasks (High Performance Computing). Bei Avere vFXT werden Ihre Dateien in der Nähe Ihre Computeknoten zwischengespeichert. Das sorgt für eine höhere Lesegeschwindigkeit und reibungsloseres Arbeiten auch zu Spitzenzeiten. Avere vFXT funktioniert am besten in Systemen mit 1.000 bis 40.000 Clientkernen. <p>Avere vFXT kann Ihren vorhandenen lokalen Datenspeicher verwenden, um Azure-basierten Computingressourcen lokalen Zugriff auf aktive Dateien zu gewähren, die langfristig in Ihrem Datencenter gespeichert werden.'
+  description: Avere vFXT für Azure bietet eine cloudbasierte Cacheebene für datenintensive HPC-Tasks (High Performance Computing). Bei Avere vFXT werden Ihre Dateien in der Nähe Ihre Computeknoten zwischengespeichert. Das sorgt für eine höhere Lesegeschwindigkeit und reibungsloseres Arbeiten auch zu Spitzenzeiten. Avere vFXT funktioniert am besten in Systemen mit 1.000 bis 40.000 Clientkernen. <p>Avere vFXT stellt zusammen mit dem vorhandenen Datenspeicher Dateien nah bei Azure-basierten Computingressourcen bereit. Aktive Dateien werden weiterhin langfristig in Ihrem Rechenzentrum gespeichert.
 sections:
   - title: Erste Schritte mit Avere vFXT für Azure
     items:

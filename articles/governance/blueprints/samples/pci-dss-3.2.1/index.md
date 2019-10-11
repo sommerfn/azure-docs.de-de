@@ -1,18 +1,18 @@
 ---
-title: 'Beispiele: Blaupause „PCI-DSS v3.2.1“ – Übersicht'
-description: Übersicht über das Blaupausenbeispiel „Payment Card Industry Data Security Standard v3.2.1“.
+title: 'Beispiel: Blaupause „PCI-DSS v3.2.1“ – Übersicht'
+description: Übersicht über das Blaupausenbeispiel „Payment Card Industry Data Security Standard v3.2.1“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Steuerungen.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: bd89ee1f449f4598eaf2fcea567709162644a512
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: c05f3457b4195c9054a1ce99f2567097a034ebd3
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981470"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248246"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „PCI-DSS v3.2.1“
 

@@ -119,6 +119,10 @@
           href: app/troubleshoot-faq.md
 - name: Anleitungen
   items:
+    - name: Überwachungsszenarien
+      items:
+        - name: Überwachen eines Azure App-Diensts
+          href: insights/monitor-azure-resource.md
     - name: Verwalten von Azure Monitor
       items:
         - name: Entwerfen einer Arbeitsbereichsbereitstellung

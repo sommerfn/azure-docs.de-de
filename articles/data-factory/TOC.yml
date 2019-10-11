@@ -432,6 +432,8 @@
           href: control-flow-get-metadata-activity.md
         - name: Aktivität „Falls-Bedingung“
           href: control-flow-if-condition-activity.md
+        - name: Switch-Aktivität
+          href: control-flow-switch-activity.md
         - name: Lookup-Aktivität
           href: control-flow-lookup-activity.md
         - name: Aktivität „Variable festlegen“
@@ -598,6 +600,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Problembehandlung für die Paketausführung in Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: Problembehandlung für Datenflüsse
+          href: data-flow-troubleshoot-guide.md
 - name: Szenarien
   items:
     - name: Datenmigration für Data Lake und EDW

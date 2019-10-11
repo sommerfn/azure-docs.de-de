@@ -234,6 +234,10 @@
       items:
         - name: Sicherheit und Richtlinien
           href: security-policy.md
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Integrierte Sicherheitskontrollen
+          href: virtual-machines-windows-security-controls.md
     - name: Zustände und Lebenszyklus
       href: states-lifecycle.md
     - name: Überwachung
@@ -242,8 +246,6 @@
       href: backup-recovery.md
     - name: Infrastrukturbeispiel
       href: infrastructure-example.md
-    - name: Integrierte Sicherheitskontrollen
-      href: virtual-machines-windows-security-controls.md
 - name: Anleitungen
   items:
     - name: Virtuelle Computer erstellen
@@ -286,8 +288,31 @@
         - name: Just-in-Time-Zugriff
           href: ../../security-center/security-center-just-in-time.md
         - name: Verschlüsseln
-          href: encrypt-disks.md
-          displayName: encryption
+          items:
+            - name: Szenarien für Datenträgerverschlüsselung für Windows
+              href: disk-encryption-windows.md
+            - name: VM-Verschlüsselung mit der Azure-Befehlszeilenschnittstelle
+              href: disk-encryption-cli-quickstart.md
+            - name: VM-Verschlüsselung mit Azure PowerShell
+              href: disk-encryption-powershell-quickstart.md
+            - name: VM-Verschlüsselung über das Azure-Portal
+              href: disk-encryption-portal-quickstart.md
+            - name: Schlüsseltresor für Azure Disk Encryption
+              href: disk-encryption-key-vault.md
+            - name: Beispielskripts für die Datenträgerverschlüsselung
+              href: disk-encryption-sample-scripts.md
+            - name: Behandeln von Problemen mit der Datenträgerverschlüsselung
+              href: disk-encryption-troubleshooting.md
+            - name: Häufig gestellte Fragen zur Datenträgerverschlüsselung
+              href: disk-encryption-faq.md
+            - name: 'Datenträgerverschlüsselung: vorherige Version (AAD)'
+              items:
+                - name: Übersicht
+                  href: disk-encryption-overview-aad.md
+                - name: Schlüsseltresor für Azure Disk Encryption
+                  href: disk-encryption-key-vault-aad.md
+                - name: Szenarien für Datenträgerverschlüsselung für Windows
+                  href: disk-encryption-windows-aad.md
         - name: Verwenden von WinRM
           href: winrm.md
         - name: Verwenden der Zugriffssteuerung
