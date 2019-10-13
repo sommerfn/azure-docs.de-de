@@ -71,3 +71,7 @@
       href: reference-ubuntu-vm.md
     - name: DSVM unter CentOS
       href: reference-centos-vm.md
+    - name: Versionshinweise
+      href: release-notes.md
+    - name: Bekannte Probleme
+      href: reference-known-issues.md

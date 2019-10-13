@@ -228,8 +228,6 @@
           href: resource-group-delete.md
         - name: Sperren von Ressourcen
           href: resource-group-lock-resources.md
-        - name: Authentifizierungs-API für den Zugriff auf Abonnements
-          href: resource-manager-api-authentication.md
         - name: Erstellen von EA-Abonnements
           href: programmatically-create-subscription.md
         - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements

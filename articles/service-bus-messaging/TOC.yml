@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: Handhabung von Ausfällen und Notfällen
       href: service-bus-outages-disasters.md
+    - name: Drosselung
+      href: service-bus-throttling.md
     - name: Sicherheit
       items:
         - name: Authentifizierung und Autorisierung

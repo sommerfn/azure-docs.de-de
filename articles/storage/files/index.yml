@@ -2,7 +2,7 @@
 title: Dokumentation zu Azure Files
 summary: Azure Files bietet vollständig verwaltete plattformübergreifende Dateifreigaben in der Cloud, auf die über das SMB-Protokoll (Server Message Block) zugegriffen werden kann.
 metadata:
-  title: Azure Files
+  title: Dokumentation zu Azure Files
   description: Binden Sie Dateifreigaben in der Cloud oder lokal unter Windows, Linux und macOS ein. Speichern Sie Azure-Dateifreigaben mit der Azure-Dateisynchronisierung auf Windows-Servern zwischen, um lokal darauf zugreifen zu können.
   services: storage
   ms.service: storage
@@ -12,12 +12,12 @@ metadata:
   author: roygara
   ms.author: rogarana
   ms.date: 08/27/2019
-  ms.openlocfilehash: 21be0cb23dc5673d0a060636da148ee97463ec4b
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.openlocfilehash: 3e9224746c400f9795e16edd51b69740fb3c45c7
+  ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70241720"
+  ms.lasthandoff: 10/13/2019
+  ms.locfileid: "72299563"
 landingContent:
 - title: Informationen zu Azure Files
   linkLists:
