@@ -1,17 +1,17 @@
 ---
-title: 'Advanced Threat Protection: Azure Database for MySQL | Microsoft-Dokumentation'
-description: Der Bedrohungsschutz erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten.
+title: 'Advanced Threat Protection: Azure Database for MySQL'
+description: Erfahren Sie, wie Advanced Threat Protection zum Identifizieren anomaler Datenbankaktivitäten konfiguriert wird, die auf potenzielle Sicherheitsrisiken für die Datenbank in einer verwalteten Instanz hinweisen.
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.openlocfilehash: 76f6c15fc1e186e254c4edbb53a2a0ccf7050b3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe058433cfe4c6c9f89f14d2c74e33ff1b8372ac
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458945"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970485"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection für Azure Database for MySQL
 
@@ -54,7 +54,7 @@ Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachric
 
 ## <a name="explore-threat-detection-alerts"></a>Untersuchen von Warnungen der Bedrohungserkennung
 
-Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) eingebunden. Auf einer Livekachel der SQL-Bedrohungserkennung auf den Blättern der Datenbank und von SQL ATP im Azure-Portal werden die Status von aktiven Bedrohungen nachverfolgt.
+Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) eingebunden. Eine Livekachel für SQL-Bedrohungserkennung verfolgt den Status aktiver Bedrohungen auf den Datenbank- und SQL ATP-Seiten im Azure-Portal nach.
 
 Klicken Sie auf **Threat detection alert** (Warnung der Bedrohungserkennung), um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank erkannt wurden.
 

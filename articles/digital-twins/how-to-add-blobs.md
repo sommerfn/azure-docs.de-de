@@ -1,20 +1,20 @@
 ---
-title: Hinzufügen von Blobs zu Objekten in Azure Digital Twins | Microsoft-Dokumentation
+title: 'Hinzufügen von Blobs zu Objekten: Azure Digital Twins | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Objekten in Azure Digital Twins Blobs hinzufügen.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.author: v-adgera
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c09435606612377781fb382d2d31144e96b07b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965928"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949128"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
@@ -69,8 +69,6 @@ In der Swagger-Dokumentation werden diese Modell-Schemas umfassend beschrieben.
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 Informationen zur Verwendung der Referenzdokumentation finden Sie unter [Verwenden von Azure Digital Twins-Swagger](./how-to-use-swagger.md).
-
-<div id="blobModel"></div>
 
 ### <a name="blobs-response-data"></a>Antwortdaten der Blobs
 
@@ -186,12 +184,11 @@ Abschließend können [cURL](https://curl.haxx.se/)-Benutzer auf die gleiche Wei
 [![Geräteblobs](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
 
 ```bash
-curl
- -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs"
- -H "Authorization: Bearer YOUR_TOKEN"
- -H "Accept: application/json"
- -H "Content-Type: multipart/form-data"
- -F "meta={\"ParentId\":\"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob\",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\":\"A well chosen description\",\"Sharing\":\"None\"};type=application/json"
+curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
+ -H "Authorization: Bearer YOUR_TOKEN" \
+ -H "Accept: application/json" \
+ -H "Content-Type: multipart/form-data" \
+ -F "meta={\"ParentId\":\"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob\",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\":\"A well chosen description\",\"Sharing\":\"None\"};type=application/json" \
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
@@ -223,7 +220,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | Die gewünschte Blob-ID |
 
-Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben beschrieben](#blobModel).
+Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben beschrieben](#blobs-response-data).
 
 ### <a name="spaces"></a>Leerzeichen
 
@@ -241,7 +238,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | Die gewünschte Blob-ID |
 
-Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben beschrieben](#blobModel).
+Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben beschrieben](#blobs-response-data).
 
 Eine PATCH-Anforderung an denselben Endpunkt aktualisiert die Metadatenbeschreibungen und erstellt Versionen des Blobs. Die HTTP-Anforderung wird unter Verwendung der PATCH-Methode zusammen mit den erforderlichen Metadaten und mehrteiligen Formulardaten ausgeführt.
 
@@ -261,7 +258,7 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | Die gewünschte Blob-ID |
 
-Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben beschrieben](#blobModel).
+Erfolgreiche Anforderungen geben ein JSON-Objekt zurück, wie [weiter oben beschrieben](#blobs-response-data).
 
 ## <a name="common-errors"></a>Häufige Fehler
 

@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845602"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028258"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
@@ -282,7 +282,7 @@ Sie können die dynamische Verwaltungssicht [sys.dm_db_resource_stats](/sql/rela
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL-Analyse (Vorschau) in Azure Monitor-Protokollen
 
-Mit [Azure Monitor-Protokollen](../azure-monitor/insights/azure-sql.md) können Sie wichtige Azure SQL-Leistungsmetriken erfassen und visualisieren. Dabei werden bis zu 150.000 SQL-Datenbanken und 5.000 Pools für elastische SQL-Datenbanken pro Arbeitsbereich unterstützt. Sie können darüber Benachrichtigungen überwachen und erhalten. Sie können Metriken für SQL-Datenbank und Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und nutzen, um auf allen Ebenen eines Anwendungsstapels Probleme zu ermitteln.
+Mit [Azure Monitor-Protokollen](../azure-monitor/insights/azure-sql.md) können Sie wichtige Leistungsmetriken von Azure SQL-Datenbank erfassen und visualisieren. Dabei werden bis zu 150.000 SQL-Datenbanken und 5.000 Pools für elastische SQL-Datenbanken pro Arbeitsbereich unterstützt. Sie können darüber Benachrichtigungen überwachen und erhalten. Sie können Metriken für SQL-Datenbank und Pools für elastische Datenbanken über mehrere Azure-Abonnements und Pools für elastische Datenbanken hinweg überwachen und nutzen, um auf allen Ebenen eines Anwendungsstapels Probleme zu ermitteln.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Es fallen Probleme mit der Leistung auf: Wie unterscheiden sich die Methoden zur Problembehandlung bei SQL-Datenbank von den Methoden bei SQL Server?
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 42f6ce96cf339e90ed0a0dcdbdb3f1b6924430e9
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 5b3170d640257774339697ee7915169c2f5e451f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206394"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973354"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API
 
@@ -72,7 +72,9 @@ Die Beispiele in diesem Artikel verwenden Ressourcengruppenbereitstellungen. Wei
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
    ```
 
-   Geben Sie im Anforderungstext einen Link zu Ihrer Vorlage und Parameterdatei an. Beachten Sie, dass **mode** auf **Incremental** festgelegt ist. Legen Sie zum Ausführen einer vollständigen Bereitstellung **mode** auf **Complete** fest. Gehen Sie bei Verwendung des Modus „Complete“ sehr umsichtig vor, da Sie versehentlich Ressourcen löschen können, die nicht in Ihrer Vorlage enthalten sind.
+   Geben Sie im Anforderungstext einen Link zu Ihrer Vorlage und Parameterdatei an. Weitere Informationen zur Parameterdatei finden Sie unter [Erstellen einer Resource Manager-Parameterdatei](resource-manager-parameter-files.md).
+
+   Beachten Sie, dass **mode** auf **Incremental** festgelegt ist. Legen Sie zum Ausführen einer vollständigen Bereitstellung **mode** auf **Complete** fest. Gehen Sie bei Verwendung des Modus „Complete“ sehr umsichtig vor, da Sie versehentlich Ressourcen löschen können, die nicht in Ihrer Vorlage enthalten sind.
 
    ```json
    {
@@ -112,6 +114,8 @@ Die Beispiele in diesem Artikel verwenden Ressourcengruppenbereitstellungen. Wei
    ```
 
     Sie können das Speicherkonto so einrichten, das ein SAS-Token (Shared Access Signature) verwendet wird. Weitere Informationen finden Sie unter [Delegieren des Zugriffs mit einer SAS (Shared Access Signature)](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+
+    Wenn Sie einen vertraulichen Wert für einen Parameter (z.B. ein Kennwort) angeben müssen, fügen Sie den Wert einem Schlüsseltresor hinzu. Rufen Sie den Schlüsseltresor während der Bereitstellung wie im vorherigen Beispiel gezeigt ab. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md). 
 
 1. Anstatt für die Vorlage und die Parameter eine Verknüpfung mit Dateien zu erstellen, können Sie diese auch in den Anforderungstext einschließen. Im folgenden Beispiel ist der Anforderungstext mit der inline angegebenen Vorlage und den Parametern dargestellt:
 
@@ -182,98 +186,9 @@ Die Beispiele in diesem Artikel verwenden Ressourcengruppenbereitstellungen. Wei
    GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
    ```
 
-## <a name="redeploy-when-deployment-fails"></a>Erneute Bereitstellung bei Bereitstellungsfehlern
-
-Dieses Feature ist auch bekannt als *Rollback bei Fehler*. Wenn eine Bereitstellung fehlschlägt, können Sie automatisch eine frühere, erfolgreiche Bereitstellung aus Ihrem Bereitstellungsverlauf bereitstellen. Geben Sie mit der Eigenschaft `onErrorDeployment` im Anforderungstext die erneute Bereitstellung an. Diese Funktionalität ist nützlich, wenn es einen bekannten guten Zustand für die Infrastrukturbereitstellung gibt, der wiederhergestellt werden soll. Es gibt eine Reihe von Vorbehalten und Einschränkungen:
-
-- Die Bereitstellung wird genauso wie zuvor mit denselben Parametern ausgeführt. Sie können die Parameter nicht ändern.
-- Die vorherige Bereitstellung wird im [vollständigen Modus](./deployment-modes.md#complete-mode) ausgeführt. Alle in der vorherigen Bereitstellung nicht enthaltenen Ressourcen werden gelöscht, und alle Ressourcenkonfigurationen werden auf ihren vorherigen Zustand zurückgesetzt. Sorgen Sie dafür, dass Sie die [Bereitstellungsmodi](./deployment-modes.md) vollständig verstehen.
-- Die erneute Bereitstellung wirkt sich nur auf die Ressourcen aus. Datenänderungen sind davon nicht betroffen.
-- Dieses Feature wird nur bei Bereitstellungen von Ressourcengruppen unterstützt, nicht bei Bereitstellungen auf Abonnementebene. Weitere Informationen zu Bereitstellungen auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](./deploy-to-subscription.md).
-
-Zur Verwendung dieser Option müssen die Bereitstellungen eindeutige Namen aufweisen, damit sie im Verlauf identifiziert werden können. Wenn die Bereitstellungen keine eindeutigen Namen aufweisen, wird die vorherige erfolgreich ausgeführte Bereitstellung im Verlauf möglicherweise durch die aktuelle fehlerhafte Bereitstellung überschrieben. Diese Option kann nur für Bereitstellungen auf Stammebene verwendet werden. Bereitstellungen aus einer geschachtelten Vorlage können nicht erneut bereitgestellt werden.
-
-Um die letzte erfolgreich ausgeführte Bereitstellung erneut bereitzustellen, wenn bei der aktuellen Bereitstellung Fehler auftreten, verwenden Sie folgenden Code:
-
-```json
-{
-  "properties": {
-    "templateLink": {
-      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
-      "contentVersion": "1.0.0.0"
-    },
-    "mode": "Incremental",
-    "parametersLink": {
-      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
-      "contentVersion": "1.0.0.0"
-    },
-    "onErrorDeployment": {
-      "type": "LastSuccessful",
-    }
-  }
-}
-```
-
-Um eine bestimmte Bereitstellung erneut bereitzustellen, wenn bei der aktuellen Bereitstellung Fehler auftreten, verwenden Sie folgenden Code:
-
-```json
-{
-  "properties": {
-    "templateLink": {
-      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
-      "contentVersion": "1.0.0.0"
-    },
-    "mode": "Incremental",
-    "parametersLink": {
-      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
-      "contentVersion": "1.0.0.0"
-    },
-    "onErrorDeployment": {
-      "type": "SpecificDeployment",
-      "deploymentName": "<deploymentname>"
-    }
-  }
-}
-```
-
-Die angegebene Bereitstellung muss erfolgreich ausgeführt worden sein.
-
-## <a name="parameter-file"></a>Parameterdatei
-
-Bei der Verwendung einer Parameterdatei zum Übergeben von Parameterwerten während der Bereitstellung müssen Sie eine JSON-Datei in einem Format wie im folgenden Beispiel erstellen.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "webSiteName": {
-            "value": "ExampleSite"
-        },
-        "webSiteHostingPlanName": {
-            "value": "DefaultPlan"
-        },
-        "webSiteLocation": {
-            "value": "West US"
-        },
-        "adminPassword": {
-            "reference": {
-               "keyVault": {
-                  "id": "/subscriptions/{guid}/resourceGroups/{group-name}/providers/Microsoft.KeyVault/vaults/{vault-name}"
-               },
-               "secretName": "sqlAdminPassword"
-            }
-        }
-   }
-}
-```
-
-Die Parameterdatei darf nicht größer als 64 KB sein.
-
-Wenn Sie einen vertraulichen Wert für einen Parameter (z.B. ein Kennwort) angeben müssen, fügen Sie den Wert einem Schlüsseltresor hinzu. Rufen Sie den Schlüsseltresor während der Bereitstellung wie im vorherigen Beispiel gezeigt ab. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md). 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Informationen zum Rollback zu einer erfolgreiche Bereitstellung, wenn ein Fehler auftritt, finden Sie unter [Rollback bei Fehler zu erfolgreicher Bereitstellung](rollback-on-error.md).
 - Wenn Sie angeben möchten, wie Ressourcen behandelt werden sollen, die in der Ressourcengruppe enthalten sind, aber nicht in der Vorlage definiert wurden, lesen Sie die Informationen unter [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
 - Informationen zum Arbeiten mit asynchronen REST-Vorgängen finden Sie unter [Nachverfolgen asynchroner Vorgänge in Azure](resource-manager-async-operations.md).
 - Weitere Informationen zu Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

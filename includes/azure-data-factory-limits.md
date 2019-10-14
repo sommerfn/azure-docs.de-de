@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: c92bb8b2adb3e91e691e9fd1c17a7ee43e84fd11
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 6dc846ab6af0ed4d6d48c6f6db0abbce06427c36
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68362521"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035882"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -44,6 +44,10 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Lesen von API-Aufrufen | 12.500/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Überwachungsabfragen pro Minute | 1\.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | CRUD-Vorgänge für Entitäten pro Minute | 50 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Maximale Zeit für Datenfluss-Debugsitzung | 8 Std. | 8 Std. |
+| Gleichzeitige Anzahl von Datenflüssen pro Factory | 50 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Gleichzeitige Anzahl von Datenfluss-Debugsitzungen pro Benutzer pro Factory | 3 | 3 |
+| Azure IR TTL-Limit für Datenfluss | 4 Std. | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 
 <sup>1</sup> Die Datenintegrationseinheit (Data Integration Unit, DIU) wird bei einem Cloud-zu-Cloud-Kopiervorgang verwendet. Weitere Informationen finden Sie unter [Datenintegrationseinheiten](../articles/data-factory/copy-activity-performance.md#data-integration-units). Weitere Informationen zur Abrechnung finden Sie unter [Azure Data Factory – Preise](https://azure.microsoft.com/pricing/details/data-factory/).
 

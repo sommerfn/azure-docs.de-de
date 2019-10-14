@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773205"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000426"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
@@ -35,7 +35,7 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 | :-- | --: |--:| --:|
 |Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion|
 |Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|
-|Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
+|Maximale Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
 |CPU|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
 |E/A-Durchsatz (ungefähr) |1–5 IOPS pro DTU| 1–5 IOPS pro DTU | 25 IOPS pro DTU|
 |E/A-Wartezeit (ungefähr)|5 ms (Lesen), 10 ms (Schreiben)|5 ms (Lesen), 10 ms (Schreiben)|2 ms (Lesen/Schreiben)|

@@ -1,17 +1,17 @@
 ---
 title: Beheben von Problemen mit der Abfrageleistung in Azure Database for MySQL
-description: In diesem Artikel wird beschrieben, wie Sie Probleme mit der Abfrageleistung in Azure Database for MySQL mithilfe von EXPLAIN beheben.
+description: Erfahren Sie, wie Sie Probleme mit der Abfrageleistung in Azure Database for MySQL mithilfe von EXPLAIN beheben.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/28/2018
-ms.openlocfilehash: 819e2393619766d46385cdd6fe550fff1e1a7631
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720211"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972854"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>Verwenden von EXPLAIN zum Analysieren der Abfrageleistung in Azure Database for MySQL
 **EXPLAIN** ist ein praktisches Tool zum Optimieren von Abfragen. Mit einer EXPLAIN-Anweisung können Sie Informationen zur Ausführung von SQL-Anweisungen abrufen. Die folgende Ausgabe zeigt ein Beispiel für die Ausführung einer EXPLAIN-Anweisung.
@@ -163,7 +163,7 @@ Aus der EXPLAIN-Anweisung geht jetzt hervor, dass MySQL einen kombinierten Index
  
 ## <a name="conclusion"></a>Zusammenfassung
  
-Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Leistung erheblich gesteigert werden. Nur weil Sie über einen Index für die Tabelle verfügen, bedeutet das nicht zwangsläufig, dass MySQL in der Lage ist, ihn für Ihre Abfragen zu verwenden. Überprüfen Sie Ihre Annahmen immer mit EXPLAIN, und optimieren Sie Ihre Abfragen mithilfe von Indizes.
+Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Leistung erheblich gesteigert werden. Wenn Sie über einen Index für die Tabelle verfügen, bedeutet das nicht zwangsläufig, dass MySQL in der Lage ist, ihn für Ihre Abfragen zu verwenden. Überprüfen Sie Ihre Annahmen immer mit EXPLAIN, und optimieren Sie Ihre Abfragen mithilfe von Indizes.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

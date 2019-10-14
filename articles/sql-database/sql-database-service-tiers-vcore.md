@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 10/01/2019
+ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164341"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034998"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Auswählen einer V-Kern-Dienstebene und Migrieren von DTU-Dienstebenen
 
@@ -42,7 +42,7 @@ In der folgenden Tabelle werden die Unterschiede zwischen den drei Ebenen erläu
 
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale**|
 |---|---|---|---|
-|Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Bietet dank mehrerer isolierter Replikate höchste Resilienz gegenüber Ausfällen.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung.|
+|Am besten geeignet für:|Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen.|OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, fluide vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung.|
 |Compute|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne<br/>**Serverloses Computing**:<br/>Gen5: 0,5 bis 16 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|
 |Arbeitsspeicher|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern<br/>**Serverloses Computing**:<br/>Gen5: Bis zu 24 GB pro V-Kern|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern |**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern|
 |Storage|Verwendet Remotespeicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |

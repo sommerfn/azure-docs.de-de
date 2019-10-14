@@ -1,19 +1,19 @@
 ---
 title: Aktivieren von mehrinstanzenfähigen Anwendungen mit Azure Digital Twins | Microsoft-Dokumentation
 description: Konfigurieren von mehrinstanzenfähigen Anwendungen für Azure Digital Twins.
-author: mavoge
+ms.author: alinast
+author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: mavoge
-ms.openlocfilehash: 2ee3681640f68839c32e2963b34d5547abb6943b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 10/02/2019
+ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976879"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958788"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Aktivieren von mehrinstanzenfähigen Anwendungen mit Azure Digital Twins
 
@@ -57,20 +57,16 @@ Um das vorgenannte Szenario zu lösen, müssen die folgenden Aktionen ausgeführ
   1. Er öffnet **Abonnements**.
   1. Er wählt das Abonnement aus, das den Azure Active Directory-Mandanten umfasst, der in der App des **ENTWICKLERS** verwendet werden soll.
 
-     ![Azure Active Directory-Abonnements][1]
+     [![Azure Active Directory-Abonnements](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. Er wählt **Ressourcenanbieter** aus.
   1. Er sucht nach **Microsoft.IoTSpaces**.
   1. Wählen Sie **Registrieren**.
 
-     ![Azure Active Directory-Ressourcenanbieter][2]
+     [![Azure Active Directory-Ressourcenanbieter](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur Verwendung von benutzerdefinierten Funktionen mit Azure Digital Twins finden Sie unter [Erstellen von benutzerdefinierten Funktionen in Azure Digital Twins](./how-to-user-defined-functions.md).
 
 - Informationen zur Verwendung der rollenbasierten Zugriffssteuerung zum zusätzlichen Schutz von Anwendung mit Rollenzuweisungen finden Sie unter [Erstellen und Verwalten von rollenbasierter Zugriffssteuerung mit Azure Digital Twins](./security-create-manage-role-assignments.md).
-
-<!-- Images -->
-[1]: media/multitenant/ad-subscriptions.png
-[2]: media/multitenant/ad-resource-providers.png

@@ -10,21 +10,21 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 02/23/2019
-ms.openlocfilehash: 41acef4ebe13ac6152d795db4adfae5a6ae1ad91
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 10/01/2019
+ms.openlocfilehash: 7b5fd9800fdd2ee3b46087308f81f506e3e09e03
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995433"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034958"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um selbst bei Infrastrukturausfällen eine Verfügbarkeit von 99,99 Prozent sicherzustellen. In Azure SQL-Datenbank werden drei Dienstebenen verwendet, die jeweils unterschiedliche Architekturmodelle aufweisen. Diese Dienstebenen lauten:
 
-- [Universell](sql-database-service-tier-general-purpose.md) ist für die meisten generischen Workloads konzipiert.
-- [Unternehmenskritisch](sql-database-service-tier-business-critical.md) ist für Workloads mit geringer Latenz und einem lesbaren Replikat konzipiert.
-- [Hyperscale](sql-database-service-tier-hyperscale.md) ist für sehr große Datenbanken (bis zu 100 TB) mit mehreren lesbaren Replikaten konzipiert.
+- [Universell](sql-database-service-tier-general-purpose.md) ist für die meisten budgetorientierten Workloads konzipiert.
+- [Hyperscale](sql-database-service-tier-hyperscale.md) ist für die meisten Geschäftsworkloads konzipiert und bietet hochgradig skalierbaren Speicher, horizontale Leseskalierung und schnelle Datenbankwiederherstellungsfunktionen.
+- [Unternehmenskritisch](sql-database-service-tier-business-critical.md) ist für Workloads mit geringer Latenz und hoher Resilienz für Ausfälle und schnelle Failover konzipiert.
 
 In diesem Artikel werden die Unterschiede zwischen den Dienstebenen, die Speicher- und Sicherungsaspekte für die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell beschrieben.
 
@@ -34,7 +34,7 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Diensteb
 
 | | Ressourcentyp | Allgemeiner Zweck |  Hyperscale | Unternehmenskritisch |
 |:---:|:---:|:---:|:---:|:---:|
-| **Am besten geeignet für** | |  Die meisten geschäftlichen Workloads. Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Datenanwendungen mit hohem Datenkapazitätsbedarf und der Möglichkeit, Speicher automatisch auf bis zu 100 TB zu skalieren und Computeressourcen nahtlos zu skalieren. | OLTP-Anwendungen mit hoher Transaktionsrate und den geringsten Latenzen bei E/A-Vorgängen. Bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
+| **Am besten geeignet für** | |  Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, fluide vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung. | OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|
 |  **Verfügbar in Ressourcentyp:** ||Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz | Einzeldatenbank | Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz |
 | **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne |
 | | Verwaltete Instanz | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
@@ -52,7 +52,7 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Diensteb
 |**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
 |**In-Memory-OLTP** | | – | – | Verfügbar |
 |**Schreibgeschützte Replikate**| | 0  | 0–4 | 1 (integriert, im Preis inbegriffen) |
-|**Preise/Abrechnung** | Einzeldatenbank | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. | [Virtueller Kern für jedes Replikat und den verwendeten Speicher](https://azure.microsoft.com/pricing/details/sql-database/single/) wird in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. |
+|**Preise/Abrechnung** | Einzeldatenbank | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. | [Virtueller Kern für jedes Replikat und den verwendeten Speicher](https://azure.microsoft.com/pricing/details/sql-database/single/) wird in Rechnung gestellt. <br/>IOPS noch nicht in Rechnung gestellt. | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. |
 || Verwaltete Instanz | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | – | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | 
 |**Rabattmodelle**| | [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements|
 
@@ -63,7 +63,7 @@ Weitere Informationen finden Sie in den ausführlichen Unterschieden zwischen de
 
 ## <a name="data-and-log-storage"></a>Daten- und Protokollspeicher
 
-Die folgenden Faktoren haben Einfluss darauf, wie viel Speicher für Daten-und Protokolldateien verwendet wird:
+Die folgenden Faktoren wirken sich auf die Speichermenge aus, die für Daten- und Protokolldateien verwendet wird, und gelten für „Universell“ und „Unternehmenskritisch“. Ausführliche Informationen zu Daten und zum Protokollspeicher in Hyperscale finden Sie unter [Hyperscale-Dienstebene](sql-database-service-tier-hyperscale.md).
 
 - Der zugeordnete Speicher wird für Datendateien (MDF) und Protokolldateien (LDF) verwendet.
 - Jede Einzeldatenbank-Computegröße unterstützt eine maximale Datenbankgröße, die standardmäßig bei 32 GB liegt.

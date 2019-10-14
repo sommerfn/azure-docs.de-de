@@ -1,18 +1,18 @@
 ---
-title: Beheben von Verbindungsproblemen mit Azure Database for MySQL | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Verbindungsprobleme mit Azure Database for MySQL beheben.
+title: Beheben von Verbindungsproblemen mit Azure Database for MySQL
+description: Erfahren Sie, wie Sie Verbindungsprobleme mit Azure Database for MySQL beheben können, einschließlich vorübergehender Fehler, die Wiederholungsversuche erfordern, Firewallprobleme und Ausfälle.
 keywords: MySQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/09/2018
-ms.openlocfilehash: faf378a81a6db24acc676bed82fe495cfb108612
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0203ceeb36352a16814345f5ecdff8271691fd0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61421841"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972844"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Beheben von Verbindungsproblemen mit Azure Database for MySQL
 

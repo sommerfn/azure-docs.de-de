@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/06/2019
-ms.openlocfilehash: 24bd2cca2e4ed053d51f618d90274e8988a09c26
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/02/2019
+ms.openlocfilehash: 19febc5a0a6e4a72cfebfaecd917185538130152
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568890"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035021"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme
 
@@ -55,13 +55,35 @@ Die folgenden Fehler sind vorübergehend, und in der Anwendungslogik sollte ein 
 | Fehlercode | severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | 4060 |16 |Die von der Anmeldung angeforderte „%.&#x2a;ls“-Datenbank kann nicht geöffnet werden. Fehler bei der Anmeldung. Weitere Informationen finden Sie unter [Fehler 4000 bis 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999).|
-| 40197 |17 |Dienstfehler beim Verarbeiten Ihrer Anforderung. Wiederholen Sie den Vorgang. Fehlercode %d.<br/><br/>Sie erhalten diesen Fehler, wenn der Dienst aufgrund von Software- oder Hardwareupgrades, Hardwarefehlern oder sonstigen Failoverproblemen ausgefallen ist. Der Fehlercode (%d), der in der Meldung zum Fehler 40197 enthalten ist, liefert weitere Informationen zur Art des aufgetretenen Fehlers oder Failovers. Beispiele für Fehlercodes, die in die Meldung zum Fehler 40197 eingebettet sind, lauten 40020, 40143, 40166 und 40540.<br/><br/>Wenn Sie erneut eine Verbindung mit Ihrem SQL-Datenbank-Server herstellen, werden Sie automatisch mit einer intakten Kopie Ihrer Datenbank verbunden. Ihre Anwendung muss den Fehler 40197 abfangen, den für die Problembehandlung in der Meldung enthaltenen Fehlercode (%d) protokollieren und versuchen, eine neue Verbindung mit SQL-Datenbank herzustellen, bis die Ressourcen verfügbar sind, damit Ihre Verbindung wiederhergestellt wird. Weitere Informationen finden Sie unter [Vorübergehende Fehler](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
+| 40197 |17 |Dienstfehler beim Verarbeiten Ihrer Anforderung. Wiederholen Sie den Vorgang. Fehlercode %d.<br/><br/>Sie erhalten diesen Fehler, wenn der Dienst aufgrund von Software- oder Hardwareupgrades, Hardwarefehlern oder sonstigen Failoverproblemen ausgefallen ist. Der Fehlercode (%d), der in die [Meldung von Fehler 40197 eingebettet ist](sql-database-develop-error-messages.md#embedded-error-codes), liefert weitere Informationen zur Art des aufgetretenen Fehlers oder Failovers. Beispiele für Fehlercodes, die in die Meldung zum Fehler 40197 eingebettet sind, lauten 40020, 40143, 40166 und 40540.<br/><br/>Wenn Sie erneut eine Verbindung mit Ihrem SQL-Datenbank-Server herstellen, werden Sie automatisch mit einer intakten Kopie Ihrer Datenbank verbunden. Ihre Anwendung muss den Fehler 40197 abfangen, den für die Problembehandlung in der Meldung enthaltenen Fehlercode (%d) protokollieren und versuchen, eine neue Verbindung mit SQL-Datenbank herzustellen, bis die Ressourcen verfügbar sind, damit Ihre Verbindung wiederhergestellt wird. Weitere Informationen finden Sie unter [Vorübergehende Fehler](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |Der Dienst ist derzeit ausgelastet. Wiederholen Sie die Anforderung in 10 Sekunden. Vorgangs-ID: %ls. Code: %d. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md)|
 | 40613 |17 |Die „%.&#x2a;ls“-Datenbank auf Server „%.&#x2a;ls“ ist zurzeit nicht verfügbar. Wiederholen Sie den Verbindungsversuch später. Falls das Problem weiterhin besteht, wenden Sie sich an den Kundensupport und geben als Ablaufverfolgungs-ID der Sitzung „%.&#x2a;ls“ an.<br/><br/> Dieser Fehler kann auftreten, wenn bereits eine dedizierte Administratorverbindung (DAC) zur Datenbank besteht. Weitere Informationen finden Sie unter [Vorübergehende Fehler](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
 | 49918 |16 |Anforderung kann nicht verarbeitet werden. Zum Verarbeiten der Anforderung sind nicht genügend Ressourcen vorhanden.<br/><br/>Der Dienst ist derzeit ausgelastet. Versuchen Sie die Anforderung später erneut. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) |
 | 49919 |16 |Die Erstellung oder Aktualisierung der Anforderung kann nicht verarbeitet werden. Für das Abonnement „%ld“ werden derzeit zu viele Erstell- oder Aktualisierungsvorgänge ausgeführt.<br/><br/>Der Dienst ist mit der Verarbeitung mehrerer Erstell- oder Aktualisierungsvorgänge für Ihr Abonnement oder Ihren Server ausgelastet. Zur Ressourcenoptimierung werden Anforderungen derzeit blockiert. Fragen Sie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) auf ausstehende Vorgänge ab. Warten Sie, bis ausstehende Erstellungs- oder Aktualisierungsanforderungen abgeschlossen sind, oder löschen Sie eine Ihrer ausstehenden Anforderungen, und wiederholen Sie die Anforderung später. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) |
 | 49920 |16 |Anforderung kann nicht verarbeitet werden. Für das Abonnement „%ld“ werden derzeit zu viele Vorgänge ausgeführt.<br/><br/>Der Dienst ist mit der Verarbeitung mehrerer Vorgänge für dieses Abonnement ausgelastet. Zur Ressourcenoptimierung werden Anforderungen derzeit blockiert. Fragen Sie [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) auf den Vorgangsstatus ab. Warten Sie, bis ausstehende Anforderungen abgeschlossen sind, oder löschen Sie eine Ihrer ausstehenden Anforderungen, und wiederholen Sie die Anforderung später. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) |
 | 4221 |16 |Fehler bei der Anmeldung bei lesbarem sekundärem Replikat aufgrund einer zu langen Wartezeit auf "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING". Das Replikat steht zur Anmeldung nicht zur Verfügung, weil Zeilenversionen für Transaktionen fehlen, die beim Neustarten des Replikats in Verarbeitung waren. Dieses Problem kann durch einen Rollback oder durch einen Commit der aktiven Transaktionen auf dem primären Replikat gelöst werden. Vorkommen dieser Bedingung können durch Vermeiden langer Schreibtransaktionen auf dem primären Replikat minimiert werden. |
+
+## <a name="embedded-error-codes"></a>Eingebettete Fehlercodes
+
+Die folgenden Fehler sind in den allgemeineren Fehlercode 40197 eingebettet:
+
+```
+The service has encountered an error processing your request. Please try again. Error code %d.
+```
+
+| Fehlercode | severity | BESCHREIBUNG | 
+| ---:| ---:|:---|
+|  1104 |17 |TEMPDB stand während des Überlaufs nicht genügend Speicherplatz zur Verfügung. Geben Sie Speicherplatz frei, indem Sie Objekte löschen, und/oder schreiben Sie die Abfrage neu, um weniger Zeilen zu belegen. Wenn das Problem weiterhin besteht, sollten Sie ein Upgrade auf ein höheres Servicelevelziel in Betracht ziehen.|
+| 40020 |16 |Die Datenbank befindet sich im Übergang, und Transaktionen werden beendet.|
+| 40143 |16 |Das vom Datenknoten für die angeforderte Partition gehostete Replikat ist kein primäres Replikat.|
+| 40166 |16 |Eine CloudDB-Neukonfiguration wird aktuell ausgeführt, und alle neuen Benutzertransaktionen werden abgebrochen.|
+| 40540 |16 |Die Transaktion wurde abgebrochen, weil die Datenbank in den schreibgeschützten Modus verschoben wurde. Dies ist eine vorübergehende Situation. Wiederholen Sie den Vorgang.|
+
+Details zu anderen eingebetteten Fehlern finden Sie durch Abfragen von `sys.messages`:
+
+```sql
+SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>
+```
 
 ## <a name="database-copy-errors"></a>Fehler beim Kopieren von Datenbanken
 

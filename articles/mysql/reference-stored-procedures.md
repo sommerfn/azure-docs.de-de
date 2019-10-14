@@ -1,19 +1,19 @@
 ---
-title: Gespeicherte Prozeduren für Azure Database for MySQL
-description: In diesem Artikel werden gespeicherte Prozeduren speziell für Azure Database for MySQL erläutert.
+title: Gespeicherte Prozeduren für die Azure Database for MySQL-Verwaltung
+description: Erfahren Sie, welche gespeicherten Prozeduren in Azure Database for MySQL hilfreich sind, um Datenreplikation zu konfigurieren, die Zeitzone festzulegen und Abfragen abzubrechen.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.openlocfilehash: f01a0bf68e510133058dc0075f27cfcf6241c7a8
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 34598278ac7f432c5976de86eaf5dcf477c7e81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156548"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970337"
 ---
-# <a name="azure-database-for-mysql-stored-procedures"></a>Gespeicherte Prozeduren für Azure Database for MySQL
+# <a name="azure-database-for-mysql-management-stored-procedures"></a>Gespeicherte Prozeduren für die Azure Database for MySQL-Verwaltung
 
 Gespeicherte Prozeduren sind auf Azure Database for MySQL-Servern verfügbar, um die Verwaltung Ihres MySQL-Servers zu erleichtern. Dies schließt die Verwaltung der Verbindungen und Abfragen Ihres Servers sowie das Einrichten von Datenreplikation ein.  
 

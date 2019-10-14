@@ -1,21 +1,21 @@
 ---
 title: Abfragespeicher in Azure Database for MySQL
-description: In diesem Artikel wird das Feature „Abfragespeicher“ in Azure Database for MySQL beschrieben.
+description: Erfahren Sie mehr über das Feature „Abfragespeicher“ in Azure Database for MySQL zum Nachverfolgen der Abfrageleistung im Zeitverlauf.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 884824b6f6fd8bf5b4c7730813c4363fae018375
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950573"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029865"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Überwachen der Azure Database for MySQL-Leistung mit dem Abfragespeicher
 
-**Gilt für:**  Azure Database for MySQL 5.7
+**Anwendungsbereich:** Azure Database for MySQL 5.7
 
 > [!IMPORTANT]
 > Der Abfragespeicher befindet sich in der Vorschauphase.
@@ -37,14 +37,14 @@ Der Abfragespeicher ist ein optionales Feature. Daher ist er auf einem Server ni
 ### <a name="enable-query-store-using-the-azure-portal"></a>Aktivieren des Abfragespeichers über das Azure-Portal
 
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie Ihren Azure Database for MySQL-Server aus.
-1. Wählen Sie im Abschnitt **Einstellungen** des Menüs die Option **Serverparameter**.
+1. Wählen Sie im Bereich **Einstellungen** im Menü die Option **Serverparameter**.
 1. Suchen Sie nach dem Parameter „query_store_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern** aus.
+1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
 
 So aktivieren Sie Wartestatistiken in Ihrem Abfragespeicher:
 
 1. Suchen Sie nach dem Parameter „query_store_wait_sampling_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern** aus.
+1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
 
 Es kann bis zu 20 Minuten dauern, bis der erste Batch mit Daten in der mysql-Datenbank gespeichert ist.
 
@@ -78,8 +78,8 @@ Im Folgenden finden Sie einige Beispiele dafür, wie Sie mithilfe der Wartestati
 | **Beobachtung** | **Aktion** |
 |---|---|
 |Lange Sperrwartevorgänge | Überprüfen Sie die Abfragetexte der betroffenen Abfragen, und identifizieren Sie die Zielentitäten. Suchen Sie im Abfragespeicher nach anderen Abfragen, die die gleiche Entität ändern, welche häufig ausgeführt wird bzw. eine lange Dauer aufweist. Nachdem Sie diese Abfragen ermittelt haben, ändern Sie ggf. die Anwendungslogik, um die Parallelität zu verbessern, oder verwenden Sie eine weniger restriktive Isolationsstufe. |
-|Lange Puffer-E/A-Wartevorgänge | Suchen Sie die Abfragen mit einer hohen Anzahl an physischen Lesevorgängen im Abfragespeicher. Wenn diese mit den Abfragen mit langen E/A-Wartevorgängen übereinstimmen, sollten Sie ggf. erwägen, einen Index für die zugrunde liegende Entität einzuführen, um Such- anstelle von Scanvorgängen durchzuführen. Dies verringert den E/A-Aufwand der Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob für diesen Server Indexempfehlungen vorhanden sind, mit denen die Abfragen optimiert werden. |
-|Lange Arbeitsspeicher-Wartevorgänge | Suchen Sie die im Abfragespeicher die speicherintensivsten Abfragen. Diese Abfragen verzögern wahrscheinlich zusätzlich den Fortschritt der betroffen Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen vorhanden sind, mit denen diese Abfragen optimiert werden.|
+|Lange Puffer-E/A-Wartevorgänge | Suchen Sie die Abfragen mit einer hohen Anzahl an physischen Lesevorgängen im Abfragespeicher. Wenn diese mit den Abfragen mit langen E/A-Wartevorgängen übereinstimmen, sollten Sie ggf. erwägen, einen Index für die zugrunde liegende Entität einzuführen, um Such- anstelle von Scanvorgängen durchzuführen. Dies verringert den E/A-Aufwand der Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen für diesen Server vorhanden sind, die die Abfragen optimieren. |
+|Lange Arbeitsspeicher-Wartevorgänge | Suchen Sie die im Abfragespeicher die speicherintensivsten Abfragen. Diese Abfragen verzögern wahrscheinlich zusätzlich den Fortschritt der betroffen Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen vorhanden sind, die diese Abfragen optimieren.|
 
 ## <a name="configuration-options"></a>Konfigurationsoptionen
 
@@ -108,7 +108,7 @@ Verwenden Sie das [Azure-Portal](howto-server-parameters.md) oder die [Azure-
 
 ## <a name="views-and-functions"></a>Ansichten und Funktionen
 
-Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Jeder Benutzer mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) kann diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Ansichten sind nur in der **mysql**-Datenbank verfügbar.
+Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Jeder Benutzer mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) kann diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Sichten sind nur in der **mysql**-Datenbank verfügbar.
 
 Abfragen werden normalisiert, indem ihre Struktur nach dem Entfernen von Literalen und Konstanten untersucht wird. Wenn zwei Abfragen mit Ausnahme von Literalwerten identisch sind, haben sie denselben Hash.
 

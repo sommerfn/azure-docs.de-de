@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 83ff39e9f3b7f95256466c74011e55ebdc22a7a9
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910527"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935604"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
@@ -105,14 +105,14 @@ Weitere Informationen zur Parameterermittlung und Abfrageverarbeitung finden Sie
 
 PSP-Probleme können auf unterschiedliche Weise umgangen werden. Jede Problemumgehungen geht mit bestimmten Kompromissen und Nachteilen einher:
 
-- Verwenden Sie den Abfragehinweis [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) bei jeder Abfrageausführung. Bei dieser Problemumgehung werden Kompilierungszeit und erhöhte CPU-Leistung für eine bessere Qualität des Abfrageplans eingebüßt. Die Option `RECOMPILE` kann bei Workloads, die einen hohen Durchsatz erfordern, häufig nicht verwendet werden.
+- Verwenden des Abfragehinweises [RECOMPILE](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query) bei jeder Abfrageausführung. Bei dieser Problemumgehung werden Kompilierungszeit und erhöhte CPU-Leistung für eine bessere Qualität des Abfrageplans eingebüßt. Die Option `RECOMPILE` kann bei Workloads, die einen hohen Durchsatz erfordern, häufig nicht verwendet werden.
 - Verwenden Sie den Abfragehinweis [OPTION (OPTIMIZE FOR...)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query), um den tatsächlichen Parameterwert mit einem typischen Parameterwert zu überschreiben, der einen Plan erzeugt, der für die meisten möglichen Parameterwerte geeignet ist. Diese Option erfordert ein gutes Verständnis der optimalen Parameterwerte und zugehörigen Planmerkmale.
 - Verwenden Sie den Abfragehinweis [OPTION (OPTIMIZE FOR UNKNOWN)](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query), um den tatsächlichen Parameterwert zu überschreiben und stattdessen den Durchschnittswert des Dichtevektors zu verwenden. Hierzu können Sie auch die eingehenden Parameterwerte in lokalen Variablen erfassen und dann anstatt der Parameter die lokalen Variablen innerhalb der Prädikate verwenden. Für diese Korrektur muss die durchschnittliche Dichte *gut genug* sein.
 - Verwenden Sie den Abfragehinweis [DISABLE_PARAMETER_SNIFFING](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query), um die Parameterermittlung vollständig zu deaktivieren.
 - Verwenden Sie den Abfragehinweis [KEEPFIXEDPLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query), um erneute Kompilierungen im Cache zu verhindern. Bei dieser Lösung wird davon ausgegangen, dass sich der ausreichende allgemeine Plan bereits im Cache befindet. Sie können auch automatische Statistikaktualisierungen deaktivieren, um die Wahrscheinlichkeit zu verringern, dass der gute Plan entfernt und ein neuer schlechter Plan kompiliert wird.
 - Erzwingen Sie den Plan durch die explizite Verwendung des Abfragehinweises [USE PLAN](https://docs.microsoft.com/sql/t-sql/queries/hints-transact-sql-query), indem Sie die Abfrage neu schreiben und den Hinweis dem Abfragetext hinzufügen. Alternativ können Sie einen bestimmten Plan mithilfe des Abfragespeichers oder durch Aktivieren der [automatischen Optimierung](sql-database-automatic-tuning.md) festlegen.
-- Ersetzen Sie die Einzelprozedur durch eine geschachtelte Gruppe von Prozeduren, die jeweils basierend auf bedingter Logik und zugehörigen Parameterwerten verwendet werden können.
-- Erstellen Sie Alternativen für die dynamische Zeichenfolgenausführung zur Definition einer statischen Prozedur.
+- Ersetzen der Einzelprozedur durch eine geschachtelte Gruppe von Prozeduren, die jeweils basierend auf bedingter Logik und zugehörigen Parameterwerten verwendet werden können.
+- Erstellen von Alternativen für die dynamische Zeichenfolgenausführung zur Definition einer statischen Prozedur.
 
 Weitere Informationen zur Behebung von PSP-Problemen finden Sie in den folgenden Blogbeiträgen:
 
@@ -187,7 +187,7 @@ Eine Neukompilierung (oder eine erneute Kompilierung nach dem Entfernen aus dem 
 
 Nachdem Sie das Problem identifiziert haben, können Sie die problematischen Abfragen optimieren oder die Computegröße oder Dienstebene upgraden, um die Kapazität Ihrer SQL-Datenbank zu erhöhen und so den CPU-Anforderungen gerecht zu werden. 
 
-Weitere Informationen finden Sie unter [Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank](sql-database-single-database-scale.md) sowie unter [Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank](sql-database-elastic-pool-scale.md). Informationen zum Skalieren einer verwalteten Instanz finden Sie unter [Ressourcenlimits auf Instanzebene](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits).
+Weitere Informationen finden Sie unter [Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank](sql-database-single-database-scale.md) sowie unter [Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank](sql-database-elastic-pool-scale.md). Informationen zum Skalieren einer verwalteten Instanz finden Sie unter [Ressourcenlimits der Dienstebene](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ### <a name="performance-problems-caused-by-increased-workload-volume"></a>Leistungsprobleme aufgrund eines erhöhten Workloadaufkommens
 

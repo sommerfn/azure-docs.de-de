@@ -1,17 +1,17 @@
 ---
 title: Firewallregeln für Azure-Datenbank für MySQL-Server
-description: Beschreibung der Firewallregeln für Azure-Datenbank für MySQL-Server
+description: Erfahren Sie mehr über die Verwendung von Firewallregeln zum Aktivieren von Verbindungen mit Ihrem Azure Database for MySQL-Server.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/22/2019
-ms.openlocfilehash: e84dfb35a435e32cd14b244b29044d700c79d14d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1d75b9e7d997b0c62c7e235187907f0556318efe
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203587"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970404"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Firewallregeln für Azure-Datenbank für MySQL-Server
 Firewalls verhindern jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -59,7 +59,7 @@ Wenn der Zugriff auf den Microsoft Azure Database for MySQL-Serverdienst nicht d
 
    * Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als Firewallregeln hinzu.
 
-* **Die IP-Adresse des Servers scheint öffentlich zu sein:** Verbindungen mit dem Azure Database for MySQL-Server werden über ein öffentlich zugängliches Azure-Gateway weitergeleitet. Die tatsächliche Server-IP-Adresse wird jedoch durch die Firewall geschützt. Weitere Informationen finden Sie im [Artikel zur Verbindungsarchitektur](concepts-connectivity-architecture.md). 
+* **Die IP-Adresse des Servers scheint öffentlich zu sein:** Verbindungen mit dem Azure Database for MySQL-Server werden über ein öffentlich zugängliches Azure-Gateway weitergeleitet. Die tatsächliche Server-IP-Adresse wird jedoch durch die Firewall geschützt. Weitere Informationen finden Sie im Artikel zur [Verbindungsarchitektur](concepts-connectivity-architecture.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

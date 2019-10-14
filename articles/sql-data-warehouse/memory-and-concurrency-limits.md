@@ -7,27 +7,25 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/15/2019
+ms.date: 10/04/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 0a92c032027e772020eda0b626a6dc6db024bf57
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 73bb5b75a440755e088a4d9a294b5b97b0b7199e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595576"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035130"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Speicher- und Parallelitätsgrenzwerte – Azure SQL Data Warehouse
 Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure SQL Data Warehouse zugewiesen sind. Weitere Informationen – auch darüber, wie Sie diese Funktionen in Ihren Workloadverwaltungsplan übernehmen – finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md). 
 
-SQL Data Warehouse ist zurzeit in zwei Generationen verfügbar: Gen1 und Gen2. Es wird empfohlen, Gen2 von SQL Data Warehouse zu verwenden, um von einer optimalen Leistung für Ihre Data Warehouse-Workloads zu profitieren. In Gen2 wird ein neuer NVMe-SSD-Cache (Solid State Drive) eingeführt, der die am häufigsten verwendeten Daten in der Nähe der CPUs beibehält. Dadurch werden Remote-E/A-Vorgänge für Ihre intensivsten und anspruchsvollen Workloads vermieden. Neben Leistungsvorteilen bietet Gen2 mit einer Skalierbarkeit auf bis zu 30.000 Data Warehouse-Einheiten und einer unbegrenzten spaltenorientierten Speicherung das höchste Skalierungsniveau. Für die Vorgängergeneration (Gen1) von SQL Data Warehouse stellen wir zwar nach wie vor Support und die gleichen Features bereit, wir empfehlen jedoch, so bald wie möglich [ein Upgrade auf Gen2](upgrade-to-latest-generation.md) durchzuführen. 
-
 ## <a name="data-warehouse-capacity-settings"></a>Data Warehouse-Kapazitätseinstellungen
 Die folgenden Tabellen zeigen die maximale Kapazität für das Data Warehouse auf unterschiedlichen Leistungsstufen. Informationen zum Ändern der Leistungsstufe finden Sie unter [Skalieren von Computerressourcen – Portal](quickstart-scale-compute-portal.md).
 
-### <a name="gen2"></a>Gen2
+### <a name="service-levels"></a>Servicelevel
 
-Gen2 stellt 2,5-mal mehr Arbeitsspeicher pro Abfrage bereit als Gen1. Diesem zusätzlichen Speicher verdankt Gen2 seine schnelle Ausführungsleistung.  Die Leistungsstufen für Gen2 erstrecken sich von DW100c bis DW30000c. 
+Die Servicelevel reichen von DW100c bis DW30000c.
 
 | Leistungsstufe | Serverknoten | Verteilungen pro Serverknoten | Arbeitsspeicher pro Data Warehouse (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
@@ -48,32 +46,11 @@ Gen2 stellt 2,5-mal mehr Arbeitsspeicher pro Abfrage bereit als Gen1. Diesem zus
 | DW15000c          | 30            | 2                              |  9000                          |
 | DW30000c          | 60            | 1                              | 18000                          |
 
-Die maximale DWU in Gen2 beträgt DW30000c. Sie bietet 60 Serverknoten und eine Verteilung pro Serverknoten. Beispielsweise verarbeitet ein 600-TB-Data Warehouse mit DW30000c etwa 10 TB pro Serverknoten.
-
-### <a name="gen1"></a>Gen1
-
-Die Servicelevels für Gen1 erstrecken sich von DW100 bis DW6000. 
-
-| Leistungsstufe | Serverknoten | Verteilungen pro Serverknoten | Arbeitsspeicher pro Data Warehouse (GB) |
-|:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
-| DW100             | 1             | 60                             |  24                            |
-| DW200             | 2             | 30                             |  48                            |
-| DW300             | 3             | 20                             |  72                            |
-| DW400             | 4             | 15                             |  96                            |
-| DW500             | 5             | 12                             | 120                            |
-| DW600             | 6             | 10                             | 144                            |
-| DW1000            | 10            | 6                              | 240                            |
-| DW1200            | 12            | 5                              | 288                            |
-| DW1500            | 15            | 4                              | 360                            |
-| DW2000            | 20            | 3                              | 480                            |
-| DW3000            | 30            | 2                              | 720                            |
-| DW6000            | 60            | 1                              | 1\.440                           |
+Der maximale Servicelevel ist DW30000c mit 60 Serverknoten und einer Verteilung pro Serverknoten. Beispielsweise verarbeitet ein 600-TB-Data Warehouse mit DW30000c etwa 10 TB pro Serverknoten.
 
 ## <a name="concurrency-maximums"></a>Parallelitätshöchstwerte
 Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Verarbeitung zur Verfügung stehen, verfolgt SQL Data Warehouse die Nutzung von Ressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen basierend auf Wichtigkeit und Parallelitätsslots in eine Warteschlange. Abfragen verbleiben in der Warteschlange, bis genügend Parallelitätsslots verfügbar sind. [Wichtigkeit](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) und Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
 
-### <a name="gen2"></a>Gen2
- 
 **Statische Ressourcenklassen**
 
 Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [statische Ressourcenklasse](resource-classes-for-workload-management.md).  
@@ -99,12 +76,7 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 
 **Dynamische Ressourcenklassen**
 
-> [!NOTE]
-> Die Ressourcenklasse „,smallrc“ in Gen2 fügt mit steigenden Servicelevels dynamisch Arbeitsspeicher hinzu und unterstützt lediglich maximal 32 (DW1000c) bzw. 4 (DW100c) gleichzeitige Abfragen.  Wird die Instanz über DW1500c hinaus skaliert, erhöhen sich die von „smallrc“ verwendeten Parallelitätsslots und Arbeitsspeicher mit steigenden Servicelevels. 
->
->
-
-Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md). Im Gegensatz zu Gen1 sind dynamische Ressourcenklassen in Gen2 wirklich dynamisch.  Gen2 verwendet in allen Servicelevels eine Speicherbelegung von 3-10-22-70 Prozent für die Ressourcenklassen Klein-Medium-Groß-Extragroß.
+Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md). Dynamische Ressourcenklassen verwenden für alle Servicelevel eine Speicherbelegung von 3-10-22-70 Prozent für die Ressourcenklassen small-medium-large-xlarge.
 
 | Service Level | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
@@ -126,57 +98,10 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
 
-
-#### <a name="gen1"></a>Gen1
-
-Statische Ressourcenklassen
-
-Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [statische Ressourcenklasse](resource-classes-for-workload-management.md) in **Gen1**.
-
-| Servicelevel | Maximale Anzahl gleichzeitiger Abfragen | Maximale Anzahl von Parallelitätsslots | Durch „staticrc10“ verwendete Slots | Durch „staticrc20“ verwendete Slots | Durch „staticrc30“ verwendete Slots | Durch „staticrc40“ verwendete Slots | Durch „staticrc50“ verwendete Slots | Durch „staticrc60“ verwendete Slots | Durch „staticrc70“ verwendete Slots | Durch „staticrc80“ verwendete Slots |
-|:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
-| DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW300         | 12                         |  12                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW400         | 16                         |  16                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW500         | 20                         |  20                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW1000        | 32                         |  40                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1200        | 32                         |  48                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1500        | 32                         |  60                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW2000        | 48                         |  80                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000        | 64                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW6000        | 128                        | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-
-Dynamische Ressourcenklassen
-> [!NOTE]
-> Die Ressourcenklasse „smallrc“ in Gen1 teilt eine feste Menge an Arbeitsspeicher pro Abfrage zu, ähnlich wie bei der statische Ressourcenklasse „staticrc10“.  Da „smallrc“ statisch ist, kann diese Ressourcenklasse auf 128 gleichzeitige Abfragen skaliert werden. 
->
->
-
-Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md) in **Gen1**.
-
-| Servicelevel | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
-|:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
-| DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
-| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
-| DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
-| DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
-| DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
-| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
-| DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
-| DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
-| DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
-| DW2000        | 48                         |  80                         | 1       | 16       | 32      |  64      |
-| DW3000        | 64                         | 120                         | 1       | 16       | 32      |  64      |
-| DW6000        | 128                        | 240                         | 1       | 32       | 64      | 128      |
-
-
-Wenn einer dieser Grenzwerte erreicht wird, werden neue Abfragen in die Warteschlange eingereiht und nach dem Prinzip „First In, First Out“ ausgeführt.  Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, gibt SQL Data Warehouse Abfragen in der Warteschlange frei. 
+Wenn nicht genügend Parallelitätsslots verfügbar sind, um die Abfrageausführung zu starten, werden Abfragen in die Warteschlange eingereiht und basierend auf ihrer Wichtigkeit ausgeführt.  Wenn die Wichtigkeit gleichwertig ist, werden Abfragen auf FIFO-Basis (First In, First Out) ausgeführt.  Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, gibt SQL Data Warehouse Abfragen in der Warteschlange frei. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Verwenden von Ressourcenklassen zum weiteren Optimieren Ihrer Workload finden Sie in den folgenden Artikeln:
 * [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md)
 * [Analysieren Ihrer Workload](analyze-your-workload.md)
-

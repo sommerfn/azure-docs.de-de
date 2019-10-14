@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4a3f37c232fcd7a0fcbdac051ed36916ef5c2868
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 35f11ee9bce4dc7c68e12749f69d2f2e4253d4bc
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326662"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996247"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit C#
 
@@ -38,40 +38,50 @@ Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedien
 
 1. Installieren Sie das [NuGet-Paket „Microsoft.IdentityModel.Clients.ActiveDirectory“](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) für die Authentifizierung.
 
+## <a name="authentication"></a>Authentication
+Zum Ausführen der Beispiele in diesem Artikel benötigen wir eine Azure AD-Anwendung und einen Dienstprinzipal, der auf Ressourcen zugreifen kann. Um eine kostenlose Azure AD-Anwendung zu erstellen und die Rollenzuweisung im Abonnementbereich hinzuzufügen, lesen Sie [Erstellen einer Azure AD-Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Außerdem wird gezeigt, wie Sie die Angaben `Directory (tenant) ID`, `Application ID` und `Client Secret` abrufen.
+
 ## <a name="create-the-azure-data-explorer-cluster"></a>Erstellen des Azure Data Explorer-Clusters
 
 1. Erstellen Sie Ihren Cluster mit dem folgenden Code:
 
     ```csharp
-    var resourceGroupName = "testrg";
-    var clusterName = "mykustocluster";
-    var location = "Central US";
-    var sku = new AzureSku("D13_v2", 5);
-    var cluster = new Cluster(location, sku);
-
-    var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantName}");
-    var credential = new ClientCredential(clientId: "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx", clientSecret: "xxxxxxxxxxxxxx");
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var credential = new ClientCredential(clientId, clientSecret);
     var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
     var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
 
     var kustoManagementClient = new KustoManagementClient(credentials)
     {
-        SubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+        SubscriptionId = subscriptionId
     };
 
-    kustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
+    var resourceGroupName = "testrg";
+    var clusterName = "mykustocluster";
+    var location = "Central US";
+    var skuName = "Standard_D13_v2";
+    var tier = "Standard";
+    var capacity = 5;
+    var sku = new AzureSku(skuName, tier, capacity);
+    var cluster = new Cluster(location, sku);
+    await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
 
    |**Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**|
    |---|---|---|
    | clusterName | *mykustocluster* | Der gewünschte Name Ihres Clusters.|
-   | sku | *D13_v2* | Die SKU, die für Ihren Cluster verwendet wird. |
+   | skuName | *Standard_D13_v2* | Die SKU, die für Ihren Cluster verwendet wird. |
+   | Ebene | *Standard* | Die SKU-Ebene. |
+   | Kapazität | *Zahl* | Die Anzahl der Instanzen des Clusters. |
    | resourceGroupName | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll |
 
-    Sie können auch noch weitere optionale Parameter verwenden, etwa die Kapazität des Clusters.
-
-1. Legen Sie [Ihre Anmeldeinformationen](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet) fest.
+    > [!NOTE]
+    > Das **Erstellen eines Clusters** ist ein zeitintensiver Vorgang. Daher wird dringend empfohlen, anstelle von CreateOrUpdate die Option CreateOrUpdateAsync zu verwenden. 
 
 1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde:
 
@@ -91,7 +101,7 @@ Wenn das Ergebnis `ProvisioningState` mit dem Wert `Succeeded` enthält, wurde d
     var databaseName = "mykustodatabase";
     var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
 
-    kustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
+    await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
 
    |**Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**|

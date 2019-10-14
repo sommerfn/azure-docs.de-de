@@ -1,17 +1,17 @@
 ---
 title: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
-description: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
+description: Dieser Artikel bietet Informationen zur Geschäftskontinuität (Point-in-Time-Wiederherstellung, Rechenzentrumsausfälle, Geowiederherstellung), wenn Sie den Dienst Azure Database for PostgreSQL verwenden.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c346360c125d9316aed81ceeedbe265fd09465c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907503"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950093"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL – Einzelserver
 

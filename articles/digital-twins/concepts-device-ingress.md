@@ -1,19 +1,19 @@
 ---
-title: Gerätekonnektivität und eingehende Telemetriedaten mit Azure Digital Twins | Microsoft-Dokumentation
+title: 'Gerätekonnektivität und eingehende Telemetriedaten: Azure Digital Twins | Microsoft-Dokumentation'
 description: Übersicht über das Onboarding eines Geräts mit Azure Digital Twins
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 22ae7aeeff4542bee764e131f58eb115026a4fb3
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177104"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950021"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Gerätekonnektivität und eingehende Telemetriedaten
 

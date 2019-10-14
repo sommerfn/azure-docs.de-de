@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: f771b6b0416c5777c1ebde7e2cf2c4ffc6f375ff
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 178fa7d5f129a12736ec068fca605ba24cd37839
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155299"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955863"
 ---
 In Azure Functions auftretende Fehler können einen der folgenden Ursprünge haben:
 
@@ -23,7 +23,7 @@ Die folgenden bewährten Methoden für die Fehlerbehandlung sind wichtig, um den
 - [Aktivieren von Application Insights](../articles/azure-functions/functions-monitoring.md)
 - [Verwenden strukturierter Fehlerbehandlung](#use-structured-error-handling)
 - [Design für Idempotenz](../articles/azure-functions/functions-idempotent.md)
-- Implementieren von Wiederholungsrichtlinien (wo geeignet)
+- [Implementieren von Wiederholungsrichtlinien](../articles/azure-functions/functions-reliable-event-processing.md) (falls zutreffend)
 
 ### <a name="use-structured-error-handling"></a>Verwenden strukturierter Fehlerbehandlung
 

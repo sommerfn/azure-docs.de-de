@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 11e3a9931d424433f2e3fd1f64e2e95a5835b65c
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991160"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960466"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL
 
@@ -303,6 +303,9 @@ So erstellen Sie einen eigenständigen Datenbankbenutzer, der eine Anwendung dar
 ```sql
 CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
+
+> [!NOTE]
+> Dieser Befehl erfordert, dass SQL auf Azure AD (den „externen Anbieter“) im Namen des angemeldeten Benutzers zugreift. Manchmal treten Umstände auf, die bewirken, dass Azure AD eine Ausnahme an SQL zurückgibt. In diesen Fällen wird dem Benutzer der SQL-Fehler 33134 angezeigt, der die AAD-spezifische Fehlermeldung enthalten sollte. In den meisten Fällen besagt der Fehler, dass der Zugriff verweigert wird oder dass der Benutzer sich für MFA registrieren muss, um auf die Ressource zuzugreifen, oder dass der Zugriff zwischen Erstanbieteranwendungen über Vorautorisierung verarbeitet werden muss. In den ersten beiden Fällen wird das Problem normalerweise durch Richtlinien für bedingten Zugriff verursacht, die im AAD-Mandanten des Benutzers festgelegt werden: Sie verhindern, dass der Benutzer auf den externen Anbieter zugreifen kann. Wenn Sie die Zertifizierungsstellenrichtlinien aktualisieren, um den Zugriff auf die Anwendung „00000002-0000-0000-c000-000000000000“ zu ermöglichen (die Anwendungs-ID der AAD Graph-API), sollte das Problem behoben werden. Wenn der Fehler besagt, dass der Zugriff zwischen Erstanbieteranwendungen über Vorautorisierung verarbeitet werden muss, liegt das Problem daran, dass der Benutzer als Dienstprinzipal angemeldet ist. Der Befehl sollte erfolgreich sein, wenn er stattdessen von einem Benutzer ausgeführt wird.
 
 > [!TIP]
 > Sie können einen Benutzer nur direkt aus der Azure Active Directory-Instanz erstellen, die Ihrem Azure-Abonnement zugeordnet ist. Mitglieder anderer Active Directory-Instanzen, die importierte Benutzer der zugeordneten Active Directory-Instanz sind (bekannt als externe Benutzer) können jedoch einer Active Directory-Gruppe des Active Directory-Mandanten hinzugefügt werden. Indem Sie einen eigenständigen Datenbankbenutzer für diese AD-Gruppe erstellen, können die Benutzer aus der externen Active Directory-Instanz auf die SQL-Datenbank zugreifen.

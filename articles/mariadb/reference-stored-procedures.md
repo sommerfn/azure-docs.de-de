@@ -1,19 +1,19 @@
 ---
-title: Gespeicherte Prozeduren in Azure Database for MariaDB
-description: In diesem Artikel werden gespeicherte Prozeduren speziell für Azure Database for MariaDB erläutert.
+title: Gespeicherte Prozeduren für die Azure Database for MariaDB-Verwaltung
+description: Erfahren Sie, welche gespeicherten Prozeduren in Azure Database for MySQL hilfreich sind, um Datenreplikation zu konfigurieren, die Zeitzone festzulegen und Abfragen abzubrechen.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: d9daaf619a19c0f4e4a591d4bbb4925679fd1fcb
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0a33edeac735502964427ddc3b05076fb9fac969
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174565"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973468"
 ---
-# <a name="azure-database-for-mariadb-stored-procedures"></a>Gespeicherte Prozeduren in Azure Database for MariaDB
+# <a name="azure-database-for-mariadb-management-stored-procedures"></a>Gespeicherte Prozeduren für die Azure Database for MariaDB-Verwaltung
 
 Gespeicherte Prozeduren sind auf Azure Database for MariaDB-Servern verfügbar, um Sie beim Verwalten des MariaDB-Servers unterstützen. Dies schließt die Verwaltung der Verbindungen und Abfragen Ihres Servers sowie das Einrichten der Datenreplikation ein.  
 
@@ -40,9 +40,9 @@ Die folgenden gespeicherten Prozeduren sind in Azure Database for MariaDB zum Ve
 |**Name der gespeicherten Prozedur**|**Eingabeparameter**|**Ausgabeparameter**|**Hinweis zur Verwendung**|
 |-----|-----|-----|-----|
 |*mysql.az_kill*|processlist_id|–|Entspricht dem Befehl [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html). Beendet die der angegebenen „processlist_id“ zugeordnete Verbindung nach dem Beenden einer beliebigen Anweisung, die von der Verbindung ausgeführt wird.|
-|*mysql.az_kill_query*|processlist_id|–|Entspricht dem Befehl [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html). Beendet die Anweisung, die von der Verbindung aktuell ausgeführt wird. Die Verbindung bleibt unverändert erhalten.|
-|*mysql.az_load_timezone*|–|–|Lädt Zeitzonentabellen, damit der `time_zone`-Parameter auf benannte Werten (z.B. „USA/Pazifik“) festgelegt werden kann.|
+|*mysql.az_kill_query*|processlist_id|–|Entspricht dem Befehl [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html). Beendet die Anweisung, die derzeit von der Verbindung ausgeführt wird. Die Verbindung bleibt unverändert erhalten.|
+|*mysql.az_load_timezone*|–|–|Lädt Zeitzonentabellen, damit der `time_zone`-Parameter auf benannte Werte festgelegt werden kann (z.B. „USA/Pazifik“).|
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie, wie Sie die [Datenreplikation](howto-data-in-replication.md) einrichten.
+- Erfahren Sie, wie Sie die [Datenreplikation einrichten](howto-data-in-replication.md).
 - Erfahren Sie, wie Sie die [Zeitzonentabellen](howto-server-parameters.md#working-with-the-time-zone-parameter) verwenden.

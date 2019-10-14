@@ -4,14 +4,14 @@ description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält De
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7b8d3de3eaa9cdbb945879f2acc283d74c8b4e82
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 06028224379bd42e1e0ea21b684ce443abd5992a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996826"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937011"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt. Die Spalte mit der Bezeichnung **Tagunterstützung** zeigt an, ob der Ressourcentyp eine Eigenschaft für das Tag hat. Die Spalte mit der Bezeichnung **Tag in Kostenbericht** gibt an, ob dieser Ressourcentyp das Tag an den Kostenbericht übergibt.
@@ -40,7 +40,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -123,6 +122,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -393,6 +393,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | billingAccounts/customers | Nein |Nein |
 > | billingAccounts/customers/billingSubscriptions | Nein |Nein |
 > | billingAccounts/customers/initiateTransfer | Nein |Nein |
+> | billingAccounts/customers/policies | Nein |Nein |
 > | billingAccounts/customers/products | Nein |Nein |
 > | billingAccounts/customers/transactions | Nein |Nein |
 > | billingAccounts/customers/transfers | Nein |Nein |
@@ -440,13 +441,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | mapApis | Ja |Ja |
 > | updateCommunicationPreference | Nein |Nein |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
-> | ------------- | ----------- | ----------- |
-> | BizTalk | Ja |Ja |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -542,7 +536,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
 > | capabilities | Nein |Nein |
-> | domainNames | Ja |Ja |
+> | domainNames | Nein |Nein |
 > | domainNames/capabilities | Nein |Nein |
 > | domainNames/internalLoadBalancers | Nein |Nein |
 > | domainNames/serviceCertificates | Nein |Nein |
@@ -556,7 +550,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | quotas | Nein |Nein |
 > | resourceTypes | Nein |Nein |
 > | validateSubscriptionMoveAvailability | Nein |Nein |
-> | virtualMachines | Ja |Ja |
+> | virtualMachines | Nein |Nein |
 > | virtualMachines/diagnosticSettings | Nein |Nein |
 > | virtualMachines/metricDefinitions | Nein |Nein |
 > | virtualMachines/metrics | Nein |Nein |
@@ -577,10 +571,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | expressRouteCrossConnections | Nein |Nein |
 > | expressRouteCrossConnections/peerings | Nein |Nein |
 > | gatewaySupportedDevices | Nein |Nein |
-> | networkSecurityGroups | Ja |Ja |
+> | networkSecurityGroups | Nein |Nein |
 > | quotas | Nein |Nein |
-> | reservedIps | Ja |Ja |
-> | virtualNetworks | Ja |Ja |
+> | reservedIps | Nein |Nein |
+> | virtualNetworks | Nein |Nein |
 > | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nein |Nein |
 > | virtualNetworks/virtualNetworkPeerings | Nein |Nein |
 
@@ -596,7 +590,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | osPlatformImages | Nein |Nein |
 > | publicImages | Nein |Nein |
 > | quotas | Nein |Nein |
-> | storageAccounts | Ja |Ja |
+> | storageAccounts | Nein |Nein |
 > | storageAccounts/blobServices | Nein |Nein |
 > | storageAccounts/fileServices | Nein |Nein |
 > | storageAccounts/metricDefinitions | Nein |Nein |
@@ -634,10 +628,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | diskEncryptionSets | Ja |Ja |
 > | disks | Ja |Ja |
 > | galleries | Ja |Ja |
-> | galleries/applications | Ja |Ja |
-> | galleries/applications/versions | Ja |Ja |
-> | galleries/images | Ja |Ja |
-> | galleries/images/versions | Ja |Ja |
+> | galleries/applications | Nein |Nein |
+> | galleries/applications/versions | Nein |Nein |
+> | galleries/images | Nein |Nein |
+> | galleries/images/versions | Nein |Nein |
 > | hostGroups | Ja |Ja |
 > | hostGroups/hosts | Ja |Ja |
 > | images | Ja |Ja |
@@ -645,13 +639,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | restorePointCollections | Ja |Ja |
 > | restorePointCollections/restorePoints | Nein |Nein |
 > | sharedVMImages | Ja |Ja |
-> | sharedVMImages/versions | Ja |Ja |
+> | sharedVMImages/versions | Nein |Nein |
 > | snapshots | Ja |Ja |
 > | virtualMachines | Ja |Ja |
 > | virtualMachines/extensions | Ja |Ja |
 > | virtualMachines/metricDefinitions | Nein |Nein |
-> | virtualMachines/scriptJobs | Nein |Nein |
-> | virtualMachines/softwareUpdateDeployments | Nein |Nein |
 > | virtualMachineScaleSets | Ja |Ja |
 > | virtualMachineScaleSets/extensions | Nein |Nein |
 > | virtualMachineScaleSets/networkInterfaces | Nein |Nein |
@@ -919,6 +911,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | serverGroups | Ja |Ja |
 > | servers | Ja |Ja |
 > | servers/advisors | Nein |Nein |
+> | servers/privateEndpointConnectionProxies | Nein |Nein |
+> | servers/privateEndpointConnections | Nein |Nein |
+> | servers/privateLinkResources | Nein |Nein |
 > | servers/queryTexts | Nein |Nein |
 > | servers/recoverableServers | Nein |Nein |
 > | servers/topQueryStatistics | Nein |Nein |
@@ -1199,6 +1194,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | clusters/databases | Nein |Nein |
 > | clusters/databases/dataconnections | Nein |Nein |
 > | clusters/databases/eventhubconnections | Nein |Nein |
+> | Cluster/sharedidentities | Nein |Nein |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1363,11 +1359,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
 > | ------------- | ----------- | ----------- |
 > | netAppAccounts | Ja |Ja |
+> | netAppAccounts/backupPolicies | Ja |Ja |
 > | netAppAccounts/capacityPools | Ja |Ja |
 > | netAppAccounts/capacityPools/volumes | Ja |Ja |
+> | netAppAccounts/capacityPools/volumes/backups | Nein |Nein |
 > | netAppAccounts/capacityPools/volumes/mountTargets | Ja |Ja |
 > | netAppAccounts/capacityPools/volumes/snapshots | Ja |Ja |
-
+> | netAppAccounts/vaults | Nein |Nein |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1458,6 +1456,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!NOTE]
 > Für Azure Front Door Service können Sie beim Erstellen von Ressourcen zwar Tags anwenden, aber das Aktualisieren und Hinzufügen von Tags wird derzeit nicht unterstützt.
 
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -1465,6 +1464,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ----------- |
 > | namespaces | Ja |Nein |
 > | namespaces/notificationHubs | Ja |Nein |
+
+## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Tagunterstützung | Tag in Kostenbericht |
+> | ------------- | ----------- | ----------- |
+> | osNamespaces | Ja |Ja |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1614,6 +1620,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ressourcen | Nein |Nein |
 > | subscriptions | Nein |Nein |
 > | subscriptions/providers | Nein |Nein |
+> | subscriptions/resourceGroups | Nein |Nein |
+> | subscriptions/resourcegroups/resources | Nein |Nein |
 > | subscriptions/resources | Nein |Nein |
 > | subscriptions/tagnames | Nein |Nein |
 > | subscriptions/tagNames/tagValues | Nein |Nein |
@@ -1680,6 +1688,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | securityStatusesSummaries | Nein |Nein |
 > | serverVulnerabilityAssessments | Nein |Nein |
 > | settings | Nein |Nein |
+> | subAssessments | Nein |Nein |
 > | Tasks | Nein |Nein |
 > | topologies | Nein |Nein |
 > | workspaceSettings | Nein |Nein |

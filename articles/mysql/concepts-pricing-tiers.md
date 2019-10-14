@@ -1,17 +1,17 @@
 ---
 title: Tarife in Azure Database for MySQL
-description: In diesem Artikel werden die Tarife in Azure Database for MySQL beschrieben.
+description: Erfahren Sie mehr über die verschiedenen Tarife für Azure Database for MySQL einschließlich Computegeneration, Speichertypen, Speichergröße, V-Kerne, Arbeitsspeicher und Aufbewahrungszeiträume für Sicherungen.
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177960"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972822"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 

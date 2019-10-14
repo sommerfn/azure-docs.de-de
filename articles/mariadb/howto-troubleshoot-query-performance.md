@@ -1,17 +1,17 @@
 ---
 title: Beheben von Problemen mit der Abfrageleistung in Azure Database for MariaDB
-description: In diesem Artikel wird beschrieben, wie Sie Probleme mit der Abfrageleistung in Azure Database for MariaDB mithilfe von EXPLAIN beheben.
+description: Erfahren Sie, wie Sie Probleme mit der Abfrageleistung in Azure Database for MariaDB mithilfe von EXPLAIN beheben.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/09/2018
-ms.openlocfilehash: 672635c8d8c84fa16c106ae79e97332fd740928d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a2f5e7e7c9ca39c092e13242ecdac2675b09fc0d
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745161"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973505"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mariadb"></a>Verwenden von EXPLAIN zum Analysieren der Abfrageleistung in Azure Database for MariaDB
 **EXPLAIN** ist ein praktisches Tool zum Optimieren von Abfragen. Mit einer EXPLAIN-Anweisung können Sie Informationen zur Ausführung von SQL-Anweisungen abrufen. Die folgende Ausgabe zeigt ein Beispiel für die Ausführung einer EXPLAIN-Anweisung.
@@ -163,7 +163,7 @@ Aus der EXPLAIN-Anweisung geht jetzt hervor, dass MariaDB einen kombinierten Ind
  
 ## <a name="conclusion"></a>Zusammenfassung
  
-Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Leistung erheblich gesteigert werden. Nur weil Sie über einen Index für die Tabelle verfügen, bedeutet das nicht zwangsläufig, dass MariaDB in der Lage ist, ihn für Ihre Abfragen zu verwenden. Überprüfen Sie Ihre Annahmen immer mit EXPLAIN, und optimieren Sie Ihre Abfragen mithilfe von Indizes.
+Durch die Verwendung von EXPLAIN und verschiedener Typen von Indizes kann die Leistung erheblich gesteigert werden. Wenn Sie über einen Index für die Tabelle verfügen, bedeutet das nicht zwangsläufig, dass MariaDB in der Lage ist, ihn für Ihre Abfragen zu verwenden. Überprüfen Sie Ihre Annahmen immer mit EXPLAIN, und optimieren Sie Ihre Abfragen mithilfe von Indizes.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Um Antworten anderer Benutzer auf häufige Fragen zu erhalten oder eine neue Frage/Antwort zu veröffentlichen, besuchen Sie das [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMariadb) oder [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mariadb).

@@ -7,14 +7,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: e52ce4411a2fa1969db196ba2e32bb485f71f8b6
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931226"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028488"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Erfassen von Daten aus Event Hub in Azure Data Explorer
+
+> [!div class="op_single_selector"]
+> * [Portal](ingest-data-event-hub.md)
+> * [C#](data-connection-event-hub-csharp.md)
+> * [Python](data-connection-event-hub-python.md)
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure-Daten-Explorer ermöglicht die Datenerfassung (das Laden von Daten) aus Event Hubs. Dabei handelt es sich um eine Big Data-Streamingplattform und einen Ereigniserfassungsdienst. [Event Hubs](/azure/event-hubs/event-hubs-about) kann Millionen von Ereignissen pro Sekunde nahezu in Echtzeit verarbeiten. In diesem Artikel erstellen Sie einen Event Hub, stellen damit eine Verbindung über Azure Data Explorer her und zeigen den Datenfluss durch das System an.
 
@@ -114,6 +119,7 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
     | Event Hub-Namespace | Ein eindeutiger Namespacename | Der von Ihnen zuvor ausgewählte Name, der Ihren Namespace identifiziert. |
     | Event Hub | *test-hub* | Der von Ihnen erstellte Event Hub. |
     | Consumergruppe | *test-group* | Die Consumergruppe, die in dem von Ihnen erstellten Event Hub definiert ist. |
+    | Ereignissystemeigenschaften | Auswählen relevanter Eigenschaften | Die [Event Hub-Systemeigenschaften](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Wenn pro Ereignisnachricht mehrere Datensätze vorhanden sind, werden die Systemeigenschaften dem ersten Datensatz hinzugefügt. Beim Hinzufügen von Systemeigenschaften [erstellen](/azure/kusto/management/tables#create-table) oder [aktualisieren](/azure/kusto/management/tables#alter-table-and-alter-merge-table) Sie das Tabellenschema und die [Zuordnung](/azure/kusto/management/mappings), um die ausgewählten Eigenschaften einzubeziehen. |
     | | |
 
     Zieltabelle:
@@ -124,12 +130,13 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Table | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
-    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV und TXT. Unterstützte Komprimierungsoptionen: GZip |
-    | Spaltenzuordnung | *TestMapping* | Die Zuordnung, die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen. Für JSON, MULTILINE JSON oder AVRO erforderlich, für andere Formate optional|
+    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE und TXT. Unterstützte Komprimierungsoptionen: GZip |
+    | Spaltenzuordnung | *TestMapping* | Die [Zuordnung](/azure/kusto/management/mappings), die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen. Für JSON, MULTILINE JSON oder AVRO erforderlich, für andere Formate optional|
     | | |
 
     > [!NOTE]
-    > Wählen Sie **My data includes routing info** (Meine Daten enthalten Routinginformationen) aus, um dynamisches Routing zu verwenden. Dabei enthalten Ihre Daten die erforderlichen Routinginformationen, wie in den Kommentaren der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) zu sehen. Werden sowohl statische als auch dynamische Eigenschaften festgelegt, setzen die dynamischen Eigenschaften die statischen außer Kraft. 
+    > * Wählen Sie **My data includes routing info** (Meine Daten enthalten Routinginformationen) aus, um dynamisches Routing zu verwenden. Dabei enthalten Ihre Daten die erforderlichen Routinginformationen, wie in den Kommentaren der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) zu sehen. Werden sowohl statische als auch dynamische Eigenschaften festgelegt, setzen die dynamischen Eigenschaften die statischen außer Kraft. 
+    > * Nur Ereignisse, die nach dem Erstellen der Datenverbindung in die Warteschlange eingereiht werden, werden erfasst.
 
 ## <a name="copy-the-connection-string"></a>Verbindungszeichenfolge kopieren
 

@@ -1,17 +1,17 @@
 ---
 title: Replizieren von Daten in Azure Database for MySQL
-description: In diesem Artikel wird die Datenreplikation für Azure Database for MySQL beschrieben.
+description: Erfahren Sie mehr über das Verwenden der Datenreplikation zum Synchronisieren von Daten von einem externen Server mit dem Dienst Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 5ef11e86b85a537a809352325d56ac3ff983c2c1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: b501a1f1ea54aff5617932dc5085d6d19f86976c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993045"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970350"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replizieren von Daten in Azure Database for MySQL
 
@@ -39,7 +39,7 @@ Die [*mysql-Systemdatenbank*](https://dev.mysql.com/doc/refman/5.7/en/system-dat
 - Wenn für den Masterserver SSL aktiviert ist, vergewissern Sie sich, dass das für die Domäne bereitgestellte SSL-Zertifizierungsstellenzertifikat in die gespeicherte Prozedur `mysql.az_replication_change_master` eingefügt wurde. Sehen Sie sich die folgenden [Beispiele](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) und den Parameter `master_ssl_ca` an.
 - Stellen Sie sicher, dass die IP-Adresse des Masterservers den Firewallregeln des Azure Database for MySQL-Replikatservers hinzugefügt wurde. Aktualisieren Sie Firewallregeln über das [Azure-Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) oder über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
 - Vergewissern Sie sich, dass für den Computer, der den Masterserver hostet, sowohl ein- als auch ausgehender Datenverkehr am Port 3306 zugelassen wird.
-- Stellen Sie sicher, dass der Masterserver eine **öffentliche IP-Adresse** hat, der DNS öffentlich zugänglich ist oder über einen vollqualifizierten Domänennamen (FQDN) verfügt.
+- Stellen Sie sicher, dass der Masterserver eine **öffentliche IP-Adresse** aufweist, das DNS öffentlich zugänglich ist oder ein vollqualifizierter Domänenname (FQDN) verfügbar ist.
 
 ### <a name="other"></a>Andere
 - Die Datenreplikation wird nur in den Tarifen Universell und Arbeitsspeicheroptimiert unterstützt.

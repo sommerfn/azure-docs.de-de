@@ -3,22 +3,22 @@ title: Übersicht zu Hyperscale in Azure SQL-Datenbank | Microsoft-Dokumentation
 description: In diesem Artikel wird die Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell in Azure SQL-Datenbank beschrieben. Zudem werden die Unterschiede zu den Dienstebenen „Universell“ und „Unternehmenskritisch“ erläutert.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 1d70c5d86221213ae3f9a2d31fdf40857cb516be
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 10/01/2019
+ms.openlocfilehash: dc9acd4fc45de2599ac71427ec2676506071894b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845647"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035070"
 ---
-# <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Dienstebene „Hyperscale“ für bis zu 100TB
+# <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um die Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. In Azure SQL-Datenbank werden drei Architekturmodelle verwendet:
 - Universell/Standard 
@@ -51,9 +51,13 @@ Weitere Informationen zu den Computegrößen für die Dienstebene „Hyperscale�
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Wer sollte die Dienstebene „Hyperscale“ in Betracht ziehen?
 
-Die Dienstebene „Hyperscale“ wurde hauptsächlich für Kunden konzipiert, die große lokale Datenbanken verwenden und ihre Anwendungen durch das Verschieben in die Cloud modernisieren möchten, oder für Kunden, die bereits die Cloud verwenden und durch die maximale Datenbankgröße (1–4 TB) eingeschränkt werden. Außerdem eignet er sich für Kunden, die eine hohe Leistung und Skalierbarkeit im Hinblick auf Speicher- und Computeressourcen wünschen.
+Die Dienstebene „Hyperscale“ ist für die meisten geschäftlichen Workloads vorgesehen, da sie große Flexibilität und Hochleistung mit unabhängig skalierbaren Compute- und Speicherressourcen bietet. Mit der Fähigkeit, Speicher bis zu 100 TB automatisch zu skalieren, ist sie eine gute Wahl für Kunden, auf die Folgendes zutrifft:
 
-Die Dienstebene „Hyperscale“ unterstützt alle SQL Server-Workloads, wurde aber in erster Linie für OLTP optimiert. Die Dienstebene „Hyperscale“ unterstützt auch Hybrid- und Analyseworkloads (Data Mart).
+- Sie verfügen lokal über große Datenbanken und möchten ihre Anwendungen modernisieren, indem Sie sie in die Cloud verschieben.
+- Sie befinden sich bereits in der Cloud und sind durch die Beschränkungen der maximalen Datenbankgröße anderer Dienstebenen eingeschränkt (1 bis 4 TB).
+- Sie verwenden kleinere Datenbanken, benötigen aber eine schnelle vertikale und horizontale Computeskalierung, Hochleistung, sofortige Sicherung und schnelle Datenbankwiederherstellung.
+
+Die Hyperscale-Dienstebene unterstützt eine breite Palette von SQL Server-Workloads (von reinem OLTP bis zu reinen Analysen), ist aber in erster Linie für OLTP- und hybride Transaktions- und Analyseverarbeitungsworkloads (HTAP) optimiert.
 
 > [!IMPORTANT]
 > Pools für elastische Datenbanken bieten für die Dienstebene „Hyperscale“ keine Unterstützung.
@@ -80,27 +84,27 @@ Das folgende Diagramm veranschaulicht die verschiedenen Typen von Knoten in eine
 
 ![Architektur](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
-Eine Hyperscale-Datenbank enthält die folgenden verschiedenen Knotentypen:
+Eine Hyperscale-Datenbank enthält die folgenden verschiedenen Komponententypen:
 
-### <a name="compute-node"></a>Computeknoten
+### <a name="compute"></a>Compute
 
 Im Computeknoten befindet sich die relationale Engine und damit auch alle Sprachelemente, die Abfrageverarbeitung usw. Alle Benutzerinteraktionen mit einer Hyperscale-Datenbank erfolgen über diese Computeknoten. Computeknoten umfassen SSD-basierte Caches (mit der Bezeichnung „RBPEX – Resilient Buffer Pool Extension“ im obigen Diagramm), um die Anzahl von Netzwerkroundtrips zu minimieren, die zum Abrufen einer Datenseite erforderlich sind. Es gibt einen primären Computeknoten, in dem alle Lese-/Schreibworkloads und Transaktionen verarbeitet werden. Mindestens ein sekundärer Computeknoten fungiert als unmittelbar betriebsbereiter Standbyserver für Failoverzwecke sowie als schreibgeschützter Computeknoten für die Abladung von Leseworkloads (falls diese Funktion gewünscht ist).
 
-### <a name="page-server-node"></a>Seitenserverknoten
+### <a name="page-server"></a>Seitenserver
 
 Seitenserver sind Systeme, die eine horizontale hochskalierte Speicher-Engine darstellen.  Jeder Seitenserver ist für eine Teilmenge der Seiten in der Datenbank zuständig.  In der Regel steuert jeder Seitenserver zwischen 128GB und 1TB Daten. Es werden keine Daten auf mehreren Seitenservern gemeinsam genutzt (abgesehen von Replikaten, die für Redundanz und Verfügbarkeit gespeichert werden). Die Aufgabe eines Seitenservers besteht darin, Datenbankseiten nach Bedarf für die Computeknoten bereitzustellen und die Seiten auf dem neuesten Stand zu halten, wenn die Daten in Transaktionen aktualisiert werden. Seitenserver werden durch die Wiedergabe von Protokolldatensätzen vom Protokolldienst aktuell gehalten. Außerdem verwalten Seitenserver SSD-basierte Caches zum Verbessern der Leistung. Eine langfristige Speicherung von Datenseiten wird in Azure Storage beibehalten, um eine zusätzliche Zuverlässigkeit zu gewährleisten.
 
-### <a name="log-service-node"></a>Protokolldienstknoten
+### <a name="log-service"></a>Protokolldienst
 
-Der Protokolldienstknoten akzeptiert Protokolldatensätze vom primären Computeknoten, speichert sie in einem permanenten Zwischenspeicher und leitet die Protokolldatensätze an die übrigen Computeknoten (damit sie ihre Caches aktualisieren können) sowie die entsprechenden Seitenserver weiter, damit die Daten dort aktualisiert werden können. Auf diese Weise werden alle Datenänderungen vom primären Computeknoten über den Protokolldienst an alle sekundären Computeknoten und Seitenserver weitergegeben. Schließlich werden die Protokolldatensätze in den langfristigen Speicher in Azure Storage übertragen. Hierbei handelt es sich um ein unbegrenztes Speicherrepository. Durch diesen Mechanismus entfällt die Notwendigkeit einer häufigen Protokollkürzung. Der Protokolldienst weist außerdem einen lokalen Cache auf, um den Zugriff zu beschleunigen.
+Der Protokolldienstknoten akzeptiert Protokolldatensätze vom primären Computereplikat, speichert sie in einem permanenten Zwischenspeicher und leitet die Protokolldatensätze an die übrigen Computereplikate (damit sie ihre Caches aktualisieren können) sowie die entsprechenden Seitenserver weiter, damit die Daten dort aktualisiert werden können. Auf diese Weise werden alle Datenänderungen vom primären Computereplikat über den Protokolldienst an alle sekundären Computereplikate und Seitenserver weitergegeben. Schließlich werden die Protokolldatensätze in den langfristigen Speicher in Azure Storage gepusht. Hierbei handelt es sich um ein praktisch unbegrenztes Speicherrepository. Durch diesen Mechanismus entfällt die Notwendigkeit einer häufigen Protokollkürzung. Der Protokolldienst weist außerdem einen lokalen Cache auf, um den Zugriff auf Protokolldatensätze zu beschleunigen.
 
-### <a name="azure-storage-node"></a>Azure-Speicherknoten
+### <a name="azure-storage"></a>Azure-Speicher
 
-Der Azure-Speicherknoten ist das endgültige Ziel von Daten aus den Seitenservern. Dieser Speicher wird zu Sicherungszwecken sowie für die Replikation zwischen Azure-Regionen verwendet. Sicherungen bestehen aus Momentaufnahmen von Datendateien. Wiederherstellungsvorgänge sind über diese Momentaufnahmen schnell durchzuführen, und die Daten können auf einen beliebigen Zeitpunkt wiederhergestellt werden.
+Azure Storage enthält alle Datendateien in einer Datenbank. Seitenserver halten Datendateien in Azure Storage auf dem neuesten Stand. Dieser Speicher wird zu Sicherungszwecken sowie für die Replikation zwischen Azure-Regionen verwendet. Sicherungen werden mithilfe von Speichermomentaufnahmen von Datendateien implementiert. Wiederherstellungsvorgänge mithilfe von Momentaufnahmen sind unabhängig von der Datengröße schnell. Die Daten können bis zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums der Datenbank wiederhergestellt werden.
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
-Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu sofort. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf dem primären Computeknoten zu reduzieren. Daher wird die Leistung der primären Computeknotens durch die Sicherung einer großen Datenbank nicht beeinträchtigt. Ebenso erfolgen Wiederherstellungen durch das Kopieren der Dateimomentaufnahme stellen daher keinen umfangreichen Datenvorgang dar. Bei Wiederherstellungen innerhalb desselben Speicherkontos kann der Wiederherstellungsvorgang schnell durchgeführt werden.
+Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu unmittelbar. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf das primäre Computereplikat zu reduzieren. Folglich wirkt sich die Datenbanksicherung nicht auf die Leistung des primären Computeknotens aus. Ebenso werden Wiederherstellungen durch das Wiederherstellen von Dateimomentaufnahmen durchgeführt. Sie sind daher nicht abhängig von der Größe der Daten. Die Wiederherstellung ist ein konstanter Vorgang, und sogar mehrere TB große Datenbanken können innerhalb von Minuten anstelle von Stunden oder Tagen wieder hergestellt werden. Die Erstellung neuer Datenbanken durch Wiederherstellen einer vorhandenen Sicherung nutzt diese Funktion ebenfalls: Das Erstellen von Datenbankkopien für Entwicklungs- oder Testzwecke (auch von Datenbanken im TB-Bereich) ist innerhalb weniger Minuten möglich.
 
 ## <a name="scale-and-performance-advantages"></a>Skalierungs- und Leistungsvorteile
 
@@ -121,7 +125,7 @@ Dadurch wird eine Hyperscale-Datenbank auf Gen5-Hardware mit 4 Kernen erstellt.
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>Migrieren vorhandener Azure SQL-Datenbank-Instanzen zur Dienstebene „Hyperscale“
 
-Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) zu „Hyperscale“ verschieben. Dies erfolgt zurzeit im Rahmen einer unidirektionalen Migration. Datenbanken können nicht von Hyperscale zu einer anderen Dienstebene migriert werden. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration zu Hyperscale durchzuführen.
+Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) zu „Hyperscale“ verschieben. Dies erfolgt zurzeit im Rahmen einer unidirektionalen Migration. Sie können Datenbanken nicht aus „Hyperscale“ in eine andere Dienstebene verschieben. Dies kann nur durch Exportieren und Importieren von Daten erfolgen. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration der Kopie zu Hyperscale durchzuführen. Das Migrieren einer vorhandenen Azure SQL-Datenbank zur Hyperscale-Ebene ist ein von der Größe der Daten abhängiger Vorgang.
 
 Mit dem folgenden T-SQL-Befehl wird eine Datenbank in die Dienstebene „Hyperscale“ verschoben. Sie müssen sowohl die Edition als auch das Dienstziel in der `ALTER DATABASE`-Anweisung angeben.
 
@@ -139,7 +143,17 @@ Bei Hyperscale-Datenbanken bestimmt das Argument `ApplicationIntent` in der vom 
 -- Connection string with application intent
 Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
+
+Sekundäre Hyperscale-Replikate sind identisch, wobei das gleiche Servicelevelziel wie beim primären Replikat verwendet wird. Wenn mehrere sekundäre Replikate vorhanden sind, wird die Arbeitslast auf alle verfügbaren sekundären Replikate verteilt. Jedes sekundäre Replikat wird unabhängig voneinander aktualisiert, sodass verschiedene Replikate unterschiedliche Datenlatenzen im Vergleich zum primären Replikat aufweisen können.
+
+## <a name="database-high-availability-in-hyperscale"></a>Hochverfügbarkeit der Datenbank in Hyperscale
+
+Wie bei allen anderen Dienstebenen gewährleistet Hyperscale die Dauerhaftigkeit von Daten für committete Transaktionen unabhängig von der Verfügbarkeit des Computereplikats. Das Ausmaß der Ausfallzeiten aufgrund der Nichtverfügbarkeit des primären Replikats hängt von der Art des Failovers (geplant oder ungeplant) und vom Vorhandensein mindestens eines sekundären Replikats ab. Bei einem geplanten Failover (d.h. einem Wartungsereignis) erstellt das System entweder das neue primäre Replikat, bevor ein Failover initiiert wird, oder verwendet ein vorhandenes sekundäres Replikat als Failoverziel. Bei einem ungeplanten Failover (d.h. bei einem Hardwarefehler auf dem primären Replikat) verwendet das System ein sekundäres Replikat als Failoverziel, sofern vorhanden, oder erstellt ein neues primäres Replikat aus dem Pool der verfügbaren Computekapazität. Im letzteren Fall ist die Dauer der Ausfallzeit länger, da zusätzliche Schritte erforderlich sind, um das neue primäre Replikat zu erstellen.
+
+Weitere Informationen zur Hyperscale-SLA finden Sie unter [SLA für Azure SQL-Datenbank](https://azure.microsoft.com/support/legal/sla/sql-database/).
+
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Notfallwiederherstellung für Hyperscale-Datenbanken
+
 ### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Wiederherstellen einer Hyperscale-Datenbank in einem anderen geografischen Gebiet
 Wenn Sie im Rahmen der Wiederherstellung im Notfall oder einer Übung, wegen eines Umzugs oder aus beliebigem anderen Grund eine Hyperskalierung für Azure SQL-Datenbank-Instanz in einer anderen Region wiederherstellen müssen als der, wo sie derzeit gehostet wird, besteht die primäre Methode in einer Geowiederherstellung der Datenbank.  Dies beinhaltet genau die gleichen Schritte, als würden Sie eine beliebige AZURE SQL DB-Instanz in einer anderen Region wiederherstellen:
 1. Erstellen Sie eine SQL-Datenbank-Serverinstanz in der Zielregion, wenn Sie dort noch keinen geeigneten Server haben.  Dieser Server muss zu demselben Abonnement wie der ursprüngliche Server (Quelle) gehören.
@@ -227,17 +241,15 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|
 | Wiederherstellung einer Nicht-Hypserscale-DB in einer Hypserscale-DB und umgekehrt | Sie können weder eine Hyperscale-Datenbank in einer Nicht-Hyperscale-Datenbank noch eine Nicht-Hyperscale-Datenbank in einer Hyperscale-Datenbank wiederherstellen.|
-| Wenn eine Datenbankdatei während der Migration aufgrund einer aktiven Workload anwächst und den Grenzwert von 1 TB pro Datei überschreitet, kann die Migration nicht ausgeführt werden | Gegenmaßnahmen: <br> – Migrieren Sie die Datenbank möglichst zu einem Zeitpunkt, wenn keine Aktualisierungsworkload ausgeführt wird.<br> – Versuchen Sie erneut, die Migration auszuführen. Dies ist erfolgreich, solange der Grenzwert von 1 TB während der Migration nicht überschritten wird.|
+| Wenn eine Datenbank mindestens eine Datendatei enthält, die größer als 1 TB ist, schlägt die Migration fehl. | In einigen Fällen kann es möglich sein, dieses Problem zu umgehen, indem die großen Dateien auf weniger als 1 TB verkleinert werden. Wenn Sie eine Datenbank migrieren, die während des Migrationsvorgangs verwendet wird, stellen Sie sicher, dass keine Datei größer als 1 TB wird. Verwenden Sie die folgende Abfrage, um die Größe von Datenbankdateien zu ermitteln. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Verwaltete Instanz | Die verwaltete Azure SQL-Datenbank-Instanz wird bei Hyperscale-Datenbanken derzeit nicht unterstützt. |
 | Pools für elastische Datenbanken |  Pools für elastische Datenbanken werden mit Hyperskalierung für SQL-Datenbank derzeit nicht unterstützt.|
-| Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu „Hyperscale“ kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank von „Hyperscale“ zu einem anderen Diensttarif im Exportieren/Importieren mithilfe einer BACPAC-Datei.|
+| Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu „Hyperscale“ kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank aus Hyperscale zu Nicht-Hyperscale darin, sie mithilfe einer BACPAC-Datei oder anderer Datenverschiebungstechnologien (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS usw.) zu exportieren/importieren.|
 | Migration von Datenbanken mit beständigen speicherinternen Objekten | Hyperscale unterstützt nur nicht persistente, speicherinterne Objekte (Tabellentypen, native SPs und Funktionen).  Persistente speicherinterne Tabellen und andere Objekte müssen gelöscht und als nicht speicherinterne Objekte neu erstellt werden, bevor eine Datenbank zur Dienstebene „Hyperscale“ migriert wird.|
 | Change Tracking | Die Änderungsnachverfolgung kann für Hyperscale-Datenbanken nicht verwendet werden. |
 | Georeplikation  | Sie können noch keine Georeplikation für Hyperskalierung für Azure SQL-Datenbank-Instanzen konfigurieren.  Sie können Geowiederherstellungen ausführen (Wiederherstellen der Datenbank in einem anderen geografischen Gebiet, für die Notfallwiederherstellung oder aus anderen Gründen). |
 | TDE/AKV-Integration | Transparent Data Encryption mit Azure Key Vault (häufig als Bring-Your-Own-Key oder BYOK bezeichnet) wird noch nicht für Hyperskalierung für Azure SQL-Datenbank-Instanzen unterstützt, TDE mit vom Dienst verwalteten Schlüsseln jedoch vollständig. |
-|Intelligente Datenbankfeatures | 1. Create Index-, Drop Index-Ratgebermodelle werden nicht für Hyperscale-Datenbanken trainiert. <br/>2. Schemaprobleme, DbParameterization – vor kurzem hinzugefügte Ratgeber werden für Hyperscale-Datenbanken nicht unterstützt.|
-
-
+|Intelligente Datenbankfeatures | Mit Ausnahme der Option „Plan erzwingen“ werden alle anderen Optionen zur automatischen Optimierung für Hyperscale noch nicht unterstützt: Optionen scheinen möglicherweise aktiviert zu sein, es erfolgen jedoch keine Empfehlungen oder Aktionen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

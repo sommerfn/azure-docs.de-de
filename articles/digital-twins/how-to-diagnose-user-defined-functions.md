@@ -1,20 +1,20 @@
 ---
 title: 'Gewusst wie: Debuggen von UDFs in Azure Digital Twins | Microsoft-Dokumentation'
 description: Richtlinie zum Debuggen von UDFs in Azure Digital Twins.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: v-adgera
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260854"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949884"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -55,6 +55,13 @@ AzureDiagnostics
 | Abfragewert | Ersetzen durch |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Die Korrelations-ID, die für die Ereignisdaten angegeben wurde. |
+
+So zeigen Sie alle aktuellen Telemetrieprotokollabfragen an:
+
+```Kusto
+AzureDiagnostics
+| order by CorrelationId desc
+```
 
 Wenn Sie die Protokollierung für Ihre benutzerdefinierte Funktion aktivieren, werden diese Protokolle in Ihrer Instanz der Protokollanalyse mit der Kategorie `UserDefinedFunction` angezeigt. Um sie abzurufen, geben Sie die folgende Abfragebedingung in der Protokollanalyse ein:
 

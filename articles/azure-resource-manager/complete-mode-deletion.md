@@ -4,14 +4,14 @@ description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Mod
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cdc00ccc61e20865e993a18c72b930d9570896f2
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995263"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937052"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 
@@ -43,7 +43,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.Billing](#microsoftbilling)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
-> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
@@ -126,6 +125,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
 > - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
@@ -396,6 +396,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | billingAccounts/customers | Nein |
 > | billingAccounts/customers/billingSubscriptions | Nein |
 > | billingAccounts/customers/initiateTransfer | Nein |
+> | billingAccounts/customers/policies | Nein |
 > | billingAccounts/customers/products | Nein |
 > | billingAccounts/customers/transactions | Nein |
 > | billingAccounts/customers/transfers | Nein |
@@ -443,13 +444,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | mapApis | Ja |
 > | updateCommunicationPreference | Nein |
-
-## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Löschung des vollständigen Modus |
-> | ------------- | ----------- |
-> | BizTalk | Ja |
 
 ## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
@@ -637,10 +631,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | diskEncryptionSets | Ja |
 > | disks | Ja |
 > | galleries | Ja |
-> | galleries/applications | Ja |
-> | galleries/applications/versions | Ja |
-> | galleries/images | Ja |
-> | galleries/images/versions | Ja |
+> | galleries/applications | Nein |
+> | galleries/applications/versions | Nein |
+> | galleries/images | Nein |
+> | galleries/images/versions | Nein |
 > | hostGroups | Ja |
 > | hostGroups/hosts | Ja |
 > | images | Ja |
@@ -648,13 +642,11 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | restorePointCollections | Ja |
 > | restorePointCollections/restorePoints | Nein |
 > | sharedVMImages | Ja |
-> | sharedVMImages/versions | Ja |
+> | sharedVMImages/versions | Nein |
 > | snapshots | Ja |
 > | virtualMachines | Ja |
 > | virtualMachines/extensions | Ja |
 > | virtualMachines/metricDefinitions | Nein |
-> | virtualMachines/scriptJobs | Nein |
-> | virtualMachines/softwareUpdateDeployments | Nein |
 > | virtualMachineScaleSets | Ja |
 > | virtualMachineScaleSets/extensions | Nein |
 > | virtualMachineScaleSets/networkInterfaces | Nein |
@@ -871,7 +863,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | services | Ja |
 > | services/projects | Ja |
-> | slots | Ja |
 
 ## <a name="microsoftdatashare"></a>Microsoft.DataShare
 
@@ -923,6 +914,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | serverGroups | Ja |
 > | servers | Ja |
 > | servers/advisors | Nein |
+> | servers/privateEndpointConnectionProxies | Nein |
+> | servers/privateEndpointConnections | Nein |
+> | servers/privateLinkResources | Nein |
 > | servers/queryTexts | Nein |
 > | servers/recoverableServers | Nein |
 > | servers/topQueryStatistics | Nein |
@@ -1203,6 +1197,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | clusters/databases | Nein |
 > | clusters/databases/dataconnections | Nein |
 > | clusters/databases/eventhubconnections | Nein |
+> | Cluster/sharedidentities | Nein |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -1367,11 +1362,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | netAppAccounts | Ja |
+> | netAppAccounts/backupPolicies | Ja |
 > | netAppAccounts/capacityPools | Ja |
 > | netAppAccounts/capacityPools/volumes | Ja |
+> | netAppAccounts/capacityPools/volumes/backups | Nein |
 > | netAppAccounts/capacityPools/volumes/mountTargets | Ja |
 > | netAppAccounts/capacityPools/volumes/snapshots | Ja |
-
+> | netAppAccounts/vaults | Nein |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1464,6 +1461,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- |
 > | namespaces | Ja |
 > | namespaces/notificationHubs | Ja |
+
+## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | osNamespaces | Ja |
 
 ## <a name="microsoftoffazure"></a>Microsoft.OffAzure
 
@@ -1618,7 +1622,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | subscriptions/resources | Nein |
 > | subscriptions/tagnames | Nein |
 > | subscriptions/tagNames/tagValues | Nein |
-> | tags | Nein |
 > | tenants | Nein |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
@@ -1682,6 +1685,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | securityStatusesSummaries | Nein |
 > | serverVulnerabilityAssessments | Nein |
 > | settings | Nein |
+> | subAssessments | Nein |
 > | Tasks | Nein |
 > | topologies | Nein |
 > | workspaceSettings | Nein |

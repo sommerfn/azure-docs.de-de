@@ -2,20 +2,16 @@
 title: Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen – Azure Governance
 description: Hier erfahren Sie, wie Sie Azure-Verwaltungsgruppen zum Verwalten mehrerer Ressourcen über das Portal, mithilfe von Azure PowerShell oder mithilfe der Azure CLI erstellen.
 author: rthorn17
-manager: rithorn
 ms.service: governance
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 92ab550aa76adc39863a6557d3959b4538bc9a63
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337780"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980793"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen
 
@@ -31,9 +27,13 @@ Die Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell oder mithil
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**.
+1. Klicken Sie auf **Alle Dienste** > **Verwaltung und Governance**.
 
-1. Klicken Sie auf der Hauptseite auf **Neue Verwaltungsgruppe**.
+1. Wählen Sie **Kostenverwaltung und Abrechnung** aus.
+
+1. Wählen Sie auf der Seite „Kostenverwaltung und Abrechnung: Verwaltungsgruppen“ die Option **Verwaltungsgruppen** aus.
+
+1. Wählen Sie **+ Verwaltungsgruppe hinzufügen** aus.
 
    ![Seite für die Arbeit mit Verwaltungsgruppen](./media/main.png)
 

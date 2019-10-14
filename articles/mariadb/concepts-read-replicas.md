@@ -1,17 +1,17 @@
 ---
 title: Lesereplikate in Azure Database for MariaDB
-description: In diesem Artikel werden Lesereplikate für Azure Database for MariaDB beschrieben.
+description: 'Weitere Informationen zu Lesereplikaten in Azure Database for MariaDB: Auswählen von Regionen, Erstellen von Replikaten, Herstellen einer Verbindung mit Replikaten und Beenden der Replikation.'
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 5018cab1213fb99f4c3b07944d0cb3172d1cd2c7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123224"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973593"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -43,7 +43,7 @@ Sie können einen Masterserver in jeder [Azure Database for MariaDB-Region](http
 [ ![Replikatregionen lesen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
-Sie können jederzeit ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Dies sind die universellen Replikatregionen:
+Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Folgende universelle Replikatregionen werden unterstützt:
 
 „Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“.
 
@@ -114,7 +114,7 @@ Lesereplikate sind zurzeit nur in den Tarifen „Universell“ und „Arbeitsspe
 
 ### <a name="master-server-restart"></a>Masterserverneustart
 
-Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Bitte beachten Sie dies und führen Sie diese Operationen nicht zu Spitzenzeiten durch.
+Wenn Sie ein Replikat für einen Master erstellen, der keine vorhandenen Replikate hat, startet der Master zunächst neu, um sich auf die Replikation vorzubereiten. Beachten Sie dies, und führen Sie diese Vorgänge nicht zu Spitzenzeiten durch.
 
 ### <a name="new-replicas"></a>Neue Replikate
 

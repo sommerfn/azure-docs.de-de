@@ -1,18 +1,18 @@
 ---
 title: Knoten in Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschauversion)
-description: Die zwei Knotentypen in einer Servergruppe.
+description: Erfahren Sie mehr über die beiden Knotentypen (Koordinator und Worker) in einer Servergruppe in Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: c6b948ed63f43f1597103d123be5ed39f42bd276
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097fcdb3a7e53bb63db9dc2d352d754062df7be6
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080418"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947555"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Knoten in Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschauversion)
 

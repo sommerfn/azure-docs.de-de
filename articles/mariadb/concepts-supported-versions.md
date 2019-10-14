@@ -1,21 +1,21 @@
 ---
-title: Unterstützte Versionen in Azure Database for MariaDB
-description: Beschreibung der unterstützten Versionen in Azure Database for MariaDB
+title: 'Unterstützte Versionen: Azure Database for MariaDB'
+description: Erfahren Sie, welche Versionen des MariaDB-Servers im Dienst Azure Database for MariaDB unterstützt werden.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: e5d1dbc8c212d4cdefb12fb740a454324d3adfa1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 950f8600dac6fccfa72f5dea6e900a210572ee38
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962918"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973535"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Unterstützte Serverversionen von Azure Database for MariaDB
 
-Azure Database for MariaDB wurde mithilfe der InnoDB-Engine auf der Grundlage von [MariaDB Server](https://downloads.mariadb.org/) entwickelt, einem Open-Source-Produkt. 
+Azure Database for MariaDB wurde mithilfe der InnoDB-Engine auf der Grundlage von [MariaDB Server](https://downloads.mariadb.org/) entwickelt, einem Open-Source-Produkt.
 
 MariaDB verwendet das Benennungsschema „X.Y.Z“. X ist die Hauptversion, Y die Nebenversion und Z die Patchversion.
 

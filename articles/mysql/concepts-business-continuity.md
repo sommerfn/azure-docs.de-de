@@ -1,21 +1,21 @@
 ---
-title: Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
-description: Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
+title: Informationen zur Geschäftskontinuität in Azure Database for MySQL
+description: Erfahren Sie mehr über Geschäftskontinuität (Point-in Time-Wiederherstellung, Rechenzentrumsausfälle, Geowiederherstellung), wenn Sie den Dienst Azure Database for MySQL verwenden.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28cd46077e67aa48169421607cd977103da735c5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525432"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972894"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Übersicht über die Geschäftskontinuität mit Azure Database for MySQL
+# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Informationen zur Geschäftskontinuität in Azure Database for MySQL
 
-Diese Übersicht beschreibt die Funktionen, die Azure Database for MySQL für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie etwas über Optionen für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen können, dass Ihre Datenbank und Ihre Anwendungen nicht mehr verfügbar sind. Erfahren Sie, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
+Dieser Artikel beschreibt die Funktionen, die Azure Database for MySQL für Geschäftskontinuität und Notfallwiederherstellung bereitstellt. Erfahren Sie etwas über Optionen für die Wiederherstellung nach Störungen, die Datenverluste nach sich ziehen oder dazu führen können, dass Ihre Datenbank und Ihre Anwendungen nicht mehr verfügbar sind. Erfahren Sie, was zu tun ist, wenn ein Benutzer- oder Anwendungsfehler die Datenintegrität gefährdet, eine Azure-Region ausfällt oder Wartungsaufgaben für Ihre Anwendung ausgeführt werden müssen.
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Features zum Sicherstellen der Geschäftskontinuität
 
