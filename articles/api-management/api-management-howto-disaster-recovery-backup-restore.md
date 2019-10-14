@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: c566dc28338a47c1bf24066436c21544eb7c5c7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072449"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958532"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -218,7 +218,7 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle _Backup-AzApiManagement_ bzw. _Restore-AzApiManagement_ ausgeführt werden.
+> Sicherungs- und Wiederherstellungsvorgänge können außerdem mithilfe der PowerShell-Befehle [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) bzw. [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

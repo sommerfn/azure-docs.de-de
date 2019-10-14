@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614877"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026110"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -87,7 +87,7 @@ Wenn Sie ein Upgrade für einen Knotenpool in AKS durchführen, folgen Taints un
   - Ein weiterer neuer Knoten wird erstellt (mit dem Namen *node1*, da der vorherige *node1* gelöscht wurde), und die Taints aus *node2* gelten nun für den neuen *node1*. *node2* wird gelöscht.
   - Zusammengefasst wird *node1* zu *node3*, und *node2* wird zu *node1*.
 
-- **Cluster, die VM-Skalierungsgruppen verwenden** (derzeit in der Vorschau in AKS)
+- **Cluster, die VM-Skalierungsgruppen verwenden**
   - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
   - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
   - Die ursprünglichen *node1* und *node2* werden gelöscht.

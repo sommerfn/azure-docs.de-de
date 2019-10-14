@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827579"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034726"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
@@ -63,6 +63,10 @@ Einige Dinge werden von der VNET-Integration nicht unterstützt, z.B.:
 * NetBios
 
 ## <a name="regional-vnet-integration"></a>Regionale VNET-Integration 
+
+> [!NOTE]
+> Peering ist für Linux-basierten App Service noch nicht verfügbar.
+>
 
 Wenn Sie die VNET-Integration mit VNETs verwenden, die sich in der gleichen Region befinden wie Ihre App, ist ein delegiertes Subnetz mit mindestens 32 Adressen erforderlich. Das Subnetz kann nicht für andere Zwecke verwendet werden. Ausgehende Aufrufe von Ihrer App erfolgen von den Adressen im delegierten Subnetz. Bei dieser Version der VNET-Integration werden die Aufrufe von Adressen in Ihrem VNET ausgeführt. Die Verwendung von Adressen in Ihrem VNET ermöglicht Ihrer App Folgendes:
 

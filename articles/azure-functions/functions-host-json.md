@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096403"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176579"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host.json-Referenz für Azure Functions 2.x  
 
@@ -117,6 +117,9 @@ Steuert das [Stichprobenfeature in Application Insights](./functions-monitoring.
 |---------|---------|---------| 
 |isEnabled|true|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
 |maxTelemetryItemsPerSecond|5|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.| 
+|EnableLiveMetrics |true|Aktiviert die Sammlung mit Livemetriken.|
+|EnableDependencyTracking|true|Aktiviert die Abhängigkeitsüberwachung.|
+|EnablePerformanceCountersCollection|true|Aktiviert die Sammlung mit Kudu-Leistungsindikatoren.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 

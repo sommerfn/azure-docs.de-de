@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114458"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169755"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -50,17 +50,12 @@ Azure stellt zwei Verfahren zum Implementieren von Netzwerkrichtlinien bereit. S
 
 Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Richtlinien werden in Mengen von zulässigen und unzulässigen IP-Paaren übersetzt. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
 
-Netzwerkrichtlinien funktionieren nur mit der Option (erweitert) von Azure CNI. Implementierung unterscheidet sich für die zwei Optionen:
-
-* *Azure Netzwerkrichtlinien*: Das Azure CNI richtet eine Bridge im VM-Host für knoteninterne Netzwerke ein. Die Filterregeln werden angewendet, wenn die Pakete über die Bridge übergeben werden.
-* *Calico-Netzwerkrichtlinien*: Das Azure CNI richtet lokale Kernelrouten für den knoteninternen Datenverkehr ein. Die Richtlinien werden auf die Netzwerkschnittstelle des Pods angewendet.
-
-### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und ihre Funktionen
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und zwischen ihren Funktionen
 
 | Funktion                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Unterstützte Plattformen                      | Linux                      | Linux                       |
-| Unterstützte Netzwerkoptionen             | Azure CNI                  | Azure CNI                   |
+| Unterstützte Netzwerkoptionen             | Azure CNI                  | Azure CNI und kubenet       |
 | Compliance mit Kubernetes-Spezifikation | Alle Richtlinientypen werden unterstützt |  Alle Richtlinientypen werden unterstützt |
 | Zusätzliche Funktionen                      | Keine                       | Erweitertes Richtlinienmodell, das aus globaler Netzwerkrichtlinie, globalem Netzwerksatz und Hostendpunkt besteht. Weitere Informationen zur Verwendung der `calicoctl`-Befehlszeilenschnittstelle zum Verwalten dieser erweiterten Funktionen finden Sie in der [calicoctl-Benutzerreferenz][calicoctl]. |
 | Support                                  | Unterstützt durch das Azure-Support- und Engineering-Team | Calico-Communitysupport. Weitere Informationen zu zusätzlichem kostenpflichtigem Support finden Sie unter [Project Calico support options][calico-support] (Supportoptionen für Project „Calico“). |
@@ -76,7 +71,7 @@ Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Da
 
 Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinie unterstützt. Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
 
-Um eine Netzwerkrichtlinie mit einem AKS-Cluster zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking].
+Um eine Azure-Netzwerkrichtlinie zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking]. Eine Calico-Netzwerkrichtlinie könnte entweder mit diesem selben Azure CNI-Plug-In oder mit dem Kubenet CNI-Plug-In verwendet werden.
 
 Das folgende Beispielskript:
 
@@ -84,7 +79,7 @@ Das folgende Beispielskript:
 * Erstellt einen Azure AD-Dienstprinzipal (Azure Active Directory) für die Verwendung mit dem AKS-Cluster.
 * Weist dem Dienstprinzipal des AKS-Clusters in einen virtuellen Netzwerk *Mitwirkender*-Berechtigungen zu.
 * Erstellt einen AKS-Cluster im definierten virtuellen Netzwerk und aktiviert die Netzwerkrichtlinie.
-    * Die *Azure*-Netzwerkrichtlinienoption wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`.
+    * Die *Azure*-Netzwerkrichtlinienoption wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`. Hinweis: Calico könnte entweder mit `--network-plugin azure` oder mit `--network-plugin kubenet` verwendet werden.
 
 Geben Sie Ihr eigenes sicheres *SP_PASSWORD* ein. Sie können die Variablen *RESOURCE_GROUP_NAME* und *CLUSTER_NAME* ersetzen:
 
@@ -468,9 +463,9 @@ Weitere Informationen zu Richtlinien finden Sie unter [Network Policies][kuberne
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
-[calico-support]: https://www.projectcalico.org/support
-[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
+[calico-support]: https://www.tigera.io/tigera-products/calico/
+[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

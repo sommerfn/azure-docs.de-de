@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 02c27faa4ac45165747d5eb450e75f666ba7d013
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 62d2a2533bf7b5b0e9e98d09c34583e55403753f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703469"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174756"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -275,7 +275,7 @@ Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe ver
 
 * Für Logik-Apps, die in einer Integrationsdienstumgebung (ISE) ausgeführt werden, müssen Sie [diese Ports öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-* Logik-Apps können nicht direkt auf Azure-Speicherkonten zugreifen, die über [Firewallregeln](../storage/common/storage-network-security.md) verfügen und in derselben Region vorhanden sind. Logik-Apps können jedoch auf Azure-Speicherkonten zugreifen, die sich in einer anderen Region befinden, da für die regionsübergreifende Kommunikation eine öffentliche IP-Adresse verwendet wird. Stellen Sie lediglich sicher, dass Sie die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound) zulassen. Alternativ können Sie hier auch erweiterte Optionen verwenden:
+* Logik-Apps können nicht direkt auf Azure-Speicherkonten zugreifen, die über [Firewallregeln](../storage/common/storage-network-security.md) verfügen und in derselben Region vorhanden sind. Wenn Sie jedoch die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound) zulassen, können Logik-Apps auf Speicherkonten in einer anderen Region zugreifen, außer wenn Sie den Azure Table Storage-Connector oder den Azure Queue Storage-Connector verwenden. Um auf ihren Table Storage oder Queue Storage zuzugreifen, können Sie weiterhin HTTP-Trigger und -Aktionen verwenden. Andernfalls können Sie auch hier die erweiterten Optionen verwenden:
 
   * Erstellen Sie eine [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), die eine Verbindung mit Ressourcen in einem virtuellen Azure-Netzwerk herstellen kann.
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 953558e34d41184f75d72baf5982e84eb51b1781
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e9b2967905bc927432d1ca4606bc2b2ba2ac4108
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694872"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177361"
 ---
 # <a name="http-features"></a>HTTP-Features
 
@@ -210,6 +210,38 @@ Wenn Ihr Anwendungsfall durch eine dieser Einschränkungen beeinträchtigt wird,
 > Wenn Sie .NET-Entwickler sind, fragen Sie sich vielleicht, warum dieses Feature die Typen **DurableHttpRequest** und **DurableHttpResponse** anstelle der integrierten .NET-Typen **HttpRequestMessage** und **HttpResponseMessage** nutzt.
 >
 > Dies ist eine bewusste Entscheidung. In erster Linie stellen benutzerdefinierte Typen sicher, dass Benutzer keine falschen Annahmen über unterstützte Verhaltensweisen des internen HTTP-Clients treffen. Typen, die spezifisch für Durable Functions sind, tragen auch zu einer Vereinfachung des API-Designs bei. Außerdem können Sie auf einfachere Weise spezielle Features wie die [Integration verwalteter Identitäten](#managed-identities) und das [Polling Consumer Pattern](#http-202-handling) verfügbar machen. 
+
+### <a name="extensibility-net-only"></a>Erweiterbarkeit (nur .NET)
+
+Das Anpassen des Verhaltens des internen HTTP-Clients der Orchestrierung kann mithilfe von [Azure Functions .NET-Abhängigkeitsinjektion](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection) erfolgen. Diese Funktion kann nützlich sein, um geringfügige Verhaltensänderungen vorzunehmen. Sie kann auch hilfreich sein, um Komponententests für den HTTP-Client durch Einfügen von Pseudoobjekten durchzuführen.
+
+Das folgende Beispiel veranschaulicht die Verwendung der Abhängigkeitsinjektion, um die SSL-Zertifikatüberprüfung für Orchestratorfunktionen zu deaktivieren, die externe HTTP-Endpunkte aufrufen.
+
+```csharp
+public class Startup : FunctionsStartup
+{
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        // Register own factory
+        builder.Services.AddSingleton<
+            IDurableHttpMessageHandlerFactory,
+            MyDurableHttpMessageHandlerFactory>();
+    }
+}
+
+public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFactory
+{
+    public HttpMessageHandler CreateHttpMessageHandler()
+    {
+        // Disable SSL certificate validation (not recommended in production!)
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+    }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 8cdfe82888cca471aa5aae6717a16f62000c4ad5
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69657784"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839244"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ ms.locfileid: "69657784"
 <sup>2</sup>Die tatsächliche Anzahl der Apps, die Sie auf diesen Computern hosten können, hängt von der Aktivität der Apps, der Größe der Computerinstanzen und der entsprechenden Ressourcenauslastung ab.  
 <sup>3</sup>Dedizierte Instanzen können unterschiedliche Größen aufweisen. Weitere Informationen finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup> Weitere sind auf Anfrage möglich.  
-<sup>5</sup>Die Speicherbegrenzung ist die gesamte Inhaltsgröße aller Apps im gleichen App Service-Plan.  
+<sup>5</sup>Die Speicherbegrenzung ist die gesamte Inhaltsgröße aller Apps im selben App Service-Plan. Die gesamte Inhaltsgröße aller Apps für alle App Service-Pläne in einer einzelnen Ressourcengruppe und Region kann 500 GB nicht überschreiten.  
 <sup>6</sup>Diese Ressourcen werden durch physische Ressourcen auf den dedizierten Instanzen (die Instanzengröße und die Anzahl der Instanzen) beschränkt.  
 <sup>7</sup>Wenn Sie eine App im Basic-Tarif auf zwei Instanzen skalieren, stehen Ihnen 350 gleichzeitige Verbindungen für jede der beiden Instanzen zur Verfügung. Beim Tarif „Standard“ und höheren Tarifen gelten keine theoretischen Grenzwerte für Websockets, die Anzahl von Websockets kann jedoch durch andere Faktoren eingeschränkt sein. Die maximal zulässige Anzahl von gleichzeitigen Anforderungen (definiert durch `maxConcurrentRequestsPerCpu`) lautet wie folgt: 7.500 pro kleiner VM, 15.000 pro mittlerer VM (7.500 × 2 Kerne) und 75.000 pro großer VM (18.750 × 4 Kerne).  
 <sup>8</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Für geplante WebJobs ist Azure Scheduler Free oder Standard erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.  

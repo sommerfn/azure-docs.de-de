@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.author: mlearned
-ms.openlocfilehash: b42cdae634a6c2d8d994225d4cb6b440a99918e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8e5f394987de06feaeb9a635face643eecc97cb9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67614591"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174222"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -92,7 +92,7 @@ Weitere Informationen zu Speicherklassenoptionen finden Sie unter [Richtlinien z
 
 **Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z.B. Velero oder Azure Site Recovery. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
 
-Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise benötigen Sie einen Hook für Ihre Anwendungen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
+Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise müssen Sie Ihre Anwendungen suchen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
 
 Sie sollten die Grenzen der verschiedenen Ansätze für Datensicherungen kennen und wissen, ob Sie Ihre Daten vor dem erstellen der Momentaufnahme stilllegen müssen. Datensicherungen ermöglichen es Ihnen nicht unbedingt, Ihre Anwendungsumgebung der Clusterbereitstellung wiederherzustellen. Weitere Informationen zu diesen Szenarien finden Sie unter [Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)][best-practices-multi-region].
 

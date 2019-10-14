@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703254"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176066"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure-Blobspeicher mit Azure Logic Apps
 
@@ -24,10 +24,11 @@ In diesem Artikel wird veranschaulicht, wie Sie auf Dateien zugreifen und diese 
 
 Angenommen, Sie verfügen über ein Tool, das auf einer Azure-Website aktualisiert wird, die als Trigger für Ihre Logik-App fungiert. Wenn dieses Ereignis eintritt, können Sie über Ihre Logik-App eine Datei in Ihrem Blobspeichercontainer aktualisieren. Hierbei handelt es sich um eine Aktion in Ihrer Logik-App.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> Logik-Apps können nicht direkt auf Azure-Speicherkonten zugreifen, die über [Firewallregeln](../storage/common/storage-network-security.md) verfügen und in derselben Region vorhanden sind. Logik-Apps können jedoch auf Azure-Speicherkonten zugreifen, die sich in einer anderen Region befinden, da für die regionsübergreifende Kommunikation eine öffentliche IP-Adresse verwendet wird. Stellen Sie lediglich sicher, dass Sie die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound) zulassen. Alternativ können Sie hier auch erweiterte Optionen verwenden:
->
+> Logik-Apps können nicht direkt auf Azure-Speicherkonten zugreifen, die über [Firewallregeln](../storage/common/storage-network-security.md) verfügen und in derselben Region vorhanden sind. Wenn Sie jedoch die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound) zulassen, können Logik-Apps auf Speicherkonten in einer anderen Region zugreifen, außer wenn Sie den Azure Table Storage-Connector oder den Azure Queue Storage-Connector verwenden. Um auf ihren Table Storage oder Queue Storage zuzugreifen, können Sie weiterhin HTTP-Trigger und -Aktionen verwenden. 
+> Andernfalls können Sie auch hier die erweiterten Optionen verwenden:
+> 
 > * Erstellen Sie eine [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), die eine Verbindung mit Ressourcen in einem virtuellen Azure-Netzwerk herstellen kann.
 >
 > * Wenn Sie für API Management einen Dedicated-Tarif verwenden, können Sie die Speicher-API als Front-End verwenden, indem Sie API Management verwenden und dessen IP-Adressen das Passieren der Firewall gestatten. Im Grunde fügen Sie das virtuelle Azure-Netzwerk, das von API Management verwendet wird, der Firewalleinstellung des Speicherkontos hinzu. Sie können dann entweder die API Management-Aktion oder die HTTP-Aktion verwenden, um die Azure Storage-APIs aufzurufen. Wenn Sie diese Option auswählen, müssen Sie den Authentifizierungsprozess jedoch selbst handhaben. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](https://aka.ms/aisarch).

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 154317e558c2c9a22f569f569684cced467900d5
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716622"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937476"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Benutzerdefinierte Regeln für die Web Application Firewall v2
 
@@ -96,8 +96,8 @@ Der Name der Regel. Dieser Name wird in den Protokollen angezeigt.
 
 ### <a name="priority-required"></a>Priorität (erforderlich)
 
-- Bestimmt die Auswertungsreihenfolge der Regeln. Je niedriger der Wert, desto früher wird die Regel ausgewertet.
-Muss für alle benutzerdefinierten Regeln eindeutig sein. Eine Regel mit der Priorität 100 wird vor einer Regel mit der Priorität 200 ausgewertet.
+- Bestimmt die Auswertungsreihenfolge der Regeln. Je niedriger der Wert, desto früher wird die Regel ausgewertet. Der zulässige Bereich liegt zwischen 1 und 100. 
+- Muss für alle benutzerdefinierten Regeln eindeutig sein. Eine Regel mit der Priorität 40 wird vor einer Regel mit der Priorität 80 ausgewertet.
 
 ### <a name="rule-type-required"></a>Regeltyp (erforderlich)
 

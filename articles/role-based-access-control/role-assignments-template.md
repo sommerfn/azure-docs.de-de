@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178099"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950058"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen
 
@@ -159,6 +159,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
 ```
 
+> [!NOTE]
+> Diese Vorlage ist nicht idempotent, es sei denn, derselbe `roleNameGuid`-Wert wird als Parameter bei jeder Bereitstellung der Vorlage bereitgestellt. Wenn keine `roleNameGuid` angegeben wird, wird standardmäßig für jede Bereitstellung eine neue GUID generiert, und bei nachfolgenden Bereitstellungen tritt ein `Conflict: RoleAssignmentExists`-Fehler auf.
+
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Erstellen einer Rollenzuweisung in einem Ressourcenbereich
 
 Wenn Sie eine Rollenzuweisung auf der Ebene einer Ressource erstellen müssen, ist das Format der Rollenzuweisung anders. Sie stellen den Namespace des Ressourcenanbieters und den Ressourcentyp der Ressource bereit, der die Rolle zugewiesen werden soll. Außerdem fügen Sie den Namen der Ressource in den Namen der Rollenzuweisung ein.
@@ -180,8 +183,6 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 
 - Den eindeutigen Bezeichner eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
 - Die zuzuweisende Rolle
-- Einen eindeutigen Bezeichner, der für die Rollenzuweisung verwendet wird (oder alternativ den Standardbezeichner)
-
 
 ```json
 {
@@ -203,13 +204,6 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
             ],
             "metadata": {
                 "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -238,7 +232,7 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],

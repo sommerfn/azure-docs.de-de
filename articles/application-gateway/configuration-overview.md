@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 65cf71140d1706b8607e721ac323b1a97ae272fa
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898448"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177439"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -61,7 +61,7 @@ Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstü
 
 Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gateway-Subnetz. Legen Sie die folgenden Einschränkungen für das Subnetz in dieser Priorität fest:
 
-1. Lassen Sie eingehenden Datenverkehr von einem Quell-IP-/IP-Adressbereich zu.
+1. Eingehenden Datenverkehr aus einem Quell-IP/IP-Adressbereich und entweder zum gesamten Application Gateway-Subnetz oder zu der spezifisch konfigurierten privaten Front-End-IP-Adresse zulassen. Die NSG funktioniert nicht mit einer öffentlichen IP-Adresse.
 2. Lassen Sie eingehende Anforderungen aus allen Quellen an den Ports 65503–65534 für die Application Gateway v1-SKU und an den Ports 65200–65535 für die v2-SKU für die [Back-End-Integrität-Kommunikation](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) zu. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten keine Änderungen an diesen Endpunkten vornehmen.
 3. Lassen Sie eingehende Azure Load Balancer-Tests (*AzureLoadBalancer-Tag*) und eingehenden virtuellen Netzwerkdatenverkehr (*VirtualNetwork*-Tag) für die [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/security-overview) zu.
 4. Blockieren Sie den gesamten übrigen eingehenden Datenverkehr mit einer Alle-verweigern-Regel.

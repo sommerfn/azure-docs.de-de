@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308341"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025631"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -32,7 +32,7 @@ Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Serv
 * **Dienstprinzipalauthentifizierung** – wird zur Authentifizierung eines Dienstes verwendet (z.B. Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices). Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispielsweise sollte es für Web-Apps immer einen Dienst der mittleren Ebene geben, der sich mit einem Dienstprinzipal mit Media Services verbindet.
 * **Benutzerauthentifizierung** – wird zur Authentifizierung einer Person verwendet, die die App zum Interagieren mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird.
 
-Die Media Services-API erfordert, dass der Benutzer oder die Anwendung, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List** -Operationen verfügbar. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung für Media Services-Konten](rbac-overview.md).
+Die Media Services-API erfordert, dass der Benutzer oder die Anwendung, die die REST-API-Anforderungen sendet, Zugriff auf die Media Services-Kontoressource hat und eine Rolle **Mitwirkender** oder **Besitzer** verwendet. Auf die API kann mit der Rolle **Leser** zugegriffen werden, es sind aber nur **Get**- oder **List**-Operationen verfügbar. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung für Media Services-Konten](rbac-overview.md).
 
 Anstatt ein Dienstprinzipal zu erstellen, sollten Sie die Verwendung verwalteter Identitäten für Azure-Ressourcen in Betracht ziehen, um über den Azure Resource Manager auf die Media Services-API zuzugreifen. Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).
 

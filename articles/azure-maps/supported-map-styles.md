@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839451"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174764"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
@@ -96,3 +96,11 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 * [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web-SDK-Kartensteuerelement
 * Android-Kartensteuerelement
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen, wie ein Kartenstil in Azure Maps festgelegt wird:
+
+> [!div class="nextstepaction"]
+> [Auswählen eines Kartenstils](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)

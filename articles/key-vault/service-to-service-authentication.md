@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 201f35e7b3ccf7c113ae30a6d007ad3a1f9adb98
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087683"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177469"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -87,7 +87,7 @@ So verwenden Sie die Azure-Befehlszeilenschnittstelle:
 
 1. Anmeldung beim Azure-Portal: *az login* für die Anmeldung bei Azure.
 
-1. Überprüfen Sie den Zugriff, indem Sie *az account get-access-token* eingeben. Wenn Sie einen Fehler erhalten, vergewissern Sie sich, dass die richtige Azure-Version ordnungsgemäß installiert ist.
+1. Überprüfen Sie den Zugriff, indem Sie *az account get-access-token --resource https://vault.azure.net* eingeben. Wenn Sie einen Fehler erhalten, vergewissern Sie sich, dass die richtige Azure-Version ordnungsgemäß installiert ist.
 
    Wenn Azure CLI nicht im Standardverzeichnis installiert ist, erhalten Sie möglicherweise eine Fehlermeldung, die angibt, dass `AzureServiceTokenProvider` den Pfad zu Azure CLI nicht finden kann. Verwenden Sie die Umgebungsvariable **AzureCLIPath**, um den Azure CLI-Installationsordner zu definieren. `AzureServiceTokenProvider` fügt das in der Umgebungsvariable **AzureCLIPath** angegebene Verzeichnis bei Bedarf zur Umgebungsvariable **Path** hinzu.
 
@@ -171,7 +171,11 @@ Es gibt drei primäre Methoden, um einen Dienstprinzipal zur Ausführung Ihrer A
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>Verwenden eines gemeinsamen geheimen Schlüssel als Azure AD-Anmeldeinformationen
 
-1. Erstellen Sie mit [az ad sp create-for-rbac --password](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) ein Dienstprinzipalzertifikat mit einem Kennwort.
+1. Erstellen Sie ein Dienstprinzipalzertifikat mit einem Kennwort mithilfe des Azure CLI-Befehls [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) mit dem Parameter „--sdk-auth“.
+
+    ```azurecli
+    az ad sp create-for-rbac --sdk-auth
+    ```
 
 1. Legen Sie eine Umgebungsvariable namens **AzureServicesAuthConnectionString** auf den folgenden Wert fest:
 

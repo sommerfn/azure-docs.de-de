@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6820daf34e63fd48e83c645e7509a3256bc8435b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c8c270681794621b2a12671d4bcf350cd6cc4d8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066992"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981115"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service
 
@@ -71,7 +71,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 Damit auf alle Zertifikate zugegriffen werden kann, legen Sie den Wert auf `*` fest.
 
 > [!NOTE]
-> Diese Einstellung platziert die angegebenen Zertifikate für die meisten Tarife im Speicher [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). Im Tarif **Isolated** allerdings (d.h., die App wird in einer [App Service-Umgebung](environment/intro.md) ausgeführt) wird das Zertifikat im Speicher [Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) platziert.
+> Diese Einstellung platziert die angegebenen Zertifikate für die meisten Tarife im Speicher [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). Aber wenn Ihre App im Tarif **Isolated** ausgeführt wird (d. h. die App wird in einer [App Service-Umgebung](environment/intro.md) ausgeführt), müssen Sie eventuell stattdessen im Speicher [Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) nachsehen.
 >
 
 ![Konfigurieren von App-Einstellungen](./media/app-service-web-ssl-cert-load/configure-app-setting.png)

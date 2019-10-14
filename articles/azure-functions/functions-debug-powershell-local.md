@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: fc30a2efb21d5b7f3168d9229ec5baf9a7f05eb1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5b396ef6b00d53a313ed4fb426685c12e2c1549d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706424"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981842"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>Lokales Debuggen von PowerShell Azure Functions
 
@@ -134,6 +134,9 @@ Der Vorgang „Debuggen starten“ führt die folgenden Aufgaben aus:
 * Ausführen von `func extensions install` im Terminal, um alle von Ihrer Funktions-App benötigten Azure Functions-Erweiterungen zu installieren.
 * Ausführen von `func host start` im Terminal, um die Funktions-App im Functions-Host zu starten.
 * Anfügen des PowerShell-Debuggers an den PowerShell-Runspace innerhalb der Functions Runtime.
+
+>[!NOTE]
+> Sie müssen sicherstellen, dass „PSWorkerInProcConcurrencyUpperBound“ auf „1“ festgelegt ist, um eine korrekte Debuggingerfahrung in Visual Studio Code sicherzustellen. Dies ist die Standardoption.
 
 Während Ihre Funktions-App ausgeführt wird, benötigen Sie eine gesonderte PowerShell-Konsole, um die HTTP-ausgelöste Funktion aufzurufen.
 

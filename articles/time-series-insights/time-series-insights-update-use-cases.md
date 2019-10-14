@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264517"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981172"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Anwendungsfälle für Azure Time Series Insights Preview
 
@@ -56,7 +56,7 @@ Es gibt drei primäre Methoden zur Interaktion mit in Time Series Insights gespe
 
 - Die zweite Methode für den Einstieg besteht in der Verwendung des JavaScript SDK, um leistungsstarke Diagramme und Grafiken schnell in Ihre Webanwendung einzubetten. Mit nur wenigen Codezeilen können Sie leistungsstarke Abfragen schreiben. Verwenden Sie diese zum Auffüllen von Liniendiagrammen, Kreisdiagrammen, Balkendiagrammen, Wärmebildern, Datenrastern und mehr. Alle diese Elemente sind bei Verwendung des SDK vorgefertigt und sofort einsatzbereit vorhanden. Das SDK abstrahiert außerdem Time Series Insights-Abfrage-APIs. Sie können sie zum Erstellen von SQL-ähnlichen Prädikaten verwenden, um die Daten abzufragen, die Sie in einem Dashboard anzeigen möchten. Für Hybridpräsentationsebenen-Lösungen bietet Time Series Insights parametrisierte URLs. Diese bieten nahtlose Verbindungspunkte mit dem Time Series Insights Preview-Explorer für tief gehende Einblicke in Ihre Daten.
 
-    * Lesen Sie die Dokumentationen [Time Series Insights JS-Clientbibliothek](tutorial-explore-js-client-lib.md) und [Time Series Insights-Client](https://github.com/Microsoft/tsiclient), um mehr über das JavaScript-SDK zu erfahren.
+    * Lesen Sie die Dokumentationen [Time Series Insights JS-Clientbibliothek](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) und [Time Series Insights-Client](https://github.com/Microsoft/tsiclient), um mehr über das JavaScript-SDK zu erfahren.
 
     * Weitere Informationen zum Freigeben von URLs und zur neuen Benutzeroberfläche finden Sie unter [Visualisieren von Daten im Azure Time Series Insights Preview-Explorer](time-series-insights-update-explorer.md).
 

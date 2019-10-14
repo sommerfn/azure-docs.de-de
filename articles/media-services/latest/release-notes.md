@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801393"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168636"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -36,16 +36,38 @@ Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Service
 
 ## <a name="september-2019"></a>September 2019
 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="live-linear-encoding-of-live-events"></a>Lineare Livecodierung von Liveereignissen
+
 Media Services v3 gibt die Vorschauversion von 24 Stunden x 365 Tagen linearer Livecodierung von Liveereignisssen bekannt.
- 
+
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
+
+Wir kündigen die Einstellung von *Azure Media Indexer* und *Azure Media Indexer 2 Preview* an. Der [Azure Media Indexer](../previous/media-services-index-content.md)-Medienprozessor wird am 1. Oktober 2020 eingestellt. Die [Azure Media Indexer 2 Preview](../previous/media-services-process-content-with-indexer2.md)-Medienprozessoren werden am 1. Januar 2020 eingestellt. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ersetzt diese Legacy-Medienprozessoren.
+
+Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
+
 ## <a name="august-2019"></a>August 2019
 
-### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Südafrika-Regionspaar für Media Services verfügbar 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Südafrika-Regionspaar für Media Services verfügbar 
 
 Media Services ist jetzt in den Regionen „Südafrika, Norden“ und „Südafrika, Westen“ verfügbar.
 
 Weiter Informationen finden Sie unter [Clouds und Regionen, in denen Media Services v3 verfügbar ist](azure-clouds-regions.md).
 
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
+
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an, die am 30. November 2019 eingestellt werden.
+
+Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+ 
 ## <a name="july-2019"></a>Juli 2019
 
 ### <a name="content-protection"></a>Content Protection
@@ -275,4 +297,5 @@ Im Artikel [Azure Media Services-Community](media-services-community.md) finden 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht](media-services-overview.md)
+- [Übersicht](media-services-overview.md)
+- [Versionsanmerkungen zu Media Services v2](../previous/media-services-release-notes.md)

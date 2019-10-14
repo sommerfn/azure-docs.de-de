@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: bb6a975d2a2fc2cc3e65fa8969f8b005be8b1417
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299717"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176659"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -70,7 +70,7 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
 
 #### <a name="step-1-add-modules"></a>Schritt 1: Hinzufügen von Modulen
 
-1. Klicken Sie auf der Registerkarte **Module hinzufügen** im Bereich **Bereitstellungsmodule** auf **AzureSecurityCenterforIoT**. 
+1. Klicken Sie auf der Registerkarte **Module hinzufügen** im Bereich **Bereitstellungsmodule** auf die Option **Konfigurieren** für **AzureSecurityCenterforIoT**. 
    
 1. Ändern Sie den **Namen** in **azureiotsecurity**.
 1. Ändern Sie den **Image-URI** in **mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0**.
@@ -95,10 +95,13 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
 1. Vergewissern Sie sich, dass **Gewünschte Eigenschaften für Modulzwilling festlegen** aktiviert ist, und ändern Sie das Konfigurationsobjekt wie folgt:
       
     ``` json
-    "desired": {
-        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-          } 
-        }
+    { 
+       "properties.desired":{ 
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
+
+          }
+       }
+    }
     ```
 
 1. Klicken Sie auf **Speichern**.
@@ -110,13 +113,25 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
          
     ``` json
     { 
-    "HostConfig":{
-                    "PortBindings":{
-                    "8883/tcp": [{"HostPort": "8883"}],
-                    "443/tcp": [{"HostPort": "443"}],
-                    "5671/tcp": [{"HostPort": "5671"}]
-                    }
-        }
+       "HostConfig":{ 
+          "PortBindings":{ 
+             "8883/tcp":[ 
+                { 
+                   "HostPort":"8883"
+                }
+             ],
+             "443/tcp":[ 
+                { 
+                   "HostPort":"443"
+                }
+             ],
+             "5671/tcp":[ 
+                { 
+                   "HostPort":"5671"
+                }
+             ]
+          }
+       }
     }
     ```
 1. Klicken Sie auf **Speichern**.
@@ -125,16 +140,15 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
 
 #### <a name="step-2-specify-routes"></a>Schritt 2: Angeben von Routen 
 
-1. Stellen Sie auf der Registerkarte **Routen angeben** sicher, dass Sie über eine Route verfügen (explizit oder implizit), mit der Nachrichten vom Modul **azureiotsecurity** an **$upstream** weitergeleitet werden. 
-1. Klicken Sie auf **Weiter**.
+1. Stellen Sie auf der Registerkarte **Routen angeben** sicher, dass Sie über eine Route verfügen (explizit oder implizit), mit der Nachrichten vom Modul **azureiotsecurity** gemäß den folgenden Beispielen an **$upstream** weitergeleitet werden. Klicken Sie erst dann auf **Weiter**. 
 
-    ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream" 
-    ~~~
+~~~Default implicit route
+"route": "FROM /messages/* INTO $upstream" 
+~~~
 
-    ~~~Explicit route
-    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-    ~~~
+~~~Explicit route
+"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+~~~
 
 #### <a name="step-3-review-deployment"></a>Schritt 3: Überprüfen der Bereitstellung
 

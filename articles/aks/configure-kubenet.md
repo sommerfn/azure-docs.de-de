@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615757"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950337"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -38,9 +38,9 @@ Mit *kubenet* erhalten nur die Knoten eine IP-Adresse im Subnetz des virtuellen 
 
 ![Kubenet-Netzwerkmodell mit einem AKS-Cluster](media/use-kubenet/kubenet-overview.png)
 
-Azure unterstützt maximal 400 Routen in einer UDR, also können Sie keinen AKS-Cluster mit mehr als 400 Knoten haben. AKS-Features wie z. B. [virtuelle Knoten][virtual-nodes] oder Netzwerkrichtlinien werden mit *kubenet* nicht unterstützt.
+Azure unterstützt maximal 400 Routen in einer UDR, also können Sie keinen AKS-Cluster mit mehr als 400 Knoten haben. AKS-Features wie z. B. [virtuelle Knoten][virtual-nodes] und Azure-Netzwerkrichtlinien werden mit *kubenet* nicht unterstützt.  Sie können [Calico-Netzwerkrichtlinien][calico-network-policies] verwenden, da diese mit kubenet unterstützt werden.
 
-Mit *Azure CNI* empfängt jeder Pod eine IP-Adresse im IP-Subnetz und kann direkt mit anderen Pods und Diensten kommunizieren. Ihre Cluster können so groß wie der IP-Adressbereich sein, den Sie angeben. Allerdings muss der IP-Adressbereich im Voraus geplant werden, und alle IP-Adressen werden von den AKS-Knoten basierend auf der maximalen Anzahl von Pods genutzt, die sie unterstützen können. Erweiterte Netzwerkfeatures und Szenarien wie z. B. [virtuelle Knoten][virtual-nodes] oder Netzwerkrichtlinien werden mit *Azure CNI* unterstützt.
+Mit *Azure CNI* empfängt jeder Pod eine IP-Adresse im IP-Subnetz und kann direkt mit anderen Pods und Diensten kommunizieren. Ihre Cluster können so groß wie der IP-Adressbereich sein, den Sie angeben. Allerdings muss der IP-Adressbereich im Voraus geplant werden, und alle IP-Adressen werden von den AKS-Knoten basierend auf der maximalen Anzahl von Pods genutzt, die sie unterstützen können. Erweiterte Netzwerkfeatures und -szenarien wie z. B. [virtuelle Knoten][virtual-nodes] oder Netzwerkrichtlinien (entweder Azure oder Calico) werden mit *Azure CNI* unterstützt.
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP-Adressenverfügbarkeit und -auslastung
 
@@ -72,19 +72,16 @@ Verwenden Sie *kubenet* unter folgenden Bedingungen:
 
 - Ihr IP-Adressraum ist beschränkt.
 - Die Podkommunikation findet überwiegend innerhalb des Clusters statt.
-- Erweiterte Features wie virtuelle Knoten oder Netzwerkrichtlinie sind nicht erforderlich.
+- Erweiterte AKS-Features wie virtuelle Knoten oder Azure-Netzwerkrichtlinien sind nicht erforderlich.  Verwenden Sie [Calico-Netzwerkrichtlinien][calico-network-policies].
 
 Verwenden Sie *Azure CNI* unter folgenden Bedingungen:
 
 - Sie haben genügend verfügbaren IP-Adressraum.
 - Podkommunikation findet überwiegend mit außerhalb des Clusters befindlichen Ressourcen statt.
 - Sie möchten die UDRs nicht verwalten.
-- Sie benötigen erweiterte Features wie virtuelle Knoten oder Netzwerkrichtlinie.
+- Erweiterte AKS-Features wie virtuelle Knoten oder Azure-Netzwerkrichtlinien sind erforderlich.  Verwenden Sie [Calico-Netzwerkrichtlinien][calico-network-policies].
 
 Weitere Informationen zur Entscheidung, welches Netzwerkmodell Sie verwenden, finden Sie unter [Vergleich der Netzwerkmodelle und ihres Supportumfang][network-comparisons].
-
-> [!NOTE]
-> Kuberouter ermöglicht das Aktivieren der Netzwerkrichtlinie bei Verwendung von kubenet und kann als Daemonset in einem AKS-Cluster installiert werden. Bedenken Sie dabei, dass Kuberouter sich noch in der Betaphase befindet und von Microsoft kein Support für das Projekt geleistet wird.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Erstellen eines virtuellen Netzwerks und des Subnetzes
 
@@ -172,6 +169,24 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!Note]
+> Wenn Sie einen AKS-Cluster zum Einschließen einer [Calico-Netzwerkrichtlinie][calico-network-policies] ermächtigen möchten, können Sie den folgenden Befehl verwenden.
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --network-plugin kubenet --network-policy calico \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --pod-cidr 10.244.0.0/16 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal <appId> \
+    --client-secret <password>
+```
+
 Wenn Sie einen AKS-Cluster erstellen, werden eine Netzwerksicherheitsgruppe und Routingtabelle erstellt. Diese Netzwerkressourcen werden von der AKS-Steuerungsebene verwaltet. Die Netzwerksicherheitsgruppe wird automatisch den virtuellen NICs auf Ihren Knoten zugeordnet. Die Routingtabelle wird automatisch dem Subnetz des virtuellen Netzwerks zugeordnet. Regeln für Netzwerksicherheitsgruppen und Routingtabellen werden beim Erstellen und Verfügbarmachen von Diensten automatisch aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -182,6 +197,7 @@ Da jetzt ein AKS-Cluster in Ihrem vorhandenen Subnetz des virtuellen Netzwerks b
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy
 
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

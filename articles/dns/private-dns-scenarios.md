@@ -5,19 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 409595febded7b242eae876ebb2cb35ae4999e5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686839"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959325"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones-Szenarien
-Azure DNS Private Zones bieten Namensauflösung in einem virtuellen Netzwerk sowie zwischen virtuellen Netzwerken. In diesem Artikel werden einige allgemeine Szenarien untersucht, die mit diesem Feature realisiert werden können. 
+# <a name="azure-dns-private-zones-scenarios"></a>Private Azure DNS-Zonen: Szenarien
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+Azure DNS Private Zones bieten Namensauflösung in einem virtuellen Netzwerk sowie zwischen virtuellen Netzwerken. In diesem Artikel werden einige allgemeine Szenarien untersucht, die mit diesem Feature realisiert werden können.
 
 ## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>Szenario: Namensauflösung für ein einzelnes virtuelles Netzwerk
 In diesem Szenario haben Sie ein virtuelles Netzwerk in Azure, das eine Reihe von Azure-Ressourcen enthält, wozu auch virtuelle Computer gehören. Sie möchten die Ressourcen aus dem virtuellen Netzwerk über einen bestimmten Domänennamen (DNS-Zone) auflösen, und Sie fordern, dass die Namensauflösung privat und nicht über das Internet zugänglich ist. Außerdem fordern Sie für die virtuellen Computer im virtuellen Netzwerk, dass Azure sie automatisch in der DNS-Zone registriert. 

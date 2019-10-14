@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266364"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937373"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -124,8 +124,9 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 |Regeln für Netzwerksicherheitsgruppen (NSGs) gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden.   | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden.        |
 |Private Endpunkte können nicht in Subnetzen erstellt werden, die für Dienstendpunkte oder spezialisierte Workloads aktiviert sind    |Private Endpunkte können nicht in Subnetzen erstellt werden, die für Dienstendpunkte oder Subnetze aktiviert sind, die an spezialisierte Workloads delegiert wurden|  Erstellen Sie ein separates Subnetz, um die privaten Endpunkte bereitzustellen.        |
 |Der private Endpunkt kann nur dem Private Link-Dienst (im Besitz des Kunden) in derselben Region zugeordnet werden    |   Das Herstellen einer Verbindung mit einem Private Link-Dienst (Ihrem eigenen) aus einer anderen Region wird nicht unterstützt       |  In der Vorschauphase müssen Sie Ihren Private Link-Dienst in derselben Region bereitstellen.        |
+|  Virtuelle Netzwerke mit Peering mit nur privaten Endpunkten werden nicht unterstützt.   |   Das Herstellen einer Verbindung mit privaten Endpunkten in einem virtuellen Netzwerk mit Peering ohne andere Workload wird nicht unterstützt.       | Stellen Sie einen einzelnen virtuellen Computer im virtuellen Netzwerk mit Peering bereit, um die Konnektivität zu ermöglichen. |
 |Spezialisierte Workloads können nicht auf private Endpunkte zugreifen    |   Die folgenden Dienste, die in Ihrem virtuellen Netzwerk bereitgestellt werden, können nicht über private Endpunkte auf Private Link-Ressourcen zugreifen:<br>App Service-Plan</br>Azure Container Instances</br>Azure NetApp Files</br>Dediziertes HSM von Azure<br>       |   Keine Risikominderung in der Vorschauphase.       |
-|  Das Portal unterstützt nicht die Erstellung privater Endpunkte per Alias  |   Das Portal ermöglicht nur das Erstellen privater Endpunkte mithilfe des Ressourcen-URI      | Verwenden Sie den Ressourcen-URI für die Anforderung von Verbindungen mit privaten Endpunkten        |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen eines privaten Endpunkts mit dem Azure-Portal](create-private-endpoint-portal.md)

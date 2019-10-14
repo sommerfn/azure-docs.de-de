@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: e1cf67abcc44a3ca134e5435137869d4fff1a7eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: de8782edcc8b9c64621f1ca67d4bb810c926afaf
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162360"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973383"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -157,7 +157,9 @@ Das Überschreiben der vom Host bereitgestellten Dienste wird derzeit nicht unte
 
 Werte, die in [App-Einstellungen](./functions-how-to-use-azure-function-app-settings.md#settings) definiert sind, sind in einer `IConfiguration`-Instanz verfügbar, die es Ihnen ermöglicht, App-Einstellungswerte in der Startup-Klasse zu lesen.
 
-Sie können Werte aus der `IConfiguration`-Instanz in einen benutzerdefinierten Typ extrahieren. Wenn Sie App-Einstellungswerte in einen benutzerdefinierten Typ kopieren, können Sie Ihre Dienste mühelos testen, indem Sie diese Werte injizierbar gestalten. Beachten Sie die folgende Klasse, die eine Eigenschaft mit dem Namen „consistent“ mit einer App-Einstellung enthält.
+Sie können Werte aus der `IConfiguration`-Instanz in einen benutzerdefinierten Typ extrahieren. Wenn Sie App-Einstellungswerte in einen benutzerdefinierten Typ kopieren, können Sie Ihre Dienste mühelos testen, indem Sie diese Werte injizierbar gestalten. Die in die Konfigurationsinstanz eingelesenen Einstellungen müssen einfache Schlüssel/Wert-Paare sein.
+
+Beachten Sie die folgende Klasse, die eine Eigenschaft mit dem Namen „consistent“ mit einer App-Einstellung enthält.
 
 ```csharp
 public class MyOptions

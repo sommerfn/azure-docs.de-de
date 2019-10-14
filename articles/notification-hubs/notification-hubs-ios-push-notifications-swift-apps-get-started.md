@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211956"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030645"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Tutorial: Senden von Pushbenachrichtigungen an Swift-iOS-Apps, die die Notification Hubs-REST-API verwenden
 
@@ -297,7 +297,7 @@ Im Rahmen dieses Swift-Beispiels verwenden Sie die Open-Source-Bibliothek **Comm
 
 So fügen Sie den Bridgingheader hinzu und konfigurieren ihn
 
-1. Klicken Sie in Xcode auf **File** > **New** > **File** > **Header File** (Datei > Neu > Datei > Headerdatei). Benennen Sie die Headerdatei **BridgingHeader.h**.
+1. Klicken Sie in Xcode auf **File** > **New** > **File** > **Header File** (Datei > Neu > Datei > Headerdatei). Benennen Sie die Headerdatei **BridgingHeader.h**.
 
 1. Bearbeiten Sie die Datei so, dass sie **CommonHMAC.h** importiert:
 
@@ -313,11 +313,11 @@ So fügen Sie den Bridgingheader hinzu und konfigurieren ihn
 
 1. Aktualisieren Sie die **Buildeinstellungen** des Ziels so, dass sie auf den Bridgingheader verweisen:
 
-   1. Öffnen Sie die Registerkarte  **Building Settings**  (Erstellungsinstellungen), und scrollen Sie nach unten zum Abschnitt  **Swift Compiler** .
+   1. Öffnen Sie die Registerkarte **Gebäudeeinstellung**, und scrollen Sie nach unten zum Abschnitt "**Swift-Compiler**.
 
-   1. Stellen Sie sicher, dass die Option  **Install Objective-C Compatibility Header**  (Objective-C-Kompatibilitätsheader) auf  **Ja** festgelegt ist.
+   1. Stellen Sie sicher, dass die Option **Install Objective-C Compatibility Header** (Objective-C-Kompatibilitätsheader installieren) auf **Ja** festgelegt ist.
 
-   1. Geben Sie den Dateipfad `'<ProjectName>/BridgingHeader.h'` für die Option **Objective-C bridging Header** (Objective-C-Bridgingheader) ein. Dabei handelt es sich um den Dateipfad zu unserem Bridgingheader.
+   1. Geben Sie den Dateipfad `'<ProjectName>/BridgingHeader.h'` für die Option **Objective-C bridging Header** (Objective-C-Bridgingheader) ein. Dabei handelt es sich um den Dateipfad zu unserem Bridgingheader.
 
    Wenn Sie diese Optionen nicht finden können, vergewissern Sie sich, dass die Ansicht **All** (Alle) ausgewählt ist und nicht **Basic** (Grundlegend) oder **Customized** (Angepasst).
 

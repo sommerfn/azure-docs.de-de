@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 983cf250f3a7188741c41386aac256bfdb28749b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 512da03e6b473055e3a14d64a9ac0e25b8efca56
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097343"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838912"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-Trigger und -Bindungen in Azure Functions
 
@@ -727,7 +727,7 @@ Schlüssel werden als Teil Ihrer Funktionen-App in Azure gespeichert und sind im
 
 ![Verwalten Sie Funktionsschlüssel im Portal.](./media/functions-bindings-http-webhook/manage-function-keys.png)
 
-Funktionsschlüssel können mithilfe der [Schlüsselverwaltungs-API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) programmgesteuert abgerufen werden.
+Funktionsschlüssel können mithilfe der [Schlüsselverwaltungs-APIs](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) programmgesteuert abgerufen werden.
 
 ### <a name="api-key-authorization"></a>Autorisierung per API-Schlüssel
 
@@ -740,8 +740,7 @@ Der Schlüssel kann in einer Abfragezeichenfolgenvariablen namens `code` (wie ob
 Sie können anonyme Anforderungen zulassen, die keine Schlüssel erfordern. Sie können auch anfordern, dass der Hauptschlüssel verwendet wird. Zum Ändern der Standardautorisierungsstufe verwenden Sie die `authLevel`-Eigenschaft in der Bindungs-JSON. Weitere Informationen finden Sie unter [Trigger: Konfiguration](#trigger---configuration).
 
 > [!NOTE]
-> Beim lokalen Ausführen von Funktionen ist die Autorisierung unabhängig von der festgelegten Authentifizierungsebene deaktiviert. Die `authLevel`-Einstellung in Ihrem Trigger wird nach der Veröffentlichung in Azure angewendet.
-
+> Beim lokalen Ausführen von Funktionen ist die Autorisierung unabhängig von der festgelegten Authentifizierungsebene deaktiviert. Die `authLevel`-Einstellung in Ihrem Trigger wird nach der Veröffentlichung in Azure angewendet. Schlüssel sind auch bei [lokaler Ausführung in einem Container](functions-create-function-linux-custom-image.md#run-the-image-locally) weiterhin erforderlich.
 
 
 ### <a name="secure-an-http-endpoint-in-production"></a>Schützen eines HTTP-Endpunkts in einer Produktionsumgebung

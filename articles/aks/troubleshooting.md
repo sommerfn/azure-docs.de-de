@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932666"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025481"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -105,9 +105,9 @@ Möglicherweise erhalten Sie Fehlermeldungen, die angeben, dass sich Ihr AKS-Clu
 
 **Der AgentPool „Agent-Pool“ hat die Autoskalierung aktiviert, befindet sich aber nicht in einer VM-Skalierungsgruppe.**
 
-Zur Verwendung von Funktionen wie der automatischen Clusterskalierung oder mehrerer Knotenpools müssen AKS-Cluster erstellt werden, die VM-Skalierungsgruppen verwenden. Es werden Fehler zurückgegeben, wenn Sie versuchen Funktionen zu verwenden, die von VM-Skalierungsgruppen abhängig sind, und Sie einen normalen AKS-Cluster ohne VM-Skalierungsgruppen als Ziel verwenden. Die Unterstützung von VM-Skalierungsgruppen befindet sich in AKS derzeit in der Vorschauphase.
+Zur Verwendung von Funktionen wie der automatischen Clusterskalierung oder mehrerer Knotenpools müssen AKS-Cluster erstellt werden, die VM-Skalierungsgruppen verwenden. Es werden Fehler zurückgegeben, wenn Sie versuchen Funktionen zu verwenden, die von VM-Skalierungsgruppen abhängig sind, und Sie einen normalen AKS-Cluster ohne VM-Skalierungsgruppen als Ziel verwenden.
 
-Führen Sie die Schritte unter *Voraussetzungen* im entsprechenden Dokument aus, um sich ordnungsgemäß für die Funktionsvorschau für VM-Skalierungsgruppen zu registrieren und einen AKS-Cluster zu erstellen:
+Führen Sie die Schritte unter *Voraussetzungen* im entsprechenden Dokument aus, um einen AKS-Cluster korrekt zu erstellen:
 
 * [Verwenden der automatischen Clusterskalierung](cluster-autoscaler.md)
 * [Erstellen und Verwenden mehrerer Knotenpools](use-multiple-node-pools.md)

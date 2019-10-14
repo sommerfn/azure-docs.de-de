@@ -1,18 +1,18 @@
 ---
-title: Dynamisches Erstellen eines Datenträgervolumes für mehrere Pods in Azure Kubernetes Service (AKS)
-description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure-Datenträgern für die Verwendung mit mehreren gleichzeitigen Pods in Azure Kubernetes Service (AKS) erstellen.
+title: Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
+description: Erfahren Sie, wie Sie ein persistentes Volume mit Azure-Datenträgern in Azure Kubernetes Service (AKS) dynamisches erstellen.
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 0641d613da86aeffa0c4abb0f82ce93c38283156
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 84c06c0ac45a5005646cf7b4fb1e274d0347593c
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616075"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958506"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 

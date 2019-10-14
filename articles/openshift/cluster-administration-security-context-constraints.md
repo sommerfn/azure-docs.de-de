@@ -1,26 +1,26 @@
 ---
 title: Verwalten von Einschränkungen des Sicherheitskontexts in Azure Red Hat OpenShift | Microsoft-Dokumentation
-description: Administratoren von Azure Red Hat OpenShift-Clustern, die Einschränkungen des Sicherheitskontexts verwalten
+description: Einschränkungen des Sicherheitskontexts für Administratoren von Azure Red Hat OpenShift-Clustern
 services: container-service
 author: troy0820
 ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 8e85ac98683487c6b18be7f502f28cad9a0c2251
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71712841"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168991"
 ---
-# <a name="overview"></a>Übersicht 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Verwalten von Einschränkungen des Sicherheitskontexts in Azure Red Hat OpenShift 
 
-Einschränkungen des Sicherheitskontexts ermöglichen Administratoren, die Berechtigungen für Pods zu steuern. Weitere Informationen zu diesem API-Typ finden Sie in der Dokumentation der Architektur zu [Einschränkungen beim Sicherheitskontext](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) (Security Context Constraints, SCCs). Sie können diese Einschränkungen beim Sicherheitskontext in Ihrer Instanz mithilfe der Befehlszeilenschnittstelle wie normale API-Objekte verwalten.
+Einschränkungen des Sicherheitskontexts (SCCs) ermöglichen Clusteradministratoren, die Berechtigungen für Pods zu steuern. Weitere Informationen zu diesem API-Typ finden Sie in der [Dokumentation der Architektur zu Einschränkungen beim Sicherheitskontext (Security Context Constraints, SCCs)](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). Sie können Einschränkungen beim Sicherheitskontext in Ihrer Instanz mithilfe der Befehlszeilenschnittstelle wie normale API-Objekte verwalten.
 
-## <a name="listing-security-context-constraints"></a>Auflisten von Einschränkungen beim Sicherheitskontext
+## <a name="list-security-context-constraints"></a>Auflisten von Einschränkungen beim Sicherheitskontext
 
-So erstellen Sie eine aktuelle Liste der Einschränkungen beim Sicherheitskontext 
+Verwenden Sie zum Erstellen einer aktuellen Liste der Einschränkungen beim Sicherheitskontext diesen Befehl: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examining-a-security-context-constraints-object"></a>Untersuchen eines Einschränkungsobjekts für den Sicherheitskontext
+## <a name="examine-an-object-for-security-context-constraints"></a>Untersuchen eines Einschränkungsobjekts für den Sicherheitskontext
 
-Verwenden Sie zum Untersuchen einer bestimmten Einschränkung für den Sicherheitskontext `oc get`, `oc describe` oder `oc edit`.  So untersuchen Sie beispielsweise die Einschränkung **restricted** für den Sicherheitskontext
+Verwenden Sie zum Untersuchen einer bestimmten Einschränkung für den Sicherheitskontext `oc get`, `oc describe` oder `oc edit`.  Um beispielsweise die **restricted** Einschränkung für den Sicherheitskontext zu untersuchen, verwenden Sie diesen Befehl:
 ```bash
 $ oc describe scc restricted
 Name:                   restricted
@@ -72,6 +72,5 @@ Settings:
     Ranges:             <none>
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-Konfigurieren der Rolle „osa-customer-admin“:
 > [!div class="nextstepaction"]
-> [Azure Active Directory-Integration für Azure Red Hat OpenShift](howto-aad-app-configuration.md). 
+> [Erstellen eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) 

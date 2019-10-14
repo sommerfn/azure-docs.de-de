@@ -7,19 +7,19 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968239"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973424"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität (Vorschau)
 
 Um auf das Feature für verwaltete Identitäten für Azure Service Fabric-Anwendungen zugreifen zu können, müssen Sie zunächst den Tokendienst für verwaltete Identitäten im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er in Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** neben anderen Systemdiensten angezeigt.
 
 > [!NOTE] 
-> Die Bereitstellung von Service Fabric-Anwendungen mit verwalteten Identitäten wird ab der API-Version `"2019-06-01-preview"` unterstützt. Die gleiche API-Version kann auch für Anwendungstyp, Anwendungstypversion und die Dienstressourcen verwendet werden. Die unterstützte Mindestversion der Service Fabric-Runtime ist 6.5 CU2.
+> Die Bereitstellung von Service Fabric-Anwendungen mit verwalteten Identitäten wird ab der API-Version `"2019-06-01-preview"` unterstützt. Die gleiche API-Version kann auch für Anwendungstyp, Anwendungstypversion und die Dienstressourcen verwendet werden. Die unterstützte Mindestversion der Service Fabric-Runtime ist 6.5 CU2. Zusätzlich sollte die Build-/Paketumgebung auch über das SF .NET SDK der Version Cu2 oder höher verfügen.
 
 ## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität
 
