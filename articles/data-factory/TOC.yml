@@ -410,10 +410,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight-Streamingaktivität
           href: transform-data-using-hadoop-streaming.md
-        - name: ML-Batchausführungsaktivität
+        - name: Machine Learning-Batchausführungsaktivität
           href: transform-data-using-machine-learning.md
-        - name: ML-Ressourcenaktualisierungsaktivität
+        - name: Machine Learning-Ressourcenaktualisierungsaktivität
           href: update-machine-learning-models.md
+        - name: Machine Learning-Pipelineausführungsaktivität
+          href: transform-data-machine-learning-service.md
         - name: Aktivität „Gespeicherte Prozedur“
           href: transform-data-using-stored-procedure.md
         - name: Verknüpfte Computedienste

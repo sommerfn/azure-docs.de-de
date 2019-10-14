@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812722"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170067"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung
 
@@ -118,7 +118,7 @@ Konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure A
 
 1. Führen Sie unter **Administratoranmeldeinformationen** die folgenden Schritte aus:
 
-   a. Geben Sie im Feld **Mandanten-URL** den zuvor abgerufenen Wert **https://concierge.food.ee/scim/v2** ein.
+   a. Geben Sie im Feld **Mandanten-URL** den zuvor abgerufenen Wert **https:\//concierge.food.ee/scim/v2** ein.
 
    b. Geben Sie im Feld **Geheimes Token** den zuvor abgerufenen Wert für **API Token** ein.
    

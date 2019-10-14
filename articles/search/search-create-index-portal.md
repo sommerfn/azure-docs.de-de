@@ -1,25 +1,25 @@
 ---
 title: 'Erstellen eines Azure Search-Indexes im Azure-Portal: Azure Search'
-description: Erfahren Sie, wie Sie einen Index für Azure Search erstellen, indem Sie im Portal integrierte Index-Designer verwenden.
+description: Erfahren Sie, wie Sie einen Index für Azure Search erstellen, indem Sie einen im Portal integrierten Index-Designer verwenden.
 manager: nitinme
 author: heidisteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/16/2019
+ms.date: 10/02/2019
 ms.author: heidist
-ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638809"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937264"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>Erstellen eines Azure Search-Index im Portal
 
-Azure Search enthält einen im Portal integrierten Index-Designer, der für Prototypen oder die Erstellung eines [Suchindexes](search-what-is-an-index.md), der auf Ihrem Azure Search-Dienst gehostet wird, nützlich ist. Das Tool wird für die Schemakonstruktion verwendet. Beim Speichern der Definition wird ein leerer Index vollständig in Azure Search ausgedrückt. Wie Sie darin durchsuchbare Daten eingeben, bleibt Ihnen überlassen.
+Azure Search enthält einen im Portal integrierten Index-Designer, der für Prototypen oder die Erstellung eines [Suchindexes](search-what-is-an-index.md), der auf Ihrem Azure Search-Dienst gehostet wird, nützlich ist. Das Tool wird für die Schemakonstruktion verwendet. Beim Speichern der Definition wird ein leerer Index vollständig in Azure Search ausgedrückt. Wie Sie darin durchsuchbare Inhalte eingeben, bleibt Ihnen überlassen.
 
-Der Index-Designer ist nur einer von mehreren Ansätzen bei der Erstellung eines Indexes. Programmgesteuert können Sie einen Index mit den [.NET](search-create-index-dotnet.md)- oder [REST](search-create-index-rest-api.md)-APIs erstellen.
+Der Index-Designer ist nur einer von mehreren Ansätzen bei der Erstellung eines Indexes. Alternativ können Sie einen Index erstellen und laden, indem Sie den [Datenimport-Assistenten](search-get-started-portal.md) verwenden. Der Assistent funktioniert nur mit Indizes, die er selbst erstellt. Programmgesteuert können Sie einen Index mit den [.NET](search-create-index-dotnet.md)- oder [REST](search-create-index-rest-api.md)-APIs erstellen.
 
 ## <a name="start-index-designer"></a>Starten des Index-Designers
 
@@ -41,15 +41,17 @@ Zur Indexerstellung gehört eine *Feldersammlung*, die durchsuchbare Daten im In
 
 1. Fügen Sie Felder hinzu, um die hochzuladenden Dokumente vollständig anzugeben, und legen Sie jeweils einen [Datentyp](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) fest. Wenn Dokumente beispielsweise aus *Hotel-ID*, *Hotelname*, *Adresse*, *Stadt* und *Region* bestehen, erstellen Sie jeweils ein entsprechendes Feld im Index. Im [Entwurfsleitfaden im Abschnitt weiter unten](#design) finden Sie hilfreiche Informationen zum Festlegen von Attributen.
 
-2. Geben Sie ein Feld *key* vom Typ „Edm.String“ an. Werte für dieses Feld müssen jedes Dokument eindeutig identifizieren. Standardmäßig heißt das Feld *id*. Allerdings können Sie es umbenennen, solange die Zeichenfolge den [Benennungsregeln](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) entspricht. Wenn Ihre Sammlung „fields“ beispielsweise das Element *hotel-id* enthält, können Sie es für Ihren Schlüssel auswählen. Für jeden Azure Search-Index ist ein Schlüsselfeld erforderlich, und es muss eine Zeichenfolge sein.
+1. Wenn eingehende Daten hierarchisch sind, sollte das Schema [komplexe Typen](search-howto-complex-data-types.md) enthalten, um die geschachtelten Strukturen darzustellen. Das integrierte Beispieldataset „Hotels“ veranschaulicht komplexe Typen anhand einer Adresse (enthält mehrere untergeordnete Felder) mit einer 1:1-Beziehung zu den einzelnen Hotels verwenden und einer komplexen Zimmersammlung, wobei jedem Hotel mehrere Zimmer zugeordnet sind. 
 
-3. Legen Sie Attribute für jedes Feld fest. Der Index-Designer schließt alle Attribute aus, die für den Datentyp ungültig sind, aber es wird nicht vorgeschlagen, was einbezogen werden soll. Lesen Sie die Anleitung im nächsten Abschnitt, um sich damit vertraut zu machen, wofür die Attribute bestimmt sind.
+1. Geben Sie ein Feld *key* vom Typ „Edm.String“ an. Für jeden Azure Search-Index ist ein Schlüsselfeld erforderlich, und es muss eine Zeichenfolge sein. Werte für dieses Feld müssen jedes Dokument eindeutig identifizieren. Standardmäßig heißt das Feld *id*. Allerdings können Sie es umbenennen, solange die Zeichenfolge den [Benennungsregeln](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) entspricht. Wenn Ihre Sammlung „fields“ beispielsweise das Element *hotel-id* enthält, können Sie es für Ihren Schlüssel auswählen. 
+
+1. Legen Sie Attribute für jedes Feld fest. Der Index-Designer schließt alle Attribute aus, die für den Datentyp ungültig sind, aber es wird nicht vorgeschlagen, was einbezogen werden soll. Lesen Sie die Anleitung im nächsten Abschnitt, um sich damit vertraut zu machen, wofür die Attribute bestimmt sind.
 
     Die Azure Search-API-Dokumentation enthält Codebeispiele mit einem einfachen *hotels*-Index. Im nachfolgenden Screenshot sehen Sie die Indexdefinition, einschließlich der Analysen für die französische Sprache, die während der Indexdefinition angegeben wurde. Sie können sie zu Übungszwecken im Portal neu erstellen.
 
     ![Hotel-Demoindex](media/search-create-index-portal/field-definitions.png "Hotel-Demoindex")
 
-4. Klicken Sie auf **Erstellen**, wenn Sie fertig sind, um den Index zu speichern und zu erstellen.
+1. Klicken Sie auf **Erstellen**, wenn Sie fertig sind, um den Index zu speichern und zu erstellen.
 
 <a name="design"></a>
 

@@ -177,6 +177,8 @@
       href: how-to-configure-proxy-support.md
     - name: Speichern von Daten im Edge-Bereich
       items:
+        - name: Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
+          href: how-to-access-host-storage-from-module.md
         - name: Azure Blob Storage auf IoT Edge
           href: how-to-store-data-blob.md
         - name: "Bereitstellen von Blob\_Storage-Modulen"

@@ -44,6 +44,8 @@
     - name: Dienstanbieter anzeigen und verwalten
       displayName: 'managed services offer, azure marketplace, publish'
       href: ./how-to/view-manage-service-providers.md
+    - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
+      href: ./how-to/deploy-policy-remediation.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

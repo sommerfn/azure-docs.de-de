@@ -1,18 +1,18 @@
 ---
-title: Index der Azure Lighthouse-Beispiele und -Vorlagen
-description: Index von Beispielen und Vorlagen für Azure Lighthouse
+title: Azure Lighthouse-Beispiele und -Vorlagen
+description: Diese Beispiele und Azure Resource Manager-Vorlagen veranschaulichen, wie Sie das Onboarding von Kunden für die delegierte Azure-Ressourcenverwaltung durchführen und Azure Lighthouse-Szenarien unterstützen.
 author: JnHs
 manager: carmonm
 ms.service: lighthouse
 ms.topic: sample
 ms.date: 07/11/2019
 ms.author: jenhayes
-ms.openlocfilehash: b363fcdb752522db07642e625837e03429244f47
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d888fb0d50bf0336f8fe830c567586e66065871f
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884293"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286136"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse-Beispiele
 

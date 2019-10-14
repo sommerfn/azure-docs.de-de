@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: heidist
-ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327163"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947779"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
@@ -147,6 +147,18 @@ Für die Tarife vom Typ „Storage Optimized“ sollten Sie einen geringeren Abf
 ## <a name="data-limits-cognitive-search"></a>Datengrenzwerte (kognitive Suche)
 
 Für eine [Pipeline für die kognitive Suche](cognitive-search-concept-intro.md), die Aufrufe zur [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Standpunktanalyse](cognitive-search-skill-sentiment.md) und [Sprachenerkennung](cognitive-search-skill-language-detection.md) an eine Textanalyseressource sendet, gelten Datengrenzwerte. Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
+
+## <a name="throttling-limits"></a>Drosselungslimits
+
+Suchabfrage- und Indizierungsanforderungen werden gedrosselt, wenn das System sich der Spitzenkapazität nähert. Die Drosselung verhält sich für verschiedene APIs unterschiedlich. Abfrage-APIs (Suchen/Vorschlagen/AutoVervollständigen) und Indizierungs-APIs drosseln dynamisch basierend auf der Last des Diensts. Index-APIs verfügen über statische Grenzwerte für Anforderungsraten. 
+
+Statische Grenzwerte für Anforderungsraten für Indexvorgänge:
+
++ Indizes auflisten (GET /indexes): 5 pro Sekunde pro Sucheinheit
++ Index abrufen (GET /indexes/myindex): 10 pro Sekunde pro Sucheinheit
++ Index erstellen (POST /indexes): 12 pro Minute pro Sucheinheit
++ Index erstellen oder aktualisieren (PUT /indexes/myindex): 6 pro Sekunde pro Sucheinheit
++ Index löschen (DELETE /indexes/myindex): 12 pro Minute pro Sucheinheit 
 
 ## <a name="api-request-limits"></a>API-Anforderungsgrenzwerte
 * Maximal 16 MB pro Anforderung <sup>1</sup>

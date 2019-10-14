@@ -100,8 +100,10 @@
                   href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
         - name: Failoverclusterinstanz
           items:
-            - name: Konfigurieren
+            - name: Mit direkten Speicherplätzen
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+            - name: Mit Premium-Dateispeicher
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Verweis
   items:
     - name: Azure PowerShell

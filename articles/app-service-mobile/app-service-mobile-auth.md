@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.openlocfilehash: 1d40f1992a5c68872de6e0fa2fc04a1a25abe674
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3c7329638bd8a5d9e466864d780b7784304fa874
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098587"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027494"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Authentifizierung und Autorisierung in Azure App Service für mobile Apps
+
+> [!NOTE]
+> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
+> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 In diesem Artikel wird beschrieben, wie die Authentifizierung und Autorisierung funktioniert, wenn Sie native mobile Apps mit einem App Service-Back-End entwickeln. App Service umfasst eine integrierte Authentifizierung und Autorisierung, und Ihre mobilen Apps können die Anmeldung für Benutzer durchführen, ohne dass in App Service hierfür Code geändert werden muss. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit. 
 
