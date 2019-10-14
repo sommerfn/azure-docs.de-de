@@ -1,18 +1,18 @@
 ---
 title: Verteilte Daten in Azure Database for PostgreSQL – Hyperscale (Citus)
-description: In der Servergruppe verteilte Tabellen und Shards.
+description: Erfahren Sie mehr über verteilte Tabellen, Verweistabellen, lokale Tabellen und Shards in Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998039"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947484"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Verteilte Daten in Azure Database for PostgreSQL – Hyperscale (Citus)
 

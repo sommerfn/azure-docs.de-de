@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: raynew
-ms.openlocfilehash: c54273e0ca8c88a6fe47d5611950acd38f50b4c0
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212803"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937521"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -73,7 +73,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 
 **Feature** | **Details**
 --- | ---
-Speicherkonto | Site Recovery unterstützt jetzt die Verwendung von Speicherkonten mit einer Firewall, die für die Notfallwiederherstellung von Hyper-V zu Azure aktiviert ist.  Sie können firewallfähige Speicherkonten als Zielkonto oder für den Cachespeicher auswählen. Wenn Sie ein firewallfähiges Konto verwenden, stellen Sie sicher, dass Sie die Option zum Zulassen vertrauenswürdiger Microsoft-Dienste aktivieren.
+Speicherkonto | Site Recovery unterstützt jetzt die Verwendung von Speicherkonten mit einer Firewall, die für die Notfallwiederherstellung von Hyper-V zu Azure aktiviert ist.  Sie können firewallfähige Speicherkonten als Zielkonto oder für den Cachespeicher auswählen. Wenn Sie ein firewallfähiges Konto verwenden, stellen Sie sicher, dass Sie die Option zum Zulassen vertrauenswürdiger Microsoft-Dienste aktivieren.<br/><br/> Dies wird für Hyper-V-VMs mit oder ohne System Center VMM unterstützt.
 
 
 ## <a name="updates-august-2019"></a>Updates (August 2019)
