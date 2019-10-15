@@ -9,16 +9,16 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abfdad1db655c102dbfb300434eac952fe2154dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1293bbf6d2966caf7e6e095c1721e29890a57b76
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381899"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025801"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
@@ -28,7 +28,6 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 
 - Die Aktivierung der nahtlosen einmaligen Anmeldung kann in seltenen Fällen bis zu 30 Minuten dauern.
 - Wenn Sie die nahtlose einmalige Anmeldung für Ihren Mandanten deaktivieren und dann erneut aktivieren, steht die Benutzeroberfläche zum einmaligen Anmelden Benutzern erst wieder zur Verfügung, nachdem ihre zwischengespeicherten Kerberos-Tickets, die im Normalfall 10 Stunden gültig sind, abgelaufen sind.
-- Der Microsoft Edge-Browser wird nicht unterstützt.
 - Wenn nahtloses einmaliges Anmelden erfolgreich ausgeführt wurde, hat der Benutzer nicht die Möglichkeit, die Option **Angemeldet bleiben** auszuwählen. Aufgrund dieses Verhaltens funktionieren [Zuordnungsszenarien für SharePoint und OneDrive](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) nicht.
 - Office 365 Win32-Clients (Outlook, Word, Excel etc.) mit Versionen ab 16.0.8730.xxxx werden mit einem nicht interaktiven Fluss unterstützt. Andere Versionen werden nicht unterstützt. In diesen Versionen geben die Benutzer zur Anmeldung ihren Benutzernamen, aber kein Kennwort ein. Bei OneDrive müssen Sie das [OneDrive-Feature zur automatischen Konfiguration](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) aktivieren, um von einer automatischen Anmeldung profitieren zu können.
 - Das nahtlose einmalige Anmelden funktioniert in Firefox nicht im privaten Modus.
@@ -37,7 +36,7 @@ In diesem Artikel finden Sie Informationen zur Problembehandlung bei bekannten P
 - Wenn ein Benutzer in Active Directory einer zu großen Zahl von Gruppen angehört, ist das Kerberos-Ticket des Benutzers wahrscheinlich zu groß für die Verarbeitung. Dies führt dazu, dass das nahtlose einmalige Anmelden nicht erfolgreich ist. Azure AD-HTTPS-Anforderungen können Header mit einer maximalen Größe von 50 KB enthalten. Kerberos-Tickets müssen unter diesem Grenzwert liegen, um andere Azure AD-Artefakte (in der Regel 2-5 KB), z.B. Cookies, aufnehmen zu können. Wir empfehlen Ihnen, die Gruppenmitgliedschaften des Benutzers zu reduzieren und es erneut zu versuchen.
 - Wenn Sie 30 oder mehr Active Directory-Gesamtstrukturen synchronisieren, kann die nahtlose einmalige Anmeldung nicht mit Azure AD Connect aktiviert werden. Zur Problembehebung können Sie die Funktion auf Ihrem Mandanten [manuell aktivieren](#manual-reset-of-the-feature).
 - Wenn Sie die Dienst-URL von Azure AD (https://autologon.microsoftazuread-sso.com) ) nicht der Zone „Lokales Intranet“ hinzufügen, sondern der Zone „Vertrauenswürdige Sites“, *können sich Benutzer nicht anmelden*.
-- Nahtloses einmaliges Anmelden verwendet den Verschlüsselungstyp **RC4_HMAC_MD5** für Kerberos. Wenn die Verwendung des Verschlüsselungstyps **RC4_HMAC_MD5** in Ihren Active Directory-Einstellungen deaktiviert wird, tritt bei nahtlosem SSO ein Fehler auf. Stellen Sie im Gruppenrichtlinienverwaltungs-Editor sicher, dass der Richtlinienwert für **RC4_HMAC_MD5** unter **Computerkonfiguration > Windows-Einstellungen > Sicherheitseinstellungen > Lokale Richtlinien > Sicherheitsoptionen > „Netzwerksicherheit: Für Kerberos zulässige Verschlüsselungstypen konfigurieren“** **aktiviert** ist. Darüber hinaus kann nahtloses einmaliges Anmelden keine anderen Verschlüsselungstypen verwenden. Stellen Sie daher sicher, dass diese **deaktiviert** sind.
+- Das nahtlose einmalige Anmelden unterstützt die Verschlüsselungstypen AES256_HMAC_SHA1, AES128_HMAC_SHA1 und RC4_HMAC_MD5 für Kerberos. Es wird empfohlen, den Verschlüsselungstyp für das Konto „AzureADSSOAcc$“ auf „AES256_HMAC_SHA1“ oder einen der AES-Typen vs. RC4 festzulegen, um die Sicherheit zu erhöhen. Der Verschlüsselungstyp wird im „msDS-SupportedEncryptionTypes“-Attribut des Kontos in Ihrer Active Directory-Instanz gespeichert.  Wenn der Verschlüsselungstyp des Kontos „AzureADSSOAcc$“ auf „RC4_HMAC_MD5“ festgelegt ist und Sie ihn in einen der AES-Verschlüsselungstypen ändern möchten, stellen Sie sicher, dass Sie zuerst einen Rollover für den Kerberos-Entschlüsselungsschlüssel des Kontos „AzureADSSOAcc$“ (wie im [FAQ-Dokument](how-to-connect-sso-faq.md) unter der relevanten Frage erläutert) ausführen, weil andernfalls kein nahtloses einmaliges Anmelden erfolgt.
 
 ## <a name="check-status-of-feature"></a>Überprüfen des Status des Features
 
@@ -121,7 +120,10 @@ Wenn die Problembehandlung nicht hilft, können Sie die Funktion auf Ihrem Manda
 1. Rufen Sie `$creds = Get-Credential` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene Active Directory-Gesamtstruktur ein.
 
    > [!NOTE]
-   > Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
+   >Der Benutzername der Anmeldeinformationen des Domänenadministrators muss im Namensformat für das SAM-Konto („contoso\johndoe“ oder „contoso.com\johndoe“) eingegeben werden. Wir verwenden den Domänenteil des Benutzernamens, um den Domänencontroller des Domänenadministrators mithilfe von DNS zu suchen.
+
+   >[!NOTE]
+   >Das verwendete Domänenadministratorkonto darf kein Mitglied der Gruppe „Geschützte Benutzer“ sein. Andernfalls schlägt der Vorgang fehl.
 
 2. Rufen Sie `Disable-AzureADSSOForest -OnPremCredentials $creds` auf. Mit diesem Befehl wird das Computerkonto `AZUREADSSOACC` vom lokalen Domänencontroller für diese spezifische Active Directory-Gesamtstruktur entfernt.
 3. Wiederholen Sie die vorhergehenden Schritte für Active Directory-Gesamtstruktur, in der Sie die Funktion eingerichtet haben.
@@ -131,7 +133,10 @@ Wenn die Problembehandlung nicht hilft, können Sie die Funktion auf Ihrem Manda
 1. Rufen Sie `Enable-AzureADSSOForest` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene Active Directory-Gesamtstruktur ein.
 
    > [!NOTE]
-   > Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
+   >Der Benutzername der Anmeldeinformationen des Domänenadministrators muss im Namensformat für das SAM-Konto („contoso\johndoe“ oder „contoso.com\johndoe“) eingegeben werden. Wir verwenden den Domänenteil des Benutzernamens, um den Domänencontroller des Domänenadministrators mithilfe von DNS zu suchen.
+
+   >[!NOTE]
+   >Das verwendete Domänenadministratorkonto darf kein Mitglied der Gruppe „Geschützte Benutzer“ sein. Andernfalls schlägt der Vorgang fehl.
 
 2. Wiederholen Sie die vorhergehenden Schritte für Active Directory-Gesamtstruktur, in der Sie die Funktion einrichten möchten.
 

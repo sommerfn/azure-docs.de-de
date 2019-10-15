@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/2/2019
+ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827104"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025831"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -45,6 +45,8 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 
 ## <a name="14250"></a>1.4.25.0
 
+
+
 ### <a name="release-status"></a>Releasestatus
 28.09.2019: Veröffentlicht als automatisches Upgrade für ausgewählte Mandanten. Nicht als Download verfügbar.
 
@@ -56,12 +58,15 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 
 ## <a name="14180"></a>1.4.18.0
 
+>[!WARNING]
+>Wir untersuchen einen Incident, bei dem bei einigen Kunden nach dem Upgraden auf diese Version von Azure AD Connect auf bestehenden in Hybrid-Azure AD eingebundenen Geräten ein Problem auftritt. Wir empfehlen Kunden, die Azure AD Hybrid Join bereitgestellt haben, das Upgrade auf diese Version zu verschieben, bis die Grundursache dieser Probleme vollständig verstanden und behoben wurde. Weitere Informationen werden so bald wie möglich bereitgestellt.
+
 >[!IMPORTANT]
 >Diese Version von Azure AD Connect kann bei einigen Kunden dazu führen, dass einige oder sämtliche ihrer Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten bei der Autorisierung mit bedingtem Zugriff in Azure AD nicht verwendet werden. Weitere Informationen finden Sie unter [Grundlegendes zum Verschwinden eines Azure AD Connect 1.4.xx.x-Geräts](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>Releasestatus
-25.09.2019: Für automatisches Upgrade und zum Download freigegeben.
+25.09.2019: Entfernung aus dem manuellen Download, bis die Untersuchung des Incidents abgeschlossen ist.
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 - Neue Tools zur Problembehandlung helfen bei der Behandlung folgender Szenarien: „Benutzer wird nicht synchronisiert“, „Gruppe wird nicht synchronisiert“ oder „Gruppenmitglied wird nicht synchronisiert“.
@@ -462,16 +467,16 @@ Sie sperren den Zugriff auf das AD DS-Konto durch die Implementierung der folgen
 
 type     | NAME                          | Access               | Gilt für
 ---------|-------------------------------|----------------------|--------------|
-ZULASSEN    | SYSTEM                        | Vollzugriff         | Dieses Objekt  |
-ZULASSEN    | Organisationsadministratoren             | Vollzugriff         | Dieses Objekt  |
-ZULASSEN    | Domänenadministratoren                 | Vollzugriff         | Dieses Objekt  |
-ZULASSEN    | Administratoren                | Vollzugriff         | Dieses Objekt  |
-ZULASSEN    | Domänencontroller des Unternehmens | Inhalt auflisten        | Dieses Objekt  |
-ZULASSEN    | Domänencontroller des Unternehmens | Alle Eigenschaften lesen  | Dieses Objekt  |
-ZULASSEN    | Domänencontroller des Unternehmens | Leseberechtigungen     | Dieses Objekt  |
-ZULASSEN    | Authentifizierte Benutzer           | Inhalt auflisten        | Dieses Objekt  |
-ZULASSEN    | Authentifizierte Benutzer           | Alle Eigenschaften lesen  | Dieses Objekt  |
-ZULASSEN    | Authentifizierte Benutzer           | Leseberechtigungen     | Dieses Objekt  |
+Allow    | SYSTEM                        | Vollzugriff         | Dieses Objekt  |
+Allow    | Organisationsadministratoren             | Vollzugriff         | Dieses Objekt  |
+Allow    | Domänenadministratoren                 | Vollzugriff         | Dieses Objekt  |
+Allow    | Administratoren                | Vollzugriff         | Dieses Objekt  |
+Allow    | Domänencontroller des Unternehmens | Inhalt auflisten        | Dieses Objekt  |
+Allow    | Domänencontroller des Unternehmens | Alle Eigenschaften lesen  | Dieses Objekt  |
+Allow    | Domänencontroller des Unternehmens | Leseberechtigungen     | Dieses Objekt  |
+Allow    | Authentifizierte Benutzer           | Inhalt auflisten        | Dieses Objekt  |
+Allow    | Authentifizierte Benutzer           | Alle Eigenschaften lesen  | Dieses Objekt  |
+Allow    | Authentifizierte Benutzer           | Leseberechtigungen     | Dieses Objekt  |
 
 Um die Einstellungen für das AD DS-Konto zu stärken, können Sie [dieses PowerShell-Skript](https://gallery.technet.microsoft.com/Prepare-Active-Directory-ef20d978) ausführen. Das PowerShell-Skript weist dem AD DS-Konto die oben genannten Berechtigungen zu.
 

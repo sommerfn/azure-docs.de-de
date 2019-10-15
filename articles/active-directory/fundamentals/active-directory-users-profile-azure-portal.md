@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c416d7279dd558b8a793064e295b7654925b1c8
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561777"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034892"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory
 Lernen Sie, wie Sie Benutzerprofilinformationen, z.B. ein Profilbild oder Angaben zur Beschäftigung, und einige Einstellungen mit Azure Active Directory (Azure AD) hinzufügen. Weitere Informationen zum Hinzufügen neuer Benutzer finden Sie unter [Hinzufügen oder Löschen von Benutzern in Azure Active Directory](add-users-azure-active-directory.md).
@@ -46,7 +46,7 @@ Wie Sie sehen werden, lassen sich in Benutzerprofilen mehr Informationen angeben
 
     - **Einstellungen:** Legen Sie fest, ob sich der Benutzer bei einem Azure Active Directory-Mandanten anmelden kann. Sie können auch den globalen Standort des Benutzers angeben.
 
-    - **Kontaktinformationen:** Fügen Sie alle wichtigen Kontaktinformationen für den Benutzer hinzu. Dazu gehören beispielsweise seine Adresse oder die Mobiltelefonnummer.
+    - **Kontaktinformationen:** Fügen Sie alle relevanten Kontaktinformationen für den Benutzer hinzu, außer der Telefonnummer oder Mobiltelefonnummer eines Benutzers (nur ein globaler Administrator kann die Informationen für Benutzer in Administratorrollen aktualisieren).
 
     - **Kontaktinformationen zur Authentifizierung:** Überprüfen Sie diese Informationen, um sicherzustellen, dass für den Benutzer eine aktive Telefonnummer und E-Mail-Adresse hinterlegt sind. Azure Active Directory verwendet diese Informationen, um den Benutzer beim Anmelden zu authentifizieren. Die Kontaktinformationen für die Authentifizierung können nur von einem globalen Administrator aktualisiert werden.
 

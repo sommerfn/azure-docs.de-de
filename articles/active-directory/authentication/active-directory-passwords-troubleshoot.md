@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30fd1ebf8a59c80764335be47c986ea77f5d1438
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c4f236f2f2fdbf2736f87f754f48387f9f41850d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879172"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024638"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -173,6 +173,9 @@ Für Azure AD Connect, Version 1.1.443.0 und höher, benötigen Sie ausgehenden 
 Mehr Granularität bietet die aktualisierte Liste der [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653), die jeden Mittwoch aktualisiert wird und jeweils am darauffolgenden Montag in Kraft tritt.
 
 Weitere Informationen finden Sie im Artikel [Voraussetzungen für Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md) unter „Konnektivität“.
+
+> [!NOTE]
+> SSPR kann auch fehlschlagen, wenn für das Konto in der lokalen AD DS-Instanz die Einstellungen „Kennwort läuft nie ab“ oder „Benutzer kann Kennwort nicht ändern“ konfiguriert sind. 
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Neustarten des Azure AD Connect-Synchronisierungsdiensts
 

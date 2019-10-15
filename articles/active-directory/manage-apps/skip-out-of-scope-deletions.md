@@ -1,6 +1,6 @@
 ---
 title: Überspringen des Löschens von Benutzern außerhalb des gültigen Bereichs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie das Standardverhalten zum Löschen von Benutzern außerhalb des gültigen Bereichs außer Kraft setzen.
+description: Erfahren Sie, wie Sie das Standardverhalten beim Aufheben der Bereitstellung von Benutzern außerhalb des gültigen Bereichs außer Kraft setzen.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 10/03/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a753d8cce3f3b610abab2f78d54d76a05d8bc5cb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70816019"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958632"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs
 
-Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsmodul gelöscht oder deaktiviert. In bestimmten Szenarien (z. B. bei der eingehenden Benutzerbereitstellung von Workday in AD) ist dieses Verhalten jedoch möglicherweise nicht das erwartete Verhalten, sodass Sie dieses Standardverhalten außer Kraft setzen möchten.  
+Standardmäßig werden Benutzer, die sich außerhalb des gültigen Bereichs befinden, vom Azure AD-Bereitstellungsmodul vorläufig gelöscht oder deaktiviert. In bestimmten Szenarien (z. B. bei der eingehenden Benutzerbereitstellung von Workday in AD) ist dieses Verhalten jedoch möglicherweise nicht das erwartete Verhalten, sodass Sie dieses Standardverhalten außer Kraft setzen möchten.  
 
 In diesem Leitfaden wird beschrieben, wie Sie die Microsoft Graph-API und den Microsoft Graph-Tester verwenden, um das Flag ***SkipOutOfScopeDeletions*** festzulegen, das die Verarbeitung von Konten steuert, die sich außerhalb des gültigen Bereichs befinden. 
 * Wenn ***SkipOutOfScopeDeletions*** auf „0“ (false) festgelegt ist, werden Konten, die sich außerhalb des gültigen Bereichs befinden, im Ziel deaktiviert.
@@ -53,7 +53,7 @@ Da diese Konfiguration häufig bei der App für die *Benutzerbereitstellung von 
 Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetzen Sie [servicePrincipalId] durch die in [Schritt 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) extrahierte **ServicePrincipalId**.
 
 ```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
+   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
    ![GET-Auftragsabfrage](./media/skip-out-of-scope-deletions/skip-03.png)

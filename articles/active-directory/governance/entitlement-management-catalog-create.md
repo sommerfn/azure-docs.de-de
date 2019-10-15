@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten eines Katalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
+title: Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
 description: Erfahren Sie, wie Sie einen neuen Container für Ressourcen und Zugriffspakete in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) erstellen.
 services: active-directory
 documentationCenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1654e0a8cd11ac1c7a2f4ef0667d0e99187c2374
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618311"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169933"
 ---
-# <a name="create-and-manage-a-catalog-in-azure-ad-entitlement-management-preview"></a>Erstellen und Verwalten eines Katalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
 > [!IMPORTANT]
 > Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
@@ -36,9 +36,7 @@ Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen 
 
 **Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogersteller
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-1. Klicken Sie auf **Azure Active Directory**, und klicken Sie dann auf **Identity Governance**.
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
 
 1. Klicken Sie im linken Menü auf **Kataloge**.
 
@@ -72,11 +70,13 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 
 1. Klicken Sie auf **Ressourcen hinzufügen**.
 
-1. Klicken Sie auf einen Ressourcentyp: **Gruppen**, **Anwendungen** oder **SharePoint-Websites**.
+1. Klicken Sie auf einen Ressourcentyp: **Gruppen und Teams**, **Anwendungen** oder **SharePoint-Websites**.
 
     Wenn Sie eine Ressource, die Sie hinzufügen möchten, nicht sehen, oder wenn Sie eine Ressource nicht hinzufügen können, stellen Sie sicher, dass Sie die erforderliche Azure AD-Verzeichnisrolle und -Berechtigungsverwaltungsrolle haben. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
 1. Wählen Sie eine oder mehrere Ressourcen des Typs aus, die Sie dem Katalog hinzufügen möchten.
+
+    ![Hinzufügen von Ressourcen zu einem Katalog](./media/entitlement-management-catalog-create/catalog-add-resources.png)
 
 1. Klicken Sie abschließend auf **Hinzufügen**.
 
@@ -97,6 +97,26 @@ Sie können Ressourcen aus einem Katalog entfernen. Eine Ressource kann nur aus 
 1. Wählen Sie die Ressourcen aus, die Sie entfernen möchten.
 
 1. Klicken Sie auf **Entfernen**. Oder klicken Sie auf die Auslassungspunkte ( **...** ), und klicken Sie dann auf **Ressource entfernen**.
+
+## <a name="add-additional-catalog-owners"></a>Hinzufügen weiterer Katalogbesitzer
+
+Der Benutzer, der einen Katalog erstellt hat, ist der erste Katalogbesitzer. Wenn Sie die Verwaltung eines Katalogs delegieren möchten, fügen Sie der Rolle „Katalogbesitzer“ Benutzer hinzu. Dadurch können die Aufgaben der Katalogverwaltung gemeinsam wahrgenommen werden. 
+
+Führen Sie die folgenden Schritte aus, um einem Benutzer die Rolle „Katalogbesitzer“ zuzuweisen:
+
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
+
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
+
+1. Klicken Sie im linken Menü auf **Kataloge**, und öffnen Sie dann den Katalog, dem Sie Administratoren hinzufügen möchten.
+
+1. Klicken Sie im linken Menü auf **Rollen und Administratoren**.
+
+    ![Katalogrollen und -administratoren](./media/entitlement-management-shared/catalog-roles-administrators.png)
+
+1. Klicken Sie auf **Besitzer hinzufügen**, um die Mitglieder für diese Rollen auszuwählen.
+
+1. Klicken Sie auf **Auswählen**, um diese Mitglieder hinzuzufügen.
 
 ## <a name="edit-a-catalog"></a>Bearbeiten eines Katalogs
 
@@ -130,5 +150,4 @@ Sie können einen Katalog nur löschen, wenn er keine Zugriffspakete enthält.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen eines Katalogerstellers](entitlement-management-delegate.md#add-a-catalog-creator)
-- [Erstellen und Verwalten eines Zugriffspakets](entitlement-management-access-package-create.md)
+- [Delegieren der Zugriffskontrolle an Zugriffspaket-Manager](entitlement-management-delegate-managers.md)

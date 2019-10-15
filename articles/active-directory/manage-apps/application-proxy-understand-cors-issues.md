@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 265458066a528246cbfa7876bf61b02a0382581b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499605"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025790"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Verstehen und Beheben von CORS-Problemen für den Azure Active Directory-Anwendungsproxy
 
@@ -52,7 +52,7 @@ Das Auswählen der Schaltfläche **Try It** im folgenden Screenshot hat eine COR
 
 ## <a name="cors-challenges-with-application-proxy"></a>CORS-Herausforderungen im Zusammenhang mit dem Anwendungsproxy
 
-Das folgende Beispiel zeigt ein typisches Szenario mit Azure AD-Anwendungsproxy und CORS. Der interne Server hostet einen Web-API-Controller (**CORSWebService**) sowie einen CORS-Webclient (**CORSWebClient**), der  **CORSWebService** aufruft. **CORSWebClient** richtet eine AJAX-Anforderung an **CORSWebService**.
+Das folgende Beispiel zeigt ein typisches Szenario mit Azure AD-Anwendungsproxy und CORS. Der interne Server hostet einen Web-API-Controller (**CORSWebService**) sowie einen CORS-Webclient (**CORSWebClient**), der **CORSWebService** aufruft. **CORSWebClient** richtet eine AJAX-Anforderung an **CORSWebService**.
 
 ![Lokale Anforderung mit gleichem Ursprung](./media/application-proxy-understand-cors-issues/image1.png)
 

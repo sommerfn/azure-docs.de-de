@@ -10,40 +10,37 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/20/2019
+ms.date: 10/7/2019
 ms.author: raiye
-ms.openlocfilehash: 6168e877022eccd9cbe818c20e81266cc3ea1f69
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 736cb30942646788ee6f365f67244d27f1aa0316
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169367"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035179"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
 ## <a name="september-2019-guest-os"></a>Gastbetriebssystem für September 2019
 
->[!NOTE]
->Das Gastbetriebssystem für September wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für September enthalten. Änderungen der Liste vorbehalten.
-
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Release 19-09   |  [4516046]  |  Internet Explorer   |  2.90, 3.77, 4.70  |  10. September 2019  |
-|  Release 19-09   |  [4516115]  |  Blinken   |  2.90, 3.77, 4.70, 5.35, 6.11  |  10. September 2019  |
-|  Release 19-09   |  [4512578]  |  Letztes kumulatives Update   |  6.11  |  10. September 2019  |
-|  Release 19-09   |  [4514366]  |  .NET Framework 3.5 und 4.7.2   |  6.11  |  10. September 2019  |
-|  Release 19-09   |  [4516044]  |  Letztes kumulatives Update   |  5.35  |  10. September 2019  |
-|  Release 19-09   |  [4516064]  |  Windows-Sicherheit   |  4,7  |  10. September 2019  |
-|  Release 19-09   |  [4514350]  |  .NET Framework 3.5   |  4,7  |  10. September 2019  |
-|  Release 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  4,7  |  10. September 2019  |
-|  Release 19-09   |  [4516062]  |  Windows-Sicherheit   |  3.77  |  10. September 2019  |
-|  Release 19-09   |  [4514349]  |  .NET Framework 3.5   |  3.77  |  10. September 2019  |
-|  Release 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  3.77  |  10. September 2019  |
-|  Release 19-09   |  [4516033]  |  Windows-Sicherheit   |  2,9  |  12. September 2019  |
-|  Release 19-09   |  [4512488]  |  Nicht sicherheitsrelevant   |  4,7  |  13. Aug 2019  |
-|  Release 19-09   |  [4512518]  |  Nicht sicherheitsrelevant   |  3.77  |  13. Aug 2019  |
-|  Release 19-09   |  [4512506]  |  Nicht sicherheitsrelevant   |  2,9  |  13. Aug 2019  |
+|  Release 19-09   |  [4516046]  |  Internet Explorer   |  [2.90], [3.77], [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4516115]  |  Blinken   |  [2.90], [3.77], [4.70], [5.35], [6.11]  |  10. September 2019  |
+|  Release 19-09   |  [4512578]  |  Letztes kumulatives Update   |  [6.11]  |  10. September 2019  |
+|  Release 19-09   |  [4514366]  |  .NET Framework 3.5 und 4.7.2   |  [6.11]  |  10. September 2019  |
+|  Release 19-09   |  [4516044]  |  Letztes kumulatives Update   |  [5.35]  |  10. September 2019  |
+|  Release 19-09   |  [4516064]  |  Windows-Sicherheit   |  [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4514350]  |  .NET Framework 3.5   |  [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  [4.70]  |  10. September 2019  |
+|  Release 19-09   |  [4516062]  |  Windows-Sicherheit   |  [3.77]  |  10. September 2019  |
+|  Release 19-09   |  [4514349]  |  .NET Framework 3.5   |  [3.77]  |  10. September 2019  |
+|  Release 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  [3.77]  |  10. September 2019  |
+|  Release 19-09   |  [4516033]  |  Windows-Sicherheit   |  [2.90]  |  12. September 2019  |
+|  Release 19-09   |  [4512488]  |  Nicht sicherheitsrelevant   |  [4.70]  |  13. Aug 2019  |
+|  Release 19-09   |  [4512518]  |  Nicht sicherheitsrelevant   |  [3.77]  |  13. Aug 2019  |
+|  Release 19-09   |  [4512506]  |  Nicht sicherheitsrelevant   |  [2.90]  |  13. Aug 2019  |
 
 [4516046]: https://support.microsoft.com/kb/4516046
 [4516115]: https://support.microsoft.com/kb/4516115
@@ -60,6 +57,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
+[6.11]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5.35]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4.70]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3.77]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2.90]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>Gastbetriebssystem für August 2019

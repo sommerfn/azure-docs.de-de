@@ -16,12 +16,12 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326375"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170021"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Bearbeiten und Verwalten eines vorhandenen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -309,7 +309,7 @@ Die meisten Benutzer in Ihrem Verzeichnis können sich beim Portal „Mein Zugri
 
 Es ist wichtig, dass Sie den gesamten Link zum Portal „Mein Zugriff“ kopieren, wenn Sie ihn an einen internen Geschäftspartner senden. Dies stellt sicher, dass der Partner Zugriff auf das Portal Ihres Verzeichnisses erhält, um seine Anfrage zu stellen. 
 
-Der Link beginnt mit "myaccess", beinhaltet einen Verzeichnishinweis und endet mit einer Zugriffspaket-ID. Stellen Sie sicher, dass der Link alle folgenden Punkte enthält:
+Der Link beginnt mit „myaccess“, enthält einen Verzeichnishinweis und endet mit einer Zugriffspaket-ID. Stellen Sie sicher, dass der Link alle folgenden Punkte enthält:
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -367,5 +367,4 @@ In der Azure AD-Berechtigungsverwaltung werden Massenänderungen an Zuweisungen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen eines Katalogbesitzers oder Zugriffspaket-Managers](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Anforderungsprozess und E-Mail-Benachrichtigungen](entitlement-management-process.md)

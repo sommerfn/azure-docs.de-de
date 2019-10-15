@@ -1,6 +1,6 @@
 ---
 title: Blockieren der Legacyauthentifizierung bei Azure Active Directory (Azure AD) mit bedingtem Zugriff | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie durch Blockieren der älteren Authentifizierung mithilfe des bedingten Zugriffs von Azure AD Ihren Sicherheitsstatus verbessern.
+description: Erfahren Sie, wie Sie durch Blockieren der Legacyauthentifizierung mithilfe des bedingten Azure AD-Zugriffs Ihren Sicherheitsstatus verbessern.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d227b4cf7090cdc3177c7045d6137f30a13f71b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f4e4dc33d670c5f6c5ebefa21ccf1a1ff941e913
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931951"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024578"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -28,8 +28,8 @@ Wenn Ihre Umgebung für das Blockieren der Legacyauthentifizierung bereit ist, u
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind: 
 
-- Mit den [grundlegenden Konzepten](overview.md) des bedingten Azure AD-Zugriffs 
-- Mit den [Best Practices](best-practices.md) für das Konfigurieren von Richtlinien für bedingten Zugriff im Azure-Portal
+- Den [grundlegenden Konzepten](overview.md) des bedingten Azure AD-Zugriffs 
+- Den [Best Practices](best-practices.md) für das Konfigurieren von Richtlinien für bedingten Zugriff im Azure-Portal
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -58,7 +58,7 @@ Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, m
 
 Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
 
-Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Implementieren Sie für Benutzer, die nicht in diesen Protokollen enthalten sind und nachweislich keine Legacyauthentifizierung verwenden, eine Richtlinie für bedingten Zugriff, die nur für diese Benutzer ist.
+Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Implementieren Sie für Benutzer, die in diesen Protokollen nicht aufgeführt sind und nachweislich keine Legacyauthentifizierung verwenden, eine Richtlinie für bedingten Zugriff, die nur für diese Benutzer vorgesehen ist.
 
 ### <a name="block-legacy-authentication"></a>Blockieren älterer Authentifizierungsmethoden 
 
@@ -101,15 +101,15 @@ Weitere Informationen finden Sie unter [Wie stellen Sie eine neue Richtlinie ber
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
-Das Blockieren des Zugriffs mittels **Andere Clients** blockiert auch Exchange Online-PowerShell mit einfacher Authentifizierung.
+Das Blockieren des Zugriffs mithilfe der Bedingung **Andere Clients** blockiert auch Exchange Online PowerShell und Dynamics 365 mit Standardauthentifizierung.
 
 Durch das Konfigurieren einer Richtlinie für **Andere Clients** wird die gesamte Organisation für bestimmte Clients blockiert, z.B. SPConnect. Dies tritt ein, weil sich ältere Clients auf unerwartete Weise authentifizieren. Dieses Problem gilt nicht für Office-Hauptanwendungen wie ältere Office-Clients.
 
 Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird.
 
-Sie können alle verfügbaren Gewährungssteuerelemente für die Bedingung **„Andere Clients“** auswählen. Die Endbenutzererfahrung ist jedoch immer die gleiche: Der Zugriff ist blockiert.
+Sie können alle verfügbaren Gewährungssteuerelemente für die Bedingung **Andere Clients** auswählen. Die Endbenutzererfahrung ist jedoch immer die gleiche: Der Zugriff ist blockiert.
 
-Wenn Sie die ältere Authentifizierung mit der Bedingung **„Andere Clients“** blockieren, können Sie auch Geräteplattform und Speicherort als Bedingung festlegen. Wenn Sie nur ältere Authentifizierungen für mobile Geräte blockieren möchten, legen Sie z.B. die Bedingung **Geräteplattformen** fest, indem Sie Folgendes auswählen:
+Wenn Sie die Legacyauthentifizierung mit der Bedingung **Andere Clients** blockieren, können Sie auch die Geräteplattform und den Speicherort als Bedingung festlegen. Wenn Sie nur ältere Authentifizierungen für mobile Geräte blockieren möchten, legen Sie z.B. die Bedingung **Geräteplattformen** fest, indem Sie Folgendes auswählen:
 
 - Android
 - iOS

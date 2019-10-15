@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8d36b513b6835088b5120072906667cd30af505d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126528"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025743"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – FAQ
 
@@ -41,6 +41,6 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Wie kann ich Benutzer in „Benutzer mit Risikokennzeichnung“ sortieren?
 
-**A:** Laden Sie den Bericht zu Benutzern mit Risikokennzeichnung herunter, indem Sie auf der Seite **Benutzer mit Risikokennzeichnung** auf **Download** klicken. Sie können dann die heruntergeladenen Daten basierend auf den verfügbaren Feldern sortieren, z.B. anhand des Zeitpunkts der letzten Aktualisierung (UTC).
+**A:** Laden Sie den Bericht „Benutzer mit Risikomarkierung“ herunter, indem Sie oben auf der Seite **Benutzer mit Risikomarkierung** auf **Herunterladen** klicken. Sie können dann die heruntergeladenen Daten basierend auf den verfügbaren Feldern sortieren, z.B. anhand des Zeitpunkts der letzten Aktualisierung (UTC).
 
 ---

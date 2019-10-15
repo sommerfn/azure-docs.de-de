@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290883"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169821"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -40,7 +40,7 @@ Als Erstes müssen Sie sich beim Portal „Mein Zugriff“ anmelden. Dort könne
 
 **Erforderliche Rolle:** Anforderer
 
-1. Suchen Sie nach einer E-Mail oder Nachricht des Projektmanagers oder Geschäftsleiters, mit dem Sie arbeiten. Die E-Mail sollte einen Link zu dem Zugriffspaket enthalten, auf das Sie Zugriff benötigen. Der Link beginnt mit "myaccess", enthält einen Verzeichnishinweis und endet mit einer Zugriffspaket-ID ähnlich der folgenden:
+1. Suchen Sie nach einer E-Mail oder Nachricht des Projektmanagers oder Geschäftsleiters, mit dem Sie arbeiten. Die E-Mail sollte einen Link zu dem Zugriffspaket enthalten, auf das Sie Zugriff benötigen. Der Link beginnt mit „myaccess“, enthält einen Verzeichnishinweis und endet mit einer Zugriffspaket-ID ähnlich der folgenden:
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
