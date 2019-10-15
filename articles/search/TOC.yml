@@ -169,7 +169,7 @@
           href: search-howto-complex-data-types.md
         - name: Modellieren von relationalen Daten
           href: index-sql-relational-data.md
-    - name: Laden von Daten
+    - name: Indizieren beliebiger Daten
       items:
         - name: Übersicht über den Datenimport
           href: search-what-is-data-import.md
@@ -181,7 +181,21 @@
           href: search-howto-large-index.md
         - name: Verarbeiten gleichzeitiger Aktualisierungen
           href: search-howto-concurrency.md
-    - name: Laden von Daten mit Indexern
+    - name: Indizieren von Azure-Blobdaten
+      items:
+        - name: Verwenden von KI mit Blobdaten
+          href: search-blob-ai-integration.md
+        - name: Hinzufügen der Volltextsuche
+          href: search-blob-storage-integration.md
+        - name: Einrichten eines Blobindexers
+          href: search-howto-indexing-azure-blob-storage.md
+        - name: 'Indizieren von 1:n-Blobs'
+          href: search-howto-index-one-to-many-blobs.md
+        - name: Indizieren von CSV-Blobs
+          href: search-howto-index-csv-blobs.md
+        - name: Indizieren von JSON-Blobs
+          href: search-howto-index-json-blobs.md
+    - name: Indizieren mit Indexern
       items:
         - name: Übersicht über Indexer
           href: search-indexer-overview.md
@@ -191,16 +205,6 @@
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
         - name: Azure Cosmos DB-Indexer
           href: search-howto-index-cosmosdb.md
-        - name: Azure Blob Storage-Indexer
-          items:
-            - name: Einrichten eines Blobindexers
-              href: search-howto-indexing-azure-blob-storage.md
-            - name: 'Indizieren von 1:n-Blobs'
-              href: search-howto-index-one-to-many-blobs.md
-            - name: Indizieren von CSV-Blobs
-              href: search-howto-index-csv-blobs.md
-            - name: Indizieren von JSON-Blobs
-              href: search-howto-index-json-blobs.md
         - name: Zeitplanindexer
           href: search-howto-schedule-indexers.md
         - name: Zuordnen von Feldern
