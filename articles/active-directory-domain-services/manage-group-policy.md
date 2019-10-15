@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612713"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958545"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer durch Azure AD Domain Services verwalteten Domäne
 
@@ -38,6 +38,9 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Eine Windows Server-Verwaltungs-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
     * Führen Sie bei Bedarf die [Schritte im Tutorial zum Erstellen einer Windows Server-VM und Einbinden der VM in eine verwaltete Domäne][create-join-windows-vm] aus.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
+
+> [!NOTE]
+> Da [kein Zugriff auf Domänencontroller in Azure AD DS vorhanden ist](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), können Sie keinen zentralen Speicher für administrative Vorlagen für Gruppenrichtlinien in einer verwalteten Domäne erstellen und verwenden. [Sysvol ist in der lokalen Azure AD Connect-Synchronisierung nicht enthalten](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), daher können Sie auch keinen lokalen zentralen Speicher erstellen und mit Azure AD DS über Azure AD synchronisieren.
 
 ## <a name="install-group-policy-management-tools"></a>Installieren der Gruppenrichtlinien-Verwaltungstools
 

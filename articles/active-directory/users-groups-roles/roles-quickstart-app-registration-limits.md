@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f883741577de22f66cd7a9bfaf733aa3c59b879b
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707471"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026282"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Schnellstart: Erteilen einer Berechtigung zum Erstellen unbegrenzter App-Registrierungen
 
@@ -33,7 +33,7 @@ Die am wenigsten privilegierte Rolle zum Erstellen und Zuweisen benutzerdefinier
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Erstellen einer neuen benutzerdefinierten Rolle über das Azure AD-Portal
 
 1. Melden Sie sich beim  [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
-1. Wählen Sie  **Azure Active Directory** > **Rollen und Administratoren** und anschließend  **Neue benutzerdefinierte Rolle** aus.
+1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** > **Neue benutzerdefinierte Rolle** aus.
 
     ![Erstellen oder Bearbeiten von Rollen auf der Seite „Rollen und Administratoren“](./media/roles-create-custom/new-custom-role.png)
 
@@ -50,7 +50,7 @@ Die am wenigsten privilegierte Rolle zum Erstellen und Zuweisen benutzerdefinier
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>Zuweisen der Rolle zu einem Benutzer über das Azure AD-Portal
 
 1. Melden Sie sich beim  [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in Ihrer Azure AD-Organisation an.
-1. Wählen Sie  **Azure Active Directory** > **Rollen und Administratoren** aus.
+1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** aus.
 1. Wählen Sie die Rolle „Application Registration Creator“ (Anwendungsregistrierungsersteller) und anschließend **Zuweisung hinzufügen** aus.
 1. Wählen Sie den gewünschten Benutzer aus, und klicken Sie auf **Auswählen**, um ihn der Rolle hinzuzufügen.
 

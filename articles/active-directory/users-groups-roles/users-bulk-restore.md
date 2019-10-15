@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f53ade09c5e2e7db0499122526a1de482af9378f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901350"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174245"
 ---
 # <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Massenwiederherstellung gelöschter Benutzer (Vorschau) in Azure Active Directory
 
@@ -26,18 +26,22 @@ Azure Active Directory (Azure AD) unterstützt Vorgänge der Massenerstellung un
 
 ## <a name="to-bulk-restore-users"></a>So stellen Sie Benutzer in einem Massenvorgang wieder her
 
-1. [Melden Sie sich bei ihrer Azure AD-Organisation](https://aad.portal.azure.com) mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
+1. [Melden Sie sich bei ihrer Azure AD-Organisation](https://aad.portal.azure.com) mit einem Konto an, das über Benutzeradministratorberechtigungen in der Azure AD-Organisation verfügt.
 1. Wählen Sie in Azure AD **Benutzer** > **Gelöscht** aus.
 1. Wählen Sie auf der Seite **Gelöschte Benutzer** die Option **Massenwiederherstellung** aus, um eine gültige CSV-Datei mit den Eigenschaften der wiederherzustellenden Benutzer hochzuladen.
 
    ![Auf der Seite „Gelöschte Benutzer“ den Benutzer „Massenwiederherstellung“ auswählen](./media/users-bulk-restore/bulk-restore.png)
 
-1. Wenn Sie die Bearbeitung der CSV-Datei abgeschlossen haben oder eine Ihrer eigenen Dateien hochladen möchten, wählen Sie die Datei unter **Ihre CSV-Datei hochladen** zur Überprüfung aus.
+1. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie wiederherstellen möchten. Der einzige erforderliche Wert ist **ObjectID**. Speichern Sie dann die Datei.
 
    ![Wählen Sie eine lokale CSV-Datei aus, in der Sie die Benutzer auflisten, die Sie hinzufügen möchten.](./media/users-bulk-restore/upload-button.png)
 
-1. Wenn der Dateiinhalt überprüft wird, korrigieren Sie die Dateiinformationen, und senden Sie die Datei erneut, falls Fehler auftreten. Durch das Senden einer gültigen Datei wird der Auftrag zum Hochladen von Daten automatisch gestartet.
-1. Nachdem die CSV-Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Batchauftrag zum Wiederherstellen der Benutzer zu starten. Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite „Ergebnisse von Massenvorgängen“ herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
+1. Navigieren Sie auf der Seite **Massenwiederherstellung von Benutzern (Vorschau)** unter **CSV-Datei hochladen** zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
+1. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
+1. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Wiederherstellen der Benutzer zu starten.
+1. Nach Abschluss des Wiederherstellungsvorgangs wird eine Benachrichtigung angezeigt, dass der Massenvorgang erfolgreich abgeschlossen wurde.
+
+Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite **Ergebnisse von Massenvorgängen** herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
 
 ## <a name="check-status"></a>Status überprüfen
 

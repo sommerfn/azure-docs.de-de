@@ -13,39 +13,39 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c62cbe71f2e02c6f2c09620a8470a97ae57392
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146313"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174310"
 ---
 # <a name="bulk-create-users-preview-in-azure-active-directory"></a>Massenerstellung von Benutzern (Vorschau) in Azure Active Directory
 
 Azure Active Directory (Azure AD) unterstützt Vorgänge der Massenerstellung und Massenlöschung von Benutzern, Masseneinladung für Gäste sowie das Herunterladen von Listen von Benutzern, Gruppen und Gruppenmitgliedern.
 
-## <a name="bulk-import-service-limits"></a>Diensteinschränkungen beim Massenimport
-
-Jede Massenaktivität zum Erstellen von Benutzern kann bis zu einer Stunde dauern. Dies ermöglicht die Massenerstellung von mindestens 50.000 Benutzern.
-
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
 Zur Massenerstellung von Benutzern im Verwaltungsportal müssen Sie als globaler Administrator oder Benutzeradministrator angemeldet sein.
 
-## <a name="to-bulk-import-users"></a>So führen Sie den Massenimport von Benutzern durch
+## <a name="to-create-users-in-bulk"></a>So erstellen Sie Benutzer in einem Massenvorgang
 
 1. [Melden Sie sich bei ihrer Azure AD-Organisation](https://aad.portal.azure.com) mit einem Konto an, das über Benutzeradministratorberechtigungen in der Organisation verfügt.
 1. Wählen Sie in Azure AD **Benutzer** > **Massenerstellung** aus.
-1. Wählen Sie auf der Seite **Benutzer für Massenerstellung** die Option **Herunterladen** aus, um eine gültige CSV-Datei mit Benutzereigenschaften herunterzuladen. Fügen Sie dann die neuen Benutzer hinzu.
-
-   ![Die CSV-Datei enthält Namen und IDs der zu erstellenden Benutzer.](./media/users-bulk-add/add-csv-file.png)
-
-1. Wenn Sie die Bearbeitung der CSV-Datei abgeschlossen haben oder eine Ihrer eigenen Dateien hochladen möchten, wählen Sie die Datei unter **Ihre CSV-Datei hochladen** zur Überprüfung aus.
+1. Wählen Sie auf der Seite **Massenerstellung von Benutzern** die Option **Herunterladen** aus, um eine gültige CSV-Datei mit Benutzereigenschaften herunterzuladen. Fügen Sie dann die Benutzer hinzu, die Sie erstellen möchten.
 
    ![Wählen Sie eine lokale CSV-Datei aus, in der Sie die Benutzer auflisten, die Sie hinzufügen möchten.](./media/users-bulk-add/upload-button.png)
 
-1. Wenn der Dateiinhalt überprüft wird, müssen Sie alle Fehler beheben, bevor Sie den Uploadauftrag starten können.
-1. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Batchauftrag zum Hinzufügen der neuen Benutzerinformationen zu starten. Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite „Ergebnisse von Massenvorgängen“ herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
+1. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie erstellen möchten. Die einzigen erforderlichen Werte sind **Name**, **Benutzerprinzipalname**, **Anfängliches Kennwort** und **Anmeldung blockieren (Ja/Nein)** . Speichern Sie dann die Datei.
+
+   ![Die CSV-Datei enthält Namen und IDs der zu erstellenden Benutzer.](./media/users-bulk-add/add-csv-file.png)
+
+1. Navigieren Sie auf der Seite **Massenerstellung von Benutzern (Vorschau)** unter „CSV-Datei hochladen“ zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
+1. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
+1. Wenn Ihre Datei die Überprüfung bestanden hat, wählen Sie **Senden** aus, um den Azure-Massenvorgang zum Importieren der neuen Benutzer zu starten.
+1. Nach Abschluss des Importvorgangs wird eine Benachrichtigung mit dem Auftragsstatus des Massenvorgangs angezeigt.
+
+Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite **Ergebnisse von Massenvorgängen** herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
 
 ## <a name="check-status"></a>Status überprüfen
 
@@ -71,6 +71,10 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
 Jetzt sollten die erstellten Benutzer aufgelistet werden.
+
+## <a name="bulk-import-service-limits"></a>Diensteinschränkungen beim Massenimport
+
+Jede Massenaktivität zum Erstellen von Benutzern kann bis zu einer Stunde dauern. Dies ermöglicht die Massenerstellung von mindestens 50.000 Benutzern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

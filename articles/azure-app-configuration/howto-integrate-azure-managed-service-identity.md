@@ -13,20 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 4318c4b4d8f1b1f0974d0fae0a2ae5bd6e94b593
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 3a5517c31cdac0bf6f5ea386a8614d15521d4479
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076537"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035532"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrieren mit verwalteten Azure-Identitäten
 
 Mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität können Sie Ihren Code für die Nutzung des Dienstprinzipals einrichten, der für den Azure-Computedienst erstellt wurde, auf dem die Ausführung erfolgt. Eine verwaltete Identität wird anstelle von separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder in einer lokalen Verbindungszeichenfolge gespeichert sind. 
 
-Azure App Configuration und die zugehörigen .NET Core-, .NET- und Java Spring-Clientbibliotheken verfügen über integrierte MSI-Unterstützung (Managed Service Identity, Verwaltete Dienstidentität). Zwar müssen Sie MSI nicht verwenden, doch entfällt hierbei die Notwendigkeit für das Zugriffstoken mit Geheimnissen. Ihr Code muss nur den Dienstendpunkt für einen App-Konfigurationsspeicher kennen, um darauf zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne sich Sorgen machen zu müssen, dass geheime Schlüssel offengelegt werden.
+Azure App Configuration und die zugehörigen .NET Core-, .NET- und Java Spring-Clientbibliotheken verfügen über integrierte MSI-Unterstützung (Managed Service Identity, Verwaltete Dienstidentität). Zwar müssen Sie MSI nicht verwenden, doch entfällt hierbei die Notwendigkeit für das Zugriffstoken mit Geheimnissen. Ihr Code kann nur mithilfe des Dienstendpunkts auf den App-Konfigurationsspeicher zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne sich Sorgen machen zu müssen, dass geheime Schlüssel offengelegt werden.
 
-In diesem Tutorial wird veranschaulicht, wie Sie MSI für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Führen Sie zuerst den Schnellstart [Erstellen einer ASP.NET Core-App mit Azure App Configuration](./quickstart-aspnet-core-app.md) durch, bevor Sie fortfahren.
+In diesem Tutorial wird veranschaulicht, wie Sie MSI für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Core-App mit Azure App Configuration](./quickstart-aspnet-core-app.md), bevor Sie fortfahren.
+
+Außerdem wird in diesem Tutorial optional gezeigt, wie Sie MSI in Verbindung mit den Key Vault-Verweisen von App Configuration verwenden können. Auf diese Weise können Sie nahtlos auf geheime Schlüssel zugreifen, die in Key Vault gespeichert sind, sowie auf Konfigurationswerte in App Configuration. Wenn Sie diese Funktion erkunden möchten, stellen Sie zuerst [Verwenden von Key Vault-Verweisen mit ASP.NET Core](./use-key-vault-references-dotnet-core.md) fertig.
 
 Für die Ausführung der Schritte dieses Tutorials können Sie einen beliebigen Code-Editor verwenden. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
 
@@ -35,6 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Gewähren des Zugriffs auf App Configuration für eine verwaltete Identität.
 > * Konfigurieren Ihrer App für die Verwendung einer verwalteten Identität bei der Verbindungsherstellung mit App Configuration.
+> * Konfigurieren Sie optional Ihre App für die Verwendung einer verwalteten Identität, wenn Sie eine Verbindung mit Key Vault über einen Key Vault-Verweis von App Configuration herstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,23 +66,25 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Alle Ressourcen** aus, und wählen Sie dann den App-Konfigurationsspeicher aus, den Sie in der Schnellstartanleitung erstellt haben.
 
-2. Wählen Sie die Option **Zugriffssteuerung (IAM)** .
+1. Wählen Sie die Option **Zugriffssteuerung (IAM)** .
 
-3. Wählen Sie auf der Registerkarte **Zugriff überprüfen** im Kartenelement **Rollenzuweisung hinzufügen** den Befehl **Hinzufügen** aus.
+1. Wählen Sie auf der Registerkarte **Zugriff überprüfen** im Kartenelement **Rollenzuweisung hinzufügen** den Befehl **Hinzufügen** aus.
 
-4. Wählen Sie unter **Rolle** die Option **Mitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** unter **Systemseitig zugewiesene verwaltete Identität** die Option **App Service** aus.
+1. Wählen Sie unter **Rolle** die Option **Mitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** unter **Systemseitig zugewiesene verwaltete Identität** die Option **App Service** aus.
 
-5. Wählen Sie unter **Abonnement** Ihr Azure-Abonnement aus. Wählen Sie die App Service-Ressource für Ihre App aus.
+1. Wählen Sie unter **Abonnement** Ihr Azure-Abonnement aus. Wählen Sie die App Service-Ressource für Ihre App aus.
 
-6. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
     ![Hinzufügen einer verwalteten Identität](./media/add-managed-identity.png)
+
+1. Optional: Wenn Sie auch Zugriff auf Key Vault gewähren möchten, befolgen Sie die Anweisungen in [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](https://docs.microsoft.com/azure/key-vault/managed-identity).
 
 ## <a name="use-a-managed-identity"></a>Verwenden einer verwalteten Identität
 
 1. Suchen Sie nach der URL für Ihren App-Konfigurationsspeicher. Klicken Sie hierzu im Azure-Portal auf dem zugehörigen Konfigurationsbildschirm auf die Registerkarte **Zugriffsschlüssel**.
 
-2. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL für Ihren App-Konfigurationsspeicher. 
+1. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL für Ihren App-Konfigurationsspeicher. 
 
     ```json
     "AppConfig": {
@@ -87,7 +92,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
     }
     ```
 
-3. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, indem Sie die `config.AddAzureAppConfiguration()`-Methode ersetzen.
+1. Wenn Sie nur auf Werte zugreifen möchten, die direkt in App Configuration gespeichert sind, öffnen Sie *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, indem Sie die `config.AddAzureAppConfiguration()`-Methode ersetzen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -100,6 +105,24 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
             })
             .UseStartup<Startup>();
     ```
+
+1. Wenn Sie App Configuration-Werte sowie Key Vault-Verweise verwenden möchten, öffnen Sie *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, wie unten gezeigt. Dadurch wird ein neuer `KeyVaultClient` erstellt, der einen `AzureServiceTokenProvider` verwendet und diesen Verweis an einen Aufruf der `UseAzureKeyVault`-Methode übergibt.
+
+    ```csharp
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
+                    KeyVaultClient kvClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
+                    
+                    config.AddAzureAppConfiguration(options => options.ConnectWithManagedIdentity(settings["AppConfig:Endpoint"])).UseAzureKeyVault(kvClient));
+                })
+                .UseStartup<Startup>();
+    ```
+
+    Sie können jetzt auf Key Vault-Verweise zugreifen wie auf jeden anderen App Configuration-Schlüssel. Der Konfigurationsanbieter verwendet den `KeyVaultClient`, den Sie für die Authentifizierung bei Key Vault konfiguriert haben, und ruft den Wert ab.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -114,7 +137,7 @@ Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>Aktivieren von lokalem Git mit Kudu
-Sollten Sie noch nicht über ein lokales Git-Repository für Ihre App verfügen, müssen Sie eines initialisieren. Führen Sie hierzu im Projektverzeichnis Ihrer App die folgenden Befehle aus:
+Wenn Sie über kein lokales Git-Repository für Ihre App verfügen, müssen Sie eins initialisieren. Führen Sie hierzu die folgenden Befehle aus dem Projektverzeichnis Ihrer App aus:
 
 ```cmd
 git init

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 923c828a3d7e9e10d79fcf079839b84c2f0e0f77
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dbe3b0218b73649d40f27d17ee2c7de2853c6b7c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772384"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025558"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Anzeigen der Zuweisungen benutzerdefinierter Rollen in Azure Active Directory
 
@@ -32,7 +32,7 @@ In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen anzeigen, 
 In diesem Verfahren wird das Anzeigen von Zuweisungen einer Rolle mit einem organisationsweiten Bereich beschrieben.
 
 1. Melden Sie sich beim  [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
-1. Wählen Sie  **Azure Active Directory** >  **Rollen und Administratoren** und anschließend eine Rolle aus, um sie zu öffnen und ihre Eigenschaften anzuzeigen.
+1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** und anschließend eine Rolle aus, um sie zu öffnen und ihre Eigenschaften anzuzeigen.
 1. Wählen Sie **Zuweisungen** aus, um die Zuweisungen für die Rolle anzuzeigen.
 
     ![Anzeigen von Rollenzuweisungen und Berechtigungen beim Öffnen einer Rolle in der Liste](./media/roles-view-assignments/role-assignments.png)
@@ -109,7 +109,7 @@ In diesem Abschnitt wird das Anzeigen von Zuweisungen einer Rolle mit dem Einzel
 
     ![Erstellen oder Bearbeiten von App-Registrierungen auf der Seite „App-Registrierungen“](./media/roles-create-custom/appreg-all-apps.png)
 
-1. Wählen Sie in der App-Registrierung  **Rollen und Administratoren** und anschließend eine Rolle aus, um ihre Eigenschaften anzuzeigen.
+1. Wählen Sie in der App-Registrierung **Rollen und Administratoren** und anschließend eine Rolle aus, um ihre Eigenschaften anzuzeigen.
 
     ![Anzeigen der Rollenzuweisungen einer App-Registrierung auf der Seite „App-Registrierungen“](./media/roles-view-assignments/appreg-assignments.png)
 

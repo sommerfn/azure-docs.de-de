@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8137bc0e75595b5f548584bb2d1644de2e0fecd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7903ec669772c3a3858a9c1d514ab3e6de6a2bd4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508920"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936832"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>Einrichten der Self-Service-Kennwortzurücksetzung für Ihre Kunden
 
@@ -30,6 +30,7 @@ Standardmäßig ist für Ihr Verzeichnis die Self-Service-Kennwortzurücksetzung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Abonnementadministrator an. Dies ist dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie Ihr Verzeichnis erstellt haben.
 2. Öffnen Sie **Azure Active Directory** (auf der Navigationsleiste auf der linken Seite).
+3. Scrollen Sie auf dem Blatt "Optionen" nach unten, und wählen Sie **Kennwortzurücksetzung** aus.
 4. Legen Sie **Self-Service-Kennwortzurücksetzung aktiviert** auf **Alle** fest. 
 5. Klicken Sie oben auf der Seite auf **Speichern**. Sie haben es geschafft!
 
