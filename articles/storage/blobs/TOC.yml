@@ -1,10 +1,10 @@
 - name: Dokumentation zu Azure Blob Storage
   href: /azure/storage/blobs/
 - name: Übersicht
-  expanded: true
   items:
     - name: Was ist Azure Blob Storage?
       href: storage-blobs-overview.md
+  expanded: true
 - name: Blob Storage
   items:
     - name: Übersicht
@@ -198,47 +198,7 @@
                 - name: Archivieren
                   items:
                     - name: Vorbereiten von Laufwerken für den Import (v1)
-                      href: ../common/storage-import-export-tool-preparing-hard-drives-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                      items:
-                        - name: Festlegen von Eigenschaften und Metadaten
-                          href: ../common/storage-import-export-tool-setting-properties-metadata-import-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: 'Beispiel: Vorbereiten von Laufwerken für den Import'
-                          href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Schnellbefehlsreferenz für den Import
-                          href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Vorbereiten von Laufwerken für den Import (v2)
-                      href: ../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                      items:
-                        - name: Festlegen von Eigenschaften und Metadaten
-                          href: ../common/storage-import-export-tool-setting-properties-metadata-import.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: 'Beispiel: Vorbereiten von Laufwerken für den Import'
-                          href: ../common/storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Schnellbefehlsreferenz für den Import
-                          href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Importauftrag erstellen
-                      href: ../common/storage-import-export-creating-an-import-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Exportauftrag erstellen
-                      href: ../common/storage-import-export-creating-an-export-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Auftragsstatus abrufen
-                      href: ../common/storage-import-export-retrieving-state-info-for-a-job.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Aufträge aufzählen
-                      href: ../common/storage-import-export-enumerating-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Auftrag abbrechen und löschen
-                      href: ../common/storage-import-export-cancelling-and-deleting-jobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Laufwerkmanifest sichern
-                      href: ../common/storage-import-export-backing-up-drive-manifests.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Diagnose und Fehlerbehebung
-                      href: ../common/storage-import-export-diagnostics-and-error-recovery.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Befehle für Importaufträge
-                      href: ../common/storage-import-export-tool-quick-reference-v1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Befehle für Importaufträge
-                      href: ../common/storage-import-export-tool-quick-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Dienstmanifestdatei
-                      href: ../common/storage-import-export-file-format-manifest.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Dienstmetadaten- und Eigenschaftendatei
-                      href: ../common/storage-import-export-file-format-metadata-and-properties.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Dienstprotokolldatei
-                      href: ../common/storage-import-export-file-format-log.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Überwachen und Behandeln von Problemen
           items:
             - name: Tutorial zur Problembehandlung
@@ -696,6 +656,7 @@
             - name: Festlegen von Berechtigungen auf Datei- und Verzeichnisebene
               href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
         - name: Optimieren der Leistung
+          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           items:
             - name: Übersicht
               href: ../blobs/data-lake-storage-performance-tuning-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -707,7 +668,6 @@
               href: ../blobs/data-lake-storage-performance-tuning-mapreduce.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Optimieren von Storm in HDInsight
               href: ../blobs/data-lake-storage-performance-tuning-storm.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Verwalten von Dateien (Blobs)
           items:
             - name: PowerShell

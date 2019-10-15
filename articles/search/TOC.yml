@@ -299,8 +299,6 @@
           href: search-manage-powershell.md
         - name: Überwachen der Aktivität und Protokollierung
           href: search-monitor-usage.md
-        - name: Durchsuchen der Datenverkehrsanalyse
-          href: search-traffic-analytics.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
