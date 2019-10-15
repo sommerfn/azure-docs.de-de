@@ -1,106 +1,113 @@
 ---
-title: Erstellen eines Wissensspeichers mithilfe von REST – Azure Search
-description: Hier erfahren Sie, wie Sie mithilfe der REST-API und von Postman einen Azure Search-Wissensspeicher zum Speichern von Anreicherungen aus der Pipeline für die kognitive Suche erstellen.
+title: 'Erstellen eines Wissensspeichers mit REST: Azure Search'
+description: Verwenden Sie die REST-API und Postman, um einen Azure Search-Wissensspeicher zum Speichern von Anreicherungen aus der Pipeline für die kognitive Suche zu erstellen.
 author: lobrien
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: 26dc66474eecffd7f5a34bcfcaf93fd49f59606c
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936503"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244469"
 ---
-# <a name="create-an-azure-search-knowledge-store-using-rest"></a>Erstellen eines Azure Search-Wissensspeichers mithilfe von REST
+# <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Erstellen eines Azure Search-Wissensspeichers mit REST
 
-Der Wissensspeicher ist ein Azure Search-Feature, das Ausgaben aus einer KI-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung speichert. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, indiziert sie mithilfe von Azure Search, wendet KI-Anreicherungen von Cognitive Services (beispielsweise Bildanalyse und Verarbeitung natürlicher Sprache) an, und speichert die Ergebnisse in einem Wissensspeicher in Azure Storage. Der Wissensspeicher kann dann mithilfe von Tools wie Power BI oder Storage-Explorer erkundet werden.
+Mit dem Wissensspeicher-Feature in Azure Search werden Ausgaben aus einer KI-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung gespeichert. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, indiziert sie mithilfe von Azure Search, wendet KI-Anreicherungen von Azure Cognitive Services (z. B. Bildanalyse und Verarbeitung natürlicher Sprache) an und speichert die Ergebnisse in einem Wissensspeicher in Azure Storage. Sie können den Wissensspeicher dann im Azure-Portal mit Tools wie Power BI oder Storage-Explorer erkunden.
 
-In diesem Artikel wird die REST-API-Schnittstelle verwendet, um eine Gruppe von Hotelrezensionen zu erfassen, zu indizieren und KI-Anreicherungen auf sie anzuwenden. Die Hotelrezensionen werden in Azure Blob Storage importiert und die Ergebnisse als Wissensspeicher in Azure Table Storage gespeichert.
+In diesem Artikel wird die REST-API-Schnittstelle verwendet, um eine Gruppe von Hotelrezensionen zu erfassen, zu indizieren und KI-Anreicherungen darauf anzuwenden. Die Hotelrezensionen werden in Azure Blob Storage importiert. Die Ergebnisse werden als Wissensspeicher in Azure Table Storage gespeichert.
 
-Nachdem Sie den Wissensspeicher erstellt haben, können Sie sich darüber informieren, wie Sie per [Storage-Explorer](knowledge-store-view-storage-explorer.md) oder [Power BI](knowledge-store-connect-power-bi.md) darauf zugreifen.
+Nachdem Sie den Wissensspeicher erstellt haben, können Sie sich darüber informieren, wie Sie per [Storage-Explorer](knowledge-store-view-storage-explorer.md) oder [Power BI](knowledge-store-connect-power-bi.md) darauf zugreifen.
 
-## <a name="1---create-services"></a>1\. Erstellen der Dienste
+## <a name="create-services"></a>Erstellen von Diensten
 
-+ [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
+Erstellen Sie die folgenden Dienste:
 
-+ [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten und des Wissensspeichers. Ihr Speicherkonto muss den gleichen Speicherort (z. B. „USA, Westen“) für Ihren Azure Search-Dienst verwenden. Für *Kontoart* muss *StorageV2 (universell V2)* (Standard) oder *Storage (universell V1)* festgelegt sein.
+- Erstellen Sie einen [Azure Search-Dienst](search-create-service-portal.md), oder [suchen Sie in Ihrem aktuellen Abonnement nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
-+ Empfohlen: [Postman-Desktop-App](https://www.getpostman.com/) zum Senden von Anforderungen an Azure Search. Sie können die REST-API mit jedem Tool verwenden, das HTTP-Anforderungen und -Antworten verarbeiten kann. Postman empfiehlt sich für die Untersuchung von REST-APIs, daher wird in diesem Artikel darauf Bezug genommen. Außerdem enthält der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) für diesen Artikel eine Postman-Auflistung von Anforderungen. 
+- Erstellen Sie ein [Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten und des Wissensspeichers. Ihr Speicherkonto muss den gleichen Speicherort (z. B. „USA, Westen“) für Ihren Azure Search-Dienst verwenden. Der Wert für **Kontoart** muss auf **StorageV2 (universell V2)** (Standard) oder **Storage (universell V1)** festgelegt sein.
 
-## <a name="2---store-the-data"></a>2\. Speichern der Daten
+- Empfohlen: Rufen Sie die [Postman-Desktop-App](https://www.getpostman.com/) zum Senden von Anforderungen an Azure Search ab. Sie können die REST-API mit jedem Tool verwenden, das HTTP-Anforderungen und -Antworten verarbeiten kann. Postman ist eine gute Wahl für die Untersuchung von REST-APIs. In diesem Artikel verwenden wir Postman. Außerdem enthält der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) für diesen Artikel eine Postman-Auflistung der Anforderungen. 
+
+## <a name="store-the-data"></a>Speichern der Daten
 
 Laden Sie die CSV-Datei mit den Hotelrezensionen in Azure Blob Storage, damit sie für einen Azure Search-Indexer zur Verfügung steht und die KI-Anreicherungspipeline durchlaufen kann.
 
-### <a name="create-an-azure-blob-container-with-the-data"></a>Erstellen eines Azure-Blobcontainers mit den Daten
+### <a name="create-a-blob-container-by-using-the-data"></a>Erstellen eines Blobcontainers mit den Daten
 
-1. [Laden Sie die CSV-Datei „HotelReviews_Free.csv“ mit den gespeicherten Hotelrezensionsdaten herunter.](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) Diese Daten stammen von Kaggle.com und enthalten Kundenfeedback zu Hotels.
-1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und navigieren Sie zu Ihrem Azure-Speicherkonto.
-1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Klicken Sie zum Erstellen des Containers auf der linken Navigationsleiste für Ihr Speicherkonto auf **Blobs** und anschließend auf der Befehlsleiste auf **+ Container**.
-1. Geben Sie unter **Name** den Namen `hotel-reviews` für den neuen Container ein.
-1. Wählen Sie unter **Öffentliche Zugriffsebene** eine beliebige Option aus. Wir haben den Standardwert verwendet.
-1. Klicken Sie auf **OK**, um den Azure-Blobcontainer zu erstellen.
-1. Öffnen Sie den neuen Container (`hotels-review`), klicken Sie auf **Hochladen**, und wählen Sie die Datei **HotelReviews-Free.csv** aus, die Sie im ersten Schritt heruntergeladen haben.
+1. Laden Sie die CSV-Datei „HotelReviews_Free.csv“ mit den gespeicherten [Hotelrezensionsdaten](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) herunter. Diese Daten stammen von Kaggle.com und enthalten Kundenfeedback zu Hotels.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem Azure-Speicherkonto.
+1. Erstellen Sie einen [Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Wählen Sie zum Erstellen des Containers im linken Menü für Ihr Speicherkonto die Option **Blobs** und dann **Container** aus.
+1. Geben Sie unter **Name** den Namen **hotel-reviews** für den neuen Container ein.
+1. Wählen Sie unter **Öffentliche Zugriffsebene** einen beliebigen Wert aus. Wir haben den Standardwert verwendet.
+1. Wählen Sie **OK** aus, um den Blobcontainer zu erstellen.
+1. Öffnen Sie den neuen Container **hotels-review**, und wählen Sie **Hochladen** und dann die Datei „HotelReviews-Free.csv“ aus, die Sie im ersten Schritt heruntergeladen haben.
 
     ![Hochladen der Daten](media/knowledge-store-create-portal/upload-command-bar.png "Hochladen der Hotelrezensionen")
 
-1. Klicken Sie auf **Hochladen**, um die CSV-Datei in Azure Blob Storage zu importieren. Daraufhin wird der neue Container angezeigt.
+1. Wählen Sie **Hochladen** aus, um die CSV-Datei in Azure Blob Storage zu importieren. Der neue Container wird angezeigt:
 
-    ![Erstellen des Azure-Blobcontainers](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Erstellen des Azure-Blobcontainers")
+    ![Erstellen des Blobcontainers](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Erstellen des Blobcontainers")
 
-## <a name="3---configure-postman"></a>3\. Konfigurieren von Postman
+## <a name="configure-postman"></a>Konfigurieren von Postman
 
-Laden Sie den [Quellcode der Postman-Auflistung](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) herunter, und importieren Sie ihn mit **Datei > Importieren...** in Postman. Wechseln Sie zur Registerkarte **Sammlungen**, klicken Sie auf die Schaltfläche **...** , und wählen Sie **Bearbeiten** aus. 
+Führen Sie die Installation und Einrichtung von Postman durch.
 
-![Postman-App mit Navigation](media/knowledge-store-create-rest/postman-edit-menu.png "Navigieren zum Menü „Bearbeiten“ in Postman")
+### <a name="download-and-install-postman"></a>Herunterladen und Installieren von Postman
 
-Navigieren Sie im geöffneten Dialogfeld „Bearbeiten“ zur Registerkarte **Variablen**. 
+1. Laden Sie den [Quellcode für die Postman-Sammlung](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) herunter.
+1. Wählen Sie **Datei** > **Importieren** aus, um den Quellcode in Postman zu importieren.
+1. Wählen Sie die Registerkarte **Sammlungen** und dann die Schaltfläche **...** (Auslassungszeichen) aus.
+1. Wählen Sie **Bearbeiten** aus. 
+   
+   ![Postman-App mit Navigation](media/knowledge-store-create-rest/postman-edit-menu.png "Navigieren zum Menü „Edit“ (Bearbeiten) in Postman")
+1. Wählen Sie im Dialogfeld **Edit** (Bearbeiten) die Registerkarte **Variables** (Variablen) aus. 
 
-Auf der Registerkarte **Variablen** können Sie Werte hinzufügen, die Postman bei jedem ihrer Vorkommen in doppelten geschweiften Klammern einfügt. Postman ersetzt z. B. das Symbol `{{admin-key}}` mit dem Wert für `admin-key` unter „Aktueller Wert“. Diese Ersetzung wird von Postman in URLs, Headern, dem Anforderungstext usw. ausgeführt. 
+Auf der Registerkarte **Variables** (Variablen) können Sie Werte hinzufügen, die von Postman jeweils eingefügt werden, wenn eine bestimmte Variable in doppelten Klammern erkannt wird. Beispielsweise ersetzt Postman das Symbol `{{admin-key}}` durch den aktuellen Wert, den Sie für `admin-key` festlegen. Postman führt die Ersetzung in URLs, Headern, im Anforderungstext usw. durch. 
 
-Den Wert für `admin-key` finden Sie auf der Registerkarte **Schlüssel** des Suchdiensts. Sie müssen `search-service-name` und `storage-account-name` in die Werte ändern, die Sie in [Schritt 1](#1---create-services) ausgewählt haben. Legen Sie `storage-connection-string` anhand des Werts auf der Registerkarte **Zugriffsschlüssel** des Speicherkontos fest. Die anderen Werte können unverändert übernommen werden.
+Navigieren Sie zum Azure Search-Dienst, und wählen Sie die Registerkarte **Schlüssel** aus, um den Wert für `admin-key` zu erhalten. Ändern Sie `search-service-name` und `storage-account-name` in die Werte, die Sie unter [Erstellen von Diensten](#create-services) ausgewählt haben. Legen Sie `storage-connection-string` fest, indem Sie den Wert auf der Registerkarte **Zugriffsschlüssel** des Speicherkontos verwenden. Sie können für die anderen Werte die Standardwerte übernehmen.
 
 ![Postman-App: Registerkarte „Variablen“](media/knowledge-store-create-rest/postman-variables-window.png "Fenster „Variablen“ in Postman")
 
 
 | Variable    | Ursprung |
 |-------------|-----------------|
-| `admin-key` | Suchdienst, Registerkarte **Schlüssel**              |
-| `api-version` | Als „2019-05-06-Preview“ beibehalten |
-| `datasource-name` | Als „hotel-reviews-ds“ beibehalten | 
-| `indexer-name` | Als „hotel-reviews-ixr“ beibehalten | 
-| `index-name` | Als „hotel-reviews-ix“ beibehalten | 
-| `search-service-name` | Suchdienst, Hauptname. Die URL ist `https://{{search-service-name}}.search.windows.net`. | 
-| `skillset-name` | Als „hotel-reviews-ss“ beibehalten | 
-| `storage-account-name` | Speicherkonto, Hauptname | 
-| `storage-connection-string` | Speicherkonto, Registerkarte **Access Keys** (Zugriffsschlüssel), **key1** **Verbindungszeichenfolge** | 
-| `storage-container-name` | Als „hotel-reviews“ beibehalten | 
+| `admin-key` | Auf der Registerkarte **Schlüssel** des Azure Search-Diensts.  |
+| `api-version` | Übernehmen Sie **2019-05-06-Preview**. |
+| `datasource-name` | Übernehmen Sie **hotel-reviews-ds**. | 
+| `indexer-name` | Übernehmen Sie **hotel-reviews-ixr**. | 
+| `index-name` | Übernehmen Sie **hotel-reviews-ix**. | 
+| `search-service-name` | Der Hauptname des Azure Search Diensts. Die URL ist `https://{{search-service-name}}.search.windows.net`. | 
+| `skillset-name` | Übernehmen Sie **hotel-reviews-ss**. | 
+| `storage-account-name` | Der Hauptname des Speicherkontos. | 
+| `storage-connection-string` | Wählen Sie im Speicherkonto auf der Registerkarte **Zugriffsschlüssel** **key1** > **Verbindungszeichenfolge** aus. | 
+| `storage-container-name` | Übernehmen Sie **hotel-reviews**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Überprüfen der Auflistung von Anforderungen in Postman
 
-Zum Erstellen eines Wissensspeichers müssen Sie vier HTTP-Anforderungen ausgeben: 
+Beim Erstellen eines Wissensspeichers müssen Sie vier HTTP-Anforderungen durchführen: 
 
-1. Eine PUT-Anforderung zum Erstellen des Indexes. Dieser Index enthält die Daten, die von Azure Search verwendet und zurückgegeben werden.
-1. Eine POST-Anforderung zum Erstellen der Datenquelle. Diese Datenquelle verknüpft das Azure Search-Verhalten mit den Daten und dem Speicherkonto des Wissensspeichers. 
-1. Eine PUT-Anforderung zum Erstellen des Skillsets. Das Skillset gibt die auf die Daten angewendeten Anreicherungen und die Struktur des Wissensspeichers an.
-1. Eine PUT-Anforderung zum Erstellen des Indexers. Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
+- **PUT-Anforderung zum Erstellen des Index**: Dieser Index enthält die Daten, die von Azure Search verwendet und zurückgegeben werden.
+- **POST-Anforderung zum Erstellen der Datenquelle**: Diese Datenquelle verknüpft das Azure Search-Verhalten mit den Daten und dem Speicherkonto des Wissensspeichers. 
+- **PUT-Anforderung zum Erstellen des Skillsets**: Das Skillset gibt die Anreicherungen an, die auf die Daten und die Struktur des Wissensspeichers angewendet werden.
+- **PUT-Anforderung zum Erstellen des Indexers**: Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
 
-Der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) enthält eine Postman-Auflistung mit diesen vier Anforderungen. Wechseln Sie zum Ausgeben der Anforderungen zur Registerkarte der Anforderung in Postman, und fügen Sie die Anforderungsheader `api-key` und `Content-Type` hinzu. Legen Sie den Wert von `api-key` auf `{{admin-key}}` fest. Legen Sie den Wert `Content-type` auf `application/json` fest. 
+Der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) enthält eine Postman-Auflistung, in der diese vier Anforderungen enthalten sind. Wählen Sie zum Erstellen der Anforderungen in Postman die jeweilige Registerkarte für die Anforderung aus. Fügen Sie anschließend die Anforderungsheader `api-key` und `Content-Type` hinzu. Legen Sie den Wert von `api-key` auf `{{admin-key}}` fest. Legen Sie den Wert `Content-type` auf `application/json` fest. 
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot der Postman-Schnittstelle für Header](media/knowledge-store-create-rest/postman-headers-ui.png)
+![Screenshot: Postman-Schnittstelle für Header](media/knowledge-store-create-rest/postman-headers-ui.png)
 
 > [!Note]
-> Sie müssen die Header `api-key` und `Content-type` in allen Anforderungen festlegen. Eine von Postman erkannte Variable wird in orangefarbenem Text dargestellt; siehe `{{admin-key}}` im Screenshot. Wenn die Variable falsch geschrieben ist, wird Sie in rotem Text dargestellt.
+> Sie müssen die Header `api-key` und `Content-type` in allen Anforderungen festlegen. Wenn von Postman eine Variable erkannt wird, wird sie als orangefarbener Text angezeigt (wie `{{admin-key}}` im obigen Screenshot). Falls die Variable falsch geschrieben ist, wird sie als roter Text dargestellt.
 >
 
-## <a name="4---create-an-azure-search-index"></a>4\. Erstellen eines Azure Search-Index
+## <a name="create-an-azure-search-index"></a>Erstellen eines Azure Search-Index
 
-Sie müssen einen Azure Search-Index erstellen, um die Daten darzustellen, die Sie durchsuchen, filtern und erweitern möchten. Sie erstellen den Index, indem Sie eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` ausgeben. Postman ersetzt in doppelte geschweifte Klammern eingeschlossene Symbole (z. B. `{{search-service-name}}`, `{{index-name}}` und `{{api-version}}`) durch die in [Schritt 3](#3---configure-postman) angegebenen Werte. Wenn Sie Ihre REST-Befehle mit einem anderen Tool ausgeben, müssen Sie diese Variablen selbst ersetzen.
+Erstellen Sie einen Azure Search-Index, um die Daten darzustellen, die Sie durchsuchen, filtern und erweitern möchten. Erstellen Sie den Index, indem Sie eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` senden. In Postman werden Symbole, die in doppelte geschweifte Klammern gesetzt sind (z. B. `{{search-service-name}}`, `{{index-name}}` und `{{api-version}}`), durch die Werte ersetzt, die Sie unter [Konfigurieren von Postman](#configure-postman) festlegen. Falls Sie ein anderes Tool zum Ausführen Ihrer REST-Befehle verwenden, müssen Sie diese Variablen selbst ersetzen.
 
-Geben Sie die Struktur des Azure Search-Indexes im Text der Anforderung an. Wechseln Sie in Postman nach dem Festlegen der Header `api-key` und `Content-type` zum Bereich **Text** der Anforderung. Der folgende JSON-Code sollte angezeigt werden; wählen Sie andernfalls **Raw** und **JSON (application/json)** aus, und fügen Sie den folgenden Code als Text ein:
+Legen Sie die Struktur des Azure Search-Index im Text der Anforderung fest. Navigieren Sie in Postman nach dem Festlegen der Header `api-key` und `Content-type` zum Bereich **Body** (Text) der Anforderung. Der folgende JSON-Code sollte angezeigt werden. Wenn nicht: Wählen Sie **Raw** > **JSON (application/json)** aus, und fügen Sie anschließend den folgenden Code als Text hinzu:
 
 ```JSON
 {
@@ -135,15 +142,15 @@ Geben Sie die Struktur des Azure Search-Indexes im Text der Anforderung an. Wech
 
 ```
 
-Sie stellen fest, diese Indexdefinition ist eine Kombination von Daten, die dem Benutzer präsentiert werden sollen (Name des Hotels, Inhalt der Rezension, Datum usw.), Suchmetadaten und KI-Erweiterungsdaten (Stimmung, Schlüsselausdrücke und Sprache).
+Diese Indexdefinition ist eine Kombination von Daten, die dem Benutzer präsentiert werden sollen (Name des Hotels, Inhalt der Rezension, Datum), Suchmetadaten und KI-Erweiterungsdaten (Stimmung, Schlüsselbegriffe und Sprache).
 
-Drücken Sie die Schaltfläche **Senden**, um die PUT-Anforderung auszugeben. Daraufhin sollte die Statusmeldung `201 - Created` angezeigt werden. Wenn Sie eine andere Statusmeldung erhalten, wird im Bereich **Text** eine JSON-Antwort mit einer Fehlermeldung angezeigt. 
+Wählen Sie **Send** (Senden) aus, um die PUT-Anforderung zu senden. Als Status sollte `201 - Created` angezeigt werden. Wenn ein anderer Status angezeigt wird, sollten Sie im Bereich **Body** (Text) nach einer JSON-Antwort suchen, die eine Fehlermeldung enthält. 
 
-## <a name="5---create-the-datasource"></a>5\. Erstellen der Datenquelle
+## <a name="create-the-datasource"></a>Erstellen der Datenquelle
 
-Nun müssen Sie Azure Search mit den in [Schritt 2](#2---store-the-data) gespeicherten Hoteldaten verknüpfen. Das Erstellen der Datenquelle erfolgt mit einem POST an `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`. Sie müssen wieder die Header `api-key` und `Content-Type` festlegen, die Sie bereits früher angegeben haben. 
+Verbinden Sie als Nächstes Azure Search mit den Hoteldaten, die Sie unter [Speichern der Daten](#store-the-data) gespeichert haben. Senden Sie eine POST-Anforderung an `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`, um die Datenquelle zu erstellen. Sie müssen die Header `api-key` und `Content-Type` wie oben beschrieben festlegen. 
 
-Öffnen Sie in Postman die Anforderung „Create Datasource“ (Datenquelle erstellen). Wechseln Sie zum Bereich **Text**; hier sollte der folgende Code angezeigt werden:
+Navigieren Sie in Postman zur Anforderung **Create Datasource** (Datenquelle erstellen) und dann zum Bereich **Body** (Text). Der folgende Code sollte angezeigt werden:
 
 ```json
 {
@@ -155,18 +162,17 @@ Nun müssen Sie Azure Search mit den in [Schritt 2](#2---store-the-data) gespei
 }
 ```
 
-Drücken Sie die Schaltfläche **Senden**, um die POST-Anforderung auszugeben. 
+Wählen Sie **Send** (Senden) aus, um die POST-Anforderung zu senden. 
 
-## <a name="6---create-the-skillset"></a>6\. Erstellen des Skillsets 
+## <a name="create-the-skillset"></a>Erstellen des Skillsets 
 
-Im nächsten Schritt wird das Skillset angegeben. Dieses gibt sowohl die anzuwendenden Erweiterungen als auch den Wissensspeicher an, in dem die Ergebnisse gespeichert werden. Öffnen Sie in Postman die Registerkarte „Create the Skillset“ (Skillset erstellen). Diese Anforderung sendet einen PUT an `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`.
-Legen Sie die Header `api-key` und `Content-type` wie zuvor fest. 
+Im nächsten Schritt wird das Skillset angegeben. Hiermit werden sowohl die anzuwendenden Erweiterungen als auch der Wissensspeicher angegeben, in dem die Ergebnisse gespeichert werden. Wählen Sie in Postman die Registerkarte **Create the Skillset** (Skillset erstellen) aus. Diese Anforderung sendet einen PUT an `https://{{search-service-name}}.search.windows.net/skillsets/{{skillset-name}}?api-version={{api-version}}`. Legen Sie die Header `api-key` und `Content-type` wie zuvor fest. 
 
-Es gibt zwei große Objekte der obersten Ebene: `"skills"` und `"knowledgeStore"`. Jedes Objekt innerhalb des `"skills"`-Objekts ist ein Anreicherungsdienst. Jeder Anreicherungsdienst verfügt über `"inputs"` und `"outputs"`. Beachten Sie, dass `LanguageDetectionSkill` eine Ausgabe-`targetName` von `"Language"` aufweist. Der Wert dieses Knotens wird von den meisten anderen Qualifikationen als Eingabe verwendet; die Quelle ist auf `document/Language` festgelegt. Diese Fähigkeit, die Ausgabe eines Knotens als Eingabe für einen anderen zu nutzen, wird noch besser ersichtlich im `ShaperSkill`. Dort wird angegeben, wie die Daten in die Tabellen im Wissensspeicher fließen.
+Es gibt zwei große Objekte der obersten Ebene: `skills` und `knowledgeStore`. Jedes Objekt innerhalb des `skills`-Objekts ist ein Anreicherungsdienst. Jeder Anreicherungsdienst verfügt über `inputs` und `outputs`. Für `LanguageDetectionSkill` wird für `targetName` das Ergebnis `Language` ausgegeben. Der Wert dieses Knotens wird von den meisten anderen Skills als Eingabe verwendet. Die Quelle ist `document/Language`. Die Fähigkeit, die Ausgabe eines Knotens als Eingabe für einen anderen zu nutzen, wird mit `ShaperSkill` noch besser ersichtlich. Darin wird angegeben, wie die Daten in die Tabellen im Wissensspeicher fließen.
 
-Das `"knowledge_store"`-Objekt stellt über die `{{storage-connection-string}}`-Postman-Variable eine Verbindung mit dem Speicherkonto her. Dann enthält sie eine Gruppe von Zuordnungen zwischen dem erweiterten Dokument und Tabellen und Spalten, die im Wissensspeicher selbst verfügbar sind. 
+Das `knowledge_store`-Objekt stellt über die `{{storage-connection-string}}`-Postman-Variable eine Verbindung mit dem Speicherkonto her. `knowledge_store` enthält eine Reihe von Zuordnungen zwischen dem erweiterten Dokument und Tabellen und Spalten im Wissensspeicher. 
 
-Um das Skillset zu generieren, übermitteln Sie die Anforderung per PUT, indem Sie die Schaltfläche **Senden** in Postman drücken.
+Wählen Sie zum Generieren des Skillsets in Postman die Schaltfläche **Send** (Senden) aus, um die PUT-Anforderung zu senden:
 
 ```json
 {
@@ -294,13 +300,13 @@ Um das Skillset zu generieren, übermitteln Sie die Anforderung per PUT, indem S
 }
 ```
 
-## <a name="7---create-the-indexer"></a>7\. Erstellen des Indexers
+## <a name="create-the-indexer"></a>Erstellen des Indexers
 
-Im letzten Schritt wird der Indexer erstellt, der die Daten liest und das Skillset aktiviert. Wechseln Sie in Postman zur Anforderung „Indexer erstellen“, und überprüfen Sie den Text. Sie stellen fest, dass die Definition des Indexers auf verschiedene andere bereits erstellte Ressourcen verweist: die Datenquelle, den Index und das Skillset. 
+Der letzte Schritt ist die Erstellung des Indexers. Der Indexer liest die Daten und aktiviert das Skillset. Wählen Sie in Postman die Anforderung **Create Indexer** (Indexer erstellen) aus, und sehen Sie sich den Anforderungstext an. Die Definition des Indexers verweist auf verschiedene andere Ressourcen, die Sie bereits erstellt haben: die Datenquelle, den Index und das Skillset. 
 
-Das `"parameters/configuration"`-Objekt steuert die Erfassung der Daten durch den Indexer. In diesem Fall befinden sich die Eingabedaten in einem einzigen Dokument mit einer Kopfzeile und durch Trennzeichen getrennten Werten. Der Dokumentschlüssel ist ein eindeutiger Bezeichner für das Dokument. Vor der Codierung entspricht er der URL des Quelldokuments. Schließlich werden die Ausgabewerte des Skillsets wie Sprachcode, Stimmung und Schlüsselbegriffe ihren entsprechenden Positionen im Dokument zugeordnet. Beachten Sie, dass es einen einzelnen Wert für `Language` gibt, `Sentiment` jedoch auf jedes Element im Array von `pages` angewendet wird. `Keyphrases` stellt selbst ein Array dar und wird ebenso auf jedes Element im Array `pages` angewendet.
+Das `parameters/configuration`-Objekt steuert die Erfassung der Daten durch den Indexer. In diesem Fall befinden sich die Eingabedaten in einem einzigen Dokument, das über eine Kopfzeile und durch Trennzeichen getrennte Werte verfügt. Der Dokumentschlüssel ist ein eindeutiger Bezeichner für das Dokument. Vor der Codierung ist der Dokumentschlüssel die URL des Quelldokuments. Schließlich werden die Ausgabewerte des Skillsets, z. B. Sprachcode, Stimmung und Schlüsselbegriffe, den entsprechenden Positionen im Dokument zugeordnet. Es ist zwar ein einzelner Wert für `Language` vorhanden, aber `Sentiment` wird auf jedes Element im Array `pages` angewendet. `Keyphrases` ist ein Array, das ebenfalls auf jedes Element im Array `pages` angewendet wird.
 
-Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewissert haben, dass der Text der Anforderung dem folgenden Code ähnelt, drücken Sie **Senden** in Postman. Postman sendet die Anforderung per PUT an `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Der Indexer wird von Azure Search erstellt und ausgeführt. 
+Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewissert haben, dass der Text der Anforderung dem folgenden Code ähnelt, wählen Sie in Postman die Option **Send** (Senden). Postman sendet eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Search erstellt den Indexer und führt ihn aus. 
 
 ```json
 {
@@ -331,22 +337,22 @@ Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewis
 }
 ```
 
-## <a name="8---run-the-indexer"></a>8\. Ausführen des Indexers 
+## <a name="run-the-indexer"></a>Ausführen des Indexers 
 
-Navigieren Sie im Azure-Portal zur **Übersicht** des Suchdiensts, und wählen Sie die Registerkarte **Indexer** aus. Klicken Sie auf den Indexer **hotels-reviews-ixr**, den Sie im vorherigen Schritt erstellt haben. Wenn der Indexer noch nicht ausgeführt wurde, drücken Sie die Schaltfläche **Ausführen**. Die Indizierungsaufgabe gibt möglicherweise einige Warnung zur Spracherkennung aus, da die Daten auch Rezensionen enthalten, die in Sprachen verfasst wurden, welche von den kognitiven Qualifikationen noch nicht unterstützt werden. 
+Navigieren Sie im Azure-Portal zur Seite **Übersicht** des Azure Search-Diensts. Wählen Sie die Registerkarte **Indexer** und dann **hotels-reviews-ixr** aus. Wählen Sie **Ausführen**, falls der Indexer nicht bereits ausgeführt wurde. Unter Umständen werden für die Indizierungsaufgabe einige Warnungen in Bezug auf die Spracherkennung ausgelöst. Die Daten enthalten einige Überprüfungen in Sprachen, die von den kognitiven Skills noch nicht unterstützt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Daten mithilfe von Cognitive Services angereichert und die Ergebnisse in einen Wissensspeicher projiziert haben, können Sie Storage-Explorer oder Power BI verwenden, um Ihr angereichertes Dataset zu erkunden.
+Nachdem Sie Ihre Daten mit Cognitive Services angereichert und die Ergebnisse in einen Wissensspeicher projiziert haben, können Sie Storage-Explorer oder Power BI verwenden, um Ihr angereichertes Dataset zu erkunden.
 
-In der folgenden exemplarischen Vorgehensweise erfahren Sie, wie Sie diesen Wissensspeicher mithilfe von Storage-Explorer erkunden:
+In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie diesen Wissensspeicher mit Storage-Explorer erkunden:
 
 > [!div class="nextstepaction"]
 > [Anzeigen mit Storage-Explorer](knowledge-store-view-storage-explorer.md)
 
-In der folgenden exemplarischen Vorgehensweise erfahren Sie, wie Sie diesen Wissensspeicher mit Power BI verbinden:
+In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie diesen Wissensspeicher mit Power BI verbinden:
 
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit Power BI](knowledge-store-connect-power-bi.md)
 
-Wenn Sie diese Übung wiederholen oder eine andere exemplarische Vorgehensweise für die KI-Anreicherung ausprobieren möchten, löschen Sie den Indexer *hotel-reviews-idxr*. Durch Löschen des Indexers wird der Zähler für kostenlose Transaktionen pro Tag auf Null zurückgesetzt.
+Wenn Sie diese Übung wiederholen oder eine andere exemplarische Vorgehensweise für die KI-Anreicherung ausprobieren möchten, löschen Sie den Indexer **hotel-reviews-idxr**. Durch das Löschen des Indexers wird der Zähler für kostenlose Transaktionen pro Tag auf Null zurückgesetzt.
