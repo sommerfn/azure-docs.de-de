@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 01/31/2019
+ms.date: 09/27/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24bf8e7cf103d583cf6604e0c529ad4ea267ce84
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60471770"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034175"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -28,16 +28,16 @@ Verwenden Sie die folgenden Informationen und Beispiele, um ein besseres Verstä
 
 ## <a name="usage-location"></a>Verwendungsstandort
 
-Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft **Usage location** (Verwendungsstandort) für den Benutzer angeben. Im [Azure-Portal](https://portal.azure.com) können Sie dies unter **Benutzer** &gt; **Profil** &gt; **Einstellungen** angeben.
+Einige Microsoft-Dienste sind nicht an allen Standorten verfügbar. Bevor einem Benutzer eine Lizenz zugewiesen werden kann, muss der Administrator die Eigenschaft **Usage location** (Verwendungsstandort) für den Benutzer angeben. Im [Azure-Portal](https://portal.azure.com) können Sie den Verwendungsstandort unter **Benutzer** &gt; **Profil** &gt; **Einstellungen** angeben.
 
-Bei der Gruppenlizenzzuweisung erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Wenn sich Ihre Benutzer an mehreren Standorten befinden, sollten Sie darauf achten, diese in Ihren Benutzerobjekten richtig anzugeben, bevor Sie Gruppen mit Lizenzen Benutzer hinzufügen.
+Bei der Gruppenlizenzzuweisung erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Wenn sich Ihre Benutzer an mehreren Standorten befinden, sollten Sie darauf achten, diese in Ihren Benutzerressourcen richtig anzugeben, bevor Sie Gruppen mit Lizenzen Benutzer hinzufügen.
 
 > [!NOTE]
 > Bei der Zuweisung von Gruppenlizenzen wird ein vorhandener Verwendungsstandortwert für einen Benutzer nie geändert. Es wird empfohlen, die Angabe des Verwendungsstandorts als Teil des Benutzererstellungsablaufs in Azure AD (z.B. über die AAD Connect-Konfiguration) festzulegen. Hierdurch wird sichergestellt, dass das Ergebnis der Lizenzzuweisung immer korrekt ist und die Benutzer keine Dienste für Standorte empfangen, die nicht zugelassen sind.
 
 ## <a name="use-group-based-licensing-with-dynamic-groups"></a>Verwenden der gruppenbasierten Lizenzierung mithilfe von dynamischen Gruppen
 
-Sie können die gruppenbasierte Lizenzierung mit jeder beliebigen Sicherheitsgruppe verwenden. Dies bedeutet, dass eine Kombination mit dynamischen Azure AD-Gruppen möglich ist. Dynamische Gruppen führen Regeln für Benutzerobjektattribute aus, um Benutzer automatisch Gruppen hinzufügen und daraus zu entfernen.
+Sie können die gruppenbasierte Lizenzierung mit jeder beliebigen Sicherheitsgruppe verwenden. Dies bedeutet, dass eine Kombination mit dynamischen Azure AD-Gruppen möglich ist. Dynamische Gruppen führen Regeln für Benutzerattribute aus, um Benutzer automatisch Gruppen hinzufügen und daraus zu entfernen.
 
 Beispielsweise können Sie eine dynamische Gruppe für einen Satz mit Produkten erstellen, die Sie Benutzern zuweisen möchten. Jede Gruppe wird anhand einer Regel aufgefüllt, indem Benutzer nach ihren Attributen hinzugefügt werden, und jeder Gruppe werden die Lizenzen zugewiesen, die Sie jeweils vergeben möchten. Sie können das Attribut lokal zuweisen und mit Azure AD synchronisieren, oder Sie können das Attribut direkt in der Cloud verwalten.
 
@@ -76,9 +76,7 @@ Ein Benutzer kann Mitglied mehrerer Gruppen mit Lizenzen sein. Folgende Punkte s
 
   Ergebnis: Für den Benutzer sind sieben der zwölf Dienste im Produkt aktiviert, und es wird nur eine Lizenz dafür genutzt.
 
-- Bei Auswahl der *E3*-Lizenz werden weitere Details angezeigt, einschließlich der Informationen dazu, welche Dienste durch welche Gruppen für den Benutzer aktiviert wurden.
-
-  ![Screenshot: Aktivierte Dienste nach Gruppe](./media/licensing-group-advanced/view-enabled-service-by-group.png)
+- Bei Auswahl der *E3*-Lizenz werden weitere Details angezeigt, einschließlich der Informationen dazu, welche Dienste für den Benutzer durch die Gruppenlizenzzuweisung aktiviert wurden.
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>Gleichzeitig bestehende direkte Lizenzen und Gruppenlizenzen
 
@@ -88,28 +86,21 @@ Es ist aber möglich, dem Benutzer zusätzlich zur geerbten Lizenz die gleiche P
 
 Direkt zugewiesene Lizenzen können entfernt werden und wirken sich nicht auf geerbte Lizenzen aus. Angenommen, ein Benutzer erbt eine Office 365 Enterprise E3-Lizenz von einer Gruppe.
 
-1. Zuerst erbt der Benutzer die Lizenz nur von der Gruppe *E3 basic services* (Basic E3-Dienste), sodass sich wie hier gezeigt vier Dienstpläne ergeben:
+Zuerst erbt der Benutzer die Lizenz nur von der *Basic E3-Dienste*-Gruppe, sodass sich vier Dienstpläne ergeben.
 
-   ![Screenshot mit aktivierten Diensten der E3-Gruppe](./media/licensing-group-advanced/e3-group-enabled-services.png)
+1. Wählen Sie **Zuweisen** aus, um dem Benutzer eine E3-Lizenz direkt zuzuweisen. In diesem Fall deaktivieren Sie alle Dienstpläne mit Ausnahme von Yammer Enterprise.
 
-2. Sie können **Zuweisen** wählen, um dem Benutzer eine E3-Lizenz direkt zuzuweisen. In diesem Fall deaktivieren Sie alle Dienstpläne mit Ausnahme von Yammer Enterprise:
+    Das Ergebnis ist, dass der Benutzer weiterhin nur eine Lizenz des E3-Produkts verwendet. Mit der direkten Zuweisung wird der Yammer Enterprise-Dienst aber nur für diesen Benutzer aktiviert. Sie sehen, welche Dienste jeweils durch die Gruppenmitgliedschaft und die direkte Zuweisung aktiviert sind.
 
-   ![Screenshot: Direkte Zuweisung einer Lizenz zu einem Benutzer](./media/licensing-group-advanced/assign-license-to-user.png)
+1. Wenn Sie die direkte Zuweisung verwenden, sind die folgenden Vorgänge zulässig:
 
-3. Das Ergebnis ist, dass der Benutzer weiterhin nur eine Lizenz des E3-Produkts verwendet. Mit der direkten Zuweisung wird der Yammer Enterprise-Dienst aber nur für diesen Benutzer aktiviert. Sie sehen, welche Dienste jeweils durch die Gruppenmitgliedschaft und die direkte Zuweisung aktiviert sind:
-
-   ![Screenshot: Geerbte und direkte Zuweisung im Vergleich](./media/licensing-group-advanced/direct-vs-inherited-assignment.png)
-
-4. Wenn Sie die direkte Zuweisung verwenden, sind die folgenden Vorgänge zulässig:
-
-   - Yammer Enterprise kann direkt im Benutzerobjekt deaktiviert werden. Der Umschalter **Ein/Aus** in der Abbildung war für diesen Dienst aktiviert (im Gegensatz zu den Umschaltern für die anderen Dienste). Da der Dienst direkt für den Benutzer aktiviert wurde, kann er geändert werden.
+   - Yammer Enterprise kann direkt in der Benutzerressource deaktiviert werden. Der Umschalter **Ein/Aus** in der Abbildung war für diesen Dienst aktiviert (im Gegensatz zu den Umschaltern für die anderen Dienste). Da der Dienst direkt für den Benutzer aktiviert wurde, kann er geändert werden.
    - Außerdem können zusätzliche Dienste als Teil der direkt zugewiesenen Lizenz aktiviert werden.
    - Mit der Schaltfläche **Entfernen** kann die direkte Lizenz vom Benutzer entfernt werden. Sie können sehen, dass der Benutzer jetzt nur die geerbte Gruppenlizenz hat und nur die ursprünglichen Dienste aktiviert bleiben:
 
-     ![Screenshot: Entfernen der direkten Zuweisung](./media/licensing-group-advanced/remove-direct-license.png)
-
 ## <a name="managing-new-services-added-to-products"></a>Verwalten von neuen Diensten, die Produkten hinzugefügt werden
-Wenn Microsoft einem Produkt einen neuen Dienst hinzufügt, wird er standardmäßig in allen Gruppen aktiviert, denen Sie die Produktlizenz zugewiesen haben. Benutzer in Ihrem Mandanten, die Benachrichtigungen zu Produktänderungen abonniert haben, erhalten vorab E-Mails mit der Benachrichtigung über die anstehenden neuen Dienste.
+
+Wenn Microsoft einem Produktlizenzplan einen neuen Dienst hinzufügt, wird er standardmäßig in allen Gruppen aktiviert, denen Sie die Produktlizenz zugewiesen haben. Benutzer in Ihrem Mandanten, die Benachrichtigungen zu Produktänderungen abonniert haben, erhalten vorab E-Mails mit der Benachrichtigung über die anstehenden neuen Dienste.
 
 Als Administrator können Sie alle Gruppen überprüfen, die von der Änderung betroffen sind, und Maßnahmen ergreifen, z.B. das Deaktivieren des neuen Diensts in jeder Gruppe. Wenn Sie beispielsweise Gruppen erstellt haben, die nur auf bestimmte Dienste für die Bereitstellung abzielen, können Sie erneut auf diese Gruppen zugreifen und sicherstellen, dass alle neu hinzugefügten Dienste deaktiviert sind.
 
@@ -162,7 +153,7 @@ Sie können [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-aud
    >[!TIP]
    > Sie können auch den Namen der Gruppe im Filter *Ziel* eingeben, um die Ergebnisse einzugrenzen.
 
-3. Klicken Sie in der Listenansicht auf ein Element, um die Details zu den Änderungen anzuzeigen. Unter *Geänderte Eigenschaften* werden sowohl alte als auch neue Werte für die Lizenzzuweisung aufgeführt.
+3. Wählen Sie in der Liste ein Element aus, um die Details zu den Änderungen anzuzeigen. Unter *Geänderte Eigenschaften* werden sowohl alte als auch neue Werte für die Lizenzzuweisung aufgeführt.
 
 Hier ist ein Beispiel für kürzlich vorgenommene Änderungen der Gruppenlizenzen mit den dazugehörigen Details angegeben:
 
@@ -220,7 +211,7 @@ Wenn Sie die gruppenbasierte Lizenzierung verwenden, ist es ratsam, sich mit der
 
 - Wenn Lizenzen für eine große Gruppe zugewiesen oder geändert werden (z.B. 100.000 Benutzer), kann dies die Leistung beeinträchtigen. Vor allem das Volumen der Änderungen, das von der Azure AD-Automation generiert wird, kann sich negativ auf die Leistung Ihrer Verzeichnissynchronisierung zwischen Azure AD und lokalen Systemen auswirken.
 
-- Wenn Sie dynamische Gruppen für die Verwaltung der Benutzermitgliedschaft verwenden, vergewissern Sie sich, dass der Benutzer Mitglied der Gruppe ist. Dies ist für die Lizenzzuweisung erforderlich. Ist er kein Mitglied, [überprüfen Sie den Verarbeitungsstatus für die Mitgliedschaftsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) der dynamischen Gruppe. 
+- Wenn Sie dynamische Gruppen für die Verwaltung der Benutzermitgliedschaft verwenden, vergewissern Sie sich, dass der Benutzer Mitglied der Gruppe ist. Dies ist für die Lizenzzuweisung erforderlich. Ist er kein Mitglied, [überprüfen Sie den Verarbeitungsstatus für die Mitgliedschaftsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) der dynamischen Gruppe.
 
 - In bestimmten Situationen mit hoher Auslastung kann es lange dauern, Lizenzänderungen für Gruppen oder Änderungen der Mitgliedschaft für Gruppen mit vorhandenen Lizenzen zu verarbeiten. Wenn die Verarbeitung Ihrer Änderungen für Gruppen mit einer Größe von mehr als 60.000 Benutzern länger als 24 Stunden dauert, sollten Sie ein [Supportticket erstellen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest), damit wir den Fall untersuchen können. 
 

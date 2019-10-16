@@ -103,7 +103,7 @@
           items:
             - name: Überwachen und Optimieren
               href: concepts-monitoring.md
-            - name: Serverprotokolle
+            - name: Protokolle
               href: concepts-server-logs.md
             - name: Überwachungsprotokolle
               href: concepts-audit.md
@@ -207,7 +207,7 @@
               href: howto-auto-grow-storage-portal.md
             - name: Azure-Befehlszeilenschnittstelle
               href: howto-auto-grow-storage-cli.md
-        - name: Zugreifen auf Serverprotokolle
+        - name: Zugriffsprotokolle
           items:
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md

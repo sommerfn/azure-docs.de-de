@@ -7,28 +7,34 @@
       href: billing-understand-your-bill.md
     - name: Erläuterungen zur EA-Rechnung
       href: billing-understand-your-bill-ea.md
-    - name: "Erläuterungen zur Rechnung\_– nur Microsoft-Kundenvereinbarung"
+    - name: 'Erläuterungen zur Rechnung: Microsoft-Kundenvereinbarung'
       href: billing-mca-understand-your-bill.md
+    - name: 'Erläuterungen zur Rechnung: Microsoft-Partnervereinbarung'
+      href: billing-mpa-understand-your-bill.md
     - name: Anzeigen und Herunterladen der Microsoft Azure-Rechnung
       href: billing-download-azure-invoice.md
     - name: Anzeigen und Herunterladen der Microsoft Azure-Nutzung und -Gebühren
       href: billing-download-azure-daily-usage.md
-    - name: Anzeigen und Herunterladen von Steuerdokumenten für Ihre Microsoft-Kundenvereinbarung
+    - name: Anzeigen und Herunterladen von Steuerdokumenten
       href: billing-mca-download-tax-document.md
     - name: Gebühren für Drittanbieterdienste
       href: billing-understand-your-azure-marketplace-charges.md
     - name: Erläuterung der Nutzungsbedingungen
       href: billing-understand-your-usage.md
-    - name: "Erläuterung der Nutzungsbedingungen\_– nur Microsoft-Kundenvereinbarung"
+    - name: 'Erläuterung der Nutzungsbedingungen: Microsoft-Kundenvereinbarung'
       href: billing-mca-understand-your-usage.md
     - name: Erläuterung der Rechnungsbedingungen
       href: billing-understand-your-invoice.md
-    - name: "Erläuterung der Rechnungsbedingungen\_– nur Microsoft-Kundenvereinbarung"
+    - name: 'Erläuterung der Rechnungsbedingungen: Microsoft-Kundenvereinbarung'
       href: billing-mca-understand-your-invoice.md
-    - name: "Bezahlen Ihrer Rechnung\_– nur Microsoft-Kundenvereinbarung"
+    - name: 'Erläuterung der Rechnungsbedingungen: Microsoft-Partnervereinbarung'
+      href: billing-mpa-invoice-terms-explained.md
+    - name: 'Bezahlen Ihrer Rechnung: Microsoft-Kundenvereinbarung'
       href: billing-how-to-pay-bill.md
     - name: Abrechnungskonten für Microsoft-Kundenvereinbarung
       href: billing-mca-overview.md
+    - name: Abrechnungskonten für Microsoft-Partnervereinbarung
+      href: mpa-overview.md
 - name: Verwalten von Kosten
   items:
     - name: Vermeiden unerwarteter Kosten
@@ -115,10 +121,8 @@
           href: billing-avoid-charges-free-account.md
         - name: Überprüfen der Nutzung
           href: billing-check-free-service-usage.md
-        - name: Upgrade des Abonnements ausführen
+        - name: Ausführen eines Upgrades für ein Konto
           href: billing-upgrade-azure-subscription.md
-        - name: Erläuterung der Zuordnung der Verbrauchseinheit
-          href: billing-understand-free-service-meter-mapping.md
     - name: Bearbeiten eines Profils
       href: billing-how-to-change-azure-account-profile.md
     - name: Open Banking und strenge Kundenauthentifizierung
@@ -158,7 +162,7 @@
         - name: EA-Aufgaben in Microsoft-Kundenvereinbarung
           href: billing-mca-enterprise-operations.md
     - name: Einrichten eines Abrechnungskontos für Microsoft-Kundenvereinbarung
-      href: billing-mca-setup-account.md
+      href: mca-setup-account.md
     - name: Anmelden mit Office 365-Konto
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Registrieren für Office 365 mit einem Azure-Konto
@@ -173,6 +177,8 @@
       href: billing-subscription-transfer.md
     - name: "Besitzanforderung\_– Microsoft-Kundenvereinbarung"
       href: billing-mca-request-billing-ownership.md
+    - name: 'Besitzanforderung: Microsoft-Partnervereinbarung'
+      href: mpa-request-ownership.md
     - name: Kündigen eines Abonnements
       href: billing-how-to-cancel-azure-subscription.md
     - name: Ändern der Kreditkarte
