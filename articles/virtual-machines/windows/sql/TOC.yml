@@ -102,7 +102,7 @@
           items:
             - name: Mit direkten Speicherplätzen
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: Mit Premium-Dateispeicher
+            - name: Mit Premium-Dateifreigabe
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Verweis
   items:

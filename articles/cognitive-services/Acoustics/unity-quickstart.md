@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ea020ca76381a4ae5d6b6e480c94e63f9aa2dab
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fabdd221ef99414eae0156babbd76dedb1f0745d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933135"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243019"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Schnellstart für Projekt Akustik mit Unity
 Verwenden Sie die Projekt Akustik-Beispielinhalte für Unity zum Experimentieren mit simulationsgestützten Entwurfssteuerelementen.
@@ -27,75 +27,74 @@ Softwareanforderungen:
 
 Was ist im Beispielpaket enthalten?
 * Unity-Szene mit Geometrie, Tonquellen und Spielsteuerelementen
-* Projekt Akustik-Plug-In 
+* Projekt Akustik-Plug-In
 * Akustikressourcen für die Szene mit ausgeführtem Baking
 
 ## <a name="import-the-sample-package"></a>Importieren des Beispielpakets
-Importieren Sie das Beispielpaket in ein neues Unity-Projekt. 
-* Wechseln Sie in Unity zu **Assets (Medienobjekte) > Import Package (Paket importieren) > Custom Package... (Benutzerdefiniertes Paket...)** .
+Importieren Sie das Beispielpaket in ein neues Unity-Projekt.
+1. Wechseln Sie in Unity zu **Assets (Ressourcen)**  > **Import Package (Paket importieren)**  > **Custom Package (Benutzerdefiniertes Paket)** .
 
-    ![Screenshot der Unity-Option zum Importieren von Paketen](media/import-package.png)  
+    ![Die Unity-Optionen zum Importieren von Paketen](media/import-package.png)  
 
-* Wählen Sie **ProjectAcoustics.unitypackage** aus.
+1. Wählen Sie **ProjectAcoustics.unitypackage**.
 
-* Klicken Sie auf die Schaltfläche **Importieren**, um das Unity-Paket in Ihr Projekt zu integrieren.  
+1. Wählen Sie die Schaltfläche **Importieren** aus, um das Unity-Paket in Ihr Projekt zu integrieren.  
   
-    ![Screenshot des Dialogfelds zum Importieren des Unity-Pakets](media/import-dialog.png)  
+    ![Das Unity-Dialogfeld zum Importieren von Paketen](media/import-dialog.png)  
 
-Wenn Sie das Paket in ein vorhandenes Projekt importieren, finden Sie weitere Schritte und Anmerkungen unter [Unity-Integration](unity-integration.md).
-
->[!NOTE] 
->Nach Abschluss des Imports werden im Konsolenprotokoll einige Fehler angezeigt.  Fahren Sie mit dem nächsten Schritt fort, und starten Sie Unity neu.
-
-## <a name="restart-unity"></a>Neustarten von Unity
-Für den Bakevorgang des Akustiktoolkits ist die Skriptlaufzeitversion .NET 4.x erforderlich. Durch den Paketimport werden die Einstellungen des Unity-Players aktualisiert. Starten Sie Unity neu, damit die Einstellungen übernommen werden.
-
-Sie können überprüfen, ob diese Einstellung wirksam war, indem Sie die **Playereinstellungen** öffnen:
-
-![Screenshot des Unity-Panels für Playereinstellungen](media/player-settings.png)  
-
-![Screenshot des Unity-Panels für Playereinstellungen mit der ausgewählten Option „.NET 4.5“](media/net45.png)  
+Weitere Schritte und Anmerkungen zum Importieren des Pakets in ein vorhandenes Projekt finden Sie unter [Unity-Integration](unity-integration.md).
 
 >[!NOTE]
->Der Screenshot stammt aus Unity 2018.x. Neuere Versionen von Unity unterscheiden sich möglicherweise.
+>Nach Abschluss des Imports werden im Konsolenprotokoll mehrere Fehlermeldungen angezeigt. Fahren Sie mit dem nächsten Schritt fort, und starten Sie Unity neu.
+
+## <a name="restart-unity"></a>Neustarten von Unity
+Für den Bakevorgang des Akustiktoolkits ist die Skriptlaufzeitversion .NET 4.*x* erforderlich. Durch den Paketimport werden die Einstellungen des Unity-Players aktualisiert. Starten Sie Unity neu, damit die Einstellungen übernommen werden. Überprüfen Sie in den Einstellungen des **Players**, ob die Einstellung übernommen wurde.
+
+![Einstellungsmenü des Unity-Projekts](media/player-settings.png)  
+
+![Das Unity-Panel für Playereinstellungen mit der ausgewählten Option „.NET 4.x“](media/net45.png)  
+
+>[!NOTE]
+>Dieser Screenshot stammt aus Unity 2018.*x*. Das Bild kann sich in neueren Versionen von Unity unterscheiden.
 
 ## <a name="open-the-project-acoustics-bake-window"></a>Öffnen des Bakingfensters in Projekt Akustik
-Wählen Sie im Unity-Menü **Window > Acoustics** (Fenster > Akustik) aus:
+Wählen Sie in Unity im Menü **Window** (Fenster) die Option **Acoustics** (Akustik).
 
-![Screenshot des Unity-Editors, in dem im Menü „Window“ (Fenster) die Option „Acoustics“ (Akustik) hervorgehoben ist](media/window-acoustics.png)
+![Unity-Editor mit hervorgehobener Option „Acoustics“ im Menü „Window“](media/window-acoustics.png)
 
-Ein neues unverankertes Fenster namens **Acoustics** (Akustik) wird geöffnet.  In diesem Fenster werden die Eigenschaften der Akustiksimulation festgelegt.
+Das unverankerte Fenster **Acoustics** wird geöffnet. In diesem Fenster legen Sie die Eigenschaften der Akustiksimulation fest.
 
-![Screenshot des Unity-Editors mit geöffnetem Fenster „Acoustics“ (Akustik)](media/unity-editor-plugin-window.png)  
+![Der Unity-Editor mit geöffnetem Fenster „Acoustics“ (Akustik)](media/unity-editor-plugin-window.png)  
 
-## <a name="experiment-with-design-controls"></a>Experimentieren mit den Entwurfssteuerelementen
-Öffnen Sie die Beispielszene im Ordner **ProjectAcousticsSample**, und klicken Sie auf die Wiedergabeschaltfläche im Unity-Editor. Navigieren Sie mit den Tasten W, A, S und D sowie mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, drücken Sie so lange die Taste **R**, bis der Überlagerungstext rot wird und „Akustik: Deaktiviert“ lautet. Um Tastenkombinationen für weitere Steuerelemente anzuzeigen, drücken Sie **F1**. Die Steuerelemente können auch verwendet werden, indem Sie mit der rechten Maustaste auf sie klicken, um die auszuführende Aktion auszuwählen, und dann durch Klicken mit der linken Maustaste die Aktion ausführen.
+## <a name="experiment-with-the-design-controls"></a>Experimentieren mit den Entwurfssteuerelementen
+Öffnen Sie die Beispielszene im Ordner *ProjectAcousticsSample*, und wählen Sie die Wiedergabeschaltfläche im Unity-Editor aus. Navigieren Sie auf dem Desktop mit den Tasten W, A, S, D und mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, drücken Sie so lange die Taste R, bis der Überlagerungstext rot wird und „Akustik: Deaktiviert“ lautet. Zum Anzeigen von Tastenkombinationen für weitere Steuerelemente drücken Sie F1. Sie können auch mit der rechten Maustaste klicken, um eine Aktion auszuwählen, und dann mit der linken Maustaste klicken, um diese Aktion auszuführen.
 
-Das Skript **AcousticsAdjust** ist an die Tonquellen in der Beispielszene angefügt. Es aktiviert die Entwurfsparameter pro Quelle. 
+Das Skript *AcousticsAdjust* ist an die Soundquellen in der Beispielszene angefügt. Es aktiviert die Designparameter pro Quelle.
 
-![Screenshot des Unity-Skripts „AcousticsAdjust“](media/acoustics-adjust.png)
+![Das Unity-Skript „AcousticsAdjust“](media/acoustics-adjust.png)
 
-Im Folgenden werden einige der Effekte, die mit den bereitgestellten Steuerelementen erstellt werden können, untersucht. Ausführliche Informationen zu den einzelnen Steuerelementen finden Sie im [Unity-Entwurfstutorial für Projekt Akustik](unity-workflow.md).
+In den folgenden Abschnitten werden einige der Effekte erläutert, die Sie mithilfe der verfügbaren Steuerelemente erstellen können. Ausführliche Informationen zu den einzelnen Steuerelementen finden Sie im [Unity-Entwurfstutorial für Projekt Akustik](unity-workflow.md).
 
 ### <a name="modify-distance-based-attenuation"></a>Ändern der distanzabhängigen Dämpfung
-Der vom Unity-Spatializer-Plug-In von **Projekt Akustik** bereitgestellte Audio-DSP berücksichtigt die in den Unity-Editor integrierte distanzabhängige Dämpfung pro Quelle. Steuerelemente für die distanzabhängige Dämpfung befinden sich in der Komponente **Audioquelle** im Bereich **Inspektor** von Tonquellen unter **3D Sound Settings** (3D-Soundeinstellungen):
+Die vom Unity-Spatializer-Plug-In von **Projekt Akustik** bereitgestellte digitale Signalverarbeitung (DSP) für Audio berücksichtigt die in den Unity-Editor integrierte distanzabhängige Dämpfung pro Quelle. Die Steuerelemente für die distanzabhängige Dämpfung befinden sich in der Komponente **Audioquelle** im Bereich **Inspektor** von Tonquellen unter **3D Sound Settings** (3D-Soundeinstellungen):
 
-![Screenshot des Unity-Panels mit Optionen für die Distanzdämpfung](media/distance-attenuation.png)
+![Das Unity-Panel mit Optionen für die Distanzdämpfung](media/distance-attenuation.png)
 
-Projekt Akustik führt die Berechnung in einem „Simulationsbereichsfeld“ durch, das um die Position des Spielers herum angeordnet ist. Da das Baking der Akustikressourcen im Beispielpaket mit einer Simulationsbereichsgröße von 45 m um den Spieler herum durchgeführt wurde, sollte die Tondämpfung so festgelegt werden, dass sie bei ca. 45 m auf 0 fällt.
+Projekt Akustik führt Berechnungen in einem „Simulationsbereichsfeld“ durch, das um die Position des Players herum angeordnet ist. Für die Akustikressourcen im Musterpaket wurde ein Baking in einer Simulationsregion von 45 Metern um den Player herum ausgeführt. Daher sollte die Schallschwächung so gestaltet werden, dass Sie bei ungefähr 45 m auf 0 fällt.
 
 ### <a name="modify-occlusion-and-transmission"></a>Ändern der Verdeckung und Übertragung
 * Wenn der Multiplikator **Occlusion** (Verdeckung) größer als 1 ist (der Standardwert ist 1), tritt eine übertriebene Verdeckung auf. Bei einer Festlegung unter 1 ist der Verdeckungseffekt geringer.
 
-* Um die Übertragung durch die Wand zu aktivieren, schieben Sie den Schieberegler **Transmission (dB)** (Übertragung (dB)) von der untersten Stufe nach oben. 
+* Um die Übertragung durch die Wand zu aktivieren, schieben Sie den Schieberegler **Transmission (dB)** (Übertragung (dB)) von der untersten Stufe nach oben.
 
 ### <a name="modify-wetness-for-a-source"></a>Anpassen der Verwässerung für eine Quelle
-* Um anzupassen, wie stark die Verwässerung mit der Entfernung zunimmt, verwenden Sie **Perceptual Distance Warp** (Verzerrung für Wahrnungsentfernung). **Projekt Akustik** berechnet Verwässerungspegel im gesamten simulierten Raum, die mit der Entfernung stufenlos variieren und wahrnehmbare Entfernungshinweise liefern. Durch Erhöhen der Entfernungsverzerrung wird dieser Effekt intensiviert, da die Entfernungsverwässerung erhöht wird. Verzerrungswerte kleiner als 1 verringern den entfernungsbasierten Hall. Dieser Effekt kann mit **Wetness (dB)** (Verwässerung (dB)) auch feiner abgestuft angepasst werden.
+* Um anzupassen, wie stark die Verwässerung mit der Entfernung zunimmt, verwenden Sie **Perceptual Distance Warp** (Verzerrung für Wahrnehmungsentfernung). Projekt Akustik berechnet durch Simulation Verwässerungspegel, die wahrnehmbare Entfernungshinweise liefern und mit der Entfernung stufenlos variieren. Durch Erhöhen der Entfernungsverzerrung wird dieser Effekt intensiviert, da die Entfernungsverwässerung erhöht wird. Verzerrungswerte kleiner als 1 verringern den entfernungsbasierten Hall.
 
-* Erhöhen Sie die Verfallszeit im gesamten Raum durch Anpassen von **Decay Time Scale** (Verfallszeitskala). Wenn das Simulationsergebnis für ein bestimmtes Quelle-Zuhörer-Positionspaar eine Verfallszeit von 1,5 s ergibt und **Decay Time Scale** (Verfallszeitskala) auf 2 festgelegt ist, wird eine Verfallszeit von 3 s auf die Quelle angewandt.
+   Ändern Sie die Einstellung **Wetness (DB)** (Verwässerung (DB)), um eine präzisere Anpassung dieses Effekts vorzunehmen.
+
+* Erhöhen Sie die Verfallszeit im gesamten Raum durch Anpassen von **Decay Time Scale** (Verfallszeitskala). Wenn das Simulationsergebnis für ein bestimmtes Quelle-Zuhörer-Positionspaar eine Verfallszeit von 1,5  Sekunden und **Decay Time Scale** (Verfallszeitskala) auf 2 festgelegt ist, wird eine Verfallszeit von 3  Sekunden auf die Quelle angewendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Lesen Sie vollständige Details zu den [Unity-basierten Entwurfssteuerelementen für Projekt Akustik](unity-workflow.md).
+* Lesen Sie Details zu den [Unity-basierten Entwurfssteuerelementen für Projekt Akustik](unity-workflow.md).
 * Erkunden Sie die Konzepte hinter dem [Entwurfsvorgang](design-process.md) weiter.
 * [Erstellen Sie ein Azure-Konto](create-azure-account.md), um die Vorabbaking- und Bakingvorgänge zu erkunden.
-

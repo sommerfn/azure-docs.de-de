@@ -17,9 +17,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71326444"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Tutorial: Starten des plastischen Readers unter Verwendung des Python-Beispielprojekts
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Tutorial: Starten con Plastischer Reader unter Verwendung des Python-Beispielprojekts
 
-In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist und wie das Tool bewährte Techniken implementiert, um das Leseverständnis von Sprachenlernenden, Leseanfängern und Schülern mit Lernunterschieden zu verbessern. In diesem Tutorial erfahren Sie, wie Sie eine Python-Webanwendung erstellen, die den plastischen Reader startet. In diesem Tutorial lernen Sie Folgendes:
+In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist und wie das Tool bewährte Techniken implementiert, um das Leseverständnis von Sprachenlernenden, Leseanfängern und Schülern mit Lernunterschieden zu verbessern. In diesem Tutorial erfahren Sie, wie Sie eine Python-Webanwendung erstellen, die Plastischer Reader startet. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Python-Web-App mit pip, Flask, Jinja und virtualenv unter Verwendung eines Beispielprojekts
@@ -30,9 +30,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine Ressource des plastischen Readers, die für die Authentifizierung mit Azure Active Directory (Azure AD) konfiguriert ist. Befolgen Sie [diese Anweisungen](./azure-active-directory-authentication.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
+* Eine Ressource von Plastischer Reader, die für die Authentifizierung mit Azure Active Directory (Azure AD) konfiguriert ist. Befolgen Sie [diese Anweisungen](./azure-active-directory-authentication.md) für die Einrichtung. Einige der hier erstellten Werte benötigen Sie bei der Konfiguration der Umgebungseigenschaften. Speichern Sie die Ausgabe Ihrer Sitzung zur späteren Verwendung in einer Textdatei.
 * [Git-Client](https://git-scm.com/)
-* [SDK für den plastischen Reader](https://github.com/microsoft/immersive-reader-sdk)
+* [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) und [pip](https://docs.python.org/3/installing/index.html). Ab Python 3.4 ist pip standardmäßig in den binären Python-Installationsprogrammen enthalten.
 * [Flask](https://flask.palletsprojects.com/en/1.0.x/)
 * [Jinja](http://jinja.pocoo.org/docs/2.10/)
@@ -72,7 +72,7 @@ Erstellen Sie mithilfe von `flask` eine Python-Web-App unter Windows.
 
 Installieren Sie [Git](https://git-scm.com/).
 
-Öffnen Sie im Anschluss an die Git-Installation eine Eingabeaufforderung, und klonen Sie das Git-Repository des SDK für den plastischen Reader in einem Ordner auf Ihrem Computer.
+Öffnen Sie im Anschluss an die Git-Installation eine Eingabeaufforderung, und klonen Sie das Git-Repository des SDK für Plastischer Reader in einem Ordner auf Ihrem Computer.
 
 ```cmd
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -190,7 +190,7 @@ Erstellen Sie mithilfe von `flask` eine Python-Web-App unter OSX.
 
 Installieren Sie [Git](https://git-scm.com/).
 
-Öffnen Sie im Anschluss an die Git-Installation ein Terminal, und klonen Sie das Git-Repository des SDK für den plastischen Reader in einem Ordner auf Ihrem Computer.
+Öffnen Sie im Anschluss an die Git-Installation ein Terminal, und klonen Sie das Git-Repository des SDK für Plastischer Reader in einem Ordner auf Ihrem Computer.
 
 ```bash
 git clone https://github.com/microsoft/immersive-reader-sdk.git
@@ -271,7 +271,7 @@ Wählen Sie einen Ordner für Ihre virtuellen Umgebungen, und führen Sie den fo
 mkdir ~/.virtualenvs
 ```
 
-Wechseln Sie mithilfe von `cd` zum Ordner mit der Python-Beispielanwendung des SDK für den plastischen Reader.
+Wechseln Sie mithilfe von `cd` zum Ordner mit der Python-Beispielanwendung des SDK für Plastischer Reader.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -323,5 +323,5 @@ Navigieren Sie in Ihrem Browser zu _http://localhost:5000_ .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
+* Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
 * Sehen Sie sich Codebeispiele auf [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/).

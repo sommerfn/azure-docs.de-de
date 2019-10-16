@@ -172,6 +172,8 @@
       href: /rest/api/network-watcher/
 - name: Ressourcen
   items:
+    - name: 'Network Watcher: häufig gestellte Fragen'
+      href: frequently-asked-questions.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN-Forum

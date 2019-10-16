@@ -96,22 +96,22 @@
           items:
             - name: Erstellen und Verwalten von Classroom-Labs
               href: classroom-labs/how-to-manage-classroom-labs.md
-            - name: Einrichten und Veröffentlichen von Vorlagen
+            - name: 'Einrichten, Anpassen und Veröffentlichen von Vorlagen'
               href: classroom-labs/how-to-create-manage-template.md
-            - name: Konfigurieren und Steuern der Nutzung
+            - name: Einrichten und Verwalten eines VM-Pools
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Hinzufügen und Verwalten von Labbenutzern
               href: classroom-labs/how-to-configure-student-usage.md
             - name: Erstellen und Verwalten von Zeitplänen
               href: classroom-labs/how-to-create-schedules.md
-            - name: Erstellen einer Umgebung mit mehreren virtuellen Computern in einer Vorlage für virtuelle Computer
-              href: classroom-labs/how-to-enable-multi-vm-environment.md
             - name: Verwenden eines Katalogs mit freigegebenen Images
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Aktivieren der Remotedesktopverbindung für Linux
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
-            - name: Festlegen oder Zurücksetzen von Kennwörtern für virtuelle Computer
-              href: classroom-labs/how-to-set-virtual-machine-passwords.md
             - name: Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer
               href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
+            - name: Erstellen einer Umgebung mit mehreren virtuellen Computern in einer Vorlage für virtuelle Computer
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
         - name: Herstellen einer Verbindung mit virtuellen Computern in Classroom-Labs (Kursteilnehmer)
           items:
             - name: Zugreifen auf Classroom-Labs
