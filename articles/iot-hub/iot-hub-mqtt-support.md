@@ -52,7 +52,7 @@ Die folgende Tabelle enthält Links zu Codebeispielen für jede unterstützte Sp
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrieren einer Geräte-App von AMQP zu MQTT
 
-Bei Verwendung der [Geräte-SDKs](https://github.com/Azure/azure-iot-sdks) muss bei einem Wechsel von AMQP zu MQTT der Protokollparameter in der Clientinitialisierung geändert werden, wie bereits erwähnt.
+Wie bereits erwähnt, muss bei Verwendung der [Geräte-SDKs](https://github.com/Azure/azure-iot-sdks) bei einem Wechsel von AMQP zu MQTT der Protokollparameter in der Clientinitialisierung geändert werden.
 
 Dabei sollten Sie die folgenden Punkte beachten:
 

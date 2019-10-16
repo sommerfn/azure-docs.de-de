@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: Erstellen eines zusätzlichen Abonnements
       href: billing-create-subscription.md
-    - name: "Erstellen eines zusätzlichen Abonnements\_– Microsoft-Kundenvereinbarung"
-      href: billing-mca-create-subscription.md
     - name: Programmgesteuertes Erstellen von Enterprise-Abonnements
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: Exportieren der Abonnementinformationen
