@@ -8,17 +8,16 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 526c60916854d4918607a1fd1b887ac9d27cd1c7
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 29e0b05ee9cb8f7dc67f90b54081bca4db0691b6
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950028"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035227"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Worum handelt es sich beim Azure Backup-Dienst?
 
 Der Azure Backup-Dienst dient zum Sichern von Daten in der Microsoft Azure-Cloud. Sie können sowohl lokale Computer und Workloads als auch virtuelle Azure-Computer (Virtual Machines, VMs) sichern.
-
 
 ## <a name="why-use-azure-backup"></a>Gründe für Azure Backup
 
@@ -28,16 +27,15 @@ Azure Backup bietet im Wesentlichen folgende Vorteile:
 - **Sicherung virtueller Azure-IaaS-Computer:** Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen von Originaldaten. Sicherungen werden in einem Recovery Services-Tresor mit integrierten verwalteten Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Sicherungen werden außerdem optimiert und können bei Bedarf problemlos wiederhergestellt werden.
 - **Unkomplizierte Skalierung:** Dank der Leistung und unbegrenzten Skalierbarkeit der Azure-Cloud bietet Azure Backup Hochverfügbarkeit ohne Wartungs- oder Überwachungsaufwand.
 - **Unbegrenzte Datenübertragungen:** Die Menge an übertragenen eingehenden und ausgehenden Daten wird von Azure Backup nicht beschränkt, und es fallen keine Kosten für die übertragenen Daten an.
-    - Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
-    - Wenn Sie mit dem Azure Import/Export-Dienst eine erste Sicherung im Offlinemodus ausführen, um große Datenmengen zu importieren, fallen Kosten für eingehende Daten an.  [Weitere Informationen](backup-azure-backup-import-export.md)
+  - Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
+  - Wenn Sie mit dem Azure Import/Export-Dienst eine erste Sicherung im Offlinemodus ausführen, um große Datenmengen zu importieren, fallen Kosten für eingehende Daten an.  [Weitere Informationen](backup-azure-backup-import-export.md)
 - **Datenschutz:** Azure Backup bietet Lösungen zur Sicherung von Daten während der Übertragung und im Ruhezustand.
 - **Anwendungskonsistente Sicherungen:** Eine anwendungskonsistente Sicherung bedeutet, dass ein Wiederherstellungspunkt alle erforderlichen Daten zum Wiederherstellen der Sicherungskopie enthält. Azure Backup umfasst anwendungskonsistente Sicherungen, sodass sichergestellt ist, dass zum Wiederherstellen der Daten keine zusätzlichen Fixes benötigt werden. Durch die Wiederherstellung von anwendungskonsistenten Daten wird die Wiederherstellungsdauer reduziert, sodass Sie schnell zum Zustand der normalen Ausführung zurückkehren können.
-- **Kurz- und Langzeitaufbewahrung von Daten:** Sie können Recovery Services-Tresore für die kurzfristige und langfristige Datenaufbewahrung verwenden. Die Zeit, für die Sie Daten im Recovery Services-Tresor aufbewahren können, wird von Azure nicht begrenzt. Daten können also beliebig lange aufbewahrt werden. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. 
+- **Kurz- und Langzeitaufbewahrung von Daten:** Sie können Recovery Services-Tresore für die kurzfristige und langfristige Datenaufbewahrung verwenden. Die Zeit, für die Sie Daten im Recovery Services-Tresor aufbewahren können, wird von Azure nicht begrenzt. Daten können also beliebig lange aufbewahrt werden. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten.
 - **Automatische Speicherverwaltung**: Für Hybridumgebungen ist häufig heterogener Speicher erforderlich – teilweise lokal und teilweise in der Cloud. Bei Azure Backup fallen keine Kosten für die Verwendung von lokalen Speichergeräten an. Azure Backup sorgt im Rahmen eines Modells mit nutzungsbasierter Bezahlung für die automatische Zuteilung und Verwaltung von Sicherungsspeicher. Dadurch zahlen Sie nur für den Speicher, den Sie tatsächlich verwenden. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/backup) zu den Preisen.
 - **Mehrere Speicheroptionen:** Azure Backup bietet zwei Replikationsarten, um die Hochverfügbarkeit Ihres Speichers bzw. Ihrer Daten sicherzustellen.
-    - [Lokal redundanter Speicher (Locally Redundant Storage, LRS)](../storage/common/storage-redundancy-lrs.md) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
-    - [Geografisch redundanter Speicher (Geo-Redundant Storage, GRS)](../storage/common/storage-redundancy-grs.md) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
-
+  - [Lokal redundanter Speicher (Locally Redundant Storage, LRS)](../storage/common/storage-redundancy-lrs.md) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
+  - [Geografisch redundanter Speicher (Geo-Redundant Storage, GRS)](../storage/common/storage-redundancy-grs.md) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
 
 ## <a name="whats-the-difference-between-azure-backup-and-azure-site-recovery"></a>Was ist der Unterschied zwischen Azure Backup und Azure Site Recovery?
 
@@ -66,16 +64,16 @@ Mit Azure Backup können sowohl lokale Computer als auch virtuelle Azure-Compute
 **Computer** | **Sicherungsszenario**
 --- | ---
 **Lokale Sicherung** |  (1) Führen Sie den MARS-Agent (Microsoft Azure Recovery Services) von Azure Backup auf einem lokalen Windows-Computer aus, um einzelne Dateien und den Systemzustand zu sichern. <br/><br/>(2) Sichern Sie lokale Computer auf einem Sicherungsserver (System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Server (MABS)), und konfigurieren Sie dann den Sicherungsserver für die Sicherung in einem Azure Backup Recovery Services-Tresor in Azure.
-**Virtuelle Azure-Computer** | (1) Aktivieren Sie die Sicherung für einzelne virtuelle Azure-Computer. Wenn Sie die Sicherung aktivieren, installiert Azure Backup eine Erweiterung für den Azure-VM-Agent, der auf dem virtuellen Computer ausgeführt wird. Der Agent sichert den gesamten virtuellen Computer.<br/><br/> 2) Führen Sie den MARS-Agent auf einem virtuellen Azure-Computer aus. Diese Vorgehensweise ist hilfreich, wenn Sie einzelne Dateien und Ordner auf dem virtuellen Computer sichern möchten.<br/><br/> 
-
+**Virtuelle Azure-Computer** | (1) Aktivieren Sie die Sicherung für einzelne virtuelle Azure-Computer. Wenn Sie die Sicherung aktivieren, installiert Azure Backup eine Erweiterung für den Azure-VM-Agent, der auf dem virtuellen Computer ausgeführt wird. Der Agent sichert den gesamten virtuellen Computer.<br/><br/> 2) Führen Sie den MARS-Agent auf einem virtuellen Azure-Computer aus. Diese Vorgehensweise ist hilfreich, wenn Sie einzelne Dateien und Ordner auf dem virtuellen Computer sichern möchten.<br/><br/>
 
 ## <a name="why-use-a-backup-server"></a>Gründe für die Verwendung eines Sicherungsservers
+
 Die Sicherung von Computern und Apps in MABS/DPM-Speicher mit anschließender Sicherung des DPM/MABS-Speichers in einem Tresor hat folgende Vorteile:
 
 - Die Sicherung in MABS/DPM ermöglicht neben Datei-/Ordner-/Volumesicherungen und Sicherungen des Computerzustands (Bare-Metal-/Systemstatussicherungen) auch App-fähige Sicherungen, die für gängige Apps wie SQL Server, Exchange und SharePoint optimiert sind.
 - Bei lokalen Computern müssen Sie den MARS-Agent nicht auf jedem Computer installieren, den Sie sichern möchten. Auf den einzelnen Computern wird jeweils der DPM/MABS-Schutz-Agent ausgeführt, und der MARS-Agent wird nur in der MABS/DPM-Instanz ausgeführt.
 - Sie profitieren von mehr Flexibilität und präziseren Planungsoptionen für die Sicherungsausführung.
-- Sie können Sicherungen für mehrere Computer in einer zentralen Konsole verwalten und die Computer dazu in Schutzgruppen zusammenfassen. Das ist besonders hilfreich, wenn Apps auf mehrere Computer verteilt sind und gemeinsam gesichert werden sollen.
+- Sie können Sicherungen für mehrere Computer in einer zentralen Konsole verwalten und die Computer dazu in Schutzgruppen zusammenfassen. Das ist hilfreich, wenn Apps auf mehrere Computer verteilt sind und gemeinsam gesichert werden sollen.
 
 Informieren Sie sich ausführlicher über die [Funktionsweise der Sicherung](backup-architecture.md#architecture-back-up-to-dpmmabs) bei Verwendung eines Sicherungsservers sowie über die [Supportanforderungen](backup-support-matrix-mabs-dpm.md) für Sicherungsserver.
 
@@ -118,7 +116,7 @@ Für Azure Backup gilt pro *geschützter Instanz* eine Obergrenze von 9999 Wiede
 
 In der folgenden Tabelle ist die maximale Sicherungshäufigkeit für die einzelnen Komponenten angegeben. Ihre Konfiguration der Sicherungsrichtlinie bestimmt, wie schnell die Wiederherstellungspunkte verbraucht werden. Wenn Sie beispielsweise jeden Tag einen Wiederherstellungspunkt erstellen, können Sie Wiederherstellungspunkte 27 Jahre lang nutzen, bevor der Vorrat erschöpft ist. Wenn Sie einen monatlichen Wiederherstellungspunkt verwenden, reicht der Vorrat für 833 Jahre. Der Backup-Dienst legt keine Ablaufzeitgrenze für einen Wiederherstellungspunkt fest.
 
-|  | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
+|  | Azure Backup-Agent (MARS)| System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Sicherungshäufigkeit<br/> (zum Recovery Services-Tresor) |Drei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Zwei Sicherungen pro Tag |Eine Sicherung pro Tag |
 | Sicherungshäufigkeit<br/> (auf Datenträger) |Nicht zutreffend |Alle 15 Minuten für SQL Server<br/><br/> Stündlich für andere Workloads |Alle 15 Minuten für SQL Server<br/><br/> Stündlich für andere Workloads |Nicht zutreffend |

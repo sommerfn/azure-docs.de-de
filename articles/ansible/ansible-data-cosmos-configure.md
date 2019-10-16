@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Azure Cosmos DB-Konten mit Ansible | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Azure Cosmos DB-Konten mit Ansible'
 description: Es wird beschrieben, wie Sie Ansible zum Erstellen und Konfigurieren einer Azure Cosmos DB-Instanz verwenden.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Cosmos DB, Datenbank
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 06d416358c1886f09b0b2336cc1ea53ce89947ae
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230800"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242072"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Tutorial: Konfigurieren von Azure Cosmos DB-Konten mit Ansible
 
@@ -50,7 +50,7 @@ Mit dem Playbook-Beispielcode wird ein zufälliger Postfix erstellt. Der Postfix
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen 
 
-Mit dem Playbook-Beispielcode wird eine Azure-Ressourcengruppe erstellt. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Der Ausschnitt aus dem Beispielplaybook erstellt eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 ```yml
   - name: Create a resource group
@@ -143,7 +143,7 @@ Im letzten Codeausschnitt wird veranschaulicht, wie Sie ein Azure Cosmos DB-Kont
 
 ## <a name="get-the-sample-playbook"></a>Abrufen des Beispielplaybooks
 
-Es gibt zwei Möglichkeiten, das vollständige Beispielplaybook zu erhalten:
+Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 - [Laden Sie das Playbook herunter](https://github.com/Azure-Samples/ansible-playbooks/blob/master/cosmosdb_create.yml), und speichern Sie es als `cosmosdb.yml`.
 - Erstellen Sie eine neue Datei mit dem Namen `cosmosdb.yml`, und kopieren Sie die folgenden Inhalte in diese Datei:
 

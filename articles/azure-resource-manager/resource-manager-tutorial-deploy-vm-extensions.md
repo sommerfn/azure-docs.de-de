@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a6d0c3e9daba6f4f37778fabde161751944e174a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 338054aadbf04c6c6e2b496677476c2c5634b6ba
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774878"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169302"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -48,7 +48,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="prepare-a-powershell-script"></a>Vorbereiten eines PowerShell-Skripts
 
-Ein PowerShell-Skript mit folgendem Inhalt wird über ein [Azure Storage-Konto mit öffentlichem Zugriff](https://armtutorials.blob.core.windows.net/usescriptextensions/installWebServer.ps1) freigegeben:
+Ein PowerShell-Skript mit folgendem Inhalt ist auf [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) verfügbar:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -63,7 +63,7 @@ Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. St
 1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
 1. Fügen Sie in das Feld **Dateiname** die folgende URL ein: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json.
 
-1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.  
+1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
     Die Vorlage definiert fünf Ressourcen:
 
    * **Microsoft.Storage/storageAccounts**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
@@ -96,7 +96,7 @@ Fügen Sie der vorhandenen Vorlage eine VM-Erweiterungsressource mit folgendem I
         "autoUpgradeMinorVersion":true,
         "settings": {
             "fileUris": [
-                "https://armtutorials.blob.core.windows.net/usescriptextensions/installWebServer.ps1"
+                "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
             ],
             "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
         }
@@ -109,7 +109,7 @@ Weitere Informationen zu dieser Ressourcendefinition finden Sie in der [Erweiter
 * **name:** Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md).
 * **dependsOn:** Erstellen Sie die Erweiterungsressource nach der Erstellung des virtuellen Computers.
 * **fileUris:** Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung des angegebenen Speicherorts entscheiden, müssen Sie die Werte aktualisieren.
-* **commandToExecute:** Dieser Befehl ruft das Skript auf.  
+* **commandToExecute:** Dieser Befehl ruft das Skript auf.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -118,8 +118,7 @@ Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt „Bereitstel
 ## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
 
 1. Wählen Sie im Azure-Portal den virtuellen Computer aus.
-1. Kopieren Sie in der VM-Übersicht die IP-Adresse durch Auswählen von **Klicken Sie zum Kopieren.** , und fügen Sie sie anschließend in eine Browserregisterkarte ein.  
-   Die Standardbegrüßungsseite für IIS (Internet Information Services, Internetinformationsdienste) wird geöffnet:
+1. Kopieren Sie in der VM-Übersicht die IP-Adresse durch Auswählen von **Klicken Sie zum Kopieren.** , und fügen Sie sie anschließend in eine Browserregisterkarte ein. Die Standardbegrüßungsseite für IIS (Internet Information Services, Internetinformationsdienste) wird geöffnet:
 
 ![Die Begrüßungsseite von Internetinformationsdienste](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
@@ -129,7 +128,7 @@ Wenn Sie die bereitgestellten Azure-Ressourcen nicht mehr benötigen, bereinigen
 
 1. Klicken Sie im Azure-Portal im linken Bereich auf **Ressourcengruppe**.
 2. Geben Sie in das Feld **Nach Name filtern** den Namen der Ressourcengruppe ein.
-3. Klicken Sie auf den Namen der Ressourcengruppe.  
+3. Klicken Sie auf den Namen der Ressourcengruppe.
     Sechs Ressourcen werden in der Ressourcengruppe angezeigt.
 4. Wählen Sie im oberen Menü **Ressourcengruppe löschen** aus.
 

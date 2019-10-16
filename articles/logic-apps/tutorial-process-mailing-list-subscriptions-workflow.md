@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: 734a6be81a8052b2894f4c27b165bb8dc4f14caf
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fb92e882607575e99ae800bd9c6d7c36b5d89d8e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171732"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034545"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter genehmigungsbasierter Workflows mithilfe von Azure Logic Apps
 
@@ -35,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
-![Allgemeine Darstellung der fertigen Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-overview.png)
+![Allgemeine Übersicht über die fertige Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-overview.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,11 +53,11 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
 1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
 
-   ![Erstellen einer Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app.png)
+   ![Erstellen einer neuen Logik-App-Ressource](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
 1. Geben Sie unter **Logik-App erstellen** die Informationen wie beschrieben ein. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
-   ![Angeben von Informationen zur Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
+   ![Angeben von Informationen zu Ihrer Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
    | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
@@ -70,7 +70,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
 1. Wählen Sie nach der Bereitstellung Ihrer App durch Azure für Ihre bereitgestellte Logik-App auf der Azure-Symbolleiste **Benachrichtigungen** > **Zu Ressource wechseln** aus.
 
-   ![Zu Ressource wechseln](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app.png)
+   ![Navigieren zu Ihrer neuen Logik-App-Ressource](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
    Sie können zum Suchen und Auswählen Ihrer Logik-App auch den Namen in das Suchfeld eingeben.
 
@@ -108,13 +108,13 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
    1. Fügen Sie dem Trigger nun eine weitere Eigenschaft hinzu, damit Sie nach E-Mail-Betreffzeile filtern können. Öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die Eigenschaft **Betrefffilter** aus.
 
-      ![Neuen Parameter hinzufügen](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
+      ![Hinzufügen der Eigenschaft „Betrefffilter“ zum Trigger](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
       Weitere Informationen zu den Eigenschaften dieses Triggers finden Sie in der [Referenz zum Office 365 Outlook-Connector](https://docs.microsoft.com/connectors/office365/) oder in der [Referenz zum Outlook.com-Connector](https://docs.microsoft.com/connectors/outlook/).
 
    1. Wenn die Eigenschaft im Trigger angezeigt wird, geben Sie den folgenden Text ein: `subscribe-test-members-ML`.
 
-      ![Eingeben des Betrefffilters (Neuen Parameter hinzufügen)](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
+      ![Eingeben von Text für die Eigenschaft „Betrefffilter“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-subject-filter-property.png)
 
 1. Klicken Sie auf die Titelleiste des Triggers, um die Triggerdetails vorerst auszublenden.
 
@@ -161,13 +161,13 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, welche Antwort d
 
 1. Wählen Sie unter **Aktion auswählen** die Option **Integriert** aus. Geben Sie im Suchfeld den Begriff `condition` als Filter ein. Wählen Sie in der Liste „Aktionen“ die Aktion **Bedingung** aus.
 
-   ![Auswählen von „Bedingung“](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition.png)
+   ![Suchen und Auswählen der Aktion „Bedingung“](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
 1. Versehen Sie die Bedingung mit einem aussagekräftigeren Namen.
 
    1. Klicken Sie auf der Titelleiste der Bedingung auf die **Schaltfläche mit den Auslassungspunkten** ( **...** ) und anschließend auf **Umbenennen**.
 
-      ![Umbenennen der Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition.png)
+      ![Umbenennen der Beschreibung der Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 
    1. Nennen Sie Ihre Bedingung wie folgt: `If request approved`
 
@@ -177,7 +177,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, welche Antwort d
 
    1. Wählen Sie in der angezeigten Liste mit dynamischen Inhalten unter **Genehmigungs-E-Mail senden** die Eigenschaft **SelectedOption** aus.
 
-      ![Auswählen von „SelectedOption“ unter „Genehmigung-E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
+      ![Auswählen von „SelectedOption“ aus der Liste mit dynamischen Inhalten](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response.png)
 
    1. Wählen Sie im mittleren Vergleichsfeld den Operator **Ist gleich** aus.
 
@@ -185,7 +185,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, welche Antwort d
 
       Danach sieht die Bedingung wie im folgenden Beispiel aus:
 
-      ![Abgeschlossene Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
+      ![Fertige Bedingung für Beispiel „Genehmigt“](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
 
 1. Speichern Sie Ihre Logik-App.
 
@@ -242,7 +242,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, um zu prüfen, ob das neue Mitgli
 
       Danach sieht die Bedingung wie im folgenden Beispiel aus:
 
-      ![Abgeschlossene Bedingung](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
+      ![Fertige Bedingung für Beispiel „Abonniert“](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-added-member-2.png)
 
 Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das genehmigte Mitglied erfolgreich der Adressenliste hinzugefügt wurde oder wenn das Hinzufügen nicht erfolgreich war.
 
@@ -250,7 +250,7 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
 1. Wählen Sie in der Verzweigung **Bei TRUE** für die Bedingung **If add member succeeded** die Option **Aktion hinzufügen** aus.
 
-   ![Auswählen von „Aktion hinzufügen“ in der Verzweigung „Bei TRUE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
+   ![Auswählen von „Aktion hinzufügen“ im Branch „Bei TRUE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
 1. Geben Sie unter **Aktion auswählen** im Suchfeld den Text `outlook send email` als Filter ein, und wählen Sie die Aktion **E-Mail senden** aus.
 
@@ -275,7 +275,7 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
 1. Wählen Sie in der Verzweigung **Bei FALSE** für die Bedingung **If add member succeeded** die Option **Aktion hinzufügen** aus.
 
-   ![Auswählen von „Aktion hinzufügen“ in der Verzweigung „Bei FALSE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
+   ![Auswählen von „Aktion hinzufügen“ im Branch „Bei FALSE“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
 1. Geben Sie unter **Aktion auswählen** im Suchfeld den Text `outlook send email` als Filter ein, und wählen Sie die Aktion **E-Mail senden** aus.
 
@@ -298,7 +298,7 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
 Testen Sie als Nächstes Ihre Logik-App, die nun in etwa wie folgt aussieht:
 
-![Fertiggestellte Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-complete.png)
+![Beispiel für fertigen Logik-App-Workflow](./media/tutorial-process-mailing-list-subscriptions-workflow/tutorial-high-level-completed.png)
 
 ## <a name="run-your-logic-app"></a>Ausführen Ihrer Logik-App
 
@@ -312,11 +312,11 @@ Testen Sie als Nächstes Ihre Logik-App, die nun in etwa wie folgt aussieht:
 
 1. Wenn die E-Mail-Adresse des Abonnenten in Ihrer Adressenliste nicht vorhanden ist, fügt Ihre Logik-App die entsprechende E-Mail-Adresse hinzu und sendet Ihnen eine E-Mail. Beispiel:
 
-   ![Erfolgs-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-success.png)
+   ![Beispiel-E-Mail: erfolgreiches Abonnement](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-success.png)
 
    Falls Ihre Logik-App den Abonnenten nicht hinzufügen kann, erhalten Sie eine E-Mail wie die folgende:
 
-   ![Fehler-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-failed.png)
+   ![Beispiel-E-Mail: fehlerhaftes Abonnement](./media/tutorial-process-mailing-list-subscriptions-workflow/add-member-mailing-list-failed.png)
 
    Sollten Sie keine E-Mails erhalten, überprüfen Sie Ihren Ordner für Junk-E-Mails. E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. Wenn Sie unsicher sind, ob Ihre Logik-App richtig ausgeführt wurde, helfen Ihnen die Informationen unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md) weiter.
 

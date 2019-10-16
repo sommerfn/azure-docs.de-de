@@ -12,12 +12,12 @@ ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: c9248e5bcc9ebd819518b6ee609f529ea9b8f8bc
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051701"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165914"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -27,7 +27,7 @@ Wenn Sie mit Azure Logic Apps noch nicht vertraut sind und sich nur über die gr
 
 In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart zum Azure-Portal, allerdings mit Visual Studio. Mit dieser Logik-App wird der RSS-Feed einer Website überwacht und eine E-Mail für jedes neue Element in diesem Feed gesendet. Ihre fertige Logik-App ähnelt diesem allgemeinen Workflow:
 
-![Fertiggestellte Logik-App](./media/quickstart-create-logic-apps-with-visual-studio/overview.png)
+![Allgemeine Übersicht über den Logik-App-Workflow](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
@@ -59,6 +59,8 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
     Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. 
     Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
 
+* Wenn Sie andere Azure-Umgebungen (etwa Azure Government) verwenden möchten, können Sie die Erweiterung [Azure Environment Selector](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) (Azure-Umgebungsauswahl) installieren und nutzen, mit der Sie einfacher zwischen Umgebungen wechseln können. Weitere Informationen finden Sie unter [Einführung in die Visual Studio-Erweiterung „Azure Environment Selector“ (Azure-Umgebungsauswahl)](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/).
+
 * Internetzugriff bei Verwendung des eingebetteten Logik-App-Designers
 
   Für den Designer ist eine Internetverbindung zum Erstellen von Ressourcen in Azure und zum Lesen von Eigenschaften und Daten von Connectors in Ihrer Logik-App erforderlich. 
@@ -76,7 +78,7 @@ Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-m
 
 1. Wählen Sie im Menü **Datei** die Option **Neu** > **Projekt**. (Tastatur: STRG+UMSCHALT+N)
 
-   ![Menü „Datei“, Option „Neu“ > „Projekt“](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
+   ![Erstellen eines neuen Visual Studio-Projekts](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
 1. Wählen Sie unter **Installiert** die Option **Visual C#** oder **Visual Basic**. Wählen Sie **Cloud** > **Azure-Ressourcengruppe**. Geben Sie Ihrem Projekt einen Namen, z.B.:
 
@@ -95,7 +97,7 @@ Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-m
 
 1. Wählen Sie in der Vorlagenliste die Vorlage **Logik-App** aus. Klicken Sie auf **OK**.
 
-   ![Auswählen der Logik-App-Vorlage](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
+   ![Auswählen der Vorlage „Logik-App“ zum Erstellen des Projekts](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
    Nachdem Visual Studio Ihr Projekt erstellt hat, wird der Projektmappen-Explorer geöffnet, und Ihre Projektmappe wird angezeigt. 
    In Ihrer Projektmappe wird in der Datei **LogicApp.json** nicht nur die Logik-App-Definition gespeichert, sondern sie dient auch als Azure Resource Manager-Vorlage, die Sie für die Bereitstellung verwenden können.
@@ -142,7 +144,7 @@ Geben Sie im Suchfeld „rss“ ein. Wählen Sie in der Triggerliste den folgend
 
 1. Sobald der Trigger im Designer angezeigt wird, führen Sie zum Abschließen der Logik-App-Erstellung die Workflowschritte im [Schnellstart für das Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md#add-rss-trigger) aus, und kehren Sie dann zu diesem Artikel zurück. Anschließend sieht Ihre Logik-App in etwa wie im folgenden Beispiel aus:
 
-   ![Fertiggestellte Logik-App](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app.png)
+   ![Fertiges Beispiel für Logik-App-Workflow](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app-workflow.png)
 
 1. Speichern Sie Ihre Visual Studio-Projektmappe. (Tastatur: STRG+S)
 
@@ -154,7 +156,7 @@ Bevor Sie Ihre Logik-App ausführen und testen können, müssen Sie sie über Vi
 
 1. Wählen Sie im Projektmappen-Explorer im Kontextmenü Ihres Projekts die Option **Bereitstellen** > **Neu**. Melden Sie sich nach Aufforderung mit Ihrem Azure-Konto an.
 
-   ![Erstellen der Logik-App-Bereitstellung](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
+   ![Erstellen einer neuen Logik-App-Bereitstellung](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
 1. Behalten Sie für diese Bereitstellung das Azure-Standardabonnement, die Ressourcengruppe und andere Einstellungen bei. Wählen Sie **Bereitstellen** aus.
 
@@ -166,18 +168,18 @@ Bevor Sie Ihre Logik-App ausführen und testen können, müssen Sie sie über Vi
 
    Wenn die Bereitstellung gestartet wird, wird der Bereitstellungsstatus Ihrer App im Fenster **Ausgabe** von Visual Studio angezeigt. Falls der Status nicht angezeigt wird, können Sie die Liste **Ausgabe anzeigen von** öffnen und Ihre Azure-Ressourcengruppe auswählen.
 
-   ![Ausgabe des Bereitstellungsstatus](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
+   ![Bereitstellungsstatus im Visual Studio-Ausgabefenster](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
    Wenn Ihre ausgewählten Connectors eine Eingabe von Ihnen benötigen, wird im Hintergrund ein PowerShell-Fenster geöffnet, das zur Eingabe von erforderlichen Kennwörtern oder geheimen Schlüsseln auffordert. Nachdem Sie diese Informationen eingegeben haben, wird die Bereitstellung fortgesetzt.
 
-   ![PowerShell-Fenster](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
+   ![PowerShell-Eingabeaufforderung für Kennwörter oder geheime Schlüssel](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
 
    Nach Abschluss der Bereitstellung befindet sich Ihre Logik-App im Azure-Portal im Livezustand und wird gemäß Ihrem angegebenen Zeitplan (jede Minute) ausgeführt. Wenn der Trigger neue Feedelemente erkennt, wird er ausgelöst, sodass eine Workflowinstanz erstellt wird, welche die Aktionen Ihrer Logik-App ausführt. Ihre Logik-App sendet für jedes neue Element eine E-Mail. Falls der Trigger keine neuen Elemente findet, wird er nicht ausgelöst und überspringt das Instanziieren des Workflows. Dann wartet Ihre Logik mit einer erneuten Prüfung bis zum nächsten Intervall.
 
    Hier sind Beispiele für E-Mails angegeben, die von dieser Logik-App gesendet werden. 
    Überprüfen Sie Ihren Ordner mit den Junk-E-Mails, falls Sie keine E-Mails erhalten.
 
-   ![Outlook sendet E-Mails für jedes neue RSS-Element.](./media/quickstart-create-logic-apps-with-visual-studio/outlook-email.png)
+   ![Outlook sendet E-Mails für jedes neue RSS-Element.](./media/quickstart-create-logic-apps-with-visual-studio/example-outlook-email.png)
 
 Glückwunsch! Sie haben den Buildvorgang und die Bereitstellung Ihrer Logik-App mit Visual Studio erfolgreich durchgeführt. Informationen zur Verwaltung Ihrer Logik-App und des dazugehörigen Ausführungsverlaufs finden Sie unter [Verwalten von Logik-Apps mit Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md).
 
@@ -191,11 +193,11 @@ Wenn Sie über ein vorhandenes Azure-Ressourcengruppenprojekt verfügen, können
 
 1. Wählen Sie am oberen Rand des Fensters mit der JSON-Gliederung die Option **Ressource hinzufügen** aus, um der Vorlagendatei eine Ressource hinzuzufügen. Klicken Sie im Fenster mit der JSON-Gliederung mit der rechten Maustaste auf **Ressourcen**, und wählen Sie **Neue Ressource hinzufügen** aus.
 
-   ![Fenster mit der JSON-Gliederung](./media/quickstart-create-logic-apps-with-visual-studio/jsonoutline.png)
+   ![Hinzufügen neuer Ressource im JSON-Gliederungsfenster](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
 1. Wählen Sie im Dialogfeld **Ressource hinzufügen** die Option **Logik-App** aus. Benennen Sie Ihre Logik-App, und wählen Sie **Hinzufügen** aus.
 
-   ![Ressource hinzufügen](./media/quickstart-create-logic-apps-with-visual-studio/addresource.png)
+   ![Hinzufügen einer neuen Logik-App-Ressource zum Projekt](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -208,7 +210,7 @@ Wählen Sie die Ressourcengruppe Ihrer Logik-App und dann **Übersicht** aus.
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Ressourcengruppe löschen** aus. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und klicken Sie auf **Löschen**.
 
-   ![„Ressourcengruppen“ > „Übersicht“ > „Ressourcengruppe löschen“](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![Löschen der Ressourcengruppe für die Logik-App](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
 
 1. Löschen Sie die Visual Studio-Projektmappe von Ihrem lokalen Computer.
 

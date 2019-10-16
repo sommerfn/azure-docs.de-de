@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 08/01/2019
 ms.author: diberry
-ms.openlocfilehash: f56798359cdc8739a363bed3bfddadd584617adf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815493"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973786"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Was ist der QnA Maker-Dienst?
 
@@ -85,21 +85,8 @@ QnA Maker bietet Erstellungs-, Trainings- und Veröffentlichungsfunktionen sowi
 
 **Schritt 4:** Rufen Sie in Ihrer Clientanwendung programmgesteuert Ihren Endpunkt der Wissensdatenbank auf, und lesen Sie die JSON-Antwort, um dem Benutzer die beste Antwort anzuzeigen.  
 
-## <a name="news-and-updates"></a>Neuigkeiten und Aktualisierungen
-
-Informieren Sie sich über Neuigkeiten zu QnA Maker.
-
-* Juni 2019
-    * Verbessertes Rangfolgemodell Französisch, Italienisch, Deutsch, Spanisch und Portugiesisch
-* April 2019
-    * Extraktion des Inhalts von Supportwebsites
-    * Unterstützung von SharePoint-Dokumenten
-* März 2019
-    * Aktives Lernen 
-    * Verbessertes NLP-Rangfolgemodell für Englisch 
-
 ## <a name="next-steps"></a>Nächste Schritte
 QnA Maker bietet alles, was Sie zum Erstellen, Verwalten und Bereitstellen Ihrer benutzerdefinierten Wissensdatenbank benötigen. 
 
 > [!div class="nextstepaction"]
-> [Create a QnA Maker service](../how-to/set-up-qnamaker-service-azure.md) (Erstellen eines QnA Maker-Diensts)
+> [Überprüfen der aktuellen Änderungen](../whats-new.md)

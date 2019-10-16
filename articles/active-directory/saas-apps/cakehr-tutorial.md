@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acedc081166c84935e3abfde8401b55c64156a7
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174376"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026427"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit CakeHR
 
@@ -137,11 +137,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Melden Sie sich in einem neuen Webbrowserfenster bei der CakeHR-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie in der oberen rechten Ecke der Seite auf  **Profile** (Profil), und navigieren Sie dann zu **Settings** (Einstellungen).
+2. Klicken Sie in der oberen rechten Ecke der Seite auf **Profile** (Profil), und navigieren Sie dann zu **Settings** (Einstellungen).
 
     ![CakeHR-Konfiguration](./media/cakehr-tutorial/config01.png)
 
-3. Klicken Sie links auf der Menüleiste auf **INTEGRATIONS** > **SAML SSO** (INTEGRATIONEN > SAML-SSO), und führen Sie die folgenden Schritte aus:
+3. Klicken Sie links auf der Menüleiste auf**INTEGRATIONS** > **SAML SSO** (INTEGRATIONEN > SAML-SSO), und führen Sie die folgenden Schritte aus:
 
      ![CakeHR-Konfiguration](./media/cakehr-tutorial/config02.png)
 
@@ -163,7 +163,7 @@ Damit sich Azure AD-Benutzer bei CakeHR anmelden können, müssen sie in CakeHR
 
 1. Melden Sie sich bei CakeHR als Sicherheitsadministrator an.
 
-2. Klicken Sie links auf der Menüleiste auf **COMPANY** > **ADD** (UNTERNEHMEN > HINZUFÜGEN).
+2. Klicken Sie links auf der Menüleiste auf **COMPANY** > **ADD** (UNTERNEHMEN > HINZUFÜGEN).
 
     ![CakeHR-Konfiguration](./media/cakehr-tutorial/config03.png)
 

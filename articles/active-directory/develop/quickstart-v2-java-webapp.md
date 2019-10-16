@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/18/2019
+ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 82a5054a98a5b77cf996be1fddd6502b8f3146bc
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8bb9073ccb4aef81b46b3b2b87730ddede5c0ff7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120511"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240206"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Java-Web-App
 
@@ -50,18 +50,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Option 2: Registrieren und manuelles Konfigurieren Ihrer Anwendung und des Codebeispiels
 > 
 >
-> #### <a name="step-1-download-the-code-sample"></a>Schritt 1: Herunterladen des Codebeispiels
-> 
-> - [Codebeispiel herunterladen](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
->
-> #### <a name="step-2-open-applicationproperties"></a>Schritt 2: Öffnen von „application.properties“
->
-> 1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner.
-> 1. Optional: Falls Sie eine integrierte Entwicklungsumgebung (Integrated Development Environment, IDE) verwenden, können Sie das Beispiel in Ihrer bevorzugten IDE öffnen.
-> 1. Öffnen Sie die Datei *application.properties*. Werte für `aad.clientId`, `aad.authority` und `aad.secretKey` werden im nächsten Schritt beim Registrieren Ihrer Anwendung eingefügt.
-
-
-> #### <a name="step-3-register-your-application"></a>Schritt 3: Anwendung registrieren
+> #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 > Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 >
 > 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
@@ -71,8 +60,8 @@ Für dieses Beispiel benötigen Sie Folgendes:
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 >    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `java-webapp`).
 >    - Lassen Sie **Umleitungs-URI** vorerst noch leer, und wählen Sie **Registrieren** aus.
-> 1. Suchen Sie nach dem Wert **Anwendungs-ID (Client)** der Anwendung. Aktualisieren Sie den Wert von `Enter_the_Application_Id_here` in der Datei *application.properties*.
-> 1. Suchen Sie nach dem Wert **Verzeichnis-ID (Mandant)** der Anwendung. Aktualisieren Sie den Wert von `Enter_the_Tenant_Info_Here` in der Datei *application.properties*. 
+> 1. Suchen Sie nach dem Wert **Anwendungs-ID (Client)** der Anwendung. Kopieren Sie diesen Wert. Sie benötigen ihn später.
+> 1. Suchen Sie nach dem Wert **Verzeichnis-ID (Mandant)** der Anwendung. Kopieren Sie diesen Wert. Sie benötigen ihn später.
 > 1. Wählen Sie das Menü **Authentifizierung** aus, und fügen Sie dann die folgenden Informationen hinzu:
 >    - Fügen Sie unter **Umleitungs-URI** Folgendes hinzu: `http://localhost:8080/msal4jsamples/secure/aad` und `https://localhost:8080/msal4jsamples/graph/users`.
 >    - Wählen Sie **Speichern** aus.
@@ -81,7 +70,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 >    - Geben Sie eine Schlüsselbeschreibung (des Instanz-App-Geheimnisses) ein.
 >    - Wählen Sie als Schlüsseldauer die Option **In 1 Jahr** aus.
 >    - Wenn Sie auf **Hinzufügen** klicken, wird der Schlüsselwert angezeigt. 
->    - Kopieren Sie den Wert des Schlüssels. Öffnen Sie die Datei *application.properties*, die Sie zuvor heruntergeladen haben, und aktualisieren Sie den Wert von `Enter_the_Client_Secret_Here` mit dem Schlüsselwert. 
+>    - Kopieren Sie den Wert des Schlüssels. Sie benötigen ihn später.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
@@ -93,20 +82,26 @@ Für dieses Beispiel benötigen Sie Folgendes:
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Bereits konfiguriert](media/quickstart-v2-aspnet-webapp/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
-> 
-> #### <a name="step-2-download-the-code-sample"></a>Schritt 2: Herunterladen des Codebeispiels
-> 
-> - [Codebeispiel herunterladen](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
-> 
-> #### <a name="step-3-configure-the-code-sample"></a>Schritt 3: Konfigurieren des Codebeispiels 
-> 
-> 1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner.
-> 1. Falls Sie eine integrierte Entwicklungsumgebung (Integrated Development Environment, IDE) verwenden, können Sie das Beispiel in Ihrer bevorzugten IDE öffnen. (Dieser Schritt ist optional.)
-> 1. Öffnen Sie die Datei **application.properties** (unter *src/main/resources/* ).
-> 1. Ersetzen Sie Anwendungseigenschaften.
->   1. Suchen Sie nach `aad.clientId`, und aktualisieren Sie den Wert von `Enter_the_Application_Id_here` mit dem Wert der **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
->   1. Suchen Sie nach `aad.authority`, und aktualisieren Sie den Wert von `Enter_the_Tenant_Name_Here` mit dem Wert von **Verzeichnis-ID (Mandant)** der registrierten Anwendung.
->   1. Suchen Sie nach `aad.secretKey`, und aktualisieren Sie den Wert von `Enter_the_Client_Secret_Here` mit dem geheimen **Clientschlüssel**, den Sie in **Certificates & Secrets** (Zertifikate und Geheimnisse) für die registrierte Anwendung erstellt haben.
+
+#### <a name="step-2-download-the-code-sample"></a>Schritt 2: Herunterladen des Codebeispiels
+ 
+ [Codebeispiel herunterladen](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+ 
+ #### <a name="step-3-configure-the-code-sample"></a>Schritt 3: Konfigurieren des Codebeispiels 
+ 
+ 1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner.
+ 1. Falls Sie eine integrierte Entwicklungsumgebung (Integrated Development Environment, IDE) verwenden, können Sie das Beispiel in Ihrer bevorzugten IDE öffnen. (Dieser Schritt ist optional.)
+ 1. Öffnen Sie die Datei **application.properties** (unter *src/main/resources/* ).
+ 1. Ersetzen Sie Anwendungseigenschaften.
+   1. Suchen Sie nach `aad.clientId`, und aktualisieren Sie den Wert von `Enter_the_Application_Id_here` mit dem Wert der **Anwendungs-ID (Client)** der soeben registrierten Anwendung. 
+   1. Suchen Sie nach `aad.authority`, und aktualisieren Sie den Wert von `Enter_the_Tenant_Name_Here` mit dem Wert von **Verzeichnis-ID (Mandant)** der registrierten Anwendung.
+   1. Suchen Sie nach `aad.secretKey`, und aktualisieren Sie den Wert von `Enter_the_Client_Secret_Here` mit dem geheimen **Clientschlüssel**, den Sie in **Certificates & Secrets** (Zertifikate und Geheimnisse) für die registrierte Anwendung erstellt haben.
+
+> [!div renderon="docs"]
+> Hierbei gilt:
+>
+> - `Enter_the_Application_Id_here` ist die Anwendungs-ID für die von Ihnen registrierte Anwendung.
+> - `Enter_the_Client_Secret_Here` ist der **geheime Clientschlüssel**, den Sie unter **Certificates & Secrets** (Zertifikate und Geheimnisse) für die registrierte Anwendung erstellt haben.
 
 #### <a name="step-4-run-the-code-sample"></a>Schritt 4: Ausführen des Codebeispiels
 1. Führen Sie das Codebeispiel aus, öffnen Sie einen Browser, und navigieren Sie zu *http://localhost:8080* .
@@ -114,7 +109,6 @@ Für dieses Beispiel benötigen Sie Folgendes:
 1. Nach erfolgreicher Authentifizierung bei Azure Active Directory wird der Benutzer zu *http://localhost:8080/msal4jsamples/secure/aad* umgeleitet. Er ist damit offiziell bei der Anwendung angemeldet, und auf der Seite werden Informationen für das angemeldete Konto angezeigt. Auf der Seite befinden sich nun außerdem Schaltflächen für Folgendes: 
     - *Sign Out* (Abmelden): Meldet den aktuellen Benutzer von der Anwendung ab und leitet ihn auf die Startseite um.
     - *Show Users* (Benutzer anzeigen): Ruft ein Token für Microsoft Graph ab und ruft anschließend Microsoft Graph auf. Dabei wird das Token an die Anforderung angefügt, um alle Benutzer des Mandanten abzurufen.
-
 
 ## <a name="more-information"></a>Weitere Informationen
 

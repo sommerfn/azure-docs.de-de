@@ -13,12 +13,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: cbeaccf4cdea87d6f34d5ee77e6a08b32abd76b5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708193"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169447"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über IntelliJ IDEA
 
@@ -40,7 +40,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="deploy-a-quickstart-template"></a>Bereitstellen einer Schnellstartvorlage
 
-Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. „Azure-Schnellstartvorlagen“ ist ein Repository für Resource Manager-Vorlagen. Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/). Sie definiert eine Azure Storage-Kontoressource. 
+Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/). Sie definiert eine Azure Storage-Kontoressource.
 
 1. Klicken Sie mit der rechten Maustaste, und speichern Sie [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) und [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) auf Ihrem lokalen Computer.
 
@@ -89,10 +89,10 @@ Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorla
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung geht es in erster Linie um die Bereitstellung einer vorhandenen Azure-Schnellstartvorlage mithilfe von IntelliJ IDEA. Darüber hinaus haben Sie erfahren, wie Sie eine vorhandene Bereitstellung in Azure anzeigen und aktualisieren. Die Azure-Schnellstartvorlagen decken unter Umständen nicht alle Ihre Anforderungen ab. Im nächsten Tutorial wird gezeigt, wie Sie die Informationen in der Vorlagenreferenz suchen, um ein verschlüsseltes Azure Storage-Konto erstellen zu können.
+In dieser Schnellstartanleitung geht es in erster Linie um die Bereitstellung einer vorhandenen Azure-Schnellstartvorlage mithilfe von IntelliJ IDEA. Darüber hinaus haben Sie erfahren, wie Sie eine vorhandene Bereitstellung in Azure anzeigen und aktualisieren. Die Azure-Schnellstartvorlagen decken unter Umständen nicht alle Ihre Anforderungen ab. Weitere Informationen zur Vorlagenentwicklung finden Sie in unserer neuen Tutorialreihe für Anfänger:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer Azure Resource Manager-Vorlage für die Bereitstellung eines verschlüsselten Speicherkontos](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Tutorials für Anfänger](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
 > [Azure für Java-Cloudentwickler](https://docs.microsoft.com/azure/java)

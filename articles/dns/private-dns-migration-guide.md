@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: e7ebbf35cd572601f02a69930b58811686a92c86
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276318"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960553"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrieren von älteren Azure DNS Private Zones zum neuen Ressourcenmodell
 
-Im Rahmen des Vorschauaktualisierungsrelease haben wir ein neues API- und Ressourcenmodell für Azure DNS Private Zones veröffentlicht. Mit der aktualisierten Vorschauversion werden neue Funktionen eingeführt und mehrere Einschränkungen der ersten öffentlichen Vorschauversion aufgehoben. Diese Neuerungen sind jedoch nicht für die privaten DNS-Zonen verfügbar, die mit der Legacy-API erstellt wurden. Um die Vorteile der neuen Version zu nutzen, müssen Sie die älteren privaten DNS-Zonenressourcen zum neuen Ressourcenmodell migrieren. Der Migrationsprozess ist einfach, und wir haben ein PowerShell-Skript bereitgestellt, um diesen Prozess zu automatisieren. In dieser Anleitung wird Schritt für Schritt beschrieben, wie Sie Ihre Azure DNS Private Zones zum neuen Ressourcenmodell migrieren.
+Mit der aktuellen Azure DNS-Version für private Zonen werden neue Funktionen eingeführt und mehrere Einschränkungen der ersten öffentlichen Vorschauversion aufgehoben. Diese Neuerungen sind jedoch nicht für die privaten DNS-Zonen verfügbar, die mit der Vorschau-API erstellt wurden. Um die Vorteile der neuen Version zu nutzen, müssen Sie die älteren privaten DNS-Zonenressourcen zum neuen Ressourcenmodell migrieren. Der Migrationsprozess ist einfach, und wir haben ein PowerShell-Skript bereitgestellt, um diesen Prozess zu automatisieren. In dieser Anleitung wird Schritt für Schritt beschrieben, wie Sie Azure DNS Private Zones zum neuen Ressourcenmodell migrieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

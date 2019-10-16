@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 013e477b66d2772698ce5c9cc61a59f8a5a04a5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094895"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026808"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Tutorial: Azure Active Directory-Integration mit Pega Systems
 
@@ -124,7 +124,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Pega Sys
     > [!NOTE]
     > Die hier angegebenen Werte sind Platzhalter. Sie müssen die tatsächlichen Werte für Bezeichner, Antwort-URL, Anmelde-URL und Relayzustand-URL verwenden. Sie können die Werte für den Bezeichner und die Antwort-URL aus einer Pega-Anwendung abrufen, wie es weiter unten in diesem Tutorial beschrieben ist. Wenden Sie sich an das [Supportteam von Pega Systems](https://www.pega.com/contact-us), um den Wert für den Relayzustand zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-6. Für die Pega Systems-Anwendung müssen die SAML-Assertionen in einem bestimmten Format vorliegen. Um sie im richtigen Format zu erhalten, müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Standardattribute. Wählen Sie das Symbol **Bearbeiten**  aus, um das Dialogfeld **Benutzerattribute**  zu öffnen:
+6. Für die Pega Systems-Anwendung müssen die SAML-Assertionen in einem bestimmten Format vorliegen. Um sie im richtigen Format zu erhalten, müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Standardattribute. Wählen Sie das Symbol **Bearbeiten** aus, um das Dialogfeld **Benutzerattribute** zu öffnen:
 
     ![Benutzerattribute](common/edit-attribute.png)
 

@@ -17,19 +17,21 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d6747193b8c82119e45a24e3e4bffc065db14e51
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8c3bc90b282092ede0e924d32b50b67e5c4e22b8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212158"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244497"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integration in Mobile App Service-Apps
 
-> [!NOTE]
-> Microsoft ist bestrebt, Azure App Service Mobile-Apps in vollem Umfang zu unterstützen, einschließlich Unterstützung für die neueste Betriebssystemversion, Programmfehlerbehebungen, Verbesserungen der Dokumentation und Community-PR-Bewertungen. Bitte beachten Sie, dass das Produktteam aktuell nicht mit Arbeit an neuen Features für Azure Mobile Apps befasst ist. Wir schätzen Communitybeiträge zu allen Gebieten von Azure Mobile Apps sehr.
-
 Um eine nahtlose und einheitliche Verwendung in Azure-Diensten zu ermöglichen, ist in [Mobile App Service-Apps](../app-service-mobile/app-service-mobile-value-prop.md) die Unterstützung von Pushbenachrichtigungen, die über Notification Hubs abgewickelt werden, bereits integriert. [Mobile App Service-Apps](../app-service-mobile/app-service-mobile-value-prop.md) bietet eine hochgradig skalierbare, global verfügbare Entwicklungsplattform für mobile Anwendungen für Unternehmensentwickler und Systemintegratoren, die umfassende Funktionen für mobile Entwickler bereitstellt.
+
+Visual Studio App Center bietet eine modernere mobile Lösung für Entwickler. Visual Studio App Center unterstützt End-to-End-Dienste und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungsdienste** nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
+
+> [!NOTE]
+> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/signup?utm_source=NotificationHubs&utm_medium=Azure&utm_campaign=docs) registrieren.
 
 Mobile Apps-Entwickler können Notification Hubs mit dem folgenden Workflow verwenden:
 

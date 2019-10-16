@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen von Apps für VM-Skalierungsgruppen in Azure mit Ansible | Microsoft-Dokumentation'
+title: 'Tutorial: Bereitstellen von Apps für VM-Skalierungsgruppen in Azure mithilfe von Ansible'
 description: Es wird beschrieben, wie Sie Ansible zum Konfigurieren von Azure-VM-Skalierungsgruppen und Bereitstellen von Anwendungen in der Skalierungsgruppe verwenden.
 keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vmss
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a44fd06ace9b21122f5f4253ac7d9601b54e6b62
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231057"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241747"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Tutorial: Bereitstellen von Apps für VM-Skalierungsgruppen in Azure mit Ansible
 
@@ -36,7 +36,7 @@ ms.locfileid: "65231057"
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 - **Git** - [Git](https://git-scm.com) wird verwendet, um ein in diesem Tutorial verwendetes Java-Beispiel herunterzuladen.
-- **Java SE Development Kit (JDK)**: Mit dem [JDK](https://aka.ms/azure-jdks) wird das Java-Beispielprojekt erstellt.
+- **Java SE Development Kit (JDK)** : Mit dem [JDK](https://aka.ms/azure-jdks) wird das Java-Beispielprojekt erstellt.
 - **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) wird verwendet, um das Java-Beispielprojekt zu erstellen.
 
 ## <a name="get-host-information"></a>Abrufen der Hostinformationen

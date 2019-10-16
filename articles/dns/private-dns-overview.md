@@ -7,19 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774622"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959351"
 ---
 # <a name="what-is-azure-private-dns"></a>Was ist privates Azure-DNS?
-
-> [!IMPORTANT]
-> Privates Azure-DNS ist zurzeit als öffentliche Vorschau verfügbar.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Dienstnamens in die IP-Adresse verantwortlich.  Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt. Zusätzlich zu DNS-Domänen mit Internetverbindung unterstützt Azure DNS auch private DNS-Zonen.
 
@@ -60,22 +55,14 @@ Azure DNS bietet die folgenden Funktionen:
 
 * **Reverse-DNS-Lookups werden innerhalb des Bereichs eines virtuellen Netzwerks unterstützt**. Bei einem Reverse-DNS-Lookup für eine private IP-Adresse im virtuellen Netzwerk, das einer privaten Zone zugewiesen ist, wird der FQDN zurückgegeben, der den Host-/Eintragsnamen sowie den Zonennamen als Suffix enthält.
 
-## <a name="known-issues"></a>Bekannte Probleme
-Folgende Fehler und Probleme sind in der Vorschauversion bekannt:
-* Wenn Sie ein virtuelles Netzwerk löschen, das mit einer privaten DNS-Zone verknüpft ist, werden die Verknüpfungen mit der privaten DNS-Zone nicht gelöscht. Bei der Verknüpfung treten Fehler auf, wenn Sie das virtuelle Netzwerk mit dem gleichen Namen und der gleichen Ressourcengruppe neu erstellen und versuchen, es wieder mit einer privaten DNS-Zone zu verknüpfen. Dieses Problem können Sie umgehen, indem Sie das virtuelle Netzwerk in einer anderen Ressourcengruppe oder mit einem anderen Namen in der gleichen Ressourcengruppe erstellen.
-* Wenn Sie ein virtuelles Netzwerk in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben, werden die Verknüpfungen mit der privaten DNS-Zone nicht aktualisiert. Die Namensauflösung für das verschobene virtuelle Netzwerk funktioniert weiterhin, jedoch werden für die virtuellen Netzwerkverknüpfungen der privaten DNS-Zone alte ARM-IDs angezeigt.
-* Derzeit können bei in den Regionen „VAE, Norden“, „VAE, Mitte, „Südafrika, Westen“, „Südafrika, Norden“, „Kanada, Osten“ und „Frankreich, Süden“ gehosteten virtuellen Netzwerken Fehler auftreten. Möglicherweise werden zeitweilige Probleme mit der DNS-Auflösung angezeigt. 
-
-
 ## <a name="other-considerations"></a>Weitere Überlegungen
 
 Für Azure DNS gelten die folgenden Einschränkungen:
 
 * Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten Zone verknüpft werden, wenn die automatische Registrierung von VM-DNS-Einträgen aktiviert ist. Sie können jedoch mehrere virtuelle Netzwerke mit einer einzelnen DNS-Zone verknüpfen.
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im verknüpften virtuellen Netzwerk.
-* Reverse-DNS für eine private IP-Adresse für ein verknüpftes virtuelles Netzwerk gibt „internal.cloudapp.net“ als Standardsuffix für den virtuellen Computer zurück. Für virtuelle Netzwerke, die mit einer privaten Zone mit aktivierter automatischer Registrierung verknüpft sind, gibt Reverse-DNS für eine private IP zwei vollqualifizierte Domänennamen zurück, einen mit dem Standardsuffix *internal.cloudapp.net* und einen anderen mit dem Suffix der privaten Zone.
-* Die bedingte Weiterleitung wird derzeit nicht nativ unterstützt. Informationen zum Aktivieren der Auflösung zwischen Azure-Netzwerken und lokalen Netzwerken finden Sie unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-
+* Reverse-DNS für eine private IP-Adresse für ein verknüpftes virtuelles Netzwerk gibt *internal.cloudapp.net* als Standardsuffix für den virtuellen Computer zurück. Für virtuelle Netzwerke, die mit einer privaten Zone mit aktivierter automatischer Registrierung verknüpft sind, gibt Reverse-DNS für eine private IP-Adresse zwei vollqualifizierte Domänennamen zurück: einen mit dem Standardsuffix *internal.cloudapp.net* und den anderen mit dem Suffix der privaten Zone.
+* Die bedingte Weiterleitung wird derzeit nicht nativ unterstützt. Sie können die Auflösung zwischen Azure-Netzwerken und lokalen Netzwerken aktivieren. Informationen hierzu finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
  
 ## <a name="pricing"></a>Preise
 

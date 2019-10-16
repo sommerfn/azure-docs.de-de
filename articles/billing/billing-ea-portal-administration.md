@@ -4,16 +4,16 @@ description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/25/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308103"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035223"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -87,10 +87,11 @@ Andere Punkte, die vor einer Kontoübertragung zu beachten sind:
 - Die Genehmigung eines EA-Administrators ist für die Ziel- und Quellregistrierung erforderlich.
   - In einigen Fällen kann Microsoft eine zusätzliche Genehmigung von einem EA-Administrator der Quellregistrierung anfordern.
 - Wenn eine Kontoübertragung Ihre Anforderungen nicht erfüllt, ziehen Sie eine Registrierungsübertragung in Betracht.
-- Bei der Kontoübertragung werden alle Dienste, Abonnements, Konten, Abteilungen sowie die gesamte Registrierungsstruktur einschließlich aller EA-Abteilungsadministratoren übertragen.
-- Bei der Kontoübertragung wird der Quellregistrierungsstatus auf _Übertragen_ festgelegt. Das übertragene Konto ist nur für Berichte zum Nutzungsverlauf verfügbar.
-- Einer Registrierung mit dem Status „Übertragen“ können Sie keine Rollen oder Abonnements hinzufügen. Der Status verhindert eine zusätzliche Nutzung in Bezug auf die Registrierung.
-- Verbleibendes Guthaben in Bezug auf den Mindestverbrauch im Quellvertrag geht dabei verloren. Dies umfasst auch zukünftige Bestimmungen.
+- Bei der Kontoübertragung werden alle Dienste und Abonnements des spezifischen Kontos übertragen.
+- Nach Abschluss der Übertragung erscheint das übertragene Konto unter der Quellregistrierung inaktiv.
+- Eine Kontoübertragung kann auf ein beliebiges Datum nach dem Startdatum der Zielregistrierung rückdatiert werden.
+- Im Konto wird das Enddatum angezeigt, das das effektive Übertragungsdatum für die Quellregistrierung und das Startdatum für die Zielregistrierung darstellt.
+- Jegliche Nutzung, die für das Konto vor dem effektiven Übertragungsdatum erfolgt ist, verbleibt unter der Quellregistrierung.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Übertragen einer Unternehmensregistrierung in eine neue Registrierung
@@ -156,7 +157,7 @@ Wenn das Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen
 - Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../storage/common/storage-account-overview.md).
 - Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines.
 
-Der neue Besitzer sollte sich überlegen, ob er die dem Dienst zugeordneten Geheimnisse aktualisiert, wenn er den Zugriff auf die Azure-Ressourcen einschränken muss. Die meisten Ressourcen können mithilfe der folgenden Schritte aktualisiert werden:
+Der neue Besitzer sollte sich überlegen, ob er die dem Dienst zugeordneten Geheimnisse aktualisiert, wenn er den Zugriff auf die Azure-Ressourcen einschränken muss. Die meisten Ressourcen können durch Ausführen der folgenden Schritte aktualisiert werden:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü „Hub“ die Option **Alle Ressourcen** aus.

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS | Microsoft-Dokumentation'
+title: 'Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Ansible-Lösungsvorlage zusammen mit Tools, die für die Arbeit mit Azure konfiguriert sind, auf einem in Azure gehosteten virtuellen CentOS-Computer bereitstellen.
 keywords: Ansible, Azure, DevOps, Lösungsvorlage, virtueller Computer, verwaltete Identitäten für Azure-Ressourcen, CentOS, Red Hat
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 58f28d5cf7d31a3fbddc8e1ca18be4dbcf617f61
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231005"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241716"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS
 

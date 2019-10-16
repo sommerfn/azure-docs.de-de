@@ -1,6 +1,6 @@
 ---
-title: Unternehmensintegration mit Azure Logic Apps
-description: Diese Übersicht enthält Informationen dazu, wie Sie durch das Automatisieren und Orchestrieren von Aufgaben, Workflows und Geschäftsprozessen Lösungen für die Unternehmensintegration erstellen können, die Apps, Daten, Dienste und Systeme unternehmens- und organisationsübergreifend integrieren. Erstellen Sie Lösungen für die Datenintegration, Systemintegration, Enterprise Application Integration (EAI) und Orchestrierungsszenarien.
+title: 'Automatisieren von Aufgaben für die Unternehmensintegration: Azure Logic Apps'
+description: Hier erfahren Sie mehr darüber, wie Sie mithilfe von Azure Logic Apps Workflows zum Integrieren von Apps, Daten, Diensten und Systemen mit minimalem Code für die Unternehmensintegration automatisieren.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,26 +10,29 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
-ms.date: 6/29/2018
-ms.openlocfilehash: f25ade0e984c98b9cbc8c4efa93f300c3ed93b14
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.date: 06/29/2018
+ms.openlocfilehash: 85e2216e39658fde42f298dabc38c737621d6be4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385485"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178024"
 ---
-# <a name="what-is-azure-logic-apps"></a>Was ist Azure Logic Apps?
+# <a name="overview---what-is-azure-logic-apps"></a>Übersicht: Was ist Azure Logic Apps?
 
 [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) ist ein Clouddienst, der Sie beim Planen, Automatisieren und Orchestrieren von Aufgaben, Geschäftsprozessen und [Workflows](#logic-app-concepts) unterstützt, wenn Sie Apps, Daten, Systeme und Dienste unternehmens- und organisationsübergreifend integrieren müssen. Logic Apps vereinfacht das Entwerfen und Erstellen von skalierbaren Lösungen für die App-[Integration](https://azure.microsoft.com/product-categories/integration/), Datenintegration, Systemintegration, Enterprise Application Integration (EAI) und B2B-Kommunikation (Business-to-Business) – in der Cloud, lokal oder an beiden Orten.
 
 Hier sind beispielsweise einige Workloads angegeben, die Sie mit Logik-Apps automatisieren können:
 
 * Verarbeiten und Weiterleiten von Bestellungen für lokale Systeme und Clouddienste
+
 * Senden von E-Mail-Benachrichtigungen mit Office 365, wenn Ereignisse in verschiedenen Systemen, Apps und Diensten eintreten
-* Verschieben von hochgeladenen Dateien von einem SFTP- oder FTP-Server in Azure Storage 
+
+* Verschieben von hochgeladenen Dateien von einem SFTP- oder FTP-Server in Azure Storage
+
 * Überwachen von Tweets für ein bestimmtes Thema, Analysieren der Stimmung und Erstellen von Warnungen oder Aufgaben für zu prüfende Elemente
 
-Zum Erstellen von Lösungen für die Unternehmensintegration mit Azure Logic Apps können Sie aus einem ständig wachsenden Katalog mit [Hunderten einsatzbereiter Connectors](../connectors/apis-list.md) wählen. Diese umfassen Dienste wie Azure Service Bus, Functions und Storage sowie SQL, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, Dateifreigaben und mehr. [Connectors](#logic-app-concepts) stellen [Trigger](#logic-app-concepts), [Aktionen](#logic-app-concepts) oder beides zum Erstellen von Logik-Apps bereit, die auf sichere Weise auf Daten zugreifen und diese in Echtzeit verarbeiten.
+Zum Erstellen von Lösungen für die Unternehmensintegration mit Azure Logic Apps können Sie aus einem ständig wachsenden Katalog mit [Hunderten einsatzbereiter Connectors](../connectors/apis-list.md) wählen. Diese umfassen Dienste wie Azure Service Bus, Azure Functions, Azure Storage, SQL Server, Office 365, Dynamics, Salesforce, BizTalk, SAP, Oracle DB, Dateifreigaben und mehr. [Connectors](#logic-app-concepts) stellen [Trigger](#logic-app-concepts), [Aktionen](#logic-app-concepts) oder beides zum Erstellen von Logik-Apps bereit, die auf sichere Weise auf Daten zugreifen und diese in Echtzeit verarbeiten.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Introducing-Azure-Logic-Apps/player]
 
@@ -39,17 +42,17 @@ Jeder Logik-App-Workflow beginnt mit einem Trigger, der ausgelöst wird, wenn ei
 
 Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz, mit der die Aktionen im Workflow ausgeführt werden. Diese Aktionen können auch Datenkonvertierungen und Flusssteuerungen umfassen, z.B. bedingte Anweisungen, switch-Anweisungen, Schleifen und Verzweigungen. Diese Logik-App beginnt beispielsweise mit einem Dynamics 365-Trigger mit dem integrierten Kriterium „When a record is updated“ (Wenn ein Datensatz aktualisiert wird). Wenn der Trigger ein Ereignis erkennt, das mit diesem Kriterium übereinstimmt, wird der Trigger ausgelöst und führt die Aktionen des Workflows aus. Hier umfassen diese Aktionen eine XML-Transformation, Datenaktualisierungen, Entscheidungsverzweigungen und E-Mail-Benachrichtigungen.
 
-![Designer für Logik-Apps – Beispiel für Logik-App](./media/logic-apps-overview/overview.png)
+![Designer für Logik-Apps – Beispiel für Logik-App](./media/logic-apps-overview/azure-logic-apps-overview.png)
 
 Sie können Ihre Logik-Apps visuell mit dem Designer für Logik-Apps erstellen, der im Azure-Portal über Ihren Browser und in Visual Studio verfügbar ist. Für stärker benutzerdefinierte Logik-Apps können Sie Logik-App-Definitionen im JSON-Format (JavaScript Object Notation) erstellen bzw. bearbeiten, indem Sie den Editor „Codeansicht“ nutzen. Sie können auch Azure PowerShell-Befehle und Azure Resource Manager-Vorlagen für bestimmte Aufgaben verwenden. Logik-Apps werden in der Cloud unter Azure bereitgestellt und ausgeführt. Sehen Sie sich dieses Video an, um eine detailliertere Einführung zu erhalten: [Use Azure Enterprise Integration Services to run cloud apps at scale](https://channel9.msdn.com/Events/Connect/2017/T119/) (Verwenden von Azure Enterprise Integration Services zum bedarfsorientierten Ausführen von Cloud-Apps)
 
 ## <a name="why-use-logic-apps"></a>Gründe für die Verwendung von Logic Apps
 
-Unternehmen setzen immer stärker auf die Digitalisierung, und mithilfe von Logik-Apps können Sie sowohl Legacysysteme als auch hochmoderne Systeme einfacher und schneller verbinden, indem Sie vordefinierte APIs als von Microsoft verwaltete Connectors angeben. So können Sie sich auf die Geschäftslogik und Funktionalität Ihrer Apps konzentrieren. Sie müssen sich nicht mit dem Erstellen, Hosten, Skalieren, Verwalten, Pflegen und Überwachen Ihrer Apps beschäftigen. Diese Aufgaben übernimmt Logic Apps für Sie. Außerdem zahlen Sie beim nutzungsabhängigen [Preismodell](../logic-apps/logic-apps-pricing.md) nur für die tatsächlich verwendeten Ressourcen. 
+Unternehmen setzen immer stärker auf die Digitalisierung, und mithilfe von Logik-Apps können Sie sowohl Legacysysteme als auch hochmoderne Systeme einfacher und schneller verbinden, indem Sie vordefinierte APIs als von Microsoft verwaltete Connectors angeben. So können Sie sich auf die Geschäftslogik und Funktionalität Ihrer Apps konzentrieren. Sie müssen sich nicht mit dem Erstellen, Hosten, Skalieren, Verwalten, Pflegen und Überwachen Ihrer Apps beschäftigen. Diese Aufgaben übernimmt Logic Apps für Sie. Außerdem zahlen Sie beim nutzungsabhängigen [Preismodell](../logic-apps/logic-apps-pricing.md) nur für die tatsächlich verwendeten Ressourcen.
 
 In vielen Fällen ist es nicht erforderlich, Code zu schreiben. Falls Sie Code schreiben müssen, können Sie Codeausschnitte mit [Azure Functions](../azure-functions/functions-overview.md) erstellen und diesen Code bedarfsabhängig über Logik-Apps ausführen. Wenn Ihre Logik-Apps mit Ereignissen von Azure-Diensten, benutzerdefinierten Apps oder anderen Lösungen interagieren müssen, können Sie [Azure Event Grid](../event-grid/overview.md) mit Ihren Logik-Apps für die Überwachung, das Routing und die Veröffentlichung nutzen.
 
-Logic Apps, Functions und Event Grid werden von Microsoft Azure vollständig verwaltet, sodass Sie sich keine Gedanken über das Erstellen, Hosten, Skalieren, Verwalten, Überwachen und Pflegen Ihrer Lösungen machen müssen. Dank der Funktion zum Erstellen von [„serverlosen“ Apps und Lösungen](../logic-apps/logic-apps-serverless-overview.md) können Sie sich auf die Geschäftslogik konzentrieren. Für diese Dienste wird eine automatische Skalierung durchgeführt, um Ihre Anforderungen zu erfüllen, Integrationen zu beschleunigen und Sie beim Erstellen von stabilen Cloud-Apps mit minimalem Codeaufwand zu unterstützen. Außerdem zahlen Sie beim nutzungsabhängigen [Preismodell](../logic-apps/logic-apps-pricing.md) nur für die tatsächlich verwendeten Ressourcen. 
+Logic Apps, Functions und Event Grid werden von Microsoft Azure vollständig verwaltet, sodass Sie sich keine Gedanken über das Erstellen, Hosten, Skalieren, Verwalten, Überwachen und Pflegen Ihrer Lösungen machen müssen. Dank der Funktion zum Erstellen von [„serverlosen“ Apps und Lösungen](../logic-apps/logic-apps-serverless-overview.md) können Sie sich auf die Geschäftslogik konzentrieren. Für diese Dienste wird eine automatische Skalierung durchgeführt, um Ihre Anforderungen zu erfüllen, Integrationen zu beschleunigen und Sie beim Erstellen von stabilen Cloud-Apps mit minimalem Codeaufwand zu unterstützen. Außerdem zahlen Sie beim nutzungsabhängigen [Preismodell](../logic-apps/logic-apps-pricing.md) nur für die tatsächlich verwendeten Ressourcen.
 
 Lesen Sie diese [Kundenberichte](https://aka.ms/logic-apps-customer-stories), um zu erfahren, wie Unternehmen ihre Flexibilität verbessert haben und sich stärker auf ihr Kerngeschäft konzentrieren können, indem sie Logic Apps mit anderen Azure-Diensten und Microsoft-Produkten kombiniert haben.
 
@@ -81,16 +84,19 @@ Beginnen Sie klein mit Ihren aktuellen Systemen und Diensten, und wachsen Sie Sc
   * [Azure API Management](../api-management/api-management-key-concepts.md)
 
 * Verarbeiten von [XML-Nachrichten](../logic-apps/logic-apps-enterprise-integration-xml.md)
+
 * Verarbeiten von [Flatfiles](../logic-apps/logic-apps-enterprise-integration-flatfile.md)
+
 * Austauschen von Nachrichten mit den Protokollen [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md), [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md) und [X12](../logic-apps/logic-apps-enterprise-integration-x12.md)
+
 * Speichern und verwalten Sie diese und weitere B2B-Artefakte zentral mithilfe von [Integrationskonten](../logic-apps/logic-apps-enterprise-integration-accounts.md):
 
   * [Partner](../logic-apps/logic-apps-enterprise-integration-partners.md)
   * [Vereinbarungen](../logic-apps/logic-apps-enterprise-integration-agreements.md) 
   * [Zuordnungen für die XML-Datentransformation](../logic-apps/logic-apps-enterprise-integration-maps.md)
   * [Schemas für die XML-Überprüfung](../logic-apps/logic-apps-enterprise-integration-schemas.md)
-   
-Wenn Sie beispielsweise Microsoft BizTalk Server nutzen, können Logik-Apps über den [BizTalk Server-Connector](../connectors/apis-list.md#on-premises-connectors) mit Ihrer BizTalk Server-Instanz kommunizieren. Sie können dann BizTalk-ähnliche Vorgänge in Ihren Logik-Apps erweitern bzw. durchführen, indem Sie [Connectors für Integrationskonten](../connectors/apis-list.md#integration-account-connectors) einfügen, die über das Enterprise Integration Pack verfügbar sind. 
+
+Wenn Sie beispielsweise Microsoft BizTalk Server nutzen, können Logik-Apps über den [BizTalk Server-Connector](../connectors/apis-list.md#on-premises-connectors) mit Ihrer BizTalk Server-Instanz kommunizieren. Sie können dann BizTalk-ähnliche Vorgänge in Ihren Logik-Apps erweitern bzw. durchführen, indem Sie [Connectors für Integrationskonten](../connectors/apis-list.md#integration-account-connectors) einfügen, die über das Enterprise Integration Pack verfügbar sind.
 
 In der anderen Richtung kann BizTalk Server eine Verbindung mit Logik-Apps herstellen und damit kommunizieren, indem der [Microsoft BizTalk Server Adapter für Logic Apps](https://www.microsoft.com/download/details.aspx?id=54287) verwendet wird. Informieren Sie sich darüber, wie Sie für Ihre BizTalk Server-Instanz den [BizTalk Server Adapter einrichten und nutzen](https://docs.microsoft.com/biztalk/core/logic-app-adapter).
 
@@ -100,7 +106,7 @@ Erstellen Sie Ihre Logik-Apps als Azure Resource Manager-Vorlagen, sodass Sie di
 
 ### <a name="built-in-extensibility"></a>Integrierte Erweiterbarkeit
 
-Wenn Sie den gewünschten Connector nicht finden können oder benutzerdefinierten Code ausführen müssen, können Sie Logik-Apps erweitern, indem Sie Ihre eigenen Codeausschnitte bedarfsabhängig mit [Azure Functions](../azure-functions/functions-overview.md) erstellen und aufrufen. Erstellen Sie Ihre eigenen [APIs](../logic-apps/logic-apps-create-api-app.md) und [benutzerdefinierten Connectors](../logic-apps/custom-connector-overview.md), die Sie aus Logik-Apps aufrufen können.
+Wenn Sie den gewünschten Connector zum Ausführen von benutzerdefiniertem Code nicht finden, können Sie Logik-Apps erweitern, indem Sie Ihre eigenen Codeausschnitte bedarfsabhängig mit [Azure Functions](../azure-functions/functions-overview.md) erstellen und aufrufen. Erstellen Sie Ihre eigenen [APIs](../logic-apps/logic-apps-create-api-app.md) und [benutzerdefinierten Connectors](../logic-apps/custom-connector-overview.md), die Sie aus Logik-Apps aufrufen können.
 
 ### <a name="pay-only-for-what-you-use"></a>Zahlen nur für wirklich genutzte Ressourcen
   
@@ -130,9 +136,9 @@ Informieren Sie sich in diesen Einführungsvideos eingehender über Logic Apps:
 
 All diese Dienste dienen Ihnen als Hilfe beim Verknüpfen bzw. Verbinden von verschiedenartigen Systemen. Jeder Dienst hat bestimmte Vorteile, sodass eine Kombination der jeweiligen Funktionen die beste Möglichkeit darstellt, schnell ein skalierbares, Integrationssystem mit vollem Funktionsumfang zu erstellen. Weitere Informationen finden Sie unter [Auswahl zwischen Flow, Logic Apps, Functions und WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
-## <a name="get-started"></a>Erste Schritte 
+## <a name="get-started"></a>Erste Schritte
 
-Logic Apps ist einer der vielen Dienste, die unter Microsoft Azure gehostet werden. Bevor Sie beginnen können, benötigen Sie also ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+Logic Apps ist einer der vielen Dienste, die unter Microsoft Azure gehostet werden. Bevor Sie beginnen können, benötigen Sie also ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 Wenn Sie über ein Azure-Abonnement verfügen, können Sie [diese Schnellstartanleitung zum Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) ausprobieren. Darin wird beschrieben, wie damit neuer Inhalt auf einer Website per RSS-Feed überwacht und beim Erscheinen von neuem Inhalt E-Mails gesendet werden.
 

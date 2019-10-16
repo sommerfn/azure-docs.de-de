@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren des Azure-VNET-Peerings mit Ansible | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren des Peerings virtueller Azure-Netzwerke mit Ansible'
 description: Es wird beschrieben, wie Sie Ansible zum Verbinden von virtuellen Netzwerken per VNET-Peering verwenden.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Netzwerk, Peering
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f51e7c857a22a362a3d295fbe087c54b25f85780
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230754"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241234"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Tutorial: Konfigurieren des Azure-VNET-Peerings mit Ansible
 
@@ -145,7 +145,7 @@ Der Playbook-Beispielcode in diesem Abschnitt wird für Folgendes verwendet:
 
 ## <a name="get-the-sample-playbook"></a>Abrufen des Beispielplaybooks
 
-Es gibt zwei Möglichkeiten, das vollständige Beispielplaybook zu erhalten:
+Das vollständige Beispielplaybook kann auf zwei Arten bezogen werden:
 
 - [Laden Sie das Playbook herunter](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml), und speichern Sie es als `vnet_peering.yml`.
 - Erstellen Sie eine neue Datei mit dem Namen `vnet_peering.yml`, und kopieren Sie die folgenden Inhalte in diese Datei:

@@ -1,18 +1,18 @@
 ---
 title: Übersicht über den relationalen Datenbankdienst Azure Database for MariaDB
-description: Übersicht über den relationalen Datenbankdienst Azure Database for MariaDB
+description: Hier finden Sie Informationen zum Azure Database for MariaDB-Dienst, einem relationalen Datenbankdienst in der Microsoft-Cloud, der auf der MySQL Community-Edition basiert.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 08/13/2019
-ms.openlocfilehash: 20f6ff518daae71856446415099ae4cb095ff728
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 46ba972c489326157cbdea19a1363a30e18f72b8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013613"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177975"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 
@@ -55,7 +55,7 @@ Die branchenführende SLA von Azure mit einer Verfügbarkeit von 99,99 Prozent w
 
 Azure-Datenbankdienste sind für ihren Datenschutz bekannt. Diese Tradition wird auch von Azure Database for MariaDB fortgeführt. Azure Database for MariaDB bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/trustcenter/security).
 
-Der Azure Database for MariaDB-Dienst verwendet Speicherverschlüsselung für ruhende Daten und ist mit FIPS 140-2 konform. Daten werden auf dem Datenträger verschlüsselt. Das gilt auch für Sicherungsdaten. (Temporäre Dateien, die von der Engine beim Ausführen von Abfragen erstellt werden, werden auf dem Datenträger nicht verschlüsselt.) Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren. Die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
+Der Azure Database for MariaDB-Dienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten, einschließlich Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren. Die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 
 In der Standardeinstellung ist der Azure Database for MariaDB-Dienst so konfiguriert, dass für Daten während der Übertragung innerhalb des Netzwerks [SSL-Verbindungssicherheit](./concepts-ssl-connection-security.md) erforderlich ist. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird. Falls Ihre Clientanwendung keine SSL-Konnektivität unterstützt, können Sie optional die SSL-Anforderung deaktivieren, um eine Verbindung mit Ihrem Datenbankdienst herstellen zu können.
 

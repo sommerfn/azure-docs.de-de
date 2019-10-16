@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von dynamischen Beständen Ihrer Azure-Ressourcen mit Ansible | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von dynamischen Beständen Ihrer Azure-Ressourcen mithilfe von Ansible'
 description: Hier erfahren Sie, wie Sie Ihre dynamischen Azure-Bestände mithilfe von Ansible verwalten.
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, dynamischer Bestand
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 46b13fae437a555edf0bdd0b0d4c1496d7596e0f
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d89150f43205a4b38612008033ab5649acd9af5b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230703"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241579"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Tutorial: Konfigurieren von dynamischen Beständen Ihrer Azure-Ressourcen mit Ansible
 

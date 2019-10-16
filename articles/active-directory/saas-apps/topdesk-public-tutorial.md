@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: a2a0ffd670a03aeaaa262b83127a385be9efc978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088474"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950420"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk – Public
 
@@ -120,8 +120,10 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TOPdesk 
 
     d. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.topdesk.net`
 
-    e. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<companyname>.topdesk.net/tas/public/login/verify`
-
+    e. Geben Sie im Textfeld **Identifier URL** (Bezeichner-URL) die TOPdesk-Metadaten-URL ein, die Sie aus der TOPdesk-Konfiguration abrufen können. Verwenden Sie das folgende Format: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`.
+    
+    f. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<companyname>.topdesk.net/tas/public/login/verify`
+    
     > [!NOTE] 
     > Werden die Werte für **Bezeichner** und **Antwort-URL** nicht automatisch aufgefüllt, müssen Sie sie manuell eingeben. Verwenden Sie für „Bezeichner“ das oben genannte Format. Den Wert für „Antwort-URL“ rufen Sie später im Tutorial im Abschnitt **Konfigurieren des einmaligen Anmeldens für TOPdesk - Public** ab. Der Wert für die **Anmelde-URL** entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den TOPdesk - Public-Client](https://help.topdesk.com/saas/enterprise/user/). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 

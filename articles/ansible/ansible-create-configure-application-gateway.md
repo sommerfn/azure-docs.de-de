@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwalten von Webdatenverkehr per Azure Application Gateway mit Ansible | Microsoft-Dokumentation'
+title: 'Tutorial: Verwalten von Webdatenverkehr per Azure Application Gateway mithilfe von Ansible'
 description: Hier erfahren Sie, wie Sie mit Ansible eine Azure Application Gateway-Instanz zum Verwalten von Webdatenverkehr erstellen und konfigurieren.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Application Gateway, Lastenausgleich, Webdatenverkehr
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 9f8ed3e1da72db3e1b13d5d2aef1cce8fc3922a2
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1dd547fb59a41a90de18d595a392b64ef518023a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231252"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241886"
 ---
 # <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Tutorial: Verwalten von Webdatenverkehr per Azure Application Gateway mit Ansible
 

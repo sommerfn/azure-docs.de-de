@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von AKS-Clustern (Azure Kubernetes Service) in Azure mit Ansible | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von AKS-Clustern (Azure Kubernetes Service) in Azure mithilfe von Ansible'
 description: Erfahren Sie, wie Sie mithilfe von Ansible einen Azure Kubernetes Service-Cluster in Azure erstellen und verwalten können
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, Playbook, AKS, Container, Kubernetes
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1467afce60038e086daace72947c1ab21569865a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231330"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242084"
 ---
 # <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Tutorial: Konfigurieren von AKS-Clustern (Azure Kubernetes Service) in Azure mit Ansible
 

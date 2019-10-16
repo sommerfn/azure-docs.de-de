@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/18/2019
+ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 869e59aea9b78c44b1a920e58ecefab5e0ca4920
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802049"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169406"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen
 
@@ -166,7 +166,7 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
 
 ## <a name="upload-the-linked-template"></a>Hochladen der verknüpften Vorlage
 
-Von dort aus, wo Sie die Bereitstellung ausführen, muss der Zugriff auf die Hauptvorlage und die verknüpfte Vorlage möglich sein. In diesem Tutorial verwenden Sie die Cloud Shell-Bereitstellungsmethode, die Sie auch unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md) verwendet haben. Die Hauptvorlage (azuredeploy.json) wird in die Shell hochgeladen. Die verknüpfte Vorlage (linkedTemplate.json) muss an einem sicheren Ort freigegeben werden. Das folgende PowerShell-Skript erstellt ein Azure Storage-Konto, lädt die Vorlage in das Storage-Konto hoch und generiert dann ein SAS-Token, um eingeschränkten Zugriff auf die Vorlagendatei zu gewähren. Zur Vereinfachung des Tutorials lädt das Skript eine vollständige verknüpfte Vorlage aus einem freigegebenen Speicherort herunter. Wenn Sie die von Ihnen erstellte verknüpfte Vorlage verwenden möchten, können Sie sie mit [Cloud Shell](https://shell.azure.com) hochladen und das Skript zur Verwendung Ihrer eigenen verknüpften Vorlage anpassen.
+Von dort aus, wo Sie die Bereitstellung ausführen, muss der Zugriff auf die Hauptvorlage und die verknüpfte Vorlage möglich sein. In diesem Tutorial verwenden Sie die Cloud Shell-Bereitstellungsmethode, die Sie auch unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md) verwendet haben. Die Hauptvorlage (azuredeploy.json) wird in die Shell hochgeladen. Die verknüpfte Vorlage (linkedTemplate.json) muss an einem sicheren Ort freigegeben werden. Das folgende PowerShell-Skript erstellt ein Azure Storage-Konto, lädt die Vorlage in das Storage-Konto hoch und generiert dann ein SAS-Token, um eingeschränkten Zugriff auf die Vorlagendatei zu gewähren. Zur Vereinfachung des Tutorials lädt das Skript eine vollständige verknüpfte Vorlage aus einem GitHub-Repository herunter. Wenn Sie die von Ihnen erstellte verknüpfte Vorlage verwenden möchten, können Sie sie mit [Cloud Shell](https://shell.azure.com) hochladen und das Skript zur Verwendung Ihrer eigenen verknüpften Vorlage anpassen.
 
 > [!NOTE]
 > Das Skript gibt vor, dass das SAS-Token innerhalb von acht Stunden verwendet werden muss. Falls Sie mehr Zeit zum Absolvieren dieses Tutorials benötigen, verlängern Sie die Ablaufzeit.
@@ -179,7 +179,7 @@ $resourceGroupName = $projectNamePrefix + "rg"
 $storageAccountName = $projectNamePrefix + "store"
 $containerName = "linkedtemplates" # The name of the Blob container to be created.
 
-$linkedTemplateURL = "https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json" # A completed linked template used in this tutorial.
+$linkedTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json" # A completed linked template used in this tutorial.
 $fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
 
 # Download the tutorial linked template
@@ -259,7 +259,7 @@ Die Hauptvorlage hat den Namen „azuredeploy.json“.
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri":"https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json"
+              "uri":"https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json"
           },
           "parameters": {
               "storageAccountName":{"value": "[variables('storageAccountName')]"},

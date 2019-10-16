@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266907"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949718"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -73,7 +73,7 @@ Ein Datenträger für Daten ist ein verwalteter Datenträger, der zum Speichern 
 
 ### <a name="os-disk"></a>Betriebssystem-Datenträger
 
-Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Dieser Betriebssystem-Datenträger verfügt über ein vorinstalliertes Betriebssystem, das beim Erstellen des virtuellen Computers ausgewählt wurde.
+Jedem virtuellen Computer ist ein Betriebssystem-Datenträger zugeordnet. Dieser Betriebssystem-Datenträger verfügt über ein vorinstalliertes Betriebssystem, das beim Erstellen des virtuellen Computers ausgewählt wurde. Dieser Datenträger enthält das Startvolume.
 
 Dieser Datenträger weist eine maximale Kapazität von 2.048 GiB auf.
 

@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172168"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034659"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter, zeitplanbasierter periodischer Workflows mithilfe von Azure Logic Apps
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
-![Grundlegende Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
+![Allgemeine Übersicht über den Logik-App-Workflow](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,11 +52,11 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
 1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
 
-   ![Erstellen einer Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app.png)
+   ![Erstellen einer Logik-App-Ressource](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
 1. Geben Sie unter **Logik-App erstellen** die Informationen wie beschrieben ein. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
-   ![Angeben von Informationen zur Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
+   ![Angeben von Informationen zu Ihrer Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
    | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
@@ -69,7 +69,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
 1. Wählen Sie nach der Bereitstellung Ihrer App durch Azure für Ihre bereitgestellte Logik-App auf der Azure-Symbolleiste **Benachrichtigungen** > **Zu Ressource wechseln** aus.
 
-   ![Zu Ressource wechseln](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-logic-app.png)
+   ![Navigieren zu Ihrer neuen Logik-App-Ressource](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    Sie können zum Suchen und Auswählen Ihrer Logik-App auch den Namen in das Suchfeld eingeben.
 
@@ -87,11 +87,11 @@ Fügen Sie als Nächstes den [Serientrigger](../logic-apps/logic-apps-overview.m
 
 1. Wählen Sie Bereich **Serie** die Schaltfläche mit den **Auslassungspunkten** ( **...** ) und anschließend **Umbenennen** aus. Nennen Sie den Trigger wie folgt: `Check travel time every weekday morning`
 
-   ![Umbenennen des Triggers](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
+   ![Umbenennen der Beschreibung des Wiederholungstriggers](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
 1. Ändern Sie innerhalb des Triggers die folgenden Eigenschaften:
 
-   ![Ändern von Intervall und Frequenz](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
+   ![Ändern des Intervalls und der Häufigkeit des Wiederholungstriggers](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
    | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
@@ -105,7 +105,7 @@ Fügen Sie als Nächstes den [Serientrigger](../logic-apps/logic-apps-overview.m
    * **Zu diesen Stunden**
    * **Zu diesen Minuten**
 
-   ![Hinzufügen von Triggereigenschaften](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
+   ![Hinzufügen von Eigenschaften für den Wiederholungstrigger](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-trigger-properties.png)
 
 1. Legen Sie als Nächstes die Werte für die zusätzlichen Eigenschaften wie hier gezeigt und beschrieben fest.
 
@@ -140,7 +140,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
 
 1. Falls keine Verbindung mit Bing Maps besteht, werden Sie aufgefordert, eine Verbindung herzustellen. Geben Sie die folgenden Verbindungsdetails an, und wählen Sie **Erstellen** aus:
 
-   ![Erstellen der Bing Maps-Verbindung](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
+   ![Erstellen einer Verbindung mit der Bing Karten-API](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
    | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
@@ -221,7 +221,7 @@ Die vorherige Aktion **Get route** (Route ermitteln) gibt standardmäßig die ak
 
    1. Warten Sie, bis der Eigenschaftswert innerhalb des Ausdrucks aufgelöst wurde, und wählen Sie **OK** aus.
 
-      ![Auswählen von „OK“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
+      ![Auswählen von „OK“, um die Erstellung des Ausdrucks abzuschließen](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
       Die Eigenschaft **Wert** wird nun wie folgt angezeigt:
 
@@ -247,7 +247,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, ob die aktuelle 
 
    1. Wählen Sie in der angezeigten Liste mit den dynamischen Inhalten unter **Variablen** die Eigenschaft **travelTime** aus.
 
-      ![Erstellen der Bedingung (linke Seite)](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
+      ![Erstellen der linken Seite der Bedingung](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
    1. Wählen Sie im mittleren Vergleichsfeld den Operator **ist größer als** aus.
 
@@ -255,7 +255,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, ob die aktuelle 
 
       Danach sieht die Bedingung wie im folgenden Beispiel aus:
 
-      ![Abgeschlossene Bedingung](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Fertige Bedingung zum Überprüfen der Reisezeit](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Speichern Sie Ihre Logik-App.
 
@@ -269,7 +269,7 @@ Fügen Sie nun eine Aktion hinzu, die Ihnen eine E-Mail sendet, wenn die Reiseze
 
 1. Wählen Sie unter **Aktion auswählen** die Option **Standard** aus. Geben Sie „E-Mail senden“ in das Suchfeld ein. Daraufhin wird eine Liste mit zahlreichen Ergebnissen zurückgegeben. Wählen Sie daher zunächst den gewünschten E-Mail-Connector aus. Beispiel:
 
-   ![Auswählen des E-Mail-Connectors](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
+   ![Auswählen des gewünschten E-Mail-Connectors](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
    * Wählen Sie für Geschäfts-, Schul- oder Unikonten für Azure die Option **Office 365 Outlook**.
    * Wählen Sie für persönliche Microsoft-Konten die Option **Outlook.com**.
@@ -320,17 +320,17 @@ Fügen Sie nun eine Aktion hinzu, die Ihnen eine E-Mail sendet, wenn die Reiseze
 
    1. Warten Sie, bis die Eigenschaft innerhalb des Ausdrucks aufgelöst wurde, und wählen Sie **OK** aus.
 
-      ![Eigenschaft „Text“ mit aufgelöstem Ausdruck](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
+      ![Auswählen von „OK“ nach Auflösen der Eigenschaft „Text“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
       Die Eigenschaft **Text** wird nun wie folgt angezeigt:
 
-      ![Eigenschaft „Text“ mit aufgelöstem Ausdruck](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
+      ![Aufgelöste Eigenschaft „Text“ im Ausdruck](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
 1. Speichern Sie Ihre Logik-App.
 
 Testen Sie als Nächstes Ihre Logik-App, die nun in etwa wie folgt aussieht:
 
-![Fertiggestellte Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
+![Fertiges Beispiel für Logik-App-Workflow](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-finished.png)
 
 ## <a name="run-your-logic-app"></a>Ausführen Ihrer Logik-App
 
@@ -340,9 +340,9 @@ Wählen Sie auf der Symbolleiste des Designers die Option **Ausführen** aus, um
 
 * Sollte die aktuelle Reisezeit den Grenzwert überschreiten, erhalten Sie eine E-Mail mit der aktuellen Reisezeit und der Anzahl von Minuten, um die der Grenzwert überschritten wird. Hier sehen Sie ein Beispiel für eine von Logik-App gesendete E-Mail:
 
-![Gesendete E-Mail mit Reisezeit](./media/tutorial-build-scheduled-recurring-logic-app-workflow/email-notification.png)
+![Gesendete Beispiel-E-Mail mit der Reisezeit](./media/tutorial-build-scheduled-recurring-logic-app-workflow/received-example-email-notification.png)
 
-Überprüfen Sie Ihren Ordner mit den Junk-E-Mails, falls Sie keine E-Mails erhalten. E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. Wenn Sie unsicher sind, ob Ihre Logik-App richtig ausgeführt wurde, helfen Ihnen die Informationen unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md) weiter.
+Sollten Sie keine E-Mails erhalten, überprüfen Sie Ihren Ordner für Junk-E-Mails. E-Mails dieser Art werden unter Umständen durch Ihren Junk-E-Mail-Filter umgeleitet. Wenn Sie unsicher sind, ob Ihre Logik-App richtig ausgeführt wurde, helfen Ihnen die Informationen unter [Diagnostizieren von Fehlern bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md) weiter.
 
 Glückwunsch! Sie haben eine zeitplanbasierte Logik-App für die wiederholte Ausführung erstellt und ausgeführt. 
 

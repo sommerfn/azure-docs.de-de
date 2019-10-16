@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 05/06/2019
-ms.openlocfilehash: f4023fa84215a0319669de0d812d8306b62278e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5194cf51fd7f1debeba76edb48e8377919ae448a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073267"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177964"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
 Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft Cloud für Entwickler. Er basiert auf der Communityversion der Open-Source-[PostgreSQL](https://www.postgresql.org/)-Datenbank-Engine und wird mit zwei Bereitstellungsoptionen angeboten: „Einzelserver“ und „Hyperscale (Citus)“ (Vorschauversion).
@@ -48,7 +48,7 @@ Beachten Sie, dass Citus derzeit als öffentliche Vorschauversion verfügbar ist
 ## <a name="data-security"></a>Datensicherheit
 Azure-Datenbankdienste sind für ihre Datensicherheit bekannt. Diese Tradition wird auch von Azure Database for PostgreSQL fortgeführt. Der Dienst bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://azure.microsoft.com/overview/trusted-cloud/).
 
-Der Azure Database for PostgreSQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten und ist mit FIPS 140-2 konform. Daten (auch Sicherungen) werden auf dem Datenträger verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden. Für den Schutz von Daten während der Übertragung erfordert der Azure Database for PostgreSQL-Dienst standardmäßig sichere Verbindungen innerhalb des Netzwerks sowie zwischen der Datenbank und Clientanwendung.
+Der Azure Database for PostgreSQL-Dienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten, einschließlich Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden. Für den Schutz von Daten während der Übertragung erfordert der Azure Database for PostgreSQL-Dienst standardmäßig sichere Verbindungen innerhalb des Netzwerks sowie zwischen der Datenbank und Clientanwendung.
 
 ## <a name="contacts"></a>Kontakte
 Sollten Sie Fragen oder Vorschläge zur Verwendung von Azure Database for PostgreSQL haben, senden Sie eine E-Mail an das Azure Database for PostgreSQL-Team ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Wenden Sie sich bei allgemeinen Fragen an diese Adresse, anstatt ein Supportticket zu öffnen.

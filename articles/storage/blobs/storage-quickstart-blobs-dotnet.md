@@ -7,12 +7,12 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 1b6348173f47b570efff25bf09e9a427ff2ba9b5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 27ae562d38ee8734201299e10dbe6ac4be3cb2ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640992"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947647"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek für .NET
 
@@ -31,11 +31,11 @@ Mit der Azure Blob Storage-Clientbibliothek für .NET ist Folgendes möglich:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="required-before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 * Azure Storage-Konto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) oder höher für Ihr Betriebssystem Laden Sie unbedingt das SDK und nicht die Runtime herunter.
+* Aktuelles [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) für Ihr Betriebssystem. Laden Sie unbedingt das SDK und nicht die Runtime herunter.
 
 ## <a name="setting-up"></a>Einrichten
 

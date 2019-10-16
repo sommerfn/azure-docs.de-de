@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709600"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177531"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Nachverfolgen des Azure-Gutschriftensaldos der Microsoft-Kundenvereinbarung
 
 Sie können den Azure-Gutschriftensaldo für die Microsoft-Kundenvereinbarung im Azure-Portal überprüfen. Sie verwenden Gutschriften, um Gebühren zu begleichen, die durch die Gutschriften abgedeckt sind.
 
-Die Verwendung anderer Produkte, die durch diese Guthaben nicht abgedeckt sind, wird Ihnen in Rechnung gestellt. Ebenso wird Ihnen die Nutzung berechnet, wenn diese Ihr Guthabensaldo überschreitet. Weitere Informationen finden Sie unter [Von Azure-Gutschriften nicht abgedeckte Produkte(#products-that-arent-covered-by-azure-credits).
+Die Verwendung anderer Produkte, die durch diese Guthaben nicht abgedeckt sind, wird Ihnen in Rechnung gestellt. Ebenso wird Ihnen die Nutzung berechnet, wenn diese Ihr Guthabensaldo überschreitet. Weitere Informationen finden Sie unter [Von Azure-Gutschriften nicht abgedeckte Produkte](#products-that-arent-covered-by-azure-credits).
 
 Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 

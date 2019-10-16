@@ -2,19 +2,19 @@
 title: 'Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Projects'
 description: DevOps Projects erleichtert die ersten Schritte mit Azure sowie die Bereitstellung Ihrer ASP.NET-App auf virtuellen Azure-Computern.
 ms.author: mlearned
-ms.manager: douge
+manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 05643f342d51d99645d3c9204d6e63adcf2a0a73
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: b03fb27c46d4fd925b91b8927fdd50ff4912aaec
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165695"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969556"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-projects"></a>Tutorial: Bereitstellen einer ASP.NET-App auf virtuellen Azure-Computern mithilfe von Azure DevOps Projects
 

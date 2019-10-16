@@ -6,16 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8677d906375853bdde5c192c86dacc7479f2e31e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311278"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170240"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
-Mit Visual Studio können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Beispielsweise können Sie den Webhost, die Website und den Code für die Website bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien. In diesem Artikel stellen Sie eine Web-App bereit.  
+Mit Visual Studio können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Beispielsweise können Sie den Webhost, die Website und den Code für die Website bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien. In diesem Artikel stellen Sie eine Web-App bereit.
 
 Informationen zur Verwendung von Visual Studio 2019 oder höher mit den installierten Workloads für ASP.NET und die Azure-Entwicklung finden Sie in [diesem Artikel](/visualstudio/install/install-visual-studio?view=vs-2019). Bei Verwendung von Visual Studio 2017 ist der Ablauf größtenteils identisch.
 
@@ -205,13 +205,13 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
 
     ![Ressource hinzufügen](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 
-1. Wählen Sie nun **Web Deploy für Web Apps**aus. 
+1. Wählen Sie nun **Web Deploy für Web Apps**aus.
 
     ![Hinzufügen von Web Deploy](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
 
    Speichern Sie die Vorlage.
 
-1. In der Vorlage sind einige neue Parameter enthalten. Diese wurden im vorherigen Schritt hinzugefügt. Die Werte für **_artifactsLocation** oder **_artifactsLocationSasToken** werden automatisch generiert und müssen daher nicht angegeben werden. Sie müssen jedoch den Ordner- und Dateinamen für das Verzeichnis festlegen, das das Bereitstellungspaket enthält. Die Namen dieser Parameter enden mit **PackageFolder** und **PackageFileName**. Der erste Teil des Namens ist der Name der hinzugefügten Web Deploy-Ressource. In diesem Artikel sind dies **ExampleAppPackageFolder** und **ExampleAppPackageFileName**. 
+1. In der Vorlage sind einige neue Parameter enthalten. Diese wurden im vorherigen Schritt hinzugefügt. Die Werte für **_artifactsLocation** oder **_artifactsLocationSasToken** werden automatisch generiert und müssen daher nicht angegeben werden. Sie müssen jedoch den Ordner- und Dateinamen für das Verzeichnis festlegen, das das Bereitstellungspaket enthält. Die Namen dieser Parameter enden mit **PackageFolder** und **PackageFileName**. Der erste Teil des Namens ist der Name der hinzugefügten Web Deploy-Ressource. In diesem Artikel sind dies **ExampleAppPackageFolder** und **ExampleAppPackageFileName**.
 
    Öffnen Sie **Website.parameters.json**, und legen Sie diese Parameter auf die Werte fest, die in den Verweiseigenschaften angezeigt werden. Legen Sie **ExampleAppPackageFolder** auf den Namen des Ordners fest. Legen Sie **ExampleAppPackageFileName** auf den Namen der ZIP-Datei fest.
 
@@ -386,7 +386,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie erfahren, wie Vorlagen mit Visual Studio erstellt und bereitgestellt werden. Im nächsten Tutorial wird gezeigt, wie Sie die Informationen in der Vorlagenreferenz suchen, um ein verschlüsseltes Azure Storage-Konto erstellen zu können.
+In dieser Schnellstartanleitung haben Sie erfahren, wie Vorlagen mit Visual Studio erstellt und bereitgestellt werden. Weitere Informationen zur Vorlagenentwicklung finden Sie in unserer neuen Tutorialreihe für Anfänger:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen einer Azure Resource Manager-Vorlage für die Bereitstellung eines verschlüsselten Speicherkontos](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Tutorials für Anfänger](./template-tutorial-create-first-template.md)

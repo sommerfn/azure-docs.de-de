@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b6ac528d0d2916f513be4e2a72bff061bdad8e58
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718650"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177761"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -132,7 +132,9 @@ Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geh
 
 3. Wählen Sie **Zertifikatberechtigungen** aus, und aktivieren Sie dann die Kontrollkästchen für das **Abrufen** und **Auflisten**, um CDN diese Berechtigungen zu erteilen und das Abrufen und Auflisten der Zertifikate zu ermöglichen.
 
-4. Klicken Sie auf **OK**. 
+4. Wählen Sie **Berechtigungen für Geheimnis** aus, und aktivieren Sie dann die Kontrollkästchen für das **Abrufen** und **Auflisten**, um CDN diese Berechtigungen zu erteilen und das Abrufen und Auflisten der Geheimnisse zu ermöglichen.
+
+5. Klicken Sie auf **OK**. 
 
     Das Azure CDN kann nun auf diesen Schlüsseltresor und auf die darin gespeicherten Zertifikate (Geheimnisse) zugreifen.
  
@@ -190,7 +192,7 @@ Die automatische Überprüfung dauert normalerweise einige Stunden. Öffnen Sie 
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt nicht zugeordnet
 
 >[!NOTE]
->Bei der Verwendung von **Azure CDN von Akamai** muss der folgende CNAME-Eintrag eingerichtet werden, um die automatisierte Domänenüberprüfung zu aktivieren: „_acme-challenge.<custom domain hostname> -> CNAME -> <custom domain hostname>.ak-acme-challenge.azureedge.net“.
+>Bei der Verwendung von **Azure CDN von Akamai** muss der folgende CNAME-Eintrag eingerichtet werden, um die automatisierte Domänenüberprüfung zu aktivieren: „_acme-challenge.&lt;Hostname der benutzerdefinierten Domäne&gt; -> CNAME -> &lt;Hostname der benutzerdefinierten Domäne&gt;.ak-acme-challenge.azureedge.net“
 
 Wenn der CNAME-Eintrag die cdnverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305938"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026962"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Harness
 
@@ -141,11 +141,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 3. Wenn Sie Harness manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, melden Sie sich bei der Harness-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
 
-4. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Authentication Settings** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Authentifizierungseinstellungen).
+4. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Authentication Settings** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Authentifizierungseinstellungen).
 
     ![Konfiguration von Harness](./media/harness-tutorial/configure01.png)
 
-5. Klicken Sie im Abschnitt **SSO Providers** (SSO-Anbieter) auf **+ Add SSO Providers** > **SAML** (+ SSO-Anbieter hinzufügen > SAML).
+5. Klicken Sie im Abschnitt **SSO Providers** (SSO-Anbieter) auf **+ Add SSO Providers** > **SAML** (+ SSO-Anbieter hinzufügen > SAML).
 
     ![Konfiguration von Harness](./media/harness-tutorial/configure03.png)
 
@@ -169,11 +169,11 @@ Damit sich Azure AD-Benutzer bei Harness anmelden können, müssen sie in Harne
 
 1. Melden Sie sich bei Harness als Administrator an.
 
-1. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Users** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Benutzer).
+1. Klicken Sie oben rechts auf der Seite auf **Continuous Security** > **Access Management** > **Users** (Kontinuierliche Sicherheit > Zugriffsverwaltung > Benutzer).
 
     ![Konfiguration von Harness](./media/harness-tutorial/configure04.png)
 
-1. Klicken Sie rechts oben auf der Seite auf  **+ Add User** (+ Benutzer hinzufügen).
+1. Klicken Sie rechts oben auf der Seite auf **+ Add User** (+ Benutzer hinzufügen).
 
     ![Konfiguration von Harness](./media/harness-tutorial/configure05.png)
 

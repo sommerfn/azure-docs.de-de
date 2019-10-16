@@ -9,18 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 192374971e92bae282c5092dd8c5e7261fce0c5f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066366"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001355"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie Ihrer Microsoft Azure IoT Central-Anwendung ein echtes Gerät hinzufügen und das Gerät konfigurieren.
+In diesem Tutorial erfahren Sie, wie Sie Ihrer Microsoft Azure IoT Central-Anwendung ein *echtes Gerät* hinzufügen und das Gerät konfigurieren. In diesem Tutorial codieren Sie das echte Gerät mithilfe von Node.js und führen den Code auf einem Desktopcomputer aus. Sie benötigen für dieses Tutorial kein separates IoT-Gerät wie ein Raspberry Pi- oder MXChip IoT DevKit-Gerät.
 
 Das Tutorial besteht aus zwei Teilen:
 
@@ -52,11 +52,11 @@ Um Ihrer Anwendung ein echtes Gerät hinzuzufügen, verwenden Sie die Gerätevor
 
    Unter **Device Explorer** werden die Gerätevorlage für die **verbundene Klimaanlage** und ein simuliertes Gerät angezeigt. IoT Central erstellt automatisch ein simuliertes Gerät, wenn Sie eine Gerätevorlage erstellen.
 
-2. Wählen Sie **+** und anschließend **Real** (Echt) aus, um damit zu beginnen, eine Verbindung mit einer echten verbundenen Klimaanlage herzustellen:
+2. Die Gerätevorlage für die **verbundene Klimaanlage** ist die im **Geräte-Explorer** ausgewählte Vorlage. Wählen Sie **+** und anschließend **Real** (Echt) aus, um damit zu beginnen, eine Verbindung mit einer echten Klimaanlage herzustellen, die diese Vorlage verwendet:
 
    ![Beginnen mit dem Herstellen einer Verbindung mit einer echten verbundenen Klimaanlage](media/tutorial-add-device/newreal.png)
 
-3. Geben Sie die Geräte-ID (in Kleinbuchstaben) ein, oder verwenden Sie die vorgeschlagene Geräte-ID. Sie können auch einen Namen für Ihr neues Gerät eingeben und auf **Erstellen** klicken.
+3. Geben Sie die **Geräte-ID** (in Kleinbuchstaben) ein, oder verwenden Sie den vorgeschlagenen Wert. Sie können auch einen **Gerätenamen** für Ihr neues Gerät eingeben und **Erstellen** auswählen.
 
    ![Umbenennen des Geräts](media/tutorial-add-device/rename.png)
 
@@ -76,9 +76,9 @@ Das echte Gerät wird auf der Grundlage der Gerätevorlage **Connected Air Condi
 
 ## <a name="prepare-the-client-code"></a>Vorbereiten des Clientcodes
 
-Der Beispielcode in diesem Artikel ist in [Node.js](https://nodejs.org/) geschrieben und zeigt genügend Code für Folgendes:
+Der Beispielcode in diesem Artikel ist in [Node.js](https://nodejs.org/) geschrieben und zeigt genügend Code, damit ein Gerät folgende Aktionen ausführen kann:
 
-* Herstellen einer Verbindung als Gerät mit Ihrer Azure IoT Central-Anwendung
+* Herstellen einer Verbindung mit Ihrer Azure IoT Central-Anwendung
 * Senden von Telemetriedaten zur Temperatur als verbundene Klimaanlage
 * Senden von Geräteeigenschaften an Ihre Azure IoT Central-Anwendung
 * Reagieren auf einen Bediener, der die Einstellung **Set Temperature** (Sollwerttemperatur) verwendet
@@ -96,7 +96,7 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
 
    ![Geräteseite mit Link zum Anzeigen der Verbindungsinformationen](media/tutorial-add-device/connectionlink.png)
 
-1. Notieren Sie sich auf der Geräteverbindungsseite die **Bereichs-ID**, die **Geräte-ID** und den **Primärschlüssel**. Diese Werte werden im weiteren Verlauf dieses Tutorials benötigt.
+1. Notieren Sie sich auf der Seite **Geräteverbindung** die **Bereichs-ID**, die **Geräte-ID** und den **Primärschlüssel**. Diese Werte werden im weiteren Verlauf dieses Tutorials benötigt.
 
    ![Verbindungsdetails](media/tutorial-add-device/device-connect.png)
 
@@ -139,7 +139,7 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -150,7 +150,7 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
 
 ## <a name="review-client-code"></a>Überprüfen des Clientcodes
 
-Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine Anwendung erstellt, die eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellt. Im nächsten Schritt wird Code hinzugefügt, um Folgendes zu ermöglichen:
+Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine Geräteanwendung erstellt, die eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellt. Im nächsten Schritt wird Code hinzugefügt, um Folgendes zu ermöglichen:
 
 * Herstellen einer Verbindung mit Ihrer Azure IoT Central-Anwendung
 * Senden von Telemetriedaten an Ihre Azure IoT Central-Anwendung

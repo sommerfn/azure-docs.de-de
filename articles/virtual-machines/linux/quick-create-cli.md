@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: 2d66064167741b59766763f4fc1313409de1e649
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 0208e72263991daceed52073bcce8b3e01f8e8c2
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801045"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174293"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Linux-VM mit der Azure CLI
 
-Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der Azure CLI einen virtuellen Linux-Computer in Azure bereitstellen. In diesem Tutorial installieren wir Ubuntu 16.04 LTS. Sie können die VM in Aktion erleben, indem Sie per SSH eine Verbindung damit herstellen und den NGINX-Webserver installieren.
+In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) einen virtuellen Linux-Computer in Azure bereitstellen. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Tutorial installieren wir Ubuntu 16.04 LTS. Sie können die VM in Aktion erleben, indem Sie per SSH eine Verbindung damit herstellen und den NGINX-Webserver installieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

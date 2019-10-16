@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: ddc577af945c01b94dae5a75725082e4e6689fd9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e6ff3e6798fadca89455790efa28891c02e9e459
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64697120"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996955"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
-Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt.
+Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt. Network Watcher ist für die Überwachung und Wiederherstellung der Netzwerkintegrität von IaaS-Produkten (Infrastructure-as-a-Service) konzipiert, etwa Virtual Machines, Virtual Network, Application Gateway, Lastenausgleichsmodule usw. Hinweis: Der Dienst ist nicht für die PaaS-Überwachung oder Webanalyse gedacht und kann dafür nicht verwendet werden. 
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -77,7 +77,7 @@ Sie können über Network Watcher Latenzinformationen zwischen Azure-Regionen un
 
 Die geltenden Sicherheitsregeln für eine Netzwerkschnittstelle stellen eine Kombination aller Sicherheitsregeln, die auf die Netzwerkschnittstelle angewendet werden, und des Subnetzes der Netzwerkschnittstelle dar.  Mit der Funktion *Sicherheitsgruppenansicht* werden alle Sicherheitsregeln, die auf die Netzwerkschnittstelle angewendet werden, das Subnetz, in dem sich die Netzwerkschnittstelle befindet, und die entsprechende Aggregierung angezeigt. Wenn Sie wissen, welche Regeln auf eine Netzwerkschnittstelle angewendet werden, können Sie Regeln hinzufügen, entfernen oder ändern, falls damit Datenverkehr zugelassen oder verweigert wird und Sie dies ändern möchten. Erfahren Sie mehr zur [Sicherheitsgruppenansicht](network-watcher-security-group-view-overview.md).
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 
 Es gibt [Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) für die Anzahl von Netzwerkressourcen, die Sie in einem Azure-Abonnement und einer Region erstellen können. Wenn Sie die Grenzwerte erreicht haben, ist es nicht möglich, unter dem Abonnement oder in der Region weitere Ressourcen zu erstellen. Bei der Funktion *Limit für Netzwerkabonnement* wird eine Zusammenfassung dazu angezeigt, wie viele der einzelnen Netzwerkressourcen Sie für ein Abonnement und eine Region jeweils bereitgestellt haben und welche Grenzen für eine Ressource gelten. In der folgenden Abbildung ist die Teilausgabe für Netzwerkressourcen dargestellt, die in der Region „USA, Osten“ für ein Beispielabonnement bereitgestellt wurden:
 

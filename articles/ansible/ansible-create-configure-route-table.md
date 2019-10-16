@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Azure-Routingtabellen mit Ansible | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Azure-Routingtabellen mit Ansible'
 description: Es wird beschrieben, wie Sie mit Ansible Azure-Routingtabellen erstellen, ändern und löschen.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Netzwerke, Route, Routingtabelle
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 846ff510603c0ed0888ec92ece8b86fad0354c19
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 14753af58a179ddf4011cb29c7ed08faab62875c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230887"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241778"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Tutorial: Konfigurieren von Azure-Routingtabellen mit Ansible
 
@@ -253,7 +253,7 @@ Speichern Sie das folgende Playbook als `route_table_delete.yml`:
         state: absent
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook route_table_delete.yml

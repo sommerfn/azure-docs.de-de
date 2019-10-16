@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Custom Vision?
+title: Was ist Custom Vision?
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mithilfe des Custom Vision-Diensts benutzerdefinierte Bildklassifizierungen in der Azure-Cloud erstellen.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 033b0317b1738e24e4ac9c9ae2150b015cc5a8e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e455a42945ba4d6ce334d557b7390c3c50e7ff9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560966"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177826"
 ---
-# <a name="what-is-azure-custom-vision"></a>Was ist Azure Custom Vision?
+# <a name="what-is-custom-vision"></a>Was ist Custom Vision?
 
-Azure Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die _Klassen_ darstellen) auf Bilder anwendet. Anders als beim Dienst für [maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) können Sie bei Custom Vision die Klassifizierungen auswählen, die Sie anwenden möchten.
+Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die _Klassen_ darstellen) auf Bilder anwendet. Anders als beim Dienst für [maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) können Sie bei Custom Vision die Klassifizierungen auswählen, die Sie anwenden möchten.
 
 ## <a name="what-it-does"></a>Funktionsbeschreibung
 
