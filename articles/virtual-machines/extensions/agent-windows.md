@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7c163dd48e53a3116d58cb94988f2822ddede5e5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 24c7f6c1488d7a78a16aafef88177f7045eb2492
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169120"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244652"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -68,7 +68,7 @@ msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /q
 ```
 
 ### <a name="prerequisites"></a>Voraussetzungen
-Für die Ausführung des Windows-VM-Agent ist mindestens Windows Server 2008 R2 (64-Bit) mit .NET Framework 4.0 erforderlich.
+Für die Ausführung des Windows-VM-Agent ist mindestens Windows Server 2008 R2 (64-Bit) mit .NET Framework 4.0 erforderlich. Siehe [Minimum version support for virtual machine agents in Azure](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) (Unterstützte Mindestversion für VM-Agents in Azure).
 
 ## <a name="detect-the-vm-agent"></a>Erkennen des VM-Agents
 
@@ -110,6 +110,8 @@ Wenn Sie bei einem virtuellen Windows-Computer angemeldet sind, können Sie mith
 ## <a name="upgrade-the-vm-agent"></a>Upgraden des VM-Agents
 Der Azure VM-Agent für Windows wird automatisch aktualisiert. Wenn neue VMs für Azure bereitgestellt werden, erhalten diese bei der VM-Bereitstellung jeweils den neuesten VM-Agent. Benutzerdefinierte VM-Images sollten bei der Erstellung von Images manuell mit dem neuen VM-Agent aktualisiert werden.
 
+## <a name="windows-guest-agent-automatic-logs-collection"></a>Automatische Protokollerfassung für Windows-Gast-Agent
+Der Windows-Gast-Agent verfügt über eine Funktion zum automatischen Erfassen einiger Protokolle. Diese Funktion wird durch den Prozess CollectGuestLogs.exe gesteuert. Sie ist sowohl für PaaS Cloud Services als auch für IaaS-VMs vorhanden und darauf ausgelegt, schnell und automatisch einige Diagnoseprotokolle von einer VM zu erfassen, sodass sie für die Offlineanalyse verwendet werden können. Erfasst werden Ereignisprotokolle, Betriebssystemprotokolle, Azure-Protokolle sowie einige Registrierungsschlüssel. Es wird eine ZIP-Datei erstellt, die an den Host der VM übertragen wird. Diese ZIP-Datei kann dann von Technikerteams und Supportmitarbeitern verwendet werden, um Probleme auf Anforderung des Besitzers der VM zu untersuchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu VM-Erweiterungen finden Sie unter [Azure virtual machine extensions and features overview (Übersicht über Azure-VM-Erweiterungen und Features)](overview.md).

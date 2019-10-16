@@ -6,19 +6,22 @@ manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 10/04/2019
+ms.openlocfilehash: d035f26e4b550eb1e5d2cca161f14880814a15f6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013089"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244164"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
 Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) zu beginnen, müssen Sie zunächst [ein Partner Center-Konto erstellen](./create-account.md) und das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen, in dem die Registerkarte **Übersicht** ausgewählt ist.
 
 ![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
+
+>[!Note]
+> Nach der Veröffentlichung eines Angebots werden im Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Sie müssen das Angebot nach dem Vornehmen von Änderungen für die Veröffentlichung einreichen.
 
 Klicken Sie auf die Schaltfläche **+ Neues Angebot…** , und wählen Sie dann das Menüelement **Software-as-a-Service** aus. 
 
@@ -157,18 +160,7 @@ Wenn Sie eine Testversion aktivieren, werden Sie aufgefordert, eine Demoumgebung
 
 ## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
 
-Nehmen Sie direkt Kontakt zu Kunden auf, indem Sie Ihr Angebot in Marketplaces auflisten und Ihr CRM-System (Customer Relationship Management) einbinden. So erhalten Sie Kundenkontaktinformationen sofort, nachdem ein Kunde Interesse bekundet oder Ihr Produkt bereitgestellt hat.
-
-- **Leadziel auswählen** (Dropdownmenü): Geben Sie Verbindungsinformationen für das CRM-System an, wenn Sie möchten, dass wir Kundenleads senden. 
-
-Das Partner Center unterstützt die Leadverwaltung für die folgenden CRM-Systeme. Klicken Sie auf den Link, um Anweisungen zur Einrichtung zu erhalten.
-
-- „Azure-BLOB“: Geben Sie die E-Mail-Adresse, den Containernamen und die Verbindungszeichenfolge für das Speicherkonto ein. 
-- [Azure-Tabelle](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table): Geben Sie die E-Mail-Kontaktadresse und die Verbindungszeichenfolge für das Speicherkonto an. 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics): Geben Sie die E-Mail-Kontaktadresse, die URL und den Authentifizierungsmodus (Office 365 oder Azure Active Directory) an.
-- [HTTPS-Endpunkt](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https): Geben Sie E-Mail-Kontaktadresse und die URL des HTTP-Endpunkts an. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo): Geben Sie die E-Mail-Kontaktadresse, die Formular-ID, Munchkin-Konto-ID und Server-ID an.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce): Geben Sie die E-Mail-Kontaktadresse und die Organisations-ID an. 
+[!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>Zusätzliche Ressourcen zur Leadverwaltung
 - [Häufig gestellte Fragen zur Leadverwaltung](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
@@ -182,7 +174,7 @@ Auf der Registerkarte **Eigenschaften** werden Sie aufgefordert, die Kategorien 
 
 Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgenommen haben. 
 
-### <a name="category"></a>Category (Kategorie)
+### <a name="category"></a>Category
 Wählen Sie mindestens eine (1) und maximal drei (3) Kategorien zum Gruppieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen aus. Geben Sie in der Angebotsbeschreibung an, wie Ihr Angebot diesen Kategorien entspricht. 
 
 ### <a name="industry"></a>Branche
@@ -220,7 +212,7 @@ Auf der Registerkarte „Angebotsliste“ werden die Sprachen (und Märkte) ange
 
 Geben Sie Informationen an, die im Marketplace angezeigt werden sollen, einschließlich der Beschreibung des Angebots und der Marketingressourcen.
 
-- **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in dem/den von Ihnen gewählten Marketplace(s) angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen.  Er ist möglicherweise markenrechtlich geschützt.  Er darf keine Leerzeichen und Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
+- **Name** (erforderlich): Der hier definierte Name wird als Titel der Angebotsliste in dem/den von Ihnen gewählten Marketplace(s) angezeigt. Der Name ist basierend auf Ihrer vorherigen Eingabe in **Neues Angebot** bereits eingetragen.  Er ist möglicherweise markenrechtlich geschützt.  Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und muss auf 50 Zeichen begrenzt sein.
 - **Zusammenfassung** (erforderlich): Geben Sie eine kurze Beschreibung Ihres Angebots ein, die in den Suchergebnissen für Marketplace-Liste(n) verwendet werden soll. In diesem Feld können bis zu 100 Zeichen Text eingegeben werden.
 - **Beschreibung:** (erforderlich): Geben Sie eine Beschreibung Ihres Angebots ein, die in der Übersicht über die Marketplace-Liste(n) angezeigt werden soll. Sie können z.B ein Wertversprechen, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe, erforderliche Veröffentlichungen und einen Link zu weiteren Informationen eingeben.
 In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. Weitere Tipps finden Sie im Artikel [Erstellen einer interessanten App-Beschreibung](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
@@ -409,6 +401,9 @@ SaaS-Angebote über den kommerziellen Marketplace ermöglichen Ihnen beim Verkau
 Die Möglichkeit, eine kostenlose Testversion zu konfigurieren, steht für jeden Plan in Ihrem Angebot zur Verfügung. Navigieren Sie einfach zu „Preise und Verfügbarkeit“ für jedes Angebot, und aktivieren Sie das Kontrollkästchen, um eine einmonatige Testversion zuzulassen.
 
 ![Kontrollkästchen für eine einmonatige kostenlose Testversion](./media/free-trial-enable.png)
+
+>[!Note]
+>Sobald Ihr transaktionsfähiges Angebot mit einer kostenlosen Testversion veröffentlicht wurde, kann es für diesen Plan nicht mehr deaktiviert werden. Vergewissern Sie sich, dass diese Einstellung für die erste Veröffentlichung korrekt ist, damit der Plan nicht neu erstellt werden muss.
 
 Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen eines Saas-Abonnements](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
 

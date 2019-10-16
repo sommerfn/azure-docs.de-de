@@ -1,52 +1,53 @@
 ---
-title: Nachverfolgen des Fortschritts von Data Science-Projekten – Team Data Science-Prozess
-description: Wie Data Science-Gruppenmanager, Teamleiter und Projektleiter den Status eines Data Science-Projekts nachverfolgen können.
+title: Nachverfolgen des Fortschritts von Team Data Science-Prozessprojekten
+description: Erfahren Sie, wie Data Science-Gruppenmanager, -Teamleiter und -Projektleiter den Status eines Data Science-Projekts nachverfolgen können.
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 09/26/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7745a53084f4477f7b736ea9d130ffd3eed771f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60252578"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244058"
 ---
-# <a name="tracking-the-progress-of-data-science-projects"></a>Nachverfolgen des Fortschritts von Data Science-Projekten
+# <a name="track-the-progress-of-data-science-projects"></a>Nachverfolgen des Fortschritts von Data Science-Projekten
 
-Data Science-Gruppenmanager, Teamleiter und Projektleiter müssen den Fortschritt ihrer Projekte nachverfolgen: welche Arbeit von welchen Personen ausgeführt wurde und was in den Aufgabenlisten verbleibt. 
+Data Science-Gruppenmanager, -Teamleiter und -Projektleiter können den Fortschritt ihrer Projekte nachverfolgen, z. B. welche Arbeit erledigt wurde, wer diese Arbeit ausgeführt hat und welche Arbeit noch aussteht. 
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps-Dashboards
-Bei Verwendung von Azure DevOps können Sie zum Nachverfolgen der Aktivitäten und der einem bestimmten Agile-Projekt zugeordneten Arbeitselemente Dashboards erstellen. 
 
-Weitere Informationen zum Erstellen und Anpassen von Dashboards und Widgets in Azure DevOps finden Sie in den folgenden Anweisungen:
+Bei Verwendung von Azure DevOps können Sie Dashboards zum Nachverfolgen der Aktivitäten und der einem bestimmten Agile-Projekt zugeordneten Arbeitselemente erstellen. Weitere Informationen zu Dashboards finden Sie unter [Dashboards, Berichte und Widgets](/azure/devops/report/dashboards/).
 
-- [Hinzufügen und Verwalten von Dashboards](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
-- [Hinzufügen von Widgets zu einem Dashboard](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard)
+Anweisungen zum Erstellen und Anpassen von Dashboards und Widgets in Azure DevOps finden Sie in den folgenden Schnellstarts:
+
+- [Hinzufügen und Verwalten von Dashboards](/azure/devops/report/dashboards/dashboards)
+- [Hinzufügen von Widgets zu einem Dashboard](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>Beispieldashboard
 
-Dies ist ein einfaches Beispieldashboard, das zum Nachverfolgen der Sprintaktivitäten in einem Agile Data Science-Projekt sowie der Anzahl von Commits in den zugeordneten Repositorys erstellt wird. Im Bereich **links oben** wird Folgendes angezeigt:
+Dies ist ein einfaches Beispieldashboard zum Nachverfolgen der Sprintaktivitäten in einem Agile-Data Science-Projekt, einschließlich der Anzahl von Commits in den zugeordneten Repositorys. 
 
-- Der Countdown des aktuellen Sprints 
-- Die Anzahl von Commits für jedes Repository in den letzten sieben Tagen
-- Das Arbeitselement für bestimmte Benutzer 
+- Die Kachel **Countdown** zeigt die Anzahl der verbleibenden Tage im aktuellen Sprint an. 
 
-Die verbleibenden Elemente zeigen das kumulative Flussdiagramm (CFD), den Burndown und den Burnup für ein Projekt:
+- Die beiden **Codekacheln** zeigen die Anzahl von Commits in den beiden Projektrepositorys in den letzten sieben Tagen an. 
 
-- **Links unten:**  CFD der Menge an Arbeit in einem bestimmten Zustand mit genehmigten Elementen in Grau, committeten in Blau und erledigten in Grün
-- **Rechts oben:** Burndowndiagramm der Arbeit, die noch abgeschlossen werden muss, gegenüber der verbleibenden Zeit
-- **Rechts unten:** Burnupdiagramm der abgeschlossenen Arbeit gegenüber der Gesamtmenge der Arbeit
+- **Arbeitselemente für das TDSP-Kundenprojekt** zeigt die Ergebnisse einer Abfrage für alle Arbeitsaufgaben und deren Status an. 
+
+- Ein **kumulatives Flussdiagramm** zeigt die Anzahl der geschlossenen und aktiven Arbeitselemente an.
+
+- Das **Burndowndiagramm** zeigt Arbeit an, die in der verbleibenden Zeit im Sprint noch fertiggestellt werden muss.
+
+- Das **Burnupdiagramm** zeigt abgeschlossene Arbeit im Vergleich zur Gesamtmenge an Arbeit im Sprint an.
 
 ![Dashboard](./media/track-progress/dashboard.png)
 
-Eine Beschreibung der Erstellung dieser Diagramme finden Sie in den Schnellstarts und Tutorials unter [Dashboards](https://docs.microsoft.com/azure/devops/report/dashboards/).
- 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Artikel [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
+Unter [Exemplarischen Vorgehensweisen der Ausführung des Team Data Science-Prozesses](walkthroughs.md) werden exemplarische Vorgehensweisen aufgeführt, in denen alle Schritte des Prozesses für bestimmte Szenarien veranschaulicht werden, einschließlich Links und beschreibender Miniaturansichten. Anhand der Verknüpfungsszenarien wird dargestellt, wie Sie Cloud- und lokale Tools und Dienste über Workflows oder Pipelines kombinieren, um intelligente Anwendungen zu erstellen. 

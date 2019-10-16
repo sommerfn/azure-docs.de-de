@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058349"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241138"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Vorschau – sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -228,7 +228,7 @@ Um die vom API-Server autorisierten IP-Adressbereiche zu aktivieren, geben Sie e
 
 Geben Sie mit dem Befehl [az aks update][az-aks-update] die zulässigen *--api-server-authorized-ip-ranges* (vom API-Server autorisierten IP-Adressbereiche) an. Diese IP-Adressbereiche sind in der Regel die von Ihren lokalen Netzwerken verwendeten Adressbereiche. Fügen Sie die öffentliche IP-Adresse Ihrer eigenen Azure Firewall-Instanz hinzu, die sie im vorherigen Schritt abgerufen haben, wie z.B. *20.42.25.196/32*.
 
-Im folgenden Beispiel werden vom API-Server autorisierte IP-Adressbereiche für den Cluster namens *myAKSCluster* in der Ressourcengruppe *myResourceGroup* aktiviert. Die zu autorisierenden IP-Adressbereiche sind *20.42.25.196/32* (die öffentliche IP-Adresse der Azure Firewall-Instanz) und dann *172.0.0.0/16* und *168.10.0.0/18*:
+Im folgenden Beispiel werden vom API-Server autorisierte IP-Adressbereiche für den Cluster namens *myAKSCluster* in der Ressourcengruppe *myResourceGroup* aktiviert. Die zu autorisierenden IP-Adressbereiche sind *20.42.25.196/32* (die öffentliche IP-Adresse der Azure Firewall-Instanz) und dann *172.0.0.0/16* (Adressbereich für Pod/Knoten) und *168.10.0.0/18* (Dienst-CIDR):
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> Sie sollten diese Bereiche einer Zulassungsliste hinzufügen:
+> - Öffentliche IP-Adresse der Firewall
+> - Dienst-CIDR
+> - Adressbereich für die Subnetze mit den Knoten und Pods
+> - Alle Bereiche mit Netzwerken, von denen aus Sie den Cluster verwalten
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Aktualisieren oder Deaktivieren autorisierter IP-Adressbereiche
 

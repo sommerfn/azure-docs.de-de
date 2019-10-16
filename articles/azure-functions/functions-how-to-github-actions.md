@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260039"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028975"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
 
@@ -29,9 +29,9 @@ Bei einem Azure Functions-Workflow umfasst die Datei drei Abschnitte:
 
 | `Section` | Aufgaben |
 | ------- | ----- |
-| **Authentifizierung** | <ol><li>Definieren eines Dienstprinzipals.</li><li>Erstellen eines GitHub-Geheimnisses.</li></ol>|  
+| **Authentifizierung** | <ol><li>Definieren eines Dienstprinzipals.</li><li>Herunterladen des Veröffentlichungsprofils</li><li>Erstellen eines GitHub-Geheimnisses.</li></ol>|
 | **Build** | <ol><li>Einrichten der Umgebung.</li><li>Erstellen Sie die Funktions-App.</li></ol> |
-| **Bereitstellen** | <ol><li>Bereitstellen der Funktions-App.</li></ol>| 
+| **Bereitstellen** | <ol><li>Bereitstellen der Funktions-App.</li></ol>|
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
@@ -43,16 +43,27 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 Ersetzen Sie in diesem Beispiel die Platzhalter in der Ressource durch Ihre Abonnement-ID, die Ressourcengruppe und den Namen der Funktions-App. Bei der Ausgabe handelt es sich um die Anmeldeinformationen für die Rollenzuweisung, die Zugriff auf ihre Funktions-App bereitstellen. Kopieren Sie dieses JSON-Objekt, das Sie zum Authentifizieren aus GitHub verwenden können.
 
+> [!NOTE]
+> Sie müssen keinen Dienstprinzipal erstellen, wenn Sie das Veröffentlichungsprofil für die Authentifizierung verwenden.
+
 > [!IMPORTANT]
 > Es ist immer empfehlenswert, den minimalen Zugriff zu gewähren. Aus diesem Grund ist der Bereich im vorherigen Beispiel auf die spezifische Funktions-App und nicht auf die gesamte Ressourcengruppe eingeschränkt.
+
+## <a name="download-the-publishing-profile"></a>Herunterladen des Veröffentlichungsprofils
+
+Sie können das Veröffentlichungsprofil Ihrer Funktions-App herunterladen, indem Sie auf der Seite **Übersicht** Ihrer App auf **Veröffentlichungsprofil abrufen** klicken.
+
+   ![Veröffentlichungsprofil herunterladen](media/functions-how-to-github-actions/get-publish-profile.png)
+
+Kopieren Sie den Inhalt der Datei.
 
 ## <a name="configure-the-github-secret"></a>Konfigurieren des GitHub-Geheimnisses
 
 1. Navigieren Sie in [GitHub](https://github.com) zu Ihrem Repository, und wählen Sie **Einstellungen** > **Geheimnisse** > **Neues Geheimnis hinzufügen** aus.
 
-    ![Hinzufügen des Geheimnisses](media/functions-how-to-github-actions/add-secret.png)
+   ![Hinzufügen des Geheimnisses](media/functions-how-to-github-actions/add-secret.png)
 
-1. Verwenden Sie `AZURE_CREDENTIALS` als **Namen** und die kopierte Befehlsausgabe als **Wert**, und wählen Sie dann **Geheimnis hinzufügen** aus. 
+1. Verwenden Sie `AZURE_CREDENTIALS` als **Namen** und die kopierte Befehlsausgabe als **Wert**, und wählen Sie dann **Geheimnis hinzufügen** aus. Wenn Sie das Veröffentlichungsprofil verwenden, geben Sie `SCM_CREDENTIALS` als **Namen** und den Dateiinhalt als **Wert** an.
 
 GitHub kann sich jetzt bei ihrer Funktions-App in Azure authentifizieren.
 

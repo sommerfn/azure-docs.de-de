@@ -1,17 +1,17 @@
 ---
 title: Überwachen von Azure Data Share Vorschau
-description: Überwachen von Azure Data Share Vorschau
+description: In diesem Artikel erfahren Sie, wie Sie den Status der Einladung, Freigabeabonnements und den Momentaufnahmeverlauf in Azure Data Share Vorschau überwachen.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: fbc6847dd86b7687d477b2bae0deab1389dc8491
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827063"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169127"
 ---
 # <a name="monitor-azure-data-share-preview"></a>Überwachen von Azure Data Share Vorschau 
 

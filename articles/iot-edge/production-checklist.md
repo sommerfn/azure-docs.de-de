@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899402"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244039"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -83,7 +83,7 @@ Wenn Ihr IoT Edge-Gerät verbunden ist, muss die Variable „UpstreamProtocol“
 
 ### <a name="be-consistent-with-upstream-protocol"></a>Verwenden konsistenter Upstreamprotokolle
 
-Wenn Sie den IoT Edge-Agent auf Ihrem IoT Edge-Gerät so konfiguriert haben, dass er ein anderes Protokoll als das Standard-AMQP verwendet, deklarieren Sie in allen zukünftigen Bereitstellungen das gleiche Protokoll. Wenn sich Ihr IoT Edge-Gerät beispielsweise hinter einem Proxyserver befindet, der AMQP-Ports blockiert, wurde das Gerät wahrscheinlich so konfiguriert, dass es sich über AMQP über WebSocket (AMQPWS) verbindet. Konfigurieren Sie beim Bereitstellen von Modulen auf dem Gerät das gleiche APQPWS-Protokoll für den IoT Edge-Agent und -Hub. Andernfalls überschreibt das Standard-AMQP die Einstellungen und verhindert eine erneute Verbindung. 
+Wenn Sie den IoT Edge-Agent auf Ihrem IoT Edge-Gerät so konfiguriert haben, dass er ein anderes Protokoll als das Standard-AMQP verwendet, deklarieren Sie in allen zukünftigen Bereitstellungen das gleiche Protokoll. Wenn sich Ihr IoT Edge-Gerät beispielsweise hinter einem Proxyserver befindet, der AMQP-Ports blockiert, wurde das Gerät wahrscheinlich so konfiguriert, dass es sich über AMQP über WebSocket (AMQPWS) verbindet. Konfigurieren Sie beim Bereitstellen von Modulen auf dem Gerät das gleiche AMQPWS-Protokoll für den IoT Edge-Agent und den IoT Edge-Hub. Andernfalls setzt das Standard-AMQP die Einstellungen außer Kraft und verhindert eine erneute Verbindung. 
 
 Sie müssen nur die Umgebungsvariable „UpstreamProtocol“ für die Module „IoT Edge-Agent“ und „IoT Edge-Hub“ konfigurieren. Alle zusätzlichen Module übernehmen das Protokoll, das in den Runtimemodulen festgelegt ist. 
 
@@ -177,9 +177,11 @@ Diese Prüfliste ist ein Ausgangspunkt für Firewallregeln:
    | mcr.microsoft.com  | 443 | Microsoft-Containerregistrierung |
    | global.azure-devices-provisioning.net  | 443 | DPS-Zugriff (optional) |
    | \*.azurecr.io | 443 | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern |
-   | \*.blob.core.windows.net | 443 | Download von Imagedeltas | 
+   | \*.blob.core.windows.net | 443 | Herunterladen von Azure Container Registry-Imagedeltas aus Blobspeicher  | 
    | \*.azure-devices.net | 5671, 8883, 443 | IoT Hub-Zugriff |
    | \*.docker.io  | 443 | Docker Hub-Zugriff (optional) |
+
+Einige dieser Firewallregeln werden von Azure Container Registry geerbt. Weitere Informationen finden Sie unter [Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall](../container-registry/container-registry-firewall-access-rules.md).
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurieren der Kommunikation über Proxy
 

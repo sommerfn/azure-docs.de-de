@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 09/23/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2129405dfdc2585d29c35a0982c9823a4cd57f71
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359993"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033967"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -30,25 +30,25 @@ Wenn Sie Lizenzen direkt einzelnen Benutzern zuweisen, ohne die gruppenbasierte 
 
 Bei Verwendung der gruppenbasierten Lizenzierung können die gleichen Fehler auftreten. Diese treten allerdings im Hintergrund auf, während der Azure AD-Dienst Lizenzen zuweist. Daher können Ihnen die Fehler nicht sofort gemeldet werden. Stattdessen werden sie im Benutzerobjekt aufgezeichnet und anschließend über das Verwaltungsportal gemeldet. Das ursprüngliche Ziel (die Lizenzierung Benutzers) bleibt stets erhalten und wird im Falle eines Fehlers zur künftigen Untersuchung und Behebung aufgezeichnet.
 
-## <a name="how-to-find-license-assignment-errors"></a>Vorgehensweise: Fehlersuche bei der Lizenzzuweisung
-**So suchen Sie nach Fehlern bei der Lizenzzuweisung**
+## <a name="find-license-assignment-errors"></a>Suchen von Fehlern bei der Lizenzzuweisung
 
-1. Um in einer bestimmten Gruppe nach Benutzern mit einem Fehlerzustand zu suchen, öffnen Sie den Bereich für die Gruppe. Falls Benutzer mit einem Fehlerzustand vorhanden sind, wird unter **Lizenzen** eine Benachrichtigung angezeigt.
+### <a name="to-find-users-in-an-error-state-in-a-group"></a>So suchen Sie Benutzer mit einem Fehlerzustand in einer Gruppe
+
+1. Öffnen Sie die Übersichtsseite der Gruppe, und wählen Sie **Lizenzen** aus. Falls Benutzer mit einem Fehlerzustand vorhanden sind, wird eine Benachrichtigung angezeigt.
 
    ![Gruppen- und Fehlerbenachrichtigungsnachricht](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-2. Wählen Sie die Benachrichtigung aus, um eine Liste mit allen betroffenen Benutzern zu öffnen. Sie können jeden Benutzer einzeln auswählen, um weitere Details anzuzeigen.
+1. Wählen Sie die Benachrichtigung aus, um eine Liste mit allen betroffenen Benutzern zu öffnen. Sie können jeden Benutzer einzeln auswählen, um weitere Details anzuzeigen.
 
    ![Liste der Benutzer im Gruppenlizenzierungs-Fehlerzustand](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-3. Um nach allen Gruppen zu suchen, die mindestens einen Fehler enthalten, klicken Sie auf dem Blatt **Azure Active Directory** erst auf **Lizenzen** und dann auf **Übersicht**. Sollte für Gruppen eine Aktion erforderlich sein, wird ein Informationsfeld angezeigt.
+1. Um nach allen Gruppen zu suchen, die mindestens einen Fehler enthalten, klicken Sie auf dem Blatt **Azure Active Directory** erst auf **Lizenzen** und dann auf **Übersicht**. Sollte für Gruppen eine Aktion erforderlich sein, wird ein Informationsfeld angezeigt.
 
    ![Übersicht und Informationen zu Gruppen im Fehlerzustand](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-4. Klicken Sie auf das Feld, um eine Liste aller Gruppen mit Fehlern anzuzeigen. Klicken Sie bei Bedarf auf die einzelnen Gruppen, um weitere Details anzuzeigen.
+1. Klicken Sie auf das Feld, um eine Liste aller Gruppen mit Fehlern anzuzeigen. Klicken Sie bei Bedarf auf die einzelnen Gruppen, um weitere Details anzuzeigen.
 
    ![Übersicht und Liste der Gruppen mit Fehlern](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
-
 
 In den folgenden Abschnitten werden die einzelnen potenziellen Probleme sowie die dazugehörigen Lösungsmöglichkeiten beschrieben.
 
@@ -68,8 +68,8 @@ Klicken Sie auf ein Produkt, um zu ermitteln, welche Benutzer und Gruppen Lizenz
 
 Betrachten Sie das folgende Beispiel. Einem Benutzer ist eine Lizenz für Office 365 Enterprise *E1* direkt zugewiesen worden, wobei alle Pläne aktiviert wurden. Der Benutzer wurde einer Gruppe hinzugefügt, der das Produkt Office 365 Enterprise *E3* zugewiesen ist. Das E3-Produkt enthält Dienstpläne, die sich nicht mit den in E1 enthaltenen Plänen überschneiden dürfen. Daher tritt bei der Gruppenlizenzzuweisung der Fehler „Widersprüchliche Servicepläne“ auf. Bei diesem Beispiel stehen die folgenden Dienstpläne in Konflikt:
 
--   SharePoint Online (Plan 2) steht in Konflikt mit SharePoint Online (Plan 1).
--   Exchange Online (Plan 2) steht in Konflikt mit Exchange Online (Plan 1).
+- SharePoint Online (Plan 2) steht in Konflikt mit SharePoint Online (Plan 1).
+- Exchange Online (Plan 2) steht in Konflikt mit Exchange Online (Plan 1).
 
 Zur Behebung dieses Konflikts müssen zwei der Pläne deaktiviert werden. Sie können die dem Benutzer direkt zugewiesene E1-Lizenz deaktivieren. Eine andere Möglichkeit besteht darin, die gesamte Gruppenlizenzzuweisung zu ändern und die Pläne für die E3-Lizenz zu deaktivieren. Alternativ können Sie dem Benutzer auch die E1-Lizenz entziehen, falls sie im Kontext der E3-Lizenz redundant ist.
 
@@ -91,7 +91,7 @@ Stellen Sie zur Behebung dieses Problems sicher, dass der erforderliche Plan Ben
 
 Wenn Azure AD versucht, einem Benutzer, dessen Verwendungsstandort nicht unterstützt wird, eine Gruppenlizenz zuzuweisen, tritt ein Fehler auf, der für den Benutzer aufgezeichnet wird.
 
-Sie können dieses Problem beheben, indem Sie Benutzer aus den nicht unterstützten Standorten der lizenzierten Gruppe entfernen. Alternativ können Sie wie folgt vorgehen: Wenn die aktuellen Werte des Verwendungsstandorts nicht den tatsächlichen Benutzerstandort darstellen, können Sie sie ändern, damit die Lizenzen beim nächsten Mal richtig zugewiesen werden (wenn der neue Standort unterstützt wird).
+Sie können dieses Problem beheben, indem Sie Benutzer von nicht unterstützten Standorten aus der lizenzierten Gruppe entfernen. Alternativ können Sie wie folgt vorgehen: Wenn die aktuellen Werte des Verwendungsstandorts nicht den tatsächlichen Benutzerstandort darstellen, können Sie sie ändern, damit die Lizenzen beim nächsten Mal richtig zugewiesen werden (wenn der neue Standort unterstützt wird).
 
 **PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _ProhibitedInUsageLocationViolation_.
 
@@ -117,7 +117,7 @@ Nachdem Sie die Probleme mit den Proxyadressen für die betroffenen Benutzer beh
 
 Beim Aktualisieren der Lizenzzuweisung für einen Benutzer wird die Berechnung der Proxyadresse ausgelöst, die Attribute der Benutzer ändern kann. Wie Sie die genaue Ursache der Änderung ermitteln und das Problem lösen, erfahren Sie in dem Artikel [Wie das Attribut ProxyAddresses in Azure AD aufgefüllt wird](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
-## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Was geschieht, wenn mehr als eine Produktlizenz für eine Gruppe vorhanden ist?
+## <a name="more-than-one-product-license-assigned-to-a-group"></a>Mehrere Produktlizenzen für eine Gruppe
 
 Sie können einer Gruppe mehr als eine Produktlizenz zuweisen. Beispielsweise können Sie Office 365 Enterprise E3 und Enterprise Mobility + Security einer Gruppe zuweisen, um alle enthaltenen Dienste den Benutzern mühelos zur Verfügung zu stellen.
 
@@ -125,48 +125,44 @@ Azure AD versucht, den einzelnen Benutzern alle in der Gruppe angegebenen Lizenz
 
 Sie können die Benutzer anzeigen, für die die Zuweisung nicht erfolgreich war, und ermitteln, welche Produkte von diesem Problem betroffen sind.
 
-## <a name="what-happens-when-a-group-with-licenses-assigned-is-deleted"></a>Was passiert, wenn eine Gruppe mit zugewiesenen Lizenzen gelöscht wird?
+## <a name="when-a-licensed-group-is-deleted"></a>Wenn eine lizenzierte Gruppe gelöscht wird
 
 Sie müssen alle einer Gruppe zugewiesenen Lizenzen entfernen, bevor Sie die Gruppe löschen können. Das Entfernen der Lizenzen aller Benutzer in der Gruppe kann jedoch einige Zeit in Anspruch nehmen. Beim Entfernen von Lizenzzuweisungen einer Gruppe können Fehler auftreten, wenn einem Benutzer eine abhängige Lizenz zugewiesen ist oder ein Konflikt mit einer Proxyadresse besteht, der das Entfernen der Lizenz verhindert. Wenn ein Benutzer über eine Lizenz verfügt, die von einer Lizenz abhängig ist, die aufgrund einer Gruppenlöschung entfernt wird, erfolgt für den Benutzer eine Umwandlung der Lizenzzuweisung von geerbt in direkt.
 
 Beispiel: Einer Gruppe sind Office 365 E3-/E5-Lizenzen zugewiesen, und es ist ein Skype for Business-Dienstplan aktiviert. Darüber hinaus wurden einigen Mitgliedern der Gruppe Lizenzen für Audiokonferenz direkt zugewiesen. Wenn die Gruppe gelöscht wird, versucht die gruppenbasierte Lizenzierung, Office 365 E3/E5 für alle Benutzer zu entfernen. Weil Audiokonferenz von Skype for Business abhängig ist, wandelt die gruppenbasierte Lizenzierung die Office 365 E3-/E5-Lizenzen für alle Benutzer, denen Audiokonferenz zugewiesen ist, in direkte Lizenzzuweisungen um.
 
-## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>Wie werden Lizenzen für Produkte verwaltet, für die bestimmte Voraussetzungen gelten?
+## <a name="manage-licenses-for-products-with-prerequisites"></a>Verwalten von Lizenzen für Produkte mit bestimmten Voraussetzungen
 
 Bei einigen Ihrer Microsoft Online-Produkte handelt es sich unter Umständen um *Add-Ons*. Bei Add-Ons muss für einen Benutzer oder eine Gruppe ein Dienstplan mit Voraussetzungen aktiviert werden, bevor eine Lizenz zugewiesen werden kann. Bei der gruppenbasierten Lizenzierung müssen der Dienstplan mit den Voraussetzungen und der Add-On-Dienstplan in der gleichen Gruppe enthalten sein. Hierdurch wird sichergestellt, dass alle Benutzer, die der Gruppe hinzugefügt werden, das voll funktionsfähige Produkt erhalten können. Betrachten Sie das folgende Beispiel:
 
 Microsoft Workplace Analytics ist ein Add-On-Produkt. Es enthält einen einzelnen Dienstplan mit demselben Namen. Dieser Dienstplan kann einem Benutzer (oder einer Gruppe) nur zugewiesen werden, wenn auch eine der folgenden Voraussetzungen zugewiesen ist:
-- Exchange Online (Plan 1) 
+
+- Exchange Online (Plan 1)
 - Exchange Online (Plan 2)
 
-Wenn wir versuchen, dieses Produkt separat einer Gruppe zuzuweisen, gibt das Portal einen Fehler zurück. Nach dem Klicken auf die Fehlerbenachrichtigung werden folgende Details angezeigt:
+Wenn Sie versuchen, dieses Produkt separat einer Gruppe zuzuweisen, gibt das Portal eine Benachrichtigung zurück. Nach dem Auswählen der Details des Elements wird die folgende Fehlermeldung angezeigt:
 
-![Gruppe mit fehlender Voraussetzung](./media/licensing-groups-resolve-problems/group-prerequisite-required.png)
-
-Nach dem Klicken auf die Details wird die folgende Fehlermeldung angezeigt:
-
->Fehler bei Lizenzvorgang. Stellen Sie sicher, dass die Gruppe die notwendigen Dienste besitzt, bevor Sie einen abhängigen Dienst hinzufügen oder entfernen. **Für den Dienst „Microsoft Workplace Analytics“ muss auch „Exchange Online (Plan 2)“ aktiviert werden.**
+  „Fehler bei Lizenzvorgang. Stellen Sie sicher, dass die Gruppe die notwendigen Dienste besitzt, bevor Sie einen abhängigen Dienst hinzufügen oder entfernen. **Für den Dienst ‚Microsoft Workplace Analytics‘ muss auch ‚Exchange Online (Plan 2)‘ aktiviert werden.** “
 
 Um diese Add-On-Lizenz einer Gruppe zuzuweisen, müssen wir sicherstellen, dass die Gruppe auch den Dienstplan mit der Voraussetzung enthält. Wir können beispielsweise eine vorhandene Gruppe aktualisieren, die bereits das vollständige Produkt „Office 365 E3“ enthält, und das Add-On-Produkt anschließend hinzufügen.
 
-Es ist auch möglich, eine eigenständige Gruppe zu erstellen, die nur die mindestens erforderlichen Produkte für die Funktionsfähigkeit des Add-Ons enthält. Sie kann verwendet werden, um nur die ausgewählten Benutzer für das Add-On-Produkt zu lizenzieren. In diesem Beispiel haben wir die folgenden Produkte der gleichen Gruppe zugewiesen:
+Es ist auch möglich, eine eigenständige Gruppe zu erstellen, die nur die mindestens erforderlichen Produkte für die Funktionsfähigkeit des Add-Ons enthält. Sie kann verwendet werden, um nur die ausgewählten Benutzer für das Add-On-Produkt zu lizenzieren. Basierend auf dem vorherigen Beispiel würden Sie derselben Gruppe die folgenden Produkte zuweisen:
+
 - Office 365 Enterprise E3, wobei nur der Dienstplan „Exchange Online (Plan 2)“ aktiviert ist
 - Microsoft Workplace Analytics
-
-![Gruppe mit enthaltener Voraussetzung](./media/licensing-groups-resolve-problems/group-addon-with-prerequisite.png)
 
 Ab jetzt verwenden alle Benutzer, die dieser Gruppe hinzugefügt werden, eine Lizenz des E3-Produkts und eine Lizenz des Workplace Analytics-Produkts. Diese Benutzer können gleichzeitig Mitglieder einer anderen Gruppe sein, über die sie das vollständige E3-Produkt erhalten, und sie nutzen hierbei weiterhin nur eine Lizenz für das Produkt.
 
 > [!TIP]
 > Für jeden Dienstplan mit Voraussetzungen können mehrere Gruppen erstellt werden. Wenn Sie für Ihre Benutzer sowohl „Office 365 Enterprise E1“ als auch „Office 365 Enterprise E3“ verwenden, können Sie zwei Gruppen erstellen, um Microsoft Workplace Analytics zu lizenzieren: eine mit E1 als Voraussetzung und die andere mit E3. So können Sie das Add-On auf E1- und E3-Benutzer verteilen, ohne zusätzliche Lizenzen zu verbrauchen.
 
-## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Wie können Sie die Lizenzverarbeitung für eine Gruppe durchsetzen, um Fehler zu beheben?
+## <a name="force-group-license-processing-to-resolve-errors"></a>Erzwingen der Verarbeitung von Gruppenlizenzen zum Beheben von Fehlern
 
 Je nachdem, welche Maßnahmen Sie ergriffen haben, um die Fehler zu beheben, müssen Sie die Verarbeitung einer Gruppe ggf. manuell auslösen, um den Benutzerzustand zu aktualisieren.
 
 Wenn Sie beispielsweise einige Lizenzen freigegeben haben, indem Sie direkte Zuweisungen von Lizenzen für Benutzer entfernt haben, müssen Sie die Verarbeitung von Gruppen auslösen, für die zuvor ein Fehler aufgetreten ist. Nur so erreichen Sie die vollständige Versorgung von Benutzern mit Lizenzen. Navigieren Sie zum erneuten Verarbeiten einer Gruppe zum Namen der Gruppe, öffnen Sie **Lizenzen**, und klicken Sie auf der Symbolleiste auf **Erneut verarbeiten**.
 
-## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>Wie können Sie die Lizenzverarbeitung für einen Benutzer durchsetzen, um Fehler zu beheben?
+## <a name="force-user-license-processing-to-resolve-errors"></a>Erzwingen der Verarbeitung von Benutzerlizenzen zum Beheben von Fehlern
 
 Je nachdem, welche Maßnahmen Sie ergriffen haben, um die Fehler zu beheben, müssen Sie die Verarbeitung eines Benutzers ggf. manuell auslösen, um den Benutzerzustand zu aktualisieren.
 

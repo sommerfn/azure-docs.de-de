@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679317"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023742"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -25,7 +25,7 @@ Der Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern (Resource Own
 
 In Azure Active Directory B2C (Azure AD B2C) werden die folgenden Optionen unterstützt:
 
-- **Nativer Client**: Die Benutzerinteraktion während der Authentifizierung erfolgt, wenn Code auf einem Gerät auf Benutzerseite ausgeführt wird. Bei dem Gerät kann es sich um eine mobile Anwendung handeln, die unter einem nativen Betriebssystem, wie z.B. Android, oder in einem Browser, wie z.B. JavaScript, ausgeführt wird.
+- **Nativer Client**: Die Benutzerinteraktion während der Authentifizierung erfolgt, wenn Code auf einem Gerät auf Benutzerseite ausgeführt wird. Bei dem Gerät kann es sich um eine mobile Anwendung handeln, die unter einem nativen Betriebssystem wie Android oder iOS ausgeführt wird.
 - **Flow für öffentlichen Client**: Im API-Aufruf werden nur die von einer Anwendung gesammelten Benutzeranmeldeinformationen gesendet. Die Anmeldeinformationen der Anwendung werden nicht gesendet.
 - **Neue Ansprüche hinzufügen**: Der Inhalt des ID-Tokens kann geändert werden, um neue Ansprüche hinzuzufügen.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341977"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243217"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -95,19 +95,21 @@ In vielen Fällen ist der beobachtete Abfall der Metrikwerte eine Fehlinterpreta
 
 ## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Der Namespace und die Metriken des Gastbetriebssystems können nicht ausgewählt werden
 
-Virtuelle Computer und VM-Skalierungsgruppen weisen zwei Kategorien von Metriken auf: **Hostmetriken des virtuelle Computers**, die von der Azure-Hostumgebung gesammelt werden, und Metriken des **Gastbetriebssystems**, die von dem [Überwachungs-Agent](agents-overview.md) gesammelt werden, der auf Ihren virtuellen Computern ausgeführt wird. Sie installieren den Überwachungs-Agent, indem Sie die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) aktivieren.
+Virtuelle Computer und VM-Skalierungsgruppen weisen zwei Kategorien von Metriken auf: **Hostmetriken des virtuellen Computers**, die von der Azure-Hostumgebung gesammelt werden, und Metriken des **Gastbetriebssystems (klassisch)** , die von dem [Überwachungs-Agent](agents-overview.md) gesammelt werden, der auf Ihren virtuellen Computern ausgeführt wird. Sie installieren den Überwachungs-Agent, indem Sie die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) aktivieren.
 
 Standardmäßig werden die Metriken des Gastbetriebssystems im Azure Storage-Konto gespeichert, das Sie auf der Registerkarte **Diagnoseeinstellungen** Ihrer Ressource auswählen. Wenn die Metriken des Gastbetriebssystems nicht gesammelt werden oder der Metrik-Explorer nicht darauf zugreifen kann, wird nur der Namespace für die **Hostmetriken des virtuellen Computers** angezeigt:
 
 ![Abbildung eines Diagramms mit Metriken](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
 
-**Lösung:** Wenn Namespace und Metriken des **Gastbetriebssystems** nicht im Metrik-Explorer angezeigt werden:
+**Lösung:** Wenn Namespace und Metriken des **Gastbetriebssystems (klassisch)** nicht im Metrik-Explorer angezeigt werden:
 
 1. Vergewissern Sie sich, dass die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) aktiviert und konfiguriert ist, um Metriken zu sammeln.
     > [!WARNING]
     > Sie können den [Log Analytics-Agent](agents-overview.md#log-analytics-agent) nicht verwenden (auch als Microsoft Monitoring Agent oder „MMA“ bezeichnet), um das **Gastbetriebssystem** an ein Speicherkonto zu senden.
 
-1. Stellen Sie sicher, dass das Speicherkonto nicht durch die Firewall geschützt ist.
+1. Stellen Sie sicher, dass der **Microsoft.Insights**-Ressourcenanbieter [für Ihr Abonnement registriert ist](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
+
+1. Stellen Sie sicher, dass das Speicherkonto nicht durch die Firewall geschützt ist. Das Azure-Portal benötigt Zugriff auf das Speicherkonto, um Daten zu Metriken abzurufen und die Diagramme auszugeben.
 
 1. Verwenden Sie den [Azure-Speicher-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob Metriken in das Speicherkonto gelangen. Wenn keine Metriken gesammelt werden, folgen Sie dem [Handbuch zur Problembehandlung für die Azure-Diagnoseerweiterung](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 

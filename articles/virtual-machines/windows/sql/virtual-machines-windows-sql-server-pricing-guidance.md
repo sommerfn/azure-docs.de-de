@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70280175"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028632"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Preisinformationen für virtuelle Azure-Computer mit SQL Server
 
@@ -64,7 +64,7 @@ Es gibt zwei Möglichkeiten, für die Lizenzierung dieser SQL Server-Editionen z
 
 ## <a name="pay-per-usage"></a>Nutzungsbasierte Bezahlung
 
-Die **Bezahlung für SQL Server-Lizenzen je nach Nutzung** bedeutet, dass die sekundenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der Preisseite für virtuelle Azure-Computer für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) oder [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
+Die **nutzungsbasierte Bezahlung für SQL Server-Lizenzen** (auch als **Pay As You Go, PAYG** bezeichnet) bedeutet, dass die sekundenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der Preisseite für virtuelle Azure-Computer für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) oder [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
 Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Die Lizenzierungskosten pro Sekunde sind von der Anzahl von vCPUs der VM abhängig.
 
@@ -74,7 +74,7 @@ Die nutzungsbasierte Bezahlung der SQL Server-Lizenzierung empfiehlt sich in fol
 
 - **Arbeitsauslastungen mit unbekannter Lebensdauer oder unbekanntem Umfang**. Beispiele: eine App, die einige Monate lang nicht benötigt wird, oder eine App, die je nach Bedarf mehr oder weniger Computeleistung benötigt.
 
-Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 2017 mit einem dieser Images mit nutzungsbasierter Bezahlung finden Sie unter den folgenden Links:
+Informationen zum Erstellen eines virtuellen Azure-Computers mit SQL Server 2017 mit einem dieser Images mit nutzungsbasierter Bezahlung finden Sie unter den folgenden Links:
 
 | Plattform | Lizenzierte Images |
 |---|---|

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873196"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177997"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Nachrichtenanreicherungen bei Gerät-zu-Cloud-IoT Hub-Nachrichten (Vorschauversion)
 
@@ -90,7 +90,7 @@ Diese Funktion steht in der Vorschauversion zur Verfügung und zwar in allen Reg
 
 Weitere Informationen zum Weiterleiten von Nachrichten an einen IoT-Hub finden Sie in diesen Artikeln:
 
-* [Tutorial zu Nachrichtenerweiterungen](tutorial-message-enrichments.md)
+* [Tutorial zu Nachrichtenanreicherungen](tutorial-message-enrichments.md)
 
 * [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von Gerät-zu-Cloud-Nachrichten an verschiedene Endpunkte](iot-hub-devguide-messages-d2c.md)
 

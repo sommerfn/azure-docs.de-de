@@ -4,14 +4,14 @@ description: Beschreibt die Behebung des Fehlers, dass im Verlauf der Ressourcen
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 755383c9d40c104d50ad9bb7a31b3a00f8348313
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cb8a8238c4daac6370d47bb9e99b3503ebb68783
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827015"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176562"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet
 
@@ -31,6 +31,18 @@ Verwenden Sie den Befehl [az group deployment delete](/cli/azure/group/deploymen
 az group deployment delete --resource-group exampleGroup --name deploymentName
 ```
 
+Verwenden Sie Folgendes, um alle Bereitstellungen zu löschen, die älter als fünf Tage sind:
+
+```azurecli-interactive
+startdate=$(date +%F -d "-5days")
+deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp>'$startdate'].name" --output tsv)
+
+for deployment in $deployments
+do
+  az group deployment delete --resource-group exampleGroup --name $deployment
+done
+```
+
 Sie können die aktuelle Anzahl im Bereitstellungsverlauf mit dem folgenden Befehl abrufen:
 
 ```azurecli-interactive
@@ -43,6 +55,16 @@ Verwenden Sie den Befehl [Remove-AzResourceGroupDeployment](/powershell/module/a
 
 ```azurepowershell-interactive
 Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymentName
+```
+
+Verwenden Sie Folgendes, um alle Bereitstellungen zu löschen, die älter als fünf Tage sind:
+
+```azurepowershell-interactive
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
+
+foreach ($deployment in $deployments) {
+  Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name $deployment.DeploymentName
+}
 ```
 
 Sie können die aktuelle Anzahl im Bereitstellungsverlauf mit dem folgenden Befehl abrufen:

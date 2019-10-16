@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202898"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178134"
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -51,7 +51,7 @@ Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnu
   > Nachdem Sie einem Projekt einen Arbeitsbereich hinzugefügt haben, können Sie ihn nicht mehr ändern.
 
   > [!NOTE]
-  > Azure Migrate unterstützt derzeit die Erstellung von OMS-Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“. Wenn der Arbeitsbereich außerhalb von Azure Migrate in einer beliebigen anderen Region erstellt wird, kann er derzeit keinem Azure Migrate-Projekt zugeordnet werden. 
+  > Azure Migrate unterstützt derzeit die Erstellung oder Zuordnung von Log Analytics-Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“. Wenn der Arbeitsbereich außerhalb von Azure Migrate in einer nicht unterstützten Region erstellt wird, kann er derzeit keinem Azure Migrate-Projekt zugeordnet werden. 
 
 - Der zugeordnete Arbeitsbereich wird mit dem Schlüssel **Migration Project** (Migrationsprojekt) und dem Wert **project name** (Projektname) markiert, die Sie für die Suche im Azure-Portal verwenden können.
 - Um zum Arbeitsbereich zu navigieren, der dem Projekt zugeordnet ist, können Sie den Abschnitt **Essentials** (Zusammenfassung) der Seite **Übersicht** des Projekts öffnen und auf den Arbeitsbereich zugreifen.

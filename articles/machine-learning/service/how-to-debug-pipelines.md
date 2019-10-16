@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
-ms.date: 10/01/2019
-ms.openlocfilehash: 50593741e185a146c5a376c34da959063198e7d0
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/03/2019
+ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71817357"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959657"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 
@@ -27,7 +27,7 @@ Die folgenden Abschnitte bieten einen Überblick über häufige Fallstricke beim
 
 Einer der häufigsten Fehler in einer Pipeline ist, dass ein angefügtes Skript (Skript zur Datenbereinigung, Bewertungsskript usw.) nicht wie vorgesehen ausgeführt wird oder Laufzeitfehler im Remotecomputekontext enthält, die in Ihrem Arbeitsbereich im Azure-Portal schwer zu debuggen sind. 
 
-Pipelines selbst können nicht lokal ausgeführt werden, aber der Unit-Test der zugrunde liegenden Skripts ist eine einfache Möglichkeit, um sicherzustellen, dass Ihre Skripts unabhängig voneinander das Erwartete ausführen, ohne auf die volle Ausführungsdauer der Pipeline zu warten. Hierfür ist ein gewisser Entwicklungsaufwand erforderlich:
+Pipelines selbst können nicht lokal ausgeführt werden. Wenn Sie jedoch die Skripts isoliert auf dem lokalen Computer ausführen, können Sie schneller debuggen, da Sie nicht auf den Compute- und Umgebungserstellungsprozess warten müssen. Hierfür ist ein gewisser Entwicklungsaufwand erforderlich:
 
 * Wenn sich Ihre Daten in einem Clouddatenspeicher befinden, müssen Sie Daten herunterladen und Ihrem Skript zur Verfügung stellen. Die Verwendung einer kleinen Stichprobe Ihrer Daten ist eine gute Möglichkeit, die Laufzeit zu verkürzen und schnell Feedback zum Skriptverhalten zu erhalten.
 * Wenn Sie versuchen, einen Pipelinezwischenschritt zu simulieren, müssen Sie die Objekttypen, die das jeweilige Skript vom vorherigen Schritt erwartet, möglicherweise manuell erstellen.
@@ -38,6 +38,9 @@ Nachdem Sie ein Skript für die Ausführung in Ihrer lokalen Umgebung eingericht
 * Anfügen einer benutzerdefinierten Debugkonfiguration
 * Anhalten der Ausführung und Überprüfen des Objektzustands
 * Abfangen von Typfehlern oder logischen Fehlern, die bis zur Laufzeit nicht verfügbar gemacht werden
+
+> [!TIP] 
+> Wenn Sie sichergestellt haben, dass ihr Skript erwartungsgemäß ausgeführt wird, empfiehlt es sich, das Skript nun in einer Einzelschritt-Pipeline auszuführen, anstatt zu versuchen, das Skript in einer Pipeline mit mehreren Schritten auszuführen.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Debuggen von Skripts aus Remotekontext
 

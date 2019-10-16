@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773029"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029018"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -426,6 +426,17 @@ requirements.psd1
     SqlServer = '21.1.18147'
 }
 ```
+
+Mit den folgenden Einstellungen können Sie anpassen, wie die verwalteten Abhängigkeiten heruntergeladen und installiert werden. Das App-Upgrade wird in MDMaxBackgroundUpgradePeriod gestartet, und der Upgradevorgang wird innerhalb von ungefähr MDNewSnapshotCheckPeriod durchgeführt.
+
+| Funktions-App-Einstellung              | Standardwert             | BESCHREIBUNG                                         |
+|   -----------------------------   |   -------------------     |  -----------------------------------------------    |
+| MDMaxBackgroundUpgradePeriod      | „7.00:00:00“ (7 Tage)     | Jeder PowerShell-Worker initiiert die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Workerprozesses und danach alle MDMaxBackgroundUpgradePeriod. Wenn neue Modulversionen im PowerShell-Katalog verfügbar sind, werden sie im Dateisystem installiert, das für PowerShell-Worker verfügbar ist. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch die Nutzung der App-Ressourcen (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird die Nutzung der App-Ressourcen verringert, aber auch die Bereitstellung neuer Modulversionen an Ihre App verzögert.      | 
+| MDNewSnapshotCheckPeriod          | „01:00:00“ (1 Stunde)       | Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Worker neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich möglicherweise auf die Verfügbarkeit Ihrer App aus, da aktuelle Funktionsaufrufe unterbrochen werden. Bis zum Abschluss des Neustarts aller PowerShell-Worker können Funktionsaufrufe entweder die alte oder die neue Modulversion verwenden. Der Neustart aller PowerShell-Worker erfolgt innerhalb von MDNewSnapshotCheckPeriod. Wenn Sie diesen Wert erhöhen, wird die Häufigkeit von Unterbrechungen verringert, aber es kann auch zu einer Erhöhung des Zeitraums kommen, in dem für Funktionsaufrufe nicht bestimmt werden kann, ob die alte oder die neue Modulversion verwendet wird. |
+| MDMinBackgroundUpgradePeriod      | „1.00:00:00“ (1 Tag)     | Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker dies bereits innerhalb der letzten MDMinBackgroundUpgradePeriod initiiert hat. |
+
+> [!NOTE]
+> Bei verwalteten Abhängigkeiten ist für das Herunterladen von Modulen ein Zugriff auf www.powershellgallery.com erforderlich. Sie müssen sicherstellen, dass die Funktionsruntime auf diese URL zugreifen kann, indem Sie alle erforderlichen Firewallregeln hinzufügen.
 
 Wenn Sie Ihre eigenen benutzerdefinierten Module verwenden möchten, müssen Sie ein wenig anders vorgehen als gewohnt.
 

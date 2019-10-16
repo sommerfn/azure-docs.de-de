@@ -7,14 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: cbe9aa2ea664d97df6008de05d6cb84da9771bcc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166443"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028469"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Erfassen von Daten aus IoT Hub in Azure Data Explorer (Vorschauversion)
+
+> [!div class="op_single_selector"]
+> * [Portal](ingest-data-iot-hub.md)
+> * [C#](data-connection-iot-hub-csharp.md)
+> * [Python](data-connection-iot-hub-python.md)
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Data Explorer ermöglicht das Erfassen (Laden) von Daten aus IoT Hub (Big Data-Streamingplattform und IoT-Erfassungsdienst).
 
@@ -80,8 +85,7 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit der IoT�
     | IoT Hub | IoT Hub-Name |
     | SAS-Richtlinie | Der Name der SAS-Richtlinie. Leseberechtigungen erforderlich |
     | Consumergruppe |  Die Consumergruppe, die im integrierten IoT Hub-Endpunkt definiert ist. |
-    | Ereignissystemeigenschaften | Die IoT Hub-Ereignissystemeigenschaften. |
-    | | 
+    | Ereignissystemeigenschaften | Die [IoT Hub-Ereignissystemeigenschaften](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Beim Hinzufügen von Systemeigenschaften [erstellen](/azure/kusto/management/tables#create-table) oder [aktualisieren](/azure/kusto/management/tables#alter-table-and-alter-merge-table) Sie das Tabellenschema und die [Zuordnung](/azure/kusto/management/mappings), um die ausgewählten Eigenschaften einzubeziehen. | | | 
 
     > [!NOTE]
     > Im Falle eines [manuellen Failovers](/azure/iot-hub/iot-hub-ha-dr#manual-failover) muss die Datenverbindung neu erstellt werden.
@@ -94,12 +98,13 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit der IoT�
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Table | *TestTable* | Die Tabelle, die Sie in **testdb** erstellt haben. |
-    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV und TXT. |
-    | Spaltenzuordnung | *TestMapping* | Die Zuordnung, die Sie in **testdb** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **testdb** zuzuordnen. Für „JSON“, „MULTILINE JSON“ und „AVRO“ erforderlich, für andere Formate optional.|
+    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE und TXT. |
+    | Spaltenzuordnung | *TestMapping* | Die [Zuordnung](/azure/kusto/management/mappings), die Sie in **testdb** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **testdb** zuzuordnen. Für „JSON“, „MULTILINE JSON“ und „AVRO“ erforderlich, für andere Formate optional.|
     | | |
 
-    > [!TIP]
-    > Wählen Sie **My data includes routing info** (Meine Daten enthalten Routinginformationen) aus, um dynamisches Routing zu verwenden. Dabei enthalten Ihre Daten die erforderlichen Routinginformationen, wie in den Kommentaren der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) zu sehen. Werden sowohl statische als auch dynamische Eigenschaften festgelegt, setzen die dynamischen Eigenschaften die statischen außer Kraft. 
+    > [!NOTE]
+    > * Wählen Sie **My data includes routing info** (Meine Daten enthalten Routinginformationen) aus, um dynamisches Routing zu verwenden. Dabei enthalten Ihre Daten die erforderlichen Routinginformationen, wie in den Kommentaren der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) zu sehen. Werden sowohl statische als auch dynamische Eigenschaften festgelegt, setzen die dynamischen Eigenschaften die statischen außer Kraft. 
+    > * Nur Ereignisse, die nach dem Erstellen der Datenverbindung in die Warteschlange eingereiht werden, werden erfasst.
 
 ## <a name="generate-sample-data-for-testing"></a>Generieren von Beispieldaten zu Testzwecken
 

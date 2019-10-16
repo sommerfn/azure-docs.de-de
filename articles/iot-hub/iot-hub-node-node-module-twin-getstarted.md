@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 3796017af643c993871757482ed17d1765cd6494
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802416"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165909"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (Node.js)
 
@@ -54,12 +54,12 @@ In diesem Abschnitt erstellen Sie eine Node.js-App, mit der eine Geräte- und ei
 
 1. Erstellen Sie ein Verzeichnis zum Speichern Ihres Codes.
 
-2. Führen Sie in diesem Verzeichnis zuerst  **npm init -y**  aus, um eine leere Datei „package.json“ mit Standardwerten zu erstellen. Dies ist die Projektdatei für Ihren Code.
+2. Führen Sie in diesem Verzeichnis zuerst **npm init -y** aus, um eine leere Datei „package.json“ mit Standardwerten zu erstellen. Dies ist die Projektdatei für Ihren Code.
 
-3. Führen Sie  **npm install -S azure-iothub\@modules-preview** aus, um das Dienst-SDK im Unterverzeichnis  **node_modules**  zu installieren.
+3. Führen Sie **npm install -S azure-iothub\@modules-preview** aus, um das Dienst-SDK im Unterverzeichnis **node_modules** zu installieren.
 
     > [!NOTE]
-    > Im Namen des Unterverzeichnisses „node_modules“ steht das Wort „module“ für eine Node-Bibliothek. Hier hat der Begriff nichts mit IoT Hub-Modulen zu tun.
+    > Beim Namen des Unterverzeichnisses „node_modules“ steht das Wort „module“ für Node-Bibliotheken. Hier hat der Begriff nichts mit IoT Hub-Modulen zu tun.
 
 4. Erstellen Sie die folgende JS-Datei in Ihrem Verzeichnis. Geben Sie ihr den Namen **add.js**. Kopieren Sie Ihre Hub-Verbindungszeichenfolge und den Hub-Namen, und fügen Sie sie ein.
 
@@ -139,7 +139,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App auf Ihrem simulierten Gerät,
    > Der NPM-Installationsbefehl kann längere Zeit in Anspruch nehmen. Sie müssen etwas Geduld haben, da sehr viel Code aus dem Paketrepository übertragen wird.
 
    > [!NOTE]
-   > Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren. Wenn in einer Fehlermeldung darauf hingewiesen wird, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren.
+   > Wenn eine Fehlermeldung mit dem Inhalt, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren. Wenn eine Fehlermeldung mit dem Inhalt, dass bei NPM ein Fehler bei der Analyse des JSON-Codes aufgetreten ist, angezeigt wird, können Sie diese ignorieren.
 
 3. Erstellen Sie eine Datei namens „twin.js“. Kopieren Sie die Modulidentitätszeichenfolge, und fügen Sie sie ein.
 
@@ -192,7 +192,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-App auf Ihrem simulierten Gerät,
     });
     ```
 
-4. Verwenden Sie bei der anschließenden Ausführung den Befehl  **node twin.js**.
+4. Führen Sie die dann mit dem Befehl **node twin.js** aus.
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

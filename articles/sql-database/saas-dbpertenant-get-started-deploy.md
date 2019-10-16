@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d5326a3a154ed6f193b5527a0150ad84c843c273
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d5f64f0a9abfa736c1db0e562b6f18ecfc1f6de5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570436"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023832"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
@@ -114,7 +114,7 @@ Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandant
 
     ![Veranstaltungshub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Wählen Sie im Events Hub die Option  **Fabrikam Jazz Club**  aus.
+2. Wählen Sie im Event Hub die Option **Fabrikam Jazz Club** aus.
 
     ![Events](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
@@ -220,14 +220,14 @@ Aktualisieren Sie den Event Hub, damit der neue Mandant in der Liste angezeigt w
 
 Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Last gestartet haben, sehen wir uns einige der bereitgestellten Ressourcen an.
 
-1. Navigieren Sie im  [Azure-Portal](https://portal.azure.com) zu Ihrer Liste von SQL-Servern. Öffnen Sie den Server  **catalog-dpt-&lt;BENUTZER&gt;**  .
+1. Navigieren Sie im  [Azure-Portal](https://portal.azure.com) zu Ihrer Liste von SQL-Servern. Öffnen Sie den Server **catalog-dpt-&lt;Benutzer&gt;** .
     - Der Katalogserver enthält die beiden Datenbanken **tenantcatalog** und **basetenantdb** (eine Vorlagendatenbank, die kopiert wird, um neue Mandanten zu erstellen).
 
    ![Datenbanken](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. Wechseln Sie zurück zur Liste der SQL-Server.
 
-3. Öffnen Sie den Server **tenants1-dpt-&lt;BENUTZER&gt;**  , auf dem sich die Mandantendatenbanken befinden.
+3. Öffnen Sie den Server **tenants1-dpt-&lt;BENUTZER&gt;** , auf dem sich die Mandantendatenbanken befinden.
 
 4. Beachten Sie folgende Elemente:
 
@@ -240,7 +240,7 @@ Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Last ges
 
 Nachdem *LoadGenerator.ps1* mehrere Minuten ausgeführt wurde, sollten genügend Daten verfügbar sein, um einige Überwachungsfunktionen kennenzulernen. Diese Funktionen sind in Pools und Datenbanken integriert.
 
-Navigieren Sie zum Server **tenants1-dpt-&lt;Benutzer&gt;** , und wählen Sie  **Pool1**  aus, um die Ressourcenverwendung für den Pool anzuzeigen. In den folgenden Diagrammen wurde der Auslastungsgenerator eine Stunde lang ausgeführt.
+Navigieren Sie zum Server **tenants1-dpt-&lt;Benutzer&gt;** , und wählen Sie **Pool1** aus, um die Ressourcenverwendung für den Pool anzuzeigen. In den folgenden Diagrammen wurde der Auslastungsgenerator eine Stunde lang ausgeführt.
 
    ![Überwachen des Pools](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

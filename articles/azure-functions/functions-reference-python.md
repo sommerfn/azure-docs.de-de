@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844686"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243277"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -173,7 +173,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-Bei Aufruf der Funktion wird die HTTP-Anforderung als `req` an die Funktion übergeben. Es wird ein Eintrag, der auf der _ID_ in der Routen-URL basiert, aus Azure Blob Storage abgerufen und als `obj` im Funktionstext verfügbar gemacht.  Hier ist das angegebene Speicherkonto die Verbindungszeichenfolge, die sich in `AzureWebJobsStorage` befindet, wobei es sich um dasselbe Speicherkonto handelt, das von der Funktions-App verwendet wird.
+Bei Aufruf der Funktion wird die HTTP-Anforderung als `req` an die Funktion übergeben. Es wird ein Eintrag, der auf der _ID_ in der Routen-URL basiert, aus Azure Blob Storage abgerufen und als `obj` im Funktionstext verfügbar gemacht.  Hier ist das angegebene Speicherkonto die Verbindungszeichenfolge für dasselbe Speicherkonto, das von der Funktions-App verwendet wird.
 
 
 ## <a name="outputs"></a>Ausgaben
@@ -281,28 +281,40 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 In dieser Funktion wird der Wert des `name`-Abfrageparameters aus dem `params`-Parameter des [HttpRequest]-Objekts ermittelt. Der JSON-codierte Nachrichtentext wird mit der `get_json`-Methode gelesen. 
 
 Außerdem können Sie `status_code` und `headers` für die Antwortnachricht im zurückgegebenen [HttpResponse]-Objekt festlegen.
-                                                              
-## <a name="async"></a>Async
 
-Es wird empfohlen, Ihre Azure-Funktion als asynchrone Coroutine mithilfe der Anweisung `async def` zu schreiben.
+## <a name="concurrency"></a>Parallelität
+
+Standardmäßig kann die Python-Runtime von Functions nur einen Aufruf einer Funktion zu einem Zeitpunkt verarbeiten. Dieser Grad an Parallelität ist in den folgenden Situationen jedoch u. U. nicht ausreichend:
+
++ Sie versuchen, eine große Anzahl von Aufrufen gleichzeitig zu verarbeiten.
++ Sie verarbeiten eine große Anzahl von E/A-Ereignissen.
++ Ihre Anwendung ist E/A-gebunden.
+
+In diesen Fällen können Sie die Leistung durch asynchrones Ausführen und Verwenden von mehreren Sprachworkerprozessen verbessern.  
+
+### <a name="async"></a>Async
+
+Es wird empfohlen, dass Sie mit der `async def`-Anweisung die Ausführung der Funktion als asynchrone Coroutine festlegen.
 
 ```python
-# Will be run with asyncio directly
-
+# Runs with asyncio directly
 
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Wenn die main()-Funktion synchron ist (ohne Qualifizierer), wird die Funktion automatisch in einem `asyncio`-Threadpool ausgeführt.
+Wenn die `main()`-Funktion synchron ist (ohne den `async`-Qualifizierer), wird die Funktion automatisch in einem `asyncio`-Threadpool ausgeführt.
 
 ```python
-# Would be run in an asyncio thread-pool
-
+# Runs in an asyncio thread-pool
 
 def main():
     some_blocking_socket_io()
 ```
+
+### <a name="use-multiple-language-worker-processes"></a>Verwenden mehrerer Sprachworkerprozesse
+
+Standardmäßig verfügt jede Functions-Hostinstanz über einen einzigen Sprachworkerprozess. Mehrere Sprachworkerprozesse pro Hostinstanz werden jedoch unterstützt. Funktionsaufrufe werden dann gleichmäßig auf diese Sprachworkerprozesse verteilt. Ändern Sie diesen Wert mithilfe der Anwendungseinstellung [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count). 
 
 ## <a name="context"></a>Kontext
 
@@ -319,7 +331,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-Die [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python)-Klasse enthält die folgenden Methoden:
+Die [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python)-Klasse weist die folgenden Zeichenfolgenattribute auf:
 
 `function_directory`  
 Das Verzeichnis, in dem die Funktion ausgeführt wird.

@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828230"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173402"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
 
@@ -326,7 +326,7 @@ Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde.  Die C
 
 ## <a name="available-regions"></a>Verfügbare Regionen
 
-Die serverlose Computeebene ist weltweit verfügbar, mit Ausnahme der folgenden Regionen: Australien, Mitte, China, Osten, China, Norden, Frankreich, Süden, Deutschland, Mitte, Deutschland, Nordosten, Indien, Westen, Südkorea, Süden, Südafrika, Westen, Vereinigtes Königreich, Norden, Vereinigtes Königreich, Süden, Vereinigtes Königreich, Westen und USA, Westen-Mitte.
+Die serverlose Computeebene ist weltweit verfügbar, mit Ausnahme der folgenden Regionen: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „Vereinigtes Königreich, Norden“, „Vereinigtes Königreich, Süden 2“, „USA, Westen-Mitte“ und „US Government, Mitte (Iowa)“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

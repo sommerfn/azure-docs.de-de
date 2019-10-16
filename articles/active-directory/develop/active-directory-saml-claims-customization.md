@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0625a233b3b4a949feff2e289361a26fc8dc5a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835345"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240225"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -65,9 +65,8 @@ Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folg
 | **Persistent** | Azure AD verwendet das NameID-Format „Persistent“. |
 | **EmailAddress** | Azure AD verwendet das NameID-Format „EmailAddress“. |
 | **Nicht angegeben** | Azure AD verwendet das NameID-Format „Unspecified“. |
-| **Transient** (Vorübergehend) | Azure AD verwendet das NameID-Format „Transient“. |
 
-Weitere Informationen zum NameIDPolicy-Attribut finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
+Eine vorübergehende NameID wird ebenfalls unterstützt, ist jedoch im Dropdownmenü nicht verfügbar und kann in Azure nicht konfiguriert werden. Weitere Informationen zum NameIDPolicy-Attribut finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Attribute
 
@@ -75,7 +74,7 @@ Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder Name
 
 | NAME | BESCHREIBUNG |
 |------|-------------|
-| E-Mail | E-Mail-Adresse des Benutzers |
+| Email | E-Mail-Adresse des Benutzers |
 | userprincipalName | Benutzerprinzipalname (User Principal Name, UPN) des Benutzers |
 | onpremisessamaccount | Der SAM-Kontoname der aus der lokalen Azure AD-Instanz synchronisiert wurde. |
 | objectid | Objekt-ID des Benutzers in Azure AD |
@@ -84,6 +83,20 @@ Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder Name
 | Erweiterungsattribute 1–15 | Die lokalen Erweiterungsattribute, die zur Erweiterung des Azure AD-Schemas verwendet werden. |
 
 Weitere Informationen finden Sie in [Table 3: Valid ID values per source (Tabelle 3: Gültige ID-Werte pro Quelle)](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+
+Sie können in Azure AD definierten Ansprüchen einen beliebigen konstanten (statischen) Wert zuweisen. Führen Sie folgende Schritte aus, um einen konstanten Wert zuzuweisen:
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Abschnitt **Benutzerattribute und Ansprüche** auf das Symbol **Bearbeiten**´, um die Ansprüche zu bearbeiten.
+
+1. Klicken Sie auf den erforderlichen Anspruch, den Sie ändern möchten.
+
+1. Geben Sie in **Quellattribut** den konstanten Wert gemäß Ihrer Organisation ein, und klicken Sie auf **Speichern**.
+
+    ![Öffnen des Abschnitts „Benutzerattribute und Ansprüche“ im Azure-Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. Der konstante Wert wird wie unten dargestellt angezeigt.
+
+    ![Öffnen des Abschnitts „Benutzerattribute und Ansprüche“ im Azure-Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Besondere Ansprüche – Transformationen
 

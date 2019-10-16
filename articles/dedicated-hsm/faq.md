@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 5/8/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b79ed7ea3113f097f767ad7ff8bdc47b4e4916eb
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 338977c236ebb8f1b800eb6c28747a010e708300
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883571"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244209"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -58,9 +58,9 @@ Im Moment stellt Azure Dedicated HSM nur HSMs mit kennwortbasierter Authentifizi
 
 Microsoft bietet nur das Gemalto SafeNet Luna Network HSM über den Dedicated HSM-Dienst und kann keine vom Kunden bereitgestellten Geräte hosten.
 
-### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>F: Unterstützt Azure Dedicated HSM Zahlungsfunktionen (PIN/ETF)?
+### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>F: Unterstützt Azure Dedicated HSM Zahlungsfunktionen (PIN/EFT)?
 
-Der Azure Dedicated HSM-Dienst verwendet SafeNet Luna Network HSM 7-Geräte (Modell A790). Diese Geräte unterstützen keine für Bezahl-HSM spezifischen Funktionen (z. B. PIN oder ETF) oder Zertifizierungen. Wenn Sie möchten, dass der Azure Dedicated HSM-Dienst in Zukunft Bezahl-HSMs unterstützt, geben Sie das entsprechende Feedback an Ihren zuständigen Microsoft-Kontobeauftragten weiter.
+Der Azure Dedicated HSM-Dienst verwendet SafeNet Luna Network HSM 7-Geräte (Modell A790). Diese Geräte unterstützen keine für Bezahl-HSM spezifischen Funktionen (z. B. PIN oder EFT) oder Zertifizierungen. Wenn Sie möchten, dass der Azure Dedicated HSM-Dienst in Zukunft Bezahl-HSMs unterstützt, geben Sie das entsprechende Feedback an Ihren zuständigen Microsoft-Kontobeauftragten weiter.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>F: In welchen Azure-Regionen ist Dedicated HSM verfügbar?
 

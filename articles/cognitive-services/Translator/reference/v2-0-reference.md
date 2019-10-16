@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: c18c062d5537603284acb37081ac0a4eb8d2fd20
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f111169558118a80602bcb2136bc63ce54c9e0d9
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797814"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242500"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -30,7 +30,7 @@ Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft A
 ## <a name="authentication"></a>Authentication 
 Alle Aufrufe der Textübersetzungs-API erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt drei Authentifizierungsmethoden:
 
-- Ein Zugriffstoken. Verwenden Sie den unter Schritt 9 angegebenen Abonnementschlüssel, um ein Zugriffstoken zu generieren. Stellen Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des `Authorization`-Headers oder des `access_token`-Abfrageparameters an den Übersetzerdienst. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie innerhalb dieser 10 Minuten für wiederholte Anforderungen weiterhin dasselbe Zugriffstoken.
+- Ein Zugriffstoken. Verwenden Sie den Abonnementschlüssel, um ein Zugriffstoken zu generieren. Senden Sie dazu eine POST-Anforderung an den Authentifizierungsdienst. Ausführliche Informationen dazu finden Sie in der Tokendienst-Dokumentation. Übergeben Sie das Zugriffstoken mithilfe des `Authorization`-Headers oder des `access_token`-Abfrageparameters an den Übersetzerdienst. Das Zugriffstoken ist 10 Minuten lang gültig. Rufen Sie alle 10 Minuten ein neues Zugriffstoken ab, und verwenden Sie innerhalb dieser 10 Minuten für wiederholte Anforderungen weiterhin dasselbe Zugriffstoken.
 - Direkte Verwendung eines Abonnementschlüssels. Übergeben Sie Ihren Abonnementschlüssel als Wert im `Ocp-Apim-Subscription-Key`-Header, der in Ihrer Anforderung an die Textübersetzungs-API enthalten ist. Wenn Sie den Abonnementschlüssel direkt verwenden, müssen Sie nicht zum Erstellen eines Zugriffstokens den Tokenauthentifizierungsdienst aufrufen.
 - Ein [Azure Cognitive Services-Abonnement für mehrere Dienste](https://azure.microsoft.com/pricing/details/cognitive-services/). Mit dieser Methode können Sie einen einzelnen geheimen Schlüssel verwenden, um Anforderungen für mehrere Dienste zu authentifizieren.
 Wenn Sie einen geheimen Multi-Service-Schlüssel verwenden, müssen Sie der Anforderung zwei Authentifizierungsheader hinzufügen. Der erste Header übergibt den geheimen Schlüssel. Der zweite Header gibt die Region an, die Ihrem Abonnement zugeordnet ist:

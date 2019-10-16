@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2904da863707c5f653d774b0a480cc48c95c8d1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745977"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173384"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Konzepte für Geräte mit dem IoT Hub Device Provisioning-Dienst
 
@@ -44,7 +44,7 @@ Gerätegeheimnisse können auch in Software (Arbeitsspeicher) gespeichert werden
 
 ## <a name="registration-id"></a>Registrierungs-ID
 
-Die Registrierungs-ID wird zur eindeutigen Identifizierung eines Geräts im Device Provisioning-Dienst verwendet. Die Geräte-ID muss im [ID-Bereich](#id-scope) des Bereitstellungsdiensts eindeutig sein. Jedes Gerät benötigt eine Registrierungs-ID. Die Registrierungs-ID ist alphanumerisch und besteht aus Kleinbuchstaben und ggf. Bindestrichen.
+Die Registrierungs-ID wird zur eindeutigen Identifizierung eines Geräts im Device Provisioning-Dienst verwendet. Die Registrierungs-ID muss im [ID-Bereich](#id-scope) des Bereitstellungsdiensts eindeutig sein. Jedes Gerät benötigt eine Registrierungs-ID. Die Registrierungs-ID ist alphanumerisch und besteht aus Kleinbuchstaben und ggf. Bindestrichen.
 
 * Bei TPM wird die Registrierungs-ID durch das TPM selbst bereitgestellt.
 * Im Fall von X.509-basierten Nachweisen wird die Registrierungs-ID als Antragstellername des Zertifikats bereitgestellt.

@@ -2,25 +2,18 @@
 title: 'Hinzufügen mehrerer VPN-Gateway-Site-to-Site-Verbindungen zu einem VNET: Azure-Portal: Resource Manager | Microsoft-Dokumentation'
 description: Fügen Sie mehrere S2S-Verbindungen zu einem VPN-Gateway hinzu, für das bereits eine Verbindung besteht
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2c32fd35bbc6de1f010013c40a06af69052d3f5
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60760465"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244622"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Hinzufügen einer Site-to-Site-Verbindung (S2S) zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung
 
@@ -32,7 +25,7 @@ ms.locfileid: "60760465"
 
 Dieser Artikel hilft Ihnen dabei, mithilfe des Azure-Portals einem VPN-Gateway, für das bereits eine Verbindung besteht, Site-to-Site-Verbindungen (S2S) hinzuzufügen. Diese Art der Verbindung wird häufig als Multi-Site-Konfiguration bezeichnet. Sie können eine Standort-zu-Standort-Verbindung einem VNet hinzufügen, für das bereits eine Standort-zu-Standort-, Punkt-zu-Standort-oder VNet-zu-VNet-Verbindung besteht. Beim Hinzufügen von Verbindungen gibt es einige Einschränkungen. Überprüfen Sie den Abschnitt [Voraussetzungen](#before) in diesem Artikel, bevor Sie die Konfiguration beginnen. 
 
-Dieser Artikel gilt für Resource Manager-VNETs, die ein VPN-Gateway des Typs RouteBased aufweisen. Diese Schritte gelten nicht für Konfigurationen von parallel bestehenden ExpressRoute- und S2S-Verbindungen. Informationen zu parallel bestehenden Verbindungen finden Sie unter [Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen für das klassische Bereitstellungsmodell](../expressroute/expressroute-howto-coexist-resource-manager.md).
+Dieser Artikel gilt für Resource Manager-VNETs, die ein VPN-Gateway des Typs RouteBased aufweisen. Diese Schritte gelten nicht für neue Konfigurationen von parallel bestehenden ExpressRoute- und Site-to-Site-Verbindungen. Wenn Sie jedoch einer bereits vorhandenen Konfiguration lediglich eine neue VPN-Verbindung hinzufügen, können Sie diese Schritte ausführen. Informationen zu parallel bestehenden Verbindungen finden Sie unter [Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen für das klassische Bereitstellungsmodell](../expressroute/expressroute-howto-coexist-resource-manager.md).
 
 ### <a name="deployment-models-and-methods"></a>Bereitstellungsmodelle und -methoden
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
@@ -44,7 +37,7 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
 ## <a name="before"></a>Voraussetzungen
 Überprüfen Sie folgende Maßnahmen:
 
-* Sie erstellen keine parallel bestehende ExpressRoute/S2S-Verbindung.
+* Sie konfigurieren keine neue Konfiguration für parallel bestehende ExpressRoute- und VPN Gateway-Verbindungen.
 * Sie verfügen über ein virtuelles Netzwerk, das mithilfe des Resource Manager-Bereitstellungsmodells mit einer bestehenden Verbindung erstellt wurde.
 * Das Gateway für virtuelle Netzwerke für Ihr VNet ist RouteBased. Wenn Sie über ein PolicyBased-VPN Gateway verfügen, müssen Sie das Gateway für virtuelle Netzwerke löschen, und ein neues VPN-Gateway als RouteBased erstellen.
 * Keine der Adressbereiche überlappen sich mit einem der VNets, mit der dieses VNet eine Verbindung herstellt.

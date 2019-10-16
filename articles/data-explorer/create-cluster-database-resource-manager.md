@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: dfc0cd6686ac4ea1af2beb34edeadd17e4c952e1
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: e2e051db00c9b8de5268e64be70ab99752bf7a55
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328732"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001413"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mithilfe einer Azure Resource Manager-Vorlage
 
@@ -67,11 +67,11 @@ In diesem Artikel verwenden Sie eine [vorhandene Schnellstartvorlage](https://ra
           "name": "[parameters('clusters_kustocluster_name')]",
           "type": "Microsoft.Kusto/clusters",
           "sku": {
-              "name": "D13_v2",
+              "name": "Standard_D13_v2",
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -80,7 +80,7 @@ In diesem Artikel verwenden Sie eine [vorhandene Schnellstartvorlage](https://ra
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
@@ -110,7 +110,7 @@ Sie können die Azure Resource Manager-Vorlage über das [Azure-Portal](#use-the
 
     ![Bereitstellen in Azure](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-Sie können [die Vorlage im Azure-Portal mithilfe des Formulars bearbeiten und bereitstellen](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template).
+    Sie können [die Vorlage im Azure-Portal mithilfe des Formulars bearbeiten und bereitstellen](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template).
 
 1. Geben Sie die erforderlichen Informationen in den Abschnitten **GRUNDLAGEN** und **EINSTELLUNGEN** ein. Wählen Sie eindeutige Cluster- und Datenbanknamen aus.
 Die Erstellung eines Azure Data Explorer-Clusters und einer Datenbank kann einige Minuten dauern.
@@ -142,7 +142,7 @@ Die Erstellung eines Azure Data Explorer-Clusters und einer Datenbank kann einig
 
 #### <a name="verify-the-deployment-using-powershell"></a>Überprüfen der Bereitstellung mithilfe von PowerShell
 
-Verwenden Sie das folgende Azure PowerShell-Skript, um die Bereitstellung zu überprüfen.  Wenn die Cloud Shell noch geöffnet ist, muss die erste Zeile (Read-Host) nicht kopiert/ausgeführt werden. Weitere Informationen zur Verwaltung von Azure Data Explorer-Ressourcen in PowerShell finden Sie unter [Az.Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). Vornehmen relevanter Änderungen
+Verwenden Sie das folgende Azure PowerShell-Skript, um die Bereitstellung zu überprüfen.  Wenn die Cloud Shell noch geöffnet ist, muss die erste Zeile (Read-Host) nicht kopiert/ausgeführt werden. Weitere Informationen zur Verwaltung von Azure Data Explorer-Ressourcen in PowerShell finden Sie unter [Az.Kusto](/powershell/module/az.kusto/?view=azps-2.7.0). 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"

@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e711e94a4ac8098137456c2ae5bf018107687354
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 10/04/2019
+ms.openlocfilehash: bcde469ba4a376b278295d9c14c9ae12e434e3d5
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033220"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244242"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Operations
 
@@ -21,6 +21,10 @@ In diesem Thema wird erläutert, wie Sie ein neues Angebot für Dynamics 365 for
 Um mit dem Erstellen von Dynamics 365 for Operations-Angeboten zu beginnen, müssen Sie zunächst [ein Partner Center-Konto erstellen](./create-account.md), das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen, und darin die Seite **Übersicht** auswählen.
 
 ![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
+
+>[!Note]
+> Nach der Veröffentlichung eines Angebots werden im Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Sie müssen das Angebot nach dem Vornehmen von Änderungen für die Veröffentlichung einreichen.
+
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
@@ -82,7 +86,7 @@ Sie können zwischen folgenden Optionen wählen:
 
 ## <a name="connect-lead-management"></a>Einbinden der Leadverwaltung
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 Weitere Informationen finden Sie in der [Übersicht über die Leadverwaltung](./commercial-marketplace-get-customer-leads.md).
 
@@ -92,7 +96,7 @@ Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 
 Auf der **Eigenschaftenseite** können Sie die Kategorien und Branchen, die zum Gruppieren Ihres Angebots im Marketplace verwendet werden, die Version Ihrer App und die Verträge für Ihr Angebot definieren. Wählen Sie **Speichern** aus, nachdem Sie diese Seite ausgefüllt haben.
 
-### <a name="category"></a>Category (Kategorie)
+### <a name="category"></a>Category
 
 Wählen Sie mindestens eine und höchstens drei Kategorien aus. Diese werden verwendet, um Ihr Angebot in die entsprechenden Marketplace-Suchbereiche zu platzieren. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, wie Ihr Angebot diesen Kategorien entspricht. 
 

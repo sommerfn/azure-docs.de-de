@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b51d984726cfd178189e7fe1a994c35c7efaed36
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a48c1352e4628d8e1776a9479aceac7c294a2ea1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124076"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72023065"
 ---
 In der folgenden Tabelle werden die für Azure GPv1, GPv2 und Blob-Speicherkonten geltenden Standardgrenzwerte beschrieben. Das Limit für den *Eingang* bezieht sich auf alle Daten aus Anforderungen, die an ein Speicherkonto gesendet werden. Das Limit für den *Ausgang* bezieht sich auf alle Daten aus Anforderungen, die von einem Speicherkonto empfangen werden.
 
@@ -31,7 +31,8 @@ In der folgenden Tabelle werden die für Azure GPv1, GPv2 und Blob-Speicherkonte
 
 <sup>1</sup> Azure Storage Standard-Konten unterstützen höhere Grenzwerte für Kapazität und Eingang auf Anforderung. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/), um eine Erhöhung der Kontogrenzwerte für Eingang anzufordern. Weitere Informationen finden Sie unter [Ankündigung größerer Speicherkonten mit höherer Skalierung](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
-<sup>2</sup> Wenn Lesezugriff (RA-GRS/RA-GZRS) aktiviert ist, sind die Ausgangsziele für den sekundären Standort mit denen für den primären Standort identisch. Für die [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy) sind folgende Optionen verfügbar: [!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
+<sup>2</sup> Wenn Lesezugriff (RA-GRS/RA-GZRS) aktiviert ist, sind die Ausgangsziele für den sekundären Standort mit denen für den primären Standort identisch. Für die [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy) sind folgende Optionen verfügbar:  
+[!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
 > [!NOTE]
 > Für die meisten Szenarien wird die Verwendung von Speicherkonten vom Typ „Allgemein v2“ empfohlen. Sie können ganz einfach ein Upgrade von einem Konto vom Typ „Allgemein v1“ oder einem Blob Storage-Konto auf ein Konto vom Typ „Allgemein v2“ durchführen. Dabei treten keine Ausfallzeiten auf, und Sie müssen keine Daten kopieren.

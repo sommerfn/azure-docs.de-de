@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e2781229974ed872d477579d6c738822f910df6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677866"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243509"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -59,7 +59,7 @@ Sie können Softwareupdates auf Computern bereitstellen und installieren, für d
 
 Die geplante Bereitstellung definiert, welche Zielcomputer die entsprechenden Updates erhalten. Dies erfolgt entweder durch explizite Angabe von Computern oder durch Auswahl einer [Computergruppe](../azure-monitor/platform/computer-groups.md), die auf Protokollsuchvorgängen einer bestimmten Reihe von Computern oder auf einer [Azure-Abfrage](#azure-machines) basiert, die Azure-VMs basierend auf bestimmten Kriterien dynamisch auswählt. Diese Gruppen unterscheiden sich von der [Bereichskonfiguration](../azure-monitor/insights/solution-targeting.md), die nur zur Ermittlung der Computer verwendet wird, die die Verwaltungspakete erhalten, die die Lösung ermöglichen.
 
-Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. Dieser Zeitraum wird das Wartungsfenster bezeichnet. Zehn Minuten des Wartungsfensters sind für Neustarts reserviert, wenn ein Neustart erforderlich ist und Sie die entsprechende Neustartoption ausgewählt haben. Wenn das Patchen länger als erwartet dauert und im Wartungsfenster weniger als zehn Minuten verbleiben, wird kein Neustart durchgeführt.
+Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. Dieser Zeitraum wird das Wartungsfenster bezeichnet. Zwanzig Minuten des Wartungsfensters sind für Neustarts reserviert, wenn ein Neustart erforderlich ist und Sie die entsprechende Neustartoption ausgewählt haben. Wenn das Patchen länger als erwartet dauert und im Wartungsfenster weniger als zwanzig Minuten verbleiben, wird kein Neustart durchgeführt.
 
 Updates werden mit Runbooks in Azure Automation installiert. Sie können diese Runbooks nicht anzeigen, und für die Runbooks ist keine Konfiguration erforderlich. Wenn eine Updatebereitstellung erstellt wird, erstellt die Updatebereitstellung einen Zeitplan, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird. Das Masterrunbook startet ein untergeordnetes Runbook für jeden Agent, um die erforderlichen Updates zu installieren.
 

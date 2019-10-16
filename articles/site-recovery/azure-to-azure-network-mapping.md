@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907873"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178095"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
@@ -33,7 +33,7 @@ Ordnen Sie Netzwerke wie folgt zu:
 3. Wählen Sie unter **Netzwerkzuordnung hinzufügen** die Quell- und Zielstandorte aus. In unserem Beispiel wird die Quell-VM in der Region „Asien, Osten“ ausgeführt und in der Region „Asien, Südosten“ repliziert.
 
     ![Auswählen von Quelle und Ziel](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. Nun erstellen Sie eine Netzwerkzuordnung im entgegengesetzten Verzeichnis. In unserem Beispiel ist die Quelle nun „Asien, Südosten“ und das Ziel „Asien, Osten“.
+3. Erstellen Sie nun eine Netzwerkzuordnung in umgekehrter Richtung. In unserem Beispiel ist die Quelle nun „Asien, Südosten“ und das Ziel „Asien, Osten“.
 
     ![Bereich „Netzwerkzuordnung hinzufügen“ – Auswählen der Quell- und Zielstandorte für das Zielnetzwerk](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 

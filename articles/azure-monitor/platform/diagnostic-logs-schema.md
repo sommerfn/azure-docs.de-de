@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: robb
 ms.subservice: logs
-ms.openlocfilehash: fdcfcbaf99d48a345d2be4da297be1c9139da15c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 70dd4af16746ecf54310dffcb854c3c0857283ba
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308112"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033875"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -55,6 +55,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Azure Batch |[Diagnoseprotokolle für Azure Batch](../../batch/batch-diagnostics.md) |
 | Azure Database for MySQL | [Azure Database for MySQL-Diagnoseprotokolle](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | Azure Database for PostgreSQL | [Azure Database for PostgreSQL-Diagnoseprotokolle](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
+| Azure-Daten-Explorer | [Diagnoseprotokolle im Azure Data Explorer](../../data-explorer/using-diagnostic-logs.md) |
 | Cognitive Services | [Diagnoseprotokollierung für Azure Cognitive Services](../../cognitive-services/diagnostic-logging.md) |
 | Content Delivery Network | [Azure-Diagnoseprotokolle für CDN](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB-Protokollierung](../../cosmos-db/logging.md) |

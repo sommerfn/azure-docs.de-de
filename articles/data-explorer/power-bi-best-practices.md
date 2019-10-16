@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349012"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937319"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Bewährte Methoden für die Verwendung von Power BI zum Abfragen und Visualisieren von Azure Data Explorer-Daten
 
@@ -28,13 +28,13 @@ Wenn Sie mit neuen Rohdaten im Terabytebereich arbeiten, befolgen Sie diese Anwe
 
 * **Importmodus oder DirectQuery-Modus** – Verwenden Sie den **Importmodus** für Interaktionen mit kleineren Datasets. Verwenden Sie den **DirectQuery-Modus** für große, häufig aktualisierte Datasets. Erstellen Sie beispielsweise Dimensionstabellen mit dem **Importmodus**, da sie klein sind und sich nicht häufig ändern. Legen Sie das Aktualisierungsintervall entsprechend der erwarteten Datenaktualisierungsrate fest. Erstellen Sie mit dem **DirectQuery-Modus** Faktentabellen, da diese Tabellen groß sind und Rohdaten enthalten. Verwenden Sie diese Tabellen, um gefilterte Daten mithilfe von Power BI-[Drillthroughs](https://docs.microsoft.com/power-bi/desktop-drillthrough) darzustellen.
 
-* **Parallelität** – Der Azure Data Explorer ist eine linear skalierbare Datenplattform. Daher können Sie die Leistung beim Dashboardrendering verbessern, indem Sie die Parallelität des End-to-End-Flows wie folgt erhöhen:
+* **Parallelität**: Der Azure Data Explorer ist eine linear skalierbare Datenplattform. Daher können Sie die Leistung beim Dashboardrendering verbessern, indem Sie die Parallelität des End-to-End-Flows wie folgt erhöhen:
 
    * Erhöhen Sie die Anzahl [gleichzeitiger Verbindungen in DirectQuery in Power BI](https://docs.microsoft.com/power-bi/desktop-directquery-about#maximum-number-of-connections-option-for-directquery).
 
    * Verwenden Sie eine [schwache Konsistenz, um die Parallelität zu verbessern](/azure/kusto/concepts/queryconsistency). Dies kann sich auf die Aktualität der Daten auswirken.
 
-* **Effektive Slicer** – Sie können [Synchronisierungsslicer](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) verwenden, um zu verhindern, dass Daten in Berichte geladen werden, bevor Sie bereit sind. Nachdem Sie das Dataset strukturiert, alle visuellen Elemente platziert und alle Slicer gekennzeichnet haben, können Sie den Synchronisierungsslicer auswählen, um nur die benötigten Daten zu laden.
+* **Effektive Slicer**: Verwenden Sie [Synchronisierungsslicer](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages), um zu verhindern, dass Daten in Berichte geladen werden, bevor Sie bereit sind. Nachdem Sie das Dataset strukturiert, alle visuellen Elemente platziert und alle Slicer gekennzeichnet haben, können Sie den Synchronisierungsslicer auswählen, um nur die benötigten Daten zu laden.
 
 * **Verwendung von Filtern** – Verwenden Sie so viele Power BI-Filter wie möglich, um die Azure Data Explorer-Suche auf die relevanten Datenshards zu beschränken.
 
@@ -104,7 +104,7 @@ Verwenden Sie einen Abfrageparameter, um Informationen in der Abfrage zu filtern
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. Ersetzen Sie den relevanten Teil der Abfrage durch Ihren Parameter. Unterteilen Sie die Abfrage in mehrere Teile, und verketten Sie diese wieder mit dem &-Zeichen und dem Parameter.
+1. Ersetzen Sie den relevanten Teil der Abfrage durch Ihren Parameter. Unterteilen Sie die Abfrage in mehrere Teile, und verketten Sie diese wieder mit dem kaufmännischen Und-Zeichen (&) und dem Parameter.
 
    In der Abfrage oben verwenden wir beispielsweise den Teil `State == 'ALABAMA'`, unterteilen ihn in `State == '` und `'` und fügen den `State`-Parameter dazwischen ein:
    

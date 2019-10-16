@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073978"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033956"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Verbinden von Windows-Computern mit Azure Monitor
 
@@ -51,7 +51,11 @@ Vor der Installation des Log Analytics-Agents für Windows benötigen Sie die Ar
 5. Kopieren Sie die **Arbeitsbereichs-ID** und den **Primärschlüssel**, und fügen Sie diese Angaben in Ihren bevorzugten Texteditor ein.    
    
 ## <a name="configure-agent-to-use-tls-12"></a>Konfigurieren des Agents für die Verwendung von TLS 1.2
-Um die Verwendung des Protokolls [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) für die Kommunikation zwischen dem Windows-Agent und dem Log Analytics-Dienst zu konfigurieren, können Sie die folgenden Schritte ausführen, um die Aktivierung vor der Installation des Agents auf dem virtuellen Computer oder danach durchzuführen.   
+Um die Verwendung des Protokolls [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) für die Kommunikation zwischen dem Windows-Agent und dem Log Analytics-Dienst zu konfigurieren, können Sie die folgenden Schritte ausführen, um die Aktivierung vor der Installation des Agents auf dem virtuellen Computer oder danach durchzuführen.
+
+>[!NOTE]
+>Wenn Sie einen virtuellen Computer mit Windows Server 2008 SP2 x64 für die Verwendung von TLS 1.2 konfigurieren, müssen Sie zunächst das folgende [Update für die SHA-2-Codesignaturunterstützung](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) installieren, bevor Sie die folgenden Schritte ausführen. 
+>
 
 1. Suchen Sie nach dem folgenden Registrierungsschlüssel: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Erstellen Sie einen Unterschlüssel unter **Protokolle** für TLS 1.2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**

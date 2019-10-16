@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 07/17/2019
-ms.openlocfilehash: 588fac1fc48396584188eec44f21a7005dc8ed96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9b15ebc40e99c1cd454396ccde5cca6b1a46abbc
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567556"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244760"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurieren eines benutzerdefinierten DNS für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -24,11 +24,11 @@ In einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-
 
 Da die verwaltete Instanz intern den gleichen DNS verwendet, muss der benutzerdefinierte DNS-Server so konfiguriert werden, dass er öffentliche Domänennamen auflösen kann.
 
-   > [!IMPORTANT]
-   > Verwenden Sie immer die vollqualifizierten Domänennamen (Fully-Qualified Domain Name, FQDN) für E-Mail-Server, SQL-Server und andere Dienste – auch dann, wenn sie sich in Ihrer privaten DNS-Zone befinden. Verwenden Sie beispielsweise `smtp.contoso.com` für den E-Mail-Server. Die einfache Angabe `smtp` wird nicht korrekt aufgelöst.
+> [!IMPORTANT]
+> Verwenden Sie immer die vollqualifizierten Domänennamen (Fully-Qualified Domain Name, FQDN) für E-Mail-Server, die SQL-Server-Instanz und andere Dienste – auch wenn sie sich in Ihrer privaten DNS-Zone befinden. Verwenden Sie beispielsweise `smtp.contoso.com` für den E-Mail-Server, da `smtp` nicht ordnungsgemäß aufgelöst wird. Zum Erstellen eines Verbindungsservers oder einer Replikation mit Verweis auf virtuelle SQL-Computer im selben virtuellen Netzwerk sind ebenfalls ein vollqualifizierter Domänenname und ein Standard-DNS-Suffix erforderlich. Beispiel: `SQLVM.internal.cloudapp.net`. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
 
-   > [!IMPORTANT]
-   > Die Aktualisierung von VNET-DNS-Servern wirkt sich nicht sofort auf die verwaltete Instanz aus. Die DNS-Konfiguration der verwalteten Instanz wird nach Ablauf der DHCP-Lease oder nach dem Plattformupgrade aktualisiert (je nachdem, was zuerst eintritt). **Benutzer sollten ihre VNET-DNS-Konfiguration festlegen, bevor sie ihre erste verwaltete Instanz erstellen.**
+> [!IMPORTANT]
+> Die Aktualisierung von VNET-DNS-Servern wirkt sich nicht sofort auf die verwaltete Instanz aus. Die DNS-Konfiguration der verwalteten Instanz wird nach Ablauf der DHCP-Lease oder nach dem Plattformupgrade (je nachdem, was zuerst eintritt) aktualisiert. **Benutzer sollten ihre VNET-DNS-Konfiguration festlegen, bevor sie ihre erste verwaltete Instanz erstellen.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

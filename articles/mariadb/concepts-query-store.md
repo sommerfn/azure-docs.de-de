@@ -1,21 +1,21 @@
 ---
 title: Abfragespeicher in Azure Database for MariaDB
-description: In diesem Artikel wird das Abfragespeicherfeature in Azure Database for MariaDB beschrieben.
+description: Erfahren Sie mehr über das Feature „Abfragespeicher“ in Azure Database for MariaDB zum Nachverfolgen der Leistung im Zeitverlauf.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 5d4d01f9f85c78d0e864ec9d11c1d8cd43542e57
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950633"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166228"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Überwachen der Leistung von Azure Database for MariaDB mit dem Abfragespeicher
 
-**Gilt für:**  Azure Database for MariaDB 10.2
+**Anwendungsbereich:** Azure Database for MariaDB 10.2
 
 > [!IMPORTANT]
 > Der Abfragespeicher befindet sich in der Vorschauphase.
@@ -37,14 +37,14 @@ Der Abfragespeicher ist ein optionales Feature. Daher ist er auf einem Server ni
 ### <a name="enable-query-store-using-the-azure-portal"></a>Aktivieren des Abfragespeichers über das Azure-Portal
 
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie Ihren Azure Database for MariaDB-Server aus.
-1. Wählen Sie im Abschnitt **Einstellungen** des Menüs die Option  **Serverparameter** aus.
+1. Wählen Sie im Bereich **Einstellungen** im Menü die Option **Serverparameter**.
 1. Suchen Sie nach dem Parameter „query_store_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern** aus.
+1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
 
 So aktivieren Sie Wartestatistiken in Ihrem Abfragespeicher:
 
 1. Suchen Sie nach dem Parameter „query_store_wait_sampling_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie **Speichern** aus.
+1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
 
 Es kann bis zu 20 Minuten dauern, bis der erste Batch mit Daten in der mysql-Datenbank gespeichert ist.
 
@@ -52,8 +52,8 @@ Es kann bis zu 20 Minuten dauern, bis der erste Batch mit Daten in der mysql-Da
 
 Der Abfragespeicher verfügt über zwei Speicher:
 
-- Einen Laufzeitstatistikspeicher zur Aufbewahrung der Statistikinformationen im Zusammenhang mit der Abfrageausführung
-- Einen Wartestatistikspeicher zur Aufbewahrung von Wartestatistikinformationen
+- Den Statistikspeicher der Runtime zur Aufbewahrung der Statistikinformationen im Zusammenhang mit der Abfrageausführung
+- Den Wartestatistikspeicher zur Aufbewahrung von Wartestatistikinformationen
 
 Um die Speicherverwendung zu minimieren, wird die Laufzeitausführungsstatistik im Laufzeitstatistikspeicher für ein festes, konfigurierbares Zeitfenster aggregiert. Die Informationen in diesem Speicher können durch Abfragen der Abfragespeicheransichten angezeigt werden.
 
@@ -78,8 +78,8 @@ Im Folgenden finden Sie einige Beispiele dafür, wie Sie mithilfe der Wartestati
 | **Beobachtung** | **Aktion** |
 |---|---|
 |Lange Sperrwartevorgänge | Überprüfen Sie die Abfragetexte der betroffenen Abfragen, und identifizieren Sie die Zielentitäten. Suchen Sie im Abfragespeicher nach anderen Abfragen, die die gleiche Entität ändern, welche häufig ausgeführt wird bzw. eine lange Dauer aufweist. Nachdem Sie diese Abfragen ermittelt haben, ändern Sie ggf. die Anwendungslogik, um die Parallelität zu verbessern, oder verwenden Sie eine weniger restriktive Isolationsstufe. |
-|Lange Puffer-E/A-Wartevorgänge | Suchen Sie die Abfragen mit einer hohen Anzahl an physischen Lesevorgängen im Abfragespeicher. Wenn diese mit den Abfragen mit langen E/A-Wartevorgängen übereinstimmen, sollten Sie ggf. erwägen, einen Index für die zugrunde liegende Entität einzuführen, um Such- anstelle von Scanvorgängen durchzuführen. Dies verringert den E/A-Aufwand der Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob für diesen Server Indexempfehlungen vorhanden sind, mit denen die Abfragen optimiert werden. |
-|Lange Arbeitsspeicher-Wartevorgänge | Suchen Sie die im Abfragespeicher die speicherintensivsten Abfragen. Diese Abfragen verzögern wahrscheinlich zusätzlich den Fortschritt der betroffen Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen vorhanden sind, mit denen diese Abfragen optimiert werden.|
+|Lange Puffer-E/A-Wartevorgänge | Suchen Sie die Abfragen mit einer hohen Anzahl an physischen Lesevorgängen im Abfragespeicher. Wenn diese mit den Abfragen mit langen E/A-Wartevorgängen übereinstimmen, sollten Sie ggf. erwägen, einen Index für die zugrunde liegende Entität einzuführen, um Such- anstelle von Scanvorgängen durchzuführen. Dies verringert den E/A-Aufwand der Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen für diesen Server vorhanden sind, die die Abfragen optimieren. |
+|Lange Arbeitsspeicher-Wartevorgänge | Suchen Sie die im Abfragespeicher die speicherintensivsten Abfragen. Diese Abfragen verzögern wahrscheinlich zusätzlich den Fortschritt der betroffen Abfragen. Überprüfen Sie die **Leistungsempfehlungen** für Ihren Server im Portal, um festzustellen, ob Indexempfehlungen vorhanden sind, die diese Abfragen optimieren.|
 
 ## <a name="configuration-options"></a>Konfigurationsoptionen
 
@@ -104,11 +104,11 @@ Die folgenden Optionen gelten speziell für Wartestatistiken.
 > [!NOTE]
 > Derzeit wird diese Konfiguration durch **query_store_capture_mode** ersetzt. Dies bedeutet, dass sowohl **query_store_capture_mode** als auch **query_store_wait_sampling_capture_mode** für „ALL“ aktiviert sein muss, damit Wartestatistiken funktionieren. Wenn **query_store_capture_mode** deaktiviert ist, ist auch die Wartestatistik deaktiviert, da für die Wartestatistik das aktivierte Leistungsschema (performance_schema) und der vom Abfragespeicher erfasste Abfragetext (query_text) verwendet werden.
 
-Verwenden Sie das [Azure-Portal](howto-server-parameters.md), um für einen Parameter einen anderen Wert abzurufen oder festzulegen.
+Verwenden Sie das[Azure-Portal](howto-server-parameters.md), um für einen Parameter einen anderen Wert abzurufen oder festzulegen.
 
 ## <a name="views-and-functions"></a>Ansichten und Funktionen
 
-Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Jeder Benutzer mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#create-additional-admin-users) kann diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Ansichten sind nur in der **mysql**-Datenbank verfügbar.
+Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Jeder Benutzer mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#create-additional-admin-users) kann diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Sichten sind nur in der **mysql**-Datenbank verfügbar.
 
 Abfragen werden normalisiert, indem ihre Struktur nach dem Entfernen von Literalen und Konstanten untersucht wird. Wenn zwei Abfragen mit Ausnahme von Literalwerten identisch sind, haben sie denselben Hash.
 

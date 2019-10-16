@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a52f9fca172e42aa39a4507347185026451a8ff2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123261"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029035"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -215,14 +215,16 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 
 | **Service** | **BGP-Communitywert** |
 | --- | --- |
-| Exchange Online | 12076:5010 |
-| SharePoint Online | 12076:5020 |
-| Skype for Business Online | 12076:5030 |
+| Exchange Online** | 12076:5010 |
+| SharePoint Online** | 12076:5020 |
+| Skype For Business Online** | 12076:5030 |
+| CRM Online |12076:5040 |
 | Azure Global Services* | 12076:5050 |
-| Andere Office 365 Online-Dienste | 12076:5100 |
+| Azure Active Directory |12076:5060 |
+| Andere Office 365 Online-Dienste** | 12076:5100 |
 
 *Azure Global Services enthält zurzeit nur Azure DevOps.
-
+** Autorisierung von Microsoft erforderlich, siehe [Konfigurieren von Routenfiltern für das Microsoft-Peering](how-to-routefilter-portal.md) 
 
 > [!NOTE]
 > Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen für die gegenüber Microsoft angekündigten Routen festgelegt werden.

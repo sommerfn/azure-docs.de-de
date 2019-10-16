@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 8d7bb201a9d01725f933105a4a0beb85c82ca105
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203697"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023642"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -39,7 +39,7 @@ Pro IoT Hub-Instanz kann nur ein [Editionstyp](https://azure.microsoft.com/prici
 | ---------- | ---------- | ------------- |
 | [Gerät-zu-Cloud-Telemetrie](iot-hub-devguide-messaging.md) | Ja | Ja |
 | [Gerätebasierte Identität](iot-hub-devguide-identity-registry.md) | Ja | Ja |
-| [Nachrichtenrouting](iot-hub-devguide-messages-read-custom.md) und [Event Grid-Integration](iot-hub-event-grid.md) | Ja | Ja |
+| [Nachrichtenrouting](iot-hub-devguide-messages-read-custom.md), [Nachrichtenanreicherungen](iot-hub-message-enrichments-overview.md) und [Event Grid-Integration](iot-hub-event-grid.md) | Ja | Ja |
 | [HTTP-, AMQP- und MQTT-Protokolle](iot-hub-devguide-protocols.md) | Ja | Ja |
 | [Device Provisioning-Dienst](../iot-dps/about-iot-dps.md) | Ja | Ja |
 | [Überwachung und Diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |

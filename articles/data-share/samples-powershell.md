@@ -1,20 +1,19 @@
 ---
-title: Azure PowerShell-Beispiele für Azure Data Share | Microsoft-Dokumentation
-description: 'Azure PowerShell-Beispiele: Skripts, die Ihnen beim Erstellen und Verwalten von Datenfreigaben helfen.'
-services: data-share
+title: Azure PowerShell-Beispiele für Azure Data Share
+description: Erfahren Sie etwas über Azure PowerShell-Beispielskripts zum Erstellen und Verwalten von Datenfreigaben in der Vorschauversion von Azure Data Share.
 ms.service: data-share
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/6/2019
+ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.openlocfilehash: 90b23da3ae911038c67dc1d99c5b98d04b935281
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 07/6/2019
+ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242855"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166328"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure PowerShell-Beispiele für Azure Data Share
 
@@ -33,9 +32,3 @@ Die folgende Tabelle enthält Links zu Azure PowerShell-Beispielskripts für Azu
 |[Anzeigen der Details zu Datenfreigaben](scripts/powershell/view-share-details-powershell.md)| Mit diesem PowerShell-Beispielskript werden Details zu Datenfreigaben aufgelistet und abgerufen. |
 |[Überwachen der Nutzung von freigegebenen Daten](scripts/powershell/monitor-usage-powershell.md)| Mit diesem PowerShell-Beispielskript wird die Nutzung von gesendeten freigegebenen Daten überwacht. |
 |[Erstellen und Anzeigen von Momentaufnahmetriggern](scripts/powershell/create-view-trigger-powershell.md)| Mit diesem PowerShell-Beispielskript werden Momentaufnahmetrigger einer Freigabe erstellt.
-
-
-
-
-
-

@@ -1,17 +1,17 @@
 ---
 title: Rollen und Anforderungen für Azure Data Share (Vorschau)
-description: Rollen und Anforderungen für Azure Data Share (Vorschau)
+description: Erfahren Sie etwas über die Zugriffssteuerungsrollen und die Anforderungen für Datenanbieter und Datenconsumer für die Freigabe von Daten in der Vorschauversion von Azure Data Share.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307360"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166376"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Rollen und Anforderungen für Azure Data Share (Vorschau)
 

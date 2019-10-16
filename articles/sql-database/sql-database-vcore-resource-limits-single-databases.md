@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/29/2019
-ms.openlocfilehash: cb7d55db978cb8eb7944ffe3f3f51d025d5fb891
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164306"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032874"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das auf virtuellen Kernen (V-Kernen) basierende (vCore-basierte) Kaufmodell verwenden
 
@@ -291,27 +291,32 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschaupha
 |Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |V-Kerne|2|4|8|16|24|32|40|80|
 |Arbeitsspeicher (GB)|10.2|20.4|40.8|81.6|122.4|163,2|204|408|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|–|
 |Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
 |Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |Max. Datengröße von TempDB (GB)|64|128|256|384|384|384|384|384|
-|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Max. Datenrate, IOPS (64 KB)| [Hinweis 1](#note-1) |[Hinweis 1](#note-1)|[Hinweis 1](#note-1) |[Hinweis 1](#note-1) |[Hinweis 1](#note-1) |[Hinweis 1](#note-1) |[Hinweis 1](#note-1) | [Hinweis 1](#note-1) |
-|E/A-Wartezeit (ungefähr)|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|Noch festzulegen|
+|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) | [Hinweis 1](#notes) |
+|Max. Datenrate, IOPS (64 KB)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8\.000|
 |Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
 |Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
 |Multi-AZ|–|–|–|–|–|–|–|–|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Enthaltener Sicherungsspeicher |7|7|7|7|7|7|7|7|
+|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
 |||
 
-### <a name="note-1"></a>Hinweis 1
+#### <a name="notes"></a>Notizen
 
-Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab.
+**Hinweis 1:** Hyperscale ist eine mehrschichtige Architektur mit separaten Compute- und Speicherkomponenten: [Architektur der Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-### <a name="next-steps"></a>Nächste Schritte
+**Hinweis 2:** Hyperscale ist eine mehrschichtige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab.
+
+**Hinweis 3:** Die Latenz beträgt 1–2 ms für Daten im SSD-basierten RBPEX-Cache auf Computereplikaten, der die am häufigsten verwendeten Datenseiten zwischenspeichert. Für Daten, die von Seitenservern abgerufen werden, gilt eine höhere Latenz.
+
+## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu DTU-Ressourcenlimits bei Singletons finden Sie unter [Ressourcenlimits bei Singletons, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md).
 - Informationen zu V-Kern-Ressourcenlimits bei Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits bei Pools für elastische Datenbanken, die das vCore-basierte Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).

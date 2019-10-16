@@ -1,47 +1,21 @@
 ---
 title: Dynamics 365 for Customer Engagement-Angebot – Registerkarte „Kontakte“ | Azure Marketplace
-description: Konfigurieren von Kontaktinformationen für ein Dynamics 365 for Customer Engagement-Angebot auf dem AppSource Marketplace.
+description: 'CPP-Artikel als veraltet markiert und mit dem PC-Artikel verknüpft. Zuvor: „Konfigurieren von Kontaktinformationen für ein Dynamics 365 for Customer Engagement-Angebot im AppSource Marketplace“.'
 services: Dynamics 365 for Customer Engagement, Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: cdd3d01c9295ef5ae8e7bc1936b5926fb38cfe77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 8a04d7d6f5913a100ab6c4187a42a4d6c470cbda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942516"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033904"
 ---
 # <a name="azure-application-contacts-tab"></a>Registerkarte „Kontakte“ für eine Azure-Anwendung
 
-Stellen Sie mit der Registerkarte **Kontakte** Informationen zu technischen Fragen und Kundensupport für Ihr Dynamics 365 for Customer Engagement-Angebot bereit.
+Die Erstellung und Verwaltung von Dynamics 365 Customer Engagement-Angeboten wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-![Registerkarte „Kontakte“ für das Angebot](./media/dynce-contacts-tab.png)
-
-
-## <a name="specify-customer-and-engineering-contacts"></a>Festlegen der Kontaktpersonen für Kundensupport und technische Fragen
-
-Geben Sie die folgenden Werte zum Definieren der primären **Kontaktperson für technische Fragen** für Ihr Angebot ein. Erforderliche Felder sind durch ein Sternchen (*) gekennzeichnet.
-
-|    Feld        |  BESCHREIBUNG                    |
-|    ---------    |  ---------------                |
-|  **Name\***       |  Name der Kontaktperson für technische Fragen für Ihre App. Diese Kontaktperson erhält technische Mitteilungen von Microsoft.   |
-|  **E-Mail\***      |  E-Mail-Adresse der Kontaktperson für technische Fragen  |
-|  **Telefon\***      |  Telefonnummer der Kontaktperson für technische Fragen  |
-|  |  |
-
-Geben Sie die folgenden Werte zum Definieren der primären **Supportkontaktperson** für Ihr Angebot ein.
-
-|    Feld        |   BESCHREIBUNG                   |
-|    ---------    |  ---------------                |
-|  **Name\***       |  Name der Kontaktperson für den Support für Ihre App. Diese Kontaktperson erhält Mitteilungen im Zusammenhang mit dem Support von Microsoft.   |
-|  **E-Mail\***      |  E-Mail-Adresse der Kontaktperson für den Kundensupport  |
-|  **Telefon\***      |  Telefonnummer der Kontaktperson für den Kundensupport  |
-|  |  |
-
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Nachdem Sie überprüft haben, ob Sie über die erforderlichen [technischen Ressourcen](./cpp-create-technical-assets.md) für Ihr Angebot verfügen, können Sie [das Dynamics 365 for Customer Engagement-Angebot veröffentlichen](./cpp-publish-offer.md).
+Bevor Sie mit dem Erstellen eines neuen Dynamics 365 for Customer Engagement-Angebots beginnen, sollten Sie zunächst den Artikel [Erstellen eines Partner Center-Kontos](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) lesen und dann das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/directory) öffnen, und darin die Seite **Übersicht** auswählen. Befolgen Sie die Anweisungen unter [Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement & PowerApps](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer), um Ihr Angebot zu erstellen.

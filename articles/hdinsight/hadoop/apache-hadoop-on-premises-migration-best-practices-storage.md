@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0acd4c2793c7c13fb687f591d01e6d8753f71bdc
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b246fe9b09f2939663b4fb74ee1da703264d533
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181145"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028925"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight
 
@@ -177,7 +177,7 @@ HDInsight hat standardmäßig vollen Zugriff auf Daten in Azure Storage-Konten, 
 
 7. Klicken Sie auf die Schaltfläche **Add**, um diesen Schlüssel und Wert zu speichern. Klicken Sie dann auf die Schaltfläche **Save**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z.B. „Hinzufügen des SAS-Speicherzugriffs“), und klicken Sie anschließend auf **Speichern**.
 
-8. Wählen Sie auf der Ambari-Webbenutzeroberfläche in der Liste auf der linken Seite „HDFS“ und dann in der Dropdownliste „Service Actions“ (Dienstaktionen) auf der rechten Seite  **Restart All Affected**  (Alle betroffenen Dienste neu starten) aus. Klicken Sie bei entsprechender Aufforderung auf  **Confirm Restart All** (Neustart aller Dienste bestätigen).
+8. Wählen Sie auf der Ambari-Webbenutzeroberfläche in der Liste auf der linken Seite „HDFS“ und dann in der Dropdownliste „Service Actions“ (Dienstaktionen) auf der rechten Seite **Restart All Affected** (Alle betroffenen Dienste neu starten) aus. Klicken Sie bei entsprechender Aufforderung auf **Confirm Restart All** (Neustart aller Dienste bestätigen).
 
 9. Wiederholen Sie diesen Vorgang für MapReduce2 und YARN.
 

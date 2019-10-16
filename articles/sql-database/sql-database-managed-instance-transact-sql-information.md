@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828739"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000494"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -110,7 +110,7 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 
 Siehe [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) und [BACKUP CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Problemumgehung**: Erstellen Sie ein Skript für das Zertifikat oder den privaten Schlüssel, speichern Sie es als SQL-Datei, und erstellen Sie das Zertifikat aus der Binärdatei:
+**Problemumgehung**: Anstatt eine Sicherung des Zertifikats zu erstellen und die Sicherung wiederherzustellen, [rufen Sie den binären Inhalt des Zertifikats und den privaten Schlüssel ab, speichern Sie sie als SQL-Datei, und erstellen Sie Folgendes aus den Binärdaten](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -329,6 +329,7 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 
 - `DATASOURCE` ist beim Importieren von Dateien aus Azure Blob Storage im Befehl `BULK INSERT` erforderlich. Siehe [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
 - `DATASOURCE` ist beim Lesen von Inhalten einer Datei aus Azure Blob Storage in der Funktion `OPENROWSET` erforderlich. Siehe [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `OPENROWSET` kann zum Lesen von Daten aus anderen Azure SQL-Einzeldatenbanken, verwalteten Instanzen oder SQL Server-Instanzen verwendet werden. Andere Quellen wie Oracle-Datenbanken oder Excel-Dateien werden nicht unterstützt.
 
 ### <a name="clr"></a>CLR
 

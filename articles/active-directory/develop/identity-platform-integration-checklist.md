@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f7e9b738a55248678a207f0b298ef65e6c2761a4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145656"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240148"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Bewährte Methoden und Empfehlungen für Microsoft Identity Platform
 
@@ -87,7 +87,7 @@ Stellen Sie anhand der folgenden Checkliste sicher, dass Ihre Anwendung effektiv
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | [Beschäftigen Sie sich mit der Einwilligungsoberfläche](application-consent-experience.md), und konfigurieren Sie die Bestandteile der App-Einwilligungsaufforderung so, dass Endbenutzer und Administratoren genügend Informationen erhalten, um über die Vertrauenswürdigkeit Ihrer App zu entscheiden. |
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Minimieren Sie, wie häufig ein Benutzer bei Verwendung Ihrer App Anmeldeinformationen eingeben muss, indem vor interaktiven Flows versucht wird, die automatische Authentifizierung (automatischer Tokenabruf) durchzuführen. |
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Verwenden Sie nicht „prompt=consent“ für jede Anmeldung. Verwenden Sie „prompt=consent“ nur dann, wenn Sie festgestellt haben, dass für die zusätzlichen Berechtigungen eine Einwilligung erforderlich ist (z.B., wenn Sie erforderliche Berechtigungen Ihrer App geändert haben). |
-| ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Reichern Sie Ihre Anwendung ggf. mit Benutzerdaten an. Die Verwendung der [Microsoft Graph-API](https://developer.microsoft.com/graph) bietet dazu eine einfache Möglichkeit. Das Tool [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) kann Sie bei den ersten Schritten unterstützen. |
+| ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Reichern Sie Ihre Anwendung ggf. mit Benutzerdaten an. Eine einfache Möglichkeit dazu besteht in der Verwendung der [Microsoft Graph-API](https://developer.microsoft.com/graph). Das Tool [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) kann Sie bei den ersten Schritten unterstützen. |
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Registrieren Sie den vollständigen Satz an Berechtigungen, die für Ihre App erforderlich sind, damit Administratoren ihre Einwilligung für ihren Mandanten ganz leicht erteilen können. Verwenden Sie die [inkrementelle Einwilligung](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) zur Laufzeit. So können Benutzer nachvollziehen, warum Ihre App Berechtigungen anfordert, die Besorgnis oder Verwirrung hervorrufen können, wenn sie gleich beim ersten Start angefordert werden. |
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Implementieren Sie eine [saubere Oberfläche für einmaliges Abmelden](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut). Dies ist eine Datenschutz- und Sicherheitsanforderung, die eine gute Benutzeroberfläche ausmacht. |
 

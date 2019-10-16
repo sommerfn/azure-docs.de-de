@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/02/2019
+ms.openlocfilehash: 6f2ef181e7f61696245a4413d7a28d84801f2838
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162254"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032888"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -45,14 +45,14 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich in erster 
 
 | | Ressourcentyp | Allgemeiner Zweck |  Hyperscale | Unternehmenskritisch |
 |:---:|:---:|:---:|:---:|:---:|
-| **Am besten geeignet für** |Alle|  Die meisten geschäftlichen Workloads. Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen. | Datenanwendungen mit hohem Datenkapazitätsbedarf und der Möglichkeit, Speicher automatisch zu skalieren und Computeressourcen nahtlos zu skalieren. | OLTP-Anwendungen mit hoher Transaktionsrate und den geringsten Latenzen bei E/A-Vorgängen. Bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
+| **Am besten geeignet für** |Alle|Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen.|Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, fluide vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung.|OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|
 |  **Ressourcentyp** ||Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz | Einzeldatenbank | Einzeldatenbank/Pool für elastische Datenbanken/verwaltete Instanz |
 | **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken* | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne* | 1 bis 80 virtuelle Kerne |
 | |Verwaltete Instanz | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | **Speichertyp** | Alle |Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
 | **Speichergröße** | Einzeldatenbank/Pool für elastische Datenbanken | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
 | | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
-| **E/A-Durchsatz** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
+| **IOPS** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
 | | Verwaltete Instanz | Hängt von der Größe der Datei ab | – | Verwaltete Instanz: Hängt von der Größe der Datei ab|
 |**Verfügbarkeit**|Alle|1 Replikat, keine Replikate mit Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 4 Replikate mit Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
 |**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
@@ -61,7 +61,7 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich in erster 
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>Wer sollte die Dienstebene „Hyperscale“ verwenden?
 
-Die Dienstebene „Hyperscale“ ist hauptsächlich für Kunden konzipiert, die große lokale SQL Server-Datenbanken verwenden und ihre Anwendungen durch eine Migration in die Cloud modernisieren möchten, oder für Kunden, die bereits Azure SQL-Datenbank verwenden und das Potenzial zum Datenbankwachstum im umfassenden Maß ausschöpfen möchten. Außerdem eignet sich Hyperscale für Kunden, die eine hohe Leistung und Skalierbarkeit wünschen. Mit Hyperscale erhalten Sie Folgendes:
+Die Dienstebene „Hyperscale“ ist für Kunden konzipiert, die große lokale SQL Server-Datenbanken verwenden und ihre Anwendungen durch eine Migration zur Cloud modernisieren möchten, oder für Kunden, die bereits Azure SQL-Datenbank verwenden und das Potenzial zum Datenbankwachstum noch umfassender ausschöpfen möchten. Außerdem eignet sich Hyperscale für Kunden, die eine hohe Leistung und Skalierbarkeit wünschen. Mit Hyperscale erhalten Sie Folgendes:
 
 - Unterstützung für eine Datenbankgröße von bis zu 100 TB
 - Schnelle Datenbanksicherungen unabhängig von der Datenbankgröße (Sicherungen basieren auf Dateimomentaufnahmen)
@@ -173,7 +173,7 @@ Die Datenbankgröße nimmt automatisch zu, je mehr Daten Sie einfügen bzw. erfa
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>In welchen Schritten wird die Datenbankgröße erhöht?
 
-1 GB
+Jede Datendatei wächst um 10 GB. Mehrere Datendateien können gleichzeitig wachsen.
 
 ### <a name="is-the-storage-in-sql-database-hyperscale-local-or-remote"></a>Verfügt SQL-Datenbank Hyperscale über einen lokalen oder Remotespeicher?
 
@@ -217,9 +217,9 @@ Nein. Eine Hyperscale-Datenbank kann derzeit nicht zu einer anderen Dienstebene 
 
 Ja. Einige der Features von Azure SQL-Datenbank werden in Hyperscale bisher nicht unterstützt, wie u. a. Sicherungen zur Langzeitaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.  Wir gehen davon aus, dass diese Einschränkungen nur temporär bestehen.
 
-### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Können lokale SQL Server-Datenbanken oder virtuelle Computer mit SQL Server-Datenbank zu Hyperscale migriert werden?
+### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Können lokale SQL Server-Datenbanken oder virtuelle Computer mit SQL Server-Datenbank zu Hyperscale migriert werden?
 
-Ja. Sie können für die Migration zu Hyperscale alle vorhandenen Migrationstechnologien verwenden, einschließlich BACPAC, Transaktionsreplikation, logisches Laden von Daten. Weitere Informationen finden Sie auch unter [Was ist Azure Database Migration Service?](../dms/dms-overview.md).
+Ja. Sie können alle vorhandenen Migrationstechnologien verwenden, um zu Hyperscale zu migrieren, einschließlich Transaktionsreplikation und anderen Technologien zur Datenverschiebung (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS). Weitere Informationen finden Sie auch unter [Was ist Azure Database Migration Service?](../dms/dms-overview.md).
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Wie lange ist die Ausfallzeit bei der Migration von einer lokalen Umgebung oder Umgebung eines virtuellen Computers zu Hyperscale, und wie kann diese minimiert werden?
 
@@ -228,11 +228,13 @@ Die Ausfallzeit dauert genauso lange wie bei der Migration Ihrer Datenbanken zu 
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>Wie viel Zeit würde es brauchen, um eine bestimmte Datenmenge zu SQL-Datenbank Hyperscale zu migrieren?
 
-Hyperscale kann pro Sekunde 100 MB neue/geänderte Daten verarbeiten.
+Hyperscale ist in der Lage, 100 MB/s neuer/geänderter Daten zu verarbeiten, aber die Zeit für das Verschieben von Daten in Azure SQL-Datenbanken wird auch durch den verfügbaren Netzwerkdurchsatz, die Lesegeschwindigkeit der Quelle und das Servicelevelziel (SLO) der Hyperscale-Zieldatenbank beeinflusst.
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Können Daten aus Blob Storage gelesen und schnell geladen werden (wie PolyBase und SQL Data Warehouse)?
 
 Sie können Daten aus Azure Storage lesen und in eine Hyperscale-Datenbank laden (genau wie bei einer gewöhnlichen Einzeldatenbank). PolyBase wird in Azure SQL-Datenbank derzeit nicht unterstützt. Mit [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) oder der Ausführung eines Spark-Auftrags in [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/) mit dem [Spark-Connector für SQL](sql-database-spark-connector.md) können Sie PolyBase-Abfragen ausführen. Der Spark-Connector für SQL unterstützt Importe mit BULK INSERT.
+
+Es ist auch möglich, Daten aus einem Azure-Blobspeicher mithilfe von BULK INSERT oder OPENROWSET zu lesen: [Beispiele für den Massenzugriff auf Daten in Azure Blob Storage.](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location)
 
 Einfache Wiederherstellungen oder Massenprotokollierungsmodelle werden in Hyperscale nicht unterstützt. Für die Bereitstellung von Hochverfügbarkeit ist das vollständige Wiederherstellungsmodell erforderlich. Hyperscale bietet aufgrund der neuen Protokollarchitektur jedoch eine bessere Datenerfassungsrate im Vergleich zu einer einzelnen Azure SQL-Datenbank.
 

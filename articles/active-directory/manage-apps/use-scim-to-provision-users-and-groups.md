@@ -1,6 +1,6 @@
 ---
-title: Automatisieren der Bereitstellung von Apps mithilfe von SCIM in Azure Active Directory | Microsoft-Dokumentation
-description: Über Azure Active Directory können Benutzer und Gruppen automatisch für alle Anwendungen oder Identitätsspeicher bereitgestellt werden, denen ein Webdienst mit einer Schnittstelle vorgelagert ist, wie sie in der SCIM-Protokollspezifikation definiert ist.
+title: SCIM-Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen SCIM-Endpunkt erstellen, Ihre SCIM-API mit Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Anwendungen beginnen.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802357"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001729"
 ---
-# <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
+# <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM-Benutzerbereitstellung mit Azure Active Directory
 
-SCIM ist ein standardisiertes Protokoll und Schema, das darauf abzielt, mehr Konsistenz bei der systemübergreifenden Verwaltung von Identitäten zu erreichen. Wenn eine Anwendung einen SCIM-Endpunkt für die Benutzerverwaltung unterstützt, kann der Azure AD-Benutzerbereitstellungsdienst Anforderungen zum Erstellen, Ändern oder Löschen von zugewiesenen Benutzern und Gruppen an diesen Endpunkt senden.
+[SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards) (System for Cross-Domain Identity Management) ist ein standardisiertes Protokoll und Schema, das darauf abzielt, mehr Konsistenz bei der systemübergreifenden Verwaltung von Identitäten zu erreichen. Wenn eine Anwendung einen SCIM-Endpunkt für die Benutzerverwaltung unterstützt, kann der Azure AD-Benutzerbereitstellungsdienst Anforderungen zum Erstellen, Ändern oder Löschen von zugewiesenen Benutzern und Gruppen an diesen Endpunkt senden.
 
 Viele der Anwendungen, für die Azure AD die [vorab integrierte automatische Benutzerbereitstellung](../saas-apps/tutorial-list.md) unterstützt, implementieren SCIM als Möglichkeit zum Empfangen von Benachrichtigungen über Benutzeränderungen.  Zusätzlich zu diesen Anwendungen können Kunden Anwendungen verbinden, die ein bestimmtes Profil der [SCIM 2.0-Protokollspezifikation](https://tools.ietf.org/html/rfc7644) mit der generischen Integrationsoption für Nicht-Kataloganwendungen im Azure-Portal unterstützen.
 

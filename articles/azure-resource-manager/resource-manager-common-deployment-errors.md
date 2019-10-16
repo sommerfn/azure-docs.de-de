@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: Bereitstellungsfehler, Azure-Bereitstellung, in Azure bereitstellen.
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 08/30/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e03cd3747fe6770be7dddaf36d634547ed75b39
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718943"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001635"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
 In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben. Er enthält darüber hinaus Informationen zur Behebung der Fehler. Sie können unter [Ermitteln des Fehlercodes](#find-error-code) nachsehen, falls Sie den Fehlercode für Ihren Bereitstellungsfehler nicht kennen.
 
-Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in diesem Artikel nicht angegeben sind, teilen Sie uns dies bitte mit. Unten auf dieser Seite können Sie uns Feedback geben. Das Feedback wird über GitHub-Probleme nachverfolgt. 
+Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in diesem Artikel nicht angegeben sind, teilen Sie uns dies bitte mit. Unten auf dieser Seite können Sie uns Feedback geben. Das Feedback wird über GitHub-Probleme nachverfolgt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,7 +34,9 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | AuthorizationFailed | Ihr Konto oder Dienstprinzipal verfügt nicht über ausreichende Zugriffsberechtigungen zum Durchführen der Bereitstellung. Überprüfen Sie die Rolle, zu der Ihr Konto gehört, sowie deren Zugriffsberechtigungen für den Bereitstellungsumfang.<br><br>Unter Umständen wird dieser Fehler angezeigt, wenn ein erforderlicher Ressourcenanbieter nicht registriert ist. | [Rollenbasierte Access Control in Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Lösen von Registrierungsfehlern](resource-manager-register-provider-errors.md) |
 | BadRequest | Sie haben Bereitstellungswerte gesendet, die nicht den von Resource Manager erwarteten Werten entsprechen. Überprüfen Sie die interne Statusmeldung, um Hilfe zur Problembehandlung zu erhalten. | [Vorlagenreferenz](/azure/templates/) und [Unterstützte Speicherorte](resource-location.md) |
 | Konflikt: | Sie fordern einen Vorgang an, der im aktuellen Zustand der Ressource nicht zulässig ist. Eine Größenänderung für den Datenträger ist beispielsweise nur zulässig, wenn ein virtueller Computer erstellt wird oder die Zuweisung des virtuellen Computers aufgehoben wurde. | |
-| DeploymentActive | Warten Sie, bis die gleichzeitige Bereitstellung für diese Ressourcengruppe abgeschlossen ist. | |
+| DeploymentActiveAndUneditable | Warten Sie, bis die gleichzeitige Bereitstellung für diese Ressourcengruppe abgeschlossen ist. | |
+| DeploymentNameInvalidCharacters | Der Bereitstellungsname darf nur Buchstaben, Ziffern sowie die Zeichen „-“, „.“ und „_“ enthalten. | |
+| DeploymentNameLengthLimitExceeded | Die Länge von Bereitstellungsnamen ist auf 64 Zeichen beschränkt.  | |
 | DeploymentFailed | „DeploymentFailed“ ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Suchen Sie in den Fehlerdetails nach einem Fehlercode, der weitere Informationen bereitstellt. | [Ermitteln des Fehlercodes](#find-error-code) |
 | DeploymentQuotaExceeded | Wenn der Grenzwert von 800 Bereitstellungen pro Ressourcengruppe erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. | [Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet](deployment-quota-exceeded.md) |
 | DnsRecordInUse | Der Name des DNS-Eintrags muss eindeutig sein. Geben Sie einen anderen Namen ein. | |
@@ -42,6 +44,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | InUseSubnetCannotBeDeleted | Dieser Fehler tritt gegebenenfalls auf, wenn versucht wird, eine Ressource zu aktualisieren, die Anforderung jedoch durch Löschen und Erstellen der Ressource verarbeitet wird. Stellen Sie sicher, dass Sie alle unveränderten Werte angeben. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Rufen Sie das Zugriffstoken für den entsprechenden Mandanten ab. Sie können das Token nur von dem Mandanten erhalten, zu dem Ihr Konto gehört. | |
 | InvalidContentLink | Sie haben wahrscheinlich versucht, eine Verknüpfung mit einer geschachtelten Vorlage herzustellen, die nicht verfügbar ist. Überprüfen Sie den URI, den Sie für die geschachtelte Vorlage angegeben haben. Wenn die Vorlage in einem Speicherkonto vorhanden ist, stellen Sie sicher, dass auf den URI zugegriffen werden kann. Möglicherweise müssen Sie ein SAS-Token übergeben. Derzeit ist es nicht möglich, eine Verknüpfung mit einer Vorlage zu erstellen, die sich in einem Speicherkonto hinter einer [Azure Storage-Firewall](../storage/common/storage-network-security.md) befindet. Erwägen Sie, Ihre Vorlage in ein anderes Repository, etwa GitHub, zu verschieben. | [Verknüpfte Vorlagen](resource-group-linked-templates.md) |
+| InvalidDeploymentLocation | Beim Bereitstellen auf der Abonnementebene haben Sie einen anderen Ort für einen zuvor verwendeten Bereitstellungsnamen angegeben. | [Bereitstellungen auf Abonnementebene](deploy-to-subscription.md) |
 | InvalidParameter | Einer der Werte, die Sie für eine Ressource angegeben haben, stimmt nicht mit dem erwarteten Wert überein. Ursache für diesen Fehler können viele unterschiedliche Bedingungen sein. Beispielsweise kann ein Kennwort unzureichend oder ein Blobname fehlerhaft sein. In der Fehlermeldung sollte angegeben sein, welcher Wert korrigiert werden muss. | |
 | InvalidRequestContent | Die Bereitstellungswerte enthalten entweder unerwartete Werte, oder es fehlen erforderliche Werte. Bestätigen Sie die Werte für Ihren Ressourcentyp. | [Vorlagenreferenz](/azure/templates/) |
 | InvalidRequestFormat | Aktivieren Sie die Debugprotokollierung, wenn Sie die Bereitstellung ausführen, und überprüfen Sie den Inhalt der Anforderung. | [Debugprotokollierung](#enable-debug-logging) |
@@ -124,13 +127,13 @@ Sie sehen weitere Details zur Bereitstellung. Wählen Sie die Option aus, um wei
 
 ![Fehler bei der Bereitstellung](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Die Fehlermeldung und die Fehlercodes werden angezeigt. Es sind zwei Fehlercodes vorhanden. Der erste Fehlercode (**DeploymentFailed**) ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Der zweite Fehlercode (**StorageAccountNotFound**) enthält die Details, die Sie benötigen. 
+Die Fehlermeldung und die Fehlercodes werden angezeigt. Es sind zwei Fehlercodes vorhanden. Der erste Fehlercode (**DeploymentFailed**) ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Der zweite Fehlercode (**StorageAccountNotFound**) enthält die Details, die Sie benötigen.
 
 ![Fehlerdetails](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>Debugprotokollierung aktivieren
 
-Manchmal benötigen Sie weitere Informationen zur Anforderung und zur Antwort, um den genauen Fehler zu ermitteln. Sie können anfordern, dass während der Bereitstellung zusätzliche Informationen protokolliert werden. 
+Manchmal benötigen Sie weitere Informationen zur Anforderung und zur Antwort, um den genauen Fehler zu ermitteln. Sie können anfordern, dass während der Bereitstellung zusätzliche Informationen protokolliert werden.
 
 ### <a name="powershell"></a>PowerShell
 

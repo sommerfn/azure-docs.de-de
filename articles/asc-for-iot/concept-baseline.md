@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: a9de9924b851024dd36c848203cc3ada2cde208c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328724"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176617"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>Baseline und benutzerdefinierte Überprüfungen von Azure Security Center für IoT
 
@@ -32,7 +32,7 @@ Eine Baseline richtet das Standardverhalten für jedes Gerät ein und erleichter
 
 ## <a name="baseline-custom-checks"></a>Benutzerdefinierte Überprüfungen der Baseline
 
-Benutzerdefinierte Überprüfungen der Baseline richten eine benutzerdefinierte Liste von Überprüfungen für die Baseline jedes Geräts ein und verwenden dazu den Zwilling der Modulkennung des Geräts. 
+Benutzerdefinierte Überprüfungen der Baseline richten eine benutzerdefinierte Liste von Überprüfungen für die Baseline jedes Geräts ein und verwenden dazu den **Zwilling der Modulkennung** des Geräts. 
 
 ## <a name="setting-baseline-properties"></a>Festlegen von Baseline-Eigenschaften
 
@@ -55,7 +55,7 @@ So konfigurieren Sie benutzerdefinierte Baseline-Überprüfungen:
         "baselineCustomChecksFilePath": {
           "value" : "/home/user/full_path.xml"
         },
-        "baselineCustomChecksFilePath": {
+        "baselineCustomChecksFileHash": {
           "value" : "#hashexample!"
         }
       }
@@ -67,8 +67,8 @@ So konfigurieren Sie benutzerdefinierte Baseline-Überprüfungen:
 | NAME| Status | Gültige Werte| Standardwerte| BESCHREIBUNG |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Erforderlich: WAHR |Gültige Werte:  **Boolescher Wert** |Standardwert: **FALSCH** |Maximales Zeitintervall, bevor Nachrichten mit hoher Priorität gesendet werden|
-|baselineCustomChecksFilePath |Erforderlich: WAHR|Gültige Werte:  **Zeichenfolge**, **null** |Standardwert: **PT5H** |Vollständiger Pfad der XML-Baselinekonfiguration|
-|baselineCustomChecksFileHash |Erforderlich: WAHR|Gültige Werte:  **Zeichenfolge**, **null** |Standardwert: **PT5H** |`sha256sum` der XML-Konfigurationsdatei. Weitere Informationen finden Sie in der [sha256sum-Referenz](https://linux.die.net/man/1/sha256sum). |
+|baselineCustomChecksFilePath |Erforderlich: WAHR|Gültige Werte:  **Zeichenfolge**, **null** |Standardwert: **NULL** |Vollständiger Pfad der XML-Baselinekonfiguration|
+|baselineCustomChecksFileHash |Erforderlich: WAHR|Gültige Werte:  **Zeichenfolge**, **null** |Standardwert: **NULL** |`sha256sum` der XML-Konfigurationsdatei. Weitere Informationen finden Sie in der [sha256sum-Referenz](https://linux.die.net/man/1/sha256sum). |
 
 Weitere Baselinebeispiele zum Durcharbeiten finden Sie unter [Beispiel für eine benutzerdefinierte Baseline -1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) und [Beispiel für eine benutzerdefinierte Baseline -2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml).
 

@@ -1,19 +1,19 @@
 ---
 title: 'Vorgehensweise: Konfigurieren von Postman für Azure Digital Twins | Microsoft-Dokumentation'
 description: Konfigurieren von Postman für Azure Digital Twins
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-adgera
-ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803407"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949207"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Vorgehensweise: Konfigurieren von Postman für Azure Digital Twins
 
@@ -122,7 +122,8 @@ Nach Abschluss der vorherigen Schritte konfigurieren Sie Postman, um eine authen
    [![Inhaltstyp „multipart/mixed“](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Serialisieren Sie Nicht-Textdaten in Dateien. JSON-Daten werden als JSON-Datei gespeichert.
-1. Fügen Sie auf der Registerkarte **Haupttext** jede Datei hinzu, indem Sie einen **Schlüssel**-Namen zuweisen und `file` oder `text` auswählen.
+1. Wählen Sie auf der Registerkarte **Haupttext** die Option `form-data` aus. 
+1. Fügen Sie jede Datei hinzu, indem Sie einen **Schlüssel**-Namen zuweisen und `file` auswählen.
 1. Wählen Sie dann jede Datei über die Schaltfläche **Datei auswählen** aus.
 
    [![Postman-Clientbeispiel](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)

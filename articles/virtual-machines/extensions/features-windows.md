@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a8027a1290b4b771c17a1e748c06f3b86fa0bf95
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174078"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244601"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -35,7 +35,7 @@ Dieser Artikel enthält eine Übersicht der VM-Erweiterungen, erläutert Vorauss
 Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsfälle verfügbar. Beispiele hierfür sind:
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf eine VM mithilfe der DSC-Erweiterung für Windows. Weitere Informationen finden Sie unter [Azure Desired State configuration extension](dsc-overview.md) (Azure-Erweiterung für die gewünschte Statuskonfiguration).
-- Konfigurieren der Überwachung einer VM mit der VM-Erweiterung „Microsoft Monitoring Agent“. Weitere Informationen finden Sie unter [Verbinden von virtuellen Azure-Computern mit Azure Monitor-Protokollen](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Konfigurieren der Überwachung einer VM mit der Log Analytics-Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Verbinden von virtuellen Azure-Computern mit Azure Monitor-Protokollen](../../log-analytics/log-analytics-azure-vm-extension.md).
 - Konfigurieren eines virtuellen Azure-Computers mit Chef. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](../windows/chef-automation.md).
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Datadog-Erweiterung. Weitere Informationen finden Sie im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
@@ -65,14 +65,14 @@ Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In dies
 
 #### <a name="network-access"></a>Netzwerkzugriff
 
-Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie unterstütze Versionen der Agents verwenden (siehe [Minimum version support for virtual machine agents in Azure (Unterstütze Mindestversion für VM-Agents in Azure)](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)), müssen Sie den Zugriff auf Azure Storage in der VM-Region nicht zulassen. Sie können den Agent verwenden, um die Kommunikation mit Agents an den Azure Fabric Controller umzuleiten. Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
+Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie [unterstützte](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) Versionen der Agents verwenden, müssen Sie keinen Zugriff auf Azure Storage in der VM-Region zulassen, da Sie über den Agent die Kommunikation mit Agents an den Azure-Fabric Controller umleiten können (HostGAPlugin-Feature über den privilegierten Kanal der privaten IP-Adresse 168.63.129.16.). Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
 
 > [!IMPORTANT]
-> Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
+> Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall oder einem Proxy blockiert haben, treten bei den Erweiterungen unabhängig von den gerade beschriebenen Szenarien Fehler auf. Die Ports 80, 443 und 32526 sind erforderlich.
 
-Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gewähren.
+Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage oder Azure Active Directory benötigen, können Sie den Zugriff über [Azure-NSG-Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Storage bzw. AzureActiveDirectory gewähren.
 
-Der Windows-Gast-Agent verfügt über keine Unterstützung für Proxyserver, über die Sie Datenverkehrsanforderungen des Agents umleiten können.
+Der Windows-Gast-Agent unterstützt nicht das Umleiten von Datenverkehrsanforderungen des Agents über einen Proxyserver. Das bedeutet, dass der Windows-Gast-Agent Ihren benutzerdefinierten Proxy (sofern vorhanden) für den Zugriff auf Ressourcen im Internet oder auf dem Host über die IP-Adresse 168.63.129.16 verwendet.
 
 ## <a name="discover-vm-extensions"></a>Ermitteln von VM-Erweiterungen
 

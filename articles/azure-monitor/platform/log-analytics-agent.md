@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 66f3a9ae1f29d863170dcb4bc43e38b648602eed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 1eec8b79579a1c4d5c889b830706299ccc25e88b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695025"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035633"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Sammeln von Protokolldaten mit dem Log Analytics-Agent
 
@@ -53,7 +53,7 @@ Der Agent für Linux und Windows dient nicht zur Verbindungsherstellung mit Azur
 Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
 
 * Windows Server 2019
-* Windows Server 2008 R2, 2012, 2012 R2, 2016, Version 1709 und 1803
+* Windows Server 2008 SP2 (x64), 2008 R2, 2012, 2012 R2, 2016, Version 1709 und 1803
 * Windows 7 SP1, Windows 8 Enterprise und Pro sowie Windows 10 Enterprise und Pro
 
 >[!NOTE]

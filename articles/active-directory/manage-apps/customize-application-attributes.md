@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e535d8cce4e2aa56305283651b9cc21dfc301a4
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807607"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240994"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -142,6 +142,7 @@ Durch die Auswahl dieser Option wird eine erneute Synchronisierung aller Benutze
 - Es hat sich bewährt, die Anzahl der aufeinanderfolgenden Änderungen an Attributzuordnungen so gering wie möglich zu halten.
 - Das Hinzufügen eines Fotoattributs, das für eine App bereitgestellt werden soll, wird derzeit nicht unterstützt, da das Format zur Synchronisierung des Fotos nicht angegeben werden kann. Sie können das Feature über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory) anfordern.
 - Das Attribut „IsSoftDeleted“ ist häufig Teil der Standardzuordnungen für eine Anwendung. „IsSoftdeleted“ kann in einem von vier Szenarien „true“ sein (der Benutzer ist außerhalb des gültigen Bereichs, weil seine Zuweisung zur Anwendung aufgehoben wurde, der Benutzer ist außerhalb des gültigen Bereichs, da er nicht dem Bereichsfilter entspricht, der Benutzer wurde in Azure AD vorläufig gelöscht, oder die Eigenschaft „AccountEnabled“ ist für den Benutzer auf „false“ festgelegt). 
+- Der Azure AD-Bereitstellungsdienst unterstützt nicht die Bereitstellung von NULL-Werten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

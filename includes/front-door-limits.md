@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333376"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237353"
 ---
 | Resource | Standard/maximales Limit |
 | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "67333376"
 | Back-Ends pro Back-End-Pool | 100 |
 | Abzustimmende Pfadmuster für eine Routingregel | 25 |
 | Benutzerdefinierte Web Application Firewall-Regeln pro Richtlinie | 10 |
-| Web Application Firewall-Richtlinien pro Ressource | 100 |
+| Web Application Firewall-Richtlinie pro Abonnement | 100 |
 | Web Application Firewall – Übereinstimmungsbedingungen pro benutzerdefinierter Regel | 10 |
 | Web Application Firewall – IP-Adressbereiche pro Übereinstimmungsbedingung | 600 |
 | Web Application Firewall – Zeichenfolgen-Übereinstimmungswerte pro Übereinstimmungsbedingung | 10 |
@@ -53,4 +53,5 @@ ms.locfileid: "67333376"
 | **Upload** |  Es gibt keine Beschränkung, so lange jeder CTE-Upload kleiner als 2 GB ist. | Die Größe darf 2 GB nicht überschreiten. |
 
 ### <a name="other-limits"></a>Andere Limits
-- Maximale URL-Größe – 8.192 Byte – Gibt die maximale Länge der Basis-URL-an (Schema + Hostname + Port + Pfad+ Abfragezeichenfolge der URL) – Maximale Größe der Abfragezeichenfolge – 4.096 Byte – Gibt die maximale Länge der Abfragezeichenfolge in Bytes an.
+- Maximum URL size (Maximale Größe der URL) – 8.192 Byte: Hiermit wird die maximale Länge der Rohdaten-URL angegeben (Schema + Hostname + Port + Pfad + Abfragezeichenfolge der URL)
+- Maximum Query String size (Maximale Größe der Abfragezeichenfolge) – 4.096 Byte: Hiermit wird die maximale Länge der Abfragezeichenfolge in Byte angegeben.

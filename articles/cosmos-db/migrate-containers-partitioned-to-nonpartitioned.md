@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300116"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844404"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrieren nicht partitionierter Container zu partitionierten Containern
 
@@ -99,7 +99,7 @@ Während die Containerdefinition mit einer Partitionsschlüsseleigenschaft erwei
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Zugreifen auf Dokumente ohne Partitionsschlüssel
 
-Anwendungen können mithilfe einer speziellen Systemeigenschaft namens „CosmosContainerSettings.NonePartitionKeyValue“ auf die vorhandenen Dokumente zugreifen, die über keinen Partitionsschlüssel verfügen. Dies ist der Wert für die Dokumente, die nicht migriert wurden. Sie können diese Eigenschaft in allen CRUD- und Abfragevorgängen verwenden. Im folgenden Beispiel wird ein Ausschnitt zum Lesen eines einzelnen Dokuments aus NonePartitionKey veranschaulicht. 
+Anwendungen können mithilfe der speziellen Systemeigenschaft PartitionKey.None auf die vorhandenen Dokumente zugreifen, die nicht über einen Partitionsschlüssel verfügen. Dies ist der Wert für die Dokumente, die nicht migriert wurden. Sie können diese Eigenschaft in allen CRUD- und Abfragevorgängen verwenden. Im folgenden Beispiel wird ein Ausschnitt zum Lesen eines einzelnen Dokuments aus NonePartitionKey veranschaulicht. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
