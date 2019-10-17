@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677745"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001619"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
 
@@ -127,16 +127,25 @@ Da die Warnung so konfiguriert ist, dass sie basierend auf einer Gesamtanzahl vo
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Warnungsregel für die Protokollsuche – Auslösung und Zustand
 
-Die Warnungsregel für die Protokollsuche funktioniert nach der Logik, die vom Benutzer gemäß der Konfiguration und der verwendeten benutzerdefinierten Analyseabfrage festgelegt wurde. Die Überwachungslogik einschließlich der genauen Bedingung oder des Grunds für die Auslösung der Warnungsregel ist in einer Analytics-Abfrage gekapselt und kann somit in jeder Protokollwarnungsregel unterschiedlich sein. Azure-Warnungen verfügen nur über wenige Informationen zur spezifischen Ursache oder zum auszuwertenden Szenario, wenn die Schwellenwertbedingung der Warnungsregel der Protokollsuche erfüllt oder überschritten wird. Protokollwarnungen werden daher als zustandslos bezeichnet. Protokollwarnungsregeln werden weiterhin ausgelöst, solange das Ergebnis der angegebenen benutzerdefinierten Analytics-Abfrage die Warnungsbedingung erfüllt. Dabei wird die Warnung niemals aufgelöst, da die Logik der genauen Ursache für den Überwachungsfehler innerhalb der vom Benutzer angegebenen Analytics-Abfrage maskiert ist. Derzeit gibt es keinen Mechanismus, mit dem Azure Monitor-Warnungen eindeutig feststellen können, ob die Ursache behoben wurde.
+Warnungsregeln für die Protokollsuche funktionieren nur mit der Logik, die Sie in die Abfrage einbauen. Das Warnsystem hat keinen anderen Kontext hinsichtlich Systemstatus, Ihrer Absicht oder der von der Abfrage implizierten Grundursache. Daher werden Protokollwarnungen als zustandslos bezeichnet. Die Bedingungen werden bei jeder Ausführung als „TRUE“ oder „FALSE“ ausgewertet.  Jedes Mal, wenn die Auswertung der Warnungsbedingung „TRUE“ ergibt, wird eine Warnung ausgelöst, unabhängig davon, ob sie bereits zuvor ausgelöst wurde.    
 
-Sehen wir uns das einmal anhand eines Beispiels aus der Praxis an. Angenommen, es gibt eine Protokollwarnungsregel namens *Contoso-Log-Alert*, wie in der Konfiguration im bereitgestellten [Beispiel für den Protokollwarnungstyp „Anzahl von Ergebnissen“](#example-of-number-of-records-type-log-alert) angegeben, und die benutzerdefinierte Warnungsabfrage durchsucht Protokolle nach dem Ergebniscode 500.
+Sehen wir uns einmal ein praktisches Beispiel für dieses Verhalten an: Sie haben eine Protokollwarnungsregel namens *Contoso-Log-Alert*, die gemäß der Angaben im [Beispiel für den Protokollwarnungstyp „Anzahl von Ergebnissen“](#example-of-number-of-records-type-log-alert) konfiguriert ist. Die Bedingung ist eine benutzerdefinierte Warnungsabfrage, mit der nach dem Ergebniscode 500 in Protokollen gesucht wird. Wenn mindestens ein Ergebniscode 500 in Protokollen gefunden wird, ist die Bedingung der Warnung erfüllt (TRUE). 
 
-- Als „Contoso-Log-Alert“ um 13:05 Uhr von Azure-Warnungen ausgeführt wurde, enthielt das Protokollsuchergebnis null Datensätze mit dem Ergebniscode 500. Da Null unter dem Schwellenwert liegt, wird die Warnung nicht ausgelöst.
-- Als „Contoso-Log-Alert“ bei der nächsten Iteration um 13:10 Uhr von Azure-Warnungen ausgeführt wurde, enthielt das Protokollsuchergebnis fünf Datensätze mit dem Ergebniscode 500. Da Fünf über dem Schwellenwert liegt, wird die Warnung zusammen mit den zugeordneten Aktionen ausgelöst.
-- Als „Contoso-Log-Alert“ um 13:15 Uhr von Azure-Warnungen ausgeführt wurde, enthielt das Protokollsuchergebnis zwei Datensätze mit dem Ergebniscode 500. Da Zwei über dem Schwellenwert liegt, wird die Warnung zusammen mit den zugeordneten Aktionen ausgelöst.
-- Als „Contoso-Log-Alert“ bei der nächsten Iteration um 13:20 Uhr von einer Azure-Warnung ausgeführt wurde, enthielt das Protokollsuchergebnis erneut null Datensätze mit dem Ergebniscode 500. Da Null unter dem Schwellenwert liegt, wird die Warnung nicht ausgelöst.
+In jedem der folgenden Intervalle wertet das Azure-Warnungssystem die Bedingung für *Contoso-Log-Alert* aus.
 
-Im obigen Fall um 13:15 Uhr können Azure-Warnungen jedoch nicht ermitteln, ob die zugrunde liegenden Probleme, die um 13:10 Uhr festgestellt wurden, weiterhin bestehen und ob neue Fehler hinzugekommen sind. Da die vom Benutzer angegebene Abfrage ggf. frühere Datensätze berücksichtigt, können Azure-Warnungen zu einem eindeutigen Ergebnis gelangen. Weil die Logik für die Warnung in der Warnungsabfrage gekapselt ist, kann nicht mit Sicherheit bestimmt werden, ob die beiden Datensätze mit dem Ergebniscode 500, die um 13:15 Uhr erkannt wurden, auch schon um 13:10 Uhr vorhanden waren. Um also auf Nummer sicher zu gehen, wird bei der Ausführung von „Contoso-Log-Alert“ um 13:15 Uhr die konfigurierte Aktion erneut ausgelöst. Bei den null Datensätzen mit dem Ergebniscode 500 um 13:20 Uhr können Azure-Warnungen nicht eindeutig feststellen, ob die Ursache für den Ergebniscode 500 um 13:10 Uhr und 13:15 Uhr inzwischen behoben wurde und ob von Azure Monitor-Warnungen zuverlässig ermittelt werden kann, dass die Probleme im Zusammenhang mit dem Fehler vom Typ 500 nicht erneut aus den gleichen Gründen auftreten. Daher wird „Contoso-Log-Alert“ auf dem Azure-Warnungsdashboard nicht in „Aufgelöst“ geändert, und/oder es werden keine Benachrichtigungen gesendet, um die Auflösung der Warnung anzugeben. Stattdessen kann der Benutzer, der mit dem genauen Zustand oder Grund für die in die Analytics-Abfrage eingebettete Logik vertraut ist, ggf. die [Warnung als geschlossen markieren](alerts-managing-alert-states.md).
+
+| Time    | Anzahl der von der Protokollsuchabfrage zurückgegebenen Datensätze | Auswertung der Protokollbedingung | Ergebnis 
+| ------- | ----------| ----------| ------- 
+| 13:05 | 0 Datensätze | 0 ist nicht > 0, daher FALSE |  Die Warnung wird nicht ausgelöst. Es werden keine Aktionen aufgerufen.
+| 13:10 | 2 Datensätze | 2 > 0, daher TRUE  | Die Warnung wird ausgelöst, und Aktionsgruppen werden aufgerufen. Der Warnungsstatus ist AKTIV.
+| 13:15 | 5 Datensätze | 5 > 0, daher TRUE  | Die Warnung wird ausgelöst, und Aktionsgruppen werden aufgerufen. Der Warnungsstatus ist AKTIV.
+| 13:20 | 0 Datensätze | 0 ist nicht > 0, daher FALSE |  Die Warnung wird nicht ausgelöst. Es werden keine Aktionen aufgerufen. Der Warnungsstatus bleibt AKTIV.
+
+Erklärung anhand des vorherigen Fallbeispiels:
+
+Um 13:15 Uhr können Azure-Warnungen nicht feststellen, ob die zugrunde liegenden Probleme, die um 13:10 Uhr ermittelt wurden, noch vorhanden sind, und ob es sich bei den Datensätzen um neue Fehler oder Wiederholungen der älteren Fehler um 13:10 Uhr handelt. Bei der vom Benutzer bereitgestellten Abfrage werden möglicherweise frühere Datensätze berücksichtigt, was dem System aber nicht bekannt ist. Das Azure-Warnungssystem ist so konzipiert, dass es im Zweifelsfall auf Nummer sicher geht, und es löst die Warnung und die zugehörigen Aktionen um 13:15 Uhr erneut aus. 
+
+Um 13:20 Uhr, wenn keine Datensätze mit dem Ergebniscode 500 erkannt werden, können Azure-Warnungen nicht sicher sein, dass die Ursache für den Ergebniscode 500, der um 13:10 Uhr und 13:15 Uhr vorlag, jetzt behoben ist. Es ist nicht bekannt, ob die Probleme aufgrund eines 500-Fehlers aus denselben Gründen erneut auftreten werden. Daher wird *Contoso-Log-Alert* auf dem Azure-Warnungsdashboard nicht in **Aufgelöst** geändert, und/oder es werden keine Benachrichtigungen mit der Angabe gesendet, dass die Warnung aufgelöst wurde. Nur Sie, der mit dem genauen Zustand oder Grund für die in die Analytics-Abfrage eingebettete Logik vertraut ist, können ggf. die [Warnung als geschlossen markieren](alerts-managing-alert-states.md).
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Preise und Abrechnung von Protokollwarnungen
 

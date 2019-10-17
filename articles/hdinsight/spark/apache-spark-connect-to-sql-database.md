@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.date: 10/03/2019
+ms.openlocfilehash: cc225f4cae3935212844c19464afc716092e73ca
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147037"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035200"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 
@@ -21,32 +21,32 @@ In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einem Apache
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure HDInsight Spark-Cluster**.  Befolgen Sie dazu die Anweisungen unter [Erstellen eines Apache Spark-Clusters in HDInsight](apache-spark-jupyter-spark-sql.md).
+* Azure HDInsight Spark-Cluster*.  Befolgen Sie dazu die Anweisungen unter [Erstellen eines Apache Spark-Clusters in HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* **Azure SQL-Datenbank**. Befolgen Sie dazu die Anweisungen unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../../sql-database/sql-database-get-started-portal.md). Stellen Sie sicher, dass Sie eine Datenbank mit dem **AdventureWorksLT**-Beispielschema und den zugehörigen Daten erstellen. Stellen Sie außerdem sicher, dass Sie eine Firewallregel auf Serverebene erstellen, sodass die IP-Adresse des Clients auf die SQL-Datenbank auf dem Server zugreifen kann. Die Anweisungen zum Hinzufügen der Firewallregel sind im gleichen Artikel enthalten. Halten Sie nach dem Erstellen der Azure SQL-Datenbank die folgenden Werte bereit. Sie benötigen sie, um über einen Spark-Cluster eine Verbindung mit der Datenbank herzustellen.
+* Azure SQL-Datenbank. Befolgen Sie dazu die Anweisungen unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](../../sql-database/sql-database-get-started-portal.md). Stellen Sie sicher, dass Sie eine Datenbank mit dem **AdventureWorksLT**-Beispielschema und den zugehörigen Daten erstellen. Stellen Sie außerdem sicher, dass Sie eine Firewallregel auf Serverebene erstellen, sodass die IP-Adresse des Clients auf die SQL-Datenbank auf dem Server zugreifen kann. Die Anweisungen zum Hinzufügen der Firewallregel sind im gleichen Artikel enthalten. Halten Sie nach dem Erstellen der Azure SQL-Datenbank die folgenden Werte bereit. Sie benötigen sie, um über einen Spark-Cluster eine Verbindung mit der Datenbank herzustellen.
 
     * Name des Servers, der die Azure SQL-Datenbank hostet.
     * Name der Azure SQL-Datenbank.
     * Benutzername/Kennwort des Azure SQL-Datenbankadministrators.
 
-* **SQL Server Management Studio**: Befolgen Sie dazu die Anweisungen unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](../../sql-database/sql-database-connect-query-ssms.md).
+* SQL Server Management Studio (SSMS). Befolgen Sie dazu die Anweisungen unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](../../sql-database/sql-database-connect-query-ssms.md).
 
-## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks 
+## <a name="create-a-jupyter-notebook"></a>Erstellen eines Jupyter Notebooks
 
-Erstellen Sie zunächst ein dem Spark-Cluster zugeordnetes [Jupyter Notebook](https://jupyter.org/). Sie verwenden dieses Notebook, um die in diesem Artikel verwendeten Codeausschnitte auszuführen. 
+Erstellen Sie zunächst ein dem Spark-Cluster zugeordnetes [Jupyter Notebook](https://jupyter.org/). Sie verwenden dieses Notebook, um die in diesem Artikel verwendeten Codeausschnitte auszuführen.
 
 1. Öffnen Sie Ihren Cluster im [Azure-Portal](https://portal.azure.com/).
 1. Wählen Sie auf der rechten Seite unterhalb von **Clusterdashboards** die Option **Jupyter Notebook** aus.  Sollte **Clusterdashboards** nicht angezeigt werden, wählen Sie im linken Menü die Option **Übersicht** aus. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
     ![Jupyter-Notebook unter Apache Spark](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Jupyter-Notebook unter Spark")
-   
+
    > [!NOTE]  
    > Sie können das Jupyter Notebook im Spark-Cluster auch aufrufen, indem Sie im Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 1. Klicken Sie im Jupyter Notebook oben rechts auf **New** (Neu) und dann auf **Spark**, um ein Scala-Notebook zu erstellen. Jupyter Notebooks in einem HDInsight Spark-Cluster umfassen zudem den **PySpark**-Kernel für Python2-Anwendungen und den **PySpark3**-Kernel für Python3-Anwendungen. In diesem Artikel wird ein Scala-Notebook erstellt.
-   
+
     ![Kernel für Jupyter-Notebooks unter Spark](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernel für Jupyter-Notebooks unter Spark")
 
     Weitere Informationen zu den Kernels finden Sie unter [Verfügbare Kernels für Jupyter Notebooks mit Apache Spark-Clustern unter HDInsight (Linux)](apache-spark-jupyter-notebook-kernels.md).
@@ -59,7 +59,7 @@ Erstellen Sie zunächst ein dem Spark-Cluster zugeordnetes [Jupyter Notebook](ht
     ![Angeben eines neuen Namens für das Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-jupyter-notebook-name.png "Angeben eines neuen Namens für das Notebook")
 
 Nun können Sie die Anwendung erstellen.
-    
+
 ## <a name="read-data-from-azure-sql-database"></a>Lesen von Daten aus der Azure SQL-Datenbank
 
 In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**) in der AdventureWorks-Datenbank.
@@ -76,7 +76,7 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
 
     Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.  
 
-1. Verwenden Sie den folgenden Codeausschnitt, um eine JDBC-URL, die Sie an die Spark-Dataframe-APIs übergeben können, und ein `Properties`-Objekt zum Speichern der Parameter zu erstellen. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
+1. Verwenden Sie den folgenden Codeausschnitt, um eine JDBC-URL zu erstellen, die Sie an die Spark-Dataframe-APIs übergeben können. Der Code erstellt ein `Properties`-Objekt, um die Parameter zu speichern. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
        import java.util.Properties
 
@@ -92,7 +92,7 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
 1. Sie können nun Vorgänge für den Dataframe ausführen, z.B. Abrufen des Datenschemas:
 
        sqlTableDF.printSchema
-   
+
     Eine Ausgabe ähnlich der folgenden wird angezeigt:
 
     ![Ausgabe des Schemas](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "Ausgabe des Schemas")
@@ -121,7 +121,7 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
 
     Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.  
 
-1. Mit dem folgenden Codeausschnitt werden eine JDBC-URL, die Sie an die Spark-Dataframe-APIs übergeben können, und ein `Properties`-Objekt zum Speichern der Parameter erstellt. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
+1. Mit dem folgenden Codeausschnitt wird eine JDBC-URL erstellt, die Sie an die Spark-Dataframe-APIs übergeben können. Der Code erstellt ein `Properties`-Objekt, um die Parameter zu speichern. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
        import java.util.Properties
 
@@ -150,13 +150,15 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
 
     ![Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS1](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS1")
 
-    b. Erweitern Sie im Objekt-Explorer die Azure SQL-Datenbank und den Knoten „Tables“, um die erstellte Tabelle **dbo.hvactable** anzuzeigen.
+    b. Erweitern Sie im **Objekt-Explorer** die Azure SQL-Datenbank und den Knoten „Tables“, um die erstellte Tabelle **dbo.hvactable** anzuzeigen.
 
     ![Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS2](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung von SSMS2")
 
 1. Führen Sie eine Abfrage in SSMS aus, um die Spalten in der Tabelle zu sehen.
 
-        SELECT * from hvactable
+    ```sql
+    SELECT * from hvactable
+    ```
 
 ## <a name="stream-data-into-azure-sql-database"></a>Streamen von Daten in Azure SQL-Datenbank
 
@@ -164,7 +166,9 @@ In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie
 
 1. Stellen Sie in einem ersten Schritt sicher, dass in **hvactable** keine Datensätze vorhanden sind. Führen Sie unter Verwendung von SSMS die folgende Abfrage für die Tabelle aus.
 
-       TRUNCATE TABLE [dbo].[hvactable]
+    ```sql
+    TRUNCATE TABLE [dbo].[hvactable]
+    ```
 
 1. Erstellen Sie ein neues Jupyter Notebook im HDInsight Spark-Cluster. Fügen Sie den folgenden Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**:
 
@@ -227,7 +231,9 @@ In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie
 
 1. Überprüfen Sie, ob die Daten in die Tabelle **hvactable** gestreamt werden, indem Sie die folgende Abfrage in SQL Server Management Studio (SSMS) ausführen. Bei jedem Ausführen der Abfrage wird die zunehmende Anzahl der Zeilen in der Tabelle angezeigt.
 
-        SELECT COUNT(*) FROM hvactable
+    ```sql
+    SELECT COUNT(*) FROM hvactable
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

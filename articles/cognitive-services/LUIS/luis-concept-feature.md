@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624566"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949598"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>Features für Begriffslisten in Ihrer LUIS-App
 
@@ -46,14 +46,7 @@ Begriffslisten sind nicht mit einer bestimmten Absicht oder Entität verknüpft,
 
 Nachdem Sie einige Wörter oder Ausdrücke eingegeben haben, verwenden Sie die Funktion **Empfehlen**, um ähnliche Werte zu ermitteln. Überprüfen Sie die verwandten Werte, bevor Sie sie Ihrer Begriffsliste als neue Werte hinzufügen.
 
-|Listentyp|Zweck|
-|--|--|
-|Austauschbar|Synonyme oder Wörter, die beim Austausch mit einem anderen Wort in der Liste dieselbe Absicht ausdrücken und in dieselben Entitäten extrahiert werden.|
-|Nicht austauschbar|App-Vokabular, das spezifisch für Ihre App ist und keinen allgemeinen Wörtern in der jeweiligen Sprache entspricht.|
-
-### <a name="interchangeable-lists"></a>Listen austauschbarer Ausdrücke
-
-Eine Liste mit *austauschbaren Begriffen* enthält Werte, die Synonyme sind. Angenommen, Sie nutzen verschiedene Gewässer und eine Beispieläußerung wie: 
+Eine Ausdrucksliste wird für synonyme Werte verwendet. Angenommen, Sie nutzen verschiedene Gewässer und eine Beispieläußerung wie: 
 
 * Welche Städte befinden sich in der Nähe der Great Lakes? 
 * Welche Straße führt entlang Lake Havasu?
@@ -65,17 +58,7 @@ Jede Äußerung sollte unabhängig vom Gewässer sowohl für die Absicht als auc
 * Welche Straße führt entlang [Gewässer]?
 * Wo entspringt und mündet [Gewässer]? 
 
-Da die Wörter oder Begriffe für das Gewässer Synonyme und in den Äußerungen untereinander austauschbar sind, verwenden Sie in der Begriffsliste die Einstellung **Austauschbar**. 
-
-### <a name="non-interchangeable-lists"></a>Listen nicht austauschbarer Ausdrücke
-
-Eine Liste nicht austauschbarer Begriffe ist ein Signal, mit dem die Erkennung in LUIS ausgelöst wird. Die Begriffsliste gibt Wörter oder Ausdrücke an, die wichtiger als andere Wörter sind. Dies hilft bei der Erkennung der Absicht und der Entitäten. Angenommen, Ihr Thema sind weltweite Reisen (also über Kulturen hinweg aber immer noch in einer einzigen Sprache). Es gibt Wörter und Ausdrücke, die für die App wichtig, aber nicht synonym sind. 
-
-Verwenden Sie als weiteres Beispiel eine Liste nicht austauschbarer Begriffe für seltene, proprietäre und Fremdwörter. LUIS kann möglicherweise seltene und proprietäre Wörter sowie Fremdwörter (außerhalb der Kultur der App) nicht erkennen. Diese nicht austauschbare Einstellung gibt an, dass die seltenen Wortformen eine Klasse bilden, deren Erkennung LUIS erlernen sollte, die aber keine Synonyme oder untereinander austauschbar sind.
-
-Fügen Sie einer Begriffsliste nicht alle möglichen Wörter oder Ausdrücke hinzu, sondern immer nur einige Wörter oder Ausdrücke, und führen Sie dann ein Training und eine erneute Veröffentlichung durch. 
-
-Wenn die Begriffsliste Ihrer App mit der Zeit anwächst, können einige Ausdrücke möglicherweise verschiedene Formen (Synonyme) aufweisen. Übertragen Sie diese in eine andere Begriffsliste, die austauschbar ist. 
+Da die Wörter oder Begriffe für das Gewässer synonym sind, können sie in den Äußerungen untereinander austauschbar verwendet werden. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 9b9071eae4ec18cb1d5fd277f6f5403ce3997f48
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aed656c65fc70946f7d91cb4354e1c081954e68c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261741"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030394"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Erstellen und Konfigurieren von Clustern mit dem Enterprise-Sicherheitspaket in Azure HDInsight
 
@@ -166,17 +166,17 @@ Jetzt konfigurieren Sie Ihren Azure AD-Mandanten, damit Sie Benutzer und Gruppe
 
 ### <a name="configure-a-sync-with-the-on-premises-domain-controller"></a>Konfigurieren der Synchronisierung mit dem lokalen Domänencontroller
 
-1. Geben Sie auf der Seite **Mit Azure AD verbinden** den Benutzernamen und das Kennwort des globalen Administrators für Azure AD ein. Verwenden Sie den Benutzernamen `fabrikamazureadmin@hdifabrikam.com`, den Sie beim Konfigurieren Ihres Active Directory-Mandanten erstellt haben. Wählen Sie dann  **Weiter** aus. 
+1. Geben Sie auf der Seite **Mit Azure AD verbinden** den Benutzernamen und das Kennwort des globalen Administrators für Azure AD ein. Verwenden Sie den Benutzernamen `fabrikamazureadmin@hdifabrikam.com`, den Sie beim Konfigurieren Ihres Active Directory-Mandanten erstellt haben. Klicken Sie anschließend auf **Weiter**. 
 
     ![Seite „Mit Azure AD verbinden“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
 
-1. Geben Sie auf der Seite **Mit Active Directory Domain Services verbinden** den Benutzernamen und das Kennwort für ein Unternehmensadministratorkonto ein. Verwenden Sie den Benutzernamen `HDIFabrikam\HDIFabrikamAdmin` und das zugehörige Kennwort, die Sie zuvor erstellt haben. Wählen Sie dann  **Weiter** aus. 
+1. Geben Sie auf der Seite **Mit Active Directory Domain Services verbinden** den Benutzernamen und das Kennwort für ein Unternehmensadministratorkonto ein. Verwenden Sie den Benutzernamen `HDIFabrikam\HDIFabrikamAdmin` und das zugehörige Kennwort, die Sie zuvor erstellt haben. Klicken Sie anschließend auf **Weiter**. 
 
    ![Seite „Mit Azure AD verbinden“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. Wählen Sie auf der Seite **Azure AD-Anmeldungskonfiguration** die Option **Weiter** aus.
    ![Seite „Azure AD-Anmeldungskonfiguration“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
 
-1. Wählen Sie auf der Seite **Bereit zur Konfiguration** die Option  **Installieren** aus.
+1. Wählen Sie auf der Seite **Bereit zur Konfiguration** die Option **Installieren** aus.
 
    ![Seite „Bereit zur Konfiguration“](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
 
@@ -250,8 +250,8 @@ In den folgenden Schritten konfigurieren Sie Ihr virtuelles Azure AD DS-Netzwer
 
 1. Suchen Sie nach den IP-Adressen Ihrer benutzerdefinierten DNS-Server. 
     1. Wählen Sie die Azure AD DS-Ressource **HDIFabrikam.com** aus. 
-    1. Wählen Sie unter **Verwalten** die Option  **Eigenschaften** aus. 
-    1. Sie finden die IP-Adressen unter  **IP-Adresse im virtuellen Netzwerk**.
+    1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus. 
+    1. Sie finden die IP-Adressen unter **IP-Adresse im virtuellen Netzwerk**.
 
     ![Suchen der benutzerdefinierten DNS-IP-Adressen für Azure AD DS](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)
 
@@ -260,7 +260,7 @@ In den folgenden Schritten konfigurieren Sie Ihr virtuelles Azure AD DS-Netzwer
     1. Wählen Sie unter **Einstellungen** die Option **DNS-Server** aus. 
     1. Wählen Sie **Benutzerdefiniert** aus.
     1. Geben Sie im Textfeld die erste IP-Adresse ein (*10.0.0.4*).
-    1. Wählen Sie **Speichern**.
+    1. Wählen Sie **Speichern** aus.
     1. Wiederholen Sie die Schritte, um die andere IP-Adresse (*10.0.0.5*) hinzuzufügen.
 
 In unserem Szenario wurde Azure AD DS für die Verwendung der IP-Adressen 10.0.0.4 und 10.0.0.5 konfiguriert. Dabei wurde dieselbe IP-Adresse für das virtuelle Azure AD DS-Netzwerk festgelegt:
@@ -291,19 +291,19 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
 1. Starten Sie die Microsoft Management Console (MMC).
 1. Fügen Sie das Snap-In **Zertifikate** hinzu, mit dem Zertifikate auf dem lokalen Computer verwaltet werden.
-1. Erweitern Sie **Zertifikate (lokaler Computer)**  > **Persönlich** > **Zertifikate**. Der **persönliche** Speicher sollte ein neues Zertifikat enthalten. Dieses Zertifikat ist auf den vollständig qualifizierten Hostnamen ausgestellt.
+1. Erweitern Sie **Zertifikate (lokaler Computer)**  > **Persönlich** > **Zertifikate**. Der **persönliche** Speicher sollte ein neues Zertifikat enthalten. Dieses Zertifikat ist auf den vollständig qualifizierten Hostnamen ausgestellt.
 
     ![Überprüfen der lokalen Zertifikaterstellung](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
-1. Klicken Sie im rechten Bereich mit der rechten Maustaste auf das erstellte Zertifikat. Zeigen Sie auf **Alle Aufgaben**, und wählen Sie dann **Exportieren** aus.
+1. Klicken Sie im rechten Bereich mit der rechten Maustaste auf das erstellte Zertifikat. Zeigen Sie auf **Alle Aufgaben**, und wählen Sie dann **Exportieren** aus.
 
-1. Wählen Sie auf der Seite **Privaten Schlüssel exportieren** die Option  **Ja, privaten Schlüssel exportieren** aus. Der Computer, auf den der Schlüssel importiert wird, benötigt den privaten Schlüssel, um die verschlüsselten Nachrichten zu lesen.
+1. Wählen Sie auf der Seite **Privaten Schlüssel exportieren** die Option **Ja, privaten Schlüssel exportieren** aus. Der Computer, auf den der Schlüssel importiert wird, benötigt den privaten Schlüssel, um die verschlüsselten Nachrichten zu lesen.
 
     ![Seite „Privaten Schlüssel exportieren“ des Zertifikatexport-Assistenten](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
-1. Übernehmen Sie auf der Seite **Exportdateiformat** die Standardeinstellungen, und wählen Sie dann **Weiter** aus. 
-1. Geben Sie auf der Seite **Kennwort** ein Kennwort für den privaten Schlüssel ein. Wählen Sie als **Verschlüsselung** den Typ **TripleDES-SHA1** aus. Klicken Sie anschließend auf **Weiter**.
-1. Geben Sie auf der Seite **Exportdatei** den Pfad und Namen der exportierten Zertifikatsdatei ein, und wählen Sie dann **Weiter** aus. Der Dateiname muss die Erweiterung „.pfx“ aufweisen. Die Datei wird im Azure-Portal konfiguriert, um eine sichere Verbindung herzustellen.
+1. Übernehmen Sie auf der Seite **Format der zu exportierenden Datei** die Standardwerte, und wählen Sie dann **Weiter** aus. 
+1. Geben Sie auf der Seite **Kennwort** ein Kennwort für den privaten Schlüssel ein. Wählen Sie als **Verschlüsselung** den Typ **TripleDES-SHA1** aus. Klicken Sie anschließend auf **Weiter**.
+1. Geben Sie auf der Seite **Exportdatei** den Pfad und Namen der exportierten Zertifikatdatei ein, und wählen Sie dann **Weiter** aus. Der Dateiname muss die Erweiterung „.pfx“ aufweisen. Die Datei wird im Azure-Portal konfiguriert, um eine sichere Verbindung herzustellen.
 1. Aktivieren Sie LDAPS für eine verwaltete Azure AD DS-Domäne.
     1. Wählen Sie im Azure-Portal die Domäne **HDIFabrikam.com** aus.
     1. Wählen Sie unter **Verwalten** die Option **Secure LDAP** aus.

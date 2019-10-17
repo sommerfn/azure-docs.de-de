@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 2056970a91a90fc14528b13650472722a235c354
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4d4d83e12d284ce760b8a7e87fd42e6c8ebb4850
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350485"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001216"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Erstellen und verwalten Sie wiederverwendbare Umgebungen für Trainings und Bereitstellungen mit Azure Machine Learning.
 
@@ -36,7 +36,7 @@ Umgebungen geben die Python-Pakete, Umgebungsvariablen und Softwareeinstellungen
 
 Sie können ein Umgebungsobjekt auf Ihrem lokalen Compute verwenden, um Ihr Trainingsskript zu entwickeln, dieselbe Umgebung auf Azure Machine Learning Compute für das skalierte Modelltraining wiederverwenden und Ihr Modell sogar mit dieser selben Umgebung bereitstellen.
 
-Im Folgenden wird veranschaulicht, dass dasselbe Umgebungsobjekt sowohl in Ihrer Laufzeitkonfiguration für das Training als auch in der Rückschluss – und Bereitstellungskonfiguration für Webdienstbereitstellungen verwendet werden kann.
+Im Folgenden wird veranschaulicht, dass dasselbe Umgebungsobjekt sowohl in Ihrer Laufzeitkonfiguration für das Training als auch in der Rückschluss- und Bereitstellungskonfiguration für Webdienstbereitstellungen verwendet werden kann.
 
 ![Diagramm der Umgebung im Machine Learning-Workflow](./media/how-to-use-environments/ml-environment.png)
 
@@ -207,7 +207,7 @@ Wenn die Umgebung zum ersten Mal beim Training oder der Bereitstellung verwendet
 
 ### <a name="get-existing-environments"></a>Abrufen vorhandener Umgebungen
 
-Die Environment-Klasse bietet Methoden, mit denen Sie vorhandene Umgebungen in Ihrem Arbeitsbereich anhand des Namens, als Liste oder durch einen spezifischen Trainingslauf abrufen können. Zur Problembehandlung oder zu Überwachungszwecken, Reproduzierbarkeit
+Die Environment-Klasse bietet Methoden, mit denen Sie vorhandene Umgebungen in Ihrem Arbeitsbereich anhand des Namens, als Liste oder durch einen spezifischen Trainingslauf zu Zwecken der Problembehandlung oder Überwachung sowie zur Reproduzierbarkeit abrufen können.
 
 #### <a name="view-list-of-environments"></a>Anzeigen einer Liste der Umgebungen
 
@@ -233,7 +233,7 @@ Run.get_environment()
 
 ### <a name="update-an-existing-environment"></a>Aktualisieren einer vorhandenen Umgebung
 
-Wenn Sie Änderungen an einer vorhandenen Umgebung vornehmen, z. B. ein Python-Paket hinzufügen, wird eine neue Version der Umgebung erstellt, wenn Sie entweder einen Lauf übermitteln oder das Modell bereitstellen oder die Umgebung manuell registrieren. Mithilfe der Versionsverwaltung können Sie Änderungen an der Umgebung im zeitlichen Verlauf anzeigen.
+Wenn Sie Änderungen an einer vorhandenen Umgebung vornehmen, z.B. ein Python-Paket hinzufügen, wird eine neue Version der Umgebung erstellt, wenn Sie entweder einen Lauf übermitteln, das Modell bereitstellen oder die Umgebung manuell registrieren. Mithilfe der Versionsverwaltung können Sie Änderungen an der Umgebung im zeitlichen Verlauf anzeigen.
 
 Um die Version eines Python-Pakets einer vorhandenen Umgebung zu aktualisieren, geben Sie die genaue Versionsnummer für dieses Paket an. Andernfalls verwendet Azure Machine Learning die vorhandene Umgebung mit Paketversionen des Zeitpunkts wieder, an dem die Umgebung erstellt wurde.
 
@@ -243,7 +243,7 @@ In diesem Beispiel wird die [build()](https://docs.microsoft.com/python/api/azur
 
 ```python
 from azureml.core import Image
-build = env.build()
+build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
@@ -258,7 +258,7 @@ Wenn Sie Docker aktivieren (`enable`), erstellt der Dienst ein Docker-Image sowi
 myenv.docker.enabled = True
 ```
 
-Nachdem das Docker-Image erstellt ist, wird es in der Azure Container Registry angezeigt, die dem Arbeitsbereich standard zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der Teil des eindeutigenBezeichners (*uuuid*) entspricht einem Hash, der aus der Umgebungskonfiguration berechnet wurde. Dadurch kann der Dienst ermitteln, ob ein Image, das der jeweiligen Umgebung entspricht, bereits zur Wiederverwendung vorhanden ist.
+Nachdem das Docker-Image erstellt ist, wird es in der Azure Container Registry angezeigt, die dem Arbeitsbereich standard zugeordnet ist.  Der Repositoryname hat das Format *azureml/azureml_\<uuid\>* . Der Teil des eindeutigen Bezeichners (*UUID*) entspricht einem Hash, der aus der Umgebungskonfiguration berechnet wurde. Dadurch kann der Dienst ermitteln, ob ein Image, das der jeweiligen Umgebung entspricht, bereits zur Wiederverwendung vorhanden ist.
 
 Darüber hinaus verwendet der Dienst automatisch eines der Ubuntu Linux-basierten [Basisimages](https://github.com/Azure/AzureML-Containers) und installiert die angegebenen Python-Pakete. Das Basisimage verfügt über CPU- und GPU-Versionen. Azure Machine Learning Service erkennt automatisch, welche Version verwendet werden soll.
 

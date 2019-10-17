@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676655"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177765"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -51,14 +51,22 @@ In diesem Abschnitt erfahren Sie, wie Sie PowerShell verwenden, um die Azure Act
 >Die API-Berechtigungen sind Windows Virtual Desktop-, Log Analytics- und Microsoft Graph-API-Berechtigungen und werden der Azure Active Directory-Anwendung hinzugefügt.
 
 1. Öffnen Sie PowerShell als Administrator.
-2. Wechseln Sie zum [RDS-Templates-GitHub-Repository](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts), und führen Sie das Skript **Create AD App Registration for Diagnostics.ps1** in PowerShell aus.
-3.  Wenn Sie vom Skript aufgefordert werden, Ihre App zu benennen, geben Sie einen eindeutigen App-Namen ein.
-4.  Sie werden dann vom Skript aufgefordert, sich mit einem Administratorkonto anzumelden. Geben Sie die Anmeldeinformationen eines Benutzers ein, der über [delegierten Administratorzugriff](delegated-access-virtual-desktop.md) verfügt. Der Administrator sollte die RDS-Rechte „Besitzer“ oder „Mitwirkender“ besitzen.
+2. Melden Sie sich bei Azure mit einem Konto an, das die Berechtigung „Besitzer“ oder „Mitwirkender“ für das Azure-Abonnement besitzt, das Sie für die Diagnosetools verwenden möchten:
+   ```powershell
+   Login-AzAccount
+   ```
+3. Melden Sie sich bei Azure AD mit dem gleichen Konto an:
+   ```powershell
+   Connect-AzureAD
+   ```
+4. Wechseln Sie zum [RDS-Templates-GitHub-Repository](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts), und führen Sie das Skript **CreateADAppRegistrationforDiagnostics.ps1** in PowerShell aus.
+5.  Wenn Sie vom Skript aufgefordert werden, Ihre App zu benennen, geben Sie einen eindeutigen App-Namen ein.
+
 
 Nachdem das Skript erfolgreich ausgeführt wurde, sollte Folgendes in seiner Ausgabe angezeigt werden:
 
 -  Eine Meldung, die bestätigt, dass Ihre App jetzt über eine Dienstprinzipal-Rollenzuweisung verfügt.
--  Ihre Druckclient-ID und den geheimen Clientschlüssel, die Sie benötigen, wenn Sie das Diagnosetool bereitstellen.
+-  Ihre Client-ID und der geheime Clientschlüssel, die Sie benötigen, wenn Sie das Diagnosetool bereitstellen.
 
 Nachdem Sie Ihre App nun registriert haben, ist es an der Zeit, Ihren Log Analytics-Arbeitsbereich zu konfigurieren.
 
@@ -76,7 +84,7 @@ Sie können ein PowerShell-Skript ausführen, um einen Log Analytics-Arbeitsbere
 So führen Sie das PowerShell-Skript aus
 
 1.  Öffnen Sie PowerShell als Administrator.
-2.  Wechseln Sie zum [RDS-Templates-GitHub-Repository](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts), und führen Sie das Skript **Create LogAnalyticsWorkspace for Diagnostics.ps1** in PowerShell aus.
+2.  Wechseln Sie zum [RDS-Templates-GitHub-Repository](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts), und führen Sie das Skript **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** in PowerShell aus.
 3. Geben Sie die folgende Werte für die Parameter ein:
 
     - Für **ResourceGroupName** geben Sie den Namen der Ressourcengruppe ein.
@@ -189,7 +197,7 @@ So legen Sie den Umleitungs-URI fest
 
 Bevor Sie das Diagnosetool für Ihre Benutzer verfügbar machen, stellen Sie sicher, dass diese über die folgenden Berechtigungen verfügen:
 
-- Benutzer benötigen Lesezugriff für Log Analytics. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+- Benutzer benötigen Lesezugriff für Log Analytics. Weitere Informationen finden Sie unter [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](/azure/azure-monitor/platform/roles-permissions-security).
 -  Benutzer benötigen ferner Lesezugriff für den Windows Virtual Desktop-Mandanten (RDS-Rolle „Leser“). Weitere Informationen finden Sie unter [Delegierter Zugriff in Windows Virtual Desktop](delegated-access-virtual-desktop.md).
 
 Sie müssen Ihren Benutzern außerdem noch folgende Informationen zur Verfügung stellen:
@@ -203,7 +211,7 @@ Nachdem Sie sich mit den Informationen, die Sie von Ihrer Organisation erhalten 
 
 ### <a name="how-to-read-activity-search-results"></a>Lesen von Aktivitätssuchergebnissen
 
-Aktivitäten werden nach Zeitstempel sortiert, beginnend mit der aktuellsten Aktivität. Wenn die Ergebnisse einen Fehler zurückgeben, überprüfen Sie zunächst, ob es sich um einen Dienstfehler handelt. Erstellen Sie bei Dienstfehlern ein Supportticket mit den Aktivitätsinformationen, um uns beim Debuggen des Problems zu unterstützen. Alle anderen Fehlertypen können normalerweise vom Benutzer oder Administrator behoben werden. Eine Liste der häufigsten Fehlerszenarien und deren Lösungsmöglichkeiten finden Sie unter [Identifizieren von Problemen mit der Diagnosefunktion](diagnostics-role-service.md#common-error-scenarios).
+Aktivitäten werden nach Zeitstempel sortiert, beginnend mit der aktuellsten Aktivität. Wenn die Ergebnisse einen Fehler zurückgeben, überprüfen Sie zunächst, ob es sich um einen Dienstfehler handelt. Erstellen Sie bei Dienstfehlern ein Supportticket mit den Aktivitätsinformationen, um uns beim Debuggen des Problems zu unterstützen. Alle anderen Fehlertypen können normalerweise vom Benutzer oder Administrator behoben werden. Eine Liste der häufigsten Fehlerszenarien und deren Lösungsmöglichkeiten finden Sie unter [Identifizieren und Diagnostizieren von Problemen](diagnostics-role-service.md#common-error-scenarios).
 
 >[!NOTE]
 >Dienstfehler werden in der verlinkten Dokumentation als „externe Fehler“ bezeichnet. Dies wird geändert, wenn wir die PowerShell-Referenz aktualisieren.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087091"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168954"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Remotedesktopdienste für eine Azure-VM werden nicht gestartet
 
@@ -141,14 +141,14 @@ Verwenden Sie die serielle Konsole, um dieses Problem zu beheben. Alternativ kö
    procmon /Terminate 
    ```
 
-5. Erfassen Sie die Datei  **c:\temp\ProcMonTrace.PML**:
+5. Erfassen Sie die Datei **c:\temp\ProcMonTrace.PML**:
 
     1. [Fügen Sie einen Datenträger an die VM an.](../windows/attach-managed-disk-portal.md
 )
     2. Verwenden Sie die serielle Konsole, um die Datei in das neue Laufwerk zu kopieren. Beispiel: `copy C:\temp\ProcMonTrace.PML F:\`. In diesem Befehl ist „F“ der Laufwerkbuchstabe des angefügten Datenträgers.
     3. Trennen Sie das Datenlaufwerk, und fügen Sie es an eine ausgeführte VM an, auf der die Prozessüberwachung „ubstakke“ installiert ist.
 
-6. Öffnen Sie **ProcMonTrace.PML** mit der Prozessüberwachung der ausgeführten VM. Filtern Sie wie im folgenden Screenshot nach  **Ergebnis ist Zugriff verweigert**:
+6. Öffnen Sie **ProcMonTrace.PML** mit der Prozessüberwachung der ausgeführten VM. Filtern Sie wie im folgenden Screenshot nach **Ergebnis ist Zugriff verweigert**:
 
     ![Filtern nach Ergebnissen in der Prozessüberwachung](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
