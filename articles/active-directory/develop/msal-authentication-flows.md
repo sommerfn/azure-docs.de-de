@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd932d2b11c61c380638a1a95f8da357d0c62e3
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d41e011fd58c20cbe6d2dc8d9029e645f8851bd9
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533003"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513036"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -37,9 +37,26 @@ In diesem Artikel werden die verschiedenen Authentifizierungsflows beschrieben, 
 | [Clientanmeldeinformationen](#client-credentials) | Ermöglicht es, über die Identität einer Anwendung auf Ressourcen zugreifen, die im Web gehostet werden. Wird häufig für Interaktionen zwischen Servern verwendet, die ohne direkten Benutzereingriff im Hintergrund ausgeführt werden müssen. | [Daemon-Apps](scenario-daemon-overview.md) |
 | [Gerätecode](#device-code) | Ermöglicht es Benutzern, sich bei Geräten mit Eingabeeinschränkung wie einem Smart-TV, IoT-Gerät oder Drucker anzumelden. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
 | [Integrierte Windows-Authentifizierung](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Ermöglicht es Anwendungen auf Computern, die in eine Domäne oder in Azure Active Directory (Azure AD) eingebunden sind, ohne Eingriff des Benutzers über die Benutzeroberfläche automatisch ein Token abzurufen.| [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Benutzername/Kennwort](scenario-desktop-acquire-token.md#username--password) | Ermöglicht es einer Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. Von diesem Fluss wird abgeraten. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#username--password) | 
+| [Benutzername/Kennwort](scenario-desktop-acquire-token.md#username--password) | Ermöglicht es einer Anwendung, den Benutzer durch die direkte Verarbeitung seines Kennworts anzumelden. Von diesem Fluss wird abgeraten. | [Desktop-/mobile Apps](scenario-desktop-acquire-token.md#username--password) |
+
+## <a name="how-each-flow-emits-tokens-and-codes"></a>Ausgabe von Token und Codes für die einzelnen Abläufe
+ 
+Je nach Art Ihres Clients kann einer (oder auch mehrere) der Authentifizierungsabläufe verwendet werden, die von der Microsoft Identity Platform unterstützt werden.  Mit diesen Abläufen können verschiedene Token (ID-Token, Aktualisierungstoken, Zugriffstoken) und Autorisierungscodes erstellt werden, und es sind unterschiedliche Token erforderlich. Dieses Diagramm enthält eine Übersicht:
+ 
+|Flow | Erforderlich | id_token | Zugriffstoken | Aktualisierungstoken | Autorisierungscode | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[Autorisierungscodeflow](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Impliziter Flow](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[Hybrid-OIDC-Ablauf](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Einlösung des Aktualisierungstokens](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | Aktualisierungstoken | x | x | x| |
+|[„Im Auftrag von“-Ablauf](v2-oauth2-on-behalf-of-flow.md) | Zugriffstoken| x| x| x| |
+|[Gerätecodeflow](v2-oauth2-device-code.md) | | x| x| x| |
+|[Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md) | | | x (nur App)| | |
+ 
+Für Token, die im impliziten Modus ausgestellt werden, gilt eine Längenbeschränkung, weil sie per URL zurück an den Browser übergeben werden (`response_mode` ist hierbei `query` oder `fragment`).  Für einige Browser gilt eine Größenbeschränkung für die URL, die in die Browserleiste eingefügt werden kann. Es tritt ein Fehler auf, wenn die URL zu lang ist.  Diese Token verfügen daher nicht über Ansprüche der Art `groups` oder `wids`.
 
 ## <a name="interactive"></a>Interactive
+
 MSAL bietet die Möglichkeit, die Anmeldeinformationen interaktiv vom Benutzer abzufragen und mit diesen ein Token abzurufen.
 
 ![Diagramm: interaktiver Vorgang](media/msal-authentication-flows/interactive.png)
@@ -62,6 +79,7 @@ Viele moderne Webanwendungen werden als clientseitige Single-Page-Webanwendungen
 Dieser Authentifizierungsfluss umfasst keine Anwendungsszenarios, in denen plattformübergreifende JavaScript-Frameworks wie Electron und React-Native verwendet werden, da sie weitere Funktionen für die Interaktion mit den nativen Plattformen erfordern.
 
 ## <a name="authorization-code"></a>Authorization code (Autorisierungscode)
+
 MSAL unterstützt die [OAuth 2-Zuweisung eines Autorisierungscodes](v2-oauth2-auth-code-flow.md). Diese Zuweisung wird in Apps verwendet, die auf einem Gerät installiert sind, um auf geschützte Ressourcen wie Web-APIs zuzugreifen. Dadurch können Sie mobile und Desktop-Apps mit Anmeldefunktionen und API-Zugriff ausstatten. 
 
 Wenn sich Benutzer bei Webanwendungen (Websites) anmelden, erhält die Webanwendung einen Autorisierungscode.  Der Autorisierungscode wird eingelöst, um ein Token zum Aufrufen von Web-APIs abzurufen. In ASP.NET- und ASP.NET Core-Web-Apps besteht die einzige Aufgabe von `AcquireTokenByAuthorizationCode` darin, dem Tokencache ein Token hinzuzufügen. Das Token kann danach von der Anwendung verwendet werden (in der Regel in den Controllern, die nur ein Token für eine API mit `AcquireTokenSilent` abrufen).
@@ -74,6 +92,7 @@ Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 2. Verwendet das Zugriffstoken zum Aufrufen einer Web-API.
 
 ### <a name="considerations"></a>Überlegungen
+
 - Sie können den Autorisierungscode nur einmal zum Einlösen eines Tokens verwenden. Versuchen Sie nicht, ein Token mehrmals mit demselben Autorisierungscode abzurufen. Dies ist laut Protokollstandardspezifikation explizit untersagt. Wenn Sie den Code absichtlich mehrmals einlösen oder sich nicht bewusst sind, dass der Code ebenfalls von einem Framework für Sie eingelöst wird, erhalten Sie die folgende Fehlermeldung: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
 - Beim Schreiben einer ASP.NET- oder ASP.NET Core-Anwendung kann dies geschehen, wenn Sie das Framework nicht darüber informieren, dass Sie den Autorisierungscode bereits eingelöst haben. Dazu müssen Sie die `context.HandleCodeRedemption()`-Methode des `AuthorizationCodeReceived`-Ereignishandlers aufrufen.
@@ -104,7 +123,7 @@ Beim Fluss zur Zuweisung von Clientanmeldeinformationen kann ein Webdienst (ein 
 
 MSAL.NET unterstützt zwei Arten von Clientanmeldeinformationen. Diese Clientanmeldeinformationen müssen in Azure AD registriert werden. Die Anmeldeinformationen werden an die Konstruktoren der vertraulichen Clientanwendung im Code übergeben.
 
-### <a name="application-secrets"></a>Anwendungsgeheimnisse 
+### <a name="application-secrets"></a>Anwendungsgeheimnisse
 
 ![Diagramm: vertraulicher Client mit Kennwort](media/msal-authentication-flows/confidential-client-password.png)
 
@@ -113,7 +132,7 @@ Im obigen Diagramm führt die Anwendung folgende Vorgänge aus:
 1. Sie ruft ein Token mithilfe der Anmeldeinformationen ab, die aus einem Anwendungsgeheimnis oder Kennwort bestehen.
 2. Verwendet das Token für Anforderungen an die Ressource.
 
-### <a name="certificates"></a>Zertifikate 
+### <a name="certificates"></a>Zertifikate
 
 ![Diagramm: vertraulicher Client mit Zertifikat](media/msal-authentication-flows/confidential-client-certificate.png)
 
@@ -126,8 +145,8 @@ Die Clientanmeldeinformationen müssen folgende Voraussetzungen erfüllen:
 - Sie wurden in Azure AD registriert.
 - Sie wurden bei der Erstellung der vertraulichen Clientanwendung im Code übergeben.
 
-
 ## <a name="device-code"></a>Gerätecode
+
 MSAL unterstützt den [OAuth 2-Gerätecodefluss](v2-oauth2-device-code.md), der es Benutzern ermöglicht, sich bei Geräten mit Eingabeeinschränkung wie einem Smart-TV, einem IoT-Gerät oder einem Drucker anzumelden. Für die interaktive Authentifizierung mit Azure AD wird ein Webbrowser benötigt. Der Gerätecodefluss ermöglicht es dem Benutzer, ein anderes Gerät (z. B. einen anderen Computer oder ein anderes Mobiltelefon) zu verwenden, um sich interaktiv anzumelden, wenn das Gerät oder Betriebssystem keinen Webbrowser bereitstellt.
 
 Mithilfe des Gerätecodeflusses ruft die Anwendung Token in einem zweistufigen Prozess ab, der speziell für diese Geräte oder Betriebssysteme entwickelt wurde. Beispiele sind Anwendungen auf IoT-Geräten oder Befehlszeilentools (CLI-Tools). 
@@ -149,6 +168,7 @@ Im obigen Diagramm ist Folgendes zu sehen:
 - Persönliche Microsoft-Konten werden vom Azure AD v2.0-Endpunkt noch nicht unterstützt (Mandanten vom Typ `/common` oder `/consumers` können nicht verwendet werden).
 
 ## <a name="integrated-windows-authentication"></a>Integrierte Windows-Authentifizierung
+
 MSAL unterstützt die integrierte Windows-Authentifizierung (IWA) für Desktop- oder mobile Anwendungen auf Windows-Computern, die in eine Domäne oder in Azure AD eingebunden sind. Mit IWA können diese Anwendungen automatisch ein Token abrufen (ohne dass der Benutzer mit der Benutzeroberfläche interagieren muss). 
 
 ![Diagramm: integrierte Windows-Authentifizierung](media/msal-authentication-flows/integrated-windows-authentication.png)
@@ -186,7 +206,8 @@ Der IWA-Flow ist für .NET-Desktop-, .NET Core- und UWP-Apps (universelle Window
   
 Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung für v2.0](v2-permissions-and-consent.md).
 
-## <a name="usernamepassword"></a>Benutzername/Kennwort 
+## <a name="usernamepassword"></a>Benutzername/Kennwort
+
 MSAL unterstützt die [OAuth 2-Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers](v2-oauth-ropc.md). So kann eine Anwendung Benutzer anmelden, indem sie ihr Kennwort direkt verarbeitet. Sie können in Ihrer Desktopanwendung den Benutzername/Kennwort-Flow verwenden, um ein Token automatisch abzurufen. Bei Verwendung der Anwendung ist keine Benutzeroberfläche erforderlich.
 
 ![Diagramm: Benutzername/Kennwort-Fluss](media/msal-authentication-flows/username-password.png)

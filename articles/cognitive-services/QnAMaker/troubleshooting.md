@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802164"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026031"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
@@ -99,7 +99,7 @@ Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./Concept
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Die Aktualisierungen, die ich an meiner Wissensdatenbank vorgenommen habe, sind beim Veröffentlichen nicht mehr vorhanden. Warum nicht?
 
-Jeder Bearbeitungsvorgang, sei es eine Tabellenaktualisierung, ein Test oder eine Änderung der Einstellungen, muss gespeichert werden, bevor die Veröffentlichung erfolgen kann. Klicken Sie nach jedem Bearbeitungsvorgang unbedingt auf die Schaltfläche zum  **Speichern und Trainieren** .
+Jeder Bearbeitungsvorgang, sei es eine Tabellenaktualisierung, ein Test oder eine Änderung der Einstellungen, muss gespeichert werden, bevor die Veröffentlichung erfolgen kann. Klicken Sie nach jedem Bearbeitungsvorgang unbedingt auf die Schaltfläche **Speichern und Trainieren**.
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Unterstützt die Wissensdatenbank komplexe Daten oder Multimedia?
 
