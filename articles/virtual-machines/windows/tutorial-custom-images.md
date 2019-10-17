@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 58f7e530008303f16f2d015e29e60e95480cab2c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350849"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390573"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit Azure PowerShell
 
@@ -134,6 +134,7 @@ New-AzVm `
 ```
 
 Es wird empfohlen, die Anzahl gleichzeitiger Bereitstellungen auf der Grundlage eines einzelnen Images auf 20 virtuelle Computer zu beschränken. Falls Sie umfangreiche gleichzeitige Bereitstellungen von 20 virtuellen Computern auf der Grundlage desselben benutzerdefinierten Images planen, sollten Sie eine [Shared Image Gallery](shared-image-galleries.md)-Instanz mit mehreren Imagereplikaten verwenden. 
+
 
 ## <a name="image-management"></a>Verwaltung von Images 
 
