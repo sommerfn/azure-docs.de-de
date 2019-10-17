@@ -1,19 +1,18 @@
 ---
 title: 'Tutorial: Herstellen einer Verbindung mit Azure Analysis Services unter Verwendung von Power BI Desktop | Microsoft-Dokumentation'
 author: minewiskan
-manager: kfile
 description: Hier erfahren Sie, wie Sie eine Verbindung zwischen Azure Analysis Services und Power BI Desktop herstellen.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f2123b6d8b11c89735e65cb0f48d93841f49328d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932383"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294484"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung mit Power BI Desktop
 
