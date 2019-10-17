@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Dokumentation zu verwalteten Azure-Anwendungen
 metadata:
-  title: 'Dokumentation zu verwalteten Azure-Anwendungen – Tutorials, API-Referenz'
+  title: Dokumentation zu verwalteten Azure-Anwendungen
   description: 'Verwenden Sie verwaltete Azure-Anwendungen, um Cloudlösungen zu veröffentlichen, die für Consumer leichter zu warten sind.'
   services: managed-applications
   author: tfitzmac
