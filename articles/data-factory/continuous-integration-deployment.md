@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265978"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030618"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory
 
@@ -328,7 +328,7 @@ Im Git-Modus können Sie die Standardeigenschaften in Ihrer Resource Manager-Vor
 * Sie verwenden automatisierte CI/CD und möchten einige Eigenschaften während der Resource Manager-Bereitstellung ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert.
 * Die Resource Manager-Standardvorlage ist aufgrund der Größe Ihrer Factory ungültig, da sie mehr als die maximal zulässige Parameteranzahl (256) enthält.
 
-In diesen Fällen können Sie die standardmäßige Parametrisierungsvorlage wie folgt überschreiben: Erstellen Sie eine Datei namens *Arm-Vorlage-Parameter-definition.json* im Stammordner des Repositorys. Der Dateiname muss exakt übereinstimmen. Data Factory versucht, diese Datei aus dem Branch zu lesen, in dem Sie sich gerade im Azure Data Factory-Portal befinden (nicht nur aus dem Kollaborationsbranch). Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen mithilfe von **ARM-Vorlage exportieren** auf der Benutzeroberfläche testen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen. Sollte keine Datei gefunden werden, wird die Standardvorlage verwendet.
+In diesen Fällen können Sie die standardmäßige Parametrisierungsvorlage wie folgt überschreiben: Erstellen Sie eine Datei namens *arm-template-parameters-definition.json* im Stammordner des Repositorys. Der Dateiname muss exakt übereinstimmen. Data Factory versucht, diese Datei aus dem Branch zu lesen, in dem Sie sich gerade im Azure Data Factory-Portal befinden (nicht nur aus dem Kollaborationsbranch). Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen mithilfe von **ARM-Vorlage exportieren** auf der Benutzeroberfläche testen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen. Sollte keine Datei gefunden werden, wird die Standardvorlage verwendet.
 
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntax einer benutzerdefinierten Parameterdatei

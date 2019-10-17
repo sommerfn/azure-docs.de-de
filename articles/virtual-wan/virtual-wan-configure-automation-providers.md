@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 72493f084b89d41c1e0d6ff60c35afa3491b0eda
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703457"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168492"
 ---
 # <a name="virtual-wan-partners"></a>Virtual WAN-Partner
 
@@ -23,7 +23,7 @@ Ein Zweigstellengerät (ein lokales VPN-Gerät des Kunden oder SDWAN CPE) verwen
 ## <a name ="before"></a>Schritte vor Beginn der Konfiguration der Automatisierung
 
 * Stellen Sie sicher, dass Ihr Gerät IPsec IKEv1/IKEv2 unterstützt. Siehe [Standardrichtlinien](#default).
-* Machen Sie sich mit den [REST-APIs](https://docs.microsoft.com/rest/api/azure/) vertraut, mit denen Sie Konnektivität mit Azure Virtual WAN automatisieren.
+* Machen Sie sich mit den [REST-APIs](#additional) vertraut, mit denen Sie Konnektivität mit Azure Virtual WAN automatisieren.
 * Sehen Sie sich die Portalbenutzeroberfläche von Azure Virtual WAN an.
 * Entscheiden Sie dann, welchen Teil der Konnektivitätsschritte Sie automatisieren möchten. Die folgende Mindestautomatisierung wird empfohlen:
 
@@ -31,7 +31,16 @@ Ein Zweigstellengerät (ein lokales VPN-Gerät des Kunden oder SDWAN CPE) verwen
   * Hochladen der Informationen des Zweigstellengeräts in Azure Virtual WAN
   * Herunterladen der Azure-Konfiguration und Einrichten der Konnektivität zwischen Zweigstellengerät und Azure Virtual WAN
 
-* Verstehen der erwarteten Kundenerfahrung in Verbindung mit Azure Virtual WAN
+### <a name ="additional"></a>Weitere Informationen
+
+* [Rest-API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs) zum Automatisieren der Erstellung virtueller Hubs
+* [Rest-API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways) zum Automatisieren des Azure-VPN-Gateways für das virtuelle WAN
+* [Rest-API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections) zum Verbinden von VPNSite mit einem Azure-VPN-Hub
+* [IPsec-Standardrichtlinien](#default)
+
+## <a name ="ae"></a>Benutzerfreundlichkeit
+
+Verstehen der erwarteten Kundenerfahrung in Verbindung mit Azure Virtual WAN
 
   1. Normalerweise startet ein Virtual WAN-Benutzer den Prozess, indem er eine Virtual WAN-Ressource erstellt.
   2. Der Benutzer richtet einen dienstprinzipalbasierten Ressourcengruppenzugriff für das lokale System (Ihren Zweigstellencontroller oder Ihre VPN-Gerätebereitstellungssoftware) ein, um Zweigstelleninformationen in Azure Virtual WAN zu schreiben.
@@ -41,8 +50,7 @@ Ein Zweigstellengerät (ein lokales VPN-Gerät des Kunden oder SDWAN CPE) verwen
   6. Am Ende dieses Schritts in Ihrer Lösung steht dem Benutzer eine nahtlose Site-to-Site Verbindung zwischen Zweigstellengerät und virtuellem Hub zur Verfügung. Sie können auch zusätzliche Verbindungen über andere Hubs einrichten. Jede Verbindung ist ein Aktiv/Aktiv-Tunnel. Ihr Kunde kann für jede der Anbindungen an den Tunnel einen anderen Internetdienstanbieter wählen.
   7. Sie sollten Problembehandlungs- und Überwachungsfunktionen in der CPE-Verwaltungsschnittstelle bereitstellen. Typische Szenarien sind z.B. „Kunde kann aufgrund eines CPE-Problems nicht auf Azure-Ressourcen zugreifen“, „IPsec-Parameter auf der CPE-Seite anzeigen“ usw.
 
-## <a name ="understand"></a>Grundlegendes zu Automatisierungsdetails
-
+## <a name ="understand"></a>Automationsdetails
 
 ###  <a name="access"></a>Zugriffssteuerung
 
@@ -55,19 +63,18 @@ Kunden müssen entsprechende Zugriffssteuerungen für Virtual WAN in der Geräte
 
 ###  <a name="branch"></a>Hochladen von Informationen zum Zweigstellengerät
 
-Gestalten Sie die Benutzererfahrung, um Zweigstelleninformationen (lokal) in Azure hochzuladen. Zur Erstellung der Standortinformationen in Virtual WAN können [REST-APIs](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) für den VPN-Standort verwendet werden. Sie können alle SDWAN/VPN-Zweigstellengeräte bereitstellen oder entsprechende Geräteanpassungen auswählen.
-
+Sie sollten die Benutzererfahrung zum Hochladen von Zweigstelleninformationen (lokal) in Azure gestalten. Zur Erstellung der Standortinformationen in Virtual WAN können Sie [REST-APIs](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) für den VPN-Standort verwenden. Sie können alle SDWAN/VPN-Zweigstellengeräte bereitstellen oder entsprechende Geräteanpassungen auswählen.
 
 ### <a name="device"></a>Herunterladen der Gerätekonfiguration und Einrichten von Konnektivität
 
-Dieser Schritt umfasst das Herunterladen der Azure-Konfiguration und Einrichten von Konnektivität zwischen Zweigstellengerät und Azure Virtual WAN. In diesem Schritt würde ein Kunde, der keinen Anbieter verwendet, die Azure-Konfiguration manuell herunterladen und auf sein lokales SDWAN/VPN-Gerät anwenden. Als Anbieter sollten Sie diesen Schritt automatisieren. Der Gerätecontroller kann die REST-API „GetVpnConfiguration“ zum Herunterladen der Azure-Konfiguration aufrufen, die typischerweise ähnlich der folgenden Datei aussieht.
+Dieser Schritt umfasst das Herunterladen der Azure-Konfiguration und Einrichten von Konnektivität zwischen Zweigstellengerät und Azure Virtual WAN. In diesem Schritt würde ein Kunde, der keinen Anbieter verwendet, die Azure-Konfiguration manuell herunterladen und auf sein lokales SDWAN/VPN-Gerät anwenden. Als Anbieter sollten Sie diesen Schritt automatisieren. Weitere Informationen finden Sie im Download der [REST-APIs](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download). Der Gerätecontroller kann die REST-API „GetVpnConfiguration“ zum Herunterladen der Azure-Konfiguration aufrufen.
 
 **Konfigurationshinweise**
 
   * Wenn Azure-VNets an den virtuellen Hub angefügt sind, werden sie als ConnectedSubnets angezeigt.
   * Für VPN-Konnektivität wird eine routenbasierte Konfiguration verwendet. Sie unterstützt die Protokolle IKEv1 und IKEv2.
 
-#### <a name="understanding-the-device-configuration-file"></a>Grundlegendes zur Gerätekonfigurationsdatei
+## <a name="devicefile"></a>Gerätekonfigurationsdatei
 
 Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfigurieren Ihrer lokalen VPN-Geräte verwendet werden. Beachten Sie beim Anzeigen dieser Datei die folgenden Informationen:
 
@@ -92,7 +99,7 @@ Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfiguriere
         ```
     * **Details zur Konfiguration der vpngateway-Verbindung**, z.B. BGP, vorinstallierter Schlüssel usw. Der vorinstallierte Schlüssel (Pre-Shared Key, PSK) wird automatisch für Sie erstellt. Sie können die Verbindung für einen benutzerdefinierten PSK auf der Seite „Übersicht“ jederzeit bearbeiten.
   
-#### <a name="example-device-configuration-file"></a>Beispiel für Gerätekonfigurationsdatei
+**Beispiel für Gerätekonfigurationsdatei**
 
   ```
   { 
@@ -197,11 +204,7 @@ Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfiguriere
    }
   ```
 
-## <a name="default"></a>Standardrichtlinien für IPSec-Konnektivität
-
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
-
-### <a name="does-everything-need-to-match-between-the-virtual-hub-vpngateway-policy-and-my-on-premises-sdwanvpn-device-or-sd-wan-configuration"></a>Müssen alle Angaben zwischen der Richtlinie des vpngateway für den virtuellen Hub und meiner lokalen SDWAN/VPN- oder SD-WAN-Gerätekonfiguration übereinstimmen?
+## <a name="default"></a>Konnektivitätsdetails
 
 Ihre lokale SDWAN/VPN- oder SD-WAN-Gerätekonfiguration muss folgenden Algorithmus- und Parameterangaben für die Azure-IPsec-/IKE-Richtlinie entsprechen oder selbige enthalten.
 
@@ -211,6 +214,14 @@ Ihre lokale SDWAN/VPN- oder SD-WAN-Gerätekonfiguration muss folgenden Algorithm
 * IPsec-Verschlüsselungsalgorithmus
 * IPsec-Integritätsalgorithmus
 * PFS-Gruppe
+
+### <a name="default"></a>Standardrichtlinien für IPSec-Konnektivität
+
+[!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
+
+### <a name="custom"></a>Benutzerdefinierte Richtlinien für IPsec-Konnektivität
+
+[!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

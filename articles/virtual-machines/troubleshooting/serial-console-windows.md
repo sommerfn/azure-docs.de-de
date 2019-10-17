@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: ebf7b712dda19b396b044235bf194a5dd402ffac
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9fbe6768014550a3746085406e9039e83185c20f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996416"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949681"
 ---
 # <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
@@ -179,7 +179,7 @@ Netzwerksperrsystem | Greifen Sie aus dem Azure-Portal auf die serielle Konsole 
 Interaktion mit Bootloader | Greifen Sie über die serielle Konsole auf das BCD zu. Weitere Informationen finden Sie unter [Aktivieren des Windows-Startmenüs in der seriellen Konsole](#enable-the-windows-boot-menu-in-the-serial-console).
 
 ## <a name="known-issues"></a>Bekannte Probleme
-Uns sind einige Probleme mit der seriellen Konsole bekannt. Hier finden Sie eine Liste dieser Probleme und Schritte zur Lösung. Diese Probleme und Gegenmaßnahmen gelten sowohl für VMs als auch für VM-Skalierungsgruppeninstanzen.
+Uns sind einige Probleme mit der seriellen Konsole und dem Betriebssystem der VM bekannt. Hier finden Sie eine Liste dieser Probleme und Schritte zur Lösung für Windows-VMs. Diese Probleme und Gegenmaßnahmen gelten sowohl für VMs als auch für VM-Skalierungsgruppeninstanzen. Wenn sie sich nicht auf den Fehler beziehen, den Sie suchen, schlagen Sie unter [Allgemeine Fehler für die serielle Konsole](./serial-console-errors.md) die allgemeinen Fehler für den seriellen Konsolendienst nach.
 
 Problem                             |   Lösung
 :---------------------------------|:--------------------------------------------|
@@ -189,8 +189,6 @@ Bei aktiviertem Kerneldebugging ist an der SAC-Eingabeaufforderung keine Eingabe
 Das Einfügen in PowerShell in der SAC führt zu einem dritten Zeichen, wenn der ursprüngliche Inhalt ein sich wiederholendes Zeichen enthielt. | Eine Problemumgehung besteht darin, `Remove-Module PSReadLine` zum Entladen des PSReadLine-Moduls aus der aktuellen Sitzung auszuführen. Durch diese Aktion wird das Modul nicht gelöscht oder deinstalliert.
 Einige Tastatureingaben erzeugen seltsame SAC-Ausgaben (z.B. **[A**, **[3~** ). | [VT100](https://aka.ms/vtsequences)-Escapesequenzen werden von der SAC-Eingabeaufforderung nicht unterstützt.
 Das Einfügen von langen Zeichenfolgen funktioniert nicht. | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen, um die Bandbreite am seriellen Port nicht zu überlasten.
-Die serielle Konsole funktioniert nicht mit einem Speicherkonto, für das Azure Data Lake Storage Gen2 mit hierarchischen Namespaces verwendet wird. | Dies ist ein bekanntes Problem mit hierarchischen Namespaces. Stellen Sie zur Behebung des Problems sicher, dass das Startdiagnose-Speicherkonto Ihrer VM nicht per Azure Data Lake Storage Gen2 erstellt wird. Diese Option kann nur bei der Erstellung des Speicherkontos festgelegt werden. Unter Umständen müssen Sie ein separates Startdiagnose-Speicherkonto ohne Aktivierung von Azure Data Lake Storage Gen2 erstellen, um dieses Problem zu beheben.
-
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

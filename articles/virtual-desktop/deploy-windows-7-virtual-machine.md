@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: e7f565a995e4c2a5338f08437b0dd336846ba154
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679547"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947572"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop
 
@@ -43,9 +43,15 @@ So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ei
      shutdown /r /t 0
      ```
     
+11. Führen Sie die [hier](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) aufgeführten Schritte aus, um ein Registrierungstoken abzurufen.
+12. [Herunterladen des Windows Virtual Desktop-Agents für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+13. [Herunterladen des Windows Virtual Desktop-Agent-Managers für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+14. Öffnen Sie das Installationsprogramm für den Windows Virtual Desktop-Agent, und befolgen Sie die Anweisungen. Wenn Sie dazu aufgefordert werden, geben Sie den Registrierungsschlüssel ein, den Sie in Schritt 11 erstellt haben.
+15. Öffnen Sie das Installationsprogramm für Windows Virtual Desktop, und befolgen Sie die Anweisungen.
+16. Blockieren Sie optional den Port TCP/3389, um den direkten Zugriff auf die VM über das Remotedesktopprotokoll zu entfernen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ihre Windows 7-VM ist nun bereit für die Bereitstellung in Windows Virtual Desktop. Befolgen Sie die Anleitungen unter [Vorbereiten der virtuellen Computer für Windows Virtual Desktop-Agent-Installationen](create-host-pools-powershell.md#prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations), um die Bereitstellung abzuschließen.
+Ihre Windows Virtual Desktop-Bereitstellung kann jetzt verwendet werden. [Laden Sie die neueste Version des Windows Virtual Desktop-Clients herunter](https://aka.ms/wvd/clients/windows), um loszulegen.
 
 Eine Liste bekannter Probleme und Anleitungen zur Problembehandlung für Windows 7 in Windows Virtual Desktop finden Sie im Artikel zur Problembehandlung unter [Problembehandlung für virtuelle Windows 7-Computer in Windows Virtual Desktop](troubleshoot-windows-7-vm.md).
-

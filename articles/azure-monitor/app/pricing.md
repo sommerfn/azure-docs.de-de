@@ -11,26 +11,25 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 448469d4c1ff15ed2ba814dfaa653c4d3c7e3452
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677813"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936697"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
 > [!NOTE]
-> Dieser Artikel beschreibt, wie die Datennutzung in Application Insights analysiert wird.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
-> - [Überwachen der Nutzung und der geschätzten Kosten](../../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
+> In diesem Artikel wird beschrieben, wie Sie die Kosten für Application Insights ermitteln und steuern.  In einem verwandten Artikel, [Überwachen der Nutzung und der geschätzten Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs), wird erläutert, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden.
 
 Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights) posten.
 
 ## <a name="pricing-model"></a>Preismodell
 
-Die Preise für [Azure Application Insights][start] basieren auf dem verbrauchtem Datenvolumen und berücksichtigen optional längere Datenaufbewahrung. Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt.
+Die Preise für [Azure Application Insights][start] richten sich nach einem Modell mit nutzungsbasierter Bezahlung basierend auf dem verbrauchten Datenvolumen und mit optional längerer Datenaufbewahrung. Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt. 
 
 ### <a name="data-volume-details"></a>Details zum Datenvolumen
 
@@ -46,6 +45,22 @@ Die Preise für [Azure Application Insights][start] basieren auf dem verbrauchte
 Für [mehrstufige Webtests](../../azure-monitor/app/availability-multistep.md) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen.
 
 Es gibt keine gesonderte Gebühr für *Pingtests* einer einzelnen Seite. Telemetriedaten aus Pingtests und mehrstufigen Tests werden ebenso wie andere Telemetriedaten aus Ihrer App in Rechnung gestellt.
+
+## <a name="estimating-the-costs-to-manage-your-application"></a>Schätzen der Kosten für die Verwaltung Ihrer Anwendung 
+
+Wenn Sie Application Insights noch nicht verwenden, können Sie mit dem [Azure Monitor-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=monitor) die Kosten für die Nutzung von Application Insights schätzen. Geben Sie „Azure Monitor“ im Suchfeld ein, und klicken Sie auf die ausgegebene Azure Monitor-Kachel. Scrollen Sie auf der Seite nach unten bis zu „Azure Monitor“, und wählen Sie in der Dropdownliste „Typ“ den Eintrag „Application Insights“ aus.  Hier können Sie die Menge der Daten in GB eingeben, die pro Monat erwartungsgemäß gesammelt werden. Die Frage ist also, wie viele Daten bei der Überwachung Ihrer Anwendung von Application Insights gesammelt werden. 
+
+Hierfür gibt es zwei Ansätze: Verwenden der standardmäßigen Überwachung und der adaptiven Stichprobenerstellung, die im ASP.NET SDK verfügbar ist, oder Schätzen der wahrscheinlichen Datenerfassung auf Grundlage der von anderen ähnlichen Kunden gemachten Erfahrungen. 
+
+### <a name="data-collection-when-using-sampling"></a>Datensammlung unter Verwendung der Stichprobenerstellung
+
+Bei der [adaptiven Stichprobenerstellung](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications) des ASP.NET SDK wird die Datenmenge automatisch angepasst, damit sie eine festgelegte maximale Datenverkehrsrate für die standardmäßige Application Insights-Überwachung nicht überschreitet. Wenn die Anwendung wenig Telemetriedaten erzeugt (z.B. beim Debuggen oder aufgrund geringer Nutzung), werden keine Elemente vom Prozessor für Stichprobenentnahmen gelöscht, solange die Datenmenge unter dem konfigurierten Wert für Ereignisse pro Sekunde liegt. Bei einer Anwendung mit hohem Datenvolumen und dem Standardschwellenwert von fünf Ereignissen pro Sekunde, beschränkt die adaptive Stichprobenerstellung die Anzahl der täglichen Ereignisse auf 432.000. Bei einer typischen durchschnittlichen Ereignisgröße von 1 KB entspricht dies 13,4 GB an Telemetriedaten pro 31-Tage-Monat pro Knoten, auf dem Ihre Anwendung gehostet wird (da die Stichprobenerstellung lokal auf jedem Knoten erfolgt). 
+
+Bei SDKs, die keine adaptive Stichprobenerstellung unterstützen, können Sie die [Erfassungs-Stichprobenerstellung] [https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ] verwenden, bei der Stichproben erstellt werden, wenn die Daten von Application Insights basierend auf einem Prozentsatz aufzubewahrender Daten empfangen werden, oder Sie können die [Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) verwenden, um den von Ihrem Webserver und Webbrowsern gesendeten Datenverkehr zu reduzieren
+
+### <a name="learn-from-what-similar-customers-collect"></a>Erfahrungen ähnlicher Kunden bei der Datensammlung
+
+Wenn Sie im Preisrechner für die Azure-Überwachung für Application Insights die Funktion „Schätzung des Datenvolumens anhand der Anwendungsaktivität“ aktivieren, können Sie Angaben zu Ihrer Anwendung machen (Anforderungen pro Monat und Seitenaufrufe pro Monat, falls Sie clientseitige Telemetriedaten sammeln), und der Rechner teilt Ihnen dann den Medianwert und das 90. Percentil der von ähnlichen Anwendungen gesammelten Datenmenge mit. Natürlich umfassen diese Anwendungen die gesamte Bandbreite an Application Insights-Konfigurationen (z.B. weisen einige die standardmäßige [Stichprobenerstellung](../../azure-monitor/app/sampling.md) auf, einige keine Stichprobenerstellung usw.), sodass Sie bei der Stichprobenerstellung immer noch die Menge der erfassten Daten auf einen Wert weit unterhalb des Medianwerts reduzieren können. Dies ist jedoch ein Ausgangspunkt, um die Erfahrungen anderer, ähnlicher Kunden zu verstehen. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Verstehen Ihrer Nutzung und Schätzen von Kosten
 
@@ -64,6 +79,12 @@ Um die Nutzung von Application Insights genauer zu untersuchen, öffnen Sie die 
 Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt. Sie können Details zu Ihrer Azure-Rechnung im Bereich **Abrechnung** des Azure-Portals oder im [Azure-Abrechnungsportal](https://account.windowsazure.com/Subscriptions) einsehen. 
 
 ![Auswählen der Option „Abrechnung“ im Menü auf der linken Seite](./media/pricing/02-billing.png)
+
+## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Anzeigen der Application Insights-Nutzung auf Ihrer Azure-Rechnung 
+
+Azure bietet im Hub [Azure Cost Management und Abrechnung](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) eine Vielzahl nützlicher Funktionen. Mithilfe der Funktion „Kostenanalyse“ können Sie beispielsweise Ihre Ausgaben für Azure-Ressourcen überprüfen. Wenn Sie einen Filter nach Ressourcentyp („microsoft.insights/components“ für Application Insights) hinzufügen, können Sie Ihre Ausgaben nachverfolgen.
+
+Ein umfassenderes Verständnis Ihres Verbrauchs erlangen Sie, indem Sie [Ihre Verbrauchsdaten aus dem Azure-Portal herunterladen](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). In der heruntergeladenen Tabelle ist der Verbrauch pro Azure-Ressource pro Tag aufgeführt. In dieser Excel-Tabelle können Sie den Verbrauch für Ihre Application Insights-Ressourcen ermitteln, indem Sie zuerst nach der Spalte „Kategorie der Verbrauchseinheit“ filtern, um „Application Insights“ und „Log Analytics“ anzuzeigen und dann in der Spalte „Instanz-ID“ einen Filter namens „contains microsoft.insights/components“ hinzufügen.  Die meiste Application Insights-Nutzung wird in Verbrauchseinheiten der entsprechenden Kategorie von Log Analytics gemeldet, da für alle Azure Monitor-Komponenten ein einzelnes Protokoll-Back-End vorhanden ist.  Nur Application Insights-Ressourcen zu Legacytarifen und mehrstufige Webtests werden in der Kategorie der Verbrauchseinheit von Application Insights gemeldet.  Der Verbrauch wird in der Spalte „Verbrauchte Menge“ aufgeführt, und die Einheit für jeden Eintrag wird in der Spalte „Maßeinheit“ angegeben.  Es sind weitere Einzelheiten verfügbar, anhand derer Sie [Ihre Microsoft Azure-Rechnung verstehen](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
 ## <a name="managing-your-data-volume"></a>Verwalten des Datenvolumens 
 
@@ -156,16 +177,15 @@ In jedem beibehaltenen Datensatz gibt `itemCount` die Anzahl ursprünglicher Dat
 
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 
-> [!NOTE]
-> Diese Funktion wurde vorübergehend entfernt, weil ein mögliches Problem behoben werden soll.  Sie wird ab der ersten Woche im Oktober 2019 wieder zur Verfügung stehen.
-
 Application Insights Ressourcen werden standardmäßig 90 Tage lang aufbewahrt. Für jede Application Insights Ressource können unterschiedliche Aufbewahrungszeiträume ausgewählt werden. Der vollständige Satz verfügbarer Aufbewahrungszeiträume beträgt 30, 60, 90, 120, 180, 270, 365, 550 oder 730 Tage. 
 
 Wenn Sie die Aufbewahrungsdauer ändern möchten, rufen Sie in der Application Insights-Ressource die Seite **Nutzung und geschätzte Kosten** auf und wählen Sie die Option **Datenaufbewahrung**  aus:
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-005.png)
 
-Wenn die Abrechnung für eine längere Aufbewahrung aktiviert ist, werden Daten, die länger als 90 Tage aufbewahrt werden, mit dem gleichen Tarif abgerechnet, der derzeit für die Datenaufbewahrung von Azure Log Analytics abgerechnet wird. Weitere Informationen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). Bleiben Sie über den Fortschritt bezüglich der variablen Aufbewahrung auf dem Laufenden, indem Sie [für diesen Vorschlag stimmen](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
+Die Aufbewahrungsdauer kann auch [über ARM](https://docs.microsoft.com/azure/azure-monitor/app/powershell) mithilfe des Parameters `retentionInDays` festgelegt werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie außerdem mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen, was für konformitätsrelevante Szenarien nützlich sein kann. Diese Funktionalität wird ausschließlich über ARM verfügbar gemacht. 
+
+Wenn die Abrechnung für eine längere Aufbewahrung Anfang Dezember 2019 beginnt, werden Daten, die länger als 90 Tage aufbewahrt werden, mit dem gleichen Tarif abgerechnet, der derzeit für die Datenaufbewahrung von Azure Log Analytics abgerechnet wird. Weitere Informationen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). Bleiben Sie über den Fortschritt bezüglich der variablen Aufbewahrung auf dem Laufenden, indem Sie [für diesen Vorschlag stimmen](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Datenübertragungsgebühren bei Verwendung von Application Insights
 

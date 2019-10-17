@@ -1,5 +1,5 @@
 ---
-title: Aktivität „Datenfluss ausführen“ in Azure Data Factory | Microsoft-Dokumentation
+title: Datenflussaktivität in Azure Data Factory | Microsoft-Dokumentation
 description: 'Gewusst wie: Ausführen von Datenflüssen aus einer Data Factory-Pipeline heraus.'
 services: data-factory
 documentationcenter: ''
@@ -8,19 +8,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 24b27c16573a35b1d8749d7ff381fbef970f4bd0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.date: 10/07/2019
+ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67471653"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030514"
 ---
-# <a name="execute-data-flow-activity-in-azure-data-factory"></a>Aktivität „Datenfluss ausführen“ in Azure Data Factory
-Verwenden Sie die Aktivität „Datenfluss ausführen“, um Ihren ADF-Datenfluss in (der Sandbox) in Läufen zum Debuggen der Pipeline oder in von der Pipeline ausgelösten Läufen auszuführen.
+# <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+Verwenden Sie die Datenflussaktivität, um Daten mithilfe von Mapping Data Flow zu transformieren und zu verschieben. Wenn Sie mit Datenflüssen noch nicht vertraut sind, finden Sie weitere Informationen in der [Übersicht über Mapping Data Flow](concepts-data-flow-overview.md).
 
 ## <a name="syntax"></a>Syntax
 
@@ -30,12 +29,19 @@ Verwenden Sie die Aktivität „Datenfluss ausführen“, um Ihren ADF-Datenflus
     "type": "ExecuteDataFlow",
     "typeProperties": {
       "dataflow": {
-         "referenceName": "dataflow1",
+         "referenceName": "MyDataFlow",
          "type": "DataFlowReference"
       },
-        "compute": {
-          "computeType": "General",
-          "coreCount": 8,
+      "staging": {
+          "linkedService": {
+              "referenceName": "MyStagingLinkedService",
+              "type": "LinkedServiceReference"
+          },
+          "folderPath": "my-container/my-folder"
+      },
+      "integrationRuntime": {
+          "referenceName": "MyDataFlowIntegrationRuntime",
+          "type": "IntegrationRuntimeReference"
       }
 }
 
@@ -43,57 +49,59 @@ Verwenden Sie die Aktivität „Datenfluss ausführen“, um Ihren ADF-Datenflus
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-* ```dataflow``` ist der Name der Datenflussentität, die Sie ausführen möchten.
-* ```compute``` beschreibt die Spark-Ausführungsumgebung.
-* ```coreCount``` ist die Anzahl der Kerne, die dieser Aktivität zur Ausführung Ihres Datenflusses zugewiesen werden sollen.
+Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
+-------- | ----------- | -------------- | --------
+dataflow | Der Verweis auf den Datenfluss, der ausgeführt wird. | DataFlowReference | Ja
+integrationRuntime | Die Computeumgebung, in der der Datenfluss ausgeführt wird. | IntegrationRuntimeReference | Ja
+staging.linkedService | Das für das PolyBase-Staging verwendete Speicherkonto, wenn Sie eine SQL Data Warehouse-Quelle oder -Senke verwenden. | LinkedServiceReference | Nur, wenn der Datenfluss Lese-oder Schreibvorgänge in SQL Data Warehouse ausführt.
+staging.folderPath | Der für das PolyBase-Staging verwendete Ordnerpfad im Blob-Speicherkonto, wenn Sie eine SQL Data Warehouse-Quelle oder -Senke verwenden. | Zeichenfolge | Nur, wenn der Datenfluss Lese-oder Schreibvorgänge in SQL Data Warehouse ausführt.
 
 ![Datenfluss ausführen](media/data-flow/activity-data-flow.png "Datenfluss ausführen")
 
-### <a name="debugging-pipelines-with-data-flows"></a>Debuggen von Pipelines mit Datenflüssen
+### <a name="data-flow-integration-runtime"></a>Datenfluss-Integration Runtime
 
-![Schaltfläche „Debuggen“](media/data-flow/debugbutton.png "Schaltfläche „Debuggen“")
+Wählen Sie die Integration Runtime aus, die für die Ausführung Ihrer Datenflussaktivität verwendet werden soll. Standardmäßig verwendet Data Factory die Azure Integration Runtime mit automatischer Auflösung, vier Workerkernen und ohne Gültigkeitsdauer (TTL). Diese Integration Runtime weist einen allgemeinen Computetyp auf und wird in derselben Region wie Ihre Factory ausgeführt. Sie können Ihre eigene Azure Integration Runtime erstellen, die bestimmte Regionen, den Computetyp, die Kernanzahl und die Gültigkeitsdauer (TTL) für die Ausführung Ihrer Datenflussaktivität definiert.
 
-Verwenden Sie das Debuggen des Datenflusses, um einen aufgewärmten Cluster zum interaktiven Testen Ihrer Datenflüsse in einem Lauf zum Debuggen der Pipeline zu nutzen. Verwenden Sie die Option zum Debuggen der Pipeline, um Ihre Datenflüsse innerhalb einer Pipeline zu testen.
-
-### <a name="run-on"></a>Run on (Ausführen auf)
-
-Dies ist ein Pflichtfeld, das definiert, welche Integration Runtime, die für die Ausführung Ihrer Datenflussaktivität verwendet werden soll. Standardmäßig verwendet Data Factory die standardmäßige Azure Integration Runtime mit automatischer Auflösung. Sie können aber auch Ihre eigene Azure Integration Runtime erstellen, die bestimmte Regionen, den Computetyp, die Kernanzahl und die Gültigkeitsdauer (TTL) für die Ausführung Ihrer Datenflussausführung definiert.
-
-Die Standardeinstellung für die Ausführung von Datenflüssen sind 8 Kerne von Compute allgemein mit einer Gültigkeitsdauer (TTL) von 60 Minuten.
-
-Wählen Sie die Compute-Umgebung für die Ausführung Ihres Datenflusses. Standardeinstellung ist die standardmäßige Azure Integration Runtime mit automatischer Auflösung. Bei dieser Wahl wird der Datenfluss in der Spark-Umgebung in der Region Ihrer Data Factory ausgeführt. Der Computetyp ist ein Auftragscluster, d.h. das Starten der Compute-Umgebung benötigt mehrere Minuten.
-
-Sie haben die Kontrolle über die Spark-Ausführungsumgebung für Ihre Datenflussaktivitäten. In der [Azure Integration Runtime](concepts-integration-runtime.md) gibt es Einstellungen zum Festlegen des Computetyps (universell, arbeitsspeicheroptimiert und für Compute optimiert), der Anzahl der Workerkerne und der Gültigkeitsdauer, um die Ausführungs-Engine mit Ihren Datenfluss-Computeanforderungen abzugleichen. Außerdem ermöglicht das Festlegen der Gültigkeitsdauer das Verwalten eines „warmen“ Clusters, der sofort für die Auftragsausführung verfügbar ist.
+Bei Pipelineausführungen ist der Cluster ein Auftragscluster, der einige Minuten zum Starten braucht, bevor die Ausführung gestartet werden kann. Wenn keine Gültigkeitsdauer festgelegt ist, wird diese Startzeit bei jeder Pipelineausführung benötigt. Wenn Sie eine Gültigkeitsdauer angeben, bleibt ein „warmer“ Clusterpool über die angegebene Zeit nach der letzten Ausführung aktiv. Dies führt zu kürzeren Startzeiten. Wenn Sie beispielsweise eine Gültigkeitsdauer von 60 Minuten festgelegt haben und einmal pro Stunde einen Datenfluss ausführen, bleibt der Clusterpool aktiv. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md).
 
 ![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!NOTE]
-> Die Auswahl von Integration Runtime in der Datenflussaktivität bezieht sich nur auf *getriggerte Ausführungen* Ihrer Pipeline. Beim Debuggen Ihrer Pipeline mit Datenflüssen mithilfe von „Debug“ erfolgt die Ausführung auf dem Spark-Standardcluster mit 8 Kernen.
+> Die Auswahl von Integration Runtime in der Datenflussaktivität bezieht sich nur auf *getriggerte Ausführungen* Ihrer Pipeline. Das Debuggen Ihrer Pipeline mit Datenflüssen wird auf dem in der Debugsitzung angegebenen Cluster ausgeführt.
 
-### <a name="staging-area"></a>Stagingbereich
+### <a name="polybase"></a>PolyBase
 
-Wenn Sie Azure Data Warehouse als Senke verwenden, müssen Sie einen Stagingspeicherort für Ihre Polybase-Batchlast wählen. Die Stagingeinstellungen gelten nur für Azure Data Warehouse-Workloads.
+Wenn Sie Azure SQL Data Warehouse als Senke oder Quelle verwenden, müssen Sie einen Stagingspeicherort für Ihren PolyBase-Batchladevorgang auswählen. PolyBase ermöglicht das Batchladen per Massenvorgang, anstatt die Daten zeilenweise zu laden. Mit PolyBase wird die Zeit für das Laden in SQL Data Warehouse drastisch reduziert.
 
-## <a name="parameterized-datasets"></a>Parametrisierte Datasets
+## <a name="parameterizing-data-flows"></a>Parametrisieren von Datenflüssen
 
-Wenn Sie parametrisierte Datasets verwenden, müssen Sie die Parameterwerte festlegen.
+### <a name="parameterized-datasets"></a>Parametrisierte Datasets
+
+Wenn im Datenfluss parametrisierte Datasets verwendet werden, legen Sie die Parameterwerte auf der Registerkarte **Einstellungen** fest.
 
 ![Parameter für „Datenfluss ausführen“](media/data-flow/params.png "Parameter")
 
-## <a name="parameterized-data-flows"></a>Parametrisierte Datenflüsse
+### <a name="parameterized-data-flows"></a>Parametrisierte Datenflüsse
 
-Wenn Ihr Datenfluss Parameter enthält, legen Sie die dynamischen Werte Ihrer Datenflussparameter hier im Abschnitt „Parameter“ der Aktivität „Datenfluss ausführen“ fest. Sie können entweder die ADF Pipeline Expression-Sprache (nur für Stringparametertypen) oder die Data Flow Expression-Sprache verwenden, um die Parameterwerte mit dynamischen Ausdrücken oder literalen statischen Werten festzulegen.
+Wenn der Datenfluss parametrisiert ist, legen Sie die dynamischen Werte der Datenflussparameter auf der Registerkarte **Parameter** fest. Sie können entweder die Ausdruckssprache für die ADF-Pipeline (nur für Zeichenfolgentypen) oder die Ausdruckssprache für Datenflüsse verwenden, um dynamische oder literale Parameterwerte zuzuweisen. Weitere Informationen finden Sie unter [Datenflussparameter](parameters-data-flow.md).
 
 ![Parameterbeispiel zu „Datenfluss ausführen“](media/data-flow/parameter-example.png "Parameterbeispiel")
 
-### <a name="debugging-data-flows-with-parameters"></a>Debuggen der Datenflüsse mit Parametern
+## <a name="pipeline-debug-of-data-flow-activity"></a>Debuggen der Pipeline der Datenflussaktivität
 
-Derzeit können Sie Datenflüsse mit Parametern aus dem Lauf des Debuggens der Pipeline nur unter Verwendung der Aktivität „Datenfluss ausführen“ debuggen. Interaktive Debugsitzungen sind im ADF-Data Flow in Kürze verfügbar. Ausführungen der Pipeline und Debugläufe funktionieren jedoch mit Parametern.
+Wenn Sie ein Debugging der Pipeline mit einer Datenflussaktivität ausführen möchten, müssen Sie den Datenfluss-Debugmodus über den Schieberegler **Datenfluss debuggen** auf der oberen Leiste aktivieren. Im Debugmodus können Sie den Datenfluss für einen aktiven Spark-Cluster ausführen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
-Eine bewährte Methode ist, Ihren Datenfluss mit einem statischen Inhalt zu erstellen, damit Sie zur Problembehandlung über die vollständige Verteilung der Metadatenspalten zur Entwurfszeit verfügen. Ersetzen Sie dann das statische Dataset durch ein dynamisches, parametrisiertes Dataset, wenn Sie Ihre Datenfluss-Pipeline operationalisieren.
+![Schaltfläche „Debuggen“](media/data-flow/debugbutton.png "Schaltfläche „Debuggen“")
+
+Das Debuggen der Pipeline wird für den aktiven Debugcluster und nicht für die Integration Runtime-Umgebung ausgeführt, die in den Einstellungen für die Datenflussaktivität angegeben ist. Beim Starten des Debugmodus können Sie die Computeumgebung für das Debuggen auswählen.
+
+## <a name="monitoring-the-data-flow-activity"></a>Überwachen der Datenflussaktivität
+
+Die Datenflussaktivität verfügt über eine besondere Überwachungsoberfläche, auf der Sie Informationen zu Partitionierung, Phasenzeit und Datenherkunft anzeigen können. Sie öffnen den Überwachungsbereich über das Brillensymbol unter **Aktionen**. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
+
+Informieren Sie sich über Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
 
 - [Aktivität „If Condition“](control-flow-if-condition-activity.md)
 - [Aktivität „Pipeline ausführen“](control-flow-execute-pipeline-activity.md)

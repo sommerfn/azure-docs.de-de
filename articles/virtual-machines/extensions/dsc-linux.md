@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084716"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176687"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-Erweiterung für Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) ist eine Verwaltungsplattform, die Ihnen das Verwalten Ihrer IT- und Entwicklungsinfrastruktur per Konfiguration in Form von Code ermöglicht.
+
+> Hinweis: Die DSC-Erweiterung für Linux und die [Azure Monitor-VM-Erweiterung für Linux](/azure/virtual-machines/extensions/oms-linux) stehen zurzeit im Konflikt miteinander, und parallele Konfigurationen der beiden werden nicht unterstützt.  Dies bedeutet, dass Sie nicht beide Lösungen zusammen auf der gleichen VM verwenden sollten.
 
 Die DSCForLinux-Erweiterung wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den OMI- und DSC-Agent auf virtuellen Azure-Computern. Die DSC-Erweiterung kann auch die folgenden Aktionen ausführen
 
@@ -39,7 +41,7 @@ Die DSCForLinux-Erweiterung wird von Microsoft veröffentlicht und unterstützt.
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die DSC Linux-Erweiterung unterstützt alle [von Azure unterstützte Distributionen von Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), außer:
+Die DSC Linux-Erweiterung unterstützt alle [von Azure unterstützte Distributionen von Linux](/azure/virtual-machines/linux/endorsed-distros), außer:
 
 | Distribution | Version |
 |---|---|

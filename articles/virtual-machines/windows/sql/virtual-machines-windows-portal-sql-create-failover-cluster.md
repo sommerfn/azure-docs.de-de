@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036381"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170265"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -81,7 +81,7 @@ Außerdem sollten Sie über Grundlagenkenntnisse in Bezug auf die folgende Techn
 - [Azure-Ressourcengruppen](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Derzeit wird die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht für SQL Server-Failoverclusterinstanzen (FCI) in Azure unterstützt. Sie sollten die Erweiterung auf virtuellen Computern deinstallieren, die an den FCI beteiligt sind. Diese Erweiterung unterstützt Features wie automatisierte Sicherung und automatisiertes Patchen sowie einige Portalfeatures für SQL. Diese Features sind nach der Deinstallation des Agents nicht für SQL-VMs einsetzbar.
+> Zurzeit werden Failoverclusterinstanzen von SQL Server auf virtuellen Azure-Computern nur mit dem [schlanken](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) Verwaltungsmodus der [SQL Server IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) unterstützt. Deinstallieren Sie die vollständige Erweiterung von den VMs, die Teil des Failoverclusters sind, und registrieren Sie diese anschließend beim SQL VM-Ressourcenanbieter im `lightweight`-Modus. Die vollständige Erweiterung unterstützt Funktionen wie die automatische Sicherung, Patchen und erweiterte Portalverwaltung. Diese Funktionen stehen für SQL-VMs nach der erneuten Installation im schlanken Verwaltungsmodus nicht zur Verfügung.
 
 ### <a name="what-to-have"></a>Voraussetzungen
 

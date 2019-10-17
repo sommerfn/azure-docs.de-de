@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677769"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838569"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alerts-log.md) wird, haben Sie die Möglichkeit, [sie mithilfe von Aktionsgruppen so zu konfigurieren](action-groups.md), dass sie eine oder mehrere Aktionen ausführt. Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und zeigt, wie Sie einen benutzerdefinierten, JSON-basierten Webhook konfigurieren.
 
 > [!NOTE]
-> Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) für Ihre Webhookintegrationen verwenden. Das allgemeine Warnungsschema bietet den Vorteil einer einzelnen, erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor. [Hier finden Sie Informationen zu den Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDefinitions).
+> Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) für Ihre Webhookintegrationen verwenden. Das allgemeine Warnungsschema bietet den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor. Beachten Sie, dass beim allgemeinen Warnungsschema die benutzerdefinierte JSON-Option für Protokollwarnungen nicht berücksichtigt wird. Es wird die Nutzlast des allgemeinen Warnungsschemas übernommen, wenn diese ausgewählt ist, unabhängig von der Anpassung, die Sie möglicherweise auf Ebene der Warnungsregel vorgenommen haben. [Hier finden Sie Informationen zu den Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDefinitions).
 
 ## <a name="webhook-actions"></a>Webhookaktionen
 

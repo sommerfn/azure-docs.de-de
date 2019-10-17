@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266873"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973012"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -293,6 +293,10 @@ Ja
 **Ist Azure Storage Service Encryption standardmäßig beim Erstellen eines verwalteten Datenträgers aktiviert?**
 
 Ja.
+
+**Ist das Startvolume auf einem verwalteten Datenträger standardmäßig verschlüsselt?**
+
+Ja. Standardmäßig sind alle verwalteten Datenträger verschlüsselt, einschließlich des Betriebssystem-Datenträgers.
 
 **Wer verwaltet die Verschlüsselungsschlüssel?**
 

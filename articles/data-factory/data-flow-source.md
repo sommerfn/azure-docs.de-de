@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 16bc4c2651d5571bce823aa9c69f823d7fede8af
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801638"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029215"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Mit einer Quelltransformation wird die Datenquelle für den Datenfluss konfiguriert. Beim Entwerfen von Datenflüssen ist der erste Schritt immer das Konfigurieren einer Quelltransformation. Um eine Quelle hinzuzufügen, klicken Sie im Datenfluss-Zeichenbereich auf das Feld **Quelle hinzufügen**.
 
@@ -167,7 +167,7 @@ Wählen Sie in Ihrer Quelltabelle eine Spalte aus, nach der partitioniert werden
 
 Sie können die Verbindungen basierend auf einer Abfrage partitionieren. Geben Sie den Inhalt eines WHERE-Prädikats ein. Geben Sie beispielsweise „year > 1980“ ein.
 
-Weitere Informationen zur Optimierung in Mapping Data Flow finden Sie auf der [Registerkarte „Optimieren“](concepts-data-flow-optimize-tab.md).
+Weitere Informationen zur Optimierung in Mapping Data Flow finden Sie auf der [Registerkarte „Optimieren“](concepts-data-flow-overview.md#optimize).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

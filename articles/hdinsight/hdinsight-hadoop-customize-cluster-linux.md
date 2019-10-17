@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: df9e6e3a9116b9a4490d8847e9a9d3e9e112f4f7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/03/2019
+ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098791"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035741"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
@@ -157,13 +157,9 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Verwenden einer Skriptaktion während der Clustererstellung im Azure-Portal
 
-1. Beginnen Sie mit der Erstellung eines Clusters, wie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md) beschrieben. Im Rahmen der Clustererstellung gelangen Sie zur Seite __Clusterzusammenfassung__. Wählen Sie auf der Seite __Clusterübersicht__ für __Erweiterte Einstellungen__ den Link __Bearbeiten__ aus.
+1. Beginnen Sie mit dem Erstellen eines Clusters wie unter [Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal](hdinsight-hadoop-create-linux-clusters-portal.md) beschrieben. Im Rahmen der Clustererstellung gelangen Sie zu Schritt 6 **Skriptaktionen**. Navigieren Sie zu **Optional** > **Neu übermitteln**.
 
-    ![Erweiterte Einstellungen für Azure-Portalcluster](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
-
-1. Wählen Sie im Abschnitt __Erweiterte Einstellungen__ die Option __Skriptaktionen__ aus. Wählen Sie im Abschnitt __Skriptaktionen__ die Option __+ Neue übermitteln__ aus.
-
-    ![Skriptaktionen des Portals – Neue übermitteln](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
+    ![Azure-Portal – Aktion „Clusterskript“](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
 
 1. Wählen Sie über den Eintrag __Skript auswählen__ ein vorgefertigtes Skript aus. Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein Skript verwenden möchten. Geben Sie dann __Name__ und __Bash-Skript-URI__ für Ihr Skript an.
 
@@ -185,7 +181,7 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
 
     ![HDInsight – Mehrere Skriptaktionen](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    Wenn Sie das Hinzufügen von Skripts abgeschlossen haben, gelangen Sie über die Schaltflächen __Auswählen__ und __Weiter__ wieder zum Abschnitt __Clusterübersicht__.
+    Wenn Sie das Hinzufügen von Skripts abgeschlossen haben, wählen Sie die Schaltfläche __Auswählen__ und dann __Weiter__ aus, um mit dem Abschnitt __Clusterübersicht__ fortzufahren.
 
 1. Wählen Sie im Abschnitt __Clusterübersicht__ die Option __Erstellen__ aus, um den Cluster zu erstellen.
 
@@ -235,11 +231,9 @@ In diesem Abschnitt erfahren Sie, wie Sie Skriptaktionen auf einen ausgeführten
 
 Navigieren Sie zum [Azure-Portal](https://portal.azure.com):
 
-1. Wählen Sie im Menü links **Alle Dienste** aus.
+1. Navigieren Sie im linken Menü zu **Alle Dienste** >  **Analytics** > **HDInsight-Cluster**.
 
-1. Wählen Sie unter **ANALYSEN** die Option **HDInsight clusters** (HDInsight-Cluster) aus.
-
-1. Wählen Sie in der Liste Ihren Cluster aus. Daraufhin wird die Standardansicht geöffnet.
+1. Wählen Sie Ihren Cluster in der Liste aus. Die Standardansicht wird geöffnet.
 
 1. Klicken Sie in der Standardansicht unter **Einstellungen** auf **Script actions** (Skriptaktionen).
 
@@ -336,11 +330,9 @@ Ein Beispiel für die Anwendung von Skripts auf einen Cluster mithilfe des .NET 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Wählen Sie im Menü links **Alle Dienste** aus.
+1. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster**.
 
-1. Wählen Sie unter **ANALYSEN** die Option **HDInsight clusters** (HDInsight-Cluster) aus.
-
-1. Wählen Sie in der Liste Ihren Cluster aus. Daraufhin wird die Standardansicht geöffnet.
+1. Wählen Sie Ihren Cluster in der Liste aus. Die Standardansicht wird geöffnet.
 
 1. Klicken Sie in der Standardansicht unter **Einstellungen** auf **Script actions** (Skriptaktionen).
 
@@ -403,8 +395,8 @@ Im HDInsight-Dienst sind zwei Arten von Open-Source-Komponenten verfügbar:
 
   * [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) (Ressourcen-Manager)
   * Die Hive-Abfragesprache [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
-  * [Apache Mahout](https://mahout.apache.org/) 
-    
+  * [Apache Mahout](https://mahout.apache.org/)
+
     Eine vollständige Liste der Clusterkomponenten finden Sie unter [Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md).
 
 * **Benutzerdefinierte Komponenten:** Als Benutzer des Clusters können Sie in Ihrer Workload eine beliebige, in der Community verfügbare oder von Ihnen erstellte Komponente installieren oder verwenden.

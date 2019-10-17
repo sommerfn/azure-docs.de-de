@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1a9f3eb0ea79a0cd79850e721d081b00dc582a31
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 4bd1386c68f3173c19b282c1e01ecff545c4bcd7
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695275"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972066"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Datenquellen für QnA Maker-Inhalt
 
@@ -34,9 +34,9 @@ Die folgende Tabelle fasst die Inhaltstypen und Dateiformate zusammen, die von Q
 |*Excel|Strukturierte QnA-Datei<br> (einschließlich RTF- und HTML-Unterstützung)|[QnA-Beispiel-FAQ.xls](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |*TXT/TSV|Strukturierte QnA-Datei|[Beispielgeplauder.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
-**TSV- und XLS-Dateien** aus exportierten Wissensdatenbanken können nur verwendet werden, indem die Dateien von der Seite **Einstellungen** im QnA Maker-Portal importiert werden. Sie können nicht als Datenquellen während der Erstellung der Wissensdatenbank oder über die Funktion zum Hinzufügen von Dateien oder URLs auf der Seite **Einstellungen** verwendet werden. 
+### <a name="import-and-export-knowledge-base"></a>Importieren und Exportieren der Knowledge Base
 
-Erfahren Sie mehr über [Dokumente mit mehreren Durchläufen](). 
+**TSV- und XLS-Dateien** aus exportierten Wissensdatenbanken können nur verwendet werden, indem die Dateien von der Seite **Einstellungen** im QnA Maker-Portal importiert werden. Sie können nicht als Datenquellen während der Erstellung der Wissensdatenbank oder über die Funktion **+ Datei hinzufügen** oder **+ URL hinzufügen** auf der Seite **Einstellungen** verwendet werden. 
 
 ## <a name="data-source-locations"></a>Speicherorte von Datenquellen
 

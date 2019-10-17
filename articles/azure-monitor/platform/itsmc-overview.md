@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051833"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177648"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -83,7 +83,7 @@ Nachdem Sie die Lösung installiert haben, können Sie eine Verbindung erstellen
 
 Um eine Verbindung herzustellen, müssen Sie Ihr ITSM-Tool vorbereiten, damit die Verbindung von der ITSM-Connector-Lösung aus möglich ist.  
 
-Abhängig von dem ITSM-Produkt mit dem die Verbindung hergestellt werden soll, führen Sie die folgenden Schritte aus:
+Abhängig von dem ITSM-Produkt, mit dem die Verbindung hergestellt werden soll, führen Sie die folgenden Schritte aus:
 
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
@@ -195,7 +195,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Geschlossen von
 - `Source`
 - Zugewiesen zu
-- Category (Kategorie)
+- Category
 - Titel
 - BESCHREIBUNG
 - Erstellt am
@@ -218,7 +218,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Zugewiesen zu
 - Titel
 - type
-- Category (Kategorie)
+- Category
 - Zustand
 - Eskalation
 - Konfliktstatus
@@ -252,7 +252,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | Geschlossen von |
 | Source_s| Kontakttyp |
 | AssignedTo_s | Zugewiesen zu  |
-| Category_s | Category (Kategorie) |
+| Category_s | Category |
 | Title_s|  Kurzbeschreibung |
 | Description_s|  Notizen |
 | CreatedDate_t|  Geöffnet |
@@ -270,7 +270,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Zugewiesen zu  |
 | Title_s|  Kurzbeschreibung |
 | Type_s|  type |
-| Category_s|  Category (Kategorie) |
+| Category_s|  Category |
 | CRState_s|  State|
 | Urgency_s|  Dringlichkeit |
 | Priority_s| Priority|

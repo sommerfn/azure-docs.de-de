@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03a0d755cf6d099f07a7c6d853e1d747908eec05
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61425133"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177637"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Von Splunk zur Azure Monitor-Protokollabfrage
 
@@ -125,12 +125,12 @@ Splunk verfügt auch über eine `eval`-Funktion, die nicht mit dem `eval`-Operat
 
 
 ### <a name="rename"></a>Umbenennen 
-Azure Monitor verwendet den gleichen Operator zum Umbenennen und zum Erstellen eines neuen Felds. Splunk verfügt über zwei separate Operatoren, `eval` und `rename`.
+Azure Monitor verwendet zum Umbenennen eines Felds den `project-rename`-Operator. `project-rename` ermöglicht der Abfrage, alle für ein Feld vorab erstellten Indizes zu nutzen. Splunk verfügt für den gleichen Zweck über einen `rename`-Operator.
 
 | |  | |
 |:---|:---|:---|
 | Splunk | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
-| Azure Monitor | **extend** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend exception = Date_Exception</code> |
+| Azure Monitor | **project-rename** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 | | |
 
 

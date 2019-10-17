@@ -1,6 +1,6 @@
 ---
 title: Sicherheitsempfehlungen für virtuelle Linux-Computer in Azure
-description: Sicherheitsempfehlungen für die virtuellen Computer in Azure Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die im Microsoft-Modell der gemeinsamen Verantwortung beschrieben werden. Außerdem erhöhen Sie dadurch die Gesamtsicherheit für Ihre Bereitstellungen.
+description: Wenden Sie diese Empfehlungen an, um Ihre Sicherheitspflichten, die im Modell der gemeinsamen Verantwortung beschrieben werden, besser zu erfüllen. Sie erhöhen dadurch außerdem die allgemeine Sicherheit für Ihre Bereitstellungen.
 services: virtual-machines
 author: barclayn
 manager: RKarlin
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 39d83907256596e2d6904422f9bf71e435614f03
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c7a313a73af7969fc203ee00644901539890f7a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71164093"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174149"
 ---
 # <a name="security-recommendations-for-linux-virtual-machines-in-azure"></a>Sicherheitsempfehlungen für virtuelle Linux-Computer in Azure
 

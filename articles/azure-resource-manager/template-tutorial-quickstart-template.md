@@ -37,7 +37,7 @@ Diese Vorlage funktioniert für die Bereitstellung von Speicherkonten und App Se
 
 1. Öffnen Sie [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 1. Geben Sie **Linux-Web-App bereitstellen** in die **Suche** ein.
-1. Wählen Sie die Vorlage mit dem Titel **Bereitstellen einer einfachen Linux-Web-App** aus. Hier ist der [direkte Link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/), falls Sie sie nicht finden können.
+1. Wählen Sie die Vorlage mit dem Titel **Deploy a basic Linux web app** aus. Hier ist der [direkte Link](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/), falls Sie sie nicht finden können.
 1. Wählen Sie **Auf GitHub suchen** aus.
 1. Wählen Sie **azuredeploy.json** aus.
 1. Überprüfen Sie die Vorlage. Suchen Sie insbesondere nach der Ressource `Microsoft.Web/sites`.

@@ -11,16 +11,16 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9de3232bcd7908f775dadff4dc584f2a687b0c68
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8c9b8489ded264a895d480ed180b411da079e883
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299761"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950131"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Zugreifen auf Daten in Azure Storage-Diensten
 
-In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen.
+In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen. Aus diesen [Azure Storage-Lösungen](#matrix) können Sie Datenspeicher erstellen.
 
 In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
 * [Registrieren von Datenspeichern](#access)
@@ -30,49 +30,81 @@ In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie einen Datenspeicher verwenden möchten, benötigen Sie zunächst einen [Arbeitsbereich](concept-workspace.md).
+- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-Sie können entweder einen [neuen Arbeitsbereich erstellen](how-to-manage-workspace.md) oder einen vorhandenen Arbeitsbereich abrufen:
+- Ein Azure-Speicherkonto mit einem [Azure-Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) oder einer [Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
-```Python
-import azureml.core
-from azureml.core import Workspace, Datastore
+- Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), oder greifen Sie auf die [Landing Page Ihres Arbeitsbereichs (Vorschauversion)](https://ml.azure.com/) zu.
 
-ws = Workspace.from_config()
-```
+- Ein Azure Machine Learning-Arbeitsbereich. 
+    - Sie können wahlweise [einen Azure Machine Learning-Arbeitsbereich erstellen](how-to-manage-workspace.md) oder mithilfe des Python SDKs einen vorhandenen verwenden.
+
+        ```Python
+        import azureml.core
+        from azureml.core import Workspace, Datastore
+        
+        ws = Workspace.from_config()
+        ```
 
 <a name="access"></a>
 
-## <a name="register-datastores"></a>Registrieren von Datenspeichern
+## <a name="create-and-register-datastores"></a>Erstellen und Registrieren von Datenspeichern
+
+Wenn Sie eine Azure Storage-Lösung als Datenspeicher registrieren, erstellen Sie diesen Datenspeicher automatisch in einem bestimmten Arbeitsbereich. Sie können Datenspeicher mithilfe des Python SDK oder der Landing Page des Arbeitsbereichs erstellen oder bei einem Arbeitsbereich registrieren.
+
+### <a name="using-the-python-sdk"></a>Verwenden des Python SDK
 
 Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format „register_azure_*“ auf.
+
+Die erforderlichen Informationen zum Auffüllen der Methode „register()“ lassen sich über das [Azure-Portal](https://ms.portal.azure.com) ermitteln. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Zum Abrufen von Authentifizierungsinformationen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**. 
 
 In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Datenspeicher registrieren können.
 
 + Verwenden Sie [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-) für einen **Azure-Blobcontainer-Datenspeicher**.
 
-  ```Python
-  datastore = Datastore.register_azure_blob_container(workspace=ws, 
-                                                      datastore_name='your datastore name', 
-                                                      container_name='your azure blob container name',
-                                                      account_name='your storage account name', 
+    Der folgende Code erstellt den Datenspeicher `my_datastore` und registriert ihn im Arbeitsbereich `ws`. Dieser Datenspeicher greift auf den Azure-Blobcontainer`my_blob_container` im Azure-Speicherkonto `my_storage_account` zu und verwendet dazu den angegebenen Kontoschlüssel.
+
+    ```Python
+       datastore = Datastore.register_azure_blob_container(workspace=ws, 
+                                                          datastore_name='my_datastore', 
+                                                          container_name='my_blob_container',
+                                                          account_name='my_storage_account', 
+                                                          account_key='your storage account key',
+                                                          create_if_not_exists=True)
+    ```
+
++ Verwenden Sie [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) für einen **Azure-Dateifreigabe-Datenspeicher**. 
+
+    Der folgende Code erstellt den Datenspeicher `my_datastore` und registriert ihn im Arbeitsbereich `ws`. Dieser Datenspeicher greift auf die Azure-Dateifreigabe`my_file_share` im Azure-Speicherkonto `my_storage_account` zu und verwendet dazu den angegebenen Kontoschlüssel.
+
+    ```Python
+       datastore = Datastore.register_azure_file_share(workspace=ws, 
+                                                      datastore_name='my_datastore', 
+                                                      file_share_name='my_file_share',
+                                                      account_name='my_storage account', 
                                                       account_key='your storage account key',
                                                       create_if_not_exists=True)
-  ```
-
-+ Verwenden Sie [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) für einen **Azure-Dateifreigabe-Datenspeicher**. Beispiel: 
-  ```Python
-  datastore = Datastore.register_azure_file_share(workspace=ws, 
-                                                  datastore_name='your datastore name', 
-                                                  file_share_name='your file share name',
-                                                  account_name='your storage account name', 
-                                                  account_key='your storage account key',
-                                                  create_if_not_exists=True)
-  ```
+    ```
 
 ####  <a name="storage-guidance"></a>Leitfaden für Speicher
 
 Wir empfehlen Azure-Blob-Container. Für Blobs stehen sowohl der Standard- als auch der Premiumspeicher zur Verfügung. Der Premiumspeicher ist zwar teurer, aber dennoch die bevorzugte Option, da er höhere Durchsätze ermöglicht. Dies kann sich vor allem bei einem Training mit einem großen Dataset positiv auf die Ausführungsgeschwindigkeit auswirken. Weitere Informationen zu den Kosten von Speicherkonten stellt der [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) bereit.
+
+### <a name="using-the-workspace-landing-page"></a>Verwenden der Landing Page des Arbeitsbereichs 
+
+Erstellen Sie in wenigen Schritten einen neuen Datenspeicher auf der Landing Page des Arbeitsbereichs.
+
+1. Melden Sie sich auf der [Angebotsseite des Arbeitsbereichs](https://ml.azure.com/) an.
+1. Wählen Sie im linken Bereich unter **Verwalten** **Datenspeicher** aus.
+1. Wählen Sie **+ Neuer Datenspeicher** aus.
+1. Füllen Sie das Formular „Neuer Datenspeicher“ aus. Das Formular wird ausgehend von den gewählten Optionen für den Azure-Speichertyp und den Authentifizierungstyp intelligent aktualisiert.
+  
+Die Informationen, die Sie zum Ausfüllen des Formulars benötigen, lassen sich über das [Azure-Portal](https://ms.portal.azure.com) ermitteln. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Zum Abrufen von Authentifizierungselementen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**.
+
+Das folgende Beispiel veranschaulicht das Aussehen des Formulars, wenn ein Azure-Blobdatenspeicher erstellt werden soll. 
+    
+ ![Neuer Datenspeicher](media/how-to-access-data/new-datastore-form.png)
+
 
 <a name="get"></a>
 
@@ -201,6 +233,7 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
 ```
+<a name="matrix"></a>
 
 ### <a name="compute-and-datastore-matrix"></a>Compute- und Datenspeichermatrix
 

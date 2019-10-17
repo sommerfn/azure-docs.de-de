@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren einer Datasetzuordnung
-description: Konfigurieren einer Datasetzuordnung
+title: Konfigurieren einer Datasetzuordnung in Azure Data Share (Vorschau)
+description: Hier erfahren Sie, wie Sie eine Datasetzuordnung für eine empfangene Freigabe mithilfe von Azure Data Share (Vorschau) konfigurieren.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 581e1eef5f1d64e68a6501f56ce60218281c605d
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788565"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169133"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Konfigurieren einer Datasetzuordnung für eine empfangene Freigabe in Azure Data Share (Vorschau)
 

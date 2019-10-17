@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086530"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030603"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -92,7 +92,7 @@ Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com
 
 1.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor, und wählen Sie **Datei** > **Mit Netzwerkregistrierung verbinden** aus.
 
-2.  Öffnen Sie die Verzweigung  *TARGET MACHINE*\SYSTEM, und geben Sie die folgenden Werte ein:
+2.  Öffnen Sie den Branch *TARGET MACHINE*\SYSTEM, und geben Sie die folgenden Werte ein:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com
 
 3.  Starten Sie den Dienst neu. Da dies mit der Remoteregistrierung nicht möglich ist, müssen Sie „Dienstkonsole entfernen“ verwenden.
 
-4.  Öffnen Sie eine Instanz von  **Services.msc**.
+4.  Öffnen Sie eine Instanz von **Services.msc**.
 
 5.  Klicken Sie auf **Dienste (lokal)** .
 
 6.  Wählen Sie **Verbindung mit einem anderen Computer herstellen** aus.
 
-7.  Geben Sie die **Private IP-Adresse (DIP)**  des virtuellen Computers ein, auf dem das Problem auftritt.
+7.  Geben Sie die **Private IP-Adresse (DIP)** des virtuellen Computers ein, auf dem das Problem auftritt.
 
 8.  Starten Sie die lokale Firewallrichtlinie neu.
 

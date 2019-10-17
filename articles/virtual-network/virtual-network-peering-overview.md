@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077621"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177676"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -90,13 +90,13 @@ Informationen zu erforderlichen Berechtigungen für die Erstellung eines Peering
 
 Für ein- und ausgehenden Datenverkehr, der eine VNET-Peeringverbindung verwendet, fällt eine Gebühr an. Weitere Informationen zu den Preisen für VNET-Peering und globales VNET-Peering finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Gatewaytransit ist eine Peeringeigenschaft, die einem virtuellen Netzwerk ermöglicht, ein VPN/ExpressRoute-Gateway im virtuellen Netzwerk mit Peeringbeziehung für standortübergreifende oder VNET-zu-VNET-Konnektivität zu nutzen. In diesem Szenario fallen für Datenverkehr über ein Remotegateway [Gebühren für das VPN-Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway/) oder ExpressRoute-Gatewaygebühren, aber keine [Gebühren für VNET-Peering](https://azure.microsoft.com/pricing/details/virtual-network) an. Beispiel: Wenn VNETA ein VPN-Gateway für lokale Verbindungen nutzt und VNETB über Peering mit VNETA verbunden ist und die entsprechenden Eigenschaften konfiguriert sind, wird nur ausgehender Datenverkehr von VNETB an lokale Ressourcen gemäß den Preisen für VPN-Gateways oder ExpressRoute in Rechnung gestellt. Es fallen keine Gebühren für VNET-Peering an. Lesen Sie mehr über das [Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Gatewaytransit ist eine Peeringeigenschaft, die es einem virtuellen Netzwerk ermöglicht, ein VPN/ExpressRoute-Gateway im virtuellen Netzwerk mit Peeringbeziehung für standortübergreifende oder VNET-zu-VNET-Konnektivität zu nutzen. Für den Datenverkehr mit dem Gateway (eingehend oder ausgehend) im per Peering verbundenen VNet fallen Gebühren für das VNet-Peering an. Weitere Informationen finden Sie unter [VPN-Gateway-Gebühren](https://azure.microsoft.com/pricing/details/vpn-gateway/) oder Expressroute-Gatewaygebühren und [VNet-Peering-Gebühren](https://azure.microsoft.com/pricing/details/virtual-network).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein Peering für virtuelle Netzwerke wird zwischen virtuellen Netzwerken erstellt, die mit dem gleichen oder unterschiedlichen Bereitstellungsmodellen unter demselben oder unterschiedlichen Abonnements erstellt wurden. Arbeiten Sie ein Tutorial für eines der folgenden Szenarien durch:
 
-    |Azure-Bereitstellungsmodell             | Abonnement  |
+    |Azure-Bereitstellungsmodell             | Subscription  |
     |---------                          |---------|
     |Beide mit Resource Manager              |[Gleich](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Unterschiedlich](create-peering-different-subscriptions.md)|

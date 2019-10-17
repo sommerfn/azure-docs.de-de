@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: d6e65331db53be5ba13a75e6b03b271f1071716d
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ae8dd4cccb6795faa02e6705404644f6ccc24864
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67989829"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948046"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Abfragen von Protokollen aus Azure Monitor für Container
 
@@ -69,6 +69,7 @@ Es ist oft hilfreich, die Abfrageerstellung ausgehend von einem oder zwei Beispi
 | ContainerImageInventory<br> &#124; summarize AggregatedValue = count() by Image, ImageTag, Running | Imagebestand | 
 | **Wählen Sie die Anzeigeoption Liniendiagramm aus**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | Container-CPU | 
 | **Wählen Sie die Anzeigeoption Liniendiagramm aus**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | Containerspeicher |
+| InsightsMetrics<br> &#124; where Name == "requests_count"<br> &#124; summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)<br> &#124; sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated <br> &#124; render barchart  | Anforderungen pro Minute mit benutzerdefinierten Metriken |
 
 Das folgende Beispiel zeigt eine Prometheus-Metrikabfrage. Die erfassten Metriken sind Zählungen. Um zu bestimmen, wie viele Fehler innerhalb eines bestimmten Zeitraums aufgetreten sind, ist eine Subtraktion von der Anzahl erforderlich. Das Dataset wird nach *partitionKey* partitioniert, d.h. für jeden eindeutigen Satz aus *Name*, *HostName* und *OperationType* wird eine Unterabfrage für diesen Satz ausgeführt, der die Protokolle nach *TimeGenerated* sortiert. Dieser Prozess ermöglicht es, den vorherigen *TimeGenerated*-Wert und die aufgezeichnete Anzahl für diesen Zeitpunkt zu ermitteln, um ein Verhältnis zu bestimmen.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: cbae4455ae4cfcc0397b8b50b7f86843f7f82a59
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 555b250f211cf22e766e64960b3359692f73c843
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695383"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285717"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -115,7 +115,7 @@ Führen Sie die folgenden Befehle über eine [Eingabeaufforderung mit erhöhten 
 4. Legen Sie für Windows die koordinierten Weltzeit (UTC) fest. Legen Sie außerdem den Starttyp des Windows-Zeitdiensts (`w32time`) auf `Automatic` fest:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -Name "RealTimeIsUniversal" -Value 1 -Type DWord -Force
 
     Set-Service -Name w32time -StartupType Automatic
     ```
@@ -127,87 +127,90 @@ Führen Sie die folgenden Befehle über eine [Eingabeaufforderung mit erhöhten 
 6. Stellen Sie sicher, dass die Umgebungsvariablen `TEMP` und `TMP` auf ihre Standardwerte festgelegt sind:
 
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name "TEMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -name "TMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name "TMP" -Value "%SystemRoot%\TEMP" -Type ExpandString -Force
     ```
 
 ## <a name="check-the-windows-services"></a>Überprüfen der Windows-Dienste
 Stellen Sie sicher, dass jeder der folgenden Windows-Dienste auf die Windows-Standardwerte festgelegt ist. Die Einrichtung dieser Dienste stellt die Mindestanforderung für VM-Konnektivität dar. Um die Starteinstellungen zurückzusetzen, führen Sie die folgenden Befehle aus:
    
 ```PowerShell
-Set-Service -Name bfe -StartupType Automatic
-Set-Service -Name dhcp -StartupType Automatic
-Set-Service -Name dnscache -StartupType Automatic
-Set-Service -Name IKEEXT -StartupType Automatic
-Set-Service -Name iphlpsvc -StartupType Automatic
-Set-Service -Name netlogon -StartupType Manual
-Set-Service -Name netman -StartupType Manual
-Set-Service -Name nsi -StartupType Automatic
-Set-Service -Name termService -StartupType Manual
-Set-Service -Name MpsSvc -StartupType Automatic
-Set-Service -Name RemoteRegistry -StartupType Automatic
+Get-Service -Name bfe | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name dhcp | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name dnscache | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name IKEEXT | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name iphlpsvc | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name netlogon | Where-Object { $_.StartType -ne 'Manual' } | Set-Service -StartupType 'Manual'
+Get-Service -Name netman | Where-Object { $_.StartType -ne 'Manual' } | Set-Service -StartupType 'Manual'
+Get-Service -Name nsi | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name TermService | Where-Object { $_.StartType -ne 'Manual' } | Set-Service -StartupType 'Manual'
+Get-Service -Name MpsSvc | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>Aktualisieren der Remotedesktop-Registrierungseinstellungen
 Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remotezugriff konfiguriert sind:
 
 >[!NOTE] 
->Sie erhalten möglicherweise eine Fehlermeldung, wenn Sie `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -name <object name> -value <value>` ausführen. Diese Meldung können Sie problemlos ignorieren. Sie gibt lediglich an, dass diese Konfiguration von der Domäne nicht über ein Gruppenrichtlinienobjekt gepusht wird.
+>Sie erhalten möglicherweise eine Fehlermeldung, wenn Sie `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <object name> -Value <value>` ausführen. Diese Meldung können Sie problemlos ignorieren. Sie gibt lediglich an, dass diese Konfiguration von der Domäne nicht über ein Gruppenrichtlinienobjekt gepusht wird.
 
 1. Das Remotedesktopprotokoll (RDP) ist aktiviert:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0 -Type DWord -Force
 
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDenyTSConnections" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "fDenyTSConnections" -Value 0 -Type DWord -Force
     ```
    
 2. Der RDP-Port ist ordnungsgemäß festgelegt. Der Standardport ist 3389:
    
     ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "PortNumber" -Value 3389 -Type DWord -force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "PortNumber" -Value 3389 -Type DWord -Force
     ```
     Wenn Sie eine VM bereitstellen, werden die Standardregeln für Port 3389 erstellt. Wenn Sie die Portnummer ändern möchten, können Sie dies nach der Bereitstellung der VM in Azure vornehmen.
 
 3. Der Listener lauscht auf allen Netzwerkschnittstellen:
    
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "LanAdapter" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "LanAdapter" -Value 0 -Type DWord -Force
    ```
 4. Konfigurieren Sie den Modus zur Authentifizierung auf Netzwerkebene (Network Level Authentication, NLA) für die RDP-Verbindungen:
    
     ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1 -Type DWord -force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "UserAuthentication" -Value 1 -Type DWord -Force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SecurityLayer" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "SecurityLayer" -Value 1 -Type DWord -Force
 
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "fAllowSecProtocolNegotiation" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "fAllowSecProtocolNegotiation" -Value 1 -Type DWord -Force
      ```
 
 5. Legen Sie den Keep-Alive-Wert fest:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveEnable" -Value 1  -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "KeepAliveInterval" -Value 1  -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "KeepAliveTimeout" -Value 1 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "KeepAliveEnable" -Value 1  -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "KeepAliveInterval" -Value 1  -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "KeepAliveTimeout" -Value 1 -Type DWord -Force
     ```
 6. Erneute Verbindungsherstellung:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -name "fDisableAutoReconnect" -Value 0 -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fInheritReconnectSame" -Value 1 -Type DWord -force
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "fReconnectSame" -Value 0 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services' -Name "fDisableAutoReconnect" -Value 0 -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "fInheritReconnectSame" -Value 1 -Type DWord -Force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "fReconnectSame" -Value 0 -Type DWord -Force
     ```
 7. Beschränken Sie die Anzahl gleichzeitiger Verbindungen:
     
     ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -name "MaxInstanceCount" -Value 4294967295 -Type DWord -force
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name "MaxInstanceCount" -Value 4294967295 -Type DWord -Force
     ```
 8. Entfernen Sie alle selbstsignierten Zertifikate, die an den RDP-Listener gebunden sind:
     
     ```PowerShell
-    Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "SSLCertificateSHA1Hash" -force
+    if ((Get-Item -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp').Property -contains "SSLCertificateSHA1Hash")
+    {
+        Remove-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name "SSLCertificateSHA1Hash" -Force
+    }
     ```
     Durch diesen Code wird sichergestellt, dass Sie zu Beginn der Bereitstellung der VM eine Verbindung herstellen können. Wenn Sie dies später prüfen möchten, können Sie dies nach der Bereitstellung des virtuellen Computers in Azure durchführen.
 
@@ -231,7 +234,7 @@ Stellen Sie sicher, dass die folgenden Einstellungen ordnungsgemäß für Remote
 2. Führen Sie den folgenden Befehl in PowerShell aus, um WinRM in den drei Firewallprofilen („Domäne“, „Privat“ und „Öffentlich“) zuzulassen, und aktivieren Sie den PowerShell-Remotedienst:
    
    ```PowerShell
-    Enable-PSRemoting -force
+    Enable-PSRemoting -Force
 
     Set-NetFirewallRule -DisplayName "Windows Remote Management (HTTP-In)" -Enabled True
    ```
@@ -290,16 +293,16 @@ Stellen Sie sicher, dass die VM fehlerfrei und sicher ist und dass per RDP darau
 
     ```powershell
     # Set up the guest OS to collect a kernel dump on an OS crash event
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name CrashDumpEnabled -Type DWord -force -Value 2
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name DumpFile -Type ExpandString -force -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name NMICrashDump -Type DWord -force -Value 1
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -Name CrashDumpEnabled -Type DWord -Force -Value 2
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -Name DumpFile -Type ExpandString -Force -Value "%SystemRoot%\MEMORY.DMP"
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -Name NMICrashDump -Type DWord -Force -Value 1
 
     # Set up the guest OS to collect user mode dumps on a service crash event
     $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
     if ((Test-Path -Path $key) -eq $false) {(New-Item -Path 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting' -Name LocalDumps)}
-    New-ItemProperty -Path $key -name DumpFolder -Type ExpandString -force -Value "c:\CrashDumps"
-    New-ItemProperty -Path $key -name CrashCount -Type DWord -force -Value 10
-    New-ItemProperty -Path $key -name DumpType -Type DWord -force -Value 2
+    New-ItemProperty -Path $key -Name DumpFolder -Type ExpandString -Force -Value "c:\CrashDumps"
+    New-ItemProperty -Path $key -Name CrashCount -Type DWord -Force -Value 10
+    New-ItemProperty -Path $key -Name DumpType -Type DWord -Force -Value 2
     Set-Service -Name WerSvc -StartupType Manual
     ```
 4. Überprüfen Sie, ob das Repository für die Windows-Verwaltungsinstrumentation (Windows Management Instrumentation, WMI) konsistent ist:
@@ -393,6 +396,9 @@ Im Idealfall sollten Sie den Computer auf dem Stand der aktuellen *Patchebene* h
 |                         | CVE-2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
 |                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
+> [!NOTE]
+> Um einen versehentlichen Neustart bei der VM-Bereitstellung zu vermeiden, empfiehlt es sich, darauf zu achten, dass alle Windows Update-Installationen abgeschlossen sind und keine Updates ausstehen. Dies kann beispielsweise so erfolgen, dass alle möglichen Windows-Updates installiert werden und einmalig ein Neustart durchgeführt wird, bevor Sie den Sysprep-Befehl ausführen.
+
 ### Ermitteln von Einsatzszenarien für Sysprep <a id="step23"></a>    
 
 Das Tool für die Systemvorbereitung (System Preparation Tool, Sysprep) ist ein Prozess, den Sie ausführen können, um eine Windows-Installation zurückzusetzen. Sysprep ermöglicht praktisch das Zurücksetzen auf Werkseinstellungen, bei dem alle personenbezogenen Daten entfernt und verschiedene Komponenten zurückgesetzt werden. 
@@ -437,7 +443,7 @@ Die folgenden Einstellungen wirken sich nicht auf das Hochladen von VHDs aus. Es
 * Nachdem die VM in Azure erstellt wurde, sollten Sie die Auslagerungsdatei zur Verbesserung der Leistung auf dem *Volume für das temporäre Laufwerk* platzieren. Sie können die Ablage von Dateien wie folgt einrichten:
 
    ```PowerShell
-   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -Force
    ```
   Wenn an die VM ein Datenträger angefügt ist, lautet der Laufwerkbuchstabe des Volumes für das temporäre Laufwerk typischerweise *D*. Die Bezeichnung kann abhängig von Ihren Einstellungen und der Anzahl verfügbarer Laufwerke jedoch abweichen.
   * Es wird empfohlen, Skriptblocker zu deaktivieren, die möglicherweise von Antivirussoftware bereitgestellt werden. Diese können die beim Bereitstellen einer neuen VM aus Ihrem Image ausgeführten Skripts des Windows-Bereitstellungs-Agents beeinträchtigen oder blockieren.

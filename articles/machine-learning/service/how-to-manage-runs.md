@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 6615b5c277577ee2238434591c61362885f2fec6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 7ebbc7575ad52bbf7a399babb048113bc505a7f8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002746"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174535"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 
@@ -189,7 +189,7 @@ print(local_script_run.get_status())
 Verwenden Sie zum Abbrechen einer Ausführung mit der CLI den folgenden Befehl. Ersetzen Sie `runid` durch die ID der Ausführung.
 
 ```azurecli-interactive
-az ml run cancel -r runid
+az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Weitere Informationen finden Sie unter [az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
@@ -226,7 +226,7 @@ Um viele untergeordnete Ausführungen effizient zu erstellen, verwenden Sie die 
 
 Untergeordnete Ausführungen können auch aus einer übergeordneten Ausführung gesendet werden. Dies ermöglicht es Ihnen, Hierarchien von übergeordneten und untergeordneten Ausführungen zu erstellen, von denen jede auf verschiedenen Computezielen ausgeführt wird und die über eine allgemeine übergeordnete Ausführungs-ID verbunden sind.
 
-Verwenden Sie die ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-)-Methode, um eine untergeordnete Ausführung aus einer übergeordneten Ausführung zu senden. Ermitteln Sie dazu im Skript der übergeordneten Ausführung den Ausführungskontext, und senden Sie die untergeordnete Ausführung mit der „submit_child“-Methode der Kontextinstanz.
+Verwenden Sie die ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-)-Methode, um eine untergeordnete Ausführung aus einer übergeordneten Ausführung zu senden. Ermitteln Sie dazu im Skript der übergeordneten Ausführung den Ausführungskontext, und senden Sie die untergeordnete Ausführung mit der ``submit_child``-Methode der Kontextinstanz.
 
 ```python
 ## In parent run script
@@ -245,7 +245,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Abfragen von untergeordneten Ausführungen
 
-Um die untergeordneten Ausführungen eines bestimmten übergeordneten Elements abzufragen, verwenden Sie die [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)-Methode. Über das Argument „recursive = True“ können Sie eine geschachtelte Struktur aus untergeordneten Elementen und Enkelelementen abfragen.
+Um die untergeordneten Ausführungen eines bestimmten übergeordneten Elements abzufragen, verwenden Sie die [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-)-Methode. Über das Argument ``recursive = True`` können Sie eine geschachtelte Struktur aus untergeordneten Elementen und Enkelelementen abfragen.
 
 ```python
 print(parent_run.get_children())
@@ -335,9 +335,9 @@ Weitere Informationen zum Abfragen von Azure CLI-Ergebnissen finden Sie unter [A
 
 Die folgenden Notebooks veranschaulichen die Konzepte in diesem Artikel:
 
-* Weitere Informationen zu den Protokollierungs-APIs finden Sie im [Protokollierungs-API-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api/logging-api.ipynb).
+* Weitere Informationen zu den Protokollierungs-APIs finden Sie im [Protokollierungs-API-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb).
 
-* Weitere Informationen zum Verwalten von Ausführungen mit dem Azure Machine Learning-SDK finden Sie in dem Beitrag zum [Verwalten von Notebooks von Ausführungen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs).
+* Weitere Informationen zum Verwalten von Ausführungen mit dem Azure Machine Learning-SDK finden Sie in dem Beitrag zum [Verwalten von Notebooks von Ausführungen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

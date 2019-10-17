@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: 21a68c1daa3c7a2ab6689a72e23100be7582de1e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162187"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937077"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -50,7 +50,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>Ausschnittbasiertes Setup
 
-Wenn Ihre App NPM nicht verwendet, können Sie Ihre Webseiten mit Application Insights direkt instrumentieren, indem Sie diesen Codeausschnitt am Anfang jeder Ihrer Seiten einfügen. Vorzugsweise sollte es das erste Skript in Ihrem `<head>`-Abschnitt sein, damit potenzielle Probleme mit allen Ihren Abhängigkeiten überwacht werden können.
+Wenn Ihre App NPM nicht verwendet, können Sie Ihre Webseiten mit Application Insights direkt instrumentieren, indem Sie diesen Codeausschnitt am Anfang jeder Ihrer Seiten einfügen. Vorzugsweise sollte es das erste Skript in Ihrem `<head>`-Abschnitt sein, damit potenzielle Probleme mit allen Ihren Abhängigkeiten überwacht werden können. Wenn Sie die Blazor-Server-App verwenden, fügen Sie den Codeausschnitt am Anfang der Datei `_Host.cshtml` im Abschnitt `<head>` ein.
 
 ```html
 <script type="text/javascript">

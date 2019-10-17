@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036031"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975301"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -135,7 +135,7 @@ Weitere Informationen zu VM-Größen und zu den verfügbaren IOPS, Durchsätzen 
 
 ## <a name="nature-of-io-requests"></a>Art der E/A-Anforderungen
 
-Eine E/A-Anforderung ist eine E/A-Vorgangseinheit, die Ihre Anwendung ausführt. Das Bestimmen der Art der E/A-Anforderungen – zufällig oder sequenziell, Lese- oder Schreibvorgang, klein oder groß – hilft beim Ermitteln der Leistungsanforderungen Ihrer Anwendung. Sie müssen sich mit der Art der E/A-Anforderungen vertraut machen, um beim Entwurf der Anwendungsinfrastruktur die richtigen Entscheidungen zu treffen.
+Eine E/A-Anforderung ist eine E/A-Vorgangseinheit, die Ihre Anwendung ausführt. Das Bestimmen der Art der E/A-Anforderungen – zufällig oder sequenziell, Lese- oder Schreibvorgang, klein oder groß – hilft beim Ermitteln der Leistungsanforderungen Ihrer Anwendung. Sie müssen sich mit der Art der E/A-Anforderungen vertraut machen, um beim Entwurf der Anwendungsinfrastruktur die richtigen Entscheidungen zu treffen. E/A-Vorgänge müssen gleichmäßig verteilt sein, um die bestmögliche Leistung zu erzielen.
 
 Die E/A-Größe ist einer der wichtigsten Faktoren. Die E/A-Größe ist die Größe des angeforderten E/A-Vorgangs, den Ihre Anwendung generiert hat. Die E/A-Größe hat einen erheblichen Einfluss auf die Leistung, insbesondere auf die IOPS und Bandbreite, die die Anwendung erzielen kann. Die folgende Formel zeigt die Beziehung zwischen IOPS, E/A-Größe und Bandbreite/Durchsatz.  
     ![](media/premium-storage-performance/image1.png)
@@ -209,13 +209,9 @@ Mit Azure Storage Premium erhalten Sie unter Windows und Linux das gleiche Maß 
 
 ## <a name="premium-storage-disk-sizes"></a>Größen von Storage Premium-Datenträgern
 
-Azure Storage Premium bietet acht allgemein verfügbare Datenträgergrößen und drei Datenträgergrößen, die sich derzeit in der Vorschau befinden. Jede Datenträgergröße hat ein anderes Skalierungslimit hinsichtlich IOPS, Bandbreite und Speicher. Wählen Sie abhängig von den Anwendungsanforderungen und der Größe der Hochleistungs-VM die richtige Storage Premium-Datenträgergröße. Die folgende Tabelle zeigt die elf verschiedenen Datenträgergrößen und ihre Kapazitäten. Die Datenträgergrößen P4, P6, P15, P60, P70 und P80 werden aktuell nur für verwaltete Datenträger unterstützt.
+Azure Storage Premium bietet verschiedene Größen, sodass Sie eine wählen können, die Ihren Anforderungen am besten entspricht. Jede Datenträgergröße hat ein anderes Skalierungslimit hinsichtlich IOPS, Bandbreite und Speicher. Wählen Sie abhängig von den Anwendungsanforderungen und der Größe der Hochleistungs-VM die richtige Storage Premium-Datenträgergröße. Die folgende Tabelle zeigt die verschiedenen Datenträgergrößen und ihre Kapazitäten. Die Datenträgergrößen P4, P6, P15, P60, P70 und P80 werden aktuell nur für verwaltete Datenträger unterstützt.
 
-| Premium-Datenträgertyp  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Datenträgergröße           | 32 GiB | 64 GiB | 128 GB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 GiB (16 TiB)    | 32767 GiB (32 TiB)    |
-| IOPS pro Datenträger       | 120   | 240   | 500   | 1100 | 2\.300              | 5\.000              | 7\.500              | 7\.500              | 12.500              | 15.000              | 20.000              |
-| Durchsatz pro Datenträger | 25 MiB pro Sekunde  | 50 MiB pro Sekunde  | 100 MiB pro Sekunde |125 MiB pro Sekunde | 150 MiB pro Sekunde | 200 MiB pro Sekunde | 250 MiB pro Sekunde | 250 MiB pro Sekunde | 480 MiB pro Sekunde | 750 MiB pro Sekunde | 750 MiB pro Sekunde |
+[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 Die zu wählende Anzahl von Datenträgern hängt von der gewählten Datenträgergröße ab. Zum Erfüllen Ihrer Anwendungsanforderung können Sie entweder einen einzelnen P50- oder mehrere P10-Datenträger verwenden. Berücksichtigen Sie bei Ihrer Wahl die nachstehenden Aspekte.
 

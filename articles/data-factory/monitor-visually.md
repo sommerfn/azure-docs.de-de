@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141097"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029142"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Visuelles Überwachen von Azure Data Factory
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst. Mit diesem Dienst können Sie in der Cloud datengesteuerte Workflows zur Orchestrierung und Automatisierung der Datenverschiebung und Datentransformation erstellen. Durch Verwendung von Azure Data Factory haben Sie folgende Möglichkeiten:
@@ -161,7 +161,7 @@ Wählen Sie das Symbol **Feedback** aus, um uns Ihr Feedback zu den verschiedene
 
 ## <a name="alerts"></a>Alerts
 
-Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Wählen Sie dazu auf der Überwachungsseite von Data Factory die Option **Überwachen** > **Warnungen und Metriken** aus.
+Sie können Warnungen auf der Grundlage unterstützter Metriken in Data Factory auslösen. Wählen Sie dazu auf der Überwachungsseite von Data Factory die Option **Überwachen** > **Warnungen und Metriken** aus.
 
 ![Data Factory-Überwachungsseite](media/monitor-visually/alerts01.png)
 
@@ -171,7 +171,7 @@ Das folgende Video enthält eine siebenminütige Einführung und Demonstration d
 
 ### <a name="create-alerts"></a>Erstellen von Warnungen
 
-1.  Wählen Sie **Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
+1.  Wählen Sie **Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
 
     ![Schaltfläche „Neue Warnungsregel“](media/monitor-visually/alerts02.png)
 

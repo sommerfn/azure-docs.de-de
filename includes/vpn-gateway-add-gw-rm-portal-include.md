@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12d3f06ca349413231d69fc9de7b9d2f36645b23
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273789"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970837"
 ---
 1. Klicken Sie im Portal auf der linken Seite auf **+ Ressource erstellen**, und geben Sie für die Suche „Gateway für virtuelle Netzwerke“ ein. Suchen Sie in der Ausgabe nach **Virtuelles Netzwerkgateway**, und klicken Sie auf den Eintrag. Klicken Sie auf der Seite **Gateway für virtuelle Netzwerke** auf **Erstellen**. Die Seite **Gateway für virtuelle Netzwerke erstellen** wird geöffnet.
 
@@ -37,7 +37,7 @@ ms.locfileid: "71273789"
 
       **Virtuelles Netzwerk:** Wählen Sie das virtuelle Netzwerk aus, dem Sie dieses Gateway hinzufügen möchten.
 
-      **Adressbereich für Gatewaysubnetz**: Dieses Feld wird nur angezeigt, wenn das ausgewählte virtuelle Netzwerk nicht über ein Gatewaysubnetz verfügt. Füllen Sie den Bereich aus, wenn Sie noch nicht über ein Gatewaysubnetz verfügen. Legen Sie den Bereich möglichst als /27 oder größer (/26, /25 usw.) fest.
+      **Adressbereich für Gatewaysubnetz**: Dieses Feld wird nur angezeigt, wenn Ihr VNet nicht über ein Gatewaysubnetz verfügt. Legen Sie den Bereich möglichst als /27 oder größer (/26, /25 usw.) fest. Es empfiehlt sich nicht, einen Bereich zu erstellen, der kleiner als /28 ist. Wenn Sie bereits über ein Gatewaysubnetz verfügen, können Sie die Gatewaysubnetzdetails anzeigen, indem Sie zu Ihrem virtuellen Netzwerk navigieren. Klicken Sie auf **Subnetze**, um den Bereich anzuzeigen. Wenn Sie den Bereich ändern möchten, können Sie das GatewaySubnet löschen und neu erstellen.
 
    **Öffentliche IP-Adresse:** Mit dieser Einstellung wird das Objekt für die öffentliche IP-Adresse angegeben, das dem VPN-Gateway zugeordnet wird. Die öffentliche IP-Adresse wird bei der Erstellung des VPN-Gateways diesem Objekt dynamisch zugewiesen. Die öffentliche IP-Adresse ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Sie ändert sich nicht, wenn die Größe geändert wird, das VPN-Gateway zurückgesetzt wird oder andere interne Wartungs-/Upgradevorgänge für das VPN-Gateway durchgeführt werden.
 

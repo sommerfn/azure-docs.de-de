@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 96a8b8d33f713faf96e7a96b32e9e41ca669e6cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266555"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970796"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -42,21 +42,20 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen. Weitere Informationen zu Gatewayeinstellungen im Allgemeinen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-* **VNet-Name:** VNet1
+* **Name des virtuellen Netzwerks**: VNet1
 * **Adressraum:** 10.1.0.0/16
 * **Abonnement:** Das Abonnement, das Sie verwenden möchten
 * **Ressourcengruppe:** TestRG1
-* **Standort:** East US
+* **Region:** East US
 * **Subnetz:** Front-End: 10.1.0.0/24, Back-End: 10.1.1.0/24 (für diese Übung optional)
-* **Name des Gatewaysubnetzes:** GatewaySubnet (wird im Portal automatisch ausgefüllt)
-* **Adressbereich für Gatewaysubnetz:** 10.1.255.0/27
+* **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
 * **Name des Gateways des virtuellen Netzwerks:** VNet1GW
-* **Öffentliche IP:** VNet1GWIP
+* **Öffentliche IP-Adresse:** VNet1GWIP
 * **VPN-Typ:** routenbasiert
-* **Verbindungstyp**: Site-to-Site (IPsec)
+* **Verbindungstyp:** Site-to-Site (IPsec)
 * **Gatewaytyp**: VPN
-* **Name des Gateways für das lokale Netzwerk:** Site1
-* **Verbindungsname:** VNet1toSite1
+* **Name des Gateways für das lokale Netzwerk**: Site1
+* **Verbindungsname**: VNet1toSite1
 * **Gemeinsam verwendeter Schlüssel:** In diesem Beispiel verwenden wir „abc123“. Sie können jedoch einen beliebigen, mit Ihrer VPN-Hardware kompatiblen Wert verwenden. Wichtig ist, dass die Werte auf beiden Seiten der Verbindung übereinstimmen.
 
 ## <a name="CreatVNet"></a>1. Erstellen eines virtuellen Netzwerks
@@ -69,6 +68,16 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
+### <a name="example-settings"></a>Beispieleinstellungen
+
+* **Instanzendetails > Region**: East US
+* **Virtuelles Netzwerk > Virtuelles Netzwerk**: VNet1
+* **Instanzendetails > Name**: VNet1GW
+* **Instanzendetails > Gatewaytyp**: VPN
+* **Instanzendetails > VPN-Typ**: routenbasiert
+* **Virtuelles Netzwerk > Gatewaysubnetz-Adressbereich**: 10.1.255.0/27
+* **Öffentliche IP-Adresse > Name der öffentlichen IP-Adresse**: VNet1GWIP
+
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
@@ -77,6 +86,13 @@ In diesem Schritt erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet. Hä
 ## <a name="LocalNetworkGateway"></a>3. Erstellen des Gateways des lokalen Netzwerks
 
 Mit dem Gateway des lokalen Netzwerks ist normalerweise Ihr lokaler Standort gemeint. Sie geben dem Standort einen Namen, über den Azure darauf verweisen kann, und geben dann die IP-Adresse des lokalen VPN-Geräts an, mit dem Sie eine Verbindung herstellen. Außerdem geben Sie die IP-Adresspräfixe an, die über das VPN-Gateway an das VPN-Gerät weitergeleitet werden. Die von Ihnen angegebenen Adresspräfixe befinden sich in Ihrem lokalen Netzwerk. Wenn bei dem lokalen Netzwerk Änderungen vorgenommen werden oder Sie die öffentliche IP-Adresse des VPN-Geräts ändern müssen, können Sie dies Werte später bequem aktualisieren.
+
+**Beispielwerte**
+
+* **Name:** Site1
+* **Ressourcengruppe:** TestRG1
+* **Standort:** East US
+
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 

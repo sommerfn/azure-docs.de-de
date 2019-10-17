@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997628"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955862"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welche Datenträgertypen stehen in Azure zur Verfügung?
 
@@ -27,7 +27,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung von Ultra-Datenträgern, S
 |---------|---------|---------|---------|---------|
 |Datenträgertyp   |SSD   |SSD   |SSD   |Festplattenlaufwerk   |
 |Szenario   |E/A-intensive Workloads wie SAP HANA, führende Datenbanken (z.B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
-|Datenträgergröße   |65.536 Gibibyte (GiB)    |32767 GiB    |32767 GiB   |32767 GiB   |
+|Maximale Datenträgergröße   |65.536 Gibibyte (GiB)    |32767 GiB    |32767 GiB   |32767 GiB   |
 |Max. Durchsatz   |2\.000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
 |Max. IOPS   |160.000    |20.000   |6\.000   |2\.000   |
 

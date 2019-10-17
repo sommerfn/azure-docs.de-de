@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8778a8bc27995cc9d0969762b6897f6cac0283a2
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828882"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845542"
 ---
 # <a name="cloudsimple-nodes-overview"></a>Übersicht über CloudSimple-Knoten
 
@@ -42,7 +42,7 @@ Die folgenden Knotentypen können erworben oder reserviert werden.
 | CPU           | 2x2,2 GHz, 28 Kerne (56 HT) | 2x2,3 GHz, 36 Kerne (72 HT) | 2x2,3 GHz, 36 Kerne (72 HT) |
 | RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
 | Cachedatenträger    | 1,6 TB NVMe                 | 3,2 TB NVMe                 | 3,2 TB NVMe                 |
-| Datenträgerkapazität | 5,625 TB unformatiert                | 11,25 TB unformatiert                | 13,36 TB unformatiert                |
+| Datenträgerkapazität | 5,625 TB unformatiert                | 11,25 TB unformatiert                | 15,36 TB unformatiert                |
 | Speichertyp  | Nur Flash                   | Nur Flash                   | Nur Flash                   |
 
 ## <a name="limits"></a>Einschränkungen

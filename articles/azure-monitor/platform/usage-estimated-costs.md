@@ -9,22 +9,19 @@ ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 787618b59cd18dd4c38892ddf0861808211671cb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453835"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936621"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Überwachen der Nutzung und geschätzten Kosten in Azure Monitor
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
-> - [Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics](manage-cost-storage.md) beschreibt, wie Sie Ihre Kosten durch Ändern der Datenaufbewahrungsdauer steuern.
-> - [Analysieren der Datennutzung in Log Analytics](../../azure-monitor/platform/data-usage.md) beschreibt, wie Sie Ihre Datennutzung analysieren und Warnungen dazu ausgeben.
-> - [Verwalten von Preisen und Datenvolumen in Application Insights](../../azure-monitor/app/pricing.md) beschreibt, wie Sie die Datennutzung in Application Insights analysieren.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> In diesem Artikel wird beschrieben, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Nachfolgend sind einige verwandte Artikel für bestimmte Komponenten von Azure Monitor aufgeführt:
+> - [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](manage-cost-storage.md) beschreibt, wie Sie Ihre Kosten durch Ändern der Datenaufbewahrungsdauer steuern sowie Ihre Datennutzung analysieren und Warnungen dazu ausgeben.
+> - [Verwalten der Nutzung und der Kosten für Application Insights](../../azure-monitor/app/pricing.md) beschreibt, wie Sie die Datennutzung in Application Insights analysieren.
 
 Die Seite **Nutzung und geschätzte Kosten** im Monitor-Hub des Azure-Portals erläutert die Nutzung wichtiger Überwachungsfeatures wie [Metriken, Warnungen, Benachrichtigungen](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) und [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Für Kunden mit Tarifen, die vor April 2018 verfügbar waren, umfasst dies auch die Log Analytics-Nutzung, die über das Insights- und Analytics-Angebot erworben wurde.
 
@@ -42,9 +39,11 @@ Hier ist eine andere ähnliche Verwendung und Kostenzusammenfassung. Dieses Beis
 
 ![Screenshot: „Nutzung und geschätzte Kosten“ im Portal – April 2018](./media/usage-estimated-costs/003.png)
 
-## <a name="new-pricing-model"></a>Neues Preismodell
+## <a name="pricing-model"></a>Preismodell
 
-Im April 2018 wurde ein [neues Preismodell für die Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Es handelt sich hierbei um für die Cloud optimierte und verbrauchsbasierte Preise. Sie zahlen ausschließlich nutzungsabhängig und gehen keine knotenbasierten Verpflichtungen ein. Die Details des neuen Preismodells sind jetzt für [Metriken, Warnungen, Benachrichtigungen](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) und [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) verfügbar. 
+Im April 2018 wurde ein [neues Preismodell für die Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Es handelt sich hierbei um für die Cloud optimierte und verbrauchsbasierte Preise (nutzungsbasierte Bezahlung). Sie zahlen ausschließlich nutzungsabhängig und gehen keine knotenbasierten Verpflichtungen ein. Die Details des neuen Preismodells sind jetzt für [Metriken, Warnungen, Benachrichtigungen](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) und [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) verfügbar. 
+
+Zusätzlich zum Modell der nutzungsbasierten Bezahlung haben wir im September 2019 die Kapazitätsreservierung für Log Analytics hinzugefügt, womit sie ganze 25 % gegenüber der nutzungsbasierten Bezahlung sparen können. Die Preise der Kapazitätsreservierung ermöglichen Ihnen den Kauf einer Reservierung ab 100 GB/Tag. Jeder über die Reservierung hinausgehende Verbrauch wird entsprechend der nutzungsbasierten Bezahlung berechnet. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/monitor/) über Preise der Kapazitätsreservierung.
 
 Für Kunden, die das Onboarding für Log Analytics oder Application Insights nach dem 2. April 2018 durchführen, ist das neue Preismodell die einzige Option. Für Kunden, die diese Dienste bereits nutzen, ist die Umstellung auf das neue Preismodell optional.
 
@@ -112,4 +111,3 @@ Wenn Sie entschieden haben, das neue Preismodell für ein bestimmtes Abonnement 
 Wie bereits erwähnt, ist es nicht mehr notwendig, alle Überwachungsressourcen in einem Abonnement zur gleichen Zeit in das neue Preismodell zu verschieben, und damit hat die ``migratetonewpricingmodel``-Aktion keine Auswirkung mehr. Jetzt können Sie Application Insights-Ressourcen und Log Analytics-Arbeitsbereiche getrennt in die neuesten Tarife verschieben.  
 
 Die Automatisierung dieser Änderung ist für Application Insights unter Verwendung von [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) mit ``-PricingPlan "Basic"`` und für Log Analytics unter Verwendung von [Set-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) mit ``-sku "PerGB2018"`` dokumentiert. 
-

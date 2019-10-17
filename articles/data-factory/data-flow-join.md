@@ -7,16 +7,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348559"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029321"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Join-Transformation für Datenflusszuordnung
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Verwenden Sie Join zum Kombinieren von Daten aus zwei Tabellen in Ihrer Data Flow-Instanz. Klicken Sie auf die Transformation, die die linke Beziehung sein soll, und fügen Sie eine Join-Transformation aus der Toolbox hinzu. Wählen Sie in der Join-Transformation einen anderen Datenstrom aus Ihrem Datenfluss als rechte Beziehung aus.
 
@@ -54,11 +54,11 @@ Sie müssen mindestens 1 (1..n)-Join-Bedingungen eingeben. Dies können Felder s
 
 ## <a name="join-performance-optimizations"></a>Optimierungen der Join-Leistung
 
-Im Gegensatz zu „Merge Join“ in Tools wie SSIS ist „Join“ im ADF-Datenflow kein obligatorischer „Merge Join“-Vorgang. Aus diesem Grund müssen die Join-Schlüssel nicht zuerst sortiert werden. Der Join-Vorgang tritt in Spark mit Databricks basierend auf dem optimalen Join-Vorgang in Spark auf: Broadcast- / Map-Side-Join:
+Im Gegensatz zu „Merge Join“ in Tools wie SSIS ist „Join“ im ADF-Datenflow kein obligatorischer „Merge Join“-Vorgang. Aus diesem Grund müssen die Join-Schlüssel nicht zuerst sortiert werden. Der Join-Vorgang tritt basierend auf dem optimalen Join-Vorgang in Spark auf: Broadcast- / Map-Side-Join:
 
 ![Optimieren der Join-Transformation](media/data-flow/joinoptimize.png "Join-Optimierung")
 
-Wenn Ihr Dataset in den Databricks-Workerknotenspeicher eingepasst werden kann, können wir Ihre Join-Leistung optimieren. Sie können auch die Partitionierung Ihrer Daten im Join-Vorgang angeben, um Datasets zu erstellen, die besser in den Speicher pro Worker passen.
+Wenn Ihr Dataset in den Workerknotenspeicher eingepasst werden kann, können wir Ihre Join-Leistung optimieren. Sie können auch die Partitionierung Ihrer Daten im Join-Vorgang angeben, um Datasets zu erstellen, die besser in den Speicher pro Worker passen.
 
 ## <a name="self-join"></a>Selbstverknüpfung
 

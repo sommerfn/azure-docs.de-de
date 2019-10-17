@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d0fd26da81c4f59f16b5f0364cf165ec36a6ea39
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516329"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176853"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -438,7 +438,9 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 
 ## <a name="azure-databricks-linked-service"></a>Mit Azure Databricks verknüpfter Dienst
-Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den Databricks-Arbeitsbereich zu registrieren, den Sie verwenden möchten, um die Databricks-Workloads (Notebooks) auszuführen.
+Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den Databricks-Arbeitsbereich zu registrieren, den Sie verwenden möchten, um die Databricks-Workloads (Notebook, JAR, Python) auszuführen. 
+> [!IMPORTANT]
+> Mit Databricks verknüpfte Dienste unterstützen [Instanzenpools](https://aka.ms/instance-pools). 
 
 ### <a name="example---using-new-job-cluster-in-databricks"></a>Beispiel: Verwenden eines neuen Auftragsclusters in Databricks
 
@@ -490,6 +492,7 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 | Domäne               | Geben Sie die Azure-Region entsprechend der Region des Databricks-Arbeitsbereichs an. Beispiel: https://eastus.azuredatabricks.net | Ja                                 |
 | accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token).  | Ja                                       |
 | existingClusterId    | Cluster-ID eines vorhandenen Clusters, in dem alle Aufträge ausgeführt werden. Dabei sollte es sich um einen bereits erstellten interaktiven Cluster handeln. Möglicherweise müssen Sie den Cluster manuell neu starten, falls er nicht mehr reagiert. Databricks empfiehlt, Aufträge in neuen Clustern auszuführen, um die Zuverlässigkeit zu erhöhen. Sie finden die Cluster-ID eines interaktiven Clusters unter: Databricks-Arbeitsbereich -> Cluster -> Name des interaktiven Clusters -> Konfiguration -> Tags. [Weitere Informationen](https://docs.databricks.com/user-guide/clusters/tags.html) | Nein 
+| instancePoolId    | Instanzenpool-ID eines vorhandenen Pools im Databricks-Arbeitsbereich.  | Nein  |
 | newClusterVersion    | Die Spark-Version des Clusters. In Databricks wird ein neuer Auftragscluster erstellt. | Nein  |
 | newClusterNumOfWorker| Die Anzahl der Workerknoten, die dieser Cluster haben sollte. Ein Cluster hat einen Spark Driver und Executors entsprechend der Workeranzahl, also insgesamt Workeranzahl + 1 Spark-Knoten. Eine als Int32 formatierte Zeichenfolge wie „1“ bedeutet, dass „numOfWorker“ 1 ist. "1:10" steht für eine automatische Skalierung von 1 als Minimum und 10 als Maximum.  | Nein                |
 | newClusterNodeType   | Dieses Feld codiert mithilfe eines einzigen Werts die Ressourcen, die jedem der Spark-Knoten in diesem Cluster zur Verfügung stehen. Beispielsweise können die Spark-Knoten für arbeitsspeicher- oder rechenintensive Workloads bereitgestellt und optimiert werden. Dieses Feld wird für neue Cluster benötigt.                | Nein               |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 6f27aeb65cb9077011e662c165ca26202546db26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b81495f19ce596d689778e6ab75512d744ae4588
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66130410"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836564"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Erstellen eines Log Analytics-Arbeitsbereichs mit Azure PowerShell
 
@@ -44,7 +44,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial das Azure PowerShell Az-Modul verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Sollte ein Upgrade erforderlich sein, lesen Sie [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
-Erstellen Sie mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) einen Arbeitsbereich. Das folgende Beispiel erstellt den Arbeitsbereich *TestWorkspace* in der Ressourcengruppe *Lab* am Standort *eastus* (USA, Osten) mithilfe einer Resource Manager-Vorlage von Ihrem lokalen Computer. Die JSON-Vorlage ist so konfiguriert, dass Sie nur zur Eingabe des Namens für den Arbeitsbereich aufgefordert werden und Standardwerte für die anderen Parameter angegeben werden, die wahrscheinlich als Standardkonfiguration in Ihrer Umgebung verwendet werden. 
+Erstellen Sie mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) einen Arbeitsbereich. Das folgende Beispiel erstellt einen Arbeitsbereich am Standort *eastus* (USA, Osten) mithilfe einer Resource Manager-Vorlage von Ihrem lokalen Computer. Die JSON-Vorlage ist so konfiguriert, dass Sie nur zur Eingabe des Namens für den Arbeitsbereich aufgefordert werden und Standardwerte für die anderen Parameter angegeben werden, die wahrscheinlich als Standardkonfiguration in Ihrer Umgebung verwendet werden. 
 
 Weitere Informationen zu den unterstützten Regionen finden Sie auf der Seite zur [Verfügbarkeit von Log Analytics in den einzelnen Regionen](https://azure.microsoft.com/regions/services/), indem Sie im Feld **Nach einem Produkt suchen** nach Azure Monitor suchen. 
 
@@ -117,7 +117,7 @@ Für folgende Parameter wird ein Standardwert festgelegt:
 
 2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Informationen zu den unterstützten Eigenschaften und Werten finden Sie in der Referenz [Microsoft.OperationalInsights/workspaces template](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces). 
 3. Speichern Sie diese Datei unter dem Namen **deploylaworkspacetemplate.json** in einem lokalen Ordner.   
-4. Nun können Sie die Vorlage bereitstellen. Führen Sie die folgenden Befehle in dem Ordner mit der Vorlage aus:
+4. Nun können Sie die Vorlage bereitstellen. Führen Sie die folgenden Befehle in dem Ordner mit der Vorlage aus. Wenn Sie zur Eingabe eines Arbeitsbereichsnamens aufgefordert werden, geben Sie einen Namen an, der in allen Azure-Abonnements global eindeutig ist.
 
     ```powershell
         New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json

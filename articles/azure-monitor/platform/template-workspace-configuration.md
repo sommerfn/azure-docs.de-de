@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ac5d5d31bb54ce87859a6eec52dbe5948864d4c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147324"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375974"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics-Arbeitsbereichen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -121,7 +121,7 @@ Im folgenden Beispiel wird mithilfe einer Vorlage von Ihrem lokalen Computer ein
 
 2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Informationen zu den unterstützten Eigenschaften und Werten finden Sie in der Referenz [Microsoft.OperationalInsights/workspaces template](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces). 
 3. Speichern Sie diese Datei unter dem Namen **deploylaworkspacetemplate.json** in einem lokalen Ordner.
-4. Nun können Sie die Vorlage bereitstellen. Verwenden Sie entweder PowerShell oder die Befehlszeile, um den Arbeitsbereich zu erstellen, und geben Sie dabei den Namen und Speicherort des Arbeitsbereichs als Teil des Befehls an.
+4. Nun können Sie die Vorlage bereitstellen. Verwenden Sie entweder PowerShell oder die Befehlszeile, um den Arbeitsbereich zu erstellen, und geben Sie dabei den Namen und Speicherort des Arbeitsbereichs als Teil des Befehls an. Der Arbeitsbereichsname muss in allen Azure-Abonnements global eindeutig sein.
 
    * Führen Sie bei Verwendung von PowerShell die folgenden Befehle in dem Ordner mit der Vorlage aus:
    
@@ -243,7 +243,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
     "customlogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
     },
     "variables": {
@@ -419,7 +419,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
@@ -462,7 +462,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -592,6 +592,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
 }
 
 ```
+
 ### <a name="deploying-the-sample-template"></a>Bereitstellen der Beispielvorlage
 
 So stellen Sie die Beispielvorlage bereit

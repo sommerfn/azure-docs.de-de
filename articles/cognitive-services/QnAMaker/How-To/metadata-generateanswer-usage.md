@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300251"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971810"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer Antwort mit der GenerateAnswer-API und Metadaten
 
@@ -249,4 +249,4 @@ Sie können mit `isTest=false` die veröffentlichte Wissensdatenbank oder mit `i
 Die Seite **Veröffentlichen** enthält auch Informationen zum Generieren einer Antwort mit [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) und [cURL](../Quickstarts/get-answer-from-kb-using-curl.md). 
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Wissensdatenbank](./create-knowledge-base.md)
+> [Erstellen eines Wissensdatenbank-Bots](../tutorials/integrate-qnamaker-luis.md)

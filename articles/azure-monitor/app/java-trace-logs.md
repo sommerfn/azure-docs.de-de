@@ -12,15 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299250"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038151"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
+
+> [!TIP]
+> Sie müssen den Application Insights-Instrumentierungsschlüssel nur einmal für Ihre Anwendung festlegen. Wenn Sie ein Framework wie Java Spring verwenden, haben Sie den Schlüssel möglicherweise bereits an anderer Stelle in der Konfiguration Ihrer App registriert.
 
 ## <a name="using-the-application-insights-java-agent"></a>Verwenden des Java-Agents von Application Insights
 

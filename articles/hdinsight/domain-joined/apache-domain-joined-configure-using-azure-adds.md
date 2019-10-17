@@ -1,19 +1,19 @@
 ---
 title: Enterprise-Sicherheitspaket (ESP) mit Azure Active Directory in HDInsight
 description: Erfahren Sie mehr über das Einrichten und Konfigurieren eines HDInsight-Clusters Enterprise-Sicherheitspaket mithilfe von Azure Active Directory Domain Services.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 04/23/2019
-ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/02/2019
+ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918328"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030351"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Konfigurationen des Enterprise-Sicherheitspakets mit Azure Active Directory Domain Services in Azure HDInsight
 
@@ -70,7 +70,7 @@ Wenn die verwaltete Identität erstellt und der richtigen Rolle zugewiesen wurde
 ## <a name="networking-considerations"></a>Überlegungen zum Netzwerkbetrieb
 
 > [!NOTE]  
-> Azure AD DS muss in einem Azure Resource Manager basierten VNET bereitgestellt werden. Klassische virtuelle Netzwerke werden für Azure AD-DS nicht unterstützt. Weitere Details finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
+> Azure AD DS muss in einem Azure Resource Manager basierten VNET bereitgestellt werden. Klassische virtuelle Netzwerke werden für Azure AD-DS nicht unterstützt. Weitere Informationen finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
 
 Wenn Sie AD DS aktiviert haben, wird ein lokaler DNS-Server auf den Azure-VMs ausgeführt. Konfigurieren Sie Ihr virtuelles AD DS-Netzwerk (VNET), um diese benutzerdefinierten DNS-Server zu verwenden. Um die richtigen IP-Adressen zu finden, wählen Sie **Eigenschaften** unter der Kategorie **Verwalten** aus, und sehen Sie sich die unter **IP-Adresse im virtuellen Netzwerk** aufgeführten IP-Adressen an.
 
@@ -86,23 +86,23 @@ Nachdem die VNETs durchsucht wurden, konfigurieren Sie das HDInsight-VNET so, da
 
 ![Konfigurieren von benutzerdefinierten DNS-Servern für VNET mit Peering](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Wenn Sie in Ihrem HDInsight-Subnetz Regeln für Netzwerksicherheitsgruppen (NSG) verwenden, müssen Sie die [erforderlichen IP-Adressen](../hdinsight-management-ip-addresses.md) für den eingehenden und ausgehenden Datenverkehr zulassen. 
+Wenn Sie in Ihrem HDInsight-Subnetz Regeln für Netzwerksicherheitsgruppen (NSG) verwenden, müssen Sie die [erforderlichen IP-Adressen](../hdinsight-management-ip-addresses.md) für den eingehenden und ausgehenden Datenverkehr zulassen.
 
 **Um zu testen**, ob Ihr Netzwerk korrekt eingerichtet ist, verknüpfen Sie eine Windows-VM mit dem HDInsight-VNET/Subnetz, pingen Sie den Domänennamen (er sollte sich in eine IP-Adresse auflösen), und führen Sie dann **ldp.exe** aus, um auf die AD DS-Domäne zuzugreifen. Verknüpfen Sie dann diese **Windows-VM mit der Domäne zum Bestätigen**, dass alle erforderlichen RPC-Aufrufe zwischen Client und Server erfolgreich sind. Sie können auch **nslookup** verwenden, um den Netzwerkzugriff auf Ihr Speicherkonto oder eine beliebige externe Datenbank zu bestätigen (z.B. externer Hive-Metastore oder Ranger-Datenbank).
 Achten Sie darauf, dass alle [benötigten Ports](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) in der Whitelist der Regeln der Netzwerksicherheitsgruppe (NSG) des AAD DS-Subnetzes enthalten sind, wenn AAD DS durch eine NSG gesichert ist. Wenn der Domänenbeitritt dieses virtuellen Windows-Computers erfolgreich ist, können Sie mit dem nächsten Schritt fortfahren und ESP-Cluster erstellen.
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>Erstellen eines HDInsight-Clusters mit ESP
 
-Wenn Sie die vorherigen Schritte korrekt festgelegt haben, erstellen Sie im nächsten Schritt den HDInsight-Cluster mit aktiviertem ESP. Beim Erstellen eines HDInsight-Clusters können Sie das Enterprise-Sicherheitspaket auf der Registerkarte **Benutzerdefiniert** aktivieren. Wenn Sie die Bereitstellung über eine Azure Resource Manager-Vorlage ausführen möchten, laden Sie im Portal einmalig die vorausgefüllte Vorlage auf der letzten Seite von „Zusammenfassung“ herunter, um diese später wieder verwenden zu können.
+Wenn Sie die vorherigen Schritte korrekt festgelegt haben, erstellen Sie im nächsten Schritt den HDInsight-Cluster mit aktiviertem ESP. Beim Erstellen eines HDInsight-Clusters können Sie das Enterprise-Sicherheitspaket auf der Registerkarte **Sicherheit + Netzwerkbetrieb** aktivieren. Wenn Sie die Bereitstellung über eine Azure Resource Manager-Vorlage ausführen möchten, laden Sie im Portal einmalig die vorausgefüllte Vorlage auf der Seite **Überprüfen + Erstellen** herunter, um diese später wieder verwenden zu können.
 
 > [!NOTE]  
 > Die ersten sechs Zeichen des ESP-Clusternamens müssen in Ihrer Umgebung eindeutig sein. Bei mehreren ESP-Clustern in verschiedenen VNETs müssen Sie beispielsweise eine Benennungskonvention wählen, die sicherstellt, dass die ersten sechs Zeichen des Clusternamens eindeutig sind.
 
-![Azure HDInsight Enterprise-Sicherheitspaket – Domänenüberprüfung](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
+![Azure HDInsight Enterprise-Sicherheitspaket – Domänenüberprüfung](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-Sobald Sie ESP aktivieren, werden häufige Fehlkonfigurationen im Zusammenhang mit Azure AD DS automatisch erkannt und validiert. Nachdem Sie diese Fehler behoben haben, können Sie mit dem nächsten Schritt fortfahren: 
+Sobald Sie ESP aktivieren, werden häufige Fehlkonfigurationen im Zusammenhang mit Azure AD DS automatisch erkannt und validiert. Nachdem Sie diese Fehler behoben haben, können Sie mit dem nächsten Schritt fortfahren:
 
-![Azure HDInsight Enterprise-Sicherheitspaket – fehlgeschlagene Domänenüberprüfung](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
+![Azure HDInsight Enterprise-Sicherheitspaket – fehlgeschlagene Domänenüberprüfung](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
 Zum Erstellen eines HDInsight-Clusters mit ESP müssen Sie die folgende Parameter angeben:
 
@@ -112,13 +112,9 @@ Zum Erstellen eines HDInsight-Clusters mit ESP müssen Sie die folgende Paramete
 
 - **LDAPS-URL**: Ein Beispiel ist `ldaps://contoso.com:636`.
 
-Der folgende Screenshot zeigt eine erfolgreiche Konfigurationen im Azure-Portal:
-
-![Konfiguration von Active Directory Domain Services für Azure HDInsight ESP](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
-
 Die von Ihnen erstellte verwaltete Identität kann beim Erstellen eines neuen Clusters aus dem Dropdownmenü für die vom Benutzer zugewiesene verwaltete Identität ausgewählt werden.
 
-![Verwaltete Active Directory Domain Services-Identität für Azure HDInsight-Sicherheitspaket (ESP)](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
+![Verwaltete Active Directory Domain Services-Identität für Azure HDInsight-Sicherheitspaket (ESP)](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

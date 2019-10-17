@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932825"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973291"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -99,6 +99,10 @@ Sie können so vorgehen, dass Sie eine App, für die Sie ein Projektmitarbeiter 
 Der App-Besitzer muss [Ihre E-Mail-Adresse als Projektmitarbeiter zur Azure-Erstellungsressource hinzufügen](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
 
 Nach dem Migrationsvorgang sind alle Apps, die Sie besitzen, auf der Seite **Meine Apps** des LUIS-Portals verfügbar.  
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+LUIS-Erstellungsschlüssel sind im LUIS-Portal erst sichtbar, nachdem der Migrationsvorgang abgeschlossen wurde. Wenn Sie die Erstellungsschlüssel erstellen, beispielsweise mit der LUIS-Befehlszeilenschnittstelle, muss der Benutzer den Migrationsvorgang trotzdem abschließen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

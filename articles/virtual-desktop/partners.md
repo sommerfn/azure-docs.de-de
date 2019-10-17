@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673021"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937503"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -33,9 +33,9 @@ Citrix macht Windows Virtual Desktop noch leistungsfähiger mit stabilen Enterpr
 
 ![VMware-Logo](./media/partners/vmware.png)
 
-VMware Horizon Cloud on Microsoft Azure bietet Organisationen die Möglichkeit, eine eigene Instanz von Microsoft Azure mit der einfachen intuitiven Horizon Cloud-Steuerungsebene zu verbinden; und damit eine sichere, umfassende, in der Cloud gehostete Lösung für die Bereitstellung virtualisierter Windows-Anwendungen und-Desktops. Bei der Veröffentlichung von Windows Virtual Desktop hat VMware mit Microsoft zusammengearbeitet, um die Funktionalität von Windows Virtual Desktop auch solchen Kunden zu bieten, die auf Microsoft Azure die Horizon Cloud verwenden.
-
-Als genehmigter Anbieter erhalten Kunden von VMware Horizon Cloud auf Microsoft Azure alle Vorteile von Windows Virtual Desktop, wie z. B. Windows 10 Enterprise für mehrere Sitzungen, Windows 7 mit kostenlosen erweiterten Sicherheitsupdates für bis zu drei Jahren und FSLogix-Funktionen. Dazu kommen sämtliche unternehmensweite Features der Horizon Cloud wie z. B. umfassende Endpunkt-Support, globales, cloudoptimiertes Brokerring, flexible Desktopoptionen und-Konfigurationen, Verwaltung von Benutzerumgebungen und Unterstützung für Hybrid Umgebungen. 
+VMware Horizon Cloud on Microsoft Azure bietet Organisationen die Möglichkeit, eine eigene Instanz von Microsoft Azure mit der einfachen intuitiven Horizon Cloud-Steuerungsebene zu verbinden; und damit eine sichere, umfassende, in der Cloud gehostete Lösung für die Bereitstellung virtualisierter Windows-Anwendungen und-Desktops. Bei der Veröffentlichung von Windows Virtual Desktop hat VMware mit Microsoft zusammengearbeitet, um die Funktionalität von Windows Virtual Desktop auch solchen Kunden zu bieten, die auf Microsoft Azure die Horizon Cloud verwenden. Diese Funktionalität ist in der Technical Preview-Version bis Ende 2019 verfügbar.
+ 
+Als genehmigter Anbieter werden die Vorteile von Windows Virtual Desktop für Microsoft Azure-Kunden auf die VMware Horizon Cloud ausgedehnt, einschließlich Windows 10 Enterprise für mehrere Sitzungen, Windows 7 mit kostenlosen erweiterten Sicherheitsupdates für bis zu drei Jahre und FSLogix. Darüber hinaus erhalten die Kunden die Horizon Cloud-Features der Enterprise-Klasse, wie etwa breite Unterstützung von Endpunkten, globales, für die Cloud optimiertes Brokering, flexible Desktopoptionen und -konfigurationen, Verwaltung der Benutzerumgebung und Unterstützung für hybride Bereitstellungen.
 
 - [Registrieren Sie sich für die Tech Preview von Horizon Cloud auf Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Zur Partnerwebsite](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
@@ -93,7 +93,7 @@ Nerdio ist eine Azure-IT-Automatisierungsplattform, die die Bereitstellung und V
 Nerdio steigert den Nutzen von Windows Virtual Desktop, indem es die Bereitstellung von Azure-Ressourcen und die Optimierung der Bereitstellung vereinfacht. Mit Nerdio für Azure kann die IT-Abteilung eine komplette Azure-Umgebung, einschließlich Windows Virtual Desktop, in weniger als zwei Stunden automatisch bereitstellen und verwalten.
 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [Zur Partnerwebsite](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
+- [Zur Partnerwebsite](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>ThinPrint
 

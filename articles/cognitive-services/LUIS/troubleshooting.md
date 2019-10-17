@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382338"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971967"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -219,6 +219,10 @@ Weitere Informationen finden Sie unter „Beheben von Fehlern mit dem HTTP-Statu
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Ich muss mehr Endpunktabfragen verarbeiten. Wie geht das? 
 
 Weitere Informationen finden Sie unter „Beheben von Fehlern mit dem HTTP-Statuscode [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) und [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it)“.
+
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Ich habe einen Erstellungsschlüssel erstellt, der wird aber im LUIS-Portal nicht angezeigt. Was ist passiert?
+
+Erstellungsschlüssel sind im LUIS-Portal nach der [Migration zur Erstellungsschlüssel-Benutzeroberfläche](luis-migration-authoring.md) verfügbar.  
 
 ## <a name="app-management"></a>App-Verwaltung
 

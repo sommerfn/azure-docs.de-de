@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 8e800ec8a7a2dd52e052547efa51deaad8c9bb45
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ec5a3ab0a2498e7d9bb24bed1bc0a37194e38e9e
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104917"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936965"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -121,12 +121,17 @@ Dieser Fehler tritt auf, wenn die SSIS Integration Runtime nicht auf den für da
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Fehlermeldung: „Microsoft OLE DB-Anbieter für Analysis Services. 'Hresult: 0 x 80004005 Beschreibung:' COM-Fehler: COM-Fehler: mscorlib; Ein Aufrufziel hat einen Ausnahmefehler verursacht“
 
 Eine mögliche Ursache ist, dass der Benutzername oder das Kennwort mit aktivierter Azure Multi-Factor-Authentifizierung für die Authentifizierung bei Azure Analysis Services konfiguriert ist. Diese Authentifizierung wird in der SSIS Integration Runtime nicht unterstützt. Versuchen Sie, ein Dienstprinzipal für die Authentifizierung bei Azure Analysis Services zu verwenden:
+
 1. Bereiten Sie ein Dienstprinzipal vor, wie in [Automatisierung mit Dienstprinzipalen](https://docs.microsoft.com/azure/analysis-services/analysis-services-service-principal) beschrieben.
 2. Konfigurieren Sie im Connection Manager die Option **SQL-Server-Authentifizierung verwenden**. Legen Sie **AppID**als Benutzernamen und **clientSecret** als Kennwort fest.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Fehlermeldung: „Fehler beim Abrufen der {GUID}-Verbindung durch die ADO .NET-Quelle. Fehlermeldung: Die Anmeldung für den Benutzer 'NT AUTHORITY\ANONYMOUS LOGON'“ ist fehlgeschlagen, wenn eine verwaltete Identität verwendet wird
 
 Stellen Sie sicher, dass Sie die Authentifizierungsmethode von Connection Manager nicht als **Active Directory-Kennwortauthentifizierung** konfigurieren, wenn der Parameter *ConnectUsingManagedIdentity* auf **True** festgelegt ist. Sie können stattdessen die Konfiguration **SQL-Authentifizierung** verwenden, die ignoriert wird, wenn *ConnectUsingManagedIdentity* festgelegt ist.
+
+### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>Fehlermeldung: "0xC020801F an ..., OData-Quelle [...]: Eine verwaltete Verbindung kann aus dem Laufzeitverbindungs-Manager nicht abgerufen werden“
+
+Eine mögliche Ursache ist, dass TLS (Transport Layer Security) in SSIS Integration Runtime nicht aktiviert und für Ihre OData-Quelle erforderlich ist. Sie können TLS in SSIS Integration Runtime durch Anpassen des Setups aktivieren. Weitere Informationen finden Sie unter [Sie können keine Verbindung mit Project Online OData von SSIS herstellen](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis) und [Anpassen des Setups für Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Fehlermeldung: „Fehler beim Anfordern der Stagingaufgabe mit Vorgangs-GUID ... aufgrund des Fehlers: Fehler beim Verteilen des Stagingvorgangs mit der folgenden Fehlermeldung: Microsoft.SqlServer.IntegrationServices.AisAgentCore.AisAgentException: Fehler beim Laden des Datenproxys.“
 

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d50b0858ac7c4c0e5e0263bd157e044d0fec4489
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057652"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972666"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Erstellen einer Cognitive Services-Ressource mithilfe der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -170,6 +170,16 @@ Die Tarife (und der Betrag, der Ihnen in Rechnung gestellt wird) basieren auf de
 * Dienstfeatures, die innerhalb des Tarifs aktiviert sind.
 * Die Kosten für eine vordefinierte Anzahl von Transaktionen. Wird diese Anzahl überschritten, fällt eine zusätzliche Gebühr gemäß den [Preisdetails](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) für Ihren Dienst an.
 
+## <a name="get-current-quota-usage-for-your-resource"></a>Abrufen des aktuellen Kontingentverbrauchs für Ihre Ressource
+
+Rufen Sie mit dem Befehl [az cognitiveservices account list-usage](https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) den Verbrauch für Ihre Cognitive Service-Ressource ab.
+
+```azurecli-interactive
+az cognitiveservices account list-usage \
+    --name anomaly-detector-resource \
+    --resource-group cognitive-services-resource-group \
+    --subscription subscription-name
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

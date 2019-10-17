@@ -1,19 +1,19 @@
 ---
 title: Optimieren von Spark-Aufträgen im Hinblick auf die Leistung – Azure HDInsight
 description: Dieser Artikel zeigt allgemeine Strategien zum Optimieren der Leistung von Apache Spark-Clustern in Azure HDInsight.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/01/2019
+ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181076"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936848"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimieren von Apache Spark-Aufträgen in HDInsight
 
@@ -41,7 +41,7 @@ Frühere Versionen von Spark verwenden RDDs zum Abstrahieren von Daten. In Spark
     * Hoher GC-Overhead.
     * Unterbricht die Codegenerierung für die gesamte Phase.
 * **RDDs**
-    * Sie müssen RDDs nicht verwenden, sofern Sie keine neue benutzerdefinierte RDD erstellen.
+    * Sie müssen RDDs nicht verwenden, sofern Sie kein neues benutzerdefiniertes RDD erstellen.
     * Keine Abfrageoptimierung durch Catalyst.
     * Keine Codegenerierung für die gesamte Phase.
     * Hoher GC-Overhead.
@@ -60,6 +60,7 @@ Wenn Sie einen neuen Spark-Cluster erstellen, stehen Azure Blob Storage oder Azu
 | Speichertyp | Dateisystem | Geschwindigkeit | Kurzlebig | Anwendungsfälle |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //url/ | **Standard** | Ja | Kurzlebiger Cluster |
+| Azure-Blobspeicher (sicher) | **wasbs:** //url/ | **Standard** | Ja | Kurzlebiger Cluster |
 | Azure Data Lake Storage Gen 2| **abfs:** //url/ | **Schneller** | Ja | Kurzlebiger Cluster |
 | Azure Data Lake Storage Gen 1| **adl:** //url/ | **Schneller** | Ja | Kurzlebiger Cluster |
 | Lokales HDFS | **hdfs:** //url/ | **Sehr schnell** | Nein | Interaktiver 24/7-Cluster |
@@ -127,7 +128,7 @@ Sie können die Partitionierung und die Zuordnung von Buckets gleichzeitig verwe
 
 ## <a name="optimize-joins-and-shuffles"></a>Optimieren von Join- und Shufflevorgängen
 
-Wenn Aufträge in einem Join oder Shuffle langsam sind, ist die Ursache dafür wahrscheinlich *Datenschiefe*, also eine Asymmetrie in Ihren Auftragsdaten. Ein Beispiel: Ein Zuordnungsauftrag dauert 20 Sekunden, aber die Ausführung eines Auftrags mit Datenjoins und -shuffles dauert mehrere Stunden.   Zum Beheben der Datenschiefe sollten Sie Saltvorgänge für den gesamten Schlüssel anwenden oder einen *isolierten Salt* nur für eine Teilmenge der Schlüssel verwenden.  Wenn Sie einen isolierten Salt verwenden, sollten Sie eine weitere Filterung anwenden, um die Teilmenge der Schlüssel mit Salts in Zuordnungsjoins zu isolieren. Eine andere Option besteht darin, eine Bucketspalte einzuführen und zuerst vorab eine Aggregation in den Buckets durchzuführen.
+Wenn Aufträge in einem Join oder Shuffle langsam sind, ist die Ursache dafür wahrscheinlich *Datenschiefe*, also eine Asymmetrie in Ihren Auftragsdaten. Ein Beispiel: Ein Zuordnungsauftrag dauert 20 Sekunden, aber die Ausführung eines Auftrags mit Datenjoins und -shuffles dauert mehrere Stunden. Zum Beheben der Datenschiefe sollten Sie Saltvorgänge für den gesamten Schlüssel anwenden oder einen *isolierten Salt* nur für eine Teilmenge der Schlüssel verwenden. Wenn Sie einen isolierten Salt verwenden, sollten Sie eine weitere Filterung anwenden, um die Teilmenge der Schlüssel mit Salts in Zuordnungsjoins zu isolieren. Eine andere Option besteht darin, eine Bucketspalte einzuführen und zuerst vorab eine Aggregation in den Buckets durchzuführen.
 
 Ein weiterer Faktor, der Joins verlangsamen kann, ist möglicherweise der Jointyp. Standardmäßig verwendet Spark den Jointyp `SortMerge`. Dieser Jointyp eignet sich am besten für große Datasets, ist aber teuer in der Berechnung, weil hierbei vor dem Zusammenführen zuerst die linke und rechte Seite der Daten sortiert werden muss.
 
@@ -144,6 +145,7 @@ val df1 = spark.table("FactTableA")
 val df2 = spark.table("dimMP")
 df1.join(broadcast(df2), Seq("PK")).
     createOrReplaceTempView("V_JOIN")
+
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
@@ -151,7 +153,7 @@ Wenn Sie Tabellen mit Buckets verwenden, steht Ihnen ein dritter Jointyp zur Ver
 
 Die Reihenfolge der Joins spielt eine Rolle, insbesondere in komplexeren Abfragen. Beginnen Sie mit den selektivsten Joins. Verschieben Sie darüber hinaus nach Möglichkeit Joins, die die Zeilenanzahl erhöhen, hinter die Aggregation.
 
-Zum Verwalten der Parallelität – insbesondere im Fall von kartesischen Joins – können Sie geschachtelte Strukturen oder Fenstervorgänge hinzufügen und möglicherweise einen oder mehrere Schritte in Ihrem Spark-Auftrag überspringen.
+Zum Verwalten der Parallelität von kartesischen Joins können Sie geschachtelte Strukturen oder Fenstervorgänge hinzufügen und möglicherweise einen oder mehrere Schritte in Ihrem Spark-Auftrag überspringen.
 
 ## <a name="customize-cluster-configuration"></a>Anpassen der Clusterkonfiguration
 
@@ -179,17 +181,17 @@ Wenn Sie über die Executorkonfiguration entscheiden, ziehen Sie den Overhead f�
     5. Optional: Erhöhen Sie die Nutzung und Parallelität durch Überabonnierung der CPU.
 
 Bei der Auswahl der Executorgröße gelten folgende allgemeine Faustregeln:
-    
+
 1. Beginnen Sie mit 30 GB pro Executor, und verteilen Sie verfügbare Computerkerne.
 2. Erhöhen Sie die Anzahl von Executorkernen für größere Cluster (über 100 Executors).
-3. Erhöhen oder verringern Sie die Größe anhand von Testausführungen und den oben genannten Faktoren wie z.B. GC-Overhead.
+3. Ändern Sie die Größe anhand von Testausführungen und den oben genannten Faktoren wie z.B. GC-Overhead.
 
 Berücksichtigen Sie beim Ausführen gleichzeitiger Abfragen folgende Aspekte:
 
 1. Beginnen Sie mit 30 GB pro Executor und allen Computerkernen.
 2. Erstellen Sie durch Überabonnierung der CPU mehrere parallele Spark-Anwendungen (etwa 30 % verbesserte Latenz).
 3. Verteilen Sie Abfragen auf parallele Anwendungen.
-4. Erhöhen oder verringern Sie die Größe anhand von Testausführungen und den oben genannten Faktoren wie z.B. GC-Overhead.
+4. Ändern Sie die Größe anhand von Testausführungen und den oben genannten Faktoren wie z.B. GC-Overhead.
 
 Überwachen Sie die Abfrageleistung auf Ausreißer oder andere Leistungsprobleme, indem Sie die Zeitachsenansicht, das SQL-Diagramm, die Auftragsstatistiken usw. betrachten. Zuweilen sind einige Executors langsamer als die anderen, und die Ausführung der Tasks dauert wesentlich länger. Dies passiert häufig in größeren Clustern (über 30 Knoten). Teilen Sie in diesem Fall die Arbeit auf eine größere Anzahl von Tasks auf, sodass der Taskplaner langsame Tasks kompensieren kann. In der Anwendung sollten z.B. mindestens doppelt so viel Tasks wie Executorkerne vorhanden sein. Sie können auch mit `conf: spark.speculation = true` die spekulative Ausführung von Tasks aktivieren.
 

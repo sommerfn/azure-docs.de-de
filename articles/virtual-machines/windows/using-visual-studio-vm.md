@@ -15,17 +15,20 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 09/24/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 4664007bf892b2ae445d6b5174e4f346944e620b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 3cdec1bb9d4cb44c4cead6d2d208d661bf5da6ae
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272297"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971872"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) verfügbar.
 
 Neu bei Azure? [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free).
+
+> [!NOTE]
+> Nicht alle Abonnements berechtigen zur Bereitstellung von Windows 10-Images. Weitere Informationen finden Sie unter [Verwenden des Windows-Clients in Azure für Entwicklungs-/Testszenarien](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
 
 ## <a name="what-configurations-and-versions-are-available"></a>Welche Konfigurationen und Versionen sind verfügbar?
 Images für die letzten Hauptversionen, Visual Studio 2019 und Visual Studio 2017 und Visual Studio 2015, finden Sie im Azure Marketplace.  Für jede veröffentlichte Hauptversion werden die ursprünglich im Web veröffentlichte Version (released to web, RTW) und die letzten aktualisierten Versionen aufgeführt.  Jede dieser Versionen bietet die Editionen „Visual Studio Enterprise“ und „Visual Studio Community“.  Diese Images werden mindestens einmal monatlich aktualisiert, um die neuesten Visual Studio- und Windows-Updates einzuschließen.  Jede Imagebeschreibung enthält die Produktinstallationsversion und das Erstellungsdatum des Image, während die Namen der Images unverändert bleiben.
