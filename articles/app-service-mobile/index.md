@@ -9,17 +9,18 @@ ms.service: app-service-mobile
 ms.topic: landing-page
 ms.date: 05/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 38b1acad5e8eb869d1ed2a8d218a2416bd3b8098
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a43ef0a527b8533940023b6457f9b0a5a4b22e79
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024750"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388324"
 ---
 # <a name="mobile-apps-documentation"></a>Mobile Apps-Dokumentation
 
 > [!NOTE]
 > Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
+>
 > Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 Hier erfahren Sie, wie Sie mithilfe von Mobile Apps in Azure App Service native iOS-/Android-/Windows-Apps oder plattformübergreifende Apps mit Xamarin oder Cordova erstellen. Anhand von Tutorials, Videos, der Client-SDK-Dokumentation und anderem Dokumentationsmaterial wird gezeigt, wie Sie das Back-End für eine beliebige mobile App erstellen und hosten.
