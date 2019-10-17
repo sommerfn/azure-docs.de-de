@@ -4,17 +4,17 @@ description: In diesem Tutorial erstellen Sie ein Azure Machine Learning-Modell 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/07/2019
+ms.date: 10/16/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6c48aaf404803c45122ed3fad0d6af1345406f7b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 04c09c60a8b633c9ddb51fbe97ac02a319472448
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239665"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434683"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul (Vorschauversion)
 
