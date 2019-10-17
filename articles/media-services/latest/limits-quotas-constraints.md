@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 819548d784e5cba9fcec6b2110137d91bf28e03d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293443"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296907"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kontingente und Einschränkungen für Azure Media Services (v3)
 
@@ -32,8 +32,6 @@ In diesem Artikel werden die Kontingente und Einschränkungen für Azure Media S
 | Dateien pro „JobInput“|10 (feststehend)|
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>(1)</sup> |
 | Aufträge pro Media Services-Konto | 500.000 <sup>(2)</sup> (feststehend)|
-| Auflisten von Transformationen|Paginieren Sie die Antwort mit 1.000 Transformationen pro Seite|
-| Auflisten von Aufträgen|Paginieren Sie die Antwort mit 500 Transformationen pro Seite|
 | Liveereignisse pro Media Services-Konto |5|
 | Media Services-Konten in einem einzelnen Abonnement | 25 (feststehend) |
 | Live-Ausgaben pro Liveereignis |3 <sup>(3)</sup> |

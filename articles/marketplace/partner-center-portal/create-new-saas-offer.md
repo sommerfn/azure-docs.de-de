@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: d035f26e4b550eb1e5d2cca161f14880814a15f6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244164"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376282"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -21,7 +21,7 @@ Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) zu beginnen, mü
 ![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
 
 >[!Note]
-> Nach der Veröffentlichung eines Angebots werden im Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Sie müssen das Angebot nach dem Vornehmen von Änderungen für die Veröffentlichung einreichen.
+> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Sie müssen das Angebot nach dem Vornehmen von Änderungen für die Veröffentlichung einreichen.
 
 Klicken Sie auf die Schaltfläche **+ Neues Angebot…** , und wählen Sie dann das Menüelement **Software-as-a-Service** aus. 
 
@@ -436,7 +436,7 @@ Wählen Sie aus, wie häufig Kunden den aufgeführten Preis zahlen müssen. Es m
 - **Preis**: „USD per month“ (US-Dollar pro Monat) oder „USD per year“ (US-Dollar pro Jahr)
 
 Preise in der lokalen Währung (USD = US-Dollar) werden während der Einrichtung gemäß dem aktuellen Wechselkurs in die lokale Währung aller ausgewählten Märkte konvertiert. Überprüfen Sie vor der Veröffentlichung die Preise in jedem Markt, indem Sie die Preistabellenkalkulation exportieren. Wenn Sie benutzerdefinierte Preise in einem einzelnen Markt festlegen möchten, ändern und importieren Sie die Preistabellenkalkulation. Sie sind für die Überprüfung des Preismodells und diese Einstellungen verantwortlich.
-* *Sie müssen Ihre Preisänderungen speichern, damit die Preisdaten exportiert werden können.*
+*\*Sie müssen Ihre Preisänderungen speichern, damit die Preisdaten exportiert werden können.*
 
 Überprüfen Sie Ihre Preise vor der Veröffentlichung sorgfältig, da nicht alle Elemente eines Plans nach seiner Veröffentlichung geändert werden können:
 

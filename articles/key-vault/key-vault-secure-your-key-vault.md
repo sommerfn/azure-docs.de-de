@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 4857cda7c3387e72be8837422469888adc5504d1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 04f4a71e6b54100e5a133958845cf732c2286b32
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883093"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301066"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -37,7 +37,7 @@ Wenn Sie in einem Azure-Abonnement einen Schlüsseltresor erstellen, wird dieser
 - **Benutzer- plus Anwendungszugriff**: Die Anwendung greift im Namen eines angemeldeten Benutzers auf den Schlüsseltresor zu. Beispiele für diese Art von Zugriff wären etwa Azure PowerShell und das Azure-Portal. Der Benutzerzugriff wird auf zwei Arten gewährt. Benutzer können von jeder Anwendung aus auf den Schlüsseltresor zugreifen, oder sie müssen eine bestimmte Anwendung verwenden (als _Verbundidentität_ bezeichnet).
 - **Nur Anwendungszugriff**: Die Anwendung wird als Daemondienst oder als Hintergrundauftrag ausgeführt. Die Identität der Anwendung erhält Zugriff auf den Schlüsseltresor.
 
-Für beide Arten des Zugriffs wird die Anwendung in Azure AD authentifiziert. Die Anwendung verwendet eine beliebige [unterstützte Authentifizierungsmethode](../active-directory/develop/authentication-scenarios.md), die auf dem Anwendungstyp basiert. Die Anwendung erwirbt ein Token für eine Ressource in der Ebene, um den Zugriff zu gewähren. Die Ressource ist ein Endpunkt in der Verwaltungs- oder Datenebene, basierend auf der Azure-Umgebung. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an einen Schlüsseltresor. Weitere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../active-directory/develop/v1-protocols-oauth-code.md).
+Für beide Arten des Zugriffs wird die Anwendung in Azure AD authentifiziert. Die Anwendung verwendet eine beliebige [unterstützte Authentifizierungsmethode](../active-directory/develop/authentication-scenarios.md), die auf dem Anwendungstyp basiert. Die Anwendung erwirbt ein Token für eine Ressource in der Ebene, um den Zugriff zu gewähren. Die Ressource ist ein Endpunkt in der Verwaltungs- oder Datenebene, basierend auf der Azure-Umgebung. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an einen Schlüsseltresor. Weitere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
 Das Modell eines einzelnen Mechanismus für die Authentifizierung für beide Ebenen hat mehrere Vorteile:
 
@@ -208,7 +208,7 @@ Sie sollten den Zugriff auf Ihren Schlüsseltresor weiterhin durch die [Konfigur
 
     In diesem 2015 Microsoft Ignite-Konferenzvideo werden Zugriffsverwaltung und Berichtsfunktionen in Azure erläutert. Außerdem werden dort bewährte Methoden zum Schützen des Zugriffs auf Azure-Abonnements mit Azure AD vorgestellt.
 
-* [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure AD](../active-directory/develop/v1-protocols-oauth-code.md)
+* [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure AD](../active-directory/develop/v2-oauth2-auth-code-flow.md)
 
 * [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx)
 

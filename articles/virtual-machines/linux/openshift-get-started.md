@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2293eac45da6f53b0cd29fda68b0ddc76aea1a6c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082551"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390632"
 ---
 # <a name="openshift-in-azure"></a>OpenShift in Azure
 
@@ -49,9 +49,9 @@ OKD ist ein [Open Source](https://www.okd.io/) Upstream-Projekt von OpenShift, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren allgemeiner Voraussetzungen für OpenShift in Azure](./openshift-prerequisites.md)
-- [Bereitstellen von OpenShift Container Platform in Azure](./openshift-container-platform.md)
-- [Bereitstellen eines selbstverwalteten OpenShift Container Platform-Marketplace-Angebots](./openshift-marketplace-self-managed.md)
+- [Konfigurieren allgemeiner Voraussetzungen für OpenShift in Azure](./openshift-container-platform-3x-prerequisites.md)
+- [Bereitstellen von OpenShift Container Platform in Azure](./openshift-container-platform-3x.md)
+- [Bereitstellen eines selbstverwalteten OpenShift Container Platform-Marketplace-Angebots](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [Bereitstellen von OpenShift in Azure Stack](./openshift-azure-stack.md)
-- [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
-- [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-troubleshooting.md)
+- [Aufgaben nach der Bereitstellung](./openshift-container-platform-3x-post-deployment.md)
+- [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-container-platform-3x-troubleshooting.md)

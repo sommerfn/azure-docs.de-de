@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 40f0a667ffa23010ef00ed105454ab305171cc19
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11924b44a51767df68372cd94c581b2feaa8ac25
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812507"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72247103"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>Anzahl der Fehlerdomänen pro Region
 
@@ -23,7 +23,7 @@ ms.locfileid: "67812507"
 | USA (Mitte/Norden)    | 3                       |
 | USA Süd Mitte    | 3                       |
 | USA, Westen-Mitte     | 2                       |
-| Kanada, Mitte      | 3                      |
+| Kanada, Mitte      | 3                       |
 | Kanada, Osten         | 2                       |
 |                     |                         |
 | Nordeuropa        | 3                       |
@@ -42,6 +42,11 @@ ms.locfileid: "67812507"
 | Korea, Süden         | 2                       |
 | Vereinigte Arabische Emirate, Norden           | 2                       |
 |                     |                         |
+| China, Osten          | 2                       |
+| China, Osten 2        | 2                       |
+| China, Norden         | 2                       |
+| China, Norden 2       | 2                       |
+|
 | Australien (Osten)      | 2                       |
 | Australien, Südosten | 2                       |
 | Australien, Mitte   | 2                       |

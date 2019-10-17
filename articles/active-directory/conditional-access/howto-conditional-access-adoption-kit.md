@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075276"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430043"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Einführen des bedingten Azure AD-Zugriffs
 
@@ -69,7 +69,6 @@ Aktuelle Blogs der Tech-Community und der Microsoft Identity Division:
 
 Außerdem finden Sie unter den folgenden Links Anleitungen zum Schutz des Zugriffs auf alle Dienste, die in Azure Active Directory integriert sind.
 
-* [Was ist Baselineschutz (Vorschauversion)?](baseline-protection.md) – Durch den Baselineschutz wird sichergestellt, dass in Ihrer Azure Active Directory-Umgebung mindestens eine Basisabsicherung aktiviert ist.
 * [Konfigurationen für den Identitäts- und Gerätezugriff](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations) – Erfahren Sie, wie Sie den sicheren Zugriff auf Clouddienste über Enterprise Mobility + Security-Produkte konfigurieren können, indem Sie eine empfohlene Umgebung und Konfiguration implementieren, einschließlich eines vorgeschriebenen Satzes von Richtlinien für bedingten Zugriff und zugehöriger Funktionen.
 * [Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff](technical-reference.md) – Inhalt:
    * Welche Apps nutzen den bedingten Zugriff?

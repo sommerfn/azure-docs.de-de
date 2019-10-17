@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 566c208ef415f6fc9f3ada419e2f9e9244bc066d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182287"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333159"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Bereitstellungsstrategien und bewährte Methoden zur Optimierung der Leistung in Azure Search
 
@@ -94,11 +94,6 @@ Wenn Sie die Azure Search-REST-API zum [Übertragen von Inhalten in Ihren Azure 
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) können Sie Anfragen an mehrere Websites an verschiedenen geografischen Standorten weiterleiten, an denen dann mehrere Azure Search-Dienste zum Einsatz kommen. Traffic Manager kann testen, ob Azure Search verfügbar ist, und Benutzer während eines Ausfalls an alternative Suchdienste weiterleiten – dies ist ein großer Vorteil. Wenn Sie Suchanfragen über Azure-Websites weiterleiten, ermöglicht Azure Traffic Manager zudem den Lastenausgleich in Fällen, in denen die Website erreichbar ist, aber nicht Azure Search. Hier finden Sie ein Beispiel für eine Architektur mit Traffic Manager.
 
    ![Tabelle der Dienste nach Region mit Traffic Manager im Zentrum][3]
-
-## <a name="monitor-performance"></a>Überwachen der Leistung
-Azure Search bietet die Möglichkeit, die Leistung Ihres Diensts über das [Durchsuchen der Datenverkehrsanalyse](search-traffic-analytics.md) zu analysieren und zu überwachen. Wenn Sie diese Funktionalität aktivieren und eine Instrumentierung zu Ihrer Client-App hinzufügen, können Sie optional die einzelnen Suchvorgänge sowie aggregierte Metriken in einem Azure Storage-Konto protokollieren, das dann zur Analyse verarbeitet oder in Power BI visualisiert werden kann. Metriken, die auf diese Weise erfasst werden, stellen Leistungsstatistiken wie beispielsweise die durchschnittliche Anzahl von Abfragen oder die Antwortzeiten für Abfragen bereit. Darüber hinaus können Sie mit der Vorgangsprotokollierung Details bestimmter Suchoperationen anzeigen.
-
-Die Datenverkehrsanalyse ist nützlich,um die Latenzraten aus der Perspektive von Azure Search zu verstehen. Da die protokollierten Leistungsmetriken für Abfragen auf dem Zeitraum basieren, der für die vollständige Verarbeitung einer Abfrage in Azure Search erforderlich ist (von dem Zeitpunkt, zu dem eine Antwort angefordert wurde, bis zu dem Zeitpunkt, zu dem sie gesendet wird), können Sie anhand dieser Metriken ermitteln, ob Latenzprobleme seitens des Azure Search-Diensts oder außerhalb des Diensts auftreten (z.B. aufgrund einer Netzwerklatenz).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu den Tarifen und den Grenzwerte für jeden Tarif finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).

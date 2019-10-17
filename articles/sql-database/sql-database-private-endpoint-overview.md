@@ -8,10 +8,10 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
 ms.openlocfilehash: 3adcccde89823f865535c9e1350ac4c3e541eef6
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71066254"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Private Link für Azure SQL-Datenbank und Data Warehouse (Vorschauversion)
@@ -51,7 +51,7 @@ Mit Private Link können Kunden den standortübergreifenden Zugriff auf den priv
 Private Endpunkte können über das Portal, mithilfe von PowerShell oder über die Azure CLI erstellt werden:
 - [Portal](../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../private-link/create-private-endpoint-powershell.md)
-- [CLI](../private-link/create-private-endpoint-cli.md)
+- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](../private-link/create-private-endpoint-cli.md)
 
 ### <a name="approval-process"></a>Genehmigungsprozess
 Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann der SQL-Administrator die private Endpunktverbindung (Private Endpoint Connection, PEC) mit SQL-Datenbank verwalten.

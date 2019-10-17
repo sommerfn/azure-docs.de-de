@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da694dd77186ce22bd7080540bd3b08e14f205b0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835367"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374034"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integration in Azure Active Directory
 
@@ -37,7 +37,7 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Azure AD zu integrieren. Nutze
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Unterstützen von Azure AD als Möglichkeit zur Anmeldung bei Ihrer Anwendung
 
-**Verringern von Anmeldeaufwand und Supportkosten.** Wenn sich Ihre Benutzer über Azure AD bei Ihrer Anwendung anmelden, müssen sie sich keinen weiteren Benutzernamen und kein weiteres Kennwort merken. Als Entwickler müssen Sie ein Kennwort weniger speichern und schützen. Allein dadurch, dass keine vergessenen Kennwörter zurückgesetzt werden müssen, kann es zu beträchtlichen Kosteneinsparungen kommen. Azure AD unterstützt das Anmelden für einige der weltweit beliebtesten Cloudanwendungen wie Office 365 und Microsoft Azure. Bei Hunderten Millionen Benutzern in Millionen Organisationen ist es wahrscheinlich, dass Ihr Benutzer bereits bei Azure AD angemeldet ist. Erfahren Sie mehr über das [Hinzufügen von Unterstützung für die Azure AD-Anmeldung](authentication-scenarios.md).
+**Verringern von Anmeldeaufwand und Supportkosten.** Wenn sich Ihre Benutzer über Azure AD bei Ihrer Anwendung anmelden, müssen sie sich keinen weiteren Benutzernamen und kein weiteres Kennwort merken. Als Entwickler müssen Sie ein Kennwort weniger speichern und schützen. Allein dadurch, dass keine vergessenen Kennwörter zurückgesetzt werden müssen, kann es zu beträchtlichen Kosteneinsparungen kommen. Azure AD unterstützt das Anmelden für einige der weltweit beliebtesten Cloudanwendungen wie Office 365 und Microsoft Azure. Bei Hunderten Millionen Benutzern in Millionen Organisationen ist es wahrscheinlich, dass Ihr Benutzer bereits bei Azure AD angemeldet ist. Erfahren Sie mehr über das [Hinzufügen von Unterstützung für die Azure AD-Anmeldung](v1-authentication-scenarios.md).
 
 **Vereinfachen der Registrierung für Ihre Anwendung.**  Während der Registrierung für Ihre Anwendung kann Azure AD wichtige Informationen über einen Benutzer senden, sodass Sie Ihr Anmeldeformular vorab ausfüllen lassen oder vollständig entfernen können. Benutzer können sich für Ihre Anwendung mit ihrem Azure AD-Konto in einer vertrauten Genehmigungsumgebung registrieren, die derjenigen in sozialen Medien und mobilen Anwendungen ähnelt. Benutzer können sich ohne Beteiligung der IT bei einer Anwendung, die in Azure AD integriert ist, registrieren und anmelden. Erfahren Sie mehr über das [Registrieren Ihrer Anwendung für die Azure AD-Kontoanmeldung](../../app-service/configure-authentication-provider-aad.md).
 
@@ -97,5 +97,5 @@ Die Integration in Azure AD bietet den Vorteil, dass Sie keinen zusätzlichen Co
 
 [Erste Schritte mit dem Schreiben von Code](v2-overview.md#getting-started).
 
-[Anmelden von Benutzern mithilfe von Microsoft Identity Platform](authentication-scenarios.md)
+[Anmelden von Benutzern mithilfe von Microsoft Identity Platform](v1-authentication-scenarios.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699719"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299582"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.
@@ -63,7 +63,7 @@ Mithilfe der folgenden Schritte importieren Sie Daten von einem lokalen Speicher
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Es können mehrere Freigaben für ein Speicherkonto angegeben werden. Weitere Informationen finden Sie unter [Vorbereiten der Dataset-CSV-Datei](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file).
+    Es können mehrere Freigaben für ein Speicherkonto angegeben werden. Weitere Informationen finden Sie unter [Vorbereiten der Dataset-CSV-Datei](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 5. Erstellen Sie die Driveset-CSV-Datei. In der Driveset-CSV-Datei sind die Datenträger aufgeführt, die für den lokalen Export-Agent verfügbar sind. In der folgenden Driveset-CSV-Datei sind z.B. die Laufwerke `X:`, `Y:` und `Z:` aufgeführt, die für den lokalen Exportauftrag verwendet werden sollen:
 
@@ -74,7 +74,7 @@ Mithilfe der folgenden Schritte importieren Sie Daten von einem lokalen Speicher
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Weitere Informationen finden Sie unter [Vorbereiten der Driveset-CSV-Datei](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file).
+    Weitere Informationen finden Sie unter [Vorbereiten der Driveset-CSV-Datei](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 6. Kopieren Sie Ihre Daten mithilfe des [WAImportExport-Tools](https://www.microsoft.com/download/details.aspx?id=55280) auf eine oder mehrere Festplatten.
 

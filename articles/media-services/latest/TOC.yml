@@ -285,6 +285,8 @@
       items:
         - name: 'Veröffentlichen eines Medienobjekts: CLI'
           href: cli-publish-asset.md
+        - name: Signalisieren beschreibender Audiospuren
+          href: signal-descriptive-audio-howto.md
 - name: Verweis
   items:
     - name: OpenAPI-Spezifikation (Swagger)

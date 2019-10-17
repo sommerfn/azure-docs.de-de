@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3f427726a128eed426a64bc533075ba0cdde9544
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241075"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982851"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -189,6 +189,9 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
     - Webportal-URL: „Virtuelles Verzeichnis“ sollte „Reports_<SQLInstanceName>“ lauten.
 
     Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017).
+
+    > [!NOTE]
+    > Die Lizenzierung für SQL Server, das als Datenbank für MABS verwendet wird, wird durch [Microsoft Online Services-Bestimmungen](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST) geregelt. Gemäß OST kann SQL Server, das mit MABS gebündelt ist, nur als Datenbank für MABS verwendet werden.
 
 4. Geben Sie einen Speicherort für die Installation der Microsoft Azure Backup-Serverdateien an, und klicken Sie auf **Weiter**.
 

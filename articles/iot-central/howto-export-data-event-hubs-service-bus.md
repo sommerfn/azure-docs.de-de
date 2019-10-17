@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 732ce570f8235d1f147055af6972c2a8d12599dc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875997"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971621"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportieren von Daten in Azure IoT Central
 
@@ -33,9 +33,9 @@ In diesem Artikel wird beschrieben, wie Sie in Azure IoT Central das Feature fü
 
 ## <a name="set-up-export-destination"></a>Einrichten des Exportziels
 
-Wenn Sie kein vorhandenes Event Hubs-/Service Bus-Ziel für den Export haben, gehen Sie wie folgt vor:
+Wenn Sie noch kein Event Hubs-/Service Bus-Ziel für den Export haben, gehen Sie wie folgt vor, um eines zu erstellen:
 
-## <a name="create-event-hubs-namespace"></a>Erstellen eines Event Hubs-Namespaces
+### <a name="create-event-hubs-namespace"></a>Erstellen eines Event Hubs-Namespaces
 
 1. Erstellen Sie einen [neuen Event Hubs-Namespace im Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.EventHub). Weitere Informationen erhalten Sie in der [Azure Event Hubs-Dokumentation](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 2. Wählen Sie ein Abonnement aus. 
@@ -44,7 +44,7 @@ Wenn Sie kein vorhandenes Event Hubs-/Service Bus-Ziel für den Export haben, ge
     > Jetzt können Sie Daten in andere Abonnements exportieren, die **nicht identisch sind** mit dem für Ihre IoT Central-Anwendung mit nutzungsbasierter Bezahlung. In diesem Fall stellen Sie die Verbindung mithilfe einer Verbindungszeichenfolge her.
 3. Erstellen Sie einen Event Hub in Ihrem Event Hubs-Namespace. Wechseln Sie zu Ihrem Namespace, und wählen Sie oben **+ Event Hub** aus, um eine Event Hub-Instanz zu erstellen.
 
-## <a name="create-service-bus-namespace"></a>Erstellen eines Service Bus-Namespaces
+### <a name="create-service-bus-namespace"></a>Erstellen eines Service Bus-Namespaces
 
 1. Erstellen Sie einen [neuen Service Bus-Namespace im Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). Weitere Informationen erhalten Sie in der [Azure Service Bus-Dokumentation](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
 2. Wählen Sie ein Abonnement aus. 
@@ -66,14 +66,12 @@ Nachdem Sie nun ein Event Hubs-/Service Bus-Ziel für den Export von Daten haben
     > [!Note]
     > Wenn im linken Menü „Kontinuierlicher Datenexport“ nicht angezeigt wird, sind Sie kein Administrator in Ihrer App. Wenden Sie sich an Ihren Administrator, damit dieser den Datenexport einrichtet.
 
-    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_menu1.png)
-
 3. Wählen Sie oben rechts die Schaltfläche **+ Neu** aus. Wählen Sie entweder **Azure Event Hubs** oder **Azure Service Bus** als Ziel für Ihren Export aus. 
 
     > [!NOTE] 
     > Die maximale Anzahl von Exporten pro App beträgt 5. 
 
-    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export_new1.png)
+    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export-new2.png)
 
 4. Wählen Sie im Dropdown-Listenfeld Ihren **Event Hubs-Namespace/Service Bus-Namespace** aus. Sie können auch die letzte Option in der Liste auswählen, bei der es sich um **Verbindungszeichenfolge eingeben** handelt. 
 
@@ -83,7 +81,7 @@ Nachdem Sie nun ein Event Hubs-/Service Bus-Ziel für den Export von Daten haben
     > [!NOTE] 
     > Bei 7-Tage-Test-Apps ist eine Verbindungszeichenfolge die einzige Möglichkeit zur Konfiguration des kontinuierlichen Datenexports. Dies liegt daran, dass 7-Tage-Test-Apps kein Azure-Abonnement zugeordnet ist.
 
-    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_create1.png)
+    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export-eh.png)
 
 5. (Optional) Wenn Sie **Verbindungszeichenfolge eingeben** ausgewählt haben, wird ein neues Feld angezeigt, in das Sie Ihre Verbindungszeichenfolge einfügen können. Um die Verbindungszeichenfolge für
     - Ihren Event Hubs oder Service Bus abzurufen, wechseln Sie im Azure-Portal zu dem Namespace.
@@ -95,14 +93,12 @@ Nachdem Sie nun ein Event Hubs-/Service Bus-Ziel für den Export von Daten haben
 
 7. Geben Sie unter **Data to export** (Zu exportierende Daten) die Typen der zu exportierenden Daten an, indem Sie den Typ jeweils auf **Ein** festlegen.
 
-6. Um den kontinuierlichen Datenexport zu aktivieren, stellen Sie sicher, dass **Datenexport** auf **Ein** festgelegt ist. Wählen Sie **Speichern** aus.
+8. Um den kontinuierlichen Datenexport zu aktivieren, stellen Sie sicher, dass der Umschalter **Datenexport** auf **Ein** festgelegt ist. Wählen Sie **Speichern** aus.
 
-    ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/export_list1.png)
-
-7. Nach einigen Minuten werden Ihre Daten an Ihrem ausgewählten Ziel angezeigt.
+9. Nach einigen Minuten werden Ihre Daten an Ihrem ausgewählten Ziel angezeigt.
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Exportieren in Azure Event Hubs und Azure Service Bus
+## <a name="data-format"></a>Datenformat
 
 Messungen, Geräte und Gerätevorlagen werden nahezu in Echtzeit in Ihren Event Hub, Ihre Service Bus-Warteschlange oder ein Thema exportiert. Exportierte Messdaten enthalten die Gesamtheit der Nachricht, die Ihre Geräte an IoT Central gesendet haben, nicht nur die Werte der Messungen selbst. Exportierte Gerätedaten enthalten Änderungen an Eigenschaften und Einstellungen aller Geräte, und exportierte Gerätevorlagen enthalten Änderungen an allen Gerätevorlagen. Die exportierten Daten befinden sich in der Eigenschaft „body“ und haben das JSON-Format.
 
@@ -146,7 +142,7 @@ Das folgende Beispiel zeigt eine Nachricht zu Messdaten, die im Event Hub, in de
     "x-opt-enqueued-time": 1539381030200
   },
   "sequenceNumber": 25325,
-  "enqueuedTimeUtc": "2018-10-12T21:50:30.200Z",
+  "enqueuedTimeUtc": "2018-10-02T21:50:30.200Z",
   "offset": "<offset>",
   "properties": {
     "content_type": "application/json",
@@ -211,7 +207,7 @@ Das folgende Beispiel zeigt eine Nachricht zu Gerätedaten im Event Hub, in der 
   },
   "partitionKey": "<partitionKey>",
   "sequenceNumber": 39740,
-  "enqueuedTimeUtc": "2018-10-11T16:22:39.654Z",
+  "enqueuedTimeUtc": "2018-10-02T16:22:39.654Z",
   "offset": "<offset>",
 }
 ```
@@ -236,62 +232,62 @@ Jede Nachricht stellt eine oder mehrere Änderungen an einer Gerätevorlage seit
 Das folgende Beispiel zeigt eine Nachricht zu Gerätevorlagendaten im Event Hub, in der Service-Bus-Warteschlange oder im Thema:
 
 ```json
-{
-  "body": {
-    "id": "<id>",
-    "version": "1.0.0",
-    "name": "<templateName>",
-    "measurements": {
-      "telemetry": {
-        "humidity": {
-          "dataType": "double",
-          "name": "humidity"
+{ 
+  "body":{ 
+    "id":"<id>",
+    "version":"1.0.0",
+    "name":"<templateName>",
+    "measurements":{ 
+      "telemetry":{ 
+        "humidity":{ 
+          "dataType":"double",
+          "name":"humidity"
         },
-        "pressure": {
-          "dataType": "double",
-          "name": "pressure"
+        "pressure":{ 
+          "dataType":"double",
+          "name":"pressure"
         },
-        "temp": {
-          "dataType": "double",
-          "name": "temperature"
+        "temp":{ 
+          "dataType":"double",
+          "name":"temperature"
         }
       }
     },
-    "properties": {
-      "cloud": {
-        "location": {
-          "dataType": "string",
-          "name": "Location"
+    "properties":{ 
+      "cloud":{ 
+        "location":{ 
+          "dataType":"string",
+          "name":"Location"
         }
       },
-      "device": {
-        "dieNumber": {
-          "dataType": "double",
-          "name": "Die Number"
+      "device":{ 
+        "dieNumber":{ 
+          "dataType":"double",
+          "name":"Die Number"
         }
       }
     },
-    "settings": {
-      "device": {
-        "fanSpeed": {
-          "dataType": "double",
-          "name": "Fan Speed",
-          "initialValue": 0
+    "settings":{ 
+      "device":{ 
+        "fanSpeed":{ 
+          "dataType":"double",
+          "name":"Fan Speed",
+          "initialValue":0
         }
       }
     }
   },
-  "annotations": {
-    "iotcentral-message-source": "deviceTemplates",
-    "x-opt-partition-key": "<partitionKey>",
-    "x-opt-sequence-number": 25315,
-    "x-opt-offset": "<offset>",
-    "x-opt-enqueued-time": 1539274985085
+  "annotations":{ 
+    "iotcentral-message-source":"deviceTemplates",
+    "x-opt-partition-key":"<partitionKey>",
+    "x-opt-sequence-number":25315,
+    "x-opt-offset":"<offset>",
+    "x-opt-enqueued-time":1539274985085
   },
-  "partitionKey": "<partitionKey>",
-  "sequenceNumber": 25315,
-  "enqueuedTimeUtc": "2018-10-11T16:23:05.085Z",
-  "offset": "<offset>",
+  "partitionKey":"<partitionKey>",
+  "sequenceNumber":25315,
+  "enqueuedTimeUtc":"2018-10-02T16:23:05.085Z",
+  "offset":"<offset>"
 }
 ```
 

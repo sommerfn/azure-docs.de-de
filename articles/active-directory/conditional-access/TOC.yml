@@ -21,6 +21,8 @@
   items:
     - name: Allgemeine Richtlinien für bedingten Zugriff
       href: concept-conditional-access-policy-common.md
+    - name: Standardwerte für die Sicherheit
+      href: concept-conditional-access-security-defaults.md
     - name: Komponenten der Richtlinie für bedingten Zugriff
       href: concept-conditional-access-policies.md
     - name: Bedingungen
@@ -76,16 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: Migrieren von klassischen Richtlinien
       href: policy-migration.md
-    - name: Basisrichtlinien
-      items:
-        - name: Anfordern von MFA für Administratoren
-          href: howto-baseline-protect-administrators.md
-        - name: Endbenutzerschutz
-          href: howto-baseline-protect-end-users.md
-        - name: Blockieren älterer Authentifizierungsmethoden
-          href: howto-baseline-protect-legacy-auth.md
-        - name: Anfordern von MFA für die Dienstverwaltung
-          href: howto-baseline-protect-azure.md
     - name: Einführen von bedingtem Zugriff
       href: howto-conditional-access-adoption-kit.md
     - name: Problembehandlung

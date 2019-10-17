@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028676"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330666"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Einrichten eines Labs zum Vermitteln von Kursen für ethisches Hacken 
 In diesem Artikel erfahren Sie, wie Sie einen Kurs einrichten, der sich auf die forensische Seite des ethischen Hackens konzentriert. Bei Penetrationstests, eine von der Community für ethisches Hacken verwendete Vorgehensweise, versucht eine Person, auf das System oder Netzwerk zuzugreifen, um Schwachstellen zu demonstrieren, die ein böswilliger Angreifer ausnutzen könnte. 
@@ -141,7 +141,7 @@ In diesem Artikel wurden die Schritte zum Erstellen eines Labs für einen Kurs z
 Die nächsten Schritte sind die gleichen für sämtliche Labs:
 
 - [Hinzufügen von Benutzern](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Kontingent festlegen](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Kontingent festlegen](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zeitplan festlegen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Registrierungslinks an Kursteilnehmer senden](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Registrierungslinks an Kursteilnehmer senden](how-to-configure-student-usage.md#send-invitations-to-users). 
 

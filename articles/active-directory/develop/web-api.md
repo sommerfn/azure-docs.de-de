@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4babb7e869f4fc83bcdb530a580a29dda234293
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545211"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373791"
 ---
 # <a name="web-api"></a>Web-API
 
@@ -81,4 +81,4 @@ Wenn die Webanwendung mithilfe ihres Autorisierungscodes ein JWT-Zugriffstoken a
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu anderen [Anwendungstypen und -szenarien](app-types.md)
-- Weitere Informationen zu den [Authentifizierungsgrundlagen](authentication-scenarios.md) von Azure AD
+- Weitere Informationen zu den [Authentifizierungsgrundlagen](v1-authentication-scenarios.md) von Azure AD

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a160f78f69ed559c576147e9758c837d5ae9b77e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235334"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429987"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 
@@ -95,9 +95,3 @@ Wenn Sie mit einer Person sprechen müssen, stellen Sie eine Supportanfrage. Wen
 * Wenn Sie kein Azure-Kunde sind, können Sie auch über [unseren kommerziellen Support](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial) eine Supportanfrage an Microsoft stellen.
 
 Sie können auch einen [virtuellen Agent](https://support.microsoft.com/contactus/?ws=support) ausprobieren, um Support zu erhalten oder Fragen zu stellen.
-
-### <a name="free-chat-support-for-a-limited-time"></a>Kostenloser Chatsupport für begrenzte Zeit
-
-Sie können auch unseren Chatsupport nutzen, der für Microsoft Partner für einen begrenzten Zeitraum kostenlos ist. Wenn Ihr Unternehmen kein Microsoft Partner ist, können Sie es kostenlos registrieren und erhalten weitere Vorteile – klicken Sie [hier](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx).
-
-Nach der Registrierung Ihres Unternehmens können Sie die Chatanfrage [hier](https://aka.ms/devchat) starten.

@@ -2,18 +2,17 @@
 title: Überwachen von Servermetriken in Azure Analysis Services | Microsoft-Dokumentation
 description: Informationen zum Überwachen von Analysis Services-Servermetriken im Azure-Portal.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c7aaf911930f83775f66c47377bc68edb059519
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a66089d01ed9eabdb78975eb1738b87c99fbf311
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958984"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294870"
 ---
 # <a name="monitor-server-metrics"></a>Überwachen von Servermetriken
 

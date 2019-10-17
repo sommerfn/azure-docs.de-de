@@ -5,19 +5,20 @@ services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b14ce5cc83dcbbeef2379d21027d4bca337fd9fd
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899183"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376035"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights-Telemetriedatenmodell
 
@@ -49,7 +50,7 @@ Mit dem Application Insights-Telemetriedatenmodell wird eine Weise definiert, au
 
 Mit dem Application Insights-Datenmodell können Sie Ihre Anwendungstelemetriedaten auf einfache, aber leistungsfähige Weise modellieren. Unser Ziel ist und bleibt ein einfaches und schlankes Modell, mit dem wesentliche Szenarien unterstützt werden und die Ausweitung des Schemas für erweiterte Anwendungsfälle ermöglicht wird.
 
-Wenn Sie Probleme mit dem Datenmodell oder dem Schema melden möchten oder Fragen und Anregungen haben, verwenden Sie das GitHub-Repository [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema).
+Wenn Sie Probleme mit dem Datenmodell oder dem Schema melden möchten oder Fragen und Anregungen haben, verwenden Sie das GitHub-Repository [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: a9c3ca3a4047e69efedaa0baa93d3f1923c78c22
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: a673daf355975eafdd1fac0b32fe8a2fd336f389
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272529"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514125"
 ---
 # <a name="migrate-management-tool-resources-to-global-azure"></a>Migrieren von Verwaltungstoolressourcen zu Azure weltweit
 
@@ -78,9 +78,9 @@ Weitere Informationen zu Site Recovery und Informationen dazu, wie Sie virtuelle
 
 Frischen Sie Ihre Kenntnisse auf, indem Sie die folgenden Schritt-für-Schritt-Tutorials durcharbeiten:
 
-- [Azure zu Azure: Notfallwiederherstellung](https://docs.microsoft.com/azure/site-recovery/#azure-to-azure)
-- [VMware zu Azure: Notfallwiederherstellung](https://docs.microsoft.com/azure/site-recovery/#vmware)
-- [Hyper-V zu Azure: Notfallwiederherstellung](https://docs.microsoft.com/azure/site-recovery/#hyper-v)
+- [Azure zu Azure: Notfallwiederherstellung](../site-recovery/azure-to-azure-about-networking.md)
+- [VMware zu Azure: Notfallwiederherstellung](../site-recovery/site-recovery-deployment-planner.md)
+- [Hyper-V zu Azure: Notfallwiederherstellung](../site-recovery/hyper-v-deployment-planner-overview.md)
 
 ## <a name="azure-policies"></a>Azure-Richtlinien
 

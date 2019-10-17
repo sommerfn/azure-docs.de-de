@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744421"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514010"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz
 
@@ -40,7 +40,7 @@ In dieser Schnellstartanleitung gilt Folgendes:
 - Erfordert ein Azure Blob Storage-Konto (z. B. Standard_LRS V2) mit einer **öffentlichen IP-Adresse** (geschützt durch **SAS-Anmeldeinformationen** und mit Berechtigungen vom Typ `rw`). [Private IP-Adressen für Blobspeicher, der durch eine Firewall geschützt ist,](https://docs.microsoft.com/azure/storage/common/storage-network-security) und Azure Blob Storage-Dienstendpunkte werden derzeit nicht unterstützt.
 
 > [!NOTE]
-> Weitere Informationen zum Sichern und Wiederherstellen einer SQL Server-Datenbank mithilfe von Azure Blob Storage und einem [SAS-Schlüssel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) finden Sie unter [SQL Server-Sicherung über URLs](sql-database-managed-instance-get-started-restore.md).
+> Weitere Informationen zum Sichern und Wiederherstellen einer SQL Server-Datenbank mithilfe von Azure Blob Storage und einem [SAS-Schlüssel (Shared Access Signature)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) finden Sie unter [SQL Server-Sicherung über URLs](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017).
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Wiederherstellen der Datenbank aus einer Sicherungsdatei
 

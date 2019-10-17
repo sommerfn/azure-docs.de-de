@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130168"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029261"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -49,7 +49,7 @@ So zeigen Sie virtuelle Computer auf dem Tresordashboard an:
 
     ![Öffnen der Kachel „Sicherungselemente“](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. Auf dem Blatt  **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer anzeigen. In diesem Beispiel schützt der Tresor einen virtuellen Computer: demobackup.  
+6. Auf dem Blatt **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer anzeigen. In diesem Beispiel schützt der Tresor einen virtuellen Computer: demobackup.  
 
     ![Anzeigen des Blatts „Sicherungselemente“](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -66,7 +66,7 @@ So verwalten Sie eine Sicherungsrichtlinie:
 
     ![Öffnen der Kachel „Sicherungselemente“](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. Auf dem Blatt  **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer und den Status der letzten Sicherung mit dem Zeitpunkt der letzten Wiederherstellung anzeigen.
+3. Auf dem Blatt **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer und den Status der letzten Sicherung mit dem Zeitpunkt der letzten Wiederherstellung anzeigen.
 
     ![Anzeigen des Blatts „Sicherungselemente“](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262719"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372272"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern
 
@@ -62,7 +62,7 @@ Sie können Bedrohungsindikatoren zu Azure Sentinel streamen, indem Sie eines de
 
 2. [Konfigurieren Sie API-Berechtigungen](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) für die registrierte Anwendung: Fügen Sie Ihrer registrierten Anwendung die Microsoft Graph-Anwendungsberechtigung **ThreatIndicators.ReadWrite.OwnedBy** hinzu.
 
-3. Bitten Sie Ihren Azure Active Directory-Mandantenadministrator, der registrierten Anwendung die Administratoreinwilligung für Ihre Organisation zu erteilen. Gehen Sie im Azure-Portal so vor: **Azure Active Directory** > **App-Registrierungen** >  **\<*App-Name*>**  > **API-Berechtigungen anzeigen** > **Administratoreinwilligung erteilen für \<*Mandantenname*>** .
+3. Bitten Sie Ihren Azure Active Directory-Mandantenadministrator, der registrierten Anwendung die Administratoreinwilligung für Ihre Organisation zu erteilen. Gehen Sie im Azure-Portal so vor: **Azure Active Directory** > **App-Registrierungen** >  **\<_App-Name_>**  > **API-Berechtigungen anzeigen** > **Administratoreinwilligung erteilen für \<_Mandantenname_>** .
 
 4. Konfigurieren Sie das TIP-Produkt oder die TIP-App, das bzw. die die direkte Integration mit der tiIndicators-API der Microsoft Graph-Sicherheit verwendet, um Indikatoren an Azure Sentinel zu senden, indem Sie Folgendes angeben:
     

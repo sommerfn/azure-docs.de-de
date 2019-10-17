@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2508090fa8831c8fefb0e710c28e512ec0c94c6e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: de98f972a43f3845d2a01b928d90283732ef4843
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074155"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329788"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Ein- und ausgehende IP-Adressen in Azure App Service
 
@@ -52,7 +52,7 @@ Unabhängig von der Anzahl horizontal skalierter Instanzen besitzt jede App imme
 
 Der Satz von ausgehenden IP-Adressen für Ihre App ändert sich, wenn Sie die App zwischen den niedrigeren Tarifen (**Basic**, **Standard** und **Premium**) und dem Tarif **Premium V2** skalieren.
 
-Sie finden die Sammlung aller möglichen IP-Ausgangsadressen, die von Ihrer App verwendet werden können, indem Sie nach der Eigenschaft `possibleOutboundIPAddresses` suchen, oder im Feld **Zusätzliche ausgehende IP-Adressen** auf dem Blatt **Eigenschaften** im Azure-Portal. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ips).
+Sie finden die Sammlung aller möglichen IP-Ausgangsadressen, die von Ihrer App verwendet werden können, indem Sie nach der Eigenschaft `possibleOutboundIpAddresses` suchen, oder im Feld **Zusätzliche ausgehende IP-Adressen** auf dem Blatt **Eigenschaften** im Azure-Portal. Siehe [Ermitteln der ausgehenden IP-Adressen](#find-outbound-ips).
 
 ## <a name="find-outbound-ips"></a>Ermitteln der ausgehenden IP-Adressen
 

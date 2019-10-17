@@ -240,6 +240,8 @@
           href: virtual-machine-scale-sets-automatic-upgrade.md
         - name: Instanzschutz (Vorschauversion)
           href: virtual-machine-scale-sets-instance-protection.md
+        - name: Richtlinie für das horizontale Herunterskalieren (Vorschau)
+          href: virtual-machine-scale-sets-scale-in-policy.md
         - name: Beendigungsbenachrichtigung bei Löschvorgang (Vorschau)
           href: virtual-machine-scale-sets-terminate-notification.md
         - name: Kataloge mit freigegebenen Images

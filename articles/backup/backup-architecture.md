@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881870"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035249"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
-Sie können den [Azure Backup-Dienst](backup-overview.md) verwenden, um Daten auf der Microsoft Azure-Cloudplattform zu sichern. In diesem Artikel werden die Architektur, die Komponenten und die Prozesse von Azure Backup zusammengefasst. 
+Sie können den [Azure Backup-Dienst](backup-overview.md) verwenden, um Daten auf der Microsoft Azure-Cloudplattform zu sichern. In diesem Artikel werden die Architektur, die Komponenten und die Prozesse von Azure Backup zusammengefasst.
 
 ## <a name="what-does-azure-backup-do"></a>Welche Funktion hat Azure Backup?
 
@@ -27,13 +27,13 @@ Azure Backup sichert die Daten, den Computerzustand und die Workloads, die auf l
 Sie können Computer und Daten mithilfe verschiedener Methoden sichern:
 
 - **Sichern lokaler Computer:**
-    - Sie können lokale Windows-Computer mit dem Microsoft Azure Recovery Services-Agent (MARS-Agent) von Azure Backup direkt in Azure sichern. Linux-Computer werden nicht unterstützt.
-    - Sie können lokale Computer auf einem Sicherungsserver sichern (System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Server (MABS)). Anschließend können Sie den Sicherungsserver in einem Recovery Services-Tresor in Azure sichern.
+  - Sie können lokale Windows-Computer mit dem Microsoft Azure Recovery Services-Agent (MARS-Agent) von Azure Backup direkt in Azure sichern. Linux-Computer werden nicht unterstützt.
+  - Sie können lokale Computer auf einem Sicherungsserver sichern – entweder auf System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Server (MABS). Anschließend können Sie den Sicherungsserver in einem Recovery Services-Tresor in Azure sichern.
 
 - **Sichern virtueller Azure-Computer:**
-    - Azure-VMs können direkt gesichert werden. Azure Backup installiert eine Sicherungserweiterung für den Azure-VM-Agent, der auf dem virtuellen Computer ausgeführt wird. Diese Erweiterung sichert die gesamte VM.
-    - Sie können bestimmte Dateien und Ordner auf der Azure-VM sichern, indem Sie den MARS-Agent ausführen.
-    - Sie können Azure-VMs auf dem in Azure ausgeführten MABS sichern, und dann können Sie den MABS in einem Recovery Services-Tresor sichern.
+  - Azure-VMs können direkt gesichert werden. Azure Backup installiert eine Sicherungserweiterung für den Azure-VM-Agent, der auf dem virtuellen Computer ausgeführt wird. Diese Erweiterung sichert die gesamte VM.
+  - Sie können bestimmte Dateien und Ordner auf der Azure-VM sichern, indem Sie den MARS-Agent ausführen.
+  - Sie können Azure-VMs auf dem in Azure ausgeführten MABS sichern, und dann können Sie den MABS in einem Recovery Services-Tresor sichern.
 
 Erfahren Sie mehr über die [sicherbaren Elemente](backup-overview.md) und über [unterstützte Sicherungsszenarien](backup-support-matrix.md).
 
@@ -48,17 +48,17 @@ Recovery Services-Tresore bieten die folgenden Vorteile:
 - Sie können gesicherte Elemente einschließlich virtueller Azure-Computer und lokaler Computer in einem Tresor überwachen.
 - Der Zugriff auf den Tresor kann mithilfe der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC) von Azure verwaltet werden.
 - Sie können angeben, wie die Daten im Tresor repliziert werden sollen, um für Redundanz zu sorgen:
-    - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
-    - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) 
-    - Recovery Services-Tresore verwenden standardmäßig GRS. 
+  - **Lokal redundanter Speicher (LRS):** Sie können LRS zum Schutz vor Ausfällen in einem Datencenter verwenden. LRS repliziert Daten in einer Speicherskalierungseinheit. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
+  - **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Sie können GRS zum Schutz vor regionsweiten Ausfällen verwenden. GRS repliziert Ihre Daten in einer sekundären Region. [Weitere Informationen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)
+  - Recovery Services-Tresore verwenden standardmäßig GRS.
 
 ## <a name="backup-agents"></a>Sicherungs-Agents
 
 Azure Backup stellt je nach Typ des zu sichernden Computers verschiedene Sicherungs-Agents bereit:
 
-**Agent** | **Details** 
---- | --- 
-**MARS-Agent** | <ul><li>Wird auf einzelnen lokalen Windows Server-Computern ausgeführt, um Dateien, Ordner und den Systemstatus zu sichern.</li> <li>Wird auf Azure-VMs ausgeführt, um Dateien, Ordner und den Systemstatus zu sichern.</li> <li>Wird auf DPM-/MABS-Servern ausgeführt, um den lokalen DPM-/MABS-Speicherdatenträger in Azure zu sichern.</li></ul> 
+**Agent** | **Details**
+--- | ---
+**MARS-Agent** | <ul><li>Wird auf einzelnen lokalen Windows Server-Computern ausgeführt, um Dateien, Ordner und den Systemstatus zu sichern.</li> <li>Wird auf Azure-VMs ausgeführt, um Dateien, Ordner und den Systemstatus zu sichern.</li> <li>Wird auf DPM-/MABS-Servern ausgeführt, um den lokalen DPM-/MABS-Speicherdatenträger in Azure zu sichern.</li></ul>
 **Azure-VM-Erweiterung** | Wird auf Azure-VMs ausgeführt, um sie in einem Tresor zu sichern.
 
 ## <a name="backup-types"></a>Sicherungstypen
@@ -69,7 +69,7 @@ In der folgenden Tabelle werden die verschiedenen Sicherungstypen und deren Verw
 --- | --- | ---
 **Vollständig** | Eine vollständige Sicherung enthält die gesamte Datenquelle. Sie benötigt mehr Netzwerkbandbreite als differenzielle oder inkrementelle Sicherungen. | Wird für die erste Sicherung verwendet.
 **Differenziell** |  Eine differenzielle Sicherung speichert die Blöcke, die seit der ersten vollständigen Sicherung geändert wurden. Sie beansprucht weniger Netzwerk- und Speicherressourcen und speichert keine redundanten Kopien von Daten, die nicht geändert wurden.<br/><br/> Ineffizient, da auch Datenblöcke übertragen und gespeichert werden, die in später erfolgten Sicherungen nicht geändert wurden. | Wird von Azure Backup nicht verwendet.
-**Inkrementell** | Eine inkrementelle Sicherung speichert nur Datenblöcke, die seit der vorherigen Sicherung geändert wurden. Hohe Speicher- und Netzwerkeffizienz. <br/><br/> Bei der inkrementellen Sicherung müssen keine ergänzenden vollständigen Sicherungen erstellt werden. | Wird von DPM/MABS für Datenträgersicherungen sowie bei allen Sicherungen in Azure verwendet.
+**Inkrementell** | Eine inkrementelle Sicherung speichert nur Datenblöcke, die seit der vorherigen Sicherung geändert wurden. Hohe Speicher- und Netzwerkeffizienz. <br/><br/> Bei der inkrementellen Sicherung müssen keine ergänzenden vollständigen Sicherungen erstellt werden. | Wird von DPM/MABS für Datenträgersicherungen sowie bei allen Sicherungen in Azure verwendet. Wird für eine SQL Server-Sicherung nicht verwendet.
 
 ## <a name="sql-server-backup-types"></a>Typen von SQL Server-Sicherungen
 
@@ -88,7 +88,7 @@ Speicherverbrauch, RTO (Recovery Time Objective) und Netzwerkauslastung variiere
 - Die Datenquelle A besteht aus 10 Speicherblöcken (A1–A10), die monatlich gesichert werden.
 - Die Blöcke A2, A3, A4 und A9 ändern sich im ersten Monat, der Block A5 ändert sich im nächsten Monat.
 - Bei einer differenziellen Sicherung werden im zweiten Monat die geänderten Blöcke A2, A3, A4 und A9 gesichert. Im dritten Monat werden die gleichen Blöcke erneut gesichert – zusammen mit dem geänderten Block A5. Die geänderten Blöcke werden bis zur nächsten vollständigen Sicherung immer wieder gesichert.
-- Bei inkrementellen Sicherungen werden die Blöcke A2, A3, A4 und A9 im zweiten Monat als geändert gekennzeichnet und übertragen. Im dritten Monat wird nur der geänderte Block A5 gekennzeichnet und übertragen. 
+- Bei inkrementellen Sicherungen werden die Blöcke A2, A3, A4 und A9 im zweiten Monat als geändert gekennzeichnet und übertragen. Im dritten Monat wird nur der geänderte Block A5 gekennzeichnet und übertragen.
 
 ![Vergleichsdarstellung von Sicherungsmethoden](./media/backup-architecture/backup-method-comparison.png)
 
@@ -98,11 +98,11 @@ Die folgende Tabelle enthält eine Zusammenfassung der für die verschiedenen Si
 
 **Feature** | **Lokale Windows Server-Computer (direkt)** | **Virtuelle Azure-Computer** | **Computer oder Apps mit DPM/MABS**
 --- | --- | --- | ---
-Sicherung in einem Tresor | ![Ja][green] | ![Ja][green] | ![Ja][green] 
-Sicherung auf DPM-/MABS-Datenträgern und dann in Azure | | | ![Ja][green] 
-Komprimierung der gesendeten Daten für die Sicherung | ![Ja][green] | Daten werden unkomprimiert übertragen. Etwas höherer Speicherbedarf, aber schnellere Wiederherstellung.  | ![Ja][green] 
-Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green] 
-Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur für lokal bereitgestellte DPM-/MABS-Server 
+Sicherung in einem Tresor | ![Ja][green] | ![Ja][green] | ![Ja][green]
+Sicherung auf DPM-/MABS-Datenträgern und dann in Azure | | | ![Ja][green]
+Komprimierung der gesendeten Daten für die Sicherung | ![Ja][green] | Daten werden unkomprimiert übertragen. Etwas höherer Speicherbedarf, aber schnellere Wiederherstellung.  | ![Ja][green]
+Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green]
+Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur für lokal bereitgestellte DPM-/MABS-Server
 
 ![Tabellenschlüssel](./media/backup-architecture/table-key.png)
 
@@ -112,17 +112,17 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
 1. Während der ersten Sicherung wird auf dem virtuellen Computer eine Sicherungserweiterung installiert, wenn der VM ausgeführt wird.
     - Für virtuelle Windows-Computer wird die Erweiterung „VMSnapshot“ installiert.
     - Für virtuelle Linux-Computer wird die Erweiterung „VMSnapshot Linux“ installiert.
-1. Die Erweiterung erstellt eine Momentaufnahme auf Speicherebene. 
+1. Die Erweiterung erstellt eine Momentaufnahme auf Speicherebene.
     - Bei ausgeführten Windows-VMs erstellt Azure Backup in Koordination mit dem Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) von Windows eine App-konsistente Momentaufnahme des virtuellen Computers. Backup erstellt standardmäßig vollständige VSS-Sicherungen. Sollte von Backup keine App-konsistente Momentaufnahme erstellt werden können, wird eine dateikonsistente Momentaufnahme erstellt.
     - Bei Linux-VMs erstellt Backup eine dateikonsistente Momentaufnahme. Zur Erstellung App-konsistenter Momentaufnahmen müssen Sie Pre- und Postskripts manuell anpassen.
-    - Zur Optimierung von Backup werden die einzelnen VM-Datenträger parallel gesichert. Für jeden zu sichernden Datenträger liest Azure Backup die Blöcke auf dem Datenträger und speichert nur die geänderten Daten. 
-1. Nachdem die Momentaufnahme erstellt wurde, werden die Daten in den Tresor übertragen. 
+    - Zur Optimierung von Backup werden die einzelnen VM-Datenträger parallel gesichert. Für jeden zu sichernden Datenträger liest Azure Backup die Blöcke auf dem Datenträger und speichert nur die geänderten Daten.
+1. Nachdem die Momentaufnahme erstellt wurde, werden die Daten in den Tresor übertragen.
     - Es werden nur Datenblöcke kopiert, die seit der letzten Sicherung geändert wurden.
     - Die Daten werden nicht verschlüsselt. Azure Backup kann virtuelle Azure-Computer sichern, die mit Azure Disk Encryption verschlüsselt wurden.
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten kann die Sicherung mehrere Stunden dauern. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
 1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
 
-Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang. Wenn Sie Workloads auf dem virtuellen Computer sichern (z. B. SQL Server-Datenbanksicherungen), benötigen die Back-End-Daten auch einen Internetzugang. 
+Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang. Wenn Sie Workloads auf dem virtuellen Computer sichern (z. B. SQL Server-Datenbanksicherungen), benötigen die Back-End-Daten auch einen Internetzugang.
 
 ![Sicherung virtueller Azure-Computer](./media/backup-architecture/architecture-azure-vm.png)
 
@@ -157,15 +157,15 @@ Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang.
 Betriebssystem, Apps und Daten von virtuellen Azure-Computern werden auf Datenträgern gespeichert. Jeder virtuelle Azure-Computer verfügt über mindestens zwei Datenträger: einen Datenträger für das Betriebssystem und einen temporären Datenträger. Darüber hinaus können Azure-VMs auch über Datenträger für App-Daten verfügen. Datenträger werden als VHDs gespeichert.
 
 - VHDs werden als Seitenblobs in Azure-Speicherkonten (Standard oder Premium) gespeichert:
-    - **Storage Standard:** Zuverlässige, kostengünstige Datenträgerunterstützung für virtuelle Computer ohne wartezeitempfindliche Workloads. Storage Standard kann Datenträger vom Typ SSD Standard oder HDD Standard verwenden.
-    - **Storage Premium:** Unterstützung von Hochleistungsdatenträgern. Verwendet SSD Premium-Datenträger.
+  - **Storage Standard:** Zuverlässige, kostengünstige Datenträgerunterstützung für virtuelle Computer ohne wartezeitempfindliche Workloads. Storage Standard kann Datenträger vom Typ SSD Standard oder HDD Standard verwenden.
+  - **Storage Premium:** Unterstützung von Hochleistungsdatenträgern. Verwendet SSD Premium-Datenträger.
 - Für Datenträger sind verschiedene Leistungsstufen verfügbar:
-    - **HDD Standard-Datenträger:** Basiert auf Festplattenlaufwerken und ermöglicht eine kostengünstige Speicherung.
-    - **SSD Standard-Datenträger:** Kombiniert Elemente von SSD Premium- und HDD Standard-Datenträgern. Bietet eine konsistentere Leistung und Zuverlässigkeit als HDD, ist aber dennoch kostengünstig.
-    - **SSD Premium-Datenträger:** Durch SSDs gestützt; bietet hohe Leistung und geringe Wartezeit für VMs, auf denen E/A-intensive Workloads ausgeführt werden.
+  - **HDD Standard-Datenträger:** Basiert auf Festplattenlaufwerken und ermöglicht eine kostengünstige Speicherung.
+  - **SSD Standard-Datenträger:** Kombiniert Elemente von SSD Premium- und HDD Standard-Datenträgern. Bietet eine konsistentere Leistung und Zuverlässigkeit als HDD, ist aber dennoch kostengünstig.
+  - **SSD Premium-Datenträger:** Durch SSDs gestützt; bietet hohe Leistung und geringe Wartezeit für VMs, auf denen E/A-intensive Workloads ausgeführt werden.
 - Datenträger können verwaltet oder nicht verwaltet sein:
-    - **Nicht verwaltete Datenträger:** Herkömmliche Datenträgertypen, die von VMs verwendet werden. Bei diesen Datenträgern erstellen Sie Ihr eigenes Speicherkonto und geben es beim Erstellen des Datenträgers an. Dann müssen Sie herausfinden, wie Sie die Speicherressourcen für Ihre VMs maximieren können.
-    - **Verwaltete Datenträger**: Azure erstellt und verwaltet die Speicherkonten für Sie. Sie geben die Datenträgergröße und die Leistungsstufe an, und Azure erstellt verwaltete Datenträger für Sie. Während Sie Datenträger hinzufügen und VMs skalieren, kümmert sich Azure um die Speicherkonten.
+  - **Nicht verwaltete Datenträger:** Herkömmliche Datenträgertypen, die von VMs verwendet werden. Bei diesen Datenträgern erstellen Sie Ihr eigenes Speicherkonto und geben es beim Erstellen des Datenträgers an. Dann müssen Sie herausfinden, wie Sie die Speicherressourcen für Ihre VMs maximieren können.
+  - **Verwaltete Datenträger**: Azure erstellt und verwaltet die Speicherkonten für Sie. Sie geben die Datenträgergröße und die Leistungsstufe an, und Azure erstellt verwaltete Datenträger für Sie. Während Sie Datenträger hinzufügen und VMs skalieren, kümmert sich Azure um die Speicherkonten.
 
 Weitere Informationen zu Datenträgerspeicher und den verfügbaren Datenträgertypen für VMs finden Sie in den folgenden Artikeln:
 
@@ -173,7 +173,7 @@ Weitere Informationen zu Datenträgerspeicher und den verfügbaren Datenträgert
 - [Verwaltete Azure-Datenträger für Linux-VMs](../virtual-machines/linux/managed-disks-overview.md)
 - [Verfügbare Datenträgertypen für VMs](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Sichern und Wiederherstellen von Azure-VMs mit Storage Premium 
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Sichern und Wiederherstellen von Azure-VMs mit Storage Premium
 
 Sie können virtuelle Azure-Computer mithilfe von Storage Premium mit Azure Backup sichern:
 
@@ -201,13 +201,11 @@ Virtuelle Computer mit verwalteten Datenträgern können als vollständiger virt
 
 - Sehen Sie sich die [Supportmatrix](backup-support-matrix.md) an, um Informationen zu unterstützten Features und zu Einschränkungen für Sicherungsszenarien zu erhalten.
 - Richten Sie die Sicherung für eines der folgenden Szenarien ein:
-    - [Sichern virtueller Azure-Computer](backup-azure-arm-vms-prepare.md)
-    - [Direktes Sichern von Windows-Computern](tutorial-backup-windows-server-to-azure.md) (ohne Sicherungsserver)
-    - [Einrichten von MABS](backup-azure-microsoft-azure-backup.md) für die Sicherung in Azure und anschließendes Sichern von Workloads per MABS
-    - [Einrichten von DPM](backup-azure-dpm-introduction.md) für die Sicherung in Azure und anschließendes Sichern von Workloads per DPM
-
+  - [Sichern virtueller Azure-Computer](backup-azure-arm-vms-prepare.md)
+  - [Direktes Sichern von Windows-Computern](tutorial-backup-windows-server-to-azure.md) (ohne Sicherungsserver)
+  - [Einrichten von MABS](backup-azure-microsoft-azure-backup.md) für die Sicherung in Azure und anschließendes Sichern von Workloads per MABS
+  - [Einrichten von DPM](backup-azure-dpm-introduction.md) für die Sicherung in Azure und anschließendes Sichern von Workloads per DPM
 
 [green]: ./media/backup-architecture/green.png
 [yellow]: ./media/backup-architecture/yellow.png
 [red]: ./media/backup-architecture/red.png
-

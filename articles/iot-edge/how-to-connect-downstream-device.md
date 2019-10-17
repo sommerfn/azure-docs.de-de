@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie nachgeschaltete oder Blattgeräte für eine V
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/07/2019
+ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 822e58d1d35cfb9b62565ca78ea2277b8d194bc0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c37c3ed2031746d7c476850749bb3dc613252654
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266125"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176779"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -183,17 +183,23 @@ Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-Jav
 Dieser Abschnitt stellt eine Beispielanwendung zum Verbinden eines Azure IoT-Python-Geräteclients mit einem IoT Edge-Gateway vor. 
 
 1. Rufen Sie das Beispiel für **send_message** aus den [Beispielen zum Azure IoT-Geräte-SDK für Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios) ab. 
-2. Stellen Sie sicher, dass Sie es entweder in einem Edge-Container oder in einem Debugszenario mit den festgelegten Umgebungsvariablen `EdgeHubConnectionString` und `EdgeModuleCACertificateFile` ausführen.
+2. Stellen Sie sicher, dass Sie es entweder in einem IoT Edge-Container oder in einem Debugszenario mit den festgelegten Umgebungsvariablen `EdgeHubConnectionString` und `EdgeModuleCACertificateFile` ausführen.
 3. In der SDK-Dokumentation finden Sie Anweisungen zum Ausführen des Beispiels auf Ihrem Gerät. 
 
 
 ## <a name="test-the-gateway-connection"></a>Testen der Gatewayverbindung
 
-Dies ist ein Beispielbefehl, der testet, ob alles ordnungsgemäß eingerichtet wurde. Es sollte die Meldung „Überprüfung OK“ angezeigt werden.
+Verwenden Sie diesen Beispielbefehl, um zu testen, ob Ihr nachgeschaltetes Gerät eine Verbindung mit dem Gatewaygerät herstellen kann: 
 
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+Dieser Befehl testet Verbindungen über MQTTS (Port 8883). Wenn Sie ein anderes Protokoll verwenden, passen Sie den Befehl nach Bedarf für AMQPS (5671) oder HTTPS (433) an.
+
+Die Ausgabe dieses Befehls ist möglicherweise lang, einschließlich Informationen zu allen Zertifikaten in der Kette. Wenn Ihre Verbindung erfolgreich hergestellt wurde, wird eine Zeile wie `Verification: OK` oder `Verify return code: 0 (ok)` angezeigt.
+
+![Überprüfen der Gatewayverbindung](./media/how-to-connect-downstream-device/verification-ok.png)
 
 ## <a name="troubleshoot-the-gateway-connection"></a>Problembehandlung bei der Gatewayverbindung
 

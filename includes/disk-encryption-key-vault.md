@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: e145c7af3ff3cdd6d3cca2a7b0da0fdc23a418b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246007"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511477"
 ---
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -131,7 +131,7 @@ Wenn Sie Verschlüsselungsschlüssel mit einem Schlüssel für die Schlüsselver
 
 Sie können einen neuen KEK mit dem Azure CLI-Befehl [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create), dem Azure PowerShell-Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) oder dem [Azure-Portal](https://portal.azure.com/) generieren. Sie müssen einen Schlüssel vom Typ RSA generieren, da Azure Disk Encryption noch nicht die Verwendung von Elliptic Curve-Schlüsseln unterstützt.
 
-Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](/key-vault/key-vault-hsm-protected-keys)-Dokumentation. 
+Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](/azure/key-vault/key-vault-hsm-protected-keys)-Dokumentation.
 
 Ihre URLs für den KEK müssen mit einer Versionsangabe versehen sein. Azure erzwingt diese Einschränkung der Versionsverwaltung. Gültige URLs für Geheimnisse und KEKs finden Sie in den folgenden Beispielen:
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: f6273e9b6c7ed0c4685479976343497f01201b0b
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 456ed0a48db015d3c95827942a576e6916095131
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206758"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515445"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Verwenden des Zuordnungsfeatures in Azure Monitor für VMs (Vorschauversion) zum Analysieren von Anwendungskomponenten
 In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Sie können die VMs auf zwei Arten überwachen. Entweder rufen Sie die Zuordnung direkt über eine VM oder über Azure Monitor auf, um sich die Komponenten in den verschiedenen VM-Gruppen anzusehen. In diesem Artikel werden die beiden Anzeigemethoden beschrieben. Außerdem wird erklärt, wie Sie das Zuordnungsfeature verwenden. 
@@ -124,6 +124,7 @@ Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abh
 >Sie können auch die Zuordnung einer bestimmten Instanz über die Ansicht **Instanzen** für Ihre VM-Skalierungsgruppe aufrufen. Wechseln Sie im Abschnitt **Einstellungen** zu **Instanzen** > **Insights (Vorschau)** .
 
 ## <a name="view-a-map-from-azure-monitor"></a>Anzeigen einer Zuordnung über Azure Monitor
+
 In Azure Monitor stellt das Zuordnungsfeature eine globale Sicht Ihrer VMs und deren Abhängigkeiten dar. Gehen Sie wie folgt vor, um über Azure Monitor auf das Zuordnungsfeature zuzugreifen:
 
 1. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
@@ -139,5 +140,5 @@ Mit dem Auswahlelement **Gruppe** werden Abonnements, Ressourcengruppen, [Comput
 Standardmäßig zeigt die Zuordnung die letzten 30 Minuten. Sie können auch Abhängigkeiten abfragen, die maximal eine Stunde zurückliegen. Nutzen Sie das Auswahlelement **TimeRange**, um die Abfrage auszuführen. Das ist beispielsweise während eines Incidents oder zur Anzeige eines Status vor einer Änderung sinnvoll.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Informationen zum Verwenden des Integritätsfeatures finden Sie unter [Anzeigen des Integritätsstatus von Azure-VMs](vminsights-health.md). 
-- Wie Sie Engpässe ermitteln, die Leistung überprüfen und die Gesamtauslastung Ihrer VMs nachvollziehen können, erfahren Sie unter [Anzeigen des Leistungsstatus in Azure Monitor für VMs](vminsights-performance.md). 
+
+Wie Sie Engpässe ermitteln, die Leistung überprüfen und die Gesamtauslastung Ihrer VMs nachvollziehen können, erfahren Sie unter [Anzeigen des Leistungsstatus in Azure Monitor für VMs](vminsights-performance.md). 

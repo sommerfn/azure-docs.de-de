@@ -345,6 +345,8 @@
               href: active-directory-how-applications-are-added.md
             - name: 'Umleitungs-URI/Antwort-URL: Einschränkungen'
               href: reply-url.md
+            - name: Validierungsunterschiede nach unterstützten Kontotypen
+              href: supported-accounts-validation.md
             - name: Apps mit einem Mandanten und mit mehreren Mandanten
               href: single-and-multi-tenant-apps.md
         - name: Berechtigungen und Zustimmung

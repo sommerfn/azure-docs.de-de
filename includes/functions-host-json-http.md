@@ -4,24 +4,13 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 35b087d13099b975a1c9c6d2dbd449935f5f0d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec825bb59840784ca45e8a38caa664c19883fb32
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248947"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263327"
 ---
-```json
-{
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 200,
-        "maxConcurrentRequests": 100,
-        "dynamicThrottlesEnabled": true
-    }
-}
-```
-
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |routePrefix|api|Das Routenpräfix, das für alle Routen gilt. Verwenden Sie eine leere Zeichenfolge, um das Standardpräfix zu entfernen. |

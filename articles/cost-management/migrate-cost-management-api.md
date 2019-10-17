@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 5c2041984ffa2c455ea4d60a756fcb4142219d91
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 53c171df47dde58b264b354eea5ff1ccca9f5256
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981441"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374730"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 
-Dieser Artikel hilft Ihnen, die Unterschiede bezüglich Datenstruktur, API und anderer Aspekte der Systemintegration zwischen EA-Konten (Enterprise Agreement) und MCA-Konten (Microsoft-Kundenvereinbarung) zu verstehen. Azure Cost Management unterstützt APIs für beide Kontotypen. Lesen Sie den Artikel zum [Einrichten des Abrechnungskontos für eine Microsoft-Kundenvereinbarung](../billing/billing-mca-setup-account.md), bevor Sie fortfahren.
+Dieser Artikel hilft Ihnen, die Unterschiede bezüglich Datenstruktur, API und anderer Aspekte der Systemintegration zwischen EA-Konten (Enterprise Agreement) und MCA-Konten (Microsoft-Kundenvereinbarung) zu verstehen. Azure Cost Management unterstützt APIs für beide Kontotypen. Lesen Sie den Artikel zum [Einrichten des Abrechnungskontos für eine Microsoft-Kundenvereinbarung](../billing/mca-setup-account.md), bevor Sie fortfahren.
 
 Organisationen mit einem bestehenden EA-Konto sollten sich diesen Artikel im Zusammenhang mit der Einrichtung eines MCA-Kontos ansehen. Zuvor waren zur Erneuerung eines EA-Kontos einige minimale Arbeitsschritte für den Wechseln von einer alten Registrierung zu einer neuen Registrierung erforderlich. Das Migrieren zu einem MCA-Konto erfordert jedoch zusätzlichen Aufwand. Der zusätzliche Aufwand ergibt sich durch Änderungen im zugrunde liegenden Abrechnungssubsystem, die sich auf alle kostenbezogenen APIs und Dienstangebote auswirken.
 

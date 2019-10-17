@@ -3,15 +3,15 @@ title: Ausführen Ihrer ersten Abfrage mithilfe des Azure Resource Graph-Explore
 description: Dieser Artikel führt Sie durch die Schritte zum Ausführen Ihrer ersten Abfrage aus dem Azure-Portal mithilfe des Azure Resource Graph-Explorers.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981245"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387600"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers
 
@@ -27,19 +27,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Wählen Sie **Alle Dienste** im linken Bereich aus. Suchen Sie die Option **Resource Graph-Explorer**, und wählen Sie sie aus.
 
-1. Geben Sie im Fenster unter **Query 1** (Abfrage 1) die Abfrage `project name, type | limit 5` ein, und wählen Sie **Abfrage ausführen** aus.
+1. Geben Sie im Fenster unter **Query 1** (Abfrage 1) die Abfrage `Resources | project name, type | limit 5` ein, und wählen Sie **Abfrage ausführen** aus.
 
    > [!NOTE]
    > Da dieses Abfragebeispiel keinen Sortierungsmodifizierer wie `order by` umfasst, ergibt die mehrfache Ausführung dieser Abfrage unter Umständen pro Anforderung einen anderen Satz von Ressourcen.
 
 1. Die Abfrageergebnisse werden auf der Registerkarte **Ergebnisse** angezeigt. Wählen Sie die Registerkarte **Meldungen** aus, um Details zur Abfrage anzuzeigen, einschließlich der Anzahl der Ergebnisse und der Dauer der Abfrage. Wenn Fehler auftreten, werden diese ebenfalls auf dieser Registerkarte angezeigt.
 
-1. Aktualisieren Sie die Abfrage, sodass die Sortierung `order by` nach der Eigenschaft **Name** gilt: `project name, type | limit 5 | order by name asc`. Wählen Sie anschließend **Abfrage ausführen** aus.
+1. Aktualisieren Sie die Abfrage, sodass die Sortierung `order by` nach der Eigenschaft **Name** gilt: `Resources | project name, type | limit 5 | order by name asc`. Wählen Sie anschließend **Abfrage ausführen** aus.
 
    > [!NOTE]
    > Genau wie bei der ersten Abfrage ergibt die mehrfache Ausführung dieser Abfrage vermutlich pro Anforderung einen anderen Satz von Ressourcen. Die Reihenfolge der Abfragebefehle ist wichtig. In diesem Beispiel kommt `order by` nach `limit`. Dies beschränkt zunächst die Ergebnisse der Abfrage und sortiert sie dann.
 
-1. Aktualisieren Sie die Abfrage, sodass zuerst die Sortierung `order by` nach der Eigenschaft **Name** vorgenommen wird, und begrenzen Sie die Ergebnisse mithilfe von `limit` auf die fünf relevantesten Ergebnisse: `project name, type | order by name asc | limit 5`. Wählen Sie anschließend **Abfrage ausführen** aus.
+1. Aktualisieren Sie die Abfrage, sodass zuerst die Sortierung `order by` nach der Eigenschaft **Name** vorgenommen wird, und begrenzen Sie die Ergebnisse mithilfe von `limit` auf die fünf relevantesten Ergebnisse: `Resources | project name, type | order by name asc | limit 5`. Wählen Sie anschließend **Abfrage ausführen** aus.
 
 Wenn die letzte Abfrage mehrmals ausgeführt wird, sind die zurückgegebenen Ergebnisse – vorausgesetzt, dass sich in Ihrer Umgebung nichts ändert – konsistent und wie erwartet: sortiert nach der Eigenschaft **Name**, aber immer noch auf die fünf relevantesten Ergebnisse begrenzt.
 
@@ -54,7 +54,8 @@ Wenn Sie nach dem Ausführen der letzten Abfrage oben die Registerkarte **Diagra
 1. Geben Sie im Fenster unter **Query 1** (Abfrage 1) die folgende Abfrage ein, und wählen Sie **Abfrage ausführen** aus.
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

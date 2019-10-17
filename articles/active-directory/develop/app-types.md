@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540667"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374064"
 ---
 # <a name="application-types-in-v10"></a>Anwendungstypen in v1.0
 
@@ -82,4 +82,4 @@ Jedes Szenario aus diesem Dokument enthält einen Unterabschnitt mit den entspre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über weitere [Authentifizierungsszenarien](authentication-scenarios.md) für Azure AD.
+- Erfahren Sie mehr über weitere [Authentifizierungsszenarien](v1-authentication-scenarios.md) für Azure AD.

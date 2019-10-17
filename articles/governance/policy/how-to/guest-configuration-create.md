@@ -6,16 +6,16 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fcb65e75de730178901742dc36c72776e39b044b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0be6afc2d4d7f97717200b86d5e5b3bc2194afee
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977971"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376181"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen
 
-Für die Gastkonfiguration wird ein [DSC](/powershell/dsc)-Ressourcenmodul (Desired State Configuration) verwendet, um die Konfiguration für die Überprüfung der Azure-Computer zu erstellen. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn bei der Evaluierung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
+Für die Gastkonfiguration wird ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) verwendet, um die Konfiguration für die Überprüfung der Azure-Computer zu erstellen. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn bei der Evaluierung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
 
 Die [Azure Policy-Gastkonfiguration](/azure/governance/policy/concepts/guest-configuration) kann nur zur Überwachung von Einstellungen in Computern verwendet werden. Die Wiederherstellung von Einstellungen in Computern ist noch nicht verfügbar.
 
@@ -55,7 +55,7 @@ Für Gastkonfigurationen wird das Ressourcenmodul **GuestConfiguration** verwend
 
 ## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Erstellen einer benutzerdefinierten Konfiguration und von Ressourcen für Gastkonfigurationen
 
-Der erste Schritt zur Erstellung einer benutzerdefinierten Richtlinie für Gastkonfigurationen ist die Erstellung der DSC-Konfiguration. Eine Übersicht über DSC-Konzepte und die Terminologie finden Sie in der [Übersicht über PowerShell DSC](/powershell/dsc/overview/overview).
+Der erste Schritt zur Erstellung einer benutzerdefinierten Richtlinie für Gastkonfigurationen ist die Erstellung der DSC-Konfiguration. Eine Übersicht über DSC-Konzepte und die Terminologie finden Sie in der [Übersicht über PowerShell DSC](/powershell/scripting/dsc/overview/overview).
 
 Wenn Ihre Konfiguration nur Ressourcen erfordert, die mit der Installation des Gastkonfigurations-Agents erstellt wurden, müssen Sie nur eine MOF-Konfigurationsdatei erstellen. Wenn Sie ein zusätzliches Skript ausführen müssen, müssen Sie ein benutzerdefiniertes Ressourcenmodul erstellen.
 
@@ -115,7 +115,7 @@ Configuration baseline
 baseline
 ```
 
-Weitere Informationen finden Sie unter [Schreiben, Kompilieren und Anwenden einer Konfiguration](/powershell/dsc/configurations/write-compile-apply-configuration).
+Weitere Informationen finden Sie unter [Schreiben, Kompilieren und Anwenden einer Konfiguration](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ### <a name="custom-guest-configuration-configuration-on-windows"></a>Benutzerdefinierte Konfiguration für Gastkonfigurationen unter Windows
 
@@ -141,7 +141,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Weitere Informationen finden Sie unter [Schreiben, Kompilieren und Anwenden einer Konfiguration](/powershell/dsc/configurations/write-compile-apply-configuration).
+Weitere Informationen finden Sie unter [Schreiben, Kompilieren und Anwenden einer Konfiguration](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ## <a name="create-guest-configuration-custom-policy-package"></a>Erstellen eines benutzerdefinierten Richtlinienpakets für Gastkonfigurationen
 
@@ -190,7 +190,7 @@ Bei Azure Policy-Gastkonfigurationen besteht die optimale Vorgehensweise zum Ver
 
 1. Verwenden Sie auf Ihrer benutzerdefinierten Ressource abschließend dann die oben generierte Client-ID, um auf Key Vault zuzugreifen, indem Sie das auf dem Computer verfügbare Token nutzen.
 
-   Die `client_id` und die URL für die Key Vault-Instanz können als [Eigenschaften](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) an die Ressource übergeben werden, damit diese nicht für mehrere Umgebungen aktualisiert werden muss (oder wenn die Werte geändert werden müssen).
+   Die `client_id` und die URL für die Key Vault-Instanz können als [Eigenschaften](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) an die Ressource übergeben werden, damit diese nicht für mehrere Umgebungen aktualisiert werden muss (oder wenn die Werte geändert werden müssen).
 
 Das folgende Codebeispiel kann in einer benutzerdefinierten Ressource verwendet werden, um mit einer Identität, die dem Benutzer zugewiesen ist, Geheimnisse aus Key Vault abzurufen. Der von der Anforderung an Key Vault zurückgegebene Wert ist ein Nur-Text-Wert. Die bewährte Methode besteht darin, ihn in einem Objekt mit Anmeldeinformationen zu speichern.
 
@@ -226,7 +226,7 @@ Das Cmdlet unterstützt auch Eingaben aus der PowerShell-Pipeline. Fügen Sie di
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-Weitere Informationen zum Testen mit Parametern finden Sie im Abschnitt unter [Using parameters in custom Guest Configuration policies](/azure/governance/policy/how-to/guest-configuration-create#using-parameters-in-custom-guest-configuration-policies) (Verwenden von Parametern in Richtlinien für Gastkonfigurationen).
+Weitere Informationen zum Testen mit Parametern finden Sie im Abschnitt unter [Using parameters in custom Guest Configuration policies](#using-parameters-in-custom-guest-configuration-policies) (Verwenden von Parametern in Richtlinien für Gastkonfigurationen).
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Erstellen der Bereitstellungsdateien für Azure Policy-Definitionen und -Initiativen
 
@@ -367,7 +367,7 @@ Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wi
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konvertieren des Inhalts der Windows-Gruppenrichtlinie in eine Azure Policy-Gastkonfiguration
 
-Bei der Überwachung von Windows-Computern ist die Gastkonfiguration eine Implementierung der Desired State Configuration-Syntax von PowerShell. Von der DSC-Community wurde ein Tool zum Konvertieren exportierter Gruppenrichtlinienvorlagen in das DSC-Format veröffentlicht. Sie können dieses Tool zusammen mit den oben beschriebenen Gastkonfigurations-Cmdlets verwenden, um den Inhalt der Windows-Gruppenrichtlinie zu konvertieren und zur Überwachung für Azure Policy zu packen und zu veröffentlichen. Ausführliche Informationen zur Verwendung des Tools finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/dsc/quickstarts/gpo-quickstart).
+Bei der Überwachung von Windows-Computern ist die Gastkonfiguration eine Implementierung der Desired State Configuration-Syntax von PowerShell. Von der DSC-Community wurde ein Tool zum Konvertieren exportierter Gruppenrichtlinienvorlagen in das DSC-Format veröffentlicht. Sie können dieses Tool zusammen mit den oben beschriebenen Gastkonfigurations-Cmdlets verwenden, um den Inhalt der Windows-Gruppenrichtlinie zu konvertieren und zur Überwachung für Azure Policy zu packen und zu veröffentlichen. Ausführliche Informationen zur Verwendung des Tools finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 Nach dem Konvertieren des Inhalts sind die obigen Schritte, mit denen ein Paket erstellt und in Azure Policy veröffentlicht wird, die gleichen wie bei jedem anderen DSC-Inhalt.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>OPTIONAL: Signieren von Paketen für Gastkonfigurationen

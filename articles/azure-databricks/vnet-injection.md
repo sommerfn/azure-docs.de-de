@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Azure Databricks in Ihrem virtuellen Netzwerk (Vorschauversion)
+title: Bereitstellen von Azure Databricks in Ihrem virtuellen Netzwerk
 description: Dieser Artikel beschreibt, wie Sie Azure Databricks in Ihrem virtuellen Netzwerk bereitstellen, auch bekannt als VNet-Einschleusung.
 services: azure-databricks
 author: mamccrea
@@ -7,15 +7,15 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/10/2019
+ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126680"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432662"
 ---
-# <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>Bereitstellen von Azure Databricks in Ihrem virtuellen Netzwerk (Vorschauversion)
+# <a name="deploy-azure-databricks-in-your-virtual-network"></a>Bereitstellen von Azure Databricks in Ihrem virtuellen Netzwerk
 
 Die standardmäßige Bereitstellung von Azure Databricks ist ein vollständig verwalteter Dienst auf Azure: alle Ressourcen der Datenebene, einschließlich eines virtuellen Netzwerks (VNet), werden in einer gesperrten Ressourcengruppe bereitgestellt. Wenn Sie jedoch eine Netzwerkanpassung benötigen, können Sie die Ressourcen von Azure Databricks in Ihrem eigenen virtuellen Netzwerk bereitstellen (auch VNet-Einschleusung genannt). Damit haben Sie dann folgende Möglichkeiten:
 
@@ -101,7 +101,7 @@ Wenn Sie diese Vorlage verwenden, müssen Sie keine manuelle Whitelist des Subne
 
 ### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 
-Um Netzwerksicherheitsgruppen mit den erforderlichen Regeln für ein bestehendes virtuelles Netzwerk zu erstellen, verwenden Sie die [Vorlage für Netzwerksicherheitsgruppen für Databricks-VNet-Einschleusung](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection).
+Um Netzwerksicherheitsgruppen mit den erforderlichen Regeln für ein bestehendes virtuelles Netzwerk zu erstellen, verwenden Sie die [Vorlage für Netzwerksicherheitsgruppen für Databricks-VNet-Einschleusung](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
 
 Wenn Sie diese Vorlage verwenden, müssen Sie keine manuelle Whitelist des Subnetzverkehrs erstellen.
 
@@ -135,7 +135,7 @@ Setzen Sie den Subnetzdatenverkehr, der folgenden IP-Adressen verwendet, auf die
 
 |Azure Databricks-Region|Dienst|Öffentliche IP-Adresse|
 |-----------------------|-------|---------|
-|USA (Ost)|NAT der Steuerungsebene </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|East US|NAT der Steuerungsebene </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |USA (Ost) 2|NAT der Steuerungsebene </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |USA Nord Mitte|NAT der Steuerungsebene </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |USA (Mitte)|NAT der Steuerungsebene </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|

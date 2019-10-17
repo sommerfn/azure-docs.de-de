@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: b3ca93d9e70456d25d5f78b2ca1fde8e4ea24f8d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240199"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72284659"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Verbinden Ihrer Barracuda-Appliance 
 
@@ -37,10 +37,7 @@ Barracuda Web Application Firewall kann Protokolle über den Log Analytics-Agent
 1. Wechseln Sie zu [Barracuda WAF configuration flow](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/) (Barracuda WAF-Konfigurationsflow), und befolgen Sie die Anweisungen zum Einrichten der Verbindung unter Verwendung der folgenden Parameter:
     - **Workspace ID** (Arbeitsbereichs-ID): Kopieren Sie den Wert Ihrer Arbeitsbereichs-ID von der Seite des Azure Sentinel-Barracuda-Connectors.
     - **Primary key** (Primärer Schlüssel): Kopieren Sie den Wert Ihres primären Schlüssels von der Seite des Azure Sentinel-Barracuda-Connectors.
-2. Wechseln Sie im Azure Sentinel-Portal zu dem Arbeitsbereich, in dem Sie Azure Sentinel bereitgestellt haben, wählen Sie die Auslassungspunkte (...) am Ende der Zeile und dann **Erweiterte Einstellungen** aus. 
-1. Wählen Sie **Daten** und dann **Syslog** aus.
-1. Achten Sie darauf, dass die in Barracuda ausgewählte Einrichtung vorhanden ist, legen Sie den Schweregrad fest, und klicken Sie auf **Speichern**.
-6. Um das relevante Schema in Log Analytics für die Barracuda-Ereignisse zu verwenden, suchen Sie nach **CommonSecurityLog** und **barracuda_CL**.
+1. Um das relevante Schema in Log Analytics für die Barracuda-Ereignisse zu verwenden, suchen Sie nach **CommonSecurityLog** und **barracuda_CL**.
 
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität

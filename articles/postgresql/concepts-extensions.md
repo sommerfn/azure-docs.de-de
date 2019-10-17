@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2019
-ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.date: 10/11/2019
+ms.openlocfilehash: 4f81b23378427faa522071f4a20e07485f5c3387
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327129"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296420"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Einzelserver
 PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Bei Erweiterungen werden mehrere zusammengehörige SQL-Objekte zu einem Paket gebündelt und mit nur einem Befehl in die Datenbank geladen oder daraus entfernt. Nach dem Laden in die Datenbank funktionieren Erweiterungen genauso wie integrierte Features.
@@ -44,7 +44,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
@@ -90,7 +90,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.2             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
@@ -136,7 +136,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.1.2             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | Anzeige von Sperrinformationen auf Zeilenebene|
@@ -182,7 +182,7 @@ Die folgenden Erweiterungen sind für Azure Database for PostgreSQL-Server verf�
 > |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | Datentypen für internationale Produktnummerierungsnormen|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | Datentyp für hierarchische baumähnliche Strukturen|
 > |[orafce](https://github.com/orafce/orafce)                       | 3,7             | Funktionen und Operatoren zum Emulieren einer Teilmenge mit Funktionen und Paketen aus einer kommerziellen RDBMS|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Überwachungsfunktionen|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.0.7             | Überwachungsfunktionen|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | Kryptografische Funktionen|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | pgRouting-Erweiterung|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | Anzeige von Sperrinformationen auf Zeilenebene|

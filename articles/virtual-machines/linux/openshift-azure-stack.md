@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082594"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390650"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Bereitstellen von OpenShift Container Platform oder OKD in Azure Stack
 
@@ -66,9 +66,9 @@ Im Folgenden finden Sie eine Auswahl allgemeiner Optionen, die Sie anpassen kön
 - OpenShift-Clusterbesonderheiten, angepasst über „hosts“-Datei („deployOpenShift.sh“)
 - Verweis auf das RHEL-Image (Variable in „azuredeploy.json“)
 
-Die Schritte für die Bereitstellung mithilfe der Azure CLI finden Sie im entsprechenden Abschnitt für [OpenShift Container Platform](./openshift-container-platform.md) oder [OKD](./openshift-okd.md).
+Die Schritte für die Bereitstellung mithilfe der Azure CLI finden Sie im entsprechenden Abschnitt für [OpenShift Container Platform](./openshift-container-platform-3x.md) oder [OKD](./openshift-okd.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
-- [Behandeln von Problemen beim Bereitstellen von OpenShift in Azure](./openshift-troubleshooting.md)
+- [Aufgaben nach der Bereitstellung](./openshift-container-platform-3x-post-deployment.md)
+- [Behandeln von Problemen beim Bereitstellen von OpenShift in Azure](./openshift-container-platform-3x-troubleshooting.md)

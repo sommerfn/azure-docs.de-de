@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061390"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429405"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
-Azure Automation State Configuration ist ein Azure-Dienst, mit dem Sie PowerShell DSC-[Konfigurationen](/powershell/dsc/configurations) schreiben, verwalten und kompilieren, [DSC-Ressourcen](/powershell/dsc/resources) importieren und Konfigurationen Zielknoten zuweisen können – und all dies in der Cloud.
+Azure Automation State Configuration ist ein Azure-Dienst, mit dem Sie PowerShell DSC-[Konfigurationen](/powershell/scripting/dsc/configurations/configurations) schreiben, verwalten und kompilieren, [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources) importieren und Konfigurationen Zielknoten zuweisen können – und all dies in der Cloud.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Gründe für Azure Automation State Configuration
 
@@ -27,11 +27,11 @@ Azure Automation State Configuration bietet verschiedene Vorteile gegenüber der
 
 ### <a name="built-in-pull-server"></a>Integrierter Pullserver
 
-Azure Automation State Configuration bietet einen DSC-Pullserver, der dem [Windows-Dienst DSC](/powershell/dsc/pullserver) ähnelt, sodass Zielknoten Konfigurationen automatisch empfangen, dem gewünschten Zustand entsprechen und ihre Konformität melden. Durch den integrierten Pullserver in Azure Automation entfällt die Notwendigkeit zur Einrichtung und Verwaltung Ihres eigenen Pullservers. Azure Automation eignet sich für virtuelle oder physische Windows- oder Linux-Computer in Cloud- oder lokalen Umgebungen.
+Azure Automation State Configuration bietet einen DSC-Pullserver, der dem [Windows-Dienst DSC](/powershell/scripting/dsc/pull-server/pullserver) ähnelt, sodass Zielknoten Konfigurationen automatisch empfangen, dem gewünschten Zustand entsprechen und ihre Konformität melden. Durch den integrierten Pullserver in Azure Automation entfällt die Notwendigkeit zur Einrichtung und Verwaltung Ihres eigenen Pullservers. Azure Automation eignet sich für virtuelle oder physische Windows- oder Linux-Computer in Cloud- oder lokalen Umgebungen.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Verwalten aller DSC-Artefakte
 
-Azure Automation State Configuration führt dieselbe Verwaltungsschicht in [PowerShell Desired State Configuration](/powershell/dsc/overview) ein, wie Azure Automation sie für die PowerShell-Skripterstellung bietet.
+Azure Automation State Configuration führt dieselbe Verwaltungsschicht in [PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) ein, wie Azure Automation sie für die PowerShell-Skripterstellung bietet.
 
 Über das Azure-Portal oder über PowerShell können Sie Ihre gesamten DSC-Konfigurationen, -Ressourcen und -Zielknoten verwalten.
 

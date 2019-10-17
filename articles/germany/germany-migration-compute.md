@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 288c661c24896757587580129cd7d46eed2d139d
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 60deb142e87a0f58006cc3fe2bb6202eb1f35a9d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827006"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514143"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
@@ -73,7 +73,7 @@ Es wird eine ZIP-Datei heruntergeladen, die mehrere Dateien enthält. Die PowerS
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Site Recovery](https://docs.microsoft.com/azure/site-recovery/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Site Recovery](/azure/site-recovery/) durcharbeiten.
 - Lesen Sie Informationen, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 - Erfahren Sie mehr über [Physisch-zu-Azure-Notfallwiederherstellung über Site Recovery](../site-recovery/physical-azure-disaster-recovery.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).

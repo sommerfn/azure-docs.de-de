@@ -1,26 +1,21 @@
 ---
 title: Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure
 description: Erfahren Sie, wie Sie Azure WebJobs mithilfe von Visual Studio in Azure App Service entwickeln und bereitstellen.
-services: app-service
-documentationcenter: ''
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.service: app-service
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876885"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303543"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 
@@ -229,6 +224,8 @@ Wenn Sie einen [Webauftrag über das Azure-Portal erstellen](webjobs-create.md),
 ### <a name="cron-expressions"></a>CRON-Ausdrücke
 
 Azure WebJobs verwendet die gleichen CRON-Ausdrücke für Zeitpläne wie der Zeitgebertrigger in Azure Functions. Weitere Informationen zur CRON-Unterstützung finden Sie im [Referenzartikel zum Zeitgebertrigger](../azure-functions/functions-bindings-timer.md#ncrontab-expressions).
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ### <a name="settingjob-reference"></a>Referenz zur Datei „setting.job“
 

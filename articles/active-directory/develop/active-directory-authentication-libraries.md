@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb1cd062384bf75e6f83380c172f43244e737db0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 53db2ba94167168b8bcb2da6c9ee4299a7e784e8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853481"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374170"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory-Authentifizierungsbibliotheken
 
@@ -85,5 +85,5 @@ In diesem Szenario verwendet ein Entwickler eine Webanwendung, die auf einem Ser
 ## <a name="see-also"></a>Siehe auch
 
 - [Entwicklerhandbuch zu Azure Active Directory](v1-overview.md)
-- [Authentifizierungsszenarien für Azure Active Directory](authentication-scenarios.md)
+- [Authentifizierungsszenarien für Azure Active Directory](v1-authentication-scenarios.md)
 - [Azure Active Directory-Codebeispiele](sample-v1-code.md)

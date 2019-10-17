@@ -1,26 +1,19 @@
 ---
 title: Neue Microsoft Azure-Supportanfrage – Richtlinien zur Verwendung des Dateiupload-Dienstprogramms | Microsoft Docs
 description: Beschreibt die Richtlinien zur Verwendung des Dateiupload-Dienstprogramms für eine neue Microsoft Azure-Supportanfrage.
-services: ''
-documentationcenter: ''
 author: genlin
-manager: dcscontentpm
-editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 088835f6983814bbe47afeeec210ac41964e7863
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f01c70a2a077e28e8de5118332b780f27dc9ec93
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121165"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248688"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Neue Microsoft Azure Supportanfrage – Richtlinien zur Verwendung des Dienstprogramms für den Dateiupload
 Wenn Sie [eine neue Supportanfrage erstellen](https://portal.azure.com/#create/Microsoft.Support), kann das Dateiupload-Hilfsprogramm Sie dabei unterstützen, auf einfache Weise Diagnosedateien oder andere Dateien hochzuladen, die Ihrer Meinung nach für den Incident relevant sind.  

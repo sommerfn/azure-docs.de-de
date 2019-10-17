@@ -3,15 +3,15 @@ title: Ausführen Ihrer ersten Abfrage mit der Azure CLI
 description: Dieser Artikel führt Sie durch die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure-Befehlszeilenschnittstelle und Ausführen Ihrer ersten Abfrage.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 34325fe8e8fdf7f53eb730818dc57800b65076e2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976711"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389734"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe der Azure CLI
 
@@ -54,7 +54,7 @@ Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, 
    # Login first with az login if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   az graph query -q 'project name, type | limit 5'
+   az graph query -q 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -64,7 +64,7 @@ Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, 
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'project name, type | limit 5 | order by name asc'
+   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -74,7 +74,7 @@ Nachdem die Azure CLI-Erweiterung der gewünschten Umgebung hinzugefügt wurde, 
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'project name, type | order by name asc | limit 5'
+   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 Wenn die letzte Abfrage mehrmals ausgeführt wird, sind die zurückgegebenen Ergebnisse – vorausgesetzt, dass sich in Ihrer Umgebung nichts ändert – konsistent und wie erwartet: sortiert nach der Eigenschaft **Name**, aber immer noch auf die fünf relevantesten Ergebnisse begrenzt.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 7fdb46ac7cffc4eb6a791304c7a6b58378806296
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679399"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374260"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Problembehandlung für virtuelle Windows 7-Computer in Windows Virtual Desktop
 
@@ -30,7 +30,7 @@ Windows Virtual Desktop kann nur vollständige Desktops für Windows 7 virtualis
 
 Auch wenn automatische DPI-Skalierung nicht unterstützt wird, können Sie die Auflösung auf dem virtuellen Computer manuell ändern, indem Sie mit der rechten Maustaste auf das Symbol im Remote Desktop-Client klicken und **Auflösung** auswählen.
 
-## <a name="error-cant-access-the-remote-desktop-user-group"></a>Fehler: Auf die Remote Desktop-Benutzergruppe kann nicht zugegriffen werden
+## <a name="error-cant-access-the-remote-desktop-user-group"></a>Fehler Auf die Remote Desktop-Benutzergruppe kann nicht zugegriffen werden
 
 Wenn Windows Virtual Desktop Sie oder die Anmeldeinformationen Ihrer Benutzer in der Remote Desktop-Benutzergruppe nicht finden kann, wird möglicherweise eine der folgenden Fehlermeldungen angezeigt:
 
@@ -45,5 +45,5 @@ Fügen Sie den Benutzer der Remote Desktop Benutzergruppe hinzu, um diesen Fehle
 4. Führen Sie den folgenden Befehl aus, wobei `<username>` durch den Namen des Benutzers ersetzt wird, den Sie hinzufügen möchten:
    
    ```cmd
-   localgroup "Remote Desktop Users" <username> /add
+   net localgroup "Remote Desktop Users" <username> /add
    ```

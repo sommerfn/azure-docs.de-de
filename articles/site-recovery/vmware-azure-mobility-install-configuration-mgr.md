@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee92ad6e0687018f69044bf3edde76b9f98cee52
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598265"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255591"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatisieren der Mobility Service-Installation mit System Center Configuration Manager
 
@@ -178,10 +178,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
    ![Screenshot des Assistenten zum Erstellen von Paketen und Programmen](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-9. Wählen Sie auf der nächsten Seite die Zielbetriebssysteme aus. Mobility Service kann nur unter Windows Server 2012 R2, Windows Server 2012 und Windows Server 2008 R2 installiert werden.
-
-   ![Screenshot des Assistenten zum Erstellen von Paketen und Programmen](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2.png)
-
+9. Wählen Sie auf der nächsten Seite die Zielbetriebssysteme aus. 
 10. Klicken Sie zweimal auf **Weiter**, um den Assistenten abzuschließen.
 
 

@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "69997821"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
@@ -66,9 +66,6 @@ Das Authentifizierungssystem kann zusätzliche erweiterte Authentifizierungsanfo
 Der folgende Abschnitt hilft Ihnen, anhand einer Entscheidungsstruktur die für Sie richtige Authentifizierungsmethode zu ermitteln. So können Sie entscheiden, ob Sie eine Cloud- oder Verbundauthentifizierung für Ihre Azure AD-Hybrididentitätslösung einsetzen möchten.
 
 ## <a name="decision-tree"></a>Entscheidungsstruktur
-
-> [!NOTE]
-> PTA funktioniert nur mit alternativer ID (Alternate ID), wenn UserPrincipalName als alternative ID ausgewählt wird. Nur dann wird der lokale UserPrincipalName von AD mit AAD synchronisiert. Weitere Informationen finden Sie unter [Unterstützt die Passthrough-Authentifizierung eine alternative Anmelde-ID (Alternate ID) anstelle von „UserPrincipalName“ als Benutzernamen?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
 
 ![Entscheidungsstruktur zur Azure AD-Authentifizierung](./media/choose-ad-authn/azure-ad-authn-image1.png)
 

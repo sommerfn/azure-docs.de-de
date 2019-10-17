@@ -14,17 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 0208e72263991daceed52073bcce8b3e01f8e8c2
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.custom:
+- mvc
+- seo-javascript-september2019
+- seo-javascript-october2019
+- seo-python-october2019
+ms.openlocfilehash: 7732320e987e6397dde2aff0f6c4328d551d99b1
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174293"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72427922"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Schnellstart: Erstellen einer Linux-VM mit der Azure CLI
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) einen virtuellen Linux-Computer in Azure bereitstellen. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Tutorial installieren wir Ubuntu 16.04 LTS. Sie können die VM in Aktion erleben, indem Sie per SSH eine Verbindung damit herstellen und den NGINX-Webserver installieren.
+In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) einen virtuellen Linux-Computer in Azure bereitstellen. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts.
+
+In diesem Tutorial installieren wir Ubuntu 16.04 LTS. Sie können die VM in Aktion erleben, indem Sie per SSH eine Verbindung damit herstellen und den NGINX-Webserver installieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -107,7 +113,7 @@ Geben Sie abschließend `exit` ein, um die SSH-Sitzung zu verlassen.
 
 Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von NGINX anzuzeigen. Verwenden Sie die öffentliche IP-Adresse Ihres virtuellen Computers als Webadresse. Im folgenden Beispiel ist die NGINX-Standardwebsite dargestellt:
 
-![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png)
+![Anzeigen der NGINX-Willkommensseite](./media/quick-create-cli/view-the-nginx-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

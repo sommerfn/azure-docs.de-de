@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 245a69f5e5834e68bbbd17a96859a93bc16eacbe
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 64f892f344780d4af58c70935b9b7b68bad9550d
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744271"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273747"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Datenmodellierung in Azure Time Series Insights Preview
 
@@ -136,4 +136,4 @@ Weitere Informationen zur Verwendung des Updates finden Sie unter [Azure Time Se
 
 - Weitere Informationen zur Preview finden Sie unter [Visualisieren von Daten im Azure Time Series Insights Preview-Explorer](./time-series-insights-update-explorer.md).
 
-- Informationen zu unterstützten JSON-Formen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#json).
+- Informationen zu unterstützten JSON-Formen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#supported-json-shapes).

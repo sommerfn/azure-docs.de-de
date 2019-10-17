@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300695"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273720"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planen Ihrer Azure Time Series Insights Preview-Umgebung
 
@@ -82,7 +82,7 @@ Eine gute Faustregel ist:
 * Speichern Sie Metadaten in Ihrem Zeitreihenmodell.
 * Time Series-Modus, Instanzfelder und Ereignisse enthalten nur erforderliche Informationen, z.B. eine Time Series-ID oder einen Zeitstempel.
 
-Weitere Informationen finden Sie unter [Gestalten von Ereignissen](./time-series-insights-send-events.md#json).
+Weitere Informationen finden Sie unter [Gestalten von Ereignissen](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

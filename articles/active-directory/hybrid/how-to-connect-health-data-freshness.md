@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5bc2ea76c558e47eaa5f297ebe36a629aa5754
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41c1c102e88e1712d561874aef87a6f22ed250a9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702645"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430217"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Warnung „Die Daten des Integritätsdiensts sind nicht aktuell“
 
@@ -52,7 +52,7 @@ In der folgenden Tabelle werden die Diensttypen den entsprechenden erforderliche
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung 
 
-Dieser Abschnitt enthält die erforderlichen Schritte zum Diagnostizieren des Problems. Als Erstes müssen einige grundlegende Prüfungen ausgeführt werden, die für alle Diensttypen geeignet sind. Die folgende Tabelle enthält die spezifischen Schritte für den jeweiligen Dienst- und Datentyp. 
+Dieser Abschnitt enthält die erforderlichen Schritte zum Diagnostizieren des Problems. Als Erstes müssen einige grundlegende Prüfungen ausgeführt werden, die für alle Diensttypen geeignet sind. 
 
 > [!IMPORTANT] 
 > Diese Warnung folgt der [Datenaufbewahrungsrichtlinie](reference-connect-health-user-privacy.md#data-retention-policy) von Connect Health.

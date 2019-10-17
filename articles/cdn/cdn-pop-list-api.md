@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146888"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299236"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Abrufen der aktuellen POP-IP-Liste für Azure CDN
 
@@ -41,7 +41,6 @@ Konfigurieren Sie IP-ACLs für Ihre Back-Ends so, dass sie nur Datenverkehr aus 
 
 IP-Bereiche und Diensttags für Microsoft-Dienste finden Sie [hier](https://www.microsoft.com/download/details.aspx?id=56519).
 
-Filtern Sie auf die Werte für den eingehenden Header „X-Forwarded-Host“, der von Azure CDN von Microsoft gesendet wird. Die einzigen zulässigen Werte für den Header sollten alle Endpunkthosts sein, die in Ihrer CDN-Konfiguration definiert sind. Noch spezifischer: nur die Hostnamen, von denen Sie Datenverkehr für diesen speziellen Ursprung akzeptieren möchten.
 
 ## <a name="typical-use-case"></a>Typischer Anwendungsfall
 

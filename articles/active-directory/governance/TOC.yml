@@ -42,6 +42,8 @@
           items:
             - name: Delegieren an Katalogersteller
               href: entitlement-management-delegate-catalog.md
+            - name: Steuern des Zugriffs für externe Benutzer
+              href: entitlement-management-external-users.md
             - name: Anzeigen von Berichten und Protokollen
               href: entitlement-management-reports.md
             - name: Problembehandlung
@@ -56,7 +58,19 @@
           items:
             - name: Erstellen eines neuen Zugriffspakets
               href: entitlement-management-access-package-create.md
-            - name: Bearbeiten eines Zugriffspakets
+            - name: Freigeben des Links für das Zugriffspaket
+              href: entitlement-management-access-package-settings.md
+            - name: Ändern von Ressourcenrollen
+              href: entitlement-management-access-package-resources.md
+            - name: Ändern von Anforderungs- und Genehmigungseinstellungen
+              href: entitlement-management-access-package-request-policy.md
+            - name: Ändern von Lebenszykluseinstellungen
+              href: entitlement-management-access-package-lifecycle-policy.md
+            - name: Anzeigen und Verwalten von Anforderungen
+              href: entitlement-management-access-package-requests.md
+            - name: 'Anzeigen, Hinzufügen und Entfernen von Zuweisungen'
+              href: entitlement-management-access-package-assignments.md
+            - name: Ausblenden oder Löschen
               href: entitlement-management-access-package-edit.md
         - name: Genehmigende Personen
           items:

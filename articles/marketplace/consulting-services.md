@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147287"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285981"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Beratungsdienste für Azure Marketplace und AppSource
 Mit Beratungsdiensten in Azure Marketplace und AppSource können Microsoft-Partner eine Verbindung zwischen Kunden und Diensten herstellen, um die Nutzung von Azure zu unterstützen und auszuweiten und den Kunden beim Erreichen ihrer Unternehmensziele zu helfen. 
@@ -79,7 +79,6 @@ Partner müssen über eine **Silver- oder Gold-Kompetenz** im entsprechenden Ber
 |Dänemark   |Italien   |     Norwegen          |USA |
 |Finnland   |Japan   |     Polen          
 
-Der Start von Beratungsdiensten wird in bestimmten geografischen Region live geschaltet. Der erste Start findet statt in: USA, Kanada, Großbritannien und Australien. Die Kataloge für andere Länder/Regionen werden online verfügbar sein, sobald eine bedeutende Anzahl und überzeugende Auswahl von Dienstangeboten von Partnern übermittelt und von Microsoft genehmigt wurden.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Registrieren für Beratungsdienste in Azure Marketplace und AppSource
 [Registrieren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher) finden Herausgeber eine vollständige Prüfliste der Registrierungsanforderungen. 

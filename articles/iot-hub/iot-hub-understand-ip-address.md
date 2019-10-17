@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9c9d02eeead4ccbed372e9a55d9b551da83caa39
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7af40404550fb78af891563d8256f23620781b24
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641591"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841531"
 ---
 # <a name="understanding-the-ip-address-of-your-iot-hub"></a>Grundlegendes zur IP-Adresse Ihres IoT-Hubs
 
@@ -34,3 +34,6 @@ Diese IP-Adresse kann sich ohne vorherige Ankündigung ändern. Im Fall eines Fa
 
 Versuchen Sie, Firewallregeln und -filter basierend auf dem Hostnamen oder der Domäne des IoT-Hubs zu erstellen. Wenn Sie nur ausgehenden Datenverkehr an bestimmte Adressen zulassen können, fragen Sie die IP-Adresse Ihres IoT-Hubs regelmäßig ab, und aktualisieren Sie Ihre Firewallregeln.
 
+## <a name="support-for-ipv6"></a>Unterstützung für IPv6 
+
+IPv6 wird auf IoT Hub derzeit nicht unterstützt.

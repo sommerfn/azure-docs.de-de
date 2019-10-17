@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 19191e84e9af140f78e529398471f0e950b36c8c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695760"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332296"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Einrichten eines Labs mit Schwerpunkt Deep Learning und Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services
 Dieser Artikel beschreibt, wie Sie ein Lab mit Schwerpunkt Deep Learning mit Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) mithilfe von Azure Lab Services einrichten. NLP ist eine Form der künstlichen Intelligenz (KI), die Computern Übersetzungs-, Spracherkennungs- und andere Sprachverständnisfunktionen bietet.  
@@ -40,7 +40,7 @@ Folgen Sie [diesem Tutorial](tutorial-setup-classroom-lab.md), um ein neues Lab 
 | ------------ | ------------------ |
 | Größe des virtuellen Computers (VM) | Kleine GPU (Compute). Diese Größe eignet sich am besten für rechenintensive und netzwerkintensive Anwendungen wie künstliche Intelligenz und Deep Learning. |
 | VM-Image | [Data Science Virtual Machine für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Dieses Image bietet Frameworks für Deep Learning sowie Tools für maschinelles Lernen und Data Science. Die vollständige Liste der auf diesem Image installierten Tools finden Sie im folgenden Artikel: [Was ist in DSVM enthalten?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Remotedesktopverbindung aktivieren | Enable (Aktivieren). <p>Wenn Sie diese Einstellung aktivieren, können Kursleiter und Kursteilnehmer mit Hilfe von Remotedesktop (RDP) eine Verbindung mit ihren VMs herstellen.</p><p>**Wichtig**: Auf dem Image der Data Science Virtual Machine für Linux ist RDP bereits installiert. Daher können Kursleiter und -Teilnehmer per RDP ohne zusätzliche Schritte eine Verbindung mit virtuellen Computern herstellen. Sollten Sie eine Verbindung mit dem grafischen Desktop herstellen müssen, ist auf diesem Image des virtuellen Computers bereits [X2Go-Server](https://wiki.x2go.org/doku.php/doc:newtox2go) installiert. Kursteilnehmer müssen den X2Go-Client auf Ihren lokalen Computern installieren und diesen für die Verbindung verwenden. Weitere Informationen finden Sie in den folgenden Anleitungen: <ul><li>[Zugreifen auf die Data Science Virtual Machine für Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Herstellen einer Verbindung mit der Vorlagen-VM zur Installation von RDP- und GUI-Paketen](how-to-enable-remote-desktop-linux.md#teachers-connecting-to-the-template-vm-using-rdp)</li></ul></p>   |
+| Remotedesktopverbindung aktivieren | Enable (Aktivieren). <p>Wenn Sie diese Einstellung aktivieren, können Kursleiter und Kursteilnehmer mit Hilfe von Remotedesktop (RDP) eine Verbindung mit ihren VMs herstellen.</p><p>**Wichtig**: Auf dem Image der Data Science Virtual Machine für Linux ist RDP bereits installiert. Daher können Kursleiter und -Teilnehmer per RDP ohne zusätzliche Schritte eine Verbindung mit virtuellen Computern herstellen. Sollten Sie eine Verbindung mit dem grafischen Desktop herstellen müssen, ist auf diesem Image des virtuellen Computers bereits [X2Go-Server](https://wiki.x2go.org/doku.php/doc:newtox2go) installiert. Kursteilnehmer müssen den X2Go-Client auf Ihren lokalen Computern installieren und diesen für die Verbindung verwenden. Weitere Informationen finden Sie in den folgenden Anleitungen: <ul><li>[Zugreifen auf die Data Science Virtual Machine für Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Herstellen einer Verbindung mit der Vorlagen-VM zur Installation von RDP- und GUI-Paketen](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 Das Image der Data Science Virtual Machine für Linux bietet die für Kurse dieser Art erforderlichen Deep Learning-Frameworks und -Tools. Es muss daher nach dem Erstellen des Vorlagen-Computers nicht weiter angepasst werden. Es kann zur Nutzung durch die Kursteilnehmer veröffentlicht werden. Wählen Sie auf der Vorlagenseite die Schaltfläche **Veröffentlichen** aus, um die Vorlage im Lab zu veröffentlichen.  
 
@@ -58,7 +58,7 @@ In diesem Artikel wurden die Schritte zum Erstellen eines Labs für Kurse zur Ve
 Die nächsten Schritte sind die gleichen für sämtliche Labs:
 
 - [Hinzufügen von Benutzern](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Kontingent festlegen](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Kontingent festlegen](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zeitplan festlegen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Registrierungslinks an Kursteilnehmer senden](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Registrierungslinks an Kursteilnehmer senden](how-to-configure-student-usage.md#send-invitations-to-users). 
 

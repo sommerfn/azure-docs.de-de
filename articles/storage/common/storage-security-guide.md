@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986553"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299620"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -102,9 +102,7 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 * [Azure Storage Resource Provider REST-API-Referenz](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Diese API-Referenz beschreibt die APIs, die Sie zum programmgesteuerten Verwalten Ihres Speicherkontos verwenden können.
-* [Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  In diesem Artikel wird die Authentifizierung mithilfe der Resource Manager-APIs gezeigt.
 * [Role-Based Access Control for Microsoft Azure from Ignite (Rollenbasierte Zugriffssteuerung für Microsoft Azure über Ignite)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   Dies ist ein Link zu einem Video auf Channel 9 von der MS Ignite-Konferenz 2015. Thema dieser Sitzung sind die Zugriffsverwaltungs- und Berichtsfunktionen in Azure und die Untersuchung bewährter Verfahren für das Sichern des Zugriffs auf Azure-Abonnements mit Azure Active Directory.

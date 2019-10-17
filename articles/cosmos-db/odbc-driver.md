@@ -4,14 +4,14 @@ description: Es wird beschrieben, wie Sie den Azure Cosmos DB-ODBC-Treiber zum E
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: b859d01a39f906f518a82d468c3c9267545b9a07
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616895"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035613"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -61,16 +61,26 @@ Wenden wir uns nun dem ODBC-Treiber zu.
     - **Beschreibung:** Eine kurze Beschreibung der Datenquelle.
     - **Host**: Der URI für Ihr Azure Cosmos DB-Konto. Sie können den URI im Azure-Portal über die Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel) abrufen. Dies ist im folgenden Screenshot dargestellt. 
     - **Zugriffsschlüssel**: Der Primär- oder Sekundärschlüssel für den Lese-/Schreibzugriff oder schreibgeschützten Zugriff über die Seite mit den Azure Cosmos DB-Schlüsseln im Azure-Portal. Dies ist im folgenden Screenshot dargestellt. Wir empfehlen Ihnen die Verwendung des Schlüssels für den schreibgeschützten Zugriff, falls der DSN nur für die schreibgeschützte Datenverarbeitung und Berichterstellung verwendet wird.
-    ![Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel)](./media/odbc-driver/odbc-driver-keys.png)
+    ![Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel)](./media/odbc-driver/odbc-cosmos-account-keys.png)
     - **Zugriffsschlüssel verschlüsseln für**: Wählen Sie die entsprechende Option basierend auf den Benutzern dieses Computers aus. 
     
 1. Klicken Sie auf die Schaltfläche **Testen**, um sicherzustellen, dass Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto herstellen können. 
 
-1. Klicken Sie auf **Erweiterte Optionen**, und legen Sie die folgenden Werte fest:
+1.  Klicken Sie auf **Erweiterte Optionen**, und legen Sie die folgenden Werte fest:
+    *  **REST-API-Version**: Wählen Sie die [REST-API-Version](https://docs.microsoft.com/rest/api/cosmos-db/) für Ihre Vorgänge aus. Die Standardversion ist „2015-12-16“. Wenn Sie Container mit [großen Partitionsschlüsseln](large-partition-keys.md) haben, für die die REST-API-Version „2018-12-31“ erforderlich ist, führen Sie die folgenden Schritte aus:
+        - Geben Sie **2018-12-31** als REST-API-Version ein.
+        - Geben Sie im Menü **Start** die Zeichenfolge „regedit“ ein, um die Anwendung **Registrierungs-Editor** zu suchen und zu öffnen.
+        - Navigieren Sie im Registrierungs-Editor zum Pfad: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
+        - Erstellen Sie einen neuen Unterschlüssel, der denselben Namen wie Ihr DSN hat, z.B. „Contoso-Konto ODBC DSN“.
+        - Navigieren Sie zum Unterschlüssel „Contoso-Konto ODBC DSN“.
+        - Klicken Sie mit der rechten Maustaste, um einen neuen **Zeichenfolge**-Wert hinzuzufügen:
+            - Wertname: **IgnoreSessionToken**
+            - Wertdaten: **1**
+            ![Einstellungen für den Registrierungs-Editor](./media/odbc-driver/cosmos-odbc-edit-registry.png)
     - **Abfragekonsistenz**: Wählen Sie die [Konsistenzebene](consistency-levels.md) für Ihre Vorgänge aus. Die Standardeinstellung lautet „Sitzung“.
     - **Anzahl an Wiederholungen**: Geben Sie ein, wie oft für einen Vorgang ein Wiederholungsversuch durchgeführt werden soll, falls die erste Anforderung aufgrund einer Ratenbegrenzung des Diensts nicht abgeschlossen werden konnte.
     - **Schemadatei**: Hier stehen Ihnen mehrere Optionen zur Verfügung.
-        - Wenn Sie diesen Eintrag unverändert (leer) lassen, scannt der Treiber die erste Seite der Daten für alle Sammlungen, um das Schema der einzelnen Sammlungen zu ermitteln. Dies wird als Sammlungszuordnung bezeichnet. Ohne definierte Schemadatei muss der Treiber den Scanvorgang bei jeder Treibersitzung durchführen. Dies kann zu einer längeren Startdauer für Anwendungen führen, die den DSN nutzen. Es ist ratsam, für einen DSN immer eine Schemadatei zuzuordnen.
+        - Wenn Sie diesen Eintrag unverändert (leer) lassen, überprüft der Treiber die erste Seite der Daten für alle Container, um das Schema der einzelnen Container zu ermitteln. Dieser Vorgang wird als „Containerzuordnung“ bezeichnet. Ohne definierte Schemadatei muss der Treiber den Scanvorgang bei jeder Treibersitzung durchführen. Dies kann zu einer längeren Startdauer für Anwendungen führen, die den DSN nutzen. Es ist ratsam, für einen DSN immer eine Schemadatei zuzuordnen.
         - Wenn Sie bereits über eine (möglicherweise mit dem Schema-Editor erstellte) Schemadatei verfügen, können Sie auf **Durchsuchen** klicken, zur Datei navigieren und dann auf **Speichern** und auf **OK** klicken.
         - Wenn Sie ein neues Schema erstellen möchten, klicken Sie auf **OK** und anschließend im Hauptfenster auf **Schema-Editor**. Fahren Sie dann mit den Informationen im Schema-Editor fort. Achten Sie nach dem Erstellen der neuen Schemadatei darauf, zurück zum Fenster **Erweiterte Optionen** zu wechseln, um die neu erstellte Schemadatei einzufügen.
 
@@ -78,17 +88,17 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
     ![Neuer Azure Cosmos DB ODBC-DSN auf der Registerkarte „Benutzer-DSN“](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#collection-mapping"></a>Schritt 3: Erstellen einer Schemadefinition mit der Sammlungszuordnungsmethode
+## <a id="#container-mapping"></a>Schritt 3: Erstellen einer Schemadefinition mithilfe der Containerzuordnungsmethode
 
-Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungszuordnung** und **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für eine Sammlung ist jeweils nur eine bestimmte Samplingmethode zulässig. Mit den Schritten unten wird ein Schema für die Daten in einer oder mehreren Sammlungen mithilfe der Methode „Sammlungszuordnung“ erstellt. Mit dieser Samplingmethode werden die Daten auf der Seite einer Sammlung abgerufen, um die Struktur der Daten zu ermitteln. Hierbei wird eine Sammlung in eine Tabelle auf ODBC-Seite transponiert. Diese Samplingmethode ist effizient und schnell, wenn die Daten einer Sammlung homogen sind. Falls eine Sammlung heterogene Daten enthält, empfehlen wir Ihnen die Verwendung der [Tabellentrennzeichen-Zuordnungsmethode](#table-mapping) (table-delimiters). Dies ist eine robustere Samplingmethode zum Ermitteln der Datenstrukturen einer Sammlung. 
+Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerzuordnung** oder **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für einen Container ist jeweils nur eine bestimmte Samplingmethode zulässig. Mit den folgenden Schritten wird ein Schema für die Daten in einem oder mehreren Containern mithilfe der Methode „Containerzuordnung“ erstellt. Mit dieser Samplingmethode werden die Daten auf der Seite eines Containers abgerufen, um die Struktur der Daten zu ermitteln. Hierbei wird ein Container in eine Tabelle auf der ODBC-Seite transponiert. Diese Samplingmethode ist effizient und schnell, wenn die Daten in einem Container homogen sind. Falls ein Container heterogene Daten enthält, empfehlen wir Ihnen die Verwendung der [Tabellentrennzeichen-Zuordnungsmethode](#table-mapping) (table-delimiters). Dies ist eine robustere Samplingmethode zur Ermittlung der Datenstrukturen im Container. 
 
 1. Klicken Sie nach Abschluss der Schritte 1 bis 4 unter [Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank](#connect) im Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Schema-Editor**.
 
     ![Schaltfläche „Schema-Editor“ im Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup)](./media/odbc-driver/odbc-driver-schema-editor.png)
 1. Klicken Sie im Fenster **Schema-Editor** auf **Neu erstellen**.
-    Im Fenster **Generate Schema** (Schema generieren) werden alle Sammlungen des Azure Cosmos DB-Kontos angezeigt. 
+    Im Fenster **Generate Schema** (Schema generieren) werden alle Container im Azure Cosmos DB-Konto angezeigt. 
 
-1. Wählen Sie mindestens eine Sammlung für das Sampling aus, und klicken Sie dann auf **Sample** (Beispiel). 
+1. Wählen Sie einen oder mehrere Container für das Sampling aus, und klicken Sie auf **Sample** (Beispiel). 
 
 1. Auf der Registerkarte **Entwurfsansicht** sind die Datenbank, das Schema und die Tabelle dargestellt. In der Tabellenansicht zeigt der Scanvorgang die Eigenschaften an, die den Spaltennamen zugeordnet sind (SQL-Name, Quellname usw.).
     Sie können für jede Spalte SQL-Spaltenname, SQL-Typ, SQL-Länge (falls zutreffend), Staffelung (falls zutreffend), Genauigkeit (falls zutreffend) und „Nullable“ angeben bzw. ändern.
@@ -101,16 +111,16 @@ Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungsz
 
 ## <a id="table-mapping"></a>Schritt 4: Erstellen einer Schemadefinition mit der Tabellentrennzeichen-Zuordnungsmethode
 
-Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungszuordnung** und **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für eine Sammlung ist jeweils nur eine bestimmte Samplingmethode zulässig. 
+Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerzuordnung** oder **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für jeden Container ist nur eine bestimmte Samplingmethode zulässig. 
 
-Mit den folgenden Schritten wird ein Schema für die Daten in einer oder mehreren Sammlungen erstellt, indem die Zuordnungsmethode **Tabellentrennzeichen** verwendet wird. Wir empfehlen Ihnen die Verwendung dieser Samplingmethode, wenn Ihre Sammlungen heterogene Daten enthalten. Sie können diese Methode verwenden, um das Sampling an eine Gruppe von Attributen und die dazugehörigen Werte anzupassen. Wenn ein Dokument beispielsweise eine Type-Eigenschaft enthält, können Sie das Sampling auf die Werte dieser Eigenschaft beschränken. Das Endergebnis des Samplings ist eine Gruppe von Tabellen für jeden einzelnen Wert, den Sie für „Type“ angegeben haben. Mit „Type = Car“ wird beispielsweise eine Tabelle mit PKW erzeugt, während mit „Type = Plane“ eine Tabelle mit Flugzeugen erzeugt wird.
+Mit den folgenden Schritten wird ein Schema für die Daten in einem oder mehreren Containern mithilfe der Zuordnungsmethode **Tabellentrennzeichen** erstellt. Wir empfehlen Ihnen die Verwendung dieser Samplingmethode, wenn Ihre Container heterogene Daten enthalten. Sie können diese Methode verwenden, um das Sampling an eine Gruppe von Attributen und die dazugehörigen Werte anzupassen. Wenn ein Dokument beispielsweise eine Type-Eigenschaft enthält, können Sie das Sampling auf die Werte dieser Eigenschaft beschränken. Das Endergebnis des Samplings ist eine Gruppe von Tabellen für jeden einzelnen Wert, den Sie für „Type“ angegeben haben. Mit „Type = Car“ wird beispielsweise eine Tabelle mit PKW erzeugt, während mit „Type = Plane“ eine Tabelle mit Flugzeugen erzeugt wird.
 
 1. Klicken Sie nach Abschluss der Schritte 1 bis 4 unter [Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank](#connect) im Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Schema-Editor**.
 
 1. Klicken Sie im Fenster **Schema-Editor** auf **Neu erstellen**.
-    Im Fenster **Generate Schema** (Schema generieren) werden alle Sammlungen des Azure Cosmos DB-Kontos angezeigt. 
+    Im Fenster **Generate Schema** (Schema generieren) werden alle Container im Azure Cosmos DB-Konto angezeigt. 
 
-1. Wählen Sie auf der Registerkarte **Beispielansicht** in der Spalte **Mapping Definition** (Zuordnungsdefinition) für die Sammlung auf **Bearbeiten**. Wählen Sie im Fenster **Mapping Definition** (Zuordnungsdefinition) dann die Methode **Table Delimiters** (Tabellentrennzeichen). Gehen Sie wie folgt vor:
+1. Wählen Sie auf der Registerkarte **Beispielansicht** in der Spalte **Mapping Definition** (Zuordnungsdefinition) für den Container den gewünschten Container aus, und klicken Sie auf **Bearbeiten**. Wählen Sie im Fenster **Mapping Definition** (Zuordnungsdefinition) dann die Methode **Table Delimiters** (Tabellentrennzeichen). Gehen Sie wie folgt vor:
 
     a. Geben Sie im Feld **Attribute** den Namen einer Trennzeicheneigenschaft ein. Dies ist eine Eigenschaft in Ihrem Dokument, an die Sie das Sampling anpassen möchten, z.B. „City“. Drücken Sie anschließend die EINGABETASTE. 
 
@@ -120,7 +130,7 @@ Mit den folgenden Schritten wird ein Schema für die Daten in einer oder mehrere
 
 1. Klicken Sie auf **OK**. 
 
-1. Klicken Sie im Fenster **Schema-Editor** auf **Sample** (Beispiel), nachdem Sie die Zuordnungsdefinitionen für die Sammlungen, für die das Sampling durchgeführt werden soll, erstellt haben.
+1. Nachdem Sie die Zuordnungsdefinitionen für die Container, für die das Sampling durchgeführt werden soll, erstellt haben, klicken Sie im Fenster **Schema-Editor** auf **Sample** (Beispiel).
      Sie können für jede Spalte SQL-Spaltenname, SQL-Typ, SQL-Länge (falls zutreffend), Staffelung (falls zutreffend), Genauigkeit (falls zutreffend) und „Nullable“ angeben bzw. ändern.
     - Sie können **Hide Column** (Spalte ausblenden) auf **true** (wahr) festlegen, wenn Sie diese Spalte aus den Abfrageergebnissen ausschließen möchten. Spalten mit der Einstellung „Hide Column = true“ werden nicht für die Auswahl und Projektion zurückgegeben, sind aber weiterhin Teil des Schemas. Beispielsweise können Sie alle für das Azure Cosmos DB-System erforderlichen Eigenschaften ausblenden, die mit `_` beginnen.
     - Die Spalte **id** ist das einzige Feld, das nicht ausgeblendet werden kann, da es als Primärschlüssel im normalisierten Schema verwendet wird. 
@@ -156,7 +166,7 @@ Aktualisieren Sie die Liste mit den Verbindungsservern, um den Namen des neuen V
 
 ### <a name="query-linked-database"></a>Abfragen der verknüpften Datenbank
 
-Geben Sie eine SSMS-Abfrage ein, um die verknüpfte Datenbank abzufragen. In diesem Beispiel wird mit der Abfrage eine Auswahl aus der Tabelle in der Sammlung `customers` getroffen:
+Geben Sie eine SSMS-Abfrage ein, um die verknüpfte Datenbank abzufragen. In diesem Beispiel wird mit der Abfrage eine Auswahl aus der Tabelle im Container `customers` getroffen:
 
 ```sql
 SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
@@ -184,7 +194,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 ## <a name="optional-creating-views"></a>(Optional) Erstellen von Ansichten
 Im Rahmen des Samplingprozesses können Sie Ansichten definieren und erstellen. Diese Ansichten entsprechen SQL-Ansichten. Sie sind schreibgeschützt und auf die Auswahl und Projektionen der definierten Azure Cosmos DB-SQL-Abfrage beschränkt. 
 
-Klicken Sie im Fenster **Schema-Editor** in der Spalte **View Definitions** (Ansichtsdefinitionen) in der Zeile mit der Sammlung, für die das Sampling erstellt werden soll, auf **Hinzufügen**. 
+Wenn Sie eine Ansicht für Ihre Daten erstellen möchten, klicken Sie im Fenster **Schema-Editor** in der Spalte **View Definitions** (Ansichtsdefinitionen) in der Zeile mit dem Container, für den das Sampling durchgeführt werden soll, auf **Hinzufügen**. 
     ![Datenansicht erstellen](./media/odbc-driver/odbc-driver-create-view.png)
 
 

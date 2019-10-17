@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105387"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311640"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in Azure HDInsight
 
@@ -137,4 +137,4 @@ Ein HDInsight HBase-Cluster enthält die [Ambari-Benutzeroberfläche](hdinsight-
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [Verwenden von Apache Phoenix mit Linux-basierten HBase-Clustern in HDInsight](hbase/apache-hbase-query-with-phoenix.md)

@@ -13,19 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c2ac1d662851b5a0b44ec475becb5f5e0403c4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146394"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517164"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Massendownload von Mitgliedern einer Gruppe (Vorschau) in Azure Active Directory
 
 Im Azure Active Directory-Portal (Azure AD) können Sie die Mitglieder einer Gruppe in Ihrer Organisation per Massenvorgang in eine CSV-Datei (Comma-Separated Values, durch Trennzeichen getrennte Werte) herunterladen.
-
-> [!NOTE]
-> Azure AD-Massenvorgänge sind eine öffentliche Previewfunktion von Azure AD und bei jedem kostenpflichtigen Azure AD-Lizenzplan verfügbar. Weitere Informationen zu Nutzungsbedingungen für Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbedingungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="to-bulk-download-group-membership"></a>So führen Sie einen Massendownload der Gruppenmitgliedschaft durch
 

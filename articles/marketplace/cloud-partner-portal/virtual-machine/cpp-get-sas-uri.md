@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: 4da82b2f6aaa3fc664d2e91b80722329533b0cd0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c242fbcd19187abb608ca80a49d04dae195bd7c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938666"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374374"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
 
@@ -44,7 +44,7 @@ Führen Sie zum Generieren eines SAS-URI mit der Azure CLI die folgenden Schritt
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
     
-3. Bearbeiten Sie die Datei, und geben Sie folgende Parameterwerte an.  Datumsangaben sollten im UTC-Datums- und -Uhrzeitformat angegeben werden, z.B. `10-25-2016T00:00:00Z`.
+3. Bearbeiten Sie die Datei, und geben Sie folgende Parameterwerte an.  Datumsangaben sollten im UTC-Datums- und -Uhrzeitformat angegeben werden, z.B. `2016-10-25T00:00:00Z`.
    - `<account-name>`: Der Name Ihres Azure Storage-Kontos.
    - `<account-key>`: Der Schlüssel Ihres Azure Storage-Kontos.
    - `<vhd-name>`: Der Name Ihrer virtuellen Festplatte.

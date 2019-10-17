@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410125"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436049"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Installieren von TmaxSoft OpenFrame in Azure
 
@@ -1474,7 +1474,7 @@ Damit ist die Installation der OpenFrame-Komponenten abgeschlossen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie eine Mainframemigration in Betracht ziehen, steht Ihnen unser expandierendes Partnerökosystem zur Seite. Ausführliche Anleitungen zur Auswahl einer Partnerlösung finden Sie in der [Platform Modernization Alliance](https://www.platformmodernization.org/pages/mainframe.aspx).
+Wenn Sie eine Mainframemigration in Betracht ziehen, steht Ihnen unser expandierendes Partnerökosystem zur Seite. Ausführliche Anleitungen zur Auswahl einer Partnerlösung finden Sie in der [Platform Modernization Alliance](https://datamigration.microsoft.com/).
 
 -   [Erste Schritte mit Azure](https://docs.microsoft.com/azure/)
 -   [Dokumentation zu Host Integration Server (HIS)](https://docs.microsoft.com/host-integration-server/)

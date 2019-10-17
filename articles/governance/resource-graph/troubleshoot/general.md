@@ -3,15 +3,15 @@ title: Problembehandlung für häufige Fehler
 description: Informationen zum Beheben von Problemen beim Abfragen von Azure-Ressourcen mit Azure Resource Graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976608"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389702"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problembehandlung mit Azure Resource Graph
 
@@ -39,7 +39,7 @@ Verwenden Sie Batchanforderungen für die Abfrage, die nur aus einem Teil der Ab
 
 ```azurepowershell-interactive
 # Replace this query with your own
-$query = 'project type'
+$query = 'Resources | project type'
 
 # Fetch the full array of subscription IDs
 $subscriptions = Get-AzSubscription
@@ -73,6 +73,7 @@ Die Azure Resource Graph-REST-API unterstützt nur **application/json** als `Con
 #### <a name="resolution"></a>Lösung
 
 Überprüfen Sie, ob in dem Tool oder Agent, das oder den Sie zum Abfragen von Azure Resource Graph verwenden, der REST-API-Header `Content-Type` für **application/json** konfiguriert ist.
+
 ### <a name="rest-403"></a>Szenario: Keine Leseberechtigung für alle Abonnements in der Liste
 
 #### <a name="issue"></a>Problem

@@ -8,20 +8,20 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ece85feff3c6eff9fc2348de70842204986952d5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6e74830a3a62ea54c5d8e7f9815fe2ba6eed6d58
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855621"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166495"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Der Azure-Blobdateisystemtreiber (ABFS): Ein dedizierter Azure Storage-Treiber für Hadoop
 
-Eine der Hauptmethoden für den Zugriff auf Daten in Azure Data Lake Storage Gen2 ist das [Hadoop-Dateisystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Mit Data Lake Storage Gen2 erhalten Benutzer von Azure Blob Storage Zugriff auf einen neuen Treiber, den Azure-Blobdateisystem- oder `ABFS`-Treiber. ABFS ist Teil von Apache Hadoop und in vielen kommerziellen Hadoop-Distributionen enthalten. Dank dieses Treibers können zahlreiche Anwendungen und Frameworks ganz ohne Code, der explizit auf den Azure Blob Storage-Dienst verweist, auf Daten in Data Lake Storage Gen2 zugreifen.
+Eine der Hauptmethoden für den Zugriff auf Daten in Azure Data Lake Storage Gen2 ist das [Hadoop-Dateisystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Mit Data Lake Storage Gen2 erhalten Benutzer von Azure Blob Storage Zugriff auf einen neuen Treiber, den Azure-Blobdateisystem- oder `ABFS`-Treiber. ABFS ist Teil von Apache Hadoop und in vielen kommerziellen Hadoop-Distributionen enthalten. Dank dieses Treibers können zahlreiche Anwendungen und Frameworks ganz ohne Code, der explizit auf den Azure Blob Storage-Dienst verweist, auf Daten in Data Lake Storage Gen2 zugreifen. 
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Vorherige Funktion: Der Windows Azure Storage Blob-Treiber
 
-Die ursprüngliche Unterstützung von Azure Blob Storage wurde durch den Windows Azure Storage Blob-Treiber (oder [WASB-Treiber](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)) bereitgestellt. Dieser Treiber hatte die komplexe Aufgabe, die für die Hadoop-Dateisystemschnittstelle erforderliche Dateisystemsemantik der objektspeicherorientierten Schnittstelle zuzuordnen, die von Azure Blob Storage verfügbar gemacht wird. Dieser Treiber unterstützt das Modell zwar weiterhin und bietet blitzschnellen Zugriff auf Daten in Blobs, enthält aber auch eine große Menge an Code für die entsprechende Zuordnung, was ihn nicht gerade wartungsfreundlich macht. Darüber hinaus muss der Treiber bei einigen Vorgängen (beispielsweise bei [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) und [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) für Verzeichnisse) eine große Anzahl von Vorgängen ausführen, da Objektspeicher keine Verzeichnisse unterstützen. Dies wirkt sich nachteilig auf die Leistung aus. Der ABFS-Treiber wurde entwickelt, um die Mängel in WASB zu bewältigen.
+Die ursprüngliche Unterstützung von Azure Blob Storage wurde durch den Windows Azure Storage Blob-Treiber (oder [WASB-Treiber](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)) bereitgestellt. Dieser Treiber hatte die komplexe Aufgabe, die für die Hadoop-Dateisystemschnittstelle erforderliche Dateisystemsemantik der objektspeicherorientierten Schnittstelle zuzuordnen, die von Azure Blob Storage verfügbar gemacht wird. Dieser Treiber unterstützt das Modell zwar weiterhin und bietet blitzschnellen Zugriff auf in Blobs gespeicherte Daten, enthält aber auch eine große Menge an Code für die entsprechende Zuordnung, was ihn nicht gerade wartungsfreundlich macht. Darüber hinaus muss der Treiber bei einigen Vorgängen (beispielsweise bei [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) und [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) für Verzeichnisse) eine große Anzahl von Vorgängen ausführen, da Objektspeicher keine Verzeichnisse unterstützen. Dies wirkt sich nachteilig auf die Leistung aus. Der ABFS-Treiber wurde entwickelt, um die Mängel in WASB zu bewältigen.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Der Azure-Blobdateisystemtreiber
 

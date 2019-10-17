@@ -13,19 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4412bc9ce8d78b5810b25b60724575af66774127
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 8ff4234d9fd28e655e868108e37b09c5afe2767c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146240"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517128"
 ---
 # <a name="bulk-import-group-members-preview-in-azure-active-directory"></a>Massenimport von Gruppenmitgliedern (Vorschau) in Azure Active Directory
 
 Über das Azure AD-Portal (Azure Active Directory) können Sie eine große Anzahl von Mitgliedern zu einer Gruppe hinzufügen, indem Sie mithilfe einer CSV-Datei (Comma-Separated Values, durch Trennzeichen getrennte Werte) einen Massenimport von Gruppenmitgliedern ausführen.
-
-> [!NOTE]
-> Azure AD-Massenvorgänge sind eine öffentliche Previewfunktion von Azure AD und bei jedem kostenpflichtigen Azure AD-Lizenzplan verfügbar. Weitere Informationen zu Nutzungsbedingungen für Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbedingungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="to-bulk-import-group-members"></a>So führen Sie den Massenimport von Gruppenmitgliedern aus
 

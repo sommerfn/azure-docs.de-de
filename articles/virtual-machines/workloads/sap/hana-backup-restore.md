@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/22/2019
+ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 705dfb0b62327d9675fe9bf3e5860b1396e2fab9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4384d29811d29f06422802abba5d3eb1ea5737e9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101306"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430077"
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -67,7 +67,7 @@ Sie können Speichermomentaufnahmen für drei Volumeklassen durchführen:
 - Eine separate Momentaufnahme für „/hana/logbackups“
 - Eine Betriebssystempartition.
 
-Die neuesten Momentaufnahmeskripts und -dokumente finden Sie bei [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1). Wenn Sie das Skriptpaket mit den Momentaufnahmen von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) herunterladen, erhalten Sie drei Dateien. Eine der Dateien ist in einer PDF-Datei für die bereitgestellten Funktionen dokumentiert. Nachdem Sie die Tools heruntergeladen haben, befolgen Sie die Anweisungen unter „Get the snapshot tools“ (Abrufen der Momentaufnahmetools).
+Die neuesten Momentaufnahmeskripts und -dokumente finden Sie bei [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). Wenn Sie das Skriptpaket mit den Momentaufnahmen von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) herunterladen, erhalten Sie drei Dateien. Eine der Dateien ist in einer PDF-Datei für die bereitgestellten Funktionen dokumentiert. Nachdem Sie die Tools heruntergeladen haben, befolgen Sie die Anweisungen unter „Get the snapshot tools“ (Abrufen der Momentaufnahmetools).
 
 ## <a name="storage-snapshot-considerations"></a>Aspekte von Speichermomentaufnahmen
 
@@ -116,24 +116,24 @@ Führen Sie diese Schritte aus, um Speichermomentaufnahmen mit HANA (große Inst
 1. Erstellen Sie ggf. ein SAP HANA-Sicherungsbenutzerkonto auf dem Masterknoten für jede SAP HANA-Instanz, die Sie ausführen.
 1. Installieren Sie den SAP HANA HDB-Client auf allen Servern mit SAP HANA (große Instanzen).
 1. Erstellen Sie auf dem ersten Server mit SAP HANA (große Instanzen) in jeder Region einen öffentlichen Schlüssel, um auf die zugrunde liegende Speicherinfrastruktur zuzugreifen, die die Erstellung von Momentaufnahmen steuert.
-1. Kopieren Sie die Skripts und die Konfigurationsdatei von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) im Speicherort **hdbsql** der SAP HANA-Installation.
+1. Kopieren Sie die Skripts und die Konfigurationsdatei von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) im Speicherort **hdbsql** der SAP HANA-Installation.
 1. Ändern Sie bei Bedarf die Datei *HANABackupDetails.txt* gemäß den jeweiligen Kundenvorgaben.
 
-Rufen Sie die neuesten Momentaufnahmeskripts und -dokumente bei [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) ab. Weitere Informationen zu den zuvor aufgeführten Schritten finden Sie unter [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Rufen Sie die neuesten Momentaufnahmeskripts und -dokumente bei [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) ab. Weitere Informationen zu den zuvor aufgeführten Schritten finden Sie unter [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 ### <a name="consideration-for-mcod-scenarios"></a>Überlegung für MCOD-Szenarien
-Wenn Sie ein Betriebssystem mit einem [MCOD-Szenario](https://launchpad.support.sap.com/#/notes/1681092) mit mehreren SAP HANA-Instanzen auf einer HANA-Einheit (große Instanzen) ausführen, verfügen Sie über separat bereitgestellte Speichervolumes für jede einzelne SAP HANA-Instanz. Weitere Informationen zu MDC und zusätzliche Überlegungen finden Sie unter „Important things to remember“ (Wichtige zu beachtende Punkte) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Wenn Sie ein Betriebssystem mit einem [MCOD-Szenario](https://launchpad.support.sap.com/#/notes/1681092) mit mehreren SAP HANA-Instanzen auf einer HANA-Einheit (große Instanzen) ausführen, verfügen Sie über separat bereitgestellte Speichervolumes für jede einzelne SAP HANA-Instanz. Weitere Informationen zu MDC und zusätzliche Überlegungen finden Sie unter „Important things to remember“ (Wichtige zu beachtende Punkte) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
  
 
 ### <a name="step-1-install-the-sap-hana-hdb-client"></a>Schritt 1: Installieren des SAP HANA HDB-Clients
 
-Das für SAP HANA in Azure (große Instanzen) installierte Linux-Betriebssystem enthält die Ordner und Skripts, die benötigt werden, um SAP HANA-Speichermomentaufnahmen für die Sicherung und Notfallwiederherstellung auszuführen. Überprüfen Sie, ob auf [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) neuere Versionen zur Verfügung stehen. Die neueste Skriptversion ist 4.1. Andere Skripts weisen möglicherweise abweichende Nebenversionen innerhalb derselben Hauptversion auf.
+Das für SAP HANA in Azure (große Instanzen) installierte Linux-Betriebssystem enthält die Ordner und Skripts, die benötigt werden, um SAP HANA-Speichermomentaufnahmen für die Sicherung und Notfallwiederherstellung auszuführen. Überprüfen Sie, ob auf [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) neuere Versionen zur Verfügung stehen. 
 
 Sie müssen bei der Installation von SAP HANA den SAP HANA HDB-Client für die Einheiten von HANA (große Instanzen) selbst installieren.
 
 ### <a name="step-2-change-the-etcsshssh_config"></a>Schritt 2: Ändern von „/etc/ssh/ssh\_config“
 
-Dieser Schritt wird unter „Enable communication with storage“ (Aktivieren der Kommunikation mit dem Speicher) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure) beschrieben.
+Dieser Schritt wird unter „Enable communication with storage“ (Aktivieren der Kommunikation mit dem Speicher) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure) beschrieben.
 
 
 ### <a name="step-3-create-a-public-key"></a>Schritt 3: Erstellen eines öffentlichen Schlüssels
@@ -142,14 +142,14 @@ Um den Zugriff auf die Schnittstellen für Speichermomentaufnahmen Ihres HANA-Ma
 
 Erstellen Sie auf dem ersten Server mit SAP HANA in Azure (große Instanzen) in Ihrem Mandanten einen öffentlichen Schlüssel zum Zugreifen auf die Speicherinfrastruktur. Mit einem öffentlichen Schlüssel ist für die Anmeldung bei den Schnittstellen für Speichermomentaufnahmen kein Kennwort erforderlich. Außerdem müssen Sie mit einem öffentlichen Schlüssel keine Kennwortanmeldeinformationen verwalten. 
 
-Informationen zum Erstellen eines öffentlichen Schlüssels finden Sie unter „Enable communication with storage“ (Aktivieren der Kommunikation mit dem Speicher) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Informationen zum Erstellen eines öffentlichen Schlüssels finden Sie unter „Enable communication with storage“ (Aktivieren der Kommunikation mit dem Speicher) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>Schritt 4: Erstellen eines SAP HANA-Benutzerkontos
 
 Um mit der Erstellung von SAP HANA-Momentaufnahmen zu beginnen, erstellen Sie in SAP HANA ein Benutzerkonto, das die Skripts für Speichermomentaufnahmen verwenden kann. Erstellen Sie hierzu in SAP HANA Studio ein SAP HANA-Benutzerkonto. Der Benutzer muss unter der SYSTEMDB erstellt werden, *nicht* unter der SID-Datenbank für MDC. In einer Umgebung mit einem einzelnen Container wird der Benutzer in der Mandantendatenbank erstellt. Dieses Konto benötigt die Berechtigungen **Backup Admin** und **Catalog Read**. 
 
-Informationen zum Einrichten und Verwenden eines Benutzerkontos finden Sie unter „Enable communication with SAP HANA“ (Aktivieren der Kommunikation mit SAP HANA) bei [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1).
+Informationen zum Einrichten und Verwenden eines Benutzerkontos finden Sie unter „Enable communication with SAP HANA“ (Aktivieren der Kommunikation mit SAP HANA) bei [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 
 ### <a name="step-5-authorize-the-sap-hana-user-account"></a>Schritt 5: Autorisieren des SAP HANA-Benutzerkontos
@@ -162,29 +162,29 @@ In diesem Schritt autorisieren Sie das erstellte SAP HANA-Benutzerkonto, damit d
 
 ### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>Schritt 6: Abrufen der Momentaufnahmeskripts, Konfigurieren der Momentaufnahmen und Testen der Konfiguration und Konnektivität
 
-Laden Sie von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) die neueste Version der Skripts herunter. Die Art der Installation von Skripts wurde mit Release 4.1 der Skripts geändert. Weitere Informationen finden Sie unter „Enable communication with SAP HANA“ (Aktivieren der Kommunikation mit SAP HANA) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Laden Sie von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) die neueste Version der Skripts herunter. Die Art der Installation von Skripts wurde mit Release 4.1 der Skripts geändert. Weitere Informationen finden Sie unter „Enable communication with SAP HANA“ (Aktivieren der Kommunikation mit SAP HANA) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
-Die genaue Befehlsfolge finden Sie unter „Easy installation of snapshot tools (default)“ (Einfache Installation von Momentaufnahmetools [Standard]) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). Es wird die Verwendung der Standardinstallation empfohlen. 
+Die genaue Befehlsfolge finden Sie unter „Easy installation of snapshot tools (default)“ (Einfache Installation von Momentaufnahmetools [Standard]) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). Es wird die Verwendung der Standardinstallation empfohlen. 
 
-Informationen zum Upgrade von Version 3.x auf 4.1 finden Sie unter „Upgrade an existing install“ (Aktualisieren einer vorhandenen Installation) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). Informationen zum Deinstallieren der Tools in Version 4.1 finden Sie unter „Uninstallation of the snapshot tools“ (Deinstallation der Momentaufnahmetools) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Informationen zum Upgrade von Version 3.x auf 4.1 finden Sie unter „Upgrade an existing install“ (Aktualisieren einer vorhandenen Installation) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). Informationen zum Deinstallieren der Tools in Version 4.1 finden Sie unter „Uninstallation of the snapshot tools“ (Deinstallation der Momentaufnahmetools) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
-Denken Sie daran, die unter „Complete setup of snapshot tools“ (Vollständiges Setup der Momentaufnahmetools) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure) beschriebenen Schritte auszuführen.
+Denken Sie daran, die unter „Complete setup of snapshot tools“ (Vollständiges Setup der Momentaufnahmetools) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure) beschriebenen Schritte auszuführen.
 
-Informationen zum Nutzen der einzelnen installierten Skripts und Dateien finden Sie unter „What are these snapshot tools?“ (Was sind diese Momentaufnahmetools?). in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Informationen zum Nutzen der einzelnen installierten Skripts und Dateien finden Sie unter „What are these snapshot tools?“ (Was sind diese Momentaufnahmetools?). in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
-Bevor Sie die Momentaufnahmetools konfigurieren, stellen Sie sicher, dass Sie auch die Speicherorte und Einstellungen für HANA-Sicherungen ordnungsgemäß konfiguriert haben. Weitere Informationen finden Sie unter „SAP HANA Configuration“ (SAP HANA-Konfiguration) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Bevor Sie die Momentaufnahmetools konfigurieren, stellen Sie sicher, dass Sie auch die Speicherorte und Einstellungen für HANA-Sicherungen ordnungsgemäß konfiguriert haben. Weitere Informationen finden Sie unter „SAP HANA Configuration“ (SAP HANA-Konfiguration) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
-Die Konfiguration der Momentaufnahmetools wird unter „Config file – HANABackupCustomerDetails.txt“ (Konfigurationsdatei „HANABackupCustomerDetails.txt“) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure) beschrieben.
+Die Konfiguration der Momentaufnahmetools wird unter „Config file – HANABackupCustomerDetails.txt“ (Konfigurationsdatei „HANABackupCustomerDetails.txt“) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure) beschrieben.
 
 #### <a name="test-connectivity-with-sap-hana"></a>Testen der Konnektivität mit SAP HANA
 
 Nachdem Sie alle Konfigurationsdaten in die Datei *HANABackupCustomerDetails.txt* eingegeben haben, sollten Sie überprüfen, ob die Konfigurationen für die HANA-Instanzdaten korrekt sind. Verwenden Sie das Skript `testHANAConnection`. Hierbei spielt es keine Rolle, ob es sich um eine SAP HANA-Konfiguration für zentrales oder horizontales Hochskalieren handelt.
 
-Weitere Informationen finden Sie unter „Check connectivity with SAP HANA – testHANAConnection“ (Überprüfen der Konnektivität mit SAP HANA – testHANAConnection) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Weitere Informationen finden Sie unter „Check connectivity with SAP HANA – testHANAConnection“ (Überprüfen der Konnektivität mit SAP HANA – testHANAConnection) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 #### <a name="test-storage-connectivity"></a>Testen der Speicherkonnektivität
 
-Der nächste Schritt besteht darin, anhand der Daten, die Sie in der Konfigurationsdatei *HANABackupCustomerDetails.txt* angegeben haben, die Verbindung mit dem Speicher zu überprüfen. Führen Sie dann eine Testmomentaufnahme aus. Sie müssen diesen Test vor dem Ausführen des Befehls `azure_hana_backup` ausführen. Informationen zur Befehlsfolge für diesen Test finden Sie unter „Check connectivity with storage – testStorageSnapshotConnection“ (Überprüfen der Konnektivität mit dem Speicher – testStorageSnapshotConnection) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Der nächste Schritt besteht darin, anhand der Daten, die Sie in der Konfigurationsdatei *HANABackupCustomerDetails.txt* angegeben haben, die Verbindung mit dem Speicher zu überprüfen. Führen Sie dann eine Testmomentaufnahme aus. Sie müssen diesen Test vor dem Ausführen des Befehls `azure_hana_backup` ausführen. Informationen zur Befehlsfolge für diesen Test finden Sie unter „Check connectivity with storage – testStorageSnapshotConnection“ (Überprüfen der Konnektivität mit dem Speicher – testStorageSnapshotConnection) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 Nach einer erfolgreichen Anmeldung bei den Schnittstellen der virtuellen Speichercomputer fährt das Skript mit Phase 2 fort und erstellt eine Testmomentaufnahme. Die hier angegebene Ausgabe zeigt eine SAP HANA-Konfiguration mit drei Knoten für horizontales Hochskalieren.
 
@@ -195,7 +195,7 @@ Wenn die Testmomentaufnahme mit dem Skript erfolgreich ausgeführt werden kann, 
 
 Nach Abschluss der Vorbereitungsschritte können Sie damit beginnen, die eigentlichen Speichermomentaufnahmen zu konfigurieren und zu planen. Das zu planende Skript kann für SAP HANA-Konfigurationen mit zentralem und horizontalem Hochskalieren verwendet werden. Um das Sicherungsskript regelmäßig normal auszuführen, planen Sie es mit dem Cron-Hilfsprogramm. 
 
-Informationen zur genauen Befehlssyntax und den Funktionen finden Sie unter „Perform snapshot backup – azure_hana_backup“ (Überprüfen der Durchführen einer Momentaufnahmesicherung – azure_hana_backup) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
+Informationen zur genauen Befehlssyntax und den Funktionen finden Sie unter „Perform snapshot backup – azure_hana_backup“ (Überprüfen der Durchführen einer Momentaufnahmesicherung – azure_hana_backup) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 Bei Ausführung des Skripts `azure_hana_backup` wird die Speichermomentaufnahme in den folgenden drei Phasen erstellt:
 
@@ -281,7 +281,7 @@ Falls die Datenbank noch nie gesichert wurde, wird im letzten Schritt eine datei
 ![Erstellen einer dateibasierten Sicherung zum Hinzufügen eines einzelnen Sicherungseintrags](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
 
 
-Löschen Sie nach dem Erstellen der ersten Speichermomentaufnahmen die in Schritt 6 erstellte Testmomentaufnahme. Weitere Informationen finden Sie unter „Remove test snapshots – removeTestStorageSnapshot“ (Entfernen von Testsnapshots – removeTestStorageSnapshot) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
+Löschen Sie nach dem Erstellen der ersten Speichermomentaufnahmen die in Schritt 6 erstellte Testmomentaufnahme. Weitere Informationen finden Sie unter „Remove test snapshots – removeTestStorageSnapshot“ (Entfernen von Testsnapshots – removeTestStorageSnapshot) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>Überwachen der Anzahl und Größe von Momentaufnahmen auf dem Datenträgervolume
@@ -307,7 +307,7 @@ Um weitere Informationen zu Momentaufnahmen zu erhalten, verwenden Sie das Skrip
       - Häufigkeit der Momentaufnahme
       - HANA-Sicherungs-ID im Zusammenhang mit dieser Momentaufnahme, sofern relevant
 
-Die Syntax des Befehls und die Ausgaben finden Sie unter „List snapshots – azure_hana_snapshot_details“ (Auflisten von Momentaufnahmen – azure_hana_snapshot_details) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
+Die Syntax des Befehls und die Ausgaben finden Sie unter „List snapshots – azure_hana_snapshot_details“ (Auflisten von Momentaufnahmen – azure_hana_snapshot_details) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 
 
@@ -336,7 +336,7 @@ Alternativ können Sie bestimmte Momentaufnahmen auch mithilfe des Skripts `azur
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 
-Weitere Informationen zum Skript finden Sie unter „Delete a snapshot – azure_hana_snapshot_delete“ (Löschen einer Momentaufnahme – azure_hana_snapshot_delete) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Weitere Informationen zum Skript finden Sie unter „Delete a snapshot – azure_hana_snapshot_delete“ (Löschen einer Momentaufnahme – azure_hana_snapshot_delete) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 Führen Sie das Skript als Benutzer **root** aus.
 
@@ -363,7 +363,7 @@ Eine Zeitpunktwiederherstellung kann dagegen eine niedrigere Dringlichkeit haben
 
 Vor dem Senden der Anforderung müssen Sie diese vorbereiten. Das SAP HANA in Azure-Team kann die Anforderung dann bearbeiten und die wiederhergestellten Volumes bereitstellen. Anschließend stellen Sie die HANA-Datenbank basierend auf den Momentaufnahmen wieder her.
 
-Informationen zu den Möglichkeiten zum Wiederherstellen einer Momentaufnahme mit den neuen Tools finden Sie unter „How to restore a snapshot“ (Wiederherstellen einer Momentaufnahme) in [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure).
+Informationen zu den Möglichkeiten zum Wiederherstellen einer Momentaufnahme mit den neuen Tools finden Sie unter „How to restore a snapshot“ (Wiederherstellen einer Momentaufnahme) in [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure).
 
 Führen Sie zur Vorbereitung auf die Anforderung die folgenden Schritte aus.
 
@@ -389,16 +389,16 @@ Führen Sie zur Vorbereitung auf die Anforderung die folgenden Schritte aus.
 
 
 
-Eine weitere Möglichkeit zum Abrufen beispielsweise von SAP HANA-Datendateien, die aus einer Speichermomentaufnahme wiederhergestellt wurden, ist in Schritt 7 des [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure) dokumentiert.
+Eine weitere Möglichkeit zum Abrufen beispielsweise von SAP HANA-Datendateien, die aus einer Speichermomentaufnahme wiederhergestellt wurden, ist in Schritt 7 des [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure) dokumentiert.
 
-Informationen zum Wiederherstellen einer Momentaufnahmesicherung finden Sie unter [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure). 
+Informationen zum Wiederherstellen einer Momentaufnahmesicherung finden Sie unter [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure). 
 
 >[!Note]
 >Wenn die Momentaufnahme von Microsoft Operations wiederhergestellt wurde, können Sie Schritt 7 auslassen.
 
 
 ### <a name="recover-to-another-point-in-time"></a>Wiederherstellen eines anderen Zeitpunkts
-Informationen zum Wiederherstellen eines bestimmten Zeitpunkts finden Sie unter „Recover the database to the following point in time“ (Wiederherstellen der Datenbank zum folgenden Zeitpunkt) in [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure). 
+Informationen zum Wiederherstellen eines bestimmten Zeitpunkts finden Sie unter „Recover the database to the following point in time“ (Wiederherstellen der Datenbank zum folgenden Zeitpunkt) in [Manual recovery guide for SAP HANA on Azure from a storage snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md) (Handbuch für die manuelle Wiederherstellung einer Speichermomentaufnahme unter SAP HANA in Azure). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

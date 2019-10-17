@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b7c7bfffb5ddf947dc9bd25e6828e2816a7325cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559741"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516760"
 ---
 # <a name="speech-services-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -110,7 +110,7 @@ Speech-Dienste können entweder mit dem [Speech SDK](speech-sdk.md) oder der [RE
 
 Verschiedene IVR- oder Telefoniedienstprodukte (wie Genesys oder AudioCodes) bieten Integrationsfunktionen, die genutzt werden können, um die Durchleitung von eingehenden und ausgehenden Audiodaten an einen Azure-Dienst zu ermöglichen. Grundsätzlich kann ein benutzerdefinierter Azure-Dienst eine spezifische Schnittstelle bereitstellen, um Telefonanrufsitzungen zu definieren (z.B. Anrufstart oder Anrufende) und eine WebSocket-API zum Empfangen eines eingehenden Audiodatenstroms verfügbar zu machen, die mit den Speech-Diensten verwendet wird. Ausgehende Antworten, wie z.B. Unterhaltungstranskriptionen oder Verbindungen mit dem Bot Framework, können mit dem Sprachsynthesedienst von Microsoft synthetisiert und zur Wiedergabe an das IVR-System zurückgegeben werden.
 
-Ein weiteres Szenario ist die direkte SIP-Integration. Ein Azure-Dienst stellt eine Verbindung mit einem SIP-Server her und erhält so einen eingehenden und einen ausgehenden Datenstrom, der für die Phasen der Spracherkennung und Sprachsynthese verwendet wird. Für die Verbindung mit einem SIP-Server gibt es kommerzielle Softwareangebote, wie z.B. Ozieki SDK, oder die [API für Anrufe und Onlinebesprechungen in Teams](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) (derzeit in der Betaversion), die so konzipiert sind, dass sie diese Art von Szenario für Audioanrufe unterstützen.
+Ein weiteres Szenario ist die direkte SIP-Integration. Ein Azure-Dienst stellt eine Verbindung mit einem SIP-Server her und erhält so einen eingehenden und einen ausgehenden Datenstrom, der für die Phasen der Spracherkennung und Sprachsynthese verwendet wird. Für die Verbindung mit einem SIP-Server gibt es kommerzielle Softwareangebote, wie z.B. Ozieki SDK, oder die [API für Anrufe und Onlinebesprechungen in Teams](/graph/api/resources/communications-api-overview) (derzeit in der Betaversion), die so konzipiert sind, dass sie diese Art von Szenario für Audioanrufe unterstützen.
 
 ## <a name="customize-existing-experiences"></a>Anpassen vorhandener Konzepte
 

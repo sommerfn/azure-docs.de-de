@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/11/2019
 ms.author: lahugh
-ms.openlocfilehash: 6bd74fa299385acb1abe4b32db5d35366249eaa6
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 3c6a054229ab7a16fb48dff5ec2e8681c3c5345e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173931"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299499"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Unterstützung für VMs der Generation 2 (Vorschau) in Azure
 
@@ -93,7 +93,7 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 | Unterstützung für VM-Skalierungsgruppe | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | :x:                |
 | Sichern/Wiederherstellen                    | :heavy_check_mark: | :heavy_check_mark: |
-| Shared Image Gallery              | :heavy_check_mark: | :x:                |
+| Shared Image Gallery              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | :x:                |
 
 ## <a name="creating-a-generation-2-vm"></a>Erstellen einer VM der Generation 2

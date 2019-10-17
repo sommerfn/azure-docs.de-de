@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d14cd996fe0e5a67cc3b554fe1e12146cd6b8e1c
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949842"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981080"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -24,9 +24,11 @@ Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer un
 
 MABS ist ein Serverprodukt, mit dem lokale physische Server, VMs und die darauf ausgeführten Anwendungen gesichert werden können.
 
-MABS basiert auf System Center DPM und umfasst ähnliche Funktionen mit einigen Unterschieden:
+MABS basiert auf System Center DPM und bietet ähnliche Funktionen mit einigen Unterschieden:
+
 - Für die Ausführung von MABS ist keine Lizenz für System Center erforderlich.
 - In Azure ist für MABS und für DPM die langfristige Sicherungsspeicherung möglich. Darüber hinaus können Sie mit DPM Daten zur langfristigen Speicherung auf Band sichern. Diese Funktion ist in MABS nicht enthalten.
+- Sie können einen primären DPM-Server mit einem sekundären DPM-Server sichern. Der sekundäre Server schützt die primäre Serverdatenbank und die auf dem primären Server gespeicherten Datenquellenreplikate. Wenn der primäre Server ausfällt, kann der sekundäre Server die vom primären Server geschützten Workloads weiterhin schützen, bis der primäre Server wieder verfügbar ist.  Diese Funktion ist in MABS nicht enthalten.
 
 Sie können MABS über das [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=57520) herunterladen. Es kann lokal oder auf einem virtuellen Azure-Computer ausgeführt werden.
 
@@ -56,7 +58,6 @@ Weitere Informationen finden Sie unter:
 --- | --- | ---
 **Sichern lokaler Computer/Workloads** | Der DPM- oder MABS-Schutz-Agent wird auf den Computern ausgeführt, die Sie sichern möchten.<br/><br/> MARS-Agent auf dem MABS- oder DPM-Server<br/> Die zum Aktivieren dieses Features erforderliche Mindestversion des Microsoft Azure Recovery Services-Agents bzw. Azure Backup-Agents ist 2.0.8719.0.  | MABS/DPM muss lokal ausgeführt werden.
 
-
 ## <a name="supported-deployments"></a>Unterstützte Bereitstellungen
 
 DPM und MABS können wie in der folgenden Tabelle zusammengefasst bereitgestellt werden.
@@ -66,7 +67,6 @@ DPM und MABS können wie in der folgenden Tabelle zusammengefasst bereitgestellt
 **Lokale Bereitstellung** | Physischer Server<br/><br/>Virtueller Hyper-V-Computer<br/><br/> Virtueller VMware-Computer | Wenn DPM/MABS als virtueller VMware-Computer installiert ist, werden nur virtuelle VMware-Computer und darauf ausgeführte Workloads gesichert.
 **Bereitstellung als virtueller Azure Stack-Computer** | Nur MABS | DPM kann nicht zum Sichern virtueller Azure Stack-Computer verwendet werden.
 **Bereitstellung als virtueller Azure-Computer** | Schutz von virtuellen Azure-Computern und Workloads, die auf diesen VMs ausgeführt werden | Bei Ausführung von MABS/DPM in Azure können lokale Computer nicht gesichert werden.
-
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>Unterstützte MABS- und DPM-Betriebssysteme
 
@@ -79,8 +79,6 @@ Mit Azure Backup können MABS- und DPM-Instanzen bei Ausführung unter den folge
 **MABS auf einem lokalen Computer** | Unterstützte 64-Bit-Betriebssysteme<br/><br/> MABS V3 und höher: Windows Server 2019 (Standard, Datacenter, Essentials) <br/><br/> MABS V2 und höher: Windows Server 2016 (Standard, Datacenter, Essentials)<br/><br/> Alle MABS-Versionen:  Windows Server 2012 R2<br/><br/>Alle MABS-Versionen: Windows Storage Server 2012 R2
 **DPM auf einem lokalen Computer** | Physischer Server und virtueller Hyper-V-Computer: System Center 2012 SP1 oder höher<br/><br/> Virtueller VMware-Computer: System Center 2012 R2 mit Update 5 oder höher
 
-
-
 ## <a name="management-support"></a>Verwaltungsunterstützung
 
 **Problem** | **Details**
@@ -90,7 +88,6 @@ Mit Azure Backup können MABS- und DPM-Instanzen bei Ausführung unter den folge
 **Speicher** | Modern Backup Storage (MBS) wird ab DPM 2016 und MABS v2 und höher unterstützt. In MABS v1 ist die Funktion dagegen nicht verfügbar.
 **Upgrade von MABS** | Sie können MABS v3 direkt installieren oder ein Upgrade von MABS v2 auf MABS v3 durchführen. [Weitere Informationen](backup-azure-microsoft-azure-backup.md#upgrade-mabs)
 **Verschieben von MABS** | Bei Verwendung von MBS kann MABS unter Beibehaltung des Speichers auf einen neuen Server verschoben werden.<br/><br/> Der neue und der ursprüngliche Server müssen den gleichen Namen haben. Sie können den Namen nicht ändern, wenn der Speicherpool beibehalten werden soll und Sie dieselbe MABS-Datenbank zum Speichern von Datenwiederherstellungspunkten verwenden möchten.<br/><br/> Sie benötigen eine Sicherungskopie der MABS-Datenbank, da Sie sie wiederherstellen müssen.
-
 
 ## <a name="mabs-support-on-azure-stack"></a>Unterstützung von MABS in Azure Stack
 
@@ -144,8 +141,8 @@ Die in DPM oder MABS gesicherten Daten werden im lokalen Datenträgerspeicher ge
 **MABS-Speicher auf virtuellem Azure-Computer** | Daten werden auf Azure-Datenträgern gespeichert, die der DPM/MABS-VM zugeordnet sind und die in DPM/MABS verwaltet werden. Die Anzahl der Datenträger, die für DPM/MABS-Speicherpools verwendet werden kann, ist durch die Größe der VM beschränkt.<br/><br/> VM A2: 4 Datenträger, VM A3: 8 Datenträger, VM A4: 16 Datenträger mit einer maximalen Größe von 1 TB für jeden Datenträger. Dies bestimmt den gesamten verfügbaren Sicherungsspeicherpool.<br/><br/> Die Menge der Daten, die gesichert werden können, hängt von der Anzahl und Größe der angefügten Datenträger ab.
 **MABS-Datenaufbewahrung auf virtuellem Azure-Computer** | Es wird empfohlen, Daten einen Tag lang in DPM oder MABS auf dem Azure-Datenträger aufzubewahren und zur längeren Aufbewahrung eine Sicherung von DPM oder MABS in den Tresor durchzuführen. Durch Auslagerung in Azure Backup können Sie so eine größere Menge an Daten schützen.
 
-
 ### <a name="modern-backup-storage-mbs"></a>Modern Backup Storage (MBS)
+
 Ab DPM 2016 und MABS v2 (unter Windows Server 2016) und höher können Sie Modern Backup Storage (MBS) nutzen.
 
 - MBS-Sicherungen werden auf einem ReFS-Datenträger (Resilient File System) gespeichert.
@@ -153,11 +150,9 @@ Ab DPM 2016 und MABS v2 (unter Windows Server 2016) und höher können Sie Moder
 - Wenn Sie dem lokalen DPM- oder MABS-Speicherpool Volumes hinzufügen, konfigurieren Sie sie mit Laufwerkbuchstaben. Dann können Sie den Workloadspeicher auf verschiedenen Volumes konfigurieren.
 - Bei der Erstellung von Schutzgruppen zum Sichern von Daten in DPM oder MABS wählen Sie das gewünschte Laufwerk aus. Beispielsweise können Sie Sicherungen für SQL- oder andere Workloads mit hohem IOPS-Wert auf einem Laufwerk mit hoher Leistung speichern. Sie können auch Workloads auf einem Laufwerk mit geringerer Leistung speichern, die weniger häufig gesichert werden.
 
-
 ## <a name="supported-backups-to-mabs"></a>Unterstützte Sicherungen in MABS
 
 In der folgenden Tabelle ist zusammenfassend angegeben, welche Elemente von lokalen Computern und virtuellen Azure-Computern in MABS gesichert werden können.
-
 
 **Sicherung** | **Versionen** | **MABS** | **Details** |
 --- | --- | --- | --- |
@@ -177,13 +172,9 @@ In der folgenden Tabelle ist zusammenfassend angegeben, welche Elemente von loka
 **Hyper-V unter Windows Server 2016**<br/><br/> **Windows Server 2008 R2 (mit SP1)** | MABS v3, v2 | Lokal | **MABS-Agent auf Hyper-V-Host:** Sichern der gesamten virtuellen Computer und Hostdatendateien Sichern von virtuellen Computern mit lokalem Speicher, von virtuellen Computern in Clustern mit Speicher für freigegebene Clustervolumes und von virtuellen Computern mit SMB-Dateispeicherspeicher<br/><br/> **MABS-Agent auf virtuellem Gastcomputer:** Sichern von auf dem virtuellen Computer ausgeführten Workloads Freigegebene Clustervolumes<br/><br/> **Wiederherstellung:** Virtueller Computer, Wiederherstellung auf Elementebene von VHDs, Volumes, Ordnern und Dateien<br/><br/> **Virtuelle Linux-Computer:** Sicherung, wenn Hyper-V unter Windows Server 2012 R2 und höher ausgeführt wird. Wiederherstellung für virtuelle Linux-Computer betrifft den gesamten Computer. |
 **Virtuelle VMware-Computer: vCenter/vSphere ESXi 5.5, 6.0, 6.5** | MABS v3, v2 | Lokal | Sichern von virtuellen VMware-Computern in freigegebenen Clustervolumes, in NFS- und SAN-Speicher<br/><br/> Wiederherstellen des gesamten virtuellen Computers<br/><br/> Windows- und Linux-Sicherung<br/><br/> Wiederherstellung auf Elementebene von Ordnern und Dateien nur für virtuelle Windows-Computer<br/><br/> VMware vApp wird nicht unterstützt.<br/><br/> Wiederherstellung für virtuelle Linux-Computer betrifft den gesamten Computer. |
 
-
-
 ## <a name="supported-backups-to-dpm"></a>Unterstützte Sicherungen in DPM
 
 In der folgenden Tabelle ist zusammenfassend angegeben, welche Elemente von lokalen Computern und virtuellen Azure-Computern in DPM gesichert werden können.
-
-
 
 **Sicherung** | **DPM** | **Details**
 --- | --- | ---
@@ -204,11 +195,8 @@ In der folgenden Tabelle ist zusammenfassend angegeben, welche Elemente von loka
 **Hyper-V unter Windows Server 2016**<br/><br/> **Windows Server 2012 R2, 2012** (Datacenter, Standard)<br/><br/> **Windows Server 2008 R2 (mit SP1)** | Hyper-V wird für DPM 2016 und höher unterstützt.<br/><br/> Lokal | **MABS-Agent auf Hyper-V-Host:** Sichern der gesamten virtuellen Computer und Hostdatendateien Sichern von virtuellen Computern mit lokalem Speicher, von virtuellen Computern in Clustern mit Speicher für freigegebene Clustervolumes und von virtuellen Computern mit SMB-Dateispeicherspeicher<br/><br/> **MABS-Agent auf virtuellem Gastcomputer:** Sichern von auf dem virtuellen Computer ausgeführten Workloads Freigegebene Clustervolumes<br/><br/> **Wiederherstellung:** Virtueller Computer, Wiederherstellung auf Elementebene von VHDs, Volumes, Ordnern und Dateien<br/><br/> **Virtuelle Linux-Computer:** Sicherung, wenn Hyper-V unter Windows Server 2012 R2 und höher ausgeführt wird. Wiederherstellung für virtuelle Linux-Computer betrifft den gesamten Computer.
 **Virtuelle VMware-Computer: vCenter/vSphere ESXi 5.5, 6.0, 6.5** | MABS v3, v2 <br/><br/> DPM 2012 R2 erfordert System Center Updaterollup 1. <br/><br/>Lokal | Sichern von virtuellen VMware-Computern in freigegebenen Clustervolumes, in NFS- und SAN-Speicher<br/><br/> Wiederherstellen des gesamten virtuellen Computers<br/><br/> Windows- und Linux-Sicherung<br/><br/> Wiederherstellung auf Elementebene von Ordnern und Dateien nur für virtuelle Windows-Computer<br/><br/> VMware vApp wird nicht unterstützt.<br/><br/> Wiederherstellung für virtuelle Linux-Computer betrifft den gesamten Computer.
 
-
 - Clusterworkloads, die mit DPM oder MABS gesichert werden, müssen sich in derselben Domäne wie DPM bzw. MABS oder in einer untergeordneten oder vertrauenswürdigen Domäne befinden.
 - Sie können die NTLM- oder Zertifikatauthentifizierung verwenden, um Daten in nicht vertrauenswürdigen Domänen oder Arbeitsgruppen zu sichern.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

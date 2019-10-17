@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802512"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296389"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus Resource Manager-Ausnahmen
 
@@ -57,9 +57,9 @@ Genau wie in HTTP gibt „Fehlercode 429“ an, dass zu viele Anforderungen vorh
 | 429 | 50004 | SubCode=50004. Die Anforderung wurde beendet, weil der Namespace *IhrNamespace* gedrosselt wird. | Diese Fehlerbedingung wird ausgelöst, wenn die Anzahl der eingehenden Anforderungen die Einschränkung der Ressource überschreitet. | Warten Sie einige Sekunden, und versuchen Sie es noch mal. <br/> <br/> Weitere Informationen zu den [Kontingenten](service-bus-quotas.md) und [Azure Resource Manager-Anforderungslimits](../azure-resource-manager/resource-manager-request-limits.md)|
 | 429 | 40901 | SubCode=40901. Ein anderer in Konflikt stehender Vorgang wird ausgeführt. | Ein anderer in Konflikt stehender Vorgang wird für dieselbe Ressource/Entität ausgeführt. | Warten Sie, bis der aktuell ausgeführte Vorgang abgeschlossen ist, bevor Sie es noch mal versuchen. |
 | 429 | 40900 | SubCode=40900. Konflikt. Sie fordern einen Vorgang an, der im aktuellen Zustand der Ressource nicht zulässig ist. | Diese Bedingung kann auftreten, wenn mehrere Anforderungen zum Ausführen der Vorgänge für dieselbe Entität (Warteschlange, Thema, Abonnement oder Regel) gleichzeitig erfolgen. | Warten Sie einige Sekunden, und versuchen Sie es noch mal. |
+| 429 | 40901 | Die Anforderung für die Entität *'Entitätsname'* steht mit einer anderen Anforderung in Konflikt. | Ein anderer in Konflikt stehender Vorgang wird für dieselbe Ressource/Entität ausgeführt. | Warten Sie, bis der vorherige ausgeführte Vorgang abgeschlossen ist, bevor Sie es noch mal versuchen. |
+| 429 | 40901 | Eine weitere Aktualisierungsanforderung wird aktuell für die Entität *'Entitätsname'* ausgeführt. | Ein anderer in Konflikt stehender Vorgang wird für dieselbe Ressource/Entität ausgeführt. | Warten Sie, bis der vorherige ausgeführte Vorgang abgeschlossen ist, bevor Sie es noch mal versuchen. |
 | 429 | none | Ressourcenkonflikt. Ein anderer in Konflikt stehender Vorgang wird ggf. ausgeführt. Wenn dies ein Wiederholungsversuch für einen fehlgeschlagenen Vorgang ist, steht die Hintergrundbereinigung noch aus. Versuchen Sie es später erneut. | Diese Bedingung kann auftreten, wenn es einen ausstehenden Vorgang für dieselbe Entität gibt. | Warten Sie, bis der vorherige ausgeführte Vorgang abgeschlossen ist, bevor Sie es noch mal versuchen. |
-| 429 | none | Die Anforderung für die Entität *'Entitätsname'* steht mit einer anderen Anforderung in Konflikt. | Ein anderer in Konflikt stehender Vorgang wird für dieselbe Ressource/Entität ausgeführt. | Warten Sie, bis der vorherige ausgeführte Vorgang abgeschlossen ist, bevor Sie es noch mal versuchen. |
-| 429 | none | Eine weitere Aktualisierungsanforderung wird aktuell für die Entität *'Entitätsname'* ausgeführt. | Ein anderer in Konflikt stehender Vorgang wird für dieselbe Ressource/Entität ausgeführt. | Warten Sie, bis der vorherige ausgeführte Vorgang abgeschlossen ist, bevor Sie es noch mal versuchen. |
 
 
 ## <a name="error-code-not-found"></a>Fehlercode: Nicht gefunden

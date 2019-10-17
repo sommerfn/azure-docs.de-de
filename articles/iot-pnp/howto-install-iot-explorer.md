@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932477"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960568"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Installieren und Verwenden des Azure-IoT-Explorers
 
@@ -65,29 +65,27 @@ So entfernen Sie eine Quelle:
 
 Sie können eine Modelldefinitionsquelle per Drag & Drop an eine andere Position in der Rangliste ziehen. Wenn ein Konflikt auftritt, setzen Definitionsquellen mit höherem Rang Quellen mit niedrigerem Rang außer Kraft.
 
-### <a name="overview-page"></a>Seite „Übersicht“
+### <a name="view-devices"></a>Anzeigen von Geräten
 
-#### <a name="device-overview"></a>Geräteübersicht
+Nachdem das Tool eine Verbindung mit Ihrem IoT-Hub hergestellt hat, zeigt es die Listenseite **Geräte** mit allen Geräteidentitäten an, die in Ihrer IoT Hub-Instanz registriert sind. Sie können einen beliebigen Eintrag in der Liste erweitern, um weitere Informationen anzuzeigen.
 
-Nachdem das Tool eine Verbindung mit Ihrem IoT-Hub hergestellt hat, zeigt es eine Übersichtsseite mit allen Geräteidentitäten an, die in Ihrer Azure IoT Hub-Instanz registriert sind. Wählen Sie ein Gerät aus, um weitere Details anzuzeigen.
+Auf der Listenseite **Geräte** können Sie folgende Aktionen ausführen:
 
-#### <a name="device-management"></a>Geräteverwaltung
-
-- Um ein neues Gerät in Ihrem Hub zu registrieren, wählen Sie **Hinzufügen** aus. Geben Sie eine Geräte-ID ein. Verwenden Sie die Standardeinstellungen, um Authentifizierungsschlüssel automatisch zu generieren und die Verbindung mit Ihrem Hub zu aktivieren.
-- Um eine Geräteidentität zu löschen, wählen Sie **Löschen** aus. Überprüfen Sie die Gerätedetails, bevor Sie diese Aktion abschließen, um sicherzustellen, dass Sie die richtige Geräteidentität löschen.
-- Das Tool unterstützt Abfragen nach `capabilityID` und `interfaceID`. Fügen Sie die `capabilityID` oder die `interfaceID` als Parameter zu den Abfragen Ihrer Geräte hinzu.
+- Wählen Sie **Hinzufügen** aus, um ein neues Gerät in Ihrem Hub zu registrieren. Geben Sie dann eine Geräte-ID ein. Verwenden Sie die Standardeinstellungen, um Authentifizierungsschlüssel automatisch zu generieren und die Verbindung mit Ihrem Hub zu aktivieren.
+- Wählen Sie ein Gerät und dann **Löschen** aus, um eine Geräteidentität zu löschen. Überprüfen Sie die Gerätedetails, bevor Sie diese Aktion abschließen, um sicherzustellen, dass Sie die richtige Geräteidentität löschen.
+- Führen Sie eine Abfrage nach `capabilityID` und `interfaceID` durch. Fügen Sie die `capabilityID` oder die `interfaceID` als Parameter zu den Abfragen Ihrer Geräte hinzu.
 
 ## <a name="interact-with-a-device"></a>Interagieren mit einem Gerät
 
-Doppelklicken Sie auf der Übersichtsseite auf ein Gerät, um die nächste Detailebene anzuzeigen. Es gibt zwei Abschnitte: **Gerät** und **Digitaler Zwilling**.
+Wählen Sie auf der Seite **Geräte** einen Wert in der Spalte **Geräte-ID** aus, um die Detailseite für das registrierte Gerät anzuzeigen. Für das Gerät gibt es zwei Abschnitte: **Gerät** und **Digitaler Zwilling**.
 
 ### <a name="device"></a>Gerät
 
-Dieser Abschnitt enthält die Registerkarten **Geräteidentität**, **Telemetrie** und **Gerätezwilling**.
+Dieser Abschnitt enthält die Registerkarten **Geräteidentität**, **Gerätezwilling** und **Telemetrie**.
 
-- Sie können die Geräteidentitätsinformationen auf der Registerkarte **Geräteidentität** anzeigen und aktualisieren.
-- Wenn ein Gerät verbunden ist und aktiv Daten sendet, können Sie diese Telemetriedaten auf der Registerkarte **Telemetrie** anzeigen.
-- Über die Registerkarte **Gerätezwilling** können Sie auf Informationen zum Gerätezwilling zugreifen.
+- Sie können die Informationen zur [Geräteidentität](../iot-hub/iot-hub-devguide-identity-registry.md) auf der Registerkarte **Geräteidentität** anzeigen und aktualisieren.
+- Über die Registerkarte **Gerätezwilling** können Sie auf Informationen zum [Gerätezwilling](../iot-hub/iot-hub-devguide-device-twins.md) zugreifen.
+- Wenn ein Gerät verbunden ist und aktiv Daten sendet, können Sie diese [Telemetriedaten](../iot-hub/iot-hub-devguide-messages-read-builtin.md) auf der Registerkarte **Telemetrie** anzeigen.
 
 ### <a name="digital-twin"></a>Digitaler Zwilling
 

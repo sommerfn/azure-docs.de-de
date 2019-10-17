@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695949"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311684"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [Apache HBase](apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen mit HBase über SSH-Tools wie beispielsweise [SQLLine](apache-hbase-phoenix-squirrel-linux.md) verwenden. Phoenix verfügt auch über einen HTTP-Server, der als Phoenix Query Server (PQS) bezeichnet wird. Es handelt sich um eine Thin Client-Komponente, die zwei Transportmechanismen für die Clientkommunikation unterstützt: JSON und Protokollpuffer. Protokollpuffer sind der standardmäßige Mechanismus, der eine effizientere Kommunikation als JSON bietet.
+[Apache Phoenix](https://phoenix.apache.org/) ist eine relationale Open-Source-Datenbankschicht mit hochgradig parallelisierter Verarbeitung, die auf [Apache HBase](apache-hbase-overview.md) basiert. Mit Phoenix können Sie SQL-ähnliche Abfragen mit HBase über SSH-Tools wie beispielsweise [SQLLine](apache-hbase-query-with-phoenix.md) verwenden. Phoenix verfügt auch über einen HTTP-Server, der als Phoenix Query Server (PQS) bezeichnet wird. Es handelt sich um eine Thin Client-Komponente, die zwei Transportmechanismen für die Clientkommunikation unterstützt: JSON und Protokollpuffer. Protokollpuffer sind der standardmäßige Mechanismus, der eine effizientere Kommunikation als JSON bietet.
 
 In diesem Artikel wird beschrieben, wie Sie das PQS REST SDK zum Erstellen von Tabellen, das Durchführen des Upsert-Vorgangs für Zeilen (einzeln und als Massenvorgang) und das Auswählen von Daten mit SQL-Anweisungen nutzen. In den Beispielen wird der [Microsoft .NET-Treiber für Apache Phoenix Query Server](https://www.nuget.org/packages/Microsoft.Phoenix.Client) verwendet. Dieses SDK basiert auf den [Avatica-APIs von Apache Calcite](https://calcite.apache.org/avatica/), bei denen ausschließlich Protokollpuffer für das Serialisierungsformat eingesetzt werden.
 

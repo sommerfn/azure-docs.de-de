@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: Kennwortlos
       items:
+        - name: Bereitstellen kennwortloser Elemente
+          href: howto-authentication-passwordless-deployment.md
         - name: Kennwortlose Sicherheitsschlüssel
           href: howto-authentication-passwordless-security-key.md
         - name: Kennwortlose Anmeldung per Telefon
