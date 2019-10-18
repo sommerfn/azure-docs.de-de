@@ -116,7 +116,7 @@ Installieren Sie virtualenv. Hierbei handelt es sich um ein Tool zum Erstellen i
 pip install virtualenv
 ```
 
-Installieren Sie virtualenvwrapper-win. virtualenvwrapper dient zur Vereinfachung der Verwendung von virtualenv.
+Installieren Sie virtualenvwrapper-win. Virtualenvwrapper dient zur Vereinfachung der Verwendung von virtualenv.
 
 ```cmd
 pip install virtualenvwrapper-win
