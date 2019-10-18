@@ -8,14 +8,6 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: REST-API
-      items:
-        - name: 'Verwenden von C#'
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: Verwenden von Java
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: Verwenden von Python
-          href: quickstarts/detect-data-anomalies-python.md
     - name: Clientbibliothek
       items:
         - name: 'Verwenden von C#'
@@ -24,6 +16,14 @@
           href: quickstarts/detect-data-anomalies-python-sdk.md
         - name: Verwenden von Node.js
           href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+    - name: REST-API
+      items:
+        - name: 'Verwenden von C#'
+          href: quickstarts/detect-data-anomalies-csharp.md
+        - name: Verwenden von Java
+          href: quickstarts/detect-data-anomalies-java.md
+        - name: Verwenden von Python
+          href: quickstarts/detect-data-anomalies-python.md
 - name: Lernprogramme
   items:
     - name: Visualisieren von Anomalien als Batch mithilfe von Power BI

@@ -49,16 +49,6 @@
             - name: Informationen zu Azure Disk Encryption
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Schnellstarts
-              items:
-                - name: Verschlüsseln eines virtuellen Linux-Computers mit der Azure-Befehlszeilenschnittstelle
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Verschlüsseln eines virtuellen Linux-Computers mit Azure PowerShell
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Verschlüsseln eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Verschlüsseln eines virtuellen Windows-Computers mit Azure PowerShell
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Azure Disk Encryption
               items:
                 - name: Voraussetzungen für die Datenträgerverschlüsselung
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDoS Protection
           href: ddos-best-practices.md
-        - name: Sicherheit von Grenzen
-          href: network-best-practices.md
 - name: Anwendung
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: Überwachung und Protokollierung
       items:
-        - name: Sicherheitsverwaltung
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: Sicherheit bei der Remoteverwaltung
           href: management.md
         - name: Azure-Protokollintegration
@@ -199,9 +184,6 @@
             - name: Integrieren von Azure AD-Überwachungsprotokollen
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: Integrieren von Security Center-Warnungen
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: Integrieren von Protokollen aus Key Vault
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md
