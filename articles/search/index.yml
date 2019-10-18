@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: ece327a4155e0336de97b95ffa0a58a1d48097da
-  ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+  ms.openlocfilehash: 5521f784704fe4d97ed30de0ec5367b9b4bb4f5f
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/14/2019
-  ms.locfileid: "72302727"
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529446"
 landingContent:
 - title: Informationen zu Azure Search
   linkLists:
@@ -52,10 +52,10 @@ landingContent:
     links:
     - text: Verstehen von Blobdaten mithilfe von KI
       url: search-blob-ai-integration.md
-    - text: Hinzufügen von Volltextsuche zu Blobdaten
+    - text: Durchsuchen von Blobinhalt
       url: search-blob-storage-integration.md
     - text: Speichern von KI-Anreicherungen
-      url: knowledge-store-create-portal.md
+      url: knowledge-store-concept-intro.md
   - linkListType: tutorial
     links:
     - text: Indizieren von teilweise strukturierten Blobdaten
