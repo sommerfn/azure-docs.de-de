@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure Notebooks-Dokumentation
 metadata:
-  title: 'Dokumentation zu Azure Notebooks: Schnellstarts, Tutorials, Anleitungen | Microsoft-Dokumentation'
+  title: Azure Notebooks-Dokumentation
   description: 'Hier erfahren Sie, wie Sie über den gehosteten Azure Notebooks-Dienst Jupyter-Notebooks erstellen, ausführen und freigeben.'
   services: notebooks
   author: kraigb
