@@ -7,12 +7,12 @@ services: service-health
 ms.service: service-health
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: a6f6288aebe599db794a7f15fc733563d26c66cc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3e3c83b7233ad4da263dec31c6012209ebaca0fe
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067099"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515849"
 ---
 # <a name="service-health-overview"></a>Service Health-Übersicht
 
@@ -27,7 +27,7 @@ Service Health verfolgt drei Typen von Integritätsereignissen nach, die sich au
 3. **Integritätsempfehlungen**: Änderungen in Azure-Diensten, die Ihre Aufmerksamkeit erfordern. Beispielsweise, wenn Azure-Funktionen veraltet sind oder Sie ein Nutzungskontingent überschreiten.
 
 > [!NOTE]
-> Um Service Health-Ereignisse anzuzeigen, müssen Benutzer über die Rolle „Leser“ für ein Abonnement verfügen.
+> Um Service Health-Ereignisse anzuzeigen, [müssen Benutzer über die Rolle „Leser“](../role-based-access-control/role-assignments-portal.md) für ein Abonnement verfügen.
 
 ## <a name="get-started-with-service-health"></a>Erste Schritte mit Service Health
 

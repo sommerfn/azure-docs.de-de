@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d72e124248887690ca26c2676e8036cb1b5c4339
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327295"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303515"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric-Anwendungsszenarien
 Azure Service Fabric bietet eine zuverlässige und flexible Plattform, auf der Sie verschiedenste Geschäftsanwendungen und -dienste erstellen und ausführen können. Diese Anwendungen und Microservices können zustandslos oder zustandsbehaftet sein, und deren Ressourcen werden zur Maximierung der Effizienz auf die virtuellen Maschinen verteilt. 

@@ -1,5 +1,5 @@
 ---
-title: Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs | Microsoft-Dokumentation
+title: Senden von lokalisierten Pushbenachrichtigungen an iOS mit Azure Notification Hubs | Microsoft-Dokumentation
 description: Informationen zum Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: ios
@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8eb4cf5e12c16c3c164ecce41a84a9cd32fd85ee
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a8614156be5d516d16aff698b604cf0e661d7311
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211897"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385660"
 ---
-# <a name="tutorial-push-localized-notifications-to-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Benachrichtigungen an iOS-Geräte mit Azure Notification Hubs
+# <a name="tutorial-send-localized-push-notifications-to-ios-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Pushbenachrichtigungen an iOS mit Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)

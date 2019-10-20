@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ae7fbef864634e47866de13384871a98b8ce4675
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209717"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383585"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Konfigurationseinstellungen für einen eigenständigen Windows-Cluster
 In diesem Artikel werden die Konfigurationseinstellungen für einen eigenständigen Azure Service Fabric-Cluster beschrieben, die in der *ClusterConfig.json*-Datei festgelegt werden können. Sie verwenden diese Datei, um Informationen zu den Knoten des Clusters, den Sicherheitskonfigurationen sowie zur Netzwerktopologie in Bezug auf Fehler- und Upgradedomänen anzugeben.  Nach dem Ändern oder Hinzufügen von Konfigurationseinstellungen können Sie entweder [einen eigenständigen Cluster erstellen](service-fabric-cluster-creation-for-windows-server.md) oder [die Konfiguration eines eigenständigen Clusters aktualisieren](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -202,6 +202,7 @@ Um Add-on-Funktionen zu konfigurieren, konfigurieren Sie die API-Version als „
     ]
 }
 ```
+Alle verfügbaren Add-On-Features finden Sie in der [Referenz zur Service Fabric-REST-API](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures).
 
 ### <a name="container-support"></a>Containerunterstützung
 Um bei eigenständigen Clustern die Containerunterstützung sowohl für Windows Server-Container als auch für Hyper-V-Container zu aktivieren, muss das Add-on-Feature von „DnsService“ aktiviert sein.

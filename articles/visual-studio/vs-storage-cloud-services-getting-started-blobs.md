@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Blob Storage und verbundenen Visual Studio-Diensten (Cloud Services) | Microsoft Docs
+title: Erste Schritte mit Blobspeicher mit Visual Studio (Clouddienste)
 description: Erfahren Sie etwas über die ersten Schritte mit Azure Blob Storage in einem Clouddienstprojekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 56aceb4c782c15f69c7994df787b4b950523e8b5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510713"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298795"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (Clouddienstprojekte)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]

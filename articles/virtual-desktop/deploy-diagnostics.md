@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177765"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332832"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -108,7 +108,7 @@ Im Folgenden wird erläutert, wie die empfohlenen Leistungsindikatoren manuell k
 3. Wählen Sie im Abschnitt **Einstellungen** die Option **Erweiterte Einstellungen** aus.
 4. Navigieren Sie anschließend zu **Daten** > **Windows-Leistungsindikatoren**, und fügen Sie die folgenden Indikatoren hinzu:
 
-    -   LogicalDisk(\*)\|%Freier Speicher
+    -   LogicalDisk(\*)\%Freier Speicherplatz
     -   LogicalDisk(C:)\\Durchschn. Warteschlangenlänge des Datenträgers
     -   Arbeitsspeicher(\*)\\Verfügbare MB
     -   Prozessorinformationen(\*)\\Prozessorzeit
@@ -142,7 +142,7 @@ So stellen Sie sicher, dass Ihr Log Analytics-Arbeitsbereich über die vorkonfig
 3. Wechseln Sie anschließend zu **Daten** > **Windows-Leistungsindikatoren**.
 4. Stellen Sie sicher, dass die folgenden Indikatoren vorkonfiguriert sind:
 
-   - LogicalDisk(\*)\|%Freier Speicher: Zeigt die Menge des freien Speicherplatzes des gesamten nutzbaren Speicherplatzes auf dem Datenträger als Prozentsatz an.
+   - LogicalDisk(\*)\%Freier Speicherplatz: Zeigt die Menge des freien Speicherplatzes des gesamten nutzbaren Speicherplatzes auf dem Datenträger als Prozentsatz an.
    - LogicalDisk(C:)\\Durchschn. Warteschlangenlänge des Datenträgers: Die Länge der Datenübertragungsanforderung für Ihr Laufwerk „C“. Der Wert sollte nicht länger als für einen kurzen Zeitraum 2 überschreiten.
    - Arbeitsspeicher(\*)\\Verfügbare MB: Der verfügbare Arbeitsspeicher für das System in MB.
    - Prozessorinformationen(\*)\\Prozessorzeit: der Prozentsatz der verstrichenen Zeit, die der Prozessor mit dem Ausführen eines nicht im Leerlauf befindlichen Threads verbringt.

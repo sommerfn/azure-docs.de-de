@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937503"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300161"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -62,6 +62,16 @@ Bei Verwendung mit Windows Virtual Desktop bietet ControlUp zusätzliche Funktio
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Zur Partnerwebsite](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![deviceTRUST-Logo](./media/partners/devicetrust.png)
+
+deviceTRUST ist ein Windows Virtual Desktop-VASP (Value-Added Service Provider), der Unternehmen kontextualisiert und Benutzern die Freiheit gibt, von jedem Ort aus, über jedes Gerät und jedes Netzwerk auf Windows Virtual Desktop zuzugreifen, während für IT-Abteilungen die Informationen und die Kontrolle bereitgestellt werden, die das Unternehmen benötigt, um seine Governanceanforderungen zu erfüllen. 
+
+deviceTRUST erweitert den Wert von Windows Virtual Desktop dank der kontextabhängigen Sicherheitstechnologie. deviceTRUST ermöglicht bedingten Zugriff, um sicheren Zugriff auf Windows Virtual Desktop zu ermöglichen, bedingten Zugriff auf Anwendungen innerhalb von Windows Virtual Desktop und die Anwendung bedingter Windows Virtual Desktop-Richtlinien ohne zusätzliche Infrastruktur. Der Einsatz von deviceTRUST ermöglicht einen mobilen, flexiblen Arbeitsbereich, der alle Sicherheits-, Compliance- und gesetzlichen Anforderungen erfüllt. 
+
+- [Zur Partnerwebsite](https://devicetrust.com/wvd).
+
 ## <a name="lakeside-software"></a>Lakeside Software
 
 ![Lakeside Software-Logo](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Liquidware Essentials steigert den Nutzen von Windows Virtual Desktop, indem es 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Zur Partnerwebsite](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="login-vsi"></a>Login VSI
+
+![Login VSI-Logo](./media/partners/loginvsi.png)
+
+Login VSI ist ein Windows Virtual Desktop-VASP (Value-Added Service Provider) und ein Microsoft-Partner, der Software für Anwendungsleistungstests in Windows Virtual Desktop-Umgebungen bereitstellt. Kunden, die ihre lokalen Geschäftsdienste in Windows Virtual Desktop verlagern, verwenden Login VSI Enterprise Edition, um optimale Leistung, Skalierbarkeit und Verfügbarkeit der Betriebssysteme Windows 10 Enterprise Multisession, Windows 10 Enterprise und Windows 7 auszuwerten und zu verwalten, unter denen ihre unternehmenskritischen Anwendungen ausgeführt werden.
+
+- [Zur Partnerwebsite](https://www.loginvsi.com).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio-Logo](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ Nerdio steigert den Nutzen von Windows Virtual Desktop, indem es die Bereitstell
 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Zur Partnerwebsite](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="policypak"></a>PolicyPak
+
+![PolicyPak-Logo](./media/partners/policypak.png)
+
+PolicyPak Software ist ein Windows Virtual Desktop-Partner, der die gesamte Einstellungsverwaltung für Anwendungen, Desktop-, Browser-, Java-und Sicherheitseinstellungen ausführt. PolicyPak gewährleistet die Konformität von Desktop-, System- und Sicherheitseinstellungen. PolicyPak erhöht den Wert von Windows Virtual Desktop durch das Hinzufügen einer Reihe von Komponenten, um die integrierte Verwaltung von Windows zu verbessern. Verwenden Sie Ihre vorhandene Active Directory-Gruppenrichtlinie und/oder Windows Intune, um die Einstellungen von PolicyPak bereitzustellen und die Verwaltung von Windows 10-Computern durch Administratoren zu verbessern. 
+
+Die wichtigsten Anwendungsfälle für PolicyPak sind das Entfernen lokaler Administratorrechte und Überwinden von UAC-Eingabeaufforderungen, Blockieren von Ransomware, Verwalten mehrerer Browser, Verwalten der Enterprise- und Kompatibilitätsmodi von Internet Explorer, Verringern der Anzahl der GPOs, Verwalten von Windows 10-Dateizuordnungen, Verwalten des Windows 10-Startmenüs und der Taskleiste sowie Verwalten von Windows 10-Funktionen und optionalen Funktionen.  
+
+- [Zur Partnerwebsite](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![PrinterLogic-Logo](./media/partners/printerlogic.png)
+
+PrinterLogic ist eine Windows Virtual Desktop-VASP-Plattform (Value-Added Service Provider), die es IT-Experten ermöglicht, alle Druckerserver zu beseitigen und eine hochverfügbare, serverlose Druckerinfrastruktur bereitzustellen. PrinterLogic erweitert den Wert von Windows Virtual Desktop und Azure, indem die zentrale Verwaltung und Bereitstellung von Druckerobjekten für beliebige Drucker oder Endpunktbetriebssysteme vereinfacht wird.   
+
+Die PrinterLogic-Plattform, die als SaaS oder als Webstapel in Ihrer eigenen privaten Cloud verfügbar ist, stellt sicher, dass Benutzer in ihren virtuellen Sitzungen basierend auf Benutzer-ID, Gerätename oder Standort immer über die richtigen Drucker verfügen, die sie benötigen. Diese Funktionalität wird durch eine vollständige Suite von Druckverwaltungsfunktionen für Unternehmen wie Drucknachverfolgung und -berichterstellung, mobiles Drucken und sicheres Badge Release-Drucken ergänzt. 
+
+- [Zur Partnerwebsite](https://www.printerlogic.com).
 
 ## <a name="thinprint"></a>ThinPrint
 

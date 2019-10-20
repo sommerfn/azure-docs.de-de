@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e714b872ae43eb313efe549c77f5610342f430c
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390816"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311622"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files
 
@@ -28,6 +28,9 @@ Die Anleitungen in diesem Leitfaden gelten speziell für Windows Virtual Desktop
 
 >[!NOTE]
 >In diesem Artikel werden die bewährten Methoden zum Schützen des Zugriffs auf die Azure NetApp Files-Freigabe nicht behandelt.
+
+>[!NOTE]
+>Wenn Sie nach Vergleichsmaterial zu den verschiedenen Speicheroptionen des FSLogix-Profilcontainers in Azure suchen, lesen Sie [Speicheroptionen für FSLogix-Profilcontainer](store-fslogix-profile.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
