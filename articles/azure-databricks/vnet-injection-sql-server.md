@@ -1,5 +1,5 @@
 ---
-title: Abfragen eines Linux-Docker-Containers für SQL Server in einem virtuellen Netzwerk aus einem Azure Databricks-Notebook
+title: Abfragen eines Linux-Docker-Containers mit Azure Databricks
 description: Dieser Artikel beschreibt, wie Sie Azure Databricks in Ihrem virtuellen Netzwerk bereitstellen, auch bekannt als VNet-Einschleusung.
 services: azure-databricks
 author: mamccrea
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60770796"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273981"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Tutorial: Abfragen eines Linux-Docker-Containers für SQL Server in einem virtuellen Netzwerk aus einem Azure Databricks-Notebook
 
@@ -66,11 +66,11 @@ In diesem Tutorial lernen Sie Folgendes:
     |-------|---------------|-----------|
     |`Source`|IP-Adressen|„IP-Adressen“ legt fest, dass eingehender Datenverkehr von einer bestimmten Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Quell-IP-Adressen|<ihre öffentliche ip\>|Geben Sie Ihre öffentliche IP-Adresse ein. Sie können Ihre öffentliche IP-Adresse finden, indem Sie [bing.com](https://www.bing.com/) besuchen und nach **Meine IP-Adresse** suchen.|
-    |Quellportbereiche|*|Lassen Sie Datenverkehr von einem beliebigen Port zu.|
-    |Ziel|IP-Adressen|„IP-Adressen“ legt fest, dass ausgehender Datenverkehr für eine bestimmte Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
+    |Source port ranges|*|Lassen Sie Datenverkehr von einem beliebigen Port zu.|
+    |Destination|IP-Adressen|„IP-Adressen“ legt fest, dass ausgehender Datenverkehr für eine bestimmte Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Ziel-IP-Adressen|<die öffentliche ip ihrer vm\>|Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein. Sie finden diese auf der Seite **Übersicht** Ihres virtuellen Computers.|
     |Zielportbereiche|22|Öffnen Sie Port 22 für SSH.|
-    |Priorität|290|Weisen Sie der Regel eine Priorität zu.|
+    |Priority|290|Weisen Sie der Regel eine Priorität zu.|
     |NAME|ssh-databricks-tutorial-vm|Geben Sie der Regel einen Namen.|
 
 
@@ -82,11 +82,11 @@ In diesem Tutorial lernen Sie Folgendes:
     |-------|---------------|-----------|
     |`Source`|IP-Adressen|„IP-Adressen“ legt fest, dass eingehender Datenverkehr von einer bestimmten Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Quell-IP-Adressen|10.179.0.0/16|Geben Sie den Adressbereich für Ihr virtuelles Netzwerk ein.|
-    |Quellportbereiche|*|Lassen Sie Datenverkehr von einem beliebigen Port zu.|
-    |Ziel|IP-Adressen|„IP-Adressen“ legt fest, dass ausgehender Datenverkehr für eine bestimmte Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
+    |Source port ranges|*|Lassen Sie Datenverkehr von einem beliebigen Port zu.|
+    |Destination|IP-Adressen|„IP-Adressen“ legt fest, dass ausgehender Datenverkehr für eine bestimmte Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Ziel-IP-Adressen|<die öffentliche ip ihrer vm\>|Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein. Sie finden diese auf der Seite **Übersicht** Ihres virtuellen Computers.|
     |Zielportbereiche|1433|Öffnen Sie Port 22 für SQL Server.|
-    |Priorität|300|Weisen Sie der Regel eine Priorität zu.|
+    |Priority|300|Weisen Sie der Regel eine Priorität zu.|
     |NAME|sql-databricks-tutorial-vm|Geben Sie der Regel einen Namen.|
 
     ![Eingangssicherheitsregel für Port 1433 hinzufügen](./media/vnet-injection-sql-server/open-port2.png)

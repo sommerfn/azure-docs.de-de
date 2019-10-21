@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 84eb0e230875b999218b67d47a66a3c92b494253
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: accf3adea08e713a7a2f06bb175c759ae66a72c0
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072819"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274554"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub
 
@@ -30,14 +30,14 @@ In diesem Artikel erfahren Sie, wie Sie einen Event Hub in Azure Event Hubs erst
 1. Wählen Sie Ihren Event Hub aus.
 1. Wenn Sie einen Event Hub erstellen, erstellen Sie einen Event Hub-Namespace. Wenn Sie noch keinen Event Hub innerhalb des Namespace erstellt haben, erstellen Sie in dem Menü unter **Entitäten** einen Event Hub.  
 
-    [![Liste der Event Hubs](media/send-events/updated.png)](media/send-events/updated.png#lightbox)
+    [![Liste der Event Hubs](media/send-events/1-event-hub-namespace.png)](media/send-events/1-event-hub-namespace.png#lightbox)
 
 1. Nachdem Sie einen Event Hub erstellt haben, wählen Sie ihn in der Liste der Event Hubs aus.
 1. Wählen Sie in dem Menü unter **Entitäten** die Option **Event Hubs** aus.
 1. Wählen Sie den Namen des Event Hubs aus, um ihn zu konfigurieren.
 1. Wählen Sie unter **Übersicht** den Eintrag **Consumergruppen** und dann **Consumergruppe** aus.
 
-    [![Erstellen einer Consumergruppe](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
+    [![Erstellen einer Consumergruppe](media/send-events/2-consumer-group.png)](media/send-events/2-consumer-group.png#lightbox)
 
 1. Erstellen Sie eine Consumergruppe, die ausschließlich von Ihrer Time Series Insights-Ereignisquelle verwendet wird.
 
@@ -46,11 +46,11 @@ In diesem Artikel erfahren Sie, wie Sie einen Event Hub in Azure Event Hubs erst
 
 1. Wählen Sie in dem Menü unter **Einstellungen** die Option **SAS-Richtlinien** und anschließend **Hinzufügen** aus.
 
-    [![Wählen Sie „SAS-Richtlinien“ aus, und klicken Sie dann auf die Schaltfläche „Hinzufügen“](media/send-events/shared-access-policy.png)](media/send-events/shared-access-policy.png#lightbox).
+    [![Wählen Sie „SAS-Richtlinien“ aus, und klicken Sie dann auf die Schaltfläche „Hinzufügen“](media/send-events/3-shared-access-policy.png)](media/send-events/3-shared-access-policy.png#lightbox).
 
 1. Erstellen Sie im Bereich **Neue SAS-Richtlinie hinzufügen** eine gemeinsame Zugriffsrichtlinie mit dem Namen **MySendPolicy**. Sie verwenden diese gemeinsame Zugriffsrichtlinie zum Senden von Ereignissen in den später in diesem Artikel vorkommenden C#-Beispielen.
 
-    [![Geben Sie in das Feld „Richtlinienname“ den Wert „MySendPolicy“ ein](media/send-events/shared-access-policy-2.png)](media/send-events/shared-access-policy-2.png#lightbox).
+    [![Geben Sie in das Feld „Richtlinienname“ den Wert „MySendPolicy“ ein](media/send-events/4-shared-access-policy-confirm.png)](media/send-events/4-shared-access-policy-confirm.png#lightbox).
 
 1. Aktivieren Sie unter **Anspruch**, das Kontrollkästchen **Senden**.
 
@@ -64,7 +64,7 @@ Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetrieda
 
 1. Legen Sie einen Wert für `timeSeriesId` fest. Weitere Informationen zur **Time Series-ID** finden Sie unter [Zeitreihenmodelle](./time-series-insights-update-tsm.md).
 
-### <a name="push-events"></a>Übertragen von Ereignissen mittels Push (Windenergieanlagen-Beispiel)
+### <a name="push-events-to-windmills-sample"></a>Übertragen von Ereignissen mittels Push in das Windenergieanlagen-Beispiel
 
 1. Suchen Sie über die Suchleiste nach **Event Hubs**. Wählen Sie in der Liste mit den zurückgegebenen Ergebnissen **Event Hubs** aus.
 
@@ -72,20 +72,20 @@ Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetrieda
 
 1. Wechseln Sie zu **Freigegebene Zugriffsrichtlinien** > **MySendPolicy**. Kopieren Sie den Wert für **Verbindungszeichenfolge – Primärschlüssel**.
 
-    [![Kopieren des Werts der Primärschlüssel-Verbindungszeichenfolge](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
+    [![Kopieren des Werts der Primärschlüssel-Verbindungszeichenfolge](media/send-events/5-sample-code-connection-string.png)](media/send-events/5-sample-code-connection-string.png#lightbox)
 
 1. Wechseln Sie zur Adresse https://tsiclientsample.azurewebsites.net/windFarmGen.html. Die URL führt simulierte Windenergieanlagen aus.
-1. Fügen Sie in das Feld **Event Hub-Verbindungszeichenfolge** auf der Webseite die Verbindungszeichenfolge ein, die Sie in [Übertragen von Ereignissen mittels Push](#push-events) kopiert haben.
+1. Fügen Sie in das Feld **Event Hub-Verbindungszeichenfolge** auf der Webseite die Verbindungszeichenfolge ein, die Sie im [Eingabefeld für Windenergieanlagen](#push-events-to-windmills-sample) kopiert haben.
   
-    [![Einfügen der Primärschlüssel-Verbindungszeichenfolge in das Feld „Event Hub-Verbindungszeichenfolge“](media/send-events/updated_two.png)](media/send-events/updated_two.png#lightbox)
+    [![Einfügen der Primärschlüssel-Verbindungszeichenfolge in das Feld „Event Hub-Verbindungszeichenfolge“](media/send-events/6-wind-mill-sim.png)](media/send-events/6-wind-mill-sim.png#lightbox)
 
 1. Wählen Sie **Zum Starten klicken** aus. Der Simulator generiert Instanz-JSON, das Sie direkt verwenden können.
 
 1. Wechseln Sie zu Ihrem Event Hub im Azure-Portal zurück. Auf der Seite **Übersicht** können Sie jetzt die neuen Ereignisse verfolgen, die vom Event Hub empfangen werden.
 
-    [![Eine Seite „Übersicht“ des Event Hubs, die Metriken für den Event Hub zeigt](media/send-events/telemetry.png)](media/send-events/telemetry.png#lightbox)
+    [![Eine Seite „Übersicht“ des Event Hubs, die Metriken für den Event Hub zeigt](media/send-events/7-telemetry.png)](media/send-events/7-telemetry.png#lightbox)
 
-## <a name="json"></a>Unterstützte JSON-Formen
+## <a name="supported-json-shapes"></a>Unterstützte JSON-Formen
 
 ### <a name="example-one"></a>Beispiel eins
 
@@ -199,3 +199,5 @@ Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetrieda
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Anzeigen Ihrer Umgebung](https://insights.timeseries.azure.com) im Times Series Insights-Explorer.
+
+- Weitere Informationen zu [IoT Hub-Gerätemeldungen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)

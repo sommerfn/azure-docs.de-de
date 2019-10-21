@@ -83,6 +83,8 @@
           href: azure-pim-resource-rbac.md
         - name: Verwenden von benutzerdefinierten Rollen
           href: pim-resource-roles-custom-role-policy.md
+    - name: Troubleshooting für PIM
+      href: pim-troubleshoot.md
     - name: Zugriffsüberprüfungen
       items:
         - name: Azure AD-Rollen

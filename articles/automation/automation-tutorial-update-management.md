@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Updates und Patches für Ihre virtuellen Azure Windows-Computer
+title: Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 description: Dieser Artikel enthält eine Übersicht über die Verwendung der Updateverwaltung von Azure Automation zum Verwalten von Updates und Patches für Ihre virtuellen Azure Windows-Computer.
 services: automation
 author: zjalexander
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a2d13833b60076caa371a7fa8a696ab5964a28e3
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822348"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376086"
 ---
-# <a name="manage-windows-updates-by-using-azure-automation"></a>Verwalten von Windows-Updates mithilfe von Azure Automation
+# <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
 Sie können die Updateverwaltungslösung verwenden, um Updates und Patches für Ihre virtuellen Computer zu verwalten. In diesem Tutorial wird beschrieben, wie Sie den Status der verfügbaren Updates schnell bewerten, die Installation der erforderlichen Updates planen, die Bereitstellungsergebnisse prüfen und eine Warnung erstellen, um sich zu vergewissern, dass die Updates erfolgreich angewendet werden.
 
@@ -97,7 +97,7 @@ Klicken Sie auf **Bedingung hinzufügen**, um das geeignete Signal für Ihre Upd
 |**Total Update Deployment Runs** (Updatebereitstellungsausführungen gesamt)|- Name der Updatebereitstellung</br>- Status|Dieses Signal wird für Warnungen zum allgemeinen Status einer Updatebereitstellung verwendet.|
 |**Total Update Deployment Machine Runs** (Updatebereitstellungsausführungen auf dem Computer gesamt)|- Name der Updatebereitstellung</br>- Status</br>- Zielcomputer</br>- ID der Updatebereitstellungsausführung|Dieses Signal wird für Warnungen zum Status einer Updatebereitstellung auf bestimmten Computern verwendet.|
 
-Wählen Sie einen gültigen Wert für die Dimensionswerte in der Liste aus. Wenn der gesuchte Wert nicht in der Liste enthalten ist, klicken Sie auf das Plussymbol (**\+**) neben der Dimension, und geben Sie den benutzerdefinierten Namen ein. Anschließend können Sie den Wert auswählen, nach dem Sie suchen möchten. Wenn Sie alle Werte einer Dimension auswählen möchten, klicken Sie auf die Schaltfläche **Auswählen\***. Wenn Sie keinen Wert für eine Dimension auswählen, wird diese Dimension während der Auswertung ignoriert.
+Wählen Sie einen gültigen Wert für die Dimensionswerte in der Liste aus. Wenn der gesuchte Wert nicht in der Liste enthalten ist, klicken Sie auf das Plussymbol ( **\+** ) neben der Dimension, und geben Sie den benutzerdefinierten Namen ein. Anschließend können Sie den Wert auswählen, nach dem Sie suchen möchten. Wenn Sie alle Werte einer Dimension auswählen möchten, klicken Sie auf die Schaltfläche **Auswählen\*** . Wenn Sie keinen Wert für eine Dimension auswählen, wird diese Dimension während der Auswertung ignoriert.
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-update-management/signal-logic.png)
 
@@ -135,7 +135,7 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
 * **Betriebssystem**: Wählen Sie das Betriebssystem aus, für das die Updatebereitstellung ausgeführt werden soll.
 
-* **Zu aktualisierende Gruppen (Vorschau)**: Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).
+* **Zu aktualisierende Gruppen (Vorschau)** : Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management-groups.md).
 
 * **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md).
 
@@ -143,27 +143,42 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
   Es gibt die folgenden Klassifizierungstypen:
 
-   |Betriebssystem  |Type  |
+   |OS  |type  |
    |---------|---------|
    |Windows     | Kritische Updates</br>Sicherheitsupdates</br>Updaterollups</br>Feature Packs</br>Service Packs</br>Definitionsupdates</br>Tools</br>Aktualisierungen        |
    |Linux     | Kritische Updates und Sicherheitsupdates</br>Andere Updates       |
 
-   Eine Beschreibung der Klassifizierungstypen finden Sie unter [Updateklassifizierungen](automation-update-management.md#update-classifications).
+   Eine Beschreibung der Klassifizierungstypen finden Sie unter [Updateklassifizierungen](automation-view-update-assessments.md#update-classifications).
 
-* **Einzuschließende/auszuschließende Updates**: Öffnet die Seite **Einschließen/ausschließen**. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Verhalten beim Einschließen](automation-update-management.md#inclusion-behavior).
+* **Einzuschließende/auszuschließende Updates**: Öffnet die Seite **Einschließen/ausschließen**. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten.
+
+> [!NOTE]
+> Es ist wichtig zu wissen, dass Ausschlüsse eine höhere Priorität als Einschlüsse haben. Wenn Sie beispielsweise die Ausschlussregel `*` definieren, werden keine Patches oder Pakete installiert, da sie alle ausgeschlossen wurden. Ausgeschlossene Patches werden weiterhin als auf dem Computer nicht vorhanden angezeigt. Wenn auf Linux-Computern ein Paket eingeschlossen wird, das jedoch eine Abhängigkeit zu einem ausgeschlossenen Paket aufweist, wird das Paket nicht installiert.
 
 * **Zeitplaneinstellungen**: Der Bereich **Zeitplaneinstellungen** wird geöffnet. Der Standard-Startzeitpunkt liegt 30 Minuten nach der aktuellen Uhrzeit. Als Startzeit können Sie einen beliebigen Wert festlegen, er muss jedoch mindestens 10 Minuten in der Zukunft liegen.
 
    Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie unter **Wiederholung** die Option **Einmal**. Übernehmen Sie den Standardwert „1 Tag“, und wählen Sie **OK**. Ein Zeitplan für Wiederholung wird eingerichtet.
 
 * **Vor und nach dem Vorgang auszuführende Skripts**: Wählen Sie die Skripts aus, die vor und nach Ihrer Bereitstellung ausgeführt werden sollen. Weitere Informationen finden Sie unter [Verwalten von Pre- und Post-Skripts](pre-post-scripts.md).
-* **Wartungsfenster (Minuten)**: Behalten Sie den Standardwert bei. Sie können das Zeitfenster angeben, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
+
+* **Wartungsfenster (Minuten)** : Behalten Sie den Standardwert bei. Mithilfe von Wartungsfenstern wird der zulässige Zeitraum für die Installation von Updates gesteuert. Beim Angeben eines Wartungsfensters sind folgende Aspekte zu beachten.
+
+  * Wartungsfenster steuern die Anzahl der Installationsversuche für Updates.
+  * Die Installation neuer Updates wird von der Updateverwaltung nicht beendet, wenn das Ende eines Wartungsfensters fast erreicht ist.
+  * Die Updateverwaltung beendet bei Überschreiten des Wartungsfensters nicht die laufende Installation von Updates.
+  * Wird das Wartungsfenster unter Windows überschritten, liegt dies häufig daran, dass die Installation eines Service Pack-Updates sehr lange dauert.
+
+  > [!NOTE]
+  > Informationen vom Typ „Nebenbei bemerkt“ sind nicht von entscheidender Bedeutung für eine Aufgabe. Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das Paket „Unattended-Upgrade“ erneut, um automatische Updates zu deaktivieren. Informationen zur Konfiguration dieses Pakets finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 * **Neustartoptionen**: Mit dieser Einstellung wird festgelegt, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:
   * Neu starten bei Bedarf (Standard)
   * Immer neu starten
   * Nie neu starten
   * Nur neu starten – Updates werden nicht installiert
+
+> [!NOTE]
+> Die unter [Registrierungsschlüssel zum Verwalten des Neustarts](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) aufgeführten Registrierungsschlüssel können ein Neustartereignis verursachen, wenn **Neustartsteuerung** auf **Nie neu starten** festgelegt ist.
 
 Klicken Sie auf **Erstellen**, wenn die Konfiguration des Zeitplans abgeschlossen ist.
 
@@ -172,7 +187,9 @@ Klicken Sie auf **Erstellen**, wenn die Konfiguration des Zeitplans abgeschlosse
 Das Statusdashboard wird wieder angezeigt. Wählen Sie **Geplante Updatebereitstellungen**, um den Bereitstellungszeitplan anzuzeigen.
 
 > [!NOTE]
-> Die Updateverwaltung unterstützt die Bereitstellung von Erstanbieterupdates sowie Vorabdownloads von Patches. Hierzu sind Änderungen an den Systemen erforderlich, die gepatcht werden. Informationen zum Konfigurieren der entsprechenden Einstellungen für Ihre Systeme finden Sie im [Abschnitt zu Erstanbieterpatches und Vorabdownloads](automation-update-management.md#firstparty-predownload).
+> Die Updateverwaltung unterstützt die Bereitstellung von Erstanbieterupdates sowie Vorabdownloads von Patches. Hierzu sind Änderungen an den Systemen erforderlich, die gepatcht werden. Informationen zum Konfigurieren der entsprechenden Einstellungen für Ihre Systeme finden Sie im [Abschnitt zu Erstanbieterpatches und Vorabdownloads](automation-configure-windows-update.md).
+
+**Updatebereitstellungen** können ebenfalls programmgesteuert erstellt werden. Weitere Informationen zum Erstellen einer **Updatebereitstellung** mit der REST-API finden Sie unter [Softwareupdatekonfigurationen – Erstellen](/rest/api/automation/softwareupdateconfigurations/create). Es gibt auch ein Beispielrunbook, das zum Erstellen einer wöchentlichen **Updatebereitstellung** verwendet werden kann. Weitere Informationen zu diesem Runbook finden Sie unter [Erstellen einer wöchentlichen Updatebereitstellung für einen oder mehrere virtuelle Computer in einer Ressourcengruppe](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 ## <a name="view-results-of-an-update-deployment"></a>Anzeigen der Ergebnisse einer Updatebereitstellung
 

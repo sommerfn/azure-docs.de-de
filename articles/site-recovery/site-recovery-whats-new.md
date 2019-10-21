@@ -5,20 +5,35 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5e3d226b0f15148c5ac4a9da84462f4a3277e112
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937521"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383565"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
 Der [Azure Site Recovery](site-recovery-overview.md)-Dienst wird laufend aktualisiert und verbessert. Um Sie auf dem Laufenden zu halten, bietet Ihnen dieser Artikel Informationen zu den neuesten Releases, neuen Features und neuen Inhalten. Diese Seite wird regelmäßig aktualisiert.
 
 Sie können Site Recovery-Updatebenachrichtigungen im Kanal für [Azure-Updates](https://azure.microsoft.com/updates/?product=site-recovery) nachverfolgen und abonnieren.
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>Aktualisierung auf Wartungsstapelaktualisierung/SHA-2
+
+Beachten Sie bei der Notfallwiederherstellung von Azure-VMs in einer sekundären Region oder von lokalen VMware-VMs oder physischen Server in Azure Folgendes:
+
+- Ab Version 9.30.x.x (Veröffentlichung vermutlich Anfang November 2019) der Mobility Service-Erweiterung (für virtuelle Azure-Computer) und des Mobility Service-Agents (für VMware/physische Computer) müssen manche Computerbetriebssysteme die Wartungsstapelaktualisierung und SHA-2 ausführen. Details finden Sie in der folgenden Tabelle.
+- Installieren Sie das Update und SHA-2 in Übereinstimmung mit dem verknüpften KB-Artikel. SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt.
+- Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+
+**Betriebssystem** | **Azure-VM** | **VMware-VM/physischer Computer**
+--- | --- | ---
+**Windows 2008 R2 SP1** | [Wartungsstapelaktualisierung](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Wartungsstapelaktualisierung](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 SP2** | [Wartungsstapelaktualisierung](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Wartungsstapelaktualisierung](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 SP1** | [Wartungsstapelaktualisierung](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Wartungsstapelaktualisierung](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
+
 
 ## <a name="supported-updates"></a>Unterstützte Updates
 

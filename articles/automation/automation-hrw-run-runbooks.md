@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240322"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372844"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
@@ -89,9 +89,8 @@ Führen Sie die folgenden Schritte aus, um eine verwaltete Identität für Azure
 
 1. Erstellen einer Azure-VM
 2. [Konfigurieren Sie verwaltete Identitäten für Azure-Ressourcen auf Ihrer VM](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm).
-3. [Gewähren Sie den Zugriff auf eine Ressourcengruppe in Azure Resource Manager für Ihren virtuellen Computer](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager).
-4. [Abrufen eines Zugriffstokens mithilfe der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
-5. [Installieren Sie den Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) auf dem virtuellen Computer.
+3. [Gewähren Sie Ihrem virtuellen Computer Zugriff auf eine Ressourcengruppe in Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+4. [Installieren Sie den Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) auf dem virtuellen Computer.
 
 Nach Abschluss der obigen Schritte können Sie `Connect-AzureRmAccount -Identity` im Runbook verwenden, um die Azure-Ressourcen zu authentifizieren. Diese Konfiguration reduziert die Notwendigkeit zur Nutzung eines ausführenden Kontos und zur Verwaltung des Zertifikats für das ausführende Konto.
 
@@ -102,6 +101,9 @@ Connect-AzureRmAccount -Identity
 # Get all VM names from the subscription
 Get-AzureRmVm | Select Name
 ```
+
+> [!NOTE]
+> `Connect-AzureRMAccount -Identity` funktioniert sowohl für einen Hybrid Runbook Worker, der eine vom System zugewiesene Identität verwendet, als auch einen, der eine von einem einzelnen Benutzer zugewiesene Identität verwendet. Wenn Sie mehrere vom Benutzer zugewiesene Identitäten für den HRW verwenden müssen, müssen Sie den Parameter `-AccountId` angeben, um die spezifische, vom Benutzer zugewiesene Identität auszuwählen.
 
 ### <a name="runas-script"></a>Ausführendes Automation-Konto
 

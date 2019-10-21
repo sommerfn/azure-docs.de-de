@@ -9,12 +9,12 @@ ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5be247e8bb999ee5306d10e67c46c7273953dc71
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3e56b44988dc6dbfed99f339795fee6d15c7dd57
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534704"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372790"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -147,12 +147,19 @@ Beim Integrieren mehrerer Computer, werden einige Computer möglicherweise mit *
 
 **Lösung**: Um einen virtuellen Computer in eine Lösung zu integrieren, muss dieser ausgeführt werden. Klicken Sie auf den Inlinelink**VM starten**, um den virtuellen Computer zu starten, ohne die Seite zu verlassen.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+So entfernen Sie einen virtuellen Computer aus der Updateverwaltung:
+
+* Entfernen Sie in Ihrem Log Analytics-Arbeitsbereich den virtuellen Computer aus der gespeicherten Suche für die Bereichskonfiguration `MicrosoftDefaultScopeConfig-Updates`. Gespeicherte Suchen finden Sie unter **Allgemein** in Ihrem Arbeitsbereich.
+* Entfernen Sie den [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) oder den [Log Analytics Agent für Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Lösung für Ihren virtuellen Computer aktiviert wurde, lesen Sie den Übersichtsartikel zur Updateverwaltung, um zu erfahren, wie Sie die Updatebewertung für Ihren Computer anzeigen können.
+Nachdem die Lösung für Ihren virtuellen Computer aktiviert wurde, lesen Sie den Übersichtsartikel zur Updateverwaltung, um zu erfahren, wie Sie eine **Updatebereitstellung** für Ihre Computer erstellen können.
 
 > [!div class="nextstepaction"]
-> [Updateverwaltung – Anzeigen der Updatebewertung](./automation-update-management.md#viewing-update-assessments)
+> [Updateverwaltung – Verwalten von Updates und Patches für Ihre Azure-VMs](./automation-tutorial-update-management.md)
 
 Zusätzliche Tutorials zu den Lösungen und ihrer Verwendung:
 

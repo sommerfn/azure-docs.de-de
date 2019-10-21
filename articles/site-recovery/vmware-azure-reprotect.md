@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/12/2019
+ms.date: 10/14/2019
 ms.author: mayg
-ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482930"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331054"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Erneutes Schützen und Ausführen eines Failbacks für Computer auf einen lokalen Standort nach einem Failover auf Azure
 
@@ -34,8 +34,9 @@ Wenn Sie zum Erstellen Ihrer virtuellen Computer eine Vorlage verwendet haben, s
 - Wenn die virtuellen Computer, für die Sie das Failback ausführen möchten, von einem vCenter-Server verwaltet werden, stellen Sie sicher, dass Sie auf den vCenter-Servern über die [erforderlichen Berechtigungen](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) für die Ermittlung von virtuellen Computern verfügen.
 - Löschen Sie vor dem erneuten Schützen die Momentaufnahmen auf dem Masterzielserver. Wenn auf dem lokalen Masterziel oder lokalen virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Aktivieren des erneuten Schutzes ein Fehler auf. Die Momentaufnahmen auf dem virtuellen Computer werden während des Auftrags zum erneuten Schützen automatisch zusammengeführt.
 - Alle virtuellen Computer einer Replikationsgruppe müssen vom gleichen Betriebssystemtyp sein (alle entweder Windows oder Linux). Eine Replikationsgruppe mit gemischten Betriebssystemen wird derzeit für das erneute Schützen und lokale Failbacks nicht unterstützt. Der Grund hierfür ist, dass das Betriebssystem bei Masterziel und VM identisch sein muss. Alle virtuellen Computer einer Replikationsgruppe müssen dasselbe Masterziel haben. 
-- Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich. Stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Konfigurationsservers durchführen. Stellen Sie im Notfall den Server mit der gleichen IP-Adresse wieder her, damit das Failback funktioniert.
-- Für das erneute Schützen und das Failback ist eine Site-to-Site-VPN-Verbindung (S2S) für die Datenreplikation erforderlich. Stellen Sie das Netzwerk bereit, damit die virtuellen Computer in Azure, für die ein Failover durchgeführt wurde, den lokalen Konfigurationsserver erreichen können (per Ping). Sie können auch einen Prozessserver im Azure-Netzwerk des virtuellen Computers bereitstellen, für den das Failover durchgeführt wurde. Dieser Prozessserver muss außerdem mit dem lokalen Konfigurationsserver kommunizieren können.
+- Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich. Stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Konfigurationsservers durchführen. Stellen Sie im Notfall den Server mit der gleichen IP-Adresse wieder her, damit das Failback funktioniert. 
+- Für das erneute Schützen und das Failback ist eine Site-to-Site-VPN-Verbindung (S2S) oder privates ExpressRoute-Peering für die Datenreplikation erforderlich. Stellen Sie das Netzwerk bereit, damit die virtuellen Computer in Azure, für die ein Failover durchgeführt wurde, den lokalen Konfigurationsserver erreichen können (per Ping). Sie müssen einen Prozessserver im Azure-Netzwerk der virtuellen Computer bereitstellen, für die das Failover durchgeführt wurde. Dieser Prozessserver muss außerdem mit dem lokalen Konfigurationsserver und dem Masterzielserver kommunizieren können.
+- Für den Fall, dass die IP-Adressen replizierter Elemente bei einem Failover beibehalten wurden, sollte die S2S- oder ExpressRoute-Verbindung zwischen virtuellen Azure-Computern und der Fallback.Netzwerkkarte des Konfigurationsservers hergestellt werden. Beachten Sie, dass die IP-Adressaufbewahrung erfordert, dass der Konfigurationsserver über zwei Netzwerkkarten verfügt: ein für die Quellcomputerverbindungen und eine für die Azur-Fallbackverbindung. Dadurch wird ein Überlappen von Subnetzadressbereichen der Quelle mit denen der virtuellen Failovercomputer vermieden.
 - Stellen Sie sicher, dass Sie die folgenden Ports für Failover und Failback öffnen:
 
     ![Ports für Failover und Failback](./media/vmware-azure-reprotect/failover-failback.png)
@@ -44,12 +45,11 @@ Wenn Sie zum Erstellen Ihrer virtuellen Computer eine Vorlage verwendet haben, s
 
 ## <a name="deploy-a-process-server-in-azure"></a>Bereitstellen eines Prozessservers in Azure
 
-Sie benötigen möglicherweise einen Prozessserver in Azure, bevor Sie ein Failover zum lokalen Standort ausführen können:
-- Der Prozessserver empfängt Daten vom geschützten virtuellen Computer in Azure und sendet Daten an den lokalen Standort.
-- Zwischen dem Prozessserver und dem geschützten virtuellen Computer ist ein Netzwerk mit geringer Wartezeit erforderlich. Im Allgemeinen müssen Sie bei der Entscheidung, ob Sie einen Prozessserver in Azure benötigen, die Wartezeit berücksichtigen:
-    - Wenn Sie eine Azure ExpressRoute-Verbindung eingerichtet haben, können Sie einen lokalen Prozessserver zum Senden von Daten verwenden, da die Wartezeit zwischen dem virtuellen Computer und dem Prozessserver gering ist.
-    - Wenn Sie dagegen nur über ein S2S-VPN verfügen, empfiehlt es sich, den Prozessserver in Azure bereitzustellen.
-    - Es empfiehlt sich, beim Failback einen Azure-basierten Prozessserver zu verwenden. Die Replikationsleistung ist höher, wenn der Prozessserver sich näher beim replizierenden virtuellen Computer (dem Computer in Azure, für den das Failover durchgeführt wurde) befindet. Für einen Proof-of-Concept können Sie den lokalen Prozessserver und ExpressRoute mit privatem Peering verwenden.
+Sie benötigen einen Prozessserver in Azure, bevor Sie ein Failover zum lokalen Standort ausführen können:
+
+- Der Prozessserver empfängt Daten von den geschützten virtuellen Computern in Azure und sendet Daten an den lokalen Standort.
+- Zwischen dem Prozessserver und dem geschützten virtuellen Computer ist ein Netzwerk mit geringer Wartezeit erforderlich. Daher empfiehlt es sich, dass Sie einen Prozessserver in Azure bereitstellen. Die Replikationsleistung ist höher, wenn der Prozessserver sich näher beim replizierenden virtuellen Computer (dem Computer in Azure, für den das Failover durchgeführt wurde) befindet. 
+- Für einen Proof-of-Concept können Sie den lokalen Prozessserver und ExpressRoute mit privatem Peering verwenden.
 
 So stellen Sie einen Prozessserver in Azure bereit:
 

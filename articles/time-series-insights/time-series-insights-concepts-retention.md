@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948206"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330899"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Grundlagen der Datenaufbewahrung in Azure Time Series Insights
 
@@ -28,32 +28,31 @@ In diesem Artikel werden zwei Einstellungen beschrieben, die sich auf die Datena
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-Bei jeder Ihrer Azure Time Series-Umgebungen gibt es eine Einstellung zur Steuerung der **Datenaufbewahrungszeit**. Der Wert kann zwischen 1 und 400 Tagen liegen. Die Daten werden anhand der Speicherkapazität der Umgebung oder der Aufbewahrungsdauer gelöscht – je nachdem, welcher Fall zuerst eintritt.
+Jede Ihrer Azure Time Series-Umgebungen besitzt eine Einstellung, die **Datenaufbewahrungszeit** kontrolliert. Der Wert kann zwischen 1 und 400 Tagen liegen. Die Daten werden anhand der Speicherkapazität der Umgebung oder der Aufbewahrungsdauer gelöscht – je nachdem, welcher Fall zuerst eintritt.
 
-Darüber hinaus gibt es in Ihrer Azure Time Series-Umgebung die Einstellung **Verhalten bei Überschreitung des Speicherlimits**. Sie steuert das Verhalten bei Eingang und Bereinigung, wenn in einer Umgebung die maximale Kapazität erreicht ist. Es stehen zwei Verhalten zur Auswahl bei der Konfiguration:
+Darüber hinaus gibt es in Ihrer Azure Time Series Insights-Umgebung die Einstellung **Verhalten bei Überschreitung des Speicherlimits**. Sie steuert das Verhalten bei Eingang und Bereinigung, wenn in einer Umgebung die maximale Kapazität erreicht ist. Es stehen zwei Verhalten zur Auswahl bei der Konfiguration:
 
 - **Alte Daten bereinigen** (Standard)  
 - **Eingang anhalten**
 
 > [!NOTE]
 > Bei der Erstellung einer neuen Umgebung wird für die Aufbewahrung standardmäßig **Purge old data** (Alte Daten bereinigen) konfiguriert. Diese Einstellung kann nach der Erstellung im Azure-Portal auf der Seite **Konfigurieren** der Time Series Insights-Umgebung je nach Bedarf geändert werden.
+> * Informationen zum Konfigurieren der Aufbewahrungsrichtlinien finden Sie unter [Konfigurieren der Vermerkdauer in Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
-Informationen zum Wechseln des Aufbewahrungsverhaltens finden Sie unter [Konfigurieren der Vermerkdauer in Time Series Insights](time-series-insights-how-to-configure-retention.md).
-
-Vergleichen Sie das Verhalten in Bezug auf die Datenaufbewahrung:
+Beide Datenaufbewahrungsrichtlinien werden weiter unten ausführlicher beschrieben.
 
 ## <a name="purge-old-data"></a>Purge old data (Alte Daten bereinigen)
 
-- Dieses Verhalten ist das Standardverhalten für Time Series Insights-Umgebungen.  
-- Das Verhalten sollte gewählt werden, wenn Benutzer in ihrer Time Series Insights-Umgebung immer die *aktuellen Daten* angezeigt bekommen möchten.
-- Daten werden hierbei *bereinigt*, wenn die Grenzwerte der Umgebung erreicht sind (Aufbewahrungsdauer, Größe oder Anzahl, je nachdem, was zuerst eintritt). Die Aufbewahrungsdauer ist standardmäßig auf 30 Tage festgelegt.
-- Die ältesten erfassten Daten werden zuerst bereinigt (FIFO-Ansatz).
+- **Alte Daten bereinigen** ist die Standardeinstellung für Azure Time Series Insights-Umgebungen.  
+- **Alte Daten bereinigen** ist zu bevorzugen, wenn Benutzer in ihrer Time Series Insights-Umgebung immer die *aktuellsten Daten* angezeigt bekommen möchten.
+- Durch die Einstellung **Alte Daten bereinigen** werden Daten *bereinigt*, wenn die Grenzwerte der Umgebung erreicht sind (Aufbewahrungsdauer, Größe oder Anzahl, je nachdem, was zuerst eintritt). Die Aufbewahrungsdauer ist standardmäßig auf 30 Tage festgelegt.
+- Die ältesten erfassten Daten werden zuerst bereinigt (FIFO-Ansatz, First In First Out).
 
 ### <a name="example-one"></a>Beispiel eins
 
 Wir sehen uns nun eine Beispielumgebung an, für die das Aufbewahrungsverhalten **Continue ingress and purge old data** (Eingang fortsetzen und alte Daten bereinigen) festgelegt ist:
 
-Die **Datenaufbewahrungszeit** ist auf 400 Tage festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB.   Angenommen, jeden Tag fallen durchschnittlich 500 MB an eingehenden Daten an. In dieser Umgebung können bei dieser Eingangsrate nur Daten für 60 Tage aufbewahrt werden, da nach 60 Tagen die maximale Kapazität erreicht ist. Für die Akkumulation der eingehenden Daten gilt Folgendes: 500 MB pro Tag x 60 Tage = 30 GB.
+Die **Datenaufbewahrungszeit** ist auf 400 Tage festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB. Angenommen, jeden Tag fallen durchschnittlich 500 MB an eingehenden Daten an. In dieser Umgebung können bei dieser Eingangsrate nur Daten für 60 Tage aufbewahrt werden, da nach 60 Tagen die maximale Kapazität erreicht ist. Für die Akkumulation der eingehenden Daten gilt Folgendes: 500 MB pro Tag x 60 Tage = 30 GB.
 
 Am 61. Tag werden in der Umgebung die aktuellsten Daten angezeigt; Daten, die älter als 60 Tage sind, werden bereinigt. Durch die Bereinigung wird Platz für die neu eintreffenden Daten geschaffen, damit weiter neue Daten untersucht werden können. Falls Benutzer die Daten länger aufbewahren möchten, können sie die Größe der Umgebung erhöhen, indem sie zusätzliche Einheiten hinzufügen oder weniger Daten per Pushvorgang übertragen.  
 
@@ -93,8 +92,10 @@ Erwägen Sie für die betroffenen Event Hubs die Anpassung der Eigenschaft **Nac
 
 Wenn für die Ereignisquelle (`timeStampPropertyName`) keine Eigenschaften konfiguriert werden, wird für Time Series Insights der Zeitstempel der Ankunft im Event Hub standardmäßig als X-Achse verwendet. Wenn `timeStampPropertyName` als etwas Anderes konfiguriert wird, sucht die Umgebung im Datenpaket bei der Analyse von Ereignissen nach dem konfigurierten `timeStampPropertyName`.
 
-Sofern Sie Ihre Umgebung zentral hochskalieren müssen, um zusätzliche Kapazität bereitzustellen oder die Länge des Aufbewahrungszeitraums zu erhöhen, helfen Ihnen die Informationen unter [Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) weiter.  
+Informationen zum Skalieren Ihrer Umgebung, um zusätzliche Kapazität bereitzustellen oder die Länge des Aufbewahrungszeitraums zu erhöhen, finden Sie unter [Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Konfigurieren oder Ändern von Einstellungen für die Datenaufbewahrung finden Sie unter [Konfigurieren der Vermerkdauer in Time Series Insights](time-series-insights-how-to-configure-retention.md).
+
+- Informationen zum [Mildern von Wartezeiten in Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).

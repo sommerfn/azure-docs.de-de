@@ -1,18 +1,18 @@
 ---
 title: 'Verwaltete Azure-Anwendung: Referenz für das Bereitstellungsvorlagenartefakt'
-description: Bei diesem Artikel handelt es sich um einen Referenzartikel für das Bereitstellungsvorlagenartefakt.
+description: Bietet ein Beispiel für das Bereitstellungsvorlagenartefakt für verwaltete Azure-Anwendungen.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: fe2517a8cc2ddee6623f88b2ae5e46c9e5319567
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ec59c9cde4f23b4a9d641d286e152ea737576534
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336636"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330169"
 ---
 # <a name="reference-deployment-template-artifact"></a>Referenz: Bereitstellungsvorlagenartefakt
 

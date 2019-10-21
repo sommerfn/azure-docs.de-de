@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a9446301cc4bb46c989223ad020c7a8e8b353ad3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b3382cffdc41685f8329a640aaf6c6c526375a83
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446189"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299841"
 ---
 # <a name="localization-support-in-azure-maps"></a>Unterstützte Sprachen in Azure Maps
 
@@ -86,7 +86,7 @@ Azure Maps wurde in verschiedene Sprachen für die unterschiedlichen Dienste üb
 ## <a name="azure-maps-supported-views"></a>Unterstützte Ansichten in Azure Maps
 
 > [!Note]
-> Wir veröffentlichen Azure Maps in den folgenden Ländern/Regionen am 1. August 2019:
+> Azure Maps wurde in den folgenden Ländern/Regionen am 1. August 2019 veröffentlicht:
 >  * Argentinien
 >  * Indien
 >  * Marokko

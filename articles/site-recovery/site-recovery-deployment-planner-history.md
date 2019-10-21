@@ -6,18 +6,26 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 10/16/2019
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620101"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433415"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Versionsverlauf des Azure Site Recovery-Bereitstellungsplaners
 
 Dieser Artikel enthält den Verlauf aller Versionen des Azure Site Recovery-Bereitstellungsplaners zusammen mit den Fehlerbehebungen, den jeweiligen bekannten Einschränkungen und den Veröffentlichungsdaten.
+
+## <a name="version-251"></a>Version 2.51
+
+**Veröffentlichungsdatum: 22. August 2019**
+
+**Fehlerbehebungen:**
+
+- Es wurde ein Problem mit der Kostenempfehlung in Bereitstellungsplaner Version 2.5 behoben.
 
 ## <a name="version-25"></a>Version 2.5
 

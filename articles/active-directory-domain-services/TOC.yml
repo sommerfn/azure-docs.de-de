@@ -65,6 +65,8 @@
           href: notifications.md
         - name: Löschen einer verwalteten Domäne
           href: delete-aadds.md
+        - name: Migrieren von einer klassischen Bereitstellung (Vorschau)
+          href: migrate-from-classic-vnet.md
     - name: Sichern von Azure AD DS
       items:
         - name: Schützen Ihrer verwalteten Domäne

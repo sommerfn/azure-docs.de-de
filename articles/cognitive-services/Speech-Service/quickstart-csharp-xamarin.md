@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: jhakulin
 ms.custom: ''
-ms.openlocfilehash: 02031e8e2800329134eaf34f5f99c93a20b99aac
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c9467bac8b5998252c021faca4eb4177c42a1736
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803777"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387383"
 ---
 # <a name="quickstart-recognize-speech-using-cross-platform-xamarin-app-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache mithilfe einer plattformübergreifenden Xamarin-App unter Verwendung des Speech SDK
 
@@ -64,7 +64,9 @@ Fügen Sie nun den XAML-Code, der die Benutzeroberfläche der Anwendung definier
 
 1. Suchen Sie im Handler `OnRecognitionButtonClicked` nach der Zeichenfolge `YourServiceRegion`, und ersetzen Sie sie durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist. (Verwenden Sie beispielsweise `westus` für das kostenlose Testabonnement.)
 
-1. Als Nächstes müssen Sie einen [Xamarin-Dienst](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/) erstellen. Dieser Dienst wird zum Abfragen von Mikrofonberechtigungen über Projekte verschiedener Plattformen (UWP, Android und iOS) verwendet. Fügen Sie hierzu unter dem Projekt `helloworld` den neuen Ordner `Services` hinzu, und erstellen Sie darunter eine neue C#-Quelldatei. (Klicken Sie mit der rechten Maustaste auf `Services`, und klicken Sie dann auf **Hinzufügen** > **Neues Element** > **Codedatei**.) Benennen Sie sie in `IMicrophoneService.cs` um, und fügen Sie den gesamten Code aus dem folgenden Codeausschnitt in die Datei ein: [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
+1. Als Nächstes müssen Sie einen [Xamarin-Dienst](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/) erstellen. Dieser Dienst wird zum Abfragen von Mikrofonberechtigungen über Projekte verschiedener Plattformen (UWP, Android und iOS) verwendet. Fügen Sie hierzu unter dem Projekt `helloworld` den neuen Ordner `Services` hinzu, und erstellen Sie darunter eine neue C#-Quelldatei. (Klicken Sie mit der rechten Maustaste auf `Services`, und klicken Sie dann auf **Hinzufügen** > **Neues Element** > **Codedatei**.) Benennen Sie sie in `IMicrophoneService.cs` um, und fügen Sie den gesamten Code aus dem folgenden Codeausschnitt in die Datei ein:
+
+[!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Hinzufügen von Beispielcode für das Projekt `helloworld.Android`
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3437634ff70371f9679423149b6996a099c044b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: fb464d2c75e271bf2f7f1684ed991d01691d70e4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950737"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330936"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -68,7 +68,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Vermerkdauer in Time S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum [Gewähren von Datenzugriff für Ihre TSI-Umgebung](./time-series-insights-data-access.md).
+* Lesen Sie weitere Informationen zum [Gewähren von Datenzugriff auf Ihre Azure Time Series Insights-Umgebung](./time-series-insights-data-access.md).
 
 * Anzeigen des [Azure Time Series Insights-Explorers](time-series-insights-explorer.md).
 

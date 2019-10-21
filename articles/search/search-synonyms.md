@@ -10,12 +10,12 @@ ms.date: 05/02/2019
 manager: nitinme
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d9ddb5af42c538558a69ce68e7ea90161c947b12
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186459"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331179"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonyme in Azure Search
 
@@ -40,6 +40,8 @@ Das Integrieren von Synonymen in Ihre Suchanwendung ist ein zweistufiger Prozess
 1.  Fügen Sie Ihrem Suchdienst über die nachfolgenden APIs eine Synonymzuordnung hinzu.  
 
 2.  Konfigurieren Sie ein durchsuchbares Feld, um die Synonymzuordnung in der Indexdefinition zu verwenden.
+
+Sie können mehrere Synonymzuordnungen für Ihre Suchanwendung erstellen (z. B. nach Sprache, wenn Ihre Anwendung einen mehrsprachigen Kundenstamm unterstützt). Derzeit kann ein Feld nur eine der Zuordnungen verwenden. Sie können die „synonymMaps“-Eigenschaft für ein Feld jederzeit aktualisieren.
 
 ### <a name="synonymmaps-resource-apis"></a>Ressourcen-APIs von SynonymMaps
 
@@ -154,16 +156,9 @@ Die Synonymerweiterungen gelten nicht für Platzhaltersuchbegriffe. Präfix-, Fu
 
 Wenn Sie eine einzelne Abfrage, die eine Synonymerweiterung sowie Platzhalter-, Regex- und Fuzzysuche umfasst, durchführen möchten, können Sie die Abfragen mit der OR-Syntax kombinieren. Um beispielsweise Synonyme mit Platzhaltern für eine einfache Abfragesyntax zu kombinieren, lautet der Begriff `<query> | <query>*`.
 
-## <a name="tips-for-building-a-synonym-map"></a>Tipps zum Erstellen einer Synonymzuordnung
-
-- Eine präzise, ausgereifte Synonymzuordnung ist effizienter als eine vollständige Liste möglicher Übereinstimmungen. Die Analyse übermäßig großer oder komplexer Wörterbücher dauert länger und wirkt sich auf die Abfragewartezeit aus, wenn bei der Abfrage zu viele Synonyme erweitert werden. Anstatt zu erraten, welche Begriffe verwendet werden, können Sie die tatsächlichen Begriffe über einen [Analysebericht zum Suchdatenverkehr](search-traffic-analytics.md) abrufen.
-
-- Aktivieren Sie diesen Bericht sowohl zur Vorbereitung als auch zur Überprüfung und verwenden Sie ihn, um genau zu ermitteln, welche Begriffe von einer Synonymzuordnung profitieren. Verwenden Sie ihn dann zur Überprüfung, ob Ihre Synonymzuordnung zu besserer Ergebnissen führt. Im vordefinierten Bericht enthalten die Kacheln für „Häufigste Suchabfragen“ und „Suchabfragen ohne Ergebnis“ die erforderlichen Informationen.
-
-- Sie können mehrere Synonymzuordnungen für Ihre Suchanwendung erstellen (z. B. nach Sprache, wenn Ihre Anwendung einen mehrsprachigen Kundenstamm unterstützt). Derzeit kann ein Feld nur eine der Zuordnungen verwenden. Sie können die „synonymMaps“-Eigenschaft für ein Feld jederzeit aktualisieren.
+Wenn Sie über einen vorhandenen Index in einer Entwicklungsumgebung (nicht Produktionsumgebung) verfügen, experimentieren Sie mit einem kleinen Wörterbuch, um zu prüfen, wie sich das Hinzufügen von Synonymen auf die Suche auswirkt, einschließlich der Auswirkungen auf Bewertungsprofile, Treffermarkierungen und Vorschläge.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie über einen vorhandenen Index in einer Entwicklungsumgebung (nicht Produktionsumgebung) verfügen, experimentieren Sie mit einem kleinen Wörterbuch, um zu prüfen, wie sich das Hinzufügen von Synonymen auf die Suche auswirkt, einschließlich der Auswirkungen auf Bewertungsprofile, Treffermarkierungen und Vorschläge.
-
-- [Aktivieren Sie die Datenverkehrsanalyse für Suchen](search-traffic-analytics.md), und verwenden Sie den vordefinierten Power BI-Bericht, um zu erfahren, welche Begriffe am meisten verwendet werden und welche Begriffe keine Dokumente zurückgeben. Überarbeiten Sie das Wörterbuch unter Einbeziehung dieser Erkenntnisse, um Synonyme für unproduktive Abfragen einzubeziehen, die zu Dokumenten in Ihrem Index führen sollten.
+> [!div class="nextstepaction"]
+> [Erstellen einer Synonymzuordnung](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57b4f018cd044b4f516266dcf9776e82252f7f22
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 439e5ab4bf943293ff4ed20ed477bc98bb683836
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937107"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299334"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -213,7 +213,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
     }
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
- ```
+```
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -264,7 +264,7 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 |---------|---------|---------|
 |Ein bestimmter Wert |<nobr>"0 5 * * * *"</nobr>|um hh:05:00, wobei „hh“ für jede Stunde steht (einmal pro Stunde)|
 |Alle Werte (`*`)|<nobr>"0 * 5 * * *"</nobr>|täglich um 5:mm:00, wobei „mm“ für jede Minute in der Stunde steht (sechzigmal pro Tag)|
-|Ein Bereich (`-`-Operator)|<nobr>"5-7 * * * * *"</nobr>|um hh:mm:05, hh:mm:06 und hh:mm:07, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|  
+|Ein Bereich (`-`-Operator)|<nobr>"5-7 * * * * *"</nobr>|um hh:mm:05, hh:mm:06 und hh:mm:07, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|
 |Eine Gruppe von Werten (`,`-Operator)|<nobr>"5,8,10 * * * * *"</nobr>|um hh:mm:05, hh:mm:08 und hh:mm:10, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|
 |Ein Intervallwert (`/`-Operator)|<nobr>"0 */5 * * * *"</nobr>|um hh:05:00, hh:10:00, hh:15:00 usw. bis hh:55:00, wobei „hh“ für jede Stunde steht (zwölfmal pro Stunde)|
 
@@ -317,7 +317,7 @@ Dieser Wert wird als Zeichenfolge ausgedrückt, und das `TimeSpan`-Format ist `h
 |---------|---------|
 |"01:00:00" | stündlich        |
 |"00:01:00"|minütlich         |
-|"24:00:00" | alle 24 Tage        |
+|"24:00:00" | alle 24 Stunden        |
 |„1.00:00:00“ | täglich        |
 
 ## <a name="scale-out"></a>Horizontales Skalieren
@@ -326,7 +326,16 @@ Wenn eine Funktionen-App auf mehrere Instanzen horizontal hochskaliert wird, wir
 
 ## <a name="function-apps-sharing-storage"></a>Funktionen-Apps mit gemeinsamer Nutzung von Speicher
 
-Wenn Sie ein Speicherkonto für mehrere Funktionen-Apps verwenden, stellen Sie sicher, dass jede Funktionen-App einen anderen Wert für `id` in *host.json* aufweist. Sie können die `id`-Eigenschaft auslassen oder `id` für jede Funktionen-App manuell auf einen anderen Wert festlegen. Der Trigger mit Timer verwendet eine Speichersperre, um sicherzustellen, dass nur eine Timerinstanz vorhanden ist, wenn eine Funktions-App auf mehrere Instanzen horizontal hochskaliert wird. Wenn zwei Funktionen-Apps denselben `id`-Wert aufweisen und beide einen Trigger mit Timer verwenden, wird nur ein Timer ausgeführt.
+Wenn Sie Speicherkonten für Funktions-Apps freigeben, die nicht für App Service bereitgestellt sind, müssen Sie möglicherweise jeder App explizit die Host-ID zuweisen.
+
+| Functions-Version | Einstellung                                              |
+| ----------------- | ---------------------------------------------------- |
+| 2.x               | Umgebungsvariable `AzureFunctionsWebHost__hostid` |
+| 1.x               | `id` in *host.json*                                  |
+
+Sie können den identifizierenden Wert auslassen oder die identifizierende Konfiguration für jede Funktions-App manuell auf einen anderen Wert festlegen.
+
+Der Trigger mit Timer verwendet eine Speichersperre, um sicherzustellen, dass nur eine Timerinstanz vorhanden ist, wenn eine Funktions-App auf mehrere Instanzen horizontal hochskaliert wird. Wenn zwei Funktions-Apps dieselbe identifizierende Konfiguration aufweisen und jede einen Trigger mit Timer verwendet, wird nur ein Timer ausgeführt.
 
 ## <a name="retry-behavior"></a>Wiederholungsverhalten
 

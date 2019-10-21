@@ -32,6 +32,8 @@
       items:
         - name: Zuweisen des Zugriffs auf Daten
           href: assign-access-acm-data.md
+        - name: Verwenden der Kostenanalyse für häufige Aufgaben
+          href: cost-analysis-common-uses.md
         - name: Verwenden von Kostenwarnungen
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: Einrichten und Konfigurieren der AWS-Integration

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982836"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331144"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Verfügbare unterstützte Features in Azure Security Center
 
@@ -39,31 +39,31 @@ Die folgenden Abschnitte enthalten Security Center-Features, die für die [unter
 |----|----|----|----|----|----|----|----|
 |**Umgebung**|**Azure**||**Nicht-Azure**|**Azure**||**Nicht-Azure**||
 ||**Virtueller Computer**|**VM-Skalierungsgruppe**||**Virtueller Computer**|**VM-Skalierungsgruppe**|
-|Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen|✔|✔|✔|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
-|Warnungen der netzwerkbasierten Bedrohungserkennung|✔|✔|X|✔|✔|X|Standard|
-|Microsoft Defender ATP-Integration|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|X|X|X|Standard|
-|Fehlende Patches|✔|✔|✔|✔|✔|✔|Kostenlos|
-|Sicherheitskonfigurationen|✔|✔|✔|✔|✔|✔|Kostenlos|
-|Bewertung von Endpoint Protection|✔|✔|✔|X|X|X|Kostenlos|
-|Just-in-Time-VM-Zugriff|✔|X|X|✔|X|X|Standard|
-|Adaptive Anwendungssteuerungen|✔|X|✔|✔|X|✔|Standard|
-|Dateiintegritätsüberwachung|✔|✔|✔|✔|✔|✔|Standard|
-|Bewertung der Datenträgerverschlüsselung|✔|✔|X|✔|✔|X|Kostenlos|
-|Drittanbieterbereitstellung|✔|X|X|✔|X|X|Kostenlos|
-|NSG-Bewertung|✔|✔|X|✔|✔|X|Kostenlos|
-|Erkennung von Fileless-Bedrohungen|✔|✔|✔|X|X|X|Standard|
-|Netzwerkübersicht|✔|✔|X|✔|✔|X|Standard|
-|Adaptives Erhöhen des Netzwerkschutzes|✔|X|X|✔|X|X|Standard|
+|[Microsoft Defender ATP-Integration](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|X|X|X|Standard|
+|[Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
+|[Warnungen der Erkennung von Fileless-Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standard|
+|[Warnungen der netzwerkbasierten Bedrohungserkennung](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standard|
+|[Just-in-Time-VM-Zugriff](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standard|
+|[Dateiintegritätsüberwachung](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standard|
+|[Adaptive Anwendungssteuerungen](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standard|
+|[Netzwerkübersicht](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standard|
+|[Adaptives Erhöhen des Netzwerkschutzes](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standard|
 |Adaptive Netzwerksteuerungen|✔|✔|X|✔|✔|X|Standard|
-|Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen|✔|✔|✔|✔|✔|✔|Standard|
+|[Dashboard und Berichte für die Einhaltung gesetzlicher Bestimmungen](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standard|
 |Empfehlungen und Bedrohungserkennung für in Docker gehostete IaaS-Container|X|X|X|✔|✔|✔|Standard|
+|Fehlende Bewertung von BS-Patches|✔|✔|✔|✔|✔|✔|Kostenlos|
+|Bewertung von Sicherheitsfehlkonfigurationen|✔|✔|✔|✔|✔|✔|Kostenlos|
+|[Endpoint Protection-Bewertung](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Kostenlos|
+|Bewertung der Datenträgerverschlüsselung|✔|✔|X|✔|✔|X|Kostenlos|
+|Sicherheitsrisikobewertung durch Drittanbieter|✔|X|X|✔|X|X|Kostenlos|
+|[Netzwerksicherheitsbewertung](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|X|✔|✔|X|Kostenlos|
 
 ### Unterstützte Endpoint Protection-Lösungen <a name="endpoint-supported"></a>
 
 In der folgenden Tabelle finden Sie eine Matrix zu folgenden Fragen:
 
  - Ob Sie mit Azure Security Center jede Lösung für sich installieren können.
- - Welche Endpunktschutz-Lösungen Security Center erkennen kann. Wenn eine dieser Endpunktschutz-Lösungen ermittelt wird, empfiehlt Security Center nicht deren Installation.
+ - Welche Endpunktschutz-Lösungen Security Center erkennen kann. Wenn eine Endpoint Protection-Lösungen aus dieser Liste ermittelt wird, empfiehlt Security Center nicht deren Installation.
 
 Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen generiert werden, finden Sie unter [Endpoint Protection: Bewertung und Empfehlungen](security-center-endpoint-protection.md).
 
@@ -77,7 +77,7 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 | McAfee v10+ | Linux-Serverfamilie  | Nein | Ja **\*** |
 | Sophos V9+| Linux-Serverfamilie  | Nein | Ja **\***  |
 
- **\*** Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist, und werden nicht im Azure Security Center-Portal widergespiegelt.
+ **\*** Der Abdeckungsstand und die unterstützenden Daten sind zurzeit nur im Log Analytics-Arbeitsbereich verfügbar, der Ihren geschützten Abonnements zugeordnet ist. Sie spiegeln sich nicht im Azure Security Center-Portal wider.
 
 > [!NOTE]
 >

@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240120"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274415"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Verwenden von Key Vault-Verweisen in App Service und Azure Functions (Vorschauversion)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
 > [!NOTE] 
-> Derzeit liegen Key Vault-Verweise als Vorschauversion vor, und sie werden von Linux-Verbrauchstarifen nicht unterstützt.
+> Zurzeit sind Key Vault-Verweise in Linux-Verbrauchstarifen nicht verfügbar.
 
 Dieses Thema zeigt Ihnen, wie Sie mit Geheimnissen von Azure Key Vault in Ihrer App Service- oder Azure Functions-Anwendung arbeiten können, ohne dass Codeänderungen erforderlich sind. [Azure Key Vault](../key-vault/key-vault-overview.md) ist ein Dienst, der eine zentralisierte Verwaltung von Geheimnissen mit voller Kontrolle über Zugriffsrichtlinien und Überprüfungsverlauf ermöglicht.
 
@@ -52,7 +52,7 @@ Ein Key Vault-Verweis hat die Form `@Microsoft.KeyVault({referenceString})`, wob
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** ist der Name Ihrer Key Vault-Ressource. **SecretName** ist der Name des Zielgeheimnisses. **SecretVersion** ist die Version des zu verwendenden Geheimnisses. |
 
 > [!NOTE] 
-> In der aktuelle Vorschau sind Versionen erforderlich. Beim Rotieren von Geheimnissen müssen Sie die Version in der Anwendungskonfiguration aktualisieren.
+> Zurzeit sind Versionen erforderlich. Beim Rotieren von Geheimnissen müssen Sie die Version in der Anwendungskonfiguration aktualisieren.
 
 Ein vollständiger Verweis kann beispielsweise wie folgt aussehen:
 
@@ -192,7 +192,9 @@ Wird ein Verweis nicht ordnungsgemäß aufgelöst, wird stattdessen der Verweisw
 
 Meist ist die Ursache hierfür eine fehlerhafte Konfiguration der [Key Vault-Zugriffsrichtlinie](#granting-your-app-access-to-key-vault). Ursache kann jedoch auch sein, dass ein Geheimnis nicht mehr vorhanden ist, oder dass ein Syntaxfehler im Verweis vorliegt.
 
-Ist die Syntax richtig, können Sie weitere Fehlerursachen anzeigen, indem Sie den aktuellen Auflösungsstatus mit einer integrierten Erkennung überprüfen.
+Ist die Syntax richtig, können Sie weitere Fehlerursachen anzeigen, indem Sie den aktuellen Auflösungsstatus im Portal überprüfen. Navigieren Sie zu Anwendungseinstellungen, und wählen Sie „Bearbeiten“ für den fraglichen Verweis aus. Unterhalb der Einstellungskonfiguration sollten Statusinformationen, einschließlich aller Fehler, angezeigt werden. Das Fehlen dieser Angaben impliziert, dass die Verweissyntax ungültig ist.
+
+Sie können auch einen der integrierten Detektoren verwenden, um zusätzliche Informationen abzurufen.
 
 ### <a name="using-the-detector-for-app-service"></a>Verwenden der Erkennung für App Service
 

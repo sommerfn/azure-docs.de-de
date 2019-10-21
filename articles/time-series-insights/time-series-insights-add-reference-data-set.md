@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 138894f10a4865a5ea251caff6683ed70721c000
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c33619ba52246128526bb132dfe94416c7c4de8c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172925"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299602"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -36,13 +36,13 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Suchen Sie die vorhandene Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Time Series Insights-Umgebung aus.
+1. Suchen Sie die vorhandene Azure Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Time Series Insights-Umgebung aus.
 
 1. Klicken Sie auf die Seite **Übersicht**. Suchen Sie die **URL des Time Series Insights-Explorers**, und öffnen Sie den Link.  
 
-   Zeigen Sie den Explorer für Ihre TSI-Umgebung an.
+   Zeigen Sie den Explorer für Ihre Time Series Insights-Umgebung an.
 
-1. Erweitern Sie die Umgebungsauswahl im TSI-Explorer. Wählen Sie die aktive Umgebung aus. Klicken Sie oben rechts auf der Explorer-Seite auf das Symbol für Verweisdaten.
+1. Erweitern Sie die Umgebungsauswahl im Times Series Insights-Explorer. Wählen Sie die aktive Umgebung aus. Klicken Sie oben rechts auf der Explorer-Seite auf das Symbol für Verweisdaten.
 
    [![Hinzufügen von Verweisdaten](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
 
@@ -51,12 +51,14 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
    [![Hinzufügen eines Datasets](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
 
 1. Wählen Sie auf der Seite **Neues Verweisdataset** das Format der Daten aus:
+
    - Wählen Sie **CSV** für kommagetrennte Daten aus. Die erste Zeile als Kopfzeile behandelt.
    - Wählen Sie **JSON-Array** für Daten im JSON-Format (JavaScript Object Notation) aus.
 
    [![Auswählen eines Datenformats](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox).
 
 1. Geben Sie die Daten mit einer der folgenden Methoden an:
+
    - Fügen Sie die Daten in den Text-Editor ein. Klicken Sie dann auf die Schaltfläche **Referenzdaten analysieren**.
    - Klicken Sie auf die Schaltfläche **Datei auswählen**, um Daten aus einer lokalen Textdatei hinzuzufügen.
 

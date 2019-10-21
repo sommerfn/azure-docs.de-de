@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: aab2535eb44ca5007859c71bf1f8142b26de7d14
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 0d05650ff349cb9e9750b0cefe0de217a986b32a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996738"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254611"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Verwalten von Benutzerdaten in Azure Security Center
 Dieser Artikel enthält Informationen zur Verwaltung der Benutzerdaten in Azure Security Center. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, auf Daten zuzugreifen, Daten zu löschen oder zu exportieren.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen wird, kann mit dem Tool auf die Kundendaten zugreifen. Weitere Informationen zu den Rollen „Leser“, „Besitzer“ und „Mitwirkender“ finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md). Weitere Informationen zur Rolle „Kontoadministrator“ finden Sie unter [Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md).
+Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen wird, kann mit dem Tool auf die Kundendaten zugreifen. Weitere Informationen zu den Rollen „Kontoadministrator“, „Leser“, „Besitzer“ und „Mitwirkender“ finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md). Siehe [Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Suchen nach und Identifizieren von personenbezogenen Daten
 Ein Security Center-Benutzer kann seine personenbezogenen Daten über das Azure-Portal anzeigen. In Security Center werden nur Details für einen Sicherheitskontakt gespeichert, wie z.B. E-Mail-Adressen und Telefonnummern. Weitere Informationen finden Sie unter [Bereitstellen von Details für einen Sicherheitskontakt in Azure Security Center](security-center-provide-security-contact-details.md).
@@ -60,12 +60,12 @@ Ein Security Center-Benutzer, dem die Rolle „Besitzer“, „Mitwirkender“ o
 
 Ein Security Center-Benutzer, dem die Rolle „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann [Just-In-Time-Richtlinien](security-center-just-in-time.md) über das Azure-Portal löschen.
 
-Ein Security Center-Benutzer kann keine Warnungsvorfälle löschen. Aufgrund der Sicherheitsanforderungen gelten [Warnungsvorfälle](security-center-managing-and-responding-alerts.md) als schreibgeschützte Daten.
+Ein Security Center-Benutzer kann keine Warnungsvorfälle löschen. Aus Sicherheitsgründen gelten [Warnungsvorfälle](security-center-managing-and-responding-alerts.md) als schreibgeschützte Daten.
 
-## <a name="exporting-personal-data"></a>Exportieren personenbezogener Daten
+## <a name="exporting-personal-data"></a>Exportieren von personenbezogenen Daten
 Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitwirkender“ oder „Kontoadministrator“ zugewiesen ist, kann wie folgt [Sicherheitskontaktdaten](security-center-provide-security-contact-details.md) exportieren:
 
-- Durchführen eines Kopiervorgangs über das Azure-Portal
+- Kopieren aus dem Azure-Portal
 - Ausführen des Azure-REST-API-Aufrufs GET HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts?api-version={api-version}
@@ -73,7 +73,7 @@ Ein Security Center-Benutzer, dem die Rolle „Leser“, „Besitzer“, „Mitw
 
 Ein Security Center-Benutzer, dem die Rolle „Kontoadministrator“ zugewiesen ist, kann die [Just-In-Time-Richtlinien](security-center-just-in-time.md) mit den IP-Adressen wie folgt exportieren:
 
-- Durchführen eines Kopiervorgangs über das Azure-Portal
+- Kopieren aus dem Azure-Portal
 - Ausführen des Azure-REST-API-Aufrufs GET HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Security/locations/{location}/jitNetworkAccessPolicies/default?api-version={api-version}
@@ -81,7 +81,7 @@ Ein Security Center-Benutzer, dem die Rolle „Kontoadministrator“ zugewiesen 
 
 Ein Kontoadministrator kann die Warnungsdetails wie folgt exportieren:
 
-- Durchführen eines Kopiervorgangs über das Azure-Portal
+- Kopieren aus dem Azure-Portal
 - Ausführen des Azure-REST-API-Aufrufs GET HTTP:
   ```HTTP
   GET https://<endpoint>/subscriptions/{subscriptionId}/providers/microsoft.Security/alerts?api-version={api-version}
