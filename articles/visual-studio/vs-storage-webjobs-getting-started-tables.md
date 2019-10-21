@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure-Speicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
+title: Erste Schritte mit Azure Storage mit Visual Studio (WebJob-Projekte)
 description: Erfahren Sie etwas über die ersten Schritte mit Azure-Tabellenspeicher in einem Azure WebJobs-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 042f2659d3691e8c51e092bf69473187b8615ee6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510664"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299954"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Erste Schritte mit Azure Storage (Azure WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
