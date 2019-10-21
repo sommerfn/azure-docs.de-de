@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5e9b94f0c67b4b4630d554f4dde22502c90e777c
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173650"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376375"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Tutorial: Erstellen einer Anwendung mit einem Java-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst in Azure Service Fabric
 
@@ -228,7 +228,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Hinzufügen der Datei „HTTPCommunicationListener.java“
 
-Der HTTP-Kommunikationslistener fungiert als Controller, mit dem der HTTP-Server eingerichtet und die APIs zum Definieren der Abstimmungsaktionen verfügbar gemacht werden. Klicken Sie mit der rechten Maustaste auf das Paket *statelessservice* im Ordner *VotingWeb/src/statelessservice*, und wählen Sie **Neu****Datei** aus.  Geben Sie der Datei den Namen *HttpCommunicationListener.java*, und wählen Sie **Fertig stellen** aus.
+Der HTTP-Kommunikationslistener fungiert als Controller, mit dem der HTTP-Server eingerichtet und die APIs zum Definieren der Abstimmungsaktionen verfügbar gemacht werden. Klicken Sie mit der rechten Maustaste auf das Paket *statelessservice* im Ordner *VotingWeb/src/statelessservice*, und wählen Sie **Neu** > **Datei** aus.  Geben Sie der Datei den Namen *HttpCommunicationListener.java*, und wählen Sie **Fertig stellen** aus.
 
 Ersetzen Sie den Inhalt der Datei durch Folgendes, und speichern Sie anschließend Ihre Änderungen:  Im Abschnitt „Aktualisieren der Datei ‚HttpCommunicationListener.java‘“ wird diese Datei dann geändert, um Abstimmungsdaten für den Back-End-Dienst zu rendern, zu lesen und zu schreiben.  Bisher gibt der Listener einfach nur die statischen HTML-Daten für die Abstimmungs-App zurück.
 

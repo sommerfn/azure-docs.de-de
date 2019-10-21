@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 172921dcb082f511d16394b7693f40edf8394821
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826051"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329770"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
@@ -49,7 +49,7 @@ Schließen Sie diese Aufgaben ab, bevor Sie dieses Tutorial beginnen:
 
 * Erstellen Sie eine Azure SQL Data Warehouse-Instanz, erstellen Sie eine Firewallregel auf Serverebene, und stellen Sie als Serveradministrator eine Verbindung mit dem Server her. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
 
-* Erstellen Sie einen Datenbank-Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Informationen hierzu finden Sie unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Erstellen Sie einen Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Informationen hierzu finden Sie unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
 * Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Weitere Informationen finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 

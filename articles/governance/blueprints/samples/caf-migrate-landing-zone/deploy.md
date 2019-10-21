@@ -1,18 +1,18 @@
 ---
-title: 'Beispiel: CAF-Blaupause für die Migrationslandezone – Bereitstellungsschritte'
-description: Bereitstellungsschritte für das CAF-Blaupausenbeispiel für die Migrationslandezone
+title: 'CAF-Blaupausenbeispiel für die Migrationslandezone: Bereitstellungsschritte'
+description: Bereitstellungsschritte für das CAF-Blaupausenbeispiel für die Migrationslandezone, einschließlich Details zum Blaupausenartefaktparameter.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: cb41d363b208400598c8afb06dfdb4acaeb02d2b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981682"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298024"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Bereitstellen des Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone
 
@@ -118,7 +118,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 Nachdem Sie sich mit den Schritten zum Bereitstellen des Blaupausenbeispiels für die CAF-Migrationslandezone vertraut gemacht haben, finden Sie nun in den folgenden Artikeln Informationen zur Architektur:
 
 > [!div class="nextstepaction"]
-> [Übersicht über das Microsoft Cloud Adoption Framework-Blaupausenbeispiel für die Azure-Migrationslandezone](./index.md)
+> [CAF-Blaupause für die Migrationslandezone – Übersicht](./index.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

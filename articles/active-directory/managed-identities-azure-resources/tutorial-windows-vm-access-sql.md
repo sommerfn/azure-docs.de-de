@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2018
+ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d5452f23e830ca7a9ffe5ca5ed3d4aa12fb717
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236044"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433172"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
@@ -103,7 +103,7 @@ Auf dem virtuellen Computer ausgeführter Code kann jetzt unter Verwendung der s
 
 Azure SQL unterstützt die Azure AD-Authentifizierung nativ, sodass Zugriffstoken, die mit verwalteten Identitäten für Azure-Ressourcen abgerufen wurden, direkt angenommen werden können. Verwenden Sie das Verfahren für **Zugriffstoken**, um eine Verbindung mit SQL herzustellen. Dieses ist Teil des Azure SQL-Integration in Azure AD und unterscheidet sich vom Bereitstellen von Anmeldeinformationen in der Verbindungszeichenfolge.
 
-Mit dem folgenden .NET-Codebeispiel wird eine Verbindung mit SQL mithilfe eines Zugriffstokens hergestellt. Dieser Code muss auf dem virtuellen Computer ausgeführt werden, um auf den Endpunkt der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers zugreifen zu können. Für die Verwendung des Verfahrens mit Zugriffstoken ist **.NET Framework 4.6** oder höher erforderlich. Ersetzen Sie die Werte für AZURE-SQL-SERVERNAME und DATABASE entsprechend. Beachten Sie, dass die Ressourcen-ID für Azure SQL `https://database.windows.net/` lautet.
+Mit dem folgenden .NET-Codebeispiel wird eine Verbindung mit SQL mithilfe eines Zugriffstokens hergestellt. Dieser Code muss auf dem virtuellen Computer ausgeführt werden, um auf den Endpunkt der systemseitig zugewiesenen verwalteten Identität des virtuellen Computers zugreifen zu können. Für die Verwendung des Verfahrens mit Zugriffstoken ist **.NET Framework 4.6** oder höher bzw. **.NET Core 2.2** oder höher erforderlich. Ersetzen Sie die Werte für AZURE-SQL-SERVERNAME und DATABASE entsprechend. Beachten Sie, dass die Ressourcen-ID für Azure SQL `https://database.windows.net/` lautet.
 
 ```csharp
 using System.Net;

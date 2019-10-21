@@ -1,17 +1,17 @@
 ---
 title: Erstellen und Verwenden eines benutzerdefinierten Anbieters
-description: In diesem Tutorial wird beschrieben, wie Sie einen benutzerdefinierten Anbieter erstellen und nutzen.
+description: In diesem Tutorial wird beschrieben, wie Sie einen benutzerdefinierten Azure-Anbieter erstellen und nutzen. Mit benutzerdefinierten Anbietern können Sie Workflows in Azure ändern.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 053cf9fca03bf58cf10c313ae2569ce1918a46b9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6217e9007f20cb365aff0837f58f1a6074a3e6ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172916"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330058"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Erstellen und Verwenden eines benutzerdefinierten Anbieters
 

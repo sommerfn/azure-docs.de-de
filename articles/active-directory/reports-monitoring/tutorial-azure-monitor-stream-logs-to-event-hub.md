@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ecbd0cfed262b928e6a821406e80f5a4456c6c9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 93dd7b13ca9e1a3f078994e76610c45447cfa41c
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988071"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264076"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub
 
@@ -41,7 +41,7 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
-2. Klicken Sie auf **Azure Active Directory** > **Aktivität** > **Überwachungsprotokolle**. 
+2. Wählen Sie **Azure Active Directory** > **Überwachung** > **Überwachungsprotokolle** aus. 
 
 3. Klicken Sie auf **Einstellungen exportieren**.  
     

@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen in Azure Kubernetes Service (AKS) mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster
+title: Bereitstellen in Azure Kubernetes Service mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster
 description: Hier erfahren Sie, wie Sie Bereitstellungen in Azure Kubernetes Service (AKS) mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster ausführen.
 ms.service: jenkins
 keywords: Jenkins, Azure, DevOps, Kubernetes, K8s, AKS, Blau/Grün-Bereitstellung, Continuous Delivery, CD
@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/11/2018
-ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 10/09/2019
+ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092292"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249407"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Bereitstellen in Azure Kubernetes Service (AKS) mithilfe von Jenkins und dem Blau/Grün-Bereitstellungsmuster
 
@@ -147,7 +147,7 @@ Sie können eine Blau/Grün-Bereitstellung manuell oder mit einem Setupskript (i
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Aktualisieren Sie den DNS-Namen für den öffentlichen Endpunkt und die Testendpunkte. Beim Erstellen eines Kubernetes-Clusters wird eine [zusätzliche Ressourcengruppe](https://github.com/Azure/AKS/issues/3) mit dem Benennungsmuster **MC_&lt;Name-Ihrer-Ressourcengruppe>_&lt;Name-Ihres-Kubernetes-Clusters>_&lt;Ihr-Speicherort>** erstellt.
+1. Aktualisieren Sie den DNS-Namen für den öffentlichen Endpunkt und die Testendpunkte. Beim Erstellen eines Kubernetes-Clusters wird eine [zusätzliche Ressourcengruppe](https://github.com/Azure/AKS/issues/3) mit dem Benennungsmuster **MC_&lt;Name-Ihrer-Ressourcengruppe> _&lt;Name-Ihres-Kubernetes-Clusters>_ &lt;Ihr-Speicherort>** erstellt.
 
     Ermitteln Sie die öffentlichen IP-Adressen in der Ressourcengruppe.
 

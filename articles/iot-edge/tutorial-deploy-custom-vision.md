@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/25/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 55203c4b555b54514425b484b367f8b735e98e40
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b84ab9691064e7040e586ad82835f27fa5555920
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003904"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434649"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -76,7 +76,7 @@ Nachdem Sie Ihre Bildklassifizierung erstellt und trainiert haben, können Sie s
    | ----- | ----- |
    | NAME | Geben Sie einen Namen für Ihr Projekt an (beispielsweise **EdgeTreeClassifier**). |
    | BESCHREIBUNG | Eine optionale Projektbeschreibung. |
-   | Ressourcengruppe | Wählen Sie eine Ihrer Azure-Ressourcengruppen aus, die eine Custom Vision-Dienstressource enthält, oder **erstellen Sie eine neue**, wenn Sie noch keine hinzugefügt haben. |
+   | Resource | Wählen Sie eine Ihrer Azure-Ressourcengruppen aus, die eine Custom Vision-Dienstressource enthält, oder **erstellen Sie eine neue**, wenn Sie noch keine hinzugefügt haben. |
    | Projekttypen | **Klassifizierung** |
    | Klassifizierungstypen | **Multiclass (single tag per image)** (Multiklasse (einzelnes Tag pro Bild)) |
    | Domänen | **General (compact)** (Allgemein (kompakt)) |
@@ -142,8 +142,6 @@ Die Dateien für eine Containerversion Ihrer Bildklassifizierung befinden sich n
 
 Eine Projektmappe ist eine logische Methode, um mehrerer Module für eine einzelne IoT Edge-Bereitstellung zu entwickeln und zu strukturieren. Sie enthält Code für mindestens ein Modul sowie das Bereitstellungsmanifest, das die Konfiguration der Module auf einem IoT Edge-Gerät deklariert. 
 
-1. Wählen Sie in Visual Studio Code **Ansicht** > **Terminal** aus, um das in Visual Studio Code integrierte Terminal zu öffnen.
-
 1. Klicken Sie auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
 
 1. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
@@ -154,7 +152,7 @@ Eine Projektmappe ist eine logische Methode, um mehrerer Module für eine einzel
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein (beispielsweise **CustomVisionSolution**), oder übernehmen Sie den Standardnamen. |
    | Select module template (Modulvorlage auswählen) | Wählen Sie **Python-Modul** aus. |
    | Provide a module name (Modulname angeben) | Nennen Sie das Modul **classifier**.<br><br>Wichtig: Der Name des Moduls muss in Kleinbuchstaben angegeben werden. Bei Modulverweisen von IoT Edge wird die Groß-/Kleinschreibung berücksichtigt, und in dieser Projektmappe wird eine Bibliothek verwendet, die alle Anforderungen in Kleinbuchstaben formatiert. |
-   | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Ihr Containerimage wird aus dem vorherigen Schritt übernommen. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln. Die endgültige Zeichenfolge sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/classifier. |
+   | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Ihr Containerimage wird aus dem vorherigen Schritt übernommen. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln.<br><br>Die endgültige Zeichenfolge sieht wie folgt aus: **\<Registrierungsname\>.azurecr.io/classifier**. |
  
    ![Bereitstellen eines Docker-Imagerepositorys](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -219,7 +217,7 @@ In diesem Abschnitt fügen Sie der gleichen Custom Vision-Projektmappe (CustomVi
    | Select deployment template file (Bereitstellungsvorlagendatei auswählen) | Wählen Sie die Datei „deployment.template.json“ aus dem Ordner „CustomVisionSolution“ aus. |
    | Select module template (Modulvorlage auswählen) | Wählen Sie **Python-Modul** aus. |
    | Provide a module name (Modulname angeben) | Nennen Sie Ihr Modul **cameraCapture**. |
-   | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert für Ihre Azure-Containerregistrierung. Die endgültige Zeichenfolge sieht wie folgt aus: **\<Registrierungsname\>.azurecr.io/cameracapture**. |
+   | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert für Ihre Azure-Containerregistrierung.<br><br>Die endgültige Zeichenfolge sieht wie folgt aus: **\<Registrierungsname\>.azurecr.io/cameracapture**. |
 
    Das VS Code-Fenster lädt Ihr neues Modul in den Arbeitsbereich der Projektmappe und aktualisiert die Datei „deployment.template.json“. Nun sollten zwei Modulordner angezeigt werden: „classifier“ und „cameraCapture“. 
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 03/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f933cf54b354475146c1291b486173e0b57dbb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026720"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373412"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Concur Travel and Expense
 
@@ -38,16 +38,18 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Concur Travel and Expense-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Ein Abonnement für Concur Travel and Expense
+* Die Rolle „Unternehmensadministrator“ im Concur-Benutzerkonto. Mit dem [Concur-Self-Service-Tool für SSO](https://www.concursolutions.com/nui/authadmin/ssoadmin) können Sie testen, ob Sie über die entsprechenden Zugriffsberechtigungen verfügen. Wenn Sie keinen Zugriff haben, wenden Sie sich an den Concur-Support oder den Projektmanager für die Implementierung. 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD.
 
-* Concur Travel and Expense unterstützt **IDP-initiiertes** einmaliges Anmelden.
+* Concur Travel and Expense unterstützt **IDP-** und **SP-initiiertes** einmaliges Anmelden.
+* Concur Travel and Expense unterstützt das Testen von SSO in Produktions- und Implementierungsumgebungen. 
 
 > [!NOTE]
-> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert für die drei folgenden Regionen: USA, EMEA und China. Es kann also nur eine Instanz für jede Region in einem Mandanten konfiguriert werden. 
 
 ## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>Hinzufügen von Concur Travel and Expense aus dem Katalog
 
@@ -85,13 +87,16 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Im Abschnitt **Grundlegende SAML-Konfiguration** ist die Anwendung im **IDP-initiierten** Modus vorkonfiguriert, und die erforderlichen URLs sind bereits mit Azure vorausgefüllt. Der Benutzer muss die Konfiguration speichern, indem er auf die Schaltfläche **Speichern** klickt.
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+    > [!NOTE]
+    > Der Bezeichner (Entitäts-ID) und die Antwort-URL (Assertionsverbraucherdienst-URL) sind regionsspezifisch. Wählen Sie die Option basierend auf dem Rechenzentrum Ihrer Concur-Entität aus. Wenn Sie das Rechenzentrum der Concur-Entität nicht kennen, wenden Sie sich an den Concur-Support. 
+
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Benutzerattribut**, um die Einstellungen zu bearbeiten. Die eindeutige Benutzer-ID muss mit der Concur-Benutzeranmelde-ID (login_id) übereinstimmen. In der Regel muss **user.userprincipalname** in **user.mail** geändert werden.
+
+    ![Benutzerattribut bearbeiten](common/edit-attribute.png)
+
+6. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um die Metadaten-XML herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
-
-1. Kopieren Sie im Abschnitt **Concur Travel and Expense einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -125,11 +130,31 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>Konfigurieren des einmaligen Anmeldens für Concur Travel and Expense
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Concur Travel and Expense** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Concur Travel and Expense](https://www.concur.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Concur Travel and Expense** müssen Sie die heruntergeladene **Verbundmetadaten-XML** in das [Concur-Self-Service-Tool für SSO](https://www.concursolutions.com/nui/authadmin/ssoadmin) hochladen und sich mit einem Konto mit der Rolle „Unternehmensadministrator“ anmelden. 
+
+1. Klicken Sie auf **Hinzufügen**.
+1. Geben Sie einen benutzerdefinierten Namen für Ihren IdP ein, etwa „Azure AD (US)“. 
+1. Klicken Sie auf **Upload XML File** (XML-Datei hochladen), und fügen Sie die zuvor heruntergeladene **Verbundmetadaten-XML** an.
+1. Klicken Sie auf **Add Metadata** (Metadaten hinzufügen), um die Änderung zu speichern.
+
+    ![Screenshot des Concur-Self-Service-Tools für SSO](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
 
 ### <a name="create-concur-travel-and-expense-test-user"></a>Erstellen eines Testbenutzers für Concur Travel and Expense
 
-In diesem Abschnitt erstellen Sie in Concur Travel and Expense einen Benutzer namens B. Simon. Wenden Sie sich an das  [Supportteam von Concur Travel and Expense](https://www.concur.com/support), um die Benutzer auf der Concur Travel and Expense-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Concur Travel and Expense einen Benutzer namens B. Simon. Wenden Sie sich an das Concur-Supportteam, um die Benutzer auf der Concur Travel and Expense-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+
+> [!NOTE]
+> Die Concur-Anmelde-ID von B. Simon muss mit dem eindeutigen Bezeichner von B. Simon in Azure AD übereinstimmen. Beispiel: Lautet der eindeutige Azure AD-Bezeichner von B. Simon `B.Simon@contoso.com`, muss die Concur-Anmelde-ID von B. Simon ebenfalls `B.Simon@contoso.com` lauten. 
+
+## <a name="configure-concur-mobile-sso"></a>Konfigurieren von mobilem SSO für Concur
+Um mobiles einmaliges Anmelden für Concur zu ermöglichen, müssen Sie die **Benutzerzugriffs-URL** an das Concur-Supportteam senden. Führen Sie die folgenden Schritte aus, um die **Benutzerzugriffs-URL** aus Azure AD abzurufen:
+1. Navigieren Sie zu **Unternehmensanwendungen**.
+1. Klicken Sie auf **Concur Travel and Expense**.
+1. Klicken Sie auf **Eigenschaften**.
+1. Kopieren Sie die **Benutzerzugriffs-URL**, und senden Sie diese URL an den Concur-Support.
+
+> [!NOTE]
+> Die Self-Service-Option zum Konfigurieren von SSO steht nicht zur Verfügung. Wenden Sie sich daher an das Concur-Supportteam, um mobiles SSO zu aktivieren. 
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

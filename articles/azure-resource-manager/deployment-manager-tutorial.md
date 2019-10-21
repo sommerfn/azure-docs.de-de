@@ -5,15 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.date: 05/23/2019
+ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 97d9aa1ed9440011fdaab3aa8eb9d3942b5a8acf
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170365"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285879"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (Public Preview)
 
@@ -61,8 +61,6 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```powershell
     Install-Module -Name Az.DeploymentManager
     ```
-
-* [Microsoft Azure Storage-Explorer.](https://azure.microsoft.com/features/storage-explorer/) Azure Storage-Explorer ist zwar nicht zwingend erforderlich, macht aber vieles einfacher.
 
 ## <a name="understand-the-scenario"></a>Das Szenario
 
@@ -135,16 +133,55 @@ Die beiden Versionen (1.0.0.0 und 1.0.0.1) dienen zur [Revisionsbereitstellung](
 
 Vorlagenartefakte werden von der Diensttopologievorlage verwendet, binäre Artefakte von der Rolloutvorlage. Sowohl die Topologievorlage als auch die Rolloutvorlage definiert eine Azure-Ressource vom Typ „Artefaktquelle“. Dabei handelt es sich um eine Ressource, die Resource Manager auf die Vorlagenartefakte und binären Artefakte verweist, die in der Bereitstellung verwendet werden. Zur Vereinfachung des Tutorials wird zum Speichern der Vorlagenartefakte und der binären Artefakte ein einzelnes Speicherkonto verwendet. Beide Artefaktquellen verweisen also auf das gleiche Speicherkonto.
 
-1. Erstellen eines Azure-Speicherkontos Anweisungen dazu finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
-2. Erstellen Sie einen Blobcontainer im Speicherkonto.
-3. Kopieren Sie die beiden Ordner („binaries“ und „templates“) sowie den Inhalt der beiden Ordner in den Blobcontainer. [Microsoft Azure Storage-Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409) unterstützt das Drag & Drop-Feature.
-4. Ermitteln Sie den SAS-Speicherort des Containers:
+Führen Sie das folgende PowerShell-Skript aus, um eine Ressourcengruppe, einen Speichercontainer und einen Blobcontainer zu erstellen, die heruntergeladenen Dateien hochzuladen und dann ein SAS-Token zu erstellen.
 
-    1. Navigieren Sie im Azure Storage-Explorer zum Blobcontainer.
-    2. Klicken Sie im linken Bereich mit der rechten Maustaste auf den Blobcontainer, und klicken Sie anschließend auf **Get Shared Access Signature** (SAS abrufen).
-    3. Konfigurieren Sie die **Startzeit** und die **Ablaufzeit**.
-    4. Klicken Sie auf **Erstellen**.
-    5. Kopieren Sie die URL. Diese URL wird zum Auffüllen eines Felds in den beiden Parameterdateien ([Topologieparameterdatei](#topology-parameters-file) und [Rolloutparameterdatei](#rollout-parameters-file)) benötigt.
+> [!IMPORTANT]
+> **projectName** im PowerShell-Skript dient zum Generieren von Namen für die Azure-Dienste, die in diesem Tutorial bereitgestellt werden. Die verschiedenen Azure-Dienste haben jeweils unterschiedliche Namensanforderungen. Um sicherzustellen, dass die Bereitstellung erfolgreich ist, wählen Sie einen Namen mit weniger als 12 Zeichen, der ausschließlich aus Kleinbuchstaben und Zahlen besteht.
+> Speichern Sie eine Kopie des Projektnamens. Der Projektname bleibt während des gesamten Tutorials gleich.
+
+```azurepowershell
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$filePath = Read-Host -Prompt "Enter the folder that contains the downloaded files"
+
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
+$containerName = "admfiles"
+$filePathArtifacts = "${filePath}\ArtifactStore"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName `
+  -Name $storageAccountName `
+  -Location $location `
+  -SkuName Standard_RAGRS `
+  -Kind StorageV2
+
+$storageContext = $storageAccount.Context
+
+$storageContainer = New-AzStorageContainer -Name $containerName -Context $storageContext -Permission Off
+
+
+$filesToUpload = Get-ChildItem $filePathArtifacts -Recurse -File
+
+foreach ($x in $filesToUpload) {
+    $targetPath = ($x.fullname.Substring($filePathArtifacts.Length + 1)).Replace("\", "/")
+
+    Write-Verbose "Uploading $("\" + $x.fullname.Substring($filePathArtifacts.Length + 1)) to $($storageContainer.CloudBlobContainer.Uri.AbsoluteUri + "/" + $targetPath)"
+    Set-AzStorageBlobContent -File $x.fullname -Container $storageContainer.Name -Blob $targetPath -Context $storageContext | Out-Null
+}
+
+$token = New-AzStorageContainerSASToken -name $containerName -Context $storageContext -Permission rl -ExpiryTime (Get-date).AddMonths(1)  -Protocol HttpsOrHttp
+
+$url = $storageAccount.PrimaryEndpoints.Blob + $containerName + $token
+
+Write-Host $url
+```
+
+Notieren Sie sich die URL mit dem SAS-Token. Diese URL wird zum Auffüllen eines Felds in den beiden Parameterdateien (Topologieparameterdatei und Rolloutparameterdatei) benötigt.
+
+Öffnen Sie den Container im Azure-Portal, und überprüfen Sie, ob die Ordner **binaries** und **templates** sowie die Dateien hochgeladen wurden.
 
 ## <a name="create-the-user-assigned-managed-identity"></a>Erstellen der benutzerseitig zugewiesenen verwalteten Identität
 
@@ -176,9 +213,7 @@ Sie müssen eine benutzerseitig zugewiesene verwaltete Identität erstellen und 
 
 Die Vorlage enthält folgende Parameter:
 
-![Tutorial für den Azure-Bereitstellungs-Manager: Parameter der Topologievorlage](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-parameters.png)
-
-* **namePrefix**: Dieses Präfix wird zur Erstellung der Namen für die Bereitstellungs-Manager-Ressourcen verwendet. Bei Verwendung des Präfix „jdoe“ lautet der Diensttopologiename beispielsweise „**jdoe**ServiceTopology“.  Die Ressourcennamen werden im Variablenabschnitt dieser Vorlage definiert.
+* **projectName**: Dieser Name wird zur Erstellung der Namen für die Bereitstellungs-Manager-Ressourcen verwendet. Bei Verwendung von „jdoe“ lautet der Diensttopologiename beispielsweise „**jdoe**ServiceTopology“.  Die Ressourcennamen werden im Variablenabschnitt dieser Vorlage definiert.
 * **azureResourcelocation**: Zur Vereinfachung des Tutorials verwenden alle Ressourcen diesen Standort, wenn nichts anderes angegeben ist. Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
 * **artifactSourceSASLocation**: Der SAS-URI des Blobcontainers, unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
 * **templateArtifactRoot**: Der Offsetpfad des Blobcontainers, unter dem die Vorlagen und Parameter gespeichert sind. Standardwert: **templates/1.0.0.0**. Ändern Sie diesen Wert nur, wenn Sie die unter [Vorbereiten der Artefakte](#prepare-the-artifacts) erläuterte Ordnerstruktur ändern möchten. In diesem Tutorial werden relative Pfade verwendet.  Der vollständige Pfad ist eine Verkettung aus **artifactSourceSASLocation**, **templateArtifactRoot** und **templateArtifactSourceRelativePath** (oder **parametersArtifactSourceRelativePath**).
@@ -215,14 +250,13 @@ Sie erstellen eine Parameterdatei, die mit der Topologievorlage verwendet wird.
 1. Öffnen Sie **\ADMTemplates\CreateADMServiceTopology.Parameters** in Visual Studio Code oder einem beliebigen Text-Editor.
 2. Füllen Sie die Parameterwerte aus:
 
-    * **namePrefix**: Geben Sie eine Zeichenfolge mit vier bis fünf Zeichen ein. Dieses Präfix dient zur Erstellung eindeutiger Azure-Ressourcennamen.
+    * **projectName**: Geben Sie eine Zeichenfolge mit vier bis fünf Zeichen ein. Dieser Name dient zur Erstellung eindeutiger Azure-Ressourcennamen.
     * **azureResourceLocation**: Sollten Sie nicht mit Azure-Standorten vertraut sein, verwenden Sie in diesem Tutorial **centralus**.
     * **artifactSourceSASLocation**: Geben Sie den SAS-URI des Stammverzeichnisses (Blobcontainer) ein, unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
     * **templateArtifactRoot**: Verwenden Sie in diesem Tutorial **templates/1.0.0.0**, es sei denn, Sie möchten die Ordnerstruktur der Artefakte ändern.
-    * **targetScriptionID**: Geben Sie Ihre Azure-Abonnement-ID ein.
 
 > [!IMPORTANT]
-> In der Topologie- und der Rolloutvorlage werden teilweise die gleichen Parameter verwendet. Diese Parameter müssen die gleichen Werte besitzen. Betroffene Parameter: **namePrefix**, **azureResourceLocation** und **artifactSourceSASLocation**. (In diesem Tutorial verwenden beide Artefaktquellen das gleiche Speicherkonto.)
+> In der Topologie- und der Rolloutvorlage werden teilweise die gleichen Parameter verwendet. Diese Parameter müssen die gleichen Werte besitzen. Betroffene Parameter: **projectName**, **azureResourceLocation** und **artifactSourceSASLocation**. (In diesem Tutorial verwenden beide Artefaktquellen das gleiche Speicherkonto.)
 
 ## <a name="create-the-rollout-template"></a>Erstellen der Rolloutvorlage
 
@@ -234,7 +268,7 @@ Die Vorlage enthält folgende Parameter:
 
 ![Tutorial für den Azure-Bereitstellungs-Manager: Parameter der Rolloutvorlage](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-* **namePrefix**: Dieses Präfix wird zur Erstellung der Namen für die Bereitstellungs-Manager-Ressourcen verwendet. Bei Verwendung des Präfix „jdoe“ lautet der Rolloutname beispielsweise „**jdoe**Rollout“.  Die Namen werden im Variablenabschnitt der Vorlage definiert.
+* **projectName**: Dieser Name wird zur Erstellung der Namen für die Bereitstellungs-Manager-Ressourcen verwendet. Bei Verwendung von „jdoe“ lautet der Rolloutname beispielsweise „**jdoe**Rollout“.  Die Namen werden im Variablenabschnitt der Vorlage definiert.
 * **azureResourcelocation**: Zur Vereinfachung des Tutorials verwenden alle Bereitstellungs-Manager-Ressourcen diesen Standort, wenn nichts anderes angegeben ist. Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
 * **artifactSourceSASLocation**: Der SAS-URI des Stammverzeichnisses (Blobcontainer), unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
 * **binaryArtifactRoot**:  Der Standardwert lautet **binaries/1.0.0.0**. Ändern Sie diesen Wert nur, wenn Sie die unter [Vorbereiten der Artefakte](#prepare-the-artifacts) erläuterte Ordnerstruktur ändern möchten. In diesem Tutorial werden relative Pfade verwendet.  Der vollständige Pfad ist eine Verkettung aus **artifactSourceSASLocation**, **binaryArtifactRoot** und **deployPackageUri** (aus „CreateWebApplicationParameters.json“).  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
@@ -276,7 +310,7 @@ Sie erstellen eine Parameterdatei, die mit der Rolloutvorlage verwendet wird.
 1. Öffnen Sie **\ADMTemplates\CreateADMRollout.Parameters** in Visual Studio Code oder einem beliebigen Text-Editor.
 2. Füllen Sie die Parameterwerte aus:
 
-    * **namePrefix**: Geben Sie eine Zeichenfolge mit vier bis fünf Zeichen ein. Dieses Präfix dient zur Erstellung eindeutiger Azure-Ressourcennamen.
+    * **projectName**: Geben Sie eine Zeichenfolge mit vier bis fünf Zeichen ein. Dieser Name dient zur Erstellung eindeutiger Azure-Ressourcennamen.
     * **azureResourceLocation**: Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
     * **artifactSourceSASLocation**: Geben Sie den SAS-URI des Stammverzeichnisses (Blobcontainer) ein, unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
     * **binaryArtifactRoot**: Verwenden Sie in diesem Tutorial **binaries/1.0.0.0**, es sei denn, Sie möchten die Ordnerstruktur der Artefakte ändern.
@@ -287,7 +321,7 @@ Sie erstellen eine Parameterdatei, die mit der Rolloutvorlage verwendet wird.
         ```
 
 > [!IMPORTANT]
-> In der Topologie- und der Rolloutvorlage werden teilweise die gleichen Parameter verwendet. Diese Parameter müssen die gleichen Werte besitzen. Betroffene Parameter: **namePrefix**, **azureResourceLocation** und **artifactSourceSASLocation**. (In diesem Tutorial verwenden beide Artefaktquellen das gleiche Speicherkonto.)
+> In der Topologie- und der Rolloutvorlage werden teilweise die gleichen Parameter verwendet. Diese Parameter müssen die gleichen Werte besitzen. Betroffene Parameter: **projectName**, **azureResourceLocation** und **artifactSourceSASLocation**. (In diesem Tutorial verwenden beide Artefaktquellen das gleiche Speicherkonto.)
 
 ## <a name="deploy-the-templates"></a>Bereitstellen der Vorlagen
 
@@ -296,19 +330,14 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 1. Führen Sie das Skript aus, um die Diensttopologie bereitzustellen.
 
     ```azurepowershell
-    $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"
-    $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
-
-    # Create a resource group
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-
     # Create the service topology
     New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
     ```
+
+    Wenn Sie dieses Skript über eine andere PowerShell-Sitzung als die Sitzung ausführen, die Sie für die Ausführung des Skripts [Vorbereiten der Artefakte](#prepare-the-artifacts) verwendet haben, müssen Sie die Variablen zunächst erneut auffüllen (u. a. **$resourceGroupName** und **$filePath**).
 
     > [!NOTE]
     > `New-AzResourceGroupDeployment` ist ein asynchroner Aufruf. Die Erfolgsmeldung bedeutet nur, dass die Bereitstellung erfolgreich gestartet wurde. Informationen zum Überprüfen der Bereitstellung finden Sie in Schritt 2 und 4 dieses Verfahrens.
@@ -333,7 +362,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
 
     ```azurepowershell
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
+    $rolloutname = "${projectName}Rollout" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName `
@@ -424,9 +453,9 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 1. Wählen Sie im Azure-Portal im linken Menü die Option **Ressourcengruppe** aus.
 2. Filtern Sie mithilfe des Felds **Nach Name filtern** nach den Ressourcengruppen, die in diesem Tutorial erstellt wurden. Es müssten drei bis vier sein:
 
-    * **&lt;Namenspräfix>rg**: Enthält die Bereitstellungs-Manager-Ressourcen.
-    * **&lt;Namenspräfix>ServiceWUSrg**: Enthält die durch „ServiceWUS“ definierten Ressourcen.
-    * **&lt;Namenspräfix>ServiceEUSrg**: Enthält die durch „ServiceEUS“ definierten Ressourcen.
+    * **&lt;projectName>rg**: Enthält die Bereitstellungs-Manager-Ressourcen.
+    * **&lt;projectName>ServiceWUSrg**: Enthält die durch „ServiceWUS“ definierten Ressourcen.
+    * **&lt;projectName>ServiceEUSrg**: Enthält die durch „ServiceWUS“ definierten Ressourcen.
     * Die Ressourcengruppe für die benutzerdefinierte verwaltete Identität.
 3. Klicken Sie auf den Namen der Ressourcengruppe.
 4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.

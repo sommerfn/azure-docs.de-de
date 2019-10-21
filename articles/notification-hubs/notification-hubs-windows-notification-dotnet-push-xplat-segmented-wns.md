@@ -13,33 +13,33 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/22/2019
+ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: efe668e42e04942cc0d9fc99670057ab5bdd302a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9151870836b1a616a79e54275ed185a425c11f0c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212129"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385605"
 ---
-# <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows-Geräte, die Anwendungen der universellen Windows-Plattform ausführen
+# <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Tutorial: Senden von Benachrichtigungen an bestimmte Geräte, die Anwendungen der universellen Windows-Plattform ausführen
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial wird gezeigt, wie Sie mit Azure Notification Hubs Benachrichtigungen zu aktuellen Nachrichten an Windows Store- oder Windows Phone 8.1-Anwendungen (kein Silverlight) senden können. Wenn Ihr Ziel Windows Phone 8.1 Silverlight ist, lesen Sie den Abschnitt zur [Windows Phone](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)-Version.
+In diesem Tutorial wird gezeigt, wie Sie mit Azure Notification Hubs Benachrichtigungen zu aktuellen Nachrichten senden. In diesem Tutorial werden Windows Store- bzw. Windows Phone 8.1-Anwendungen (nicht Silverlight) behandelt. Informationen zu Windows Phone 8.1 Silverlight finden Sie unter [Tutorial: Senden von Pushbenachrichtigungen an bestimmte Windows Phone-Geräte mit Azure Notification Hubs](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md).
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an bestimmte Windows-Geräte senden, die Anwendungen der universellen Windows-Plattform (UWP) ausführen. Nachdem Sie dieses Tutorial abgeschlossen haben, können Sie die Registrierung für Kategorien aktueller Nachrichten, an denen Sie interessiert sind, durchführen. Sie erhalten dann nur für diese Kategorien Pushbenachrichtigungen.
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an bestimmte Windows-Geräte senden, die eine Anwendung der universellen Windows-Plattform (UWP) ausführen. Nach Abschluss des Tutorials können Sie sich für die Kategorien aktueller Nachrichten registrieren, die Sie interessieren. Sie erhalten nur Pushbenachrichtigungen für diese Kategorien.
 
-Übertragungsszenarien werden durch das Einfügen von einem oder mehreren *Tags* möglich, wenn Sie eine Registrierung im Notification Hub erstellen. Wenn Benachrichtigungen zu einem Tag gesendet werden, erhalten alle Geräte, die für das Tag registriert wurden, diese Benachrichtigung. Weitere Informationen zu Tags finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-tags-segment-push-message.md).
+Übertragungsszenarien können Sie durch das Einfügen von einem oder mehreren *Tags* ermöglichen, wenn Sie eine Registrierung im Notification Hub erstellen. Wenn Benachrichtigungen an ein Tag gesendet werden, erhalten alle Geräte, die für das Tag registriert wurden, diese Benachrichtigung. Weitere Informationen zu Tags finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-tags-segment-push-message.md).
 
 > [!NOTE]
-> Windows Store- und Windows Phone-Projekte der Version 8.1 und älter werden in Visual Studio 2017 nicht unterstützt. Weitere Informationen finden Sie unter [Visual Studio 2017 – Zielplattformen und Kompatibilität](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
+> Windows Store- und Windows Phone-Projekte der Version 8.1 und älter werden in Visual Studio 2019 nicht unterstützt. Weitere Informationen finden Sie unter [Visual Studio 2019 – Zielplattformen und Kompatibilität](/visualstudio/releases/2019/compatibility).
 
-In diesem Tutorial führen Sie die folgenden Schritte aus:
+In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 > [!div class="checklist"]
 > * Hinzufügen der Kategorieauswahl zur mobilen App
@@ -55,7 +55,7 @@ Absolvieren Sie [Tutorial: Senden von Benachrichtigungen an Apps für die univer
 
 Der erste Schritt besteht darin, der vorhandenen Hauptseite Benutzeroberflächenelemente hinzuzufügen, die dem Benutzer die Auswahl der Kategorien für die Registrierung ermöglichen. Die ausgewählten Kategorien werden auf dem Gerät gespeichert. Wenn die App gestartet wird, wird eine Geräteregistrierung in Ihrem Notification Hub mit den ausgewählten Kategorien als Tags erstellt.
 
-1. Öffnen Sie die Projektdatei „MainPage.xaml“, und kopieren Sie folgenden Code in das `Grid`-Element:
+1. Öffnen Sie die Projektdatei *MainPage.xaml*, und kopieren Sie folgenden Code in das `Grid`-Element:
 
     ```xml
     <Grid>
@@ -81,7 +81,9 @@ Der erste Schritt besteht darin, der vorhandenen Hauptseite Benutzeroberflächen
     </Grid>
     ```
 
-2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und fügen Sie eine neue Klasse hinzu: **Notifications**. Fügen Sie der Klassendefinition den Modifizierer **public** und dann der neuen Codedatei die folgenden `using`-Anweisungen hinzu:
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen** > **Klasse** aus. Geben Sie unter **Neues Element hinzufügen** der Klasse den Namen *Benachrichtigungen*, und wählen Sie **Hinzufügen** aus. Fügen Sie der Klassendefinition ggf. den Modifizierer `public` hinzu.
+
+1. Fügen Sie der neuen Datei die folgenden `using`-Anweisungen hinzu:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -90,7 +92,7 @@ Der erste Schritt besteht darin, der vorhandenen Hauptseite Benutzeroberflächen
     using System.Threading.Tasks;
     ```
 
-3. Kopieren Sie den folgenden Code in die neue `Notifications`-Klasse:
+1. Kopieren Sie den folgenden Code in die neue `Notifications`-Klasse:
 
     ```csharp
     private NotificationHub hub;
@@ -134,14 +136,14 @@ Der erste Schritt besteht darin, der vorhandenen Hauptseite Benutzeroberflächen
 
     Diese Klasse verwendet den lokalen Speicher, um Nachrichtenkategorien zu speichern, die das Gerät empfangen soll. Anstelle der `RegisterNativeAsync`-Methode rufen Sie `RegisterTemplateAsync` auf, um die Registrierung für die Kategorien mithilfe einer Vorlagenregistrierung durchzuführen.
 
-    Wenn Sie mehrere Vorlagen (z.B. eine Popupbenachrichtigung und eine für Kacheln) registrieren möchten, geben Sie einen Vorlagennamen an (z.B. „simpleWNSTemplateExample“). Benennen Sie die Vorlagen so, dass Sie sie später aktualisieren oder löschen können.
+    Wenn Sie mehrere Vorlagen registrieren möchten, geben Sie einen Vorlagennamen an (z. B. *simpleWNSTemplateExample*). Benennen Sie die Vorlagen so, dass Sie sie später aktualisieren oder löschen können. Sie können mehrere Vorlagen registrieren, beispielsweise eine für Popupbenachrichtigungen und eine für Kacheln.
 
     >[!NOTE]
-    >Wenn ein Gerät mehrere Vorlagen mit demselben Tag registriert, werden bei einer eingehenden Nachricht für das entsprechende Tag mehrere Benachrichtigungen an das Gerät verschickt (eine pro Vorlage). Dies ist hilfreich, um dieselbe logische Nachricht in mehreren visuellen Darstellungen anzuzeigen (z.B. als Signal und als Popupbenachrichtigung in einer Windows Store-Anwendung).
+    > Mit Notification Hubs kann ein Gerät mehrere Vorlagen mit demselben Tag registrieren. In diesem Fall werden bei einer eingehenden Nachricht für das entsprechende Tag mehrere Benachrichtigungen an das Gerät verschickt (eine pro Vorlage). Auf diese Weise können Sie dieselbe Nachricht in mehreren visuellen Darstellungen anzeigen, z.B. als Signal und als Popupbenachrichtigung in einer Windows Store-App.
 
     Weitere Informationen finden Sie unter [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md).
 
-4. Fügen Sie in der Projektdatei „App.xaml.cs“ der Klasse `App` die folgende Eigenschaft hinzu:
+1. Fügen Sie in der Projektdatei *App.xaml.cs* der Klasse `App` die folgende Eigenschaft hinzu:
 
     ```csharp
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
@@ -149,18 +151,18 @@ Der erste Schritt besteht darin, der vorhandenen Hauptseite Benutzeroberflächen
 
     Mit dieser Eigenschaft erstellen Sie eine `Notifications`-Instanz und greifen darauf zu.
 
-    Ersetzen Sie im Code die Platzhalter `<hub name>` und `<connection string with listen access>` durch den Namen Ihres Notification Hubs und die Verbindungszeichenfolge für *DefaultListenSharedAccessSignature*, die Sie zuvor abgerufen haben.
+    Ersetzen Sie im Code die Platzhalter `<hub name>` und `<connection string with listen access>` durch den Namen Ihres Notification Hubs und die Verbindungszeichenfolge für **DefaultListenSharedAccessSignature**, die Sie zuvor abgerufen haben.
 
    > [!NOTE]
    > Da Anmeldenamen, die mit einer Client-App verteilt werden, normalerweise nicht sehr sicher sind, sollten Sie nur den Schlüssel für den *Abhörzugriff* mit Ihrer Client-App verteilen. Der Abhörzugriff ermöglicht der App, sich für Benachrichtigungen zu registrieren, aber es können keine vorhandenen Registrierungen geändert und keine Benachrichtigungen versendet werden. Der Vollzugriffsschlüssel wird in einem gesicherten Back-End-Dienst für das Versenden von Benachrichtigungen und das Ändern vorhandener Registrierungen verwendet.
 
-5. Fügen Sie in der Datei `MainPage.xaml.cs` die folgende Zeile hinzu:
+1. Fügen Sie in der Projektdatei *MainPage.xaml.cs* die folgende Zeile hinzu:
 
     ```csharp
     using Windows.UI.Popups;
     ```
 
-6. Fügen Sie in der Datei `MainPage.xaml.cs` die folgende Methode hinzu:
+1. Fügen Sie in der Projektdatei *MainPage.xaml.cs* die folgende Methode hinzu:
 
     ```csharp
     private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
@@ -190,9 +192,9 @@ Ihre App kann jetzt einen Satz von Kategorien im lokalen Speicher auf dem Gerät
 In diesem Abschnitt führen Sie die Registrierung beim Notification Hub während des Startvorgangs durch, wobei die im lokalen Speicher gespeicherten Kategorien verwendet werden.
 
 > [!NOTE]
-> Da sich der durch den Windows Notification Service (WNS) zugeteilte Kanal-URI jederzeit ändern kann, sollten Sie sich regelmäßig für Benachrichtigungen registrieren, um Benachrichtigungsfehler zu vermeiden. Dieses Beispiel registriert sich jedes Mal für Benachrichtigungen, wenn die App gestartet wird. Für häufig ausgeführte Apps (öfters als einmal täglich) können Sie die Registrierung wahrscheinlich überspringen, wenn weniger als ein Tag seit der letzten Registrierung vergangen ist, um Bandbreite einzusparen.
+> Da sich der durch den Windows Notification Service (WNS) zugeteilte Kanal-URI jederzeit ändern kann, sollten Sie sich regelmäßig für Benachrichtigungen registrieren, um Benachrichtigungsfehler zu vermeiden. Dieses Beispiel registriert sich jedes Mal für Benachrichtigungen, wenn die App gestartet wird. Für häufig ausgeführte Apps (öfters als einmal täglich) können Sie zum Einsparen von Bandbreite die Registrierung wahrscheinlich überspringen, wenn seit der letzten Registrierung weniger als ein Tag vergangen ist.
 
-1. Öffnen Sie die Datei „App.xaml.cs“, und aktualisieren Sie die `notifications`-Methode, sodass zum Abonnieren von Kategorien die `InitNotificationsAsync`-Klasse verwendet wird.
+1. Öffnen Sie die Datei *App.xaml.cs*, und aktualisieren Sie die `InitNotificationsAsync`-Methode, sodass zum Abonnieren von Kategorien die Klasse `notifications` verwendet wird.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -203,8 +205,8 @@ In diesem Abschnitt führen Sie die Registrierung beim Notification Hub während
     var result = await notifications.SubscribeToCategories();
     ```
 
-    Dadurch wird sichergestellt, dass beim Start der App die Kategorien aus dem lokalen Speicher abgerufen werden und eine Registrierung für diese Kategorien angefordert wird. Die `InitNotificationsAsync`-Methode wurde im Rahmen des Tutorials [Erste Schritte mit Notification Hubs][get-started] erstellt.
-2. Fügen Sie in der Projektdatei `MainPage.xaml.cs` der Methode `OnNavigatedTo` den folgenden Code hinzu:
+    Dadurch wird sichergestellt, dass beim Start der App die Kategorien aus dem lokalen Speicher abgerufen werden. Anschließend wird eine Registrierung für diese Kategorien angefordert. Sie haben die Methode `InitNotificationsAsync` im Rahmen des Tutorials [Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs][get-started] erstellt.
+2. Fügen Sie in der Projektdatei *MainPage.xaml.cs* der Methode `OnNavigatedTo` den folgenden Code hinzu:
 
     ```csharp
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -222,18 +224,19 @@ In diesem Abschnitt führen Sie die Registrierung beim Notification Hub während
 
     Durch diesen Code wird die Hauptseite basierend auf dem Status der zuvor gespeicherten Kategorien aktualisiert.
 
-Die App ist nun vollständig. Sie kann einen Satz von Kategorien im lokalen Speicher des Geräts speichern, der für die Registrierung beim Notification Hub verwendet wird, wenn Benutzer die Kategorieauswahl ändern. Im nächsten Abschnitt definieren Sie ein Back-End, das Kategoriebenachrichtigungen an diese App senden kann.
+Die App ist nun vollständig. Sie kann jetzt einen Satz von Kategorien im lokalen Speicher des Geräts speichern. Wenn Benutzer die Kategorieauswahl ändern, werden die gespeicherten Kategorien für die Registrierung beim Notification Hub verwendet. Im nächsten Abschnitt definieren Sie ein Back-End, das Kategoriebenachrichtigungen an diese App senden kann.
 
-## <a name="run-the-uwp-app"></a>Ausführen der UWP-App 
-1. Drücken Sie in Visual Studio die Taste **F5**, um die App zu starten. Die Benutzeroberfläche der App bietet verschiedene Umschaltmöglichkeiten, mit denen Sie die Kategorien auswählen können, die Sie abonnieren möchten.
+## <a name="run-the-uwp-app"></a>Ausführen der UWP-App
 
-    ![App für aktuelle Nachrichten](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
+1. Drücken Sie in Visual Studio F5, um die App zu kompilieren und zu starten. Die Benutzeroberfläche der App bietet verschiedene Umschaltmöglichkeiten, mit denen Sie die Kategorien auswählen können, die Sie abonnieren möchten.
 
-2. Aktivieren Sie eine oder mehrere Kategorien, und klicken Sie dann auf **Subscribe**.
+   ![App für aktuelle Nachrichten](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breaking-news.png)
 
-    Die App konvertiert die ausgewählten Kategorien in Tags, und fordert eine neue Geräteregistrierung für die ausgewählten Tags vom Notification Hub an. Die registrierten Kategorien werden zurückgegeben und in einem Dialogfeld angezeigt.
+1. Aktivieren Sie eine oder mehrere Kategorien, und wählen Sie dann **Abonnieren** aus.
 
-    ![Umschalter für Kategorien und Schaltfläche „Subscribe“ (Abonnieren)](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
+   Die App konvertiert die ausgewählten Kategorien in Tags, und fordert eine neue Geräteregistrierung für die ausgewählten Tags vom Notification Hub an. In der App werden die registrierten Kategorien in einem Dialogfeld angezeigt.
+
+    ![Umschalter für Kategorien und Schaltfläche „Subscribe“ (Abonnieren)](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast.png)
 
 ## <a name="create-a-console-app-to-send-tagged-notifications"></a>Erstellen einer Konsolen-App zum Senden von Benachrichtigungen mit Tags
 
@@ -241,18 +244,14 @@ Die App ist nun vollständig. Sie kann einen Satz von Kategorien im lokalen Spei
 
 ## <a name="run-the-console-app-to-send-tagged-notifications"></a>Ausführen der Konsolen-App zum Senden von Benachrichtigungen mit Tags
 
-1. Führen Sie die im vorherigen Abschnitt erstellte App aus.
-2. Die Benachrichtigungen für die ausgewählten Kategorien werden als Popupbenachrichtigungen angezeigt. Wenn Sie die Benachrichtigung auswählen, wird das erste UWP-App-Fenster angezeigt. 
-
-     ![Popupbenachrichtigungen](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
-
+Führen Sie die im vorherigen Abschnitt erstellte App aus. Die Benachrichtigungen für die ausgewählten Kategorien werden als Popupbenachrichtigungen angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie erfahren, wie aktuelle Nachrichten nach Kategorie übermittelt werden. Die Back-End-Anwendung sendet Benachrichtigungen mit Tags an Geräte, die sich für den Empfang von Benachrichtigungen für dieses Tag registriert haben. Um zu erfahren, wie Sie Pushbenachrichtigungen an bestimmte Benutzer senden, unabhängig davon, welche Geräte sie verwenden, fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Senden von lokalisierten Pushbenachrichtigungen](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
+> [Tutorial: Senden von lokalisierten Pushbenachrichtigungen an Windows-Apps mit Azure Notification Hubs](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 
 <!-- Anchors. -->
 [Add category selection to the app]: #adding-categories

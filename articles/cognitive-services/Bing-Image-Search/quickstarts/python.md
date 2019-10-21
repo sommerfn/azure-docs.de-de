@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034625"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390118"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und Python
 
@@ -67,12 +67,13 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Rufen Sie mithilfe der Bibliothek `requests` die Bing-Bildersuche-API auf. Fügen Sie der Anforderung Ihren Header und die Parameter hinzu, und geben Sie die Antwort als JSON-Objekt zurück. 
+2. Rufen Sie mithilfe der Bibliothek `requests` die Bing-Bildersuche-API auf. Fügen Sie der Anforderung Ihren Header und die Parameter hinzu, und geben Sie die Antwort als JSON-Objekt zurück. Die URLs zu verschiedenen Miniaturbildern können Sie aus dem Feld `thumbnailUrl` der Antwort abrufen.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
     search_results = response.json()
+    thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
     ```
 
 ## <a name="view-the-response"></a>Anzeigen der Antwort
@@ -80,6 +81,8 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
 1. Erstellen Sie mithilfe der matplotlib-Bibliothek eine neue Abbildung mit vier Spalten und vier Zeilen. 
 
 2. Durchlaufen Sie die Zeilen und Spalten der Abbildung, und fügen Sie jedem Bereich mithilfe der Methode `Image.open()` der PIL-Bibliothek ein Miniaturbild hinzu. 
+
+3. Verwenden Sie `plt.show()`, um die Abbildung zu zeichnen und die Bilder anzuzeigen.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -90,9 +93,9 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
             image = Image.open(BytesIO(image_data.content))        
             axes[i][j].imshow(image)
             axes[i][j].axis("off")
+    plt.show()
     ```
 
-3. Verwenden Sie `plt.show()`, um die Abbildung zu zeichnen und die Bilder anzuzeigen.
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

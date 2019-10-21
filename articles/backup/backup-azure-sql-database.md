@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1482ac4b885507e37ba5972065810682c19bebed
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 202d608e5d994cabd3d7e2e9a0887c8aab75af31
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958458"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72437825"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -24,7 +24,7 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 
 * Nachdem Sie die SQL Server-VM angegeben haben, die Sie schützen und deren Datenbanken Sie abfragen möchten, installiert der Azure Backup-Dienst eine Erweiterung zur Workloadsicherung mit dem Namen `AzureBackupWindowsWorkload` auf dem virtuellen Computer.
 * Diese Erweiterung besteht aus einem Koordinator und einem SQL-Plug-In. Während der Koordinator für das Auslösen von Workflows für verschiedene Vorgänge wie Konfigurieren der Sicherung, Sicherung und Wiederherstellung zuständig ist, ist das Plug-In für den tatsächlichen Datenfluss verantwortlich.
-* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Azure Backup verwendet das Konto `NT AUTHORITY\SYSTEM` für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen. Wenn Sie den virtuellen SQL Server-Computer nicht in Azure Marketplace erstellt haben, erhalten Sie möglicherweise den Fehler **UserErrorSQLNoSysadminMembership**. Gehen Sie in diesem Fall [wie folgt vor](#set-vm-permissions):
+* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Bei dem Konto `NT SERVICE\AzureWLBackupPluginSvc` handelt es sich um ein [virtuelles Dienstkonto](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), daher ist keine Kennwortverwaltung erforderlich. Azure Backup verwendet das Konto `NT AUTHORITY\SYSTEM` für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen. Wenn Sie den virtuellen SQL Server-Computer nicht in Azure Marketplace erstellt haben, erhalten Sie möglicherweise den Fehler **UserErrorSQLNoSysadminMembership**. Gehen Sie in diesem Fall [wie folgt vor](#set-vm-permissions):
 * Sobald Sie die Konfiguration des Schutzes der ausgewählten Datenbanken auslösen, richtet der Sicherungsdienst den Koordinator mit den Sicherungszeitplänen und anderen Richtliniendetails ein, die die Erweiterung lokal auf dem virtuellen Computer zwischenspeichert.
 * Zum geplanten Zeitpunkt kommuniziert der Koordinator mit dem Plug-In, und es startet das Streaming der Sicherungsdaten von der SQL Server-Instanz mit VDI.  
 * Das Plug-In sendet die Daten direkt an den Recovery Services-Tresor, sodass kein Stagingspeicherort erforderlich ist. Die Daten werden verschlüsselt und vom Azure Backup-Dienst in Speicherkonten gespeichert.
@@ -62,32 +62,33 @@ Dieses Feature wird den Benutzern erst dann in Rechnung gestellt, wenn es allgem
 
 ## <a name="feature-consideration-and-limitations"></a>Funktionsaspekte und Einschränkungen
 
-- SQL Server-Sicherung kann im Azure-Portal oder mit **PowerShell** konfiguriert werden. CLI wird nicht unterstützt.
-- Die Lösung wird für beide Arten von [Bereitstellungen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) unterstützt: Azure Resource Manager-VMs und klassische VMs.
-- Der virtuelle Computer, auf dem SQL Server ausgeführt wird, benötigt eine Internetverbindung, um auf öffentliche IP-Adressen von Azure zuzugreifen.
-- Die **Failoverclusterinstanz (FCI)** für SQL Server und die Failoverclusterinstanz für SQL Server Always On werden nicht unterstützt.
-- Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
-- Die Verwendung mehrerer Sicherungslösungen zum Sichern Ihrer eigenständigen SQL Server-Instanz oder SQL Always On-Verfügbarkeitsgruppe kann zu Fehlern bei der Sicherung führen. Es ist daher ratsam, von dieser Vorgehensweise abzusehen.
-- Das Sichern von zwei Knoten einer Verfügbarkeitsgruppe mit derselben Lösung oder anderen Lösungen kann auch zu Fehlern bei der Sicherung führen.
-- Azure Backup unterstützt für **schreibgeschützte** Datenbanken nur die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“.
-- Datenbanken mit einer großen Anzahl von Dateien können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien beträgt **~1.000**.  
-- Sie können bis zu **~2.000** SQL Server-Datenbanken in einem Tresor sichern. Sie können mehrere Tresore erstellen, falls Sie über eine größere Anzahl von Datenbanken verfügen.
-- Sie können die Sicherung für bis zu **50** Datenbanken auf einmal konfigurieren; diese Einschränkung trägt dazu bei, Sicherungslasten zu optimieren.
-- Wir unterstützen Datenbanken bis zu einer Größe von **2 TB**. Über 2 TB treten unter Umständen Leistungsprobleme auf.
-- Um einen Eindruck davon zu bekommen, wie viele Datenbanken pro Server geschützt werden können, müssen wir Faktoren wie z.B. Bandbreite, VM-Größe, Sicherungshäufigkeit, Datenbankgröße usw. berücksichtigen. Laden Sie den Ressourcenplaner [hier](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) herunter. Er enthält die ungefähre Anzahl von Datenbanken, die basierend auf den VM-Ressourcen pro Server zulässig sind, sowie die Sicherungsrichtlinie.
-- Bei Verfügbarkeitsgruppen werden Sicherungen basierend auf einigen Faktoren auf den verschiedenen Knoten erstellt. Das Sicherungsverhalten für eine Verfügbarkeitsgruppe ist unten zusammengefasst.
+* SQL Server-Sicherung kann im Azure-Portal oder mit **PowerShell** konfiguriert werden. CLI wird nicht unterstützt.
+* Die Lösung wird für beide Arten von [Bereitstellungen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) unterstützt: Azure Resource Manager-VMs und klassische VMs.
+* Der virtuelle Computer, auf dem SQL Server ausgeführt wird, benötigt eine Internetverbindung, um auf öffentliche IP-Adressen von Azure zuzugreifen.
+* Die **Failoverclusterinstanz (FCI)** für SQL Server und die Failoverclusterinstanz für SQL Server Always On werden nicht unterstützt.
+* Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
+* Die Verwendung mehrerer Sicherungslösungen zum Sichern Ihrer eigenständigen SQL Server-Instanz oder SQL Always On-Verfügbarkeitsgruppe kann zu Fehlern bei der Sicherung führen. Es ist daher ratsam, von dieser Vorgehensweise abzusehen.
+* Das Sichern von zwei Knoten einer Verfügbarkeitsgruppe mit derselben Lösung oder anderen Lösungen kann auch zu Fehlern bei der Sicherung führen.
+* Azure Backup unterstützt für **schreibgeschützte** Datenbanken nur die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“.
+* Datenbanken mit einer großen Anzahl von Dateien können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien beträgt **~1.000**.  
+* Sie können bis zu **~2.000** SQL Server-Datenbanken in einem Tresor sichern. Sie können mehrere Tresore erstellen, falls Sie über eine größere Anzahl von Datenbanken verfügen.
+* Sie können die Sicherung für bis zu **50** Datenbanken auf einmal konfigurieren; diese Einschränkung trägt dazu bei, Sicherungslasten zu optimieren.
+* Wir unterstützen Datenbanken bis zu einer Größe von **2 TB**. Über 2 TB treten unter Umständen Leistungsprobleme auf.
+* Um einen Eindruck davon zu bekommen, wie viele Datenbanken pro Server geschützt werden können, müssen wir Faktoren wie z.B. Bandbreite, VM-Größe, Sicherungshäufigkeit, Datenbankgröße usw. berücksichtigen. Laden Sie den Ressourcenplaner [hier](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) herunter. Er enthält die ungefähre Anzahl von Datenbanken, die basierend auf den VM-Ressourcen pro Server zulässig sind, sowie die Sicherungsrichtlinie.
+* Bei Verfügbarkeitsgruppen werden Sicherungen basierend auf einigen Faktoren auf den verschiedenen Knoten erstellt. Das Sicherungsverhalten für eine Verfügbarkeitsgruppe ist unten zusammengefasst.
 
 ### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Sicherungsverhalten von Always On-Verfügbarkeitsgruppen
 
 Es wird empfohlen, die Sicherung nur auf einem Knoten der Verfügbarkeitsgruppe zu konfigurieren. Die Sicherung sollte immer in derselben Region wie der primäre Knoten konfiguriert werden. Anders ausgedrückt: Der primäre Knoten muss immer in der Region vorhanden sein, in der Sie die Sicherung konfigurieren. Wenn sich alle Knoten der Verfügbarkeitsgruppe in derselben Region befinden, in der die Sicherung konfiguriert ist, ist alles in Ordnung.
 
-**Für regionsübergreifende Verfügbarkeitsgruppe**
-- Unabhängig von der Sicherungseinstellung werden Sicherungen nicht für die Knoten durchgeführt, die sich nicht in derselben Region befinden, in der die Sicherung konfiguriert ist. Dies liegt daran, dass regionsübergreifende Sicherungen nicht unterstützt werden. Wenn Sie nur über zwei Knoten verfügen und sich der sekundäre Knoten in der anderen Region befindet: In diesem Fall werden die Sicherungen weiterhin über den primären Knoten durchgeführt (sofern Ihre Sicherungseinstellung nicht „Nur sekundär“ lautet).
-- Wenn ein Failover in einer anderen Region als der Region durchgeführt wird, in der die Sicherung konfiguriert ist, tritt für Sicherungen auf den Knoten in der Failoverregion ein Fehler auf.
+#### <a name="for-cross-region-ag"></a>Für regionsübergreifende Verfügbarkeitsgruppe
+
+* Unabhängig von der Sicherungseinstellung werden Sicherungen nicht für die Knoten durchgeführt, die sich nicht in derselben Region befinden, in der die Sicherung konfiguriert ist. Dies liegt daran, dass regionsübergreifende Sicherungen nicht unterstützt werden. Wenn Sie nur über zwei Knoten verfügen und sich der sekundäre Knoten in der anderen Region befindet: In diesem Fall werden die Sicherungen weiterhin über den primären Knoten durchgeführt (sofern Ihre Sicherungseinstellung nicht „Nur sekundär“ lautet).
+* Wenn ein Failover in einer anderen Region als der Region durchgeführt wird, in der die Sicherung konfiguriert ist, tritt für Sicherungen auf den Knoten in der Failoverregion ein Fehler auf.
 
 Abhängig von der Sicherungseinstellung und den Sicherungstypen (Vollständig/Differenziell/Protokoll/Nur vollständig kopieren) werden die Sicherungen von einem bestimmten Knoten (Primär/Sekundär) erstellt.
 
-- **Sicherungseinstellung: Primär**
+* **Sicherungseinstellung: Primär**
 
 **Sicherungstyp** | **Node**
     --- | ---
@@ -96,7 +97,7 @@ Abhängig von der Sicherungseinstellung und den Sicherungstypen (Vollständig/Di
     Protokoll |  Primär
     Nur vollständig kopieren |  Primär
 
-- **Sicherungseinstellung: Nur sekundär**
+* **Sicherungseinstellung: Nur sekundär**
 
 **Sicherungstyp** | **Node**
 --- | ---
@@ -105,7 +106,7 @@ Differenziell | Primär
 Protokoll |  Sekundär
 Nur vollständig kopieren |  Sekundär
 
-- **Sicherungseinstellung: Sekundär**
+* **Sicherungseinstellung: Sekundär**
 
 **Sicherungstyp** | **Node**
 --- | ---
@@ -114,7 +115,7 @@ Differenziell | Primär
 Protokoll |  Sekundär
 Nur vollständig kopieren |  Sekundär
 
-- **Keine Sicherungseinstellung**
+* **Keine Sicherungseinstellung**
 
 **Sicherungstyp** | **Node**
 --- | ---
@@ -227,7 +228,6 @@ catch
     Write-Host $_.Exception|format-list -force
 }
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

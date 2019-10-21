@@ -1,19 +1,19 @@
 ---
-title: Erstellen und Bereitstellen von Smart Contracts mit Azure Blockchain Service mithilfe von Visual Studio Code
+title: 'Verwenden von Visual Studio Code: Azure Blockchain Service'
 description: Tutorial zur Verwendung des Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code zum Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935002"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329240"
 ---
 # <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Tutorial: Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code
 

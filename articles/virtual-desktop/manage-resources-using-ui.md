@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679486"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300901"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Bereitstellen eines Verwaltungstools
 
@@ -26,6 +26,12 @@ Das Verwaltungstool umfasst eine Benutzeroberfläche zum Verwalten von Microsoft
 Da für die App die Einwilligung für die Interaktion mit Windows Virtual Desktop erforderlich ist, unterstützt dieses Tool keine Business-to-Business-Szenarien (B2B). Das Verwaltungstool muss für jedes Abonnement des Azure Active Directory-Mandanten (AAD) separat bereitgestellt werden.
 
 Dieses Verwaltungstool ist ein Beispiel. Microsoft stellt wichtige Sicherheits- und Qualitätsupdates zur Verfügung. Der [Quellcode steht auf GitHub zur Verfügung](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Kunden und Partnern wird empfohlen, das Tool an ihre Geschäftsanforderungen anzupassen.
+
+Die folgenden Browser sind mit dem Verwaltungstool kompatibel:
+- Google Chrome 68 oder höher
+- Microsoft Edge 40.15063 oder höher
+- Mozilla Firefox 52.0 oder höher
+- Safari 10 oder höher (nur macOS)
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Benötigte Komponenten zum Ausführen der Azure Resource Manager-Vorlage
 

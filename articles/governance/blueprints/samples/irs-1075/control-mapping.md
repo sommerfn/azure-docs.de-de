@@ -1,17 +1,17 @@
 ---
-title: 'Beispiel: ISO 1075-Blaupause – Steuerungszuordnung'
-description: Zuordnung der Steuerungen des ISO 1075-Blaupausenbeispiels zu Azure Policy
+title: IRS 1075-Blaupausenbeispiel – Steuerungszuordnung
+description: Steuerungszuordnung des IRS 1075-Blaupausenbeispiels Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 97705c9ef40b6ab1f468b9fad62d3b7afaef02a9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: f204cf86b0415520160b11e97c0994a2f7891964
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978342"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297736"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Zuordnung der Steuerungen des ISO 1075-Blaupausenbeispiels
 

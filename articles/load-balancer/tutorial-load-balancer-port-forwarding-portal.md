@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: ee4ed818364d04f03caedc8b876ea29c41cb59b7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: aa4837ec1fd8ef19eb6d0c77f946ef358becd542
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273450"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428227"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
 
@@ -235,6 +235,7 @@ Erstellen Sie eine Netzwerkadressübersetzung-Eingangsregel (NAT) für den Laste
    - **Name**: Geben Sie *MyNATRuleVM1* ein.
    - **Port**: Geben Sie *4221* ein.
    - **Virtueller Zielcomputer**: Wählen Sie **MyVM1** aus der Dropdownliste aus.
+   - **Netzwerk-IP-Konfiguration**: Wählen Sie **ipconfig1** aus der Dropdownliste aus.
    - **Portzuordnung**: Wählen Sie **Benutzerdefiniert** aus.
    - **Zielport**: Geben Sie *3389* ein.
    

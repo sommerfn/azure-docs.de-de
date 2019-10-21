@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aafec48f86ee032b112e9bb1100f82fbb3b363ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6368a36eaa2e6832f22a13f20bc35d66c4425b4b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170488"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311580"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit der Azure CLI
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
@@ -98,6 +98,8 @@ az vm generalize --resource-group myResourceGroup --name myVM
 Es kann einige Minuten dauern, die Zuordnung der VM aufzuheben und sie zu generalisieren.
 
 Erstellen Sie jetzt mit [az image create](/cli//azure/image) ein Image aus der VM. Im folgenden Beispiel wird ein Image mit dem Namen *myImage* aus Ihrer VM erstellt:
+
+> [HINWEIS] Werden für die Ressourcengruppe und den virtuellen Computer unterschiedliche Standorte verwendet, können Sie den unten angegebenen Befehlen den Parameter `--location` hinzufügen, um den Standort der Quell-VM anzugeben, mit der das Image erstellt wurde. 
 
 ```azurecli-interactive
 az image create \

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074141"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264406"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Zugriff auf die Vorschauversion der Formularerkennung mit eingeschränktem Zugriff. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es.
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
-- Einen Satz von mindestens fünf Formularen des gleichen Typs. Zum Trainieren des Modells verwenden Sie diese Daten. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Daten in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
+- Einen Satz von mindestens fünf Formularen des gleichen Typs. Zum Trainieren des Modells verwenden Sie diese Daten. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -115,7 +115,7 @@ Notieren Sie den Wert von `"modelId"`. Sie benötigen ihn in den folgenden Schri
 Als Nächstes analysieren Sie ein Dokument und extrahieren daraus Schlüssel-Werte-Paare und Tabellen. Rufen Sie die API **Model – Analyze** auf, indem Sie das nachstehende Python-Skript ausführen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Formularerkennungsressource.
-1. Ersetzen Sie `<path to your form>` mit dem Dateipfad des Formulars (z.B. „C:\temp\file.pdf“).
+1. Ersetzen Sie `<path to your form>` mit dem Dateipfad des Formulars (z.B. „C:\temp\file.pdf“). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Test** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden.
 1. Ersetzen Sie `<modelID>` durch die Modell-ID, die Sie im vorherigen Abschnitt erhalten haben.
 1. Ersetzen Sie `<file type>` durch den Dateityp. Unterstützte Typen: `application/pdf`, `image/jpeg`, `image/png`.
 1. Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
