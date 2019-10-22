@@ -53,8 +53,6 @@
       href: supported-languages.md
     - name: Unterstützte Kartenstile
       href: supported-map-styles.md
-    - name: 'Web SDK: unterstützte Browser'
-      href: supported-browsers.md
     - name: Zoomfaktoren und Linienraster
       href: zoom-levels-and-tile-grid.md
     - name: Mobility Service-Datenstruktur
@@ -147,6 +145,8 @@
               href: map-get-information-from-coordinate.md
             - name: Anzeigen einer Wegbeschreibung von A nach B
               href: map-route.md
+        - name: 'Web SDK: unterstützte Browser'
+          href: supported-browsers.md
     - name: Entwickeln mit dem Android SDK
       items:
         - name: Erste Schritte mit dem Android-Kartensteuerelement

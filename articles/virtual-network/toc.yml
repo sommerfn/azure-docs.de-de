@@ -103,6 +103,8 @@
                   href: virtual-network-ipv4-ipv6-dual-stack-cli.md
                 - name: Resource Manager-Vorlage
                   href: ipv6-configure-template-json.md
+            - name: Direktes Upgrade
+              href: ipv6-add-to-existing-vnet-powershell.md
             - name: Öffentliche Load Balancer-Instanz im Tarif „Standard“
               items:
                 - name: Azure PowerShell

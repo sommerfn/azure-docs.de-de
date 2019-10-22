@@ -121,15 +121,8 @@
           href: paas-applications-using-storage.md
         - name: 'DB: Bewährte Methoden für PaaS'
           href: paas-applications-using-sql.md
-    - name: IoT
-      href: iot-overview.md
     - name: Azure Service Fabric-Sicherheit
-      href: service-fabric-overview.md
-      items:
-        - name: Bewährte Methoden
-          href: service-fabric-best-practices.md
-        - name: Checkliste für die Sicherheit
-          href: service-fabric-checklist.md
+      href: service-fabric-best-practices.md
 - name: 'Überwachung, Überprüfung und Vorgänge'
   href: management-monitoring-overview.md
   items:
