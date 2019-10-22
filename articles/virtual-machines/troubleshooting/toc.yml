@@ -127,12 +127,18 @@
   href: storage-resource-deletion-errors.md
 - name: Fehler beim Löschen von klassischen Speicherressourcen
   href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: Unerwartete Neustarts von virtuellen Computern mit angefügten VHDs
-  href: unexpected-reboots-attached-vhds.md
-- name: Probleme bei der Windows-Aktivierung
-  href: troubleshoot-activation-problems.md
-- name: Aktivierungsproblem mit erzwungenem Tunneln
-  href: custom-routes-enable-kms-activation.md
+- name: Behandeln von VM-Neustartproblemen
+  items:
+    - name: Unerwartete Neustarts von virtuellen Computern mit angefügten VHDs
+      href: unexpected-reboots-attached-vhds.md
+    - name: Informationen zum Systemneustart
+      href: understand-vm-reboot.md
+- name: Aktivierung von Windows
+  items:
+    - name: Probleme bei der Windows-Aktivierung
+      href: troubleshoot-activation-problems.md
+    - name: Aktivierungsproblem mit erzwungenem Tunneln
+      href: custom-routes-enable-kms-activation.md
 - name: Probleme beim Anwendungszugriff
   href: troubleshoot-app-connection.md
 - name: Neue VM-Bereitstellungen
@@ -188,8 +194,6 @@
   href: troubleshooting-throttling-errors.md
 - name: Verwenden der geschachtelten Virtualisierung
   href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Informationen zum Systemneustart
-  href: understand-vm-reboot.md
 - name: Tools für die Remoteproblembehandlung
   href: remote-tools-troubleshoot-azure-vm-issues.md
 - name: Reparatur virtueller Computer

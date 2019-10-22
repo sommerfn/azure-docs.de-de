@@ -297,7 +297,15 @@
         - name: Dateneingabe und -ausgabe
           items:
             - name: Importieren von Daten
-              href: ../algorithm-module-reference/import-data.md
+              items:
+                - name: Importieren von Daten
+                  href: ../algorithm-module-reference/import-data.md
+                - name: Importieren aus Web-URL über HTTP
+                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
+                - name: Importieren aus einem Azure Blob Storage-Modul
+                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
+                - name: Importieren aus Azure SQL-Datenbank
+                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: Exportieren von Daten
               href: ../algorithm-module-reference/export-data.md
             - name: Manuelle Eingabe von Daten
@@ -330,6 +338,10 @@
               href: ../algorithm-module-reference/normalize-data.md
             - name: Partition und Beispiel
               href: ../algorithm-module-reference/partition-and-sample.md
+            - name: Beschneiden von Werten
+              href: ../algorithm-module-reference/clip-values.md
+            - name: Anwenden der SQL-Transformation
+              href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: Machine Learning
           items:
             - name: Bewerten eines Modells
@@ -382,6 +394,12 @@
               href: ../algorithm-module-reference/create-python-model.md
             - name: Execute R Script
               href: ../algorithm-module-reference/execute-r-script.md
+        - name: Statistische Funktionen
+          items:
+            - name: Anwenden einer mathematischen Operation
+              href: ../algorithm-module-reference/apply-math-operation.md
+            - name: Zusammenfassen von Daten
+              href: ../algorithm-module-reference/summarize-data.md
         - name: Fehlermeldungen und Codes
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: Ressourcen
