@@ -5,18 +5,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 895ce98f290ce23580bb70023e2539ab4272f8b8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350271"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383510"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Unterstützungsmatrix für die Replikation von Azure-VMs von einer Region in eine andere
 
-Dieser Artikel fasst die Unterstützung und die Voraussetzungen zusammen, wenn Sie Notfallwiederherstellung von Azure-VMs aus einer Azure-Region in einer anderen mit dem Dienst [Azure Site Recovery](site-recovery-overview.md) einrichten.
+Dieser Artikel fasst die Unterstützung und die Voraussetzungen für die Notfallwiederherstellung von Azure-VMs aus einer Azure-Region in einer anderen mit dem Dienst [Azure Site Recovery](site-recovery-overview.md) zusammen.
 
 
 ## <a name="deployment-method-support"></a>Unterstützung für die Bereitstellungsmethode
@@ -32,7 +32,7 @@ Dieser Artikel fasst die Unterstützung und die Voraussetzungen zusammen, wenn S
 ## <a name="resource-support"></a>Ressourcenunterstützung
 
 **Ressourcenaktion** | **Details**
---- | --- | ---
+--- | --- 
 **Tresore über Ressourcengruppen hinweg verschieben** | Nicht unterstützt
 **Verschieben von Compute-, Speicher- und Netzwerkressourcen über Ressourcengruppen hinweg** | Nicht unterstützt.<br/><br/> Wenn Sie eine VM oder zugehörige Komponenten wie Speicher bzw. Netzwerke verschieben, nachdem die VM repliziert wurde, müssen Sie die Replikation für die VM deaktivieren und dann wieder aktivieren.
 **Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
@@ -58,7 +58,7 @@ Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des L
 >[!NOTE]
 >
 > - Für **Brasilien, Süden** können Sie eine Replikation und ein Failover zu diesen Regionen durchführen: USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2 und USA, Norden-Mitte.
-> - „Brasilien Süd“ kann nur als Quellregion verwendet werden, von der aus virtuelle Computer mithilfe von Site Recovery replizieren können. Es kann nicht als Zielregion dienen. Dies liegt an Latenzproblemen aufgrund der geografischen Entfernungen.
+> - „Brasilien Süd“ kann nur als Quellregion verwendet werden, von der aus virtuelle Computer mithilfe von Site Recovery replizieren können. Es kann nicht als Zielregion dienen. Dies liegt an Latenzproblemen aufgrund der geografischen Entfernungen. Beachten Sie Folgendes: Wenn Sie ein Failover von „Brasilien, Süden“ als Quellregion zu einem Ziel ausführen, wird ein Failback zu „Brasilien, Süden“ aus der Zielregion unterstützt.
 > - Sie können innerhalb von Regionen arbeiten, auf die Sie entsprechenden Zugriff haben.
 > - Wenn Sie die Region nicht sehen können, in der Sie einen Tresor erstellen möchten, dann stellen Sie sicher, dass Ihr Abonnement in dieser Region Zugriff auf das Erstellen von Ressourcen hat.
 > - Wenn Sie beim Aktivieren der Replikation eine Region in einem geografischen Cluster nicht sehen können, stellen Sie sicher, dass Ihr Abonnement über Berechtigungen zum Erstellen von virtuellen Computern in dieser Region verfügt.
@@ -82,17 +82,21 @@ Site Recovery unterstützt die Replikation von Azure-VMs, auf denen die in diese
 
 ### <a name="windows"></a>Windows
 
+
 **Betriebssystem** | **Details**
 --- | ---
-Windows Server 2019 | Server Core, Server mit Desktopdarstellung
-Windows Server 2016  | Server Core, Server mit Desktopdarstellung
-Windows Server 2012 R2 |
-Windows Server 2012 |
-Windows Server 2008 R2 | Mit SP1 oder höher
-Windows 10 (x64) |
-Windows 8.1 (x64) |
-Windows 8 (x64) |
-Windows 7 (x64) | Mit SP1 oder höher (Windows 7 RTM wird nicht unterstützt)
+Windows Server 2019 | Unterstützt für Server Core, Server mit Desktopdarstellung.
+Windows Server 2016  | Unterstützt für Server Core, Server mit Desktopdarstellung.
+Windows Server 2012 R2 | Unterstützt.
+Windows Server 2012 | Unterstützt.
+Windows Server 2008 R2 mit SP1/SP2 | Unterstützt.<br/><br/> Ab Version 9.30.x.x (Veröffentlichung vermutlich Anfang November 2019) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen Sie eine [Windows-Wartungsstapelaktualisierung (SSU)](https://support.microsoft.com/help/4490628) und ein [SHA-2-Update](https://support.microsoft.com/help/4474419) auf Computern installieren, die unter Windows Server 2008 R2 SP1/SP2 ausgeführt werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+Windows Server 2008 mit SP2 | Ab Version 9.30.x.x (Veröffentlichung vermutlich Anfang November 2019) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen Sie eine [Windows-Wartungsstapelaktualisierung (SSU)](https://support.microsoft.com/help/4493730) und ein [SHA-2-Update](https://support.microsoft.com/help/4474419) auf Computern installieren, die unter Windows Server 2008 SP2 mit SP2 ausgeführt werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+Windows 10 (x64) | Unterstützt.
+Windows 8.1 (x64) | Unterstützt.
+Windows 8 (x64) | Unterstützt.
+Windows 7 (x64) mit SP1 und höher | Ab Version 9.30.x.x (Veröffentlichung vermutlich Anfang November 2019) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen Sie eine [Windows-Wartungsstapelaktualisierung (SSU)](https://support.microsoft.com/help/4490628) und ein [SHA-2-Update](https://support.microsoft.com/help/4474419) auf Computern installieren, die unter Windows 7 mit SP1 ausgeführt werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+
+
 
 #### <a name="linux"></a>Linux
 

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: f297c89d2c3ba5692a44fab631c0d46c75f48692
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1b056ce8afe86fcd6629aff23ac95acae02ed9ba
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033580"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299866"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindungen für Durable Functions (Azure Functions)
 
@@ -373,62 +373,62 @@ Alle Zustandsänderungen, die während der Ausführung an einer Entität vorgeno
 
 Jede Entitätsfunktion weist den Parametertyp `IDurableEntityContext` auf, der über die folgenden Member verfügt:
 
-* **EntityName**: Ruft den Namen der derzeit ausgeführten Entität ab.
-* **EntityKey**: Ruft den Schlüssel der derzeit ausgeführten Entität ab.
-* **EntityId**: Ruft die ID der derzeit ausgeführten Entität ab.
-* **OperationName**: Ruft den Namen des aktuellen Vorgangs ab.
-* **IsNewlyConstructed**: Gibt `true` zurück, wenn die Entität vor dem Vorgang noch nicht vorhanden war.
-* **GetState\<TState>()** : Ruft den aktuellen Zustand der Entität ab. Der `TState`-Parameter muss ein primitiver oder JSON-serialisierbarer Typ sein.
-* **SetState(object)** : Aktualisiert den Zustand der Entität. Der `object`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
-* **GetInput\<TInput>()** : Ruft die Eingabe für den aktuellen Vorgang ab. Der `TInput`-Typparameter muss einen primitiven oder JSON-serialisierbaren Typ darstellen.
-* **Return(object)** : Gibt einen Wert an die Orchestrierung zurück, die den Vorgang aufgerufen hat. Der `object`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
-* **DestructOnExit()** : Löscht die Entität nach Abschluss des aktuellen Vorgangs.
-* **SignalEntity(EntityId, string, object)** : Sendet eine unidirektionale Nachricht an eine Entität. Der `object`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
+* **EntityName**: Der Name der derzeit ausgeführten Entität.
+* **EntityKey**: Der Schlüssel der derzeit ausgeführten Entität.
+* **EntityId**: Die ID der derzeit ausgeführten Entität.
+* **OperationName**: Der Name des aktuellen Vorgangs.
+* **HasState**: Gibt an, ob die Entität vorhanden ist, also über einen Zustand verfügt. 
+* **GetState\<TState>()** : Ruft den aktuellen Zustand der Entität ab. Dieses Element wird erstellt und auf `default<TState>` initialisiert, falls es noch nicht vorhanden ist. Der `TState`-Parameter muss ein primitiver oder JSON-serialisierbarer Typ sein. 
+* **GetState\<TState>(initfunction)** : Ruft den aktuellen Zustand der Entität ab. Falles es noch nicht vorhanden ist, wird dieses Element durch Aufrufen des angegebenen `initfunction`-Parameters erstellt. Der `TState`-Parameter muss ein primitiver oder JSON-serialisierbarer Typ sein. 
+* **SetState(arg)** : Erstellt oder aktualisiert den Zustand der Entität. Der `arg`-Parameter muss ein JSON-serialisierbares Objekt oder ein Primitiv sein.
+* **DeleteState()** : Löscht den Zustand der Entität. 
+* **GetInput\<TInput>()** : Ruft die Eingabe für den aktuellen Vorgang ab. Der `TInput`-Typparameter muss ein primitiver oder JSON-serialisierbarer Typ sein.
+* **Return(arg)** : Gibt einen Wert an die Orchestrierung zurück, die den Vorgang aufgerufen hat. Der `arg`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
+* **SignalEntity(EntityId, operation, input)** : Sendet eine unidirektionale Nachricht an eine Entität. Der `operation`-Parameter muss eine Zeichenfolge ungleich bzw. nicht Null sein, und der `input`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
+* **CreateNewOrchestration(orchestratorFunctionName, input)** : Startet eine neue Orchestrierung. Der `input`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
 
-Wenn Sie den klassenbasierten Entitätsprogrammiermodus verwenden, kann auf das `IDurableEntityContext`-Objekt mithilfe der threadstatischen Eigenschaft `Entity.Current` verwiesen werden.
+Auf das an die Entitätsfunktion übergebene `IDurableEntityContext`-Objekt kann mithilfe der asynchronen lokalen `Entity.Current`-Eigenschaft zugegriffen werden. Diese Vorgehensweise ist praktisch, wenn Sie das klassenbasierte Programmiermodell verwenden.
 
-### <a name="trigger-sample---entity-function"></a>Triggerbeispiel: Entitätsfunktion
+### <a name="trigger-sample-function-based-syntax"></a>Triggerbeispiel (funktionsbasierte Syntax)
 
-Der folgende Code ist ein Beispiel für eine einfache *Counter*-Entität (Zähler), die als Standardfunktion implementiert ist. Diese Funktion definiert drei *Vorgänge*, `add`, `reset` und `get`, von denen jeder einen ganzzahligen Zustandswert `currentValue` verarbeitet.
+Der folgende Code ist ein Beispiel für eine einfache Entität vom Typ *Counter*, die als dauerhafte Funktion implementiert wird. Diese Funktion definiert drei Vorgänge (`add`, `reset` und `get`), die jeweils auf einem ganzzahligen Zustand basieren.
 
 ```csharp
-[FunctionName(nameof(Counter))]
+[FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
-    int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
-            int amount = ctx.GetInput<int>();
-            currentValue += operand;
+            ctx.SetState(ctx.GetState<int>() + ctx.GetInput<int>());
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(currentValue);
+            ctx.Return(ctx.GetState<int>()));
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-### <a name="trigger-sample---entity-class"></a>Triggerbeispiel: Entitätsklasse
+Weitere Informationen zur funktionsbasierten Syntax sowie zu deren Verwendung finden Sie unter [Funktionsbasierte Syntax](durable-functions-dotnet-entities.md#function-based-syntax).
 
-Beim folgenden Beispiel handelt es sich um eine äquivalente Implementierung der vorherigen `Counter`-Entität unter Verwendung von .NET-Klassen und -Methoden.
+### <a name="trigger-sample-class-based-syntax"></a>Triggerbeispiel (klassenbasierte Syntax)
+
+Beim folgenden Beispiel handelt es sich um eine äquivalente Implementierung der Entität `Counter` unter Verwendung von Klassen und Methoden:
 
 ```csharp
+[JsonObject(MemberSerialization.OptIn)]
 public class Counter
 {
     [JsonProperty("value")]
     public int CurrentValue { get; set; }
 
     public void Add(int amount) => this.CurrentValue += amount;
-    
+
     public void Reset() => this.CurrentValue = 0;
-    
+
     public int Get() => this.CurrentValue;
 
     [FunctionName(nameof(Counter))]
@@ -437,10 +437,14 @@ public class Counter
 }
 ```
 
-> [!NOTE]
-> Die Methode für den Funktionseinstiegspunkt mit dem `[FunctionName]`-Attribut *muss* bei Verwendung von Entitätsklassen als `static` deklariert werden. Nicht statische Einstiegspunktmethoden können zu einer Mehrfachinitialisierung von Objekten und möglicherweise zu anderen undefinierten Verhaltensweisen führen.
+Der Zustand dieser Entität ist ein Objekt vom Typ `Counter`. Dieses enthält ein Feld, in dem der aktuelle Wert des Zählers gespeichert wird. Um dieses Objekt dauerhaft im Speicher aufzubewahren, wird es von der Bibliothek [Json.NET](https://www.newtonsoft.com/json) serialisiert und deserialisiert. 
 
-Entitätsklassen verfügen über spezielle Mechanismen für die Interaktion mit Bindungen und .NET-Abhängigkeitsinjektion (Dependency Injection). Weitere Informationen finden Sie im Artikel [Permanente Entitäten](durable-functions-entities.md).
+Weitere Informationen zur klassenbasierten Syntax sowie zu deren Verwendung finden Sie unter [Definieren von Entitätsklassen](durable-functions-dotnet-entities.md#defining-entity-classes).
+
+> [!NOTE]
+> Die Methode für den Funktionseinstiegspunkt mit dem Attribut `[FunctionName]` *muss* bei Verwendung von Entitätsklassen als `static` deklariert werden. Nicht statische Einstiegspunktmethoden können zu einer Mehrfachinitialisierung von Objekten und möglicherweise zu anderen undefinierten Verhaltensweisen führen.
+
+Entitätsklassen verfügen über spezielle Mechanismen für die Interaktion mit Bindungen und .NET-Abhängigkeitsinjektion (Dependency Injection). Weitere Informationen finden Sie unter [Entitätskonstruktion](durable-functions-dotnet-entities.md#entity-construction).
 
 ## <a name="entity-client"></a>Entitätsclient
 
@@ -473,17 +477,15 @@ Wenn Sie Skriptsprachen (z.B. *CSX*- oder *JS*-Dateien) für die Entwicklung nut
 
 In .NET-Funktionen richten Sie normalerweise eine Bindung mit `IDurableEntityClient` ein, sodass Sie Vollzugriff auf alle Client-APIs erhalten, die von Durable Entities unterstützt werden. Sie können auch eine Bindung mit der `IDurableClient`-Schnittstelle herstellen, die den Zugriff auf Client-APIs für Entitäten und Orchestrierungen ermöglicht. Zu den APIs für das Clientobjekt gehören:
 
-* **ReadEntityStateAsync\<T>** : Liest den Zustand einer Entität.
+* **ReadEntityStateAsync\<T>** : Liest den Zustand einer Entität. Es gibt eine Antwort zurück, die anzeigt, ob die Zielentität vorhanden ist, und wenn dies der Fall ist, ihren Zustand.
 * **SignalEntityAsync**: Sendet eine unidirektional Nachricht an eine Entität und wartet darauf, dass diese in die Warteschlange eingereiht wird.
-* **SignalEntityAsync\<TEntityInterface>** : Identisch mit `SignalEntityAsync`, verwendet jedoch ein generiertes Proxyobjekt vom Typ `TEntityInterface`.
-* **CreateEntityProxy\<TEntityInterface>** : Erstellt dynamisch einen dynamischen Proxy vom Typ `TEntityInterface` für typsichere Aufrufe von Entitäten.
+
+Die Zielentität muss nicht vor dem Senden eines Signals erstellt werden. Der Entitätszustand kann aus der Entitätsfunktion heraus erstellt werden, die das Signal verarbeitet.
 
 > [!NOTE]
-> Es ist wichtig zu verstehen, dass die vorherigen „Signal“vorgänge alle asynchron sind. Es ist nicht möglich, eine Entitätsfunktion aufzurufen und einen Rückgabewert von einem Client zu erhalten. Ebenso kann die Rückgabe von `SignalEntityAsync` erfolgen, bevor die Entität mit der Ausführung des Vorgangs beginnt. Nur Orchestratorfunktionen können Entitätsfunktionen synchron aufrufen und Rückgabewerte verarbeiten.
+> Es ist wichtig zu verstehen, dass die vom Client gesendeten „Signale“ einfach in die Warteschlange eingereiht werden, um zu einem späteren Zeitpunkt asynchron verarbeitet zu werden. Insbesondere `SignalEntityAsync` tätigt in der Regel eine Rückgabe, bevor die Entität auch nur den Betrieb überhaupt aufgenommen hat, und es ist nicht möglich, den Rückgabewert zurückzubekommen oder Ausnahmen zu beobachten. Wenn strengere Garantien erforderlich sind (z. B. für Workflows), sollten *Orchestratorfunktionen* verwendet werden, die auf den Abschluss von Entitätsvorgängen warten und die Rückgabewerte verarbeiten sowie Ausnahmen überwachen können.
 
-Die `SignalEntityAsync` APIs erfordern die Angabe des eindeutigen Bezeichners der Entität als `EntityId`. Diese APIs nehmen optional auch den Namen des Entitätsvorgangs als `string` und die Nutzlast des Vorgangs als JSON-serialisierbares `object` an. Wenn die Zielentität nicht vorhanden ist, wird sie automatisch mit der angegebenen Entitäts-ID erstellt.
-
-### <a name="client-sample-untyped"></a>Clientbeispiel (nicht typisiert)
+### <a name="example-client-signals-entity-directly"></a>Beispiel: Client sendet Signal direkt an Entität
 
 Dies ist ein Beispiel für eine von der Warteschlange ausgelöste Funktion, die eine Entität „Counter“ aufruft.
 
@@ -500,16 +502,16 @@ public static Task Run(
 }
 ```
 
-### <a name="client-sample-typed"></a>Clientbeispiel (typisiert)
+### <a name="example-client-signals-entity-via-interface"></a>Beispiel: Client sendet Signal über Schnittstelle an Entität
 
-Es ist möglich, ein Proxyobjekt für den typsicheren Zugriff auf Entitätsvorgänge zu generieren. Zum Generieren eines typsicheren Proxys muss der Entitätstyp eine Schnittstelle implementieren. Nehmen wir beispielsweise an, dass die zuvor erwähnte `Counter`-Entität eine `ICounter`-Schnittstelle implementiert hat, die wie folgt definiert ist:
+Aufgrund der besseren Typüberprüfung empfehlen wir Ihnen, nach Möglichkeit [über Schnittstellen auf Entitäten zuzugreifen](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces). Nehmen wir beispielsweise an, dass die zuvor erwähnte `Counter`-Entität eine `ICounter`-Schnittstelle implementiert hat, die wie folgt definiert ist:
 
 ```csharp
 public interface ICounter
 {
     void Add(int amount);
     void Reset();
-    int Get();
+    Task<int> Get();
 }
 
 public class Counter : ICounter
@@ -518,7 +520,7 @@ public class Counter : ICounter
 }
 ```
 
-Der Clientcode könnte dann `SignalEntityAsync<TEntityInterface>` verwenden und die `ICounter`-Schnittstelle als Typparameter angeben, um einen typsicheren Proxy zu generieren. Diese Verwendung von typsicheren Proxys wird im folgenden Codebeispiel veranschaulicht:
+Der Clientcode kann dann `SignalEntityAsync<ICounter>` verwenden, um einen typsicheren Proxy zu generieren:
 
 ```csharp
 [FunctionName("UserDeleteAvailable")]
@@ -532,23 +534,14 @@ public static async Task AddValueClient(
 }
 ```
 
-Im vorherigen Beispiel ist der `proxy`-Parameter eine dynamisch generierte Instanz von `ICounter`, die den Aufruf von `Add` intern in den entsprechenden (nicht typisierten) Aufruf von `SignalEntityAsync` übersetzt.
-
-Es gibt einige Regeln für die Definition von Entitätsschnittstellen:
-
-* Der Typparameter `TEntityInterface` in `SignalEntityAsync<TEntityInterface>` muss eine Schnittstelle sein.
-* Entitätsschnittstellen dürfen nur Methoden definieren.
-* Entitätsschnittstellenmethoden dürfen nicht mehr als einen Parameter definieren.
-* Entitätsschnittstellenmethoden müssen `void`, `Task` oder `Task<T>` zurückgeben, wobei `T` ein Rückgabewert ist.
-* Entitätsschnittstellen müssen genau eine konkrete Implementierungsklasse innerhalb derselben Assembly (d.h. der Entitätsklasse) haben.
-
-Wenn eine dieser Regeln verletzt wird, wird zur Laufzeit eine `InvalidOperationException` ausgelöst. Die Ausnahmemeldung erläutert, welche Regel verletzt wurde.
+Der `proxy`-Parameter ist eine dynamisch generierte Instanz von `ICounter`, die den Aufruf von `Add` intern in den entsprechenden (nicht typisierten) Aufruf von `SignalEntityAsync` übersetzt.
 
 > [!NOTE]
 > Die `SignalEntityAsync`-APIs stellen unidirektionale Vorgänge dar. Wenn eine Entitätsschnittstelle `Task<T>` zurückgibt, ist der Wert des `T`-Parameters immer NULL oder `default`.
 
-<a name="host-json"></a>
+Insbesondere ergibt es keinen Sinn, ein Signal an den `Get`-Vorgang zu senden, weil kein Wert zurückgegeben wird. Stattdessen können Clients entweder `ReadStateAsync` verwenden, um direkt auf den Zählerzustand zuzugreifen, oder eine Orchestratorfunktion starten, mit der der `Get`-Vorgang aufgerufen wird. 
 
+<a name="host-json"></a>
 ## <a name="hostjson-settings"></a>Einstellungen für „host.json“
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]

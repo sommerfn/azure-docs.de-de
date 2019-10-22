@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385604"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330520"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Erstellen und Verwalten von Zeitplänen für Classroom-Labs in Azure Lab Services 
 Mithilfe von Zeitplänen können Sie ein Classroom-Lab so konfigurieren, dass VMs im Lab automatisch zu einem bestimmten Zeitpunkt gestartet und heruntergefahren werden. Sie können einen einmaligen Zeitplan oder einen sich wiederholenden Zeitplan definieren. Die folgenden Verfahren zeigen die Schritte zum Erstellen und Verwalten von Zeitplänen für ein Classroom-Lab: 
@@ -26,61 +26,52 @@ Mithilfe von Zeitplänen können Sie ein Classroom-Lab so konfigurieren, dass VM
 > [!IMPORTANT]
 > Die geplante Ausführungszeit von virtuellen Computern wird nicht mit dem [Kontingent eines Benutzers](how-to-configure-student-usage.md#set-quotas-for-users) verrechnet. Das Kontingent dient für die Zeiten außerhalb der Stunden im Zeitplan, die ein Kursteilnehmer mit VMs verbringt. 
 
-## <a name="add-a-schedule-once"></a>Hinzufügen eines Zeitplans (einmalig)
+## <a name="set-a-schedule-for-the-lab"></a>Festlegen eines Zeitplans für das Lab
+Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmten Zeiten automatisch gestartet und beendet werden. Das von Ihnen zuvor angegebene Benutzerkontingent ist die zusätzliche Zeit, die jedem Benutzer außerhalb dieser geplanten Zeit zugewiesen ist. 
 
-1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie auf der Symbolleiste **Zeitplan hinzufügen** aus. 
-
-    ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](../media/how-to-create-schedules/add-schedule-button.png)
-2. Vergewissern Sie sich auf der Seite **Zeitplan hinzufügen**, dass die Option **Einmal** oben ausgewählt ist. Wählen Sie **Einmal** andernfalls aus. 
-3. Geben Sie unter **Schedule date (required)** (Datum planen (erforderlich)) das Datum ein, oder wählen Sie das Kalendersymbol aus, um ein Datum auszuwählen. 
-4. Wählen Sie für **Startzeit** die Zeit aus, zu der die virtuellen Computer gestartet werden sollen. Die Startzeit ist erforderlich, wenn keine Beendigungszeit festgelegt ist. Wählen Sie **Remove start event** (Startereignis entfernen) aus, wenn Sie nur die Beendigungszeit angeben möchten. Wenn die **Startzeit** deaktiviert ist, wählen Sie neben der Dropdownliste die Option **Add start event** (Startereignis hinzufügen) aus, um sie zu aktivieren. 
-5. Wählen Sie für **Beendigungszeit** die Zeit aus, zu der die virtuellen Computer heruntergefahren werden sollen. Die Beendigungszeit ist erforderlich, wenn keine Startzeit festgelegt ist. Wählen Sie **Remove stop event** (Beendigungsereignis entfernen) aus, wenn Sie nur die Startzeit angeben möchten. Wenn die **Endzeit** deaktiviert ist, wählen Sie neben der Dropdownliste die Option **Add stop event** (Beendigungsereignis hinzufügen) aus, um sie zu aktivieren.
-6. Wählen Sie für **Time zone (required)** (Zeitzone (erforderlich)) die Zeitzone für die angegebenen Start- und Beendigungszeiten aus. 
-7. Geben Sie für **Hinweise** eine Beschreibung oder Anmerkungen zu diesem Zeitplan ein. 
-8. Wählen Sie **Speichern** aus. 
-
-    ![Einmaliger Zeitplan](../media/how-to-create-schedules/add-schedule-page.png)
-
-## <a name="add-a-recurring-schedule-weekly"></a>Hinzufügen eines wiederkehrenden Zeitplans (wöchentlich)
-
-1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie auf der Symbolleiste **Zeitplan hinzufügen** aus. 
+1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie in der Symbolleiste die Option **Add scheduled event** (Geplantes Ereignis hinzufügen) aus. 
 
     ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](../media/how-to-create-schedules/add-schedule-button.png)
-2. Wechseln Sie auf der Seite **Zeitplan hinzufügen** oben zu **Wöchentlich**. 
-3. Wählen Sie unter **Schedule days (required)** (Tage planen (erforderlich)) die Tage aus, an denen der Zeitplan wirksam sein soll. Im folgenden Beispiel sind Montag bis Freitag ausgewählt. 
-4. Geben Sie im Feld **Von** das **Startdatum des Zeitplans** ein, oder wählen Sie ein Datum aus, indem Sie die **Kalenderschaltfläche** auswählen. Dies ist ein Pflichtfeld. 
-5. Geben Sie unter **Enddatum des Zeitplans** ein Enddatum ein, an dem die virtuellen Computer heruntergefahren werden sollen, oder wählen Sie eines aus. 
-6. Wählen Sie für **Startzeit** die Zeit aus, zu der die virtuellen Computer gestartet werden sollen. Die Startzeit ist erforderlich, wenn keine Beendigungszeit festgelegt ist. Wählen Sie **Remove start event** (Startereignis entfernen) aus, wenn Sie nur die Beendigungszeit angeben möchten. Wenn die **Startzeit** deaktiviert ist, wählen Sie neben der Dropdownliste die Option **Add start event** (Startereignis hinzufügen) aus, um sie zu aktivieren. 
-7. Wählen Sie für **Beendigungszeit** die Zeit aus, zu der die virtuellen Computer heruntergefahren werden sollen. Die Beendigungszeit ist erforderlich, wenn keine Startzeit festgelegt ist. Wählen Sie **Remove stop event** (Beendigungsereignis entfernen) aus, wenn Sie nur die Startzeit angeben möchten. Wenn die **Endzeit** deaktiviert ist, wählen Sie neben der Dropdownliste die Option **Add stop event** (Beendigungsereignis hinzufügen) aus, um sie zu aktivieren.
-8. Wählen Sie für **Time zone (required)** (Zeitzone (erforderlich)) die Zeitzone für die angegebenen Start- und Beendigungszeiten aus.  
-9. Geben Sie für **Hinweise** eine Beschreibung oder Anmerkungen zu diesem Zeitplan ein. 
-10. Wählen Sie **Speichern** aus. 
+2. Vergewissern Sie sich, dass unter **Ereignistyp** die Option **Standard** ausgewählt ist. Wählen Sie **Start only** (Nur starten) aus, um nur die Startzeit für die VMs anzugeben. Wählen Sie **Stop only** (Nur beenden) aus, um nur die Endzeit für die VMs anzugeben. 
+7. Wählen Sie im Abschnitt **Wiederholen** den aktuellen Zeitplan aus. 
+
+    ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](../media/how-to-create-schedules/select-current-schedule.png)
+5. Führen Sie im Dialogfeld **Wiederholen** die folgenden Schritte aus:
+    1. Vergewissern Sie sich, dass für das Feld **Wiederholen** die Option **Wöchentlich** festgelegt ist. 
+    3. Geben Sie das **Startdatum** an.
+    4. Geben Sie die **Startzeit** an, zu der die virtuellen Computer gestartet werden sollen.
+    5. Geben Sie die **Endzeit** an, zu der die virtuellen Computer heruntergefahren werden sollen. 
+    6. Geben Sie die **Zeitzone** für die von Ihnen angegebene Start- und Endzeit an. 
+    2. Wählen Sie die Tage aus, an denen der Zeitplan gelten soll. Im folgenden Beispiel ist „Montag bis Donnerstag“ ausgewählt. 
+    8. Wählen Sie **Speichern** aus. 
+
+        ![Festlegen des Zeitplans für die Wiederholung](../media/how-to-create-schedules/set-repeat-schedule.png)
+
+3. Geben Sie nun auf der Seite **Add scheduled event** (Geplantes Ereignis hinzufügen) unter **Hinweise (optional)** ein beliebige Beschreibung bzw. Hinweise zum Zeitplan ein. 
+4. Wählen Sie auf der Seite **Add scheduled event** (Geplantes Ereignis hinzufügen) die Option **Speichern** aus. 
 
     ![Wöchentlicher Zeitplan](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="view-schedules-in-calendar"></a>Anzeigen von Zeitplänen im Kalender
 Die geplanten Datums- und Uhrzeitangaben werden in der Kalenderansicht hervorgehoben, wie in der folgenden Abbildung gezeigt:
 
-![Zeitpläne in der Kalenderansicht](../media/how-to-create-schedules/schedules-in-calendar.png)
+![Zeitpläne in der Kalenderansicht](../media/how-to-create-schedules/schedules-calendar.png)
 
 Wählen Sie die Schaltfläche **Heute** in der rechten oberen Ecke aus, um zum aktuellen Datum im Kalender zu wechseln. Wählen Sie den **Pfeil nach links** aus, um zur vorherigen Woche zu wechseln, und den **Pfeil nach rechts**, um zur nächsten Woche im Kalender zu wechseln. 
 
 ## <a name="edit-a-schedule"></a>Bearbeiten eines Zeitplans
-Wenn Sie im Kalender auf einen hervorgehobenen Zeitplan doppelklicken oder die **Stiftschaltfläche** auf der Symbolleiste auswählen, wird die Seite **Zeitplan bearbeiten** angezeigt. Das Aktualisieren der Einstellungen auf dieser Seite entspricht dem Aktualisieren der Einstellungen auf der Seite **Zeitplan hinzufügen**, wie im Abschnitt [Hinzufügen eines wiederkehrenden Zeitplans](#add-a-recurring-schedule-weekly) beschrieben. 
+Wenn Sie einen hervorgehobenen Zeitplan im Kalender auswählen, werden Schaltflächen zum **Bearbeiten** oder **Löschen** des Zeitplans angezeigt. 
 
-![Seite „Zeitplan bearbeiten“](../media/how-to-create-schedules/edit-schedule-page.png)
+![Seite „Zeitplan bearbeiten“](../media/how-to-create-schedules/schedule-edit-button.png)
+
+Auf der Seite **Geplantes Ereignis bearbeiten** können Sie den Zeitplan aktualisieren und **Speichern** auswählen. 
 
 ## <a name="delete-a-schedule"></a>Löschen eines Zeitplans
 
-1. Um einen Zeitplan zu löschen, wählen Sie auf der Symbolleiste das Papierkorbsymbol (Löschen) aus, wie in der folgenden Abbildung gezeigt:
+1. Um einen Zeitplan zu löschen, wählen Sie einen hervorgehobenen Zeitplan im Kalender aus, und wählen Sie dann Die Papierkorbsymbol-Schaltfläche (Löschen) aus:
 
-    ![Schaltfläche „Löschen“ auf der Symbolleiste](../media/how-to-create-schedules/delete-schedule-button.png)
-
-    Sie können die Schaltfläche „Löschen“ für alle geplanten Datums- und Zeitangaben im Kalender verwenden und **Löschen** auswählen. 
-2. Wählen Sie auf der Seite **Zeitpläne löschen** die Option **Ja** aus.
-
-    ![Bestätigen des Löschens von Zeitplänen](../media/how-to-create-schedules/delete-schedules-confirmation.png)
-
+    ![Schaltfläche „Löschen“ auf der Symbolleiste](../media/how-to-create-schedules/schedule-delete-button.png)
+2. Wählen Sie im Dialogfeld **Geplantes Ereignis löschen** **Ja** aus, um den Löschvorgang zu bestätigen. 
 
 
 
