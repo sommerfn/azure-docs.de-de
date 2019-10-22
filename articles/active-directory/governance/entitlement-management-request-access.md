@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169821"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389082"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -30,7 +30,7 @@ ms.locfileid: "72169821"
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mit der Berechtigungsverwaltung von Azure AD ermöglichen Zugriffspakete eine einmalige Einrichtung von Ressourcen und Richtlinien, die den Zugriff während der gesamten Lebensdauer des Zugriffspakets automatisch verwaltet. 
+In der Azure AD-Berechtigungsverwaltung ermöglicht ein Zugriffspaket eine einmalige Einrichtung von Ressourcen und Richtlinien, die den Zugriff während der gesamten Lebensdauer des Zugriffspakets automatisch verwaltet. 
 
 Ein Zugriffspaket-Manager kann Richtlinien konfigurieren, die eine Genehmigung erfordern, damit Benutzer Zugriff auf Zugriffspakete erhalten. Ein Benutzer, der Zugriff auf ein Zugriffspaket benötigt, kann eine Anforderung stellen, um Zugriff zu erhalten. In diesem Artikel wird beschrieben, wie Sie eine Zugriffsanforderung senden.
 
@@ -40,7 +40,7 @@ Als Erstes müssen Sie sich beim Portal „Mein Zugriff“ anmelden. Dort könne
 
 **Erforderliche Rolle:** Anforderer
 
-1. Suchen Sie nach einer E-Mail oder Nachricht des Projektmanagers oder Geschäftsleiters, mit dem Sie arbeiten. Die E-Mail sollte einen Link zu dem Zugriffspaket enthalten, auf das Sie Zugriff benötigen. Der Link beginnt mit „myaccess“, enthält einen Verzeichnishinweis und endet mit einer Zugriffspaket-ID ähnlich der folgenden:
+1. Suchen Sie nach einer E-Mail oder Nachricht des Projektmanagers oder Geschäftsleiters, mit dem Sie arbeiten. Die E-Mail sollte einen Link zu dem Zugriffspaket enthalten, auf das Sie Zugriff benötigen. Der Link beginnt mit `myaccess`, enthält einen Verzeichnishinweis und endet mit einer Zugriffspaket-ID.
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

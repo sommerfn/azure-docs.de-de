@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 862ec629504da4d8ee7eadd8f9b925984d96614c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718895"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375755"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Anzeigen und Herunterladen der Microsoft Azure-Rechnung
 
@@ -25,14 +25,16 @@ Für die meisten Abonnements können Sie die Rechnung aus dem [Azure-Portal](htt
 
 Nur bestimmte Rollen sind zum Anzeigen von Rechnungen berechtigt. Zu diesen Rollen zählen beispielsweise der Kontoadministrator und der Unternehmensadministrator. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
 
-Wenn Sie über eine [Microsoft-Kundenvereinbarung](#check-your-access-to-a-microsoft-customer-agreement) verfügen, benötigen Sie eine der folgenden Rollen, um Ihre Rechnungen zu erhalten:
+Wenn Sie über eine Microsoft-Kundenvereinbarung (MCA) verfügen, benötigen Sie eine der folgenden Rollen, um Ihre Rechnungen zu erhalten:
 
 - Besitzer des Abrechnungsprofils
 - Mitwirkender
 - Leser
 - Rechnungs-Manager
 
-Weitere Informationen zu Abrechnungsrollen für Microsoft-Kundenvereinbarungen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Wenn Sie über eine Microsoft-Partnervereinbarung (MPA) verfügen, müssen Sie der globale Administrator oder Administrator-Agent in der Partnerorganisation sein, um Azure-Rechnungen anzuzeigen und herunterzuladen. [Überprüfen Sie Ihren Abrechnungskontotyp](#check-your-billing-account-type), um zu sehen, welche Berechtigungen Sie benötigen. 
+
+<!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
 ## <a name="noinvoice"></a> Mögliche Gründe für nicht erhaltene Rechnungen
 
@@ -42,52 +44,25 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 - Die Abrechnung von Azure erfolgt am Ende Ihres Rechnungszeitraums. Unter Umständen wurde also noch keine Rechnung generiert. Warten Sie bis zum Ende des Abrechnungszeitraums.
 
-- Sie haben keine Berechtigung zur Ansicht von Rechnungen. Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, müssen Sie eine der Rollen „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ besitzen. Für andere Abonnements werden ältere Rechnungen nur angezeigt, wenn Sie der Kontoadministrator sind. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
+- Sie haben keine Berechtigung zur Ansicht von Rechnungen. Wenn Sie über eine MCA oder MPA verfügen, müssen Sie der Besitzer des Abrechnungsprofils, Mitwirkender, Benutzer mit Leseberechtigung oder Rechnungs-Manager sein. Für andere Abonnements werden ältere Rechnungen nur angezeigt, wenn Sie der Kontoadministrator sind. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
 
-- Falls Sie über eine kostenlose Testversion oder über ein monatliches Guthaben für Ihr Abonnement verfügen, erhalten Sie nur dann eine Rechnung, wenn Sie das monatliche Guthaben überschreiten. Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, erhalten Sie immer eine Rechnung.
+- Falls Sie über eine kostenlose Testversion oder über ein monatliches Guthaben für Ihr Abonnement verfügen, erhalten Sie nur dann eine Rechnung, wenn Sie das monatliche Guthaben überschreiten. Wenn Sie über eine Microsoft-Kundenvereinbarung oder eine Microsoft-Partnervereinbarung verfügen, erhalten Sie immer eine Rechnung. 
 
-## <a name="download-your-azure-invoices-pdf"></a>Herunterladen Ihrer Azure-Rechnungen (PDF-Format)
-
-Für die meisten Abonnements können Sie die Rechnung aus dem Azure-Portal herunterladen. Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, helfen Ihnen die Informationen unter [Herunterladen von Rechnungen für eine Microsoft-Kundenvereinbarung](#download-invoices-for-a-microsoft-customer-agreement) weiter.
-
-### <a name="download-invoices-for-an-individual-subscription"></a>Herunterladen von Rechnungen für ein einzelnes Abonnement
-
-1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement als [Benutzer mit Zugriff auf Rechnungen](billing-manage-access.md) aus.
-
-2. Wählen Sie **Rechnungen** aus.
-
-    ![Screenshot mit der Option „Abrechnung und Nutzung“](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
-
-3. Klicken Sie auf **Rechnung herunterladen**, um eine Kopie Ihrer PDF-Rechnung anzuzeigen. Falls **Nicht verfügbar** angezeigt wird, siehe [Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?](#noinvoice)
-
-    ![Screenshot mit Abrechnungszeiträumen, der Option „Herunterladen“ und den Gesamtgebühren für jeden Abrechnungszeitraum](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
-
-4. Sie können Ihre Daten zur tägliche Nutzung auch durch Klicken auf den Abrechnungszeitraum anzeigen.
-
-Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md). Hilfreiche Informationen zur Verwaltung Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
-
-### <a name="download-invoices-for-a-microsoft-customer-agreement"></a>Herunterladen von Rechnungen für eine Microsoft-Kundenvereinbarung
-
-Rechnungen werden für jedes [Abrechnungsprofil](billing-mca-overview.md#billing-profiles) in der Microsoft-Kundenvereinbarung generiert. Sie müssen über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Rechnungen über das Azure-Portal herunterladen zu können.
+## <a name="download-invoices-in-the-azure-portal"></a>Herunterladen von Rechnungen im Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
-1. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
-1. Wählen Sie **Rechnungen** aus.
+1. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto oder ein Abrechnungsprofil auswählen.
+1. Wählen Sie im Menü auf der linken Seite die Option **Rechnungen** unter **Abrechnung** aus.
 1. Suchen Sie im Rechnungsraster nach der Zeile der Rechnung, die Sie herunterladen möchten.
-1. Klicken Sie am Ende der Zeile auf die Auslassungspunkte (`...`).
-    ![Screenshot mit den Auslassungspunkten am Ende der Zeile](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
-1. Wählen Sie im Kontextmenü für den Download **Rechnung** aus.
+1. Klicken Sie am Ende der Zeile auf das Downloadsymbol oder die Auslassungspunkte (`...`).
+1. Wählen Sie im Downloadmenü **Rechnung** aus.
 
-    ![Screenshot des Kontextmenüs](./media/billing-download-azure-invoice/contextmenu.png)
+Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md). Hilfreiche Informationen zur Verwaltung Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
 
-Wenn für den letzten Abrechnungszeitraum keine Rechnung angezeigt wird, lesen Sie unter [Warum sehe ich keine Rechnung für den letzten Abrechnungszeitraum?](#noinvoice) nach.
+## <a name="get-your-subscriptions-invoices-in-email"></a>Abrufen der Rechnungen für Abonnements per E-Mail
 
-## <a name="get-your-invoice-in-email-pdf"></a>Empfangen Ihrer Rechnung per E-Mail (PDF)
-
-Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konfigurieren, die Ihre Azure-Rechnung in einer E-Mail erhalten. Diese Funktion ist für bestimmte Abonnements möglicherweise nicht verfügbar, z.B. für Supportangebote, Enterprise Agreements oder Azure in Open. Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, helfen Ihnen die Informationen im nächsten Abschnitt weiter: [Abrufen der Rechnungen für Abonnements per E-Mail](#get-your-subscriptions-invoices-in-email).
-
-### <a name="get-your-subscriptions-invoices-in-email"></a>Abrufen der Rechnungen für Abonnements per E-Mail
+Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konfigurieren, die Ihre Azure-Rechnung in einer E-Mail erhalten. Diese Funktion ist für bestimmte Abonnements möglicherweise nicht verfügbar, z.B. für Supportangebote, Enterprise Agreements oder Azure in Open.
 
 1. Wählen Sie auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus. Wählen Sie jedes Abonnement aus, das Sie besitzen. Klicken Sie auf **Rechnungen** und dann auf **Rechnung per E-Mail**.
 
@@ -103,13 +78,14 @@ Sie können die entsprechende Option aktivieren und zusätzliche Empfänger konf
 
 Wenn Sie keine E-Mail erhalten, nachdem Sie diese Schritte befolgt haben, stellen Sie sicher, dass Ihre E-Mail-Adresse in den [Kommunikationseinstellungen auf Ihrem Profil](https://account.windowsazure.com/profile) richtig ist.
 
-### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Kündigen des Erhalts der Rechnungen für Abonnements per E-Mail
+## <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Kündigen des Erhalts der Rechnungen für Abonnements per E-Mail
 
 Führen Sie zum Deaktivieren des Erhalts der Rechnung per E-Mail die obigen Schritte aus, und klicken Sie auf **Abonnement für Rechnungen per E-Mail kündigen**. Dadurch werden alle E-Mail-Adressen entfernt, an die Rechnungen gesendet werden sollten. Sie können die Empfänger neu konfigurieren, wenn Sie die Rechnungen wieder per E-Mail empfangen möchten.
 
  ![Screenshot mit dem Ablauf der Kündigung](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 
-### <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Abrufen von Rechnungen für die Microsoft-Kundenvereinbarung per E-Mail
+<!-- Does following section apply to MPA too? -->
+## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Abrufen von Rechnungen für die Microsoft-Kundenvereinbarung per E-Mail
 
 Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, können Sie Ihre Rechnungen per E-Mail empfangen. Alle Benutzer mit den Rollen „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ und „Rechnungs-Manager“ erhalten die Rechnungen dann per E-Mail. Leseberechtigte können die Einstellungen für den Empfang der Rechnungen per E-Mail aber nicht bearbeiten.
 
@@ -124,14 +100,12 @@ Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, können Sie Ihre
 1. Wählen Sie **Aktivieren** aus.
 1. Klicken Sie auf **Aktualisieren**.
 
-### <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Kündigen des Erhalts von Rechnungen für die Microsoft-Kundenvereinbarung per E-Mail
+## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Kündigen des Erhalts von Rechnungen für die Microsoft-Kundenvereinbarung per E-Mail
 
 Führen Sie zum Deaktivieren des Erhalts der Rechnung per E-Mail die obigen Schritte aus, und klicken Sie auf **Deaktivieren**. Alle Benutzer mit den Rollen „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ und „Rechnungs-Manager“ erhalten dann ebenfalls keine Rechnungen mehr per E-Mail. Als Leseberechtigter können Sie die Einstellungen für den Empfang der Rechnungen per E-Mail nicht bearbeiten.
 
-
-
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>Überprüfen des Abrechnungskontotyps
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

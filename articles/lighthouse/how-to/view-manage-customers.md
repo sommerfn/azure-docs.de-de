@@ -1,5 +1,5 @@
 ---
-title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen im Azure-Portal
+title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 description: Als Dienstanbieter, der die delegierte Azure-Ressourcenverwaltung verwendet, können Sie alle Ihre delegierten Kundenressourcen und -abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
 author: JnHs
 ms.author: jenhayes
@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: acc90afa258fa7140cd7dfa8711dd64b554df45d
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810844"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302743"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 
@@ -37,7 +37,7 @@ Folgende Informationen können Sie auf dieser Seite anzeigen:
 
 - Um alle mit einem Kunden verbundenen Abonnements, Angebote und Delegierungen anzuzeigen, wählen Sie den Namen des Kunden aus.
 - Um weitere Details zu einem Angebot und seinen Delegierungen anzuzeigen, wählen Sie den Angebotsnamen aus.
-- Um weitere Details zu acrolecess-Zuweisungen für delegierte Abonnements oder Ressourcengruppen anzuzeigen, wählen Sie den Eintrag in der Spalte **Delegierungen** aus.
+- Um weitere Details zu Rollenzuweisungen für delegierte Abonnements oder Ressourcengruppen anzuzeigen, wählen Sie den Eintrag in der Spalte **Delegierungen** aus.
 
 ## <a name="view-delegations"></a>Anzeigen von Delegierungen
 

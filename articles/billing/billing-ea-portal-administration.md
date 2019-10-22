@@ -4,16 +4,16 @@ description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035223"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329336"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -62,7 +62,7 @@ Beachten Sie die folgenden Punkte, wenn Sie ein Unternehmenskonto in eine neue R
 
 Das effektive Übertragungsdatum kann ein Datum ab dem Startdatum der Registrierung sein, an die die Übertragung erfolgen soll. Die Registrierung, an die die Übertragung erfolgt, ist die _Zielregistrierung_. Nach der Kontoübertragung verbleiben alle Nutzungsinformationen im Konto vor dem effektiven Übertragungsdatum in der Registrierung, von der die Übertragung erfolgt. Die Registrierung, von der die Übertragung erfolgt, ist die _Quellregistrierung_.  Die Nutzung der Quellregistrierung wird in Form eines Mindestverbrauchs oder als Überschreitung abgerechnet. Die Nutzung, die nach dem effektiven Übertragungsdatum erfolgt, wird in die neue Registrierung übertragen und entsprechend abgerechnet.
 
-Sie können eine Kontoübertragung bis auf das Startdatum der Zielregistrierung oder bis auf das effektive Startdatum der Quellregistrierung zurückdatieren.
+Sie können eine Registrierungsübertragung bis auf das Startdatum der Zielregistrierung oder bis auf das effektive Startdatum der Quellregistrierung zurückdatieren.
 
 ### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
 
@@ -212,12 +212,11 @@ Wenn ein Benutzer keine Benachrichtigung erhält, überprüfen Sie anhand der fo
 ![Beispiel für Feld „Kontakt hinzufügen“ ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-Angebot
+
 Das Azure Sponsorship-Angebot ist ein eingeschränktes gesponsertes Microsoft Azure-Konto. Es ist per E-Mail-Einladung nur für bestimmte, von Microsoft ausgewählte Kunden verfügbar. Wenn Sie berechtigt sind, das Microsoft Azure Sponsorship-Angebot zu nutzen, erhalten Sie eine E-Mail-Einladung für Ihre Konto-ID.
+
 Weitere Informationen finden Sie unter
 
-- Azure Sponsorship-Angebot: https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- Sponsorship-Saldoportal: https://www.microsoftazuresponsorships.com/balance  
-- Externe FAQ zum Sponsorship: https://azuresponsorships-staging.azurewebsites.net/faq
 - Supportanfrage zur Sponsorship-Aktivierung: http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>Nächste Schritte

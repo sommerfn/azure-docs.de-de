@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806344"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390161"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -40,11 +40,11 @@ Für virtuelle Windows-Computer und SQL-Datenbank können Sie die Lizenzierungsk
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Wer ist zum Erwerb einer Reservierung berechtigt?
 
-Um einen Plan zu kaufen, müssen Sie eine Rolle des Abonnementverantwortlichen bei einem Enterprise-Abonnement (MS-AZR-0017P oder MS-AZR-0148P) oder einem Abonnement mit nutzungsbasierter Zahlung (MS-AZR-0003P oder MS-AZR-0023P) haben. Cloudlösungsanbieter können Azure-Reservierungen über das Azure-Portal oder  [Partner Center](/partner-center/azure-reservations)  erwerben.
+Um einen Plan zu kaufen, müssen Sie eine Rolle als Abonnementverantwortlicher bei einem Enterprise-Abonnement (MS-AZR-0017P oder MS-AZR-0148P) oder einem Abonnement mit nutzungsbasierter Zahlung (MS-AZR-0003P oder MS-AZR-0023P) oder einem Abonnement im Rahmen der Microsoft-Kundenvereinbarung haben. Cloudlösungsanbieter können Azure-Reservierungen über das Azure-Portal oder  [Partner Center](/partner-center/azure-reservations)  erwerben.
 
 EA-Kunden (Enterprise Agreement) können Käufe für EA-Administratoren beschränken, indem sie die Option **Reservierte Instanzen hinzufügen** im EA-Portal deaktivieren. EA-Administratoren müssen der Besitzer für mindestens ein EA-Abonnement sein, um eine Reservierung zu erwerben. Die Option ist nützlich für Unternehmen, die ein zentralisiertes Team benötigen, um Reservierungen für verschiedene Kostenstellen einzukaufen. Nach dem Kauf können zentralisierte Teams die Reservierungen um Kostenstellenbesitzer erweitern. Die Besitzer können dann die Reservierung auf ihre Abonnements ausdehnen. Das zentrale Team muss keinen Zugriff des Abonnenten haben, wenn die Reservierung gekauft wird.
 
-Ein Reservierungsrabatt gilt nur für Ressourcen in Verbindung mit Abonnements, die über Enterprise, einen Cloud Solution Provider (CSP) und individuelle Pläne mit nutzungsbasierten Tarifen erworben wurden.
+Ein Reservierungsrabatt gilt nur für Ressourcen in Verbindung mit Abonnements, die über Enterprise, einen Cloud Solution Provider (CSP), eine Microsoft-Kundenvereinbarung und individuelle Pläne mit nutzungsbasierten Tarifen erworben wurden.
 
 ## <a name="scope-reservations"></a>Bereichsreservierungen
 
@@ -56,7 +56,7 @@ Beim Festlegen von Ressourcengruppenbereichen stehen Ihnen je nach Bedarf drei O
 
 - **Single resource group scope** (Bereich einer einzelnen Ressourcengruppe): Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.
 - **Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.
-- **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
+- **Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für Kunden mit einem Enterprise Agreement ist der Abrechnungskontext die Registrierung. Für Kunden im Rahmen der Microsoft-Kundenvereinbarung ist der Abrechnungsbereich das Abrechnungsprofil. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.
 
 Während Reservierungsrabatte auf Ihre Nutzung angewendet werden, verarbeitet Azure die Reservierung in der folgenden Reihenfolge:
 
@@ -84,7 +84,7 @@ Sie können den Bereich nach dem Erwerb einer Reservierung immer aktualisieren. 
 
 Sie können Ihre Reservierungsnutzung auf verschiedene Weise überwachen: über das Azure-Portal, über APIs oder über Nutzungsdaten. Um alle Reservierungen anzuzeigen, auf die Sie zugreifen können, navigieren Sie im Azure-Portal zu **Reservierungen**. Das Reservierungsraster zeigt den zuletzt aufgezeichneten Nutzungsprozentsatz für die Reservierung an. Klicken Sie auf die Reservierung, um die langfristige Nutzung der Reservierung anzuzeigen.
 
-Wenn Sie Enterprise Agreement-Kunde sind, können Sie die Reservierungsnutzung auch mithilfe von [APIs](billing-reservation-apis.md#see-reservation-usage) und aus Ihren [Nutzungsdaten](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) abrufen.
+Wenn Sie Kunde unter einem Enterprise Agreement oder einer Microsoft-Kundenvereinbarung sind, können Sie die Reservierungsnutzung auch mithilfe von [APIs](billing-reservation-apis.md#see-reservation-usage) und aus Ihren [Nutzungsdaten](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) abrufen.
 
 Wenn Sie feststellen, dass die Nutzung der Reservierung mit dem Bereich „Ressourcengruppe“ gering ist, können Sie den Reservierungsbereich auf ein einzelnes Abonnement aktualisieren oder über den Abrechnungskontext gemeinsam verwenden. Sie können die Reservierung auch aufteilen und die sich daraus ergebenden Reservierungen auf verschiedene Ressourcengruppen anwenden.
 
@@ -99,6 +99,7 @@ Ein Reservierungsbereich wird nicht automatisch aktualisiert, wenn Sie die Resso
 Reservierungsrabatte gelten für die folgenden berechtigten Abonnements und Angebotstypen.
 
 - Enterprise Agreement (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P)
+- Abonnements im Rahmen einer Microsoft-Kundenvereinbarung
 - Individuelle Pläne mit Tarifen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P)
 - CSP-Abonnements
 
@@ -106,7 +107,7 @@ Für Ressourcen, die in einem Abonnement mit anderen Angebotstypen ausgeführt w
 
 ## <a name="how-is-a-reservation-billed"></a>Wie wird eine Reservierung abgerechnet?
 
-Die Reservierung wird mit der Zahlungsmethode in Rechnung gestellt, die mit dem Abonnement verknüpft ist. Wenn Sie über ein Enterprise-Abonnement verfügen, werden die Reservierungskosten von Ihrem Verpflichtungsguthaben abgezogen. Wenn Ihr Zahlungsverpflichtungssaldo die Kosten für die Reservierung nicht abdeckt, wird Ihnen die Überschreitung in Rechnung gestellt. Wenn Sie über ein Abonnement in einem individuellen Plan mit Preisen für nutzungsbasierte Bezahlung verfügen, wird die Kreditkarte Ihres Konto umgehend für Vorabkäufe belastet. Monatliche Zahlungen werden auf Ihrer Rechnung angezeigt, und Ihre Kreditkarte wird monatlich belastet. Wenn Sie Rechnungen erhalten, sind die Gebühren Ihrer nächsten Rechnung aufgeführt.
+Die Reservierung wird mit der Zahlungsmethode in Rechnung gestellt, die mit dem Abonnement verknüpft ist. Die Reservierungskosten werden ggf. von Ihrem Verpflichtungsguthaben abgezogen. Wenn Ihr Zahlungsverpflichtungssaldo die Kosten für die Reservierung nicht abdeckt, wird Ihnen die Überschreitung in Rechnung gestellt. Wenn Sie über ein Abonnement in einem individuellen Plan mit Preisen für nutzungsbasierte Bezahlung verfügen, wird die Kreditkarte Ihres Konto umgehend für Vorabkäufe belastet. Monatliche Zahlungen werden auf Ihrer Rechnung angezeigt, und Ihre Kreditkarte wird monatlich belastet. Wenn Sie Rechnungen erhalten, sind die Gebühren Ihrer nächsten Rechnung aufgeführt.
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
@@ -120,7 +121,7 @@ Beispielsweise können Sie später eine Ressource erstellen und über eine entsp
 
 Wenn die virtuellen Computer in verschiedenen Abonnements in Ihrer Registrierung/Ihrem Konto ausgeführt werden, wählen Sie den Bereich „Freigegeben“ aus. Der Bereich „Freigegeben“ ermöglicht die abonnementübergreifende Anwendung des Reservierungsrabatts. Sie können den Bereich nach dem Erwerb einer Reservierung ändern. Weitere Informationen finden Sie unter [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md).
 
-Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen einer der Abonnementtypen „Enterprise“, „CSP“ oder mit Tarifen mit nutzungsbasierter Bezahlung zugeordnet ist. Für Ressourcen, die in einem Abonnement mit anderen Angebotstypen ausgeführt werden, gilt der Reservierungsrabatt nicht.
+Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen Enterprise, eine Microsoft-Kundenvereinbarung, CSP oder Abonnements mit nutzungsbasierter Bezahlung zugeordnet sind. Für Ressourcen, die in einem Abonnement mit anderen Angebotstypen ausgeführt werden, gilt der Reservierungsrabatt nicht.
 
 ## <a name="when-the-reservation-term-expires"></a>Wann das Ende des Reservierungszeitraums erreicht ist
 

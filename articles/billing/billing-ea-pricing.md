@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 486a6b46b6c4590b7f49cd8aba449204cd8f4fac
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c38cd7f4b2fb1ae88b65031d3c93b153500b96ac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709702"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375782"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Anzeigen und Herunterladen der Azure-Preise für Ihre Organisation
 
-Azure-Kunden mit einem Azure Enterprise Agreement (EA) oder einer [Microsoft-Kundenvereinbarung](#check-your-access-to-a-microsoft-customer-agreement) können ihre Preise im Azure-Portal anzeigen und herunterladen.
+Azure-Kunden mit einem Azure Enterprise Agreement (EA), einer Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) oder einer Microsoft-Partnervereinbarung (Microsoft Partner Agreement, MPA) können ihre Preise im Azure-Portal anzeigen und herunterladen. [Erfahren Sie mehr über die Überprüfung des Abrechnungskontotyps](#check-your-billing-account-type).
 
-## <a name="ea-pricing"></a>EA-Preise
+## <a name="download-pricing-for-an-enterprise-agreement"></a>Herunterladen der Preise für ein Enterprise Agreement
 
 Je nach den durch den Unternehmensadministrator für Ihre Organisation festgelegten Richtlinien bieten nur bestimmte Administratorrollen Zugriff auf die EA-Preisinformationen Ihrer Organisation. Weitere Informationen finden Sie unter [Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure](billing-understand-ea-roles.md).
 
@@ -42,18 +42,9 @@ Je nach den durch den Unternehmensadministrator für Ihre Organisation festgeleg
 
    ![Screenshot der Schaltfläche „CSV herunterladen“ auf dem Preisblatt](./media/billing-ea-pricing/download-ea-price-sheet.png)
 
-## <a name="microsoft-customer-agreement-pricing"></a>Preise für Microsoft-Kundenvereinbarung
+## <a name="download-pricing-for-an-mca-or-mpa-account"></a>Herunterladen der Preise für ein MCA- oder MPA-Konto
 
-Sie müssen der Besitzer des Abrechnungsprofils, Mitwirkender oder Rechnungs-Manager sein, um die Preise anzeigen und herunterladen zu können. Weitere Informationen zu Abrechnungsrollen für Microsoft-Kundenvereinbarungen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-### <a name="download-price-sheets-for-the-current-billing-period"></a>Herunterladen der Preisblätter für den aktuellen Abrechnungszeitraum
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
-1. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
-1. Suchen Sie im Bereich **Übersicht** nach den Downloadlinks unter den Gebühren für den bisherigen Kalendermonat.
-1. Wählen Sie **Azure-Preisblatt** aus.
-![Screenshot des Blatts „Übersicht“ mit dem Downloadlink](./media/billing-ea-pricing/open-pricing.png)
+Bei einer MCA müssen Sie der Besitzer des Abrechnungsprofils, Mitwirkender, Benutzer mit Leseberechtigung oder Rechnungs-Manager sein, um die Preise anzeigen und herunterladen zu können. Bei einer MPA müssen Sie über die Rolle „Globaler Administrator“ und „Administrator-Agent“ in der Partnerorganisation verfügen, damit Sie die Preise anzeigen und herunterladen können.
 
 ### <a name="download-price-sheets-for-billed-charges"></a>Herunterladen von Preisblättern für abgerechnete Gebühren
 
@@ -69,6 +60,17 @@ Sie müssen der Besitzer des Abrechnungsprofils, Mitwirkender oder Rechnungs-Man
 1. Wenn Sie die Preise für alle Azure-Dienste für den angegebenen Abrechnungszeitraum anzeigen möchten, wählen Sie **Azure-Preisblatt** aus.
 
 ![Screenshot mit Kontextmenü mit den Preisblättern](./media/billing-ea-pricing/contextmenu-pricesheet.png)
+
+### <a name="download-price-sheets-for-the-current-billing-period"></a>Herunterladen der Preisblätter für den aktuellen Abrechnungszeitraum
+
+Wenn Sie über eine MCA verfügen, können Sie die Preise für den aktuellen Abrechnungszeitraum herunterladen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
+1. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
+1. Suchen Sie im Bereich **Übersicht** nach den Downloadlinks unter den Gebühren für den bisherigen Kalendermonat.
+1. Wählen Sie **Azure-Preisblatt** aus.
+![Screenshot des Blatts „Übersicht“ mit dem Downloadlink](./media/billing-ea-pricing/open-pricing.png)
 
 ## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Schätzen der Kosten mit dem Azure-Preisrechner
 
@@ -86,8 +88,8 @@ Sie können auch anhand der Preise Ihrer Organisation eine Schätzung der Kosten
 1. Suchen Sie nach Produkten, und fügen Sie sie dann Ihrer Schätzung hinzu.
 1. Die angezeigten geschätzten Preise basieren auf den Preisen für die ausgewählte Organisation.
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>Überprüfen des Abrechnungskontotyps
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

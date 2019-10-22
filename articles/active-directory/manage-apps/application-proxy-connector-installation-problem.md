@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c82bba6ccb1eaa1933176362e34b8c3e30c37f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a35558b81d064680981bcf403a3584e3a3d00e4f
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65783633"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311743"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
@@ -37,13 +37,16 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 3.  **Authentifizierung des Administrators**: Während der Installation muss der Benutzer Anmeldeinformationen für den Administrator bereitstellen, um die Connectorinstallation abzuschließen.
 
+> [!NOTE]
+> Die Connectorinstallationsprotokolle befinden sich im Ordner „%TEMP%“ und können zusätzliche Informationen zur Ursache eines Installationsfehlers bieten.
+
 ## <a name="verify-connectivity-to-the-cloud-application-proxy-service-and-microsoft-login-page"></a>Überprüfen der Konnektivität mit dem Cloudanwendungsproxy-Dienst und der Microsoft-Anmeldeseite
 
 **Ziel**: Überprüfen Sie, ob der Connectorcomputer eine Verbindung mit dem Registrierungsendpunkt des AAD-Anwendungsproxys und der Microsoft-Anmeldeseite herstellen kann.
 
-1.  Öffnen Sie einen Browser, und wechseln Sie zur folgenden Webseite: <https://aadap-portcheck.connectorporttest.msappproxy.net>. Überprüfen Sie anschließend, ob die Verbindungen mit den Rechenzentren in „USA, Mitte“ und „USA, Osten“ mit den Ports 80 und 443 funktionieren.
+1.  Führen Sie auf dem Connectorserver einen Porttest aus, indem Sie [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) oder ein anderes Tool zum Testen von Ports verwenden, um zu überprüfen, ob die Ports 443 und 80 geöffnet sind.
 
-2.  Wenn keiner dieser Ports erfolgreich ist (kein grünes Häkchen aufweist), stellen Sie sicher, dass die Firewall oder der Back-End-Proxy über \*.msappproxy.net mit ordnungsgemäß definierten Ports 80 und 443 verfügt.
+2.  Wenn einer dieser Ports nicht verfügbar ist, überprüfen Sie, ob die Firewall oder der Back-End-Proxy Zugriff auf die erforderlichen Domänen und Ports hat. Weitere Informationen hierzu finden Sie unter [Vorbereiten Ihrer lokalen Umgebung](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
 3.  Öffnen Sie einen Browser (separate Registerkarte), und wechseln Sie zur folgenden Webseite: <https://login.microsoftonline.com>. Stellen Sie sicher, dass Sie sich bei dieser Seite anmelden können.
 
@@ -52,7 +55,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 **Ziel**: Überprüfen Sie, ob Connectorcomputer, Back-End-Proxy und Firewall das Zertifikat unterstützen können, das vom Connector für die zukünftige Vertrauensstellung erstellt wurde.
 
 >[!NOTE]
->Der Connector versucht ein SHA512-Zertifikat zu erstellen, das von TLS1.2 unterstützt wird. Wenn TLS 1.2 vom Computer oder der Back-End-Firewall und dem Proxy nicht unterstützt wird, tritt bei der Installation ein Fehler auf.
+>Der Connector versucht ein SHA512-Zertifikat zu erstellen, das von TLS1.2 unterstützt wird. Wenn TLS 1.2 vom Computer oder von der Back-End-Firewall und dem Proxy nicht unterstützt wird, tritt bei der Installation ein Fehler auf.
 >
 >
 

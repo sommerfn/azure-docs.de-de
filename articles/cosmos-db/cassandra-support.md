@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 66a972e66c35cdd5b8dedceefbe3dbd008380da9
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155663"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327158"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
@@ -94,9 +94,9 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Funktionen
   
 
 
-## <a name="cassandra-query-language-limits"></a>Grenzwerte der Cassandra-Abfragesprache
+## <a name="cassandra-api-limits"></a>Einschränkungen für die Cassandra-API
 
-Bei der Cassandra-API für Azure Cosmos DB gibt es keine Einschränkungen hinsichtlich der Größe von Daten, die in einer Tabelle gespeichert sind. Es können Hunderte von Terabytes oder Petabytes von Daten gespeichert werden. Gleichzeitig wird sichergestellt, dass die Grenzwerte für Partitionsschlüssel berücksichtigt werden. In ähnlicher Weise gibt es bei jedem Entitäts- oder Zeilenäquivalent keine Einschränkungen hinsichtlich der Anzahl von Spalten. Die Gesamtgröße der Entität sollte jedoch 2 MB nicht überschreiten.
+Bei der Cassandra-API für Azure Cosmos DB gibt es keine Einschränkungen hinsichtlich der Größe von Daten, die in einer Tabelle gespeichert sind. Es können Hunderte von Terabytes oder Petabytes von Daten gespeichert werden. Gleichzeitig wird sichergestellt, dass die Grenzwerte für Partitionsschlüssel berücksichtigt werden. In ähnlicher Weise gelten bei jedem Entitäts- oder Zeilenäquivalent keine Einschränkungen hinsichtlich der Spaltenanzahl. Die Gesamtgröße der Entität darf jedoch 2 MB nicht übersteigen, und die Daten pro Partitionsschlüssel dürfen wie bei allen anderen APIs maximal 10 GB betragen.
 
 ## <a name="tools"></a>Tools 
 
@@ -130,7 +130,7 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 Azure Cosmos DB unterstützt die folgenden Datenbankbefehle für Cassandra-API-Konten.
 
-* CREATE KEYSPACE 
+* CREATE KEYSPACE (Die Replikationseinstellungen für diesen Befehl werden ignoriert.)
 * CREATE TABLE 
 * ALTER TABLE 
 * USE 
@@ -140,7 +140,7 @@ Azure Cosmos DB unterstützt die folgenden Datenbankbefehle für Cassandra-API-K
 * BATCH – nur nicht protokollierte Befehle werden unterstützt. 
 * DELETE
 
-Alle CRUD-Vorgänge geben bei einer Ausführung über CQLV4-kompatibles SDK zusätzliche Informationen zu einem Fehler, verbrauchten Anforderungseinheiten und Aktivitäts-ID zurück. Die Befehle DELETE und UPDATE müssen unter Berücksichtigung von Ressourcenkontrolle verarbeitet werden, um eine Überlastung von bereitgestellten Ressourcen zu vermeiden. 
+Alle CRUD-Vorgänge geben bei Ausführung über ein CQLV4-kompatibles SDK zusätzliche Informationen zu Fehlern und beanspruchten Anforderungseinheiten zurück. Bei Lösch- und Aktualisierungsbefehlen muss die Ressourcenkontrolle berücksichtigt werden, um eine angemessene Nutzung des bereitgestellten Durchsatzes sicherzustellen. 
 * Hinweis: Der Wert „gc_grace_seconds“ muss Null sein, wenn er angegeben wird.
 
 ```csharp
@@ -157,18 +157,32 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Konsistenzzuordnung 
 
-Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei Lesevorgängen.  Die Konsistenzzuordnung finden Sie [hier[(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
+Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei Lesevorgängen.  Ausführliche Informationen zur Konsistenzzuordnung finden Sie [hier](https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Berechtigungs- und Rollenverwaltung
 
-Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) für die Bereitstellung, Rotation von Schlüsseln, Anzeige von Metriken sowie Lese-/Schreibkennwörter bzw. Lese-/Schreibschlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) abgerufen werden können. Azure Cosmos DB unterstützt noch keine Benutzer und Rollen für CRUD-Aktivitäten (Create, Read, Update, Delete; Erstellen, Lesen, Aktualisieren, Löschen). 
+Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) für die Bereitstellung, Rotation von Schlüsseln, Anzeige von Metriken sowie Lese-/Schreibkennwörter bzw. Lese-/Schreibschlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) abgerufen werden können. Azure Cosmos DB unterstützt keine Rollen für CRUD-Aktivitäten.
 
-## <a name="planned-support"></a>Geplante Unterstützung 
-* Der Regionsname wird derzeit im Befehl „create keyspace“ ignoriert. Die Verteilung von Daten wird über die zugrunde liegende Cosmos DB-Plattform implementiert und über das Portal oder über PowerShell für das Konto verfügbar gemacht. 
+## <a name="keyspace-and-table-options"></a>Keyspace- und Tabellenoptionen
+
+Die Optionen für Regionsname, Klasse, Replikationsfaktor und Rechenzentrum im Befehl „CREATE KEYSPACE“ werden derzeit ignoriert. Das System verwendet die Replikationsmethode der [globalen Datenverteilung](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) der zugrunde liegenden Azure Cosmos DB-Instanz, um die Regionen hinzuzufügen. Wenn die Daten regionsübergreifend vorhanden sein müssen, können Sie dies mithilfe von PowerShell, per CLI oder über das Portal auf der Kontoebene aktivieren. Weitere Informationen finden Sie unter [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md#addremove-regions-from-your-database-account). „Durable_writes“ kann nicht deaktiviert werden, da Azure Cosmos DB sicherstellt, dass jeder Schreibvorgang dauerhaft ist. In jeder Region repliziert Azure Cosmos DB die Daten innerhalb der gesamten Replikatgruppe, die sich aus vier Replikaten zusammensetzt. Diese [Konfiguration](global-dist-under-the-hood.md) der Replikatgruppe kann nicht geändert werden.
+ 
+Beim Erstellen der Tabelle werden mit Ausnahme von „gc_grace_seconds“ alle Optionen ignoriert, und „gc_grace_seconds“ muss auf Null festgelegt werden.
+Für den Keyspace und die Tabelle steht eine zusätzliche Option namens „cosmosdb_provisioned_throughput“ mit einem Mindestwert von 400 RU/s zur Verfügung. Der Keyspacedurchsatz ermöglicht die tabellenübergreifende gemeinsame Nutzung des Durchsatzes und ist hilfreich in Szenarien, in denen alle Tabellen nicht den bereitgestellten Durchsatz beanspruchen. Mit dem Befehl „ALTER TABLE“ kann der bereitgestellte Durchsatz regionsübergreifend geändert werden. 
+
+```
+CREATE  KEYSPACE  sampleks WITH REPLICATION = {  'class' : 'SimpleStrategy'}   AND cosmosdb_provisioned_throughput=2000;  
+
+CREATE TABLE sampleks.t1(user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=2000; 
+
+ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
+
+```
 
 
+## <a name="usage-of-cassandra-retry-connection-policy"></a>Verwendung der Cassandra-Richtlinie für die Verbindungswiederholung
 
-
+Azure Cosmos DB ist ein ressourcengesteuertes System. Das bedeutet, dass pro Sekunde eine bestimmte Anzahl von Vorgängen ausgeführt werden kann – abhängig von den Anforderungseinheiten, die durch die Vorgänge beansprucht werden. Überschreitet eine Anwendung dieses Limit in einer Sekunde, wird die Anforderungsrate begrenzt, und Ausnahmen werden ausgelöst. Diese Ausnahmen werden von der Cassandra-API in Azure Cosmos DB in Überladungsfehler im nativen Cassandra-Protokoll übersetzt. Um sicherzustellen, dass Ihre Anwendung im Falle einer Ratenbegrenzung Anforderungen abfangen und wiederholen kann, werden die Erweiterungen für [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) und [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) bereitgestellt. Wenn Sie über andere SDKs auf die Cassandra-API in Azure Cosmos DB zugreifen, müssen Sie eine Verbindungsrichtlinie erstellen, um für diese Ausnahmen eine Wiederholung durchzuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
