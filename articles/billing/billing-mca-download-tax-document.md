@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Steuerdokumenten für Ihre Microsoft-Kundenvereinbarung in Azure
-description: Hier erhalten Sie Informationen zum Anzeigen und Herunterladen von Steuerbescheinigungen für Ihr Abrechnungsprofil für eine Microsoft-Kundenvereinbarung.
+title: Anzeigen der Steuerdokumente für Ihre Azure-Rechnung
+description: Hier erhalten Sie Informationen zum Anzeigen und Herunterladen von Steuerbescheinigungen für Ihr Abrechnungsprofil.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,35 +12,31 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 66d47ad1d67c963d70fb40e43eb077222ad8b360
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c8c39a832f54cd5075b57507ead14cbcdff2bb53
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709808"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375517"
 ---
-# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Anzeigen der Steuerdokumente für Ihre Microsoft-Kundenvereinbarung
+# <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Anzeigen und Herunterladen von Steuerdokumenten für Ihre Azure-Rechnung
 
-Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben](#check-access-to-a-microsoft-customer-agreement).
+Sie können Steuerdokumente für Ihre Azure-Rechnung herunterladen, wenn Sie im Azure-Portal Zugriff auf Rechnungen haben. Nur bestimmte Rollen haben Zugriff auf Rechnungen, wie etwa der Kontoadministrator. Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, müssen Sie die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ besitzen, um Rechnungen und Steuerdokumente herunterladen zu können. Wenn Sie über eine Microsoft-Partnervereinbarung verfügen, benötigen Sie in der Partnerorganisation die Rolle „Globaler Administrator“ oder „Administrator-Agent“. [Überprüfen Sie Ihren Abrechnungskontotyp](#check-billing-account-type), um zu sehen, welche Berechtigungen Sie zum Herunterladen von Steuerdokumenten benötigen.
 
 ## <a name="view-and-download-tax-documents"></a>Anzeigen und Herunterladen von Steuerdokumenten
 
-Sie müssen über die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ verfügen, um Steuerdokumente anzeigen und herunterladen zu können. Weitere Informationen zu Abrechnungsrollen für Microsoft-Kundenvereinbarungen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.
-1. Wählen Sie ein Abrechnungsprofil aus.
-1. Wählen Sie **Rechnungen** aus.
+1. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto oder ein Abrechnungsprofil auswählen.
+1. Wählen Sie die Option **Rechnungen** unter **Abrechnung** im Menü auf der linken Seite aus.
 1. Suchen Sie im Rechnungsraster nach der Zeile der Rechnung, die dem Steuerdokument entspricht, das Sie herunterladen möchten.
-1. Klicken Sie am Ende der Zeile auf die Auslassungspunkte (`...`).
-7. Wählen Sie **Steuerdokument** aus. Je nach Land/Region Ihres Abrechnungsprofils werden möglicherweise mehrere Steuerdokumente pro Rechnung angezeigt.
+1. Klicken Sie am Ende der Zeile auf das Downloadsymbol oder die Auslassungspunkte (`...`).
+7. Wählen Sie im Downloadmenü **Steuerdokument** aus. Je nach Land/Region Ihres Abrechnungsprofils werden möglicherweise mehrere Steuerdokumente pro Rechnung angezeigt.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>Überprüfen des Abrechnungskontotyps
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](billing-download-azure-invoice.md)
 - [Anzeigen und Herunterladen der Microsoft Azure-Nutzung und -Gebühren](billing-download-azure-daily-usage.md)
-- Lesen der [Informationen zu den Gebühren auf der Rechnung für Ihr Abrechnungsprofil](billing-mca-understand-your-bill.md)

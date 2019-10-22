@@ -2,18 +2,17 @@
 title: Was ist Azure Analysis Services? | Microsoft Docs
 description: Verschaffen Sie sich einen Überblick über Analysis Services in Azure.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259548"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512596"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -139,7 +138,7 @@ Azure Analysis Services ist mit zahlreichen praktischen Features kompatibel, die
 
 Tabellarische Modelle werden sowohl im In-Memory- als auch im DirectQuery-Modus unterstützt. Für tabellarische Modelle im In-Memory-Modus (Standard) werden mehrere Datenquellen unterstützt. Da Modelldaten stark komprimiert und im Speicher zwischengespeichert werden, ermöglicht dieser Modus für große Datenmengen die schnellste Reaktion auf Abfragen. Außerdem bietet er die größtmögliche Flexibilität in Bezug auf komplexe Datasets und Abfragen. Die Partitionierung ermöglicht inkrementelle Lasten, erhöht die Parallelität und verringert den Speicherverbrauch. Andere erweiterte Features der Datenmodellierung, z.B. berechnete Tabellen, und alle DAX-Funktionen werden unterstützt. In-Memory-Modelle müssen aktualisiert (verarbeitet) werden, um zwischengespeicherte Daten von Datenquellen zu aktualisieren. Mit dem Azure-Dienstprinzipalsupport kann mit unbeaufsichtigten Aktualisierungsvorgängen per PowerShell, TOM, TMSL und REST flexibel sichergestellt werden, dass Ihre Modelldaten immer auf dem aktuellen Stand sind. 
 
-Im DirectQuery-Modus* wird die relationale Back-End-Datenbank für die Speicherung und Abfragenausführung genutzt. Sehr große Datasets in einzelnen SQL Server-, SQL Server Data Warehouse-, Azure SQL-Datenbank-, Azure SQL Data Warehouse-, Oracle- und Teradata-Datenquellen werden unterstützt. Für Back-End-Datasets kann der verfügbare Speicher für Serverressourcen überschritten werden. Komplexe Aktualisierungsszenarien für Datenmodelle sind nicht erforderlich. Es gelten auch einige Einschränkungen, z.B. eine begrenzte Zahl von Datenquellentypen, DAX-Formelbeschränkungen und fehlende Unterstützung einiger Features für die erweiterte Datenmodellierung. Lesen Sie die Informationen zum [DirectQuery-Modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular), bevor Sie den für Sie am besten geeigneten Modus ermitteln.
+Im DirectQuery-Modus* wird die relationale Back-End-Datenbank für die Speicherung und Abfragenausführung genutzt. Sehr große Datasets in einzelnen SQL Server-, SQL Server Data Warehouse-, Azure SQL-Datenbank-, Azure SQL Data Warehouse-, Oracle- und Teradata-Datenquellen werden unterstützt. Für Back-End-Datasets kann der verfügbare Speicher für Serverressourcen überschritten werden. Komplexe Aktualisierungsszenarien für Datenmodelle sind nicht erforderlich. Es gelten auch einige Einschränkungen, z. B. eine begrenzte Zahl von Datenquellentypen, DAX-Formelbeschränkungen und fehlende Unterstützung einiger Features für die erweiterte Datenmodellierung. Lesen Sie die Informationen zum [DirectQuery-Modus](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular), bevor Sie den für Sie am besten geeigneten Modus ermitteln.
 
 \* Die Verfügbarkeit der Features hängt vom Tarif ab.
 
@@ -149,7 +148,7 @@ Tabellarische Modelle in Azure Analysis Services unterstützen eine Vielzahl von
 
 ## <a name="compatibility-level"></a>Kompatibilitätsgrad
 
-Der Kompatibilitätsgrad bezieht sich auf releasespezifische Verhalten in der Analysis Services-Engine. Azure Analysis Services unterstützt tabellarische Modelle mit dem Kompatibilitätsgrad 1200 oder höher. Weitere Informationen finden Sie unter [Kompatibilitätsgrad für tabellarische Analysis Services-Modelle](analysis-services-compat-level.md).
+Der Kompatibilitätsgrad bezieht sich auf releasespezifische Verhalten in der Analysis Services-Engine. Azure Analysis Services unterstützt tabellarische Modelle mit dem Kompatibilitätsgrad 1200 oder höher. Weitere Informationen finden Sie unter [Kompatibilitätsgrad für tabellarische Modelle](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
 
 
 ## <a name="your-data-is-secure"></a>Datensicherheit

@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2803f8d659726ac95bcefa6191a816ed2b2dcb2d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718722"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375408"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Grundlegendes zu Azure-Gebühren für externe Dienste
 Externe Dienste werden von Drittanbietern im Azure Marketplace veröffentlicht. Ein Beispiel für einen externen Dienst, den Sie in Azure erwerben können, der jedoch nicht von Microsoft veröffentlicht wird, ist SendGrid. Einige Microsoft-Produkte sind auch über den Azure Marketplace erhältlich.
 
 ## <a name="how-external-services-are-billed"></a>So werden externe Dienste in Rechnung gestellt
 
-- Wenn Sie eine [Microsoft-Kundenvereinbarung](#check-access) haben, werden Ihre Dienste von Drittanbietern mit dem Rest Ihrer Azure-Dienste in Rechnung gestellt.
-- Wenn Sie keine Microsoft-Kundenvereinbarung haben, werden Ihre externen Dienste separat von Ihren Azure-Diensten in Rechnung gestellt.
+- Wenn Sie eine Microsoft-Kundenvereinbarung (MCA) oder eine Microsoft-Partnervereinbarung (MPA) haben, werden Ihre Dienste von Drittanbietern mit dem Rest Ihrer Azure-Dienste in Rechnung gestellt. [Überprüfen Sie Ihren Abrechnungskontotyp ](#check-billing-account-type), um zu überprüfen, ob Sie Zugriff auf eine MCA oder eine MPA haben.
+- Wenn Sie keine MCA oder MPA haben, werden Ihre externen Dienste separat von Ihren Azure-Diensten in Rechnung gestellt.
 - Jeder externe Dienst verwendet ein eigenes Abrechnungsmodell. Für einige Dienste wird die nutzungsbasierte Bezahlung verwendet, für andere gelten feste monatliche Gebühren.
 - Die kostenlosen monatlichen Gutschriften können nicht für externe Dienste verwendet werden. Wenn Sie ein Azure-Abonnement mit [kostenlosen Gutschriften](https://azure.microsoft.com/pricing/spending-limits/) verwenden, können diese Gutschriften nicht zum Begleichen von Gebühren für externe Dienste genutzt werden. Beim Bereitstellen eines neuen externen Diensts oder einer neuen externen Ressource wird eine Warnung angezeigt:
 
@@ -48,11 +48,11 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>Anzeigen und Herunterladen der Rechnungen
+## <a name="view-and-download-invoices-for-external-services"></a>Anzeigen und Herunterladen von Rechnungen für externe Dienste
 
-Wenn Sie eine [Microsoft-Kundenvereinbarung](#check-access) haben, werden Ihre Gebühren für Drittanbieter auf derselben Rechnung wie Ihre Azure-Gebühren ausgewiesen. Erfahren Sie, wie Sie im Azure-Portal [Ihre Azure-Rechnung anzeigen und herunterladen](billing-download-azure-invoice.md), um Ihre Drittanbietergebühren zu sehen.
+Wenn Sie eine Microsoft-Kundenvereinbarung (MCA) oder eine Microsoft-Partnervereinbarung (MPA) haben, werden Ihre Dienste von Drittanbietern mit dem Rest Ihrer Azure-Dienste in Rechnung gestellt. [Überprüfen Sie Ihren Abrechnungskontotyp](#check-billing-account-type), um zu überprüfen, ob Sie Zugriff auf eine MCA oder eine MPA haben. Wenn dies der Fall ist, erfahren Sie unter [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](billing-download-azure-invoice.md), wie Sie Ihre Drittanbietergebühren einsehen können.
 
-Wenn Sie keine Microsoft-Kundenvereinbarung haben, erhalten Sie separate Rechnungen über Drittanbietergebühren. Um Ihre Azure Marketplace-Rechnungen über das Azure-Portal anzuzeigen und herunterzuladen, befolgen Sie diese Schritte:
+Wenn Sie keine MCA oder MPA haben, erhalten Sie separate Rechnungen über Drittanbietergebühren. Um Ihre Azure Marketplace-Rechnungen über das Azure-Portal anzuzeigen und herunterzuladen, befolgen Sie diese Schritte:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
@@ -108,8 +108,8 @@ Wenn Sie einen externen Dienst kündigen möchten, löschen Sie die Ressource im
     ![Löschen der Ressource](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. Klicken Sie auf **Löschen**.
 
-## <a name="check-access"></a>Zugriff überprüfen
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>Überprüfen des Abrechnungskontotyps
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

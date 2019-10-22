@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/24/2019
+ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170012"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389372"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -36,15 +36,31 @@ Mit einem Zugriffspaket können Sie Ressourcen und Richtlinien einmalig so einri
 
 Alle Zugriffspakete müssen in einem Container abgelegt werden, der als „Katalog“ bezeichnet wird. In einem Katalog wird definiert, welche Ressourcen Sie Ihrem Zugriffspaket hinzufügen können. Wenn Sie keinen Katalog angeben, wird Ihr Zugriffspaket in den Katalog „Allgemein“ eingefügt. Derzeit können Sie vorhandene Pakete nicht in einen anderen Katalog verschieben.
 
-Alle Zugriffspakete müssen mindestens eine Richtlinie aufweisen. Richtlinien geben an, wer das Zugriffspaket anfordern kann, sowie Genehmigungs- und Ablaufeinstellungen. Beim Erstellen eines neuen Zugriffspakets können Sie eine anfängliche Richtlinie für in Ihrem Verzeichnis enthaltene Benutzer, nicht in Ihrem Verzeichnis enthaltene Benutzer und nur direkte Administratorzuweisungen erstellen oder die Richtlinie später erstellen.
+Wenn Sie ein Zugriffspaket-Manager sind, können Sie keine eigenen Ressourcen zu einem Katalog hinzufügen. Sie können nur die im Katalog verfügbaren Ressourcen verwenden. Wenn Sie einem Katalog Ressourcen hinzufügen müssen, können Sie den Katalogbesitzer darum bitten.
 
-Im folgenden Diagramm wird der allgemeine Prozess beim Erstellen eines neuen Zugriffspakets veranschaulicht.
+Alle Zugriffspakete müssen mindestens eine Richtlinie aufweisen. Richtlinien geben an, wer das Zugriffspaket anfordern kann. Außerdem sind darin die Genehmigungs- und Lebenszykluseinstellungen festgelegt. Beim Erstellen eines neuen Zugriffspakets können Sie eine anfängliche Richtlinie für in Ihrem Verzeichnis enthaltene Benutzer, nicht in Ihrem Verzeichnis enthaltene Benutzer und nur direkte Administratorzuweisungen erstellen oder die Richtlinie später erstellen.
 
-![Erstellen eines Zugriffspakets](./media/entitlement-management-access-package-create/access-package-process.png)
+![Erstellen eines Zugriffspakets](./media/entitlement-management-access-package-create/access-package-create.png)
+
+Nachfolgend sind die grundlegenden Schritte zum Erstellen eines neuen Zugriffspakets aufgeführt.
+
+1. Starten Sie in Identity Governance den Prozess zum Erstellen eines neuen Zugriffspakets.
+
+1. Wählen Sie den Katalog aus, in dem das Zugriffspaket erstellt werden soll.
+
+1. Fügen Sie Ihrem Zugriffspaket Ressourcen aus dem Katalog hinzu.
+
+1. Weisen Sie für jede Ressource Ressourcenrollen zu.
+
+1. Geben Sie Benutzer an, die Zugriff anfordern können.
+
+1. Legen Sie die gewünschten Genehmigungseinstellungen fest.
+
+1. Legen Sie die Lebenszykluseinstellungen fest.
 
 ## <a name="start-new-access-package"></a>Starten eines neuen Zugriffspakets
 
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
+**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -64,20 +80,19 @@ Auf der Registerkarte **Grundlagen** geben Sie dem Zugriffspaket einen Namen und
 
 1. Wählen Sie in der Dropdownliste **Katalog** den Katalog aus, in dem das Zugriffspaket erstellt werden soll. Beispielsweise verfügen Sie möglicherweise über einen Katalogbesitzer, der alle Marketingressourcen verwaltet, die angefordert werden können. In diesem Fall können Sie den Marketingkatalog auswählen.
 
-    Es werden nun Kataloge angezeigt, in denen Sie Zugriffspakete erstellen dürfen. Um ein Zugriffspaket in einem vorhandenen Katalog zu erstellen, müssen Sie mindestens als globaler Administrator, Benutzeradministrator, Katalogbesitzer oder Zugriffspaket-Manager in diesem Katalog fungieren.
+    Es werden nun Kataloge angezeigt, in denen Sie Zugriffspakete erstellen dürfen. Um ein Zugriffspaket in einem vorhandenen Katalog erstellen zu können, müssen Sie ein globaler Administrator, Benutzeradministrator, Katalogbesitzer oder aber Zugriffspaket-Manager für diesen Katalog sein.
 
     ![Zugriffspaket – Grundlagen](./media/entitlement-management-access-package-create/basics.png)
 
-    Wenn Sie als globaler Administrator oder Benutzeradministrator Ihr Zugriffspaket in einem neuen Katalog erstellen möchten, der nicht aufgeführt ist, klicken Sie auf **Neu erstellen**. Geben Sie einen Namen und eine Beschreibung für den Katalog ein, und klicken Sie dann auf **Erstellen**.
+    Wenn Sie ein globaler Administrator, Benutzeradministrator oder Katalogersteller sind und Ihr Zugriffspaket in einem neuen Katalog erstellen möchten, der nicht aufgeführt ist, klicken Sie auf **Neuen Katalog erstellen**. Geben Sie einen Namen und eine Beschreibung für den Katalog ein, und klicken Sie dann auf **Erstellen**.
 
     Das Zugriffspaket, das Sie erstellen, und alle darin enthaltenen Ressourcen werden dem neuen Katalog hinzugefügt. Sie können später weitere Katalogbesitzer hinzufügen.
-
 
 1. Klicken Sie auf **Weiter**.
 
 ## <a name="resource-roles"></a>Ressourcenrollen
 
-Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die in das Zugriffspaket aufgenommen werden sollen.  Benutzern, die das Zugriffspaket anfordern und erhalten, werden alle Ressourcenrollen im Zugriffspaket zugewiesen.
+Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die in das Zugriffspaket aufgenommen werden sollen. Benutzern, die das Zugriffspaket anfordern und erhalten, werden alle Ressourcenrollen im Zugriffspaket zugewiesen.
 
 1. Klicken Sie auf den hinzuzufügenden Ressourcentyp (**Gruppen und Teams**, **Apps** oder **SharePoint-Websites**).
 
@@ -97,19 +112,17 @@ Auf der Registerkarte **Ressourcenrollen** wählen Sie die Ressourcen aus, die i
 
 1. Klicken Sie auf **Weiter**.
 
-## <a name="policy"></a>Richtlinie
+## <a name="requests"></a>Requests
 
-Auf der Registerkarte **Richtlinie** erstellen Sie die erste Richtlinie, die angibt, wer das Zugriffspaket anfordern kann, sowie Genehmigungs- und Ablaufeinstellungen. Später können Sie weitere Richtlinien erstellen, um anderen Gruppen von Benutzern das Anfordern des Zugriffspakets zu genehmigen. Diese weisen auch eigene Genehmigungs- und Ablaufeinstellungen auf. Sie können die Richtlinie auch später erstellen.
+Auf der Registerkarte **Anforderungen** erstellen Sie die erste Richtlinie, um anzugeben, wer das Zugriffspaket anfordern kann, und die Genehmigungseinstellungen festzulegen. Später können Sie weitere Anforderungsrichtlinien erstellen, um zusätzlichen Gruppen von Benutzern mit eigenen Genehmigungseinstellungen das Anfordern des Zugriffspakets zu ermöglichen.
 
-1. Legen Sie die Option **Erste Richtlinie erstellen** auf **Jetzt** oder **Später** fest.
+![Zugriffspaket – Registerkarte „Anforderungen“](./media/entitlement-management-access-package-create/requests.png)
 
-    ![Zugriffspaket – Richtlinie](./media/entitlement-management-access-package-create/policy.png)
+Führen Sie die Schritte in einem der folgenden Abschnitte aus.
 
-1. Wenn Sie **Später** auswählen, fahren Sie weiter unten mit dem Abschnitt [Bewerten + erstellen](#review--create) fort, um das Zugriffspaket zu erstellen.
+[!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 
-1. Wenn Sie **Jetzt** auswählen, führen Sie die Schritte in einem der nachstehenden Abschnitt zu Richtlinien aus.
-
-[!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
+[!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="review--create"></a>Bewerten + erstellen
 
@@ -125,4 +138,5 @@ Auf der Registerkarte **Bewerten + erstellen** können Sie Ihre Einstellungen ü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bearbeiten und Verwalten eines vorhandenen Zugriffspakets](entitlement-management-access-package-edit.md)
+- [Teilen des Links zum Anfordern eines Zugriffspakets](entitlement-management-access-package-settings.md)
+- [Ändern von Ressourcenrollen für ein Zugriffspaket](entitlement-management-access-package-resources.md)

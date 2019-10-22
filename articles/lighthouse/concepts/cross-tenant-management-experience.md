@@ -1,18 +1,18 @@
 ---
-title: Mandantenübergreifende Verwaltungsmöglichkeiten mit Azure Lighthouse
+title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309650"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300989"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -58,6 +58,7 @@ Zurzeit unterstützt die mandantenübergreifende Verwaltung die folgenden Szenar
 - Anzeigen von Warnungen für delegierte Abonnements im Azure-Portal oder programmgesteuert durch REST-API-Aufrufe mit der Möglichkeit zum Anzeigen von Warnungen aus allen Abonnements
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - Log Analytics: Abfragen von Daten aus Remote-Kundenarbeitsbereichen in mehreren Mandanten
+- Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im Dienstanbietermandanten über Webhooks
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -65,7 +66,7 @@ Zurzeit unterstützt die mandantenübergreifende Verwaltung die folgenden Szenar
 - Erstellen und Bearbeiten von Richtliniendefinitionen innerhalb eines delegierten Abonnements
 - Zuweisen der von Kunden definierten Richtliniendefinitionen innerhalb des delegierten Abonnements
 - Kunden werden Richtlinien, die vom Dienstanbieter erstellt wurden, zusammen mit allen Richtlinien angezeigt, die sie selbst erstellt haben.
-- Kann „deployIfNotExists“-Zuweisungen innerhalb des Kundenmandanten korrigieren, wenn der Kunde die verwaltete Identität und die *roleDefinitionIds* für diese Richtlinienzuweisung konfiguriert hat.
+- [Beheben von „deployIfNotExists“ oder Ändern von Zuweisungen innerhalb des Kundenmandanten](../how-to/deploy-policy-remediation.md)
 
 [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/):
 

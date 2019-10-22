@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Bereitstellen von Docker-Containern in Azure Container Instances – Befehlszeilenschnittstelle'
+title: 'Schnellstart: Bereitstellen von Docker-Containern in Azure Container Instances – Azure-Befehlszeilenschnittstelle'
 description: In diesem Schnellstart verwenden Sie die Azure-Befehlszeilenschnittstelle, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
 services: container-instances
 author: dlepow
@@ -8,13 +8,16 @@ ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050628"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429198"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -22,7 +25,7 @@ Führen Sie mithilfe von Azure Container Instances serverlose Docker-Container s
 
 In diesem Schnellstart stellen Sie mithilfe der Azure-Befehlszeilenschnittstelle einen isolierten Docker-Container bereit und machen seine Anwendung über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügbar. Einige Sekunden nach dem Ausführen eines einzigen Bereitstellungsbefehls können Sie zur ausgeführten Anwendung im Container navigieren:
 
-![In Azure Container Instances bereitgestellte App im Browser][aci-app-browser]
+![Anzeigen einer in Azure Container Instances bereitgestellten App im Browser][aci-app-browser]
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azure-account] erstellen, bevor Sie beginnen.
 
@@ -69,7 +72,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 Wenn der Wert `ProvisioningState` des Containers **Erfolgreich** lautet, navigieren Sie in Ihrem Browser zu seinem FQDN. Der Vorgang war erfolgreich, wenn in etwa die folgende Webseite angezeigt wird. Sie haben eine in einem Docker-Container ausgeführte Anwendung in Azure bereitgestellt.
 
-![Screenshot eines Browsers mit ausgeführter Anwendung in einer Azure-Containerinstanz][aci-app-browser]
+![Anzeigen einer in Azure Container Instances bereitgestellten App im Browser][aci-app-browser]
 
 Sollte die Anwendung nicht sofort angezeigt werden, warten Sie einige Sekunden, bis die DNS-Auffüllung abgeschlossen ist, und aktualisieren Sie anschließend Ihren Browser.
 
@@ -155,7 +158,7 @@ In dieser Schnellstartanleitung haben Sie eine Azure-Containerinstanz aus einem 
 Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azure zu testen, lesen Sie die Schnellstartanleitung für [Azure Kubernetes Service (AKS)][container-service].
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

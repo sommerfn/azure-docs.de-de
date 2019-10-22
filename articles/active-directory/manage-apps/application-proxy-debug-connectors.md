@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: c3088ae777fe1a64be218105d36fdb9e01d7b798
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c041578932bd33eb0a2d3afc18a35c2c0458dc8b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145951"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311848"
 ---
 # <a name="debug-application-proxy-connector-issues"></a>Debuggen von Problemen mit Anwendungsproxyconnectors 
 
@@ -43,7 +43,7 @@ In diesem Flussdiagramm werden die Schritte zum Debuggen von einigen häufigeren
 |  | Aktion | BESCHREIBUNG | 
 |---------|---------|---------|
 |1 | Ermitteln der Connectorgruppe, die der App zugewiesen ist | Vermutlich haben Sie einen Connector auf mehreren Servern installiert. In diesem Fall sollten die Connectors [Connectorgruppen zugewiesen sein](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups). Weitere Informationen zu Connectorgruppen finden Sie unter [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen](application-proxy-connector-groups.md). |
-|2 | Installieren des Connectors und Zuweisen einer Gruppe | Wenn Sie keinen Connector installiert haben, helfen Ihnen die Informationen unter [Installieren und Registrieren eines Connectors](application-proxy-add-on-premises-application.md#install-and-register-a-connector) weiter.<br></br>Lesen Sie den Abschnitt [Erstellen von Connectorgruppen](application-proxy-connector-groups.md#create-connector-groups), wenn der Connector keiner Gruppe zugewiesen ist.<br></br>Lesen Sie den Abschnitt [Zuweisen von Anwendungen zu Ihren Connectorgruppen](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups), wenn die Anwendung keiner Connectorgruppe zugewiesen ist.|
+|2 | Installieren des Connectors und Zuweisen einer Gruppe | Wenn Sie keinen Connector installiert haben, helfen Ihnen die Informationen unter [Installieren und Registrieren eines Connectors](application-proxy-add-on-premises-application.md#install-and-register-a-connector) weiter.<br></br> Wenn Probleme beim Installieren des Connectors auftreten, lesen Sie [Problem beim Installieren des Anwendungsproxy-Agent-Connectors](application-proxy-connector-installation-problem.md).<br></br> Lesen Sie den Abschnitt [Erstellen von Connectorgruppen](application-proxy-connector-groups.md#create-connector-groups), wenn der Connector keiner Gruppe zugewiesen ist.<br></br>Lesen Sie den Abschnitt [Zuweisen von Anwendungen zu Ihren Connectorgruppen](application-proxy-connector-groups.md#assign-applications-to-your-connector-groups), wenn die Anwendung keiner Connectorgruppe zugewiesen ist.|
 |3 | Ausführen eines Porttests auf dem Connectorserver | Führen Sie auf dem Connectorserver einen Porttest aus, indem Sie [telnet](https://docs.microsoft.com/windows-server/administration/windows-commands/telnet) oder ein anderes Tool zum Testen von Ports verwenden, um zu überprüfen, ob die Ports 443 und 80 geöffnet sind.|
 |4 | Konfigurieren der Domänen und Ports | [Stellen Sie sicher, dass Ihre Domänen und Ports richtig konfiguriert sind](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment). Damit der Connector richtig funktioniert, müssen bestimmte Ports geöffnet sein, und Ihr Server muss auf einige URLs zugreifen können. |
 |5 | Überprüfen, ob ein Back-End-Proxy verwendet wird | Überprüfen Sie, ob für die Connectors Back-End-Proxyserver genutzt oder umgangen werden. Ausführliche Informationen finden Sie unter [Problembehandlung für Proxyprobleme des Connectors und Verbindungsprobleme von Diensten](application-proxy-configure-connectors-with-proxy-servers.md#troubleshoot-connector-proxy-problems-and-service-connectivity-issues). |

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen einer Python-App, die Azure Cache for Redis verwendet | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen einer Python-App, die Azure Cache for Redis verwendet'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine Python-App erstellen, die Azure Cache for Redis verwendet.
 services: cache
 documentationcenter: ''
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.custom:
+- mvc
+- seo-python-october2019
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743931"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435527"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Python
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Schnellstart: Erstellen einer Python-App, die Azure Cache for Redis verwendet
 
-In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine Python-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist.
+In diesem Artikel integrieren Sie Azure Cache for Redis in eine Python-App, um Zugriff auf einen sicheren, dedizierten Cache zu erhalten, der von jeder Anwendung in Azure aus zugänglich ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +48,7 @@ Im folgenden Beispiel wird *pip3* für Python3 verwendet, um das redis-py-Paket 
     pip3 install redis
 ```
 
-![Installieren von redis-py](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![Installieren der redis-py-Python-Schnittstelle für Azure Cache for Redis](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>Lese- und Schreibvorgänge für den Cache
@@ -98,7 +100,7 @@ for c in result:
 
 Führen Sie das Skript mit Python aus.
 
-![Python-Test abgeschlossen](./media/cache-python-get-started/cache-python-completed.png)
+![Ausführen eines Python-Skripts zum Testen des Cachezugriffs in Azure Cache for Redis](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -115,7 +117,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Si
 
 Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in der Ergebnisliste in Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
 
-![Löschen](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![Löschen der Schnellstart-Ressourcengruppe für Azure Cache for Redis](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung den Namen Ihrer Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 

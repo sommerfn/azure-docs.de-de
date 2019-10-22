@@ -14,13 +14,13 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: f46a4771f1db5e4040cb23b1a9236c91699b6ad5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057867"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329860"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Node.js
 
@@ -113,7 +113,7 @@ node redistest.js
 
 Im folgenden Beispiel können Sie sehen, dass der `Message`-Schlüssel zuvor einen zwischengespeicherten Wert aufgewiesen hat, der im Azure-Portal über die Redis-Konsole festgelegt wurde. Die App hat diesen zwischengespeicherten Wert aktualisiert. Außerdem hat die App die Befehle `PING` und `CLIENT LIST` ausgeführt.
 
-![Fertige Cache-App](./media/cache-nodejs-get-started/cache-app-complete.png)
+![Fertige Redis Cache-App](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -129,7 +129,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Si
 
 Geben Sie im Textfeld **Nach Name filtern** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in der Ergebnisliste in Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
 
-![Löschen](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
+![Löschen einer Azure-Ressourcengruppe](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
 Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung den Namen Ihrer Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 

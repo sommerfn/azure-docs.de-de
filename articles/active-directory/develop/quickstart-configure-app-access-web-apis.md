@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879395"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389610"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
 
@@ -80,8 +80,9 @@ Fügen Sie Ihrer Anwendung wie folgt einen Umleitungs-URI hinzu:
 
 1. Führen Sie diese Schritte aus, um eine Auswahl aus den vorgeschlagenen Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop) zu treffen:
     1. Suchen Sie nach dem Abschnitt mit den Vorschlägen zu **Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** .
-    1. Wählen Sie die passenden Umleitungs-URIs für Ihre Anwendung aus, indem Sie die Kontrollkästchen verwenden.
+    1. Wählen Sie die passenden Umleitungs-URIs für Ihre Anwendung aus, indem Sie die Kontrollkästchen verwenden. Sie können auch einen benutzerdefinierten Umleitungs-URI eingeben. Wenn Sie nicht sicher sind, was Sie verwenden sollen, finden Sie in der Bibliotheksdokumentation weitere Informationen.
 
+Für Umleitungs-URIs gelten bestimmte Einschränkungen. Erfahren Sie mehr über [Umleitungs-URI/Antwort-URL: Einschränkungen](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 > [!NOTE]
 > Testen Sie die neue Benutzeroberfläche für die **Authentifizierung**, auf der Sie Einstellungen für Ihre Anwendung basierend auf der Zielplattform oder dem Zielgerät konfigurieren können.
 >

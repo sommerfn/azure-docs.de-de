@@ -8,18 +8,16 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 6ef6f4ae86f0f732164603bd8b38dc1bbef95dd9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 383401c1486bcbebc39b64d5794f8bdc660d2778
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600147"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329639"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Verbinden von Funktionen mit Azure Storage mithilfe von Visual Studio
 
-Mit Azure Functions können Sie Funktionen mit Azure-Diensten und anderen Ressourcen verbinden, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese vordefinierten Verbindungen werden als *Bindungen* bezeichnet. Bindungen ermöglichen es einer Funktion, Azure-Dienste und andere Ressourcen als Eingabe und Ausgabe für eine Funktion zu verwenden.
-
-Die Funktionsausführung wird durch einen einzelnen *Trigger* gestartet. Ein Trigger ist ein spezieller Typ Eingabebindung. Während eine Funktion nur einen Trigger hat, kann sie mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Funktion, die Sie im [Vorheriger Schnellstartartikel] erstellt haben, mithilfe von Visual Studio mit Azure Storage verbinden. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus der HTTP-Anforderung in eine Nachricht in einer Azure Queue Storage-Warteschlange. 
 

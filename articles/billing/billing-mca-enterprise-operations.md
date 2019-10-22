@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709555"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375504"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Ausführen von Enterprise Agreement-Aufgaben in Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung
 
@@ -27,7 +27,7 @@ Wenn Ihre Organisation eine Microsoft-Kundenvereinbarung unterzeichnet hat, um I
 
 Das folgende Diagramm verdeutlicht, wie die Abrechnung in Ihrem neuen Abrechnungskonto organisiert ist.
 
-![Abbildung der Hierarchie nach Umstellung von EA auf MCA](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![Abbildung der Hierarchie nach Umstellung von EA auf MCA](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Enterprise Agreement   | Microsoft-Kundenvereinbarung    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ Um die aggregierten Kosten für Abonnements anzuzeigen, die zu einem Konto gehö
 
 Für jedes Abrechnungsprofil in Ihrem Abrechnungskonto wird eine Monatsrechnung generiert. Für jede Rechnung können Sie die CSV-Datei über Azure-Nutzung und -Gebühren, Preisblatt und (falls zutreffend) Steuerdokument herunterladen. Sie können die CSV-Datei über Azure-Nutzung und -Gebühren auch für die Gebühren des aktuellen Monats herunterladen.
 
-Wie Sie die CSV-Datei über Azure-Nutzung und -Gebühren herunterladen, erfahren Sie unter [Herunterladen der Nutzung für Ihre Microsoft-Kundenvereinbarung](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
+Wie Sie die CSV-Datei über Azure-Nutzung und -Gebühren herunterladen, erfahren Sie unter [Herunterladen der Nutzung für Ihre Microsoft-Kundenvereinbarung](billing-download-azure-daily-usage.md).
 
-Wie Sie das Preisblatt herunterladen, erfahren Sie unter [Herunterladen und Anzeigen der Preise für Ihre Microsoft-Kundenvereinbarung](billing-ea-pricing.md#microsoft-customer-agreement-pricing).
+Wie Sie das Preisblatt herunterladen, erfahren Sie unter [Herunterladen und Anzeigen der Preise für Ihre Microsoft-Kundenvereinbarung](billing-ea-pricing.md).
 
 Wie Sie Steuerdokumente herunterladen, erfahren Sie unter [Herunterladen und Anzeigen von Steuerdokumenten](billing-mca-download-tax-document.md#view-and-download-tax-documents).
 
@@ -90,7 +90,7 @@ Erstellen Sie einen Rechnungsabschnitt zum Organisieren Ihrer Kosten entsprechen
 
 ### <a name="create-a-new-account"></a>Erstellen eines neuen Kontos
 
-Weisen Sie Benutzern die Rolle des Erstellers von Azure-Abonnements in Rechnungsabschnitten zu, damit sie die Berechtigung zum Erstellen von Azure-Abonnements erhalten, wie bei den Konten, die in der Enterprise Agreement-Registrierung erstellt wurden. Weitere Informationen finden Sie unter [Gewähren der Berechtigung zum Erstellen von Azure-Abonnements für andere Benutzer](billing-mca-create-subscription.md#give-others-permission).
+Weisen Sie Benutzern die Rolle des Erstellers von Azure-Abonnements in Rechnungsabschnitten zu, damit sie die Berechtigung zum Erstellen von Azure-Abonnements erhalten, wie bei den Konten, die in der Enterprise Agreement-Registrierung erstellt wurden. Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ## <a name="changes-for-department-administrators"></a>Änderungen für Abteilungsadministratoren
 
@@ -116,7 +116,7 @@ Weitere Informationen darüber, wie Sie Zugriff auf Ihren Rechnungsabschnitt gew
 
 ### <a name="create-a-new-account-in-your-department"></a>Erstellen eines neuen Kontos in Ihrer Abteilung
 
-Weisen Sie Benutzern die Rolle des Erstellers von Azure-Abonnements in dem Rechnungsabschnitt zu, der für Ihre Abteilung erstellt wird. Weitere Informationen finden Sie unter [Gewähren der Berechtigung zum Erstellen von Azure-Abonnements für andere Benutzer](billing-mca-create-subscription.md#give-others-permission).
+Weisen Sie Benutzern die Rolle des Erstellers von Azure-Abonnements in dem Rechnungsabschnitt zu, der für Ihre Abteilung erstellt wird. Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Verwalten von Abrechnungsrollen im Azure-Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>Anzeigen von Gebühren für Konten in Ihren Abteilungen
 

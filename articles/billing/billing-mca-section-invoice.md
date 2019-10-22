@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ba2a274397aa1941ef2be03ce97b0f0c9ce96a31
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 77dd8a5e54697a37a2039238ecdedb3e2a2fa326
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709562"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375474"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Erstellen von Abschnitten in Ihrer Rechnung zum Organisieren von Kosten
 
@@ -55,5 +55,5 @@ Um einen Rechnungsabschnitt erstellen zu können, müssen Sie ein **Besitzer des
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen eines zusätzlichen Azure-Abonnements für eine Microsoft-Kundenvereinbarung](billing-mca-create-subscription.md)
-- [Zuweisen der Berechtigung zum Erstellen von Azure-Abonnements für andere Benutzer](billing-mca-create-subscription.md#give-others-permission)
+- [Verwalten von Abrechnungsrollen im Azure-Portal](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 - [Anfordern des Abrechnungsbesitzes von Azure-Abonnements von Benutzern in anderen Abrechnungskonten](billing-mca-request-billing-ownership.md)

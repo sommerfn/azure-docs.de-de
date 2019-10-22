@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 2ca0c0741ea543b30695303d473389979f2e1045
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f2e1d19f69b426cee870d2ede489b7c458404704
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855044"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374766"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -34,16 +34,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 Die Kostenanalyse unterstützt verschiedene Arten von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
 
-Bei [EA](https://azure.microsoft.com/pricing/enterprise-agreement/)-Kunden (Enterprise Agreement) benötigen Sie mindestens Lesezugriff auf einen oder mehrere der folgenden Bereiche, um Kostendaten anzeigen zu können.
-
-- Abrechnungskonto
-- Department
-- Registrierungskonto
-- Verwaltungsgruppe
-- Subscription
-- Resource group
-
-Weitere Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](assign-access-acm-data.md).
+Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -116,7 +107,7 @@ Hier ist eine Ansicht der Azure-Dienstkosten für den aktuellen Monat dargestell
 
 ![Gruppierte tägliche akkumulierte Ansicht mit Beispiel für Azure-Dienstkosten für den letzten Monat](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Standardmäßig werden in der Kostenanalyse alle Kosten für Verbrauch und Einkäufe angezeigt, wie sie anfallen und in Ihrer Rechnung erscheinen. Dies wird auch als **Ist-Kosten** bezeichnet. Das Anzeigen der tatsächlichen Kosten ist ideal geeignet, um Ihre Rechnung abzugleichen. Hohe Werte bei den Kosten für Einkäufe können ein Alarmsignal sein, wenn Sie nach Anomalien bei den Ausgaben und anderen Kostenveränderungen suchen. Wechseln Sie zu **Amortisierte Kosten**, um Spitzenwerte auszugleichen, die durch Einkaufskosten für Reservierungen verursacht werden. 
+Standardmäßig werden in der Kostenanalyse alle Kosten für Verbrauch und Einkäufe angezeigt, wie sie anfallen und in Ihrer Rechnung erscheinen. Dies wird auch als **Ist-Kosten** bezeichnet. Das Anzeigen der tatsächlichen Kosten ist ideal geeignet, um Ihre Rechnung abzugleichen. Hohe Werte bei den Kosten für Einkäufe können ein Alarmsignal sein, wenn Sie nach Anomalien bei den Ausgaben und anderen Kostenveränderungen suchen. Wechseln Sie zu **Amortisierte Kosten**, um Spitzenwerte auszugleichen, die durch Einkaufskosten für Reservierungen verursacht werden.
 
 ![Wechseln zwischen tatsächlichen und amortisierten Kosten, um die auf den Zeitraum verteilten Reservierungseinkäufe anzuzeigen, die den entsprechenden Ressourcen mit Reservierung zugeordnet sind](./media/quick-acm-cost-analysis/metric-picker.png)
 
@@ -169,11 +160,11 @@ Informationen zu den Bedingungen finden Sie unter [Grundlegendes zu den Bedingun
 
 ## <a name="saving-and-sharing-customized-views"></a>Speichern und Freigeben von benutzerdefinierten Ansichten
 
-Speichern Sie benutzerdefinierte Ansichten, und geben Sie sie für andere Benutzer frei, indem Sie die Kostenanalyse im Dashboard des Azure-Portals anheften oder einen Link zur Kostenanalyse kopieren. 
+Speichern Sie benutzerdefinierte Ansichten, und geben Sie sie für andere Benutzer frei, indem Sie die Kostenanalyse im Dashboard des Azure-Portals anheften oder einen Link zur Kostenanalyse kopieren.
 
 Wählen Sie zum Anheften der Kostenanalyse oben rechts das Stecknadelsymbol aus. Beim Anheften der Kostenanalyse wird nur die Diagramm- oder Tabellenhauptansicht gespeichert. Geben Sie das Dashboard frei, um anderen Personen Zugriff auf die Kachel zu gewähren. Beachten Sie, dass hierbei nur die Dashboardkonfiguration freigegeben und anderen Personen kein Zugriff auf die zugrunde liegenden Daten gewährt wird. Wenn Sie nicht für den Zugriff auf die Kosten berechtigt sind, aber über Zugriff auf ein freigegebenes Dashboard verfügen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
-Wählen Sie oben auf dem Blatt den Befehl **Teilen** aus, um einen Link zur Kostenanalyse zu teilen. Eine benutzerdefinierte URL wird angezeigt, über die diese spezifische Ansicht für den jeweiligen Bereich geöffnet wird. Wenn Sie keinen Kostenzugriff besitzen und diese URL abrufen, wird die Meldung „Zugriff verweigert“ angezeigt. 
+Wählen Sie oben auf dem Blatt den Befehl **Teilen** aus, um einen Link zur Kostenanalyse zu teilen. Eine benutzerdefinierte URL wird angezeigt, über die diese spezifische Ansicht für den jeweiligen Bereich geöffnet wird. Wenn Sie keinen Kostenzugriff besitzen und diese URL abrufen, wird die Meldung „Zugriff verweigert“ angezeigt.
 
 Weitere Informationen zum Gewähren des Zugriffs auf die Kosten für jeden unterstützten Bereich finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
@@ -183,14 +174,14 @@ Es kann vorkommen, dass Sie die Daten zur weiteren Analyse herunterladen, mit Ih
 
 Falls Sie das vollständige nicht aggregierte Dataset benötigen, können Sie es über das Abrechnungskonto herunterladen. Navigieren Sie dann aus der Liste der Dienste im linken Navigationsbereich des Portals zu **Kostenverwaltung und Abrechnung**. Wählen Sie ggf. Ihr Abrechnungskonto aus. Navigieren Sie zu **Nutzung und Gebühren**, und wählen Sie dann das **Downloadsymbol** für den gewünschten Abrechnungszeitraum aus.
 
-Verwenden Sie eine ähnliche Vorgehensweise, um den Empfang von Kostendaten zu automatisieren. Verwenden Sie die [Abfrage-API](/rest/api/cost-management/query) für eine umfassendere Analyse mit dynamischer Filterung, Gruppierung und Aggregation, oder verwenden Sie die [UsageDetails-API](/rest/api/consumption/usageDetails), um das vollständige nicht aggregierte Dataset zu erhalten. Die allgemein verfügbare Version dieser APIs ist 2019-01-01. Verwenden Sie **2019-04-01-preview**, um Zugriff auf die Vorschau der Reservierung und Marketplace-Einkäufe über diese APIs zu erhalten. 
+Verwenden Sie eine ähnliche Vorgehensweise, um den Empfang von Kostendaten zu automatisieren. Verwenden Sie die [Abfrage-API](/rest/api/cost-management/query) für eine umfassendere Analyse mit dynamischer Filterung, Gruppierung und Aggregation, oder verwenden Sie die [UsageDetails-API](/rest/api/consumption/usageDetails), um das vollständige nicht aggregierte Dataset zu erhalten. Die allgemein verfügbare Version dieser APIs ist 2019-01-01. Verwenden Sie **2019-04-01-preview**, um Zugriff auf die Vorschau der Reservierung und Marketplace-Einkäufe über diese APIs zu erhalten.
 
 Beispielweise zeigt die folgende aggregierte Ansicht die Unterteilung der amortisierten Kosten nach Gebührentyp (Verbrauch, Einkauf oder Erstattung), Herausgebertyp (Azure oder Marketplace), Ressourcengruppe (leer für Einkäufe) und Reservierung (leer, falls nicht zutreffend) an.
 
 ```
 POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
 Content-Type: application/json
- 
+
 {
   "type": "AmortizedCost",
   "timeframe": "Custom",
@@ -221,7 +212,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 ```
 
 Falls Sie für die Ist-Kosten die Anzeige der Einkäufe benötigen, sobald diese anfallen, können Sie **type**/**metric** in **ActualCost** ändern. Weitere Informationen zu diesen APIs finden Sie in der Dokumentation zur [Query-API](/rest/api/cost-management/query) bzw. [UsageDetails-API](/rest/api/consumption/usageDetails). Beachten Sie, dass die veröffentlichten Dokumente für die allgemein verfügbare Version (GA) gelten. Die Funktionsweise ist für die API-Version *2019-04-01-preview* bis auf das neue „type/metric“-Attribut und die geänderten Eigenschaftennamen aber jeweils gleich. (Unten finden Sie weitere Informationen zu den Eigenschaftennamen.)
- 
+
 Kostenverwaltungs-APIs funktionieren in allen Bereichen über Ressourcen hinweg: Ressourcengruppe, Abonnement und Verwaltungsgruppe über Azure RBAC-Zugriff, EA-Abrechnungskonten (Registrierungen), Abteilungen und Registrierungskonten über Zugriff über das EA-Portal. Weitere Informationen zu Bereichen, z.B. in Bezug auf die Ermittlung Ihrer Bereichs-ID oder des Verwaltungszugriffs, finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

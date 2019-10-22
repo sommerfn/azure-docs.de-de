@@ -1,26 +1,22 @@
 ---
 title: Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
-description: Hier erfahren Sie, wie Sie Ihrer Python-Funktion mithilfe der Azure CLI und Functions Core Tools eine Azure Storage-Warteschlangenausgabebindung hinzufügen.
-services: functions
-keywords: ''
+description: Erfahren Sie, wie Sie eine Azure Storage-Warteschlangenausgabebindung zu Ihrer Python-Funktion hinzufügen.
 author: ggailey777
 ms.author: glenga
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
-ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+manager: gwallace
+ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839192"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329729"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
 
-Azure Functions gestattet Ihnen das Verbinden von Azure-Diensten und anderen Ressourcen mit Funktionen, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 In diesem Artikel erfahren Sie, wie Sie die Funktion, die Sie im [vorherigen Schnellstartartikel](functions-create-first-function-python.md) erstellt haben, mit einer Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus einer HTTP-Anforderung in eine Nachricht in der Warteschlange.
 
@@ -34,7 +30,7 @@ Bevor Sie mit diesem Artikel beginnen, führen Sie die Schritte in [Teil 1 des P
 
 ## <a name="download-the-function-app-settings"></a>Herunterladen der Funktions-App-Einstellungen
 
-[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+[!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>Aktivieren von Erweiterungsbundles
 
@@ -63,7 +59,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Da Sie in der vorherige Schnellstartanleitung Erweiterungsbündel in der Datei „host.json“ aktiviert haben, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
+> Da Sie Erweiterungsbündel in der Datei „host.json“ aktiviert haben, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
 
 Kopieren Sie die URL Ihrer `HttpTrigger`-Funktion aus der Runtimeausgabe, und fügen Sie sie in die Adressleiste Ihres Browsers ein. Hängen Sie anschließend die Abfragezeichenfolge `?name=<yourname>` an diese URL an, und führen Sie die Anforderung aus. Sie sollten dieselbe Antwort im Browser sehen, wie bereits im vorherigen Artikel.
 
@@ -71,17 +67,17 @@ Diesmal erstellt die Ausgabebindung außerdem eine Warteschlange namens `outqueu
 
 Als Nächstes verwenden Sie die Azure CLI, um die neue Warteschlange anzuzeigen und sicherzustellen, dass eine Nachricht hinzugefügt wurde. Sie können Ihre Warteschlange auch mithilfe des [Microsoft Azure Storage-Explorers][Azure Storage Explorer] oder im [Azure-Portal](https://portal.azure.com) anzeigen.
 
-### <a name="set-the-storage-account-connection"></a>Festlegen der Speicherkontoverbindung
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>Abfragen der Speicherwarteschlange
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-Nun ist es an der Zeit, die aktualisierte Funktions-App erneut in Azure zu veröffentlichen.
+### <a name="redeploy-the-project"></a>Erneutes Bereitstellen des Projekts 
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+Um Ihre veröffentlichte App zu aktualisieren, verwenden Sie den Core Tools-Befehl [`func azure functionapp publish`](functions-run-local.md#project-file-deployment), um Ihren Projektcode in Azure bereitzustellen. Ersetzen Sie in diesem Beispiel `<APP_NAME>` durch den Namen Ihrer App.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
 
 Wieder können Sie cURL oder einen Browser verwenden, um die bereitgestellte Funktion zu testen. Fügen Sie wie zuvor die Abfragezeichenfolge `&name=<yourname>` an die URL an, wie im folgenden Beispiel zu sehen:
 
@@ -89,7 +85,7 @@ Wieder können Sie cURL oder einen Browser verwenden, um die bereitgestellte Fun
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-Sie können [die Storage-Warteschlangennachricht untersuchen](#query-the-storage-queue), um zu überprüfen, ob die Ausgabebindung erneut eine neue Nachricht in der Warteschlange generiert.
+Sie können [die Storage-Warteschlangennachricht erneut untersuchen](#query-the-storage-queue), um zu überprüfen, ob die Ausgabebindung wie erwartet eine neue Nachricht in der Warteschlange generiert.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: b724e54eb2d9e61bd576ab8a094489bbed6db20d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975218"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515171"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutorial: Verwenden der Personalisierung in Azure Notebook
 
@@ -122,7 +122,7 @@ personalization_base_url = "https://<your-resource-name>.cognitiveservices.azure
 resource_key = "<your-resource-key>"
 ```
 
-### <a name="print-current-data-and-time"></a>Ausgeben des aktuellen Datums und der Uhrzeit
+### <a name="print-current-date-and-time"></a>Drucken des aktuellen Datums und der aktuellen Uhrzeit
 Verwenden Sie diese Funktion, um sich die Start- und Endzeiten der iterativen Funktion bzw. der Iterationen zu notieren.
 
 Diese Zellen haben keine Ausgabe. Wenn diese Funktion aufgerufen wird, gibt sie das aktuelle Datum und die Uhrzeit aus.

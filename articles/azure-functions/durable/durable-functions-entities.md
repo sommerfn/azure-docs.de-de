@@ -9,73 +9,95 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 864a641968268c439c65996998cbb822746b96f9
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839000"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312142"
 ---
 # <a name="entity-functions-preview"></a>Entitätsfunktionen (Vorschauversion)
 
-Entitätsfunktionen definieren Vorgänge zum Lesen und Aktualisieren kleinerer Zustandsteile, bekannt als *dauerhafte Entitäten*. Wie Orchestratorfunktionen besitzen Entitätsfunktionen einen speziellen Triggertyp, den *Entitätstrigger*. Im Gegensatz zu Orchestratorfunktionen besitzen Entitätsfunktionen keine spezifischen Codeeinschränkungen. Entitätsfunktionen verwalten Zustände auch explizit, statt Zustände implizit durch die Ablaufsteuerung darzustellen.
+Entitätsfunktionen definieren Vorgänge zum Lesen und Aktualisieren kleinerer Zustandsteile, bekannt als *dauerhafte Entitäten*. Wie Orchestratorfunktionen besitzen Entitätsfunktionen einen speziellen Triggertyp, den *Entitätstrigger*. Im Gegensatz zu Orchestratorfunktionen stellen Entitätsfunktionen den Zustand nicht über eine Ablaufsteuerung dar, sondern verwalten den Zustand einer Entität explizit.
+Anwendungen können mithilfe von Entitäten erweitert werden, indem die Arbeit auf zahlreiche Entitäten verteilt wird, deren Zustand jeweils eine bescheidene Größe aufweist.
 
 > [!NOTE]
 > Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar. Entitätsfunktionen befinden sich momentan in der Public Preview-Phase.
 
-## <a name="entity-identity"></a>Entitätsidentität
+## <a name="general-concepts"></a>Allgemeine Konzepte
 
-Der Zugriff auf Entitäten (die gelegentlich auch als *Entitätsinstanzen* bezeichnet werden) erfolgt über einen eindeutigen Bezeichner: die *Entitäts-ID*. Eine Entitäts-ID ist einfach ein Paar aus Zeichenfolgen, das eine Entitätsinstanz eindeutig identifiziert. Sie besteht aus:
+Entitäten verhalten sich ein wenig wie kleine Dienste, die mithilfe von Nachrichten kommunizieren. Jede Entität hat eine eindeutige Identität und einen internen Zustand (sofern vorhanden). Entitäten führen genau wie Dienste oder Objekte Vorgänge aus, wenn sie dazu aufgefordert werden. Der interne Zustand der Entität kann ggf. durch einen ausgeführten Vorgang aktualisiert werden. Ein Vorgang kann auch externe Dienste aufrufen und auf eine Antwort warten. Entitäten kommunizieren mit anderen Entitäten, Orchestrierungen und Clients mithilfe von Nachrichten, die implizit über zuverlässige Warteschlangen gesendet werden. 
 
-* einem **Entitätsnamen**: Ein Name, der den Typ der Entität identifiziert (z. B. „Zähler“).
+Zur Vermeidung von Konflikten werden alle Vorgänge für eine einzelne Entität seriell (also nacheinander) ausgeführt. 
+
+### <a name="entity-id"></a>Entitäts-ID
+Der Zugriff auf Entitäten erfolgt über einen eindeutigen Bezeichner: die *Entitäts-ID*. Eine Entitäts-ID ist einfach ein Paar aus Zeichenfolgen, das eine Entitätsinstanz eindeutig identifiziert. Sie besteht aus:
+
+* einem **Entitätsnamen**: Ein Name, der den Typ der Entität identifiziert (z. B. „Zähler“). Dieser Name muss dem Namen der Entitätsfunktion entsprechen, von der die Entität implementiert wird. Die Groß-/Kleinschreibung wird dabei nicht beachtet.
 * einem **Entitätsschlüssel**: Eine Zeichenfolge, die die Entität unter allen anderen Entitäten desselben Namens eindeutig identifiziert (z. B. eine GUID).
 
 Beispielsweise könnte eine *Counter*-Entitätsfunktion verwendet werden, um den Punktestand in einem Onlinespiel nachzuhalten. Jede Instanz des Spiels besitzt dann eine eindeutige Entitäts-ID, z. B. `@Counter@Game1`, `@Counter@Game2` usw. Bei allen Vorgängen, die auf eine bestimmte Entität ausgerichtet sind, muss eine Entitäts-ID als Parameter angegeben werden.
 
-## <a name="programming-models"></a>Programmmodelle
+### <a name="entity-operations"></a>Entitätsvorgänge ###
 
-Dauerhafte Entitäten unterstützen zwei verschiedene Programmiermodelle. Das erste Modell ist ein dynamisches „funktionales“ Modell, bei dem die Entität durch eine einzelne Funktion definiert wird. Das zweite Modell ist ein objektorientiertes Modell, bei dem die Entität durch eine Klasse und Methoden definiert wird. Diese Modelle sowie die Programmiermodelle für die Interaktion mit Entitäten werden in den folgenden Abschnitten beschrieben.
+Wenn Sie einen Vorgang für eine Entität aufrufen möchten, muss Folgendes angegeben werden:
 
-### <a name="defining-entities"></a>Definieren von Entitäten
+* Die *Entitäts-ID* der Zielentität.
+* Der *Name des Vorgangs* (eine Zeichenfolge, die den auszuführenden Vorgang angibt). Die Counter-Entität könnte beispielsweise Vorgänge vom Typ „add“, „get“ oder „reset“ unterstützen.
+* Die *Vorgangseingabe* (ein optionaler Eingabeparameter für den Vorgang). Der Vorgang „add“ akzeptiert beispielsweise eine ganzzahlige Menge als Eingabe.
 
-Es gibt zwei optionale Programmiermodelle zum Erstellen dauerhafter Entitäten. Der folgende Code ist ein Beispiel für eine einfache *Counter*-Entität (Zähler), die als Standardfunktion implementiert ist. Diese Funktion definiert drei *Vorgänge*, `add`, `reset` und `get`, von denen jeder einen ganzzahligen Zustandswert `currentValue` verarbeitet.
+Vorgänge können einen Ergebniswert oder ein Fehlerergebnis zurückgeben (etwa einen JavaScript-Fehler oder eine .NET-Ausnahme). Dieses Ergebnis bzw. dieser Fehler kann von Orchestrierungen berücksichtigt werden, die den Vorgang aufgerufen haben.
+
+Entitätsvorgänge können auch den Zustand der Entität erstellen, lesen, aktualisieren und löschen. Der Zustand der Entität wird immer dauerhaft im Speicher aufbewahrt.
+
+## <a name="defining-entities"></a>Definieren von Entitäten
+
+Zum Definieren von Entitäten stehen aktuell zwei unterschiedliche APIs zur Verfügung:
+
+Eine **funktionsbasierte Syntax**, bei der Entitäten als Funktionen dargestellt und Vorgänge explizit von der Anwendung verteilt werden. Diese Syntax eignet sich gut für Entitäten mit einfachem Zustand, wenigen Vorgängen oder einem dynamischen Satz von Vorgängen (beispielsweise in Anwendungsframeworks). Die Verwaltung kann sich allerdings als aufwendig erweisen, da Typfehler zur Kompilierzeit nicht abgefangen werden.
+
+Eine **klassenbasierte Syntax**, bei der Entitäten und Vorgänge durch Klassen und Methoden dargestellt werden. Bei dieser Syntax ist der Code besser lesbar, und Vorgänge können typsicher aufgerufen werden. Da es sich bei der klassenbasierten Syntax lediglich um eine dünne Schicht über der funktionsbasierten Syntax handelt, können beide Varianten in der gleichen Anwendung verwendet werden.
+
+### <a name="example-function-based-syntax"></a>Beispiel: Funktionsbasierte Syntax
+
+Der folgende Code ist ein Beispiel für eine einfache Entität vom Typ *Counter*, die als dauerhafte Funktion implementiert wird. Diese Funktion definiert drei Vorgänge (`add`, `reset` und `get`), die jeweils auf einem ganzzahligen Zustand basieren.
 
 ```csharp
 [FunctionName("Counter")]
 public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 {
-    int currentValue = ctx.GetState<int>();
-
     switch (ctx.OperationName.ToLowerInvariant())
     {
         case "add":
-            int amount = ctx.GetInput<int>();
-            currentValue += amount;
+            ctx.SetState(ctx.GetState<int>() + ctx.GetInput<int>());
             break;
         case "reset":
-            currentValue = 0;
+            ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(currentValue);
+            ctx.Return(ctx.GetState<int>()));
             break;
     }
-
-    ctx.SetState(currentValue);
 }
 ```
 
-Dieses Modell eignet sich am besten für einfache Entitätsimplementierungen oder Implementierungen, die über einen dynamischen Satz von Vorgängen verfügen. Für statische Entitäten mit komplexeren Implementierungen kann auch ein klassenbasiertes Programmiermodell verwendet werden. Beim folgenden Beispiel handelt es sich um eine äquivalente Implementierung der Entität `Counter` unter Verwendung von Klassen und Methoden:
+Weitere Informationen zur funktionsbasierten Syntax sowie zu deren Verwendung finden Sie unter [Funktionsbasierte Syntax](durable-functions-dotnet-entities.md#function-based-syntax).
+
+### <a name="example-class-based-syntax"></a>Beispiel: Klassenbasierte Syntax
+
+Beim folgenden Beispiel handelt es sich um eine äquivalente Implementierung der Entität `Counter` unter Verwendung von Klassen und Methoden:
 
 ```csharp
+[JsonObject(MemberSerialization.OptIn)]
 public class Counter
 {
     [JsonProperty("value")]
     public int CurrentValue { get; set; }
 
     public void Add(int amount) => this.CurrentValue += amount;
-    
+
     public void Reset() => this.CurrentValue = 0;
-    
+
     public int Get() => this.CurrentValue;
 
     [FunctionName(nameof(Counter))]
@@ -84,19 +106,31 @@ public class Counter
 }
 ```
 
+Der Zustand dieser Entität ist ein Objekt vom Typ `Counter`. Dieses enthält ein Feld, in dem der aktuelle Wert des Zählers gespeichert wird. Um dieses Objekt dauerhaft im Speicher aufzubewahren, wird es von der Bibliothek [Json.NET](https://www.newtonsoft.com/json) serialisiert und deserialisiert. 
+
+Weitere Informationen zur klassenbasierten Syntax sowie zu deren Verwendung finden Sie unter [Definieren von Entitätsklassen](durable-functions-dotnet-entities.md#defining-entity-classes).
+
+## <a name="accessing-entities"></a>Zugreifen auf Entitäten
+
+Auf Entitäten kann mittels unidirektionaler oder bidirektionaler Kommunikation zugegriffen werden. Zur Unterscheidung wird folgende Terminologie verwendet: 
+
+* Beim **Aufrufen** einer Entität kommt die bidirektionale Kommunikation (Roundtrip) zum Einsatz: Hierbei wird eine Vorgangsnachricht an die Entität gesendet und auf die Antwortnachricht gewartet, bevor der Vorgang fortgesetzt wird. Die Antwortnachricht kann einen Ergebniswert oder ein Fehlerergebnis zurückgeben (etwa einen JavaScript-Fehler oder eine .NET-Ausnahme). Das Ergebnis oder der Fehler wird dann vom Aufrufer berücksichtigt.
+* Beim **Signalisieren** einer Entität kommt die unidirektionale Kommunikation (Fire and Forget) zum Einsatz: Hierbei wird eine Vorgangsnachricht gesendet, aber nicht auf eine Antwort gewartet. Die Nachricht wird zwar garantiert übermittelt, der Absender weiß jedoch nicht, wann dies der Fall ist, und er kann auch keinen Ergebniswert und keine Fehler berücksichtigen.
+
+Auf Entitäten kann innerhalb von Clientfunktionen, innerhalb von Orchestratorfunktionen oder innerhalb von Entitätsfunktionen zugegriffen werden. Nicht alle Kommunikationsarten werden von allen Kontexten unterstützt:
+
+* Innerhalb von Clients können Sie Entitäten *signalisieren* und den Entitätszustand *lesen*.
+* Innerhalb von Orchestrierungen können Sie Entitäten *signalisieren* und *aufrufen*.
+* Innerhalb von Entitäten können Sie Entitäten *signalisieren*.
+
+Im Anschluss finden Sie einige Beispiele zur Veranschaulichung der verschiedenen Entitätszugriffsmethoden.
+
 > [!NOTE]
-> Die Methode für den Funktionseinstiegspunkt mit dem Attribut `[FunctionName]` *muss* bei Verwendung von Entitätsklassen als `static` deklariert werden. Nicht statische Einstiegspunktmethoden können zu einer Mehrfachinitialisierung von Objekten und möglicherweise zu anderen undefinierten Verhaltensweisen führen.
+> Der Einfachheit halber wird in den folgenden Beispielen die lose typisierte Syntax für den Entitätszugriff verwendet. Aufgrund der besseren Typüberprüfung empfiehlt es sich im Allgemeinen, [über Schnittstellen auf Entitäten zuzugreifen](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces).
 
-Im klassenbasierten Programmiermodell ist das Objekt `IDurableEntityContext` in der statischen Eigenschaft `Entity.Current` verfügbar.
+### <a name="example-client-signals-an-entity"></a>Beispiel: Client signalisiert eine Entität
 
-Das klassenbasierte Modell ähnelt dem von [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/) bekannt gemachten Programmiermodell. In diesem Modell wird ein Entitätstyp als .NET-Klasse definiert. Jede Methode der Klasse ist ein Vorgang, der von einem externen Client aufgerufen werden kann. Anders als bei Orleans sind .NET-Schnittstellen jedoch optional. Im vorherigen *Counter*-Beispiel wurde keine Schnittstelle verwendet, aber sie kann immer noch über andere Funktionen oder mittels HTTP-API-Aufrufen aufgerufen werden.
-
-> [!NOTE]
-> Entitätstriggerfunktionen stehen ab Durable Functions 2.0 zur Verfügung. Aktuell sind Entitätstriggerfunktionen nur für .NET-Funktions-Apps verfügbar.
-
-### <a name="accessing-entities-from-clients"></a>Zugriff auf Entitäten aus Clients
-
-Dauerhafte Entitäten können über normale Funktionen (auch *Clientfunktionen* genannt) unter Verwendung der [Entitätsclient-Ausgabebindung](durable-functions-bindings.md#entity-client) aufgerufen oder abgefragt werden. Das folgende Beispiel zeigt eine durch eine Warteschlange ausgelöste Funktion zur *Signalisierung* einer Entität unter Verwendung dieser Bindung:
+Wenn Sie von einer normalen Azure-Funktion (auch *Clientfunktion* genannt) aus auf Entitäten zugreifen möchten, verwenden Sie die [Entitätsclient-Ausgabebindung](durable-functions-bindings.md#entity-client). Das folgende Beispiel zeigt eine durch eine Warteschlange ausgelöste Funktion zur *Signalisierung* einer Entität unter Verwendung dieser Bindung:
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -111,12 +145,11 @@ public static Task Run(
 }
 ```
 
-> [!NOTE]
-> .NET-Funktionen unterstützen sowohl lose typisierte als auch typsichere Methoden zur Signalisierung von Entitäten. Ausführlichere Informationen finden Sie in der [Referenzdokumentation zur Entitätsclientbindung](durable-functions-bindings.md#entity-client-usage).
+*Signalisierung* bedeutet, dass der Entitäts-API-Aufruf unidirektional und asynchron ist. Einer *Clientfunktion* ist nicht bekannt, wann der Vorgang durch die Entität verarbeitet wurde. Außerdem kann die Clientfunktion keine Ergebniswerte oder Ausnahmen berücksichtigen. 
 
-*Signalisierung* bedeutet, dass der Entitäts-API-Aufruf unidirektional und asynchron ist. Einer *Clientfunktion* ist nicht bekannt, wann die Entität den Vorgang verarbeitet hat, und eine Entitätsfunktion kann auch keinen Wert an eine Clientfunktion zurückgeben. Für dauerhafte Entitäten wurde bewusst ein unidirektionales warteschlangenbasiertes Messaging-Design gewählt, um der Dauerhaftigkeit eine höhere Priorität zu geben als der Leistung. Diese Designentscheidung ist einer der Kompromisse bei dauerhaften Entitäten im Vergleich zu ähnlichen Technologien. Aktuell können Rückgabewerte von Entitäten nur von Orchestrierungen behandelt werden. Dies wird im nächsten Abschnitt erläutert.
+### <a name="example-client-reads-an-entity-state"></a>Beispiel: Client liest einen Entitätszustand
 
-Clientfunktionen können auch den Zustand von Entitäten abfragen, wie im folgenden Beispiel gezeigt:
+Clientfunktionen können auch den Zustand einer Entität abfragen, wie im folgenden Beispiel gezeigt:
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -130,11 +163,11 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-Entitätszustandsabfragen werden an den dauerhaften Nachverfolgungsspeicher gesendet und geben den zuletzt *gespeicherten* Zustand der Entität zurück. Es kann sein, dass der zurückgegebene Zustand im Vergleich zum In-Memory-Zustand der Entität bereits veraltet ist. Der In-Memory-Zustand einer Entität kann nur von Orchestrierungen gelesen werden, wie im folgenden Abschnitt beschrieben.
+Entitätszustandsabfragen werden an den dauerhaften Nachverfolgungsspeicher gesendet und geben den zuletzt *gespeicherten* Zustand der Entität zurück. Dieser Zustand ist immer ein committeter Zustand. Anders ausgedrückt: Hierbei handelt es sich niemals um einen temporären Übergangszustand während der Vorgangsausführung. Es kann jedoch sein, dass dieser Zustand im Vergleich zum In-Memory-Zustand der Entität veraltet ist. Der In-Memory-Zustand einer Entität kann nur von Orchestrierungen gelesen werden, wie im folgenden Abschnitt beschrieben.
 
-### <a name="accessing-entities-from-orchestrations"></a>Zugriff auf Entitäten aus Orchestrierungen
+### <a name="example-orchestration-signals-and-calls-an-entity"></a>Beispiel: Orchestrierung signalisiert eine Entität und ruft sie auf
 
-Orchestratorfunktionen können unter Verwendung von APIs für die [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) auf Entitäten zugreifen. Bei Orchestratorfunktionen kann zwischen unidirektionaler Kommunikation („Fire and Forget“, auch *Signalisierung* genannt) und bidirektionaler Kommunikation (Anforderung und Antwort, auch *Aufruf* genannt) gewählt werden. Der folgende Beispielcode zeigt eine Orchestratorfunktion mit *Aufruf* und *Signalisierung* einer Entität vom Typ *Counter*:
+Orchestratorfunktionen können unter Verwendung von APIs für die [Orchestrierungstriggerbindung](durable-functions-bindings.md#orchestration-trigger) auf Entitäten zugreifen. Der folgende Beispielcode zeigt eine Orchestratorfunktion mit *Aufruf* und *Signalisierung* einer Entität vom Typ *Counter*:
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -143,11 +176,11 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-    // Synchronous call to the entity which returns a value - will await a response
+   // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
-        // Asynchronous call which updates the value - will not await a response
+        // One-way signal to the entity which updates the value - does not await a response
         context.SignalEntity(entityId, "Add", 1);
     }
 }
@@ -158,23 +191,20 @@ Nur Orchestrierungen können Entitäten aufrufen und eine Antwort erhalten. Dabe
 > [!NOTE]
 > Das Aufrufen einer Entität über eine Orchestratorfunktion ist mit dem Aufrufen einer [Aktivitätsfunktion](durable-functions-types-features-overview.md#activity-functions) über eine Orchestratorfunktion vergleichbar. Der Hauptunterschied besteht darin, dass Entitätsfunktionen dauerhafte Objekte mit einer Adresse (*Entitäts-ID*) sind und die Angabe eines Vorgangsnamens unterstützen. Aktivitätsfunktionen sind dagegen zustandslos und verfügen über kein Vorgangskonzept.
 
-### <a name="dependency-injection-in-entity-classes-net"></a>Abhängigkeitsinjektion in Entitätsklassen (.NET)
+### <a name="example-entity-signals-an-entity"></a>Beispiel: Entität signalisiert eine Entität
 
-Entitätsklassen unterstützen die [Abhängigkeitsinjektion in Azure Functions](../functions-dotnet-dependency-injection.md). Das folgende Beispiel zeigt die Registrierung eines Diensts vom Typ `IHttpClientFactory` bei einer klassenbasierten Entität:
+Eine Entitätsfunktion kann während der Vorgangsausführung Signale an andere Entitäten (und sogar an sich selbst) senden.
+Das obige Beispiel mit der Counter-Entität kann beispielsweise so angepasst werden, dass ein entsprechendes Signal an eine Überwachungsentität gesendet wird, wenn der Zähler den Wert 100 erreicht:
 
 ```csharp
-[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
-
-namespace MyNamespace
-{
-    public class Startup : FunctionsStartup
-    {
-        public override void Configure(IFunctionsHostBuilder builder)
+   case "add":
+        var amount = ctx.GetInput<int>();
+        if (currentValue < 100 && currentValue + amount >= 100)
         {
-            builder.Services.AddHttpClient();
+            ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-    }
-}
+        currentValue += amount;
+        break;
 ```
 
 Der folgende Codeausschnitt zeigt die Integration des eingefügten Diensts in Ihre Entitätsklasse:
@@ -184,12 +214,12 @@ public class HttpEntity
 {
     private readonly HttpClient client;
 
-    public class HttpEntity(IHttpClientFactory factory)
+    public HttpEntity(IHttpClientFactory factory)
     {
         this.client = factory.CreateClient();
     }
 
-    public Task<int> GetAsync(string url)
+    public async Task<int> GetAsync(string url)
     {
         using (var response = await this.client.GetAsync(url))
         {
@@ -243,7 +273,7 @@ Weitere Informationen zu Bindungen in Azure Functions finden Sie in der Dokument
 
 Manchmal müssen Vorgänge über mehrere Entitäten hinweg koordiniert werden. Eine Bankinganwendung kann beispielsweise Entitäten enthalten, die einzelne Bankkonten darstellen. Wenn Sie Geld von einem Konto auf ein anderes überweisen, muss sichergestellt sein, dass auf dem _Quellkonto_ genügend Guthaben vorhanden ist und dass Aktualisierungen für das _Quellkonto_ und das _Zielkonto_ transaktionskonsistent erfolgen.
 
-### <a name="transfer-funds-example-in-c"></a>Überweisungsbeispiel in C#
+### <a name="example-transfer-funds"></a>Beispiel: Überweisung
 
 Der folgende Beispielcode führt eine Überweisung zwischen zwei _Kontoentitäten_ unter Verwendung einer Orchestratorfunktion durch. Für die Koordinierung von Entitätsaktualisierungen muss mithilfe der Methode `LockAsync` ein _kritischer Abschnitt_ in der Orchestrierung erstellt werden:
 
@@ -294,6 +324,9 @@ In .NET gibt `LockAsync` ein Ergebnis vom Typ `IDisposable` zurück, das den kri
 
 Im vorherigen Beispiel wurde mithilfe einer Orchestratorfunktion eine Überweisung von einer _Quellentität_ zu einer _Zielentität_ getätigt. Die Methode `LockAsync` hat sowohl die _Quellkontoentität_ als auch die _Zielkontoentität_ gesperrt. Diese Sperrung sorgt dafür, dass kein anderer Client den Zustand der Konten abfragen oder ändern kann, bis die Orchestrierungslogik den _kritischen Abschnitt_ am Ende der Anweisung `using` verlassen hat. Dadurch wurde effektiv eine Überziehung des _Quellkontos_ verhindert.
 
+> [!NOTE] 
+> Wenn eine Orchestrierung beendet wird (entweder normal oder mit einem Fehler), werden alle kritischen Abschnitte, die noch aktiv sind, implizit beendet und alle Sperren aufgehoben.
+
 ### <a name="critical-section-behavior"></a>Verhalten des kritischen Abschnitts
 
 Die Methode `LockAsync` erstellt einen _kritischen Abschnitt_ in einer Orchestrierung. Diese _kritischen Abschnitte_ sorgen dafür, dass andere Orchestrierungen keine überschneidenden Änderungen an einem angegebenen Satz von Entitäten vornehmen können. Intern sendet die API `LockAsync` Sperrvorgänge an die Entitäten und wird wieder verfügbar, wenn sie von diesen Entitäten jeweils eine Antwortnachricht vom Typ „Sperre abgerufen“ erhält. *Sperren* und *Entsperren* sind integrierte Vorgänge und werden von allen Entitäten unterstützt.
@@ -305,9 +338,11 @@ Für eine gesperrte Entität können keine Vorgänge von anderen Clients ausgef�
 
 Sperren für Entitäten sind dauerhaft und bleiben bestehen, auch wenn der ausführende Prozess recycelt wird. Sperren werden intern als Teil des dauerhaften Zustands einer Entität beibehalten.
 
-### <a name="critical-section-restrictions"></a>Einschränkungen für kritische Abschnitte
+Im Gegensatz zu Transaktionen wird bei kritischen Abschnitten im Falle von Fehlern kein automatisches Änderungsrollback durchgeführt. Stattdessen muss explizit eine Fehlerbehandlung (Rollback, Wiederholung oder Sonstiges) programmiert werden, um beispielsweise Fehler oder Ausnahmen abzufangen. Dies ist eine bewusste Entscheidung. Ein automatisches Rollback aller Auswirkungen einer Orchestrierung ist im Allgemeinen schwierig bis unmöglich, da Orchestrierungen unter Umständen Aktivitäten ausführen und externe Dienste aufrufen, für die kein Rollback ausgeführt werden kann. Darüber hinaus kann es vorkommen, dass auch Rollbackversuche nicht erfolgreich sind, was eine weitere Fehlerbehandlung erforderlich macht.
 
-Wir setzen mehrere Einschränkungen durch, wie kritische Abschnitte verwendet werden können. Diese Einschränkungen dienen zum Verhindern von Deadlocks und Eintrittsinvarianz.
+### <a name="critical-section-rules"></a>Regeln für kritische Abschnitte
+
+Im Gegensatz zu Sperrprimitiven auf niedriger Ebene der meisten Programmiersprachen verfügen kritische Abschnitte über einen **garantierten Deadlockschutz**. Zur Verhinderung von Deadlocks werden folgende Einschränkungen erzwungen: 
 
 * Kritische Abschnitte können nicht geschachtelt werden.
 * Kritische Abschnitte können keine Unterorchestrierungen erstellen.
@@ -315,23 +350,31 @@ Wir setzen mehrere Einschränkungen durch, wie kritische Abschnitte verwendet we
 * Kritische Abschnitte können nicht dieselbe Entität mit mehreren parallelen Aufrufen aufrufen.
 * Kritische Abschnitte können nur Entitäten signalisieren, die sie nicht gesperrt haben.
 
+Jeglicher Verstoß gegen diese Regeln hat einen Laufzeitfehler (beispielsweise `LockingRulesViolationException` in .NET) mit Angaben zum jeweiligen Regelverstoß zur Folge.
+
 ## <a name="comparison-with-virtual-actors"></a>Vergleich mit virtuellen Akteuren
 
-Viele der Features dauerhafter Entitäten wurden durch das [Akteurmodell](https://en.wikipedia.org/wiki/Actor_model) inspiriert. Wenn Sie bereits mit Akteuren vertraut sind, kommen Ihnen wahrscheinlich viele der in diesem Artikel beschriebenen Konzepte bekannt vor. Insbesondere sind permanente Entitäten [virtuellen Akteuren](https://research.microsoft.com/projects/orleans/) in vielerlei Hinsicht sehr ähnlich:
+Viele der Features dauerhafter Entitäten wurden durch das [Akteurmodell](https://en.wikipedia.org/wiki/Actor_model) inspiriert. Wenn Sie bereits mit Akteuren vertraut sind, kommen Ihnen wahrscheinlich viele der in diesem Artikel beschriebenen Konzepte bekannt vor. Dauerhafte Entitäten ähneln sehr stark [virtuellen Akteuren](https://research.microsoft.com/projects/orleans/) (oder *Grains*; siehe [Orleans-Projekt](http://dotnet.github.io/orleans/)). Beispiel:
 
 * Dauerhafte Entitäten sind über eine *Entitäts-ID* adressierbar.
 * Vorgänge mit dauerhaften Entitäten werden seriell ausgeführt, immer einzeln, um Racebedingungen zu verhindern.
-* Dauerhafte Entitäten werden automatisch erstellt, wenn sie aufgerufen oder signalisiert werden.
+* Dauerhafte Entitäten werden implizit erstellt, wenn sie aufgerufen oder signalisiert werden.
 * Wenn keine Vorgänge ausgeführt werden, werden dauerhafte Entitäten automatisch aus dem Arbeitsspeicher entladen.
 
 Es gibt jedoch einige wichtige Unterschiede, die beachtenswert sind:
 
 * Dauerhafte Entitäten priorisieren *Dauerhaftigkeit* über *Latenz*, weshalb sie dann möglicherweise nicht für Anwendungen mit strengen Latenzanforderungen geeignet sind.
-* Zwischen Entitäten gesendete Nachrichten werden zuverlässig und in Reihenfolge übermittelt.
-* Dauerhafte Entitäten können in Verbindung mit dauerhaften Orchestrierungen verwendet werden und unterstützen verteilte Sperrmechanismen.
-* Anforderung/Antwort-Muster in Entitäten sind auf Orchestrierungen beschränkt. Bei der Kommunikation zwischen *Client und Entität* bzw. zwischen *Entität und Entität* sind genau wie im ursprünglichen Akteurmodell nur unidirektionale Nachrichten zulässig (Stichwort: Signalisierung). Dieses Verhalten verhindert verteilte Deadlocks.
+* Dauerhafte Entitäten verfügen über keine integrierten Timeouts für Nachrichten. In Orleans gilt für alle Nachrichten ein konfigurierbares Timeout (standardmäßig 30 Sekunden).
+* Zwischen Entitäten gesendete Nachrichten werden zuverlässig und in Reihenfolge übermittelt. In Orleans wird eine zuverlässige oder geordnete Übermittlung für Inhalte unterstützt, die über Streams gesendet werden. Sie wird jedoch nicht für alle Nachrichten zwischen Grains garantiert.
+* Anforderung/Antwort-Muster in Entitäten sind auf Orchestrierungen beschränkt. Innerhalb von Entitäten sind genau wie im ursprünglichen Akteurmodell (und im Gegensatz zu Grains in Orleans) nur unidirektionale Nachrichten zulässig (Stichwort: Signalisierung). 
+* Bei dauerhaften Entitäten treten keine Deadlocks auf. In Orleans können Deadlocks auftreten (und sie werden erst dem Nachrichtentimeout aufgelöst).
+* Dauerhafte Entitäten können in Verbindung mit dauerhaften Orchestrierungen verwendet werden und unterstützen verteilte Sperrmechanismen. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Entwicklerhandbuch für dauerhafte Entitäten in .NET (Vorschauversion)](durable-functions-dotnet-entities.md)
 
 > [!div class="nextstepaction"]
 > [Machen Sie sich mit Aufgabenhubs vertraut.](durable-functions-task-hubs.md)

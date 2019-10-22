@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mit Python | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines Blobs in Azure Blob Storage mit Python'
 description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Speicherclientbibliothek für Python, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981220"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430151"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
+# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
 
-In dieser Schnellstartanleitung verwenden Sie Python, um Blockblobs in einem Container in Azure Blob Storage hochzuladen, herunterzuladen und aufzulisten. Bei Blobs handelt es sich einfach um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Blobs in Azure Storage unterscheiden sich von Dateifreigaben, schemalosen Tabellen und Nachrichtenwarteschlangen.  Weitere Informationen finden Sie unter [Einführung in Azure Storage](/azure/storage/common/storage-introduction).
+In diesem Artikel verwenden Sie Python, um Blockblobs in einem Container in Azure Blob Storage hochzuladen, herunterzuladen und aufzulisten. Bei Blobs handelt es sich einfach um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Blobs in Azure Storage unterscheiden sich von Dateifreigaben, schemalosen Tabellen und Nachrichtenwarteschlangen.  Weitere Informationen finden Sie unter [Einführung in Azure Storage](/azure/storage/common/storage-introduction).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

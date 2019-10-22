@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8e7709abcc97baac9bf657b9fff2110cb2e72c1
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 81382ebecdff6c7b146386b3ae2b0768a7c834bf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489030"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389062"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Typische Szenarien für die Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -47,8 +47,8 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 > | Schritte | Beispiel |
 > | --- | --- |
 > | **1.** [Erstellen eines neuen Zugriffspakets in einem Katalog](entitlement-management-access-package-create.md#start-new-access-package) | ![Erstellen eines Zugriffspakets](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [Hinzufügen von Ressourcenrollen zu einem Zugriffspaket](entitlement-management-access-package-edit.md#add-resource-roles)<ul><li>Gruppen</li><li>ANWENDUNGEN</li><li>SharePoint-Websites</li></ul> | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [Hinzufügen einer Richtlinie](entitlement-management-access-package-edit.md#policy-for-users-in-your-directory)<ul><li>Für Benutzer in Ihrem Verzeichnis</li><li>Genehmigung anfordern</li><li>Ablaufeinstellungen</li></ul> | ![Richtlinie hinzufügen](./media/entitlement-management-scenarios/policy.png) |
+> | **2.** [Hinzufügen von Ressourcenrollen zu einem Zugriffspaket](entitlement-management-access-package-resources.md#add-resource-roles)<ul><li>Gruppen</li><li>ANWENDUNGEN</li><li>SharePoint-Websites</li></ul> | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **3.** [Hinzufügen einer Richtlinie](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)<ul><li>Für Benutzer in Ihrem Verzeichnis</li><li>Genehmigung anfordern</li><li>Lebenszykluseinstellungen</li></ul> | ![Richtlinie hinzufügen](./media/entitlement-management-scenarios/policy.png) |
 
 ### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>Ich möchte, dass die Benutzer aus dem Verzeichnis meiner Geschäftspartner einschließlich der Benutzer, die sich noch nicht in meinem Verzeichnis befinden, den Zugriff auf Gruppen, Anwendungen oder SharePoint-Websites anfordern können.
 
@@ -56,9 +56,9 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 > | Schritte | Beispiel |
 > | --- | --- |
 > | **1.** [Erstellen eines neuen Zugriffspakets in einem Katalog](entitlement-management-access-package-create.md#start-new-access-package) | ![Erstellen eines Zugriffspakets](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [Hinzufügen von Ressourcenrollen zu einem Zugriffspaket](entitlement-management-access-package-edit.md#add-resource-roles) | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [Hinzufügen einer Richtlinie für externe Benutzer](entitlement-management-access-package-edit.md#policy-for-users-not-in-your-directory)<ul><li>Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden</li><li>Genehmigung anfordern</li><li>Ablaufeinstellungen</li></ul> | ![Hinzufügen einer Richtlinie für externe Benutzer](./media/entitlement-management-scenarios/policy-external.png) |
-> | **4.** [Senden des Links zum Portal „Mein Zugriff“zum Anfordern des Zugriffspakets an Ihren Geschäftspartner](entitlement-management-access-package-edit.md#copy-my-access-portal-link)<ul><li>Der Geschäftspartner kann den Link an seine Benutzer weiterleiten.</li></ul> |  |
+> | **2.** [Hinzufügen von Ressourcenrollen zu einem Zugriffspaket](entitlement-management-access-package-resources.md#add-resource-roles) | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles.png) |
+> | **3.** [Hinzufügen einer Richtlinie für externe Benutzer](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)<ul><li>Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden</li><li>Genehmigung anfordern</li><li>Lebenszykluseinstellungen</li></ul> | ![Hinzufügen einer Richtlinie für externe Benutzer](./media/entitlement-management-scenarios/policy-external.png) |
+> | **4.** [Senden des Links zum Anfordern eines Zugriffspakets an Ihren Geschäftspartner](entitlement-management-access-package-settings.md)<ul><li>Der Geschäftspartner kann den Link an seine Benutzer weiterleiten.</li></ul> |  |
 
 ### <a name="i-want-to-change-the-groups-applications-or-sharepoint-sites-in-an-access-package"></a>Ich möchte die Gruppen, Anwendungen oder SharePoint-Websites in einem Zugriffspaket ändern
 
@@ -66,7 +66,7 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 > | Schritte | Beispiel |
 > | --- | --- |
 > | **1.** Öffnen des Zugriffspakets | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [Hinzufügen oder Entfernen von Ressourcenrollen](entitlement-management-access-package-edit.md#add-resource-roles) | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles-add.png) |
+> | **2.** [Hinzufügen oder Entfernen von Ressourcenrollen](entitlement-management-access-package-resources.md#add-resource-roles) | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles-add.png) |
 
 ### <a name="i-want-to-view-who-has-an-assignment-to-groups-applications-or-sharepoint-sites"></a>Ich möchte anzeigen, wer über eine Zuweisung für Gruppen, Anwendungen oder SharePoint-Websites verfügt
 
@@ -74,7 +74,7 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 > | Schritte | Beispiel |
 > | --- | --- |
 > | **1.** Öffnen eines Zugriffspakets | ![Hinzufügen von Ressourcenrollen](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [Anzeigen von Zuweisungen](entitlement-management-access-package-edit.md#view-who-has-an-assignment)<ul><li>Anzeigen, welche Benutzer Zugriff auf ein Zugriffspaket haben</li><li>Anzeigen, für welchen Benutzer der Zugriff abgelaufen ist</li></ul> |  |
+> | **2.** [Anzeigen von Zuweisungen](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)<ul><li>Anzeigen, welche Benutzer Zugriff auf ein Zugriffspaket haben</li><li>Anzeigen, für welchen Benutzer der Zugriff abgelaufen ist</li></ul> |  |
 
 ### <a name="i-want-to-view-groups-applications-or-sharepoint-sites-a-user-has-access-to"></a>Ich möchte die Gruppen, Anwendungen oder SharePoint-Websites anzeigen, auf die ein Benutzer zugreifen kann
 
@@ -109,7 +109,7 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 > [!div class="mx-tableFixed"]
 > | Schritte | Beispiel |
 > | --- | --- |
-> | **1.** [Suchen nach dem erhaltenen Link zum Portal „Mein Zugriff“](entitlement-management-access-package-edit.md#copy-my-access-portal-link) |  |
+> | **1.** [Suchen nach dem empfangenen Link zum Zugriffspaket](entitlement-management-access-package-settings.md) |  |
 > | **2.** [Anmelden beim Portal „Mein Zugriff“](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![Portal „Mein Zugriff“, Screenshot](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
 > | **3.** [Zugriff anfordern](entitlement-management-request-access.md#request-an-access-package) | ![Anfordern des Zugriffs als externer Benutzer](./media/entitlement-management-scenarios/request-access-external.png) |
 
@@ -124,4 +124,4 @@ Es gibt mehrere Möglichkeiten, wie Sie die Berechtigungsverwaltung für Ihre Or
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Tutorial: Erstellen Ihres ersten Zugriffspakets](entitlement-management-access-package-first.md)
-- [Delegieren von Aufgaben](entitlement-management-delegate.md)
+- [Delegierung und Rollen](entitlement-management-delegate.md)

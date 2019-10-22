@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300313"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375586"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kreditkarte für Azure
 
@@ -131,7 +131,7 @@ Wenn Sie die Standardzahlungsmethode auf „Scheck/Überweisung“ umstellen mö
 1. Wählen Sie eine vorhandene Karte aus, oder fügen Sie eine neue hinzu.
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Wenn beim Hinzufügen oder Aktualisieren Ihrer Kreditkarte Fehler auftreten, versuchen Sie, den Browser im privaten Modus zu öffnen.
+Virtuelle Karten oder Prepaidkarten werden nicht unterstützt. Wenn beim Hinzufügen oder Aktualisieren einer gültigen Kreditkarte Fehler auftreten, versuchen Sie, den Browser im privaten Modus zu öffnen.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 In den folgenden Abschnitten werden häufig gestellte Fragen zum Ändern der Kreditkarteninformationen beantwortet.

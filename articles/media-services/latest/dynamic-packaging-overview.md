@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/10/2019
+ms.date: 10/03/2019
 ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910248"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383534"
 ---
 # <a name="dynamic-packaging"></a>Dynamische Paketerstellung
 
@@ -236,11 +236,30 @@ Der Player kann das Element `Label` für die Anzeige auf der Benutzeroberfläche
 
 ### <a name="signaling-audio-description-tracks"></a>Kennzeichnen von Spuren für die Audiobeschreibung
 
-Ein Kunde kann eine Audiospur als Audiobeschreibung im Manifest kommentieren. Zu diesem Zweck fügt er die Parameter „accessibility“ und „role“ in der ISM-Datei hinzu. Media Services erkennt die Audiobeschreibung, wenn für eine Audiospur der Parameter „accessibility“ mit dem Wert „description“ und der Parameter „role“ mit dem Wert „alternate“ enthalten ist. Wird von Media Services die Audiobeschreibung in der ISM-Datei erkannt, werden die Informationen der Audiobeschreibung als die Attribute `Accessibility="description"` und `Role="alternate"` im Element `StreamIndex` an das Clientmanifest übergeben.
+Sie können dem Video eine Audiokommentarspur hinzufügen, damit Benutzer mit Sehbehinderung dem Video folgen können, indem sie sich den Audiokommentar anhören. Sie müssen eine Audiospur als Audiobeschreibung im Manifest kommentieren. Fügen Sie dafür in der ISM-Datei die Parameter „accessibility“ und „role“ hinzu. Sie sind dafür verantwortlich, diese Parameter korrekt festzulegen, um eine Audiospur als Audiobeschreibung zu signalisieren. Fügen Sie beispielsweise `<param name="accessibility" value="description" />` und `<param name="role" value="alternate"` zur ISM-Datei für eine bestimmte Audiospur hinzu. 
 
-Wenn die Kombination aus „accessibility“ = „description“ und „role“ = „alternate“ in der ISM-Datei festgelegt wird, enthalten das DASH-Manifest und das Smooth-Manifest die in den Parametern „accessibility“ und „role“ festgelegten Werte. Der Kunde ist dafür verantwortlich, diese beiden Werte richtig festzulegen und eine Audiospur als Audiobeschreibung zu markieren. Gemäß DASH-Spezifikation bedeutet die gleichzeitige Verwendung von „accessibility“ = „description“ und „role“ = „alternate“, dass es sich bei einer Audiospur um eine Audiobeschreibung handelt.
+Weitere Informationen finden Sie im Beispiel [Signalisieren einer beschreibenden Audiospur](signal-descriptive-audio-howto.md).
 
-Bei HLS v7 und höheren Versionen (`format=m3u8-cmaf`) enthält die Wiedergabeliste `CHARACTERISTICS="public.accessibility.describes-video"` nur dann, wenn die Kombination aus „accessibility“ = „description“ und „role“ = „alternate“ in der ISM-Datei festgelegt wird. 
+#### <a name="smooth-streaming-manifest"></a>Smooth Streaming-Manifest
+
+Wenn Sie einen Smooth Streaming-Stream wiedergeben, enthält das Manifest Werte in den `Accessibility`- und `Role`-Attributen für diese Audiospur. Beispielsweise wird `Role="alternate" Accessibility="description"` zum `StreamIndex`-Element hinzugefügt, um anzugeben, dass es sich um eine Audiobeschreibung handelt.
+
+#### <a name="dash-manifest"></a>DASH-Manifest
+
+Für das DASH-Manifest werden die folgenden beiden Elemente hinzugefügt, um die Audiobeschreibung zu signalisieren:
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>HLS-Wiedergabeliste
+
+Bei HLS Version 7 und höher `(format=m3u8-cmaf)` enthält die Wiedergabeliste `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"`, wenn die Audiobeschreibungsspur signalisiert wird.
+
+#### <a name="example"></a>Beispiel
+
+Weitere Informationen finden Sie unter [Signalisieren einer beschreibenden Audiospur](signal-descriptive-audio-howto.md).
 
 ## <a name="dynamic-manifest"></a>Dynamisches Manifest
 
