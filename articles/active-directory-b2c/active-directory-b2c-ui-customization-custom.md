@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88a8258a91237c7b3eadccc32a30c3fe8149eca5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064638"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374224"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -119,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Sie bereit sind:
 
 Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **ContentDefinition** und ihre untergeordneten Elemente in der Basisdatei, und fügen Sie sie in die Erweiterungsdatei ein.
 
-1. Öffnen Sie die Basisdatei Ihrer Richtlinie. Beispiel: *`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`***. Das ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, die Sie in der Voraussetzung [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom) erhalten haben sollten.
+1. Öffnen Sie die Basisdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Das ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, die Sie in der Voraussetzung [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom) erhalten haben sollten.
 1. Suchen Sie nach dem Element **ContentDefinitions**, und kopieren Sie den gesamten Inhalt.
 1. Öffnen Sie die Erweiterungsdatei. Beispiel: *TrustFrameworkExtensions.xml*. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Fügen Sie den gesamten Inhalt des **ContentDefinitions**-Elements ein, das Sie als untergeordnetes Element des **BuildingBlocks**-Elements kopiert haben.
