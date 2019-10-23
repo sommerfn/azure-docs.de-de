@@ -4,8 +4,8 @@ description: Hier wird beschrieben, wie Sie mehrere Container in Azure mit Docke
 keywords: Azure App Service, Web-App, Linux, Docker, Compose, mehrere Container, Web-App für Container, Container, Wordpress, Azure Database for MySQL, Produktionsdatenbank mit Containern
 services: app-service
 documentationcenter: ''
-author: msangapu
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: b83edae698ed62deea189c979478c2170a034fc8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f4a366809bd5c6267ef76632e8990309f100c393
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070858"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554941"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 
@@ -42,11 +42,9 @@ Zum Durcharbeiten dieses Tutorials benötigen Sie Erfahrung mit [Docker Compose]
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-Für dieses Tutorial verwenden Sie die Compose-Datei von [Docker](https://docs.docker.com/compose/wordpress/#define-the-project), aber Sie ändern sie, um Azure Database for MySQL, beständigen Speicher und Redis einzubinden. Die Konfigurationsdatei finden Sie in den [Beispielen für Azure](https://github.com/Azure-Samples/multicontainerwordpress).
+Für dieses Tutorial verwenden Sie die Compose-Datei von [Docker](https://docs.docker.com/compose/wordpress/#define-the-project), aber Sie ändern sie, um Azure Database for MySQL, beständigen Speicher und Redis einzubinden. Die Konfigurationsdatei finden Sie in den [Beispielen für Azure](https://github.com/Azure-Samples/multicontainerwordpress). Unterstützte Konfigurationsoptionen finden Sie unter [Docker Compose-Optionen](configure-custom-container.md#docker-compose-options).
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
-
-Unterstützte Konfigurationsoptionen finden Sie unter [Docker Compose-Optionen](configure-custom-container.md#docker-compose-options).
 
 Erstellen Sie in Cloud Shell ein Tutorialverzeichnis, und navigieren Sie dann in dieses Verzeichnis.
 
