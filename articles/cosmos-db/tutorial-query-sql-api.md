@@ -1,19 +1,19 @@
 ---
 title: Wie werden Abfragen mit SQL in Azure Cosmos DB durchgeführt?
 description: Erlernen der Durchführung von Abfragen mit SQL in Azure Cosmos DB
-author: rimman
-ms.author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ffebdb0a46fdae981ca73a4569344365459dd7b8
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932797"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756818"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der SQL-API
 
@@ -65,7 +65,7 @@ Weitere Informationen zu SQL-Abfragen finden Sie hier:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Tutorial setzt voraus, dass Sie über Azure Cosmos DB-Konto und -Sammlung verfügen. Sie haben beides nicht? Führen Sie den [5-Minuten-Schnellstart](create-mongodb-nodejs.md) aus.
+Dieses Tutorial setzt voraus, dass Sie über Azure Cosmos DB-Konto und -Sammlung verfügen. Sie haben beides nicht? Führen Sie den [5-Minuten-Schnellstart](create-cosmosdb-resources-portal.md) aus.
 
 ## <a name="example-query-1"></a>Beispielabfrage 1
 

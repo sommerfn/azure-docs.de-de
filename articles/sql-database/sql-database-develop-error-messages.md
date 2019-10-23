@@ -12,16 +12,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/02/2019
-ms.openlocfilehash: 19febc5a0a6e4a72cfebfaecd917185538130152
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8d4e7fa314ce3a5f8534e7742880114ccc7f7144
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035021"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598139"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme
 
-In diesem Artikel werden SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen aufgeführt, darunter Datenbankverbindungsfehler, vorübergehende Fehler, Fehler zur Ressourcenkontrolle, Datenbankkopierfehler, Fehler in Zusammenhang mit Pools für elastische Datenbanken und andere. Die meisten Kategorien gelten speziell für Azure SQL-Datenbank und nicht für Microsoft SQL Server. Siehe auch [Systemfehlermeldungen](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
+In diesem Artikel werden SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen aufgeführt, darunter Datenbankverbindungsfehler, vorübergehende Fehler, Fehler zur Ressourcenkontrolle, Datenbankkopierfehler, Fehler in Zusammenhang mit Pools für elastische Datenbanken und andere. Die meisten Kategorien gelten speziell für Azure SQL-Datenbank und nicht für Microsoft SQL Server. Siehe auch [Systemfehlermeldungen](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Datenbankverbindungsfehler, vorübergehende Fehler und andere temporäre Fehler
 

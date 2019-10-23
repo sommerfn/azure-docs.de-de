@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: 208ebaa2e22f4cd0ee2138f3e49f78c1e56860cf
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 235cdff1297b840bfd1a522e265633b47094c855
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260331"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597962"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
@@ -574,7 +574,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |query_hash_s|Der Abfragehash der fehlerhaften Abfrage (falls verfügbar) |
 |query_plan_hash_s|Hash des Abfrageplans der fehlerhaften Abfrage (falls verfügbar) |
 
-Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com/library/cc645603.aspx).
+Weitere Informationen zu [SQL Server-Fehlermeldungen](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-ver15).
 
 ### <a name="database-wait-statistics-dataset"></a>Dataset zur Wartestatistik der Datenbank
 
