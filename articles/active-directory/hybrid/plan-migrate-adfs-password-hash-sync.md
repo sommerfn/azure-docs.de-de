@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b291f2243dfe28a8e866796e0b7375f94fa4f2e
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 23ba9b06c9a3e6025d7227493713fe9187fba233
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779438"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514892"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -161,7 +161,7 @@ Weitere Informationen zur Bedingung **Standort** beim bedingten Zugriff finden S
 
 Wenn Sie ein Gerät mit Azure AD verknüpfen, können Sie Regeln für den bedingten Zugriff erstellen, mit denen erzwungen wird, dass Geräte Ihre Sicherheits- und Konformitätsstandards für den Zugriff erfüllen. Benutzer können sich auch an einem Gerät anmelden, indem sie anstelle eines persönlichen Kontos ein Geschäfts-, Schul- oder Unikonto einer Organisation nutzen. Bei Verwendung von Geräten, die mit Azure AD Hybrid verknüpft sind, können Sie Ihre in die Active Directory-Domäne eingebundenen Geräte mit Azure AD verknüpfen. Unter Umständen wurde Ihre Verbundumgebung für die Verwendung dieses Features eingerichtet.
 
-Gehen Sie für Windows 10-Clients wie folgt vor, um sicherzustellen, dass die Hybrideinbindung weiterhin für alle in die Domäne eingebundenen Geräte funktioniert, nachdem Ihre Domänen auf die Kennworthashsynchronisierung umgestellt wurden: Verwenden Sie Azure AD Connect, um Active Directory-Computerkonten mit Azure AD zu synchronisieren. 
+Gehen Sie für Windows 10-Clients wie folgt vor, um sicherzustellen, dass die Hybrideinbindung weiterhin für alle in die Domäne eingebundenen Geräte funktioniert, nachdem Ihre Domänen auf die Kennworthashsynchronisierung umgestellt wurden: Sie müssen die Azure AD Connect-Geräteoptionen verwenden, um den Dienstverbindungspunkt (SCP) auszufüllen, und dann die Active Directory-Computerkonten mit Azure AD synchronisieren. 
 
 Für Windows 8- und Windows 7-Computerkonten wird für die Hybrideinbindung das nahtlose einmalige Anmelden genutzt, um die Computer in Azure AD zu registrieren. Es ist nicht erforderlich, Windows 8- und Windows 7-Computerkonten zu synchronisieren, wie Sie dies für Windows 10-Geräte durchführen. Allerdings müssen Sie eine aktualisierte Version der Datei „workplacejoin.exe“ (per MSI-Datei) für Windows 8- und Windows 7-Clients bereitstellen, damit diese sich per nahtlosem einmaligem Anmelden registrieren können. [Laden Sie die MSI-Datei herunter](https://www.microsoft.com/download/details.aspx?id=53554).
 

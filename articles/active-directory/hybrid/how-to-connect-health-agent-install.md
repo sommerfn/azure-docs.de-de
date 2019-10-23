@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e5c58b1417362943a9c12b29ad9aa9afa1f04
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 68249fc9a599ab49e8d5fd231fa63e91a6e3a21f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648676"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330107"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren des Azure AD Connect Health-Agents
 
@@ -39,9 +39,14 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 |Ausgehende Verbindungen auf IP-Adressbasis | Informationen zur IP-adressbasierten Firewallfilterung finden Sie in den [IP-Bereichen für Azure](https://www.microsoft.com/download/details.aspx?id=41653).|
 | Die SSL-Überprüfung für ausgehenden Datenverkehr ist gefiltert oder deaktiviert. | Beim Agent-Registrierungsschritt oder bei Datenuploads tritt unter Umständen ein Fehler auf, wenn auf der Netzwerkebene eine SSL-Überprüfung oder Beendigung für ausgehenden Datenverkehr erfolgt. Weitere Informationen zum [Einrichten der SSL-Überprüfung](https://technet.microsoft.com/library/ee796230.aspx) |
 | Firewall-Ports auf dem Server mit dem Agent |Für den Agent müssen die folgenden Firewallports geöffnet sein, damit er mit den Azure AD Health-Dienstendpunkten kommunizieren kann:<br /><br /><li>TCP-Port 443</li><li>TCP-Port 5671</li> <br />Beachten Sie, dass Port 5671 für die neueste Agent-Version nicht mehr erforderlich ist. Aktualisieren Sie auf die neueste Version, sodass nur Port 443 erforderlich ist. Weitere Informationen zum [Aktivieren von Firewallports](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
-| Zulassen der folgenden Websites, wenn die verstärkte IE-Sicherheit aktiviert ist |Wenn die verstärkte IE-Sicherheit aktiviert ist, müssen die folgenden Websites auf dem Server zugelassen werden, auf dem der Agent installiert werden soll:<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>Der Verbundserver für Ihre Organisation, dem Azure Active Directory vertraut. Beispiel: https:\//sts.contoso.com</li> Weitere Informationen zum [Konfigurieren von IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+| Zulassen der folgenden Websites, wenn die verstärkte IE-Sicherheit aktiviert ist |Wenn die verstärkte IE-Sicherheit aktiviert ist, müssen die folgenden Websites auf dem Server zugelassen werden, auf dem der Agent installiert werden soll:<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>Der Verbundserver für Ihre Organisation, dem Azure Active Directory vertraut. Beispiel: https:\//sts.contoso.com</li> Weitere Informationen finden Sie unter [Konfigurieren von IE](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing). Achten Sie auf den folgenden Hinweis, wenn Ihr Netzwerk einen Proxy enthält.|
 | Sicherstellen, dass mindestens PowerShell 4. 0 installiert ist | <li>Windows Server 2008 R2 verfügt standardmäßig über PowerShell 2.0. Diese Version ist für den Agent jedoch nicht ausreichend. Aktualisieren Sie PowerShell, wie unter [Installation des Agents auf Windows Server 2008 R2-Servern](#agent-installation-on-windows-server-2008-r2-servers) beschrieben.</li><li>Windows Server 2012 verfügt standardmäßig über PowerShell 3.0. Diese Version ist für den Agent jedoch nicht ausreichend.  [Aktualisieren](https://www.microsoft.com/download/details.aspx?id=40855) Sie Windows Management Framework.</li><li>Windows Server 2012 R2 und höhere Versionen verfügen standardmäßig über eine geeignete PowerShell-Version.</li>|
 |Deaktivieren von FIPS|FIPS wird von Azure AD Connect Health-Agents nicht unterstützt.|
+
+
+> [!NOTE]
+> Wenn Sie über eine stark blockierte und extrem eingeschränkte Umgebung verfügen, müssen Sie die in der folgenden Dienstendpunktliste aufgeführten URLs in eine Whitelist übernehmen, und zwar zusätzlich zu den URLs, die bei der Konfiguration der verstärkten IE-Sicherheit in der Zulassungsliste enthalten sind. 
+>
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Ausgehende Verbindungen zu den Azure-Dienstendpunkten
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174208"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517059"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Herunterladen einer Liste von Benutzern (Vorschau) im Azure Active Directory-Portal
 
@@ -35,6 +35,38 @@ Um die Liste der Benutzer aus dem Azure AD Admin Center herunterzuladen, müssen
 1. Wählen Sie auf der Seite **Benutzer herunterladen** die Option **Start** aus, um eine CSV-Datei mit der Auflistung von Benutzerprofileigenschaften zu erhalten. Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite „Ergebnisse von Massenvorgängen“ herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
 
    ![Wählen Sie den Speicherort aus, wo Sie die Liste der Benutzer herunterladen möchten.](./media/users-bulk-download/bulk-download.png)
+
+   Die Downloaddatei enthält die gefilterte Benutzerliste.
+
+   Enthalten sind die folgenden Benutzerattribute: 
+
+   - userPrincipalName
+   - displayName
+   - surname
+   - mail
+   - givenName
+   - objectId
+   - userType
+   - jobTitle
+   - department
+   - manager
+   - accountEnabled
+   - usageLocation
+   - streetAddress
+   - state
+   - country
+   - physicalDeliveryOfficeName
+   - city
+   - postalCode
+   - telephoneNumber
+   - mobile
+   - authenticationPhoneNumber
+   - authenticationAlternativePhoneNumber
+   - AuthenticationEmail
+   - alternateEmailAddress
+   - ageGroup
+   - consentProvidedForMinor
+   - legalAgeGroupClassification
 
 ## <a name="check-status"></a>Status überprüfen
 

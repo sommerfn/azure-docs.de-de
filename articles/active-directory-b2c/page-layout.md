@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 612d2e3a9a5a324f7d6d8e1b63b6b7e297047239
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 108d86e35422e1dc1d10aeb6b2c9488f5067232e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063836"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389688"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Auswählen eines Seitenlayouts in Azure Active Directory B2C mit benutzerdefinierten Richtlinien
 
@@ -68,6 +68,17 @@ Verwenden Sie zum Festlegen eines Seitenlayouts die folgende Tabelle, um nach **
 
 Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesserungen in ihre Seitenelemente aufzunehmen. Das folgende Änderungsprotokoll gibt die in den einzelnen Versionen eingeführten Änderungen an.
 
+### <a name="120"></a>1.2.0 
+- Alle Seiten
+  - Korrekturen zur Barrierefreiheit
+  - Sie können nun in den HTML-Tags das Attribut `data-preload="true"` hinzufügen, um die Ladereihenfolge für CSS und JavaScript zu steuern. Mögliche Szenarien:
+      - Verwenden Sie dieses Attribut in Ihrem CSS-Link, um das CSS gleichzeitig mit dem HTML-Code zu laden, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
+      - Mit diesem Attribut können Sie die Reihenfolge steuern, in der die „script“-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
+  - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
+  - Unterstützung für den Google Chrome-Übersetzer
+- Einheitliche und selbstbestätigte Seite
+  - Für die Felder „Benutzername/E-Mail“ und „Kennwort“ wird jetzt der HTML-Befehl für Formular („form“) verwendet.  Dadurch können Edge und IE diese Informationen jetzt richtig speichern.
+  
 ### <a name="110"></a>1.1.0
 
 - Seite mit Ausnahmen (globalexception)

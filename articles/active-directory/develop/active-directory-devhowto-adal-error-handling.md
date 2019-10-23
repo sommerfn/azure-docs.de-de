@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0c1bbbdf9b42dfe2b507f533ad1806e06991f33
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835419"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374192"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -55,7 +55,7 @@ Grundsätzlich gibt es zwei Fälle von AcquireTokenSilent-Fehlern:
 | Fall | BESCHREIBUNG |
 |------|-------------|
 | **Fall 1**: Fehler ist mit einer interaktiven Anmeldung auflösbar | Bei Fehlern, die durch das Fehlen gültiger Token verursacht werden, ist eine interaktive Anforderung erforderlich. Insbesondere für die Cachesuche und ein ungültiges/abgelaufenes Aktualisierungstoken ist ein AcquireToken-Aufruf erforderlich.<br><br>In diesen Fällen muss der Endbenutzer aufgefordert werden, sich anzumelden. Die Anwendung kann wählen, ob sie eine interaktive Anforderung sofort, nach der Interaktion mit dem Endbenutzer (z.B. durch Drücken einer Anmeldeschaltfläche) oder später ausführen möchte. Die Auswahl hängt vom gewünschten Verhalten der Anwendung ab.<br><br>Weitere Informationen finden Sie im Code im folgenden Abschnitt für diesen speziellen Fall und die Fehler, die ihn diagnostizieren.|
-| **Fall 2**: Fehler ist nicht mit einer interaktiven Anmeldung auflösbar | Bei Netzwerk- und vorübergehenden/temporären Fehlern oder anderen Fehlern löst die Ausführung einer interaktiven AcquireToken-Anforderung das Problem nicht. Unnötige interaktive Anmeldeaufforderungen können Endbenutzer auch stören. ADAL versucht automatisch einen einzigen Wiederholungsversuch für die meisten Fehler bei AcquireTokenSilent-Fehlern.<br><br>Die Clientanwendung kann auch zu einem späteren Zeitpunkt einen Wiederholungsversuch ausführen, aber wann und wie dieser auszuführen ist, hängt vom Anwendungsverhalten und der gewünschten Endbenutzererfahrung ab. Beispielsweise kann die Anwendung nach einigen Minuten oder als Reaktion auf eine Aktion des Endbenutzers einen Wiederholungsversuch von AcquireTokenSilent ausführen. Ein sofortiger Wiederholungsversuch führt dazu, dass die Anwendung gedrosselt wird und sollte nicht unternommen werden.<br><br>Ein nachfolgender Wiederholungsversuch, der mit dem gleichen Fehler fehlschlägt, bedeutet nicht, dass der Client eine interaktive Anforderung mit AcquireToken ausführen sollte, da dies den Fehler nicht behebt.<br><br>Weitere Informationen finden Sie im Code im folgenden Abschnitt für diesen speziellen Fall und die Fehler, die ihn diagnostizieren. |
+| **Fall 2**: Fehler ist nicht mit einer interaktiven Anmeldung auflösbar | Bei Netzwerk- und vorübergehenden/temporären Fehlern oder anderen Fehlern löst die Ausführung einer interaktiven AcquireToken-Anforderung das Problem nicht. Unnötige interaktive Anmeldeaufforderungen können Endbenutzer auch stören. ADAL versucht automatisch einen einzigen Wiederholungsversuch für die meisten Fehler bei AcquireTokenSilent-Fehlern.<br><br>Die Clientanwendung kann auch zu einem späteren Zeitpunkt einen Wiederholungsversuch ausführen, doch hängen Zeitpunkt und Ausführung vom Anwendungsverhalten und der gewünschten Endbenutzererfahrung ab. Beispielsweise kann die Anwendung nach einigen Minuten oder als Reaktion auf eine Aktion des Endbenutzers einen Wiederholungsversuch von AcquireTokenSilent ausführen. Ein sofortiger Wiederholungsversuch führt dazu, dass die Anwendung gedrosselt wird und sollte nicht unternommen werden.<br><br>Ein nachfolgender Wiederholungsversuch, der mit dem gleichen Fehler fehlschlägt, bedeutet nicht, dass der Client eine interaktive Anforderung mit AcquireToken ausführen sollte, da dies den Fehler nicht behebt.<br><br>Weitere Informationen finden Sie im Code im folgenden Abschnitt für diesen speziellen Fall und die Fehler, die ihn diagnostizieren. |
 
 ### <a name="net"></a>.NET
 
@@ -200,7 +200,7 @@ Die Fehlerbehandlung in nativen Anwendungen kann durch zwei Fälle definiert wer
 
 |  |  |
 |------|-------------|
-| **Fall 1**:<br>Nicht wiederholbarer Fehler (Mehrzahl der Fälle) | 1. Versuchen Sie keinen sofortigen Wiederholungsversuch. Zeigen Sie die Benutzeroberfläche des Endbenutzers auf der Grundlage des spezifischen Fehlers an, der einen Wiederholungsversuch auslöst („Versuchen Sie, sich erneut anzumelden“, „Azure AD-Brokeranwendung herunterladen“ usw.). |
+| **Fall 1**:<br>Nicht wiederholbarer Fehler (Mehrzahl der Fälle) | 1. Versuchen Sie keinen sofortigen Wiederholungsversuch. Zeigen Sie dem Endbenutzer eine Benutzeroberfläche anhand des speziellen Fehlers an, der einen Wiederholungsversuch auslöst (z.B. „Versuchen Sie, sich erneut anzumelden“ oder „Azure AD-Brokeranwendung herunterladen“). |
 | **Fall 2**:<br>Wiederholbarer Fehler | 1. Führen Sie einen einzelnen Wiederholungsversuch aus. Möglicherweise hat der Endbenutzer einen Status eingegeben, der zu einem Erfolg führt.<br><br>2. Wenn der Wiederholungsversuch fehlschlägt, zeigen Sie die Benutzeroberfläche des Endbenutzers auf der Grundlage des spezifischen Fehlers an, der einen Wiederholungsversuch auslöst („Versuchen Sie, sich erneut anzumelden“, „Azure AD-Brokeranwendung herunterladen“ usw.). |
 
 > [!IMPORTANT]
@@ -213,8 +213,8 @@ Die folgende Anleitung enthält Beispiele für die Fehlerbehandlung in Verbindun
 
 - AcquireTokenAsync(…, IClientAssertionCertification, …)
 - AcquireTokenAsync(…,ClientCredential, …)
-- AcquireTokenAsync(…,ClientAssertion, …)
-- AcquireTokenAsync(…,UserAssertion,…)   
+- AcquireTokenAsync(…, ClientAssertion, …)
+- AcquireTokenAsync(…, UserAssertion,…)   
 
 Der Code würde wie folgt implementiert werden:
 
@@ -482,8 +482,8 @@ Wir haben ein [vollständiges Beispiel](https://github.com/Azure-Samples/active-
 
 ## <a name="error-and-logging-reference"></a>Fehler- und Protokollierungsreferenz
 
-### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>Protokollieren von personenbezogenen Informationen (PII) und organisationsbezogenen Informationen (OII)
-Standardmäßig werden bei der ADAL-Protokollierung keine personen- oder organisationsbezogenen Informationen erfasst. Die Bibliothek erlaubt App-Entwicklern aber, dies über einen Setter in der Protokollierungsklasse zu aktivieren. Nach der Aktivierung von personen- und organisationsbezogenen Daten ist die App für die sichere Verarbeitung hochgradig sensibler Daten und die Einhaltung von gesetzlichen Anforderungen verantwortlich.
+### <a name="logging-personal-identifiable-information--organizational-identifiable-information"></a>Protokollieren von personenbezogenen Informationen (PII) und organisationsbezogenen Informationen (OII) 
+Standardmäßig werden von der ADAL-Protokollierung keine Daten erfasst, anhand denen Personen oder Organisationen identifizierbar sind. Die Bibliothek erlaubt App-Entwicklern aber, dies über einen Setter in der Protokollierungsklasse zu aktivieren. Bei der Protokollierung personen- oder organisationsbezogener Informationen ist die App verantwortlich für den sicheren Umgang mit diesen äußerst sensiblen Daten und für die Einhaltung aller gesetzlichen Anforderungen.
 
 ### <a name="net"></a>.NET
 
@@ -590,7 +590,7 @@ Nutzen Sie den folgenden Kommentarabschnitt, um uns Feedback zu geben und uns da
 <!--Reference style links -->
 
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
-[AAD-Auth-Scenarios]:authentication-scenarios.md
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AZURE-portal]: https://portal.azure.com

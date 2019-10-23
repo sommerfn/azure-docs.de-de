@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5d89c0784c2125f5a7810ff134686645e8314a6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960219"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389556"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -97,9 +97,9 @@ Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten 
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung
 
-Wenn alle Voraussetzungen erfüllt sind, werden Windows-Geräte automatisch als Geräte bei Ihrem Azure AD-Mandanten registriert. Der Zustand dieser Geräteidentitäten in Azure AD wird als Azure AD-Hybrideinbindung bezeichnet. Weitere Informationen zu den in diesem Artikel beschriebenen Konzepten finden Sie in den Artikeln [Einführung in die Geräteidentitätsverwaltung in Azure Active Directory](overview.md) und [Planen der Implementierung Ihrer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
+Wenn alle Voraussetzungen erfüllt sind, werden Windows-Geräte automatisch als Geräte bei Ihrem Azure AD-Mandanten registriert. Der Zustand dieser Geräteidentitäten in Azure AD wird als Azure AD Hybrid Join bezeichnet. Weitere Informationen zu den in diesem Artikel beschriebenen Konzepten finden Sie im Artikel [Einführung in die Geräteidentitätsverwaltung in Azure Active Directory](overview.md).
 
-Organisationen sollten eine kontrollierte Überprüfung der Azure AD-Hybrideinbindung vornehmen, bevor sie diese in ihrer gesamten Organisation gleichzeitig aktivieren. Das Verständnis, wie Sie dies erreichen können, erhalten Sie in dem Artikel [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](hybrid-azuread-join-control.md).
+Organisationen sollten eine kontrollierte Überprüfung von Azure AD Hybrid Join durchführen, bevor sie den Dienst in der gesamten Organisation aktivieren. Das Verständnis, wie Sie dies erreichen können, erhalten Sie in dem Artikel [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](hybrid-azuread-join-control.md).
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Auswählen Ihres Szenarios, basierend auf Ihrer Identitätsinfrastruktur
 

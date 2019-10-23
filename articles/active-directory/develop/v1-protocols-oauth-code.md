@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b0184aa7bff4203f50d834f603bed5fd2af52e4c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193232"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514427"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
 
@@ -265,7 +265,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | authorization_uri |Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p> Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit https://login.microsoftonline.com oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
 | error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](https://tools.ietf.org/html/rfc6749). |
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
-| resource_id |Gibt den eindeutigen Bezeichner der Ressource zurück. Die Clientanwendung kann diesen Bezeichner als Wert für den `resource` -Parameter verwenden, wenn sie ein Token für die Ressource anfordert. <p><p> Es ist wichtig, dass die Clientanwendung diesen Wert überprüft, da andernfalls ein schädlicher Dienst möglicherweise einen Angriff mit einer **Erhöhung von Rechten** durchführt. <p><p> Die empfohlene Strategie zur Verhinderung eines Angriffs besteht darin sicherzustellen, dass die `resource_id` mit dem Basiselement der Web-API-URL übereinstimmt, auf die zugegriffen wird. Wenn beispielsweise auf https://service.contoso.com/data zugegriffen wird, kann die `resource_id` „htttps://service.contoso.com/“ lauten. Die Clientanwendung muss eine `resource_id` ablehnen, die nicht mit der Basis-URL beginnt, sofern es kein zuverlässiges alternatives Verfahren zum Überprüfen der ID gibt. |
+| resource_id |Gibt den eindeutigen Bezeichner der Ressource zurück. Die Clientanwendung kann diesen Bezeichner als Wert für den `resource` -Parameter verwenden, wenn sie ein Token für die Ressource anfordert. <p><p> Es ist wichtig, dass die Clientanwendung diesen Wert überprüft, da andernfalls ein schädlicher Dienst möglicherweise einen Angriff mit einer **Erhöhung von Rechten** durchführt. <p><p> Die empfohlene Strategie zur Verhinderung eines Angriffs besteht darin sicherzustellen, dass die `resource_id` mit dem Basiselement der Web-API-URL übereinstimmt, auf die zugegriffen wird. Wenn beispielsweise auf https://service.contoso.com/data zugegriffen wird, kann die `resource_id` „https://service.contoso.com/“ lauten. Die Clientanwendung muss eine `resource_id` ablehnen, die nicht mit der Basis-URL beginnt, sofern es kein zuverlässiges alternatives Verfahren zum Überprüfen der ID gibt. |
 
 #### <a name="bearer-scheme-error-codes"></a>Bearerschema-Fehlercodes
 Die Spezifikation RFC 6750 definiert die folgenden Fehler für Ressourcen, die in der Antwort den WWW-Authenticate-Header und das Bearer-Schema verwenden.

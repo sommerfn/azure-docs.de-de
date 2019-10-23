@@ -11,15 +11,15 @@ ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91ac6b4530414850c52605bac8cb701aa2b877d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473127"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439359"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Löschen eines Verzeichnisses in Azure Active Directory
 
@@ -56,7 +56,7 @@ Bei der Konfiguration Ihres Azure AD-Verzeichnisses haben Sie möglicherweise au
 
 Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
-Abonnementzustand | Daten | Zugriff auf Daten
+Abonnementzustand | Data | Zugriff auf Daten
 ----- | ----- | -----
 Aktiv (30 Tage für die Testversion) | Daten für alle zugänglich | Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen 
 Abgelaufen (30 Tage) | Daten für alle zugänglich| Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen
@@ -65,21 +65,33 @@ Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden
 
 ## <a name="delete-a-subscription"></a>Löschen eines Abonnements
 
-Sie können ein Abonnement im Microsoft 365 Admin Center in den Status „Bereitstellung aufgehoben“ versetzen, damit es innerhalb von drei Tagen gelöscht wird.
+Sie können ein Abonnement im Microsoft 365 Admin Center in den Status **Bereitstellung aufgehoben** versetzen, damit es innerhalb von drei Tagen gelöscht wird.
 
 1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com) mit einem Konto mit Rechten eines globalen Administrators in Ihrer Organisation an. Wenn Sie versuchen, das Verzeichnis „Contoso“ zu löschen, das die anfängliche Standarddomäne „contoso.onmicrosoft.com“ hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
 
-2. Wählen Sie **Abrechnung**, anschließend **Abonnements** und dann das Abonnement aus, das Sie kündigen möchten. Nachdem Sie auf **Kündigen** geklickt haben, aktualisieren Sie die Seite.
-  
+2. Zeigen Sie eine Vorschau des neuen Microsoft 365 Admin Center an, indem Sie sicherstellen, dass der Schalter **Testen Sie das neue Admin Center** aktiviert ist.
+
+   ![Vorschau der neuen Microsoft 365 Admin Center-Umgebung](./media/directory-delete-howto/preview-toggle.png)
+
+3. Sobald das neue Admin Center aktiviert ist, müssen Sie ein Abonnement kündigen, bevor Sie es löschen können. Wählen Sie **Abrechnung** und dann **Produkte und Dienste**  aus, und wählen Sie dann **Abonnement kündigen** für das zu kündigende Abonnement aus. Sie werden auf eine Feedbackseite weitergeleitet.
+
+   ![Auswahl des zu kündigenden Abonnements](./media/directory-delete-howto/cancel-choose-subscription.png)
+
+4. Füllen Sie das Feedbackformular aus, und wählen Sie dann **Abonnement kündigen** aus, um das Abonnement zu kündigen.
+
+   ![Befehl „Kündigen“ in der Abonnementvorschau](./media/directory-delete-howto/cancel-command.png)
+
+5. Jetzt können Sie das Abonnement löschen. Wählen Sie **Löschen** für das Abonnement aus, das Sie löschen möchten. Wenn Sie das Abonnement auf der Seite **Produkte und Dienste** nicht finden können, stellen Sie sicher, dass der **Abonnementstatus** auf **Alle** eingestellt ist.
+
    ![Link „Löschen“ zum Löschen des Abonnements](./media/directory-delete-howto/delete-command.png)
-  
-3. Klicken Sie auf **Löschen**, um das Abonnement zu löschen, und akzeptieren Sie die Geschäftsbedingungen. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Sie können das Abonnement innerhalb der dreitägigen Frist reaktivieren, sollten Sie Ihre Meinung ändern.
+
+6. Wählen Sie **Abonnement löschen** aus, um das Abonnement zu löschen und die Geschäftsbedingungen zu akzeptieren. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Innerhalb der dreitägigen Frist können Sie das [Abonnement reaktivieren](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide), sollten Sie Ihre Meinung ändern.
   
    ![Lesen Sie sich die Geschäftsbedingungen sorgfältig durch.](./media/directory-delete-howto/delete-terms.png)
 
-4. Nachdem sich der Abonnementzustand geändert hat, wird das Abonnement zum Löschen gekennzeichnet. Das Abonnement wechselt 72 Stunden später in den Zustand **Bereitstellung aufgehoben**.
+7. Der Abonnementstatus hat sich nun geändert, und das Abonnement ist zum Löschen markiert. Das Abonnement wechselt 72 Stunden später in den Zustand **Bereitstellung aufgehoben**.
 
-5. Sobald Sie ein Abonnement in Ihrem Verzeichnis gelöscht haben und 72 Stunden verstrichen sind, können Sie sich wieder im Azure AD Admin Center anmelden. Dort sollten keine Aktionen erforderlich sein und keine Abonnements das Löschen Ihres Verzeichnisses blockieren. Sie sollten Ihr Azure AD-Verzeichnis nun erfolgreich löschen können.
+8. Sobald Sie ein Abonnement in Ihrem Verzeichnis gelöscht haben und 72 Stunden verstrichen sind, können Sie sich wieder im Azure AD Admin Center anmelden. Dort sollten keine Aktionen erforderlich sein und keine Abonnements das Löschen Ihres Verzeichnisses blockieren. Sie sollten Ihr Azure AD-Verzeichnis nun erfolgreich löschen können.
   
    ![Bildschirm mit bestandener Abonnementprüfung bei Löschung](./media/directory-delete-howto/delete-checks-passed.png)
 
@@ -98,7 +110,7 @@ Weitere Informationen zu den derzeit verfügbaren Produkten und Diensten zur Sel
 
 Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter  [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
-Produktstatus | Daten | Zugriff auf Daten
+Produktstatus | Data | Zugriff auf Daten
 ------------- | ---- | --------------
 Aktiv (30 Tage für die Testversion) | Daten für alle zugänglich | Benutzer haben normalen Zugriff auf Produkte, Dateien oder Apps zur Self-Service-Registrierung<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen
 Deleted | Daten gelöscht | Benutzer können auf Produkte, Dateien oder Apps zur Self-Service-Registrierung nicht zugreifen<br>Administratoren können auf das Microsoft 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten

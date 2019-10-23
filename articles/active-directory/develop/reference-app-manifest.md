@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a665f2ffe3ac2d27fb4e4403922c72520dfb37e8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e44c3e607f3d5a5ea8269b9885a4fec54000bb5f
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834883"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389581"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -80,7 +80,7 @@ Konfigurieren Sie das Anwendungsmanifest wie folgt:
 | `publicClient` | Boolean | Gibt an, ob es sich bei dieser Anwendung um einen öffentlichen Client handelt (beispielsweise eine installierte Anwendung auf einem mobilen Gerät). <br><br> _Hinweis: Nur in der (älteren) Benutzeroberfläche „App-Registrierungen“ verfügbar. Wird in der aktuellen Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `allowPublicClient` ersetzt._ | |
 | `publisherDomain` | Zeichenfolge | Die überprüfte Herausgeberdomäne für die Anwendung. Schreibgeschützt. | https://www.contoso.com |
 | `replyUrls` | Zeichenfolgenarray | Diese Eigenschaft, die mehrere Werte zulässt, enthält die Liste der registrierten „redirect_uri“-Werte, die von Azure AD bei der Rückgabe von Token als Ziele akzeptiert werden. <br><br> _Hinweis: Nur in der (älteren) Benutzeroberfläche „App-Registrierungen“ verfügbar. Wird in der aktuellen Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `replyUrlsWithType` ersetzt._ | |
-| `replyUrlsWithType` | Collection | Diese Eigenschaft, die mehrere Werte zulässt, enthält die Liste der registrierten „redirect_uri“-Werte, die von Azure AD bei der Rückgabe von Token als Ziele akzeptiert werden. Jeder URI-Wert muss einen zugehörigen App-Typwert enthalten. Folgende Typwerte werden unterstützt: `Web` und `InstalledClient`. | <code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> |
+| `replyUrlsWithType` | Collection | Diese Eigenschaft, die mehrere Werte zulässt, enthält die Liste der registrierten „redirect_uri“-Werte, die von Azure AD bei der Rückgabe von Token als Ziele akzeptiert werden. Jeder URI-Wert muss einen zugehörigen App-Typwert enthalten. Folgende Typwerte werden unterstützt: <ul><li>`Web`</li><li>`InstalledClient`</li></ul><br> Erfahren Sie mehr über [Einschränkungen beim Antwort-URL](https://docs.microsoft.com/azure/active-directory/develop/reply-url). | <code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> |
 | `requiredResourceAccess` | Collection | Mit dynamischer Einwilligung steuert `requiredResourceAccess` die Einwilligungsoberfläche für Administratoren und Benutzer, die statische Einwilligung verwenden. Die Oberfläche für die Benutzerzustimmung für den Allgemeinfall wird jedoch nicht gesteuert.<br>`resourceAppId` ist der eindeutige Bezeichner für die Ressource, auf die die App zugreifen muss. Dieser Wert muss mit der „appId“ identisch sein, die für die Zielressourcen-App deklariert wurde.<br>`resourceAccess` ist ein Array, das die OAuth 2.0-Berechtigungsbereiche und App-Rollen auflistet, welche die App für die jeweilige Ressource erfordert. Enthält die `id`- und `type`-Werte der jeweiligen Ressourcen. | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>]</code> |
 | `samlMetadataUrl` | Zeichenfolge | Die URL zu den SAML-Metadaten für die App. | `https://MyRegisteredAppSAMLMetadata` |
 | `signInUrl` | Zeichenfolge | Gibt die URL zur Startseite der App an. | `https://MyRegisteredApp` |

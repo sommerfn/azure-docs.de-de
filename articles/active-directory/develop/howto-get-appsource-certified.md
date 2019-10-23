@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835213"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374090"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 
@@ -33,7 +33,7 @@ Zum Auflisten einer eigenständigen SaaS-Anwendung auf AppSource muss Ihre Anwen
 
 ## <a name="guides-and-code-samples"></a>Anleitungen und Codebeispiele
 
-Wenn Sie weitere Informationen über die Integration Ihrer Anwendung in Azure AD mithilfe der Open ID-Verbindung wünschen, befolgen Sie unsere Anleitungen und Codebeispiele in [Azure Active Directory für Entwickler](v1-overview.md#get-started "Erste Schritte").
+Weitere Informationen zur Integration Ihrer Anwendung in Azure AD mithilfe von Open ID Connect finden Sie in den Anleitungen und Codebeispielen im [Entwicklerhandbuch zu Azure Active Directory](v1-overview.md#get-started "Erste Schritte mit Azure AD für Entwickler").
 
 ## <a name="multi-tenant-applications"></a>Mehrinstanzenfähige Anwendungen
 
@@ -113,7 +113,7 @@ Weitere Informationen zur AppSource-Testversionsbenutzeroberfläche finden Sie i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Erstellen von Anwendungen, die Azure AD-Anmeldungen unterstützen, finden Sie unter [Authentifizierungsszenarien für Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+- Weitere Informationen zum Erstellen von Anwendungen, die Azure AD-Anmeldungen unterstützen, finden Sie unter [Authentifizierungsszenarien für Azure AD](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
 - Informationen zum Auflisten der SaaS-Anwendung in AppSource finden Sie unter [AppSource-Partnerinformationen](https://appsource.microsoft.com/partners).
 
 ## <a name="get-support"></a>Support
@@ -125,8 +125,8 @@ Sie sollten Ihre Fragen unbedingt zuerst auf Stack Overflow stellen und die vorh
 Verwenden Sie den folgenden Kommentarabschnitt, um uns Feedback zu senden und uns bei der Verbesserung unserer Inhalte zu unterstützen.
 
 <!--Reference style links -->
-[AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
+[AAD-Auth-Scenarios-Browser-To-WebApp]:v1-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started

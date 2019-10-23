@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124929"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373493"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -83,7 +83,7 @@ In modernen Unternehmen sind die IT-Abteilungen häufig nicht über alle Cloudan
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) kann Ihnen helfen, nützliche Apps zu identifizieren, die bei den Benutzern beliebt sind. Diese können dann von der IT sanktioniert und dem Katalog der Unternehmensanwendungen hinzugefügt werden, damit die Benutzer von Funktionen wie SSO und bedingtem Zugriff profitieren.
 
-*„Mit **Cloud App Security** können wir sicherstellen, dass unsere Mitarbeiter unsere Cloud- und SaaS-Anwendungen ordnungsgemäß nutzen. Die verfügbaren Möglichkeiten unterstützen unsere grundlegenden Sicherheitsrichtlinien zum Schutz von Accenture.“* --- [John Blasi, Managing Director, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+<em>„Mit **Cloud App Security** können wir sicherstellen, dass unsere Mitarbeiter unsere Cloud- und SaaS-Anwendungen ordnungsgemäß nutzen. Die verfügbaren Möglichkeiten unterstützen unsere grundlegenden Sicherheitsrichtlinien zum Schutz von Accenture.“</em> --- [John Blasi, Managing Director, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Zusätzlich zum Erkennen von Schatten-IT können Sie mit MCAS auch die Risikostufe von Apps ermitteln, nicht autorisierte Zugriffe auf Unternehmensdaten verhindern, mögliche Datenlecks erkennen und andere Sicherheitsrisiken in Anwendungen aufdecken.
 

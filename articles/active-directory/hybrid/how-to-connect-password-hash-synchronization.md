@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ce0ac4f40f3dd1bd7252689618459769d0aeb56
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203066"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373461"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -93,7 +93,7 @@ Sie können sich mit einem synchronisierten Kennwort, das in der lokalen Umgebun
 
 Wenn synchronisierte Benutzer vorhanden sind, die nur mit integrierten Azure AD-Diensten interagieren und auch eine Kennwortablaufrichtlinie einhalten müssen, können Sie die Einhaltung Ihrer Azure AD-Kennwortablaufrichtlinie erzwingen, indem Sie das *EnforceCloudPasswordPolicyForPasswordSyncedUsers*-Feature aktivieren.
 
-Wenn *EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standardeinstellung), legt Azure AD Connect das „PasswordPolicies“-Attribut von synchronisierten Benutzern auf „DisablePasswordExpiration“ fest. Dies erfolgt jedes Mal, wenn das Kennwort eines Benutzers synchronisiert wird, und weist Azure AD an, die Cloudkennwort-Ablaufrichtlinie für diesen Benutzer zu ignorieren. Sie können den Wert des Attributs mithilfe des Azure AD PowerShell-Moduls mit dem folgenden Befehl überprüfen:
+Wenn*EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standardeinstellung), legt Azure AD Connect das „PasswordPolicies“-Attribut von synchronisierten Benutzern auf „DisablePasswordExpiration“ fest. Dies erfolgt jedes Mal, wenn das Kennwort eines Benutzers synchronisiert wird, und weist Azure AD an, die Cloudkennwort-Ablaufrichtlinie für diesen Benutzer zu ignorieren. Sie können den Wert des Attributs mithilfe des Azure AD PowerShell-Moduls mit dem folgenden Befehl überprüfen:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
