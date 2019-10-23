@@ -1,5 +1,5 @@
 ---
-title: Verwaltete Identitäten für Azure-Ressourcen mit Azure Service Bus | Microsoft-Dokumentation
+title: Verwaltete Identitäten für Azure-Ressourcen mit Service Bus
 description: Verwenden von verwalteten Identitäten für Azure-Ressourcen mit Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 10/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 86721907352f19cc7ed69fba1f1a021dcf1ed1b7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 57c52640262854037420c1679804f611394230ef
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299642"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793150"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.

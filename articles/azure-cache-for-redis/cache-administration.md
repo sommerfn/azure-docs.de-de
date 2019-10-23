@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: afb48c18f9690e77a5478956e1147acf850290ab
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263654"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756612"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Verwalten von Azure Cache for Redis
 In diesem Thema erfahren Sie, wie Verwaltungsaufgaben wie das [Neustarten](#reboot) und [Planen von Updates](#schedule-updates) für Ihre Azure Cache for Redis-Instanzen erfolgen.
@@ -71,7 +71,7 @@ Wenn Sie sowohl den **Master**- als auch den **untergeordneten** Knoten neu star
 Wenn Sie nur einen der Knoten neu starten, gehen Daten in der Regel nicht verloren, möglicherweise aber doch. Wenn z.B. der Masterknoten neu gestartet und ein Cacheschreibvorgang ausgeführt wird, gehen die Daten des Cacheschreibvorgangs verloren. Ein weiteres Szenario für Datenverlust ist der Fall, in dem Sie einen Knoten neu starten und der andere Knoten aufgrund eines Fehlers gleichzeitig ausfällt. Weitere Informationen zu den möglichen Ursachen für den Datenverlust finden Sie unter [Was ist mit meinen Daten in Redis passiert?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md).
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Kann ich meinen Cache mithilfe von PowerShell, CLI oder anderen Verwaltungstools neu starten?
-Ja. Anweisungen für PowerShell finden Sie unter [So starten Sie einen Azure Cache for Redis neu](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
+Ja. Anweisungen für PowerShell finden Sie unter [So starten Sie einen Azure Cache for Redis neu](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
 ## <a name="schedule-updates"></a>Planen von Updates
 Auf dem Blatt **Updates planen** können Sie ein Wartungsfenster für Ihre Cache-Instanz bestimmen. Wenn das Wartungsfenster angegeben ist, erfolgen alle Redis-Serverupdates in diesem Zeitfenster. 

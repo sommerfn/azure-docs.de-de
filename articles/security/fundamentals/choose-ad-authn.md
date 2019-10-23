@@ -9,18 +9,14 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "69997821"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529398"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
-
-Dieser Artikel ist der Beginn einer Reihe von Artikeln, die Organisationen bei der Implementierung einer kompletten Azure AD-Hybrididentitätslösung (Azure Active Directory) unterstützen. Diese Lösung wurde [als Hybrid Identity Digital Transformation Framework](https://aka.ms/aadframework) (digitales Transformationsframework für Hybrididentitäten) entworfen. Hiermit werden die Geschäftsergebnisse und Ziele abgedeckt, auf die sich Organisationen konzentrieren sollten, um sicherzustellen, dass sie eine stabile und sichere Hybrididentitätslösung implementiert haben. 
-
-Das erste Geschäftsergebnis des Frameworks beschreibt die Anforderungen an Organisationen, den Authentifizierungsprozess zu sichern, wenn Benutzer auf Cloud-Apps zugreifen. Das erste Unternehmensziel beim Geschäftsergebnis mit sicherer Authentifizierung ist, Benutzern die Möglichkeit zu geben, sich mit ihren lokalen Benutzernamen und Kennwörtern an Cloud-Apps anzumelden. Durch diesen Anmelde- und Authentifizierungsprozess stehen in der Cloud alle Türen offen.
 
 Die Wahl der richtigen Authentifizierungsmethode ist die erste Hürde für Organisationen, die ihre Apps in die Cloud verschieben möchten. Nehmen Sie diese Entscheidung aus den folgenden Gründen nicht auf die leichte Schulter:
 

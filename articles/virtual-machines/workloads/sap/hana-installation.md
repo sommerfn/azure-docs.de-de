@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aacedeb2c047d1abfc5affdcf94404abbb2c7b62
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 516f61775060b3e4073ed9d623545d4f227563ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168610"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750361"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA (große Instanzen) in Azure
 
@@ -101,7 +101,7 @@ Zusätzliche nützliche Links zu SAP unter SUSE:
 
 SAP-Supporthinweise zur Implementierung von SAP HANA unter SLES 12:
 
-- [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html) (SAP-Supporthinweis 1944799 – SAP HANA-Richtlinien für die Installation des SLES-Betriebssystems)
+- [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation](http://service.sap.com/sap/support/notes/1944799) (SAP-Supporthinweis 1944799 – SAP HANA-Richtlinien für die Installation des SLES-Betriebssystems)
 - [SAP Support Note #2205917 – SAP HANA DB Recommended OS Settings for SLES 12 for SAP Applications](https://launchpad.support.sap.com/#/notes/2205917/E) (SAP-Supporthinweis 2205917 – SAP HANA DB: Empfohlene Betriebssystemeinstellungen für SLES 12 für SAP-Anwendungen)
 - [SAP Support Note #1984787 – SUSE Linux Enterprise Server 12: Installation Notes](https://launchpad.support.sap.com/#/notes/1984787) (SAP-Supporthinweis 1984787 – SUSE Linux Enterprise Server 12: Installationshinweise)
 - [SAP Support Note #171356 – SAP Software on Linux:  General Information](https://launchpad.support.sap.com/#/notes/1984787) (SAP-Supporthinweis 171356 – SAP-Software unter Linux: allgemeine Informationen)

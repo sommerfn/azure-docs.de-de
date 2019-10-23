@@ -1,22 +1,18 @@
 ---
 title: Azure-Verwaltung und Operations Management Suite (OMS) | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools, die zuvor unter Operations Management Suite (OMS) zusammengefasst waren.
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/07/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 4096ee477dc1d40ff6b98b20dd384c6ffad17e5f
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 09/07/2018
+ms.openlocfilehash: 7f515c1c5d44058e14f02f7681bfbb7fd2787c6f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779275"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597362"
 ---
 # <a name="azure-management---monitoring"></a>Azure-Verwaltung – Überwachung
 

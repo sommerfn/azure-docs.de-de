@@ -1,23 +1,18 @@
 ---
 title: Leistungsüberwachung für Webanwendungen – Azure Application Insights | Microsoft-Dokumentation
 description: Application Insights im DevOps-Zyklus
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 12/21/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/21/2018
+ms.openlocfilehash: bf7c0b4db2b7eb662f55b917dbe318d0ad8023ce
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899718"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677286"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Eingehende Diagnose für Web-Apps und Dienste mit Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Wofür benötigen Sie Application Insights?

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: a5e228417610a19c38acf9ce2db6e743ec122580
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8ed0e1b1406eca6dd55e9e9faf184152a190da94
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679580"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757495"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Erstellen eines Hostpools mit PowerShell
 
@@ -85,7 +85,7 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, damit der 
 5. Authentifizieren Sie sich mit einem Domänenkonto, das über Berechtigungen für in die Domäne eingebundene Computer verfügt.
 
     >[!NOTE]
-    > Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group) ist.
+    > Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group) ist.
 
 ## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool
 

@@ -1,20 +1,18 @@
 ---
 title: Streamen von Azure-Diagnosedaten an Event Hubs
 description: Erfahren Sie, wie Sie eine End-to-End-Konfiguration von Azure-Diagnose mit Event Hubs durchführen. Außerdem werden Anleitungen für gängige Szenarien bereitgestellt.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/13/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 07/13/2017
+ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "64922839"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555527"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamen von Azure-Diagnosedaten im heißen Pfad mithilfe von Event Hubs
 Die Azure-Diagnose bietet flexible Methoden zum Erfassen von Metriken und Protokollen virtueller Computer in Clouddiensten sowie zur Übertragung der Ergebnisse an Azure Storage. Seit März 2016 (SDK 2.9) haben Sie die Möglichkeit, benutzerdefinierte Datenquellen als Sendeziel für Diagnose zu verwenden und heiße Daten mithilfe von [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) innerhalb von Sekunden zu übertragen.

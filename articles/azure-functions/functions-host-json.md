@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263337"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596858"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host.json-Referenz für Azure Functions 2.x  
 
@@ -69,7 +69,7 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 5
+              "maxTelemetryItemsPerSecond" : 20
             }
         }
     },
@@ -104,7 +104,7 @@ Steuert das [Stichprobenfeature in Application Insights](./functions-monitoring.
     "applicationInsights": {
         "samplingSettings": {
           "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
+          "maxTelemetryItemsPerSecond" : 20
         }
     }
 }
@@ -116,7 +116,7 @@ Steuert das [Stichprobenfeature in Application Insights](./functions-monitoring.
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |isEnabled|true|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
-|maxTelemetryItemsPerSecond|5|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.| 
+|maxTelemetryItemsPerSecond|20|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.| 
 |EnableLiveMetrics |true|Aktiviert die Sammlung mit Livemetriken.|
 |EnableDependencyTracking|true|Aktiviert die Abhängigkeitsüberwachung.|
 |EnablePerformanceCountersCollection|true|Aktiviert die Sammlung mit Kudu-Leistungsindikatoren.|

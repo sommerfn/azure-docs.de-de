@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 5/3/2019
+ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ecc46f9ce4ec953d481bf8110326630053938524
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073076"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533323"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
 
@@ -62,9 +62,9 @@ Es gibt drei wichtige Anforderungen, die erfüllt sein müssen, damit dieses Sze
 Informationen zur Erstellung dieser Routen finden Sie in diesem Artikel im Abschnitt [Erstellen von Routen](#create-the-routes).
 
 >[!NOTE]
->Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten. Standardmäßig unterstützt Azure Firewall keine Tunnelerzwingung für ein lokales Netzwerk.
+>Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten.
 >
->Wenn Ihre Konfiguration jedoch die Tunnelerzwingung für ein lokales Netzwerk erfordert, wird Microsoft dies im Einzelfall unterstützen. Wenden Sie sich in diesem Fall an den Support, damit Ihr Fall überprüft werden kann. Bei einer Annahme wird Ihr Abonnement in die Whitelist aufgenommen, damit die erforderliche Internetkonnektivität der Firewall auch sicher erhalten bleibt.
+>Die Tunnelerzwingung wird derzeit von Azure Firewall nicht unterstützt. Wenn für Ihre Konfiguration die Erzwingung eines Tunnels zu einem lokalen Netzwerk erforderlich ist und Sie die Ziel-IP-Präfixe für Ihre Internetziele ermitteln können, können Sie diese Bereiche mit dem lokalen Netzwerk als nächsten Hop über eine benutzerdefinierte Route im Subnetz „AzureFirewallSubnet“ konfigurieren. Oder Sie können BGP verwenden, um diese Routen zu definieren.
 
 >[!NOTE]
 >Der Datenverkehr zwischen per direktem Peering verbundenen VNETs wird direkt weitergeleitet, auch wenn eine UDR auf Azure Firewall als Standardgateway verweist. Um in diesem Szenario Subnetz-zu-Subnetz-Datenverkehr an die Firewall zu senden, muss eine UDR explizit das Zielsubnetzwerk-Präfix in beiden Subnetzen enthalten.

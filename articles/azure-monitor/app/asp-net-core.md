@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights für ASP.NET Core-Anwendungen | Microsoft-Dokumentation
 description: Überwachen Sie ASP.NET Core-Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 939a29e8d7b03c5af28342dffe44939f8ec34ae0
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 05/22/2019
+ms.openlocfilehash: 5b9b92cd39e8d540f784d82d6c7f4a5754c85b62
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258451"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677724"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -202,9 +197,9 @@ Vollständige Liste der Einstellungen in `ApplicationInsightsServiceOptions`
 
 |Einstellung | BESCHREIBUNG | Standard
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | „LiveMetrics“-Feature aktivieren/deaktivieren. | true
-|EnableAdaptiveSampling | Adaptive Stichprobenerstellung aktivieren/deaktivieren. | true
-|EnableHeartbeat | Heartbeats-Feature aktivieren/deaktivieren, das in regelmäßigen Abständen (Standardwert: 15 Minuten) eine benutzerdefinierte Metrik namens „HeartBeatState“ mit Informationen zur Laufzeit wie .NET-Version, ggf. Informationen zur Azure-Umgebung usw. sendet. | true
+|EnableQuickPulseMetricStream | „LiveMetrics“-Feature aktivieren/deaktivieren | true
+|EnableAdaptiveSampling | Adaptive Stichprobenerstellung aktivieren/deaktivieren | true
+|EnableHeartbeat | Heartbeats-Feature aktivieren/deaktivieren, das in regelmäßigen Abständen (Standardwert: 15 Minuten) eine benutzerdefinierte Metrik namens „HeartBeatState“ mit Informationen zur Laufzeit wie .NET-Version, ggf. Informationen zur Azure-Umgebung usw. sendet. | true
 |AddAutoCollectedMetricExtractor | Extraktor für „AutoCollectedMetrics“ aktivieren/deaktivieren, bei dem es sich um einen Telemetrieprozessor handelt, der vorab aggregierte Metriken zu Anforderungen/Abhängigkeiten sendet, bevor die Stichprobenerstellung stattfindet. | true
 |RequestCollectionOptions.TrackExceptions | Berichterstellung über die Nachverfolgung von Ausnahmefehlern durch das Anforderungserfassungsmodul aktivieren/deaktivieren. | In NETSTANDARD2.0 „false“ (da Ausnahmen mit „ApplicationInsightsLoggerProvider“ nachverfolgt werden), andernfalls „true“.
 

@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f01d4a3a53ac9acf1350e4eea0526cf8584140a4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178749"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789093"
 ---
-# <a name="internet-of-things-iot-security-architecture"></a>Internet der Dinge (IoT) – Sicherheitsarchitektur
-
 Beim Entwerfen eines Systems ist es wichtig zu verstehen, welche potenziellen Bedrohungen es für das System gibt. Anschließend müssen beim Entwerfen und Zusammenstellen des Systems die richtigen Abwehrmaßnahmen ergriffen werden. Es ist besonders wichtig, schon zu Beginn des Entwurfsprozesses für das Produkt an die Sicherheit zu denken. Indem ein Verständnis entwickelt wird, wie Angreifer ein System unter Umständen kompromittieren können, wird sichergestellt, dass von Anfang an für geeignete Lösungen gesorgt ist.
 
 ## <a name="security-starts-with-a-threat-model"></a>Sicherheit beginnt mit einem Bedrohungsmodell

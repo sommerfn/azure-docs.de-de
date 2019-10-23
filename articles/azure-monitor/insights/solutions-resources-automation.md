@@ -1,25 +1,19 @@
 ---
 title: Azure Automation-Ressourcen in Verwaltungslösungen | Microsoft-Dokumentation
 description: Verwaltungslösungen enthalten üblicherweise Runbooks in Azure Automation zum Automatisieren von Prozessen, wie z.B. das Sammeln und Verarbeiten von Überwachungsdaten.  Dieser Artikel beschreibt, wie Sie Runbooks und dazugehörige Ressourcen in eine Lösung integrieren können.
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 5281462e-f480-4e5e-9c19-022f36dce76d
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c9b13f44dae068597cb82a0aa803283ad5e67bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110360"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555247"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer Verwaltungslösung (Vorschau)
 > [!NOTE]

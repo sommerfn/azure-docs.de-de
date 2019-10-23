@@ -1,23 +1,18 @@
 ---
 title: Visualisieren von Daten aus Azure Monitor | Microsoft-Dokumentation
 description: Enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 11/24/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6390384220830d473b56f4082a98dfaa8aa686d1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/24/2018
+ms.openlocfilehash: c350cb1f8e7343f6d8e7a416aa0bba71388eaa86
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984187"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597837"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.

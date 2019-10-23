@@ -1,17 +1,17 @@
 ---
 title: Preismodell für Azure Cosmos DB
 description: In diesem Artikel werden das Preismodell für Azure Cosmos DB und die Möglichkeiten zur Vereinfachung von Kostenmanagement und Kostenplanung beschrieben.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: 43a4b46199277da11d2820a11ec0801c0345e62b
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717613"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756868"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB 
 

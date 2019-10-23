@@ -1,21 +1,18 @@
 ---
 title: Verwenden der Anwendungsänderungsanalyse in Azure Monitor für die Suche nach Web-App-Problemen | Microsoft-Dokumentation
 description: Verwenden der Anwendungsänderungsanalyse in Azure Monitor zum Behandeln von Anwendungsproblemen auf Live-Websites in Azure App Service.
-services: application-insights
-author: cawams
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/07/2019
+author: cawams
 ms.author: cawa
-ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 05/07/2019
+ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033377"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678251"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -90,7 +87,7 @@ In Azure Monitor ist die Änderungsanalyse derzeit in die Self-Service-Umgebung 
 Wenn Ihr Abonnement zahlreiche Web-Apps enthält, wäre das Aktivieren des Diensts auf Web-App-Ebene nicht sehr effizient. Führen Sie das folgende Skript aus, um alle Web-Apps in Ihrem Abonnement zu aktivieren.
 
 Voraussetzungen:
-* PowerShell Az-Modul. Folgen Sie den Anweisungen unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0).
+* PowerShell Az-Modul. Folgen Sie den Anweisungen unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0).
 
 Führen Sie das folgende Skript aus:
 

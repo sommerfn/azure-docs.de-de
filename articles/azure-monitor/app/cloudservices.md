@@ -1,24 +1,18 @@
 ---
 title: Application Insights für Azure Cloud Services | Microsoft-Dokumentation
 description: Effektives Überwachen Ihrer Web- und Workerrollen mit Application Insights
-services: application-insights
-documentationcenter: ''
-keywords: WAD2AI, Azure-Diagnose
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.workload: tbd
-ms.date: 09/05/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/05/2018
+ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933015"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677576"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.

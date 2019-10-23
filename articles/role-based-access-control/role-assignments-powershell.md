@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4eaf59200295a25498d3c8b84196e73a703b055d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5a6ed66efa0f73f957c3acb048136a5328f9c264
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995249"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750162"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure PowerShell
 
@@ -423,7 +423,7 @@ Das folgende Beispiel entfernt die Rolle <role_name> aus <object_id> im Verwaltu
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-Wenn Sie die folgende Fehlermeldung erhalten: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein), sollten Sie sicherstellen, dass auch die Parameter `-Scope` oder `-ResourceGroupName` angegeben werden. Weitere Informationen finden Sie unter [Problembehandlung von RBAC für Azure-Ressourcen](troubleshooting.md#role-assignments-without-a-security-principal).
+Wenn Sie die folgende Fehlermeldung erhalten: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein), sollten Sie sicherstellen, dass auch die Parameter `-Scope` oder `-ResourceGroupName` angegeben werden. Weitere Informationen finden Sie unter [Problembehandlung von RBAC für Azure-Ressourcen](troubleshooting.md#role-assignments-with-unknown-security-principal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

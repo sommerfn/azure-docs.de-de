@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299620"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598087"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -25,7 +25,7 @@ Azure Storage bietet umfassende Sicherheitsfunktionen, die Entwicklern das Erste
     - Sie können RBAC-Rollen, die auf das Speicherkonto beschränkt sind, Dienstprinzipalen zuweisen und Azure AD verwenden, um Ressourcenverwaltungsvorgänge, z.B. die Schlüsselverwaltung, zu autorisieren.
     - Die Azure AD-Integration wird für Datenvorgänge in Blobs und Warteschlangen unterstützt. Sie können RBAC-Rollen, die auf ein Abonnement, eine Ressourcengruppe, ein Speicherkonto oder einen einzelnen Container oder eine Warteschlange bezogen sind, einem Sicherheitsprinzipal oder einer verwalteten Identität für Azure-Ressourcen zuweisen. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).   
 - Daten können während der Übertragung zwischen einer Anwendung und Azure mit [clientseitiger Verschlüsselung](../storage-client-side-encryption.md), HTTPS oder SMB 3.0 geschützt werden.  
-- Betriebssystemdatenträger und sonstige Datenträger, die von virtuellen Azure-Computern verwendet werden, können mit [Azure Disk Encryption](../../security/azure-security-disk-encryption.md) verschlüsselt werden.
+- Betriebssystemdatenträger und sonstige Datenträger, die von virtuellen Azure-Computern verwendet werden, können mit [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md) verschlüsselt werden.
 - Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit einer Shared Access Signature erteilt werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](storage-sas-overview.md).
 
 Dieser Artikel bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Links führen Sie zu Artikeln, die weitere Informationen zu den einzelnen Funktionen enthalten. So können Sie Ihre Kenntnisse zu jedem Thema problemlos vertiefen.
@@ -328,7 +328,7 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 Dieses Feature stellt sicher, dass alle Daten auf den Datenträgern Ihrer virtuellen Computer in Azure Storage ruhend verschlüsselt sind.
 
 #### <a name="resources"></a>Ressourcen
-* [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+* [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](../../security/fundamentals/encryption-overview.md)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Vergleich zwischen Azure Disk Encryption, SSE und clientseitiger Verschlüsselung
 

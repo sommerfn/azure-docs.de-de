@@ -2,18 +2,17 @@
 title: Modellierung von Daten in Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
 description: Lernen Sie die Datenmodellierung in NoSQL-Datenbanken sowie die Unterschiede zwischen der Datenmodellierung in einer relationalen Datenbank und in einer Dokumentdatenbank kennen.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
-ms.custom: rimman
-ms.openlocfilehash: da119b2858c6b6c7bbc99b40d340f79964e0fae3
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467896"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755016"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Datenmodellierung in Azure Cosmos DB
 

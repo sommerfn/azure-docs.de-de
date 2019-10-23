@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262969"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597282"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Erstellen von Diagnoseeinstellungen in Azure mithilfe einer Resource Manager-Vorlage
 [Plattformprotokolle](platform-logs-overview.md) in Azure liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details zur Verwendung einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) für das Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedenen Zielen zu erfassen. Dadurch können Sie beim Erstellen einer Ressource automatisch mit dem Erfassen von Plattformprotokollen beginnen.
@@ -53,7 +53,7 @@ Fügen Sie je nach [Zielen](diagnostic-settings.md#destinations) für die Diagno
 "workspaceId":{
   "type": "string",
   "metadata": {
-    "description": "Azure Resource ID of the Log Analytics workspace for the Log Analytics workspace to which logs will be sent."
+    "description": "Azure Resource ID of the Log Analytics workspace to which logs will be sent."
   }
 }
 ```

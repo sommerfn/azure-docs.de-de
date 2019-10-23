@@ -1,21 +1,18 @@
 ---
 title: Häufig gestellte Fragen zu Azure Monitor für Container | Microsoft-Dokumentation
 description: Azure Monitor für Container ist eine Lösung, die die Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure überwacht. Dieser Artikel beantwortet häufig gestellte Fragen.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f8d763f8bb228a0d4d83a3776f818d59939b942d
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.date: 08/14/2019
+ms.openlocfilehash: bda64dd555f1970b70878d827f6be1dab3f1e2d5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559078"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555430"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für Container
 

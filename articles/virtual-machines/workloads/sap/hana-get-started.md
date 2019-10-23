@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 8d4e7b7056f4d5e53785366818fad05e24cfc605
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 630f094ffc6c57a0137d1abc46476f5abe64f616
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100052"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750368"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-virtual-machines"></a>Schnellstart: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs
 ## <a name="introduction"></a>Einführung
@@ -69,7 +69,7 @@ Informationen zu von SAP HANA unterstützten Betriebssystemen finden Sie unter [
 Eine weitere SAP-Dokumentation zu SAP HANA und anderen Linux-Betriebssystemen finden Sie hier:
 
 * [SAP-Hinweis 171356: SAP-Software unter Linux: Allgemeine Informationen](https://launchpad.support.sap.com/#/notes/1984787).
-* [SAP-Hinweis 1944799: SAP HANA-Richtlinien für die Installation des SLES-Betriebssystems](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html).
+* [SAP-Hinweis 1944799: SAP HANA-Richtlinien für die Installation des SLES-Betriebssystems](http://service.sap.com/sap/support/notes/1944799).
 * [SAP-Hinweis 2205917: SAP HANA DB: Empfohlene Betriebssystemeinstellungen für SLES 12 für SAP-Anwendungen](https://launchpad.support.sap.com/#/notes/2205917/E).
 * [SAP-Hinweis 1391070: Linux-UUID-Lösungen](https://launchpad.support.sap.com/#/notes/1391070).
 * [SAP-Hinweis 2009879: SAP HANA-Richtlinien für das RHEL-Betriebssystem (Red Hat Enterprise Linux)](https://launchpad.support.sap.com/#/notes/2009879).

@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights-Telemetriedatenmodell – Abhängigkeitstelemetrie | Microsoft-Dokumentation
 description: Application Insights-Datenmodell für Abhängigkeitstelemetrie
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 3e3d6b8fdc9ac8dd28f73fecd6231e97a5645407
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e0923c20b11aa02f380af1faa6766d2346ad1fb2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60901024"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677428"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetriedaten zu Abhängigkeiten: Application Insights-Datenmodell
 
@@ -27,7 +23,7 @@ Abhängigkeitstelemetrie (in [Application Insights](../../azure-monitor/app/app-
 
 Name des Befehls, der mit diesem Abhängigkeitsaufruf ausgelöst wird. Niedriger Kardinalitätswert. Beispiele sind der Name einer gespeicherten Prozedur und eine URL-Pfadvorlage.
 
-## <a name="id"></a>ID
+## <a name="id"></a>id
 
 Bezeichner einer Instanz eines Aufrufs einer Abhängigkeit. Dient zur Korrelation mit dem Anforderungstelemetrieelement, das diesem Aufruf einer Abhängigkeit entspricht. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](../../azure-monitor/app/correlation.md).
 
@@ -35,7 +31,7 @@ Bezeichner einer Instanz eines Aufrufs einer Abhängigkeit. Dient zur Korrelatio
 
 Der durch diesen Aufruf einer Abhängigkeit ausgelöste Befehl. Beispiele sind eine SQL-Anweisung und HTTP-URL mit allen Abfrageparametern.
 
-## <a name="type"></a>Type
+## <a name="type"></a>type
 
 Name des Abhängigkeitstyps. Niedriger Kardinalitätswert für die logische Gruppierung von Abhängigkeiten und Interpretation der anderen Felder wie „commandName“ und „resultCode“. Beispiele sind die SQL, Azure-Tabelle und HTTP.
 

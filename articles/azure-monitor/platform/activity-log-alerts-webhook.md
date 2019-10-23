@@ -1,19 +1,18 @@
 ---
 title: Erläuterungen zu dem in Aktivitätsprotokollwarnungen verwendeten Webhookschema
 description: Lernen Sie das Schema des JSON-Codes kennen, der beim Aktivieren einer Aktivitätsprotokollwarnung an einen Webhook-URL gesendet wird.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/31/2017
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: b9ba809baa8fc4adddfad1344d6f36375cb361c4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/31/2017
+ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675210"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552742"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks für Azure-Aktivitätsprotokollwarnungen
 Als Teil der Definition einer Aktionsgruppe können Sie Webhookendpunkte für den Empfang von Aktivitätsprotokollwarnungs-Benachrichtigungen konfigurieren. Mithilfe von Webhooks können Sie diese Benachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. In diesem Artikel erfahren Sie, wie die Nutzlast für die HTTP POST-Methode für einen Webhook aussieht.

@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.openlocfilehash: 31ccf14c82f6248c74d6af932fe9e338d26d2747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67177953"
 ---
 Auf jedem Clientcomputer, für den Sie eine Point-to-Site-Verbindung mit einem VNet herstellen, muss ein Clientzertifikat installiert sein. Sie generieren es aus dem Stammzertifikat und installieren es auf jedem Clientcomputer. Wenn Sie kein gültiges Clientzertifikat installieren, und der Client versucht, eine Verbindung mit dem VNET herzustellen, tritt bei der Authentifizierung ein Fehler auf.

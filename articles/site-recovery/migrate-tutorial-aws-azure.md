@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1533ceebcda15c45a71c04580c35432de4125ccd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984980"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789386"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 
 > [!NOTE]
-    > Sie können jetzt den Azure Migrate-Dienst verwenden, um AWS-Instanzen zu Azure zu migrieren. [Weitere Informationen](../migrate/tutorial-migrate-physical-virtual-machines.md)
+> Sie können jetzt den Azure Migrate-Dienst verwenden, um AWS-Instanzen zu Azure zu migrieren. [Weitere Informationen](../migrate/tutorial-migrate-physical-virtual-machines.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Vergewissern Sie sich, dass auf den zu migrierenden virtuellen Computern eine unterstützte Betriebssystemversion ausgeführt wird. Unterstützte Versionen: 

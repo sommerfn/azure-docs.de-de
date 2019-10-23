@@ -1,20 +1,18 @@
 ---
 title: Konfigurationsschema für die Azure-Diagnoseerweiterung 1.3 und höher
 description: Schemaversion 1.3 und höher für Azure-Diagnose wird als Komponente des Microsoft Azure SDK 2.4 und höher geliefert.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 09/20/2018
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 09/20/2018
+ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735105"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555552"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]

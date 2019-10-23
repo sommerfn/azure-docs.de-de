@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 605614265d033647bfcf22bb99d45c89f275298b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056441"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596394"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-App, die Web-APIs aufruft – Aufruf eines Tokens
 
@@ -212,5 +212,19 @@ Content: {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Daemon-App – Aufrufen einer Web-API](scenario-daemon-call-api.md)
+> [Daemon-App – Aufrufen einer Web-API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Daemon-App – Aufrufen einer Web-API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Daemon-App – Aufrufen einer Web-API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+
+---

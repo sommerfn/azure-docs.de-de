@@ -1,18 +1,18 @@
 ---
 title: 'Azure Cosmos DB: Gremlin-Antwortheader'
 description: Referenzdokumentation zu Serverantwortmetadaten, die zusätzliche Problembehandlung ermöglichen
-author: olignat
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/03/2019
-ms.author: olignat
-ms.openlocfilehash: 9efd2afe2e1048b205f8ae0b0680fad2417c42bf
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+author: luisbosquez
+ms.author: lbosq
+ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70737448"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755076"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB: Gremlin-Serverantwortheader
 In diesem Artikel werden Header behandelt, die der Cosmos DB Gremlin-Server bei der Anforderungsausführung an den Aufrufer zurückgibt. Diese Header sind nützlich für die Problembehandlung der Anforderungsleistung, beim Erstellen von Anwendungen, die sich nativ in den Cosmos DB-Dienst integrieren lassen, und bei der Vereinfachung des Kundensupports.
@@ -21,14 +21,14 @@ Beachten Sie, dass Sie die Portierbarkeit Ihrer Anwendung auf andere Gremlin-Imp
 
 ## <a name="headers"></a>Header
 
-| Header | Typ | Beispielwert | Wenn eingebunden | Erklärung |
+| Header | type | Beispielwert | Wenn eingebunden | Erklärung |
 | --- | --- | --- | --- | --- |
 | **x-ms-request-charge** | double | 11,3243 | Erfolg und Fehler | Menge des Sammlungs- oder Datenbankdurchsatzes, der in [Anforderungseinheiten (RU/s oder RUs)](request-units.md) für eine Teilantwortnachricht verbraucht wird. Dieser Header ist in jeder Fortsetzung für Anforderungen vorhanden, die aus mehreren Blöcken bestehen. Er gibt die Kosten eines bestimmten Antwortblocks wieder. Nur bei Anforderungen, die aus einem einzelnen Antwortblock bestehen, stimmt dieser Header mit den Gesamtkosten des Durchlaufs überein. Bei der Mehrzahl komplexer Durchläufe stellt dieser Wert jedoch partielle Kosten dar. |
 | **x-ms-total-request-charge** | double | 423,987 | Erfolg und Fehler | Menge des Sammlungs- oder Datenbankdurchsatzes, der in [Anforderungseinheiten (RU/s oder RUs)](request-units.md) für die gesamte Anforderung verbraucht wird. Dieser Header ist in jeder Fortsetzung für Anforderungen vorhanden, die aus mehreren Blöcken bestehen. Gibt die kumulierten Kosten seit dem Beginn der Anforderung an. Der Wert dieses Headers im letzten Block gibt die gesamten Anforderungskosten an. |
 | **x-ms-server-time-ms** | double | 13,75 | Erfolg und Fehler | Dieser Header ist für die Behandlung von Latenzproblemen enthalten. Er gibt die Zeitspanne in Millisekunden an, die der Cosmos DB Gremlin-Server benötigt hat, um eine Teilantwortnachricht auszuführen und zu generieren. Wenn Sie den Wert dieses Headers verwenden und ihn mit den allgemeinen Anwendungen für die Latenzzeit von Anforderungen vergleichen, können Sie den Mehraufwand für Netzwerklatenz berechnen. |
 | **x-ms-total-server-time-ms** | double | 130,512 | Erfolg und Fehler | Die Gesamtzeit in Millisekunden, die der Cosmos DB Gremlin-Server benötigt hat, um den gesamten Durchlauf auszuführen. Dieser Header ist in jeder Teilantwort enthalten. Er stellt eine kumulative Ausführungszeit seit dem Start der Anforderung dar. Die letzte Antwort gibt die Gesamtausführungszeit an. Dieser Header ist hilfreich, um zwischen Client und Server als Quelle von Latenz zu unterscheiden. Sie können die Ausführungszeit für den Durchlauf auf dem Client mit dem Wert dieses Headers vergleichen. |
-| **x-ms-status-code** | lang | 200 | Erfolg und Fehler | Der Header gibt den internen Grund für den Abschluss oder die Beendigung der Anforderung an. Der Anwendung wird empfohlen, den Wert dieses Headers zu überprüfen und Korrekturmaßnahmen zu ergreifen. |
-| **x-ms-substatus-code** | lang | 1003 | Nur Fehler | Bei Cosmos DB handelt es sich um eine Datenbank mit mehreren Modellen, die auf der vereinheitlichten Speicherschicht basiert. Dieser Header enthält zusätzliche Erkenntnisse über die Fehlerursache beim Auftreten von Fehlern in den unteren Schichten des Hochverfügbarkeitsstapels. Der Anwendung wird empfohlen, diesen Header zu speichern und zu verwenden, wenn Kontakt mit dem Cosmos DB-Kundensupport aufgenommen wird. Der Wert dieses Headers ist für die schnelle Problembehandlung durch einen Cosmos DB-Techniker nützlich. |
+| **x-ms-status-code** | long | 200 | Erfolg und Fehler | Der Header gibt den internen Grund für den Abschluss oder die Beendigung der Anforderung an. Der Anwendung wird empfohlen, den Wert dieses Headers zu überprüfen und Korrekturmaßnahmen zu ergreifen. |
+| **x-ms-substatus-code** | long | 1003 | Nur Fehler | Bei Cosmos DB handelt es sich um eine Datenbank mit mehreren Modellen, die auf der vereinheitlichten Speicherschicht basiert. Dieser Header enthält zusätzliche Erkenntnisse über die Fehlerursache beim Auftreten von Fehlern in den unteren Schichten des Hochverfügbarkeitsstapels. Der Anwendung wird empfohlen, diesen Header zu speichern und zu verwenden, wenn Kontakt mit dem Cosmos DB-Kundensupport aufgenommen wird. Der Wert dieses Headers ist für die schnelle Problembehandlung durch einen Cosmos DB-Techniker nützlich. |
 | **x-ms-retry-after-ms** | string (TimeSpan) | "00:00:03.9500000" | Nur Fehler | Dieser Header ist eine Zeichenfolgendarstellung eines .NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan)-Typs. Dieser Wert ist nur in Anforderungen enthalten, die aufgrund der bereitgestellten Durchsatzauslastung fehlgeschlagen sind. Die Anwendung sollte den Durchlauf nach einem angegebenen Zeitraum erneut übermitteln. |
 | **x-ms-activity-id** | string (Guid) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Erfolg und Fehler | Der Header enthält einen eindeutigen serverseitigen Bezeichner für eine Anforderung. Jeder Anforderung wird vom Server ein eindeutiger Bezeichner zu Nachverfolgungszwecken zugewiesen. Anwendungen sollten Aktivitätsbezeichner protokollieren, die vom Server für Anforderungen zurückgegeben werden, zu denen sich Kunden möglicherweise an den Kundensupport wenden möchten. Cosmos DB-Supportmitarbeiter können bestimmte Anforderungen durch diese Bezeichner in der Cosmos DB-Diensttelemetrie ermitteln. |
 

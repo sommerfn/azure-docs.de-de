@@ -1,21 +1,18 @@
 ---
 title: Häufig gestellte Fragen zu Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
 description: Azure Monitor for VMs ist eine Lösung in Azure, die Integritäts- und Leistungsüberwachung des Azure VM-Betriebssystems mit der automatischen Erkennung von Anwendungskomponenten und Abhängigkeiten mit anderen Ressourcen kombiniert und die Kommunikation unter ihnen als Zuordnung darstellt. Dieser Artikel beantwortet häufig gestellte Fragen.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/09/2018
+ms.openlocfilehash: 675277a33a5613507297f1c77ee9cef3215b22a2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522209"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555216"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs (Vorschauversion)
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für VMs. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.

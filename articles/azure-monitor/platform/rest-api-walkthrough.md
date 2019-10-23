@@ -1,19 +1,18 @@
 ---
 title: Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 description: Informationen zum Authentifizieren von Anforderungen und Verwenden der Azure Monitor-REST-API, um verfügbare Metrikdefinitionen und Metrikwerte abzurufen.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/19/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: bbc5aaf02f4ab4388e816faaf8df536770f3302a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/19/2018
+ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205627"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551825"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 

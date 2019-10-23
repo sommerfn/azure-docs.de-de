@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 60538145652f3539768e6deb591352a1765488fd
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: f27ea984e2c11be03d69295d206c1b99791a3f72
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019012"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693281"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -36,7 +36,7 @@ Azure SQL-Analyse ist eine Cloudüberwachungslösung, die das Streaming von Diag
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Azure-Diagnose](../platform/collect-azure-metrics-logs.md) | **Ja** | Azure-Metrik- und Protokolldaten werden direkt von Azure an Azure Monitor-Protokolle gesendet. |
+| [Diagnoseeinstellungen](../platform/diagnostic-settings.md) | **Ja** | Azure-Metrik- und Protokolldaten werden direkt von Azure an Azure Monitor-Protokolle gesendet. |
 | [Azure-Speicherkonto](../platform/collect-azure-metrics-logs.md) | Nein | Azure Monitor liest keine Daten aus einem Speicherkonto. |
 | [Windows-Agents](../platform/agent-windows.md) | Nein | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
 | [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Direkte Linux-Agents werden von der Lösung nicht verwendet. |

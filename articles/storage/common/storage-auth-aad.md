@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: caf72d4af390956391fdab133cf0897abbee4633
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673154"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598104"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory
 
@@ -34,7 +34,7 @@ Für den Autorisierungsschritt ist es erforderlich, dem Sicherheitsprinzipal min
 
 Für native Anwendungen und Webanwendungen, die Anforderungen an den Azure Blob- oder Warteschlangendienst senden, kann die Autorisierung auch mit Azure AD erfolgen. Informationen zum Anfordern eines Zugriffstokens und seiner Verwendung zum Autorisieren der Anforderungen für Blob- oder Warteschlangendaten finden Sie unter [Authorize access to Azure Storage with Azure AD from an Azure Storage application (Autorisieren des Zugriffs auf Azure Storage mit Azure AD über eine Azure Storage-Anwendung)](storage-auth-aad-app.md).
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>Zuweisen von RBAC-Rollen für Zugriffsrechte
+## <a name="assign-rbac-roles-for-access-rights"></a>Zuweisen von RBAC-Rollen für Zugriffsrechte
 
 Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit üblichen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten. Außerdem können Sie benutzerdefinierte Rollen für den Zugriff auf Blob- und Warteschlangendaten definieren.
 

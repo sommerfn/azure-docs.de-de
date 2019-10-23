@@ -1,24 +1,19 @@
 ---
 title: Was ist Azure Application Insights? | Microsoft-Dokumentation
 description: Anwendungsleistungsverwaltung und Nachverfolgen der Nutzung Ihrer aktiven Webanwendung.  Erkennung, Triage und Diagnose von Problemen, Analyse der App-Nutzung.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 379721d1-0f82-445a-b416-45b94cb969ec
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: overview
-ms.custom: mvc
-ms.date: 06/03/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9042d5e89dd64e1c405b2657a191a766a2e37f75
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.date: 06/03/2019
+ms.custom: mvc
+ms.openlocfilehash: 58c63c229510b476ea19a9650c8eed0fc2d72ac2
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349978"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677829"
 ---
 # <a name="what-is-application-insights"></a>Was ist Application Insights?
 Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Verwenden Sie ihn, um Ihre aktiven Webanwendung zu überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js und Java EE (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.

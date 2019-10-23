@@ -146,7 +146,7 @@
           href: basic-age-gating.md
         - name: Definieren von benutzerdefinierten Attributen
           href: active-directory-b2c-reference-custom-attr.md
-        - name: Externes Pass-Through-IdP-Token
+        - name: Übergeben eines externen IdP-Token
           href: idp-pass-through-user-flow.md
     - name: Benutzerdefinierte Richtlinie
       items:

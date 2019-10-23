@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244039"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529027"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -93,7 +93,7 @@ Ein Beispiel für diesen Prozess finden Sie unter [Konfigurieren eines IoT Edge-
 
 Die Module von IoT Edge-Hub und -Agent verwenden lokalen Speicher, um den Status beizubehalten und den Nachrichtenaustausch zwischen Modulen, Geräten und der Cloud zu ermöglichen. Für eine höhere Zuverlässigkeit und Leistung konfigurieren Sie die Systemmodule so, dass sie Speicherplatz auf dem Hostdateisystem verwenden.
 
-Weitere Informationen finden Sie unter [Hostspeicher für Systemmodule](offline-capabilities.md#host-storage-for-system-modules).
+Weitere Informationen finden Sie unter [Hostspeicher für Systemmodule](how-to-access-host-storage-from-module.md).
 
 ### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>Reduzieren der Speicherplatzbelegung durch den IoT Edge-Hub
 

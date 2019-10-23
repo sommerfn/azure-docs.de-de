@@ -1,23 +1,18 @@
 ---
 title: Optimale Nutzung von Azure Application Insights | Microsoft-Dokumentation
 description: Nachdem Sie die ersten Schritte mit Application Insights gemacht haben, finden Sie hier eine Zusammenfassung der Funktionen, mit denen Sie sich beschäftigen können.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 7ec10a2d-c669-448d-8d45-b486ee32c8db
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/03/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 7e62efb0b64b0b882b36126af4a1f9d520d92475
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/03/2017
+ms.openlocfilehash: 8c51745c43ced8ad3031a6a01096261ef72b33fc
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230640"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678354"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Weitere Telemetriedaten aus Application Insights
 Nachdem Sie [Application Insights zu Ihrem .ASP NET-Code hinzugefügt haben](../../azure-monitor/app/asp-net.md), können Sie einige weitere Einstellungen vornehmen, um noch mehr Telemetriedaten zu erhalten. 

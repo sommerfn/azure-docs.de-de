@@ -1,24 +1,18 @@
 ---
 title: 'Gewusst wie: Aktualisieren von Azure Monitor für Container für Metriken | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktualisieren, um die Funktion für benutzerdefinierte Metriken zu aktivieren, für die das Untersuchen und Senden von Warnungen zu aggregierten Metriken unterstützt wird.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/06/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/06/2019
+ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148856"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554071"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
 Mit Azure Monitor für Container wird Unterstützung für die Erfassung von Metriken aus AKS-Clusterknoten und -Pods (Azure Kubernetes Service) und das Schreiben in den Azure Monitor-Metrikspeicher eingeführt. Diese Änderung soll zu einer verbesserten Zeitgenauigkeit führen, wenn Aggregatberechnungen (Avg, Count, Max, Min, Sum) in Leistungsdiagrammen dargestellt werden, und das Anheften von Leistungsdiagrammen in Dashboards des Azure-Portals und Metrikwarnungen unterstützen.

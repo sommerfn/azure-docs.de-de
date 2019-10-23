@@ -1,24 +1,18 @@
 ---
 title: Problembehandlung für Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Probleme mit Azure Monitor für Container behandeln und lösen können.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/27/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b6c245142eea12bcec5ed642ec9bd91a58e10eb0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 03/27/2018
+ms.openlocfilehash: ec75f607f707405d6a5bea98deb784f4306c04f1
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813773"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555369"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problembehandlung für Azure Monitor für Container
 

@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eacb574f20abeb63a9d0ab8caf534eb7abb9784
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a7a67e98d87850e2fc90df3ce7ba15e5e60da517
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056361"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596750"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Daemon-App, die Web-APIs aufruft – Aufrufen einer Web-API aus der App
 
@@ -72,5 +72,19 @@ Für Daemon-Apps müssen die von Ihnen aufgerufenen Web-APIs vorab genehmigt wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
 > [!div class="nextstepaction"]
-> [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](./scenario-daemon-production.md)
+> [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+
+---

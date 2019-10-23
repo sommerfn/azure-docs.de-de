@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 45e058d887ae79164196ab310f93270accbfb389
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 33d5a5aebf572c3fb7757bc66e1a1e05a2489741
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684840"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755942"
 ---
 # <a name="azure-germany-database-services"></a>Datenbankdienste von Azure Deutschland
 ## <a name="sql-database"></a>SQL-Datenbank
@@ -45,7 +45,7 @@ Bei Azure Deutschland werden für den Zugriff auf und die Verwaltung von Azure C
 | Azure-Portal | https://portal.azure.com | https://portal.microsoftazure.de |
 
 > [!NOTE]
-> Ihre gesamten Skripts und Ihr Code müssen die richtigen Endpunkte und Umgebungen berücksichtigen. Weitere Informationen finden Sie in [Verwalten von Azure Cache for Redis mit Azure PowerShell](../azure-cache-for-redis/cache-howto-manage-redis-cache-powershell.md) unter „So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her“.
+> Ihre gesamten Skripts und Ihr Code müssen die richtigen Endpunkte und Umgebungen berücksichtigen. Weitere Informationen finden Sie in [Verwalten von Azure Cache for Redis mit Azure PowerShell](../azure-cache-for-redis/cache-how-to-manage-redis-cache-powershell.md) unter „So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her“.
 >
 >
 

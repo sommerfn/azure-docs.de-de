@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: b225052daa61932f3b8b868789cfb3c204eca88f
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9b23e3b69b4970e765ea1cd5af690cf074bad774
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543431"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693449"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -461,7 +461,6 @@ Ein virtuelles Azure-Netzwerk ist standardmäßig nur für Ressourcen zugänglic
 ### <a name="hybrid-virtual-networks"></a>Hybride virtuelle Netzwerke
 
 Sie können ein lokales Netzwerk mit einem virtuellen Azure-Netzwerk verbinden, indem Sie ExpressRoute oder eine Site-to-Site-VPN-Verbindung nutzen. In dieser Konfiguration stellt das virtuelle Azure-Netzwerk im Grunde eine cloudbasierte Erweiterung des lokalen Netzwerks dar.
-![Hybrides virtuelles Netzwerk mit VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 Da das virtuelle Azure-Netzwerk mit Ihrem lokalen Netzwerk verbunden ist, muss für standortübergreifende virtuelle Netzwerke ein eindeutiger Teil des Adressraums verwendet werden, der von Ihrer Organisation genutzt wird. Ebenso wie verschiedenen Unternehmensstandorten ein spezifisches IP-Subnetz zugewiesen wird, wird Azure bei Erweiterung Ihres Netzwerks zu einem weiteren Standort.
 Es gibt mehrere Optionen zum Bereitstellen eines virtuellen Netzwerks.

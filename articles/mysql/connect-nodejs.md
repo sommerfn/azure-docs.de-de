@@ -4,16 +4,16 @@ description: Diese Schnellstartanleitung enthält mehrere Node.js-Codebeispiele,
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/21/2018
-ms.openlocfilehash: 5ad6fecc3cc06d2c4e2962640201ffcd6f96d87e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: fb61a976e62c3ae5e29dfcc5e28b48f2ea4214c8
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672513"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529052"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Node.js zum Herstellen von Verbindungen mit Daten und Abfragen von Daten in Azure Database for MySQL
 In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Node.js](https://nodejs.org/) auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
@@ -86,7 +86,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 2. Wählen Sie im Azure-Portal im linken Menü **Alle Ressourcen** aus, und suchen Sie dann nach dem Server, den Sie erstellt haben (z.B. **mydemoserver**).
 3. Wählen Sie den Servernamen aus.
 4. Notieren Sie sich im Bereich **Übersicht** des Servers den **Servernamen** und den **Anmeldenamen des Serveradministrators**. Wenn Sie Ihr Kennwort vergessen haben, können Sie es in diesem Bereich auch zurücksetzen.
- ![Servername für Azure-Datenbank für MySQL](./media/connect-nodejs/1_server-overview-name-login.png)
+ ![Servername für Azure-Datenbank für MySQL](./media/connect-nodejs/server-name-azure-database-mysql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Ausführen des JavaScript-Codes in Node.js
 1. Fügen Sie den JavaScript-Code in Textdateien ein, und speichern Sie ihn dann in einem Projektordner mit der Dateierweiterung „.js“, z.B. „C:\nodejsmysql\createtable.js“ oder „/home/username/nodejsmysql/createtable.js“.

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: 726d04cdfbc21c21a52945f11d3b5097978c5d1d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d9d135136efea72017399b5888bc6591582ffe67
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168832"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553557"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker Compose-Bereitstellungsunterstützung in Azure Service Fabric (Vorschau)
 
 Docker verwendet die Datei [„docker-compose.yml“](https://docs.docker.com/compose) zum Definieren von Anwendungen mit mehreren Containern. Damit Kunden, die mit Docker vertraut sind, vorhandene Containeranwendungen einfacher in Azure Service Fabric orchestrieren können, haben wir eine Unterstützung für die Vorschauversion der Docker Compose-Bereitstellung nativ in die Plattform integriert. Service Fabric akzeptiert `docker-compose.yml`-Dateien ab Version 3 (und höher). 
 
-Da diese Unterstützung als Vorschauversion verfügbar ist, wird nur ein Teil der Compose-Direktiven unterstützt. So werden beispielsweise Anwendungsupgrades nicht unterstützt. Sie können jedoch jederzeit Anwendungen entfernen und bereitstellen, statt sie zu aktualisieren.
+Da diese Unterstützung als Vorschauversion verfügbar ist, wird nur ein Teil der Compose-Direktiven unterstützt.
 
 Wenn Sie diese Vorschauversion verwenden möchten, erstellen Sie Ihren Cluster mindestens mit der Version 5.7 der Service Fabric-Laufzeit über das Azure-Portal (zusammen mit dem entsprechenden SDK). 
 

@@ -1,24 +1,20 @@
 ---
 title: Azure Monitor – Azure Application Insights – Überschreiben der SDK-Standardendpunkte | Microsoft-Dokumentation
 description: Informationen zum Ändern der Standardendpunkte des Azure Application Insights SDK für Regionen wie Azure Government.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/26/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 25087c5b3a078b740764f51a7780a24277d5c642
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 07/26/2019
+ms.openlocfilehash: e1db9782fe923f7a5759f4e001cd0db970606fed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639558"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677493"
 ---
- # <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
+# <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
 
 Zum Senden von Daten aus Application Insights in bestimmten Regionen müssen Sie die standardmäßigen Endpunktadressen überschreiben. Jedes SDK erfordert geringfügig andere Änderungen, die in diesem Artikel beschrieben werden. Diese Änderungen erfordern eine Anpassung des Beispielcodes und das Ersetzen der Platzhalterwerte für `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address` und `Profile_Query_Endpoint_address` durch die tatsächlichen Endpunktadressen der jeweiligen Region. Am Ende dieses Artikels finden Sie Links zu den Endpunktadressen für Regionen, in denen diese Konfiguration erforderlich ist.
 

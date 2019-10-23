@@ -1,23 +1,18 @@
 ---
 title: Exportieren nach Power BI aus Azure Application Insights | Microsoft-Dokumentation
 description: Analytics-Abfragen können in Power BI angezeigt werden.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 08/10/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/10/2018
+ms.openlocfilehash: 04848f763fe8246f8e10f563169c04ea37b0ed37
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900235"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677313"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).

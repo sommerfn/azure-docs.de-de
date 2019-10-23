@@ -1,23 +1,18 @@
 ---
 title: Übersicht über Erkenntnisse in Azure Monitor | Microsoft-Dokumentation
 description: Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche in Azure Monitor für bestimmte Anwendungen und Dienste bereitgestellt. Dieser Artikel enthält eine kurze Beschreibung der einzelnen Erkenntnisse, die derzeit verfügbar sind.
-services: azure-monitor
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 8cb39a174c570b7019e872d731f49252a9505406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/22/2019
+ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245475"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555345"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Übersicht über Erkenntnisse in Azure Monitor
 Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitgestellt. Hierbei werden Daten auf der [Azure Monitor-Datenplattform](../platform/data-platform.md) gespeichert und weitere Azure Monitor-Funktionen für Analyse und Warnungen genutzt, doch können auch zusätzliche Daten gesammelt und eine einzigartige Benutzeroberfläche im Azure-Portal bereitgestellt werden. Greifen Sie auf Erkenntnisse im Azure-Portal über den Abschnitt **Erkenntnisse** im Azure Monitor-Menü zu.

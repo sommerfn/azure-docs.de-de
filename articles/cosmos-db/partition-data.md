@@ -1,17 +1,17 @@
 ---
 title: Partitionierung und horizontale Skalierung in Azure Cosmos DB
 description: Erfahren Sie, wie die Partitionierung in Azure Cosmos DB funktioniert, wie Partitionierung und Partitionsschlüssel konfiguriert werden und wie Sie den richtigen Partitionsschlüssel für Ihre Anwendung wählen.
-ms.author: rimman
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8f83c40aeecdbf9ca30adc20286712850882ee41
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cbd171e10cc1a8b27de98d9d4d779f345ac5a3ed
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616795"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754906"
 ---
 # <a name="partitioning-and-horizontal-scaling-in-azure-cosmos-db"></a>Partitionierung und horizontale Skalierung in Azure Cosmos DB
 

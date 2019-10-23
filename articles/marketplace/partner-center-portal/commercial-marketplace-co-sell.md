@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773220"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784817"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
@@ -72,10 +72,10 @@ Sie können auch Ihre bestehende Kontaktliste für ein Angebot exportieren und d
 
     | **Rolle**    | **Beschreibung**  |
     | :------------------- | :-------------------|
-    | *Partnermarketing* | Diese Rolle konzentriert sich auf die Vermarktung Ihrer Lösung und die Zusammenarbeit bei Marketingaktivitäten mit Microsoft-Vertriebsteams und Vertriebspartnern. Der Hauptansprechpartner für Marketingaktivitäten und Angebotsinhalte wie Produktbeschreibungen, Bilder und Videos. |
-    | *Partnervertrieb* | Diese Rolle konzentriert sich auf den Vertrieb Ihrer Lösung und die Zusammenarbeit beim Vertrieb mit Microsoft-Vertriebsteams und Vertriebspartnern. Geben Sie bei Co-Selling-Lösungen mindestens einen Partnervertriebskontakt pro Region an, in der Sie für das Co-Selling bereit sein möchten. Derselbe Partnervertriebskontakt kann mehrere Regionen abdecken. |
-    | *Technischer Vertrieb durch den Partner* | Unterstützt technische Überlegungen zur Architektur und Bereitstellung während des Vertriebszyklus, der Integration nach dem Verkauf und der Bereitstellungszeiträume. |
-    | *Manager des Partners für den Kundenerfolg* | Unterstützt in der Regel Kunden nach der Bereitstellung, um ihnen zu helfen, Ihre Lösung optimal zu nutzen und ihre Präsenz im Unternehmen des Kunden auszuweiten. |
+    | *:::no-loc text="Partner marketing":::* | Diese Rolle konzentriert sich auf die Vermarktung Ihrer Lösung und die Zusammenarbeit bei Marketingaktivitäten mit Microsoft-Vertriebsteams und Vertriebspartnern. Der Hauptansprechpartner für Marketingaktivitäten und Angebotsinhalte wie Produktbeschreibungen, Bilder und Videos. |
+    | *:::no-loc text="Partner sales":::* | Diese Rolle konzentriert sich auf den Vertrieb Ihrer Lösung und die Zusammenarbeit beim Vertrieb mit Microsoft-Vertriebsteams und Vertriebspartnern. Geben Sie bei Co-Selling-Lösungen mindestens einen Partnervertriebskontakt pro Region an, in der Sie für das Co-Selling bereit sein möchten. Derselbe Partnervertriebskontakt kann mehrere Regionen abdecken. |
+    | *:::no-loc text="Partner technical sales":::* | Unterstützt technische Überlegungen zur Architektur und Bereitstellung während des Vertriebszyklus, der Integration nach dem Verkauf und der Bereitstellungszeiträume. |
+    | *:::no-loc text="Partner customer success manager":::* | Unterstützt in der Regel Kunden nach der Bereitstellung, um ihnen zu helfen, Ihre Lösung optimal zu nutzen und ihre Präsenz im Unternehmen des Kunden auszuweiten. |
 
 * *Länder/Regionen (erforderlich):*  Verwenden Sie beim Ausfüllen der Vorlage die [zweistelligen Länder-/Regionscodes wie aufgeführt](./commercial-marketplace-co-sell-countries.md). Wenn der Kontakt alle Länder/Regionen abdeckt, verwenden Sie den dreistelligen Code „OOO“. Wenn ein Kontakt mehr als ein Land bzw. eine Region umfasst, geben Sie jeden der zweistelligen Codes durch ein Komma getrennt ein (geben Sie z. B. „US, CA, FR“ ohne Anführungszeichen in die Vorlage ein).
 

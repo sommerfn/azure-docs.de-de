@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights – Automatisches Sammeln von Abhängigkeiten | Microsoft-Dokumentation
 description: Mit Application Insights können Abhängigkeiten automatisch gesammelt und visualisiert werden.
-services: application-insights
-documentationcenter: .net
-author: nikmd23
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
+author: nikmd23
+ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.author: nimolnar
-ms.openlocfilehash: 839ab291a99de646053b638520ce43f459d5c41f
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297010"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678301"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 

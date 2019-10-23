@@ -1,22 +1,18 @@
 ---
 title: Automatisieren von Azure Application Insights-Prozessen mithilfe von Logic Apps
 description: In diesem Artikel erfahren Sie, wie Sie wiederholbare Prozesse schnell automatisieren können, indem Sie Ihrer Logik-App den Application Insights-Connector hinzufügen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/11/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 61215adc2aee5cef3693d119bf0efb36526d748b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/11/2019
+ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60904352"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677598"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatisieren von Application Insights-Prozessen mithilfe von Logic Apps
 

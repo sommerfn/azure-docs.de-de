@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 10/02/2019
-ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 448b2674aa6021107d138bc0d91f1bda399eb4a6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030351"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755898"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Konfigurationen des Enterprise-Sicherheitspakets mit Azure Active Directory Domain Services in Azure HDInsight
 
@@ -70,7 +70,7 @@ Wenn die verwaltete Identität erstellt und der richtigen Rolle zugewiesen wurde
 ## <a name="networking-considerations"></a>Überlegungen zum Netzwerkbetrieb
 
 > [!NOTE]  
-> Azure AD DS muss in einem Azure Resource Manager basierten VNET bereitgestellt werden. Klassische virtuelle Netzwerke werden für Azure AD-DS nicht unterstützt. Weitere Informationen finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
+> Azure AD DS muss in einem Azure Resource Manager basierten VNET bereitgestellt werden. Klassische virtuelle Netzwerke werden für Azure AD-DS nicht unterstützt. Weitere Informationen finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/tutorial-create-instance-advanced.md#create-and-configure-the-virtual-network).
 
 Wenn Sie AD DS aktiviert haben, wird ein lokaler DNS-Server auf den Azure-VMs ausgeführt. Konfigurieren Sie Ihr virtuelles AD DS-Netzwerk (VNET), um diese benutzerdefinierten DNS-Server zu verwenden. Um die richtigen IP-Adressen zu finden, wählen Sie **Eigenschaften** unter der Kategorie **Verwalten** aus, und sehen Sie sich die unter **IP-Adresse im virtuellen Netzwerk** aufgeführten IP-Adressen an.
 

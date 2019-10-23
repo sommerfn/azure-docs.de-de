@@ -1,24 +1,18 @@
 ---
 title: Verwalten des Agent für Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird die Verwaltung der häufigsten Wartungsaufgaben mit dem containerbasierten Log Analytics-Agent beschrieben, der von Azure Monitor für Container verwendet wird.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/06/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: e1d47be159d4721aed4b055a51acf675688b855e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/06/2018
+ms.openlocfilehash: bfedd7989e71bcb8cf58cef7ad7122749350ae26
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071796"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554057"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Verwalten des Agent für Azure Monitor für Container
 Für Azure Monitor für Container wird eine Containerversion des Log Analytics-Agents für Linux verwendet. Nach der ersten Bereitstellung gibt es Routine- oder optionale Aufgaben, die Sie während des Lebenszyklus ausführen müssen. In diesem Artikel wird beschrieben, wie Sie das Upgrade des Agent manuell durchführen und die Sammlung von Umgebungsvariablen aus einem bestimmten Container deaktivieren können. 

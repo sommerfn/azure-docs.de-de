@@ -1,23 +1,18 @@
 ---
 title: Einrichten der Web-App-Analyse für ASP.NET mit Azure Application Insights | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie mehr über die Leistung, die Verfügbarkeit und die Nutzungsanalysen für Ihre lokal oder in Azure gehostete ASP.NET-Website.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 73f62ff8c95fae694a43df48aa99b696fb05d131
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 05/08/2019
+ms.openlocfilehash: a72bb5dd02776fe8410bb515e4e17a292d12048f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916275"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677674"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Einrichten von Application Insights für Ihre ASP.NET-Website
 

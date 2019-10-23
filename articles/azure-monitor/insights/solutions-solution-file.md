@@ -1,25 +1,19 @@
 ---
 title: Erstellen einer Verwaltungslösungsdatei in Azure | Microsoft-Dokumentation
 description: Verwaltungslösungen beinhalten gebündelte Verwaltungsszenarien, die Kunden zu ihrer Azure-Umgebung hinzufügen können.  Diese Artikel beschreibt, wie Sie Verwaltungslösungen erstellen, die Sie in Ihrer Umgebung verwenden oder Ihren Kunden zur Verfügung stellen möchten.
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47ee691186da7f915ca8fcf87415784ab12ef1e0
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595763"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553846"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
@@ -83,7 +77,7 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 >
 >
 
-| Parameter | Type | BESCHREIBUNG |
+| Parameter | type | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | .<Name der Region |string |Azure Automation-Kontoname |
 | pricingTier |string |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
@@ -208,7 +202,7 @@ Jede Lösung erfordert einen Ressourceneintrag im Element **resources**, der die
 ### <a name="dependencies"></a>Abhängigkeiten
 Die Lösungsressource muss über eine [Abhängigkeit](../../azure-resource-manager/resource-group-define-dependencies.md) auf jeder anderen Ressource in der Lösung verfügen, da sie vorhanden sein müssen, bevor die Lösung erstellt werden kann.  Hierzu fügen Sie im Element **dependsOn** einen Eintrag für jede Ressource hinzu.
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 Die Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.  Dies umfasst die Ressourcen, die in der Lösung enthalten sind oder von dieser referenziert werden. Dadurch wird definiert, wie die Ressource nach Installation der Lösung verwaltet wird.  Jede Ressource in der Lösung muss entweder in der Eigenschaft **referencedResources** oder in der Eigenschaft **containedResources** aufgelistet werden.
 
 | Eigenschaft | BESCHREIBUNG |

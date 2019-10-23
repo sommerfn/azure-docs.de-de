@@ -1,22 +1,19 @@
 ---
 title: Einblicke in Azure Monitor-Ressourcengruppen | Microsoft-Dokumentation
 description: Erfahren Sie mit Azure Monitor mehr über die Integrität und Leistung Ihrer verteilten Anwendungen und Dienste auf Ressourcengruppenebene.
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119419"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553994"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)
 

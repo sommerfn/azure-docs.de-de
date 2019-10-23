@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 55ef15bd1fe922aa44227d2fea3d882d4320146f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536926"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786729"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -38,10 +38,6 @@ Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure
 * Welche Probleme treten häufig für Benutzer oder Administratoren bei dem Versuch auf, das Kennwort zurückzusetzen?
 * Welche Administratoren setzen häufig ihre eigenen Kennwörter zurück?
 * Gibt es verdächtige Aktivitäten beim Zurücksetzen des Kennworts?
-
-## <a name="power-bi-content-pack"></a>Power BI-Inhaltspaket
-
-Wenn Sie Power BI-Benutzer sind, können Sie ein Inhaltspaket für Azure AD verwenden, das eine benutzerfreundliche Berichterstellung für SSPR beinhaltet. Weitere Informationen zum Verwenden und Bereitstellen des Inhaltspakets finden Sie unter [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](../reports-monitoring/howto-power-bi-content-pack.md). Mit dem Inhaltspaket können Sie Ihre eigenen Dashboards erstellen und diese mit anderen Personen in Ihrer Organisation gemeinsam nutzen.
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Anzeigen von Kennwortverwaltungsberichten im Azure-Portal
 

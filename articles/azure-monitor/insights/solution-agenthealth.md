@@ -1,24 +1,18 @@
 ---
 title: Lösung für die Agent-Integritätsdiagnose in Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel soll Ihnen einen besseren Einblick ermöglichen, wie Sie diese Lösung zum Überwachen der Integrität Ihrer Agents verwenden können, die Daten direkt an Log Analytics oder System Center Operations Manager melden.
-services: operations-management-suite
-documentationcenter: ''
-author: MGoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 03/19/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: e9e27e224e42bf3f65fadcac22210fda314445fa
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.date: 03/19/2017
+ms.openlocfilehash: 5a48bbff89f0d6a0be9adf2ad242dbca41eec6db
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67665998"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555321"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    

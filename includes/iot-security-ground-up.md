@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: b952763378de562f35c2e1ecaf49c56f0145c559
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178205"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789716"
 ---
-# <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>Sicherheit im Internet der Dinge (IoT) von Anfang an
-
 Das Internet der Dinge (Internet of Things, IoT) ist für Unternehmen weltweit mit neuen Anforderungen in Bezug auf Sicherheit, Datenschutz und Compliance verbunden. Im Gegensatz zur herkömmlichen Cyber-Technologie, bei der es um Software und ihre Implementierung geht, liegt der Schwerpunkt bei IoT darauf, was passiert, wenn die Cyber-Welt und die physische Welt aufeinandertreffen. Zum Schützen von IoT-Lösungen müssen die sichere Bereitstellung von Geräten, die sichere Verbindung zwischen diesen Geräten und der Cloud sowie der sichere Schutz von Daten in der Cloud während der Verarbeitung und Speicherung sichergestellt werden. Dieser Funktionalität stehen aber Geräte mit Ressourcenbeschränkung, die geografische Verteilung von Bereitstellungen und eine große Zahl von Geräten innerhalb einer Lösung entgegen.
 
 In diesem Artikel wird erläutert, wie die IoT Solution Accelerators eine sichere und private Cloudlösung für das Internet der Dinge ermöglicht. Die Solution Accelerators bieten eine Komplettlösung, bei der alle Ebenen von Anfang an auf Sicherheit ausgelegt sind. Bei Microsoft ist die Entwicklung von sicherer Software fester Bestandteil der Software Engineering-Routine, die auf Microsofts jahrzehntelanger Erfahrung mit der Entwicklung sicherer Software basiert. Um dies sicherzustellen, wird der Security Development Lifecycle (SDL) als fundamentale Entwicklungsmethodik verwendet, gekoppelt mit vielen verschiedenen Sicherheitsdiensten auf Infrastrukturebene, z.B. Operational Security Assurance (OSA) sowie der Microsoft Digital Crimes Unit, dem Microsoft Security Response Center und dem Microsoft Center zum Schutz vor Malware.

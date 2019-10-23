@@ -1,19 +1,18 @@
 ---
 title: Übersicht über die automatische Skalierung in Virtual Machines, Cloud Services und Web-Apps
 description: Automatische Skalierung in Microsoft Azure. Gilt für Virtual Machines, VM-Skalierungsgruppen, Clouddienste und Web-Apps.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 3c70d11b83a116a9ce29ce202edeac6fe9464674
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959041"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552290"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  

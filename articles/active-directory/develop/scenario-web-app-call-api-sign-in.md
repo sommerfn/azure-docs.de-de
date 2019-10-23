@@ -15,12 +15,12 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3036f8cb72f2a07673743a77e8be37614002563f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720203"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596375"
 ---
 # <a name="web-app-that-calls-web-apis---sign-in"></a>Web-App, die Web-APIs aufruft – Anmelden
 
@@ -80,5 +80,24 @@ Im Python-Beispiel werden Konten bei der globalen Abmeldung nicht aus dem Cache 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Abrufen eines Tokens für die Web-App](scenario-web-app-call-api-acquire-token.md)
+> [Abrufen eines Tokens für die Web-App](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Abrufen eines Tokens für die Web-App](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Abrufen eines Tokens für die Web-App](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Abrufen eines Tokens für die Web-App](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+
+---

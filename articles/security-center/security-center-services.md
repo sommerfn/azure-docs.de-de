@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331144"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529482"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Verfügbare unterstützte Features in Azure Security Center
 
@@ -96,14 +96,14 @@ Die folgenden PaaS-Ressourcen werden von Azure Security Center unterstützt:
 |MySQL*|✔| ✔|
 |CosmosDB*|X| ✔|
 |Blob Storage|✔| ✔|
-|Speicherkonto|✔| Nicht verfügbar|
+|Speicherkonto|✔| X|
 |App Service|✔| ✔|
 |Funktion|✔| X|
 |Clouddienst|✔| X|
-|VNet|✔| Nicht verfügbar|
-|Subnet|✔| Nicht verfügbar|
-|NIC|✔| Nicht verfügbar|
-|NSG|✔| Nicht verfügbar|
+|VNet|✔| X|
+|Subnet|✔| X|
+|NIC|✔| X|
+|NSG|✔| X|
 |Subscription|✔ **| ✔|
 |Batch-Konto|✔| X|
 |Service Fabric-Konto|✔| X|
@@ -114,7 +114,7 @@ Die folgenden PaaS-Ressourcen werden von Azure Security Center unterstützt:
 |Stream Analytics|✔| X|
 |Event Hub-Namespace|✔| X|
 |Logik-Apps|✔| X|
-|Redis|✔| Nicht verfügbar|
+|Redis|✔| X|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Schlüsseltresor|✔| X|

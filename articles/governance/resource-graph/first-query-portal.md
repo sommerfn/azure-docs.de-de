@@ -3,15 +3,15 @@ title: Ausführen Ihrer ersten Abfrage mithilfe des Azure Resource Graph-Explore
 description: Dieser Artikel führt Sie durch die Schritte zum Ausführen Ihrer ersten Abfrage aus dem Azure-Portal mithilfe des Azure Resource Graph-Explorers.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: abee722e725b55933d7ff1acdcd1e9a2e701502b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387600"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752145"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers
 
@@ -45,7 +45,10 @@ Wenn die letzte Abfrage mehrmals ausgeführt wird, sind die zurückgegebenen Erg
 
 ### <a name="schema-browser"></a>Schemabrowser
 
-Der Schemabrowser befindet sich im linken Bereich des Resource Graph-Explorers. Diese Liste der Ressourcen zeigt alle _Ressourcentypen_ von Azure-Ressourcen an, die von Azure Resource Graph unterstützt werden und in einem Mandanten vorhanden sind, auf den Sie Zugriff haben. Wenn Sie einen Ressourcentyp oder Untereigenschaften erweitern, werden untergeordnete Eigenschaften angezeigt, die zum Erstellen einer Resource Graph-Abfrage verwendet werden können. Wenn Sie den Ressourcentyp auswählen, wird `where type =="<resource type>"` in das Abfragefeld eingefügt. Wenn Sie eine der untergeordneten Eigenschaften auswählen, wird `where <propertyName> == "INSERT_VALUE_HERE"` zum Abfragefeld hinzugefügt. Der Schemabrowser ist eine hervorragende Möglichkeit zum Entdecken von Eigenschaften, die in Abfragen verwendet werden können. Stellen Sie sicher, dass Sie _INSERT\_VALUE\_HERE_ durch Ihren eigenen Wert ersetzen und die Abfrage mit Bedingungen, Operatoren und Funktionen anpassen, um die gewünschten Ergebnisse zu erzielen.
+Der Schemabrowser befindet sich im linken Bereich des Resource Graph-Explorers. Diese Liste der Ressourcen zeigt alle _Ressourcentypen_ von Azure-Ressourcen an, die von Azure Resource Graph unterstützt werden und in einem Mandanten vorhanden sind, auf den Sie Zugriff haben. Wenn Sie einen Ressourcentyp oder Untereigenschaften erweitern, werden untergeordnete Eigenschaften angezeigt, die zum Erstellen einer Resource Graph-Abfrage verwendet werden können.
+
+Wenn Sie den Ressourcentyp auswählen, wird `where type =="<resource type>"` in das Abfragefeld eingefügt. Wenn Sie eine der untergeordneten Eigenschaften auswählen, wird `where <propertyName> == "INSERT_VALUE_HERE"` zum Abfragefeld hinzugefügt.
+Der Schemabrowser ist eine hervorragende Möglichkeit zum Entdecken von Eigenschaften, die in Abfragen verwendet werden können. Stellen Sie sicher, dass Sie _INSERT\_VALUE\_HERE_ durch Ihren eigenen Wert ersetzen und die Abfrage mit Bedingungen, Operatoren und Funktionen anpassen, um die gewünschten Ergebnisse zu erzielen.
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Erstellen eines Diagramms aus der Resource Graph-Abfrage
 

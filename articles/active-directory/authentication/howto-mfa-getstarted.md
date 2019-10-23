@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 10/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62ea1761cef48ab7808a352789963ab55129d2f8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162388"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554390"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung
 
@@ -176,32 +176,6 @@ Wenn für Ihre Benutzer die Multi-Factor Authentication pro Benutzer aktiviert u
 Führen Sie diese PowerShell-Instanz in einem ISE-Fenster aus, oder speichern Sie sie zur lokalen Ausführung als PS1-Datei.
 
 ```PowerShell
-# Disable MFA for all users, keeping their MFA methods intact
-Get-MsolUser -All | Disable-MFA -KeepMethods
-
-# Wrapper to disable MFA with the option to keep the MFA methods (to avoid having to proof-up again later)
-function Disable-MFA {
-
-    [CmdletBinding()]
-    param(
-        [Parameter(ValueFromPipeline=$True)]
-        $User,
-        [switch] $KeepMethods
-    )
-
-    Process {
-
-        Write-Verbose ("Disabling MFA for user '{0}'" -f $User.UserPrincipalName)
-        $User | Set-MfaState -State Disabled
-
-        if ($KeepMethods) {
-            # Restore the MFA methods which got cleared when disabling MFA
-            Set-MsolUser -ObjectId $User.ObjectId `
-                         -StrongAuthenticationMethods $User.StrongAuthenticationMethods
-        }
-    }
-}
-
 # Sets the MFA requirement state
 function Set-MfaState {
 
@@ -231,6 +205,8 @@ function Set-MfaState {
     }
 }
 
+# Disable MFA for all users
+Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 ## <a name="plan-conditional-access-policies"></a>Planen von Richtlinien für bedingten Zugriff

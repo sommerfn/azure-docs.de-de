@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 2138eed9975abe804442c476d19b5b7229685362
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4fdb891d668d99644d8a9ed9c15d158e65d53ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178206"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793132"
 ---
-# <a name="security-best-practices-for-internet-of-things-iot"></a>Bewährte Methoden für die Sicherheit für das Internet der Dinge (IoT)
-
 Zum Schützen einer IoT-Infrastruktur (Internet of Things, Internet der Dinge) ist eine umfassende Sicherheitsstrategie erforderlich. Diese Strategie muss folgende Bereiche abdecken: das Sichern von Daten in der Cloud, das Schützen der Integrität der Daten bei der Übertragung über das öffentliche Internet sowie das sichere Bereitstellen von Geräten. Jede Ebene leistet ihren eigenen Beitrag zur Sicherheit der Gesamtinfrastruktur, und die Beiträge bauen aufeinander auf und ergänzen sich.
 
 ## <a name="secure-an-iot-infrastructure"></a>Schützen einer IoT-Infrastruktur

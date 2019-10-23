@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671078"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595203"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -119,8 +119,14 @@ Sie können ein Kontofailover über das Azure-Portal, PowerShell, Azure CLI oder
 
 Kontofailover befindet sich in der Vorschau ist für alle Kunden verfügbar, die GRS oder RA-GRS mit Azure Resource Manager-Bereitstellungen verwenden. GPv1, GPv2 und BLOB-Speicherkonten werden unterstützt. Kontofailover ist zurzeit in den folgenden Regionen verfügbar:
 
-- USA, Westen 2
+- Asien, Osten
+- Asien, Südosten
+- Australien (Osten)
+- Australien, Südosten
+- USA, Mitte
+- USA (Ost 2)
 - USA, Westen-Mitte
+- USA, Westen 2
 
 Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
 

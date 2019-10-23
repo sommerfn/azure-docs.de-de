@@ -3,20 +3,20 @@ title: 'Erstellen eines Apache Kafka-fähigen Event Hub: Azure Event Hubs | Micr
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen eines Apache Kafka-fähigen Azure Event Hubs-Namespace mit dem Azure-Portal.
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 9ce0f74ec6d4e536bfb3fe827ae6f8ae143b640e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822479"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555798"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>Erstellen von Apache Kafka-fähigen Event Hubs
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Erstellen eines Kafka-fähigen Event Hubs-Namespace
 
-1. Melden Sie sich im [Azure-Portal][Azure portal] an, und klicken Sie oben links auf **Ressource erstellen**.
+1. Melden Sie sich beim [Azure-Portal][Azure portal] an, und klicken Sie links oben auf **Ressource erstellen**.
 
 2. Suchen Sie nach Event Hubs, und wählen Sie die hier gezeigten Optionen aus:
     

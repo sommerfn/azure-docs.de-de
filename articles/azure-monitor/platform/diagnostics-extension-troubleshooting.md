@@ -1,19 +1,18 @@
 ---
 title: Problembehandlung bei der Azure-Diagnoseerweiterung
 description: Behandeln Sie Probleme bei der Verwendung der Azure-Diagnose in Azure Virtual Machines, Service Fabric und Cloud Services.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-ms.date: 05/08/2019
+author: rboucher
 ms.author: robb
-ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.date: 05/08/2019
+ms.openlocfilehash: 63ddb329e37ea3da589e7d2eeaebabb42aa2b467
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "65471782"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555519"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).

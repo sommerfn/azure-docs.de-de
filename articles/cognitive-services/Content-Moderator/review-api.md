@@ -3,19 +3,19 @@ title: 'Konzepte: Überprüfungen, Workflows und Aufträge – Content Moderator
 titleSuffix: Azure Cognitive Services
 description: Informationen zu Überprüfungen, Workflows und Aufträgen
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: a77b93c46c9989181cf4473e8b908571a3df2f20
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 0050e2b687b6001514d1ae80c269b1a0499efbea
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565546"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757292"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Inhaltsmoderationsüberprüfungen, -workflows und -aufträge
 

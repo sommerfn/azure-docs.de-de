@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 10/16/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab5ba4fde7469854954ed19d2e643f2b8a23f34f
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 375fe839c31062474994d329379b066049272f55
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193256"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527059"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
 
@@ -129,20 +129,6 @@ error=access_denied
 | --- | --- |
 | `error` |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
-
-## <a name="validate-the-id_token"></a>Überprüfen des ID-Tokens
-
-Das Empfangen eines ID-Tokens allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen auch die Signatur des ID-Tokens (id_token) validieren und die Ansprüche im Token auf Grundlage der Anforderungen Ihrer App überprüfen. Der Microsoft Identity Platform-Endpunkt verwendet [JSON-Webtoken (JWTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
-
-Sie können `id_token` auch im Clientcode überprüfen. Es ist jedoch eine bewährte Methode, `id_token` an einen Back-End-Server zu senden und die Überprüfung dort auszuführen. Nachdem Sie die Signatur des ID-Tokens validiert haben, müssen Sie noch einige Ansprüche überprüfen. Weitere Informationen finden Sie in der [`id_token`-Referenz](id-tokens.md). Dort finden Sie auch Einzelheiten zum [Überprüfen von Token](id-tokens.md#validating-an-id_token) und [Wichtige Informationen zum Rollover von Signaturschlüsseln](active-directory-signing-key-rollover.md). Wir empfehlen, zum Analysieren und Überprüfen von Token eine Bibliothek zu verwenden. Für die meisten Sprachen und Plattformen ist mindestens eine Bibliothek verfügbar.
-
-Sie können je nach Szenario auch zusätzliche Ansprüche überprüfen. Einige allgemeinen Überprüfungen umfassen:
-
-* Sicherstellen, dass sich der Benutzer/die Organisation für die App angemeldet hat.
-* Sicherstellen, dass der Benutzer über eine ordnungsgemäße Autorisierung und Berechtigungen verfügt.
-* Sicherstellen, dass eine bestimmte Stärke der Authentifizierung aufgetreten ist, z.B. die mehrstufige Authentifizierung.
-
-Nachdem Sie das ID-Token überprüft haben, können Sie mit dem Benutzer eine Sitzung beginnen und die Ansprüche im ID-Token zum Abrufen von Informationen über den Benutzer in der App verwenden. Diese Informationen können für die Anzeige, für Datensätze, für die Personalisierung usw. verwendet werden.
 
 ## <a name="get-access-tokens"></a>Abrufen von Zugriffstoken
 

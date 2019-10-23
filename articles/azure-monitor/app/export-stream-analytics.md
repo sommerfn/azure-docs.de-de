@@ -1,23 +1,18 @@
 ---
 title: Exportieren aus Azure Application Insights mithilfe von Stream Analytics | Microsoft-Dokumentation
 description: Stream Analytics kann aus Application Insights exportierte Daten fortlaufend transformieren, filtern und weiterleiten.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 31594221-17bd-4e5e-9534-950f3b022209
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: d4a4196aa601fc8da79da3962faec026eff5ec87
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.date: 01/08/2019
+ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625055"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677951"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.

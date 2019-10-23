@@ -1,20 +1,18 @@
 ---
 title: Azure-Diagnoseerweiterung – Versionsverlauf des Konfigurationsschemas
 description: Relevant für die Erfassung von Leistungsindikatoren in Azure Virtual Machines, VM Scale Sets, Service Fabric und Cloud Services.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 09/04/2019
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 09/04/2019
+ms.openlocfilehash: fe07c93ada2e8635d0f64caf8451ccdf530f6a22
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735089"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552137"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
 Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerweiterung, die zusammen mit dem Microsoft Azure SDK bereitgestellt werden.  

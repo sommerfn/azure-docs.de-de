@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6bc4b69122df7d29a611571a750229f47337015c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60554497"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756796"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
@@ -286,7 +286,7 @@ Sie können Firewallregeln mit einem Start- und End-IP-Adressbereich angeben. We
 > 
 > 
 
-### <a name="properties"></a>Eigenschaften
+### <a name="properties"></a>Properties
 Klicken Sie auf **Eigenschaften**, um Informationen zu Ihrem Cache anzuzeigen, z.B. den Endpunkt und die Ports des Caches.
 
 ![Azure Cache for Redis-Eigenschaften](./media/cache-configure/redis-cache-properties.png)
@@ -429,7 +429,7 @@ Neue Azure Cache for Redis-Instanzen werden mit den folgenden standardmäßigen 
 Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanken?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> Mit den Einstellungen `databases` kann nur bei der Erstellung des Caches konfiguriert und nur mit PowerShell, der Befehlszeilenschnittstelle oder anderen Verwaltungsclients verwendet werden. Ein Beispiel für das Konfigurieren von `databases` bei der Cacheerstellung mithilfe von PowerShell finden Sie unter [New-AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
+> Mit den Einstellungen `databases` kann nur bei der Erstellung des Caches konfiguriert und nur mit PowerShell, der Befehlszeilenschnittstelle oder anderen Verwaltungsclients verwendet werden. Ein Beispiel für das Konfigurieren von `databases` bei der Cacheerstellung mithilfe von PowerShell finden Sie unter [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
 > 
 > 
 

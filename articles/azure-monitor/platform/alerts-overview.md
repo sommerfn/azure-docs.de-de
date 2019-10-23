@@ -1,19 +1,18 @@
 ---
 title: Übersicht über die Benachrichtigung und Benachrichtigungsüberwachung in Azure
 description: Übersicht über Benachrichtigungen in Azure Warnungen, klassische Warnungen und die Schnittstelle für Warnungen.
-author: rboucher
-services: monitoring
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 01/28/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: eab6e7e0fb834447a55b67dfc9a17c470e9e3361
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 01/28/2018
+ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091771"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555594"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 

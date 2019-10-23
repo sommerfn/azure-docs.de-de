@@ -1,24 +1,18 @@
 ---
 title: Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
 description: Die Lösung „Azure Monitor für VMs“ erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/10/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 23ce57add0d55ba5901e2f5fcf82b3279d349cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 04/10/2019
+ms.openlocfilehash: 7363f1ec11974dab3e0c0149c18ac4f0bf1c86ee
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66472575"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555192"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
 Azure Monitor für VMs erfasst Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Arbeitsbereich in Azure Monitor weiter.  Diese Daten stehen in Azure Monitor für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
@@ -115,7 +109,7 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 |Description |Beschreibung der beobachteten Bedrohung. |
 |TLPLevel |TLP-Stufe (Ampelprotokoll) ist einer der definierten Werte *White*, *Green*, *Amber*, *Red*. |
 |Confidence |Werte sind *0–100*. |
-|Severity |Werte sind *0–5*, wobei *5* am schwerwiegendsten und *0* überhaupt nicht schwerwiegend ist. Der Standardwert ist *3*.  |
+|severity |Werte sind *0–5*, wobei *5* am schwerwiegendsten und *0* überhaupt nicht schwerwiegend ist. Der Standardwert ist *3*.  |
 |FirstReportedDateTime |Die Uhrzeit, zu der der Anbieter den Indikator zum ersten Mal gemeldet hat. |
 |LastReportedDateTime |Die Uhrzeit, zu der der Indikator zum letzten Mal von Interflow beobachtet wurde. |
 |IsActive |Gibt an, dass die Indikatoren deaktiviert sind, mit dem Wert *true* oder *false*. |
@@ -150,12 +144,12 @@ Einige wichtige Punkte sind zu beachten:
 - Um Ausführlichkeit und Datenvolumen zu verringern, werden Datensätze mit Platzhalter-IP weggelassen, wenn es einen übereinstimmenden Datensatz (für den gleichen Prozess, Port und das gleiche Protokoll) mit einer bestimmten IP-Adresse gibt. Wenn ein Datensatz mit einer Platzhalter-IP ausgelassen wird, wird die Eigenschaft *IsWildcardBind* für den Datensatz mit der spezifischen IP-Adresse auf *TRUE* festgelegt.  Dies gibt an, dass der Port über jede Schnittstelle des berichtenden Computers zur Verfügung gestellt wird. 
 - Für Ports, die nur an eine bestimmte Schnittstelle gebunden sind, ist „IsWildcardBind“ auf *FALSE* festgelegt. 
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL-Datensätze
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL-Datensätze
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit dem Dependency-Agent. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
 | Eigenschaft | Description |
 |:--|:--|
-| Type | *ServiceMapComputer_CL* |
+| type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | resourceId | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
 | ResourceName_s | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
@@ -175,12 +169,12 @@ Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server
 | VirtualMachineName_s | Der Name der VM |
 | BootTime_t | Die Startzeit |
 
-### <a name="servicemapprocesscl-type-records"></a>Datensätze des ServiceMapProcess_CL-Typs
+### <a name="servicemapprocess_cl-type-records"></a>Datensätze des ServiceMapProcess_CL-Typs
 Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit dem Dependency-Agent. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
 | Eigenschaft | Description |
 |:--|:--|
-| Type | *ServiceMapProcess_CL* |
+| type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | resourceId | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
 | ResourceName_s | Der eindeutige Bezeichner für den Prozess auf dem Computer, auf dem er ausgeführt wird|

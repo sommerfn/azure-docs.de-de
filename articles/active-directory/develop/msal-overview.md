@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a53de919960902fcc89a53293f31a07baa88cf32
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: bec22381d1961c47ce257666177b5faf918cea56
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268548"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554407"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Übersicht über die Microsoft-Authentifizierungsbibliothek (MSAL)
 Mithilfe der Microsoft-Authentifizierungsbibliothek (MSAL) können Entwickler [Token](developer-glossary.md#security-token) vom Microsoft Identity Platform-Endpunkt abrufen, um auf geschützte Web-APIs zuzugreifen. Bei diesen Web-APIs kann es sich um Microsoft Graph, andere Microsoft APIs, Web-APIs von Drittanbietern oder Ihre eigene Web-API handeln. MSAL ist für .NET, JavaScript, Android und iOS verfügbar, die viele verschiedene Anwendungsarchitekturen und -plattformen unterstützen.
@@ -56,7 +56,7 @@ MSAL kann in vielen Anwendungsszenarien verwendet werden, darunter:
 | --- | --- | 
 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework, .NET Core, Xamarin Android, Xamarin iOS, Universelle Windows-Plattform|
 | [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| JavaScript-/TypeScript-Frameworks wie AngularJS, Ember.js oder Durandal.js|
-| [MSAL für Android (Vorschau)](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL für Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
 | [MSAL für iOS und macOS](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS und macOS|
 | [MSAL4J (Vorschau)](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Java|
 

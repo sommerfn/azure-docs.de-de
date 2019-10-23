@@ -1,20 +1,20 @@
 ---
-title: Azure-Messagingvergleich – Event Grid, Event Hubs, Service Bus
+title: 'Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus'
 description: 'Enthält eine Beschreibung der drei Azure-Messagingdienste: Azure Event Grid, Event Hubs und Service Bus. Hier erfahren Sie, welcher Dienst für welche Szenarien zu empfehlen ist.'
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 01/30/2019
+ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: d2daa23a22fae6ba420a146599c0c0ba659a94f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b68bd69c6d00ac177466f8fdaabd89649c910287
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540804"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790287"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus
 
@@ -38,17 +38,17 @@ Eigenständige Ereignisse geben Statusänderungen an und erfordern Aktionen. Um 
 
 Reihenereignisse geben eine Bedingung an und können analysiert werden. Die Ereignisse sind nach Zeit sortiert und voneinander abhängig. Der Consumer benötigt die sortierte Reihe von Ereignissen, um zu analysieren, was passiert ist.
 
-### <a name="message"></a>Message
+### <a name="message"></a>`Message`
 
 Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wurden und für die Nutzung oder Speicherung an anderer Stelle vorgesehen sind. Die Nachricht enthält die Daten, die die Nachrichtenpipeline ausgelöst haben. Der Verleger der Nachricht hat eine Erwartung dazu, wie der Consumer die Nachricht verarbeitet. Ein Vertrag besteht zwischen den beiden Seiten. Beispiel: Der Verleger sendet eine Nachricht mit den Rohdaten und erwartet, dass der Consumer eine Datei aus den Daten erstellt und eine Antwort sendet, wenn die Arbeit abgeschlossen ist.
 
 ## <a name="comparison-of-services"></a>Vergleich von Diensten
 
-| Dienst | Zweck | Type | Einsatzgebiete |
+| Dienst | Zweck | type | Einsatzgebiete |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktive Programmierung | Ereignisverteilung (eigenständig) | Reagieren auf Statusänderungen |
 | Event Hubs | Big Data-Pipeline | Ereignisstreaming (Reihe) | Streamen von Telemetriedaten und verteilten Daten |
-| Service Bus | Hochwertiges Unternehmensmessaging | Message | Auftragsverarbeitung und Finanztransaktionen |
+| Service Bus | Hochwertiges Unternehmensmessaging | `Message` | Auftragsverarbeitung und Finanztransaktionen |
 
 ### <a name="event-grid"></a>Event Grid
 

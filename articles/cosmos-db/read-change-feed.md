@@ -1,17 +1,17 @@
 ---
 title: Zugreifen auf den Änderungsfeed in Azure Cosmos DB
 description: Dieser Artikel beschreibt die verschiedenen Optionen, die für das Lesen des Änderungsfeeds und den Zugriff darauf in Azure Cosmos DB zur Verfügung stehen.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
-ms.openlocfilehash: 3d52ba1abc22aae6121ea6a36f943851dfcca7a0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 3d30c9f946f97f06c1a3ba1cd2e77e1ab151a572
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467666"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754882"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Lesen des Azure Cosmos DB-Änderungsfeeds
 

@@ -1,24 +1,18 @@
 ---
 title: Erstellen von Leistungswarnungen mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Monitor für Container benutzerdefinierte Warnungen basierend auf Protokollabfragen für die Arbeitsspeicher- und CPU-Auslastung erstellen können.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 2b1ee0e56b5a133e65a25b5d9af645f351d039c0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 04/26/2019
+ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722682"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555448"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container
 Azure Monitor für Container überwacht die Leistung von Containerworkloads, die in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden.

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/29/2019
+ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: f4b63cfc67e20158e434e1a401d47144c3e0f90c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618777"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690724"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
 
@@ -276,7 +276,6 @@ Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher | 20 MB/s |
 
 **Quell-Datenänderungsrate** | **Maximales Limit**
 ---|---
-Durchschnittliche Datenänderungsrate pro VM| 25 MB/s
 Spitzenänderungsrate für alle Datenträger auf einer VM | 54 MB/s
 Maximale Datenänderung pro Tag, die von einem Prozessserver unterstützt wird | 2 TB
 

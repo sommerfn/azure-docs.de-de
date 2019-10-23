@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights-Telemetriedatenmodell – Anforderungstelemetrie | Microsoft-Dokumentation
 description: Application Insights-Datenmodell für Anforderungstelemetrie
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900514"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677327"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
 
@@ -33,7 +29,7 @@ Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf d
 
 Max. Länge: 1024 Zeichen
 
-## <a name="id"></a>ID
+## <a name="id"></a>id
 
 Bezeichner einer Anforderungsaufrufinstanz. Wird für die Korrelation zwischen dem Anforderungselement und anderen Telemetrieelementen verwendet. Die ID muss global eindeutig sein. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](../../azure-monitor/app/correlation.md).
 

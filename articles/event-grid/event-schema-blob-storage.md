@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: fa638a00e0d35e1d48bc3205ce2a77e7faf5d22e
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 0ab81d3c1d4c68827cf1569bf4a22c3311fe355d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718378"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555824"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-Ereignisschema für Blob Storage
 
@@ -36,17 +36,14 @@ Die folgenden Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von B
 
 Die folgenden Ereignisse werden ausgelöst, wenn Sie einen hierarchischen Namespace für das Speicherkonto aktivieren und Clients REST-APIs von Azure Data Lake Storage Gen2 aufrufen.
 
-> [!NOTE]
-> Diese Ereignisse befinden sich in der Public Preview-Phase und stehen nur in den Regionen **USA, Westen 2** und **USA, Westen-Mitte** zur Verfügung.
-
- |Ereignisname|BESCHREIBUNG|
- |----------|-----------|
- |**Microsoft.Storage.BlobCreated** | Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients die Vorgänge `CreateFile` und `FlushWithClose` verwenden, die in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung stehen. |
- |**Microsoft.Storage.BlobDeleted** |Wird ausgelöst, wenn ein Blob gelöscht wird. <br>Dieses Ereignis wird insbesondere auch ausgelöst, wenn Clients den Vorgang `DeleteFile` aufrufen, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht. |
- |**Microsoft.Storage.BlobRenamed**|Wird ausgelöst, wenn ein Blob umbenannt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `RenameFile` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
- |**Microsoft.Storage.DirectoryCreated**|Wird ausgelöst, wenn ein Verzeichnis erstellt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `CreateDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
- |**Microsoft.Storage.DirectoryRenamed**|Wird ausgelöst, wenn ein Verzeichnis umbenannt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `RenameDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
- |**Microsoft.Storage.DirectoryDeleted**|Wird ausgelöst, wenn ein Verzeichnis gelöscht wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `DeleteDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+|Ereignisname|BESCHREIBUNG|
+|----------|-----------|
+|**Microsoft.Storage.BlobCreated** | Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients die Vorgänge `CreateFile` und `FlushWithClose` verwenden, die in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung stehen. |
+|**Microsoft.Storage.BlobDeleted** |Wird ausgelöst, wenn ein Blob gelöscht wird. <br>Dieses Ereignis wird insbesondere auch ausgelöst, wenn Clients den Vorgang `DeleteFile` aufrufen, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht. |
+|**Microsoft.Storage.BlobRenamed**|Wird ausgelöst, wenn ein Blob umbenannt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `RenameFile` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+|**Microsoft.Storage.DirectoryCreated**|Wird ausgelöst, wenn ein Verzeichnis erstellt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `CreateDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+|**Microsoft.Storage.DirectoryRenamed**|Wird ausgelöst, wenn ein Verzeichnis umbenannt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `RenameDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
+|**Microsoft.Storage.DirectoryDeleted**|Wird ausgelöst, wenn ein Verzeichnis gelöscht wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `DeleteDirectory` verwenden, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht.|
 
 > [!NOTE]
 > Wenn Sie sicherstellen möchten, dass das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst wird, nachdem ein Blockblob vollständig committet wurde, filtern Sie das Ereignis nach dem REST-API-Aufruf `FlushWithClose`. Bei diesem API-Aufruf wird das Ereignis **Microsoft.Storage.BlobCreated** erst ausgelöst, nachdem Daten vollständig in einem Blockblob committet wurden. Informationen zum Erstellen eines Filters finden Sie unter [Filtern von Ereignissen für Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
