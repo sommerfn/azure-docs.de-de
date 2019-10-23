@@ -1,23 +1,19 @@
 ---
 title: Überwachen einer Webanwendung mithilfe von mehrstufigen Webtests und Application Insights | Microsoft-Dokumentation
 description: Einrichten von mehrstufigen Webtests zur Überwachung Ihrer Webanwendungen mit Azure Application Insights
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 07/25/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881441"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678235"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
@@ -138,7 +134,7 @@ In allen Fällen sollten Sie in der Anwendung ein Konto erstellen, das nur Testz
 
 **SAML-Authentifizierung**
 
-|Eigenschaftenname| Beschreibung|
+|Eigenschaftenname| BESCHREIBUNG|
 |----|-----|
 | Benutzergruppen-URI | Der Benutzergruppen-URI des SAML-Tokens.  Dies ist der URI für Access Control Service (ACS), einschließlich ACS-Namespace und -Hostname. |
 | Zertifikatkennwort | Das Kennwort für das Clientzertifikat, das Zugriff auf den eingebetteten privaten Schlüssel gewährt. |

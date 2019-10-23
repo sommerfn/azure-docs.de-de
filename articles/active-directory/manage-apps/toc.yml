@@ -68,6 +68,8 @@
               href: end-user-experiences.md
     - name: Automatische Benutzerbereitstellung
       items:
+        - name: Planen einer automatischen Benutzerbereitstellung
+          href: plan-auto-user-provisioning.md
         - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
           href: use-scim-to-provision-users-and-groups.md
     - name: Anwendungsproxy für lokale Apps
