@@ -3,10 +3,6 @@
 - name: Architektur und Entwurf
   href: overview.md
   expanded: false
-  items: null
-- name: Architektur und Entwurf
-  href: overview.md
-  expanded: false
   items:
     - name: Gemeinsame Verantwortung in der Cloud
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure-Sicherheitsdienste
   href: services-technologies.md
-- name: Technische Übersichten
-  href: overviews.md
 - name: Bewährte Methoden
   href: best-practices-and-patterns.md
 - name: Ressourcen
   items:
     - name: Integrierte Sicherheitskontrollen
       href: security-controls.md
-    - name: MVP-Programm für die Azure-Sicherheit
-      href: mvp.md
     - name: Cybersecurity-Consulting
       href: cyber-services.md
     - name: Protokollieren eines Supporttickets für Sicherheitsereignisse

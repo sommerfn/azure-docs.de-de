@@ -98,13 +98,13 @@
     - name: Diagnostizieren und Behandeln von Problemen
       items:
         - name: Problembehandlung für Redis-Server
-          href: cache-how-to-troubleshoot-server.md
+          href: cache-troubleshoot-server.md
         - name: Problembehandlung für Redis-Clients
-          href: cache-how-to-troubleshoot-client.md
+          href: cache-troubleshoot-client.md
         - name: Problembehandlung bei Timeouts
-          href: cache-how-to-troubleshoot-timeouts.md
+          href: cache-troubleshoot-timeouts.md
         - name: Problembehandlung bei Datenverlusten
-          href: cache-how-to-troubleshoot-data-loss.md
+          href: cache-troubleshoot-data-loss.md
     - name: Skalieren
       items:
         - name: Aktualisieren auf eine andere Größe und einen anderen Tarif
