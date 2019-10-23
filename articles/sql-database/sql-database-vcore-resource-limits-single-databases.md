@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/29/2019
-ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/21/2019
+ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72032874"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693363"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das auf virtuellen Kernen (V-Kernen) basierende (vCore-basierte) Kaufmodell verwenden
 
@@ -46,8 +46,8 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Arbeitsspeicher (GB)|7|14|21|28|35|42|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
-|Maximale Datengröße (GB)|1024|1024|1024|1536|1536|1536|
-|Maximale Protokollgröße (GB)|307|307|307|461|461|461|
+|Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|
+|Maximale Protokollgröße (GB)|307|307|461|461|461|922|
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
@@ -69,8 +69,8 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Arbeitsspeicher (GB)|49|56|63|70|112|168|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|
-|Maximale Datengröße (GB)|1536|3072|3072|3072|4096|4096|
-|Maximale Protokollgröße (GB)|461|922|922|922|1229|1229|
+|Maximale Datengröße (GB)|3072|3072|3072|3072|4096|4096|
+|Maximale Protokollgröße (GB)|922|922|922|922|1229|1229|
 |Max. Datengröße von TempDB (GB)|224|256|288|320|384|384|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)
@@ -93,7 +93,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximale Protokollgröße (GB)|307|307|307|461|461|461|461|
+|Maximale Protokollgröße (GB)|307|307|461|461|461|922|922|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
@@ -196,8 +196,8 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschaupha
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|1|2|3|4|5|6|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale Datengröße (GB)|650|650|650|650|650|650|
-|Maximale Protokollgröße (GB)|195|195|195|195|195|195|
+|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
+|Maximale Protokollgröße (GB)|307|307|307|307|307|307|
 |Max. Datengröße von TempDB (GB)|32|64|96|128|160|192|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Max. Datenrate, IOPS (64 KB)|5\.000|10000|15000|20000|25000|30000|
@@ -220,8 +220,8 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschaupha
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|7|8|9,5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
-|Maximale Datengröße (GB)|650|650|650|650|1024|1024|
-|Maximale Protokollgröße (GB)|195|195|195|195|307|307|
+|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
+|Maximale Protokollgröße (GB)|307|307|307|307|307|307|
 |Max. Datengröße von TempDB (GB)|224|256|288|320|384|384|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Max. Datenrate, IOPS (64 KB)|35000|40.000|45000|50000|80.000|120000|
@@ -244,7 +244,7 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschaupha
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|1,571|3,142|4,713|6,284|8,655|11,026|13,397|
 |Maximale Datengröße (GB)|1024|1024|1536|1536|1536|3072|3072|
-|Maximale Protokollgröße (GB)|307|307|307|461|461|922|922|
+|Maximale Protokollgröße (GB)|307|307|461|461|461|922|922|
 |Max. Datengröße von TempDB (GB)|64|128|192|256|320|384|384|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|

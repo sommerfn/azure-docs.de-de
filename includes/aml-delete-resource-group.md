@@ -9,14 +9,14 @@ author: j-martens
 ms.author: jmartens
 ms.date: 12/04/2018
 ms.openlocfilehash: 46a7eb25152c8c7e9ac22c5b4df67bbf6416df4d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69894137"
 ---
 >[!IMPORTANT]
->Die von Ihnen erstellten Ressourcen können ggf. auch in anderen Tutorials und Anleitungen für den Azure Machine Learning-Dienst verwendet werden. 
+>Die von Ihnen erstellten Ressourcen können ggf. auch in anderen Tutorials und Anleitungen für Azure Machine Learning Service verwendet werden. 
 
 
 Wenn Sie die erstellten Ressourcen nicht mehr benötigen, löschen Sie sie, damit Ihnen keine Kosten entstehen:
