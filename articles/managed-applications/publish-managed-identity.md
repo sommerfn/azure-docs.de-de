@@ -1,6 +1,6 @@
 ---
 title: Verwaltete Azure-Anwendung mit verwalteter Identität
-description: Erfahren Sie, wie Sie eine verwaltete Anwendung mit einer verwalteten Identität konfigurieren. Mit der verwalteten Identität können verwaltete Anwendungen bereitgestellt werden, die mit vorhandenen Ressourcen verknüpft sind, kann verwalteten Anwendungen gewährt werden, Azure-Ressourcen außerhalb der verwalteten Ressourcengruppe zu verwalten, und eine operative Identität von verwalteten Anwendungen für Aktivitätsprotokoll und andere Dienste in Azure bereitgestellt werden.
+description: Konfigurieren Sie „Verwaltete Anwendung“ mit „Verwaltete Identität“ für das Verknüpfen mit vorhandenen Ressourcen, das Verwalten von Azure-Ressourcen und das Bereitstellen der Betriebsidentität für das Aktivitätsprotokoll.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: jobreen
 author: jjbfour
 ms.date: 05/13/2019
-ms.openlocfilehash: 9fb5f7a4a62c2d323059f7c0b879482e93feef2f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9e1f5072921104c749a0acef95b7da09f1cbb662
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434863"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330222"
 ---
 # <a name="azure-managed-application-with-managed-identity"></a>Verwaltete Azure-Anwendung mit verwalteter Identität
 

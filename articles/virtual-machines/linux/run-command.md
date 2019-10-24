@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: abf0f69ea70bae4102806214f0ef0fcfc25aad3a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6550b6e3f59ff7e6bac39dfc1abcf829256122d4
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477042"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376355"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Ausführen von Shellskripts in einer Linux-VM mit „Befehl ausführen“
 
@@ -41,6 +41,19 @@ Im Anschluss finden eine Liste der Einschränkungen, denen die Verwendung von �
 > [!NOTE]
 > Der Ausführungsbefehl muss über Port 443 eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit er richtig funktioniert. Wenn die Erweiterung keinen Zugriff auf diese Endpunkte hat, werden die Skripts möglicherweise erfolgreich ausgeführt, geben aber keine Ergebnisse zurück. Wenn Sie Datenverkehr auf dem virtuellen Computer blockieren, können Sie [Diensttags](../../virtual-network/security-overview.md#service-tags) verwenden, um Datenverkehr mit öffentlichen Azure-IP-Adressen über das `AzureCloud`-Tag zulassen.
 
+## <a name="available-commands"></a>Verfügbare Befehle
+
+Diese Tabelle enthält die Liste der für virtuelle Linux-Computer verfügbaren Befehle. Der Befehl **RunShellScript** kann für die Ausführung jedes beliebigen benutzerdefinierten Skripts verwendet werden. Bei Verwenden von Azure CLI oder PowerShell zum Ausführen eines Befehls muss der Wert, den Sie für den Parameter `--command-id` oder `-CommandId` angeben, einer der nachstehend aufgeführten Werte sein. Wenn Sie einen Wert angeben, der kein verfügbarer Befehl ist, erhalten Sie die entsprechende Fehlermeldung.
+
+```error
+The entity was not found in this Azure location
+```
+
+|**Name**|**Beschreibung**|
+|---|---|
+|**RunShellScript**|Führt ein Linux-Shellskript aus.|
+|**ifconfig**| Ruft die Konfiguration aller Netzwerkschnittstellen ab.|
+
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Im folgenden Beispiel wird der Befehl [az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) verwendet, um ein Shellskript auf einer Azure Linux-VM auszuführen.
@@ -67,14 +80,13 @@ Nachdem Sie den Befehl ausgewählt haben, klicken Sie auf **Ausführen**, um das
 
 ![Skriptausgabe von „Befehl ausführen“](./media/run-command/run-command-script-output.png)
 
-## <a name="available-commands"></a>Verfügbare Befehle
+### <a name="powershell"></a>PowerShell
 
-Diese Tabelle enthält die Liste der für virtuelle Linux-Computer verfügbaren Befehle. Der Befehl **RunShellScript** kann für die Ausführung jedes beliebigen benutzerdefinierten Skripts verwendet werden.
+Im folgenden Beispiel wird das Cmdlet [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) zum Ausführen eines PowerShell-Skripts in einem virtuellen Azure-Computer verwendet. Für das Cmdlet gilt, dass das im Parameter `-ScriptPath` referenzierte Skript am Ausführungsort des Cmdlets lokal sein muss.
 
-|**Name**|**Beschreibung**|
-|---|---|
-|**RunShellScript**|Führt ein Linux-Shellskript aus.|
-|**ifconfig**| Ruft die Konfiguration aller Netzwerkschnittstellen ab.|
+```powershell-interactive
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+```
 
 ## <a name="limiting-access-to-run-command"></a>Einschränken des Zugriffs auf „Befehl ausführen“
 

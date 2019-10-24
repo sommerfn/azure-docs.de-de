@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131093"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264491"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Verwenden der Azure Data Factory-Befehlsaktivität zum Ausführen von Azure Data Explorer-Steuerungsbefehlen
 
@@ -34,6 +34,8 @@ ms.locfileid: "71131093"
    ![Erstellen einer neuen Pipeline](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>Erstellen einer Lookup-Aktivität
+
+Mithilfe einer [Lookup-Aktivität](/azure/data-factory/control-flow-lookup-activity) kann ein Dataset aus einer von Azure Data Factory unterstützten Datenquelle abgerufen werden. Die Ausgabe der Lookup-Aktivität kann in einer ForEach- oder anderen Aktivität verwendet werden.
 
 1. Wählen Sie im Bereich **Aktivitäten** unter **Allgemein** die Aktivität **Lookup** aus. Ziehen Sie sie per Drag & Drop in den Hauptcanvas auf der rechten Seite.
  
@@ -103,7 +105,9 @@ ms.locfileid: "71131093"
 
 ## <a name="create-a-for-each-activity"></a>Erstellen einer For-Each-Aktivität 
 
-1. Als nächstes fügen Sie der Pipeline eine For-Each-Aktivität hinzu. Diese Aktivität verarbeitet die Daten, die von der Lookup-Aktivität zurückgegeben werden. 
+Diese [ForEach](/azure/data-factory/control-flow-for-each-activity)-Aktivität wird verwendet, um eine Sammlung zu durchlaufen und die angegebenen Aktivitäten in einer Schleife auszuführen. 
+
+1. Nun fügen Sie der Pipeline eine ForEach-Aktivität hinzu. Diese Aktivität verarbeitet die Daten, die von der Lookup-Aktivität zurückgegeben werden. 
     * Wählen Sie im Bereich **Aktivitäten** unter **Iteration & Bedingungen** die Aktivität **ForEach** aus, und ziehen Sie sie per Drag & Drop auf den Canvas.
     * Ziehen Sie eine Linie zwischen der Ausgabe der Lookup-Aktivität und der Eingabe der ForEach-Aktivität auf dem Canvas, um sie zu verbinden.
 

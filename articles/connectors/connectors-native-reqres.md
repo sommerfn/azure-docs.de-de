@@ -9,15 +9,15 @@ ms.author: estfan
 ms.reviewers: klam, LADocs
 manager: carmonm
 ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
-ms.topic: article
-ms.date: 09/06/2019
+ms.topic: conceptual
+ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122714"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264350"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Empfangen von und Antworten auf HTTPS-Aufrufe mittels Azure Logic Apps
 
@@ -27,7 +27,8 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierte
 * Auslösen eines Workflows, wenn ein externes Webhookereignis auftritt
 * Empfangen von und Antworten auf HTTPS-Aufrufe aus einer anderen Logik-App.
 
-Der Anforderungstrigger unterstützt *nur* HTTPS. Um stattdessen ausgehende HTTP- oder HTTPS-Aufrufe durchzuführen, verwenden Sie den integrierten [HTTP-Trigger oder die HTTP-Aktion](../connectors/connectors-native-http.md).
+> [!NOTE]
+> Der Anforderungstrigger unterstützt für eingehende Aufrufe *ausschließlich* Transport Layer Security (TLS) 1.2. Ausgehende Aufrufe unterstützen weiterhin TLS 1.0, 1.1 und 1.2. Wenn SSL-Handshakefehler auftreten, stellen Sie sicher, dass Sie TLS 1.2 verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

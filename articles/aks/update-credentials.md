@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614127"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432918"
 ---
 # <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für einen Dienstprinzipal in Azure Kubernetes Service (AKS)
 
@@ -29,9 +29,7 @@ Wenn Sie die Anmeldeinformationen für einen AKS-Cluster aktualisieren möchten,
 * Aktualisieren der Anmeldeinformationen für den vorhandenen, vom Cluster verwendeten Dienstprinzipal ODER
 * Erstellen eines Dienstprinzipals und Aktualisieren des Clusters zur Verwendung der neuen Anmeldeinformationen
 
-Wenn Sie einen Dienstprinzipal erstellen und dann den AKS-Cluster aktualisieren möchten, überspringen Sie die verbleibenden Schritte in diesem Abschnitt, und wechseln Sie zum Abschnitt [Erstellen eines Dienstprinzipals](#create-a-service-principal). Wenn Sie die Anmeldeinformationen für den vorhandenen, vom AKS-Cluster verwendeten Dienstprinzipal aktualisieren möchten, fahren Sie mit den Schritten in diesem Abschnitt fort.
-
-### <a name="get-the-service-principal-id"></a>Abrufen der Dienstprinzipal-ID
+### <a name="update-existing-service-principal-expiration"></a>Aktualisieren eines vorhandenen Dienstprinzipals vor Ablauf
 
 Um die Anmeldeinformationen für den vorhandenen Dienstprinzipal zu aktualisieren, rufen Sie über den Befehl [az aks show][az-aks-show] die Dienstprinzipal-ID für Ihren Cluster ab. Im folgenden Beispiel wird die ID für den Cluster *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen. Die Dienstprinzipal-ID wird als Variable mit dem Namen *SP_ID* zur Verwendung in einem zusätzlichen Befehl festgelegt.
 
@@ -40,17 +38,15 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 ```
 
-### <a name="update-the-service-principal-credentials"></a>Aktualisieren der Anmeldeinformationen für den Dienstprinzipal
-
 Mit einer Variablen, die die Dienstprinzipal-ID enthält, können Sie nun die Anmeldeinformationen über den Befehl [az ad sp credential reset][az-ad-sp-credential-reset] zurücksetzen. Im folgenden Beispiel wird über die Azure-Plattform ein neues sicheres Geheimnis für den Dienstprinzipal erstellt. Dieses neue sichere Geheimnis wird ebenfalls als Variable gespeichert.
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-Fahren Sie jetzt mit dem Abschnitt [Aktualisieren des AKS-Clusters mit den neuen Anmeldeinformationen](#update-aks-cluster-with-new-credentials) fort.
+Fahren Sie jetzt mit dem Abschnitt [Aktualisieren des AKS-Clusters mit den neuen Anmeldeinformationen](#update-aks-cluster-with-new-credentials) fort. Dieser Schritt ist notwendig, damit die Änderungen am Dienstprinzipal vom AKS-Cluster übernommen werden können.
 
-## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
+### <a name="create-a-new-service-principal"></a>Erstellen eines neuen Dienstprinzipals
 
 Wenn Sie im vorherigen Abschnitt die vorhandenen Anmeldeinformationen für den vorhandenen Dienstprinzipal aktualisiert haben, überspringen Sie diesen Schritt. Fahren Sie mit dem Abschnitt [Aktualisieren des AKS-Clusters mit den neuen Anmeldeinformationen](#update-aks-cluster-with-new-credentials) fort.
 
@@ -77,6 +73,8 @@ Definieren Sie nun Variablen für die Dienstprinzipal-ID und das Clientgeheimnis
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
+
+Fahren Sie jetzt mit dem Abschnitt [Aktualisieren des AKS-Clusters mit den neuen Anmeldeinformationen](#update-aks-cluster-with-new-credentials) fort. Dieser Schritt ist notwendig, damit die Änderungen am Dienstprinzipal vom AKS-Cluster übernommen werden können.
 
 ## <a name="update-aks-cluster-with-new-credentials"></a>Aktualisieren des AKS-Clusters mit den neuen Anmeldeinformationen
 

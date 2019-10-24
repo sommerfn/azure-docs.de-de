@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e82ce8f5c97aed7e2cb832d8e808ff84691f7c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61401201"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285488"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Nachrichten und Verbindungen in Azure SignalR Service
 
@@ -42,13 +42,15 @@ Im Azure-Portal werden weiterhin null Nachrichten angezeigt, bis mehr als 100 N
 
 ## <a name="how-connections-are-counted"></a>Zählung von Verbindungen
 
-Es gibt Serververbindungen und Clientverbindungen. Standardmäßig verfügt jeder Anwendungsserver pro Hub über fünf Verbindungen mit Azure SignalR Service, und jeder Client verfügt über eine Clientverbindung mit Azure SignalR Service.
+Es gibt Server- und Clientverbindungen mit Azure SignalR Service. Standardmäßig beginnt jeder Anwendungsserver mit fünf Anfangsverbindungen pro Hub, und jeder Client hat eine Clientverbindung.
 
 Die im Azure-Portal angezeigte Verbindungsanzahl umfasst sowohl Server- als auch Clientverbindungen.
 
 Ein Beispiel: Angenommen, Sie verfügen über zwei Anwendungsserver und definieren fünf Hubs im Code. Dadurch ergeben sich 50 Serververbindungen: 2 App-Server × 5 Hubs × 5 Verbindungen pro Hub
 
-Bei ASP.NET SignalR werden Serververbindungen anders berechnet. In diesem Fall ist zusätzlich zu den definierten Hubs ein einzelner Standardhub enthalten. Jeder Anwendungsserver benötigt standardmäßig fünf weitere Serververbindungen. Die Verbindungsanzahl für den Standardhub bleibt mit der Anzahl der anderen Hubs konsistent.
+Bei ASP.NET SignalR werden Serververbindungen anders berechnet. In diesem Fall ist zusätzlich zu den definierten Hubs ein einzelner Standardhub enthalten. Jeder Anwendungsserver benötigt standardmäßig fünf weitere anfängliche Serververbindungen. Die Anzahl anfänglicher Verbindungen für den Standardhub bleibt mit der der anderen Hubs konsistent.
+
+Während der Lebensdauer des Anwendungsservers halten Dienst und Anwendungsserver den Synchronisierungsstatus der Verbindung aufrecht und passen Serververbindungen so an, dass Leistung und Stabilität des Diensts sich verbessern. So kann es vorkommen, dass sich die Anzahl der Serververbindungen von Zeit zu Zeit ändert.
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Berücksichtigung von ein-/ausgehendem Datenverkehr
 

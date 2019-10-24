@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 9e0afd26b46fc6249b697c38983b9c219c42b1a0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 34b26dd1b9b8990da9e84c8d7cfc993d8bbe85a7
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845476"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72376305"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 
@@ -137,7 +137,7 @@ Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logische
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>Abrufen der ID des logischen Switches für L2VPN
 
 1. Melden Sie sich beim [NSX-T-Manager](https://nsx-t-manager-ip-address) an.
-2. Wählen Sie **Networking** > **Switching** > **Switches** > **<\Logischer Switch>\ ** > **Overview** aus (Netzwerk > Switching > Switches > **<\Logischer Switch>\ ** > Übersicht) aus.
+2. Wählen Sie **Networking** > **Switching** > **Switches** > **<\Logical switch\> ** > **Overview** aus (Netzwerk > Switching > Switches > **<\Logischer Switch>\ ** > Übersicht) aus.
 3. Notieren Sie sich die UUID des logischen Switches für die Erweiterung. Diese wird für das Konfigurieren des L2VPN benötigt.
 
     ![Abrufen der Ausgabe des logischen Routers](media/l2vpn-fetch-switch01.png)

@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: be59f5fd34c52397b54146a8aeaf51f4d594452f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8ea6a365b0c7bc6c254c1313445bb54231e161ae
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383350"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285646"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -122,7 +122,7 @@ Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus 
 
 Eine vorhandene selbstgehostete IR können Sie über die Befehlszeile einrichten oder verwalten. Dies gilt speziell für das Automatisieren der Installation und Registrierung von selbstgehosteten IR-Knoten. 
 
-**Dmgcmd.exe** ist in der selbstgehosteten Installation enthalten, die sich normalerweise im Ordner „C:\Programme\Microsoft Integration Runtime\3.0\Shared\“ befindet. Sie unterstützt verschiedene Parameter und kann über die Eingabeaufforderung mithilfe von Batchskripts für die Automatisierung aufgerufen werden. 
+**Dmgcmd.exe** ist in der selbstgehosteten Installation enthalten, die sich normalerweise in diesem Ordner befindet: C:\Program Files\Microsoft Integration Runtime\3.0\Shared\. Sie unterstützt verschiedene Parameter und kann über die Eingabeaufforderung mithilfe von Batchskripts für die Automatisierung aufgerufen werden. 
 
 *Verwendung:* 
 
@@ -267,19 +267,15 @@ Zwei Firewalls müssen berücksichtigt werden: Die *Unternehmensfirewall*, die a
 
 Auf Ebene der *Unternehmensfirewall* müssen Sie die folgenden Domänen und ausgehenden Ports konfigurieren:
 
-Domänennamen | Ports | BESCHREIBUNG
------------- | ----- | ------------
-*.servicebus.windows.net | 443 | Wird für die Kommunikation mit dem Back-End-Datenverschiebungsdienst verwendet
-*.core.windows.net | 443 | Wird für das gestaffelte Kopieren über einen Azure-Blobspeicher (sofern konfiguriert) verwendet
-*.frontend.clouddatahub.net | 443 | Wird für die Kommunikation mit dem Back-End-Datenverschiebungsdienst verwendet
-download.microsoft.com | 443 | Wird zum Herunterladen der Aktualisierungen verwendet
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
+
 
 Auf Ebene der *Windows-Firewall* (Computerebene) sind diese ausgehenden Ports normalerweise aktiviert. Falls nicht, können Sie die Domänen und Ports auf dem Computer mit der selbstgehosteten Integration Runtime entsprechend konfigurieren.
 
 > [!NOTE]
-> Basierend auf Ihrer Quelle und Ihren Senken müssen Sie unter Umständen der Whitelist Ihrer Unternehmens- oder Windows-Firewall zusätzliche Domänen und ausgehende Ports hinzufügen.
+> Basierend auf Ihren Quellen und Senken müssen Sie möglicherweise zusätzliche Domänen und ausgehende Ports in Ihrer Unternehmens- oder Windows-Firewall zulassen.
 >
-> Für einige Clouddatenbanken (z.B. Azure SQL-Datenbank und Azure Data Lake) müssen Sie die IP-Adressen der Computer mit der selbstgehosteten Integration Runtime für die Firewallkonfiguration ggf. auf eine Whitelist setzen.
+> Für einige Clouddatenbanken (z. B. Azure SQL-Datenbank und Azure Data Lake) müssen Sie ggf. IP-Adressen der Computer mit der selbstgehosteten Integration Runtime für die Firewallkonfiguration zulassen.
 
 ### <a name="copy-data-from-a-source-to-a-sink"></a>Kopieren von Daten von einer Quelle in eine Senke
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Computer mit der selbstgehosteten Integration Runtime und den Datenspeicher selbst richtig aktiviert sind. Bei Aktivierung dieser Regeln kann die selbstgehostete Integrationslaufzeit erfolgreich eine Verbindung mit der Quelle und der Senke herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
@@ -360,7 +356,7 @@ Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswähle
 > [!IMPORTANT]
 > Vergessen Sie nicht, beide Dateien – „diahost.exe.config“ und „diawp.exe.config“ – zu aktualisieren.
 
-Sie müssen auch sicherstellen, dass Microsoft Azure in der Whitelist Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Microsoft Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen.
+Sie müssen auch sicherstellen, dass Microsoft Azure in der Zulassungsliste Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Microsoft Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen.
 
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
 Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers. Hierdurch wird verhindert, dass die selbstgehostete Integration Runtime eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind, überprüfen Sie den vorherigen Abschnitt.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ca5a98fb4fd0fd07cd0e2557840a2e0aed6901e5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931271"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285612"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -110,7 +110,7 @@ Der Befehlskanal ermöglicht Kommunikation zwischen Datenverschiebungsdiensten i
 ### <a name="on-premises-data-store-credentials"></a>Anmeldeinformationen für lokale Datenspeicher
 Die Anmeldeinformationen können in Data Factory gespeichert oder während der Laufzeit von Azure Key Vault von [Data Factory referenziert](store-credentials-in-key-vault.md) werden. Beim Speichern von Anmeldeinformationen innerhalb von Data Factory werden diese immer verschlüsselt für die selbstgehostete Integration Runtime gespeichert. 
  
-- **Lokales Speichern von Anmeldeinformationen.** Wenn Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** mit den Verbindungszeichenfolgen und Anmeldeinformationen direkt inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und für die selbstgehostete Integration Runtime gespeichert.  In diesem Fall verlaufen die Anmeldeinformationen über den extrem sicheren Azure-Back-End-Dienst zum selbstgehosteten Integrationscomputer, wo sie schließlich verschlüsselt und gespeichert werden. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen.
+- **Lokales Speichern von Anmeldeinformationen.** Wenn Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** mit den Verbindungszeichenfolgen und Anmeldeinformationen direkt inline im JSON verwenden, wird der verknüpfte Dienst verschlüsselt und für die selbstgehostete Integration Runtime gespeichert.  In diesem Fall werden die Anmeldeinformationen durch den überaus sicheren Azure-Back-End-Dienst zum selbstgehosteten Integrationscomputer übertragen, wo sie schließlich verschlüsselt und gespeichert werden. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen.
 
 - **Speichern von Anmeldeinformationen in Azure Key Vault.** Eine weitere Möglichkeit ist das Speichern der Anmeldeinformationen für den Datenspeicher in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Die Anmeldeinformationen werden dann von Data Factory beim Ausführen einer Aktivität abgerufen. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).
 
@@ -152,24 +152,17 @@ Die folgenden Abbildungen veranschaulichen die Verwendung der selbstgehosteten I
 
 ![IPSec-VPN mit Gateway](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-whitelisting-ip-address-of-gateway"></a> Firewallkonfigurationen und Whitelist-IP-Adressen
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen
 
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk  
 In einem Unternehmen wird eine Unternehmensfirewall auf dem zentralen Router der Organisation ausgeführt. Die Windows-Firewall wird als Daemon auf dem lokalen Computer ausgeführt, auf dem die selbstgehostete Integration Runtime installiert ist. 
 
 Die folgende Tabelle enthält die Anforderungen für ausgehende Ports und die Domänenanforderungen für die Unternehmensfirewalls:
 
-| Domänennamen                  | Ausgehende Ports | BESCHREIBUNG                              |
-| ----------------------------- | -------------- | ---------------------------------------- |
-| `*.servicebus.windows.net`    | 443            | Erforderlich für die selbstgehostete Integration Runtime, um Verbindungen mit Datenverschiebungsdiensten in Data Factory herzustellen. |
-| `*.frontend.clouddatahub.net` | 443            | Erforderlich für die selbstgehostete Integration Runtime, um Verbindungen mit dem Azure Data Factory-Dienst herzustellen. |
-| `download.microsoft.com`    | 443            | Erforderlich für die selbstgehostete Integration Runtime zum Herunterladen der Aktualisierungen. Wenn Sie die automatische Aktualisierung deaktiviert haben, können Sie dies überspringen. |
-| `*.core.windows.net`          | 443            | Wird von der selbstgehosteten Integration Runtime verwendet, um Verbindungen mit dem Azure Storage-Konto herzustellen, wenn Sie das Feature [gestaffeltes Kopieren](copy-activity-performance.md#staged-copy) verwenden. |
-| `*.database.windows.net`      | 1433           | (Optional:) Erforderlich, wenn Sie von bzw. nach Azure SQL-Datenbank oder Azure SQL Data Warehouse kopieren. Verwenden Sie das Feature für gestaffeltes Kopieren, um Daten nach Azure SQL-Datenbank oder Azure SQL Data Warehouse zu kopieren, ohne den Port 1433 zu öffnen. |
-| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | (Optional:) Erforderlich, wenn Sie von bzw. nach Azure Data Lake Store kopieren. |
+[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Möglicherweise müssen Sie Ports oder Whitelistdomänen auf Ebene der Unternehmensfirewall verwalten, wie dies für die jeweiligen Datenquellen erforderlich ist. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure SQL Data Warehouse und Azure Data Lake Store als Beispiele verwendet.   
+> Möglicherweise müssen Sie Ports verwalten oder eine Zulassungsliste für Domänen auf Ebene der Unternehmensfirewall entsprechend den Anforderungen der jeweiligen Datenquellen einrichten. In dieser Tabelle werden nur Azure SQL-Datenbank, Azure SQL Data Warehouse und Azure Data Lake Store als Beispiele verwendet.   
 
 Die folgende Tabelle enthält die Anforderungen für eingehende Ports für die Windows-Firewall:
 
@@ -179,10 +172,10 @@ Die folgende Tabelle enthält die Anforderungen für eingehende Ports für die W
 
 ![Gatewayportanforderungen](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>IP-Konfigurationen und -Whitelists in Datenspeichern
-Einige Datenspeicher in der Cloud erfordern auch, dass die IP-Adresse des Computers, über den auf sie zugegriffen wird, in der Whitelist enthalten ist. Stellen Sie sicher, dass die IP-Adresse des Computers der selbstgehosteten Integration Runtime in der Firewall ordnungsgemäß in der Whitelist enthalten bzw. ordnungsgemäß konfiguriert ist.
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>Einrichten von Firewallkonfigurationen und Zulassungsliste in Datenspeichern
+Einige Datenspeicher in der Cloud erfordern auch, dass die IP-Adresse des Computers, über den auf den Speicher zugegriffen wird, zugelassen wird. Stellen Sie sicher, dass die IP-Adresse des Computers der selbstgehosteten Integration Runtime in der Firewall ordnungsgemäß zugelassen bzw. konfiguriert ist.
 
-Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers der selbstgehosteten Internet Runtime in der Whitelist enthalten ist. Einige dieser Datenspeicher erfordern standardmäßig möglicherweise keine Whitelist. 
+Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers der selbstgehosteten Internet Runtime zugelassen wird. Einige dieser Datenspeicher erfordern standardmäßig möglicherweise keine Zulassungsliste. 
 
 - [Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -198,7 +191,7 @@ Ja. Ausführlichere Informationen finden Sie [hier](https://azure.microsoft.com/
 
 **Welche Portanforderungen sind erforderlich, damit die selbstgehostete Integration Runtime funktioniert?**
 
-Die selbstgehostete Integration Runtime erstellt HTTP-basierte Verbindungen für den Zugriff auf das Internet. Der ausgehende Ports 443 muss geöffnet sein, damit die selbstgehostete Integration Runtime diese Verbindung herstellen kann. Öffnen Sie den eingehenden Port 8060 nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung zur Anmeldeinformationsverwaltung. Wenn Azure SQL-Datenbank oder Azure SQL Data Warehouse als Quelle oder Ziel verwendet wird, müssen Sie auch den Port 1433 öffnen. Weitere Informationen finden Sie im Abschnitt [Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung](#firewall-configurations-and-whitelisting-ip-address-of-gateway). 
+Die selbstgehostete Integration Runtime erstellt HTTP-basierte Verbindungen für den Zugriff auf das Internet. Der ausgehende Ports 443 muss geöffnet sein, damit die selbstgehostete Integration Runtime diese Verbindung herstellen kann. Öffnen Sie den eingehenden Port 8060 nur auf Computerebene (nicht auf Ebene der Unternehmensfirewall) für die Anwendung zur Anmeldeinformationsverwaltung. Wenn Azure SQL-Datenbank oder Azure SQL Data Warehouse als Quelle oder Ziel verwendet wird, müssen Sie auch den Port 1433 öffnen. Weitere Informationen finden Sie im Abschnitt [Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

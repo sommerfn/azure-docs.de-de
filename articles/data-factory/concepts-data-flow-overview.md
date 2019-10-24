@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030149"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387996"
 ---
-# <a name="what-are-mapping-data-flows"></a>Was sind Mapping Data Flows?
+# <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
 Mapping Data Flows sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines mit horizontal skalierten Spark-Clustern ausgeführt. Datenflussaktivitäten können über vorhandene Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory operationalisiert werden.
 
@@ -34,7 +34,7 @@ Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diag
 
 ![Canvas](media/data-flow/canvas1.png "Canvas")
 
-### <a name="graph"></a>Diagramm
+### <a name="graph"></a>Graph
 
 Das Diagramm zeigt den Transformationsdatenstrom. Es zeigt die Herkunft der Quelldaten beim Fließen in eine oder mehrere Senken. Zum Hinzufügen einer neuen Quelle klicken Sie auf das Feld „Quelle hinzufügen“. Wenn Sie eine neue Transformation hinzufügen möchten, klicken Sie auf das Pluszeichen unten rechts in einer vorhandenen Transformation.
 
@@ -52,11 +52,11 @@ Die erste Registerkarte im Konfigurationsbereich jeder Transformation enthält d
 
 ![Registerkarte „Quelleinstellungen“](media/data-flow/source1.png "Registerkarte „Quelleinstellungen“")
 
-#### <a name="optimize"></a>Optimieren
+#### <a name="optimize"></a>Optimierung
 
 Die Registerkarte _Optimieren_ enthält Einstellungen zum Konfigurieren von Partitionierungsschemas.
 
-![Optimieren](media/data-flow/optimize1.png "Optimieren")
+![Optimieren](media/data-flow/optimize1.png "Optimierung")
 
 Die Standardeinstellung ist „Aktuelle Partitionierung verwenden“, durch die Azure Data Factory angewiesen wird, das native Partitionierungsschema der in Spark ausgeführten Datenflüsse zu verwenden. Diese Einstellung wird für die meisten Szenarien empfohlen.
 

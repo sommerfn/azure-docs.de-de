@@ -1,6 +1,6 @@
 ---
-title: Erstellen von ereignisbasierten Aufgaben und Workflows in Azure Logic Apps
-description: Auslösen, Anhalten und Fortsetzen automatisierter Aufgaben, Prozesse und Workflows basierend auf Ereignissen, die an einem Endpunkt auftreten, mithilfe von Azure Logic Apps
+title: Warten und Reagieren auf Ereignisse – Azure Logic Apps
+description: Automatisieren Sie mithilfe von Azure Logic Apps Workflows, die basierend auf Ereignissen an einem Dienstendpunkt ausgelöst, angehalten und fortgesetzt werden.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,16 +8,16 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: c2658df185d4836210c496d2c46a00a3541257a2
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 36b0ea7233b449584bd83450b45276da5baa135b
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541337"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264343"
 ---
-# <a name="automate-event-based-tasks-and-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatisieren ereignisbasierter Aufgaben und Workflows mithilfe von HTTP-Webhooks in Azure Logic Apps
+# <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Erstellen und Ausführen automatisierter ereignisbasierter Workflows mithilfe von HTTP-Webhooks in Azure Logic Apps
 
 Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Webhookconnector können Sie Workflows automatisieren, die auf der Grundlage bestimmter Ereignisse warten und ausgeführt werden, die an einem HTTP- oder HTTPS-Endpunkt auftreten, indem Sie Logik-Apps erstellen. So können Sie beispielsweise eine Logik-App erstellen, die einen Dienstendpunkt überwacht, indem sie auf ein bestimmtes Ereignis wartet, bevor sie den Workflow auslöst und die angegebenen Aktionen ausführt, anstatt diesen Endpunkt regelmäßig zu überprüfen oder *abzufragen*.
 
@@ -37,6 +37,9 @@ Eine Webhookaktion ist ebenfalls ereignisbasiert und *abonniert* den angegebenen
 * Bevor Ein Timeout für die Logik-App auftritt
 
 Die Aktion zum [**Senden einer Genehmigungs-E-Mail**](connectors-create-api-office365-outlook.md) von Office 365 Outlook ist ein Beispiel für eine Webhookaktion, die diesem Muster folgt. Sie können dieses Muster mithilfe der Webhookaktion auf jeden Dienst erweitern.
+
+> [!NOTE]
+> Azure Logic Apps erzwingt Transport Layer Security (TLS) 1.2, wenn der Rückruf auf den HTTP-Webhook-Trigger oder eine Aktion empfangen wird. Wenn SSL-Handshakefehler auftreten, stellen Sie sicher, dass Sie TLS 1.2 verwenden.
 
 Weitere Informationen finden Sie in den folgenden Themen:
 
@@ -58,7 +61,7 @@ Weitere Informationen finden Sie in den folgenden Themen:
 
 Dieser integrierte Trigger registriert eine Rückruf-URL beim angegebenen Dienst und wartet darauf, dass dieser Dienst eine HTTP POST-Anforderung an diese URL sendet. Wenn dieses Ereignis eintritt, wird der Trigger ausgelöst und führt sofort die Logik-App aus.
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre leere Logik-App im Logik-App-Designer.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre leere Logik-App im Logik-App-Designer.
 
 1. Geben Sie im Suchfeld des Designers „http webhook“ als Filter ein. Wählen Sie aus der Liste **Trigger** den Trigger **HTTP-Webhook** aus.
 
@@ -86,7 +89,7 @@ Dieser integrierte Trigger registriert eine Rückruf-URL beim angegebenen Dienst
 
 Diese integrierte Aktion registriert eine Rückruf-URL beim angegebenen Dienst, hält den Workflow der Logik-App an und wartet darauf, dass dieser Dienst eine HTTP POST-Anforderung an diese URL sendet. Wenn dieses Ereignis eintritt, wird die Aktion fortgesetzt und die Logik-App ausgeführt.
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre Logik-App im Logik-App-Designer.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre Logik-App im Logik-App-Designer.
 
    Dieses Beispiel verwendet den HTTP-Webhooktrigger als ersten Schritt.
 
@@ -122,9 +125,9 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Webhooktrig
 
 | Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
-| headers | object | Die Header aus der Anforderung. |
-| body | object | JSON-Objekt | Das Objekt mit der Inhalt des Texts aus der Anforderung. |
-| status code | int | Der Statuscode aus der Anforderung. |
+| headers | object | Die Header aus der Anforderung |
+| body | object | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |
+| status code | int | Der Statuscode aus der Anforderung |
 |||
 
 | Statuscode | BESCHREIBUNG |

@@ -1,22 +1,19 @@
 ---
 title: PowerShell-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln können.
-services: functions
-documentationcenter: na
-author: tylerleonhardt
-manager: jeconnoc
+author: eamonoreilly
+manager: gwallace
 ms.service: azure-functions
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: tyleonha
-ms.reviewer: glenga
-ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: glenga
+ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029018"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515666"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -403,13 +400,8 @@ Die aktuell von der Runtime verwendete Version sehen Sie in der Ausgabe `$PSVers
 
 ## <a name="dependency-management"></a>Verwaltung von Abhängigkeiten
 
-PowerShell-Funktionen unterstützen das Herunterladen und Verwalten von Modulen aus dem [PowerShell-Katalog](https://www.powershellgallery.com) durch den Dienst. Wenn Sie die Datei „host.json“ ändern und die Eigenschaft „managedDependency“ auf „true“ festlegen, wird die Datei „requirements.psd1“ verarbeitet. Die angegebenen Module werden automatisch heruntergeladen und für die Funktion verfügbar gemacht. 
+Azure Functions ermöglicht Ihnen das Nutzen des [PowerShell-Katalogs](https://www.powershellgallery.com) zum Verwalten von Abhängigkeiten. Wenn die Abhängigkeitsverwaltung aktiviert ist, wird die Datei „requirements.psd1“ verwendet, um die benötigten Module automatisch herunterzuladen. Sie aktivieren dieses Verhalten, indem Sie im Stammverzeichnis der Datei [host.json](functions-host-json.md) die `managedDependency`-Eigenschaft auf `true` festlegen (siehe folgendes Beispiel):
 
-Die maximal unterstützte Anzahl von Modulen beträgt derzeit 10. Die unterstützte Syntax ist MajorNumber.* oder eine exakte Modulversion, wie unten gezeigt. Das Azure Az-Modul ist standardmäßig enthalten, wenn eine neue PowerShell-Funktions-App erstellt wird.
-
-Der Sprach-Worker übernimmt alle aktualisierten Module bei einem Neustart.
-
-host.json
 ```json
 {
   "managedDependency": {
@@ -418,7 +410,7 @@ host.json
 }
 ```
 
-requirements.psd1
+Wenn Sie ein neues PowerShell Functions-Projekt erstellen, ist die Abhängigkeitsverwaltung standardmäßig aktiviert, wobei das Azure[`Az`-Modul](/powershell/azure/new-azureps-module-az) enthalten ist. Die maximal unterstützte Anzahl von Modulen beträgt derzeit 10. Die unterstützte Syntax ist _`MajorNumber`_ `.*` oder eine exakte Modulversion, wie im folgenden Beispiel von „requirements.psd1“ gezeigt:
 
 ```powershell
 @{
@@ -427,32 +419,34 @@ requirements.psd1
 }
 ```
 
-Mit den folgenden Einstellungen können Sie anpassen, wie die verwalteten Abhängigkeiten heruntergeladen und installiert werden. Das App-Upgrade wird in MDMaxBackgroundUpgradePeriod gestartet, und der Upgradevorgang wird innerhalb von ungefähr MDNewSnapshotCheckPeriod durchgeführt.
+Wenn Sie die Datei „requirements.psd1“ aktualisieren, werden aktualisierte Module nach einem Neustart installiert.
+
+> [!NOTE]
+> Bei verwalteten Abhängigkeiten ist zum Herunterladen von Modulen Zugriff auf www.powershellgallery.com erforderlich. Achten Sie bei lokaler Ausführung darauf, dass die Laufzeit auf diese URL zugreifen kann, indem Sie alle erforderlichen Firewallregeln hinzufügen. 
+
+Die folgenden Anwendungseinstellungen können verwendet werden, um zu ändern, wie die verwalteten Abhängigkeiten heruntergeladen und installiert werden. Ihr App-Upgrade beginnt innerhalb von `MDMaxBackgroundUpgradePeriod`, und der Upgrade-Prozess wird innerhalb von `MDNewSnapshotCheckPeriod` abgeschlossen.
 
 | Funktions-App-Einstellung              | Standardwert             | BESCHREIBUNG                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| MDMaxBackgroundUpgradePeriod      | „7.00:00:00“ (7 Tage)     | Jeder PowerShell-Worker initiiert die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Workerprozesses und danach alle MDMaxBackgroundUpgradePeriod. Wenn neue Modulversionen im PowerShell-Katalog verfügbar sind, werden sie im Dateisystem installiert, das für PowerShell-Worker verfügbar ist. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch die Nutzung der App-Ressourcen (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird die Nutzung der App-Ressourcen verringert, aber auch die Bereitstellung neuer Modulversionen an Ihre App verzögert.      | 
-| MDNewSnapshotCheckPeriod          | „01:00:00“ (1 Stunde)       | Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Worker neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich möglicherweise auf die Verfügbarkeit Ihrer App aus, da aktuelle Funktionsaufrufe unterbrochen werden. Bis zum Abschluss des Neustarts aller PowerShell-Worker können Funktionsaufrufe entweder die alte oder die neue Modulversion verwenden. Der Neustart aller PowerShell-Worker erfolgt innerhalb von MDNewSnapshotCheckPeriod. Wenn Sie diesen Wert erhöhen, wird die Häufigkeit von Unterbrechungen verringert, aber es kann auch zu einer Erhöhung des Zeitraums kommen, in dem für Funktionsaufrufe nicht bestimmt werden kann, ob die alte oder die neue Modulversion verwendet wird. |
-| MDMinBackgroundUpgradePeriod      | „1.00:00:00“ (1 Tag)     | Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker dies bereits innerhalb der letzten MDMinBackgroundUpgradePeriod initiiert hat. |
-
-> [!NOTE]
-> Bei verwalteten Abhängigkeiten ist für das Herunterladen von Modulen ein Zugriff auf www.powershellgallery.com erforderlich. Sie müssen sicherstellen, dass die Funktionsruntime auf diese URL zugreifen kann, indem Sie alle erforderlichen Firewallregeln hinzufügen.
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 Tage)     | Jeder PowerShell-Workerprozess löst die Überprüfung auf Modulupgrades im PowerShell-Katalog beim Start des Prozesses und alle `MDMaxBackgroundUpgradePeriod` danach aus. Wenn im PowerShell-Katalog eine neue Modulversion verfügbar ist, wird sie im Dateisystem installiert und PowerShell-Workern zur Verfügung gestellt. Wenn Sie diesen Wert verringern, erhält Ihre Funktions-App schneller eine neuere Modulversion. Dies steigert aber auch den App-Ressourceneinsatz (Netzwerk-E/A, CPU, Speicher). Wenn Sie diesen Wert erhöhen, wird der App-Ressourceneinsatz verringert, aber auch die Bereitstellung neuer Modulversionen für Ihre App verzögert. | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 Stunde)       | Nach der Installation neuer Modulversionen im Dateisystem müssen alle PowerShell-Workerprozesse neu gestartet werden. Das Neustarten von PowerShell-Workern wirkt sich auf die Verfügbarkeit der App aus, da dadurch die Ausführung der aktuellen Funktion unterbrochen werden kann. Bis zum Abschluss des Neustarts aller PowerShell-Workerprozesse können Funktionsaufrufe entweder die alte oder neue Modulversion verwenden. Alle PowerShell-Worker werden innerhalb von `MDNewSnapshotCheckPeriod` vollständig neu gestartet. Wenn Sie diesen Wert erhöhen, wird die Häufigkeit von Unterbrechungen verringert, aber es kann auch zu einer Verlängerung des Zeitraums kommen, in dem für Funktionsaufrufe nicht bestimmt werden kann, ob die alte oder die neue Modulversion verwendet wird. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 Tag)     | Um übermäßige Modulupgrades bei häufigen Workerneustarts zu vermeiden, wird die Überprüfung auf Modulupgrades nicht durchgeführt, wenn ein Worker diese Prüfung bereits innerhalb der letzten `MDMinBackgroundUpgradePeriod` ausgelöst hat. |
 
 Wenn Sie Ihre eigenen benutzerdefinierten Module verwenden möchten, müssen Sie ein wenig anders vorgehen als gewohnt.
 
-Wenn Sie das Modul auf dem lokalen Computer installieren, wird es in einem der global verfügbaren Ordner in Ihrem `$env:PSModulePath` installiert. Da die Funktion in Azure ausgeführt wird, haben Sie keinen Zugriff auf die Module, die auf Ihrem Computer installiert sind. Aus diesem Grund muss sich der `$env:PSModulePath` für eine PowerShell-Funktions-App vom `$env:PSModulePath` eines regulären PowerShell-Skripts unterscheiden.
+Auf Ihrem lokalen Computer wird das Modul in einem der global verfügbaren Ordner in Ihrem `$env:PSModulePath` installiert. Bei Ausführung in Azure haben Sie keinen Zugriff auf die auf Ihrem Computer installierten Module. Aus diesem Grund muss sich der `$env:PSModulePath` für eine PowerShell-Funktions-App vom `$env:PSModulePath` eines regulären PowerShell-Skripts unterscheiden.
 
 In Functions enthält `PSModulePath` zwei Pfade:
 
-* Einen Ordner `Modules` im Stammverzeichnis der Funktions-App
-* Einen Pfad zu einem Ordner `Modules` im PowerShell-Sprachworker
+* Den Ordner `Modules` im Stammverzeichnis Ihrer Funktions-App
+* Einen Pfad zum Ordner `Modules`, der vom PowerShell-Sprachworker gesteuert wird
 
 ### <a name="function-app-level-modules-folder"></a>Ordner `Modules` auf Ebene der Funktions-App
 
 Um benutzerdefinierte Module zu verwenden, können Sie die Module, von denen Ihre Funktionen abhängen, im Ordner `Modules` speichern. Module in diesem Ordner stehen in der Functions-Runtime automatisch zur Verfügung. Jede Funktion in der Funktions-App kann diese Module verwenden. 
 
 > [!NOTE]
-> In der Datei „requirements.psd1“ angegebene Module werden automatisch heruntergeladen und in den Pfad eingeschlossen, sodass Sie sie nicht in den Ordner „modules“ einschließen müssen. Diese werden bei Ausführung in der Cloud lokal im Ordner „$env:LOCALAPPDATA/AzureFunctions“ und im Ordner „/data/ManagedDependencies“ gespeichert.
+> In der Datei „requirements.psd1“ angegebene Module werden automatisch heruntergeladen und in den Pfad eingeschlossen, sodass Sie sie nicht in den Ordner „modules“ einschließen müssen. Diese werden bei Ausführung in der Cloud lokal im Ordner `$env:LOCALAPPDATA/AzureFunctions` und im Ordner `/data/ManagedDependencies` gespeichert.
 
 Um dieses benutzerdefinierte Modulfeature nutzen zu können, erstellen Sie den Ordner `Modules` im Stammverzeichnis der Funktions-App. Kopieren Sie die Module, die Sie in Ihren Funktionen verwenden möchten, an diesen Speicherort.
 
@@ -461,7 +455,7 @@ mkdir ./Modules
 Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Mit dem Ordner „Modules“ sollte Ihre Funktions-App folgende Ordnerstruktur aufweisen:
+Mit dem Ordner `Modules` sollte Ihre Funktions-App folgende Ordnerstruktur aufweisen:
 
 ```
 PSFunctionApp
@@ -488,7 +482,7 @@ Die aktuelle Liste der Module lautet wie folgt:
 * [Microsoft.PowerShell.Archive:](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive) Modul für die Arbeit mit Archiven, z. B. `.zip`, `.nupkg` und anderen
 * **ThreadJob**: Eine threadbasierte Implementierung der PowerShell-Auftrags APIs
 
-Von Functions wird die neueste Version dieser Module verwendet. Um eine bestimmte Version dieser Module zu verwenden, können Sie die betreffende Version in den Ordner `Modules` der Funktions-App einfügen.
+Von Azure Functions wird standardmäßig die neueste Version dieser Module verwendet. Um eine bestimmte Modulversion zu verwenden, legen Sie diese bestimmte Version im Ordner `Modules` Ihrer Funktionsanwendung ab.
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 

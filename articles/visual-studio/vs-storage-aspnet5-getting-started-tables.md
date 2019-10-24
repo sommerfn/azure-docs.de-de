@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Table Storage und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
+title: Erste Schritte mit Tabellenspeicher und Visual Studio (ASP.NET Core)
 description: Machen Sie sich mit den ersten Schritten mit Azure Table Storage in einem ASP.NET Core-Projekt in Visual Studio vertraut, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 7ac610e96d84568b7973f288623730ea1677ceac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d209f8117b1e061877daf2f8d316bd01ed4f84cd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510925"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298817"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Erste Schritte mit Azure-Tabellenspeicher und verbundenen Visual Studio-Diensten
 

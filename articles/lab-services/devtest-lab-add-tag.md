@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 10/13/2019
 ms.author: spelluru
-ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1d7175d000eebd3f68665e7f097bbe3f68025bc8
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311348"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302798"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen von Tags zu einem Lab in Azure DevTest Labs
 
@@ -52,6 +52,9 @@ Jedes Tag besteht aus einem **Name**/**Wert**-Paar. Sie können beispielsweise e
 
     ![Verwalten von Tags](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 
+> [!NOTE]
+> Auf Lab-Ebene erstellte Tags werden durch alle abrechnungsfähigen Ressourcen übertragen, die in Ihrem Abonnement für das Lab eingerichtet werden. Beispielsweise werden Tags auf Lab-Ebene an die zugrunde liegenden Compute-VMs von Lab-VMs übertragen. Sie können Tags im Kontext der Kostenverwaltung nutzen. Tags auf Lab-Ebene werden im Tagfilter für die Kostenverwaltung angezeigt.
+
 ## <a name="understanding-limitations-to-tags"></a>Grundlegendes zu Einschränkungen für Tags
 
 Für Tags gelten folgende Einschränkungen:
@@ -66,4 +69,4 @@ Der Artikel [Verwenden von Tags zum Organisieren von Azure-Ressourcen](https://d
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Bei einer von Ihnen definierten Richtlinie kann es erforderlich sein, dass alle Ressourcen über einen Wert für ein bestimmtes Tag verfügen. Weitere Informationen finden Sie unter [Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
-* Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* Erkunden Sie den [Azure Resource Manager-Katalog mit Schnellstartvorlagen für DevTest Labs](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

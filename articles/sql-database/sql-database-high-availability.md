@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
+author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 06/10/2019
-ms.openlocfilehash: 226b0c1cb11fc872cb7759e0d0e49275b9c2d9bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/14/2019
+ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568143"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390695"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 
@@ -39,7 +39,7 @@ Diese Dienstebenen nutzen die Standardverfügbarkeitsarchitektur. In der folgend
 
 Das Standardverfügbarkeitsmodell umfasst zwei Ebenen:
 
-- Eine zustandslose Compute-Ebene, auf der der Prozess `sqlserver.exe` ausgeführt wird und die auf der angehängten SSD nur temporäre und zwischengespeicherte Daten enthält (z.B. TempDB, Modelldatenbank, Plancache, Pufferpool und Spaltenspeicherpool). Dieser zustandslose Knoten wird von Azure Service Fabric gesteuert, die `sqlserver.exe` initialisiert, die Integrität des Knotens steuert und bei Bedarf ein Failover zu einem anderen Knoten durchführt.
+- Eine zustandslose Compute-Ebene, auf der der Prozess `sqlservr.exe` ausgeführt wird und die nur vorübergehende und zwischengespeicherte Daten enthält, z. B. TempDB, Modelldatenbanken auf der angefügten SSD, Plancache, Puffer- und Columnstore-Pool im Arbeitsspeicher. Dieser zustandslose Knoten wird von Azure Service Fabric gesteuert, die `sqlservr.exe` initialisiert, die Integrität des Knotens steuert und bei Bedarf ein Failover zu einem anderen Knoten durchführt.
 - Eine zustandsbehaftete Datenebene mit den Datenbankdateien (MDF- und LDF-Dateien), die in Azure Blob Storage gespeichert sind. Azure Blob Storage verfügt über integrierte Datenverfügbarkeits- und Redundanzfunktionen. Dadurch wird sichergestellt, dass jeder Datensatz in der Protokolldatei bzw. jede Seite in der Datendatei erhalten bleibt, auch wenn der SQL Server-Prozess abstürzt.
 
 Bei jedem Upgrade der Datenbank-Engine oder des Betriebssystems sowie beim Erkennen eines Fehlers wird der zustandslose SQL Server-Prozess in Azure Service Fabric zu einem anderen zustandslosen Computeknoten mit ausreichender freier Kapazität verschoben. Daten in Azure Blob Storage sind vom Verschiebevorgang nicht betroffen, und die Daten- und Protokolldateien werden an den neu initialisierten SQL Server-Prozess angefügt. Dieser Prozess garantiert eine Verfügbarkeit von 99,99 %; bei einer starken Workload ist möglicherweise eine gewisse Leistungseinbuße während des Übergangs festzustellen, da die neue SQL Server-Instanz mit einem kalten Cache gestartet wird.
@@ -54,14 +54,32 @@ Die zugrunde liegenden Datenbankdateien (MDF- und LDF-Dateien) werden auf dem an
 
 Als weiteren Vorteil bietet das Premium-Verfügbarkeitsmodell die Möglichkeit, SQL-Verbindungen mit Schreibschutz auf eines der sekundären Replikate umzuleiten. Dieses Feature wird als [horizontale Leseskalierung](sql-database-read-scale-out.md) bezeichnet. Es bietet 100 % zusätzliche Computekapazität ohne anfallende Zusatzkosten, sodass Schreibschutzvorgänge wie analytische Workloads vom primären Replikat ausgelagert werden können.
 
+## <a name="hyperscale-service-tier-availability"></a>Verfügbarkeit der Dienstebene „Hyperscale“
+
+Die Architektur der Dienstebene „Hyperscale“ wird unter [Architektur mit verteilten Funktionen](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture) beschrieben. 
+
+![Funktionale Hyperscale-Architektur](./media/sql-database-hyperscale/hyperscale-architecture.png)
+
+Das Verfügbarkeitsmodell in Hyperscale umfasst vier Ebenen:
+
+- Eine zustandslose Compute-Ebene, auf der der Prozess `sqlservr.exe` ausgeführt wird und die nur vorübergehende und zwischengespeicherte Daten enthält, z. B. nicht abdeckenden RBPEX-Cache TempDB, Modelldatenbanken usw. auf der angefügten SSD, Plancache, Puffer- und Columnstore-Pool im Arbeitsspeicher. Diese zustandslose Ebene enthält das primäre Computereplikat und optional eine Reihe sekundärer Computereplikate, die als Failoverziele dienen können.
+- Eine durch Seitenserver gebildete zustandslose Speicherebene. Diese Ebene ist das verteilte Speichermodul für die `sqlservr.exe`-Prozesse, die auf den Computereplikaten ausgeführt werden. Jeder Seitenserver enthält nur vorübergehende und zwischengespeicherte Daten, wie z.B. abdeckenden RBPEX-Cache auf der angefügten SSD und im Arbeitsspeicher zwischengespeicherte Datenseiten. Jeder Seitenserver verfügt über einen gekoppelten Seitenserver in einer Aktiv-Aktiv-Konfiguration, um Lastenausgleich, Redundanz und Hochverfügbarkeit zu gewährleisten.
+- Eine zustandsbehaftete Speicherschicht für Transaktionsprotokolle, die vom Computeknoten gebildet wird, auf dem der Protokolldienstprozess, die Zielzone für Transaktionsprotokolle und der langfristige Speicher für Transaktionsprotokolle ausgeführt werden. Für die Zielzone und den langfristigen Speicher wird Azure Storage eingesetzt. Dieser Dienst bietet Verfügbarkeit und [Redundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy) für das Transaktionsprotokoll und gewährleistet Datenbeständigkeit für durchgeführte Transaktionen.
+- Eine zustandsbehaftete Datenspeicherebene mit den Datenbankdateien (MDF- und NDF-Dateien), die in Azure Storage gespeichert und von Seitenservern aktualisiert werden. Diese Ebene nutzt die Features von Azure Storage für Datenverfügbarkeit und [Redundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy). Sie garantiert, dass jede Seite in einer Datendatei erhalten bleibt, auch wenn Prozesse auf anderen Ebenen der Hyperscale-Architektur abstürzen oder Computeknoten ausfallen.
+
+Computeknoten auf allen Hyperscale-Ebenen werden in Azure Service Fabric ausgeführt. Dieser Dienst kontrolliert die Integrität jedes Knotens und führt bei Bedarf ein Failover auf verfügbare fehlerfreie Knoten durch.
+
+Weitere Informationen zur Hochverfügbarkeit in Hyperscale finden Sie unter [Hochverfügbarkeit der Datenbank in Hyperscale](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
+
 ## <a name="zone-redundant-configuration"></a>Zonenredundante Konfiguration
 
-In der Standardeinstellung wird der Cluster von Knoten für das Premium-Verfügbarkeitsmodell im selben Rechenzentrum erstellt. Mit der Einführung von [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) kann Azure SQL-Datenbank nun verschiedene Replikate im Cluster in unterschiedlichen Verfügbarkeitszonen in derselben Region platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration in den Dienstebenen „Premium“ oder „Unternehmenskritisch“ keine zusätzliche Datenbankredundanz erzeugt wird, können Sie sie ohne Zusatzkosten aktivieren. Durch die Auswahl einer zonenredundanten Konfiguration können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ für deutlich mehr Ausfallszenarien resistent machen (z.B. für schwerwiegende Ausfälle von Rechenzentren), ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ in die zonenredundante Konfiguration konvertieren.
+In der Standardeinstellung wird der Cluster von Knoten für das Premium-Verfügbarkeitsmodell im selben Rechenzentrum erstellt. Mit der Einführung von [Azure-Verfügbarkeitszonen](../availability-zones/az-overview.md) kann Azure SQL-Datenbank nun verschiedene Replikate von Datenbanken des Typs „Unternehmenskritisch“ in unterschiedlichen Verfügbarkeitszonen in derselben Region platzieren. Um einen Single Point of Failure auszuschließen, wird der Steuerring zudem in mehreren Zonen als drei Gatewayringe (GW) kopiert. Die Weiterleitung an einen bestimmten Gatewayring wird durch [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) gesteuert. Da bei der zonenredundanten Konfiguration in den Dienstebenen „Premium“ oder „Unternehmenskritisch“ keine zusätzliche Datenbankredundanz erzeugt wird, können Sie sie ohne Zusatzkosten aktivieren. Durch die Auswahl einer zonenredundanten Konfiguration können Sie Ihre Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ für deutlich mehr Ausfallszenarien resistent machen (z.B. für schwerwiegende Ausfälle von Rechenzentren), ohne Änderungen an der Anwendungslogik vornehmen zu müssen. Sie können zudem alle vorhandenen Datenbanken oder Pools der Dienstebenen „Premium“ oder „Unternehmenskritisch“ in die zonenredundante Konfiguration konvertieren.
 
 Da die zonenredundanten Datenbanken über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügen, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist ein Onlinevorgang und ähnelt dem regulären Dienstebenen-Upgrade. Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
 
 > [!IMPORTANT]
 > Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur auf den Dienstebenen „Premium“ und „Unternehmenskritisch“ in ausgewählten Regionen unterstützt. Bei Verwendung des Tarifs „Unternehmenskritisch“ ist die zonenredundante Konfiguration nur verfügbar, wenn die Gen5-Computehardware ausgewählt ist. Aktuelle Informationen über die Regionen, die zonenredundante Datenbanken unterstützen, finden Sie unter [Unterstützung der Dienste nach Region](../availability-zones/az-overview.md#services-support-by-region).  
+> Dieses Feature steht in einer verwalteten Instanz nicht zur Verfügung.
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:
 
@@ -70,6 +88,13 @@ Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden
 ## <a name="accelerated-database-recovery-adr"></a>Schnellere Datenbankwiederherstellung
 
 Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](sql-database-accelerated-database-recovery.md) ist eine neue Funktion der SQL-Datenbank-Engine. Mit dieser Funktion wird die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR ist derzeit für Einzeldatenbanken, Pools für elastische Datenbanken und Azure SQL Data Warehouse verfügbar.
+
+## <a name="testing-database-fault-resiliency"></a>Testen der Resilienz von Datenbanken gegenüber Fehlern
+
+Hochverfügbarkeit ist ein wesentlicher Bestandteil der Azure SQL Datenbank-Plattform und für Ihre Datenbankanwendung transparent. Es ist uns jedoch bewusst, dass Sie möglicherweise testen möchten, wie sich die bei geplanten oder ungeplanten Ereignissen eingeleiteten automatischen Failovervorgänge ggf. auf die Anwendung auswirken, ehe Sie sie in der Produktionsumgebung einsetzen. Sie können eine spezielle API aufrufen, um die Datenbank oder den Pool für elastische Datenbanken neu zu starten, was wiederum das Failover auslöst. Bei einer zonenredundanten Datenbank oder einem Pool für elastische Datenbanken führt der API-Aufruf dazu, dass die Clientverbindungen zur neuen primären Datenbank in einer anderen Verfügbarkeitszone umgeleitet werden. Zusätzlich zu den Tests, wie sich das Failover auf die bestehenden Datenbanksitzungen auswirkt, können Sie also auch prüfen, ob es sich auf die Gesamtleistung auswirkt. Da Neustartvorgänge aufwendig sind und eine große Anzahl von ihnen die Plattform belasten könnten, ist für jede Datenbank oder jeden Pool für elastische Datenbanken nur alle 30 Minuten ein Failoveraufruf erlaubt. Weitere Informationen finden Sie unter [Datenbankfailover](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) und [Failover für einen Pool für elastische Datenbanken](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+
+> [!IMPORTANT]
+> Der Failover-Befehl ist zurzeit für Hyperscale-Datenbanken und verwaltete Instanzen nicht verfügbar.  
 
 ## <a name="conclusion"></a>Zusammenfassung
 
