@@ -639,6 +639,8 @@
                   href: insights/vminsights-workbooks.md
                 - name: Analysieren von Daten mit Protokollabfragen
                   href: insights/vminsights-log-search.md
+                - name: Upgrade des Dependency-Agents
+                  href: insights/vminsights-dependency-agent-maintenance.md
                 - name: Deaktivieren der Überwachung
                   href: insights/vminsights-optout.md
             - name: Lösung „Kapazität und Leistung“

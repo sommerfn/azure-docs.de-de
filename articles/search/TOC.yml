@@ -1,20 +1,24 @@
-- name: Azure Search-Dokumentation
+- name: Dokumentation zur kognitiven Azure-Suche
   href: index.yml
 - name: Übersicht
-  items:
-    - name: Was ist Azure Search?
-      href: search-what-is-azure-search.md
-- name: Schnellstarts
   expanded: true
+  items:
+    - name: Was ist die kognitive Azure-Suche?
+      href: search-what-is-azure-search.md
+    - name: Neuigkeiten
+      href: whats-new.md
+- name: Schnellstarts
   items:
     - name: Erstellen von Diensten
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Erstellen und Verwenden eines Indexes
+        - name: Erstellen eines Suchindex
           href: search-get-started-portal.md
-        - name: Erweitern mit der kognitiven Suche (KI)
+        - name: Erstellen eines kognitiven Skillset
           href: cognitive-search-quickstart-blob.md
+        - name: Erstellen von Wissensspeichern
+          href: knowledge-store-create-portal.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -79,7 +83,7 @@
   items:
     - name: Volltextsuche
       href: search-lucene-query-architecture.md
-    - name: Kognitive Suche
+    - name: KI-Anreicherung
       href: cognitive-search-concept-intro.md
     - name: Qualifikationsgruppen
       href: cognitive-search-working-with-skillsets.md
@@ -87,6 +91,8 @@
       href: knowledge-store-concept-intro.md
     - name: Projektionen
       href: knowledge-store-projection-overview.md
+    - name: Inkrementelle Indizierung
+      href: cognitive-search-incremental-indexing-conceptual.md
 - name: Anleitungen
   items:
     - name: Planung
@@ -209,6 +215,8 @@
           href: search-howto-schedule-indexers.md
         - name: Zuordnen von Feldern
           href: search-indexer-field-mappings.md
+        - name: Inkrementelle Indizierung
+          href: search-howto-incremental-index.md
         - name: Herstellen einer Verbindung mit einer verwalteten SQL-Instanz
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Herstellen einer Verbindung mit virtuellen SQL Server-Computern
@@ -247,8 +255,6 @@
           href: cognitive-search-resources-documentation.md
         - name: Wissensspeicher (Vorschau)
           items:
-            - name: Erstellen eines Wissensspeichers im Azure-Portal
-              href: knowledge-store-create-portal.md
             - name: Erstellen mithilfe von REST und Postman
               href: knowledge-store-create-rest.md
             - name: Anzeigen mit Storage-Explorer

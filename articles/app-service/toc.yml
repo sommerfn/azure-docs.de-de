@@ -123,6 +123,8 @@
               href: deploy-continuous-deployment.md
             - name: Bereitstellen über lokales Git
               href: deploy-local-git.md
+            - name: Bereitstellen mit GitHub-Aktionen
+              href: deploy-github-actions.md
             - name: Bereitstellen mit Vorlage
               href: deploy-complex-application-predictably.md
         - name: Anmeldeinformationen für die Bereitstellung zurücksetzen
