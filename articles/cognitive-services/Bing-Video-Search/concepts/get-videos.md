@@ -1,5 +1,5 @@
 ---
-title: Senden von Suchanforderungen an die Bing-Videosuche-API
+title: Suchen nach Videos mithilfe der Bing-Videosuche-API
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Suchabfragen an die Bing-Videosuche-API gesendet werden.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879090"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512420"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Suchen nach Videos mit der Bing-Videosuche-API
 

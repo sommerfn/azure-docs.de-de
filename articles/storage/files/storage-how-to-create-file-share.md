@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b30df7410f56c203eb600089cce130a8de23d1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013562"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514605"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem  [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -23,6 +23,9 @@ Sie können Azure-Dateifreigaben mit dem  [Azure-Portal](https://portal.azure.c
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie können eine Azure-Dateifreigabe entweder unter Verwendung eines bereits vorhandenen Storage-Kontos erstellen oder ein [neues Azure Storage-Konto erstellen](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Wenn Sie eine Azure-Dateifreigabe mithilfe von PowerShell erstellen möchten, benötigen Sie den Kontoschlüssel und -namen Ihres Speicherkontos. Wenn Sie PowerShell oder die Befehlszeilenschnittstelle verwenden möchten, benötigen Sie einen Speicherkontoschlüssel.
 
+> [!NOTE]
+> Wenn Sie Dateifreigaben über 5 TiB erstellen möchten, finden Sie weitere Informationen im Artikel [Aktivieren großer Dateifreigaben](storage-files-how-to-create-large-file-share.md).
+
 ## <a name="create-a-file-share-through-the-azure-portal"></a>Erstellen einer Dateifreigabe über das Azure-Portal
 1. **Navigieren Sie im Azure-Portal zum Blatt „Speicherkonto“:**    
     ![Blatt „Speicherkonto“](./media/storage-how-to-create-file-share/create-file-share-portal1.png)
@@ -30,7 +33,7 @@ Sie können eine Azure-Dateifreigabe entweder unter Verwendung eines bereits vor
 2. **Klicken Sie auf die Schaltfläche „Dateifreigabe hinzufügen“:**    
     ![Klicken Sie auf die Schaltfläche „Dateifreigabe hinzufügen“.](./media/storage-how-to-create-file-share/create-file-share-portal2.png)
 
-3. **Geben Sie einen Namen und ein Kontingent an. Der aktuelle maximale Wert für das Kontingent beträgt 5 TiB:**    
+3. **Geben Sie einen Namen und ein Kontingent an:**    
     ![Geben Sie einen Namen und das gewünschte Kontingent für die neue Dateifreigabe an.](./media/storage-how-to-create-file-share/create-file-share-portal3.png)
 
 4. **Zeigen Sie Ihre neue Dateifreigabe an:**  ![Anzeigen Ihrer neuen Dateifreigabe](./media/storage-how-to-create-file-share/create-file-share-portal4.png)

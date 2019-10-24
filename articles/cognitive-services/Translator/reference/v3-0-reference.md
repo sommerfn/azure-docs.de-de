@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772781"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72252975"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -48,10 +48,9 @@ Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearb
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
 
-
 ## <a name="authentication"></a>Authentication
 
-Abonnieren Sie die Textübersetzungs-API oder [Cognitive Services-Multi-Service](https://azure.microsoft.com/pricing/details/cognitive-services/) in Microsoft Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
+Abonnieren Sie die Textübersetzungs-API oder [Cognitive Services-Multi-Service](https://azure.microsoft.com/pricing/details/cognitive-services/) in Azure Cognitive Services, und verwenden Sie Ihren Abonnementschlüssel (im Azure-Portal) für die Authentifizierung. 
 
 Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Diese Tabelle beschreibt, wie jeder verwendet wird:
 
@@ -59,10 +58,10 @@ Es gibt drei Header, mit denen Sie Ihr Abonnement authentifizieren können. Dies
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*Verwendung mit Cognitive Services-Abonnement, wenn Sie Ihren geheimen Schlüssel übergeben*.<br/>Der Wert ist der geheime Azure-Schlüssel für Ihr Abonnement für die Textübersetzungs-API.|
 |Authorization|*Verwendung mit dem Cognitive Services-Abonnement, wenn Sie ein Authentifizierungstoken übergeben.*<br/>Der Wert ist das Bearertoken: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Verwendung mit dem Multi-Service-Abonnement von Cognitive Services, wenn Sie einen geheimen Multi-Service-Schlüssel übergeben.*<br/>Der Wert ist die Region des Multi-Service-Abonnements. Dieser Wert ist optional, wenn kein Multi-Service-Abonnement verwendet wird.|
+|Ocp-Apim-Subscription-Region|*Verwendung mit dem Multi-Service-Abonnement von Cognitive Services beim Übergeben eines geheimen Multi-Service-Schlüssels*.<br/>Der Wert ist die Region des Multi-Service-Abonnements. Dieser Wert ist optional, wenn kein Multi-Service-Abonnement verwendet wird.|
 
 ###  <a name="secret-key"></a>Geheimer Schlüssel
-Die erste Option ist die Authentifizierung mithilfe des Headers `Ocp-Apim-Subscription-Key`. Fügen Sie einfach den `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`-Header zur Ihrer Anforderung hinzu.
+Die erste Option ist die Authentifizierung mithilfe des Headers `Ocp-Apim-Subscription-Key`. Fügen Sie Ihrer Anforderung den `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`-Header hinzu.
 
 ### <a name="authorization-token"></a>Autorisierungstoken
 Alternativ können Sie Ihren geheimen Schlüssel für ein Zugriffstoken austauschen. Dieses Token ist in jeder Anforderung als `Authorization`-Header enthalten. Senden Sie eine `POST`-Anforderung an die folgende URL, um ein Autorisierungstoken zu erhalten:
@@ -73,7 +72,7 @@ Alternativ können Sie Ihren geheimen Schlüssel für ein Zugriffstoken austausc
 
 Hier sind Beispielanforderungen zum Abrufen eines Tokens über einen geheimen Schlüssel angegeben:
 
-```
+```curl
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
 
@@ -83,11 +82,11 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 
 Eine erfolgreiche Anforderung gibt das codierte Zugriffstoken im Antworttext im Nur-Text-Format zurück. Das gültige Token wird während der Autorisierung als Bearertoken an den Translator-Dienst übergeben.
 
-```
+```http
 Authorization: Bearer <Base64-access_token>
 ```
 
-Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wiederverwendet werden, wenn die Translator-APIs mehrfach aufgerufen werden. Wenn Ihr Programm aber über längere Zeit Anforderungen an die Translator-API sendet, muss das Programm regelmäßig (z.B. alle acht Minuten) ein neues Zugriffstoken anfordern.
+Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wiederverwendet werden, wenn die Translator-APIs mehrfach aufgerufen werden. Wenn Ihr Programm aber über längere Zeit Anforderungen an die Translator-API sendet, muss das Programm regelmäßig (beispielsweise alle acht Minuten) ein neues Zugriffstoken anfordern.
 
 ### <a name="multi-service-subscription"></a>Abonnement für mehrere Dienste
 
@@ -111,12 +110,11 @@ Wenn Sie ein Bearertoken verwenden, müssen Sie das Token vom Regionsendpunkt `h
 Eine Standardfehlerantwort ist ein JSON-Objekt mit einem Name-Wert-Paar mit dem Namen `error`. Der Wert ist außerdem ein JSON-Objekt mit Eigenschaften:
 
   * `code`: Ein vom Server definierter Fehlercode.
-
   * `message`: Eine Zeichenfolge als für Menschen lesbare Darstellung des Fehlers.
 
 Ein Kunde mit einer kostenlose Testversion des Abonnements erhält beispielsweise den folgenden Fehler, nachdem das Kontingent für den Free-Tarif erschöpft ist:
 
-```
+```json
 {
   "error": {
     "code":403001,

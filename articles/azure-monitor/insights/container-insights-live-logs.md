@@ -13,19 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 2eab6fa75e4adbbde7bcf20f18301a1e516235c2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: d947b44177e9aa5777d759286d982e974e378497
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035361"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389787"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Anzeigen von Protokollen und Ereignissen in Echtzeit (Vorschauversion)
 Azure Monitor für Container enthält ein Feature, das sich derzeit in der Vorschauversion befindet. Dieses Feature bietet eine Liveansicht Ihrer Azure Kubernetes Service-Containerprotokolle (stdout/stderr; AKS) und Ereignisse, ohne dass Sie kubectl-Befehle ausführen müssen. Wenn Sie eine Option auswählen, wird unter der Leistungsdatentabelle in der Ansicht für **Knoten**, **Controller** und **Container** ein neuer Bereich angezeigt. Dort werden von der Container-Engine generierte Liveprotokolle und -ereignisse angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.
 
 >[!NOTE]
->Damit diese Funktion verwendet werden kann, ist Zugriff vom Typ **Mitwirkender** auf die Clusterressource erforderlich.
->
+>Diese Funktion steht in allen Azure-Regionen zur Verfügung, einschließlich Azure China. In Azure US Government ist sie derzeit nicht verfügbar.
+
+>[!NOTE]
+>Damit diese Funktion verwendet werden kann, ist Zugriff auf die Clusterressource vom Typ **Benutzerrolle für Azure Kubernetes Service-Cluster** erforderlich. [Weitere Informationen zur Benutzerrolle für Azure Kubernetes Service-Cluster](https://docs.microsoft.com/en-us/azure/aks/control-kubeconfig-access#available-cluster-roles-permissions).
 
 Liveprotokolle unterstützen drei Methoden zum Steuern des Zugriffs auf die Protokolle:
 
@@ -74,6 +76,9 @@ Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directo
 
 -  **Umleitungs-URI**: Es müssen zwei **Web**anwendungstypen erstellt werden. Der erste Basis-URL-Wert sollte `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten und der zweite Basis-URL-Wert `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
 - Wählen Sie nach dem Registrieren der Anwendung auf der Seite **Übersicht** im linken Bereich **Authentifizierung** aus. Führen Sie auf der Seite **Authentifizierung** unter **Erweiterte Einstellungen** implizit **Zugriffstoken** und **ID-Token** auf, und speichern Sie dann Ihre Änderungen.
+
+>[!NOTE]
+>Wenn Sie diese Funktion in der Azure China-Region verwenden, sollte der erste Basis-URL-Wert `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` und der zweite Basis-URL-Wert `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten.
 
 >[!NOTE]
 >Die Konfiguration der Authentifizierung mit Azure Active Directory für einmaliges Anmelden kann nur während der anfänglichen Bereitstellung eines neuen AKS-Clusters durchgeführt werden. Sie können einmaliges Anmelden nicht für einen bereits bereitgestellten AKS-Cluster konfigurieren.

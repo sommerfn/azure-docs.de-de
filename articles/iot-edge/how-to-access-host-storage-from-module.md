@@ -1,0 +1,88 @@
+---
+title: Verwenden des lokalen Speichers eines IoT Edge-Geräts von einem Modul aus – Azure IoT Edge | Microsoft-Dokumentation
+description: Verwenden Sie Umgebungsvariablen und Erstellungsoptionen, um den Modulzugriff auf den lokalen Speicher eines IoT Edge-Geräts zu ermöglichen.
+author: kgremban
+manager: philmea
+ms.author: kgremban
+ms.date: 10/15/2019
+ms.topic: conceptual
+ms.service: iot-edge
+services: iot-edge
+ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330807"
+---
+# <a name="give-modules-access-to-a-devices-local-storage"></a>Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
+
+Zusätzlich zum Speichern von Daten mithilfe von Azure Storage-Diensten oder im Containerspeicher Ihres Geräts können Sie auch Speicher auf dem eigentlichen IoT Edge-Hostgerät für verbesserte Zuverlässigkeit reservieren – insbesondere beim Offlinebetrieb.
+
+## <a name="link-module-storage-to-device-storage"></a>Verknüpfen des Modulspeichers mit dem Gerätespeicher
+
+Um einen Link zwischen dem Modulspeicher und dem Speicher auf dem Hostsystem zu aktivieren, erstellen Sie eine Umgebungsvariable für Ihr Modul, die auf einen Speicherordner im Container verweist. Binden Sie diesen Speicherordner anschließend mit den Erstellungsoptionen an einem Ordner auf dem Hostcomputer.
+
+Wenn Sie beispielsweise möchten, dass der IoT Edge-Hub Nachrichten im lokalen Speicher Ihres Geräts speichert und später abruft, können Sie die Umgebungsvariablen und die Erstellungsoptionen über das Azure-Portal im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** konfigurieren.
+
+1. Fügen Sie sowohl für den IoT Edge-Hub als auch für den IoT Edge-Agent eine Umgebungsvariable namens **storageFolder** hinzu, die auf ein Verzeichnis im Modul verweist.
+1. Fügen Sie sowohl für den IoT Edge-Hub als auch für den IoT Edge-Agent Bindungen hinzu, um ein lokales Verzeichnis auf dem Hostcomputer mit einem Verzeichnis im Modul zu verbinden. Beispiel:
+
+   ![Fügen Sie Erstellungsoptionen und Umgebungsvariablen für den lokalen Speicher hinzu.](./media/how-to-access-host-storage-from-module/offline-storage.png)
+
+Oder Sie können den lokalen Speicher auch direkt im Bereitstellungsmanifest konfigurieren. Beispiel:
+
+```json
+"systemModules": {
+    "edgeAgent": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"]
+                }
+            }
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
+            }
+        }
+    },
+    "edgeHub": {
+        "settings": {
+            "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+            "createOptions": {
+                "HostConfig": {
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"],
+                    "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
+        },
+        "type": "docker",
+        "env": {
+            "storageFolder": {
+                "value": "<ModuleStoragePath>"
+            }
+        },
+        "status": "running",
+        "restartPolicy": "always"
+    }
+}
+```
+
+Ersetzen Sie `<HostStoragePath>` und `<ModuleStoragePath>` durch den Speicherpfad für Ihren Host und Ihr Modul; beide Werte müssen ein absoluter Pfad sein.
+
+Beispielsweise bedeutet `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` auf einem Linux-System, dass das Verzeichnis **/etc/iotedge/storage** in Ihrem Hostsystem dem Verzeichnis **/iotedge/storage/** im Container zugeordnet ist. Ein weiteres Beispiel: Auf einem Windows-System bedeutet `"Binds":["C:\\temp:C:\\contemp"]`, dass das Verzeichnis **C:\\temp** in Ihrem Hostsystem dem Verzeichnis **C:\\contemp** im Container zugeordnet ist.
+
+Außerdem müssen Sie auf Linux-Geräten sicherstellen, dass das Benutzerprofil für Ihr Modul über die erforderlichen Lese-, Schreib- und Ausführungsberechtigungen für das Hostsystemverzeichnis verfügt. Zurück zum vorherigen Beispiel, in dem IoT Edge-Hub zum Speichern von Nachrichten im lokalen Speicher Ihres Geräts aktiviert wurde: Sie müssen Sie dem zugehörigen Benutzerprofil, UID 1000, Berechtigungen erteilen. (Der IoT Edge-Agent fungiert als Root und benötigt daher keine zusätzlichen Berechtigungen.) Es gibt mehrere Möglichkeiten zum Verwalten von Verzeichnisberechtigungen auf Linux-Systemen, einschließlich der Verwendung von `chown` zum Ändern des Verzeichnisbesitzers und dann `chmod` zum Ändern der Berechtigungen, beispielsweise:
+
+```bash
+sudo chown 1000 <HostStoragePath>
+sudo chmod 700 <HostStoragePath>
+```
+
+Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Ein weiteres Beispiel für den Zugriff auf den Hostspeicher von einem Modul aus finden Sie unter [Speichern von Daten im Edgebereich mit Azure Blob Storage in IoT Edge](how-to-store-data-blob.md).

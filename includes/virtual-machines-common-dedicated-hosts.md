@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266856"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390541"
 ---
 ## <a name="benefits"></a>Vorteile 
 
@@ -82,6 +82,8 @@ Es gibt eine Standardkontingentgrenze von 3.000 vCPUs für dedizierte Hosts pro
 ![Screenshot der Seite für Verbrauch und Kontingente im Portal](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 Weitere Informationen finden Sie unter [vCPU-Kontingente für virtuelle Computer](/azure/virtual-machines/windows/quotas).
+
+Für kostenlose Testversionen und MSDN-Abonnements gilt kein Kontingent für dedizierte Azure-Hosts.
 
 ## <a name="pricing"></a>Preise
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24404d6b55f83f96d8e2601afd35b2dec00cc7e9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0872d3c798bd5bd94e425869822602e8123517b4
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099735"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303604"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -138,7 +138,14 @@ Basierend auf der Standardbereitstellung gibt es drei wichtige Überlegungen zum
 * Einheiten von SAP HANA in Azure (große Instanzen) verfügen über eine zugewiesene IP-Adresse aus dem IP-Adressbereich des Serverpools, den Sie beim Anfordern der Bereitstellung von HANA (große Instanz) angegeben haben. Weitere Informationen finden Sie unter [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Der Zugriff auf diese IP-Adresse ist über die Azure-Abonnements und die Leitung möglich, über die virtuelle Azure-Netzwerke mit HANA (große Instanzen) verbunden werden. Die zugewiesene IP-Adresse aus dem IP-Adressbereich des Serverpools wird der Hardwareeinheit direkt zugewiesen. Anders als bei den ersten Bereitstellungen dieser Lösung wird sie *nicht* mehr über NAT zugewiesen. 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>Direktes Routing zu HANA (große Instanzen)
-Standardmäßig funktioniert das transitive Routing zwischen HANA-Einheiten (große Instanz) und der lokalen Umgebung oder zwischen HANA-Einheiten (große Instanz), die in zwei unterschiedlichen Regionen bereitgestellt werden, nicht. Es gibt mehrere Möglichkeiten, das transitive Routing zu aktivieren.
+
+Standardmäßig funktioniert das transitive Routing in folgenden Szenarien nicht:
+
+* Zwischen HANA-Einheiten (große Instanz) und einer lokalen Bereitstellung
+
+* Zwischen HANA-Routing (große Instanz), das in zwei verschiedenen Regionen bereitgestellt wird
+
+Es gibt drei Möglichkeiten, um transitives Routing in diesen Szenarien zu aktivieren:
 
 - Ein Reverseproxy zum Weiterleiten von Daten in beide Richtungen. Beispiel: F5 BIG-IP, NGINX mit einer Bereitstellung von Traffic Manager im virtuellen Azure-Netzwerk, über das eine Verbindung mit HANA (große Instanzen) und mit der lokalen Umgebung als Lösung für eine virtuelle Firewall oder für das Datenverkehrsrouting hergestellt wird.
 - [IPTables-Regeln](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) auf einer Linux-VM, um das Routing zwischen lokalen Standorten und Einheiten von HANA (große Instanz) oder zwischen Einheiten von HANA (große Instanz) in unterschiedlichen Regionen zu ermöglichen. Die VM, auf der IPTables ausgeführt wird, muss im virtuellen Azure-Netzwerk bereitgestellt werden, über das eine Verbindung mit HANA (große Instanzen) und der lokalen Umgebung hergestellt wird. Die Größe der VM muss entsprechend angepasst werden, damit der Netzwerkdurchsatz der VM für den erwarteten Netzwerkdatenverkehr ausreicht. Ausführlichere Informationen zur VM-Netzwerkbandbreite finden Sie im Artikel [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json).

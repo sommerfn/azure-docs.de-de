@@ -4,15 +4,15 @@ description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e07d154ce5dae8a461bf9db19303db685f8a4152
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 31a9eda0e17083aac25be071c1d1a3ab84049e39
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103077"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274878"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -797,6 +797,17 @@ Zur Behebung dieses Problems müssen Sie die Synchronisierungsgruppe löschen un
 4. Wenn das Cloudtiering auf einem Serverendpunkt aktiviert wurde, löschen Sie die verwaisten mehrstufigen Dateien auf dem Server, indem Sie die Schritte ausführen, die im Abschnitt [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) dokumentiert sind.
 5. Erstellen Sie die Synchronisierungsgruppe neu.
 
+<a id="-2145844941"></a>**Die Synchronisierung war fehlerhaft, weil die HTTP-Anforderung umgeleitet wurde.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80190133 |
+| **HRESULT (dezimal)** | -2145844941 |
+| **Fehlerzeichenfolge** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung keine HTTP-Umleitung (Statuscode 3xx) unterstützt. Um das Problem zu beheben, deaktivieren Sie die HTTP-Umleitung auf Ihrem Proxyserver oder Netzwerkgerät.
+
 ### <a name="common-troubleshooting-steps"></a>Allgemeine Schritte zur Problembehandlung
 <a id="troubleshoot-storage-account"></a>**Überprüfen Sie, ob das Speicherkonto vorhanden ist.**  
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
@@ -1008,7 +1019,22 @@ Wenn bei Dateien Rückruffehler auftreten:
         - Geben Sie an einer Eingabeaufforderung mit erhöhten Rechten `fltmc` ein. Überprüfen Sie, ob die Dateisystem-Filtertreiber „StorageSync.sys“ und „StorageSyncGuard.sys“ aufgelistet sind.
 
 > [!NOTE]
-> Eine Ereignis-ID 9006 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Rückruf einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Die Betriebs- und Diagnoseereignisprotokolle sollten verwendet werden, wenn zusätzliche Informationen zum Diagnostizieren eines Problems benötigt werden.
+> Eine Ereignis-ID 9006 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Rückruf einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Informieren Sie sich im Abschnitt [Abruffehler und deren Behebung](#recall-errors-and-remediation), ob für den Fehlercode Schritte zur Behebung aufgeführt sind.
+
+### <a name="recall-errors-and-remediation"></a>Abruffehler und deren Behebung
+
+| HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80070079 | -121 | ERROR_SEM_TIMEOUT | Die Datei konnte aufgrund einer E/A-Zeitüberschreitung nicht abgerufen werden. Dieses Problem kann aus verschiedenen Gründen auftreten: Ressourceneinschränkungen auf dem Server, eine schlechte Netzwerkverbindung oder ein Azure Storage-Problem (z. B. Drosselung). | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler mehrere Stunden anhält, erstellen Sie eine Supportanfrage. |
+| 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Die Datei konnte aufgrund eines Netzwerkproblems nicht abgerufen werden.  | Falls der Fehler weiterhin auftritt, überprüfen Sie die Netzwerkverbindung mit der Azure-Dateifreigabe. |
+| 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Die Datei konnte nicht abgerufen werden, weil der Serverendpunkt gelöscht wurde. | Informationen zur Behebung dieses Problems finden Sie unter [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Die Datei konnte nicht abgerufen werden, weil der Zugriff verweigert wurde. Dieses Problem kann auftreten, wenn die Einstellungen für Firewall und virtuelles Netzwerk im Speicherkonto aktiviert sind und der Server keinen Zugriff auf das Speicherkonto hat. | Um das Problem zu beheben, fügen Sie die Server-IP-Adresse oder das virtuelle Netzwerk hinzu, indem Sie die im Abschnitt [Konfigurieren der Einstellung für Firewall und virtuelles Netzwerk](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) des Bereitstellungsleitfadens angegebenen Schritte ausführen. |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Die Datei konnte nicht abgerufen werden, weil in der Azure-Dateifreigabe nicht darauf zugegriffen werden kann. | Stellen Sie sicher, dass die Datei in der Azure-Dateifreigabe vorhanden ist, um das Problem zu beheben. Wenn die Datei in der Azure-Dateifreigabe vorhanden ist, führen Sie ein Upgrade auf die neueste [Version](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions) des Azure-Dateisynchronisierungs-Agents aus. |
+| 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Die Datei konnte aufgrund eines Autorisierungsfehlers beim Speicherkonto nicht abgerufen werden. | Um dieses Problem zu beheben, stellen Sie sicher, dass die [Azure-Dateisynchronisierung Zugriff auf das Speicherkonto hat](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
+| 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Die Datei konnte nicht abgerufen werden, weil nicht auf die Azure-Dateifreigabe zugegriffen werden kann. | Vergewissern Sie sich, dass die Dateifreigabe vorhanden und zugänglich ist. Wenn die Dateifreigabe gelöscht und neu erstellt wurde, führen Sie die Schritte im Abschnitt [Fehler bei der Synchronisierung, weil die Azure-Dateifreigabe gelöscht und neu erstellt wurde](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) aus, um die Synchronisierungsgruppe zu löschen und neu zu erstellen. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Die Datei konnte aufgrund unzureichender Systemressourcen nicht abgerufen werden. | Wenn der Fehler weiterhin auftritt, überprüfen Sie, welche Anwendung oder welcher Kernelmodustreiber zu viele Systemressourcen beansprucht. |
+| 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | Die Datei konnte aufgrund von unzureichendem Arbeitsspeicher nicht abgerufen werden. | Wenn der Fehler weiterhin auftritt, überprüfen Sie, welche Anwendung oder welcher Kernelmodustreiber zu viel Arbeitsspeicher beansprucht. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Die Datei konnte aufgrund von unzureichendem Speicherplatz auf dem Datenträger nicht abgerufen werden. | Um dieses Problem zu beheben, geben Sie Speicherplatz auf dem Volume frei, indem Sie Dateien auf ein anderes Volume verschieben, die Größe des Volumes erhöhen oder mit dem Invoke-StorageSyncCloudTiering-Cmdlet ein Dateitiering erzwingen. |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden
 Auf mehrstufige Dateien auf einem Server kann nicht mehr zugegriffen werden, wenn für die Dateien vor dem Löschen eines Serverendpunkts kein Rückruf erfolgt.

@@ -1,7 +1,7 @@
 ---
-title: Übermitteln eines Workflows mit Shared Access Signatures – Microsoft Genomics
-titleSuffix: Azure
-description: In diesem Artikel wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
+title: Workflow mithilfe von Shared Access Signatures (SAS)
+titleSuffix: Microsoft Genomics
+description: In diesem Artikel wird veranschaulicht, wie Sie einen Workflow nicht mit Speicherkontoschlüsseln, sondern mit Shared Access Signatures (SAS) an den Microsoft Genomics-Dienst übermitteln.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657101"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248582"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Übermitteln eines Workflows per SAS anstelle eines Speicherkontoschlüssels an Microsoft Genomics 
 
@@ -33,14 +33,14 @@ Der URI für ein SAS-Token (Shared Access Signature) auf Dienstebene umfasst den
 Zwei oder mehr SAS-Token sind für jeden Workflow erforderlich, der an den Microsoft Genomics-Dienst übermittelt wird: eins für jede Eingabedatei und eins für den Ausgabecontainer.
 
 Die SAS für die Eingabedateien sollte über die folgenden Eigenschaften verfügen:
-1.  Bereich (Konto, Container, Blob): Blob
-2.  Ablauf: in 48 Stunden
-3.  Berechtigungen: Lesen
+ - Bereich (Konto, Container, Blob): Blob
+ - Ablauf: in 48 Stunden
+ - Berechtigungen: Lesen
 
 Die SAS für den Ausgabecontainer sollte über die folgenden Eigenschaften verfügen:
-1.  Bereich (Konto, Container, Blob): Container
-2.  Ablauf: in 48 Stunden
-3.  Berechtigungen: Lesen, Schreiben, Löschen
+ - Bereich (Konto, Container, Blob): Container
+ - Ablauf: in 48 Stunden
+ - Berechtigungen: Lesen, Schreiben, Löschen
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>Erstellen einer SAS für die Eingabedateien und den Ausgabecontainer

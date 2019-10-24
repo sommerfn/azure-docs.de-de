@@ -7,60 +7,33 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/21/2019
+ms.topic: reference
+ms.date: 09/24/2019
 ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: f4f7fffdde7d103271fa667bbab11c09ebc54825
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066676"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285859"
 ---
-# <a name="language-support-for-qna-maker"></a>Sprachunterstützung für QnA Maker
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Sprachunterstützung für QnA Maker-Ressourcen und Wissensdatenbanken
 
-Die Sprache einer Wissensdatenbank wirkt sich auf die Fähigkeit von QnA Maker zum automatischen Extrahieren von Fragen und Antworten aus [Quellen](../Concepts/data-sources-supported.md) aus. Sie beeinflusst auch die Relevanz der Ergebnisse, die QnA Maker als Antwort auf Benutzerabfragen zurückgibt.
+Die Sprache für den Dienst ist ausgewählt, wenn Sie die erste Wissensdatenbank in der Ressource erstellen. Alle weiteren Wissensdatenbanken in der Ressource müssen die gleiche Sprache aufweisen. 
 
-## <a name="auto-extraction"></a>Automatisches Extrahieren
-QnA Maker unterstützt das Extrahieren von Fragen und Antworten auf Seiten in jeder Sprache, aber für folgende Sprachen ist die Effektivität viel höher, da QnA Maker Stichwörter verwendet, um Fragen zu identifizieren.
+Die Sprache bestimmt die Relevanz der Ergebnisse, die QnA Maker als Antwort auf Benutzerabfragen bereitstellt.
 
-|Unterstützte Sprachen| Gebietsschema|
-|-----|----|
-|Englisch|en-*|
-|Französisch|fr-*|
-|Italienisch|it-*|
-|Deutsch|de-*|
-|Spanisch|es-*|
+Erfahren Sie mehr über den [Einfluss der Sprachauswahl](../how-to/language-knowledge-base.md).
 
-## <a name="primary-language-detection"></a>Erkennung der primären Sprache
+## <a name="languages-supported"></a>Unterstützte Sprachen
 
-Die für die Erkennung verwendete primäre Sprache wird für die QnA Maker-Ressource und alle auf dieser Ressource erstellten Wissensdatenbanken festgelegt, wenn das erste Dokument oder die erste URL der ersten Wissensdatenbank hinzugefügt wird. Die Sprache kann nicht geändert werden. 
+Die folgende Liste enthält die Sprachen, die für QnA Maker-Ressourcen unterstützt werden. 
 
-Wenn der Benutzer plant, mehrere Sprachen zu unterstützen, muss er für jede Sprache eine neue QnA Maker-Ressource verwenden. Erfahren Sie, wie Sie [eine sprachbasierte QnA Maker-Wissensdatenbank erstellen](../how-to/language-knowledge-base.md).  
-
-Überprüfen Sie die primäre Sprache mit den folgenden Schritten:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
-1. Suchen und wählen Sie die Azure Search-Ressource, die als Teil Ihrer QnA Maker-Ressource erstellt wurde. Der Name der Azure Search-Ressource beginnt mit demselben Namen wie die QnA Maker-Ressource und hat den Typ **Suchdienst**. Beachten Sie, dass nur eine QnA Maker-Ressource mit genau einer Azure Search-Ressource verknüpft werden kann.
-1. Wählen Sie auf der Seite **Übersicht** der Azure Search-Ressource die Option **Indizes** aus. 
-1. Wählen Sie den Index **testkb** aus.
-1. Wählen Sie die Registerkarte **Felder** aus. 
-1. Zeigen Sie die **Analyse**-Spalte für die Felder **Fragen** und **Antwort** an. 
-
-
-## <a name="query-matching-and-relevance"></a>Abfrageabgleich und Relevanz
-QnA Maker nutzt [Sprachanalysefunktionen](https://docs.microsoft.com/rest/api/searchservice/language-support) in der Azure-Suche, um Ergebnisse bereitzustellen. Für en-*-Sprachen sind spezielle Features zur erneuten Rangzuweisung verfügbar, die eine höhere Relevanz ermöglichen.
-
-Während die Azure Search-Funktionen für unterstützte Sprachen ebenbürtig ist, verfügt QnA Maker über ein zusätzliches Rangfolgemodul, die oberhalb der Azure Search-Ergebnisse ansetzen. In diesem Rangfolgemodul verwenden wir einige besondere semantische und wortbasierte Funktionen in en-*, die für andere Sprachen noch nicht verfügbar sind. Wir machen diese Funktionen nicht verfügbar, da sie Teil der internen Verarbeitung des QnA Maker-Rangfolgemoduls sind. 
-
-QnA Maker [erkennt die Sprache der Wissensdatenbank](#primary-language-detection) während der Erstellung automatisch und richtet die Analysefunktion entsprechend ein. Sie können Wissensdatenbanken in den folgenden Sprachen erstellen. 
-
-|Unterstützte Sprachen|
-|-----|
+|Sprache|
+|--|
 |Arabisch|
 |Armenisch|
-Bangla|
+|Bangla|
 |Baskisch|
 |Bulgarisch|
 |Katalanisch|
@@ -111,3 +84,8 @@ Bangla|
 |Ukrainisch|
 |Urdu|
 |Vietnamesisch|
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Sprachauswahl](../how-to/language-knowledge-base.md)

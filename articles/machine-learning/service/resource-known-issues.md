@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fbb09ecf09008c25c84a11c7b43dfb26450e30a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338751"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286546"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
 
@@ -185,7 +185,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Aktualisieren von Azure Machine Learning-Komponenten in einem AKS-Cluster
 
-Updates für Azure Machine Learning-Komponenten, die in einem Azure Kubernetes Service-Cluster installiert sind, müssen manuell angewendet werden. Sie können diese Updates anwenden, indem Sie den Cluster vom Azure Machine Learning-Arbeitsbereich trennen und ihn dann dem Arbeitsbereich erneut zuordnen. Ist SSL im Cluster aktiviert, müssen Sie das SSL-Zertifikat und den privaten Schlüssel bereitstellen, wenn Sie den Cluster erneut zuordnen. 
+Updates für Azure Machine Learning-Komponenten, die in einem Azure Kubernetes Service-Cluster installiert sind, müssen manuell angewendet werden. 
+
+> [!WARNING]
+> Überprüfen Sie die Version Ihres Azure Kubernetes Service-Clusters, bevor Sie die folgenden Aktionen ausführen. Wenn die Clusterversion größer oder gleich 1.14 ist, können Sie Ihren Cluster nicht erneut mit dem Azure Machine Learning Arbeitsbereich verbinden.
+
+Sie können diese Updates anwenden, indem Sie den Cluster vom Azure Machine Learning-Arbeitsbereich trennen und ihn dann dem Arbeitsbereich erneut zuordnen. Ist SSL im Cluster aktiviert, müssen Sie das SSL-Zertifikat und den privaten Schlüssel bereitstellen, wenn Sie den Cluster erneut zuordnen. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)

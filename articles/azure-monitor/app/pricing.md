@@ -13,38 +13,27 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 55ff134bfa76634250b7495120432d7310b07c06
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936697"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431878"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie Sie die Kosten für Application Insights ermitteln und steuern.  In einem verwandten Artikel, [Überwachen der Nutzung und der geschätzten Kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs), wird erläutert, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden.
 
-Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights) posten.
+Application Insights ist so konzipiert, dass es alles bietet, was Sie für die Überwachung der Verfügbarkeit, Leistung und Nutzung Ihrer Webanwendungen benötigen – ganz gleich, ob diese in Azure oder lokal gehostet werden. Zudem unterstützt Application Insights beliebte Sprachen und Frameworks wie .NET, Java und Node.js und kann in DevOps-Prozesse und -Tools wie Azure DevOps, Jira und PagerDuty integriert werden. Es ist wichtig zu verstehen, wodurch sich die Kosten für die Überwachung Ihrer Anwendungen ergeben. In diesem Artikel erfahren Sie, wie die Kosten für die Anwendungsüberwachung entstehen und wie Sie diese proaktiv überwachen und steuern können.
+
+Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gerne eine Frage in unserem [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc) posten.
 
 ## <a name="pricing-model"></a>Preismodell
 
-Die Preise für [Azure Application Insights][start] richten sich nach einem Modell mit nutzungsbasierter Bezahlung basierend auf dem verbrauchten Datenvolumen und mit optional längerer Datenaufbewahrung. Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt. 
+Die Preise für [Azure Application Insights][start] richten sich nach einem Modell mit **nutzungsbasierter Bezahlung** basierend auf dem verbrauchten Datenvolumen und mit optional längerer Datenaufbewahrung. Jede Application Insights-Ressource wird als separater Dienst abgerechnet und auf der Rechnung für Ihr Azure-Abonnement aufgeführt. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights von Ihrer Anwendung empfängt. Für die Verwendung von [Live Metrics Stream](../../azure-monitor/app/live-stream.md) fällt keine Gebühr für das Datenvolumen an.
 
-### <a name="data-volume-details"></a>Details zum Datenvolumen
-
-* Das Datenvolumen bezieht sich auf die Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights von Ihrer Anwendung empfängt. Für [in Analytics importierte Tabellendaten](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import) wird das Datenvolumen als die nicht komprimierte Größe von Dateien gemessen, die an Application Insights gesendet werden.
-* Die Datenvolumengebühren Ihrer Anwendung werden jetzt ab April 2018 auf einem neuen Verbrauchszähler mit dem Namen **Data Ingestion** gemeldet. Diese neue Verbrauchseinheit wird von Überwachungstechnologien wie Applications Insights und Log Analytics gemeinsam genutzt und steht derzeit unter dem Dienstnamen **Log Analytics** zur Verfügung. 
-* [Live Metrics Stream](../../azure-monitor/app/live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
-
-> [!NOTE]
-> Sämtliche Preise, die auf den in diesem Artikel enthaltenen Screenshots angezeigt werden, dienen nur zu Beispielzwecken. Aktuelle Preise in Ihrer Währung und für Ihre Region finden Sie auf der Seite [Application Insights – Preise][pricing].
-
-### <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
-
-Für [mehrstufige Webtests](../../azure-monitor/app/availability-multistep.md) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen.
-
-Es gibt keine gesonderte Gebühr für *Pingtests* einer einzelnen Seite. Telemetriedaten aus Pingtests und mehrstufigen Tests werden ebenso wie andere Telemetriedaten aus Ihrer App in Rechnung gestellt.
+Für [mehrstufige Webtests](../../azure-monitor/app/availability-multistep.md) wird eine zusätzliche Gebühr erhoben. Mehrstufige Webtests sind Webtests, die eine Sequenz von Aktionen ausführen. Es gibt keine gesonderte Gebühr für *Pingtests* einer einzelnen Seite. Telemetriedaten aus Pingtests und mehrstufigen Tests werden ebenso wie andere Telemetriedaten aus Ihrer App in Rechnung gestellt.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Schätzen der Kosten für die Verwaltung Ihrer Anwendung 
 
@@ -56,7 +45,7 @@ Hierfür gibt es zwei Ansätze: Verwenden der standardmäßigen Überwachung und
 
 Bei der [adaptiven Stichprobenerstellung](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications) des ASP.NET SDK wird die Datenmenge automatisch angepasst, damit sie eine festgelegte maximale Datenverkehrsrate für die standardmäßige Application Insights-Überwachung nicht überschreitet. Wenn die Anwendung wenig Telemetriedaten erzeugt (z.B. beim Debuggen oder aufgrund geringer Nutzung), werden keine Elemente vom Prozessor für Stichprobenentnahmen gelöscht, solange die Datenmenge unter dem konfigurierten Wert für Ereignisse pro Sekunde liegt. Bei einer Anwendung mit hohem Datenvolumen und dem Standardschwellenwert von fünf Ereignissen pro Sekunde, beschränkt die adaptive Stichprobenerstellung die Anzahl der täglichen Ereignisse auf 432.000. Bei einer typischen durchschnittlichen Ereignisgröße von 1 KB entspricht dies 13,4 GB an Telemetriedaten pro 31-Tage-Monat pro Knoten, auf dem Ihre Anwendung gehostet wird (da die Stichprobenerstellung lokal auf jedem Knoten erfolgt). 
 
-Bei SDKs, die keine adaptive Stichprobenerstellung unterstützen, können Sie die [Erfassungs-Stichprobenerstellung] [https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ] verwenden, bei der Stichproben erstellt werden, wenn die Daten von Application Insights basierend auf einem Prozentsatz aufzubewahrender Daten empfangen werden, oder Sie können die [Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) verwenden, um den von Ihrem Webserver und Webbrowsern gesendeten Datenverkehr zu reduzieren
+Bei SDKs, die keine adaptive Stichprobenerstellung unterstützen, können Sie die [Erfassungs-Stichprobenerstellung](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) verwenden, bei der Stichproben erstellt werden, wenn die Daten von Application Insights basierend auf einem Prozentsatz aufzubewahrender Daten empfangen werden, oder Sie können die [Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites) verwenden, um den von Ihrem Webserver und Webbrowsern gesendeten Datenverkehr zu reduzieren
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Erfahrungen ähnlicher Kunden bei der Datensammlung
 
@@ -64,7 +53,7 @@ Wenn Sie im Preisrechner für die Azure-Überwachung für Application Insights d
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Verstehen Ihrer Nutzung und Schätzen von Kosten
 
-Application Insights erleichtert das Verständnis der basierend auf den aktuellen Verwendungsmustern voraussichtlich anfallenden Kosten. Öffnen Sie zunächst im Azure-Portal in der Application Insights-Ressource die Seite **Usage and estimated costs** (Nutzung und geschätzte Kosten):
+Application Insights erleichtert das Verständnis der basierend auf den aktuellen Verwendungsmustern voraussichtlich anfallenden Kosten. Öffnen Sie zunächst im Azure-Portal in der Application Insights-Ressource die Seite **Usage and estimated costs** (Nutzung und geschätzte Kosten): 
 
 ![Auswählen von Preisen](./media/pricing/pricing-001.png)
 
@@ -73,6 +62,8 @@ B: Für [Webtests mit mehreren Schritten](../../azure-monitor/app/availability-m
 C. Zeigen Sie Trends zum Datenvolumen für den letzten Monat an.  
 D: Aktivieren Sie die Datenerfassungs-[Stichprobenerstellung](../../azure-monitor/app/sampling.md).   
 E. Legen Sie die Obergrenze für das tägliche Datenvolumen fest.  
+
+(Beachten Sie, dass sämtliche Preise, die auf den in diesem Artikel enthaltenen Screenshots angezeigt werden, nur Beispielzwecken dienen. Aktuelle Preise in Ihrer Währung und für Ihre Region finden Sie auf der Seite [Application Insights – Preise][pricing].)
 
 Um die Nutzung von Application Insights genauer zu untersuchen, öffnen Sie die Seite **Metriken**, fügen Sie die Metrik „Datenpunktvolumen“ hinzu, und wählen Sie dann die Option *Apply splitting* (Aufteilung anwenden) aus, um die Daten nach Telemetrieelementtyp aufzuteilen. 
 
@@ -105,9 +96,15 @@ systemEvents
 
 Diese Abfrage kann in einer [Azure-Protokollwarnung](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) verwendet werden, um Warnungen für Datenvolumen einzurichten. 
 
-Das Volumen der gesendeten Daten kann auf drei Arten verwaltet werden:
+Das von Ihnen gesendete Datenvolumen kann mithilfe der folgenden Verfahren verwaltet werden:
 
 * **Stichprobenerstellung**: Mit der Stichprobenerstellung kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringert werden. Die Stichprobenerstellung ist Ihr wichtigstes Tool, um die Menge der von Ihnen gesendeten Daten zu optimieren. Erfahren Sie mehr über die [Merkmale von Stichproben](../../azure-monitor/app/sampling.md).
+
+* **Begrenzen von AJAX-Aufrufen**: Sie können die [Anzahl der gemeldeten AJAX-Aufrufe für jeden Seitenaufruf begrenzen](../../azure-monitor/app/javascript.md#configuration) oder AJAX-Berichte deaktivieren.
+
+* **Deaktivieren nicht benötigter Module**: [Bearbeiten Sie „ApplicationInsights.config“](../../azure-monitor/app/configuration-with-applicationinsights-config.md), um nicht benötigte Sammlungsmodule zu deaktivieren. Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
+
+* **Aggregieren von Metriken vorab**: Wenn Sie in Ihre App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden.
  
 * **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource im Azure-Portal ist die tägliche Obergrenze auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource über Visual Studio ist klein (nur 32,3 MB pro Tag). Zur Vereinfachung von Tests ist der Standardwert für die tägliche Obergrenze festgelegt. Es ist vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. 
 
@@ -120,16 +117,6 @@ Das Volumen der gesendeten Daten kann auf drei Arten verwaltet werden:
     Wir haben die Beschränkung für bestimmte Abonnementtypen entfernt, bei denen Guthaben gewährt wurden, die nicht für Application Insights verwendet werden konnten. Wenn zuvor für das Abonnement ein Ausgabenlimit galt, enthielt das Dialogfeld mit der täglichen Obergrenze Anweisungen, wie das Ausgabenlimit zu entfernen ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.
     
 * **Drosselung**: Durch eine Drosselung wird die Datenrate auf 32.000 Ereignisse pro Sekunde eingeschränkt (gemittelt über 1 Minute pro Instrumentierungsschlüssel). Die Datenmenge, die Ihre App sendet, wird minütlich gemessen. Wenn sie die pro Sekunde, über eine Minute gemittelt Datenmenge überschreitet, lehnt der Server einige Anforderungen ab. Das SDK puffert die Daten und versucht dann, diese erneut zu senden. Es führt zu einem mehrere Minuten andauernden Anstieg. Wenn Ihre App die Drosselungsrate beim Senden von Daten laufend überschreitet, werden einige Daten gelöscht. (Die ASP.NET-, Java- und JavaScript-SDKs versuchen, Daten auf diese Weise erneut zu senden, wohingegen andere SDKs gedrosselte Daten möglicherweise einfach löschen.) Tritt eine Drosselung auf, erhalten Sie zur Warnung eine Benachrichtigung über diesen Vorgang.
-
-## <a name="reduce-your-data-volume"></a>Reduzieren des Datenvolumens
-
-Hier sind einige Schritte, die Sie ausführen können, um Ihr Datenvolumen zu reduzieren:
-
-* Verwenden Sie [Stichproben](../../azure-monitor/app/sampling.md). Durch diese Technologie wird Ihre Datenrate ohne Datenschiefe bei Ihren Metriken reduziert. Sie können weiterhin zwischen verwandten Elementen in der Search navigieren. Bei Server-Apps erfolgt die Stichprobenerstellung automatisch.
-* [Begrenzen Sie die Anzahl der gemeldeten AJAX-Aufrufe](../../azure-monitor/app/javascript.md#configuration) für jeden Seitenaufruf, oder deaktivieren Sie AJAX-Berichte.
-* [Bearbeiten Sie „ApplicationInsights.config“](../../azure-monitor/app/configuration-with-applicationinsights-config.md), um nicht benötigte Sammlungsmodule zu deaktivieren. Das kann z. B. für Leistungsindikator- oder Abhängigkeitsdaten gelten.
-* Teilen Sie Ihre Telemetrie auf getrennte Instrumentierungsschlüssel auf. 
-* Aggregieren Sie Metriken vorab. Wenn Sie in Ihre App Aufrufe an TrackMetric eingefügt haben, können Sie Datenverkehr reduzieren, indem Sie die Überladung verwenden, die Ihre Berechnung des Durchschnitts und die Standardabweichung eines Batches von Messungen akzeptiert. Oder Sie können ein [vorab aggregierendes Paket](https://www.myget.org/gallery/applicationinsights-sdk-labs) verwenden.
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Verwalten Ihres maximalen täglichen Datenvolumens
 
@@ -183,7 +170,7 @@ Wenn Sie die Aufbewahrungsdauer ändern möchten, rufen Sie in der Application I
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-005.png)
 
-Die Aufbewahrungsdauer kann auch [über ARM](https://docs.microsoft.com/azure/azure-monitor/app/powershell) mithilfe des Parameters `retentionInDays` festgelegt werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie außerdem mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen, was für konformitätsrelevante Szenarien nützlich sein kann. Diese Funktionalität wird ausschließlich über ARM verfügbar gemacht. 
+Die Aufbewahrungsdauer kann auch [programmgesteuert mithilfe von PowerShell](powershell.md) anhand des Parameters `retentionInDays` festgelegt werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie außerdem mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen, was für konformitätsrelevante Szenarien nützlich sein kann. Diese Bereinigungsfunktion wird nur über Azure Resource Manager bereitgestellt und sollte mit äußerster Sorgfalt verwendet werden. 
 
 Wenn die Abrechnung für eine längere Aufbewahrung Anfang Dezember 2019 beginnt, werden Daten, die länger als 90 Tage aufbewahrt werden, mit dem gleichen Tarif abgerechnet, der derzeit für die Datenaufbewahrung von Azure Log Analytics abgerechnet wird. Weitere Informationen finden Sie unter [Preise für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). Bleiben Sie über den Fortschritt bezüglich der variablen Aufbewahrung auf dem Laufenden, indem Sie [für diesen Vorschlag stimmen](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031). 
 

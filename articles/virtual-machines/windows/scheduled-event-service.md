@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051857"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376196"
 ---
 # <a name="monitoring-scheduled-events"></a>Überwachen von geplanten Ereignissen
 
@@ -164,7 +164,7 @@ Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folg
 1. Wählen Sie unter **Aktionen** die Option **Aktionsgruppe erstellen** aus. Die Seite **Aktionsgruppe hinzufügen** wird geöffnet.
 1. Geben Sie in **Name der Aktionsgruppe** den Namen *myActionGroup* ein.
 1. Geben Sie in **Kurzname** den Namen **myActionGroup** ein.
-1. Wählen Sie in **Ressourcengruppe** den Eintrag *myResourceGroupAvailability** aus.
+1. Wählen Sie unter **Ressourcengruppe** den Eintrag **myResourceGroupAvailability** aus.
 1. Geben Sie in **AKTIONSNAME** den Namen **E-Mail** ein, und wählen Sie dann **E-Mail/SMS/Push/Sprache** aus. Die Seite **E-Mail/SMS/Push/Sprache** wird geöffnet.
 1. Wählen Sie **E-Mail** aus, geben Sie Ihre E-Mail-Adresse ein, und wählen Sie dann **OK** aus.
 1. Wählen Sie auf der Seite **Aktionsgruppe hinzufügen** die Option **OK** aus. 

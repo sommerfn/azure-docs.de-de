@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170265"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300599"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -375,14 +375,15 @@ So erstellen Sie den Lastenausgleich
 
 1. Konfigurieren Sie Folgendes für den Load Balancer (Lastenausgleich):
 
-   - **Name**: Ein Name, mit dem der Lastenausgleich identifiziert wird.
-   - **Typ**: Der Lastenausgleich kann entweder öffentlich oder privat sein. Auf einen privaten Lastenausgleich kann aus demselben VNET zugegriffen werden. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
-   - **Virtuelles Netzwerk**: Dies ist dasselbe Netzwerk wie für die virtuellen Computer.
-   - **Subnetz**: Dies ist dasselbe Subnetz wie für die virtuellen Computer.
-   - **Private IP-Adresse**: Dies ist die gleiche IP-Adresse, die Sie der Clusternetzwerkressource der SQL Server-FCI zugewiesen haben.
    - **Abonnement**: Ihr Azure-Abonnement.
    - **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihre virtuellen Computer.
-   - **Standort**: Verwenden Sie denselben Azure-Standort wie für Ihre virtuellen Computer.
+   - **Name**: Ein Name, mit dem der Lastenausgleich identifiziert wird.
+   - **Region**: Verwenden Sie denselben Azure-Standort wie für Ihre virtuellen Computer.
+   - **Typ**: Der Lastenausgleich kann entweder öffentlich oder privat sein. Auf einen privaten Lastenausgleich kann aus demselben VNET zugegriffen werden. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
+   - **SKU**: Für den Lastenausgleich sollte die Standard-SKU verwendet werden. 
+   - **Virtuelles Netzwerk**: Dies ist dasselbe Netzwerk wie für die virtuellen Computer.
+   - **IP-Adresszuweisung**: Die IP-Adresszuweisung sollte statisch sein. 
+   - **Private IP-Adresse**: Dies ist die gleiche IP-Adresse, die Sie der Clusternetzwerkressource der SQL Server-FCI zugewiesen haben.
    Sehen Sie sich die folgende Abbildung an:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

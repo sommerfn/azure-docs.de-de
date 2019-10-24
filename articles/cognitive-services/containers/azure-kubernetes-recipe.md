@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Kubernetes Service
+title: Ausführen des Spracherkennungscontainers in Kubernetes Service
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Stellen Sie den Sprachenerkennungscontainer mit einem ausgeführten Beispiel in Azure Kubernetes Service bereit, und testen Sie ihn in einem Webbrowser.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066104"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515237"
 ---
-# <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Sprachenerkennungscontainers in Azure Kubernetes Service
+# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Spracherkennungscontainers der Textanalyse in Azure Kubernetes Service
 
 Hier erfahren Sie, wie Sie den Sprachenerkennungscontainer bereitstellen. In dem Verfahren wird gezeigt, wie Sie die lokalen Docker-Container erstellen, Container per Push in Ihre eigene private Containerregistrierung übertragen, den Container in einem Kubernetes-Cluster ausführen und ihn in einem Webbrowser testen.
 

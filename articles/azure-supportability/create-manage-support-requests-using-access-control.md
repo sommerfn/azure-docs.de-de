@@ -1,20 +1,24 @@
 ---
-title: Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure zum Steuern von Zugriffsrechten für die Erstellung und Verwaltung von Supportanfragen | Microsoft-Dokumentation
+title: Zugriffssteuerung für das Erstellen von Supportanfragen im Azure-Portal
 description: Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure zum Steuern von Zugriffsrechten für die Erstellung und Verwaltung von Supportanfragen
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 328f4928aff6a892849ce3e08fe794578b5e03a4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967808"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299262"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure zum Steuern von Zugriffsrechten für die Erstellung und Verwaltung von Supportanfragen
+
+> [!IMPORTANT]
+> Diese manuelle Methode zum Steuern von Zugriffsrechten für Supportanfragen in Azure wurde durch eine integrierte Rolle ersetzt. Weitere Informationen finden Sie unter [Mitwirkender für Supportanfragen](../role-based-access-control/built-in-roles.md#support-request-contributor). 
 
 Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) ermöglicht eine präzise Zugriffsverwaltung für Azure.
 für die Supportanfragenerstellung im Azure-Portal ([portal.azure.com](https://portal.azure.com)) wird mithilfe des RBAC-Modells von Azure definiert, wer zum Erstellen und Verwalten von Supportanfragen berechtigt ist.

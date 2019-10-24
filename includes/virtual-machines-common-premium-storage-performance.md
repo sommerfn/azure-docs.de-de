@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71975301"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391646"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -286,24 +286,24 @@ Für alle Premium SSDs oder Ultra Disks mit der Cacheeinstellung **ReadOnly** od
 * Aktivieren Sie Sperren für Storage Premium-Datenträger mit der Cacheeinstellung **ReadWrite**, um Beständigkeit für Schreibvorgänge zu erzielen.
 * Damit Volumebezeichnungen nach dem Neustart der VM beibehalten werden, müssen Sie „/etc/fstab“ mit den UUID-Verweisen (Universally Unique Identifier) auf die Datenträger aktualisieren. Weitere Informationen finden Sie unter [Hinzufügen eines verwalteten Datenträgers zu einem virtuellen Linux-Computer](../articles/virtual-machines/linux/add-disk.md).
 
-Die folgenden Linux-Distributionen wurden für Premium SSDs überprüft. Es wird empfohlen, dass Sie Ihre virtuellen Computer auf mindestens eine dieser Versionen (oder eine höhere Version) aktualisieren, um eine bessere Leistung und Stabilität mit Premium SSDs zu erzielen. 
+Die folgenden Linux-Distributionen wurden für SSD Premium-Datenträger überprüft. Es wird empfohlen, dass Sie Ihre virtuellen Computer auf mindestens eine dieser Versionen (oder eine höhere Version) aktualisieren, um eine bessere Leistung und Stabilität mit SSD Premium-Datenträgern zu erzielen. 
 
 Für einige Versionen sind die neuesten Linux-Integrationsdienste (LIS v4.0) für Azure erforderlich. Verwenden Sie den in der folgenden Tabelle angegebenen Link, um eine Distribution herunterzuladen und zu installieren. Wir fügen der Liste weitere Images hinzu, wenn die jeweilige Überprüfung abgeschlossen ist. Unser Überprüfungen zeigen, dass die Leistung für jedes Image variiert. Die Leistung hängt von den Workloadmerkmalen und Ihren Imageeinstellungen ab. Verschiedene Images werden für verschiedene Arten von Workloads optimiert.
 
 | Distribution | Version | Unterstützter Kernel | Details |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
-| Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
-| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 erforderlich](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 empfohlen](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
-| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
-| Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 oder RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Ubuntu | 12.04 oder höher| 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
+| Ubuntu | 14.04 oder höher| 3.13.0-44.73+  | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Debian | 7.x, 8.x oder höher| 3.16.7-ckt4-1+ | &nbsp; |
+| SUSE | SLES 12 oder höher| 3.12.36-38.1+ | suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 11 SP4 oder höher| 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0+ oder höher| 3.18.4+ | CoreOS 584.0.0 |
+| CentOS | 6.5, 6.6, 6.7, 7.0 oder höher| &nbsp; | [LIS4 erforderlich](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
+| CentOS | 7.1+ oder höher| 3.10.0-229.1.2.el7+ | [LIS4 empfohlen](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Siehe Hinweis im nächsten Abschnitt* |
+| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ oder höher | &nbsp; | &nbsp; |
+| Oracle | 6.0+, 7.2+ oder höher | &nbsp; | UEK4 oder RHCK |
+| Oracle | 7.0-7.1 oder höher | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 oder höher | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>LIS-Treiber für OpenLogic CentOS
 

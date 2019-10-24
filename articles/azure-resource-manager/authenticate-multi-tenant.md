@@ -4,14 +4,14 @@ description: Beschreibt, wie Azure Resource Manager Authentifizierungsanforderun
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 625a17156eaf199af0d51151c6fd37769b8f7b4a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848754"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300349"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Mandantenübergreifende Authentifizierung von Anforderungen
 
@@ -37,5 +37,6 @@ Wenn Ihre App eine Anforderung an den Resource Manager sendet, wird diese unter 
 Wenn die Anforderung auf eine Ressource von einem anderen Mandanten verweist, überprüft der Resource Manager die zusätzlichen Token, um festzustellen, ob die Anforderung bearbeitet werden kann. Alle zusätzliche Token im Header müssen gültig und nicht abgelaufen sein. Wenn Token abgelaufen sind, gibt Resource Manager Antwortcode 401 zurück. Die Antwort enthält die Client-ID und die Mandanten-ID des ungültigen Token. Wenn der Hilfsheader ein gültiges Token für den Mandanten enthält, wird die mandantenübergreifende Anforderung bearbeitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Senden von Authentifizierungsanforderungen mit den Azure Resource Manager-APIs finden Sie unter [Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md).
-* Weitere Informationen zu Token finden Sie unter [Azure Active Directory-Zugriffstoken](/azure/active-directory/develop/access-tokens).
+
+* Informationen zu Authentifizierungsanforderungen finden Sie unter [Authentifizierungsflows und Anwendungsszenarien](../active-directory/develop/authentication-flows-app-scenarios.md).
+* Weitere Informationen zu Token finden Sie unter [Azure Active Directory-Zugriffstoken](../active-directory/develop/access-tokens.md).

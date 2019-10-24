@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: dcfe3807057e9c438d5705b4293de0e76aea8688
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f8f7c33abda8d31d39051a024b9cc381c9f6b192
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008503"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387948"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -118,7 +118,7 @@ Informationen zum Kopieren von Daten aus Amazon S3 im **Parquet-Format, Textform
 | version | Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. Wenn dies nicht angegeben ist, wird die neueste Version abgerufen. |Nein |
 
 > [!NOTE]
-> Das Dataset vom Typ **AmazonS3Object** mit dem im nächsten Abschnitt beschriebenen Parquet-Format/Textformat wird aus Gründen der Abwärtskompatibilität weiterhin unverändert für Kopieren-/Suchen-/GetMetadata-Aktivitäten unterstützt, funktioniert aber nicht mit Mapping Data Flow. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden, da diese neuen Typen nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert werden.
+> Das Dataset vom Typ **AmazonS3Object** mit dem im nächsten Abschnitt beschriebenen Parquet-/Textformat wird aus Gründen der Abwärtskompatibilität weiterhin unverändert für Copy-/Lookup-/GetMetadata-Aktivitäten unterstützt, funktioniert aber nicht mit dem Zuordnungsdatenfluss. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden, da diese neuen Typen nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert werden.
 
 **Beispiel:**
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 991cfb54dc511c284c5f5d0cf1807d5dd42b34ea
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978070"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330762"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -44,6 +44,9 @@ Für die Auswirkung **EnforceRegoPolicy** gibt es derzeit keine Reihenfolge der 
 ## <a name="disabled"></a>Deaktiviert
 
 Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswirkung durch die Richtliniendefinition hilfreich. Aufgrund dieser Flexibilität kann eine einzelne Zuweisung deaktiviert werden, statt alle Zuweisungen dieser Richtlinie zu deaktivieren.
+
+Eine Alternative zur Auswirkung „Deaktiviert“ stellt die Eigenschaft **enforcementMode** dar, die in der Richtlinienzuweisung festgelegt wird.
+Wenn für **enforcementMode**  der Wert _Disabled_ festgelegt ist, werden Ressourcen dennoch ausgewertet. Eine Protokollierung, z.B. Aktivitätsprotokolle, und die Richtlinienauswirkung treten nicht auf. Weitere Informationen finden Sie unter [Richtlinienzuweisung – Erzwingungsmodus](./assignment-structure.md#enforcement-mode).
 
 ## <a name="append"></a>Anfügen
 
@@ -96,8 +99,7 @@ Beispiel 2: Einzelnes **field/value**-Paar, das einen **[\*]** [-Alias](definit
 
 ## <a name="modify"></a>Ändern
 
-„Modify“ wird verwendet, um Tags während der Erstellung oder Aktualisierung einer Ressource hinzuzufügen, zu aktualisieren oder zu entfernen. Ein häufiges Beispiel ist die Aktualisierung von Tags für Ressourcen wie „costCenter“. Für eine Modify-Richtlinie sollte `mode` immer auf _Indexed_ festgelegt sein. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden.
-Eine einzelne Modify-Regel kann eine beliebige Anzahl von Vorgängen aufweisen.
+„Modify“ wird verwendet, um Tags während der Erstellung oder Aktualisierung einer Ressource hinzuzufügen, zu aktualisieren oder zu entfernen. Ein häufiges Beispiel ist die Aktualisierung von Tags für Ressourcen wie „costCenter“. Für eine Modify-Richtlinie sollte `mode` immer auf _Indexed_ festgelegt sein, es sei denn, die Zielressource ist eine Ressourcengruppe. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden. Eine einzelne Modify-Regel kann eine beliebige Anzahl von Vorgängen aufweisen.
 
 > [!IMPORTANT]
 > Modify ist derzeit nur für die Verwendung mit Tags vorgesehen. Wenn Sie Tags verwalten, wird empfohlen, „Modify“ anstelle von „Append“ zu verwenden, da „Modify“ zusätzliche Vorgangstypen und die Möglichkeit bietet, vorhandene Ressourcen zu korrigieren. „Append“ wird jedoch empfohlen, wenn Sie keine verwaltete Identität erstellen können.

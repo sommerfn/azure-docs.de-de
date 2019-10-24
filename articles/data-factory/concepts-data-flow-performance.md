@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 9db1b96cb495fd0de452091da79ab61f7ae59118
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030712"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72387316"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -23,11 +23,11 @@ Stellen Sie beim Entwerfen und Testen von Datenflüssen auf der Benutzeroberflä
 
 Beim Entwerfen einer Mapping Data Flow-Funktion können Sie Komponententests für die einzelnen Transformationen durchführen, indem Sie im Konfigurationsbereich auf die Registerkarte für die Datenvorschau klicken. Nachdem Sie die Logik überprüft haben, führen Sie einen End-to-End-Test des Datenflusses als Aktivität in einer Pipeline durch. Fügen Sie eine Aktivität zum Ausführen der Datenflussaktivität (Execute Data Flow) aus, und verwenden Sie die Schaltfläche „Debug“ zum Testen der Leistung des Datenflusses. Um den Ausführungsplan und das Leistungsprofil Ihres Datenflusses zu öffnen, klicken Sie auf der Registerkarte „Ausgabe“ der Pipeline unter „Aktionen“ auf das Brillensymbol.
 
-![Datenflussmonitor](media/data-flow/mon002.png "Datenflussmonitor 2")
+![Datenflussüberwachung](media/data-flow/mon002.png "Datenflussüberwachung 2")
 
  Anhand dieser Informationen können Sie die Leistung des Datenflusses für Datenquellen verschiedener Größen schätzen. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
 
-![Datenflussüberwachung](media/data-flow/mon003.png "Datenflussmonitor 3")
+![Datenflussüberwachung](media/data-flow/mon003.png "Datenflussüberwachung 3")
 
  Bei Debugausführungen der Pipeline muss ungefähr eine Minute Einrichtungszeit für den Cluster in die Berechnung der Gesamtleistung für einen „warmen“ Cluster eingerechnet werden. Wenn Sie die standardmäßige Azure Integration Runtime initialisieren, kann die Einrichtungszeit etwa 5 Minuten betragen.
 
@@ -37,7 +37,7 @@ Durch eine Integration Runtime mit mehr Kernen wird die Anzahl der Knoten in den
 * Versuchen Sie es mit einem **computeoptimierten** Cluster, wenn die Verarbeitungsrate höher als die Eingaberate sein soll.
 * Versuchen Sie es mit einem **arbeitsspeicheroptimierten** Cluster, wenn Sie mehr Daten im Arbeitsspeicher zwischenspeichern möchten.
 
-![Neue IR](media/data-flow/ir-new.png "Neue IR")
+![Neue Integration Runtime](media/data-flow/ir-new.png "Neue Integration Runtime")
 
 Weitere Informationen zum Erstellen einer Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
 
@@ -56,7 +56,7 @@ Standardmäßig wird beim Aktivieren des Debugmodus die standardmäßige Azure I
 1. Wenn Sie **Spalte** ausgewählt haben, wählen Sie noch die Partitionsspalte aus.
 1. Wenn Sie **Abfrage** ausgewählt haben, geben Sie eine Abfrage ein, die dem Partitionierungsschema Ihrer Datenbanktabelle entspricht. Diese Abfrage ermöglicht der Quelldatenbank-Engine die Nutzung der Partitionsbeseitigung. Ihre Quelldatenbanktabellen müssen nicht partitioniert werden. Ist Ihre Quelle nicht bereits partitioniert, wird von ADF die Datenpartitionierung in der Spark-Transformationsumgebung weiterhin basierend auf dem in der Quelltransformation ausgewählten Schlüssel verwendet.
 
-![Bereich für die Quelle](media/data-flow/sourcepart3.png "Bereich für die Quelle")
+![Quellteil](media/data-flow/sourcepart3.png "Quellteil")
 
 ### <a name="source-batch-size-input-and-isolation-level"></a>Batchgröße, Eingabe und Isolationsstufe der Quelle
 
@@ -66,7 +66,7 @@ Die folgenden Einstellungen unter **Quelloptionen** in der Quelltransformation k
 * Durch das Festlegen einer Abfrage können Sie Zeilen an der Quelle filtern, bevor sie im Datenfluss zur Verarbeitung eintreffen. Dadurch kann die anfängliche Datenerfassung beschleunigt werden. Wenn Sie eine Abfrage verwenden, können Sie optionale Abfragehinweise für Ihre Azure SQL-Datenbank-Instanz hinzufügen, z.B. READ UNCOMMITTED.
 * READ UNCOMMITTED bietet schnellere Abfrageergebnisse zur Quelltransformation.
 
-![Quelle](media/data-flow/source4.png "Quelle")
+![Quelle](media/data-flow/source4.png "`Source`")
 
 ### <a name="sink-batch-size"></a>Batchgröße für die Senke
 

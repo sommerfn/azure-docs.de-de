@@ -1,23 +1,23 @@
 ---
 title: 'Azure Data Factory-Datenfluss: Verschieben von Knoten'
-description: Verschieben von Knoten in einem Diagramm zum Azure Data Factory-Mappingdatenfluss
+description: Verschieben von Knoten in einem Diagramm zu Azure Data Factory Mapping Data Flow
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2031820843342fb7e6b115865297e08cbee28a0a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030188"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387329"
 ---
 # <a name="mapping-data-flow-move-nodes"></a>Mapping Data Flow: Verschieben von Knoten
 
 
 
-![Optionen für die Transformation zum Aggregieren](media/data-flow/agghead.png "Aggregatorheader")
+![Optionen für die Transformation für das Aggregieren](media/data-flow/agghead.png "Aggregator-Header")
 
 Die Azure Data Factory-Datenfluss-Entwurfsoberfläche ist eine „Konstruktionsoberfläche“, mit der Sie Datenflüsse von oben nach unten und von links nach rechts erstellen können. Jeder Transformation mit einem Pluszeichen (+) ist eine Toolbox angefügt. Konzentrieren Sie sich auf Ihre Geschäftslogik, statt auf das Verbinden von Knoten über Edges in einer Freiform-DAG-Umgebung.
 

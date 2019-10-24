@@ -1,21 +1,21 @@
 ---
-title: 'Microsoft Genomics: Senden einer Supportanfrage | Microsoft-Dokumentation'
-titleSuffix: Azure
-description: Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft Genomics wenden. Das kann hilfreich sein, wenn Sie Ihr Problem nicht mithilfe des Leitfadens zur Problembehandlung oder der FAQ beheben können.
+title: Senden einer Supportanfrage
+titleSuffix: Microsoft Genomics
+description: In diesem Artikel wird beschrieben, wie Sie eine Supportanfrage zur Kontaktaufnahme mit Microsoft Genomics senden können, wenn Sie ein Problem nicht mithilfe des Handbuchs zur Problembehandlung oder anhand der häufig gestellten Fragen beheben können.
 keywords: Problembehandlung, Fehler, Debuggen, Support
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ed37d42d8ec1692cc5edb62b68536803f47205f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721244"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248608"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Kontaktaufnahme mit dem Microsoft Genomics-Support
 Diese Übersicht beschreibt, wie Sie sich mit einer Supportanfrage an Microsoft Genomics wenden. Das kann hilfreich sein, wenn Sie Ihr Problem nicht mithilfe des [Leitfadens zur Problembehandlung](troubleshooting-guide-genomics.md) oder der [FAQ](frequently-asked-questions-genomics.md) beheben können. 

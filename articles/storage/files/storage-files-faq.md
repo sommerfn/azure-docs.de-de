@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 6fecd143055da2829ac49cee4f50d448a37a6e1b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103055"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514885"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -344,7 +344,12 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 * <a id="need-larger-share"></a>
 **Welche Größen sind für Azure-Dateifreigaben verfügbar?**  
-    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB zentral hochskaliert werden. Premium-Dateifreigaben in Größen bis zu 100TiB stehen als GA-Angebot zur Verfügung. Standard-Dateifreigaben in Größen bis zu 5TiB sind als GA-Angebot verfügbar, Größen bis zu 100TiB in der Vorschau. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) des Planungshandbuchs finden Sie Onboardinganweisungen zur Vorschau für größere Dateifreigaben im Standard-Tarif.
+    Azure-Dateifreigaben (Premium und Standard) können bis zu 100TiB zentral hochskaliert werden. Im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) des Planungshandbuchs finden Sie Onboardinganweisungen zu größeren Dateifreigaben für den Standard-Tarif.
+
+* <a id="lfs-performance-impact"></a>
+**Wirkt sich eine Erweiterung meines Dateifreigabekontingents auf meine Workloads oder die Azure-Dateisynchronisierung aus?**
+    
+    Nein. Eine Kontingenterweiterung hat keine Auswirkungen auf Ihre Workloads oder die Azure-Dateisynchronisierung.
 
 * <a id="open-handles-quota"></a>
 **Wie viele Clients können gleichzeitig auf dieselbe Datei zugreifen?**    

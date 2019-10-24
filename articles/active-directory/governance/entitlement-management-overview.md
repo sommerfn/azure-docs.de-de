@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827154"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430298"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Was ist die Azure AD-Berechtigungsverwaltung? (Vorschau)
 
@@ -77,7 +77,7 @@ Sie können mit der Berechtigungsverwaltung die folgenden Typen von Ressourcen v
 - Azure AD-Enterprise-Anwendungen einschließlich SaaS-Anwendung und benutzerdefinierter integrierter Anwendungen, die Verbund oder Bereitstellung unterstützen
 - SharePoint Online-Websitesammlungen und -Websites
 
-Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Office 365-Gruppen basieren.  Beispiel:
+Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Office 365-Gruppen basieren.  Beispiel:
 
 - Sie können Benutzerlizenzen für Microsoft Office 365 mit einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und Konfigurieren der [gruppenbasierten Lizenzierung](../users-groups-roles/licensing-groups-assign.md) für diese Gruppe vergeben.
 - Sie können Benutzern mithilfe einer Azure AD-Sicherheitsgruppe in einem Zugriffspaket und Erstellen einer [Azure-Rollenzuweisung](../../role-based-access-control/role-assignments-portal.md) für diese Gruppe Zugriff zum Verwalten von Azure-Ressourcen erteilen.
@@ -104,16 +104,6 @@ Im folgenden Diagramm wird ein Beispiel für die verschiedenen Elemente der Bere
 - **Zugriffspaket 2** enthält als Ressourcen eine Gruppe, eine Anwendung und eine SharePoint Online-Website. Der Zugriff wird mit zwei verschiedenen Richtlinien definiert. Die erste Richtlinie ermöglicht einer Gruppe von Benutzern im Verzeichnis das Anfordern des Zugriffs. Die zweite Richtlinie ermöglicht Benutzern in einem externen Verzeichnis das Anfordern des Zugriffs.
 
 ![Übersicht über die Berechtigungsverwaltung](./media/entitlement-management-overview/elm-overview.png)
-
-## <a name="external-users"></a>Externe Benutzer
-
-Wenn Sie [Azure AD Business-to-Business (B2B)](../b2b/what-is-b2b.md)-Einladungen verwenden, müssen Sie bereits die E-Mail-Adressen der externen Gastbenutzer kennen, die Sie in das Ressourcenverzeichnis aufnehmen möchten, um mit ihnen zu arbeiten. Dies lässt sich leicht durchführen, wenn Sie an einem kleineren oder kurzfristigen Projekt arbeiten und bereits alle Teilnehmer kennen. Es ist jedoch schwieriger, wenn Sie mit vielen Benutzern arbeiten möchten oder wenn die Teilnehmer im Lauf der Zeit wechseln.  Angenommen, Sie arbeiten mit einer anderen Organisation zusammen und haben einen Ansprechpartner in dieser Organisation, im Laufe der Zeit benötigen jedoch weitere Benutzer in dieser Organisation ebenfalls Zugriff.
-
-Mit der Berechtigungsverwaltung können Sie eine Richtlinie definieren, die Benutzern aus Organisationen, die Sie angeben und die ebenfalls Azure AD verwenden, das Anfordern eines Zugriffspakets ermöglicht. Sie können ein Ablaufdatum für den Zugriff angeben und festlegen, ob eine Genehmigung erforderlich ist. Wenn eine Genehmigung erforderlich ist, können Sie auch einen oder mehrere Benutzer in der externen Organisation, die Sie zuvor eingeladen haben, als genehmigende Person festlegen, da diese wahrscheinlich wissen, welche externen Benutzer in ihrer Organisation Zugriff benötigen. Nachdem Sie das Zugriffspaket konfiguriert haben, können Sie der Kontaktperson in der externen Organisation einen Link zu dem Zugriffspaket senden. Diese Kontaktperson kann den Link für andere Benutzer in der externen Organisation freigeben, und diese können mit diesem Link das Zugriffspaket anfordern.  Benutzer in dieser Organisation, die bereits in Ihr Verzeichnis eingeladen wurden, können diesen Link ebenfalls verwenden.
-
-Wenn eine Anforderung genehmigt wurde, gewährt die Berechtigungsverwaltung dem Benutzer den erforderlichen Zugriff. Dies kann das Einladen des Benutzers umfassen, falls er sich noch nicht in Ihrem Verzeichnis befindet. Azure AD erstellt automatisch ein B2B-Konto für den Benutzer.  Beachten Sie, dass ein Administrator möglicherweise durch das Festlegen einer [B2B-Zulassungs- oder -Verweigerungsliste](../b2b/allow-deny-list.md), die Einladungen an andere Organisationen zulässt oder blockiert, festgelegt hat, welche Organisationen für die Zusammenarbeit zugelassen werden.  Wenn die Zulassungs- oder Verweigerungsliste den Benutzer nicht zulässt, wird er nicht eingeladen.
-
-Da der Zugriff des Benutzers nicht unbefristet sein soll, geben Sie in der Richtlinie ein Ablaufdatum, z.B. 180 Tage, an. Nach 180 Tagen wird sämtlicher mit dem Zugriffspaket verknüpfte Zugriff durch die Zugriffsverwaltung entfernt, sofern er nicht erneuert wird.  Wenn der Benutzer, der über die Berechtigungsverwaltung eingeladen wurde, nach Ende der Zuweisung über keine weiteren Zuweisungen von Zugriffspaketen verfügt, wird die Anmeldung über sein B2B-Konto 30 Tage lang gesperrt, und anschließend wird das Konto entfernt.  Auf diese Weise lassen sich unnötige Konten verhindern.  
 
 ## <a name="terminology"></a>Begriff
 

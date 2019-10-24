@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034195"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516570"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Verwenden von IoT Edge unter Windows zum Ausführen von Linux-Containern
 
@@ -92,20 +92,25 @@ Mehr über die verschiedenen Installationsoptionen und -parameter finden Sie im 
 
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
-Überprüfen Sie den Status des IoT Edge-Diensts. Er sollte als „Wird ausgeführt“ aufgelistet werden.  
+Überprüfen Sie den Status des IoT Edge-Diensts: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Untersuchen Sie die Dienstprotokolle der letzten fünf Minuten. 
+Untersuchen Sie die Dienstprotokolle der letzten fünf Minuten: 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Führen Sie ausgeführte Module auf. Nach einer Neuinstallation sollte als einziges Modul **edgeAgent** ausgeführt werden. Nachdem Sie [IoT Edge-Module](how-to-deploy-modules-portal.md) zum ersten Mal bereitgestellt haben, wird das andere Systemmodul namens **edgeHub** ebenfalls auf dem Gerät gestartet. 
+Führen Sie eine automatisierte Überprüfung auf die häufigsten Konfigurations- und Netzwerkfehler durch: 
 
+```powershell
+iotedge check
+```
+
+Führen Sie ausgeführte Module auf. Nach einer Neuinstallation sollte als einziges Modul **edgeAgent** ausgeführt werden. Nachdem Sie [IoT Edge-Module](how-to-deploy-modules-portal.md) zum ersten Mal bereitgestellt haben, wird das andere Systemmodul namens **edgeHub** ebenfalls auf dem Gerät gestartet. 
 
 ```powershell
 iotedge list

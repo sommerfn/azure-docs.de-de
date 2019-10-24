@@ -1,20 +1,20 @@
 ---
-title: Versionsverlauf – Microsoft Genomics
-titleSuffix: Azure
-description: Microsoft Genomics aktualisiert regelmäßig den Microsoft Genomics-Python-Client, um Fehlerbehebungen und neue Funktionen einzuführen.
+title: Verlauf der Versionsveröffentlichungen
+titleSuffix: Microsoft Genomics
+description: Der Verlauf der Aktualisierungsveröffentlichungen für den Microsoft Genomics-Python-Client, um Fehlerbehebungen und neue Funktionen einzuführen.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780949"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249154"
 ---
 # <a name="version-release-history"></a>Verlauf der Versionsveröffentlichungen
 Das Microsoft Genomics-Team aktualisiert regelmäßig den Microsoft Genomics-Python-Client um Fehlerbehebungen und neue Funktionen einzuführen. 

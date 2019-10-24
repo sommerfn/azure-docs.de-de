@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 930e482ab85113ac802932929fdbea358ee26035
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619479"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430857"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Sichern von Workload-VMs in einer privaten CloudSimple-Cloud mithilfe von Veeam B&R
 
@@ -105,7 +105,7 @@ Folgendes ist erforderlich, bevor Sie mit der Veeam-Bereitstellung beginnen kön
 * Ein Azure-Abonnement, dessen Besitzer Sie sind.
 * Eine vorab Erstellte Azure-Ressourcengruppe.
 * Ein virtuelles Azure-Netzwerk in Ihrem Abonnement.
-* Ein Azure-Speicherkonto.
+* Ein Azure-Speicherkonto
 * Eine [private Cloud](create-private-cloud.md), die mithilfe des CloudSimple-Portals erstellt wurde.  
 
 Die folgenden Elemente werden während der Implementierungsphase benötigt:
@@ -170,7 +170,7 @@ Stellen Sie eine Verbindung zwischen Ihrem virtuellen Netzwerk und der privaten 
 3. Konfigurieren Sie eine Netzwerksicherheitsgruppe (NSG) für den virtuellen Computer. Vergewissern Sie sich, dass der virtuelle Computer nicht über eine öffentliche IP-Adresse verfügt und über das öffentliche Internet nicht erreichbar ist.
 4. Erstellen Sie einen Benutzernamen und ein kennwortbasiertes Benutzerkonto für die neue VM. Anleitungen dazu finden Sie unter [Erstellen eines virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md).
 5. Erstellen Sie eines HDD Standard-Datenträgers mit 1x512 GiB, und fügen Sie ihn an die Repository-VM an.  Anleitungen dazu finden Sie unter [Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal](../virtual-machines/windows/attach-managed-disk-portal.md).
-6. [Erstellen Sie ein XFS-Volume auf dem verwalteten Datenträger](https://www.digitalocean.com/docs/volumes/how-to/format-and-mount). Melden Sie sich mit den zuvor erwähnten Anmeldeinformationen bei der VM an. Führen Sie das folgende Skript aus, um ein logisches Volume zu erstellen, fügen Sie den Datenträger hinzu, erstellen Sie eine XFS-Dateisystempartition, und stellen Sie die Partition unter dem Pfad „/backup1“ bereit.
+6. [Erstellen Sie ein XFS-Volume auf dem verwalteten Datenträger](https://www.digitalocean.com/docs/volumes/how-to/). Melden Sie sich mit den zuvor erwähnten Anmeldeinformationen bei der VM an. Führen Sie das folgende Skript aus, um ein logisches Volume zu erstellen, fügen Sie den Datenträger hinzu, erstellen Sie eine [XFS-Dateisystempartition](https://www.digitalocean.com/docs/volumes/how-to/partition/), und [binden](https://www.digitalocean.com/docs/volumes/how-to/mount/) Sie die Partition unter dem Pfad „/backup1“ ein.
 
     Beispielskript:
 

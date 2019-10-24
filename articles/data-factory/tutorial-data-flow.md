@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 8c9043db8159e2b7ff6520e9525472048cf73ae1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030931"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385557"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow
 
@@ -23,7 +23,7 @@ In diesem Tutorial erstellen Sie mithilfe der Azure Data Factory-Benutzeroberfl�
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory
+> * Erstellen einer Data Factory.
 > * Erstellen einer Pipeline mit einer Datenflussaktivität
 > * Erstellen einer Mapping Data Flow-Funktion mit vier Transformationen 
 > * Ausführen eines Testlaufs für die Pipeline
@@ -94,13 +94,13 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
     ![Datenflusscanvas](media/tutorial-data-flow/dataflow3.png)
 1. Wählen Sie **Azure Data Lake Storage Gen2** aus. Klicken Sie auf „Weiter“.
 
-    ![Dataset](media/tutorial-data-flow/dataset1.png)
+    ![Datensatz](media/tutorial-data-flow/dataset1.png)
 1. Wählen Sie **DelimitedText** aus. Klicken Sie auf „Weiter“.
 
-    ![Dataset](media/tutorial-data-flow/dataset2.png)
+    ![Datensatz](media/tutorial-data-flow/dataset2.png)
 1. Geben Sie dem Dataset den Namen **MoviesDB**. Wählen Sie in der Dropdownliste für den verknüpften Dienst die Option **Neu** aus.
 
-    ![Dataset](media/tutorial-data-flow/dataset3.png)
+    ![Datensatz](media/tutorial-data-flow/dataset3.png)
 1. Geben Sie im Erstellungsbildschirm für einen verknüpften Dienst dem verknüpften ADLS Gen2-Dienst den Namen **ADLSGen2**, und geben Sie die Authentifizierungsmethode an. Dann geben Sie Ihre Verbindungsanmeldeinformationen ein. In diesem Tutorial wird der Kontoschlüssel zum Herstellen einer Verbindung mit dem Speicherkonto verwendet. Sie können auf **Verbindung testen** klicken, um zu überprüfen, ob Ihre Anmeldeinformationen korrekt eingegeben wurden. Wenn Sie fertig sind, klicken Sie auf „Erstellen“.
 
     ![Verknüpfter Dienst](media/tutorial-data-flow/ls1.png)
@@ -162,10 +162,10 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
     ![Senke](media/tutorial-data-flow/sink2.png)
 1. Wählen Sie **Azure Data Lake Storage Gen2** aus. Klicken Sie auf „Weiter“.
 
-    ![Dataset](media/tutorial-data-flow/dataset1.png)
+    ![Datensatz](media/tutorial-data-flow/dataset1.png)
 1. Wählen Sie **DelimitedText** aus. Klicken Sie auf „Weiter“.
 
-    ![Dataset](media/tutorial-data-flow/dataset2.png)
+    ![Datensatz](media/tutorial-data-flow/dataset2.png)
 1. Geben Sie dem Senkendataset den Namen **MoviesSink**. Wählen Sie als verknüpften Dienst den verknüpften ADLS Gen2-Dienst aus, den Sie in Schritt 6 erstellt haben. Geben Sie einen Ausgabeordner ein, in den die Daten geschrieben werden sollen. In diesem Tutorial wird in den Ordner „output“ im Container „sample-data“ geschrieben. Der Ordner muss nicht vorab vorhanden sein und kann dynamisch erstellt werden. Aktivieren Sie das Kontrollkästchen **Erste Zeile als Header**, und wählen Sie für **Schema importieren** die Option **Kein** aus. Klicken Sie auf Fertig stellen.
     
     ![Senke](media/tutorial-data-flow/sink3.png)
@@ -196,7 +196,7 @@ Wenn Sie dieses Tutorial richtig durchgeführt haben, sollten 83 Zeilen und 2 Sp
 Mit der Pipeline in diesem Tutorial wird ein Datenfluss ausgeführt, der die durchschnittliche Bewertung von Komödien zwischen 1910 und 2000 aggregiert und die Daten in ADLS schreibt. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory
+> * Erstellen einer Data Factory.
 > * Erstellen einer Pipeline mit einer Datenflussaktivität
 > * Erstellen einer Mapping Data Flow-Funktion mit vier Transformationen 
 > * Ausführen eines Testlaufs für die Pipeline

@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory-Mappingdatenfluss – Zeilenänderungstransformation
-description: Hier erfahren Sie, wie Sie das Datenbankziel mithilfe des Azure Data Factory-Mappingdatenflusses für die Zeilenänderungstransformation aktualisieren.
+title: 'Azure Data Factory Mapping Data Flow: Zeilenänderungstransformation'
+description: Hier erfahren Sie, wie Sie das Datenbankziel mithilfe der Zeilenänderungstransformation von Azure Data Factory Mapping Data Flow aktualisieren.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: fff08b3e046161fbedefdc55f4e6a39a7f965f80
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027009"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72387269"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory: Zeilenänderungstransformation
 
@@ -19,7 +19,7 @@ Verwenden Sie die Zeilenänderungstransformation, um Einfüge-, Lösch-, Aktuali
 
 
 
-![Einstellungen für Zeilenänderungen](media/data-flow/alter-row1.png "Einstellungen für Zeilenänderungen")
+![Zeilenänderungseinstellungen](media/data-flow/alter-row1.png "Zeilenänderungseinstellungen")
 
 > [!NOTE]
 > Zeilenänderungstransformationen können nur für Datenbanksenken in Ihrem Datenfluss verwendet werden. Die Aktionen, die Sie Zeilen zuweisen (Einfügen, Aktualisieren, Löschen, Upsert), werden nicht während Debugsitzungen ausgeführt. Sie müssen einer Pipeline eine Aufgabe zum Ausführen des Datenflusses hinzufügen und das Pipelinedebugging oder Trigger verwenden, um die Zeilenänderungsrichtlinien auf Ihre Datenbanktabellen anzuwenden.
@@ -28,7 +28,7 @@ Verwenden Sie die Zeilenänderungstransformation, um Einfüge-, Lösch-, Aktuali
 
 Erstellen Sie eine Zeilenänderungstransformation, und geben Sie eine Zeilenrichtlinie mit der Bedingung `true()` an. Jede Zeile, die keinen der zuvor definierten Ausdrücke enthält, wird für die angegebene Zeilenrichtlinie gekennzeichnet. Standardmäßig wird jede Zeile, die keinen bedingten Ausdruck erfüllt, für `Insert` gekennzeichnet.
 
-![Zeilenänderung mit einer Richtlinie](media/data-flow/alter-row4.png "Zeilenänderung mit einer Richtlinie")
+![Richtlinie für Zeilenänderung 1](media/data-flow/alter-row4.png "Richtlinie für Zeilenänderung 1")
 
 > [!NOTE]
 > Wenn Sie alle Zeilen mit einer Richtlinie kennzeichnen möchten, können Sie eine Bedingung für diese Richtlinie erstellen und `true()` als Bedingung angeben.
@@ -37,7 +37,7 @@ Erstellen Sie eine Zeilenänderungstransformation, und geben Sie eine Zeilenrich
 
 Aktivieren Sie den Datenfluss-Debugmodus, um die Ergebnisse der Zeilenänderungsrichtlinien im Datenvorschaubereich anzuzeigen. Wenn Sie eine Zeilenänderung im Datenfluss-Debugmodus ausführen, werden keine DDL- oder DML-Aktionen für Ihr Ziel generiert. Damit diese Aktionen ausgeführt werden, muss der Datenfluss innerhalb einer Aufgabe zum Ausführen des Datenflusses in einer Pipeline ausgeführt werden.
 
-![Zeilenänderungsrichtlinien](media/data-flow/alter-row3.png "Zeilenänderungsrichtlinien")
+![Richtlinien für Zeilenänderungen](media/data-flow/alter-row3.png "Richtlinien für Zeilenänderungen")
 
 Dadurch können Sie den Zustand der einzelnen Zeilen auf der Grundlage Ihrer Bedingungen überprüfen und anzeigen. Die in Ihrem Datenfluss ausgeführten Einfüge-, Aktualisierungs-, Lösch- und Upsertaktionen werden jeweils durch ein Symbol dargestellt, um anzugeben, welche Aktion erfolgt, wenn der Datenfluss innerhalb einer Pipeline ausgeführt wird.
 
@@ -45,7 +45,7 @@ Dadurch können Sie den Zustand der einzelnen Zeilen auf der Grundlage Ihrer Bed
 
 Für Zeilenänderungen wird eine Datenbanksenke vorausgesetzt. In den Einstellungen für die Senke sollten Sie jede Aktion, die den Zeilenänderungsbedingungen entspricht, als zulässig festlegen.
 
-![Senke für Zeilenänderungen](media/data-flow/alter-row2.png "Senke für Zeilenänderungen")
+![Senke für Zeilenänderung](media/data-flow/alter-row2.png "Senke für Zeilenänderung")
 
 In einem ADF-Datenfluss mit Datenbanksenken werden Zeilen standardmäßig eingefügt. Wenn Sie auch Aktualisierungs-, Upsert- und Löschvorgänge zulassen möchten, müssen Sie in der Senke die entsprechenden Kontrollkästchen aktivieren.
 

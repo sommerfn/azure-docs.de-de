@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 733d3f9c4079193107f22178bdbde3a3ecf0e7ca
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0a1051d67bf45e96f82833ef8190008204cdc90b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028212"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387537"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapping Data Flow-Parameter
 
@@ -40,9 +40,9 @@ Parameter können in jedem Datenflussausdruck verwendet werden. Parameter beginn
 
 ## <a name="use-parameters-in-your-data-flow"></a>Verwenden von Parametern in Ihrem Datenfluss
 
-* Sie können Parameterwerte innerhalb Ihrer Transformationsausdrücke verwenden. Sie finden die Parameterliste im Ausdrucks-Generator auf der Registerkarte „Parameter“. ![Verwenden von Datenflussparametern](media/data-flow/params9.png "Verwenden von Datenflussparametern")
+* Sie können Parameterwerte innerhalb Ihrer Transformationsausdrücke verwenden. Sie finden die Parameterliste im Ausdrucks-Generator auf der Registerkarte „Parameter“. ![Verwenden von Datenflussparametern](media/data-flow/params9.png "UVerwenden von Datenflussparametern)
 
-* Parameter werden auch verwendet, um dynamische Werte für Ihre Einstellungen der Quell- und Senkentransformation zu konfigurieren. Wenn Sie in konfigurierbare Felder klicken, wird der Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie darauf klicken, gelangen Sie zu einem Ausdrucks-Generator, in dem Sie Parameter zur Verwendung dynamischer Werte einsetzen können. ![Dynamischer Inhalt des Datenflusses](media/data-flow/params6.png "Dynamischer Inhalt des Datenflusses")
+* Parameter werden auch verwendet, um dynamische Werte für Ihre Einstellungen der Quell- und Senkentransformation zu konfigurieren. Wenn Sie in konfigurierbare Felder klicken, wird der Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie darauf klicken, gelangen Sie zu einem Ausdrucks-Generator, in dem Sie Parameter zur Verwendung dynamischer Werte einsetzen können. ![Dynamischer Inhalt im Datenfluss](media/data-flow/params6.png "DDynamischer Inhalt im Datenfluss)
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Festlegen von Mapping Data Flow-Parametern aus der Pipeline
 

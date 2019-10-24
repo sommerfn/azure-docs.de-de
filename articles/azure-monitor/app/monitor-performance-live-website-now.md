@@ -10,16 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: ea324d616928b0d517c00dc9cab3e282f1e3415e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e7d69e2258036318b736f245f9e3aec3cf5f54de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67876425"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389939"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
+
+> [!IMPORTANT]
+> Die Verwendung des Statusmonitors wird nicht mehr empfohlen. Er wurde durch den Azure Monitor Application Insights-Agent (früher Statusmonitor v2) ersetzt. Weitere Informationen finden Sie in der Dokumentation zu [lokalen Serverbereitstellungen](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) oder [Bereitstellungen von Azure-VMs und in VM-Skalierungsgruppen](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
 
 Sie können eine Live-Web-App mit Azure Application Insights instrumentieren, ohne dass Sie Ihren Code ändern oder erneut bereitstellen müssen. Sie benötigen ein [Microsoft Azure](https://azure.com) -Abonnement.
 

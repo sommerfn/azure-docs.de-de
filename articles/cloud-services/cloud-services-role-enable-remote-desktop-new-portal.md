@@ -1,5 +1,5 @@
 ---
-title: Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services | Microsoft-Dokumentation
+title: Aktivieren von Remotedesktop für eine Rolle mithilfe des Portals (Azure Cloud Services)
 description: Konfigurieren einer Azure-Clouddienstanwendung für Remotedesktopverbindungen.
 services: cloud-services
 documentationcenter: ''
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: bea4e0c43d6ae6e0ea05c43343535195a25cf3e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 50447beabefefcaa723a26ed4388354b9590c36e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359522"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298444"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services
 

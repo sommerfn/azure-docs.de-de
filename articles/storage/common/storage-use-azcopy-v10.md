@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 980156284b27478163760b1f833a91ba7cddec21
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244789"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274647"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -29,7 +29,8 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 
 Laden Sie zunächst die ausführbare Datei für AzCopy V10 in ein beliebiges Verzeichnis auf Ihrem Computer herunter. AzCopy V10 ist nur eine ausführbare Datei, sodass keine Installation erforderlich ist.
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
+- [Windows 64-Bit](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
+- [Windows 32-Bit](https://aka.ms/downloadazcopy-v10-windows-32bit) (ZIP)
 - [Linux](https://aka.ms/downloadazcopy-v10-linux) (TAR)
 - [macOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 

@@ -4,14 +4,14 @@ description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Az
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914195"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299785"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
@@ -64,15 +64,26 @@ Wenn ein Element geschrieben wird, indiziert Azure Cosmos DB den Pfad jeder Eig
 
 ## <a name="index-kinds"></a>Indextypen
 
-Azure Cosmos DB unterstützt derzeit drei Arten von Indizes:
+Azure Cosmos DB unterstützt derzeit drei Arten von Indizes.
 
-Der **Range**-Indextyp wird für Folgendes verwendet:
+### <a name="range-index"></a>Bereichsindex
+
+Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp wird für Folgendes verwendet:
 
 - Gleichheitsabfragen:
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
    ```
+
+   ```sql
+   SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
+   ```
+
+   Gleichheitsübereinstimmung für ein Arrayelement
+   ```sql
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    ```
 
 - Bereichsabfragen:
 
@@ -81,9 +92,21 @@ Der **Range**-Indextyp wird für Folgendes verwendet:
    ```
   (funktioniert für `>`, `<`, `>=`, `<=`, `!=`)
 
+- Überprüfen, ob eine Eigenschaft vorhanden ist:
+
+   ```sql
+   SELECT * FROM c WHERE IS_DEFINED(c.property)
+   ```
+
+- Zeichenfolgen-Präfixübereinstimmungen (Schlüsselwort CONTAINS verwendet nicht den Bereichsindex):
+
+   ```sql
+   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   ```
+
 - `ORDER BY` fragt Folgendes ab:
 
-   ```sql 
+   ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
@@ -93,25 +116,35 @@ Der **Range**-Indextyp wird für Folgendes verwendet:
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
+Bereichsindizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
 
-Der **Spatial**-Indextyp wird für Folgendes verwendet:
+### <a name="spatial-index"></a>Räumlicher Index
 
-- Abfragen zum räumlichen Abstand: 
+**Räumliche** Indizes ermöglichen effiziente Abfragen räumlicher Objekte wie Punkte, Linien, Polygone und Multipolygon. Diese Abfragen verwenden die Schlüsselwörter ST_DISTANCE, ST_WITHIN und ST_INTERSECTS. Es folgen einige Beispiele für die Verwendung des räumlichen Index:
+
+- Abfragen zum räumlichen Abstand:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Räumliche Abfragen: 
+- Räumliche Abfragen:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
+- Abfragen zur räumlichen Überschneidung:
 
-Der **zusammengesetzte** Index wird für Folgendes verwendet:
+   ```sql
+   SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
+   ```
+
+Räumliche Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
+
+### <a name="composite-indexes"></a>Zusammengesetzte Indizes
+
+**Zusammengesetzte** Indizes erhöhen die Effizienz, wenn Sie Vorgänge für mehrere Felder durchführen. Dieser Indextyp wird für Folgendes verwendet:
 
 - `ORDER BY` fragt mehrere Eigenschaften ab:
 
@@ -130,6 +163,13 @@ Der **zusammengesetzte** Index wird für Folgendes verwendet:
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
+
+Solange ein Filterprädikat einen der Indextypen verwendet, wertet die Abfrage-Engine dieses zuerst aus, bevor der Rest überprüft wird. Wenn Sie z.B. eine SQL-Abfrage haben wie `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+
+* Bei der oben gezeigten Abfrage wird zuerst mithilfe des Index nach Einträgen gefiltert, bei denen „firstName“ den Wert „Andrew“ hat. Anschließend werden alle Einträge mit „firstName“ = „Andrew“ über eine nachfolgende Pipeline übergeben, um das Filterprädikat CONTAINS auszuwerten.
+
+* Sie können Abfragen beschleunigen und vollständige Containerüberprüfungen vermeiden, wenn Sie Funktionen ohne Nutzung des Index (z.B. CONTAINS) verwenden, indem Sie zusätzliche Filterprädikate hinzufügen, die den Index verwenden. Die Reihenfolge der Filterklauseln ist nicht von Bedeutung. Die Abfrage-Engine ermittelt, welche Prädikate selektiver sind, und führt die Abfrage entsprechend aus.
+
 
 ## <a name="querying-with-indexes"></a>Abfragen mit Indizes
 

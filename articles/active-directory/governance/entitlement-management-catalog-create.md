@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169933"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429570"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -52,7 +52,7 @@ Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen 
 
 1. Wenn Sie zulassen möchten, dass Benutzer in ausgewählten externen Verzeichnissen Zugriffspakete in diesem Katalog anfordern können, legen Sie **Für externe Benutzer aktiviert** auf **Ja** fest.
 
-    ![Bereich „Neuer Katalog“](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![Bereich „Neuer Katalog“](./media/entitlement-management-shared/new-catalog.png)
 
 1. Klicken Sie auf **Erstellen**, um den Katalog zu erstellen.
 
@@ -130,7 +130,9 @@ Sie können den Namen und die Beschreibung eines Katalogs bearbeiten. Benutzern 
 
 1. Klicken Sie auf der Seite **Übersicht** des Katalogs auf **Bearbeiten**.
 
-1. Bearbeiten Sie den Namen oder die Beschreibung des Katalogs.
+1. Bearbeiten Sie den Namen, die Beschreibung oder die aktivierten Einstellungen des Katalogs.
+
+    ![Bearbeiten von Katalogeinstellungen](./media/entitlement-management-shared/catalog-edit.png)
 
 1. Klicken Sie auf **Speichern**.
 

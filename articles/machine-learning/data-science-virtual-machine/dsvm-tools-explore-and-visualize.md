@@ -6,16 +6,16 @@ keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für D
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 03/16/2018
-ms.openlocfilehash: 14c34a13440d50fcf42c2207f9933dc1de014a14
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 10/11/2019
+ms.openlocfilehash: a18c374df0cad7994af855089f1096d52fe30ce2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191963"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330703"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-azure-data-science-virtual-machine"></a>In Azure Data Science Virtual Machine verfügbare Tools zum Durchsuchen und Visualisieren von Daten
 
@@ -31,15 +31,18 @@ In der Data Science geht es im Kern darum, die jeweiligen Daten zu verstehen. Hi
 | Verwenden und Ausführen      | Desktopverknüpfung  <br/> [Drill in 10 Minutes](https://drill.apache.org/docs/drill-in-10-minutes/) (Drill in zehn Minuten)  |
 | Verwandte Tools auf der DSVM      |   Rattle, Weka, SQL Server Management Studio      |
 
-## <a name="weka"></a>Weka
+## <a name="power-bi-desktop"></a>Power BI Desktop 
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   |  Eine Sammlung von Machine Learning-Algorithmen für Data Mining-Aufgaben. Diese Algorithmen können entweder direkt auf ein Dataset angewendet oder über Ihren eigenen Java-Code aufgerufen werden. Weka enthält Tools für Datenvorverarbeitung, Klassifizierung, Regression, Clustering, Zuordnungsregeln und Visualisierung. |
-| Unterstützte DSVM-Editionen     | Windows, Linux     |
-| Typische Verwendung      | Allgemeines Machine Learning-Tool     |
-| Verwenden und Ausführen      | Unter Windows finden Sie Weka im Startmenü. Unter Linux finden Sie Weka nach der Anmeldung mit X2Go unter „Anwendungen > Entwicklung > Weka“. |
-| Links zu Beispielen      | [Beispiele für Weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| Verwandte Tools auf der DSVM      |LightGBM, Rattle, XGBoost   |
+| Was ist das?   | Interaktives Tool für Datenvisualisierung und BI    |
+| Unterstützte DSVM-Versionen      | Windows  |
+| Typische Verwendung      |  Datenvisualisierung und Dashboarderstellung   |
+| Verwenden und Ausführen      | Desktopverknüpfung (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`) oder einfach über das **Startmenü** ausführen.      |
+| Verwandte Tools auf der DSVM      |   Visual Studio 2019, Visual Studio Code, Juno      |
+
+> [!NOTE]
+> Für den Zugriff auf Power BI benötigen Sie ein Microsoft Office 365-Konto.
+
 
 ## <a name="rattle"></a>Rattle
 |    |           |
@@ -51,12 +54,17 @@ In der Data Science geht es im Kern darum, die jeweiligen Daten zu verstehen. Hi
 | Links zu Beispielen      | [Rattle](https://togaware.com/onepager/) |
 | Verwandte Tools auf der DSVM      |LightGBM, Weka, XGBoost   |
 
-## <a name="power-bi-desktop"></a>Power BI Desktop 
+
+## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   | Interaktives Tool für Datenvisualisierung und BI    |
-| Unterstützte DSVM-Versionen      | Windows  |
-| Typische Verwendung      |  Datenvisualisierung und Dashboarderstellung   |
-| Verwenden und Ausführen      | Desktopverknüpfung (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| Verwandte Tools auf der DSVM      |   Visual Studio 2019, Visual Studio Code, Juno      |
+| Was ist das?   |  Eine Sammlung von Machine Learning-Algorithmen für Data Mining-Aufgaben. Diese Algorithmen können entweder direkt auf ein Dataset angewendet oder über Ihren eigenen Java-Code aufgerufen werden. Weka enthält Tools für Datenvorverarbeitung, Klassifizierung, Regression, Clustering, Zuordnungsregeln und Visualisierung. |
+| Unterstützte DSVM-Editionen     | Windows, Linux     |
+| Typische Verwendung      | Allgemeines Machine Learning-Tool     |
+| Verwenden und Ausführen      | Unter Windows finden Sie Weka im Startmenü. Unter Linux finden Sie Weka nach der Anmeldung mit X2Go unter „Anwendungen > Entwicklung > Weka“. |
+| Links zu Beispielen      | [Beispiele für Weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Verwandte Tools auf der DSVM      |LightGBM, Rattle, XGBoost   |
+
+
+
 

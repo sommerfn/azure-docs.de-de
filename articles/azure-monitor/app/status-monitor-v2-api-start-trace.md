@@ -1,6 +1,6 @@
 ---
-title: 'API-Referenz für Azure-Statusmonitor v2: Starten der Ablaufverfolgung | Microsoft-Dokumentation'
-description: API-Referenz für Statusmonitor v2. Starten der Ablaufverfolgung. Sammeln von ETW-Protokollen von Statusmonitor und Application Insights SDK.
+title: 'API-Referenz für den Azure Application Insights-Agent: Starten der Ablaufverfolgung | Microsoft-Dokumentation'
+description: API-Referenz für den Application Insights-Agent. Starten der Ablaufverfolgung. Sammeln von ETW-Protokollen von Statusmonitor und Application Insights SDK.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f4c43e6bdb70687606041c2f0859ab072db2b587
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b1c5aa34c46a20631b328abfb061dc2477150c72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200378"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389850"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>API für Statusmonitor v2: Start-ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights-Agent-API: Start-ApplicationInsightsMonitoringTrace
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
 
@@ -121,7 +121,7 @@ Weitere Problembehandlung:
 
 
 
- Weitere Möglichkeiten zur Verwendung von Statusmonitor v2:
- - Verwenden Sie unsere Anleitung für die [Problembehandlung](status-monitor-v2-troubleshoot.md) von Statusmonitor v2.
+ Weitere Verwendungsmöglichkeiten für den Application Insights-Agent:
+ - Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.
  - [Rufen Sie die Konfiguration ab](status-monitor-v2-api-get-config.md), um sicherzustellen, dass Ihre Einstellungen korrekt erfasst wurden.
  - [Rufen Sie den Status ab](status-monitor-v2-api-get-status.md), um die Überwachung zu überprüfen.

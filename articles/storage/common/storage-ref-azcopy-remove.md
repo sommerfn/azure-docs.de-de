@@ -4,20 +4,20 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0cc366ab2cdad9c7258dca905d8f4a06472119fe
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: fc23afb9a407fc2e6689c5c8766cb4beba868269
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196796"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513432"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
-Löscht Entitäten aus Azure Storage Blob, Datei und Azure Data Lake Storage Gen2.
+Löscht Blobs oder Dateien aus einem Azure Storage-Konto.
 
 ## <a name="synopsis"></a>Zusammenfassung
 
@@ -57,13 +57,24 @@ Entfernen Sie ein gesamtes virtuelles Verzeichnis, doch schließen Sie bestimmte
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude="foo*;*bar"
 ```
 
-Entfernen Sie eine einzelne Datei aus Data Lake Storage Gen2 (Einschließen und Ausschließen wird nicht unterstützt):
+Entfernen Sie bestimmte Blobs und virtuelle Verzeichnisse, indem Sie ihre relativen Pfade (NICHT URL-codiert) in eine Datei einfügen:
+
+```azcopy
+azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
+file content:
+  dir1/dir2
+  blob1
+  blob2
+
+```
+
+Entfernen Sie eine einzelne Datei aus einem Blob Storage-Konto, das über einen hierarchischen Namespace verfügt („include“/„exclude“ nicht unterstützt).
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-Entfernen Sie ein einzelnes Verzeichnis aus Data Lake Storage Gen2 (Einschließen und Ausschließen wird nicht unterstützt):
+Entfernen Sie ein einzelnes Verzeichnis aus einem Blob Storage-Konto, das über einen hierarchischen Namespace verfügt („include“/„exclude“ nicht unterstützt):
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -71,20 +82,28 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Optionen
 
-|Option|BESCHREIBUNG|
-|--|--|
-|–exclude string|Schließen Sie Dateien aus, in denen der Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName|
-|-h, --help|Zeigt Hilfeinhalt zum Befehl „remove“.|
-|–include string|Schließen Sie nur Dateien ein, in denen der Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName|
-|–log-level string|Definieren Sie die Protokollausführlichkeit für die Protokolldatei. Folgende Ebenen sind verfügbar: INFO (alle Anforderungen/Antworten), WARNUNG (langsame Antworten), FEHLER (nur fehlgeschlagene Anforderungen) und KEINE (keine Ausgabeprotokolle). (Standardwert: „Info“)|
-|–recursive|Überprüfen Sie Unterverzeichnisse rekursiv, wenn Sie zwischen Verzeichnissen synchronisieren.|
+**--exclude-path string**      Schließt diese Pfade beim Entfernen aus. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads. Beispiel: myFolder;myFolder/subDirName/file.pdf
+
+**--exclude-pattern string**   Schließt Dateien aus, deren Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName
+
+**-h, --help**                     Hilfe zu „remove“
+
+**--include-path** string      Schließt nur diese Pfade beim Entfernen ein. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads. Beispiel: myFolder;myFolder/subDirName/file.pdf
+
+**--include-pattern** string   Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName
+
+**--list-of-files** string     Definiert den Speicherort einer Datei, die die Liste der zu löschenden Dateien und Verzeichnisse enthält. Die relativen Pfade sollten durch Zeilenumbrüche getrennt werden, und die Pfade sollten NICHT URL-codiert sein.
+
+**--log-level** string         Definiert, wie ausführlich die Protokolldatei sein soll. Folgende Ebenen sind verfügbar: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Der Standardwert lautet „INFO“.) (Standardwert: „INFO“)
+
+**--recursive**                Überprüft Unterverzeichnisse bei der Synchronisierung zwischen Verzeichnissen rekursiv.
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
 |Option|BESCHREIBUNG|
 |---|---|
-|–cap-mbps uint32|Begrenzt die Übertragungsrate, in Megabit pro Sekunde. Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
-|–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“, „json“. Der Standardwert lautet „text“.|
+|–cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
+|–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|
 
 ## <a name="see-also"></a>Weitere Informationen
 

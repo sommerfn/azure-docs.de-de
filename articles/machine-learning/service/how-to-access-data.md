@@ -11,22 +11,23 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8c9b8489ded264a895d480ed180b411da079e883
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950131"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436698"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Zugreifen auf Daten in Azure Storage-Diensten
 
-In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen. Aus diesen [Azure Storage-Lösungen](#matrix) können Sie Datenspeicher erstellen.
+In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen. Aus diesen [Azure Storage-Lösungen](#matrix) können Sie Datenspeicher erstellen. Für nicht unterstützte Speicherlösungen empfiehlt es sich, Ihre Daten in unsere unterstützten Azure Storage-Lösungen zu verschieben, um bei Machine Learning-Experimenten Kosten für ausgehende Daten zu sparen. [Weitere Informationen zum Verschieben von Daten](#move). 
 
 In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
 * [Registrieren von Datenspeichern](#access)
 * [Abrufen von Datenspeichern aus Arbeitsbereichen](#get)
 * [Hochladen und Herunterladen von Daten mithilfe von Datenspeichern](#up-and-down)
 * [Zugreifen auf Daten während des Trainings](#train)
+* [Verschieben von Daten nach Azure](#move)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -276,6 +277,10 @@ Azure Machine Learning bietet mehrere Möglichkeiten, Ihre Modelle zur Bewertung
 
 Für Situationen, in denen das SDK keinen Zugriff auf Datenspeicher bietet, können Sie möglicherweise benutzerdefinierten Code mit dem entsprechenden Azure-SDK erstellen, um auf die Daten zuzugreifen. Das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) ist beispielsweise eine Clientbibliothek, mit der Sie auf in Blobs oder Dateien gespeicherte Daten zugreifen können.
 
+<a name="move"></a>
+## <a name="move-data-to-supported-azure-storage-solutions"></a>Verschieben von Daten in unterstützte Azure Storage-Lösungen
+
+Der Azure Machine Learning-Dienst unterstützt den Zugriff auf Daten aus Azure BLOB, Azure File, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL und Azure PostgreSQL. Für nicht unterstützte Speicherlösungen empfiehlt es sich, Ihre Daten mithilfe von Azure Data Factory in unsere unterstützten Azure Storage-Lösungen zu verschieben, um bei Machine Learning-Experimenten Kosten für ausgehende Daten  zu sparen. Azure Data Factory bietet effiziente und robuste Datenübertragung mit über 80 vordefinierten Connectors (z.B. Azure-Datendienste, lokale Datenquellen, Amazon S3 und Redshift sowie Google BigQuery) ohne zusätzliche Kosten. [Befolgen Sie die Schrittanleitung, um Ihre Daten mithilfe von Azure Data Factory zu verschieben](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

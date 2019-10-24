@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5d567074a0038915cc43a585b34c9c71ccf3eb1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65464995"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431278"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight
 
@@ -128,7 +128,7 @@ Führen Sie die folgenden Schritte aus, um die Konfigurationsänderung abzuschli
 
     ![Bearbeiten von Kafka-SSL-Konfigurationseigenschaften in Ambari](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Fügen Sie Konfigurationseigenschaften zur Kafka-Datei `server.properties` hinzu, um IP-Adressen anstelle des vollständig qualifizierten Domänennamens (FQDN) anzukündigen.
+1. Führen Sie zum Hinzufügen von Konfigurationseigenschaften zur Kafka-Datei `server.properties` die Befehle unten aus, um IP-Adressen anstelle des vollständig qualifizierten Domänennamens (FQDN) anzukündigen.
 
     ```bash
     IP_ADDRESS=$(hostname -i)

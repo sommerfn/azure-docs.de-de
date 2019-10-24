@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
-ms.openlocfilehash: ab5af0e5971b91f45cbb12b4d0583caafa5ad504
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d79cefa9adec403ebbb5105351d2909eac9d02a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079659"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390503"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Erstellen eines virtuellen Computers anhand einer VHD mithilfe des Azure-Portals
 
@@ -34,6 +34,7 @@ Es gibt mehrere Möglichkeiten zum Erstellen eines virtuellen Computers (Virtual
 
 Verwenden Sie keinen speziellen Datenträger, wenn Sie mehrere VMs erstellen möchten. Für größere Bereitstellungen sollten Sie stattdessen [ein Image erstellen](capture-image-resource.md) und dann [dieses Image zum Erstellen mehrerer VMs verwenden](create-vm-generalized-managed.md).
 
+Es wird empfohlen, die Anzahl gleichzeitiger Bereitstellungen auf Grundlage einer Momentaufnahme oder einer einzelnen VHD auf 20 VMs zu beschränken. 
 
 ## <a name="copy-a-disk"></a>Kopieren eines Datenträgers
 
@@ -74,6 +75,7 @@ Wenn Sie über die verwaltete Datenträger-VHD verfügen, die Sie verwenden möc
 10. Fügen Sie auf der Seite **Gastkonfiguration** nach Bedarf Erweiterungen hinzu.
 11. Wählen Sie abschließend **Überprüfen + erstellen** aus. 
 12. Wählen Sie bei erfolgreicher Überprüfung der VM-Konfiguration die Option **Erstellen** aus, um die Bereitstellung zu starten.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

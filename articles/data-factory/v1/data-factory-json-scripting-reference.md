@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 520bce39841f1008a0e47af1089db7fdce5ccae8
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "70736005"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255321"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -4826,7 +4826,7 @@ Die folgende Tabelle enthält eine Liste mit den Compute-Umgebungen, die von Dat
 | [Azure Batch](#azure-batch) |[Benutzerdefinierte .NET-Aktivität](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine Learning-Batchausführungsaktivität](#machine-learning-batch-execution-activity), [Machine Learning-Ressourcenaktualisierungsaktivität](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL-Datenbank](#azure-sql-database), [Azure SQL Data Warehouse](#azure-sql-data-warehouse), [SQL Server](#sql-server-1) |[Gespeicherte Prozedur](#stored-procedure-activity) |
+| [Azure SQL-Datenbank](#azure-sql-database), [Azure SQL Data Warehouse](#azure-sql-data-warehouse), [SQL Server](#sql-server-stored-procedure) |[Gespeicherte Prozedur](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Bedarfsgesteuerter Azure HDInsight-Cluster
 Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Sie können für diesen verknüpften Dienst die folgenden Transformationsaktivitäten ausführen: [Benutzerdefinierte .NET-Aktivität](#net-custom-activity), [Hive-Aktivität](#hdinsight-hive-activity), [Pig-Aktivität](#hdinsight-pig-activity), [MapReduce-Aktivität](#hdinsight-mapreduce-activity), Hadoop-Streamingaktivität, [Spark-Aktivität](#hdinsight-spark-activity).
@@ -4996,7 +4996,8 @@ Das folgende Beispiel enthält eine JSON-Definition für einen mit Azure Data La
 }
 ```
 
-## <a name="sql-server"></a>SQL Server
+## <a name="sql-server-stored-procedure"></a>SQL Server-Aktivität „Gespeicherte Prozedur“
+
 Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline.
 
 ### <a name="linked-service"></a>Verknüpfter Dienst

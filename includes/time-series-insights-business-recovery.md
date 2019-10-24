@@ -3,13 +3,13 @@ ms.topic: include
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a3c630b54ff95a9b1200e2421c787a514a0aa52
-ms.sourcegitcommit: 087ee51483b7180f9e897431e83f37b08ec890ae
+ms.date: 10/09/2019
+ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66431043"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72259097"
 ---
 ## <a name="business-disaster-recovery"></a>Business Disaster Recovery
 
@@ -24,6 +24,7 @@ Zu den zusätzlichen Hochverfügbarkeitsfeatures von Azure (auch für alle Time 
 - **Failover**: Azure bietet [Georeplikation und Lastenausgleich](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
 - **Daten-** und **Speicherwiederherstellung**: Azure bietet [mehrere Optionen zum Beibehalten und Wiederherstellen von Daten](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
 - **Sitewiederherstellung**: Azure bietet Features für die Sitewiederherstellung über [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Azure Backup**: [Azure Backup ](https://docs.microsoft.com/azure/backup/backup-architecture) unterstützt sowohl lokale als auch cloudbasierte Sicherungen von virtuellen Azure-Computern.
 
 Stellen Sie sicher, dass Sie die relevanten Azure-Features aktivieren, um eine globale, regionsübergreifende Hochverfügbarkeit für Ihre Geräte und Benutzer zu gewährleisten.
 

@@ -4,14 +4,14 @@ description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973322"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249136"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
@@ -32,7 +32,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
-* botServices: Wenden Sie sich an den Support, um den Grenzwert zu erhöhen.
+* botServices: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -128,7 +128,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* publicIPAddresses: Wenden Sie sich an den Support, um den Grenzwert zu erhöhen.
+* publicIPAddresses: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -139,7 +139,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
-* workspaceCollections: Wenden Sie sich an den Support, um den Grenzwert zu erhöhen.
+* workspaceCollections: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 

@@ -1,19 +1,19 @@
 ---
-title: 'Transformieren von abgeleiteten Spalten in Mapping Data Flow: Azure Data Factory | Microsoft-Dokumentation'
-description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe von Mapping Data Flow-Transformationen von abgeleiteten Spalten
+title: Transformation für abgeleitete Spalten in Azure Data Factory Mapping Data Flow | Microsoft-Dokumentation
+description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Transformation für abgeleitete Spalten.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/08/2018
-ms.openlocfilehash: aacd6f1799f1813e168bd04e78f18cf60ad5243f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/15/2019
+ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026851"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514814"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformieren von abgeleiteten Spalten in Mapping Data Flow
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformation für abgeleitete Spalten in Mapping Data Flow
 
 Verwenden Sie die Transformation für abgeleitete Spalten, um in Ihrem Datenfluss neue Spalten zu generieren oder vorhandene Felder zu ändern.
 
@@ -23,9 +23,46 @@ Sie können eine bereits vorhandene Spalte löschen, indem Sie diese über die D
 
 ![Einstellungen für abgeleitete Spalten](media/data-flow/dc1.png "Einstellungen für abgeleitete Spalten")
 
-Sie können weitere abgeleitete Spalten hinzufügen, indem Sie mit der Maus auf eine Spalte zeigen und auf das Symbol „+“ klicken. Klicken Sie anschließend entweder auf „Spalte hinzufügen“ oder auf „Add column pattern“ (Spaltenmuster hinzufügen). Spaltenmuster können nützlich sein, wenn sich Ihre Spaltennamen von den Quellen unterscheiden. Weitere Informationen finden Sie unter [Column Patterns (Spaltenmuster)](concepts-data-flow-column-pattern.md).
+Sie können weitere abgeleitete Spalten hinzufügen, indem Sie mit dem Mauszeiger auf eine vorhandene Spalte zeigen und auf das Pluszeichen klicken. Klicken Sie entweder auf **Spalte hinzufügen** oder auf **Spaltenmuster hinzufügen**. Spaltenmuster können nützlich sein, wenn sich Ihre Spaltennamen von den Quellen unterscheiden. Weitere Informationen finden Sie unter [Column Patterns (Spaltenmuster)](concepts-data-flow-column-pattern.md).
 
-![Auswahl neuer abgeleiteter Spalten](media/data-flow/columnpattern.png "New derived column selection")
+![Auswahl für neue abgeleitete Spalte](media/data-flow/columnpattern.png "Auswahl für neue abgeleitete Spalte")
+
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
+
+```
+<incomingStream>
+    derive(
+           <columnName1> = <expression1>,
+           <columnName2> = <expression2>,
+           each(
+                match(matchExpression),
+                <metadataColumn1> = <metadataExpression1>,
+                <metadataColumn2> = <metadataExpression2>
+               )
+          ) ~> <deriveTransformationName>
+```
+
+### <a name="example"></a>Beispiel
+
+Das folgende Beispiel ist eine abgeleitete Spalte mit dem Namen `CleanData`, die aus einem eingehenden Datenstrom `MoviesYear` zwei abgeleitete Spalten erstellt. Die erste abgeleitete Spalte ersetzt die Spalte `Rating` durch den Wert für „Rating“ als ganzzahliger Typ. Die zweite abgeleitete Spalte ist ein Muster, das jede Spalte abgleicht, deren Name mit „movies“ beginnt. Für jede übereinstimmende Spalte wird eine Spalte `movie` erstellt, die dem Wert der übereinstimmenden Spalte entspricht und das Präfix „movie_“ erhält. 
+
+Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+
+![Ableitungsbeispiel](media/data-flow/derive-script1.png "Ableitungsbeispiel")
+
+Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt:
+
+```
+MoviesYear derive(
+                Rating = toInteger(Rating),
+                each(
+                    match(startsWith(name,'movies')),
+                    'movie' = 'movie_' + toString($$)
+                )
+            ) ~> CleanData
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

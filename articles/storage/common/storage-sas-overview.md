@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670843"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382012"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
@@ -24,9 +24,17 @@ SAS (Shared Access Signature) ermöglicht den sicheren delegierten Zugriff auf R
 
 Azure Storage unterstützt drei Arten von Shared Access Signatures:
 
-- **SAS für die Benutzerdelegierung (Vorschau).** Eine SAS für die Benutzerdelegierung wird durch Azure Active Directory-Anmeldeinformationen (Azure AD) sowie durch die für die SAS angegebenen Berechtigungen geschützt. Eine SAS für die Benutzerdelegierung gilt nur für Blobspeicher. Zum Erstellen einer SAS für die Benutzerdelegierung müssen Sie zuerst einen Benutzerdelegierungsschlüssel anfordern, der zum Signieren der SAS verwendet wird. Weitere Informationen zur SAS für die Benutzerdelegierung finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
-- **Dienst-SAS:** Eine Dienst-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Dienst-SAS delegiert den Zugriff auf eine Ressource in nur einem der Azure Storage-Dienste: Blob Storage, Queue Storage, Table Storage oder Azure Files. Weitere Informationen zur Dienst-SAS finden Sie unter [Erstellen einer Dienst-SAS (Rest-API)](/rest/api/storageservices/create-service-sas).
-- **Konto-SAS:** Eine Konto-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Konto-SAS delegiert den Zugriff auf Ressourcen in einem oder mehreren der Speicherdienste. Alle Vorgänge, die über eine Dienst-SAS oder eine SAS für die Benutzerdelegierung verfügbar sind, sind auch über eine Konto-SAS verfügbar. Mit der Konto-SAS können Sie außerdem den Zugriff auf Vorgänge delegieren, die für eine bestimmte Ebene des Diensts gelten, z.B. **Get/Set Service-Eigenschaften** und **Get Service Stats**-Vorgänge. Sie können auch den Zugriff auf Lese-, Schreib- und Löschvorgänge in Blob-Containern, Tabellen, Warteschlangen und Dateifreigaben delegieren, die mit einer Dienst-SAS nicht zulässig sind. Weitere Informationen zur Konto-SAS finden Sie unter [Erstellen einer Konto-SAS (Rest-API)](/rest/api/storageservices/create-account-sas).
+- **SAS für die Benutzerdelegierung (Vorschau).** Eine SAS für die Benutzerdelegierung wird durch Azure Active Directory-Anmeldeinformationen (Azure AD) sowie durch die für die SAS angegebenen Berechtigungen geschützt. Eine SAS für die Benutzerdelegierung gilt nur für Blobspeicher.
+
+    Weitere Informationen zur SAS für die Benutzerdelegierung finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
+
+- **Dienst-SAS:** Eine Dienst-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Dienst-SAS delegiert den Zugriff auf eine Ressource in nur einem der Azure Storage-Dienste: Blob Storage, Queue Storage, Table Storage oder Azure Files. 
+
+    Weitere Informationen zur Dienst-SAS finden Sie unter [Erstellen einer Dienst-SAS (Rest-API)](/rest/api/storageservices/create-service-sas).
+
+- **Konto-SAS:** Eine Konto-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Konto-SAS delegiert den Zugriff auf Ressourcen in einem oder mehreren der Speicherdienste. Alle Vorgänge, die über eine Dienst-SAS oder eine SAS für die Benutzerdelegierung verfügbar sind, sind auch über eine Konto-SAS verfügbar. Mit der Konto-SAS können Sie außerdem den Zugriff auf Vorgänge delegieren, die für eine bestimmte Ebene des Diensts gelten, z.B. **Get/Set Service-Eigenschaften** und **Get Service Stats**-Vorgänge. Sie können auch den Zugriff auf Lese-, Schreib- und Löschvorgänge in Blob-Containern, Tabellen, Warteschlangen und Dateifreigaben delegieren, die mit einer Dienst-SAS nicht zulässig sind. 
+
+    Weitere Informationen zur Konto-SAS finden Sie unter [Erstellen einer Konto-SAS (Rest-API)](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
 > Microsoft empfiehlt als bewährte Methode, nach Möglichkeit Azure AD-Anmeldeinformationen anstelle des Kontoschlüssels zu verwenden, der leichter kompromittiert werden kann. Wenn ihr Anwendungsentwurf Shared Access Signatures für den Zugriff auf Blobspeicher erfordert, verwenden Sie Azure AD-Anmeldeinformationen, um nach Möglichkeit eine SAS für die Benutzerdelegierung zu erstellen und damit die Sicherheit zu erhöhen.
@@ -47,7 +55,7 @@ Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere S
 
 Zum Signieren einer SAS stehen zwei Möglichkeiten zur Verfügung:
 
-- Mit einem Benutzerdelegierungsschlüssel, der mit Azure Active Directory-Anmeldeinformationen (Azure AD) erstellt wurde. Eine SAS für die Benutzerdelegierung wird mit dem Benutzerdelegierungsschlüssel signiert.
+- Mit einem *Benutzerdelegierungsschlüssel*, der mit Azure Active Directory-Anmeldeinformationen (Azure AD) erstellt wurde. Eine SAS für die Benutzerdelegierung wird mit dem Benutzerdelegierungsschlüssel signiert.
 
     Um den Benutzerdelegierungsschlüssel abzurufen und die SAS zu erstellen, muss einem Azure AD-Sicherheitsprinzipal rollenbasierte Zugriffssteuerung (RBAC) zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Ausführliche Informationen zu RBAC-Rollen mit Berechtigungen zum Abrufen des Benutzerdelegierungsschlüssels finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
 

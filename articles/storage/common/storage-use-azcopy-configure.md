@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244696"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273926"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -38,7 +38,29 @@ Um die Proxyeinstellungen für AzCopy zu konfigurieren, legen Sie die Umgebungsv
 
 AzCopy unterstützt zurzeit keine Proxys, für die eine Authentifizierung mit NTLM oder Kerberos erforderlich ist.
 
-## <a name="optimize-throughput"></a>Optimieren des Durchsatzes
+## <a name="optimize-performance"></a>Optimieren der Leistung
+
+Sie können Leistungsvergleichstests durchführen und dann mithilfe von Befehlen und Umgebungsvariablen ein ausgewogenes Verhältnis zwischen Leistung und Ressourcenverbrauch ermitteln.
+
+### <a name="run-benchmark-tests"></a>Ausführen von Vergleichstests
+
+Sie können einen Leistungsvergleichstest für bestimmte Blobcontainer ausführen, um allgemeine Leistungsstatistiken zu erhalten und Leistungsengpässe zu ermitteln. 
+
+> [!NOTE]
+> In der aktuellen Version ist dieses Feature nur für Blob Storage-Container verfügbar.
+
+Verwenden Sie den folgenden Befehl, um einen Leistungsvergleichstest auszuführen.
+
+|    |     |
+|--------|-----------|
+| **Syntax** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Beispiel** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/'` |
+
+Mit diesem Befehl wird ein Leistungsvergleichstest ausgeführt, indem Testdaten an ein angegebenes Ziel hochgeladen werden. Die Testdaten werden im Arbeitsspeicher generiert, an das Ziel hochgeladen und dann nach Abschluss des Tests aus dem Ziel gelöscht. Mithilfe optionaler Befehlsparameter können Sie angeben, wie viele Dateien und in welcher Größe generiert werden sollen.
+
+Wenn Sie ausführliche Hilfe zu diesem Befehl anzeigen möchten, geben Sie `azcopy bench -h` ein, und drücken Sie dann EINGABE.
+
+### <a name="optimize-throughput"></a>Optimieren des Durchsatzes
 
 Mithilfe des Flags `cap-mbps` können Sie eine Obergrenze für die Durchsatzdatenrate festlegen. Mit dem folgenden Befehl wird der Durchsatz beispielsweise auf `10` Megabytes (MB) pro Sekunde begrenzt.
 
@@ -46,7 +68,9 @@ Mithilfe des Flags `cap-mbps` können Sie eine Obergrenze für die Durchsatzdate
 azcopy cap-mbps 10
 ```
 
-Bei der Übertragung kleiner Dateien kann der Durchsatz zurückgehen. Sie können den Durchsatz durch Festlegen der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` erhöhen. Diese Variable gibt die zulässige Anzahl gleichzeitiger Anforderungen an.  Wenn Ihr Computer über weniger als 5 CPUs verfügt, wird der Wert dieser Variablen auf `32` festgelegt. Andernfalls ist der Standardwert gleich 16, multipliziert mit der Anzahl der CPUs. Der maximale Standardwert dieser Variablen ist `300`, aber Sie können diesen Wert manuell höher oder niedriger festlegen.
+Bei der Übertragung kleiner Dateien kann der Durchsatz zurückgehen. Sie können den Durchsatz durch Festlegen der Umgebungsvariablen `AZCOPY_CONCURRENCY_VALUE` erhöhen. Diese Variable gibt die zulässige Anzahl gleichzeitiger Anforderungen an.  
+
+Wenn Ihr Computer über weniger als 5 CPUs verfügt, wird der Wert dieser Variablen auf `32` festgelegt. Andernfalls ist der Standardwert gleich 16, multipliziert mit der Anzahl der CPUs. Der maximale Standardwert dieser Variablen ist `3000`, aber Sie können diesen Wert manuell höher oder niedriger festlegen. 
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
@@ -54,25 +78,20 @@ Bei der Übertragung kleiner Dateien kann der Durchsatz zurückgehen. Sie könne
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen.  Wenn der Wert leer ist, ist die Variable `AZCOPY_CONCURRENCY_VALUE` auf den Standardwert `300` festgelegt.
+Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, können Sie den verwendeten Wert ermitteln, indem Sie sich den Anfang einer AzCopy-Protokolldatei ansehen. Dort sind der ausgewählte Wert und der Grund aufgeführt, warum er ausgewählt wurde.
 
-## <a name="change-the-location-of-the-log-files"></a>Ändern des Speicherorts der Protokolldateien
+Bevor Sie diese Variable festlegen, wird empfohlen, einen Vergleichstest auszuführen. Im Vergleichstest wird der empfohlene Parallelitätswert angegeben. Wenn die Netzwerkbedingungen und Nutzlasten variieren, legen Sie diese Variable alternativ auf den Begriff `AUTO` anstatt auf eine bestimmte Zahl fest. Dies bewirkt, dass von AzCopy immer derselbe automatische Abstimmungsprozess ausgeführt wird, der in Vergleichstests verwendet wird.
 
-Standardmäßig befinden sich die Protokolldateien im Verzeichnis `%USERPROFILE%\.azcopy` unter Windows bzw. im Verzeichnis `$HOME\\.azcopy` unter Mac und Linux. Sie können diesen Speicherort bei Bedarf mit diesen Befehlen ändern.
+### <a name="optimize-memory-use"></a>Optimieren der Arbeitsspeichernutzung
+
+Legen Sie die Umgebungsvariable `AZCOPY_BUFFER_GB` fest, um die maximale Kapazität an Systemarbeitsspeicher festzulegen, die AzCopy beim Herunterladen und Hochladen von Dateien verwenden soll.
+Geben Sie diesen Wert in Gigabytes (GB) an.
 
 | Betriebssystem | Get-Help  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
-| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
-
-Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Protokolle an den Standardspeicherort geschrieben.
-
-## <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
-
-Standardmäßig ist die AzCopy-Protokollebene auf `INFO` festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz auf dem Datenträger zu sparen, überschreiben Sie die Einstellung mithilfe der Option ``--log-level``. 
-
-Verfügbare Protokollierebenen sind: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` und `FATAL`.
+| **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
+| **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
+| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ## <a name="troubleshoot-issues"></a>Behandeln von Problemen
 
@@ -80,7 +99,7 @@ AzCopy erstellt Protokoll- und Plandateien für jeden Auftrag. Sie können die P
 
 Die Protokolle enthalten den Status des Fehlers (`UPLOADFAILED`, `COPYFAILED` und `DOWNLOADFAILED`), den vollständigen Pfad und die Ursache des Fehlers.
 
-Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE\\.azcopy` unter Windows bzw. im Verzeichnis `$HOME\\.azcopy` unter Mac und Linux.
+Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE$\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Allerdings können Sie den Speicherort ändern.
 
 > [!IMPORTANT]
 > Geben Sie beim Senden einer Anforderung an den Microsoft-Support (oder bei der Problembehandlung unter Einbeziehung eines Drittanbieters) die bearbeitete Version des Befehls an, den Sie ausführen möchten. So wird sichergestellt, dass die SAS nicht versehentlich offengelegt wird. Die editierte Version steht am Anfang der Protokolldatei.
@@ -129,3 +148,45 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 Wenn Sie einen Auftrag fortsetzen, überprüft AzCopy die Plandatei. In der Plandatei werden alle Dateien aufgelistet, die zur Verarbeitung identifiziert wurden, als der Auftrag erstmalig erstellt wurde. Wenn Sie einen Auftrag fortsetzen, versucht AzCopy, alle Dateien zu übertragen, die in der Plandatei aufgeführt sind, die nicht bereits übertragen wurden.
+
+## <a name="change-the-location-of-the-plan-and-log-files"></a>Ändern des Speicherorts der Plan- und Protokolldateien
+
+Standardmäßig befinden sich die Plan- und Protokolldateien im Verzeichnis `%USERPROFILE$\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Sie können diesen Speicherort ändern.
+
+### <a name="change-the-location-of-plan-files"></a>Ändern des Speicherorts der Plandateien
+
+Verwenden Sie einen der folgende Befehle.
+
+| Betriebssystem | Get-Help  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+
+Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Plandateien an den Standardspeicherort geschrieben.
+
+### <a name="change-the-location-of-log-files"></a>Ändern des Speicherorts der Protokolldateien
+
+Verwenden Sie einen der folgende Befehle.
+
+| Betriebssystem | Get-Help  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+
+Verwenden Sie `azcopy env`, um den aktuellen Wert dieser Variablen zu überprüfen. Wenn der Wert leer ist, werden Protokolle an den Standardspeicherort geschrieben.
+
+## <a name="change-the-default-log-level"></a>Ändern der Standardprotokollebene
+
+Standardmäßig ist die AzCopy-Protokollebene auf `INFO` festgelegt. Wenn Sie die Ausführlichkeit des Protokolls verringern möchten, um Speicherplatz auf dem Datenträger zu sparen, überschreiben Sie die Einstellung mithilfe der Option ``--log-level``. 
+
+Verfügbare Protokolliergrade sind: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` und `FATAL`.
+
+## <a name="remove-plan-and-log-files"></a>Entfernen von Plan- und Protokolldateien
+
+Wenn Sie alle Plan- und Protokolldateien von Ihrem lokalen Computer entfernen möchten, um Speicherplatz zu sparen, verwenden Sie den Befehl `azcopy jobs clean`.
+
+Verwenden Sie `azcopy jobs rm <job-id>`, um die Plan- und Protokolldateien zu entfernen, die nur einem Auftrag zugeordnet sind. Ersetzen Sie den Platzhalter `<job-id>` in diesem Beispiel durch die Auftrags-ID des Auftrags.
+
+

@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648096"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331239"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Verwalten des Azure Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Zwar sind keine dedizierten PowerShell-Befehle für die Inhaltsverwaltung vorhan
 
 Nachfolgend sind noch andere Aufgaben aufgeführt, die nicht durch PowerShell oder eine andere API (nur Portal) unterstützt werden:
 + [Anfügen einer Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) für [um KI erweiterte Indizierung](cognitive-search-concept-intro.md). Ein Cognitive Service wird einer Qualifikationsgruppe und nicht einem Abonnement oder Dienst angefügt.
-+ [Add-On-Überwachungslösungen](search-monitor-usage.md#add-on-monitoring-solutions) oder [Durchsuchen der Datenverkehrsanalyse](search-traffic-analytics.md) zur Überwachung von Azure Search.
++ [Add-On-Überwachungslösungen ](search-monitor-usage.md#add-on-monitoring-solutions) für die Überwachung von Azure Search.
 
 <a name="check-versions-and-load"></a>
 

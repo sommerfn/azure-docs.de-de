@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828945"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285786"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer privaten Cloudumgebung
 
@@ -183,9 +183,9 @@ Wenn Sie ein Kennwort festlegen, das die Anforderungen nicht erfüllt:
 * Wenn Sie den vSphere-Flash-Client verwenden, meldet dieser einen Fehler.
 * Wenn Sie den HTML5-Client verwendet, wird kein Fehler gemeldet. Der Client akzeptiert die Änderung nicht, und das alte Kennwort funktioniert weiterhin.
 
-## <a name="change-nsx-administrator-password"></a>Ändern des NSX-Administratorkennworts
+## <a name="access-nsx-manager"></a>Zugreifen auf NSX Manager
 
-NSX Manager wird mit einem Standardkennwort bereitgestellt.  Es empfiehlt sich, dass Sie das Kennwort ändern, nachdem Sie Ihre private Cloud erstellt haben.
+NSX Manager wird mit einem Standardkennwort bereitgestellt. 
 
 * Benutzername: **admin**
 * Password (Kennwort): **CloudSimple123!**
@@ -198,8 +198,6 @@ Sie finden den vollständig qualifizierten Domänennamen (FQDN) und die IP-Adres
 4. Verwenden Sie den FQDN oder die IP-Adresse von **NSX Manager**, und stellen Sie über einen Webbrowser eine Verbindung her.
 
     ![Nach dem FQDN von NSX Manager suchen](media/private-cloud-nsx-manager-fqdn.png)
-
-Um das Kennwort zu ändern, folgen Sie den Anweisungen in [NSX Manager Installation](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html).
 
 ## <a name="create-a-port-group"></a>Erstellen einer Portgruppe
 

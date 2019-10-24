@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e08999798c72545f9fa1d1b5d362e23450ce16f5
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 9bc4d60eab0dac80d1b2b524f32bc506a66dee18
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695324"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516663"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Installieren der Azure IoT Edge-Runtime auf Debian-basierten Linux-Systemen
 
@@ -248,19 +248,25 @@ sudo systemctl restart iotedge
 
 Wenn Sie im vorherigen Abschnitt die Schritte für die **manuelle Konfiguration** ausgeführt haben, müsste die IoT Edge-Runtime erfolgreich bereitgestellt worden sein und auf Ihrem Gerät ausgeführt werden. Wenn Sie die Schritte für die **automatische Konfiguration** ausgeführt haben, sind einige weitere Schritte erforderlich, damit die Runtime Ihr Gerät in Ihrem Namen bei Ihrem IoT-Hub registrieren kann. Informationen zu den nächsten Schritten finden Sie unter [Erstellen und Bereitstellen eines simulierten TPM-IoT Edge-Geräts auf einem virtuellen Linux-Computer](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm).
 
-Sie können den Status des IoT Edge-Daemons wie folgt überprüfen:
+Sie können den Status des IoT Edge-Daemons überprüfen:
 
 ```bash
 systemctl status iotedge
 ```
 
-Untersuchen Sie die Daemonprotokolle wie folgt:
+Untersuchen Sie die Daemonprotokolle:
 
 ```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Führen Sie die ausgeführten Module wie folgt auf:
+Führen Sie eine automatisierte Überprüfung auf die häufigsten Konfigurations- und Netzwerkfehler durch: 
+
+```bash
+sudo iotedge check
+```
+
+Und listen Sie derzeit ausgeführte Module auf:
 
 ```bash
 sudo iotedge list

@@ -1,17 +1,17 @@
 ---
 title: 'Azure Data Factory Mapping Data Flow: Auswahltransformation'
-description: 'Azure Data Factory-Mapping Data Flow: Auswahltransformation'
+description: 'Azure Data Factory Mapping Data Flow: Auswahltransformation'
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6ef9712dd2fd6b8d53fd4ad2c3e07e1d6c8f1aec
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029265"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72387198"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Mapping Data Flow: Auswahltransformation
 
@@ -23,18 +23,18 @@ Mit der Auswahltransformation können Sie einem gesamten Datenstrom oder Spalten
 
 ![Selbstverknüpfung](media/data-flow/selfjoin.png "Selbstverknüpfung")
 
-Im obigen Diagramm befindet sich die Auswahltransformation ganz oben. Dem ursprünglichen Datenstrom wird der Alias „OrigSourceBatting“ zugewiesen. In der hervorgehobenen Verknüpfungstransformation darunter können Sie sehen, dass wir diesen SELECT-Aliasdatenstrom der Auswahltransformation als rechte Verknüpfung verwenden, sodass wir sowohl auf der linken als auch auf der rechten Seite (des inneren Joins) auf den gleichen Schlüssel verweisen können.
+Im obigen Diagramm befindet sich die SELECT-Transformation ganz oben. Dem ursprünglichen Datenstrom wird der Alias „OrigSourceBatting“ zugewiesen. In der hervorgehobenen Verknüpfungstransformation darunter können Sie sehen, dass wir diesen SELECT-Aliasdatenstrom der Auswahltransformation als rechte Verknüpfung verwenden, sodass wir sowohl auf der linken als auch auf der rechten Seite (des inneren Joins) auf den gleichen Schlüssel verweisen können.
 
 Die Auswahltransformation kann auch als Möglichkeit verwendet werden, die Auswahl von Spalten in Ihrem Datenfluss aufzuheben. Wenn in Ihrer Senke beispielsweise 6 Spalten definiert sind, Sie aber nur 3 bestimmte Spalten für die Transformation auswählen und dann zur Senke fließen lassen möchten, können Sie mit der Auswahltransformation nur diese 3 Spalten auswählen.
 
-![Auswahltransformation](media/data-flow/newselect1.png "Alias auswählen")
+![Auswahltransformation](media/data-flow/newselect1.png "Auswählen des Alias")
 
 ## <a name="options"></a>Optionen
 * In der Standardeinstellung für die Auswahl werden alle eingehenden Spalten einbezogen und die ursprünglichen Namen beibehalten. Sie können dem Datenstrom einen Alias zuweisen, indem Sie den Namen der Auswahltransformation festlegen.
 * Wenn Sie einzelnen Spalten Aliase zuweisen möchten, deaktivieren Sie „Alle auswählen“, und verwenden Sie im unteren Bereich die Spaltenzuordnung.
 * Wählen Sie die Option „Skip Duplicates“ (Duplikate überspringen) aus, um doppelte Spalten aus Eingabe- oder Ausgabemetadaten zu entfernen.
 
-![Duplikate überspringen](media/data-flow/select-skip-dup.png "Duplikate überspringen")
+![Überspringen von Duplikaten](media/data-flow/select-skip-dup.png "Überspringen von Duplikaten")
 
 * Wenn Sie das Überspringen von Duplikaten auswählen, werden die Ergebnisse auf der Registerkarte „Untersuchen“ angezeigt. ADF behält das erste Vorkommen der Spalte bei. Sie werden feststellen, dass jedes nachfolgende Vorkommen der gleichen Spalte aus dem Flow entfernt wurde.
 
@@ -44,7 +44,7 @@ Die Auswahltransformation kann auch als Möglichkeit verwendet werden, die Auswa
 ## <a name="mapping"></a>Zuordnung
 Die Auswahltransformation ordnet alle Spalten standardmäßig automatisch zu, wodurch alle eingehenden Spalten an denselben Namen in der Ausgabe weitergeleitet werden. Der Name des Ausgabedatenstroms, der in „Select Settings“ (Auswahleinstellungen) festgelegt wird, definiert einen neuen Aliasnamen für den Datenstrom. Wenn Sie die für die automatische Zuordnung festgelegte Auswahl beibehalten, können Sie dem gesamten Datenstrom bei allen Spalten einen identischen Alias zuweisen.
 
-![Regeln für Auswahltransformation](media/data-flow/rule2.png "Regelbasierte Zuordnung")
+![Regeln für die Auswahltransformation](media/data-flow/rule2.png "Regelbasierte Zuordnung")
 
 Wenn Sie Spalten einen Alias zuweisen oder aber Spalten entfernen, umbenennen oder neu anordnen möchten, müssen Sie zuerst „Automatisch zuordnen“ deaktivieren. Standardmäßig wird eine automatisch eingegebene Standardregel namens „Alle Eingabespalten“ angezeigt. Sie können diese Regel beibehalten, wenn Sie möchten, dass alle eingehenden Spalten immer demselben Namen in der Ausgabe zugeordnet werden.
 

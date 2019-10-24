@@ -1,26 +1,26 @@
 ---
-title: Ausdrucksfunktionen in der Mappingdatenflussfunktion von Azure Data Factory
-description: Erhalten Sie Informationen zu Ausdrucksfunktionen im Mappingdatenfluss.
+title: Ausdrucksfunktionen im Mapping Data Flow-Feature von Azure Data Factory
+description: Hier erhalten Sie Informationen zu Ausdrucksfunktionen in Mapping Data Flow.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: c062a75516a1b865c1ff6c35f00d4fbf7c4881c6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 27d968aa5202fbeb38be9a2416514d2185c1d8b9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029377"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436743"
 ---
-# <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke im Mappingdatenfluss 
+# <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke in Mapping Data Flow 
 
 
 
 ## <a name="expression-functions"></a>Ausdrucksfunktionen
 
-In Data Factory verwenden Sie die Ausdruckssprache der Mappingdatenflussfunktion, um Datentransformationen zu konfigurieren.
+In Data Factory verwenden Sie die Ausdruckssprache des Mapping Data Flow-Features, um Datentransformationen zu konfigurieren.
 
 ___
 ### <code>abs</code>
@@ -197,7 +197,8 @@ Ruft den aktuellen Zeitstempel mit der lokalen Zeitzone ab, wenn der Auftrag aus
 ___
 ### <code>currentUTC</code>
 <code><b>currentUTC([<i>&lt;value1&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Ruft den aktuellen Zeitstempel als UTC ab. Wenn die aktuelle Zeit in einer anderen Zeitzone als der Zeitzone des Clusters interpretiert werden soll, können Sie eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.htmlTo Zum Konvertieren der UTC-Zeit in eine andere Zeitzone verwenden Sie „fromUTC()“. * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+Ruft den aktuellen Zeitstempel als UTC ab. Wenn die aktuelle Zeit in einer anderen Zeitzone als der Zeitzone des Clusters interpretiert werden soll, können Sie eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. Verwenden Sie [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) zum Konvertieren der UTC-Zeit in eine andere Zeitzone mit „fromUTC()“.
+* ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
 * ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
 * ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
 ___

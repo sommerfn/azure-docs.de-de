@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147357"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372711"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -114,6 +114,12 @@ Das Nachrichtenrouting ermöglicht zusätzlich zum Weiterleiten von Gerätetelem
 ## <a name="testing-routes"></a>Testen von Routen
 
 Wenn Sie eine neue Route erstellen oder eine vorhandene Route bearbeiten, sollten Sie die Routenabfrage mit einer Beispielnachricht testen. Sie können einzelne Routen oder alle Routen gleichzeitig testen. Während des Tests werden keine Nachrichten an die Endpunkte weitergeleitet. Zum Testen können Sie das Azure-Portal, Azure Resource Manager, Azure PowerShell oder die Azure CLI verwenden. Anhand der Ausgaben können Sie herausfinden, ob die Beispielnachricht der Abfrage entspricht oder nicht oder ob der Test nicht ausgeführt werden konnte, weil Beispielnachricht oder Abfragesyntax falsch sind. Weitere Informationen finden Sie unter [Testen einer Route](/rest/api/iothub/iothubresource/testroute) und [Testen aller Routen](/rest/api/iothub/iothubresource/testallroutes).
+
+## <a name="ordering-guarantees-with-at-least-once-delivery"></a>Reihenfolgengarantien mit mindestens einer Übermittlung
+
+Das IoT Hub-Nachrichtenrouting garantiert eine geordnete und mindestens einmal erfolgende Übermittlung von Nachrichten an die Endpunkte. Dies bedeutet, dass es doppelte Nachrichten geben und eine Reihe von Nachrichten erneut übertragen werden kann, wobei die ursprüngliche Nachrichtensortierung berücksichtigt wird. Wenn die ursprüngliche Reihenfolge der Nachrichten z.B. „[1,2,3,4]“ ist, könnten Sie eine Nachrichtensequenz wie „[1,2,1,2,3,1,2,3,4]“ erhalten. Die Reihenfolgengarantie legt fest, dass auf die von Ihnen empfangene Nachricht „[1]“ immer „[2,3,4]“ folgen.
+
+Zum Verarbeiten von Nachrichtenduplikaten empfiehlt es sich, einen eindeutigen Bezeichner in den Anwendungseigenschaften der Nachricht am Ursprung zu stempeln, bei dem es sich normalerweise um ein Gerät oder ein Modul handelt. Der Dienst zur Verarbeitung der Nachrichten kann mithilfe dieses Bezeichners doppelte Nachrichten verarbeiten.
 
 ## <a name="latency"></a>Latency
 

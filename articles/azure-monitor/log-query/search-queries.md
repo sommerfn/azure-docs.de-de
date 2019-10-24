@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a0ceb5aa82b0d38ab5d2567689e3e131ba781ce9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295555"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254988"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Suchabfragen in Azure Monitor-Protokollen
 Azure Monitor-Protokollabfragen können entweder mit einem Tabellennamen oder einem Suchbefehl beginnen. Dieses Tutorial behandelt suchbasierte Abfragen. Jede Methode bringt ihre eigenen Vorteile mit sich.
@@ -50,7 +50,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>Bereichseinschränkung für Tabellen und Spalten
-Standardmäßig wertet **search** alle Spalten im Dataset aus. Um nur nach einer bestimmten Spalte zu suchen, verwenden Sie die folgende Syntax:
+Standardmäßig wertet **search** alle Spalten im Dataset aus. Wenn nur eine bestimmte Spalte (mit dem Namen *Source* im folgenden Beispiel) durchsucht werden soll, verwenden Sie die folgende Syntax:
 
 ```Kusto
 search in (Event) Source:"error"

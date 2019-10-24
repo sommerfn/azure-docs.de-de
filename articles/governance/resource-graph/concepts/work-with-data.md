@@ -3,15 +3,15 @@ title: Arbeiten mit großen Datasets
 description: Hier erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph umfangreiche Datasets abrufen und steuern.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 74a618606fa8f2bdc678e8afc90640b5be8315a7
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980303"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752121"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -29,11 +29,11 @@ Standardmäßig sind in Resource Graph alle Abfragen so beschränkt, dass nur **
 Das Standardlimit kann über alle Methoden für die Interaktion mit Resource Graph überschrieben werden. Die folgenden Beispiele zeigen, wie die Größenbeschränkung von Datasets in _200_ geändert wird:
 
 ```azurecli-interactive
-az graph query -q "project name | order by name asc" --first 200 --output table
+az graph query -q "Resources | project name | order by name asc" --first 200 --output table
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name | order by name asc" -First 200
+Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
 In der [REST-API](/rest/api/azureresourcegraph/resources/resources) wird das Steuerelement **$top** verwendet, das Teil von **QueryRequestOptions** ist.
@@ -52,11 +52,11 @@ Als weitere Option für das Arbeiten mit großen Datasets kann das Steuerelement
 Die folgenden Beispiele zeigen, wie die ersten _10_ Datensätze übersprungen werden, die sich bei einer Abfrage ergeben, anstatt das zurückgegebene Resultset mit dem 11. Datensatz zu beginnen:
 
 ```azurecli-interactive
-az graph query -q "project name | order by name asc" --skip 10 --output table
+az graph query -q "Resources | project name | order by name asc" --skip 10 --output table
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project name | order by name asc" -Skip 10
+Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
 In der [REST-API](/rest/api/azureresourcegraph/resources/resources) wird das Steuerelement **$skip** verwendet, das Teil von **QueryRequestOptions** ist.
@@ -71,17 +71,101 @@ Wenn **resultTruncated** auf **true** festgelegt ist, wird in der Antwort die Ei
 Die folgenden Beispiele zeigen, wie Sie mit Azure CLI und Azure PowerShell die ersten 3000 Datensätze **überspringen** und die **ersten** 1000 Datensätze nach den übersprungenen Datensätzen zurückgeben:
 
 ```azurecli-interactive
-az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
+az graph query -q "Resources | project id, name | order by id asc" --first 1000 --skip 3000
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 3000
+Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 1000 -Skip 3000
 ```
 
 > [!IMPORTANT]
 > Die Abfrage muss das Feld **id** **projizieren**, damit die Paginierung funktioniert. Wenn das Feld in der Abfrage nicht vorhanden ist, enthält die Antwort nicht die Eigenschaft **$skipToken**.
 
-Ein Beispiel finden Sie unter [Next page query](/rest/api/azureresourcegraph/resources/resources#next-page-query) (Abfrage der nächsten Seite) in der REST-API-Dokumentation.
+Ein Beispiel finden Sie unter [Next page query](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query) (Abfrage der nächsten Seite) in der REST-API-Dokumentation.
+
+## <a name="formatting-results"></a>Formatieren von Ergebnissen
+
+Die Ergebnisse einer Resource Graph-Abfrage werden in zwei Formaten bereitgestellt: _Table_ und _ObjectArray_. Das Format wird als Teil der Anforderungsoptionen mit dem Parameter **resultFormat**  konfiguriert. Das _Table_-Format ist der Standardwert für **resultFormat**.
+
+Ergebnisse von Azure CLI werden standardmäßig im JSON-Format bereitgestellt. Ergebnisse in Azure PowerShell sind standardmäßig **PSCustomObject**, können jedoch schnell mithilfe des Cmdlets `ConvertTo-Json` in das JSON-Format konvertiert werden. Bei anderen SDKs können die Abfrageergebnisse für die Ausgabe im _ObjectArray_-Format konfiguriert werden.
+
+### <a name="format---table"></a>Format „Table“
+
+Das Standardformat _Table_ gibt Ergebnisse in einem JSON-Format zurück, das den Spaltenentwurf und die Zeilenwerte der von der Abfrage zurückgegebenen Eigenschaften hervorhebt. Dieses Format ähnelt Daten, die in einer strukturierten Tabelle oder Kalkulationstabelle definiert sind, wobei die Spalten zuerst angegeben sind, gefolgt von den einzelnen Zeilen zur Darstellung der Daten, die diesen Spalten zugeordnet sind.
+
+Es folgt ein Beispiel für ein Abfrageergebnis mit _Table_-Formatierung:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>Format „ObjectArray“
+
+Das _ObjectArray_-Format gibt ebenfalls Ergebnisse in einem JSON-Format zurück. Dieser Entwurf richtet sich jedoch nach der in JSON üblichen Schlüssel-Wert-Paarbeziehung, wobei die Spalten und die Zeilendaten in Arraygruppen abgeglichen werden.
+
+Es folgt ein Beispiel für ein Abfrageergebnis mit _ObjectArray_-Formatierung:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+Es folgen einige Beispiele für das Festlegen von **resultFormat** für die Verwendung des _ObjectArray_-Formats:
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "Resources | limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="Resources | limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

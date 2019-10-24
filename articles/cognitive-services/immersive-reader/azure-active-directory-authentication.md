@@ -10,22 +10,22 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d51c27b90113679c1547f2d030459a03cc22c80c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990146"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299806"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Verwenden der Azure Active Directory-Authentifizierung (Azure AD) mit dem Dienst Plastischer Reader
 
-In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebung oder die Azure CLI, um eine neue Plastischer Reader-Ressource mit einer benutzerdefinierten Unterdomäne zu erstellen und dann Azure AD in Ihrem Azure-Mandanten zu konfigurieren. Nachdem Sie diese anfängliche Konfiguration abgeschlossen haben, rufen Sie Azure AD auf, um ein Zugriffstoken zu erhalten. Dies ähnelt der Vorgehensweise bei Verwendung des SDK für den plastischen Reader. Falls Sie einmal nicht mehr weiterwissen, nutzen Sie die Links in jedem Abschnitt mit allen verfügbaren Optionen für jeden Azure CLI-Befehl.
+In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebung oder Azure PowerShell, um eine neue Plastischer Reader-Ressource mit einer benutzerdefinierten Unterdomäne zu erstellen und dann Azure AD in Ihrem Azure-Mandanten zu konfigurieren. Nachdem Sie diese anfängliche Konfiguration abgeschlossen haben, rufen Sie Azure AD auf, um ein Zugriffstoken zu erhalten. Dies ähnelt der Vorgehensweise bei Verwendung des SDK für den plastischen Reader. Falls Sie einmal nicht mehr weiterwissen, nutzen Sie die Links in jedem Abschnitt mit allen verfügbaren Optionen für jeden Azure PowerShell-Befehl.
 
 ## <a name="create-an-immersive-reader-resource-with-a-custom-subdomain"></a>Erstellen einer Plastischer Reader-Ressource mit einer benutzerdefinierten Unterdomäne
 
 1. Öffnen Sie als Erstes die [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). [Wählen Sie dann ein Abonnement aus](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
@@ -41,7 +41,7 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
    -CustomSubdomainName muss global eindeutig sein und darf einige Zeichen nicht enthalten, wie z.B. „.“, „!“ oder „,“.
 
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME> -Type ImmersiveReader -SkuName S0 -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
 
    // Display the Resource info
@@ -58,7 +58,7 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
 
    Wenn die Ressource im Portal erstellt wurde, können Sie jetzt auch [eine vorhandene Ressource abrufen](https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount?view=azps-1.8.0).
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = Get-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME>
 
    // Display the Resource info
@@ -74,7 +74,7 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
    >[!NOTE]
    > Das auch als „geheimer Clientschlüssel“ bezeichnete Kennwort wird beim Abrufen von Authentifizierungstoken verwendet.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $password = "<YOUR_PASSWORD>"
    $secureStringPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
    $aadApp = New-AzADApplication -DisplayName ImmersiveReaderAAD -IdentifierUris http://ImmersiveReaderAAD -Password $secureStringPassword
@@ -87,7 +87,7 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
 
 2. Als Nächstes müssen Sie für die AAD-Anwendung [einen Dienstprinzipal erstellen](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0).
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $principal = New-AzADServicePrincipal -ApplicationId $aadApp.ApplicationId
 
    // Display the service principal info
@@ -99,7 +99,7 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
 
 3. Der letzte Schritt besteht darin, dem Dienstprinzipal (im Bereich der Ressource) [die Rolle „Cognitive Services-Benutzer“ zuzuweisen](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0). Durch Zuweisen einer Rolle gewähren Sie dem Dienstprinzipal Zugriff auf diese Ressource. Sie können einem Dienstprinzipal Zugriff auf mehrere Ressourcen in Ihrem Abonnement gewähren.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    New-AzRoleAssignment -ObjectId $principal.Id -Scope $resource.Id -RoleDefinitionName "Cognitive Services User"
    ```
 
@@ -112,13 +112,13 @@ Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordne
 In diesem Beispiel wird Ihr Kennwort verwendet, um den Dienstprinzipal zum Abrufen eines Azure AD-Tokens zu authentifizieren.
 
 1. Rufen Sie Ihre **TenantId** ab:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $context = Get-AzContext
    $context.Tenant.Id
    ```
 
 2. Rufen Sie ein Token ab:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $authority = "https://login.windows.net/" + $context.Tenant.Id
    $resource = "https://cognitiveservices.azure.com/"
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
@@ -134,7 +134,7 @@ Alternativ dazu kann der Dienstprinzipal auch mit einem Zertifikat authentifizie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Schauen Sie sich das [Node.js-Tutorial](./tutorial-nodejs.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Node.js bietet.
+* Sehen Sie sich das [Node.js-Tutorial](./tutorial-nodejs.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Node.js bietet.
 * Schauen Sie sich das [Python-Tutorial](./tutorial-python.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Python bietet.
 * Schauen Sie sich das [Swift-Tutorial](./tutorial-ios-picture-immersive-reader.md) an, um zu erfahren, welche weiteren Möglichkeiten das SDK für den plastischen Reader in Verbindung mit Swift bietet.
-* Machen Sie sich mit dem [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.
+* Machen Sie sich mit dem [SDK für Plastischer Reader](https://github.com/microsoft/immersive-reader-sdk) und der [zugehörigen Referenz](./reference.md) vertraut.

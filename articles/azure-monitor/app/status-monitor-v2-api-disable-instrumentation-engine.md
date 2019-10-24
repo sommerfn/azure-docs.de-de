@@ -1,6 +1,6 @@
 ---
-title: 'API-Referenz für Azure-Statusmonitor v2: Deaktivieren der Instrumentierungs-Engine | Microsoft-Dokumentation'
-description: API-Referenz für Statusmonitor v2. Disable-InstrumentationEngine. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
+title: 'API-Referenz für den Azure Application Insights-Agent: Deaktivieren der Instrumentierungs-Engine | Microsoft-Dokumentation'
+description: API-Referenz für den Application Insights-Agent. Disable-InstrumentationEngine. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 98f70a457b1e09f755a854a28cfd31a8fc9ee9f2
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: aaf493b5f2075ead62087824773f21643a1246e4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033179"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388305"
 ---
-# <a name="status-monitor-v2-api-disable-instrumentationengine"></a>API für Statusmonitor v2: Disable-InstrumentationEngine
+# <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights-Agent-API: Disable-InstrumentationEngine
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
 
@@ -57,5 +57,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- Weitere Möglichkeiten zur Verwendung von Statusmonitor v2:
- - Verwenden Sie unsere Anleitung für die [Problembehandlung](status-monitor-v2-troubleshoot.md) von Statusmonitor v2.
+ Weitere Verwendungsmöglichkeiten für den Application Insights-Agent:
+ - Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.

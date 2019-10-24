@@ -11,17 +11,17 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c747f25b92d9f165bfeb4468a0e263f102976f9
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350568"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330732"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
 >[!IMPORTANT]
-> Dieses SDK wird in Kürze eingestellt und durch eine vereinfachte [Datenüberwachung mit Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights) ersetzt. 
+> Dieses SDK wird in Kürze eingestellt. Dieses SDK ist nach wie vor für Entwickler geeignet, die die Datendrift in Modellen überwachen, aber die meisten Entwickler sollten die vereinfachte [Datenüberwachung mit Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights) verwenden. 
 
 In diesem Artikel erfahren Sie, wie Eingabemodelldaten aus Azure Machine Learning gesammelt werden, die Sie im Azure Kubernetes-Cluster (AKS) in einem Azure-Blobspeicher bereitgestellt haben. 
 
@@ -192,7 +192,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
 1. Klicken Sie im Abfrage-Editor unter der Spalte „Name“, und fügen Sie Ihr erstes Speicherkonto hinzu. Modellieren Sie Ihren Pfad im Filter. Hinweis: Erweitern Sie den Filterpfad, wenn Sie sich nur die Dateien für ein bestimmtes Jahr oder einen Monat ansehen möchten. Beispielsweise nur die Daten für März: /modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3
 
-1. Filtern Sie die Daten, die für Sie relevant sind, nach dem **Namen**. Wenn Sie **Vorhersagen** und **Eingaben** gespeichert haben, müssen Sie jeweils eine separate Abfrage erstellen.
+1. Filtern Sie die Daten, die für Sie relevant sind, nach dem **Namen**. Wenn Sie **Vorhersagen** und **Eingaben** gespeichert haben, müssen Sie für jede jeweils eine separate Abfrage erstellen.
 
 1. Klicken Sie neben der Spalte **Inhalt** auf den Doppelpfeil, um die Dateien zu kombinieren. 
 

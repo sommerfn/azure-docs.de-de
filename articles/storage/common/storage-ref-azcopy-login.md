@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2938d85becbea738acc21fc7b15991301eef759f
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196740"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514707"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -50,25 +50,25 @@ Interaktive Anmeldung mit einer spezifischen Mandanten-ID:
 azcopy login --tenant-id "[TenantID]"
 ```
 
-Anmeldung unter Verwendung der systemseitig zugewiesenen Identität eines virtuellen Computers:
+Anmeldung mit der systemseitig zugewiesenen Identität einer VM:
 
 ```azcopy
 azcopy login --identity
 ```
 
-Anmeldung unter Verwendung der benutzerseitig zugewiesenen Identität eines virtuellen Computers mit einer Client-ID der Dienstidentität:
+Anmeldung mit der benutzerseitig zugewiesenen Identität einer VM und einer Client-ID der Dienstidentität:
 
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
 
-Anmeldung unter Verwendung der benutzerseitig zugewiesenen Identität eines virtuellen Computers mit einer Objekt-ID der Dienstidentität:
+Anmeldung mit der benutzerseitig zugewiesenen Identität einer VM und einer Objekt-ID der Dienstidentität:
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-Anmeldung unter Verwendung der benutzerseitig zugewiesenen Identität eines virtuellen Computers mit einer Ressourcen-ID der Dienstidentität:
+Anmeldung mit der benutzerseitig zugewiesenen Identität einer VM und einer Ressourcen-ID der Dienstidentität:
 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
@@ -92,7 +92,7 @@ Behandeln Sie „/path/to/my/cert“ als Pfad zu einer PEM- oder PKCS12-Datei. A
 
 ## <a name="options"></a>Optionen
 
-|Option|Beschreibung|
+|Option|BESCHREIBUNG|
 |--|--|
 |--application-id string|Anwendungs-ID der benutzerseitig zugewiesenen Identität. Erforderlich für die Dienstprinzipalautorisierung.|
 |--certificate-path string|Pfad zum Zertifikat für die SPN-Authentifizierung. Erforderlich für die zertifikatbasierte Dienstprinzipalautorisierung.|
@@ -106,10 +106,10 @@ Behandeln Sie „/path/to/my/cert“ als Pfad zu einer PEM- oder PKCS12-Datei. A
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
-|Option|Beschreibung|
+|Option|BESCHREIBUNG|
 |---|---|
-|--cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabits pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf Null festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
-|--output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|
+|–cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
+|–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|
 
 ## <a name="see-also"></a>Weitere Informationen
 

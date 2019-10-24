@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 4d801ada8fd8a8b35c71601d3ca274f26afb24f6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262276"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434285"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Protokolle für langsame Abfragen in Azure Database for MySQL
 In Azure Database for MySQL ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen.
@@ -40,6 +40,9 @@ Weitere Parameter, die Sie anpassen können:
 - **log_queries_not_using_indexes**: Bestimmt, ob Abfragen, die keine Indizes verwenden, in „slow_query_log“ protokolliert werden.
 - **log_throttle_queries_not_using_indexes**: Dieser Parameter begrenzt die Anzahl der Nichtindexabfragen, die in das Protokoll für langsame Abfragen geschrieben werden können. Dieser Parameter wird wirksam, wenn „log_queries_not_using_indexes“ auf „ON“ festgelegt ist.
 
+> [!Note]
+> Bei `sql_text` wird das Protokoll abgeschnitten, wenn es länger als 2.048 Zeichen ist.
+
 Vollständige Beschreibungen der Parameter des Protokolls für langsame Abfragen finden Sie in der [MySQL-Dokumentation zum Protokoll für langsame Abfragen](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
@@ -66,8 +69,8 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | Name des Servers |
 | `start_time_t` [UTC] | Uhrzeit, zu der die Abfrage begann |
-| `query_time_s` | Gesamtzeit, die die Abfrage zur Ausführung benötigte |
-| `lock_time_s` | Gesamtzeit, über die die Abfrage gesperrt war |
+| `query_time_s` | Gesamtzeit (in Sekunden), die die Ausführung der Abfrage gedauert hat |
+| `lock_time_s` | Gesamtzeit in Sekunden, während der die Abfrage gesperrt war |
 | `user_host_s` | Username |
 | `rows_sent_s` | Anzahl gesendeter Zeilen |
 | `rows_examined_s` | Anzahl untersuchter Zeilen |

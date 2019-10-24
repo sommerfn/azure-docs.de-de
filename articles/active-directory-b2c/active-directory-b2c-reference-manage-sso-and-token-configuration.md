@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 966386bfed5f94556f145afab1c665eb3c90546a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065559"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296397"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -102,5 +102,5 @@ Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforder
 Im vorstehenden Beispiel werden die folgenden Werte konfiguriert:
 
 - **Einmaliges Anmelden (Single Sign-On, SSO):** Einmaliges Anmelden wird mit **SingleSignOn** konfiguriert. Die gültigen Werte sind `Tenant`, `Application`, `Policy` und `Suppressed`.
-- **Lebensdauer der Web-App-Sitzung (Minuten):** Die Gültigkeitsdauer der Web-App-Sitzung wird mit dem **SessionExpiryInSeconds**-Element festgelegt. Der Standardwert beträgt 86.400 Sekunden (1.440 Minuten).
 - **Timeout für Web-App-Sitzung:** Das Timeout für die Web-App-Sitzung wird mit dem **SessionExpiryType**-Element festgelegt. Die gültigen Werte sind `Absolute` und `Rolling`.
+- **Lebensdauer der Web-App-Sitzung**: Die Gültigkeitsdauer der Web-App-Sitzung wird mit dem **SessionExpiryInSeconds**-Element festgelegt. Der Standardwert beträgt 86.400 Sekunden (1.440 Minuten).

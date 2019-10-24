@@ -4,15 +4,15 @@ description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung 
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327668"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514667"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -26,7 +26,7 @@ ms.locfileid: "71327668"
 
 * **Storage Account** (Speicherkonto): Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ausführliche Informationen zur Kapazität von Speicherkonten finden Sie unter [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Skalierbarkeits- und Leistungsziele für Azure Storage).
 
-* **Freigabe:** Eine Datenspeicherfreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in der übergeordneten Freigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze für die Dateifreigabe erreicht ist. Für Standard-Dateifreigaben beträgt die Kapazitätsgrenze bis zu 5 TiB (allgemein verfügbar) bzw. 100 TiB (Vorschauversion), für Premium-Dateifreigaben bis zu 100 TiB.
+* **Freigabe:** Eine Datenspeicherfreigabe ist eine SMB-Dateifreigabe in Azure. Alle Verzeichnisse und Dateien müssen in der übergeordneten Freigabe erstellt werden. Ein Konto kann eine unbegrenzte Anzahl von Freigaben enthalten, und eine Freigabe kann eine unbegrenzte Anzahl von Dateien speichern, bis die Kapazitätsgrenze für die Dateifreigabe erreicht ist. Die Gesamtkapazität für Premium- und Standarddateifreigaben beträgt 100 TiB.
 
 * **Verzeichnis:** Eine optionale Hierarchie von Verzeichnissen.
 
@@ -79,10 +79,8 @@ Azure Files bietet zwei Leistungsstufen: Standard und Premium.
 
 Standard-Dateifreigaben beruhen auf Festplattenlaufwerken (HDDs). Standard-Dateifreigaben bieten eine zuverlässige Leistung für E/A-Workloads, die weniger anfällig für Leistungsschwankungen sind, z. B. universelle Dateifreigaben und Dev/Test-Umgebungen. Standard-Dateifreigaben sind nur in einem nutzungsbasierten Abrechnungsmodell verfügbar.
 
-Standard-Dateifreigaben stehen in Größen von bis zu 5 TiB als GA-Angebot zur Verfügung. Größere Dateifreigaben, die zwischen 5 und 100 TiB aufweisen, stehen derzeit als Vorschauversion zur Verfügung.
-
 > [!IMPORTANT]
-> Weitere Informationen finden Sie im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](#onboard-to-larger-file-shares-standard-tier). Dort finden Sie Anweisungen zum Onboarding sowie Umfang und Einschränkungen der Vorschauversion.
+> Wenn Sie Dateifreigaben über 5 TiB verwenden möchten, finden Sie im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](#onboard-to-larger-file-shares-standard-tier) die erforderlichen Schritte sowie Informationen zur regionalen Verfügbarkeit und Einschränkungen.
 
 ### <a name="premium-file-shares"></a>Premium-Dateifreigaben
 
@@ -195,75 +193,43 @@ Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheide
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboarding für größere Dateifreigaben (Standard-Tarif)
 
-Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreigaben sind als GA-Angebot mit 100 TiB verfügbar.
+Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreigaben sind mit einer Kapazität von 100 TiB verfügbar.
 
 ### <a name="restrictions"></a>Einschränkungen
 
-- Die [Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) gelten für große Dateifreigaben während der Vorschau, z. B. bei der Verwendung mit Azure-Dateisynchronisierungsbereitstellungen.
-- Sie müssen ein neues universelles Speicherkonto einrichten (vorhandene Speicherkonten können nicht erweitert werden).
-- Die Konvertierung von LRS/ZRS in GRS/GZRS-Konten ist bei neuen Speicherkonten, die nach Annahme des Abonnements für die größeren Dateifreigabevorschauen erstellt wurden, nicht mehr möglich.
-
+- Die Konvertierung von LRS/ZRS-Konten in GRS/GZRS-Konten ist für Speicherkonten, für die große Dateifreigaben aktiviert wurden, nicht möglich.
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit
 
 Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In einigen Regionen sind sie mit einem Limit von 100 TiB verfügbar. Diese sind in der folgenden Tabelle aufgeführt:
 
-|Region |Unterstützte Redundanz |Unterstützt vorhandene Speicherkonten |Portalunterstützung* |
-|-------|---------|---------|---------|
-|Australien (Osten) |LRS     |Nein    |Ja|
-|Australien, Südosten|LRS     |Nein    |Noch nicht|
-|Indien, Mitte  |LRS     |Nein    |Noch nicht|
-|Asien, Osten      |LRS     |Nein    |Noch nicht|
-|East US        |LRS     |Nein    |Noch nicht|
-|Frankreich, Mitte |LRS, ZRS|Nein    |LRS – Ja, ZRS – Noch nicht|
-|Frankreich, Süden   |LRS     |Nein    |Ja|
-|Nordeuropa   |LRS     |Nein    |Noch nicht|
-|Indien (Süden)    |LRS     |Nein    |Noch nicht|
-|Asien, Südosten |LRS, ZRS|Nein    |Ja|
-|USA, Westen-Mitte|LRS     |Nein    |Noch nicht|
-|Europa, Westen    |LRS, ZRS|Nein    |Ja|
-|USA (Westen)        |LRS     |Nein    |Noch nicht|
-|USA, Westen 2      |LRS, ZRS|Nein    |Ja|
+|Region |Unterstützte Redundanz |
+|-------|---------|
+|Australien (Osten) |LRS     |
+|Australien, Südosten|LRS |
+|Indien, Mitte  |LRS     |
+|Asien, Osten      |LRS     |
+|USA, Osten*        |LRS     |
+|Frankreich, Mitte |LRS, ZRS|
+|Frankreich, Süden   |LRS     |
+|Indien (Süden)    |LRS     |
+|Asien, Südosten |LRS, ZRS|
+|USA, Westen-Mitte|LRS     |
+|Europa, Westen*    |LRS, ZRS|
+|USA, Westen*        |LRS     |
+|USA, Westen 2      |LRS, ZRS|
 
-
-\* Bei Regionen ohne Portalunterstützung können Sie weiterhin PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden, um Freigaben von mehr als 5 TiB zu erstellen. Erstellen Sie alternativ eine neue Freigabe über das Portal ohne Angabe eines Kontingents. Dadurch wird eine Freigabe mit der Standardgröße 100 TiB erstellt, die später über PowerShell oder Azure CLI aktualisiert werden kann.
+\* Wird für neue Konten unterstützt. Nicht alle vorhandenen Konten haben den Upgradeprozess vollständig durchlaufen.
 
 Damit wir neue Regionen und Funktionen priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/azurefilesatscalesurvey) aus.
 
-### <a name="steps-to-onboard"></a>Schritte zum Onboarding
+### <a name="enable-and-create-larger-file-shares"></a>Aktivieren und Erstellen größerer Dateifreigaben
 
-Sie müssen Azure PowerShell verwenden, um Ihr Abonnement für die größere Dateifreigabevorschauversion zu registrieren. Sie können [Azure Cloud Shell](https://shell.azure.com/) verwenden oder das [Azure PowerShell-Modul lokal installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0), um die folgenden PowerShell-Befehle auszuführen:
-
-Vergewissern Sie sich zunächst, dass das Abonnement, das Sie für die Vorschau registrieren möchten, ausgewählt ist:
-
-```powershell
-$context = Get-AzSubscription -SubscriptionId ...
-Set-AzContext $context
-```
-
-Registrieren Sie es dann für der Vorschauversion mithilfe der folgenden Befehle:
-
-```powershell
-Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-Ihr Abonnement wird automatisch genehmigt, sobald beide Befehle ausgeführt wurden.
-
-Mit dem folgenden Befehl können Sie Ihren Registrierungsstatus überprüfen:
-
-```powershell
-Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-```
-
-Es kann bis zu 15 Minuten dauern, bis Ihr Status auf **Registriert** aktualisiert ist. Sobald Ihr Status **Registriert** lautet, können Sie das Feature verwenden.
-
-### <a name="use-larger-file-shares"></a>Verwenden von größeren Dateifreigaben
-
-Erstellen Sie ein neues Speicherkonto vom Typ Universell V2 und eine neue Dateifreigabe, um größere Dateifreigaben nutzen zu können.
+In unserem Artikel [Aktivieren großer Dateifreigaben](storage-files-how-to-create-large-file-share.md) erfahren Sie, wie Sie größere Dateifreigaben verwenden können.
 
 ## <a name="data-growth-pattern"></a>Muster des Datenwachstums
 
-Die maximale Größe einer Azure-Dateifreigabe beträgt derzeit 5 TiB (100 TiB in der Vorschauversion). Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
+Die maximale Größe einer Azure-Dateifreigabe beträgt derzeit 100 TiB. Aufgrund dieser aktuellen Einschränkung müssen Sie das erwartete Wachstum berücksichtigen, wenn Sie eine Azure-Dateifreigabe bereitstellen.
 
 Mithilfe der Azure-Dateisynchronisierung können mehrere Azure-Dateifreigaben mit einem einzelnen Windows-Dateiserver synchronisiert werden. Dadurch können Sie sicherstellen, dass ältere große Dateifreigaben, über die Sie möglicherweise lokal verfügen, in die Azure-Dateisynchronisierung übertragen werden können. Weitere Informationen finden Sie unter [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-files-planning.md).
 

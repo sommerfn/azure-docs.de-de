@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814426"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331914"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
@@ -33,6 +33,9 @@ Mit einem Wiederherstellungsplan können Sie einen systematischen Wiederherstell
 
 
 ## <a name="model-apps"></a>Modellieren von Apps
+
+> [!NOTE]
+> Einem Wiederherstellungsplan können bis zu 100 geschützte Instanzen hinzugefügt werden.
 
 Sie können eine Wiederherstellungsgruppe zum Erfassen App-spezifischer Eigenschaften planen und erstellen. Als Beispiel dient hier eine typische dreischichtige Anwendung mit einem SQL Server-Back-End, Middleware und einem Web-Front-End. Normalerweise passen Sie den Wiederherstellungsplan so an, dass Computer in jeder Schicht nach dem Failover in der richtigen Reihenfolge gestartet werden.
 

@@ -1,20 +1,20 @@
 ---
-title: 'Microsoft Genomics: Häufig gestellte Fragen | Microsoft-Dokumentation'
-titleSuffix: Azure
+title: Häufig gestellte Fragen
+titleSuffix: Microsoft Genomics
 description: Antworten auf häufig gestellte Fragen zu Microsoft Genomics.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: d36a2c6379a95cc67a55c2cc266ced94b4a0179a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 80a656ee687b71fcaf09a02d70d0a5a4300186bc
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672228"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249229"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Häufig gestellte Fragen
 

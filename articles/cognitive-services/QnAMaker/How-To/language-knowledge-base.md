@@ -1,41 +1,72 @@
 ---
-title: 'Nicht englischsprachige Wissensdatenbank: QnA Maker'
+title: 'Sprachkonzepte: QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: QnA Maker unterstützt Wissensdatenbank-Inhalte in mehreren Sprachen. Allerdings sollte für jeden QnA Maker-Dienst eine einzelne Sprache festgelegt werden. Die erste Wissensdatenbank, die für einen bestimmten QnA Maker-Dienst erstellt wurde, bestimmt die Sprache dieses Dienstes.
+description: QnA Maker unterstützt Wissensdatenbank-Inhalte in mehreren Sprachen. Allerdings sollte für jeden QnA Maker-Dienst eine einzelne Sprache festgelegt werden. Die erste Wissensdatenbank, die für einen bestimmten QnA Maker-Dienst erstellt wurde, bestimmt die Sprache dieses Diensts.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 5e50c814fef24aa799549d055ad6496f5bdf05e0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961472"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286370"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Sprachunterstützung für Inhalte in QnA Maker-Wissensdatenbanken
 
-QnA Maker unterstützt Wissensdatenbank-Inhalte in mehreren Sprachen. Allerdings sollte für jeden QnA Maker-Dienst eine einzelne Sprache festgelegt werden. Die erste Wissensdatenbank, die für einen bestimmten QnA Maker-Dienst erstellt wurde, bestimmt die Sprache dieses Dienstes. Die unterstützten Sprachen finden Sie [hier](../Overview/languages-supported.md).
+Die Sprache für den Dienst ist ausgewählt, wenn Sie die erste Wissensdatenbank in der Ressource erstellen. Alle weiteren Wissensdatenbanken in der Ressource müssen die gleiche Sprache aufweisen. 
 
-Die Sprache wird automatisch aus dem jeweils extrahierten Datenquelleninhalt erkannt. Wenn Sie einen neuen QnA Maker-Dienst und eine neue Wissensdatenbank innerhalb dieses Dienstes erstellt haben, können Sie überprüfen, ob die Sprache richtig festgelegt wurde.
+Die Sprache bestimmt die Relevanz der Ergebnisse, die QnA Maker als Antwort auf Benutzerabfragen bereitstellt.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
+## <a name="one-language-for-all-knowledge-bases-in-resource"></a>Eine Sprache für alle Wissensdatenbanken in der Ressource
 
-1. Wählen Sie **Ressourcengruppen** aus und navigieren Sie zu der Ressourcengruppe, in der der QnA Maker-Dienst bereitgestellt wird. Wählen Sie die Ressource **Azure Search** aus.
+Mit QnA Maker können Sie die Sprache für Ihren QnA-Dienst beim Erstellen der ersten Wissensdatenbank auswählen. Alle Wissensdatenbanken in einer QnA Maker-Ressource müssen in der gleichen Sprache vorliegen. Diese Sprache kann nicht geändert werden.
 
-    ![Auswählen der Ressource „Azure Search“](../media/qnamaker-how-to-language-kb/select-azsearch.png)
+Das Erstellen von Wissensdatenbanken in verschiedenen Sprachen in einer Ressource wirkt sich nachteilig auf die Relevanz der Ergebnisse aus, die QnA Maker als Antwort auf Benutzeranfragen bereitstellt.
 
-1. Wählen Sie **Indizes** und dann den Index **testkb** aus. Dieser Azure Search-Index wird als Erstes erstellt und enthält den gespeicherten Inhalt aller Wissensdatenbanken im jeweiligen Dienst. 
+Sehen Sie sich die Liste der [unterstützten Sprachen](../overview/language-support.md#languages-supported) an und wie Sprachen sich auf [Zuordnung und Relevanz](#query-matching-and-relevance) auswirken. 
 
-1. Wählen Sie **Felder** aus, um die Felder im Index anzuzeigen.
+## <a name="select-language-when-creating-first-knowledge-base"></a>Auswählen der Sprache beim Erstellen der ersten Wissensdatenbank
 
-1. Die Spalte _Analyse_ der Felder `questions` und `answer` ist auf eine bestimmte Sprache festgelegt. Diese Sprache wird beim Erstellen der Wissensdatenbank in den importierten Dateien und URLs automatisch erkannt. Sie kann nicht mehr geändert werden, nachdem die Ressource erstellt wurde.
+Die Wahl der Sprache ist Teil der Schritte zur Erstellung der ersten Wissensdatenbank in einer Ressource. 
 
-    ![Ausgewähltes Analysetool](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
+![Screenshot des QnA Maker-Portals zum Auswählen der Sprache für die erste Wissensdatenbank](../media/language-support/select-language-when-creating-knowledge-base.png)
+
+## <a name="query-matching-and-relevance"></a>Abfrageabgleich und Relevanz
+QnA Maker nutzt [Sprachanalysefunktionen von Azure Search](https://docs.microsoft.com/rest/api/searchservice/language-support), um Ergebnisse bereitzustellen. 
+
+Während die Azure Search-Funktionen für unterstützte Sprachen ebenbürtig ist, verfügt QnA Maker über ein zusätzliches Rangfolgemodul, die oberhalb der Azure Search-Ergebnisse ansetzen. In diesem Rangfolgemodul verwenden wir einige besondere semantische und wortbasierte Funktionen in den folgenden Sprachen. 
+
+|Sprachen mit zusätzlichem Rangfolgemodul|
+|--|
+|Chinesisch|
+|Tschechisch|
+|Niederländisch|
+|Deutsch|
+|Französisch|
+|Deutsch|
+|Ungarisch|
+|Italienisch|
+|Japanisch|
+|Koreanisch|
+|Polnisch|
+|Portugiesisch|
+|Spanisch|
+|Schwedisch|
+
+Diese zusätzliche Rangbewertung ist zählt zu den internen Mechanismen des Rangfolgemoduls von QnA Maker.
+
+## <a name="verify-language"></a>Überprüfen der Sprache
+
+Sie können die Sprache Ihrer QnA Maker-Ressource auf der Seite „Diensteinstellungen“ in QnA Maker überprüfen.
+
+![Screenshot der Seite „Diensteinstellungen“ im QnA Maker Portal](../media/language-support/language-knowledge-base.png) 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

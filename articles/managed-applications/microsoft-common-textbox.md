@@ -1,6 +1,6 @@
 ---
 title: Benutzeroberflächenelement TextBox in Azure | Microsoft-Dokumentation
-description: Hier wird das Benutzeroberflächenelement Microsoft.Common.TextBox für das Azure-Portal beschrieben.
+description: Hier wird das Benutzeroberflächenelement Microsoft.Common.TextBox für das Azure-Portal beschrieben. Es wird zum Hinzufügen von unformatiertem Text verwendet.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b72bfcf06f4c7e256dd227e4edf781c4500c7b19
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044525"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331607"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.TextBox UI“
 Ein Steuerelement, das zum Bearbeiten von unformatiertem Text verwendet werden kann.

@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949018"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249202"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Rollenbasierte Zugriffssteuerung in Azure Digital Twins
 
-Azure Digital Twins ermöglicht präzise Zugriffssteuerung für bestimmte Daten, Ressourcen und Aktionen in Ihrem Raumgraphen. Dies geschieht durch eine granulare Rollen- und Berechtigungsverwaltung namens „Rollenbasierte Zugriffssteuerung“ (Role-Based Access Control, RBAC). RBAC besteht aus _Rollen_ und _Rollenzuweisungen_. Rollen bestimmen die Berechtigungsebene. Rollenzuweisungen ordnen einem Benutzer oder Gerät eine Rolle zu.
+Azure Digital Twins ermöglicht präzise Zugriffssteuerung für bestimmte Daten, Ressourcen und Aktionen in Ihrem Raumgraphen. Dies erfolgt mithilfe einer detaillierten Rollen- und Rechteverwaltung namens [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/) (Role-Based Access Control, RBAC). RBAC besteht aus _Rollen_ und _Rollenzuweisungen_. Rollen bestimmen die Berechtigungsebene. Rollenzuweisungen ordnen einem Benutzer oder Gerät eine Rolle zu.
 
 Mit RBAC können Berechtigungen zugewiesen werden für:
 
@@ -84,3 +84,5 @@ Um einem Empfänger Berechtigungen zuzuweisen, erstellen Sie eine Rollenzuweisun
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins finden Sie unter [Erstellen und Verwalten von Rollenzuweisungen](./security-create-manage-role-assignments.md).
+
+- Erfahren Sie mehr über [RBAC für Azure](https://docs.microsoft.com/azure/role-based-access-control/).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ff2d9b8c0ca891b25dfcd6bf1f19d1541fd1541
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ca6b055b5d3702cea4ca1986ad1c81b59f76cee3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673231"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299639"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-from-a-client-application"></a>Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory aus einer Clientanwendung
 
@@ -76,7 +76,7 @@ Die Anwendung benötigt zum Beweis ihrer Identität einen geheimen Clientschlüs
 
 Sobald Sie Ihre Anwendung registriert und ihr Berechtigungen für den Zugriff auf Daten im Azure-Blob- oder -Warteschlangenspeicher erteilt haben, können Sie Ihrer Anwendung Code zum Authentifizieren eines Sicherheitsprinzipals und zum Beschaffen eines OAuth 2.0-Tokens hinzufügen. Zum Authentifizieren und Abrufen des Tokens können Sie entweder eine der [Authentifizierungsbibliotheken von Microsoft Identity Platform](../../active-directory/develop/reference-v2-libraries.md) oder eine andere Open-Source-Bibliothek verwenden, die OpenID Connect 1.0 unterstützt. Ihre Anwendung kann dann mit dem Zugriffstoken eine Anforderung an den Azure-Blob- oder -Warteschlangenspeicher autorisieren.
 
-Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, finden Sie im GitHub-Repository [Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) im Bereich [Scenarios](https://aka.ms/msal-net-scenarios).
+Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, finden Sie im Abschnitt zu [Authentifizierungsflows](/en-us/azure/active-directory/develop/msal-authentication-flows) in der [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview).
 
 ## <a name="well-known-values-for-authentication-with-azure-ad"></a>Bekannte Werte für die Authentifizierung mit Azure AD
 

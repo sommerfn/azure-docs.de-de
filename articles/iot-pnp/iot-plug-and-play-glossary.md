@@ -3,18 +3,18 @@ title: 'Glossar: IoT Plug & Play (Vorschau) | Microsoft-Dokumentation'
 description: 'Konzepte: Ein Glossar mit häufig verwendeten Begriffen in Zusammenhang mit IoT Plug & Play (Vorschau).'
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858836"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249300"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glossar für IoT Plug & Play (Vorschau)
 
@@ -97,6 +97,7 @@ Eine Verbindungszeichenfolge kapselt die Informationen, die zum Herstellen einer
 
 - Geräteverbindungszeichenfolgen ermöglichen es [IoT Plug & Play-Geräten](#iot-plug-and-play-device), eine Verbindung mit den geräteseitigen Endpunkten einer IoT Hub-Instanz herzustellen. Der Clientcode auf einem Gerät verwendet die Verbindungszeichenfolge zum Herstellen einer sicheren Verbindung mit einer IoT Hub-Instanz.
 - IoT Hub-Verbindungszeichenfolgen ermöglichen es Back-End-Lösungen und -Tools, eine sichere Verbindung mit den dienstseitigen Endpunkten einer IoT Hub-Instanz herzustellen. Diese Lösungen und Tools verwalten die IoT Hub-Instanz und die damit verbundenen Geräte.
+- Verbindungszeichenfolgen für das Modellrepository des Unternehmens ermöglichen es Back-End-Lösungen und -Tools, eine sichere Verbindung mit einem [Modellrepository des Unternehmens](#company-model-repository) herzustellen. Diese Lösungen und Tools nutzen oder verwalten die [Gerätefunktionsmodelle](#device-capability-model) und [Schnittstellen](#interface) im Repository.
 
 ## <a name="device-capability-model"></a>Gerätefunktionsmodell
 

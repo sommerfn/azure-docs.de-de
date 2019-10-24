@@ -11,19 +11,19 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
-ms.date: 06/20/2017
+ms.date: 10/08/2019
 ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2014b00a82a6d56bf58b471336c6d809721abea9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: H1Hack27Feb2017,fasttrack-edit
+ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095430"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286699"
 ---
-# <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
+# <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
-Azure Batch kann Pools basierend auf von Ihnen definierten Parametern automatisch skalieren. Bei der automatischen Skalierung fügt Batch Knoten dynamisch zu einem Pool hinzu, wenn der Aufgabenbedarf steigt, und entfernt Computeknoten bei einem Rückgang des Bedarfs. Sie können sowohl Zeit als auch Geld sparen, indem Sie automatisch die von Ihrer Batch-Anwendung verwendete Anzahl von Computeknoten anpassen. 
+Azure Batch kann Pools basierend auf von Ihnen definierten Parametern automatisch skalieren. Bei der automatischen Skalierung fügt Batch Knoten dynamisch zu einem Pool hinzu, wenn der Aufgabenbedarf steigt, und entfernt Computeknoten bei einem Rückgang des Bedarfs. Sie können sowohl Zeit als auch Geld sparen, indem Sie automatisch die von Ihrer Batch-Anwendung verwendete Anzahl von Computeknoten anpassen.
 
 Sie können die automatische Skalierung für einen Pool von Computeknoten aktivieren, indem Sie ihn einer von Ihnen definierten *Formel für die automatische Skalierung* zuordnen. Anhand der Formel für die automatische Skalierung ermittelt der Batch-Dienst dann die Anzahl von Computeknoten, die zum Ausführen Ihrer Workload erforderlich sind. Computeknoten können dedizierte Knoten oder [Knoten mit niedriger Priorität](batch-low-pri-vms.md) sein. Batch reagiert auf Dienstmetrikdaten, die in regelmäßigen Abständen gesammelt werden. Anhand dieser Metrikdaten wird die Anzahl von Computeknoten im Pool basierend auf Ihrer Formel und einem konfigurierbaren Intervall von Batch angepasst.
 
@@ -39,6 +39,7 @@ In diesem Artikel werden die verschiedenen Entitäten erläutert, aus denen sich
 >
 
 ## <a name="automatic-scaling-formulas"></a>Formeln für die automatische Skalierung
+
 Eine Formel für die automatische Skalierung ist ein von Ihnen definierter Zeichenfolgenwert, der mindestens eine Anweisung enthält. Die Formel für die Autoskalierung wird dem Element [autoScaleFormula][rest_autoscaleformula] (Batch REST) oder der Eigenschaft [CloudPool.AutoScaleFormula][net_cloudpool_autoscaleformula] (Batch .NET) eines Pools zugewiesen. Der Batch-Dienst verwendet Ihre Formel, um für das nächste Verarbeitungsintervall die Zielanzahl der Computeknoten im Pool zu ermitteln. Die Formelzeichenfolge darf 8 KB nicht überschreiten und kann bis zu 100 durch Semikolons getrennte Anweisungen sowie Zeilenumbrüche und Kommentare enthalten.
 
 Sie können sich Formeln für die automatische Skalierung als eine „Batch-Sprache“ für die automatische Skalierung vorstellen. Formelanweisungen sind frei definierte Ausdrücke, die sowohl dienstdefinierte Variablen (vom Batch-Dienst definiert) als auch benutzerdefinierte Variablen (von Ihnen selbst definiert) enthalten können. Mithilfe von mitgelieferten Typen, Operatoren und Funktionen können sie für diese Werte eine Vielzahl von Operationen ausführen. Eine Anweisung kann beispielsweise wie folgt aussehen:
@@ -63,12 +64,14 @@ Die Zielanzahl der Knoten ist möglicherweise höher oder niedriger als die aktu
 Im Folgenden sehen Sie Beispiele für zwei Formeln für die automatische Skalierung, die für die meisten Szenarien angepasst werden können. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` in den Beispielformeln können Ihren Anforderungen angepasst werden.
 
 #### <a name="pending-tasks"></a>Ausstehende Aufgaben
+
 ```
 startingNumberOfVMs = 1;
 maxNumberofVMs = 25;
 pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
 pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
 $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
+$NodeDeallocationOption = taskcompletion;
 ```
 
 Mit dieser Formel für die automatische Skalierung wird der Pool zunächst mit einem einzigen virtuellen Computer erstellt. Die Metrik `$PendingTasks` definiert die Anzahl der Aufgaben, die ausgeführt werden oder sich in einer Warteschlange befinden. Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt die Variable `$TargetDedicatedNodes` entsprechend fest. Die Formel stellt sicher, dass die Zielanzahl der dedizierten Knoten niemals 25 virtuelle Computer überschreitet. Wenn neue Aufgaben gesendet werden, wächst der Pool automatisch an. Werden Aufgaben abgeschlossen, werden VMs nacheinander frei, und der Pool wird durch die Formel für die automatische Skalierung verkleinert.
@@ -76,15 +79,18 @@ Mit dieser Formel für die automatische Skalierung wird der Pool zunächst mit e
 Diese Formel skaliert dedizierte Knoten. Sie kann jedoch so geändert werden, dass sie auch Knoten mit niedriger Priorität skaliert.
 
 #### <a name="preempted-nodes"></a>Vorzeitig entfernte Knoten 
+
 ```
 maxNumberofVMs = 25;
 $TargetDedicatedNodes = min(maxNumberofVMs, $PreemptedNodeCount.GetSample(180 * TimeInterval_Second));
 $TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicatedNodes);
+$NodeDeallocationOption = taskcompletion;
 ```
 
 In diesem Beispiel wird ein Pool erstellt, der mit 25 Knoten mit niedriger Priorität beginnt. Jedes Mal, wenn ein Knoten mit niedriger Priorität vorzeitig entfernt wird, wird er durch einen dedizierten Knoten ersetzt. Wie im ersten Beispiel verhindert die `maxNumberofVMs`-Variable, dass der Pool 25 VMs überschreitet. Dieses Beispiel eignet sich für die Nutzung von VMs mit niedriger Priorität, während gleichzeitig sichergestellt wird, dass für die Lebensdauer des Pools nur eine festgelegte Anzahl vorzeitiger Entfernungen auftritt.
 
 ## <a name="variables"></a>Variables
+
 Sie können in Ihrer Formel für die automatische Skalierung sowohl **dienstdefinierte** als auch **benutzerdefinierte** Variablen verwenden. Vom Dienst definierte Variablen sind in den Batch-Dienst integriert. Einige der vom Dienst definierten Variablen verfügen über Lese-/Schreibzugriff, und einige sind schreibgeschützt. Benutzerdefinierte Variablen sind Variablen, die Sie definieren. In der im vorherigen Abschnitt gezeigten Beispielformel sind `$TargetDedicatedNodes` und `$PendingTasks` vom Dienst definierte Variablen. Die Variablen `startingNumberOfVMs` und `maxNumberofVMs` sind benutzerdefinierte Variablen.
 
 > [!NOTE]
@@ -100,7 +106,12 @@ Sie können diese vom Dienst definierten Variablen abrufen und festlegen, um die
 | --- | --- |
 | $TargetDedicatedNodes |Die Zielanzahl dedizierter Computeknoten für den Pool. Die Anzahl der dedizierten Knoten wird als Ziel angegeben, da ein Pool möglicherweise nicht immer die gewünschte Anzahl von Knoten erreicht. Wenn die Zielanzahl dedizierter Knoten beispielsweise durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat, erreicht der Pool möglicherweise nicht die Zielanzahl. <br /><br /> Ein Pool in einem Konto, der mit der Konfiguration „Batch-Dienst“ erstellt wurde, erreicht möglicherweise nicht sein Ziel, wenn das Ziel ein Batch-Kontoknoten- oder -Kernkontingent überschreitet. Ein Pool in einem Konto, der mit der Konfiguration „Benutzerabonnement“ erstellt wurde, erreicht möglicherweise nicht sein Ziel, wenn das Ziel das freigegebene Kernkontingent für das Abonnement überschreitet.|
 | $TargetLowPriorityNodes |Die Zielanzahl von Computeknoten mit niedriger Priorität für den Pool. Die Anzahl der Knoten mit niedriger Priorität wird als Ziel angegeben, da ein Pool möglicherweise nicht immer die gewünschte Anzahl von Knoten erreichen kann. Wenn die Zielanzahl von Knoten mit niedriger Priorität beispielsweise durch eine Auswertung der automatischen Skalierung geändert wird, bevor der Pool das ursprüngliche Ziel erreicht hat, kann der Pool möglicherweise nicht die Zielanzahl erreichen. Ein Pool kann sein Ziel möglicherweise auch dann nicht erreichen, wenn das Ziel ein Batch-Kontoknoten- oder -Kernkontingent überschreitet. <br /><br /> Weitere Informationen zu Computeknoten mit niedriger Priorität finden Sie unter [Verwenden von VMs mit niedriger Priorität mit Batch (Vorschau)](batch-low-pri-vms.md). |
-| $NodeDeallocationOption |Dieser Vorgang wird ausgeführt, wenn Computeknoten aus einem Pool entfernt werden. Mögliche Werte:<ul><li>**requeue**: Aufgaben sofort beenden und wieder in die Auftragswarteschlange einfügen, damit sie neu geplant werden können.<li>**terminate**: Aufgaben sofort beenden und aus der Auftragswarteschlange entfernen.<li>**taskcompletion**: Auf derzeit ausgeführte Aufgaben warten und den Knoten dann aus dem Pool entfernen.<li>**retaineddata**: Warten, bis alle lokal vorgehaltenen Aufgabendaten des Pools gelöscht wurden, bevor der Knoten aus dem Pool entfernt wird.</ul> |
+| $NodeDeallocationOption |Dieser Vorgang wird ausgeführt, wenn Computeknoten aus einem Pool entfernt werden. Mögliche Werte:<ul><li>**requeue**: Der Standardwert. Aufgaben sofort beenden und wieder in die Auftragswarteschlange einfügen, damit sie neu geplant werden können. Dadurch wird sichergestellt, dass die Zielanzahl der Knoten so schnell wie möglich erreicht wird, kann aber weniger effizient sein, da alle ausgeführten Aufgaben unterbrochen werden und neu gestartet werden müssen, sodass alle bereits durchgeführten Schritte umsonst erfolgten. <li>**terminate**: Aufgaben sofort beenden und aus der Auftragswarteschlange entfernen.<li>**taskcompletion**: Auf derzeit ausgeführte Aufgaben warten und den Knoten dann aus dem Pool entfernen. Verwenden Sie diese Option, um zu verhindern, dass Aufgaben unterbrochen und nochmals der Warteschlange hinzugefügt werden, wodurch bereits durchgeführte Aufgabenschritte umsonst erfolgt wären. <li>**retaineddata**: Warten, bis alle lokal vorgehaltenen Aufgabendaten des Pools gelöscht wurden, bevor der Knoten aus dem Pool entfernt wird.</ul> |
+
+> [!NOTE]
+> Die Variable `$TargetDedicatedNodes` kann auch mit dem Alias `$TargetDedicated` angegeben werden. Entsprechend kann die Variable `$TargetLowPriorityNodes` mit dem Alias `$TargetLowPriority` angegeben werden. Wenn sowohl die vollständig benannte Variable als auch ihr Alias von der Formel festgelegt werden, hat der Wert Vorrang, der der vollständig benannten Variablen zugewiesen ist.
+>
+>
 
 Sie können den Wert dieser vom Dienst definierten Variablen abrufen, um Anpassungen basierend auf den Metriken des Batch-Diensts vorzunehmen:
 
@@ -132,6 +143,7 @@ Sie können den Wert dieser vom Dienst definierten Variablen abrufen, um Anpassu
 >
 
 ## <a name="types"></a>Typen
+
 Folgende Typen werden in einer Formel unterstützt:
 
 * double
@@ -161,6 +173,7 @@ Folgende Typen werden in einer Formel unterstützt:
   * TimeInterval_Year
 
 ## <a name="operations"></a>Vorgänge
+
 Für die im vorherigen Abschnitt aufgeführten Typen sind folgende Vorgänge zulässig.
 
 | Vorgang | Unterstützte Operatoren | Ergebnistyp |
@@ -194,7 +207,7 @@ Zum Definieren einer Formel für die automatische Skalierung stehen folgende vor
 | lg(double) |double |Gibt für den double-Wert den Logarithmus zur Basis 2 zurück. |
 | lg(doubleVecList) |doubleVec |Gibt für die doubleVecList den komponentenbezogenen Logarithmus zur Basis 2 zurück. Ein vec(double) muss explizit für den Parameter übergeben werden. Andernfalls wird von der double lg(double)-Version ausgegangen. |
 | ln(double) |double |Gibt für den double-Wert den natürlichen Logarithmus zurück. |
-| ln(doubleVecList) |doubleVec |Gibt für die doubleVecList den komponentenbezogenen Logarithmus zur Basis 2 zurück. Ein vec(double) muss explizit für den Parameter übergeben werden. Andernfalls wird von der double lg(double)-Version ausgegangen. |
+| ln(doubleVecList) |doubleVec |Gibt für den double-Wert den natürlichen Logarithmus zurück. |
 | log(double) |double |Gibt für den double-Wert den Logarithmus zur Basis 10 zurück. |
 | log(doubleVecList) |doubleVec |Gibt für die doubleVecList den komponentenbezogenen Logarithmus zur Basis 10 zurück. Ein vec(double) muss explizit für den einzelnen double-Parameter übergeben werden. Andernfalls wird von der double log (double)-Version ausgegangen. |
 | max(doubleVecList) |double |Der maximale Wert in der doubleVecList wird zurückgegeben. |
@@ -216,6 +229,7 @@ Einige der in der vorherigen Tabelle beschriebenen Funktionen akzeptieren eine L
 Der *doubleVecList*-Wert wird vor der Auswertung in einen einzelnen *doubleVec* konvertiert. Zum Beispiel hat bei `v = [1,2,3]` das Aufrufen von `avg(v)` den gleichen Effekt wie das Aufrufen von `avg(1,2,3)`. Das Aufrufen von `avg(v, 7)` entspricht dem Aufrufen von `avg(1,2,3,7)`.
 
 ## <a name="getsampledata"></a>Erfassen von Stichprobendaten
+
 Die Formeln für die automatische Skalierung greifen auf Metrikdaten (Stichproben) zurück, die vom Batch-Dienst bereitgestellt werden. Eine Formel vergrößert oder verkleinert den Pool basierend auf den Werten, die sie vom Dienst erhält. Die obigen, vom Dienst definierten Variablen sind Objekte, die verschiedene Methoden für den Zugriff auf die zum jeweiligen Objekt gehörigen Daten bereitstellen. Der folgende Ausdruck zeigt z. B. eine Anforderung zum Abrufen der letzten fünf Minuten der CPU-Auslastung:
 
 ```
@@ -275,6 +289,7 @@ Weil bei der Verfügbarkeit von Stichproben eine Verzögerung auftreten kann, m�
 >
 
 ## <a name="metrics"></a>metrics
+
 Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch Aufgabenmetriken verwenden. Sie passen die vorgegebene Anzahl dedizierter Knoten im Pool basierend auf den Metrikdaten an, die Sie abrufen und auswerten. Im Abschnitt [Variablen](#variables) finden Sie weitere Informationen zu den einzelnen Metriken.
 
 <table>
@@ -321,13 +336,15 @@ Für das Definieren einer Formel können Sie sowohl Ressourcenmetriken als auch 
 </table>
 
 ## <a name="write-an-autoscale-formula"></a>Schreiben einer Formel für die automatische Skalierung
+
 Sie können eine Formel für die automatische Skalierung erstellen, indem Sie mithilfe der oben aufgeführten Komponenten Anweisungen formulieren und diese dann zu einer vollständigen Formel kombinieren. In diesem Abschnitt erstellen wir eine Beispielformel für die automatische Skalierung, mit der einige praxistaugliche Skalierungsentscheidungen getroffen werden können.
 
 Zuerst definieren wir die Anforderungen für die neue Formel für die automatische Skalierung. Mit der Formel soll Folgendes erreicht werden:
 
 1. Die dedizierte Anzahl von Computeknoten in einem Pool soll erhöht werden, wenn die CPU-Auslastung hoch ist.
-2. Die dedizierte Anzahl von Computeknoten in einem Pool soll reduziert werden, wenn die CPU-Auslastung gering ist.
-3. Die maximale Anzahl dedizierter Knoten muss immer auf 400 beschränkt sein.
+1. Die dedizierte Anzahl von Computeknoten in einem Pool soll reduziert werden, wenn die CPU-Auslastung gering ist.
+1. Die maximale Anzahl dedizierter Knoten muss immer auf 400 beschränkt sein.
+1. Wenn Sie die Anzahl der Knoten reduzieren, entfernen Sie keine Knoten, die Aufgaben ausführen. Warten Sie ggf., bis die Aufgaben abgeschlossen sind, bevor Sie Knoten entfernen.
 
 Zur Erhöhung der Knotenanzahl bei hoher CPU-Auslastung definieren wir eine Anweisung, die eine benutzerdefinierte Variable (`$totalDedicatedNodes`) mit einem Wert auffüllt, der 110 Prozent der aktuellen Zielanzahl dedizierte Knoten darstellt. Dies gilt aber nur, wenn die minimale durchschnittliche CPU-Auslastung in den vergangenen 10 Minuten über 70 Prozent lag. Verwenden Sie andernfalls den Wert für die aktuelle Anzahl der dedizierten Knoten.
 
@@ -634,9 +651,11 @@ Error:
 ```
 
 ## <a name="example-autoscale-formulas"></a>Beispiele für autoscale-Formeln
+
 Hier sind einige Formeln angegeben, die verschiedene Möglichkeiten zum Anpassen der Anzahl von Computeressourcen in einem Pool darstellen.
 
 ### <a name="example-1-time-based-adjustment"></a>Beispiel 1: Zeitbasierte Anpassung
+
 Angenommen Sie möchten die Poolgröße basierend auf dem Wochentag und der Tageszeit anpassen. Dieses Beispiel zeigt, wie Sie die Knotenanzahl im Pool entsprechend Anzahl zum erhöhen oder verringern.
 
 Die Formel ruft zunächst die aktuelle Uhrzeit ab. Wenn es sich um einen Werktag (1 bis 5) handelt und der Wert innerhalb der Geschäftszeiten (8:00 Uhr bis 18:00 Uhr) liegt, wird die Zielgröße des Pools auf 20 Knoten festgelegt. Andernfalls wird der Wert auf 10 Knoten festgelegt.
@@ -647,9 +666,11 @@ $workHours = $curTime.hour >= 8 && $curTime.hour < 18;
 $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5;
 $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
+$NodeDeallocationOption = taskcompletion;
 ```
 
 ### <a name="example-2-task-based-adjustment"></a>Beispiel 2: Aufgabenbasierte Anpassung
+
 In diesem Beispiel wird die Größe des Pools basierend auf der Anzahl der Aufgaben in der Warteschlange angepasst. In Formelzeichenfolgen können sowohl Kommentare als auch Zeilenumbrüche verwendet werden.
 
 ```csharp
@@ -664,11 +685,12 @@ $targetVMs = $tasks > 0? $tasks:max(0, $TargetDedicatedNodes/2);
 // The pool size is capped at 20, if target VM value is more than that, set it
 // to 20. This value should be adjusted according to your use case.
 $TargetDedicatedNodes = max(0, min($targetVMs, 20));
-// Set node deallocation mode - keep nodes active only until tasks finish
+// Set node deallocation mode - let running tasks finish before removing a node
 $NodeDeallocationOption = taskcompletion;
 ```
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>Beispiel 3: Berücksichtigung paralleler Aufgaben
+
 In diesem Beispiel wird die Poolgröße basierend auf der Anzahl von Aufgaben angepasst. Diese Formel berücksichtigt auch den für den Pool festgelegten Wert [MaxTasksPerComputeNode][net_maxtasks]. Dieser Ansatz ist besonders hilfreich, wenn in Ihrem Pool die [parallele Aufgabenausführung](batch-parallel-node-tasks.md) aktiviert wurde.
 
 ```csharp
@@ -690,6 +712,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 ### <a name="example-4-setting-an-initial-pool-size"></a>Beispiel 4: Festlegen einer anfänglichen Poolgröße
+
 Dieses Beispiel zeigt einen C#-Codeausschnitt mit einer Formel für die automatische Skalierung, welche die Größe des Pools für einen anfänglichen Zeitraum auf eine angegebene Anzahl von Knoten festlegt. Dann passt sie die Größe des Pools nach dem ersten Zeitraum basierend auf der Anzahl der ausgeführten und aktive Aufgaben an.
 
 Mit der Formel im folgenden Codeausschnitt wird Folgendes durchgeführt:
@@ -714,6 +737,7 @@ string formula = string.Format(@"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Maximieren der Azure Batch-Computeressourcenauslastung mit parallelen Knotenaufgaben](batch-parallel-node-tasks.md) enthält Informationen dazu, wie Sie auf den Computeknoten im Pool mehrere Tasks gleichzeitig ausführen können. Zusätzlich zur automatischen Skalierung können Sie mit diesem Feature die Auftragsdauer für einige Workloads verringern und so Geld sparen.
 * Um die Effizienz weiter zu steigern, stellen Sie sicher, dass die Batch-Anwendung den Batch-Dienst in optimaler Weise abfragt. Unter [Effizientes Abfragen des Azure Batch-Diensts](batch-efficient-list-queries.md) erfahren Sie, wie Sie die Datenmenge beschränken, die übertragen wird, wenn Sie den Status von möglicherweise Tausenden von Computeknoten oder -aufgaben abfragen.
 

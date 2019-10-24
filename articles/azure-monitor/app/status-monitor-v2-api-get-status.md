@@ -1,6 +1,6 @@
 ---
-title: 'API-Referenz für Azure-Statusmonitor v2: Abrufen des Status | Microsoft-Dokumentation'
-description: API-Referenz für Statusmonitor v2. Get-ApplicationInsightsMonitoringStatus. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
+title: 'API-Referenz für den Azure Application Insights-Agent: Abrufen des Status | Microsoft-Dokumentation'
+description: API-Referenz für den Application Insights-Agent. Get-ApplicationInsightsMonitoringStatus. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6e103e1856e338669224540a991c4b9ea6b10d6d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058256"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389867"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>API für Statusmonitor v2: Get-ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights-Agent-API: Get-ApplicationInsightsMonitoringStatus
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
 
@@ -204,5 +204,5 @@ Wenn dieser Prozess aus irgendeinem Grund fehlschlägt, können Sie diese Befehl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- Weitere Möglichkeiten zur Verwendung von Statusmonitor v2:
- - Verwenden Sie unsere Anleitung für die [Problembehandlung](status-monitor-v2-troubleshoot.md) von Statusmonitor v2.
+ Weitere Verwendungsmöglichkeiten für den Application Insights-Agent:
+ - Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.

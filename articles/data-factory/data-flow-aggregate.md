@@ -1,48 +1,89 @@
 ---
-title: 'Aggregattransformation in Mapping Data Flow: Azure Data Factory | Microsoft-Dokumentation'
-description: Informationen zum bedarfsorientiertem Aggregieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Aggregattransformation
+title: Aggregattransformation in Azure Data Factory Mapping Data Flow | Microsoft-Dokumentation
+description: Informationen zum bedarfsorientierten Aggregieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Aggregattransformation
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/15/2019
+ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026977"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514829"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Aggregattransformation in Mapping Data Flow 
 
-
-
-In der Transformation für das Aggregieren definieren Sie Aggregationen von Spalten in Ihren Datenströmen. Mithilfe des Ausdrucks-Generators können Sie verschiedene Arten von Aggregationen wie SUM, MIN, MAX und COUNT definieren, die anhand von bereits vorhandenen oder berechneten Spalten gruppiert werden können.
+Die Aggregattransformation definiert Aggregationen von Spalten in Ihren Datenströmen. Mithilfe des Ausdrucks-Generators können Sie verschiedene Arten von Aggregationen wie SUM, MIN, MAX und COUNT gruppiert nach vorhandenen oder berechneten Spalten definieren.
 
 ## <a name="group-by"></a>Gruppieren nach
-Wählen Sie eine bereits vorhandene Spalte aus, oder erstellen Sie eine neue berechnete Spalte, um diese als GROUP BY-Klausel für Ihre Aggregation zu verwenden. Wählen Sie dafür einfach die gewünschte Spalte aus der entsprechenden Dropdownliste aus. Zeigen Sie mit der Maus auf die Klausel, und klicken Sie auf „Berechnete Spalte“, um eine neue berechnete Spalte zu erstellen. Dadurch öffnet sich [Data Flow Expression Builder](concepts-data-flow-expression-builder.md). Sobald Sie Ihre berechnete Spalte erstellt haben, geben Sie den Namen der Ausgabespalte in das Feld „Name as“ (Bennen als) ein. Wenn Sie eine zusätzliche GROUP BY-Klausel hinzufügen möchten, zeigen Sie mit der Maus auf eine bereits vorhandene Klausel, und klicken Sie auf das Symbol „+“.
 
-![GROUP BY-Einstellungen für die Aggregattransformation](media/data-flow/agg.png "GROUP BY-Einstellungen für die Aggregattransformation")
+Wählen Sie eine bereits vorhandene Spalte aus, oder erstellen Sie eine neue berechnete Spalte, um diese als GROUP BY-Klausel für Ihre Aggregation zu verwenden. Wenn Sie eine vorhandene Spalte verwenden möchten, wählen Sie sie aus der Dropdownliste aus. Zum Erstellen einer neuen berechneten Spalte zeigen Sie mit dem Mauszeiger auf die Klausel, und klicken Sie auf **Berechnete Spalte**. Dadurch öffnet sich der [Datenfluss-Ausdrucks-Generator](concepts-data-flow-expression-builder.md). Sobald Sie die berechnete Spalte erstellt haben, geben Sie den Namen der Ausgabespalte in das Feld **Benennen als** ein. Wenn Sie eine zusätzliche GROUP BY-Klausel hinzufügen möchten, zeigen Sie mit dem Mauszeiger auf eine bereits vorhandene Klausel, und klicken Sie auf das Pluszeichen.
 
-> [!NOTE]
-> Die Verwendung einer GROUP BY-Klausel in einer Aggregattransformation ist optional.
+![Einstellungen für „Gruppieren nach“ in der Aggregattransformation](media/data-flow/agg.png "Einstellungen für „Gruppieren nach“ in der Aggregattransformation")
+
+Die Verwendung einer GROUP BY-Klausel in einer Aggregattransformation ist optional.
 
 ## <a name="aggregate-column"></a>Aggregatspalte 
-Klicken Sie auf die Registerkarte „Aggregate“, um Aggregationsausdrücke zu erstellen. Sie können entweder eine bereits vorhandene Spalte auswählen, um den Wert mit der Aggregation zu überschreiben, oder ein neues Feld mit dem neuen Namen erstellen. Der Aggregationsausdruck wird in das Feld auf der rechten Seite neben dem Selektor für den Spaltennamen eingegeben. Sie können den Ausdruck bearbeiten, indem Sie auf das Textfeld klicken, um den Ausdrucks-Generator zu öffnen. Wenn Sie eine zusätzliche Aggregation hinzufügen möchten, zeigen Sie mit der Maus auf einen bereits vorhandenen Ausdruck, und klicken Sie auf das Symbol „+“, um eine neue Aggregationsspalte oder ein [Spaltenmuster](concepts-data-flow-column-pattern.md) zu erstellen.
 
-![Aggregateinstellungen für die Aggregattransformation](media/data-flow/agg2.png "Aggregateinstellungen für die Aggregattransformation")
+Wechseln Sie zur Registerkarte **Aggregate**, um Aggregationsausdrücke zu erstellen. Sie können entweder eine bereits vorhandene Spalte mit einer Aggregation überschreiben oder ein neues Feld mit einem neuen Namen erstellen. Der Aggregationsausdruck wird in das Feld auf der rechten Seite neben dem Selektor für den Spaltennamen eingegeben. Sie können den Ausdruck bearbeiten, indem Sie auf das Textfeld klicken, um den Ausdrucks-Generator zu öffnen. Wenn Sie zusätzliche Aggregationen hinzufügen möchten, zeigen Sie mit dem Mauszeiger auf einen bereits vorhandenen Ausdruck, und klicken Sie auf das Pluszeichen, um eine neue Aggregationsspalte oder ein [Spaltenmuster](concepts-data-flow-column-pattern.md) zu erstellen.
 
-> [!NOTE]
-> Jeder Aggregationsausdruck muss mindestens eine Aggregatfunktion enthalten.
+Jeder Aggregationsausdruck muss mindestens eine Aggregatfunktion enthalten.
+
+![Aggregateinstellungen der Aggregattransformation](media/data-flow/agg2.png "Aggregateinstellungen der Aggregattransformation")
+
 
 > [!NOTE]
 > Im Debugmodus kann der Ausdrucks-Generator keine Datenvorschau mit Aggregatfunktionen generieren. Wenn Sie die Datenvorschau für eine Aggregattransformation abrufen möchten, schließen Sie den Ausdrucks-Generator, und rufen Sie die Daten über die Registerkarte „Datenvorschau“ ab.
 
 ## <a name="reconnect-rows-and-columns"></a>Neuverbinden von Zeilen und Spalten
-Aggregattransformationen entsprechen im Prinzip den SQL-Abfragen für die Aggregatauswahl. Spalten, die nicht in der GROUP BY-Klausel oder in den Aggregatfunktionen enthalten sind, fließen nicht in die Ausgabe der Aggregattransformation. Wenn andere Spalten vorhanden sind, die Sie in die Ausgabe der aggregierten Zeilen einschließen möchten, müssen Sie eine der folgenden Aktionen ausführen:
 
-* Verwenden Sie eine Aggregatfunktion, um die zusätzliche Spalte einzuschließen, z. B. Last() oder First().
-* Verknüpfen Sie die Spalten vor dem Aggregieren mit dem [Self-Join-Muster](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/) noch mal.
+Aggregattransformationen ähneln SQL-Abfragen für die Aggregatauswahl. Spalten, die nicht in der GROUP BY-Klausel oder in den Aggregatfunktionen enthalten sind, fließen nicht in die Ausgabe der Aggregattransformation. Wenn Sie andere Spalten in die aggregierte Ausgabe einschließen möchten, führen Sie eine der folgenden Methoden aus:
+
+* Verwenden Sie eine Aggregatfunktion, z.B. `last()` oder `first()`, um die zusätzliche Spalte einzuschließen.
+* Verknüpfen Sie die Spalten mithilfe des [Self-Join-Musters](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/) erneut mit dem Ausgabedatenstrom.
+
+## <a name="data-flow-script"></a>Datenflussskript
+
+### <a name="syntax"></a>Syntax
+
+```
+<incomingStream>
+    aggregate(
+           groupBy(
+                <groupByColumnName> = <groupByExpression1>,
+                <groupByExpression2>
+               ),
+           <aggregateColumn1> = <aggregateExpression1>,
+           <aggregateColumn2> = <aggregateExpression2>,
+           each(
+                match(matchExpression),
+                <metadataColumn1> = <metadataExpression1>,
+                <metadataColumn2> = <metadataExpression2>
+               )
+          ) ~> <aggregateTransformationName>
+```
+
+### <a name="example"></a>Beispiel
+
+Im folgenden Beispiel werden bei einem eingehenden Datenstrom `MoviesYear` die Zeilen nach der Spalte `year` gruppiert. Die Transformation erstellt eine Aggregatspalte `avgrating`, die den Durchschnitt der Spalte `Rating` ergibt. Diese Aggregattransformation hat den Namen `AvgComedyRatingsByYear`.
+
+Auf der Data Factory-Benutzeroberfläche sieht diese Transformation wie folgt aus:
+
+![Beispiel für „Gruppieren nach“](media/data-flow/agg-script1.png "Beispiel für „Gruppieren nach“")
+
+![Aggregatbeispiel](media/data-flow/agg-script2.png "Aggregatbeispiel")
+
+Das Datenflussskript für diese Transformation befindet sich im folgenden Codeausschnitt.
+
+```
+MoviesYear aggregate(
+                groupBy(year),
+                avgrating = avg(toInteger(Rating))
+            ) ~> AvgComedyRatingByYear
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

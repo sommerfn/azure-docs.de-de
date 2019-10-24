@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: d193dcd0c0539c2daa7220d915fdc3e02c8ea798
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828656"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512439"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Hochladen einer VHD in Azure mithilfe von Azure PowerShell
 
@@ -128,4 +128,4 @@ Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName
 
 Sie haben erfolgreich eine VHD auf den verwalteten Datenträger hochgeladen und können Datenträger nun an eine VM anfügen, um ihn zu verwenden.
 
-Informationen dazu, wie Sie der VM einen Datenträger hinzufügen, finden Sie in folgendem Artikel: [Attach a data disk to a Windows VM with PowerShell (Hinzufügen eines Datenträgers zu einer Windows-VM mit PowerShell)](attach-disk-ps.md).
+Informationen dazu, wie Sie einen Datenträger für Daten an eine VM anfügen, finden Sie in folgendem Artikel: [Attach a data disk to a Windows VM with PowerShell (Hinzufügen eines Datenträgers zu einer Windows-VM mit PowerShell)](attach-disk-ps.md). Informationen zum Verwenden des Datenträgers als Betriebssystemdatenträger finden Sie unter [Erstellen einer Windows-VM von einem speziellen Datenträger](create-vm-specialized.md#create-the-new-vm).

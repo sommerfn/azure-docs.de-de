@@ -1,27 +1,24 @@
 ---
 title: Bewährte Methoden für Azure Functions | Microsoft-Dokumentation
 description: Enthält Beschreibungen der bewährten Methoden und Muster für Azure Functions.
-services: functions
-documentationcenter: na
-author: wesmc7777
-manager: jeconnoc
-keywords: Azure Functions, Muster, bewährte Methoden, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
+author: ggailey777
+manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933054"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596883"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
-Dieser Artikel enthält Informationen zur Verbesserung der Leistung und Zuverlässigkeit Ihrer [serverlosen](https://azure.microsoft.com/solutions/serverless/) Funktionen-Apps. 
+Dieser Artikel enthält Informationen zur Verbesserung der Leistung und Zuverlässigkeit Ihrer [serverlosen](https://azure.microsoft.com/solutions/serverless/) Funktionen-Apps.  
 
 ## <a name="general-best-practices"></a>Allgemeine bewährte Methoden
 
@@ -29,7 +26,9 @@ Nachfolgend finden Sie bewährte Methoden zum Entwickeln und Erstellen serverlos
 
 ### <a name="avoid-long-running-functions"></a>Vermeiden von Funktionen mit langer Ausführungsdauer
 
-Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Eine Funktion kann aufgrund der Vielzahl an Node.js-Abhängigkeiten umfangreich werden. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden.  
+Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Weitere Informationen zu Timeouts für einen bestimmten Hostingplan finden Sie unter [Optimieren der Leistung und Zuverlässigkeit von Azure Functions](functions-scale.md#timeout). 
+
+Eine Funktion kann aufgrund der Vielzahl an Node.js-Abhängigkeiten umfangreich werden. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden. 
 
 Nach Möglichkeit sollten Sie umfangreiche Funktionen durch Refactoring immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich; bei Webhooks ist üblicherweise eine unmittelbare Antwort notwendig. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben.
 

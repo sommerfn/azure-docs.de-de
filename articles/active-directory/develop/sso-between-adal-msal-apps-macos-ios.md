@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 218e659452779b6372541c3abec908878493f5d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 2a554602b9648190926168e4886d4f0773692225
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269344"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264154"
 ---
 # <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Gewusst wie: SSO zwischen ADAL- und MSAL-Apps auf macOS und iOS
 
@@ -110,7 +110,7 @@ ADAL 2.7.x gibt über diese Eigenschaft die `homeAccountId`-Eigenschaft im Objek
 
 Wenn `homeAccountId` nicht verfügbar ist, oder Sie nur den darstellbaren Bezeichner haben, können Sie mit `userId` von ADAL das Konto in MSAL suchen.
 
-Suchen Sie in MSAL zunächst ein Konto mit `username` oder `identifier`. Verwenden Sie immer `identifier` für die Abfrage, falls diese Klasse verfügbar ist, und verwenden Sie `username` nur als Fallback. Wenn ein Konto gefunden wird, verwenden Sie das Konto in den „acquireTokenSilent“-Aufrufen.
+Suchen Sie in MSAL zunächst ein Konto mit `username` oder `identifier`. Verwenden Sie immer `identifier` für die Abfrage, falls diese Klasse verfügbar ist, und verwenden Sie `username` nur als Fallback. Wenn ein Konto gefunden wird, verwenden Sie das Konto in den `acquireTokenSilent`-Aufrufen.
 
 Objective-C:
 

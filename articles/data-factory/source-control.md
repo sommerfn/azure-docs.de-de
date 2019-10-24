@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: fd8168b5786f669de0c5c2109c9e02b43c62c582
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f3d443eed43cc1e131cd3dc47407ce2dfb023ce8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933652"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326380"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 
@@ -25,6 +25,9 @@ Die Benutzeroberfläche von Azure Data Factory bietet zwei Möglichkeiten zur vi
 
 - Direktes Erstellen mit dem Data Factory-Dienst
 - Erstellen mit Azure Repos Git oder GitHub-Integration
+
+> [!NOTE]
+> In der Azure Government-Cloud wird nur die direkte Erstellung mit dem Data Factory-Dienst unterstützt.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Direktes Erstellen mit dem Data Factory-Dienst
 

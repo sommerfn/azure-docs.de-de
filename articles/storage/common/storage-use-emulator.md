@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 575f23aef9534696566080257e61b2fa84de5d0f
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013552"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428314"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -59,7 +59,7 @@ Wenn Sie den Speicheremulator zum ersten Mal ausführen, wird die lokale Speiche
 Der Speicheremulator wird standardmäßig unter `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator` installiert.
 
 > [!TIP]
-> Im [Microsoft Azure Storage-Explorer](https://storageexplorer.com) können Sie mit lokalen Speicheremulatorressourcen arbeiten. Suchen Sie dazu nach dem Installieren und Starten des Speicheremulators in der Struktur der Storage-Explorer-Ressourcen unter „Speicherkonten“ nach „(Entwicklung)“.
+> Im [Microsoft Azure Storage-Explorer](https://storageexplorer.com) können Sie mit lokalen Speicheremulatorressourcen arbeiten. Suchen Sie dazu, nachdem Sie den Speicheremulator installiert und gestartet haben, in der Struktur der Storage-Explorer-Ressourcen unter „Lokal & angefügt“ nach „(Emulator – Standardports) (Schlüssel)“.
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Initialisieren des Speicheremulators zur Verwendung einer anderen SQL-Datenbank
@@ -179,7 +179,7 @@ Ab Version 3.0 wird beim Starten des Speicheremulators ein Konsolenfenster angez
 
 Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help` ein.
 
-| Option | Beschreibung | Get-Help | Argumente |
+| Option | BESCHREIBUNG | Get-Help | Argumente |
 | --- | --- | --- | --- |
 | **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: Startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
 | **Beenden** |Beendet den Speicheremulator. |`AzureStorageEmulator.exe stop` | |

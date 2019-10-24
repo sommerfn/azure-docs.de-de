@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167402"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333110"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -81,7 +81,7 @@ Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp. Die 
 | Bronze           | 1                              | Virtuelle Computer mit mindestens 50 GB lokaler SSD-Kapazität                                              | Wird nicht durch den Service Fabric-Cluster verzögert           | Kann nicht für eine längere Zeit verzögert werden                                                    |
 
 > [!WARNING]
-> Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, nicht angehalten oder verzögert werden. Dies kann sich auf Ihre Workloads auswirken. Verwenden Sie „Bronze“ nur für Knotentypen, die ausschließlich zustandslose Workloads ausführen. Für Produktionsworkloads wird die Ausführung unter „Silber“ oder höher empfohlen. 
+> Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandsbehafteten Workloads auswirken, nicht angehalten oder verzögert werden. Dies kann sich auf Ihre Workloads auswirken. Verwenden Sie „Bronze“ nur für Knotentypen, die ausschließlich zustandslose Workloads ausführen. Für Produktionsworkloads wird die Ausführung unter „Silber“ oder höher empfohlen. 
 > 
 > Unabhängig von der Dauerhaftigkeitsstufe wird durch den Vorgang der [Aufhebung der Zuordnung](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) für die VM-Skalierungsgruppe der Cluster gelöscht.
 
@@ -123,7 +123,7 @@ Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die z
 
 Für die Zuverlässigkeitsstufe können folgende Werte festgelegt werden:
 
-* Platin: Systemdienste mit einer Replikatgruppen-Zielanzahl von 7 ausführen
+* Platin: Systemdienste mit einer Replikatgruppen-Zielanzahl von 9 ausführen
 * Gold: Systemdienste mit einer Replikatgruppen-Zielanzahl von 7 ausführen
 * Silber: Systemdienste mit einer Replikatgruppen-Zielanzahl von 5 ausführen 
 * Bronze: Systemdienste mit einer Replikatgruppen-Zielanzahl von 3 ausführen

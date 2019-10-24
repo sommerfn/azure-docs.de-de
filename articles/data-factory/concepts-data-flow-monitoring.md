@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory-Mapping-Datenfluss – Visuelle Überwachung
+title: Azure Data Factory Mapping Data Flow – Visuelle Überwachung
 description: Erfahren Sie, wie Sie Azure Data Factory -Datenflüsse visuell überwachen.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 41b4b7cd911bad40055fcf527c186f8de9466cdc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030245"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387987"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 

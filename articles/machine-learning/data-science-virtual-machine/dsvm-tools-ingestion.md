@@ -9,13 +9,13 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: conceptual
-ms.date: 10/3/2019
-ms.openlocfilehash: 47a701cce348e86359947376b3d6a9915dfb2264
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/11/2019
+ms.openlocfilehash: 72a881a2ab508caa2274f3b9299157921cb8ceff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950159"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330693"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Datenerfassungstools für die Data Science-VM
 
@@ -62,12 +62,22 @@ Nachstehend sind einige der Datenverschiebungstools aufgeführt, die in der DSVM
 
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   | Tool, mit dem Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können. Zu diesen Quellen gehören JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und Azure Cosmos DB-SQL-API-Sammlungen.      |
+| Was ist das?   | Tool, mit dem Daten aus verschiedenen Quellen in Azure Cosmos DB importiert werden können, eine NoSQL-Datenbank in der Cloud. Zu diesen Quellen gehören JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und Azure Cosmos DB-SQL-API-Sammlungen.      |
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren von Dateien von einem virtuellen Computer in CosmosDB, Importieren von Daten aus Azure-Tabellenspeicher in CosmosDB und Importieren von Daten aus einer Microsoft SQL Server-Datenbank in CosmosDB     |
 |  Verwendung/Ausführung    |   Öffnen Sie zum Verwenden der Befehlszeilenversion eine Eingabeaufforderung, und geben Sie `dt` ein. Öffnen Sie zum Verwenden des GUI-Tools eine Eingabeaufforderung, und geben Sie `dtui` ein.    |
 | Links zu Beispielen      | [Importieren von Daten in Azure Cosmos DB mit der DocumentDB-API](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | Verwandte Tools auf der DSVM      | AzCopy, AdlCopy      |
+
+## <a name="azure-storage-explorer"></a>Azure Storage-Explorer
+
+|    |           |
+| ------------- | ------------- |
+| Was ist das?   | Grafische Benutzeroberfläche für die Interaktion mit Dateien, die in der Azure-Cloud gespeichert sind. |
+| Unterstützte DSVM-Versionen      | Windows      |
+| Typische Verwendung      | Importieren und Exportieren von Daten aus der DSVM.    |
+|  Verwendung/Ausführung    | Suchen Sie im Startmenü nach „Azure Storage-Explorer“. |
+| Links zu Beispielen      | [Azure Storage-Explorer](vm-do-ten-things.md#access-azure-data-and-analytics-services)      |
 
 
 ## <a name="bcp"></a>bcp

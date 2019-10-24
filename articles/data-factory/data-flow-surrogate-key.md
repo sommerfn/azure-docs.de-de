@@ -1,18 +1,18 @@
 ---
 title: 'Azure Data Factory Mapping Data Flow: Transformation für Ersatzschlüssel'
-description: 'Verwenden von Azure Data Factory Mapping Data Flow: Transformation für Ersatzschlüssel zum Generieren eines nachfolgenden Schlüsselwerts'
+description: Hier erfahren Sie, wie Sie die Transformation für Ersatzschlüssel von Azure Data Factory Mapping Data Flow zum Generieren nachfolgender Schlüsselwerte verwenden.
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 144d6298a13d35d94a68b35c443a3a47cefcfc2a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029179"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387160"
 ---
 # <a name="mapping-data-flow-surrogate-key-transformation"></a>Mapping Data Flow: Transformation für Ersatzschlüssel
 
@@ -30,7 +30,7 @@ Die „Schlüsselspalte“ ist der Name, den Sie Ihrer neuen Ersatzschlüsselspa
 
 Wenn Sie Ihre Sequenz von einem Wert aus starten möchten, der in einer Quelle vorhanden ist, können Sie eine Transformation für abgeleitete Spalten unmittelbar nach der Transformation für Ersatzschlüssels verwenden und die beiden Werte zusammenfügen:
 
-![SK add Max](media/data-flow/sk006.png "Surrogate Key Transformation Add Max")
+![Maximalwert für Ersatzschlüssel hinzufügen](media/data-flow/sk006.png "Transformation für Ersatzschlüssel – Maximalwert hinzufügen")
 
 Um den Schlüsselwert mit dem vorherigen Maximum zu versehen, gibt es zwei Techniken, die Sie verwenden können:
 
@@ -38,17 +38,17 @@ Um den Schlüsselwert mit dem vorherigen Maximum zu versehen, gibt es zwei Techn
 
 Verwenden Sie die Option „Abfrage“, um MAX() aus Ihrer Quelle mithilfe der Quelltransformation auszuwählen:
 
-![Surrogate Key Query](media/data-flow/sk002.png "Surrogate Key Transformation Query")
+![Ersatzschlüsselabfrage](media/data-flow/sk002.png "Transformation für Ersatzschlüssel – Abfrage")
 
 ### <a name="file-sources"></a>Dateiquellen
 
 Wenn sich Ihr vorheriger Maximalwert in einer Datei befindet, können Sie Ihre Quelltransformation zusammen mit einer Aggregattransformation verwenden und die Funktion „MAX() expression“ verwenden, um den vorherigen Maximalwert zu erhalten:
 
-![Surrogate Key File](media/data-flow/sk008.png "Surrogate Key File")
+![Ersatzschlüsseldatei](media/data-flow/sk008.png "Ersatzschlüsseldatei")
 
 In beiden Fällen müssen Sie Ihre eingehenden neuen Daten zusammen mit Ihrer Quelle, die den vorherigen Maximalwert enthält, zusammenfügen:
 
-![Surrogate Key Join](media/data-flow/sk004.png "Surrogate Key Join")
+![Ersatzschlüsselverknüpfung](media/data-flow/sk004.png "Ersatzschlüsselverknüpfung")
 
 ## <a name="next-steps"></a>Nächste Schritte
 

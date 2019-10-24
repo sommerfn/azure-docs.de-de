@@ -1,18 +1,18 @@
 ---
-title: 'Beispiel: PCI-DSS v3.2.1-Blaupause – Bereitstellungsschritte'
-description: Schritte für die Bereitstellung des Blaupausenbeispiels „Payment Card Industry Data Security Standard v3.2.1“.
+title: 'Blaupausenbeispiel „PCI-DSS v3.2.1“: Bereitstellungsschritte'
+description: Bereitstellungsschritte für das Blaupausenbeispiel „Payment Card Industry Data Security Standard v3.2.1“, einschließlich Details zum Blaupausenartefaktparameter.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980922"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299044"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 

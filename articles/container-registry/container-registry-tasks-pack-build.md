@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.author: danlep
-ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839899"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293906"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Erstellen und Übertragen eines Images aus einer App mithilfe eines Cloud Native-Buildpacks
 
 Der Azure CLI-Befehl `az acr pack build` verwendet das [`pack`](https://github.com/buildpack/pack)-CLI-Tool von [Buildpacks](https://buildpacks.io/), um eine App zu erstellen und das Image mithilfe von Push in eine Azure-Containerregistrierung zu übertragen. Diese Funktion bietet eine Option für das schnelle Erstellen eines Containerimages aus dem Quellcode Ihrer Anwendung in Node.js, Java und anderen Sprachen ohne Dockerfile-Definition.
 
-Sie können die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist Version 2.0.70 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden, um die Beispiele in diesem Artikel auszuführen. Wenn Sie es lokal verwenden möchten, ist Version 2.0.70 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
@@ -31,20 +31,20 @@ Geben Sie beim Ausführen des Befehls `az acr pack build` mindestens Folgendes a
 
 * Eine Azure-Containerregistrierung, in der Sie den Befehl ausführen
 * Ein Imagename und -tag für das neu erstellte Image
-* Einen der [unterstützten Kontextspeicherorte](container-registry-tasks-overview.md#quick-task) für ACR Tasks (z. B. ein lokales Verzeichnis, ein GitHub-Repository oder ein Remotetarball)
-* Den Namen eines Buildpack-Generatorimages (z. B. `cloudfoundry/cnb:bionic`)  
+* Einen der [unterstützten Kontextspeicherorte](container-registry-tasks-overview.md#context-locations) für ACR Tasks (z. B. ein lokales Verzeichnis, ein GitHub-Repository oder ein Remotetarball)
+* Den Namen eines Buildpack-Generatorimages (z. B. `cloudfoundry/cnb:0.0.12-bionic`)  
 
 Der Befehl `az acr pack build` unterstützt weitere Funktionen von ACR Tasks-Befehlen (einschließlich [Run-Variablen](container-registry-tasks-reference-yaml.md#run-variables) und gestreamte und für den späteren Abruf gespeicherte [Ausführungsprotokolle für Aufgaben](container-registry-tasks-overview.md#view-task-logs)).
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Beispiel: Erstellen eines Node.js-Images mit dem Cloud Foundry-Generator
 
-Im folgenden Beispiel wird mithilfe des Generators `cloudfoundry/cnb:bionic` ein Containerimage aus der Node.js-App im Repository [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) erstellt:
+Im folgenden Beispiel wird mithilfe des Generators `cloudfoundry/cnb:0.0.12-bionic` ein Containerimage aus der Node.js-App im Repository [Azure-Samples/nodejs-docs-hello-world](https://github.com/Azure-Samples/nodejs-docs-hello-world) erstellt:
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 

@@ -1,24 +1,18 @@
 ---
 title: Aktivieren von Azure Monitor für VMs mithilfe von Azure Policy | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für mehrere Azure-VMs oder VM-Skalierungsgruppen mithilfe von Azure Policy aktivieren.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/07/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: cbb471d337bd386b6c5f2c7a960565ef29855c9c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 10/15/2019
+ms.openlocfilehash: 068d320c85a1e10027c92b92c1b3c205a999bed7
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338224"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553830"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mithilfe von Azure Policy
 
@@ -46,7 +40,7 @@ Diese Informationen sind nützlich, um Ihr Governance-Szenario für Azure Monito
 
 Auf dieser Seite können Sie auch Ihren Log Analytics-Arbeitsbereich für Azure Monitor für VMs konfigurieren, in dem folgende Aufgaben ausgeführt werden:
 
-- Installieren der Lösungen „Dienstzuordnung“ und „Infrastructure Insights“.
+- Installieren Sie die Dienstzuordnungslösung.
 - Aktivieren der Leistungsindikatoren des Betriebssystems, die von den Leistungsdiagrammen, Arbeitsmappen und Ihren benutzerdefinierten Protokollabfragen und Benachrichtigungen verwendet werden.
 
 ![Azure Monitor für VMs, Arbeitsbereich konfigurieren](./media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
@@ -54,6 +48,7 @@ Auf dieser Seite können Sie auch Ihren Log Analytics-Arbeitsbereich für Azure 
 Diese Option bezieht sich nicht auf Richtlinienaktionen. Sie dient zur Bereitstellung einer einfachen Möglichkeit, die [Voraussetzungen](vminsights-enable-overview.md) für die Aktivierung von Azure Monitor für VMs zu erfüllen.  
 
 ### <a name="what-information-is-available-on-this-page"></a>Welche Informationen sind auf dieser Seite verfügbar?
+
 Die folgende Tabelle enthält eine Aufschlüsselung der auf der Seite „Richtlinienabdeckung“ gezeigten Informationen und ihrer Interpretation.
 
 | Funktion | BESCHREIBUNG | 
@@ -113,6 +108,7 @@ Die eigenständige Richtlinie (nicht in der Initiative enthalten) wird hier besc
 |\[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt |Meldet VMs als nicht konform, wenn sie keine Protokolle an den in der Richtlinien- oder Initiativenzuweisung angegebenen Log Analytics-Arbeitsbereich senden. |Richtlinie |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Zuweisen der Azure Monitor-Initiative
+
 Um die Richtlinienzuweisung auf der Seite **Azure Monitor für VMs – Richtlinienabdeckung** zu erstellen, führen Sie die folgenden Schritte aus. Informationen zum Ausführen dieser Schritte finden Sie unter  [Erstellen einer Richtlinienzuweisung im Azure-Portal](../../governance/policy/assign-policy-portal.md).
 
 Wenn Sie die Richtlinie oder Initiative zuweisen, kann der in der Zuweisung ausgewählte Umfang der hier aufgelistete Umfang oder eine Teilmenge davon sein. Angenommen, Sie haben eine Zuweisung für das Abonnement (Richtlinienumfang) und nicht für die Verwaltungsgruppe (Abdeckungsumfang) vorgenommen. In diesem Fall gibt der Abdeckungsprozentsatz die VMs im Umfang der Richtlinie oder Initiative dividiert durch die VMs im Abdeckungsumfang an. In einem anderen Fall haben Sie möglicherweise einige VMs oder Ressourcengruppen oder ein Abonnement aus dem Richtlinienumfang ausgeschlossen. Wenn der Wert leer ist, bedeutet dies, dass entweder die Richtlinie oder Initiative nicht vorhanden ist oder Sie keine Berechtigungen haben. Informationen werden unter **Zuweisungsstatus** angezeigt.
@@ -208,7 +204,6 @@ Nachdem Sie einer Verwaltungsgruppe oder einem Abonnement eine Initiative zugewi
 
 Nachdem die Überwachung für Ihre virtuellen Computer aktiviert wurde, stehen diese Informationen für die Analyse mit Azure Monitor für VMs zur Verfügung. 
 
-- Informationen zum Verwenden des Integritätsfeatures finden Sie unter [Azure Monitor für VMs – Integrität anzeigen](vminsights-health.md). 
 - Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md). 
+
 - Informationen zum Erkennen von Engpässen und der Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [Anzeigen der Leistung von Azure-VMs](vminsights-performance.md). 
-- Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md).

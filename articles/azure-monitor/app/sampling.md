@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169482"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372562"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -197,7 +197,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 **Bei Verwendung der obigen Methode zum Konfigurieren der Stichprobenerstellung müssen Sie ```aiOptions.EnableAdaptiveSampling = false;```-Einstellungen mit „AddApplicationInsightsTelemetry()“ verwenden.**
 
-## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites"></a>Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites
+## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications"></a>Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites sowie Python-Anwendungen
 
 Bei der Stichprobenerstellung mit festem Prozentsatz wird der Datenverkehr verringert, der von Ihren Webservern und Webbrowsern gesendet wird. Im Gegensatz zur adaptiven Stichprobenerstellung werden die Telemetriedaten nach einem von Ihnen festgelegten Prozentsatz verringert. Darüber hinaus wird die Stichprobenerstellung für Client und Server synchronisiert, sodass zugehörige Elemente beibehalten werden. Wenn Sie also beispielsweise eine Seitenansicht in Search betrachten, können Sie die dazugehörige Anforderung ermitteln.
 
@@ -336,7 +336,27 @@ Folgende Telemetrietypen können in die Stichprobenerstellung eingeschlossen ode
 
 <a name="other-web-pages"></a>
 
+### <a name="configuring-fixed-rate-sampling-in-opencensus-python"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz in OpenCensus Python ###
 
+1. Instrumentieren Sie Ihre Anwendung mit der neuesten Version von [OpenCensus Azure Monitor Exporters](../../azure-monitor/app/opencensus-python.md).
+
+> [!NOTE]
+> Die Stichprobenerstellung mit festem Prozentsatz steht nur bei Verwendung des Ablaufverfolgungsexporters zur Verfügung. Das bedeutet, dass eingehende und ausgehende Anforderungen die einzigen Arten von Telemetriedaten sind, bei denen eine Stichprobenerstellung konfiguriert werden kann.
+> 
+> 
+
+2. Sie können in Ihrer `Tracer`-Konfiguration ein `sampler`-Element angeben. Wenn kein expliziter Sampler angegeben wird, wird standardmäßig der ProbabilitySampler verwendet. Für den ProbabilitySampler wird standardmäßig eine Rate von 1/10000 verwendet. Das bedeutet, dass eine von 10000 Anforderungen an Application Insights gesendet wird. Falls Sie eine Stichprobenhäufigkeit angeben möchten, helfen Ihnen die Informationen unten weiter.
+
+3. Stellen Sie beim Angeben eines Samplers sicher, dass über Ihren `Tracer` ein Sampler mit einer Stichprobenhäufigkeit zwischen 0,0 und 1,0 (einschließlich) angegeben wird. Eine Stichprobenhäufigkeit von 1,0 steht für 100 %. Das bedeutet, dass Ihre gesamten Anforderungen als Telemetriedaten an Application Insights gesendet werden.
+
+    ```python
+    tracer = Tracer(
+        exporter=AzureExporter(
+            instrumentation_key='00000000-0000-0000-0000-000000000000',
+        ),
+        sampler=ProbabilitySampler(1.0),
+    )
+    ```
 
 ## <a name="ingestion-sampling"></a>Erfassungs-Stichprobenerstellung
 

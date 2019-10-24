@@ -1,22 +1,22 @@
 ---
-title: 'Microsoft Genomics: Leitfaden zur Problembehandlung | Microsoft-Dokumentation'
-titleSuffix: Azure
-description: In diesem Artikel erfahren Sie mehr über Strategien für die Problembehandlung.
+title: Handbuch zur Problembehandlung
+titleSuffix: Microsoft Genomics
+description: Erfahren Sie mehr über Strategien für die Problembehandlung bei Verwendung von Microsoft Genomics.
 keywords: troubleshooting, error, debugging
-services: microsoft-genomics
+services: genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790503"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248510"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -116,7 +116,7 @@ Diese Fehler können vom Benutzer behoben werden. Basierend auf dem Dateityp und
 
 | Dateityp | Fehlercode | Fehlermeldung                                                                           | Empfohlene Schritte zur Problembehandlung                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Beliebig          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength] (Der Lesevorgang [ReadId] weist [NumberOfBases] Basen auf, der Grenzwert ist aber [MaxReadLength]).           | Der häufigste Grund für diesen Fehler ist eine Dateibeschädigung, die zur Verkettung von zwei Lesevorgängen führt. Überprüfen Sie Ihre Eingabedateien. |
+| Any          | 701        | Read [readId] has [numberOfBases] bases, but the limit is [maxReadLength] (Der Lesevorgang [ReadId] weist [NumberOfBases] Basen auf, der Grenzwert ist aber [MaxReadLength]).           | Der häufigste Grund für diesen Fehler ist eine Dateibeschädigung, die zur Verkettung von zwei Lesevorgängen führt. Überprüfen Sie Ihre Eingabedateien. |
 | BAM          | 200        |   Unable to read file '[yourFileName]' (Die Datei '[ihrDateiname]' kann nicht gelesen werden).                                                                                       | Check the format of the BAM file (Überprüfen Sie das Format der BAM-Datei). Übermitteln Sie den Workflow mit einer ordnungsgemäß formatierten Datei erneut.                                                                           |
 | BAM          | 201        |  Unable to read BAM file [File_name] (Die BAM-Datei [Dateiname] kann nicht gelesen werden).                                                                                      |Check the format of the BAM file (Überprüfen Sie das Format der BAM-Datei).  Übermitteln Sie den Workflow mit einer ordnungsgemäß formatierten Datei.                                                                            |
 | BAM          | 202        | Unable to read BAM file [File_name] (Die BAM-Datei [Dateiname] kann nicht gelesen werden). File too small and missing header (Die Datei ist zu klein, und der Dateiheader fehlt).                                                                                        | Check the format of the BAM file (Überprüfen Sie das Format der BAM-Datei).  Übermitteln Sie den Workflow mit einer ordnungsgemäß formatierten Datei.                                                                            |

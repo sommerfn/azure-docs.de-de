@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 90c236347380bb5d5e51db56d0f431d2659a7258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e1427ce8cd83b49f4b9b39fa82eff1e8a32cd10
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61387157"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515387"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen
 
@@ -252,4 +252,7 @@ Gehen Sie wie folgt vor, um in einem Azure-Dashboard einen Link zu einer Arbeits
 3. Klicken Sie auf **An Dashboard anheften**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zur Verwendung des Integritätsfeatures finden Sie unter [Grundlegendes zur Integrität Ihrer Azure-VMs](vminsights-health.md). Informationen zum Anzeigen ermittelter Anwendungsabhängigkeiten finden Sie unter [Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten](vminsights-maps.md). 
+
+- Weitere Informationen zum Ermitteln von Beschränkungen und der Gesamtleistung einer VM finden Sie unter [Direktes Anzeigen der Leistung in einer Azure-VM](vminsights-performance.md).
+
+- Weitere Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in Azure Monitor](vminsights-maps.md).

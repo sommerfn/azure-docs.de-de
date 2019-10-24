@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals | Microsoft-Dokumentation
-description: Verwenden Sie das Azure-Portal, um Ihre Azure Resource Manager-Gruppen zu verwalten.
+description: Verwenden Sie das Azure-Portal, um Ihre Ressourcengruppen über Azure Resource Manager zu verwalten. Hier wird gezeigt, wie Sie Ressourcengruppen erstellen, auflisten und löschen.
 services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: bc3c1a05c64edea260bd177dd7eaefc003db5310
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 967ba72e6d270c3aa910d0b89207ed1878f994b0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296286"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390453"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals
 

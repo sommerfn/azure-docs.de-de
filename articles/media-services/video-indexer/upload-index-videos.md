@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128201"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372371"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -29,8 +29,9 @@ In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Vid
 
 Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden](connect-to-azure.md) ist. Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
 
-## <a name="uploading-considerations"></a>Überlegungen zum Hochladen
+## <a name="uploading-considerations-and-limitations"></a>Überlegungen und Einschränkungen zum Hochladen
  
+- Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
 - Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
 - Die Uploadgröße ist mit der URL-Option auf 30 GB begrenzt.
 - Die Länge der Anforderungs-URL ist auf 6.144 Zeichen beschränkt, wobei die Länge der Abfragezeichenfolge-URL auf 4.096 Zeichen beschränkt ist.

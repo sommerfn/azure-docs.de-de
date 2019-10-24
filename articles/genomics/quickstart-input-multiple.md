@@ -1,7 +1,7 @@
 ---
-title: Übermitteln eines Workflows mit mehreren Eingaben – Microsoft Genomics
-titleSuffix: Azure
-description: In diesem Artikel erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn Ihre Eingabedatei mehrere FASTQ- oder BAM-Dateien aus dem gleichen Beispiel umfasst. Sie haben den msgen-Client bereits installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt.
+title: Übermitteln eines Workflows mit mehreren Eingaben
+titleSuffix: Microsoft Genomics
+description: In diesem Artikel erfahren Sie, wie Sie einen Workflow an den Microsoft Genomics-Dienst übermitteln, wenn Ihre Eingabedatei mehrere FASTQ- oder BAM-Dateien aus dem gleichen Beispiel umfasst.
 services: genomics
 ms.service: genomics
 author: grhuynh
@@ -9,12 +9,12 @@ manager: cgronlund
 ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b426015906a8e17674123c0c3ad2fccb9c43798f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780877"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248566"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel
 

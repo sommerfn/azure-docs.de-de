@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 046c2308d5cef2df7e12b6185fc24b8df4f821dc
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 293d0de024ad815b4755d48833b7058c29ebcd5a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326972"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513293"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage
 
@@ -46,8 +46,8 @@ Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Fil
 > [!IMPORTANT]
 > Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.
 >
-> Standarddateifreigaben über 5 TiB sind als Vorschauversion verfügbar und weisen bestimmte Einschränkungen auf.
-> Eine Liste der Einschränkungen sowie Informationen zum Onboarding für die Vorschauversion dieser größeren Dateifreigaben finden Sie im Abschnitt [Standarddateifreigaben](../files/storage-files-planning.md#standard-file-shares) des Planungshandbuchs für Azure Files.
+> Standarddateifreigaben über 5 TiB unterliegen neben regionalen auch bestimmten anderen Einschränkungen.
+> Eine Liste der Einschränkungen, regionale Informationen und Anweisungen dazu, wie Sie diese größeren Dateifreigaben aktivieren, finden Sie im Abschnitt [Onboarding für größere Dateifreigaben (Standard-Tarif)](../files/storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) des Planungshandbuchs für Azure Files.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

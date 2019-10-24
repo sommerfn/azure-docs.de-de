@@ -1,78 +1,105 @@
 ---
-title: Auswählen des richtigen Bereitstellungstyps für Ihre Azure Database for MariaDB
-description: In diesem Artikel wird beschrieben, welche Überlegungen vor der Verwendung von IaaS (Infrastructure-as-a-Service) oder PaaS (Platform-as-a-Service) für Ihre Azure Database for MariaDB berücksichtigt werden müssen.
+title: Auswählen des richtigen Bereitstellungstyps für Azure Database for MariaDB
+description: In diesem Artikel wird beschrieben, welche Faktoren vor der Bereitstellung von Azure Database for MariaDB als IaaS (Infrastructure-as-a-Service) oder PaaS (Platform-as-a-Service) zu berücksichtigen sind.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: fa87748719e2d3775034e5a2850281cf8f1a0e8a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 819b8551650f2e0b484021638ab5554cb557a750
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71817381"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330035"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Auswählen der richtigen MariaDB Server-Option in Azure
 
-Mit Azure können Ihre MariaDB-Serverworkloads auf einer gehosteten Infrastruktur-VM (IaaS) oder als gehosteter Dienst (PaaS) ausgeführt werden. PaaS stellt mehrere Bereitstellungsoptionen und Dienstebenen für jede Bereitstellungsoption zur Verfügung. Bei der Entscheidung zwischen PaaS und IaaS müssen Sie festlegen, ob Sie Ihre Datenbank verwalten, Patches anwenden und Backups erstellen oder diese Vorgänge an Azure delegieren möchten.</br>
+Mit Azure können Ihre MariaDB-Serverworkloads auf einer gehosteten IaaS-VM (Infrastructure-as-a-Service) oder als gehosteter PaaS (Platform-as-a-Service) ausgeführt werden. PaaS stellt mehrere Bereitstellungsoptionen und Dienstebenen für jede Bereitstellungsoption zur Verfügung. Bei der Auswahl zwischen IaaS und PaaS müssen Sie entscheiden, ob Sie Ihre Datenbank verwalten, Patches anwenden und Sicherungen erstellen oder diese Vorgänge an Azure delegieren möchten.
 
-Ziehen Sie basierend auf der Antwort auf diese Frage die folgenden Optionen in Betracht: <br/>
+Berücksichtigen Sie bei der Entscheidung die beiden folgenden Optionen:
 
-**Azure Database for MariaDB** ist eine vollständig verwaltete MariaDB-Datenbank-Engine, die auf der stabilen Version der Community-Edition basiert. Diese relationale DBaaS-Lösung (Database-as-a-Service), die in der Azure-Cloud gehostet wird, fällt in die Branchenkategorie Platform-as-a-Service (PaaS). Mit einer verwalteten Instanz von MariaDB in Azure können Sie integrierte Features und Funktionen nutzen, die in MariaDB Server eine umfangreiche Konfiguration erfordern würden (lokal oder auf einem virtuellen Azure-Computer). Wenn Sie mit MariaDB als Dienst arbeiten, bezahlen Sie für das, was Sie nutzen, und haben die Möglichkeit, horizontal oder zentral hochzuskalieren und ohne Unterbrechung mehr Leistung hinzuzufügen. Darüber hinaus verfügt Azure Database for MariaDB im Gegensatz zu einem eigenständigen MariaDB-Server über zusätzliche Funktionen wie integrierte Hochverfügbarkeit, Intelligenz und Verwaltung. <br/><br/>
-**MariaDB auf einer Azure-VM** fällt in die Branchenkategorie „Infrastructure-as-a-Service (IaaS)“ und ermöglicht es Ihnen, MariaDB-Server auf einem vollständig verwalteten virtuellen Computer in der Azure-Cloud auszuführen. Alle aktuellen Versionen und Editionen von MariaDB können auf einem virtuellen IaaS-Computer installiert werden. Der wichtigste Unterschied zu Azure Database for MariaDB ist, dass MariaDB auf Azure-VMs die Kontrolle über die Datenbank-Engine ermöglicht. Diese Kontrolle geht jedoch zu Lasten der zusätzlichen Verantwortung für die Verwaltung der virtuellen Computer und zahlreicher DBA-Aufgaben wie Wartung/Patchen des Datenbankservers, Wiederherstellung und Hochverfügbarkeitsentwurf und vieles mehr.
+- **Azure Database for MariaDB:** Diese Option ist eine vollständig verwaltete MariaDB-Datenbank-Engine, die auf der stabilen Version der MariaDB Community Edition basiert. Diese relationale DBaaS-Lösung (Database-as-a-Service), die auf der Azure-Cloudplattform gehostet wird, fällt in die Branchenkategorie PaaS.
+
+  Mit einer verwalteten Instanz von MariaDB in Azure können Sie integrierte Features nutzen, die ansonsten eine umfangreiche Konfiguration erfordern, wenn der MariaDB-Server entweder lokal oder auf einer Azure-VM gehostet wird.
+
+  Wenn Sie mit MariaDB als Dienst arbeiten, bezahlen Sie für das, was Sie nutzen, und haben die Möglichkeit, für eine bessere Kontrolle ohne Unterbrechung horizontal oder zentral hochzuskalieren. Azure Database for MariaDB verfügt im Gegensatz zu einem eigenständigen MariaDB-Server über zusätzliche Funktionen wie integrierte Hochverfügbarkeit, Intelligenz und Verwaltung.
+
+- **MariaDB auf Azure-VMs:** Diese Option fällt in die Branchenkategorie IaaS. Mit diesem Dienst können Sie den MariaDB-Server innerhalb eines vollständig verwalteten virtuellen Computers auf der Azure-Cloudplattform ausführen. Alle aktuellen Versionen und Editionen von MariaDB können auf einem virtuellen IaaS-Computer installiert werden.
+
+  Der wichtigste Unterschied zu Azure Database for MariaDB ist, dass MariaDB auf Azure-VMs Kontrolle über die Datenbank-Engine bietet. Diese Kontrolle bedeutet jedoch Verantwortung für die Verwaltung der VMs und viele Datenbankverwaltungsaufgaben (DBA). Zu diesen Aufgaben gehören die Wartung und das Patchen von Datenbankservern, die Datenbankwiederherstellung und der Entwurf für Hochverfügbarkeit.
 
 Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle aufgeführt:
 
-|            | **Azure Database for MariaDB** | **MariaDB auf virtuellen Azure-Computern**    |
+|            | Azure Database for MariaDB | MariaDB auf Azure-VMs    |
 |:-------------------|:-----------------------------|:--------------------|
-| **SLA**                | Bietet eine SLA mit einer Verfügbarkeit von 99,99 %.| Bis zu 99,95 % Verfügbarkeit mit mindestens zwei Instanzen in derselben Verfügbarkeitsgruppe. <br/>99,9 % Einzelinstanz-VM unter Verwendung von Storage Premium <br/> 99,99 % mit Verfügbarkeitszone mit mindestens zwei Instanzen in mindestens zwei Verfügbarkeitsgruppen.<br/> Hinweis: [Virtual Machine-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) |
-| **Betriebssystempatching**        | Automatisch  | Von Kunden verwaltet |
-|**MariaDB-Patching**     | Automatisch  | Von Kunden verwaltet |
-| **Hochverfügbarkeit** | Das Hochverfügbarkeitsmodell (HA) basiert auf integrierten Failovermechanismen, die bei einer Unterbrechung auf Knotenebene greifen. In solchen Fällen erstellt der Dienst automatisch eine Instanz und fügt Speicher an diese neue Instanz an. | Hochverfügbarkeit wird vom Kunden entworfen, implementiert, getestet und verwaltet. Dies kann abhängig von der verwendeten Version der MariaDB-Engine auch Always-On (Failoverclustering oder Gruppenreplikation), Protokollversand und Transaktionsreplikation einschließen.|
-| **Zonenredundanz** | Wird derzeit nicht unterstützt. | Azure-VMs können so eingerichtet werden, dass Sie in unterschiedlichen Verfügbarkeitszonen ausgeführt werden. Für eine lokale Lösung wird davon ausgegangen, dass Kunden ihr eigenes sekundäres Rechenzentrum erstellen, verwalten und pflegen.|
-| **Hybridszenarien** | Die [Datenreplikation](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication) ermöglicht das Synchronisieren von Daten von einem externen MariaDB-Server mit dem Dienst Azure Database for MariaDB. Der externe Server kann lokal, in virtuellen Computern oder in einem Datenbankdienst vorhanden sein, der von anderen Cloudanbietern gehostet wird.  <br/> <br/> Mit dem Feature für [Lesereplikate](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) können Sie Daten von einem Azure Database for MariaDB-Server (Masterserver) auf bis zu fünf schreibgeschützte Server (Replikate) in derselben Azure-Region oder regionsübergreifend replizieren. Schreibgeschützte Replikate werden mithilfe der binlog-Replikationstechnologie asynchron aktualisiert.   <br/> <br/> Hinweis: Die regionsübergreifende Lesereplikation befindet sich derzeit in der öffentlichen Vorschau.| Von Kunden verwaltet <br/>
-| **Sichern und Wiederherstellen** | [Serversicherungen](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups) werden automatisch erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert. Dieser Dienst erstellt vollständige, differenzielle und Transaktionsprotokollsicherungen. | Von Kunden verwaltet |
-| **Überwachen von Datenbankvorgängen** | Ermöglicht Kunden das [Festlegen von Warnungen](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring) für den Daten Bankvorgang und das Reagieren beim Erreichen von Schwellenwerten. | Von Kunden verwaltet |
-| **Advanced Threat Protection** | [Advanced Threat Protection](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal) erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu nutzen. <br/> <br/> Hinweis: Advanced Threat Protection befindet sich derzeit in der Public Preview.| Kunden müssen das System selbst erstellen.
-| **Sicherungen und (Notfallwiederherstellung)** | Speichert automatisierte Sicherungen in einem Benutzer, der in [lokal redundantem oder georedundantem Speicher](https://docs.microsoft.com/azure/MariaDB/howto-restore-server-portal) konfiguriert ist. Sicherungen können auch verwendet werden, um für einen Server den Zustand zu einem bestimmten Zeitpunkt wiederherzustellen. Der Aufbewahrungszeitraum kann festgelegt werden und zwischen 7 und 35 Tage betragen. Eine Wiederherstellung ist über das Azure-Portal möglich. <br/> | Vollständig vom Kunden verwaltet, einschließlich, aber nicht beschränkt auf Planung, Testen, Archivierung, Speicherung und Aufbewahrung. Eine weitere Option ist die Verwendung von Azure Recovery Services Vault zur Sicherung von Azure-VMs und Datenbanken auf VMs (in der Vorschau). |
-| **Leistungsempfehlung** | Bietet Kunden eine proaktive [Leistungsempfehlung](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) basierend auf den Nutzungstelemetriedaten, um die Optimierung von Workloads zu unterstützen. <br/> <br/> Hinweis: Die Leistungsempfehlung ist zurzeit als Public Preview verfügbar. | Von Kunden verwaltet |
-
+| Vereinbarung zum Servicelevel (SLA)                | Bietet eine SLA mit einer Verfügbarkeit von 99,99 %.| Bis zu 99,95 % Verfügbarkeit mit mindestens zwei Instanzen in derselben Verfügbarkeitsgruppe.<br/><br/>99,9 % Verfügbarkeit mit einer Einzelinstanz-VM unter Verwendung von Storage Premium.<br/><br/>99,99 % bei Verwendung von Verfügbarkeitszonen mit mehreren Instanzen in mehreren Verfügbarkeitsgruppen.<br/><br/>Weitere Informationen finden Sie in der [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
+| Betriebssystempatching        | Automatisch  | Von Kunden verwaltet |
+| MariaDB-Patching     | Automatisch  | Von Kunden verwaltet |
+| Hochverfügbarkeit | Das Hochverfügbarkeitsmodell (HA) basiert auf integrierten Failovermechanismen, die bei einer Unterbrechung auf Knotenebene greifen. In solchen Fällen erstellt der Dienst automatisch eine neue Instanz und fügt Speicher an diese Instanz an. | Kunden entwerfen, implementieren, testen und pflegen Hochverfügbarkeit. Zu den Funktionen können Always-On-Failoverclustering, Always-On-Gruppenreplikation, Protokollversand oder Transaktionsreplikation gehören.|
+| Zonenredundanz | Wird derzeit nicht unterstützt. | Azure-VMs können so eingerichtet werden, dass Sie in unterschiedlichen Verfügbarkeitszonen ausgeführt werden. Für eine lokale Lösung müssen Kunden ihr eigenes sekundäres Rechenzentrum erstellen, verwalten und pflegen.|
+| Hybridszenario | Mithilfe der [Datenreplikation](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication) können Sie Daten von einem externen MariaDB-Server mit dem Azure Database for MariaDB-Dienst synchronisieren. Der externe Server kann lokal, in virtuellen Computern oder in einem Datenbankdienst vorhanden sein, der von anderen Cloudanbietern gehostet wird.<br/><br/> Mit dem Feature für [Lesereplikate](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) können Sie Daten von einem Azure Database for MariaDB-Masterserver auf bis zu fünf schreibgeschützte Replikatserver replizieren. Die Replikate befinden sich entweder innerhalb derselben Azure-Region oder sind regionsübergreifend. Schreibgeschützte Replikate werden mithilfe der binlog-Replikationstechnologie asynchron aktualisiert.<br/><br/>Die regionsübergreifende Lesereplikation befindet sich derzeit in der Public Preview.| Von Kunden verwaltet
+| Sichern und Wiederherstellen | [Serversicherungen](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups) werden automatisch erstellt und in einem vom Benutzer konfigurierten Speicher, der entweder lokal redundant oder georedundant ist, gespeichert. Dieser Dienst erstellt vollständige, differenzielle und Transaktionsprotokollsicherungen. | Von Kunden verwaltet |
+| Überwachen von Datenbankvorgängen | Ermöglicht Kunden das [Festlegen von Warnungen](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring) für den Datenbankvorgang und das Reagieren beim Erreichen von Schwellenwerten. | Von Kunden verwaltet |
+| Erweiterter Schutz vor Bedrohungen | Bietet [Advanced Threat Protection](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal). Dieser Schutz erkennt anormale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hindeuten, auf Datenbanken zuzugreifen oder sie missbräuchlich zu nutzen.<br/><br/>Advanced Threat Protection befindet sich derzeit in der Public Preview.| Kunden müssen diesen Schutz selbst erstellen.
+| Notfallwiederherstellung | Speichert automatisierte Sicherungen in einem vom Benutzer konfigurierten [lokal redundanten oder georedundanten Speicher](https://docs.microsoft.com/azure/MariaDB/howto-restore-server-portal). Mithilfe von Sicherungen kann auch der Zustand eines Servers zu einem bestimmten Zeitpunkt wiederhergestellt werden. Der Aufbewahrungszeitraum liegt zwischen 7 und 35 Tagen. Die Wiederherstellung erfolgt über das Azure-Portal. | Vollständig von Kunden verwaltet. Die Zuständigkeiten umfassen (sind aber nicht beschränkt auf) Planung, Testen, Archivierung, Speicherung und Aufbewahrung. Eine weitere Option ist die Verwendung eines Azure Recovery Services-Tresors zur Sicherung von Azure-VMs und Datenbanken auf VMs. Diese Option befindet sich in der Vorschauphase. |
+| Empfehlungen zur Leistung | Bietet Kunden [Leistungsempfehlungen](https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/Azure-brings-intelligence-and-high-performance-to-Azure-Database/ba-p/769110) basierend auf vom System generierten Nutzungsprotokolldateien. Die Empfehlungen helfen bei der Optimierung von Workloads.<br/><br/>Leistungsempfehlungen befinden sich derzeit in der Public Preview. | Von Kunden verwaltet |
 
 ## <a name="business-motivations-for-choosing-paas-or-iaas"></a>Geschäftsmotive für die Entscheidung für PaaS oder IaaS
 
-Es gibt verschiedene Faktoren, die Ihre Entscheidung zwischen PaaS und IaaS zum Hosten Ihrer MariaDB-Datenbanken beeinflussen:
+Es gibt verschiedene Faktoren, die Ihre Entscheidung zwischen PaaS und IaaS zum Hosten Ihrer MariaDB-Datenbanken beeinflussen.
 
 ### <a name="cost"></a>Kosten
 
-Unabhängig davon, ob Sie ein Startup-Unternehmen mit wenig liquiden Mitteln oder ein Team in einem etablierten Unternehmen sind, das unter engen Budgetbeschränkungen arbeitet, ist eine begrenzte Finanzierung oft die primäre Überlegung bei der Auswahl der besten Lösung für das Hosting Ihrer Datenbanken. In diesem Abschnitt werden die Grundlagen zur Abrechnung und Lizenzierung in Azure in Bezug auf Azure Database for MariaDB und MariaDB auf Azure-VMs beschrieben:
+Begrenzte Mittel sind oft der wichtigste Aspekt, der die beste Lösung für das Hosting Ihrer Datenbanken bestimmt. Dies gilt unabhängig davon, ob Sie ein Startup-Unternehmen mit wenig liquiden Mitteln oder ein Team in einem etablierten Unternehmen sind, das unter engen Budgetbeschränkungen arbeitet. In diesem Abschnitt werden die Grundlagen der Abrechnung und Lizenzierung in Azure in Bezug auf Azure Database for MariaDB und MariaDB auf Azure-VMs beschrieben.
 
 #### <a name="billing"></a>Abrechnung
 
-Derzeit ist Azure Database for MariaDB als Dienst in verschiedenen Tarifen mit unterschiedlichen Preisen für Ressourcen verfügbar, die alle auf Stundenbasis mit einer festen Gebühr abgerechnet werden. Die neuesten Informationen zu aktuell unterstützten Dienstebenen, Computegrößen und Speichermengen finden Sie unter [vCore-basiertes Kaufmodell](https://docs.microsoft.com/azure/MariaDB/concepts-pricing-tiers). Sie können Dienstebenen und Computegrößen entsprechend den unterschiedlichen Durchsatzanforderungen Ihrer Anwendung dynamisch anpassen. Ihnen wird der ausgehende Internetdatenverkehr basierend auf den üblichen [Datenübertragungsraten](https://azure.microsoft.com/pricing/details/data-transfers/)berechnet.
+Azure Database for MariaDB ist derzeit als Dienst in verschiedenen Tarifen mit unterschiedlichen Preisen für Ressourcen verfügbar. Alle Ressourcen werden auf Stundenbasis mit einer festen Gebühr abgerechnet. Die neuesten Informationen zu aktuell unterstützten Dienstebenen, Computegrößen und Speichermengen finden Sie unter dem [V-Kern-basierten Kaufmodell](https://docs.microsoft.com/azure/MariaDB/concepts-pricing-tiers). Sie können Dienstebenen und Computegrößen entsprechend den unterschiedlichen Durchsatzanforderungen Ihrer Anwendung dynamisch anpassen. Ihnen wird der ausgehende Internetdatenverkehr basierend auf den üblichen [Datenübertragungsraten](https://azure.microsoft.com/pricing/details/data-transfers/) berechnet.
 
-Bei Azure Database for MariaDB wird die Datenbanksoftware automatisch von Microsoft konfiguriert, gepatcht und aktualisiert. Dadurch sinken Ihre Verwaltungskosten. Darüber hinaus helfen Ihnen die [integrierten Datensicherungsfunktionen](https://docs.microsoft.com/azure/MariaDB/concepts-backup) dabei, erhebliche Kosteneinsparungen zu erzielen, vor allem bei einer großen Anzahl von Datenbanken. Mit MariaDB auf Azure-VMs können Sie eine beliebige MariaDB-Version auswählen und ausführen. Unabhängig von der verwendeten MariaDB-Version bezahlen Sie für den bereitgestellten virtuellen Computer und die Kosten für den für MariaDB verwendeten spezifischen Lizenztyp.
+Mit Azure Database for MariaDB wird die Datenbanksoftware automatisch von Microsoft konfiguriert, gepatcht und aktualisiert. Diese automatisierten Aktionen senken Ihre Verwaltungskosten. Außerdem verfügt Azure Database for MariaDB über [integrierte Sicherungsfunktionen](https://docs.microsoft.com/azure/MariaDB/concepts-backup). Mithilfe dieser Funktionen können Sie erhebliche Kosteneinsparungen erzielen, vor allem bei einer großen Anzahl von Datenbanken. Im Gegensatz dazu können Sie mit MariaDB auf Azure-VMs eine beliebige MariaDB-Version auswählen und ausführen. Unabhängig von der verwendeten MariaDB-Version bezahlen Sie für die bereitgestellte VM und die Kosten für den jeweils verwendeten MariaDB-Lizenztyp.
 
-Azure Database for MariaDB bietet integrierte Hochverfügbarkeit für jede Art von Unterbrechung auf Knotenebene und bietet trotzdem eine SLA mit 99,99 % für den Dienst. Für Hochverfügbarkeit der Datenbank (HA) auf virtuellen Computern sollten Kunden jedoch die Hochverfügbarkeitsoptionen für die MariaDB-Datenbank in Betracht ziehen, z. B [MariaDB-Replikation](https://mariadb.com/kb/en/library/setting-up-replication/). Durch die Verwendung einer Hochverfügbarkeitsoption erhalten Sie zwar keine zusätzliche SLA, können aber eine Datenbankverfügbarkeit von mehr als 99,99 Prozent bei zusätzlichen Kosten und Verwaltungsmehraufwand erreichen.
+Azure Database for MariaDB bietet integrierte Hochverfügbarkeit für jede Art von Unterbrechung auf Knotenebene und bietet dennoch eine SLA-Garantie von 99,99 % für den Dienst. Für Hochverfügbarkeit der Datenbank auf VMs sollten Kunden jedoch die Hochverfügbarkeitsoptionen wie [MariaDB-Replikation](https://mariadb.com/kb/en/library/setting-up-replication/) verwenden, die auf einer MariaDB-Datenbank zur Verfügung stehen. Durch Verwendung einer unterstützten Hochverfügbarkeitsoption erhalten Sie keine zusätzliche SLA. Allerdings können Sie mit zusätzlichen Kosten und höherem Verwaltungsaufwand eine Datenbankverfügbarkeit von mehr als 99,99 % erzielen.
 
-Weitere Informationen zur Preisberechnung finden Sie in den folgenden Ressourcen:
+Weitere Informationen zu Preisen finden Sie in den folgenden Artikeln:
 * [Azure Database for MariaDB – Preise](https://azure.microsoft.com/pricing/details/MariaDB/)
 * [Preise für virtuelle Computer](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
 ### <a name="administration"></a>Verwaltung
 
-Bei vielen Unternehmen wird die Entscheidung zum Wechsel auf einen Clouddienst vom Bestreben um eine Vereinfachung der Verwaltung getrieben. Mit IaaS und PaaS verwaltet Microsoft die zugrunde liegende Infrastruktur und repliziert automatisch alle Daten für eine Notfallwiederherstellung, konfiguriert und aktualisiert die Datenbanksoftware, verwaltet den Lastenausgleich und führt bei einem Serverausfall ein transparentes Failover durch.
+Bei vielen Unternehmen geht es bei der Entscheidung für den Wechsel zu einem Clouddienst ebenso stark um eine Vereinfachung der Verwaltung wie um die Kosten. Mit IaaS und PaaS übernimmt Microsoft folgende Aufgaben:
 
-* Mit **Azure Database for MariaDB** können Sie sich weiterhin um die Verwaltung Ihrer Datenbank kümmern, müssen aber die Datenbank-Engine, das Betriebssystem und die Hardware nicht mehr verwalten. Weiterhin verwalten können Sie z. B. die Datenbanken und Anmeldungen, die Index- und Abfrageoptimierung, die Überwachung und die Sicherheit. Darüber hinaus erfordert die Konfiguration der Hochverfügbarkeit für ein anderes Rechenzentrum einen minimalen oder gar keinen Konfigurations- oder Verwaltungsaufwand.<br/><br/>
-* Mit **MariaDB auf virtuellen Azure-Computern** haben Sie die uneingeschränkte Kontrolle über das Betriebssystem und die Konfiguration der MariaDB-Serverinstanzen. Bei einem virtuellen Computer entscheiden Sie, wann das Betriebssystem und die Datenbanksoftware aktualisiert und wann zusätzliche Programme wie etwa eine Antivirenanwendung installiert werden sollen. Durch einige bereitgestellte Automatisierungsfeatures lassen sich Patching, Sicherungen und Hochverfügbarkeit erheblich vereinfachen. Darüber hinaus können Sie die Größe des virtuellen Computers, die Anzahl der Laufwerke und deren Speicherkonfigurationen steuern. Weitere Informationen finden Sie unter „Größen von virtuellen Computern und Clouddiensten für Azure“.
+- Verwaltet die zugrunde liegende Infrastruktur
+- Nimmt eine automatische Replikation aller Daten vor, um eine Notfallwiederherstellung zu ermöglichen
+- Konfiguriert und aktualisiert die Datenbanksoftware
+- Verwaltet den Lastenausgleich
+- Führt bei einem Serverausfall ein transparentes Failover durch
 
-### <a name="time-to-move-to-azure-br"></a>Zeit für einen Wechsel nach Azure <br/>
-* **Azure Database for MariaDB** ist die geeignete Lösung für cloudbasierte Anwendungen, wenn Entwicklerproduktivität und eine schnelle Markteinführung für neue Lösungen entscheidend sind. Durch programmgesteuerte DBA-ähnliche Funktionen ist der Dienst perfekt für Cloudarchitekten und Entwickler geeignet, da er den Verwaltungsaufwand für das zugrunde liegende Betriebssystem und die Datenbank verringert.<br/><br/>
-* **MariaDB auf virtuellen Azure-Computern** eignet sich hervorragend für vorhandene oder neue Anwendungen, die eine MariaDB-Datenbank oder den Zugriff auf Funktionen in der MariaDB-Datenbank unter Windows/Linux benötigen, wenn Sie Zeit und Kosten für den Erwerb neuer lokaler Hardware vermeiden möchten. Diese Option ist auch eine gute Wahl für die unveränderte Migration vorhandener lokaler Anwendungen und Datenbanken zu Azure in den Fällen, in denen eine Azure Database for MariaDB-Instanz nicht gut geeignet ist. Da keine Änderungen an der Präsentations-, Anwendungs- und Datenschicht erforderlich sind, sparen Sie sich die Zeit und das Geld, die sonst für den Neuentwurf der vorhandenen Lösung nötig wären. Sie können in diesem Fall alle Lösungen sofort zu Azure migrieren und müssen lediglich einige Leistungsoptimierungen durchführen, die möglicherweise von der Azure-Plattform verlangt werden.
+In der folgenden Liste sind Verwaltungsaspekte der einzelnen Optionen beschrieben:
+
+* Mit Azure Database for MariaDB können Sie Ihre Datenbank weiterhin verwalten. Es ist jedoch keine Verwaltung von Datenbank-Engine, Betriebssystem oder Hardware mehr erforderlich. Hier einige Beispiele für Elemente, die Sie weiterhin verwalten können:
+
+  - Datenbanken
+  - Anmeldung
+  - Indexoptimierung
+  - Abfrageoptimierung
+  - Überwachung
+  - Sicherheit
+
+  Darüber hinaus erfordert die Konfiguration der Hochverfügbarkeit für ein anderes Rechenzentrum einen minimalen bis gar keinen Konfigurations- oder Verwaltungsaufwand.
+
+* Mit MariaDB auf Azure-VMs haben Sie die uneingeschränkte Kontrolle über das Betriebssystem und die Konfiguration der MariaDB-Serverinstanzen. Bei einer VM entscheiden Sie, wann ein Update oder Upgrade des Betriebssystems und der Datenbanksoftware durchgeführt werden soll. Außerdem entscheiden Sie, wann zusätzliche Software wie z.B. eine Antivirenanwendung installiert werden soll. Durch einige bereitgestellte Automatisierungsfeatures lassen sich Patching, Sicherungen und Hochverfügbarkeit erheblich vereinfachen. Sie können die Größe der VM, die Anzahl der Datenträger und deren Speicherkonfigurationen steuern. Weitere Informationen finden Sie unter [Größen virtueller Computer und Clouddienste für Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+
+### <a name="time-to-move-to-azure"></a>Zeit für einen Wechsel nach Azure
+
+* Azure Database for MariaDB ist die geeignete Lösung für cloudbasierte Anwendungen, wenn Entwicklerproduktivität und eine schnelle Markteinführung für neue Lösungen entscheidend sind. Durch programmgesteuerte Funktionen wie DBA ist der Dienst für Cloudarchitekten und Entwickler geeignet, da er den Verwaltungsaufwand für das zugrunde liegende Betriebssystem und die Datenbank verringert.
+
+* Wenn Sie Zeit und Kosten für den Erwerb neuer lokaler Hardware vermeiden möchten, stellt MariaDB auf Azure-VMs die richtige Lösung für Anwendungen dar, die eine MariaDB-Datenbank oder Zugriff auf MariaDB-Funktionen unter Windows oder Linux benötigen. Diese Lösung eignet sich auch für die unveränderte Migration vorhandener lokaler Anwendungen und Datenbanken zu Azure in den Fällen, in denen Azure Database for MariaDB nicht geeignet ist.
+
+  Da keine Änderungen an der Darstellungs-, Anwendungs- und Datenschicht erforderlich sind, sparen Sie sich die Zeit und das Geld, die sonst für den Neuentwurf der vorhandenen Lösung nötig wären. Sie können sich stattdessen auf die Migration aller Ihrer Lösungen zu Azure konzentrieren und müssen lediglich einige Leistungsoptimierungen durchführen, die möglicherweise für die Azure-Plattform erforderlich sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen finden Sie unter [Azure Database for MariaDB – Preise](https://azure.microsoft.com/pricing/details/MariaDB/).
 * [Erstellen Sie Ihren ersten Server.](https://review.docs.microsoft.com/azure/MariaDB/quickstart-create-MariaDB-server-database-using-azure-portal)
-

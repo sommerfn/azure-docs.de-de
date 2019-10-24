@@ -1,6 +1,6 @@
 ---
-title: Übersicht über Azure Statusmonitor v2 | Microsoft-Dokumentation
-description: Eine Übersicht über Statusmonitor v2 Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
+title: Übersicht über den Azure Application Insights-Agent | Microsoft-Dokumentation
+description: Hier finden Sie eine Übersicht über den Application Insights-Agent. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,23 +12,28 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 294b0d2d91650f33f0b92179a069a8c7cd845525
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057833"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389837"
 ---
-# <a name="status-monitor-v2"></a>Statusmonitor v2
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Bereitstellen des Azure Monitor Application Insights-Agents für lokale Server
 
-Status Monitor v2 ist ein im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.ApplicationMonitor) veröffentlichtes PowerShell-Modul.
+> [!IMPORTANT]
+> Diese Anleitung wird für lokale Bereitstellungen von Application Insights-Agent und Bereitstellungen in einer anderen Cloud als Azure empfohlen. Die empfohlene Vorgehensweise für Bereitstellungen auf Azure-VMs und in VM-Skalierungsgruppen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
+
+Application Insights-Agent (früher Statusmonitor V2) ist ein im [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.ApplicationMonitor) veröffentlichtes PowerShell-Modul.
 Es ersetzt den [Statusmonitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-Das Modul bietet eine codefreie Instrumentierung von mit IIS gehosteten .NET-Web-Apps.
 Telemetriedaten werden an das Azure-Portal gesendet, wo Sie Ihre App [überwachen](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) können.
+
+> [!NOTE]
+> Das Modul unterstützt derzeit nur die codefreie Instrumentierung von mit IIS gehosteten .NET-Web-Apps. Verwenden Sie ein SDK zum Instrumentieren von ASP.NET Core-, Java- und Node.js-Anwendungen.
 
 ## <a name="powershell-gallery"></a>PowerShell-Katalog
 
-Den Statusmonitor v2 finden Sie unter folgendem Link: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Sie finden den Application Insights-Agent unter https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![PowerShell-Katalog](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,19 +59,15 @@ Den Statusmonitor v2 finden Sie unter folgendem Link: https://www.powershellgall
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-- Unterstützt Statusmonitor v2 Proxy-Installationen?
+- Unterstützt der Application Insights-Agent Proxy-Installationen?
 
-  *Ja*. Sie haben verschiedene Möglichkeiten, um Statusmonitor v2 herunterzuladen. Wenn Ihr Computer über einen Internetzugang verfügt, können Sie ein Onboarding des PowerShell-Katalogs mithilfe der `-Proxy`-Parameter durchführen.
+  *Ja*. Es gibt mehrere Möglichkeiten, den Application Insights-Agent herunterzuladen. Wenn Ihr Computer über einen Internetzugang verfügt, können Sie ein Onboarding des PowerShell-Katalogs mithilfe der `-Proxy`-Parameter durchführen.
 Sie können dieses Modul auch manuell herunterladen und es auf Ihrem Computer installieren oder direkt verwenden.
 Jede dieser Optionen wird in den [ausführlichen Anweisungen](status-monitor-v2-detailed-instructions.md) beschrieben.
 
 - Werden ASP.NET Core-Anwendungen von Version 2 des Statusmonitors unterstützt?
 
   *Nein*. Anweisungen zum Aktivieren der Überwachung von ASP.NET Core-Anwendungen finden Sie unter [Application Insights für ASP.NET Core-Anwendungen.](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) Es ist nicht erforderlich, den Statusmonitor für eine ASP.NET Core-Anwendung zu installieren. Dies gilt auch, wenn die ASP.NET Core-Anwendung in IIS gehostet wird.
-  
-Werden ASP.NET Core-Anwendungen von Version 2 des Statusmonitors unterstützt? 
-
-  *Nein*. Befolgen Sie [diese](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) Anweisungen, um die Überwachung für ASP.NET Core-Anwendungen zu aktivieren. Es ist nicht erforderlich, den Statusmonitor für eine ASP.NET Core-Anwendung zu installieren. Dies gilt auch, wenn die ASP.NET Core-Anwendung in IIS gehostet wird.
 
 - Wie überprüfe ich, ob die Aktivierung erfolgreich war?
 

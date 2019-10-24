@@ -4,14 +4,14 @@ description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Ma
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e5ef3dcd7c2eec08237d5eb31fb95a0e450d9ac9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694973"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286716"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 
@@ -66,7 +66,7 @@ Folgende Eigenschaften sind für einen Parameter verfügbar:
     "minLength": <minimum-length-for-string-or-array>,
     "maxLength": <maximum-length-for-string-or-array-parameters>,
     "metadata": {
-      "description": "<description-of-the parameter>" 
+      "description": "<description-of-the parameter>"
     }
   }
 }
@@ -107,8 +107,8 @@ Im folgenden Beispiel werden die verfügbaren Optionen zum Definieren einer Vari
 ```json
 "variables": {
   "<variable-name>": "<variable-value>",
-  "<variable-name>": { 
-    <variable-complex-type-value> 
+  "<variable-name>": {
+    <variable-complex-type-value>
   },
   "<variable-object-name>": {
     "copy": [
@@ -252,7 +252,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | properties |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Sie können auch ein Kopierarray angeben, um mehrere Instanzen einer Eigenschaft zu erstellen. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
 | sku | Nein | Einige Ressourcen lassen Werte zu, die die bereitzustellende SKU definieren. Beispielsweise können Sie den Typ der Redundanz für ein Speicherkonto angeben. |
 | kind | Nein | Einige Ressourcen lassen einen Wert zu, der den Typ der Ressource definiert, die Sie bereitstellen. Beispielsweise können Sie den Typ der zu erstellenden Cosmos DB angeben. |
-| Tarif | Nein | Einige Ressourcen lassen Werte zu, die den bereitzustellenden Tarif definieren. Beispielsweise können Sie das Marketplace-Image für einen virtuellen Computer angeben. | 
+| Tarif | Nein | Einige Ressourcen lassen Werte zu, die den bereitzustellenden Tarif definieren. Beispielsweise können Sie das Marketplace-Image für einen virtuellen Computer angeben. |
 | ressourcen |Nein |Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Stellen Sie nur Ressourcentypen bereit, die laut Schema der übergeordneten Ressource zulässig sind. Eine Abhängigkeit von der übergeordneten Ressource ist nicht impliziert. Sie müssen diese Abhängigkeit explizit definieren. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
 
 ## <a name="outputs"></a>Ausgaben
@@ -355,7 +355,10 @@ Fügen Sie für **Ausgaben** dem Ausgabewert ein Metadatenobjekt hinzu.
 
 Sie können ein Metadatenobjekt nicht zu benutzerdefinierten Funktionen hinzufügen.
 
-Für Inlinekommentare können Sie `//` verwenden, aber diese Syntax funktioniert nicht mit allen Tools. Sie können nicht die Azure-Befehlszeilenschnittstelle verwenden, um die Vorlage mit Inlinekommentaren bereitzustellen. Und Sie können nicht den Portalvorlageneditor verwenden, um an Vorlagen mit Inlinekommentaren zu arbeiten. Wenn Sie diese Art von Kommentar hinzufügen, stellen Sie sicher, dass die von Ihnen verwendeten Tools JSON-Inlinekommentare unterstützen.
+Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber diese Syntax funktioniert nicht mit allen Tools. Sie können nicht den Vorlagen-Editor des Portals verwenden, um Vorlagen mit Inlinekommentaren zu bearbeiten. Wenn Sie diese Art von Kommentar hinzufügen, stellen Sie sicher, dass die von Ihnen verwendeten Tools JSON-Inlinekommentare unterstützen.
+
+> [!NOTE]
+> Wenn Sie Vorlagen mit Kommentaren mithilfe der Azure CLI bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
 
 ```json
 {
@@ -363,7 +366,7 @@ Für Inlinekommentare können Sie `//` verwenden, aber diese Syntax funktioniert
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
   "apiVersion": "2018-10-01",
-  "dependsOn": [ // storage account and network interface must be deployed first
+  "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
   ],
@@ -376,6 +379,30 @@ Im VS-Code können Sie den Sprachmodus auf „JSON mit Kommentaren“ festlegen.
 1. Wählen Sie **JSON mit Kommentaren** aus.
 
    ![Auswählen des Sprachmodus](./media/resource-group-authoring-templates/select-json-comments.png)
+
+## <a name="multi-line-strings"></a>Mehrzeilige Zeichenfolgen
+
+Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Zum Beispiel die Standorteigenschaft und einen der Kommentare im folgenden JSON-Beispiel.
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+Wenn Sie Vorlagen mit mehrzeiligen Zeichenfolgen mithilfe der Azure CLI bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

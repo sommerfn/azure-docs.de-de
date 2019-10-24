@@ -1,15 +1,15 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
-ms.author: tamram
-ms.openlocfilehash: 5be5cf6cd410874d870b351c209517e90fcf3848
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: rogarana
+ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699347"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391651"
 ---
 Der Azure-Dateisynchronisierungs-Agent wird regelmäßig aktualisiert, um neue Funktionalität hinzuzufügen und Probleme zu beheben. Es wird empfohlen, Microsoft Update zu konfigurieren, um Updates für den Azure-Dateisynchronisierungs-Agent zu erhalten, wenn diese verfügbar sind.
 
@@ -37,18 +37,23 @@ Mit Agent-Version 6 wurde vom Team für die Dateisynchronisierung eine Funktion
 
 Die folgenden Anweisungen beschreiben, wie Sie die Einstellungen nach Abschluss des Installationsprogramms ändern können, wenn dies erforderlich ist.
 
-Öffnen Sie eine Shell, und navigieren Sie zu dem Verzeichnis, in dem Sie den Synchronisierungs-Agent installiert haben. Importieren Sie dann die Server-Cmdlets, dies sähe üblicherweise in etwa so aus:
+Öffnen Sie eine PowerShell-Konsole, und navigieren Sie zu dem Verzeichnis, in dem Sie den Synchronisierungs-Agent installiert haben. Importieren Sie dann die Server-Cmdlets. Dies sieht üblicherweise etwa wie folgt aus:
 ```powershell
-cd C:\Program Files\Azure\StorageSyncAgent
-
-ipmo .\StorageSync.Management.ServerCmdlets.dll
+cd 'C:\Program Files\Azure\StorageSyncAgent'
+Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
 ```
 
 Sie können `Get-StorageSyncAgentAutoUpdatePolicy` ausführen, um die aktuelle Richtlinieneinstellung zu überprüfen und festzustellen, ob Sie sie ändern möchten.
 
-Um die aktuelle Richtlinieneinstellung auf das Modell verzögerter Updates umzustellen, können Sie folgenden Befehl verwenden: `Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration`
+Um die aktuelle Richtlinieneinstellung auf das Modell verzögerter Updates umzustellen, können Sie folgenden Befehl verwenden:
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration
+```
 
-Um die aktuelle Richtlinieneinstellung auf das Modell sofortiger Updates umzustellen, können Sie folgenden Befehl verwenden: `Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest`
+Um die aktuelle Richtlinieneinstellung auf das Modell sofortiger Updates umzustellen, können Sie folgenden Befehl verwenden:
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest
+```
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Garantien zu Agent-Lebenszyklus und Änderungsverwaltung
 Die Azure-Dateisynchronisierung ist ein Clouddienst, über den neue Funktionen und Verbesserungen kontinuierlich eingeführt werden. Dies bedeutet, dass eine bestimmte Version des Azure-Dateisynchronisierungs-Agents nur für eine begrenzte Zeit unterstützt werden kann. Für eine einfachere Bereitstellung gelten die folgenden Regeln, damit sichergestellt ist, dass Sie genügend Zeit haben und benachrichtigt werden, um Updates und Upgrades von Agents in Ihrem Änderungsverwaltungsprozess zu berücksichtigen:

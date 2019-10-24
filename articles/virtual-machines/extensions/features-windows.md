@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8027a1290b4b771c17a1e748c06f3b86fa0bf95
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4e8543f1f6ef2cdf1695340b07dcbc51365a01a5
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244601"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438140"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -65,7 +65,7 @@ Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In dies
 
 #### <a name="network-access"></a>Netzwerkzugriff
 
-Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie [unterstützte](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) Versionen der Agents verwenden, müssen Sie keinen Zugriff auf Azure Storage in der VM-Region zulassen, da Sie über den Agent die Kommunikation mit Agents an den Azure-Fabric Controller umleiten können (HostGAPlugin-Feature über den privilegierten Kanal der privaten IP-Adresse 168.63.129.16.). Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
+Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie [unterstützte](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) Versionen der Agents verwenden, müssen Sie keinen Zugriff auf Azure Storage in der VM-Region zulassen, da Sie über den Agent die Kommunikation mit Agents an den Azure-Fabric Controller umleiten können (HostGAPlugin-Feature über den privilegierten Kanal der privaten IP-Adresse [168.63.129.16](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16)). Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
 
 > [!IMPORTANT]
 > Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall oder einem Proxy blockiert haben, treten bei den Erweiterungen unabhängig von den gerade beschriebenen Szenarien Fehler auf. Die Ports 80, 443 und 32526 sind erforderlich.

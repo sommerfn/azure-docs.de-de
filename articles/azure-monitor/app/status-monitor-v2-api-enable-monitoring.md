@@ -1,6 +1,6 @@
 ---
-title: 'API-Referenz für Azure-Statusmonitor v2: Aktivieren der Überwachung | Microsoft-Dokumentation'
-description: API-Referenz für Statusmonitor v2. Enable-ApplicationInsightsMonitoring. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
+title: 'API-Referenz für den Azure Application Insights-Agent: Aktivieren der Überwachung | Microsoft-Dokumentation'
+description: API-Referenz für den Application Insights-Agent. Enable-ApplicationInsightsMonitoring. Überwachen Sie die Websiteleistung ohne erneute Bereitstellung der Website. Funktioniert mit ASP.NET-Web-Apps, die lokal, auf virtuellen Computern oder in Azure gehostet werden.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 8742316697e6d6c8178bb02c8e7288499c655b6b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 2a310a83677bffc8843fdb8979ec272f197a8a39
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033131"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389893"
 ---
-# <a name="status-monitor-v2-api-enable-applicationinsightsmonitoring"></a>API für Statusmonitor v2: Enable-ApplicationInsightsMonitoring
+# <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Application Insights-Agent-API: Enable-ApplicationInsightsMonitoring
 
 In diesem Artikel wird ein Cmdlet des [PowerShell-Moduls „Az.ApplicationMonitor“](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/) beschrieben.
 
@@ -164,7 +164,7 @@ Successfully enabled Application Insights Status Monitor
 - [Fügen Sie Webclient-Telemetriedaten hinzu](../../azure-monitor/app/javascript.md), um Ausnahmen von Webseitencode anzuzeigen und Ablaufverfolgungsaufrufe zu aktivieren.
 - [Fügen Sie Ihrem Code das Application Insights SDK hinzu](../../azure-monitor/app/asp-net.md), um Ablaufverfolgungs- und Protokollaufrufe einfügen zu können.
  
- Weitere Möglichkeiten zur Verwendung von Statusmonitor v2:
- - Verwenden Sie unsere Anleitung für die [Problembehandlung](status-monitor-v2-troubleshoot.md) von Statusmonitor v2.
+ Weitere Verwendungsmöglichkeiten für den Application Insights-Agent:
+ - Verwenden Sie unsere Anleitung zur [Problembehandlung](status-monitor-v2-troubleshoot.md) für den Application Insights-Agent.
  - [Rufen Sie die Konfiguration ab](status-monitor-v2-api-get-config.md), um sicherzustellen, dass Ihre Einstellungen korrekt erfasst wurden.
  - [Rufen Sie den Status ab](status-monitor-v2-api-get-status.md), um die Überwachung zu überprüfen.

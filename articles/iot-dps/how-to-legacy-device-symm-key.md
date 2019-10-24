@@ -8,15 +8,14 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65914303"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434835"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Bereitstellen von Legacygeräten mit symmetrischen Schlüsseln
-
 
 Ein häufiges Problem bei vielen Legacygeräten ist, dass diese oft über eine Identität verfügen, die aus nur einem Informationselement besteht. Bei diesen Identitätsinformationen handelt es sich normalerweise um eine MAC-Adresse oder eine Seriennummer. Legacygeräte verfügen unter Umständen nicht über ein Zertifikat, TPM oder ein anderes Sicherheitsfeature, das verwendet werden kann, um das Gerät sicher zu identifizieren. Der Device Provisioning Service für den IoT Hub enthält einen Vorgang zum Nachweisen symmetrischer Schlüssel. Der Nachweis des symmetrischen Schlüssels kann genutzt werden, um ein Gerät anhand von Informationen wie der MAC-Adresse oder der Seriennummer zu identifizieren.
 
@@ -28,6 +27,8 @@ Weiterhin wird in diesem Artikel davon ausgegangen, dass das Geräteupdate in ei
 
 In diesem Artikel wird von der Nutzung einer Windows-Arbeitsstation ausgegangen. Allerdings können Sie die Verfahren auch unter Linux ausführen. Ein Beispiel für Linux finden Sie unter [Bereitstellen für Mehrinstanzenfähigkeit](how-to-provision-multitenant.md).
 
+> [!NOTE]
+> Das in diesem Artikel verwendete Beispiel ist in C geschrieben. Es gibt auch ein [C#-Beispiel für einen symmetrischen Schlüssel zum Bereitstellen von Geräten](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample). Wenn Sie dieses Beispiel verwenden möchten, laden Sie das Repository [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) herunter, oder klonen Sie es, und befolgen Sie die Anweisungen im Beispielcode. Befolgen Sie die Anweisungen in diesem Artikel, um über das Portal eine Registrierungsgruppe von symmetrischen Schlüsseln zu erstellen sowie den ID-Bereich und die primären und sekundären Schlüssel der Registrierungsgruppe zu ermitteln, die für die Ausführung des Beispiels erforderlich sind. Sie können mithilfe des Beispiels auch individuelle Registrierungen erstellen.
 
 ## <a name="overview"></a>Übersicht
 

@@ -5,29 +5,39 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/30/2019
+ms.date: 10/10/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8ae2fd99ee57062a0bf99f0550e58a5bb4857a3
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 9ac80262a39e410e1967cc964d04fa9b7d4879a4
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68426889"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312109"
 ---
-In der folgenden Tabelle werden die verfügbaren unterstützten Regionen für allgemein verfügbare Features aufgelistet.
+### <a name="azure-regions-within-a-geopolitical-region"></a>Azure-Regionen in einer geopolitischen Region
+
+Site-to-Site-basierte VPN-Konnektivität und Virtual WAN-Architektur sind für die folgenden Regionen verfügbar:
 
 |Geopolitische Region | Azure-Regionen|
 |---|---|
-|Nordamerika | USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |
+| Nordamerika | USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |
 |Südamerika |Brasilien Süd |
 | Europa | „Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |
 | Asien | Ostasien, Südostasien |
 | Japan  | Japan West, Japan Ost |
-| Australien | Südostaustralien, Ostaustralien | 
+| Australien | Südostaustralien, Ostaustralien |
 | Australische Behörden | Australien, Mitte; Australien, Mitte 2 |
 | Indien | Indien, Westen, Indien, Mitte, Indien, Süden |
 | Südkorea | Korea, Mitte, Korea, Süden |
 | Südafrika | „Südafrika, Norden“, „Südafrika, Westen“ |
 
-* Informationen zur ExpressRoute-Vorschau finden Sie unter [Virtual WAN und ExpressRoute – Vorschau](../articles/virtual-wan/virtual-wan-expressroute-portal.md#register).
+### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Azure-Regionen und geopolitische Grenzen für nationale Clouds
+
+Site-to-Site-basierte VPN-Konnektivität und Virtual WAN-Architektur sind für die folgenden Regionen verfügbar:
+
+|Geopolitische Region | Azure-Regionen|
+|---|---|
+| US-Government Cloud | „US Gov Arizona“, „US Gov Iowa“, „US Gov Texas“, „US Gov Virginia“, „US DoD, Mitte“, „US DoD, Osten“ |
+| China, Osten | China, Osten; China, Osten2|
+| China, Norden | China, Norden; China, Norden2 |

@@ -1,6 +1,6 @@
 ---
 title: Benutzeroberflächenelement „InfoBox“ in Azure | Microsoft-Dokumentation
-description: Hier wird das Benutzeroberflächenelement „Microsoft.Common.InfoBox“ für das Azure-Portal beschrieben.
+description: Hier wird das Benutzeroberflächenelement „Microsoft.Common.InfoBox“ für das Azure-Portal beschrieben. Es wird zum Hinzufügen von Text oder Warnungen beim Bereitstellen einer verwalteten Anwendung verwendet.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67ae05c2ec7b36d76e49f26d5765bbc68b952292
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711220"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331690"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.InfoBox“
 Ein Steuerelement, das ein Informationsfeld hinzugefügt. Das Feld enthält wichtigen Text oder Warnungen, damit die Benutzer ein besseres Verständnis der Werte erlangen, die sie angeben. Außerdem kann es einen Link zu einer URI bereitstellen, wenn weitere Informationen benötigt werden.

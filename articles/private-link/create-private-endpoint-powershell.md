@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687073"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376167"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Erstellen eines privaten Endpunkts mit Azure PowerShell
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
 
-Azure stellt Ressourcen innerhalb eines virtuellen Netzwerks in einem Subnetz bereit, daher müssen Sie ein Subnetz erstellen. Erstellen Sie eine Subnetzkonfiguration mit der Bezeichnung  *mySubnet* mit [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). Im folgenden Beispiel wird ein Subnetz mit dem Namen *mySubnet* erstellt, wobei das Netzwerkrichtlinienflag für private Endpunkte auf **Deaktiviert** festgelegt ist.
+Azure stellt Ressourcen innerhalb eines virtuellen Netzwerks in einem Subnetz bereit, daher müssen Sie ein Subnetz erstellen. Erstellen Sie eine Subnetzkonfiguration mit der Bezeichnung *mySubnet* mit [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig). Im folgenden Beispiel wird ein Subnetz mit dem Namen *mySubnet* erstellt, wobei das Netzwerkrichtlinienflag für private Endpunkte auf **Deaktiviert** festgelegt ist.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -167,7 +167,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
 
-Geben Sie mit  [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) die öffentliche IP-Adresse eines virtuellen Computers zurück. Das Beispiel gibt die öffentliche IP-Adresse des virtuellen Computers  *myVm1* zurück:
+Geben Sie mit  [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) die öffentliche IP-Adresse eines virtuellen Computers zurück. Das Beispiel gibt die öffentliche IP-Adresse des virtuellen Computers *myVM* zurück:
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -184,13 +184,13 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. 
+1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. 
 2. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben.
   > [!NOTE]
   > Unter Umständen müssen Sie „Weitere Optionen > Anderes Konto verwenden“ auswählen, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben. 
   
-3. Wählen Sie  **OK** aus. 
-4. Sie erhalten möglicherweise eine Zertifikatwarnung. Wenn dies der Fall ist, wählen Sie **Ja** oder **Weiter** aus. 
+3. Klicken Sie auf **OK**. 
+4. Sie erhalten möglicherweise eine Zertifikatwarnung. Ist dies der Fall, wählen Sie **Ja** oder **Weiter** aus. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>Privates Zugreifen auf den SQL-Datenbank-Server vom virtuellen Computer
 
@@ -214,7 +214,7 @@ mstsc /v:<publicIpAddress>
 5. Wählen Sie „Verbinden“ aus.
 6. Durchsuchen Sie Datenbanken im linken Menü. 
 7. (Optional) Erstellen Sie oder fragen Sie Informationen aus „mydatabase“ ab.
-8. Schließen Sie die Remotedesktopverbindung mit  *myVM*. 
+8. Schließen Sie die Remotedesktopverbindung mit *myVM*. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 Wenn Sie die Nutzung von privatem Endpunkt, SQL-Datenbank-Server und der VM abgeschlossen haben, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup), um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu löschen:

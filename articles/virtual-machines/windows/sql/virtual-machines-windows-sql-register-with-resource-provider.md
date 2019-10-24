@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a0e5076f6ecb102b239a94b986830235eb720125
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023601"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512365"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
 
@@ -203,7 +203,7 @@ Es gibt drei kostenlose Verwaltbarkeitsmodi für die SQL Server-IaaS-Erweiterun
      $sqlvm.Properties.sqlManagement
   ```
 
-Für SQL Server-VMs, auf denen die IaaS-Erweiterung im Modus *Lightweight* installiert ist, können Sie im Azure-Portal ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade durchzuführen. Stattdessen müssen Sie die SQL-IaaS-Erweiterung vollständig deinstallieren und erneut installieren. 
+Für SQL Server-VMs, auf denen die IaaS-Erweiterung im Modus *Lightweight* installiert ist, können Sie im Azure-Portal ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade durchzuführen. Stattdessen müssen Sie die Ressource des SQL-VM-Ressourcenanbieters mithilfe des Azure-Portal löschen und erneut beim SQL-VM-Ressourcenanbieter registrieren. 
 
 So führen Sie Upgrade des Agent-Modus auf „Vollständig“ durch: 
 
@@ -353,7 +353,7 @@ Ja. Das Upgrade des SQL-Verwaltbarkeitsmodus von „Lightweight“ auf „Vollst
 
 Nein. Eine Herabstufung des Verwaltungsmodus für die SQL Server-IaaS-Erweiterung wird nicht unterstützt. Der SQL Server-Verwaltungsmodus kann vom Modus „Vollständig“ nicht auf „Lightweight“ oder „NoAgent“ herabgestuft werden und auch nicht vom Modus „Lightweight“ auf den Modus „NoAgent“. 
 
-Um den Verwaltungsmodus von „Vollständig“ zu ändern, entfernen Sie die SQL Server-IaaS-Erweiterung. Löschen Sie dann die Ressource Microsoft.SqlVirtualMachine, und registrieren Sie die SQL Server-VM erneut beim SQL-VM-Ressourcenanbieter.
+Wenn Sie den Verwaltbarkeitsmodus von „Vollständige Verwaltbarkeit“ ändern möchten, löschen Sie die Ressource „Microsoft.SqlVirtualMachine“, und registrieren Sie die SQL Server-VM erneut beim SQL-VM-Ressourcenanbieter.
 
 **Kann ich mich über das Azure-Portal beim SQL-VM-Ressourcenanbieter registrieren?**
 

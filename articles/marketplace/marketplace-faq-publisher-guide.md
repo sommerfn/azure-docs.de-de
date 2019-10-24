@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969579"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330242"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
 
@@ -24,7 +24,7 @@ Antworten auf häufig gestellte Fragen zu Azure Marketplace und Microsoft AppSou
 
 **Was ist Azure Marketplace?**
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) bietet Zugriff auf und Informationen zu Lösungen und Diensten, die von Microsoft und unseren Partnern verfügbar sind. Kunden (IT-Experten und Entwickler) können Softwarelösungen, die in oder für Azure erstellt wurden, entdecken, ausprobieren und kaufen. Unser Katalog mit über 8.000 Einträgen bietet Azure-Bausteine, z. B. virtuelle Computer (VMs), APIs, Azure-Apps, Lösungsvorlagen und verwaltete Anwendungen, SaaS-Apps, Container und Beratungsdienste. 
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) bietet Zugriff auf und Informationen zu Lösungen und Diensten, die von Microsoft und unseren Partnern verfügbar sind. Kunden können Cloudsoftwarelösungen, die in oder für Azure erstellt wurden, entdecken, ausprobieren oder kaufen. Unser Katalog mit über 8.000 Einträgen bietet Azure-Bausteine, z. B. virtuelle Computer (VMs), APIs, Azure-Apps, Lösungsvorlagen und verwaltete Anwendungen, SaaS-Apps, Container und Beratungsdienste.
 
 **Wer sind die Azure Marketplace-Kunden?**
 
@@ -32,7 +32,7 @@ Der Azure Marketplace wurde für IT-Experten und Cloudentwickler konzipiert, die
 
 **Welche Arten von Produkten sind zurzeit im Azure Marketplace erhältlich?**
 
-Der Azure Marketplace bietet technische Lösungen und Dienste von Microsoft und unseren Partnern, die speziell zur Ergänzung und Erweiterung von Azure-Produkten und -Diensten erstellt werden. Der Lösungskatalog umfasst zahlreiche Kategorien, einschließlich, aber nicht beschränkt auf:
+Der Azure Marketplace bietet technische Lösungen und Dienste von Microsoft und unseren Partnern, die speziell zur Ergänzung und Erweiterung von Azure-Produkten und -Diensten erstellt werden. Der Lösungskatalog umfasst zahlreiche Kategorien, einschließlich:
 
 * Basisbetriebssysteme
 * databases
@@ -41,9 +41,6 @@ Der Azure Marketplace bietet technische Lösungen und Dienste von Microsoft und 
 * networking
 * Blockchain
 * Entwicklertools
-* Viele weitere Funktionen
-
-Der Azure Marketplace bietet SaaS-Anwendungen, virtuelle Computer, Lösungsvorlagen, Azure Managed Applications-Lösungen und Beratungsdienste.
 
 ### <a name="azure-marketplace-for-customers"></a>Azure Marketplace für Kunden
 
@@ -338,7 +335,7 @@ Leads sind Kunden, die Ihre Produkte über Marketplace bereitstellen. Ganz gleic
 
 **Wo erhalte ich Hilfe bei der Einrichtung meines Leadziels?**
 
-Weitere Informationen finden Sie in der Dokumentation [Cloud-Partnerportal: Abrufen von Kundenleads](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md), oder übermitteln Sie ein Supportticket über [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport), indem Sie Ihren Angebotsart und Leadverwaltung auswählen.
+Weitere Informationen finden Sie in der Dokumentation [Partner Center: Generieren von Kundenleads](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md), oder übermitteln Sie ein Supportticket über [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport), indem Sie Ihre Angebotsart und Leadverwaltung auswählen.
 
 **Muss ich ein Leadziel konfigurieren, um ein Angebot im Marketplace zu veröffentlichen?**
 
@@ -346,7 +343,7 @@ Ja, wenn Sie ein **Contact Me**-, **SaaS-App**- oder **Beratungsdienste**-Angebo
 
 **Wie kann ich bestätigen, dass die Leadkonfiguration richtig ist?**
 
-Nach Fertigstellung des Angebots und der Einrichtung eines Leadziels kann das Listing ordnungsgemäß im [Cloud-Partnerportal](https://cloudpartner.azure.com/) veröffentlicht werden. Bevor das Listing live geschaltet wird, können Sie überprüfen, ob die eingerichtete Leadkonfiguration ordnungsgemäß funktioniert.  Senden Sie einen Testlead an das in Ihrem Angebot konfigurierte Leadziel.
+Nach Fertigstellung des Angebots und der Einrichtung eines Leadziels kann das Listing ordnungsgemäß im [Partner Center](https://cloudpartner.azure.com/) veröffentlicht werden. Bevor das Listing live geschaltet wird, können Sie überprüfen, ob die eingerichtete Leadkonfiguration ordnungsgemäß funktioniert.  Senden Sie einen Testlead an das in Ihrem Angebot konfigurierte Leadziel.
 
 **In welchen Ländern bzw. Regionen ist der Azure Marketplace für Herausgeber zum Verkaufen ihrer Lösungen verfügbar?**
 
@@ -356,7 +353,7 @@ Herausgeber aus den folgenden Ländern/Regionen können zurzeit im Azure Marketp
 
 *Virtueller Computer und Azure-Apps*:
 
-1. Melden Sie sich beim [Cloudpartnerportal](https://cloudpartner.azure.com/) an.
+1. Melden Sie sich bei [Partner Center](https://cloudpartner.azure.com/) an.
 1. Wählen Sie das Angebot auf der Registerkarte **Alle Angebote** aus.
 1. Wählen Sie im Bereich auf der linken Bildschirmseite die Registerkarte **SKUs** aus.
 1. Wählen Sie die SKU zum Löschen aus, und klicken Sie auf die Schaltfläche **Löschen** für diese SKU.
@@ -366,7 +363,7 @@ Weitere Informationen finden Sie unter [Löschen eines Angebots](./cloud-partner
 
 *Web-Apps (SaaS-Apps, Add-Ons) und Beratungsdienste:*
 
-1. Wählen Sie im Cloud-Partnerportal das Fragezeichensymbol aus, und klicken Sie dann auf **Support**.
+1. Wählen Sie im Partner Center das Fragezeichensymbol aus, und klicken Sie dann auf **Support**.
 1. Wechseln Sie zur Adresse <https://go.microsoft.com/fwlink/?linkid=844975>.
 1. Wählen Sie auf der Supportseite den Angebotstyp aus.
 1. Wählen Sie ein veröffentlichtes Angebot **Entfernen** aus.
@@ -419,19 +416,19 @@ Tragen Sie ein Ticket beim [Microsoft-Support](https://support.microsoft.com/get
 
 **An wen wende ich mich bei allgemeinen Supportproblemen mit dem Azure Marketplace?**
 
-Um allgemeinen Anwendungssupport zur Verwendbarkeit oder Problembehandlung zu erhalten, wenden Sie sich an den [Support des Cloud-Partnerportals](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
+Um allgemeinen Anwendungssupport zur Verwendbarkeit oder Problembehandlung zu erhalten, wenden Sie sich an den [Partner Center-Support](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
 
 Wenden Sie sich bei Problemen mit der Abrechnung und dem Abonnement Ihres Azure Marketplace-Kaufs an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 **An wen wende ich mich, wenn ich Fragen zur Veröffentlichung oder zur Angebotsverwaltung habe?**
 
-Im [Azure Marketplace-Herausgeberleitfaden](marketplace-publishers-guide.md) finden Sie aktuelle Ressourcen und Informationen zu häufig gestellten Fragen. Darüber hinaus können Sie im [Cloud-Partnerportal ein Ticket für den Microsoft-Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953) eintragen.
+Im [Azure Marketplace-Herausgeberleitfaden](marketplace-publishers-guide.md) finden Sie aktuelle Ressourcen und Informationen zu häufig gestellten Fragen. Darüber hinaus können Sie im [Partner Center ein Ticket für den Microsoft-Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953) eintragen.
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace für Herausgeber
 
 **Wie definiere ich meine geografische Verfügbarkeit, um den Verkauf in verschiedenen Ländern/Regionen zu aktivieren?**
 
-1.  Navigieren Sie im Cloud-Partnerportal zu der SKU, zu der Sie neue Länder/Regionen hinzufügen möchten.  Navigieren Sie in den **SKU-Details** zu **Verfügbarkeit in Land/Region**, und klicken Sie auf **Regionen auswählen**.
+1.  Navigieren Sie im Partner Center zu der SKU, zu der Sie neue Länder/Regionen hinzufügen möchten.  Navigieren Sie in den **SKU-Details** zu **Verfügbarkeit in Land/Region**, und klicken Sie auf **Regionen auswählen**.
 
     ![Regionen auswählen](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 

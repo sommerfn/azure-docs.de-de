@@ -1,5 +1,5 @@
 ---
-title: Aktives Lernen – Personalisierung
+title: 'Aktive und inaktive Ereignisse: Personalisierung'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,47 +10,36 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663712"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429041"
 ---
-# <a name="active-learning-and-learning-policies"></a>Aktives Lernen und Lernrichtlinien 
+# <a name="active-and-inactive-events"></a>Aktive und inaktive Ereignisse
 
-Wenn Ihre Anwendung die Rangfolge-API aufruft, erhalten Sie einen Rang für den Inhalt. Anhand dieses Rangs kann die Geschäftslogik ermitteln, ob der Inhalt dem Benutzer angezeigt werden soll. Wenn Sie den nach Rang sortierten Inhalt anzeigen, handelt es sich um ein _aktives_ Rangfolgeereignis. Wenn Ihre Anwendung den nach Rang sortierten Inhalt nicht anzeigt, handelt es sich um ein _inaktives_ Rangfolgeereignis. 
+Wenn Ihre Anwendung die Rank-API (Bewertungs-API) aufruft, erhalten Sie die Information, welche Aktion die Anwendung im Feld rewardActionId anzeigen soll.  Von diesem Moment an erwartet die Personalisierung einen Reward-Aufruf mit dieser Ereignis-ID. Der Relevanzpunktestand wird zum Trainieren des Modells verwendet, das für zukünftige Aufrufe der Bewertungs-API verwendet wird. Wenn für die Ereignis-ID kein Reward-Aufruf empfangen wird, wird eine Standardrelevanz angewendet. Standardrelevanzen werden im Azure-Portal eingerichtet.
 
-Informationen zu aktiven Rangfolgeereignissen werden an die Personalisierung zurückgegeben. Auf der Grundlage dieser Informationen wird das Modell im Rahmen der aktuellen Lernrichtlinie weiter trainiert.
-
-## <a name="active-events"></a>Aktive Ereignisse
-
-Aktive Ereignisse müssen dem Benutzer immer angezeigt werden, und der Relevanzaufruf muss zurückgegeben werden, um die Lernschleife zu schließen. 
-
-### <a name="inactive-events"></a>Inaktive Ereignisse 
-
-Inaktive Ereignisse dürfen das zugrunde liegende Modell nicht verändern, da der Benutzer keine Gelegenheit hatte, etwas aus dem nach Rang sortierten Inhalt auszuwählen.
-
-## <a name="dont-train-with-inactive-rank-events"></a>Nicht mit inaktiven Rangfolgeereignissen trainieren 
-
-Es gibt Anwendungen, bei denen ggf. die Rangfolge-API aufgerufen werden muss, obwohl noch nicht bekannt ist, ob die Ergebnisse dem Benutzer angezeigt werden. 
-
-Dies kann in folgenden Fällen erforderlich sein:
+In einigen Fällen muss die Anwendung möglicherweise Rank aufrufen, bevor sie weiß, ob das Ergebnis verwendet oder dem Benutzer angezeigt wird. Dies kann beispielsweise geschehen, wenn das Seitenrendering von beworbenen Inhalten mit einer Marketingkampagne überschrieben wird. Wenn das Ergebnis des Rank-Aufrufs nie verwendet wurde und der Benutzer es nie zu Gesicht bekommen hat, wäre es falsch, es überhaupt mit einer Relevanz zu trainieren, nicht einmal mit einer Nullrelevanz.
+Dies geschieht normalerweise in diesen Fällen:
 
 * Ein Element der Benutzeroberfläche wird vorab gerendert, dem Benutzer aber unter Umständen gar nicht angezeigt. 
 * Ihre Anwendung führt eine vorausschauende Personalisierung durch, bei der Rangfolgeaufrufe mit weniger Echtzeitkontext verwendet werden, und die Ausgabe wird von der Anwendung unter Umständen gar nicht genutzt. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Deaktivieren von aktivem Lernen für inaktive Rangfolgeereignisse während des Rangfolgeaufrufs
+In diesen Fällen besteht die richtige Verwendung der Personalisierung im Aufruf von Rank mit der Anforderung, dass das Ereignis _inaktiv_ sein muss. Die Personalisierung erwartet für dieses Ereignis keine Relevanz und wendet auch keine Standardrelevanz an. Wenn die Anwendung später in Ihrer Geschäftslogik die Informationen des Rangfolgeaufrufs verwendet, müssen Sie das Ereignis lediglich _aktivieren_. Von dem Moment an, da das Ereignis aktiv ist, erwartet die Personalisierung eine Relevanz für das Ereignis oder wendet eine Standardrelevanz an, wenn keine expliziten Aufrufe an die Reward API (Relevanz-API) erfolgen.
 
-Wenn Sie das automatische Lernen deaktivieren möchten, führen Sie den Rangfolgeaufruf mit `learningEnabled = False` aus.
+## <a name="get-inactive-events"></a>Abrufen inaktiver Ereignisse
 
-Das Lernen für ein inaktives Ereignis wird implizit aktiviert, wenn Sie eine Relevanz für den Rang senden.
+Um das Training für ein Ereignis zu deaktivieren, rufen Sie Rank mit `learningEnabled = False` auf.
 
-## <a name="learning-policies"></a>Lernrichtlinien
+Das Lernen für ein inaktives Ereignis wird implizit aktiviert, wenn Sie für die Ereignis-ID eine Relevanz senden oder die `activate`-API aufrufen.
 
-Die Lernrichtlinie bestimmt die spezifischen *Hyperparameter* des Modelltrainings. Modelle, die über die gleichen Daten verfügen, aber mit unterschiedlichen Richtlinien trainiert wurden, verhalten sich unterschiedlich.
+## <a name="learning-settings"></a>Lerneinstellungen
 
-### <a name="importing-and-exporting-learning-policies"></a>Importieren und Exportieren von Lernrichtlinien
+Die Lerneinstellungen bestimmen die spezifischen *Hyperparameter* des Modelltrainings. Zwei Modelle, die über die gleichen Daten verfügen, aber mit unterschiedlichen Einstellungen trainiert wurden, sind im Ergebnis verschieden.
+
+### <a name="import-and-export-learning-policies"></a>Importieren und Exportieren von Lernrichtlinien
 
 Sie können Lernrichtliniendateien über das Azure-Portal importieren und exportieren. Dadurch können Sie vorhandene Richtlinien speichern, testen, ersetzen und zur späteren Referenz und Überprüfung als Artefakte in Ihrer Quellcodeverwaltung archivieren.
 

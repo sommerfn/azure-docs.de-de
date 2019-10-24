@@ -1,6 +1,6 @@
 ---
 title: Benutzeroberflächenelement „TextBlock“ in Azure | Microsoft-Dokumentation
-description: Hier wird das Benutzeroberflächenelement „Microsoft.Common.TextBlock“ für das Azure-Portal beschrieben.
+description: Hier wird das Benutzeroberflächenelement „Microsoft.Common.InfoBox“ für das Azure-Portal beschrieben. Es wird zum Hinzufügen von Text zur Benutzeroberfläche verwendet.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0dcd8ba1b1bacd990c91ce90ef0013caac446cdc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da2453889f04352dbabe182772312d70deec4464
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64722546"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331623"
 ---
 # <a name="microsoftcommontextblock-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.TextBlock“
 Ein Steuerelement, mit dem Text zur Portaloberfläche hinzugefügt werden kann
