@@ -1,18 +1,18 @@
 ---
 title: Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 description: Erfahren Sie, wie Sie auf Analyseberichte zugreifen können, um Verkäufe zu überwachen, die Leistung zu bewerten und Ihre Marketplace-Angebote zu optimieren.
-author: chjenk
+author: ChJenk
 manager: evansma
-ms.author: shthota
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/14/2019
+ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028850"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332127"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 
@@ -321,3 +321,24 @@ Im Abschnitt mit der Zusammenfassung von Bewertungen und Rezensionen werden die 
 Rezensionen werden in chronologischer Reihenfolge nach Veröffentlichungsdatum angezeigt. In der Standardansicht werden alle Rezensionen angezeigt. Mit der Option **Filter** im Dropdownmenü können Sie die Rezensionen nach Sternebewertung filtern. Sie können auch nach Schlüsselwörtern suchen, die in der Rezension vorkommen.  
 
 ![Partner Center, Dashboard „Analyse“, Rezensionskommentare](./media/analyze-reviews.png)
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+Dieser Abschnitt enthält Antworten auf häufig gestellte Fragen zu Meldungen vom Typ **No Analytics Available Yet** (Noch keine Analysen verfügbar) in Partner Center.
+
+**Ich kann meine Analysedaten in Partner Center nicht anzeigen. Wenn ich auf diese Seiten zugreife, wird die folgende Meldung angezeigt. Warum?**
+
+![Noch keine Daten für Ihre Angebote](./media/analytics-faq-no-data.png)
+
+Diese Meldung kann folgende Ursachen haben:
+
+- Ihre im Marketplace gelisteten Angebote sind keine SaaS-Angebote. Von Partner Center werden aktuell nur Analysen für SaaS-Angebote gemeldet. Dynamics 365-Angebote können zwar in Partner Center veröffentlicht werden, Analysen für diese Angebote sind in Partner Center jedoch noch nicht aktiviert.
+- Für Ihre im Marketplace veröffentlichten Angebote sind aktuell keine Käufe vorhanden. Dies kann der Fall sein, wenn Ihre Angebote zwar im Marketplace aktiv sind und von Kunden auf den Produktanzeigeseiten betrachtet werden, aber noch nicht gekauft und bereitgestellt wurden.
+- Die Veröffentlichung Ihres Angebots ist möglicherweise noch nicht abgeschlossen, und Ihr Angebot wurde noch nicht aktiviert. Nur aktive Angebote können von Kunden erworben werden. Den Status Ihrer Angebote können Sie in der [Übersicht des Dashboards „Analyse“](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) überprüfen. Weitere Informationen finden Sie in diesem Artikel unter [Dashboard „Zusammenfassung“](#summary-dashboard).
+- Ihre Angebote werden möglicherweise als Angebote vom Typ **Kontakt mit mir aufnehmen** gelistet. Hierbei handelt es sich um reine Listenangebote, die von Kunden nicht über den Marketplace erworben werden können. Diese Angebote generieren zwar Leads und werden für Sie freigegeben, da die Angebote aber nicht gekauft werden können, werden auch keine Bestellungen für sie erstellt. Navigieren Sie zur Einrichtungsseite, um die Art Ihrer Angebotslistung zu überprüfen.
+
+**Ich weiß, dass Analysedaten vorhanden sind, aber es wird die folgende Meldung angezeigt:**
+
+![Keine Daten für den angegebenen Datumsbereich](./media/analytics-faq-data-range.png)
+
+Wenn Sie diese Meldung erhalten, bedeutet das, dass Analysedaten vorliegen, aber nicht für den ausgewählten Datumsbereich. Wählen Sie einen anderen oder einen benutzerdefinierten Datumsbereich aus, um beliebige Daten seit 2010 anzuzeigen. Weitere Informationen finden Sie unter [Datumsbereich](#date-range).

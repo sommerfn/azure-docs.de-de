@@ -10,23 +10,24 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 06/26/2019
-ms.openlocfilehash: f6e0b55ad2fbd9b4c45dbd1facaebd4750314c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7ad09682275b5cc2311b792899a85c1c47eafc0d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567534"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431290"
 ---
 # <a name="delete-a-subnet-after-deleting-an-azure-sql-database-managed-instance"></a>Löschen eines Subnetzes nach Löschen einer verwalteten Azure SQL-Datenbank-Instanz
 
 Dieser Artikel enthält Richtlinien zum manuellen Löschen eines Subnetzes nach Löschen der letzten darin enthaltenen verwalteten Azure SQL-Datenbank-Instanz.
 
-Die SQL-Datenbank verwendet einen [virtuellen Cluster](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) für die Aufbewahrung der gelöschten verwalteten Instanz. Der virtuelle Cluster bleibt nach Löschen der Instanz 12 Stunden lang bestehen, damit Sie im gleichen Subnetz schnell verwaltete Instanzen erstellen können. Das Beibehalten eines leeren virtuellen Clusters ist kostenlos. Während dieses Zeitraums kann der mit dem Subnetz verbundene virtuelle Cluster nicht gelöscht werden.
+Verwaltete Instanzen werden in [virtuellen Clustern](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture) bereitgestellt. Jeder virtuelle Cluster ist einem Subnetz zugeordnet. Der virtuelle Cluster bleibt nach dem Löschen der letzten Instanz noch 12 Stunden erhalten, damit Sie im gleichen Subnetz schneller verwaltete Instanzen erstellen können. Das Beibehalten eines leeren virtuellen Clusters ist kostenlos. Während dieses Zeitraums kann der mit dem Subnetz verbundene virtuelle Cluster nicht gelöscht werden.
 
-Wenn Sie die 12 Stunden nicht abwarten und den virtuellen Cluster sowie das Subnetz lieber sofort löschen möchten, können Sie dies manuell tun. Löschen Sie den virtuellen Cluster manuell über das Azure-Portal oder die API für virtuelle Cluster.
+Wenn Sie keine 12 Stunden warten, sondern den virtuellen Cluster sowie das Subnetz früher löschen möchten, können Sie dies manuell tun. Löschen Sie den virtuellen Cluster manuell über das Azure-Portal oder die API für virtuelle Cluster.
 
-> [!NOTE]
-> Damit der Löschvorgang erfolgreich ist, sollte der virtuelle Cluster keine verwalteten Instanzen enthalten.
+> [!IMPORTANT]
+> - Damit der Löschvorgang erfolgreich ist, sollte der virtuelle Cluster keine verwalteten Instanzen enthalten. 
+> - Das Löschen eines virtuellen Clusters ist ein zeitintensiver Vorgang mit einer Dauer von etwa 1,5 Stunden. (Aktuelle Angaben zur Löschdauer für virtuelle Cluster finden Sie unter [Verwaltungsvorgänge für verwaltete Instanzen](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations).) Während dieser Zeit ist der virtuelle Cluster im Portal weiterhin sichtbar, bis der Vorgang abgeschlossen wurde.
 
 ## <a name="delete-virtual-cluster-from-the-azure-portal"></a>Löschen virtueller Cluster im Azure-Portal
 
@@ -38,10 +39,10 @@ Nachdem Sie den virtuellen Cluster gefunden haben, den Sie löschen möchten, w�
 
 ![Screenshot: Dashboard „Virtuelle Cluster“ im Azure-Portal mit hervorgehobener Option „Löschen“](./media/sql-database-managed-instance-delete-virtual-cluster/virtual-clusters-delete.png)
 
-Über die Benachrichtigungen im Azure-Portal erhalten Sie die Bestätigung, dass der virtuelle Cluster gelöscht wurde. Bei erfolgreichem Löschen des virtuellen Clusters wird das Subnetz sofort zur Wiederverwendung freigegeben.
+In den Azure-Portalbenachrichtigungen wird eine Bestätigung dafür angezeigt, dass die Anforderung zum Löschen des virtuellen Clusters erfolgreich übermittelt wurde. Der eigentliche Löschvorgang dauert etwa 1,5 Stunden. Während dieser Zeit ist der virtuelle Cluster im Portal weiterhin sichtbar. Nach Abschluss des Vorgangs ist der virtuelle Cluster nicht mehr sichtbar, und das zugehörige Subnetz wird zur erneuten Verwendung freigegeben.
 
 > [!TIP]
-> Wenn in Ihrem virtuellen Cluster keine verwalteten Instanzen angezeigt werden und Sie den virtuellen Cluster nicht löschen können, vergewissern Sie sich, dass kein Instanzenbereitstellungsvorgang mehr läuft. Dies umfasst gestartete und abgebrochene Bereitstellungen, die noch nicht abgeschlossen sind. Auf der Registerkarte „Deployments“ (Bereitstellungen) der Ressourcengruppe, in der die Instanz bereitgestellt wurde, werden Bereitstellungen angezeigt, die noch nicht abgeschlossen sind. Warten Sie in diesem Fall, bis die Bereitstellung abgeschlossen ist, löschen Sie dann die verwaltete Instanz und anschließend den virtuellen Cluster.
+> Wenn in Ihrem virtuellen Cluster keine verwalteten Instanzen angezeigt werden und Sie den virtuellen Cluster nicht löschen können, vergewissern Sie sich, dass kein Instanzenbereitstellungsvorgang mehr läuft. Dies umfasst gestartete und abgebrochene Bereitstellungen, die noch nicht abgeschlossen sind. Der Grund: Diese Vorgänge verwenden weiterhin den virtuellen Cluster, was dazu führt, dass er nicht gelöscht werden kann. Auf der Registerkarte „Deployments“ (Bereitstellungen) der Ressourcengruppe, in der die Instanz bereitgestellt wurde, werden Bereitstellungen angezeigt, die noch nicht abgeschlossen sind. Warten Sie in diesem Fall, bis die Bereitstellung abgeschlossen ist, und löschen Sie dann die verwaltete Instanz und anschließend den virtuellen Cluster.
 
 ## <a name="delete-virtual-cluster-by-using-the-api"></a>Löschen eines virtuellen Clusters mithilfe der API
 

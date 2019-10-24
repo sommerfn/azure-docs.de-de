@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: bb0c6e9d20c12df3532a52df1fe4d9574344d4b3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 8a72f70fbc1ab6052587beb1d949dd73b1ad3559
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104717"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376147"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
@@ -114,10 +114,10 @@ In diesem Abschnitt erstellen Sie ein privates Speicherkonto und verwenden für 
     | Replikation | Wählen Sie **Georedundanter Speicher mit Lesezugriff (RA-GRS)** aus. |
     |||
   
-3. Wählen Sie **Weiter: Netzwerk** aus.
-4. Wählen Sie in  **Speicherkonto erstellen – Netzwerke**, „Verbindungsmethode“, **Privater Endpunkt** aus.
-5. Wählen Sie in  **Speicherkonto erstellen – Netzwerke** die Option **Privaten Endpunkt hinzufügen** aus. 
-6. Geben Sie unter  **Privaten Endpunkt erstellen** diese Informationen ein, oder wählen Sie sie aus:
+3. Klicken Sie auf **Weiter: Netzwerk** aus.
+4. Wählen Sie in **Speicherkonto erstellen – Netzwerke** als Verbindungsmethode die Option **Privater Endpunkt** aus.
+5. Wählen Sie in **Speicherkonto erstellen – Netzwerke** die Option **Privaten Endpunkt hinzufügen** aus. 
+6. Geben Sie unter **Privaten Endpunkt erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -126,19 +126,19 @@ In diesem Abschnitt erstellen Sie ein privates Speicherkonto und verwenden für 
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     |Location|Wählen Sie **WestCentralUS** aus.|
     |NAME|Geben Sie *myPrivateEndpoint* ein.  |
-    |Speicherunterressource|Übernehmen Sie den Standardwert **Blob**. |
+    |Speicherunterressource|Übernehmen Sie den Standardwert **Blob**. |
     | **NETZWERK** |  |
     | Virtuelles Netzwerk  | Wählen Sie *MyVirtualNetwork* in der Ressourcengruppe *myResourceGroup* aus. |
     | Subnet | Wählen Sie *mySubnet* aus. |
     | **PRIVATE DNS-INTEGRATION**|  |
     | Integration in eine private DNS-Zone  | Übernehmen Sie den Standardwert **Ja**. |
-    | Private DNS-Zone  | Übernehmen Sie den Standardwert ** (Neu) privatelink.blob.core.windows.net**. |
+    | Private DNS-Zone  | Übernehmen Sie den Standardwert **(Neu) privatelink.blob.core.windows.net**. |
     |||
-7. Wählen Sie **OK** aus. 
-8. Wählen Sie **Überprüfen und erstellen** aus. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
-9. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus. 
+7. Klicken Sie auf **OK**. 
+8. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
+9. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus. 
 10. Navigieren Sie zur gerade erstellten Speicherkontoressource.
-11. Wählen Sie im Inhaltsmenü auf der linken Seite **Zugriffsschlüssel** aus.
+11. Wählen Sie im Inhaltsmenü auf der linken Seite **Zugriffsschlüssel** aus.
 12. Wählen Sie **Kopieren** für die Verbindungszeichenfolge für „key1“ aus.
  
 ## <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
@@ -182,29 +182,30 @@ In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine pri
     Name:    mystorageaccount123123.privatelink.blob.core.windows.net
     Address:  10.0.0.5
     Aliases:  mystorageaccount.blob.core.windows.net
-3. Install [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
-4. Select **Storage accounts** with the right-click.
-5. Select **Connect to an azure storage**.
-6. Select **Use a connection string**.
-7. Select **Next**.
-8. Enter the connection string by pasting the information previously copied.
-9. Select **Next**.
-10. Select **Connect**.
-11. Browse the Blob containers from mystorageaccount 
-12. (Optionally) Create folders and/or upload files to *mystorageaccount*. 
-13. Close the remote desktop connection to *myVM*. 
+    ```
+3. Installieren Sie den [Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
+4. Klicken Sie mit der rechten Maustaste auf **Speicherkonten**.
+5. Wählen Sie **Connect to an azure storage** (Mit Azure-Speicher verbinden) aus.
+6. Wählen Sie **Verbindungszeichenfolge verwenden** aus.
+7. Klicken Sie auf **Weiter**.
+8. Geben Sie die Verbindungszeichenfolge ein, indem Sie die zuvor kopierten Informationen einfügen.
+9. Klicken Sie auf **Weiter**.
+10. Wählen Sie **Verbinden**aus.
+11. Durchsuchen Sie die Blobcontainer aus „mystorageaccount“. 
+12. (Optional) Erstellen Sie Ordner, und/oder laden Sie Dateien in *mystorageaccount* hoch. 
+13. Schließen Sie die Remotedesktopverbindung mit  *myVM*. 
 
-Additional options to access the storage account:
-- Microsoft Azure Storage Explorer is a standalone free app from Microsoft that enables you to work visually with Azure storage data on Windows, macOS, and Linux. You can install the application to browse privately the storage account content. 
+Weitere Optionen zum Zugreifen auf das Speicherkonto:
+- Bei Microsoft Azure Storage-Explorer handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure-Speicherdaten arbeiten können – unter Windows, MacOS und Linux. Sie können die Anwendung installieren, um den Inhalt des Speicherkontos privat zu durchsuchen. 
  
-- The AzCopy utility is another option for high-performance scriptable data transfer for Azure storage. Use AzCopy to transfer data to and from Blob, File, and Table storage. 
+- Das Dienstprogramm AzCopy ist eine weitere Option für eine leistungsstarke, skriptfähige Datenübertragung für Azure-Speicher. Verwenden Sie AzCopy, um Daten in und aus Blob-, Datei- und Tabellenspeicher zu übertragen. 
 
 
-## Clean up resources 
-When you're done using the Private Endpoint, storage account and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
-2. Select **Delete resource group**. 
-3. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**. 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
+Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem Speicherkonto und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen: 
+1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus. 
+2. Wählen Sie die Option **Ressourcengruppe löschen**. 
+3. Geben Sie *myResourceGroup* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus. 
 
-## Next steps
-In this Quickstart, you created a VM on a virtual network and storage account and a Private Endpoint. You connected to one VM from the internet and securely communicated to the storage account using Private Link. To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Schnellstart haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, ein Speicherkonto und einen privaten Endpunkt erstellt. Sie haben über das Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem Speicherkonto kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter  [Was ist privater Endpunkt in Azure?](private-endpoint-overview.md).

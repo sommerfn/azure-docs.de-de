@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: c67ca111bf87c9dbfa69c93149d29dbd32767fbd
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 65a77b8243e7afc8d858360d3d3be86f44e6b67e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350756"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332217"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -48,34 +48,20 @@ Derzeit wird die Remotedesktopverbindung für die folgenden Betriebssysteme unte
 - Debian 9 „Stretch“
 - Ubuntu Server 16.04 LTS
 
-## <a name="teachers-connecting-to-the-template-vm-using-rdp"></a>Herstellen einer Verbindung mit der Vorlage für virtuelle Computer per RDP durch Lehrkräfte
-Lehrkräfte müssen zunächst per SSH eine Verbindung mit der Vorlage für virtuelle Computer herstellen und darauf RDP- und GUI-Pakete installieren. Anschließend können die Lehrkräfte die folgenden Schritte ausführen, um per RDP eine Verbindung mit den virtuellen Linux-Computern herzustellen: 
+## <a name="connect-to-the-template-vm"></a>Herstellen einer Verbindung mit der Vorlage für virtuelle Computer 
+Lehrkräfte müssen zunächst per SSH eine Verbindung mit der Vorlage für virtuelle Computer herstellen und darauf RDP- und GUI-Pakete installieren. Anschließend können die Lehrkräfte RDP verwenden, um eine Verbindung mit der Vorlage für virtuelle Computer herzustellen: 
 
-Die Option **Remotedesktop** zum Herstellen einer Verbindung mit der Vorlage für virtuelle Computer wird bei der Erstellung des Labs angezeigt. 
+1. Wird **Customize template** (Vorlage anpassen) auf der Symbolleiste angezeigt, wählen Sie die Option aus. Wählen Sie anschließend im Dialogfeld **Customize template** (Vorlage anpassen) die Option **Weiter** aus. Durch diese Aktion wird die Vorlage für virtuelle Computer gestartet.  
 
-![Herstellen einer Verbindung mit der Vorlage per RDP während der Erstellung](../media/how-to-enable-remote-desktop-linux/connect-at-creation.png)
+    ![Anpassen der Vorlage](../media/how-to-enable-remote-desktop-linux/customize-template.png)
+2. Nach dem Starten der Vorlage für virtuelle Computer können Sie **Connect template** (Vorlage verbinden) und dann auf der Symbolleiste **Connect via SSH** (Über SSH verbinden) auswählen. 
 
-Die Option **Remotedesktop** wird auf der Startseite des Labs angezeigt, nachdem das Lab erstellt und die Vorlage für virtuelle Computer gestartet wurde. Starten Sie die Vorlage für virtuelle Computer, falls sie nicht bereits gestartet wurde. 
-
-![Herstellen einer Verbindung mit der Vorlage per RDP nach der Lab-Erstellung](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
-
-Weitere Informationen zum Herstellen einer SSH- oder RDP-Verbindung mit dem virtuellen Computer finden Sie unter [Connect using SSH or RDP]((#connect-using-ssh-or-rdp) (Herstellen einer SSH- oder RDP-Verbindung). 
-
-## <a name="teachers-connecting-to-a-student-vm-using-rdp"></a>Herstellen einer Verbindung mit einem virtuellen Computer für Kursteilnehmer per RDP
-Eine Lehrkraft/Hochschullehrkraft kann eine Verbindung mit einem virtuellen Computer für Kursteilnehmer herstellen, indem er zur Ansicht **Virtuelle Computer** wechselt und das Symbol **Verbinden** auswählt. Vorher müssen Lehrkräfte das Vorlagenimage mit darauf installierten RDP- und GUI-Paketen **veröffentlichen**. 
-
-![Herstellen einer Verbindung mit dem virtuellen Computer für Kursteilnehmer durch Lehrkräfte](../media/how-to-enable-remote-desktop-linux/teacher-connect-to-student-vm.png)
-
-Weitere Informationen zum Herstellen einer SSH- oder RDP-Verbindung mit dem virtuellen Computer finden Sie unter [Connect using SSH or RDP]((#connect-using-ssh-or-rdp) (Herstellen einer SSH- oder RDP-Verbindung). 
-
-## <a name="connect-using-ssh-or-rdp"></a>Herstellen einer SSH- oder RDP-Verbindung
-Wenn Sie die Option **SSH** auswählen, wird das Dialogfeld **Eine Verbindung zu Ihrem virtuellen Computer herstellen** angezeigt:  
-
-![SSH-Verbindungszeichenfolge](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
-
-Wählen Sie neben dem Textfeld die Schaltfläche **Kopieren** aus, um den Wert in die Zwischenablage zu kopieren. Speichern Sie die SSH-Verbindungszeichenfolge. Verwenden Sie diese Verbindungszeichenfolge über ein SSH-Terminal (z. B. [Putty](https://www.putty.org/)), um eine Verbindung mit dem virtuellen Computer herzustellen.
-
-Wenn Sie die Option **RDP** auswählen, wird eine RDP-Datei auf Ihren Computer heruntergeladen. Speichern Sie die Datei, und öffnen Sie sie, um eine Verbindung mit dem Computer herzustellen. 
+    ![Herstellen einer Verbindung mit der Vorlage per RDP nach der Lab-Erstellung](../media/how-to-enable-remote-desktop-linux/rdp-after-lab-creation.png) 
+3. Das Dialogfeld **Eine Verbindung zu Ihrem virtuellen Computer herstellen** wird angezeigt. Wählen Sie neben dem Textfeld die Schaltfläche **Kopieren** aus, um den Wert in die Zwischenablage zu kopieren. Speichern Sie die SSH-Verbindungszeichenfolge. Verwenden Sie diese Verbindungszeichenfolge über ein SSH-Terminal (z. B. [Putty](https://www.putty.org/)), um eine Verbindung mit dem virtuellen Computer herzustellen.
+ 
+    ![SSH-Verbindungszeichenfolge](../media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
+4. Installieren Sie RDP- und GUI-Pakete, damit Sie bzw. Kursteilnehmer später über RDP eine Verbindung mit dem Linux-Computer herstellen können. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../virtual-machines/linux/use-remote-desktop.md). Anschließend veröffentlichen Sie das Image, damit die Kursteilnehmer per RDP eine Verbindung mit den virtuellen Linux-Computern herstellen können, die für sie bestimmt sind.
+5. Nach der Installation dieser Pakete können Sie auf der Symbolleiste die Schaltfläche **Connect to template** (Mit Vorlage verbinden) und anschließend **Connect via RDP** (Über RDP verbinden) auswählen, um eine RDP-Verbindung mit der Vorlage für virtuelle Computer herzustellen. Speichern Sie die RDP-Datei, und verwenden Sie sie, um über RDP eine Verbindung mit der Vorlage für virtuelle Computer herzustellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem ein Dozent das Feature „Remotedesktopverbindung“ aktiviert hat, können Kursteilnehmer über RDP/SSH eine Verbindung mit ihren VMs herstellen. Weitere Informationen finden Sie unter [Verwenden von Remotedesktop für virtuelle Linux-Computer in einem Classroom-Lab in Azure Lab Services](how-to-use-remote-desktop-linux-student.md). 

@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2019
+ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28354f54978e8ba776d8b0da294652ff462a05f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853453"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72324715"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -62,7 +62,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** .
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie die Rolle **Mitwirkender**, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten**, **Starten** und **Beenden** von Instanzen durchzuführen. Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus.
+1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Wählen Sie beispielsweise die Rolle **Mitwirkender** aus, um für die Anwendung das Ausführen von Aktionen wie das **Neustarten**, **Starten** und **Beenden** von Instanzen durchzuführen.  Erfahren Sie mehr über die [verfügbaren Rollen](../../role-based-access-control/built-in-roles.md). Azure AD-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Suchen Sie nach dem Namen Ihrer Anwendung, und wählen Sie ihn aus.
 
    ![Rolle auswählen, die der Anwendung zugewiesen werden soll](./media/howto-create-service-principal-portal/select-role.png)
 
@@ -89,7 +89,13 @@ Daemon-Anwendungen können zwei Formen von Anmeldeinformationen verwenden, um si
 
 ### <a name="upload-a-certificate"></a>Hochladen eines Zertifikats
 
-Sie können ein vorhandenes Zertifikat verwenden, wenn Sie eins besitzen.  Optional können Sie für Testzwecke ein selbstsigniertes Zertifikat erstellen. Öffnen Sie PowerShell, und führen Sie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) mit den folgenden Parametern aus, um ein selbstsigniertes Zertifikat im Benutzerzertifikatspeicher auf Ihrem Computer zu erstellen: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Exportieren Sie dieses Zertifikat mit dem MMC-Snap-In [Benutzerzertifikat verwalten](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in), auf das Sie in der Windows-Systemsteuerung zugreifen können.
+Sie können ein vorhandenes Zertifikat verwenden, wenn Sie eins besitzen.  Optional können Sie für Testzwecke ein selbstsigniertes Zertifikat erstellen. Öffnen Sie PowerShell, und führen Sie [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) mit den folgenden Parametern aus, um ein selbstsigniertes Zertifikat im Benutzerzertifikatspeicher auf Ihrem Computer zu erstellen: 
+
+```powershell
+$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
+```
+
+Exportieren Sie dieses Zertifikat mit dem MMC-Snap-In [Benutzerzertifikat verwalten](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in), auf das Sie in der Windows-Systemsteuerung zugreifen können, in eine Datei.
 
 So laden Sie das Zertifikat hoch:
 
@@ -114,6 +120,14 @@ Wenn Sie sich entscheiden, kein Zertifikat zu verwenden, können Sie ein neues A
 
    ![Den geheimen Wert kopieren, weil er später nicht mehr abgerufen werden kann](./media/howto-create-service-principal-portal/copy-secret.png)
 
+## <a name="configure-access-policies-on-resources"></a>Konfigurieren von Zugriffsrichtlinien für Ressourcen
+Beachten Sie, dass Sie möglicherweise zusätzliche Berechtigungen für Ressourcen konfigurieren müssen, auf die Ihre Anwendung zugreifen muss. Sie müssen beispielsweise auch die [Zugriffsrichtlinien eines Schlüsseltresors aktualisieren](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies), um der Anwendung Zugriff auf Schlüssel, Geheimnisse oder Zertifikate zu gewähren.  
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Schlüsseltresor, und wählen Sie **Zugriffsrichtlinien** aus.  
+1. Wählen Sie **Zugriffsrichtlinie hinzufügen** und anschließend die Schlüssel-, Geheimnis- und Zertifikatberechtigungen aus, die Sie Ihrer Anwendung gewähren möchten.  Wählen Sie den zuvor erstellten Dienstprinzipal aus.
+1. Wählen Sie **Hinzufügen** aus, um die Zugriffsrichtlinie hinzuzufügen, und wählen Sie dann **Speichern** aus, um Ihre Änderungen zu übernehmen.
+    ![Zugriffsrichtlinie hinzufügen](./media/howto-create-service-principal-portal/add-access-policy.png)
+
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
 Sie müssen über ausreichende Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Azure-Abonnement zuzuweisen.
@@ -125,7 +139,7 @@ Sie müssen über ausreichende Berechtigungen verfügen, um eine Anwendung bei I
 
    ![Suchen Sie Ihre Rolle. Wenn Ihnen die Rolle „Benutzer“ zugewiesen ist, stellen Sie sicher, dass Nicht-Administratoren Apps registrieren können.](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. Wählen Sie **Benutzereinstellungen** aus.
+1. Wählen Sie im linken Bereich **Benutzereinstellungen** aus.
 1. Überprüfen Sie die Einstellung **App Registrierungen**. Dieser Wert kann nur von einem Administrator festgelegt werden. Die Einstellung **Ja** bedeutet, dass jeder Benutzer im Azure AD-Mandanten eine App registrieren kann.
 
 Wenn die App-Registrierungseinstellung auf **Nein** festgelegt ist, können nur Benutzer mit Administratorrolle diese Arten von Anwendungen registrieren. Informationen zu verfügbaren Administratorrollen und den spezifischen Berechtigungen in Azure AD für die einzelnen Rollen finden Sie unter [verfügbare Rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles) und [Rollenberechtigungen](../users-groups-roles/directory-assign-admin-roles.md#role-permissions). Wenn Ihrem Konto die Rolle „Benutzer“ zugewiesen wurde, die App-Registrierungseinstellung jedoch auf Administratoren begrenzt ist, bitten Sie Ihren Administrator, entweder Ihnen die Rolle „Globaler Administrator“ zuzuweisen, die alle Aspekte von App-Registrierungen erstellen und verwalten kann, oder Benutzern das Registrieren von Apps zu ermöglichen.
@@ -150,6 +164,5 @@ So überprüfen Sie die Berechtigungen Ihres Abonnements
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Einrichten einer Anwendung mit mehreren Mandanten finden Sie im [Entwicklerhandbuch für die Autorisierung mit der Azure Resource Manager-API](../../azure-resource-manager/resource-manager-api-authentication.md).
 * Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/role-assignments-portal.md).  
 * Eine Liste der verfügbaren Aktionen, die Benutzern erteilt oder verweigert werden können, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md).

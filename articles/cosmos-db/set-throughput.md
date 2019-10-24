@@ -1,17 +1,17 @@
 ---
 title: Bereitstellen des Durchsatzes für Azure Cosmos-Container und -Datenbanken
 description: Hier erfahren Sie, wie Sie bereitgestellten Durchsatz für Ihre Azure Cosmos-Container und -Datenbanken festlegen.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: rimman
-ms.openlocfilehash: 146cc9e89959035ca211a036be4730b59cae8c0b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4c25e8b93fe9bcce17189bd7b787eaf4c3885716
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987389"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752485"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Bereitstellen des Durchsatzes für Container und Datenbanken
 
@@ -56,15 +56,30 @@ In den folgenden Beispielen wird erläutert, wo das Bereitstellen von Durchsatz 
 
 * Die gemeinsame Nutzung des bereitgestellten Durchsatzes einer Datenbank durch eine Gruppe von Containern ist nützlich, wenn Sie eine NoSQL-Datenbank (z. B. MongoDB oder Cassandra), die in einem Cluster von virtuellen Computern oder auf lokalen physischen Servern gehostet wird, zu Azure Cosmos DB migrieren. Stellen Sie sich den bereitgestellten Durchsatz, der für Ihre Azure Cosmos-Datenbank konfiguriert wurde, als logische Entsprechung (jedoch kostengünstiger und flexibler) zur Computekapazität des MongoDB- oder Cassandra-Clusters vor.  
 
-Alle in einer Datenbank erstellten Container mit bereitgestelltem Durchsatz müssen mit einem [Partitionsschlüssel](partition-data.md) erstellt werden. Der einem Container innerhalb einer Datenbank bereitgestellte Durchsatz wird zu jedem Zeitpunkt auf alle logischen Partitionen des Containers aufgeteilt. Wenn Ihre Container den für eine Datenbank konfigurierten bereitgestellten Durchsatz gemeinsam nutzen, können Sie den Durchsatz nicht selektiv einem bestimmten Container oder einer logischen Partition zuordnen. 
+Alle in einer Datenbank erstellten Container mit bereitgestelltem Durchsatz müssen mit einem [Partitionsschlüssel](partition-data.md) erstellt werden. Der einem Container innerhalb einer Datenbank zugeteilte Durchsatz wird jederzeit auf alle logischen Partitionen des Containers verteilt. Wenn Ihre Container den für eine Datenbank konfigurierten bereitgestellten Durchsatz gemeinsam nutzen, können Sie den Durchsatz nicht selektiv einem bestimmten Container oder einer logischen Partition zuordnen. 
 
 Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der jeweiligen logischen Partition zugewiesen wurde, werden Ihre Vorgänge begrenzt. Bei einer Ratenbegrenzung können Sie entweder den Durchsatz für die gesamte Datenbank erhöhen oder die Vorgänge wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partition-data.md).
 
-Der für eine Datenbank bereitgestellte Durchsatz kann von den Containern innerhalb der Datenbank gemeinsam genutzt werden. Maximal 25 Container können den in der Datenbank bereitgestellten Durchsatz gemeinsam nutzen. Über 25 Container hinaus kann jeder in dieser Datenbank erstellte neue Container einen Teil des Datenbankdurchsatzes mit anderen bereits in der Datenbank verfügbaren Sammlungen gemeinsam nutzen. Die Menge des gemeinsam nutzbaren Durchsatzes ist abhängig von der Anzahl der in der Datenbank bereitgestellten Container. 
+Der für eine Datenbank bereitgestellte Durchsatz kann von den Containern innerhalb der Datenbank gemeinsam genutzt werden. Jeder neue Container in auf Datenbankebene gemeinsam genutztem Durchsatz benötigt 100 RU/s. Beim Bereitstellen von Containern mit gemeinsam genutzter Datenbank gilt Folgendes:
 
-Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer Datenbank beinhalten, wird empfohlen, die leere Datenbank zu löschen und vor der Erstellung der Sammlung eine neue Datenbank anzulegen.
+* Es werden jeweils 25 Container zu einer Partitionsgruppe zusammengefasst, und der Datenbankdurchsatz (D) wird von den Containern in der Partitionsgruppe gemeinsam genutzt. Wenn in der Datenbank bis zu 25 Container vorhanden sind und Sie nur einen einzelnen Container verwenden, steht diesem Container der maximale Durchsatz (D) zur Verfügung.
 
-Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
+* Für jeden neuen Container, der erstellt wird, wenn bereits 25 Container vorhanden sind, wird eine neue Partitionsgruppe erstellt, und der Datenbankdurchsatz wird auf die neu erstellten Partitionsgruppen aufgeteilt: D/2 bei zwei Partitionsgruppen, D/3 bei drei Partitionsgruppen usw. Falls Sie lediglich einen einzelnen Container aus der Datenbank verwenden, steht für diesen der jeweilige maximale Durchsatz (D/2, D/3, D/4 usw.) zur Verfügung. Aufgrund des geringeren Durchsatzes empfiehlt es sich, in einer Datenbank maximal 25 Container zu erstellen.
+
+**Beispiel**
+
+* Angenommen, Sie erstellen eine Datenbank namens „MyDB“ mit einem bereitgestellten Durchsatz von 10.000 RU/s.
+
+* Wenn Sie unter „MyDB“ 25 Container bereitstellen, werden alle Container in einer Partitionsgruppe zusammengefasst. Falls Sie lediglich einen einzelnen Container aus der Datenbank verwenden, steht für diesen der maximale Durchsatz von 10.000 RU/s (D) zur Verfügung.
+
+* Wenn Sie einen 26. Container bereitstellen, wird eine neue Partitionsgruppe erstellt, und der Durchsatz wird gleichmäßig auf die beiden Partitionsgruppen verteilt. Das bedeutet: Wenn Sie nun lediglich einen einzelnen Container aus der Datenbank verwenden, stehen für diesen maximal 5.000 RU/s (D/2) zur Verfügung. Da zwei Partitionsgruppen vorhanden sind, beträgt der Faktor für die gemeinsame Durchsatznutzung D/2.
+
+   In der folgenden Abbildung wird das obige Beispiel grafisch dargestellt:
+
+   ![Faktor für die gemeinsame Durchsatznutzung auf Datenbankebene](./media/set-throughput/database-level-throughput-shareability-factor.png)
+
+
+Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer Datenbank beinhalten, wird empfohlen, die leere Datenbank zu löschen und vor der Erstellung der Sammlung eine neue Datenbank anzulegen. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
 
 ![Physische Partition](./media/set-throughput/resource-partition2.png)
 
@@ -95,7 +110,7 @@ Sie können den Mindestdurchsatz eines Containers oder einer Datenbank programmg
 
 Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet)-Methode das Abrufen des Mindestdurchsatzes eines Containers oder einer Datenbank. 
 
-Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. Wenn ein Skalierungsvorgang durchgeführt wird, um den Durchsatz zu steigern, dann kann es aufgrund der Systemtasks zur Bereitstellung der erforderlichen Ressourcen länger dauern. Sie können den Status des Skalierungsvorgangs im Azure-Portal oder programmgesteuert mit den SDKs überprüfen. Wenn Sie .Net SDK verwenden, erhalten Sie den Status des Skalierungsvorgangs mit der `DocumentClient.ReadOfferAsync`-Methode.
+Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. Wenn ein Skalierungsvorgang ausgeführt wird, um den Durchsatz zu erhöhen, kann sich der Zeitaufwand aufgrund der Systemtasks für die Bereitstellung der erforderlichen Ressourcen erhöhen. Sie können den Status des Skalierungsvorgangs im Azure-Portal oder programmgesteuert mit den SDKs überprüfen. Bei Verwendung des .NET SDK können Sie den Status des Skalierungsvorgangs mithilfe der Methode `DocumentClient.ReadOfferAsync` abrufen.
 
 ## <a name="comparison-of-models"></a>Vergleich der Modelle
 
