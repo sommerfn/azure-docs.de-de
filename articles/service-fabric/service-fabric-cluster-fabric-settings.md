@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 71f2b111c0291bc9563b12a1cdbd88ea7e9f5b5b
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241751"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376137"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -347,6 +347,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DefaultContainerRepositoryAccountName|string, Standardwert ""|statischen|Verwendung der Standardanmeldeinformationen anstelle der in ApplicationManifest.xml angegebenen Anmeldeinformationen. |
 |DefaultContainerRepositoryPassword|string, Standardwert ""|statischen|Verwendung der standardmäßigen Kennwortanmeldeinformationen anstelle der in ApplicationManifest.xml angegebenen Anmeldeinformationen.|
 |DefaultContainerRepositoryPasswordType|string, Standardwert ""|statischen|Wenn die Zeichenfolge nicht leer ist, kann der Wert „Encrypted“ oder „SecretsStoreRef“ lauten.|
+|DefaultDnsSearchSuffixEmpty|Boolesch, Standardwert FALSE|statischen|Der Dienstname wird standardmäßig an den SF-DNS-Namen für Containerdienste angehängt. Dieses Verhalten wird durch dieses Feature deaktiviert, sodass im Auflösungspfad nichts an den SF-DNS-Namen angehängt wird.|
 |DeploymentMaxFailureCount|Ganze Zahl, Standardwert 20| Dynamisch|Die Anwendungsbereitstellung wird DeploymentMaxFailureCount Mal wiederholt, bevor ein Fehler für die Bereitstellung der betreffenden Anwendung auf dem Knoten auftritt.| 
 |DeploymentMaxRetryInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das maximale Wiederholungsintervall für die Bereitstellung. Bei jedem andauernden Fehler wird das Wiederholungsintervall wie folgt berechnet: Min( DeploymentMaxRetryInterval; Anzahl andauernder Fehler * DeploymentRetryBackoffInterval). |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
@@ -533,7 +534,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DetailedNodeListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Knoten pro Einschränkung, die vor der Kürzung in Berichte zu nicht platzierten Replikaten aufgenommen werden. |
 |DetailedPartitionListLimit | Ganze Zahl, Standardwert 15 |Dynamisch| Definiert die Anzahl von Partitionen pro Diagnoseeintrag für eine Einschränkung, die vor der Kürzung in die Diagnose aufgenommen werden. |
 |DetailedVerboseHealthReportLimit | Ganze Zahl, Standardwert 200 | Dynamisch|Definiert, wie häufig ein nicht platziertes Replikat dauerhaft nicht platziert bleiben muss, bevor detaillierte Integritätsberichte ausgegeben werden. |
-|EnforceUserServiceMetricCapacities|Boolesch, Standardwert FALSE | statischen |Aktiviert den Schutz für Fabric-Dienste. Alle Benutzerdienste befinden sich unter einem einzigen Auftragsobjekt/einer einzigen cgroup und sind auf die angegebene Menge von Ressourcen beschränkt. Diese muss statisch sein (erfordert einen Neustart von FabricHost), da die Erstellung/das Entfernen von Benutzerauftragsobjekten und das Festlegen von Grenzwerten während des Öffnens des Fabric-Hosts erfolgt. |
+|EnforceUserServiceMetricCapacities|Boolesch, Standardwert FALSE | statischen |Aktiviert den Schutz für Fabric-Dienste. Alle Benutzerdienste befinden sich unter einem einzelnen Auftragsobjekt/einer einzelnen cgroup und sind auf die angegebene Menge von Ressourcen beschränkt. Diese muss statisch sein (erfordert einen Neustart von FabricHost), da das Erstellen/Entfernen von Benutzerauftragsobjekten und das Festlegen von Grenzwerten beim Öffnen des Fabric-Hosts erfolgt. |
 |FaultDomainConstraintPriority | Ganze Zahl, Standardwert 0 |Dynamisch| Bestimmt die Priorität der Fehlerdomäneneinschränkung: 0: Stark; 1: Schwach; negativ: Ignorieren. |
 |GlobalMovementThrottleCountingInterval | Zeit in Sekunden, Standardwert 600 |statischen| Geben Sie die Zeitspanne in Sekunden an. Geben Sie die Länge des letzten Intervalls an, für das Datenverschiebungen pro Domänenreplikat nachverfolgt werden sollen (wird zusammen mit GlobalMovementThrottleThreshold verwendet). Kann auf 0 festgelegt werden, um die globale Drosselung vollständig zu ignorieren. |
 |GlobalMovementThrottleThreshold | Uint, Standardwert 1000 |Dynamisch| Maximale Anzahl von zulässigen Datenverschiebungen in der Lastenausgleichsphase im letzten von GlobalMovementThrottleCountingInterval angegebenen Intervall. |

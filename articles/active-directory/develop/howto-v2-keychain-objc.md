@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e85fc5e6e907e32c0ad67af339c48cf84ef4764
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269380"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264178"
 ---
 # <a name="configure-keychain"></a>Konfigurieren einer Keychain
 
-Wenn bei der [Microsoft Authentication Library für iOS und macOS](msal-overview.md) (MSAL) ein Benutzer angemeldet oder ein Token aktualisiert wird, versucht MSAL, Token in der Keychain zwischenzuspeichern. Dadurch kann MSAL im Hintergrund das einmalige Anmelden (SSO, Single Sign-On) zwischen mehreren Apps bereitstellen, die vom selben Apple-Entwickler herausgegeben wurden. Das einmalige Anmelden erfolgt über die Funktion der Keychain-Zugriffsgruppen (weitere Informationen finden Sie in der [Apple-Dokumentation](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)).
+Wenn bei der [Microsoft Authentication Library für iOS und macOS](msal-overview.md) (MSAL) ein Benutzer angemeldet oder ein Token aktualisiert wird, versucht MSAL, Token in der Keychain zwischenzuspeichern. Dadurch kann MSAL im Hintergrund das einmalige Anmelden (SSO, Single Sign-On) zwischen mehreren Apps bereitstellen, die vom selben Apple-Entwickler herausgegeben wurden. Das einmalige Anmelden erfolgt über die Funktion der Keychain-Zugriffsgruppen. Weitere Informationen finden Sie in der [Apple-Dokumentation zu Keychain-Elementen](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc).
 
 In diesem Artikel wird beschrieben, wie Sie App-Berechtigungen so konfigurieren, dass MSAL Token in die iOS- und macOS-Keychain schreiben kann.
 

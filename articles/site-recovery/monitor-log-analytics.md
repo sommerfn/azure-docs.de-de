@@ -1,18 +1,18 @@
 ---
-title: Überwachen von Azure Site Recovery mit Azure Monitor-Protokollen (Log Analytics)
+title: Überwachen von Azure Site Recovery mit Azure Monitor-Protokollen (Log Analytics) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure Site Recovery mit Azure Monitor-Protokollen (Log Analytics) überwachen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/13/2019
 ms.author: raynew
-ms.openlocfilehash: 4eb88658437d3b29cc55d24bb83f73b660daea43
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718229"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331920"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
@@ -25,7 +25,11 @@ Für Site Recovery können Sie Azure Monitor-Protokolle für folgende Aufgaben v
 - **Überwachen von Integrität und Status von Site Recovery:** Sie können z. B. die Replikationsintegrität, den Testfailoverstatus, Site Recovery-Ereignisse, RPOs (Recovery Point Objectives, Wiederherstellungspunktziele) für geschützte Computer und die Änderungsraten von Datenträgern/Daten überwachen.
 - **Einrichten von Warnungen für Site Recovery:** Beispielsweise können Sie Warnungen für die Computerintegrität oder für den Testfailoverstatus oder Site Recovery-Aufträge konfigurieren.
 
-Die Verwendung von Azure Monitor-Protokollen mit Site Recovery wird für die Azure-zu-Azure-Replikation und die Replikation von VMware-VMs/physischen Servern zu Azure unterstützt.
+Die Verwendung von Azure Monitor-Protokollen mit Site Recovery wird für die **Azure-zu-Azure-Replikation** und die **Replikation von VMware-VMs/physischen Servern zu Azure** unterstützt.
+
+> [!NOTE]
+> Die Änderungsdaten- und Uploadratenprotokolle sind nur für virtuelle Azure-Computer verfügbar, die in einer sekundären Azure-Region repliziert werden.
+
 ## <a name="before-you-start"></a>Vorbereitung
 
 Sie benötigen Folgendes:
@@ -42,9 +46,10 @@ Es wird empfohlen, vor dem Start die [allgemeinen Fragen zur Überwachung](monit
 
     ![Auswählen der Diagnoseprotokollierung](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. Geben Sie unter**Diagnoseeinstellungen** einen Namen für die Protokollaktion an, und wählen Sie **An Log Analytics senden** aus.
+2. Geben Sie unter **Diagnoseeinstellungen** einen Namen an, und aktivieren Sie das Kontrollkästchen **An Log Analytics senden**.
 3. Wählen Sie das Abonnement der Azure Monitor-Protokolle und den Log Analytics-Arbeitsbereich aus.
-4. Wählen Sie in der Protokollliste alle Protokolle mit dem Präfix **AzureSiteRecovery** aus. Klicken Sie dann auf **OK**.
+4. Wählen mithilfe des Umschalters die Option **Azure-Diagnose** aus.
+5. Wählen Sie in der Protokollliste alle Protokolle mit dem Präfix **AzureSiteRecovery** aus. Klicken Sie dann auf **OK**.
 
     ![Arbeitsbereich auswählen](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -171,7 +176,10 @@ AzureDiagnostics  
 
 ### <a name="query-data-change-rate-churn-for-a-vm"></a>Abfragen der Datenänderungsrate (Änderung) für eine VM
 
-Diese Abfrage zeichnet ein Trenddiagramm für eine bestimmte Azure-VM (ContosoVM123), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate nachverfolgt. Diese Informationen sind nur für Azure-VMs verfügbar, die in eine sekundäre Azure-Region repliziert werden.
+> [!NOTE] 
+> Die Änderungsinformationen sind nur für virtuelle Azure-Computer verfügbar, die in einer sekundären Azure-Region repliziert werden.
+
+Diese Abfrage zeichnet ein Trenddiagramm für eine bestimmte Azure-VM (ContosoVM123), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate nachverfolgt. 
 
 ```
 AzureDiagnostics   

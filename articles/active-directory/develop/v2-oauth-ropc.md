@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/11/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2fb475a5d88547cc5f39cb269cc1cbf72fcd25b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193208"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295400"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft Identity Platform und die OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
@@ -34,6 +34,7 @@ Die Microsoft Identity Platform unterstützt die [Gewährung für Kennwortanmeld
 > * Persönliche Konten, die zu einem Mandanten von Azure AD eingeladen werden, können ROPC nicht verwenden.
 > * Konten ohne Kennwörter können sich nicht über ROPC anmelden. Für dieses Szenario wird empfohlen, für Ihre App einen anderen Flow zu verwenden.
 > * Wenn Benutzer sich über die mehrstufige Authentifizierung (MFA) in der Anwendung anmelden müssen, werden sie blockiert.
+> * ROPC wird in Szenarien mit [Hybrididentitätsverbund](/azure/active-directory/hybrid/whatis-fed) (also beispielsweise bei Verwendung von Azure AD und AD FS für die Authentifizierung lokaler Konten) nicht unterstützt. Wenn Benutzer vollständig auf eine Seite eines lokalen Identitätsanbieters weitergeleitet werden, kann Azure AD den Benutzernamen und das Kennwort nicht anhand dieses Identitätsanbieters testen. Die [Passthrough-Authentifizierung](/azure/active-directory/hybrid/how-to-connect-pta) wird mit ROPC allerdings unterstützt.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 

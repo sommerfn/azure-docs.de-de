@@ -13,24 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 920e470a8bc06050219d0f603ab842cfc267e6ce
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695002"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329407"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
-In Azure Monitor werden [Protokoll](data-platform-logs.md)daten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Ihren Arbeitsbereich durch.
+Azure Monitor speichert [Protokolldaten](data-platform-logs.md) in einem Log Analytics-Arbeitsbereich. Bei einem Arbeitsbereich handelt es sich um einen Container, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Ihren Arbeitsbereich durch.
 
-In diesem Artikel wird erläutert, wie der Zugriff auf Protokolle verwaltet wird und wie die Arbeitsbereiche verwaltet werden, die diese enthalten. Dazu gehört Folgendes:
+In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Protokolle sowie die Arbeitsbereiche verwalten, in denen sich diese befinden. Außerdem erfahren Sie, wie Sie Zugriff für Folgendes gewähren: 
 
-* Gewähren des Zugriffs für Benutzer, die Zugriff auf Protokolldaten von bestimmten Ressourcen benötigen, mithilfe der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)
-
-* Gewähren des Zugriffs auf den Arbeitsbereich mithilfe von Arbeitsbereichsberechtigungen
-
-* Gewähren des Zugriffs für Benutzer, die Zugriff auf Protokolldaten in einer bestimmten Tabelle im Arbeitsbereich benötigen, mithilfe von Azure RBAC
+* Den Arbeitsbereich (mithilfe von Arbeitsbereichsberechtigungen)
+* Benutzer, die Zugriff auf Protokolldaten von bestimmten Ressourcen benötigen (mithilfe von Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung))
+* Benutzer, die Zugriff auf Protokolldaten in einer bestimmten Tabelle im Arbeitsbereich benötigen (mithilfe von Azure RBAC)
 
 ## <a name="configure-access-control-mode"></a>Konfigurieren des Zugriffssteuerungsmodus
 
@@ -150,7 +148,7 @@ Die Rolle „Log Analytics-Leser“ umfasst die folgenden Azure-Aktionen:
 
 Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausführen:
 
-* Lesen aller Überwachungsdaten (wie dies die Rolle „Log Analytics-Leser“ ermöglicht)
+* Lesen aller Überwachungsdaten, die auch mit der Rolle „Log Analytics-Leser“ gelesen werden können
 * Erstellen und Konfigurieren von Automation-Konten
 * Hinzufügen und Entfernen von Verwaltungslösungen
 
@@ -158,7 +156,7 @@ Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausf
     > Um die letzten beiden Aktionen erfolgreich ausführen zu können, muss diese Berechtigung auf der Ressourcengruppen- oder Abonnementebene gewährt werden.
 
 * Lesen von Speicherkontoschlüsseln
-* Konfigurieren der Sammlung von Protokollen aus Azure Storage
+* Konfigurieren der Erfassung von Protokollen aus Azure Storage
 * Bearbeiten von Überwachungseinstellungen für Azure-Ressourcen, einschließlich:
   * Hinzufügen der VM-Erweiterung zu virtuellen Computern
   * Konfigurieren von Azure-Diagnosen für alle Azure-Ressourcen

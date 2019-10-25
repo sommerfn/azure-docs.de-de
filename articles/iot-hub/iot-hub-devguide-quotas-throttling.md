@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1ed1b105f64d109284de441af1bcaee5f0827d75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877168"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331364"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -43,7 +43,7 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 | Senden von Nachrichten von Geräten an die Cloud | 100 Sendevorgänge/Sek. oder 12 Sendevorgänge/Sek./Einheit (je nachdem, was höher ist) <br/> Zwei S1-Einheiten entsprechen beispielsweise 2\*12 = 24/Sek., Ihnen stehen jedoch mindestens 100 Sendevorgänge/Sek. für alle Ihre Einheiten zur Verfügung. Mit neun S1-Einheiten verfügen Sie über 108 Sendevorgänge/Sek. (9\*12) für all Ihre Einheiten. | 120 Sendevorgänge/Sek./Einheit | 6\.000 Sendevorgänge/Sek./Einheit |
 | C2D-Sendevorgänge<sup>1</sup> | 1,67 Sendevorgänge/Sek./Einheit (100 Nachrichten/Min./Einheit) | 1,67 Sendevorgänge/Sek./Einheit (100 Sendevorgänge/Min./Einheit) | 83,33 Sendevorgänge/Sek./Einheit (5.000 Sendevorgänge/Min./Einheit) |
 | C2D-Empfangsvorgänge<sup>1</sup> <br/> (nur bei Verwendung von HTTPS durch das Gerät)| 16,67 Empfangsvorgänge/Sek./Einheit (1.000 Empfangsvorgänge/Min./Einheit) | 16,67 Empfangsvorgänge/Sek./Einheit (1.000 Empfangsvorgänge/Min./Einheit) | 833,33 Empfangsvorgänge/Sek./Einheit (50.000 Empfangsvorgänge/Min./Einheit) |
-| Dateiupload | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) |
+| Dateiupload | 1,67 Dateiuploadinitiierungen/Sek./Einheit (100/Min./Einheit) | 1,67 Dateiuploadinitiierungen/Sek./Einheit (100/Min./Einheit) | 83,33 Dateiuploadinitiierungen/Sek./Einheit (5.000/Min./Einheit) |
 | Direkte Methoden<sup>1</sup> | 160KB/s/Einheit<sup>2</sup> | 480KB/s/Einheit<sup>2</sup> | 24MB/s/Einheit<sup>2</sup> | 
 | Abfragen | 20/Minuten/Einheit | 20/Minuten/Einheit | 1\.000/Minute/Einheit |
 | Zwillingslesevorgänge (Gerät und Modul)<sup>1</sup> | 100/s | 100/s oder 10/s/Einheit – je nachdem, was höher ist | 500/s/Einheit |
@@ -95,7 +95,7 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 
 | Vorgang | Begrenzung |
 | --------- | ----- |
-| Geräte | Maximal können 1.000.000 Geräte mit einem einzelnen IoT-Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).|
+| Geräte | Die Gesamtzahl von Geräten und Modulen, die bei einem einzelnen IoT-Hub registriert werden können, ist auf 1 Mio. begrenzt. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).|
 | Dateiuploads | Zehn gleichzeitige Dateiuploads pro Gerät. |
 | Aufträge<sup>1</sup> | Maximale Anzahl gleichzeitiger Aufträge: 1 (für Free und S1), 5 (für S2), 10 (für S3). Bei allen Tarifen kann jedoch für Geräte immer nur ein [Import-/Exportauftrag](iot-hub-bulk-identity-mgmt.md) nach dem anderen ausgeführt werden. <br/>Der Auftragsverlauf wird bis zu 30 Tage lang gespeichert. |
 | Zusätzliche Endpunkte | Kostenpflichtige SKU-Hubs haben möglicherweise 10 zusätzliche Endpunkte. Kostenfreie SKU-Hubs haben möglicherweise einen zusätzlichen Endpunkt. |

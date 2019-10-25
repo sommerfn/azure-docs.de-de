@@ -1,21 +1,21 @@
 ---
-title: Verstehen von und Arbeiten mit Bereichen in Azure Cost Management | Microsoft-Dokumentation
+title: Verstehen von und Arbeiten mit Bereichen in Azure Cost Management
 description: Dieser Artikel hilft Ihnen, die in Azure verfügbaren Bereiche für Abrechnung und Ressourcenverwaltung zu verstehen und wie Sie die Bereiche in Cost Management und APIs verwenden können.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338633"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374483"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -128,7 +128,10 @@ Abrechnungskonten der Microsoft-Kundenvereinbarung haben die folgenden Bereiche:
 
     Ressourcentyp: `Microsoft.Billing/billingAccounts/invoiceSections`
 
+- **Kunde**: Stellt eine Gruppe von Abonnements dar, die einem bestimmten Kunden zugeordnet sind, der von einem Partner in eine Microsoft-Kundenvereinbarung aufgenommen wird. Hierbei handelt es sich um einen CSP-spezifischen Bereich.
+
 Im Gegensatz zu EA-Abrechnungsbereichen _sind_ Abrechnungskonten der Kundenvereinbarung an ein einzelnes Verzeichnis gebunden und lassen keine Abonnements in mehreren Azure AD-Verzeichnissen zu.
+
 
 Abrechnungsbereiche der Kundenvereinbarung unterstützen die folgenden Rollen:
 
@@ -149,7 +152,7 @@ Wenn die AWS-Integration abgeschlossen ist, finden Sie weitere Informationen unt
 - **Externes Abrechnungskonto**: Repräsentiert eine Kundenvereinbarung mit einem Drittanbieter. Dies ist vergleichbar mit dem Abrechnungskonto für Enterprise Agreements.
 
     Ressourcentyp: `Microsoft.CostManagement/externalBillingAccounts`
-    
+
 - **Externes Abonnement**: Repräsentiert ein operatives Kundenkonto bei einem Drittanbieter. Dies ist vergleichbar mit einem Azure-Abonnement.
 
     Ressourcentyp: `Microsoft.CostManagement/externalSubscriptions`

@@ -31,10 +31,11 @@
           href: quickstarts/get-started-xamarin-ios.md
 - name: Lernprogramme
   items:
-    - name: Freigeben in Unity
+    - name: 'Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors'
       href: tutorials/tutorial-share-anchors-across-devices.md
-    - name: Freigeben in Unity mit Azure Cosmos DB
-      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+      items:
+        - name: 'Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors mit einem Azure Cosmos DB-Back-End'
+          href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
     - name: Starten einer neuen Unity HoloLens-App
       href: tutorials/tutorial-new-unity-hololens-app.md
     - name: Starten einer neuen Android-App

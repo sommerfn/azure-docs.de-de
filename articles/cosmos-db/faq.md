@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 30530f445941747c659f584d279261148b08825e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 15e4fc3ce412807908c75fe25acecac0fe86d261
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240799"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262801"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -124,6 +124,10 @@ Die Bereitstellung auf Container- und Datenbankebene wird gesondert angeboten. F
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Unterstützt Azure CosmosDB die Zeitreihenanalyse?
 
 Ja, Azure CosmosDB unterstützt die Zeitreihenanalyse, hier ist ein Beispiel für das [Zeitreihenmuster](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns). Dieses Beispiel zeigt, wie der Änderungsfeed zum Erstellen aggregierter Ansichten von Zeitreihendaten verwendet wird. Sie können diesen Ansatz durch die Verwendung von Spark Streaming oder einer anderen Streamdaten-Verarbeitungskomponente erweitern.
+
+## <a name="what-are-the-azure-cosmos-db-service-quotas-and-throughput-limits"></a>Was sind die Dienstkontingente und Durchsatzgrenzwerte von Azure Cosmos DB?
+
+Weitere Informationen finden Sie in den Azure Cosmos DB-Artikeln [Kontingente im Azure Cosmos DB-Dienst](concepts-limits.md) und [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md#comparison-of-models).
 
 ## <a name="sql-api"></a>SQL-API
 

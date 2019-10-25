@@ -1,21 +1,20 @@
 ---
 title: Überwachen von Azure Functions
 description: Erfahren Sie, wie Sie Azure Application Insights mit Azure Functions zum Überwachen der Funktionsausführung verwenden.
-services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: dc333ef542da1330672ad1dc8ad731969eef6742
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098689"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374567"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -28,6 +27,8 @@ Da die erforderliche Instrumentierung von Application Insights in Azure Function
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights – Preise und Limits
 
 Sie können die Application Insights-Integration in Funktionen-Apps kostenlos testen. Für die Menge der Daten, die täglich kostenlos verarbeitet werden können, gibt es einen Grenzwert. Beim Testen können Sie an diesen Grenzwert stoßen. In Azure erhalten Sie Benachrichtigungen im Portal und per E-Mail, wenn Ihr Tageslimit beinahe erreicht ist. Wenn Sie diese Benachrichtigungen ignorieren und das Limit erreichen, werden neue Protokolle nicht in Application Insights-Abfragen angezeigt. Seien Sie sich des Grenzwerts bewusst, um unnötigen Zeitaufwand für die Problembehandlung zu vermeiden. Weitere Informationen finden Sie unter [Verwalten von Preisen und Datenvolumen in Application Insights](../azure-monitor/app/pricing.md).
+
+Die vollständige Liste der Application Insights-Features, die für Ihre Funktions-App verfügbar sind, finden Sie unter [Unterstützte Features in Application Insights für Azure Functions](../azure-monitor/app/azure-functions-supported-features.md).
 
 ## <a name="enable-application-insights-integration"></a>Aktivieren der Application Insights-Integration
 
@@ -606,7 +607,7 @@ Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeige
 
 ## <a name="streaming-logs"></a>Streamingprotokolle
 
-Während der Entwicklung einer Anwendung möchten Sie oft in Echtzeit sehen, was bei der Ausführung in Azure in die Protokolle geschrieben wird.
+Während der Entwicklung einer Anwendung möchten Sie häufig in Echtzeit sehen, was bei der Ausführung in Azure in die Protokolle geschrieben wird.
 
 Es gibt zwei Möglichkeiten, einen Datenstrom von Protokolldateien anzuzeigen, die bei den Ausführungen Ihrer Funktion generiert werden.
 

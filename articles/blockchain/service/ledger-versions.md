@@ -1,21 +1,21 @@
 ---
-title: Von Azure Blockchain unterstützte Ledgerversionen, Patchen und Upgraden
+title: Azure Blockchain-Ledgerversionen, Patches und Upgrades
 description: Übersicht der unterstützten Ledgerversionen in Azure Blockchain, einschließlich Richtlinien bezüglich Systempatches und Upgrades, die vom System bzw. von Benutzern verwaltet werden.
 services: azure-blockchain
 keywords: Blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 40719f1c353b8961e14815cb61e7a862b47fc6f5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562789"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329134"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Von Azure Blockchain unterstützte Ledgerversionen
 
@@ -35,7 +35,7 @@ Azure Blockchain Service führt die Aktualisierung der Patchreleases von Quorum 
 
 ## <a name="availability-of-new-ledger-versions"></a>Verfügbarkeit neuer Ledgerversionen
 
-Azure Blockchain Service macht die aktuellste Haupt- und Nebenversion des Quorum-Ledgers innerhalb von 60 Tagen nach dessen Veröffentlichung durch den Quorum-Hersteller verfügbar. Wenn Sie ein neues Mitglied und Konsortium bereitstellen, stehen maximal vier Nebenversionen für Konsortien zur Auswahl. Upgrades von einer Haupt- auf eine Nebenversion werden derzeit nicht unterstützt.
+Azure Blockchain Service macht die aktuellste Haupt- und Nebenversion des Quorum-Ledgers innerhalb von 60 Tagen nach dessen Veröffentlichung durch den Quorum-Hersteller verfügbar. Wenn Sie ein neues Mitglied und Konsortium bereitstellen, stehen maximal vier Nebenversionen für Konsortien zur Auswahl. Upgrades von einer Haupt- auf eine Nebenversion werden derzeit nicht unterstützt. Wenn Sie also beispielsweise die Version 2.x verwenden, wird derzeit kein Upgrade auf die Version 3.x unterstützt. Analog dazu wird bei Verwendung der Version 2.2 derzeit kein Upgrade auf die Version 2.3 unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

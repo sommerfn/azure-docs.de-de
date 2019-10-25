@@ -1,17 +1,17 @@
 ---
-title: Einrichten einer Senkentransformation in der Mapping Data Flow-Funktion von Azure Data Factory
-description: Erfahren Sie, wie Sie eine Senkentransformation in Mapping Data Flow einrichten.
+title: Einrichten einer Senkentransformation im Mappingdatenfluss-Feature von Azure Data Factory
+description: Hier erfahren Sie, wie Sie im Mappingdatenfluss eine Senkentransformation einrichten.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: be2ab5605f7fa60ebb78493f714648d458e82a6c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029240"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387775"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Senkentransformation für einen Datenfluss
 
@@ -43,7 +43,7 @@ Sie können mit der Mehrfachauswahl in der Zuordnungstabelle mehrere Spalten ver
 
 Um den eingehenden Satz von Feldern immer unverändert einem Ziel zuzuordnen und flexible Schemadefinitionen vollständig zu akzeptieren, wählen Sie **Schemaabweichung zulassen** aus.
 
-![Registerkarte „Zuordnung“ mit Feldern, die Spalten im Dataset zugeordnet sind](media/data-flow/multi1.png "mehrere Optionen")
+![Registerkarte „Zuordnung“ mit Feldern, die Spalten im Dataset zugeordnet sind](media/data-flow/multi1.png "Mehrere Optionen")
 
 Wählen Sie zum Zurücksetzen Ihrer Spaltenzuordnungen **Re-map** (Neu zuordnen) aus.
 
@@ -93,7 +93,7 @@ Wählen Sie die Datenbankeinstellungen aus:
 > [!NOTE]
 > Sie können Data Factory im Datenfluss anweisen, eine neue Tabellendefinition in der Zieldatenbank zu erstellen. Um die Tabellendefinition zu erstellen, legen Sie ein Dataset in der Senkentransformation mit einem neuen Tabellennamen fest. Wählen Sie im SQL-Dataset unter dem Tabellennamen **Bearbeiten** aus, und geben Sie einen neuen Tabellennamen ein. Aktivieren Sie dann in der Senkentransformation **Schemaabweichung zulassen**. Legen Sie **Schema importieren** auf **Nein** fest.
 
-![SQL-Dataseteinstellungen mit Option für das Bearbeiten des Tabellennamens](media/data-flow/dataset2.png "SQL-Schema")
+![SQL-Dataseteinstellungen mit dem Ort für die Bearbeitung des Tabellennamens](media/data-flow/dataset2.png "SQL-Schema")
 
 > [!NOTE]
 > Beim Aktualisieren oder Löschen von Zeilen in Ihrer Datenbanksenke müssen Sie die Schlüsselspalte festlegen. Diese Einstellung ermöglicht die Transformation zur Zeilenänderung, um die eindeutige Zeile in der Datenverschiebungsbibliothek (Data Movement Library, DML) zu bestimmen.

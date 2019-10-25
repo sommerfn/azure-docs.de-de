@@ -1,21 +1,21 @@
 ---
-title: Zuweisen des Zugriffs auf Daten in Azure Cost Management | Microsoft-Dokumentation
+title: Zuweisen des Zugriffs auf Daten in Azure Cost Management
 description: Dieser Artikel führt Sie durch das Zuweisen von Berechtigungen für Daten in Azure Cost Management für verschiedene Zugriffsbereiche.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695395"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375127"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -63,6 +63,8 @@ Zum Anzeigen von Kostendaten für andere Azure-Abonnements muss ein Benutzer min
 - Azure-Konto
 - Verwaltungsgruppe
 - Resource group
+
+Nachdem Partner Kunden in eine Microsoft-Kundenvereinbarung aufgenommen haben, stehen verschiedene Bereiche zur Verfügung. CSP-Kunden können Features von Cost Management verwenden, wenn sie von ihrem CSP-Partner aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Cost Management für Partner](get-started-partners.md).
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Aktivieren des Zugriffs auf Kosten im EA-Portal
 

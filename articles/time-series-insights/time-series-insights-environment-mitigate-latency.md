@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123765"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332972"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 
@@ -74,11 +74,11 @@ Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme
 
 ## <a name="throttling-and-ingress-management"></a>Drosselung und Eingangsverwaltung
 
-* Bei einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um sie zu informieren, wie viele Sekunden TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  
+* Im Falle einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um Sie darüber zu informieren, wie viele Sekunden Ihre Time Series Insights-Umgebung hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht bei der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  
 
   *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
 
-  Wenn Sie beispielsweise über eine S1-Umgebung mit nur einer Einheit verfügen und sehen, dass ein Rückstand von 5.000.000 Nachrichten besteht, können Sie die Größe Ihrer Umgebung ungefähr einen Tag lang auf sechs Einheiten erhöhen, um den Rückstand aufzuholen.  Sie können die Größe auch stärker erhöhen, um den Rückstand schneller wettzumachen. Der Abgleichszeitraum tritt bei der anfänglichen Bereitstellung einer Umgebung häufig auf, z.B. wenn Sie diesen mit einer Ereignisquelle verbinden, die bereits Ereignisse enthält, oder wenn Sie einen Massenupload für viele Verlaufsdaten durchführen.
+  Wenn Ihre S1-Umgebung also beispielsweise einen Rückstand von 5.000.000 Nachrichten aufweist, können Sie die Größe Ihrer Umgebung ungefähr einen Tag lang auf sechs Einheiten erhöhen, um den Rückstand aufzuholen.  Sie können die Größe auch stärker erhöhen, um den Rückstand schneller wettzumachen. Der Abgleichszeitraum tritt bei der anfänglichen Bereitstellung einer Umgebung häufig auf, z.B. wenn Sie diesen mit einer Ereignisquelle verbinden, die bereits Ereignisse enthält, oder wenn Sie einen Massenupload für viele Verlaufsdaten durchführen.
 
 * Eine andere Möglichkeit besteht darin, eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) für einen Zeitraum von zwei Stunden so festzulegen, dass der Schwellenwert leicht unterhalb der Gesamtkapazität Ihrer Umgebung liegt.  Anhand dieser Warnung können Sie feststellen, ob die Kapazität konstant ausgelastet ist. Dies gibt eine hohe Wahrscheinlichkeit von Latenz an. 
 
@@ -94,6 +94,6 @@ Sie können Latenz und Drosselung vermeiden, indem Sie die Umgebung korrekt für
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Schritte zur Problembehandlung finden Sie unter [Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md).
+- Informieren Sie sich über das [Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md).
 
-- Zusätzliche Unterstützung erhalten Sie im [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) oder bei [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Zudem können Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, um Supportunterstützung zu erhalten.
+- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.

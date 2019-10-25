@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7ff45be4eea5c6e8ab83093847164ede0e94579a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606561"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329437"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen
 
@@ -55,7 +55,7 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
 
     ![Anzeigen von Filtern](./media/resource-group-audit/view-filters.png)
 
-1. Um sich auf bestimmte Vorgänge zu konzentrieren, ändern Sie die Filter oder wenden neue Filter an. In der folgenden Abbildung wurde beispielsweise ein neuer Wert für den **Zeitraum** festgelegt, und als **Ressourcentyp** wurden Speicherkonten ausgewählt. 
+1. Um sich auf bestimmte Vorgänge zu konzentrieren, ändern Sie die Filter oder wenden neue Filter an. In der folgenden Abbildung wurde beispielsweise ein neuer Wert für den **Zeitraum** festgelegt, und als **Ressourcentyp** wurden Speicherkonten ausgewählt.
 
     ![Filteroptionen festlegen](./media/resource-group-audit/set-filter.png)
 
@@ -193,6 +193,7 @@ Die REST-Vorgänge für die Arbeit mit Aktivitätsprotokollen gehören zur [Insi
 
 * Azure-Aktivitätsprotokolle können mit Power BI verwendet werden, um bessere Einblicke in die in Ihrem Abonnement ausgeführten Aktionen zu erhalten. Informationen hierzu finden Sie unter [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Anzeigen und Analysieren von Azure-Aktivitätsprotokollen in Power BI und mehr).
 * Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md).
+* Ausführlichere Informationen zu Änderungen an Ihren Anwendungen von der Infrastrukturebene bis hin zur Anwendungsbereitstellung finden Sie unter [Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor](../azure-monitor/app/change-analysis.md).
 * Weitere Informationen zu den Befehlen zum Anzeigen von Bereitstellungsvorgängen finden Sie unter [View deployment operations with Azure Resource Manager](resource-manager-deployment-operations.md) (Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager).
 * Informationen zum Verhindern von Löschvorgängen für eine Ressource für alle Benutzer finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](resource-group-lock-resources.md).
 * Eine Liste der Vorgänge, die für jeden Microsoft Azure Resource Manager-Anbieter verfügbar sind, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../role-based-access-control/resource-provider-operations.md).

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 10/14/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 735c3db14963c1f3cfe700a97dee9fedb70e29f5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441122"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430442"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer (Vorschau)
 
@@ -26,7 +26,7 @@ ms.locfileid: "67441122"
 | Der Google-Verbund ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Google-Konten anzumelden, ohne dass sie Microsoft Accounts- (MSAs) oder Azure AD-Konten erstellen müssen.  
+Durch die Einrichtung eines Verbunds mit Google können Sie es eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Gmail-Konten anzumelden, ohne dass sie Microsoft-Konten (Microsoft Accounts, MSAs) oder Azure AD-Konten erstellen müssen. Der Google-Verbund wurde speziell für Gmail-Benutzer konzipiert. Wenn Sie einen G Suite-Verbund benötigen, verwenden Sie stattdessen einen [direkten Verbund](direct-federation.md).
 > [!NOTE]
 > Ihre Google-Gastbenutzer müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z.B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` bei einer überprüften Domäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Die Verwendung beispielsweise von `https://myapps.microsoft.com`, `https://portal.azure.com` oder dem gemeinsamen Team-Endpunkt führt zu einem Fehler.
  

@@ -1,33 +1,33 @@
 ---
 title: Erstellen und Verwenden von benutzerdefinierten Regeln für die Azure Web Application Firewall (WAF) v2
-description: Dieser Artikel enthält Informationen dazu, wie Sie benutzerdefinierte Regeln für die Web Application Firewall (WAF) v2 in Azure Application Gateway erstellen.
+description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Regeln für die Web Application Firewall (WAF) v2 in Azure Application Gateway erstellen.
 services: application-gateway
 ms.topic: article
 author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: bfd2154216e679b3074d36ea3b49c69ff5a92da8
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 8cf82ce9ed4a9dc701c016f15224d6adfa299736
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937180"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263589"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Erstellen und Verwenden von benutzerdefinierten Regeln für die Web Application Firewall v2
+# <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Erstellen und Verwenden von benutzerdefinierten Regeln für die Web Application Firewall v2
 
-Die Web Application Firewall (WAF) v2 von Azure Application Gateway bietet Schutz für Webanwendungen. Dieser Schutz wird über die Kernregeln (Core Rule Set, CRS) des Open Web Application Security-Projekts (OWASP) bereitgestellt. In einigen Fällen müssen Sie unter Umständen eigene benutzerdefinierte Regeln erstellen, um Ihre jeweiligen Anforderungen zu erfüllen. Weitere Informationen zu benutzerdefinierten WAF-Regeln finden Sie unter [Custom rules for Web Application Firewall v2](custom-waf-rules-overview.md) (Benutzerdefinierte Regeln für Web Application Firewall v2).
+Die Web Application Firewall (WAF) v2 von Azure Application Gateway bietet Schutz für Webanwendungen. Dieser Schutz wird über den Kernregelsatz des Open Web Application Security-Projekts (OWASP) bereitgestellt. In einigen Fällen müssen Sie unter Umständen eigene benutzerdefinierte Regeln erstellen, um Ihre jeweiligen Anforderungen zu erfüllen. Weitere Informationen zu benutzerdefinierten WAF-Regeln finden Sie unter [ Benutzerdefinierte Regeln für die Web Application Firewall v2](custom-waf-rules-overview.md).
 
-Dieser Artikel enthält einige Beispiele für benutzerdefinierte Regeln, die Sie erstellen und mit Ihrer WAF v2 nutzen können. Informationen zur Bereitstellung einer WAF mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell finden Sie unter [Configure Web Application Firewall v2 with a custom rule using Azure PowerShell](configure-waf-custom-rules.md) (Konfigurieren der Web Application Firewall v2 mit einer benutzerdefinierten Regel per Azure PowerShell).
+Dieser Artikel enthält einige Beispiele für benutzerdefinierte Regeln, die Sie erstellen und mit WAF v2 nutzen können. Informationen zur Bereitstellung einer WAF mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell finden Sie unter [Konfigurieren von Web Application Firewall v2 mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell](configure-waf-custom-rules.md).
 
->[!NOTE]
-> Wenn Ihr Anwendungsgateway nicht auf die WAF-Ebene zurückgreift, wird die Option zum Aktualisieren des Anwendungsgateways auf die WAF-Ebene im rechten Bereich angezeigt.
+> [!NOTE]
+> Falls Ihr Anwendungsgateway die WAF-Ebene nicht nutzt, wird die Option zum Aktualisieren des Anwendungsgateways auf die WAF-Ebene im rechten Bereich angezeigt.
 
 ![Aktivieren der WAF][fig1]
 
 ## <a name="example-1"></a>Beispiel 1
 
-Sie wissen, dass es einen Bot mit dem Namen *evilbot* gibt, den Sie daran hindern möchten, Ihre Website zu „crawlen“. In diesem Fall sperren Sie den Benutzer-Agent *evilbot* in den Anforderungsheadern.
+Sie wissen, dass es einen Bot mit dem Namen *evilbot* gibt, den Sie daran hindern möchten, Ihre Website zu „crawlen“. In diesem Beispiel sperren Sie den Benutzer-Agent *evilbot* in den Anforderungsheadern.
 
 Logik: p
 
@@ -75,7 +75,7 @@ Hier ist der entsprechende JSON-Code angegeben:
   }
 ```
 
-Informationen zum Anzeigen einer WAF, die mit dieser benutzerdefinierten Regel bereitgestellt wurde, finden Sie unter [Configure Web Application Firewall v2 with a custom rule using Azure PowerShell](configure-waf-custom-rules.md) (Konfigurieren von Web Application Firewall v2 mit einer benutzerdefinierten Regel per Azure PowerShell).
+Informationen zum Anzeigen einer WAF, die mit dieser benutzerdefinierten Regel bereitgestellt wurde, finden Sie unter [Konfigurieren von Web Application Firewall v2 mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell](configure-waf-custom-rules.md).
 
 ### <a name="example-1a"></a>Beispiel 1a
 
@@ -101,7 +101,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Entsprechender JSON-Code:
+Hier ist der entsprechende JSON-Code angegeben:
 
 ```json
   {
@@ -175,13 +175,15 @@ Hier ist der entsprechende JSON-Code angegeben:
   }
 ```
 
-Zugehörige CRS-Regel: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Hier ist die entsprechende Regel des Kernregelsatzes angegeben:
+
+  `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-3"></a>Beispiel 3
 
-In diesem Beispiel möchten Sie den Benutzer-Agent *evilbot* und den Datenverkehr im Bereich 192.168.5.0/24 blockieren. Hierzu können Sie zwei separate Übereinstimmungsbedingungen erstellen und in dieselbe Regel einfügen. So wird sichergestellt, dass die Anforderung blockiert wird, wenn *evilbot* im Header des Benutzers-Agents **und** IP-Adressen aus dem Bereich 192.168.5.0/24 abgeglichen werden.
+In diesem Beispiel möchten Sie den Benutzer-Agent *evilbot* und den Datenverkehr im Bereich 192.168.5.0/24 blockieren. Zu diesem Zweck können Sie zwei separate Übereinstimmungsbedingungen erstellen und in dieselbe Regel einfügen. Mit diesem Ansatz wird sichergestellt, dass die Anforderung blockiert wird, wenn *evilbot* im Header des Benutzers-Agents enthalten ist *und* IP-Adressen aus dem Bereich 192.168.5.0/24 verwendet werden.
 
-Logik: p **and** q
+Logik: p *and* q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -251,9 +253,9 @@ Hier ist der entsprechende JSON-Code angegeben:
 
 ## <a name="example-4"></a>Beispiel 4
 
-In diesem Beispiel möchten Sie Datenverkehr blockieren, wenn sich die Anforderung entweder außerhalb des IP-Adressbereichs *192.168.5.0/24* befindet oder die Zeichenfolge des Benutzer-Agents nicht *chrome* lautet (der Benutzer also nicht den Chrome-Browser verwendet). Da bei dieser Logik **or** verwendet wird, befinden sich die beiden Bedingungen in separaten Regeln. Dies ist im folgenden Beispiel dargestellt. Sowohl für *myrule1* als auch für *myrule2* muss sich eine Übereinstimmung ergeben, damit der Datenverkehr blockiert wird.
+In diesem Beispiel möchten Sie Datenverkehr blockieren, wenn sich die Anforderung entweder außerhalb des IP-Adressbereichs *192.168.5.0/24* befindet oder die Zeichenfolge des Benutzer-Agents nicht *chrome* lautet (der Benutzer also nicht den Chrome-Browser verwendet). Da bei dieser Logik *oder* verwendet wird, befinden sich die beiden Bedingungen in separaten Regeln. Dies ist im folgenden Beispiel dargestellt. Um den Datenverkehr zu blockieren, muss sich sowohl für *myrule1* als auch für *myrule2* eine Übereinstimmung ergeben.
 
-Logik: **not** (p **and** q) = **not** p **or not** q.
+Logik: *not* (p *and* q) = *not* p *or not* q.
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -291,7 +293,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Entsprechender JSON-Code:
+Hier ist der entsprechende JSON-Code angegeben:
 
 ```json
 {
@@ -338,9 +340,9 @@ Entsprechender JSON-Code:
 
 ## <a name="example-5"></a>Beispiel 5
 
-Sie möchten eine benutzerdefinierte SQLI-Einheit blockieren. Da für die Logik hier **or** verwendet wird und alle Werte in *RequestUri* enthalten sind, können alle *MatchValues* in einer durch Kommas getrennten Liste angeordnet sein.
+Sie möchten eine benutzerdefinierte SQLI-Einheit blockieren. Da für die Logik hier *oder* verwendet wird und alle Werte in *RequestUri* enthalten sind, können alle *MatchValues* in einer durch Kommas getrennten Liste angeordnet sein.
 
-Logik: p **or** q **or** r
+Logik: p *or* q *or* r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -359,7 +361,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Entsprechender JSON-Code:
+Hier ist der entsprechende JSON-Code angegeben:
 
 ```json
   {
@@ -385,7 +387,7 @@ Entsprechender JSON-Code:
   }
 ```
 
-Alternativer Azure PowerShell-Code:
+Hier ist der alternative Azure PowerShell-Code angegeben:
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -436,7 +438,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Entsprechender JSON-Code:
+Hier ist der entsprechende JSON-Code angegeben:
 
 ```json
   {

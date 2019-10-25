@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 05/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39ba577580424bf8283d64198bb3068b82869c51
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476877"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376091"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
-Mit der Lösung VMs außerhalb der Geschäftszeiten starten/beenden können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem können Sie über Azure Monitor-Protokolle Erkenntnisse aus Ihre Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs.
+Mit der Lösung VMs außerhalb der Geschäftszeiten starten/beenden können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem können Sie über Azure Monitor-Protokolle Erkenntnisse aus Ihre Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs. Wenn Sie diese Lösung mit klassischen VMs verwenden möchten, benötigen Sie ein klassisches ausführendes Konto. Dieses wird nicht standardmäßig erstellt. Eine Anleitung für die Erstellung eines klassischen ausführenden Kontos finden Sie unter [Klassische ausführende Konten](automation-create-standalone-account.md#classic-run-as-accounts).
 
 > [!NOTE]
 > Die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde mit den Azure-Modulen getestet, die bei der Bereitstellung der Lösung in Ihr Azure Automation-Konto importiert werden. Die Lösung funktioniert derzeit nicht mit neueren Versionen des Azure-Moduls. Dies betrifft nur das Azure Automation-Konto, mit dem Sie die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ ausführen. Sie können in Ihren anderen Azure Automation-Konten weiterhin neuere Versionen des Azure-Moduls verwenden, wie in [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) beschrieben.
@@ -80,17 +80,17 @@ Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten 
 
 Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein neues Automation-Konto und einen neuen Log Analytics-Arbeitsbereich bereitzustellen, benötigt der Benutzer, der die Lösung bereitstellt, neben den im obigen Abschnitt beschriebenen Berechtigungen zusätzlich die folgenden Berechtigungen:
 
-- Co-Administrator für das Abonnement: nur erforderlich, um das klassische ausführende Konto zu erstellen
+- Co-Administrator für das Abonnement: Dies ist nur erforderlich, um das klassische ausführende Konto zu erstellen, wenn Sie klassische VMs verwalten möchten. [Klassische ausführende Konten](automation-create-standalone-account.md#classic-run-as-accounts) werden nicht mehr standardmäßig erstellt.
 - Mitglied der Rolle [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **Anwendungsentwickler**. Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](manage-runas-account.md#permissions).
 - Mitwirkender im Abonnement oder die folgenden Berechtigungen.
 
 | Berechtigung |`Scope`|
 | --- | --- |
-| Microsoft.Authorization/Operations/read | Abonnement|
-| Microsoft.Authorization/permissions/read |Abonnement|
-| Microsoft.Authorization/roleAssignments/read | Abonnement |
-| Microsoft.Authorization/roleAssignments/write | Abonnement |
-| Microsoft.Authorization/roleAssignments/delete | Abonnement |
+| Microsoft.Authorization/Operations/read | Subscription|
+| Microsoft.Authorization/permissions/read |Subscription|
+| Microsoft.Authorization/roleAssignments/read | Subscription |
+| Microsoft.Authorization/roleAssignments/write | Subscription |
+| Microsoft.Authorization/roleAssignments/delete | Subscription |
 | Microsoft.Automation/automationAccounts/connections/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/certificates/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/write | Ressourcengruppe |
@@ -270,7 +270,7 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 |External_AutoStop_Threshold | Der Schwellenwert für die Azure-Warnungsregel, der in der Variablen _External_AutoStop_MetricName_ angegeben ist. Prozentwerte können zwischen 1 und 100 liegen.|
 |External_AutoStop_TimeAggregationOperator | Der Zeitaggregationsoperator, der auf die ausgewählte Fenstergröße angewendet wird, um die Bedingung auszuwerten. Zulässige Werte sind **Average**, **Minimum**, **Maximum**, **Total** und **Last**.|
 |External_AutoStop_TimeWindow | Die Größe des Fensters, in dem Azure ausgewählte Metriken zum Auslösen einer Warnung analysiert. Für diesen Parameter können Zeiträume eingegeben werden. Mögliche Werte reichen von 5 Minuten bis 6 Stunden.|
-|External_EnableClassicVMs| Gibt an, ob die Lösung klassische virtuelle Computer als Ziel verwendet. Der Standardwert lautet „True“. Diese Variable sollte bei CSP-Abonnements auf „False“ festgelegt werden.|
+|External_EnableClassicVMs| Gibt an, ob die Lösung klassische virtuelle Computer als Ziel verwendet. Der Standardwert lautet „True“. Diese Variable sollte bei CSP-Abonnements auf „False“ festgelegt werden. Für klassische VMs ist ein [klassisches ausführendes Konto](automation-create-standalone-account.md#classic-run-as-accounts) erforderlich.|
 |External_ExcludeVMNames | Geben Sie die Namen der auszuschließenden VMs ein, und trennen Sie Namen durch Kommas ohne Leerzeichen. Dies ist auf 140 virtuelle Computer beschränkt. Wenn Sie dieser durch Trennzeichen getrennten Liste mehr als 140 VMs hinzufügen, kann es bei VMs, für die Ausschluss festgelegt ist, zu unbeabsichtigtem Starten oder Beenden kommen.|
 |External_Start_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Startaktionen an.|
 |External_Stop_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Beendigungsaktionen an.|
@@ -304,7 +304,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |Eigenschaft | BESCHREIBUNG|
 |----------|----------|
 |Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
-|Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“.|
+|Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“.|
 |CorrelationId | Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt.|
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
 |operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“.|
@@ -325,7 +325,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |Eigenschaft | BESCHREIBUNG|
 |----------|----------|
 |Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
-|Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“.|
+|Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“.|
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
 |operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“.|
 |ResourceGroup | Gibt den Namen der Ressourcengruppe des Runbookauftrags an.|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 9df389b6e6a73530c9bbf5a2187d6735946e309f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 96f020f24e27ff799f9bfbc08d899e8375b86094
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249770"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72431821"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
 
@@ -36,7 +36,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 
 ## <a name="connectivity-issues"></a>Konnektivitätsprobleme
 
-Wenn der Agent über einen Proxyserver oder eine Firewall kommuniziert, bestehen möglicherweise Einschränkungen, die eine Kommunikation vom Quellcomputer und dem Azure Monitor-Dienst verhindern. Wenn die Kommunikation blockiert ist oder eine Fehlkonfiguration vorliegt, kann die Registrierung bei einem Arbeitsbereich während der Installation des Agents, das Konfigurieren des Agents nach dem Setup für das Berichten an einen zusätzlichen Arbeitsbereich oder die Kommunikation des Agents nach einer erfolgreichen Registrierung fehlschlagen. In diesem Abschnitt werden die Methoden zur Behandlung dieser Art von Problemen beim Windows-Agent beschrieben. 
+Wenn der Agent über einen Proxyserver oder eine Firewall kommuniziert, bestehen möglicherweise Einschränkungen, die eine Kommunikation vom Quellcomputer und dem Azure Monitor-Dienst verhindern. Sollte die Kommunikation aufgrund einer Fehlkonfiguration blockiert sein, ist die Registrierung bei einem Arbeitsbereich möglicherweise nicht erfolgreich, wenn versucht wird, den Agent zu installieren oder ihn nach der Einrichtung so zu konfigurieren, dass Meldungen an einen zusätzlichen Arbeitsbereich übermittelt werden. Bei der Agent-Kommunikation können nach erfolgreicher Registrierung Fehler auftreten. In diesem Abschnitt werden die Methoden zur Behandlung dieser Art von Problemen beim Windows-Agent beschrieben.
 
 Vergewissern Sie sich, dass die Firewall oder der Proxy so konfiguriert ist, dass die in der folgenden Tabelle beschriebenen Ports und URLs zulässig sind. Stellen Sie außerdem sicher, dass die HTTP-Überprüfung für den Webdatenverkehr nicht aktiviert ist, da sie einen sicheren TLS-Kanal zwischen dem Agent und Azure Monitor verhindern kann.  
 

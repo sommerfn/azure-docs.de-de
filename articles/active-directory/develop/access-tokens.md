@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780ec85438990959b7b0ac686e05ad5db3f9eedf
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e7ef9b55dd17a6f1d190282f369ccb8b9386e65d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291088"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72324273"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -116,9 +116,27 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `ver` | Zeichenfolge, `1.0` oder `2.0` | Gibt die Version des Zugriffstokens an. |
 
 
-> [! Gruppenüberschreitende Ansprüche] stellen sicher, dass die Tokengröße die Grenzwerte für die HTTP-Header nicht überschreitet. Azure AD schränkt die Anzahl der Objekt-IDs ein, die im Gruppenanspruch enthalten sind. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
-> { ... "_claim_names": { "groups": "src1" }, { "_claim_sources": { "src1": { "endpoint":"[Graph Url um Gruppenmitgliedschaft zu erhalten]" } }    
-    ... } Sie können die `BulkCreateGroups.ps1` im Ordner verfügbaren [App-Erstellungsskripts](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) verwenden, um Überschreitungsszenarios zu testen.
+> [!NOTE]
+> **Gruppenüberschreitungsanspruch**
+>
+> Azure AD schränkt die Anzahl von Objekt-IDs im Gruppenanspruch ein, um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht übersteigt. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
+  ```csharp
+  {
+    ...
+    "_claim_names": {
+     "groups": "src1"
+      },
+      {
+    "_claim_sources": {
+      "src1": {
+          "endpoint":"[Graph Url to get this user's group membership from]"
+          }
+         }
+       }
+    ...
+   }
+   ```
+> Sie können die im Ordner [App-Erstellungsskripts](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) verfügbare Datei `BulkCreateGroups.ps1` verwenden, um Überschreitungsszenarien zu testen.
 
 #### <a name="v10-basic-claims"></a>Grundlegende v1.0-Ansprüche
 

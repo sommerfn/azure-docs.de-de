@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968282"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333122"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Verwaltete Identität für die Service Fabric-Anwendung (Vorschau)
 
@@ -45,7 +45,7 @@ Die folgenden Begriffe werden in der gesamten Dokumentation für die verwaltete 
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Unterstützte Szenarien für Service Fabric-Anwendungen
 
-Verwaltete Identitäten für Service Fabric werden nur in Service Fabric-Clustern unterstützt, die in Azure bereitgestellt werden, und auch nur für Anwendungen, die als Azure-Ressourcen bereitgestellt werden. Anwendungen, die nicht als Azure-Ressourcen bereitgestellt werden, kann keine Identität zugewiesen werden. Konzeptionell besteht die Unterstützung für verwaltete Identitäten in Azure Service Fabric-Clustern aus zwei Phasen:
+Verwaltete Identitäten für Service Fabric werden nur in Service Fabric-Clustern unterstützt, die in Azure bereitgestellt werden, und auch nur für Anwendungen, die als Azure-Ressourcen bereitgestellt werden. Einer Anwendung, die nicht als Azure-Ressourcen bereitgestellt wird, kann keine Identität zugewiesen werden. Konzeptionell besteht die Unterstützung für verwaltete Identitäten in Azure Service Fabric-Clustern aus zwei Phasen:
 
 1. Zuweisen mindestens einer verwalteten Identität zu der Anwendungsressource. Einer Anwendung können jeweils eine einzelne vom System zugewiesene Identität und/oder bis zu 32 vom Benutzer zugewiesene Identitäten zugewiesen werden.
 
@@ -63,6 +63,8 @@ Folgende Szenarien werden für die Vorschauversion unterstützt:
 Die folgenden Szenarien werden nicht unterstützt oder nicht empfohlen. Beachten Sie, dass diese Aktionen möglicherweise nicht blockiert werden, aber zu Ausfällen in Ihren Anwendungen führen können:
 
    - Entfernen oder Ändern der Identitäten, die einer Anwendung zugewiesen sind. Wenn Sie Änderungen vornehmen möchten, übermitteln Sie separate Bereitstellungen, um zunächst die Zuweisung einer neuen Identität hinzuzufügen und dann eine zuvor zugewiesene Identität zu entfernen. Das Entfernen einer Identität aus einer vorhandenen Anwendung kann unerwünschte Auswirkungen haben und z. B. die Anwendung in einen nicht aktualisierbaren Zustand bringen. Die Anwendung kann vollständig gelöscht werden, wenn das Entfernen einer Identität erforderlich ist. Beachten Sie, dass dadurch die der Anwendung zugeordnete vom System zugewiesene Identität gelöscht wird (sofern definiert) und alle Zuordnungen mit den der Anwendung vom Benutzer zugewiesenen Identitäten entfernt werden.
+
+   - Die SF-Unterstützung für verwaltete Identitäten ist gegenwärtig nicht in [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md) integriert. Die Integration wird bis zum Ende der Vorschauphase für das Feature „Verwaltete Identität“ implementiert.
 
 >
 > [!NOTE]

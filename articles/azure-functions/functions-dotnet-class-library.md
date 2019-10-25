@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 388b389cca7c3e820ea3ccfd37a2a93ccd476b31
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c3c13b7e28ef7c17fd45682d828f318de5326542
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254639"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293867"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -30,6 +30,10 @@ In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Artikel bereits
 
 * [Azure Functions: Entwicklerhandbuch](functions-reference.md)
 * [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
+
+## <a name="supported-versions"></a>Unterstützte Versionen
+
+Die Azure Functions 2.x-Runtime verwendet .NET Core 2.2. Ihr Funktionscode kann .NET Core 2.2-APIs nutzen, indem Sie die Visual Studio-Projekteinstellungen aktualisieren. Von den Funktionsvorlagen wird .NET Core 2.2 nicht standardmäßig verwendet, um Probleme für Kunden zu vermeiden, bei denen .NET Core 2.2 nicht installiert ist.
 
 ## <a name="functions-class-library-project"></a>Funktionsklassenbibliotheks-Projekt
 
@@ -54,6 +58,7 @@ Dieses Verzeichnis wird in Ihrer Funktions-App in Azure bereitgestellt. Die in [
 
 > [!IMPORTANT]
 > Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Informationen zum Deaktivieren einer Funktion finden Sie unter [Gewusst wie: Deaktivieren von Funktionen](disable-function.md#functions-2x---c-class-libraries).
+
 
 ## <a name="methods-recognized-as-functions"></a>Methoden, die als Funktionen erkannt werden
 

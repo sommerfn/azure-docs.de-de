@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: deab527d44713bffed1f430ec283592d0e4232ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.date: 10/14/2019
+ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764413"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331321"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
 
@@ -58,6 +58,10 @@ Häufige Szenarien für die Verwendung des Abfragespeichers sind u.a.:
 
 Um die Speicherverwendung zu minimieren, werden die Laufzeit-Ausführungsstatistiken im Speicher für Laufzeitstatistiken für ein festes, konfigurierbares Zeitfenster zusammengefasst. Die Informationen in diesem Speicher können durch Abfragen der Abfragespeicheransichten angezeigt werden.
 
+## <a name="access-query-store-information"></a>Zugreifen auf Abfragespeicherinformationen
+
+Abfragespeicherdaten werden in der Datenbank „azure_sys“ auf Ihrem Postgres-Server gespeichert. 
+
 Die folgende Abfrage gibt Informationen über Abfragen im Abfragespeicher zurück:
 ```sql
 SELECT * FROM query_store.qs_view; 
@@ -67,6 +71,9 @@ Diese Abfrage gibt Informationen über Wartestatistiken zurück:
 ```sql
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
+
+Sie können auch Abfragespeicherdaten an [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md) (Analysen und Warnungen), an Event Hubs (Streaming) und an Azure Storage (Archivierung) ausgeben. Die zu konfigurierenden Protokollkategorien sind **QueryStoreRuntimeStatistics** und **QueryStoreWaitStatistics**. Weitere Informationen zur Einrichtung finden Sie im Artikel [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../azure-monitor/platform/diagnostic-settings.md).
+
 
 ## <a name="finding-wait-queries"></a>Suchen von Warteanfragen
 Warteereignistypen kombinieren verschiedene Warteereignisse nach Ähnlichkeit in Buckets. Der Abfragespeicher enthält den Warteereignistyp, den spezifischen Warteereignisnamen und die entsprechende Abfrage. Die Möglichkeit zum Korrelieren dieser Warteinformationen mit den Abfragelaufzeitstatistiken bedeutet, dass Sie einen ausführlicheren Überblick darüber erhalten, welche Faktoren sich auf die Abfrageleistung auswirken.

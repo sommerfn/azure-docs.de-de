@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc7745c7c1110bf3635b1621cecfd5e61488b9f9
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 1835c6968bfdfcc3f3ce4d8a624e8f6bd62e224c
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210397"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375947"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure
 
@@ -42,7 +42,7 @@ Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stil
 
    - **Post-Skript:** Berechtigung „700“. Beispiel: Nur der Root-Benutzer darf die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben.
 
-   > [!Important]
+   > [!IMPORTANT]
    > Das Framework bietet Benutzern sehr viele Möglichkeiten. Schützen Sie das Framework, und stellen Sie sicher, dass nur der Benutzer „root“ Zugriff auf kritische JSON-Dateien und Skriptdateien hat.
    > Wenn die Anforderungen nicht erfüllt sind, wird das Skript nicht ausgeführt. Dies führt zu einem Absturz des Dateisystems und einer inkonsistenten Sicherung.
    >
@@ -68,6 +68,8 @@ Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stil
 
     - **fsFreezeEnabled:** Geben Sie an, ob unter Linux „fsfreeze“ aufgerufen werden soll, während die VM-Momentaufnahme erstellt wird, um Dateisystemkonsistenz sicherzustellen. Wir empfehlen die Beibehaltung dieser Einstellung auf **TRUE**, es sei denn, Ihre Anwendung ist von der Deaktivierung von „fsfreeze“ abhängig.
 
+    - **ScriptsExecutionPollTimeSeconds**: Legen Sie fest, wie lange die Erweiterung zwischen Abfragen für die Skriptausführung pausieren soll. Wenn Sie den Wert beispielsweise auf „2“ festlegen, prüft die Erweiterung alle zwei Sekunden, ob die Pre-/Post-Skriptausführung abgeschlossen wurde. Der Wert muss zwischen 1 und 5 (jeweils einschließlich) liegen und eine ganze Zahl sein.
+
 6. Das Skriptframework ist nun konfiguriert. Wenn die VM-Sicherung bereits konfiguriert ist, werden bei der nächsten Sicherung die Skripts aufgerufen und eine anwendungskonsistente Sicherung ausgelöst. Wenn die VM-Sicherung nicht konfiguriert ist, konfigurieren Sie sie entsprechend den Anweisungen unter [Sichern virtueller Azure-Computer in Recovery Services-Tresoren](https://docs.microsoft.com/azure/backup/backup-azure-vms-first-look-arm).
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -76,11 +78,11 @@ Fügen Sie beim Schreiben Ihres Pre-Skripts und Post-Skripts unbedingt eine ents
 
 | Error | Fehlermeldung | Empfohlene Maßnahme |
 | ------------------------ | -------------- | ------------------ |
-| Pre-ScriptExecutionFailed |Das Pre-Skript hat einen Fehler zurückgegeben, sodass die Sicherung gegebenenfalls nicht anwendungskonsistent ist.   | Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben.|  
-|   Post-ScriptExecutionFailed |    Das Post-Skript hat einen Fehler zurückgegeben, der sich auf den Anwendungszustand auswirken kann. |    Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben, und überprüfen Sie den Anwendungszustand. |
-| Pre-ScriptNotFound |  Das Pre-Skript wurde nicht am in der Konfigurationsdatei **VMSnapshotScriptPluginConfig.json** angegebenen Speicherort gefunden. |   Stellen Sie sicher, dass das Pre-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
-| Post-ScriptNotFound | Das Post-Skript wurde nicht am in der Konfigurationsdatei **VMSnapshotScriptPluginConfig.json** angegebenen Speicherort gefunden. |   Stellen Sie sicher, dass das Post-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
-| IncorrectPluginhostFile | Die zur Erweiterung „VmSnapshotLinux“ gehörige Datei **Pluginhost** ist beschädigt, sodass Pre-Skript und Post-Skript nicht ausgeführt werden können und die Sicherung nicht anwendungskonsistent sein wird. | Deinstallieren Sie die Erweiterung **VmSnapshotLinux**. Diese wird dann zum Beheben des Problems bei der nächsten Sicherung automatisch neu installiert. |
+| Pre-ScriptExecutionFailed |Das Pre-Skript hat einen Fehler zurückgegeben, sodass die Sicherung gegebenenfalls nicht anwendungskonsistent ist.| Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben.|  
+|Post-ScriptExecutionFailed |Das Post-Skript hat einen Fehler zurückgegeben, der sich auf den Anwendungszustand auswirken kann. |Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben, und überprüfen Sie den Anwendungszustand. |
+| Pre-ScriptNotFound |Das Pre-Skript wurde nicht am in der Konfigurationsdatei **VMSnapshotScriptPluginConfig.json** angegebenen Speicherort gefunden. |Stellen Sie sicher, dass das Pre-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
+| Post-ScriptNotFound |Das Post-Skript wurde nicht am in der Konfigurationsdatei **VMSnapshotScriptPluginConfig.json** angegebenen Speicherort gefunden. |Stellen Sie sicher, dass das Post-Skript im Pfad vorhanden ist, der in der Konfigurationsdatei angegeben ist, um eine anwendungskonsistente Sicherung zu gewährleisten.|
+| IncorrectPluginhostFile |Die zur Erweiterung „VmSnapshotLinux“ gehörige Datei **Pluginhost** ist beschädigt, sodass Pre-Skript und Post-Skript nicht ausgeführt werden können und die Sicherung nicht anwendungskonsistent sein wird.| Deinstallieren Sie die Erweiterung **VmSnapshotLinux**. Diese wird dann zum Beheben des Problems bei der nächsten Sicherung automatisch neu installiert. |
 | IncorrectJSONConfigFile | Die Datei **VMSnapshotScriptPluginConfig.json** ist falsch, sodass Pre-Skript und Post-Skript nicht ausgeführt werden können und die Sicherung nicht anwendungskonsistent sein wird. | Laden Sie die Kopie von [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) herunter, und konfigurieren Sie sie erneut. |
 | InsufficientPermissionforPre-Script | Zum Ausführen von Skripts muss der Root-Benutzer der Besitzer der Datei sein, und für die Datei muss die Berechtigung „700“ gelten (d.h., dass nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ haben darf). | Stellen Sie sicher, dass der Root-Benutzer der Besitzer der Skriptdatei ist und dass nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ hat. |
 | InsufficientPermissionforPost-Skript | Zum Ausführen von Skripts muss der Root-Benutzer der Besitzer der Datei sein, und für die Datei muss die Berechtigung „700“ gelten (d.h., dass nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ haben darf). | Stellen Sie sicher, dass der Root-Benutzer der Besitzer der Skriptdatei ist und dass nur der Besitzer die Berechtigungen „read“, „write“ und „execute“ hat. |
@@ -88,4 +90,5 @@ Fügen Sie beim Schreiben Ihres Pre-Skripts und Post-Skripts unbedingt eine ents
 | Post-ScriptTimeout | Bei Ausführung des Post-Skripts für eine anwendungskonsistente Sicherung ist ein Timeout aufgetreten. | Überprüfen Sie das Skript, und erhöhen Sie den Timeoutwert in der Datei **VMSnapshotScriptPluginConfig.json** unter **/etc/azure**. |
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Konfigurieren der VM-Sicherung in einem Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms)

@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/06/2019
+ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: c25ca8c27b84f34b025ec5abce00c8d8c70e5df6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5812cc73fb1da58c591d0593e079851e05bd0940
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62125694"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331957"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -98,6 +98,9 @@ Wenn Sie mehr als eine VMware-VM replizieren, lesen Sie den Artikel [Überlegung
 > Ändern Sie nach der Bereitstellung keine Ressourcenkonfigurationen (Arbeitsspeicher/Kerne/CPU-Einschränkung), und ändern/löschen Sie keine installierten Dienste oder Dateien auf dem Konfigurationsserver. Dadurch würden die Registrierung des Konfigurationsservers bei Azure-Diensten und die Leistung des Konfigurationsservers beeinträchtigt.
 
 ## <a name="add-an-additional-adapter"></a>Hinzufügen zusätzlicher Adapter
+
+> [!NOTE]
+> Wenn Sie die IP-Adressen der Quellcomputer bei einem Failover beibehalten und später ein Failback auf die lokale Umgebung durchführen möchten, sind zwei NICs erforderlich. Eine NIC wird mit Quellcomputern verbunden und die andere für die Azure-Konnektivität verwendet.
 
 Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, führen Sie diesen Schritt aus, bevor Sie den Server im Tresor registrieren. Das Hinzufügen von zusätzlichen Adaptern nach der Registrierung wird nicht unterstützt.
 

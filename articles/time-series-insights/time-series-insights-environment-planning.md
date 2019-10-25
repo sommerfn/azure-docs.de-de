@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828174"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332925"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planen Ihrer Azure Time Series Insights-GA-Umgebung
 
@@ -31,17 +31,17 @@ In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series Insights-GA-U
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Für den Einstieg in Time Series Insights sollten Sie am besten wissen, wie viele Daten erwartungsgemäß pro Minute übertragen werden und wie lange die Daten gespeichert werden müssen.  
+Für den Einstieg in Azure Time Series Insights sollten Sie am besten wissen, wie viele Daten voraussichtlich pro Minute übertragen werden und wie lange die Daten gespeichert werden müssen.  
 
 Weitere Informationen zur Kapazität und Aufbewahrung für beide Time Series Insights-SKUs finden Sie unter [Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Berücksichtigen Sie zur optimalen Planung der Time Series Insights-Umgebung für den langfristigen Erfolg die folgenden Faktoren:
 
-- <a href="#storage-capacity">Speicherkapazität</a>
-- <a href="#data-retention">Grundlegendes zur Datenaufbewahrung</a>
-- <a href="#ingress-capacity">Grundlegendes zur Eingangskapazität</a>
-- <a href="#shape-your-events">Gestalten Ihrer Ereignisse</a>
-- <a href="#ensure-that-you-have-reference-data">Sicherstellen des Vorhandenseins von Referenzdaten</a>
+- [Speicherkapazität](#storage-capacity)
+- [Grundlegendes zur Datenaufbewahrung](#data-retention)
+- [Grundlegendes zur Eingangskapazität](#ingress-capacity)
+- [Gestalten Ihrer Ereignisse](#shape-your-events)
+- [Sicherstellen des Vorhandenseins von Referenzdaten](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Speicherkapazität
 
@@ -49,15 +49,17 @@ Standardmäßig werden Daten in Time Series Insights basierend auf der bereitges
 
 ## <a name="data-retention"></a>Beibehaltung von Daten
 
-Sie können die Einstellung **Datenaufbewahrungszeit** in Ihrer Time Series Insights-Umgebung ändern. Es ist eine Aufbewahrungsdauer von bis zu 400 Tagen möglich. 
+Sie können die Einstellung **Datenaufbewahrungszeit** in Ihrer Azure Time Series Insights-Umgebung ändern. Es ist eine Aufbewahrungsdauer von bis zu 400 Tagen möglich. 
 
-Time Series Insights weist zwei Modi auf. In einem Modus wird durch Optimierung sichergestellt, dass Ihre Umgebung über die neuesten Daten verfügt. Dieser Modus ist standardmäßig aktiviert. 
+Azure Time Series Insights bietet zwei Modi:
 
-Im anderen Modus wird durch Optimierung sichergestellt, dass Grenzwerte für die Aufbewahrung eingehalten werden. Im zweiten Modus wird der Dateneingang angehalten, wenn die Gesamtspeicherkapazität der Umgebung erreicht ist. 
+* Ein Modus ist für neueste Daten optimiert. Er erzwingt eine Richtlinie vom Typ **Alte Daten bereinigen**, sodass in der Instanz aktuelle Daten verfügbar sind. Dieser Modus ist standardmäßig aktiviert. 
+* Im anderen Modus werden die Daten so optimiert, dass die konfigurierten Grenzwerte für die Aufbewahrung eingehalten werden. **Eingehende Daten anhalten** verhindert die Erfassung neuer Daten, wenn diese Option als **Verhalten bei Überschreitung des Speicherlimits** ausgewählt ist. 
 
 Auf der Konfigurationsseite der Umgebung im Azure-Portal können Sie die Aufbewahrungsdauer anpassen und zwischen den beiden Modi wechseln.
 
-Sie können in Ihrer Time Series Insights-Umgebung eine Datenaufbewahrung von maximal 400 Tagen konfigurieren.
+> [!IMPORTANT]
+> Sie können in Ihrer allgemein verfügbaren Azure Time Series Insights-Umgebung eine Datenaufbewahrung von maximal 400 Tagen konfigurieren.
 
 ### <a name="configure-data-retention"></a>Konfigurieren der Datenaufbewahrung
 
@@ -74,7 +76,7 @@ Sie können in Ihrer Time Series Insights-Umgebung eine Datenaufbewahrung von ma
 
 ## <a name="ingress-capacity"></a>Eingangskapazität
 
-Der zweite wichtige Bereich bei der Planung der Time Series Insights-Umgebung ist die Eingangskapazität. Die Eingangskapazität wird von der Zuordnung pro Minute abgeleitet.
+Der zweite wichtige Bereich bei der Planung der Time Series Insights-Umgebung ist die *Eingangskapazität*. Die Eingangskapazität wird von der Zuordnung pro Minute abgeleitet.
 
 In Bezug auf die Drosselung wird ein eingehendes Datenpaket mit einer Paketgröße von 32 KB als 32 Ereignisse mit jeweils einer Größe von 1 KB behandelt. Die maximal zulässige Ereignisgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
 

@@ -1,6 +1,6 @@
 ---
-title: Dynamische Datenmaskierung für Azure SQL-Datenbank | Microsoft Docs
-description: Die dynamische Datenmaskierung für SQL-Datenbank schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden.
+title: Dynamische Datenmaskierung für Azure SQL-Datenbank und Data Warehouse | Microsoft-Dokumentation
+description: Die dynamische Datenmaskierung schränkt für SQL-Datenbank und Data Warehouse die Offenlegung sensibler Daten ein, indem diese für nicht berechtigte Benutzer maskiert werden.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,14 +11,14 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: 366b9437aab134985c73611fa8b46c6fbd3d309c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e36e91330232a90ff51cf92ce8dc920b51e2d914
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568756"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430121"
 ---
-# <a name="sql-database-dynamic-data-masking"></a>Dynamische Datenmaskierung für SQL-Datenbank
+# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamische Datenmaskierung für Azure SQL-Datenbank und Data Warehouse
 
 Die dynamische Datenmaskierung für SQL-Datenbank schränkt die Offenlegung vertraulicher Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. 
 
@@ -26,7 +26,7 @@ Die dynamische Datenmaskierung hilft beim Verhindern des unbefugten Zugriffs auf
 
 Ein Servicemitarbeiter in einem Callcenter kann Anrufer beispielsweise anhand mehrerer Ziffern ihrer Kreditkartennummer identifizieren, wobei diese Datenelemente dem Servicemitarbeiter jedoch nicht vollständig angezeigt werden sollen. Es kann eine Maskierungsregel definiert werden, mit der die Kreditkartennummer im Resultset einer Abfrage bis auf die letzten vier Ziffern ausgeblendet wird. In einem weiteren Beispiel kann eine entsprechende Datenmaske zum Schutz personenbezogener Daten definiert werden, damit ein Entwickler Produktionsumgebungen zu Problembehandlungszwecken abfragen kann, ohne gegen Vorschriften zu verstoßen.
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>Grundlagen der dynamischen Datenmaskierung für SQL-Datenbank
+## <a name="dynamic-data-masking-basics"></a>Grundlegendes zur dynamischen Datenmaskierung
 
 Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Vorgangs „Dynamische Datenmaskierung“ auf dem Konfigurationsblatt oder auf dem Blatt mit den Einstellungen für Ihre SQL-Datenbank-Instanz ein.
 

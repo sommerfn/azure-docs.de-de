@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: bee8b801f46c0018e75d58f941470adcc271daf0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 16ad37eaa50f0c3825d131338cc4a0abdc369978
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032376"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262873"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -35,7 +35,7 @@ Konfigurieren Sie beispielsweise Ihre Webanwendung für die Verwendung eines Die
 
 Sie sollten einen Dienstprinzipal verwenden, um in **monitorlosen Szenarien** Zugriff auf die Registrierung bieten. Das heißt, dies betrifft jede Anwendung, jeden Dienst oder jedes Skript, das Containerimages in automatisierter oder anderweitig unbeaufsichtigter Weise pushen oder pullen muss. Beispiel:
 
-  * *Pull*: Bereitstellen von Containern aus einer Registrierung für Orchestrierungssysteme, z.B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in verwandte Azure-Dienste durchführen, z. B. [Azure Kubernetes Service (AKS)](container-registry-auth-aks.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) und weitere Dienste.
+  * *Pull*: Bereitstellen von Containern aus einer Registrierung für Orchestrierungssysteme, z.B. Kubernetes, DC/OS und Docker Swarm. Sie können auch Pullvorgänge aus Containerregistrierungen in verwandte Azure-Dienste durchführen, z. B. [Azure Kubernetes Service (AKS)](../aks/cluster-container-registry-integration.md), [Azure Container Instances](container-registry-auth-aci.md), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) und weitere Dienste.
 
   * *Push*: Erstellen von Containerimages und deren Übertragung per Pushvorgang in eine Registrierung mithilfe von Lösungen für Continuous Integration und Continuous Deployment wie Azure Pipelines oder Jenkins.
 
@@ -65,10 +65,9 @@ Jeder Wert ist eine GUID mit den Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 ### <a name="use-credentials-with-azure-services"></a>Verwenden von Anmeldeinformationen mit Azure-Diensten
 
-Sie können die Anmeldeinformationen des Dienstprinzipals in jedem Azure-Dienst verwenden, der mit einer Azure-Containerregistrierung authentifiziert werden kann. Beispiele:
+Sie können die Anmeldeinformationen des Dienstprinzipals in jedem Azure-Dienst verwenden, der mit einer Azure-Containerregistrierung authentifiziert werden kann.  Dienstprinzipal-Anmeldeinformationen können anstelle der Administratoranmeldeinformationen der Registrierung in einer Vielzahl von Szenarien verwendet werden.
 
-* [Authentifizieren per Azure Container Registry über Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
-* [Authentifizieren per Azure Container Registry über Azure Container Instances (ACI)](container-registry-auth-aci.md)
+So können Sie mithilfe der Anmeldeinformationen beispielsweise ein Image aus einer Azure-Containerregistrierung in [Azure Container Instances](container-registry-auth-aci.md) pullen.
 
 ### <a name="use-with-docker-login"></a>Verwenden mit Docker-Anmeldung
 

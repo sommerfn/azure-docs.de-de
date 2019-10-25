@@ -17,6 +17,11 @@
     - name: Ausführen Ihrer ersten Abfrage – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+- name: Lernprogramme
+  items:
+    - name: Erstellen und Freigeben einer Abfrage im Azure-Portal
+      displayName: 'query, portal'
+      href: ./tutorials/create-share-query.md
 - name: Beispiele
   items:
     - name: Einfache Abfragen

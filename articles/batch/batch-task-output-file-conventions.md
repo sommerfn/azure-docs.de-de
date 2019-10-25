@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4446b92a8998f05aae47a3bab6a2cea4785fddf2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a2970c46c7cbc978bf6d7491c9258dcccc5404bd
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094565"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302675"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -63,12 +63,12 @@ Um Ausgabedaten in Azure Storage mithilfe der Dateikonventionenbibliothek beizub
 
 ## <a name="persist-output-data"></a>Beibehalten von Ausgabedateien
 
-Um Auftrags- und Taskausgabedateien mit der Dateikonventionenbibliothek beizubehalten, erstellen Sie einen Container in Azure Storage, und speichern Sie die Ausgabe für den Container. Verwenden der [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage) in Ihrem Taskcode zum Hochladen der Taskausgabe auf den Container. 
+Um Auftrags- und Taskausgabedateien mit der Dateikonventionenbibliothek beizubehalten, erstellen Sie einen Container in Azure Storage, und speichern Sie die Ausgabe für den Container. Verwenden der [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage) in Ihrem Taskcode zum Hochladen der Taskausgabe auf den Container.
 
 Weitere Informationen zum Arbeiten mit Containern und Blobs in Azure Storage finden Sie unter [Erste Schritte mit Azure Blob Storage in .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
 > [!WARNING]
-> Alle Auftrags-und Taskausgaben, die mit der Bibliothek beibehalten werden, werden im gleichen Container gespeichert. Wenn eine große Anzahl von Tasks versucht, Dateien zum gleichen Zeitpunkt beizubehalten, können die [Speicher-Einschränkungsgrenzwerte](../storage/common/storage-performance-checklist.md#blobs) erzwungen werden.
+> Alle Auftrags-und Taskausgaben, die mit der Bibliothek beibehalten werden, werden im gleichen Container gespeichert. Wenn eine große Anzahl von Tasks gleichzeitig versucht, Dateien zu speichern, werden ggf. die Drosselungslimits von Azure Storage erzwungen. Weitere Informationen zu Drosselungslimits finden Sie in der [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](../storage/blobs/storage-performance-checklist.md).
 
 ### <a name="create-storage-container"></a>Erstellen eines Speichercontainers
 

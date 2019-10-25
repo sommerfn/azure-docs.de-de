@@ -5,28 +5,40 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000331"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430516"
 ---
-# <a name="what-is-passwordless"></a>Was bedeutet „kennwortlos“?
+# <a name="passwordless-authentication-options"></a>Kennwortlose Authentifizierungsoptionen
 
 Die Multi-Factor Authentication (MFA) ist eine großartige Möglichkeit, Ihre Organisation zu schützen, aber den Benutzer ist es lästig, sich auch noch ihre Kennwörter merken zu müssen. Kennwortlose Authentifizierungsmethoden sind bequemer, da das Kennwort entfällt und durch etwas ersetzt wird, das Sie haben, plus etwas, das Sie sind oder das Sie wissen.
 
 |   | Etwas, das Sie haben | Etwas, das Sie wissen |
 | --- | --- | --- |
-| Kennwortlos | Telefon- oder Sicherheitsschlüssel | Biometrische Daten oder PIN |
+| Kennwortlos | Windows 10-Gerät, Smartphone oder Sicherheitsschlüssel | Biometrische Daten oder PIN |
 
-Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Für Windows-PCs bietet Microsoft derzeit Windows Hello. Wir fügen den kennwortlosen Optionen die Microsoft Authenticator-App und FIDO2-Sicherheitsschlüssel hinzu.
+Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Microsoft bietet drei kennwortlose Authentifizierungsoptionen:
+
+- Windows Hello for Business 
+- Microsoft Authenticator-App 
+- FIDO2-Sicherheitsschlüssel
+
+![Authentifizierung: Sicherheits- und Komfortaspekte](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+## <a name="windows-hello-for-business"></a>Windows Hello for Business 
+
+Windows Hello for Business eignet sich ideal für Information-Worker, die über einen eigenen Windows-PC verfügen. Die biometrischen Daten und die PIN sind direkt mit dem PC des Benutzers verknüpft, wodurch sichergestellt wird, dass nur der Besitzer darauf zugreifen kann. Mit PKI-Integration und integrierter Unterstützung für einmaliges Anmelden (SSO) bietet Windows Hello for Business eine einfache und praktische Methode für den nahtlosen Zugriff auf Unternehmensressourcen lokal und in der Cloud.
+
+Das [Planungshandbuch](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) für Windows Hello for Business kann verwendet werden, um die Auswahl der Art der Bereitstellung von Windows Hello for Business und die zu berücksichtigenden Optionen zu erleichtern.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator-App
 
@@ -44,7 +56,7 @@ In der Public Preview können sich Mitarbeiter mit externen Sicherheitsschlüsse
 
 ![Anmelden bei Microsoft Edge mit einem Sicherheitsschlüssel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-Obwohl viele Schlüssel von der FIDO Alliance FIDO2-zertifiziert sind, verlangt Microsoft vom Hersteller die Implementierung einiger optionaler Erweiterungen der FIDO2 CTAP-Spezifikation, um maximale Sicherheit und ein optimales Benutzererlebnis zu gewährleisten.
+Viele Schlüssel verfügen zwar über eine FIDO2-Zertifizierung der FIDO Alliance, Microsoft verlangt von Anbietern jedoch die Implementierung einiger optionaler Erweiterungen der FIDO2-CTAP-Spezifikation (Client-to-Authenticator Protocol), um maximale Sicherheit und ein optimales Benutzererlebnis zu gewährleisten.
 
 Ein Sicherheitsschlüssel **MUSS** die folgenden Features und Erweiterungen aus dem FIDO2 CTAP-Protokoll implementieren, damit er mit Microsoft kompatibel ist:
 

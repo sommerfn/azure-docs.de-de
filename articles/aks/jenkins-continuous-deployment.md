@@ -7,12 +7,12 @@ author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 7a81f26b4dad5f7257e5c3fd012dffaf06d573bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e46e2c2933ee9afda860b68b10c135ac75a5d247
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073781"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263925"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Tutorial: Bereitstellen über GitHub in Azure Kubernetes Service (AKS) mit Continuous Integration und Continuous Deployment von Jenkins
 
@@ -33,17 +33,17 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 - Grundkenntnisse zu Kubernetes, Git, CI/CD und Containerimages.
 
-- Einen [AKS-Cluster][aks-quickstart] und `kubectl`, konfiguriert mit den [AKS-Clusteranmeldeinformationen][aks-credentials]
+- Einen [AKS-Cluster][aks-quickstart] und `kubectl`, konfiguriert mit den [AKS-Clusteranmeldeinformationen][aks-credentials].
 
-- Eine [Azure Container Registry-Registrierung (ACR)][acr-quickstart], den Namen des ACR-Anmeldeservers und den für die [Authentifizierung mit der ACR-Registrierung][acr-authentication] konfigurierten AKS-Cluster
+- Eine [ACR-Registrierung (Azure Container Registry)][acr-quickstart], den Namen des ACR-Anmeldeservers und den für die [Authentifizierung mit der ACR-Registrierung][acr-authentication] konfigurierten AKS-Cluster
 
-- Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+- Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
-- Eine [Installation von Docker][docker-install] auf Ihrem Entwicklungssystem
+- Eine [Docker-Installation][docker-install] auf Ihrem Entwicklungssystem.
 
-- Ein GitHub-Konto, ein [persönliches Zugriffstoken für GitHub][git-access-token] und eine Installation des Git-Clients auf Ihrem Entwicklungssystem
+- Ein GitHub-Konto, ein [persönliches Zugriffstoken für GitHub][git-access-token] und eine Installation des Git-Clients auf Ihrem Entwicklungssystem.
 
-- Wenn Sie selbst eine Jenkins-Instanz bereitstellen möchten, anstatt dieses Beispielskript zu verwenden, müssen für diese Instanz [Docker][docker-install] und [kubectl][kubectl-install] installiert und konfiguriert sein.
+- Wenn Sie eine eigene Jenkins-Instanz bereitstellen, anstatt dieses Beispielskript zu verwenden, muss für Ihre Jenkins-Instanz [Docker installiert und konfiguriert][docker-install] und [kubectl][kubectl-install] vorhanden sein.
 
 ## <a name="prepare-your-app"></a>Vorbereiten Ihrer App
 
@@ -72,7 +72,7 @@ Um die für die Beispielanwendung erforderlichen Containerimages zu erstellen, v
 docker-compose up -d
 ```
 
-Die erforderlichen Basisimages werden gepullt, und die Anwendungscontainer werden erstellt. Sie können das erstellte Image anschließend mit dem Befehl [docker-images][docker-images] anzeigen. Drei Images wurden heruntergeladen oder erstellt. Das `azure-vote-front`-Image enthält die Anwendung und verwendet das `nginx-flask`-Image als Grundlage. Das `redis`-Image wird zum Starten einer Redis-Instanz verwendet:
+Die erforderlichen Basisimages werden gepullt, und die Anwendungscontainer werden erstellt. Das erstellte Image kann anschließend mithilfe des Befehls [docker-images][docker-images] angezeigt werden. Drei Images wurden heruntergeladen oder erstellt. Das `azure-vote-front`-Image enthält die Anwendung und verwendet das `nginx-flask`-Image als Grundlage. Das `redis`-Image wird zum Starten einer Redis-Instanz verwendet:
 
 ```
 $ docker images
@@ -83,7 +83,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Bevor Sie das Containerimage *azure-vote-front* in ACR pushen können, rufen Sie Ihren ACR-Anmeldeserver mit dem Befehl [az acr list][az-acr-list] ab. Im folgenden Beispiel wird die ACR-Anmeldeserveradresse für eine Registrierung in der Ressourcengruppe *myResourceGroup* abgerufen:
+Bevor Sie das Containerimage *azure-vote-front* an ACR pushen können, müssen Sie mithilfe des Befehls [az acr list][az-acr-list] Ihren ACR-Anmeldeserver abrufen. Im folgenden Beispiel wird die ACR-Anmeldeserveradresse für eine Registrierung in der Ressourcengruppe *myResourceGroup* abgerufen:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -117,7 +117,7 @@ Stellen Sie als Nächstes die Anwendung mithilfe des Befehls [kubectl apply][kub
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-Es wird ein Kubernetes-Lastenausgleichsdienst erstellt, um die Anwendung im Internet verfügbar zu machen. Dieser Vorgang kann einige Minuten dauern. Um den Fortschritt der Bereitstellung des Lastenausgleichs zu überwachen, verwenden Sie den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`. Sobald die *externe IP-Adresse* nicht mehr *ausstehend* ist, sondern eine *IP-Adresse* angezeigt wird, verwenden Sie `Control + C`, um die kubectl-Überwachung zu beenden.
+Es wird ein Kubernetes-Lastenausgleichsdienst erstellt, um die Anwendung im Internet verfügbar zu machen. Dieser Vorgang kann einige Minuten dauern. Verwenden Sie den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`, um den Fortschritt der Bereitstellung des Lastenausgleichs zu überwachen. Sobald die *externe IP-Adresse* nicht mehr *ausstehend* ist, sondern eine *IP-Adresse* angezeigt wird, verwenden Sie `Control + C`, um die kubectl-Überwachung zu beenden.
 
 ```console
 $ kubectl get service azure-vote-front --watch
@@ -179,7 +179,7 @@ Um Jenkins das Erstellen aktualisierter Containerimages und das anschließende P
 
 ### <a name="create-a-service-principal-for-jenkins-to-use-acr"></a>Erstellen eines Dienstprinzipals für die Verwendung von ACR durch Jenkins
 
-Erstellen Sie als Erstes mit dem Befehl [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] einen Dienstprinzipal:
+Erstellen Sie als Erstes mithilfe des Befehls [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] einen Dienstprinzipal:
 
 ```azurecli
 $ az ad sp create-for-rbac --skip-assignment
@@ -195,7 +195,7 @@ $ az ad sp create-for-rbac --skip-assignment
 
 Notieren Sie sich die Werte *appId* und *password* in der Ausgabe. Diese Werte werden in den folgenden Schritten zum Konfigurieren der Anmeldeinformationsressource in Jenkins verwendet.
 
-Rufen Sie die Ressourcen-ID Ihrer ACR-Registrierung mit dem Befehl [az acr show][az-acr-show] ab, und speichern Sie sie als Variable. Geben Sie Ihren Ressourcengruppennamen und den ACR-Namen an:
+Rufen Sie mithilfe des Befehls [az acr show][az-acr-show] die Ressourcen-ID Ihrer ACR-Registrierung ab, und speichern Sie sie als Variable. Geben Sie Ihren Ressourcengruppennamen und den ACR-Namen an:
 
 ```azurecli
 ACR_ID=$(az acr show --resource-group myResourceGroup --name <acrLoginServer> --query "id" --output tsv)
@@ -313,7 +313,7 @@ Wenn der Build abgeschlossen ist, aktualisieren Sie Ihren Webbrowser mit der Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie Jenkins als Teil einer CI/CD-Lösung verwenden. AKS kann in andere CI/CD-Lösungen und Automatisierungstools integriert werden, z.B. für ein [Azure DevOps-Projekt][azure-devops] oder zum [Erstellen eines AKS-Clusters mit Ansible][aks-ansible].
+In diesem Artikel haben Sie gelernt, wie Sie Jenkins als Teil einer CI/CD-Lösung verwenden. AKS kann in andere CI/CD-Lösungen und Automatisierungstools integriert werden – etwa in das [Azure DevOps-Projekt][azure-devops] oder beim [Erstellen eines AKS-Clusters mit Ansible][aks-ansible].
 
 <!-- LINKS - external -->
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
@@ -326,7 +326,7 @@ In diesem Artikel haben Sie gelernt, wie Sie Jenkins als Teil einer CI/CD-Lösun
 
 <!-- LINKS - internal -->
 [az-acr-list]: /cli/azure/acr#az-acr-list
-[acr-authentication]: ../container-registry/container-registry-auth-aks.md#grant-aks-access-to-acr
+[acr-authentication]: cluster-container-registry-integration.md
 [acr-quickstart]: ../container-registry/container-registry-get-started-azure-cli.md
 [aks-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-quickstart]: kubernetes-walkthrough.md

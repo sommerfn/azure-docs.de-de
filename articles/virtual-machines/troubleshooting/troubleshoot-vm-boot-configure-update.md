@@ -13,22 +13,22 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d0a946ede154561aaa49d335b7b91fdae72c51d3
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 4263afe33caa4d6471848c8e7dbf9bc1eeec4bee
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155550"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332519"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM-Start bleibt in Azure bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.
 
-In diesem Artikel erfahren Sie, was Sie tun können, wenn Ihr virtueller Computer (Virtual Machine, VM) in der Startphase bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen bleibt.
+In diesem Artikel werden die Bildschirme „Wird vorbereitet...“ und „Windows wird vorbereitet“ beschrieben, die ggf. beim Start eines virtuellen Windows-Computers (virtual machine, VM) in Microsoft Azure angezeigt werden. Er bietet Schritte, mit denen Sie Daten für ein Supportticket sammeln können.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie die **Startdiagnose** verwenden, um die Momentaufnahme eines virtuellen Computers zu erhalten, wird das Betriebssystem nicht vollständig gestartet. Der virtuelle Computer zeigt die Meldung „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.
+Ein virtueller Windows-Computer startet nicht. Wenn Sie die **Startdiagnose** verwenden, um den Screenshot des virtuellen Computers zu erhalten, sehen Sie unter Umständen, dass der virtuelle Computer die Meldung „Wird vorbereitet...“ oder „Windows wird vorbereitet“ anzeigt.
 
 ![Beispielmeldung für Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -38,178 +38,71 @@ Wenn Sie die **Startdiagnose** verwenden, um die Momentaufnahme eines virtuellen
 
 Dieses Problem tritt in der Regel auf, wenn der Server nach einer Änderung der Konfiguration den letzten Neustart ausführt. Die Konfigurationsänderung wurde möglicherweise durch Windows-Updates oder durch Änderungen an den Rollen/Features des Servers initiiert. Bei großen Windows-Updates benötigt das Betriebssystem mehr Zeit, um die Änderungen neu zu konfigurieren.
 
-## <a name="back-up-the-os-disk"></a>Sichern des Betriebssystemdatenträgers
-
-Sichern Sie den Betriebssystemdatenträger, bevor Sie versuchen, das Problem zu beheben.
-
-### <a name="for-vms-with-an-encrypted-disk-you-must-unlock-the-disks-first"></a>Bei VMs mit einem verschlüsselten Datenträger müssen Sie die Datenträger zuerst entsperren (entschlüsseln)
-
-Gehen Sie wie folgt vor, um zu ermitteln, ob der virtuelle Computer verschlüsselt ist:
-
-1. Öffnen Sie im Azure-Portal Ihren virtuellen Computer, und navigieren Sie zu den Datenträgern.
-
-2. In der Spalte **Verschlüsselung** sehen Sie, ob die Verschlüsselung aktiviert ist.
-
-Ist der Betriebssystemdatenträger verschlüsselt, entsperren Sie den verschlüsselten Datenträger. Gehen Sie dazu wie folgt vor:
-
-1. Erstellen Sie einen Wiederherstellungs-VM, der sich in der gleichen Ressourcengruppe, im gleichen Speicherkonto und am gleichen Speicherort befindet wie der betroffene virtuelle Computer.
-
-2. Löschen Sie im Azure-Portal den betroffenen virtuellen Computer, aber behalten Sie den Datenträger bei.
-
-3. Führen Sie PowerShell als Administrator aus.
-
-4. Führen Sie das folgende Cmdlet aus, um den Geheimnisnamen abzurufen.
-
-    ```Powershell
-    Login-AzAccount
- 
-    $vmName = “VirtualMachineName”
-    $vault = “AzureKeyVaultName”
- 
-    # Get the Secret for the C drive from Azure Key Vault
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq $vmName) -and ($_.Tags.VolumeLetter -eq “C:\”) -and ($_.ContentType -eq ‘BEK‘)}
-
-    # OR Use the below command to get BEK keys for all the Volumes
-    Get-AzureKeyVaultSecret -VaultName $vault | where {($_.Tags.MachineName -eq   $vmName) -and ($_.ContentType -eq ‘BEK’)}
-    ```
-
-5. Führen Sie nach Erhalt des Geheimnisnamens die folgenden Befehle in PowerShell aus:
-
-    ```Powershell
-    $secretName = 'SecretName'
-    $keyVaultSecret = Get-AzureKeyVaultSecret -VaultName $vault -Name $secretname
-    $bekSecretBase64 = $keyVaultSecret.SecretValueText
-    ```
-
-6. Konvertieren Sie den Base64-codierten Wert in Bytes, und schreiben Sie die Ausgabe in eine Datei. 
-
-    > [!Note]
-    > Wenn Sie die USB-Entsperroption verwenden, muss der Name der BEK-Datei dem ursprünglichen BEK-GUID entsprechen. Erstellen Sie auf dem Laufwerk C: einen Ordner mit dem Namen „BEK“, bevor Sie die nächsten Schritte ausführen.
-    
-    ```Powershell
-    New-Item -ItemType directory -Path C:\BEK
-    $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
-    $path = “c:\BEK\$secretName.BEK”
-    [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
-    ```
-
-7. Kopieren Sie die BEK-Datei nach der Erstellung auf Ihrem PC auf den Wiederherstellungs-VM, dem Sie den gesperrten Betriebssystemdatenträger angefügt haben. Führen Sie die folgenden Befehle unter Verwendung des Speicherorts der BEK-Datei aus:
-
-    ```Powershell
-    manage-bde -status F:
-    manage-bde -unlock F: -rk C:\BEKFILENAME.BEK
-    ```
-    **Optional:** In bestimmten Szenarien muss der Datenträger ggf. mithilfe des folgenden Befehls entschlüsselt werden:
-   
-    ```Powershell
-    manage-bde -off F:
-    ```
-
-    > [!Note]
-    > Bei dem obigen Befehl wird davon ausgegangen, dass der zu entschlüsselnde Datenträger den Buchstaben F hat.
-
-8. Falls Sie Protokolle benötigen, navigieren zum Pfad **LAUFWERKBUCHSTABE:\Windows\System32\winevt\Logs**.
-
-9. Trennen Sie das Laufwerk vom Wiederherstellungscomputer.
-
-### <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
-
-Wenn Sie eine Momentaufnahme erstellen möchten, führen Sie die unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md) beschriebenen Schritte aus.
-
 ## <a name="collect-an-os-memory-dump"></a>Erfassen eines Betriebssystemspeicherabbilds
 
-Führen Sie die im Abschnitt [Sammeln der Speichersicherungsdatei](troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) aufgeführten Schritte aus, um ein Betriebssystemabbild zu erfassen, wenn sich der virtuelle Computer bei der Konfiguration aufgehängt hat.
+Wenn Sie auf die Verarbeitung der Änderungen gewartet haben und das Problem trotzdem bestehen bleibt, müssen Sie sich mit einer Speicherabbilddatei an den Support wenden. Um die Sicherungsdatei zu sammeln, gehen Sie folgendermaßen vor:
+
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
+
+1. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
+2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
+3. Remotedesktopverbindung mit der Wiederherstellungs-VM. 
+4. Ist der Betriebssystemdatenträger verschlüsselt, müssen Sie die Verschlüsselung deaktivieren, bevor Sie mit dem nächsten Schritt fortfahren. Weitere Informationen zum Entschlüsseln des verschlüsselten Betriebssystemdatenträgers des virtuellen Computers, der nicht gestartet werden kann, finden Sie [hier](troubleshoot-bitlocker-boot-error.md#solution).
+
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Suche nach der Sicherungsdatei und Senden eines Supporttickets
+
+1. Navigieren Sie auf der Wiederherstellungs-VM zum Windows-Ordner im angefügten Betriebssystemdatenträger. Wenn der Laufwerkbuchstabe, der dem angefügten Betriebssystemdatenträger zugewiesen ist, „F“ lautet, müssen Sie zu „F:\Windows“ navigieren.
+2. Suchen Sie nach der Datei „memory.dmp“, und [senden Sie dann ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mit der Sicherungsdatei. 
+
+Wenn Sie die Sicherungsdatei nicht finden können, fahren Sie mit dem nächsten Schritt zum Aktivieren des Sicherungsprotokolls und der seriellen Konsole fort.
+
+### <a name="enable-dump-log-and-serial-console"></a>Aktivieren des Sicherungsprotokolls und der seriellen Konsole
+
+Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie das folgende Skript aus.
+
+1. Öffnen Sie die Eingabeaufforderungssitzung mit erhöhten Rechten (Als Administrator ausführen).
+2. Führen Sie das folgende Skript aus:
+
+    In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie ihn durch den entsprechenden Wert Ihrer VM.
+
+    ```powershell
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+
+    REM Enable Serial Console
+    bcdedit /store F:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store F:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store F:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store F:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    bcdedit /store F:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+
+    REM Suggested configuration to enable OS Dump
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+
+    reg unload HKLM\BROKENSYSTEM
+    ```
+
+    1. Stellen Sie sicher, dass genügend Speicherplatz auf dem Datenträger vorhanden ist, um genauso viel Arbeitsspeicher wie der RAM zuzuweisen. Dieser hängt von der Größe ab, die Sie für diese VM auswählen.
+    2. Wenn nicht genügend Speicherplatz vorhanden ist, oder es sich um eine VM beträchtlicher Größe (der Serie G, GS oder E) handelt, können Sie den Speicherort, in dem diese Datei erstellt wird, ändern und auf einen anderen Datenträger verweisen, der der VM angefügt ist. Hierzu müssen Sie den folgenden Schlüssel ändern:
+
+            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+
+            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+
+            reg unload HKLM\BROKENSYSTEM
+
+3. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](../windows/troubleshoot-recovery-disks-portal.md).
+4. Starten Sie den virtuellen Computer, und greifen Sie auf die serielle Konsole zu.
+5. Wählen Sie **Nicht maskierbaren Interrupt (NMI) senden** aus, um die Generierung des Speicherabbilds auszulösen.
+    ![Abbildung, die zeigt, wo der nicht maskierbare Interrupt gesendet wird](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
+6. Fügen Sie den Betriebssystemdatenträger erneut an einen virtuellen Wiederherstellungscomputer an, und rufen Sie die Abbilddatei ab.
 
 ## <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 
 Nachdem Sie die Abbilddatei erfasst haben, können Sie sich an den [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden, um die Grundursache zu analysieren.
-
-
-## <a name="rebuild-the-vm-by-using-powershell"></a>Neuerstellen des virtuellen Computers mithilfe von PowerShell
-
-Führen Sie nach Erfassung der Speicherabbilddatei die folgenden Schritte aus, um den virtuellen Computer neu zu erstellen:
-
-**Nicht verwaltete Datenträger**
-
-```powershell
-# To log in to Azure Resource Manager
-Login-AzAccount
-
-# To view all subscriptions for your account
-Get-AzSubscription
-
-# To select a default subscription for your current session
-Get-AzSubscription –SubscriptionID “SubscriptionID” | Select-AzSubscription
-
-$rgname = "RGname"
-$loc = "Location"
-$vmsize = "VmSize"
-$vmname = "VmName"
-$vm = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
-
-$nic = Get-AzNetworkInterface -Name ("NicName") -ResourceGroupName $rgname;
-$nicId = $nic.Id;
-
-$vm = Add-AzVMNetworkInterface -VM $vm -Id $nicId;
-
-$osDiskName = "OSdiskName"
-$osDiskVhdUri = "OSdiskURI"
-
-$vm = Set-AzVMOSDisk -VM $vm -VhdUri $osDiskVhdUri -name $osDiskName -CreateOption attach -Windows
-
-New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
-```
-
-**Verwaltete Datenträger**
-
-```powershell
-# To log in to Azure Resource Manager
-Login-AzAccount
-
-# To view all subscriptions for your account
-Get-AzSubscription
-
-# To select a default subscription for your current session
-Get-AzSubscription –SubscriptionID "SubscriptionID" | Select-AzSubscription
-
-#Fill in all variables
-$subid = "SubscriptionID"
-$rgName = "ResourceGroupName";
-$loc = "Location";
-$vmSize = "VmSize";
-$vmName = "VmName";
-$nic1Name = "FirstNetworkInterfaceName";
-#$nic2Name = "SecondNetworkInterfaceName";
-$avName = "AvailabilitySetName";
-$osDiskName = "OsDiskName";
-$DataDiskName = "DataDiskName"
-
-#This can be found by selecting the Managed Disks you wish you use in the Azure portal if the format below doesn't match
-$osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
-$dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
-
-$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize;
-
-#Uncomment to add Availability Set
-#$avSet = Get-AzAvailabilitySet –Name $avName –ResourceGroupName $rgName;
-#$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id;
-
-#Get NIC Resource Id and add
-$nic1 = Get-AzNetworkInterface -Name $nic1Name -ResourceGroupName $rgName;
-$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic1.Id -Primary;
-
-#Uncomment to add a secondary NIC
-#$nic2 = Get-AzNetworkInterface -Name $nic2Name -ResourceGroupName $rgName;
-#$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic2.Id;
-
-#Windows VM
-$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Windows;
-
-#Linux VM
-#$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Linux;
-
-#Uncomment to add additional Data Disk
-#Add-AzVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;
-
-New-AzVM -ResourceGroupName $rgName -Location $loc -VM $vm;
-```

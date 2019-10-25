@@ -1,17 +1,17 @@
 ---
-title: Azure Data Factory Mapping Data Flow – Spaltenmuster
+title: Spaltenmuster in Azure Data Factory-Mappingdatenflüssen
 description: Erstellen generalisierter Datentransformationsmuster mit Spaltenmustern von Azure Data Factory in Mappingdatenflüssen
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 535656f315f65ffb7aa241618fe9e73b8246b71f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a95bbb726f8c391270d3f60ed769d9475004b1e4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027866"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388017"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>Mappingdatenflüsse – Spaltenmuster
 
@@ -44,7 +44,7 @@ Um Muster auf der Grundlage von Spalten zu erstellen, können Sie Spaltenname, T
 ## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
 Beim Zuordnen von Spalten in Quell-und Auswahltransformationen haben Sie die Möglichkeit, „Feste Zuordnung“ oder „Regelbasierte Zuordnung“ auszuwählen. Wenn Sie das Schema Ihrer Daten kennen und bestimmte Spalten aus dem Quell-DataSet erwarten, die mit bestimmten statischen Namen immer identisch sind, können Sie die feste Zuordnung verwenden. Wenn Sie aber mit flexiblen Schemas arbeiten, verwenden Sie die regelbasierte Zuordnung. Sie können mithilfe der vorstehend beschriebenen Regeln einen Musterabgleich erstellen.
 
-![regelbasierte Zuordnung](media/data-flow/rule2.png "Regelbasierte Zuordnung")
+![Regelbasierte Zuordnung](media/data-flow/rule2.png "Regelbasierte Zuordnung")
 
 Erstellen Sie Regeln mithilfe des Ausdrucks-Generators. Ihre Ausdrücke geben einen booleschen Wert zurück, um eine Übereinstimmung mit Spalten (TRUE) oder einen Ausschluss von Spalten (FALSE) anzugeben.
 
@@ -57,5 +57,5 @@ Erstellen Sie Regeln mithilfe des Ausdrucks-Generators. Ihre Ausdrücke geben ei
 * `position` ist die Ordinalposition von Spalten in Ihrem Datenfluss.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich ausführlicher über die [Ausdruckssprache](https://aka.ms/dataflowexpressions) des ADF-Mappingdatenflusses für Datentransformationen.
+* Informieren Sie sich ausführlicher über die [Ausdruckssprache](https://aka.ms/dataflowexpressions) von ADF-Mappingdatenflüssen für Datentransformationen.
 * Verwenden von Spaltenmustern in der [Senkentransformation](data-flow-sink.md) und [Auswählen einer Transformation](data-flow-select.md) mit regelbasierter Zuordnung

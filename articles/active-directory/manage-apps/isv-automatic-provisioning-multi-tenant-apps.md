@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 11fda31cd06db67e0a11a68a02da8b91a77e04e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729188"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429450"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Aktivieren der automatischen Benutzerbereitstellung für Ihre mehrinstanzenfähige Anwendung
 
@@ -79,17 +79,17 @@ Informationen zu den Integrationsoptionen für die Anwendung finden Sie in der a
 <sup>*</sup> Azure AD Connect muss eingerichtet werden, um Benutzer aus AD mit Azure AD zu synchronisieren.  
 <sup>+</sup > Die Verwendung von SCIM für die Bereitstellung hindert Sie nicht daran, Ihre Anwendung zu anderen Zwecken in Microsoft Graph zu integrieren.
 
-## <a name="azure-ad-provisioning-service"></a>Azure AD-Bereitstellungsdienst
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD-Bereitstellungsdienst (SCIM)
 
-Im Azure AD-Bereitstellungsdienst wird SCIM verwendet, ein Protokoll, das von vielen Identitätsanbietern (IdPs) unterstützt wird. Es wird empfohlen, den Azure AD-Bereitstellungsdienst zu verwenden, wenn Sie IdPs zusätzlich zu Azure AD unterstützen möchten, da jeder SCIM-konforme IdP eine Verbindung mit dem SCIM-Endpunkt herstellen kann.
+Der Azure AD-Bereitstellungsdienst nutzt [SCIM](https://aka.ms/SCIMOverview) – einen Branchenstandard für die Bereitstellung, der von vielen Identitätsanbietern (Identity Providers, IdPs) und Anwendungen (beispielsweise Slack, G Suite und Dropbox) unterstützt wird. Es wird empfohlen, den Azure AD-Bereitstellungsdienst zu verwenden, wenn Sie IdPs zusätzlich zu Azure AD unterstützen möchten, da jeder SCIM-konforme IdP eine Verbindung mit dem SCIM-Endpunkt herstellen kann. Wenn Sie einen einfachen /User-Endpunkt entwickeln, können Sie die Bereitstellung aktivieren, ohne eine eigene Synchronisierungsengine verwalten zu müssen. 
 
 Weitere Informationen zur Verwendung von SCIM im Azure AD-Bereitstellungsdienst finden Sie hier: 
+
+* [Bereitstellen mit SCIM: erste Schritte](https://aka.ms/SCIMOverview)
 
 * [Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 * [Verstehen der Azure AD-SCIM-Implementierung](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
-
-* [Erstellen eines SCIM-Endpunkts mit Microsoft-CLI-Bibliotheken](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph für die Bereitstellung
 
@@ -106,16 +106,6 @@ Weitere Informationen zur Verwendung von Microsoft Graph für die Bereitstellung
 * [Übersicht über die Microsoft Graph-Authentifizierung](https://docs.microsoft.com/graph/auth/)
 
 * [Erste Schritte mit Microsoft Graph](https://developer.microsoft.com/graph/get-started)
-
-* [Verwenden der Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api)
-
-* [Microsoft Graph](https://aka.ms/ge) 
-
-* [Referenz zu Microsoft Graph-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference)
-
-* [Optimale Methoden für das Arbeiten mit Microsoft Graph](https://docs.microsoft.com/graph/best-practices-concept)
-
-* [Ausgewählte Szenarien für Microsoft Graph](https://developer.microsoft.com/graph/examples)
 
 ## <a name="using-saml-jit-for-provisioning"></a>Verwenden von SAML JIT für die Bereitstellung
 

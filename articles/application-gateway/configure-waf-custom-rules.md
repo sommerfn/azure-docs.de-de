@@ -1,45 +1,44 @@
 ---
-title: Konfigurieren von Web Application Firewall v2 mit benutzerdefinierten Regeln mithilfe von Azure PowerShell
-description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell benutzerdefinierte Regeln für WAF v2 konfigurieren.
+title: Konfigurieren von Web Application Firewall v2 mit benutzerdefinierten Regeln unter Verwendung von Azure PowerShell
+description: Hier erfahren Sie, wie Sie Web Application Firewall v2 unter Verwendung von Azure PowerShell mit benutzerdefinierten Regeln konfigurieren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e50b47e22f5760c213cd0cafad82ecca592dec8
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164751"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263748"
 ---
-# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Konfigurieren von Web Application Firewall v2 mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell
+# <a name="configure-web-application-firewall-v2-custom-rules-by-using-azure-powershell"></a>Konfigurieren von Web Application Firewall v2 mit benutzerdefinierten Regeln unter Verwendung von Azure PowerShell
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für jede Anforderung ausgewertet werden, für die Web Application Firewall v2 (WAF) durchlaufen wird. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Die benutzerdefinierten Regeln verfügen über eine Aktion (Zulassen oder Blockieren), eine Übereinstimmungsbedingung und einen Operator zum Zulassen der vollständigen Anpassung.
+Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für jede Anforderung ausgewertet werden, die die Web Application Firewall (WAF) durchlaufen. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Die benutzerdefinierten Regeln verfügen über eine Aktion (Zulassen oder Blockieren), eine Übereinstimmungsbedingung und einen Operator, um eine vollständige Anpassung zu ermöglichen.
 
-In diesem Artikel wird eine Application Gateway-WAF v2 erstellt, für die eine benutzerdefinierte Regel verwendet wird. Die benutzerdefinierte Regel blockiert Datenverkehr, wenn der Anforderungsheader den Benutzer-Agent *evilbot* enthält.
+In diesem Artikel wird eine Azure Application Gateway-WAF v2 erstellt, die eine benutzerdefinierte Regel verwendet. Die benutzerdefinierte Regel blockiert Datenverkehr, wenn der Anforderungsheader den Benutzer-Agent *evilbot* enthält.
 
-Weitere Beispiele für benutzerdefinierte Regeln finden Sie unter [Create and use Web Application Firewall custom rules](create-custom-waf-rules.md) (Erstellen und Verwenden benutzerdefinierter Web Application Firewall-Regeln).
+Weitere Beispiele für benutzerdefinierte Regeln finden Sie unter [Erstellen und Verwenden von benutzerdefinierten Regeln für die Web Application Firewall v2](create-custom-waf-rules.md).
 
-Wenn Sie den Azure PowerShell-Code in diesem Artikel in einem fortlaufenden Skript benötigen, das Sie kopieren, einfügen und ausführen können, lesen Sie unter [PowerShell-Beispiele für Azure Application Gateway](powershell-samples.md) nach.
+Wenn Sie den Azure PowerShell-Code in diesem Artikel in einem einzelnen fortlaufenden Skript benötigen, das Sie kopieren, einfügen und ausführen können, lesen Sie [Azure PowerShell-Beispiele für Azure Application Gateway](powershell-samples.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+* [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-### <a name="azure-powershell-module"></a>Azure PowerShell-Modul
+* Sie benötigen ein Azure PowerShell-Modul. Wenn Sie Azure PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Skript mindestens die Version 2.1.0 des Azure PowerShell-Moduls verwenden. Gehen Sie wie folgt vor:
 
-Wenn Sie Azure PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Skript mindestens Version 2.1.0 des Azure PowerShell-Moduls verwenden.
-
-1. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu.
-2. Führen Sie `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+  1. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu.
+  2. Führen Sie `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="example-script"></a>Beispielskript
 
 ### <a name="set-up-variables"></a>Einrichten von Variablen
+
+Führen Sie den folgenden Code aus:
 
 ```azurepowershell
 $rgname = "CustomRulesTest"
@@ -51,11 +50,15 @@ $appgwName = "WAFCustomRules"
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
+Führen Sie den folgenden Code aus:
+
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
 ```
 
-### <a name="create-a-vnet"></a>Erstellen eines VNET
+### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+
+Führen Sie den folgenden Code aus:
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -68,12 +71,16 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
 
 ### <a name="create-a-static-public-vip"></a>Erstellen einer statischen öffentlichen VIP
 
+Führen Sie den folgenden Code aus:
+
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-port"></a>Erstellen eines Pools und eines Front-End-Ports
+### <a name="create-a-pool-and-front-end-port"></a>Erstellen eines Pools und eines Front-End-Ports
+
+Führen Sie den folgenden Code aus:
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -89,6 +96,8 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
 ### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Erstellen eines Listeners, einer HTTP-Einstellung, einer Regel und der Autoskalierung
+
+Führen Sie den folgenden Code aus:
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -107,6 +116,8 @@ $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 
 ### <a name="create-the-custom-rule-and-apply-it-to-waf-policy"></a>Erstellen der benutzerdefinierten Regel und Anwenden auf die WAF-Richtlinie
 
+Führen Sie den folgenden Code aus:
+
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
 
@@ -119,7 +130,9 @@ $wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafPolicy -ResourceGro
 $wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-### <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
+### <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
+
+Führen Sie den folgenden Code aus:
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
@@ -134,4 +147,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie mehr über die Web Application Firewall](waf-overview.md).
+[Weitere Informationen zur Web Application Firewall](waf-overview.md)

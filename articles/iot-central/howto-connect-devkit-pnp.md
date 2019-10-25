@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: f3cfb892fc116640df5dd30abf857bde6e196224
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879094"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297056"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -34,7 +34,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
 ## <a name="get-device-connection-details"></a>Abrufen der Geräteverbindungsdetails
 
-Wählen Sie in Ihrer Azure IoT Central-Anwendung die Registerkarte **Verwaltung** aus, und wählen Sie dann **Geräteverbindung** aus. Notieren Sie sich die **Bereichs-ID** und den **Primärschlüssel**.
+Wählen Sie in Ihrer Azure IoT Central-Anwendung die Registerkarte **Verwaltung** aus, und wählen Sie dann **Geräteverbindung** aus. Notieren Sie sich den **ID-Bereich** und den **Primärschlüssel**.
 
 ![Gerätegruppen-Verbindungsdetails](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -61,7 +61,7 @@ Wählen Sie in Ihrer Azure IoT Central-Anwendung die Registerkarte **Verwaltung*
 
     - Den Namen Ihres WLAN (SSID).
     - Ihr WLAN-Kennwort.
-    - Die Verbindungsdetails: die **Geräte-ID**, die Sie selbst auswählen können, sowie die **Bereichs-ID** und den **primären SAS-Gruppenschlüssel**, die/den Sie sich zuvor notiert haben.
+    - Die Verbindungsdetails: die **Geräte-ID**, die Sie selbst auswählen können, sowie der **ID-Bereich** und der **primäre SAS-Gruppenschlüssel**, die/den Sie sich zuvor notiert haben.
 
     > [!NOTE]
     > Derzeit kann das IoT DevKit nur eine Verbindung mit einem 2,4 GHz-WLAN herstellen. Frequenzen von 5 GHz werden aufgrund von Hardwareeinschränkungen nicht unterstützt.
@@ -86,7 +86,7 @@ Wählen Sie in Ihrer IoT Central-Anwendung die Registerkarte **Geräte** aus, un
 
 ## <a name="review-the-code"></a>Überprüfen des Codes
 
-Wenn Sie den Code überprüfen oder ändern und kompilieren möchten, navigieren Sie zum [GitHub-Repository mit dem MXChip IoT DevKit-Beispielcode](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp).
+Navigieren Sie zum Überprüfen oder Ändern und Kompilieren des Codes zu den [Codebeispielen](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

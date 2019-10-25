@@ -16,12 +16,12 @@ ms.date: 05/30/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 420a7079a7961868277a2d78ffbac4adba240d9f
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: ea979731c27a8d332102c3215e80510994f2ab3f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678077"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430240"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management-preview"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung (Vorschauversion)
 
@@ -45,7 +45,7 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 * SharePoint Online-Dokumentbibliotheken und einzelne Dokumente können nicht als Ressourcen hinzugefügt werden.  Erstellen Sie stattdessen eine Azure AD-Sicherheitsgruppe, fügen Sie diese Gruppe und eine Standortrolle zum Zugriffspaket hinzu, und verwenden Sie diese Gruppe in SharePoint Online, um den Zugriff auf die Dokumentbibliothek oder das Dokument zu steuern.
 
-* Wenn bereits Benutzer einer Ressource zugewiesen wurden, die Sie mit einem Zugriffspaket verwalten möchten, stellen Sie sicher, dass die Benutzer dem Zugriffspaket mit einer entsprechenden Richtlinie zugewiesen sind. Möglicherweise möchten Sie beispielsweise eine Gruppe in ein Zugriffspaket einschließen, das bereits Benutzer in der Gruppe enthält. Wenn diese Benutzer in der Gruppe weiterhin Zugriff benötigen, müssen sie über eine entsprechende Richtlinie für die Zugriffspakete verfügen, damit sie ihren Zugriff auf die Gruppe nicht verlieren. Sie können das Zugriffspaket zuweisen, indem Sie entweder die Benutzer bitten, das Zugriffspaket mit der entsprechenden Ressource anzufordern, oder die Benutzer direkt dem Zugriffspaket zuweisen. Weitere Informationen finden Sie unter [Bearbeiten und Verwalten eines vorhandenen Zugriffspakets](entitlement-management-access-package-edit.md).
+* Wenn bereits Benutzer einer Ressource zugewiesen wurden, die Sie mit einem Zugriffspaket verwalten möchten, stellen Sie sicher, dass die Benutzer dem Zugriffspaket mit einer entsprechenden Richtlinie zugewiesen sind. Möglicherweise möchten Sie beispielsweise eine Gruppe in ein Zugriffspaket einschließen, das bereits Benutzer in der Gruppe enthält. Wenn diese Benutzer in der Gruppe weiterhin Zugriff benötigen, müssen sie über eine entsprechende Richtlinie für die Zugriffspakete verfügen, damit sie ihren Zugriff auf die Gruppe nicht verlieren. Sie können das Zugriffspaket zuweisen, indem Sie entweder die Benutzer bitten, das Zugriffspaket mit der entsprechenden Ressource anzufordern, oder die Benutzer direkt dem Zugriffspaket zuweisen. Weitere Informationen finden Sie unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket](entitlement-management-access-package-request-policy.md).
 
 ## <a name="checklist-for-providing-external-users-access"></a>Checkliste für die Bereitstellung des Zugriffs durch externe Benutzer
 
@@ -55,16 +55,17 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 ## <a name="checklist-for-request-issues"></a>Prüfliste für Anforderungsprobleme
 
-* Wenn ein Benutzer Zugriff auf ein Zugriffspaket anfordern möchte, müssen Sie sicherstellen, dass der Benutzer den **Link zum Portal „Mein Zugriff“** für das Zugriffspaket verwendet. Weitere Informationen finden Sie unter [Kopieren des Links zum Portal „Mein Zugriff“](entitlement-management-access-package-edit.md#copy-my-access-portal-link).  Wenn ein externer Besucher **myaccess.microsoft.com** aufruft, werden die Zugriffspakete angezeigt, die für den Benutzer in seiner eigenen Organisation verfügbar sind.
+* Wenn ein Benutzer Zugriff auf ein Zugriffspaket anfordern möchte, müssen Sie sicherstellen, dass der Benutzer den **Link zum Portal „Mein Zugriff“** für das Zugriffspaket verwendet. Weitere Informationen finden Sie unter [Teilen des Links zum Anfordern eines Zugriffspakets](entitlement-management-access-package-settings.md).  Wenn ein externer Besucher **myaccess.microsoft.com** aufruft, werden die Zugriffspakete angezeigt, die für den Benutzer in seiner eigenen Organisation verfügbar sind.
 
 * Wenn sich ein Benutzer, der noch nicht in Ihrem Verzeichnis enthalten ist, sich beim Portal „Mein Zugriff“ anmeldet, um ein Zugriffspaket anzufordern, müssen Sie sicherstellen, dass er sich mit seinem Organisationskonto authentifiziert. Bei dem Organisationskonto kann es sich um ein Konto im Ressourcenverzeichnis oder um ein Konto in einem Verzeichnis handeln, das in einer der Richtlinien des Zugriffspakets enthalten ist. Wenn es sich bei dem Konto des Benutzers nicht um ein Organisationskonto handelt oder das Verzeichnis, bei dem sie sich authentifizieren, nicht in der Richtlinie enthalten ist, wird dem Benutzer das Zugriffspaket nicht angezeigt. Weitere Informationen finden Sie unter [Anfordern des Zugriffs auf ein Zugriffspaket](entitlement-management-request-access.md).
 
 * Wenn die Benutzeranmeldung beim Ressourcenverzeichnis blockiert wird, kann der Benutzer keinen Zugriff im Portal „Mein Zugriff“ anfordern. Bevor der Benutzer den Zugriff anfordern kann, müssen Sie die Anmeldeblockierung aus dem Profil des Benutzers entfernen. Um die Anmeldeblockierung zu entfernen, klicken Sie im Azure-Portal auf **Azure Active Directory**, klicken Sie auf **Benutzer**, klicken Sie auf den Benutzer, und klicken Sie dann auf **Profil**. Bearbeiten Sie den Abschnitt **Einstellungen**, und ändern Sie **Anmeldung blockieren** in **Nein**. Weitere Informationen finden Sie unter [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Sie können auch überprüfen, ob der Benutzer aufgrund einer [Identity Protection-Richtlinie](../identity-protection/howto-unblock-user.md) blockiert wurde.
 
-* Wenn ein Benutzer sowohl Anforderer als auch Genehmiger ist, wird ihm im Portal „Mein Zugriff“ auf der Seite **Genehmigungen** die Anforderung für ein Zugriffspaket nicht angezeigt. Dieses Verhalten ist beabsichtigt: Ein Benutzer kann seine eigene Anforderung nicht genehmigen. Stellen Sie sicher, dass für das angeforderte Zugriffspaket zusätzliche genehmigende Personen in der Richtlinie konfiguriert sind. Weitere Informationen finden Sie unter [Bearbeiten einer vorhandenen Richtlinie](entitlement-management-access-package-edit.md#edit-an-existing-policy).
+* Wenn ein Benutzer sowohl Anforderer als auch Genehmiger ist, wird ihm im Portal „Mein Zugriff“ auf der Seite **Genehmigungen** die Anforderung für ein Zugriffspaket nicht angezeigt. Dieses Verhalten ist beabsichtigt: Ein Benutzer kann seine eigene Anforderung nicht genehmigen. Stellen Sie sicher, dass für das angeforderte Zugriffspaket zusätzliche genehmigende Personen in der Richtlinie konfiguriert sind. Weitere Informationen finden Sie unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket](entitlement-management-access-package-request-policy.md).
 
 * Wenn ein neuer externer Benutzer, der sich vorher noch nicht bei Ihrem Verzeichnis angemeldet hat, ein Zugriffspaket einschließlich einer SharePoint Online-Website erhält, wird das Zugriffspaket erst als vollständig übermittelt angezeigt, nachdem das Benutzerkonto in SharePoint Online bereitgestellt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung](entitlement-management-reports.md)
+- [Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung (Vorschau)](entitlement-management-external-users.md)

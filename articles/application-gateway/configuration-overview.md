@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177439"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389968"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -48,7 +48,7 @@ Sie sollten mindestens ein /28-Subnetz verwenden. Diese Größe bietet Ihnen 11 
 
 Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstützt. Aber es gibt einige Einschränkungen:
 
-- Sie müssen Ausnahmen für eingehenden Datenverkehr an den Ports 65503-65534 für die Application Gateway v1-SKU und an den Ports 65200-65535 für die v2-SKU einbeziehen. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Externe Entitäten einschließlich der Kunden dieser Gateways können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
+- Sie müssen eingehenden Internetdatenverkehr über die TCP-Ports 65503–65534 (für die Application Gateway v1-SKU) und über die TCP-Ports 65200–65535 (für die v2-SKU) mit dem Zielsubnetz *Beliebig* zulassen. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Externe Entitäten einschließlich der Kunden dieser Gateways können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
 
 - Die ausgehende Internetverbindung kann nicht blockiert sein. Standardausgangsregeln in der NSG ermöglichen Internetkonnektivität. Wir empfehlen Folgendes:
 

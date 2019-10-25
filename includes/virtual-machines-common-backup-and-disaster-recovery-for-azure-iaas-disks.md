@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d242b2815d59676432beb878bbc955a9f39de0f1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178088"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72302311"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger
 
@@ -130,7 +130,7 @@ Ihre Auswahl in Bezug auf Hochverfügbarkeit, Sicherung und Notfallwiederherstel
 
 Mit [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) können Ihre VMs mit Windows oder Linux im Azure Recovery Services-Tresor gesichert werden. Das Sichern und Wiederherstellen unternehmenskritischer Daten wird dadurch erschwert, dass die Daten während der Ausführung der Anwendungen, von denen die Daten generiert werden, gesichert werden müssen. 
 
-Um dieses Problem zu beheben, bietet Azure Backup anwendungskonsistente Sicherungen für Microsoft-Workloads. Dabei wird der Volumeschattenkopie-Dienst verwendet, um sicherzustellen, dass die Daten ordnungsgemäß in den Speicher geschrieben werden. Für Linux-VMs sind nur dateikonsistente Sicherungen möglich, da Linux nicht über eine mit dem Volumeschattenkopie-Dienst vergleichbare Funktionalität verfügt.
+Um dieses Problem zu beheben, bietet Azure Backup anwendungskonsistente Sicherungen für Microsoft-Workloads. Dabei wird der Volumeschattenkopie-Dienst verwendet, um sicherzustellen, dass die Daten ordnungsgemäß in den Speicher geschrieben werden. Bei virtuellen Linux-Computern werden als Sicherungskonsistenzmodus standardmäßig dateikonsistente Sicherungen verwendet, da Linux im Gegensatz zu Windows nicht über eine mit dem Volumeschattenkopie-Dienst vergleichbare Funktionalität verfügt. Informationen für Linux-Computer finden Sie unter [Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
 ![Azure Backup-Ablauf][1]
 

@@ -4,14 +4,14 @@ description: Verwenden Sie das Azure-Portal, um eine Azure Resource Manager-Vorl
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959697"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300361"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal
 
@@ -48,39 +48,36 @@ Exportieren Sie die Vorlage vor der Bereitstellung oder über den Verlauf, wenn 
 * Sie benötigen eine einfach wiederzuverwendende Vorlage.
 * Sie müssen keine Änderungen einbeziehen, die Sie nach der ursprünglichen Bereitstellung vorgenommen haben.
 
-## <a name="export-template-from-resource-group"></a>Exportieren einer Vorlage aus der Ressourcengruppe
+## <a name="export-template-from-a-resource-group"></a>Exportieren einer Vorlage aus einer Ressourcengruppe
 
 So exportieren Sie eine oder mehrere Ressourcen aus einer Ressourcengruppe
 
 1. Wählen Sie die Ressourcengruppe aus, die die zu exportierenden Ressourcen enthält.
 
-1. Wählen Sie zum Exportieren aller Ressourcen in der Ressourcengruppe alle Ressourcen und dann **Vorlage exportieren** aus. Die Option **Vorlage exportieren** wird erst aktiviert, wenn Sie mindestens eine Ressource ausgewählt haben.
+1. Wählen Sie mithilfe der Kontrollkästchen mindestens eine Ressource aus.  Wenn Sie alle Kontrollkästchen aktivieren möchten, aktivieren Sie das Kontrollkästchen links neben **Name**. Das Menüelement **Vorlage exportieren** wird erst aktiviert, wenn Sie mindestens eine Ressource ausgewählt haben.
 
    ![Exportieren aller Ressourcen](./media/export-template-portal/select-all-resources.png)
 
-1. Um bestimmte Ressourcen für den Export auszuwählen, aktivieren Sie die Kontrollkästchen neben diesen Ressourcen. Wählen Sie dann **Vorlage exportieren** aus.
+    Auf dem Screenshot ist nur das Speicherkonto ausgewählt.
+1. Wählen Sie **Vorlage exportieren** aus.
 
-   ![Auswählen der zu exportierenden Ressourcen](./media/export-template-portal/select-resources.png)
-
-1. Die exportierte Vorlage wird angezeigt und steht zum Herunterladen zur Verfügung.
+1. Die exportierte Vorlage wird angezeigt und steht zum Herunterladen und Bereitstellen bereit.
 
    ![Anzeigen der Vorlage](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>Exportieren der Vorlage aus einer Ressource
+## <a name="export-template-from-a-resource"></a>Exportieren einer Vorlage aus einer Ressource
 
 So exportieren Sie eine Ressource
 
 1. Wählen Sie die Ressourcengruppe aus, die die zu exportierende Ressource enthält.
 
-1. Wählen Sie die zu exportierende Ressource aus.
-
-   ![Auswählen einer Ressource](./media/export-template-portal/select-link-resource.png)
+1. Wählen Sie die zu exportierende Ressource aus, um sie zu öffnen.
 
 1. Wählen Sie für diese Ressource im linken Bereich **Vorlage exportieren** aus.
 
    ![Exportieren einer Ressource](./media/export-template-portal/export-single-resource.png)
 
-1. Die exportierte Vorlage wird angezeigt und steht zum Herunterladen zur Verfügung. Die Vorlage enthält nur die einzelne Ressource.
+1. Die exportierte Vorlage wird angezeigt und steht zum Herunterladen und Bereitstellen bereit. Die Vorlage enthält nur die einzelne Ressource.
 
 ## <a name="export-template-before-deployment"></a>Exportieren einer Vorlage vor der Bereitstellung
 
@@ -92,9 +89,8 @@ So exportieren Sie eine Ressource
 
    ![Herunterladen der Vorlage](./media/export-template-portal/download-before-deployment.png)
 
-1. Die Vorlage wird angezeigt und steht zum Herunterladen bereit.
+1. Die Vorlage wird angezeigt und steht zum Herunterladen und Bereitstellen bereit.
 
-   ![Anzeigen der Vorlage](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>Exportieren der Vorlage nach der Bereitstellung
 

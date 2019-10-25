@@ -10,18 +10,18 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13fa2b892013cf4a3fb96220c901030c6b0aee0b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a899de22137decc1eb1578369a2751710c17abda
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129115"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332897"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung
 
-In diesem Artikel erfahren Sie, wie Sie die Kapazität Ihrer Time Series Insights-Umgebung über das Azure-Portal ändern. Die Kapazität ist der Multiplikator, der auf die Erfassungsrate, Speicherkapazität und Kosten der gewählten SKU angewendet wird.
+In diesem Artikel erfahren Sie, wie Sie die Kapazität Ihrer Time Series Insights-Umgebung über das [Azure-Portal](https://portal.azure.com) ändern. Die Kapazität ist der Multiplikator, der auf die Erfassungsrate, Speicherkapazität und Kosten der gewählten SKU angewendet wird.
 
 Über das Azure-Portal können Sie die Kapazität innerhalb einer bestimmten Preis-SKU erhöhen oder verringern.
 
@@ -59,6 +59,12 @@ Kapazitäten werden linear skaliert, sodass eine S1-SKU mit der Kapazität „2�
 
 1. Klicken Sie auf **Speichern**, um die Umgebung zu skalieren. Die Statusanzeige wird angezeigt, bis die Änderung committet wurde.
 
+1. Überprüfen, ob die neue Kapazität [ausreichend ist, um eine Drosselung zu verhindern](time-series-insights-diagnose-and-solve-problems.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Überprüfen, ob die neue Kapazität [ausreichend ist, um eine Drosselung zu verhindern](time-series-insights-diagnose-and-solve-problems.md)
+- Weitere Informationen finden Sie unter [Grundlegendes zur Vermerkdauer in Time Series Insights](time-series-insights-concepts-retention.md).
+
+- Machen Sie sich mit dem [Konfigurieren der Datenaufbewahrung in Azure Time Series Insights](time-series-insights-how-to-configure-retention.md) vertraut.
+
+- Informieren Sie sich über die [Planung Ihrer Umgebung](time-series-insights-environment-planning.md).

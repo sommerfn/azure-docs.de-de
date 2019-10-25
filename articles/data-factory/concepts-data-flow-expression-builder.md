@@ -1,37 +1,37 @@
 ---
-title: Azure Data Factory Mapping Data Flow – Ausdrucks-Generator
-description: Der Ausdrucks-Generator für Azure Data Factory Mapping Data Flow
+title: Azure Data Factory-Mappingdatenfluss – Ausdrucks-Generator
+description: Der Ausdrucks-Generator für Azure Data Factory-Mappingdatenflüsse
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030295"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388050"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow: Ausdrucks-Generator
+# <a name="mapping-data-flow-expression-builder"></a>Mappingdatenfluss: Ausdrucks-Generator
 
 
 
-In Azure Data Factory Mapping Data Flow gibt es Ausdrucksfelder, in die Sie Ausdrücke für die Datentransformation eingeben können. In diesen Feldern können Sie Spalten, Felder, Variablen, Parameter und Funktionen Ihres Datenflusses verwenden. Zum Erstellen des Ausdrucks verwenden Sie den Ausdrucks-Generator, der gestartet wird, wenn Sie in der Transformation auf das Ausdruckstextfeld klicken. Manchmal werden auch Optionen für „Berechnete Spalte“ angezeigt, wenn Sie Spalten für die Transformation auswählen. Wenn Sie darauf klicken, wird der Ausdrucks-Generator ebenfalls gestartet.
+In Azure Data Factory-Mappingdatenflüssen stehen Ausdrucksfelder zur Verfügung, in die Sie Ausdrücke für die Datentransformation eingeben können. In diesen Feldern können Sie Spalten, Felder, Variablen, Parameter und Funktionen Ihres Datenflusses verwenden. Zum Erstellen des Ausdrucks verwenden Sie den Ausdrucks-Generator, der gestartet wird, wenn Sie in der Transformation auf das Ausdruckstextfeld klicken. Manchmal werden auch Optionen für „Berechnete Spalte“ angezeigt, wenn Sie Spalten für die Transformation auswählen. Wenn Sie darauf klicken, wird der Ausdrucks-Generator ebenfalls gestartet.
 
 ![Ausdrucks-Generator](media/data-flow/xpb1.png "Ausdrucks-Generator")
 
 Der Ausdrucks-Generator verwendet standardmäßig die Text-Editor-Option. Die Funktion „AutoVervollständigen“ liest aus dem gesamten Azure Data Factory-Datenfluss-Objektmodell mit Syntaxprüfung und -hervorhebungen.
 
-![Automatische Vervollständigung des Ausdrucks-Generators](media/data-flow/expb1.png "Automatische Vervollständigung des Ausdrucks-Generators")
+![Ausdrucks-Generator: AutoVervollständigen](media/data-flow/expb1.png "Ausdrucks-Generator: AutoVervollständigen")
 
 ## <a name="build-schemas-in-output-schema-pane"></a>Erstellen von Schemas im Ausgabeschemabereich
 
-![Komplexe Spalte hinzufügen](media/data-flow/complexcolumn.png "Spalten hinzufügen")
+![Hinzufügen einer komplexen Spalte](media/data-flow/complexcolumn.png "Hinzufügen von Spalten")
 
 Im Ausgabeschemabereich auf der linken Seite werden die Spalten angezeigt, die Sie ändern und dem Schema hinzufügen. Hier können Sie auf interaktive Weise einfache und komplexe Datenstrukturen erstellen. Mit „Spalte hinzufügen“ können Sie zusätzliche Felder hinzufügen und mit „Unterspalte hinzufügen“ Hierarchien erstellen.
 
-![Unterspalte hinzufügen](media/data-flow/addsubcolumn.png "Unterspalte hinzufügen")
+![Hinzufügen einer Unterspalte](media/data-flow/addsubcolumn.png "Hinzufügen einer Unterspalte")
 
 ## <a name="data-preview-in-debug-mode"></a>Datenvorschau im Debugmodus
 
@@ -71,7 +71,7 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 Verwenden Sie bei Ausdrucksfunktionen, die Arrays zurückgeben, eckige Klammern [], um bestimmte Indizes innerhalb dieses Rückgabearrayobjekts anzugeben. Das Array ist einzelbasiert.
 
-![Ausdrucks-Generator-Array](media/data-flow/expb2.png "Ausdrucksdatenvorschau")
+![Ausdrucks-Generator: Array](media/data-flow/expb2.png "Ausdrucksdatenvorschau")
 
 ## <a name="handling-names-with-special-characters"></a>Verarbeiten von Namen mit Sonderzeichen
 

@@ -10,17 +10,20 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2019
+ms.date: 10/08/2019
 ms.author: bwren
-ms.openlocfilehash: f8a86c0b71a5248164ea522472f9f2ecb2ce36bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dc7d839c81edd67d69e1525d219f87ee70f17502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827361"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300524"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Namens- und Terminologieänderungen bei Azure Monitor
 Vor Kurzem wurden wichtige Änderungen bei Azure Monitor vorgenommen und verschiedene Dienste zur vereinfachten Überwachung für Azure-Kunden zusammengefasst. Dieser Artikel beschreibt die neuesten Namens- und Terminologieänderungen in der Azure Monitor-Dokumentation.
+
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>Oktober 2019: Umbenennung von „Diagnoseprotokoll“ in „Ressourcenprotokoll“
+Diagnoseprotokolle wurden in Ressourcenprotokolle umbenannt, um die tatsächlich gesammelten Informationen besser widerzuspiegeln. Der Begriff „Diagnoseeinstellungen“ bleibt gleich.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Februar 2019 – Log Analytics-Terminologie
 Nach der Konsolidierung verschiedener Dienste unter Azure Monitor erfolgt nun der nächste Schritt durch Ändern der Terminologie in unserer Dokumentation, damit der Azure Monitor-Dienst und seine verschiedenen Komponenten besser beschrieben werden. 
