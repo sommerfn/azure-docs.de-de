@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099535"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430091"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -289,7 +289,7 @@ Innerhalb des NetApp-Kontos gibt der Kapazitätspool die Größe und den Typ der
 
 ![SAP LaMa – NetApp-Kapazitätspool wurde erstellt ](media/lama/sap-lama-capacitypool-list.png)
 
-Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Bereitstellungen erforderlich: \<SID\>, /usr/sap/\<SID\> und /home/\<sid\>adm. Optionales „/usr/sap/trans“ für das zentrale Übertragungsverzeichnis, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
+Jetzt können die NFS-Volumes definiert werden. Da es Volumes für mehrere Systeme in einem einzigen Pool geben wird, sollte ein selbsterklärendes Benennungsschema ausgewählt werden. Durch das Hinzufügen der Sicherheits-ID (SID) können verwandte Volumes gruppiert werden. Für ASCS und die AS-Instanz sind die folgenden Einbindungen erforderlich: */sapmnt/\<SID\>* , */usr/sap/\<SID\>* und */home/\<sid\>adm*. Optional wird */usr/sap/trans* für das zentrale Übertragungsverzeichnis benötigt, das mindestens von allen Systemen einer einzigen Landschaft verwendet wird.
 
 > [!NOTE]
 > Während der BETA-Phase muss der Name der Volumes im Abonnement eindeutig sein.
