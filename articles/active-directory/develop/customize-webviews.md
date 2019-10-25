@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1b7417de8de6fb063de18fe670ef474a3b486d0
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 0dd5be3944bdff459f6d920b358ae08efedcc431
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269392"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264202"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Gewusst wie: Anpassen von Browsern und Webansichten für iOS/macOS
 
-Ein Webbrowser ist Voraussetzung für die interaktive Authentifizierung. Unter iOS verwendet die Microsoft Authentication Library (MSAL) standardmäßig einen Systemwebbrowser (der möglicherweise im Vordergrund angezeigt wird) für die interaktive Authentifizierung bei der Anmeldung von Benutzern. Die Nutzung des Systembrowsers hat den entscheidenden Vorteil, dass der SSO-Status (Single Sign-On, einmaliges Anmelden) für andere Anwendungen und Webanwendungen freigegeben wird.
+Ein Webbrowser ist Voraussetzung für die interaktive Authentifizierung. Unter iOS verwendet die Microsoft Authentication Library (MSAL) standardmäßig den Systemwebbrowser (der möglicherweise im Vordergrund angezeigt wird) für die interaktive Authentifizierung bei der Anmeldung von Benutzern. Die Nutzung des Systembrowsers hat den Vorteil, dass der SSO-Status (Single Sign-On, einmaliges Anmelden) für andere Anwendungen und Webanwendungen freigegeben wird.
 
 Sie können die Benutzeroberflächen ändern, indem Sie die Konfiguration an andere Optionen zum Anzeigen von Webinhalten anpassen, wie etwa:
 
@@ -163,4 +163,4 @@ typedef NS_ENUM(NSInteger, MSALWebviewType)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Hier erfahren Sie mehr zu [Authentifizierungsflows und Anwendungsszenarios](authentication-flows-app-scenarios.md).
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

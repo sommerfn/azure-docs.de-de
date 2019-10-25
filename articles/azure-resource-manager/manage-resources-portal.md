@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure-Ressourcen über das Azure-Portal | Microsoft-Dokumentation
-description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Verwalten Ihrer Ressourcen.
+description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Verwalten Ihrer Ressourcen. Hier wird gezeigt, wie Sie Ressourcen bereitstellen und löschen.
 services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: a4ff94a98514041290518e72e1b13c76722b9d4f
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c52d54ca02436f7224346a65048244a5ec8d104c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205602"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390391"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Verwalten von Azure-Ressourcen über das Azure-Portal
 
@@ -79,7 +79,7 @@ Weitere Informationen dazu, in welcher Reihenfolge Ressourcenlöschungen in Azur
 2. Klicken Sie auf **Verschieben**. Der folgende Screenshot zeigt die Verwaltungsoptionen für ein Speicherkonto.
 
     ![Azure-Ressource verschieben](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
-3. Wählen Sie, je nach Bedarf, **In eine andere Ressourcengruppe verschieben** oder **In ein anderes Abonnement verschieben** aus.
+3. Wählen Sie je nach Bedarf **In eine andere Ressourcengruppe verschieben** oder **In ein anderes Abonnement verschieben** aus.
 
 Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](resource-group-move-resources.md).
 

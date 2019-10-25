@@ -1,17 +1,17 @@
 ---
-title: 'Azure Data Factory Mapping Data Flow: Pivottransformation'
-description: Pivotieren Sie Daten aus Zeilen in Spalten mithilfe der Azure Data Factory Mapping Data Flow-Pivottransformation
+title: 'Azure Data Factory-Zuordnungsdatenfluss: Pivottransformation'
+description: Pivotieren Sie Daten aus Zeilen in Spalten mithilfe der Pivottransformation des Azure Data Factory-Zuordnungsdatenflusses.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e59f0623b898fedada63e51fabbaf88d8b17f59d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029302"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387790"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory-Pivottransformation
 

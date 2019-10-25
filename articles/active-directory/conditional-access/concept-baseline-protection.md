@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 10/15/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ecd46b8cb734355a8394b7480c6def341cf9700d
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533057"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430329"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
 
@@ -28,12 +28,12 @@ Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD
 
 ![Basisrichtlinien für bedingten Zugriff im Azure-Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
-Es gibt vier Basisrichtlinien, mit denen Organisationen Folgendes aktivieren können:
+Es gibt vier Basisrichtlinien:
 
-* [Benötigt MFA für Admins (Vorschau)](howto-baseline-protect-administrators.md)
-* [Endbenutzerschutz (Vorschau)](howto-baseline-protect-end-users.md)
-* [Blockieren der Legacyauthentifizierung (Vorschau)](howto-baseline-protect-legacy-auth.md)
-* [Erfordern von MFA für die Dienstverwaltung (Vorschau)](howto-baseline-protect-azure.md)
+* Benötigt MFA für Admins (Vorschau)
+* Endbenutzerschutz (Vorschau)
+* Blockieren der Legacyauthentifizierung (Vorschau)
+* Anfordern von MFA für die Dienstverwaltung (Vorschau)
 
 Alle vier genannten Basisrichtlinien betreffen bekannte Authentifizierungsabläufe wie POP, IMAP oder ältere Office-Desktopclients.
 
@@ -41,7 +41,7 @@ Alle vier genannten Basisrichtlinien betreffen bekannte Authentifizierungsabläu
 
 Aufgrund der Befugnisse und des Zugriffs, über die Administratorkonten verfügen, sollten sie mit Bedacht verwaltet werden. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine stärkere Form der Kontoüberprüfung bei der Anmeldung. In Azure Active Directory können Sie eine striktere Kontoüberprüfung erreichen, indem Sie fordern, dass Administratoren sich für Azure Multi-Factor Authentication registrieren und die mehrstufige Authentifizierung verwenden.
 
-Das [Erfordern der mehrstufigen Authentifizierung für Administratoren (Vorschau)](howto-baseline-protect-administrators.md) stellt eine Basisrichtlinie dar, bei der für die folgenden Verzeichnisrollen, die als die Azure AD-Rollen mit den höchsten Berechtigungen angesehen werden, mehrstufige Authentifizierung erforderlich ist:
+Das Erfordern der mehrstufigen Authentifizierung für Administratoren (Vorschau) stellt eine Basisrichtlinie dar, bei der für die folgenden Verzeichnisrollen, die als die Azure AD-Rollen mit den höchsten Berechtigungen angesehen werden, mehrstufige Authentifizierung erforderlich ist:
 
 * Globaler Administrator
 * SharePoint-Administrator
@@ -83,23 +83,10 @@ Das Verwalten von Ressourcen mit diesen Tools ist eine Aktion, die weitreichende
 
 Um privilegierte Aktionen zu schützen, fordert die Richtlinie zum **Erfordern von MFA für die Dienstverwaltung (Vorschau)** eine mehrstufige Authentifizierung von allen Benutzern, die auf das Azure-Portal, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle zugreifen möchten.
 
-## <a name="enable-a-baseline-policy"></a>Aktivieren einer Basisrichtlinie
-
-So aktivieren Sie eine Basisrichtlinie
-
-1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
-1. Wählen Sie in der Liste der Richtlinien die Basisrichtlinie aus, die Sie aktivieren möchten.
-1. Legen Sie **Richtlinie aktivieren** auf **Ein** fest.
-1. Klicken Sie auf Speichern.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter
 
+* [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 * [Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur](../../security/fundamentals/steps-secure-identity.md)
-* [Was ist der bedingte Zugriff in Azure Active Directory?](overview.md)
-* [Benötigt MFA für Admins (Vorschau)](howto-baseline-protect-administrators.md)
-* [Endbenutzerschutz (Vorschau)](howto-baseline-protect-end-users.md)
-* [Blockieren der Legacyauthentifizierung (Vorschau)](howto-baseline-protect-legacy-auth.md)
-* [Erfordern von MFA für die Dienstverwaltung (Vorschau)](howto-baseline-protect-azure.md)
+* [Was ist bedingter Zugriff?](overview.md)

@@ -1,18 +1,18 @@
 ---
 title: Referenz zum benutzerdefinierten C# RESTful-Endpunkt eines Anbieters – Azure
-description: Dieser Artikel stellt eine grundlegende Referenz zum benutzerdefinierten C# RESTful-Endpunkt eines Anbieters dar.
+description: Dieser Artikel stellt eine grundlegende Referenz zum C#-RESTful-Endpunkt für benutzerdefinierte Azure-Anbieter dar. Der Endpunkt wird über eine Azure-Funktions-App bereitgestellt.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 8007c92c832ab7621d0192f924b15abf8bda9262
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 37b7997bc029942a84c9be5743f6ef3c6195fd27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172917"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332645"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Referenz zum benutzerdefinierten C# RESTful-Endpunkt eines Anbieters
 

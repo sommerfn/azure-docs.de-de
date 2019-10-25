@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719878"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331268"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -34,8 +34,7 @@ Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erst
 
 Beachten Sie, dass *Upgrade* nicht als administrativer Task aufgeführt ist. Da beim Bereitstellen des Diensts Ressourcen zugewiesen werden, erfordert das Verschieben zu einer anderen Preisstufe einen neuen Dienst. Weitere Informationen finden Sie unter [Erstellen eines Azure Search-Diensts](search-create-service-portal.md).
 
-> [!Tip]
-> Suchen Sie Hilfe zur Analyse von Suchdatenverkehr oder Abfrageleistung? Sie können Folgendes überwachen: das Abfragevolumen, die Begriffe, nach denen Personen suchen, und wie erfolgreich Suchergebnisse Kunden zu bestimmten Dokumenten in Ihrem Index leiten. Weitere Informationen finden Sie unter [Durchsuchen der Datenverkehrsanalyse für Azure Search](search-traffic-analytics.md), [Überwachen der Nutzung und Statistiken](search-monitor-usage.md) und [Leistung und Optimierung](search-performance-optimization.md).
+Sie können das Abfragevolumen und andere Metriken überwachen und Ihren Dienst basierend auf diesen Daten anpassen, um schnellere Antwortzeiten zu erzielen. Weitere Informationen finden Sie unter [Überwachen der Nutzung und Abfragemetriken](search-monitor-usage.md) und [Leistung und Optimierung](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -55,7 +54,7 @@ Allgemeine Informationen zu Ihrem Dienst erhalten Sie wie folgt:
 
 * Im Portal über das Dashboard des Diensts in Form von Benachrichtigungen, Eigenschaften und Statusmeldungen.
 * Über [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/), um [Diensteigenschaften abzurufen](https://docs.microsoft.com/rest/api/searchmanagement/services) oder den Status der Indexressourcennutzung zu ermitteln.
-* Über [Datenverkehrsanalyse durchsuchen](search-traffic-analytics.md), wie bereits erwähnt.
+
 
 <a id="sub-5"></a>
 

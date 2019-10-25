@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f680eae7f8c4cc2b57e3238a14b793f9b4298a79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828591"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300101"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 
@@ -29,6 +29,7 @@ In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 | Änderungen | Details |
 | --- | --- |
 | **Leistungsoptimierte Speicherkonfiguration** | Sie ist nun möglich, Ihre [Speicherkonfiguration vollständig anzupassen](virtual-machines-windows-sql-server-storage-configuration.md#new-vms), wenn Sie eine neue SQL Server-VM erstellen. |
+| **Premium-Dateifreigabe für FCI** | Sie können nun eine Failoverclusterinstanz mit einer [Premium-Dateifreigabe](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) anstelle der ursprünglichen Methode für [direkte Speicherplätze](virtual-machines-windows-portal-sql-create-failover-cluster.md) erstellen. 
 | &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>August 2019

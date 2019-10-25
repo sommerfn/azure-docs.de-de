@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 65ad9e1f5ef62ab2dd9f37a13d3c18871c30e603
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933119"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515487"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Grundlegendes zur Integrität Ihrer Azure-VMs
 
@@ -36,7 +36,7 @@ Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enab
 
 In diesem Abschnitt werden die standardmäßig angewendeten Integritätskriterien für die Überwachung von Azure-VMs mit Windows und Linux beschrieben. Alle Integritätskriterien sind dafür vorkonfiguriert, eine Warnung zu senden, wenn ein fehlerhafter Zustand erkannt wird.
 
-| Überwachungsname | Häufigkeit (Minuten) | Rückschaudauer (Minuten) | Operator | Schwellenwert | Benachrichtigung bei Status | Schweregrad | Workloadkategorie | 
+| Überwachungsname | Häufigkeit (Minuten) | Rückschaudauer (Minuten) | Operator | Schwellenwert | Benachrichtigung bei Status | severity | Workloadkategorie | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Logischer Datenträger – online | 5 | 15 | <> | 1 (wahr) | Kritisch | Sev1 | Linux | 
 | Logischer Datenträger – verfügbarer Speicherplatz | 5 | 15 | < | 200 MB (Warnung)<br> 100 MB (Kritisch) | Warnung | Sev1<br> Sev2 | Linux | 
@@ -117,7 +117,7 @@ Der Integritätszustand „Unbekannt“ kann durch die folgenden Probleme verurs
 - Der Agent wurde neu konfiguriert und sendet keine Berichtsdaten mehr an den Arbeitsbereich, der beim Aktivieren von Azure Monitor für VMs angegeben wurde. Informationen zur Konfiguration des Agents zum Senden von Berichten an den Arbeitsbereich finden Sie unter [Hinzufügen oder Entfernen von Arbeitsbereichen](../platform/agent-manage.md#adding-or-removing-a-workspace).
 - Die VM wurde gelöscht.
 - Der Arbeitsbereich, der Azure Monitor für VMs zugeordnet ist, wurde gelöscht. Sie können den Arbeitsbereich wiederherstellen, wenn Sie Premier Support-Vorteile nutzen können. Navigieren Sie zu [Premier](https://premier.microsoft.com/), und öffnen Sie eine Supportanfrage.
-- Die Abhängigkeiten der Lösung wurden gelöscht. Sie können die ServiceMap- und InfrastructureInsights-Lösungen in Ihrem Log Analytics-Arbeitsbereich wieder aktivieren, indem Sie diese Lösungen über die [Azure Resource Manager-Vorlage](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions) neu installieren. Alternativ können Sie die Option „Arbeitsbereich konfigurieren“ auf der Registerkarte „Erste Schritte“ verwenden.
+- Die Abhängigkeiten der Lösung wurden gelöscht. Sie können die ServiceMap- und InfrastructureInsights-Lösungen in Ihrem Log Analytics-Arbeitsbereich wieder aktivieren, indem Sie ServiceMap-Lösung über die [Azure Resource Manager-Vorlage](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution) neu installieren. Wenn Sie die InfastructureInsights-Lösung neu installieren möchten, senden Sie eine E-Mail an vminsights@microsoft.com. 
 - Die VM wurde heruntergefahren.
 - Der Azure-VM-Dienst ist nicht verfügbar, oder es wird gerade eine Wartung durchgeführt.
 - Für den Arbeitsbereich wurde das [Tages- oder Aufbewahrungslimit für Daten](../platform/manage-cost-storage.md) erreicht.
@@ -441,4 +441,5 @@ Die Funktion „Integrität“ von Azure Monitor für VMs unterstützt SMS-und E
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Ermitteln von Beschränkungen und der Gesamtleistung einer VM finden Sie unter [Direktes Anzeigen der Leistung in einer Azure-VM](vminsights-performance.md).
+
 - Weitere Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Anzeigen der Zuordnung in Azure Monitor](vminsights-maps.md).

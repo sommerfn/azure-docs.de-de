@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e9073e7cba97c4f5e2d550e5e49a6655ec76abbe
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389979"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332065"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Lehrkräfte/Labadministratoren ein VM-Vorlagenimage speichern können, damit es von anderen wiederverwendet werden kann. Diese Images werden in einem [Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md) von Azure gespeichert. Als Erstes fügt der Labadministrator einen vorhandenen Katalog mit freigegebenen Images an das Labkonto an. Nachdem der Katalog mit freigegebenen Images angefügt wurde, können in Labs, die unter dem Labkonto erstellt wurden, Images in dem Katalog mit freigegebenen Images gespeichert werden. Andere Lehrkräfte können dieses Image im Katalog mit freigegebenen Images auswählen, um eine Vorlage für ihre Klassen zu erstellen. 
@@ -31,18 +31,18 @@ In diesem Artikel wird gezeigt, wie Lehrkräfte/Labadministratoren ein VM-Vorlag
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Speichern eines Images im Katalog mit freigegebenen Images
 Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann ein Labkontoadministrator oder eine Lehrkraft ein Image im Katalog mit freigegebenen Images speichern, das dann von anderen Lehrkräften wiederverwendet werden kann. 
 
-1. Wählen Sie auf der Startseite für das Lab im Abschnitt **Vorlage** auf der Kachel die Option **Image speichern** aus.
+1. Wählen Sie auf der Seite **Vorlage** für das Lab auf der Symbolleiste die Option **Export to Shared Image Gallery** (Nach Shared Image Gallery exportieren) aus.
 
-    ![Schaltfläche „Image speichern“](../media/how-to-use-shared-image-gallery/save-image-button.png)
-2.  Geben Sie im Fenster **Image des virtuellen Computers speichern** einen Namen für das Image ein, und klicken Sie dann auf **Speichern**. 
+    ![Schaltfläche „Image speichern“](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
+2. Geben Sie im Dialogfeld **Export to Shared Image Gallery** (Nach Shared Image Gallery exportieren) einen **Namen für das Image** ein, und wählen Sie **Exportieren** aus. 
 
-    ![Fenster „Image des virtuellen Computers speichern“](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
-3. Überprüfen Sie den Status auf der Kachel "Lab". 
+    ![Dialogfeld „Export to Shared Image Gallery“ (Nach Shared Image Gallery exportieren)](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. Der Fortschritt dieses Vorgangs wird auf der Seite **Vorlage** angezeigt. Dieser Vorgang kann einige Zeit dauern. 
 
-    ![Status des Vorgangs „Image speichern“](../media/how-to-use-shared-image-gallery/save-image-status.png)
-4. Vergewissern Sie sich, dass der Vorgang erfolgreich war.
+    ![Aktiver Exportvorgang](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+4. War der Exportvorgang erfolgreich, wird die folgende Meldung angezeigt:
 
-    ![Vorgang „Image speichern“ ist erfolgreich](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+    ![Export erfolgreich](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
 Sie können ein Image auch außerhalb des Kontexts eines Labs in den Katalog mit freigegebenen Images hochladen. Weitere Informationen finden Sie unter [Katalog mit freigegebenen Images: Übersicht](../../virtual-machines/windows/shared-images.md). 
 

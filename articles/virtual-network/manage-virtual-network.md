@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168750"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515565"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
@@ -47,7 +47,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
      - 169.254.0.0/16 (verbindungslokal)
      - 168.63.129.16/32 ([Integritätstest](../load-balancer/load-balancer-custom-probe-overview.md#probesource) für internes DNS, DHCP und Azure Load Balancer)
 
-     Sie können beim Erstellen des virtuellen Netzwerks zwar nur einen Adressbereich definieren, nach der Erstellung des virtuellen Netzwerks dem Adressraum jedoch weitere Adressbereiche hinzufügen. Informationen zum Hinzufügen eines Adressbereichs zu einem vorhandenen virtuellen Netzwerk finden Sie unter [Hinzufügen oder Entfernen eines Adressbereichs](#add-or-remove-an-address-range).
+     Sie können beim Erstellen des virtuellen Netzwerks im Portal zwar nur einen Adressbereich definieren, nach der Erstellung des virtuellen Netzwerks dem Adressraum jedoch weitere Adressbereiche hinzufügen. Informationen zum Hinzufügen eines Adressbereichs zu einem vorhandenen virtuellen Netzwerk finden Sie unter [Hinzufügen oder Entfernen eines Adressbereichs](#add-or-remove-an-address-range).
 
      >[!WARNING]
      >Wenn ein virtuelles Netzwerk Adressbereiche aufweist, die sich mit denen eines anderen virtuellen Netzwerks oder eines lokalen Netzwerks überlappen, können die beiden Netzwerke nicht verbunden werden. Bevor Sie einen Adressbereich definieren, sollten Sie das virtuelle Netzwerk zukünftig eventuell mit anderen virtuellen Netzwerken oder lokalen Netzwerken verbinden.
