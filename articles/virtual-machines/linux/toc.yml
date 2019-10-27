@@ -133,6 +133,8 @@
           href: managed-disks-overview.md
         - name: Auswählen eines Datenträgertyps für virtuelle IaaS-Computer
           href: disks-types.md
+        - name: Verschlüsselung
+          href: disk-encryption.md
         - name: Entwerfen für hohe Leistung
           href: premium-storage-performance.md
         - name: Skalierbarkeitsziele für Datenträger
