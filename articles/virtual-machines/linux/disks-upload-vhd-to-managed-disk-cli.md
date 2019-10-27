@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 3257e75849c3e00ae4b221746ebd25798a0aa6f0
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717169"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757579"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Hochladen einer VHD in Azure mithilfe der Azure CLI
 
@@ -109,11 +109,11 @@ targetLocale = <yourTargetLocationHere>
 
 sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
 
-az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
-sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
 .\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 
@@ -124,6 +124,5 @@ az disk revoke-access -n $targetDiskName -g $targetRG
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben erfolgreich eine VHD auf den verwalteten Datenträger hochgeladen und können Datenträger nun an eine VM anfügen, um ihn zu verwenden.
+Nachdem Sie nun erfolgreich eine VHD auf einen verwalteten Datenträger hochgeladen haben, können Sie den Datenträger als [Datenträger für Daten an eine vorhandene VM](add-disk.md) anfügen oder [den Datenträger als Betriebssystemdatenträger](upload-vhd.md#create-the-vm) an eine VM anfügen, um eine neue VM zu erstellen. 
 
-Informationen dazu, wie Sie einen Datenträger an eine VM anfügen, finden Sie in folgendem Artikel: [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](add-disk.md)

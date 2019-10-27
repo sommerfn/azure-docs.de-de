@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170294"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790793"
 ---
 # <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Generische Problembehandlung der Leistung virtueller Azure-Computer mit Linux oder Windows
 
-Dieser Artikel beschreibt die allgemeine Behandlung von Leistungsproblemen bei virtuellen Computern (VMs) durch Überwachen und Beobachten von Leistungsengpässen und bietet mögliche Korrekturen für Probleme, die auftreten können.
+Dieser Artikel beschreibt die allgemeine Behandlung von Leistungsproblemen bei virtuellen Computern (VMs) durch Überwachen und Beobachten von Leistungsengpässen und bietet mögliche Korrekturen für Probleme, die auftreten können. Neben Überwachung können Sie auch Perfinsights verwenden, um einen Bericht mit Best Practice-Empfehlungen und wichtigen Engpässen rund um E/A, CPU und Arbeitsspeicher bereitzustellen. PerfInsights ist sowohl für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights)- als auch für [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux)-VMs in Azure verfügbar.
+
+In diesem Artikel wird die Verwendung von Überwachung zur Diagnose von Leistungsengpässen erläutert.
 
 ## <a name="enabling-monitoring"></a>Aktivieren der Überwachung
 
@@ -34,32 +36,55 @@ Zum Überwachen der Gast-VM verwenden Sie die Azure-VM-Überwachung, die Sie bei
  
 ### <a name="enable-vm-diagnostics-through-microsoft-azure-portal"></a>Aktivieren der VM-Diagnose im Microsoft Azure-Portal
 
-Um die VM-Diagnose zu aktivieren, wechseln Sie zur VM, klicken Sie auf **Einstellungen** und dann auf **Diagnose**.
+So aktivieren Sie die VM-Diagnose:
 
-![Auf „Einstellungen“ und dann auf „Diagnose“ klicken](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
- 
+1. Navigieren Sie zum virtuellen Computer.
+2. Klicken Sie auf **Diagnoseeinstellungen**.
+3. Wählen Sie das Speicherkonto aus, und klicken Sie auf **Überwachung auf Gastebene aktivieren**.
+
+   ![Auf „Einstellungen“ und dann auf „Diagnose“ klicken](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
+
+Sie können das Speicherkonto, das für die Diagnoseeinrichtung verwendet wird, über die Registerkarte **Agent** unter **Diagnoseeinstellungen** überprüfen.
+
+![Überprüfen des Speicherkontos](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
+
 ### <a name="enable-storage-account-diagnostics-through-azure-portal"></a>Aktivieren der Speicherkontodiagnose im Azure-Portal
 
-Bestimmen Sie zuerst, welches Speicherkonto (oder Speicherkonten) Ihre VM verwendet, indem Sie die VM auswählen. Klicken Sie auf **Einstellungen** und dann auf **Datenträger**:
+Der Speicher ist eine sehr wichtige Ebene, wenn wir beabsichtigen, E/A-Leistung für einen virtuellen Computer in Azure zu analysieren. Für speicherbezogene Metriken müssen wir die Diagnose als zusätzlichen Schritt aktivieren. Diese kann auch aktiviert werden, wenn nur die speicherbezogenen Leistungsindikatoren analysiert werden sollen.
 
-![Auf „Einstellungen“ und dann auf „Datenträger“ klicken](media/troubleshoot-performance-virtual-machine-linux-windows/3-storage-disks-disks-selection.png)
+1. Bestimmen Sie, welches Speicherkonto (oder welche Speicherkonten) Ihre VM verwendet, indem Sie die VM auswählen. Klicken Sie auf **Einstellungen** und dann auf **Datenträger**:
 
-Navigieren Sie im Portal zu dem Speicherkonto (oder den Speicherkonten) der VM, und arbeiten Sie sich durch die folgenden Schritte:
+   ![Auf „Einstellungen“ und dann auf „Datenträger“ klicken](media/troubleshoot-performance-virtual-machine-linux-windows/4-storage-disks-disks-selection.png)
 
-![Auswählen von Blobmetriken](media/troubleshoot-performance-virtual-machine-linux-windows/4-select-blob-metrics.png)
- 
-1. Wählen Sie **Alle Einstellungen** aus.
-2. Aktivieren Sie die Diagnose.
-3. Wählen Sie **Blob*metriken** aus, und legen Sie die Aufbewahrungsdauer auf **30** Tage fest.
-4. Speichern Sie die Änderungen.
+2. Navigieren Sie im Portal zu dem Speicherkonto (oder den Speicherkonten) der VM, und arbeiten Sie sich durch die folgenden Schritte:
+
+   1. Klicken Sie für das Speicherkonto, das Sie mit dem oben beschriebenen Schritt ermittelt haben, auf „Übersicht“.
+   2. Standardmetriken werden angezeigt. 
+
+    ![Standardmetriken](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+
+3. Klicken Sie auf eine der Metriken, damit ein weiteres Blatt mit weiteren Optionen zum Konfigurieren und Hinzufügen von Metriken angezeigt wird.
+
+   ![Metriken hinzufügen](media/troubleshoot-performance-virtual-machine-linux-windows/6-add-metrics.png)
+
+So konfigurieren Sie diese Optionen:
+
+1.  Klicken Sie auf **Metriken**.
+2.  Wählen Sie die **Ressource** (Speicherkonto) aus.
+3.  Wählen Sie den **Namespace** aus.
+4.  Wählen Sie **Metrik** aus.
+5.  Wählen Sie den Typ der **Aggregation** aus.
+6.  Sie können diese Ansicht an das Dashboard anheften.
 
 ## <a name="observing-bottlenecks"></a>Beobachten von Engpässen
+
+Nachdem wir den anfänglichen Einrichtungsvorgang für die erforderlichen Metriken abgeschlossen und die Diagnose für die VM und das zugehörige Speicherkonto aktiviert haben, können wir in die Analysephase wechseln.
 
 ### <a name="accessing-the-monitoring"></a>Zugriff auf die Überwachung
 
 Wählen Sie die zu untersuchende Azure-VM und dann **Überwachung** aus.
 
-![Überwachung auswählen](media/troubleshoot-performance-virtual-machine-linux-windows/5-observe-monitoring.png)
+![Überwachung auswählen](media/troubleshoot-performance-virtual-machine-linux-windows/7-select-monitoring.png)
  
 ### <a name="timelines-of-observation"></a>Beobachtungszeitskalen
 
@@ -67,7 +92,7 @@ Um zu bestimmen, ob Ressourcenengpässe vorliegen, überprüfen Sie Ihre Daten. 
 
 ### <a name="check-for-cpu-bottleneck"></a>Überprüfen der CPU auf Engpässe
 
-![Überprüfen der CPU auf Engpässe](media/troubleshoot-performance-virtual-machine-linux-windows/6-cpu-bottleneck-time-range.png)
+![Überprüfen der CPU auf Engpässe](media/troubleshoot-performance-virtual-machine-linux-windows/8-cpu-bottleneck-time-range.png)
 
 1. Bearbeiten Sie das Diagramm.
 2. Legen Sie den Zeitraum fest.
@@ -94,6 +119,8 @@ Wenn Ihre Anwendung oder Ihr Prozess nicht auf der richtigen Leistungsstufe ausg
 * Verstehen des Problems: Bestimmen Sie die Anwendung/den Prozess, und führen Sie eine entsprechende Problembehandlung durch.
 
 Wenn Sie die VM vergrößert haben und die CPU immer noch zu 95 % ausgelastet ist, bestimmen Sie, ob diese Einstellung bessere Leistung oder einen höheren Anwendungsdurchsatz auf einer akzeptablen Stufe bietet. Führen Sie andernfalls eine Problembehandlung der einzelnen Anwendung/des einzelnen Prozesses durch.
+
+Sie können Perfinsights für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) oder [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) verwenden, um zu analysieren, welcher Prozess für den CPU-Verbrauch verantwortlich ist. 
 
 ## <a name="check-for-memory-bottleneck"></a>Prüfen auf Speicherengpass
 
@@ -124,9 +151,13 @@ Um hohe Speicherauslastung zu beheben, führen Sie eine der folgenden Aufgaben a
 
 Wenn Sie nach dem Upgrade auf eine größere VM feststellen, dass Sie immer noch eine konstante ständige Zunahme bis 100 % verzeichnen, identifizieren Sie die Anwendung/den Prozess, und führen Sie eine Problembehandlung durch.
 
+Sie können Perfinsights für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) oder [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) verwenden, um zu analysieren, welcher Prozess für den Arbeitsspeicherverbrauch verantwortlich ist. 
+
 ## <a name="check-for-disk-bottleneck"></a>Überprüfen der Datenträger auf Engpässe
 
 Um das Speichersubsystem der VM zu überprüfen, überprüfen Sie die Diagnoseprotokolle auf der Azure VM-Ebene mithilfe der Leistungsindikatoren in der VM-Diagnose und ebenfalls der Speicherkontodiagnose.
+
+Für die VM-spezifische Problembehandlung können Sie Perfinsights für [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) oder [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) verwenden, um zu analysieren, welcher Prozess für die E/A-Vorgänge verantwortlich ist. 
 
 Beachten Sie, dass keine Leistungsindikatoren für Zonenredundanz und Premium-Speicherkonten vorhanden sind. Bei Problemen im Zusammenhang mit diesen Leistungsindikatoren öffnen Sie eine Supportanfrage.
 
@@ -134,7 +165,7 @@ Beachten Sie, dass keine Leistungsindikatoren für Zonenredundanz und Premium-Sp
 
 Um an den Elementen unten zu arbeiten, wechseln Sie zum Speicherkonto für die VM im Portal:
 
-![Anzeigen der Speicherkontodiagnose in der Überwachung](media/troubleshoot-performance-virtual-machine-linux-windows/7-virtual-machine-storage-account.png)
+![Anzeigen der Speicherkontodiagnose in der Überwachung](media/troubleshoot-performance-virtual-machine-linux-windows/9-virtual-machine-storage-account.png)
 
 1. Bearbeiten Sie das Überwachungsdiagramm.
 2. Legen Sie den Zeitraum fest.
@@ -147,11 +178,11 @@ Um Probleme mit dem Speicher zu erkennen, sehen Sie sich die Leistungsmetriken d
 
 Suchen Sie für jede Überprüfung unten nach Schlüsseltrends, wenn die Probleme innerhalb des Zeitraums dieses Problems auftreten.
 
-#### <a name="check-azure-storage-availability--add-the-storage-account-metric-availability"></a>Verfügbarkeit von Azure Storage überprüfen: Hinzufügen der Speicherkontometrik: Verfügbarkeit
+#### <a name="check-azure-storage-availability--add-the-storage-account-metric-availability"></a>Überprüfen der Verfügbarkeit von Azure Storage – Hinzufügen der Speicherkontometrik: Verfügbarkeit
 
 Wenn Sie ein Nachlassen der Verfügbarkeit finden, liegt möglicherweise ein Problem mit der Plattform vor, überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/). Wenn hier kein Problem angezeigt wird, öffnen Sie eine neue Supportanfrage.
 
-#### <a name="check-for-azure-storage-timeout---add-the-storage-account-metrics"></a>Prüfen auf Timeouts bei Azure Storage: Fügen Sie die Speicherkontometriken hinzu:
+#### <a name="check-for-azure-storage-timeout---add-the-storage-account-metrics"></a>Prüfen auf Timeouts bei Azure Storage Hinzufügen der Speicherkontometriken:
 
 * ClientTimeOutError
 * ServerTimeOutError
@@ -175,6 +206,10 @@ Auf der Grundlage dieser Metrik können Sie nicht bestimmen, welcher Blob die Dr
 
 Um zu bestimmen, ob Sie den IOPS-Grenzwert erreichen, wechseln Sie zur Speicherkontodiagnose, und überprüfen Sie TotalRequests, um festzustellen, ob Sie sich an die 20 tausend TotalRequests annähern. Bestimmen Sie entweder eine Änderung im Muster, ob Sie diesen Grenzwert zum ersten Mal erreichen oder ob dieser Grenzwert zu bestimmten Zeiten erreicht wird.
 
+Mit neuen Datenträgerangeboten unter Storage Standard können die IOPS- und Durchsatzlimits abweichen, aber das kumulative Limit für das Storage Standard-Speicherkonto beträgt 20.000 IOPS (Storage Premium hat unterschiedliche Grenzwerte auf Konto- oder Datenträgerebene). Weitere Informationen zu Storage Standard-Datenträgerangeboten und Grenzwerten pro Datenträger:
+
+* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+
 #### <a name="references"></a>Referenzen
 
 * [Skalierbarkeitsziele für Festplatten virtueller Computer](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
@@ -187,7 +222,9 @@ Vergleichen Sie TotalIngress und TotalEgress mit den Grenzwerten für Ingress un
 
 Überprüfen Sie die Grenzwerte für den Durchsatz der mit der VM verbundenen VHDs. Fügen Sie die VM-Metriken „Datenträgerlesevorgänge“ und „Datenträgerschreibvorgänge“ hinzu.
 
-Jede VHD kann bis zu 60 MB/s unterstützen (IOPS werden nicht pro VHD verfügbar gemacht). Sehen Sie sich die Daten an, um festzustellen, ob Sie auf der Grundlage der Datenlese- und -schreibvorgänge die Grenzwerte des kombinierten Durchsatzes in MB der VHD(s) erreichen, und optimieren Sie dann Ihre VM-Speicherkonfiguration, um eine Skalierung jenseits der Grenzwerte einzelner VHDs zu erreichen.
+Neue Datenträgerangebote in Storage Standard weisen unterschiedliche IOPS- und Durchsatzlimits auf (IOPS werden nicht pro VHD verfügbar gemacht). Sehen Sie sich die Daten an, um festzustellen, ob Sie auf der Grundlage der Datenlese- und -schreibvorgänge die Grenzwerte des kombinierten Durchsatzes in MB der VHD(s) erreichen, und optimieren Sie dann Ihre VM-Speicherkonfiguration, um eine Skalierung jenseits der Grenzwerte einzelner VHDs zu erreichen. Weitere Informationen zu Storage Standard-Datenträgerangeboten und Grenzwerten pro Datenträger:
+
+* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Wartung bei hoher Datenträgerverwendung/Latenz
 
@@ -215,4 +252,4 @@ Die spezifischen Szenarien werden in diesen Artikeln besprochen:
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, wenden Sie sich an die Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/).
 
-Alternativ dazu können Sie einen Azure-Supportfall erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.

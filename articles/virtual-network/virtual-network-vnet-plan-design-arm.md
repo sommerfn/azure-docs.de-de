@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f7f45e479ad21b27832573b73a5e09e8da1b37b1
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168511"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756114"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -107,13 +107,13 @@ Ressourcen in einem virtuellen Netzwerk können die Namen von Ressourcen in dem 
 
 ## <a name="permissions"></a>Berechtigungen
 
-In Azure wird die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Role-Based Access Control, RBAC) für Ressourcen verwendet. Berechtigungen werden einem [Bereich](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) in der folgenden Hierarchie zugewiesen: Abonnement, Verwaltungsgruppe, Ressourcengruppe und einzelne Ressource. Weitere Informationen zu dieser Hierarchie finden Sie unter [Organisieren Ihrer Ressourcen](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Um virtuelle Azure-Netzwerke und alle zugehörigen Funktionen, z.B. Peering, Netzwerksicherheitsgruppen, Dienstendpunkte und Routingtabellen, verwenden zu können, können Sie Mitglieder Ihrer Organisation den integrierten Rollen [Besitzer](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Mitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor) oder [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) und dann die einzelnen Rollen dem entsprechenden Bereich zuweisen. Wenn Sie bestimmte Berechtigungen für eine Teilmenge der Funktionen des virtuellen Netzwerks zuweisen möchten, erstellen Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und weisen der Rolle diese Berechtigungen für [virtuelle Netzwerke](manage-virtual-network.md#permissions), [ Subnetze und Dienstendpunkte](virtual-network-manage-subnet.md#permissions), [Netzwerkschnittstellen](virtual-network-network-interface.md#permissions), [Peering](virtual-network-manage-peering.md#permissions), [Netzwerksicherheitsgruppen und Anwendungssicherheitsgruppen](manage-network-security-group.md#permissions) oder [Routingtabellen](manage-route-table.md#permissions) zu.
+In Azure wird die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Role-Based Access Control, RBAC) für Ressourcen verwendet. Berechtigungen werden einem [Bereich](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) in der folgenden Hierarchie zugewiesen: Verwaltungsgruppe, Abonnement, Ressourcengruppe und einzelne Ressource. Weitere Informationen zu dieser Hierarchie finden Sie unter [Organisieren Ihrer Ressourcen](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Um virtuelle Azure-Netzwerke und alle zugehörigen Funktionen, z.B. Peering, Netzwerksicherheitsgruppen, Dienstendpunkte und Routingtabellen, verwenden zu können, können Sie Mitglieder Ihrer Organisation den integrierten Rollen [Besitzer](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Mitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor) oder [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) und dann die einzelnen Rollen dem entsprechenden Bereich zuweisen. Wenn Sie bestimmte Berechtigungen für eine Teilmenge der Funktionen des virtuellen Netzwerks zuweisen möchten, erstellen Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und weisen der Rolle diese Berechtigungen für [virtuelle Netzwerke](manage-virtual-network.md#permissions), [ Subnetze und Dienstendpunkte](virtual-network-manage-subnet.md#permissions), [Netzwerkschnittstellen](virtual-network-network-interface.md#permissions), [Peering](virtual-network-manage-peering.md#permissions), [Netzwerksicherheitsgruppen und Anwendungssicherheitsgruppen](manage-network-security-group.md#permissions) oder [Routingtabellen](manage-route-table.md#permissions) zu.
 
 ## <a name="policy"></a>Richtlinie
 
 Mit Azure Policy können Sie Richtliniendefinitionen erstellen, zuweisen und verwalten. Richtliniendefinitionen erzwingen unterschiedliche Regeln für Ihre Ressourcen, damit diese stets mit den Standards Ihrer Organisation und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy führt eine Auswertung Ihrer Ressourcen durch, um zu prüfen, welche Ressourcen nicht den festgelegten Richtliniendefinitionen entsprechen. Sie können beispielsweise eine Richtlinie definieren und anwenden, welche die Erstellung von virtuellen Netzwerken nur in einer bestimmten Ressourcengruppe oder Region zulässt. In einer anderen Richtlinie können Sie festlegen, dass jedem Subnetz eine Netzwerksicherheitsgruppe zugeordnet werden muss. Die Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen ausgewertet.
 
-Richtlinien werden auf die folgende Hierarchie angewendet: Abonnement, Verwaltungsgruppe und Ressourcengruppe. Erfahren Sie mehr über [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), oder stellen Sie Beispiele für [ Richtlinienvorlagen](policy-samples.md) für virtuelle Netzwerke bereit.
+Richtlinien werden in der folgenden Hierarchie angewendet: Verwaltungsgruppe, Abonnement und Ressourcengruppe. Erfahren Sie mehr über [Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), oder stellen Sie Beispiele für [ Richtlinienvorlagen](policy-samples.md) für virtuelle Netzwerke bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
