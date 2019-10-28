@@ -5,6 +5,7 @@
     - name: Informationen zu Media Services
       href: media-services-overview.md
     - name: Neuerungen in Media Services
+      displayName: release notes
       href: release-notes.md
 - name: Lernprogramme
   expanded: true
