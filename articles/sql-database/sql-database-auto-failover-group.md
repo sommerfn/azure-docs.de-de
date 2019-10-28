@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/09/2019
-ms.openlocfilehash: b876fba2ae10c4f8b973ad1bb0c98bfa95c7f481
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 10/21/2019
+ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249313"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750467"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -148,6 +148,9 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
 - **Verwenden Sie mindestens eine Failovergruppe, um das Failover mehrerer Datenbanken zu verwalten**
 
   Eine oder mehrere Failovergruppen können zwischen zwei Servern in verschiedenen Regionen erstellt werden (primäre und sekundäre Server). Jede Gruppe kann eine oder mehrere Datenbanken enthalten, die als Einheit wiederhergestellt werden, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind. Die Failovergruppe erstellt eine geosekundäre Datenbank mit dem gleichen Dienstziel wie die primäre Datenbank. Wenn Sie der Failovergruppe eine vorhandene Georeplikationsbeziehung hinzufügen, stellen Sie sicher, dass die geosekundäre Datenbank mit der gleichen Dienstebene und Computegröße wie die primäre Datenbank konfiguriert ist.
+  
+  > [!IMPORTANT]
+  > Das Erstellen von Failovergruppen zwischen zwei Servern in verschiedenen Abonnements wird bei einzelnen Datenbanken und Pools für elastische Datenbanken derzeit nicht unterstützt.
 
 - **Lese-/Schreib-Listener für OLTP-Workload verwenden**
 

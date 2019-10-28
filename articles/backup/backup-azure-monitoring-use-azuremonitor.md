@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ba2288ecebbeda97b3cd9c24ae930be6af193ab8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177714"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792836"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -29,15 +29,15 @@ Azure Backup stellt [integrierte Überwachungs-und Warnungsfunktionen](backup-az
 ## <a name="using-log-analytics-workspace"></a>Verwenden des Log Analytics-Arbeitsbereichs
 
 > [!NOTE]
-> Daten aus Azure VM-Sicherungen, dem Azure Backup-Agent, System Center Data Protection Manager, SQL-Sicherungen in Azure VMS und Azure Files-Freigabesicherungen werden über Diagnoseeinstellungen an den Log Analytics-Arbeitsbereich übertragen. 
+> Daten aus Azure VM-Sicherungen, dem Azure Backup-Agent, System Center Data Protection Manager, SQL-Sicherungen in Azure VMS und Azure Files-Freigabesicherungen werden über Diagnoseeinstellungen an den Log Analytics-Arbeitsbereich übertragen. Unterstützung für Microsoft Azure Backup Server (MABS) wird bald hinzugefügt.
 
-Um eine bedarfsorientierte Überwachung bzw. einen geeigneten Bericht auszuführen, benötigen Sie die Funktionen von zwei Azure-Diensten. *Diagnoseeinstellungen* senden Daten aus mehreren Azure Resource Manager-Ressourcen an eine andere Ressource. *Log Analytics* generiert benutzerdefinierte Warnungen, in denen Sie Aktionsgruppen verwenden können, um andere Benachrichtigungskanäle zu definieren. 
+Um eine bedarfsorientierte Überwachung bzw. einen geeigneten Bericht auszuführen, benötigen Sie die Funktionen von zwei Azure-Diensten. *Diagnoseeinstellungen* senden Daten aus mehreren Azure Resource Manager-Ressourcen an eine andere Ressource. *Log Analytics* generiert benutzerdefinierte Warnungen, in denen Sie Aktionsgruppen verwenden können, um andere Benachrichtigungskanäle zu definieren.
 
 In den folgenden Abschnitten wird beschrieben, wie Sie Log Analytics zur Überwachung von Azure Backup im gewünschten Umfang verwenden können.
 
 ### <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
-Azure Resource Manager-Ressourcen, etwa der Azure Recovery-Tresor, zeichnen Informationen zu geplanten Vorgängen und benutzergesteuerten Vorgängen als Diagnosedaten auf. 
+Azure Resource Manager-Ressourcen, etwa der Azure Recovery-Tresor, zeichnen Informationen zu geplanten Vorgängen und benutzergesteuerten Vorgängen als Diagnosedaten auf.
 
 Wählen Sie im Überwachungsabschnitt **Diagnoseeinstellungen** aus, und geben Sie das Ziel für die Diagnosedaten des Recovery Services-Tresors an.
 
@@ -66,21 +66,21 @@ Nach der Bereitstellung der Vorlage wird die Lösung zur Überwachung und Berich
 
 Durch Auswählen einer der Übersichtskacheln können Sie weitere Informationen anzeigen. Dies sind einige der Berichte, die angezeigt werden:
 
-* Nicht-Protokollsicherungsaufträge
+- Nicht-Protokollsicherungsaufträge
 
    ![Log Analytics-Diagramme für Sicherungsaufträge](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
 
-* Warnungen aus der Sicherung von Azure-Ressourcen
+- Warnungen aus der Sicherung von Azure-Ressourcen
 
    ![Log Analytics-Diagramm für Wiederherstellungsaufträge](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
 
 Analog dazu können Sie durch Klicken auf die anderen Kacheln Berichte zu Wiederherstellungsaufträgen, Cloudspeicher, Sicherungselementen, Warnungen von lokalen Ressourcensicherungen und Protokollsicherungsaufträgen anzeigen.
- 
+
 Diese Diagramme werden mit der Vorlage bereitgestellt. Wenn erforderlich, können Sie die Diagramme bearbeiten oder weitere Diagramme hinzufügen.
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Erstellen von Warnungen mit Log Analytics
 
-In Azure Monitor können Sie Ihre eigenen Warnungen in einem Log Analytics-Arbeitsbereich erstellen. Im Arbeitsbereich verwenden Sie *Azure-Aktionsgruppen*, um Ihren bevorzugten Benachrichtigungsmechanismus auszuwählen. 
+In Azure Monitor können Sie Ihre eigenen Warnungen in einem Log Analytics-Arbeitsbereich erstellen. Im Arbeitsbereich verwenden Sie *Azure-Aktionsgruppen*, um Ihren bevorzugten Benachrichtigungsmechanismus auszuwählen.
 
 > [!IMPORTANT]
 > Weitere Informationen zu den Kosten für das Erstellen dieser Abfrage finden Sie unter[Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/).
@@ -115,7 +115,7 @@ Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Pr
 
 Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf deren Grundlage Sie Warnungen erstellen können. Sie können die Abfragen auch ändern, um die Daten abzurufen, zu denen Sie Warnungen erhalten möchten. Fügen Sie die folgenden Kusto-Beispielabfragen auf der Seite **Protokolle** ein, und erstellen Sie dann Warnungen für die Abfragen:
 
-* Alle erfolgreiche Sicherungsaufträge
+- Alle erfolgreiche Sicherungsaufträge
 
     ````Kusto
     AzureDiagnostics
@@ -124,8 +124,8 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Completed"
     ````
-    
-* Alle fehlgeschlagenen Sicherungsaufträge
+
+- Alle fehlgeschlagenen Sicherungsaufträge
 
     ````Kusto
     AzureDiagnostics
@@ -134,8 +134,8 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Failed"
     ````
-    
-* Alle erfolgreiche Azure VM-Sicherungsaufträge
+
+- Alle erfolgreiche Azure VM-Sicherungsaufträge
 
     ````Kusto
     AzureDiagnostics
@@ -158,7 +158,7 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     | project-away Resource
     ````
 
-* Alle erfolgreichen Sicherungsaufträge für das SQL-Protokoll
+- Alle erfolgreichen Sicherungsaufträge für das SQL-Protokoll
 
     ````Kusto
     AzureDiagnostics
@@ -181,7 +181,7 @@ Die Standarddiagramme zeigen Ihnen Kusto-Abfragen für einfache Szenarien, auf d
     | project-away Resource
     ````
 
-* Alle erfolgreiche Aufträge des Azure Backup-Agents
+- Alle erfolgreiche Aufträge des Azure Backup-Agents
 
     ````Kusto
     AzureDiagnostics
@@ -223,7 +223,7 @@ Die Diagnosedaten aus dem Tresor werden mit einer gewissen Verzögerung in den L
 Sie können auch Aktivitätsprotokolle verwenden, um Benachrichtigungen zu Ereignissen zu erhalten, etwa zur erfolgreichen Sicherung. Führen Sie zunächst die folgenden Schritte aus:
 
 1. Melden Sie sich beim Azure-Portal an.
-1. Öffnen Sie den relevanten Recovery Services-Tresor. 
+1. Öffnen Sie den relevanten Recovery Services-Tresor.
 1. Öffnen Sie in den Eigenschaften des Tresors den Abschnitt **Aktivitätsprotokoll**.
 
 Identifizieren Sie das geeignete Protokoll, und erstellen Sie eine Warnung:
@@ -233,7 +233,7 @@ Identifizieren Sie das geeignete Protokoll, und erstellen Sie eine Warnung:
    ![Filtern, um Aktivitätsprotokolle für Azure-VM-Sicherungen zu ermitteln](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
 1. Wählen Sie den Vorgangsnamen aus, um die relevanten Details anzuzeigen.
-1. Wählen Sie **Neue Warnungsregel** aus, um die Seite **Regel erstellen** zu öffnen. 
+1. Wählen Sie **Neue Warnungsregel** aus, um die Seite **Regel erstellen** zu öffnen.
 1. Erstellen Sie eine Warnung anhand der unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log) beschriebenen Schritte.
 
    ![Neue Warnungsregel](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
@@ -247,7 +247,7 @@ In Azure Monitor können Sie alle Warnungen anzeigen, die aus Aktivitätsprotoko
 Obwohl Sie Benachrichtigungen über Aktivitätsprotokolle erhalten können, empfehlen wir dringend die Verwendung von Log Analytics anstelle von Aktivitätsprotokollen für die Überwachung im richtigen Maßstab. Dies ist der Grund:
 
 - **Eingeschränkte Szenarien**: Benachrichtigungen über Aktivitätsprotokolle gelten nur für Azure-VM-Sicherungen. Die Benachrichtigungen müssen für jeden Recovery Services-Tresor eingerichtet werden.
-- **Definitionsübereinstimmung**: Die geplante Sicherungsaktivität passt nicht zur aktuellen Definition von Aktivitätsprotokollen. Stattdessen erfolgt die Ausrichtung an [Diagnoseprotokollen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace). Diese Ausrichtung führt zu unerwarteten Auswirkungen, wenn sich die Daten, die durch den Aktivitätsprotokollkanal fließen, ändern.
+- **Definitionsübereinstimmung**: Die geplante Sicherungsaktivität passt nicht zur aktuellen Definition von Aktivitätsprotokollen. Stattdessen wird sie an [Ressourcenprotokollen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace) ausgerichtet. Diese Ausrichtung führt zu unerwarteten Auswirkungen, wenn sich die Daten, die durch den Aktivitätsprotokollkanal fließen, ändern.
 - **Probleme mit dem Aktivitätsprotokollkanal**: In Recovery Services-Tresoren folgen Aktivitätsprotokolle, die aus Azure Backup gepusht werden, einem neuen Modell. Leider wirkt sich diese Änderung auf die Generierung von Aktivitätsprotokollen in Azure Government, Azure Deutschland und Azure China 21Vianet aus. Wenn Benutzer dieser Clouddienste Warnungen aus Aktivitätsprotokollen in Azure Monitor erstellen oder konfigurieren, werden die Warnungen nicht ausgelöst. Außerdem werden diese Protokolle in allen öffentlichen Azure-Regionen nicht angezeigt, wenn ein Benutzer [Recovery Services-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich erfasst](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs).
 
 Verwenden Sie einen Log Analytics-Arbeitsbereich für die ordnungsgemäße Überwachung und Warnungserstellung für alle Ihre durch Azure Backup geschützten Workloads.

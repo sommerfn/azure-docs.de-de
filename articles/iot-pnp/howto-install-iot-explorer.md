@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960568"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679851"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Installieren und Verwenden des Azure-IoT-Explorers
 
@@ -77,23 +77,29 @@ Auf der Listenseite **Geräte** können Sie folgende Aktionen ausführen:
 
 ## <a name="interact-with-a-device"></a>Interagieren mit einem Gerät
 
-Wählen Sie auf der Seite **Geräte** einen Wert in der Spalte **Geräte-ID** aus, um die Detailseite für das registrierte Gerät anzuzeigen. Für das Gerät gibt es zwei Abschnitte: **Gerät** und **Digitaler Zwilling**.
+Wählen Sie auf der Seite **Geräte** einen Wert in der Spalte **Geräte-ID** aus, um die Detailseite für das registrierte Gerät anzuzeigen. Für jedes Gerät gibt es zwei Abschnitte: **Gerät** und **Digitaler Zwilling**.
 
 ### <a name="device"></a>Gerät
 
-Dieser Abschnitt enthält die Registerkarten **Geräteidentität**, **Gerätezwilling** und **Telemetrie**.
+Dieser Abschnitt enthält die Registerkarten **Geräteidentität**, **Gerätezwilling**, **Telemetrie**, **Direkte Methode** und **Cloud-zu-Gerät-Nachrichten**.
 
 - Sie können die Informationen zur [Geräteidentität](../iot-hub/iot-hub-devguide-identity-registry.md) auf der Registerkarte **Geräteidentität** anzeigen und aktualisieren.
 - Über die Registerkarte **Gerätezwilling** können Sie auf Informationen zum [Gerätezwilling](../iot-hub/iot-hub-devguide-device-twins.md) zugreifen.
 - Wenn ein Gerät verbunden ist und aktiv Daten sendet, können Sie diese [Telemetriedaten](../iot-hub/iot-hub-devguide-messages-read-builtin.md) auf der Registerkarte **Telemetrie** anzeigen.
+- Über die Registerkarte **Direkte Methode** können Sie eine [direkte Methode](../iot-hub/iot-hub-devguide-direct-methods.md) für das Gerät aufrufen.
+- Über die Registerkarte **Cloud-zu-Gerät-Nachrichten** können Sie eine [Cloud-zu-Gerät-Nachricht](../iot-hub/iot-hub-devguide-messages-c2d.md) senden.
 
 ### <a name="digital-twin"></a>Digitaler Zwilling
 
-Sie können das Tool verwenden, um eine Instanz eines digitalen Zwillings des Geräts anzuzeigen. Bei IoT Plug & Play-Geräten werden hier alle Schnittstellen angezeigt, die dem Gerätefunktionsmodell zugeordnet sind. Wählen Sie eine Schnittstelle aus, um die zugehörigen [primitiven Datentypen für IoT Plug & Play](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) zu erweitern.
+Sie können das Tool verwenden, um eine Instanz eines digitalen Zwillings des Geräts anzuzeigen. Bei einem IoT Plug & Play-Gerät werden in diesem Abschnitt des Tools alle Schnittstellen angezeigt, die dem Gerätefunktionsmodell zugeordnet sind. Wählen Sie eine Schnittstelle aus, um die zugehörigen [primitiven Datentypen für IoT Plug & Play](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL) zu erweitern.
+
+### <a name="interface"></a>Schnittstelle
+
+Auf der Seite **Schnittstelle** können Sie die JSON-Definition der Schnittstelle anzeigen.
 
 #### <a name="properties"></a>Properties
 
-Auf der Seite **Eigenschaften** können Sie die schreibgeschützten Eigenschaften anzeigen, die in einer Schnittstelle definiert sind. Auf der Seite **Schreibbare Eigenschaften** können Sie die in einer Schnittstelle definierten Eigenschaften anzeigen, für die Schreibvorgänge durchgeführt werden können.
+Auf der Seite **Schreibgeschützte Eigenschaften** können Sie die in einer Schnittstelle definierten schreibgeschützten Eigenschaften anzeigen. Auf der Seite **Schreibbare Eigenschaften** können Sie die in einer Schnittstelle definierten schreibbaren Eigenschaften mit den folgenden Schritten aktualisieren:
 
 1. Wechseln Sie zur Seite **Schreibbare Eigenschaften**.
 1. Klicken Sie auf die Eigenschaft, die Sie aktualisieren möchten.

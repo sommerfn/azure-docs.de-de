@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268775"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533723"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -110,7 +110,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorUnsupportedDiskSize <br>
 **Fehlermeldung**: Die konfigurierte(n) Datenträgergröße(n) wird/werden von Azure Backup derzeit nicht unterstützt. <br>
 
-Wenn Sie einen virtuellen Computer auf einer Datenträgergröße von mehr als 30 TB sichern, könnte der Sicherungsvorgang fehlschlagen. Auch die Sicherung verschlüsselter Datenträger mit einer Größe von mehr als 4 TB wird derzeit nicht unterstützt. Stellen Sie deshalb sicher, dass die Datenträgergröße(n) kleiner oder gleich dem unterstützten Limit ist/sind, indem Sie den/die Datenträger aufteilen.
+Wenn Sie eine VM auf einer Datenträgergröße von mehr als 32 TB sichern, könnte der Sicherungsvorgang fehlschlagen. Auch die Sicherung verschlüsselter Datenträger mit einer Größe von mehr als 4 TB wird derzeit nicht unterstützt. Stellen Sie deshalb sicher, dass die Datenträgergröße(n) kleiner oder gleich dem unterstützten Limit ist/sind, indem Sie den/die Datenträger aufteilen.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress: Sicherung kann nicht initiiert werden, da derzeit ein anderer Sicherungsvorgang ausgeführt wird.
 

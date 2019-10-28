@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
-ms.reviewer: GeneMi
-ms.date: 03/12/2019
-ms.openlocfilehash: 4f36dcc9953134ac5dd24d3d762ac0dde9949ab7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.reviewer: GeneMi, vanto
+ms.date: 10/11/2019
+ms.openlocfilehash: c55fa6d58109345a0c600bd0c1c76c5a229c03bc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561375"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554467"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Herstellen einer Verbindung zu Azure SQL-Datenbank mit Azure Multi-Factor Authentication
 
@@ -59,7 +59,7 @@ Nach Abschluss einer App-Registrierung wird eine **Anwendungs-ID** generiert und
 
 So können Sie sich registrieren und die erforderlichen Berechtigungen für die Anwendung festlegen:
 
-1. Wählen Sie im Azure-Portal **Azure Active Directory** > **App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.
+1. Wählen Sie im Azure-Portal **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 
     ![App-Registrierung](media/active-directory-interactive-connect-azure-sql-db/image1.png)
 
@@ -67,15 +67,15 @@ So können Sie sich registrieren und die erforderlichen Berechtigungen für die 
 
     ![Angezeigte App-ID](media/active-directory-interactive-connect-azure-sql-db/image2.png)
 
-2. Wählen Sie **Registrierte App** > **Einstellungen** > **Erforderliche Berechtigungen** > **Hinzufügen** aus.
+2. Wählen Sie **API-Berechtigungen** > **Berechtigung hinzufügen** aus.
 
     ![Berechtigungseinstellungen für die registrierte App](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-3. Wählen Sie **Erforderliche Berechtigungen** > **Hinzufügen** > **API auswählen** > **Azure SQL-Datenbank** aus.
+3. Wählen Sie **Von meiner Organisation verwendete APIs** aus, geben Sie im Suchfeld **Azure SQL-Datenbank** ein, und wählen Sie **Azure SQL-Datenbank** aus.
 
     ![Hinzufügen von Zugriff auf eine API für Azure SQL-Datenbank](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-4. Wählen Sie **API-Zugriff** > **Berechtigungen auswählen** > **Delegierte Berechtigungen** aus.
+4. Wählen Sie **Delegierte Berechtigungen** > **user_impersonation** > **Berechtigungen hinzufügen** aus.
 
     ![Delegieren von Berechtigungen an die API für Azure SQL-Datenbank](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 

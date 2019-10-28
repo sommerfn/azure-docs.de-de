@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: f316f77d0f4ca3132a2ae77d807e2dd66ba62a43
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b858776d8309be94a0dd64f994a9e34e589d3c49
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846286"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750462"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 
-Standardmäßig werden Sicherungen von Azure SQL-Datenbanken im georeplizierten Blobspeicher gespeichert. Die folgenden Optionen stehen für die Datenbankwiederherstellung mithilfe [automatisierter Datenbanksicherungen](sql-database-automated-backups.md) zur Verfügung. Ihre Möglichkeiten:
+Sicherungen von Azure SQL-Datenbanken werden standardmäßig im georeplizierten Blobspeicher (Speichertyp RA-GRS) gespeichert. Die folgenden Optionen stehen für die Datenbankwiederherstellung mithilfe [automatisierter Datenbanksicherungen](sql-database-automated-backups.md) zur Verfügung. Ihre Möglichkeiten:
 
 - Erstellen einer neuen Datenbank auf dem gleichen SQL-Datenbank-Server, wobei der Zustand für einen angegebenen Zeitpunkt innerhalb des Aufbewahrungszeitraums wiederhergestellt wird.
 - Erstellen einer Datenbank auf dem gleichen SQL-Datenbank-Server, wobei der Zustand wiederhergestellt wird, in dem sich eine Datenbank zum Zeitpunkt der Datenbanklöschung befand.
@@ -34,9 +34,6 @@ Wenn Sie die [langfristige Aufbewahrung von Sicherungen](sql-database-long-term-
 
 Wenn Sie die Dienstebene „Standard“ oder „Premium“ verwenden, fallen bei der Wiederherstellung Ihrer Datenbanken u. U. zusätzliche Speicherkosten an. Die zusätzlichen Kosten entstehen, wenn die maximale Größe der wiederhergestellten Datenbank die mit der Dienstebene und Leistungsstufe der Zieldatenbank verbundene Menge des Speicherplatzes überschreitet. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/). Wenn die tatsächlich verwendete Speichermenge kleiner als die enthaltene Speichermenge ist, können Sie diese zusätzlichen Kosten durch Festlegen der maximalen Datenbankgröße auf die enthaltene Menge vermeiden.
 
-> [!NOTE]
-> Beim Erstellen einer [Datenbankkopie](sql-database-copy.md) verwenden Sie [automatisierte Datenbanksicherungen](sql-database-automated-backups.md).
-
 ## <a name="recovery-time"></a>Wiederherstellungszeit
 
 Die Zeit, die zum Wiederherstellen einer Datenbank mit automatisierten Sicherungen benötigt wird, hängt von mehreren Faktoren ab:
@@ -48,9 +45,9 @@ Die Zeit, die zum Wiederherstellen einer Datenbank mit automatisierten Sicherung
 - Netzwerkbandbreite, sofern die Wiederherstellung in einer anderen Region erfolgt
 - Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die aktuell in der Zielregion verarbeitet werden
 
-Bei einer großen oder sehr aktiven Datenbank kann die Wiederherstellung mehrere Stunden dauern. Wenn es sich um einen längeren Ausfall in einer Region handelt, müssen möglicherweise andere Regionen eine große Anzahl von Geowiederherstellungsanforderungen verarbeiten. Wenn viele Anforderungen vorliegen, erhöht sich dadurch u. U. die Wiederherstellungsdauer für Datenbanken in dieser Region. Der Großteil der Datenbankwiederherstellungen erfolgt in weniger als 12 Stunden.
+Bei einer großen oder sehr aktiven Datenbank kann die Wiederherstellung mehrere Stunden dauern. Bei einem längeren Ausfall in einer Region ist es möglich, dass eine große Anzahl von Geowiederherstellungsanforderungen für die Notfallwiederherstellung initiiert wird. Wenn es viele Anforderungen gibt, kann sich die Wiederherstellungszeit bei einzelnen Datenbanken erhöhen. Der Großteil der Datenbankwiederherstellungen erfolgt in weniger als 12 Stunden.
 
-Für ein einzelnes Abonnement gibt es Einschränkungen hinsichtlich der Anzahl gleichzeitiger Wiederherstellungsanforderungen.  Diese Einschränkungen gelten für eine beliebige Kombination von Point-in-Time-Wiederherstellungen, Geowiederherstellungen und Wiederherstellungen aus einer langfristig aufbewahrten Sicherung.
+Für ein einzelnes Abonnement gibt es Einschränkungen hinsichtlich der Anzahl gleichzeitiger Wiederherstellungsanforderungen. Diese Einschränkungen gelten für eine beliebige Kombination von Point-in-Time-Wiederherstellungen, Geowiederherstellungen und Wiederherstellungen aus einer langfristig aufbewahrten Sicherung.
 
 | | **Max. Anzahl gleichzeitiger Anforderungen, die verarbeitet werden** | **Max. Anzahl gleichzeitiger Anforderungen, die übermittelt werden** |
 | :--- | --: | --: |
@@ -67,7 +64,7 @@ Es gibt keine integrierte Methode zum Wiederherstellen des gesamten Servers. Ein
 
 Sie können den Zustand einer eigenständigen, Pool- oder Instanzdatenbank zu einem früheren Zeitpunkt mithilfe von Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) oder [REST-API](https://docs.microsoft.com/rest/api/sql/databases) wiederherstellen. Die Anforderung kann jede Dienstebene oder Computegröße für die wiederhergestellte Datenbank angeben. Stellen Sie sicher, dass auf dem Server, auf dem Sie die Datenbank wiederherstellen, ausreichende Ressourcen vorhanden sind. Nach Abschluss der Wiederherstellung wird eine neue Datenbank auf demselben Server wie die ursprüngliche Datenbank erstellt. Die wiederhergestellte Datenbank wird zu normalen Preisen basierend auf der Dienstebene und Computegröße in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
 
-Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank als Ersatz für die ursprüngliche Datenbank behandeln oder als Quelldaten zum Aktualisieren der ursprünglichen Datenbank verwenden.
+Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank als Ersatz für die ursprüngliche Datenbank behandeln oder als Datenquelle zum Aktualisieren der ursprünglichen Datenbank verwenden.
 
 - **Ersetzung der Datenbank**
 
@@ -155,7 +152,7 @@ Wenn Sie eine einzelne SQL-Einzeldatenbank mittels Geowiederherstellung aus dem 
 
     ![Screenshot der Optionen für „SQL-Datenbank erstellen“](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
-Schließen Sie den Vorgang des Erstellens einer neuen Datenbank ab. Die erstellte Azure SQL-Einzeldatenbank enthält die mittels Geowiederherstellung wiederhergestellte Sicherung.
+Schließen Sie den Vorgang des Erstellens einer neuen Datenbank aus der Sicherung ab. Die erstellte Azure SQL-Einzeldatenbank enthält die mittels Geowiederherstellung wiederhergestellte Sicherung.
 
 #### <a name="managed-instance-database"></a>Datenbank der verwalteten Instanz
 
@@ -185,7 +182,7 @@ Ein PowerShell-Skript, das zeigt, wie die Geowiederherstellung für eine Datenba
 Sie können keine Point-in-Time-Wiederherstellung für eine sekundäre Geodatenbank durchführen. Dies ist nur für eine primäre Datenbank möglich. Ausführliche Informationen zum Verwenden der Geowiederherstellung nach einem Ausfall finden Sie unter [Wiederherstellen nach einem Ausfall](sql-database-disaster-recovery.md).
 
 > [!IMPORTANT]
-> Die Geowiederherstellung ist die einfachste in SQL-Datenbank verfügbare Lösung für die Notfallwiederherstellung. Sie beruht auf automatisch erstellten georeplizierten Sicherungen mit RPO (Recovery Point Objective) = 1 Stunde und geschätzter Wiederherstellungszeit von bis zu 12 Stunden. Sie garantiert nicht, dass die Zielregion über die Kapazität zum Wiederherstellen Ihrer Datenbanken nach einem regionalen Ausfall verfügt, da der Bedarf voraussichtlich stark ansteigen wird. Für nicht unternehmenskritische Anwendungen, die relativ kleine Datenbanken verwenden, ist die Geowiederherstellung eine geeignete Lösung für die Notfallwiederherstellung. Für unternehmenskritische Anwendungen, die große Datenbanken verwenden und die Geschäftskontinuität gewährleisten müssen, sind [Autofailover-Gruppen](sql-database-auto-failover-group.md) zu verwenden. Die Lösung bietet erhebliche niedrigere RPO (Recovery Point Objective) und RTO (Recovery Time Objective), und die Kapazität ist immer garantiert. Weitere Informationen zur Optionen für Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
+> Die Geowiederherstellung ist die einfachste in SQL-Datenbank verfügbare Lösung für die Notfallwiederherstellung. Sie beruht auf automatisch erstellten georeplizierten Sicherungen mit RPO (Recovery Point Objective) = 1 Stunde und geschätzter Wiederherstellungszeit von bis zu 12 Stunden. Sie garantiert nicht, dass die Zielregion über die Kapazität zum Wiederherstellen Ihrer Datenbanken nach einem regionalen Ausfall verfügt, da der Bedarf voraussichtlich stark ansteigen wird. Für nicht unternehmenskritische Anwendungen, die relativ kleine Datenbanken verwenden, ist die Geowiederherstellung eine geeignete Lösung für die Notfallwiederherstellung. Verwenden Sie für unternehmenskritische Anwendungen, die große Datenbanken erfordern und die Geschäftskontinuität sicherstellen müssen, [Autofailover-Gruppen](sql-database-auto-failover-group.md). Die Lösung bietet erhebliche niedrigere RPO (Recovery Point Objective) und RTO (Recovery Time Objective), und die Kapazität ist immer garantiert. Weitere Informationen zur Optionen für Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md).
 
 ## <a name="programmatically-performing-recovery-by-using-automated-backups"></a>Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen
 

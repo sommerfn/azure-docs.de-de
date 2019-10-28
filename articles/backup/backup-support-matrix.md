@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9671ddcf98ae97c0a3df49cce008faf403f5dcd2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5adcf252fed4ac94ae4261886b24eb087424bdbe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981091"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533149"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -59,7 +59,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von lokale
 **Begrenzung** | **Details**
 --- | ---
 **Azure-VM-Datenträger** | Maximal 16
-**Größe des Azure-VM-Datenträgers** | Unterstützt die Sicherung von virtuellen Computern mit einer einzelnen Datenträgergröße bis zu 30 TB und einem Maximum von 256 TB für alle Datenträger in einem virtuellen Computer.
+**Größe des Azure-VM-Datenträgers** | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 
 ### <a name="azure-vm-backup-options"></a>Optionen für Azure-VM-Sicherungen
 

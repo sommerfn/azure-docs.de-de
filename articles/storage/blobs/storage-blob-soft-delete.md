@@ -5,27 +5,30 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 253f42080d7c0eab2f7b3cfc5de3d4462f63c738
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ece49ff749a3b51e2fd4982f2df2726c57c6bf3d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673412"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785209"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
+
 Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
 
-## <a name="how-does-it-work"></a>Wie funktioniert dies?
+## <a name="how-soft-delete-works"></a>Funktionsweise des vorläufigen Löschens
+
 Wenn diese Option aktiviert ist, ermöglicht Ihnen das vorläufige Löschen das Speichern und Wiederherstellen Ihrer Daten, wenn Blobs oder Blobmomentaufnahmen gelöscht wurden. Dieser Schutz erstreckt sich auch auf Blobdaten, die durch Überschreiben gelöscht wurden.
 
 Wenn Daten gelöscht werden, gehen sie in einen vorläufig gelöschten Zustand über, anstatt dauerhaft gelöscht zu werden. Wenn das vorläufige Löschen aktiviert ist und Sie Daten überschreiben, wird eine vorläufig gelöschte Momentaufnahme generiert, um den Zustand der überschriebenen Daten zu speichern. Vorläufig gelöschte Objekte sind nur sichtbar, wenn sie explizit aufgelistet werden. Sie können die Zeitspanne konfigurieren, die vorläufig gelöschte Daten wiederhergestellt werden können, bevor sie dauerhaft ablaufen.
 
-Vorläufiges Löschen ist abwärtskompatibel. Sie müssen keine Änderungen an Ihren Anwendungen vornehmen, um die Schutzvorteile dieses Features zu nutzen. Allerdings wird mit der [Datenwiederherstellung](#recovery) eine neue API zum **Wiederherstellen von Blobs** eingeführt.
+Weil vorläufiges Löschen abwärtskompatibel ist, müssen Sie keine Änderungen an Ihren Anwendungen vornehmen, um die Schutzvorteile dieses Features nutzen zu können. Allerdings wird mit der [Datenwiederherstellung](#recovery) eine neue API zum **Wiederherstellen von Blobs** eingeführt.
 
 ### <a name="configuration-settings"></a>Konfigurationseinstellungen
+
 Wenn Sie ein neues Konto erstellen, ist vorläufiges Löschen standardmäßig deaktiviert. Vorläufiges Löschen ist auch für vorhandene Speicherkonten standardmäßig deaktiviert. Sie können das Feature während der Lebensdauer eines Speicherkontos jederzeit aktivieren bzw. deaktivieren.
 
 Sie können weiterhin auf vorläufig gelöschte Daten zugreifen und diese wiederherstellen, wenn das Feature deaktiviert ist, vorausgesetzt, dass vorläufig gelöschte Daten gespeichert wurden, als das Feature zuvor aktiviert war. Wenn Sie vorläufiges Löschen aktivieren, müssen Sie auch die Beibehaltungsdauer konfigurieren.
@@ -35,6 +38,7 @@ Die Beibehaltungsdauer gibt die Zeitspanne an, für die vorläufig gelöschte Da
 Sie können die Beibehaltungsdauer beim vorläufigen Löschen jederzeit ändern. Eine aktualisierte Beibehaltungsdauer gilt nur für neu gelöschten Daten. Zuvor gelöschte Daten laufen basierend auf der Beibehaltungsdauer ab, die konfiguriert war, als diese Daten gelöscht wurden. Der Versuch, ein vorläufig gelöschtes Objekt zu löschen, wirkt sich nicht auf dessen Ablaufzeit aus.
 
 ### <a name="saving-deleted-data"></a>Speichern gelöschter Daten
+
 Vorläufiges Löschen behält Ihre Daten in vielen Fällen bei, in denen Blobs oder Blobmomentaufnahmen gelöscht oder überschrieben werden.
 
 Wenn ein Blob mit **Put Blob**, **Put Block**, **Put Block List** oder **Copy Blob** überschrieben wird, wird automatisch eine Momentaufnahme des Blobzustands vor dem Schreibvorgang generiert. Diese Momentaufnahme ist eine vorläufig gelöschten Momentaufnahme. Sie ist nur dann sichtbar, wenn vorläufig gelöschte Objekte explizit aufgelistet werden. Informationen zum Auflisten vorläufig gelöschte Objekte finden Sie im Abschnitt [Wiederherstellung](#recovery).
@@ -85,9 +89,10 @@ Die folgende Tabelle beschreibt das erwartete Verhalten, wenn vorläufiges Lösc
 Es ist wichtig zu beachten, dass beim Aufrufen von „Put Page“ zum Überschreiben oder Löschen von Bereichen eines Seitenblobs nicht automatisch Momentaufnahmen generiert werden. Datenträger virtueller Computer werden durch Seitenblobs gesichert und verwenden **Put Page** zum Schreiben von Daten.
 
 ### <a name="recovery"></a>Wiederherstellen
-Um das Wiederherstellen gelöschter Daten zu erleichtern, haben wir eine neue API zum Wiederherstellen von Blobs (Undelete Blob) eingeführt. Durch den Aufruf der Wiederherstellungs-API für ein vorläufig gelöschtes Basisblob werden dieses sowie alle zugehörigen vorläufig gelöschten Momentaufnahmen als aktiv wiederhergestellt. Durch den Aufruf der Wiederherstellungs-API für ein aktives Basisblob werden alle zugehörigen vorläufig gelöschten Momentaufnahmen als aktiv wiederhergestellt. Wenn Momentaufnahmen als aktiv wiederhergestellt werden, sehen sie wie vom Benutzer generierte Momentaufnahmen aus. Sie überschreiben das Basisblob nicht.
 
-Um ein Blob in einer bestimmten vorläufig gelöschten Momentaufnahme wiederherzustellen, können Sie **Undelete Blob** für das Basisblob aufrufen. Anschließend können Sie die Momentaufnahme über das jetzt aktive Blob kopieren. Sie können die Momentaufnahme auch in ein neues Blob kopieren.
+Durch Aufrufen des Vorgangs [Undelete Blob](/rest/api/storageservices/undelete-blob) für ein vorläufig gelöschtes Basisblob werden das Blob sowie alle zugeordneten vorläufig gelöschten Momentaufnahmen als aktiv wiederhergestellt. Durch Aufrufen des Vorgangs `Undelete Blob` für ein aktives Basisblob werden alle zugeordneten vorläufig gelöschten Momentaufnahmen als aktiv wiederhergestellt. Wenn Momentaufnahmen als aktiv wiederhergestellt werden, sehen sie wie vom Benutzer generierte Momentaufnahmen aus. Sie überschreiben das Basisblob nicht.
+
+Um ein Blob in einer bestimmten vorläufig gelöschten Momentaufnahme wiederherzustellen, können Sie `Undelete Blob` für das Basisblob aufrufen. Anschließend können Sie die Momentaufnahme über das jetzt aktive Blob kopieren. Sie können die Momentaufnahme auch in ein neues Blob kopieren.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
@@ -96,7 +101,8 @@ Um ein Blob in einer bestimmten vorläufig gelöschten Momentaufnahme wiederherz
 Zum Anzeigen von vorläufig gelöschten Blobs und Blobmomentaufnahmen können Sie gelöschte Daten wahlweise in **List Blobs** einschließen. Sie können nur vorläufig gelöschte Basisblobs anzeigen oder auch vorläufig gelöschte Blobmomentaufnahmen einschließen. Für alle vorläufig gelöschten Daten können Sie die Zeit anzeigen, zu der die Daten gelöscht wurden, sowie die Anzahl der Tage, bevor die Daten dauerhaft gelöscht werden.
 
 ### <a name="example"></a>Beispiel
-Das folgende Beispiel zeigt die Konsolenausgabe eines .NET-Skripts, mit dem das Blob „HelloWorld“ hochgeladen, überschrieben, eine Momentaufnahme dafür erstellt und es gelöscht und wiederhergestellt wird, wenn vorläufiges Löschen aktiviert ist:
+
+Das folgende Beispiel zeigt die Konsolenausgabe eines .NET-Skripts, das ein Blob namens *HelloWorld* hochlädt, überschreibt, eine Momentaufnahme davon erstellt, es löscht und wiederherstellt, wenn vorläufiges Löschen aktiviert ist:
 
 ```bash
 Upload:
@@ -131,16 +137,21 @@ Copy a snapshot over the base blob:
 Im Abschnitt [Nächste Schritte](#next-steps) finden Sie einen Hinweis auf die Anwendung, die diese Ausgabe generiert.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
+
 Alle vorläufig gelöschten Daten werden mit dem gleichen Tarif wie aktive Daten in Rechnung gestellt. Für Daten, die nach Ablauf der konfigurierten Beibehaltungsdauer dauerhaft gelöscht werden, fallen keine Kosten an. Ausführlichere Informationen zu Momentaufnahmen und den dafür anfallenden Kosten finden Sie unter [Understanding how snapshots accrue charges](storage-blob-snapshots.md) (Informationen zu den Kosten von Momentaufnahmen).
 
-Ihnen werden keine Transaktionen im Zusammenhang mit der automatischen Generierung von Momentaufnahmen in Rechnung gestellt. Ihnen werden **Undelete Blob**-Transaktionen zum Tarif für „Schreibvorgänge“ in Rechnung gestellt.
+Ihnen werden keine Transaktionen im Zusammenhang mit der automatischen Generierung von Momentaufnahmen in Rechnung gestellt. Ihnen werden **Undelete Blob**-Transaktionen zum Tarif für Schreibvorgänge in Rechnung gestellt.
 
 Weitere Informationen zu Preisen für Azure Blob Storage im Allgemeinen finden Sie auf der Seite [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 Wenn Sie erstmals vorläufiges Löschen aktivieren, wird empfohlen, eine kurze Beibehaltungsdauer zu verwenden, um besser zu verstehen, wie sich das Feature auf Ihre Rechnung auswirkt.
 
-## <a name="quickstart"></a>Schnellstart
+## <a name="get-started"></a>Erste Schritte
+
+Die folgenden Schritte zeigen, wie Sie mit dem vorläufigen Löschen beginnen.
+
 ### <a name="azure-portal"></a>Azure-Portal
+
 Navigieren Sie zum Aktivieren von vorläufigem Löschen unter **Blobdienst** zur Option **Vorläufiges Löschen**. Klicken Sie dann auf **Aktiviert**, und geben Sie die Anzahl der Tage ein, die vorläufig gelöschte Daten beibehalten werden sollen.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
@@ -187,6 +198,7 @@ $MatchingAccounts | Get-AzStorageServiceProperty -ServiceType Blob
 ```
 
 Rufen Sie zum Wiederherstellen von Blobs, die versehentlich gelöscht wurden, „Undelete“ für diese Blobs auf. Denken Sie daran, dass der Aufruf von **Undelete Blob** (für aktive und vorläufig gelöschte Blobs) alle zugeordneten vorläufig gelöschten Momentaufnahmen als aktiv wiederherstellt. Im folgende Beispiel wird „Undelete“ für alle vorläufig gelöschten und aktiven Blobs in einem Container aufgerufen:
+
 ```powershell
 # Create a context by specifying storage account name and key
 $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
@@ -206,6 +218,7 @@ Mithilfe des folgenden Befehls können Sie die aktuelle Aufbewahrungsrichtlinie 
 ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle 
+
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
 ```azurecli-interactive
@@ -219,6 +232,7 @@ az storage blob service-properties delete-policy show --account-name mystorageac
 ```
 
 ### <a name="python-client-library"></a>Python-Clientbibliothek
+
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
 ```python
@@ -236,6 +250,7 @@ block_blob_service.set_blob_service_properties(
 ```
 
 ### <a name="net-client-library"></a>.NET-Clientbibliothek
+
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
 ```csharp
@@ -277,49 +292,65 @@ blockBlob.StartCopy(copySource);
 ```
 
 ## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Sind bei der Verwendung des vorläufigen Löschens besondere Überlegungen zu beachten?
-Wenn die Möglichkeit besteht, dass Ihre Daten versehentlich geändert oder von einer Anwendung oder einem anderen Benutzer des Speicherkontos gelöscht werden, wird empfohlen, vorläufiges Löschen zu aktivieren. Das Aktivieren des vorläufigen Löschens für häufig überschriebene Daten kann zu höheren Gebühren für die Speicherkapazität und einer höheren Latenz beim Auflisten der Blobs führen. Sie können dies umgehen, indem Sie häufig überschriebene Daten in einem separaten Speicherkonto speichern, in dem das vorläufige Löschen deaktiviert ist. 
+
+Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, wird empfohlen, das vorläufige Löschen zu aktivieren. Das Aktivieren des vorläufigen Löschens für häufig überschriebene Daten kann zu höheren Gebühren für die Speicherkapazität und einer höheren Latenz beim Auflisten der Blobs führen. Sie können diese zusätzlichen Kosten umgehen, indem Sie häufig überschriebene Daten in einem separaten Speicherkonto speichern, in dem das vorläufige Löschen deaktiviert ist. 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
-**Für welche Speichertypen kann ich vorläufiges Löschen verwenden?**  
+
+### <a name="for-which-storage-services-can-i-use-soft-delete"></a>Bei welchen Speicherdiensten kann ich vorläufiges Löschen verwenden?
+
 Zurzeit ist vorläufiges Löschen nur für Blobspeicher (Objektspeicher) verfügbar.
 
-**Ist vorläufiges Löschen für alle Speicherkontotypen verfügbar?**  
-Ja, vorläufiges Löschen ist für Blobspeicherkonten sowie für Blobs in allgemeinen Speicherkonten (sowohl GPv1 als auch GPv2) verfügbar. Dies gilt für Standard- und Premium-Konten. Vorläufiges Löschen ist für verwaltete Datenträger nicht verfügbar.
+### <a name="is-soft-delete-available-for-all-storage-account-types"></a>Ist vorläufiges Löschen für alle Speicherkontotypen verfügbar?
 
-**Ist vorläufiges Löschen für alle Speicherebenen verfügbar?**  
+Ja, vorläufiges Löschen ist für Blobspeicherkonten und für Blobs in allgemeinen Speicherkonten (sowohl GPv1 als auch GPv2) verfügbar. Es werden sowohl Standard- als auch Premium-Kontotypen unterstützt. Vorläufiges Löschen ist für nicht verwaltete Datenträger verfügbar. Dabei handelt es sich um Seitenblobs im Hintergrund. Vorläufiges Löschen ist für verwaltete Datenträger nicht verfügbar.
+
+### <a name="is-soft-delete-available-for-all-storage-tiers"></a>Ist vorläufiges Löschen für alle Speicherebenen verfügbar?
+
 Ja, vorläufiges Löschen ist für alle Speicherebenen einschließlich „heiß“, „kalt“ und „Archiv“ verfügbar. Vorläufiges Löschen bietet jedoch keinen Überschreibschutz für Blobs in der Archivebene.
 
-**Kann ich die API zum Festlegen des Blobtarifs für Blobs mit vorläufig gelöschten Momentaufnahmen verwenden?**  
+### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Kann ich die API zum Festlegen des Blobtarifs für Blobs mit vorläufig gelöschten Momentaufnahmen verwenden?
+
 Ja. Die vorläufig gelöschten Momentaufnahmen verbleiben im ursprünglichen Tarif, aber das Basisblob wird in den neuen Tarif verschoben. 
 
-**Storage Premium-Konten weisen eine Momentaufnahmengrenze von 100 pro Blob auf. Werden vorläufig gelöschte Momentaufnahmen für diesen Grenzwert berücksichtigt?**  
+### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>Bei Storage Premium-Konten gibt es einen Grenzwert für Momentaufnahmen von 100 pro Blob. Werden vorläufig gelöschte Momentaufnahmen für diesen Grenzwert berücksichtigt?
+
 Nein, vorläufig gelöschte Momentaufnahmen werden für diesen Grenzwert nicht berücksichtigt.
 
-**Kann ich vorläufiges Löschen für vorhandene Speicherkonten aktivieren?**  
+### <a name="can-i-turn-on-soft-delete-for-existing-storage-accounts"></a>Kann ich vorläufiges Löschen für vorhandene Speicherkonten aktivieren?
+
 Ja, vorläufiges Löschen kann für vorhandene und neue Speicherkonten konfiguriert werden.
 
-**Wenn ich ein gesamtes Konto oder einen Container lösche, wenn vorläufiges Löschen aktiviert ist, werden dann alle zugehörigen Blobs gesichert?**  
-Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Um zu erfahren, wie Sie ein Speicherkonto vor versehentlichem Löschen schützen können, lesen Sie den Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/resource-group-lock-resources.md).
+### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Wenn ich ein gesamtes Konto oder einen Container lösche, bei dem vorläufiges Löschen aktiviert ist, werden dann alle zugehörigen Blobs gesichert?
 
-**Kann ich Kapazitätsmetriken für gelöschte Daten anzeigen?**  
-Vorläufig gelöschte Daten sind als Teil der Gesamtkapazität Ihres Speicherkontos enthalten. Weitere Informationen zum Nachverfolgen und Überwachen der Speicherkapazität finden im Artikel zu [Storage Analytics](../common/storage-analytics.md).
+Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Weitere Informationen zum Schutz eines Speicherkontos vor versehentlichem Löschen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/resource-group-lock-resources.md).
 
-**Wenn ich vorläufiges Löschen deaktiviere, kann ich dann trotzdem auf vorläufig gelöschte Daten zugreifen?**  
+### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Kann ich Kapazitätsmetriken für gelöschte Daten anzeigen?
+
+Vorläufig gelöschte Daten sind als Teil der Gesamtkapazität Ihres Speicherkontos enthalten. Weitere Informationen zum Nachverfolgen und Überwachen der Speicherkapazität finden Sie unter [Storage Analytics](../common/storage-analytics.md).
+
+### <a name="if-i-turn-off-soft-delete-will-i-still-be-able-to-access-soft-deleted-data"></a>Wenn ich vorläufiges Löschen deaktiviere, kann ich dann trotzdem auf vorläufig gelöschte Daten zugreifen?
+
 Ja, Sie können weiterhin auf nicht abgelaufene vorläufig gelöschte Daten zugreifen und diese wiederherstellen, wenn vorläufiges Löschen deaktiviert ist.
 
-**Kann ich vorläufig gelöschte Momentaufnahmen meines Blobs lesen und daraus kopieren?**  
+### <a name="can-i-read-and-copy-out-soft-deleted-snapshots-of-my-blob"></a>Kann ich vorläufig gelöschte Momentaufnahmen meines Blobs lesen und daraus kopieren?  
+
 Ja, aber Sie müssen zuerst „Undelete“ für das Blob aufrufen.
 
-**Ist vorläufiges Löschen für alle Blobtypen verfügbar?**  
+### <a name="is-soft-delete-available-for-all-blob-types"></a>Ist vorläufiges Löschen für alle Blobtypen verfügbar?
+
 Ja, vorläufiges Löschen ist für Blockblobs, Anfügeblobs und Seitenblobs verfügbar.
 
-**Ist vorläufiges Löschen für die Datenträger virtueller Computer verfügbar?**  
-Vorläufiges Löschen steht für nicht verwaltete Premium- und Standard-Datenträger zur Verfügung. Vorläufiges Löschen kann Sie nur beim Wiederherstellen von Daten unterstützen, die mit **Delete Blob**, **Put Blob**, **Put Block List**, **Put Block** und **Copy Blob** gelöscht wurden. Daten, die durch einen Aufruf von **Put Page** überschrieben wurden, können nicht wiederhergestellt werden.
+### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Ist vorläufiges Löschen für die Datenträger virtueller Computer verfügbar?  
 
-**Muss ich zur Verwendung von vorläufigem Löschen meine vorhandenen Anwendungen ändern?**  
-Es ist möglich, vorläufiges Löschen unabhängig von der API-Version zu nutzen, die Sie verwenden. Allerdings müssen Sie zum Auflisten und Wiederherstellen vorläufig gelöschter Blobs und Blobmomentaufnahmen die Version vom 29.07.2017 der [Speicherdienste-REST-API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) oder eine höhere Version verwenden. Unabhängig von der Nutzung dieses Features empfehlen wir grundsätzlich die Verwendung der neuesten Version.
+Vorläufiges Löschen ist sowohl für Premium-Datenträger als auch für nicht verwaltete Standarddatenträger verfügbar, bei denen es sich um Seitenblobs im Hintergrund handelt. Vorläufiges Löschen kann Sie nur beim Wiederherstellen von Daten unterstützen, die mit den Vorgängen **Delete Blob**, **Put Blob**, **Put Block List**, **Put Block** und **Copy Blob** gelöscht wurden. Daten, die durch einen Aufruf von **Put Page** überschrieben wurden, können nicht wiederhergestellt werden.
+
+### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Muss ich zur Verwendung von vorläufigem Löschen meine vorhandenen Anwendungen ändern?
+
+Es ist möglich, vorläufiges Löschen unabhängig von der API-Version zu nutzen, die Sie verwenden. Allerdings müssen Sie zum Auflisten und Wiederherstellen vorläufig gelöschter Blobs und Blobmomentaufnahmen die Version vom 29.07.2017 der [Speicherdienste-REST-API](https://docs.microsoft.com/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) oder eine höhere Version verwenden. Microsoft empfiehlt immer, die neueste Version der Azure Storage-API zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [.NET-Beispielcode](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [REST-API des Blob-Diensts](/rest/api/storageservices/blob-service-rest-api)
 * [Azure Storage-Replikation](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
