@@ -71,7 +71,7 @@ Weitere Informationen finden Sie unter:
 
 ### <a name="option-2-compare-the-usage-and-costs-in-the-azure-portal"></a>Option 2: Vergleichen der Nutzung und Kosten im Azure-Portal
 
-Mithilfe des Azure-Portals können Sie auch Ihre Gebühren überprüfen. Um einen schnellen Überblick über Ihre berechnete Nutzung und Ihre Gebühren zu erhalten, zeigen Sie die Kostenverwaltungsdiagramme an.
+Mithilfe des Azure-Portals können Sie auch Ihre Gebühren überprüfen. Um einen schnellen Überblick über Ihre berechnete Nutzung und Gebühren zu erhalten, zeigen Sie die Kostenverwaltungsdiagramme an.
 
 1. Navigieren Sie im Azure-Portal zu [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Wählen Sie Ihr Abonnement und dann **Kostenanalyse** aus.
@@ -130,7 +130,7 @@ Um den Status Ihrer Zahlung zu erfragen, [erstellen Sie ein Supportticket](https
   - [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/)
   - [Gesamtkostenrechner](https://aka.ms/azure-tco-calculator)
   - [Detaillierte Preisinformationen für jeden Dienst](https://azure.microsoft.com/pricing/)
-- [Überprüfen Sie Ihre Nutzung und Ihre Kosten regelmäßig im Azure-Portal](billing-getting-started.md#costs)
+- [Überprüfen Sie Ihre Nutzung und Kosten regelmäßig im Azure-Portal](billing-getting-started.md#costs)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
