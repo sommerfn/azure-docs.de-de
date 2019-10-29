@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 08/01/2019
+ms.date: 10/15/2019
 ms.author: aahi
-ms.openlocfilehash: 28dbcde723e25577545cfd44fed9ef00249d8f30
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 926d7043ea6f56c1ba6d13fd4586fc6f6d59cfa8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694908"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554713"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Schnellstart: Anomalieerkennungs-Clientbibliothek für Python
 
@@ -26,7 +26,7 @@ Mit der Anomalieerkennungs-Clientbibliothek für Python ist Folgendes möglich:
 * Erkennung von Anomalien in Ihrem gesamten Zeitreihen-Dataset als Batchanforderung
 * Erkennen des Anomaliestatus des letzten Datenpunkts in Ihrer Zeitreihe
 
-[Bibliotheksreferenzdokumentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Beispiele](https://github.com/Azure-Samples/anomalydetector)
+[Bibliotheksreferenzdokumentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Codebeispiele](https://github.com/Azure-Samples/anomalydetector)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,11 +40,9 @@ Mit der Anomalieerkennungs-Clientbibliothek für Python ist Folgendes möglich:
 
 [!INCLUDE [anomaly-detector-resource-creation](../../../../includes/cognitive-services-anomaly-detector-resource-cli.md)]
 
-Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie eine Umgebungsvariable](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) für den Schlüssel (`ANOMALY_DETECTOR_KEY`).
-
 ### <a name="create-a-new-python-application"></a>Erstellen einer neuen Python-Anwendung
 
- Erstellen Sie eine neue Python-Anwendung in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Importieren Sie dann die folgenden Bibliotheken:
+ Erstellen Sie eine neue Python-Datei, und importieren Sie die folgenden Bibliotheken:
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
@@ -114,7 +112,7 @@ Rufen Sie mithilfe der [last_detect()](https://docs.microsoft.com/python/api/azu
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Führen Sie die Anwendung in Ihrer IDE oder in der Befehlszeile mit dem `python`-Befehl und Ihrem Dateinamen aus.
+Führen Sie die Anwendung mit dem Befehl `python` und Ihrem Dateinamen aus.
  
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

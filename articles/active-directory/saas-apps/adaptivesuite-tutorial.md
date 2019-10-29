@@ -17,10 +17,10 @@ ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70213615"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Tutorial: Integrieren von Adaptive Insights in Azure Active Directory
@@ -104,15 +104,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 2. Wechseln Sie zu **Administration**.
 
-    ![Admin](./media/adaptivesuite-tutorial/ic805644.png "Admin")
+    ![Administrator](./media/adaptivesuite-tutorial/ic805644.png "Administrator")
 
 3. Klicken Sie im Abschnitt **Benutzer und Rollen** auf **SAML SSO Settings** (SAML-SSO-Einstellungen).
 
-    ![SAML-SSO-Einstellungen verwalten](./media/adaptivesuite-tutorial/ic805645.png "SAML-SSO-Einstellungen verwalten")
+    ![Verwalten der SAML-SSO-Einstellungen](./media/adaptivesuite-tutorial/ic805645.png "Manage SAML SSO Settings")
 
 4. Führen Sie auf der Seite **SAML SSO Settings** die folgenden Schritte aus:
 
-    ![SAML-SSO-Einstellungen](./media/adaptivesuite-tutorial/ic805646.png "SAML-SSO-Einstellungen")
+    ![SAML-SSO-Einstellungen](./media/adaptivesuite-tutorial/ic805646.png "SAML SSO Settings")
 
     a. Geben Sie im Textfeld **Identity provider name** einen Namen für die Konfiguration ein.
 
@@ -178,7 +178,7 @@ Damit sich Azure AD-Benutzer bei Adaptive Insights anmelden können, müssen sie
 
 2. Wechseln Sie zu **Administration**.
 
-   ![Admin](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+   ![Administrator](./media/adaptivesuite-tutorial/IC805644.png "Administrator")
 
 3. Klicken Sie im Abschnitt **Users and Roles** (Benutzer und Rollen) auf **Users** (Benutzer).
 
@@ -186,7 +186,7 @@ Damit sich Azure AD-Benutzer bei Adaptive Insights anmelden können, müssen sie
 
 4. Führen Sie im Abschnitt **Neuer Benutzer** die folgenden Schritte aus:
 
-   ![Senden](./media/adaptivesuite-tutorial/IC805649.png "Senden")
+   ![Absenden](./media/adaptivesuite-tutorial/IC805649.png "Submit (Senden)")
 
    a. Geben Sie in die Textfelder **Name**, **Username** (Benutzername), **Email** (E-Mail) und **Password** (Kennwort) die entsprechenden Informationen eines gültigen Azure Active Directory-Benutzerkontos ein, das Sie bereitstellen möchten.
 

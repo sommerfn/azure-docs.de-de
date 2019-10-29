@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: c55de6b437755f46df8d95a8ee461c0671a52cff
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274144"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791530"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mithilfe der Azure Resource Manager-Vorlage
 
@@ -31,7 +31,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 > [!Note]
 > Dieses Tutorial kann nicht mit dem **kostenlosen Azure-Testabonnement** absolviert werden.
-> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
+> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Erstellen eines Azure Databricks-Arbeitsbereichs
 
@@ -43,7 +43,7 @@ In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage ei
 
 2. Geben Sie die erforderlichen Werte für die Erstellung des Azure Databricks-Arbeitsbereichs an:
 
-   ![Erstellen eines Azure Databricks-Arbeitsbereichs mithilfe einer Azure Resource Manager-Vorlage](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Erstellen eines Azure Databricks-Arbeitsbereichs mithilfe einer Azure Resource Manager-Vorlage")
+   ![Erstellen eines Azure Databricks-Arbeitsbereichs mit einer Azure Resource Manager-Vorlage](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-workspace-using-resource-manager-template.png "Erstellen eines Azure Databricks-Arbeitsbereichs mit einer Azure Resource Manager-Vorlage")
 
    Geben Sie außerdem die folgenden Werte an:
 
@@ -59,7 +59,7 @@ In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage ei
 
 4. Die Erstellung des Arbeitsbereichs dauert einige Minuten. Während der Erstellung des Arbeitsbereichs wird im Portal auf der rechten Seite die Kachel **Bereitstellung für "Azure Databricks" wird gesendet** angezeigt. Möglicherweise müssen Sie im Dashboard nach rechts scrollen, um die Kachel zu sehen. Am oberen Bildschirmrand wird auch eine Statusanzeige angezeigt. Sie können den Status beider Bereiche beobachten.
 
-   ![Kachel zur Bereitstellung von Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Kachel zur Bereitstellung von Databricks")
+   ![Databricks-Bereitstellungskachel](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks-Bereitstellungskachel")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Erstellen eines Spark-Clusters in Databricks
 
@@ -71,7 +71,7 @@ In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage ei
 
 3. Geben Sie auf der Seite **Neuer Cluster** die erforderlichen Werte an, um einen Cluster zu erstellen.
 
-   ![Erstellen eines Databricks-Spark-Clusters in Azure](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
+   ![Erstellen eines Databricks Spark-Clusters in Azure](./media/quickstart-create-databricks-workspace-resource-manager-template/create-databricks-spark-cluster.png "Erstellen eines Databricks Spark-Clusters in Azure")
 
    Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
@@ -95,11 +95,11 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
 1. Klicken Sie im linken Bereich auf **Arbeitsbereich**. Klicken Sie im Dropdownmenü **Arbeitsbereich** auf **Erstellen** > **Notizbuch**.
 
-   ![Erstellen eines Notizbuchs in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Erstellen eines Notizbuchs in Databricks")
+   ![Erstellen eines Notebooks in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
 2. Geben Sie im Dialogfeld **Notizbuch erstellen** einen Namen ein, wählen Sie **Scala** als Sprache aus, und wählen Sie den zuvor erstellten Spark-Cluster aus.
 
-   ![Erstellen eines Notizbuchs in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Erstellen eines Notizbuchs in Databricks")
+   ![Erstellen eines Notebooks in Databricks](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Erstellen eines Notebooks in Databricks")
 
    Klicken Sie auf **Create**.
 
@@ -153,7 +153,7 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
 6. Sie erhalten eine tabellarische Ausgabe wie im folgenden Screenshot, der allerdings nur einen Teil der Spalten zeigt:
 
-   ![JSON-Beispieldaten](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "JSON-Beispieldaten")
+   ![JSON-Beispieldaten](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sample-csv-data.png "JSON-Beispieldatei")
 
    Neben verschiedenen anderen Details enthalten die Beispieldaten das Geschlecht der Zielgruppe eines Radiokanals (Spalte **gender**) und die Information, ob die jeweilige Person ein kostenloses oder ein kostenpflichtiges Abonnement nutzt (Spalte **level**).
 
@@ -163,7 +163,7 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
 8. Platzieren Sie per Drag & Drop Werte in **Customize Plot** (Zeichnung anpassen), wie im folgenden Screenshot zu sehen.
 
-   ![Anpassen des Balkendiagramms](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "Anpassen des Balkendiagramms")
+   ![Anpassen eines Balkendiagramms](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-customize-plot.png "Anpassen eines Balkendiagramms")
 
    * Legen Sie **Schlüssel** auf **gender** fest.
    * Legen Sie **Series groupings** (Reihengruppierungen) auf **level** fest.
@@ -174,7 +174,7 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
 9. Die Ausgabe zeigt die visuelle Darstellung wie im folgenden Screenshot dargestellt:
 
-   ![Anpassen des Balkendiagramms](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "Anpassen des Balkendiagramms")
+   ![Anpassen eines Balkendiagramms](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-sql-query-output-bar-chart.png "Anpassen eines Balkendiagramms")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

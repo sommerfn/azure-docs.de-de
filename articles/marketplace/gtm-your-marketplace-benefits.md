@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962679"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752343"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -60,7 +60,10 @@ Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel f
 
 ## <a name="marketplace-rewards-for-transact-partners"></a>Marketplace-Vorteile für Transact-Partner
 
-Wenn Sie Ihr Transact-Angebot im Azure Marketplace oder in Microsoft AppSource veröffentlichen, erhalten Sie zusätzliche Vorteile, während Ihre abgerechneten Umsatztransaktionen über den kommerziellen Marketplace wachsen. 
+Wenn Sie Ihr Transact-Angebot im Azure Marketplace oder in Microsoft AppSource veröffentlichen, erhalten Sie zusätzliche Vorteile, während Ihre abgerechneten Umsatztransaktionen oder verkauften Arbeitsplätze über den kommerziellen Marketplace wachsen. 
+
+>[!Note]
+>Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2020 abgeschlossen sein.
 
 Diese Vorteile sollen Sie bei Marketing-, Vertriebs- und technischen Aktivitäten unterstützen und Ihnen dadurch dabei helfen, mehr Besucher und mehr Leads zu erhalten und mehr Geschäfte zu verwirklichen.
 
@@ -71,6 +74,8 @@ Alle Partner mit einem aktiven Angebot können gemeinsam mit einem dedizierten E
 ![Verkaufsvorteile](./media/marketplace-publishers-guide/sales-benefit.png)
 
 ![Technische Vorteile](./media/marketplace-publishers-guide/technical-benefit.png)
+
+\* Der Schwellenwert für verkaufte Arbeitsplätze gilt nur für Microsoft 365-Apps (SaaS-Anwendungen, die über Integrationen mit Microsoft Teams, Office, Outlook oder SharePoint verfügen), und die Vorteile müssen bis zum 30. Juni 2020 abgeschlossen sein.
 
 Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 

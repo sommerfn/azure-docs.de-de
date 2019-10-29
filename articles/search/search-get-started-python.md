@@ -1,22 +1,23 @@
 ---
-title: 'Schnellstart: Erstellen eines Suchindex in Python mithilfe von REST-APIs – Azure Search'
-description: Hier wird erläutert, wie Sie mit Python, Jupyter Notebooks und der Azure Search-REST-API einen Index erstellen, Daten laden und Abfragen ausführen.
-ms.date: 09/10/2019
+title: 'Schnellstart: Erstellen eines Suchindex in Python mithilfe von REST-APIs'
+titleSuffix: Azure Cognitive Search
+description: Hier wird erläutert, wie Sie mit Python, Jupyter Notebooks und der Azure Cognitive Search-REST-API einen Index erstellen, Daten laden und Abfragen ausführen.
 author: heidisteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: 273cd690c56ef01b4fd38398aaef85570dd758a2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881553"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792258"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Search-Index in Python mithilfe von Jupyter Notebooks
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Python mithilfe von Jupyter Notebooks
+
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
@@ -25,7 +26,7 @@ ms.locfileid: "70881553"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Erstellen Sie ein Jupyter Notebook, mit dem ein Azure Search-Index mithilfe von Python und den [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) erstellt, geladen und abgefragt wird. In diesem Artikel wird erläutert, wie Sie ein Notebook Schritt für Schritt erstellen. Alternativ können Sie [ein bereits fertiges Jupyter Python Notebook herunterladen und installieren](https://github.com/Azure-Samples/azure-search-python-samples).
+Erstellen Sie ein Jupyter-Notebook, mit dem ein Azure Cognitive Search-Index mithilfe von Python und den [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) erstellt, geladen und abgefragt wird. In diesem Artikel wird erläutert, wie Sie ein Notebook Schritt für Schritt erstellen. Alternativ können Sie [ein bereits fertiges Jupyter Python Notebook herunterladen und installieren](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -35,23 +36,23 @@ Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section) mit Python 3.x und Jupyter Notebooks.
 
-+ [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Sie können den Free-Tarif für diesen Schnellstart verwenden. 
++ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Sie können den Free-Tarif für diesen Schnellstart verwenden. 
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
-Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-## <a name="connect-to-azure-search"></a>Herstellen einer Verbindung mit Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Herstellen einer Verbindung mit Azure Cognitive Search
 
-Starten Sie in dieser Aufgabe ein Jupyter-Notebook, und stellen Sie sicher, dass Sie eine Verbindung mit Azure Search herstellen können. Dazu müssen Sie eine Liste der Indizes von Ihrem Dienst anfordern. Unter Windows mit Anaconda 3 können Sie ein Notebook mit Anaconda Navigator starten.
+Starten Sie in dieser Aufgabe ein Jupyter-Notebook, und stellen Sie sicher, dass Sie eine Verbindung mit Azure Cognitive Search herstellen können. Dazu müssen Sie eine Liste der Indizes von Ihrem Dienst anfordern. Unter Windows mit Anaconda 3 können Sie ein Notebook mit Anaconda Navigator starten.
 
 1. Erstellen Sie ein neues Python 3-Notebook.
 
@@ -85,7 +86,7 @@ Starten Sie in dieser Aufgabe ein Jupyter-Notebook, und stellen Sie sicher, dass
 
 1. Führen Sie die einzelnen Schritte aus. Wenn Indizes vorhanden sind, enthält die Antwort eine Liste der Indexnamen. Im folgenden Screenshot enthält der Dienst bereits einen „azureblob-index“ und einen „realestate-us-sample index“.
 
-   ![Python-Skript in Jupyter Notebook mit HTTP-Anforderungen für Azure Search](media/search-get-started-python/connect-azure-search.png "Python-Skript in Jupyter Notebook mit HTTP-Anforderungen für Azure Search")
+   ![Python-Skript in Jupyter-Notebook mit HTTP-Anforderungen an Azure Cognitive Search](media/search-get-started-python/connect-azure-search.png "Python-Skript in Jupyter-Notebook mit HTTP-Anforderungen an Azure Cognitive Search")
 
    Im Gegensatz dazu gibt eine leere Indexsammlung folgende Antwort zurück: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
@@ -251,7 +252,7 @@ Senden Sie eine HTTP POST-Anforderung an den URL-Endpunkt Ihres Index, um Dokume
 
 In diesem Schritt wird beschrieben, wie Sie einen Index mit der [REST-API zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) abfragen.
 
-1. Geben Sie in einer Zelle einen Abfrageausdruck an, der eine leere Suche (search=*) ausführt und eine unsortierte Liste (search score = 1.0) beliebiger Dokumente zurückgibt. Standardmäßig gibt Azure Search 50 Übereinstimmungen auf einmal zurück. In einer strukturierten Ausgabe werden von der Abfrage eine vollständige Dokumentstruktur sowie Werte zurückgegeben. Fügen Sie „$count=true“ hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
+1. Geben Sie in einer Zelle einen Abfrageausdruck an, der eine leere Suche (search=*) ausführt und eine unsortierte Liste (search score = 1.0) beliebiger Dokumente zurückgibt. Standardmäßig gibt Azure Cognitive Search 50 Übereinstimmungen auf einmal zurück. In einer strukturierten Ausgabe werden von der Abfrage eine vollständige Dokumentstruktur sowie Werte zurückgegeben. Fügen Sie „$count=true“ hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
 
    ```python
    searchstring = '&search=*&$count=true'

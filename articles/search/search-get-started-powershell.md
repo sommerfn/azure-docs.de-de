@@ -1,22 +1,22 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Search-Index in PowerShell mithilfe von REST-APIs – Azure Search'
-description: Hier wird erläutert, wie Sie einen Index erstellen, Daten laden und Abfragen mit „Invoke-RestMethod“ von PowerShell und der Azure Search REST-API ausführen.
-ms.date: 09/10/2019
-author: heidisteen
+title: 'Schnellstart: Erstellen eines Suchindex in PowerShell mithilfe von REST-APIs'
+titleSuffix: Azure Cognitive Search
+description: Hier wird erläutert, wie Sie einen Index erstellen, Daten laden und Abfragen mit „Invoke-RestMethod“ von PowerShell und der Azure Cognitive Search-REST-API ausführen.
 manager: nitinme
+author: heidisteen
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.openlocfilehash: ab82406fa151f5889a563d8154e02da921f1c4e6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.devlang: rest-api
+ms.date: 11/04/2019
+ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881716"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792248"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-powershell-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Index in PowerShell mithilfe von REST-APIs
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in PowerShell mithilfe von REST-APIs
 > [!div class="op_single_selector"]
 > * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,7 +25,7 @@ ms.locfileid: "70881716"
 > * [Portal](search-create-index-portal.md)
 > 
 
-Dieser Artikel führt Sie durch das Erstellen, Laden und Abfragen eines Azure Search-Index mit PowerShell und den [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/). In diesem Artikel wird erläutert, wie Sie PowerShell-Befehle interaktiv ausführen können. Alternativ können [Sie ein PowerShell-Skript herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart), das die gleichen Vorgänge ausführt.
+Dieser Artikel führt Sie durch das Erstellen, Laden und Abfragen eines Azure Cognitive Search-Index mit PowerShell und den [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/). In diesem Artikel wird erläutert, wie Sie PowerShell-Befehle interaktiv ausführen können. Alternativ können [Sie ein PowerShell-Skript herunterladen und ausführen](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart), das die gleichen Vorgänge ausführt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -35,21 +35,21 @@ Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
 
 + [PowerShell 5.1 oder höher](https://github.com/PowerShell/PowerShell) mit [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) für sequenzielle und interaktive Schritte.
 
-+ [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
++ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
-Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
 2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-## <a name="connect-to-azure-search"></a>Herstellen einer Verbindung mit Azure Search
+## <a name="connect-to-azure-cognitive-search"></a>Herstellen einer Verbindung mit Azure Cognitive Search
 
 1. Erstellen Sie in PowerShell ein **$headers**-Objekt zum Speichern des Inhaltstyps und des API-Schlüssels. Setzen Sie für den Admin-API-Schlüssel (YOUR-ADMIN-API-KEY) einen Schlüssel ein, der für Ihren Suchdienst gültig ist. Sie müssen diesen Header für die Dauer der Sitzung nur einmal festlegen, aber Sie fügen ihn jeder Anforderung hinzu. 
 
@@ -323,7 +323,7 @@ Verwenden Sie bei der Suche mit „$urls“ unbedingt einfache Anführungszeiche
 
 1. Legen Sie den Endpunkt auf die Dokumentensammlung *hotels-quickstart* fest, und fügen Sie einen Parameter vom Typ **search** für die Übergabe in einer Abfragezeichenfolge hinzu. 
   
-   Diese Zeichenkette führt eine leere Suche (search=*) aus und gibt eine unsortierte Liste (search score = 1.0) beliebiger Dokumente zurück. Standardmäßig gibt Azure Search 50 Übereinstimmungen auf einmal zurück. In einer strukturierten Ausgabe werden von der Abfrage eine vollständige Dokumentstruktur sowie Werte zurückgegeben. Fügen Sie **$count=true** hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
+   Diese Zeichenkette führt eine leere Suche (search=*) aus und gibt eine unsortierte Liste (search score = 1.0) beliebiger Dokumente zurück. Standardmäßig gibt Azure Cognitive Search 50 Übereinstimmungen auf einmal zurück. In einer strukturierten Ausgabe werden von der Abfrage eine vollständige Dokumentstruktur sowie Werte zurückgegeben. Fügen Sie **$count=true** hinzu, um eine Anzahl aller Dokumente in den Ergebnissen zu erhalten.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
@@ -401,7 +401,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mit PowerShell den grundlegenden Workflow für die Erstellung und den Zugriff auf Inhalte in Azure Search durchlaufen. Fahren Sie mit komplexeren Szenarien (etwa der Indizierung aus Azure-Datenquellen) fort, und behalten Sie dabei diese Konzepte im Hinterkopf.
+In dieser Schnellstartanleitung haben Sie mit PowerShell den grundlegenden Workflow für die Erstellung von Inhalten und den Zugriff auf Inhalte in Azure Cognitive Search durchlaufen. Fahren Sie mit komplexeren Szenarien (etwa der Indizierung aus Azure-Datenquellen) fort, und behalten Sie dabei diese Konzepte im Hinterkopf.
 
 > [!div class="nextstepaction"]
-> [REST-Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Search](search-semi-structured-data.md)
+> [REST-Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Cognitive Search](search-semi-structured-data.md)

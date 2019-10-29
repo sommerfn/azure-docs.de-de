@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer verwalteten Azure-Anwendung mit benutzerdefinierten Aktionen und Ressourcen
+title: Verwaltete Azure-Anwendung mit benutzerdefinierten Aktionen und Ressourcen
 description: In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Azure-Anwendung mit einem benutzerdefinierten Azure-Anbieter erstellen.
 services: managed-applications
 ms.service: managed-applications
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.openlocfilehash: 3dd0887114156956b55f554d0265e3ca2b9b10ab
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f70bb768dae3de80f85ffc49558b9ef51d2fce49
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336105"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529218"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Tutorial: Erstellen einer verwalteten Anwendung mit benutzerdefinierten Aktionen und Ressourcen
 
@@ -126,7 +126,7 @@ In diesem Tutorial werden der Ressourcentyp `users`, die benutzerdefinierte Akti
 
 Die vollständige Beispieldatei *mainTemplate.json* finden Sie unter [Reference: Deployment template artifact](reference-main-template-artifact.md) (Referenz: Artefakt für die Bereitstellungsvorlage).
 
-## <a name="view-definition-artifact"></a>Artefakt für die Ansichtsdefinition
+## <a name="view-definition-artifact"></a>Anzeigen des Definitionsartefakts
 
 Um eine Benutzeroberfläche mit benutzerdefinierten Aktionen und benutzerdefinierten Ressourcen in der verwalteten Anwendung zu definieren, muss das Artefakt **viewDefinition.json** erstellt werden. Weitere Informationen zum Artefakt für die Ansichtsdefinition finden Sie unter [Ansichtsdefinitionsartefakt in Azure Managed Applications](concepts-view-definition.md).
 

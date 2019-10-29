@@ -1,22 +1,22 @@
 ---
-title: 'Schnellstart: Erstellen eines Suchindex in Java mithilfe von REST-APIs – Azure Search'
-description: Hier erfahren Sie, wie Sie mit Java und den Azure Search-REST-APIs einen Index erstellen, Daten laden und Abfragen ausführen.
+title: 'Schnellstart: Erstellen eines Suchindex in Java mithilfe von REST-APIs'
+titleSuffix: Azure Cognitive Search
+description: Hier erfahren Sie, wie Sie mit Java und den Azure Cognitive Search-REST-APIs einen Index erstellen, Daten laden und Abfragen ausführen.
 manager: nitinme
 author: lisaleib
 ms.author: v-lilei
-ms.service: search
-ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
+ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/10/2019
-ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166242"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792815"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Search-Indexes in Java mit REST-APIs
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Java mit REST-APIs
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -26,7 +26,7 @@ ms.locfileid: "72166242"
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
-Erstellen Sie eine Java-Konsolenanwendung, mit der ein Azure-Suchindex per [IntelliJ](https://www.jetbrains.com/idea/), [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) und [REST-API für Azure Search-Dienst](/rest/api/searchservice/) erstellt, geladen und abgefragt wird. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
+Erstellen Sie eine Java-Konsolenanwendung, mit der unter Verwendung von [IntelliJ](https://www.jetbrains.com/idea/), des [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable) und der [REST-API für Azure Cognitive Search](/rest/api/searchservice/) ein Azure Cognitive Search-Index erstellt, geladen und abgefragt wird. Dieser Artikel enthält eine Schritt-für-Schritt-Anleitung zum Erstellen der Anwendung. Alternativ können Sie [die vollständige Anwendung herunterladen und ausführen](/samples/azure-samples/azure-search-java-samples/java-sample-quickstart/).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -38,13 +38,13 @@ Zum Erstellen und Testen dieses Beispiels wurden die folgenden Softwareprodukte 
 
 + [Java 11 SDK](/java/azure/jdk/?view=azure-java-stable)
 
-+ [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
++ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
 <a name="get-service-info"></a>
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
-Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunkt und einen Zugriffsschlüssel. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunkt und einen Zugriffsschlüssel. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
@@ -143,7 +143,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 
 1. Klicken Sie auf **OK** , um das Fenster zu schließen.
 
-### <a name="add-azure-search-service-information"></a>Hinzufügen von Azure Search-Dienstinformationen
+### <a name="add-azure-cognitive-search-service-information"></a>Hinzufügen von Azure Cognitive Search-Dienstinformationen
 
 1. Erweitern Sie im Fenster **Projekt** die Quellstruktur, um auf den Ordner `src` >  `main` >`resources` > `app` zuzugreifen und eine `config.properties`-Datei hinzuzufügen. Wählen Sie hierzu den Ordner `app` aus, drücken Sie ALT+EINFG, wählen Sie **Datei** aus, und geben Sie dann den Dateinamen ein.
 
@@ -259,7 +259,7 @@ Beginnen Sie, indem Sie IntelliJ IDEA öffnen und ein neues Projekt einrichten.
 ### <a name="add-the-http-operations"></a>Hinzufügen der HTTP-Vorgänge
 
 1. Fügen Sie im Ordner `src` >  `main` > `java` > `service` eine `SearchServiceClient`-Klasse hinzu. Wählen Sie hierfür den Ordner `service` aus, drücken Sie ALT+EINFG, wählen Sie **Java-Klasse** aus, und geben Sie dann den Klassennamen ein.
-1. Öffnen Sie die `SearchServiceClient`-Klasse, und ersetzen Sie den Inhalt durch den folgenden Code. Mit diesem Code werden die HTTP-Vorgänge bereitgestellt, die für die Verwendung der Azure Search-REST-API erforderlich sind. Weitere Methoden zum Erstellen eines Index, Hochladen von Dokumenten und Abfragen des Index werden in einem späteren Abschnitt hinzugefügt.
+1. Öffnen Sie die `SearchServiceClient`-Klasse, und ersetzen Sie den Inhalt durch den folgenden Code. Mit diesem Code werden die HTTP-Vorgänge bereitgestellt, die für die Verwendung der Azure Cognitive Search-REST-API erforderlich sind. Weitere Methoden zum Erstellen eines Index, Hochladen von Dokumenten und Abfragen des Index werden in einem späteren Abschnitt hinzugefügt.
 
     ```java
     package main.java.service;
@@ -512,9 +512,9 @@ Die Indexdefinition „hotels“ enthält einfache Felder und ein komplexes Feld
 
     Der Indexname lautet „hotels-quickstart“. Mit Attributen in den Indexfeldern wird bestimmt, wie in einer Anwendung nach den indizierten Daten gesucht werden kann. So muss beispielsweise jedem Feld, das in eine Volltextsuche einbezogen werden soll, das Attribut `IsSearchable` zugewiesen werden. Weitere Informationen zu Attributen finden Sie unter [Feldersammlung und Feldattribute](search-what-is-an-index.md#fields-collection).
     
-    Im Feld `Description` dieses Index wird die optionale `analyzer`-Eigenschaft verwendet, um das Lucene-Standard-Sprachanalysetool außer Kraft zu setzen. Für das Feld `Description_fr` wird das französische Lucene-Analysetool (`fr.lucene`) verwendet, da in diesem Feld französischer Text gespeichert wird. Für `Description` wird die optionale Sprachanalyse von Microsoft (en.lucene) verwendet. Weitere Informationen zu Analysetools finden Sie unter [Analysetools für Textverarbeitung in Azure Search](search-analyzers.md).
+    Im Feld `Description` dieses Index wird die optionale `analyzer`-Eigenschaft verwendet, um das Lucene-Standard-Sprachanalysetool außer Kraft zu setzen. Für das Feld `Description_fr` wird das französische Lucene-Analysetool (`fr.lucene`) verwendet, da in diesem Feld französischer Text gespeichert wird. Für `Description` wird die optionale Sprachanalyse von Microsoft (en.lucene) verwendet. Weitere Informationen zu Analysetools finden Sie unter [Analysetools für Textverarbeitung in Azure Cognitive Search](search-analyzers.md).
 
-1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesen Methoden werden Azure Search-REST-Dienst-URLs erstellt, mit denen ein Index erstellt und gelöscht wird. Außerdem wird hiermit ermittelt, ob ein Index vorhanden ist. Mit den Methoden wird auch die HTTP-Anforderung durchgeführt.
+1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesen Methoden werden Azure Cognitive Search-REST-Dienst-URLs erstellt, mit denen ein Index erstellt und gelöscht wird. Außerdem wird hiermit ermittelt, ob ein Index vorhanden ist. Mit den Methoden wird auch die HTTP-Anforderung durchgeführt.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -694,9 +694,9 @@ Die Indexdefinition „hotels“ enthält einfache Felder und ein komplexes Feld
 
 Nachdem Sie die Hoteldokumente geladen haben, können Sie Suchabfragen erstellen, um auf die Hoteldaten zuzugreifen.
 
-1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesem Code werden Azure Search-REST-Dienst-URLs erstellt, um nach den indizierten Daten zu suchen und die Suchergebnisse auszugeben.
+1. Fügen Sie der `SearchServiceClient` -Klasse den folgenden Code hinzu. Mit diesem Code werden Azure Cognitive Search-REST-Dienst-URLs erstellt, um nach den indizierten Daten zu suchen und die Suchergebnisse auszugeben.
 
-    Bei der `SearchOptions`-Klasse und der `createSearchOptions`-Methode können Sie eine Teilmenge der verfügbaren Azure Search-REST-API-Abfrageoptionen angeben. Weitere Informationen zu den REST-API-Abfrageoptionen finden Sie unter [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API des Azure Search-Diensts)).
+    Bei der `SearchOptions`-Klasse und der `createSearchOptions`-Methode können Sie eine Teilmenge der verfügbaren Azure Cognitive Search-REST-API-Abfrageoptionen angeben. Weitere Informationen zu den REST-API-Abfrageoptionen finden Sie unter [Durchsuchen von Dokumenten (Azure Cognitive Search-REST-API)](/rest/api/searchservice/search-documents).
 
     Mit der `SearchPlus`-Methode wird die Suchabfragen-URL erstellt und die Suchanforderung durchgeführt. Anschließend werden die Ergebnisse in der Konsole ausgegeben. 
 

@@ -1,44 +1,44 @@
 ---
-title: Dokumentationsressourcen zur kognitiven Suche – Azure Search
-description: Eine kommentierte Liste von Artikeln, Tutorials, Beispielen und Blogbeiträgen zu Workloads der kognitiven Suche in Azure Search.
-services: search
+title: Dokumentationslinks zur KI-Anreicherung
+titleSuffix: Azure Cognitive Search
+description: Eine kommentierte Liste von Artikeln, Tutorials, Beispielen und Blogbeiträgen zu Workloads der KI-Anreicherung in Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 7267f40a981b984ab945d956ff3552157267cd43
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: quickstart
+ms.date: 11/04/2019
+ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265465"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792067"
 ---
-# <a name="documentation-resources-for-cognitive-search-workloads"></a>Dokumentationsressourcen für Workloads der kognitiven Suche
+# <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentationressourcen für die KI-Anreicherung in Azure Cognitive Search
 
-Die kognitive Suche – jetzt allgemein verfügbar – ist eine neue Anreicherungsebene bei der Azure Search-Indizierung, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und sie in durchsuchbare Volltextinhalte in Azure Search umwandelt.
+Die KI-Anreicherung ist eine Funktion im Azure Cognitive Search-Index, die latente Informationen in Nicht-Textquellen und undifferenziertem Text findet und sie in durchsuchbare Volltextinhalte in Azure Cognitive Search umwandelt.
 
-Die folgenden Artikel sind die vollständige Dokumentation zur kognitiven Suche.
+Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
 
 ## <a name="getting-started"></a>Erste Schritte
-+ [Was ist die kognitive Suche?](cognitive-search-concept-intro.md)
-+ [Schnellstart: Testen der kognitiven Suche im Portal](cognitive-search-quickstart-blob.md)
-+ [Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche](cognitive-search-tutorial-blob.md)
-+ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md)
++ [Einführung in die KI-Anreicherung in Azure Cognitive Search](cognitive-search-concept-intro.md)
++ [Schnellstart: Testen der KI-Anreicherung im Portal](cognitive-search-quickstart-blob.md)
++ [Tutorial: Angereicherte Indizierung mit KI](cognitive-search-tutorial-blob.md)
++ [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Leitfäden zur Vorgehensweise
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Verweisen auf Anmerkungen in einem Skillset](cognitive-search-concept-annotations-syntax.md)
 + [Zuordnen von Feldern zu einem Index](cognitive-search-output-field-mapping.md)
 + [Verarbeiten und Extrahieren von Informationen aus Bildern](cognitive-search-concept-image-scenarios.md)
-+ [Neuerstellen eines Azure Search-Indexes](search-howto-reindex.md)
++ [Neuerstellen eines Azure Cognitive Search-Indexes](search-howto-reindex.md)
 + [Definieren einer benutzerdefinierten Skillsschnittstelle](cognitive-search-custom-skill-interface.md)
 + [Tipps zur Problembehandlung](cognitive-search-concept-troubleshooting.md)
 
 ## <a name="reference"></a>Verweis
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
@@ -63,6 +63,6 @@ Die folgenden Artikel sind die vollständige Dokumentation zur kognitiven Suche.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/)
-+ [Indexer in Azure Search](search-indexer-overview.md)
-+ [Was ist Azure Search?](search-what-is-azure-search.md)
++ [Azure Cognitive Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/)
++ [Indexer in Azure Cognitive Search](search-indexer-overview.md)
++ [Was ist Azure Cognitive Search?](search-what-is-azure-search.md)

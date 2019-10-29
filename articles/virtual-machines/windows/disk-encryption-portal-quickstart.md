@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 240c0e157d7fcd8b76ee7f42f4c780361df6281d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245770"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553439"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Schnellstart: Erstellen und Verschlüsseln eines virtuellen Windows-Computers mit dem Azure-Portal
 
@@ -77,7 +77,7 @@ Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. Fahren Sie 
 
 1. Wählen Sie auf dem Bildschirm „Verschlüsselung“ unter **Disks to encrypt** (Zu verschlüsselnde Datenträger) die Option **Datenträger für Betriebssystem und Daten** aus.
 1. Klicken Sie unter **Verschlüsselungseinstellungen** auf „Wählen Sie einen Schlüsseltresor und einen Schlüssel für die Verschlüsselung aus.“.
-1. Wählen Sie auf der rechten Seitenleiste den Namen des zuvor erstellten Schlüsseltresors als Wert für *Schlüsseltresor** aus, und klicken Sie auf **Auswählen**.
+1. Wählen Sie auf der rechten Seitenleiste den Namen des zuvor erstellten Schlüsseltresors als Wert für **Schlüsseltresor** aus, und klicken Sie auf **Auswählen**.
 
     ![Auswählen von „Datenträger“ und „Verschlüsselung“](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. Klicken Sie oben auf dem Verschlüsselungsbildschirm auf „Speichern“. In einem Popup werden Sie gewarnt, dass der virtuelle Computer neu gestartet wird. Klicken Sie auf **Ja**.

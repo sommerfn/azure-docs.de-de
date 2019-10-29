@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 06/21/2019
-ms.openlocfilehash: db049064c35fbe6b940d39f97decc0281983cc0f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ed3946c40d8e3eff665e4454b81f408c2033c09a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515066"
+ms.locfileid: "72529629"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Schnellstart: Steuern eines mit einer Azure IoT Hub-Instanz verbundenen Geräts mithilfe von Node.js
 
@@ -128,7 +128,7 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
 
     Der folgende Screenshot zeigt die Ausgabe, während die Anwendung zur Simulation eines Geräts Telemetriedaten an Ihre IoT Hub-Instanz sendet:
 
-    ![Ausführen des simulierten Geräts](./media/quickstart-control-device-node/SimulatedDevice-1.png)
+    ![Ausführen des simulierten Geräts](./media/quickstart-control-device-node/simulated-device-telemetry-iot-hub.png)
 
 ## <a name="call-the-direct-method"></a>Aufrufen der direkten Methode
 
@@ -149,11 +149,11 @@ Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt 
 
     Der folgende Screenshot zeigt die Ausgabe, nachdem die Anwendung einen Aufruf einer direkten Methode an das Gerät gerichtet und eine Bestätigung empfangen hat:
 
-    ![Ausführen der Back-End-Anwendung](./media/quickstart-control-device-node/BackEndApplication.png)
+    ![Ausgabe, wenn die Anwendung direkte Methodenaufrufe an das Gerät sendet](./media/quickstart-control-device-node/direct-method-device-call.png)
 
     Nachdem Sie die Back-End-Anwendung ausgeführt haben, sehen Sie eine Nachricht im Konsolenfenster, in dem das simulierte Gerät ausgeführt wird, und die Häufigkeit, mit der das Gerät Nachrichten sendet, ändert sich:
 
-    ![Änderung im simulierten Client](./media/quickstart-control-device-node/SimulatedDevice-2.png)
+    ![Ausgabe bei Änderung des simulierten Clients](./media/quickstart-control-device-node/simulated-device-message-change.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

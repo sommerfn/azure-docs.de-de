@@ -1,20 +1,20 @@
 ---
-title: 'Senden von benutzerdefinierten Ereignissen an die Hybridverbindung: Event Grid, Azure CLI'
+title: 'Senden von benutzerdefinierten Ereignissen an die Hybridverbindung: Event Grid'
 description: Verwenden Sie Azure Event Grid und die Azure CLI, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Für den Endpunkt wird eine Hybridverbindung verwendet.
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 02/02/2019
+ms.date: 10/22/2019
 ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 270059537fc8d06648c86088b22aef5b78ff00ec
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 7e1493903cdb51191c942762895644ee12c49f10
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65606299"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790259"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Tutorial: Weiterleiten benutzerdefinierter Ereignisse an Azure Relay Hybrid Connections mit Azure-Befehlszeilenschnittstelle und Event Grid
 

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: 72f50754a28f0bbf5648ae64299d28ff13e2ec31
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 959f36107ab9f79d4e66cc23b0744f1dbb8b2690
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703049"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677964"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Schnellstart: Sammeln von Daten von einem Linux-Computer in einer Hybridumgebung mit Azure Monitor
 
@@ -37,7 +37,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 1. Wählen Sie im Azure-Portal **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus.
 
-    ![Azure-Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![Suchen eines Log Analytics-Arbeitsbereichs im Azure-Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Wählen Sie die Option **Erstellen** und anschließend Optionen für die folgenden Elemente aus:
 
@@ -47,7 +47,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
    * Wählen Sie den **Speicherort** für die Bereitstellung Ihrer virtuellen Computer aus.  Weitere Informationen finden Sie auf der Seite zur [Verfügbarkeit von Log Analytics in den einzelnen Regionen](https://azure.microsoft.com/regions/services/).
    * Wenn Sie einen Arbeitsbereich in einem neuen Abonnement erstellen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *Pro GB* verwendet. In diesem Fall ist keine Tarifauswahloption verfügbar.  Wenn Sie einen Arbeitsbereich für ein Abonnement erstellen, das vor dem 2. April erstellt oder mit einer vorhandenen EA-Registrierung verknüpft wurde, wählen Sie Ihren bevorzugten Tarif aus.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
   
-        ![Erstellen des Log Analytics-Ressourcenblatts](media/quick-collect-azurevm/create-loganalytics-workspace-02.png) 
+        ![Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](media/quick-collect-azurevm/create-log-analytics-workspace-azure-portal.png) 
 
 3. Wählen Sie nach dem Bereitstellen der erforderlichen Informationen im Bereich **Log Analytics-Arbeitsbereich** die Option **OK** aus.  
 
@@ -65,7 +65,7 @@ Vor der Installation des Log Analytics-Agents für Linux benötigen Sie die Arbe
 
 3. Wählen Sie **Erweiterte Einstellungen** aus:
 
-    ![Erweiterte Einstellungen für Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-01.png) 
+    ![Menü „Erweiterte Einstellungen“ für Log Analytics im Azure-Portal](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png) 
  
 4. Wählen Sie **Verbundene Quellen** und dann **Linux Server** aus.
 
@@ -129,7 +129,7 @@ Azure Monitor kann Ereignisse aus Linux-Syslog und den von Ihnen angegebenen Lei
 
 7. Wenn Sie die Linux-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen. Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.
 
-    ![Standardmäßige Windows-Leistungsindikatoren ausgewählt](media/quick-collect-azurevm/linux-perfcounters-default.png)
+    ![In Azure Monitor ausgewählte Standard-Linux-Leistungsindikatoren](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
     Wählen Sie **Nachstehende Konfiguration auf meine Computer anwenden**  und dann **Ausgewählte Leistungsindikatoren hinzufügen** aus. Sie werden hinzugefügt und mit einem Stichprobenintervall von zehn Sekunden voreingestellt.  
 

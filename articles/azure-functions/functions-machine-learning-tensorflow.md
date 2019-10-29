@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: abc7302ee59103a9cbab156b95a41b77eb95d474
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729157"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677878"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Anwenden von Machine Learning-Modellen in Azure Functions mit Python und TensorFlow
 
@@ -140,7 +140,7 @@ Sie verwenden ein vordefiniertes TensorFlow-Modell, das mit dem Dienst Azure Cus
 > [!NOTE]
 > Falls Sie über den Free-Tarif von Custom Vision ein eigenes Modell erstellen möchten, können Sie die [Anleitung im Repository des Beispielprojekts](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md) befolgen.
 
-Das Modell besteht aus zwei Dateien im Ordner *<REPOSITORYSTAMM>/resources/model*: *model.db* und *labels.txt*. Kopieren Sie diese in den Ordner der Funktion *classify*.
+Das Modell besteht aus zwei Dateien im Ordner *<REPOSITORYSTAMM>/resources/model*: *model.pb* und *labels.txt*. Kopieren Sie diese in den Ordner der Funktion *classify*.
 
 #### <a name="linux-and-macos"></a>Linux und macOS:
 
@@ -179,12 +179,12 @@ Vergewissern Sie sich, dass *classify* jetzt eine Datei mit dem Namen *predict.p
 Die Hilfsbibliothek muss über einige Abhängigkeiten verfügen, die installiert werden müssen. Öffnen Sie *start/requirements.txt* in Ihrem Editor, und fügen Sie der Datei die folgenden Abhängigkeiten hinzu.
 
 ```txt
-tensorflow
+tensorflow==1.15
 Pillow
 requests
 ```
 
-Speichern Sie die Datei.
+Speichern Sie die Datei .
 
 Führen Sie im Terminal mit aktivierter virtueller Umgebung den folgenden Befehl im Ordner *start* aus, um die Abhängigkeiten zu installieren. Es kann einige Minuten dauern, bis bestimmte Installationsschritte abgeschlossen sind.
 

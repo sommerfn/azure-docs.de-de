@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Bereitstellen einer Azure Resource Manager-Vorlage über IntelliJ IDEA | Microsoft-Dokumentation
+title: 'Bereitstellen der Azure Resource Manager-Vorlage: IntelliJ IDEA'
 description: Hier erfahren Sie, wie Sie über IntelliJ IDEA Ihre erste Azure Resource Manager-Vorlage erstellen und bereitstellen.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169447"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533658"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über IntelliJ IDEA
 

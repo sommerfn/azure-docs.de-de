@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383534"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595514"
 ---
 # <a name="dynamic-packaging"></a>Dynamische Paketerstellung
 
@@ -98,7 +98,7 @@ Informationen zum Livestreaming in Media Services v3 finden Sie unter [Übersich
 Die dynamische Paketerstellung unterstützt MP4-Dateien mit Video, das mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert wurde.
 
 > [!NOTE]
-> Auflösungen von bis zu 4K und Frameraten von bis zu 60 Frames/Sekunde wurden mit der dynamischen Paketerstellung getestet. Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs. Sollten Sie Fragen zu diesem Thema haben, wenden Sie sich an amshelp@microsoft.com. 
+> Auflösungen von bis zu 4K und Frameraten von bis zu 60 Frames/Sekunde wurden mit der dynamischen Paketerstellung getestet. Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs.
 
 ## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Von der dynamischen Paketerstellung unterstützte Audiocodecs
 
@@ -124,7 +124,7 @@ Die dynamische Paketerstellung unterstützt mehrere Audiospuren mit DASH oder HL
 Dateien mit [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital)-Audio (AC3) werden von der dynamischen Paketerstellung nicht unterstützt, da es sich dabei um einen Legacy-Codec handelt.
 
 > [!NOTE]
-> Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die Dolby Digital Plus-Codierung über die v2-Legacy-APIs. Sollten Sie Fragen zu diesem Thema haben, wenden Sie sich an amshelp@microsoft.com. 
+> Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die Dolby Digital Plus-Codierung über die v2-Legacy-APIs. 
 
 ## <a name="manifests"></a>Manifeste 
  
@@ -272,6 +272,10 @@ Mit der *dynamischen Verschlüsselung* können Sie Ihre Live- oder On-Demand-Inh
 ## <a name="more-information"></a>Weitere Informationen
 
 Unter [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services abzurufen.
+
+## <a name="need-help"></a>Sie brauchen Hilfe?
+
+Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

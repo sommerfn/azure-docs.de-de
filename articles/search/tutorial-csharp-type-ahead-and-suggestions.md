@@ -1,22 +1,23 @@
 ---
-title: 'C#-Tutorial zu AutoVervollständigen und Vorschlägen: Azure Search'
-description: Dieses Tutorial baut auf dem Projekt „Suchergebnispaginierung – Azure Search“ auf, und es werden eine AutoVervollständigen-Funktion und Vorschläge hinzugefügt. Das Ziel ist eine höhere Benutzerfreundlichkeit. Es wird beschrieben, wie Sie eine Dropdownliste mit Vorschlägen mit der Inline-Funktion für AutoVervollständigen kombinieren.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#-Tutorial zu AutoVervollständigen und Vorschlägen
+titleSuffix: Azure Cognitive Search
+description: Dieses Tutorial baut auf dem Projekt „Suchergebnispaginierung – Azure Cognitive Search“ auf, und es werden eine AutoVervollständigen-Funktion und Vorschläge hinzugefügt. Das Ziel ist eine höhere Benutzerfreundlichkeit. Es wird beschrieben, wie Sie eine Dropdownliste mit Vorschlägen mit der Inline-Funktion für AutoVervollständigen kombinieren.
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: 01c0819fd0bf525739675ad756031cafc1a51673
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434674"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786507"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-search"></a>C#-Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen – Azure Search
+# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C#-Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen – Azure Cognitive Search
 
-Es wird beschrieben, wie Sie die AutoVervollständigen-Funktion (Textvervollständigung und Vorschläge) implementieren, die genutzt wird, wenn ein Benutzer mit der Eingabe in Ihrem Suchfeld beginnt. In diesem Tutorial veranschaulichen wir die Ergebnisse der Textvervollständigung und Vorschläge separat. Anschließend zeigen wir ein Verfahren, wie dies kombiniert werden kann, um eine höhere Benutzerfreundlichkeit zu erzielen. Ein Benutzer muss ggf. nur zwei oder drei Eingaben vornehmen, um alle verfügbaren Ergebnisse zu ermitteln. Dieses Tutorial baut auf dem Projekt auf, das unter [C#-Tutorial: Suchergebnispaginierung – Azure Search](tutorial-csharp-paging.md) erstellt wurde.
+Es wird beschrieben, wie Sie die AutoVervollständigen-Funktion (Textvervollständigung und Vorschläge) implementieren, die genutzt wird, wenn ein Benutzer mit der Eingabe in Ihrem Suchfeld beginnt. In diesem Tutorial veranschaulichen wir die Ergebnisse der Textvervollständigung und Vorschläge separat. Anschließend zeigen wir ein Verfahren, wie dies kombiniert werden kann, um eine höhere Benutzerfreundlichkeit zu erzielen. Ein Benutzer muss ggf. nur zwei oder drei Eingaben vornehmen, um alle verfügbaren Ergebnisse zu ermitteln. Dieses Tutorial baut auf dem Projekt auf, das unter [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) zum unendlichen Scrollen erstellt wurde.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -29,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-Das Projekt [C#-Tutorial: Suchergebnispaginierung – Azure Search](tutorial-csharp-paging.md) muss einsatzbereit sein. Dieses Projekt kann entweder Ihre eigene Version sein, die Sie im vorherigen Tutorial erstellt haben, oder Sie können es über GitHub installieren: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Das Projekt [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) muss einsatzbereit sein. Dieses Projekt kann entweder Ihre eigene Version sein, die Sie im vorherigen Tutorial erstellt haben, oder Sie können es über GitHub installieren: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="add-suggestions"></a>Hinzufügen von Vorschlägen
 
@@ -146,7 +147,7 @@ Die AutoVervollständigen-Funktion, die im obigen Skript aufgerufen wird, müsse
  
     ![Eingeben von „pa“ mit Festlegung von „fuzzy“ auf „true“](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    Falls Sie Interesse haben, können Sie sich unter [Lucene-Abfragesyntax in Azure Search](https://docs.microsoft.com/azure/search/query-lucene-syntax) ausführlicher über die Logik informieren, die für Fuzzysuchen verwendet wird.
+    Wenn Sie Interesse daran haben, können Sie sich unter [Lucene-Abfragesyntax in Azure Cognitive Search](https://docs.microsoft.com/azure/search/query-lucene-syntax) ausführlicher über die Logik informieren, die für Fuzzysuchen verwendet wird.
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Hinzufügen der Hervorhebung für die Vorschläge
 
@@ -255,7 +256,7 @@ Eine andere Variante, die sich leicht von Vorschlägen unterscheidet, ist AutoVe
 
 ## <a name="combine-autocompletion-and-suggestions"></a>Kombinieren von AutoVervollständigen und Vorschlägen
 
-Die Kombination von AutoVervollständigen und Vorschlägen ist die komplexeste verfügbare Option und führt wahrscheinlich zur höchsten Benutzerfreundlichkeit. Unser Ziel ist, zusammen mit dem eingegebenen Text die erste Wahl von Azure Search zur automatischen Vervollständigung des Texts anzuzeigen. Darüber hinaus möchten wir auch Vorschläge in Form einer Dropdownliste anzeigen.
+Die Kombination von AutoVervollständigen und Vorschlägen ist die komplexeste verfügbare Option und führt wahrscheinlich zur höchsten Benutzerfreundlichkeit. Unser Ziel ist es, zusammen mit dem eingegebenen Text die erste Wahl von Azure Cognitive Search zur automatischen Vervollständigung des Texts anzuzeigen. Darüber hinaus möchten wir auch Vorschläge in Form einer Dropdownliste anzeigen.
 
 Es gibt Bibliotheken, die diese Funktionalität enthalten. Dies wird häufig als „automatische Inline-Vervollständigung“ oder auf ähnliche Weise bezeichnet. Wir implementieren dieses Feature aber auf native Weise, damit Sie sehen können, was passiert. Wir beginnen in diesem Beispiel zuerst mit der Arbeit am Controller.
 
@@ -464,6 +465,6 @@ Beachten Sie die folgenden Erkenntnisse aus diesem Projekt:
 Im nächsten Tutorial sehen wir uns ein anderes Verfahren an, mit dem wir die Benutzerfreundlichkeit erhöhen können. Wir verwenden Facetten, um Suchen mit nur einem Klick einzugrenzen.
 
 > [!div class="nextstepaction"]
-> [C#-Tutorial: Verwenden von Facetten zur Vereinfachung der Navigation – Azure Search](tutorial-csharp-facets.md)
+> [C#-Tutorial: Verwenden von Facetten zur Vereinfachung der Navigation – Azure Cognitive Search](tutorial-csharp-facets.md)
 
 

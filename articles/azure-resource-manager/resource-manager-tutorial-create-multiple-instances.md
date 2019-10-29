@@ -1,5 +1,5 @@
 ---
-title: Erstellen mehrerer Ressourceninstanzen mit Azure Resource Manager | Microsoft-Dokumentation
+title: 'Erstellen mehrerer Ressourceninstanzen: Azure Resource Manager'
 description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, um mehrere Azure-Ressourceninstanzen bereitzustellen.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: cf2559b280a1c43269c0cf45d77ee98dcd5ee5a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1233ff4695a1f715801d78d70ea80ab84be2a36
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388773"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528252"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen
 
@@ -64,7 +64,7 @@ Nehmen Sie von Visual Studio Code aus die folgenden vier Änderungen vor:
 ![Erstellen mehrerer Instanzen in Azure Resource Manager](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
 1. Fügen Sie der Ressourcendefinition des Speicherkontos ein `copy`-Element hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und eine Variable für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten.
-2. Die `copyIndex()`-Funktion gibt die aktuelle Iteration in der Schleife zurück. Verwenden Sie den Index als Namenspräfix. `copyIndex()` ist nullbasiert. Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben. Beispiel: *copyIndex(1)*.
+2. Die `copyIndex()`-Funktion gibt die aktuelle Iteration in der Schleife zurück. Verwenden Sie den Index als Namenspräfix. `copyIndex()` ist nullbasiert. Zum Versetzen des Indexwerts können Sie einen Wert in der copyIndex()-Funktion übergeben. Beispiel: *copyIndex(1)* .
 3. Löschen Sie das **variables**-Element, da es nicht mehr verwendet wird.
 4. Löschen Sie das **outputs**-Element. Es wird nicht mehr benötigt.
 

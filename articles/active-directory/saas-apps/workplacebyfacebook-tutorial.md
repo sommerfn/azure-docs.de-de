@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe02e9d6c3fa69e0ccd88057e10edb6ea1c6e0d0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 15e98bf83cedc22aa565ba0f98089e9f6f217728
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986040"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workplace by Facebook
 
@@ -63,7 +63,6 @@ Zum Konfigurieren der Integration von Workplace by Facebook in Azure AD müssen 
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Workplace by Facebook** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Workplace by Facebook** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-
 ## <a name="configure-and-test-azure-ad-sso-for-workplace-by-facebook"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Workplace by Facebook
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Workplace by Facebook mithilfe eines Testbenutzers mit dem Namen **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Workplace by Facebook eingerichtet werden.
@@ -71,10 +70,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Workplace 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Workplace by Facebook müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für Workplace by Facebook](#configure-workplace-by-facebook-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Workplace by Facebook-Testbenutzers](#create-workplace-by-facebook-test-user)** , um eine Entsprechung von B. Simon in Workplace by Facebook zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    * **[Erstellen eines Workplace by Facebook-Testbenutzers](#create-workplace-by-facebook-test-user)** , um eine Entsprechung von B. Simon in Workplace by Facebook zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -96,11 +95,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Die richtigen Werte für die Workplace-Community finden Sie auf der Authentifizierungsseite des Workplace-Unternehmensdashboards.
 
-4. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-6. Kopieren Sie im Abschnitt **Workplace by Facebook einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+1. Kopieren Sie im Abschnitt **Workplace by Facebook einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -136,24 +135,36 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-workplace-by-facebook-sso"></a>Konfigurieren des einmaligen Anmeldens für Workplace by Facebook
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Workplace by Facebook-Unternehmenswebsite als Administrator an.
-  
+1. Wenn Sie die Konfiguration in Workplace by Facebook automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Workplace by Facebook einrichten**, um zur Anwendung Workplace by Facebook weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Workplace by Facebook anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie Workplace by Facebook manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der Workplace by Facebook-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
+
     > [!NOTE]
     > Im Rahmen des SAML-Authentifizierungsprozesses werden von Workplace ggf. Abfragezeichenfolgen mit einer Größe von bis zu 2,5 KB genutzt, um Parameter an Azure AD zu übergeben.
 
-2. Wechseln Sie im **Admin Panel** (Administratorbereich) zur Registerkarte **Security** (Sicherheit).
+1. Navigieren Sie im linken Navigationsbereich zur Registerkarte **Security** > **Authentication** (Sicherheit > Authentifizierung).
 
     ![Administratorbereich](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-3. Wählen Sie unter **Authentication** (Authentifizierung) die Registerkarte **Single-Sign On (SSO)** (Einmaliges Anmelden (SSO)) aus, und führen Sie die folgenden Schritte aus:
+    a. Aktivieren Sie die Option **Single-sign on (SSO)** (Einmaliges Anmelden (SSO)).
+    
+    b. Klicken Sie auf **+Add new SSO Provider** (+Neuen SSO-Anbieter hinzufügen).
+
+1. Wählen Sie unter **Authentication** (Authentifizierung) die Registerkarte **Single-Sign On (SSO)** (Einmaliges Anmelden (SSO)) aus, und führen Sie die folgenden Schritte aus:
 
     ![Registerkarte „Authentication“ (Authentifizierung)](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-    a. Fügen Sie in das Textfeld **SAML-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    a. Geben Sie unter **Name of the SSO Provider** (Name des SSO-Anbieters) den Namen der SSO-Instanz ein, etwa „Azureadsso“.
 
-    b. Fügen Sie in das Textfeld **SAML Issuer URI** (SAML-Aussteller-URI) den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in das Textfeld **SAML-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie in **SAML-Abmeldeumleitung** (optional) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    c. Fügen Sie in das Textfeld **SAML Issuer URL** (SAML-Aussteller-URL) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     d. Öffnen Sie im Editor das **Base64-codierte Zertifikat**, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Zertifikat** ein.
 
@@ -169,7 +180,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     i. Allen Benutzern von Workplace wird jetzt die Azure AD-Anmeldeseite für die Authentifizierung angezeigt.
 
-4. **SAML Logout Redirect (optional)**  - (SAML-Abmeldeumleitung (optional))
+1. **SAML Logout Redirect (optional)**  - (SAML-Abmeldeumleitung (optional))
 
     Optional können Sie angeben, dass Sie eine SAML-Abmelde-URL konfigurieren möchten, mit der auf die Azure AD-Abmeldeseite verwiesen werden kann. Wenn diese Einstellung aktiviert und konfiguriert wird, werden Benutzer nicht mehr auf die Workplace-Abmeldeseite verwiesen. Stattdessen werden Benutzer an die URL umgeleitet, die unter der Einstellung für die SAML-Abmeldeumleitung hinzugefügt wurde.
 
@@ -230,4 +241,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Workplace by Facebook“ klicken, 
 - [Konfigurieren der Benutzerbereitstellung](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Workplace by Facebook mit Azure AD ausprobieren](https://aad.portal.azure.com)
-

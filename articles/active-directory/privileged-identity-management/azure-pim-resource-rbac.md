@@ -4,28 +4,28 @@ description: Zeigen Sie Aktivitäten und den Überwachungsverlauf für Azure-Res
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e1ed018f66d4f5eefd02d587504cf64969f47b
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 0c9a58fb6cd8591f571b4e65c3ab88cc59e38cda
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804050"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756328"
 ---
-# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-pim"></a>Anzeigen von Aktivitäten und Überwachungsverlauf für Azure-Ressourcenrollen in PIM
+# <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Anzeigen von Aktivitäten und des Überwachungsverlaufs für Azure-Ressourcenrollen in Privileged Identity Management
 
-Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Aktivitäten, Aktivierungen und den Überwachungsverlauf für Azure-Ressourcenrollen innerhalb Ihrer Organisation anzeigen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) nutzen, können von den Sicherheits- und Lebenszyklusverwaltungsfunktionen von PIM profitieren.
+Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Aktivitäten, Aktivierungen und den Überwachungsverlauf für Azure-Ressourcenrollen innerhalb Ihrer Organisation anzeigen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) nutzen, können von den Sicherheits- und Lebenszyklusverwaltungsfunktionen von Privileged Identity Management profitieren.
 
 ## <a name="view-activity-and-activations"></a>Anzeigen von Aktivitäten und Aktivierungen
 
@@ -51,7 +51,7 @@ Um zu sehen, welche Aktionen ein bestimmter Benutzer für verschiedene Ressource
 
 ## <a name="export-role-assignments-with-children"></a>Exportieren von Rollenzuweisungen mit untergeordneten Elementen
 
-Angenommen, Sie müssen Prüfern aus Konformitätsgründen eine vollständige Liste mit allen Rollenzuweisungen zur Verfügung stellen. Mit PIM können Sie Rollenzuweisungen für eine bestimmte Ressource abfragen – einschließlich Rollenzuweisungen für alle untergeordneten Ressourcen. In der Vergangenheit war es für Administratoren nicht ganz einfach, eine vollständige Liste mit den Rollenzuweisungen für ein Abonnement zu erhalten, und die Rollenzuweisungen mussten für jede spezifische Ressource exportiert werden. Mit PIM können Sie alle aktiven und geeigneten Rollenzuweisungen in einem Abonnement abrufen – einschließlich Rollenzuweisungen für alle Ressourcengruppen und Ressourcen.
+Angenommen, Sie müssen Prüfern aus Konformitätsgründen eine vollständige Liste mit allen Rollenzuweisungen zur Verfügung stellen. Mit Privileged Identity Management können Sie Rollenzuweisungen für eine bestimmte Ressource einschließlich der Rollenzuweisungen für alle untergeordneten Ressourcen abfragen. In der Vergangenheit war es für Administratoren nicht ganz einfach, eine vollständige Liste mit den Rollenzuweisungen für ein Abonnement zu erhalten, und die Rollenzuweisungen mussten für jede spezifische Ressource exportiert werden. Mit Privileged Identity Management können Sie alle aktiven und geeigneten Rollenzuweisungen in einem Abonnement einschließlich der Rollenzuweisungen für alle Ressourcengruppen und Ressourcen abfragen.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 

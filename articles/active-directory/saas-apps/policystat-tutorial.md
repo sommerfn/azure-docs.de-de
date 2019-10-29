@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68943440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Tutorial: Azure Active Directory-Integration in PolicyStat
@@ -162,15 +162,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit PolicySt
 
 2. Klicken Sie auf die Registerkarte **Administrator** und anschließend links im Navigationsbereich auf **Einmaliges Anmelden – Konfiguration**.
    
-    ![Menü „Administrator“](./media/policystat-tutorial/ic808633.png "Menü „Administrator“")
+    ![Administratormenü](./media/policystat-tutorial/ic808633.png "Administratormenü")
 
 3. Wählen Sie im Abschnitt **Einrichtung** die Option **Integration des einmaligen Anmeldens aktivieren** aus.
    
-    ![Konfiguration für einmaliges Anmelden](./media/policystat-tutorial/ic808634.png "Konfiguration für einmaliges Anmelden")
+    ![SSO-Konfiguration](./media/policystat-tutorial/ic808634.png "Einmaliges Anmelden – Konfiguration")
 
 4. Klicken Sie auf **Attribute konfigurieren**, und führen Sie anschließend im Abschnitt **Attribute konfigurieren** die folgenden Schritte aus:
    
-    ![Konfiguration für einmaliges Anmelden](./media/policystat-tutorial/ic808635.png "Konfiguration für einmaliges Anmelden")
+    ![SSO-Konfiguration](./media/policystat-tutorial/ic808635.png "Einmaliges Anmelden – Konfiguration")
    
     a. Geben Sie im Textfeld **Benutzernamen-Attribut** die Zeichenfolge **uid** ein.
 
@@ -184,7 +184,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit PolicySt
 
 5. Klicken Sie auf **Ihre IDP-Metadaten**, und führen Sie anschließend im Abschnitt **Ihre IDP-Metadaten** die folgenden Schritte aus:
    
-    ![Konfiguration für einmaliges Anmelden](./media/policystat-tutorial/ic808636.png "Konfiguration für einmaliges Anmelden")
+    ![SSO-Konfiguration](./media/policystat-tutorial/ic808636.png "Einmaliges Anmelden – Konfiguration")
    
     a. Öffnen Sie die heruntergeladene Metadatendatei, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Ihre Identitätsanbietermetadaten** ein.
 
@@ -259,5 +259,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „PolicyStat“ klicken, sollten Sie
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

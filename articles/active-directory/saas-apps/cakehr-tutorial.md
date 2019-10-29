@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c0860411c95e48a16d75df4aeeedf3405a5b1835
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026427"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595035"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit CakeHR
 
@@ -67,10 +67,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit CakeHR mit
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit CakeHR die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für CakeHR](#configure-cakehr-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines CakeHR-Testbenutzers](#create-cakehr-test-user)** , um eine Entsprechung von B. Simon in CakeHR zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    * **[Erstellen eines CakeHR-Testbenutzers](#create-cakehr-test-user)** , um eine Entsprechung von B. Simon in CakeHR zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -135,25 +135,33 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-cakehr-sso"></a>Konfigurieren des einmaligen Anmeldens für CakeHR
 
-1. Melden Sie sich in einem neuen Webbrowserfenster bei der CakeHR-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in CakeHR automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-2. Klicken Sie in der oberen rechten Ecke der Seite auf **Profile** (Profil), und navigieren Sie dann zu **Settings** (Einstellungen).
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **CakeHR einrichten**, um zur Anwendung CakeHR weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei CakeHR anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie CakeHR manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der CakeHR-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
+
+1. Klicken Sie in der oberen rechten Ecke der Seite auf **Profile** (Profil), und navigieren Sie dann zu **Settings** (Einstellungen).
 
     ![CakeHR-Konfiguration](./media/cakehr-tutorial/config01.png)
 
-3. Klicken Sie links auf der Menüleiste auf**INTEGRATIONS** > **SAML SSO** (INTEGRATIONEN > SAML-SSO), und führen Sie die folgenden Schritte aus:
+1. Klicken Sie links auf der Menüleiste auf**INTEGRATIONS** > **SAML SSO** (INTEGRATIONEN > SAML-SSO), und führen Sie die folgenden Schritte aus:
 
-     ![CakeHR-Konfiguration](./media/cakehr-tutorial/config02.png)
+    ![CakeHR-Konfiguration](./media/cakehr-tutorial/config02.png)
 
-     a. Geben Sie `cake.hr` in das Textfeld **Entity ID** (Entitäts-ID) ein.
+    a. Geben Sie `cake.hr` in das Textfeld **Entity ID** (Entitäts-ID) ein.
 
-     b. Fügen Sie in das Textfeld **Authentication URL** (Authentifizierungs-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in das Textfeld **Authentication URL** (Authentifizierungs-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-     c. Fügen Sie in das Textfeld **Key fingerprint (SHA1 format)** (Schlüsselfingerabdruck (SHA-1-Format)) den Wert für **FINGERABDRUCK** ein, den Sie aus dem Azure-Portal kopiert haben.
+    c. Fügen Sie in das Textfeld **Key fingerprint (SHA1 format)** (Schlüsselfingerabdruck (SHA-1-Format)) den Wert für **FINGERABDRUCK** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-     d. Aktivieren Sie das Kontrollkästchen **Enable Single Sign on** (Einmaliges Anmelden aktivieren).
+    d. Aktivieren Sie das Kontrollkästchen **Enable Single Sign on** (Einmaliges Anmelden aktivieren).
 
-     e. Klicken Sie auf **Speichern**.
+    e. Klicken Sie auf **Speichern**.
 
 ### <a name="create-cakehr-test-user"></a>Erstellen eines CakeHR-Testbenutzers
 
@@ -192,4 +200,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „CakeHR“ klicken, sollten Sie aut
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [CakeHR mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-

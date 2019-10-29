@@ -1,24 +1,25 @@
 ---
-title: C#-Tutorial zur Reihenfolge von Ergebnissen – Azure Search
-description: Dieses Tutorial baut auf das Projekt „Suchergebnispaginierung – Azure Search“ auf, um die Reihenfolge von Suchergebnissen hinzuzufügen. Erfahren Sie, wie Ergebnisse anhand einer primären Eigenschaft angeordnet werden, und wie Ergebnisse mit derselben primären Eigenschaft anhand einer sekundären Eigenschaft angeordnet werden. Schließlich erfahren Sie, wie Ergebnisse basierend auf einem Bewertungsprofil angeordnet werden.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#-Tutorial zur Reihenfolge von Ergebnissen
+titleSuffix: Azure Cognitive Search
+description: Dieses Tutorial baut auf das Projekt „Suchergebnispaginierung – Azure Cognitive Search“ auf, um die Reihenfolge von Suchergebnissen hinzuzufügen. Erfahren Sie, wie Ergebnisse anhand einer primären Eigenschaft angeordnet werden, und wie Ergebnisse mit derselben primären Eigenschaft anhand einer sekundären Eigenschaft angeordnet werden. Schließlich erfahren Sie, wie Ergebnisse basierend auf einem Bewertungsprofil angeordnet werden.
+manager: nitinme
 author: PeterTurcan
-ms.date: 06/21/2019
-ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 8d0c8e2a4467fe56cc0633a7d501af0c6aeed22a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327650"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794049"
 ---
-# <a name="c-tutorial-order-the-results---azure-search"></a>C#-Tutorial: Reihenfolge der Ergebnisse – Azure Search
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#-Tutorial: Reihenfolge der Ergebnisse – Azure Cognitive Search
 
 Bis zu diesem Punkt in unserer Tutorialreihe werden Ergebnisse zurückgegeben und in einer Standardreihenfolge Reihenfolge angezeigt. Dies kann die Reihenfolge sein, in der sich die Daten befinden, oder es wurde möglicherweise ein standardmäßiges _Bewertungsprofil_ definiert, das verwendet wird, wenn keine Reihenfolgeparameter angegeben sind. In diesem Tutorial wird erläutert, wie Ergebnisse basierend auf einer primären Eigenschaft angeordnet werden, und wie diese Auswahl dann für Ergebnisse mit derselben primären Eigenschaft basierend auf einer sekundären Eigenschaft angeordnet werden. Als Alternative zur Sortierung nach Zahlenwerten zeigt das letzte Beispiel, wie nach einem benutzerdefinierten Bewertungsprofil sortiert wird. Wir werden uns auch etwas näher mit der Anzeige von _komplexen Typen_ befassen.
 
-Um die zurückgegebenen Ergebnisse leicht vergleichen zu können, baut dieses Projekt auf dem in [C#-Tutorial: Suchergebnispaginierung – Azure Search](tutorial-csharp-paging.md) erstellten Projekt zum unendlichen Scrollen auf.
+Um die zurückgegebenen Ergebnisse leicht vergleichen zu können, baut dieses Projekt auf dem in [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) erstellten Projekt zum unendlichen Scrollen auf.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -31,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-Einsatzbereite Version des Projekts zum unendlichen Scrollen aus [C#-Tutorial: Suchergebnispaginierung – Azure Search](tutorial-csharp-paging.md). Dieses Projekt kann entweder Ihre eigene Version sein, oder Sie installieren es aus GitHub: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Einsatzbereite Version des Projekts zum unendlichen Scrollen aus [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md). Dieses Projekt kann entweder Ihre eigene Version sein, oder Sie installieren es über GitHub: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="order-results-based-on-one-property"></a>Sortieren von Ergebnissen basierend auf einer Eigenschaft
 
@@ -435,7 +436,7 @@ Zum Anzeigen von Ergebnissen basierend auf der geografischen Entfernung sind meh
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Obwohl die Ergebnisse von Azure Search mit einem Entfernungsfilter zurückgegeben wurden, wird die berechnete Entfernung zwischen den Daten und dem angegebenen Punkt _nicht_ zurückgegeben. Berechnen Sie diesen Wert in der Ansicht oder im Controller neu, wenn Sie ihn in den Ergebnissen anzeigen möchten.
+3. Obwohl die Ergebnisse von Azure Cognitive Search mit einem Entfernungsfilter zurückgegeben wurden, wird die berechnete Entfernung zwischen den Daten und dem angegebenen Punkt _nicht_ zurückgegeben. Berechnen Sie diesen Wert in der Ansicht oder im Controller neu, wenn Sie ihn in den Ergebnissen anzeigen möchten.
 
     Der folgende Code berechnet die Entfernung zwischen zwei Lat-/Lng-Punkten.
 
@@ -465,7 +466,7 @@ Zum Anzeigen von Ergebnissen basierend auf der geografischen Entfernung sind meh
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Sortieren von Ergebnissen basierend auf einem Bewertungsprofil
 
-Die bisherigen Beispiele im Tutorial zeigen, wie man nach Zahlenwerten (Bewertung, Renovierungsdatum, geografische Entfernung) ordnet, was einen _genauen_ Sortierprozess bietet. Einige Suchen und einige Daten bieten sich jedoch nicht für einen solch einfachen Vergleich zwischen zwei Datenelementen an. Azure Search beinhaltet das Konzept von _Bewertung_. _Bewertungsprofile_ können für einen Datensatz angegeben werden, der verwendet werden kann, um komplexere und qualitativere Vergleiche zu ermöglichen. Diese sollten am nützlichsten sein, wenn man beispielsweise textbasierte Daten vergleicht, um zu entscheiden, welche zuerst angezeigt werden sollen.
+Die bisherigen Beispiele im Tutorial zeigen, wie man nach Zahlenwerten (Bewertung, Renovierungsdatum, geografische Entfernung) ordnet, was einen _genauen_ Sortierprozess bietet. Einige Suchen und einige Daten bieten sich jedoch nicht für einen solch einfachen Vergleich zwischen zwei Datenelementen an. Azure Cognitive Search beinhaltet das Konzept von _Bewertung_. _Bewertungsprofile_ können für einen Datensatz angegeben werden, der verwendet werden kann, um komplexere und qualitativere Vergleiche zu ermöglichen. Diese sollten am nützlichsten sein, wenn man beispielsweise textbasierte Daten vergleicht, um zu entscheiden, welche zuerst angezeigt werden sollen.
 
 Bewertungsprofile werden nicht von Benutzern definiert, sondern in der Regel von Administratoren eines Datensatzes. Für die Hoteldaten wurden mehrere Bewertungsprofile erstellt. Wir sehen uns an, wie ein Bewertungsprofil definiert ist, und versuchen dann, Code zu schreiben, um nach ihm zu suchen.
 
@@ -957,7 +958,7 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
 
 ### <a name="resources"></a>Ressourcen
 
-Weitere Informationen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Azure Search-Index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Weitere Informationen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Azure Cognitive Search-Index](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 
@@ -971,6 +972,6 @@ Beachten Sie die folgenden Erkenntnisse aus diesem Projekt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie diese Reihe von C#-Tutorials abgeschlossen haben, sollten Sie nun über wertvolle Kenntnisse über die Azure Search-APIs verfügen.
+Nachdem Sie diese Reihe von C#-Tutorials abgeschlossen haben, sollten Sie nun über wertvolle Kenntnisse über die Azure Cognitive Search-APIs verfügen.
 
-Weitere Informationen und Tutorials finden Sie unter [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) oder in anderen Tutorials in der [Azure Search-Dokumentation](https://docs.microsoft.com/azure/search/).
+Weitere Informationen und Tutorials finden Sie unter [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure) oder in anderen Tutorials in der [Azure Cognitive Search-Dokumentation](https://docs.microsoft.com/azure/search/).

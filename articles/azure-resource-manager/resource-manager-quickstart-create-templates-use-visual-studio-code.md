@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Visual Studio Code für die Erstellung einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+title: 'Erstellen einer Azure Resource Manager-Vorlage: Visual Studio Code'
 description: Verwenden Sie Visual Studio Code und die Azure Resource Manager-Tools-Erweiterung für Resource Manager-Vorlagen.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: b62d4f8b43c62ff401b4d74932b131c1bf8fd63f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3e4707e6c0d2a45c02933a5b6022f5604ca7dbed
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169556"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533641"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 

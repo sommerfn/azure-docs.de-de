@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffen
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300299"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595273"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -132,7 +132,7 @@ Wenn alle von Ihnen bereitgestellten Informationen so sind, wie Sie es haben mö
 
 ## <a name="the-customer-onboarding-process"></a>Kundenonboarding
 
-Wenn ein Kunde Ihr Angebot hinzufügt, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann für die delegierte Azure-Ressourcenverwaltung das Onboarding durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt.
+Wenn ein Kunde Ihr Angebot hinzufügt, kann er [bestimmte Abonnements oder Ressourcengruppen delegieren](view-manage-service-providers.md#delegate-resources), für die dann für die delegierte Azure-Ressourcenverwaltung das Onboarding durchgeführt wird. Wenn ein Kunde ein Angebot angenommen, aber noch keine Ressourcen delegiert hat, wird im Azure-Portal auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) am oberen Rand des Abschnitts **Anbieterangebote** ein Hinweis angezeigt. Wenn ein Benutzer im Mandanten des Kunden diese Delegierung nicht ausführen kann, liegt dies wahrscheinlich daran, dass er nicht über die Rolle „Besitzer“ für das Abonnement verfügt. Um Benutzer zu suchen, die das Abonnement delegieren können, kann der Benutzer das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
 Bevor für ein Abonnement (oder Ressourcengruppen innerhalb eines Abonnements) das Onboarding durchgeführt werden kann, muss das Abonnement manuell für das Onboarding autorisiert werden, indem der Ressourcenanbieter **Microsoft.ManagedServices** registriert wird. Ein Benutzer im Kundenmandanten mit der Rolle „Mitwirkender“ oder „Besitzer“ kann diesen Schritt anhand der Anleitung unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md) ausführen.
 

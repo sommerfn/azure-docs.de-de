@@ -1,23 +1,24 @@
 ---
-title: 'Anzeigen eines Wissensspeichers mit Storage-Explorer: Azure Search'
-description: Anzeigen und Analysieren eines Azure Search-Wissensspeichers mit dem Storage-Explorer des Azure-Portals
+title: Anzeigen eines Wissensspeichers mit Storage-Explorer
+titleSuffix: Azure Cognitive Search
+description: Anzeigen und Analysieren eines Azure Cognitive Search-Wissensspeichers mit dem Storage-Explorer des Azure-Portals
+manager: nitinme
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 9ec93bcd2309bb47b24983260c35726ac24b5e95
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: cfa85e61059e27cd39a9701a835a725e16e5bc0a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265602"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789972"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Anzeigen eines Wissensspeichers mit Storage-Explorer
 
 > [!Note]
-> Der Wissensspeicher befindet sich in der Vorschauphase und sollte nicht in der Produktion verwendet werden. Dieses Feature wird durch die [Azure Search-REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
+> Der Wissensspeicher befindet sich in der Vorschauphase und sollte nicht in der Produktion verwendet werden. Dieses Feature wird durch die [Azure Cognitive Search-REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
 >
 In diesem Artikel erfahren Sie, wie Sie mit dem Storage-Explorer im Azure-Portal eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Informationen zum Erstellen des in dieser exemplarischen Vorgehensweise verwendeten Beispielwissensspeichers finden Sie unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md).
 

@@ -4,7 +4,7 @@ description: Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherh
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828552"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792615"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Computern verwendet werden können.
@@ -45,22 +45,10 @@ Microsoft Antimalware for Azure Cloud Services and Virtual Machines ist eine Ech
 
 Microsoft Antimalware für Azure ist eine Lösung mit einem einzelnen Agent für Anwendungen und Mandantenumgebungen, die im Hintergrund ohne Eingreifen des Benutzers ausgeführt wird. Sie können Schutz basierend auf den Anforderungen der Anwendungsworkloads bereitstellen, entweder mit der einfachen Konfiguration, die Schutz durch die Standardeinstellungen bietet, oder mit einer erweiterten benutzerdefinierten Konfiguration, einschließlich Antischadsoftwareüberwachung.
 
-Wenn Sie Microsoft Antimalware für Azure bereitstellen und aktivieren, sind die folgenden Kernfunktionen verfügbar:
-
-* **Echtzeitschutz**: Überwacht die Aktivitäten in Cloud Services und auf Virtual Machines, um die Ausführung von Schadsoftware zu erkennen und zu blockieren.
-* **Geplantes Scannen**: Führt regelmäßig gezielte Scans aus, um Schadsoftware, einschließlich aktiv ausgeführter Programme, zu erkennen.
-* **Schadsoftwarebehandlung**: Führt automatisch Aktionen für erkannte Schadsoftware aus, z.B. das Löschen schädlicher Dateien, das Unter-Quarantäne-Stellen schädlicher Dateien und das Bereinigen schädlicher Registrierungseinträge.
-* **Signaturaktualisierungen**: Installiert automatisch mit einer vordefinierten Häufigkeit die neuesten Schutzsignaturen (Virendefinitionen), um sicherzustellen, dass der Schutz auf dem neuesten Stand ist.
-* **Aktualisierungen des Antimalware-Moduls**: Führt eine automatische Aktualisierung des Microsoft Antimalware für Azure-Moduls durch.
-* **Aktualisierungen der Antimalware-Plattform**: Führt eine automatische Aktualisierung der Microsoft Antimalware für Azure-Plattform durch.
-* **Aktiver Schutz**: Meldet Telemetriemetadaten zu erkannten Bedrohungen und verdächtigen Ressourcen an Azure, um eine schnelle Reaktion zu gewährleisten. Ermöglicht die synchrone Signaturbereitstellung in Echtzeit über den Microsoft Active Protection Service (MAPS).
-* **Übermittlung von Stichproben**: Übermittelt Stichproben an den Microsoft Antimalware für Azure-Dienst, um den Dienst zu optimieren und die Problembehandlung zu ermöglichen.
-* **Ausschlüsse**: Ermöglicht es Anwendungs- und Dienstadministratoren, aus Leistungs- und anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
-* **Antischadsoftware-Ereigniserfassung**: Zeichnet die Integrität des Antischadsoftwarediensts, verdächtige Aktivitäten und durchgeführte Wiederherstellungsaktionen im Ereignisprotokoll des Betriebssystems auf und erfasst sie in Ihrem Azure Storage-Konto.
+Erfahren Sie mehr über [Microsoft Antimalware für Azure](antimalware.md) und die verfügbaren Kernfunktionen.
 
 Weitere Informationen zu Antischadsoftware zum Schutz Ihrer virtuellen Computer:
 
-* [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](antimalware.md)
 * [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](/azure/virtual-machines/windows/classic/install-trend)
 * [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](/azure/virtual-machines/windows/classic/install-symantec)
@@ -179,3 +167,7 @@ Weitere Informationen:
 
 * [Einführung in Confidential Computing in Azure](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Confidential Computing in Azure](https://azure.microsoft.com/blog/azure-confidential-computing/)  
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zu [bewährten Sicherheitsmethoden](iaas.md) für VMs und Betriebssysteme.

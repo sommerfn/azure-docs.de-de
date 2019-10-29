@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 10/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ef64a43cbed7f033a938351506b7f78142ff044c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0bac6f9105d505bdfc1492b6966c2352771e73b0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097620"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791293"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Versionsverwaltung in Durable Functions (Azure Functions)
 
@@ -24,11 +24,11 @@ Es ist unvermeidbar, dass Funktionen während der Lebensdauer einer Anwendung hi
 
 Es gibt einige Beispiele für wichtige Änderungen, mit denen Sie vertraut sein sollten. In diesem Artikel werden die gängigsten Änderungen beschrieben. Für alle Änderungen gilt der Grundsatz, dass sich sowohl durch neue als auch durch vorhandene Funktionsorchestrierungen Auswirkungen auf den Funktionscode ergeben.
 
-### <a name="changing-activity-function-signatures"></a>Ändern der Signaturen von Aktivitätsfunktionen
+### <a name="changing-activity-or-entity-function-signatures"></a>Ändern der Signaturen von Aktivitäts- oder Entitätsfunktionen
 
-Eine Signaturänderung bezieht sich auf eine Änderung des Namens, der Eingabe oder der Ausgabe einer Funktion. Wenn an einer Aktivitätsfunktion diese Art von Änderung vorgenommen wird, kann dies für die davon abhängige Orchestratorfunktion zu einem Fehler führen. Wenn Sie die Orchestratorfunktion aktualisieren, um diese Änderung zu berücksichtigen, kann dies wiederum zu Fehlern bei vorhandenen ausgeführten Instanzen führen.
+Eine Signaturänderung bezieht sich auf eine Änderung des Namens, der Eingabe oder der Ausgabe einer Funktion. Wenn an einer Aktivitäts- oder Entitätsfunktion diese Art von Änderung vorgenommen wird, kann dies für jegliche davon abhängige Orchestratorfunktion zu einem Fehler führen. Wenn Sie die Orchestratorfunktion aktualisieren, um diese Änderung zu berücksichtigen, kann dies wiederum zu Fehlern bei vorhandenen ausgeführten Instanzen führen.
 
-Angenommen, wir verfügen über die folgende Funktion:
+Angenommen, wir verfügen beispielsweise über die folgende Orchestratorfunktion.
 
 ```csharp
 [FunctionName("FooBar")]
@@ -85,7 +85,7 @@ public static Task Run([OrchestrationTrigger] DurableOrchestrationContext contex
 }
 ```
 
-Mit dieser Änderung wird zwischen **Foo** und **Bar** ein neuer Funktionsaufruf von **SendNotification** hinzugefügt. Es werden keine Signaturänderungen vorgenommen. Das Problem tritt auf, wenn die Ausführung einer vorhandenen Instanz nach dem Aufruf von **Bar** fortgesetzt wird. Wenn für den ursprünglichen Aufruf von **Foo** das Ergebnis `true` zurückgegeben wurde, wird bei der Wiedergabe des Orchestrators das **SendNotification**-Element aufgerufen, das im dazugehörigen Ausführungsverlauf nicht enthalten ist. Daher tritt für das Durable Task Framework der Fehler `NonDeterministicOrchestrationException` auf, da ein Aufruf von **SendNotification** erfolgt ist, während ein Aufruf von **Bar** erwartet wurde.
+Mit dieser Änderung wird zwischen **Foo** und **Bar** ein neuer Funktionsaufruf von **SendNotification** hinzugefügt. Es werden keine Signaturänderungen vorgenommen. Das Problem tritt auf, wenn die Ausführung einer vorhandenen Instanz nach dem Aufruf von **Bar** fortgesetzt wird. Wenn für den ursprünglichen Aufruf von **Foo** das Ergebnis `true` zurückgegeben wurde, wird bei der Wiedergabe des Orchestrators das **SendNotification**-Element aufgerufen, das im dazugehörigen Ausführungsverlauf nicht enthalten ist. Daher tritt für das Durable Task Framework der Fehler `NonDeterministicOrchestrationException` auf, da ein Aufruf von **SendNotification** erfolgt ist, während ein Aufruf von **Bar** erwartet wurde. Dieselbe Art von Problem kann beim Hinzufügen von Aufrufen an „permanente“ APIs auftreten, einschließlich `CreateTimer`, `WaitForExternalEvent` usw.
 
 ## <a name="mitigation-strategies"></a>Lösungsstrategien
 
@@ -112,9 +112,9 @@ Eine andere Möglichkeit besteht darin, alle ausgeführten Instanzen zu beenden.
 
 Die sicherste Möglichkeit zum Sicherstellen, dass wichtige Änderungen auf sichere Weise bereitgestellt werden, ist die parallele Bereitstellung mit Ihren älteren Versionen. Hierfür können Sie die folgenden Verfahren verwenden:
 
-* Bereitstellen aller Updates als völlig neue Funktionen (neue Namen)
+* Bereitstellen aller Updates als völlig neue Funktionen, wobei bestehende Funktionen unverändert bleiben. Dies kann schwierig sein, da die Aufrufer der neuen Funktionsversionen ebenfalls unter Einhaltung derselben Richtlinien aktualisiert werden müssen.
 * Bereitstellen aller Updates als neue Funktionen-App mit einem anderen Speicherkonto
-* Bereitstellen einer neuen Kopie der Funktionen-App, aber mit einem aktualisierten `TaskHub`-Namen (empfohlene Vorgehensweise)
+* Bereitstellen einer neuen Kopie der Funktions-App mit demselben Speicherkonto, aber mit einem aktualisierten `taskHub`-Namen. (empfohlene Vorgehensweise)
 
 ### <a name="how-to-change-task-hub-name"></a>Ändern des Aufgabenhubnamens
 
@@ -125,18 +125,28 @@ Sie können den Aufgabenhub in der Datei *host.json* wie folgt konfigurieren:
 ```json
 {
     "durableTask": {
-        "HubName": "MyTaskHubV2"
+        "hubName": "MyTaskHubV2"
     }
 }
 ```
 
 #### <a name="functions-2x"></a>Functions 2.x
 
-Standardwert: `DurableFunctionsHub`.
+```json
+{
+    "extensions": {
+        "durableTask": {
+            "hubName": "MyTaskHubV2"
+        }
+    }
+}
+```
 
-Alle Azure Storage-Entitäten werden basierend auf dem Konfigurationswert `HubName` benannt. Indem Sie dem Aufgabenhub einen neuen Namen geben, stellen Sie sicher, dass für die neue Version Ihrer Anwendung die Warteschlangen und die Verlaufstabelle separat erstellt werden.
+Der Standardwert für Durable Functions v1. x ist `DurableFunctionsHub`. Ab Durable Functions v 2.0 ist der Standardname des Aufgabenhubs identisch mit dem Namen der Funktions-App in Azure, oder er lautet `TestHubName`, wenn die Ausführung außerhalb von Azure erfolgt.
 
-Es wird empfohlen, die neue Version der Funktionen-App in einem neuen [Bereitstellungsslot](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) bereitzustellen. Mit Bereitstellungsslots können Sie mehrere Kopien Ihrer Funktionen-App parallel ausführen, wobei nur eine davon als aktiver *Produktionsslot* dient. Wenn alles bereit ist, um die neue Orchestrierungslogik für Ihre vorhandene Infrastruktur verfügbar zu machen, kann dies ein einfacher Vorgang sein, weil ggf. nur die neue Version in den Produktionsslot eingefügt werden muss.
+Alle Azure Storage-Entitäten werden basierend auf dem Konfigurationswert `hubName` benannt. Indem Sie dem Aufgabenhub einen neuen Namen geben, stellen Sie sicher, dass für die neue Version Ihrer Anwendung die Warteschlangen und die Verlaufstabelle separat erstellt werden. Die Funktions-App beendet jedoch die Verarbeitung von Ereignissen für Orchestrierungen oder Entitäten, die unter dem vorherigen Aufgabenhubnamen erstellt wurden.
+
+Es wird empfohlen, die neue Version der Funktionen-App in einem neuen [Bereitstellungsslot](../functions-deployment-slots.md) bereitzustellen. Mit Bereitstellungsslots können Sie mehrere Kopien Ihrer Funktionen-App parallel ausführen, wobei nur eine davon als aktiver *Produktionsslot* dient. Wenn alles bereit ist, um die neue Orchestrierungslogik für Ihre vorhandene Infrastruktur verfügbar zu machen, kann dies ein einfacher Vorgang sein, weil ggf. nur die neue Version in den Produktionsslot eingefügt werden muss.
 
 > [!NOTE]
 > Diese Strategie eignet sich am besten, wenn Sie HTTP und Webhooktrigger für Orchestratorfunktionen verwenden. Für andere Trigger als HTTP-Trigger, z.B. Warteschlangen oder Event Hubs, sollte die Triggerdefinition [von einer App-Einstellung abgeleitet sein](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings), die im Rahmen des Austauschvorgangs aktualisiert wird.

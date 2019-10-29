@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 author: j-martens
 ms.author: jmartens
-ms.date: 08/05/2019
+ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a70b1c9d3ac888f0f77cf0f6e9ca37bc6cd4324
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c845966c86659c0ff983bf33c492a67dd99275f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999936"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692960"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -38,9 +38,9 @@ Erkunden und Vorbereiten von Daten, Trainieren und Testen von Modellen und Berei
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
-## <a name="what-can-i-do-with-azure-machine-learning"></a>Wofür kann ich Azure Machine Learning verwenden?
+## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Wofür kann ich Azure Machine Learning Service verwenden?
 
-Verwenden Sie das <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning SDK für Python</a> mit Open-Source-Paketen für Python oder die [grafische Benutzeroberfläche (Vorschauversion)](ui-tutorial-automobile-price-train-score.md), um selbst äußerst genaue Machine Learning- und Deep Learning-Modelle in einem Arbeitsbereich für Azure Machine Learning zu erstellen und zu trainieren.
+Verwenden Sie das <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning SDK für Python</a> mit Open-Source-Paketen für Python oder die [grafische Benutzeroberfläche (Vorschauversion)](ui-tutorial-automobile-price-train-score.md), um selbst äußerst genaue Machine Learning- und Deep Learning-Modelle in einem Arbeitsbereich für Azure Machine Learning Service zu erstellen und zu trainieren.
 
 Sie können aus mehreren Komponenten für maschinelles Lernen wählen, die in Open-Source-Paketen für Python enthalten sind. Hierzu zählen beispielsweise <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>, <a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>, <a href="https://pytorch.org" target="_blank">PyTorch</a> und <a href="https://mxnet.io" target="_blank">MXNet</a>.
 
@@ -54,7 +54,7 @@ Mit dem SDK können Sie auch [Modelltraining und -optimierung](tutorial-auto-tra
 
 ### <a name="ui-based-low-code-experience"></a>Benutzeroberflächenbasierte Erstellung mit sehr wenig Code
 
-Für codefreies Training testen Sie Folgendes:
+Optionen für Training und Bereitstellung ohne Code:
 
 + Erstellen Sie [automatisierte ML-Experimente](tutorial-first-experiment-automated-ml.md) auf der benutzerfreundlichen Oberfläche.
 + Erstellen Sie [Experimente per Drag & Drop auf der grafischen Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md).
@@ -90,10 +90,15 @@ Hier ist ein kurzer Vergleich:
 || Machine Learning Studio | Azure Machine Learning:<br/>Grafische Benutzeroberfläche|
 |---| --- | --- |
 || Allgemein verfügbar (Generally Available, GA) | In der Vorschau|
+|Drag & Drop-Oberfläche| Ja | Ja|
+|Experiment| Skalieren (Limit für Trainingsdaten: 10 GB) | Skalieren mit Computeziel|
 |Module für Schnittstellen| Mehrere | Anfänglicher Satz von beliebten Modulen|
-|Trainieren von Computezielen| Proprietäres Computeziel, nur CPU-Unterstützung| Unterstützt Azure Machine Learning-Compute, -GPU oder -CPU.<br/>(Weitere Computes in SDK unterstützt)|
-|Computeziele für die Bereitstellung| Proprietäres Webdienstformat, nicht anpassbar | Unternehmenssicherheitsoptionen und Azure Kubernetes Service <br/>([Weitere Computes](how-to-deploy-and-where.md) in SDK unterstützt) |
-|Automatisiertes Modelltraining und Optimieren von Hyperparametern | Nein | Noch nicht auf der grafischen Benutzeroberfläche. <br/> (Im SDK und Azure-Portal/auf der Landing Page des Arbeitsbereichs unterstützt) |
+|Trainieren von Computezielen| Proprietäres Computeziel, nur CPU|AML-Compute (GPU/CPU)<br/> Notebook-VMs |
+|Rückschlusscomputeziele| Proprietäres Webdienstformat, nicht anpassbar | Azure Kubernetes Service(Rückschlüsse in Echtzeit) <br/>AML-Compute (Batchrückschlüsse) |
+|ML-Pipeline| Nicht unterstützt | Pipelineerstellung <br/> Veröffentlichte Pipeline <br/> Pipelineendpunkt <br/> [Weitere Informationen zur ML-Pipeline](concept-ml-pipelines.md)|
+|ML-Vorgänge| Einfache Modellverwaltung und -bereitstellung | Konfigurierbare Versionsverwaltung für Bereitstellung, Modell und Pipeline|
+|Modell| Proprietäres Format. Kann nicht außerhalb von Studio verwendet werden. | Standardformat. Variiert abhängig vom Trainingsauftrag.|
+|Automatisiertes Modelltraining und Optimieren von Hyperparametern | Nein | Noch nicht auf der grafischen Benutzeroberfläche. <br/> (Wird im Python SDK und auf der Landing Page des Arbeitsbereichs unterstützt.) |
 
 Testen Sie die grafische Benutzeroberfläche (Vorschauversion) in [Tutorial: Prognostizieren von Automobilpreisen mithilfe der grafischen Benutzeroberfläche](ui-tutorial-automobile-price-train-score.md).
 

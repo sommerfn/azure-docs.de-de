@@ -1,22 +1,23 @@
 ---
-title: 'C#-Tutorial zur Erstellung Ihrer ersten App: Azure Search'
-description: Dieses Tutorial enthält eine Schritt-für-Schritt-Anleitung zur Erstellung Ihrer ersten App für Azure Search. Das Tutorial enthält sowohl einen Link zu einer funktionierenden App auf GitHub als auch den vollständigen Prozess für die Neuerstellung der App. Informieren Sie sich über die wichtigen Komponenten von Azure Search.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#-Tutorial zur Erstellung Ihrer ersten App
+titleSuffix: Azure Cognitive Search
+description: Hier erfahren Sie Schritt für Schritt, wie Sie Ihre erste Such-App erstellen. Das Tutorial enthält sowohl einen Link zu einer funktionierenden App auf GitHub als auch den vollständigen Prozess für die Neuerstellung der App. Informieren Sie sich über die grundlegenden Komponenten von Azure Cognitive Search.
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: d569437a3e6f6f05ddb9c6fa85f62c77ac51f72b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 3f234a11aeaf7af4e47fb0cf6310ecd68d35e4da
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443819"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794130"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-search"></a>C#-Tutorial: Erstellen Ihrer ersten App – Azure Search
+# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#-Tutorial: Erstellen Ihrer ersten App – Azure Cognitive Search
 
-Es wird beschrieben, wie Sie eine Webschnittstelle zum Abfragen und Darstellen von Suchergebnissen aus einem Index mit Azure Search erstellen. Dieses Tutorial beginnt mit einem vorhandenen gehosteten Index, damit Sie sich auf die Erstellung einer Suchseite konzentrieren können. Der Index enthält fiktive Hoteldaten. Wenn Sie dann über eine einfache Seite verfügen, können Sie diese in den nachfolgenden Lektionen so erweitern, dass sie über eine Paginierung, Facetten und eine Textvervollständigung verfügt.
+Hier wird beschrieben, wie Sie eine Webschnittstelle zum Abfragen und Darstellen von Suchergebnissen aus einem Index mit Azure Cognitive Search erstellen. Dieses Tutorial beginnt mit einem vorhandenen gehosteten Index, damit Sie sich auf die Erstellung einer Suchseite konzentrieren können. Der Index enthält fiktive Hoteldaten. Wenn Sie dann über eine einfache Seite verfügen, können Sie diese in den nachfolgenden Lektionen so erweitern, dass sie über eine Paginierung, Facetten und eine Textvervollständigung verfügt.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -60,7 +61,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Dieses Projekt und Ihre Azure-App werden hoffentlich reibungslos ausgeführt. Viele der grundlegenden Komponenten für komplexere Suchen sind in dieser einen App enthalten. Es ist also hilfreich, die App durchzugehen und Schritt für Schritt neu zu erstellen.
 
-Führen Sie die folgenden Schritte aus, um dieses Projekt von Grund auf neu zu erstellen (und so die Komponenten von Azure Search noch besser kennenzulernen).
+Führen Sie die folgenden Schritte aus, um dieses Projekt von Grund auf neu zu erstellen und so die Komponenten von Azure Cognitive Search noch besser kennenzulernen.
 
 ## <a name="set-up-a-development-environment"></a>Einrichten einer Entwicklungsumgebung
 
@@ -72,11 +73,11 @@ Führen Sie die folgenden Schritte aus, um dieses Projekt von Grund auf neu zu e
 
     ![Erstellen eines MVC-Projekts](./media/tutorial-csharp-create-first-app/azure-search-project2.png)
 
-3. Wählen Sie als Nächstes im Menü **Extras** die Option **NuGet-Paket-Manager** und dann **NuGet-Pakete für Projektmappe verwalten**. Es ist ein Paket vorhanden, das wir installieren müssen. Wählen Sie die Registerkarte **Durchsuchen**, und geben Sie „Azure Search“ in das Suchfeld ein. Installieren Sie **Microsoft.Azure.Search**, wenn der Eintrag in der Liste angezeigt wird (Version 9.0.1 oder höher). Klicken Sie sich durch einige zusätzliche Dialogfelder, um die Installation abzuschließen.
+3. Wählen Sie als Nächstes im Menü **Extras** die Option **NuGet-Paket-Manager** und dann **NuGet-Pakete für Projektmappe verwalten**. Es ist ein Paket vorhanden, das wir installieren müssen. Wählen Sie die Registerkarte **Durchsuchen** aus, und geben Sie „Azure Cognitive Search“ in das Suchfeld ein. Installieren Sie **Microsoft.Azure.Search**, wenn der Eintrag in der Liste angezeigt wird (Version 9.0.1 oder höher). Klicken Sie sich durch einige zusätzliche Dialogfelder, um die Installation abzuschließen.
 
     ![Hinzufügen von Azure-Bibliotheken per NuGet](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
-### <a name="initialize-azure-search"></a>Initialisieren von Azure Search
+### <a name="initialize-azure-cognitive-search"></a>Initialisieren von Azure Cognitive Search
 
 Für dieses Beispiel verwenden wir öffentlich verfügbare Hoteldaten. Diese Daten umfassen eine willkürliche Sammlung mit 50 fiktiven Hotelnamen und -beschreibungen, die nur den Zweck der Bereitstellung von Demodaten erfüllen. Um auf diese Daten zugreifen zu können, müssen Sie einen Namen und einen Schlüssel dafür angeben.
 
@@ -223,7 +224,7 @@ Modelle (C#-Klassen) werden verwendet, um für Daten die Kommunikation zwischen 
     }
     ```
 
-5. Die Klassen **Hotel**, **Address** und **Room** werden in Azure als [_komplexe Typen_](search-howto-complex-data-types.md) bezeichnet. Dies ist ein wichtiges Feature von Azure Search. Komplexe Typen können über viele Ebenen mit Klassen und Unterklassen verfügen und ermöglichen die Darstellung von deutlich komplexeren Datenstrukturen, als wenn _einfache Typen_ (Klasse, die nur primitive Member enthält) verwendet werden. Wir benötigen ein weiteres Modell. Führen Sie den Prozess zum Erstellen einer neuen Modellklasse also noch einmal durch, aber rufen Sie dieses Mal die Klasse „SearchData.cs“ auf, und ersetzen Sie den Standardcode durch Folgendes.
+5. Die Klassen **Hotel**, **Address** und **Room** werden in Azure als [_komplexe Typen_](search-howto-complex-data-types.md) bezeichnet. Dies ist ein wichtiges Feature von Azure Cognitive Search. Komplexe Typen können über viele Ebenen mit Klassen und Unterklassen verfügen und ermöglichen die Darstellung von deutlich komplexeren Datenstrukturen, als wenn _einfache Typen_ (Klasse, die nur primitive Member enthält) verwendet werden. Wir benötigen ein weiteres Modell. Führen Sie den Prozess zum Erstellen einer neuen Modellklasse also noch einmal durch, aber rufen Sie dieses Mal die Klasse „SearchData.cs“ auf, und ersetzen Sie den Standardcode durch Folgendes.
 
     ```cs
     using Microsoft.Azure.Search.Models;
@@ -425,7 +426,7 @@ Wir benötigen zwei **Index**-Methoden: eine ohne Parameter (für das erste Öff
                     model.searchText = "";
                 }
 
-                // Make the Azure Search call.
+                // Make the Azure Cognitive Search call.
                 await RunQueryAsync(model);
             }
 
@@ -451,7 +452,7 @@ Im GitHub-Beispiel haben wir die nicht verwendeten Ansichten und die zugehörige
 
 ### <a name="add-the-runqueryasync-method"></a>Hinzufügen der RunQueryAsync-Methode
 
-Der Azure Search-Aufruf ist in unserer **RunQueryAsync**-Methode gekapselt.
+Der Azure Cognitive Search-Aufruf ist in unserer **RunQueryAsync**-Methode gekapselt.
 
 1. Fügen Sie zuerst einige statische Variablen zum Einrichten des Azure-Diensts und einen Aufruf für deren Initialisierung hinzu.
 
@@ -517,11 +518,11 @@ Wir überprüfen nun, ob die App richtig ausgeführt wird.
 
      ![Suchen nach „beach“](./media/tutorial-csharp-create-first-app/azure-search-beach.png)
 
-3. Versuchen Sie, „five star“ einzugeben. Sie sehen, dass Sie keine Ergebnisse erhalten. Bei einer anspruchsvolleren Suche würde „five star“ als Synonym für „luxury“ erkannt werden, und die entsprechenden Ergebnisse würden angezeigt werden. Die Verwendung von Synonymen ist in Azure Search verfügbar, aber dies wird in den ersten Tutorials nicht behandelt.
+3. Versuchen Sie, „five star“ einzugeben. Sie sehen, dass Sie keine Ergebnisse erhalten. Bei einer anspruchsvolleren Suche würde „five star“ als Synonym für „luxury“ erkannt werden, und die entsprechenden Ergebnisse würden angezeigt werden. Die Verwendung von Synonymen ist in Azure Cognitive Search verfügbar, aber dies wird in den ersten Tutorials nicht behandelt.
  
 4. Versuchen Sie, „hot“ als Suchtext einzugeben. Es werden _keine_ Einträge zurückgegeben, die das Wort „hotel“ enthalten. Bei unserer Suche wird nur nach ganzen Wörtern gesucht, aber es werden trotzdem einige Ergebnisse zurückgegeben.
 
-5. Versuchen Sie es mit anderen Wörtern: „pool“, „sunshine“, „view“ usw. Dies ist eine sehr einfache Funktion von Azure Search, die aber trotzdem in überzeugender Manier ausgeführt wird.
+5. Versuchen Sie es mit anderen Wörtern: „pool“, „sunshine“, „view“ usw. Dies ist eine sehr einfache Funktion von Azure Cognitive Search, die aber trotzdem in überzeugender Manier ausgeführt wird.
 
 ## <a name="test-edge-conditions-and-errors"></a>Testen von Edgebedingungen und -fehlern
 
@@ -542,17 +543,17 @@ Es ist wichtig zu überprüfen, ob unsere Features für die Fehlerbehandlung wie
 
 Beachten Sie die folgenden Erkenntnisse aus diesem Projekt:
 
-* Ein Azure Search-Aufruf ist kompakt, und es ist einfach, die Ergebnisse zu interpretieren.
+* Ein Azure Cognitive Search-Aufruf ist kompakt, und es ist einfach, die Ergebnisse zu interpretieren.
 * Mit asynchronen Aufrufen wird dem Controller ein geringer Grad an Komplexität hinzugefügt, aber dies ist die bewährte Methode, wenn Sie qualitativ gute Apps entwickeln möchten.
 * Mit dieser App wurde eine einfache Textsuche durchgeführt, die gemäß der Einrichtung von **searchParameters** definiert wurde. Diese eine Klasse kann aber mit vielen Membern aufgefüllt werden, die der Erweiterung der Suche dienen. Es ist kein großer Zusatzaufwand erforderlich, um diese App erheblich leistungsstärker zu gestalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Damit wir die höchste Benutzerfreundlichkeit für Azure Search erzielen können, müssen wir weitere Features hinzufügen, z. B. vor allem Paginierung (entweder Seitenzahlen oder unendliches Scrollen) und AutoVervollständigen/Vorschläge. Außerdem sollten wir die Verwendung von anspruchsvolleren Suchparametern erwägen (z. B. geografische Suchen nach Hotels innerhalb eines bestimmten Radius um einen bestimmten Punkt und Sortierung von Suchergebnissen).
+Damit wir die höchste Benutzerfreundlichkeit für Azure Cognitive Search erzielen können, müssen wir weitere Features hinzufügen, insbesondere Paginierung (entweder Seitenzahlen oder unendliches Scrollen) und AutoVervollständigen/Vorschläge. Außerdem sollten wir die Verwendung von anspruchsvolleren Suchparametern erwägen (z. B. geografische Suchen nach Hotels innerhalb eines bestimmten Radius um einen bestimmten Punkt und Sortierung von Suchergebnissen).
 
 Diese nächsten Schritte werden im Rahmen einer Tutorialreihe behandelt. Wir beginnen mit der Paginierung.
 
 > [!div class="nextstepaction"]
-> [C#-Tutorial: Suchergebnispaginierung – Azure Search](tutorial-csharp-paging.md)
+> [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md)
 
 

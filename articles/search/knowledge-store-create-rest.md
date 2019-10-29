@@ -1,22 +1,23 @@
 ---
-title: 'Erstellen eines Wissensspeichers mit REST: Azure Search'
-description: Verwenden Sie die REST-API und Postman, um einen Azure Search-Wissensspeicher zum Speichern von Anreicherungen aus der Pipeline für die kognitive Suche zu erstellen.
+title: Erstellen eines Wissensspeichers mithilfe von REST
+titleSuffix: Azure Cognitive Search
+description: Verwenden Sie die REST-API und Postman, um einen Azure Cognitive Search-Wissensspeicher zum Speichern von Anreicherungen aus einer KI-Anreicherungspipeline zu erstellen.
 author: lobrien
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 10/01/2019
+manager: nitinme
 ms.author: laobri
-ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 24b97374b032640afafde775e90f6db735d63c46
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244469"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790015"
 ---
-# <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Erstellen eines Azure Search-Wissensspeichers mit REST
+# <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>Erstellen eines Azure Cognitive Search-Wissensspeichers mit REST
 
-Mit dem Wissensspeicher-Feature in Azure Search werden Ausgaben aus einer KI-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung gespeichert. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, indiziert sie mithilfe von Azure Search, wendet KI-Anreicherungen von Azure Cognitive Services (z. B. Bildanalyse und Verarbeitung natürlicher Sprache) an und speichert die Ergebnisse in einem Wissensspeicher in Azure Storage. Sie können den Wissensspeicher dann im Azure-Portal mit Tools wie Power BI oder Storage-Explorer erkunden.
+Mit dem Wissensspeicher-Feature in Azure Cognitive Search werden Ausgaben aus einer KI-Anreicherungspipeline zur späteren Analyse oder anderweitigen Downstreamverarbeitung gespeichert. Eine Pipeline mit KI-Anreicherung akzeptiert Bilddateien oder unstrukturierte Textdateien, indiziert sie mithilfe von Azure Cognitive Search, wendet KI-Anreicherungen von Azure Cognitive Services (z. B. Bildanalyse und Verarbeitung natürlicher Sprache) an und speichert die Ergebnisse in einem Wissensspeicher in Azure Storage. Sie können den Wissensspeicher dann im Azure-Portal mit Tools wie Power BI oder Storage-Explorer erkunden.
 
 In diesem Artikel wird die REST-API-Schnittstelle verwendet, um eine Gruppe von Hotelrezensionen zu erfassen, zu indizieren und KI-Anreicherungen darauf anzuwenden. Die Hotelrezensionen werden in Azure Blob Storage importiert. Die Ergebnisse werden als Wissensspeicher in Azure Table Storage gespeichert.
 
@@ -26,15 +27,15 @@ Nachdem Sie den Wissensspeicher erstellt haben, können Sie sich darüber inform
 
 Erstellen Sie die folgenden Dienste:
 
-- Erstellen Sie einen [Azure Search-Dienst](search-create-service-portal.md), oder [suchen Sie in Ihrem aktuellen Abonnement nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
+- [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
-- Erstellen Sie ein [Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten und des Wissensspeichers. Ihr Speicherkonto muss den gleichen Speicherort (z. B. „USA, Westen“) für Ihren Azure Search-Dienst verwenden. Der Wert für **Kontoart** muss auf **StorageV2 (universell V2)** (Standard) oder **Storage (universell V1)** festgelegt sein.
+- Erstellen Sie ein [Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten und des Wissensspeichers. Ihr Speicherkonto muss den gleichen Speicherort (z. B. „USA, Westen“) für Ihren Azure Cognitive Search-Dienst verwenden. Der Wert für **Kontoart** muss auf **StorageV2 (universell V2)** (Standard) oder **Storage (universell V1)** festgelegt sein.
 
-- Empfohlen: Rufen Sie die [Postman-Desktop-App](https://www.getpostman.com/) zum Senden von Anforderungen an Azure Search ab. Sie können die REST-API mit jedem Tool verwenden, das HTTP-Anforderungen und -Antworten verarbeiten kann. Postman ist eine gute Wahl für die Untersuchung von REST-APIs. In diesem Artikel verwenden wir Postman. Außerdem enthält der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) für diesen Artikel eine Postman-Auflistung der Anforderungen. 
+- Empfohlen: Installieren Sie die [Postman-Desktop-App](https://www.getpostman.com/) zum Senden von Anforderungen an Azure Cognitive Search. Sie können die REST-API mit jedem Tool verwenden, das HTTP-Anforderungen und -Antworten verarbeiten kann. Postman ist eine gute Wahl für die Untersuchung von REST-APIs. In diesem Artikel verwenden wir Postman. Außerdem enthält der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) für diesen Artikel eine Postman-Auflistung der Anforderungen. 
 
 ## <a name="store-the-data"></a>Speichern der Daten
 
-Laden Sie die CSV-Datei mit den Hotelrezensionen in Azure Blob Storage, damit sie für einen Azure Search-Indexer zur Verfügung steht und die KI-Anreicherungspipeline durchlaufen kann.
+Laden Sie die CSV-Datei mit den Hotelrezensionen in Azure Blob Storage, damit sie für einen Azure Cognitive Search-Indexer zur Verfügung steht und die KI-Anreicherungspipeline durchlaufen kann.
 
 ### <a name="create-a-blob-container-by-using-the-data"></a>Erstellen eines Blobcontainers mit den Daten
 
@@ -63,26 +64,26 @@ Führen Sie die Installation und Einrichtung von Postman durch.
 1. Wählen Sie die Registerkarte **Sammlungen** und dann die Schaltfläche **...** (Auslassungszeichen) aus.
 1. Wählen Sie **Bearbeiten** aus. 
    
-   ![Postman-App mit Navigation](media/knowledge-store-create-rest/postman-edit-menu.png "Navigieren zum Menü „Edit“ (Bearbeiten) in Postman")
+   ![Postman-App mit Navigation](media/knowledge-store-create-rest/postman-edit-menu.png "Navigieren zum Bearbeitungsmenü in Postman")
 1. Wählen Sie im Dialogfeld **Edit** (Bearbeiten) die Registerkarte **Variables** (Variablen) aus. 
 
 Auf der Registerkarte **Variables** (Variablen) können Sie Werte hinzufügen, die von Postman jeweils eingefügt werden, wenn eine bestimmte Variable in doppelten Klammern erkannt wird. Beispielsweise ersetzt Postman das Symbol `{{admin-key}}` durch den aktuellen Wert, den Sie für `admin-key` festlegen. Postman führt die Ersetzung in URLs, Headern, im Anforderungstext usw. durch. 
 
-Navigieren Sie zum Azure Search-Dienst, und wählen Sie die Registerkarte **Schlüssel** aus, um den Wert für `admin-key` zu erhalten. Ändern Sie `search-service-name` und `storage-account-name` in die Werte, die Sie unter [Erstellen von Diensten](#create-services) ausgewählt haben. Legen Sie `storage-connection-string` fest, indem Sie den Wert auf der Registerkarte **Zugriffsschlüssel** des Speicherkontos verwenden. Sie können für die anderen Werte die Standardwerte übernehmen.
+Navigieren Sie zum Azure Cognitive Search-Dienst, und wählen Sie die Registerkarte **Schlüssel** aus, um den Wert für `admin-key` zu erhalten. Ändern Sie `search-service-name` und `storage-account-name` in die Werte, die Sie unter [Erstellen von Diensten](#create-services) ausgewählt haben. Legen Sie `storage-connection-string` fest, indem Sie den Wert auf der Registerkarte **Zugriffsschlüssel** des Speicherkontos verwenden. Sie können für die anderen Werte die Standardwerte übernehmen.
 
-![Postman-App: Registerkarte „Variablen“](media/knowledge-store-create-rest/postman-variables-window.png "Fenster „Variablen“ in Postman")
+![Postman-App, Registerkarte mit den Variablen](media/knowledge-store-create-rest/postman-variables-window.png "Fenster mit den Postman-Variablen")
 
 
 | Variable    | Ursprung |
 |-------------|-----------------|
-| `admin-key` | Auf der Registerkarte **Schlüssel** des Azure Search-Diensts.  |
+| `admin-key` | Auf der Seite **Schlüssel** des Azure Cognitive Search-Diensts  |
 | `api-version` | Übernehmen Sie **2019-05-06-Preview**. |
 | `datasource-name` | Übernehmen Sie **hotel-reviews-ds**. | 
 | `indexer-name` | Übernehmen Sie **hotel-reviews-ixr**. | 
 | `index-name` | Übernehmen Sie **hotel-reviews-ix**. | 
-| `search-service-name` | Der Hauptname des Azure Search Diensts. Die URL ist `https://{{search-service-name}}.search.windows.net`. | 
+| `search-service-name` | Der Name des Azure Cognitive Search-Diensts. Die URL ist `https://{{search-service-name}}.search.windows.net`. | 
 | `skillset-name` | Übernehmen Sie **hotel-reviews-ss**. | 
-| `storage-account-name` | Der Hauptname des Speicherkontos. | 
+| `storage-account-name` | Der Name des Speicherkontos. | 
 | `storage-connection-string` | Wählen Sie im Speicherkonto auf der Registerkarte **Zugriffsschlüssel** **key1** > **Verbindungszeichenfolge** aus. | 
 | `storage-container-name` | Übernehmen Sie **hotel-reviews**. | 
 
@@ -90,8 +91,8 @@ Navigieren Sie zum Azure Search-Dienst, und wählen Sie die Registerkarte **Schl
 
 Beim Erstellen eines Wissensspeichers müssen Sie vier HTTP-Anforderungen durchführen: 
 
-- **PUT-Anforderung zum Erstellen des Index**: Dieser Index enthält die Daten, die von Azure Search verwendet und zurückgegeben werden.
-- **POST-Anforderung zum Erstellen der Datenquelle**: Diese Datenquelle verknüpft das Azure Search-Verhalten mit den Daten und dem Speicherkonto des Wissensspeichers. 
+- **PUT-Anforderung zum Erstellen des Index**: Dieser Index enthält die Daten, die von Azure Cognitive Search verwendet und zurückgegeben werden.
+- **POST-Anforderung zum Erstellen der Datenquelle**: Diese Datenquelle verknüpft das Azure Cognitive Search-Verhalten mit den Daten und dem Speicherkonto des Wissensspeichers. 
 - **PUT-Anforderung zum Erstellen des Skillsets**: Das Skillset gibt die Anreicherungen an, die auf die Daten und die Struktur des Wissensspeichers angewendet werden.
 - **PUT-Anforderung zum Erstellen des Indexers**: Beim Ausführen des Indexers werden die Daten gelesen, das Skillset wird angewendet, und die Ergebnisse werden gespeichert. Diese Anforderung muss zuletzt ausgeführt werden.
 
@@ -103,11 +104,11 @@ Der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/bl
 > Sie müssen die Header `api-key` und `Content-type` in allen Anforderungen festlegen. Wenn von Postman eine Variable erkannt wird, wird sie als orangefarbener Text angezeigt (wie `{{admin-key}}` im obigen Screenshot). Falls die Variable falsch geschrieben ist, wird sie als roter Text dargestellt.
 >
 
-## <a name="create-an-azure-search-index"></a>Erstellen eines Azure Search-Index
+## <a name="create-an-azure-cognitive-search-index"></a>Erstellen eines Azure Cognitive Search-Index
 
-Erstellen Sie einen Azure Search-Index, um die Daten darzustellen, die Sie durchsuchen, filtern und erweitern möchten. Erstellen Sie den Index, indem Sie eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` senden. In Postman werden Symbole, die in doppelte geschweifte Klammern gesetzt sind (z. B. `{{search-service-name}}`, `{{index-name}}` und `{{api-version}}`), durch die Werte ersetzt, die Sie unter [Konfigurieren von Postman](#configure-postman) festlegen. Falls Sie ein anderes Tool zum Ausführen Ihrer REST-Befehle verwenden, müssen Sie diese Variablen selbst ersetzen.
+Erstellen Sie einen Azure Cognitive Search-Index, um die Daten darzustellen, die Sie durchsuchen, filtern und erweitern möchten. Erstellen Sie den Index, indem Sie eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexes/{{index-name}}?api-version={{api-version}}` senden. In Postman werden Symbole, die in doppelte geschweifte Klammern gesetzt sind (z. B. `{{search-service-name}}`, `{{index-name}}` und `{{api-version}}`), durch die Werte ersetzt, die Sie unter [Konfigurieren von Postman](#configure-postman) festlegen. Falls Sie ein anderes Tool zum Ausführen Ihrer REST-Befehle verwenden, müssen Sie diese Variablen selbst ersetzen.
 
-Legen Sie die Struktur des Azure Search-Index im Text der Anforderung fest. Navigieren Sie in Postman nach dem Festlegen der Header `api-key` und `Content-type` zum Bereich **Body** (Text) der Anforderung. Der folgende JSON-Code sollte angezeigt werden. Wenn nicht: Wählen Sie **Raw** > **JSON (application/json)** aus, und fügen Sie anschließend den folgenden Code als Text hinzu:
+Legen Sie die Struktur des Azure Cognitive Search-Index im Text der Anforderung fest. Navigieren Sie in Postman nach dem Festlegen der Header `api-key` und `Content-type` zum Bereich **Body** (Text) der Anforderung. Der folgende JSON-Code sollte angezeigt werden. Wenn nicht: Wählen Sie **Raw** > **JSON (application/json)** aus, und fügen Sie anschließend den folgenden Code als Text hinzu:
 
 ```JSON
 {
@@ -148,7 +149,7 @@ Wählen Sie **Send** (Senden) aus, um die PUT-Anforderung zu senden. Als Status 
 
 ## <a name="create-the-datasource"></a>Erstellen der Datenquelle
 
-Verbinden Sie als Nächstes Azure Search mit den Hoteldaten, die Sie unter [Speichern der Daten](#store-the-data) gespeichert haben. Senden Sie eine POST-Anforderung an `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`, um die Datenquelle zu erstellen. Sie müssen die Header `api-key` und `Content-Type` wie oben beschrieben festlegen. 
+Verbinden Sie als Nächstes Azure Cognitive Search mit den Hoteldaten, die Sie unter [Speichern der Daten](#store-the-data) gespeichert haben. Senden Sie eine POST-Anforderung an `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}`, um die Datenquelle zu erstellen. Sie müssen die Header `api-key` und `Content-Type` wie oben beschrieben festlegen. 
 
 Navigieren Sie in Postman zur Anforderung **Create Datasource** (Datenquelle erstellen) und dann zum Bereich **Body** (Text). Der folgende Code sollte angezeigt werden:
 
@@ -306,7 +307,7 @@ Der letzte Schritt ist die Erstellung des Indexers. Der Indexer liest die Daten 
 
 Das `parameters/configuration`-Objekt steuert die Erfassung der Daten durch den Indexer. In diesem Fall befinden sich die Eingabedaten in einem einzigen Dokument, das über eine Kopfzeile und durch Trennzeichen getrennte Werte verfügt. Der Dokumentschlüssel ist ein eindeutiger Bezeichner für das Dokument. Vor der Codierung ist der Dokumentschlüssel die URL des Quelldokuments. Schließlich werden die Ausgabewerte des Skillsets, z. B. Sprachcode, Stimmung und Schlüsselbegriffe, den entsprechenden Positionen im Dokument zugeordnet. Es ist zwar ein einzelner Wert für `Language` vorhanden, aber `Sentiment` wird auf jedes Element im Array `pages` angewendet. `Keyphrases` ist ein Array, das ebenfalls auf jedes Element im Array `pages` angewendet wird.
 
-Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewissert haben, dass der Text der Anforderung dem folgenden Code ähnelt, wählen Sie in Postman die Option **Send** (Senden). Postman sendet eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Search erstellt den Indexer und führt ihn aus. 
+Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewissert haben, dass der Text der Anforderung dem folgenden Code ähnelt, wählen Sie in Postman die Option **Send** (Senden). Postman sendet eine PUT-Anforderung an `https://{{search-service-name}}.search.windows.net/indexers/{{indexer-name}}?api-version={{api-version}}`. Azure Cognitive Search erstellt den Indexer und führt ihn aus. 
 
 ```json
 {
@@ -339,7 +340,7 @@ Nachdem Sie die Header `api-key` und `Content-type` festgelegt und sich vergewis
 
 ## <a name="run-the-indexer"></a>Ausführen des Indexers 
 
-Navigieren Sie im Azure-Portal zur Seite **Übersicht** des Azure Search-Diensts. Wählen Sie die Registerkarte **Indexer** und dann **hotels-reviews-ixr** aus. Wählen Sie **Ausführen**, falls der Indexer nicht bereits ausgeführt wurde. Unter Umständen werden für die Indizierungsaufgabe einige Warnungen in Bezug auf die Spracherkennung ausgelöst. Die Daten enthalten einige Überprüfungen in Sprachen, die von den kognitiven Skills noch nicht unterstützt werden. 
+Navigieren Sie im Azure-Portal zur Seite **Übersicht** des Azure Cognitive Search-Diensts. Wählen Sie die Registerkarte **Indexer** und dann **hotels-reviews-ixr** aus. Wählen Sie **Ausführen**, falls der Indexer nicht bereits ausgeführt wurde. Unter Umständen werden für die Indizierungsaufgabe einige Warnungen in Bezug auf die Spracherkennung ausgelöst. Die Daten enthalten einige Überprüfungen in Sprachen, die von den kognitiven Skills noch nicht unterstützt werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

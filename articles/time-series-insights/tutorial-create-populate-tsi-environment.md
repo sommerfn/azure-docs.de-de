@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/02/2019
+ms.date: 10/16/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 518847db727c9d8c527d272f9122ef9850ca9135
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981232"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553049"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights-Umgebung
 
@@ -55,7 +55,7 @@ In diesem Tutorial wird auch ein [IoT Solution Accelerator](https://www.azureiot
 
 Erstellen Sie zunächst die Lösung für die Gerätesimulation, mit der Testdaten zum Auffüllen Ihrer Time Series Insights-Umgebung generiert werden.
 
-1. Rufen Sie in einem separaten Fenster oder auf einer separaten Registerkarte [azureiotsolutions.com](https://www.azureiotsolutions.com) auf. Melden Sie sich mit demselben Azure-Abonnementkonto an, und wählen Sie den Accelerator **Gerätesimulation** aus.
+1. Rufen Sie in einem separaten Fenster oder auf einer separaten Registerkarte [azureiotsolutions.com](https://www.azureiotsolutions.com) auf. Melden Sie sich mit demselben Azure-Abonnementkonto an, und wählen Sie den Accelerator **Gerätesimulation** aus. Wählen Sie **Jetzt testen** aus.
 
    [![Ausführen des Accelerators „Gerätesimulation“](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
 
@@ -104,13 +104,15 @@ Erstellen Sie zweitens in Ihrem Azure-Abonnement eine Time Series Insights-Umgeb
    **Tier** | Wählen Sie den erforderlichen Durchsatz aus. Wählen Sie **S1** aus.
    **Capacity** | Die Kapazität ist der Multiplikator, der auf die Eingangsrate und Speicherkapazität der ausgewählten SKU angewendet wird. Sie können die Kapazität nach der Erstellung ändern. Wählen Sie als Kapazität **1**.
 
-   Klicken Sie abschließend auf **Überprüfen + erstellen**, um mit dem nächsten Schritt fortzufahren.
+   Wenn Sie fertig sind, wählen Sie **Weiter: Ereignisquelle** aus, um mit dem nächsten Schritt fortzufahren.
 
    [![Erstellen einer Time Series Insights-Umgebungsressource](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
 
 1. Verbinden Sie nun die Time Series Insights-Umgebung mit dem vom Solution Accelerator erstellten IoT-Hub. Legen Sie **Hub auswählen** auf `Select existing` fest. Wählen Sie dann den IoT-Hub, der vom Solution Accelerator erstellt wurde, als Sie **IoT Hub-Name** festgelegt haben.
 
    [![Herstellen einer Verbindung der Time Series Insights-Umgebung mit dem erstellten IoT-Hub](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+
+   Wählen Sie zum Schluss **Überprüfen + erstellen** aus.
 
 1. Im Bereich **Benachrichtigungen** können Sie den Abschluss der Bereitstellung überwachen. 
 
@@ -122,7 +124,7 @@ Füllen Sie nach Abschluss der Bereitstellung und anfänglichen Konfiguration di
 
 Zusammen mit dem IoT-Hub wurde eine Azure App Service-Webanwendung generiert, um Telemetriedaten für simulierte Geräte zu erstellen und zu übertragen.
 
-1. Wechseln Sie zurück zum [Solution Accelerators-Dashboard](https://www.azureiotsolutions.com/Accelerators#dashboard). Melden Sie sich an, falls dies erforderlich ist, indem Sie dasselbe Azure-Konto wie im gesamten bisherigen Tutorial verwenden. Sie können jetzt unter Ihrer Lösung für die „Gerätesimulation“ die Option **Starten** auswählen.
+1. Wechseln Sie zurück zum [Solution Accelerators-Dashboard](https://www.azureiotsolutions.com/Accelerators#dashboard). Melden Sie sich an, falls dies erforderlich ist, indem Sie dasselbe Azure-Konto wie im gesamten bisherigen Tutorial verwenden. Wählen Sie Ihre „Gerätelösung“ aus, und **wechseln Sie anschließend zu Ihrem Solution Accelerator**, um die bereitgestellte Lösung zu starten.
 
      [![Solution Accelerators-Dashboard](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 

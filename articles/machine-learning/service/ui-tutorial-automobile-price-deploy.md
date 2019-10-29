@@ -1,125 +1,121 @@
 ---
 title: 'Tutorial: Bereitstellen eines Machine Learning-Modells mithilfe der grafischen Benutzeroberfläche'
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning eine Vorhersageanalyselösung (Predictive Analytics-Lösung) erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells mithilfe von Drag & Drop-Modulen. Dieses Tutorial ist der zweite Teil einer zweiteiligen Reihe über das Prognostizieren von Automobilpreisen mithilfe der linearen Regression.
+description: Hier erfahren Sie, wie Sie mithilfe der grafischen Benutzeroberfläche von Azure Machine Learning eine Predictive Analytics-Lösung erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells mithilfe von Drag & Drop-Modulen.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 10/22/2019
+ms.openlocfilehash: 6f8717f70a2cb03a7fd683cfe61f1198461f4305
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128986"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792676"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mithilfe der grafischen Benutzeroberfläche
 
-Um anderen Personen die Möglichkeit zu bieten, das in [Teil 1 des Tutorials](ui-tutorial-automobile-price-train-score.md) entwickelte Vorhersagemodell zu verwenden, können Sie es als Azure-Webdienst bereitstellen. Bis jetzt haben Sie mit dem Trainieren des Modells experimentiert. Jetzt ist es an der Zeit, neue Vorhersagen basierend auf Benutzereingaben zu generieren. In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
+Um anderen die Verwendung des im [ersten Teil des Tutorials](ui-tutorial-automobile-price-train-score.md) entwickelten Vorhersagemodells zu ermöglichen, können Sie es als Echtzeitendpunkt bereitstellen. Im ersten Teil haben Sie Ihr Modell trainiert. Jetzt ist es an der Zeit, neue Vorhersagen basierend auf Benutzereingaben zu generieren. In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Vorbereiten eines Modells für die Bereitstellung
-> * Bereitstellen eines Webdiensts
-> * Testen eines Webdiensts
-> * Verwalten eines Webdiensts
-> * Nutzen des Webdiensts
+> * Bereitstellen eines Echtzeitendpunkts
+> * Erstellen eines Rückschlussclusters
+> * Testen eines Echtzeitendpunkts
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie [Teil 1 des Tutorials](ui-tutorial-automobile-price-train-score.md) aus, um zu erfahren, wie Sie ein Machine Learning-Modell auf der grafischen Benutzeroberfläche trainieren und bewerten.
 
-## <a name="prepare-for-deployment"></a>Vorbereiten der Bereitstellung
+## <a name="deploy-a-real-time-endpoint"></a>Bereitstellen eines Echtzeitendpunkts
 
-Bevor Sie Ihr Experiment als Webdienst bereitstellen, müssen Sie zuerst Ihr *Trainingsexperiment* in ein *Vorhersageexperiment* konvertieren.
+Für die Bereitstellung Ihrer Pipeline ist Folgendes erforderlich:
 
-1. Wählen Sie unten im Experimentbereich die Option zum **Erstellen eines Vorhersageexperiments**\*.
+1. Konvertieren Sie die Trainingspipeline in eine Echtzeit-Rückschlusspipeline. Dadurch werden Trainingsmodule entfernt sowie Ein- und Ausgaben für Rückschlussanforderungen hinzugefügt.
+1. Stellen Sie die Rückschlusspipeline bereit.
 
-    ![Animierte GIF der Darstellung der automatischen Konvertierung eines Trainingsexperiments in ein Vorhersageexperiment](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+### <a name="create-a-real-time-inference-pipeline"></a>Erstellen einer Echtzeit-Rückschlusspipeline
 
-    Wenn Sie **Vorhersageexperiment erstellen** auswählen, geschehen mehrere Dinge:
+1. Wählen Sie im oberen Bereich der Pipelinecanvas **Rückschlusspipeline erstellen** > **Echtzeit-Rückschlusspipeline** aus.
+
+    Wenn Sie **Rückschlusspipeline erstellen** auswählen, passiert Folgendes:
     
-    * Das trainierte Modell wird als Modul **Trainiertes Modell** in der Modulpalette gespeichert. Sie finden das Modell unter **Trained Models** (Trainierte Modelle).
-    * Module, die zum Training verwendet wurden, werden entfernt. Das gilt insbesondere für:
-      * Train Model (Modell trainieren)
-      * Split Data (Daten aufteilen)
-      * Bewerten eines Modells
-    * Das gespeicherte trainierte Modell wird wieder dem Experiment hinzugefügt.
-    * Die Module **Web service input** und **Web service output** werden hinzugefügt. Diese Module identifizieren, wo die Daten des Benutzers in das Modell eingehen und wo die Daten zurückgegeben werden.
+    * Das trainierte Modell wird als Modul **Dataset** in der Modulpalette gespeichert. Sie finden es unter **My Datasets** (Meine Datasets).
+    * Zum Trainieren verwendete Module wie **Train Model** (Modell trainieren) und **Split Data** (Daten aufteilen) werden entfernt.
+    * Das gespeicherte trainierte Modell wird wieder der Pipeline hinzugefügt.
+    * Die Module **Web Service Input** (Webdiensteingabe) und **Web Service Output** (Webdienstausgabe) werden hinzugefügt. Diese Module identifizieren, wo Benutzerdaten in das Modell eingehen und wo sie zurückgegeben werden.
 
-    Das **Trainingsexperiment** ist weiterhin auf den neuen Registerkarten gespeichert, die oben im Experimentbereich befinden.
+    > [!Note]
+    > Die **Trainingspipeline** wird am oberen Rand der Pipelinecanvas unter der neuen Registerkarte gespeichert. Darüber hinaus steht sie auf der grafischen Benutzeroberfläche als veröffentlichte Pipeline zur Verfügung.
+    >
 
-1. **Ausführen** aus.
+    Ihre Pipeline sollte nun wie folgt aussehen:  
 
-1. Wählen Sie die Ausgabe des Moduls **Modell bewerten** aus, und wählen Sie dann **Ergebnisse anzeigen** aus, um sicherzustellen, dass das Modell noch funktioniert. Daraufhin werden die ursprünglichen Daten zusammen mit dem prognostizierten Preis („Scored Labels“) angezeigt.
+   ![Screenshot der erwarteten Pipelinekonfiguration nach Vorbereitung der Bereitstellung](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-Ihr Experiment sollte jetzt wie folgt aussehen:  
+1. Wählen Sie **Ausführen** aus, und verwenden Sie das gleiche Computeziel und Experiment wie im ersten Teil.
 
-![Screenshot der erwarteten Konfiguration des Experiments nach dem Vorbereiten der Bereitstellung](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+1. Wählen Sie das Modul **Score Model** (Modell bewerten) aus.
 
-## <a name="deploy-the-web-service"></a>Bereitstellen des Webdiensts
+1. Wählen Sie im Eigenschaftenbereich **Ausgaben** > **Visualisieren** aus, um sich zu vergewissern, dass das Modell weiterhin funktioniert. Daraufhin werden die ursprünglichen Daten zusammen mit dem prognostizierten Preis („Scored Labels“) angezeigt.
 
-1. Wählen Sie unten im Experimentbereich die Option **Deploy Web Service** (Webdienst bereitstellen) aus.
+1. Klicken Sie auf **Bereitstellen**.
 
-1. Wählen Sie das **Computeziel** für die Ausführung Ihres Webdiensts aus.
+### <a name="create-an-inferencing-cluster"></a>Erstellen eines Rückschlussclusters
 
-    Derzeit unterstützt die grafische Benutzeroberfläche nur die Bereitstellung in Azure Kubernetes Service-Computezielen (AKS). Sie können im Machine Learning Service-Arbeitsbereich eines der verfügbaren AKS-Computeziele auswählen oder eine neue AKS-Umgebung konfigurieren, indem Sie im daraufhin angezeigten Dialogfeld die entsprechenden Schritte ausführen.
+Im angezeigten Dialogfeld können Sie vorhandene AKS-Cluster (Azure Kubernetes Service) in Ihrem Arbeitsbereich auswählen, um Ihr Modell bereitzustellen. Sollten Sie über keinen AKS-Cluster verfügen, gehen Sie wie folgt vor, um einen zu erstellen:
 
-    ![Screenshot einer möglichen Konfiguration für ein neues Computeziel](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+1. Wählen Sie im Dialogfeld die Option **Compute** aus, um zur Seite **Compute** zu gelangen.
 
-1. Wählen Sie **Deploy Web Service** (Webdienst bereitstellen) aus. Wenn die Bereitstellung abgeschlossen ist, wird die folgende Benachrichtigung angezeigt. Die Bereitstellung kann mehrere Minuten dauern.
+1. Wählen Sie auf dem Navigationsmenüband **Rückschlusscluster** >  **+ Neu** aus.
 
-    ![Screenshot der Bestätigungsmeldung einer erfolgreichen Bereitstellung.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![Screenshot: Navigation zum Bereich für den neuen Rückschlusscluster](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
-## <a name="test-the-web-service"></a>Testen des Webdiensts
+1. Konfigurieren Sie im Bereich des Rückschlussclusters einen neuen Kubernetes-Dienst.
 
-Sie können Ihre Webdienste der grafischen Benutzeroberfläche testen und verwalten, indem Sie zur Registerkarte **Webdienste** navigieren.
+1. Geben Sie unter **Computename** den Namen „aks-compute“ ein.
+    
+1. Wählen Sie unter **Region** eine verfügbare Region in der Nähe aus.
 
-1. Wechseln Sie zum Abschnitt „Web Services“ (Webdienste). Es wird der von Ihnen bereitgestellte Webdienst mit dem Namen **Tutorial – Predict Automobile Price[Predictive Exp]** (Tutorial – Automobilpreisvorhersage[Vorhersageexperiment]) angezeigt.
+1. Klicken Sie auf **Erstellen**.
 
-     ![Screenshot der Registerkarte „Web Services“, in dem der zuletzt erstellte Webdienst hervorgehoben ist](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+    > [!Note]
+    > Die Erstellung eines neuen AKS-Diensts dauert etwa 15 Minuten. Der Bereitstellungsstatus kann auf der Seite **Rückschlusscluster** überprüft werden.
+    >
 
-1. Wählen Sie den Namen des Webdiensts aus, um weitere Details anzuzeigen.
+### <a name="deploy-the-real-time-endpoint"></a>Bereitstellen des Echtzeitendpunkts
+
+Kehren Sie nach Abschluss der Bereitstellung des AKS-Diensts zur Echtzeit-Rückschlusspipeline zurück, um deren Bereitstellung abzuschließen.
+
+1. Wählen Sie über der Canvas die Option **Bereitstellen** aus.
+
+1. Wählen Sie **Neuen Echtzeitendpunkt bereitstellen** aus. 
+
+1. Wählen Sie den erstellten AKS-Cluster aus.
+
+1. Klicken Sie auf **Bereitstellen**.
+
+    ![Screenshot: Einrichtung eines neuen Echtzeit-Endpunkts](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+
+    Nach Abschluss der Bereitstellung wird über der Canvas eine Erfolgsbenachrichtigung angezeigt. Der Bereitstellungsvorgang kann einige Minuten dauern.
+
+## <a name="test-the-real-time-endpoint"></a>Testen des Echtzeitendpunkts
+
+Sie können den Echtzeitendpunkt testen, indem Sie auf der linken Seite im Navigationsbereich des Arbeitsbereichs zur Seite **Endpunkte** navigieren.
+
+1. Wählen Sie auf der Seite **Endpunkte** den bereitgestellten Endpunkt aus.
+
+    ![Screenshot: Registerkarte „Echtzeitendpunkte“ mit Hervorhebung des kürzlich erstellten Endpunkts](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
 1. Klicken Sie auf **Test**.
 
-    [![Screenshot der Testseite für den Webdienst](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
-
 1. Geben Sie Testdaten ein, oder verwenden Sie die automatisch ausgefüllten Beispieldaten, und wählen Sie die Option **Test** aus.
 
-    Die Testanforderung wird an den Webdienst gesendet, und die Ergebnisse werden auf der Seite angezeigt. Für die Eingabedaten wird zwar ein Preiswert generiert, dieser wird jedoch nicht zum Generieren des Vorhersagewerts verwendet.
+    Die Testanforderung wird an den Endpunkt übermittelt, und die Ergebnisse werden auf der Seite angezeigt. Für die Eingabedaten wird zwar ein Preiswert generiert, dieser wird jedoch nicht zum Generieren des Vorhersagewerts verwendet.
 
-## <a name="consume-the-web-service"></a>Nutzen des Webdiensts
-
-Benutzer können jetzt API-Anforderungen an Ihren Azure-Webdienst senden und Ergebnisse empfangen, um den Preis ihrer neuen Autos vorherzusagen.
-
-**Anforderung/Antwort** – Der Benutzer sendet eine oder mehrere Zeilen von Automobildaten mithilfe eines Hypertext Transfer-Protokolls (HTTP) an den Dienst. Der Dienst antwortet mit einem oder mehreren Ergebnissätzen.
-
-REST-Beispielaufrufe finden Sie auf der Seite der Webdienstdetails auf der Registerkarte **Consume** (Nutzung).
-
-   ![Screenshot eines REST-Beispielaufrufs, der Benutzern auf der Registerkarte „Consume“ angezeigt wird](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
-
-Navigieren Sie zur Registerkarte **API Doc** (API-Dok), um weitere API-Details anzuzeigen.
-
-## <a name="manage-models-and-deployments"></a>Verwalten von Modellen und Bereitstellungen
-
-Die von Ihnen auf der grafischen Benutzeroberfläche erstellten Modelle und Webdienstbereitstellungen können auch im Azure Machine Learning-Arbeitsbereich verwaltet werden.
-
-1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  
-
-1. Wählen Sie in Ihrem Arbeitsbereich die Option **Models** (Modelle) aus. Wählen Sie dann das Experiment aus, das Sie erstellt haben.
-
-    ![Screenshot, der zeigt, wie Sie im Azure-Portal zu Experimenten navigieren](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
-
-    Auf dieser Seite werden weitere Details zum Modell angezeigt.
-
-1. Wählen Sie **Deployments** (Bereitstellungen) aus. Auf dieser Registerkarte werden alle Webdienste aufgeführt, die das Modell verwenden. Wählen Sie den Namen des Webdiensts aus. Daraufhin wird die Seite der Webdienstdetails angezeigt. Auf dieser Seite finden Sie ausführlichere Informationen zum Webdienst.
-
-    [![Screenshot eines detaillierten Ausführungsberichts](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
-
-Diese Modelle und Bereitstellungen finden Sie auch auf der [Landing Page des Arbeitsbereichs (Vorschau)](https://ml.azure.com) in den Abschnitten **Modelle** und **Endpunkte**.
+    ![Screenshot: Test des Echtzeitendpunkts mit Hervorhebung des ausgewerteten Bezeichners für den Preis](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -127,7 +123,7 @@ Diese Modelle und Bereitstellungen finden Sie auch auf der [Landing Page des Arb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die wichtigsten Schritte zum Erstellen, Bereitstellen und Verwenden eines Machine Learning-Modells auf der grafischen Benutzeroberfläche gelernt. Wenn Sie mehr darüber erfahren möchten, wie Sie die grafische Benutzeroberfläche verwenden können, um andere Arten von Problemen zu lösen, sehen Sie sich die Beispielexperimente an.
+In diesem Tutorial haben Sie die wichtigsten Schritte zum Erstellen, Bereitstellen und Verwenden eines Machine Learning-Modells auf der grafischen Benutzeroberfläche gelernt. Wenn Sie mehr darüber erfahren möchten, wie Sie die grafische Benutzeroberfläche verwenden können, um andere Arten von Problemen zu lösen, sehen Sie sich die Beispielpipelines an.
 
 > [!div class="nextstepaction"]
 > [Beispiel für die Kreditrisikoklassifizierung](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

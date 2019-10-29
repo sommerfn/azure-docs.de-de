@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/24/2019
+ms.date: 10/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebaf3a1d877025cafe8829bc937ef032a3c95d03
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f37085744b9a0e7785ef3a411d53e4df5d15e494
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163455"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595009"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EBSCO
 
@@ -68,10 +68,10 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit EBSCO mith
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit EBSCO die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für EBSCO](#configure-ebsco-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines EBSCO-Testbenutzers](#create-ebsco-test-user)** , um eine Entsprechung von B. Simon in EBSCO zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+    * **[Erstellen eines EBSCO-Testbenutzers](#create-ebsco-test-user)** , um eine Entsprechung von B. Simon in EBSCO zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -100,6 +100,21 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     o   **Custid** – Geben Sie die eindeutige EBSCO-Kunden-ID ein. 
 
     o   **Profile** – Clients können den Link, mit dem Benutzer zu einem bestimmten Profil umgeleitet werden (je nachdem, was sie von EBSCO erwerben), anpassen. Sie können eine bestimmte Profil-ID eingeben. Die Haupt-IDs sind eds (EBSCO Discovery Service) und ehost (EBSOCOhost-Datenbanken). Die zugehörigen Anweisungen finden Sie [hier](https://help.ebsco.com/interfaces/EBSCOhost/EBSCOhost_FAQs/How_do_I_set_up_direct_links_to_EBSCOhost_profiles_and_or_databases#profile).
+
+1. Ihre EBSCO-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
+
+    ![image](common/default-attributes.png)
+
+    > [!Note]
+    > Das **name**-Attribut ist obligatorisch. Es wird dem Wert **Benutzerbezeichner** in der EBSCO-Anwendung zugeordnet. Es wird standardmäßig hinzugefügt, sodass Sie es nicht manuell hinzufügen müssen.
+
+1. Darüber hinaus wird von der EBSCO-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+
+    | NAME | Quellattribut|
+    | ---------------| --------------- |
+    | FirstName   | user.givenname |
+    | Nachname   | user.surname |
+    | Email   | user.mail |
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -151,8 +166,8 @@ Bei EBSCO erfolgt die Benutzerbereitstellung automatisch.
 
 Azure AD übermittelt die erforderlichen Daten an die EBSCO-Anwendung. Die Benutzerbereitstellung von EBSCO kann automatisch oder einmalig erfolgen. Dies hängt davon ab, ob der Client über viele bereits vorhandene EBSCOhost-Konten verfügt, in denen persönliche Einstellungen gespeichert sind. Dies kann während der Implementierung mit dem [EBSCO-Supportteam](mailto:support@ebsco.com) erörtert werden. Der Client muss in keinem der beiden Fälle vor dem Testen EBSCOhost-Konten erstellen.
 
-   >[!Note]
-   >Sie können die Bereitstellung und Personalisierung von EBSCOhost-Benutzern automatisieren. Wenden Sie sich mit Fragen zur Just-In-Time-Benutzerbereitstellung an das [EBSCO-Supportteam](mailto:support@ebsco.com).
+   > [!Note]
+   > Sie können die Bereitstellung und Personalisierung von EBSCOhost-Benutzern automatisieren. Wenden Sie sich mit Fragen zur Just-In-Time-Benutzerbereitstellung an das [EBSCO-Supportteam](mailto:support@ebsco.com).
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
@@ -180,4 +195,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [EBSCO mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-

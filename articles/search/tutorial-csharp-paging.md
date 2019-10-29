@@ -1,22 +1,23 @@
 ---
-title: 'C#-Tutorial zur Suchergebnispaginierung: Azure Search'
-description: Dieses Tutorial baut auf dem Projekt „Erstellen Ihrer ersten App – Azure Search“ auf, und Sie können zwischen zwei Arten der Paginierung wählen. Beim ersten Paginierungssystem werden verschiedene Schaltflächen für Seitenzahlen sowie Schaltflächen für die erste, nächste, vorherige und letzte Seite verwendet. Beim zweiten Paginierungssystem wird das unendliche Scrollen verwendet. Dies wird ausgelöst, indem eine vertikale Scrollleiste ganz nach unten verschoben wird.
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.author: v-pettur
+title: C#-Tutorial zur Suchergebnispaginierung
+titleSuffix: Azure Cognitive Search
+description: Dieses Tutorial baut auf dem Projekt „Erstellen Ihrer ersten App – Azure Cognitive Search“ auf, und Sie können zwischen zwei Arten der Paginierung wählen. Beim ersten Paginierungssystem werden verschiedene Schaltflächen für Seitenzahlen sowie Schaltflächen für die erste, nächste, vorherige und letzte Seite verwendet. Beim zweiten Paginierungssystem wird das unendliche Scrollen verwendet. Dies wird ausgelöst, indem eine vertikale Scrollleiste ganz nach unten verschoben wird.
+manager: nitinme
 author: PeterTurcan
-ms.date: 05/01/2019
-ms.openlocfilehash: 7e6c433168b73c6b58d13d4698bed55d7c18ec58
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: v-pettur
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67434628"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793997"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-search"></a>C#-Tutorial: Suchergebnispaginierung – Azure Search
+# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search
 
-Es wird beschrieben, wie Sie zwei unterschiedliche Paginierungssysteme implementieren, wobei das erste auf Seitenzahlen und das zweite auf dem unendlichen Scrollen basiert. Beide Paginierungssysteme werden häufig genutzt. Die jeweilige richtige Wahl hängt von der Benutzeroberfläche ab, die Sie für Ihre Ergebnisse verwenden möchten. In diesem Tutorial werden die Paginierungssysteme in das Projekt integriert, die im Tutorial [C#-Tutorial: Erstellen Ihrer ersten App – Azure Search](tutorial-csharp-create-first-app.md) erstellt wurden.
+Es wird beschrieben, wie Sie zwei unterschiedliche Paginierungssysteme implementieren, wobei das erste auf Seitenzahlen und das zweite auf dem unendlichen Scrollen basiert. Beide Paginierungssysteme werden häufig genutzt. Die jeweilige richtige Wahl hängt von der Benutzeroberfläche ab, die Sie für Ihre Ergebnisse verwenden möchten. In diesem Tutorial werden die Paginierungssysteme in das Projekt integriert, die im Tutorial [C#-Tutorial: Erstellen Ihrer ersten App – Azure Cognitive Search](tutorial-csharp-create-first-app.md) erstellt wurden.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -27,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-Das Projekt [C#-Tutorial: Erstellen Ihrer ersten App – Azure Search](tutorial-csharp-create-first-app.md) muss einsatzbereit sein. Dieses Projekt kann entweder Ihre eigene Version sein, oder Sie installieren es über GitHub: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Das Projekt [C#-Tutorial: Erstellen Ihrer ersten App – Azure Cognitive Search](tutorial-csharp-create-first-app.md) muss einsatzbereit sein. Dieses Projekt kann entweder Ihre eigene Version sein, oder Sie installieren es über GitHub: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="extend-your-app-with-numbered-paging"></a>Erweitern Ihrer App um die Paginierung mit Seitenzahlen
 
@@ -361,7 +362,7 @@ Das System behandelt die Schaltflächen für die Seitenzahlen ganz links und rec
     ```
 
     > [!Note]
-    > Wenn **IncludeTotalResultCount** auf „true“ festgelegt wird, kommt es zu einer Auswirkung auf die Leistung, die aber meist nicht sehr stark ist. Der Grund ist, dass dieser Gesamtwert von Azure Search berechnet werden muss. Bei komplexen Datasets wird eine Warnung mit dem Hinweis angezeigt, dass der zurückgegebene Wert ein _Näherungswert_ ist. Für unsere Hoteldaten wird aber ein genauer Wert angegeben.
+    > Wird **IncludeTotalResultCount** auf „true“ festgelegt, wirkt sich dies (in der Regel geringfügig) auf die Leistung aus. Der Grund dafür ist, dass dieser Gesamtwert von Azure Cognitive Search berechnet werden muss. Bei komplexen Datasets wird eine Warnung mit dem Hinweis angezeigt, dass der zurückgegebene Wert ein _Näherungswert_ ist. Für unsere Hoteldaten wird aber ein genauer Wert angegeben.
 
 ### <a name="compile-and-run-the-app"></a>Kompilieren und Ausführen der App
 
@@ -474,7 +475,7 @@ Es sind nur drei Aktionen vorhanden, die an den Controller gesendet werden müss
 
 1. Öffnen Sie die Home-Controller-Datei, und löschen Sie die **RunQueryAsync**-Methode aus dem ursprünglichen Tutorial.
 
-2. Ersetzen Sie die **Index(model)** -Aktion durch den folgenden Code. Nun wird das Feld **paging** verarbeitet, wenn „null“ angegeben ist. Bei „next“ wird der Aufruf von Azure Search durchgeführt.
+2. Ersetzen Sie die **Index(model)** -Aktion durch den folgenden Code. Nun wird das Feld **paging** verarbeitet, wenn „null“ angegeben ist. Bei „next“ wird der Aufruf von Azure Cognitive Search durchgeführt.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -600,4 +601,4 @@ Beachten Sie die folgenden Erkenntnisse aus diesem Projekt:
 Die Paginierung ist für Internetsuchen von entscheidender Bedeutung. Nachdem wir die Paginierung ausführlich behandelt haben, verbessern wir im nächsten Schritt die Benutzeroberfläche weiter, indem wir die Textvervollständigung für die Suche hinzufügen.
 
 > [!div class="nextstepaction"]
-> [C#-Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen – Azure Search](tutorial-csharp-type-ahead-and-suggestions.md)
+> [C#-Tutorial: Hinzufügen von AutoVervollständigen und Vorschlägen – Azure Cognitive Search](tutorial-csharp-type-ahead-and-suggestions.md)

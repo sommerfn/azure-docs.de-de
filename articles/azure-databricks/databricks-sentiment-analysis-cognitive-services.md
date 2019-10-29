@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 1d8b3aad3104f07f8f6499c88f00328c95047816
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 1a0d0426904ef5f9f49a627120ff2cc65f630861
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274222"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785941"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Tutorial: Standpunktanalyse für Streamingdaten mit Azure Databricks
 
@@ -43,7 +43,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 > [!Note]
 > Dieses Tutorial kann nicht mit dem **kostenlosen Azure-Testabonnement** absolviert werden.
-> Navigieren Sie vor dem Erstellen des Clusters zu Ihrem Profil, und legen Sie für Ihr Abonnement die **nutzungsbasierte Bezahlung** fest, um für die Erstellung des Azure Databricks-Clusters ein kostenloses Konto zu verwenden. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall).
+> Wenn Sie ein kostenloses Konto haben, rufen Sie Ihr Profil auf, und ändern Sie Ihr Abonnement auf **Nutzungsbasierte Bezahlung**. Weitere Informationen finden Sie unter [Kostenloses Azure-Konto](https://azure.microsoft.com/free/). [Entfernen Sie das dann Ausgabenlimit](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center), und [fordern Sie die Erhöhung des Kontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) für vCPUs in Ihrer Region an. Wenn Sie Ihren Azure Databricks-Arbeitsbereich erstellen, können Sie den Tarif **Testversion (Premium – 14 Tage kostenlosen DBUs)** auswählen, damit Sie über den Arbeitsbereich 14 Tage lang auf kostenlose Premium Azure Databricks-DBUs zugreifen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -85,7 +85,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 4. Die Kontoerstellung dauert einige Minuten. Während der Erstellung des Kontos wird im Portal auf der rechten Seite die Kachel **Submitting deployment for Azure Databricks** (Bereitstellung für Azure Databricks wird übermittelt) angezeigt. Möglicherweise müssen Sie im Dashboard nach rechts scrollen, um die Kachel zu sehen. Am oberen Bildschirmrand wird auch eine Statusanzeige angezeigt. Sie können den Status beider Bereiche beobachten.
 
-    ![Kachel zur Bereitstellung von Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Kachel zur Bereitstellung von Databricks")
+    ![Databricks-Bereitstellungskachel](./media/databricks-sentiment-analysis-cognitive-services/databricks-deployment-tile.png "Databricks-Bereitstellungskachel")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Erstellen eines Spark-Clusters in Databricks
 
@@ -97,7 +97,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 3. Geben Sie auf der Seite **Neuer Cluster** die erforderlichen Werte an, um einen Cluster zu erstellen.
 
-    ![Erstellen eines Databricks-Spark-Clusters in Azure](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
+    ![Erstellen eines Databricks Spark-Clusters in Azure](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-spark-cluster.png "Erstellen eines Databricks Spark-Clusters in Azure")
 
     Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
@@ -135,18 +135,18 @@ In diesem Tutorial verwenden Sie die Twitter-APIs, um Tweets an Event Hubs zu se
 
 1. Wählen Sie im Azure Databricks-Arbeitsbereich die Option **Clusters** (Cluster)und dann Ihren vorhandenen Spark-Cluster aus. Wählen Sie im Clustermenü die Option **Libraries** (Bibliotheken) aus, und klicken Sie auf **Install New** (Neu installieren).
 
-   ![Dialogfeld „Bibliothek hinzufügen“](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Bibliothek hinzufügen – Cluster suchen")
+   ![Dialogfeld zum Hinzufügen einer Bibliothek](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-locate-cluster.png "Bibliothek hinzufügen – Cluster suchen")
 
-   ![Dialogfeld „Bibliothek hinzufügen“](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Bibliothek hinzufügen – Neu installieren")
+   ![Dialogfeld zum Hinzufügen einer Bibliothek](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Bibliothek hinzufügen – neu installieren")
 
 2. Wählen Sie auf der Seite „Neue Bibliothek“ unter **Quelle** die Option **Maven** aus. Klicken Sie für **Koordinate** auf **Pakete durchsuchen** für das Paket, das Sie hinzufügen möchten. Im Anschluss finden Sie die Maven-Koordinaten für die Bibliotheken, die in diesem Tutorial verwendet werden:
 
    * Spark-Event Hubs-Connector: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter-API: `org.twitter4j:twitter4j-core:4.0.7`
 
-     ![Angeben von Maven-Koordinaten](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Angeben von Maven-Koordinaten")
+     ![Bereitstellen von Maven-Koordinaten](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search.png "Bereitstellen von Maven-Koordinaten")
 
-     ![Angeben von Maven-Koordinaten](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Suchen von Maven-Koordinaten")
+     ![Bereitstellen von Maven-Koordinaten](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Suchen von Maven-Koordinaten")
 
 3. Wählen Sie **Installieren** aus.
 
@@ -201,11 +201,11 @@ In diesem Abschnitt erstellen Sie zwei Notebooks mit den folgenden Namen im Data
 
 1. Wählen Sie im linken Bereich die Option **Arbeitsbereich**. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** und dann **Notebook**.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
 2. Geben Sie im Dialogfeld **Notizbuch erstellen** den Namen **SendTweetsToEventHub** ein, wählen Sie **Scala** als Sprache aus, und wählen Sie den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-notebook-details.png "Erstellen eines Notebooks in Databricks")
 
     Klicken Sie auf **Erstellen**.
 

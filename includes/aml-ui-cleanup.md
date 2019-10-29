@@ -7,17 +7,16 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 10/16/2019
+ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178508"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692357"
 ---
 >[!IMPORTANT]
 >Sie können die von Ihnen bei der Vorbereitung erstellten Ressourcen auch in anderen Tutorials und Anleitungen für Azure Machine Learning Service verwenden.
-
 
 ### <a name="delete-everything"></a>Alles löschen
 
@@ -49,6 +48,6 @@ Das hier erstellte Computeziel wird *automatisch auf null Knoten skaliert*, wen
 
 ### <a name="delete-individual-assets"></a>Löschen einzelner Objekte
 
-Löschen Sie einzelne Ressourcen auf der grafischen Benutzeroberfläche, auf der Sie das Experiment erstellt haben. Wählen Sie dazu die gewünschten Ressourcen und anschließend die Schaltfläche **Löschen** aus.
+Löschen Sie einzelne Ressourcen auf der grafischen Benutzeroberfläche, auf der Sie das Experiment erstellt haben. Wählen Sie dazu die gewünschten Ressourcen und anschließend die Schaltfläche **Löschen** aus. Die Registrierung von Datasets im Arbeitsbereich kann aufgehoben werden, indem Sie die einzelnen Datasets und anschließend **Registrierung aufheben** auswählen.
 
-![Löschen von Experimenten](./media/aml-ui-cleanup/delete-experiment.png)
+![Löschen von Assets](./media/aml-ui-cleanup/delete-asset.png)

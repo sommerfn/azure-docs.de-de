@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177684"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528763"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Schnellstart: Starten der Überwachung Ihrer Node.js-Webanwendung mit Azure Application Insights
 
@@ -43,7 +43,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 1. Klicken Sie auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**.
 
-   ![Hinzufügen einer Application Insights-Ressource](./media/nodejs-quick-start/1createresourseappinsights.png)
+   ![Hinzufügen einer Azure Application Insights-Ressource](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
    >Wenn Sie zum ersten Mal eine Application Insights-Ressource erstellen, können Sie mehr dazu im Dokument [Erstellen einer Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) erfahren.
@@ -62,7 +62,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 1. Wählen Sie **Übersicht** aus, und kopieren Sie den **Instrumentierungsschlüssel** Ihrer Anwendung.
 
-   ![Formular für neue App Insights-Ressource](./media/nodejs-quick-start/3key.png)
+   ![Anzeigen des Application Insights-Instrumentierungsschlüssels](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
 2. Fügen Sie das Application Insights SDK für Node.js zu Ihrer Anwendung hinzu. Führen Sie folgenden Befehl im Stammverzeichnis Ihrer App aus:
 
@@ -86,19 +86,19 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 1. Sie können jetzt im Azure-Portal erneut die Seite **Übersicht** für Application Insights öffnen, von der Sie den Instrumentierungsschlüssel abgerufen haben, um Details zu Ihrer aktuell ausgeführten Anwendung anzuzeigen.
 
-   ![Application Insights – Menü „Übersicht“](./media/nodejs-quick-start/4overview.png)
+   ![Application Insights: Menü „Übersicht“](./media/nodejs-quick-start/azure-app-insights-overview-menu.png)
 
 2. Wählen Sie **Anwendungsübersicht** aus, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten. Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
 
-   ![Anwendungszuordnung](./media/nodejs-quick-start/5appmap.png)
+   ![Application Insights-Anwendungsübersicht](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Wählen Sie das **App-Analyse**-Symbol ![Symbol „Anwendungsübersicht“](./media/nodejs-quick-start/006.png) **In Analytics anzeigen** aus.  Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Wählen Sie das **App-Analyse**-Symbol ![Symbol „Anwendungsübersicht“](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **In Analytics anzeigen** aus.  Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
-   ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/nodejs-quick-start/6analytics.png)
+   ![Application Insights-Analysediagramme](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
 4. Kehren Sie zur Seite **Übersicht** zurück, und untersuchen Sie die KPI-Graphen.  Dieses Dashboard zeigt Statistiken zur Integrität Ihrer Anwendung, einschließlich der Anzahl von eingehenden Anforderungen, der Dauer dieser Anforderungen und aller auftretenden Fehler.
 
-   ![Diagramm der Übersichtszeitachse für die Integrität](./media/nodejs-quick-start/7kpidashboards.png)
+   ![Application Insights-Diagramm der Übersichtszeitachse für die Integrität](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
    Damit das Diagramm **Ladezeit der Seitenansicht** mit **clientseitigen Telemetriedaten** aufgefüllt werden kann, fügen Sie dieses Skript zu jeder Seite hinzu, die Sie nachverfolgen möchten:
 
@@ -124,7 +124,7 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 5. Wählen Sie links die Option **Metrik** aus. Untersuchen Sie mithilfe des Metrik-Explorers die Integrität und Auslastung Ihrer Ressource. Sie können **Neues Diagramm hinzufügen** auswählen, um zusätzliche benutzerdefinierte Ansichten zu erstellen, oder **Bearbeiten** auswählen, um Typ, Höhe, Farbpalette, Gruppierungen und Metriken der vorhandenen Diagramme zu ändern. Sie können beispielsweise ein Diagramm für die durchschnittliche Seitenladezeit des Browsers erstellen, indem Sie in der Metrik-Dropdownliste die Option für die Browser-Seitenladezeit und unter „Aggregation“ die Durchschnittsoption auswählen. Weitere Informationen zum Azure-Metrik-Explorer finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md).
 
-   ![Servermetriken – Diagramm](./media/nodejs-quick-start/8metrics.png)
+   ![Application Insights-Diagramm der Servermetriken](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
 Weitere Informationen zum Überwachen von Node.js finden Sie in der [weiteren Dokumentation zu Application Insights und Node.js](../../azure-monitor/app/nodejs.md).
 

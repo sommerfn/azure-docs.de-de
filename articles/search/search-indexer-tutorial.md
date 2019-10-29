@@ -1,27 +1,27 @@
 ---
-title: 'C#-Tutorial: Indizieren von Daten aus Azure SQL-Datenbanken: Azure Search'
-description: Dieses C#-Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Search-Index laden.
-author: HeidiSteen
+title: 'C#-Tutorial: Indizieren von Daten aus Azure SQL-Datenbanken'
+titleSuffix: Azure Cognitive Search
+description: Dieses C#-Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Cognitive Search-Index laden.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: d83db424ee6e9a009353ca568232b38260883a4c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327175"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793601"
 ---
-# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#-Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-cognitive-search-indexers"></a>C#-Tutorial: Durchforsten einer Azure SQL-Datenbank unter Verwendung von Azure Cognitive Search-Indexern
 
-Sie erfahren, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
+Sie erfahren, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Cognitive Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
 
 Es ist hilfreich, wenn Sie bereits mit dem Konfigurieren von Indexern vertraut sind, da dies das Schreiben und Verwalten von Code vereinfacht. Anstatt ein schemakonformes JSON-Dataset vorzubereiten und mithilfe von Push zu übermitteln, können Sie einen Indexer an eine Datenquelle anfügen und ihn Daten extrahieren und in einen Index einfügen lassen. Außerdem können Sie den Indexer optional auf der Grundlage eines Wiederholungszeitplans ausführen, um Änderungen in der zugrunde liegenden Quelle zu erfassen.
 
-In diesem Tutorial verwenden Sie die [Azure Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und eine .NET Core-Konsolenanwendung, um folgende Aufgaben auszuführen:
+In diesem Tutorial verwenden Sie die [Azure Cognitive Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und eine .NET Core-Konsolenanwendung, um folgende Aufgaben auszuführen:
 
 > [!div class="checklist"]
 > * Hinzufügen von Suchdienstinformationen zu Anwendungseinstellungen
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet. 
 
-[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
+[Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
 [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) speichert die von einem Indexer verwendete externe Datenquelle. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung. In diesem Tutorial werden die Schritte zum Erstellen des Diensts und der Datenbank erläutert.
 
@@ -46,17 +46,17 @@ Eine beliebige Version von [Visual Studio 2017](https://visualstudio.microsoft.c
 [Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) enthält die Beispielprojektmappe (im GitHub-Repository mit Azure-Beispielen). Laden Sie die Projektmappe herunter, und extrahieren Sie sie. Projektmappen sind standardmäßig schreibgeschützt. Klicken Sie mit der rechten Maustaste auf die Projektmappe, und löschen Sie das Nur-Lese-Attribut, damit Sie Dateien ändern können.
 
 > [!Note]
-> Bei Verwendung des kostenlosen Azure Search-Diensts gilt eine Obergrenze von drei Indizes, drei Indexern und drei Datenquellen. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
+> Bei Verwendung des kostenlosen Azure Cognitive Search-Diensts gilt eine Obergrenze von drei Indizes, drei Indexern und drei Datenquellen. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
-Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Ein Suchdienst wird mit beidem erstellt. Gehen Sie daher wie folgt vor, um die erforderlichen Informationen zu erhalten, falls Sie Azure Cognitive Search Ihrem Abonnement hinzugefügt haben:
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -67,7 +67,7 @@ Verbindungsinformationen für erforderliche Dienste werden in der Datei **appset
 
 1. Öffnen Sie im Projektmappen-Explorer die Datei **appsettings.json**, um die einzelnen Einstellungen auffüllen zu können.  
 
-Die ersten beiden Einträge können Sie direkt angeben. Verwenden Sie dazu die URL und die Administratorschlüssel für Ihren Azure Search-Dienst. Lautet der Endpunkt `https://mydemo.search.windows.net`, muss als Dienstname `mydemo` angegeben werden.
+Die ersten beiden Einträge können Sie direkt angeben. Verwenden Sie dazu die URL und die Administratorschlüssel für Ihren Azure Cognitive Search-Dienst. Lautet der Endpunkt `https://mydemo.search.windows.net`, muss als Dienstname `mydemo` angegeben werden.
 
 ```json
 {
@@ -81,7 +81,7 @@ Für den letzten Eintrag ist eine vorhandene Datenbank erforderlich. Sie erstell
 
 ## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
 
-In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchforsten kann. Das Dataset in Azure SQL-Datenbank kann über das Azure-Portal unter Verwendung der Datei *hotels.sql* aus dem Beispiel erstellt werden. Azure Search nutzt vereinfachte Rowsets, wie sie beispielsweise auf der Grundlage einer Sicht oder Abfrage generiert werden. Die SQL-Datei in der Beispielprojektmappe erstellt eine einzelne Tabelle und füllt sie auf.
+In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchforsten kann. Das Dataset in Azure SQL-Datenbank kann über das Azure-Portal unter Verwendung der Datei *hotels.sql* aus dem Beispiel erstellt werden. Azure Cognitive Search nutzt vereinfachte Rowsets, wie sie beispielsweise auf der Grundlage einer Sicht oder Abfrage generiert werden. Die SQL-Datei in der Beispielprojektmappe erstellt eine einzelne Tabelle und füllt sie auf.
 
 In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine Datenbank vorhanden ist. In Schritt 2 werden Sie daher aufgefordert, beides zu erstellen. Optional: Falls Sie bereits über eine Ressource verfügen, können Sie ihr die Hoteltabelle hinzufügen (ab Schritt 4).
 
@@ -159,7 +159,7 @@ In diesem Tutorial ruft der Indexer Daten aus einer einzelnen Datenquelle ab. In
 
 Das Hauptprogramm enthält Logik zum Erstellen eines Clients, eines Index, einer Datenquelle und eines Indexers. Der Code sucht und löscht vorhandene Ressourcen mit dem gleichen Namen (unter der Annahme, dass Sie dieses Programm ggf. mehrmals ausführen).
 
-Das Datenquellenobjekt wird mit Einstellungen konfiguriert, die speziell für Ressourcen von Azure SQL-Datenbank gelten, z. B. [inkrementelle Indizierung](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) zur Nutzung der integrierten [Features für die Erkennung von Änderungen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) von Azure SQL. Die Demodatenbank „hotels“ in Azure SQL enthält eine Spalte für Vorläufiges Löschen mit dem Namen **IsDeleted**. Wenn diese Spalte in der Datenbank auf „true“ festgelegt ist, entfernt der Indexer das entsprechende Dokument aus dem Azure Search-Index.
+Das Datenquellenobjekt wird mit Einstellungen konfiguriert, die speziell für Ressourcen von Azure SQL-Datenbank gelten, z. B. [inkrementelle Indizierung](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) zur Nutzung der integrierten [Features für die Erkennung von Änderungen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) von Azure SQL. Die Demodatenbank „hotels“ in Azure SQL enthält eine Spalte für Vorläufiges Löschen mit dem Namen **IsDeleted**. Wenn diese Spalte in der Datenbank auf „true“ festgelegt ist, entfernt der Indexer das entsprechende Dokument aus dem Azure Cognitive Search-Index.
 
   ```csharp
   Console.WriteLine("Creating data source...");
@@ -261,7 +261,7 @@ Alle Indexer werden im Portal angezeigt. Das gilt auch für den, den Sie gerade 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, besteht im Löschen der Ressourcengruppe, die den Azure Search-Dienst enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Search-Diensts.
+Die schnellste Möglichkeit zur Bereinigung des Systems nach einem Tutorial besteht im Löschen der Ressourcengruppe, die den Azure Cognitive Search-Dienst enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Cognitive Search-Diensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

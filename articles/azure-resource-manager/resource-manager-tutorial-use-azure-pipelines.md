@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 06/12/2019
+ms.date: 10/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b176e97a546335f597d4cf424d7feb4f5fa0f775
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122224"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597219"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -91,7 +91,7 @@ Dieses Repository wird als *Remoterepository* bezeichnet. Jeder Entwickler des g
 
     Ersetzen Sie **[YourAccountName]** durch den Namen Ihres GitHub-Kontos und **[YourGitHubRepositoryName]** durch den Namen des Repositorys, das Sie im vorherigen Schritt erstellt haben.
 
-    Beispiel:
+    Im folgenden Screenshot wird ein Beispiel gezeigt.
 
     ![Azure Resource Manager/Azure DevOps/Azure Pipelines: GitHub-Erstellung mit Bash](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-github-bash.png)
 
@@ -183,9 +183,11 @@ So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
 
     ```yaml
     steps:
-    - task: AzureResourceGroupDeployment@2
+    - task: AzureResourceManagerTemplateDeployment@3
       inputs:
-        azureSubscription: '[YourServiceConnectionName]'
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: '[EnterYourServiceConnectionName]'
+        subscriptionName: '[EnterTheTargetSubscriptionID]'
         action: 'Create Or Update Resource Group'
         resourceGroupName: '[EnterANewResourceGroupName]'
         location: 'Central US'
@@ -200,14 +202,16 @@ So erstellen Sie eine Pipeline mit einem Vorlagenbereitstellungsschritt:
 
     Nehmen Sie die folgenden Änderungen vor:
 
-    * **azureSubscription**: Aktualisieren Sie den Wert durch die Dienstverbindung, die Sie im vorherigen Schritt erstellt haben.
+    * **deloymentScope**: Wählen Sie den Umfang der Bereitstellung aus den Optionen `Management Group`, `Subscription` und `Resource Group` aus. Verwenden Sie in diesem Tutorial **Resource Group**. Weitere Informationen zum Umfang finden Sie unter [Bereitstellungsumfang](./resource-group-template-deploy-rest.md#deployment-scope).
+    * **ConnectedServiceName**: Geben Sie den Namen der Dienstverbindung an, den Sie zuvor erstellt haben.
+    * **SubscriptionName**:  Geben Sie die Zielabonnement-ID an.
     * **action**: Die Aktion **Create Or Update Resource Group** führt zwei Aktionen aus: 1. Sie erstellt eine Ressourcengruppe, falls ein neuer Ressourcengruppenname angegeben wurde. 2. Sie stellt die angegebene Vorlage bereit.
     * **resourceGroupName**: Geben Sie einen neuen Ressourcengruppennamen ein. Beispiel: **AzureRmPipeline-rg**.
     * **location**: Geben Sie den Speicherort für die Ressourcengruppe an.
     * **templateLocation**: Bei Angabe von **Linked artifact** wird direkt im verbundenen Repository nach der Vorlagendatei gesucht.
     * **csmFile** ist der vollqualifizierte Pfad der Vorlagendatei. Sie müssen keine Vorlagenparameterdatei angeben, da alle in der Vorlage definierten Parameter Standardwerte besitzen.
 
-    Weitere Informationen zu dieser Aufgabe finden Sie unter [Azure Resource Group Deployment task](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment) (Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“)
+    Weitere Informationen zu dieser Aufgabe finden Sie unter [Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)und [Aufgabe „Azure Resource Manager-Vorlagenbereitstellung“](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md).
 1. Klicken Sie auf **Speichern und ausführen**.
 1. Wählen Sie erneut **Speichern und ausführen** aus. Eine Kopie der YAML-Datei wird im verbundenen Repository gespeichert. Sie können die YAML-Datei anzeigen, indem Sie zu Ihrem Repository navigieren.
 1. Vergewissern Sie sich, dass die Pipeline erfolgreich ausgeführt wird.

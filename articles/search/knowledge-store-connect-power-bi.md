@@ -1,23 +1,24 @@
 ---
-title: Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI – Azure Search
-description: Stellen Sie mit Power BI eine Verbindung mit einem Azure Search-Wissensspeicher her, um diesen zu analysieren und zu untersuchen.
+title: Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
+titleSuffix: Azure Cognitive Search
+description: Stellen Sie mit Power BI eine Verbindung mit einem Azure Cognitive Search-Wissensspeicher her, um diesen zu analysieren und zu untersuchen.
 author: lisaleib
-services: search
-ms.service: search
-ms.topic: tutorial
-ms.date: 09/03/2019
+manager: nitinme
 ms.author: v-lilei
-ms.openlocfilehash: de282213535a2e49f73bc30e476bae02d470fdb2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: tutorial
+ms.date: 11/04/2019
+ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265662"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790065"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
 
 > [!Note]
-> Der Wissensspeicher befindet sich in der Vorschauphase und sollte nicht in der Produktion verwendet werden. Dieses Feature wird durch die [Azure Search-REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
+> Der Wissensspeicher befindet sich in der Vorschauphase und sollte nicht in der Produktion verwendet werden. Dieses Feature wird durch die [Azure Cognitive Search-REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
 >
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Informationen zum Erstellen des in dieser exemplarischen Vorgehensweise verwendeten Beispielwissensspeichers finden Sie unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md).
 
@@ -39,28 +40,28 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power B
 
 1. Wenn Sie dazu aufgefordert werden, geben Sie den Schlüssel des Speicherkontos ein.
 
-1. Wählen Sie die Tabellen *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases* und *hotelReviewsSsPages* aus. Diese Tabellen sind Azure-Tabellenprojektionen der Beispieldaten für Hotelrezensionen und enthalten die Cognitive Service-Anreicherungen, die beim Erstellen des Wissensspeichers ausgewählt wurden.
+1. Wählen Sie die Tabellen *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases* und *hotelReviewsSsPages* aus. Diese Tabellen sind Azure-Tabellenprojektionen der Beispieldaten für Hotelrezensionen und enthalten die KI-Anreicherungen, die beim Erstellen des Wissensspeichers ausgewählt wurden.
 
 1. Klicken Sie auf **Laden**.
 
 1. Klicken Sie im oberen Menüband auf **Abfragen bearbeiten**, um den **Power Query-Editor** zu öffnen.
 
-   ![Öffnen von Power Query](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Öffnen von Power Query")
+   ![Power Query öffnen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query öffnen")
 
 1. Wählen Sie *hotelReviewsSsDocument* aus, und entfernen Sie anschließend die Spalten *PartitionKey*, *RowKey* und *Timestamp*. 
 
-   ![Bearbeiten von Tabellen](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Bearbeiten von Tabellen")
+   ![Tabellen bearbeiten](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabellen bearbeiten")
 
 1. Klicken Sie rechts oben in der Tabelle auf das Symbol mit den entgegengesetzten Pfeilen, um den *Inhalt* zu erweitern. Wenn die Liste mit Spalten angezeigt wird, wählen Sie alle Spalten aus, und heben Sie anschließend die Markierung der Spalten auf, die mit „metadata“ beginnen. Klicken Sie auf **OK**, um die ausgewählten Spalten anzuzeigen.
 
-   ![Bearbeiten von Tabellen](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Erweitern des Inhalts")
+   ![Tabellen bearbeiten](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Inhalt erweitern")
 
 1. Ändern Sie den Datentyp für die folgenden Spalten, indem Sie oben links in der Spalte auf das Symbol „ABC-123“ klicken.
 
    + Wählen Sie für *content.latitude* und *Content.longitude* die Option **Dezimalzahl** aus.
    + Wählen Sie für *Content.reviews_date* und *Content.reviews_dateAdded* die Option **Datum/Uhrzeit** aus.
 
-   ![Ändern der Datentypen](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Ändern der Datentypen")
+   ![Datentypen ändern](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Datentypen ändern")
 
 1. Wählen Sie *hotelReviewsSsPages* aus, und wiederholen Sie dann die Schritte 9 und 10, um die Spalten zu löschen und den *Inhalt* zu erweitern.
 1. Ändern Sie den Datentyp für *Content.SentimentScore* in **Dezimalzahl**.
@@ -70,7 +71,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power B
 
 1. Klicken Sie im linken Navigationsbereich auf die Modellkachel, und überprüfen Sie, ob Power BI Beziehungen zwischen allen drei Tabellen anzeigt.
 
-   ![Überprüfen der Beziehungen](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Überprüfen der Beziehungen")
+   ![Beziehungen überprüfen](media/knowledge-store-connect-power-bi/powerbi-relationships.png "Beziehungen überprüfen")
 
 1. Doppelklicken Sie auf die einzelnen Beziehungen, und stellen Sie sicher, dass die **Kreuzfilterrichtung** auf **Beide** festgelegt ist.  Dadurch können visuelle Elemente aktualisiert werden, wenn ein Filter angewendet wird.
 
@@ -87,7 +88,7 @@ Create new containers in Azure Blob storage and upload each CSV file to its own 
 | Medium (6000 Records)| [HotelReviews_Medium.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Medium.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D)
 | Large (Full dataset 35000 Records) | [HotelReviews_Large.csv](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Large.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Be aware that very large data sets are expensive to process. This one costs roughly $1000 U.S dollars.|
 
-In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Search to use larger data sets. 
+In the enrichment step of the wizard, attach a billable [Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) resource, created at the *S0* tier, in the same region as Azure Cognitive Search to use larger data sets. 
 
   ![Create a Cognitive Services resource](media/knowledge-store-connect-power-bi/create-cognitive-service.png "Create a Cognitive Services resource") -->
 

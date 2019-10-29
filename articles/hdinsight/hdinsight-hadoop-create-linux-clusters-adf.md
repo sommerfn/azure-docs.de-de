@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72264527"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Tutorial: Erstellen bedarfsgesteuerter Apache Hadoop-Cluster in HDInsight mit Azure Data Factory
@@ -200,7 +200,7 @@ In diesem Artikel konfigurieren Sie die Hive-Aktivität, um einen HDInsight Hado
     |Location | Der Standort wird automatisch auf die Region festgelegt, die Sie beim Erstellen der Ressourcengruppe zuvor angegeben haben. Für dieses Tutorial wird der Standort auf **USA, Osten** festgelegt. |
     |Git aktivieren|Deaktivieren Sie dieses Kontrollkästchen.|
 
-    ![Erstellen einer Azure Data Factory mit dem Azure-Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Erstellen einer Azure Data Factory mit dem Azure-Portal")
+    ![Erstellen einer Azure Data Factory-Instanz über das Azure-Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Erstellen einer Azure Data Factory-Instanz über das Azure-Portal")
 
 4. Klicken Sie auf **Erstellen**. Das Erstellen einer Data Factory kann zwischen 2 und 4 Minuten dauern.
 
@@ -208,7 +208,7 @@ In diesem Artikel konfigurieren Sie die Hive-Aktivität, um einen HDInsight Hado
 
 6. Wählen Sie **Erstellen und überwachen** aus, um das Azure Data Factory-Portal für das Erstellen und Überwachen zu starten.
 
-    ![Azure Data Factory-Portal – Übersicht](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory – Übersicht")
+    ![Übersicht über das Azure Data Factory-Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Übersicht über Azure Data Factory")
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 
@@ -229,7 +229,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
 3. Wählen Sie im Dialogfeld **Neuer verknüpfter Dienst** die Option **Azure Blob Storage** und dann **Weiter** aus.
 
-    ![Erstellen eines mit Azure Storage verknüpften Diensts für Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Erstellen eines mit Azure Storage verknüpften Diensts für Data Factory")
+    ![Erstellen eines verknüpften Azure Storage-Diensts für Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Erstellen eines verknüpften Azure Storage-Diensts für Data Factory")
 
 4. Stellen Sie die folgenden Werte für den mit Speicher verknüpften Dienst bereit:
 
@@ -241,7 +241,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
     Wählen Sie **Verbindung testen** aus. War der Test erfolgreich, wählen Sie **Erstellen** aus.
 
-    ![Angeben eines Namens für den mit Azure Storage verknüpften Dienst](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Angeben eines Namens für den mit Azure Storage verknüpften Dienst")
+    ![Angeben eines Namens für den verknüpften Azure Storage-Dienst](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Angeben eines Namens für den verknüpften Azure Storage-Dienst")
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Erstellen eines bedarfsgesteuerten verknüpften HDInsight-Diensts
 
@@ -251,7 +251,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
 3. Wählen Sie **Azure HDInsight** und dann **Weiter** aus.
 
-    ![Erstellen eines mit HDInsight verknüpften Diensts für Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "Erstellen eines mit HDInsight verknüpften Diensts für Azure Data Factory")
+    ![Erstellen eines verknüpften HDInsight-Diensts für Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "Erstellen eines verknüpften HDInsight-Diensts für Azure Data Factory")
 
 4. Geben Sie im Fenster **Neuer verknüpfter Dienst** die folgenden Werte ein, und belassen Sie für die restlichen Optionen die Standardwerte:
 
@@ -274,7 +274,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
     Klicken Sie anschließend auf **Erstellen**.
 
-    ![Angeben von Werten für einen mit HDInsight verknüpften Dienst](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Angeben von Werten für einen mit HDInsight verknüpften Dienst")
+    ![Angeben von Werten für den verknüpften HDInsight-Dienst](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Angeben von Werten für den verknüpften HDInsight-Dienst")
 
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
@@ -288,7 +288,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
 3. Vergewissern Sie sich, dass die Hive-Aktivität ausgewählt ist, und wählen Sie die Registerkarte **HDI-Cluster** und dann in der Dropdownliste **Verknüpfter HDInsight-Dienst** den verknüpften Dienst (**HDInsightLinkedService**) aus, den Sie zuvor für HDInsight erstellt haben.
 
-    ![Angeben von Details zum HDInsight-Cluster für die Pipeline](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "Angeben von Details zum HDInsight-Cluster für die Pipeline")
+    ![Bereitstellen von HDInsight-Clusterdetails für die Pipeline](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "Bereitstellen von HDInsight-Clusterdetails für die Pipeline")
 
 4. Wählen Sie die Registerkarte **Skript** aus, und führen Sie die folgenden Schritte aus:
 
@@ -296,7 +296,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste in Ihrer Data Factory
 
     1. Wählen Sie für **Dateipfad** die Option **Storage durchsuchen** aus, und navigieren Sie zum Speicherort des Hive-Beispielskripts. Wenn Sie zuvor das PowerShell-Skript ausgeführt haben, sollte dieser Speicherort `adfgetstarted/hivescripts/partitionweblogs.hql` lauten.
 
-        ![Angeben von Details zum Hive-Skript für die Pipeline](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Angeben von Details zum Hive-Skript für die Pipeline")
+        ![Bereitstellen von Hive-Skriptdetails für die Pipeline](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Bereitstellen von Hive-Skriptdetails für die Pipeline")
 
     1. Wählen Sie unter **Erweitert** > **Parameter** die Option **AutoAusfüllen aus Skript** aus. Diese Option sucht alle Parameter im Hive-Skript, die zur Laufzeit Werte erfordern. Das von Ihnen verwendete Skript (**partitionweblogs.hql**) verfügt über den Parameter **Output**. Geben Sie den **Wert** im Format `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` an, sodass er auf einen vorhandenen Ordner in Ihrem Azure Storage zeigt. Beim Pfad wird die Groß-/Kleinschreibung beachtet. Dies ist der Pfad, in dem die Ausgabe des Skripts gespeichert wird. Das Schema `wasbs` ist erforderlich, da für Speicherkonten die Option „Sichere Übertragung erforderlich“ nun standardmäßig aktiviert ist.
     
@@ -356,7 +356,7 @@ Alternativ können Sie die gesamte Ressourcengruppe löschen, die Sie für diese
 1. Auf der Kachel **Ressourcen** sollten das Standardspeicherkonto und die Data Factory aufgeführt sein, wenn Sie die Ressourcengruppe nicht für andere Projekte freigegeben haben.
 1. Wählen Sie die Option **Ressourcengruppe löschen**. Auf diese Weise werden das Speicherkonto und die Daten im Speicherkonto gelöscht.
 
-    ![Azure-Portal: Löschen der Ressourcengruppe](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Löschen der Ressourcengruppe")
+    ![Azure-Portal: Löschen einer Ressourcengruppe](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Ressourcengruppe löschen")
 
 1. Geben Sie den Namen der Ressourcengruppe ein, um den Löschvorgang zu bestätigen, und wählen Sie dann **Löschen** aus.
 

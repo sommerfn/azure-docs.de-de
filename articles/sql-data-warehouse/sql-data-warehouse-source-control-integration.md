@@ -11,10 +11,10 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70098740"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Integration der Quellcodeverwaltung für Azure SQL Data Warehouse
@@ -31,17 +31,17 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
 1. Erstellen Sie in Ihrer Azure DevOps-Organisation ein Projekt, das Ihr SSDT-Datenbankprojekt über ein Azure-Repository hostet.
 
-   ![Erstellen eines Projekts](media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Erstellen eines Projekts")
+   ![Erstellen des Projekts](media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Projekt erstellen")
 
 2. Öffnen Sie Visual Studio, und stellen Sie mit Ihrer Azure DevOps-Organisation und Ihrem Projekt aus Schritt 1 eine Verbindung her, indem Sie „Verbindungen verwalten“ auswählen.
 
    ![Verwalten von Verbindungen](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Verwalten von Verbindungen")
 
-   ![Verbinden](media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinden")
+   ![Herstellen einer Verbindung](media/sql-data-warehouse-source-control-integration/3-connect.png "Verbinden")
 
 3. Klonen Sie das Azure-Repository aus Ihrem Projekt auf dem lokalen Computer.
 
-   ![Klonen des Repositorys](media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klonen des Repositorys")
+   ![Klonen des Repositorys](media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Repository klonen")
 
 ## <a name="create-and-connect-your-project"></a>Erstellen und Verbinden Ihres Projekts
 
@@ -55,7 +55,7 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
 3. Committen Sie im Team Explorer in Visual Studio alle Änderungen im lokalen Git-Repository. 
 
-   ![Committen](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Committen")  
+   ![Commit](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Commit")  
 
 4. Nachdem Sie die Änderungen lokal im geklonten Repository committet haben, synchronisieren Sie die Änderungen, und pushen Sie sie in das Azure-Repository in Ihrem Azure DevOps-Projekt.
 
@@ -67,11 +67,11 @@ In diesem Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Serve
 
 1. Überprüfen Sie, ob die Änderungen in das Azure-Repository gepusht wurden, indem Sie eine Tabellenspalte in Ihrem Datenbankprojekt über Visual Studio SQL Server Data Tools (SSDT) aktualisieren.
 
-   ![Überprüfen der Spaltenaktualisierung](media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Überprüfen der Spaltenaktualisierung")
+   ![Überprüfen der Aktualisierungsspalte](media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Überprüfen der Aktualisierungsspalte")
 
 2. Committen und Pushen der Änderung von Ihrem lokalen Repository in das Azure-Repository
 
-   ![Pushen der Änderungen](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Pushen der Änderungen")
+   ![Pushen der Änderungen](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Änderungen pushen")
 
 3. Überprüfen, ob die Änderung in Ihr Azure-Repository gepusht wurde
 

@@ -7,27 +7,26 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 10/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: b99eafeae60e81fd7d902289a47190a2cbe1daa3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336858"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786987"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
 Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste bereit, z. B. Domänenbeitritt, Gruppenrichtlinie, LDAP und Kerberos-/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Sie können diese Domänendienste nutzen, ohne selbst Domänencontroller bereitstellen, verwalten und patchen zu müssen. Azure AD DS lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren. Dank dieser Integration können Benutzer sich mit ihren Unternehmensanmeldeinformationen anmelden, und Sie können vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen zu sichern.
 
-Dieses Tutorial zeigt Ihnen, wie Sie eine Azure AD DS-Instanz im Azure-Portal erstellen und konfigurieren.
+Sie können eine verwaltete Domäne mit den Standardkonfigurationsoptionen für Netzwerk und Synchronisierung erstellen oder [diese Einstellungen manuell festlegen][tutorial-create-instance-advanced]. Dieses Tutorial zeigt Ihnen, wie Sie die Standardoptionen zum Erstellen und Konfigurieren einer Azure AD DS-Instanz im Azure-Portal verwenden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Konfigurieren der Einstellungen für DNS und ein virtuelles Netzwerk für eine verwaltete Domäne
+> * Grundlegendes zu den DNS-Anforderungen für eine verwaltete Domäne
 > * Erstellen einer Azure AD DS-Instanz
-> * Hinzufügen von Administratorbenutzern zur Domänenverwaltung
 > * Aktivieren der Kennworthashsynchronisierung
 
 Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
@@ -52,13 +51,15 @@ Es ist bei Azure AD DS zwar nicht erforderlich, für den Azure AD-Mandanten die
 
 In diesem Tutorial erstellen und konfigurieren Sie eine Azure AD DS-Instanz im Azure-Portal. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
 
-## <a name="create-an-instance-and-configure-basic-settings"></a>Erstellen einer Instanz und Konfigurieren grundlegender Einstellungen
+## <a name="create-an-instance"></a>Erstellen einer Instanz
 
 Um den Assistenten zum **Aktivieren von Azure AD Domain Services** zu starten, führen Sie die folgenden Schritte aus:
 
 1. Klicken Sie im Azure-Portal in der linken oberen Ecke auf **+ Ressource erstellen**.
 1. Geben Sie *Domain Services* in die Suchleiste ein, und wählen Sie *Azure AD Domain Services* aus den Suchvorschlägen aus.
 1. Klicken Sie auf der Seite „Azure AD Domain Services“ auf **Erstellen**. Der Assistent zum **Aktivieren von Azure AD Domain Services** wird gestartet.
+1. Wählen Sie das **Azure-Abonnement**, in dem Sie die verwaltete Domäne erstellen möchten.
+1. Wählen Sie die **Ressourcengruppe**, zu der die verwaltete Domäne gehören soll. Klicken Sie auf **Neu erstellen**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 
 Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der Auswahl dieses DNS-Namens sind folgende Aspekte zu berücksichtigen:
 
@@ -86,80 +87,28 @@ Es gelten außerdem die folgenden Einschränkungen für DNS-Namen:
 Füllen Sie die Felder im Fenster *Grundlagen* des Azure-Portals aus, um eine Azure AD DS-Instanz zu erstellen:
 
 1. Geben Sie einen **DNS-Domänennamen** für Ihre verwaltete Domäne ein, und berücksichtigen Sie dabei die oben genannten Punkte.
-1. Wählen Sie das **Azure-Abonnement**, in dem Sie die verwaltete Domäne erstellen möchten.
-1. Wählen Sie die **Ressourcengruppe**, zu der die verwaltete Domäne gehören soll. Klicken Sie auf **Neu erstellen**, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 1. Wählen Sie den **Azure-Speicherort**, in dem die verwaltete Domäne erstellt werden soll.
-1. Klicken Sie auf **OK**, um zum Abschnitt **Netzwerk** zu gelangen.
 
-![Konfigurieren der grundlegenden Einstellungen für eine Azure AD Domain Services-Instanz](./media/tutorial-create-instance/basics-window.png)
+    ![Konfigurieren der grundlegenden Einstellungen für eine Azure AD Domain Services-Instanz](./media/tutorial-create-instance/basics-window.png)
 
-## <a name="create-and-configure-the-virtual-network"></a>Erstellen und Konfigurieren des virtuellen Netzwerks
+Zum schnellen Erstellen einer verwalteten Azure AD DS-Domäne können Sie **Überprüfen + erstellen** auswählen, um zusätzliche Standardkonfigurationsoptionen zu akzeptieren. Bei der Auswahl dieser Erstellungsoption werden die folgenden Standardwerte konfiguriert:
 
-Um Konnektivität bereitzustellen, werden ein virtuelles Azure-Netzwerk und ein dediziertes Subnetz benötigt. Azure AD DS wird in diesem virtuellen Subnetz aktiviert. In diesem Tutorial erstellen Sie ein virtuelles Netzwerk, obwohl Sie auch ein vorhandenes virtuelles Netzwerk verwenden könnten. Bei beiden Verfahrensweisen müssen Sie ein dediziertes Subnetz erstellen, das durch Azure AD DS genutzt werden kann.
+* Ein virtuelles Netzwerk namens *aadds-vnet* wird erstellt, das den IP-Adressbereich *10.0.1.0/24* verwendet.
+* Ein Subnetz namens *aadds-subnet* wird erstellt, das den IP-Adressbereich *10.0.1.0/24* verwendet.
+* *Alle* Benutzer aus Azure AD werden mit der verwalteten Azure AD DS-Domäne synchronisiert.
 
-Im Folgenden finden Sie einige Überlegungen, die Sie bei diesem dedizierten Subnetz im virtuellen Netzwerk berücksichtigen müssen:
+1. Wählen Sie **Überprüfen + erstellen** aus, um diese Standardkonfigurationsoptionen zu akzeptieren.
 
-* Das Subnetz muss mindestens 3–5 verfügbare IP-Adressen in seinem Adressbereich aufweisen, um die Azure AD DS-Ressourcen zu unterstützen.
-* Wählen Sie zum Bereitstellen von Azure AD DS nicht das Subnetz *Gateway* aus. Die Bereitstellung von Azure AD DS in einem *Gatewaysubnetz* wird nicht unterstützt.
-* Stellen Sie in diesem Subnetz keine weiteren virtuellen Computer bereit. Anwendungen und VMs nutzen häufig Netzwerksicherheitsgruppen, um die Konnektivität zu sichern. Indem diese Workloads in einem separaten Subnetz ausgeführt werden, können Sie diese Netzwerksicherheitsgruppen anwenden, ohne die Konnektivität mit Ihrer verwalteten Domäne zu unterbrechen.
-* Nach dem Aktivieren von Azure AD DS können Sie Ihre verwaltete Domäne nicht mehr in ein anderes virtuelles Netzwerk verschieben.
+## <a name="deploy-the-managed-domain"></a>Bereitstellen der verwalteten Domäne
 
-Weitere Informationen zum Planen und Konfigurieren des virtuellen Netzwerks finden Sie unter [Netzwerkaspekte für die Azure Active Directory Domain Services][network-considerations].
+Überprüfen Sie die Konfigurationseinstellungen für die verwaltete Domäne auf der Seite **Summary** (Zusammenfassung) des Assistenten. Sie können zu jedem Schritt des Assistenten zurückgehen, um Änderungen vorzunehmen. Sie können auch **eine Vorlage für die Automatisierung herunterladen**, um eine verwaltete Azure AD DS-Domäne mit diesen Konfigurationsoptionen auf konsistente Weise in einem anderen Azure AD-Mandanten erneut bereitzustellen.
 
-Füllen Sie die Felder im Fenster *Netzwerk* wie folgt aus:
-
-1. Klicken Sie im Fenster **Netzwerk** auf **Virtuelles Netzwerk auswählen**.
-1. Wählen Sie für dieses Tutorial die Option **Neu erstellen** aus, um ein neues virtuelles Netzwerk zu erstellen, in dem Sie Azure AD DS bereitstellen.
-1. Geben Sie einen Namen für das virtuelle Netzwerk ein, z. B. *myVnet*, und geben Sie einen Adressbereich an, z. B. *10.1.0.0/16*.
-1. Erstellen Sie ein dediziertes Subnetz mit einem eindeutigen Namen, z. B. *DomainServices*. Geben Sie einen Adressbereich an, z. B. *10.1.0.0/24*.
-
-    ![Erstellen eines virtuellen Netzwerks und Subnetzes für die Verwendung mit Azure AD Domain Services](./media/tutorial-create-instance/create-vnet.png)
-
-    Stellen Sie sicher, dass Sie einen Adressbereich auswählen, der innerhalb Ihres privaten IP-Adressbereichs liegt. IP-Adressen, die Sie nicht besitzen und die sich im öffentlichen Adressraum befinden, führen zu Fehlern in Azure AD DS.
-
-    > [!TIP]
-    > Auf der Seite **Virtuelles Netzwerk auswählen** werden die vorhandenen virtuellen Netzwerke angezeigt, die zu der Ressourcengruppe und dem Azure-Speicherort gehören, die bzw. den Sie zuvor ausgewählt haben. Sie müssen ein [dediziertes Subnetz erstellen][create-dedicated-subnet], bevor Sie Azure AD DS bereitstellen.
-
-1. Wenn virtuelles Netzwerk und Subnetz erstellt sind, sollte das Subnetz (z. B: *DomainServices*) automatisch ausgewählt werden. Sie können stattdessen ein anderes vorhandenes Subnetz auswählen, das zu dem ausgewählten virtuellen Netzwerk gehört:
-
-    ![Auswählen des dedizierten Subnetzes innerhalb des virtuellen Netzwerks](./media/tutorial-create-instance/choose-subnet.png)
-
-1. Klicken Sie auf **OK**, um die Konfiguration des virtuellen Netzwerks zu bestätigen.
-
-## <a name="configure-an-administrative-group"></a>Konfigurieren einer Administratorgruppe
-
-Zur Verwaltung der Azure AD DS-Domäne wird eine spezielle Administratorgruppe namens *AAD DC-Administratoren* verwendet. Mitgliedern dieser Gruppe werden Administratorrechte auf VMs erteilt, die in die verwaltete Domäne eingebunden sind. Auf in die Domäne eingebundenen VMs wird diese Gruppe zur lokalen Administratorengruppe hinzugefügt. Mitglieder dieser Gruppe können auch Remotedesktop verwenden, um Remoteverbindungen mit den in die Domäne eingebundenen VMs herzustellen.
-
-Sie besitzen keine Berechtigungen als *Domänenadministrator* oder *Unternehmensadministrator* für eine verwaltete Domäne, in der Azure AD DS verwendet wird. Diese Berechtigungen sind vom Dienst reserviert und stehen Benutzern innerhalb des Mandanten nicht zur Verfügung. Stattdessen können Sie über die Gruppe *AAD DC-Administratoren* einige Vorgänge ausführen, für die entsprechende Berechtigungen erforderlich sind. Zu diesen Vorgängen gehört das Einbinden von Computern in die Domäne, die Mitgliedschaft in der Administratorengruppe auf in die Domäne eingebundenen VMs und das Konfigurieren von Gruppenrichtlinien.
-
-Der Assistent erstellt die Gruppe *AAD DC-Administratoren* automatisch in Ihrem Azure AD-Verzeichnis. Wenn eine Gruppe mit diesem Namen in Ihrem Azure AD-Verzeichnis besteht, wählt der Assistent diese Gruppe aus. Sie können der Gruppe *AAD DC-Administratoren* während des Bereitstellungsprozesses optional weitere Benutzer hinzufügen. Diese Schritte können später ausgeführt werden.
-
-1. Um dieser Gruppe der *AAD DC-Administratoren* weitere Benutzer hinzuzufügen, klicken Sie auf **Gruppenmitgliedschaft verwalten**.
-1. Klicken Sie auf die Schaltfläche **Mitglieder hinzufügen**, suchen Sie in Ihrem Azure AD-Verzeichnis nach Benutzern, und fügen Sie diese hinzu. Sie können beispielsweise nach Ihrem eigenen Konto suchen und dieses der Gruppe *AAD DC-Administratoren* hinzufügen.
-
-    ![Konfigurieren der Gruppenmitgliedschaft der Gruppe „AAD DC-Administratoren“](./media/tutorial-create-instance/admin-group.png)
-
-1. Wenn Sie fertig sind, wählen Sie **OK**.
-
-## <a name="configure-synchronization"></a>Konfigurieren der Synchronisierung
-
-Mit Azure AD DS können Sie *alle* in Azure AD verfügbaren Benutzer und Gruppen synchronisieren oder eine *bereichsbezogene* Synchronisierung spezifischer Gruppen durchführen. Wenn Sie *alle* Benutzer und Gruppen synchronisieren, können Sie sich später nicht für eine bereichsbezogene Synchronisierung entscheiden. Weitere Informationen zur bereichsbezogenen Synchronisierung finden Sie unter [Bereichsbezogene Synchronisierung für Azure AD Domain Services][scoped-sync].
-
-1. Synchronisieren Sie für dieses Tutorial **alle** Benutzer und Gruppen. Dies ist die Standardoption.
-
-    ![Ausführen einer vollständigen Synchronisierung von Benutzern und Gruppen über Azure AD](./media/tutorial-create-instance/sync-all.png)
-
-1. Klicken Sie auf **OK**.
-
-## <a name="deploy-your-managed-domain"></a>Bereitstellen Ihrer verwalteten Domäne
-
-Überprüfen Sie die Konfigurationseinstellungen für die verwaltete Domäne auf der Seite **Summary** (Zusammenfassung) des Assistenten. Sie können zu jedem Schritt des Assistenten zurückgehen, um Änderungen vorzunehmen.
-
-1. Um die verwaltete Domäne zu erstellen, klicken Sie auf **OK**.
+1. Wählen Sie zum Erstellen der verwalteten Domäne **Erstellen** aus. Ein Hinweis wird angezeigt, dass bestimmte Konfigurationsoptionen, etwa der DNS-Name oder das virtuelle Netzwerk, nach der Erstellung der verwalteten Azure AD DS-Domäne nicht geändert werden können. Wählen Sie **OK** aus, um fortzufahren.
 1. Der Prozess der Bereitstellung Ihrer verwalteten Domänen kann bis zu einer Stunde dauern. Es wird eine Benachrichtigung angezeigt, die Sie über den Status Ihrer Azure AD DS-Bereitstellung informiert. Wählen Sie die Benachrichtigung aus, um sich den detaillierten Fortschritt Ihrer Bereitstellung anzusehen.
 
     ![Benachrichtigung im Azure-Portal über den Fortschritt der Bereitstellung](./media/tutorial-create-instance/deployment-in-progress.png)
 
+1. Die Seite wird mit Aktualisierungen zum Bereitstellungsvorgang geladen, u. a. mit der Erstellung neuer Ressourcen in Ihrem Verzeichnis.
 1. Wählen Sie Ihre Ressourcengruppe aus (z. B. *myResourceGroup*), und wählen Sie dann aus der Liste der Azure-Ressourcen Ihre Azure AD DS-Instanz aus (z. B. *contoso.com*). Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne sich im Status *Wird bereitgestellt* befindet. Sie können die verwaltete Domäne erst dann konfigurieren, wenn sie vollständig bereitgestellt ist.
 
     ![Status „Wird bereitgestellt“ der Domäne](./media/tutorial-create-instance/provisioning-in-progress.png)
@@ -168,7 +117,7 @@ Mit Azure AD DS können Sie *alle* in Azure AD verfügbaren Benutzer und Grup
 
     ![Status der Domäne nach erfolgreicher Bereitstellung](./media/tutorial-create-instance/successfully-provisioned.png)
 
-Während des Bereitstellungsprozesses erstellt Azure AD DS zwei Unternehmensanwendungen mit den Namen *Domain Controller Services* und *AzureActiveDirectoryDomainControllerServices* in Ihrem Verzeichnis. Diese Unternehmensanwendungen werden zur Unterstützung Ihrer verwalteten Domäne benötigt. Diese Anwendungen dürfen unter keinen Umständen gelöscht werden.
+Azure AD Domain Services wird im Azure Active Directory-Mandanten bereitgestellt, und die Azure AD Domain Services-Ressource für den Dienst wird im zugehörigen Azure-Abonnement erstellt. Während des Bereitstellungsprozesses erstellt Azure AD DS zwei Unternehmensanwendungen mit den Namen *Domain Controller Services* und *AzureActiveDirectoryDomainControllerServices* in der Azure Active Directory-Instanz, in der Sie Azure AD Domain Services aktiviert haben. Diese Unternehmensanwendungen werden zur Unterstützung Ihrer verwalteten Domäne benötigt.  Diese Anwendungen dürfen unter keinen Umständen gelöscht werden.
 
 ## <a name="update-dns-settings-for-the-azure-virtual-network"></a>Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk
 
@@ -219,17 +168,18 @@ Nach der Kennwortänderung dauert es einige Minuten, bis das neue Kennwort in Az
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Konfigurieren der Einstellungen für DNS und ein virtuelles Netzwerk für eine verwaltete Domäne
+> * Grundlegendes zu den DNS-Anforderungen für eine verwaltete Domäne
 > * Erstellen einer Azure AD DS-Instanz
 > * Hinzufügen von Administratorbenutzern zur Domänenverwaltung
 > * Aktivieren von Benutzerkonten für Azure AD DS und Generieren von Kennworthashes
 
-Um diese verwaltete Domäne in Aktion zu erleben, erstellen Sie eine VM, und binden Sie diese in die Domäne ein.
+Konfigurieren Sie ein virtuelles Azure-Netzwerk für Anwendungsworkloads, bevor Sie virtuelle Computer in eine Domäne einbinden und Anwendungen bereitstellen, die die verwaltete Azure AD DS-Domäne verwenden.
 
 > [!div class="nextstepaction"]
-> [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne](join-windows-vm.md)
+> [Konfigurieren eines virtuellen Azure-Netzwerks für Anwendungsworkloads zur Verwendung der verwalteten Domäne](tutorial-configure-networking.md)
 
 <!-- INTERNAL LINKS -->
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [network-considerations]: network-considerations.md

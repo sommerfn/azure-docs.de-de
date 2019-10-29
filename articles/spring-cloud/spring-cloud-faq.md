@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433318"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592309"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -30,12 +30,10 @@ Azure Spring Cloud verbessert durch die Integration von Azure Monitor, Applicati
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Welche Dienstpläne sind für Azure Spring Cloud verfügbar?
 
-Während der Vorschauphase bietet Azure Spring Cloud nur einen Serviceplan.
+Während der Vorschauphase bietet Azure Spring Cloud nur einen Serviceplan.  Eine Spring Cloud-Bereitstellung enthält 16 vCPU-Kerne und 32 GB Arbeitsspeicher.  Die obere Grenze für jede Microservice-Instanz innerhalb einer Bereitstellung beträgt 4 vCPU-Kerne mit 8 GB Arbeitsspeicher.
 
 Resource | Amount
 ------- | -------
-vCPU | 4
-Arbeitsspeicher | 8 GB
 App-Instanzen pro Spring-Anwendung | 20
 Gesamtanzahl der App-Instanzen pro Azure Spring Cloud-Dienstinstanz | 50*
 Azure Spring Cloud-Dienstinstanzen pro Region und Abonnement | 2*

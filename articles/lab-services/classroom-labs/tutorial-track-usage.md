@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/17/2019
+ms.date: 10/18/2019
 ms.author: spelluru
-ms.openlocfilehash: e2831191905da1b9e0ad55131be9eaa7aa13950e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894359"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675767"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Tutorial: Nachverfolgen der Nutzung eines Labs in Azure Lab Services
 In diesem Tutorial wird gezeigt, wie ein Lab-Ersteller/-Besitzer die Nutzung eines Labs nachverfolgen kann.
@@ -49,18 +49,11 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
     ![VM-Nutzung](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Verwalten von Studenten-VMs 
-Wenn Sie mit der Maus auf eine Zeile in der Liste der VMs zeigen, werden Steuerelemente zum Ausführen der folgenden Aufgaben angezeigt (siehe hierzu die Abbildung im vorherigen Abschnitt): 
-
-- Herstellen einer Verbindung mit einem virtuellen Computer
-- Starten eines virtuellen Computers
-- Anhalten eines virtuellen Computers
-- Löschen eines virtuellen Computers
-
+Auf dieser Seite können Sie mithilfe der Dropdownliste in der Spalte **Status** oder über Schaltflächen auf der Symbolleiste die virtuellen Computer der Kursteilnehmer starten, beenden oder zurücksetzen. 
 
 ![Steuerelemente für virtuelle Computer](../media/tutorial-track-usage/vm-controls.png)
 
 Sie können auch die Symbolleistenschaltflächen verwenden, um einen virtuellen Computer zu starten, zu beenden oder zu löschen. 
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

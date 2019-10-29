@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266210"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Tutorial: Verarbeiten von Tweets mit Azure Event Hubs und Apache Spark in HDInsight
@@ -74,7 +74,7 @@ Sie verwenden diesen Event Hub zum Speichern von Tweets.
 
 3. Wählen Sie unter **INTERNET DER DINGE** **Event Hubs** aus. 
 
-    ![Erstellen einer Event Hub-Instanz für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Erstellen einer Event Hub-Instanz für das Spark-Streamingbeispiel")
+    ![Erstellen eines Event Hubs für ein Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Erstellen eines Event Hubs für ein Spark-Streamingbeispiel")
 
 4. Wählen Sie **+ Hinzufügen**.
 
@@ -90,7 +90,7 @@ Sie verwenden diesen Event Hub zum Speichern von Tweets.
     |Automatische Vergrößerung aktivieren (optional) |Die „Automatische Vergrößerung“ skaliert die Anzahl der Durchsatzeinheiten, die Ihrem Event Hubs-Namespace zugewiesen werden, wenn Ihr Datenverkehr die Kapazität der zugewiesenen Durchsatzeinheiten überschreitet.  |
     |Maximale Durchsatzeinheiten für die automatische Vergrößerung (optional)|Dieser Schieberegler wird nur angezeigt, wenn Sie **Automatische Vergrößerung aktivieren** aktivieren.  |
 
-    ![Angeben eines Event Hub-Namens für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Angeben eines Event Hub-Namens für das Spark-Streamingbeispiel")
+    ![Bereitstellen eines Event Hub-Namens für ein Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Bereitstellen eines Event Hub-Namens für ein Spark-Streamingbeispiel")
 
 6. Klicken Sie auf **Erstellen**, um den Namespace zu erstellen.  Die Bereitstellung wird in wenigen Minuten abgeschlossen.
 
@@ -112,7 +112,7 @@ Erstellen Sie einen Event Hub, nachdem der Event Hubs-Namespace bereitgestellt w
 
     - **Nachrichtenaufbewahrung**: 1.   
    
-      ![Angeben von Event Hub-Informationen für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Angeben von Event Hub-Informationen für das Spark-Streamingbeispiel")
+      ![Bereitstellen von Event Hub-Details für ein Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Bereitstellen von Event Hub-Details für ein Spark-Streamingbeispiel")
 
 1. Klicken Sie auf **Erstellen**.  Die Bereitstellung sollte in wenigen Sekunden abgeschlossen sein, und Sie kehren zur Seite „Event Hubs-Namespace“ zurück.
 
@@ -120,11 +120,11 @@ Erstellen Sie einen Event Hub, nachdem der Event Hubs-Namespace bereitgestellt w
 
 1. Wählen Sie **RootManageSharedAccessKey**.
     
-     ![Festlegen von Event Hub-Richtlinien für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Festlegen von Event Hub-Richtlinien für das Spark-Streamingbeispiel")
+     ![Festlegen von Event Hub-Richtlinien für ein Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Festlegen von Event Hub-Richtlinien für ein Spark-Streamingbeispiel")
 
 1. Speichern Sie die Werte für **Primärschlüssel** und **Verbindungszeichenfolge – Primärschlüssel**, um sie später im Tutorial zu verwenden.
 
-     ![Anzeigen der Event Hub-Richtlinienschlüssel für das Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Anzeigen der Event Hub-Richtlinienschlüssel für das Spark-Streamingbeispiel")
+     ![Anzeigen von Event Hub-Richtlinienschlüsseln für ein Spark-Streamingbeispiel](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Anzeigen von Event Hub-Richtlinienschlüsseln für ein Spark-Streamingbeispiel")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>Senden von Tweets an den Event Hub
@@ -252,7 +252,7 @@ Mit HDInsight werden Ihre Daten in Azure Storage oder Azure Data Lake Storage ge
 
 Öffnen Sie den Cluster im Azure-Portal, und wählen Sie **Löschen** aus.
 
-![HDInsight: Löschen eines Clusters im Azure-Portal](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
+![HDInsight Azure Portal: Löschen von Clustern](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "Löschen eines HDInsight-Clusters")
 
 Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für die Ressourcengruppe zu öffnen, und dann **Ressourcengruppe löschen** auswählen. Indem Sie die Ressourcengruppe löschen, löschen Sie sowohl den HDInsight Spark-Cluster als auch das Standardspeicherkonto.
 

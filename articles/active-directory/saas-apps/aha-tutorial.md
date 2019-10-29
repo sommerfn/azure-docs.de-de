@@ -17,15 +17,15 @@ ms.date: 08/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a63872680d28664c6d5a7ff109f6de72817173d5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68989644"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>Tutorial: Integrieren von Aha! in Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie Aha! in Azure Active Directory (Azure AD) integrieren. Die Integration von AHA! in Azure AD ermöglicht Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie Aha! in Aha! integrieren. Die Integration von AHA! in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf Aha! hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Aha! anzumelden.
@@ -38,7 +38,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Aha!- Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Aha! Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -75,7 +75,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Aha! mü
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Aha!** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Aha!** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
@@ -134,7 +134,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Aha! einrichten**, um zur Anwendung Aha! weitergeleitet zu werden . Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Aha! anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 8.
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Aha! einrichten**, um zur Anwendung Aha! weitergeleitet zu werden Anwendung. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Aha! anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 8.
 
     ![Einrichtungskonfiguration](common/setup-sso.png)
 
@@ -150,15 +150,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 6. Klicken Sie auf **Security and single sign-on**.
 
-    ![Sicherheit und einmaliges Anmelden ](./media/aha-tutorial/IC798952.png "Sicherheit und einmaliges Anmelden")
+    ![Security and single sign-on (Sicherheit und einmaliges Anmelden)](./media/aha-tutorial/IC798952.png "Security and single sign-on")
 
 7. Wählen Sie im Abschnitt **Einmaliges Anmelden** als **Identitätsanbieter** die Option **SAML2.0** aus.
 
-    ![Sicherheit und einmaliges Anmelden ](./media/aha-tutorial/IC798953.png "Sicherheit und einmaliges Anmelden")
+    ![Security and single sign-on (Sicherheit und einmaliges Anmelden)](./media/aha-tutorial/IC798953.png "Security and single sign-on")
 
 8. Führen Sie auf der Konfigurationsseite **Single Sign-On** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden](./media/aha-tutorial/IC798954.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/aha-tutorial/IC798954.png "Single Sign-On")
 
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.
 
