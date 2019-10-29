@@ -36,7 +36,7 @@
           href: log-query/get-started-portal.md
         - name: Protokollabfragen
           href: log-query/get-started-queries.md
-        - name: Visualisieren von Protokolldaten
+        - name: Dashboard mit Protokolldaten
           href: learn/tutorial-logs-dashboards.md
         - name: Warnungen zu Protokolldaten
           href: learn/tutorial-response.md
@@ -50,7 +50,7 @@
           href: learn/tutorial-alert.md
         - name: Grundlegendes zu Anwendungsbenutzern
           href: learn/tutorial-users.md
-        - name: Erstellen benutzerdefinierter Dashboards
+        - name: Dashboard mit Anwendungsdaten
           href: learn/tutorial-app-dashboards.md
     - name: Archivieren von Plattformmetriken und -protokolldaten
       href: learn/tutorial-archive-data.md
@@ -889,7 +889,11 @@
         - name: Arbeitsmappen
           href: app/usage-workbooks.md
         - name: Dashboards
-          href: app/app-insights-dashboards.md
+          items:
+            - name: Verwenden von Protokolldaten im Dashboard
+              href: learn/tutorial-logs-dashboards.md
+            - name: Verwenden von Anwendungsdaten im Dashboard
+              href: learn/tutorial-app-dashboards.md
         - name: Senden von Daten an Grafana
           href: platform/grafana-plugin.md
     - name: Warnungen
@@ -1098,10 +1102,8 @@
           href: platform/metrics-supported.md
         - name: Unterstützte Metriken für neuere Warnungen
           href: platform/alerts-metric-near-real-time.md
-    - name: Diagnoseprotokolle
-      items:
-        - name: 'Diagnoseprotokolle – Dienste, Kategorien und Schemas'
-          href: platform/diagnostic-logs-schema.md
+    - name: 'Ressourcenprotokoll: Dienste, Kategorien und Schemas'
+      href: platform/diagnostic-logs-schema.md
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: 'Azure CLI: Application Insights (Vorschau)'
@@ -1110,9 +1112,11 @@
       href: app/azure-functions-supported-features.md
     - name: Azure PowerShell
       items:
+        - name: 'Warnungen, Metriken, Aktivitätsprotokoll, Autoskalierung'
+          href: /powershell/module/az.monitor
         - name: Application Insights
           href: /powershell/module/az.applicationinsights
-        - name: Protokolle
+        - name: Log Analytics
           href: /powershell/module/az.operationalinsights
     - name: REST-API
       items:
