@@ -21,7 +21,7 @@ ms.locfileid: "60368538"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentation zur Abrechnungs- und Kostenverwaltung in Azure
 
-Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen, die Nutzung und Kosten überwachen, sowie Ihr Konto und Ihre Abonnements verwalten.
+Hier erfahren Sie, wie Sie Ihre Azure-Abrechnung nachvollziehen, die Nutzung und Kosten überwachen sowie Ihr Konto und Ihre Abonnements verwalten.
 
 <ul class="panelContent cardsF">
     <li>
