@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989090"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756103"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -97,6 +97,13 @@ JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte
     ]
 }
 ```
+
+### <a name="restrictions-in-character-sets-for-namespaces"></a>Einschränkungen bei Zeichensätzen für Namespaces
+
+Die Zeichenfolge, die Sie für die Benennung des Namespace verwenden, muss einige Einschränkungen einhalten: 
+* Sie kann kein Unicode sein.
+* Sie können einige der druckbaren Symbole mit Codes < 256 für die Namespacenamen verwenden. 
+* Sie können keine Symbole mit Codes < 32 (nicht druckbar), 32 (Leerzeichen), 58 (Doppelpunkt), 124 (Pipe) und 126–140 verwenden.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>Merkmalssätze für die Personalisierung effektiver gestalten
 

@@ -5,14 +5,14 @@ services: service-fabric
 author: athinanthny
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390098"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752305"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Was ist das Service Fabric-Anwendungsressourcenmodell?
 Es wird empfohlen, dass Service Fabric-Anwendungen über Azure Resource Manager in Ihrem Service Fabric-Cluster bereitgestellt werden. Auf diese Weise können Anwendungen und Dienste in JSON beschrieben und in der gleichen Resource Manager-Vorlage wie der Cluster bereitgestellt werden. Im Unterschied zur Bereitstellung und Verwaltung von Anwendungen über PowerShell oder die Azure-Befehlszeilenschnittstelle muss nicht gewartet werden, bis der Cluster bereit ist. Der Vorgang der Anwendungsregistrierung und -bereitstellung kann in nur einem Schritt erfolgen. Diese Methode hat sich beim Verwalten des Anwendungslebenszyklus im Cluster bewährt. Weitere Informationen finden Sie unter [Bewährte Methoden](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
@@ -41,8 +41,14 @@ Zum Bereitstellen einer Anwendung über eine Resource Manager-Vorlage ist ein Sp
 ![Speicherkonto erstellen][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Konfigurieren des Speicherkontos 
-Nach dem Erstellen des Speicherkontos müssen Sie einen Blobcontainer erstellen, in dem die Anwendungen bereitgestellt werden können. Navigieren Sie im Azure-Portal zu dem Speicherkonto, in dem Ihre Anwendungen gespeichert werden sollen. Wählen Sie das Blatt **Blobs** aus, und klicken Sie auf die Schaltfläche **Container hinzufügen**. Fügen Sie einen neuen Container mit der öffentlichen Zugriffsebene „Blob“ hinzu.
-   
+Nach dem Erstellen des Speicherkontos müssen Sie einen Blobcontainer erstellen, in dem die Anwendungen bereitgestellt werden können. Navigieren Sie im Azure-Portal zu dem Speicherkonto, in dem Ihre Anwendungen gespeichert werden sollen. Wählen Sie das Blatt **Blobs** aus, und klicken Sie auf die Schaltfläche **Container hinzufügen**. Ressourcen in Ihrem Cluster können gesichert werden, indem die öffentliche Zugriffsebene auf privat festgelegt wird. Der Zugriff kann auf verschiedene Arten gewährt werden:
+* [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/common/storage-auth-aad-app.md)
+* [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* [Delegieren des Zugriffs mit einer Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
+)
+
+ In diesem Beispiel verwenden wir anonymen Lesezugriff für Blobs.
+
 ![Erstellen des Blobs][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>Bereitstellen der Anwendung in einem Speicherkonto

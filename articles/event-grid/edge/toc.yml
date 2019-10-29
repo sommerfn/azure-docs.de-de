@@ -1,0 +1,62 @@
+- name: Dokumentation zu Event Grid und IoT Edge
+  href: index.yml
+- name: Wechseln zur Azure Event Grid-Dokumentation
+  href: ../overview.md
+- name: Übersicht
+  items:
+    - name: Was ist Event Grid in IoT Edge?
+      href: overview.md
+- name: Lernprogramme
+  items:
+    - name: Lokales Veröffentlichen und Abonnieren von Ereignissen
+      href: pub-sub-events-webhook-local.md
+    - name: Veröffentlichen und Abonnieren von Ereignissen in der Cloud
+      href: pub-sub-events-webhook-cloud.md
+    - name: Weiterleiten von Ereignissen an Azure Event Grid
+      href: forward-events-event-grid-cloud.md
+    - name: Weiterleiten von Ereignissen an Azure IoT Hub
+      href: forward-events-iothub.md
+    - name: Lokales Reagieren auf Blob Storage-Ereignisse
+      href: react-blob-storage-events-locally.md
+- name: Beispiele
+  href: 'https://github.com/Azure/event-grid-iot-edge'
+- name: Konzepte
+  items:
+    - name: Event Grid-Konzepte
+      href: concepts.md
+    - name: Sicherheit und Authentifizierung
+      href: security-authentication.md
+    - name: Ereignisschemas
+      href: event-schemas.md
+    - name: Übermittlung und Wiederholung
+      href: delivery-retry.md
+    - name: Ausgabebatches
+      href: delivery-output-batching.md
+    - name: Erweiterte Filterung
+      href: advanced-filtering.md
+- name: Anleitungen
+  items:
+    - name: Beibehalten des Status
+      items:
+        - name: Linux
+          href: persist-state-linux.md
+        - name: Windows
+          href: persist-state-windows.md
+    - name: Konfigurieren von API-Protokollen
+      href: configure-api-protocol.md
+    - name: Konfigurieren der Clientauthentifizierung
+      href: configure-client-auth.md
+    - name: Konfigurieren der Authentifizierung für Webhookabonnenten
+      href: configure-webhook-subscriber-auth.md
+    - name: Konfigurieren der Identitätsauthentifizierung
+      href: configure-identity-auth.md
+    - name: Problembehandlung
+      href: troubleshoot.md
+- name: Verweis
+  items:
+    - name: REST-API
+      href: api.md
+    - name: Konfigurieren von Event Grid
+      href: configure-event-grid.md
+    - name: Konfigurationsschema für Modulzwillinge
+      href: twin-json.md

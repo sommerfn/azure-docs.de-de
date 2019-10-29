@@ -9,22 +9,22 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d3601fd8c32c70cf828cd08fada71258ec8fa5d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0ccfb00c4b45a2a29ccab74362a4296cdcd7cae
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60812671"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595710"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Anpassen von Kontingenten und Grenzwerten in Azure Data Lake Analytics
 
-Hier erfahren Sie, wie Sie das Kontingent und die Grenzwerte in ADLA-Konten (Azure Data Lake Analytics) anpassen und erhöhen. Diese Grenzen zu kennen, kann dabei helfen, das Verhalten von U-SQL-Aufträgen besser zu verstehen. Kontingentgrenzen sind nicht fix. Wenden Sie sich an den Azure-Support, um diese Höchstgrenzen zu erhöhen.
+Hier erfahren Sie, wie Sie das Kontingent und die Grenzwerte in ADLA-Konten (Azure Data Lake Analytics) anpassen und erhöhen. Diese Grenzen zu kennen, hilft dabei, das Verhalten von U-SQL-Aufträgen besser zu verstehen. Kontingentgrenzen sind nicht fix. Wenden Sie sich an den Azure-Support, um diese Höchstgrenzen zu erhöhen.
 
 ## <a name="azure-subscriptions-limits"></a>Azure-Abonnementgrenzen
 
 **Maximale Anzahl von ADLA-Konten pro Region und Abonnement:**  5
 
-Beim Versuch, ein sechstes ADLA-Konto zu erstellen, erhalten Sie folgenden Fehler : Sie haben die maximale Anzahl von Data Lake Analytics-Konten (5) in „Region“ für das Abonnement „Name“ erreicht. 
+Beim Versuch, ein sechstes ADLA-Konto zu erstellen, erhalten Sie folgenden Fehler : Sie haben die maximale Anzahl von Data Lake Analytics-Konten (5) in „Region“ für das Abonnement „Name“ erreicht.
 
 Wenn Sie diesen Grenzwert überschreiten möchten, können Sie diese Optionen versuchen:
 * Wählen Sie nach Möglichkeit eine andere Region aus
@@ -32,16 +32,18 @@ Wenn Sie diesen Grenzwert überschreiten möchten, können Sie diese Optionen ve
 
 ## <a name="default-adla-account-limits"></a>Standardmäßige ADLA-Kontobegrenzungen
 
-**Maximale Anzahl von Analytics-Einheiten (AUs) pro Konto:** 32
+**Maximale Anzahl von Analytics-Einheiten (AUs) pro Konto:** 250, Standard 32
 
 Dies ist die maximale Anzahl von AUs, die in Ihrem Konto gleichzeitig ausgeführt werden können. Wenn die Gesamtzahl von in allen Aufträgen ausgeführten AUs diesen Grenzwert überschreitet, werden neuere Aufträge automatisch in die Warteschlange eingereiht. Beispiel:
 
 * Sie führen einen Auftrag mit 32 AUs aus. Wenn Sie einen zweiten Auftrag übermitteln, wartet dieser in der Auftragswarteschlange, bis der erste Auftrag abgeschlossen ist.
 * Wenn bereits vier Aufträge mit jeweils 8 AUs ausgeführt werden und Sie einen fünften Auftrag übermitteln, der 8 AUs benötigt, wartet dieser Auftrag in der Auftragswarteschlange, bis 8 AUs verfügbar sind.
 
-**Maximale Anzahl von Analytics-Einheiten (AUs) pro Auftrag:** 32
+    ![Seite mit Azure Data Lake Analytics-Limits und -Kontingenten](./media/data-lake-analytics-quota-limits/adjust-quota-limits.png)
 
-Dies ist die standardmäßige maximale Anzahl von AUs, die jedem einzelnen Auftrag in Ihrem Konto zugewiesen werden können. Aufträge, denen mehr als diese Begrenzung zugewiesen wird, werden abgelehnt, es sei denn,für den Absender gilt eine Computerichtlinie (Auftragsübermittlungsbegrenzung), die ihm mehr AUs pro Auftrag gewährt. Die Obergrenze dieses Werts ist die AU-Begrenzung für das Konto.
+**Maximale Anzahl von Analytics-Einheiten (AUs) pro Auftrag:** 250, Standard 32
+
+Dies ist die maximale Anzahl von AUs, die jedem einzelnen Auftrag in Ihrem Konto zugewiesen werden können. Aufträge, denen mehr als diese Begrenzung zugewiesen wird, werden abgelehnt, es sei denn,für den Absender gilt eine Computerichtlinie (Auftragsübermittlungsbegrenzung), die ihm mehr AUs pro Auftrag gewährt. Die Obergrenze dieses Werts ist die AU-Begrenzung für das Konto.
 
 **Maximale Anzahl gleichzeitiger U-SQL-Aufträge pro Konto:** 20
 

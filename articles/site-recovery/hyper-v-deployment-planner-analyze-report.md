@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/20/2019
+ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aafeeb59446ac914bba25874f74871fc5f189498
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772728"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693587"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
 In diesem Artikel werden die Arbeitsblätter beschrieben, die im Excel-Bericht enthalten sind, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wird.
@@ -246,7 +246,7 @@ Der Excel-Bericht, der mit dem Site Recovery-Bereitstellungsplaner erstellt wurd
 
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 80.000 pro VM.
 
-* Die durchschnittliche Datenänderungsrate des virtuellen Quellcomputers übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 10 MB/s für die durchschnittliche E/A-Größe.
+* Die durchschnittliche Datenänderungsrate des virtuellen Quellcomputers übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 20 MB/s für die durchschnittliche E/A-Größe.
 
 * Der durchschnittliche effektive Schreib-IOPS-Wert des virtuellen Quellcomputers übersteigt den unterstützten Site Recovery-IOPS-Grenzwert von 840.
 

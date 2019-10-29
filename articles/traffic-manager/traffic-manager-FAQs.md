@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: 86376983f98abd241783f456cb9b41ab5d93ae51
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511019"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784833"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -416,7 +416,10 @@ Ja. Wenn Sie TCP als Überwachungsprotokoll angeben, kann Traffic Manager eine T
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Welche bestimmten Antworten vom Endpunkt sind bei Verwendung der TCP-Überwachung erforderlich?
 
-Bei Verwendung der TCP-Überwachung startet Traffic Manager durch Senden einer SYN-Anforderung an den Endpunkt am angegebenen Port ein Drei-Wege-TCP-Handshake. Er wartet dann eine bestimmte Zeit (wie in den Timeouteinstellungen angegeben) auf eine Antwort vom Endpunkt. Wenn der Endpunkt innerhalb des in den Überwachungseinstellungen angegeben Timeoutzeitraums auf die SYN-Anforderung mit einer SYN-ACK-Antwort reagiert, wird dieser Endpunkt als fehlerfrei angesehen. Bei Empfang der SYN-ACK-Antwort setzt Traffic Manager die Verbindung mit einer RST-Antwort zurück.
+Bei Verwendung der TCP-Überwachung startet Traffic Manager durch Senden einer SYN-Anforderung an den Endpunkt am angegebenen Port ein Drei-Wege-TCP-Handshake. Er wartet dann eine bestimmte Zeit (wie in den Timeouteinstellungen angegeben) auf eine SYN-ACK-Antwort vom Endpunkt.
+
+- Wenn innerhalb des in den Überwachungseinstellungen angegeben Timeoutzeitraums eine SYN-ACK-Antwort empfangen wird, wird dieser Endpunkt als fehlerfrei angesehen. Eine FIN- oder FIN-ACK-Antwort ist die erwartete Antwort vom Traffic Manager, wenn ein Socket regulär beendet wird.
+- Wenn nach dem angegebenen Timeout eine SYN-ACK-Antwort empfangen wird, antwortet der Traffic Manager mit einem RST, um die Verbindung zurückzusetzen.
 
 ### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Wie schnell verschiebt Traffic Manager meine Benutzer von einem fehlerhaften Endpunkt weg?
 

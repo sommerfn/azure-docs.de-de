@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c97f6dff17896b8a58c17aed9063e0b2b5733503
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd293c2815721295715c5e02846c55d4cdb74a32
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681581"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693490"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Erstellen einer Azure Network Watcher-Instanz
 
@@ -101,6 +101,26 @@ $requestBody = @"
 "@
 
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
+```
+
+## <a name="delete-a-network-watcher-in-the-portal"></a>Löschen einer Network Watcher-Instanz im Portal
+
+Navigieren Sie zu **Alle Dienste** > **Netzwerk** > **Network Watcher**.
+
+Wählen Sie die Registerkarte „Übersicht“ aus, wenn diese nicht bereits ausgewählt ist. Verwenden Sie die Dropdownliste, um das Abonnement auszuwählen, in dem Sie Network Watcher deaktivieren möchten.
+Erweitern Sie die Liste der Regionen für Ihr ausgewähltes Abonnement, indem Sie auf den Pfeil klicken. Verwenden Sie für jedes Abonnement die drei Punkte rechts daneben, um auf das Kontextmenü zuzugreifen.
+Klicken Sie auf „Network Watcher deaktivieren“, um die Deaktivierung zu starten. Sie werden aufgefordert, diesen Schritt zu bestätigen. Klicken Sie auf „JA“, um fortzufahren.
+Im Portal müssen Sie dies für jede Region in jedem Abonnement einzeln durchführen.
+
+
+## <a name="delete-a-network-watcher-with-powershell"></a>Löschen einer Network Watcher-Instanz mit PowerShell
+
+Um eine Network Watcher-Instanz zu löschen, führen Sie das folgende Beispiel aus:
+
+```powershell
+New-AzResourceGroup -Name NetworkWatcherRG -Location westcentralus
+New-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG -Location westcentralus
+Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

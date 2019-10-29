@@ -14,18 +14,16 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 9ec8e2df8befa28fc023edb30889f177b60939f9
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015040"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792583"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow-Formate und -Codecs
 
 > [!NOTE]
-> Fragen zu Encoder Premium senden Sie per E-Mail an mepd@microsoft.com.
-> 
 > Der in diesem Thema beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar. 
 
 Dieses Dokument enthält eine Liste von Eingabe- und Ausgabedateiformaten sowie Codecs, die von der öffentlichen Vorschauversion des **Medienencoder-Premium-Workflow** -Encoders unterstützt werden.
@@ -100,8 +98,6 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 * Erstellung von JPEG-Miniaturansichten
 * HEVC (H.265; 8 Bit und 10 Bit, Main- und Main10-Profil)
 
-  Unterstützung für HDR 10 ist in bestimmten Szenarien verfügbar, wenden Sie sich an mepd@microsoft.com, wenn Sie weitere Informationen wünschen
-
 
 ### <a name="output-audio-codecs"></a>Codecs für Audioausgabe
 
@@ -141,6 +137,9 @@ Bei der Ausgabe sind die folgenden Optionen verfügbar:
 
 Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjekt trotzdem eine leere TTML-Datei. 
 
+## <a name="need-help"></a>Sie brauchen Hilfe?
+
+Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

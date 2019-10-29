@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8070d0cc302e0c0745216cdd40c9cbbf34e2bf58
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: c4798fa9140f277d5383d2830eefb9bcc8d7c984
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016630"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598327"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-Community  
 
@@ -54,9 +54,9 @@ Das Team überwacht auch Fragen, die in Stack Overflow mit „azure-media-servic
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Kontaktaufnahme mit dem Team
+## <a name="need-help"></a>Sie brauchen Hilfe?
 
-Die primäre E-Mail-Adresse für Azure Media Services lautet: **amshelp@microsoft.com** .
+Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

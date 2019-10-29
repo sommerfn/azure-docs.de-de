@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268848"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595294"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -84,7 +84,7 @@ Die Key Vault-Verwaltungs-API und die Key Vault-Objekt-API sind in Node.js getre
 
 [Azure PowerShell für Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>Schnellstarthandbücher
+### <a name="quickstart-guides"></a>Schnellstarthandbücher
 
 - [Erstellen eines Schlüsseltresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Erste Schritte mit Key Vault in Node.js](https://github.com/Azure-Samples/key-vault-node-getting-started)
@@ -117,7 +117,7 @@ Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für 
 
 Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in denen Key Vault oder eine Key Vault-Integration zum Einsatz kommt.
 
-- Bei der [Azure Disk Encryption](../security/azure-security-disk-encryption.md) werden das Branchenstandardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux verwendet, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
+- Bei der [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) werden das Branchenstandardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux verwendet, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) bietet eine Option zur Verschlüsselung von Daten, die im Konto gespeichert sind. Für die Schlüsselverwaltung bietet Data Lake Store zwei Modi zur Verwaltung Ihrer Master-Verschlüsselungsschlüssel (Master Encryption Keys, MEKs), die zum Entschlüsseln von Daten erforderlich sind, die im Data Lake Store gespeichert sind. Sie können die MEKs entweder von Data Lake Store für sich verwalten lassen, oder Sie verwenden das Azure Key Vault-Konto und bleiben im Besitz der MEKs. Beim Erstellen eines Data Lake Store-Kontos geben Sie die Art der Schlüsselverwaltung an.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) ermöglicht Ihnen, Ihren eigenen Mandantenschlüssel zu verwalten. Anstatt z.B. Ihren Mandantenschlüssel von Microsoft verwalten zu lassen (Standard), können Sie Ihren eigenen Mandantenschlüssel verwalten, um bestimmte Vorschriften zu erfüllen, die in Ihrer Organisation gelten. Das Verwalten Ihres eigenen Mandantenschlüssels wird auch als „Bring Your Own Key“ (BYOK) bezeichnet.
 

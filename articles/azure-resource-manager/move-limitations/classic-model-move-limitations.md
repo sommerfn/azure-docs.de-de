@@ -1,17 +1,17 @@
 ---
-title: Verschieben von Ressourcen mit klassischer Azure-Bereitstellung in ein neues Abonnement oder eine neue Ressourcengruppe
+title: Verschieben von Azure-Ressourcen mit klassischer Bereitstellung
 description: Verwenden Sie Azure Resource Manager, um Ressourcen mit klassischer Bereitstellung in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 4770f957b6b9eea75b50776a7491b1ca479e50e2
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 783fcdca7637f3f67cf146bb827760cb4cdd7cbe
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723354"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533480"
 ---
 # <a name="move-guidance-for-classic-deployment-model-resources"></a>Anleitung zum Verschieben von Ressourcen mit dem klassischen Bereitstellungsmodell
 

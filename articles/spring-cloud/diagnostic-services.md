@@ -9,54 +9,53 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: e6b90fb09c536f68bee7fd5d57507fe3920bcf1e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 955641f3511989baa5bfc3c0fa4d7df7ccbf9bfa
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038717"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554579"
 ---
-# <a name="analyze-logs-and-metrics-with-diagnostic-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
+# <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
 
-Mithilfe der Diagnosefunktionen von Azure Spring Cloud können Sie Protokolle und Metriken mit einem der folgenden Dienste analysieren:
+Mithilfe der Diagnosefunktionen von Azure Spring Cloud können Sie Protokolle und Metriken mit jedem der folgenden Dienste analysieren:
 
-* Analysieren Sie sie mit Azure Log Analytics, wobei die Daten sofort in Azure Log Analytics geschrieben werden, ohne sie zuerst in den Speicher schreiben zu müssen.
-* Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem Speicherkonto gespeichert werden. Sie können die Vermerkdauer (in Tagen) angeben.
+* Verwenden Sie Azure Log Analytics, bei dem die Daten sofort geschrieben werden, ohne dass Sie zuerst in den Speicher geschrieben werden müssten.
+* Speichern Sie sie zur Überwachung oder manuellen Überprüfung in einem Speicherkonto. Sie können die Vermerkdauer (in Tagen) angeben.
 * Sie können sie zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung an Event Hubs streamen.
 
-Zum Einstieg müssen Sie einen dieser Dienste aktivieren, um die Daten empfangen zu können.  Weitere Informationen zum Konfigurieren von Log Analytics finden Sie in [diesem Tutorial](../azure-monitor/log-query/get-started-portal.md).  
+Zum Einstieg aktivieren Sie einen dieser Dienste, um die Daten empfangen zu können. Weitere Informationen zum Konfigurieren von Log Analytics finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md). 
 
-## <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
+## <a name="configure-diagnostics-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Spring Cloud-Instanz.
-1. Wählen Sie die Menüoption **Diagnoseeinstellungen** aus.
-1. Wählen Sie die Schaltfläche **Diagnoseeinstellung hinzufügen** aus.
-1. Geben Sie einen Namen für die Einstellung ein, und wählen Sie aus, wohin die Protokolle übermittelt werden sollen. Sie können eine beliebige Kombination der folgenden drei Optionen auswählen:
-    * In einem Speicherkonto archivieren
-    * An einen Event Hub streamen
-    * An Log Analytics senden
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Spring Cloud-Instanz.
+1. Wählen Sie die Option **Diagnoseeinstellungen** aus, und wählen Sie dann die **Diagnoseeinstellung hinzufügen** aus.
+1. Geben Sie einen Namen für die Einstellung ein, und wählen Sie dann aus, wohin die Protokolle gesendet werden sollen. Sie können eine beliebige Kombination der folgenden drei Optionen auswählen:
+    * **In einem Speicherkonto archivieren**
+    * **An einen Event Hub streamen**
+    * **An Log Analytics senden**
 
-1. Wählen Sie die zu überwachende Protokoll- und Metrikkategorie aus, und geben Sie die Vermerkdauer (in Tagen) an. Die Vermerkdauer gilt nur für das Speicherkonto.
-1. Wählen Sie **Speichern** aus, um die Einstellung zu übernehmen.
+1. Wählen Sie die zu überwachende Protokoll- und Metrikkategorie aus, und geben Sie dann die Vermerkdauer (in Tagen) an. Die Vermerkdauer gilt nur für das Speicherkonto.
+1. Wählen Sie **Speichern** aus.
 
 > [!NOTE]
-> Zwischen der Ausgabe der Protokolle oder Metriken und der Anzeige Speicherkonto, in Event Hubs oder in Log Analytics können bis zu 15 Minuten vergehen.
+> Zwischen der Ausgabe der Protokolle oder Metriken und der Anzeige in Ihrem Speicherkonto, Ihrem Event Hub oder in Log Analytics kann eine Verzögerung von bis zu 15 Minuten liegen.
 
-## <a name="viewing-logs"></a>Anzeigen von Protokollen
+## <a name="view-the-logs"></a>Anzeigen der Protokolle
 
-### <a name="using-log-analytics"></a>Verwenden von Log Analytics
+### <a name="use-log-analytics"></a>Verwenden von Log Analytics
 
-1. Wählen Sie im Azure-Portal im Navigationsmenü auf der linken Seite „Log Analytics“ aus.
-1. Wählen Sie den Log Analytics-Arbeitsbereich aus, dem Sie die Diagnoseeinstellungen hinzugefügt haben.
-1. Wählen Sie `Logs` aus, um das Blatt „Protokollsuche“ zu öffnen.
-1. Geben Sie im Feld „Protokollsuche“ eine einfache Abfrage ein.  Beispiel:
+1. Wählen Sie im Azure-Portal im linken Bereich **Log Analytics** aus.
+1. Wählen Sie den Log Analytics-Arbeitsbereich aus, den Sie beim Hinzufügen Ihrer Diagnoseeinstellungen ausgewählt haben.
+1. Um den Bereich **Protokollsuche** zu öffnen, wählen Sie **Protokolle** aus.
+1. Geben Sie in das **Protokoll**suchfeld eine einfache Abfrage ein.
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
 
-1. Wählen Sie `Run` aus, um die Suchergebnisse anzuzeigen.
+1. Um das Suchergebnis anzuzeigen, wählen Sie **Ausführen** aus.
 1. Sie können die Protokolle der jeweiligen Anwendung oder Instanz suchen, indem Sie eine Filterbedingung festlegen:
 
     ```sql
@@ -65,37 +64,39 @@ Zum Einstieg müssen Sie einen dieser Dienste aktivieren, um die Daten empfangen
     | limit 50
     ```
 
-[In diesem Artikel](../azure-monitor/log-query/query-language.md) erfahren Sie mehr über die Abfragesprache, die in Log Analytics verwendet wird.
+Weitere Informationen zu der in Log Analytics verwendeten Abfragesprache erhalten Sie unter [Azure Monitor-Protokollabfragen](../azure-monitor/log-query/query-language.md).
 
-### <a name="using-logs-and-metrics-in-storage-account"></a>Verwenden von Protokollen und Metriken in Speicherkonten
+### <a name="use-your-storage-account"></a>Verwenden Ihres Speicherkontos 
 
-1. Wählen Sie im Azure-Portal im Navigationsmenü auf der linken Seite „Speicherkonten“ aus.
-1. Wählen Sie das Speicherkonto aus, dem Sie die Diagnoseeinstellungen hinzugefügt haben.
-1. Wählen Sie den Eintrag `Blobs` aus, um das Blatt „Blobcontainer“ zu öffnen.
-1. Suchen Sie den Container `insights-logs-applicationconsole`, um die Anwendungsprotokolle zu überprüfen.
-1. Suchen Sie den Container `insights-metrics-pt1m`, um die Anwendungsmetriken zu überprüfen.
+1. Wählen Sie im Azure-Portal im linken Bereich **Speicherkonten** aus.
 
-[Erfahren Sie mehr über das Senden von Diagnoseinformationen an ein Speicherkonto.](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage)
+1. Wählen Sie das Speicherkonto aus, das Sie beim Hinzufügen Ihrer Diagnoseeinstellungen ausgewählt haben.
+1. Um den Bereich **Blobcontainer** zu öffnen, wählen Sie **Blobs** aus.
+1. Um Anwendungsprotokolle zu überprüfen, suchen Sie nach einem Container mit dem Namen **insights-logs-applicationconsole**.
+1. Um Anwendungsmetriken zu überprüfen, suchen Sie nach einem Container mit dem Namen **insights-metrics-pt1m**.
 
-### <a name="using-event-hubs"></a>Verwenden von Event Hubs
+Weitere Informationen zum Senden von Diagnoseinformationen an ein Speicherkonto finden Sie unter [Speichern und Anzeigen von Diagnosedaten in Azure Storage](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-to-storage).
 
-1. Wählen Sie im Azure-Portal im Navigationsmenü auf der linken Seite „Event Hubs“ aus.
-1. Wählen Sie die Event Hubs-Instanz aus, der Sie die Diagnoseeinstellungen hinzugefügt haben.
-1. Wählen Sie `Event Hubs` aus, um das Blatt „Event Hub-Liste“ zu öffnen.
-1. Suchen Sie den Event Hub `insights-logs-applicationconsole`, um die Anwendungsprotokolle zu überprüfen.
-1. Suchen Sie den Event Hub `insights-metrics-pt1m`, um die Anwendungsmetriken zu überprüfen.
+### <a name="use-your-event-hub"></a>Verwenden Ihres Event Hubs
 
-[Erfahren Sie mehr über das Senden von Diagnoseinformationen an einen Event Hub.](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs)
+1. Wählen Sie im Azure-Portal im linken Bereich **Event Hubs** aus.
 
-## <a name="analyzing-logs"></a>Analysieren von Protokollen
+1. Suchen Sie nach dem Event Hub, den Sie beim Hinzufügen Ihrer Diagnoseeinstellungen ausgewählt haben, und wählen Sie ihn aus.
+1. Um den Bereich **Event Hub-Liste** zu öffnen, wählen Sie **Event Hubs** aus.
+1. Um Anwendungsprotokolle zu überprüfen, suchen Sie nach einem Event Hub mit dem Namen **insights-logs-applicationconsole**.
+1. Um Anwendungsmetriken zu überprüfen, suchen Sie nach einem Event Hub mit dem Namen **insights-metrics-pt1m**.
 
-Azure Log Analytics stellt Kusto bereit, damit Sie Ihre Protokolle zur Analyse abfragen können.  Lesen Sie das [Log Analytics-Tutorial ](../azure-monitor/log-query/get-started-portal.md), um eine kurze Einführung in das Abfragen von Protokollen mithilfe von Kusto zu erhalten.
+Weitere Informationen zum Senden von Diagnoseinformationen an einen Event Hub finden Sie unter [Streamen von Azure-Diagnosedaten im langsamsten Pfad mithilfe von Event Hubs](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-stream-event-hubs).
 
-Anwendungsprotokolle bieten wichtige Informationen zu Ihrer Anwendung wie Integrität, Leistung u. v. m.  Im Folgenden finden Sie einige einfache Abfragen, die Ihnen helfen, die aktuellen und früheren Zustände Ihrer Anwendung besser zu verstehen.
+## <a name="analyze-the-logs"></a>Analysieren der Protokolle
+
+Azure Log Analytics stellt Kusto bereit, damit Sie Ihre Protokolle zur Analyse abfragen können. Eine kurze Einführung in das Abfragen mithilfe von Kusto finden Sie im [Log Analytics-Tutorial ](../azure-monitor/log-query/get-started-portal.md).
+
+Anwendungsprotokolle bieten wichtige Informationen zu Ihrer Anwendung wie Integrität, Leistung u. v. m. In den nächsten Abschnitten finden Sie einige einfache Abfragen, die Ihnen helfen, die aktuellen und früheren Zustände Ihrer Anwendung besser zu verstehen.
 
 ### <a name="show-application-logs-from-azure-spring-cloud"></a>Anzeigen von Anwendungsprotokollen aus Azure Spring Cloud
 
-So überprüfen Sie eine Liste mit Anwendungsprotokollen aus Azure Spring Cloud, sortiert nach der Zeit mit den neuesten Protokollen zuerst
+Um eine Liste mit Anwendungsprotokollen aus Azure Spring Cloud zu überprüfen, sortiert nach der Zeit mit den neuesten Protokollen zuerst, führen Sie die folgende Abfrage aus:
 
 ```sql
 AppPlatformLogsforSpring
@@ -105,7 +106,7 @@ AppPlatformLogsforSpring
 
 ### <a name="show-logs-entries-containing-errors-or-exceptions"></a>Anzeigen von Protokolleinträgen mit Fehlern oder Ausnahmen
 
-Mit dieser Abfrage können Sie Protokolleinträge überprüfen, die einen Fehler oder eine Ausnahme enthalten.  Die Ergebnisse sind nicht sortiert.
+Um unsortierte Protokolleinträge zu überprüfen, die einen Fehler oder eine Ausnahme enthalten, führen Sie die folgende Abfrage aus:
 
 ```sql
 AppPlatformLogsforSpring
@@ -113,11 +114,11 @@ AppPlatformLogsforSpring
 | where Log contains "error" or Log contains "exception"
 ```
 
-Verwenden Sie diese Abfrage, um Fehler zu finden, oder ändern Sie die Abfragebedingungen, um bestimmte Fehlercodes oder Ausnahmen zu suchen.  
+Verwenden Sie diese Abfrage, um Fehler zu finden, oder ändern Sie die Abfragebedingungen, um bestimmte Fehlercodes oder Ausnahmen zu suchen. 
 
 ### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>Anzeigen der Anzahl von Fehlern und Ausnahmen, die von Ihrer Anwendung in der letzten Stunde gemeldet wurden
 
-Diese Abfrage erstellt ein Kreisdiagramm mit der Anzahl der Fehler und Ausnahmen, die in der letzten Stunde von Ihrer Anwendung protokolliert wurden:
+Um ein Kreisdiagramm zu erstellen, das die Anzahl der Fehler und Ausnahmen darstellt, die in der letzten Stunde von Ihrer Anwendung protokolliert wurden, führen Sie die folgende Abfrage aus:
 
 ```sql
 AppPlatformLogsforSpring
@@ -130,4 +131,4 @@ AppPlatformLogsforSpring
 
 ### <a name="learn-more-about-querying-application-logs"></a>Weitere Informationen zum Abfragen von Anwendungsprotokollen
 
-Azure Monitor bietet umfassende Unterstützung für das Abfragen von Anwendungsprotokollen mithilfe von Log Analytics.  Weitere Informationen zu diesem Dienst finden Sie im Tutorial zu [Protokollabfragen](../azure-monitor/log-query/get-started-queries.md) mit Azure Monitor. Die [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md) bietet weitere Informationen zum Erstellen von Abfragen für die Analyse Ihrer Anwendungsprotokolle.
+Azure Monitor bietet umfassende Unterstützung für das Abfragen von Anwendungsprotokollen mithilfe von Log Analytics. Weitere Informationen zu diesem Dienst finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md). Weitere Informationen zum Erstellen von Abfragen zur Analyse Ihrer Anwendungsprotokolle finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).

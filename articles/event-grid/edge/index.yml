@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: 'Dokumentation: Event Grid in IoT Edge'
+summary: Hier erfahren Sie, wie Sie mit Event Grid in IoT Edge nahezu in Echtzeit auf relevante Ereignisse reagieren, die auf Edgegeräten generiert werden.
+metadata:
+  title: 'Dokumentation: Event Grid in IoT Edge'
+  description: Hier erfahren Sie, wie Sie mit Event Grid in IoT Edge nahezu in Echtzeit auf relevante Ereignisse reagieren, die auf Edgegeräten generiert werden.
+  services: event-grid
+  ms.service: event-grid
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 10/12/2019
+  ms.openlocfilehash: 4b79d64240b96ed41b535f8dbcd1155d67e76282
+  ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/28/2019
+  ms.locfileid: "72991612"
+landingContent:
+- title: Informationen zu Event Grid in IoT Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Event Grid in IoT Edge?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Event Grid-Konzepte
+      url: concepts.md
+    - text: Ereignisschemas
+      url: event-schemas.md
+    - text: Ausgabebatches
+      url: delivery-output-batching.md
+    - text: Erweiterte Filterung
+      url: advanced-filtering.md
+    - text: Übermittlung und Wiederholung
+      url: delivery-retry.md
+- title: Szenarien
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Lokales Veröffentlichen und Abonnieren von Ereignissen
+      url: pub-sub-events-webhook-local.md
+    - text: Veröffentlichen und Abonnieren von Ereignissen in der Cloud
+      url: pub-sub-events-webhook-cloud.md
+    - text: Weiterleiten von Ereignissen an Azure Event Grid
+      url: forward-events-event-grid-cloud.md
+    - text: Weiterleiten von Ereignissen an Azure IoT Hub
+      url: forward-events-event-grid-cloud.md
+    - text: Lokales Reagieren auf Azure Blob Storage-Ereignisse
+      url: react-blob-storage-events-locally.md
+- title: Sicherheit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sicherheit und Authentifizierung
+      url: security-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren der Clientauthentifizierung
+      url: configure-client-auth.md
+    - text: Konfigurieren der Authentifizierung für Webhookabonnenten
+      url: configure-webhook-subscriber-auth.md
+    - text: Konfigurieren der Identitätsauthentifizierung
+      url: configure-identity-auth.md

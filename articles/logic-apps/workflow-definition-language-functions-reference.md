@@ -1,6 +1,6 @@
 ---
-title: Funktionsreferenz zur Definitionssprache für Workflows – Azure Logic Apps und Microsoft Flow
-description: Referenzhandbuch für Funktionen in Ausdrücken, die mit der Definitionssprache für Workflows für Azure Logic Apps und Microsoft Flow erstellt wurden.
+title: Referenzhandbuch für Funktionen in Ausdrücken – Azure Logic Apps
+description: Referenzhandbuch für Funktionen in Ausdrücken für Azure Logic Apps und Microsoft Flow
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/23/2019
-ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: d16df46ada2254f5bfc671db55e82fc89ef450b6
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208401"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679039"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
+# <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-microsoft-flow"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Microsoft Flow
 
 Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Microsoft Flow](https://docs.microsoft.com/flow/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten. 
 

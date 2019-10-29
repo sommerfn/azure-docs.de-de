@@ -4,23 +4,22 @@ description: Erfahren Sie, wie Sie einen benutzerdefinierte DNS-Domänennamen, d
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
-editor: jimbe
+manager: gwallace
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 703a151f801f65b968ecf93eaa97640c22a71bd2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073085"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679810"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 
@@ -129,6 +128,12 @@ Ordnen Sie für das Stammdomänenbeispiel `contoso.com` den A- oder CNAME-Eintra
 Speichern Sie die Einstellungen.
 
 DNS-Abfragen werden umgehend nach der DNS-Verteilung zu Ihrer App Service-App aufgelöst.
+
+## <a name="active-domain-in-azure"></a>Aktive Domäne in Azure
+
+Sie können eine aktive benutzerdefinierte Domäne in Azure zwischen Abonnements oder innerhalb desselben Abonnements migrieren. Eine solche Migration ohne Ausfallzeiten erfordert jedoch, dass die Quell-App und die Ziel-App zu einem bestimmten Zeitpunkt derselben benutzerdefinierten Domäne zugewiesen sind. Daher müssen Sie sicherstellen, dass die beiden Apps nicht in derselben Bereitstellungseinheit (intern als Webspace bezeichnet) bereitgestellt sind. Ein Domänenname kann nur einer App in jeder Bereitstellungseinheit zugewiesen werden.
+
+Sie finden die Bereitstellungseinheit für Ihre App, indem Sie sich den Domänennamen der FTP/S-URL `<deployment-unit>.ftp.azurewebsites.windows.net` ansehen. Überprüfen Sie, und stellen Sie sicher, dass sich die Bereitstellungseinheit der Quell-App von der der Ziel-App unterscheidet. Die Bereitstellungseinheit einer App wird von dem [App Service-Plan bestimmt](overview-hosting-plans.md), in dem sie sich befindet. Er wird nach dem Zufallsprinzip von Azure ausgewählt, wenn Sie den Plan erstellen, und kann nicht geändert werden. Azure stellt nur sicher, dass sich zwei Pläne in derselben Bereitstellungseinheit befinden, wenn Sie [sie in derselben Ressourcengruppe *und* derselben Region erstellen](app-service-plan-manage.md#create-an-app-service-plan), aber es verfügt über keine Logik, um sicherzustellen, dass sich die Pläne in unterschiedlichen Bereitstellungseinheiten befinden. Die einzige Möglichkeit, einen Plan in einer anderen Bereitstellungseinheit zu erstellen, besteht darin, einen Plan in einer neuen Ressourcengruppe oder Region zu erstellen, bis Sie eine andere Bereitstellungseinheit erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
