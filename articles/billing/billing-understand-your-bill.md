@@ -54,7 +54,7 @@ Der Abschnitt zu den **Nutzungsgebühren** Ihrer Rechnung zeigt den Gesamtwert a
 
 ![Nutzungsgebühren (Rechnung)](./media/billing-understand-your-bill/1.png)
 
-Dieselbe Gebühr wird im Abschnitt **Statement** (Auszug) der CSV-Datei mit ausführlichen Nutzungsdaten angezeigt. Sowohl der verbrauchte Betrag (*Verbraucht*) als auch der *Wert* stimmt mit der Rechnung überein.
+Dieselbe Gebühr wird im Abschnitt **Statement** (Auszug) der CSV-Datei mit ausführlichen Nutzungsdaten angezeigt. Sowohl der verbrauchte Betrag (*Verbraucht*) als auch der *Wert* stimmen mit der Rechnung überein.
 
 ![Nutzungsgebühren (CSV-Datei)](./media/billing-understand-your-bill/2.png)
 
