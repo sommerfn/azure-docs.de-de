@@ -1,13 +1,13 @@
 ---
-title: 'Lucene-Abfragesyntax: Azure Search'
-description: Referenz für die vollständige Lucene-Syntax, die mit Azure Search verwendet wird.
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+title: Lucene-Abfragesyntax
+titleSuffix: Azure Cognitive Search
+description: Referenz für die vollständige Lucene-Syntax, wie sie in Azure Cognitive Search verwendet wird.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,15 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d667588cea5902700c225dd7b597d8f03d93d200
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1b94a1bbab810345ab222be9e7aba2fef0f52549
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650046"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786282"
 ---
-# <a name="lucene-query-syntax-in-azure-search"></a>Lucene-Abfragesyntax in Azure Search
-Sie können für Azure Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Search mit `$filter`-Ausdrücken erstellt werden. 
+# <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
+
+Sie können für Azure Cognitive Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Cognitive Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Cognitive Search mit `$filter`-Ausdrücken erstellt werden. 
 
 ## <a name="how-to-invoke-full-parsing"></a>Aufrufen der vollständigen Analyse
 
@@ -56,10 +57,10 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 }
 ```
 
-Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search](search-query-lucene-examples.md). Ausführliche Informationen zur Angabe sämtlicher Abfrageparameter finden Sie unter [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Durchsuchen von Dokumenten (REST-API für den Azure Search-Dienst)).
+Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Cognitive Search](search-query-lucene-examples.md). Ausführliche Informationen zur Angabe sämtlicher Abfrageparameter finden Sie unter [Durchsuchen von Dokumenten (REST-API für Azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 > [!NOTE]  
->  Azure Search unterstützt darüber hinaus die [einfache Abfragesyntax](query-simple-syntax.md), eine unkomplizierte und stabile Abfragesprache, die für die einfache Schlüsselwortsuche verwendet werden kann.  
+>  Azure Cognitive Search unterstützt darüber hinaus die [einfache Abfragesyntax](query-simple-syntax.md), eine unkomplizierte und stabile Abfragesprache, die für die einfache Schlüsselwortsuche verwendet werden kann.  
 
 ##  <a name="bkmk_syntax"></a> Grundlagen der Syntax  
  Die folgenden Syntaxgrundlagen gelten für alle Abfragen mit der Lucene-Syntax.  
@@ -83,7 +84,7 @@ Im obigen Beispiel geht es um das Tildezeichen (~), das gleiche Prinzip gilt jed
 
 ### <a name="encoding-unsafe-and-reserved-characters-in-urls"></a>Codierung von unsicheren und reservierten Zeichen in URLs
 
- Stellen Sie sicher, dass alle unsicheren und reservierten Zeichen in einer URL codiert werden. „#“ ist beispielsweise ein Fragment-/Ankerbezeichner in einer URL und daher ein unsicheres Zeichen. Bei der Verwendung in einer URL muss das Zeichen in `%23` codiert werden. „&“ und „=“ sind Beispiele für reservierte Zeichen, da sie in Azure Search zum Trennen von Parametern und Angeben von Werten dienen. Weitere Informationen finden Sie unter [RFC1738: Uniform Resource Locator (URL)](https://www.ietf.org/rfc/rfc1738.txt).
+ Stellen Sie sicher, dass alle unsicheren und reservierten Zeichen in einer URL codiert werden. „#“ ist beispielsweise ein Fragment-/Ankerbezeichner in einer URL und daher ein unsicheres Zeichen. Bei der Verwendung in einer URL muss das Zeichen in `%23` codiert werden. „&“ und „=“ sind Beispiele für reservierte Zeichen, da sie in Azure Cognitive Search zum Trennen von Parametern und Angeben von Werten dienen. Weitere Informationen finden Sie unter [RFC1738: Uniform Resource Locator (URL)](https://www.ietf.org/rfc/rfc1738.txt).
 
  Unsichere Zeichen sind ``" ` < > # % { } | \ ^ ~ [ ]``. Reservierte Zeichen sind `; / ? : @ = + &`.
 
@@ -93,7 +94,7 @@ Im obigen Beispiel geht es um das Tildezeichen (~), das gleiche Prinzip gilt jed
 Die Feldgruppierung funktioniert ähnlich, beschränkt die Gruppierung jedoch auf ein einzelnes Feld. Beispielsweise durchsucht `hotelAmenities:(gym+(wifi||pool))` das Feld „hotelAmenities“ nach „gym“ und „wifi“ oder nach „gym“ und „pool“.  
 
 ### <a name="searchmode-parameter-considerations"></a>Überlegungen zu SearchMode-Parametern  
- Die in [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search) beschriebene Auswirkung des `searchMode` auf Abfragen gilt auch für die Lucene-Abfragesyntax. Insbesondere kann die Verwendung von `searchMode` in Verbindung mit NOT-Operatoren zu Abfrageergebnissen führen, die ungewöhnlich erscheinen, wenn Sie die Auswirkungen des Parameters nicht verstanden haben. Wenn Sie den Standardwert `searchMode=any` beibehalten und einen NOT-Operator verwenden, wird der Vorgang als OR-Aktion berechnet, sodass „"New York" NOT "Seattle"“ alle Städte zurückgibt, die nicht Seattle sind.  
+ Die in [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md) beschriebene Auswirkung von `searchMode` auf Abfragen gilt auch für die Lucene-Abfragesyntax. Insbesondere kann die Verwendung von `searchMode` in Verbindung mit NOT-Operatoren zu Abfrageergebnissen führen, die ungewöhnlich erscheinen, wenn Sie die Auswirkungen des Parameters nicht verstanden haben. Wenn Sie den Standardwert `searchMode=any` beibehalten und einen NOT-Operator verwenden, wird der Vorgang als OR-Aktion berechnet, sodass „"New York" NOT "Seattle"“ alle Städte zurückgibt, die nicht Seattle sind.  
 
 ##  <a name="bkmk_boolean"></a> Boolesche Operatoren (AND, OR, NOT) 
  Geben Sie boolesche Operatoren in Textform (AND, OR, NOT) immer in Großbuchstaben an.  
@@ -116,10 +117,10 @@ Der NOT-Operator ist ein Ausrufezeichen oder ein Minuszeichen. Beispiel: `wifi !
 `searchMode=all` erhöht die Genauigkeit der Abfragen, da weniger Ergebnisse einbezogen werden, und wird standardmäßig als „AND NOT“ interpretiert. Beispielsweise findet `wifi -luxury` Dokumente, die den Begriff `wifi` enthalten und den Begriff `luxury` nicht enthalten. Dies ist wohl ein intuitiveres Verhalten für den „-“-Operator. Wenn Sie nicht die Trefferquote, sondern die Genauigkeit der Suche optimieren möchten *und* Ihre Benutzer häufig den `-`-Operator bei der Suche verwenden, sollten Sie daher die Verwendung von `searchMode=all` anstelle von `searchMode=any` in Betracht ziehen.
 
 ##  <a name="bkmk_querysizelimits"></a> Einschränkungen der Abfragegröße  
- Für die Größe der Abfragen, die Sie an Azure Search senden können, gilt ein Grenzwert. Insbesondere können Sie maximal 1.024 Klauseln (durch AND, OR usw. getrennte Ausdrücke) verwenden. Für die Größe der einzelnen Begriffe in einer Abfrage gilt zudem ein Grenzwert von ungefähr 32 KB. Wenn Ihre Anwendung programmgesteuert Suchabfragen generiert, sollten Sie durch den Anwendungsentwurf sicherstellen, dass sie keine Abfragen unbegrenzter Größe erzeugt.  
+ Die Größe der Abfragen, die Sie an Azure Cognitive Search senden können, ist begrenzt. Insbesondere können Sie maximal 1.024 Klauseln (durch AND, OR usw. getrennte Ausdrücke) verwenden. Für die Größe der einzelnen Begriffe in einer Abfrage gilt zudem ein Grenzwert von ungefähr 32 KB. Wenn Ihre Anwendung programmgesteuert Suchabfragen generiert, sollten Sie durch den Anwendungsentwurf sicherstellen, dass sie keine Abfragen unbegrenzter Größe erzeugt.  
 
 ##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> Bewerten von Platzhalterabfragen und Abfragen mit regulären Ausdrücken
- Azure Search verwendet die häufigkeitsbasierte Bewertung ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) für Textabfragen. Für Platzhalterabfragen und Abfragen mit regulären Ausdrücken, bei denen die Anzahl von Begriffen groß sein kann, wird der Häufigkeitsfaktor jedoch ignoriert. Dadurch wird verhindert, dass Übereinstimmungen für seltenere Begriffe bei der Rangzuweisung bevorzugt behandelt werden. Alle Übereinstimmungen werden bei Platzhalterabfragen und Abfragen mit regulären Ausdrücken gleich behandelt.
+ Azure Cognitive Search verwendet für Textabfragen die häufigkeitsbasierte Bewertung ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)). Für Platzhalterabfragen und Abfragen mit regulären Ausdrücken, bei denen die Anzahl von Begriffen groß sein kann, wird der Häufigkeitsfaktor jedoch ignoriert. Dadurch wird verhindert, dass Übereinstimmungen für seltenere Begriffe bei der Rangzuweisung bevorzugt behandelt werden. Alle Übereinstimmungen werden bei Platzhalterabfragen und Abfragen mit regulären Ausdrücken gleich behandelt.
 
 ##  <a name="bkmk_fields"></a>Feldbezogene Suche  
 Sie können einen feldbezogenen Suchvorgang mit der `fieldName:searchExpression`-Syntax definieren, wobei es sich bei dem Suchausdruck um ein einzelnes Wort, einen einfachen Ausdruck oder einen komplexeren Ausdruck in Klammern handeln kann, optional mit booleschen Operatoren. Beispiele hierfür sind:  
@@ -172,4 +173,4 @@ Im folgenden Beispiel werden die Unterschiede veranschaulicht. Angenommen, Sie h
 
 + [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 + [OData expression syntax for filters and sorting](query-odata-filter-orderby-syntax.md) (OData-Ausdrucksfilter für Filter und die Sortierung)   
-+ [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search)   
++ [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md)   

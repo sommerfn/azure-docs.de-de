@@ -53,7 +53,7 @@ Unter Windows Virtual Desktop werden die meisten Einrichtungs- und Konfiguration
 
 ## <a name="end-users"></a>Endbenutzer
 
-Nachdem Sie Benutzer ihren App-Gruppen zugewiesen haben, können diese mit den Windows Virtual Desktop-Clients keine Verbindung mit einer Windows Virtual Desktop-Bereitstellung herstellen.
+Nachdem Sie Benutzer ihren App-Gruppen zugewiesen haben, können diese mit beliebigen Windows Virtual Desktop-Clients eine Verbindung mit einer Windows Virtual Desktop-Bereitstellung herstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
