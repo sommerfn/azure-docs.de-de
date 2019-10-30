@@ -7,16 +7,16 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 04bcdee5f2772f6a6a2758af5316031ff29c7b06
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 581aecb113a2c6e0bb03d04de46c7dbeb71db3ce
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794995"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901386"
 ---
 # <a name="mobile-application-development-in-microsoft"></a>Entwicklung mobiler Anwendungen mit Microsoft
 Entscheidungsträger, Entwicklungsteams und IT-Abteilungen müssen eine solide Strategie für die Entwicklung mobiler Anwendungen erarbeiten, die zahlreiche Aspekte abdeckt:
-- Festlegen der Anwendungsarten, die zu den Geschäftszielen passen, etwa B2E (Business to Enterprise), B2B (Business to Business ) oder B2C (Business to Consumer)
+- Festlegen der Anwendungsarten, die zu den Geschäftszielen passen, z. B. B2E (Business to Enterprise), B2B (Business to Business) oder B2C (Business to Consumer)
 - Entscheiden, ob sie in Anwendungen bzw. in die Entwicklung von Anwendungen für iOS, Android oder Windows mit Sprachen für eine einzelne Plattform investieren oder einen plattformübergreifenden Ansatz verwenden möchten
 - Bereitstellen von skalierbaren Back-End-Diensten
 - Nahtloses Integrieren in Back-End-Daten (online und offline)

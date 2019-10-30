@@ -56,28 +56,37 @@
               href: virtual-machines-windows-ps-sql-keyvault.md
 - name: Anleitungen
   items:
-    - name: Erstellen eines virtuellen SQL-Computers
+    - name: Erstellen einer SQL-VM
       items:
         - name: Verwenden des Portals
           href: virtual-machines-windows-portal-sql-server-provision.md
         - name: Mithilfe von Azure PowerShell
           href: virtual-machines-windows-ps-sql-create.md
-    - name: Registrieren beim Ressourcenanbieter
-      href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: Ändern des Lizenzierungsmodells
-      href: virtual-machines-windows-sql-ahb.md
-    - name: Ändern der Edition
-      href: virtual-machines-windows-sql-change-edition.md
+    - name: Registrieren bei SQL-VM-RP
+      displayName: 'resource provider, registration'
+      items:
+        - name: Einzelne VM
+          href: virtual-machines-windows-sql-register-with-resource-provider.md
+        - name: Durchführen der Massenregistrierung für mehrere VMs
+          href: virtual-machines-windows-sql-bulk-register-with-resource-provider.md
+    - name: Verwalten
+      items:
+        - name: Lizenzierungsmodell
+          displayName: 'ahb, ahub, payg, change, modify, update'
+          href: virtual-machines-windows-sql-ahb.md
+        - name: Edition
+          displayName: 'change, modify, update'
+          href: virtual-machines-windows-sql-change-edition.md
+        - name: Azure Storage für Sicherung und Wiederherstellung
+          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
     - name: Migrieren
       items:
-        - name: Migrieren einer SQL Server-Datenbank
+        - name: SQL Server-Datenbank zu VM
           href: virtual-machines-windows-migrate-sql.md
         - name: Virtueller Computer für eine neue Region
           href: virtual-machines-windows-sql-move-different-region.md
     - name: Konfigurieren von Hochverfügbarkeit
       items:
-        - name: Verwenden von Azure Storage für Sicherung und Wiederherstellung
-          href: virtual-machines-windows-use-storage-sql-server-backup-restore.md
         - name: AlwaysOn-Verfügbarkeitsgruppe
           items:
             - name: Befehlszeilenschnittstelle für virtuelle Azure SQL-Computer

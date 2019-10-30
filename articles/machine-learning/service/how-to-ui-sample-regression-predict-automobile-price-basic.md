@@ -9,19 +9,19 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: a91f1446d8aab3db36499a9b5707d48d387b6081
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 861b04203575a6046608cf3fad3117ad2726acab
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131129"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693464"
 ---
 # <a name="sample-1---regression-predict-price"></a>Beispiel 1 – Regression: Preisprognose
 
 Erfahren Sie, wie Sie über die grafische Benutzeroberfläche ein Machine Learning-Regressionsmodell erstellen, ohne eine einzige Codezeile zu schreiben.
 
-In diesem Experiment wird ein **Entscheidungswaldregressor** trainiert, um den Preis eines Fahrzeugs anhand technischer Merkmale wie Marke, Modell, Leistung und Größe vorherzusagen. Weil Sie versuchen, die Frage „Wie viel?“ zu beantworten, wird dies als Regressionsproblem bezeichnet. Sie können jedoch dieselben elementaren Schritte aus diesem Beispiel anwenden, um jede Art von Problem für maschinelles Lernen zu bewältigen, sei es Regression, Klassifizierung, Clustering usw.
+Mit dieser Pipeline wird ein **Entscheidungswaldregressor** trainiert, um den Preis eines Fahrzeugs anhand technischer Merkmale wie Marke, Modell, Leistung und Größe vorherzusagen. Weil Sie versuchen, die Frage „Wie viel?“ zu beantworten, wird dies als Regressionsproblem bezeichnet. Sie können jedoch dieselben elementaren Schritte aus diesem Beispiel anwenden, um jede Art von Problem für maschinelles Lernen zu bewältigen, sei es Regression, Klassifizierung, Clustering usw.
 
 Die elementaren Schritte des Trainings eines Machine Learning-Modells sind:
 
@@ -30,21 +30,21 @@ Die elementaren Schritte des Trainings eines Machine Learning-Modells sind:
 1. Modelltraining
 1. Auswerten des Modells
 
-Das endgültige, vollständige Diagramm des Experiments, an dem wir arbeiten sieht wie folgt aus. Es werden die Gründe für alle Module bereitgestellt, sodass Sie ähnliche Entscheidungen selbst treffen können.
+Hier ist der endgültige vollständige Graph der Pipeline. Dieser Artikel stellt Begründungen für alle Module bereit, sodass Sie ähnliche Entscheidungen selbst treffen können.
 
-![Diagramm des Experiments](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![Graph der Pipeline](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Wählen Sie die Schaltfläche **Öffnen** für das Experiment „Beispiel 1“ aus:
+4. Wählen Sie die Schaltfläche **Öffnen** für die Pipeline des Beispiels Nr. 1 aus.
 
-    ![Öffnen des Experiments](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
+    ![Öffnen der Pipeline](media/how-to-ui-sample-regression-predict-automobile-price-basic/open-sample1.png)
 
 ## <a name="get-the-data"></a>Abrufen von Daten
 
-In diesem Beispiel wird das Dataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)) aus dem UCI Machine Learning-Repository verwendet. Dieses Dataset enthält 26 Spalten mit Informationen zu Automobilen, darunter Marke, Modell, Preis, Fahrzeugmerkmale (etwa die Anzahl der Zylinder), Treibstoffverbrauch und eine Versicherungsrisikobewertung. Das Ziel dieses Experiments besteht darin, den Preis eines Autos vorherzusagen.
+In diesem Beispiel wird das Dataset **Automobile Price Data (Raw)** (Automobilpreisdaten (Rohdaten)) aus dem UCI Machine Learning-Repository verwendet. Dieses Dataset enthält 26 Spalten mit Informationen zu Automobilen, darunter Marke, Modell, Preis, Fahrzeugmerkmale (etwa die Anzahl der Zylinder), Treibstoffverbrauch und eine Versicherungsrisikobewertung. Das Ziel dieses Beispiels besteht darin, den Preis eines Autos vorherzusagen.
 
 ## <a name="pre-process-the-data"></a>Vorverarbeiten der Daten
 
@@ -58,7 +58,7 @@ Verwenden Sie das Modul **Select Columns in Dataset** (Spalten in Dataset auswä
 
 Machine Learning-Probleme sind vielfältig. Machine Learning-Aufgaben sind z.B. Klassifizierung, Clustering, Regression und Empfehlungssysteme, die möglicherweise jeweils einen anderen Algorithmus erfordern. Die Auswahl des Algorithmus hängt häufig von den Anforderungen des Anwendungsfalls ab. Nachdem Sie einen Algorithmus ausgewählt haben, müssen Sie seine Parameter optimieren, um ein genaueres Modell zu trainieren. Sie müssen alle Modelle basierend auf Metriken wie Genauigkeit, Verständlichkeit und Effizienz auswerten.
 
-Da das Ziel dieses Experiments darin besteht, Automobilpreise vorherzusagen, und die Bezeichnungsspalte (Preis) reelle Zahlen enthält, ist ein Regressionsmodell eine gute Wahl. In Anbetracht der Tatsache, dass die Anzahl der Features relativ klein ist (weniger als 100) und diese Features nicht spärlich sind, ist es wahrscheinlich, dass die Entscheidungsgrenze nichtlinear ist. Daher verwenden wir die **Entscheidungswaldregression** für dieses Experiment.
+Da das Ziel dieses Beispiels darin besteht, Automobilpreise vorherzusagen, und die Bezeichnungsspalte (Preis) echte Zahlen enthält, ist ein Regressionsmodell eine gute Wahl. In Anbetracht der Tatsache, dass die Anzahl der Features relativ klein ist (weniger als 100) und diese Features nicht spärlich sind, ist es wahrscheinlich, dass die Entscheidungsgrenze nichtlinear ist. Daher verwenden wir die **Entscheidungswaldregression** für diese Pipeline.
 
 Verwenden Sie das Modul **Split Data** (Daten teilen), um nach dem Zufallsprinzip die eingegebenen Daten so aufzuteilen, dass das Trainingsdataset 70 % der ursprünglichen Daten enthält und das Testdataset 30 % der ursprünglichen Daten.
 
@@ -89,3 +89,4 @@ Untersuchen Sie die anderen Beispiele, die für die grafische Benutzeroberfläch
 - [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-ui-sample-classification-predict-churn.md)
 - [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Beispiel 7 – Textklassifizierung: Buchrezensionen](how-to-ui-sample-text-classification.md)

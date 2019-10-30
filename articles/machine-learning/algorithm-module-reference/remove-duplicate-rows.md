@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b16e745de277d5aa262f1e1624df22f97d0cf29c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128538"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693663"
 ---
 # <a name="remove-duplicate-rows-module"></a>Modul „Remove Duplicate Rows“
 
@@ -51,7 +51,7 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
 
 ## <a name="how-to-use-remove-duplicate-rows"></a>Verwenden von „Remove Duplicate Rows“
 
-1. Fügen Sie das Modul zu Ihrem Experiment hinzu. Sie finden das Modul **Remove Duplicate Rows** unter **Datentransformation**, **Bearbeitung**.  
+1. Fügen Sie das Modul zu Ihrer Pipeline hinzu. Sie finden das Modul **Remove Duplicate Rows** unter **Datentransformation**, **Bearbeitung**.  
 
 2. Verbinden Sie das Dataset, das Sie auf doppelte Zeilen überprüfen möchten.
 
@@ -69,7 +69,7 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
     + Wenn das Kontrollkästchen aktiviert ist, wird die erste Zeile zurückgegeben, und die anderen Zeilen werden verworfen. 
     + Wenn Sie das Kontrollkästchen deaktivieren, wird die letzte doppelte Zeile in den Ergebnissen beibehalten, und die anderen Zeilen werden verworfen. 
 
-5. Führen Sie das Experiment aus.
+5. Ausführen der Pipeline.
 
 6. Um die Ergebnisse zu überprüfen, klicken Sie mit der rechten Maustaste auf das Modul, wählen Sie **Results dataset** (Ergebnisdataset) aus, und klicken Sie auf **Visualize** (Visualisieren). 
 

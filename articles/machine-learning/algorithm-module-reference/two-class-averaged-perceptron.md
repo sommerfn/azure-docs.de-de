@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128422"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693644"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>„Two-Class Averaged Perceptron“-Modul
 
@@ -32,7 +32,7 @@ Die einfacheren Perzeptronmodelle eignen sich zum Lernen linear trennbarer Muste
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>Gewusst wie: Konfigurieren eines gemittelten Perzeptrons mit zwei Klassen
 
-1.  Fügen Sie das Modul **Two-Class Averaged Perceptron** Ihrem Experiment hinzu.  
+1.  Fügen Sie das Modul **Two-Class Averaged Perceptron** Ihrer Pipeline hinzu.  
 
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
@@ -46,7 +46,7 @@ Die einfacheren Perzeptronmodelle eignen sich zum Lernen linear trennbarer Muste
   
      Ein frühes Stoppen bietet oft eine bessere Generalisierung. Ein Erhöhen der Anzahl von Iterationen verbessert die Anpassung, mit dem Risiko der Überanpassung.
   
-5.  Geben Sie für **Random number seed** (Zufällig gewählter Startwert) optional einen ganzzahligen Wert ein, der als Startwert verwendet wird. Sie sollten einen Startwert verwenden, wenn Sie die Ausführungen übergreifende Reproduzierbarkeit des Experiments sicherstellen möchten.  
+5.  Geben Sie für **Random number seed** (Zufällig gewählter Startwert) optional einen ganzzahligen Wert ein, der als Startwert verwendet wird. Es empfiehlt sich, einen Startwert zu verwenden, wenn Sie die ausführungsübergreifende Reproduzierbarkeit der Pipeline sicherstellen möchten.  
   
 1.  Stellen Sie eine Verbindung eines Trainingsdatasets mit einem der Trainingsmodule her:
   

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 4bd3433db92767f2d0d733ab71e4298fc5e618f8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128825"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693795"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -79,7 +79,7 @@ os.system(f"pip install scikit-misc")
 
 Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Ausgangspunkt verwenden können. Um das Modul **Python-Skript ausführen** zu konfigurieren, geben Sie einen Satz von Eingaben und auszuführenden Python-Code im Textfeld **Pytho-Skript** ein.
 
-1. Fügen Sie Ihrem Experiment das Modul **Python-Skript ausführen** hinzu.
+1. Fügen Sie Ihrer Pipeline das Modul **Python-Skript ausführen** hinzu.
 
 2. Fügen Sie in **Dataset1** alle Datasets aus der Schnittstelle hinzu, die Sie als Eingabe verwenden möchten. Verweisen Sie auf dieses Dataset in Ihrem Python-Skript als **DataFrame1**.
 
@@ -93,7 +93,7 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 
 4. Um neue Python-Pakete oder Code einzuschließen, fügen Sie die ZIP-Datei, die diese benutzerdefinierten Ressourcen enthält, in **Script bundle** (Skriptbundle) hinzu. Die Eingabe in **Script bundle** muss eine ZIP-Datei sein, die bereits in Ihren Arbeitsbereich hochgeladen wurde. 
 
-    Während der Ausführung des Experiments kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten, Sie müssen dem Pfad aber ein Verzeichnis mit dem Namen **src** voranstellen.
+    Während der Ausführung der Pipeline kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten, Sie müssen dem Pfad aber ein Verzeichnis mit dem Namen **src** voranstellen.
 
 5. Geben oder fügen Sie in das Textfeld **Python script** (Python-Skript) ein gültiges Python-Skript ein.
 
@@ -107,13 +107,13 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 
     + Zwei Datasets können an die Schnittstelle zurückgegeben werden, dabei muss es sich um eine Sequenz vom Typ `pandas.DataFrame` handeln. Sie können weitere Ausgaben in Ihrem Python-Code erstellen und sie direkt in den Azure-Speicher schreiben.
 
-6. Führen Sie das Experiment aus, oder wählen Sie das Modul aus, und klicken Sie auf **Run selected** (Auswahl ausführen), um nur das Python-Skript auszuführen.
+6. Führen Sie die Pipeline aus, oder wählen Sie das Modul aus, und klicken Sie auf **Auswahl ausführen**, um nur das Python-Skript auszuführen.
 
     Alle Daten und der gesamte Code werden in einen virtuellen Computer geladen und unter Verwendung der angegebenen Python-Umgebung ausgeführt.
 
 ## <a name="results"></a>Ergebnisse
 
-Die Ergebnisse aller Berechnungen, die vom eingebetteten Python-Code ausgeführt werden, müssen als ein pandas.DataFrame bereitgestellt werden, der automatisch in das Datasetformat von Azure Machine Learning konvertiert wird, sodass Sie die Ergebnisse zusammen mit anderen Modulen im Experiment verwenden können.
+Die Ergebnisse aller Berechnungen, die vom eingebetteten Python-Code ausgeführt werden, müssen als ein pandas.DataFrame bereitgestellt werden, der automatisch in das Datasetformat von Azure Machine Learning konvertiert wird, sodass Sie die Ergebnisse zusammen mit anderen Modulen in der Pipeline verwenden können.
 
 Das Modul gibt zwei Datasets zurück:  
   

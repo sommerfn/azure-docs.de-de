@@ -53,8 +53,10 @@
       href: resource-scenario-status.md
     - name: Übersicht über Voraussetzungen
       href: pre-reqs.md
-    - name: "Netzwerktopologien für Migrationen vom Typ „Verwaltete Azure\_SQL-Datenbank-Instanz“"
+    - name: Netzwerktopologien für Azure SQL-Datenbank MI-Migrationen
       href: resource-network-topologies.md
+    - name: Benutzerdefinierte Rollen für Onlinemigrationen von SQL Server zu Azure SQL-Datenbank MI
+      href: resource-custom-roles-sql-db-managed-instance.md
     - name: Problembehandlung und bekannte Probleme
       items:
         - name: Behandeln von Konnektivitätsproblemen bei Quelldatenbanken

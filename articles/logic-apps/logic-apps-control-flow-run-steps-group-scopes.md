@@ -1,23 +1,22 @@
 ---
-title: Hinzufügen von Bereichen für die Ausführung von Aktionen auf der Grundlage des Gruppenstatus – Azure Logic Apps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie in Azure Logic Apps Bereiche erstellen, die Workflowaktionen auf der Grundlage des Gruppenstatus ausführen.
+title: Gruppieren und Ausführen von Aktionen nach Bereich – Azure Logic Apps
+description: Erstellen von auf Bereiche begrenzten Aktionen in Azure Logic Apps, die auf Grundlage des Gruppenstatus ausgeführt werden
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685406"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680005"
 ---
-# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus mit Bereichen in Azure Logic Apps
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus unter Verwendung von Bereichen in Azure Logic Apps
 
 Wenn Aktionen nur ausgeführt werden sollen, nachdem eine andere Gruppe von Aktionen erfolgreich oder nicht erfolgreich war, gruppieren Sie diese Aktionen in einem *Bereich*. Diese Struktur ist hilfreich, wenn Sie Aktionen als logische Gruppe organisieren, den Status dieser Gruppe auswerten und Aktionen durchführen möchten, die auf dem Status des Bereichs basieren. Nachdem die Ausführung aller Aktionen in einem Bereich beendet ist, erhält der Bereich auch einen eigenen Status. Beispielsweise können Sie Bereiche verwenden, wenn Sie die [Ausnahme- und Fehlerbehandlung](../logic-apps/logic-apps-exception-handling.md#scopes) implementieren möchten. 
 

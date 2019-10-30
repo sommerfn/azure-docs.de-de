@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 06/21/2019
 ms.author: joncole
-ms.openlocfilehash: 6ac4722c1253f97bfb8c232202e24a923c027edf
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 29e5a81c438a7aa834fc002b916739a952c9a270
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018824"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785871"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Bewährte Methoden für Azure Cache for Redis 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer Azure Cache for Redis-Instanz.
@@ -31,9 +31,9 @@ Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung
 
  * **Entwickeln Sie Ihr System so, dass es Verbindungsunterbrechungen** [aufgrund von Patching- und Failovervorgängen behandeln kann](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
- * **Konfigurieren Sie Ihre [maxmemory-reserved-Einstellung](cache-configure.md#maxmemory-policy-and-maxmemory-reserved), um die Reaktionsfähigkeit des Systems** unter extremer Speicherauslastung zu verbessern.  Diese Einstellung ist besonders wichtig für schreibintensive Workloads oder wenn Sie größere Werte (100 KB oder mehr) in Redis speichern.  Ich würde empfehlen, mit 10 % der Größe Ihres Caches zu beginnen und den Wert bei schreibintensiven Workloads zu erhöhen. Beachten Sie bei der Auswahl des Werts [folgende Überlegungen](cache-how-to-troubleshoot.md#considerations-for-memory-reservations).
+ * **Konfigurieren Sie Ihre [maxmemory-reserved-Einstellung](cache-configure.md#maxmemory-policy-and-maxmemory-reserved), um die Reaktionsfähigkeit des Systems** unter extremer Speicherauslastung zu verbessern.  Diese Einstellung ist besonders wichtig für schreibintensive Workloads oder wenn Sie größere Werte (100 KB oder mehr) in Redis speichern. Es ist empfehlenswert, mit 10 % der Größe Ihres Caches zu beginnen und den Prozentsatz bei schreibintensiven Lasten zu erhöhen.
 
- * **Redis funktioniert am besten mit kleineren Werten**, deshalb sollten Sie die Aufteilung großer Daten in mehrere Schlüssel erwägen.  In [dieser Diskussion zu Redis](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/) sind einige Überlegungen aufgelistet, die Sie unbedingt berücksichtigen sollten.  Lesen Sie [diesen Artikel](cache-how-to-troubleshoot.md#large-requestresponse-size) über ein beispielhaftes Problem, das durch große Werte verursacht werden kann.
+ * **Redis funktioniert am besten mit kleineren Werten**, deshalb sollten Sie die Aufteilung großer Daten in mehrere Schlüssel erwägen.  In [dieser Diskussion zu Redis](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/) sind einige Überlegungen aufgelistet, die Sie unbedingt berücksichtigen sollten.  Lesen Sie [diesen Artikel](cache-troubleshoot-client.md#large-request-or-response-size) über ein beispielhaftes Problem, das durch große Werte verursacht werden kann.
 
  * **Platzieren Sie Ihre Cache-Instanz und Ihre Anwendung in der gleichen Region.**  Eine Verbindung mit einem Cache in einer anderen Region herzustellen, kann zu einer beträchtlichen Latenz führen und die Zuverlässigkeit reduzieren.  Sie können zwar von außerhalb von Azure aus eine Verbindung herstellen, dies ist jedoch nicht empfehlenswert, *vor allem bei Verwendung von Redis als Cache*.  Wenn Sie Redis als nur Schlüssel/Wert-Speicher verwenden, ist Latenz möglicherweise kein Hauptaspekt. 
 
@@ -43,10 +43,9 @@ Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung
      > [!NOTE]
      > Diese Anleitung bezieht sich speziell auf den *Verbindungsversuch* und nicht auf die Zeit, die Sie auf das Abschließen eines *Vorgangs* wie GET oder SET zu warten bereit sind.
  
+ * **Vermeiden Sie speicherintensive Vorgänge**: Einige Redis-Vorgänge (z.B. der [KEYS-Befehl](https://redis.io/commands/keys)) sind *sehr* speicherintensiv und sollten vermieden werden.  Weitere Informationen finden Sie unter [Einige Überlegungen zu Befehlen mit langer Ausführungsdauer](cache-troubleshoot-server.md#long-running-commands).
 
- * **Vermeiden Sie speicherintensive Befehle** – Einige Redis-Vorgänge, wie z.B. der [KEYS-Befehl](https://redis.io/commands/keys), sind *sehr* speicherintensive und sollte vermieden werden.  Weitere Informationen finden Sie unter [Einige Überlegungen rund um speicherintensive Befehle](cache-how-to-troubleshoot.md#expensive-commands).
-
-
+ * **Verwenden Sie die TLS-Verschlüsselung**: Azure Cache for Redis setzt standardmäßig eine von TLS verschlüsselte Kommunikation voraus.  Derzeit werden die TLS-Versionen 1.0, 1.1 und 1.2 unterstützt.  Die Unterstützung von TLS 1.0 und 1.1 wird jedoch branchenweit eingestellt werden. Verwenden Sie daher nach Möglichkeit TLS 1.2.  Wenn die Clientbibliothek oder das Tool TLS nicht unterstützt, kann die Aktivierung unverschlüsselter Verbindungen [über das Azure-Portal](cache-configure.md#access-ports) oder über [Verwaltungs-APIs](https://docs.microsoft.com/rest/api/redis/redis/update) vorgenommen werden.  Wenn verschlüsselte Verbindungen nicht möglich sind, empfiehlt es sich, den Cache und die Clientanwendung in ein virtuelles Netzwerk einzubinden.  Ausführliche Informationen zu den Ports, die verwendet werden 
  
 ## <a name="memory-management"></a>Speicherverwaltung
 Es gibt mehrere Dinge im Zusammenhang mit der Speicherauslastung in Ihrer Redis-Serverinstanz, die Sie ggf. berücksichtigen sollten.  Hier sind einige Beispiele:

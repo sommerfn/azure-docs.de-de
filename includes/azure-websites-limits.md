@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 8cdfe82888cca471aa5aae6717a16f62000c4ad5
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b84b503fad951b5a6998bf0b06d466ce41031aa8
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839244"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72526745"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -24,15 +24,17 @@ ms.locfileid: "71839244"
 | Bandbreite |165 MB |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |Unbegrenzt, Preise für [Dateiübertragungen](https://azure.microsoft.com/pricing/details/data-transfers/) gelten |
 | Anwendungsarchitektur |32 Bit |32 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |32 Bit/64 Bit |
 | Websockets pro Instanz<sup>7</sup> |5 |35 |350 |Unbegrenzt |Unbegrenzt |Unbegrenzt |
+| IP-Verbindungen | 600 | 600 | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | Hängt von der Instanzgröße ab<sup>8</sup> | 64.000 |
 | Gleichzeitige [Debuggerverbindungen](../articles/app-service/troubleshoot-dotnet-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |5 |
-| App Service-Zertifikate pro Abonnement<sup>10</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
+| App Service-Zertifikate pro Abonnement<sup>9</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
-| Integrierter Lastenausgleich | |X |X |X |X |X<sup>9</sup> |
+| Hybridverbindungen pro Plan | | | 5 | 25 | 200 | 200 |
+| Integrierter Lastenausgleich | |X |X |X |X |X<sup>10</sup> |
 | [Immer aktiviert](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Geplante Sicherungen](../articles/app-service/manage-backup.md) | | | | Geplante Sicherungen alle 2 Stunden, höchstens 12 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) |
 | [Automatische Skalierung](../articles/app-service/manage-scale-up.md) | | | |X |X |X |
-| [WebJobs](../articles/app-service/webjobs-create.md)<sup>8</sup> |X |X |X |X |X |X |
+| [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) -Unterstützung: | |X |X |X |X |X |
 | [Endpunktüberwachung](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [Stagingslots](../articles/app-service/deploy-staging-slots.md) | | | |5 |20 |20 |
@@ -45,6 +47,7 @@ ms.locfileid: "71839244"
 <sup>5</sup>Die Speicherbegrenzung ist die gesamte Inhaltsgröße aller Apps im selben App Service-Plan. Die gesamte Inhaltsgröße aller Apps für alle App Service-Pläne in einer einzelnen Ressourcengruppe und Region kann 500 GB nicht überschreiten.  
 <sup>6</sup>Diese Ressourcen werden durch physische Ressourcen auf den dedizierten Instanzen (die Instanzengröße und die Anzahl der Instanzen) beschränkt.  
 <sup>7</sup>Wenn Sie eine App im Basic-Tarif auf zwei Instanzen skalieren, stehen Ihnen 350 gleichzeitige Verbindungen für jede der beiden Instanzen zur Verfügung. Beim Tarif „Standard“ und höheren Tarifen gelten keine theoretischen Grenzwerte für Websockets, die Anzahl von Websockets kann jedoch durch andere Faktoren eingeschränkt sein. Die maximal zulässige Anzahl von gleichzeitigen Anforderungen (definiert durch `maxConcurrentRequestsPerCpu`) lautet wie folgt: 7.500 pro kleiner VM, 15.000 pro mittlerer VM (7.500 × 2 Kerne) und 75.000 pro großer VM (18.750 × 4 Kerne).  
-<sup>8</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Für geplante WebJobs ist Azure Scheduler Free oder Standard erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.  
-<sup>9</sup> Für SKUs vom Typ „App Service (isoliert)“ kann ein interner Lastausgleich (Internal Load Balancing, ILB) mit Azure Load Balancer vorgenommen werden, sodass keine öffentliche Verbindung mit dem Internet erforderlich ist. Aus diesem Grund müssen einige Features eines isolierten App Service mit internem Lastausgleich auf Computern ausgeführt werden, die über Direktzugriff auf den Endpunkt des ILB-Netzwerks verfügen.  
-<sup>10</sup> Die App Service Certificate-Kontingentgrenze pro Abonnement kann über eine Supportanfrage bis auf eine Obergrenze von 200 erhöht werden.  
+<sup>8</sup>Die maximalen IP-Verbindungen sind pro Instanz und abhängig von der Instanzgröße: 1.920 pro B1/S1/P1V2-Instanz, 3.968 pro B2/S2/P2V2-Instanz, 8.064 pro B3/S3/P3V2-Instanz.  
+<sup>9</sup>Die App Service Certificate-Kontingentgrenze pro Abonnement kann über eine Supportanfrage bis auf eine Obergrenze von 200 erhöht werden.  
+<sup>10</sup>Für SKUs vom Typ „App Service (isoliert)“ kann ein interner Lastausgleich (Internal Load Balancing, ILB) mit Azure Load Balancer vorgenommen werden, sodass keine öffentliche Verbindung mit dem Internet erforderlich ist. Aus diesem Grund müssen einige Features eines isolierten App Service mit internem Lastausgleich auf Computern ausgeführt werden, die über Direktzugriff auf den Endpunkt des ILB-Netzwerks verfügen.  
+<sup>11</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Für geplante WebJobs ist Azure Scheduler Free oder Standard erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.  

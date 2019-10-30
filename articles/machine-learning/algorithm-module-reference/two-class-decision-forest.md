@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 37a2ce77e438145219df9cb553d1881626e8a2c6
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128393"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693620"
 ---
 # <a name="two-class-decision-forest-module"></a>Modul „Entscheidungswald mit zwei Klassen“
 
@@ -49,7 +49,7 @@ Weitere Informationen finden Sie unter [Entscheidungswälder](https://go.microso
 
 ## <a name="how-to-configure"></a>Vorgehensweise zur Konfiguration
   
-1.  Fügen Sie Ihrem Experiment in Azure Machine Learning das Modul **Entscheidungswald mit zwei Klassen** hinzu, und öffnen Sie den Bereich **Eigenschaften** des Moduls. 
+1.  Fügen Sie Ihrer Pipeline in Azure Machine Learning das Modul **Two-Class Decision Forest** hinzu, und öffnen Sie den Bereich **Eigenschaften** des Moduls. 
 
     Sie finden das Modul unter **Machine Learning**. Erweitern Sie **Initialize** (Initialisieren) und dann **Classification** (Klassifizierung).  
   
@@ -97,9 +97,9 @@ Nach Abschluss des Trainings:
   
     Klicken Sie auf den Baum, um Detailinformationen zu den Teilen sowie Regeln für die einzelnen Knoten anzuzeigen.
 
-+ Um eine Momentaufnahme des Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell), und wählen Sie **Save Model** (Modell speichern) aus. Das gespeicherte Modell wird bei nachfolgenden Ausführungen des Experiments nicht aktualisiert.
++ Um eine Momentaufnahme des Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell), und wählen Sie **Save Model** (Modell speichern) aus. Das gespeicherte Modell wird bei nachfolgenden Ausführungen der Pipeline nicht aktualisiert.
 
-+ Um das Modell zur Bewertung zu verwenden, fügen Sie einem Experiment das Modul **Score Model** (Modell bewerten) hinzu.
++ Um das Modell zur Bewertung zu verwenden, fügen Sie einer Pipeline das Modul **Score Model** hinzu.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

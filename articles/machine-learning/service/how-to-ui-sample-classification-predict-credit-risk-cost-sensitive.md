@@ -1,7 +1,7 @@
 ---
 title: 'Grafische Benutzeroberfläche: Beispiel Nr. 4: Klassifizierung zur Vorhersage des Kreditrisikos (kostensensibel)'
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel wird gezeigt, wie über die grafische Benutzeroberfläche ein komplexes Experiment für maschinelles Lernen erstellt werden kann. Sie erfahren, wie benutzerdefinierte Python-Skripts implementiert und mehrere Modelle verglichen werden, um die beste Option auszuwählen.
+description: In diesem Artikel wird gezeigt, wie über die grafische Benutzeroberfläche eine komplexe Pipeline für maschinelles Lernen erstellt werden kann. Sie erfahren, wie benutzerdefinierte Python-Skripts implementiert und mehrere Modelle verglichen werden, um die beste Option auszuwählen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,41 +9,41 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: c06da0fd325f6b79bc0e14c4e6a246497f86a900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 7196e9522695a28a5560faa77860073bd08e25ee
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131237"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693513"
 ---
 # <a name="sample-4---classification-predict-credit-risk-cost-sensitive"></a>Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)
 
-In diesem Artikel wird gezeigt, wie über die grafische Benutzeroberfläche ein komplexes Experiment für maschinelles Lernen erstellt werden kann. Sie erfahren, wie benutzerdefinierte Logik mit Python-Skripts implementiert wird und mehrere Modelle verglichen werden, um die beste Option auszuwählen.
+In diesem Artikel wird gezeigt, wie über die grafische Benutzeroberfläche eine komplexe Pipeline für maschinelles Lernen erstellt werden kann. Sie erfahren, wie benutzerdefinierte Logik mit Python-Skripts implementiert wird und mehrere Modelle verglichen werden, um die beste Option auszuwählen.
 
 In diesem Beispiel wird eine Klassifizierung trainiert, um das Kreditrisiko anhand von Kreditantragsinformationen wie Kreditgeschichte, Alter und Anzahl der Kreditkarten vorherzusagen. Sie können die Konzepte in diesem Artikel aber auch anwenden, um Ihre eigenen Probleme durch maschinelles Lernen zu lösen.
 
 Wenn Sie gerade erst mit dem Thema „Maschinelles Lernen“ beginnen, sollten Sie sich zuerst das [Basisbeispiel für Klassifizierung](how-to-ui-sample-classification-predict-credit-risk-basic.md) ansehen.
 
-Das vollständige Diagramm für dieses Experiment sieht wie folgt aus:
+Der vollständige Graph für diese Pipeline sieht wie folgt aus:
 
-[![Graph des Experiments](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph der Pipeline](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Wählen Sie die Schaltfläche **Öffnen** für das Experiment „Beispiel 4“ aus:
+4. Wählen Sie die Schaltfläche **Öffnen** für die Pipeline des Beispiels Nr. 4 aus:
 
-    ![Öffnen des Experiments](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
+    ![Öffnen der Pipeline](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/open-sample4.png)
 
 ## <a name="data"></a>Data
 
-In diesem Beispiel wird das Dataset „German Credit Card“ aus dem UC Irvine-Repository verwendet. Dieses Dataset enthält 1.000 Stichproben mit 20 Features und 1 Bezeichnung. Jede Stichprobe stellt eine Person dar. Die 20 Features enthalten numerische und kategorische Features. Weitere Informationen zu diesem Dataset finden Sie auf der [UCI-Website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Die letzte Spalte ist die Bezeichnung, die das Kreditrisiko angibt und nur zwei mögliche Werte hat: hohes Kreditrisiko = 2 und niedriges Kreditrisiko = 1.
+In diesem Beispiel wird das Dataset „German Credit Card“ aus dem UC Irvine-Repository verwendet. Es enthält 1.000 Stichproben mit 20 Features und 1 Bezeichnung. Jede Stichprobe stellt eine Person dar. Die 20 Features enthalten numerische und kategorische Features. Weitere Informationen zu diesem Dataset finden Sie auf der [UCI-Website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). Die letzte Spalte ist die Bezeichnung, die das Kreditrisiko angibt und nur zwei mögliche Werte hat: hohes Kreditrisiko = 2 und niedriges Kreditrisiko = 1.
 
-## <a name="experiment-summary"></a>Experimentzusammenfassung
+## <a name="pipeline-summary"></a>Pipelineübersicht
 
-In diesem Experiment vergleichen Sie zwei verschiedene Ansätze für die Generierung von Modellen zur Lösung dieses Problems:
+In dieser Pipeline vergleichen Sie zwei verschiedene Ansätze für die Generierung von Modellen zur Lösung des folgenden Problems:
 
 - Training mit dem Originaldataset.
 - Training mit einem replizierten Dataset.
@@ -52,9 +52,9 @@ Bei beiden Ansätzen werten Sie die Modelle aus, indem Sie das Testdataset mit R
 
 Die Kosten für die Fehlklassifizierung einer Stichprobe mit geringem Risiko betragen 1, die Kosten für die Fehlklassifizierung einer Stichprobe mit hohem Risiko betragen 5. Wir verwenden ein Modul **Execute Python Script** (Python-Skript ausführen), um diese Fehlklassifizierungskosten zu berücksichtigen.
 
-So sieht das Diagramm des Experiments aus:
+So sieht der Graph der Pipeline aus:
 
-[![Graph des Experiments](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph der Pipeline](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Datenverarbeitung
 
@@ -108,11 +108,11 @@ In diesem Beispiel wird der Data Science-Standardworkflow verwendet, um die Mode
 1. Verwenden Sie **Train Model** (Modell trainieren), um den Algorithmus auf die Daten anzuwenden und das eigentliche Modell zu erstellen.
 1. Verwenden Sie **Score Model** (Modell bewerten), um Bewertungen anhand der Testbeispiele zu generieren.
 
-Die folgende Abbildung zeigt einen Ausschnitt aus diesem Experiment, in dem die ursprünglichen und replizierten Trainingsdatasets zum Trainieren von zwei verschiedenen SVM-Modellen verwendet werden. **Train Model** ist mit dem Trainingsdataset verbunden, **Score Model** mit dem Testdataset.
+Der folgende Graph zeigt einen Ausschnitt dieser Pipeline, in dem das ursprüngliche und replizierte Trainingsdataset zum Trainieren von zwei verschiedenen SVM-Modellen verwendet wird. **Train Model** ist mit dem Trainingsdataset verbunden, **Score Model** mit dem Testdataset.
 
-![Diagramm des Experiments](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Graph der Pipeline](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-In der Auswertungsphase des Experiments berechnen Sie die Genauigkeit jedes der vier Modelle. Für diese Experiment verwenden Sie **Evaluate Model**, um Stichproben zu vergleichen, die dieselben Fehlklassifizierungskosten aufweisen.
+In der Auswertungsphase der Pipeline berechnen Sie jeweils die Genauigkeit der vier Modelle. Für diese Pipeline verwenden Sie **Evaluate Model**, um Beispiele zu vergleichen, die dieselben Fehlklassifizierungskosten aufweisen.
 
 Das Modul **Evaluate Model** kann die Leistungsmetriken für zwei bewertete Modelle berechnen. Daher können Sie eine Instanz von **Evaluate Model** verwenden, um die beiden SVM-Modelle auszuwerten, und eine weitere Instanz von **Evaluate Model**, um die beiden Boosted Decision Tree-Modelle auszuwerten.
 
@@ -142,12 +142,14 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Ergebnisse
 
-Zum Anzeigen der Ergebnisse des Experiments können Sie mit der rechten Maustaste auf die Visualisierungsausgabe des letzten Moduls **Select Columns in Dataset** klicken.
+Zum Anzeigen der Ergebnisse der Pipeline können Sie mit der rechten Maustaste auf die Visualisierungsausgabe des letzten Moduls **Select Columns in Dataset** klicken.
 
 ![Visualisieren der Ausgabe](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
 Die erste Spalte listet den Machine Learning-Algorithmus auf, der verwendet wurde, um das Modell zu generieren.
+
 Die zweite Spalte gibt den Typ des Trainingsdatasets an.
+
 Die dritte Spalte enthält den kostensensiblen Genauigkeitswert.
 
 Aus diesen Ergebnissen können Sie ersehen, dass die beste Genauigkeit durch das Modell bereitgestellt wird, das mit **Two-Class Support Vector Machine** erstellt und mit dem replizierten Trainingsdataset trainiert wurde.
@@ -165,3 +167,4 @@ Untersuchen Sie die anderen Beispiele, die für die grafische Benutzeroberfläch
 - [Beispiel 3 – Klassifizierung: Vorhersagen des Kreditrisikos](how-to-ui-sample-classification-predict-credit-risk-basic.md)
 - [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-ui-sample-classification-predict-churn.md)
 - [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Beispiel 7 – Textklassifizierung: Buchrezensionen](how-to-ui-sample-text-classification.md)

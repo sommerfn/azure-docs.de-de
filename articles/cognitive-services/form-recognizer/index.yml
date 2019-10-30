@@ -2,7 +2,7 @@
 title: Dokumentation zur Formularerkennung
 summary: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.
 metadata:
-  title: Dokumentation zur Formularerkennung
+  title: 'Dokumentation zur Formularerkennung: Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
   description: Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Unbeaufsichtigtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.
   services: cognitive-services
   ms.service: cognitive-services
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: 3a3146c6a918916792a331c0dab74683db82a02d
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70931826"
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72931299"
 landingContent:
 - title: Informationen zur Formularerkennung
   linkLists:
@@ -32,7 +32,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Mithilfe des .NET SDK
+    - text: Verwenden des .NET SDK
       url: quickstarts/dotnet-sdk.md
     - text: Mithilfe der REST-API (Python)
       url: quickstarts/python-train-extract.md
@@ -76,3 +76,11 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure-Befehlszeilenschnittstelle (CLI)
       url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: Hilfe und Feedback
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: UserVoice
+      url: https://go.microsoft.com/fwlink/?linkid=2090535
+    - text: Stack Overflow
+      url: https://go.microsoft.com/fwlink/?linkid=2087186

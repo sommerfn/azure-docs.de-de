@@ -81,6 +81,10 @@
           items:
             - name: Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke
               href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Identity
+          items:
+            - name: Erstellen einer Azure Active Directory Domain Services-Instanz
+              href: ../active-directory-domain-services/tutorial-create-instance.md
 - name: Notfallwiederherstellung
   items:
     - name: Von Azure Site Recovery

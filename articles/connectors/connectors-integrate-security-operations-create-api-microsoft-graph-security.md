@@ -1,6 +1,6 @@
 ---
-title: Integrieren von Sicherheitsvorgängen mit der Sicherheits-API von Microsoft Graph – Azure Logic Apps
-description: Verbessern von Bedrohungsschutz-, Erkennungs- und Reaktionsfunktionen Ihrer App durch die Verwaltung von Sicherheitsvorgängen mit der Sicherheits-API von Microsoft Graph und Azure Logic Apps
+title: Integrieren und Verwalten von Sicherheitsvorgängen – Azure Logic Apps & Microsoft Graph-Sicherheit
+description: Verbessern von Bedrohungsschutz, -erkennung und -reaktion mit Microsoft Graph-Sicherheit und Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,12 +10,12 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 845f57d84f49bdd964cc6f61790faff093f59466
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60448046"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679097"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbessern des Bedrohungsschutzes durch Integrieren von Sicherheitsvorgängen mit der Sicherheits-API von Microsoft Graph und Azure Logic Apps
 

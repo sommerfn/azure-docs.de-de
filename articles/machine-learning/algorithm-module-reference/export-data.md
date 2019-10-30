@@ -1,7 +1,7 @@
 ---
 title: 'Export Data (Daten exportieren): Modulreferenz'
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Export Data“ (Daten exportieren) in Azure Machine Learning Service verwenden, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Experimenten in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern.
+description: Erfahren Sie, wie Sie das Modul „Export Data“ in Azure Machine Learning Service verwenden, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Pipelines in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: a4fb539f4c86d27813b60964794fc1f398d3f2a4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b7b4b9de1e91279243e35f1b71f1ef6d2244e9e0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128773"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693719"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
 
-Verwenden Sie dieses Modul, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Experimenten in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern.
+Verwenden Sie dieses Modul, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Pipelines in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern.
 
 Dieses Modul unterstützt das Exportieren oder Speichern von Daten in folgenden Clouddatendiensten:
 
@@ -30,7 +30,7 @@ Dieses Modul unterstützt das Exportieren oder Speichern von Daten in folgenden 
   
 ## <a name="how-to-configure-export-data"></a>Gewusst wie: Konfigurieren von „Export Data“
 
-1. Fügen Sie das Modul **Export Data** Ihrem Experiment in der Oberfläche hinzu. Sie finden dieses Modul in der Kategorie **Input and Output** (Eingabe und Ausgabe).
+1. Fügen Sie das Modul **Export Data** Ihrer Pipeline auf der Oberfläche hinzu. Sie finden dieses Modul in der Kategorie **Input and Output** (Eingabe und Ausgabe).
 
 2. Verbinden Sie **Export Data** mit dem Modul, das die zu exportierenden Daten enthält.
 
@@ -51,13 +51,13 @@ Dieses Modul unterstützt das Exportieren oder Speichern von Daten in folgenden 
 
         Als Dateiformate werden CSV und TSV unterstützt.
 
-    3. Wählen Sie für private Konten **Account** (Konto) aus, und geben Sie den Kontonamen und Kontoschlüssel an, damit das Experiment Schreibzugriff auf das Speicherkonto erhält.
+    3. Wählen Sie bei privaten Konten **Konto** aus, und geben Sie den Kontonamen und Kontoschlüssel an, damit die Pipeline Schreibzugriff auf das Speicherkonto erhält.
 
          - **Kontoname**: Geben oder fügen Sie den Namen des Kontos ein, unter dem Sie die Daten speichern möchten. Wenn die vollständige URL des Speicherkontos z.B. `http://myshared.blob.core.windows.net` lautet, geben Sie `myshared` ein.
 
         - **Account key**: Fügen Sie den Speicherzugriffsschlüssel ein, der dem Konto zugeordnet ist.
 
-        -  **Path to container, directory, or blob** (Pfad zum Container, Verzeichnis oder Blob): Geben Sie den Namen des Blobs ein, in dem die exportierten Daten gespeichert werden sollen. Wenn Sie die Ergebnisse Ihres Experiments in einem neuen Blob namens **results01.csv** im Container **predictions** unter einem Konto namens **mymldata** speichern möchten, lautet die vollständige URL des Blobs: `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
+        -  **Path to container, directory, or blob** (Pfad zum Container, Verzeichnis oder Blob): Geben Sie den Namen des Blobs ein, in dem die exportierten Daten gespeichert werden sollen. Wenn Sie die Ergebnisse Ihrer Pipeline in einem neuen Blob namens **results01.csv** im Container **predictions** unter einem Konto namens **mymldata** speichern möchten, lautet die vollständige URL des Blobs: `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
 
             Daher würden Sie den Container- und Blob-Namen im Feld **Path to container, directory, or blob** wie folgt eingeben: `predictions/results01.csv`
 
@@ -73,9 +73,9 @@ Dieses Modul unterstützt das Exportieren oder Speichern von Daten in folgenden 
         - **TSV**: Durch Tabstopps getrennte Werte (TSV) ist ein Format, das mit vielen Machine Learning-Tools kompatibel ist. Um Spaltenüberschriften zusammen mit den Daten zu exportieren, wählen Sie die Option **Write blob header row** (Blob-Kopfzeile schreiben) aus.  
 
  
-    5. **Use cached results** (Zwischengespeicherte Ergebnisse verwenden): Wählen Sie diese Option, wenn Sie verhindern möchten, dass Ergebnisse bei jeder Ausführung des Experiments erneut in die Blob-Datei geschrieben werden. Sofern es keine weiteren Änderungen an den Modulparametern gibt, werden die Ergebnisse vom Experiment in zwei Fällen in die Datei geschrieben: bei der ersten Ausführung des Moduls oder wenn sich Daten ändern.
+    5. **Use cached results** (Zwischengespeicherte Ergebnisse verwenden): Wählen Sie diese Option aus, wenn Sie verhindern möchten, dass die Ergebnisse bei jeder Ausführung der Pipeline erneut in die Blob-Datei geschrieben werden. Sofern es keine weiteren Änderungen an den Modulparametern gibt, werden die Ergebnisse der Pipeline entweder bei der ersten Ausführung des Moduls oder bei der Änderung von Daten in die Datei geschrieben.
 
-    6. Führen Sie das Experiment aus.
+    6. Ausführen der Pipeline.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

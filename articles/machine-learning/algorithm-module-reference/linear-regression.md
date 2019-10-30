@@ -1,7 +1,7 @@
 ---
 title: 'Linear Regression: Modulreferenz'
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Linear Regression“ (Linear Regression) in Azure Machine Learning Service ein lineares Regressionsmodell für den Einsatz in einem Experiment erstellen können.
+description: Erfahren Sie, wie Sie mit dem Modul „Linear Regression“ in Azure Machine Learning Service ein lineares Regressionsmodell für den Einsatz in einer Pipeline erstellen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 506f37a2e01f428ccadc0368bd2efb6b58c9106c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128688"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693707"
 ---
 # <a name="linear-regression-module"></a>Modul „Linear Regression“
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
 
-Verwenden Sie dieses Modul, um ein lineares Regressionsmodell für den Einsatz in einem Experiment zu erstellen.  Bei der linearen Regression wird versucht, eine lineare Beziehung zwischen einer oder mehreren unabhängigen Variablen und einem numerischen Ergebnis oder einer abhängigen Variablen herzustellen. 
+Verwenden Sie dieses Modul, um ein lineares Regressionsmodell für den Einsatz in einer Pipeline zu erstellen.  Bei der linearen Regression wird versucht, eine lineare Beziehung zwischen einer oder mehreren unabhängigen Variablen und einem numerischen Ergebnis oder einer abhängigen Variablen herzustellen. 
 
 Mit diesem Modul können Sie eine lineare Regressionsmethode definieren und anschließend ein Modell mit einem bezeichneten Dataset trainieren. Das trainierte Modell kann danach verwendet werden, um Vorhersagen zu treffen.
 
@@ -63,9 +63,9 @@ Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells m
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a> Erstellen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate
 
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** (Lineares Regressionsmodell) Ihrem Experiment hinzu.
+1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** Ihrer Pipeline hinzu.
 
-    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Initialize Model** (Modell initialisieren), dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** (Lineares Regressionsmodell) in Ihr Experiment.
+    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Modell initialisieren**, dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** in Ihre Pipeline.
 
 2. Wählen Sie im Bereich **Properties** (Eigenschaften) in der Dropdownliste **Solution method** (Lösungsmethode) **Ordinary Least Squares** (Methode der kleinsten Quadrate) aus. Diese Option gibt die Berechnungsmethode an, mit der die Regressionslinie ermittelt wird.
 
@@ -79,12 +79,12 @@ Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells m
 
 5. Für **Random number seed** (zufälliger Startwert) können Sie optional einen Wert eingeben, um für den vom Modell verwendeten Zufallszahlengenerator einen Startwert festzulegen.
 
-    Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen desselben Experiments beibehalten möchten. Andernfalls wird standardmäßig ein von der Systemuhr stammender Wert verwendet.
+    Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen derselben Pipeline beibehalten möchten. Andernfalls wird standardmäßig ein von der Systemuhr stammender Wert verwendet.
 
 
-7. Fügen Sie das Modul [Train Model](./train-model.md) (Trainieren des Modells) Ihrem Experiment hinzu, und stellen Sie eine Verbindung mit einem bezeichneten Dataset her.
+7. Fügen Sie das Modul [Train Model](./train-model.md) Ihrer Pipeline hinzu, und stellen Sie eine Verbindung mit einem bezeichneten Dataset her.
 
-8. Führen Sie das Experiment aus.
+8. Ausführen der Pipeline.
 
 ## <a name="results-for-ordinary-least-squares-model"></a>Ergebnisse für das Modell der kleinsten Quadrate
 
@@ -97,9 +97,9 @@ Nach Abschluss des Trainings:
 
 ## <a name="bkmk_GradientDescent"></a> Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs
 
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** (Lineares Regressionsmodell) Ihrem Experiment hinzu.
+1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** Ihrer Pipeline hinzu.
 
-    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Initialize Model** (Modell initialisieren), dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** (Lineares Regressionsmodell) in Ihr Experiment.
+    Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Modell initialisieren**, dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** in Ihre Pipeline.
 
 2. Wählen Sie im Bereich **Properties** (Eigenschaften) in der Dropdown-Liste **Solution method** (Lösungsmethode) **Online Gradient Descent** (Onlinegradientenabstieg) als Berechnungsmethode zum Auffinden der Regressionslinie.
 
@@ -125,14 +125,14 @@ Nach Abschluss des Trainings:
 
 9. Aktivieren Sie die Option **Decrease learning rate** (Lernrate verringern), wenn Sie möchten, dass die Lernrate im weiteren Verlauf der Iterationen abnimmt.  
 
-10. Für **Random number seed** (zufälliger Startwert) können Sie optional einen Wert eingeben, um für den vom Modell verwendeten Zufallszahlengenerator einen Startwert festzulegen. Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen desselben Experiments beibehalten möchten.
+10. Für **Random number seed** (zufälliger Startwert) können Sie optional einen Wert eingeben, um für den vom Modell verwendeten Zufallszahlengenerator einen Startwert festzulegen. Die Verwendung eines Startwerts ist nützlich, wenn Sie die gleichen Ergebnisse bei verschiedenen Ausführungen derselben Pipeline beibehalten möchten.
 
 
 12. Fügen Sie ein bezeichnetes Dataset und eines der Trainingsmodule hinzu.
 
     Wenn Sie keinen Parameter-Sweep einsetzen, verwenden Sie das Modul [Train Model](train-model.md) (Trainieren des Moduls).
 
-13. Führen Sie das Experiment aus.
+13. Ausführen der Pipeline.
 
 ## <a name="results-for-online-gradient-descent"></a>Ergebnisse für den Onlinegradientenabstieg
 

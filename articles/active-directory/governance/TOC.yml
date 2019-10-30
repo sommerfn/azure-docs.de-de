@@ -42,6 +42,8 @@
           items:
             - name: Delegieren an Katalogersteller
               href: entitlement-management-delegate-catalog.md
+            - name: Hinzufügen einer verbundenen Organisation
+              href: entitlement-management-organization.md
             - name: Steuern des Zugriffs für externe Benutzer
               href: entitlement-management-external-users.md
             - name: Anzeigen von Berichten und Protokollen

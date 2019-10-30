@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 42d0d7dcc4e10e6f9bfad02a68f3ec176b8a7fb4
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315990"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72785836"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -73,7 +73,7 @@ Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fra
 * [Überlegungen zur Leistung im Zusammenhang mit Verbindungen](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Häufig gestellte Fragen zur Überwachung und Problembehandlung
-In den häufig gestellten Fragen in diesem Abschnitt werden allgemeine Fragen zur Überwachung und Problembehandlung behandelt. Weitere Informationen zur Überwachung und Problembehandlung Ihrer Azure Cache for Redis-Instanzen finden Sie unter [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md) und [Problembehandlung für Azure Cache for Redis](cache-how-to-troubleshoot.md).
+In den häufig gestellten Fragen in diesem Abschnitt werden allgemeine Fragen zur Überwachung und Problembehandlung behandelt. Weitere Informationen zur Überwachung und Problembehandlung Ihrer Azure Cache for Redis-Instanzen finden Sie unter [Überwachen von Azure Cache for Redis](cache-how-to-monitor.md) und in den verschiedenen Handbüchern zur Problembehandlung.
 
 * [Wie überwache ich die Integrität und Leistung meines Caches?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [Warum kommt es zu Timeouts?](#why-am-i-seeing-timeouts)
@@ -178,7 +178,7 @@ Weitere zu berücksichtigende Aspekte bei der Verwendung von Azure Cache for Red
 - [Azure 21Vianet Cloud in China – Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)
 
-Informationen zur Nutzung von Azure Cache for Redis in Verbindung mit PowerShell in der Azure Government Cloud, in der Azure 21Vianet Cloud in China und in Microsoft Azure Deutschland finden Sie unter [Herstellen einer Verbindung mit anderen Clouds – Azure Cache for Redis PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
+Informationen zur Nutzung von Azure Cache for Redis in Verbindung mit PowerShell in der Azure Government Cloud, in der Azure 21Vianet Cloud in China und in Microsoft Azure Deutschland finden Sie unter [Herstellen einer Verbindung mit anderen Clouds – Azure Cache for Redis PowerShell](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
 <a name="cache-configuration"></a>
 
@@ -197,6 +197,7 @@ In der Regel reichen die Standardwerte des Clients aus. Sie können die Optionen
   * Für „ConnectRetry“ und „ConnectTimeout“ lautet die allgemeine Empfehlung, Fail-Fast-fähig zu sein und den Vorgang zu wiederholen. Diese Empfehlung hängt von Ihrer Workload und davon ab, wie lange es auf Ihrem Client durchschnittlich dauert, einen Redis-Befehl auszugeben und eine Antwort zu empfangen.
   * Ermöglichen Sie eine automatische Neuverbindung durch "StackExchange.Redis", statt die Prüfung des Verbindungsstatus und die erneute Verbindungsherstellung selbst zu prüfen. **Vermeiden Sie die Verwendung der ConnectionMultiplexer.IsConnected-Eigenschaft**.
   * Schneeballeffekt: Gelegentlich kann es zu Problemen kommen, bei denen Wiederholungsversuche zu nicht behebbaren, immer wiederkehrenden Problemen führen. Wenn der Schneeballeffekt auftritt, sollten Sie die Verwendung eines exponentiellen Backoff/Retry-Algorithmus in Erwägung ziehen, wie er im Artikel [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) der Microsoft Patterns & Practices-Gruppe beschrieben wird.
+  
 * **Timeoutwerte**
   * Berücksichtigen Sie Ihre Workload, und legen Sie die Werte entsprechend fest. Wenn Sie große Werte speichern, legen Sie die Timeouteinstellung auf einen höheren Wert fest.
   * Legen Sie `AbortOnConnectFail` auf „false“ fest, und überlassen Sie StackExchange.Redis die erneute Verbindungsherstellung.
@@ -443,7 +444,7 @@ Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Cache for Redis-I
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>Warum kommt es zu Timeouts?
-Timeouts treten auf dem Client auf, der mit Redis kommuniziert. Wenn ein Befehl an den Redis-Server gesendet wird, wird dieser in die Warteschlange eingereiht, bis der Redis-Server den Befehl auswählt und ausführt. Auf dem Client kann es bei diesem Vorgang zu einem Timeout kommen. In diesem Fall wird auf der aufrufenden Seite eine Ausnahme ausgelöst. Weitere Informationen zur Behandlung von Timeoutproblemen finden Sie unter [Behandeln von clientseitigen Problemen](cache-how-to-troubleshoot.md#client-side-troubleshooting) und [StackExchange.Redis-Timeoutausnahmen](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+Timeouts treten auf dem Client auf, der mit Redis kommuniziert. Wenn ein Befehl an den Redis-Server gesendet wird, wird dieser in die Warteschlange eingereiht, bis der Redis-Server den Befehl auswählt und ausführt. Auf dem Client kann es bei diesem Vorgang zu einem Timeout kommen. In diesem Fall wird auf der aufrufenden Seite eine Ausnahme ausgelöst. Weitere Informationen zur Behandlung von Timeoutproblemen finden Sie unter [Behandeln von clientseitigen Problemen](cache-troubleshoot-client.md) und [StackExchange.Redis-Timeoutausnahmen](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions).
 
 <a name="cache-disconnect"></a>
 

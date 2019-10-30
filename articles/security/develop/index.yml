@@ -1,60 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zur sicheren Entwicklung
+summary: Anhand unserer Beispiel-Apps, Best Practices und Anleitungen erfahren Sie, wie Sie sichere Anwendungen in Azure entwickeln und bereitstellen.
 metadata:
-  document_id: null
   title: Dokumentation zur sicheren Entwicklung in Microsoft Azure
-  meta.description: Learn how to develop secure apps on Azure.
+  description: Es wird beschrieben, wie Sie in Azure sichere Apps entwickeln.
   services: security
-  author: TerryLanfear
-  manager: rkarlin
   ms.service: security
   ms.subservice: develop
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/30/2019
+  author: TerryLanfear
   ms.author: terrylan
-abstract:
-  description: 'Anhand unserer Beispiel-Apps, Best Practices und Anleitungen erfahren Sie, wie Sie sichere Anwendungen in Azure entwickeln und bereitstellen.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: /azure/security/develop/secure-dev-overview
-            html: <p>Entwickeln einer sicheren Webanwendung in Azure</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
-            title: Erste Schritte
-          - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
-            html: <p>Die fünf wichtigsten Sicherheitselemente für Web-Apps</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
-            title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-  - title: Sichere Beispiel-Apps
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/secure-web-app">Web-App in einem Linux-Container</a>
-          - html: <a href="/azure/security/develop/secure-aad-app">Web-App mit Azure Active Directory</a>
-          - html: <a href="/azure/security/develop/secure-pci-web-app">Payment Card Industry</a>
-  - title: Konzepte
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="/azure/security/develop/secure-dev-overview">Sichere Entwicklung: Best Practices</a>'
-  - title: Ressourcen
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/security/develop/security-code-analysis-overview">Analyse des Microsoft-Sicherheitscodes</a>
-          - html: <a href="/azure/security/develop/threat-modeling-tool">Threat Modeling Tool</a>
+  manager: rkarlin
+  ms.date: 10/24/2019
+  ms.openlocfilehash: 53e59e7d5ef28d8cb09015b7de296b298af9c3f7
+  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/25/2019
+  ms.locfileid: "72934063"
+landingContent:
+- title: Entwickeln von sicheren Beispiel-Apps
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Web-App in einem Linux-Container
+      url: secure-web-app.md
+    - text: Web-App mit Azure Active Directory
+      url: secure-aad-app.md
+    - text: Payment Card Industry
+      url: secure-pci-web-app.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bewährte Methoden für die sichere Entwicklung
+      url: secure-dev-overview.md
+    - text: Entwurfsphase
+      url: secure-design.md
+    - text: Entwicklungsphase
+      url: secure-develop.md
+    - text: Bereitstellungsphase
+      url: secure-deploy.md
+- title: Hinzufügen von Analysetools zu Ihrer sicheren Entwicklung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Sicherheitscodeanalyse
+      url: security-code-analysis-overview.md
+    - text: Bedrohungsmodellierung
+      url: threat-modeling-tool.md
+- title: Ausbauen Ihrer Qualifikationen
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Top 5 der Sicherheitselemente
+      url: https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider
+    - text: Schützen Ihrer Cloudanwendungen in Azure
+      url: https://docs.microsoft.com/learn/paths/secure-your-cloud-apps

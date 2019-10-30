@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 818b8627decd5ee7db711abc417f71c83e32b6c0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7020bf529fa635d74959a9dac071aa6e2b134c5b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128378"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692626"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul „Two-Class Logistic Regression“ (Logistische Regression mit zwei Klassen)
 
@@ -36,9 +36,9 @@ Zum Trainieren dieses Modells müssen Sie ein Dataset bereitstellen, das eine Be
 
 Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werten „Ja“ oder „Nein“ sein. Oder sie kann [Kreditrisiko] mit den möglichen Werten „Hoch“ oder „Niedrig“ lauten. 
   
-1.  Fügen Sie das Modul **Two-Class Logistic Regression** Ihrem Experiment hinzu.  
+1.  Fügen Sie das Modul **Two-Class Logistic Regression** Ihrer Pipeline hinzu.  
   
-2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) festlegen.  
+2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie eine bestimmte Menge von Werten als Argumente angeben.  
   
@@ -67,14 +67,14 @@ Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werte
   
      Dieser Optimierungsparameter begrenzt die Menge an Speicher, die zur Berechnung des nächsten Schritts und der nächsten Richtung verwendet wird. Wenn Sie weniger Speicher angeben, ist das Training zwar schneller, aber ungenauer.  
   
-6.  Geben Sie für **Random number seed** (Zufälliger Startwert) eine ganze Zahl ein. Die Definition eines Startwerts ist wichtig, wenn Sie möchten, dass die Ergebnisse bei mehreren Ausführungen desselben Experiments reproduzierbar sind.  
+6.  Geben Sie für **Random number seed** (Zufälliger Startwert) eine ganze Zahl ein. Die Definition eines Startwerts ist wichtig, wenn die Ergebnisse bei mehreren Ausführungen derselben Pipeline reproduzierbar sein sollen.  
   
   
-8. Fügen Sie dem Experiment ein mit Tags versehenes Dataset hinzu, und stellen Sie eine Verbindung mit einem der [Trainingsmodule](module-reference.md) her.  
+8. Fügen Sie der Pipeline ein mit Tags versehenes Dataset hinzu, und stellen Sie eine Verbindung mit einem der [Trainingsmodule](module-reference.md) her.  
   
     -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](./train-model.md) (Trainieren des Modells) verwenden.  
   
-9. Führen Sie das Experiment aus.  
+9. Ausführen der Pipeline.  
   
 ## <a name="results"></a>Ergebnisse
 

@@ -9,42 +9,40 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
-ms.date: 07/02/2019
-ms.openlocfilehash: 257f6034df7d1974f3964c4d07ca96d17c7fe509
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 6e65075b309ed12505ce6fffadac12af3f16344b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131157"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692574"
 ---
 # <a name="sample-6---classification-predict-flight-delays-using-r"></a>Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen mit R-Code
 
-Dieses Experiment verwendet historische Flug- und Wetterdaten, um vorherzusagen, ob sich ein Linienflug um mehr als 15 Minuten verspäten wird.
+Diese Pipeline verwendet historische Flug- und Wetterdaten, um vorherzusagen, ob sich ein Linienflug um mehr als 15 Minuten verspäten wird. Dieses Problem kann als Klassifizierungsproblem angegangen werden, indem zwei Klassen vorhergesagt werden: verzögert oder pünktlich.
 
-Dieses Problem kann als Klassifizierungsproblem angegangen werden, indem zwei Klassen vorhergesagt werden – verzögert oder pünktlich. Für die Erstellung eines Klassifizierers verwendet dieses Modell eine große Anzahl von Beispielen aus historischen Flugdaten.
+So sieht der endgültige Graph der Pipeline für dieses Beispiel aus:
 
-So sieht der endgültige Graph des Experiments für dieses Beispiel aus:
-
-[![Graph des Experiments](media/how-to-ui-sample-classification-predict-flight-delay/experiment-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph der Pipeline](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Wählen Sie die Schaltfläche **Öffnen** für das Experiment „Beispiel 6“ aus:
+4. Wählen Sie die Schaltfläche **Öffnen** für die Pipeline des Beispiels Nr. 6 aus:
 
-    ![Öffnen des Experiments](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
+    ![Öffnen der Pipeline](media/how-to-ui-sample-classification-predict-flight-delay/open-sample6.png)
 
 ## <a name="get-the-data"></a>Abrufen von Daten
 
-Dieses Experiment verwendet das Dataset **Flight Delays Data**. Es gehört zur TranStats-Datensammlung des US-Verkehrsministeriums. Das Dataset enthält Informationen zu Flugverspätungen von April bis Oktober 2013. Bevor die Daten in die grafische Benutzeroberfläche hochgeladen wurden, wurden sie wie folgt vorverarbeitet:
+Dieses Beispiel verwendet das Dataset **Flight Delays Data**. Es gehört zur TranStats-Datensammlung des US-Verkehrsministeriums. Das Dataset enthält Informationen zu Flugverspätungen von April bis Oktober 2013. Das Dataset wurde wie folgt vorverarbeitet:
 
 * Sie wurden gefiltert, um die 70 verkehrsreichsten Flughäfen in den Vereinigten Staaten zu enthalten.
 * Ausgefallene Flüge wurden als um mehr als 15 Minuten verspätet gekennzeichnet.
 * Umgeleitete Flüge wurden herausgefiltert.
 * Es wurden 14 Spalten ausgewählt.
 
-Zur Ergänzung der Flugdaten wurde das **Dataset „Weather“** verwendet. Die Wetterdaten enthalten stündliche flächenbasierte Wetterbeobachtungen der NOAA und stellen Beobachtungen von Wetterstationen auf Flughäfen dar, die den gleichen Zeitraum von April bis Oktober 2013 umfassen. Vor dem Hochladen in die grafische ML-Benutzeroberfläche hochgeladen wurden die Wetterdaten wie folgt vorverarbeitet:
+Zur Ergänzung der Flugdaten wurde das **Dataset „Weather“** verwendet. Die Wetterdaten enthalten stündliche flächenbasierte Wetterbeobachtungen der NOAA und stellen Beobachtungen von Wetterstationen auf Flughäfen für den gleichen Zeitraum dar, den auch das Dataset mit den Flugdaten umfasst. Die Daten wurden wie folgt vorverarbeitet:
 
 * Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.
 * Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden entfernt.
@@ -107,10 +105,9 @@ Um ein Modell zu erstellen, können Sie alle verfügbaren Funktionen verwenden o
 Erstellen Sie mit dem Modul **Two-Class Logistic Regression** ein Modell, und trainieren Sie es mit den Trainingsdaten. 
 
 Als Ergebnis des Moduls **Train Model** erhalten Sie ein trainiertes Klassifizierungsmodell, mit dem Sie neue Proben bewerten können, um Vorhersagen zu machen. Verwenden Sie das Testdataset zum Generieren von Bewertungen aus den trainierten Modellen. Verwenden Sie dann das Modul **Evaluate Model** zum Analysieren und Vergleichen der Qualität der Modelle.
+Nach dem Ausführen der Pipeline können Sie die Ausgabe des Moduls **Score Model** anzeigen. Klicken Sie hierzu auf den Ausgabeport, und wählen Sie **Visualisieren** aus. Die Ausgabe enthält die bewerteten Bezeichnungen und deren Wahrscheinlichkeiten.
 
-Nach dem Ausführen des Experiments können Sie die Ausgabe des Moduls **Score Model** anzeigen. Klicken Sie hierzu auf den Ausgabeport, und wählen Sie **Visualisieren** aus. Die Ausgabe enthält die bewerteten Bezeichnungen und deren Wahrscheinlichkeiten.
-
-Um schließlich die Qualität der Ergebnisse zu überprüfen, ziehen Sie das Modul **Evaluate Model** in den Experimentbereich, und verbinden Sie den linken Eingangsport mit der Ausgabe des Moduls „Score Model“. Führen Sie das Experiment aus, und zeigen Sie die Ausgabe des Moduls **Evaluate Model** an. Klicken Sie hierzu auf den Ausgabeport, und wählen Sie **Visualisieren** aus.
+Um schließlich die Qualität der Ergebnisse zu überprüfen, ziehen Sie das Modul **Evaluate Model** in den Pipelinebereich, und verbinden Sie den linken Eingangsport mit der Ausgabe des Moduls „Score Model“. Führen Sie die Pipeline aus, und zeigen Sie die Ausgabe des Moduls **Evaluate Model** an. Klicken Sie hierzu auf den Ausgabeport, und wählen Sie **Visualisieren** aus.
 
 ## <a name="evaluate"></a>Evaluate
 Das logistische Regressionsmodell verwendet für den Testsatz einen AUC-Wert von 0.631.
@@ -126,3 +123,4 @@ Untersuchen Sie die anderen Beispiele, die für die grafische Benutzeroberfläch
 - [Beispiel 3 – Klassifizierung: Vorhersagen des Kreditrisikos](how-to-ui-sample-classification-predict-credit-risk-basic.md)
 - [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-ui-sample-classification-predict-churn.md)
+- [Beispiel 7 – Textklassifizierung: Buchrezensionen](how-to-ui-sample-text-classification.md)
