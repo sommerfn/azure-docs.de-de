@@ -37,7 +37,9 @@
     - name: Store Analytics-Architektur
       href: store-analytics-architecture.md
     - name: Konnektivität
-      href: ../core/concepts-connectivity-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+      href: ../core/overview-iot-central-get-connected-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+    - name: Was sind Anwendungsvorlagen?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen Geräten
@@ -72,8 +74,6 @@
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Benutzerdefinierte Regeln erstellen
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-        - name: Erstellen einer benutzerdefinierten Analyse mit Databricks
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Erstellen einer benutzerdefinierten Analyse mit Databricks
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Verwaltung
@@ -130,8 +130,6 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Ressourcen
   items:
-    - name: API-Referenzdokumentation
-      href: 'https://go.microsoft.com/fwlink/?linkid=2109131'
     - name: Kundendatenanforderungen
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Unterstützte Browser
