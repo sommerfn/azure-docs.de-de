@@ -68,7 +68,7 @@
               href: entitlement-management-access-package-request-policy.md
             - name: Ändern von Lebenszykluseinstellungen
               href: entitlement-management-access-package-lifecycle-policy.md
-            - name: Anzeigen und Verwalten von Anforderungen
+            - name: Anzeigen von Anforderungen
               href: entitlement-management-access-package-requests.md
             - name: 'Anzeigen, Hinzufügen und Entfernen von Zuweisungen'
               href: entitlement-management-access-package-assignments.md

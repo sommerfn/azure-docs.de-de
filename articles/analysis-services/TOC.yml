@@ -68,7 +68,7 @@
       items:
         - name: Tabellarische Modellierung
           href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
-        - name: Bereitstellen über Visual Studio (SSDT)
+        - name: Bereitstellen von Visual Studio aus
           href: analysis-services-deploy.md
         - name: Aktualisieren mit REST-API
           href: analysis-services-async-refresh.md

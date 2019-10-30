@@ -29,7 +29,7 @@
     - name: Registrieren für die Kennwortzurücksetzung
       href: active-directory-passwords-reset-register.md
     - name: Zurücksetzen Ihres Kennworts
-      href: user-help-reset-password.md
+      href: active-directory-passwords-update-your-own-password.md
 - name: Hilfe zur Microsoft Authenticator-App
   items:
     - name: Übersicht
