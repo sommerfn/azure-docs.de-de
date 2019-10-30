@@ -1,5 +1,5 @@
 - name: Dokumentation mit grundlegenden Informationen
-  href: index.md
+  href: index.yml
 - name: Architektur und Entwurf
   href: overview.md
   expanded: false
@@ -40,7 +40,8 @@
           href: data-encryption-best-practices.md
         - name: Verschlüsselung ruhender Daten
           href: encryption-atrest.md
-        - name: Azure Disk Encryption für virtuelle Computer und VM-Skalierungsgruppen
+        - name: Azure Disk Encryption für virtuelle Computer
+          displayName: virtual machines and virtual machine scale sets
           href: azure-disk-encryption-vms-vmss.md
     - name: Sicherheitsleitfaden zu Storage
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'

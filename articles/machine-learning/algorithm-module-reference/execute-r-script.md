@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01fb3325bed889911c79a4f828afa27b86d746db
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128804"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693767"
 ---
 # <a name="execute-r-script"></a>Execute R Script
 
-In diesem Artikel wird beschrieben, wie Sie das Modul **Execute R Script** verwenden, um R-Code in Ihrem Experiment auf der grafischen Benutzeroberfläche auszuführen.
+In diesem Artikel wird beschrieben, wie Sie das Modul **Execute R Script** verwenden, um R-Code in Ihrer Pipeline auf der grafischen Benutzeroberfläche auszuführen.
 
 Mit R können Sie Aufgaben ausführen, die von vorhandenen Modulen aktuell nicht unterstützt werden, beispielsweise: 
 - Erstellen benutzerdefinierter Datentransformationen
@@ -75,7 +75,7 @@ Das Modul **Execute R Script** enthält R-Beispielcode, den Sie als Ausgangspunk
 
 Auf der grafischen Benutzeroberfläche gespeicherte Datasets werden automatisch in einen R-Datenrahmen konvertiert, wenn sie mit diesem Modul geladen werden.
 
-1.  Fügen Sie Ihrem Experiment das Modul **Execute R Script** hinzu.
+1.  Fügen Sie Ihrer Pipeline das Modul **Execute R Script** hinzu.
 
   
 
@@ -119,11 +119,11 @@ azureml_main <- function(dataframe1, dataframe2){
     > Auf die an das Modul **Execute R Script** übermittelten Daten wird als `dataframe1` und `dataframe2` verwiesen. Dies unterscheidet sich von Azure Machine Learning Studio (Studio-Referenzen `dataset1` und `dataset2`). Stellen Sie sicher, dass in Ihrem Skript ordnungsgemäß auf die Eingabedaten verwiesen wird.  
  
     > [!NOTE]
-    >  Vorhandener R-Code kann kleinere Änderungen erfordern, um in einem Experiment auf der grafischen Benutzeroberfläche ausgeführt zu werden. Beispielsweise müssen Eingabedaten, die Sie im CSV-Format bereitstellen, explizit in ein Dataset konvertiert werden, bevor Sie sie in Ihrem Code verwenden können. Daten- und Spaltentypen, die in der Sprache R verwendet werden, unterscheiden sich ebenfalls durch einige Besonderheiten von den Daten- und Spaltentypen, die auf der grafischen Benutzeroberfläche verwendet werden.
+    >  Vorhandener R-Code kann kleinere Änderungen erfordern, um in einer Pipeline auf der grafischen Benutzeroberfläche ausgeführt zu werden. Beispielsweise müssen Eingabedaten, die Sie im CSV-Format bereitstellen, explizit in ein Dataset konvertiert werden, bevor Sie sie in Ihrem Code verwenden können. Daten- und Spaltentypen, die in der Sprache R verwendet werden, unterscheiden sich ebenfalls durch einige Besonderheiten von den Daten- und Spaltentypen, die auf der grafischen Benutzeroberfläche verwendet werden.
 
 1.  **Random Seed** (Zufälliger Startwert): Geben Sie einen Wert ein, der in der R-Umgebung als zufälliger Startwert verwendet werden soll. Dieser Parameter entspricht dem Aufrufen von `set.seed(value)` im R-Code.  
 
-1. Führen Sie das Experiment aus.  
+1. Ausführen der Pipeline.  
 
 ## <a name="results"></a>Ergebnisse
 
@@ -133,7 +133,7 @@ Standardmeldungen und -fehler aus R werden im Protokoll des Moduls zurückgegebe
 
 ## <a name="sample-scripts"></a>Beispielskripts
 
-Es gibt viele Möglichkeiten, wie Sie Ihr Experiment mithilfe eines benutzerdefinierten R-Skripts erweitern können.  Dieser Abschnitt enthält Beispielcode für allgemeine Aufgaben.
+Es gibt viele Möglichkeiten, wie Sie Ihre Pipeline mithilfe eines benutzerdefinierten R-Skripts erweitern können.  Dieser Abschnitt enthält Beispielcode für allgemeine Aufgaben.
 
 
 ### <a name="add-r-script-as-an-input"></a>Hinzufügen eines R-Skripts als Eingabe
@@ -146,7 +146,7 @@ Das Modul **Execute R Script** unterstützt beliebige R-Skriptdateien als Eingab
 
 1.  Verbinden Sie das Dataset mit dem Eingabeport **Script Bundle**.
 
-1. Alle Dateien in der ZIP-Datei sind während der Laufzeit des Experiments verfügbar. 
+1. Alle Dateien in der ZIP-Datei sind während der Laufzeit der Pipeline verfügbar. 
 
     Wenn die Script Bundle-Datei eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten. Sie müssen jedoch Ihren Code so ändern, dass das Verzeichnis **./Script Bundle** dem Pfad vorangestellt wird.
 
@@ -221,7 +221,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 Sie können R-Objekte zwischen Instanzen des Moduls **Execute R Script** übergeben, indem Sie den internen Serialisierungsmechanismus verwenden. Bei diesem Beispiel wird davon ausgegangen, dass Sie das R-Objekt mit dem Namen `A` zwischen zwei **Execute R Script**-Modulen verschieben möchten.
 
-1. Fügen Sie das erste **Execute R Script**-Modul Ihrem Experiment hinzu, und geben Sie den folgenden Code in das Textfeld **R Script** ein, um ein serialisiertes Objekt `A` als Spalte in der Ausgabedatentabelle des Moduls zu erstellen:  
+1. Fügen Sie das erste Modul **Execute R Script** Ihrer Pipeline hinzu, und geben Sie den folgenden Code in das Textfeld **R Script** ein, um ein serialisiertes Objekt `A` als Spalte in der Ausgabedatentabelle des Moduls zu erstellen:  
   
     ```R
     azureml_main <- function(dataframe1, dataframe2){

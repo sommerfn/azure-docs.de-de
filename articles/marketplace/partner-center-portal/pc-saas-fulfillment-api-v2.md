@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
-ms.openlocfilehash: a2041aefcfdcb1746e64f50c7cb53b3bfaec3299
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 75e806e56fa94916f76f9e7fa6572ae07987e017
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872804"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595559"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-Fulfillment-APIs, Version 2 
 
@@ -181,7 +181,11 @@ Listet alle SaaS-Abonnements für einen Herausgeber auf.
 
 Code: 200 <br/>
 Ruft anhand des Authentifizierungstokens den Herausgeber und die entsprechenden Abonnements für alle Angebote des Herausgebers ab.
-Antwortnutzlast:<br>
+
+>[!Note]
+>[Pseudo-APIs](#mock-apis) werden verwendet, wenn Sie das Angebot erstmalig entwickeln, während echte APIs verwendet werden müssen, wenn Sie das Angebot tatsächlich veröffentlichen.  Echte APIs und Pseudo-APIs unterscheiden sich in der ersten Codezeile.  In der echten API gibt es den Abschnitt `subscription`, während dieser Abschnitt in einer Pseudo-API nicht vorhanden ist.
+
+Antwortnutzlast für Pseudo-API:<br>
 
 ```json
 {
@@ -215,7 +219,46 @@ Antwortnutzlast:<br>
   "continuationToken": ""
 }
 ```
+Und für eine echte API: <br>
 
+```json
+{
+  "subscriptions": [
+      {
+          "id": "<guid>",
+          "name": "Contoso Cloud Solution",
+          "publisherId": "contoso",
+          "offerId": "offer1",
+          "planId": "silver",
+          "quantity": "10",
+          "beneficiary": { // Tenant, object id and email address for which SaaS subscription is purchased.
+              "emailId": "<email>",
+              "objectId": "<guid>",                     
+              "tenantId": "<guid>"
+          },
+          "purchaser": { // Tenant, object id and email address that purchased the SaaS subscription. These could be different for reseller scenario
+              "emailId": "<email>",
+              "objectId": "<guid>",                      
+              "tenantId": "<guid>"
+          },
+            "term": {
+                "startDate": "2019-05-31",
+                "endDate": "2019-06-29",
+                "termUnit": "P1M"
+          },
+          "allowedCustomerOperations": [
+              "Read" // Possible Values: Read, Update, Delete.
+          ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
+          "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
+          "isFreeTrial": true, // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.(optional field – default false)
+          "isTest": false, //indicating whether the current subscription is a test asset
+          "sandboxType": "None", // Possible Values: None, Csp (Csp sandbox purchase)
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
+      }
+  ],
+  "@nextLink": ""
+}
+```
 Das Fortsetzungstoken ist nur vorhanden, wenn zusätzliche „Seiten“ von Plänen abgerufen werden sollen. 
 
 Code: 403 <br>

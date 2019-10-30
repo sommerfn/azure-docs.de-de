@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 79cd6fe9156a785d82e303007d02ce58506dcfcf
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fcbf9fae3306c43613ef0b67a79c9c0b53f6b923
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128551"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693756"
 ---
 # <a name="partition-and-sample-module"></a>Modul „Partition and Sample“
 
@@ -38,7 +38,7 @@ Die Stichprobenentnahme ist ein wichtiges Tool beim maschinellen Lernen. Sie erm
 
 - Erstellen eines kleineren Datasets zum Testen. 
 
-    Bei einer großen Datenmenge möchten Sie beim Einrichten des Experiments möglicherweise nur die ersten *n* Zeilen verwenden und dann beim Erstellen Ihres Modells zur Verwendung des vollständigen Datasets wechseln. Sie können die Stichprobenentnahme auch verwenden, um ein kleineres Dataset zum Einsatz in der Entwicklung zu erstellen.
+    Bei einer großen Datenmenge möchten Sie beim Einrichten der Pipeline möglicherweise nur die ersten *n* Zeilen verwenden und dann beim Erstellen Ihres Modells zur Verwendung des vollständigen Datasets wechseln. Sie können die Stichprobenentnahme auch verwenden, um ein kleineres Dataset zum Einsatz in der Entwicklung zu erstellen.
 
 ## <a name="configure-partition-and-sample"></a>Konfigurieren von „Partition and Sample“
 
@@ -51,9 +51,9 @@ Dieses Modul unterstützt mehrere Methoden zum Unterteilen Ihrer Daten in Partit
 
 ### <a name="get-top-n-rows-from-a-dataset"></a>Abrufen der obersten n Zeilen aus einem Dataset
 
-Verwenden Sie diesen Modus, wenn Sie nur die ersten *n* Zeilen abrufen möchten. Diese Option ist hilfreich, wenn Sie ein Experiment an einer kleinen Anzahl von Zeilen testen möchten und die Daten nicht ausgeglichen oder für eine Stichprobenentnahme irgendwie verfügbar sein müssen.
+Verwenden Sie diesen Modus, wenn Sie nur die ersten *n* Zeilen abrufen möchten. Diese Option ist hilfreich, wenn Sie eine Pipeline an einer kleinen Anzahl von Zeilen testen möchten und die Daten nicht ausgeglichen oder in irgendeiner Form für eine Stichprobenentnahme verfügbar sein müssen.
 
-1. Fügen Sie das Modul **Partition and Sample** Ihrem Experiment in der Oberfläche hinzu, und verbinden Sie das Dataset.  
+1. Fügen Sie das Modul **Partition and Sample** Ihrer Pipeline auf der Oberfläche hinzu, und verbinden Sie das Dataset.  
 
 2. **Partition or sample mode** (Partitions- oder Stichprobenmodus): Legen Sie für diese Option **Head** (Anfang) fest.
 
@@ -61,7 +61,7 @@ Verwenden Sie diesen Modus, wenn Sie nur die ersten *n* Zeilen abrufen möchten.
 
     Die Anzahl der angegebenen Zeilen muss eine nicht negative Ganzzahl sein. Wenn die Anzahl der ausgewählten Zeilen größer als die Anzahl der Zeilen im Dataset ist, wird das ganze Dataset zurückgegeben.
 
-4. Führen Sie das Experiment aus.
+4. Ausführen der Pipeline.
 
 Das Modul gibt ein einzelnes Dataset mit nur der angegebenen Anzahl von Zeilen aus. Die Zeilen werden immer aus dem Anfang des Datasets gelesen.
 
@@ -69,7 +69,7 @@ Das Modul gibt ein einzelnes Dataset mit nur der angegebenen Anzahl von Zeilen a
 
 Diese Option unterstützt einfache Zufallsstichproben oder geschichtete Zufallsstichproben. Dies ist hilfreich, wenn Sie ein kleineres repräsentatives Beispieldataset zum Testen erstellen möchten.
 
-1. Fügen Sie das Modul **Partition and Sample** Ihrem Experiment hinzu, und verbinden Sie das Dataset.
+1. Fügen Sie das Modul **Partition and Sample** Ihrer Pipeline hinzu, und verbinden Sie das Dataset.
 
 2. **Partition or sample mode** (Partitions- oder Stichprobenmodus): Legen Sie dafür **Sampling** (Stichprobenentnahme) fest.
 
@@ -81,7 +81,7 @@ Diese Option unterstützt einfache Zufallsstichproben oder geschichtete Zufallss
 
 4. **Random seed for sampling** (Zufälliger Ausgangswert für Stichprobenentnahme): Geben Sie optional eine Ganzzahl ein, die als Ausgangswert verwendet werden soll.
 
-    Diese Option ist wichtig, wenn die Zeilen immer auf dieselbe Weise unterteilt werden sollen. Der Standardwert ist „0“ und bedeutet, dass ein Ausgangswert anhand der Systemuhr generiert wird. Dies kann bei jeder Ausführung des Experiments zu geringfügig unterschiedlichen Ergebnissen führen.
+    Diese Option ist wichtig, wenn die Zeilen immer auf dieselbe Weise unterteilt werden sollen. Der Standardwert ist „0“ und bedeutet, dass ein Ausgangswert anhand der Systemuhr generiert wird. Dies kann bei jeder Ausführung der Pipeline zu geringfügig unterschiedlichen Ergebnissen führen.
 
 5. **Stratified split for sampling** (Geschichtete Aufteilung für die Stichprobenentnahme): Wählen Sie diese Option aus, wenn es wichtig ist, dass die Zeilen im Dataset vor der Stichprobenentnahme anhand einer Schlüsselspalte gleichmäßig unterteilt werden sollen.
 
@@ -94,7 +94,7 @@ Diese Option unterstützt einfache Zufallsstichproben oder geschichtete Zufallss
     3. Jede Gruppe wird dem Ausgabedataset selektiv hinzugefügt, um das angegebene Verhältnis zu erfüllen.
 
 
-6. Führen Sie das Experiment aus.
+6. Ausführen der Pipeline.
 
     Bei dieser Option gibt das Modul ein einzelnes Dataset mit einer repräsentativen Stichprobenentnahme der Daten aus. Der verbleibende Teil ohne Stichprobenentnahme des Datasets wird nicht ausgegeben. 
 
@@ -102,7 +102,7 @@ Diese Option unterstützt einfache Zufallsstichproben oder geschichtete Zufallss
 
 Verwenden Sie diese Option, wenn Sie das Dataset in Teilmengen der Daten unterteilen möchten. Diese Option ist auch hilfreich, wenn Sie eine benutzerdefinierte Anzahl von Folds für Kreuzvalidierung erstellen oder Zeilen in mehrere Gruppen aufteilen möchten.
 
-1. Fügen Sie das Modul **Partition and Sample** Ihrem Experiment hinzu, und verbinden Sie das Dataset.
+1. Fügen Sie das Modul **Partition and Sample** Ihrer Pipeline hinzu, und verbinden Sie das Dataset.
 
 2. Wählen Sie für **Partition or sample mode** (Partitions- oder Stichprobenmodus) die Option **Assign to Folds** (Zu Folds zuweisen) aus.
 
@@ -128,11 +128,11 @@ Verwenden Sie diese Option, wenn Sie das Dataset in Teilmengen der Daten unterte
 
         - Wenn Sie Zahlen eingeben, deren Summe **kleiner als 1** ist, wird eine zusätzliche Partition zur Aufnahme der verbleibenden Zeilen erstellt. Wenn Sie beispielsweise die Werte „0,2“ und „0,3“ eingeben, wird eine dritte Partition zur Aufnahme der verbleibenden 50 Prozent aller Zeilen erstellt.
 
-        - Wenn Sie Zahlen eingeben, deren Summe **größer als 1** ist, wird bei Ausführung des Experiments ein Fehler ausgelöst.
+        - Wenn Sie Zahlen eingeben, deren Summe **größer als 1** ist, wird bei Ausführung der Pipeline ein Fehler ausgelöst.
 
 7. **Stratified split** (Geschichtete Aufteilung): Wählen Sie diese Option aus, wenn die Zeilen beim Aufteilen geschichtet werden sollen, und wählen Sie dann die _strata column_ (Schichtspalte) aus.
 
-8. Führen Sie das Experiment aus.
+8. Ausführen der Pipeline.
 
     Bei dieser Option gibt das Modul mehrere Datasets aus, die anhand der von Ihnen angegebenen Regeln partitioniert wurden.
 
@@ -140,7 +140,7 @@ Verwenden Sie diese Option, wenn Sie das Dataset in Teilmengen der Daten unterte
 
 Diese Option wird verwendet, wenn Sie ein Dataset in mehrere Partitionen unterteilt haben und jetzt jede Partition für weitere Analyse oder Verarbeitung laden möchten.
 
-1. Fügen Sie das Modul **Partition and Sample** dem Experiment hinzu.
+1. Fügen Sie das Modul **Partition and Sample** der Pipeline hinzu.
 
 2. Verbinden Sie es mit der Ausgabe aus einer vorherigen Instanz von **Partition and Sample**. Diese Instanz muss die Option **Assign to Folds** (Zu Folds zuweisen) verwendet haben, um eine Anzahl von Partitionen zu generieren.
 
@@ -158,7 +158,7 @@ Diese Option wird verwendet, wenn Sie ein Dataset in mehrere Partitionen unterte
 
     [![Partition and Sample](./media/partition-and-sample/partition-and-sample.png)](./media/partition-and-sample/partition-and-sample-lg.png#lightbox)
 
-5. Führen Sie das Experiment aus.
+5. Ausführen der Pipeline.
 
     Bei dieser Option gibt das Modul ein einzelnes Dataset mit nur den Zeilen aus, die diesem Fold zugewiesen wurden.
 

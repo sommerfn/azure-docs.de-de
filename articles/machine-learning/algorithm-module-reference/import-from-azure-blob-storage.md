@@ -1,7 +1,7 @@
 ---
 title: 'Importieren aus Azure Blob Storage: Modulreferenz'
 titleSuffix: Azure Machine Learning service
-description: In diesem Thema wird beschrieben, wie Sie das Modul „Importieren aus Azure Blob Storage“ im Azure Machine Learning Service verwenden, um Daten aus dem Azure Blob Storage zu lesen, um sie in einem Machine Learning-Experiment zu verwenden.
+description: In diesem Thema wird beschrieben, wie Sie das Modul „Importieren aus Azure Blob Storage“ in Azure Machine Learning Service verwenden, um Daten aus Azure Blob Storage zu lesen, um sie in einer Machine Learning-Pipeline zu verwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: fea64070c496379351bb75f2a38aba9b4db70dcd
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f8d23bfbee6d3665d770d8cbbcb9440827a88e8e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128718"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693742"
 ---
 # <a name="import-from-azure-blob-storage-module"></a>Importieren aus einem Azure Blob Storage-Modul
 
 In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
 
-Verwenden Sie dieses Modul, um Daten aus Azure Blob Storage zu lesen, die Sie dann in einem Machine Learning-Experiment verwenden können.  
+Verwenden Sie dieses Modul, um Daten aus Azure Blob Storage zu lesen, die Sie dann in einer Machine Learning-Pipeline verwenden können.  
 
 Azure Blob Service dient zum Speichern großer Datenmengen, einschließlich binärer Daten. Azure-Blobs können von überall aus über HTTP oder HTTPS aufgerufen werden. Je nach Art des Blobspeichers kann eine Authentifizierung erforderlich sein. 
 
@@ -38,7 +38,7 @@ Es wird dringend empfohlen, vor dem Importieren Datenprofile zu erstellen, um si
 
 Die folgenden Schritte beschreiben, wie Sie die Importquelle manuell konfigurieren.
 
-1. Fügen Sie das Modul **Daten importieren** zu Ihrem Experiment hinzu. Sie finden dieses Modul in der Schnittstelle unter **Dateneingabe und -ausgabe**.
+1. Fügen Sie das Modul **Import Data** Ihrer Pipeline hinzu. Sie finden dieses Modul in der Schnittstelle unter **Dateneingabe und -ausgabe**.
 
 2. Wählen Sie **Azure Blob Storage** als **Datenquelle** aus.
 
@@ -77,7 +77,7 @@ Die folgenden Schritte beschreiben, wie Sie die Importquelle manuell konfigurier
     In Containernamen können Sie keine Platzhalter verwenden. Wenn Sie Dateien aus mehreren Containern importieren müssen, verwenden Sie eine separate Instanz des Moduls **Daten importieren** für jeden Container, und führen Sie die Datensätze dann mit dem Modul [Zeilen hinzufügen](./add-rows.md) zusammen.
 
     > [!NOTE]
-    > Wenn Sie die Option **Zwischengespeicherte Ergebnisse verwenden** ausgewählt haben, lösen Änderungen, die Sie an den Dateien im Container vornehmen, keine Aktualisierung der Daten im Experiment aus.
+    > Wenn Sie die Option **Zwischengespeicherte Ergebnisse verwenden** ausgewählt haben, lösen Änderungen, die Sie an den Dateien im Container vornehmen, keine Aktualisierung der Daten in der Pipeline aus.
 
 7. Wählen Sie für **Blobdateiformat** eine Option aus, die das Format der im Blob gespeicherten Daten angibt, damit Azure Machine Learning die Daten entsprechend verarbeiten kann. Die folgenden Formate werden unterstützt:
 
@@ -93,7 +93,7 @@ Die folgenden Schritte beschreiben, wie Sie die Importquelle manuell konfigurier
 
    
 
-8. Führen Sie das Experiment aus.
+8. Ausführen der Pipeline.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

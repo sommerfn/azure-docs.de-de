@@ -304,10 +304,14 @@
           href: resource-group-template-functions-resource.md
         - name: Zeichenfolgenfunktionen
           href: resource-group-template-functions-string.md
-    - name: Löschung des vollständigen Modus
-      href: complete-mode-deletion.md
-    - name: Grenzwert für Ressourceninstanzen
-      href: resources-without-rg-limit.md
+    - name: Ressourcenfunktionen
+      items:
+        - name: Löschung des vollständigen Modus
+          href: complete-mode-deletion.md
+        - name: Erweiterungsressourcentypen
+          href: extension-resource-types.md
+        - name: Grenzwert für Ressourceninstanzen
+          href: resources-without-rg-limit.md
     - name: Ressourcenanbieter nach Dienst
       href: azure-services-resource-providers.md
     - name: 'REST: Resource Manager'

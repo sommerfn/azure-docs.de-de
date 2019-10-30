@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128308"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692600"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Modul „Zweiklassige Support Vector Machine“
 
@@ -38,9 +38,9 @@ Für die Vorhersage ordnet der SVM-Algorithmus neue Beispiele der einen oder and
 
 Für diesen Modelltyp wird empfohlen, dass Sie den Datensatz normalisieren, bevor Sie ihn zum Trainieren des Klassifikators verwenden.
   
-1.  Fügen Sie das Modul **Zweiklassige Support Vector Machine** zu Ihrem Experiment hinzu.  
+1.  Fügen Sie das Modul **Support Vector Machine: zwei Klassen** zu Ihrer Pipeline hinzu.  
   
-2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Trainermodus erstellen** aktivieren.  
+2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.  
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.  
 
@@ -64,10 +64,10 @@ Für diesen Modelltyp wird empfohlen, dass Sie den Datensatz normalisieren, bevo
   
 9. Stellen Sie eine Verbindung mit einem bezeichneten Dataset und einem der [Trainingsmodule](module-reference.md) her:
   
-    -   Wenn Sie **Trainermodus erstellen** auf **Einzelparameter** festlegen, müssen Sie das Modul [Modell trainieren](train-model.md) verwenden.
+    -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](train-model.md) (Trainieren des Modells) verwenden.
   
 
-10. Führen Sie das Experiment aus.
+10. Ausführen der Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 17263c8e7300f427b7d82aea65e1f83edf6d6fc4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128851"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693799"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -43,8 +43,8 @@ Es gibt drei Möglichkeiten zum Verwenden des Moduls **Evaluate Model**:
 
 Zur Auswertung eines Modells müssen Sie eine Verbindung mit einem Dataset herstellen, das mehrere Eingabespalten und Ergebnisse enthält.  Wenn keine anderen Daten verfügbar sind, können Sie Ihr ursprüngliches Dataset verwenden.
 
-1. Verbinden Sie die Ausgabe **Scored dataset** (Bewertetes Dataset) des Moduls [Score Model](./score-model.md) (Bewerten des Modells) mit der Eingabe des Moduls **Evaluate Model**. 
-2. Klicken Sie auf das Modul **Evaluate Model**, und führen Sie das Experiment aus, um die Auswertungsergebnisse zu generieren.
+1. Verbinden Sie die Ausgabe **Scored dataset** des Moduls [Score Model](./score-model.md) mit der Eingabe des Moduls **Evaluate Model**. 
+2. Klicken Sie auf das Modul **Evaluate Model**, und führen Sie die Pipeline aus, um die Auswertungsergebnisse zu generieren.
 
 ## <a name="use-testing-data"></a>Verwenden von Testdaten
 

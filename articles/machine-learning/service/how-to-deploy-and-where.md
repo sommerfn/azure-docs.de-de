@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: fa0fa6220fd090bf7fcbe14e85556b6010651e0e
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a5674658fa237e44c7caea45c8f6d587a471b981
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675002"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595635"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
 
@@ -263,11 +263,18 @@ Das folgende YAML-Beispiel zeigt eine Conda-Abhängigkeitsdatei für den Rücksc
 name: project_environment
 dependencies:
   - python=3.6.2
+  - scikit-learn=0.20.0
   - pip:
     - azureml-defaults
-    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
+
+> [!IMPORTANT]
+> Wenn die Abhängigkeit sowohl über Conda als auch über pip (von PyPi) verfügbar ist, empfiehlt Microsoft die Verwendung der Conda-Version, da Conda-Pakete in der Regel mit vorgefertigten Binärdateien geliefert werden, welche die Zuverlässigkeit der Installation erhöhen.
+>
+> Weitere Informationen finden Sie unter [Grundlegendes zu Conda und pip](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Überprüfen Sie mithilfe des `conda search <package-name>`-Befehls, ob ihre Abhängigkeit über Conda verfügbar ist, oder verwenden Sie die Paketindizes unter [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) und [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
 
 Wenn Sie automatische Schemagenerierung verwenden möchten, muss Ihr Eingangsskript die `inference-schema`-Pakete importieren.
 
@@ -546,7 +553,7 @@ test_sample = json.dumps({'data': [
 ]})
 
 profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(true)
+profile.wait_for_profiling(True)
 profiling_results = profile.get_results()
 print(profiling_results)
 ```

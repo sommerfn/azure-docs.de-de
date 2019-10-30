@@ -138,6 +138,9 @@
         - name: Trainieren mit Datasets
           displayName: 'data, dataset'
           href: how-to-train-with-datasets.md
+        - name: Durchführen der Versionsverwaltung und Nachverfolgen von Datasets
+          displayName: 'data, data set'
+          href: how-to-version-track-datasets.md
     - name: Trainieren von Modellen
       items:
         - name: Verwenden der grafischen Benutzeroberfläche

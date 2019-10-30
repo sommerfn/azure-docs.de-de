@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719962"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598294"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrieren von Media Indexer und Media Indexer 2 zu Video Indexer
 
@@ -77,9 +77,9 @@ Dies sind einige der bekannten Unterschiede:
 * AIB-Dateien (Audio Indexing Blob) werden nicht mehr unterstützt. Diese Funktion war für die in Indexer 1 verwendete Technologie spezifisch und wird nicht mehr angeboten.  
 * Die Cognitive Services-Spracherkennungsdienste unterstützen keine Extrahierung von Schlüsselwörtern. Jedoch bieten sowohl Video Indexer als auch Media Services v3 AudioAnalyzerPreset eine stabilere Menge von Schlüsselwörtern im JSON-Dateiformat. 
 
-## <a name="contact-us"></a>Kontakt 
+## <a name="need-help"></a>Sie brauchen Hilfe?
 
-Bei Fragen zur Einstellung von Azure Media Indexer 1 und Azure Media Indexer 2 oder zur Migration zu einem der anderen Dienste nehmen Sie bitte unter amshelp@microsoft.com Kontakt mit uns auf. 
+Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

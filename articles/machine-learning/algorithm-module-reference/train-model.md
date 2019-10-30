@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f9717c39388c85ced889744722899b78a5df8453
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128450"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693687"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -43,7 +43,7 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
   
 1.  Konfigurieren Sie in Azure Machine Learning ein Klassifizierungs- oder Regressionsmodell.
     
-2. Fügen Sie dem Experiment das Modul **Train Model** hinzu.  Sie finden dieses Modul unter der Kategorie **Machine Learning**. Erweitern Sie **Train** (Trainieren), und ziehen Sie das Modul **Train Model** dann in Ihr Experiment.
+2. Fügen Sie der Pipeline das Modul **Train Model** hinzu.  Sie finden dieses Modul unter der Kategorie **Machine Learning**. Erweitern Sie **Trainieren**, und ziehen Sie dann das Modul **Train Model** in Ihre Pipeline.
   
 3.  Fügen Sie den untrainierten Modus an die linke Eingabe an. Fügen Sie das Trainingsdataset an die rechte Eingabe von **Train Model** an.
 
@@ -62,16 +62,16 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
     > [!TIP] 
     > Tipps zur richtigen Verwendung der Spaltenauswahl finden Sie im Artikel zum [Auswählen von Spalten im Dataset](./select-columns-in-dataset.md). Dort werden einige häufige Szenarien beschrieben, und Sie erhalten Tipps zur Verwendung der Optionen **WITH RULES** und **BY NAME**.
   
-5.  Führen Sie das Experiment aus. Wenn Sie über eine große Datenmenge verfügen, kann dies eine Weile dauern.
+5.  Ausführen der Pipeline. Wenn Sie über eine große Datenmenge verfügen, kann dies eine Weile dauern.
 
 ## <a name="bkmk_results"></a> Ergebnisse
 
 Nachdem das Modell trainiert wurde:
 
 + Um Modellparameter und Featuregewichtungen anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe, und wählen Sie **Visualize** (Visualisieren) aus.
-+ Um das Modell in weiteren Experimenten zu verwenden, klicken Sie mit der rechten Maustaste auf das Modell, und wählen Sie **Save Model** (Modell speichern) aus. Geben Sie einen Namen für das Modell ein. 
++ Um das Modell in weiteren Pipelines zu verwenden, klicken Sie mit der rechten Maustaste auf das Modell, und wählen Sie **Modell speichern** aus. Geben Sie einen Namen für das Modell ein. 
 
-    Dadurch wird das Modell als Momentaufnahme gespeichert, die durch wiederholte Ausführungen des Experiments aber nicht aktualisiert wird.
+    Dadurch wird das Modell als Momentaufnahme gespeichert, die durch wiederholtes Ausführen der Pipeline nicht aktualisiert wird.
 + Um das Modell zur Vorhersage neuer Werte zu verwenden, verbinden Sie es mit dem Modul [Score Model](./score-model.md) (Modell bewerten) sowie mit neuen Eingabedaten.
 
 

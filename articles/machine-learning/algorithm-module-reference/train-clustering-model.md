@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 4883b1420913eb4e5f3bd5f13a95e410370d9184
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fc6d889fb9be40c98e1a2a0de6fddb29939f3b5d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128473"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693647"
 ---
 # <a name="train-clustering-model"></a>Trainieren eines Clusteringmodells
 
@@ -29,7 +29,7 @@ In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie berei
   
 ## <a name="how-to-use-train-clustering-model"></a>Verwenden des Moduls „Train Clustering Model“  
   
-1.  Fügen Sie das Modul **Train Clustering Model** Ihrem Experiment in Studio hinzu. Sie finden das Modul unter **Machine Learning Modules**in der Kategorie **Train**.  
+1.  Fügen Sie das Modul **Train Clustering Model** Ihrer Pipeline in Studio hinzu. Sie finden das Modul unter **Machine Learning Modules**in der Kategorie **Train**.  
   
 2. Fügen Sie das Modul [K-Means Clustering](k-means-clustering.md) oder ein anderes benutzerdefiniertes Modul hinzu, mit dem ein kompatibles Clusteringmodell erstellt wird, und legen Sie dessen Parameter fest.  
     
@@ -43,7 +43,7 @@ In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie berei
 
     Wenn Sie diese Option deaktivieren, werden nur die Clusterzuweisungen ausgegeben. 
 
-7. Führen Sie das Experiment aus, oder klicken Sie auf das Modul **Train Clustering Model** und dann auf **Run Selected** (Ausgewählte ausführen).  
+7. Führen Sie die Pipeline aus, oder klicken Sie auf das Modul **Train Clustering Model** und dann auf **Auswahl ausführen**.  
   
 ### <a name="results"></a>Ergebnisse
 

@@ -9,46 +9,46 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
-ms.date: 05/10/2019
-ms.openlocfilehash: b9d5308a0b7d9249ea816bafb5c6cb7d9c5e5fd6
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 09/23/2019
+ms.openlocfilehash: 4649303b8ee643130b8e254f01bfffbe8ad9eb2b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131241"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693500"
 ---
 # <a name="sample-3---classification-predict-credit-risk"></a>Beispiel 3 – Klassifizierung: Vorhersagen des Kreditrisikos
 
-Erfahren Sie, wie Sie über die grafische Benutzeroberfläche eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben. In diesem Beispiel wird eine **um zwei Klassen verstärkte Entscheidungsstruktur** (two-class boosted decision tree) trainiert, um das Kreditrisiko (hoch oder niedrig) anhand von Kreditantragsinformationen wie Kreditgeschichte, Alter und Anzahl der Kreditkarten vorherzusagen.
+Erfahren Sie, wie Sie über die grafische Benutzeroberfläche eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben. Die Pipeline in diesem Beispiel ist eine **verstärkte Entscheidungsstruktur mit zwei Klassen**, um anhand von Kreditantragsinformationen wie Kredithistorie, Alter und Anzahl der Kreditkarten das Kreditrisiko (hoch oder niedrig) vorherzusagen.
 
 Weil die Frage „Welches Risiko?“ lautet, wird dies als Klassifikationsproblem bezeichnet. Sie können jedoch den gleichen elementaren Prozess anwenden, um jede Art von Problem für maschinelles Lernen zu bewältigen, sei es Regression, Klassifizierung, Clustering usw.
 
-So sieht der endgültige Graph des Experiments für dieses Beispiel aus:
+So sieht der endgültige Graph der Pipeline für dieses Beispiel aus:
 
-![Diagramm des Experiments](media/how-to-ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
+![Graph der Pipeline](media/how-to-ui-sample-classification-predict-credit-risk-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Klicken Sie für das Experiment „Beispiel 3“ auf die Schaltfläche **Öffnen**:
+4. Wählen Sie die Schaltfläche **Öffnen** für die Pipeline des Beispiels Nr. 3 aus:
 
-    ![Öffnen des Experiments](media/how-to-ui-sample-classification-predict-credit-risk-basic/open-sample3.png)
+    ![Öffnen der Pipeline](media/how-to-ui-sample-classification-predict-credit-risk-basic/open-sample3.png)
 
 ## <a name="related-sample"></a>Ähnliches Beispiel
 
-[Beispiel 4 – Klassifizierung: Credit Risk Prediction (Cost Sensitive)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md) [Prognose des Kreditrisikos (kostensensibel] bietet ein fortgeschrittenes Experiment, mit dem das gleiche Problem wie bei diesem Experiment gelöst wird. Es zeigt, wie Sie mit dem Modul **Execute Python Script** (Ausführen eines Python-Skripts) eine *kostensensible* Klassifizierung durchführen und die Leistung zweier binärer Klassifizierungsalgorithmen vergleichen können. Greifen Sie darauf zurück, wenn Sie mehr über das Erstellen von Klassifizierungspipelines erfahren möchten.
+[Beispiel 4 – Klassifizierung: Prognose des Kreditrisikos (kostensensibel)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md) bietet eine erweiterte Pipeline, mit der das gleiche Problem wie bei diesem Beispiel gelöst wird. Es zeigt, wie Sie mit dem Modul **Execute Python Script** (Ausführen eines Python-Skripts) eine *kostensensible* Klassifizierung durchführen und die Leistung zweier binärer Klassifizierungsalgorithmen vergleichen können. Greifen Sie darauf zurück, wenn Sie mehr über das Erstellen von Klassifizierungspipelines erfahren möchten.
+
 
 ## <a name="data"></a>Data
 
-In diesem Beispiel wird das Dataset „German Credit Card“ aus dem UC Irvine-Repository verwendet.
-Das Dataset enthält 1.000 Stichproben mit 20 Features und 1 Bezeichnung. Jede Stichprobe stellt eine Person dar. Die Features sind numerisch und kategorisch. Auf der [UCI-Website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) können Sie die Bedeutung der kategorischen Features nachschlagen. Die letzte Spalte ist die Bezeichnung, die das Kreditrisiko angibt und nur zwei mögliche Werte hat: hohes Kreditrisiko = 2 und niedriges Kreditrisiko = 1.
+In diesem Beispiel wird das Dataset „German Credit Card“ aus dem UC Irvine-Repository verwendet. Es enthält 1.000 Stichproben mit 20 Features und 1 Bezeichnung. Jede Stichprobe stellt eine Person dar. Die Features sind numerisch und kategorisch. Auf der [UCI-Website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29) können Sie die Bedeutung der kategorischen Features nachschlagen. Die letzte Spalte ist die Bezeichnung, die das Kreditrisiko angibt und nur zwei mögliche Werte hat: hohes Kreditrisiko = 2 und niedriges Kreditrisiko = 1.
 
-## <a name="experiment-summary"></a>Experimentzusammenfassung
+## <a name="pipeline-summary"></a>Pipelineübersicht
 
-Führen Sie diese Schritte aus, um das Experiment zu erstellen:
+Führen Sie die folgenden Schritte aus, um die Pipeline zu erstellen:
 
-1. Ziehen Sie das Modul mit dem Dataset „German Credit Card UCI Data“ in den Experimentierbereich.
+1. Ziehen Sie das Modul mit dem Dataset „German Credit Card UCI Data“ in den Pipelinebereich.
 1. Fügen Sie das Modul **Edit Metadata** (Metadaten bearbeiten) hinzu, damit wir für jede Spalte aussagekräftige Namen hinzufügen können.
 1. Fügen Sie das Modul **Split Data** (Aufteilen von Daten) hinzu, um die Trainings- und Testdatasets zu erstellen. Legen Sie den Anteil der Zeilen im ersten Ausgabedataset auf 0,7 fest. Diese Einstellung bestimmt, dass 70 % der Daten an den linken Port des Moduls und der Rest an den rechten Port ausgegeben werden. Wir verwenden das linke Dataset für das Training und das rechte für Tests.
 1. Fügen Sie das Modul **Two-Class Boosted Decision Tree** hinzu, um einen verstärkten Entscheidungsbaum mit zwei Klassen zu initialisieren.
@@ -75,3 +75,4 @@ Untersuchen Sie die anderen Beispiele, die für die grafische Benutzeroberfläch
 - [Beispiel 4 – Klassifizierung: Vorhersagen des Kreditrisikos (kostensensibel)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
 - [Beispiel 5 – Klassifizierung: Vorhersage der Kundenabwanderung](how-to-ui-sample-classification-predict-churn.md)
 - [Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen](how-to-ui-sample-classification-predict-flight-delay.md)
+- [Beispiel 7 – Textklassifizierung: Buchrezensionen](how-to-ui-sample-text-classification.md)
