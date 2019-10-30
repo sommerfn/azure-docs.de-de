@@ -1,24 +1,23 @@
 ---
-title: Facettenfilter für die Suchnavigation in Apps – Azure Search
-description: Filtern Sie nach Kriterien wie Benutzersicherheits-ID, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in Azure Search (in Microsoft Azure gehosteter Cloudsuchdienst) einzugrenzen.
-author: HeidiSteen
+title: Facettenfilter für die Suchnavigation in Apps
+titleSuffix: Azure Cognitive Search
+description: Filtern Sie nach Kriterien wie Benutzersicherheits-ID, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in der kognitiven Azure-Suche (in Microsoft Azure gehosteter Cloudsuchdienst) einzugrenzen.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 5/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: a2fe29cf1d7c183aa62e6b86a4b29479d1f34ff8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649883"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792897"
 ---
-# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Erstellen eines Facettenfilters in Azure Search 
+# <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Erstellen eines Facettenfilters in der kognitiven Azure-Suche 
 
-Die Facettennavigation wird zum selbstgesteuerten Filtern von Abfrageergebnissen in einer Such-App verwendet, in der Ihre Anwendung Benutzeroberflächen-Steuerelemente zum Begrenzen der Suche auf bestimmte Gruppen von Dokumenten enthält (z.B. Kategorien oder Marken). Azure Search stellt hierfür die zugrunde liegende Datenstruktur bereit. Dieser Artikel enthält eine schnelle Einführung in die grundlegenden Schritte zum Erstellen einer Struktur für die Facettennavigation, die als Grundlage für die bereitzustellende Suchbenutzeroberfläche dient. 
+Die Facettennavigation wird zum selbstgesteuerten Filtern von Abfrageergebnissen in einer Such-App verwendet, in der Ihre Anwendung Benutzeroberflächen-Steuerelemente zum Begrenzen der Suche auf bestimmte Gruppen von Dokumenten enthält (z.B. Kategorien oder Marken). Die kognitive Azure-Suche stellt hierfür die zugrunde liegende Datenstruktur bereit. Dieser Artikel enthält eine schnelle Einführung in die grundlegenden Schritte zum Erstellen einer Struktur für die Facettennavigation, die als Grundlage für die bereitzustellende Suchbenutzeroberfläche dient. 
 
 > [!div class="checklist"]
 > * Auswählen von Feldern zum Filtern und Durchführen von Faceting
@@ -31,7 +30,7 @@ Facets sind dynamisch und werden für eine Abfrage zurückgegeben. Suchantworten
 
   ![](./media/search-filters-facets/facet-nav.png)
 
-Benötigen Sie ausführlichere Informationen zur Facetnavigation? Sie finden diese Informationen unter [Implementieren der Facettennavigation in Azure Search](search-faceted-navigation.md).
+Benötigen Sie ausführlichere Informationen zur Facetnavigation? Sie finden diese Informationen unter [Implementieren der Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md).
 
 ## <a name="choose-fields"></a>Auswählen von Feldern
 
@@ -78,7 +77,7 @@ Indexattribute, mit denen gesteuert wird, wie ein Feld verwendet wird, werden ei
 ```
 
 > [!Note]
-> Diese Indexdefinition wurde aus [Erstellen eines Azure Search-Indexes mit der REST-API](https://docs.microsoft.com/azure/search/search-create-index-rest-api) kopiert. Sie ist bis auf einige vernachlässigbare Unterschiede bei den Felddefinitionen identisch. Die `filterable`- und `facetable`-Attribute werden `category`-, `tags`-, `parkingIncluded`-, `smokingAllowed`- und `rating`-Feldern explizit hinzugefügt. In der Praxis wären `filterable` und `facetable` standardmäßig für diese Felder aktiviert, wenn die REST-API verwendet wird. Wenn das .NET SDK verwendet wird, müssen diese Attribute explizit aktiviert werden.
+> Diese Indexdefinition wurde aus [Erstellen eines Index für die kognitive Azure-Suche mit der REST-API](https://docs.microsoft.com/azure/search/search-create-index-rest-api) kopiert. Sie ist bis auf einige vernachlässigbare Unterschiede bei den Felddefinitionen identisch. Die `filterable`- und `facetable`-Attribute werden `category`-, `tags`-, `parkingIncluded`-, `smokingAllowed`- und `rating`-Feldern explizit hinzugefügt. In der Praxis wären `filterable` und `facetable` standardmäßig für diese Felder aktiviert, wenn die REST-API verwendet wird. Wenn das .NET SDK verwendet wird, müssen diese Attribute explizit aktiviert werden.
 
 ## <a name="build-and-load-an-index"></a>Erstellen und Laden eines Index
 
@@ -118,12 +117,12 @@ Wenn Sie eine Seite mit vorhandenen Facets initialisieren möchten, können Sie 
 
 ### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>Beibehalten einer Struktur für die Facetnavigation asynchron zu gefilterten Ergebnissen
 
-Eine der Herausforderungen bei der Facetnavigation in Azure Search besteht darin, dass Facets nur für aktuelle Ergebnisse vorhanden sind. In der Praxis ist die Beibehaltung einer statischen Gruppe von Facets üblich, damit Benutzer die Navigation in umgekehrter Richtung durchführen und die Schritte nachvollziehen können, um andere Wege durch die Suchinhalte zu erkunden. 
+Eine der Herausforderungen bei der Facettennavigation in der kognitiven Azure-Suche besteht darin, dass Facets nur für aktuelle Ergebnisse vorhanden sind. In der Praxis ist die Beibehaltung einer statischen Gruppe von Facets üblich, damit Benutzer die Navigation in umgekehrter Richtung durchführen und die Schritte nachvollziehen können, um andere Wege durch die Suchinhalte zu erkunden. 
 
 Dies ist zwar ein häufiger Anwendungsfall, aber dieser Vorgang ist noch nicht standardmäßig im Lieferumfang der Struktur für die Facettennavigation enthalten. Entwickler, die statische Facets benötigen, umgehen diese Einschränkung normalerweise, indem sie zwei gefilterte Abfragen durchführen: eine für die Ergebnisse und die andere zum Erstellen einer statischen Liste mit Facets zu Navigationszwecken.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Filter in Azure Search](search-filters.md)
++ [Filter in der kognitiven Azure-Suche](search-filters.md)
 + [Create Index (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Create Index (Azure Search-Dienst-REST-API))
 + [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))

@@ -1,23 +1,23 @@
 ---
-title: 'Beispiel: Modellieren der AdventureWorks Inventory-Datenbank – Azure Search'
-description: Es wird beschrieben, wie Sie relationale Daten modellieren und diese in ein vereinfachtes Dataset transformieren, um in Azure Search die Indizierung und die Volltextsuche zu ermöglichen.
+title: 'Beispiel: Modellieren der AdventureWorks Inventory-Datenbank'
+titleSuffix: Azure Cognitive Search
+description: Es wird beschrieben, wie Sie relationale Daten modellieren und diese in ein vereinfachtes Dataset transformieren, um in der kognitiven Azure-Suche die Indizierung und die Volltextsuche zu ermöglichen.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: heidist
-ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: edb6162724938962df8a7340afea6e930a0b1049
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274032"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792992"
 ---
-# <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Beispiel: Modellieren der AdventureWorks Inventory-Datenbank für Azure Search
+# <a name="example-model-the-adventureworks-inventory-database-for-azure-cognitive-search"></a>Beispiel: Modellieren der AdventureWorks Inventory-Datenbank für die kognitive Azure-Suche
 
-Azure Search akzeptiert ein vereinfachtes Rowset als Eingabe für die [Indizierungs-Pipeline](search-what-is-an-index.md) (Datenerfassung). Wenn die Quelldaten aus einer relationalen SQL Server-Datenbank stammen, veranschaulicht dieser Artikel einen Ansatz zum Erstellen eines vereinfachten Rowsets vor der Indizierung. Als Beispiel wird dabei die AdventureWorks-Beispieldatenbank verwendet.
+Die kognitive Azure-Suche akzeptiert ein vereinfachtes Rowset als Eingabe für die [Indizierungspipeline](search-what-is-an-index.md) (Datenerfassung). Wenn die Quelldaten aus einer relationalen SQL Server-Datenbank stammen, veranschaulicht dieser Artikel einen Ansatz zum Erstellen eines vereinfachten Rowsets vor der Indizierung. Als Beispiel wird dabei die AdventureWorks-Beispieldatenbank verwendet.
 
 ## <a name="about-adventureworks"></a>Informationen zu AdventureWorks
 
@@ -35,7 +35,7 @@ In diesem Beispiel besteht das Ziel darin, alle diese Daten in einem vereinfacht
 
 Ein etwas naiver Ansatz würde darin bestehen, alle Zeilen der Tabelle „Product“ (verknüpft, falls zutreffend) zu indizieren, da diese Tabelle über die präzisesten Informationen verfügt. Bei diesem Ansatz wird der Suchindex aber für als doppelt wahrgenommene Einträge eines Resultsets geöffnet. Das Modell „Road-650“ ist beispielsweise in zwei Farben und sechs Größen erhältlich. Eine Abfrage nach „road bikes“ ergibt dann vor allem zwölf Instanzen desselben Modells, das nur anhand der Größe und Farbe variiert. Die anderen sechs Modelle von Straßenfahrrädern erscheinen in den Suchergebnissen dann erst weit hinten, und zwar auf Seite 2.
 
-  ![Liste mit Produkten](./media/search-example-adventureworks/products-list.png "Liste mit Produkten")
+  ![Produktliste](./media/search-example-adventureworks/products-list.png "Produktliste")
  
 Beachten Sie, dass das Modell „Road-650“ über zwölf Optionen verfügt. 1:n-Entitätszeilen werden im Suchindex am besten als Felder mit mehreren Werten oder Felder mit vorab aggregierten Werten dargestellt.
 
@@ -43,7 +43,7 @@ Das Lösen dieses Problems ist schwieriger als das Verschieben des Zielindex in 
 
 ## <a name="use-a-collection-data-type"></a>Verwenden eines „Collection“-Datentyps
 
-Der „richtige Ansatz“ ist die Nutzung eines Suchschemafeatures, das im Datenbankmodell nicht über eine direkte Entsprechung verfügt: **Collection(Edm.String)** . Dieses Konstrukt wird im Azure Search-Indexschema definiert. Ein Collection-Datentyp wird verwendet, wenn Sie anstelle einer sehr langen (einzelnen) Zeichenfolge eine Liste mit individuellen Zeichenfolgen darstellen müssen. Wenn Sie Tags oder Schlüsselwörter nutzen, würden Sie für dieses Feld einen Collection-Datentyp verwenden.
+Der „richtige Ansatz“ ist die Nutzung eines Suchschemafeatures, das im Datenbankmodell nicht über eine direkte Entsprechung verfügt: **Collection(Edm.String)** . Dieses Konstrukt wird im Indexschema für die kognitive Azure-Suche definiert. Ein Collection-Datentyp wird verwendet, wenn Sie anstelle einer sehr langen (einzelnen) Zeichenfolge eine Liste mit individuellen Zeichenfolgen darstellen müssen. Wenn Sie Tags oder Schlüsselwörter nutzen, würden Sie für dieses Feld einen Collection-Datentyp verwenden.
 
 Indem Sie Felder mit mehreren Werten vom Typ **Collection(Edm.String)** für „color“, „size“ und „image“ definieren, werden die Hilfsinformationen für die Facettierung und Filterung beibehalten, ohne dass im Index doppelte Einträge auftreten. Wenden Sie entsprechend Aggregatfunktionen auf die numerischen Felder von „Product“ an, und indizieren Sie **minListPrice** – anstatt **listPrice** für jedes einzelne Produkt.
 
@@ -163,4 +163,4 @@ WHERE
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Beispiel: Multi-level facet taxonomies in Azure Search](search-example-adventureworks-multilevel-faceting.md) (Beispiel: Facet-Taxonomien mit mehreren Ebenen in Azure Search)
+> [Beispiel: Facet-Taxonomien mit mehreren Ebenen in der kognitiven Azure-Suche](search-example-adventureworks-multilevel-faceting.md)

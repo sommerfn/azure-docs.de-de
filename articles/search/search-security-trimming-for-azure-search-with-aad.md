@@ -1,24 +1,23 @@
 ---
-title: Sicherheitsfilter zum Einschränken von Ergebnissen mit Active Directory – Azure Search
-description: Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Azure Active Directory-Identitäten (AAD).
-author: brjohnstmsft
+title: Sicherheitsfilter zum Einschränken von Ergebnissen mit Active Directory
+titleSuffix: Azure Cognitive Search
+description: Zugriffssteuerung für Inhalte der kognitiven Azure-Suche mithilfe von Sicherheitsfiltern und Azure Active Directory-Identitäten (AAD).
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 11/07/2017
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 8bcc1dcd1d86c0ca18ed03dc60834884a42a39c9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186521"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794302"
 ---
-# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten
+# <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Ergebnissen der kognitiven Azure-Suche mit Active Directory-Identitäten
 
-Dieser Artikel zeigt, wie Sie mithilfe von Azure Active Directory-Sicherheitsidentitäten (AAD) und Filtern in Azure Suchergebnisse basierend auf der Benutzergruppenmitgliedschaft einschränken.
+Dieser Artikel zeigt, wie Sie mithilfe von Azure Active Directory-Sicherheitsidentitäten (AAD) und Filtern in der kognitiven Azure-Suche Suchergebnisse basierend auf der Benutzergruppenmitgliedschaft einschränken.
 
 In diesem Artikel werden die folgenden Aufgaben behandelt:
 > [!div class="checklist"]
@@ -33,7 +32,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ihr Index in Azure Search muss ein [Sicherheitsfeld](search-security-trimming-for-azure-search.md) zum Speichern der Liste mit Gruppenidentitäten enthalten, die über Lesezugriff auf das Dokument verfügen. Dieser Anwendungsfall geht von einer 1:1-Zuordnung zwischen einem sicherungsfähigen Objekt (z.B. der Hochschulbewerbung einer Einzelperson) und einem Sicherheitsfeld aus, in dem festgelegt ist, wer Zugriff auf dieses Objekt hat (Zulassungspersonal).
+Ihr Index in der kognitiven Azure-Suche muss ein [Sicherheitsfeld](search-security-trimming-for-azure-search.md) zum Speichern der Liste mit Gruppenidentitäten enthalten, die über Lesezugriff auf das Dokument verfügen. Dieser Anwendungsfall geht von einer 1:1-Zuordnung zwischen einem sicherungsfähigen Objekt (z.B. der Hochschulbewerbung einer Einzelperson) und einem Sicherheitsfeld aus, in dem festgelegt ist, wer Zugriff auf dieses Objekt hat (Zulassungspersonal).
 
 Sie müssen über AAD-Administratorberechtigungen verfügen, die in dieser exemplarischen Vorgehensweise zum Erstellen von Benutzern, Gruppen und Zuordnungen in AAD benötigt werden.
 
@@ -60,9 +59,9 @@ Microsoft Graph stellt eine API bereit, die über eine REST-API programmgesteuer
 
 Wenn Sie einer vorhandenen Anwendung eine Suchfunktion hinzufügen, liegen in AAD möglicherweise bereits Benutzer- und Gruppenbezeichner vor. In diesem Fall können Sie die nächsten drei Schritte überspringen. 
 
-Wenn Sie jedoch über keine vorhandenen Benutzer verfügen, können Sie die Sicherheitsprinzipale mithilfe der Microsoft Graph-APIs erstellen. Die folgenden Codeausschnitte veranschaulichen, wie Sie Bezeichner generieren, die zu Datenwerten für das Sicherheitsfeld in Ihrem Azure Search-Index werden. In unserer hypothetischen Anwendung für die Hochschulzulassung entspräche dies den Sicherheitsbezeichnern für das Zulassungspersonal.
+Wenn Sie jedoch über keine vorhandenen Benutzer verfügen, können Sie die Sicherheitsprinzipale mithilfe der Microsoft Graph-APIs erstellen. Die folgenden Codeausschnitte veranschaulichen, wie Sie Bezeichner generieren, die zu Datenwerten für das Sicherheitsfeld in Ihrem Index für die kognitive Azure-Suche werden. In unserer hypothetischen Anwendung für die Hochschulzulassung entspräche dies den Sicherheitsbezeichnern für das Zulassungspersonal.
 
-Die Benutzer- und Gruppenmitgliedschaft kann sich – besonders in großen Organisationen – häufig ändern. Code zum Erstellen von Benutzer- und Gruppenidentitäten muss häufig genug ausgeführt werden, um Änderungen in der Organisationsmitgliedschaft zu erfassen. Ebenso erfordert Ihr Azure Search-Index einen ähnlichen Aktualisierungsplan, um den aktuellen Status der zugelassenen Benutzer und Ressourcen widerzuspiegeln.
+Die Benutzer- und Gruppenmitgliedschaft kann sich – besonders in großen Organisationen – häufig ändern. Code zum Erstellen von Benutzer- und Gruppenidentitäten muss häufig genug ausgeführt werden, um Änderungen in der Organisationsmitgliedschaft zu erfassen. Ebenso erfordert Ihr Index für die kognitive Azure-Suche einen ähnlichen Aktualisierungsplan, um den aktuellen Status der zugelassenen Benutzer und Ressourcen widerzuspiegeln.
 
 ### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>Schritt 1: Erstellen der [AAD-Gruppe](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
@@ -105,11 +104,11 @@ Microsoft Graph ist für die Verarbeitung einer großen Anzahl von Anforderungen
 
 ## <a name="index-document-with-their-permitted-groups"></a>Indizieren von Dokumenten mit den zugelassenen Gruppen
 
-Abfragevorgänge in Azure Search werden über einen Azure Search-Index ausgeführt. In diesem Schritt importiert ein Indizierungsvorgang durchsuchbare Daten in einen Index, die als Sicherheitsfilter verwendeten Bezeichner eingeschlossen. 
+Abfragevorgänge in der kognitiven Azure-Suche werden über einen Index für die kognitive Azure-Suche ausgeführt. In diesem Schritt importiert ein Indizierungsvorgang durchsuchbare Daten in einen Index, die als Sicherheitsfilter verwendeten Bezeichner eingeschlossen. 
 
-Azure Search führt keine Authentifizierung von Benutzeridentitäten durch und stellt keine Logik zur Verfügung, um festzustellen, welche Inhalte ein Benutzer anzeigen darf. Im Anwendungsfall für die Sicherheitskürzung wird davon ausgegangen, dass Sie für die Zuordnung zwischen einem sensiblen Dokument und dem Gruppenbezeichner sorgen, der Zugriff auf dieses Dokument hat, und dass diese Informationen vollständig in einen Suchindex importiert wurden. 
+Die kognitive Azure-Suche führt keine Authentifizierung von Benutzeridentitäten durch und stellt keine Logik zur Verfügung, um festzustellen, welche Inhalte ein Benutzer anzeigen darf. Im Anwendungsfall für die Sicherheitskürzung wird davon ausgegangen, dass Sie für die Zuordnung zwischen einem sensiblen Dokument und dem Gruppenbezeichner sorgen, der Zugriff auf dieses Dokument hat, und dass diese Informationen vollständig in einen Suchindex importiert wurden. 
 
-Im hypothetischen Beispiel würde der Textkörper der PUT-Anforderung in einem Azure Search-Index den Aufsatz oder die Aufzeichnung eines Bewerbers für eine Hochschule sowie den Gruppenbezeichner enthalten, der die Berechtigung zur Anzeige dieses Inhalts erteilt. 
+Im hypothetischen Beispiel würde der Textkörper der PUT-Anforderung in einem Index für die kognitive Azure-Suche den Aufsatz oder die Aufzeichnung eines Bewerbers für eine Hochschule sowie den Gruppenbezeichner enthalten, der die Berechtigung zur Anzeige dieses Inhalts erteilt. 
 
 Im generischen Beispiel, das im Codebeispiel für diese exemplarische Vorgehensweise verwendet wird, könnte die Indexaktion wie folgt aussehen:
 
@@ -133,7 +132,7 @@ _indexClient.Documents.Index(batch);
 
 ## <a name="issue-a-search-request"></a>Ausgeben einer Suchanfrage
 
-Zum Zweck der Sicherheitskürzung sind die Werte im Sicherheitsfeld des Index statische Werte, die zum Ein- oder Ausschließen von Dokumenten in Suchergebnissen verwendet werden. Wenn der Gruppenbezeichner für Zulassungen beispielsweise „A11B22C33D44-E55F66G77-H88I99JKK“ lautet, werden alle Dokumente in einem Azure Search-Index, die diesen Bezeichner im Sicherheitsfeld enthalten, in die an den Anforderer gesendeten Suchergebnissen eingeschlossen (oder aus diesen ausgeschlossen).
+Zum Zweck der Sicherheitskürzung sind die Werte im Sicherheitsfeld des Index statische Werte, die zum Ein- oder Ausschließen von Dokumenten in Suchergebnissen verwendet werden. Wenn der Gruppenbezeichner für Zulassungen beispielsweise „A11B22C33D44-E55F66G77-H88I99JKK“ lautet, werden alle Dokumente in einem Index für die kognitive Azure-Suche, die diesen Bezeichner im Sicherheitsfeld enthalten, in die an den Anforderer zurückgesendeten Suchergebnisse eingeschlossen (oder aus diesen ausgeschlossen).
 
 Um die in Suchergebnissen zurückgegebenen Dokumente basierend nach Gruppen von Benutzern zu filtern, die die Anforderung ausgeben, führen Sie die folgenden Schritte aus.
 
@@ -185,10 +184,10 @@ Die Antwort umfasst eine gefilterte Liste mit Dokumenten, für die der Benutzer 
 
 ## <a name="conclusion"></a>Zusammenfassung
 
-In dieser exemplarischen Vorgehensweise haben Sie Techniken zur Verwendung von AAD-Anmeldungen zum Filtern von Dokumenten in Azure Search-Ergebnissen kennengelernt, um Dokumente aus den Ergebnissen auszuschließen, die nicht mit den Filtern der Anforderung übereinstimmen.
+In dieser exemplarischen Vorgehensweise haben Sie Techniken zur Verwendung von AAD-Anmeldungen zum Filtern von Dokumenten in Ergebnissen der kognitiven Azure-Suche kennengelernt, um Dokumente aus den Ergebnissen auszuschließen, die nicht mit den Filtern der Anforderung übereinstimmen.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Identitätsbasierte Zugriffssteuerung mit Azure Search-Filtern](search-security-trimming-for-azure-search.md)
-+ [Filter in Azure Search](search-filters.md)
-+ [Datensicherheit und Zugriffssteuerung in Azure Search-Vorgängen](search-security-overview.md)
++ [Identitätsbasierte Zugriffssteuerung mit Filtern der kognitiven Azure-Suche](search-security-trimming-for-azure-search.md)
++ [Filter in der kognitiven Azure-Suche](search-filters.md)
++ [Datensicherheit und Zugriffssteuerung in Vorgängen der kognitiven Azure-Suche](search-security-overview.md)

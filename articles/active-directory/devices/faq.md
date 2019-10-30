@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8d44b868f2ea92c2d7bb8d7139822112a8545045
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193187"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787455"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -132,11 +132,11 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 
 ### <a name="q-why-are-there-devices-marked-as-pending-under-the-registered-column-in-the-azure-portal"></a>F: Warum sind im Azure-Portal in der Spalte „REGISTRIERT“ Geräte als „Ausstehend“ gekennzeichnet?
 
-**A:**  „Ausstehend“ gibt an, dass das Gerät nicht registriert ist. Dieser Status gibt an, dass ein Gerät mithilfe von Azure AD Connect von der lokalen AD-Instanz synchronisiert wurde und für die Geräteregistrierung bereit ist. Der Verknüpfungstyp von Geräten mit diesem Status ist auf „In Hybrid-Azure AD eingebunden“ festgelegt. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
+**A:**  „Ausstehend“ gibt an, dass das Gerät nicht registriert ist. Dieser Status zeigt an, dass ein Gerät mithilfe von Azure AD Connect von einer lokalen AD-Instanz synchronisiert wurde und für die Geräteregistrierung bereit ist. Der Verknüpfungstyp von Geräten mit diesem Status ist auf „In Hybrid-Azure AD eingebunden“ festgelegt. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md).
 
 >[!NOTE]
 >Der Status eines Geräts kann sich auch von „Registriert“ in „Ausstehend“ ändern:
->* Wenn ein Gerät zuerst aus Azure AD gelöscht und dann von der lokalen AD-Instanz erneut synchronisiert wird.
+>* Wenn ein Gerät zuerst aus Azure AD gelöscht und dann von einer lokalen AD-Instanz erneut synchronisiert wird.
 >* Wenn ein Gerät aus einem Synchronisierungsbereich in Azure AD Connect entfernt und wieder hinzugefügt wird.
 >
 >In beiden Fällen müssen Sie das Gerät auf jedem dieser Geräte manuell erneut registrieren. Um zu überprüfen, ob das Gerät zuvor registriert wurde, können Sie eine [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](troubleshoot-device-dsregcmd.md) ausführen.

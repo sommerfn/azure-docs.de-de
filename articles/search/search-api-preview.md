@@ -1,26 +1,23 @@
 ---
-title: Vorschauversion der REST-API für Azure Search 2019-05-06-Preview – Azure Search
-description: Die REST-API für den Azure Search-Dienst, Version 2019-05-06-Preview, beinhaltet experimentelle Features wie Wissensspeicher und von Kunden verwaltete Verschlüsselungsschlüssel.
-services: search
-author: HeidiSteen
+title: REST-API-Version 2019-05-06-Preview
+titleSuffix: Azure Cognitive Search
+description: Die REST-API für den Dienst für die kognitive Azure-Suche, Version 2019-05-06-Preview, beinhaltet experimentelle Features wie Wissensspeicher und von Kunden verwaltete Verschlüsselungsschlüssel.
 manager: nitinme
-ms.service: search
-ms.devlang: rest-api
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: search
-ms.date: 05/02/2019
-ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7fa280742556b7bc42d2c7fb30c880f836eef62b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649979"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792530"
 ---
-# <a name="azure-search-service-rest-api-version-2019-05-06-preview"></a>REST-API für den Azure Search-Dienst: Version 2019-05-06-Preview
-Dieser Artikel beschreibt die Version `api-version=2019-05-06-Preview` der Azure Search-Dienst-REST-API, welche die folgenden experimentellen Features bietet, die noch nicht allgemein verfügbar sind.
+# <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>REST-API für den Dienst für die kognitive Azure-Suche: Version 2019-05-06-Preview
+
+Dieser Artikel beschreibt die Version `api-version=2019-05-06-Preview` der Search-Dienst-REST-API, welche die folgenden experimentellen Features bietet, die noch nicht allgemein verfügbar sind.
 
 > [!NOTE]
 > Vorschaufeatures stehen für Tests und Versuche zur Verfügung, um Feedback zu sammeln, und können sich ändern. Wir raten dringend davon ab, Vorschau-APIs in Produktionsanwendungen einzusetzen.
@@ -49,11 +46,11 @@ Die folgende Beispielsyntax veranschaulicht einen Aufruf der API-Vorschauversion
 
     GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*&api-version=2019-05-06-Preview
 
-Der Azure-Suchdienst ist in mehreren Versionen verfügbar. Weitere Informationen finden Sie unter [API-Versionen](search-api-versions.md).
+Der Dienst für die kognitive Azure-Suche ist in mehreren Versionen verfügbar. Weitere Informationen finden Sie unter [API-Versionen](search-api-versions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die Referenzdokumentation für die REST-API für den Azure Search-Dienst an. Wenn Probleme auftreten, können Sie sich über [Stack Overflow](https://stackoverflow.com/) an uns wenden oder [den Support kontaktieren](https://azure.microsoft.com/support/community/?product=search).
+Sehen Sie sich die Referenzdokumentation für die Search-REST-API an. Wenn Probleme auftreten, können Sie sich über [Stack Overflow](https://stackoverflow.com/) an uns wenden oder [den Support kontaktieren](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
 > [Referenz zur REST-API für den Azure Search-Dienst](https://docs.microsoft.com/rest/api/searchservice/)

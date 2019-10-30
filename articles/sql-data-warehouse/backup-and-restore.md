@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/30/2019
-ms.author: kevin
+ms.date: 10/21/2019
+ms.author: anjangsh
 ms.reviewer: igorstan
-ms.openlocfilehash: 90544e182eb25f53232cee9a4dd0c05bd25508a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cf6444b155830326f4876d2d65bcdaa5923fc35
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988469"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788809"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
 
@@ -25,11 +25,11 @@ Erfahren Sie, wie Sie Sicherungen und Wiederherstellungen in Azure SQL Data Ware
 
 Mit einer *Data Warehouse-Momentaufnahme* wird ein Wiederherstellungspunkt erstellt, mit dessen Hilfe Sie einen vorherigen Zustand Ihres Data Warehouse wiederherstellen oder kopieren können.  Da SQL Data Warehouse ein verteiltes System ist, besteht eine Data Warehouse-Momentaufnahme aus zahlreichen Dateien, die in Azure Storage gespeichert sind. Momentaufnahmen erfassen inkrementelle Änderungen der Daten, die in Ihrem Data Warehouse gespeichert sind.
 
-Eine *Data Warehouse-Wiederherstellung* ist ein neues Data Warehouse, das auf der Grundlage eines Wiederherstellungspunkts eines vorhandenen oder gelöschten Data Warehouse erstellt wird. Die Wiederherstellung Ihrer Data Warehouse-Instanz ist ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten nach versehentlichen Beschädigungen oder Löschungen neu erstellt werden. Data Warehouse ist darüber hinaus ein leistungsstarker Mechanismus, mit dem Sie zu Test- und Entwicklungszwecken Kopien Ihres Data Warehouse erstellen können.  SQL Data Warehouse-Wiederherstellungsraten können je nach der Datenbankgröße und dem Speicherort des Quell- und Ziel-Data Warehouse variieren. Innerhalb derselben Region betragen die durchschnittlichen Wiederherstellungsraten in der Regel ca. 20 Minuten. 
+Eine *Data Warehouse-Wiederherstellung* ist ein neues Data Warehouse, das auf der Grundlage eines Wiederherstellungspunkts eines vorhandenen oder gelöschten Data Warehouse erstellt wird. Die Wiederherstellung Ihrer Data Warehouse-Instanz ist ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten nach versehentlichen Beschädigungen oder Löschungen neu erstellt werden. Data Warehouse ist darüber hinaus ein leistungsstarker Mechanismus, mit dem Sie zu Test- und Entwicklungszwecken Kopien Ihres Data Warehouse erstellen können.  SQL Data Warehouse-Wiederherstellungsraten können je nach der Datenbankgröße und dem Speicherort des Quell- und Ziel-Data Warehouse variieren. 
 
 ## <a name="automatic-restore-points"></a>Automatische Wiederherstellungspunkte
 
-Bei Momentaufnahmen handelt es sich um ein integriertes Feature des Diensts zum Erstellen von Wiederherstellungspunkten. Sie müssen das Feature nicht aktivieren. Automatische Wiederherstellungspunkte können derzeit nicht von Benutzern gelöscht werden, wenn der Dienst mithilfe dieser Wiederherstellungspunkte SLAs für die Wiederherstellung verwaltet.
+Bei Momentaufnahmen handelt es sich um ein integriertes Feature des Diensts zum Erstellen von Wiederherstellungspunkten. Sie müssen das Feature nicht aktivieren. Das Data Warehouse sollte jedoch für die Erstellung des Wiederherstellungspunkts den Status „aktiv“ aufweisen. Wenn das Data Warehouse häufig angehalten wird, werden möglicherweise keine automatischen Wiederherstellungspunkte erstellt. Sie sollten daher einen benutzerdefinierten Wiederherstellungspunkt erstellen, bevor Sie das Data Warehouse anhalten. Automatische Wiederherstellungspunkte können derzeit nicht von Benutzern gelöscht werden, da der Dienst mithilfe dieser Wiederherstellungspunkte SLAs für die Wiederherstellung verwaltet.
 
 SQL Data Warehouse erstellt im Laufe des Tages Momentaufnahmen Ihres Data Warehouse und generiert Wiederherstellungspunkte, die sieben Tage lang verfügbar sind. Dieser Aufbewahrungszeitraum kann nicht geändert werden. SQL Data Warehouse unterstützt eine RPO (Recovery Point Objective) von acht Stunden. Sie können das Data Warehouse in der primären Region anhand einer beliebigen Momentaufnahme wiederherstellen, die in den vergangenen sieben Tagen erstellt wurde.
 
@@ -61,7 +61,7 @@ In Folgenden sind ausführliche Details zu den Aufbewahrungszeiträumen für Wie
 
 ### <a name="snapshot-retention-when-a-data-warehouse-is-dropped"></a>Aufbewahrung von Momentaufnahmen, wenn ein Data Warehouse gelöscht wird
 
-Wenn Sie ein Data Warehouse trennen, erstellt SQL Data Warehouse eine letzte Momentaufnahme und speichert diese sieben Tage lang. Sie können das Data Warehouse anhand des letzten Wiederherstellungspunkts wiederherstellen, der zum Zeitpunkt der Löschung erstellt wurde.
+Wenn Sie ein Data Warehouse trennen, erstellt SQL Data Warehouse eine letzte Momentaufnahme und speichert diese sieben Tage lang. Sie können das Data Warehouse anhand des letzten Wiederherstellungspunkts wiederherstellen, der zum Zeitpunkt der Löschung erstellt wurde. Wenn das Data Warehouse im angehaltenen Zustand abgelegt wird, wird keine Momentaufnahme erstellt. Erstellen Sie in diesem Fall einen benutzerdefinierten Wiederherstellungspunkt, bevor Sie das Data Warehouse ablegen.
 
 > [!IMPORTANT]
 > Wenn Sie eine logische SQL Server-Instanz löschen, werden auch alle Datenbanken der Instanz gelöscht und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen.
@@ -69,8 +69,6 @@ Wenn Sie ein Data Warehouse trennen, erstellt SQL Data Warehouse eine letzte Mom
 ## <a name="geo-backups-and-disaster-recovery"></a>Geosicherungen und Notfallwiederherstellung
 
 SQL Data Warehouse führt ein Mal pro Tag für ein [geografisch gepaartes Datencenter](../best-practices-availability-paired-regions.md) eine Geosicherung aus. Die RPO für eine Geowiederherstellung beträgt 24 Stunden. Sie können die Geosicherung auf einem Server in einer beliebigen anderen Region wiederherstellen, in der SQL Data Warehouse unterstützt wird. Mit einer Geosicherung wird sichergestellt, dass Sie ein Data Warehouse wiederherstellen können, wenn Sie nicht auf die Wiederherstellungspunkte in Ihrer primären Region zugreifen können.
-
-Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse Gen1 ist, können Sie diese Option [abwählen](/powershell/module/az.sql/set-azsqldatabasegeobackuppolicy), wenn Sie dies wünschen. Sie können Geosicherungen für Gen2 nicht abwählen, da Datenschutz eine integrierte Garantie ist.
 
 > [!NOTE]
 > Wenn Sie eine kürzere RPO für Geosicherungen benötigen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse) für diese Funktion ab. Sie können auch einen benutzerdefinierten Wiederherstellungspunkt erstellen und auf der Grundlage dieses neuen Wiederherstellungspunkts ein neues Data Warehouse in einer anderen Region wiederherstellen. Nach der Wiederherstellung ist das Data Warehouse online, und Sie können es unbegrenzt anhalten, um Computekosten zu sparen. Für die angehaltene Datenbank fallen Speichergebühren nach dem Azure Storage Premium-Tarif an. Falls Sie eine aktive Kopie des Data Warehouse benötigen, können Sie die Datenbank fortsetzen. Dies sollte nur wenige Minuten dauern.
@@ -83,7 +81,7 @@ Die Gesamtkosten für Ihr primäres Data Warehouse und die Speicherung von Momen
 
 Bei Verwendung von georedundantem Speicher wird Ihnen dieser separat in Rechnung gestellt. Der georedundante Speicher wird zum Standardsatz für georedundanten Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) berechnet.
 
-Weitere Informationen zu den Preisen von SQL Data Warehouse finden Sie unter [SQL Data Warehouse – Preise]. Bei der Wiederherstellung überregionaler Daten werden Ihnen keine Kosten für ausgehenden Datenverkehr in Rechnung gestellt.
+Weitere Informationen zu den Preisen für SQL Data Warehouse finden Sie in der [Preisübersicht für SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/). Bei der Wiederherstellung überregionaler Daten werden Ihnen keine Kosten für ausgehenden Datenverkehr in Rechnung gestellt.
 
 ## <a name="restoring-from-restore-points"></a>Wiederherstellen anhand von Wiederherstellungspunkten
 

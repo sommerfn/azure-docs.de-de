@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c31867f4de0e49e2c82733dc859f17ba060bdaa
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9fcac058a510b8b7fed5b3967bbbf439dd4c0f71
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561337"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786732"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -96,6 +96,12 @@ Benutzer können ihre mobile App nicht registrieren, wenn sie sich für die Self
 
 > [!WARNING]
 > Sie müssen die [Zusammengeführte Registrierung für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication (öffentliche Vorschauversion)](concept-registration-mfa-sspr-converged.md) aktivieren, bevor Benutzer auf die neue Oberfläche unter [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) zugreifen können.
+
+> [!IMPORTANT]
+> Die Authentifikator-App kann nicht als einzige Authentifizierungsmethode ausgewählt werden, wenn eine 1-Gate-Richtlinie konfiguriert wurde. Ebenso können nicht die Authentifikator-App und nur eine zusätzliche Methode ausgewählt werden, wenn eine 2-Gates-Richtlinie konfiguriert wurde.
+> Beim Konfigurieren von SSPR-Richtlinien, die die Authentifikator-App als Methode enthalten, sollte mindestens eine zusätzliche Methode ausgewählt werden, wenn eine 1-Gate-Richtlinie konfiguriert wurde, und mindestens zwei zusätzliche Methoden, wenn eine 2-Gates-Richtlinie konfiguriert wurde.
+> Dies ist erforderlich, da die aktuelle SSPR-Registrierungsfunktion keine Option zum Registrieren der Authentifikator-App enthält. Die Möglichkeit zur Registrierung der Authentifikator-App ist in der neuen [zusammengeführten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication (Public Preview)](concept-registration-mfa-sspr-converged.md) enthalten.
+> Das Zulassen von Richtlinien, die nur die Authentifikator-App (bei 1-Gate-Richtlinien) oder die Authentifikator-App und nur eine zusätzliche Methode (bei 2-Gates-Richtlinien) verwenden, kann dazu führen, dass die SSPR-Registrierung für Benutzer blockiert wird, bis sie für die Verwendung der neuen Registrierungsfunktion konfiguriert wurden.
 
 ### <a name="change-authentication-methods"></a>Ändern der Authentifizierungsmethoden
 

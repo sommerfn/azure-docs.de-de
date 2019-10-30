@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 650e45ca9092b9c81b2127eb995a0297745410a4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b452fccf2ae0915592420bdda3a47fef43eba9a8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244135"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72788690"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute-Verschlüsselung
  
@@ -31,7 +31,7 @@ Nein. Wenn MACsec konfiguriert ist und ein Schlüsselkonflikt auftritt, geht die
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Wird durch das Aktivieren von MACsec für ExpressRoute Direct die Netzwerkleistung beeinträchtigt?
 Die Verschlüsselung und Entschlüsselung von MACsec erfolgt auf Hardware auf den von uns verwendeten Routern. Auf unserer Seite wird die Leistung nicht beeinträchtigt. Sie sollten sich jedoch mit dem Netzwerkanbieter der von Ihnen verwendeten Geräte in Verbindung setzen und ermitteln, ob sich MACsec auf die Leistung auswirkt.
 ### <a name="which-cipher-suites-are-supported-for-encryption"></a>Welche Verschlüsselungssammlungen werden für die Verschlüsselung unterstützt?
-Wir unterstützen AES128(GCM–AES–128) und AES256(GCM–AES–256).
+Wir unterstützen AES128 und AES256.
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Häufig gestellte Fragen zur End-to-End-Verschlüsselung durch IPsec
 IPsec ist ein [IETF-Standard](https://tools.ietf.org/html/rfc6071). Daten werden auf der IP-Ebene (Internet Protocol) oder auf der Netzwerkebene 3 verschlüsselt. Sie können mit IPsec eine End-to-End-Verbindung zwischen Ihrem lokalen Netzwerk und Ihrem virtuellen Netzwerk (VNet) in Azure verschlüsseln. Weitere häufig gestellte Fragen finden Sie unten.

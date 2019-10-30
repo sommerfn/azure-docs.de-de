@@ -1,25 +1,24 @@
 ---
-title: Überwachen des Status und der Ergebnisse von Indexern – Azure Search
-description: Hier erfahren Sie, wie Sie den Status, den Fortschritt und die Ergebnisse von Azure Search-Indexern über das Azure-Portal, mithilfe der REST-API oder per .NET SDK überwachen.
-ms.date: 06/28/2019
-author: RobDixon22
+title: Überwachen des Status und der Ergebnisse von Indexern
+titleSuffix: Azure Cognitive Search
+description: Erfahren Sie, wie Sie den Status, den Fortschritt und die Ergebnisse von Indexern der kognitiven Azure-Suche über das Azure-Portal, mithilfe der REST-API oder per .NET SDK überwachen.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 6a8eaca029767e1d6bce4bc8ce22ce5523be26d8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: c7f688c96576f660795becaf318c3b0677a24542
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186591"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793799"
 ---
-# <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Überwachen des Status und der Ergebnisse von Azure Search-Indexern
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Überwachen des Status und der Ergebnisse von Indexern der kognitiven Azure-Suche
 
-Azure Search stellt Status- und Überwachungsinformationen zu aktuellen und vergangenen Ausführungen jedes Indexers bereit.
+Die kognitive Azure-Suche stellt Status- und Überwachungsinformationen zu aktuellen und vergangenen Ausführungen jedes Indexers bereit.
 
 Die Indexerüberwachung ist in folgenden Fällen hilfreich:
 
@@ -27,7 +26,7 @@ Die Indexerüberwachung ist in folgenden Fällen hilfreich:
 * Überprüfen der Ergebnisse einer laufenden oder vergangenen Indexerausführung
 * Ermitteln von allgemeinen Indexerfehlern sowie von Fehlern oder Warnungen im Zusammenhang mit einzelnen indizierten Dokumenten
 
-## <a name="find-indexer-status-and-history-details"></a>Zugreifen auf den Indexerstatus sowie auf Verlaufsdetails
+## <a name="get-status-and-history"></a>Abrufen von Status und Verlauf
 
 Auf die Überwachungsinformationen für Indexer kann auf unterschiedliche Weise zugegriffen werden:
 
@@ -45,11 +44,11 @@ Die Ausführung von Indexern, die große Datenmengen verarbeiten, kann sehr lang
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>Überwachen von Indexern über das Portal
+## <a name="monitor-using-the-portal"></a>Überwachung über das Portal
 
 Der aktuelle Status Ihrer Indexer wird auf der Übersichtsseite Ihres Suchdiensts in der Liste **Indexer** angezeigt.
 
-   ![Liste „Indexer“](media/search-monitor-indexers/indexers-list.png "Liste „Indexer“")
+   ![Liste der Indexer](media/search-monitor-indexers/indexers-list.png "Liste der Indexer")
 
 Wenn ein Indexer ausgeführt wird, hat er in der Liste den Status **In Bearbeitung**, und der Wert **Dokumente erfolgreich**  gibt an, wie viele Dokumente bereits verarbeitet wurden. Die Aktualisierung der Statuswerte und der Dokumentanzahl für die Indexer kann im Portal ein paar Minuten dauern.
 
@@ -75,11 +74,11 @@ Sollten bei der Ausführung dokumentspezifische Probleme aufgetreten sein, werde
 
 Warnungen sind bei bestimmten Arten von Indexern keine Seltenheit und deuten nicht immer auf ein Problem hin. So werden beispielsweise von Indexern, die Cognitive Services verwenden, unter Umständen Warnungen ausgegeben, wenn Bild- oder PDF-Dateien keinen zu verarbeitenden Text enthalten.
 
-Weitere Informationen zur Untersuchung von Indexerfehlern und -warnungen finden Sie unter [Behandeln von häufigen Problemen mit Indexern in Azure Search](search-indexer-troubleshooting.md).
+Weitere Informationen zur Untersuchung von Indexerfehlern und -warnungen finden Sie unter [Beheben von häufigen Problemen bei Suchindexern in der kognitiven Azure-Suche](search-indexer-troubleshooting.md).
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>Überwachen von Indexern mithilfe der REST-API
+## <a name="monitor-using-rest-apis"></a>Überwachung mithilfe von REST-APIs
 
 Status und Ausführungsverlauf eines Indexers können mithilfe des [Befehls zum Abrufen des Indexerstatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) abgerufen werden:
 
@@ -126,9 +125,9 @@ Ausführlichere Informationen zu Statuscodes und zu Indexerüberwachungsdaten fi
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>Überwachen von Indexern per .NET SDK
+## <a name="monitor-using-the-net-sdk"></a>Überwachung per .NET SDK
 
-Sie können den Zeitplan für einen Indexer mithilfe des Azure Search .NET SDK definieren. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren eines Indexers hinzu.
+Sie können den Zeitplan für einen Indexer mithilfe des .NET SDK der kognitiven Azure-Suche definieren. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren eines Indexers hinzu.
 
 Im folgenden C#-Beispiel werden Informationen zum Status eines Indexers sowie die Ergebnisse der letzten (oder aktuellen) Ausführung in der Konsole ausgegeben:
 

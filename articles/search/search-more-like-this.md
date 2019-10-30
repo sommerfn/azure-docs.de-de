@@ -1,23 +1,22 @@
 ---
-title: moreLikeThis in Azure Search (Vorschau) – Azure Search
-description: Vorläufige Dokumentation für das Feature moreLikeThis (Vorschau), das in der REST-API für Azure Search verfügbar gemacht wird.
-author: brjohnstmsft
+title: moreLikeThis-Abfragefunktion (Vorschauversion)
+titleSuffix: Azure Cognitive Search
+description: In diesem Artikel wird die moreLikeThis-Funktion (Vorschauversion) beschrieben, die in Vorschauversionen der REST-API der kognitiven Azure-Suche verfügbar ist.
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: d7c816c545c6647907aa9d700a4eb6ed91277465
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.devlang: rest-api
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b7959beca8a7787a331388b77ebe4060c3675e6d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182296"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793472"
 ---
-# <a name="morelikethis-in-azure-search"></a>moreLikeThis in Azure Search
+# <a name="morelikethis-preview-in-azure-cognitive-search"></a>moreLikeThis (Vorschauversion) in der kognitiven Azure-Suche
 
 > [!Note]
 > moreLikeThis befindet sich in der Vorschau und ist nicht für die Produktion ausgelegt. Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
@@ -50,4 +49,4 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06-Preview
 Sie können diese Funktion mit einem beliebigen Webtesttool ausprobieren.  Es empfiehlt sich die Verwendung von Postman.
 
 > [!div class="nextstepaction"]
-> [Erkunden von Azure Search-REST-APIs mit Postman](search-get-started-postman.md)
+> [Erkunden von REST-APIs der kognitiven Azure-Suche mit Postman](search-get-started-postman.md)

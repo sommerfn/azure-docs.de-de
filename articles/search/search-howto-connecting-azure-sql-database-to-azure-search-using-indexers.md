@@ -1,29 +1,28 @@
 ---
-title: Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Indexern – Azure Search
-description: Erfahren Sie, wie Sie Daten in Azure SQL-Datenbank mithilfe von Indexern für die Volltextsuche in Azure Search durchforsten. Dieser Artikel behandelt Verbindungen, Indexerkonfiguration und Datenerfassung.
-ms.date: 05/02/2019
-author: mgottein
+title: Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Indexern
+titleSuffix: Azure Cognitive Search
+description: Importieren von Daten aus Azure SQL-Datenbank mithilfe von Indexern für die Volltextsuche in der kognitiven Azure-Suche. Dieser Artikel behandelt Verbindungen, Indexerkonfiguration und Datenerfassung.
 manager: nitinme
+author: mgottein
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 4ed218fdc1c6580e9b92364d123b081a1f34b441
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656236"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792194"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Azure Search-Indexern
+# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Indexern der kognitiven Azure-Suche
 
-Bevor Sie einen [Azure Search-Index](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in einer Azure SQL-Datenbank befinden, können Sie mit dem neuen Feature **Azure Search-Indexer für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer**) den Indizierungsprozess automatisieren. Sie müssen also weniger Code schreiben und sich weniger Gedanken über die Infrastruktur machen.
+Bevor Sie einen [Index der kognitiven Azure-Suche](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in einer Azure SQL-Datenbank befinden, können Sie mit einem **Indexer der kognitiven Azure-Suche für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer**) den Indizierungsprozess automatisieren. Sie müssen also weniger Code schreiben und sich weniger Gedanken über die Infrastruktur machen.
 
 In diesem Artikel wird die Verwendung von [Indexern](search-indexer-overview.md) behandelt, es werden aber auch Features beschrieben, die nur bei Azure SQL-Datenbanken verfügbar sind (z. B. die integrierte Änderungsnachverfolgung). 
 
-Zusätzlich zu Azure SQL-Datenbanken bietet Azure Search Indexer für [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) und [Azure Table Storage](search-howto-indexing-azure-tables.md). Um Unterstützung für andere Datenquellen anzufordern, geben Sie im [Forum für Feedback zu Azure Search](https://feedback.azure.com/forums/263029-azure-search/) Feedback.
+Zusätzlich zu Azure SQL-Datenbanken umfasst die kognitive Azure-Suche Indexer für [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) und [Azure Table Storage](search-howto-indexing-azure-tables.md). Wenn Sie Unterstützung für andere Datenquellen wünschen, geben Sie dazu im [Feedbackforum für die kognitive Azure-Suche](https://feedback.azure.com/forums/263029-azure-search/) Feedback.
 
 ## <a name="indexers-and-data-sources"></a>Indexer und Datenquellen
 
@@ -40,8 +39,8 @@ Ein einzelner Indexer kann nur eine Tabelle oder Sicht verwenden, aber Sie könn
 Sie können einen Azure SQL-Indexer wie folgt einrichten und konfigurieren:
 
 * Mit dem Datenimport-Assistenten im [Azure-Portal](https://portal.azure.com)
-* Mit dem Azure Search [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Azure Search [REST-API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) für die kognitive Azure-Suche
+* [REST-API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) für die kognitive Azure-Suche
 
 In diesem Artikel wird die REST-API verwendet, um **Indexer** und **Datenquellen** zu erstellen.
 
@@ -51,12 +50,12 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 | Kriterien | Details |
 |----------|---------|
 | Die Daten stammen aus einer einzelnen Tabelle oder Sicht. | Wenn die Daten auf mehrere Tabellen verteilt sind, können Sie eine Sicht der Daten erstellen. Bei Verwendung einer Sicht können Sie jedoch nicht die in SQL Server integrierte Änderungserkennung nutzen, um einen Index mit inkrementellen Änderungen zu aktualisieren. Weitere Informationen finden Sie unter [Erfassen geänderter und gelöschter Zeilen](#CaptureChangedRows) weiter unten. |
-| Datentypen sind kompatibel | In einen Azure Search-Index werden die meisten, aber nicht alle SQL-Typen unterstützt. Eine Liste finden Sie unter [Zuordnen von Datentypen](#TypeMapping). |
+| Datentypen sind kompatibel | In einem Index der kognitiven Azure-Suche werden die meisten, aber nicht alle SQL-Typen unterstützt. Eine Liste finden Sie unter [Zuordnen von Datentypen](#TypeMapping). |
 | Synchronisierung von Daten in Echtzeit ist nicht erforderlich | Ein Indexer kann die Tabelle höchstens alle fünf Minuten erneut indizieren. Wenn sich Ihre Daten häufig ändern und die Änderungen innerhalb von Sekunden oder weniger Minuten im Index widergespiegelt werden müssen, sollten Sie die [REST-API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) oder das [.NET SDK](search-import-data-dotnet.md) verwenden, um aktualisierte Zeilen direkt zu übertragen. |
-| Inkrementelle Indizierung ist möglich | Wenn Sie ein großes Dataset haben und den Indexer nach einem Zeitplan ausführen möchten, muss Azure Search in der Lage sein, effizient neue, geänderte oder gelöschte Zeilen zu identifizieren. Eine nicht inkrementelle Indizierung ist nur zulässig, wenn Sie bei Bedarf indizieren (nicht gemäß Zeitplan) oder wenn Sie weniger als 100.000 Zeilen indizieren. Weitere Informationen finden Sie unter [Erfassen geänderter und gelöschter Zeilen](#CaptureChangedRows) weiter unten. |
+| Inkrementelle Indizierung ist möglich | Wenn Sie bei einem großen Dataset den Indexer nach einem Zeitplan ausführen möchten, muss es in der kognitiven Azure-Suche möglich sein, effizient neue, geänderte oder gelöschte Zeilen zu identifizieren. Eine nicht inkrementelle Indizierung ist nur zulässig, wenn Sie bei Bedarf indizieren (nicht gemäß Zeitplan) oder wenn Sie weniger als 100.000 Zeilen indizieren. Weitere Informationen finden Sie unter [Erfassen geänderter und gelöschter Zeilen](#CaptureChangedRows) weiter unten. |
 
 > [!NOTE] 
-> Azure Search unterstützt nur die SQL Server-Authentifizierung. Sollten Sie die Azure Active Directory-Kennwortauthentifizierung benötigen, stimmen Sie bitte für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica) ab.
+> Die kognitive Azure-Suche unterstützt nur die SQL Server-Authentifizierung. Sollten Sie die Azure Active Directory-Kennwortauthentifizierung benötigen, stimmen Sie bitte für [diesen UserVoice-Vorschlag](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica) ab.
 
 ## <a name="create-an-azure-sql-indexer"></a>Erstellen eines Azure SQL-Indexers
 
@@ -77,7 +76,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 
    Sie können die Verbindungszeichenfolge mit der Option `ADO.NET connection string` aus dem [Azure-Portal](https://portal.azure.com) abrufen.
 
-2. Erstellen Sie den Azure Search-Zielindex, sofern Sie bislang über keinen Index verfügen. Sie können einen Index über das [Portal](https://portal.azure.com) oder mit der [API zur Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/Create-Index) erstellen. Stellen Sie sicher, dass das Schema des Zielindexes mit dem Schema der Quelltabelle kompatibel ist – siehe dazu [Zuordnung zwischen SQL-Datentypen und Azure Search-Datentypen](#TypeMapping).
+2. Erstellen Sie den Zielindex der kognitiven Azure-Suche, wenn Sie bislang noch über keinen verfügen. Sie können einen Index über das [Portal](https://portal.azure.com) oder mit der [API zur Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/Create-Index) erstellen. Stellen Sie sicher, dass das Schema des Zielindex mit dem Schema der Quelltabelle kompatibel ist. Informationen dazu finden Sie unter [Zuordnung zwischen SQL-Datentypen und Datentypen der kognitiven Azure-Suche](#TypeMapping).
 
 3. Erstellen Sie den Indexer, indem Sie ihm einen Namen geben und einen Verweis auf die Datenquelle und den Zielindex hinzufügen:
 
@@ -158,16 +157,16 @@ Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Z
 
 Der Parameter **interval** ist erforderlich. Das Intervall bezieht sich auf den Zeitraum zwischen dem Start von zwei aufeinander folgenden Indexerausführungen. Das kleinste zulässige Intervall beträgt 5 Minuten. Das längste ist ein Tag. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Das Muster hierfür lautet wie folgt: `P(nD)(T(nH)(nM))`. Beispiele: `PT15M` = alle 15 Minuten, `PT2H` = alle 2 Stunden.
 
-Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Indexerzeitpläne für Azure Search](search-howto-schedule-indexers.md).
+Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
 <a name="CaptureChangedRows"></a>
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>Erfassen neuer, geänderter und gelöschter Zeilen
 
-Azure Search verwendet eine **inkrementelle Indizierung**, um zu vermeiden, dass die gesamte Tabelle oder Sicht jedes Mal neu indiziert wird, wenn ein Indexer ausgeführt wird. Azure Search bietet zwei Richtlinien zur Erkennung von Änderungen, um die inkrementelle Indizierung zu unterstützen. 
+In der kognitiven Azure-Suche wird eine **inkrementelle Indizierung** verwendet, um zu vermeiden, dass die gesamte Tabelle oder Ansicht jedes Mal neu indiziert wird, wenn ein Indexer ausgeführt wird. Die kognitive Azure-Suche umfasst zwei Richtlinien zur Erkennung von Änderungen, um die inkrementelle Indizierung zu unterstützen. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Richtlinie für die integrierte SQL-Änderungsnachverfolgung
-Wenn die SQL-Datenbank die [Änderungsnachverfolgung](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)unterstützt, wird empfohlen, die **Richtlinie für die integrierte SQL-Änderungsnachverfolgung**zu verwenden. Dies ist die effizienteste Richtlinie. Zudem sorgt sie dafür, dass Azure Search gelöschte Zeilen identifiziert, ohne dass Sie eine explizite „Vorläufig löschen“-Spalte in Ihrer Tabelle angeben müssen.
+Wenn die SQL-Datenbank die [Änderungsnachverfolgung](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)unterstützt, wird empfohlen, die **Richtlinie für die integrierte SQL-Änderungsnachverfolgung**zu verwenden. Dies ist die effizienteste Richtlinie. Außerdem sorgt sie dafür, dass in der kognitiven Azure-Suche gelöschte Zeilen identifiziert werden, ohne dass Sie eine explizite „Vorläufig löschen“-Spalte in der Tabelle angeben müssen.
 
 #### <a name="requirements"></a>Requirements (Anforderungen) 
 
@@ -252,7 +251,7 @@ Sie können auch die Klausel `ORDER BY [High Water Mark Column]` deaktivieren. D
 ### <a name="soft-delete-column-deletion-detection-policy"></a>Richtlinie zum Erkennen von Löschungen anhand der Spalte „Vorläufig löschen“
 Wenn Zeilen aus der Quelltabelle gelöscht werden, sollten Sie diese Zeilen auch aus dem Suchindex löschen. Wenn Sie die Richtlinie für die integrierte SQL-Änderungsnachverfolgung verwenden, müssen Sie sich nicht darum kümmern, weil es automatisch geschieht. Die Richtlinie zum Erkennen von Änderungen mit oberem Grenzwert hilft Ihnen allerdings nicht beim Löschen von Zeilen. Vorgehensweise
 
-Wenn Zeilen physisch aus der Tabelle entfernt werden, gibt es in Azure Search keine Möglichkeit, das Vorhandensein von Datensätzen, die nicht mehr vorhanden sind, abzuleiten.  Mit der Methode des „vorläufigen Löschens“ können Sie jedoch Zeilen logisch löschen, ohne sie aus der Tabelle zu entfernen. Fügen Sie dazu der Tabelle eine Spalte hinzu, um Zeilen unter Verwendung dieser Spalte anzuzeigen und als gelöscht zu markieren.
+Wenn Zeilen physisch aus der Tabelle entfernt werden, gibt es in der kognitiven Azure-Suche keine Möglichkeit, das Vorhandensein von Datensätzen abzuleiten, die nicht mehr vorhanden sind.  Mit der Methode des „vorläufigen Löschens“ können Sie jedoch Zeilen logisch löschen, ohne sie aus der Tabelle zu entfernen. Fügen Sie dazu der Tabelle eine Spalte hinzu, um Zeilen unter Verwendung dieser Spalte anzuzeigen und als gelöscht zu markieren.
 
 Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Richtlinie zum Erkennen von Löschungen anhand der "Vorläufig löschen"-Spalte wie folgt beim Erstellen oder Aktualisieren der Datenquelle angeben:
 
@@ -269,14 +268,14 @@ Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Ric
 
 <a name="TypeMapping"></a>
 
-## <a name="mapping-between-sql-and-azure-search-data-types"></a>Zuordnung zwischen SQL- und Azure Search-Datentypen
+## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Zuordnung zwischen SQL-Datentypen und Datentypen der kognitiven Azure-Suche
 | SQL-Datentyp | Zulässige Ziel-Index-Feldtypen | Notizen |
 | --- | --- | --- |
 | Bit |Edm.Boolean, Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
 | bigint |Edm.Int64, Edm.String | |
 | real, float |Edm.Double, Edm.String | |
-| Smallmoney, money decimal numeric |Edm.String |Azure Search unterstützt nicht die Konvertierung von Dezimaltypen in Edm.Double-Typen, da es hierbei zu Genauigkeitsverlusten kommt. |
+| Smallmoney, money decimal numeric |Edm.String |Die kognitive Azure-Suche unterstützt nicht die Konvertierung von Dezimaltypen in Edm.Double-Typen, da es hierbei zu Genauigkeitsverlusten kommt. |
 | char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Eine SQL-Zeichenfolge kann zum Auffüllen eines Collection(Edm.String)-Felds verwendet werden, wenn die Zeichenfolge ein JSON-Array von Zeichenfolgen darstellt: `["red", "white", "blue"]` |
 | smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
@@ -304,11 +303,11 @@ Diese Einstellungen werden im `parameters.configuration`-Objekt in der Indexer-D
 
 **F: Kann ich Azure SQL-Indexer mit SQL-Datenbanken verwenden, die auf IaaS-VMs in Azure ausgeführt werden?**
 
-Ja. Sie müssen jedoch die Verbindung des Suchdiensts mit der Datenbank ermöglichen. Weitere Informationen finden Sie im Artikel [Konfigurieren einer Verbindung eines Azure Search-Indexers mit SQL Server auf einer Azure-VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
+Ja. Sie müssen jedoch die Verbindung des Suchdiensts mit der Datenbank ermöglichen. Weitere Informationen finden Sie unter [Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit SQL Server auf einer Azure-VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
 **F: Kann ich Azure SQL-Indexer mit SQL-Datenbanken verwenden, die lokal ausgeführt werden?**
 
-Nicht direkt. Weder empfehlen noch unterstützen wir eine direkte Verbindung, da Sie die Datenbanken dann für den Internetdatenverkehr öffnen müssten. Kunden waren bei diesem Szenario mit Brückentechnologien wie Azure Data Factory erfolgreich. Weitere Informationen finden Sie unter [Push-Übertragung von Daten in den Azure Search-Index mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
+Nicht direkt. Weder empfehlen noch unterstützen wir eine direkte Verbindung, da Sie die Datenbanken dann für den Internetdatenverkehr öffnen müssten. Kunden waren bei diesem Szenario mit Brückentechnologien wie Azure Data Factory erfolgreich. Weitere Informationen finden Sie unter [Push-Übertragung von Daten in einen Index der kognitiven Azure-Suche mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
 **F: Kann ich Azure SQL-Indexer mit anderen Datenbanken als SQL Server in IaaS auf Azure verwenden?**
 
@@ -326,7 +325,7 @@ Ja. Indexer werden auf einem der Knoten im Suchdienst ausgeführt, und die Resso
 
 Das ist unterschiedlich. Für die vollständige Indizierung einer Tabelle oder Sicht können Sie ein sekundäres Replikat verwenden. 
 
-Für die inkrementelle Indizierung unterstützt Azure Search zwei Richtlinien zur Erkennung von Änderungen: die integrierte SQL-Änderungsnachverfolgung und den oberem Grenzwert.
+Für die inkrementelle Indizierung unterstützt die kognitive Azure-Suche zwei Richtlinien zur Erkennung von Änderungen: die integrierte SQL-Änderungsnachverfolgung und den oberem Grenzwert.
 
 Bei schreibgeschützten Replikaten unterstützt SQL-Datenbank die integrierte Änderungsnachverfolgung nicht. Aus diesem Grund müssen Sie die Richtlinie mit oberem Grenzwert verwenden. 
 
@@ -340,6 +339,6 @@ Wenn Sie versuchen, „rowversion“ bei einem schreibgeschützten Replikat zu v
 
 Dies ist nicht empfehlenswert. Nur **rowversion** ermöglicht eine zuverlässige Datensynchronisierung. Je nach Anwendungslogik kann es jedoch möglicherweise in folgendem Fall machbar sein:
 
-+ Sie können sicherstellen, dass bei der Ausführung des Indexers keine ausstehenden Transaktionen für die Tabelle vorhanden sind, die indiziert wird (z.B. alle Tabellenaktualisierungen werden als ein Batch nach einem Zeitplan ausgeführt, und der Zeitplan des Azure Search-Indexers ist so festgelegt, dass er sich nicht mit dem Zeitplan der Tabellenaktualisierung überschneidet).  
++ Sie können sicherstellen, dass bei der Ausführung des Indexers keine ausstehenden Transaktionen für die Tabelle vorhanden sind, die indiziert wird (z. B. alle Tabellenaktualisierungen werden als ein Batch nach einem Zeitplan ausgeführt, und der Zeitplan des Indexers der kognitiven Azure-Suche ist so festgelegt, dass er sich nicht mit dem Zeitplan der Tabellenaktualisierung überschneidet).  
 
 + Sie führen in regelmäßigen Abständen eine vollständige erneute Indizierung aus, damit alle fehlenden Zeilen übernommen werden. 

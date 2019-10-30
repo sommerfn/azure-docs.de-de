@@ -1,24 +1,23 @@
 ---
-title: Verwenden des Suchexplorer-Tools zum Abfragen von Daten im Azure-Portal – Azure Search
-description: Suchexplorer ist in das Azure-Portal integriert. Das Tool ist hilfreich beim Erkunden von Inhalten und Überprüfen von Abfragen in Azure Search. Geben Sie Zeichenfolgen zum Suchen nach Begriffen oder Wendungen oder mithilfe erweiterter Syntax vollqualifizierte Suchausdrücke ein.
+title: Verwenden des Suchexplorer-Tools zum Abfragen von Daten im Azure-Portal
+titleSuffix: Azure Cognitive Search
+description: Suchexplorer ist in das Azure-Portal integriert. Das Tool ist hilfreich beim Erkunden von Inhalten und Überprüfen von Abfragen in der kognitiven Azure-Suche. Geben Sie Zeichenfolgen zum Suchen nach Begriffen oder Wendungen oder mithilfe erweiterter Syntax vollqualifizierte Suchausdrücke ein.
 manager: nitinme
 author: HeidiSteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178137"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792961"
 ---
-# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Verwenden von Suchexplorer im Azure-Portal zum Abfragen von Dokumenten in Azure Search 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Verwenden von Suchexplorer im Azure-Portal zum Abfragen von Dokumenten in der kognitiven Azure-Suche 
 
-In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Search-Index mithilfe des **Suchexplorers** im Azure-Portal abfragen. Sie können den Suchexplorer von der Befehlsleiste aus starten, um einfache oder vollständige Lucene-Abfrageausdrücke an einen beliebigen Index in Ihrem Dienst zu übermitteln. 
+In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Index für die kognitive Azure-Suche mithilfe des **Suchexplorers** im Azure-Portal abfragen. Sie können den Suchexplorer von der Befehlsleiste aus starten, um einfache oder vollständige Lucene-Abfrageausdrücke an einen beliebigen Index in Ihrem Dienst zu übermitteln. 
 
    ![Befehl für den Suchexplorer im Portal](./media/search-explorer/search-explorer-cmd2.png "Befehl für den Suchexplorer im Portal")
 
@@ -42,7 +41,7 @@ Die äquivalente Syntax für eine leere Suche ist `*` oder `search=*`.
 
 ### <a name="example-2---free-text-search"></a>Beispiel 2: Freitextsuche
 
-Freiformabfragen mit oder ohne Operatoren sind nützlich zum Simulieren von benutzerdefinierten Abfragen, die von einer benutzerdefinierten App an Azure Search gesendet werden. Beachten Sie, dass bei der Angabe von Abfragebegriffen oder -ausdrücken der Suchrang eine Rolle spielt. Im folgenden Beispiel wird eine Freitextsuche veranschaulicht.
+Freiformabfragen mit oder ohne Operatoren sind nützlich zum Simulieren von benutzerdefinierten Abfragen, die von einer benutzerdefinierten App an die kognitive Azure-Suche gesendet werden. Beachten Sie, dass bei der Angabe von Abfragebegriffen oder -ausdrücken der Suchrang eine Rolle spielt. Im folgenden Beispiel wird eine Freitextsuche veranschaulicht.
 
    ```Input
    Seattle apartment "Lake Washington" miele OR thermador appliance
@@ -79,7 +78,7 @@ Fügen Sie **$select** hinzu, um die Ergebnisse auf die explizit benannten Felde
 
 ### <a name="example-5---return-next-batch-of-results"></a>Beispiel 5: Zurückgeben des nächsten Batches von Ergebnissen
 
-Azure Search gibt die ersten 50 Übereinstimmungen basierend auf dem Suchrang zurück. Um den nächsten Satz von übereinstimmenden Dokumenten abzurufen, fügen Sie **$top=100,&$skip=50** an, um das Resultset auf 100 Dokumente zu vergrößern (Standardwert 50, Höchstwert 1.000) und die ersten 50 Dokumente zu überspringen. Denken Sie daran, dass Sie Suchkriterien angeben müssen, z.B. einen Abfragebegriff oder -ausdruck, um priorisierte Ergebnisse zu erhalten. Beachten Sie, dass sich die Suchbewertungen verringern, je weiter Sie in die Suchergebnisse vordringen.
+Die kognitive Azure-Suche gibt die ersten 50 Übereinstimmungen basierend auf dem Suchrang zurück. Um den nächsten Satz von übereinstimmenden Dokumenten abzurufen, fügen Sie **$top=100,&$skip=50** an, um das Resultset auf 100 Dokumente zu vergrößern (Standardwert 50, Höchstwert 1.000) und die ersten 50 Dokumente zu überspringen. Denken Sie daran, dass Sie Suchkriterien angeben müssen, z.B. einen Abfragebegriff oder -ausdruck, um priorisierte Ergebnisse zu erhalten. Beachten Sie, dass sich die Suchbewertungen verringern, je weiter Sie in die Suchergebnisse vordringen.
 
    ```Input
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true&$top=100&$skip=50
@@ -127,7 +126,7 @@ Die Ausdrücke **$filter** und **$orderby** sind OData-Konstrukte. Weitere Infor
 
 3. Wählen Sie den abzufragenden Index aus.
 
-   ![Auswählen des abzufragenden Index](./media/search-explorer/search-explorer-changeindex-se2.png "Auswählen des abzufragenden Index")
+   ![Auswählen des abzufragenden Index](./media/search-explorer/search-explorer-changeindex-se2.png "Auswählen des Index")
 
 4. Legen Sie optional die API-Version fest. Standardmäßig wird die aktuelle allgemein verfügbare API-Version ausgewählt. Sie können jedoch eine Vorschauversion oder eine ältere API auswählen, wenn die Syntax, die Sie verwenden möchten, versionsspezifisch ist.
 
@@ -143,7 +142,7 @@ Tipps für die Suche im **Suchexplorer**:
 
 + Freiformabfragen ähneln der Eingabe in kommerziellen Webbrowsern und eignen sich zum Testen der Endbenutzererfahrung. Beim integrierten Beispielimmobilienindex könnten Sie z.B. „Seattle apartments lake washington“ eingeben und dann mit STRG+F Begriffe in den Suchergebnissen finden. 
 
-+ Abfrage- und Filterausdrücke müssen in einer Syntax formuliert sein, die von Azure Search unterstützt wird. Der Standardwert ist eine [einfache Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
++ Abfrage- und Filterausdrücke müssen in einer Syntax formuliert sein, die von der kognitiven Azure-Suche unterstützt wird. Der Standardwert ist eine [einfache Syntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search), Sie können aber optional für leistungsstarke Abfragen die [vollständige Lucene-Syntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) verwenden. [Filterausdrücke](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) folgen einer OData-Syntax.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

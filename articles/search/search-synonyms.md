@@ -1,37 +1,35 @@
 ---
-title: 'Synonyme für die Abfrageerweiterung über einen Suchindex: Azure Search'
-description: Erstellen einer Synonymzuordnung zum Erweitern des Bereichs einer Suchabfrage für einen Azure Search-Index. Der Bereich wird erweitert, um gleichwertige Begriffe einzubeziehen, die Sie in einer Liste bereitstellen.
-author: brjohnstmsft
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+title: Synonyme für die Abfrageerweiterung über einen Suchindex
+titleSuffix: Azure Cognitive Search
+description: Erstellen einer Synonymzuordnung zum Erweitern des Bereichs einer Suchabfrage für einen Index der kognitiven Azure-Suche. Der Bereich wird erweitert, um gleichwertige Begriffe einzubeziehen, die Sie in einer Liste bereitstellen.
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: a17e2ae5313f9d0b662d343230a04dd3e726c16d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331179"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794223"
 ---
-# <a name="synonyms-in-azure-search"></a>Synonyme in Azure Search
+# <a name="synonyms-in-azure-cognitive-search"></a>Synonyme in der kognitiven Azure-Suche
 
 Synonyme in Suchmaschinen ordnen entsprechende Begriffe zu, die den Bereich einer Abfrage implizit erweitern, ohne dass der Benutzer den Begriff tatsächlich bereitstellen muss. Bei dem Begriff „Hund“ und Synonymzuordnungen von „hündisch“ und „Welpe“ fallen z. B. alle Dokumente, die „Hund“, „hündisch“ oder „Welpe“ enthalten, in den Gültigkeitsbereich der Abfrage.
 
-In Azure Search erfolgt die Synonymerweiterung zur Abfragezeit. Sie können Synonymzuordnungen zu einem Dienst hinzufügen, ohne vorhandene Vorgänge zu stören. Sie können eine **synonymMaps**-Eigenschaft zu einer Felddefinition hinzufügen, ohne den Index neu erstellen zu müssen.
+Bei der kognitiven Azure-Suche erfolgt die Synonymerweiterung zur Abfragezeit. Sie können Synonymzuordnungen zu einem Dienst hinzufügen, ohne vorhandene Vorgänge zu stören. Sie können eine **synonymMaps**-Eigenschaft zu einer Felddefinition hinzufügen, ohne den Index neu erstellen zu müssen.
 
 ## <a name="create-synonyms"></a>Erstellen von Synonymen
 
-Die Erstellung von Synonymen wird über das Portal nicht unterstützt, Sie können dafür jedoch die REST-API oder das .NET SDK verwenden. Zum Einstieg in REST werden die [Verwendung von Postman](search-get-started-postman.md) und die Erstellung von Anforderungen mit der folgenden API empfohlen: [Create Synonym Map](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). C#-Entwickler können mit dem [Hinzufügen von Synonymen in Azure Search mit C#](search-synonyms-tutorial-sdk.md) beginnen.
+Die Erstellung von Synonymen wird über das Portal nicht unterstützt, Sie können dafür jedoch die REST-API oder das .NET SDK verwenden. Zum Einstieg in REST werden die [Verwendung von Postman](search-get-started-postman.md) und die Erstellung von Anforderungen mit der folgenden API empfohlen: [Create Synonym Map](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). C#-Entwickler können mit dem [Hinzufügen von Synonymen in der kognitiven Azure-Suche mit C#](search-synonyms-tutorial-sdk.md) beginnen.
 
 Bei Verwendung von [von Kunden verwalteten Schlüsseln](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten können Sie diesen Schutz optional auf die Inhalte der Synonymzuordnung anwenden.
 
 ## <a name="use-synonyms"></a>Verwenden von Synonymen
 
-In Azure Search basiert die Synonymunterstützung auf Synonymzuordnungen, die Sie definieren und zu Ihrem Dienst hochladen. Diese Zuordnungen bilden eine unabhängige Ressource (wie Indizes oder Datenquellen) und können von jedem durchsuchbaren Feld in einem beliebigen Index in Ihrem Suchdienst verwendet werden.
+Bei der kognitiven Azure-Suche basiert die Synonymunterstützung auf Synonymzuordnungen, die Sie definieren und in Ihren Dienst hochladen. Diese Zuordnungen bilden eine unabhängige Ressource (wie Indizes oder Datenquellen) und können von jedem durchsuchbaren Feld in einem beliebigen Index in Ihrem Suchdienst verwendet werden.
 
 Synonymzuordnungen und Indizes werden unabhängig voneinander verwaltet. Nachdem Sie eine Synonymzuordnung definiert und zu Ihrem Dienst hochgeladen haben, können Sie die Synonymfunktion für ein Feld aktivieren, indem Sie eine neue Eigenschaft namens **synonymMaps** in der Felddefinition hinzufügen. Das Erstellen, Aktualisieren und Löschen einer Synonymzuordnung betrifft immer das ganze Dokument. Daher können Sie keine Teile der Synonymzuordnung inkrementell erstellen, aktualisieren oder löschen. Selbst das Aktualisieren eines einzelnen Eintrags erfordert das erneute Laden.
 

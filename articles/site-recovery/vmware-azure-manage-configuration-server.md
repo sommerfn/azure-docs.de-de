@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 66022b5e4885c515bd6117f9a44b8108ff84ae5c
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250098"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791819"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern
 
@@ -21,12 +21,16 @@ Sie richten einen lokalen Konfigurationsserver ein, wenn Sie [Azure Site Recover
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="update-windows-license"></a>Aktualisieren der Windows-Lizenz
+
+Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur unterbrechungsfreien Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren. Das Lizenzupdate kann über einen eigenständigen Schlüssel oder einen KMS-Standardschlüssel durchgeführt werden. Anleitungen finden Sie unter [Windows Edition-Dienst-und-Wartung-Befehlszeilenoptionen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options). Informationen zum Abrufen der Schlüssel finden Sie unter [KMS-Clientsetupschlüssel](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys).
+
 ## <a name="access-configuration-server"></a>Zugreifen auf den Konfigurationsserver
 
 Sie können wie folgt auf den Konfigurationsserver zugreifen:
 
 * Melden Sie sich bei dem virtuellen Computer an, auf dem er bereitgestellt wird, und starten Sie den **Azure Site Recovery Configuration Manager** über die Desktopverknüpfung.
-* Alternativ können Sie remote über „https://*Name des Konfigurationsservers*/:44315/“ auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
+* Alternativ können Sie remote über „https://*Konfigurationsservername*/:44315/“ auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
 
 ## <a name="modify-vmware-server-settings"></a>Ändern von VMware-Servereinstellungen
 
@@ -291,10 +295,6 @@ Für Bereitstellungen von Konfigurationsservern vor dem Mai 2016 wurde die Zerti
 2. Klicken Sie auf den Konfigurationsserver, den Sie aktualisieren möchten.
 3. Klicken Sie auf dem Blatt mit den Details des ausgewählten Konfigurationsservers auf **Mehr** > **Server aktualisieren**.
 4. Den Fortschritt des Auftrags können Sie unter **Recovery Services-Tresor** > **Überwachung** > **Site Recovery-Aufträge** überwachen.
-
-## <a name="update-windows-license"></a>Aktualisieren der Windows-Lizenz
-
-Bei der mit der OVF-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Zur unterbrechungsfreien Nutzung müssen Sie Windows mit einer käuflich erworbenen Lizenz aktivieren.
 
 ## <a name="failback-requirements"></a>Failbackanforderungen
 

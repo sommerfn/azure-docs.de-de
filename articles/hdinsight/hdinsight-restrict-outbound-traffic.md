@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 56e745a4f4e4bfbe82da00b46b7a5c0a58e3785e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018744"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72789803"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mithilfe von Firewall (Vorschau)
 
@@ -139,7 +139,7 @@ Für den Anwendungsdatenverkehr müssen Routen erstellt werden, um Probleme durc
 
 Wenn Ihre Anwendungen andere Abhängigkeiten aufweisen, müssen diese Ihrer Azure Firewall-Instanz hinzugefügt werden. Erstellen Sie Anwendungsregeln, um HTTP/HTTPS-Datenverkehr und Netzwerkregeln zuzulassen.
 
-## <a name="logging"></a>Protokollierung
+## <a name="logging-and-scale"></a>Protokollierung und Skalierung
 
 Azure Firewall kann Protokolle an ein paar andere Speichersysteme senden. Anweisungen zum Konfigurieren der Protokollierung für Ihre Firewall finden Sie in den Schritten von [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](../firewall/tutorial-diagnostics.md).
 
@@ -151,8 +151,12 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
+Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu Anforderungssteigerungen finden Sie in [diesem](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-firewall-limits) Dokument sowie in den [Häufig gestellten Fragen](https://docs.microsoft.com/en-us/azure/firewall/firewall-faq). 
+
 ## <a name="access-to-the-cluster"></a>Zugriff auf den Cluster
-Nach erfolgreichen Einrichtung der Firewall können Sie den internen Endpunkt (`https://<clustername>-int.azurehdinsight.net`) verwenden, um im VNET auf Ambari zuzugreifen. Um den öffentlichen Endpunkt (`https://<clustername>.azurehdinsight.net`) oder den SSH-Endpunkt (`<clustername>-ssh.azurehdinsight.net`) zu verwenden, stellen Sie sicher, dass Sie über die richtigen Routen in der Routingtabelle verfügen und NSG-Regeln eingerichtet haben, um das Problem mit asymmetrischem Routing zu vermeiden, das [hier](https://docs.microsoft.com/azure/firewall/integrate-lb) beschrieben wird.
+Nach erfolgreicher Einrichtung der Firewall können Sie den internen Endpunkt (`https://<clustername>-int.azurehdinsight.net`) verwenden, um im VNET auf Ambari zuzugreifen. 
+
+Wenn Sie den öffentlichen Endpunkt (`https://<clustername>.azurehdinsight.net`) oder den SSH-Endpunkt (`<clustername>-ssh.azurehdinsight.net`) verwenden möchten, stellen Sie sicher, dass in der Routingtabelle und den NSG-Regeln die richtigen Routen festgelegt wurden, um das [hier](https://docs.microsoft.com/azure/firewall/integrate-lb) beschriebene Problem mit asymmetrischem Routing zu vermeiden. Insbesondere in diesem Fall müssen Sie die Client-IP-Adresse in den eingehenden NSG-Regeln zulassen und sie auch der benutzerdefinierten Routingtabelle hinzufügen, wobei der nächste Hop als `internet` festgelegt ist. Ist dies nicht ordnungsgemäß eingerichtet, wird ein Timeoutfehler angezeigt.
 
 ## <a name="configure-another-network-virtual-appliance"></a>Konfigurieren eines anderen virtuellen Netzwerkgeräts
 

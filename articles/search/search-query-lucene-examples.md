@@ -1,25 +1,24 @@
 ---
-title: Verwenden der vollständigen Lucene-Abfragesyntax – Azure Search
-description: Die Lucene-Abfragesyntax für Fuzzysuche, NEAR-Suche, Term Boosting, Suche mit regulären Ausdrücken und Platzhaltersuche in einem Azure Search-Dienst.
-author: HeidiSteen
+title: Verwenden der vollständigen Lucene-Abfragesyntax
+titleSuffix: Azure Cognitive Search
+description: Lucene-Abfragesyntax für Fuzzysuche, NEAR-Suche, Term Boosting, Suche mit regulären Ausdrücken und Platzhaltersuche in einem Dienst der kognitiven Azure-Suche.
 manager: nitinme
-tags: Lucene query analyzer syntax
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+tags: Lucene query analyzer syntax
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178154"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793442"
 ---
-# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>Verwenden der „vollständigen“ Lucene-Suchsyntax verwenden (erweiterte Abfragen in Azure Search)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Verwenden der „vollständigen“ Lucene-Suchsyntax (erweiterte Abfragen in der kognitiven Azure-Suche)
 
-Beim Erstellen von Abfragen für Azure Search können Sie den standardmäßigen [einfachen Abfrageparser](query-simple-syntax.md) durch den umfangreicheren [Lucene-Abfrageparser in Azure Search](query-lucene-syntax.md) ersetzen, um spezialisierte und erweiterte Abfragedefinitionen zu formulieren. 
+Beim Erstellen von Abfragen für die kognitive Azure-Suche können Sie den standardmäßigen [einfachen Abfrageparser](query-simple-syntax.md) durch den umfangreicheren [Lucene-Abfrageparser in der kognitiven Azure-Suche](query-lucene-syntax.md) ersetzen, um spezialisierte und erweiterte Abfragedefinitionen zu formulieren. 
 
 Der Lucene-Parser unterstützt komplexe Abfragekonstrukte, z.B. feldbezogene Abfragen, Fuzzy- und Präfixplatzhaltersuche, NEAR-Suche, Term Boosting (Begriffsverstärkung) und die Suche mit regulären Ausdrücken. Die zusätzliche Leistung kommt mit zusätzlichen Verarbeitungsanforderungen, stellen Sie sich deshalb auf eine etwas längere Ausführungsdauer ein. In diesem Artikel können Sie Beispiele mit Abfragevorgängen durchlaufen, die bei Verwendung der vollständigen Syntax verfügbar sind.
 
@@ -29,7 +28,7 @@ Der Lucene-Parser unterstützt komplexe Abfragekonstrukte, z.B. feldbezogene Abf
 
 ## <a name="formulate-requests-in-postman"></a>Formulieren von Anforderungen in Postman
 
-Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://opendata.cityofnewyork.us/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Dies bedeutet, dass Sie kein Azure-Abonnement und keine Azure Search-Instanz benötigen, um diese Abfragen auszuprobieren.
+Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://opendata.cityofnewyork.us/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Das bedeutet, dass Sie kein Azure-Abonnement und keine Instanz der kognitiven Azure-Suche benötigen, um diese Abfragen zu testen.
 
 Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Untersuchen mit REST-Clients](search-get-started-postman.md).
 
@@ -45,13 +44,13 @@ Nachdem Sie den Anforderungsheader angegeben haben, können Sie ihn für alle Ab
 
 ### <a name="set-the-request-url"></a>Festlegen der Anforderungs-URL
 
-Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, in der der Azure Search-Endpunkt und die Suchzeichenfolge enthalten sind.
+Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, in der der Endpunkt der kognitiven Azure-Suche und die Suchzeichenfolge enthalten sind.
 
   ![Postman-Anforderungsheader](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Die URL-Komposition umfasst die folgenden Elemente:
 
-+ **`https://azs-playground.search.windows.net/`** ist ein Sandbox-Suchdienst, der vom Entwicklungsteam von Azure Search gewartet wird. 
++ **`https://azs-playground.search.windows.net/`** ist ein Sandbox-Suchdienst, der vom Entwicklungsteam für die kognitive Azure-Suche gewartet wird. 
 + **`indexes/nycjobs/`** ist der Index „NYC Jobs“ in der Indexsammlung dieses Diensts. Sowohl der Dienstname als auch der Index sind für die Anforderung erforderlich.
 + **`docs`** ist die Dokumentsammlung, die den gesamten durchsuchbaren Inhalt enthält. Der im Anforderungsheader angegebene Abfrage-API-Schlüssel funktioniert nur für Lesevorgänge, die die Dokumentsammlung betreffen.
 + **`api-version=2019-05-06`** legt die API-Version fest. Dies ist für alle Anforderungen ein erforderlicher Parameter.
@@ -148,7 +147,7 @@ Sie können einen feldbezogenen Suchvorgang mit der **fieldName:searchExpression
 
 Achten Sie darauf, dass Sie mehrere Zeichenfolgen in Anführungszeichen setzen, wenn beide Zeichenfolgen als einzelne Entität ausgewertet werden sollen, da in diesem Fall im Feld `state` nach zwei verschiedenen Standorten gesucht wird. Stellen Sie außerdem sicher, dass der Operator großgeschrieben wird, wie im Fall von NOT und AND.
 
-Das in **fieldName:searchExpression** angegebene Feld muss durchsuchbar sein. Einzelheiten zur Verwendung von Indexattributen in Felddefinitionen finden Sie unter [Index erstellen (REST-API in Azure Search-Dienst)](https://docs.microsoft.com/rest/api/searchservice/create-index) .
+Das in **fieldName:searchExpression** angegebene Feld muss durchsuchbar sein. Einzelheiten zur Verwendung von Indexattributen in Felddefinitionen finden Sie unter [Index erstellen (REST-API für die kognitive Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!NOTE]
 > Im obigen Beispiel war der Parameter `searchFields` nicht erforderlich, da für jeden Teil der Abfrage Feldname explizit angegeben ist. Allerdings können Sie den Parameter `searchFields` trotzdem verwenden, wenn Sie eine Abfrage ausführen möchten, bei der einige Teile auf ein bestimmtes Feld beschränkt sind, der Rest sich jedoch auf mehrere Felder beziehen kann. Zum Beispiel würde `senior NOT junior` in der Abfrage `search=business_title:(senior NOT junior) AND external&searchFields=posting_type` nur mit dem Feld `business_title` und „external“ mit dem Feld `posting_type` abgeglichen werden. Der in **fieldName:searchExpression** angegebene Feldname hat immer Vorrang vor dem Parameter `searchFields`, weshalb `business_title` in diesem Beispiel nicht in den Parameter `searchFields` aufgenommen werden muss.
@@ -285,12 +284,12 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="next-steps"></a>Nächste Schritte
 Versuchen Sie, den Lucene-Abfrageparser in Ihrem Code anzugeben. Unter den folgenden Links wird erläutert, wie Sie Suchabfragen sowohl für .NET als auch für die REST-API einrichten. Bei diesen Links wird die einfache Standardsyntax „simple“ verwendet, daher müssen Sie das in diesem Artikel Gelernte anwenden, um den **queryType**anzugeben.
 
-* [Abfragen des Azure Search-Indexes mit dem .NET SDK](search-query-dotnet.md)
-* [Abfragen des Azure Search-Indexes mit der REST-API](search-create-index-rest-api.md)
+* [Abfragen des Index mit dem .NET SDK](search-query-dotnet.md)
+* [Abfragen des Index mit der REST-API](search-create-index-rest-api.md)
 
 Eine zusätzliche Syntaxreferenz, eine Abfragearchitektur und Beispiele finden Sie unter den folgenden Links:
 
 + [Beispiele für Abfragen mit einfacher Syntax](search-query-simple-examples.md)
-+ [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md)
++ [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md)
 + [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

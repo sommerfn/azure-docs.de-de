@@ -9,32 +9,42 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 3b4992a16061bef782f012aa7887b248e3423234
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: 0156ab3acd2f4c629b0263356f61c22e62b424d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67568325"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792313"
 ---
 **Anforderungen an den Konfigurations-/Prozessserver**
 
+
+## <a name="hardware-requirements"></a>Hardwareanforderungen
+
 **Komponente** | **Anforderung** 
 --- | ---
-**HARDWAREEINSTELLUNGEN** | 
 CPU-Kerne | 8 
 RAM | 16 GB
 Anzahl der Datenträger | 3, einschließlich Betriebssystem-Datenträger, Prozessservercache-Datenträger und Aufbewahrungslaufwerk für Failback 
 Freier Speicherplatz (Prozessservercache) | 600 GB
 Freier Speicherplatz (Aufbewahrungslaufwerk) | 600 GB
  | 
-**SOFTWAREEINSTELLUNGEN** | 
+
+## <a name="software-requirements"></a>Softwareanforderungen
+
+**Komponente** | **Anforderung** 
+--- | ---
 Betriebssystem | Windows Server 2012 R2 <br> Windows Server 2016
 Gebietsschema des Betriebssystems | Englisch (en-us)
 Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V 
 Gruppenrichtlinien | Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
 IIS | - Keine bereits vorhandene Standardwebsite <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen <br>- Die [anonyme Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) ist aktiviert. <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 
 | 
-**NETZWERKEINSTELLUNGEN** | 
+
+## <a name="network-requirements"></a>Netzwerkanforderungen
+
+**Komponente** | **Anforderung** 
+--- | --- 
 Art der IP-Adresse | statischen 
 Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport) 
 NIC-Typ | VMXNET3 (wenn der Konfigurationsserver eine VMware-VM ist)
@@ -51,11 +61,18 @@ time.windows.com | Wird zum Überprüfen der Zeitsynchronisierung zwischen Syste
 | <ul> <li> https:\//login.microsoftonline.com </li><li> https:\//secure.aadcdn.microsoftonline-p.com </li><li> https:\//login.live.com </li><li> https:\//graph.windows.net </li><li> https:\//login.windows.net </li><li> https:\//www.live.com </li><li> https:\//www.microsoft.com </li></ul> | Beim OVF-Setup wird Zugriff auf diese URLs benötigt. Die URLs werden für die Zugriffssteuerung und die Identitätsverwaltung durch Azure Active Directory verwendet.
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | So schließen Sie den MySQL-Download ab </br> In einigen Regionen wird der Download möglicherweise an die CDN-URL umgeleitet. Stellen Sie ggf. sicher, dass die CDN-URL auch in der Whitelist enthalten ist.
 |
-**ZU INSTALLIERENDE SOFTWARE** | 
+
+## <a name="required-software"></a>Erforderliche Software
+
+**Komponente** | **Anforderung** 
+--- | ---
 VMware vSphere PowerCLI | [PowerCLI Version 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) sollte installiert werden, wenn der Konfigurationsserver auf einer VMware-VM ausgeführt wird.
 MYSQL | MySQL sollte installiert sein. Sie können es manuell installieren oder durch Site Recovery installieren lassen. (Weitere Informationen finden Sie unter [Konfigurieren von Einstellungen](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings)).
 
-**Größenanforderungen an den Konfigurations-/Prozessserver**
+## <a name="sizing-and-capacity-requirements"></a>Anforderungen an Größenanpassung und Kapazität
+
+Die folgende Tabelle enthält die Kapazitätsanforderungen für den Konfigurationsserver. Wenn Sie mehrere virtuelle VMware-Computer replizieren, sollten Sie sich den Artikel [Überlegungen zur Kapazitätsplanung](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) durchlesen und das Tool [Azure Site Recovery-Bereitstellungsplaner](../articles/site-recovery/site-recovery-deployment-planner.md) ausführen.
+
 
 **CPU** | **Memory** | **Cachedatenträger** | **Datenänderungsrate** | **Replizierte Computer**
 --- | --- | --- | --- | ---

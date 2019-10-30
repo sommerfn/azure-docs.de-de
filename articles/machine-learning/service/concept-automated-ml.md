@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: e80d79c16b0748e25e549365001990fb014b5f14
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 895425232dabc78650b6ee7ed035048471084237
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030540"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793890"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -108,6 +108,8 @@ Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme
 Hier erhalten Sie weitere Informationen und ein Beispiel zum [automatisierten maschinellen Lernen für die Zeitreihenvorhersage](how-to-auto-train-forecast.md). Oder sehen Sie sich das Notebook zu Energiebedarf ([auto-ml-forecasting-energy-demand.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)) an. Dort finden Sie ausführliche Codebeispiele zu einer erweiterten Vorhersagekonfiguration, einschließlich:
 
 * Feiertagserkennung und Erstellen zusätzlicher Merkmale (Featurization)
+* Zeitreihen und DNN-Lernmodule (Auto-ARIMA, Prophet, ForecastTCN)
+* Unterstützung vieler Modelle mit Gruppierungen
 * Kreuzvalidierung mit rollierendem Ursprung (Rolling Origin Validation)
 * Konfigurierbare Verzögerungen (Lags)
 * Aggregierte Zeitfenstermerkmale (Rolling Window Features)

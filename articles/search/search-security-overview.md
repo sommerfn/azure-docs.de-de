@@ -1,30 +1,29 @@
 ---
-title: Sicherheit und Datenschutz – Azure Search
-description: Azure Search ist kompatibel mit SOC 2, HIPAA und anderen Zertifizierungen. Verbindungs- und Datenverschlüsselung, Authentifizierung und Identitätszugriff durch Benutzer- und Gruppensicherheits-IDs in Azure Search-Filtern.
-author: HeidiSteen
+title: Sicherheit und Datenschutz
+titleSuffix: Azure Cognitive Search
+description: Die kognitive Azure-Suche ist kompatibel mit SOC 2, HIPAA und anderen Zertifizierungen. Verbindungs- und Datenverschlüsselung, Authentifizierung und Identitätszugriff durch Benutzer- und Gruppensicherheits-IDs in Filterausdrücken.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 3a6ac7ff22c04bff5948193c163a7071cf2c2ff5
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2e509535473fa50fd3150965e1513e056ead18a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320394"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794347"
 ---
-# <a name="security-and-data-privacy-in-azure-search"></a>Sicherheit und Datenschutz in Azure Search
+# <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Sicherheit und Datenschutz in der kognitiven Azure-Suche
 
-Umfassende Sicherheitsfunktionen und Zugriffssteuerungen sind in Azure Search integriert, um sicherzustellen, dass private Inhalte geschützt werden. In diesem Artikel werden die in Azure Search integrierten Sicherheitsfeatures und Standardskonformität aufgelistet.
+Umfassende Sicherheitsfunktionen und Zugriffssteuerungen sind in die kognitive Azure-Suche integriert, um sicherzustellen, dass private Inhalte geschützt werden. In diesem Artikel werden die in die kognitive Azure-Suche integrierten Sicherheitsfeatures und Einhaltung von Standards aufgelistet.
 
-Die Sicherheitsarchitektur von Azure Search umfasst physische Sicherheit, verschlüsselte Übertragung, verschlüsselte Speicherung und plattformweite Standardskonformität. Im laufenden Betrieb akzeptiert Azure Search ausschließlich authentifizierte Anforderungen. Optional kann eine benutzerspezifische Zugriffssteuerung über Sicherheitsfilter für Inhalte hinzugefügt werden. Dieser Artikel geht zwar auf die einzelnen Sicherheitsebenen ein, beschäftigt sich aber hauptsächlich mit dem Schutz von Daten und Vorgängen in Azure Search.
+Die Sicherheitsarchitektur der kognitiven Azure-Suche umfasst physische Sicherheit, verschlüsselte Übertragung, verschlüsselte Speicherung und plattformweite Einhaltung von Standards. Im laufenden Betrieb akzeptiert die kognitive Azure-Suche ausschließlich authentifizierte Anforderungen. Optional kann eine benutzerspezifische Zugriffssteuerung über Sicherheitsfilter für Inhalte hinzugefügt werden. Dieser Artikel geht zwar auf die einzelnen Sicherheitsebenen ein, beschäftigt sich aber hauptsächlich mit dem Schutz von Daten und Vorgängen in der kognitiven Azure-Suche.
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Einhaltung von Standards: ISO 27001, SOC 2, HIPAA
 
-Azure Search ist wie [im Juni 2018 angekündigt](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/) für die folgenden Standards zertifiziert:
+Die kognitive Azure-Suche ist wie [im Juni 2018 angekündigt](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/) für die folgenden Standards zertifiziert:
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [Konformität mit SOC 2 Type 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Den vollständigen Bericht finden Sie im [SOC 2 Type II-Bericht für Azure und Azure Government](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
@@ -38,17 +37,17 @@ Die Standardkonformität gilt für allgemein verfügbare Features. Previewfunkti
 
 ## <a name="encrypted-transmission-and-storage"></a>Verschlüsselte Übertragung und Speicherung
 
-Die Verschlüsselung erstreckt sich auf die gesamte Indexpipeline – von Verbindungen über die Übertragung bis hin zu indizierten in Azure Search gespeicherten Daten.
+Die Verschlüsselung erstreckt sich auf die gesamte Indexpipeline – von Verbindungen über die Übertragung bis hin zu indizierten in der kognitiven Azure-Suche gespeicherten Daten.
 
 | Sicherheitsebene | BESCHREIBUNG |
 |----------------|-------------|
-| Verschlüsselung während der Übertragung <br>(HTTPS/SSL/TLS) | Azure Search lauscht an HTTPS-Port 443. Verbindungen mit Azure-Diensten sind plattformweit verschlüsselt. <br/><br/>Alle Azure Search-Interaktionen zwischen Client und Dienst erfolgen über SSL/TLS 1.2.  Achten Sie darauf, TLS v1.2 für SSL-Verbindungen mit Ihrem Dienst zu verwenden.|
-| Verschlüsselung ruhender Daten <br>Von Microsoft verwaltete Schlüssel | Die Verschlüsselung ist vollständig in den Indizierungsprozess integriert, ohne messbare Auswirkungen auf die Durchführungsdauer der Indizierung oder die Indexgröße. Sie wird automatisch auf die gesamte Indizierung angewendet, einschließlich auf inkrementelle Updates für einen nicht vollständig verschlüsselten Index (vor Januar 2018 erstellt).<br><br>Intern basiert die Verschlüsselung auf der [256-Bit-AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) von [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).<br><br> Die Verschlüsselung ist in Azure Search integriert, wobei Zertifikate und Schlüssel intern von Microsoft verwaltet und universell angewendet werden. Sie können die Verschlüsselung nicht aktivieren bzw. deaktivieren, eigene Schlüssel verwalten oder ersetzen oder Verschlüsselungseinstellungen im Portal oder programmgesteuert anzeigen.<br><br>Die Verschlüsselung ruhender Daten wurde am 24. Januar 2018 bekannt gegeben und gilt für alle Dienstebenen, einschließlich der Dienstebene „Free“, in sämtlichen Regionen. Damit die Verschlüsselung vollständig angewendet werden kann, müssen vor diesem Datum erstellte Indizes gelöscht und neu erstellt werden. Anderenfalls werden nur neue Daten, die nach dem 24. Januar hinzugefügt wurden, verschlüsselt.|
-| Verschlüsselung ruhender Daten <br>Vom Kunden verwaltete Schlüssel | Die Verschlüsselung mit von Kunden verwalteten Schlüsseln ist eine **Previewfunktion**, die für kostenlose Dienste nicht verfügbar ist. Für kostenpflichtige Dienste steht sie nur für Suchdienste zur Verfügung, die im oder nach Januar 2019 mit der neuesten API-Vorschauversion (api-version=2019-05-06-Preview) erstellt wurden.<br><br>Indizes und Synonymzuordnungen von Azure Search können nun im Ruhezustand mit von Kunden verwalteten Schlüsseln in Azure Key Vault verschlüsselt werden. Weitere Informationen finden Sie unter [Verwalten von Verschlüsselungsschlüsseln in Azure Search](search-security-manage-encryption-keys.md).<br>Diese Funktion ersetzt die Standardverschlüsselung ruhender Daten nicht, sondern wird zusätzlich angewandt.<br>Durch Aktivieren dieser Funktion wird die Indexgröße erhöht und die Abfrageleistung beeinträchtigt. Basierend auf den bisherigen Beobachtungen können Sie mit einem Anstieg der Abfragezeiten um 30 %–60 % rechnen, wobei die tatsächliche Leistung je nach Indexdefinition und Art der Abfragen variiert. Aufgrund dieser Auswirkungen auf die Leistung wird empfohlen, diese Funktion nur für Indizes zu aktivieren, für die sie wirklich erforderlich ist.
+| Verschlüsselung während der Übertragung <br>(HTTPS/SSL/TLS) | Die kognitive Azure-Suche lauscht an HTTPS-Port 443. Verbindungen mit Azure-Diensten sind plattformweit verschlüsselt. <br/><br/>Alle Interaktionen der kognitiven Azure-Suche zwischen Client und Dienst erfolgen über SSL/TLS 1.2.  Achten Sie darauf, TLS v1.2 für SSL-Verbindungen mit Ihrem Dienst zu verwenden.|
+| Verschlüsselung ruhender Daten <br>Von Microsoft verwaltete Schlüssel | Die Verschlüsselung ist vollständig in den Indizierungsprozess integriert, ohne messbare Auswirkungen auf die Durchführungsdauer der Indizierung oder die Indexgröße. Sie wird automatisch auf die gesamte Indizierung angewendet, einschließlich auf inkrementelle Updates für einen nicht vollständig verschlüsselten Index (vor Januar 2018 erstellt).<br><br>Intern basiert die Verschlüsselung auf der [256-Bit-AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) von [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).<br><br> Die Verschlüsselung ist in die kognitive Azure-Suche integriert, wobei Zertifikate und Schlüssel intern von Microsoft verwaltet und universell angewendet werden. Sie können die Verschlüsselung nicht aktivieren bzw. deaktivieren, eigene Schlüssel verwalten oder ersetzen oder Verschlüsselungseinstellungen im Portal oder programmgesteuert anzeigen.<br><br>Die Verschlüsselung ruhender Daten wurde am 24. Januar 2018 bekannt gegeben und gilt für alle Dienstebenen, einschließlich der Dienstebene „Free“, in sämtlichen Regionen. Damit die Verschlüsselung vollständig angewendet werden kann, müssen vor diesem Datum erstellte Indizes gelöscht und neu erstellt werden. Anderenfalls werden nur neue Daten, die nach dem 24. Januar hinzugefügt wurden, verschlüsselt.|
+| Verschlüsselung ruhender Daten <br>Vom Kunden verwaltete Schlüssel | Die Verschlüsselung mit von Kunden verwalteten Schlüsseln ist eine **Previewfunktion**, die für kostenlose Dienste nicht verfügbar ist. Für kostenpflichtige Dienste steht sie nur für Suchdienste zur Verfügung, die im oder nach Januar 2019 mit der neuesten API-Vorschauversion (api-version=2019-05-06-Preview) erstellt wurden.<br><br>Indizes und Synonymzuordnungen der kognitiven Azure-Suche können nun im Ruhezustand mit von Kunden verwalteten Schlüsseln in Azure Key Vault verschlüsselt werden. Weitere Informationen finden Sie unter [Verwalten von Verschlüsselungsschlüsseln in der kognitiven Azure-Suche](search-security-manage-encryption-keys.md).<br>Diese Funktion ersetzt die Standardverschlüsselung ruhender Daten nicht, sondern wird zusätzlich angewandt.<br>Durch Aktivieren dieser Funktion wird die Indexgröße erhöht und die Abfrageleistung beeinträchtigt. Basierend auf den bisherigen Beobachtungen können Sie mit einem Anstieg der Abfragezeiten um 30 %–60 % rechnen, wobei die tatsächliche Leistung je nach Indexdefinition und Art der Abfragen variiert. Aufgrund dieser Auswirkungen auf die Leistung wird empfohlen, diese Funktion nur für Indizes zu aktivieren, für die sie wirklich erforderlich ist.
 
 ## <a name="azure-wide-user-access-controls"></a>Azure-weite Benutzerzugriffssteuerungen
 
-Für die gesamte Azure-Umgebung sind verschiedene Sicherheitsmechanismen verfügbar – und so automatisch auch für die von Ihnen erstellten Azure Search-Ressourcen.
+Für die gesamte Azure-Umgebung sind verschiedene Sicherheitsmechanismen verfügbar – und so automatisch auch für die von Ihnen erstellten Ressourcen für die kognitive Azure-Suche.
 
 + [Sperren auf Abonnement- oder Ressourcenebene zur Verhinderung von Löschvorgängen](../azure-resource-manager/resource-group-lock-resources.md)
 + [Rollenbasierte Zugriffssteuerung (Role-based Access Control, RBAC) zur Steuerung des Zugriffs auf Informationen und Verwaltungsvorgänge](../role-based-access-control/overview.md)
@@ -59,7 +58,7 @@ Alle Azure-Dienste unterstützen die rollenbasierte Zugriffssteuerung (Role-base
 
 ## <a name="service-access-and-authentication"></a>Dienstzugriff und -authentifizierung
 
-Azure Search erbt nicht nur die Sicherheitsmaßnahmen der Azure-Plattform, sondern bietet auch eine eigene schlüsselbasierte Authentifizierung. Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen und Buchstaben besteht. Der Typ des Schlüssels (Administrator oder Abfrage) bestimmt die Zugriffsebene. Die Übermittlung eines gültigen Schlüssels gilt als Beleg dafür, dass die Anforderung von einer vertrauenswürdigen Entität stammt. 
+Die kognitive Azure-Suche erbt nicht nur die Sicherheitsmaßnahmen der Azure-Plattform, sondern bietet auch eine eigene schlüsselbasierte Authentifizierung. Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen und Buchstaben besteht. Der Typ des Schlüssels (Administrator oder Abfrage) bestimmt die Zugriffsebene. Die Übermittlung eines gültigen Schlüssels gilt als Beleg dafür, dass die Anforderung von einer vertrauenswürdigen Entität stammt. 
 
 Es gibt zwei Ebenen des Zugriffs auf Ihren Suchdienst, die durch zwei Arten von Schlüsseln aktiviert werden:
 
@@ -74,17 +73,17 @@ Für jede Anforderung – bestehend aus einem obligatorischen Schlüssel, einem 
 
 ## <a name="index-access"></a>Indexzugriff
 
-In Azure Search ist ein einzelner Index kein sicherungsfähiges Objekt. Stattdessen wird der Zugriff auf einen Index durch eine Kombination aus Dienstebene (Lese- oder Schreibzugriff) und Vorgangskontext bestimmt.
+In der kognitiven Azure-Suche ist ein einzelner Index kein sicherungsfähiges Objekt. Stattdessen wird der Zugriff auf einen Index durch eine Kombination aus Dienstebene (Lese- oder Schreibzugriff) und Vorgangskontext bestimmt.
 
 Für den Endbenutzerzugriff können Sie Abfrageanforderungen so strukturieren, dass die Verbindungsherstellung unter Verwendung eines Abfrageschlüssels erfolgt – wodurch alle Abfragen nur schreibgeschützten Zugriff erhalten – und den spezifischen, von Ihrer App verwendeten Index einschließen. Da es in einer Abfrageanforderung kein Konzept für die Verknüpfung von Indizes oder den gleichzeitigen Zugriff auf mehrere Indizes gibt, sind alle Anforderungen definitionsgemäß auf einen einzelnen Index ausgerichtet. Folglich wird die Sicherheitsgrenze durch die Konstruktion der Abfrageanforderung selbst (Kombination aus Schlüssel und einzelnem Zielindex) definiert.
 
-Der Indexzugriff von Administratoren und Entwicklern ist undifferenziert: Beide benötigen Schreibzugriff, um vom Dienst verwaltete Objekte erstellen, löschen und aktualisieren zu können. Ein Benutzer mit einem Administratorschlüssel für Ihren Dienst kann jeden beliebigen Index in diesem Dienst lesen, ändern und löschen. Zum Schutz vor der versehentlichen oder böswilligen Löschung von Indizes können Sie Ihre interne Quellcodeverwaltung für Coderessourcen verwenden und unerwünschte Lösch- oder Änderungsvorgänge für Indizes rückgängig machen. Zur Gewährleistung der Verfügbarkeit verfügt Azure Search über ein clusterinternes Failover-Feature. Ihr proprietärer Code zum Erstellen oder Laden von Indizes wird jedoch nicht gespeichert oder ausgeführt.
+Der Indexzugriff von Administratoren und Entwicklern ist undifferenziert: Beide benötigen Schreibzugriff, um vom Dienst verwaltete Objekte erstellen, löschen und aktualisieren zu können. Ein Benutzer mit einem Administratorschlüssel für Ihren Dienst kann jeden beliebigen Index in diesem Dienst lesen, ändern und löschen. Zum Schutz vor der versehentlichen oder böswilligen Löschung von Indizes können Sie Ihre interne Quellcodeverwaltung für Coderessourcen verwenden und unerwünschte Lösch- oder Änderungsvorgänge für Indizes rückgängig machen. Zur Gewährleistung der Verfügbarkeit bietet die kognitive Azure-Suche ein clusterinternes Failover-Feature. Ihr proprietärer Code zum Erstellen oder Laden von Indizes wird jedoch nicht gespeichert oder ausgeführt.
 
-Mehrinstanzenfähige Lösungen, die Sicherheitsgrenzen auf der Indexebene erfordern, enthalten in der Regel eine mittlere Ebene, die Kunden für die Indexisolierung verwenden. Weitere Informationen zum mehrinstanzenfähigen Anwendungsfall finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search](search-modeling-multitenant-saas-applications.md).
+Mehrinstanzenfähige Lösungen, die Sicherheitsgrenzen auf der Indexebene erfordern, enthalten in der Regel eine mittlere Ebene, die Kunden für die Indexisolierung verwenden. Weitere Informationen zum mehrinstanzenfähigen Anwendungsfall finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und kognitive Azure-Suche](search-modeling-multitenant-saas-applications.md).
 
 ## <a name="admin-access"></a>Administratorzugriff
 
-[Rollenbasierter Zugriff (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) legt fest, ob Sie Zugriff auf Steuerelemente für den Dienst und seinen Inhalt haben. Wenn Sie ein Besitzer oder Mitwirkender für einen Azure Search-Dienst sind, können Sie das Portal oder das PowerShell-Modul **Az.Search** verwenden, um im Dienst Objekte zu erstellen, zu aktualisieren oder zu löschen. Sie können auch die [REST-API für die Azure Search-Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwenden.
+[Rollenbasierter Zugriff (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) legt fest, ob Sie Zugriff auf Steuerelemente für den Dienst und seinen Inhalt haben. Wenn Sie ein Besitzer oder Mitwirkender für einen Dienst für die kognitive Azure-Suche sind, können Sie das Portal oder das PowerShell-Modul **Az.Search** verwenden, um im Dienst Objekte zu erstellen, zu aktualisieren oder zu löschen. Sie können auch die [Verwaltungs-REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwenden.
 
 ## <a name="user-access"></a>Benutzerzugriff
 
@@ -99,7 +98,7 @@ Wenn Sie eine detaillierte Kontrolle über Inhalte pro Benutzer benötigen, kön
 
 ## <a name="table-permissioned-operations"></a>Tabelle: Berechtigungsbasierte Vorgänge
 
-Die folgende Tabelle enthält eine Zusammenfassung der in Azure Search zulässigen Vorgänge sowie Informationen dazu, welcher Schlüssel für den jeweiligen Vorgang erforderlich ist.
+Die folgende Tabelle enthält eine Zusammenfassung der in der kognitiven Azure-Suche zulässigen Vorgänge sowie Informationen dazu, welcher Schlüssel für den jeweiligen Vorgang erforderlich ist.
 
 | Vorgang | Berechtigungen |
 |-----------|-------------------------|
@@ -123,6 +122,6 @@ Microsoft-Rechenzentren sind mit branchenführenden physischen Sicherheitsmaßna
 
 + [Erste Schritte mit .NET (veranschaulicht das Erstellen eines Index unter Verwendung eines Administratorschlüssels)](search-create-index-dotnet.md)
 + [Erste Schritte mit REST (veranschaulicht das Erstellen eines Index unter Verwendung eines Administratorschlüssels)](search-create-index-rest-api.md)
-+ [Identitätsbasierte Zugriffssteuerung mit Azure Search-Filtern](search-security-trimming-for-azure-search.md)
-+ [Auf der Active Directory-Identität basierende Zugriffssteuerung mit Azure Search-Filtern](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filter in Azure Search](search-filters.md)
++ [Identitätsbasierte Zugriffssteuerung mit Filtern der kognitiven Azure-Suche](search-security-trimming-for-azure-search.md)
++ [Auf der Active Directory-Identität basierende Zugriffssteuerung mit Filtern der kognitiven Azure-Suche](search-security-trimming-for-azure-search-with-aad.md)
++ [Filter in der kognitiven Azure-Suche](search-filters.md)

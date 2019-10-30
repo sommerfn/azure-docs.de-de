@@ -1,13 +1,13 @@
 ---
-title: Einfache Abfragesyntax – Azure Search
-description: Referenz für die einfache Abfragesyntax, die für Volltextsuchanfragen in Azure Search verwendet wird.
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
+title: Einfache Abfragesyntax
+titleSuffix: Azure Cognitive Search
+description: Referenz für die einfache Abfragesyntax, die für Volltextsuchabfragen in der kognitiven Azure-Suche verwendet wird.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e6c5ea86534001e0e5de2b02c4151af70631e4ef
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650009"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792554"
 ---
-# <a name="simple-query-syntax-in-azure-search"></a>Einfache Abfragesyntax in Azure Search
-Azure Search implementiert zwei Lucene-basierte Abfragesprachen: [Einfacher Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) und der [Lucene-Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). In Azure Search schließt die einfache Abfragesyntax die Fuzzy-/Slop-Optionen aus.  
+# <a name="simple-query-syntax-in-azure-cognitive-search"></a>Einfache Abfragesyntax in der kognitiven Azure-Suche
+
+Die kognitive Azure-Suche implementiert zwei Lucene-basierte Abfragesprachen: [Einfacher Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) und der [Lucene-Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). In der kognitiven Azure-Suche schließt die einfache Abfragesyntax die Fuzzy-/Slop-Optionen aus.  
 
 > [!NOTE]  
->  Für komplexere Abfragen bietet Azure Search eine alternative [Lucene-Abfragesyntax](query-lucene-syntax.md). Weitere Informationen über die Abfrageanalysearchitektur und die Vorteile der einzelnen Syntaxen finden Sie unter [Textsuche Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md).
+>  Für komplexere Abfragen bietet die kognitive Azure-Suche eine alternative [Lucene-Abfragesyntax](query-lucene-syntax.md). Weitere Informationen über die Abfrageanalysearchitektur und die Vorteile der einzelnen Syntaxen finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Aufrufen der einfachen Analyse
 
@@ -38,9 +39,9 @@ Die einfache Syntax ist die Standardeinstellung. Der Aufruf ist nur notwendig, w
 
 ## <a name="query-behavior-anomalies"></a>Anomalien beim Abfrageverhalten
 
-Jeder Text mit einem oder mehreren Begriffen gilt als gültiger Ausgangspunkt für die Ausführung der Abfrage. Azure Search findet Dokumente, die einen oder alle der Begriffe enthalten, einschließlich aller Variationen, die bei der Analyse des Textes gefunden wurden. 
+Jeder Text mit einem oder mehreren Begriffen gilt als gültiger Ausgangspunkt für die Ausführung der Abfrage. Die kognitive Azure-Suche findet Dokumente, die einen oder alle der Begriffe enthalten, einschließlich aller Variationen, die bei der Analyse des Textes gefunden wurden. 
 
-So einfach das klingt, es gibt einen Aspekt der Abfrageausführung in der Azure Search, der *möglicherweise* unerwartete Ergebnisse liefert, die die Suchergebnisse eher erhöhen als verringern, da mehr Begriffe und Operatoren zur Eingabezeichenkette hinzugefügt werden. Ob diese Erweiterung tatsächlich stattfindet, hängt von der Einbeziehung eines NOT-Operators ab, kombiniert mit einer `searchMode`-Parametereinstellung, die bestimmt, wie NOT in Form von AND- oder OR-Verhalten interpretiert wird. Mit dem Standard, `searchMode=Any`- und einem NOT-Operator wird die Operation als OR-Aktion berechnet, sodass `"New York" NOT Seattle` alle Städte zurückgibt, die nicht Seattle sind.  
+So einfach das klingt, es gibt einen Aspekt der Abfrageausführung in der kognitiven Azure-Suche, der *möglicherweise* unerwartete Ergebnisse liefert, die die Suchergebnisse eher erhöhen als verringern, da mehr Begriffe und Operatoren zur Eingabezeichenkette hinzugefügt werden. Ob diese Erweiterung tatsächlich stattfindet, hängt von der Einbeziehung eines NOT-Operators ab, kombiniert mit einer `searchMode`-Parametereinstellung, die bestimmt, wie NOT in Form von AND- oder OR-Verhalten interpretiert wird. Mit dem Standard, `searchMode=Any`- und einem NOT-Operator wird die Operation als OR-Aktion berechnet, sodass `"New York" NOT Seattle` alle Städte zurückgibt, die nicht Seattle sind.  
 
 Typischerweise ist es wahrscheinlicher, dass Sie dieses Verhalten in Benutzerinteraktionsmustern für Anwendungen sehen, die über Inhalte suchen, bei denen Benutzer eher einen Operator in eine Abfrage einbeziehen, als E-Commerce-Websites, die über mehr integrierte Navigationsstrukturen verfügen. Weitere Informationen finden Sie unter [NOT-Operator](#not-operator). 
 
@@ -85,10 +86,10 @@ Der precedence-Operator schließt die Zeichenfolge in Klammern `( )` ein. Zum Be
 - Der Suffix-Operator `*` muss nur dann escaped werden, wenn es sich um das letzte Zeichen vor dem Leerzeichen handelt, nicht, wenn es sich um die Mitte eines Begriffs handelt. Beispielsweise wird `wi*fi` als ein einzelnes Token behandelt.
 
 > [!NOTE]  
->  Obwohl ein Escapen Token zusammenhält, kann die Textanalyse sie je nach Analysenmodus aufteilen. Weitere Informationen finden Sie unter [Sprachunterstützung (REST-API für Azure Search-Dienst)](index-add-language-analyzers.md).  
+>  Obwohl ein Escapen Token zusammenhält, kann die Textanalyse sie je nach Analysenmodus aufteilen. Weitere Informationen finden Sie unter [Sprachunterstützung &#40;REST-API für die kognitive Azure-Suche&#41;](index-add-language-analyzers.md).  
 
 ## <a name="see-also"></a>Weitere Informationen  
 
-+ [Dokumente suchen (REST-API für Azure Suchdienst)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
++ [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Lucene-Abfragesyntax](query-lucene-syntax.md)
 + [OData-Ausdruckssyntax](query-odata-filter-orderby-syntax.md) 

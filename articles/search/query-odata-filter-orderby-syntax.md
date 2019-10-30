@@ -1,13 +1,13 @@
 ---
-title: OData-Sprachübersicht – Azure Search
-description: OData-Sprachübersicht für das Filtern, Auswählen und Sortieren für Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData-Sprachübersicht
+titleSuffix: Azure Cognitive Search
+description: OData-Sprachübersicht für das Filtern, Auswählen und Sortieren für Abfragen der kognitiven Azure-Suche.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0bd446b0ffa97a758f68a0f85889b13da6e3d8b0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650032"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72786160"
 ---
-# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in Azure Search
+# <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in der kognitiven Azure-Suche
 
-Azure Search unterstützt eine Teilmenge der OData-Ausdruckssyntax für **$filter**-, **$orderby**- und **$select**-Ausdrücke. Filterausdrücke werden während der Analyse der Abfrage ausgewertet. Sie beschränken die Suche auf bestimmte Felder oder fügen Übereinstimmungskriterien hinzu, die während Indexscans verwendet werden. Sortierausdrücke werden als Nachverarbeitungsschritt auf ein Resultset angewandt, um die zurückgegebenen Dokumente zu sortieren. Auswahlausdrücke bestimmen, welche Felder des Dokuments in das Resultset eingefügt werden. Die Syntax dieser Ausdrücke unterscheidet sich von der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Abfragesyntax, die für die **Suchparameter** verwendet wird, auch wenn es bei der Syntax Überschneidungen beim Verweisen auf Felder gibt.
+Die kognitive Azure-Suche unterstützt eine Teilmenge der OData-Ausdruckssyntax für **$filter**-, **$orderby**- und **$select**-Ausdrücke. Filterausdrücke werden während der Analyse der Abfrage ausgewertet. Sie beschränken die Suche auf bestimmte Felder oder fügen Übereinstimmungskriterien hinzu, die während Indexscans verwendet werden. Sortierausdrücke werden als Nachverarbeitungsschritt auf ein Resultset angewandt, um die zurückgegebenen Dokumente zu sortieren. Auswahlausdrücke bestimmen, welche Felder des Dokuments in das Resultset eingefügt werden. Die Syntax dieser Ausdrücke unterscheidet sich von der [einfachen](query-simple-syntax.md) oder [vollständigen](query-lucene-syntax.md) Abfragesyntax, die für die **Suchparameter** verwendet wird, auch wenn es bei der Syntax Überschneidungen beim Verweisen auf Felder gibt.
 
 Dieser Artikel enthält eine Übersicht über die OData-Ausdruckssprache, die in den Filter-, Sortier- und Auswahlausdrücken verwendet wird. Die Sprache wird „von unten nach oben“, d. h. beginnend mit den grundlegenden Elementen beschrieben. Die Syntax der obersten Ebene für jeden Parameter wird in einem separaten Artikel beschrieben:
 
@@ -36,13 +36,13 @@ Dieser Artikel enthält eine Übersicht über die OData-Ausdruckssprache, die in
 - [$orderby-Syntax](search-query-odata-orderby.md)
 - [$select-Syntax](search-query-odata-select.md)
 
-OData-Ausdrücke reichen von einfach bis sehr komplexen Ausdrücken, sie enthalten aber alle gemeinsame Elemente. Die grundlegendsten Teile eines OData-Ausdrucks in Azure Search sind:
+OData-Ausdrücke reichen von einfach bis sehr komplexen Ausdrücken, sie enthalten aber alle gemeinsame Elemente. Die grundlegendsten Teile eines OData-Ausdrucks in der kognitiven Azure-Suche sind:
 
 - **Feldpfade** für Verweise auf bestimmte Felder des Index
 - **Konstanten** als Literalwerte eines bestimmten Datentyps
 
 > [!NOTE]
-> Die Terminologie in Azure Search unterscheidet sich vom [OData-Standard](https://www.odata.org/documentation/) in verschiedener Hinsicht. Was in Azure Search als **Feld** bezeichnet wird, ist in OData eine **Eigenschaft**. Dasselbe gilt auch für **Feldpfad** bzw. **Eigenschaftspfad**. Ein **Index** mit **Dokumenten** in Azure Search wird in OData allgemeiner als eine **Entitätenmenge** mit **Entitäten** bezeichnet. In dieser Referenz wird die Azure Search-Terminologie verwendet.
+> Die Terminologie in der kognitiven Azure-Suche unterscheidet sich vom [OData-Standard](https://www.odata.org/documentation/) in verschiedener Hinsicht. Was in der kognitiven Azure-Suche als **Feld** bezeichnet wird, ist in OData eine **Eigenschaft**. Dasselbe gilt auch für **Feldpfad** bzw. **Eigenschaftspfad**. Ein **Index** mit **Dokumenten** in der kognitiven Azure-Suche wird in OData allgemeiner als eine **Entitätenmenge** mit **Entitäten** bezeichnet. In dieser Referenz wird die Terminologie der kognitiven Azure-Suche verwendet.
 
 ## <a name="field-paths"></a>Feldpfade
 
@@ -59,10 +59,10 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 Ein Feldpfad besteht aus einem oder mehreren **Bezeichnern**, die durch Schrägstriche voneinander getrennt sind. Jeder Bezeichner ist eine Folge von Zeichen, die mit einem ASCII-Buchstaben oder einem Unterstrich beginnen muss und nur ASCII-Buchstaben, Ziffern oder Unterstriche enthalten darf. Es können Groß- und Kleinbuchstaben verwendet werden.
 
@@ -89,7 +89,7 @@ In diesem Beispiel ist die Bereichsvariable `room` im Feldpfad `room/Type` entha
 
 ### <a name="using-field-paths"></a>Verwenden von Feldpfaden
 
-Feldpfade werden in zahlreichen Parametern der [Azure Search-API](https://docs.microsoft.com/rest/api/searchservice/) verwendet. Die folgende Tabelle enthält alle Stellen, an denen sie verwendet werden können, sowie einige Einschränkungen für ihre Nutzung:
+Feldpfade werden in zahlreichen Parametern der [REST-APIs für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/) verwendet. Die folgende Tabelle enthält alle Stellen, an denen sie verwendet werden können, sowie einige Einschränkungen für ihre Nutzung:
 
 | API | Parametername | Einschränkungen |
 | --- | --- | --- |
@@ -107,9 +107,9 @@ Feldpfade werden in zahlreichen Parametern der [Azure Search-API](https://docs.m
 
 ## <a name="constants"></a>Konstanten
 
-Konstanten in OData sind Literalwerte eines bestimmten [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)-Typs (EDM). Eine Liste der in Azure Search unterstützten Typen finden Sie unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Konstanten von Sammlungstypen werden nicht unterstützt.
+Konstanten in OData sind Literalwerte eines bestimmten [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)-Typs (EDM). Eine Liste der in der kognitiven Azure-Suche unterstützten Typen finden Sie unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Konstanten von Sammlungstypen werden nicht unterstützt.
 
-Die folgende Tabelle zeigt Beispiele für Konstanten für jeden der von Azure Search unterstützten Datentypen:
+Die folgende Tabelle zeigt Beispiele für Konstanten für jeden der von der kognitiven Azure-Suche unterstützten Datentypen:
 
 | Datentyp | Beispielkonstanten |
 | --- | --- |
@@ -122,7 +122,7 @@ Die folgende Tabelle zeigt Beispiele für Konstanten für jeden der von Azure Se
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
 
-Die folgende EBNF ([erweiterte Backus-Naur-Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiert die Grammatik für die meisten Konstanten in der obigen Tabelle. Die Grammatik für geografische Datentypen finden Sie unter [Geografische OData-Funktionen in Azure Search](search-query-odata-geo-spatial-functions.md).
+Die folgende EBNF ([erweiterte Backus-Naur-Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiert die Grammatik für die meisten Konstanten in der obigen Tabelle. Die Grammatik für geografische Datentypen finden Sie unter [Geografische OData-Funktionen in der kognitiven Azure-Suche](search-query-odata-geo-spatial-functions.md).
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -187,14 +187,14 @@ boolean_literal ::= 'true' | 'false'
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>Erstellen von Ausdrücken aus Feldpfaden und Konstanten
 
-Feldpfade und Konstanten sind der grundlegendste Teil jedes OData-Ausdrucks, sie sind aber selbst bereits vollständige Ausdrücke. Tatsächlich ist der **$select**-Parameter in Azure Search eine durch Trennzeichen getrennte Liste der Feldpfade, und **$orderby** ist nicht viel komplizierter als **$select**. Wenn Ihr Index ein Feld vom Typ `Edm.Boolean` enthält, können Sie sogar einen Filter schreiben, der lediglich der Pfad dieses Felds ist. Die Konstanten `true` und `false` sind ebenfalls gültige Filter.
+Feldpfade und Konstanten sind der grundlegendste Teil jedes OData-Ausdrucks, sie sind aber selbst bereits vollständige Ausdrücke. Tatsächlich ist der **$select**-Parameter in der kognitiven Azure-Suche eine durch Trennzeichen getrennte Liste der Feldpfade, und **$orderby** ist nicht viel komplizierter als **$select**. Wenn Ihr Index ein Feld vom Typ `Edm.Boolean` enthält, können Sie sogar einen Filter schreiben, der lediglich der Pfad dieses Felds ist. Die Konstanten `true` und `false` sind ebenfalls gültige Filter.
 
 Allerdings benötigen Sie in den meisten Fällen komplexere Ausdrücke, die auf mehr als ein Feld und eine Konstante verweisen. Diese Ausdrücke werden je nach Parameter auf verschiedene Arten erstellt.
 
@@ -213,23 +213,23 @@ select_expression ::= '*' | field_path(',' field_path)*
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 Die Parameter **$orderby** und **$select** sind durch Trennzeichen getrennte Listen mit einfachen Ausdrücken. Der **$filter**-Parameter ist ein boolescher Ausdruck, der sich aus einfacheren untergeordneten Ausdrücken zusammensetzt. Diese untergeordneten Ausdrücke werden mithilfe logischer Operatoren wie z. B. [`and`, `or` und `not`](search-query-odata-logical-operators.md), Vergleichsoperatoren wie [`eq`, `lt`, `gt` usw.](search-query-odata-comparison-operators.md) und Sammlungsoperatoren wie [`any` und `all`](search-query-odata-collection-operators.md) kombiniert.
 
 In den folgenden Artikeln werden die Parameter **$filter**, **$orderby** und **$select** ausführlicher besprochen:
 
-- [OData-Syntax von „$filter“ in Azure Search](search-query-odata-filter.md)
-- [OData-Syntax von „$orderby“ in Azure Search](search-query-odata-orderby.md)
-- [OData-Syntax von „$select“ in Azure Search](search-query-odata-select.md)
+- [OData-Syntax von „$filter“ in der kognitiven Azure-Suche](search-query-odata-filter.md)
+- [OData-Syntax von „$orderby“ in der kognitiven Azure-Suche](search-query-odata-orderby.md)
+- [OData-Syntax von „$select“ in der kognitiven Azure-Suche](search-query-odata-select.md)
 
 ## <a name="see-also"></a>Weitere Informationen  
 
-- [Facettennavigation in Azure Search](search-faceted-navigation.md)
-- [Filter in Azure Search](search-filters.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md)
+- [Filter in der kognitiven Azure-Suche](search-filters.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene-Abfragesyntax](query-lucene-syntax.md)
-- [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search)
+- [Einfache Abfragesyntax in der kognitiven Azure-Suche](query-simple-syntax.md)

@@ -1,26 +1,25 @@
 ---
-title: Tipps zur Problembehandlung bei der kognitiven Suche – Azure Search
-description: Tipps und Problembehandlung für die Einrichtung von kognitiven Suchpipelines in Azure Search.
-services: search
+title: Tipps zur Problembehandlung bei der KI-Anreicherung
+titleSuffix: Azure Cognitive Search
+description: Tipps und Problembehandlung für die Einrichtung von KI-Anreicherungspipelines in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 02/02/2019
 ms.author: luisca
-ms.openlocfilehash: ee54d560ae1a294467e4520063153566d2c3b0a2
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265843"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787704"
 ---
-# <a name="troubleshooting-tips-for-cognitive-search"></a>Tipps zur Problembehandlung bei der kognitiven Suche
+# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipps zur Problembehandlung bei der KI-Anreicherung in der kognitiven Azure-Suche
 
-Dieser Artikel enthält eine Liste mit Tipps und Tricks als Unterstützung bei Ihren ersten Schritten mit der kognitiven Suche in Azure Search. 
+Dieser Artikel enthält eine Liste mit Tipps und Tricks als Unterstützung bei Ihren ersten Schritten mit den Funktionen der KI-Anreicherung in der kognitiven Azure-Suche. 
 
-Sofern noch nicht geschehen, machen Sie sich zunächst unter [Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten](cognitive-search-quickstart-blob.md) damit vertraut, wie Sie mithilfe der kognitive Suche Datenanreicherungen in einer Blobdatenquelle anwenden.
+Sofern noch nicht geschehen, machen Sie sich zunächst unter [Schnellstart: Aufrufen von APIs für die KI-Anreicherung](cognitive-search-quickstart-blob.md) damit vertraut, wie Sie KI-Anreicherungen in einer Blobdatenquelle anwenden.
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>Tipp 1: Beginnen Sie mit einem kleinen Dataset.
 Am besten lassen sich Probleme schnell finden, wenn Sie diese möglichst schnell beheben können. Die einfachste Möglichkeit, die Indizierungszeit zu verkürzen, besteht darin, die Anzahl der zu indizierenden Dokumente zu verringern. 
@@ -31,7 +30,7 @@ Führen Sie Ihre Dokumentenzusammenstellung durch die End-to-End-Pipeline und pr
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Tipp 2: Vergewissern Sie sich, dass Ihre Anmeldeinformationen für die Datenquelle korrekt sind.
 Die Datenquellenverbindung wird erst überprüft, wenn Sie einen Indexer definieren, der sie verwendet. Wenn Fehler angezeigt werden, die darauf hinweisen, dass der Indexer nicht auf die Daten zugreifen kann, stellen Sie Folgendes sicher:
-- Die Verbindungszeichenfolge ist korrekt. Insbesondere beim Erstellen von SAS-Token müssen Sie das von Azure Search erwartete Format verwenden. Weitere Informationen zu den verschiedenen unterstützten Formaten finden Sie im Abschnitt [Angeben von Anmeldeinformationen](
+- Die Verbindungszeichenfolge ist korrekt. Insbesondere beim Erstellen von SAS-Token müssen Sie das in der kognitiven Azure-Suche erwartete Format verwenden. Weitere Informationen zu den verschiedenen unterstützten Formaten finden Sie im Abschnitt [Angeben von Anmeldeinformationen](
 https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials).
 - Der Containername im Indexer ist korrekt.
 
@@ -92,7 +91,7 @@ Die Bildanalyse ist selbst für einfache Fälle rechenintensiv, sodass die Verar
 
 Die maximale Laufzeit variiert je nach Tarif: mehrere Minuten beim Free-Tarif, 24-Stunden-Indizierung bei abrechenbaren Tarifen. Wenn die Verarbeitung nicht innerhalb eines 24-Stunden-Zeitraums für die bedarfsgesteuerte Verarbeitung abgeschlossen werden kann, wechseln Sie zu einem Zeitplan, damit der Indexer die Verarbeitung dort fortsetzt, wo sie unterbrochen wurde. 
 
-Bei geplanten Indexern wird die Indizierung beim letzten erfolgreich verarbeiteten Dokument planmäßig fortgesetzt. Durch die Verwendung eines wiederkehrenden Zeitplans kann sich der Indexer über eine Reihe von Stunden oder Tagen durch den Rückstand der Bilder arbeiten, bis schließlich alle Bilder verarbeitet sind. Weitere Informationen zur Zeitplansyntax finden Sie unter [Schritt 3: Erstellen eines Indexers](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) oder [How to schedule indexers for Azure Search (Festlegen eines Zeitplans für Indexer in Azure Search)](search-howto-schedule-indexers.md).
+Bei geplanten Indexern wird die Indizierung beim letzten erfolgreich verarbeiteten Dokument planmäßig fortgesetzt. Durch die Verwendung eines wiederkehrenden Zeitplans kann sich der Indexer über eine Reihe von Stunden oder Tagen durch den Rückstand der Bilder arbeiten, bis schließlich alle Bilder verarbeitet sind. Weitere Informationen zur Zeitplansyntax finden Sie unter [Schritt 3: Erstellen eines Indexers](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer) oder [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
 > [!NOTE]
 > Wenn ein Indexer auf einen bestimmten Zeitplan festgelegt ist, im gleichen Dokument bei erneuter Ausführung aber immer wieder ein Fehler auftritt, wird der Indexer in selteneren Intervallen ausgeführt (bis hin zum Maximum von mindestens einmal in 24 Stunden), bis die Ausführung fehlerfrei verläuft.  Wenn Sie der Meinung sind, dass Sie das Problem behoben haben, das dafür gesorgt hat, dass der Indexer an einem bestimmten Punkt hängengeblieben ist, können Sie eine bedarfsgesteuerte Ausführung des Indexers veranlassen. Wenn diese Ausführung erfolgreich verläuft, wird der Indexer wieder im festgelegten Zeitplanintervall ausgeführt.
@@ -105,8 +104,8 @@ Für eine [parallele Indizierung](search-howto-large-index.md) platzieren Sie Ih
 Weitere Informationen finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Weitere Informationen
-+ [Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten](cognitive-search-quickstart-blob.md)
-+ [Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschau)](cognitive-search-tutorial-blob.md)
++ [Schnellstart: Erstellen einer KI-Anreicherungspipeline im Portal](cognitive-search-quickstart-blob.md)
++ [Tutorial: REST-APIs für KI-Anreicherungen](cognitive-search-tutorial-blob.md)
 + [Angeben von Anmeldeinformationen](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)

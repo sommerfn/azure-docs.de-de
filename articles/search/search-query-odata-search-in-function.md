@@ -1,13 +1,13 @@
 ---
-title: Referenz für die OData-Funktion „search.in“ – Azure Search
-description: Hier finden Sie Informationen zur OData-Funktion „search.in“ in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Referenz für die OData-Funktion „search.in“
+titleSuffix: Azure Cognitive Search
+description: OData-Funktion „search.in“ in Abfragen der kognitiven Azure-Suche.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8bac0205fa2de8378abaa4d9e8ba8e05ea69192e
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f641e50554e720d273735fd20032e60444cb198a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647943"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793279"
 ---
-# <a name="odata-searchin-function-in-azure-search"></a>OData-Funktion `search.in` in Azure Search
+# <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData-Funktion `search.in` in der kognitiven Azure-Suche
 
 Ein gängiges Szenario für [OData-Filterausdrücke](query-odata-filter-orderby-syntax.md) ist die Überprüfung, ob ein einzelnes Feld in den Dokumenten jeweils einem von vielen möglichen Werten entspricht. So wird in einigen Anwendungen beispielsweise zur Implementierung der [Einschränkung aus Sicherheitsgründen](search-security-trimming-for-azure-search.md) ein Feld, das eine oder mehrere Prinzipal-IDs enthält, mit einer Liste von Prinzipal-IDs verglichen, die den Benutzer darstellen, der die Abfrage ausführt. Eine solche Abfrage kann beispielsweise mithilfe der Operatoren [`eq`](search-query-odata-comparison-operators.md) und [`or`](search-query-odata-logical-operators.md) erstellt werden:
 
@@ -40,7 +40,7 @@ Die Funktion `search.in` bietet hier eine kürzere Möglichkeit:
 > Diese Methode ist kürzer und besser lesbar. Darüber hinaus bietet die Verwendung der Funktion `search.in` auch [Leistungsvorteile](#bkmk_performance) und ermöglicht die Vermeidung bestimmter [Größeneinschränkungen von Filtern](search-query-odata-filter.md#bkmk_limits), wenn hunderte oder sogar tausende Werte in den Filter eingeschlossen werden. Aus diesem Grund empfehlen wir dringend, anstelle einer komplexeren Disjunktion von Gleichheitsausdrücken die Funktion `search.in` zu verwenden.
 
 > [!NOTE]
-> In der Version 4.01 des OData-Standards wurde kürzlich der [`in`-Operator](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230) eingeführt, der sich ähnlich verhält wie die Funktion `search.in` in Azure Search. Dieser Operator wird von Azure Search allerdings nicht unterstützt, weshalb stattdessen die Funktion `search.in` verwendet werden muss.
+> In Version 4.01 des OData-Standards wurde kürzlich der [`in`-Operator](https://docs.oasis-open.org/odata/odata/v4.01/cs01/part2-url-conventions/odata-v4.01-cs01-part2-url-conventions.html#_Toc505773230) eingeführt, der sich ähnlich verhält wie die Funktion `search.in` in der kognitiven Azure-Suche. Dieser Operator wird in der kognitiven Azure-Suche jedoch nicht unterstützt, sodass stattdessen die Funktion `search.in` verwendet werden muss.
 
 ## <a name="syntax"></a>Syntax
 
@@ -56,10 +56,10 @@ search_in_call ::=
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#search_in_call)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 Die Funktion `search.in` testet, ob ein bestimmtes Zeichenfolgenfeld oder eine Bereichsvariable einem der Werte in einer angegebenen Liste entspricht. Die Gleichheit zwischen der Variablen und den einzelnen Werten in der Liste wird wie beim `eq`-Operator unter Berücksichtigung der Groß-/Kleinschreibung ermittelt. Ein Ausdruck wie `search.in(myfield, 'a, b, c')` entspricht daher `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, allerdings bietet `search.in` eine deutlich bessere Leistung.
 
@@ -106,7 +106,7 @@ Suche nach allen Hotels ohne das Tag „motel“ oder „cabin“:
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Filter in der kognitiven Azure-Suche](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -1,23 +1,22 @@
 ---
-title: 'Upgrade auf Azure Search .NET SDK Version 9: Azure Search'
+title: Upgrade auf Version 9 des Azure Search .NET SDK
+titleSuffix: Azure Cognitive Search
 description: Migrieren Sie Code von älteren Versionen zu Azure Search .NET SDK Version 9. Hier finden Sie Informationen zu Neuheiten und erfahren, welche Änderungen am Code erforderlich sind.
-author: brjohnstmsft
 manager: nitinme
-services: search
-ms.service: search
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.author: brjohnst
-ms.custom: seodec2018
-ms.openlocfilehash: 32908ab209cbe05a0acf9da896e1e1fb11e6f5dd
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183245"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793019"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-9"></a>Upgrade auf Version 9 des Azure Search .NET SDK
+# <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade auf Version 9 des Azure Search .NET SDK
 
 Wenn Sie die Version 7.0-preview oder eine frühere Version des [Azure Search .NET SDK](https://aka.ms/search-sdk) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 9.
 
@@ -38,7 +37,7 @@ Version 9 des Azure Search .NET SDK enthält viele Änderungen zu früheren Ver
 ## <a name="whats-new-in-version-9"></a>Neuerungen in Version 9
 Version 9 des Azure Search .NET SDK ist für die neueste allgemein verfügbare Version der Azure Search-REST-API (2019-05-06) konzipiert. Dadurch können neue Features von Azure Search in einer .NET-Anwendung verwendet werden. Hierzu zählen etwa folgende:
 
-* [Kognitive Suche](cognitive-search-concept-intro.md) ist eine KI-Funktion in Azure Search zum Extrahieren von Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen, um den Inhalt anzureichern und in einem Azure Search-Index besser durchsuchbar zu machen.
+* [KI-Anreicherung](cognitive-search-concept-intro.md) ist die Möglichkeit, Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen zu extrahieren, um den Inhalt anzureichern und in einem Azure Search-Index besser durchsuchbar zu machen.
 * Die Unterstützung für [komplexe Typen](search-howto-complex-data-types.md) ermöglicht Ihnen, nahezu jede geschachtelte JSON-Struktur in einem Azure Search-Index zu modellieren.
 * [AutoVervollständigen](search-autocomplete-tutorial.md) bietet eine Alternative zur **Vorschlags**-API für das Implementieren der Suche während der Eingabe. AutoVervollständigen vervollständigt die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke.
 * Der [Analysemodus JsonLines](search-howto-index-json-blobs.md) ist Teil der Azure-Blobindizierung. Dabei wird ein Suchdokument pro JSON-Entität erstellt, die durch eine neue Zeile getrennt ist.

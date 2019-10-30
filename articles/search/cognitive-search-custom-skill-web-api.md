@@ -1,24 +1,23 @@
 ---
-title: Die Qualifikation „Benutzerdefiniert“ der kognitiven Suche – Azure Search
-description: Erweitern der Funktionen der Qualifikationsgruppen für die kognitive Suche durch Aufruf von Web-APIs
-services: search
+title: Qualifikation „Benutzerdefinierte Web-API“ in einer Anreicherungspipeline
+titleSuffix: Azure Cognitive Search
+description: Erweitern Sie die Funktionen der Qualifikationsgruppen für die kognitive Azure-Suche durch Aufruf von Web-APIs. Verwenden Sie die Qualifikation „Benutzerdefinierte Web-API“ zum Integrieren Ihres benutzerdefinierten Codes.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 89539d42e9ac9456c7ee971f6ea607b6b2c6befa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266326"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784903"
 ---
-# <a name="custom-web-api-skill"></a>Qualifikation „Benutzerdefinierte Web-API“
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Qualifikation „Benutzerdefinierte Web-API“ in einer Anreicherungspipeline der kognitiven Azure-Suche
 
-Mit der Qualifikation **Benutzerdefiniert Web-API** können Sie die kognitive Suche erweitern, indem Sie einen Web-API-Endpunkt aufrufen, der benutzerdefinierte Operationen bereitstellt. Ähnlich wie integrierte Qualifikationen hat die Qualifikation **Benutzerdefinierte Web-API** Eingaben und Ausgaben. Abhängig von den Eingaben erhält Ihre Web-API eine JSON-Nutzlast, wenn der Indexer ausgeführt wird, und gibt eine JSON-Nutzlast als Antwort sowie einen Statuscode für den Erfolg aus. Es wird erwartet, dass die Antwort die von Ihrer Qualifikation „Benutzerdefiniert“ spezifizierten Ergebnisse aufweist. Jede andere Antwort gilt als Fehler und es werden keine Anreicherung durchgeführt.
+Mit der Qualifikation **Benutzerdefinierte Web-API** können Sie die KI-Anreicherung erweitern, indem Sie einen Web-API-Endpunkt aufrufen, der benutzerdefinierte Operationen bereitstellt. Ähnlich wie integrierte Qualifikationen hat die Qualifikation **Benutzerdefinierte Web-API** Eingaben und Ausgaben. Abhängig von den Eingaben erhält Ihre Web-API eine JSON-Nutzlast, wenn der Indexer ausgeführt wird, und gibt eine JSON-Nutzlast als Antwort sowie einen Statuscode für den Erfolg aus. Es wird erwartet, dass die Antwort die von Ihrer Qualifikation „Benutzerdefiniert“ spezifizierten Ergebnisse aufweist. Jede andere Antwort gilt als Fehler und es werden keine Anreicherung durchgeführt.
 
 Die Struktur der JSON-Nutzlasten wird weiter unten in diesem Dokument beschrieben.
 
@@ -202,6 +201,7 @@ In Fällen, in denen die Web-API nicht verfügbar ist oder einen HTTP-Fehler zur
 
 ## <a name="see-also"></a>Weitere Informationen
 
++ [Power Skills: ein Repository benutzerdefinierter Qualifikationen](https://aka.ms/powerskills)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Hinzufügen der Qualifikation „Benutzerdefiniert“ zur kognitiven Suche](cognitive-search-custom-skill-interface.md)
-+ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md)
++ [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
++ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation für KI-Anreicherung (cognitive-search-create-custom-skill-example.md)

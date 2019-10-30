@@ -1,23 +1,21 @@
 ---
-title: 'Erstellen, Verwalten und Sichern von Administrator- und Abfrage-API-Schlüsseln: Azure Search'
-description: Zugriffssteuerung über API-Schlüssel für den Dienstendpunkt. Administratorschlüssel gewähren Schreibzugriff. Abfrageschlüssel können nur für Lesezugriff erstellt werden.
-author: HeidiSteen
+title: Erstellen, Verwalten und Sichern von Administrator- und Abfrage-API-Schlüsseln
+titleSuffix: Azure Cognitive Search
+description: Ein API-Schlüssel steuert den Zugriff auf den Dienstendpunkt. Administratorschlüssel gewähren Schreibzugriff. Abfrageschlüssel können nur für Lesezugriff erstellt werden.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.devlang: rest-api
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: a148ccccd156b0bf637a134758b3a1c8b9db70a7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 68a17b8b3587077222a9ed2057927c8f16253c1e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647889"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794367"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Azure Search-Dienst
+# <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Dienst für die kognitive Azure-Suche
 
 Für alle Anforderungen an einen Suchdienst wird ein schreibgeschützter API-Schlüssel benötigt, der speziell für Ihren Dienst generiert wurde. Dieser API-Schlüssel ist der einzige Authentifizierungsmechanismus für den Zugriff auf Ihren Suchdienstendpunkt und muss in jede Anforderung einbezogen werden. In [REST-Lösungen](search-get-started-postman.md) wird der API-Schlüssel in der Regel im Anforderungsheader angegeben. In [.NET-Lösungen](search-howto-dotnet-sdk.md#core-scenarios) wird ein Schlüssel häufig als Konfigurationseinstellung angegeben und dann in Form von [Credentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (Administratorschlüssel) oder [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (Abfrageschlüssel) auf dem [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) übergeben.
 
@@ -39,7 +37,7 @@ Zwei Arten von Schlüsseln werden für den Zugriff auf Ihren Suchdienst verwende
  Administrator- und Abfrageschlüssel sind rein optisch nicht zu unterscheiden. Bei beiden Schlüsseln handelt es sich um eine Zeichenfolge mit 32 nach dem Zufallsprinzip generierten alphanumerischen Zeichen. Sollten Sie nicht mehr wissen, welche Art von Schlüssel in Ihrer Anwendung angegeben ist, können Sie [die Schlüsselwerte im Portal überprüfen](https://portal.azure.com) oder über die [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/) den Wert und die Art des Schlüssels zurückgeben.  
 
 > [!NOTE]  
->  Aus Sicherheitsgründen sollten im Anforderungs-URI keine vertraulichen Daten wie etwa ein API-Schlüssel (`api-key`) übergeben werden. Aus diesem Grund akzeptiert Azure Search als `api-key` in der Abfragezeichenfolge nur einen Abfrageschlüssel. Es empfiehlt sich, diese Richtlinie einzuhalten – es sei denn, der Inhalt Ihres Index soll öffentlich verfügbar sein. Wir empfehlen generell, `api-key` als Anforderungsheader zu übergeben.  
+>  Aus Sicherheitsgründen sollten im Anforderungs-URI keine vertraulichen Daten wie etwa ein API-Schlüssel (`api-key`) übergeben werden. Aus diesem Grund akzeptiert die kognitive Azure-Suche als `api-key` in der Abfragezeichenfolge nur einen Abfrageschlüssel. Es empfiehlt sich, diese Richtlinie einzuhalten – es sei denn, der Inhalt Ihres Index soll öffentlich verfügbar sein. Wir empfehlen generell, `api-key` als Anforderungsheader zu übergeben.  
 
 ## <a name="find-existing-keys"></a>Suchen vorhandener Schlüssel
 
@@ -66,7 +64,7 @@ Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wi
    ![Erstellen oder Verwenden von Abfrageschlüsseln](media/search-security-overview/create-query-key.png) 
 
 > [!Note]
-> Ein Codebeispiel für die Verwendung von Abfrageschlüsseln finden Sie in [Abfragen eines Azure Search-Index in C#](search-query-dotnet.md).
+> Ein Codebeispiel für die Verwendung von Abfrageschlüsseln finden Sie in [Abfragen eines Index für die kognitive Azure-Suche in C#](search-query-dotnet.md).
 
 <a name="regenerate-admin-keys"></a>
 
@@ -97,6 +95,6 @@ Mitglieder der folgenden Rollen können Schlüssel anzeigen und erneut generiere
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Rollenbasierte Zugriffssteuerung in Azure Search](search-security-rbac.md)
++ [Rollenbasierte Zugriffssteuerung in der kognitiven Azure-Suche](search-security-rbac.md)
 + [Verwalten mit PowerShell](search-manage-powershell.md) 
 + [Artikel zu Leistung und Optimierung](search-performance-optimization.md)

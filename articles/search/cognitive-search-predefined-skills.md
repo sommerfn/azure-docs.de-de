@@ -1,31 +1,31 @@
 ---
-title: Integrierte Datenextraktion, natürliche Sprache, Bildverarbeitung – Azure Search
-description: Durch kognitive Qualifikationen für Datenextraktion, natürliche Sprache und Bildverarbeitung erhält der Rohdateninhalt in einer Azure Search-Pipeline Semantik und Struktur.
+title: Integrierte Datenextraktion, natürliche Sprache, Bildverarbeitung
+titleSuffix: Azure Cognitive Search
+description: Durch kognitive Skills für Datenextraktion, natürliche Sprache und Bildverarbeitung erhält der Rohdateninhalt in einer Pipeline der kognitiven Azure-Suche Semantik und Struktur.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 061d969269eb526b8f02f14de58e2da20c459a38
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 435635018dc25ed2af0aec3d542c0388af8ab885
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265496"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792098"
 ---
-# <a name="predefined-skills-for-content-enrichment-azure-search"></a>Vordefinierte Skills für die Inhaltsanreicherung (Azure Search)
+# <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>Integrierte kognitive Skills für die Inhaltsanreicherung (kognitive Azure-Suche)
 
-In diesem Artikel erfahren Sie mehr über die kognitiven Skills, die mit Azure Search bereitgestellt werden. Ein *kognitiver Skill* ist ein Vorgang, der Inhalte in irgendeiner Weise transformiert. Oft handelt es sich um eine Komponente, die Daten extrahiert oder die Struktur ableitet und Eingabedaten somit verständlicher macht. Die Ausgabe erfolgt fast immer textbasiert. Ein *Skillset* ist eine Sammlung von Skills, die die Anreicherungspipeline definieren. 
+In diesem Artikel werden die kognitiven Skills beschrieben, die mit der kognitiven Azure-Suche bereitgestellt werden. Ein *kognitiver Skill* ist ein Vorgang, der Inhalte in irgendeiner Weise transformiert. Oft handelt es sich um eine Komponente, die Daten extrahiert oder die Struktur ableitet und Eingabedaten somit verständlicher macht. Die Ausgabe erfolgt fast immer textbasiert. Ein *Skillset* ist eine Sammlung von Skills, die die Anreicherungspipeline definieren. 
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in der kognitiven Azure-Suche an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für die kognitive Azure-Suche](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
 
 
-## <a name="predefined-skills"></a>Vordefinierte Skills
+## <a name="built-in-skills"></a>Integrierte Skills
 
 Mehrere Skills sind flexibel in dem, was sie verwenden oder generieren. Im Allgemeinen basieren die meisten Skills auf vortrainierten Modellen, d.h. Sie können das Modell nicht mit Ihren eigenen Trainingsdaten trainieren. In der folgenden Tabelle werden die von Microsoft bereitgestellten Skills aufgelistet und beschrieben. 
 
@@ -42,13 +42,13 @@ Mehrere Skills sind flexibel in dem, was sie verwenden oder generieren. Im Allge
 | [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | Optische Zeichenerkennung |
 | [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md) | Ermöglicht Filterung, Zuweisung eines Standardwerts und Zusammenführung von Daten auf der Grundlage einer Bedingung.|
 | [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | Ordnet die Ausgabe einem komplexen Typ zu (ein mehrteiliger Datentyp, der für einen vollständigen Namen, eine mehrzeilige Adresse oder eine Kombination aus Nachname und persönlicher ID verwendet werden kann). |
-| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Ermöglicht die Erweiterbarkeit der kognitiven Suchpipelines, indem ein HTTP-Aufruf in eine benutzerdefinierte Web-API erfolgt. |
+| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Ermöglicht die Erweiterbarkeit einer KI-Anreicherungspipeline, indem ein HTTP-Aufruf in einer benutzerdefinierten Web-API ausgeführt wird. |
 
 
-Eine Anleitung zum Erstellen einer [benutzerdefinierten Qualifikation](cognitive-search-custom-skill-web-api.md) finden Sie unter [Hinzufügen eines benutzerdefinierten Skills zu einer Pipeline der kognitiven Suche](cognitive-search-custom-skill-interface.md) sowie unter [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md).
+Eine Anleitung zum Erstellen einer [benutzerdefinierten Qualifikation](cognitive-search-custom-skill-web-api.md) finden Sie unter [Hinzufügen eines benutzerdefinierten Skills zu einer Pipeline der kognitiven Suche](cognitive-search-custom-skill-interface.md) sowie unter [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Schnittstellendefinition für benutzerdefinierte Skills](cognitive-search-custom-skill-interface.md)
-+ [Tutorial: Angereicherte Indizierung mit kognitiver Suche](cognitive-search-tutorial-blob.md)
++ [Tutorial: Angereicherte Indizierung mit künstlicher Intelligenz (KI)](cognitive-search-tutorial-blob.md)

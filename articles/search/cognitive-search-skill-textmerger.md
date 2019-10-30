@@ -1,22 +1,21 @@
 ---
-title: Die Qualifikation „Text zusammenführen“ der kognitiven Suche – Azure Search
-description: Führen Sie Text aus einer Sammlung von Feldern in einem konsolidierten Feld zusammen. Verwenden Sie diesen kognitiven Skill in einer Azure Search-Anreicherungspipeline.
-services: search
+title: Der kognitive Skill „Text zusammenführen“
+titleSuffix: Azure Cognitive Search
+description: Führen Sie Text aus einer Sammlung von Feldern in einem konsolidierten Feld zusammen. Verwenden Sie diesen kognitiven Skill in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 1e88fcc13d97d92cf9b35616ecb7d71c2d24db1f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265274"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791840"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
+#   <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
 
 Der Skill **Text zusammenführen** konsolidiert Text aus einer Sammlung von Feldern in einem einzigen Feld. 
 
@@ -143,6 +142,6 @@ Im oben gezeigten Beispiel wird davon ausgegangen, dass ein Feld mit normalisier
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Skills](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e26cf5ede2c8884719152b6d35f1b41eb092eda6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071801"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791897"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen #
 
@@ -38,7 +38,7 @@ Das Feature Hybrid Connections besteht aus zwei ausgehenden Aufrufen von Azure S
 Wenn Ihre App eine DNS-Anforderung stellt, die mit einem konfigurierten Hybridverbindungsendpunkt übereinstimmt, wird der ausgehende TCP-Datenverkehr über die Hybridverbindung weitergeleitet.  
 
 > [!NOTE]
-> Sie sollten folglich versuchen, stets einen DNS-Namen für Ihre Hybridverbindung zu verwenden. Einige Clientsoftware führen keine DNS-Suche durch, wenn der Endpunkt stattdessen eine IP-Adresse verwendet.
+> Sie sollten folglich versuchen, stets einen DNS-Namen für Ihre Hybridverbindung zu verwenden. Einige Clientsoftware führen keine DNS-Suche durch, wenn der Endpunkt stattdessen eine IP-Adresse verwendet. 
 >
 
 ### <a name="app-service-hybrid-connection-benefits"></a>Vorteile der App Service-Hybridverbindungen ###
@@ -62,6 +62,9 @@ Die folgenden Aktionen sind beispielsweise mit Hybridverbindungen nicht möglich
 - Zugreifen auf TCP-basierte Dienste, die dynamische Ports verwenden, wie der passive Modus für FTP oder der erweiterte passive Modus.
 - Unterstützung von LDAP, weil UDP erforderlich sein kann.
 - Unterstützung von Active Directory, da der Domänenbeitritt eines App Service-Workers nicht möglich ist.
+
+### <a name="prerequisites"></a>Voraussetzungen ###
+ - Windows App Service ist erforderlich. Es ist nur unter Windows verfügbar.  
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Hinzufügen und Erstellen von Hybridverbindungen in Ihrer App ##
 

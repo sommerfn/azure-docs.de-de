@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/17/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373542"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532834"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -39,6 +39,20 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert. Wenn S
 
 ---
 
+## <a name="october-2019"></a>Oktober 2019
+
+### <a name="deprecation-of-the-identityriskevent-api-for-azure-ad-identity-protection-risk-detections"></a>Die identityRiskEvent-API für Azure AD Identity Protection-Risikoerkennungen wurde als veraltet markiert.  
+
+**Typ:** Plan für Änderung  
+**Dienstkategorie:** Schutz der Identität (Identity Protection)  
+**Produktfunktion:** Identitätssicherheit und -schutz
+
+Als Reaktion auf Feedback von Entwicklern können Azure AD Premium P2-Abonnenten jetzt komplexe Abfragen für Risikoerkennungsdaten von Azure AD Identity Protection durchführen, indem sie die neue riskDetection-API für Microsoft Graph verwenden. Die vorhandene Betaversion der [identityRiskEvent](https://docs.microsoft.com/en-us/graph/api/resources/identityriskevent?view=graph-rest-beta)-API gibt etwa ab dem **10. Januar 2020** keine Daten mehr zurück. Wenn Ihre Organisation die identityRiskEvent-API verwendet, sollten Sie zur neuen riskDetection-API wechseln.
+
+Weitere Informationen zur neuen riskDetection-API finden Sie in der [Referenzdokumentation zur riskDetection-API](https://aka.ms/RiskDetectionsAPI).
+
+---
+
 ## <a name="september-2019"></a>September 2019
 
 ### <a name="deprecation-of-the-power-bi-content-packs"></a>Einstellung der Power BI-Inhaltspakete
@@ -50,6 +64,8 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert. Wenn S
 Power BI hat damit begonnen, Inhaltspakete aus dem Store als veraltet zu kennzeichnen, und ab dem **1. Oktober 2019** wird das Azure AD Power BI-Inhaltspaket nicht mehr unterstützt. Kunden, die derzeit das Inhaltspaket verwenden, können dieses weiterhin nutzen, auch wenn die zugrunde liegenden APIs ältere Versionen sind. Als Alternative zu diesem Inhaltspaket können Sie Azure AD-Arbeitsmappen (erstellt in Log Analytics) verwenden, um Erkenntnisse aus Ihren Azure AD-bezogenen Diensten zu gewinnen.
 
 Weitere Informationen zu Arbeitsmappen finden Sie unter [Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). Weitere Informationen zur Einstellung der Inhaltspakete finden Sie im Blogbeitrag mit der [Ankündigung der allgemeinen Verfügbarkeit von Power BI-Vorlagen-Apps](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/).
+
+---
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>„Mein Profil“ wird umbenannt und in die Kontoseite von Microsoft Office integriert
 

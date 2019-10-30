@@ -1,13 +1,13 @@
 ---
-title: Referenz zu OData-Vergleichsoperatoren – Azure Search
-description: OData-Vergleichsoperatoren (eq, ne, gt, lt, ge und le) in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Referenz zu OData-Vergleichsoperatoren
+titleSuffix: Azure Cognitive Search
+description: OData-Vergleichsoperatoren (eq, ne, gt, lt, ge, le) in Abfragen der kognitiven Azure-Suche.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a8bd8b05fd874e05e5e59042d461f4a4286c81e4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 068e2ec822f0a292ac83b3e48049830eb77b49f6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648059"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793382"
 ---
-# <a name="odata-comparison-operators-in-azure-search---eq-ne-gt-lt-ge-and-le"></a>OData-Vergleichsoperatoren in Azure Search: `eq`, `ne`, `gt`, `lt`, `ge` und `le`
+# <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-Vergleichsoperatoren in der kognitiven Azure-Suche: `eq`, `ne`, `gt`, `lt`, `ge` und `le`
 
-Der grundlegendste Vorgang in einem [OData-Filterausdruck](query-odata-filter-orderby-syntax.md) in Azure Search ist der Vergleich eines Felds mit einem bestimmten Wert. Es sind zwei Arten von Vergleich möglich: Gleichheitsvergleich und Bereichsvergleich. Sie können die folgenden Operatoren verwenden, um ein Feld mit einem konstanten Wert zu vergleichen:
+Der grundlegendste Vorgang in einem [OData-Filterausdruck](query-odata-filter-orderby-syntax.md) in der kognitiven Azure-Suche ist der Vergleich eines Felds mit einem bestimmten Wert. Es sind zwei Arten von Vergleich möglich: Gleichheitsvergleich und Bereichsvergleich. Sie können die folgenden Operatoren verwenden, um ein Feld mit einem konstanten Wert zu vergleichen:
 
 Gleichheitsoperatoren:
 
@@ -66,10 +66,10 @@ comparison_operator ::= 'gt' | 'lt' | 'ge' | 'le' | 'eq' | 'ne'
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#comparison_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 Es gibt zwei Formen von Vergleichsausdrücken. Der einzige Unterschied zwischen ihnen besteht darin, ob die Konstante auf der linken oder rechten Seite des Operators platziert wird. Der Ausdruck auf der anderen Seite des Operators muss eine **Variable** oder ein Funktionsaufruf sein. Eine Variable kann entweder ein Feldname oder eine Bereichsvariable im Fall eines [Lambdaausdrucks](search-query-odata-collection-operators.md) sein.
 
@@ -89,7 +89,7 @@ Die Datentypen auf beiden Seiten eines Vergleichsoperators müssen kompatibel se
 | `Edm.Int32` | `Edm.Int64` | – |
 | `Edm.Int32` | `Edm.Int32` | – |
 
-Für Vergleiche, die unzulässig sind (z.B. der Vergleich eines Felds vom Typ `Edm.Int64` mit `NaN`), gibt die Azure Search REST-API einen Fehler „HTTP 400: Ungültige Anforderung“ aus.
+Für Vergleiche, die unzulässig sind (z. B. Vergleich eines Felds vom Typ `Edm.Int64` mit `NaN`), gibt die REST-API der kognitiven Azure-Suche den Fehler „HTTP 400: Ungültige Anforderung“ aus.
 
 > [!IMPORTANT]
 > Auch wenn numerische Typvergleiche flexibel sind, wird dringend empfohlen, Vergleiche in Filtern zu schreiben, sodass der konstante Wert vom gleichen Datentyp ist wie die Variable oder Funktion, mit der er verglichen wird. Dies ist besonders wichtig beim Mischen von Gleitkomma- und Integerwerten, bei denen implizite Konvertierungen möglich sind, die zu einem Genauigkeitsverlust führen.
@@ -98,7 +98,7 @@ Für Vergleiche, die unzulässig sind (z.B. der Vergleich eines Felds vom Typ `E
 
 ### <a name="special-cases-for-null-and-nan"></a>Sonderfälle für `null` und `NaN`
 
-Bei der Verwendung von Vergleichsoperatoren ist es wichtig, sich daran zu erinnern, dass alle Nicht-Sammlungsfelder in Azure Search potenziell `null` sein können. Die folgende Tabelle zeigt alle möglichen Ergebnisse für einen Vergleichsausdruck, bei dem jede Seite `null` sein kann:
+Bei der Verwendung von Vergleichsoperatoren muss berücksichtigt werden, dass alle Nicht-Sammlungsfelder in der kognitiven Azure-Suche potenziell `null` sein können. Die folgende Tabelle zeigt alle möglichen Ergebnisse für einen Vergleichsausdruck, bei dem jede Seite `null` sein kann:
 
 | Operator | Ergebnis, wenn nur das Feld oder die Variable `null` ist | Ergebnis, wenn nur die Konstante `null` ist | Ergebnis, wenn sowohl das Feld oder die Variable als auch die Konstante `null` sind |
 | --- | --- | --- | --- |
@@ -111,7 +111,7 @@ Bei der Verwendung von Vergleichsoperatoren ist es wichtig, sich daran zu erinne
 
 Zusammenfassend lässt sich sagen, dass `null` nur mit sich selbst gleich ist und nicht kleiner oder größer als jeder andere Wert ist.
 
-Wenn Ihr Index Felder vom Typ `Edm.Double` aufweist und Sie `NaN`-Werte in diese Felder hochladen, müssen Sie dies beim Schreiben von Filtern berücksichtigen. Azure Search implementiert den IEEE 754-Standard für die Verarbeitung von `NaN`-Werten, und Vergleiche mit solchen Werten führen zu nicht eindeutigen Ergebnissen, wie in der folgenden Tabelle gezeigt.
+Wenn Ihr Index Felder vom Typ `Edm.Double` aufweist und Sie `NaN`-Werte in diese Felder hochladen, müssen Sie dies beim Schreiben von Filtern berücksichtigen. Bei der kognitiven Azure-Suche wird der IEEE 754-Standard für die Verarbeitung von `NaN`-Werten implementiert. Vergleiche mit solchen Werten führen zu nicht eindeutigen Ergebnissen, wie in der folgenden Tabelle gezeigt.
 
 | Operator | Ergebnis, wenn mindestens einer der Operanden `NaN` ist |
 | --- | --- |
@@ -156,7 +156,7 @@ Abgleichen von Dokumenten für Hotels, in denen mindestens ein Raum den Typ „D
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Filter in der kognitiven Azure-Suche](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

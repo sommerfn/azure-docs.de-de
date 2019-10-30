@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
-ms.custom: it-pro
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb424866a681316af23e9d2bba28a8da8c3a6f78
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286801"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592883"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -49,10 +49,15 @@ Die folgenden Administratorrollen sind verfügbar:
 
 ### <a name="application-administratorapplication-administrator-permissions"></a>[Anwendungsadministrator](#application-administrator-permissions)
 
-Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
+Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Beachten Sie, dass Benutzer, denen diese Rolle zugewiesen wurde, bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt werden.
 
 > [!IMPORTANT]
 > Diese Rolle ermöglicht die Verwaltung von Anmeldeinformationen für Anwendungen. Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Wenn der Identität der Anwendung der Zugriff auf Azure Active Directory gewährt wurde, z.B. die Berechtigung, Benutzer oder andere Objekte zu erstellen oder zu aktualisieren, kann ein dieser Rolle zugewiesener Benutzer diese Aktionen ausführen, während er die Identität der Anwendung annimmt. Diese Fähigkeit, die Identität der Anwendung anzunehmen, bedeutet ggf. eine Rechteerweiterung im Vergleich zu den Rollenzuweisungen des Benutzers in Azure AD. Beachten Sie, dass das Zuweisen eines Benutzers zur Anwendungsadministratorrolle ihm die Möglichkeit gibt, die Identität einer Anwendung anzunehmen.
+
+Diese Rolle ermöglicht auch die _Zustimmung_ zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Berechtigungen für Microsoft Graph und Azure AD Graph.
+
+> [!IMPORTANT]
+> Aufgrund dieser Ausnahme können Sie zwar Berechtigungen für _andere_ Apps (z. B. Drittanbieter-Apps oder Apps, die Sie registriert haben) zustimmen, jedoch nicht Berechtigungen für Azure AD selbst. Sie können diese Berechtigungen weiterhin als Teil der App-Registrierung _anfordern_, aber für das _Erteilen_ (d. h. die Zustimmung) dieser Berechtigungen ist ein Azure AD-Administrator erforderlich. Dies bedeutet, dass ein böswilliger Benutzer seine Berechtigungen nicht problemlos erhöhen kann, z. B. könnte er versuchen, eine App zu erstellen, die in das gesamte Verzeichnis schreiben kann, und sich durch die Berechtigungen dieser App selbst zu einem globalen Administrator zu machen.
 
 ### <a name="application-developerapplication-developer-permissions"></a>[Anwendungsentwickler](#application-developer-permissions)
 
@@ -219,12 +224,14 @@ Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und adm
 > [!NOTE]
 > Die Rolle „Globaler Leser“ weist zurzeit einige Einschränkungen auf.
 >
->* SharePoint Admin Center: Das SharePoint Admin Center unterstützt die Rolle „Globaler Leser“ nicht. „SharePoint“ wird im linken Bereich unter „Admin Centers“ in [Microsoft 365 Admin Center](https://admin.microsoft.com/Adminportal/Home#/homepage) nicht angezeigt, und der Zugriff wird verweigert, wenn Sie versuchen, zu *https://{Name der Azure AD-Organisation}-admin.sharepoint.com* zu wechseln.
+>* SharePoint Admin Center: Das SharePoint Admin Center unterstützt die Rolle „Globaler Leser“ nicht. „SharePoint“ wird im linken Bereich unter „Admin Center“ in [Microsoft 365 Admin Center](https://admin.microsoft.com/Adminportal/Home#/homepage) nicht angezeigt.
+>* [OneDrive Admin Center:](https://admin.onedrive.com/) OneDrive Admin Center unterstützt die Rolle „Globaler Leser“ nicht.
 >* [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/): Die Rolle „Globaler Leser“ kann den Bereitstellungsmodus einer Unternehmens-App nicht lesen.
 >* [M365 Admin Center](https://admin.microsoft.com/Adminportal/Home#/homepage): Die Rolle „Globaler Leser“ kann keine Kunden-Lockbox-Anforderungen lesen. Im linken Bereich von M365 Admin Center wird keine Registerkarte **Kunden-Lockbox-Anforderungen** unter **Support** angezeigt.
 >* [M365 Security Center](https://security.microsoft.com/homepage): Die Rolle „Globaler Leser“ kann die Vertraulichkeits- und Aufbewahrungsbezeichnungen nicht lesen. Im linken Bereich von M365 Security Center werden die Registerkarten **Vertraulichkeitsbezeichnungen**, **Aufbewahrungsbezeichnungen** und **Bezeichnungsanalyse** nicht angezeigt.
 >* [Teams Admin Center](https://admin.teams.microsoft.com): Die Rolle „Globaler Leser“ kann den **Teams-Lebenszyklus**, **Analysen und Berichte**, die **IP-Telefon-Geräteverwaltung** und den **App-Katalog** nicht lesen.
 >* [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) unterstützt die Rolle „Globaler Leser“ nicht.
+>* [Azure Information Protection:](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) Die Rolle „Globaler Leser“ wird nur für die [zentrale Berichterstellung](https://docs.microsoft.com/azure/information-protection/reports-aip) unterstützt, wenn sich Ihr Mandant nicht auf der [Plattform für einheitliche Bezeichnungen](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform) befindet.
 >
 > Diese Features befinden sich zurzeit in der Entwicklung.
 >

@@ -1,21 +1,21 @@
 ---
-title: Zuordnen von mit der kognitiven Suche angereicherten Eingabefeldern zu Ausgabefeldern – Azure Search
-description: Extrahieren Sie Quelldatenfelder und reichern Sie diese mit Daten an, um sie Ausgabefeldern in einem Azure Search-Index zuzuordnen.
+title: Zuordnen von mit KI angereicherten Eingabefeldern zu Ausgabefeldern
+titleSuffix: Azure Cognitive Search
+description: Extrahieren Sie Quelldatenfelder, und reichern Sie diese mit Daten an, um sie Ausgabefeldern in einem Index der kognitiven Azure-Suche zuzuordnen.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 4ceb8e6290e3e7f4fb552db13c97558db1c8c97e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 77f378f4e0c4a8e4827523e244f7b18c2a9ba336
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265509"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792107"
 ---
-# <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Zuordnen angereicherter Felder zu einem durchsuchbaren Index
+# <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Zuordnen von mit KI angereicherten Feldern zu einem durchsuchbaren Index
 
 In diesem Artikel erfahren Sie, wie Sie angereicherte Eingabefelder Ausgabefeldern in einem durchsuchbaren Index zuordnen. Nachdem Sie ein [Skillset definiert](cognitive-search-defining-skillset.md) haben, müssen Sie die Ausgabefelder aller Skills zuordnen, die Werte direkt für ein bestimmtes Feld in Ihrem Suchindex bereitstellen. Feldzuordnungen sind für das Verschieben von Inhalt aus angereicherten Dokumenten in den Index erforderlich.
 
@@ -72,4 +72,4 @@ Der Pfad in einem sourceFieldName kann ein Element oder mehrere Elemente darstel
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Ihre angereicherten Felder den durchsuchbaren Feldern zugeordnet haben, können Sie die Feldattribute für jedes der durchsuchbaren Felder [als Teil der Indexdefinition](search-what-is-an-index.md) festlegen.
 
-Weitere Informationen zu Feldzuordnungen finden Sie unter [Feldzuordnungen in Azure Search-Indexern](search-indexer-field-mappings.md).
+Weitere Informationen zu Feldzuordnungen finden Sie unter [Feldzuordnungen in Indexern der kognitiven Azure-Suche](search-indexer-field-mappings.md).

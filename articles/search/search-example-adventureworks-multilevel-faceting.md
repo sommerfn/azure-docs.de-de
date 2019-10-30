@@ -1,27 +1,27 @@
 ---
-title: 'Beispiel: Facets auf mehreren Ebenen – Azure Search'
+title: 'Beispiel: Facets mit mehreren Ebenen'
+titleSuffix: Azure Cognitive Search
 description: Informationen zum Erstellen von Facetingstrukturen für Taxonomien mit mehreren Ebenen zum Erstellen einer geschachtelten Navigationsstruktur, die Sie in Anwendungsseiten einbeziehen können.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 8672fa0911d1a031205bb3340fa0c03ab9492a28
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274084"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792942"
 ---
-# <a name="example-multi-level-facets-in-azure-search"></a>Beispiel: Facets auf mehreren Ebenen in Azure Search
+# <a name="example-multi-level-facets-in-azure-cognitive-search"></a>Beispiel: Facets mit mehreren Ebenen in der kognitiven Azure-Suche
 
-Azure Search-Schemas unterstützen nicht explizit Taxonomiekategorien mit mehreren Ebenen, aber Sie können sie annähern, indem Sie Inhalt vor der Indizierung bearbeiten und dann die Ergebnisse einer speziellen Behandlung unterziehen. 
+Schemas der kognitiven Azure-Suche unterstützen nicht explizit Taxonomiekategorien mit mehreren Ebenen, aber Sie können sie annähern, indem Sie Inhalt vor der Indizierung bearbeiten und dann die Ergebnisse einer speziellen Behandlung unterziehen. 
 
 ## <a name="start-with-the-data"></a>Der Anfang mit den Daten
 
-Das Beispiel in diesem Artikel baut auf einem der vorherigen Beispiele auf – [Modellieren der AdventureWorks Inventory-Datenbank für Azure Search](search-example-adventureworks-modeling.md) – um das Faceting mit mehreren Ebenen in Azure Search zu veranschaulichen.
+Das Beispiel in diesem Artikel baut auf einem der vorherigen Beispiele auf – [Modellieren der AdventureWorks Inventory-Datenbank](search-example-adventureworks-modeling.md) – um das Faceting mit mehreren Ebenen in der kognitiven Azure-Suche zu veranschaulichen.
 
 AdventureWorks verfügt über eine einfache Taxonomie mit zwei Ebenen mit einer Über-/Unterordnungsbeziehung. Für Taxonomietiefen dieser Struktur mit fester Länge kann die Taxonomie mit einer einfachen SQL-Join-Abfrage gruppiert werden:
 
@@ -39,7 +39,7 @@ LEFT JOIN
 
 ## <a name="indexing-to-a-collection-field"></a>Indizierung nach einem Collection-Feld
 
-Erstellen Sie in dem Index, der diese Struktur enthält, im Azure Search-Schema zum Speichern dieser Daten ein **Collection(Edm.String)** -Feld, um sicherzustellen, dass die Feldattribute durchsuchbar, filterbar, facettierbar und abrufbar vorhanden sind.
+Erstellen Sie in dem Index, der diese Struktur enthält, im Schema der kognitiven Azure-Suche zum Speichern dieser Daten ein **Collection(Edm.String)** -Feld, um sicherzustellen, dass die Feldattribute durchsuchbar, filterbar, facettierbar und abrufbar vorhanden sind.
 
 Senden Sie nun beim Indizieren von Inhalten, die sich auf eine bestimmte Taxonomiekategorie beziehen, die Taxonomie als Array mit Text aus jeder Ebene. Senden Sie z.B. für eine Entität mit `ProductCategoryId = 5 (Mountain Bikes)` das Feld als `[ "Bikes", "Bikes|Mountain Bikes"]`.
 
@@ -99,4 +99,4 @@ Dieses Verfahren skaliert, um komplexere Szenarien wie tiefere Taxonomiestruktur
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Beispiel: Modellieren der AdventureWorks Inventory-Datenbank für Azure Search](search-example-adventureworks-modeling.md)
+[Beispiel: Modellieren der AdventureWorks Inventory-Datenbank für die kognitive Azure-Suche](search-example-adventureworks-modeling.md)

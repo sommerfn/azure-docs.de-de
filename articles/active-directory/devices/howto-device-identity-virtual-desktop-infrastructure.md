@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f30174f6271a3aa85ecf277531b34ff932644e3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518154"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596354"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -87,4 +87,4 @@ Bei der Bereitstellung einer nicht beständigen VDI-Plattform müssen IT-Adminis
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren der Azure AD-Hybrideinbindung für in die Domäne eingebundene Windows-Geräte, die über AD FS verbunden sind](manage-stale-devices.md)
+[Konfigurieren der Azure Active Directory-Hybrideinbindung für eine Verbundumgebung](hybrid-azuread-join-federated-domains.md)

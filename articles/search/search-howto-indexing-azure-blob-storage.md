@@ -1,24 +1,26 @@
 ---
-title: Indizieren von Azure Blob Storage-Inhalten für die Volltextsuche – Azure Search
-description: Erfahren Sie, wie Sie Azure Blob Storage indizieren und Text aus Dokumenten mit Azure Search extrahieren.
-ms.date: 05/02/2019
-author: mgottein
+title: Indizieren von Azure Blob Storage-Inhalten für die Volltextsuche
+titleSuffix: Azure Cognitive Search
+description: Erfahren Sie, wie Sie Azure Blob Storage indizieren und Text aus Dokumenten mit der kognitiven Azure-Suche extrahieren.
 manager: nitinme
+author: mgottein
 ms.author: magottei
-services: search
-ms.service: search
 ms.devlang: rest-api
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.custom: seodec2018
-ms.openlocfilehash: 03f828be603720871672b9b5d90eb87dd283c002
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 11/04/2019
+ms.openlocfilehash: b093525fcabc31074b398444a2fceffd0f6d3493
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842544"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791791"
 ---
-# <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit Azure Search
-Dieser Artikel beschreibt, wie Sie Azure Search zum Indizieren von Dokumenten (z.B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure Blob Storage gespeichert sind. Zunächst werden grundlegende Informationen zu Einrichten und Konfigurieren eines Blobindexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen.
+# <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit der kognitiven Azure-Suche
+
+In diesem Artikel wird beschrieben, wie Sie die kognitive Azure-Suche zum Indizieren von Dokumenten (z. B. PDF- oder Microsoft Office-Dokumente und verschiedene andere gängige Formate) verwenden, die in Azure Blob Storage gespeichert sind. Zunächst werden grundlegende Informationen zu Einrichten und Konfigurieren eines Blobindexers erläutert. Anschließend folgt eine ausführlichere Betrachtung der Verhaltensweisen und Szenarien, die Ihnen voraussichtlich begegnen.
+
+<a name="SupportedFormats"></a>
 
 ## <a name="supported-document-formats"></a>Unterstützte Dokumentformate
 Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
@@ -29,8 +31,8 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 Sie können einen Azure Blob Storage-Indexer über folgende Elemente einrichten:
 
 * [Azure-Portal](https://ms.portal.azure.com)
-* Azure Search [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Mit dem Azure Search [.NET SDK](https://aka.ms/search-sdk)
+* [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
+* [.NET SDK](https://aka.ms/search-sdk) für die kognitive Azure-Suche
 
 > [!NOTE]
 > Einige Features (z.B. Feldzuordnungen) sind im Portal noch nicht verfügbar und müssen programmgesteuert verwendet werden.
@@ -116,9 +118,11 @@ Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird au
 
 Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
-Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Indexerzeitpläne für Azure Search](search-howto-schedule-indexers.md).
+Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
-## <a name="how-azure-search-indexes-blobs"></a>Wie indiziert Azure Search Blobs?
+<a name="how-azure-search-indexes-blobs"></a>
+
+## <a name="how-azure-cognitive-search-indexes-blobs"></a>Wie werden Blobs in der kognitiven Azure-Suche indiziert?
 
 Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metadaten und Textinhalt, Speicher- und Inhaltsmetadaten oder nur Speichermetadaten indizieren (nützlich, wenn Sie nur die Metadaten interessieren und den Inhalt des Blobs nicht indizieren müssen). Der Indexer extrahiert standardmäßig sowohl die Metadaten als auch den Inhalt.
 
@@ -130,7 +134,7 @@ Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metad
 * Der Textinhalt des Dokuments wird in ein Zeichenfolgefeld mit dem Namen `content` extrahiert.
 
 > [!NOTE]
-> Azure Search beschränkt die Menge des extrahierten Texts abhängig vom Tarif: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“ und 4 Millionen Zeichen für die Tarife „Standard“, „Standard S2“ und „Standard S3“. Für gekürzte Dokumente wird eine Warnung in die Statusantwort des Indexers einbezogen.  
+> Die kognitive Azure-Suche beschränkt die Menge des extrahierten Texts abhängig vom Tarif: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“ und 4 Millionen Zeichen für die Tarife „Standard“, „Standard S2“ und „Standard S3“. Für gekürzte Dokumente wird eine Warnung in die Statusantwort des Indexers einbezogen.  
 
 * Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert.
 * Standardmäßige Blob-Metadateneigenschaften werden in die folgenden Felder extrahiert:
@@ -138,7 +142,7 @@ Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metad
   * **metadata\_storage\_name** (Edm.String): der Dateiname des Blobs. Für ein Blob mit dem Namen „/my-container/my-folder/subfolder/resume.pdf“ lautet der Wert dieses Felds beispielsweise `resume.pdf`.
   * **metadata\_storage\_path** (Edm.String): der vollständige URI des Blobs, einschließlich Speicherkonto. Zum Beispiel, `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
   * **metadata\_storage\_content\_type** (Edm.String): Inhaltstyp, der mit dem Code angegeben wird, den Sie zum Hochladen des Blobs verwendet haben. Beispiel: `application/octet-stream`.
-  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset): Zeitstempel der letzten Änderung für das Blob. In Azure Search wird dieser Zeitstempel zum Identifizieren geänderter Blobs verwendet, um die erneute Indizierung aller Elemente nach der ersten Indizierung zu vermeiden.
+  * **metadata\_storage\_last\_modified** (Edm.DateTimeOffset): Zeitstempel der letzten Änderung für das Blob. In der kognitiven Azure-Suche wird dieser Zeitstempel zum Identifizieren geänderter Blobs verwendet, um die erneute Indizierung aller Elemente nach der ersten Indizierung zu vermeiden.
   * **metadata\_storage\_size** (Edm.Int64): Blob-Größe in Byte.
   * **metadata\_storage\_content\_md5** (Edm.String): MD5-Hash des Blob-Inhalts, falls verfügbar.
   * **metadata\_storage\_sas\_token** (Edm.String): ein temporäres SAS-Token, das von [benutzerdefinierten Qualifikationen](cognitive-search-custom-skill-interface.md) verwendet werden kann, um Zugriff auf den Blob zu erhalten. Dieses Token sollte nicht zur späteren Verwendung gespeichert werden, da es ablaufen kann.
@@ -148,13 +152,13 @@ Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metad
 Es ist nicht erforderlich, Felder für alle obigen Eigenschaften in Ihrem Suchindex zu definieren. Erfassen Sie einfach die Eigenschaften, die Sie für Ihre Anwendung benötigen.
 
 > [!NOTE]
-> Die Feldnamen im vorhandenen Index unterscheiden sich von den Feldnamen, die während der Dokumentextrahierung generiert werden. Sie können **Feldzuordnungen** verwenden, um die von Azure Search bereitgestellten Eigenschaftennamen den Feldnamen in Ihrem Suchindex zuzuordnen. Weiter unten finden Sie ein Beispiel für die Verwendung von Feldzuordnungen.
+> Die Feldnamen im vorhandenen Index unterscheiden sich von den Feldnamen, die während der Dokumentextrahierung generiert werden. Sie können **Feldzuordnungen** verwenden, um die in der kognitiven Azure-Suche bereitgestellten Eigenschaftennamen den Feldnamen in Ihrem Suchindex zuzuordnen. Weiter unten finden Sie ein Beispiel für die Verwendung von Feldzuordnungen.
 >
 >
 
 <a name="DocumentKeys"></a>
 ### <a name="defining-document-keys-and-field-mappings"></a>Definieren von Dokumentschlüsseln und Feldzuordnungen
-In Azure Search wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ „Edm.String“ verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist auch das einzige erforderliche Feld).  
+In der kognitiven Azure-Suche wird ein Dokument mit dem Dokumentschlüssel eindeutig identifiziert. Jeder Suchindex muss über genau ein Schlüsselfeld vom Typ „Edm.String“ verfügen. Das Schlüsselfeld ist für jedes Dokument erforderlich, das dem Index hinzugefügt wird (es ist auch das einzige erforderliche Feld).  
 
 Sie sollten sorgfältig abwägen, welches extrahierte Feld Sie dem Schlüsselfeld für Ihren Index zuordnen. Die Kandidaten lauten:
 
@@ -163,7 +167,7 @@ Sie sollten sorgfältig abwägen, welches extrahierte Feld Sie dem Schlüsselfel
 * Falls keine der Optionen oben für Sie geeignet ist, können Sie den Blobs eine benutzerdefinierte Metadateneigenschaft hinzufügen. Bei dieser Option ist es aber erforderlich, dass diese Metadateneigenschaft im Rahmen des Blob-Uploadvorgangs allen Blobs hinzugefügt wird. Da der Schlüssel eine erforderliche Eigenschaft ist, tritt für alle Blobs, die nicht über diese Eigenschaft verfügen, beim Indizieren ein Fehler auf.
 
 > [!IMPORTANT]
-> Wenn keine ausdrückliche Zuordnung für das Schlüsselfeld im Index vorhanden ist, wird in Azure Search automatisch `metadata_storage_path` als Schlüssel verwendet, und die Schlüsselwerte werden Base64-codiert (zweite Option oben).
+> Wenn keine ausdrückliche Zuordnung für das Schlüsselfeld im Index vorhanden ist, wird in der kognitiven Azure-Suche automatisch `metadata_storage_path` als Schlüssel verwendet, und die Schlüsselwerte werden Base64-codiert (zweite Option oben).
 >
 >
 
@@ -223,7 +227,7 @@ Mithilfe des `excludedFileNameExtensions`-Konfigurationsparameters können Sie v
       "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
     }
 
-Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExtensions`-Parameter vorhanden ist, untersucht Azure Search zunächst `indexedFileNameExtensions` und danach `excludedFileNameExtensions`. Das heißt, wenn die gleiche Dateierweiterung in beiden Listen vorhanden ist, wird sie von der Indizierung ausgeschlossen.
+Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExtensions`-Parameter vorhanden ist, wird in der kognitiven Azure-Suche zunächst `indexedFileNameExtensions` und danach `excludedFileNameExtensions` überprüft. Das heißt, wenn die gleiche Dateierweiterung in beiden Listen vorhanden ist, wird sie von der Indizierung ausgeschlossen.
 
 <a name="PartsOfBlobToIndex"></a>
 ## <a name="controlling-which-parts-of-the-blob-are-indexed"></a>Steuern, welche Teile des Blobs indiziert werden
@@ -268,11 +272,11 @@ Der Blobindexer wird standardmäßig beendet, sobald ein Blob mit einem nicht un
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
     }
 
-Für einige Blobs kann Azure Search den Inhaltstyp nicht bestimmen oder ist nicht in der Lage, ein Dokument mit eigentlich unterstütztem Inhaltstyp zu verarbeiten. Um diesen Fehlermodus zu ignorieren, legen Sie den Konfigurationsparameter `failOnUnprocessableDocument` auf FALSE fest:
+Für einige Blobs kann in der kognitiven Azure-Suche der Inhaltstyp nicht bestimmt oder ein Dokument mit eigentlich unterstütztem Inhaltstyp nicht verarbeitet werden. Um diesen Fehlermodus zu ignorieren, legen Sie den Konfigurationsparameter `failOnUnprocessableDocument` auf FALSE fest:
 
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 
-Azure Search schränkt die Größe der indizierten Blobs ein. Diese Grenzwerte werden in [Grenzwerte für den Azure Search-Dienst](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) dokumentiert. Zu große Blobs werden standardmäßig als Fehler behandelt. Sie können jedoch weiterhin Speichermetadaten übergroßer Blobs indizieren, wenn Sie den Konfigurationsparameter `indexStorageMetadataOnlyForOversizedDocuments` auf „true“ setzen: 
+Die kognitive Azure-Suche beschränkt die Größe der indizierten Blobs. Diese Grenzwerte sind unter [Dienstgrenzwerte in der kognitiven Azure-Suche](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) angegeben. Zu große Blobs werden standardmäßig als Fehler behandelt. Sie können jedoch weiterhin Speichermetadaten übergroßer Blobs indizieren, wenn Sie den Konfigurationsparameter `indexStorageMetadataOnlyForOversizedDocuments` auf „true“ setzen: 
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
@@ -291,7 +295,7 @@ Wenn Sie einen Blob-Indexer zur Ausführung nach einem Zeitplan einrichten, werd
 
 Damit das Löschen von Dokumenten unterstützt wird, sollten Sie die Strategie des „vorläufigen Löschens“ anwenden. Wenn Sie die Blobs direkt löschen, werden die entsprechenden Dokumente nicht aus dem Suchindex entfernt. Führen Sie stattdessen die folgenden Schritte aus:  
 
-1. Fügen Sie dem Blob eine benutzerdefinierte Metadateneigenschaft hinzu, um in Azure Search anzugeben, dass es logisch gelöscht wird.
+1. Fügen Sie dem Blob eine benutzerdefinierte Metadateneigenschaft hinzu, um in der kognitiven Azure-Suche anzugeben, dass das Blob logisch gelöscht wird.
 2. Konfigurieren Sie für die Datenquelle eine Richtlinie zur Erkennung des vorläufigen Löschens.
 3. Nachdem das Blob mit dem Indexer verarbeitet wurde (wie durch die API für den Indexerstatus gezeigt), können Sie das Blob physisch löschen.
 
@@ -318,7 +322,7 @@ Bei der folgenden Richtlinie wird ein Blob beispielsweise als gelöscht angesehe
 Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie Millionen von Blobs zu indizieren haben, können Sie durch das Partitionieren der Daten und Verwenden mehrerer Indexer zur parallelen Datenverarbeitung die Indizierung beschleunigen. Sie können es folgendermaßen einrichten:
 
 - Partitionieren Sie Ihre Daten in mehrere Blobcontainer oder virtuelle Ordner.
-- Richten Sie mehrere Azure Search-Datenquellen ein, eine pro Container oder Ordner. Verwenden Sie den Parameter `query`, um auf einen Blob-Ordner zu verweisen:
+- Richten Sie mehrere Datenquellen der kognitiven Azure-Suche ein – eine pro Container oder Ordner. Verwenden Sie den Parameter `query`, um auf einen Blob-Ordner zu verweisen:
 
     ```
     {
@@ -331,13 +335,13 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie
 
 - Erstellen Sie einen entsprechenden Indexer für jede Datenquelle. Alle Indexer können auf den gleichen Zielsuchindex zeigen.  
 
-- Eine Sucheinheit in Ihrem Dienst kann einen Indexer zu jeder angegebenen Uhrzeit ausführen. Das Erstellen von mehreren Indexern – wie oben beschrieben – ist nur nützlich, wenn sie tatsächlich parallel ausgeführt werden. Um mehrere Indexer parallel auszuführen, skalieren Sie Ihren Suchdienst horizontal hoch, indem Sie eine bestimmte Anzahl von Partitionen und Replikate erstellen. Wenn Ihr Suchdienst beispielsweise über 6 Sucheinheiten verfügt (z.B. 2 Partitionen x 3 Replikate), dann können 6 Indexers simultan ausgeführt werden. Dies führt zu einem sechsfachen Anstieg des Indizierungsdurchsatzes. Um mehr über die Skalierung und Kapazitätsplanung zu erfahren, gehen Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search](search-capacity-planning.md).
+- Eine Sucheinheit in Ihrem Dienst kann einen Indexer zu jeder angegebenen Uhrzeit ausführen. Das Erstellen von mehreren Indexern – wie oben beschrieben – ist nur nützlich, wenn sie tatsächlich parallel ausgeführt werden. Um mehrere Indexer parallel auszuführen, skalieren Sie Ihren Suchdienst horizontal hoch, indem Sie eine bestimmte Anzahl von Partitionen und Replikate erstellen. Wenn Ihr Suchdienst beispielsweise über 6 Sucheinheiten verfügt (z.B. 2 Partitionen x 3 Replikate), dann können 6 Indexers simultan ausgeführt werden. Dies führt zu einem sechsfachen Anstieg des Indizierungsdurchsatzes. Weitere Informationen zur Skalierung und Kapazitätsplanung finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in der kognitiven Azure-Suche](search-capacity-planning.md).
 
 ## <a name="indexing-documents-along-with-related-data"></a>Indizieren von Dokumenten zusammen mit den zugehörigen Daten
 
 Sie möchten möglicherweise Dokumente aus mehreren Quellen in Ihrem Index „zusammenbauen“. Womöglich möchten Sie z.B. Text aus Blobs mit anderen Metadaten zusammenführen, die in Cosmos DB gespeichert sind. Sie können auch die Indizierungs-API mit Push zusammen mit unterschiedlichen Indexern zum Erstellen von Suchdokumenten aus mehreren Teilen verwenden. 
 
-Damit dies funktioniert, müssen sich alle Indexer und andere Komponenten auf den Dokumentschlüssel einigen. Weitere Informationen zu diesem Thema finden Sie unter [Indizieren mehrerer Azure-Datenquellen](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources). Eine ausführliche exemplarische Vorgehensweise finden Sie im externen Artikel: [Combine documents with other data in Azure Search ](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in Azure Search).
+Damit dies funktioniert, müssen sich alle Indexer und andere Komponenten auf den Dokumentschlüssel einigen. Weitere Informationen zu diesem Thema finden Sie unter [Indizieren mehrerer Azure-Datenquellen](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources). Eine ausführliche exemplarische Vorgehensweise finden Sie im externen Artikel: [Combine documents with other data in Azure Cognitive Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in der kognitiven Azure-Suche).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indizierung von Nur-Text 
@@ -363,7 +367,7 @@ Standardmäßig wird von der `UTF-8`-Codierung ausgegangen. Um eine andere Codie
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>Inhaltstypspezifische Metadateneigenschaften
-In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentformat zusammengefasst, und es werden die Metadateneigenschaften beschrieben, die von Azure Search extrahiert werden.
+In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentformat zusammengefasst, und es werden die Metadateneigenschaften beschrieben, die bei der kognitiven Azure-Suche extrahiert werden.
 
 | Dokumentformat/Inhaltstyp | Inhaltstypspezifische Metadateneigenschaften | Verarbeitungsdetails |
 | --- | --- | --- |
@@ -394,5 +398,5 @@ In der folgenden Tabelle sind die Verarbeitungsschritte für jedes Dokumentforma
 | Nur-Text (text/plain) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Extrahieren von Text|
 
 
-## <a name="help-us-make-azure-search-better"></a>Helfen Sie uns bei der Verbesserung von Azure Search
+## <a name="help-us-make-azure-cognitive-search-better"></a>Helfen Sie uns bei der Verbesserung der kognitiven Azure-Suche
 Teilen Sie uns auf unserer [UserVoice-Website](https://feedback.azure.com/forums/263029-azure-search/) mit, wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben.

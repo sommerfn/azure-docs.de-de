@@ -1,23 +1,23 @@
 ---
-title: Modellieren von relationalen SQL-Daten für Import und Indizierung – Azure Search
-description: Es wird beschrieben, wie Sie relationale Daten modellieren und diese in ein vereinfachtes Resultset denormalisieren, um in Azure Search die Indizierung und die Volltextsuche zu ermöglichen.
+title: Modellieren von relationalen SQL-Daten für Import und Indizierung
+titleSuffix: Azure Cognitive Search
+description: Es wird beschrieben, wie Sie relationale Daten modellieren und diese in ein vereinfachtes Resultset denormalisieren, um in der kognitiven Azure-Suche die Indizierung und die Volltextsuche zu ermöglichen.
 author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/12/2019
 ms.author: heidist
-ms.openlocfilehash: 60dfae48b0aa1d6e0d9bc8e79d5ff2dedd744fd5
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 3b973dd05d23d190c77986ca9bf6d39656739cd8
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993581"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790096"
 ---
-# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-search"></a>Modellieren von relationalen SQL-Daten für Import und Indizierung in Azure Search
+# <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Modellieren von relationalen SQL-Daten für Import und Indizierung in der kognitiven Azure-Suche
 
-Azure Search akzeptiert ein vereinfachtes Rowset als Eingabe für die [Indizierungspipeline](search-what-is-an-index.md). Wenn Ihre Quelldaten aus verknüpften Tabellen in einer relationalen SQL Server-Datenbank stammen, wird in diesem Artikel erläutert, wie das Resultset erstellt und eine Beziehung zwischen übergeordneten und untergeordneten Elementen in einem Azure Search-Index modelliert wird.
+Die kognitive Azure-Suche akzeptiert ein vereinfachtes Rowset als Eingabe für die [Indizierungspipeline](search-what-is-an-index.md). Wenn Ihre Quelldaten aus verknüpften Tabellen in einer relationalen SQL Server-Datenbank stammen, wird in diesem Artikel erläutert, wie das Resultset erstellt und eine Beziehung zwischen übergeordneten und untergeordneten Elementen in einem Index für die kognitive Azure-Suche modelliert wird.
 
 Zur Veranschaulichung verwenden wir eine hypothetische Hoteldatenbank, die auf [Demodaten](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/hotels) basiert. Angenommen, die Datenbank besteht aus einer Tabelle „Hotels$“ mit 50 Hotels und einer Tabelle „Rooms$“ mit insgesamt 750 Zimmern unterschiedlicher Typen, Preise und Ausstattungen. Zwischen den Tabellen besteht eine 1:n-Beziehung. In unserem Ansatz stellt eine Sicht die Abfrage bereit, die 50 Zeilen zurückgibt, eine Zeile pro Hotel, wobei zugeordnete Zimmerdetails in die einzelnen Zeilen eingebettet sind.
 
@@ -26,7 +26,7 @@ Zur Veranschaulichung verwenden wir eine hypothetische Hoteldatenbank, die auf [
 
 ## <a name="the-problem-of-denormalized-data"></a>Das Problem denormalisierter Daten
 
-Eine der Herausforderungen bei der Arbeit mit 1: n-Beziehungen besteht darin, dass Standardabfragen, die auf verknüpften Tabellen basieren, denormalisierte Daten zurückgeben, was in einem Azure Search-Szenario nicht gut funktioniert. Sehen Sie sich das folgende Beispiel an, das Hotels und Räume verknüpft.
+Eine der Herausforderungen bei der Arbeit mit 1:n-Beziehungen besteht darin, dass Standardabfragen, die auf verknüpften Tabellen basieren, denormalisierte Daten zurückgeben, was in einem Szenario der kognitiven Azure-Suche nicht gut funktioniert. Sehen Sie sich das folgende Beispiel an, das Hotels und Räume verknüpft.
 
 ```sql
 SELECT * FROM Hotels$
@@ -38,13 +38,13 @@ Als Ergebnis dieser Abfrage werden alle Hotel-Felder zurückgegeben, gefolgt von
    ![Denormalisierte Daten, redundante Hoteldaten, wenn Room-Felder hinzugefügt werden](media/index-sql-relational-data/denormalize-data-query.png "Denormalisierte Daten, redundante Hoteldaten, wenn Room-Felder hinzugefügt werden")
 
 
-Diese Abfrage ist zwar oberflächlich erfolgreich (alle Daten werden in einem vereinfachten Rowset bereitgestellt), kann aber nicht die richtige Dokumentstruktur für die erwartete Sucherfahrung bereitstellen. Während der Indizierung erstellt Azure Search ein Suchdokument für jede erfasste Zeile. Wenn Ihre Suchdokumente wie die oben aufgeführten Ergebnisse aussehen, wären auch Duplikate vorhanden, sieben separate Dokumente allein schon für das Hotel Twin Dome. Eine Abfrage nach „Hotels in Florida“ würde sieben Ergebnisse nur für das Hotel Twin Dome zurückgeben, wodurch weitere relevante Hotels in den Suchergebnissen weiter nach unten rücken.
+Diese Abfrage ist zwar oberflächlich erfolgreich (alle Daten werden in einem vereinfachten Rowset bereitgestellt), kann aber nicht die richtige Dokumentstruktur für die erwartete Sucherfahrung bereitstellen. Während der Indizierung erstellt die kognitive Azure-Suche ein Suchdokument für jede erfasste Zeile. Wenn Ihre Suchdokumente wie die oben aufgeführten Ergebnisse aussehen, wären auch Duplikate vorhanden, sieben separate Dokumente allein schon für das Hotel Twin Dome. Eine Abfrage nach „Hotels in Florida“ würde sieben Ergebnisse nur für das Hotel Twin Dome zurückgeben, wodurch weitere relevante Hotels in den Suchergebnissen weiter nach unten rücken.
 
 Um die erwartete Darstellung eines Dokuments pro Hotel zu erhalten, sollte ein Rowset mit der richtigen Granularität, jedoch mit umfassenden Informationen bereitgestellt werden. Glücklicherweise können Sie dies problemlos erreichen, indem Sie die in diesem Artikel beschriebenen Techniken anwenden.
 
 ## <a name="define-a-query-that-returns-embedded-json"></a>Definieren einer Abfrage, die eingebetteten JSON-Code zurückgibt
 
-Um die erwartete Suchumgebung bereitzustellen, sollte Ihr Dataset aus einer Zeile für jedes Suchdokument in Azure Search bestehen. In unserem Beispiel möchten wir eine Zeile für jedes Hotel bereitstellen, aber die Benutzer sollen auch in der Lage sein, nach anderen zimmerbezogenen Feldern zu suchen, die für sie wichtig sind, wie z.B. Preis pro Nacht, Größe und Anzahl der Betten oder Strandblick – allen Informationen, die Teil der Zimmerdetails sind.
+Um die erwartete Suchumgebung bereitzustellen, sollte Ihr Dataset aus einer Zeile für jedes Suchdokument in der kognitiven Azure-Suche bestehen. In unserem Beispiel möchten wir eine Zeile für jedes Hotel bereitstellen, aber die Benutzer sollen auch in der Lage sein, nach anderen zimmerbezogenen Feldern zu suchen, die für sie wichtig sind, wie z.B. Preis pro Nacht, Größe und Anzahl der Betten oder Strandblick – allen Informationen, die Teil der Zimmerdetails sind.
 
 Die Lösung besteht darin, die Zimmerdetails als geschachtelten JSON-Code zu erfassen und die JSON-Struktur dann in ein Feld in einer Sicht einzufügen, wie im zweiten Schritt gezeigt. 
 
@@ -104,14 +104,14 @@ Die Lösung besteht darin, die Zimmerdetails als geschachtelten JSON-Code zu erf
 
    ![Rowset aus der HotelRooms-Sicht](media/index-sql-relational-data/hotelrooms-rowset.png "Rowset aus der HotelRooms-Sicht")
 
-Dieses Rowset kann nun in Azure Search importiert werden.
+Dieses Rowset kann nun in die kognitive Azure-Suche importiert werden.
 
 > [!NOTE]
-> Bei dieser Vorgehensweise wird davon ausgegangen, dass eingebetteter JSON-Code die [maximalen Spaltengrößenbeschränkungen von SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server) nicht überschreitet. Wenn Ihre Daten nicht geeignet sind, können Sie eine programmgesteuerte Vorgehensweise ausprobieren, wie im [Beispiel Modellieren der AdventureWorks Inventory-Datenbank für Azure Search](search-example-adventureworks-modeling.md) veranschaulicht.
+> Bei dieser Vorgehensweise wird davon ausgegangen, dass eingebetteter JSON-Code die [maximalen Spaltengrößenbeschränkungen von SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server) nicht überschreitet. Wenn Ihre Daten nicht geeignet sind, können Sie eine programmgesteuerte Vorgehensweise ausprobieren, wie im [Beispiel: Modellieren der AdventureWorks Inventory-Datenbank für die kognitive Azure-Suche](search-example-adventureworks-modeling.md) veranschaulicht.
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Verwenden einer komplexen Sammlung für die „n“-Seite einer 1: n-Beziehung
 
-Erstellen Sie auf der Azure Search-Seite ein Indexschema, das die 1: n-Beziehung mithilfe von geschachteltem JSON modelliert. Das Resultset, das Sie im vorherigen Abschnitt erstellt haben, entspricht im Allgemeinen dem unten angegebenen Indexschema (aus Platzgründen haben wir einige Felder gekürzt).
+Erstellen Sie auf der Seite für die kognitive Azure-Suche ein Indexschema, das die 1:n-Beziehung mithilfe von geschachteltem JSON modelliert. Das Resultset, das Sie im vorherigen Abschnitt erstellt haben, entspricht im Allgemeinen dem unten angegebenen Indexschema (aus Platzgründen haben wir einige Felder gekürzt).
 
 Das folgende Beispiel ähnelt dem Beispiel in [Modellieren komplexer Datentypen](search-howto-complex-data-types.md#creating-complex-fields). Die *Rooms*-Struktur, die im Mittelpunkt dieses Artikels steht, befindet sich in der Feldsammlung eines Indexes namens *Hotels*. Dieses Beispiel zeigt auch einen komplexen Typ für *Address*, der sich von *Rooms* darin unterscheidet, dass er aus einem festgelegten Satz von Elementen besteht, im Gegensatz zu der in einer Sammlung zulässigen beliebigen Anzahl von Elementen.
 
@@ -148,7 +148,7 @@ Das folgende Beispiel ähnelt dem Beispiel in [Modellieren komplexer Datentypen]
 }
 ```
 
-Mit dem vorherigen Resultset und dem oben aufgeführten Indexschema verfügen Sie über alle erforderlichen Komponenten für einen erfolgreichen Indizierungsvorgang. Das vereinfachte Dataset erfüllt die Indizierungsanforderungen, behält jedoch Detailinformationen bei. Im Azure Search-Index werden Suchergebnisse problemlos in die hotelbasierten Entitäten eingeteilt, wobei der Kontext einzelner Räume und ihre Attribute beibehalten werden.
+Mit dem vorherigen Resultset und dem oben aufgeführten Indexschema verfügen Sie über alle erforderlichen Komponenten für einen erfolgreichen Indizierungsvorgang. Das vereinfachte Dataset erfüllt die Indizierungsanforderungen, behält jedoch Detailinformationen bei. Im Index für die kognitive Azure-Suche werden Suchergebnisse problemlos in die hotelbasierten Entitäten eingeteilt, wobei der Kontext einzelner Räume und ihre Attribute beibehalten werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

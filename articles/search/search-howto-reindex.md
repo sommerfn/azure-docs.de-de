@@ -1,26 +1,25 @@
 ---
-title: 'Neuerstellen eines Azure Search-Indexes oder Aktualisieren von durchsuchbarem Inhalt: Azure Search'
-description: Fügen Sie neue Elemente zu einer Neuerstellung oder einer inkrementellen Teilindizierung hinzu, aktualisieren Sie bereits vorhandene Elemente oder Dokumente, oder löschen Sie veraltete Dokumente, um einen Azure Search-Index zu aktualisieren.
-services: search
-author: HeidiSteen
+title: Neuerstellen eines Index der kognitiven Azure-Suche
+titleSuffix: Azure Cognitive Search
+description: Hinzufügen neuer Elemente, Aktualisieren vorhandener Elemente oder Dokumente oder Löschen veralteter Dokumente in einer Neuerstellung oder einer inkrementellen Teilindizierung, um einen Index der kognitiven Azure-Suche zu aktualisieren.
 manager: nitinme
-ms.service: search
-ms.topic: conceptual
-ms.date: 02/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719849"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793712"
 ---
-# <a name="how-to-rebuild-an-azure-search-index"></a>Neuerstellen eines Azure Search-Indexes
+# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Neuerstellen eines Index der kognitiven Azure-Suche
 
-In diesem Artikel werden die Neuerstellung eines Azure Search-Indexes und die Umstände erläutert, unter denen eine Neuerstellung erforderlich ist. Außerdem werden Empfehlungen bereitgestellt, wie die Auswirkungen von Neuerstellungen auf laufende Abfrageanforderungen auf ein Mindestmaß reduziert werden können.
+In diesem Artikel werden die Neuerstellung eines Index der kognitiven Azure-Suche und die Umstände erläutert, unter denen eine Neuerstellung erforderlich ist. Außerdem werden Empfehlungen gegeben, wie die Auswirkungen von Neuerstellungen auf laufende Abfrageanforderungen auf ein Mindestmaß reduziert werden können.
 
-Eine *Neuerstellung* bezieht sich auf Löschen und Neuerstellen der physischen Datenstrukturen, die einem Index zugeordnet sind, einschließlich aller auf Feldern basierenden invertierten Indizes. In Azure Search können einzelne Felder nicht gelöscht und neu erstellt werden. Um einen Index neu zu erstellen, muss der gesamte Feldspeicher gelöscht, basierend auf einem vorhandenen oder überarbeiteten Indexschema neu erstellt und dann mit Daten neu aufgefüllt werden, die mithilfe von Push an den Index übertragen oder per Pull aus externen Quellen bezogen werden. Normalerweise werden Indizes während der Entwicklung neu erstellt. Es kann jedoch vorkommen, dass Sie einen Index auf Produktionsebene neu erstellen müssen, um Strukturänderungen zu berücksichtigen, wenn beispielsweise komplexe Typen oder Felder zu Vorschlagsfunktionen hinzugefügt werden.
+Eine *Neuerstellung* bezieht sich auf Löschen und Neuerstellen der physischen Datenstrukturen, die einem Index zugeordnet sind, einschließlich aller auf Feldern basierenden invertierten Indizes. In der kognitiven Azure-Suche können einzelne Felder nicht gelöscht und neu erstellt werden. Um einen Index neu zu erstellen, muss der gesamte Feldspeicher gelöscht, basierend auf einem vorhandenen oder überarbeiteten Indexschema neu erstellt und dann mit Daten neu aufgefüllt werden, die mithilfe von Push an den Index übertragen oder per Pull aus externen Quellen bezogen werden. Normalerweise werden Indizes während der Entwicklung neu erstellt. Es kann jedoch vorkommen, dass Sie einen Index auf Produktionsebene neu erstellen müssen, um Strukturänderungen zu berücksichtigen, wenn beispielsweise komplexe Typen oder Felder zu Vorschlagsfunktionen hinzugefügt werden.
 
 Im Gegensatz zu Neuerstellungen, bei denen ein Index offlinegeschaltet wird, wird die *Datenaktualisierung* als Hintergrundaufgabe ausgeführt. Sie können Dokumente mit minimalen Unterbrechungen für Abfrageworkloads hinzufügen, entfernen und ersetzen, auch wenn die Ausführung von Abfragen in der Regel längere Zeit in Anspruch nimmt. Weitere Informationen zum Aktualisieren von Indexinhalten finden Sie unter [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
@@ -33,7 +32,7 @@ Im Gegensatz zu Neuerstellungen, bei denen ein Index offlinegeschaltet wird, wir
 | Aktualisieren oder Löschen einer Analysetooldefinition in einem Index | Sie können eine bestehende Analysetoolkonfiguration (Analysetool, Tokenizer, Tokenfilter oder Zeichenfilter) im Index nicht löschen oder ändern, es sei denn, Sie erstellen den gesamten Index neu. |
 | Hinzufügen eines Felds zu einer Vorschlagsfunktion | Wenn ein Feld bereits vorhanden ist, und Sie es einer [Vorschlagsfunktion](index-add-suggesters.md) hinzufügen möchten, müssen Sie den Index neu erstellen. |
 | Löschen eines Felds | Um alle Spuren eines Felds physisch entfernen zu können, müssen Sie den Index neu erstellen. Wenn eine sofortige Wiederherstellung nicht sinnvoll ist, können Sie den Anwendungscode so ändern, dass der Zugriff auf das Feld „gelöscht“ deaktiviert wird. Die Felddefinition und die Inhalte bleiben physisch bis zur nächsten Neuerstellung im Index, wenn Sie ein Schema verwenden, bei dem das betreffende Feld ausgelassen wird. |
-| Wechseln zwischen Ebenen | Wenn Sie mehr Kapazität benötigen, gibt es kein direktes Upgrade im Azure-Portal. Es muss ein neuer Dienst erstellt werden, und Indizes müssen von Grund auf für den neuen Dienst erstellt werden. Um diesen Prozess zu automatisieren, können Sie den **index-backup-restore**-Beispielcode in diesem [Azure Search .NET-Beispielrepository](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. Diese App sichert Ihren Index in einer Reihe von JSON-Dateien und erstellt ihn dann in einem Suchdienst, den Sie angeben, neu.|
+| Wechseln zwischen Ebenen | Wenn Sie mehr Kapazität benötigen, gibt es kein direktes Upgrade im Azure-Portal. Es muss ein neuer Dienst erstellt werden, und Indizes müssen von Grund auf für den neuen Dienst erstellt werden. Um diesen Prozess zu automatisieren, können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. Diese App sichert Ihren Index in einer Reihe von JSON-Dateien und erstellt ihn dann in einem Suchdienst, den Sie angeben, neu.|
 
 Alle übrigen Änderungen können ohne Auswirkungen auf die vorhandenen physischen Strukturen vorgenommen werden. Insbesondere ist für die folgenden Änderungen *keine* Indexneuerstellung erforderlich:
 
@@ -45,11 +44,11 @@ Alle übrigen Änderungen können ohne Auswirkungen auf die vorhandenen physisch
 + Hinzufügen, Aktualisieren oder Löschen von CORS-Einstellungen
 + Hinzufügen, Aktualisieren oder Löschen von synonymMaps
 
-Wenn Sie ein neues Feld hinzufügen, erhalten vorhandene indizierte Dokumente einen NULL-Wert für das neue Feld. Bei einer späteren Datenaktualisierung ersetzen Werte aus externen Quelldaten die von Azure Search hinzugefügten NULL-Werte. Weitere Informationen zum Aktualisieren von Indexinhalten finden Sie unter [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Wenn Sie ein neues Feld hinzufügen, erhalten vorhandene indizierte Dokumente einen NULL-Wert für das neue Feld. Bei einer späteren Datenaktualisierung werden die mit der kognitiven Azure-Suche hinzugefügten NULL-Werte durch Werte aus externen Quelldaten ersetzt. Weitere Informationen zum Aktualisieren von Indexinhalten finden Sie unter [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
 ## <a name="partial-or-incremental-indexing"></a>Teilindizierung oder inkrementelle Indizierung
 
-In Azure Search können Sie die Indizierung nicht auf Feldbasis steuern und bestimmte Felder löschen oder neu erstellen. Ebenso gibt es keinen integrierten Mechanismus für das [Indizieren von Dokumenten basierend auf Kriterien](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Alle Anforderungen im Hinblick auf die kriteriengesteuerte Indizierung müssen durch benutzerdefinierten Code abgedeckt werden.
+In der kognitiven Azure-Suche können Sie die Indizierung nicht nach Feldern steuern, um bestimmte Felder zu löschen oder neu zu erstellen. Ebenso gibt es keinen integrierten Mechanismus für das [Indizieren von Dokumenten basierend auf Kriterien](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Alle Anforderungen im Hinblick auf die kriteriengesteuerte Indizierung müssen durch benutzerdefinierten Code abgedeckt werden.
 
 Eine Möglichkeit, die jedoch einfach umzusetzen ist, ist die *Aktualisierung von Dokumenten* in einem Index. Für viele Suchlösungen sind die externen Quelldaten nur temporär zugänglich, und die Synchronisierung zwischen Quelldaten und einem Suchindex ist gängige Praxis. Rufen Sie im Code den Vorgang zum [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) oder die [.NET-Entsprechung](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexesoperationsextensions.createorupdate?view=azure-dotnet) auf, um den Indexinhalt zu aktualisieren oder um Werte für ein neues Feld hinzuzufügen.
 
@@ -79,7 +78,7 @@ Der folgende Workflow ist eigentlich für die REST-API bestimmt, gilt aber gleic
 
 3. Geben Sie im Anforderungstext ein Indexschema mit den geänderten oder modifizierten Felddefinitionen an. Der Anforderungstext enthält das Indexschema sowie Konstrukte für Bewertungsprofile, Analysetools, Vorschlagsfunktionen und CORS-Optionen. Schemaanforderungen werden unter [Erstellen eines Indexes](https://docs.microsoft.com/rest/api/searchservice/create-index) dokumentiert.
 
-4. Senden Sie eine Anforderung zur [Indexaktualisierung](https://docs.microsoft.com/rest/api/searchservice/update-index), um den physischen Ausdruck des Indexes in Azure Search neu zu erstellen. 
+4. Senden Sie eine Anforderung zur [Indexaktualisierung](https://docs.microsoft.com/rest/api/searchservice/update-index), um den physischen Ausdruck des Index in der kognitiven Azure-Suche neu zu erstellen. 
 
 5. [Laden Sie den Index mit Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) aus einer externen Quelle.
 
@@ -88,7 +87,7 @@ Bei der Indexerstellung wird für jedes Feld im Indexschema physischer Speicher 
 Wenn Sie den Index laden, wird der invertierte Index der einzelnen Felder mit allen eindeutigen, mit Token versehenen Wörtern aus den einzelnen Dokumenten aufgefüllt, zusammen mit einer Zuordnung zu entsprechenden Dokument-IDs. Beim Indizieren eines Datasets mit Hotels enthält ein invertierter Index, der für ein Feld „Stadt“ erstellt wurde, beispielsweise Begriffe für Seattle, Portland usw. Bei Dokumenten, die Seattle oder Portland im Feld „Stadt“ enthalten, wird die Dokument-ID neben dem Begriff aufgeführt. Bei jedem Vorgang zum [Hinzufügen, Aktualisieren oder Löschen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) wird die Liste aus Begriffen und Dokument-IDs entsprechend aktualisiert.
 
 > [!NOTE]
-> Wenn Sie strikte SLA-Anforderungen einhalten müssen, sollten Sie speziell für diese Aufgabe einen neuen Dienst bereitstellen, bei dem Entwicklung und Indizierung vollständig isoliert von einem Produktionsindex stattfinden. Ein separater Dienst wird auf eigener Hardware ausgeführt, sodass keine Ressourcenkonflikte entstehen können. Nach Abschluss der Entwicklung behalten Sie den neuen Index bei und leiten Abfragen an den neuen Endpunkt und Index um, oder Sie führen fertiggestellten Code aus, um einen überarbeiteten Index für Ihren ursprünglichen Azure Search-Dienst zu veröffentlichen. Zurzeit gibt es keinen Mechanismus zum Verschieben eines sofort einsatzbereiten Indexes zu einem anderen Dienst.
+> Wenn Sie strikte SLA-Anforderungen einhalten müssen, sollten Sie speziell für diese Aufgabe einen neuen Dienst bereitstellen, bei dem Entwicklung und Indizierung vollständig isoliert von einem Produktionsindex stattfinden. Ein separater Dienst wird auf eigener Hardware ausgeführt, sodass keine Ressourcenkonflikte entstehen können. Nach Abschluss der Entwicklung behalten Sie den neuen Index bei und leiten Abfragen an den neuen Endpunkt und Index um, oder Sie führen fertiggestellten Code aus, um einen überarbeiteten Index für den ursprünglichen Dienst der kognitiven Azure-Suche zu veröffentlichen. Zurzeit gibt es keinen Mechanismus zum Verschieben eines sofort einsatzbereiten Indexes zu einem anderen Dienst.
 
 ## <a name="view-updates"></a>Anzeigen von Updates
 
@@ -103,4 +102,4 @@ Sie können mit der Abfrage eines Indexes beginnen, sobald das erste Dokument ge
 + [Azure Cosmos DB-Indexer](search-howto-index-cosmosdb.md)
 + [Azure Blob Storage-Indexer](search-howto-indexing-azure-blob-storage.md)
 + [Azure Table Storage-Indexer](search-howto-indexing-azure-tables.md)
-+ [Sicherheit in Azure Search](search-security-overview.md)
++ [Sicherheit in der kognitiven Azure-Suche](search-security-overview.md)

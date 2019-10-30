@@ -1,24 +1,23 @@
 ---
-title: Sicherheitsfilter zum Einschränken von Ergebnissen – Azure Search
-description: Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Benutzeridentitäten
-ms.service: search
-ms.topic: conceptual
-services: search
-ms.date: 05/02/2019
+title: Sicherheitsfilter zum Einschränken von Ergebnissen
+titleSuffix: Azure Cognitive Search
+description: Zugriffssteuerung für Inhalte der kognitiven Azure-Suche mithilfe von Sicherheitsfiltern und Benutzeridentitäten.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
-ms.custom: seodec2018
-ms.openlocfilehash: 4d1ffa5b29a56d32a4f6a8ccf40f5bafd27795e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186491"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794280"
 ---
-# <a name="security-filters-for-trimming-results-in-azure-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in Azure Search
+# <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in der kognitiven Azure-Suche
 
-Sie können Sicherheitsfilter anwenden, um Suchergebnisse in Azure Search basierend auf der Benutzeridentität einzuschränken. Diese Suchfunktion erfordert im Allgemeinen das Vergleichen der Identität derjenigen, die die Suche anfordern, mit einem Feld, das die Prinzipien enthält, wer Berechtigungen für das Dokument besitzt. Wenn eine Übereinstimmung gefunden wird, erhält der Benutzer oder Prinzipal (z.B. eine Gruppe oder Rolle) Zugriff auf dieses Dokument.
+Sie können Sicherheitsfilter anwenden, um Suchergebnisse in der kognitiven Azure-Suche basierend auf der Benutzeridentität einzuschränken. Diese Suchfunktion erfordert im Allgemeinen das Vergleichen der Identität derjenigen, die die Suche anfordern, mit einem Feld, das die Prinzipien enthält, wer Berechtigungen für das Dokument besitzt. Wenn eine Übereinstimmung gefunden wird, erhält der Benutzer oder Prinzipal (z.B. eine Gruppe oder Rolle) Zugriff auf dieses Dokument.
 
 Eine Möglichkeit, um das Filtern der Sicherheit zu erreichen, erfolgt über eine komplizierte Disjunktion von Gleichheitsausdrücken, z.B. `Id eq 'id1' or Id eq 'id2'` usw. Dieser Ansatz ist fehleranfällig, schwierig zu verwalten und verlangsamt die Antwortzeit von Anfragen um mehrere Sekunden, wenn die Liste Hunderte oder Tausende von Werten enthält. 
 
@@ -35,7 +34,7 @@ Dieser Artikel erläutert, wie Sie das Filtern von Sicherheit mithilfe der folge
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird vorausgesetzt, dass Sie über ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), einen [Azure Search-Dienst](https://docs.microsoft.com/azure/search/search-create-service-portal) und einen [Azure Search-Index](https://docs.microsoft.com/azure/search/search-create-index-portal) verfügen.  
+In diesem Artikel wird vorausgesetzt, dass Sie über ein [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), einen [Dienst für die kognitive Azure-Suche](https://docs.microsoft.com/azure/search/search-create-service-portal) und einen [Index für die kognitive Azure-Suche](https://docs.microsoft.com/azure/search/search-create-index-portal) verfügen.  
 
 ## <a name="create-security-field"></a>Erstellen des Sicherheitsfelds
 
@@ -113,7 +112,7 @@ Vollständige Details zum Hinzufügen oder Aktualisieren von Dokumenten finden S
 
 Für das Kürzen von Dokumenten basierend auf dem `group_ids`-Zugriff sollten Sie eine Suchabfrage mit einem `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))`-Filter eingeben, bei der „group_id1, group_id2,...“ die Gruppen sind, zu denen der Aussteller der Suchanforderung gehört.
 Dieser Filter vergleicht alle Dokumente, für die das `group_ids`-Feld einen der angegebenen Bezeichner enthält.
-Vollständige Details zum Durchsuchen von Dokumenten mithilfe von Azure Search finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Vollständige Details zum Durchsuchen von Dokumenten mithilfe der kognitiven Azure-Suche finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 Beachten Sie, dass dieses Beispiel veranschaulicht, wie Sie Dokumente mithilfe einer POST-Anforderung durchsuchen.
 
 Geben Sie die HTTP POST-Anforderung aus:
@@ -152,10 +151,10 @@ Es sollten die Dokumente zurückgegeben werden, bei denen `group_ids` entweder �
 ```
 ## <a name="conclusion"></a>Zusammenfassung
 
-Auf diese Weise können Sie Ergebnisse basierend auf der Benutzeridentität und der `search.in()`-Funktion von Azure Search filtern. Sie können mithilfe dieser Funktion Prinzipalbezeichner für den anfordernden Benutzer übergeben, um sie mit den Prinzipalbezeichnern zu vergleichen, die dem entsprechenden Zieldokument zugeordnet sind. Wenn eine Suchanforderung verarbeitet wird, filtert die `search.in`-Funktion die Suchergebnisse heraus, für die keiner der Prinzipale des Benutzers über Lesezugriff verfügt. Der Prinzipalbezeichner kann beispielsweise Sicherheitsgruppen, Rollen oder sogar die Identität des Benutzers darstellen.
+Auf diese Weise können Sie Ergebnisse basierend auf der Benutzeridentität und der `search.in()`-Funktion der kognitiven Azure-Suche filtern. Sie können mithilfe dieser Funktion Prinzipalbezeichner für den anfordernden Benutzer übergeben, um sie mit den Prinzipalbezeichnern zu vergleichen, die dem entsprechenden Zieldokument zugeordnet sind. Wenn eine Suchanforderung verarbeitet wird, filtert die `search.in`-Funktion die Suchergebnisse heraus, für die keiner der Prinzipale des Benutzers über Lesezugriff verfügt. Der Prinzipalbezeichner kann beispielsweise Sicherheitsgruppen, Rollen oder sogar die Identität des Benutzers darstellen.
  
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Auf der Active Directory-Identität basierende Zugriffssteuerung mit Azure Search-Filtern](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filter in Azure Search](search-filters.md)
-+ [Datensicherheit und Zugriffssteuerung in Azure Search-Vorgängen](search-security-overview.md)
++ [Auf der Active Directory-Identität basierende Zugriffssteuerung mit Filtern der kognitiven Azure-Suche](search-security-trimming-for-azure-search-with-aad.md)
++ [Filter in der kognitiven Azure-Suche](search-filters.md)
++ [Datensicherheit und Zugriffssteuerung in Vorgängen der kognitiven Azure-Suche](search-security-overview.md)

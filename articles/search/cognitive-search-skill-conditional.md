@@ -1,24 +1,23 @@
 ---
-title: Die Qualifikation „Bedingt“ der kognitiven Suche (Azure Search) | Microsoft-Dokumentation
-description: Die Funktion „Bedingt“ ermöglicht das Filtern, das Erstellen von Standardwerten und das Zusammenführen von Werten.
-services: search
+title: Kognitiver Skill „Bedingt“
+titleSuffix: Azure Cognitive Search
+description: Der Skill „Bedingt“ in der kognitiven Azure-Suche ermöglicht Filtern, Erstellen von Standardwerten und Zusammenführen von Werten in einer Skillsetdefinition.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265812"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792046"
 ---
-#   <a name="conditional-skill"></a>Qualifikation „Bedingt“
+# <a name="conditional-cognitive-skill"></a>Kognitiver Skill „Bedingt“
 
-Die *Funktion „Bedingt“* ermöglicht Azure Search-Szenarios, die eine boolesche Operation erfordern, um zu bestimmen, welche Daten einer Ausgabe zugewiesen werden. Zu diesen Szenarios gehören die Filterung, die Zuweisung eines Standardwerts und das Zusammenführung von Daten auf der Grundlage einer Bedingung.
+Der Skill **Bedingt** ermöglicht Szenarien der kognitiven Azure-Suche, die eine boolesche Operation erfordern, um zu bestimmen, welche Daten einer Ausgabe zugewiesen werden. Zu diesen Szenarios gehören die Filterung, die Zuweisung eines Standardwerts und das Zusammenführung von Daten auf der Grundlage einer Bedingung.
 
 Der folgende Pseudocode veranschaulicht, wozu die Funktion „Bedingt“ dient:
 
@@ -176,5 +175,5 @@ Einige Parameter werden ausgewertet. Daher müssen Sie das dokumentierte Muster 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Skills](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)

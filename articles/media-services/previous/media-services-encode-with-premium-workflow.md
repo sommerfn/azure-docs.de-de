@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca5de657ad45f53cff0cb01d5fe9cc412baf4533
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463901"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792304"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Erweiterte Codierung mit dem Media Encoder Premium Workflow
 > [!NOTE]
 > Der in diesem Artikel beschriebene Media Encoder Premium Workflow-Medienprozessor ist in China nicht verfügbar.
 >
 >
-
-Fragen zu Encoder Premium senden Sie per E-Mail an mepd@microsoft.com.
 
 ## <a name="overview"></a>Übersicht
 Microsoft Azure Media Services stellt den **Media Encoder Premium Workflow** -Medienprozessor vor. Dieser Prozessor bietet leistungsstarke Codierungsfunktionen für Ihre bedarfsgesteuerten Premium-Workflows.
@@ -231,7 +229,9 @@ namespace MediaEncoderPremiumWorkflowSample
 }
 ```
 
-Fragen zu Encoder Premium senden Sie per E-Mail an mepd@microsoft.com.
+## <a name="need-help"></a>Sie brauchen Hilfe?
+
+Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,25 +1,23 @@
 ---
-title: Sprachfilter für eine mehrsprachige Inhalte in einem Suchindex – Azure Search
+title: Sprachfilter für mehrsprachige Inhalte in einem Suchindex
+titleSuffix: Azure Cognitive Search
 description: Filterkriterien zur Unterstützung der mehrsprachigen Suche, wobei der Gültigkeitsbereich der Suchabfrage auf sprachspezifische Felder festgelegt wird.
-author: HeidiSteen
 manager: nitinme
-services: search
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 10/23/2017
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 1eced868b180a916355d6f9fbfc8cd47a5d7d6e2
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2762ce42f0d3f5829682e0910c452746a65ef2f3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649864"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792870"
 ---
-# <a name="how-to-filter-by-language-in-azure-search"></a>Filtern nach Sprache in Azure Search 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filtern nach Sprache in der kognitiven Azure-Suche 
 
-In einer mehrsprachigen Suchanwendung ist es wichtig, nach Ergebnissen in der Sprache des Benutzers suchen und entsprechende Ergebnisse abrufen zu können. In Azure Search kann hierzu beispielsweise eine Reihe von Feldern für die Speicherung von Zeichenfolgen in einer bestimmten Sprache erstellt und die Volltextsuche dann bei der Abfrage auf diese Felder beschränkt werden.
+In einer mehrsprachigen Suchanwendung ist es wichtig, nach Ergebnissen in der Sprache des Benutzers suchen und entsprechende Ergebnisse abrufen zu können. Um die Sprachanforderungen einer mehrsprachigen App zu erfüllen, kann in der kognitiven Azure-Suche beispielsweise eine Reihe von Feldern für die Speicherung von Zeichenfolgen in einer bestimmten Sprache erstellt und die Volltextsuche dann bei der Abfrage auf diese Felder beschränkt werden.
 
 Mithilfe von Abfrageparametern in der Anforderung wird der Gültigkeitsbereich der Suchabfrage festgelegt, und Ergebnisse aus Feldern, deren Inhalt nicht der gewünschten Sucherfahrung entspricht, werden ignoriert.
 
@@ -28,11 +26,11 @@ Mithilfe von Abfrageparametern in der Anforderung wird der Gültigkeitsbereich d
 | **searchFields** | Grenzt die Volltextsuche auf die Liste der angegebenen Felder ein. |
 | **$select** | Kürzt die Antwort, sodass nur die von Ihnen angegebenen Felder berücksichtigt werden. Standardmäßig werden alle abrufbaren Felder zurückgegeben. Mit dem Parameter **$select** können Sie auswählen, welche Felder berücksichtigt werden sollen. |
 
-Der Erfolg dieser Methode hängt von der Integrität der Feldinhalte ab. Azure Search übersetzt keine Zeichenfolgen und führt auch keine Spracherkennung durch. Sie müssen selbst dafür sorgen, dass die Felder die erwarteten Zeichenfolgen enthalten.
+Der Erfolg dieser Methode hängt von der Integrität der Feldinhalte ab. Die kognitive Azure-Suche übersetzt keine Zeichenfolgen und führt auch keine Spracherkennung durch. Sie müssen selbst dafür sorgen, dass die Felder die erwarteten Zeichenfolgen enthalten.
 
 ## <a name="define-fields-for-content-in-different-languages"></a>Definieren von Feldern für Inhalt in verschiedenen Sprachen
 
-In Azure Search sind Abfragen auf einen einzelnen Index ausgerichtet. Entwickler, die sprachspezifische Zeichenfolgen in einer einzelnen Suchumgebung bereitstellen möchten, definieren üblicherweise dedizierte Felder, um die Werte zu speichern – also ein Feld für englische Zeichenfolgen, ein Feld für Französisch und so weiter. 
+In der kognitiven Azure-Suche sind Abfragen auf einen einzelnen Index ausgerichtet. Entwickler, die sprachspezifische Zeichenfolgen in einer einzelnen Suchumgebung bereitstellen möchten, definieren üblicherweise dedizierte Felder, um die Werte zu speichern – also ein Feld für englische Zeichenfolgen, ein Feld für Französisch und so weiter. 
 
 In unseren Beispielen (etwa im [Immobilienbeispiel](search-get-started-portal.md) weiter unten) sind Ihnen wahrscheinlich bereits Felddefinitionen wie auf dem folgenden Screenshot aufgefallen. Dieses Beispiel zeigt die Sprachanalysezuweisungen für die Felder in diesem Index. Aus Leistungsgründen empfiehlt es sich, Felder mit Textinhalt bei der Volltextsuche mit einer Analysekomponente zu kombinieren, die die linguistischen Regeln der Zielsprache behandelt.
 
@@ -64,8 +62,8 @@ parameters =
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Filter in Azure Search](search-filters.md)
++ [Filter in der kognitiven Azure-Suche](search-filters.md)
 + [Sprachanalysen](https://docs.microsoft.com/rest/api/searchservice/language-support)
-+ [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md)
++ [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md)
 + [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
 

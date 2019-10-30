@@ -1,13 +1,13 @@
 ---
-title: OData-Referenz zu „$select“ – Azure Search
-description: OData-Sprachreferenz für die Syntax von „$select“ in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData-Referenz zu „$select“
+titleSuffix: Azure Cognitive Search
+description: OData-Sprachreferenz für die Syntax von „$select“ in Abfragen der kognitiven Azure-Suche.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7786974f3d39f9cbc81e1ffea955156d623f1476
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647871"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793244"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>OData-Syntax von „$select“ in Azure Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$select“ in der kognitiven Azure-Suche
 
- Sie können den [OData-Parameter **$select**](query-odata-filter-orderby-syntax.md) verwenden, um die in die Suchergebnisse von Azure Search einzubeziehenden Felder auszuwählen. In diesem Artikel wird die Syntax von **$select** detailliert beschrieben. Weitere allgemeine Informationen zur Verwendung von **$select** beim Darstellen von Suchergebnissen finden Sie unter [Arbeiten mit Suchergebnissen in Azure Search](search-pagination-page-layout.md).
+ Sie können den [OData-Parameter **$select**](query-odata-filter-orderby-syntax.md) verwenden, um die in die Suchergebnisse der kognitiven Azure-Suche einzubeziehenden Felder auszuwählen. In diesem Artikel wird die Syntax von **$select** detailliert beschrieben. Weitere allgemeine Informationen zur Verwendung von **$select** beim Darstellen von Suchergebnissen finden Sie unter [Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Syntax
 
@@ -45,10 +45,10 @@ field_path ::= identifier('/'identifier)*
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 Der Parameter **$select** ist in zwei Formen vorhanden:
 
@@ -110,7 +110,7 @@ Ein Beispielergebnis könnte wie folgt aussehen:
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Arbeiten mit Suchergebnissen in Azure Search](search-pagination-page-layout.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche](search-pagination-page-layout.md)
+- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

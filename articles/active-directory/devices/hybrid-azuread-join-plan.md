@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 66e583a75f7103a7cccf560d537e440ba47cae5a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389556"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596334"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -75,7 +75,7 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 
 Azure AD-Hybrideinbindung wird zurzeit nicht unterstützt, wenn Ihre Umgebung aus einer einzelnen AD-Gesamtstruktur besteht, die Identitätsdaten mit mehr als einem Azure AD-Mandanten synchronisiert.
 
-Azure AD Hybrideinbindung wird zurzeit nicht unterstützt, wenn eine virtuelle Desktopinfrastruktur (VDI) verwendet wird.
+Wenn in Ihrer Umgebung Virtual Desktop Infrastructure (VDI) verwendet wird, finden Sie unter [Geräteidentität und Desktopvirtualisierung](https://docs.microsoft.com/en-us/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure) weitere Informationen.
 
 Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. Ab dem Windows 10-Release 1903 werden TPMs 1.2 nicht mehr für Azure AD Hybrid Join verwendet, und Geräte mit diesen TPMs werden so betrachtet, als würden sie nicht über ein TPM verfügen.
 

@@ -1,24 +1,23 @@
 ---
-title: Die Qualifikation „OCR“ der kognitiven Suche – Azure Search
-description: Extrahieren Sie Text aus Bilddateien mithilfe der optischen Zeichenerkennung (OCR) in einer Azure Search-Anreicherungspipeline.
-services: search
+title: Der Skill „OCR“
+titleSuffix: Azure Cognitive Search
+description: Extrahieren von Text aus Bilddateien mithilfe der optischen Zeichenerkennung (OCR) in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: da1ca218f7a3d33e6ceb08b3f8d0f632b8b752b7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265329"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791922"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
-Mit der Qualifikation für die optische Zeichenerkennung (OCR) wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Diese Qualifikation verwendet die durch [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services bereitgestellten Machine Learning-Modelle. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
+Mit dem Skill für die **optische Zeichenerkennung (OCR)** wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Diese Qualifikation verwendet die durch [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services bereitgestellten Machine Learning-Modelle. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
 
 + Die API [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) wird für nicht englische Sprachen verwendet. 
 + Für Englisch wird die neue API [Read](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) verwendet.
@@ -33,9 +32,9 @@ Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden 
 + .TIFF
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in der kognitiven Azure-Suche an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für die kognitive Azure-Suche](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
 
 
 ## <a name="skill-parameters"></a>Skillparameter
@@ -206,7 +205,7 @@ Im oben gezeigten Beispiel für das Skillset wird davon ausgegangen, dass ein Fe
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Skills](cognitive-search-predefined-skills.md)
 + [Der Skill „Text zusammenführen“](cognitive-search-skill-textmerger.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

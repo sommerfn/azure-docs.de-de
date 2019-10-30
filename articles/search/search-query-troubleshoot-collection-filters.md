@@ -1,13 +1,13 @@
 ---
-title: Problembehandlung bei OData-Sammlungsfiltern – Azure Search
-description: Beheben von OData-Sammlungsfilterfehlern in Azure Search-Abfragen
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Problembehandlung von OData-Sammlungsfiltern
+titleSuffix: Azure Cognitive Search
+description: Beheben von OData-Sammlungsfilterfehlern in Abfragen der kognitiven Azure-Suche.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fbd43cc13d3b7377668aad2fadc874ae47422ee1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647948"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793185"
 ---
-# <a name="troubleshooting-odata-collection-filters-in-azure-search"></a>Problembehandlung bei OData-Sammlungsfiltern in Azure Search
+# <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Problembehandlung von OData-Sammlungsfiltern in der kognitiven Azure-Suche
 
-Um in Azure Search nach Sammlungsfeldern zu [filtern](query-odata-filter-orderby-syntax.md), können Sie die [Operatoren `any` und `all`](search-query-odata-collection-operators.md) zusammen mit **Lambdaausdrücken** verwenden. Ein Lambdaausdruck ist ein Unterfilter, der auf jedes Element einer Sammlung angewendet wird.
+Um in der kognitiven Azure-Suche nach Sammlungsfeldern zu [filtern](query-odata-filter-orderby-syntax.md), können Sie die [Operatoren `any` und `all`](search-query-odata-collection-operators.md) zusammen mit **Lambdaausdrücken** verwenden. Ein Lambdaausdruck ist ein Unterfilter, der auf jedes Element einer Sammlung angewendet wird.
 
 In einem Lambdaausdruck sind nicht alle Funktionen von Filterausdrücken verfügbar. Die jeweils verfügbaren Funktionen hängen vom Datentyp des Sammlungsfelds ab, nach dem Sie filtern möchten. Wenn Sie versuchen, eine Funktion in einem Lambdaausdruck zu verwenden, die in diesem Kontext nicht unterstützt wird, kann dies zu einem Fehler führen. Wenn solche Fehler beim Versuch auftreten, einen komplexen Filter über Sammlungsfelder zu schreiben, kann Ihnen dieser Artikel dabei helfen, das Problem zu beheben.
 
@@ -64,7 +64,7 @@ Die Regeln für das Schreiben gültiger Sammlungsfilter sind für jeden Datentyp
 In Lambdaausdrücken für Zeichenfolgensammlungen können nur die Vergleichsoperatoren `eq` und `ne` verwendet werden.
 
 > [!NOTE]
-> Die Operatoren `lt`/`le`/`gt`/`ge` für Zeichenfolgen werden von Azure Search nicht unterstützt, weder innerhalb noch außerhalb eines Lambdaausdrucks.
+> Die Operatoren `lt`/`le`/`gt`/`ge` für Zeichenfolgen werden von der kognitiven Azure-Suche nicht unterstützt, weder innerhalb noch außerhalb eines Lambdaausdrucks.
 
 Der Textkörper eines `any` kann nur auf Gleichheit überprüfen, während der Textkörper eines `all` nur auf Ungleichheit überprüfen kann.
 
@@ -125,7 +125,7 @@ Wie für Zeichenfolgensammlungen gelten auch für `Edm.GeographyPoint`-Sammlunge
 - Im Textkörper eines `all` muss die Funktion `geo.intersects` negiert werden. Im Textkörper eines `any` darf die Funktion `geo.intersects` dagegen nicht negiert werden.
 - Im Textkörper eines `any` können Geoausdrücke mit `or` kombiniert werden. Im Textkörper eines `all` können diese Ausdrücke mit `and` kombiniert werden.
 
-Die oben genannten Einschränkungen bestehen aus ähnlichen Gründen wie die für Zeichenfolgensammlungen geltenden Einschränkungen in Bezug auf Gleichheit/Ungleichheit. Unter [Grundlegendes zu OData-Sammlungsfiltern in Azure Search](search-query-understand-collection-filters.md) werden diese Gründe genauer erläutert.
+Die oben genannten Einschränkungen bestehen aus ähnlichen Gründen wie die für Zeichenfolgensammlungen geltenden Einschränkungen in Bezug auf Gleichheit/Ungleichheit. Unter [Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-understand-collection-filters.md) werden diese Gründe genauer erläutert.
 
 Nachfolgend finden Sie einige Beispiele für zulässige Filter für `Edm.GeographyPoint`-Sammlungen:
 
@@ -197,7 +197,7 @@ Es gibt jedoch Einschränkungen in Bezug darauf, wie solche Vergleichsausdrücke
 
 Lambdaausdrücke über komplexe Sammlungen unterstützen eine viel flexiblere Syntax als Lambdaausdrücke über Sammlungen einfacher Typen. Sie können jedes Filterkonstrukt innerhalb eines Lambdaausdrucks verwenden, das Sie außerhalb eines solchen verwenden können, mit nur zwei Ausnahmen.
 
-Erstens: Die Funktionen `search.ismatch` und `search.ismatchscoring` werden in Lambdaausdrücken nicht unterstützt. Weitere Informationen finden Sie unter [Grundlegendes zu OData-Sammlungsfiltern in Azure Search](search-query-understand-collection-filters.md).
+Erstens: Die Funktionen `search.ismatch` und `search.ismatchscoring` werden in Lambdaausdrücken nicht unterstützt. Weitere Informationen finden Sie unter [Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-understand-collection-filters.md).
 
 Zweitens: Das Verweisen auf Felder, die NICHT an die Bereichsvariable *gebunden* sind (so genannte *freie Variablen*), ist unzulässig. Betrachten Sie beispielsweise die folgenden zwei äquivalenten OData-Filterausdrücke:
 
@@ -217,16 +217,16 @@ Diese Einschränkung sollte in der Praxis kein Problem darstellen, weil immer di
 
 In der folgenden Tabelle werden die Regeln für das Konstruieren gültiger Filter für jeden Sammlungsdatentyp zusammengefasst.
 
-[!INCLUDE [Limitations on OData lambda expressions in Azure Search](../../includes/search-query-odata-lambda-limitations.md)]
+[!INCLUDE [Limitations on OData lambda expressions in Azure Cognitive Search](../../includes/search-query-odata-lambda-limitations.md)]
 
 Beispiele für das Konstruieren gültiger Filter für jeden Anwendungsfall finden Sie unter [Schreiben gültiger Sammlungsfilter](#bkmk_examples).
 
-Wenn Sie häufig Filter schreiben und das Verstehen der Regeln der ersten Prinzipien Ihnen mehr helfen würde, als sie nur auswendig zu lernen, lesen Sie [Grundlegendes zu OData-Sammlungsfiltern in Azure Search](search-query-understand-collection-filters.md).
+Wenn Sie häufig Filter schreiben und das Verstehen der Regeln der ersten Prinzipien Ihnen mehr helfen würde, als sie nur auswendig zu lernen, lesen Sie [Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-understand-collection-filters.md).
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Grundlegendes zu OData-Sammlungsfiltern in Azure Search](search-query-understand-collection-filters.md)
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-understand-collection-filters.md)
+- [Filter in der kognitiven Azure-Suche](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

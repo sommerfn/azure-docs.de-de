@@ -1,22 +1,23 @@
 ---
-title: 'Dienstgrenzwerte für Ebenen und SKUs: Azure Search'
-description: Grenzwerte für den Dienst, die bei der Kapazitätsplanung verwendet werden, sowie Höchstwerte für Anforderungen und Antworten für Azure Search.
-author: HeidiSteen
+title: Dienstgrenzwerte für Ebenen und SKUs
+titleSuffix: Azure Cognitive Search
+description: Grenzwerte für den Dienst, die bei der Kapazitätsplanung verwendet werden, sowie Höchstwerte für Anforderungen und Antworten für die kognitive Azure-Suche.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/03/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: d70812779d392cc4555c91599fad37c2d2c68ba5
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947779"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793579"
 ---
-# <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
-Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
+# <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
+
+Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung der kognitiven Azure-Suche](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
 
 + **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist. Indizierungs- und Abfrageanforderungen werden auf Replikaten und Partitionen ausgeführt, die von anderen Mandanten verwendet werden.
 
@@ -68,11 +69,11 @@ Ab Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif 
 
   ![Kachel „Nutzung“](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-<sup>1</sup> Auch ohne SKU-spezifische Dokumentgrenzwerte gilt für jeden Index weiterhin ein maximaler Sicherheitsgrenzwert, um die Stabilität des Diensts sicherzustellen. Dieses Limit stammt von Lucene. Jedes Azure Search-Dokument wird intern als ein oder mehrere Lucene-Dokumente indiziert. Die Anzahl der Lucene-Dokumente pro Azure Search-Dokument hängt von der Gesamtanzahl der Elemente in komplexen Sammlungsfeldern ab. Jedes Element wird als separates Lucene-Dokument indiziert. Ein Dokument mit 3 Elementen in einem komplexen Sammlungsfeld wird beispielsweise als 4 Lucene-Dokumente indiziert: 1 für das Dokument selbst und 3 für die Elemente. Maximal sind pro Index ungefähr 25 Milliarden Lucene-Dokumente zulässig.
+<sup>1</sup> Auch ohne SKU-spezifische Dokumentgrenzwerte gilt für jeden Index weiterhin ein maximaler Sicherheitsgrenzwert, um die Stabilität des Diensts sicherzustellen. Dieses Limit stammt von Lucene. Jedes Dokument der kognitiven Azure-Suche wird intern als ein oder mehrere Lucene-Dokumente indiziert. Die Anzahl der Lucene-Dokumente pro Suchdokument hängt von der Gesamtanzahl der Elemente in komplexen Sammlungsfeldern ab. Jedes Element wird als separates Lucene-Dokument indiziert. Ein Dokument mit 3 Elementen in einem komplexen Sammlungsfeld wird beispielsweise als 4 Lucene-Dokumente indiziert: 1 für das Dokument selbst und 3 für die Elemente. Maximal sind pro Index ungefähr 25 Milliarden Lucene-Dokumente zulässig.
 
 ### <a name="regions-previously-having-document-limits"></a>Regionen, für die noch Dokumentgrenzwerte galten
 
-Sollte im Portal ein Dokumentgrenzwert angegeben sein, wurde Ihr Dienst entweder vor Ende 2017 oder in einem Rechenzentrum erstellt, in dem Azure Search-Dienste in Clustern mit geringerer Kapazität gehostet werden:
+Wenn im Portal ein Dokumentgrenzwert angegeben ist, wurde Ihr Dienst entweder vor Ende 2017 oder in einem Rechenzentrum erstellt, in dem Dienste der kognitiven Azure-Suche in Clustern mit geringerer Kapazität gehostet werden:
 
 + Australien (Osten)
 + Asien, Osten
@@ -140,13 +141,13 @@ Die maximal zulässige Anzahl von Synonymzuordnungen variiert je nach Tarif. Jed
 
 QPS-Schätzungen müssen unabhängig von jedem Kunde erstellt werden. Indexgröße und Komplexität, Abfragegröße und Komplexität sowie der Umfang des Datenverkehrs sind Hauptentscheidungskriterium für den QPS-Wert. Es gibt keine Möglichkeit, sinnvolle Schätzungen abzugeben, wenn diese Faktoren unbekannt sind.
 
-Schätzungen sind besser vorhersagbar, wenn sie für Dienste berechnet werden, die auf dedizierten Ressourcen ausgeführt werden (Basic- und Standard-Tarife). Sie können den QPS-Wert genauer schätzen, da Sie die Kontrolle über mehr Parameter haben. Anleitungen zur Herangehensweise für Schätzungen finden Sie unter [Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+Schätzungen sind besser vorhersagbar, wenn sie für Dienste berechnet werden, die auf dedizierten Ressourcen ausgeführt werden (Basic- und Standard-Tarife). Sie können den QPS-Wert genauer schätzen, da Sie die Kontrolle über mehr Parameter haben. Anleitungen zur Herangehensweise für Schätzungen finden Sie unter [Leistung und Optimierung der kognitiven Azure-Suche](search-performance-optimization.md).
 
 Für die Tarife vom Typ „Storage Optimized“ sollten Sie einen geringeren Abfragedurchsatz und eine höhere Latenz erwarten als für die Tarife vom Typ „Standard“.  Die Methodik zum Schätzen der zu erwartenden Abfrageleistung entspricht der der Standard-Tarife.
 
-## <a name="data-limits-cognitive-search"></a>Datengrenzwerte (kognitive Suche)
+## <a name="data-limits-ai-enrichment"></a>Datengrenzwerte (KI-Anreicherung)
 
-Für eine [Pipeline für die kognitive Suche](cognitive-search-concept-intro.md), die Aufrufe zur [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Standpunktanalyse](cognitive-search-skill-sentiment.md) und [Sprachenerkennung](cognitive-search-skill-language-detection.md) an eine Textanalyseressource sendet, gelten Datengrenzwerte. Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
+Für eine [KI-Anreicherungspipeline](cognitive-search-concept-intro.md), die Aufrufe zur [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Standpunktanalyse](cognitive-search-skill-sentiment.md) und [Sprachenerkennung](cognitive-search-skill-language-detection.md) an eine Textanalyseressource sendet, gelten Datengrenzwerte. Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Drosselungslimits
 
@@ -167,7 +168,7 @@ Statische Grenzwerte für Anforderungsraten für Indexvorgänge:
 * Maximal 32 Felder in $orderby-Klausel
 * Maximale Suchbegriffgröße ist 32.766 Byte (32 KB minus 2 Bytes) von UTF-8-codiertem Text
 
-<sup>1</sup> In Azure Search darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die ansonsten keine theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Supported data types](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) (Unterstützte Datentypen).)
+<sup>1</sup> In der kognitiven Azure-Suche darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die keine anderen theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).)
 
 ## <a name="api-response-limits"></a>API-Antwortengrenzwerte
 * Maximale Rückgabe von 1000 Dokumenten pro Seite mit Suchergebnissen

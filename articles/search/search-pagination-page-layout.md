@@ -1,31 +1,29 @@
 ---
-title: Arbeiten mit Suchergebnisse – Azure Search
-description: Strukturieren und sortieren Sie Suchergebnisse, erfahren Sie die Dokumentanzahl, und fügen Sie den Suchergebnissen in Azure Search eine Inhaltsnavigation hinzu.
-author: HeidiSteen
+title: Arbeiten mit Suchergebnissen
+titleSuffix: Azure Cognitive Search
+description: Strukturieren und Sortieren von Suchergebnissen, Abrufen der Dokumentanzahl und Hinzufügen einer Inhaltsnavigation zu den Suchergebnissen in der kognitiven Azure-Suche.
 manager: nitinme
-services: search
-ms.service: search
-ms.devlang: ''
-ms.topic: conceptual
-ms.date: 06/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 9fa2baf64dbb35d85c55635d7522075d61bfc17d
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647702"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793449"
 ---
-# <a name="how-to-work-with-search-results-in-azure-search"></a>Arbeiten mit Suchergebnissen in Azure Search
-Dieser Artikel enthält Anleitungen dazu, wie Standardelemente einer Seite mit Suchergebnissen implementiert werden, z.B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation. Seitenbezogene Optionen, die Daten oder Informationen zu Ihren Suchergebnissen beitragen, werden über die [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)-Anforderungen angegeben, die an den Azure Search-Dienst gesendet werden. 
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
+Dieser Artikel enthält Anleitungen dazu, wie Standardelemente einer Seite mit Suchergebnissen implementiert werden, z.B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation. Seitenbezogene Optionen, die Daten oder Informationen zu den Suchergebnissen beitragen, werden über die [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)-Anforderungen angegeben, die an den Dienst der kognitiven Azure-Suche gesendet werden. 
 
 In der REST-API enthalten Anforderungen einen GET-Befehl, Pfad- und Abfrageparameter, denen der Dienst entnimmt, was angefordert wird und wie die Antwort zu formulieren ist. Im .NET-SDK ist die entsprechende API die [DocumentSearchResult-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
 Einige Codebeispiele beinhalten eine Web-Front-End-Schnittstelle, die Sie hier finden: [Demo-App „New York City Jobs“](https://azjobsdemo.azurewebsites.net/) und [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und  Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Informationen zur Anforderungssyntax finden Sie unter [Azure Search-Dienst-REST-API](https://docs.microsoft.com/rest/api/searchservice).
+> Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und  Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Informationen zur Anforderungssyntax finden Sie unter [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice).
 >
 
 ## <a name="total-hits-and-page-counts"></a>Gesamtanzahl der Treffer und die Seitenanzahl
@@ -34,7 +32,7 @@ Grundsätzlich werden praktisch auf allen Suchseiten die Gesamtanzahl der von ei
 
 ![][1]
 
-In Azure Search verwenden Sie die Parameter `$count`, `$top` und `$skip` zur Rückgabe dieser Werte. Das folgende Beispiel enthält eine Beispielanforderung für die Gesamtzahl der Treffer in einem Index namens „online-catalog“, die als `@odata.count` zurückgegeben wird:
+In der kognitiven Azure-Suche verwenden Sie die Parameter `$count`, `$top` und `$skip`, um diese Werte zurückzugeben. Das folgende Beispiel enthält eine Beispielanforderung für die Gesamtzahl der Treffer in einem Index namens „online-catalog“, die als `@odata.count` zurückgegeben wird:
 
     GET /indexes/online-catalog/docs?$count=true
 
@@ -56,7 +54,7 @@ Auf einer Seite mit Suchergebnissen empfiehlt es sich, eine Miniaturansicht, ein
 
  ![][2]
 
-In Azure Search verwenden Sie `$select` und eine [Search-API-Anforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents), um diese Umgebung zu implementieren.
+In der kognitiven Azure-Suche verwenden Sie `$select` und eine [Search-API-Anforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents), um diese Umgebung zu implementieren.
 
 So wird eine Teilmenge von Feldern für ein gekacheltes Layout zurückzugeben:
 
@@ -74,7 +72,7 @@ Oft wird für die Sortierreihenfolge standardmäßig Relevanz festgelegt, aber e
 
  ![][3]
 
-In Azure Search basiert die Sortierung auf dem `$orderby`-Ausdruck für alle Felder, die als `"Sortable": true.` indiziert werden. Eine `$orderby`-Klausel ist ein OData-Ausdruck. Informationen zur Syntax finden Sie unter [OData-Ausdruckssyntax für Filter und Sortierklauseln](query-odata-filter-orderby-syntax.md).
+In der kognitiven Azure-Suche basiert die Sortierung auf dem `$orderby`-Ausdruck für alle Felder, die als `"Sortable": true.` indiziert werden. Eine `$orderby`-Klausel ist ein OData-Ausdruck. Informationen zur Syntax finden Sie unter [OData-Ausdruckssyntax für Filter und Sortierklauseln](query-odata-filter-orderby-syntax.md).
 
 Die Relevanz ist eng mit Bewertungsprofilen verknüpft. Sie können die Standardbewertung verwenden, bei der die Reihenfolge der Ergebnisse anhand von Textanalyse und Statistiken festgelegt wird, wobei Dokumente mit mehr oder höheren Übereinstimmungen mit einem Suchbegriff eine höhere Punktzahl erhalten.
 
@@ -92,7 +90,7 @@ Sie erstellen dann eine Methode, die die ausgewählten Sortieroption als Eingabe
 
 ## <a name="faceted-navigation"></a>Facettennavigation
 
-Ergebnisseiten bieten üblicherweise eine Suchnavigation, die sich häufig am seitlichen oder oberen Rand der Seite befindet. In Azure Search ermöglicht die Facettennavigation eine selbstgesteuerte Suche, die auf vordefinierten Filtern basiert. Nähere Informationen finden Sie unter [Facettennavigation in Azure Search](search-faceted-navigation.md) .
+Ergebnisseiten bieten üblicherweise eine Suchnavigation, die sich häufig am seitlichen oder oberen Rand der Seite befindet. In der kognitiven Azure-Suche ermöglicht die Facettennavigation eine selbstgesteuerte Suche, die auf vordefinierten Filtern basiert. Weitere Informationen finden Sie unter [Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md).
 
 ## <a name="filters-at-the-page-level"></a>Filter auf Seitenebene
 
@@ -102,14 +100,14 @@ Sie können einen Filter mit oder ohne Suchbegriff senden. Beispielsweise wird m
 
     GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
 
-Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durchsuchen (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durchsuchen (API der kognitiven Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 ## <a name="see-also"></a>Siehe auch
 
-- [REST-API für Azure Suchdienst](https://docs.microsoft.com/rest/api/searchservice)
+- [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice)
 - [Indexvorgänge](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
 - [Dokumentvorgänge](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Facettennavigation in Azure Search](search-faceted-navigation.md)
+- [Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md)
 
 <!--Image references-->
 [1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG

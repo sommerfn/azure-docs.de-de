@@ -1,23 +1,23 @@
 ---
-title: Abfragetypen und -komposition – Azure Search
-description: Enthält die Grundlagen zur Erstellung einer Suchabfrage in Azure Search, indem Parameter zum Filtern, Auswählen und Sortieren von Ergebnissen verwendet werden.
-author: HeidiSteen
+title: Abfragetypen und Komposition
+titleSuffix: Azure Cognitive Search
+description: Enthält die Grundlagen zur Erstellung einer Suchabfrage in der kognitiven Azure-Suche, indem Parameter zum Filtern, Auswählen und Sortieren von Ergebnissen verwendet werden.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 4646cb30ef7602da990e24f923c8eceada4debd0
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.date: 11/04/2019
+ms.openlocfilehash: 902f3628235cc8a4524ddc4dd8a5327592fe47e7
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178019"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793214"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Abfragetypen und -komposition in Azure Search
+# <a name="query-types-and-composition-in-azure-cognitive-search"></a>Abfragetypen und -komposition in der kognitiven Azure-Suche
 
-In Azure Search ist eine Abfrage eine vollständige Spezifikation eines Roundtripvorgangs. Parameter in der Anforderung geben Übereinstimmungskriterien für die Suche nach Dokumenten in einem Index, Kriterien für das Einschließen oder Ausschließen von Feldern, Ausführungsanweisungen für das Modul und Anweisungen zum Steuern der Antwort an. Wenn keine Angaben vorhanden sind (`search=*`), wird eine Abfrage für alle durchsuchbaren Felder als Volltextsuche ausgeführt, und es wird ein Resultset ohne Bewertungen in willkürlicher Reihenfolge zurückgegeben.
+In der kognitiven Azure-Suche ist eine Abfrage eine vollständige Spezifikation eines Roundtripvorgangs. Parameter in der Anforderung geben Übereinstimmungskriterien für die Suche nach Dokumenten in einem Index, Kriterien für das Einschließen oder Ausschließen von Feldern, Ausführungsanweisungen für das Modul und Anweisungen zum Steuern der Antwort an. Wenn keine Angaben vorhanden sind (`search=*`), wird eine Abfrage für alle durchsuchbaren Felder als Volltextsuche ausgeführt, und es wird ein Resultset ohne Bewertungen in willkürlicher Reihenfolge zurückgegeben.
 
 Das folgende Beispiel ist eine repräsentative Abfrage, die in der [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) erstellt wurde. Dieses Beispiel ist für den [„hotels“-Demoindex](search-get-started-portal.md) vorgesehen und enthält allgemeine Parameter.
 
@@ -41,7 +41,7 @@ Das folgende Beispiel ist eine repräsentative Abfrage, die in der [REST-API](ht
 
 Antworten werden ebenfalls durch die Parameter bestimmt, die Sie in der Abfrage hinzufügen. Im Beispiel besteht das Resultset aus Feldern, die in der **`select`** -Anweisung aufgelistet sind. Nur die als *abrufbar* (retrievable) markierten Felder können in einer $select-Anweisung verwendet werden. Darüber hinaus werden in dieser Abfrage nur die 10 besten Treffer ( **`top`** 10) zurückgegeben, während **`count`** Aufschluss darüber gibt, wie viele Dokumente insgesamt mit der Abfrage übereinstimmen. Diese Anzahl kann die Anzahl der zurückgegebenen Dokumente überschreiten. In dieser Abfrage werden die Zeilen nach Bewertung in absteigender Reihenfolge sortiert.
 
-In Azure Search erfolgt die Abfrageausführung immer für einen Index, und für die Authentifizierung wird ein API-Schlüssel verwendet, der in der Anforderung angegeben ist. In REST wird beides in Anforderungsheadern angegeben.
+In der kognitiven Azure-Suche erfolgt die Abfrageausführung immer für einen Index, und für die Authentifizierung wird ein API-Schlüssel verwendet, der in der Anforderung angegeben ist. In REST wird beides in Anforderungsheadern angegeben.
 
 ### <a name="how-to-run-this-query"></a>Ausführen der Abfrage
 
@@ -51,7 +51,7 @@ Sie können die folgende Abfragezeichenfolge in die Suchleiste des Explorers ein
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>Ermöglichung von Abfragevorgängen durch den Index
 
-Der Indexentwurf und der Abfrageentwurf sind in Azure Search eng an einander gekoppelt. Wichtig zu wissen ist hierbei, dass das *Indexschema* mit Attributen für jedes Feld die Art der Abfrage bestimmt, die Sie erstellen können. 
+Der Indexentwurf und der Abfrageentwurf sind in der kognitiven Azure-Suche eng aneinander gekoppelt. Wichtig zu wissen ist hierbei, dass das *Indexschema* mit Attributen für jedes Feld die Art der Abfrage bestimmt, die Sie erstellen können. 
 
 Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein Feld im Index *durchsuchbar* ist, ob es in Ergebnissen *abrufbar*, *sortierbar*, *filterbar* ist usw. In der Beispielabfragezeichenfolge funktioniert `"$orderby": "Rating"` nur, weil das Feld „Rating“ (Bewertung) im Indexschema als *sortierbar* (sortable) markiert ist. 
 
@@ -74,7 +74,7 @@ Erforderliche Elemente in einer Abfrageanforderung enthalten die folgenden Kompo
 + **`queryType`** (einfach oder vollständig) kann weggelassen werden, wenn Sie die integrierte einfache Standardsyntax verwenden.
 + **`search`** oder **`filter`** gibt die Übereinstimmungskriterien an, die weggelassen werden können, wenn Sie eine leere Suche durchführen möchten. Beide Abfragetypen werden in Bezug auf den einfachen Parser erläutert, doch auch erweiterte Abfragen erfordern den Parameter „search“ zur Übergabe komplexer Abfrageausdrücke.
 
-Alle anderen Suchparameter sind optional. Die vollständige Liste der Attribute finden Sie unter [Create Index (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen des Index [REST]). Eine ausführlichere Erläuterung, wie Parameter während der Verarbeitung verwendet werden, finden Sie unter [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md).
+Alle anderen Suchparameter sind optional. Die vollständige Liste der Attribute finden Sie unter [Create Index (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen des Index [REST]). Eine ausführlichere Erläuterung, wie Parameter während der Verarbeitung verwendet werden, finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
 
 ## <a name="choose-apis-and-tools"></a>Auswählen von APIs und Tools
 
@@ -83,13 +83,13 @@ In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitte
 | Methodik | BESCHREIBUNG |
 |-------------|-------------|
 | [Suchexplorer (Portal)](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. Empfohlen für das Erkunden, Testen und Validieren. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
-| [Postman oder andere REST-Tools](search-get-started-postman.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in Azure Search. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an Azure Search einrichten.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Azure Search-Index verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Postman oder andere REST-Tools](search-get-started-postman.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in der kognitiven Azure-Suche. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an die kognitive Azure-Suche einrichten.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Index für die kognitive Azure-Suche verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Auswählen eines Parsers: einfach | vollständig
 
-Azure Search basiert auf Apache Lucene und ermöglicht Ihnen die Wahl zwischen zwei Abfrageparsern zur Verarbeitung von typischen und spezialisierten Abfragen. Anforderungen mit dem einfachen Parser werden mit der [einfachen Abfragesyntax](query-simple-syntax.md) formuliert. Dieser Parser ist aufgrund seiner Geschwindigkeit und Effizienz bei Freitextabfragen standardmäßig ausgewählt. Diese Syntax unterstützt eine Reihe von allgemeinen Suchoperatoren, z.B. AND, OR, NOT, Begriff, Suffix und Rangfolgeoperatoren.
+Die kognitive Azure-Suche basiert auf Apache Lucene und ermöglicht Ihnen die Wahl zwischen zwei Abfrageparsern zur Verarbeitung von typischen und spezialisierten Abfragen. Anforderungen mit dem einfachen Parser werden mit der [einfachen Abfragesyntax](query-simple-syntax.md) formuliert. Dieser Parser ist aufgrund seiner Geschwindigkeit und Effizienz bei Freitextabfragen standardmäßig ausgewählt. Diese Syntax unterstützt eine Reihe von allgemeinen Suchoperatoren, z.B. AND, OR, NOT, Begriff, Suffix und Rangfolgeoperatoren.
 
 Die vollständige [Lucene-Abfragesyntax](query-Lucene-syntax.md#bkmk_syntax) wird aktiviert, wenn Sie der Anforderung `queryType=full` hinzufügen. So wird die häufig genutzte und ausdrucksstarke Abfragesprache verfügbar gemacht, die im Rahmen von [Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) entwickelt wurde. Die vollständige Syntax erweitert die einfache Syntax. Jede Abfrage, die Sie für die einfache Syntax schreiben, kann mit dem vollständigen Lucene-Parser ausgeführt werden. 
 
@@ -109,14 +109,14 @@ queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=Ho
 
 ## <a name="types-of-queries"></a>Abfragetypen
 
-Azure Search unterstützt eine breite Palette von Abfragetypen. 
+Die kognitive Azure-Suche unterstützt eine breite Palette von Abfragetypen. 
 
 | Abfragetyp | Verwendung | Beispiele und weitere Informationen |
 |------------|--------|-------------------------------|
 | Freitextsuche | Suchparameter und einer der beiden Parser| Die Volltextsuche sucht nach einem oder mehreren Begriffen in allen *durchsuchbaren* Feldern im Index. Sie funktioniert so, wie Sie es von einer Suchmaschine wie Google oder Bing erwarten. Bei dem Beispiel in der Einführung handelt es sich um eine Volltextsuche.<br/><br/>Die Volltextsuche durchläuft (standardmäßig) eine Textanalyse mit dem Lucene-Standardanalysetool, um alle Begriffe in Kleinbuchstaben umzuwandeln und Stoppwörter wie „das“ zu entfernen. Sie können die Standardeinstellung außer Kraft setzen und durch [nicht englischsprachige Analysetools](index-add-language-analyzers.md#language-analyzer-list) oder [spezielle sprachunabhängig Analysetools](index-add-custom-analyzers.md#AnalyzerTable) überschreiben, die die Textanalyse ändern. Ein Beispiel hierfür ist ein [Schlüsselwort](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html), durch das der gesamte Inhalt eines Felds als ein einzelnes Token behandelt wird. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen. | 
 | Gefilterte Suche | [OData-Filterausdruck](query-odata-filter-orderby-syntax.md) und einer der beiden Parser | Filterabfragen werten einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus. Im Gegensatz zu einer Suche wird bei einer Filterabfrage der genaue Inhalt eines Felds abgeglichen, einschließlich Unterscheidung nach Groß-/Kleinschreibung bei Zeichenfolgenfeldern. Ein weiterer Unterschied ist, dass Filterabfragen in der OData-Syntax ausgedrückt werden. <br/>[Beispiel für einen Filterausdruck](search-query-simple-examples.md#example-3-filter-queries) |
 | Geografische Suche | [Typ „Edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für das Feld, Filterausdruck und einer der beiden Parser | In einem Feld mit dem Typ „Edm.GeographyPoint“ gespeicherte Koordinaten werden für Steuerelemente zur Umgebungssuche oder kartenbasierten Suche verwendet. <br/>[Beispiel für die geografische Suche](search-query-simple-examples.md#example-5-geo-search)|
-| Bereichssuche | Filterausdruck und einfacher Parser | In Azure Search werden Bereichsabfragen anhand des Filterparameters erstellt. <br/>[Beispiel für den Bereichsfilter](search-query-simple-examples.md#example-4-range-filters) | 
+| Bereichssuche | Filterausdruck und einfacher Parser | In der kognitiven Azure-Suche werden Bereichsabfragen anhand des Filterparameters erstellt. <br/>[Beispiel für den Bereichsfilter](search-query-simple-examples.md#example-4-range-filters) | 
 | [Feldbezogene Suche](query-lucene-syntax.md#bkmk_fields) | Suchparameter und vollständiger Parser | Erstellen Sie einen zusammengesetzten Abfrageausdruck für ein einzelnes Feld. <br/>[Beispiel für die feldbezogene Suche](search-query-lucene-examples.md#example-2-fielded-search) |
 | [Fuzzysuche](query-lucene-syntax.md#bkmk_fuzzy) | Suchparameter und vollständiger Parser | Sucht nach Begriffen mit ähnlichem Aufbau oder ähnlicher Rechtschreibung. <br/>[Beispiel für die Fuzzysuche](search-query-lucene-examples.md#example-3-fuzzy-search) |
 | [NEAR-Suche](query-lucene-syntax.md#bkmk_proximity) | Suchparameter und vollständiger Parser | Sucht nach Begriffen, die in einem Dokument nahe beieinander vorkommen. <br/>[Beispiel für die NEAR-Suche](search-query-lucene-examples.md#example-4-proximity-search) |
@@ -144,22 +144,22 @@ Es kann vorkommen, dass der Inhalt und nicht die Struktur der Ergebnisse unerwar
 + Ändern Sie das Abfrageverfahren, wenn eine Textanalyse oder lexikalische Analyse erforderlich ist und der Abfragetyp eine linguistische Verarbeitung ausschließt. Bei der Volltextsuche werden im Rahmen der Textanalyse oder lexikalischen Analyse Rechtschreibfehler, Singular-/Pluralformen und sogar unregelmäßige Verben oder Substantive automatisch korrigiert. Bei einigen Abfragen, z.B. der Fuzzy- oder Platzhaltersuche, ist die Textanalyse nicht Teil der Pipeline für die Abfrageanalyse. Für einige Szenarien wurden reguläre Ausdrücke zur Problemumgehung verwendet. 
 
 ### <a name="paging-results"></a>Auslagerungsergebnisse
-Mit Azure Search ist es einfach, das Paging (Anordnen auf Seiten) von Suchergebnissen zu implementieren. Mit den Parametern **`top`** und **`skip`** können Sie reibungslos Suchanforderungen ausgeben, die Ihnen das Empfangen aller Suchergebnisse in Form von verwaltbaren, sortierten Teilmengen und somit eine benutzerfreundliche Vorgehensweise auf der Suchoberfläche ermöglichen. Wenn Sie diese kleineren Teilmengen mit Ergebnissen empfangen, können Sie auch die Zahl der Dokumente in der Gesamtmenge der Suchergebnisse erhalten.
+Mit der kognitiven Azure-Suche ist es einfach, das Paging (Anordnen auf Seiten) von Suchergebnissen zu implementieren. Mit den Parametern **`top`** und **`skip`** können Sie reibungslos Suchanforderungen ausgeben, die Ihnen das Empfangen aller Suchergebnisse in Form von verwaltbaren, sortierten Teilmengen und somit eine benutzerfreundliche Vorgehensweise auf der Suchoberfläche ermöglichen. Wenn Sie diese kleineren Teilmengen mit Ergebnissen empfangen, können Sie auch die Zahl der Dokumente in der Gesamtmenge der Suchergebnisse erhalten.
 
-Weitere Informationen zum Paging von Suchergebnissen finden Sie im Artikel [Anordnen von Suchergebnissen auf Seiten in Azure Search](search-pagination-page-layout.md).
+Weitere Informationen zum Paging von Suchergebnissen finden Sie im Artikel [Anordnen von Suchergebnissen auf Seiten in der kognitiven Azure-Suche](search-pagination-page-layout.md).
 
 ### <a name="ordering-results"></a>Sortieren von Ergebnissen
-Wenn Sie Ergebnisse für eine Suchabfrage erhalten, können Sie anfordern, dass Azure Search die Ergebnisse sortiert nach den Werten in einem bestimmten Feld bereitstellt. Azure Search sortiert die Suchergebnisse standardmäßig basierend auf der Rangfolge der Suchbewertung eines Dokuments, die von [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)abgeleitet wird.
+Wenn Sie Ergebnisse für eine Suchabfrage erhalten, können Sie anfordern, dass die kognitive Azure-Suche die Ergebnisse sortiert nach den Werten in einem bestimmten Feld bereitstellt. Die kognitive Azure-Suche sortiert die Suchergebnisse standardmäßig basierend auf der Rangfolge der Suchbewertung eines Dokuments, die von [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)abgeleitet wird.
 
-Falls Azure Search die Ergebnisse nach einem anderen Wert als der Suchbewertung sortiert zurückgeben soll, können Sie den Suchparameter **`orderby`** verwenden. Sie können den Wert des Parameters **`orderby`** angeben, um Feldnamen und Aufrufe der [ **`geo.distance()`-Funktion**](query-odata-filter-orderby-syntax.md) für räumliche Werte einzubinden. Auf jeden Ausdruck kann `asc` folgen, um anzugeben, dass die Ergebnisse in aufsteigender Reihenfolge angefordert werden. Verwenden Sie **`desc`** , um anzugeben, dass die Ergebnisse in absteigender Reihenfolge zurückgegeben werden sollen. Standardmäßig wird die aufsteigende Sortierung verwendet.
+Falls die kognitive Azure-Suche die Ergebnisse nach einem anderen Wert als der Suchbewertung sortiert zurückgeben soll, können Sie den Suchparameter **`orderby`** verwenden. Sie können den Wert des Parameters **`orderby`** angeben, um Feldnamen und Aufrufe der [ **`geo.distance()`-Funktion**](query-odata-filter-orderby-syntax.md) für räumliche Werte einzubinden. Auf jeden Ausdruck kann `asc` folgen, um anzugeben, dass die Ergebnisse in aufsteigender Reihenfolge angefordert werden. Verwenden Sie **`desc`** , um anzugeben, dass die Ergebnisse in absteigender Reihenfolge zurückgegeben werden sollen. Standardmäßig wird die aufsteigende Sortierung verwendet.
 
 
 ### <a name="hit-highlighting"></a>Treffermarkierung
-In Azure Search ist das Hervorheben der exakten Menge von Suchergebnissen, die mit der Suchabfrage übereinstimmen, dank der Parameter **`highlight`** , **`highlightPreTag`** und **`highlightPostTag`** einfach. Sie können angeben, für welche *durchsuchbaren* Felder der gefundene Text hervorgehoben werden soll. Außerdem können Sie die genauen Zeichenfolgentags angeben, die am Anfang und Ende des von Azure Search zurückgegebenen Übereinstimmungstexts angefügt werden sollen.
+In der kognitiven Azure-Suche ist das Hervorheben der exakten Menge von Suchergebnissen, die mit der Suchabfrage übereinstimmen, dank der Parameter **`highlight`** , **`highlightPreTag`** und **`highlightPostTag`** ganz einfach. Sie können angeben, für welche *durchsuchbaren* Felder der gefundene Text hervorgehoben werden soll. Außerdem können Sie die genauen Zeichenfolgentags angeben, die am Anfang und Ende des von der kognitiven Azure-Suche zurückgegebenen Übereinstimmungstexts angefügt werden sollen.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Funktionsweise der Volltextsuche in Azure Search (Architektur für Abfrageanalyse)](search-lucene-query-architecture.md)
++ [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche (Architektur für Abfrageanalyse)](search-lucene-query-architecture.md)
 + [Suchexplorer](search-explorer.md)
 + [Abfragen des Azure Search-Index mit dem .NET SDK](search-query-dotnet.md)
 + [Abfragen des Azure Search-Index mit der REST-API](search-create-index-rest-api.md)

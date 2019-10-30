@@ -1,24 +1,23 @@
 ---
-title: Filter für das Begrenzen von Suchergebnissen in einem Index – Azure Search
-description: Filtern Sie nach Benutzersicherheits-ID, Sprache, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in Azure Search, einem in Microsoft Azure gehosteten Cloudsuchdienst, zu reduzieren.
-author: HeidiSteen
+title: Filter für das Begrenzen von Suchergebnissen in einem Index
+titleSuffix: Azure Cognitive Search
+description: Filtern Sie nach Benutzersicherheits-ID, Sprache, geografischem Standort oder numerischen Werten, um Suchergebnisse bei Abfragen in der kognitiven Azure-Suche, einem in Microsoft Azure gehosteten Cloudsuchdienst, zu reduzieren.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 06/13/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 49af6f1f535df098aa45cccd7e2d629ff6ccef50
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649851"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792855"
 ---
-# <a name="filters-in-azure-search"></a>Filter in Azure Search 
+# <a name="filters-in-azure-cognitive-search"></a>Filter in der kognitiven Azure-Suche 
 
-Ein *Filter* liefert Kriterien für die Auswahl von Dokumenten, die in einer Azure Search-Abfrage verwendet werden. Bei einer ungefilterten Suche werden alle Dokumente im Index durchsucht. Ein Filter begrenzt eine Suchabfrage auf eine Teilmenge von Dokumenten. Beispielsweise kann ein Filter die Volltextsuche auf Produkte einer bestimmten Marke oder mit einer Farbe beschränken, wenn der Preis über einer bestimmten Schwelle liegt.
+Ein *Filter* liefert Kriterien für die Auswahl von Dokumenten, die in einer Abfrage der kognitiven Azure-Suche verwendet werden. Bei einer ungefilterten Suche werden alle Dokumente im Index durchsucht. Ein Filter begrenzt eine Suchabfrage auf eine Teilmenge von Dokumenten. Beispielsweise kann ein Filter die Volltextsuche auf Produkte einer bestimmten Marke oder mit einer Farbe beschränken, wenn der Preis über einer bestimmten Schwelle liegt.
 
 Einige Suchumgebungen setzen Filterbedingungen im Rahmen der Implementierung durch. Sie können jedoch jederzeit Filter verwenden, wenn Sie die Suche mithilfe *wertbasierter* Kriterien einschränken möchten (z. B. die Suche nach dem Produkttyp "Bücher" auf die Kategorie "Sachbuch" von "Kiepenheuer & Witsch" begrenzen).
 
@@ -63,7 +62,7 @@ Die Filterung erfolgt zusammen mit Suche und bestimmt, welche Dokumente für den
 
 ## <a name="defining-filters"></a>Definieren von Filtern
 
-Filter sind OData-Ausdrücke, die mittels einer in Azure Search unterstützten [Teilmenge der OData V4-Syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) definiert werden. 
+Filter sind OData-Ausdrücke, die mittels einer [in der kognitiven Azure-Suche unterstützten Teilmenge der OData V4-Syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) definiert werden. 
 
 Sie können für jeden **Suchvorgang** einen Filter angeben. Doch der Filter selbst kann mehrere Felder, mehrere Kriterien und, wenn Sie eine **ismatch**-Funktion verwenden, mehrere Volltextsuchausdrücke enthalten. Bei einem mehrteiligen Filterausdruck können Sie Prädikate in beliebiger Reihenfolge angeben (gemäß den Regeln der Rangfolge von Operatoren). Es ergibt sich kein nennenswerter Leistungszuwachs, wenn Sie versuchen, Prädikate in einer bestimmten Reihenfolge neu anzuordnen.
 
@@ -148,7 +147,7 @@ Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. 
 
 ### <a name="making-an-existing-field-filterable"></a>Aktivieren der Filterbarkeit für vorhandene Felder
 
-Sie können vorhandene Felder nicht so ändern, dass sie filterbar sind. Sie müssen stattdessen ein neues Feld hinzufügen oder den Index neu erstellen. Weitere Informationen zur Neuerstellung eines Indexes oder der Wiederauffüllung von Feldern finden Sie unter [How to rebuild an Azure Search index (Neuerstellen eines Azure Search-Indexes)](search-howto-reindex.md).
+Sie können vorhandene Felder nicht so ändern, dass sie filterbar sind. Sie müssen stattdessen ein neues Feld hinzufügen oder den Index neu erstellen. Weitere Informationen zur Neuerstellung eines Index oder der Wiederauffüllung von Feldern finden Sie unter [Neuerstellen eines Index für die kognitive Azure-Suche](search-howto-reindex.md).
 
 ## <a name="text-filter-fundamentals"></a>Grundlegendes zu Textfiltern
 
@@ -199,7 +198,7 @@ Weitere Beispiele finden Sie unter [OData-Filterausdrucksyntax > Beispiele](http
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md)
++ [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md)
 + [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
 + [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)

@@ -1,25 +1,25 @@
 ---
-title: Indizieren eines großen Datasets mithilfe integrierter Indexer – Azure Search
-description: Lernen Sie Strategien für die Indizierung umfangreicher Daten oder rechenintensive Indizierung über den Batchmodus, Ressourcenerstellung und Techniken für die geplante, parallele und verteilte Indizierung.
-services: search
-author: HeidiSteen
+title: Indizieren großer Datasets mithilfe integrierter Indexer
+titleSuffix: Azure Cognitive Search
+description: Strategien für die Indizierung umfangreicher Daten oder rechenintensive Indizierung über den Batchmodus, Ressourcenerstellung und Techniken für die geplante, parallele und verteilte Indizierung.
 manager: nitinme
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/19/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: aaf0d5edb91d60be85360746f76c4ca1f8db8978
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257028"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793760"
 ---
-# <a name="how-to-index-large-data-sets-in-azure-search"></a>Indizieren großer Datasets in Azure Search
+# <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indizieren großer Datasets in der kognitiven Azure-Suche
 
-Wenn das Datenvolumen zunimmt oder die Verarbeitung geändert werden muss, stellen Sie möglicherweise fest, dass einfache oder standardmäßige Indizierungsstrategien nicht ausreichend sind. Für Azure Search gibt es verschiedene Ansätze für die Aufnahme von größeren Datasets, angefangen bei der Art, wie Sie eine Uploadanforderung strukturieren, bis zur Verwendung eines quellenspezifischen Indexers für geplante und verteilte Workloads.
+Wenn das Datenvolumen zunimmt oder die Verarbeitung geändert werden muss, stellen Sie möglicherweise fest, dass einfache oder standardmäßige Indizierungsstrategien nicht ausreichend sind. Für die kognitive Azure-Suche gibt es verschiedene Ansätze für die Aufnahme von größeren Datasets, angefangen bei der Art, wie Sie eine Uploadanforderung strukturieren, bis zur Verwendung eines quellenspezifischen Indexers für geplante und verteilte Workloads.
 
-Die Techniken gelten auch für lang andauernde Prozesse. Insbesondere die unter [Parallelindizierung](#parallel-indexing) beschriebenen Schritte sind hilfreich für die Ausführung rechenintensiver Indizierung, z.B. Bildanalyse oder Verarbeitung natürlicher Sprache in [kognitiven Suchpipelines](cognitive-search-concept-intro.md).
+Die Techniken gelten auch für lang andauernde Prozesse. Insbesondere die unter [Parallelindizierung](#parallel-indexing) beschriebenen Schritte sind hilfreich für die Ausführung rechenintensiver Indizierung, z. B. Bildanalyse oder Verarbeitung natürlicher Sprache in einer [KI-Anreicherungspipeline](cognitive-search-concept-intro.md).
 
 In den folgenden Abschnitten werden drei Techniken zum Indizieren großer Datenmengen erläutert.
 
@@ -44,7 +44,7 @@ Mit [Indexern](search-indexer-overview.md) werden unterstützte Azure-Datenquell
 
 + Mit Schedulern können Sie die Indizierung in regelmäßige Intervalle gliedern, sodass Sie sie im Laufe der Zeit verteilen können.
 + Geplante Indizierung kann am letzten bekannten Haltepunkt fortgesetzt werden. Wenn eine Datenquelle innerhalb eines 24-Stunden-Zeitfensters nicht vollständig durchsucht wird, setzt der Indexer die Indizierung am nächsten Tag fort, unabhängig davon, wo er aufgehört hat.
-+ Partitionieren von Daten in kleinere einzelne Datenquellen ermöglicht die parallele Verarbeitung. Sie können Quelldaten in kleinere Komponenten teilen, z.B. in mehrere Container in Azure Blob Storage, und anschließend mehrere entsprechende [Datenquellenobjekte](https://docs.microsoft.com/rest/api/searchservice/create-data-source) in Azure Search erstellen, die parallel indiziert werden können.
++ Partitionieren von Daten in kleinere einzelne Datenquellen ermöglicht die parallele Verarbeitung. Sie können Quelldaten in kleinere Komponenten teilen, z. B. in mehrere Container in Azure Blob Storage, und anschließend mehrere entsprechende [Datenquellenobjekte](https://docs.microsoft.com/rest/api/searchservice/create-data-source) in der kognitiven Azure-Suche erstellen, die parallel indiziert werden können.
 
 > [!NOTE]
 > Indexer sind datenquellenspezifisch, also eignet sich ein Indexeransatz nur für ausgewählte Datenquellen in Azure: [SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blobspeicher](search-howto-indexing-azure-blob-storage.md), [Tabellenspeicher](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
@@ -55,7 +55,7 @@ Indexerzeitpläne sind ein wichtiger Mechanismus zum Verarbeiten von großen Dat
 
 Standardmäßig startet die geplante Indizierung zu bestimmten Zeitintervallen. Dabei wird ein Vorgang in der Regel abgeschlossen, bevor die Indizierung zum nächsten geplanten Intervall fortgesetzt wird. Wenn der Vorgang jedoch nicht innerhalb des Intervalls abgeschlossen wird, wird der Indexer beendet, da ein Timeout auftritt. Beim nächsten Intervall wird die Verarbeitung an der Stelle fortgesetzt, an der sie während des letzten Intervalls unterbrochen wurde. Dabei verfolgt das System nach, an welcher Stelle dies der Fall ist. 
 
-Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zyklus fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Weitere Informationen zum Festlegen der Zeitpläne im Allgemeinen finden Sie unter [Erstellen von Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) oder [How to schedule indexers for Azure Search (Festlegen eines Zeitplans für Indexer in Azure Search)](search-howto-schedule-indexers.md).
+Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zyklus fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Weitere Informationen zum Festlegen der Zeitpläne im Allgemeinen finden Sie unter [Create Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer#request-syntax) (REST-API zum Erstellen von Indexern) oder [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
@@ -74,17 +74,17 @@ Parallele Verarbeitung verfügt über die folgenden Elemente:
 + Legen Sie für die Ausführung aller Indexer denselben Zeitpunkt fest.
 
 > [!NOTE]
-> Azure Search unterstützt das Dedizieren von Replikaten oder Partitionen auf bestimmte Workloads nicht. Es besteht ein erhöhtes Risiko, dass die gleichzeitige Indizierung Ihr System so belastet, dass die Abfrageleistung beeinträchtigt wird. Wenn Sie über eine Testumgebung verfügen, implementieren Sie die parallele Indizierung dort zuerst, um die Vor- und Nachteile nachvollziehen zu können.
+> Die kognitive Azure-Suche unterstützt das Dedizieren von Replikaten oder Partitionen auf bestimmte Workloads nicht. Es besteht ein erhöhtes Risiko, dass die gleichzeitige Indizierung Ihr System so belastet, dass die Abfrageleistung beeinträchtigt wird. Wenn Sie über eine Testumgebung verfügen, implementieren Sie die parallele Indizierung dort zuerst, um die Vor- und Nachteile nachvollziehen zu können.
 
 ### <a name="how-to-configure-parallel-indexing"></a>Konfigurieren der parallelen Indizierung
 
-Für Indexer basiert die Verarbeitung der Kapazität grob auf einem Indexersubsystem für jede Diensteinheit, die von Ihrem Suchdienst verwendet wird. Für Azure Search-Dienste, die für die Tarife Basic und Standard verfügbar sind, sind mehrere gleichzeitige Indexer möglich, die mindestens zwei Replikate aufweisen. 
+Für Indexer basiert die Verarbeitung der Kapazität grob auf einem Indexersubsystem für jede Diensteinheit, die von Ihrem Suchdienst verwendet wird. Für Dienste der kognitiven Azure-Suche, die mit den Tarifen „Basic“ und „Standard“ bereitgestellt werden und mindestens zwei Replikate aufweisen, sind mehrere gleichzeitige Indexer möglich. 
 
 1. Prüfen Sie im [Azure-Portal](https://portal.azure.com) auf der Dashboardseite **Übersicht** des Search-Diensts den **Tarif**, um festzustellen, ob die parallele Indizierung notwendig ist. Sowohl der Basic- als auch der Standard-Tarif umfassen mehrere Replikate.
 
 2. Erhöhen Sie die [Anzahl der Replikate](search-capacity-planning.md) unter **Einstellungen** > **Staffelung** um ein zusätzliches Replikat für jede Indexerworkload. Geben Sie eine ausreichende Zahl für bestehende Abfragevolumen an. Es sollten keine Abfrageworkloads für die Indizierung geopfert werden.
 
-3. Teilen Sie Daten auf mehrere Container auf. Tun Sie dies auf einer Ebene, die von den Azure Search-Indexern erreicht werden kann. Also z.B. auf mehrere Tabellen in Azure SQL-Datenbank, auf mehrere Container im Azure Blob-Speicher oder auf mehrere Sammlungen. Definieren Sie ein Datenquellobjekt pro Tabelle oder Container.
+3. Teilen Sie Daten auf mehrere Container auf, und zwar auf einer Ebene, die von den Indexern der kognitiven Azure-Suche erreicht werden kann. Also z.B. auf mehrere Tabellen in Azure SQL-Datenbank, auf mehrere Container im Azure Blob-Speicher oder auf mehrere Sammlungen. Definieren Sie ein Datenquellobjekt pro Tabelle oder Container.
 
 4. Erstellen Sie mehrere Indexer, und planen Sie eine parallele Ausführung:
 
@@ -94,7 +94,7 @@ Für Indexer basiert die Verarbeitung der Kapazität grob auf einem Indexersubsy
 
    + Legen Sie innerhalb sämtlicher Indexerdefinitionen denselben Zeitplan für das Ausführungsmuster für die Runtime fest. Beispielsweise erstellt `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` für den 15.5.2018 einen Zeitplan für alle Indexer, die in Intervallen von acht Stunden ausgeführt werden.
 
-Zum festgelegten Zeitpunkt beginnen sämtliche Indexer mit der Ausführung, dem Laden von Daten, der Anwendung von Anreicherungen (wenn Sie eine Pipeline für die kognitive Suche konfiguriert haben) und dem Schreiben in den Index. Azure Search sperrt den Index für Updates nicht. Gleichzeitige Schreibvorgänge werden verwaltet und wiederholt, wenn ein bestimmter Schreibvorgang beim ersten Mal nicht erfolgreich ausgeführt werden kann.
+Zum festgelegten Zeitpunkt beginnen sämtliche Indexer mit der Ausführung, dem Laden von Daten, der Anwendung von Anreicherungen (wenn Sie eine Pipeline für die kognitive Suche konfiguriert haben) und dem Schreiben in den Index. Die kognitive Azure-Suche sperrt den Index nicht für Updates. Gleichzeitige Schreibvorgänge werden verwaltet und wiederholt, wenn ein bestimmter Schreibvorgang beim ersten Mal nicht erfolgreich ausgeführt werden kann.
 
 > [!Note]
 > Wenn Sie die Anzahl der Replikate erhöhen, sollten Sie auch die Anzahl der Partitionen erhöhen, wenn zu erwarten ist, dass der Index deutlich vergrößert wird. Partitionen speichern einzelne Segmente des indizierten Inhalts. Je mehr Partitionen Sie besitzen, desto kleiner sind die einzelnen Segmente, die darin gespeichert werden müssen.
@@ -107,4 +107,4 @@ Zum festgelegten Zeitpunkt beginnen sämtliche Indexer mit der Ausführung, dem 
 + [Azure Cosmos DB-Indexer](search-howto-index-cosmosdb.md)
 + [Azure Blob Storage-Indexer](search-howto-indexing-azure-blob-storage.md)
 + [Azure Table Storage-Indexer](search-howto-indexing-azure-tables.md)
-+ [Sicherheit in Azure Search](search-security-overview.md)
++ [Sicherheit in der kognitiven Azure-Suche](search-security-overview.md)

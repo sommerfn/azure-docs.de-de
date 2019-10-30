@@ -1,27 +1,28 @@
 ---
-title: Arbeiten mit Qualifikationsgruppen – Azure Search
-description: In Qualifikationsgruppen erstellen Sie eine KI-Anreicherungspipeline in der kognitiven Suche. Indem Sie bestimmte Konzepte und Funktionsweisen von Qualifikationsgruppen verstehen, können Sie einfache oder komplexe Qualifikationsgruppen erstellen.
-manager: eladz
+title: Arbeiten mit Qualifikationsgruppen
+titleSuffix: Azure Cognitive Search
+description: In Qualifikationsgruppen erstellen Sie eine KI-Anreicherungspipeline in der kognitiven Azure-Suche. Informieren Sie sich über wichtige Konzepte und Details zur Zusammenstellung von Qualifikationsgruppen.
+manager: nitinme
 author: vkurpad
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/05/2019
 ms.author: vikurpad
-ms.openlocfilehash: f75e6dece376076d4aa5e33497aff7e4f9f56857
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265699"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790167"
 ---
-# <a name="working-with-skillsets"></a>Arbeiten mit Qualifikationsgruppen
-Dieser Artikel richtet sich an Entwickler, die ein besseres Verständnis der Funktionsweise der Anreicherungspipeline benötigen. Dabei wird davon ausgegangen, dass Sie über ein konzeptionelles Verständnis des Prozesses der kognitiven Suche verfügen. Wenn Sie noch nicht mit der kognitiven Suche vertraut sind, beginnen Sie mit:
-+ [Was ist die „kognitive Suche“ in Azure Search?](cognitive-search-concept-intro.md)
-+ [Was ist ein Wissensspeicher in Azure Search?](knowledge-store-concept-intro.md)
+# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Arbeiten mit Qualifikationsgruppen in der kognitiven Azure-Suche
+
+Dieser Artikel richtet sich an Entwickler, die ein besseres Verständnis der Funktionsweise der Anreicherungspipeline benötigen. Dabei wird davon ausgegangen, dass Sie über ein konzeptionelles Verständnis des KI-Anreicherungsprozesses verfügen. Wenn Ihnen dieses Konzept noch nicht vertraut ist, beginnen Sie mit folgenden Themen:
++ [KI-Anreicherung in der kognitiven Azure-Suche](cognitive-search-concept-intro.md)
++ [Wissensspeicher (Vorschau)](knowledge-store-concept-intro.md)
 
 ## <a name="specify-the-skillset"></a>Festlegen der Qualifikationsgruppe
-Eine Qualifikationsgruppe ist eine wiederverwendbare Ressource in Azure Search, die eine Sammlung von kognitiven Fähigkeiten (Qualifikationen) festlegt, die zum Analysieren, Transformieren und Anreichern von Text- oder Bildinhalten während der Indizierung verwendet werden. Mithilfe einer Qualifikationsgruppe können Sie Text- und Bildanreicherungen in der Datenerfassungsphase hinzufügen sowie neue Informationen und Strukturen aus Rohinhalten extrahieren und erstellen.
+Eine Qualifikationsgruppe ist eine wiederverwendbare Ressource in der kognitiven Azure-Suche, die eine Sammlung von kognitiven Fähigkeiten (Qualifikationen) festlegt, die zum Analysieren, Transformieren und Anreichern von Text- oder Bildinhalten während der Indizierung verwendet werden. Mithilfe einer Qualifikationsgruppe können Sie Text- und Bildanreicherungen in der Datenerfassungsphase hinzufügen sowie neue Informationen und Strukturen aus Rohinhalten extrahieren und erstellen.
 
 Eine Qualifikationsgruppe verfügt über drei Eigenschaften:
 
@@ -36,7 +37,7 @@ Qualifikationsgruppen werden in JSON erstellt. Mithilfe der [Ausdruckssprache](h
 ### <a name="enrichment-tree"></a>Anreicherungsstruktur
 
 Um zu sehen, wie eine Qualifikationsgruppe Ihr Dokument zunehmend anreichert, beginnen wir damit, wie das Dokument vor den Anreicherungen aussieht. Die Ausgabe der Dokumententschlüsselung ist abhängig von der Datenquelle und dem ausgewählten spezifischen Analysemodus. Dies ist auch der Zustand des Dokuments, aus dem die [Feldzuordnungen](search-indexer-field-mappings.md) beim Hinzufügen von Daten zum Suchindex Inhalte abrufen können.
-![Diagramm: Wissensspeicher in Pipeline](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Diagramm: Wissensspeicher in Pipeline")
+![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "KWissensspeicher im Pipelinediagramm)
 
 Sobald sich ein Dokument in der Anreicherungspipeline befindet, wird es als Inhaltsstruktur mit zugeordneten Anreicherungen dargestellt. Diese Struktur wird als Ausgabe der Dokumententschlüsselung instanziiert. Das Anreicherungsstruktur-Format ermöglicht der Anreicherungspipeline das Anfügen von Metadaten auch an primitive Datentypen. Es handelt sich nicht um ein gültiges JSON-Objekt, kann jedoch in ein gültiges JSON-Format projiziert werden. In der folgenden Tabelle wird der Zustand eines Dokuments gezeigt, das in die Anreicherungspipeline wechselt:
 
@@ -86,7 +87,7 @@ Da wir für den Indexer den Analysemodus „Text mit Trennzeichen“ verwenden, 
 
 ### <a name="skill-1-split-skill"></a>Qualifikation 1: Qualifikation „Aufteilung“ 
 
-![Anreicherungsstruktur nach der Dokumententschlüsselung](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "Anreicherungsstruktur nach der Dokumententschlüsselung und vor der Ausführung der Qualifikation")
+![Anreicherungsstruktur nach der Dokumententschlüsselung](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "Anreicherungsstruktur nach der Dokumententschlüsselung")
 
 Mit dem Qualifikationskontext ```"/document/reviews_text"``` wird diese Qualifikation für `reviews_text` genau einmal ausgeführt. Die Qualifikationsausgabe ist eine Liste, in der `reviews_text` in 5000-Zeichen-Segmente aufgeteilt ist. Die Ausgabe der Qualifikation „Aufteilung“ wird `pages` benannt und der Anreicherungsstruktur hinzugefügt. Mit dem Feature `targetName` können Sie eine Qualifikationsausgabe umbenennen, bevor sie der Anreicherungsstruktur hinzugefügt wird.
 
@@ -99,7 +100,7 @@ Der Stammknoten für alle Anreicherungen ist `"/document"`. Wenn Sie Blob-Indexe
 
 ### <a name="skill-2-language-detection"></a>Qualifikation 2: Sprachenerkennung
  Die Qualifikation „Spracherkennung“ ist zwar die dritte in der Qualifikationsgruppe definierte Qualifikation (Qualifikation 3), sie wird aber als nächste Qualifikation ausgeführt. Da keine Eingaben erforderlich sind, wird sie nicht blockiert und parallel mit der vorherigen Qualifikation ausgeführt. Genau wie die Qualifikation „Aufteilung“ wird die Qualifikation „Spracherkennung“ auch einmal für jedes Dokument aufgerufen. Die Anreicherungsstruktur verfügt jetzt über einen neuen Knoten für die Sprache.
- ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Anreicherungsstruktur nach Ausführung von Qualifikation 2")
+ ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "EnAnreicherungsstruktur nach Ausführung von Qualifikation 2
  
  ### <a name="skill-3-key-phrases-skill"></a>Qualifikation 3: Qualifikation „Schlüsselbegriffe“ 
 
@@ -113,7 +114,7 @@ Die Farben der Connectors in der Struktur oben zeigen an, dass die Anreicherunge
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>Speichern von Anreicherungen in einem Wissensspeicher 
 
-Qualifikationsgruppen definieren außerdem einen Wissensspeicher, in dem Ihre angereicherten Dokumente als Tabellen oder Objekte projiziert werden können. Um die angereicherten Daten im Wissensspeicher zu speichern, definieren Sie eine Reihe von Projektionen Ihres angereicherten Dokuments. Weitere Informationen zum Wissensspeicher finden Sie unter [Was ist der Wissensspeicher in Azure Search?](knowledge-store-concept-intro.md)
+Qualifikationsgruppen definieren außerdem einen Wissensspeicher, in dem Ihre angereicherten Dokumente als Tabellen oder Objekte projiziert werden können. Um die angereicherten Daten im Wissensspeicher zu speichern, definieren Sie eine Reihe von Projektionen Ihres angereicherten Dokuments. Weitere Informationen zum Wissensspeicher finden Sie in der [Übersicht über Wissensspeicher](knowledge-store-concept-intro.md).
 
 ### <a name="slicing-projections"></a>Aufteilen von Projektionen
 

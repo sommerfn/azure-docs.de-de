@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 7af5663b399556d66f86213310858780369215af
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101052"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791724"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -436,6 +436,10 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Fügen Sie der Clusterkonfiguration die NFS-DRBD-Geräte für das SAP-System NW1 hinzu.
 
+   > [!IMPORTANT]
+   > Kürzlich durchgeführte Tests haben Situationen aufgezeigt, in denen netcat aufgrund von Backlog und der Einschränkung, nur eine Verbindung zu verarbeiten, nicht mehr auf Anforderungen reagiert. Die netcat-Ressource lauscht dann nicht mehr auf Azure Load Balancer-Anforderungen, und die Floating IP-Adresse ist nicht mehr verfügbar.  
+   > Für vorhandene Pacemaker-Cluster empfiehlt es sich, netcat durch socat zu ersetzen. Befolgen Sie hierzu die Anweisungen unter [Azure Load Balancer-Erkennungshärtung](https://www.suse.com/support/kb/doc/?id=7024128). Beachten Sie, dass für die Änderung eine kurze Ausfallzeit erforderlich ist.  
+
    <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
 
    # Enable maintenance mode
@@ -473,7 +477,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    
    sudo crm configure primitive nc_<b>NW1</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61000</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61000</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_nfs \
      fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
@@ -518,7 +522,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    
    sudo crm configure primitive nc_<b>NW2</b>_nfs \
      anything \
-     params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61001</b>" op monitor timeout=20s interval=10 depth=0
+     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:<b>61001</b>,backlog=10,fork,reuseaddr /dev/null" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW2</b>_nfs \
      fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs

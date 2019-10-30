@@ -1,13 +1,13 @@
 ---
-title: 'Hinzufügen von Bewertungsprofilen zu einem Suchindex: Azure Search'
-description: Verstärken Sie Suchrangbewertungen für Azure Search-Suchergebnisse durch Hinzufügen von Bewertungsprofilen.
-ms.date: 05/02/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Hinzufügen von Bewertungsprofilen zur Verstärkung relevanter Dokumente in Suchergebnissen
+titleSuffix: Azure Cognitive Search
+description: Verstärken Sie Suchrangbewertungen für Ergebnisse der kognitiven Azure-Suche durch Hinzufügen von Bewertungsprofilen.
+manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 547cd318a922e242198e1d2aee6806f73a16bd64
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2b92f8031a0d35696447f8ab796d24c504d57457
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648863"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790120"
 ---
-# <a name="add-scoring-profiles-to-an-azure-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Azure Search-Index
+# <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Index für die kognitive Azure-Suche
 
   Der Begriff „Bewertung“ verweist auf die Berechnung einer *Suchbewertung* für jedes in den Suchergebnissen zurückgegebene Element. Die Bewertung ist ein Indikator für die Relevanz eines Elements im Kontext des aktuellen Suchvorgangs. Je höher die Bewertung, desto relevanter das Element. In den Suchergebnissen ist den Elementen eine absteigende Reihenfolge zugeordnet, die auf den für die einzelnen Elemente berechneten Suchbewertungen basiert.  
 
- Azure Search verwendet die Standardbewertung zum Berechnen eines Ursprungswerts. Sie können die Berechnung jedoch über ein *Bewertungsprofil* anpassen. Bewertungsprofile bieten Ihnen mehr Kontrolle über die Rangfolge der Elemente in Suchergebnissen. Sie können beispielsweise Elemente auf Basis ihres Umsatzpotentials optimieren, neuere Elemente hochstufen oder auch Elemente fördern, die sich bereits zu lange im Lager befinden.  
+ Die kognitive Azure-Suche verwendet die Standardbewertung zum Berechnen eines Ursprungswerts. Sie können die Berechnung jedoch über ein *Bewertungsprofil* anpassen. Bewertungsprofile bieten Ihnen mehr Kontrolle über die Rangfolge der Elemente in Suchergebnissen. Sie können beispielsweise Elemente auf Basis ihres Umsatzpotentials optimieren, neuere Elemente hochstufen oder auch Elemente fördern, die sich bereits zu lange im Lager befinden.  
 
  Ein Bewertungsprofil ist Teil der Indexdefinition und besteht aus gewichteten Feldern, Funktionen und Parametern.  
 
@@ -69,14 +69,14 @@ ms.locfileid: "69648863"
 GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2019-05-06 
 ```  
 
- Diese Abfrage sucht nach dem Begriff „inn“ und übergibt den aktuelle Standort. Beachten Sie, dass diese Abfrage weitere Parameter umfasst, z. B. `scoringParameter`. Abfrageparameter sind in [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst) beschrieben.  
+ Diese Abfrage sucht nach dem Begriff „inn“ und übergibt den aktuelle Standort. Beachten Sie, dass diese Abfrage weitere Parameter umfasst, z. B. `scoringParameter`. Abfrageparameter sind in [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) beschrieben.  
 
  Klicken Sie auf [Beispiel](#bkmk_ex) , um ein ausführlicheres Beispiel für ein Bewertungsprofil zu überprüfen.  
 
 ## <a name="what-is-default-scoring"></a>Standardbewertung  
  Bei der Bewertung wird eine Suchbewertung für jedes Element in einem nach Rangfolge sortierten Resultset berechnet. Jedes Element in einem Resultset wird einer Suchbewertung zugeordnet und anschließend wird eine absteigende Rangfolge zugewiesen. Die Elemente mit den höchsten Bewertungen werden an die Anwendung zurückgegeben. Standardmäßig werden die ersten 50 Elemente zurückgegeben, Sie können jedoch den `$top` -Parameter verwenden, um eine kleinere oder größere Anzahl von Elementen (bis zu 1000 in einer einzelnen Antwort) zurückzugeben.  
 
-Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und der Abfrage berechnet. Azure Search findet Dokumente, die die Suchbegriffe in der Abfragezeichenfolge enthalten (einige oder alle in Abhängigkeit von `searchMode`), wobei Dokumente bevorzugt werden, die viele Instanzen des Suchbegriffs enthalten. Die Suchbewertung fällt sogar noch höher aus, wenn der Begriff nur selten im Datenindex, jedoch innerhalb des Dokuments häufig vorkommt. Die Grundlage für diesen Ansatz zur Berechnung der Relevanz wird als [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (Term Frequency-Inverse Document Frequency, Vorkommenshäufigkeit-Inverse Dokumenthäufigkeit) bezeichnet.  
+Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und der Abfrage berechnet. Die kognitive Azure-Suche findet Dokumente, die die Suchbegriffe in der Abfragezeichenfolge enthalten (einige oder alle in Abhängigkeit von `searchMode`), wobei Dokumente bevorzugt werden, die viele Instanzen des Suchbegriffs enthalten. Die Suchbewertung fällt sogar noch höher aus, wenn der Begriff nur selten im Datenindex, jedoch innerhalb des Dokuments häufig vorkommt. Die Grundlage für diesen Ansatz zur Berechnung der Relevanz wird als [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (Term Frequency-Inverse Document Frequency, Vorkommenshäufigkeit-Inverse Dokumenthäufigkeit) bezeichnet.  
 
  Wenn keine benutzerdefinierte Sortierung erfolgt, werden die Ergebnisse nach Suchbewertung sortiert, bevor sie an die aufrufende Anwendung zurückgegeben werden. Wenn „$top“ nicht angegeben ist, werden die 50 Elemente mit der höchsten Suchbewertung zurückgegeben.  
 
@@ -85,7 +85,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 ## <a name="when-to-use-custom-scoring"></a>Verwenden der benutzerdefinierten Bewertung  
  Wenn das standardmäßige Rangfolgeverhalten Ihre Geschäftsziele nicht ausreichend unterstützt, sollten Sie ein oder mehrere Bewertungsprofile erstellen. Sie können beispielsweise festlegen, dass neu hinzugefügte Elemente hinsichtlich der Suchrelevanz bevorzugt werden sollen. Möglicherweise verfügen Sie auch über ein Feld, das die Gewinnspanne enthält, oder ein anderes Feld, das das Umsatzpotenzial angibt. Die Verstärkung von Treffern, die Ihrem Unternehmen Vorteile verschaffen, kann eine wichtige Rolle bei der Entscheidung zur Verwendung von Bewertungsprofilen spielen.  
 
- Die relevanzbasiert Sortierung wird ebenfalls über Bewertungsprofile implementiert. Betrachten Sie Suchergebnisseiten, die Sie in der Vergangenheit verwendet haben, mit denen Sie nach Preis, Datum, Bewertung oder Relevanz sortieren können. In Azure Search wird der Faktor "Relevanz" durch Bewertungsprofile gesteuert. Die Definition von Relevanz wird von Ihnen gesteuert und basiert auf Ihren Geschäftszielen und der Suchfunktionalität, die Sie bereitstellen möchten.  
+ Die relevanzbasiert Sortierung wird ebenfalls über Bewertungsprofile implementiert. Betrachten Sie Suchergebnisseiten, die Sie in der Vergangenheit verwendet haben, mit denen Sie nach Preis, Datum, Bewertung oder Relevanz sortieren können. In der kognitiven Azure-Suche wird der Faktor „Relevanz“ durch Bewertungsprofile gesteuert. Die Definition von Relevanz wird von Ihnen gesteuert und basiert auf Ihren Geschäftszielen und der Suchfunktionalität, die Sie bereitstellen möchten.  
 
 ##  <a name="bkmk_ex"></a> Beispiel  
  Wie bereits erwähnt, wird die benutzerdefinierte Bewertung über mindestens ein Bewertungsprofil implementiert, das in einem Indexschema definiert ist.  
@@ -162,16 +162,16 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
  Beginnen Sie mit der in diesem Thema angegebenen [Vorlage](#bkmk_template) .  
 
- Geben Sie einen Namen ein. Bewertungsprofile sind optional, wenn Sie jedoch ein Profil hinzufügen, ist der Name erforderlich. Achten Sie darauf, dass Sie die Namenskonventionen für Felder einhalten (mit einem Buchstaben beginnen, Sonderzeichen und reservierte Wörter vermeiden). Die vollständige Liste finden Sie unter [Naming rules (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/naming-rules) (Benennungsregeln (Azure Search)).  
+ Geben Sie einen Namen ein. Bewertungsprofile sind optional, wenn Sie jedoch ein Profil hinzufügen, ist der Name erforderlich. Achten Sie darauf, dass Sie die Namenskonventionen für Felder einhalten (mit einem Buchstaben beginnen, Sonderzeichen und reservierte Wörter vermeiden). Die vollständige Liste finden Sie unter [Benennungsregeln &#40;Kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  
 
  Der Hauptteil des Bewertungsprofils wird aus gewichteten Feldern und Funktionen erstellt.  
 
 |||  
 |-|-|  
 |**Gewichtungen**|Geben Sie Name/Wert-Paare an, die einem Feld eine relative Gewichtung zuweisen. In diesem [Beispiel](#bkmk_ex) werden die Felder „albumTitle“, „genre“ und „artistName“ entsprechend um 1,5, 5 und 2 verstärkt. Warum wird "genre" so viel stärker als die anderen Felder erhöht? Wenn die Suche in relativ homogenen Daten durchgeführt wird (wie bei „genre“ in `musicstoreindex`), ist bei den relativen Gewichtungen möglicherweise eine größere Varianz erforderlich. In `musicstoreindex` wird „rock“ z. B. sowohl für „genre“ als auch für identisch formulierte Genrebeschreibungen angezeigt. Wenn "genre" schwerer wiegen soll als die Genrebeschreibung, dann benötigt das Feld "genre" eine viel höhere relative Gewichtung.|  
-|**Funktionen**|Funktionen werden verwendet, wenn für bestimmte Kontexte zusätzliche Berechnungen erforderlich sind. Gültige Werte sind `freshness`, `magnitude`, `distance` und `tag`. Jede Funktion verfügt über Parameter, die für sie eindeutig sind.<br /><br /> -   `freshness` sollte verwendet werden, wenn Sie Elemente in Abhängigkeit davon verstärken möchten, wie neu oder alt diese sind. Diese Funktion kann nur mit `datetime`-Feldern verwendet werden (edm.DataTimeOffset). Beachten Sie, dass das Attribut `boostingDuration` nur mit der Funktion `freshness` verwendet wird.<br />-   `magnitude` sollte verwendet werden, wenn die Verstärkung basierend auf der Höhe eines numerischen Werts erfolgen soll. Szenarien, die diese Funktion erforderlich machen, umfassen die Verstärkung nach Gewinnspanne, Höchstpreis, Mindestpreis oder Downloadanzahl. Diese Funktion kann nur mit Double- und Integer-Feldern verwendet werden.<br />     Für die `magnitude`-Funktion können Sie den Bereich (absteigend) umkehren, wenn Sie das umgekehrte Muster anwenden möchten (z. B. um preiswerteren Elemente eine höhere Relevanz zuzuordnen als teureren Elementen). Legen Sie bei einer Preisspanne zwischen 100 € und 1 € `boostingRangeStart` auf 100 und `boostingRangeEnd` auf 1 fest, um preiswertere Artikeln zu fördern.<br />-   `distance` sollte verwendet werden, wenn die Verstärkung entsprechend der Nähe oder geografischen Lage erfolgen soll. Diese Funktion kann nur mit `Edm.GeographyPoint` -Feldern verwendet werden.<br />-   `tag` sollte verwendet werden, wenn die Verstärkung nach gemeinsamen Tags in Dokumenten und Suchabfragen erfolgen soll. Diese Funktion kann nur mit `Edm.String`- und `Collection(Edm.String)`-Feldern verwendet werden.<br /><br /> **Regeln für die Verwendung von Funktionen**<br /><br /> `tag` für den Funktionstyp (`freshness`, `magnitude`, `distance`,) muss in Kleinbuchstaben angegeben werden.<br /><br /> Funktionen dürfen nicht Null sein oder leere Werte enthalten. Insbesondere beim Einbeziehen von Feldnamen muss ein Wert festgelegt werden.<br /><br /> Funktionen können nur auf filterbare Felder angewendet werden. Weitere Informationen zu filterbaren Feldern finden Sie unter [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index).<br /><br /> Funktionen können nur auf Felder angewendet werden, die in der Felderauflistung für einen Index definiert sind.|  
+|**Funktionen**|Funktionen werden verwendet, wenn für bestimmte Kontexte zusätzliche Berechnungen erforderlich sind. Gültige Werte sind `freshness`, `magnitude`, `distance` und `tag`. Jede Funktion verfügt über Parameter, die für sie eindeutig sind.<br /><br /> -   `freshness` sollte verwendet werden, wenn Sie Elemente in Abhängigkeit davon verstärken möchten, wie neu oder alt diese sind. Diese Funktion kann nur mit `datetime`-Feldern verwendet werden (edm.DataTimeOffset). Beachten Sie, dass das Attribut `boostingDuration` nur mit der Funktion `freshness` verwendet wird.<br />-   `magnitude` sollte verwendet werden, wenn die Verstärkung basierend auf der Höhe eines numerischen Werts erfolgen soll. Szenarien, die diese Funktion erforderlich machen, umfassen die Verstärkung nach Gewinnspanne, Höchstpreis, Mindestpreis oder Downloadanzahl. Diese Funktion kann nur mit Double- und Integer-Feldern verwendet werden.<br />     Für die `magnitude`-Funktion können Sie den Bereich (absteigend) umkehren, wenn Sie das umgekehrte Muster anwenden möchten (z. B. um preiswerteren Elemente eine höhere Relevanz zuzuordnen als teureren Elementen). Legen Sie bei einer Preisspanne zwischen 100 € und 1 € `boostingRangeStart` auf 100 und `boostingRangeEnd` auf 1 fest, um preiswertere Artikeln zu fördern.<br />-   `distance` sollte verwendet werden, wenn die Verstärkung entsprechend der Nähe oder geografischen Lage erfolgen soll. Diese Funktion kann nur mit `Edm.GeographyPoint` -Feldern verwendet werden.<br />-   `tag` sollte verwendet werden, wenn die Verstärkung nach gemeinsamen Tags in Dokumenten und Suchabfragen erfolgen soll. Diese Funktion kann nur mit `Edm.String`- und `Collection(Edm.String)`-Feldern verwendet werden.<br /><br /> **Regeln für die Verwendung von Funktionen**<br /><br /> `tag` für den Funktionstyp (`freshness`, `magnitude`, `distance`,) muss in Kleinbuchstaben angegeben werden.<br /><br /> Funktionen dürfen nicht Null sein oder leere Werte enthalten. Insbesondere beim Einbeziehen von Feldnamen muss ein Wert festgelegt werden.<br /><br /> Funktionen können nur auf filterbare Felder angewendet werden. Weitere Informationen zu filterbaren Feldern finden Sie unter [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index).<br /><br /> Funktionen können nur auf Felder angewendet werden, die in der Felderauflistung für einen Index definiert sind.|  
 
- Nachdem der Index definiert wurde, erstellen Sie den Index durch Hochladen des Indexschemas, gefolgt von Dokumenten. Anweisungen zu diesen Vorgängen finden Sie unter [Erstellen eines Index (Azure Search-Dienst-REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-index) und [Hinzufügen, Aktualisieren oder Löschen von Dokumenten (REST-API für Azure Search-Dienst)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Nachdem der Index erstellt wurde, sollten Sie über ein funktionsfähiges Bewertungsprofil verfügen, das mit Ihren Suchdaten arbeitet.  
+ Nachdem der Index definiert wurde, erstellen Sie den Index durch Hochladen des Indexschemas, gefolgt von Dokumenten. Anweisungen zu diesen Vorgängen finden Sie unter [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) und [Hinzufügen, Aktualisieren oder Löschen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Nachdem der Index erstellt wurde, sollten Sie über ein funktionsfähiges Bewertungsprofil verfügen, das mit Ihren Suchdaten arbeitet.  
 
 ##  <a name="bkmk_template"></a> Vorlage  
  In diesem Abschnitt wird die Syntax und die Vorlage für die Bewertungsprofile veranschaulicht. Beschreibungen zu den Attributen finden Sie im nächsten Abschnitt unter [Indexattributreferenz](#bkmk_indexref).  
@@ -249,12 +249,12 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 |`freshness`|Die Bewertungsfunktion für die Aktualität wird dazu verwendet, um Rangfolgebewertungen für Elemente auf Basis von Werten in `DateTimeOffset`-Feldern zu ändern. Ein Element mit einem aktuelleren Datum kann z. B. höher als ältere Elemente eingestuft werden.<br /><br /> Elemente wie z. B. Kalenderereignisse können mit in der Zukunft liegenden Daten so eingestuft werden, dass Ereignisse mit geringerem Abstand zur Gegenwart höher als Ereignisse eingestuft werden, die weiter in der Zukunft liegen.<br /><br /> Im aktuellen Service Release wird ein Ende des Bereichs auf die aktuelle Zeit festgelegt. Das andere Ende ist ein Zeitpunkt in der Vergangenheit, der auf `boostingDuration` basiert. Um einen Bereich von Zeitpunkten in der Zukunft zu verstärken, verwenden Sie einen negativen Wert für `boostingDuration`.<br /><br /> Die Rate, mit der die Verstärkung von einem maximalen und minimalen Bereich wechselt, wird durch die Interpolation bestimmt, die auf das Bewertungsprofil angewendet wird (siehe folgende Abbildung). Wählen Sie zum Umkehren des angewendeten Verstärkungsfaktors einen Verstärkungsfaktor, der kleiner ist als 1.|  
 |`freshness` &#124; `boostingDuration`|Legt eine Ablaufdauer fest, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Informationen zur Syntax und Beispiele finden Sie im folgenden Abschnitt unter [Festlegen von boostingDuration](#bkmk_boostdur).|  
 |`distance`|Die Bewertungsfunktion für den Abstand wird dazu verwendet, um auf Basis des Abstands relativ zu einem geografischen Standort Einfluss auf die Bewertung von Dokumenten zu nehmen. Der Referenzstandort wird als Teil der Abfrage in einem Parameter (mithilfe der Zeichenfolgeoption `scoringParameterquery`) als „lon,lat“-Argument (Längengrad, Breitengrad) angegeben.|  
-|`distance` &#124; `referencePointParameter`|Ein in Abfragen zu übergebender Parameter, der als Referenzstandort verwendet wird. `scoringParameter` ist ein Abfrageparameter. Beschreibungen von Abfrageparametern finden Sie unter [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst).|  
+|`distance` &#124; `referencePointParameter`|Ein in Abfragen zu übergebender Parameter, der als Referenzstandort verwendet wird. `scoringParameter` ist ein Abfrageparameter. Beschreibungen von Abfrageparametern finden Sie unter [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).|  
 |`distance` &#124; `boostingDistance`|Dies muss eine ganze Zahl sein. Legt den Abstand in Kilometern vom Referenzstandort fest, an dem der Verstärkungsbereich endet.|  
 |`tag`|Die Bewertungsfunktion "tag" wird verwendet, um die Bewertung von Dokumenten auf Grundlage der Tags in Dokumenten und Suchabfragen zu beeinflussen. Dokumente, die dieselben Tags wie die Suchabfrage enthalten, werden verstärkt. Die Tags für die Suchabfrage dienen als Bewertungsparameter in jeder Suchanforderung (mithilfe der Zeichenfolgeoption `scoringParameterquery`).|  
-|`tag` &#124; `tagsParameter`|Ein in Abfragen zu übergebender Parameter, der Tags für eine bestimmten Anforderung angibt. `scoringParameter` ist ein Abfrageparameter. Beschreibungen von Abfrageparametern finden Sie unter [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst).|  
+|`tag` &#124; `tagsParameter`|Ein in Abfragen zu übergebender Parameter, der Tags für eine bestimmten Anforderung angibt. `scoringParameter` ist ein Abfrageparameter. Beschreibungen von Abfrageparametern finden Sie unter [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).|  
 |`functionAggregation`|Optional. Gilt nur, wenn Funktionen angegeben sind. Gültige Werte sind: „sum“ (Standard), „average“, „minimum“, „maximum“ und „firstMatching“. Eine Suchbewertung entspricht einem einzelnen Wert, der aus mehreren Variablen berechnet wird, einschließlich mehrerer Funktionen. Dieses Attribut gibt an, wie die Verstärkungen aller Funktionen zu einer einzelnen Gesamtverstärkung zusammengefasst werden, die dann auf die Basisdokumentbewertung angewendet wird. Die Basisbewertung basiert auf dem [tf-idf](http://www.tfidf.com/)-Wert, der aus dem Dokument und der Suchabfrage berechnet wird.|  
-|`defaultScoringProfile`|Beim Ausführen einer Suchanforderung wird die Standardbewertung verwendet (nur [tf-idf](http://www.tfidf.com/)), wenn kein Bewertungsprofil angegeben ist.<br /><br /> Hier kann ein Standardname für das Bewertungsprofil festgelegt werden. Dies führt dazu, dass Azure Search dieses Profil verwendet, wenn in der Suchanforderung kein bestimmtes Profil angegeben ist.|  
+|`defaultScoringProfile`|Beim Ausführen einer Suchanforderung wird die Standardbewertung verwendet (nur [tf-idf](http://www.tfidf.com/)), wenn kein Bewertungsprofil angegeben ist.<br /><br /> Hier kann ein Standardname für das Bewertungsprofil festgelegt werden. Dies führt dazu, dass die kognitive Azure-Suche dieses Profil verwendet, wenn in der Suchanforderung kein bestimmtes Profil angegeben ist.|  
 
 ##  <a name="bkmk_interpolation"></a> Festlegen von Interpolationen  
  Interpolationen ermöglichen Ihnen das Festlegen der Form der für die Bewertung verwendete Steigung. Da Bewertung von hoch zu niedrig verläuft, nimmt die Steigung immer ab, die Interpolation bestimmt jedoch die Kurve des Gefälles. Die folgenden Interpolationen können verwendet werden:  
@@ -285,6 +285,6 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
  Weitere Beispiele finden Sie unter [XML-Schema: Datentypen (W3.org-Website)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration).  
 
 ## <a name="see-also"></a>Weitere Informationen  
- [Azure Search-Dienst-REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
- [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
- [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
+ [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
+ [.NET SDK für die kognitive Azure-Suche](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

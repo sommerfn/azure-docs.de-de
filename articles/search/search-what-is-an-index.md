@@ -1,26 +1,25 @@
 ---
-title: Erstellen der Indexdefinition und Konzepte – Azure Search
-description: Einführung in Indexbegriffe und Konzepte in Azure Search, einschließlich Komponenten und physischer Struktur.
-author: HeidiSteen
+title: Erstellen der Indexdefinition und Konzepte
+titleSuffix: Azure Cognitive Search
+description: Einführung in Indexbegriffe und Konzepte in der kognitiven Azure-Suche, einschließlich Komponenten und physischer Struktur.
 manager: nitinme
+author: HeidiSteen
 ms.author: heidist
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 11/04/2019
+ms.openlocfilehash: 30fffa6264411238c3ff0a5e829e1567c00f4f97
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647368"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72794208"
 ---
-# <a name="create-a-basic-index-in-azure-search"></a>Erstellen eines grundlegenden Index in Azure Search
+# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Erstellen eines einfachen Index in der kognitiven Azure-Suche
 
-In Azure Search ist ein *Index* ein dauerhafter Speicher von *Dokumenten* und anderen Konstrukten, die von einem Azure Search-Dienst für die gefilterte und Volltextsuche verwendet werden. Konzeptionell ist ein Dokument eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Internetversandhändler verfügt beispielsweise über ein Dokument für jeden angebotenen Artikel, eine Nachrichtenagentur über ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Index* entspricht etwa einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
+In der kognitiven Azure-Suche ist ein *Index* ein dauerhafter Speicher von *Dokumenten* und anderen Konstrukten, die von einem Dienst der kognitiven Azure-Suche für die gefilterte und Volltextsuche verwendet werden. Konzeptionell ist ein Dokument eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Internetversandhändler verfügt beispielsweise über ein Dokument für jeden angebotenen Artikel, eine Nachrichtenagentur über ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Index* entspricht etwa einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
 
-Wenn Sie einen Index hinzufügen oder hochladen, erstellt Azure Search physische Strukturen basierend auf dem von Ihnen bereitgestellten Schema. Wenn beispielsweise ein Feld in Ihrem Index als durchsuchbar markiert ist, wird ein invertierter Index für dieses Feld erstellt. Wenn Sie später Dokumente hinzufügen oder hochladen oder Suchabfragen an Azure Search übermitteln, senden Sie Anforderungen an einen bestimmten Index in Ihrem Suchdienst. Das Laden von Feldern mit Dokumentwerten wird als *Indizierung* oder Datenerfassung bezeichnet.
+Wenn Sie einen Index hinzufügen oder hochladen, werden in der kognitiven Azure-Suche physische Strukturen basierend auf dem angegebenen Schema erstellt. Wenn beispielsweise ein Feld in Ihrem Index als durchsuchbar markiert ist, wird ein invertierter Index für dieses Feld erstellt. Wenn Sie später Dokumente hinzufügen oder hochladen oder Suchabfragen an die kognitive Azure-Suche übermitteln, senden Sie Anforderungen an einen bestimmten Index in Ihrem Suchdienst. Das Laden von Feldern mit Dokumentwerten wird als *Indizierung* oder Datenerfassung bezeichnet.
 
 Sie können einen Index im Portal, in der [REST-API](search-create-index-rest-api.md) oder im [.NET SDK](search-create-index-dotnet.md) erstellen.
 
@@ -40,7 +39,7 @@ Der richtige Indexentwurf wird in der Regel über mehrere Iterationen erreicht. 
 
    Sie wechseln an diesem Punkt zu einem codebasierten Ansatz. Das Portal eignet sich nun ideal für die Iteration, da Sie keinen Index bearbeiten können, der bereits erstellt wurde. Sie können aber Postman und REST für die verbleibenden Aufgaben verwenden.
 
-4. [Laden Sie Ihren Index mit Daten](search-what-is-data-import.md). Azure Search akzeptiert JSON-Dokumente. Um Ihre Daten programmgesteuert zu laden, können Sie Postman mit JSON-Dokumenten in der Anforderungsnutzlast verwenden. Wenn Ihre Daten nicht einfach als JSON-Code ausgedrückt werden, erfordert dieser Schritt den meisten Arbeitsaufwand.
+4. [Laden Sie Ihren Index mit Daten](search-what-is-data-import.md). Die kognitive Azure-Suche akzeptiert JSON-Dokumente. Um Ihre Daten programmgesteuert zu laden, können Sie Postman mit JSON-Dokumenten in der Anforderungsnutzlast verwenden. Wenn Ihre Daten nicht einfach als JSON-Code ausgedrückt werden, erfordert dieser Schritt den meisten Arbeitsaufwand.
 
 5. Fragen Sie Ihren Index ab, überprüfen Sie Ergebnisse, und durchlaufen Sie weiter das Indexschema, bis Sie die Ergebnisse sehen, die Sie erwarten. Sie können [**Suchexplorer**](search-explorer.md) oder Postman verwenden, um Ihren Index abzufragen.
 
@@ -52,7 +51,7 @@ Code eignet sich eher als ein Portalansatz für den iterativen Entwurf. Wenn Sie
 
 ## <a name="components-of-an-index"></a>Komponenten eines Index
 
-Schematisch besteht ein Azure Search-Index aus den folgenden Elementen. 
+Schematisch besteht ein Index der kognitiven Azure-Suche aus den folgenden Elementen. 
 
 Die [*Feldsammlung*](#fields-collection) ist typischerweise der größte Teil eines Index, wobei jedes Feld benannt, typisiert und mit zulässigen Verhaltensweisen versehen wird, die bestimmen, wie es verwendet wird. Weitere Elemente sind [Vorschlagsfunktionen](#suggesters), [Bewertungsprofile](#scoring-profiles), [Analysetools](#analyzers) mit Komponenten zur Unterstützung der Anpassung sowie Optionen für [CORS](#cors) und [Verschlüsselungsschlüssel](#encryption-key).
 
@@ -157,7 +156,7 @@ Wenn Sie Ihr Schema definieren, müssen Sie den Namen, den Typ und die Attribute
 | *Edm.DateTimeOffset* |Datums-/Uhrzeitwerte im OData V4-Format (z.B. `yyyy-MM-ddTHH:mm:ss.fffZ` oder `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | *Edm.GeographyPoint* |Ein Punkt, der einen weltweiten geografischen Standort darstellt |
 
-Ausführlichere Informationen zu den von Azure Search unterstützten Datentypen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
+Ausführlichere Informationen zu den in der kognitiven Azure-Suche unterstützten Datentypen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="index-attributes"></a>Indexattribute
 
@@ -190,7 +189,7 @@ Obwohl diese Indexvarianten künstlich sind, können wir sie für umfassende Ver
 Indizes, die Filtern und Sortieren unterstützen, sind proportional größer als Indizes, die nur die Volltextsuche unterstützen. Der Grund ist, dass Filtern und Sortieren genaue Übereinstimmungen abfragen, sodass Dokumente als Ganzes gespeichert werden. Im Gegensatz dazu verwenden durchsuchbare Felder, die Volltext- als auch Fuzzysuche unterstützen, invertierte Indizes, die mit tokenisierten Begriffen aufgefüllt werden, die weniger Speicherplatz als ganze Dokumente benötigen.
 
 > [!Note]
-> Die Speicherarchitektur gilt als Implementierungsdetail von Azure Search und könnte ohne vorherige Ankündigung geändert werden. Es gibt keine Garantie, dass das aktuelle Verhalten in der Zukunft beibehalten wird.
+> Die Speicherarchitektur gilt als Implementierungsdetail der kognitiven Azure-Suche und kann ohne vorherige Ankündigung geändert werden. Es gibt keine Garantie, dass das aktuelle Verhalten in der Zukunft beibehalten wird.
 
 ## <a name="suggesters"></a>Vorschläge
 Eine Vorschlagsfunktion ist ein Abschnitt des Schemas, das definiert, welche Felder in einem Index verwendet werden, um AutoVervollständigen oder Eingabevorschläge für Abfragen bei Suchvorgängen zu unterstützen. In der Regel werden während der Eingabe einer Suchabfrage Teile von Suchzeichenfolgen an die [Suggestions-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) gesendet. Diese gibt daraufhin eine Reihe von Vorschlägen zurück. 
@@ -205,7 +204,7 @@ Ein standardmäßiges Bewertungsprofil berechnet im Hintergrund für jedes Eleme
 
 ## <a name="analyzers"></a>Analysemodule
 
-Das Analysetoolelement legt den Namen des Sprachanalysetools fest, das für das Feld verwendet werden soll. Weitere Informationen über den Bereich der Ihnen zur Verfügung stehenden Analysetools finden Sie unter [Analysetools für Textverarbeitung in Azure Search](search-analyzers.md). Analysetools können nur mit durchsuchbaren Feldern verwendet werden. Sobald das Analysetool einem Feld zugewiesen ist, kann es nicht geändert werden, solange Sie den Index nicht neu erstellen.
+Das Analysetoolelement legt den Namen des Sprachanalysetools fest, das für das Feld verwendet werden soll. Weitere Informationen zu den verfügbaren Analysetools finden Sie unter [Hinzufügen von Analysetools zu einem Index der kognitiven Azure-Suche](search-analyzers.md). Analysetools können nur mit durchsuchbaren Feldern verwendet werden. Sobald das Analysetool einem Feld zugewiesen ist, kann es nicht geändert werden, solange Sie den Index nicht neu erstellen.
 
 ## <a name="cors"></a>CORS
 
@@ -221,7 +220,7 @@ Die folgenden Optionen können für CORS festgelegt werden:
 
 ## <a name="encryption-key"></a>Verschlüsselungsschlüssel
 
-Alle Azure Search-Indizes werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Die Indizes können jedoch auch so konfiguriert werden, dass sie mit **von Kunden verwalteten Schlüsseln** in Key Vault verschlüsselt werden. Weitere Informationen finden Sie unter [Verwalten von Verschlüsselungsschlüsseln in Azure Search](search-security-manage-encryption-keys.md).
+Alle Indizes der kognitiven Azure-Suche werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Die Indizes können jedoch auch so konfiguriert werden, dass sie mit **von Kunden verwalteten Schlüsseln** in Key Vault verschlüsselt werden. Weitere Informationen finden Sie unter [Verwalten von Verschlüsselungsschlüsseln in der kognitiven Azure-Suche](search-security-manage-encryption-keys.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

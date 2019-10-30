@@ -1,22 +1,21 @@
 ---
-title: Die Qualifikation „Shaper“ der kognitiven Suche – Azure Search
-description: Extrahieren Sie Metadaten und strukturierte Informationen aus unstrukturierten Daten, und bringen Sie diese in die Form eines komplexen Typs in einer Azure Search-Anreicherungspipeline.
-services: search
+title: Der Skill „Shaper“
+titleSuffix: Azure Cognitive Search
+description: Extrahieren Sie Metadaten und strukturierte Informationen aus unstrukturierten Daten, und bringen Sie diese in die Form eines komplexen Typs in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 84814c317a945fd22ada580dcc3f64ed2adcff7c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265350"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791873"
 ---
-#   <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
+# <a name="shaper-cognitive-skill"></a>Der Skill „Shaper“
 
 Die Qualifikation **Shaper** konsolidiert mehrere Eingaben in einem [komplexen Typ](search-howto-complex-data-types.md), auf den später in der Anreicherungspipeline verwiesen werden kann. Im Wesentlichen ermöglicht es Ihnen der Skill **Shaper**, eine Struktur zu erstellen, den Namen der Elemente dieser Struktur zu definieren und jedem Element Werte zuzuweisen. Beispiele für konsolidierte Felder, die in Suchszenarien nützlich sind, sind die Kombination von Vor- und Nachnamen in einer einzigen Struktur, Stadt und Land in einer einzigen Struktur oder Name und Geburtsdatum in einer einzigen Struktur, um eine eindeutige Identität zu schaffen.
 
@@ -32,7 +31,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Szenario 1: komplexe Typen
 
-Stellen Sie sich ein Szenario vor, in dem Sie eine Struktur namens *analyzedText* erstellen möchten, die zwei Elemente hat: *text* und *sentiment*. In einem Azure Search-Index wird ein mehrteiliges, durchsuchbares Feld als *komplexer Typ* bezeichnet und oft erstellt, wenn die Quelldaten über eine entsprechende komplexe Struktur verfügen, die dem Typ entspricht.
+Stellen Sie sich ein Szenario vor, in dem Sie eine Struktur namens *analyzedText* erstellen möchten, die zwei Elemente hat: *text* und *sentiment*. In einem Index wird ein mehrteiliges, durchsuchbares Feld als *komplexer Typ* bezeichnet und oft erstellt, wenn die Quelldaten über eine entsprechende komplexe Struktur verfügen, die dem Typ entspricht.
 
 Einen anderen Ansatz für das Erstellen komplexer Typen stellt die Qualifikation **Shaper** dar. Durch das Einschließen dieser Qualifikation in eine Qualifikationsgruppe können die speicherinternen Vorgänge während der Verarbeitung von Qualifikationsgruppen Datenformen mit geschachtelten Strukturen ausgeben, die dann einem komplexen Typ in Ihrem Index zugeordnet werden können. 
 
@@ -110,7 +109,7 @@ So könnte ein eingehendes JSON-Dokument aussehen, das hilfreiche Eingabewerte f
 
 ### <a name="skill-output"></a>Qualifikationsausgaben
 
-Der Skill **Shaper** generiert ein neues Element namens *analyzedText* mit den kombinierten Elementen von *text* und *sentiment*. Diese Ausgabe entspricht dem Indexschema. Sie wird importiert und in einem Azure Search-Index indiziert.
+Der Skill **Shaper** generiert ein neues Element namens *analyzedText* mit den kombinierten Elementen von *text* und *sentiment*. Diese Ausgabe entspricht dem Indexschema. Sie wird importiert und in einem Index der kognitiven Azure-Suche indiziert.
 
 ```json
 {
@@ -249,8 +248,8 @@ In diesem Fall erstellt **Shaper** einen komplexen Typ. Diese Struktur ist im Ar
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Skills](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Verwenden komplexer Typen](search-howto-complex-data-types.md)
-+ [Übersicht über Wissensspeicher](knowledge-store-concept-intro.md)
++ [Wissensspeicher (Vorschau)](knowledge-store-concept-intro.md)
 + [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md)

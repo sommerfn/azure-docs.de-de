@@ -1,25 +1,25 @@
 ---
-title: Erstellen einer Qualifikationsgruppe in einer Pipeline der kognitiven Suche – Azure Search
-description: Definieren Sie Datenextrahierung, Verarbeitung natürlicher Sprache oder Bildanalyseschritte, um strukturierte Informationen aus Ihren Daten für die Verwendung in Azure Search anzureichern und zu extrahieren.
+title: Erstellen eines Skillsets in einer Anreicherungspipeline
+titleSuffix: Azure Cognitive Search
+description: Definieren Sie Schritte zur Datenextraktion, Verarbeitung natürlicher Sprache oder Bildanalyse, um strukturierte Informationen aus Ihren Daten für die Verwendung in der kognitiven Azure-Suche anzureichern und zu extrahieren.
 manager: nitinme
 author: luiscabrer
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265529"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787465"
 ---
-# <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Erstellen eines Skillsets in einer Anreicherungspipeline
+# <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Erstellen eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche 
 
-Die kognitive Suche extrahiert Daten und reichert diese an, um sie in Azure Search durchsuchbar zu machen. Extrahierungs- und Anreicherungsschritte werden als *kognitive Skills* bezeichnet, die in einem *Skillset* kombiniert sind, auf das während der Indizierung verwiesen wird. Ein Skillset kann [integrierte Qualifikationen](cognitive-search-predefined-skills.md) oder benutzerdefinierte Qualifikationen verwenden. Weitere Informationen finden Sie unter [Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API](cognitive-search-create-custom-skill-example.md).
+Bei der KI-Anreicherung werden Daten extrahiert und angereichert, sodass sie in der kognitiven Azure-Suche durchsucht werden können. Extrahierungs- und Anreicherungsschritte werden als *kognitive Skills* bezeichnet, die in einem *Skillset* kombiniert sind, auf das während der Indizierung verwiesen wird. Ein Skillset kann [integrierte Qualifikationen](cognitive-search-predefined-skills.md) oder benutzerdefinierte Qualifikationen verwenden. Weitere Informationen finden Sie unter [Beispiel: Erstellen eines benutzerdefinierten Skills in einer KI-Anreicherungspipeline](cognitive-search-create-custom-skill-example.md)).
 
-In diesem Artikel erfahren Sie, wie Sie eine Anreicherungspipeline für die Skills erstellen, die Sie verwenden möchten. Ein Skillset wird an einen [Azure Search-Indexer](search-indexer-overview.md) angehängt. Ein Teil des Pipelineentwurfs, der in diesem Artikel behandelt wird, ist die Konstruktion des Skillsets selbst. 
+In diesem Artikel erfahren Sie, wie Sie eine Anreicherungspipeline für die Skills erstellen, die Sie verwenden möchten. Ein Skillset wird an einen [Indexer](search-indexer-overview.md) der kognitiven Azure-Suche angefügt. Ein Teil des Pipelineentwurfs, der in diesem Artikel behandelt wird, ist die Konstruktion des Skillsets selbst. 
 
 > [!NOTE]
 > Ein weiterer Teil des Pipelineentwurfs ist die Festlegung eines Indexers im [nächsten Schritt](#next-step). Eine Indexerdefinition enthält einen Verweis auf das Skillset sowie Feldzuordnungen, die für die Verbindung von Eingaben zu Ausgaben im Zielindex verwendet werden.
@@ -42,13 +42,13 @@ Angenommen, Sie möchten eine Reihe von Kommentaren von Finanzexperten verarbeit
 
 Das folgende Diagramm veranschaulicht eine hypothetische Anreicherungspipeline:
 
-![Eine hypothetische Anreicherungspipeline](media/cognitive-search-defining-skillset/sample-skillset.png "Eine hypothetische Anreicherungspipeline")
+![Hypothetische Anreicherungspipeline](media/cognitive-search-defining-skillset/sample-skillset.png "Hypothetische Anreicherungspipeline")
 
 
-Sobald Sie eine ungefähre Vorstellung davon haben, wie die Pipeline aussehen soll, können Sie das Skillset für die erforderlichen Schritte erstellen. Funktionell wird das Skillset ausgedrückt, sobald Sie Ihre Indexerdefinition in Azure Search hochladen. Weitere Informationen darüber, wie Sie Ihren Indexer hochladen können, finden Sie in der [Indexerdokumentation](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Sobald Sie eine ungefähre Vorstellung davon haben, wie die Pipeline aussehen soll, können Sie das Skillset für die erforderlichen Schritte erstellen. Funktionell wird das Skillset ausgedrückt, wenn Sie die Indexerdefinition in die kognitive Azure-Suche hochladen. Weitere Informationen darüber, wie Sie Ihren Indexer hochladen können, finden Sie in der [Indexerdokumentation](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
 
 
-Im Diagramm erfolgt der Schritt zur *Dokumententschlüsselung* automatisch. Bekannte Dateien werden in Azure Search problemlos geöffnet, und es wird ein *content*-Feld erstellt, das den aus jedem Dokument extrahierten Text enthält. Die weißen Felder sind integrierte Anreicherungsfunktionen, und das gepunktete Feld „Bing Entity Search“ (Bing-Entitätssuche) stellt eine benutzerdefinierte Anreicherungsfunktion dar, die Sie erstellen. Wie dargestellt, enthält das Skillset drei Skills.
+Im Diagramm erfolgt der Schritt zur *Dokumententschlüsselung* automatisch. Bekannte Dateien werden in der kognitiven Azure-Suche problemlos geöffnet, und es wird ein *content*-Feld erstellt, das den aus jedem Dokument extrahierten Text enthält. Die weißen Felder sind integrierte Anreicherungsfunktionen, und das gepunktete Feld „Bing Entity Search“ (Bing-Entitätssuche) stellt eine benutzerdefinierte Anreicherungsfunktion dar, die Sie erstellen. Wie dargestellt, enthält das Skillset drei Skills.
 
 ## <a name="skillset-definition-in-rest"></a>Skillsetdefinition in REST
 
@@ -241,13 +241,13 @@ Das Skillset generiert strukturierte Informationen aus unstrukturierten Daten. B
 
 Ein wahrscheinliches Ergebnis wäre eine generierte Struktur ähnlich der folgenden Abbildung:
 
-![Beispiel für Ausgabestruktur](media/cognitive-search-defining-skillset/enriched-doc.png "Beispiel für Ausgabestruktur")
+![Beispiel für eine Ausgabestruktur](media/cognitive-search-defining-skillset/enriched-doc.png "Beispiel für eine Ausgabestruktur")
 
-Bis jetzt wurde diese Struktur nur intern, ausschließlich im Arbeitsspeicher und nur in Azure Search-Indizes verwendet. Das Hinzufügen eines Wissensspeichers bietet Ihnen eine Möglichkeit zum Speichern von Anreicherungen mit Formen zur Verwendung außerhalb der Suche.
+Bis jetzt wurde diese Struktur nur intern, ausschließlich im Arbeitsspeicher und nur in Indizes der kognitiven Azure-Suche verwendet. Das Hinzufügen eines Wissensspeichers bietet Ihnen eine Möglichkeit zum Speichern von Anreicherungen mit Formen zur Verwendung außerhalb der Suche.
 
 ## <a name="add-a-knowledge-store"></a>Hinzufügen von Wissensspeichern
 
-Ein [Wissensspeicher](knowledge-store-concept-intro.md) ist eine Previewfunktion in Azure Search zum Speichern Ihrer angereicherten Dokumente. Wenn Sie einen Wissensspeicher erstellen, der durch ein Azure Storage-Konto unterstützt wird, fungiert er als Repository für Ihre angereicherten Daten. 
+Ein [Wissensspeicher](knowledge-store-concept-intro.md) ist eine Previewfunktion in der kognitiven Azure-Suche zum Speichern der angereicherten Dokumente. Wenn Sie einen Wissensspeicher erstellen, der durch ein Azure Storage-Konto unterstützt wird, fungiert er als Repository für Ihre angereicherten Daten. 
 
 Die Definition eines Wissensspeichers wird einer Qualifikationsgruppe hinzugefügt. Eine exemplarische Vorgehensweise des gesamten Prozesses finden Sie unter [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md).
 

@@ -1,23 +1,22 @@
 ---
-title: 'Upgrade auf das Azure Search .NET SDK Version 10: Azure Search'
+title: Upgrade auf Version 10 des Azure Search .NET SDK
+titleSuffix: Azure Cognitive Search
 description: Migrieren Sie Code von älteren Versionen zum Azure Search .NET SDK Version 10. Hier finden Sie Informationen zu Neuheiten und erfahren, welche Änderungen am Code erforderlich sind.
-author: arv100kri
 manager: nitinme
-services: search
-ms.service: search
+author: arv100kri
+ms.author: arjagann
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: arjagann
-ms.custom: seodec2018
-ms.openlocfilehash: e4633a1c0543331b0ea9820703ed685fb99f2130
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182368"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793052"
 ---
-# <a name="upgrade-to-the-azure-search-net-sdk-version-10"></a>Upgrade zur Version 10 des Azure Search .NET SDK
+# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Upgrade auf Version 10 des Azure Search .NET SDK
 
 Wenn Sie die Version 9.0 oder eine frühere Version des [Azure Search .NET SDK](https://aka.ms/search-sdk) verwenden, unterstützt dieser Artikel Sie dabei, Ihre Anwendung auf die Verwendung von Version 10 zu aktualisieren.
 
@@ -158,6 +157,6 @@ Das `ItemError`- und das `ItemWarning`-Modell, die Details zu Fehlern bzw. Warnu
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Änderungen an der Qualifikation „Shaper“ haben die größten möglichen Auswirkungen auf neuen oder vorhandenen Code. Im nächsten Schritt sollten Sie sich dieses Beispiel zur Veranschaulichung der Eingabestruktur erneut ansehen: [Beispiel für JSON-Definition einer „Shaper“-Qualifikation](cognitive-search-skill-shaper.md).
-- Lesen Sie den Artikel [Was ist die „kognitive Suche“ in Azure Search?](cognitive-search-concept-intro.md).
-- Wir freuen uns auf Ihr Feedback zum SDK! Wenn Probleme auftreten, können Sie sich gerne über [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) an uns wenden. Wenn Sie einen Fehler finden, können Sie das Problem im [Azure .NET SDK-GitHub-Repository](https://github.com/Azure/azure-sdk-for-net/issues)melden. Stellen Sie sicher, dass Sie dem Titel des Problems „[Azure Search]“ voranstellen.
+- Lesen Sie die [Übersicht über die KI-Anreicherung](cognitive-search-concept-intro.md).
+- Wir freuen uns auf Ihr Feedback zum SDK! Wenn Probleme auftreten, können Sie sich gerne über [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) an uns wenden. Wenn Sie einen Fehler finden, können Sie das Problem im [Azure .NET SDK-GitHub-Repository](https://github.com/Azure/azure-sdk-for-net/issues)melden. Stellen Sie sicher, dass Sie dem Titel des Problems „[Kognitive Azure-Suche]“ voranstellen.
 

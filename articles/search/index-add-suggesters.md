@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen von Eingabevorschlägen für Abfragen zu einem Index – Azure Search
-description: Aktivieren Sie Eingabevorschläge für Abfrageaktionen in Azure Search, indem Sie Vorschlagsfunktionen erstellen und Anforderungen formulieren, die automatisch Vervollständigungen oder Vorschläge für Abfrageausdrücke abrufen.
-ms.date: 09/30/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Hinzufügen von Eingabevorschlägen für Abfragen zu einem Index
+titleSuffix: Azure Cognitive Search
+description: Aktivieren Sie Eingabevorschläge für Abfrageaktionen in der kognitiven Azure-Suche, indem Sie Vorschlagsfunktionen erstellen und Anforderungen formulieren, die automatisch Vervollständigungen oder Vorschläge für Abfrageausdrücke abrufen.
+manager: nitinme
 author: Brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,24 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d3f934bea5df821e51a4747170af4f7efd1eaacc
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a312068d5c8c574e7b069263cf37e3b855810e4b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828296"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790098"
 ---
-# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Hinzufügen von Vorschlagsfunktionen zu einem Index für Eingabevorschläge in Azure Search
+# <a name="add-suggesters-to-an-index-for-typeahead-in-azure-cognitive-search"></a>Hinzufügen von Vorschlagsfunktionen zu einem Index für Eingabevorschläge in der kognitiven Azure-Suche
 
-In Azure Search basieren die Funktionen „Vorschläge während der Eingabe“ oder Eingabevorschläge auf einem **Vorschlagsfunktionen**-Konstrukt, das einem [Suchindex](search-what-is-an-index.md) hinzufügen. Es handelt sich um eine Liste mit einem oder mehreren Feldern, für die Sie Eingabevorschläge aktivieren möchten.
+In der kognitiven Azure-Suche basieren die Funktionen „Vorschläge während der Eingabe“ oder Eingabevorschläge auf einem **Vorschlagsfunktionen**-Konstrukt, das Sie einem [Suchindex](search-what-is-an-index.md) hinzufügen. Es handelt sich um eine Liste mit einem oder mehreren Feldern, für die Sie Eingabevorschläge aktivieren möchten.
 
 Eine Vorschlagsfunktion unterstützt zwei Varianten für Eingabevorschläge: *AutoVervollständigen*, wodurch der Begriff oder Ausdruck, den Sie eingeben, vervollständigt wird, und *Vorschläge*, wodurch eine kurze Liste passender Dokumente zurückgegeben wird.  
 
 Der folgende Screenshot aus dem Beispiel [Erstellen Ihrer ersten App in C#](tutorial-csharp-type-ahead-and-suggestions.md) veranschaulicht Eingabevorschläge. AutoVervollständigen erkennt im Voraus, was der Benutzer in das Suchfeld eingeben könnte. Angenommen, der Benutzer gibt „Zwi“ ein, das von „AutoVervollständigen“ mit „lling“ vervollständigt wird, wodurch sich als potenzieller Suchbegriff „Zwilling“ ergibt. Vorschläge werden in der Dropdownliste angezeigt. Für Vorschläge können Sie jeden Bereich eines Dokuments anzeigen, der das Ergebnis am besten beschreibt. In diesem Beispiel werden Hotelnamen als Vorschläge angezeigt. 
 
-![Visueller Vergleich von automatisch vervollständigten Abfragen und Vorschlägen für Abfragen](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Visueller Vergleich von automatisch vervollständigten Abfragen und Vorschlägen für Abfragen")
+![Visueller Vergleich von AutoVervollständigen und vorgeschlagenen Abfragen](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Visueller Vergleich von AutoVervollständigen und vorgeschlagenen Abfragen")
 
-Um dieses Verhalten in Azure Search zu implementieren, gibt es eine Index- und eine Abfragekomponente. 
+Um dieses Verhalten in der kognitiven Azure-Suche zu implementieren, gibt es eine Index- und eine Abfragekomponente. 
 
 + Fügen Sie im Index eine Vorschlagsfunktion zu einem Index hinzu. Sie können das Portal, eine [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-index) oder das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet) verwenden. Im weiteren Verlauf dieses Artikels geht es um die Erstellung einer Vorschlagsfunktion. 
 
@@ -54,7 +54,7 @@ Um eine Vorschlagsfunktion zu erstellen, fügen Sie sie zu einem Indexschema hin
 
 Der beste Zeitpunkt zum Erstellen einer Vorschlagsfunktion ist während der Erstellung der eigentlichen Felddefinition.
 
-Wenn Sie versuchen, eine Vorschlagsfunktion mithilfe bereits vorhandener Felder zu erstellen, wird dies von der API nicht zugelassen. Der Text für die Eingabevorschläge wird während der Indizierung erstellt, wenn partielle Begriffe in Kombinationen aus zwei oder mehr Zeichen zusammen mit ganzen Begriffen tokenisiert werden. Wenn vorhandene Felder bereits tokenisiert sind, müssen Sie den Index neu erstellen, wenn Sie ihn zu einer Vorschlagsfunktion hinzufügen möchten. Weitere Informationen zum Neuerstellen eines Indexes finden Sie unter [Neuerstellen eines Azure Search-Indexes](search-howto-reindex.md).
+Wenn Sie versuchen, eine Vorschlagsfunktion mithilfe bereits vorhandener Felder zu erstellen, wird dies von der API nicht zugelassen. Der Text für die Eingabevorschläge wird während der Indizierung erstellt, wenn partielle Begriffe in Kombinationen aus zwei oder mehr Zeichen zusammen mit ganzen Begriffen tokenisiert werden. Wenn vorhandene Felder bereits tokenisiert sind, müssen Sie den Index neu erstellen, wenn Sie ihn zu einer Vorschlagsfunktion hinzufügen möchten. Weitere Informationen zum Neuerstellen eines Index finden Sie unter [Neuerstellen eines Index für die kognitive Azure-Suche](search-howto-reindex.md).
 
 ### <a name="create-using-the-rest-api"></a>Erstellen mithilfe der REST-API
 
@@ -113,7 +113,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 ### <a name="analyzer-restrictions-for-sourcefields-in-a-suggester"></a>Einschränkungen des Analysetools für sourceFields in einer Vorschlagsfunktion
 
-Azure Search analysiert den Feldinhalt, um das Abfragen einzelner Begriffe zu ermöglichen. Für Vorschlagsfunktionen müssen Präfixe zusätzlich zu vollständigen Begriffen indiziert werden. Hierfür ist eine zusätzliche Analyse der Quellfelder erforderlich. In benutzerdefinierten Analysetoolkonfigurationen können die verschiedenen Tokenizer und Filter kombiniert werden. Häufig kommt es hierbei zu Kombinationen, die das Erstellen der für die Vorschläge benötigten Präfixe unmöglich machen. Aus diesem Grund verhindert Azure Search, dass Felder mit benutzerdefinierten Analysetools in eine Vorschlagsfunktion eingebunden werden.
+Die kognitive Azure-Suche analysiert den Feldinhalt, um das Abfragen einzelner Begriffe zu ermöglichen. Für Vorschlagsfunktionen müssen Präfixe zusätzlich zu vollständigen Begriffen indiziert werden. Hierfür ist eine zusätzliche Analyse der Quellfelder erforderlich. In benutzerdefinierten Analysetoolkonfigurationen können die verschiedenen Tokenizer und Filter kombiniert werden. Häufig kommt es hierbei zu Kombinationen, die das Erstellen der für die Vorschläge benötigten Präfixe unmöglich machen. Aus diesem Grund verhindert die kognitive Azure-Suche, dass Felder mit benutzerdefinierten Analysetools in eine Vorschlagsfunktion eingebunden werden.
 
 > [!NOTE] 
 >  Wenn Sie die obige Einschränkung umgehen müssen, verwenden Sie zwei separate Felder für denselben Inhalt. Eines der Felder kann so über Vorschlagsfunktionen verfügen, während das andere mit einer benutzerdefinierten Analysetoolkonfiguration eingerichtet wird.
@@ -140,7 +140,7 @@ Wenn eine Vorschlagsfunktion nicht im Index definiert ist, tritt bei einem Aufru
 
 ## <a name="sample-code"></a>Beispielcode
 
-+ Das Beispiel [Erstellen Ihrer ersten App in C#](tutorial-csharp-type-ahead-and-suggestions.md) veranschaulicht ein Vorschlagsfunktion-Konstrukt, vorgeschlagene Abfragen, AutoVervollständigen und Facettennavigation. Dieses Codebeispiel wird in einem Azure Search-Sandboxdienst ausgeführt und verwendet einen vorinstallierten Hotelindex, sodass Sie zum Ausführen der Anwendung lediglich F5 drücken müssen. Es ist weder ein Abonnement noch eine Anmeldung erforderlich.
++ Das Beispiel [Erstellen Ihrer ersten App in C#](tutorial-csharp-type-ahead-and-suggestions.md) veranschaulicht ein Vorschlagsfunktion-Konstrukt, vorgeschlagene Abfragen, AutoVervollständigen und Facettennavigation. Dieses Codebeispiel wird in einem Sandboxdienst für die kognitive Azure-Suche ausgeführt und verwendet einen vorinstallierten Hotelindex, sodass Sie zum Ausführen der Anwendung lediglich F5 drücken müssen. Es ist weder ein Abonnement noch eine Anmeldung erforderlich.
 
 + [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) ist ein älteres Beispiel, das sowohl C#- als auch Java-Code enthält. Es veranschaulicht ebenfalls ein Vorschlagsfunktion-Konstrukt, vorgeschlagene Abfragen, AutoVervollständigen und Facettennavigation. In diesem Codebeispiel werden die Beispieldaten des gehosteten [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) verwendet. 
 

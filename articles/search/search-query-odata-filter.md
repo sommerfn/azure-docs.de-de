@@ -1,13 +1,13 @@
 ---
-title: Referenz zu OData-Filtern – Azure Search
-description: OData-Sprachreferenz für die Filtersyntax in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: Referenz zu OData-Filtern
+titleSuffix: Azure Cognitive Search
+description: OData-Sprachreferenz für die Syntax von „$filter“ in Abfragen der kognitiven Azure-Suche.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8817ce075409a3f166b82404767697dc1326cc89
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647593"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793368"
 ---
-# <a name="odata-filter-syntax-in-azure-search"></a>OData-Syntax von „$filter“ in Azure Search
+# <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$filter“ in der kognitiven Azure-Suche
 
-Azure Search verwendet [OData-Filterausdrücke](query-odata-filter-orderby-syntax.md), um neben Volltextsuchbegriffen zusätzliche Kriterien auf eine Suchabfrage anzuwenden. In diesem Artikel wird die Syntax von Filtern detailliert beschrieben. Weitere allgemeine Informationen darüber, was Filter sind und wie sie zur Realisierung bestimmter Abfrageszenarien verwendet werden, finden Sie unter [Filter in Azure Search](search-filters.md).
+Bei der kognitiven Azure-Suche werden [OData-Filterausdrücke](query-odata-filter-orderby-syntax.md) verwendet, um neben Volltextsuchbegriffen zusätzliche Kriterien auf eine Suchabfrage anzuwenden. In diesem Artikel wird die Syntax von Filtern detailliert beschrieben. Weitere allgemeine Informationen darüber, was Filter sind und wie sie zur Realisierung bestimmter Abfrageszenarien verwendet werden, finden Sie unter [Filter in der kognitiven Azure-Suche](search-filters.md).
 
 ## <a name="syntax"></a>Syntax
 
@@ -53,27 +53,27 @@ variable ::= identifier | field_path
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#boolean_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 Die Typen von booleschen Ausdrücken umfassen Folgendes:
 
-- Sammlungsfilterausdrücke mit `any` oder `all`. Diese wenden Filterkriterien auf Sammlungsfelder an. Weitere Informationen finden Sie unter [OData-Sammlungsoperatoren in Azure Search](search-query-odata-collection-operators.md).
-- Logische Ausdrücke, die andere boolesche Ausdrücke mithilfe der Operatoren `and`, `or` und `not` kombinieren. Weitere Informationen finden Sie unter [Logische OData-Operatoren in Azure Search](search-query-odata-logical-operators.md).
-- Vergleichsausdrücke, die Felder oder Bereichsvariablen mithilfe der Operatoren `eq`, `ne`, `gt`, `lt`, `ge` und `le` mit konstanten Werten vergleichen. Weitere Informationen finden Sie unter [OData-Vergleichsoperatoren in Azure Search](search-query-odata-comparison-operators.md). Vergleichsausdrücke werden auch verwendet, um Entfernungen zwischen geografischen Koordinaten mithilfe der Funktion `geo.distance` zu vergleichen. Weitere Informationen finden Sie unter [OData-Geofunktionen in Azure Search](search-query-odata-geo-spatial-functions.md).
+- Sammlungsfilterausdrücke mit `any` oder `all`. Diese wenden Filterkriterien auf Sammlungsfelder an. Weitere Informationen finden Sie unter [OData-Sammlungsoperatoren in der kognitiven Azure-Suche](search-query-odata-collection-operators.md).
+- Logische Ausdrücke, die andere boolesche Ausdrücke mithilfe der Operatoren `and`, `or` und `not` kombinieren. Weitere Informationen finden Sie unter [Logische OData-Operatoren in der kognitiven Azure-Suche](search-query-odata-logical-operators.md).
+- Vergleichsausdrücke, die Felder oder Bereichsvariablen mithilfe der Operatoren `eq`, `ne`, `gt`, `lt`, `ge` und `le` mit konstanten Werten vergleichen. Weitere Informationen finden Sie unter [OData-Vergleichsoperatoren in der kognitiven Azure-Suche](search-query-odata-comparison-operators.md). Vergleichsausdrücke werden auch verwendet, um Entfernungen zwischen geografischen Koordinaten mithilfe der Funktion `geo.distance` zu vergleichen. Weitere Informationen finden Sie unter [OData-Geofunktionen in der kognitiven Azure-Suche](search-query-odata-geo-spatial-functions.md).
 - Die booleschen Literale `true` und `false`. Diese Konstanten können manchmal beim programmgesteuerten Generieren von Filtern nützlich sein, aber ansonsten werden sie in der Praxis eher nicht verwendet.
 - Aufrufe von booleschen Funktionen, einschließlich:
-  - `geo.intersects`, die prüft, ob sich ein bestimmter Punkt innerhalb eines bestimmten Polygons befindet. Weitere Informationen finden Sie unter [OData-Geofunktionen in Azure Search](search-query-odata-geo-spatial-functions.md).
-  - `search.in`, die ein Feld oder eine Bereichsvariable mit jedem Wert in einer Liste von Werten vergleicht. Weitere Informationen finden Sie unter [OData-Funktion `search.in` in Azure Search](search-query-odata-search-in-function.md).
-  - `search.ismatch` und `search.ismatchscoring`, die Volltextsuchvorgänge in einem Filterkontext ausführen. Weitere Informationen finden Sie unter [Funktionen der OData-Volltextsuche in Azure Search](search-query-odata-full-text-search-functions.md).
+  - `geo.intersects`, die prüft, ob sich ein bestimmter Punkt innerhalb eines bestimmten Polygons befindet. Weitere Informationen finden Sie unter [OData-Geofunktionen in der kognitiven Azure-Suche](search-query-odata-geo-spatial-functions.md).
+  - `search.in`, die ein Feld oder eine Bereichsvariable mit jedem Wert in einer Liste von Werten vergleicht. Weitere Informationen finden Sie unter [OData-Funktion `search.in` in der kognitiven Azure-Suche](search-query-odata-search-in-function.md).
+  - `search.ismatch` und `search.ismatchscoring`, die Volltextsuchvorgänge in einem Filterkontext ausführen. Weitere Informationen finden Sie unter [Funktionen der OData-Volltextsuche in der kognitiven Azure-Suche](search-query-odata-full-text-search-functions.md).
 - Feldpfade oder Bereichsvariablen vom Typ `Edm.Boolean`. Wenn beispielsweise Ihr Index ein boolesches Feld namens `IsEnabled` enthält und Sie alle Dokumente zurückgeben möchten, bei denen dieses Feld `true` ist, kann es sich bei Ihrem Filterausdruck einfach um den Namen `IsEnabled` handeln.
 - Boolesche Ausdrücke in Klammern. Durch die Verwendung von Klammern können Sie die Reihenfolge von Vorgängen in einem Filter explizit bestimmen. Weitere Informationen zur Standardrangfolge der OData-Operatoren finden Sie im nächsten Abschnitt.
 
 ### <a name="operator-precedence-in-filters"></a>Operatorrangfolge in Filtern
 
-Wenn Sie einen Filterausdruck schreiben, ohne die zugehörigen Unterausdrücke in Klammern zu setzen, wertet Azure Search den Ausdruck anhand einer Reihe von Regeln für die Operatorrangfolge aus. Diese Regeln basieren auf den zum Kombinieren von Unterausdrücken verwendeten Operatoren. In der folgenden Tabelle sind die Gruppen von Operatoren von der höchsten bis zur niedrigsten Rangfolge aufgelistet:
+Wenn Sie einen Filterausdruck schreiben, ohne die zugehörigen Unterausdrücke in Klammern zu setzen, wird der Ausdruck in der kognitiven Azure-Suche anhand einer Reihe von Regeln für die Operatorrangfolge ausgewertet. Diese Regeln basieren auf den zum Kombinieren von Unterausdrücken verwendeten Operatoren. In der folgenden Tabelle sind die Gruppen von Operatoren von der höchsten bis zur niedrigsten Rangfolge aufgelistet:
 
 | Group | Operator(en) |
 | --- | --- |
@@ -103,7 +103,7 @@ Dieser Fehler tritt auf, weil der Operator nur dem Feld `Rating` (vom Typ `Edm.I
 
 ### <a name="filter-size-limitations"></a>Einschränkungen der Filtergröße
 
-Für die Größe und Komplexität der Filterausdrücke, die Sie an Azure Search senden können, gelten Grenzwerte. Die Grenzwerte basieren ungefähr auf der Anzahl von Klauseln in Ihrem Filterausdruck. Als gute Orientierungshilfe gilt, dass Sie bei Hunderten von Klauseln Gefahr laufen, den Grenzwert zu überschreiten. Wir empfehlen Ihnen, Ihre Anwendung so zu entwerfen, dass sie keine Filter unbegrenzter Größe generiert.
+Für die Größe und Komplexität der Filterausdrücke, die Sie an die kognitive Azure-Suche senden können, gelten Grenzwerte. Die Grenzwerte basieren ungefähr auf der Anzahl von Klauseln in Ihrem Filterausdruck. Als gute Orientierungshilfe gilt, dass Sie bei Hunderten von Klauseln Gefahr laufen, den Grenzwert zu überschreiten. Wir empfehlen Ihnen, Ihre Anwendung so zu entwerfen, dass sie keine Filter unbegrenzter Größe generiert.
 
 > [!TIP]
 > Durch die Verwendung der [Funktion `search.in`](search-query-odata-search-in-function.md) anstelle von langen Disjunktionen von Gleichheitsvergleichen können Sie die Grenzwerte von Filterklauseln umgehen, da ein Funktionsaufruf als eine einzige Klausel zählt.
@@ -196,7 +196,7 @@ Suche nach Hotels, bei denen die Begriffe „hotel“ und „airport“ in der B
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Filter in der kognitiven Azure-Suche](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

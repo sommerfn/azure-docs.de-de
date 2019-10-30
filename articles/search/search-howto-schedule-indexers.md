@@ -1,31 +1,31 @@
 ---
-title: Festlegen eines Zeitplans für Indexer – Azure Search
-description: Legen Sie einen Zeitplan für Azure Search-Indexer fest, um Inhalte in regelmäßigen Abständen oder zu bestimmten Zeiten zu indizieren.
-ms.date: 05/31/2019
+title: Festlegen eines Zeitplans für Indexer
+titleSuffix: Azure Cognitive Search
+description: Legen Sie einen Zeitplan für Indexer der kognitiven Azure-Suche fest, um Inhalte in regelmäßigen Abständen oder zu bestimmten Zeiten zu indizieren.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
-services: search
-ms.service: search
-ms.devlang: ''
+ms.service: cognitive-search
 ms.topic: conceptual
-ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: e9d4f49bd0aec1a04b4839b2084a81fb538f7890
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186571"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793696"
 ---
-# <a name="how-to-schedule-indexers-for-azure-search"></a>Festlegen eines Zeitplans für Indexer in Azure Search
+# <a name="how-to-schedule-indexers-in-azure-cognitive-search"></a>Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche
+
 Ein Indexer wird normal einmal ausgeführt, und zwar sofort nach der Erstellung. Sie können ihn über das Portal, die REST-API oder das .NET SDK nach Bedarf erneut ausführen. Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird.
 
 Situationen, in denen das Festlegen eines Zeitplans für den Indexer nützlich ist:
 
-* Quelldaten ändern sich im Laufe der Zeit, und die Azure Search-Indexer sollen die geänderten Daten automatisch verarbeiten.
+* Quelldaten ändern sich im Lauf der Zeit, und die Indexer der kognitiven Azure-Suche sollten die geänderten Daten automatisch verarbeiten.
 * Der Index wird aus mehreren Datenquellen aufgefüllt, und Sie möchten sicherstellen, dass die Indexer zu unterschiedlichen Zeiten ausgeführt werden, um Konflikte zu vermeiden.
-* Die Quelldaten sind sehr groß, und die Indexerausführung soll auf verschiedene Zeiten verteilt werden. Weitere Informationen zur Indizierung großer Datenmengen finden Sie unter [Indizieren großer Datasets in Azure Search](search-howto-large-index.md).
+* Die Quelldaten sind sehr groß, und die Indexerausführung soll auf verschiedene Zeiten verteilt werden. Weitere Informationen zur Indizierung großer Datenmengen finden Sie unter [Indizieren großer Datasets in der kognitiven Azure-Suche](search-howto-large-index.md).
 
-Der Scheduler ist ein integriertes Feature von Azure Search. Sie können keinen externen Scheduler verwenden, um Azure Search-Indexer zu steuern.
+Der Scheduler ist eine integrierte Funktion der kognitiven Azure-Suche. Sie können keinen externen Scheduler verwenden, um Azure Search-Indexer zu steuern.
 
 ## <a name="define-schedule-properties"></a>Definieren der Zeitplaneigenschaften
 
@@ -48,7 +48,7 @@ Betrachten wir ein Beispiel, um dies zu konkreter veranschaulichen. Angenommen, 
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Definieren eines Zeitplans im Portal
+## <a name="schedule-in-the-portal"></a>Festlegen eines Zeitplans im Portal
 
 Mit dem Datenimport-Assistenten im Portal können Sie den Zeitplan für einen Indexer zum Zeitpunkt der Erstellung definieren. Die Standardeinstellung für den Zeitplan ist **Stündlich**. Das bedeutet, dass der Indexer einmal nach der Erstellung ausgeführt und die Ausführung dann stündlich einmal wiederholt wird.
 
@@ -64,7 +64,7 @@ Nach der Erstellung eines Indexers können Sie die Zeitplaneinstellungen mithilf
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>Definieren eines Zeitplans mit der REST-API
+## <a name="schedule-using-rest-apis"></a>Festlegen eines Zeitplans mithilfe von REST-APIs
 
 Sie können den Zeitplan für einen Indexer mithilfe der REST-API definieren. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren des Indexers hinzu. Das folgende Beispiel zeigt eine PUT-Anforderung zum Aktualisieren eines vorhandenen Indexers:
 
@@ -86,9 +86,9 @@ Sie können einen Indexer bei Bedarf auch jederzeit mit dem Aufruf „Indexer au
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>Definieren eines Zeitplans mit dem .NET SDK
+## <a name="schedule-using-the-net-sdk"></a>Festlegen eines Zeitplans mit dem .NET SDK
 
-Sie können den Zeitplan für einen Indexer mithilfe des Azure Search .NET SDK definieren. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren eines Indexers hinzu.
+Sie können den Zeitplan für einen Indexer mithilfe des .NET SDK der kognitiven Azure-Suche definieren. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren eines Indexers hinzu.
 
 Das folgende C#-Beispiel erstellt einen Indexer unter Verwendung einer vordefinierten Datenquelle und eines Index, und legt den Zeitplan so fest, dass der Indexer in 30 Minuten ab jetzt zum ersten Mal und dann einmal pro Tag ausgeführt wird:
 

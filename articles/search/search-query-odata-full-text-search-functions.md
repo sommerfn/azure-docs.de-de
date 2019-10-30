@@ -1,13 +1,13 @@
 ---
-title: Funktionsreferenz zur OData-Volltextsuche – Azure Search
-description: Die Funktionen search.ismatch und search.ismatchscoring der OData-Volltextsuche in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Funktionsreferenz zur OData-Volltextsuche
+titleSuffix: Azure Cognitive Search
+description: Funktionen search.ismatch und search.ismatchscoring der OData-Volltextsuche in Abfragen der kognitiven Azure-Suche.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: c3b28c8799b09ddfe008df8539709c5a704ac6b4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648012"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793352"
 ---
-# <a name="odata-full-text-search-functions-in-azure-search---searchismatch-and-searchismatchscoring"></a>Funktionen der OData-Volltextsuche in Azure Search: `search.ismatch` und `search.ismatchscoring`
+# <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Funktionen der OData-Volltextsuche in der kognitiven Azure-Suche: `search.ismatch` und `search.ismatchscoring`
 
-Azure Search unterstützt Volltextsuche im Kontext von [OData-Filterausdrücken](query-odata-filter-orderby-syntax.md) über die Funktionen `search.ismatch` und `search.ismatchscoring`. Diese Funktionen ermöglichen es Ihnen, die Volltextsuche mit strenger boolescher Filterung auf eine Art und Weise zu kombinieren, die nur mit dem Parameter `search` auf oberster Ebene der [Search-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) nicht möglich ist.
+Die kognitive Azure-Suche unterstützt die Volltextsuche im Kontext von [OData-Filterausdrücken](query-odata-filter-orderby-syntax.md) über die Funktionen `search.ismatch` und `search.ismatchscoring`. Diese Funktionen ermöglichen es Ihnen, die Volltextsuche mit strenger boolescher Filterung auf eine Art und Weise zu kombinieren, die nur mit dem Parameter `search` auf oberster Ebene der [Search-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) nicht möglich ist.
 
 > [!NOTE]
 > Die Funktionen `search.ismatch` und `search.ismatchscoring` werden nur in Filtern in der [Search-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) unterstützt. Sie werden nicht in der [Vorschlags](https://docs.microsoft.com/rest/api/searchservice/suggestions)- oder [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete)-API unterstützt.
@@ -54,10 +54,10 @@ search_mode ::= "'any'" | "'all'"
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
+> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
 
 ### <a name="searchismatch"></a>search.ismatch
 
@@ -81,7 +81,7 @@ Alle der oben aufgeführten Parameter sind gleichwertig mit den entsprechenden [
 Die Funktion `search.ismatch` gibt einen Wert vom Typ `Edm.Boolean` zurück. Dies ermöglicht es Ihnen, ihn mit anderen Filterunterausdrücken unter Verwendung der booleschen [logischen Operatoren](search-query-odata-logical-operators.md) zu kombinieren.
 
 > [!NOTE]
-> Azure Search unterstützt keine Verwendung von `search.ismatch` oder `search.ismatchscoring` innerhalb von Lambdaausdrücken. Dies bedeutet, dass es nicht möglich ist, Filter über Sammlungen von Objekten zu schreiben, die Volltextsuchtreffer mit strengen Filtertreffern für dasselbe Objekt korrelieren können. Weitere Informationen zu dieser Einschränkung sowie Beispiele finden Sie unter [Problembehandlung von Sammlungsfiltern in Azure Search](search-query-troubleshoot-collection-filters.md). Ausführlichere Informationen dazu, warum diese Einschränkung vorhanden ist, finden Sie unter [Grundlegendes zu Sammlungsfiltern in Azure Search](search-query-understand-collection-filters.md).
+> Die kognitive Azure-Suche unterstützt keine Verwendung von `search.ismatch` oder `search.ismatchscoring` innerhalb von Lambdaausdrücken. Dies bedeutet, dass es nicht möglich ist, Filter über Sammlungen von Objekten zu schreiben, die Volltextsuchtreffer mit strengen Filtertreffern für dasselbe Objekt korrelieren können. Weitere Informationen zu dieser Einschränkung sowie Beispiele finden Sie unter [Problembehandlung von Sammlungsfiltern in der kognitiven Azure-Suche](search-query-troubleshoot-collection-filters.md). Ausführlichere Informationen dazu, warum diese Einschränkung vorhanden ist, finden Sie unter [Grundlegendes zu Sammlungsfiltern in der kognitiven Azure-Suche](search-query-understand-collection-filters.md).
 
 
 ### <a name="searchismatchscoring"></a>search.ismatchscoring
@@ -120,7 +120,7 @@ Suche nach Dokumenten, die die Begriffe „hotel“ und „airport“ in einem A
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Filter in der kognitiven Azure-Suche](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

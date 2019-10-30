@@ -1,22 +1,21 @@
 ---
-title: Verweise auf Eingaben und Ausgaben in Pipelines für die kognitive Suche – Azure Search
-description: Erläutert die Syntax der Anmerkung und, wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer Pipeline der kognitiven Suche in Azure Search verwiesen wird.
-services: search
+title: Verweise auf Eingaben und Ausgaben in einer KI-Anreicherungspipeline
+titleSuffix: Azure Cognitive Search
+description: Erläutert die Anmerkungssyntax und wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche verwiesen wird.
 manager: nitinme
-author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: LuisCabrer
 ms.author: luisca
-ms.openlocfilehash: 40559744f0650c64afb1dc63c38f56efaa0219d7
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: fe81ccb5324d75212763e20ac2514ade9ce50496
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265531"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72787774"
 ---
-# <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Suche
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Azure-Suche
 
 In diesem Artikel erfahren Sie, wie Sie auf Anmerkungen in Skilldefinitionen verweisen und verschiedene Szenarien anhand von Beispielen veranschaulichen können. Während der Inhalt eines Dokuments eine Reihe von Skills durchläuft, wird er mit Anmerkungen angereichert. Anmerkungen können als Eingaben für die nachfolgende Anreicherung verwendet oder einem Ausgabefeld in einem Index zugeordnet werden. 
  

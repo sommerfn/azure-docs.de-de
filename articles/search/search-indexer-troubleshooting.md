@@ -1,23 +1,23 @@
 ---
-title: Behandeln von häufigen Problemen mit Suchindexern – Azure Search
-description: Beheben Sie Fehler und häufige Problemen mit Indexern in Azure Search, einschließlich Datenquellenverbindung, Firewall und fehlende Dokumente.
-author: mgottein
+title: Beheben von häufigen Problemen bei Suchindexern
+titleSuffix: Azure Cognitive Search
+description: Beheben von Fehlern und häufigen Problemen bei Indexern in der kognitiven Azure-Suche, einschließlich Datenquellenverbindung, Firewall und fehlender Dokumente.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: mgottein
 ms.author: magottei
-ms.openlocfilehash: 4692be287e9b38cf116107d2e7c1043f23a6b34b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c5a16d957f1e0414f92d0cc03442d88d438e4c92
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640593"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793626"
 ---
-# <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Behandeln von häufigen Problemen mit Indexern in Azure Search
+# <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Beheben von häufigen Problemen bei Suchindexern in der kognitiven Azure-Suche
 
-Indexer können bei der Indizierung von Daten in Azure Search auf diverse Probleme stoßen. Die Hauptfehlerkategorien umfassen:
+Indexer können bei der Indizierung von Daten in der kognitiven Azure-Suche auf diverse Probleme stoßen. Die Hauptfehlerkategorien umfassen:
 
 * [Herstellen einer Verbindung mit Datenquellen](#data-source-connection-errors)
 * [Verarbeiten von Dokumenten](#document-processing-errors)
@@ -29,7 +29,7 @@ Indexer können bei der Indizierung von Daten in Azure Search auf diverse Proble
 
 #### <a name="storage-account-firewall"></a>Speicherkontofirewall
 
-Azure Storage stellt eine konfigurierbare Firewall bereit. Die Firewall ist standardmäßig deaktiviert, sodass Azure Search eine Verbindung mit Ihrem Speicherkonto herstellen kann.
+Azure Storage stellt eine konfigurierbare Firewall bereit. Die Firewall ist standardmäßig deaktiviert, sodass bei der kognitiven Azure-Suche eine Verbindung mit Ihrem Speicherkonto hergestellt werden kann.
 
 Sie erhalten keine spezifische Fehlermeldung, wenn die Firewall aktiviert ist. Firewallfehler sehen in der Regel so aus: `The remote server returned an error: (403) Forbidden`.
 
@@ -43,13 +43,13 @@ Sie können die IP-Adresse Ihres Suchdiensts herausfinden, indem Sie seinen voll
 
 #### <a name="indexing-isnt-enabled"></a>Nicht aktivierte Indizierung
 
-Azure Search steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. Wenn Sie die automatische Indizierung in Cosmos DB deaktivieren, gibt Azure Search einen erfolgreichen Status zurück, kann jedoch keine Containerinhalte indizieren. Anweisungen zum Überprüfen der Einstellungen und zum Aktivieren der Indizierung finden Sie unter [Verwalten der Indizierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
+Die kognitive Azure-Suche steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. Wenn Sie die automatische Indizierung in Cosmos DB deaktivieren, gibt die kognitive Azure-Suche einen erfolgreichen Status zurück, kann jedoch keine Containerinhalte indizieren. Anweisungen zum Überprüfen der Einstellungen und zum Aktivieren der Indizierung finden Sie unter [Verwalten der Indizierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 
 ## <a name="document-processing-errors"></a>Fehler bei der Dokumentverarbeitung
 
 ### <a name="unprocessable-or-unsupported-documents"></a>Nicht verarbeitbare oder nicht unterstützte Dokumente
 
-Der Blobindexer [ dokumentiert, welche Dokumentformate explizit unterstützt werden](search-howto-indexing-azure-blob-storage.md#supported-document-formats). Gelegentlich enthält ein Blobspeichercontainer nicht unterstützte Dokumente. Manchmal sind die Dokumente fehlerhaft. Sie können verhindern, dass Ihr Indexer für diese Dokumente beendet wird, indem Sie die [Konfigurationsoptionen](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) ändern:
+Der Blobindexer [ dokumentiert, welche Dokumentformate explizit unterstützt werden](search-howto-indexing-azure-blob-storage.md#SupportedFormats). Gelegentlich enthält ein Blobspeichercontainer nicht unterstützte Dokumente. Manchmal sind die Dokumente fehlerhaft. Sie können verhindern, dass Ihr Indexer für diese Dokumente beendet wird, indem Sie die [Konfigurationsoptionen](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) ändern:
 
 ```
 PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
@@ -89,5 +89,5 @@ Indexer finden Dokumente in einer [Datenquelle](https://docs.microsoft.com/rest/
 * Das Dokument wurde nicht indiziert. Überprüfen Sie das Portal auf eine erfolgreiche Indexerausführung hin.
 * Das Dokument wurde nach der Ausführung des Indexers aktualisiert. Wenn Sie für Ihren Indexer einen [Zeitplan](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule) festgelegt haben, wird er das Dokument schließlich erneut ausführen und abrufen.
 * Die in der Datenquelle angegebene [Abfrage](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) schließt das Dokument aus. Indexer können keine Dokumente indizieren, die nicht zur Datenquelle gehören.
-* Das Dokument wurde durch [Feldzuordnungen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) oder die [kognitive Suche](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) geändert und sieht anders aus, als Sie erwartet haben.
+* Das Dokument wurde durch [Feldzuordnungen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) oder [KI-Anreicherung](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) geändert und sieht anders als erwartet aus.
 * Verwenden Sie zur Dokumentensuche die [API zum Suchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/lookup-document).

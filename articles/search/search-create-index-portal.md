@@ -1,23 +1,23 @@
 ---
-title: 'Erstellen eines Azure Search-Indexes im Azure-Portal: Azure Search'
-description: Erfahren Sie, wie Sie einen Index für Azure Search erstellen, indem Sie einen im Portal integrierten Index-Designer verwenden.
+title: Erstellen eines Index für die kognitive Azure-Suche im Azure-Portal
+titleSuffix: Azure Cognitive Search
+description: Erfahren Sie, wie Sie einen Index für die kognitive Azure-Suche erstellen, indem Sie einen im Portal integrierten Index-Designer verwenden.
 manager: nitinme
-author: heidisteen
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 10/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: a9340b9c058ba780b8d74587f21c1b9fbe59576d
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937264"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792454"
 ---
-# <a name="create-an-azure-search-index-in-the-portal"></a>Erstellen eines Azure Search-Index im Portal
+# <a name="create-an-azure-cognitive-search-index-in-the-portal"></a>Erstellen eines Index für die kognitive Azure-Suche im Portal
 
-Azure Search enthält einen im Portal integrierten Index-Designer, der für Prototypen oder die Erstellung eines [Suchindexes](search-what-is-an-index.md), der auf Ihrem Azure Search-Dienst gehostet wird, nützlich ist. Das Tool wird für die Schemakonstruktion verwendet. Beim Speichern der Definition wird ein leerer Index vollständig in Azure Search ausgedrückt. Wie Sie darin durchsuchbare Inhalte eingeben, bleibt Ihnen überlassen.
+Die kognitive Azure-Suche enthält einen im Portal integrierten Index-Designer, der für Prototypen oder die Erstellung eines [Suchindexes](search-what-is-an-index.md), der auf Ihrem Dienst für die kognitive Azure-Suche gehostet wird, nützlich ist. Das Tool wird für die Schemakonstruktion verwendet. Beim Speichern der Definition wird ein leerer Index vollständig in der kognitiven Azure-Suche ausgedrückt. Wie Sie darin durchsuchbare Inhalte eingeben, bleibt Ihnen überlassen.
 
 Der Index-Designer ist nur einer von mehreren Ansätzen bei der Erstellung eines Indexes. Alternativ können Sie einen Index erstellen und laden, indem Sie den [Datenimport-Assistenten](search-get-started-portal.md) verwenden. Der Assistent funktioniert nur mit Indizes, die er selbst erstellt. Programmgesteuert können Sie einen Index mit den [.NET](search-create-index-dotnet.md)- oder [REST](search-create-index-rest-api.md)-APIs erstellen.
 
@@ -29,7 +29,7 @@ Der Index-Designer ist nur einer von mehreren Ansätzen bei der Erstellung eines
 
    ![Link „Index hinzufügen“ in der Befehlsleiste](media/search-create-index-portal/add-index.png "Link „Index hinzufügen“ in der Befehlsleiste")
 
-3. Benennen Sie den Azure Search-Index. Auf Indexnamen wird in Indizes und Abfragevorgängen verwiesen. Der Indexname wird Teil der Endpunkt-URL, die für Verbindungen mit dem Index und zum Senden von HTTP-Anforderungen in der Azure Search-REST-API verwendet wird.
+3. Benennen Sie den Index für die kognitive Azure-Suche. Auf Indexnamen wird in Indizes und Abfragevorgängen verwiesen. Der Indexname wird Teil der Endpunkt-URL, die für Verbindungen mit dem Index und zum Senden von HTTP-Anforderungen in der REST-API für die kognitive Azure-Suche verwendet wird.
 
    * Beginnen Sie mit einem Buchstaben.
    * Verwenden Sie nur Kleinbuchstaben, Ziffern oder Bindestriche („-“).
@@ -43,11 +43,11 @@ Zur Indexerstellung gehört eine *Feldersammlung*, die durchsuchbare Daten im In
 
 1. Wenn eingehende Daten hierarchisch sind, sollte das Schema [komplexe Typen](search-howto-complex-data-types.md) enthalten, um die geschachtelten Strukturen darzustellen. Das integrierte Beispieldataset „Hotels“ veranschaulicht komplexe Typen anhand einer Adresse (enthält mehrere untergeordnete Felder) mit einer 1:1-Beziehung zu den einzelnen Hotels verwenden und einer komplexen Zimmersammlung, wobei jedem Hotel mehrere Zimmer zugeordnet sind. 
 
-1. Geben Sie ein Feld *key* vom Typ „Edm.String“ an. Für jeden Azure Search-Index ist ein Schlüsselfeld erforderlich, und es muss eine Zeichenfolge sein. Werte für dieses Feld müssen jedes Dokument eindeutig identifizieren. Standardmäßig heißt das Feld *id*. Allerdings können Sie es umbenennen, solange die Zeichenfolge den [Benennungsregeln](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) entspricht. Wenn Ihre Sammlung „fields“ beispielsweise das Element *hotel-id* enthält, können Sie es für Ihren Schlüssel auswählen. 
+1. Geben Sie ein Feld *key* vom Typ „Edm.String“ an. Für jeden Index für die kognitive Azure-Suche ist ein Schlüsselfeld erforderlich, und es muss eine Zeichenfolge sein. Werte für dieses Feld müssen jedes Dokument eindeutig identifizieren. Standardmäßig heißt das Feld *id*. Allerdings können Sie es umbenennen, solange die Zeichenfolge den [Benennungsregeln](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) entspricht. Wenn Ihre Sammlung „fields“ beispielsweise das Element *hotel-id* enthält, können Sie es für Ihren Schlüssel auswählen. 
 
 1. Legen Sie Attribute für jedes Feld fest. Der Index-Designer schließt alle Attribute aus, die für den Datentyp ungültig sind, aber es wird nicht vorgeschlagen, was einbezogen werden soll. Lesen Sie die Anleitung im nächsten Abschnitt, um sich damit vertraut zu machen, wofür die Attribute bestimmt sind.
 
-    Die Azure Search-API-Dokumentation enthält Codebeispiele mit einem einfachen *hotels*-Index. Im nachfolgenden Screenshot sehen Sie die Indexdefinition, einschließlich der Analysen für die französische Sprache, die während der Indexdefinition angegeben wurde. Sie können sie zu Übungszwecken im Portal neu erstellen.
+    Die Dokumentation zur API für die kognitive Azure-Suche enthält Codebeispiele mit einem einfachen *hotels*-Index. Im nachfolgenden Screenshot sehen Sie die Indexdefinition, einschließlich der Analysen für die französische Sprache, die während der Indexdefinition angegeben wurde. Sie können sie zu Übungszwecken im Portal neu erstellen.
 
     ![Hotel-Demoindex](media/search-create-index-portal/field-definitions.png "Hotel-Demoindex")
 
@@ -76,7 +76,7 @@ Feldattribute bestimmen, wie ein Feld verwendet wird, z.B. ob es in der Volltext
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Erstellen eines Azure Search-Index können Sie mit dem nächsten Schritt fortfahren: [Hochladen durchsuchbarer Daten in den Index](search-what-is-data-import.md).
+Nach dem Erstellen eines Index für die kognitive Azure-Suche können Sie mit dem nächsten Schritt fortfahren: [Hochladen durchsuchbarer Daten in den Index](search-what-is-data-import.md).
 
 Alternativ können Sie sich auch [genauer mit Indizes beschäftigen](search-what-is-an-index.md). Zusätzlich zur Feldersammlung gibt ein Index auch Analysen, Vorschläge, Bewertungsprofile und CORS-Einstellungen an. Das Portal bietet Registerkartenseiten zum Definieren der gängigsten Elemente: Felder, Analysetools und Vorschlagsfunktionen. Zum Erstellen oder Ändern anderer Elemente können Sie die REST-API oder das .NET-SDK verwenden.
 

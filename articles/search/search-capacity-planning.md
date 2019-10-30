@@ -1,22 +1,22 @@
 ---
-title: Skalieren von Partitionen und Replikaten für die Abfrage und Indizierung – Azure Search
-description: Passen Sie Partitions- und Replikatcomputerressourcen in Azure Search an, wobei jede Ressource in abrechenbaren Sucheinheiten abgerechnet wird.
-author: HeidiSteen
+title: Zentrales Hochskalieren von Partitionen und Replikaten zum Hinzufügen von Kapazität für Abfrage- und Indexworkloads
+titleSuffix: Azure Cognitive Search
+description: Passen Sie Partitions- und Replikatcomputerressourcen in der kognitiven Azure-Suche an, wobei jede Ressource in abrechenbaren Sucheinheiten abgerechnet wird.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/01/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 8613ddc668df338c4f96a9d37f32120718513925
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650065"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72792503"
 ---
-# <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalieren von Partitionen und Replikaten für Abfrage und Indizierung von Arbeitslasten in Azure Search
+# <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Zentrales Hochskalieren von Partitionen und Replikaten zum Hinzufügen von Kapazität für Abfrage- und Indexworkloads in der kognitiven Azure-Suche
+
 Nach dem [Auswählen eines Tarifs](search-sku-tier.md) und dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) kann im nächsten Schritt optional die Anzahl der von dem Dienst verwendeten Replikate oder Partitionen erhöht werden. Jeder Tarif bietet eine feste Anzahl von Abrechnungseinheiten. In diesem Artikel wird erläutert, wie Sie diese Einheiten für eine optimale Konfiguration zuordnen, bei der Ihre Anforderungen für die Abfrageausführung, Indizierung und Speicherung ausgeglichen sind.
 
 Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tarif](https://aka.ms/azuresearchbasic) oder zu einem der [Tarife vom Typ „Standard“ oder „Storage Optimized“](search-limits-quotas-capacity.md) bereitstellen. Bei Diensten in diesen Tarifen wird die Kapazität in Abstufungen von *Sucheinheiten* (Search Units, SUs) erworben, wobei jede Partition und jedes Replikat jeweils als einzelne SU zählt. 
@@ -24,7 +24,7 @@ Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tar
 Bei Verwendung von weniger Sucheinheiten fällt die Rechnung entsprechend niedriger aus. Die Abrechnung ist aktiviert, solange der Dienst bereitgestellt wird. Wenn Sie einen Dienst vorübergehend nicht verwenden und eine Abrechnung vermeiden möchten, müssen Sie den Dienst löschen und später bei Bedarf neu erstellen.
 
 > [!Note]
-> Durch Löschen eines Diensts werden alle darin befindlichen Elemente gelöscht. Es gibt keine Möglichkeit in Azure Search, beibehaltene Suchdaten zu sichern und wiederherzustellen. Um einen vorhandenen Index in einem neuen Dienst erneut bereitzustellen, sollten Sie das Programm ausführen, das ursprünglich zum Erstellen und Laden des Index verwendet wurde. 
+> Durch Löschen eines Diensts werden alle darin befindlichen Elemente gelöscht. Es gibt keine Möglichkeit in der kognitiven Azure-Suche, beibehaltene Suchdaten zu sichern und wiederherzustellen. Um einen vorhandenen Index in einem neuen Dienst erneut bereitzustellen, sollten Sie das Programm ausführen, das ursprünglich zum Erstellen und Laden des Index verwendet wurde. 
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: Replikate und Partitionen
 Ein Suchdienst basiert in erster Linie auf Replikaten und Partitionen.
@@ -40,7 +40,7 @@ Ein Suchdienst basiert in erster Linie auf Replikaten und Partitionen.
 
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Gewusst wie: Zuordnen von Replikaten und Partitionen
-In Azure Search wird einem Dienst zunächst eine Mindestmenge von Ressourcen (bestehend aus einer Partition und einem Replikat) zugeordnet. Bei Tarifen, die dies unterstützen, können Sie die Verarbeitungsressourcen schrittweise anpassen, indem Sie die Anzahl an Partitionen erhöhen, um mehr Speicher- und E/A-Kapazität zu erhalten oder mehr Replikate hinzuzufügen, um ein höheres Abfrageaufkommen zu bewältigen oder die Leistung zu verbessern. Ein einzelner Dienst muss über genügend Ressourcen verfügen, um sämtliche Workloads (Indizierung und Abfragen) bewältigen zu können. Workloads können nicht auf mehrere Dienste aufgeteilt werden.
+In der kognitiven Azure-Suche wird einem Dienst zunächst eine Mindestmenge von Ressourcen (bestehend aus einer Partition und einem Replikat) zugeordnet. Bei Tarifen, die dies unterstützen, können Sie die Verarbeitungsressourcen schrittweise anpassen, indem Sie die Anzahl an Partitionen erhöhen, um mehr Speicher- und E/A-Kapazität zu erhalten oder mehr Replikate hinzuzufügen, um ein höheres Abfrageaufkommen zu bewältigen oder die Leistung zu verbessern. Ein einzelner Dienst muss über genügend Ressourcen verfügen, um sämtliche Workloads (Indizierung und Abfragen) bewältigen zu können. Workloads können nicht auf mehrere Dienste aufgeteilt werden.
 
 Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu erhöhen oder zu verändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen nicht überschritten werden. Wenn die Bereitstellung skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](https://docs.microsoft.com/rest/api/searchmanagement/services) oder die [Verwaltungs-REST-API](search-manage-powershell.md) alternative Lösungen.
 
@@ -72,7 +72,7 @@ Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbe
 
 
 > [!NOTE]
-> Sobald ein Dienst bereitgestellt ist, kann kein direktes Upgrade auf eine höhere SKU erfolgen. In diesem Fall müssen Sie einen Suchdienst unter dem neuen Tarif erstellen und Ihre Indizes neu laden. Informationen zur Dienstbereitstellung finden Sie unter [Erstellen eines Azure Search-Diensts im Portal](search-create-service-portal.md) .
+> Sobald ein Dienst bereitgestellt ist, kann kein direktes Upgrade auf eine höhere SKU erfolgen. In diesem Fall müssen Sie einen Suchdienst unter dem neuen Tarif erstellen und Ihre Indizes neu laden. Informationen zur Dienstbereitstellung finden Sie unter [Erstellen eines Diensts für die kognitive Azure-Suche im Portal](search-create-service-portal.md).
 >
 >
 
@@ -97,7 +97,7 @@ Alle Suchdienste vom Typ „Standard“ oder „Storage Optimized“ können die
 SUs, Preise und Kapazität werden auf der Azure-Website ausführlich erläutert. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/search/).
 
 > [!NOTE]
-> Die Anzahl der Replikate und Partitionen ist ein ganzzahliger Teiler von 12 (d.h. 1, 2, 3, 4, 6, 12). Der Grund: Azure Search unterteilt jeden Index vorab in 12 Shards, damit er gleichmäßig auf alle Partitionen verteilt werden kann. Wenn Ihr Dienst z.B. drei Partitionen aufweist und Sie einen Index erstellen, enthält jede Partition 4 Shards des Indexes. Azure Search erstellt Shards eines Index in Form von Implementierungsdetails, die sich bei zukünftigen Versionen ändern können. Auch wenn die Anzahl heute 12 beträgt, sollten Sie nicht davon ausgehen, das dies auch in Zukunft immer so ist.
+> Die Anzahl der Replikate und Partitionen ist ein ganzzahliger Teiler von 12 (d.h. 1, 2, 3, 4, 6, 12). Der Grund: Die kognitive Azure-Suche unterteilt jeden Index vorab in 12 Shards, damit er gleichmäßig auf alle Partitionen verteilt werden kann. Wenn Ihr Dienst z.B. drei Partitionen aufweist und Sie einen Index erstellen, enthält jede Partition 4 Shards des Indexes. Die kognitive Azure-Suche erstellt Shards eines Index in Form von Implementierungsdetails, die sich bei zukünftigen Versionen ändern können. Auch wenn die Anzahl heute 12 beträgt, sollten Sie nicht davon ausgehen, das dies auch in Zukunft immer so ist.
 >
 
 
@@ -112,16 +112,16 @@ Allgemeine Empfehlungen für Hochverfügbarkeit sind:
 
 * Drei oder mehr Replikate für Hochverfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung, wenn einzelne Dokumente hinzugefügt, aktualisiert oder gelöscht werden)
 
-Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für Azure Search sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.
+Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für die kognitive Azure-Suche sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.
 
 Der Tarif „Basic“ erreicht den Höchstwert bei einer Partition und drei Replikaten. Wenn Sie die Flexibilität benötigen, auf Schwankungen beim Bedarf an Indizierungen und Abfragedurchsatz sofort zu reagieren, ziehen Sie einen der Standard-Tarife in Betracht.  Wenn Sie feststellen, dass Ihre Speicheranforderungen viel schneller wachsen als Ihr Abfragedurchsatz, sollten Sie einen der Tarife vom Typ „Storage Optimized“ in Betracht ziehen.
 
 ### <a name="index-availability-during-a-rebuild"></a>Indexverfügbarkeit während einer Neuerstellung
 
-Die Hochverfügbarkeit von Azure Search gilt für Abfragen und Indexaktualisierungen ohne Indexneuerstellung. Wenn Sie ein Feld löschen, einen Datentyp ändern oder ein Feld umbenennen, müssen Sie den Index neu erstellen. Um den Index neu zu erstellen, müssen Sie ihn löschen, neu erstellen und die Daten neu laden.
+Die Hochverfügbarkeit der kognitiven Azure-Suche gilt für Abfragen und Indexaktualisierungen ohne Indexneuerstellung. Wenn Sie ein Feld löschen, einen Datentyp ändern oder ein Feld umbenennen, müssen Sie den Index neu erstellen. Um den Index neu zu erstellen, müssen Sie ihn löschen, neu erstellen und die Daten neu laden.
 
 > [!NOTE]
-> Sie können einem Azure Search-Index neue Felder hinzufügen, ohne den Index neu zu erstellen. Der Wert des neuen Felds lautet NULL für alle Dokumente, die bereits im Index vorhanden sind.
+> Sie können einem Index für die kognitive Azure-Suche neue Felder hinzufügen, ohne den Index neu zu erstellen. Der Wert des neuen Felds lautet NULL für alle Dokumente, die bereits im Index vorhanden sind.
 
 Um die Verfügbarkeit des Index während einer Neuerstellung zu gewährleisten, muss im gleichen Dienst eine Kopie des Index mit einem anderen Namen oder eine Kopie des Index mit dem gleichen Namen in einem anderen Dienst vorhanden sein und Ihr Code mit einer Umleitungs- oder Failoverlogik versehen werden.
 
@@ -133,7 +133,7 @@ Eine Abfragelatenz deutet darauf hin, dass zusätzliche Replikate erforderlich s
 
 Es können keine festen Schätzungen für die Abfragen pro Sekunde (Queries Per Second, QPS) abgegeben werden: Die Abfrageleistung kann je nach Komplexität der jeweiligen Abfrage und konkurrierenden Workloads stark variieren. Obwohl das Hinzufügen von Replikaten die Leistung deutlich erhöht, ist das Endergebnis aber nicht streng linear: Das Hinzufügen von 3 Replikaten garantiert keinen dreifachen Durchsatz.
 
-Anleitungen zum Schätzen der Abfragen pro Sekunde (QPS) für Ihre Workloads finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+Anleitungen zum Schätzen der Abfragen pro Sekunde (QPS) für Ihre Workloads finden Sie unter [Überlegungen zur Leistung und Optimierung der kognitiven Azure-Suche](search-performance-optimization.md).
 
 ## <a name="increase-indexing-performance-with-partitions"></a>Erhöhen der Indizierungsleistung mit Partitionen
 Suchanwendungen, die Datenaktualisierung nahezu in Echtzeit erfordern, benötigen proportional mehr Partitionen als Replikate. Das Hinzufügen von Partitionen verteilt Lese-/ Schreibvorgänge über eine größere Anzahl von Computerressourcen. Außerdem erhalten Sie mehr Speicherplatz auf dem Datenträger zum Speichern zusätzlicher Indizes und Dokumente.
@@ -143,4 +143,4 @@ Größere Indizes erfordern eine längere Abfragezeit. Daher werden Sie feststel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Auswählen eines Tarifs für Azure Search](search-sku-tier.md)
+[Auswählen eines Tarifs für die kognitive Azure-Suche](search-sku-tier.md)

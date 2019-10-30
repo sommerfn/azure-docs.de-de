@@ -1,13 +1,13 @@
 ---
-title: Hinzufügen von benutzerdefinierten Analysetools – Azure Search
-description: Ändern Sie Texttokenizer und Zeichenfilter, die in Azure Search für Volltextsuchvorgänge verwendet wird.
-ms.date: 08/08/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern in einem Index
+titleSuffix: Azure Cognitive Search
+description: Konfigurieren Sie Texttokenizer und Zeichenfilter, die in Volltextsuchabfragen der kognitiven Azure-Suche verwendet werden.
+manager: nitinme
 author: Yahnoosh
 ms.author: jlembicz
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0cd2cf4b7847b767bac391f2547c0a5c3e3a9135
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: bed011d62fa227697562f552ecb649c4b1fc00c9
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891570"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72790157"
 ---
-# <a name="add-custom-analyzers-to-an-azure-search-index"></a>Hinzufügen von Analysetools zu einem Azure Search-Index
+# <a name="add-custom-analyzers-to-an-azure-cognitive-search-index"></a>Hinzufügen von benutzerdefinierten Analysetools zu einem Index für die kognitive Azure-Suche
 
 Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetool](search-analyzers.md), das aus einer benutzerdefinierten Kombination von bestehendem Tokenizer und optionalen Filtern besteht. Durch die Kombination von Tokenizern und Filtern auf neue Weise können Sie die Textverarbeitung in der Suchmaschine anpassen, um bestimmte Ergebnisse zu erzielen. Sie können beispielsweise ein benutzerdefiniertes Analysetool mit einem *Zeichenfilter* erstellen, um HTML-Markup zu entfernen, bevor Texteingaben tokenisiert werden.
 
@@ -36,7 +36,7 @@ Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetoo
 
  Einfach ausgedrückt besteht die Rolle einer [Engine für die Volltextsuche](search-lucene-query-architecture.md) darin, Dokumente so zu verarbeiten und zu speichern, dass sie effizient abgefragt und abgerufen werden können. In erster Linie geht es um das Extrahieren wichtiger Wörter aus Dokumenten, das Einfügen der Wörter in einen Index und das anschließende Verwenden des Index zum Suchen nach Dokumenten, die mit Wörtern einer bestimmten Abfrage übereinstimmen. Der Prozess zur Extrahierung von Wörtern aus Dokumenten und Suchabfragen wird als *lexikalische Analyse* bezeichnet. Komponenten, die eine lexikalische Analyse durchführen, werden als *Analysetools* bezeichnet.
 
- In Azure Search können Sie aus verschiedenen vordefinierten sprachunabhängigen Analysetools in der Tabelle [Analysetools](#AnalyzerTable) oder aus sprachspezifischen Analysetools in [Sprachanalysetools (Azure Search-Dienst-REST-API)](index-add-language-analyzers.md) auswählen. Sie haben auch die Möglichkeit, Ihre eigenen benutzerdefinierten Analysetools zu definieren.  
+ In der kognitiven Azure-Suche können Sie aus verschiedenen vordefinierten sprachunabhängigen Analysetools in der Tabelle [Analysetools](#AnalyzerTable) oder aus sprachspezifischen Analysetools in [Sprachanalysetools &#40;REST-API für den Dienst für die kognitive Azure-Suche&#41;](index-add-language-analyzers.md) auswählen. Sie haben auch die Möglichkeit, Ihre eigenen benutzerdefinierten Analysetools zu definieren.  
 
  Mit einem benutzerdefinierten Analysetool können Sie die Kontrolle über den Prozess der Konvertierung von Text in indizierbare und durchsuchbare Token übernehmen. Es handelt sich um eine benutzerdefinierte Konfiguration, die aus einem einzelnen vordefinierten Tokenizer, einem oder mehreren Tokenfiltern und einem oder mehreren Zeichenfiltern besteht. Der Tokenizer ist für das Aufteilen von Text in Token verantwortlich, und mit den Tokenfiltern werden die Token geändert, die vom Tokenizer ausgegeben werden. Zeichenfilter werden verwendet, um den Eingabetext vorzubereiten, bevor er vom Tokenizer verarbeitet wird. Beispielsweise kann ein Zeichenfilter bestimmte Zeichen oder Symbole ersetzen.
 
@@ -52,13 +52,13 @@ Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetoo
 
 - ASCII-Folding. Fügen Sie den standardmäßigen ASCII-Folding-Filter hinzu, um diakritische Zeichen wie ö oder ê in Suchbegriffen zu normalisieren.  
 
-  Diese Seite enthält eine Liste mit unterstützten Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern. Außerdem finden Sie hier eine Beschreibung von Änderungen an der Indexdefinition mit einem Verwendungsbeispiel. Weitere Hintergrundinformationen zur zugrunde liegenden Technologie, die für die Implementierung von Azure Search genutzt wird, finden Sie unter [Analysis package summary (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html)(Zusammenfassung des Analysemodulpakets (Lucene)). Beispiele für Konfigurationen des Analysetools finden Sie unter [Hinzufügen von Analysetools in Azure Search](search-analyzers.md#examples).
+  Diese Seite enthält eine Liste mit unterstützten Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern. Außerdem finden Sie hier eine Beschreibung von Änderungen an der Indexdefinition mit einem Verwendungsbeispiel. Weitere Hintergrundinformationen zur zugrunde liegenden Technologie, die für die Implementierung der kognitiven Azure-Suche genutzt wird, finden Sie in der [Zusammenfassung des Analysemodulpakets (Lucene)](https://lucene.apache.org/core/6_0_0/core/org/apache/lucene/codecs/lucene60/package-summary.html). Beispiele für Konfigurationen des Analysetools finden Sie unter [Hinzufügen von Analysetools in der kognitiven Azure-Suche](search-analyzers.md#examples).
 
 ## <a name="validation-rules"></a>Validierungsregeln  
  Die Namen von Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern müssen eindeutig sein und dürfen nicht den Namen von vordefinierten Analysetools, Tokenizern, Tokenfiltern oder Zeichenfiltern entsprechen. Bereits verwendete Namen finden Sie im [Eigenschaftenverweis](#PropertyReference).
 
 ## <a name="create-custom-analyzers"></a>Erstellen von benutzerdefinierten Analysetools
- Sie definieren benutzerdefinierte Analysetools während der Erstellung des Index. Die Syntax zum Angeben eines benutzerdefinierten Analysetools wird in diesem Abschnitt beschrieben. Sie können sich mit der Syntax vertraut machen, indem Sie sich in [Hinzufügen von Analysetools in Azure Search](search-analyzers.md#examples) Beispieldefinitionen anschauen.  
+ Sie definieren benutzerdefinierte Analysetools während der Erstellung des Index. Die Syntax zum Angeben eines benutzerdefinierten Analysetools wird in diesem Abschnitt beschrieben. Sie können sich mit der Syntax vertraut machen, indem Sie sich in [Hinzufügen von Analysetools in der kognitiven Azure-Suche](search-analyzers.md#examples) Beispieldefinitionen anschauen.  
 
  Eine Analysetooldefinition beinhaltet einen Namen, einen Typ, einen oder mehrere Zeichenfilter, maximal einen Tokenizer und einen oder mehrere Tokenfilter für die Verarbeitung nach der Tokenisierung. Zeichenfilter werden vor der Tokenisierung angewendet. Tokenfiltern und Zeichenfiltern werden von links nach rechts angewendet.
 
@@ -383,6 +383,6 @@ In der folgenden Tabelle bieten die Tokenfilter, die mit Apache Lucene implement
 
 
 ## <a name="see-also"></a>Weitere Informationen  
- [Azure Search-Dienst-REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
- [Analysetools in Azure Search > Beispiele](search-analyzers.md#examples)    
- [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [REST-APIs für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Analysetools in der kognitiven Azure-Suche > Beispiele](search-analyzers.md#examples)    
+ [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

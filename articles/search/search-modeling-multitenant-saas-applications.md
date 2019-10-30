@@ -1,41 +1,41 @@
 ---
-title: Modellieren der Mehrinstanzenfähigkeit für die Inhaltsisolation in einem Dienst – Azure Search
-description: Erfahren Sie mehr über gängige Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen bei Verwendung von Azure Search.
+title: Modellieren der Mehrinstanzenfähigkeit für die Inhaltsisolation in einem Dienst
+titleSuffix: Azure Cognitive Search
+description: Informationen zu gängigen Entwurfsmustern für mehrinstanzenfähige SaaS-Anwendungen bei Verwendung der kognitiven Azure-Suche.
 manager: nitinme
 author: LiamCavanagh
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 07/30/2018
 ms.author: liamca
-ms.openlocfilehash: 8b7538da41241f005298537c2969e5fce72b3c38
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182238"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793531"
 ---
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search
-Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit Azure Search erstellt werden.
+# <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
+Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit der kognitiven Azure-Suche erstellt werden.
 
-## <a name="azure-search-concepts"></a>Azure Search-Konzepte
-Azure Search ist eine Search-as-a-Service-Lösung, die Entwicklern ermöglicht, Anwendungen umfassende Suchfunktionen hinzuzufügen, ohne Infrastruktur verwalten oder Experte für das Abrufen von Informationen werden zu müssen. Daten werden in den Dienst hochgeladen und dann in der Cloud gespeichert. Mithilfe einfacher an die Azure Search-API gerichteter Anforderungen können die Daten geändert und durchsucht werden. Eine Übersicht über den Dienst finden Sie im [in diesem Artikel](https://aka.ms/whatisazsearch). Ehe wir näher auf Entwurfsmuster eingehen, ist es wichtig, einige Konzepte von Azure Search zu verstehen.
+## <a name="azure-cognitive-search-concepts"></a>Konzepte der kognitiven Azure-Suche
+Die kognitive Azure-Suche ist eine Search-as-a-Service-Lösung, die Entwicklern ermöglicht, Anwendungen umfassende Suchfunktionen hinzuzufügen, ohne Infrastruktur verwalten oder Experte für das Abrufen von Informationen werden zu müssen. Daten werden in den Dienst hochgeladen und dann in der Cloud gespeichert. Mithilfe einfacher an die API der kognitiven Azure-Suche gerichteter Anforderungen können die Daten geändert und durchsucht werden. Eine Übersicht über den Dienst finden Sie im [in diesem Artikel](https://aka.ms/whatisazsearch). Bevor wir näher auf Entwurfsmuster eingehen, ist es wichtig, einige Konzepte der kognitiven Azure-Suche zu verstehen.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Suchdienste, Indizes, Felder und Dokumente
-Zur Verwendung von Azure Search muss ein *Suchdienst*abonniert werden. Die in Azure Search hochgeladenen Daten werden in einem *Index* innerhalb des Suchdiensts gespeichert. In einem einzelnen Dienst kann es mehrere Indizes geben. Analog zu den vertrauten Konzepten von Datenbanken kann der Suchdienst mit einer Datenbank verglichen werden, während die Indizes im Dienst mit Tabellen in einer Datenbank vergleichbar sind.
+Zur Verwendung der kognitiven Azure-Suche muss ein *Suchdienst* abonniert werden. Die in die kognitive Azure-Suche hochgeladenen Daten werden in einem *Index* innerhalb des Suchdiensts gespeichert. In einem einzelnen Dienst kann es mehrere Indizes geben. Analog zu den vertrauten Konzepten von Datenbanken kann der Suchdienst mit einer Datenbank verglichen werden, während die Indizes im Dienst mit Tabellen in einer Datenbank vergleichbar sind.
 
-Jeder Index in einen Suchdienst hat ein eigenes Schema, das mithilfe verschiedener anpassbarer *Felder*definiert wird. Daten werden einem Azure Search-Index in Form einzelner *Dokumente*hinzugefügt. Jedes Dokument muss in einen bestimmten Index hochgeladen werden und dem Schema dieses Indexes entsprechen. Beim Durchsuchen von Daten mithilfe von Azure Search werden die Volltextsuchabfragen auf einen bestimmten Index angewendet.  Wiederum analog zu Datenbanken können Felder mit den Spalten einer Tabelle und Dokumente mit Zeilen verglichen werden.
+Jeder Index in einen Suchdienst hat ein eigenes Schema, das mithilfe verschiedener anpassbarer *Felder*definiert wird. Daten werden einem Index der kognitiven Azure-Suche in Form einzelner *Dokumente* hinzugefügt. Jedes Dokument muss in einen bestimmten Index hochgeladen werden und dem Schema dieses Indexes entsprechen. Beim Durchsuchen von Daten mithilfe der kognitiven Azure-Suche werden die Volltextsuchabfragen auf einen bestimmten Index angewandt.  Wiederum analog zu Datenbanken können Felder mit den Spalten einer Tabelle und Dokumente mit Zeilen verglichen werden.
 
 ### <a name="scalability"></a>Skalierbarkeit
-Ein Azure Search-Dienst im [Tarif „Standard“](https://azure.microsoft.com/pricing/details/search/) kann in zwei Bereichen skaliert werden: Speicherung und Verfügbarkeit.
+Ein Dienst der kognitiven Azure-Suche im [Tarif „Standard“](https://azure.microsoft.com/pricing/details/search/) kann in zwei Bereichen skaliert werden: Speicherung und Verfügbarkeit.
 
 * *Partitionen* können hinzugefügt werden, um die Speicherkapazität eines Suchdienst zu erhöhen.
 * *Replikate* können einem Dienst hinzugefügt werden, um den Durchsatz von Anforderungen zu erhöhen, die ein Suchdienst verarbeiten kann.
 
 Das Hinzufügen und Entfernen von Partitionen und Replikaten nach Belieben ermöglicht, dass die Kapazität des Suchdiensts mit der Datenmenge und dem Datenverkehr entsprechend den Anforderungen der Anwendung wachsen kann. Damit der Suchdienst eine [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)für Lesevorgänge erfüllen kann, sind zwei Replikate erforderlich. Damit der Dienst eine [SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)für Lese- und Schreibvorgänge erfüllen kann, sind drei Replikate erforderlich.
 
-### <a name="service-and-index-limits-in-azure-search"></a>Dienst- und Indexgrenzwerte für Azure Search
-Azure Search bietet verschiedene [Tarife](https://azure.microsoft.com/pricing/details/search/) mit unterschiedlichen [Grenzwerten und Kontingenten](search-limits-quotas-capacity.md). Diese Grenzwerte gelten auf Dienst-, Index- und Partitionsebene.
+### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Dienst- und Indexgrenzwerte für die kognitive Azure-Suche
+Die kognitive Azure-Suche bietet verschiedene [Tarife](https://azure.microsoft.com/pricing/details/search/) mit unterschiedlichen [Grenzwerten und Kontingenten](search-limits-quotas-capacity.md). Diese Grenzwerte gelten auf Dienst-, Index- und Partitionsebene.
 
 |  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
@@ -47,7 +47,7 @@ Azure Search bietet verschiedene [Tarife](https://azure.microsoft.com/pricing/de
 | Maximale Anzahl von Indizes pro Dienst |5 |50 |200 |200 |3\.000 (max. 1.000 Indizes/Partition) |
 
 #### <a name="s3-high-density"></a>S3 High Density
-Der Azure Search-Tarif „S3“ bietet als Option einen HD-Modus (High Density), der speziell auf Szenarien mit mehreren Mandanten ausgelegt ist. In vielen Fällen ist es notwendig, eine große Zahl von kleineren Mandanten unter einem einzelnen Dienst zu unterstützen, um die Vorteile der Einfachheit und Kosteneffizienz nutzen zu können.
+Der Tarif „S3“ der kognitiven Azure-Suche bietet als Option einen HD-Modus (High Density), der speziell auf Szenarien mit mehreren Mandanten ausgelegt ist. In vielen Fällen ist es notwendig, eine große Zahl von kleineren Mandanten unter einem einzelnen Dienst zu unterstützen, um die Vorteile der Einfachheit und Kosteneffizienz nutzen zu können.
 
 Mit S3 HD können die vielen kleinen Indizes unter der Verwaltung eines einzelnen Suchdiensts gepackt werden, indem die Möglichkeit zum horizontalen Hochskalieren von Indizes mithilfe von Partitionen gegen die Möglichkeit eingetauscht wird, eine größere Anzahl von Indizes in einem einzelnen Dienst zu hosten.
 
@@ -58,35 +58,35 @@ Mehrinstanzenfähige Anwendungen müssen Ressourcen gleichmäßig den Mandanten 
 
 * *Mandantenisolierung:* Anwendungsentwickler müssen geeignete Maßnahmen ergreifen, um sicherzustellen, dass Mandanten keinen nicht autorisierten oder unerwünschten Zugriff auf die Daten anderer Mandanten haben. Abgesehen vom Datenschutz erfordern Strategien für die Isolierung von Mandanten eine effektive Verwaltung gemeinsam genutzter Ressourcen und Schutz vor „lauten“, in diesem Fall überaus aktiven, Nachbarn.
 * *Cloudressourcenkosten:* Wie andere Anwendungen auch müssen Softwarelösungen als Teil einer mehrinstanzenfähigen Anwendung wettbewerbsfähig bleiben.
-* *Einfacher Betrieb:* Bei der Entwicklung einer mehrinstanzenfähigen Architektur sind Betrieb und Komplexität der Anwendung ein wichtiger Aspekt. Azure Search bietet eine [SLA für eine Verfügbarkeit von 99,9 %](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+* *Einfacher Betrieb:* Bei der Entwicklung einer mehrinstanzenfähigen Architektur sind Betrieb und Komplexität der Anwendung ein wichtiger Aspekt. Die kognitive Azure-Suche bietet eine [SLA von 99,9 %](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 * *Globale Verteilung:* Mehrinstanzenfähige Anwendungen müssen gegebenenfalls Anforderungen von Mandanten erfüllen, die weltweit verteilt sind.
 * *Skalierbarkeit:* Anwendungsentwickler müssen berücksichtigen, wie ein Kompromiss erreicht wird zwischen der Beibehaltung eines ausreichend niedrigen Grads an Anwendungskomplexität und dem Entwurf der Anwendung für eine Skalierung entsprechend der Anzahl der Mandanten sowie deren Daten und Workloads.
 
-Azure Search bietet verschiedene Abgrenzungsmöglichkeiten, mit deren Hilfe die Daten und Workloads von Mandanten isoliert werden können.
+Die kognitive Azure-Suche bietet verschiedene Abgrenzungsmöglichkeiten, mit deren Hilfe die Daten und Workloads von Mandanten isoliert werden können.
 
-## <a name="modeling-multitenancy-with-azure-search"></a>Modellieren der Mehrinstanzenfähigkeit mit Azure Search
-Bei einem mehrinstanzenfähigen Szenario nutzt der Anwendungsentwickler einen oder mehrere Suchdienste und verteilt die Mandanten auf Dienste, Indizes oder beides. Azure Suche unterstützt beim Modellieren eines mehrinstanzenfähigen Szenarios mehrere Muster:
+## <a name="modeling-multitenancy-with-azure-cognitive-search"></a>Modellieren der Mehrinstanzenfähigkeit mit der kognitiven Azure-Suche
+Bei einem mehrinstanzenfähigen Szenario nutzt der Anwendungsentwickler einen oder mehrere Suchdienste und verteilt die Mandanten auf Dienste, Indizes oder beides. Die kognitive Azure-Suche unterstützt beim Modellieren eines mehrinstanzenfähigen Szenarios mehrere Muster:
 
 1. *Index pro Mandant:* Jeder Mandant verfügt über einen eigenen Index in einem Suchdienst, der mit anderen Mandanten gemeinsam genutzt wird.
-2. *Dienst pro Mandant:* Jeder Mandant hat einen eigenen dedizierten Azure Search-Dienst, was ein Höchstmaß an Trennung von Daten und Workloads ermöglicht.
+2. *Dienst pro Mandant:* Jeder Mandant hat einen eigenen dedizierten Dienst der kognitiven Azure-Suche und erreicht somit ein Höchstmaß an Trennung von Daten und Workloads.
 3. *Kombination beider Muster:* Größeren, aktiveren Mandanten werden dedizierte Dienste zugewiesen, während kleineren Mandanten einzelne Indizes in gemeinsam genutzten Diensten zugeteilt werden.
 
 ## <a name="1-index-per-tenant"></a>1. Index pro Mandant
 ![Eine Abbildung des Index-pro-Mandant-Modells](./media/search-modeling-multitenant-saas-applications/azure-search-index-per-tenant.png)
 
-Bei einem Index-pro-Mandant-Modell nutzen mehrere Mandanten einen einzelnen Azure Search-Dienst, wobei jeder Mandant einen eigenen Index hat.
+Bei einem Index-pro-Mandant-Modell nutzen mehrere Mandanten einen einzelnen Dienst der kognitiven Azure-Suche, wobei jeder Mandant einen eigenen Index hat.
 
-Die Daten der Mandanten sind voneinander isoliert, da alle Suchanfragen und Dokumentvorgänge in Azure Search auf Indexebene erfolgen. Auf Anwendungsebene muss der Datenverkehr der verschiedenen Mandanten zu den ordnungsgemäßen Indizes geleitet werden, während auf Dienstebene Ressourcen für alle Mandanten verwaltet werden müssen.
+Die Daten der Mandanten sind voneinander isoliert, da alle Suchanforderungen und Dokumentvorgänge in der kognitiven Azure-Suche auf Indexebene erfolgen. Auf Anwendungsebene muss der Datenverkehr der verschiedenen Mandanten zu den ordnungsgemäßen Indizes geleitet werden, während auf Dienstebene Ressourcen für alle Mandanten verwaltet werden müssen.
 
 Ein wesentliches Merkmal des Index-pro-Mandant-Modells ist die Fähigkeit des Anwendungsentwicklers, die abonnierte Kapazität eines Suchdienst für die Mandanten der Anwendung zu überschreiten. Wenn bei den Mandanten die Workload ungleichmäßig verteilt ist, kann die optimale Kombination von Mandanten auf die Indizes eines Suchdiensts verteilt werden. Der Zweck ist es, eine Anzahl sehr aktiver Mandanten mit intensiver Ressourcennutzung und zugleich eine große Menge weniger aktiver Mandanten zu unterstützen. Der Nachteil ist die Unfähigkeit des Modells, mit Situationen klar zu kommen, bei denen alle Mandanten gleichzeitig sehr aktiv sind.
 
-Der Index-pro-Mandant-Modell bildet die Grundlage eines variablen Kostenmodells, bei dem ein gesamter Azure Search-Dienst vorab gebucht und anschließend mit Mandanten aufgefüllt wird. Dies ermöglicht, dass freie Kapazität für Tests und kostenlose Konten zur Verfügung gestellt wird.
+Das Index-pro-Mandant-Modell bildet die Grundlage eines variablen Kostenmodells, bei dem ein gesamter Dienst der kognitiven Azure-Suche vorab gebucht und anschließend mit Mandanten aufgefüllt wird. Dies ermöglicht, dass freie Kapazität für Tests und kostenlose Konten zur Verfügung gestellt wird.
 
 Für Anwendungen mit globaler Verteilung ist das Index-pro-Mandant-Modell u.U. nicht das effizienteste. Wenn die Mandanten einer Anwendung auf der ganzen Welt verteilt sind, ist ggf. ein separater Dienst für jede Region erforderlich, was möglicherweise zur Verdopplung der jeweiligen Kosten führen kann.
 
-Azure Search ermöglicht die Skalierung von sowohl einzelnen Indizes als auch der Gesamtanzahl von Indizes. Bei Wahl eines entsprechenden Tarifs können Partitionen und Replikate dem gesamte Suchdienst hinzugefügt werden, wenn ein einzelner Index im Dienst in Bezug auf Speicherung oder Datenverkehr zu groß geworden ist.
+Die kognitive Azure-Suche ermöglicht die Skalierung von einzelnen Indizes sowie der Gesamtanzahl von Indizes. Bei Wahl eines entsprechenden Tarifs können Partitionen und Replikate dem gesamte Suchdienst hinzugefügt werden, wenn ein einzelner Index im Dienst in Bezug auf Speicherung oder Datenverkehr zu groß geworden ist.
 
-Wenn die Gesamtanzahl der Indizes für einen einzelnen Dienst zu groß wird, muss ein anderer Dienst bereitgestellt werden, um die neuen Mandanten zu unterstützen. Wenn Indizes zwischen Suchdiensten verschoben werden müssen, weil neue Dienste hinzugefügt werden, müssen die Daten aus dem Index manuell in einen anderen Index kopiert werden, da Azure Search das Verschieben eines Indexes nicht zulässt.
+Wenn die Gesamtanzahl der Indizes für einen einzelnen Dienst zu groß wird, muss ein anderer Dienst bereitgestellt werden, um die neuen Mandanten zu unterstützen. Wenn Indizes zwischen Suchdiensten verschoben werden müssen, weil neue Dienste hinzugefügt werden, müssen die Daten aus dem Index manuell in einen anderen Index kopiert werden, da das Verschieben eines Index in der kognitiven Azure-Suche nicht zulässig ist.
 
 ## <a name="2-service-per-tenant"></a>2. Dienst pro Mandant
 ![Eine Abbildung des Dienst-pro-Mandant-Modells](./media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png)
@@ -101,7 +101,7 @@ Ein Dienst-pro-Mandant-Modell bietet außerdem den Vorteil eines vorhersagbaren,
 
 Das Dienst-pro-Mandant-Modell eignet sich besonders für Anwendungen mit global verteilten Nutzern. Bei geografisch verteilten Mandanten ist es einfach, jedem Mandanten in der entsprechenden Region einen Dienst zur Verfügung zu stellen.
 
-Die Herausforderung bei der Skalierung dieses Musters entstehen, wenn einzelne Mandanten die Kapazitätsgrenzen ihres Diensts erreichen. Azure Search unterstützt derzeit keine Aktualisierung des Tarifs eines Suchdiensts, weshalb alle Daten manuell in einen neuen Dienst kopiert werden müssen.
+Die Herausforderung bei der Skalierung dieses Musters entstehen, wenn einzelne Mandanten die Kapazitätsgrenzen ihres Diensts erreichen. Die kognitive Azure-Suche unterstützt derzeit keine Aktualisierung des Tarifs eines Suchdiensts, sodass alle Daten manuell in einen neuen Dienst kopiert werden müssen.
 
 ## <a name="3-mixing-both-models"></a>3. Kombinieren beider Modelle
 Ein weiteres Muster für die Modellierung von Mehrinstanzenfähigkeit ist das Kombinieren des Index-pro-Mandant- und Dienst-pro-Mandant-Modells.
@@ -111,11 +111,11 @@ Durch Kombinieren der beiden Modelle können die größten Mandanten einer Anwen
 Allerdings erfordert das Umsetzen dieser Strategie Weitsicht bei der Vorhersage, welche Mandanten einen dedizierten und welche einen Index in einem gemeinsamen genutzt Dienst benötigen. Die Komplexität der Anwendung erhöht sich, da zwei mehrinstanzenfähige Modelle verwaltet werden müssen.
 
 ## <a name="achieving-even-finer-granularity"></a>Erreichen einer feineren Granularität
-Die oben genannten Entwurfsmuster zum Modellieren mehrinstanzenfähiger Szenarien in Azure Search setzen einen einheitlichen Umfang voraus, bei dem jeder Mandant eine ganze Instanz einer Anwendung nutzt. Anwendungen müssen jedoch mitunter mit vielen kleineren Umfängen zurechtkommen.
+Die oben genannten Entwurfsmuster zum Modellieren mehrinstanzenfähiger Szenarien in der kognitiven Azure-Suche setzen einen einheitlichen Umfang voraus, bei dem jeder Mandant eine ganze Instanz einer Anwendung nutzt. Anwendungen müssen jedoch mitunter mit vielen kleineren Umfängen zurechtkommen.
 
 Wenn das Dienst-pro-Mandant- und Index-pro-Mandant-Modell nicht ausreichend kleine Umfänge darstellen, ist es möglich, einen Index zu modellieren, mit dem ein noch feinerer Grad an Granularität erreicht wird.
 
-Damit sich ein einzelner Index für verschiedene Clientendpunkte anders verhält, kann einem Index ein Feld hinzugefügt werden, dass jedem möglichen Client einen bestimmten Wert zuweist. Immer wenn ein Client Azure Search zum Abfragen oder Ändern eines Indexes aufruft, gibt der Code aus der Clientanwendung den entsprechenden Wert für dieses Feld mithilfe der [Filterfunktion](https://msdn.microsoft.com/library/azure/dn798921.aspx) von Azure Search zum Zeitpunkt der Abfrage an.
+Damit sich ein einzelner Index für verschiedene Clientendpunkte anders verhält, kann einem Index ein Feld hinzugefügt werden, dass jedem möglichen Client einen bestimmten Wert zuweist. Immer wenn ein Client die kognitive Azure-Suche zum Abfragen oder Ändern eines Index aufruft, gibt der Code aus der Clientanwendung den entsprechenden Wert für dieses Feld mithilfe der [Filterfunktion](https://msdn.microsoft.com/library/azure/dn798921.aspx) der kognitiven Azure-Suche zum Zeitpunkt der Abfrage an.
 
 Mithilfe dieser Methode lassen sich eine Unterstützung getrennter Benutzerkonten und Berechtigungsstufen sowie sogar vollständig getrennter Anwendungen erreichen.
 
@@ -125,7 +125,7 @@ Mithilfe dieser Methode lassen sich eine Unterstützung getrennter Benutzerkonte
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Azure Search ist eine hervorragende Wahl für viele Anwendungen. [Erfahren Sie mehr über die leistungsfähigen Funktionen des Diensts.](https://aka.ms/whatisazsearch) Berücksichtigen Sie beim Bewerten der verschiedenen Entwurfsmuster für mehrinstanzenfähige Anwendungen die [verschiedenen Tarife](https://azure.microsoft.com/pricing/details/search/) und zugehörigen [Dienstgrenzen](search-limits-quotas-capacity.md), um Azure Search perfekt an Anwendungsworkloads und Architekturen sämtlicher Größen anzupassen.
+Die kognitive Azure-Suche ist eine hervorragende Wahl für viele Anwendungen. Berücksichtigen Sie beim Bewerten der verschiedenen Entwurfsmuster für mehrinstanzenfähige Anwendungen die [verschiedenen Tarife](https://azure.microsoft.com/pricing/details/search/) und zugehörigen [Dienstgrenzen](search-limits-quotas-capacity.md), um die kognitive Azure-Suche perfekt an Anwendungsworkloads und Architekturen sämtlicher Größen anzupassen.
 
-Alle Fragen zu Azure Search und Szenarien mit mehreren Mandanten können an azuresearch_contact@microsoft.com gesendet werden.
+Alle Fragen zur kognitiven Azure-Suche und Szenarien mit mehreren Mandanten können an azuresearch_contact@microsoft.com gesendet werden.
 

@@ -1,24 +1,24 @@
 ---
-title: Überwachen der Ressourcennutzung und Abfragemetriken für einen Suchdienst – Azure Search
-description: Aktivieren der Protokollierung, Abrufen von Abfrageaktivitätsmetriken, der Ressourcennutzung und anderer Daten von einem Azure Search-Dienst.
-author: HeidiSteen
+title: Überwachen der Ressourcennutzung und der Abfragemetriken
+titleSuffix: Azure Cognitive Search
+description: Aktivieren der Protokollierung, Abrufen von Abfrageaktivitätsmetriken, der Ressourcennutzung und anderer Daten von einem Dienst der kognitiven Azure-Suche.
 manager: nitinme
-tags: azure-portal
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/16/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+tags: azure-portal
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331212"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793487"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
+# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Überwachen der Ressourcennutzung und der Abfrageaktivität in der kognitiven Azure-Suche
 
-Auf der Seite „Übersicht“ Ihres Azure Search-Diensts können Sie Systemdaten zur Ressourcennutzung, Abfragemetriken und das noch verfügbare Kontingent zum Erstellen von weiteren Indizes, Indexern und Datenquellen anzeigen. Sie können auch das Portal verwenden, um die Protokollanalyse oder eine andere für die persistente Datensammlung verwendete Ressource zu konfigurieren. 
+Auf der Seite „Übersicht“ Ihres Diensts der kognitiven Azure-Suche können Sie Systemdaten zur Ressourcennutzung, Abfragemetriken und das noch verfügbare Kontingent zum Erstellen von weiteren Indizes, Indexern und Datenquellen anzeigen. Sie können auch das Portal verwenden, um die Protokollanalyse oder eine andere für die persistente Datensammlung verwendete Ressource zu konfigurieren. 
 
 Das Einrichten von Protokollen ist hilfreich für die Selbstdiagnose und die Beibehaltung des Verwendungsverlaufs. Intern werden Protokolle für einen kurzen Zeitraum im Back-End gespeichert, der für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie Protokollinformationen steuern und darauf zugreifen möchten, sollten Sie eine der in diesem Artikel beschriebenen Lösungen einrichten.
 
@@ -52,7 +52,7 @@ Für im Dienst enthaltene Aufgaben, z.B. Erstellen eines Index oder Löschen ein
 
 ## <a name="add-on-monitoring-solutions"></a>Add-On-Überwachungslösungen
 
-In Azure Search werden neben den verwalteten Objekten keine weiteren Daten gespeichert, d.h, Protokolldaten müssen extern gespeichert werden. Wenn Sie Protokolldaten speichern möchten, können Sie eine der unten aufgeführten Ressourcen konfigurieren. 
+In der kognitiven Azure-Suche werden neben den verwalteten Objekten keine weiteren Daten gespeichert, d. h, Protokolldaten müssen extern gespeichert werden. Wenn Sie Protokolldaten speichern möchten, können Sie eine der unten aufgeführten Ressourcen konfigurieren. 
 
 In der folgenden Tabelle werden die Optionen zum Speichern von Protokollen und Hinzufügen einer umfassenden Überwachung von Dienstvorgängen und Abfrageworkloads über Application Insights verglichen.
 
@@ -64,21 +64,21 @@ In der folgenden Tabelle werden die Optionen zum Speichern von Protokollen und H
 
 Azure Monitor-Protokolle und Blob Storage sind als kostenlose Dienste verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).)
 
-Im nächsten Abschnitt werden die Schritte zum Aktivieren und Verwenden von Azure Blob Storage zum Erfassen von und Zugreifen auf Protokolldaten erläutert, die durch Azure Search-Vorgänge erstellt werden.
+Im nächsten Abschnitt werden die Schritte zum Aktivieren und Verwenden von Azure Blob Storage zum Erfassen von und Zugreifen auf Protokolldaten erläutert, die durch Vorgänge der kognitiven Azure-Suche erstellt werden.
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
-Die Protokollierung für die Indizierung und für Abfrageworkloads ist standardmäßig deaktiviert. Für die Protokollierungsstruktur und die langfristige externe Speicherung müssen Add-On-Lösungen eingesetzt werden. In Azure Search werden nur die in Azure Search erstellten und verwalteten Objekte gespeichert, sodass Protokolle an anderer Stelle gespeichert werden müssen.
+Die Protokollierung für die Indizierung und für Abfrageworkloads ist standardmäßig deaktiviert. Für die Protokollierungsstruktur und die langfristige externe Speicherung müssen Add-On-Lösungen eingesetzt werden. In der kognitiven Azure-Suche werden nur die bei der kognitiven Azure-Suche erstellten und verwalteten Objekte gespeichert, sodass Protokolle an anderer Stelle gespeichert werden müssen.
 
 In diesem Abschnitt erfahren Sie, wie Sie protokollierte Ereignisse und Metrikdaten mithilfe von Blob Storage speichern.
 
-1. [Erstellen Sie ein Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), wenn Sie noch keines besitzen. Sie können es in der gleichen Ressourcengruppe wie Azure Search ablegen, um später die Bereinigung zu vereinfachen, wenn Sie alle in dieser Übung verwendeten Ressourcen löschen.
+1. [Erstellen Sie ein Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), wenn Sie noch keines besitzen. Sie können es in der gleichen Ressourcengruppe wie die kognitive Azure-Suche ablegen, um später die Bereinigung zu vereinfachen, wenn Sie alle in dieser Übung verwendeten Ressourcen löschen.
 
-   Ihr Speicherkonto muss sich in der gleichen Region wie Azure Search befinden.
+   Ihr Speicherkonto muss sich in derselben Region wie die kognitive Azure-Suche befinden.
 
 2. Öffnen Sie die Seite „Übersicht“ für Ihren Suchdienst. Scrollen Sie im linken Navigationsbereich nach unten zu **Überwachung**, und klicken Sie auf **Überwachung aktivieren**.
 
-   ![Überwachung aktivieren](./media/search-monitor-usage/enable-monitoring.png "Überwachung aktivieren")
+   ![Aktivieren der Überwachung](./media/search-monitor-usage/enable-monitoring.png "Aktivieren der Überwachung")
 
 3. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Azure Monitor-Protokollen exportieren.
 
@@ -158,14 +158,14 @@ Sie können die Protokolldatei mit einem beliebigen JSON-Editor anzeigen. Wenn S
 
 1. Öffnen Sie Ihr Speicherkonto im Azure-Portal. 
 
-2. Klicken Sie im linken Navigationsbereich auf **Blobs**. **insights-logs-operationlogs** und **insights-metrics-pt1m** sollten angezeigt werden. Diese Container werden in Azure Search erstellt, wenn die Protokolldaten in Blob Storage exportiert werden.
+2. Klicken Sie im linken Navigationsbereich auf **Blobs**. **insights-logs-operationlogs** und **insights-metrics-pt1m** sollten angezeigt werden. Diese Container werden in der kognitiven Azure-Suche erstellt, wenn die Protokolldaten in Blob Storage exportiert werden.
 
 3. Klicken Sie in der Ordnerhierarchie nach unten bis zur JSON-Datei.  Verwenden Sie das Kontextmenü, um die Datei herunterzuladen.
 
 Nach dem Herunterladen der Datei können Sie sie in einem JSON-Editor öffnen und die Inhalte anzeigen.
 
 ## <a name="use-system-apis"></a>Verwenden von System-APIs
-Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken, Index- und Indexerinformationen und die Anzahl von Dokumenten.
+Sowohl die REST-API der kognitiven Azure-Suche als auch das .NET SDK bieten programmgesteuerten Zugriff auf Dienstmetriken, Index- und Indexerinformationen und die Anzahl von Dokumenten.
 
 * [Dienststatistiken abrufen](/rest/api/searchservice/get-service-statistics)
 * [Indexstatistiken abrufen](/rest/api/searchservice/get-index-statistics)

@@ -1,22 +1,21 @@
 ---
-title: Die Qualifikation „Text teilen“ der kognitiven Suche – Azure Search
-description: Teilen Sie Text in mehrere Blöcke oder Seiten anhand der Länge in einer Azure Search-Anreicherungspipeline auf.
-services: search
+title: Der Skill „Text teilen“
+titleSuffix: Azure Cognitive Search
+description: Teilen Sie Text in mehrere Blöcke oder Seiten anhand der Länge in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche auf.
 manager: nitinme
 author: luiscabrer
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265680"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72784847"
 ---
-#   <a name="text-split-cognitive-skill"></a>Der Skill „Text teilen“
+# <a name="text-split-cognitive-skill"></a>Der Skill „Text teilen“
 
 Der Skill **Text teilen** unterteilt den Text in Blöcke. Sie können festlegen, ob Sie den Text in Sätze oder in Seiten einer bestimmten Länge aufteilen möchten. Dieser Skill ist besonders nützlich, wenn Sie eine maximale Textlänge in nachfolgenden Skills einhalten müssen. 
 
@@ -133,5 +132,5 @@ Wird eine Sprache nicht unterstützt, wird eine Warnung generiert und der Text a
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
