@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.custom: seodec18
-ms.openlocfilehash: 41d12013ec7eaa4e2aae59e1b366cc511a41f749
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: seodec18, seo-javascript-october2019
+ms.openlocfilehash: eb4478a435fbfc899055a60e13b318be771652f7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535109"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527569"
 ---
 # <a name="try-speech-services-for-free"></a>Kostenloses Testen von Speech Services
 
@@ -36,15 +36,15 @@ So registrieren Sie sich für eine 30-tägige kostenlose Testversion:
 
 1. Wählen Sie die Registerkarte **Spracheingabe-APIs** aus.
 
-   ![Registerkarte „Sprachdienste“](media/index/try-speech-api-free-trial1.png)
+   ![Sprach-API: Registerkarte „Sprachdienste“](media/index/cognitive-services-speech-api-tab.png)
 
 1. Wählen Sie unter **Sprachdienste** die Schaltfläche **API-Schlüssel abrufen** aus.
 
-   ![API-Schlüssel](media/index/try-speech-api-free-trial2.png)
+   ![Sprach-API: API-Schlüssel abrufen](media/index/speech-api-get-api-key.png)
 
 1. Stimmen Sie den Bedingungen zu, und wählen Sie im Dropdownmenü Ihr Gebietsschema aus.
 
-   ![Akzeptieren der Bedingungen](media/index/try-speech-api-free-trial3.png)
+   ![Sprach-API: Bedingungen zustimmen](media/index/speech-api-agree-to-terms.png)
 
 1. Melden Sie sich mit Ihrem Microsoft-, Facebook-, LinkedIn- oder GitHub-Konto an.
 
@@ -73,17 +73,17 @@ So fügen Sie Ihrem (kostenlosen oder kostenpflichtigen) Azure-Konto eine Speech
 
 1. Wählen Sie links oben im Portal die Option **Ressource erstellen** aus.
 
-    ![Erstellen einer Ressource](media/index/try-speech-api-create-speech1.png)
+    ![Sprach-API: Ressource erstellen](media/index/speech-api-create-resource.png)
 
 1. Suchen Sie im Fenster **Neu** nach **Sprache**.
 
 1. Wählen Sie in den Suchergebnissen **Sprache** aus.
 
-    ![Auswählen von „Sprache“](media/index/try-speech-api-create-speech2.png)
+    ![Sprach-API: „Sprache“ auswählen](media/index/speech-api-select-speech.png)
 
 1. Wählen Sie unter **Sprache** die Schaltfläche **Erstellen** aus.
 
-    ![Auswählen der Schaltfläche „Erstellen“](media/index/try-speech-api-create-speech3.png)
+    ![Sprach-API: Schaltfläche „Erstellen“](media/index/speech-api-create-button.png)
 
 1. Geben Sie unter **Erstellen** Folgendes ein:
 
@@ -95,11 +95,11 @@ So fügen Sie Ihrem (kostenlosen oder kostenpflichtigen) Azure-Konto eine Speech
    * Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um zukünftig einfach auf Ihr Abonnement zugreifen zu können.
    * Klicken Sie auf **Erstellen**.
 
-     ![Auswählen der Schaltfläche „Erstellen“](media/index/try-speech-api-create-speech4.png)
+     ![Sprach-API: „Erstellen“ auswählen](media/index/speech-api-select-create.png)
 
      Es dauert einen Moment, bis die neue Sprachressource erstellt und bereitgestellt wird. Wählen Sie **Schnellstart** aus, um Informationen zu Ihrer neuen Ressource anzuzeigen.
 
-     ![Bereich „Schnellstart“](media/index/try-speech-api-create-speech5.png)
+     ![Sprach-API: Ressource bereitstellen](media/index/speech-api-deploy-resource.png)
 
 1. Klicken Sie unter **Schnellstart** auf den Link **Schlüssel** unter Schritt 1, um Ihre Abonnementschlüssel anzuzeigen. Jedem Abonnement sind zwei Schlüssel zugewiesen. Sie können jeden dieser Schlüssel in Ihrem Abonnement verwenden. Wählen Sie jeweils die Schaltfläche neben einem Schlüssel aus, um ihn in die Zwischenablage zu kopieren und in den Code einzufügen.
 

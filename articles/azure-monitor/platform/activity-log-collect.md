@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: bwren
-ms.openlocfilehash: affefa96d6e38a88c994938115ddf44bcf8bd36d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: c9fdd0c530ca34305aa3a9197c3bb938d4fb9f1f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695064"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528700"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Dieser Artikel beschreibt, wie Sie das Aktivitätsprotokoll in einem Log Analytics-Arbeitsbereich erfassen und die [Überwachungslösung](../insights/solutions.md) der Aktivitätsprotokollanalyse verwenden, die Protokollabfragen und Ansichten zum Analysieren dieser Daten bereitstellt. 
@@ -31,7 +31,7 @@ Das Verbinden des Aktivitätsprotokolls mit einem Log Analytics-Arbeitsbereich b
 - Verwenden von [Protokollabfragen](../log-query/log-query-overview.md) zum Ausführen komplexer Analysen und Erhalten tiefer Einblicke in Aktivitätsprotokolleinträge
 
 ## <a name="connect-to-log-analytics-workspace"></a>Verbinden mit einem Log Analytics-Arbeitsbereich
-Ein Aktivitätsprotokoll kann mit nur einem Arbeitsbereich verbunden werden, doch kann ein einzelner Arbeitsbereich mit dem Aktivitätsprotokoll für mehrere Abonnements in demselben Azure-Mandanten verbunden werden. Informationen zur Erfassung für mehrere Mandanten finden Sie unter [Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich in verschiedenen Azure Active Directory-Mandanten](activity-log-collect-tenants.md).
+Ein einzelner Arbeitsbereich kann auf demselben Azure-Mandanten für mehrere Abonnements mit dem Aktivitätsprotokoll verbunden werden. Informationen zur Erfassung für mehrere Mandanten finden Sie unter [Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich in verschiedenen Azure Active Directory-Mandanten](activity-log-collect-tenants.md).
 
 > [!IMPORTANT]
 > Möglicherweise erhalten Sie beim folgenden Vorgang einen Fehler, wenn die Ressourcenanbieter „ Microsoft.OperationalInsights“ und „Microsoft.OperationsManagement“ nicht für Ihr Abonnement registriert sind. Informationen zum Registrieren dieser Anbieter finden Sie unter [Azure-Ressourcenanbieter und-Typen](../../azure-resource-manager/resource-manager-supported-services.md).

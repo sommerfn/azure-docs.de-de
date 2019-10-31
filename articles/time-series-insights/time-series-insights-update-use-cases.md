@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 437f93e35040a93fb0c3098d6ec53883c3f856a7
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981172"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553280"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Anwendungsfälle für Azure Time Series Insights Preview
 
@@ -38,7 +38,7 @@ Azure Time Series Insights ist ein End-to-End-PaaS-Angebot (Platform-as-a-Servic
 
 Durchsuchen und analysiere Sie Milliarden von Ereignissen in Echtzeit, um Anomalien und versteckte Trends in Ihren Daten zu erkennen. Time Series Insights bietet Leistung in nahezu Echtzeit für Ihre IoT- und DevOps-Analyseworkloads.
 
-[![Daten-Explorer](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
+[![Daten-Explorer](media/v2-update-use-cases/data-explorer.png)](media/v2-update-use-cases/data-explorer.png#lightbox)
 
 Die meisten Kunden sind sich einig, dass die minimale Zeit, die benötigt wird, um Einblicke zu gewinnen, eines der herausragenden Merkmale von Time Series Insights ist:
 
@@ -66,7 +66,7 @@ Es gibt drei primäre Methoden zur Interaktion mit in Time Series Insights gespe
 
 Verwenden Sie Time Series Insights, um die Integrität, Verwendung und Leistung von Geräten im Verhältnis zu überwachen. Time Series Insights bietet eine einfache Möglichkeit zur Messung der Betriebseffizienz. Mit Time Series Insights können Sie verschiedene und unvorhersehbare IoT-Workloads verwalten, ohne die Leistung bei eingehendem Datenverkehr oder Abfragen zu beeinträchtigen.
 
-[![Übersicht](media/v2-update-use-cases/overview.svg)](media/v2-update-use-cases/overview.svg#lightbox)
+[![Übersicht](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Das Streamen und die fortlaufende Verarbeitung von Daten, die aus operativen Prozessen stammen, können jedes Unternehmen erfolgreich transformieren, wenn sie mit der richtigen Technologie oder Lösung kombiniert werden. Häufig sind diese Lösungen eine Kombination aus mehreren Systemen. Sie ermöglichen die Untersuchung und Analyse von Daten, die sich ständig ändern, insbesondere im IoT-Bereich, und ein gemeinsames Muster aufweisen.
 
@@ -86,7 +86,7 @@ Time Series Insights bietet Datenuntersuchung nahezu in Echtzeit sowie objektbas
 
 Integration mit erweiterten Analysediensten wie Machine Learning und Azure Databricks. Time Series Insights erfasst Rohdaten von Millionen von Geräten. Es fügt Kontextdaten hinzu, die nahtlos von einer Suite von Azure-Analysediensten verwendet werden können.
 
-[![Analysen](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[![Analysen](media/v2-update-use-cases/advanced-analytics.png)](media/v2-update-use-cases/advanced-analytics.png#lightbox)
 
 Erweiterte Analysen und Machine Learning nutzen und verarbeiten große Mengen von Daten. Diese Daten werden verwendet, um datengesteuerte Entscheidungen zu treffen und Vorhersageanalysen durchzuführen. Bei IoT-Anwendungsfällen lernen erweiterte Analysealgorithmen aus den von Millionen von Geräten gesammelten Daten. Diese Geräte übertragen mehrmals pro Sekunde Daten. Die von IoT-Geräten erfassten Daten sind roh. Ihnen fehlen Kontextinformationen wie der Ort des Geräts und die Einheit der Sensormessung. Hieraus folgt, dass sich Rohdaten schwer direkt für erweiterte Analysen verwenden lassen.
 
@@ -96,7 +96,7 @@ Time Series Insights schließt die Lücke zwischen IoT-Daten und erweiterten Ana
 
     Time Series Insights kann als Quelle der Wahrheit für alle Daten in der gesamten Organisation dienen. Er erstellt ein zentrales Repository für die Nutzung von Downstreamanalyse-Workloads. Da es sich bei Time Series Insights um einen nahezu in Echtzeit arbeitenden Speicherdienst handelt, können erweiterte Analysemodelle kontinuierlich aus den eingehenden IoT-Telemetriedaten lernen. Deshalb können die Modelle exaktere Vorhersagen treffen.
 
-- Zweitens kann die Ausgabe von Machine Learning und Vorhersagemodellen an Time Series Insights übergeben werden, deren Ergebnisse zu visualisieren und zu speichern. Dieses Verfahren hilft Organisationen dabei, ihre Modelle zu optimieren. Time Series Insights vereinfacht die Visualisierung von Telemetrie-Streamingdaten in derselben Ebene wie die Ausgaben der trainierten Modelle. Auf diese Weise hilft es Data Science-Teams dabei, Anomalien und Muster zu erkennen.  
+- Zweitens kann die Ausgabe von Machine Learning und Vorhersagemodellen an Time Series Insights übergeben werden, um deren Ergebnisse zu visualisieren und zu speichern. Dieses Verfahren hilft Organisationen dabei, ihre Modelle zu optimieren. Time Series Insights vereinfacht die Visualisierung von Telemetrie-Streamingdaten in derselben Ebene wie die Ausgaben der trainierten Modelle. Auf diese Weise hilft es Data Science-Teams dabei, Anomalien und Muster zu erkennen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

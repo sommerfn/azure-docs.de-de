@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 812fb8d312b165bd43f600da520f390f9c6399fe
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128420"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692632"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Modul „Two-Class Boosted Decision Tree“
 
@@ -32,9 +32,9 @@ Dieses Modul erstellt ein untrainiertes Klassifizierungsmodell. Da es sich bei d
 
 Diese Art von Modell kann mithilfe von [Train Model](././train-model.md) (Modell trainieren) trainiert werden. 
 
-1.  Fügen Sie Ihrem Experiment in Azure Machine Learning das Modul **Boosted Decision Tree** hinzu.
+1.  Fügen Sie Ihrer Pipeline in Azure Machine Learning das Modul **Boosted Decision Tree** (Verstärkter Entscheidungsbaum) hinzu.
   
-2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) festlegen.
+2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) aktivieren.
   
     + **Single Parameter** (Einzelner Parameter): Wenn Sie wissen, wie Sie das Modell konfigurieren möchten, können Sie einen bestimmten Satz von Werten als Argumente angeben.
   

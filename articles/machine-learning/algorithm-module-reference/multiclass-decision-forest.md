@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b56f08dfd1a14ffedffb612bb8974086ee08ede7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128612"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692777"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul „Multiclass Decision Forest“ (Entscheidungswald mit mehreren Klassen)
 
@@ -41,7 +41,7 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
 
 
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Multiclass Decision Forest** Ihrem Experiment hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren), **Classification** (Klassifizierung).
+1. Fügen Sie Ihrer Pipeline über die Benutzeroberfläche das Modul **Multiclass Decision Forest** (Entscheidungswald mit mehreren Klassen) hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren), **Classification** (Klassifizierung).
 
 2. Doppelklicken Sie auf das Modul, um den Bereich **Properties** (Eigenschaften) zu öffnen.
 
@@ -76,7 +76,7 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
     + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](./train-model.md) (Trainieren des Modells) verwenden.
 
-11. Führen Sie das Experiment aus.
+11. Ausführen der Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 

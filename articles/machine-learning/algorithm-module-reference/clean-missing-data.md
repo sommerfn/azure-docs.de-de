@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: a65e8224b00bb592d6e0e42abdd304cf325d4412
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128934"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693214"
 ---
 # <a name="clean-missing-data-module"></a>Modul „Clean Missing Data“
 
@@ -50,7 +50,7 @@ Mit diesem Modul können Sie einen Bereinigungsvorgang definieren. Sie können d
 
 Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine Gruppe von Daten anwenden, wird derselbe Bereinigungsvorgang auf alle von Ihnen ausgewählten Spalten angewendet. Wenn Sie verschiedene Spalten mithilfe verschiedener Methoden bereinigen müssen, verwenden Sie deshalb separate Instanzen des Moduls.
 
-1.  Fügen Sie Ihrem Experiment das Modul [Clean Missing Data](./clean-missing-data.md) hinzu, und verbinden Sie das Dataset, in dem Werte fehlen.  
+1.  Fügen Sie Ihrer Pipeline das Modul [Clean Missing Data](./clean-missing-data.md) hinzu, und verbinden Sie das Dataset, in dem Werte fehlen.  
   
 2.  Wählen Sie bei **Columns to be cleaned** (Zu bereinigende Spalten) die Spalten mit den fehlenden Werten aus, die Sie ändern möchten. Sie können mehrere Spalten auswählen, müssen aber dieselbe Ersetzungsmethode in allen ausgewählten Spalten verwenden. Daher müssen Sie Zeichenfolgenspalten und numerische Spalten in der Regel getrennt bereinigen.
 
@@ -63,7 +63,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
 
     3. Wählen Sie für **Include** (Einschließen) den **Column Type** (Spaltentyp) aus der Dropdownliste und anschließend **Numeric** (Numerisch) oder einen spezifischeren numerischen Typ aus. 
   
-    Jede von Ihnen ausgewählte Bereinigungs- oder Ersetzungsmethode muss auf **alle** Spalten in der Auswahl anwendbar sein. Wenn die Daten in einer Spalte mit dem angegebenen Vorgang inkompatibel sind, gibt das Modul einen Fehler zurück und beendet das Experiment.
+    Jede von Ihnen ausgewählte Bereinigungs- oder Ersetzungsmethode muss auf **alle** Spalten in der Auswahl anwendbar sein. Wenn die Daten in einer Spalte mit dem angegebenen Vorgang inkompatibel sind, gibt das Modul einen Fehler zurück und beendet die Pipeline.
   
 3.  Geben Sie für **Minimum missing value ratio** (Mindestverhältnis für fehlende Werte) die Mindestanzahl von fehlenden Werten an, die für den auszuführenden Vorgang erforderlich sind.  
   
@@ -113,7 +113,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
   
 7. **Generate missing value indicator column** (Indikatorspalte für fehlende Werte generieren): Wählen Sie diese Option aus, wenn Sie einen Hinweis darauf ausgeben möchten, dass die Werte in der Spalte die Kriterien für eine Bereinigung von fehlenden Werten erfüllt haben. Diese Option ist besonders hilfreich, wenn Sie beim Einrichten eines neuen Bereinigungsvorgangs sicherstellen möchten, dass er wie vorgesehen funktioniert.
   
-8. Führen Sie das Experiment aus.
+8. Ausführen der Pipeline.
 
 ### <a name="results"></a>Ergebnisse
 
@@ -129,11 +129,11 @@ Das Modul gibt zwei Ausgaben zurück:
 
 Wenn Sie Bereinigungsvorgänge oft wiederholen müssen, empfehlen wir, dass Sie Ihr „Rezept“ für die Datenbereinigung als eine *Transformation* speichern, um es bei demselben Dataset wiederverwenden zu können. Das Speichern einer Bereinigungstransformation ist besonders hilfreich, wenn Sie Daten mit demselben Schema häufig erneut importieren und dann bereinigen müssen.  
       
-1.  Fügen Sie das Modul [Apply Transformation](./apply-transformation.md) (Transformation anwenden) Ihrem Experiment hinzu.  
+1.  Fügen Sie das Modul [Apply Transformation](./apply-transformation.md) (Transformation anwenden) Ihrer Pipeline hinzu.  
   
 2.  Fügen Sie dann das zu bereinigende Dataset hinzu, und verbinden Sie es mit dem rechten Eingangsport.  
   
-3.  Erweitern Sie die Gruppe **Transforms** (Transformationen) im linken Bereich der Oberfläche. Suchen Sie die gespeicherte Transformation, und ziehen Sie sie in das Experiment.  
+3.  Erweitern Sie die Gruppe **Transforms** (Transformationen) im linken Bereich der Oberfläche. Suchen Sie nach der gespeicherten Transformation, und ziehen Sie sie in die Pipeline.  
   
 4.  Verbinden Sie die gespeicherte Transformation mit dem linken Eingangsport von [Apply Transformation](./apply-transformation.md). 
 
@@ -141,7 +141,7 @@ Wenn Sie Bereinigungsvorgänge oft wiederholen müssen, empfehlen wir, dass Sie 
 
     Allerdings: Nehmen Sie einmal an, Sie hätten eine Transformation für eine Teilmenge numerischer Spalten erstellt. Diese Transformation können Sie auf ein Dataset von gemischten Spaltentypen anwenden, ohne dass ein Fehler ausgelöst wird, weil die fehlenden Werte nur in den übereinstimmenden numerischen Spalten geändert werden.
 
-6.  Führen Sie das Experiment aus.  
+6.  Ausführen der Pipeline.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

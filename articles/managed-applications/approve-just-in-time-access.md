@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren und Genehmigen des Just-In-Time-Zugriffs für Azure Managed Applications
+title: Genehmigen von Just-In-Time-Zugriff – Azure Managed Applications
 description: Beschreibt, wie Consumer von Azure Managed Applications Anforderungen für den Just-In-time-Zugriff auf eine verwaltete Anwendung genehmigen.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 55fbf7292ab894cad3de3de9e96ddc96fe0b79b3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: dd5c3f21b1a4b71d129ccbebeaa7ee66274a672f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482036"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529125"
 ---
 # <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurieren und Genehmigen des Just-In-Time-Zugriffs für Azure Managed Applications
 

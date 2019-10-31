@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128837"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693163"
 ---
 # <a name="enter-data-manually-module"></a>Modul „Enter Data Manually“ (Manuelles Eingeben von Daten)
 
@@ -30,9 +30,9 @@ Dieses Modul kann in folgenden Szenarien hilfreich sein:
   
 - Eingeben einer Liste mit Spaltennamen zum Einfügen in ein Dataset
 
-## <a name="enter-data-manually"></a>Enter Data Manually 
+## <a name="enter-data-manually"></a>Manuelle Eingabe von Daten 
   
-1.  Fügen Sie das Modul [Enter Data Manually](./enter-data-manually.md) Ihrem Experiment hinzu. Sie finden dieses Modul in Azure Machine Learning in der Kategorie **Data Input and Output** (Dateieingabe und -ausgabe). 
+1.  Fügen Sie Ihrer Pipeline das Modul [Enter Data Manually](./enter-data-manually.md) (Daten manuell eingeben) hinzu. Sie finden dieses Modul in Azure Machine Learning in der Kategorie **Data Input and Output** (Dateieingabe und -ausgabe). 
   
 2.  Wählen Sie für **DataFormat** eine der folgenden Optionen aus. Diese Optionen bestimmen, wie die von Ihnen bereitgestellten Daten analysiert werden sollen. Die Anforderungen für jedes Format sind sehr unterschiedlich, weshalb Sie die entsprechenden Themen unbedingt lesen sollten.  
   

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128885"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693170"
 ---
 # <a name="decision-forest-regression-module"></a>Modul „Entscheidungswaldregression“
 
@@ -42,7 +42,7 @@ Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und sein
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Vorgehensweise: Konfigurieren des Entscheidungswald-Regressionsmodells
 
-1. Fügen Sie dem Experiment das Modul **Entscheidungswaldregression** hinzu. Sie finden dieses Modul auf der Oberfläche unter **Machine Learning**, **Initialize** (Initialisieren), **Regression**.
+1. Fügen Sie der Pipeline das Modul **Entscheidungswaldregression** hinzu. Sie finden dieses Modul auf der Oberfläche unter **Machine Learning**, **Initialize** (Initialisieren), **Regression**.
 
 2. Öffnen Sie die Moduleigenschaften, und wählen Sie für **Resampling method** (Methode für Wiederholungsprobennahme) die Methode aus, mit der die einzelnen Bäume erstellt wurden.  Sie können zwischen **Bagging** und **Replikation** wählen.
 
@@ -82,7 +82,7 @@ Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und sein
 
    
 
-10. Führen Sie das Experiment aus.
+10. Ausführen der Pipeline.
 
 ### <a name="results"></a>Ergebnisse
 
@@ -92,7 +92,7 @@ Nach Abschluss des Trainings:
 
 + Um die Regeln für jeden Knoten anzuzeigen, klicken Sie auf jeden Baum und führen Sie einen Drilldown in die Aufteilungen aus.
 
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe des Trainingsmoduls, und wählen Sie **Save As Trained Model** (Als trainiertes Modell speichern) aus. Diese Kopie des Modells wird bei nachfolgenden Ausführungen des Experiments nicht aktualisiert. 
++ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe des Trainingsmoduls, und wählen Sie **Save As Trained Model** (Als trainiertes Modell speichern) aus. Diese Kopie des Modells wird bei nachfolgenden Ausführungen der Pipeline nicht aktualisiert. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

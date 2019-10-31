@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
 ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71001750"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight 
@@ -71,7 +71,7 @@ Die drei Konfigurationsparameter können auf Clusterebene (für alle Anwendungen
 ### <a name="change-the-parameters-using-ambari-ui"></a>Ändern der Parameter mit der Ambari-Benutzeroberfläche
 1. Klicken Sie auf der Ambari-Benutzeroberfläche auf **Spark** und auf **Configs** (Konfigurationen), und erweitern Sie dann **Custom spark-defaults**.
 
-    ![Festlegen von Parametern mit benutzerdefiniertem Ambari](./media/apache-spark-resource-manager/set-parameters-using-ambari.png "Festlegen von Parametern mit benutzerdefiniertem Ambari")
+    ![Festlegen von Parametern mit Ambari: Benutzerdefiniert](./media/apache-spark-resource-manager/set-parameters-using-ambari.png "Festlegen von Parametern mit Ambari: Benutzerdefiniert")
 2. Die Standardwerte sind gut geeignet, um vier Spark-Anwendungen gleichzeitig im Cluster auszuführen. Sie können diese Werte über die Benutzeroberfläche ändern, wie im folgenden Screenshot dargestellt wird:
 
     ![Festlegen von Parametern mit Ambari](./media/apache-spark-resource-manager/set-executor-parameters.png "Festlegen von Parametern mit Ambari")
@@ -110,7 +110,7 @@ Der Spark Thrift-Server nutzt die dynamische Executorzuordnung in Spark und somi
     ![Konfigurieren des Spark Thrift-Servers](./media/apache-spark-resource-manager/spark-thrift-server-1.png "Konfigurieren des Spark Thrift-Servers")
 * Erweitern Sie die Kategorie **Custom spark-thrift-sparkconf**, um den Parameter `spark.executor.cores` zu aktualisieren.
 
-    ![Konfigurieren des Spark Thrift-Serverparameters](./media/apache-spark-resource-manager/spark-thrift-server-2.png "Konfigurieren des Spark Thrift-Serverparameters")
+    ![Konfigurieren des Spark Thrift-Servers: Parameter](./media/apache-spark-resource-manager/spark-thrift-server-2.png "Konfigurieren des Spark Thrift-Servers: Parameter")
 
 ### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Ändern des Treiberspeichers des Spark Thrift-Servers
 Der Treiberspeicher des Spark Thrift-Servers ist so konfiguriert, dass er 25 % der RAM-Größe des Hauptknotens umfasst, vorausgesetzt, dass die RAM-Gesamtgröße des Hauptknotens über 14 GB liegt. Sie können mit der Ambari-Benutzeroberfläche die Treiberspeicherkonfiguration ändern, wie im folgenden Screenshot dargestellt wird:
@@ -125,13 +125,13 @@ Da die dynamische Zuteilung von Spark verwendet wird, werden nur die Ressourcen 
 1. Klicken Sie im linken Bereich der Ambari-Benutzeroberfläche auf **Spark**.
 2. Klicken Sie auf der nächsten Seite auf **Spark Thrift Servers**.
 
-    ![Neustarten von Thrift-Server1](./media/apache-spark-resource-manager/restart-thrift-server-1.png "Neustarten von Thrift-Server1")
+    ![Neustarten des Thrift-Servers: 1](./media/apache-spark-resource-manager/restart-thrift-server-1.png "Neustarten des Thrift-Servers: 1")
 3. Sie sollte zwei Hauptknoten sehen, auf denen der Spark Thrift-Server ausgeführt wird. Klicken Sie auf einen der Hauptknoten.
 
-    ![Neustarten von Thrift-Server2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Neustarten von Thrift-Server2")
+    ![Neustarten des Thrift-Servers: 2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Neustarten des Thrift-Servers: 2")
 4. Auf der nächsten Seite werden alle auf diesem Hauptknoten ausgeführten Dienste aufgeführt. Klicken Sie in der Liste auf die Dropdownschaltfläche neben „Spark Thrift Server“ und dann auf **Stop**.
 
-    ![Neustarten von Thrift-Server3](./media/apache-spark-resource-manager/restart-thrift-server-3.png "Neustarten von Thrift-Server3")
+    ![Neustarten des Thrift-Servers: 3](./media/apache-spark-resource-manager/restart-thrift-server-3.png "Neustarten des Thrift-Servers: 3")
 5. Wiederholen Sie diese Schritte auch auf dem anderen Hauptknoten.
 
 ## <a name="restart-the-jupyter-service"></a>Neustarten des Jupyter-Diensts
@@ -147,11 +147,11 @@ Starten Sie die YARN-Benutzeroberfläche, wie am Anfang des Artikels beschrieben
 ## <a name="kill-running-applications"></a>Beenden der Anwendungsausführung
 1. Klicken Sie im linken Bereich der Benutzeroberfläche von Yarn auf **Running** (Ausgeführt). Suchen Sie in der Liste mit den ausgeführten Anwendungen nach der Anwendung, die Sie beenden möchten, und klicken auf die **ID**.
 
-    ![Beenden einer App (1)](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Beenden einer App (1)")
+    ![Beenden der App: 1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "Beenden der App: 1")
 
 2. Klicken Sie rechts oben auf **Kill Application** (Anwendung beenden) und anschließend auf **OK**.
 
-    ![Beenden einer App (2)](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Beenden einer App (2)")
+    ![Beenden der App: 2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Beenden der App: 2")
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

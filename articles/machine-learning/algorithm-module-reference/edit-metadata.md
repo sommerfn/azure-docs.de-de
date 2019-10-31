@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128867"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693825"
 ---
 # <a name="edit-metadata-module"></a>Modul „Metadaten bearbeiten“
 
@@ -40,7 +40,7 @@ Typische Metadatenänderungen können Folgendes umfassen:
   
 ## <a name="configure-edit-metadata"></a>Konfigurieren von „Metadaten bearbeiten“
   
-1. Fügen Sie Ihrem Experiment in Azure Machine Learning das Modul „Metadaten bearbeiten“ hinzu, und verknüpfen Sie das Dataset, das Sie aktualisieren möchten. Sie finden das Dataset unter **Datentransformation** in der Kategorie **Bearbeiten**.
+1. Fügen Sie Ihrer Pipeline in Azure Machine Learning das Modul „Metadaten bearbeiten“ hinzu, und verknüpfen Sie das Dataset, das Sie aktualisieren möchten. Sie finden das Dataset unter **Datentransformation** in der Kategorie **Bearbeiten**.
   
 1. Klicken Sie auf **Spaltenauswahl starten**, und wählen Sie die Spalte oder die Gruppe von Spalten aus, mit denen Sie arbeiten möchten. Sie können Spalten einzeln nach Name oder Index auswählen, oder Sie können eine Gruppe von Spalten nach Typ auswählen.  
   
@@ -94,7 +94,7 @@ Typische Metadatenänderungen können Folgendes umfassen:
   
     + Alle ausgewählte Spalten müssen umbenannt werden. Sie dürfen keine Spalten weglassen oder überspringen.  
   
-1. Führen Sie das Experiment aus.  
+1. Ausführen der Pipeline.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

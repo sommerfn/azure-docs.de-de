@@ -1,10 +1,10 @@
 ---
-title: Zuweisen von Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+title: Zuweisen von Azure AD-Rollen in Privileged Identity Management – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) zuweisen.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
@@ -13,14 +13,14 @@ ms.subservice: pim
 ms.date: 04/09/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64c08f2dcf6df67401160775db60bf613d1c5241
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 61efc9d9d12cb67ea9c22e44ba0060db0f224f73
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804460"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554311"
 ---
-# <a name="assign-azure-ad-roles-in-pim"></a>Zuweisen von Azure AD-Rollen in PIM
+# <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Zuweisen von Azure AD-Rollen in Privileged Identity Management
 
 Mit Azure Active Directory (Azure AD) kann ein globaler Administrator **dauerhafte** Rollenzuweisungen für Azure AD-Administratoren vornehmen. Diese Rollenzuweisungen können über das [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md) oder über [PowerShell-Befehle](/powershell/module/azuread#directory_roles) erstellt werden.
 
@@ -32,11 +32,11 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ist.
 
-    Informationen dazu, wie Sie anderen Administratoren Zugriff für die Verwaltung in PIM gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
+    Informationen dazu, wie Sie anderen Administratoren Zugriff zum Verwalten von Privileged Identity Management gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-    Wenn Sie PIM noch nicht im Azure-Portal geöffnet haben, wechseln Sie zu [Einstieg in die Verwendung von PIM](pim-getting-started.md).
+    Wenn Sie Privileged Identity Management im Azure-Portal noch nie gestartet haben, informieren Sie sich zunächst auf der Seite [Einstieg in Privileged Identity Management](pim-getting-started.md).
 
 1. Klicken Sie auf **Azure AD-Rollen**.
 
@@ -62,7 +62,7 @@ Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Adm
 
     ![Mitglieder einer Rolle sind zusammen mit ihrem Aktivierungszustand aufgeführt](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
-1. Nachdem der Benutzer jetzt für die Rolle berechtigt ist, informieren Sie ihn darüber, dass er die Rolle gemäß den Anweisungen unter [Aktivieren meiner Azure AD-Rollen in PIM](pim-how-to-activate-role.md) aktivieren kann.
+1. Nachdem der Benutzer nun für die Rolle berechtigt ist, informieren Sie ihn darüber, dass er die Rolle wie unter [Aktivieren meiner Azure AD-Rollen in PIM](pim-how-to-activate-role.md) beschrieben aktivieren kann.
 
     Berechtigte Administratoren werden aufgefordert, sich während der Aktivierung für die Multi-Factor Authentication (MFA) von Azure zu registrieren. Wenn sich ein Benutzer nicht für MFA registrieren kann oder ein Microsoft-Konto nutzt (in der Regel @outlook.com), müssen Sie ihn in allen Rollen als permanent einrichten.
 
@@ -96,19 +96,19 @@ Führen Sie folgende Schritte aus, um einen Benutzer aus einer Azure AD-Adminis
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Klicken Sie auf **Azure AD-Rollen**.
+1. Wählen Sie **Azure AD-Rollen** aus.
 
-1. Klicken Sie auf **Mitglieder**.
+1. Wählen Sie **Mitglieder** aus.
 
     ![Liste „Mitglieder“ von Azure AD-Rollen mit Rolle und Aktivierungszustand](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. Klicken Sie auf die zu entfernende Rollenzuweisung.
+1. Wählen Sie die zu entfernende Rollenzuweisung aus.
 
-1. Klicken Sie auf **Weitere** und anschließend auf **Entfernen**.
+1. Wählen Sie **Mehr** > **Entfernen** aus.
 
     ![Bereich mit einem Benutzer mit einer permanenten Rolle, mit geöffneter Menüoption „Mehr“](./media/pim-how-to-add-role-to-user/pim-remove-role.png)
 
-1. Klicken Sie im Bestätigungsdialogfeld auf **Ja**.
+1. Wählen Sie **Ja** aus, wenn Sie zur Bestätigung der Aktion aufgefordert werden.
 
     ![Meldung, die fragt, ob Sie das Mitglied aus der Rolle entfernen möchten](./media/pim-how-to-add-role-to-user/pim-remove-role-confirm.png)
 
@@ -116,11 +116,11 @@ Führen Sie folgende Schritte aus, um einen Benutzer aus einer Azure AD-Adminis
 
 ## <a name="authorization-error-when-assigning-roles"></a>Autorisierungsfehler beim Zuweisen von Rollen
 
-Wenn Sie kürzlich PIM für ein Abonnement aktiviert haben und beim Versuch, einen Benutzer einer Azure AD-Administratorrolle zuzuweisen, einen Autorisierungsfehler erhalten, liegt das eventuell daran, dass der MS-PIM-Dienstprinzipal noch nicht über die entsprechenden Berechtigungen verfügt. Der MS-PIM-Dienstprinzipal benötigt die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator), um anderen Benutzern Rollen zuzuweisen. Anstatt zu warten, bis PIM die Rolle „Benutzerzugriffsadministrator“ zugewiesen wurde, können Sie sie auch manuell zuweisen.
+Wenn Sie Privileged Identity Management erst kürzlich für ein Azure-Abonnement aktiviert haben und beim Versuch, einen Benutzer einer Azure AD-Administratorrolle zuzuweisen, einen Autorisierungsfehler erhalten, verfügt der MS-PIM-Dienstprinzipal möglicherweise noch nicht über die erforderlichen Berechtigungen. Für die Rollenzuweisung muss dem MS-PIM-Dienstprinzipal in der rollenbasierten Zugriffssteuerung von Azure die Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) für den Ressourcenzugriff zugewiesen werden (anstelle von Azure AD-Administratorrollen). Anstatt zu warten, bis PIM die Rolle „Benutzerzugriffsadministrator“ zugewiesen wurde, können Sie sie auch manuell zuweisen.
 
-Gehen Sie wie folgt vor, um die Rolle „Benutzerzugriffsadministrator“ dem MS-PIM-Dienstprinzipal für ein Abonnement zuzuweisen.
+Gehen Sie wie folgt vor, um dem MS-PIM-Dienstprinzipal für ein Abonnement die Rolle „Benutzerzugriffsadministrator“ zuzuweisen:
 
-1. Melden Sie sich beim Azure-Portal als globaler Administrator an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator in Ihrer Azure AD-Organisation an.
 
 1. Wählen Sie **Alle Dienste** und dann **Abonnements** aus.
 
@@ -151,5 +151,5 @@ Gehen Sie wie folgt vor, um die Rolle „Benutzerzugriffsadministrator“ dem MS
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Einstellungen für Azure AD-Administratorrollen in PIM](pim-how-to-change-default-settings.md)
+- [Konfigurieren von Einstellungen für Azure AD-Rollen in PIM](pim-how-to-change-default-settings.md)
 - [Zuweisen von Azure-Ressourcenrollen in PIM](pim-resource-roles-assign-roles.md)

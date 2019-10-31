@@ -4,14 +4,14 @@ description: Beschreibt die Einrichtung von Continuous Integration in Azure Pipe
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982459"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597513"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrieren von Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -71,7 +71,7 @@ steps:
   inputs:
     azureSubscription: 'demo-deploy-sp'
     ScriptPath: 'AzureResourceGroupDemo/Deploy-AzureResourceGroup.ps1'
-    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus' 
+    ScriptArguments: -ResourceGroupName 'demogroup' -ResourceGroupLocation 'centralus'
     azurePowerShellVersion: LatestVersion
 ```
 
@@ -139,7 +139,7 @@ Sie können die aktuell laufende Pipeline auswählen, um Details zu den Aufgaben
 
 ## <a name="copy-and-deploy-tasks"></a>Aufgaben zum Kopieren und Bereitstellen
 
-In diesem Abschnitt wird gezeigt, wie Sie Continuous Deployment konfigurieren, indem Sie zwei Aufgaben zur Bereitstellung der Artefakte und der Vorlage verwenden. 
+In diesem Abschnitt wird gezeigt, wie Sie Continuous Deployment konfigurieren, indem Sie zwei Aufgaben zur Bereitstellung der Artefakte und der Vorlage verwenden.
 
 Die folgende YAML zeigt die [Aufgabe für den Azure-Dateikopiervorgang](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
 
@@ -176,33 +176,43 @@ storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-Die folgende YAML zeigt die [Bereitstellungsaufgabe für die Azure-Ressourcengruppe](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops):
+Der folgende YAML-Code zeigt die [Aufgabe für die Azure Resource Manager-Vorlagenbereitstellung](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md):
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
   displayName: 'Deploy template'
   inputs:
-    azureSubscription: 'demo-deploy-sp'
+    deploymentScope: 'Resource Group'
+    ConnectedServiceName: 'demo-deploy-sp'
+    subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+    action: 'Create Or Update Resource Group'
     resourceGroupName: 'demogroup'
-    location: 'centralus'
+    location: 'Central US'
     templateLocation: 'URL of the file'
     csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
     csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    deploymentMode: 'Incremental'
 ```
 
-Diese Aufgabe umfasst mehrere Teile, die Sie für Ihre Umgebung überarbeiten müssen. Geben Sie für `azureSubscription` den Namen der von Ihnen erstellten Dienstverbindung an.
+Diese Aufgabe umfasst mehrere Teile, die Sie für Ihre Umgebung überarbeiten müssen.
 
-```yaml
-azureSubscription: '<your-connection-name>'
-```
+- `deploymentScope`: Wählen Sie mithilfe der folgenden Optionen den Umfang der Bereitstellung aus: `Management Group`, `Subscription` und `Resource Group`. Verwenden Sie in dieser exemplarischen Vorgehensweise die Option **Resource Group** (Ressourcengruppe). Weitere Informationen zum Umfang finden Sie unter [Bereitstellungsumfang](./resource-group-template-deploy-rest.md#deployment-scope).
 
-Geben Sie für `resourceGroupName` und `location` den Namen und den Speicherort der Ressourcengruppe an, für die die Bereitstellung ausgeführt werden soll. Diese Aufgabe erstellt die Ressourcengruppe, wenn diese noch nicht vorhanden ist.
+- `ConnectedServiceName`: Geben Sie den Namen der von Ihnen erstellten Dienstverbindung an.
 
-```yaml
-resourceGroupName: '<resource-group-name>'
-location: '<location>'
-```
+    ```yaml
+    ConnectedServiceName: '<your-connection-name>'
+    ```
+
+- `subscriptionName`: Geben Sie die Zielabonnement-ID an. Diese Eigenschaft gilt nur für den Bereitstellungsumfang „Ressourcengruppe“ und „Abonnement“.
+
+- `resourceGroupName` und `location`: Geben Sie den Namen und den Standort der Ressourcengruppe an, in der die Bereitstellung erfolgen soll. Diese Aufgabe erstellt die Ressourcengruppe, wenn diese noch nicht vorhanden ist.
+
+    ```yaml
+    resourceGroupName: '<resource-group-name>'
+    location: '<location>'
+    ```
 
 Die Bereitstellungsaufgabe verknüpft sich mit einer Vorlage namens `WebSite.json` und einer Parameterdatei namens „WebSite.parameters.json“. Verwenden Sie die Namen Ihre Vorlage und Ihrer Parameterdateien.
 
@@ -226,16 +236,20 @@ Sie wissen jetzt, wie Sie Aufgaben erstellen. Schauen wir uns jetzt die Schritte
        outputStorageUri: 'artifactsLocation'
        outputStorageContainerSasToken: 'artifactsLocationSasToken'
        sasTokenTimeOutInMinutes: '240'
-   - task: AzureResourceGroupDeployment@2
-     displayName: 'Deploy template'
-     inputs:
-       azureSubscription: 'demo-deploy-sp'
-       resourceGroupName: demogroup
-       location: 'centralus'
-       templateLocation: 'URL of the file'
-       csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
-       csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
-       overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Deploy template'
+      inputs:
+        deploymentScope: 'Resource Group'
+        ConnectedServiceName: 'demo-deploy-sp'
+        subscriptionName: '01234567-89AB-CDEF-0123-4567890ABCDEF'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'demogroup'
+        location: 'Central US'
+        templateLocation: 'URL of the file'
+        csmFileLink: '$(artifactsLocation)WebSite.json$(artifactsLocationSasToken)'
+        csmParametersFileLink: '$(artifactsLocation)WebSite.parameters.json$(artifactsLocationSasToken)'
+        overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
+        deploymentMode: 'Incremental'
    ```
 
 1. Wählen Sie **Speichern** aus.

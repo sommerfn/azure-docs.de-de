@@ -1,13 +1,13 @@
 ---
-title: Referenz zu OData-Geofunktionen – Azure Search
-description: Für Azure Search-Abfragen sind die OData-Geofunktionen „geo.distance“ und „geo.intersects“ verfügbar.
-ms.date: 09/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: Referenz zu OData-Geofunktionen
+titleSuffix: Azure Cognitive Search
+description: Für Azure Cognitive Search-Abfragen sind die OData-Geofunktionen „geo.distance“ und „geo.intersects“ verfügbar.
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,21 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 09034423e16c652cf6994b38f8d92574abc0ce55
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003459"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793340"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>OData-Geofunktionen in Azure Search – `geo.distance` und `geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData-Geofunktionen in Azure Cognitive Search – `geo.distance` und `geo.intersects`
 
-Azure Search unterstützt Geoabfragen in [OData-Filterausdrücken](query-odata-filter-orderby-syntax.md) über die Funktionen `geo.distance` und `geo.intersects`. Die Funktion `geo.distance` gibt die Entfernung zwischen zwei Punkten in Kilometern zurück, wobei es sich bei einem Punkt um ein Feld oder eine Bereichsvariable und bei dem anderen Punkt um eine Konstante handelt, die als Teil des Filters übergeben wird. Die Funktion `geo.intersects` gibt `true` zurück, wenn ein bestimmter Punkt innerhalb eines bestimmten Polygons liegt. Der Punkt ist hierbei ein Feld oder eine Bereichsvariable, und das Polygon wird als Konstante als Teil des Filters übergeben.
+Azure Cognitive Search unterstützt Geoabfragen in [OData-Filterausdrücken](query-odata-filter-orderby-syntax.md) über die Funktionen `geo.distance` und `geo.intersects`. Die Funktion `geo.distance` gibt die Entfernung zwischen zwei Punkten in Kilometern zurück, wobei es sich bei einem Punkt um ein Feld oder eine Bereichsvariable und bei dem anderen Punkt um eine Konstante handelt, die als Teil des Filters übergeben wird. Die Funktion `geo.intersects` gibt `true` zurück, wenn ein bestimmter Punkt innerhalb eines bestimmten Polygons liegt. Der Punkt ist hierbei ein Feld oder eine Bereichsvariable, und das Polygon wird als Konstante als Teil des Filters übergeben.
 
 Die Funktion `geo.distance` kann auch im [Parameter **$orderby**](search-query-odata-orderby.md) verwendet werden, um Suchergebnisse nach der Entfernung von einem bestimmten Punkt zu sortieren. Die Syntax für `geo.distance` in **$orderby** entspricht der Syntax in **$filter**. Bei Verwendung von `geo.distance` in **$orderby** muss das Feld, für das die Funktion gilt, vom Typ `Edm.GeographyPoint` und zudem **sortierbar** sein.
 
 > [!NOTE]
-> Wenn Sie `geo.distance` im **$orderby**-Parameter verwenden, darf das Feld, das Sie an die Funktion übergeben, nur einen einzigen geografischen Punkt enthalten. Anders ausgedrückt, es muss vom Typ `Edm.GeographyPoint` und nicht `Collection(Edm.GeographyPoint)` sein. Es ist nicht möglich, in Azure Search nach Sammlungsfeldern zu sortieren.
+> Wenn Sie `geo.distance` im **$orderby**-Parameter verwenden, darf das Feld, das Sie an die Funktion übergeben, nur einen einzigen geografischen Punkt enthalten. Anders ausgedrückt, es muss vom Typ `Edm.GeographyPoint` und nicht `Collection(Edm.GeographyPoint)` sein. In Azure Cognitive Search kann nicht nach Sammlungsfeldern sortiert werden.
 
 ## <a name="syntax"></a>Syntax
 
@@ -64,10 +64,10 @@ lon_lat_list ::= lon_lat(',' lon_lat)*
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 ### <a name="geodistance"></a>geo.distance
 
@@ -90,11 +90,11 @@ Das Polygon ist eine zweidimensionale Fläche und wird als eine Reihe von Punkte
 
 Bei vielen Bibliotheken für Geoabfragen ist die Erstellung einer Abfrage, die den 180. Längengrad (nahe der Datumsgrenze) umfasst, entweder nicht oder nur mithilfe einer Problemumgehung möglich, z. B. durch Aufteilung des Polygons in zwei Teile auf jeweils einer Seite des Längengrads.
 
-In Azure Search funktionieren Geoabfragen mit dem 180. Längengrad wie erwartet, wenn die Form der Abfrage rechteckig ist und die Koordinaten von Längen- und Breitengrad an einem Rasterlayout ausgerichtet sind (z. B. `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). Erwägen Sie andernfalls für nicht rechteckige oder nicht ausgerichtete Formen die Aufteilung des Polygons.  
+In Azure Cognitive Search funktionieren Geoabfragen mit dem 180. Längengrad wie erwartet, wenn die Form der Abfrage rechteckig ist und die Koordinaten von Längen- und Breitengrad an einem Rasterlayout ausgerichtet sind (z. B. `geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`). Erwägen Sie andernfalls für nicht rechteckige oder nicht ausgerichtete Formen die Aufteilung des Polygons.  
 
 ### <a name="geo-spatial-functions-and-null"></a>Geofunktionen und `null`
 
-Wie alle anderen Nicht-Sammlungsfelder in Azure Search können Felder vom Typ `Edm.GeographyPoint` auch `null`-Werte enthalten. Wenn Azure Search `geo.intersects` für ein Feld auswertet, dessen Wert `null` lautet, ist das Ergebnis immer `false`. Das Verhalten von `geo.distance` hängt in diesem Fall vom Kontext ab:
+Wie alle anderen Nicht-Sammlungsfelder in Azure Cognitive Search können Felder vom Typ `Edm.GeographyPoint` Werte vom Typ `null` enthalten. Wenn Azure Cognitive Search `geo.intersects` für ein Feld auswertet, dessen Wert `null` lautet, ist das Ergebnis immer `false`. Das Verhalten von `geo.distance` hängt in diesem Fall vom Kontext ab:
 
 - In Filtern resultiert die `geo.distance` eines Felds mit dem Wert `null` in `null`. Dies bedeutet, dass das Dokument nicht übereinstimmt, weil `null` im Vergleich zu jedem Wert ungleich NULL zu `false` ausgewertet wird.
 - Beim Sortieren von Ergebnissen mit **$orderby** ergibt die `geo.distance` eines Felds mit dem Wert `null` die größtmögliche Entfernung. Dokumente mit einem solchen Feld werden bei Verwendung der Sortierrichtung `asc` (Standardeinstellung) niedriger als alle anderen und bei Verwendung der Sortierrichtung `desc` höher als alle anderen sortiert.
@@ -123,7 +123,7 @@ Sortieren von Hotels in absteigender Reihenfolge nach `search.score` und `rating
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in Azure Search](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Filter in Azure Cognitive Search](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

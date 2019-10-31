@@ -1,19 +1,18 @@
 ---
 title: Integrieren des allgemeinen Warnungsschemas mit Logic Apps
 description: Erfahren Sie, wie Sie eine Logik-App erstellen, die das allgemeine Warnungsschema nutzt, um all Ihre Warnungen zu verarbeiten.
-author: ananthradhakrishnan
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 569b97ecc24306741c3323ce5bc526f88645c1dd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: ananthradhakrishnan
+ms.author: robb
+ms.date: 05/27/2019
+ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702947"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555649"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Integrieren des allgemeinen Warnungsschemas mit Logic Apps
 
@@ -41,7 +40,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
 1.  Wählen Sie **Bearbeiten** aus, um den HTTP-Anforderungstrigger zu ändern.
 
-    ![HTTP-Anforderungstrigger ](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-Anforderungstrigger ")
+    ![HTTP-Anforderungstrigger](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-Anforderungstrigger")
 
 
 1.  Kopieren Sie das folgende Schema, und fügen Sie es ein:
@@ -115,11 +114,11 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
 1. Wählen Sie **+** **Neuer Schritt** und anschließend **Aktion hinzufügen** aus.
 
-    ![Aktion hinzufügen](media/action-groups-logic-app/add-action.png "Aktion hinzufügen")
+    ![Hinzufügen einer Aktion](media/action-groups-logic-app/add-action.png "Hinzufügen einer Aktion")
 
 1. In dieser Phase können Sie basierend auf Ihren spezifischen Geschäftsanforderungen eine Vielzahl von Connectors hinzufügen (Microsoft Teams, Slack, Salesforce usw.). Sie können die Felder in „Essentials“ ohne weitere Konfiguration verwenden. 
 
-    ![Essentials-Felder](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Essentials-Felder")
+    ![Wichtige Felder](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Wichtige Felder")
     
     Alternativ dazu können Sie mit der Option „Ausdruck“ eine Bedingungslogik basierend auf dem Warnungstyp erstellen.
 

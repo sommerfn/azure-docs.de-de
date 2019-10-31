@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/22/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4a9cf134a3db5b9bc62cd0f9054aefa6092954d9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 09d2a637099bae414400f49bb89efc5b6652f150
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129546"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692821"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Verstärkte Entscheidungsstruktur mit mehreren Klassen
 
@@ -31,7 +31,7 @@ Dieses Modul erstellt ein untrainiertes Klassifizierungsmodell. Da es sich bei d
 
 Diese Art von Modell kann mithilfe von [Modell trainieren](././train-model.md) trainiert werden. 
 
-1.  Fügen Sie Ihrem Experiment das Modul **Multiclass Boosted Decision Tree** (Verstärkte Entscheidungsstruktur mit mehreren Klassen) hinzu.
+1.  Fügen Sie Ihrer Pipeline das Modul **Multiclass Boosted Decision Tree** (Verstärkte Entscheidungsstruktur mit mehreren Klassen) hinzu.
 
 1.  Geben Sie mit der Option **Create trainer mode** (Trainermodus erstellen) an, wie das Modell trainiert werden soll.
 

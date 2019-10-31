@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b7d041b678ccf2a476afc6d0744f6971349677e
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 0b2f89a846747eaf78c60077372b48802506731e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034880"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553368"
 ---
 # <a name="data-querying"></a>Datenabfragen
 
@@ -25,7 +25,7 @@ Drei primäre API-Kategorien sind in Time Series Insights verfügbar:
 
 * **Umgebungs-APIs**: Ermöglichen Abfragen der Time Series Insights-Umgebung selbst. Beispiele für Abfragen sind die Liste der Umgebungen, auf die der Aufrufer Zugriff hat, sowie Umgebungsmetadaten.
 
-* **Zeitreihenmodellabfrage (TSM-Q)-APIs**: Ermöglicht das Erstellen, Lesen, Aktualisieren und Löschen von Vorgängen mit Metadaten, die im Umgebungsteil des Zeitreihenmodells gespeichert sind. Beispiele sind Instanzen, Typen und Hierarchien.
+* **Zeitreihenmodellabfrage (TSM-Q)-APIs**: Ermöglicht das Erstellen, Lesen, Aktualisieren und Löschen (CRUD) von Vorgängen mit Metadaten, die im Umgebungsteil des Zeitreihenmodells gespeichert sind. Beispiele sind Instanzen, Typen und Hierarchien.
 
 * **Zeitreihenabfrage (TSQ)-APIs**: Ermöglichen das Abrufen von Ereignisdaten, während sie vom Quellenanbieter aufgezeichnet werden. Diese APIs können Vorgänge zum Transformieren und Kombinieren sowie Berechnungen mit Zeitreihendaten ausführen.
 

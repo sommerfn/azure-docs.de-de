@@ -1,49 +1,55 @@
 ---
 title: Übersicht über die Runtimeversionen von Azure Functions
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen Sie die Unterschiede kennen, und erfahren Sie, wie Sie die Version auswählen, die sich am besten für Ihre Anforderungen eignet.
-services: functions
-documentationcenter: ''
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 10/10/2019
 ms.author: glenga
-ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036269"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597376"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
- Es gibt zwei Hauptversionen der Azure Functions-Runtime: 1.x und 2.x. Die aktuelle Version, in der neue Funktionen eingeführt und Verbesserungen vorgenommen werden, ist 2.x. Es werden jedoch beide Versionen für Produktionsszenarien unterstützt.  Im Folgenden werden einige der Unterschiede zwischen den beiden Versionen erläutert. Zudem wird beschrieben, wie Sie Apps in beiden Versionen erstellen und von 1.x auf 2.x aktualisieren.
+Die Hauptversionen der Azure Functions-Runtime sind mit der Version von .NET verknüpft, auf der die Runtime basiert. In der folgenden Tabelle sind die aktuelle Version der Runtime, die Releaseebene und die zugehörige .NET-Version angegeben. 
 
-> [!NOTE]
-> Dieser Artikel bezieht sich auf den Clouddienst Azure Functions. Informationen zum Vorschauprodukt, mit dem Sie Azure Functions lokal ausführen können, finden Sie in der [Übersicht über die Azure Functions-Runtime](functions-runtime-overview.md).
+| Laufzeitversion | Releaseebene<sup>1</sup> | .NET-Version | 
+| --------------- | ------------- | ------------ |
+| 3.x  | preview | .NET Core 3.x | 
+| 2.x | Allgemein verfügbar | .NET Core 2.2 |
+| 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
 
-## <a name="cross-platform-development"></a>Plattformübergreifende Entwicklung
+<sup>1</sup>GA-Releases werden für Produktionsszenarien unterstützt.   
+<sup>2</sup>Version 1.x befindet sich im Wartungsmodus. Erweiterungen werden nur in höheren Versionen bereitgestellt.   
+<sup>3</sup>Unterstützt nur die Entwicklung im Azure-Portal oder lokal auf Windows-Computern.
 
-Die Runtime in Version 2.x wird auf .NET Core 2 ausgeführt, kann also auf allen Plattformen ausgeführt werden, die von .NET Core unterstützt werden, einschließlich macOS und Linux. Die Ausführung auf .NET Core ermöglicht plattformübergreifende Entwicklungs- und Hostingszenarien.
+>[!NOTE]  
+> Version 3. x der Functions-Runtime befindet sich in der Vorschauphase und wird für Produktionsumgebungen nicht unterstützt. Weitere Informationen zum Testen von Version 3.x finden Sie in [dieser Ankündigung](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm).
 
-Im Vergleich dazu unterstützt die Runtimeversion 1.x nur das Entwickeln und Hosten im Azure-Portal oder auf Windows-Computern.
+In diesem Artikel werden einige Unterschiede zwischen den verschiedenen Versionen, das Erstellen der einzelnen Versionen und das Ändern von Versionen erläutert.
 
 ## <a name="languages"></a>Languages
 
-Die Runtimeversion 2.x verwendet ein neues Modell für die Erweiterbarkeit von Sprachen. In Version 2.x müssen alle Funktionen in einer Funktions-App die gleiche Sprache verwenden. Die Sprache von Funktionen in einer Funktions-App wird beim Erstellen der App ausgewählt.
+Ab Version 2.x verwendet die Runtime ein Modell für die Erweiterbarkeit von Sprachen, und alle Funktionen in einer Funktions-App müssen dieselbe Sprache aufweisen. Die Sprache der Funktionen in einer Funktions-App wird beim Erstellen der App ausgewählt und in der Einstellung [FUNCTIONS\_WORKER\_RUNTIME](functions-app-settings.md#functions_worker_runtime) beibehalten. 
 
-Experimentelle Sprachen von Azure Functions 1.x werden nicht auf die Verwendung des neuen Modells aktualisiert und werden daher in 2.x nicht unterstützt. Die folgende Tabelle zeigt, welche Programmiersprachen derzeit in den einzelnen Runtimeversionen unterstützt werden.
+Experimentelle Sprachen von Azure Functions 1.x verwenden das neue Modell nicht und werden daher in 2.x nicht unterstützt. Die folgende Tabelle zeigt, welche Programmiersprachen derzeit in den einzelnen Runtimeversionen unterstützt werden.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 Weitere Informationen finden Sie unter [Unterstützte Sprachen](supported-languages.md).
 
-## <a name="creating-1x-apps"></a>Ausführung in Version 1.x
+## <a name="creating-1x-apps"></a>Ausführen auf einer spezifischen Version
 
-Im Azure-Portal erstellte Funktions-Apps sind standardmäßig auf Version 2.x festgelegt. Verwenden Sie diese Runtimeversion nach Möglichkeit, da sie auch in Zukunft um neue Features erweitert wird. Bei Bedarf können Sie eine Funktions-App auch weiterhin in der Runtimeversion 1.x ausführen. Sie können die Runtimeversion nur ändern, nachdem Sie die Funktions-App erstellt haben, aber bevor Sie Funktionen hinzufügen. Informationen dazu, wie Sie die Runtimeversion auf 1.x festlegen, finden Sie unter [Anzeigen und Aktualisieren der aktuellen Runtimeversion](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Im Azure-Portal und durch die Azure CLI erstellte Funktions-Apps sind standardmäßig auf Version 2.x festgelegt. Nach Möglichkeit sollte diese Runtimeversion verwendet werden. Bei Bedarf können Sie eine Funktions-App auch weiterhin in der Runtimeversion 1.x ausführen. Sie können die Runtimeversion nur ändern, nachdem Sie die Funktions-App erstellt haben, aber bevor Sie Funktionen hinzufügen. Informationen dazu, wie Sie die Runtimeversion auf 1.x festlegen, finden Sie unter [Anzeigen und Aktualisieren der aktuellen Runtimeversion](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-## <a name="migrating-from-1x-to-2x"></a>Migrieren von 1.x zu 2.x
+Sie können auch ein Upgrade auf Version 3.x der Runtime durchführen, die sich in der Vorschauphase befindet. Dies empfiehlt sich, wenn Sie Ihre Funktionen unter .NET Core 3.x ausführen möchten. Informationen dazu, wie Sie ein Upgrade auf 3.x durchführen, finden Sie unter [Anzeigen und Aktualisieren der aktuellen Runtimeversion](set-runtime-version.md#view-and-update-the-current-runtime-version).
+
+## <a name="migrating-from-1x-to-later-versions"></a>Migrieren von 1.x zu neueren Versionen
 
 Sie können eine vorhandene App, die für die Runtimeversion 1.x geschrieben wurde, zur Version 2.x migrieren. Die meisten Änderungen, die Sie vornehmen müssen, betreffen die Sprachruntime, z.B. die Unterschiede in der C#-API zwischen .NET Framework 4.7 und .NET Core 2. Sie müssen auch sicherstellen, dass Ihr Code und Ihre Bibliotheken mit den ausgewählten Sprachruntimes kompatibel sind. Beachten Sie nicht zuletzt auch die unten genannten Änderungen an Triggern, Bindungen und Funktionen. Um ein optimales Migrationsergebnis zu erzielen, sollten Sie eine neue Funktions-App für Version 2.x erstellen und Ihren vorhandenen Funktionscode für Version 1.x in die neue App portieren.  
 
@@ -113,7 +119,7 @@ Welche Version der Functions-Runtime von veröffentlichten Apps in Azure verwend
 
 ## <a name="bindings"></a>Bindungen
 
-Die Runtimeversion 2.x verwendet ein neues [Modell für die Erweiterbarkeit von Bindungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview), das folgende Vorteile bietet:
+Ab Version 2.x verwendet die Runtime ein neues [Modell für die Erweiterbarkeit von Bindungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview), das folgende Vorteile bietet:
 
 * Unterstützung für Bindungserweiterungen von Drittanbietern.
 

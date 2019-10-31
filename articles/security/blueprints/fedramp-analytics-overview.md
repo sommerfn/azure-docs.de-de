@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
 ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71257589"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure-Blaupause für Sicherheit und Compliance: Analyse für FedRAMP
@@ -41,7 +41,7 @@ Aus Sicherheitsgründen verwaltet diese Architektur Ressourcen über Azure Activ
 
 Azure SQL-Datenbank wird in der Regel über SQL Server Management Studio (SSMS) verwaltet. SSMS wird über einen lokalen Computer ausgeführt, der für den Zugriff auf Azure SQL-Datenbank über eine sichere VPN- oder ExpressRoute-Verbindung konfiguriert ist. **Azure empfiehlt das Konfigurieren einer VPN- oder Azure ExpressRoute-Verbindung für die Verwaltung und den Datenimport in die Ressourcengruppe der Referenzarchitektur.**
 
-![Analyse für ein FedRAMP-Referenzarchitekturdiagramm](images/fedramp-analytics-reference-architecture.png?raw=true "Analytics for FedRAMP reference architecture diagram")
+![Analysen für FedRAMP: Diagramm der Referenzarchitektur](images/fedramp-analytics-reference-architecture.png?raw=true "Analysen für FedRAMP: Diagramm der Referenzarchitektur")
 
 ### <a name="roles"></a>Rollen
 Die Analytics-Vorlage umfasst ein Szenario mit drei allgemeinen Benutzertypen: der betriebliche Benutzer, der SQL- bzw. Datenadministrator und der Systemtechniker. Mithilfe der rollenbasierten Zugriffssteuerung von Azure kann ein genaues Zugriffsmanagement über integrierte benutzerdefinierte Rollen implementiert werden. Ressourcen sind zum Konfigurieren der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/role-assignments-portal.md) und zum Gliedern und Implementieren von [vordefinierten Rollen](../../role-based-access-control/built-in-roles.md) verfügbar.
@@ -71,7 +71,7 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung beschrieben.
 
-![alt text](images/fedramp-analytics-components.png?raw=true "Analyse für ein FedRAMP-Komponentendiagramm")
+![Alternativer Text](images/fedramp-analytics-components.png?raw=true "Analysen für FedRAMP: Komponentendiagramm")
 
 **Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) stellt eine Lösung zum Ausführen kleinerer Codeelemente in der Cloud über einen Großteil der Programmiersprachen dar. Die Funktionen dieser Lösung können in Azure Storage integriert werden, sodass Kundendaten automatisch in die Cloud übertragen werden. Dadurch wird die Integration in andere Azure-Dienste erleichtert. Die Funktionen können einfach skaliert werden und verursachen nur Kosten, wenn sie ausgeführt werden.
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 0f24b9c6ce2aeb318040b61c29d7e14c01886c46
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70073309"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Benutzerprofilvorlagen in Azure API Management
@@ -41,7 +41,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="Profile"></a> Profil  
  Mit der Vorlage **Profil** können Sie den Benutzerprofilabschnitt der Benutzerprofilseite im Entwicklerportal anpassen.  
   
- ![Benutzerprofilseite](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM-Benutzerprofilseite")  
+ ![Seite für Benutzerprofil](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM: Seite für Benutzerprofil")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -186,7 +186,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="Subscriptions"></a> Abonnements  
  Mit der Vorlage **Abonnements** können Sie den Abonnementsabschnitt der Benutzerprofilseite im Entwicklerportal anpassen.  
   
- ![Seite mit Benutzerabonnements](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM-Seite mit Benutzerabonnements")  
+ ![Seite für Benutzerabonnement](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM: Seite für Benutzerabonnement")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -407,7 +407,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="Applications"></a> Anwendungen  
  Mit der Vorlage **Anwendungen** können Sie den Abonnementsabschnitt der Benutzerprofilseite im Entwicklerportal anpassen.  
   
- ![Seite mit Anwendungen des Benutzerkontos](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM-Seite mit Anwendungen des Benutzerkontos")  
+ ![Seite mit Anwendungen des Benutzerkontos](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM: Seite mit Anwendungen des Benutzerkontos")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -570,7 +570,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="UpdateAccountInfo"></a> Kontoinformationen aktualisieren  
  Die Vorlage **Kontoinformationen aktualisieren** ermöglicht Ihnen die Seite **Kontoinformationen aktualisieren** im Entwicklerportal anzupassen.  
   
- ![Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM-Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal")  
+ ![Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM: Vorlagen für die Seite mit Informationen zum Benutzerkonto im Entwicklerportal")  
   
 ### <a name="default-template"></a>Standardvorlage  
   

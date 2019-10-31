@@ -1,7 +1,7 @@
 ---
 title: 'Importieren aus Web-URL über HTTP: Modulreferenz'
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul zum Importieren aus einer Web-URL über HTTP in Azure Machine Learning Service verwenden können, um Daten auf einer öffentlichen Webseite für die Verwendung in einem Experiment zum maschinellen Lernen zu lesen.
+description: Hier erfahren Sie, wie Sie das Modul zum Importieren aus einer Web-URL über HTTP in Azure Machine Learning Service verwenden, um Daten einer öffentlichen Webseite für die Verwendung in einer Machine Learning-Pipeline zu lesen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: e2521dabdab8e9365019f35514f2d8d235c9c014
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128750"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693123"
 ---
 # <a name="import-from-web-url-via-http-module"></a>Importieren aus Web-URL über das HTTP-Modul
 
 In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
 
-Verwenden Sie dieses Modul zum Lesen von Daten auf einer öffentlichen Webseite zur Verwendung in einem Experiment für maschinelles Lernen.
+Verwenden Sie dieses Modul, um Daten einer öffentlichen Webseite für die Verwendung in einer Machine Learning-Pipeline zu lesen.
 
 Die folgenden Einschränkungen gelten für Daten, die auf einer Webseite veröffentlicht sind:
 
@@ -31,7 +31,7 @@ Zum Abrufen von Daten gibt es zwei Möglichkeiten: die Verwendung des Assistente
 
 ## <a name="use-the-data-import-wizard"></a>Verwenden des Assistenten zum Importieren von Daten
 
-1. Fügen Sie das Modul **Daten importieren** zu Ihrem Experiment hinzu. Sie finden das Modul in der Kategorie **Dateneingabe und -ausgabe** der Benutzeroberfläche.
+1. Fügen Sie Ihrer Pipeline das Modul **Import Data** (Daten importieren) hinzu. Sie finden das Modul in der Kategorie **Dateneingabe und -ausgabe** der Benutzeroberfläche.
 
 2. Klicken Sie auf **Launch Import Data Wizard** (Datenimport-Assistenten starten), und wählen Sie „Web URL via HTTP“ aus.
 
@@ -45,7 +45,7 @@ Starten Sie den Assistenten erneut, um eine vorhandene Datenverbindung zu bearbe
 
 Die folgenden Schritte beschreiben, wie Sie die Importquelle manuell konfigurieren.
 
-1. Fügen Sie das Modul [Daten importieren](import-data.md) zu Ihrem Experiment hinzu. Sie finden das Modul in der Kategorie **Dateneingabe und -ausgabe** der Benutzeroberfläche.
+1. Fügen Sie Ihrer Pipeline das Modul [Import Data](import-data.md) (Daten importieren) hinzu. Sie finden das Modul in der Kategorie **Dateneingabe und -ausgabe** der Benutzeroberfläche.
 
 2. Wählen Sie als **Datenquelle** die Option **Web URL via HTTP** aus.
 
@@ -63,13 +63,13 @@ Die folgenden Schritte beschreiben, wie Sie die Importquelle manuell konfigurier
 
 5. Wenn die Daten im CSV- oder TSV-Format vorliegen, verwenden Sie die Option **Die Datei enthält eine Kopfzeile**, um anzugeben, ob die Quelldaten eine Kopfzeile enthalten oder nicht. Die Kopfzeile dient der Vergabe von Spaltennamen.
 
-6. Wählen Sie die Optionen zum **Verwenden zwischengespeicherter Ergebnisse** , wenn Sie nicht erwarten, dass sich die Daten stark ändern, oder wenn Sie vermeiden möchten, dass die Daten bei jeder Durchführung des Experiments neu geladen werden.
+6. Aktivieren Sie die Option **Use cached results** (Zwischengespeicherte Ergebnisse verwenden), wenn Sie nicht erwarten, dass sich die Daten stark ändern, oder wenn Sie vermeiden möchten, dass die Daten bei jeder Ausführung der Pipeline neu geladen werden.
 
-    Wenn diese Option ausgewählt ist, lädt das Experiment die Daten bei der ersten Ausführung des Moduls und verwendet danach eine zwischengespeicherte Version des Datasets.
+    Wenn diese Option ausgewählt ist, lädt die Pipeline die Daten bei der ersten Ausführung des Moduls und verwendet danach eine zwischengespeicherte Version des Datasets.
 
-    Wenn Sie das Dataset bei jeder Iteration des Experimentdatasets neu laden möchten, deaktivieren Sie die Option zum **Verwenden zwischengespeicherter Ergebnisse**. Ergebnisse werden auch erneut geladen, wenn Änderungen an den Parametern von [Importdaten](import-data.md) erfolgt sind.
+    Wenn das Dataset bei jeder Iteration des Pipelinedatasets neu geladen werden soll, deaktivieren Sie die Option **Use cached results** (Zwischengespeicherte Ergebnisse verwenden). Ergebnisse werden auch erneut geladen, wenn Änderungen an den Parametern von [Importdaten](import-data.md) erfolgt sind.
 
-7. Führen Sie das Experiment aus.
+7. Ausführen der Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 

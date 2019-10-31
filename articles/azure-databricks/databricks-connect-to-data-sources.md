@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: c77d1d1a66d3ee92f5ad3f2016d2160831fa3ad9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9b44db3e8ffc02d211f7f97404f0cdd8d319fe03
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299312"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597486"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Verbinden mit Datenquellen aus Azure Databricks
 
@@ -31,9 +31,9 @@ Die folgende Liste enthält die Datenquellen in Azure, die Sie mit Azure Databri
 - [Azure SQL-Datenbank](https://docs.azuredatabricks.net/spark/latest/data-sources/sql-databases.html)
 
     Dieser Link bietet die DataFrame-API für die Verbindung mit SQL-Datenbanken über JDBC und Informationen dazu, wie die Parallelität von Lesezugriffen über die JDBC-Schnittstelle gesteuert wird. Dieses Thema enthält detaillierte Beispiele unter Verwendung der Scala-API, mit abgekürzten Python- und Spark-SQL-Beispielen am Ende.
-- [Azure Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)
+- [Azure Data Lake-Speicher](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)
 
-    Dieser Link enthält Beispiele für die Verwendung des Azure Active Directory-Dienstprinzipals zur Authentifizierung bei Data Lake Store. Es enthält auch Anweisungen, wie aus Azure Databricks auf die Daten in Data Lake Store zugegriffen werden kann.
+    Unter diesem Link finden Sie Beispiele für die Verwendung des Azure Active Directory-Dienstprinzipals zur Authentifizierung bei Azure Data Lake Storage. Es ist auch eine Anleitung dazu vorhanden, wie aus Azure Databricks auf die Daten in Azure Data Lake Storage zugegriffen werden kann.
 
 - [Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html)
 

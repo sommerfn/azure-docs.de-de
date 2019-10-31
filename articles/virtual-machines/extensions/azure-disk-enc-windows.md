@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 11394f692765cc1df5db0eb5c0dd06425026505d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092646"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597996"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption für Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -28,17 +28,11 @@ Azure Disk Encryption nutzt BitLocker, um auf virtuellen Azure-Computern unter W
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Eine vollständige Liste der Voraussetzungen finden Sie unter [Voraussetzungen für Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Eine vollständige Liste mit den Voraussetzungen finden Sie unter [Azure Disk Encryption für Linux-VMs](../linux/disk-encryption-overview.md). Achten Sie besonders auf die folgenden Abschnitte:
 
-### <a name="operating-system"></a>Betriebssystem
-
-Eine Liste der derzeit unterstützten Windows-Versionen finden Sie unter [Voraussetzungen für Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
-
-### <a name="internet-connectivity"></a>Internetkonnektivität
-
-Für Azure Disk Encryption ist eine Internetverbindung für den Zugriff auf Active Directory, Key Vault, Storage und Paketverwaltungs-Endpunkte erforderlich.  Weitere Informationen zu Netzwerksicherheitseinstellungen finden Sie unter [Voraussetzungen für Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+- [Azure Disk Encryption für Linux-VMs](../windows/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Netzwerkanforderungen](../windows/disk-encryption-overview.md#networking-requirements)
+- [Gruppenrichtlinienanforderungen](../windows/disk-encryption-overview.md#group-policy-requirements)
 
 ## <a name="extension-schemata"></a>Erweiterungsschemas
 

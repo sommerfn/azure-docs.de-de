@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71957805"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595059"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -131,7 +131,7 @@ Ja. Sie haben die Möglichkeit, IP-Adressen von DNS-Servern in den Einstellungen
 Siehe [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Können DNS-Server geändert werden, nachdem das Netzwerk erstellt wurde?
-Ja. Sie können die Liste der DNS-Server für das VNet jederzeit ändern. Wenn Sie die Liste der DNS-Server ändern, müssen Sie jeden virtuellen Computer im VNet neu starten, damit der neue DNS-Server übernommen wird.
+Ja. Sie können die Liste der DNS-Server für das VNet jederzeit ändern. Wenn Sie Ihre DNS-Serverliste ändern, müssen Sie für alle betroffenen VMs im VNET eine Verlängerung der DHCP-Lease durchführen, damit die neuen DNS-Einstellungen wirksam werden. Für VMs, auf denen das Windows-Betriebssystem ausgeführt wird, können Sie hierzu `ipconfig /renew` direkt auf der VM eingeben. Informationen zu anderen Betriebssystemtypen finden Sie in der Dokumentation zur Verlängerung der DHCP-Lease für den jeweiligen Betriebssystemtyp. 
 
 ### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets"></a>Was ist der von Azure bereitgestellte DNS-Dienst, und wie wird er bei VNets verwendet?
 Der von Azure bereitgestellte DNS-Dienst ist ein von Microsoft angebotener mehrinstanzenfähiger DNS-Dienst. In Azure werden Ihre gesamten VMs und Clouddienst-Rolleninstanzen dieses Diensts registriert. Dieser Dienst stellt die Namensauflösung nach dem Hostnamen für virtuelle Computer und Rolleninstanzen, die im gleichen Clouddienst enthalten sind, und nach dem FQDN für virtuelle Computer und Rolleninstanzen im gleichen VNet zur Verfügung. Weitere Informationen zum DNS finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](virtual-networks-name-resolution-for-vms-and-role-instances.md).

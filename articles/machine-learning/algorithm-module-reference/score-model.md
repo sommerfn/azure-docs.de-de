@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 43a398b091b282da6ede06796250cda17117dc18
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f046b41d02ac392d003a9ecd15f25b43e5449cd0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128520"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692671"
 ---
 # <a name="score-model-module"></a>Modul Modell bewerten
 
@@ -24,13 +24,13 @@ Verwenden Sie dieses Modul zum Generieren von Vorhersagen mithilfe eines trainie
 
 ## <a name="how-to-use"></a>Verwendung
 
-1. Fügen Sie das Modul **Bewertungsmodell** Ihrem Experiment hinzu.
+1. Fügen Sie das Modul **Bewertungsmodell** Ihrer Pipeline hinzu.
 
 2. Fügen Sie ein trainiertes Modell und ein Dataset mit neuen Eingabedaten an. 
 
     Die Daten sollten in einem Format vorliegen, dass mit dem Typ des trainierten Modells kompatibel ist, das Sie verwenden. Das Schema des Eingabedatasets sollte auch generell mit dem Schema der zum Trainieren des Modells verwendeten Daten übereinstimmen.
 
-3. Führen Sie das Experiment aus.
+3. Ausführen der Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -48,7 +48,7 @@ Das Ergebnis, oder der vorhergesagte Wert, kann je nach Modell und Eingabedaten 
 
 ## <a name="publish-scores-as-a-web-service"></a>Veröffentlichen eines Modells als Webdienst
 
-Eine häufige Verwendung der Bewertung ist die Rückgabe der Ausgabe als Teil eines Vorhersagewebdiensts. Weitere Informationen finden Sie im Tutorial zum Erstellen eines Webdiensts basierend auf einem Experiment in Azure Machine Learning:
+Eine häufige Verwendung der Bewertung ist die Rückgabe der Ausgabe als Teil eines Vorhersagewebdiensts. Weitere Informationen finden Sie im Tutorial zum Erstellen eines Webdiensts basierend auf einer Pipeline in Azure Machine Learning:
 
 
 ## <a name="next-steps"></a>Nächste Schritte

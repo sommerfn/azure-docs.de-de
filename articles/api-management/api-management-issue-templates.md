@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072266"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Problemvorlagen in Azure API Management
@@ -35,7 +35,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="IssueList"></a> Problemliste  
  Mit der Vorlage für die **Problemliste** können Sie den Text der Problemlistenseite im Entwicklerportal anpassen.  
   
- ![Problemliste, Entwicklerportal](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-Problemliste, Entwicklerportal")  
+ ![Problemliste im Entwicklerportal](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-Problemliste im Entwicklerportal")  
   
 ### <a name="default-template"></a>Standardvorlage  
   

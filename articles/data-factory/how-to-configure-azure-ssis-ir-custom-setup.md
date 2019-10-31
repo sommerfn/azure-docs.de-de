@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 4962070d69af98d0c7b10dc6f931612766529dce
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7b09dcbd474debc08b79599e9e2dfaaca52285a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515706"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754686"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Anpassen des Setups für Azure-SSIS Integration Runtime
 
@@ -63,6 +63,8 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 1. Bereiten Sie Ihr benutzerdefiniertes Setupskript und die zugehörigen Dateien (z. B. BAT-, CMD-, EXE-, DLL-, MSI- oder PS1-Dateien) vor.
 
    1.  Sie benötigen eine Skriptdatei namens `main.cmd`. Sie ist der Einstiegspunkt für Ihr benutzerdefiniertes Setup.
+
+   1.  Sie müssen sicherstellen, dass das Skript im Hintergrund ausgeführt werden kann. Wir empfehlen Ihnen, das Skript zunächst auf dem lokalen Computer zu testen.
 
    1.  Wenn zusätzliche Protokolle von anderen Tools (z. B. `msiexec.exe`) generiert und in den Container hochgeladen werden sollen, geben Sie die vordefinierte Umgebungsvariable `CUSTOM_SETUP_SCRIPT_LOG_DIR` als Protokollordner in Ihren Skripts an (z. B. `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
 

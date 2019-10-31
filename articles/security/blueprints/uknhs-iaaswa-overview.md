@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
 ms.openlocfilehash: 9b0478b3e72a759186d7d18ce6f7a885a1098d4b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71259507"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-uk-nhs"></a>Azure-Blaupause für Sicherheit und Compliance: IaaS-Webanwendung gemäß NHS (Vereinigtes Königreich)
@@ -33,7 +33,7 @@ Für höhere Sicherheit werden alle Ressourcen in dieser Lösung als Ressourceng
 
 Ein Bastionhost für die Verwaltung bietet Administratoren eine sichere Verbindung für den Zugriff auf bereitgestellte Ressourcen. **Microsoft empfiehlt das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und den Datenimport in das Subnetz der Referenzarchitektur.**
 
-![IaaS-Webanwendung für NHS (Vereinigtes Königreich) – Diagramm zur Referenzarchitektur](images/uknhs-iaaswa-architecture.png?raw=true "IaaS-Webanwendung für NHS (Vereinigtes Königreich) – Diagramm zur Referenzarchitektur")
+![IaaS-Webanwendung gemäß NHS (Vereinigtes Königreich): Diagramm zur Referenzarchitektur](images/uknhs-iaaswa-architecture.png?raw=true "IaaS-Webanwendung gemäß NHS (Vereinigtes Königreich): Diagramm zur Referenzarchitektur")
 
 Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungsarchitektur finden Sie im Abschnitt [Bereitstellungsarchitektur](#deployment-architecture).
 
@@ -193,7 +193,7 @@ In dieser Architektur sind die folgenden Azure-[Überwachungslösungen](../../mo
 
 Das Datenflussdiagramm für diese Referenzarchitektur steht zum [Download](https://aka.ms/uknhs-iaaswa-tm) bereit und ist unten angegeben. Dieses Modell kann Kunden dabei helfen, bei Änderungen die potenziellen Risikopunkte in der Systeminfrastruktur zu verstehen.
 
-![IaaS-Webanwendung für das Bedrohungsmodell gemäß NHS (Vereinigtes Königreich)](images/uknhs-iaaswa-threat-model.png?raw=true "IaaS-Webanwendung für das Bedrohungsmodell gemäß NHS (Vereinigtes Königreich)")
+![IaaS-Webanwendung gemäß NHS (Vereinigtes Königreich): Bedrohungsmodell](images/uknhs-iaaswa-threat-model.png?raw=true "IaaS-Webanwendung gemäß NHS (Vereinigtes Königreich): Bedrohungsmodell")
 
 ## <a name="compliance-documentation"></a>Konformitätsdokumentation
 

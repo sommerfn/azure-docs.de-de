@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Azure Monitor-Protokolle: Azure Logic Apps | Microsoft-Dokumentation'
+title: Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten – Azure Logic Apps
 description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten in Azure Log Analytics für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: d4a94e75de34bbafd3bc8f1c1a0d1a6817245e5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d7bb53d24a113ea78b5bac3f9682fbb61ce2de9
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60846511"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680094"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>Erstellen von Nachverfolgungsabfragen für B2B-Nachrichten in Azure Monitor-Protokolle für Azure Logic Apps
 

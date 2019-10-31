@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a8cffe83ec0f2cdfd2e71accfa55966e5dedcd89
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259136"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551965"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -32,6 +32,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Count|Durchschnitt|QPU. Bereich: 0–100 für S1, 0–200 für S2 und 0–400 für S4|ServerResourceType|
 |memory_metric|Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeicher. Bereich: 0–25 GB für S1, 0–50 GB für S2 und 0–100 GB für S4|ServerResourceType|
+|private_bytes_metric|Private Bytes |Byte|Durchschnitt|Die Gesamtmenge an Speicher, die der Analysis Services-Engineprozess und die Mashupcontainerprozesse zugewiesen haben, ohne den mit anderen Prozessen gemeinsam genutzten Speicher.|ServerResourceType|
+|virtual_bytes_metric|Virtuelle Bytes |Byte|Durchschnitt|Die aktuelle Größe des virtuellen Adressraums, den der Analysis Services-Engineprozess und die Mashupcontainerprozesse verwenden.|ServerResourceType|
 |TotalConnectionRequests|Total Connection Requests (Verbindungsanforderungen gesamt)|Count|Durchschnitt|Gesamtanzahl von Verbindungsanforderungen. Dies sind erhaltene Anforderungen.|ServerResourceType|
 |SuccessfullConnectionsPerSec|Erfolgreiche Verbindungen pro Sekunde|Anzahl pro Sekunde|Durchschnitt|Rate der erfolgreichen Verbindungsabschlüsse|ServerResourceType|
 |TotalConnectionFailures|Verbindungsfehler gesamt|Count|Durchschnitt|Gesamtanzahl von fehlerhaften Verbindungsversuchen|ServerResourceType|
@@ -73,6 +75,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |memory_thrashing_metric|Arbeitsspeicherüberlastung|Percent|Durchschnitt|Durchschnittliche Arbeitsspeicherüberlastung.|ServerResourceType|
 |mashup_engine_qpu_metric|M-Engine – QPU|Count|Durchschnitt|QPU-Nutzung durch Mashup-Engine-Prozesse|ServerResourceType|
 |mashup_engine_memory_metric|M-Engine – Arbeitsspeicher|Byte|Durchschnitt|Arbeitsspeichernutzung durch Mashup-Engine-Prozesse|ServerResourceType|
+|mashup_engine_private_bytes_metric|Private Bytes für M-Engine |Byte|Durchschnitt|Die Gesamtmenge an Speicher, die die Mashupcontainerprozesse zugewiesen haben, ohne den mit anderen Prozessen gemeinsam genutzten Speicher.|ServerResourceType|
+|mashup_engine_virtual_bytes_metric|Virtuelle Bytes für M-Engine |Byte|Durchschnitt|Die aktuelle Größe des virtuellen Adressraums, den die Mashupcontainerprozesse verwenden.|ServerResourceType|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
@@ -1433,68 +1437,78 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|cpu_percent|CPU-Prozentsatz|Percent|Durchschnitt|CPU-Prozentsatz|Keine Dimensionen|
-|physical_data_read_percent|E/A-Prozentsatz für Daten|Percent|Durchschnitt|E/A-Prozentsatz für Daten|Keine Dimensionen|
-|log_write_percent|E/A-Prozentsatz für Protokoll|Percent|Durchschnitt|E/A-Prozentsatz für Protokoll. Gilt nicht für Data Warehouses.|Keine Dimensionen|
-|dtu_consumption_percent|DTU-Prozentsatz|Percent|Durchschnitt|DTU-Prozentsatz. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
-|storage|Genutzter Datenspeicherplatz|Byte|Maximum|Datenbankgröße gesamt. Gilt nicht für Data Warehouses.|Keine Dimensionen|
-|connection_successful|Erfolgreiche Verbindungen|Count|Gesamt|Erfolgreiche Verbindungen|Keine Dimensionen|
-|connection_failed|Verbindungsfehler|Count|Gesamt|Verbindungsfehler|Keine Dimensionen|
-|blocked_by_firewall|Von der Firewall blockiert|Count|Gesamt|Von der Firewall blockiert|Keine Dimensionen|
-|deadlock|Deadlocks|Count|Gesamt|Deadlocks. Gilt nicht für Data Warehouses.|Keine Dimensionen|
-|storage_percent|Genutzter Datenspeicherplatz in Prozent|Percent|Maximum|Datenbankgröße als Prozentsatz. Gilt nicht für Data Warehouses oder Hyperscale-Datenbanken.|Keine Dimensionen|
-|xtp_storage_percent|In-Memory-OLTP-Speicher in Prozent|Percent|Durchschnitt|In-Memory-OLTP-Speicher in Prozent. Gilt nicht für Data Warehouses.|Keine Dimensionen|
-|workers_percent|Worker in Prozent|Percent|Durchschnitt|Worker in Prozent. Gilt nicht für Data Warehouses.|Keine Dimensionen|
-|sessions_percent|Sitzungen in Prozent|Percent|Durchschnitt|Sitzungen in Prozent. Gilt nicht für Data Warehouses.|Keine Dimensionen|
-|dtu_limit|DTU-Grenzwert|Count|Durchschnitt|DTU-Grenzwert. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
-|dtu_used|DTU-Verbrauch|Count|Durchschnitt|DTU-Verbrauch. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
-|cpu_limit|CPU-Grenzwert|Count|Durchschnitt|CPU-Grenzwert. Gilt für V-Kern-basierte Datenbanken.|Keine Dimensionen|
-|cpu_used|Verwendete CPU|Count|Durchschnitt|Verwendete CPU. Gilt für V-Kern-basierte Datenbanken.|Keine Dimensionen|
-|dwu_limit|DWU-Grenzwert|Count|Maximum|DWU-Grenzwert. Gilt nur für Data Warehouses.|Keine Dimensionen|
-|dwu_consumption_percent|DWU in Prozent|Percent|Maximum|DWU in Prozent. Gilt nur für Data Warehouses.|Keine Dimensionen|
-|dwu_used|DWU-Verbrauch|Count|Maximum|DWU-Verbrauch. Gilt nur für Data Warehouses.|Keine Dimensionen|
-|dw_cpu_percent|DW-Knotenebene, CPU-Prozentsatz|Percent|Durchschnitt|DW-Knotenebene, CPU-Prozentsatz|DwLogicalNodeId|
-|dw_physical_data_read_percent|DW-Knotenebene, E/A-Prozentsatz für Daten|Percent|Durchschnitt|DW-Knotenebene, E/A-Prozentsatz für Daten|DwLogicalNodeId|
-|cache_hit_percent|Prozentsatz der Cachetreffer|Percent|Maximum|Prozentsatz der Cachetreffer. Gilt nur für Data Warehouses.|Keine Dimensionen|
-|cache_used_percent|Cacheverwendung in Prozent|Percent|Maximum|Cacheverwendung in Prozent. Gilt nur für Data Warehouses.|Keine Dimensionen|
-|local_tempdb_usage_percent|Lokaler tempdb-Prozentsatz|Percent|Durchschnitt|Lokaler tempdb-Prozentsatz. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|allocated_data_storage|Zugeordneter Datenspeicherplatz|Byte|Durchschnitt|Zugeordneter Datenspeicherplatz. Gilt nicht für Data Warehouses.|Keine Dimensionen|
 |app_cpu_billed|Abgerechnete App-CPU|Count|Gesamt|Abgerechnete App-CPU. Gilt für serverlose Datenbanken.|Keine Dimensionen|
 |app_cpu_percent|App-CPU-Prozentsatz|Percent|Durchschnitt|App-CPU-Prozentsatz. Gilt für serverlose Datenbanken.|Keine Dimensionen|
 |app_memory_percent|Verwendeter App-Arbeitsspeicher in Prozent|Percent|Durchschnitt|Verwendeter App-Arbeitsspeicher in Prozent. Gilt für serverlose Datenbanken.|Keine Dimensionen|
-|allocated_data_storage|Zugeordneter Datenspeicherplatz|Byte|Durchschnitt|Zugeordneter Datenspeicherplatz. Gilt nicht für Data Warehouses.|Keine Dimensionen|
+|blocked_by_firewall|Von der Firewall blockiert|Count|Gesamt|Von der Firewall blockiert|Keine Dimensionen|
+|cache_hit_percent|Prozentsatz der Cachetreffer|Percent|Maximum|Prozentsatz der Cachetreffer. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|cache_used_percent|Cacheverwendung in Prozent|Percent|Maximum|Cacheverwendung in Prozent. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|connection_failed|Verbindungsfehler|Count|Gesamt|Verbindungsfehler|Keine Dimensionen|
+|connection_successful|Erfolgreiche Verbindungen|Count|Gesamt|Erfolgreiche Verbindungen|Keine Dimensionen|
+|cpu_percent|CPU-Prozentsatz|Percent|Durchschnitt|CPU-Prozentsatz|Keine Dimensionen|
+|cpu_limit|CPU-Grenzwert|Count|Durchschnitt|CPU-Grenzwert. Gilt für V-Kern-basierte Datenbanken.|Keine Dimensionen|
+|cpu_used|Verwendete CPU|Count|Durchschnitt|Verwendete CPU. Gilt für V-Kern-basierte Datenbanken.|Keine Dimensionen|
+|deadlock|Deadlocks|Count|Gesamt|Deadlocks. Gilt nicht für Data Warehouses.|Keine Dimensionen|
+|dtu_limit|DTU-Grenzwert|Count|Durchschnitt|DTU-Grenzwert. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
+|dtu_consumption_percent|DTU-Prozentsatz|Percent|Durchschnitt|DTU-Prozentsatz. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
+|dtu_used|DTU-Verbrauch|Count|Durchschnitt|DTU-Verbrauch. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
+|dw_cpu_percent|DW-Knotenebene, CPU-Prozentsatz|Percent|Durchschnitt|DW-Knotenebene, CPU-Prozentsatz|DwLogicalNodeId|
+|dw_physical_data_read_percent|DW-Knotenebene, E/A-Prozentsatz für Daten|Percent|Durchschnitt|DW-Knotenebene, E/A-Prozentsatz für Daten|DwLogicalNodeId|
+|dwu_consumption_percent|DWU in Prozent|Percent|Maximum|DWU in Prozent. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|dwu_limit|DWU-Grenzwert|Count|Maximum|DWU-Grenzwert. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|dwu_used|DWU-Verbrauch|Count|Maximum|DWU-Verbrauch. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|local_tempdb_usage_percent|Lokaler tempdb-Prozentsatz|Percent|Durchschnitt|Lokaler tempdb-Prozentsatz. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|log_write_percent|E/A-Prozentsatz für Protokoll|Percent|Durchschnitt|E/A-Prozentsatz für Protokoll. Gilt nicht für Data Warehouses.|Keine Dimensionen|
+|physical_data_read_percent|E/A-Prozentsatz für Daten|Percent|Durchschnitt|E/A-Prozentsatz für Daten|Keine Dimensionen|
+|sessions_percent|Sitzungen in Prozent|Percent|Durchschnitt|Sitzungen in Prozent. Gilt nicht für Data Warehouses.|Keine Dimensionen|
+|sqlserver_process_core_percent|SQL Server-Prozess: Kern (in Prozent)|Percent|Maximum|Diese Metrik ist ein Platzhalter und wird aktuell nicht aufgefüllt.|Keine Dimensionen|
+|sqlserver_process_memory_percent|SQL Server-Prozess: Arbeitsspeicher (in Prozent)|Percent|Maximum|Diese Metrik ist ein Platzhalter und wird aktuell nicht aufgefüllt.|Keine Dimensionen|
+|storage|Genutzter Datenspeicherplatz|Byte|Maximum|Datenbankgröße gesamt. Gilt nicht für Data Warehouses.|Keine Dimensionen|
+|storage_percent|Genutzter Datenspeicherplatz in Prozent|Percent|Maximum|Datenbankgröße als Prozentsatz. Gilt nicht für Data Warehouses oder Hyperscale-Datenbanken.|Keine Dimensionen|
+|tempdb_data_size|Größe der tempdb-Datendatei in Kilobytes|Count|Maximum|Die Größe der tempdb-Datendatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden.|Keine Dimensionen|
+|tempdb_log_size|Größe der tempdb-Protokolldatei in Kilobytes|Count|Maximum|Die Größe der tempdb-Protokolldatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden.|Keine Dimensionen|
+|tempdb_log_used_percent|Nutzung des tempdb-Protokolls in Prozent|Percent|Maximum|Die Nutzung des tempdb-Protokolls in Prozent. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden.|Keine Dimensionen|
+|workers_percent|Worker in Prozent|Percent|Durchschnitt|Worker in Prozent. Gilt nicht für Data Warehouses.|Keine Dimensionen|
+|xtp_storage_percent|In-Memory-OLTP-Speicher in Prozent|Percent|Durchschnitt|In-Memory-OLTP-Speicher in Prozent. Gilt nicht für Data Warehouses.|Keine Dimensionen|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|cpu_percent|CPU-Prozentsatz|Percent|Durchschnitt|CPU-Prozentsatz|Keine Dimensionen|
-|physical_data_read_percent|E/A-Prozentsatz für Daten|Percent|Durchschnitt|E/A-Prozentsatz für Daten|Keine Dimensionen|
-|log_write_percent|E/A-Prozentsatz für Protokoll|Percent|Durchschnitt|E/A-Prozentsatz für Protokoll|Keine Dimensionen|
-|dtu_consumption_percent|DTU-Prozentsatz|Percent|Durchschnitt|DTU-Prozentsatz. Gilt für DTU-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
-|storage_percent|Genutzter Datenspeicherplatz in Prozent||Percent|Durchschnitt|Speicher in Prozent|Keine Dimensionen|
-|workers_percent|Worker in Prozent|Percent|Durchschnitt|Worker in Prozent|Keine Dimensionen|
-|sessions_percent|Sitzungen in Prozent|Percent|Durchschnitt|Sitzungen in Prozent|Keine Dimensionen|
-|eDTU_limit|eDTU-Grenzwert|Count|Durchschnitt|eDTU-Grenzwert. Gilt für DTU-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
-|storage_limit|Maximale Datengröße|Byte|Durchschnitt|Speicherbegrenzung|Keine Dimensionen|
-|eDTU_used|eDTU-Verbrauch|Count|Durchschnitt|eDTU-Verbrauch. Gilt für DTU-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
-|storage_used|Genutzter Datenspeicherplatz|Byte|Durchschnitt|Verwendeter Speicher|Keine Dimensionen|
-|xtp_storage_percent|In-Memory-OLTP-Speicher in Prozent|Percent|Durchschnitt|In-Memory-OLTP-Speicher in Prozent|Keine Dimensionen|
-|cpu_limit|CPU-Grenzwert|Count|Durchschnitt|CPU-Grenzwert. Gilt für V-Kern-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
-|cpu_used|Verwendete CPU|Count|Durchschnitt|Verwendete CPU. Gilt für V-Kern-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
 |allocated_data_storage|Zugeordneter Datenspeicherplatz|Byte|Durchschnitt|Zugeordneter Datenspeicherplatz|Keine Dimensionen|
 |allocated_data_storage_percent|Zugeordneter Datenspeicherplatz in Prozent|Percent|Maximum|Zugeordneter Datenspeicherplatz in Prozent|Keine Dimensionen|
+|cpu_limit|CPU-Grenzwert|Count|Durchschnitt|CPU-Grenzwert. Gilt für V-Kern-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
+|cpu_percent|CPU-Prozentsatz|Percent|Durchschnitt|CPU-Prozentsatz|Keine Dimensionen|
+|cpu_used|Verwendete CPU|Count|Durchschnitt|Verwendete CPU. Gilt für V-Kern-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
+|dtu_consumption_percent|DTU-Prozentsatz|Percent|Durchschnitt|DTU-Prozentsatz. Gilt für DTU-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
+|eDTU_limit|eDTU-Grenzwert|Count|Durchschnitt|eDTU-Grenzwert. Gilt für DTU-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
+|eDTU_used|eDTU-Verbrauch|Count|Durchschnitt|eDTU-Verbrauch. Gilt für DTU-basierte Pools für elastische Datenbanken.|Keine Dimensionen|
+|log_write_percent|E/A-Prozentsatz für Protokoll|Percent|Durchschnitt|E/A-Prozentsatz für Protokoll|Keine Dimensionen|
+|physical_data_read_percent|E/A-Prozentsatz für Daten|Percent|Durchschnitt|E/A-Prozentsatz für Daten|Keine Dimensionen|
+|sessions_percent|Sitzungen in Prozent|Percent|Durchschnitt|Sitzungen in Prozent|Keine Dimensionen|
+|storage_limit|Maximale Datengröße|Byte|Durchschnitt|Speicherbegrenzung|Keine Dimensionen|
+|storage_percent|Genutzter Datenspeicherplatz in Prozent||Percent|Durchschnitt|Speicher in Prozent|Keine Dimensionen|
+|storage_used|Genutzter Datenspeicherplatz|Byte|Durchschnitt|Verwendeter Speicher|Keine Dimensionen|
+|sqlserver_process_core_percent|SQL Server-Prozess: Kern (in Prozent)|Percent|Maximum|Diese Metrik ist ein Platzhalter und wird aktuell nicht aufgefüllt.|Keine Dimensionen|
+|sqlserver_process_memory_percent|SQL Server-Prozess: Arbeitsspeicher (in Prozent)|Percent|Maximum|Diese Metrik ist ein Platzhalter und wird aktuell nicht aufgefüllt.|Keine Dimensionen|
+|tempdb_data_size|Größe der tempdb-Datendatei in Kilobytes|Count|Maximum|Die Größe der tempdb-Datendatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden.|Keine Dimensionen|
+|tempdb_log_size|Größe der tempdb-Protokolldatei in Kilobytes|Count|Maximum|Die Größe der tempdb-Protokolldatei in Kilobytes. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden.|Keine Dimensionen|
+|tempdb_log_used_percent|Nutzung des tempdb-Protokolls in Prozent|Percent|Maximum|Die Nutzung des tempdb-Protokolls in Prozent. Gilt nicht für Data Warehouses. Diese Metrik steht für Datenbanken zur Verfügung, die das vCore-Kaufmodell oder mindestens 100 DTUs (bei DTU-basierten Kaufmodellen) verwenden.|Keine Dimensionen|
+|workers_percent|Worker in Prozent|Percent|Durchschnitt|Worker in Prozent|Keine Dimensionen|
+|xtp_storage_percent|In-Memory-OLTP-Speicher in Prozent|Percent|Durchschnitt|In-Memory-OLTP-Speicher in Prozent|Keine Dimensionen|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |Metrik|Metrikanzeigename|Unit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|
-|virtual_core_count|Anzahl virtueller Kerne|Count|Durchschnitt|Anzahl virtueller Kerne|Keine Dimensionen|
 |avg_cpu_percent|Durchschnittlicher CPU-Prozentsatz|Percent|Durchschnitt|Durchschnittlicher CPU-Prozentsatz|Keine Dimensionen|
+|io_bytes_read|Gelesene E/A-Bytes|Byte|Durchschnitt|Gelesene E/A-Bytes|Keine Dimensionen|
+|io_requests|Anzahl von E/A-Anforderungen|Count|Durchschnitt|Anzahl von E/A-Anforderungen|Keine Dimensionen|
+|io_bytes_written|Geschriebene E/A-Bytes|Byte|Durchschnitt|Geschriebene E/A-Bytes|Keine Dimensionen|
 |reserved_storage_mb|Reservierter Speicherplatz|Count|Durchschnitt|Reservierter Speicherplatz|Keine Dimensionen|
 |storage_space_used_mb|Belegter Speicherplatz|Count|Durchschnitt|Belegter Speicherplatz|Keine Dimensionen|
-|io_requests|Anzahl von E/A-Anforderungen|Count|Durchschnitt|Anzahl von E/A-Anforderungen|Keine Dimensionen|
-|io_bytes_read|Gelesene E/A-Bytes|Byte|Durchschnitt|Gelesene E/A-Bytes|Keine Dimensionen|
-|io_bytes_written|Geschriebene E/A-Bytes|Byte|Durchschnitt|Geschriebene E/A-Bytes|Keine Dimensionen|
+|virtual_core_count|Anzahl virtueller Kerne|Count|Durchschnitt|Anzahl virtueller Kerne|Keine Dimensionen|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

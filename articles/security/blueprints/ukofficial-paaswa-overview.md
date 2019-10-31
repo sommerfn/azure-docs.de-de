@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71262783"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
@@ -45,7 +45,7 @@ Zum Bereitstellen dieser Vorlage benötigen Sie ein Azure-Abonnement. Wenn Sie n
 
 Mit dieser Vorlage wird eine Lösung zum Hosten von Webanwendungen in einer Azure-Cloudumgebung bereitgestellt, die UK OFFICIAL-Workloads unterstützt. Die Architektur stellt eine sichere Umgebung bereit, bei der Azure-Platform-as-a-Service-Funktionen verwendet werden. In der Umgebung sind zwei App Service-Web-Apps vorhanden (eine für öffentliche Benutzer und eine für Backoffice-Benutzer), und über eine API-App-Ebene werden die Unternehmensdienste für das Web-Front-End bereitgestellt. Eine Azure SQL-Datenbank wird als verwalteter relationaler Datenspeicher für die Anwendung bereitgestellt. Die Konnektivität für diese Komponenten von außerhalb der Plattform und zwischen all diesen Komponenten ist per TLS 1.2 verschlüsselt, um sicherzustellen, dass der Datenschutz während der Übertragung gewährleistet ist. Der Zugriff wird über Azure Active Directory authentifiziert.
 
-![Hosten der PaaS-Webanwendung für UK OFFICIAL-Workloads – Diagramm zur Referenzarchitektur](images/ukofficial-paaswa-architecture.png?raw=true "Hosten der PaaS-Webanwendung für UK OFFICIAL-Workloads – Diagramm zur Referenzarchitektur")
+![Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads: Diagramm zur Referenzarchitektur](images/ukofficial-paaswa-architecture.png?raw=true "Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads: Diagramm zur Referenzarchitektur")
 
 Im Rahmen der Bereitstellungsarchitektur sind außerdem die sichere Speicherbereitstellung, Überwachung und Protokollierung, einheitliche Sicherheitsverwaltung und Advanced Threat Protection sowie Verwaltungsfunktionen vorhanden. So soll sichergestellt werden, dass Kunden über alle Tools verfügen, die sie zum Schützen und Überwachen ihrer Umgebung für diese Lösung benötigen.
 
@@ -201,7 +201,7 @@ Mit [Azure-Aktivitätsprotokollen](https://docs.microsoft.com/azure/azure-monito
 
 Das Datenflussdiagramm für diese Referenzarchitektur steht zum [Download](https://aka.ms/ukofficial-paaswa-tm) bereit und ist unten angegeben. Dieses Modell kann Kunden dabei helfen, bei Änderungen die potenziellen Risikopunkte in der Systeminfrastruktur zu verstehen.
 
-![Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads – Bedrohungsmodell](images/ukofficial-paaswa-threat-model.png?raw=true "Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads – Bedrohungsmodell")
+![Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads: Bedrohungsmodell](images/ukofficial-paaswa-threat-model.png?raw=true "Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads: Bedrohungsmodell")
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>NCSC-Cloudsicherheitsprinzipien – Dokumentation der Compliance
 

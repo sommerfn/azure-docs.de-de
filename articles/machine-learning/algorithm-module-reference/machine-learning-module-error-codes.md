@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: dc383d302fb3e9920ee8ef2d7d908a5b406ea1da
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a1a6817c08223b360c08804e0595f12f2947ea5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128664"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693075"
 ---
 # <a name="exceptions-and-error-codes-for-algorithm--module-reference"></a>Ausnahmen und Fehlercodes für Algorithmen und Module – Referenz
 
@@ -32,7 +32,7 @@ Wenn der Text der Fehlermeldung nicht hilfreich ist, senden Sie uns Informatione
 ## <a name="error-0001"></a>Fehler 0001  
  Eine Ausnahme tritt auf, wenn eine oder mehrere angegebene Spalten des Datasets nicht gefunden werden konnten.  
   
- Sie erhalten diesen Fehler, wenn für ein Modul eine Spaltenauswahl vorgenommen wird, die ausgewählte(n) Spalte(n) jedoch nicht im Eingabedataset vorhanden ist (sind). Dieser Fehler kann auftreten, wenn Sie einen Spaltennamen manuell eingegeben haben oder wenn der Spaltenselektor eine vorgeschlagene Spalte bereitgestellt hat, die bei der Durchführung des Experiments in Ihrem Dataset nicht vorhanden war.  
+ Sie erhalten diesen Fehler, wenn für ein Modul eine Spaltenauswahl vorgenommen wird, die ausgewählte(n) Spalte(n) jedoch nicht im Eingabedataset vorhanden ist (sind). Dieser Fehler kann auftreten, wenn Sie einen Spaltennamen manuell eingegeben haben oder wenn der Spaltenselektor eine vorgeschlagene Spalte bereitgestellt hat, die bei der Pipelineausführung nicht im Dataset vorhanden war.  
   
 **Lösung:** Rufen Sie das Modul erneut auf, das diese Ausnahme auslöst, und überprüfen Sie, ob die Spaltennamen korrekt und alle referenzierten Spalten vorhanden sind.  
   
@@ -215,7 +215,7 @@ Wenn der vollständige Pfad zu einem Blob angegeben wurde, vergewissern Sie sich
   
  Wenn das Modul die Auswahl einer bestimmten Spalte erfordert, z. B. eine Bezeichnungsspalte, vergewissern Sie sich, dass die richtige Spalte ausgewählt ist.  
   
- Wenn nicht geeignete Spalten ausgewählt sind, entfernen Sie diese, und führen Sie das Experiment erneut durch.  
+ Sind ungeeignete Spalten ausgewählt, entfernen Sie sie, und führen Sie die Pipeline erneut aus.  
   
 |Ausnahmemeldungen|  
 |------------------------|  
@@ -237,7 +237,7 @@ Wenn der vollständige Pfad zu einem Blob angegeben wurde, vergewissern Sie sich
 ## <a name="error-0013"></a>Fehler 0013  
  Eine Ausnahme tritt auf, wenn der an das Modul übergebene Learner ein ungültiger Typ ist.  
   
- Dieser Fehler tritt auf, wenn ein trainiertes Modell mit dem angeschlossenen Bewertungsmodul nicht kompatibel ist. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the experiment is run.  -->
+ Dieser Fehler tritt auf, wenn ein trainiertes Modell mit dem angeschlossenen Bewertungsmodul nicht kompatibel ist. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
   
 **Lösung:**
 
@@ -969,7 +969,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 ## <a name="error-0057"></a>Fehler 0057  
  Eine Ausnahme tritt bei dem Versuch auf, eine bereits vorhandene Datei oder ein bereits vorhandenes Blob zu erstellen.  
   
- Diese Ausnahme tritt auf, wenn Sie das Modul [Export Data](export-data.md) (Daten exportieren) oder ein anderes Modul verwenden, um die Ergebnisse eines Experiments in Azure Machine Learning in Azure-Blobspeicher zu speichern, dabei aber versuchen, eine bereits vorhandene Datei oder ein bereits vorhandenes BLOB zu erstellen.   
+ Diese Ausnahme tritt auf, wenn Sie das Modul [Export Data](export-data.md) (Daten exportieren) oder ein anderes Modul verwenden, um die Ergebnisse einer Pipeline in Azure Machine Learning in Azure-Blobspeicher zu speichern, dabei aber versuchen, eine bereits vorhandene Datei oder ein bereits vorhandenes Blob zu erstellen.   
   
 **Lösung:**
  
@@ -1066,7 +1066,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 1. In Azure Machine Learning Studio, right-click the module that has the error, and select **View Log**.
 2. Examine the standard error log of the module, which contains the stack trace.
     + Lines beginning with [ModuleOutput] indicate output from R.
-    + Messages from R marked as **warnings** typically do not cause the experiment to fail.
+    + Messages from R marked as **warnings** typically do not cause the pipeline to fail.
 3. Resolve script issues.  
     + Check for R syntax errors. Check for variables that are defined but never populated.
     + Review the input data and the script to determine if either the data or variables in the script use characters not supported by Azure Machine Learning.
@@ -1074,11 +1074,11 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
     + Check whether your code loads required libraries that are not loaded by default.
     + Check whether the required packages are the correct version.
     + Make sure that any dataset that you want to output is converted to a data frame.  
-4.  Resubmit the experiment.
+4.  Resubmit the pipeline.
 
  <!--
 > [!NOTE]
-> These topics contains examples of R code that you can use, as well as links to experiments in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
+> These topics contains examples of R code that you can use, as well as links to pipelines in the [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com) that use R script.
 > + [Execute R Script](execute-r-script.md)
 > + [Create R Model](create-r-model.md)
 -->  
@@ -1363,7 +1363,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
   
  Dieser Fehler in Azure Machine Learning tritt auf, wenn ein gespeichertes maschinelles Lernmodell oder eine gespeicherte Transformation aufgrund einer fehlerhaften Änderung nicht von einer neueren Version der Azure Machine Learning Runtime geladen werden kann.  
   
-**Lösung:** Das Trainingsexperiment, das das Modell oder die Transformation erzeugt hat, muss erneut ausgeführt und das Modell oder die Transformation erneut gespeichert werden.  
+**Lösung:** Die Trainingspipeline, die das Modell oder die Transformation erzeugt hat, muss erneut ausgeführt und das Modell oder die Transformation erneut gespeichert werden.  
   
 |Ausnahmemeldungen|  
 |------------------------|  

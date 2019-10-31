@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000328"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597161"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -120,7 +120,7 @@ Beim Definieren eines zusammengesetzten Indexes geben Sie Folgendes an:
 - Die Reihenfolge (aufsteigend oder absteigend).
 
 > [!NOTE]
-> Genau wie bei anderen Indextypen kann es auch beim Hinzufügen eines zusammengesetzten Index vorkommen, dass Abfragen inkonsistente Ergebnisse zurückgeben, während der Index aktualisiert wird.
+> Wenn Sie einen zusammengesetzten Index hinzufügen, werden in der Abfrage vorhandene Bereichsindizes genutzt, bis das Hinzufügen des neuen zusammengesetzten Index abgeschlossen ist. Daher kann es sein, dass beim Hinzufügen eines zusammengesetzten Index nicht sofort Leistungsverbesserungen erkennbar sind. Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.
 
 ### <a name="order-by-queries-on-multiple-properties"></a>ORDER BY-Abfragen für mehrere Eigenschaften:
 
@@ -238,7 +238,7 @@ Bei der Erstellung zusammengesetzter Indizes für die Optimierung einer Abfrage 
 Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder mit einem der unterstützten SDKs](how-to-manage-indexing-policy.md) aktualisiert werden. Die Aktualisierung einer Indizierungsrichtlinie löst eine Transformation vom alten Index auf den neuen aus. Dies erfolgt online und direkt (sodass während des Vorgangs kein zusätzlicher Speicherplatz verbraucht wird). Der Index der alten Richtlinie wird effizient anhand der neuen Richtlinie transformiert, ohne die Schreibverfügbarkeit oder den Durchsatz, der für den Container bereitgestellt wird, zu beeinträchtigen. Die Indextransformation ist ein asynchroner Vorgang. Der erforderliche Zeitaufwand hängt vom bereitgestellten Durchsatz, der Anzahl der Elemente und ihrer Größe ab.
 
 > [!NOTE]
-> Während der Neuindizierung geben Abfragen möglicherweise nicht alle übereinstimmenden Ergebnisse zurück und geben dabei keinen Fehler zurück. Dies bedeutet, dass die Abfrageergebnisse möglicherweise bis zum Abschluss der Transformation nicht konsistent sind. Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.
+> Beim Hinzufügen eines Bereichs- oder räumlichen Index werden bei Abfragen unter Umständen nicht alle übereinstimmenden Ergebnisse zurückgegeben, aber es werden keine Fehler angezeigt. Dies bedeutet, dass die Abfrageergebnisse möglicherweise bis zum Abschluss der Transformation nicht konsistent sind. Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.
 
 Wenn der Modus der neuen Indizierungsrichtlinie auf „Konsistent“ festgelegt wurde, kann während der Ausführung der Indextransformation keine andere Änderung an der Indizierungsrichtlinie angewandt werden. Sie können eine aktuell ausgeführte Indextransformation abbrechen, indem Sie den Modus der Indizierungsrichtlinie auf „Keine“ festlegen (der Index wird direkt gelöscht).
 

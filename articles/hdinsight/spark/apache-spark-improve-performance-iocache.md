@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266183"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Verbessern der Leistung von Apache Spark-Workloads per Azure HDInsight IO Cache
@@ -70,7 +70,7 @@ Unter Umständen erhalten Sie Datenträgerspeicher-Fehler, wenn Sie nach dem Akt
 
 1. Wählen Sie **Restart** > **Restart All Affected**.
 
-    ![Apache Ambari: Eintrag zum Neustarten aller betroffenen Elemente](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Restart All Affected")
+    ![Apache Ambari: Neustarten aller betroffenen Instanzen](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Neustarten aller betroffenen Instanzen")
 
 1. Wählen Sie **Confirm Restart All**.
 

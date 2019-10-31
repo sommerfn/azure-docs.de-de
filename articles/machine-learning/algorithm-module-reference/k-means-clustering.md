@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 7de2978fee80cf3acd078ef8ee5f235fab21713e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128701"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693108"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
 
@@ -28,7 +28,7 @@ k-Means ist einer der einfachsten und bekanntesten *unüberwachten* Lernalgorith
 
 So erstellen Sie ein Clusteringmodell:
 
-* Fügen Sie Ihrem Experiment dieses Modul hinzu.
+* Fügen Sie dieses Modul Ihrer Pipeline hinzu.
 * Verbinden Sie ein Dataset.
 * Legen Sie Parameter fest, z. B. die erwartete Anzahl der Cluster, die bei der Erstellung der Cluster zu verwendende Abstandsmetrik usw. 
   
@@ -54,7 +54,7 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
 
 ## <a name="configure-the-k-means-clustering-module"></a>Konfigurieren des k-Means-Algorithmusmoduls
   
-1.  Fügen Sie Ihrem Experiment das Modul **K-Means Clustering** hinzu.  
+1.  Fügen Sie Ihrer Pipeline das Modul **K-Means Clustering** hinzu.  
   
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) auswählen.  
   
@@ -119,7 +119,7 @@ Bei Verwendung des Moduls [Train Clustering Model](train-clustering-model.md):
 
 2. Wählen Sie **Trained model** (Trainiertes Modell) und dann **Save as Trained Model** (Als trainiertes Modell speichern) aus.
 
-Das gespeicherte Modell stellt die Trainingsdaten zum Zeitpunkt der Speicherung des Modells dar. Wenn Sie die im Experiment verwendeten Trainingsdaten später aktualisieren, wird das gespeicherte Modell nicht aktualisiert. 
+Das gespeicherte Modell stellt die Trainingsdaten zum Zeitpunkt der Speicherung des Modells dar. Wenn Sie die in der Pipeline verwendeten Trainingsdaten später aktualisieren, wird das gespeicherte Modell nicht aktualisiert. 
 
 #### <a name="see-the-clustering-result-dataset"></a>Anzeigen des Ergebnisdatasets des Clusterings 
 

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331054"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791800"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Erneutes Schützen und Ausführen eines Failbacks für Computer auf einen lokalen Standort nach einem Failover auf Azure
 
@@ -34,6 +34,7 @@ Wenn Sie zum Erstellen Ihrer virtuellen Computer eine Vorlage verwendet haben, s
 - Wenn die virtuellen Computer, für die Sie das Failback ausführen möchten, von einem vCenter-Server verwaltet werden, stellen Sie sicher, dass Sie auf den vCenter-Servern über die [erforderlichen Berechtigungen](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) für die Ermittlung von virtuellen Computern verfügen.
 - Löschen Sie vor dem erneuten Schützen die Momentaufnahmen auf dem Masterzielserver. Wenn auf dem lokalen Masterziel oder lokalen virtuellen Computer Momentaufnahmen vorhanden sind, tritt beim Aktivieren des erneuten Schutzes ein Fehler auf. Die Momentaufnahmen auf dem virtuellen Computer werden während des Auftrags zum erneuten Schützen automatisch zusammengeführt.
 - Alle virtuellen Computer einer Replikationsgruppe müssen vom gleichen Betriebssystemtyp sein (alle entweder Windows oder Linux). Eine Replikationsgruppe mit gemischten Betriebssystemen wird derzeit für das erneute Schützen und lokale Failbacks nicht unterstützt. Der Grund hierfür ist, dass das Betriebssystem bei Masterziel und VM identisch sein muss. Alle virtuellen Computer einer Replikationsgruppe müssen dasselbe Masterziel haben. 
+- Das Masterziel muss mindestens die gleiche Betriebssystemversion wie die replizierten Elemente aufweisen.
 - Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich. Stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Konfigurationsservers durchführen. Stellen Sie im Notfall den Server mit der gleichen IP-Adresse wieder her, damit das Failback funktioniert. 
 - Für das erneute Schützen und das Failback ist eine Site-to-Site-VPN-Verbindung (S2S) oder privates ExpressRoute-Peering für die Datenreplikation erforderlich. Stellen Sie das Netzwerk bereit, damit die virtuellen Computer in Azure, für die ein Failover durchgeführt wurde, den lokalen Konfigurationsserver erreichen können (per Ping). Sie müssen einen Prozessserver im Azure-Netzwerk der virtuellen Computer bereitstellen, für die das Failover durchgeführt wurde. Dieser Prozessserver muss außerdem mit dem lokalen Konfigurationsserver und dem Masterzielserver kommunizieren können.
 - Für den Fall, dass die IP-Adressen replizierter Elemente bei einem Failover beibehalten wurden, sollte die S2S- oder ExpressRoute-Verbindung zwischen virtuellen Azure-Computern und der Fallback.Netzwerkkarte des Konfigurationsservers hergestellt werden. Beachten Sie, dass die IP-Adressaufbewahrung erfordert, dass der Konfigurationsserver über zwei Netzwerkkarten verfügt: ein für die Quellcomputerverbindungen und eine für die Azur-Fallbackverbindung. Dadurch wird ein Überlappen von Subnetzadressbereichen der Quelle mit denen der virtuellen Failovercomputer vermieden.

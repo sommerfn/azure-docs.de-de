@@ -1,20 +1,19 @@
 ---
-title: Die Qualifikation „Textübersetzung“ der kognitiven Suche – Azure Search
-description: Wertet Text aus und gibt für jeden Datensatz Text zurück, der in einer Azure Search-Anreicherungspipeline in die angegebene Zielsprache übersetzt wurde.
-services: search
+title: Die Qualifikation „Textübersetzung“ der kognitiven Suche
+titleSuffix: Azure Cognitive Search
+description: Wertet Text aus und gibt für jeden Datensatz Text zurück, der in einer KI-Anreicherungspipeline in Azure Cognitive Search in die angegebene Zielsprache übersetzt wurde.
 manager: nitinme
 author: careyjmac
-ms.service: search
-ms.workload: search
-ms.topic: conceptual
-ms.date: 06/25/2019
 ms.author: chalton
-ms.openlocfilehash: ddfb35cbfcfbc262f3eff0de67f5cedfc31ea27e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: c2405fe67b39e016e64efb1b36cc551a00a338fc
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265713"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72791855"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Die Qualifikation „Textübersetzung“ der kognitiven Suche
 
@@ -22,12 +21,12 @@ Die Qualifikation **Textübersetzung** wertet Text aus und gibt für jeden Daten
 
 Diese Funktion ist nützlich, wenn Sie davon ausgehen, dass nicht alle Ihre Dokumente in einer einzigen Sprache vorliegen. In diesem Fall können Sie den Text vor der Indizierung für die Suche in eine einzelne Sprache normalisieren, indem Sie ihn übersetzen.  Sie ist auch für Lokalisierungsanwendungsfälle nützlich, in denen Sie möglicherweise Kopien desselben Texts in mehreren Sprachen wünschen.
 
-Die [Textübersetzungs-API Version 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) ist ein nicht regionaler Cognitive Service, was bedeutet, dass Ihre Daten nicht garantiert in derselben Region wie Ihre Azure Search-Instanz oder angefügte Cognitive Services-Ressource bleiben.
+Die [Textübersetzungs-API 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) ist ein nicht regionaler Cognitive Service, was bedeutet, dass Ihre Daten nicht garantiert in der Region bleiben, in der sich Ihre Azure Cognitive Search-Instanz oder Ihre angefügte Cognitive Services-Ressource befindet.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.TranslationSkill
@@ -151,5 +150,5 @@ Wenn Ihr Text mehr als 50.000 Zeichen umfasst, werden nur die ersten 50.000 Zeic
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Vordefinierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)

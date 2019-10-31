@@ -1,25 +1,23 @@
 ---
-title: Erstellen einer einfachen Abfrage – Azure Search
-description: Lernen Sie anhand von Beispielen, indem Sie Abfragen auf der Grundlage der einfachen Syntax für Volltextsuche, Filtersuche, geografische Suche und Facettensuche für einen Azure Search-Index ausführen.
-author: HeidiSteen
+title: Erstellen einer einfachen Abfrage
+titleSuffix: Azure Cognitive Search
+description: Lernen Sie anhand von Beispielen, indem Sie Abfragen auf der Grundlage der einfachen Syntax für Volltextsuche, Filtersuche, geografische Suche und Facettensuche für einen Azure Cognitive Search-Index ausführen.
 manager: nitinme
-tags: Simple query analyzer syntax
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 09/20/2019
+author: HeidiSteen
 ms.author: heidist
-ms.custom: seodec2018
-ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
+ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179189"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72793194"
 ---
-# <a name="create-a-simple-query-in-azure-search"></a>Erstellen einer einfachen Abfrage in Azure Search
+# <a name="create-a-simple-query-in-azure-cognitive-search"></a>Erstellen einer einfachen Abfrage in Azure Cognitive Search
 
-Bei der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) in Azure Search wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Index auszuführen. Dieser Parser ist schnell und verarbeitet gängige Szenarien, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. 
+Bei der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) in Azure Cognitive Search wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Index auszuführen. Dieser Parser ist schnell und verarbeitet gängige Szenarien, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. 
 
 In diesem Artikel werden Beispiele verwendet, um die einfache Syntax zu veranschaulichen.
 
@@ -27,9 +25,9 @@ Eine Alternative zu dieser Abfragesyntax ist die [vollständige Lucene-Abfragesy
 
 ## <a name="formulate-requests-in-postman"></a>Formulieren von Anforderungen in Postman
 
-Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://nycopendata.socrata.com/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Dies bedeutet, dass Sie kein Azure-Abonnement und keine Azure Search-Instanz benötigen, um diese Abfragen auszuprobieren.
+Der in den folgenden Beispielen verwendete Suchindex „NYC Jobs“ besteht aus Stellenangeboten basierend auf einem Dataset, das von der Initiative [City of New York OpenData](https://nycopendata.socrata.com/) bereitgestellt wird. Diese Daten sollten weder als aktuell noch als vollständig betrachtet werden. Der Index wird über einen Sandboxdienst von Microsoft bereitgestellt. Das bedeutet, dass Sie zum Testen dieser Abfragen weder ein Azure-Abonnement noch Azure Cognitive Search benötigen.
 
-Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Quickstart: Erkunden der Azure Search-REST-API mit Postman](search-get-started-postman.md).
+Sie benötigen lediglich Postman oder ein gleichwertiges Tool zum Senden einer HTTP-Anforderung per GET. Weitere Informationen finden Sie unter [Quickstart: Erstellen eines Azure Cognitive Search-Index in Postman mit REST-APIs](search-get-started-postman.md).
 
 ### <a name="set-the-request-header"></a>Festlegen des Anforderungsheaders
 
@@ -43,13 +41,13 @@ Nachdem Sie den Anforderungsheader angegeben haben, können Sie ihn für alle Ab
 
 ### <a name="set-the-request-url"></a>Festlegen der Anforderungs-URL
 
-Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, in der der Azure Search-Endpunkt und die Suchzeichenfolge enthalten sind.
+Die Anforderung ist ein GET-Befehl, der mit einer URL gekoppelt ist, die den Azure Cognitive Search-Endpunkt und die Suchzeichenfolge enthält.
 
   ![Postman-Anforderungsheader](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
 
 Die URL-Komposition umfasst die folgenden Elemente:
 
-+ **`https://azs-playground.search.windows.net/`** ist ein Sandbox-Suchdienst, der vom Entwicklungsteam von Azure Search gewartet wird. 
++ **`https://azs-playground.search.windows.net/`** ist ein Sandbox-Suchdienst, der vom Azure Cognitive Search-Entwicklungsteam gepflegt wird. 
 + **`indexes/nycjobs/`** ist der Index „NYC Jobs“ in der Indexsammlung dieses Diensts. Sowohl der Dienstname als auch der Index sind für die Anforderung erforderlich.
 + **`docs`** ist die Dokumentsammlung, die den gesamten durchsuchbaren Inhalt enthält. Der im Anforderungsheader angegebene Abfrage-API-Schlüssel funktioniert nur für Lesevorgänge, die die Dokumentsammlung betreffen.
 + **`api-version=2019-05-06`** legt die API-Version fest. Dies ist für alle Anforderungen ein erforderlicher Parameter.
@@ -128,7 +126,7 @@ POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
-      "select": "select=job_id, business_title, agency, salary_range_from",
+      "select": "job_id, business_title, agency, salary_range_from",
       "count": "true"
     }
 ```
@@ -155,7 +153,7 @@ Weitere Informationen zu dieser Funktion finden Sie unter [„search.ismatch“ 
 
 Die Bereichsfilterung wird durch **`$filter`** -Ausdrücke für jeden Datentyp unterstützt. In den folgenden Beispielen werden numerische und Zeichenfolgenfelder durchsucht. 
 
-Datentypen sind bei Bereichsfiltern wichtig und funktionieren am besten bei numerischen Daten in numerischen Feldern und Zeichenfolgendaten in Zeichenfolgenfeldern. Numerische Daten in Zeichenfolgenfeldern eignen sich nicht für Bereiche, da sich numerische Zeichenfolgen in Azure Search nicht vergleichen lassen. 
+Datentypen sind bei Bereichsfiltern wichtig und funktionieren am besten bei numerischen Daten in numerischen Feldern und Zeichenfolgendaten in Zeichenfolgenfeldern. Numerische Daten in Zeichenfolgenfeldern eignen sich nicht für Bereiche, da sich numerische Zeichenfolgen in Azure Cognitive Search nicht vergleichen lassen. 
 
 Die folgenden Beispiele weisen zur besseren Lesbarkeit das POST-Format (numerischer Bereich gefolgt vom Textbereich) auf:
 
@@ -290,13 +288,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="next-steps"></a>Nächste Schritte
 Versuchen Sie, Abfragen in Ihrem Code anzugeben. Unter den folgenden Links wird erläutert, wie Sie Suchabfragen sowohl für .NET als auch für die REST-API einrichten, indem Sie die einfache Standardsyntax verwenden.
 
-* [Abfragen des Azure Search-Indexes mit dem .NET SDK](search-query-dotnet.md)
-* [Abfragen des Azure Search-Indexes mit der REST-API](search-create-index-rest-api.md)
+* [Abfragen des Index mit dem .NET SDK](search-query-dotnet.md)
+* [Abfragen des Index mit der REST-API](search-create-index-rest-api.md)
 
 Eine zusätzliche Syntaxreferenz, eine Abfragearchitektur und Beispiele finden Sie unter den folgenden Links:
 
 + [Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search](search-query-lucene-examples.md)
-+ [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md)
++ [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search)
 + [Filter und Orderby-Syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)

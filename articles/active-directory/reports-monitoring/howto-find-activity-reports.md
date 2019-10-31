@@ -15,10 +15,10 @@ ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70127391"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
@@ -106,7 +106,7 @@ Greifen Sie wie folgt auf den Bericht „Anmeldungen“ zu:
 
 Sie können den Bericht „Anmeldungen“ verwenden, um Details zur Anwendungsnutzung anzuzeigen, indem Sie nach dem Benutzernamen oder Anwendungsnamen filtern.
 
-![Seite mit Filter nach Anmeldeereignissen](./media/howto-find-activity-reports/07.png "Seite mit Filter nach Anmeldeereignissen")
+![Seite „Anmeldeereignisse filtern“](./media/howto-find-activity-reports/07.png "Seite „Anmeldeereignisse filtern“")
 
 ## <a name="security-reports"></a>Sicherheitsberichte
 

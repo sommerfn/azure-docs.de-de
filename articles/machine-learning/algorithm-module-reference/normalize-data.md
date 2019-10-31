@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: c77ebbe8569ffd221fadb5b98a54fc26d0d70893
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128567"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692710"
 ---
 # <a name="normalize-data-module"></a>Modul „Normalize Data“ (Normalisieren von Daten)
 
@@ -32,7 +32,7 @@ Dieses Modul bietet mehrere Optionen zum Transformieren numerischer Daten:
 
 - Sie können alle Werte auf einer Skala von 0-1 ändern oder die Werte transformieren, indem Sie sie als Perzentilränge statt als absolute Werte darstellen.
 - Sie können die Normalisierung auf eine einzelne Spalte oder mehrere Spalten in einem Dataset anwenden.
-- Wenn Sie das Experiment wiederholen oder die gleichen Normalisierungsschritte auf andere Daten anwenden müssen, können Sie die Schritte als Normalisierungstransformation speichern und auf andere Datasets anwenden, die das gleiche Schema haben.
+- Wenn Sie die Pipeline wiederholen oder die gleichen Normalisierungsschritte auf andere Daten anwenden müssen, können Sie die Schritte als Normalisierungstransformation speichern und auf andere Datasets anwenden, die das gleiche Schema haben.
 
 > [!WARNING]
 > Einige Algorithmen erfordern, dass Daten vor dem Trainieren eines Modells normalisiert werden. Andere Algorithmen führen ihre eigenen Datenskalierung oder -normalisierung durch. Wenn Sie also einen Algorithmus für maschinelles Lernen wählen, der beim Erstellen eines prädiktiven Modells verwendet werden soll, überprüfen Sie unbedingt die Datenanforderungen des Algorithmus, bevor Sie die Normalisierung auf die Trainingsdaten anwenden.
@@ -41,7 +41,7 @@ Dieses Modul bietet mehrere Optionen zum Transformieren numerischer Daten:
 
 Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwenden. Aus diesem Grund wird die gleiche Normalisierungsmethode auf alle Spalten angewendet, die Sie auswählen. Um andere Normalisierungsmethoden anzuwenden, verwenden Sie eine zweite Instanz von **Normalize Data**.
 
-1. Fügen Sie das Modul **Normalize Data** Ihrem Experiment hinzu. Sie finden das Modul in Azure Machine Learning unter **Data Transformation** (Datentransformation) in der Kategorie **Scale and Reduce** (Skalieren und reduzieren).
+1. Fügen Sie das Modul **Normalize Data** Ihrer Pipeline hinzu. Sie finden das Modul in Azure Machine Learning unter **Data Transformation** (Datentransformation) in der Kategorie **Scale and Reduce** (Skalieren und reduzieren).
 
 2. Stellen Sie eine Verbindung mit einem Dataset her, das mindestens eine Spalte mit allen Zahlen enthält.
 
@@ -82,7 +82,7 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
   
       Die Werte in der Spalte werden mithilfe der folgenden Formel transformiert:
   
-      ![Formel für logarithmische Normalverteilung](media/module/aml-normalization-lognormal.png "AML_normalization-lognormal")
+      ![Logarithmische Normalverteilung](media/module/aml-normalization-lognormal.png "AML_normalization-lognormal")
     
       Hier sind μ und σ die Parameter der Verteilung, die empirisch anhand der Daten als Maximum-Likelihood-Schätzungen berechnet werden, und zwar für jede Spalte einzeln.  
   
@@ -92,7 +92,7 @@ Mithilfe dieses Moduls können Sie jeweils nur eine Normalisierungsmethode anwen
     
       ![Normalisierung mithilfe der tanh-Funktion](media/module/aml-normalization-tanh.png "AML_normalization-tanh")
 
-6. Führen Sie das Experiment aus, oder doppelklicken Sie auf das Modul **Normalize Data**, und klicken Sie auf **Run Selected** (Ausgewählte ausführen). 
+6. Führen Sie die Pipeline aus, oder doppelklicken Sie auf das Modul **Normalize Data**, und klicken Sie auf **Run Selected** (Ausgewählte ausführen). 
 
 ## <a name="results"></a>Ergebnisse
 

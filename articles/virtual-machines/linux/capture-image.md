@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 328748b9dd81834b9c69f81bc0bda60c9ad12cb0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0767031ff6eee59de6cf447464328f66c50ef71a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879972"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552795"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -30,9 +30,7 @@ Um mehrere Kopien eines virtuellen Computers (Virtual Machine, VM) für die Verw
 
 Wenn Sie zum Sichern oder Debuggen eine Kopie Ihres vorhandenen virtuellen Linux-Computers erstellen oder eine spezielle Linux-VHD über einen lokalen virtuellen Computer hochladen möchten, lesen Sie [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträgerimage](upload-vhd.md).  
 
-Sie können den **Azure VM Image Builder (Public Preview)** -Dienst nutzen, um ein eigenes Bild zu erstellen, ohne vorher den Umgang mit Tools zu erlernen oder eine Buildpipeline einzurichten. Sie geben einfach nur eine Bildkonfiguration und der Image Builder erstellt das Bild. Weitere Informationen finden Sie unter [„Erste Schritte mit Azure VM Image Builder“](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
-
-Sie können Ihre benutzerdefinierte Konfiguration auch mit **Packer** erstellen. Weitere Informationen finden Sie unter [Vorgehensweise zum Erstellen von Images von virtuellen Linux-Computern in Azure mit Packer](build-image-with-packer.md).
+Sie können den **Azure VM Image Builder (Public Preview)** -Dienst nutzen, um ein eigenes Bild zu erstellen, ohne vorher den Umgang mit Tools zu erlernen oder eine Buildpipeline einzurichten. Sie geben einfach nur eine Bildkonfiguration an, und der Image Builder erstellt dann das Bild. Weitere Informationen finden Sie unter [Erste Schritte mit Azure VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
 
 Damit Sie ein Image erstellen können, müssen die folgenden Voraussetzungen erfüllt sein:
 

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
 ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71257261"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure-Blaupause für Sicherheit und Compliance: Analysen für FFIEC-Finanzdienstleistungen
@@ -41,7 +41,7 @@ Für höhere Sicherheit werden alle Ressourcen in dieser Lösung als Ressourceng
 
 Azure SQL-Datenbank wird in der Regel über SQL Server Management Studio (SSMS) verwaltet. SSMS wird über einen lokalen Computer ausgeführt, der für den Zugriff auf Azure SQL-Datenbank über eine sichere VPN- oder ExpressRoute-Verbindung konfiguriert ist. **Microsoft empfiehlt das Konfigurieren einer VPN- oder ExpressRoute-Verbindung für die Verwaltung und den Datenimport in die Ressourcengruppe der Referenzarchitektur**.
 
-![Abbildung der Referenzarchitektur für Analytics gemäß FFIEC](images/ffiec-analytics-architecture.png "Abbildung der Referenzarchitektur für Analytics gemäß FFIEC")
+![Analysen für FFIEC: Diagramm der Referenzarchitektur](images/ffiec-analytics-architecture.png "Analysen für FFIEC: Diagramm der Referenzarchitektur")
 
 Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungsarchitektur finden Sie im Abschnitt [Bereitstellungsarchitektur](#deployment-architecture).
 
@@ -167,7 +167,7 @@ In dieser Architektur sind die folgenden Azure-[Überwachungslösungen](../../mo
 
 Das Datenflussdiagramm für diese Referenzarchitektur steht zum [Download](https://aka.ms/ffiec-analytics-tm) bereit und ist unten angegeben. Dieses Modell kann Kunden dabei helfen, bei Änderungen die potenziellen Risikopunkte in der Systeminfrastruktur zu verstehen.
 
-![Analytics für das Bedrohungsmodell gemäß FFIEC](images/ffiec-analytics-threat-model.png "Analytics für das Bedrohungsmodell gemäß FFIEC")
+![Analysen für FFIEC: Bedrohungsmodell](images/ffiec-analytics-threat-model.png "Analysen für FFIEC: Bedrohungsmodell")
 
 ## <a name="compliance-documentation"></a>Konformitätsdokumentation
 

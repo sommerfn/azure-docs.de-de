@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 31612e10e7978e94f1ed467b5ffbecde40910ef9
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128465"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692654"
 ---
 # <a name="split-data-module"></a>Modul „Split Data“ (Daten aufteilen)
 
@@ -30,7 +30,7 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
 > Informieren Sie sich vor der Wahl des Aufteilungsmodus über alle Optionen, um den benötigten Aufteilungstyp zu ermitteln.
 > Wenn Sie den Aufteilungsmodus ändern, können alle anderen Optionen zurückgesetzt werden.
 
-1. Fügen Sie das Modul **Split Data** Ihrem Experiment in der Oberfläche hinzu. Sie finden dieses Modul unter **Data Transformation** (Datentransformation) in der Kategorie **Sample and Split** (Stichprobe entnehmen und aufteilen).
+1. Fügen Sie das Modul **Split Data** Ihrer Pipeline auf der Oberfläche hinzu. Sie finden dieses Modul unter **Data Transformation** (Datentransformation) in der Kategorie **Sample and Split** (Stichprobe entnehmen und aufteilen).
 
 2. **Splitting mode** (Aufteilungsmodus): Wählen Sie je nach Datentyp und gewünschter Aufteilung einen der folgenden Modi. Jeder Aufteilungsmodus verfügt über unterschiedliche Optionen. Klicken Sie auf die folgenden Themen, um ausführliche Anweisungen und Beispiele zu erhalten. 
 
@@ -45,7 +45,7 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
     - **Relative Expression Split** (Nach relativem Ausdruck aufteilen):  Verwenden Sie diese Option, wenn Sie eine Bedingung auf eine Ziffernspalte anwenden möchten. Die Ziffer kann für ein Datums-/Uhrzeitfeld, eine Spalte mit Alters- oder Währungsangaben oder sogar für einen Prozentsatz stehen. Beispielsweise ist es möglich, das Dataset nach den Kosten der einzelnen Posten zu unterteilen, Personen nach Alter zu gruppieren oder Daten nach einem Kalenderdatum aufzuteilen.
 
 ### <a name="split-rows"></a>Aufteilen von Zeilen
-1.  Fügen Sie das Modul [Split Data](./split-data.md) Ihrem Experiment in der Oberfläche hinzu, und verbinden Sie das aufzuteilende Dataset.
+1.  Fügen Sie das Modul [Split Data](./split-data.md) Ihrer Pipeline auf der Oberfläche hinzu, und verbinden Sie das aufzuteilende Dataset.
   
 2.  Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Split rows** (Zeilen aufteilen) aus. 
 
@@ -65,12 +65,12 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
 
     Bei geschichteten Stichproben werden die Daten unterteilt, sodass jedes Ausgabedataset annähernd den gleichen Prozentsatz der einzelnen Zielwerte aufweist. Sie können z. B. sicherstellen, dass Ihre Trainings- und Testsätze im Hinblick auf das Ergebnis oder eine andere Spalte (z. B. Geschlecht) ungefähr ausgeglichen sind.
 
-7. Führen Sie das Experiment aus.
+7. Ausführen der Pipeline.
 
 
 ## <a name="regular-expression-split"></a>Aufteilung nach regulären Ausdrücken
 
-1.  Fügen Sie das Modul [Split Data](./split-data.md) Ihrem Experiment hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.  
+1.  Fügen Sie das Modul [Split Data](./split-data.md) Ihrer Pipeline hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.  
   
 2.  Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Regular expression split** (Nach regulärem Ausdruck aufteilen) aus.
 
@@ -79,13 +79,13 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
    Der reguläre Ausdruck sollte der Syntax für reguläre Python-Ausdrücke folgen.
 
 
-4. Führen Sie das Experiment aus.
+4. Ausführen der Pipeline.
 
     Basierend auf dem angegebenen regulären Ausdruck wird das Dataset in zwei Sätze von Zeilen unterteilt: Zeilen mit Werten, die mit dem Ausdruck übereinstimmen, und alle übrigen Zeilen. 
 
 ## <a name="relative-expression-split"></a>Aufteilen nach relativen Ausdrücken
 
-1. Fügen Sie das Modul [Split Data](./split-data.md) Ihrem Experiment hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.
+1. Fügen Sie das Modul [Split Data](./split-data.md) Ihrer Pipeline hinzu, und verbinden Sie es als Eingabe mit dem aufzuteilenden Dataset.
   
 2. Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Relative expression split** (Nach relativem Ausdruck aufteilen) aus.
   
@@ -108,7 +108,7 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
 
 
 
-4. Führen Sie das Experiment aus.
+4. Ausführen der Pipeline.
 
     Durch den Ausdruck wird das Dataset in zwei Sätzen von Zeilen unterteilt: Zeilen mit Werten, die die Bedingung erfüllen, und alle übrigen Zeilen.
 

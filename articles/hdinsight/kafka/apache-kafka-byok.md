@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122678"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Bring Your Own Key für Apache Kafka in Azure HDInsight
@@ -59,7 +59,7 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
 
         b. Legen Sie **Optionen** auf **Generieren** fest, und benennen Sie den Schlüssel.
 
-        ![Generieren eines Apache Kafka-Schlüsselnamens](./media/apache-kafka-byok/apache-kafka-create-key.png "Generieren eines Schlüsselnamens")
+        ![Apache Kafka: Generieren des Schlüsselnamens](./media/apache-kafka-byok/apache-kafka-create-key.png "Generieren des Schlüsselnamens")
 
         c. Wählen Sie den Schlüssel, den Sie erstellt haben, aus der Liste der Schlüssel aus.
 
@@ -81,11 +81,11 @@ Zum Erstellen eines Kafka-Clusters mit BYOK führen Sie die folgenden Schritte a
 
         c. Aktivieren Sie unter **Schlüsselberechtigungen** die Optionen **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen**.
 
-        ![Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (1)](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (1)")
+        ![Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 1](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 1")
 
         d. Aktivieren Sie unter **Berechtigungen für Geheimnis** die Optionen **Abrufen**, **Festlegen** und **Löschen**.
 
-        ![Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (2)](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Festlegen von Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie (2)")
+        ![Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 2](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Festlegen der Schlüsselberechtigungen für die Azure Key Vault-Zugriffsrichtlinie: 2")
 
         e. Klicken Sie auf **Speichern**. 
 

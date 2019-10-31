@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren der Azure Active Directory-Authentifizierung – SQL| Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie unter Verwendung der Azure Active Directory-Authentifizierung eine Verbindung mit SQL-Datenbank, der verwalteten SQL-Datenbank-Instanz und SQL Data Warehouse herstellen – nachdem Sie Azure AD konfiguriert haben.
+description: Hier erfahren Sie, wie Sie unter Verwendung der Azure Active Directory-Authentifizierung nach der Konfiguration von Azure AD eine Verbindung mit SQL-Datenbank, einer verwalteten Instanz und SQL Data Warehouse herstellen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: 11e3a9931d424433f2e3fd1f64e2e95a5835b65c
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.date: 10/16/2019
+ms.openlocfilehash: 82409bbe2f40e42a8331cd801649b93987a923d2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960466"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550701"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL
 
-In diesem Artikel erfahren Sie, wie Sie ein Azure AD erstellen und auffüllen und dann dieses Azure AD mit Azure [SQL-Datenbank](sql-database-technical-overview.md), einer [verwalteten Instanz](sql-database-managed-instance.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verwenden. Eine Übersicht finden Sie unter [Authentifizierung über Azure Active Directory](sql-database-aad-authentication.md).
+In diesem Artikel erfahren Sie, wie Sie Azure AD erstellen, auffüllen und mit [Azure SQL-Datenbank](sql-database-technical-overview.md), einer [verwalteten Instanz](sql-database-managed-instance.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verwenden. Eine Übersicht finden Sie unter [Authentifizierung über Azure Active Directory](sql-database-aad-authentication.md).
 
 > [!NOTE]
 > Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
@@ -53,18 +53,18 @@ Bei Verwendung von Azure Active Directory mit Georeplikation muss der Azure Acti
 > [!NOTE]
 > Benutzer, die nicht auf einem Azure AD-Konto basieren (hierzu gehört auch das Administratorkonto für die Azure SQL Server-Instanz) können keine Azure AD-basierten Benutzer erstellen, da sie keine Berechtigung zum Überprüfen der vorgeschlagenen Datenbankbenutzer mit Azure AD besitzen.
 
-## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete SQL-Datenbank-Instanz
+## <a name="provision-an-azure-active-directory-administrator-for-your-managed-instance"></a>Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete Instanz
 
 > [!IMPORTANT]
-> Führen Sie diese Schritte nur aus, wenn Sie eine verwaltete SQL-Datenbank-Instanz bereitstellen. Dieser Vorgang kann nur von einem globalen bzw. Unternehmensadministrator in Azure AD durchgeführt werden. Mit den folgenden Schritten wird der Prozess zum Gewähren von Berechtigungen für Benutzer mit unterschiedlichen Berechtigungen für das Verzeichnis beschrieben.
+> Führen Sie diese Schritte nur aus, wenn Sie eine verwaltete Instanz bereitstellen. Dieser Vorgang kann nur von einem globalen Administrator/Unternehmensadministrator oder von einem Administrator für privilegierte Rollen in Azure AD durchgeführt werden. Mit den folgenden Schritten wird der Prozess zum Gewähren von Berechtigungen für Benutzer mit unterschiedlichen Berechtigungen für das Verzeichnis beschrieben.
 
-Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD erforderlich, damit Aufgaben wie die Authentifizierung von Benutzern über die Mitgliedschaft in Sicherheitsgruppen oder die Erstellung neuer Benutzer erfolgreich durchgeführt werden können. Damit dies funktioniert, müssen Sie für die verwaltete SQL-Datenbank-Instanz Leseberechtigungen für Azure AD gewähren. Hierfür gibt es zwei Möglichkeiten: das Portal und PowerShell. Die folgenden Schritte gelten für beide Methoden.
+Für Ihre verwaltete Instanz sind Leseberechtigungen für Azure AD erforderlich, damit Aufgaben wie die Authentifizierung von Benutzern über die Mitgliedschaft in Sicherheitsgruppen oder die Erstellung neuer Benutzer erfolgreich durchgeführt werden können. Damit das funktioniert, müssen Sie der verwalteten Instanz Leseberechtigungen für Azure AD gewähren. Hierfür gibt es zwei Möglichkeiten: das Portal und PowerShell. Die folgenden Schritte gelten für beide Methoden.
 
 1. Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihre Verbindung aus, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen.
 2. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus.
 
-   In diesem Schritt wird das Abonnement, das Active Directory zugeordnet ist, mit der verwalteten SQL-Datenbank-Instanz verknüpft. So wird sichergestellt, dass dasselbe Abonnement sowohl für Azure AD als auch für die verwaltete SQL-Datenbank-Instanz verwendet wird.
-3. Navigieren Sie zu „Verwaltete Instanz“, und wählen Sie die gewünschte Instanz aus, die Sie für die Azure AD-Integration verwenden möchten.
+   In diesem Schritt wird das Abonnement, das Active Directory zugeordnet ist, mit der verwalteten Instanz verknüpft. So wird sichergestellt, dass sowohl für Azure AD als auch für die verwaltete Instanz das gleiche Abonnement verwendet wird.
+3. Navigieren Sie zur verwalteten Instanz, und wählen Sie eine Instanz aus, die Sie für die Azure AD-Integration verwenden möchten.
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
@@ -73,8 +73,8 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
     ![Erteilen von Berechtigungen – Portal](./media/sql-database-aad-authentication/grant-permissions.png)
 
     ```powershell
-    # Gives Azure Active Directory read permission to a Service Principal representing the Managed Instance.
-    # Can be executed only by a "Company Administrator" or "Global Administrator" type of user.
+    # Gives Azure Active Directory read permission to a Service Principal representing the managed instance.
+    # Can be executed only by a "Company Administrator", "Global Administrator", or "Privileged Role Administrator" type of user.
 
     $aadTenant = "<YourTenantId>" # Enter your tenant ID
     $managedInstanceName = "MyManagedInstance"
@@ -130,7 +130,7 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 
     ![success](./media/sql-database-aad-authentication/success.png)
 
-6. Jetzt können Sie Ihren Azure AD-Administrator für die verwaltete Instanz auswählen. Wählen Sie hierzu auf der Seite „Active Directory-Administrator“ **Administrator festlegen** aus.
+6. Nun können Sie Ihren Azure AD-Administrator für die verwaltete Instanz auswählen. Wählen Sie hierzu auf der Seite „Active Directory-Administrator“ **Administrator festlegen** aus.
 
     ![Administrator festlegen](./media/sql-database-aad-authentication/set-admin.png)
 
@@ -146,10 +146,58 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 
     Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld „Active Directory-Administrator“ angezeigt.
 
-Nach der Bereitstellung eines Azure AD-Administrators für die verwaltete Instanz können Sie mit dem Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) (**öffentliche Vorschau**) anhand der <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>-Syntax beginnen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration).
+Nachdem Sie einen Azure AD-Administrator für die verwaltete Instanz bereitgestellt haben, können Sie unter Verwendung der Syntax <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> mit der Erstellung von Azure AD-Serverprinzipalen (Anmeldungen) (**Public Preview**) beginnen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
 > Wenn Sie später einen Administrator entfernen möchten, wählen Sie oben auf der Seite „Active Directory-Administrator“ **Administrator entfernen** und anschließend **Speichern** aus.
+
+### <a name="powershell-for-sql-managed-instance"></a>PowerShell für eine verwaltete SQL-Instanz
+
+Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Um einen Azure AD-Administrator bereitzustellen, führen Sie die folgenden Azure PowerShell-Befehle aus:
+
+- Connect-AzAccount
+- Select-AzSubscription
+
+Cmdlets zum Bereitstellen und Verwalten des Azure AD-Administrators für eine verwaltete SQL-Instanz:
+
+| Cmdlet-Name | BESCHREIBUNG |
+| --- | --- |
+| [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Stellt einen Azure AD-Administrator für eine verwaltete SQL-Instanz im aktuellen Abonnement bereit. (Muss aus dem aktuellen Abonnement stammen.)|
+| [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Entfernt einen Azure AD-Administrator für eine verwaltete SQL-Instanz im aktuellen Abonnement. |
+| [Get-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlinstanceactivedirectoryadministrator) |Gibt Informationen zu einem Azure AD-Administrator für eine verwaltete SQL-Instanz im aktuellen Abonnement zurück.|
+
+### <a name="powershell-examples-for-managed-instance"></a>PowerShell-Beispiele für eine verwaltete Instanz
+
+Der folgende Befehl ruft Informationen zu einem Azure AD-Administrator für eine verwaltete Instanz namens „ManagedInstance01“ ab, die einer Ressourcengruppe namens „ResourceGroup01“ zugeordnet ist:
+
+```powershell
+Get-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+```
+
+Der folgende Befehl stellt eine Azure AD-Administratorgruppe namens „DBAs“ für die verwaltete Instanz „ManagedInstance01“ bereit. Dieser Server ist der Ressourcengruppe „ResourceGroup01“ zugeordnet:
+
+```powershell
+Set-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -DisplayName "DBAs" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353b"
+```
+
+Der folgende Befehl entfernt den Azure AD-Administrator für die verwaltete Instanz „ManagedInstanceName01“, die der Ressourcengruppe „ResourceGroup01“ zugeordnet ist:
+
+```powershell
+Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
+```
+
+### <a name="cli-for-sql-managed-instance"></a>Befehlszeilenschnittstelle für eine verwaltete SQL-Instanz
+
+Ein Azure AD-Administrator für eine verwaltete SQL-Instanz kann auch mithilfe folgender CLI-Befehle bereitgestellt werden:
+
+| Get-Help | BESCHREIBUNG |
+| --- | --- |
+|[az sql mi ad-admin create](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) |Stellt einen Azure Active Directory-Administrator für eine verwaltete SQL-Instanz bereit. (Muss aus dem aktuellen Abonnement stammen.) |
+|[az sql mi ad-admin delete](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) |Entfernt einen Azure Active Directory-Administrator für eine verwaltete SQL-Instanz. |
+|[az sql mi ad-admin list](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) |Gibt Informationen zu einem Azure Active Directory-Administrator zurück, der aktuell für eine verwaltete SQL-Instanz konfiguriert ist. |
+|[az sql mi ad-admin update](https://docs.microsoft.com/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) |Aktualisiert den Azure Active Directory-Administrator für eine verwaltete SQL-Instanz. |
+
+Weitere Informationen zu CLI-Befehlen finden Sie unter [az sql mi](https://docs.microsoft.com/cli/azure/sql/mi). 
 
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Bereitstellen eines Azure Active Directory-Administrators für Ihren Azure SQL-Datenbank-Server
 
@@ -185,14 +233,14 @@ Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehme
 
 Wenn Sie später einen Administrator entfernen möchten, wählen Sie oben auf der Seite **Active Directory-Administrator** **Administrator entfernen** und anschließend **Speichern** aus.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell-for-azure-sql-database-and-azure-sql-data-warehouse"></a>PowerShell für Azure SQL-Datenbank und Azure SQL Data Warehouse
 
 Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Um einen Azure AD-Administrator bereitzustellen, führen Sie die folgenden Azure PowerShell-Befehle aus:
 
 - Connect-AzAccount
 - Select-AzSubscription
 
-Verwenden Sie folgende Cmdlets zum Bereitstellen und Verwalten des Azure AD-Administrators:
+Cmdlets zum Bereitstellen und Verwalten des Azure AD-Administrators für Azure SQL-Datenbank und Azure SQL Data Warehouse:
 
 | Cmdlet-Name | BESCHREIBUNG |
 | --- | --- |
@@ -200,7 +248,9 @@ Verwenden Sie folgende Cmdlets zum Bereitstellen und Verwalten des Azure AD-Admi
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Entfernt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse. |
 | [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Gibt Informationen zu dem Azure Active Directory-Administrator zurück, der aktuell für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse konfiguriert ist. |
 
-Verwenden Sie den PowerShell-Befehl „get-help“, um weitere Informationen zu diesen Befehlen anzuzeigen, z.B. ``get-help Set-AzSqlServerActiveDirectoryAdministrator``.
+Verwenden Sie den PowerShell-Befehl „get-help“, um weitere Informationen zu diesen Befehlen zu erhalten. Beispiel: ``get-help Set-AzSqlServerActiveDirectoryAdministrator``.
+
+### <a name="powershell-examples-for-azure-sql-database-and-azure-sql-data-warehouse"></a>PowerShell-Beispiele für Azure SQL-Datenbank und Azure SQL Data Warehouse
 
 Das folgende Skript stellt eine Azure AD-Administratorengruppe namens **DBA_Group** (Objekt-ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) für den Server **demo_server** in einer Ressourcengruppe mit dem Namen **Group-23** bereit:
 
@@ -236,9 +286,10 @@ Im folgenden Beispiel wird ein Azure AD-Administrator entfernt:
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Sie können auch einen Azure Active Directory-Administrator mithilfe der REST-APIs bereitstellen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung und Vorgänge für Azure SQL-Datenbank](https://docs.microsoft.com/rest/api/sql/).
+> [!NOTE]
+> Sie können auch einen Azure Active Directory-Administrator mithilfe der REST-APIs bereitstellen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung und Vorgänge für Azure SQL-Datenbank](https://docs.microsoft.com/rest/api/sql/).
 
-### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)  
+### <a name="cli-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Befehlszeilenschnittstelle für Azure SQL-Datenbank und Azure SQL Data Warehouse
 
 Sie können auch einen Azure AD-Administrator bereitstellen, indem Sie die folgenden CLI-Befehle aufrufen:
 
@@ -249,7 +300,7 @@ Sie können auch einen Azure AD-Administrator bereitstellen, indem Sie die folge
 |[az sql server ad-admin list](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) |Gibt Informationen zu dem Azure Active Directory-Administrator zurück, der aktuell für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse konfiguriert ist. |
 |[az sql server ad-admin update](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) |Aktualisiert den Active Directory-Administrator für einen Azure SQL-Server oder Azure SQL Data Warehouse. |
 
-Weitere Informationen zu CLI-Befehlen finden Sie unter [SQL – az sql](https://docs.microsoft.com/cli/azure/sql/server).  
+Weitere Informationen zu CLI-Befehlen finden Sie unter [az sql server](https://docs.microsoft.com/cli/azure/sql/server).
 
 ## <a name="configure-your-client-computers"></a>Konfigurieren der Clientcomputer
 
@@ -268,7 +319,7 @@ Sie können diese Anforderungen folgendermaßen erfüllen:
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
 
 >[!IMPORTANT]
->Verwaltete Instanzen unterstützen jetzt Azure AD-Serverprinzipale (Anmeldungen) (**öffentliche Vorschau**), wodurch Sie Anmeldungen für Azure AD-Benutzer, Gruppen oder Anwendungen erstellen können. Mit Azure AD-Serverprinzipalen (Anmeldungen) ist eine Authentifizierung bei der verwalteten Instanz möglich, ohne dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden müssen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
+>Die verwaltete Instanz unterstützt jetzt Azure AD-Serverprinzipale (Anmeldungen) (**Public Preview**), wodurch Sie Anmeldungen für Azure AD-Benutzer, Gruppen oder Anwendungen erstellen können. Mit Azure AD-Serverprinzipalen (Anmeldungen) ist eine Authentifizierung bei Ihrer verwalteten Instanz möglich, ohne dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden müssen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
 
 Für die Azure Active Directory-Authentifizierung ist es erforderlich, dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden. Ein eigenständiger Datenbankbenutzer basierend auf einer Azure AD-Identität ist ein Datenbankbenutzer, der über keine Anmeldung für die Masterdatenbank verfügt, und der einer Identität im Azure AD-Verzeichnis zugeordnet ist, das mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
@@ -396,7 +447,7 @@ Informieren Sie sich über Azure AD-Authentifizierungsmethoden, indem Sie die De
 
 Diese Authentifizierungsmethode ermöglicht Diensten der mittleren Ebene, die Verbindung mit der Azure SQL-Datenbank oder Azure SQL Data Warehouse durch Abrufen eines Tokens von Azure Active Directory (AAD) herzustellen. So sind komplexe Szenarien einschließlich der zertifikatbasierten Authentifizierung möglich. Sie müssen vier grundlegende Schritte zum Verwenden der Azure AD-Token-Authentifizierung ausführen:
 
-1. Registrieren Sie Ihre Anwendung in Azure Active Directory, und rufen Sie die Client-ID für den Code ab.
+1. Registrieren Sie Ihre Anwendung in Azure Active Directory, und rufen Sie die Client-ID für Ihren Code ab.
 2. Erstellen Sie einen Datenbankbenutzer, der die Anwendung darstellt. (Bereits in Schritt 6 abgeschlossen.)
 3. Erstellen Sie ein Zertifikat auf dem Clientcomputer, auf dem die Anwendung ausgeführt wird.
 4. Fügen Sie das Zertifikat als Schlüssel für die Anwendung hinzu.

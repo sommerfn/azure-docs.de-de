@@ -2,22 +2,22 @@
 title: Clusterkapazitätsplanung in Azure HDInsight
 description: Identifizieren wichtiger Fragen zur Planung der Kapazität und Leistung eines Azure HDInsight-Clusters.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: hrasheed
-ms.openlocfilehash: 64de4078fb529140859f1d4ff2e973fd081a5400
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/15/2019
+ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916561"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529153"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
-Planen Sie vor der Bereitstellung eines HDInsight-Clusters die gewünschte Clusterkapazität, indem Sie die erforderliche Leistung und Skalierung bestimmen. Diese Planung trägt zur Optimierung von Nutzbarkeit und Kosten bei. Einige Entscheidungen zur Clusterkapazität können nach der Bereitstellung nicht geändert werden. Wenn sich die Leistungsparameter ändern, kann ein Cluster deinstalliert und ohne Verlust von gespeicherten Daten neu erstellt werden.
+Planen Sie vor der Bereitstellung eines HDInsight-Clusters die gewünschte Clusterkapazität, indem Sie die erforderliche Leistung und Skalierung bestimmen. Diese Planung trägt zur Optimierung von Nutzbarkeit und Kosten bei. Einige Entscheidungen hinsichtlich der Clusterkapazität können nach der Bereitstellung nicht mehr geändert werden. Wenn sich die Leistungsparameter ändern, kann ein Cluster deinstalliert und ohne Verlust von gespeicherten Daten neu erstellt werden.
 
 Die wichtigsten Fragen zur Kapazitätsplanung sind:
 
@@ -31,13 +31,13 @@ Die wichtigsten Fragen zur Kapazitätsplanung sind:
 
 Die Azure-Region bestimmt, wo Ihr Cluster physisch bereitgestellt wird. Um die Latenz der Lese- und Schreibvorgänge zu minimieren, sollte der Cluster sich in der Nähe Ihrer Daten befinden.
 
-HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region finden Sie unter dem Eintrag *HDInsight* unter *Analysen* in [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
+HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/).
 
 ## <a name="choose-storage-location-and-size"></a>Auswahl von Speicherort und -größe
 
 ### <a name="location-of-default-storage"></a>Speicherort des Standardspeichers
 
-Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Storage, muss sich am gleichen Standort wie der Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Storage Gen1 ist in einigen Regionen verfügbar – unter *Speicher* auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/) können Sie sich über die aktuelle Verfügbarkeit von Data Lake Storage informieren.
+Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Storage, muss sich am gleichen Standort wie der Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Storage Gen1 ist in einigen Regionen verfügbar. Welche das sind, erfahren Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage).
 
 ### <a name="location-of-existing-data"></a>Speicherort der vorhandenen Daten
 
@@ -95,7 +95,6 @@ Die Lebensdauer des Clusters wird Ihnen in Rechnung gestellt. Wenn Sie Ihren Clu
 ### <a name="isolate-cluster-job-errors"></a>Isolieren von Clusterauftragsfehlern
 
 Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen auftreten und Komponenten auf einem Cluster mit mehreren Knoten reduzieren. Um das Problem zu isolieren, führen Sie verteilte Tests durch, indem Sie gleichzeitig mehrere Aufträge in einem Cluster mit einem einzelnen Workerknoten ausführen. Erweitern Sie diesen Ansatz dann auf die gleichzeitige Ausführung mehrerer Aufträge auf Clustern mit mehreren Knoten. Um einen HDInsight-Cluster mit einem einzelnen Knoten in Azure zu erstellen, verwenden Sie die Option *Benutzerdefiniert(Größe,Einstellungen,Apps)* , und verwenden Sie für die Bereitstellung eines neuen Clusters im Portal den Wert „1“ für *Anzahl von Workerknoten* im Abschnitt **Clustergröße**.
-
 
 ## <a name="quotas"></a>Kontingente
 

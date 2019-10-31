@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 10d300638f95fe275a23dfbc239f8f961f46b127
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172995"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598015"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
 
@@ -208,7 +208,7 @@ In dieser Illustration werden die folgenden Toleranzen verwendet:
 
    4. Wenn das sechste-Ereignis (device3) verarbeitet wird, liegen die Eingangszeit (12:17) und Ereigniszeit (12:12) unterhalb der Wasserzeichenstufen. Die Ereigniszeit wird auf die Wasserzeichenstufen (12:17) angepasst.
 
-   5. Wenn das neunte-Ereignis (device3) verarbeitet wird, liegt die Eingangszeit (12:27) 6 Minuten vor der Ereigniszeit (12:21). Die Richtlinie für Eingangsverzögerung wird angewendet. Die Ereigniszeit wird angepasst (12:22). Dies liegt über dem Wasserzeichen (12:21), sodass keine weiteren Anpassungen angewendet werden.
+   5. Wenn das zwölfte Ereignis (device3) verarbeitet wird, liegen die Eingangszeit (12:27) und die Ereigniszeit (12:21) sechs Minuten auseinander. Die Richtlinie für Eingangsverzögerung wird angewendet. Die Ereigniszeit wird angepasst (12:22). Dies liegt über dem Wasserzeichen (12:21), sodass keine weiteren Anpassungen angewendet werden.
 
 2. Zweite Illustration des Wasserzeichenfortschritts ohne angewendete Richtlinie für den frühen Eingang.
 

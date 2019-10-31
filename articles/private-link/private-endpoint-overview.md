@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937373"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592376"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -121,7 +121,7 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 
 |Einschränkung |BESCHREIBUNG |Lösung  |
 |---------|---------|---------|
-|Regeln für Netzwerksicherheitsgruppen (NSGs) gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden.   | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden.        |
+|Regeln für Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich.  | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Bereitstellen einzelner Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte        |
 |Private Endpunkte können nicht in Subnetzen erstellt werden, die für Dienstendpunkte oder spezialisierte Workloads aktiviert sind    |Private Endpunkte können nicht in Subnetzen erstellt werden, die für Dienstendpunkte oder Subnetze aktiviert sind, die an spezialisierte Workloads delegiert wurden|  Erstellen Sie ein separates Subnetz, um die privaten Endpunkte bereitzustellen.        |
 |Der private Endpunkt kann nur dem Private Link-Dienst (im Besitz des Kunden) in derselben Region zugeordnet werden    |   Das Herstellen einer Verbindung mit einem Private Link-Dienst (Ihrem eigenen) aus einer anderen Region wird nicht unterstützt       |  In der Vorschauphase müssen Sie Ihren Private Link-Dienst in derselben Region bereitstellen.        |
 |  Virtuelle Netzwerke mit Peering mit nur privaten Endpunkten werden nicht unterstützt.   |   Das Herstellen einer Verbindung mit privaten Endpunkten in einem virtuellen Netzwerk mit Peering ohne andere Workload wird nicht unterstützt.       | Stellen Sie einen einzelnen virtuellen Computer im virtuellen Netzwerk mit Peering bereit, um die Konnektivität zu ermöglichen. |

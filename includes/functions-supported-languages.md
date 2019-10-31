@@ -9,26 +9,28 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 80132b165c4d7d0f4f192e30f1bf2a525c47c82e
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: c2060b335c615cf92ec600d072db58cb34ae4963
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69564370"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597399"
 ---
-|Sprache                                 |1.x         |2.x|
-|-----------------------------------------|------------|---|
-|[C#](../articles/azure-functions/functions-reference-csharp.md)|Allgemeine Verfügbarkeit (.NET Framework 4.7)|Allgemeine Verfügbarkeit (.NET Core 2.2)|
-|[JavaScript](../articles/azure-functions/functions-reference-node.md)|Allgemeine Verfügbarkeit (Node 6)|Allgemeine Verfügbarkeit (Node 8 & 10)|
-|[F#](../articles/azure-functions/functions-reference-fsharp.md)|Allgemeine Verfügbarkeit (.NET Framework 4.7)|Allgemeine Verfügbarkeit (.NET Core 2.2)|
-|[Java](../articles/azure-functions/functions-reference-java.md)|–|Allgemeine Verfügbarkeit (Java 8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Experimentell|Vorschau (PowerShell Core 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md)|Experimentell|Allgemeine Verfügbarkeit (Python 3.6.x)|
-|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Experimentell|Allgemeine Verfügbarkeit (unterstützt durch Transpilierung in JavaScript)|
-|Bash                |Experimentell|–|
-|Batch (.cmd, .bat)  |Experimentell|–|
-|PHP                 |Experimentell|–|
+|Sprache                                 |1.x         |2.x| 3.x<sup>1</sup> |
+|-----------------------------------------|------------|---| --- |
+|[C#](../articles/azure-functions/functions-reference-csharp.md)|Allgemeine Verfügbarkeit (.NET Framework 4.7)|Allgemeine Verfügbarkeit (.NET Core 2.2)| Vorschau (.NET Core 3.x) |
+|[JavaScript](../articles/azure-functions/functions-reference-node.md)|Allgemeine Verfügbarkeit (Node 6)|Allgemeine Verfügbarkeit (Node 8 & 10)| Vorschau (Node 8 & 10) |
+|[F#](../articles/azure-functions/functions-reference-fsharp.md)|Allgemeine Verfügbarkeit (.NET Framework 4.7)|Allgemeine Verfügbarkeit (.NET Core 2.2)| Vorschau (.NET Core 3.x) |
+|[Java](../articles/azure-functions/functions-reference-java.md)|–|Allgemeine Verfügbarkeit (Java 8)| Preview (Java 8)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Experimentell|Vorschau (PowerShell Core 6)| Vorschau (PowerShell Core 6)|
+|[Python](../articles/azure-functions/functions-reference-python.md)|Experimentell|Allgemeine Verfügbarkeit (Python 3.6.x)| Vorschau (Python 3.6.x)|
+|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Experimentell|Allgemeine Verfügbarkeit<sup>2</sup>| Vorschau<sup>2</sup> |
+|Bash                |Experimentell|–|–|
+|Batch (.cmd, .bat)  |Experimentell|–|–|
+|PHP                 |Experimentell|–|–|
 
+<sup>1</sup>Die Functions v3.x-Runtime befindet sich in der Vorschauphase.  
+<sup>2</sup>Unterstützt durch Transpilierung in JavaScript.
 
 
 Informationen zu geplanten Änderungen an der Sprachunterstützung finden Sie unter [Azure-Roadmap](https://azure.microsoft.com/roadmap/?tag=functions).

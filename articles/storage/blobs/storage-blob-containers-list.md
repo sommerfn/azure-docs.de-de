@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803378"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598123"
 ---
 # <a name="list-blob-containers-with-net"></a>Auflisten von Blobcontainern mit .NET
 
@@ -40,9 +40,9 @@ Wenn Ihr Speicherkonto mehr als 5.000 Container enthält oder wenn Sie einen Wer
 
 Um die Liste der Container zu filtern, geben Sie für den `prefix`-Parameter eine Zeichenfolge an. Die Präfixzeichenfolge kann ein oder mehrere Zeichen enthalten. Azure Storage gibt dann nur die Container zurück, deren Namen mit diesem Präfix beginnen.
 
-### <a name="return-container-metadata"></a>Zurückgeben von Containermetadaten
+### <a name="return-metadata"></a>Zurückgeben von Metadaten
 
-Um mit den Ergebnissen Containermetadaten zurückzugeben, geben Sie für die Enumeration [ContainerListDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) den Wert **Metadata** an. Da Azure Storage für jeden zurückgegebenen Container Metadaten enthält, müssen Sie nicht zusätzlich eine der **FetchAttributes**-Methoden aufrufen, um die Containermetadaten abzurufen.
+Um mit den Ergebnissen Containermetadaten zurückzugeben, geben Sie für die Enumeration [ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) den Wert **Metadata** an. Da Azure Storage für jeden zurückgegebenen Container Metadaten enthält, müssen Sie nicht zusätzlich eine der **FetchAttributes**-Methoden aufrufen, um die Containermetadaten abzurufen.
 
 ## <a name="example-list-containers"></a>Beispiel: Auflisten von Containern
 

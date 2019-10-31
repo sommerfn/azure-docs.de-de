@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 87c438403934df34a02678c805d3622956654b4e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 5d2608d1c374fadac18cebc093ce50ef93f9656a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172050"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597371"
 ---
 Die folgende Tabelle zeigt die Bindungen, die in den beiden Hauptversionen der Azure Functions-Runtime unterstützt werden:
 
@@ -36,4 +36,4 @@ Die folgende Tabelle zeigt die Bindungen, die in den beiden Hauptversionen der A
 | [Zeitgeber](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup> In 2.x müssen alle Bindungen außer HTTP und Timer registriert sein. Siehe [Registrieren von Bindungserweiterungen](../articles/azure-functions/functions-bindings-register.md).
+<sup>1</sup> In Version 2.x der Runtime müssen alle Bindungen mit Ausnahme von HTTP und Timer registriert werden. Siehe [Registrieren von Bindungserweiterungen](../articles/azure-functions/functions-bindings-register.md). Alle unterstützten 2.x-Bindungen werden auch in Version 3.x unterstützt, falls nichts anderes angegeben ist.   

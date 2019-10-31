@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 10/17/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 984284fa185d4d8454b1689a62ca9e08c342e33b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2fec017f80758dbcf2a155c3535b9a3e028e4bd9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195120"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592699"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -65,6 +65,9 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
    Wenn Sie **Nein** festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
+    > [!NOTE]
+    > Wenn Sie [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) verwenden, wird dieser Umschalter von Ihrer Rollenzuweisung nicht in **Nein** geändert. Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein**, bevor Sie Ihre Rollenzuweisung deaktivieren.
+    
 1. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
    Diese Einstellung ist keine globale Eigenschaft und gilt nur für den aktuell angemeldeten Benutzer. Sie können den Zugriff nicht für alle Mitglieder der globalen Administratorrolle erhöhen.

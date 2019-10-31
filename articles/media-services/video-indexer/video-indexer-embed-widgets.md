@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71036625"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
@@ -68,7 +68,7 @@ Mit dem Editor-Widget können Sie neue Projekte erstellen und Erkenntnisse aus V
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
-    Nachdem Sie die Schaltfläche „Einbetten“ ausgewählt haben, können Sie das Widget auswählen, das Sie in Ihre Anwendung einbetten möchten. 
+    Nachdem Sie die Schaltfläche **Einbetten** ausgewählt haben, können Sie das Widget auswählen, das Sie in Ihre Anwendung einbetten möchten. 
 4. Wählen Sie den gewünschten Widget-Typ aus (**Kognitive Erkenntnisse**, **Player** oder **Editor**).
  
 5. Kopieren Sie den Einbettungscode, und fügen Sie ihn dann zu Ihrer Anwendung hinzu. 
@@ -80,7 +80,7 @@ Mit dem Editor-Widget können Sie neue Projekte erstellen und Erkenntnisse aus V
 
 ## <a name="embedding-private-content"></a>Einbetten von privaten Inhalten
 
-Sie müssen ein Zugriffstoken im src-Attribut des „iframe“ übergeben, um ein privates Video einzubetten:
+Sie müssen ein Zugriffstoken im **src**-Attribut des „iframe“ übergeben, um ein privates Video einzubetten:
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
@@ -116,7 +116,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Interaktion zwischen zwei 
 
 Wenn ein Benutzer in Ihrer Anwendung jetzt das Steuerelement für Erkenntnisse auswählt, springt der Player zum relevanten Moment.
 
-Weitere Informationen finden Sie in der Demo „Video Indexer – Einbetten beider Widgets“.
+Weitere Informationen finden Sie in der Demo [Video Indexer – Einbetten beider Widgets](https://codepen.io/videoindexer/pen/NzJeOb).
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>Einbetten des Widgets „Kognitive Erkenntnisse“ und Verwenden von Azure Media Player zum Wiedergeben der Inhalte
 

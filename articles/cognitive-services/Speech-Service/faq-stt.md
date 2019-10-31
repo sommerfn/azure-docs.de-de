@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: bde68a70ac047433e86b7e06bc5f4a56bdd28595
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028511"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595339"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -71,6 +71,28 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 
 Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text), wenn Sie eine höhere Skalierung benötigen.
 
+Um die Parallelität für ein benutzerdefiniertes Modell zu erhöhen, sind folgende Informationen erforderlich:
+
+- Die Azure-Region, in der das Modell bereitgestellt wird.
+- Die Endpunkt-ID des bereitgestellten Modells.
+
+Um die Parallelität für ein Basismodell zu erhöhen, sind folgende Informationen erforderlich:
+
+- Die Region Ihres Diensts
+
+und entweder
+
+- ein Zugriffstoken für Ihr Abonnement (siehe [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token))
+
+oder
+
+- die Ressourcen-ID für Ihr Abonnement:
+  - Navigieren Sie zu https://portal.azure.com,
+  - wählen Sie im Suchfeld die Option `Cognitive Services` aus,
+  - wählen Sie aus den angezeigten Diensten den Sprachdienst aus, für den Sie die Parallelität erhöhen möchten,
+  - zeigen Sie die Eigenschaften für diesen Dienst an,
+  - und kopieren Sie die gesamte Ressourcen-ID (`Resource ID`).
+
 **F: Kann ich mein Modell herunterladen und lokal ausführen?**
 
 **A:** Modelle können nicht heruntergeladen und lokal ausgeführt werden.
@@ -94,7 +116,7 @@ Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsuppor
 
 **F: Wie groß darf das Dataset maximal sein, und was ist der Grund für dieses Limit?**
 
-**A:** Das aktuelle Limit für ein Dataset beträgt 2GB. Grund für das Limit ist, dass die Größe einer Datei für den HTTP-Upload begrenzt ist. 
+**A:** Das aktuelle Limit für ein Dataset beträgt 2GB. Grund für das Limit ist, dass die Größe einer Datei für den HTTP-Upload begrenzt ist.
 
 **F: Kann ich meine Textdateien komprimieren (ZIP), damit ich eine größere Textdatei hochladen kann?** 
 

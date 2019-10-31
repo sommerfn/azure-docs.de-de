@@ -3,24 +3,24 @@ title: Visualisieren von Apache Hive-Daten mit Power BI – Azure HDInsight
 description: Erfahren Sie, wie Sie Microsoft Power BI verwenden, um von Azure HDInsight verarbeitete Hive-Daten zu visualisieren.
 keywords: hdinsight, hadoop, hive, interactive query, interactive hive, LLAP, odbc
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,
+ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 0e8f0e6ff6ba4b280d6174b6cec231ddca782912
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 10/15/2019
+ms.openlocfilehash: 9b99e24d00441f0caab4b55a46e5ccc8be9cdd64
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058596"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529538"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Visualisieren von Apache Hive-Daten mit Microsoft Power BI mithilfe von ODBC in Azure HDInsight
 
 Hier erfahren Sie, wie Sie Microsoft Power BI Desktop mithilfe von ODBC mit Azure HDInsight verbinden und Apache Hive-Daten visualisieren.
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Sie können den Hive-ODBC-Treiber verwenden, um Importe über den generischen ODBC-Connector in Power BI Desktop durchzuführen. Aufgrund der fehlenden Interaktivität der Hive-Abfrage-Engine wird die Verwendung für BI-Workloads jedoch nicht empfohlen. Aus Leistungsgründen sind der [interaktive HDInsight-Abfrageconnector](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) und der [HDInsight Spark-Connector](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) eine bessere Wahl.
 
 In diesem Artikel laden Sie die Daten aus der Hive-Tabelle `hivesampletable` in Power BI. Die Hive-Tabelle enthält einige Mobiltelefon-Nutzungsdaten. Anschließend zeichnen Sie die Nutzungsdaten auf eine Weltkarte:
@@ -43,31 +43,33 @@ Informationen finden Sie unter [Erstellen einer Hive ODBC-Datenquelle](apache-ha
 
 ## <a name="load-data-from-hdinsight"></a>Laden von Daten aus HDInsight
 
-Die Hive-Tabelle „hivesampletable“ ist in allen HDInsight-Clustern enthalten.
+Die Hive-Tabelle **hivesampletable** ist in allen HDInsight-Clustern enthalten.
 
 1. Starten Sie Power BI Desktop.
 
-2. Navigieren Sie im oberen Menü zu **Start** > **Daten abrufen** > **Mehr...** .
+1. Navigieren Sie im oberen Menü zu **Start** > **Daten abrufen** > **Mehr...** .
 
     ![HDInsight Excel Power BI – Daten öffnen](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-open-odbc.png)
 
-3. Wählen Sie im Dialogfeld **Daten abrufen** links die Option **Andere** und rechts die Option **ODBC** aus, und wählen Sie anschließend unten **Verbinden** aus.
+1. Wählen Sie im Dialogfeld **Daten abrufen** links die Option **Andere** und rechts die Option **ODBC** aus, und wählen Sie anschließend unten **Verbinden** aus.
 
-4. Wählen Sie in der Dropdownliste des Dialogfelds **Aus ODBC** den im letzten Abschnitt erstellten Datenquellennamen und anschließend **OK** aus.
+1. Wählen Sie in der Dropdownliste des Dialogfelds **Aus ODBC** den im letzten Abschnitt erstellten Datenquellennamen aus. Wählen Sie dann **OK**aus.
 
-5. Erweitern Sie im Dialogfeld **Navigator** die Optionen **ODBC > HIVE > Standard**, wählen Sie **hivesampletable** aus, und wählen Sie anschließend **Laden** aus.
+1. Bei der ersten Verwendung wird das Dialogfeld **ODBC-Treiber** geöffnet. Wählen Sie im linken Menü die Option **Standard oder Benutzerdefiniert** aus. Wählen Sie anschließend **Verbinden** aus, um den **Navigator** zu öffnen.
 
-6. Wählen Sie im Dialogfeld **ODBC-Treiber** die Option **Standard oder Benutzerdefiniert** und anschließend **Verbinden** aus.
+1. Erweitern Sie im Dialogfeld **Navigator** die Optionen **ODBC > HIVE > Standard**, wählen Sie **hivesampletable** aus, und wählen Sie anschließend **Laden** aus.
 
 ## <a name="visualize-data"></a>Visualisieren von Daten
 
 Fahren Sie ab der vorherigen Prozedur fort.
 
-1. Wählen Sie im Bereich „Visualisierungen“ **Karte** aus.  Dabei handelt es sich um ein Globussymbol.
+1. Wählen Sie im Bereich „Visualisierungen“ die Option **Karte** (Globussymbol) aus.
 
     ![HDInsight Power BI passt Bericht an](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
-2. Wählen Sie im Bereich **Felder** die Optionen **country** und **devicemake** aus. Ihnen werden die auf die Karte gezeichneten Daten angezeigt.
-3. Erweitern Sie die Karte.
+
+1. Wählen Sie im Bereich **Felder** die Optionen **country** und **devicemake** aus. Ihnen werden die auf die Karte gezeichneten Daten angezeigt.
+
+1. Erweitern Sie die Karte.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

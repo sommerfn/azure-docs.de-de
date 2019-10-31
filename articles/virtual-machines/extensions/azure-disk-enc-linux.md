@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: ejarvi
-ms.openlocfilehash: 6a81f105f9632a7ca7e2bf7188e358274020c78f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1801ca8bd59153de81ef680253da229e2bd4a338
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084767"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597869"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Azure Disk Encryption für Linux (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -28,16 +28,11 @@ Azure Disk Encryption nutzt das Subsystem dm-crypt in Linux zur Gewährleistung 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Eine vollständige Liste der Voraussetzungen finden Sie unter [Voraussetzungen für Azure Disk Encryption](
-../../security/azure-security-disk-encryption-prerequisites.md).
+Eine vollständige Liste mit den Voraussetzungen finden Sie unter [Azure Disk Encryption für Linux-VMs](../linux/disk-encryption-overview.md). Achten Sie besonders auf die folgenden Abschnitte:
 
-### <a name="operating-system"></a>Betriebssystem
-
-Azure Disk Encryption wird für die folgenden ausgewählten Verteilungen und Versionen unterstützt.  Unter [Von Azure Disk Encryption unterstützte Betriebssysteme: Linux](../../security/azure-security-disk-encryption-prerequisites.md#linux) finden Sie eine Liste unterstützter Linux-Distributionen.
-
-### <a name="internet-connectivity"></a>Internetkonnektivität
-
-Für Azure Disk Encryption für Linux ist eine Internetverbindung für den Zugriff auf Active Directory, Key Vault, Storage und Paketverwaltungs-Endpunkte erforderlich.  Weitere Informationen finden Sie unter [Voraussetzungen für Azure Disk Encryption](../../security/azure-security-disk-encryption-prerequisites.md).
+- [Azure Disk Encryption für Linux-VMs](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [Weitere VM-Anforderungen](../linux/disk-encryption-overview.md#additional-vm-requirements)
+- [Netzwerkanforderungen](../linux/disk-encryption-overview.md#networking-requirements)
 
 ## <a name="extension-schemata"></a>Erweiterungsschemas
 

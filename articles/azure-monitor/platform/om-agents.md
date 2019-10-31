@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c8d6e949722e291eab4ac45f6abb610acfa10d68
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035611"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532403"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
@@ -34,7 +34,7 @@ Die Verknüpfung mit System Center Operations Manager kommt Ihrer Dienstbetriebs
 
 Die Agents, die Daten an die Verwaltungsgruppe von Operations Manager melden, sammeln Daten von Ihren Servern auf der Grundlage der [Log Analytics-Datenquellen](agent-data-sources.md) und -Lösungen, die Sie in Ihrem Arbeitsbereich aktiviert haben. Je nach aktivierter Lösung werden die Daten entweder direkt von einem Operations Manager-Verwaltungsserver oder (aufgrund des Umfangs der Daten, die im mit einem Agent verwalteten System gesammelt werden) direkt vom Agent an einen Log Analytics-Arbeitsbereich gesendet. Der Verwaltungsserver leitet die Daten direkt an den Dienst weiter. Sie werden nicht in die Betriebs- oder Data Warehouse-Datenbank geschrieben. Sollte die Verbindung zwischen einem Verwaltungsserver und Azure Monitor getrennt werden, werden die Daten lokal zwischengespeichert, bis die Kommunikation wiederhergestellt ist. Wenn der Verwaltungsserver aufgrund einer geplanten Wartung oder eines ungeplanten Ausfalls offline ist, wird die Verbindung mit Azure Monitor von einem anderen Verwaltungsserver in der Verwaltungsgruppe übernommen.  
 
-Das nachstehende Diagramm zeigt die Verbindung zwischen den Verwaltungsservern und Agents in einer Verwaltungsgruppe von System Center Operations Manager und Azure Monitor, einschließlich der Richtung und der Ports.   
+Das nachstehende Diagramm zeigt die Verbindung zwischen den Verwaltungsservern und Agents in einer Verwaltungsgruppe von System Center Operations Manager und Azure Monitor, einschließlich der Richtung und der Ports.
 
 ![oms-operations-manager-integration-diagram](./media/om-agents/oms-operations-manager-connection.png)
 
@@ -65,7 +65,7 @@ Bevor Sie beginnen, überprüfen Sie die folgenden Anforderungen.
 >[!NOTE]
 >Aktuelle Änderungen an den Azure-APIs werden Kunden daran hindern, die Integration zwischen ihrer Verwaltungsgruppe und Azure Monitor zum ersten Mal erfolgreich zu konfigurieren. Für Kunden, die ihre Verwaltungsgruppe bereits in den Dienst integriert haben, sind Sie nicht betroffen, es sei denn, Sie müssen die vorhandene Verbindung neu konfigurieren.  
 >Für die folgenden Versionen von Operations Manager wurde ein neues Management Pack veröffentlicht:
-> - Für System Center Operations Manager 2019 wird ein Management Pack mit dem Operations Manager-Build bereitgestellt.
+> - Für System Center Operations Manager 2019 ist dieses Management Pack auf den Quellmedien enthalten und wird bei der Einrichtung einer neuen Verwaltungsgruppe oder während eines Upgrades installiert.
 >- Das Operations Manager 1801 Management Pack kann auch für Operations Manager 1807 angewendet werden.
 >- Laden Sie für System Center Operations Manager 1801 das Management Pack [hier](https://www.microsoft.com/download/details.aspx?id=57173) herunter.
 >- Laden Sie für System Center Operations Manager 2016 das Management Pack [hier](https://www.microsoft.com/download/details.aspx?id=57172) herunter.  
@@ -74,7 +74,7 @@ Bevor Sie beginnen, überprüfen Sie die folgenden Anforderungen.
 
 ### <a name="network"></a>Netzwerk
 
-Die folgende Aufstellung enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Operations Manager-Agent, der Verwaltungsserver und die Betriebskonsole benötigen, um mit Azure Monitor zu kommunizieren. Der Datenverkehr von jeder Komponente ist aus dem Netzwerk ausgehender Datenverkehr an Azure Monitor.   
+Die folgende Aufstellung enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Operations Manager-Agent, der Verwaltungsserver und die Betriebskonsole benötigen, um mit Azure Monitor zu kommunizieren. Der Datenverkehr von jeder Komponente ist aus dem Netzwerk ausgehender Datenverkehr an Azure Monitor.
 
 |Resource | Portnummer| HTTP-Prüfung umgehen|  
 |---------|------|-----------------------|  

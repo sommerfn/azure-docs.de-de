@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035111"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595365"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index  
 
@@ -119,12 +119,12 @@ Im Folgenden finden Sie ein Beispiel für eine Verteilung einer geordneten CCI-T
 ## <a name="create-ordered-cci-on-large-tables"></a>Erstellen eines sortierten CCI für große Tabellen
 Das Erstellen eines sortierten CCI ist ein Offlinevorgang.  Bei Tabellen ohne Partitionen sind die Daten für Benutzer erst verfügbar, wenn der Erstellungsprozess des sortierten CCI abgeschlossen ist.   Da die Engine geordnete CCI-Partitionen für partitionierte Tabellen nach Partition erstellt, können Benutzer auf die Daten in den Partitionen weiterhin zugreifen, für die die Erstellung der sortierten CCI-Tabelle aktuell nicht erfolgt.   Mit dieser Option können Sie die Ausfallzeiten beim Erstellen eines sortierten CCI für große Tabellen minimieren: 
 
-1.  Erstellen Sie Partitionen für die große Zieltabelle (Tabelle A).
-2.  Erstellen Sie eine leere sortierte CCI-Tabelle (Tabelle B), die dieselben Tabellen- und Partitionsschemas hat wie Tabelle A.
+1.  Erstellen Sie Partitionen für die große Zieltabelle (Table_A).
+2.  Erstellen Sie eine leere sortierte CCI-Tabelle (Table_B), die dieselben Tabellen- und Partitionsschemas wie Tabelle A aufweist.
 3.  Fügen Sie eine Partition von Tabelle A in Tabelle B ein.
-4.  Führen Sie „ALTER INDEX <Geordneter _CCI_Index> REBUILD PARTITION = <Partitions_ID>“ für Tabelle B aus, um die eingefügte Partition neu zu erstellen.  
-5.  Wiederholen Sie die Schritte 3 und 4 für jede Partition in Tabelle A.
-6.  Nachdem alle Partitionen von Tabelle A in Tabelle B eingefügt und neu erstellt wurden, löschen Sie Tabelle A und benennen Tabelle B in Tabelle A um. 
+4.  Führen Sie „ALTER INDEX <Ordered_CCI_Index> ON <Table_B> REBUILD PARTITION = <Partition_ID>“ für Tabelle B aus, um die eingefügte Partition neu zu erstellen.  
+5.  Wiederholen Sie die Schritte 3 und 4 für jede Partition in „Table_A“.
+6.  Nachdem alle Partitionen von „Table_A“ in „Table_B“ eingefügt und neu erstellt wurden, löschen Sie „Table_A“ und benennen „Table_B“ in „Table_A“ um. 
 
 ## <a name="examples"></a>Beispiele
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180108"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550645"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -78,11 +78,12 @@ Bei Verwendung des Premium-Plans werden Instanzen des Azure Functions-Hosts basi
 
 Informationen dazu, wie Sie diese Optionen konfigurieren können, finden Sie im [Dokument zum Premium-Plan für Azure Functions](functions-premium-plan.md).
 
-Anstatt pro Ausführung und genutztem Arbeitsspeicher abzurechnen, basiert die Abrechnung für den Premium-Plan auf der Anzahl der Kernsekunden, der Ausführungszeit und dem für benötigte und reservierte Instanzen verwendeten Arbeitsspeicher.  Mindestens eine Instanz muss immer betriebsbereit sein. Dies bedeutet, dass unabhängig von der Anzahl der Ausführungen feste monatliche Kosten pro aktivem Plan anfallen.
+Anstatt pro Ausführung und genutztem Arbeitsspeicher abzurechnen, basiert die Abrechnung für den Premium-Plan auf der Anzahl von Kernsekunden und dem für benötigte und vorab aufgewärmte Instanzen verwendeten Arbeitsspeicher. Pro Plan muss immer mindestens eine Instanz aufgewärmt sein. Dies bedeutet, dass pro aktivem Plan unabhängig von der Ausführungsanzahl monatliche Mindestkosten anfallen. Beachten Sie, dass sich alle Funktions-Apps in einem Premium-Plan vorab aufgewärmte und aktive Instanzen teilen.
 
 Ziehen Sie den Premium-Plan für Azure Functions in folgenden Situationen in Betracht:
 
 * Ihre Funktions-Apps werden kontinuierlich oder nahezu kontinuierlich ausgeführt.
+* Sie verfügen über eine hohe Anzahl kleiner Ausführungen und haben hohe Ausführungskosten, aber geringe Kosten für Gigabytesekunden im Verbrauchsplan.
 * Sie benötigen weitere CPU- oder Arbeitsspeicheroptionen zusätzlich zu den vom Verbrauchsplan bereitgestellten.
 * Ihr Code muss länger ausgeführt werden, als im Verbrauchsplan als [maximal zulässige Ausführungsdauer](#timeout) angegeben ist.
 * Sie benötigen Features, die nur bei einem Premium-Plan zur Verfügung stehen, z.B. VNET/VPN-Konnektivität.

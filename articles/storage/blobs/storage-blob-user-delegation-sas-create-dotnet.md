@@ -5,85 +5,54 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671328"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595210"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET (Vorschau)
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Azure Active Directory-Anmeldeinformationen (Azure AD) verwenden, um eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Storage.Blobs) zu erstellen.
+In diesem Artikel erfahren Sie, wie Sie unter Verwendung von Azure AD-Anmeldeinformationen (Azure Active Directory) eine SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure Storage-Clientbibliothek für .NET erstellen.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>Authentifizieren mit der Azure Identity-Bibliothek (Vorschauversion)
+
+Die Azure Identity-Clientbibliothek für .NET (Vorschauversion) dient zur Authentifizierung eines Sicherheitsprinzipals. Wenn Ihr Code in Azure ausgeführt wird, ist der Sicherheitsprinzipal eine verwaltete Identität für Azure-Ressourcen.
+
+Wenn Ihr Code in der Entwicklungsumgebung ausgeführt wird, erfolgt die Authentifizierung ggf. automatisch. Abhängig von den verwendeten Tools kann aber auch eine Browseranmeldung erforderlich sein. Microsoft Visual Studio unterstützt einmaliges Anmelden (Single Sign-On, SSO), sodass automatisch das aktive Azure AD-Benutzerkonto für die Authentifizierung verwendet wird. Weitere Informationen zu SSO finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../../active-directory/manage-apps/what-is-single-sign-on.md).
+
+Bei anderen Entwicklungstools ist ggf. eine Anmeldung über einen Webbrowser erforderlich. Für die Authentifizierung über die Entwicklungsumgebung kann auch ein Dienstprinzipal verwendet werden. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
+
+Nach der Authentifizierung erhält die Azure Identity-Clientbibliothek Tokenanmeldeinformationen. Diese Tokenanmeldeinformationen werden im Dienstclientobjekt gekapselt, das Sie erstellen, um Vorgänge für Azure Storage auszuführen. Die Bibliothek führt diesen Schritt automatisch für Sie durch und ruft die entsprechenden Tokenanmeldeinformationen ab.
+
+Weitere Informationen zur Azure Identity-Clientbibliothek finden Sie unter [Azure Identity-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+
+## <a name="assign-rbac-roles-for-access-to-data"></a>Zuweisen von RBAC-Rollen für den Datenzugriff
+
+Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blobdaten zuzugreifen, muss dieser Sicherheitsprinzipal über Berechtigungen für die Ressource verfügen. Dem Sicherheitsprinzipal muss eine RBAC-Rolle zugewiesen werden, die den Zugriff auf Blobdaten in Azure Storage ermöglicht. Dabei spielt es keine Rolle, ob es sich bei dem Sicherheitsprinzipal um eine verwaltete Identität in Azure oder um ein Azure AD-Benutzerkonto handelt, mit dem Code in der Entwicklungsumgebung ausgeführt wird. Informationen zur Zuweisung von Berechtigungen per RBAC finden Sie unter **Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory** im Abschnitt [Zuweisen von RBAC-Rollen für Zugriffsrechte](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
+
 ## <a name="install-the-preview-packages"></a>Installieren der Vorschaupakete
 
-In den Beispielen in diesem Artikel wird die neueste Vorschauversion der Azure Storage-Clientbibliothek für Blob Storage verwendet. Führen Sie zum Installieren des Vorschaupakets den folgenden Befehl an der NuGet-Paket-Manager-Konsole aus:
+In den Beispielen in diesem Artikel wird die neueste Vorschauversion der [Azure Storage-Clientbibliothek für Blob Storage](https://www.nuget.org/packages/Azure.Storage.Blobs) verwendet. Führen Sie zum Installieren des Vorschaupakets den folgenden Befehl an der NuGet-Paket-Manager-Konsole aus:
 
-```
+```powershell
 Install-Package Azure.Storage.Blobs -IncludePrerelease
 ```
 
-In den Beispielen in diesem Artikel wird auch die neueste Vorschauversion der [Azure Identity-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Identity/) zur Authentifizierung mit Azure AD-Anmeldeinformationen verwendet. Mit der Azure Identity-Clientbibliothek wird ein Sicherheitsprinzipal authentifiziert. Der authentifizierte Sicherheitsprinzipal kann dann die SAS für die Benutzerdelegierung erstellen. Weitere Informationen zur Azure Identity-Clientbibliothek finden Sie unter [Azure Identity-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+In den Beispielen in diesem Artikel wird auch die neueste Vorschauversion der [Azure Identity-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Identity/) zur Authentifizierung mit Azure AD-Anmeldeinformationen verwendet. Führen Sie zum Installieren des Vorschaupakets den folgenden Befehl an der NuGet-Paket-Manager-Konsole aus:
 
-```
+```powershell
 Install-Package Azure.Identity -IncludePrerelease
 ```
-
-## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
-
-Verwenden Sie für die Authentifizierung mit Azure AD-Anmeldeinformationen über die Azure Identity-Clientbibliothek entweder einen Dienstprinzipal oder eine verwaltete Identität als Sicherheitsprinzipal, je nachdem, wo der Code ausgeführt wird. Wenn der Code in einer Entwicklungsumgebung ausgeführt wird, verwenden Sie einen Dienstprinzipal zu Testzwecken. Wenn der Code in Azure ausgeführt wird, verwenden Sie eine verwaltete Identität. In diesem Artikel wird davon ausgegangen, dass Code über die Entwicklungsumgebung ausgeführt wird. Außerdem wird erläutert, wie Sie die SAS für die Benutzerdelegierung mithilfe eines Dienstprinzipals erstellen.
-
-Rufen Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) auf, um einen Dienstprinzipal über die Azure-Befehlszeilenschnittstelle zu erstellen und eine RBAC-Rolle zuzuweisen. Geben Sie eine Azure Storage-Datenzugriffsrolle an, die dem neuen Dienstprinzipal zugewiesen werden soll. Die Rolle muss die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** enthalten. Weitere Informationen zu den für Azure Storage bereitgestellten integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md).
-
-Geben Sie außerdem den Bereich für die Rollenzuweisung an. Der Dienstprinzipal erstellt den Benutzerdelegierungsschlüssel, bei dem es sich um einen Vorgang handelt, der auf der Ebene des Speicherkontos ausgeführt wird. Daher sollte die Rollenzuweisung auf der Ebene des Speicherkontos, der Ressourcengruppe oder des Abonnements festgelegt werden. Weitere Informationen zu RBAC-Berechtigungen zum Erstellen einer SAS für die Benutzerdelegierung finden Sie im Abschnitt **Zuweisen von Berechtigungen mit RBAC** unter [Erstellen einer SAS für die Benutzerdelegierung (REST-API)](/rest/api/storageservices/create-user-delegation-sas).
-
-Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle zum Dienstprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die Rollenzuweisung vorzunehmen.
-
-Im folgenden Beispiel wird ein neuer Dienstprinzipal über die Azure-Befehlszeilenschnittstelle erstellt. Außerdem wird ihm die Rolle **Storage Blob Data Reader** im Kontobereich zugewiesen.
-
-```azurecli-interactive
-az ad sp create-for-rbac \
-    --name <service-principal> \
-    --role "Storage Blob Data Reader" \
-    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
-```
-
-Mit dem Befehl `az ad sp create-for-rbac` wird eine Liste der Dienstprinzipaleigenschaften im JSON-Format zurückgegeben. Kopieren Sie diese Werte, damit Sie sie zum Erstellen der erforderlichen Umgebungsvariablen im nächsten Schritt verwenden können.
-
-```json
-{
-    "appId": "generated-app-ID",
-    "displayName": "service-principal-name",
-    "name": "http://service-principal-uri",
-    "password": "generated-password",
-    "tenant": "tenant-ID"
-}
-```
-
-> [!IMPORTANT]
-> Die RBAC-Rollenzuweisungen können einige Minuten dauern.
-
-## <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
-
-Über die Azure Identity-Clientbibliothek werden zur Laufzeit Werte aus drei Umgebungsvariablen gelesen, um den Dienstprinzipal zu authentifizieren. In der folgenden Tabelle sind die für die einzelnen Umgebungsvariablen festzulegenden Werte beschrieben.
-
-|Umgebungsvariable|Wert
-|-|-
-|`AZURE_CLIENT_ID`|Die App-ID für den Dienstprinzipal
-|`AZURE_TENANT_ID`|Die Azure AD-Mandanten-ID des Dienstprinzipals
-|`AZURE_CLIENT_SECRET`|Das für den Dienstprinzipal generierte Kennwort
-
-> [!IMPORTANT]
-> Nachdem Sie die Umgebungsvariablen festgelegt haben, schließen Sie das Konsolenfenster, und öffnen Sie es dann erneut. Wenn Sie Visual Studio oder eine andere Entwicklungsumgebung verwenden, müssen Sie möglicherweise die Entwicklungsumgebung neu starten, damit die neuen Umgebungsvariablen registriert werden.
 
 ## <a name="add-using-directives"></a>Hinzufügen von using-Direktiven
 
@@ -100,11 +69,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="authenticate-the-service-principal"></a>Authentifizieren des Dienstprinzipals
+## <a name="get-an-authenticated-token-credential"></a>Abrufen authentifizierter Tokenanmeldeinformationen
 
-Erstellen Sie zum Authentifizieren des Dienstprinzipals eine Instanz der [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential)-Klasse. Der Konstruktor `DefaultAzureCredential` liest die Umgebungsvariablen, die Sie zuvor erstellt haben.
+Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), um Tokenanmeldeinformationen abzurufen, die in Ihrem Code zum Autorisieren von Anforderungen für Azure Storage verwendet werden können.
 
-Im folgenden Codeausschnitt sehen Sie, wie Sie die authentifizierten Anmeldeinformationen abrufen und damit einen Dienstclient für Blob Storage erstellen.
+Im folgenden Codeausschnitt sehen Sie, wie Sie die authentifizierten Tokenanmeldeinformationen abrufen und damit einen Dienstclient für Blob Storage erstellen:
 
 ```csharp
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);

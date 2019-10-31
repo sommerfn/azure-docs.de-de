@@ -1,27 +1,22 @@
 ---
 title: Einrichten von Warnungen in Azure Application Insights | Microsoft Docs
 description: Legen Sie fest, dass Sie über längere Reaktionszeiten, Ausnahmen und andere Leistungs- oder Nutzungsänderungen in Ihrer Web-App informiert werden.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.reviewer: lagayhar
-ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/23/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/23/2019
+ms.reviewer: lagayhar
+ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60693384"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678403"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
-[Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
+[Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder der Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
 
 Application Insights überwacht die Live-App auf einer [Vielzahl von Plattformen][platforms], um Sie bei der Diagnose von Leistungsproblemen und beim Auswerten von Nutzungsmustern zu unterstützen.
 
@@ -29,7 +24,7 @@ Es gibt mehrere Warnungstypen:
 
 * [**Metrikwarnungen**](../../azure-monitor/platform/alerts-metric-overview.md) informieren Sie darüber, wenn eine Metrik für einen bestimmten Zeitraum einen Schwellenwert überschreitet – z. B. in Bezug auf Reaktionszeiten, Anzahl von Ausnahmen, CPU-Nutzung oder Seitenaufrufe.
 * [**Protokollwarnungen**](../../azure-monitor/platform/alerts-unified-log.md) werden dazu verwendet, Warnungen zu beschreiben, bei denen das Warnsignal auf einer benutzerdefinierten Kusto-Abfrage basiert.
-* [**Webtests**][availability] informieren Sie, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability].
+* Bei [**Webtests**][availability] werden Sie informiert, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability]
 * Die [**Proaktive Diagnose**](../../azure-monitor/app/proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
 
 ## <a name="set-a-metric-alert"></a>Festlegen einer Metrikwarnung
@@ -84,7 +79,7 @@ Das hängt von Ihrer Anwendung ab. Zunächst einmal sollten Sie nicht zu viele M
 
 Zu den gängigen Warnungen zählen Folgende:
 
-* [Browsermetriken][client], insbesondere **Browser-Seitenladezeiten**, eignen sich für Webanwendungen. Wenn Ihre Seite über viele Skripts verfügt, suchen Sie nach **Browserausnahmen**. Um diese Metriken und Warnungen zu erhalten, müssen Sie die [Webseitenüberwachung][client] einrichten.
+* [Browsermetriken][client], insbesondere Browser-**Seitenladezeiten**, eignen sich für Webanwendungen. Wenn Ihre Seite über viele Skripts verfügt, suchen Sie nach **Browserausnahmen**. Um diese Metriken und Warnungen zu erhalten, müssen Sie die [Webseitenüberwachung][client] einrichten.
 * **Serverantwortzeit** für die Serverseite von Webanwendungen. Achten Sie neben der Einrichtung von Warnungen auf diese Metrik, um festzustellen, ob sie bei hohen Anforderungsraten unverhältnismäßig stark variiert: Dies kann darauf hindeuten, dass für Ihre App nicht genügend Systemressourcen vorhanden sind. 
 * **Serverausnahmen** erfordern ein [zusätzliches Setup](../../azure-monitor/app/asp-net-exceptions.md), damit sie angezeigt werden.
 

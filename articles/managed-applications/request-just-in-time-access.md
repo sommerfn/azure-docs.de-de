@@ -1,17 +1,17 @@
 ---
-title: Aktivieren und Anfordern des Just-In-time-Zugriffs für Azure Managed Applications
+title: Anfordern von Just-In-Time-Zugriff – Azure Managed Applications
 description: Beschreibt, wie Herausgeber von Azure Managed Applications den Just-In-time-Zugriff auf eine verwaltete Anwendung anfordern.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 0d595d4c96e9f87f1c8eece5d47bf4c8cdd58d7c
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: fdd1dcf5ab6b58a91534a465a8c92c10de0d2097
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574985"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528951"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Aktivieren und Anfordern des Just-In-time-Zugriffs für Azure Managed Applications
 

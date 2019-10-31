@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: pafarley
-ms.openlocfilehash: 31b8dfc234ac99d6f04061d6596e3dc8113e8d0f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213828"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753483"
 ---
 # <a name="label-images-faster-with-suggested-tags"></a>Schnelleres Beschriften von Bildern mit vorgeschlagenen Tags
 
@@ -27,8 +27,7 @@ Wenn Sie Bilder für ein Custom Vision-Modell kennzeichnen, verwendet der Dienst
 
 Beachten Sie die folgenden Einschränkungen:
 
-* Fordern Sie nur vorgeschlagene Tags für Bilder an, deren Inhalt bereits einmal trainiert wurde. Rufen Sie keine Vorschläge für ein neues Tag ab, das Sie gerade erst zu trainieren beginnen.
-* Sie können vorgeschlagene Tags nur für Bilder verwenden, die nicht gekennzeichnet sind. Sie können keine Vorschläge für zusätzliche Tags für ein bereits gekennzeichnetes Bild erhalten.
+* Fordern Sie vorgeschlagene Tags möglichst nur für Bilder an, deren Inhalt bereits einmal trainiert wurde. Rufen Sie keine Vorschläge für ein neues Tag ab, das Sie gerade erst zu trainieren beginnen.
 
 > [!IMPORTANT]
 > Das Feature für vorgeschlagene Tags verwendet dasselbe [Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) wie normale Vorhersagen. Wenn Sie zum ersten Mal vorgeschlagene Tags für eine Reihe von Bildern auslösen, werden Ihnen dieselben Gebühren wie bei Vorhersageaufrufen berechnet. Danach speichert der Dienst die Ergebnisse für die ausgewählten Bilder 30 Tage lang in einer Datenbank, und Sie können innerhalb dieses Zeitraums jederzeit kostenlos darauf zugreifen. Nach 30 Tagen werden Sie belastet, wenn Sie die vorgeschlagenen Tags erneut anfordern.

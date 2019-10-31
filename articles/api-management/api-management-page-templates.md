@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1189689566da84df6d6b8845bf7c81bd8aa5f1ab
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072226"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Seitenvorlagen in Azure API Management
@@ -39,7 +39,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="SignIn"></a> Anmelden  
  Mit der Vorlage zum **Anmelden** können Sie die Anmeldeseite im Entwicklerportal anpassen.  
   
- ![Anmeldeseite](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM-Anmeldeseite, Vorlagen im Entwicklerportal")  
+ ![Anmeldeseite](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM-Anmeldeseite: Vorlagen im Entwicklerportal")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -138,7 +138,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="SignUp"></a> Registrieren  
  Mit der Vorlage zum **Registrieren** können Sie die Registrierungsseite im Entwicklerportal anpassen.  
   
- ![Registrierungsseite](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM-Registrierungsseite, Vorlagen im Entwicklerportal")  
+ ![Registrierungsseite](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM-Registrierungsseite: Vorlagen im Entwicklerportal")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
@@ -186,7 +186,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ##  <a name="PageNotFound"></a> Seite nicht gefunden  
  Mit der Vorlage für **Seite nicht gefunden** können Sie die Seite für eine nicht gefundene Seite im Entwicklerportal anpassen.  
   
- ![Seite nicht gefunden](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM „Seite nicht gefunden“, Vorlagen im Entwicklerportal")  
+ ![Seite nicht gefunden](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM: Seite nicht gefunden: Vorlagen im Entwicklerportal")  
   
 ### <a name="default-template"></a>Standardvorlage  
   
