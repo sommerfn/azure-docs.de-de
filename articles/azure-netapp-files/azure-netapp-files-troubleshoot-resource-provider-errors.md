@@ -13,62 +13,62 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: f417d83a67f2f3afa33a83a56a72d0d82c64ab0d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850003"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597205"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern 
 
-In diesem Artikel werden häufige Fehler von Azure NetApp Files-Ressourcenanbietern, deren Ursachen, Lösungen und Problemumgehungen beschrieben (sofern vorhanden).
+In diesem Artikel werden häufige Fehler von Azure NetApp Files-Ressourcenanbietern sowie die zugehörigen Ursachen, Lösungen und Problemumgehungen beschrieben (sofern vorhanden).
 
-## <a name="common-azure-netapp-files-resource-provider-errors"></a>Die häufigsten Fehler mit Azure NetApp Files-Ressourcenanbietern
+## <a name="common-azure-netapp-files-resource-provider-errors"></a>Häufige Fehler mit Azure NetApp Files-Ressourcenanbietern
 
-***„BareMetalTenantId“*** kann nicht geändert werden.  
+***„BaremetalTenantId“ kann nicht geändert werden.***  
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu aktualisieren oder zu patchen und die Eigenschaft `BaremetalTenantId` einen geänderten Wert hat.
+Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu aktualisieren oder zu patchen, und die `BaremetalTenantId`-Eigenschaft einen geänderten Wert aufweist.
 
 * Ursache:   
-Sie versuchen, ein Volume zu aktualisieren, und die Eigenschaft `BaremetalTenantId` hat einen anderen Wert als der in Azure gespeicherte Wert.
+Sie versuchen, ein Volume zu aktualisieren, und die `BaremetalTenantId`-Eigenschaft weist einen anderen Wert als den in Azure gespeicherten Wert auf.
 * Lösung:   
 `BaremetalTenantId` nicht in den Patch und die Update (Put)-Anforderung aufnehmen. Alternativ können Sie auch sicherstellen, dass `BaremetalTenantId` in der Anforderung identisch ist.
 
-***Die ServiceLevel kann nicht geändert werden.***  
+***Servicelevel kann nicht geändert werden.***  
 
-Dieser Fehler tritt auf, wenn Sie versuchen, einen Kapazitätspool mit einem anderen Servicelevel zu aktualisieren oder zu patchen, wenn der Kapazitätspool bereits Volumes enthält.
+Dieser Fehler tritt beim Versuch auf, einen Kapazitätspool mit einem anderen Servicelevel zu aktualisieren oder zu patchen, wenn der Kapazitätspool bereits Volumes enthält.
 
 * Ursache:   
 Sie versuchen, einen Kapazitätspool-Servicelevel zu aktualisieren, wenn der Pool Volumes enthält.
 * Lösung:   
-Löschen Sie alle Datenträger aus dem Kapazitätspool und ändern Sie dann den Servicelevel.
+Löschen Sie alle Volumes aus dem Kapazitätspool, und ändern Sie dann den Servicelevel.
 * Problemumgehung:   
-Legen Sie einen weiteren Kapazitätspool an und legen Sie die Volumes dann im neuen Kapazitätspool wieder an.
+Legen Sie einen weiteren Kapazitätspool an, und erstellen Sie die Volumes dann im neuen Kapazitätspool neu.
 
-***PoolId kann nicht geändert werden***  
+***PoolId kann nicht geändert werden.***  
 
-Dieser Fehler tritt auf, wenn Sie versuchen, einen Kapazitätspool aktualisieren oder zu patchen und die Eigenschaft `PoolId` einen geänderten Wert hat.
+Dieser Fehler tritt auf, wenn Sie versuchen, einen Kapazitätspool aktualisieren oder zu patchen, und die `PoolId`-Eigenschaft einen geänderten Wert aufweist.
 
 * Ursache:   
-Sie versuchen, eine `PoolId`-Eigenschaft für den Kapazitätspool zu aktualisieren. Die Eigenschaft `PoolId` ist eine schreibgeschützte Eigenschaft und kann nicht geändert werden.
+Sie versuchen, eine `PoolId`-Eigenschaft für den Kapazitätspool zu aktualisieren. Die `PoolId`-Eigenschaft ist eine schreibgeschützte Eigenschaft und kann nicht geändert werden.
 * Lösung:   
 `PoolId` nicht in den Patch und die Update (Put)-Anforderung aufnehmen.  Alternativ können Sie auch sicherstellen, dass `PoolId` in der Anforderung identisch ist.
 
-***Erstellungstoken können nicht geändert werden.***
+***Erstellungstoken kann nicht geändert werden.***
 
-Dieser Fehler tritt bei dem Versuch auf, den Dateipfad (`CreationToken`) zu ändern, nachdem das Volume erstellt wurde. Der Dateipfad (`CreationToken`) muss beim Erstellen des Volumes festgelegt werden und kann später nicht mehr geändert werden.
+Dieser Fehler tritt beim Versuch auf, den Dateipfad (`CreationToken`) zu ändern, nachdem das Volume erstellt wurde. Der Dateipfad (`CreationToken`) muss beim Erstellen des Volumes festgelegt werden und kann später nicht mehr geändert werden.
 
 * Ursache:   
 Sie versuchen, den Dateipfad (`CreationToken`) nach dem Erstellen des Volumes zu ändern. Dies ist kein unterstützter Vorgang. 
 * Lösung:   
-Wenn Sie den Dateipfad nicht ändern müssen, dann können Sie den Parameter aus der Anforderung entfernen, um die Fehlermeldung zu schließen.
+Falls Sie den Dateipfad nicht unbedingt ändern müssen, können Sie den Parameter aus der Anforderung entfernen, um die Fehlermeldung zu schließen.
 * Problemumgehung:   
-Wenn Sie den Dateipfad (`CreationToken`) ändern müssen, können Sie ein neues Volume mit einem neuen Dateipfad erstellen und die Daten dann auf das neue Volume migrieren.
+Wenn Sie den Dateipfad (`CreationToken`) ändern müssen, können Sie ein neues Volume mit einem neuen Dateipfad erstellen und die Daten dann zum neuen Volume migrieren.
 
-***Erstellungstoken müssen mindestens 16 Zeichen umfassen.***
+***Erstellungstoken muss mindestens 16 Zeichen umfassen.***
 
 Dieser Fehler tritt auf, wenn der Dateipfad (`CreationToken`) nicht der erforderlichen Länge entspricht. Der Dateipfad muss mindestens ein Zeichen lang sein.
 
@@ -82,13 +82,13 @@ Geben Sie mindestens ein Zeichen als Dateipfad an (`CreationToken`).
 Dieser Fehler tritt auf, wenn Sie versuchen, den Domänennamen in Active Directory zu ändern.
 
 * Ursache:   
-Sie versuchen, die Eigenschaft „Domänenname“ zu aktualisieren.
+Sie versuchen, die Domänennameneigenschaft zu aktualisieren.
 * Lösung:    
 None (Keine): Sie können den Domänennamen nicht ändern.
 * Problemumgehung:   
-Löschen Sie alle Volumes mithilfe der Active Directory-Konfiguration. Löschen Sie dann die Active Directory-Konfiguration und erstellen Sie die Volumes neu.
+Löschen Sie alle Volumes mithilfe der Active Directory-Konfiguration. Löschen Sie dann die Active Directory-Konfiguration, und erstellen Sie die Volumes neu.
 
-***Fehler bei doppeltem Wert für das Objekt „ExportPolicy.Rules[RuleIndex]“***
+***Fehler bei doppeltem Wert für das Objekt „ExportPolicy.Rules[RuleIndex]“.***
 
 Dieser Fehler tritt auf, wenn die Exportrichtlinie nicht mit einem eindeutigen Index definiert ist. Wenn Sie Exportrichtlinien definieren, müssen alle Exportrichtlinienregeln einen eindeutigen Index zwischen 1 und 5 aufweisen.
 
@@ -99,27 +99,27 @@ Stellen Sie sicher, dass der Index nicht bereits verwendet wird und im Bereich v
 * Problemumgehung:   
 Verwenden Sie einen anderen Index für die Regel, die Sie festzulegen versuchen.
 
-***Fehler {action} {resourceTypeName} {resourceTypeName}***
+***Fehler {action} {resourceTypeName}***
 
-Dieser Fehler wird angezeigt, wenn andere Fehlerbehandlungen den Fehler während der Ausführung einer Aktion auf einer Ressource nicht behandelt haben.   Er enthält das Wort „Fehler“. `{action}` kann entweder (`getting`, `creating`, `updating` oder `deleting`) sein.  `{resourceTypeName}` ist `resourceTypeName` (z. B.: `netAppAccount`, `capacityPool`, `volume` usw.).
+Dieser Fehler wird angezeigt, wenn andere Fehlerbehandlungen den Fehler während der Ausführung einer Aktion auf einer Ressource nicht beseitigen konnten.   Er enthält das Wort „Fehler“. `{action}` kann entweder `getting`, `creating`, `updating` oder `deleting` sein.  `{resourceTypeName}` ist `resourceTypeName` (z. B. `netAppAccount`, `capacityPool`, `volume` usw.).
 
 * Ursache:   
 Dieser Fehler ist ein Ausnahmefehler, bei dem die Ursache nicht bekannt ist.
 * Lösung:   
-Wenden Sie sich an das Azure Support Center, um den genauen Grund in den Protokollen zu melden.
+Wenden Sie sich an das Azure-Supportcenter, um den genauen Grund zu melden, der in den Protokollen angegeben ist.
 * Problemumgehung:   
 None (Keine):
 
 ***Der Dateipfadname darf nur Buchstaben, Zahlen und Bindestriche („-“) enthalten.***
 
-Dieser Fehler tritt auf, wenn der Dateipfad nicht unterstützte Zeichen enthält, z. B. einen Punkt („.“), ein Komma („,“), einen Unterstrich („_“) oder ein Dollarzeichen („$“).
+Dieser Fehler tritt auf, wenn der Dateipfad nicht unterstützte Zeichen enthält, z. B. einen Punkt („.“), ein Komma („,“), einen Unterstrich („_“) oder ein Dollarzeichen („$“).
 
 * Ursache:   
-Dieser Dateipfad enthält nicht unterstützte Zeichen, z. B. einen Punkt („.“), ein Komma („,“), einen Unterstrich („_“) oder ein Dollarzeichen („$“).
+Dieser Dateipfad enthält nicht unterstützte Zeichen, z. B. einen Punkt („.“), ein Komma („,“), einen Unterstrich („_“) oder ein Dollarzeichen („$“).
 * Lösung:   
 Entfernen Sie Zeichen, die keine alphabetischen Buchstaben, Zahlen oder Bindestriche („-“) sind, aus dem von Ihnen angegebenen Dateipfad.
 * Problemumgehung:   
-Sie können einen Unterstrich durch einen Bindestrich ersetzen oder Großbuchstaben anstelle von Leerzeichen verwenden, um den Anfang neuer Wörter anzuzeigen.  Verwenden Sie z. B. „NewVolume“ anstelle von „new volume“.
+Sie können einen Unterstrich durch einen Bindestrich ersetzen oder Großbuchstaben anstelle von Leerzeichen verwenden, um den Anfang neuer Wörter anzuzeigen.  Verwenden Sie beispielsweise „NewVolume“ anstelle von „new volume“.
 
 ***FileSystemId kann nicht geändert werden.***
 
@@ -130,60 +130,60 @@ Die ID des Dateisystems wird beim Erstellen des Volumes festgelegt. `FileSystemI
 * Lösung:   
 `FileSystemId` nicht in einen Patch und die Update (Put)-Anforderung aufnehmen.  Alternativ können Sie auch sicherstellen, dass `FileSystemId` in der Anforderung identisch ist.
 
-***ActiveDirectory mit der ID: '{string}' existiert nicht.***
+***ActiveDirectory mit der ID „{string}“ ist nicht vorhanden.***
 
 Der `{string}`-Teil ist der Wert, den Sie in der `ActiveDirectoryId`-Eigenschaft für die Active Directory-Verbindung eingegeben haben.
 
 * Ursache:   
 Wenn Sie ein Konto mit der Active Directory-Konfiguration erstellt haben, haben Sie einen Wert für `ActiveDirectoryId` eingegeben, der leer sein soll.
 * Lösung:   
-`ActiveDirectoryId` Erstellen-(Put)-Anforderung aufnehmen.
+`ActiveDirectoryId` nicht in die Create (Put)-Anforderung aufnehmen.
 
 ***Ungültige API-Version.***
 
-Die API-Version ist entweder nicht übermittelt oder enthält einen ungültigen Wert.
+Die API-Version wurde entweder nicht übermittelt oder enthält einen ungültigen Wert.
 
 * Ursache:   
-Der Wert im Query-Parameter `api-version` enthält einen ungültigen Wert.
+Der Abfrageparameter `api-version` enthält einen ungültigen Wert.
 * Lösung:   
 Verwenden Sie den richtigen Wert für die API-Version.  Der Ressourcenanbieter unterstützt viele API-Versionen. Der Wert hat das Format yyyy-mm-dd.
 
-***Ein ungültiger Wert '{value}' wurde für {1} empfangen.***
+***Ein ungültiger Wert „{value}“ wurde für {1} empfangen.***
 
 Diese Meldung zeigt einen Fehler in den Feldern für `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv3` und `Nfsv4` an.
 
 * Ursache:   
 Bei mindestens einem der folgenden Felder ist bei der Eingabeüberprüfungsanforderung ein Fehler aufgetreten: `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv`3 und `Nfsv4`.
 * Lösung:   
-Stellen Sie sicher, dass Sie alle erforderlichen und konfliktfreien Parameter über die Befehlszeile festlegen. Sie können z. B. nicht gleichzeitig die Parameter `UnixReadOnly` und `UnixReadWrite` festlegen.
+Stellen Sie sicher, dass Sie alle erforderlichen Parameter über die Befehlszeile festlegen und keine Konflikte vorhanden sind. Sie können beispielsweise nicht gleichzeitig die Parameter `UnixReadOnly` und `UnixReadWrite` festlegen.
 * Problemumgehung:   
 Weitere Informationen finden Sie oben unter „Lösung“.
 
-***IP-Bereich{0} bis {1} für vlan {2} wird bereits verwendet***
+***IP-Bereich{0} bis {1} für vlan {2} wird bereits verwendet.***
 
-Dieser Fehler tritt auf, weil die internen Datensätze der verwendeten IP-Bereiche einen Konflikt mit der neu zugewiesenen IP-Adresse haben.
+Dieser Fehler tritt auf, weil für die internen Einträge der verwendeten IP-Bereiche ein Konflikt mit der neu zugewiesenen IP-Adresse besteht.
 
 * Ursache:   
-Die für die Datenträgererstellung zugewiesene IP-Adresse ist bereits registriert.
-Der Grund dafür könnte eine zuvor fehlgeschlagene Datenträgererstellung sein.
+Die für die Volumeerstellung zugewiesene IP-Adresse ist bereits registriert.
+Der Grund dafür könnte eine zuvor fehlgeschlagene Volumeerstellung sein.
 * Lösung:   
 Wenden Sie sich an das Azure-Supportcenter.
 
-***Fehlender Wert für '{property}'.***
+***Fehlender Wert für „{property}“.***
 
-Dieser Fehler zeigt an, dass in der Anforderung eine erforderliche Eigenschaft fehlt. Die Zeichenfolge {property} enthält den Namen der fehlenden Eigenschaft.
+Dieser Fehler zeigt an, dass in der Anforderung eine erforderliche Eigenschaft fehlt. Die Zeichenfolge „{property}“ enthält den Namen der fehlenden Eigenschaft.
 
 * Ursache:   
 Bei mindestens einer Eigenschaften ist bei der Eingabeüberprüfungsanforderung ein Fehler aufgetreten.
 * Lösung:   
-Achten Sie darauf, dass Sie alle erforderlichen und konfliktfreien Eigenschaften in der Anforderung einstellen, insbesondere die Eigenschaft aus der Fehlermeldung.
+Achten Sie darauf, dass Sie alle erforderlichen Eigenschaften in der Anforderung festlegen und dass keine Konflikte vorhanden sind – insbesondere für die Eigenschaft aus der Fehlermeldung.
 
 ***MountTargets kann nicht geändert werden.***
 
-Dieser Fehler tritt auf, wenn ein Benutzer versucht, die Volume-Eigenschaft „MountTargets“ zu aktualisieren oder zu patchen.
+Dieser Fehler tritt auf, wenn ein Benutzer versucht, die „MountTargets“-Eigenschaft des Volumes zu aktualisieren oder zu patchen.
 
 * Ursache:   
-Sie versuchen, die Eigenschaft `MountTargets` des Volumes zu aktualisieren. Die Änderung dieser Eigenschaft wird nicht unterstützt.
+Sie versuchen, die `MountTargets`-Eigenschaft des Volumes zu aktualisieren. Die Änderung dieser Eigenschaft wird nicht unterstützt.
 * Lösung:   
 `MountTargets` nicht in einen Patch und die Update (Put)-Anforderung aufnehmen.  Alternativ können Sie auch sicherstellen, dass `MountTargets` in der Anforderung identisch ist.
 
@@ -201,13 +201,13 @@ Verwenden Sie beim Erstellen einer Ressource einen eindeutigen Namen.
 Dieser Fehler zeigt an, dass der Dateipfad für das Volume bereits verwendet wird.
 
 * Ursache:   
-Sie versuchen, ein Volume mit einem Dateipfad zu erstellen, der mit einer vorhandenen Volume identisch ist.
+Sie versuchen, ein Volume mit einem Dateipfad zu erstellen, der mit einem vorhandenen Volume identisch ist.
 * Lösung:   
 Verwenden Sie beim Erstellen des Volumes einen eindeutigen Dateipfad.
 
 ***Name ist zu lang.***
 
-Dieser Fehler zeigt an, dass der Ressourcenname nicht der erforderlichen Höchstlänge entspricht.
+Dieser Fehler zeigt an, dass für den Ressourcennamen nicht die erforderliche maximale Länge eingehalten wird.
 
 * Ursache:   
 Der Ressourcenname ist zu lang.
@@ -216,16 +216,16 @@ Geben Sie einen kürzeren Namen für die Ressource ein.
 
 ***Dateipfad ist zu lang.***
 
-Dieser Fehler zeigt an, dass der Dateipfad für das Volume nicht der erforderlichen Höchstlänge entspricht.
+Dieser Fehler zeigt an, dass für den Dateipfad des Volumes nicht die erforderliche maximale Länge eingehalten wird.
 
 * Ursache:   
-Der Datei des Volumes ist zu lang.
+Der Dateipfad des Volumes ist zu lang.
 * Lösung:   
 Verwenden Sie einen kürzeren Dateipfad.
 
 ***Name ist zu kurz.***
 
-Dieser Fehler zeigt an, dass der Ressourcenname nicht der erforderlichen Mindestlänge entspricht.
+Dieser Fehler zeigt an, dass der Ressourcenname nicht die erforderliche Mindestlänge aufweist.
 
 * Ursache:   
 Der Ressourcenname ist zu kurz.
@@ -237,9 +237,9 @@ Geben Sie einen längeren Namen für die Ressource ein.
 Dieser Fehler zeigt an, dass der Dateipfad nicht der erforderlichen Mindestlänge entspricht.
 
 * Ursache:   
-Der Datei des Volumes ist zu kurz.
+Der Dateipfad des Volumes ist zu kurz.
 * Lösung:   
-Erweitern Sie die Länge des Dateifpads des Volumes.
+Geben Sie einen längeren Dateipfad für das Volume ein.
 
 ***Azure NetApp Files-API nicht erreichbar.***
 
@@ -263,18 +263,18 @@ Dieser Fehler ist wahrscheinlich nur temporär. Warten Sie einige Minuten, und v
 * Problemumgehung:   
 Warten Sie einige Minuten und überprüfen Sie, ob das Problem weiterhin besteht.
 
-***Die Kombination der Protokolltypen CIFS und NFS ist nicht zulässig***
+***Die Kombination der Protokolltypen CIFS und NFS ist nicht zulässig.***
 
-Dieser Fehler tritt auf, wenn Sie ein Volume erstellen und in den Volumeeigenschaften sowohl die Protokolltypen CIFS (SMB) als auch NFS vorhanden sind.
+Dieser Fehler tritt auf, wenn Sie ein Volume erstellen und in den Volumeeigenschaften sowohl der Protokolltyp CIFS (SMB) als auch NFS vorhanden ist.
 
 * Ursache:   
-Die Protokolltypen CIFS (SMB) und NFS werden beide in den Volumeeigenschaften verwendet.
+Die Protokolltypen CIFS (SMB) und NFS werden gemeinsam in den Volumeeigenschaften verwendet.
 * Lösung:   
 Entfernen Sie einen der Protokolltypen.
 * Problemumgehung:   
-Belassen Sie die Protokolltypeigenschaft leer oder NULL.
+Lassen Sie die Protokolltypeigenschaft leer, oder verwenden Sie einen NULL-Wert.
 
-***Anzahl der Elemente: {Value} für das Objekt: ExportPolicy.Rules [RuleIndex] liegt außerhalb des Min-Max-Bereichs.***
+***Anzahl von Elementen: {Value} für das Objekt: ExportPolicy.Rules [RuleIndex] liegt außerhalb des Min/Max-Bereichs.***
 
 Dieser Fehler tritt auf, wenn die Regeln der Exportrichtlinien nicht den Anforderungen an den minimalen oder maximalen Bereich entsprechen. Wenn Sie die Exportrichtlinie definieren, muss sie mindestens über eine Exportrichtlinienregel und darf maximal über fünf Exportrichtlinienregeln verfügen.
 
@@ -283,45 +283,45 @@ Die von Ihnen definierte Exportrichtlinie entspricht nicht dem erforderlichen Be
 * Lösung:   
 Stellen Sie sicher, dass der Index nicht bereits verwendet wird und im Bereich von 1 bis 5 liegt.
 * Problemumgehung:   
-Es ist nicht zwingend erforderlich, die Exportrichtlinien auf die Volumes anzuwenden. Sie können die Exportrichtlinie vollständig auslassen, wenn Sie keine Exportrichtlinienregeln benötigen.
+Es ist nicht zwingend erforderlich, die Exportrichtlinien auf die Volumes anzuwenden. Sie können die Exportrichtlinie vollständig weglassen, wenn Sie keine Exportrichtlinienregeln benötigen.
 
-***Nur ein aktives Verzeichnis erlaubt***
+***Nur ein aktives Verzeichnis erlaubt.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, eine Active Directory-Konfiguration zu erstellen, und für das Abonnement in der Region bereits eine existiert. Der Fehler kann auch auftreten, wenn Sie versuchen, mehr als eine Active Directory-Konfiguration zu erstellen.
+Dieser Fehler tritt auf, wenn Sie versuchen, eine Active Directory-Konfiguration zu erstellen, und für das Abonnement in der Region bereits eine vorhanden ist. Der Fehler kann auch auftreten, wenn Sie versuchen, mehr als eine Active Directory-Konfiguration zu erstellen.
 
 * Ursache:   
-Sie versuchen, ein aktives Verzeichnis zu erstellen (nicht zu aktualisieren), aber es existiert bereits eines.
+Sie versuchen, ein aktives Verzeichnis zu erstellen (nicht zu aktualisieren), aber es ist bereits eines vorhanden.
 * Lösung:   
 Wenn die Active Directory-Konfiguration nicht verwendet wird, können Sie zunächst die bestehende Konfiguration löschen und dann den Erstellungsvorgang erneut ausführen.
 * Problemumgehung:   
-None (Keine): Nur ein Active Directory erlaubt.
+None (Keine): Es ist nur eine Active Directory-Instanz erlaubt.
 
-***Der Vorgang '{operation}' wird nicht unterstützt.***
+***Der Vorgang „{operation}“ wird nicht unterstützt.***
 
 Dieser Fehler zeigt an, dass der Vorgang für das aktive Abonnement oder die aktive Ressource nicht verfügbar ist.
 
 * Ursache:   
 Der Vorgang ist für das Abonnement oder die Ressource nicht verfügbar.
 * Lösung:   
-Stellen Sie sicher, dass der Vorgang ordnungsgemäß eingegeben wurde und für die Ressource und das Abonnement, das Sie verwenden, verfügbar ist.
+Stellen Sie sicher, dass der Vorgang richtig eingegeben wurde und für die Ressource und das Abonnement, das Sie verwenden, verfügbar ist.
 
-***OwnerId kann nicht geändert werden***
+***OwnerId kann nicht geändert werden.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, die Eigenschaft „OwnerId“ des Volumes zu ändern. Das Ändern der OwnerId ist kein unterstützter Vorgang. 
+Dieser Fehler tritt auf, wenn Sie versuchen, die „OwnerId“-Eigenschaft des Volumes zu ändern. Das Ändern der OwnerId ist kein unterstützter Vorgang. 
 
 * Ursache:   
-Die Eigenschaft `OwnerId` wird beim Erstellen des Volumes festgelegt. Die Eigenschaft kann nachträglich nicht mehr geändert werden.
+Die `OwnerId`-Eigenschaft wird beim Erstellen des Volumes festgelegt. Die Eigenschaft kann nachträglich nicht mehr geändert werden.
 * Lösung:   
 `OwnerId` nicht in einen Patch und die Update (Put)-Anforderung aufnehmen. Alternativ können Sie auch sicherstellen, dass `OwnerId` in der Anforderung identisch ist.
 
-***Übergeordneter Pool nicht gefunden***
+***Übergeordneten Pool nicht gefunden.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume anzulegen und der Kapazitätspool, in dem Sie das Volume anlegen, nicht gefunden wird.
+Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu erstellen, und der Kapazitätspool für die Erstellung nicht gefunden wird.
 
 * Ursache:   
-Der Kapazitätspool, in dem das Volume angelegt wird, wird nicht gefunden.
+Der Kapazitätspool, in dem das Volume erstellt wird, wurde nicht gefunden.
 * Lösung:   
-Wahrscheinlich war der Pool zum Zeitpunkt der Datenträgererstellung noch nicht vollständig angelegt oder bereits gelöscht.
+Wahrscheinlich war der Pool zum Zeitpunkt der Volumeerstellung noch nicht vollständig erstellt oder bereits gelöscht.
 
 ***Patchvorgang wird für diesen Ressourcentyp nicht unterstützt.***
 
@@ -331,109 +331,109 @@ Dieser Fehler tritt auf, wenn Sie versuchen, das Einbindungsziel oder die Moment
 Das Einbindungsziel wird bereits beim Erstellen definiert und kann nachträglich nicht mehr geändert werden.
 Die Momentaufnahmen enthalten keine Eigenschaften, die geändert werden können.
 * Lösung:   
-None (Keine): Diese Ressourcen haben keine Eigenschaften, die geändert werden können.
+None (Keine): Diese Ressourcen verfügen nicht über Eigenschaften, die geändert werden können.
 
-***Poolgröße zu klein für die Gesamtvolumengröße.***
+***Poolgröße zu klein für die Gesamtvolumegröße.***
 
-Dieser Fehler tritt auf, wenn Sie die Größe des Kapazitätspools aktualisieren, und die Größe ist kleiner als der Gesamtwert der `usedBytes` aller Datenträger in diesem Kapazitätspool.  Dieser Fehler kann auch auftreten, wenn Sie ein neues Volume erstellen oder die Größe eines bestehenden Volume ändern, und die neue Volumegröße den freien Speicherplatz im Kapazitätspool überschreitet.
+Dieser Fehler tritt auf, wenn Sie die Größe des Kapazitätspools aktualisieren und die Größe kleiner als der `usedBytes`-Gesamtwert aller Volumes in diesem Kapazitätspool ist.  Dieser Fehler kann auch auftreten, wenn Sie ein neues Volume erstellen oder die Größe eines bestehenden Volumes ändern und die neue Volumegröße den freien Speicherplatz im Kapazitätspool überschreitet.
 
 * Ursache:   
-Sie versuchen, den Kapazitätspool auf eine kleinere Größe als „usedBytes“ in allen Volumes des Kapazitätspools zu aktualisieren.  Oder Sie versuchen, ein Volume anzulegen, das größer ist als der vorhandene Platz im Kapazitätspool.  Oder aber Sie versuchen, die Größe eines Volumes zu ändern, und die neue Größe überschreitet den verfügbaren Platz im Kapazitätspool.
+Sie versuchen, den Kapazitätspool in allen Volumes des Kapazitätspools auf eine kleinere Größe als „usedBytes“ zu aktualisieren.  Oder Sie versuchen, ein Volume anzulegen, das größer als der vorhandene Platz im Kapazitätspool ist.  Oder aber Sie versuchen, die Größe eines Volumes zu ändern, und die neue Größe überschreitet den verfügbaren Platz im Kapazitätspool.
 * Lösung:   
-Stellen Sie die Größe des Kapazitätspools auf einen größeren Wert ein oder erstellen Sie ein kleineres Volume für ein Volume.
+Legen Sie die Größe des Kapazitätspools auf einen größeren Wert fest, oder erstellen Sie ein kleineres Volume für ein Volume.
 * Problemumgehung:   
 Entfernen Sie genügend Volumes, damit die Größe des Kapazitätspools auf diese Größe aktualisiert werden kann.
 
-***Die Eigenschaft: „Speicherort“ für die Momentaufnahme muss mit dem Volume übereinstimmen***
+***Die Eigenschaft: „Location“ für die Momentaufnahme muss mit dem Volume übereinstimmen.***
 
 Dieser Fehler tritt auf, wenn Sie eine Momentaufnahme mit einem anderen Speicherort als dem Volume erstellen, das Eigentümer der Momentaufnahme ist.
 
 * Ursache:   
-Ungültiger Wert in der Eigenschaft „Speicherort“ für die Momentaufnahme.
+Ungültiger Wert in der „Location“-Eigenschaft für die Momentaufnahme.
 * Lösung:   
-Legen Sie gültige Zeichenfolge in der Eigenschaft „Speicherort“ fest.
+Legen Sie eine gültige Zeichenfolge in der „Location“-Eigenschaft fest.
 
 ***Der Name „{ResourceType}“ muss mit dem Namen des Ressourcenbezeichners übereinstimmen.***
 
-Dieser Fehler tritt auf, wenn Sie eine Ressource erstellen und in die Eigenschaft „Name“ einen Wert eintragen, der sich von dem in der Eigenschaft „Name“ von `resourceId` unterscheidet.
+Dieser Fehler tritt auf, wenn Sie eine Ressource erstellen und in die „Name“-Eigenschaft einen Wert eintragen, der sich von dem in der „Name“-Eigenschaft von `resourceId` unterscheidet.
 
 * Ursache:   
-Ungültiger Wert in der Eigenschaft „Name“ beim Erstellen einer Ressource.
+Ungültiger Wert in der „Name“-Eigenschaft beim Erstellen einer Ressource.
 * Lösung:   
-Lassen Sie die Eigenschaft „Name“ leer oder ermöglichen Sie, dass sie den gleichen Wert wie die Eigenschaft „Name“ (zwischen dem letzten Backslash „/“ und dem Fragezeichen „?“) in `resourceId` verwendet.
+Lassen Sie die „Name“-Eigenschaft leer, oder ermöglichen Sie es, dass dafür der gleiche Wert wie für die „Name“-Eigenschaft (zwischen dem letzten Backslash „/“ und dem Fragezeichen „?“) in `resourceId` verwendet wird.
 
-***Der Protokolltyp „{value}“ ist nicht bekannt***
+***Der Protokolltyp „{value}“ ist nicht bekannt.***
 
-Dieser Fehler tritt auf, wenn Sie ein Volume mit einem unbekannten Protokolltyp erstellen.  Gültige Werte sind „NFSv3“ und „CIFS“.
+Dieser Fehler tritt auf, wenn Sie ein Volume mit einem unbekannten Protokolltyp erstellen.  Gültige Werte sind „NFSv3“, „NFSv4“ und „CIFS“.
 
 * Ursache:   
-Sie versuchen, einen ungültigen Wert in der Volume-Eigenschaft `protocolType` festzulegen.
+Sie versuchen, einen ungültigen Wert in der Volumeeigenschaft `protocolType` festzulegen.
 * Lösung:   
-Legen Sie eine gültige Zeichenfolge in `protocolType` fest.
+Legen Sie in `protocolType` eine gültige Zeichenfolge fest.
 * Problemumgehung:   
-Legen Sie `protocolType` als NULL fest.
+Legen Sie `protocolType` als NULL-Wert fest.
 
-***Protokolltypen können nicht geändert werden***
+***Protokolltypen können nicht geändert werden.***
 
 Dieser Fehler tritt auf, wenn Sie versuchen, `ProtocolType` für ein Volume zu aktualisieren oder zu patchen.  Das Ändern von ProtocolType ist kein unterstützter Vorgang.
 
 * Ursache:   
-Die Eigenschaft `ProtocolType` wird beim Erstellen des Volumes festgelegt.  Sie kann nicht aktualisiert werden.
+Die `ProtocolType`-Eigenschaft wird beim Erstellen des Volumes festgelegt.  Sie kann nicht aktualisiert werden.
 * Lösung:   
 None (Keine):
 * Problemumgehung:   
 Erstellen Sie ein weiteres Volume mit neuen Protokolltypen.
 
-***Das Erstellen der Ressource vom Typ „{resourceType}“ würde das Kontingent der „{quota}“ Ressourcen vom Typ „{resourceType}“ pro „{parentResourceType}“ überschreiten. Die aktuelle Ressourcenanzahl liegt bei „{currentCount}“. Bitte löschen Sie einige Ressourcen dieses Typs, bevor Sie eine neue erstellen.***
+***Das Erstellen der Ressource vom Typ „{resourceType}“ würde das Kontingent der „{quota}“-Ressourcen vom Typ „{resourceType}“ pro „{parentResourceType}“ überschreiten. Die aktuelle Ressourcenanzahl liegt bei „{currentCount}“. Bitte löschen Sie einige Ressourcen dieses Typs, bevor Sie eine neue erstellen.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, eine Ressource anzulegen (`NetAppAccount`, `CapacityPool`, `Volume` oder`Snapshot`), aber Ihr Kontingent seine Grenzen erreicht hat.
+Dieser Fehler tritt auf, wenn Sie versuchen, eine Ressource zu erstellen (`NetAppAccount`, `CapacityPool`, `Volume` oder`Snapshot`), aber Ihre Kontingentgrenze erreicht wurde.
 
 * Ursache:   
-Sie versuchen, eine Ressource anzulegen, aber das Kontingent ist erreicht (Beispiel: `NetAppAccounts` pro Abonnement oder `CapacityPools` pro `NetAppAccount`).
+Sie versuchen, eine Ressource zu erstellen, aber das Kontingent ist erreicht (Beispiel: `NetAppAccounts` pro Abonnement oder `CapacityPools` pro `NetAppAccount`).
 * Lösung:   
-Erhöhen Sie das Kontingent.
+Erhöhen Sie die Kontingentgrenze.
 * Problemumgehung:   
-Löschen Sie ungenutzte Ressourcen des gleichen Typs und legen Sie sie erneut an.
+Löschen Sie ungenutzte Ressourcen des gleichen Typs, und erstellen Sie sie neu.
 
 ***Es wurde ein Wert für die schreibgeschützte Eigenschaft „{propertyName}“ empfangen.***
 
 Dieser Fehler tritt auf, wenn Sie einen Wert für eine Eigenschaft definieren, der nicht geändert werden kann. So können Sie z. B. die Volume-ID nicht ändern.
 
 * Ursache:   
-Sie versuchen, einen Parameter (z. B. die Volume-ID) zu ändern, der nicht geändert werden kann.
+Sie versuchen, einen Parameter (z. B. die Volume-ID) zu ändern, der nicht geändert werden kann.
 * Lösung:   
 Ändern Sie den Wert für die Eigenschaft nicht.
 
-***Die angeforderte Ressource wurde nicht gefunden.***
+***Die angeforderte Ressource „{resource}“ wurde nicht gefunden.***
 
 Dieser Fehler tritt auf, wenn Sie versuchen, auf eine nicht vorhandene Ressource zu verweisen, z. B. ein Volume oder eine Momentaufnahme. Die Ressource wurde möglicherweise gelöscht oder weist einen falsch geschriebenen Ressourcennamen auf.
 
 * Ursache:   
-Sie versuchen, auf eine nicht vorhandene Ressource (z. B. ein Volume oder eine Momentaufnahme) zu verweisen, die bereits gelöscht wurde oder einen falsch geschriebenen Ressourcennamen aufweist.
+Sie versuchen, auf eine nicht vorhandene Ressource (z. B. ein Volume oder eine Momentaufnahme) zu verweisen, die bereits gelöscht wurde oder einen falsch geschriebenen Ressourcennamen aufweist.
 * Lösung:   
 Überprüfen Sie die Anforderung auf Rechtschreibfehler, um sicherzustellen, dass sie ordnungsgemäß referenziert wird.
 * Problemumgehung:   
 Weitere Informationen finden Sie oben im Abschnitt „Lösung“.
 
-***Servicelevel „{volumeServiceLevel}“ ist höher als der übergeordnete „{poolServiceLevel}“***
+***Servicelevel „{volumeServiceLevel}“ ist höher als der übergeordnete „{poolServiceLevel}“.***
 
-Dieser Fehler tritt auf, wenn Sie ein Volume anlegen oder aktualisieren und Sie den Servicelevel auf ein höheres Niveau als den Kapazitätspool eingestellt haben, der es enthält.
+Dieser Fehler tritt auf, wenn Sie ein Volume erstellen oder aktualisieren und den Servicelevel auf einen höheren Level als für den übergeordneten Kapazitätspool festgelegt haben.
 
 * Ursache:   
-Sie versuchen, ein Volume mit einem höher eingestuften Servicelevel als dem des übergeordneten Kapazitätspool zu erstellen oder zu aktualisieren.
+Sie versuchen, ein Volume mit einem höheren Servicelevel als für den übergeordneten Kapazitätspool zu erstellen oder zu aktualisieren.
 * Lösung:   
-Setzen Sie den Servicelevel auf den gleichen oder einen niedrigeren Rang als den des übergeordneten Kapazitätspools.
+Legen Sie den Servicelevel auf die gleiche oder eine niedrigere Stufe als für den übergeordneten Kapazitätspool fest.
 * Problemumgehung:   
-Legen Sie das Volume in einem anderen Kapazitätspool mit einem passenden Servicelevel an. Alternativ können Sie alle Datenträger aus dem Kapazitätspool löschen und den Servicelevel für den Kapazitätspool auf einen höheren Rang setzen.
+Erstellen Sie das Volume in einem anderen Kapazitätspool mit einem passenden Servicelevel. Alternativ können Sie alle Volumes aus dem Kapazitätspool löschen und den Servicelevel für den Kapazitätspool auf eine höhere Stufe festlegen.
 
-***Der Name des SMB-Servers darf nicht länger als 10 Zeichen sein.***
+***Der Name des SMB-Servers darf nicht länger als zehn Zeichen sein.***
 
 Dieser Fehler tritt auf, wenn Sie eine Active Directory-Konfiguration für ein Konto erstellen oder aktualisieren.
 
 * Ursache:   
-Die Länge des SMB-Servernamens beträgt mehr als 10 Zeichen.
+Die Länge des SMB-Servernamens beträgt mehr als zehn Zeichen.
 * Lösung:   
-Verwenden Sie einen kürzeren Servernamen. Die maximale Länge beträgt 10 Zeichen.
+Verwenden Sie einen kürzeren Servernamen. Die maximale Länge beträgt zehn Zeichen.
 * Problemumgehung:   
 None (Keine):  Weitere Informationen finden Sie oben unter „Lösung“. 
 
@@ -444,31 +444,31 @@ Dieser Fehler tritt bei dem Versuch auf, `subnetId` zu ändern, nachdem das Volu
 * Ursache:   
 Sie versuchen, `subnetId` nach dem Erstellen des Volumes zu ändern. Dies ist kein unterstützter Vorgang. 
 * Lösung:   
-Wenn Sie `subnetId` nicht ändern müssen, dann können Sie den Parameter aus der Anforderung entfernen, um die Fehlermeldung zu schließen.
+Wenn Sie `subnetId` nicht ändern müssen, können Sie den Parameter aus der Anforderung entfernen, um die Fehlermeldung zu schließen.
 * Problemumgehung:   
-Wenn Sie `subnetId` ändern müssen, können Sie ein neues Volume mit einem neuen `subnetId` erstellen und die Daten dann auf das neue Volume migrieren.
+Wenn Sie `subnetId` ändern müssen, können Sie ein neues Volume mit einem neuen `subnetId` erstellen und die Daten dann zum neuen Volume migrieren.
 
 ***SubnetId hat kein gültiges Format.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein neues Volume zu erstellen, aber die `subnetId` ist nicht keine `resourceId` für ein Subnetz.
+Dieser Fehler tritt auf, wenn Sie versuchen, ein neues Volume zu erstellen, aber die `subnetId` keine `resourceId` für ein Subnetz ist.
 
 * Ursache:   
-Dieser Fehler tritt auf, wenn Sie versuchen, ein neues Volume zu erstellen, aber die `subnetId` ist nicht keine `resourceId` für ein Subnetz. 
+Dieser Fehler tritt auf, wenn Sie versuchen, ein neues Volume zu erstellen, aber die `subnetId` keine `resourceId` für ein Subnetz ist. 
 * Lösung:   
 Überprüfen Sie den Wert für `subnetId`, um sicherzustellen, dass er eine `resourceId` für das verwendete Subnetz enthält.
 * Problemumgehung:   
 None (Keine): Weitere Informationen finden Sie oben unter „Lösung“. 
 
-***Das Subnetz muss über eine Delegatierung von Microsoft.NetApp/volumes verfügen.***
+***Das Subnetz muss über eine Delegierung von „Microsoft.NetApp/volumes“ verfügen.***
 
 Dieser Fehler tritt auf, wenn Sie ein Volume erstellen und das ausgewählte Subnetz nicht an `Microsoft.NetApp/volumes` delegiert wird.
 
 * Ursache:   
-Sie haben versucht, ein Volume anzulegen und ein Subnetz ausgewählt, das nicht an `Microsoft.NetApp/volumes` delegiert ist.
+Sie haben versucht, ein Volume zu erstellen, und ein Subnetz ausgewählt, das nicht an `Microsoft.NetApp/volumes` delegiert wurde.
 * Lösung:   
-Wählen Sie ein anderes Subnetz aus, das an `Microsoft.NetApp/volumes` delegiert wird.
+Wählen Sie ein anderes Subnetz aus, das an `Microsoft.NetApp/volumes` delegiert wurde.
 * Problemumgehung:   
-Fügen Sie dem Subnetz eine korrekte Delegatierung hinzu.
+Fügen Sie dem Subnetz eine korrekte Delegierung hinzu.
 
 ***Der angegebene Ressourcentyp ist unbekannt/nicht anwendbar.***
 
@@ -477,7 +477,7 @@ Dieser Fehler tritt auf, wenn eine Namensprüfung entweder für einen nicht anwe
 * Ursache:   
 Die Namensprüfung wurde für einen unbekannten oder nicht unterstützten Ressourcentyp angefordert.
 * Lösung:   
-Überprüfen Sie, ob die Ressource, für die Sie die Anforderung stellen, unterstützt wird und keine Rechtschreibfehler enthält.
+Überprüfen Sie, ob die Ressource, für die Sie die Anforderung senden, unterstützt wird und keine Rechtschreibfehler enthält.
 * Problemumgehung:   
 Weitere Informationen finden Sie oben unter „Lösung“.
 
@@ -514,16 +514,16 @@ None (Keine): Die Ressource, die Sie zu aktualisieren versuchen, unterstützt de
 * Problemumgehung:   
 Erstellen Sie für ein Volume eine neue Ressource mit vorhandenem Update, und migrieren Sie die Daten.
 
-***Ein Volume kann nicht in einem Pool angelegt werden, der nicht über den Status „erfolgreich“ verfügt.***
+***Ein Volume kann nicht in einem Pool erstellt werden, der nicht über den Status „Erfolgreich“ verfügt.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume in einem Pool anzulegen, der sich nicht im erfolgreichen Zustand befindet. Wahrscheinlich ist der Erstellungsvorgang für den Kapazitätspool aus irgendeinem Grund fehlgeschlagen.
+Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume in einem Pool zu erstellen, der nicht den Status „Erfolgreich“ aufweist. Wahrscheinlich ist der Erstellungsvorgang für den Kapazitätspool aus irgendeinem Grund fehlgeschlagen.
 
 * Ursache:   
 Der Kapazitätspool, der das neue Volume enthält, befindet sich in einem fehlerhaften Zustand.
 * Lösung:   
-Überprüfen Sie, ob der Kapazitätspool erfolgreich angelegt wurde und sich nicht in einem fehlerhaften Zustand befindet.
+Überprüfen Sie, ob der Kapazitätspool erfolgreich erstellt wurde und sich nicht in einem fehlerhaften Zustand befindet.
 * Problemumgehung:   
-Legen Sie einen neuen Kapazitätspool an und legen Sie das Volumen im neuen Pool an.
+Legen Sie einen neuen Kapazitätspool an, und erstellen Sie das Volume im neuen Pool.
 
 ***Das Volume wird gerade erstellt und kann derzeit nicht gelöscht werden.***
 
@@ -532,7 +532,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu löschen, das sich no
 * Ursache:   
 Ein Volume wird noch erstellt, wenn Sie versuchen, das Volume zu löschen.
 * Lösung:   
-Warten Sie, bis die Datenträgererstellung abgeschlossen ist, und versuchen Sie dann erneut, den Löschvorgang durchzuführen.
+Warten Sie, bis die Volumeerstellung abgeschlossen ist, und versuchen Sie dann erneut, den Löschvorgang durchzuführen.
 * Problemumgehung:   
 Weitere Informationen finden Sie oben unter „Lösung“.
 
@@ -552,78 +552,78 @@ Weitere Informationen finden Sie oben unter „Lösung“.
 Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu löschen, das gerade aktualisiert wird.
 
 * Ursache:   
-Ein Volume wird aktualisieren, während Sie versuchen, das Volume zu löschen.
+Ein Volume wird aktualisiert, während Sie versuchen, das Volume zu löschen.
 * Lösung:   
-Warten Sie, bis die Aktualisierung ist, und versuchen Sie dann erneut, den Löschvorgang durchzuführen.
+Warten Sie, bis die Aktualisierung abgeschlossen ist, und versuchen Sie dann erneut, den Löschvorgang durchzuführen.
 * Problemumgehung:   
 Weitere Informationen finden Sie oben unter „Lösung“.
 
-***Volume wurde nicht gefunden oder wurde nicht erfolgreich erstellt.***
+***Volume wurde nicht gefunden oder nicht erfolgreich erstellt.***
 
 Dieser Fehler tritt auf, wenn die Erstellung des Volumes fehlgeschlagen ist und Sie versuchen, das Volume zu ändern oder eine Momentaufnahme für das Volume zu erstellen.
 
 * Ursache:   
-Das Volume existiert nicht, oder die Erstellung ist fehlgeschlagen.
+Das Volume ist nicht vorhanden, oder die Erstellung ist fehlgeschlagen.
 * Lösung:   
-Überprüfen Sie, ob Sie das richtige Volume ändern und ob die Erstellung des Volume erfolgreich war. Oder überprüfen Sie, ob das Volume, für das Sie eine Momentaufnahme erstellen, existiert.
+Überprüfen Sie, ob Sie das richtige Volume ändern und ob die Erstellung des Volumes erfolgreich war. Oder überprüfen Sie, ob das Volume, für das Sie eine Momentaufnahme erstellen, vorhanden ist.
 * Problemumgehung:   
 None (Keine):  Weitere Informationen finden Sie oben unter „Lösung“. 
 
-***Das angegebene Erstellungs-Token ist bereits vorhanden***
+***Das angegebene Erstellungstoken ist bereits vorhanden***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu erstellen, und Sie ein Erstellungs-Token (Exportpfad) angeben, für das bereits ein Volume existiert.
+Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu erstellen, und Sie ein Erstellungstoken (Exportpfad) angeben, für das bereits ein Volume vorhanden ist.
 
 * Ursache:   
-Das Erstellungs-Token (Exportpfad), das Sie bei der Datenträgererstellung angegeben haben, ist bereits einem anderen Datenträger zugeordnet. 
+Das Erstellungstoken (Exportpfad), das Sie bei der Volumeerstellung angegeben haben, ist bereits einem anderen Volume zugeordnet. 
 * Lösung:   
-Wählen Sie ein anderes Erstellungs-Token.  Alternativ können Sie auch das andere Volume löschen.
+Wählen Sie ein anderes Erstellungstoken aus.  Alternativ können Sie auch das andere Volume löschen.
 
-***Das angegebene Erstellungs-Token ist reserviert***
+***Das angegebene Erstellungstoken ist reserviert.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu erstellen, und als Dateipfad „default“ oder „none“ angeben (Erstellungs-Token).
+Dieser Fehler tritt auf, wenn Sie versuchen, ein Volume zu erstellen, und als Dateipfad „default“ oder „none“ angeben (Erstellungstoken).
 
 * Ursache:    
-Sie versuchen, ein Volume zu erstellen, und haben als Dateipfad „default“ oder „none“ angegeben (Erstellungs-Token).
+Sie versuchen, ein Volume zu erstellen, und haben als Dateipfad „default“ oder „none“ angegeben (Erstellungstoken).
 * Lösung:   
-Wählen Sie einen anderen Dateipfad (Erstellungs-Token).
+Wählen Sie einen anderen Dateipfad (Erstellungstoken) aus.
  
-***Active Directory-Anmeldeinformationen werden verwendet***
+***Active Directory-Anmeldeinformationen werden verwendet.***
 
 Dieser Fehler tritt auf, wenn Sie versuchen, die Active Directory-Konfiguration aus einem Konto zu löschen, in dem noch mindestens ein SMB-Volume vorhanden ist.  Das SMB-Volume wurde unter Verwendung der Active Directory-Konfiguration erstellt, die Sie zu löschen versuchen.
 
 * Ursache:   
-Sie versuchen, die Active Directory-Konfiguration aus einem Konto zu löschen, aber es existiert noch mindestens ein SMB-Volume, das ursprünglich mit der Active Directory-Konfiguration erstellt wurde. 
+Sie versuchen, die Active Directory-Konfiguration aus einem Konto zu löschen, aber es ist noch mindestens ein SMB-Volume vorhanden, das ursprünglich mit der Active Directory-Konfiguration erstellt wurde. 
 * Lösung:   
 Löschen Sie zunächst alle SMB-Volumes, die mit der Active Directory-Konfiguration erstellt wurden.  Versuchen Sie dann erneut, die Konfiguration zu löschen.
 
-***Die Zuordnung der Organisationseinheit kann nicht geändert werden, wenn die Anmeldeinformationen verwendet werden***
+***Die Zuordnung der Organisationseinheit kann nicht geändert werden, wenn die Anmeldeinformationen verwendet werden.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, die Organisationseinheit einer Active Directory-Konfiguration zu ändern, aber mindestens ein SMB-Volume noch vorhanden ist.  Das SMB-Volume wurde unter Verwendung der Active Directory-Konfiguration erstellt, die Sie zu löschen versuchen.
+Dieser Fehler tritt auf, wenn Sie versuchen, die Organisationseinheit einer Active Directory-Konfiguration zu ändern, aber noch mindestens ein SMB-Volume vorhanden ist.  Das SMB-Volume wurde unter Verwendung der Active Directory-Konfiguration erstellt, die Sie zu löschen versuchen.
 
 * Ursache:   
-Sie versuchen, die Organisationseinheit einer Active Directory-Konfiguration zu ändern.  Es existiert jedoch noch mindestens ein SMB-Volume, das ursprünglich mithilfe der Active Directory-Konfiguration erstellt wurde.
+Sie versuchen, die Organisationseinheit einer Active Directory-Konfiguration zu ändern.  Es ist aber noch mindestens ein SMB-Volume vorhanden, das ursprünglich mithilfe der Active Directory-Konfiguration erstellt wurde.
 * Lösung:   
  Löschen Sie zunächst alle SMB-Volumes, die mit der Active Directory-Konfiguration erstellt wurden.  Versuchen Sie dann erneut, die Konfiguration zu löschen. 
 
-***Active Directory-Aktualisierung wird bereits ausgeführt***
+***Active Directory-Aktualisierung wird bereits ausgeführt.***
 
 Dieser Fehler tritt auf, wenn Sie versuchen, eine Active Directory-Konfiguration zu bearbeiten, für die bereits ein Bearbeitungsvorgang ausgeführt wird.
 
 * Ursache:   
-Sie versuchen, eine Active Directory-Konfiguration zu bearbeiten, aber ein weiterer Bearbeitungsvorgang ist bereits im Gange.
+Sie versuchen, eine Active Directory-Konfiguration zu bearbeiten, aber ein weiterer Bearbeitungsvorgang ist bereits aktiv.
 * Lösung:   
 Warten Sie, bis der gerade laufende Bearbeitungsvorgang abgeschlossen ist.
 
-***Löschen Sie zuerst alle Volumes mit den ausgewählten Anmeldeinformationen***
+***Löschen Sie zuerst alle Volumes mit den ausgewählten Anmeldeinformationen.***
 
-Dieser Fehler tritt auf, wenn Sie versuchen, eine Active Directory-Konfiguration zu löschen, aber mindestens ein SMB-Volume noch vorhanden ist.  Das SMB-Volume wurde unter Verwendung der Active Directory-Konfiguration erstellt, die Sie zu löschen versuchen.
+Dieser Fehler tritt auf, wenn Sie versuchen, eine Active Directory-Konfiguration zu löschen, aber noch mindestens ein SMB-Volume vorhanden ist.  Das SMB-Volume wurde unter Verwendung der Active Directory-Konfiguration erstellt, die Sie zu löschen versuchen.
 
 * Ursache:   
-Sie versuchen, die Active Directory-Konfiguration zu löschen, aber es existiert noch mindestens ein SMB-Volume, das ursprünglich mit der Active Directory-Konfiguration erstellt wurde.
+Sie versuchen, die Active Directory-Konfiguration zu löschen, aber es ist noch mindestens ein SMB-Volume vorhanden, das ursprünglich mit der Active Directory-Konfiguration erstellt wurde.
 * Lösung:   
 Löschen Sie zunächst alle SMB-Volumes, die mit der Active Directory-Konfiguration erstellt wurden.  Versuchen Sie dann erneut, die Konfiguration zu löschen. 
 
-***Keine Active Directory-Anmeldeinformationen in der Region gefunden***
+***Keine Active Directory-Anmeldeinformationen in der Region gefunden.***
 
 Dieser Fehler tritt auf, wenn Sie versuchen, ein SMB-Volume zu erstellen, aber dem Konto für die Region keine Active Directory-Konfiguration hinzugefügt wurde.
 
@@ -632,51 +632,51 @@ Sie versuchen, ein SMB-Volume zu erstellen, aber dem Konto wurde keine Active Di
 * Lösung:   
 Fügen Sie dem Konto eine Active Directory-Konfiguration hinzu, bevor Sie ein SMB-Volume erstellen.
 
-***DNS-Server konnte nicht abgefragt werden. Überprüfen Sie, ob die Netzwerkkonfiguration korrekt ist und ob DNS-Server verfügbar sind.***
+***DNS-Server konnte nicht abgefragt werden. Überprüfen Sie, ob die Netzwerkkonfiguration korrekt ist und DNS-Server verfügbar sind.***
 
 Dieser Fehler tritt auf, wenn Sie versuchen, ein SMB-Volume zu erstellen, aber ein DNS-Server (der in Ihrer Active Directory-Konfiguration angegeben ist) nicht erreichbar ist. 
 
 * Ursache:   
 Sie versuchen, ein SMB-Volume zu erstellen, aber ein DNS-Server (der in Ihrer Active Directory-Konfiguration angegeben ist) ist nicht erreichbar.
 * Lösung:   
-Überprüfen Sie Ihre Active Directory-Konfiguration und stellen Sie sicher, dass die IP-Adressen der DNS-Server korrekt und erreichbar sind.
-Wenn es keine Probleme mit den IP-Adressen des DNS-Servers gibt, stellen Sie sicher, dass keine Firewalls den Zugriff blockieren.
+Überprüfen Sie Ihre Active Directory-Konfiguration, und stellen Sie sicher, dass die IP-Adressen der DNS-Server korrekt und erreichbar sind.
+Wenn es keine Probleme mit den IP-Adressen des DNS-Servers gibt, sollten Sie sicherstellen, dass keine Firewalls den Zugriff blockieren.
 
-***Zu viele gleichzeitige Aufträge***
+***Zu viele gleichzeitige Aufträge.***
 
 Dieser Fehler tritt auf, wenn Sie versuchen, eine Momentaufnahme zu erstellen, wenn drei weitere Vorgänge zur Erstellung von Momentaufnahmen für das Abonnement bereits ausgeführt werden.
 
 * Ursache:   
 Sie versuchen, eine Momentaufnahme zu erstellen, wenn drei weitere Vorgänge zur Erstellung von Momentaufnahmen für das Abonnement bereits ausgeführt werden. 
 * Lösung:   
-Die Erstellung von Momentaufnahmeaufträgen dauert höchstens ein paar Sekunden.  Warten Sie ein paar Sekunden und versuchen Sie erneut, die Erstellung der Momentaufnahme durchzuführen.
+Die Erstellung von Momentaufnahmeaufträgen dauert höchstens ein paar Sekunden.  Warten Sie ein paar Sekunden, und versuchen Sie dann erneut, die Erstellung der Momentaufnahme durchzuführen.
 
-***Es können keine zusätzlichen Aufträge geschaffen werden. Bitte warten Sie, bis die laufenden Aufträge abgeschlossen sind und versuchen Sie es erneut.***
+***Es können keine zusätzlichen Aufträge geschaffen werden. Bitte warten Sie, bis die laufenden Aufträge abgeschlossen sind, und versuchen Sie es erneut.***
 
 Dieser Fehler kann auftreten, wenn Sie versuchen, ein Volume unter bestimmten Umständen zu erstellen oder zu löschen.
 
 * Ursache:   
 Sie versuchen, unter bestimmten Umständen ein Volume zu erstellen oder zu löschen.
 * Lösung:   
-Warten Sie etwa eine Minute und versuchen Sie den Vorgang erneut.
+Warten Sie etwa eine Minute, und wiederholen Sie den Vorgang.
 
-***Das Volumen ist in einem Übergangszustand***
+***Das Volume befindet sich in einem Übergangszustand.***
 
-Dieser Fehler kann auftreten, wenn Sie versuchen, ein Volume zu löschen, das sich gerade in einem Übergangszustand befindet (d. h. sich gerade im Erstellungs-, Aktualisierungs- oder Löschzustand befindet).
+Dieser Fehler kann auftreten, wenn Sie versuchen, ein Volume zu löschen, das sich gerade in einem Übergangszustand befindet (Erstellungs-, Aktualisierungs- oder Löschzustand).
 
 * Ursache:   
 Sie versuchen, ein Volume zu löschen, das sich derzeit in einem Übergangszustand befindet.
 * Lösung:   
-Warten Sie, bis der gerade laufende (zustandsüberwachende) Vorgang abgeschlossen ist, und führen Sie den Vorgang erneut durch.
+Warten Sie, bis der gerade durchgeführte Vorgang (Statusübergang) abgeschlossen ist, und führen Sie den Vorgang anschließend erneut durch.
 
-***Das neue Volume konnte nicht von der Momentaufnahme des Quellvolumens getrennt werden***
+***Das neue Volume konnte nicht von der Momentaufnahme des Quellvolumes getrennt werden.***
 
  Dieser Fehler kann auftreten, wenn Sie versuchen, ein Volume aus einer Momentaufnahme zu erstellen.  
 
 * Ursache:   
 Sie versuchen, ein Volume aus einer Momentaufnahme zu erstellen, und das Volume endet in einem Fehlerzustand.
 * Lösung:   
-Löschen Sie das Volume und versuchen Sie dann erneut, das Volume aus der Momentaufnahme zu erstellen.
+Löschen Sie das Volume, und versuchen Sie dann erneut, das Volume aus der Momentaufnahme zu erstellen.
 
  
 ## <a name="next-steps"></a>Nächste Schritte
