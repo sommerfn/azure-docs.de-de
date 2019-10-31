@@ -232,6 +232,8 @@
           href: backup-azure-restore-windows-server.md
         - name: Wiederherstellen des Systemstatus von Windows Server
           href: backup-azure-restore-system-state.md
+        - name: "Verwalten der Sicherung von Windows\_Server-Dateien und -Ordnern"
+          href: backup-azure-manage-mars.md
     - name: Recovery Services-Tresor
       items:
         - name: Übersicht über Recovery Services-Tresore

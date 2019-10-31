@@ -125,6 +125,8 @@
     - name: Wartung und Updates
       href: ../virtual-machines/windows/maintenance-and-updates.md
       maintainContext: true
+    - name: Orchestrierungsmodi
+      href: orchestration-modes.md
     - name: Datenträgerspeicher
       items:
         - name: Managed Disks

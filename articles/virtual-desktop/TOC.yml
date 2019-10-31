@@ -68,6 +68,8 @@
       href: environment-setup.md
     - name: Bandbreitenempfehlungen für Remotesitzungen
       href: bandwidth-recommendations.md
+    - name: Bestimmen der Wartezeit für Benutzerverbindungen
+      href: connection-latency.md
     - name: Delegierter Zugriff in Windows Virtual Desktop
       href: delegated-access-virtual-desktop.md
     - name: Lastenausgleichsmethoden für Hostpools
