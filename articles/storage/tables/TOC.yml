@@ -101,6 +101,10 @@
           href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Initiieren eines Kontofailovers
       href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Problembehandlung
+      items:
+        - name: Wartezeitprobleme
+          href: ../common/troubleshoot-latency-storage-analytics-logs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: Ressourcen
   items:
     - name: Table Storage-REST-APIs

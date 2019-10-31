@@ -447,7 +447,11 @@
         - name: Hochverfügbarkeit
           href: manage-availability.md
         - name: Erstellen einer Näherungsplatzierungsgruppe
-          href: proximity-placement-groups.md
+          items:
+            - name: Portal
+              href: proximity-placement-groups-portal.md
+            - name: PowerShell
+              href: proximity-placement-groups.md
         - name: Vertikales Skalieren
           items:
             - name: PowerShell

@@ -379,7 +379,11 @@
         - name: Hochverfügbarkeit
           href: manage-availability.md
         - name: Erstellen einer Näherungsplatzierungsgruppe
-          href: proximity-placement-groups.md
+          items:
+            - name: Befehlszeilenschnittstelle (CLI)
+              href: proximity-placement-groups.md
+            - name: Portal
+              href: ../windows/proximity-placement-groups-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Erstellen eines virtuellen Computers in einer Verfügbarkeitszone
           href: create-cli-availability-zone.md
     - name: Verwenden von Automatisierungstools

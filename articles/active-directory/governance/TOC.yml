@@ -5,7 +5,7 @@
   items:
     - name: Was ist Identity Governance?
       href: identity-governance-overview.md
-    - name: Was ist Berechtigungsverwaltung? (Vorschau)
+    - name: Was ist Berechtigungsverwaltung?
       href: entitlement-management-overview.md
     - name: Worum handelt es sich bei Zugriffsüberprüfungen?
       href: access-reviews-overview.md
