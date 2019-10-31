@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 23479692e815b5dda010ec2035c206df15715347
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167423"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529368"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -104,7 +104,7 @@ Wenn Sie Cluster erstellen möchten, um Ihre Anwendung vor der Bereitstellung zu
 Wir arbeiten an einer optimierten Lösung, derzeit müssen Sie jedoch das Upgrade durchführen. Sie müssen das Betriebssystemimage nacheinander auf den einzelnen virtuellen Computern des Clusters aktualisieren. 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich die angefügten Datenträger in einem Clusterknotentyp (VM-Skalierungsgruppe) verschlüsseln?
-Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [Verschlüsseln von Datenträgern (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) und [Verschlüsseln von Datenträgern (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks) und [Azure Disk Encryption für VM-Skalierungsgruppen](../virtual-machine-scale-sets/disk-encryption-overview.md).
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich virtuelle Computer mit niedriger Priorität in einem Clusterknotentyp verwenden (VM-Skalierungsgruppe)?
 Nein. Virtuelle Computer mit niedriger Priorität werden nicht unterstützt. 
@@ -192,4 +192,4 @@ Folgen Sie dem [Service Fabric-Blog](https://blogs.msdn.microsoft.com/azureservi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md).
+Weitere Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md) [Service Fabric-Konzepte](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md)
