@@ -1,24 +1,18 @@
 ---
 title: Erstellen eines Log Analytics-Arbeitsbereichs mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle einen Log Analytics-Arbeitsbereich erstellen, um Verwaltungslösungen und die Datensammlung in Ihren cloudbasierten und lokalen Umgebungen zu aktivieren.
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 03/12/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 7ee8302a026cf7584996bca481e79190586b77b3
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 03/12/2019
+ms.openlocfilehash: 18bfc99ded6e3e9171fbb20fbf329700817829de
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838854"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72895000"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Erstellen eines Log Analytics-Arbeitsbereichs mit Azure CLI 2.0
 

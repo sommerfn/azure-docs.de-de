@@ -1,24 +1,18 @@
 ---
 title: Erfassen und Analysieren von Windows-Ereignisprotokollen in Azure Monitor | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie das Sammeln von Windows-Ereignisprotokollen mit Azure Monitor konfigurieren und Details zu den von ihnen erstellten Datensätzen finden.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.date: 11/28/2018
+ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997476"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932403"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Datenquellen für Windows-Ereignisprotokolle in Azure Monitor
 Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](agent-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.

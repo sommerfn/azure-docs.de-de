@@ -6,25 +6,25 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/5/2019
+ms.date: 10/23/2019
 ms.author: dapine
-ms.openlocfilehash: 52d8e1355558b197b193a50c7cde571799541268
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ecb172aec37fdab21bed8373ac7484dc52a54829
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717171"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821985"
 ---
 ## <a name="create-a-luis-resource"></a>Erstellen einer LUIS-Ressource
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUIS).
+1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
 1. Geben Sie alle erforderlichen Einstellungen ein:
 
     |Einstellung|Wert|
     |--|--|
     |NAME|Gewünschter Name (2 bis 64 Zeichen)|
-    |Abonnement|Wählen Sie ein passendes Abonnement aus|
+    |Subscription|Wählen Sie ein passendes Abonnement aus|
     |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
     |Preisstufe|`F0` – der Mindesttarif|
     |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|

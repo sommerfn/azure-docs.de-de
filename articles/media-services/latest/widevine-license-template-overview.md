@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: c6fc363a7ab9de215647e371a9d3c846f8688bd5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 30e5daba56bb371aafa6d2636a0a9f641977e6fa
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466322"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162568"
 ---
 # <a name="widevine-license-template-overview"></a>Übersicht über die Widevine-Lizenzvorlage 
 
@@ -54,7 +54,7 @@ Eine Widevine-Lizenzanforderung ist als JSON-Nachricht formatiert.
           "renewal_server_url":"<renewal server url>",
           "renewal_delay_seconds":<renewal delay>,
           "renewal_retry_interval_seconds":<renewal retry interval>,
-          "renew_with_usage”:<renew with usage>
+          "renew_with_usage":<renew with usage>
        }
     }
 

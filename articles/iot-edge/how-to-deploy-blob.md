@@ -9,12 +9,12 @@ ms.service: iot-edge
 ms.custom: seodec18
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: e5420bbe7f65dcef4997d909b3bc4ede00dd9902
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 603c407f93294f2c9697dcee4c3d5d829033d5d9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844231"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176961"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -23,7 +23,7 @@ Es gibt mehrere Möglichkeiten, wie Sie Module auf einem IoT Edge-Gerät bereits
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement.
-- Ein [IoT Edge-Gerät](how-to-register-device-portal.md) mit installierter IoT Edge-Runtime.
+- Ein [IoT Edge-Gerät](how-to-register-device.md) mit installierter IoT Edge-Runtime.
 - [Visual Studio Code](https://code.visualstudio.com/) und die [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools), wenn Sie die Bereitstellung über Visual Studio Code durchführen.
 
 ## <a name="deploy-from-the-azure-portal"></a>Bereitstellen über das Azure-Portal
@@ -78,7 +78,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 
    - Ersetzen Sie `<your storage account name>` durch einen leicht zu merkenden Namen. Kontonamen sollten 3 bis 24 Zeichen lang sein und nur Kleinbuchstaben und Zahlen enthalten. Leerzeichen sind nicht zulässig.
 
-   - Ersetzen Sie `<your storage account key>` durch einen Base64-Schlüssel mit 64 Bytes. Sie können einen Schlüssel mit Tools wie [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) generieren. Mit diesen Anmeldeinformationen greifen Sie über andere Module auf Blob Storage zu.
+   - Ersetzen Sie `<your storage account key>` durch einen Base64-Schlüssel mit 64 Bytes. Sie können einen Schlüssel mit Tools wie [GeneratePlus](https://generate.plus/en/base64) generieren. Mit diesen Anmeldeinformationen greifen Sie über andere Module auf Blob Storage zu.
 
    - Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.
 
@@ -191,7 +191,7 @@ Azure IoT Edge bietet Vorlagen in Visual Studio Code, mit denen Sie Edgelösunge
 
 1. Ersetzen Sie `<your storage account name>` durch einen leicht zu merkenden Namen. Kontonamen sollten 3 bis 24 Zeichen lang sein und nur Kleinbuchstaben und Zahlen enthalten. Leerzeichen sind nicht zulässig.
 
-1. Ersetzen Sie `<your storage account key>` durch einen Base64-Schlüssel mit 64 Bytes. Sie können einen Schlüssel mit Tools wie [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) generieren. Mit diesen Anmeldeinformationen greifen Sie über andere Module auf Blob Storage zu.
+1. Ersetzen Sie `<your storage account key>` durch einen Base64-Schlüssel mit 64 Bytes. Sie können einen Schlüssel mit Tools wie [GeneratePlus](https://generate.plus/en/base64) generieren. Mit diesen Anmeldeinformationen greifen Sie über andere Module auf Blob Storage zu.
 
 1. Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.  
 

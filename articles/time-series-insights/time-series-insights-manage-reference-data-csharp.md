@@ -3,21 +3,20 @@ title: Verwalten von Verweisdaten in einer Azure Time Series Insights-Umgebung m
 description: Dieser Artikel beschreibt, wie Sie Verweisdaten für eine Azure Time Series Insights-Umgebung verwalten, indem Sie eine in der .NET-Sprache C# (C-Sharp) geschriebene benutzerdefinierte Anwendung erstellen.
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958040"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990043"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Verwalten von GA-Referenzdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#
 

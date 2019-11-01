@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: a2d13833b60076caa371a7fa8a696ab5964a28e3
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376086"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044414"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
@@ -169,7 +169,7 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
   * Wird das Wartungsfenster unter Windows überschritten, liegt dies häufig daran, dass die Installation eines Service Pack-Updates sehr lange dauert.
 
   > [!NOTE]
-  > Informationen vom Typ „Nebenbei bemerkt“ sind nicht von entscheidender Bedeutung für eine Aufgabe. Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das Paket „Unattended-Upgrade“ erneut, um automatische Updates zu deaktivieren. Informationen zur Konfiguration dieses Pakets finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+  > Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Informationen zur Konfiguration dieses Pakets finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 * **Neustartoptionen**: Mit dieser Einstellung wird festgelegt, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:
   * Neu starten bei Bedarf (Standard)
