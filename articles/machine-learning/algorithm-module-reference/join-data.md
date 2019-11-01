@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128739"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693089"
 ---
 # <a name="join-data"></a>Verknüpfen von Daten
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie das Modul **Join Data** (Daten verknüpf
 
 Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die beiden über eine Schlüsselspalte miteinander verknüpft sein. Zusammengesetzte Schlüssel mit mehreren Spalten werden ebenfalls unterstützt. 
 
-1. Fügen Sie die Datasets hinzu, die Sie vereinen möchten, und ziehen Sie anschließend das Modul **Join Data** (Daten verknüpfen) in Ihr Experiment. 
+1. Fügen Sie die Datasets hinzu, die Sie vereinen möchten, und ziehen Sie anschließend das Modul **Join Data** (Daten verknüpfen) in Ihre Pipeline. 
 
     Das Modul befindet sich in der Kategorie **Datentransformation** (unter **Bearbeitung**).
 
@@ -62,7 +62,7 @@ Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die 
     * Aktivieren Sie diese Option, wenn die Schlüssel aus beiden Eingabetabellen angezeigt werden sollen.
     * Deaktivieren Sie diese Option, wenn nur die Schlüsselspalten aus der linken Eingabe zurückgegeben werden sollen.
 
-1. Führen Sie das Experiment aus, oder wählen Sie das Modul „Join Data“ (Daten verknüpfen) und anschließend **Auswahl ausführen** aus, um den Join-Vorgang auszuführen.
+1. Führen Sie die Pipeline aus, oder wählen Sie das Modul „Join Data“ (Daten verknüpfen) und anschließend **Auswahl ausführen** aus, um den Join-Vorgang auszuführen.
 
 1. Klicken Sie zum Anzeigen der Ergebnisse mit der rechten Maustaste auf **Join Data** (Daten verknüpfen), und klicken Sie anschließend auf **Results dataset** (Ergebnisdataset) > **Visualize** (Visualisieren).
 
