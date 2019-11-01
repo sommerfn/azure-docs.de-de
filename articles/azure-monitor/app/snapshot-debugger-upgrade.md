@@ -1,20 +1,19 @@
 ---
 title: Upgraden des Azure Application Insights-Momentaufnahmedebuggers für .NET-Apps | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie den Momentaufnahmedebugger in Azure App Service oder über NuGet-Pakete auf die neueste Version upgraden.
-services: application-insights
-author: MarioHewardt
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/28/2019
+author: MarioHewardt
 ms.author: marioh
+ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2dcf719e6c276c5641dc4c0040d8d7a808eeb3f2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e2b21b7cbb6b04da0c93e73c0cacb8a05c338bde
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706367"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899836"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>Upgraden des Momentaufnahmedebuggers
 

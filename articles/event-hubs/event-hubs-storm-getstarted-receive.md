@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 75a96127c48186befc48b2240f78e49cd5914239
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eaa461dd0c4ef6bd9ed0ae4379a710ee100929d2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343415"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800196"
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Empfangen von Ereignissen von Event Hubs mithilfe von Apache Storm
 
@@ -33,7 +33,7 @@ Bevor Sie mit dem Schnellstart beginnen, **erstellen Sie einen Event Hubs-Namesp
 
 ## <a name="create-project-and-add-code"></a>Erstellen eines Projekts und Hinzufügen von Code
 
-In diesem Tutorial wird eine [HDInsight Storm][HDInsight Storm]-Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
+In diesem Lernprogramm wird eine [HDInsight Storm][HDInsight Storm] -Installation verwendet, in der der Event Hubs-Spout bereits verfügbar ist.
 
 1. Gehen Sie wie unter [HDInsight Storm – Erste Schritte](../hdinsight/storm/apache-storm-overview.md) beschrieben vor, um einen neuen HDInsight-Cluster zu erstellen und über Remotedesktop eine Verbindung mit diesem herzustellen.
 2. Kopieren Sie die Datei `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` in Ihre lokale Entwicklungsumgebung. Sie enthält events-storm-spout.
@@ -252,7 +252,7 @@ Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
-[Beispiel für HDInsight Storm mit Event Hub]: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
+[Beispiel für HDInsight Storm mit Event Hub]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 
 <!-- Images -->
 

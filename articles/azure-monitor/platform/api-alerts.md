@@ -1,24 +1,18 @@
 ---
 title: Verwenden der REST-API für Log Analytics-Warnungen
 description: Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics, einer Komponente von Log Analytics, erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 628ad256-7181-4a0d-9e68-4ed60c0f3f04
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/29/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: e8209a2d2034818a00ab9390a9af96d5b0287b5b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.date: 07/29/2018
+ms.openlocfilehash: 9cc9c9db1438196190df38082f18d650eff38249
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663213"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932696"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.

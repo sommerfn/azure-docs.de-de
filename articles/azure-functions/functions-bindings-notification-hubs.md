@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 7538e47a1d0bed0c72ff5ed467c98828cc9c18ba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cde565fbafec7f1209d0c65d6f3ebc121f38e6f5
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086642"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991390"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs-Ausgabebindung für Azure Functions
 
@@ -254,8 +254,8 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
-|**type** |–| Muss auf „notificationHub“ festgelegt werden. |
-|**direction** |–| Muss auf „out“ festgelegt werden. | 
+|**type** |–| Muss auf `notificationHub` festgelegt sein. |
+|**direction** |–| Muss auf `out` festgelegt sein. | 
 |**name** |–| Variablenname, der im Funktionscode für die Notification Hub-Nachricht verwendet wird |
 |**tagExpression** |**TagExpression** | Mit Tagausdrücken können Sie Benachrichtigungen an eine Gruppe von Geräten übermitteln, die sich für den Empfang von Benachrichtigungen, die dem Tagausdruck entsprechen, registriert haben.  Weitere Informationen finden Sie unter [Weiterleitung und Tagausdrücke](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Name der Notification Hub-Ressource im Azure-Portal |

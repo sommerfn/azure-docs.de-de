@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 904bd884bc09c1e2016f55ffc8e1e9f635974ac7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 59c888b1f18b1c9f700e1b79c4786a466f2c55fb
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178026"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821982"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen
 
@@ -252,7 +252,6 @@ Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Daten
 * Vollständige Vorlagen, die verwaltete Datenträger verwenden, finden Sie unter den folgenden Links des Repositorys für Azure-Schnellstartvorlagen.
     * [Windows VM with managed disk (Virtueller Windows-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [Linux VM with managed disk (Virtueller Linux-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-    * [Full list of managed disk templates (Vollständige Liste der Vorlagen mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * Im Dokument [Azure Managed Disks – Übersicht](../articles/virtual-machines/windows/managed-disks-overview.md) finden Sie weitere Informationen zu verwalteten Datenträgern.
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für VM-Ressourcen. Diese finden Sie im Dokument [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/virtualmachines).
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für Datenträgerressourcen. Diese finden Sie im Dokument [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/disks).

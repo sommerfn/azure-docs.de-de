@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051449"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808413"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -123,7 +123,7 @@ Es wird empfohlen, ein E-Mail-Konto zu verwenden, für dessen Zugriff das Azure 
 
 Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe für Ihr Geschäfts-, Schul-, Uni- oder Microsoft-Konto.
 
-Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) und [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) verfügbar.
+Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) und [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) verfügbar.
 
 > [!NOTE]
 > Benutzer können ihre mobile App nicht registrieren, wenn sie sich für die Self-Service-Kennwortzurücksetzung registrieren. Stattdessen haben sie die Möglichkeit, ihre mobile App unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) oder in den Sicherheitsinformationen in der Registrierungsvorschau unter [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) zu registrieren.

@@ -1,23 +1,19 @@
 ---
 title: Erstellen von Profilen für Azure Cloud Services-Liveinstanzen mit Application Insights | Microsoft-Dokumentation
 description: Aktivieren von Application Insights Profiler für Azure Cloud Services.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 93392e379cbb03508fefc1877d5d50e04436b79c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 682711d7681e3646ae14686b01542bc5d7432179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737228"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820502"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Erstellen von Profilen für Azure Cloud Services-Liveinstanzen mit Application Insights
 
@@ -29,7 +25,7 @@ Application Insights Profiler kann auch für diese Dienste bereitgestellt werden
 Application Insights Profiler wird mit der Azure-Diagnoseerweiterung installiert. Sie müssen Azure-Diagnose nur so konfigurieren, dass Profiler installiert wird und Profile an Ihre Application Insights-Ressource sendet.
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Aktivieren von Profiler für Azure Cloud Services
-1. Stellen Sie sicher, dass Sie [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwenden. Wenn Sie Betriebssystemfamilie 4 verwenden, müssen Sie .NET Framework 4.6.1 oder höher mit einer [Starttask](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-install-dotnet) installieren. Betriebssystemfamilie 5 enthält standardmäßig eine kompatible Version von .NET Framework. 
+1. Stellen Sie sicher, dass Sie [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwenden. Wenn Sie Betriebssystemfamilie 4 verwenden, müssen Sie .NET Framework 4.6.1 oder höher mit einer [Starttask](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet) installieren. Betriebssystemfamilie 5 enthält standardmäßig eine kompatible Version von .NET Framework. 
 
 1. Fügen Sie das [Application Insights SDK für Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) hinzu.
 

@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: 7ccd84042d11b586d524d4eb76eba03111e0b3c5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 10a940e43b2ab4dff1b7c90aa7d6d274ddef82d9
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099009"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023911"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -180,12 +180,12 @@ Warnungen auf Abonnement- oder Ressourcengruppenebene enthalten unter Umständen
             "anyOf": [
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Compute/virtualMachines",
+                    "equals": "MICROSOFT.COMPUTE/VIRTUALMACHINES",
                     "containsAny": null
                 },
                 {
                     "field": "resourceType",
-                    "equals": "Microsoft.Storage/storageAccounts",
+                    "equals": "MICROSOFT.STORAGE/STORAGEACCOUNTS",
                     "containsAny": null
                 },
                 ...
@@ -198,7 +198,7 @@ Warnungen auf Abonnement- oder Ressourcengruppenebene enthalten unter Umständen
 Hier wird mit dem Wrapper `anyOf` zugelassen, dass die Ressourcenintegritätswarnung einer der angegebenen Bedingungen entspricht. Dadurch werden Warnungen für bestimmte Ressourcentypen ermöglicht.
 
 ### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Anpassen der Resource Health-Ereignisse, die Sie benachrichtigen
-Wenn für Ressourcen ein Integritätsereignis auftritt, können sie eine Reihe von Phasen durchlaufen, die den Status des Integritätsereignisses darstellen: `Active`, `InProgress`, `Updated` und `Resolved`.
+Wenn für Ressourcen ein Integritätsereignis auftritt, können sie eine Reihe von Phasen durchlaufen, die den Status des Integritätsereignisses darstellen: `Active`, `In Progress`, `Updated` und `Resolved`.
 
 Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehlerhaft ist. In diesem Fall sollten Sie Ihre Warnung so konfigurieren, dass Sie nur benachrichtigt werden, wenn für `status` der Wert `Active` lautet. Wenn Sie jedoch auch über die anderen Phasen benachrichtigt werden möchten, können Sie diese Details wie folgt hinzufügen:
 
@@ -214,7 +214,7 @@ Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehl
                 },
                 {
                     "field": "status",
-                    "equals": "InProgress"
+                    "equals": "In Progress"
                 },
                 {
                     "field": "status",
@@ -409,7 +409,7 @@ Nachfolgend finden Sie eine Beispielvorlage mit den im vorherigen Abschnitt besc
                                 },
                                 {
                                     "field": "status",
-                                    "equals": "InProgress",
+                                    "equals": "In Progress",
                                     "containsAny": null
                                 },
                                 {

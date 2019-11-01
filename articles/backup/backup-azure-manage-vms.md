@@ -8,17 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029261"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969231"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
 In diesem Artikel erfahren Sie mehr über die Verwaltung von Azure-VMs, die mit dem [Azure Backup-Dienst](backup-overview.md) gesichert wurden. Außerdem werden in diesem Artikel die Sicherungsinformationen auf dem Tresordashboard zusammengefasst.
-
 
 Im Azure-Portal ermöglicht das Dashboard für den Recovery Services-Tresor den Zugriff auf Informationen zum Tresor, z. B.:
 
@@ -77,11 +76,12 @@ So verwalten Sie eine Sicherungsrichtlinie:
      ![Auswählen einer Sicherungsrichtlinie](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
 ## <a name="run-an-on-demand-backup"></a>Ausführen einer On-Demand-Sicherung
+
 Sie können eine On-Demand-Sicherung eines virtuellen Computers ausführen, nachdem Sie dessen Schutz konfiguriert haben. Beachten Sie dabei Folgendes:
 
-- Wenn die erste Sicherung ansteht, erstellt die On-Demand-Sicherung eine vollständige Kopie des virtuellen Computers im Recovery Services-Tresor.
-- Nachdem die erste Sicherung durchgeführt wurde, werden bei einer On-Demand-Sicherung nur Änderungen der vorherigen Momentaufnahme an den Recovery Services-Tresor gesendet. Spätere Sicherungen erfolgen also immer inkrementell.
-- Die Aufbewahrungsdauer für eine On-Demand Sicherung ist der Aufbewahrungswert, den Sie beim Auslösen des Sicherungsvorgangs festlegen.
+* Wenn die erste Sicherung ansteht, erstellt die On-Demand-Sicherung eine vollständige Kopie des virtuellen Computers im Recovery Services-Tresor.
+* Nachdem die erste Sicherung durchgeführt wurde, werden bei einer On-Demand-Sicherung nur Änderungen der vorherigen Momentaufnahme an den Recovery Services-Tresor gesendet. Spätere Sicherungen erfolgen also immer inkrementell.
+* Die Aufbewahrungsdauer für eine On-Demand Sicherung ist der Aufbewahrungswert, den Sie beim Auslösen des Sicherungsvorgangs festlegen.
 
 So lösen Sie eine On-Demand-Sicherung aus:
 
@@ -147,32 +147,32 @@ So setzen Sie den Schutz für einen virtuellen Computer fort:
 
 Es gibt zwei Möglichkeiten, die Sicherungsdaten eines virtuellen Computers zu löschen:
 
-- Wählen Sie auf dem Dashboard für die Tresorelemente „Sicherung beenden“ aus, und befolgen Sie die für die Option [Schutz beenden und Sicherungsdaten löschen](#stop-protection-and-delete-backup-data) beschriebenen Anweisungen.
+* Wählen Sie auf dem Dashboard für die Tresorelemente „Sicherung beenden“ aus, und befolgen Sie die für die Option [Schutz beenden und Sicherungsdaten löschen](#stop-protection-and-delete-backup-data) beschriebenen Anweisungen.
 
   ![Auswählen von „Sicherung beenden“](./media/backup-azure-manage-vms/stop-backup-buttom.png)
 
-- Wählen Sie auf dem Dashboard für die Tresorelemente „Sicherungsdaten löschen“ aus. Diese Option ist aktiviert, wenn Sie beim Beenden des Schutzes des virtuellen Computers die Option [Schutz beenden und Sicherungsdaten beibehalten](#stop-protection-and-retain-backup-data) ausgewählt hatten.
+* Wählen Sie auf dem Dashboard für die Tresorelemente „Sicherungsdaten löschen“ aus. Diese Option ist aktiviert, wenn Sie beim Beenden des Schutzes des virtuellen Computers die Option [Schutz beenden und Sicherungsdaten beibehalten](#stop-protection-and-retain-backup-data) ausgewählt hatten.
 
   ![Auswählen von „Sicherung löschen“](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 
-  - Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherungsdaten löschen** aus.
-  - Geben Sie den Namen des Sicherungselements ein, um zu bestätigen, dass Sie die Wiederherstellungspunkte löschen möchten.
+  * Wählen Sie auf dem [Dashboard für die Tresorelemente](#view-vms-on-the-dashboard) die Option **Sicherungsdaten löschen** aus.
+  * Geben Sie den Namen des Sicherungselements ein, um zu bestätigen, dass Sie die Wiederherstellungspunkte löschen möchten.
 
     ![Löschen von Sicherungsdaten](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
-  - Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
+  * Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
 
   > [!NOTE]
   > Wenn Sie die Sicherungsdaten löschen, werden alle zugehörigen Wiederherstellungspunkte gelöscht. Sie können keine bestimmten Wiederherstellungspunkte zum Löschen auswählen.
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Sichern eines Elements, bei dem die primäre Datenquelle nicht mehr vorhanden ist
 
-- Wenn für Azure Backup konfigurierte Azure-VMs entweder gelöscht oder verschoben werden, ohne den Schutz zu beenden, schlagen geplante Sicherungsaufträge und bedarfsgesteuerte (Ad-hoc-) Sicherungsaufträge mit dem Fehler „UserErrorVmNotFoundV2“ fehl. Die Vorüberprüfung der Sicherung wird nur bei fehlgeschlagenen Ad-hoc-Sicherungsaufträgen als kritisch angezeigt (fehlerhafte geplante Aufträge werden nicht angezeigt). 
-- Diese Sicherungselemente bleiben in dem System aktiv, das die vom Benutzer festgelegte Sicherungs-und Aufbewahrungsrichtlinie einhält. Die gesicherten Daten für diese Azure-VMs werden gemäß der Aufbewahrungsrichtlinie beibehalten. Die abgelaufenen Wiederherstellungspunkte (mit Ausnahme des letzten Wiederherstellungspunkts) werden gemäß der Aufbewahrungsdauer bereinigt, die in der Sicherungsrichtlinie festgelegt wurde.
-- Benutzern wird empfohlen, die Sicherungselemente zu löschen, bei denen die primäre Datenquelle nicht mehr vorhanden ist. Auf diese Weise werden zusätzliche Kosten vermieden, wenn das Sicherungselement/die Daten für die Löschressourcen nicht mehr benötigt wird bzw. werden, weil der letzte Wiederherstellungspunkt dauerhaft beibehalten und dem Benutzer gemäß den geltenden Preisen für die Sicherung eine Gebühr berechnet wird.
-
+* Wenn für Azure Backup konfigurierte Azure-VMs entweder gelöscht oder verschoben werden, ohne den Schutz zu beenden, schlagen geplante Sicherungsaufträge und bedarfsgesteuerte (Ad-hoc-) Sicherungsaufträge mit dem Fehler „UserErrorVmNotFoundV2“ fehl. Die Vorüberprüfung der Sicherung wird nur bei fehlgeschlagenen Ad-hoc-Sicherungsaufträgen als kritisch angezeigt (fehlerhafte geplante Aufträge werden nicht angezeigt).
+* Diese Sicherungselemente bleiben in dem System aktiv, das die vom Benutzer festgelegte Sicherungs-und Aufbewahrungsrichtlinie einhält. Die gesicherten Daten für diese Azure-VMs werden gemäß der Aufbewahrungsrichtlinie beibehalten. Die abgelaufenen Wiederherstellungspunkte (mit Ausnahme des letzten Wiederherstellungspunkts) werden gemäß der Aufbewahrungsdauer bereinigt, die in der Sicherungsrichtlinie festgelegt wurde.
+* Benutzern wird empfohlen, die Sicherungselemente zu löschen, bei denen die primäre Datenquelle nicht mehr vorhanden ist. Auf diese Weise werden zusätzliche Kosten vermieden, wenn das Sicherungselement/die Daten für die Löschressourcen nicht mehr benötigt wird bzw. werden, weil der letzte Wiederherstellungspunkt dauerhaft beibehalten und dem Benutzer gemäß den geltenden Preisen für die Sicherung eine Gebühr berechnet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über das [Sichern einer Azure-VM über die VM-Einstellungen](backup-azure-vms-first-look-arm.md).
-- Erfahren Sie mehr über das [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md).
-- Erfahren Sie mehr über das [Überwachen von Azure-VM-Sicherungen](backup-azure-monitor-vms.md).
+
+* Erfahren Sie mehr über das [Sichern einer Azure-VM über die VM-Einstellungen](backup-azure-vms-first-look-arm.md).
+* Erfahren Sie mehr über das [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md).
+* Erfahren Sie mehr über das [Überwachen von Azure-VM-Sicherungen](backup-azure-monitor-vms.md).

@@ -1,24 +1,18 @@
 ---
 title: Beispiele für Protokollabfragen in Azure Monitor | Microsoft-Dokumentation
 description: Beispiele für Protokollabfragen in Azure Monitor unter Verwendung der Abfragesprache Kusto.
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 10/01/2019
 ms.author: bwren
-ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.date: 10/01/2019
+ms.openlocfilehash: a5a19910d101f3f30afcafa049056c78cd976f75
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718913"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933065"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Beispiele für Protokollabfragen in Azure Monitor
 Dieser Artikel enthält mehrere Beispiele für [Abfragen](log-query-overview.md) unter Verwendung der [Abfragesprache Kusto](/azure/kusto/query/), mit denen verschiedene Arten von Protokolldaten aus Azure Monitor abgerufen werden. Da Daten auf unterschiedliche Weise konsolidiert und analysiert werden, können Sie anhand dieser Beispiele verschiedene Strategien ermitteln, die ggf. für Ihre eigenen Anforderungen geeignet sind.  

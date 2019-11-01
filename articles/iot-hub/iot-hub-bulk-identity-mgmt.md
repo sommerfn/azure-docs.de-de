@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/11/2019
 ms.author: robinsh
-ms.openlocfilehash: 5dd93af7deec2b0c8c90f6a8586de905207ad0a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65796358"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72927422"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 
@@ -91,7 +91,7 @@ Bei allen IoT Hub-Tarifen ist jeweils nur 1 aktiver Geräteimport- oder -exporta
 
 ## <a name="export-devices"></a>Exportieren von Geräten
 
-Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/common/storage-security-guide.md#data-plane-security) in einen [Azure Storage](../storage/index.yml)-Blobcontainer zu exportieren.
+Verwenden Sie die **ExportDevicesAsync**-Methode, um die gesamte IoT Hub-Identitätsregistrierung mithilfe einer [Shared Access Signature](../storage/common/storage-security-guide.md#authorization) in einen [Azure Storage](../storage/index.yml)-Blobcontainer zu exportieren.
 
 Mit dieser Methode können Sie zuverlässige Sicherungen Ihrer Geräte-Informationen in einem Blobcontainer erstellen, den Sie steuern.
 

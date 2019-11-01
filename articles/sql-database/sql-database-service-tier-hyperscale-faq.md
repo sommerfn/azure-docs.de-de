@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: a5daac9fb34f36620176111e866f493d47f63bba
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513928"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044976"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 
@@ -46,9 +46,9 @@ Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich im Hinblic
 | **Computegröße**|Einzeldatenbank/Pool für elastische Datenbanken* | 1 bis 80 virtuelle Kerne | 1 bis 80 virtuelle Kerne* | 1 bis 80 virtuelle Kerne |
 | |Verwaltete Instanz | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne | – | 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | **Speichertyp** | Alle |Storage Premium (remote, pro Instanz) | Entkoppelter Speicher mit lokalem SSD-Cache (pro Instanz) | Äußerst schneller lokaler SSD-Speicher (pro Instanz) |
-| **Speichergröße** | Einzeldatenbank/Pool für elastische Datenbanken | 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
+| **Speichergröße** | Einzeldatenbank/Pool für elastische Datenbanken*| 5 GB – 4 TB | Bis zu 100 TB | 5 GB – 4 TB |
 | | Verwaltete Instanz  | 32 GB – 8 TB | – | 32 GB – 4 TB |
-| **IOPS** | Einzeldatenbank** | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
+| **IOPS** | Einzeldatenbank | 500 IOPS pro V-Kern mit maximal 7.000 IOPS | Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab. | 5\.000 IOPS mit maximal 200.000 IOPS|
 | | Verwaltete Instanz | Hängt von der Dateigröße ab | – | 1\.375 IOPS/V-Kern |
 |**Verfügbarkeit**|Alle|1 Replikat, keine horizontale Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 4 Replikate mit horizontaler Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit horizontaler Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
 |**Sicherungen**|Alle|Georedundanter Speicher mit Lesezugriff (RA-GRS), Aufbewahrung 7–35 Tage (standardmäßig 7 Tage)| RA-GRS, Aufbewahrung 7 Tage, konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PITR) | RA-GRS, Aufbewahrung 7–35 Tage (standardmäßig 7 Tage) |

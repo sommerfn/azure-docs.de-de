@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren von MSAL für iOS und macOS für die Verwendung verschiedener Identitätsanbieter |Microsoft Identity Platform
+title: Konfigurieren von MSAL für iOS und macOS für die Verwendung verschiedener Identitätsanbieter
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie mit MSAL für iOS und macOS verschiedene autoritative Stellen wie B2C, Sovereign Clouds und Gastbenutzer nutzen können.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 114e67e2dca7ba304cb92b21a894e045cbe0c9e9
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269396"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803838"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Gewusst wie: Konfigurieren von MSAL für iOS und macOS für die Verwendung verschiedener Identitätsanbieter
 
@@ -252,4 +253,4 @@ Im Folgenden finden Sie Unterklassen von `MSALAuthority`, die Sie je nach der zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md).
+Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

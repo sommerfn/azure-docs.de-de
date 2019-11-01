@@ -1,6 +1,6 @@
 ---
 title: Lebenszyklus des Team Data Science-Prozesses
-description: Zum Ausführen der Data Science-Projekte erforderliche Schritte
+description: Der Team Data Science-Prozess (TDSP) bietet einen empfohlenen Lebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 40d1af6e6258b5026853532f7963a76d4fc389db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00efe89314d4a1a5c3302e820b8609adf194aa59
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837884"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053242"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Lebenszyklus des Team Data Science-Prozesses
 

@@ -1,24 +1,18 @@
 ---
 title: Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Zeichenfolgen in Azure Monitor-Protokollabfragen bearbeiten, vergleichen, durchsuchen und für diese viele weitere Vorgänge ausführen.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0dd61deb372822c5c564758d26d4c4a4938c1064
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.date: 08/16/2018
+ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741461"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932931"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen
 
@@ -53,7 +47,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Zeichenfolgenvergleiche
 
-Operators       |Beschreibung                         |Groß-/Kleinschreibung|Beispiel (ergibt `true`)
+Operators       |BESCHREIBUNG                         |Groß-/Kleinschreibung|Beispiel (ergibt `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Equals                              |Ja           |`"aBc" == "aBc"`
 `!=`           |Not Equals                          |Ja           |`"abc" != "ABC"`

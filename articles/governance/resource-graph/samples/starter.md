@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 6f4ead051b0472bdd5de85c3589d362241caa485
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c2a8c60502aeb75173371d40475b5d2875417791
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755863"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808640"
 ---
 # <a name="starter-resource-graph-queries"></a>Einfache Resource Graph-Abfragen
 
@@ -76,27 +76,27 @@ Diese Abfrage verwendet `count` anstelle von `summarize`, um die Anzahl der zur�
 
 ```kusto
 Resources
-| where type =~ 'microsoft.compute/virtualmachines'
+| where type =~ 'microsoft.keyvault/vaults'
 | count
 ```
 
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
-az graph query -q "Resources | where type =~ 'microsoft.compute/virtualmachines' | count"
+az graph query -q "Resources | where type =~ 'microsoft.keyvault/vaults' | count"
 ```
 
 # <a name="azure-powershelltabazure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachines' | count"
+Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | count"
 ```
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 ![Resource Graph-Explorersymbol](../media/resource-graph-small.png) Probieren Sie im Azure Resource Graph-Explorer die folgende Abfrage aus:
 
-- Azure-Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20count" target="_blank">portal.azure.com</a> ![Symbol für „Link in neuem Fenster öffnen“](../../media/new-window.png)
+- Azure-Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![Symbol für „Link in neuem Fenster öffnen“](../../media/new-window.png)
 
 ---
 

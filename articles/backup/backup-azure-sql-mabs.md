@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 72de5857786f284bfc4afda1db093d5343bd7a43
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f36560dbaea5b3efe29d38ca750fc732b9281360
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954478"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72969139"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Sichern von SQL Server in Azure mit Azure Backup Server
+
 Dieser Artikel führt Sie durch die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
 
 Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und aus Azure umfasst drei Schritte:
@@ -25,9 +26,11 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
 3. Wiederherstellen der Datenbank aus Azure
 
 ## <a name="before-you-start"></a>Vorbereitung
+
 Bevor Sie beginnen, stellen Sie sicher, [dass Azure Backup Server installiert und vorbereitet wurde](backup-azure-microsoft-azure-backup.md).
 
 ## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken mithilfe von Azure
+
 1. Klicken Sie auf der Azure Backup Server-Benutzeroberfläche auf den Arbeitsbereich **Schutz**.
 2. Klicken Sie im Menüband auf **Neu** , um eine neue Schutzgruppe zu erstellen.
 
@@ -111,6 +114,7 @@ Bevor Sie beginnen, stellen Sie sicher, [dass Azure Backup Server installiert un
     ![Erstellen der Schutzgruppe – in Bearbeitung](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>Bedarfsgesteuerte Sicherung einer SQL Server-Datenbank
+
 Anhand der zuvor beschriebenen Schritte wurde eine Sicherungsrichtlinie eingerichtet, ein "Wiederherstellungspunkt" wird jedoch erst bei Ausführung der ersten Sicherung erstellt. Statt darauf zu warten, dass der Scheduler in Aktion tritt, können Sie mithilfe der nachstehenden Schritte manuell einen Wiederherstellungspunkt erstellen.
 
 1. Warten Sie, bis der Status der Datenbank für die Schutzgruppe als **OK** angezeigt wird, bevor Sie den Wiederherstellungspunkt erstellen.
@@ -127,6 +131,7 @@ Anhand der zuvor beschriebenen Schritte wurde eine Sicherungsrichtlinie eingeric
     ![Konsole für die Überwachung](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Wiederherstellen einer SQL Server-Datenbank aus Azure
+
 Die folgenden Schritte sind erforderlich, um eine geschützte Entität (SQL Server-Datenbank) aus Azure wiederherzustellen.
 
 1. Öffnen Sie die Verwaltungskonsole auf dem DPM-Server. Navigieren Sie zum Arbeitsbereich **Wiederherstellung** , in dem die mit DPM gesicherten Server angezeigt werden. Suchen Sie nach der erforderlichen Datenbank (in diesem Fall "ReportServer$MSDPM2012"). Wählen Sie unter **Wiederherstellung von** eine Uhrzeit aus, die auf **Online** endet.
@@ -149,5 +154,6 @@ Die folgenden Schritte sind erforderlich, um eine geschützte Entität (SQL Serv
 
     Nach Abschluss der Wiederherstellung ist die wiederhergestellte Datenbank anwendungskonsistent.
 
-### <a name="next-steps"></a>Nächste Schritte:
+### <a name="next-steps"></a>Nächste Schritte
+
 •    [Azure Backup – Häufig gestellte Fragen](backup-azure-backup-faq.md)

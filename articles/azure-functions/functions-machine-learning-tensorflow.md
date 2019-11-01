@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677878"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817460"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Anwenden von Machine Learning-Modellen in Azure Functions mit Python und TensorFlow
 
@@ -179,7 +179,7 @@ Vergewissern Sie sich, dass *classify* jetzt eine Datei mit dem Namen *predict.p
 Die Hilfsbibliothek muss über einige Abhängigkeiten verfügen, die installiert werden müssen. Öffnen Sie *start/requirements.txt* in Ihrem Editor, und fügen Sie der Datei die folgenden Abhängigkeiten hinzu.
 
 ```txt
-tensorflow==1.15
+tensorflow==1.14
 Pillow
 requests
 ```

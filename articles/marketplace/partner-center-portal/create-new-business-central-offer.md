@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 9376493cdd1a8a9790f4de8ee3769acf8dca5ade
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16b75a98a5a42c9acf6d9a68330cbf8e005f7179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595573"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819800"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 Business Central
 
@@ -101,7 +101,7 @@ Wählen Sie mindestens eine und höchstens drei Kategorien aus, die zum Platzier
 
 ### <a name="industry"></a>Branche
 
-Sie können optional bis zu zwei Branchen auswählen, um Ihr Angebot im Marketplace zu kategorisieren. Wenn Ihr Angebot nicht für eine bestimmte Branche bestimmt ist, lassen Sie diesen Abschnitt leer. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, wie sich Ihr Angebot für die ausgewählten Branchen eignet. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>App-Version
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 017266fd28fb31b4509957560a042abf74314453
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/24/2019
+ms.openlocfilehash: 823226da671671eaf6380d48a35c20298ec6bf9d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458843"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933661"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe des Azure-Portals
 Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure Database for MySQL-Server über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden. 
@@ -30,9 +30,7 @@ Virtual Network-Regeln (VNET) können auch verwendet werden, um den Zugriff auf 
 
 3. Überprüfen Sie Ihre IP-Adresse, bevor Sie die Konfiguration speichern. In einigen Situationen weicht die vom Azure-Portal erkannte IP-Adresse von der IP-Adresse ab, die für den Zugriff auf das Internet und die Azure-Server verwendet wird. Aus diesem Grund müssen Sie die Start-IP und die End-IP ändern, damit die Regel wie erwartet funktioniert.
 
-   Verwenden Sie eine Suchmaschine oder ein anderes Onlinetool, um Ihre eigene IP-Adresse zu überprüfen. Suchen Sie in Bing beispielsweise nach „Wie lautet meine IP?“. 
-
-   ![Bing-Ergebnisse für „Wie lautet meine IP-Adresse?“](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
+   Verwenden Sie eine Suchmaschine oder ein anderes Onlinetool, um Ihre eigene IP-Adresse zu überprüfen. Suchen Sie in Bing beispielsweise nach „Wie lautet meine IP?“.
 
 4. Fügen Sie weitere Adressräume hinzu. In den Firewallregeln für Azure Database for MySQL können Sie eine einzelne IP-Adresse oder einen Adressbereich angeben. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in die Felder „Start-IP“ und „End-IP“ ein. Durch Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, auf dem MySQL-Server auf alle Datenbanken zuzugreifen, für die sie über gültige Anmeldeinformationen verfügen.
 

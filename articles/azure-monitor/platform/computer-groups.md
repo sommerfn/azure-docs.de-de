@@ -1,24 +1,18 @@
 ---
 title: Computergruppen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Mit Computergruppen in Azure Monitor können Sie Protokollabfragen auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, und wie sie diese in einer Protokollabfrage verwenden.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/05/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: ae423b6fb141cab4038e65ba85c6067f1c23aee0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 02/05/2019
+ms.openlocfilehash: 9ef0f2810252b73921fc0a72f2e523262c760bab
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320689"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932654"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computergruppen in Azure Monitor-Protokollabfragen
 Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-query/log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollabfrage eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die den Computern in der Gruppe entsprechen.
@@ -57,7 +51,7 @@ Die folgende Tabelle beschreibt die Eigenschaften, durch die eine Computergruppe
 |:---|:---|
 | NAME   | Name der Abfrage, die im Portal angezeigt werden soll |
 | Funktionsalias | ein eindeutiger Alias, mit dem die Computergruppe bei einer Abfrage identifiziert wird |
-| Category (Kategorie)       | Kategorie zum Organisieren von Abfragen im Portal |
+| Category       | Kategorie zum Organisieren von Abfragen im Portal |
 
 
 ### <a name="active-directory"></a>Active Directory

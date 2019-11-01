@@ -1,22 +1,18 @@
 ---
 title: Automatisieren der Azure Monitor-Protokollierung mit Microsoft Flow
 description: In diesem Artikel erfahren Sie, wie Sie Microsoft Flow zum schnellen Automatisieren von wiederholbaren Prozessen mit dem Azure Log Analytics-Connector verwenden.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-ms.service: log-analytics
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/29/2017
+author: MGoedtel
 ms.author: bwren
-ms.openlocfilehash: 46a4544b86648ee99a751d4793013f6104d1d9df
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.date: 09/29/2017
+ms.openlocfilehash: c74ff0f4d23df8f906870c3810a699db254d70b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807035"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932317"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Automatisieren der Azure Monitor-Protokollierung mit dem Connector für Microsoft Flow
 Mit [Microsoft Flow](https://ms.flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Die Ausgabe einer Aktion kann als Eingabe einer anderen Aktion genutzt werden, damit Sie die Integration zwischen unterschiedlichen Diensten erstellen können.  Mit dem Azure Log Analytics-Connector für Microsoft Flow können Sie Workflows mit Daten erstellen, die über Protokollabfragen aus einem Log Analytics-Arbeitsbereich in Azure Monitor abgerufen werden.

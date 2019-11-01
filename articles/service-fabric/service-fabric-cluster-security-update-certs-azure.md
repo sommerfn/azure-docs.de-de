@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: d84525e869d47fc609ee8aac7feb7feda36a5f23
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599959"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934019"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
@@ -53,13 +53,13 @@ Wenn Sie beabsichtigen, das als primär markierte Zertifikat zu entfernen, müss
 Diese Schritte setzen voraus, dass Sie mit der Funktionsweise von Resource Manager vertraut sind und mindestens einen Service Fabric-Cluster mithilfe einer Resource Manager-Vorlage bereitgestellt haben. Außerdem müssen Sie die Vorlage, die Sie zum Einrichten des Clusters verwendet haben, zur Hand haben. Außerdem wird vorausgesetzt, dass Sie mit der Anwendung von JSON vertraut sind.
 
 > [!NOTE]
-> Wenn Sie eine Beispielvorlage und Parameter suchen, die Sie als Leitlinie oder Ausgangspunkt verwenden können, laden Sie sie aus diesem [Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) herunter. 
+> Wenn Sie eine Beispielvorlage und Parameter suchen, die Sie als Leitlinie oder Ausgangspunkt verwenden können, laden Sie sie aus diesem [Git-Repository](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) herunter. 
 > 
 > 
 
 ### <a name="edit-your-resource-manager-template"></a>Bearbeiten Ihrer Resource Manager-Vorlage
 
-Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-NodeTypes-Secure_Step2.JSON“ alle Bearbeitungsschritte, die wir ausführen. Die Beispieldatei finden Sie im [Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample).
+Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-NodeTypes-Secure_Step2.JSON“ alle Bearbeitungsschritte, die wir ausführen. Die Beispieldatei finden Sie im [Git-Repository](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample).
 
 **Achten Sie darauf, dass Sie alle Schritte ausführen**.
 
@@ -178,7 +178,7 @@ Damit Sie alles besser verfolgen können, enthält die Beispieldatei „5-VM-1-N
 > 
 
 ### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Bearbeiten Ihrer Vorlagendatei gemäß der neuen Parameter, die Sie oben hinzugefügt haben
-Wenn Sie das Beispiel aus dem [Git-Repository](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) als Leitlinie verwendet haben, können Sie beginnen, Änderungen im Beispiel „5-VM-1-NodeTypes-Secure.parameters_Step2.JSON“ vorzunehmen. 
+Wenn Sie das Beispiel aus dem [Git-Repository](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Cert-Rollover-Sample) als Leitlinie verwendet haben, können Sie beginnen, Änderungen im Beispiel „5-VM-1-NodeTypes-Secure.parameters_Step2.JSON“ vorzunehmen. 
 
 Bearbeiten Sie die Parameterdatei der Resource Manager-Vorlage, indem Sie die beiden neuen Parameter für „secCertificateThumbprint“ und „secCertificateUrlValue“ hinzufügen. 
 

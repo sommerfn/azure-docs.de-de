@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0540d8a83a8dc1da9bc763bce0b30463889cfe90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 71ccdb7ac6666cde1841599cdaf95b67bc54e6a5
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915040"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72800022"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Was ist Apache Storm in Azure HDInsight?
 
@@ -40,7 +40,7 @@ Storm in HDInsight umfasst die folgenden Features:
 
 * **Erstellen von Streamingpipelines mithilfe verschiedener Azure-Dienste**: Storm in HDInsight kann in andere Azure-Dienste (etwa Event Hubs, SQL-Datenbank, Azure Storage und Azure Data Lake Storage) integriert werden.
 
-    Eine Beispiellösung, die in Azure-Dienste integriert wird, finden Sie unter [Verarbeiten von Ereignissen aus Event Hubs mit Apache Storm in HDInsight](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+    Eine Beispiellösung, die in Azure-Dienste integriert wird, finden Sie unter [Verarbeiten von Ereignissen aus Event Hubs mit Apache Storm in HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
 Eine Liste der Unternehmen, die Apache Storm für ihre Echtzeitanalyselösungen verwenden, finden Sie unter [Unternehmen, die Apache Storm verwenden](https://storm.apache.org/documentation/Powered-By.html).
 
@@ -92,7 +92,7 @@ Ein neuer Storm-Cluster in HDInsight kann innerhalb weniger Minuten erstellt wer
 
 * __Event Hubs__: Ein Beispiel für die Verwendung von Event Hubs in einem Storm-Cluster finden Sie unter den folgenden Beispielen:
 
-    * [Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
+    * [Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
     * [Verarbeiten von Ereignissen aus Azure Event Hubs mit Apache Storm in HDInsight (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: d33ad5782b78fc7f9ba4803c85f1b17be60e8561
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 964bc915347d11e087da0b34a8d4160d807a4158
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194886"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965414"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 
@@ -58,7 +58,6 @@ Sie können die folgenden Ressourcen einer statischen öffentlichen IP-Adresse a
 - Sie können die IP-Adressen für das Präfix nicht angeben. Azure ordnet die IP-Adressen für das Präfix basierend auf der von Ihnen angegebenen Größe zu.
 - Sie können ein Präfix von bis zu 16 IP-Adressen oder ein /28 erstellen. Weitere Informationen finden Sie unter [Azure-Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Nachdem Sie das Präfix erstellt haben, können Sie den Bereich nicht mehr ändern.
-- Der Bereich gilt nur für IPv4-Adressen. Er umfasst keine IPv6-Adressen.
 - Nur statische öffentliche IP-Adressen, die mit der Standard-SKU erstellt wurden, können aus dem Bereich des Präfix zugewiesen werden. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie unter [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 - Adressen aus dem Bereich können nur Azure Resource Manager-Ressourcen zugewiesen werden. Adressen können keinen Ressourcen im klassischen Bereitstellungsmodell zugewiesen werden.
 - Alle aus dem Präfix erstellten öffentlichen IP-Adressen müssen sich in der gleichen Azure-Region und im gleichen Azure-Abonnement wie das Präfix befinden und müssen Ressourcen in der gleichen Region und im gleichen Abonnement zugewiesen werden.

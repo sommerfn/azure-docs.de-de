@@ -1,24 +1,18 @@
 ---
 title: Sammeln und Analysieren von Leistungsindikatoren in Azure Monitor | Microsoft-Dokumentation
 description: Leistungsindikatoren werden von Azure Monitor gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im Arbeitsbereich gespeichert werden und wie sie im Azure-Portal analysiert werden können.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/28/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 76f4061af816c59e644db99913193ed6fcf24d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2018
+ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65205749"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932440"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -214,9 +208,9 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit de
 | Perf &#124; where ObjectName == "Prozessor" and CounterName == "% Prozessorzeit" and InstanceName == "_Total" &#124; summarize AVGCPU = avg(CounterValue) by Computer |Durchschnittliche CPU-Nutzung aller Computer. |
 | Perf &#124; where CounterName == "% Prozessorzeit" &#124; summarize AggregatedValue = max(CounterValue) by Computer |Maximale CPU-Nutzung aller Computer. |
 | Perf &#124; where ObjectName == "Logischer Datenträger" and CounterName == "Aktuelle Warteschlangenlänge" and Computer == "MyComputerName" &#124; summarize AggregatedValue = avg(CounterValue) by InstanceName |Durchschnittliche aktuelle Länge der Datenträgerwarteschlangen aller Instanzen eines bestimmten Computers |
-| Perf &#124; where CounterName == "Übertragungen/s" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95\. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
+| Perf &#124; where CounterName == "Übertragungen/s" &#124; summarize AggregatedValue = percentile(CounterValue, 95) by Computer |95. Perzentil der Datenträgerübertragungen pro Sekunde auf allen Computern. |
 | Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche CPU-Nutzung pro Stunde auf allen Computern |
-| Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 70\. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer |
+| Perf &#124; where Computer == "MyComputer" and CounterName startswith_cs "%" and InstanceName == "_Total" &#124; summarize AggregatedValue = percentile(CounterValue, 70) by bin(TimeGenerated, 1h), CounterName | 70. Perzentil pro Stunde jedes prozentualen Indikators für einen bestimmten Computer |
 | Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer |
 | Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | Alle Leistungsdaten aus dem Datenbank-Leistungsobjekt für die Masterdatenbank von der benannten SQL Server-Instanz INST2.  
 

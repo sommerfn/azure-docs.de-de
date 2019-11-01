@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory (Vorschauversion) | Microsoft-Dokumentation
+title: Kopieren von Daten aus der Salesforce Marketing Cloud mithilfe von Azure Data Factory | Microsoft Docs
 description: Erfahren Sie, wie Daten aus Salesforce Marketing Cloud mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -10,21 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: ddac58129d964f39770e4f8fb37b39625c690603
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 93d875fa67e9954268cec26f7413b6a4a4131f9c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089644"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931031"
 ---
-# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory (Vorschauversion)
+# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Kopieren von Daten aus Salesforce Marketing Cloud mithilfe von Azure Data Factory
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Salesforce Marketing Cloud-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-> [!IMPORTANT]
-> Dieser Connector befindet sich derzeit in der Vorschauversion. Sie können ihn ausprobieren und uns Feedback geben. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), wenn Sie in Ihrer Lösung eine Abhängigkeit von Connectors verwenden möchten, die sich in der Vorschauphase befinden.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 

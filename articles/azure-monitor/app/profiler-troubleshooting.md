@@ -1,23 +1,19 @@
 ---
 title: Behandeln von Problemen mit Azure Application Insights Profiler | Microsoft-Dokumentation
 description: Dieser Artikel enthält Schritte zur Problembehandlung sowie Informationen, um Entwickler bei der Aktivierung oder Verwendung von Application Insights Profiler zu unterstützen.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 6b57ffbd3cb2b31da3fc2882e941f9788d83fea8
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 7430f04846a1e66680f85f939854fd50a5df41e4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341669"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899971"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
@@ -111,7 +107,7 @@ Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktuali
 
 Zurzeit können Sie Profiler für maximal vier Azure Web-Apps und Bereitstellungsslots aktivieren, die im selben Serviceplan ausgeführt werden. Wenn Sie mehr als vier Web-Apps in einem App Service-Plan ausführen, gibt Profiler möglicherweise die Meldung *Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException* aus. Profiler wird für jede Web-App separat ausgeführt und versucht, für jede App eine Sitzung der Ereignisablaufverfolgung für Windows (ETW) Sitzung zu starten. Die Anzahl von ETW-Sitzungen, die gleichzeitig aktiv sein können, ist jedoch begrenzt. Wenn der Profiler-Webauftrag zu viele aktive Profilerstellungssitzungen meldet, verschieben Sie einige Web-Apps in einen anderen Serviceplan.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Bereitstellungsfehler: Verzeichnis nicht leer 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Bereitstellungsfehler: Verzeichnis nicht leer 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 
 Wenn Sie Ihre Web-App erneut für eine Web-Apps-Ressource bereitstellen und Profiler aktiviert ist, wird möglicherweise eine Meldung wie die folgende angezeigt:
 

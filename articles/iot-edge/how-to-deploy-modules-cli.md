@@ -10,12 +10,12 @@ ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: aa5c4747238b2f2427be3e57c3e84e03c81fd609
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c8cd6e2d13e252f9a7560b55eca58341e791db5a
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541765"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964938"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Bereitstellen von Azure IoT Edge-Modulen mit der Azure CLI
 
@@ -28,7 +28,7 @@ In diesem Artikel wird gezeigt, wie Sie ein JSON-Bereitstellungsmanifest erstell
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [IoT Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement.
-* Ein [IoT Edge-Gerät](how-to-register-device-cli.md) mit installierter IoT Edge-Runtime.
+* Ein [IoT Edge-Gerät](how-to-register-device.md#register-with-the-azure-cli) mit installierter IoT Edge-Runtime.
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az --version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt.
 * Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist vorhanden.
 
@@ -116,7 +116,7 @@ Wenden Sie die Konfiguration mit dem folgenden Befehl auf ein IoT Edge-Gerät an
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-Beim Parameter für die Geräte-ID muss die Groß-/Kleinschreibung beachtet werden. Der content-Parameter verweist auf die gespeicherte Bereitstellungsmanifestdatei.
+Beim Parameter für die Geräte-ID wird die Groß-/Kleinschreibung berücksichtigt. Der content-Parameter verweist auf die gespeicherte Bereitstellungsmanifestdatei.
 
    ![az iot edge set-modules-Ausgabe](./media/how-to-deploy-cli/set-modules.png)
 
@@ -130,7 +130,7 @@ Zeigen Sie die Module auf Ihrem IoT Edge-Gerät an:
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-Beim Parameter für die Geräte-ID muss ist Groß-/Kleinschreibung beachtet werden.
+Beim Parameter für die Geräte-ID wird die Groß-/Kleinschreibung berücksichtigt.
 
    ![az iot hub module-identity list-Ausgabe](./media/how-to-deploy-cli/list-modules.png)
 

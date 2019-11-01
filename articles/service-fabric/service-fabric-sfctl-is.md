@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI – sfctl is | Microsoft-Dokumentation
 description: Beschreibt die sfctl is-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 998a94350250402d4face64f64e12f32cf5b2a36
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 9a09d8c36fd282450767880a9ad144e1192dcd2e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036496"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901580"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Ermöglicht es, Befehle an den Infrastrukturdienst abzufragen und zu senden.
@@ -41,7 +42,7 @@ Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfigur
 | --- | --- |
 | --command [erforderlich] | Der Text des Befehls, der aufgerufen werden soll. Der Inhalt des Befehls ist infrastrukturspezifisch. |
 | --service-id | Die Identität des Infrastrukturdiensts. <br><br> Dies ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric\:“. Dieser Parameter ist nur für den Cluster erforderlich, in dem mehrere Instanzen des Infrastrukturdiensts ausgeführt werden. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -64,7 +65,7 @@ Für Cluster, für die mindestens eine Instanz des Infrastrukturdiensts konfigur
 | --- | --- |
 | --command [erforderlich] | Der Text des Befehls, der aufgerufen werden soll. Der Inhalt des Befehls ist infrastrukturspezifisch. |
 | --service-id | Die Identität des Infrastrukturdiensts. <br><br> Dies ist der vollständige Name des Infrastrukturdiensts ohne das URI-Schema „fabric\:“. Dieser Parameter ist nur für den Cluster erforderlich, in dem mehrere Instanzen des Infrastrukturdiensts ausgeführt werden. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 73b185eabc77d293328b1251a4af1aafffc5f319
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0c86f9ad134e9b640d33d1a391c5387af9f9afd
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65236354"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965662"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -48,7 +48,7 @@ In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](virtual-network-p
 
 ### <a name="ip-address-version"></a>IP-Adressversion
 
-Öffentliche IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. Öffentliche IPv6-Adressen können nur Lastenausgleichsmodulen mit Internetzugriff zugewiesen werden.
+Öffentliche IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. 
 
 ### <a name="sku"></a>SKU
 
@@ -148,10 +148,6 @@ Im Azure Resource Manager-Bereitstellungsmodell wird den folgenden Typen von Azu
 * Netzwerkschnittstellen für virtuelle Computer
 * Interne Lastenausgleichsmodule (ILBs) abrufen
 * Anwendungsgateways
-
-### <a name="ip-address-version"></a>IP-Adressversion
-
-Private IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. Privaten IPv6-Adressen kann nur die dynamische Zuordnungsmethode zugewiesen werden. Die Kommunikation zwischen privaten IPv6-Adressen ist in einem virtuellen Netzwerk nicht möglich. Sie können aus dem Internet in eingehender Richtung mit einer privaten IPv6-Adresse über einen Lastenausgleich mit Internetzugriff kommunizieren. Ausführliche Informationen finden Sie unter [Erstellen eines Lastenausgleichs für den Internetzugriff mit IPv6 – Azure CLI](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
 

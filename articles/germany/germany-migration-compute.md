@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 60deb142e87a0f58006cc3fe2bb6202eb1f35a9d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 66116f93c4318c8ccbb526374fb067b44a8eda1f
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514143"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72821393"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
@@ -166,7 +166,7 @@ Stellen Sie Ihre Bereitstellungsskripts, Ihre Vorlagen oder Ihren Code in der ne
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Batch](https://docs.microsoft.com/azure/batch/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Batch](https://docs.microsoft.com/azure/batch/tutorial-parallel-dotnet) durcharbeiten.
 - Lesen Sie die [Übersicht über Azure Batch](../batch/batch-technical-overview.md).
 
 ## <a name="functions"></a>Functions

@@ -1,24 +1,18 @@
 ---
 title: app()-Ausdruck in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Der app-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einer bestimmten Application Insights-App in derselben Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
-services: log-analytics
-documentationcenter: ''
+ms.service: azure-monitor
+ms.subservice: logs
+ms.topic: conceptual
 author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: a1a605bc733597430f64dceeb6c485db0abf657b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/25/2019
+ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589245"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933078"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>app()-Ausdruck in Azure Monitor-Abfragen
 
@@ -39,7 +33,7 @@ Der `app`-Ausdruck wird in Azure Monitor-Abfragen verwendet, um Daten aus einer 
 |:---|:---|:---|
 | Ressourcenname | Für Menschen lesbarer Name der Anwendung (auch als „Komponentenname“ bezeichnet) | app("fabrikamapp") |
 | Qualifizierter Name | Vollständiger Name der Anwendung in der Form: „Abonnementname/Ressourcengruppe/Komponentenname“ | app('AI-Prototype/Fabrikam/fabrikamapp') |
-| ID | GUID der Anwendung | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| id | GUID der Anwendung | app("988ba129-363e-4415-8fe7-8cbab5447518") |
 | Azure-Ressourcen-ID | Bezeichner für die Azure-Ressource |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
