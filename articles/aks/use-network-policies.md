@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169755"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72928492"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -69,7 +69,11 @@ Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Da
 * Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
 * Lassen Sie Datenverkehr basierend auf dem Namespace zu.
 
-Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinie unterstützt. Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
+Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinie unterstützt. 
+
+> [!IMPORTANT]
+>
+> Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
 
 Um eine Azure-Netzwerkrichtlinie zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking]. Eine Calico-Netzwerkrichtlinie könnte entweder mit diesem selben Azure CNI-Plug-In oder mit dem Kubenet CNI-Plug-In verwendet werden.
 
