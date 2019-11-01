@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: c9c8c649208cff95f4ee515d39cc8cca3e2c64bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6074b799e992371d41de050f68690e450f008789
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726841"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933965"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Überwachen und Diagnostizieren der Anforderungsverarbeitung beim Reverseproxy
 
@@ -200,5 +200,5 @@ Hier sind einige Beispiele zum Interpretieren der allgemeinen Fehlerprotokolle, 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Aktivieren der Protokollsammlung in Azure-Clustern unter [Ereignisaggregation und Sammlung mit Microsoft Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md).
 * Anzeigen von Service Fabric-Ereignisse in Visual Studio unter [Lokale Überwachung und Diagnose](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-* Beispiele für Azure Resource Manager-Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit den unterschiedlichen Optionen für die Dienstzertifikatüberprüfung finden Sie unter [Configure reverse proxy to connect to secure services](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) (Konfigurieren des Reverseproxys für die Verbindung mit sicheren Diensten).
+* Beispiele für Azure Resource Manager-Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit den unterschiedlichen Optionen für die Dienstzertifikatüberprüfung finden Sie unter [Configure reverse proxy to connect to secure services](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) (Konfigurieren des Reverseproxys für die Verbindung mit sicheren Diensten).
 * Weitere Informationen erhalten Sie unter [Service Fabric-Reverseproxy](service-fabric-reverseproxy.md).

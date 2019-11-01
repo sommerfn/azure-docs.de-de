@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310011"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063054"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -122,23 +122,25 @@ Erfahren Sie, wie Sie eine verwaltete Identität mit einer Windows-VM verwenden:
 
 Erfahren Sie, wie Sie eine verwaltete Identität mit einer Linux-VM verwenden:
 
+* [Zugreifen auf Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
 * [Zugreifen auf Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Zugreifen auf Azure Resource Manager](tutorial-linux-vm-access-arm.md)
 * [Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels](tutorial-linux-vm-access-storage.md)
 * [Zugreifen auf Azure Storage mithilfe von SAS-Anmeldeinformationen](tutorial-linux-vm-access-storage-sas.md)
 * [Zugreifen auf eine Nicht-Azure AD-Ressource mithilfe von Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
-* [Zugreifen auf Azure Container Registry](../../container-registry/container-registry-authentication-managed-identity.md)
 
 Erfahren Sie, wie Sie eine verwaltete Identität mit anderen Azure-Diensten verwenden:
 
 * [Azure App Service](/azure/app-service/overview-managed-identity)
-* [Azure-Funktionen](/azure/app-service/overview-managed-identity)
-* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
-* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
-* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 * [Azure Container Registry Tasks](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
+* [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
+* [Azure-Funktionen](/azure/app-service/overview-managed-identity)
+* [Azure Kubernetes Service](/azure/aks/use-managed-identity)
+* [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
+
 
 ## Welche Azure-Dienste unterstützen das Feature?<a name="which-azure-services-support-managed-identity"></a>
 

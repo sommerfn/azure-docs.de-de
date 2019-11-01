@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: kumud
-ms.openlocfilehash: 23e46290af6bdb4c217d8fa0cd836673652fc81d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 24f4b7435c2736527d033aa5ca7a65ad35a3a705
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64701377"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73022183"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hinzufügen von Netzwerkschnittstellen zu virtuellen Computern oder Entfernen von Netzwerkschnittstellen aus diesen
 
@@ -122,7 +122,6 @@ Sie können die derzeit zu einem virtuellen Computer hinzugefügten Netzwerkschn
 - Netzwerkschnittstellen auf demselben virtuellen Computer können zwar mit unterschiedlichen Subnetzen in einem virtuellen Netzwerk verbunden sein, sie müssen jedoch alle mit demselben virtuellen Netzwerk verbunden sein.
 - Sie können eine beliebige IP-Adresse für eine beliebige IP-Konfiguration einer beliebigen primären oder sekundären Netzwerkschnittstelle einem Back-End-Pool von Azure Load Balancer hinzufügen. Bisher konnte nur die primäre IP-Adresse für die primäre Netzwerkschnittstelle einem Back-End-Pool hinzugefügt werden. Weitere Informationen zu IP-Adressen und -Konfigurationen finden Sie im Artikel [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
 - Beim Löschen eines virtuellen Computers werden seine Netzwerkschnittstellen nicht gelöscht. Wenn Sie einen virtuellen Computer löschen, werden die Netzwerkschnittstellen von dem virtuellen Computer getrennt. Sie können die Netzwerkschnittstellen an andere virtuelle Computer anfügen oder löschen.
-- Wenn einer Netzwerkschnittstelle private IPv6-Adressen zugewiesen sind, müssen Sie sie an einen virtuellen Computer anfügen, wenn Sie diesen erstellen. Sie können einem virtuellen Computer keine Netzwerkschnittstelle mit einer zugewiesenen IPv6-Adresse mehr hinzufügen, nachdem Sie diesen erstellt haben. Wenn Sie beim Erstellen eines virtuellen Computers eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse hinzufügen, können Sie dem virtuellen Computer nur diese Netzwerkschnittstelle hinzufügen, unabhängig davon, wie viele Netzwerkschnittstellen die VM-Größe unterstützt. Weitere Informationen zum Zuweisen von IP-Adressen zu Netzwerkschnittstellen finden Sie unter [Verwalten von IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
 - Wie bei IPv6 können Sie eine Netzwerkschnittstelle, auf der beschleunigter Netzwerkbetrieb aktiviert ist, nicht an einen virtuellen Computer anfügen, nachdem Sie diesen erstellt haben. Um beschleunigten Netzwerkbetrieb nutzen zu können, müssen Sie außerdem auch Schritte innerhalb des VM-Betriebssystems ausführen. Weitere Informationen zum beschleunigten Netzwerkbetrieb und weiteren Einschränkungen bei dessen Verwendung finden Sie in den entsprechenden Abschnitten für virtuelle [Windows](create-vm-accelerated-networking-powershell.md)- oder [Linux](create-vm-accelerated-networking-cli.md)-Computer.
 
 ## <a name="next-steps"></a>Nächste Schritte

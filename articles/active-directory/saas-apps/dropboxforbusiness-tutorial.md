@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 591d8d28be5fc9322de8cf4886dc5924f53b1deb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 615c10357e099b547008b128ca5f5a773ff1aa14
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67103782"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158308"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>Tutorial: Integrieren von Dropbox für Unternehmen in Azure Active Directory
 
@@ -114,33 +115,33 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 3. Wenn Sie Dropbox für Unternehmen manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, navigieren Sie zu Ihrem Dropbox für Unternehmen-Mandanten, und melden Sie sich bei diesem Mandanten an. Führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/ic769509.png "Einmaliges Anmelden konfigurieren")
+    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/ic769509.png "Einmaliges Anmelden konfigurieren")
 
 4. Klicken Sie auf das **Benutzersymbol**, und wählen Sie die Registerkarte **Einstellungen** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure1.png "Einmaliges Anmelden konfigurieren")
+    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure1.png "Einmaliges Anmelden konfigurieren")
 
 5. Klicken Sie im Navigationsbereich auf der linken Seite auf **Verwaltungskonsole**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure2.png "Einmaliges Anmelden konfigurieren")
+    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure2.png "Einmaliges Anmelden konfigurieren")
 
 6. Klicken Sie in der **Verwaltungskonsole** im linken Navigationsbereich auf **Einstellungen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure3.png "Einmaliges Anmelden konfigurieren")
+    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure3.png "Einmaliges Anmelden konfigurieren")
 
 7. Wählen Sie im Abschnitt **Authentifizierung** die Option **Einmaliges Anmelden** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure4.png "Einmaliges Anmelden konfigurieren")
+    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure4.png "Einmaliges Anmelden konfigurieren")
 
 8. Führen Sie im Abschnitt **Einmaliges Anmelden** die folgenden Schritte aus:  
 
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure5.png "Einmaliges Anmelden konfigurieren")
+    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure5.png "Einmaliges Anmelden konfigurieren")
 
     a. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** die Option **Erforderlich** aus.
 
     b. Klicken Sie auf **Anmelde-URL hinzufügen**, und fügen Sie den Wert der **Anmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Anmelde-URL des Identitätsanbieters** ein. Anschließend klicken Sie auf **Fertig**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure6.png "Einmaliges Anmelden konfigurieren")
+    ![Konfigurieren von einmaligem Anmelden](./media/dropboxforbusiness-tutorial/configure6.png "Einmaliges Anmelden konfigurieren")
 
     c. Klicken Sie auf **Zertifikat hochladen**, und navigieren Sie dann zu Ihrer **Base64-codierten Zertifikatsdatei**, die Sie aus dem Azure-Portal heruntergeladen haben.
 
@@ -195,4 +196,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Dropbox für Unternehmen“ klicke
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

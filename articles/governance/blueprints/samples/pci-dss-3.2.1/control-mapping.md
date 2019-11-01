@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c1e04cb2bfd5ae532b556ed53d585aae90c312e6
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72297204"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163049"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 
@@ -134,7 +134,7 @@ Nachdem Sie sich nun die Steuerungszuordnung der PCI-DSS v3.2.1-Blaupause angese
 > [Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1](./index.md)
 > [PCI-DSS v3.2.1-Blaupause – Bereitstellungsschritte](./deploy.md)
 
-## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Weitere Artikel zu Blaupausen und ihrer Nutzung:
+Weitere Artikel zu Blaupausen und ihrer Nutzung:
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](../../concepts/lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](../../concepts/parameters.md) vertraut.
