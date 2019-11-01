@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: Verwenden Sie einen benutzerdefinierten NuGet-Feed für den Zugriff auf und die Verwendung von NuGet-Paketen in Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
 manager: gwallace
-ms.openlocfilehash: 9df095011c1ff66ff0c85993c7c85dffe62623b8
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 019335cd73e8eaf0ada6897f08c88ef2b8bbf631
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873253"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162805"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces
 
@@ -64,7 +64,7 @@ Wenn Sie Git verwenden, sollte die Versionskontrolle nicht die Anmeldeinformatio
 build:
 useGitIgnore: true
 ignore:
-- “!NuGet.Config”
+- "!NuGet.Config"
 ```
 
 Wenn Sie Git nicht verwenden, können Sie diesen Schritt überspringen.

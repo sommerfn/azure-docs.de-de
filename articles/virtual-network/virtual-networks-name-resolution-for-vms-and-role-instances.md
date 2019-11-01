@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 64f79b3e72a8655f8d704ffd531d9e34485832b0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570608"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176042"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -40,7 +40,7 @@ Welche Art der Namensauflösung Sie verwenden, hängt davon ab, wie die Ressourc
 | Namensauflösung zwischen virtuellen Computern in verschiedenen virtuellen Netzwerken oder Rolleninstanzen in unterschiedlichen Clouddiensten. |[Azure DNS Private Zones](../dns/private-dns-overview.md) oder vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Namensauflösung aus einem Azure App Service (Web-App, Funktion oder Bot) mithilfe von Integration virtueller Netzwerke in Rolleninstanzen oder virtuelle Computer im gleichen virtuellen Netzwerk. |Vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Namensauflösung aus App Service-Web-Apps in virtuelle Computer im gleichen virtuellen Netzwerk. |Vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
-| Namensauflösung aus App Service-Web-Apps in einem virtuellen Netzwerk in virtuelle Computer in einem anderen virtuellen Netzwerk. |Vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe „Namensauflösung mithilfe eines eigenen DNS-Servers“. |Nur FQDN |
+| Namensauflösung aus App Service-Web-Apps in einem virtuellen Netzwerk in virtuelle Computer in einem anderen virtuellen Netzwerk. |Vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Auflösung lokaler Computer- und Dienstnamen von VMs oder Rolleninstanzen in Azure. |Vom Kunden verwaltete DNS-Server (z. B. lokale Domänencontroller, lokale schreibgeschützte Domänencontroller oder ein sekundärer DNS-Server, der mithilfe von Zonenübertragungen synchronisiert wird). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Auflösung von Azure-Hostnamen von lokalen Computern |Weiterleiten von Abfragen an einen vom Kunden verwalteten DNS-Proxyserver im zugehörigen virtuellen Netzwerk. Der Proxyserver leitet Abfragen zur Auflösung an Azure weiter. Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Reverse-DNS für interne IPs |[Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nicht zutreffend |

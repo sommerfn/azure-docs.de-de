@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936848"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177368"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimieren von Apache Spark-Aufträgen in HDInsight
 
@@ -74,7 +74,7 @@ Spark stellt einen eigenen nativen Cachemechanismus bereit, der über verschiede
     * Funktioniert nicht mit Partitionierung. Dies wird sich möglicherweise in zukünftigen Spark-Releases ändern.
 
 * Caching auf Speicherebene (empfohlen)
-    * Kann mithilfe von [Alluxio](https://www.alluxio.org/) implementiert werden.
+    * Kann mithilfe von [Alluxio](https://www.alluxio.io/) implementiert werden.
     * Verwendet In-Memory- und SSD-Caching.
 
 * Lokales HDFS (empfohlen)

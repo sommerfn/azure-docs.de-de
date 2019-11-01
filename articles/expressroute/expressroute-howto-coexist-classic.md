@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 70e7c689acac094890545ac1e65374e9377a0be0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8eb1d7da9c588aedaedb37dc50c69970fe79ac2
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60370402"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162715"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen (klassisch)
 > [!div class="op_single_selector"]
@@ -200,7 +200,7 @@ Wenn das Gateway-Subnetz /27 oder größer ist und das virtuelle Netzwerk über 
         Remove-AzureVNetGateway –VnetName MyAzureVNET
 3. Exportieren Sie das Virtual Network-Schema. Nutzen Sie das folgende PowerShell-Cmdlet, um die Werte mit Ihren eigenen auszutauschen.
    
-        Get-AzureVNetConfig –ExportToFile “C:\NetworkConfig.xml”
+        Get-AzureVNetConfig –ExportToFile "C:\NetworkConfig.xml"
 4. Bearbeiten Sie die Netzwerk-Konfigurationsdateischema, sodass das Gateway-Subnetz /27 ist oder ein kürzeres Präfix (wie z. B. /26 oder /25). Siehe folgendes Beispiel. 
    
    > [!NOTE]

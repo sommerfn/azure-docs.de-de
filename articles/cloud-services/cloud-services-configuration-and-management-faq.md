@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 704d6d4a12550507a8e38be4777e5abc7b57fe74
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154723"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161771"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -313,9 +313,9 @@ Wie [hier](https://technet.microsoft.com/library/ee790567.aspx) beschrieben, kö
 |Wert|Bedeutung|
 ------|------
 |0|Keine SNI|
-|1|SNI aktiviert |
-|2 |Keine SNI-Bindung, die den zentralen Zertifikatspeicher verwendet|
-|3|SNI-Bindung, die den zentralen Zertifikatspeicher verwendet |
+|1|SNI aktiviert|
+|2|Keine SNI-Bindung, die den zentralen Zertifikatspeicher verwendet|
+|3|SNI-Bindung, die den zentralen Zertifikatspeicher verwendet|
  
 **Methode 2: Verwenden von Code**
 
@@ -325,8 +325,8 @@ Die SNI-Bindung könnte auch über den Code im Rollenstart konfiguriert werden, 
     //<code snip> 
                     var serverManager = new ServerManager(); 
                     var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
-                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
                     serverManager.CommitChanges(); 
     //</code snip> 
     

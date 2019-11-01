@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: 953699793d81485e3828b9fb46de8523d2b7674e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 846650fce6701bb7e382df049902f427390b3051
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129997"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931212"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Sprach- und Regionsunterstützung für die Textanalyse-API
 
@@ -51,11 +51,11 @@ Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmä
 | Chinesisch (vereinfacht) | `zh-hans`| ✔ \***     |             | ✔         |    |
 | Chinesisch (traditionell) | `zh-hant`| ✔ \***     |             |          |    |
 | Dänisch      | `da`          | ✔ \*     | ✔           | ✔ \*            |     |
-| Niederländisch       | `nl`          | ✔ \*     | ✔          |  ✔ \*           |     |
+| Niederländisch       | `nl`          | ✔ \***     | ✔          |  ✔ \*           |     |
 | Englisch     | `en`          | ✔ \***       | ✔           |  ✔ \*\*     |      |
 | Finnisch     | `fi`          | ✔ \*     | ✔           |  ✔ \*           |     |
 | Französisch      | `fr`          | ✔ \***       | ✔           |  ✔            |     |
-| Deutsch      | `de`          | ✔ \*     | ✔           |  ✔           |     |
+| Deutsch      | `de`          | ✔ \***     | ✔           |  ✔           |     |
 | Griechisch       | `el`          | ✔ \*     |             |            |     |
 | Ungarisch   | `hu`          |           |             |  ✔ \*          |     | 
 | Italienisch     | `it`          | ✔ \***     | ✔           |  ✔ \*           |     |
@@ -63,10 +63,10 @@ Die Sprachunterstützung wird in der Vorschauversion eingeführt und soll allmä
 | Koreanisch      | `ko`          |          | ✔           |  ✔ \*          |     |
 | Norwegisch (Bokmål) | `no`  | ✔ \*     |  ✔          | ✔ \*            |     |
 | Polnisch      | `pl`          | ✔ \*     |  ✔          |  ✔ \*           |     |
-| Portugiesisch (Portugal) | `pt-PT`| ✔        |  ✔          | ✔ \*      |`pt` wird ebenfalls akzeptiert.|
+| Portugiesisch (Portugal) | `pt-PT`| ✔ \***        |  ✔          | ✔ \*      |`pt` wird ebenfalls akzeptiert.|
 | Portugiesisch (Brasilien)   | `pt-BR`|          |  ✔   |  ✔ \*       |     |
 | Russisch     | `ru`          | ✔ \*     | ✔           |  ✔ \*           |     |
-| Spanisch     | `es`          | ✔        | ✔           |   ✔ \*\*      |     | 
+| Spanisch     | `es`          | ✔ \***       | ✔           |   ✔ \*\*      |     | 
 | Schwedisch     | `sv`          | ✔ \*     | ✔           |   ✔ \*          |     |
 | Türkisch     | `tr`          | ✔ \*     |             |   ✔ \*          |  |
 

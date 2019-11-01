@@ -4,19 +4,19 @@ description: Informationen zur allgemeinen Problembehandlung für den Azure AD-
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71314932"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893284"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Problembehandlung beim Azure AD-Kennwortschutz
 

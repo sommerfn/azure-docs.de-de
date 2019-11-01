@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 928900c526ec0e77f84c621f630ac5894cdb2d23
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 619f1ea3bae001d25eb520f43da33ca94a3160c8
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125657"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72880333"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Schnellstart: Blockieren des Zugriffs, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie Folgendes:
 
 - **Zugriff auf eine Azure AD Premium P2-Edition**: Der bedingte Zugriff ist zwar eine Funktion von Azure AD Premium P1. Dennoch benötigen Sie eine P2-Edition, da für das Szenario in dieser Schnellstartanleitung Identity Protection erforderlich ist.
-- **Identity Protection**: Für das Szenario in dieser Schnellstartanleitung muss Identity Protection aktiviert sein. Informationen zum Aktivieren von Identity Protection finden Sie unter [Aktivieren von Azure Active Directory Identity Protection](../identity-protection/enable.md).
+- **Identity Protection**: Für das Szenario in dieser Schnellstartanleitung muss Identity Protection aktiviert sein. Informationen zum Aktivieren von Identity Protection finden Sie unter [Aktivieren von Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md).
 - **Tor Browser**: Mit dem [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) können Sie Ihre Privatsphäre online schützen. Identity Protection erkennt eine Anmeldung von einem Tor Browser als Anmeldungen von anonymen IP-Adressen. Anmeldungen dieser Art weisen eine mittlere Risikostufe auf. Weitere Informationen finden Sie unter [Azure Active Directory risk detections](../reports-monitoring/concept-risk-events.md) (Azure Active Directory-Risikoerkennungen).  
 - **Ein Testkonto mit dem Namen Alain Charon**: Informationen zum Erstellen eines Testkontos finden Sie unter [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 

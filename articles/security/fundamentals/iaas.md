@@ -4,7 +4,7 @@ description: " Die Workloadmigration zu Azure IaaS ist eine gute Gelegenheit zur
 services: security
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: rkarlin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/26/2019
+ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fc72c59721a6f244806bf229ebded1e66341a04d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262741"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177698"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -28,13 +28,6 @@ Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtu
 Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich für aktuelle Funktionen und Features der Azure-Plattform. Da sich Meinungen und Technologien im Laufe der Zeit verändern können, wird dieser Artikel regelmäßig aktualisiert, um diesen Veränderungen Rechnung zu tragen.
 
 In den meisten IaaS-Szenarien (Infrastructure-as-a-Service, Infrastruktur als Dienst) stellen [virtuelle Azure-Computer](/azure/virtual-machines/) (Virtual Machines, VMs) die Hauptworkload für Organisationen dar, die Cloud Computing verwenden. Dies gilt in [Hybridszenarien](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx), in denen Organisationen Workloads nach und nach in die Cloud migrieren möchten. Orientieren Sie sich in solchen Szenarien an den [allgemeinen Sicherheitsaspekten für IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx), und wenden Sie bewährte Sicherheitsmethoden für alle Ihre virtuellen Computer an.
-
-## <a name="shared-responsibility"></a>Gemeinsame Verantwortung
-Ihre Zuständigkeit für die Sicherheit basiert auf dem Typ des Clouddiensts. Das folgende Diagramm enthält eine Zusammenfassung der Zuständigkeitsverteilung zwischen Microsoft und Ihnen:
-
-![Zuständigkeitsbereiche](./media/iaas/sec-cloudstack-new.png)
-
-Die Sicherheitsanforderungen hängen von einer Reihe von Faktoren ab, darunter verschiedene Typen von Workloads. Keine dieser bewährten Methoden wäre alleine dafür geeignet, Ihre Systeme abzusichern. Genau wie bei anderen Sicherheitsaspekten müssen Sie die geeigneten Optionen auswählen und prüfen, wie sich die einzelnen Lösungen gegenseitig ergänzen können.
 
 ## <a name="protect-vms-by-using-authentication-and-access-control"></a>Schützen von VMs mittels Authentifizierungs- und Zugriffssteuerung
 Der erste Schritt zum Schutz Ihrer virtuellen Computer ist, sicherzustellen, dass nur autorisierte Benutzer neue VMs einrichten und auf VMs zugreifen können.
@@ -75,7 +68,7 @@ Falls Ihr virtueller Computer kritische Anwendungen ausführt, die Hochverfügba
 Eine Verfügbarkeitsgruppe ist eine logische Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die VMs innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Computeracks, Speichereinheiten und Netzwerkswitches verteilt werden. Wenn ein Hardware- oder Softwarefehler in Azure auftritt, ist nur ein Teil Ihrer VMs beeinträchtigt, und die Anwendung ist insgesamt weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen haben eine wichtige Funktion bei der Erstellung zuverlässiger Cloudlösungen.
 
 ## <a name="protect-against-malware"></a>Schutz vor Malware
-Installieren Sie einen Schadsoftwareschutz, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/search/result.aspx?q=Windows+defender+endpoint+protection) und [System Center Endpoint Protection](https://www.microsoft.com/search/result.aspx?q=System+Center+endpoint+protection)) installieren.
+Installieren Sie einen Schadsoftwareschutz, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/en-us/search?q=Windows+defender+endpoint+protection&rtc=1) und [System Center Endpoint Protection](https://www.microsoft.com/en-us/search?q=System+Center+endpoint+protection&rtc=1)) installieren.
 
 Microsoft-Antischadsoftware umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Malwareproblembehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlungen von Ausschlussereignissen. Für Umgebungen, die getrennt von Ihrer Produktionsumgebung gehostet werden, können Sie eine Antischadsoftware-Erweiterung verwenden, um den Schutz Ihrer VMs und Clouddienste zu verbessern.
 

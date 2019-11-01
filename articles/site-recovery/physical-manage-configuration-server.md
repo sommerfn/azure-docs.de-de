@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119725"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243001"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -33,7 +33,7 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 | Freier Speicherplatz (Aufbewahrungslaufwerk) | 600 GB|
 | Betriebssystem  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | Gebietsschema des Betriebssystems | Englisch (USA)|
-| VMware vSphere PowerCLI-Version | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
+| VMware vSphere PowerCLI-Version | Nicht erforderlich|
 | Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V |
 | Gruppenrichtlinien| Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 | IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
@@ -108,7 +108,7 @@ Führen Sie die Installationsdatei wie folgt aus:
 
 ### <a name="parameters"></a>Parameter
 
-|Parametername| Type | BESCHREIBUNG| Werte|
+|Parametername| type | BESCHREIBUNG| Werte|
 |-|-|-|-|
 | /ServerMode|Erforderlich|Gibt an, ob die Installation sowohl den Konfigurations- als auch den Prozessserver oder nur den Prozessserver umfassen soll.|CS<br>PS|
 |/InstallLocation|Erforderlich|Der Ordner, in dem die Komponenten installiert werden.| Beliebiger Ordner auf dem Computer|

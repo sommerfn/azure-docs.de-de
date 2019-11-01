@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: cf84d685bf20f1117aa2378cf2e2696cb78a46a5
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a669c6fe0ffd6ff1c4d4613a91074edfe9fa87e9
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076147"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162643"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
@@ -34,7 +34,7 @@ Sie können einen leeren Edgeknoten zu einem vorhandenen HDInsight-Cluster oder 
                         "name": "edgenode",
                         "targetInstanceCount": 1,
                         "hardwareProfile": {
-                            "vmSize": "Standard_D3"
+                            "vmSize": "{}"
                         }
                     }]
                 },

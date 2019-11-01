@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 6f5f2263736e1317ca40e6c27a909be2aa106270
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 8cd5986d61765680698b6c682567dd6388d80a2a
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960429"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158863"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Schnellstart: Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle
 
@@ -147,7 +147,7 @@ Sie können den Ping-Befehl zum Testen der Namensauflösung verwenden. Konfiguri
 2. Führen Sie den folgenden Befehl aus:
 
    ```powershell
-   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
    ```
 
 Wiederholen Sie den Schritt für „myVM02“.

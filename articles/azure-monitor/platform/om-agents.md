@@ -1,24 +1,18 @@
 ---
 title: Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor | Microsoft-Dokumentation
 description: Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem Arbeitsbereich verknüpfen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 245ef71e-15a2-4be8-81a1-60101ee2f6e6
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/13/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: c8d6e949722e291eab4ac45f6abb610acfa10d68
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.date: 08/13/2019
+ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532403"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162241"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
@@ -233,7 +227,7 @@ Management Packs für die aktivierten Lösungen, die in Operations Manager integ
     >
 
 1. Geben Sie an der Eingabeaufforderung der Befehlsshell `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-1. Geben Sie anschließend `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. Geben Sie anschließend `Get-SCOMManagementPack -name "*IntelligencePack*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. Zum Entfernen der restlichen Management Packs mit einer Abhängigkeit von anderen System Center Advisor-Management Packs verwenden Sie das Skript *RecursiveRemove.ps1*, das Sie zuvor vom TechNet Script Center heruntergeladen haben.  
 
     > [!NOTE]
@@ -259,8 +253,8 @@ Management Packs für die aktivierten Lösungen, die in Operations Manager integ
 Gehen Sie wie folgt vor, um den Connector „Microsoft.SystemCenter.Advisor.DataConnector“ und den Connector „Advisor Connector“ zu löschen. Speichern Sie das unten angegebene PowerShell-Skript auf Ihrem Computer, und führen Sie es aus, indem Sie die folgenden Beispiele verwenden:
 
 ```
-    .\OM2012_DeleteConnectors.ps1 “Advisor Connector” <ManagementServerName>
-    .\OM2012_DeleteConnectors.ps1 “Microsoft.SystemCenter.Advisor.DataConnector” <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 "Advisor Connector" <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 "Microsoft.SystemCenter.Advisor.DataConnector" <ManagementServerName>
 ```
 
 > [!NOTE]

@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803402"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064044"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -38,7 +38,7 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 
 Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RUs aufweisen. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:
 
-* Der minimale Durchsatz, den Sie für einen Container festlegen können, hängt vom maximalen Durchsatz ab, der jemals für den Container bereitgestellt wurde. Der Dienst unterstützt das Senken des Durchsatzes eines Containers auf 10% des bereitgestellten Maximums. Wenn z.B. der Durchsatz auf 10.000 RUs erhöht wurde, würde der niedrigstmögliche bereitgestellte Durchsatz 1.000 RUs betragen
+* Der minimale Durchsatz, den Sie für einen Container festlegen können, hängt vom maximalen Durchsatz ab, der jemals für den Container bereitgestellt wurde. Wenn z.B. der Durchsatz auf 10.000 RUs erhöht wurde, würde der niedrigstmögliche bereitgestellte Durchsatz 1.000 RUs betragen
 * Der minimale Durchsatz für eine freigegebene Durchsatzdatenbank hängt von der Gesamtzahl der Container ab, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, gemessen in 100 RUs pro Container. Wenn Sie z.B. fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RUs betragen
 
 Der aktuelle und minimale Durchsatz eines Containers oder einer Datenbank kann über das Azure-Portal oder die SDKs abgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md). 

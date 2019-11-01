@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b472d36f17853549f2bfc773bdcb65faf0421b3f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718991"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102362"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie
 
@@ -83,7 +83,7 @@ Sie können einer Azure AD-Gruppe mehrere Anwendungen und Benutzer hinzufügen u
 Verwenden Sie den Befehl [az ad group list](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list), um die Objekt-ID einer Azure AD-Gruppe mit der Azure CLI zu ermitteln. Aufgrund der großen Anzahl von Gruppen, die sich möglicherweise in Ihrer Organisation befinden, müssen Sie auch eine Suchzeichenfolge für den Parameter `--display-name` bereitstellen.
 
 ```azurecli-interactive
-az ad group list --displayname <search-string>
+az ad group list --display-name <search-string>
 ```
 Die Objekt-ID wird im JSON-Code zurückgegeben:
 
@@ -227,5 +227,5 @@ Gewähren Sie der AD-Gruppe abschließend Berechtigungen für Ihren Schlüsseltr
 - [Verwenden einer verwalteten App Service-Identität für den Zugriff auf Azure Key Vault](managed-identity.md)
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)
 - [Sicherer Zugriff auf einen Schlüsseltresor](key-vault-secure-your-key-vault.md)
-- [Entwicklerhandbuch zu Azure-Schlüsseltresor](key-vault-developers-guide.md)
+- [Entwicklerhandbuch zu Azure Key Vault](key-vault-developers-guide.md)
 - [Bewährte Methoden zum Verwenden von Key Vault](key-vault-best-practices.md)

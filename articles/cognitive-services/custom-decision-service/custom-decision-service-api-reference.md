@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4f263e3b57103174f0084ab3d25430d8c47359fd
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 569a1c83562a995f15e12013c864ef4c0447d963
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707298"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161696"
 ---
 # <a name="api"></a>API
 
@@ -106,7 +106,7 @@ Durch das `details=2`-Element werden zusätzliche Details hinzugefügt, die Cust
 - Extraktion von `title` aus `<meta property="og:title" content="..." />` oder `<meta property="twitter:title" content="..." />` oder `<title>...</title>`
 - Extraktion von `description` aus `<meta property="og:description" ... />` oder `<meta property="twitter:description" content="..." />` oder `<meta property="description" content="..." />`
 - Extraktion von `image` aus `<meta property="og:image" content="..." />`
-- Extraktion von `ds_id` aus `<meta name=”microsoft:ds_id” content="..." />`
+- Extraktion von `ds_id` aus `<meta name="microsoft:ds_id" content="..." />`
 
 Die HTTP-Antwort sieht wie folgt aus:
 

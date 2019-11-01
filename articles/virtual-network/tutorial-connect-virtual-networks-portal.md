@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: bf7b9b288a32d9f6cc2c9e0d7dba4b074c4bf878
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cbf19d941e63429b6a5edcc6745d04834cf18621
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515713"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73164055"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Tutorial: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit dem Azure-Portal
 
@@ -54,7 +54,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
     |Region| Wählen Sie **USA, Osten** aus.|
     |NAME|myVirtualNetwork1|
-    ![Konfigurieren sie die grundlegenden Einstellungen für das virtuelle Netzwerk] (
+   
 4. Geben Sie auf der Seite **IP-Adressen** im Feld **Adressbereich** die Adresse „10.0.0.0/16“ ein. Klicken Sie unten auf die Schaltfläche **Subnetz hinzufügen**, und geben Sie „Subnet1“ für **Subnetzname** und „10.0.0.0/24“ für **Subnetzadressbereich** ein.
    
 5. Führen Sie erneut die Schritte 1 bis 3 mit Ausnahme der folgenden Änderungen durch:
@@ -147,7 +147,7 @@ Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen
 6. In einem späteren Schritt wird Ping genutzt, um von der VM *myVm1* aus mit der VM *myVm2* zu kommunizieren. Ping verwendet standardmäßig das Internet Control Message-Protokoll (ICMP), das für die Windows-Firewall verweigert wird. Aktivieren Sie auf der VM *myVm1* ICMP über die Windows-Firewall, damit Sie diese VM in einem späteren Schritt mit PowerShell über *myVm2* per Ping erreichen können:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
     
     In diesem Tutorial wird zwar Ping für die Kommunikation zwischen virtuellen Computern verwendet, für Produktionsbereitstellungen wird jedoch davon abgeraten, ICMP-Datenverkehr durch die Windows-Firewall zuzulassen.

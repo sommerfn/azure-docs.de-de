@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14146be73de309a7119f5c7b416c4e02f3bb4285
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 40cf8e16e08db67c36009435758db36797518d96
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383083"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73160753"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>Aktualisieren Ihrer Profil- und Kontoinformationen im Portal „Meine Apps“
 
@@ -86,7 +86,7 @@ Wenn Sie das Kennwort Ihres Geschäfts-, Schul- oder Unikonto ändern möchten, 
 Wenn Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihr eigenes Kennwort zurückzusetzen.
 
 >[!Important]
->Ihr Administrator muss diese Möglichkeit aktivieren, und Sie müssen sich für die Teilnahme registrieren. Weitere Informationen zum Registrieren und Zurücksetzen des Kennworts finden Sie unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) und [Zurücksetzen des Kennworts Ihres Geschäfts-, Schul- oder Unikontos](user-help-reset-password.md).
+>Ihr Administrator muss diese Möglichkeit aktivieren, und Sie müssen sich für die Teilnahme registrieren. Weitere Informationen zum Registrieren und Zurücksetzen des Kennworts finden Sie unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) und [Zurücksetzen des Kennworts Ihres Geschäfts-, Schul- oder Unikontos](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="change-your-security-verification-information"></a>Ändern der Informationen zur Sicherheitsüberprüfung
 

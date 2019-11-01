@@ -1,21 +1,21 @@
 ---
 title: Visualisieren von Daten im Azure Time Series Insights Preview-Explorer | Microsoft-Dokumentation
 description: In diesem Artikel werden die in der Time Series Insights Preview-Explorer-Web-App verfügbaren Funktionen und Optionen beschrieben.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1707740d673ea49a4b4494f5d2e6a5753982090
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 3f6c03ace13b9b6cb1bda004799502e1f382051d
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553411"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72989950"
 ---
 # <a name="visualize-data-in-the-explorer-preview"></a>Visualisieren von Daten in der Explorer Preview
 

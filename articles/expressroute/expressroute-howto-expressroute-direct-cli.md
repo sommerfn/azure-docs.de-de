@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ebfe3db43de87e67ad05ed8cb9f5812b5ded04e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a879344fddd6d12ae8a50e109dcaf4a4bb2c1b68
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65965906"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161556"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle
 
@@ -272,7 +272,7 @@ Verwenden Sie diesen Prozess, um einen Layer-1-Test durchzuführen. Stellen Sie 
    }
    ```
 
-   Nutzen Sie die gleiche Vorgehensweise, um die Ports zu deaktivieren, indem Sie `AdminState = “Disabled”` verwenden.
+   Nutzen Sie die gleiche Vorgehensweise, um die Ports zu deaktivieren, indem Sie `AdminState = "Disabled"` verwenden.
 
 ## <a name="circuit"></a>Erstellen einer Leitung
 

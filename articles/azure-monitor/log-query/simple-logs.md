@@ -1,24 +1,18 @@
 ---
 title: Oberfläche für einfache Protokolle in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
 description: Mithilfe der Oberfläche für einfache Protokolle können Sie grundlegende Abfragen in Azure Monitor erstellen, ohne direkt mit KQL zu interagieren.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/12/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 09/12/2019
+ms.openlocfilehash: 0b8b23d5d355614bf74b1b22c6a8443b9a2f9391
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262172"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932987"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Oberfläche für einfache Protokolle in Azure Monitor (Vorschauversion)
 Azure Monitor bietet [umfassende Möglichkeiten](get-started-portal.md) für das Erstellen von [Protokollabfragen](log-query-overview.md) mithilfe der KQL-Sprache. Doch möglicherweise benötigen Sie gar nicht den vollen Funktionsumfang von KQL, sondern bevorzugen eine vereinfachte Oberfläche für grundlegende Abfrageanforderungen. Mithilfe der Oberfläche für einfache Protokolle können Sie grundlegende Abfragen erstellen, ohne direkt mit KQL zu interagieren. Sie können einfache Protokolle auch als Lerntool für KQL verwenden, wenn Sie anspruchsvollere Abfragen benötigen.

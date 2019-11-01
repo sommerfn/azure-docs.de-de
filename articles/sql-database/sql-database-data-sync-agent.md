@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: de7858be4ac4e392b4fb92cacf55882378ba9813
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568976"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177719"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung
 
@@ -115,7 +115,7 @@ Der Client-Agent funktioniert nicht mehr, auch nachdem Sie die Deinstallation ab
 - **Lösung**. Sie können die folgenden beiden Lösungen ausprobieren:
 
     -   Verwenden Sie „services.msc“, um die Anmeldeinformationen für den Client-Agent erneut einzugeben.
-    -   Deinstallieren Sie den Client-Agent, und installieren Sie einen neuen. Den neuesten Client-Agent können Sie aus dem [Download Center](https://go.microsoft.com/fwlink/?linkid=221479) herunterladen und installieren.
+    -   Deinstallieren Sie den Client-Agent, und installieren Sie einen neuen. Den neuesten Client-Agent können Sie aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=27693) herunterladen und installieren.
 
 ### <a name="agent-list"></a> Meine Datenbank ist in der Agent-Liste nicht enthalten.
 

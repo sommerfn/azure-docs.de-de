@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 153c692a8fb0fa538ec49c6eafa11815dd794b5d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64681542"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163999"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
@@ -55,8 +55,8 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | Einstellung | Wert |
     | ------- | ----- |
     | NAME | Geben Sie *myRouteTablePublic* ein. |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
-    | Ressourcengruppe | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie *OK* aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie *OK* aus. |
     | Location | Behalten Sie den Standardwert von **USA, Osten** bei.
     | BGP-Routenverteilung | Behalten Sie den Standardwert von **Aktiviert** bei. |
 
@@ -68,7 +68,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Wenn **myRouteTablePublic** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 
-1. Wählen Sie in **myRouteTablePublic** unter **Einstellungen**  die Optionen **Routen** > **+ Hinzufügen**.
+1. Wählen Sie in **myRouteTablePublic** unter **Einstellungen**  die Optionen **Routen** >  **+ Hinzufügen**.
 
     ![Hinzufügen einer Route](./media/tutorial-create-route-table-portal/add-route.png)
 
@@ -97,8 +97,8 @@ Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein vi
     | ------- | ----- |
     | NAME | Geben Sie *myVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.0.0.0/16* ein. |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
-    | Ressourcengruppe | Wählen Sie ***Vorhandene auswählen*** > **MyResourceGroup**. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Wählen Sie ***Vorhandene auswählen*** > **MyResourceGroup**. |
     | Location | Behalten Sie den Standardwert von **USA, Osten** bei. |
     | Subnetzname | Geben Sie *Öffentlich* ein. |
     | Subnetzadressbereich | Geben Sie *10.0.0.0/24* ein. |
@@ -111,7 +111,7 @@ Bevor Sie eine Routingtabelle einem Subnetz zuordnen können, müssen Sie ein vi
 
 1. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 
-1. Wählen Sie in **myVirtualNetwork** unter **Einstellungen** die Optionen **Subnetze** > **+ Subnetz**.
+1. Wählen Sie in **myVirtualNetwork** unter **Einstellungen** die Optionen **Subnetze** >  **+ Subnetz**.
 
     ![Hinzufügen des Subnetzes](./media/tutorial-create-route-table-portal/add-subnet.png)
 
@@ -154,14 +154,14 @@ Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und F
     | Einstellung | Wert |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
-    | Ressourcengruppe | Wählen Sie **myResourceGroup** aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Wählen Sie **myResourceGroup** aus. |
     | **INSTANZDETAILS** |  |
     | Name des virtuellen Computers | Geben Sie *MyVmNva* ein. |
     | Region | Wählen Sie **USA, Osten** aus. |
     | Verfügbarkeitsoptionen | Übernehmen Sie den Standardwert **Keine Infrastrukturredundanz erforderlich**. |
     | Image | Übernehmen Sie den Standardwert **Microsoft Windows Server 2016 Datacenter**. |
-    | Größe | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
+    | Size | Übernehmen Sie den Standardwert **Standard DS1 v2**. |
     | **ADMINISTRATORKONTO** |  |
     | Username | Geben Sie den gewünschten Benutzernamen ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
@@ -182,7 +182,7 @@ Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und F
     | Einstellung | Wert |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **myVirtualNetwork**. |
-    | Subnetz | Wählen Sie **DMZ (10.0.2.0/24)** aus. |
+    | Subnet | Wählen Sie **DMZ (10.0.2.0/24)** aus. |
     | Öffentliche IP-Adresse | Wählen Sie **Keine**. Sie benötigen keine öffentliche IP-Adresse. Der virtuelle Computer wird nicht über das Internet verbunden.|
 
 1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Weiter: Verwaltung** aus.
@@ -194,9 +194,9 @@ Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und F
     | Einstellung | Wert |
     | ------- | ----- |
     | NAME | Geben Sie *mynvastorageaccount* ein. |
-    | Kontoart | Übernehmen Sie den Standardwert **Storage (universell, Version 1)**. |
+    | Kontoart | Übernehmen Sie den Standardwert **Storage (universell, Version 1)** . |
     | Leistung | Übernehmen Sie den Standardwert **Standard**. |
-    | Replikation | Übernehmen Sie den Standardwert **Lokal redundanter Speicher (LRS)**.
+    | Replikation | Übernehmen Sie den Standardwert **Lokal redundanter Speicher (LRS)** .
 
 1. Klicken Sie auf **OK**.
 
@@ -236,7 +236,7 @@ Führen Sie die Schritte 1 bis 12 unter [Erstellen eines virtuellen Netzwerkger�
 | BASICS |  |
 | Name des virtuellen Computers | Geben Sie *myVmPublic* ein. |
 | NETWORKING | |
-| Subnetz | Wählen Sie **Öffentlich (10.0.0.0/24)**. |
+| Subnet | Wählen Sie **Öffentlich (10.0.0.0/24)** . |
 | Öffentliche IP-Adresse | Übernehmen Sie die Standardeinstellung. |
 | Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
 | Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus. |
@@ -246,7 +246,7 @@ Führen Sie die Schritte 1 bis 12 unter [Erstellen eines virtuellen Netzwerkger�
 | BASICS |  |
 | Name des virtuellen Computers | Geben Sie *myVmPrivate* ein. |
 | NETWORKING | |
-| Subnetz | Wählen Sie **Privat (10.0.1.0/24)** aus. |
+| Subnet | Wählen Sie **Privat (10.0.1.0/24)** aus. |
 | Öffentliche IP-Adresse | Übernehmen Sie die Standardeinstellung. |
 | Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
 | Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus. |
@@ -290,7 +290,7 @@ In einem späteren Schritt wird das Routing mithilfe des Traceroute-Tools getest
 1. Geben Sie diesen Befehl ein:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
 
     Sie verwenden Traceroute, um das Routing in diesem Tutorial zu testen. Für Produktionsumgebungen empfehlen wir nicht, ICMP über die Windows-Firewall zuzulassen.
@@ -311,7 +311,7 @@ Sie haben [die IP-Weiterleitung](#turn-on-ip-forwarding) für die Netzwerkschnit
     Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters -Name IpEnableRouter -Value 1
     ```
 
-1. Starten die den virtuellen Computer *myVmNva* neu. Wählen Sie in der Taskleiste **Starttaste** > **Netzschaltersymbol**, **Andere (Geplant)** > **Fortsetzen**.
+1. Starten die den virtuellen Computer *myVmNva* neu. Wählen Sie in der Taskleiste **Starttaste** > **Netzschaltersymbol**, **Andere (Geplant)**  > **Fortsetzen**.
 
     Dadurch wird auch die Remotedesktopsitzung getrennt.
 
@@ -325,7 +325,7 @@ Sie haben [die IP-Weiterleitung](#turn-on-ip-forwarding) für die Netzwerkschnit
 1. Aktivieren Sie ICMP für die Windows-Firewall, indem Sie den folgenden Befehl eingeben:
 
     ```powershell
-    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
 
 ## <a name="test-the-routing-of-network-traffic"></a>Testen des Routings von Netzwerkdatenverkehr

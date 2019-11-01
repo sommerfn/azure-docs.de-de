@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: cfbd687e59a9a852fe1bf01386dac221f040d0f4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6c3bb16e249d84f1da94b6b827bbaf6f8e9df1a1
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083626"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171250"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Vorbereiten eines CentOS-basierten virtuellen Computers für Azure
 
@@ -171,7 +171,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits ein CentOS-Linux-Betr
     sudo yum install microsoft-hyper-v
     ```
 
-    Alternativ können Sie auch die Anweisungen für die manuelle Installation auf der [Downloadseite von LIS](https://go.microsoft.com/fwlink/?linkid=403033) ausführen, um das RPM auf Ihrem virtuellen Computer zu installieren.
+    Alternativ können Sie auch die Anweisungen für die manuelle Installation auf der [Downloadseite von LIS](https://www.microsoft.com/download/details.aspx?id=51612) ausführen, um das RPM auf Ihrem virtuellen Computer zu installieren.
 
 12. Installieren Sie den Azure Linux-Agent und die Abhängigkeiten. waagent-Dienst starten und aktivieren:
 
@@ -355,7 +355,7 @@ Die Vorbereitung eines virtuellen CentOS 7-Computers für Azure entspricht in et
     Bearbeiten Sie `/etc/dracut.conf`und fügen Sie Inhalt hinzu:
 
     ```console
-    add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
+    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
     ```
 
     Erstellen Sie initramfs neu:

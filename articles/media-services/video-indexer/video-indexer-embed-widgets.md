@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: fc0b447630b5e1ac360b1d84869cea02186672fc
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 74518fb891c5ecb25e818b9642d31e3daaf828de
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71036625"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162614"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
@@ -253,7 +253,7 @@ Beispiel:
 
 Standardmäßig verfügt der Video Indexer-Player über automatisch generierte Untertitel, die auf dem Transkript des Videos basieren. Das Transkript wird aus dem Video mit der Quellsprache extrahiert, die beim Hochladen des Videos ausgewählt wurde.
 
-Wenn das Einbetten mit einer anderen Sprache erfolgen soll, können Sie `&captions=< Language | ”all” | “false” >` zur Player-URL hinzufügen. Wenn Sie Untertitel in allen verfügbaren Sprachen wünschen, verwenden Sie den Wert `all`. Falls die Untertitel standardmäßig angezeigt werden sollen, können Sie `&showCaptions=true` übergeben.
+Wenn das Einbetten mit einer anderen Sprache erfolgen soll, können Sie `&captions=< Language | "all" | "false" >` zur Player-URL hinzufügen. Wenn Sie Untertitel in allen verfügbaren Sprachen wünschen, verwenden Sie den Wert `all`. Falls die Untertitel standardmäßig angezeigt werden sollen, können Sie `&showCaptions=true` übergeben.
 
 Die URL für die Einbettung sieht dann wie folgt aus: 
 

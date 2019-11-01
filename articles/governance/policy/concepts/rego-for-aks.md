@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254745"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176318"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Grundlegendes zu Azure Policy für Azure Kubernetes Service
 
@@ -164,7 +164,7 @@ Das Add-On fordert alle fünf Minuten einen vollständigen Scan des Clusters an.
 
 Die Azure Policy-Sprachstruktur zum Verwalten von AKS folgt derjenigen der bestehenden Richtlinien. Der Effekt _EnforceRegoPolicy_ wird verwendet, um Ihre AKS-Cluster zu verwalten und er übernimmt _details_-Eigenschaften, die für die Arbeit mit OPA und GateKeeper spezifisch sind. Details und Beispiele finden Sie unter dem Effekt [EnforceRegoPolicy](effects.md#enforceregopolicy).
 
-Als Teil der Eigenschaft _details.policy_ in der Richtliniendefinition übergibt Azure Policy den URI einer Rego-Richtlinie an das Add-On. Rego ist die Sprache, die von OPA und GateKeeper unterstützt wird, um eine Anforderung an den Kubernetes-Cluster zu validieren oder zu ändern. Durch die Unterstützung eines bestehenden Standards für das Kubernetes-Management ermöglicht Azure Policy die Wiederverwendung bestehender Regeln und deren Kombination mit Azure Policy für eine einheitliche Berichterstellungsumgebung zur Cloud-Compliance. Weitere Informationen finden Sie unter [Was ist Rego?](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego)
+Als Teil der Eigenschaft _details.policy_ in der Richtliniendefinition übergibt Azure Policy den URI einer Rego-Richtlinie an das Add-On. Rego ist die Sprache, die von OPA und GateKeeper unterstützt wird, um eine Anforderung an den Kubernetes-Cluster zu validieren oder zu ändern. Durch die Unterstützung eines bestehenden Standards für das Kubernetes-Management ermöglicht Azure Policy die Wiederverwendung bestehender Regeln und deren Kombination mit Azure Policy für eine einheitliche Berichterstellungsumgebung zur Cloud-Compliance. Weitere Informationen finden Sie unter [Was ist Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)
 
 ## <a name="built-in-policies"></a>Integrierte Richtlinien
 

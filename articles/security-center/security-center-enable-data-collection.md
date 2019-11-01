@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6dcb7fd1ae2dc5ca3a950f5055e79d95f779b029
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300792"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162674"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Analytics Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Log Analytics Agent Absturzabbilddateien in den Arbeitsbereich.
@@ -283,7 +283,7 @@ Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Emp
            }
  
            $PrivateConf = @{
-               "workspaceKey"= "<Primary key value>”
+               "workspaceKey"= "<Primary key value>"
            }
 
       - Bei der Installation auf einem virtuellen Windows-Computer:

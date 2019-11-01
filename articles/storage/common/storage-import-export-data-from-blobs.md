@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e542ad59f6fd64b52aef9438ed0f646e9e36fc4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3166c1f97a81c12b75dd400f591fd92a705cadf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209625"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73178039"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
 Dieser Artikel enthält ausführliche Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher aus Azure Blob Storage zu exportieren. Für diesen Dienst müssen Sie leere Laufwerke an das Azure-Rechenzentrum senden. Der Dienst exportiert Daten aus Ihrem Speicherkonto auf die Laufwerke und versendet diese dann zurück.
@@ -127,7 +127,7 @@ Der Export ist abgeschlossen. Zu diesem Zeitpunkt können Sie den Auftrag lösch
 
 Mit diesem *optionalen* Schritt können Sie die Anzahl der Laufwerke, die für den Exportauftrag erforderlich ist, ermitteln. Führen Sie diesen Schritt auf einem Windows-System aus, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
 
-1. [Laden Sie Version 1 von WAImportExport](https://aka.ms/waiev1) auf das Windows-System herunter. 
+1. [Laden Sie Version 1 von WAImportExport](https://www.microsoft.com/download/details.aspx?id=42659) auf das Windows-System herunter. 
 2. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
 3. Öffnen Sie ein PowerShell- oder Befehlszeilenfenster mit Administratorrechten. Um das Verzeichnis in den Ordner mit den entzippten Daten zu ändern, führen Sie den folgenden Befehl aus:
     
