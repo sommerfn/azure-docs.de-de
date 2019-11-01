@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 7187bc7a42971a86b31d663f0a3754a061a2421a
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: b0a23486d81ac6b48bf7bb256e3583973a338002
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515059"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900918"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Schnellstart: Kommunizieren mit einer Geräteanwendung in C über IoT Hub-Gerätestreams (Vorschauversion)
 
@@ -56,9 +56,10 @@ Die folgenden Voraussetzungen müssen erfüllt sein:
 
 Die Vorschau der Gerätestreams wird derzeit nur für IoT-Hubs unterstützt, die in folgenden Regionen erstellt werden:
 
-* USA (Mitte)
-
-* USA, Mitte (EUAP)
+  * USA (Mitte)
+  * USA, Mitte (EUAP)
+  * Nordeuropa
+  * Asien, Südosten
 
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung
 

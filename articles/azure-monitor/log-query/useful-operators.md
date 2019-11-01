@@ -1,24 +1,18 @@
 ---
 title: Hilfreiche Operatoren in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Allgemeine Funktionen zur Verwendung für verschiedene Szenarien in Azure Monitor-Protokollabfragen.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/21/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2018
+ms.openlocfilehash: 022a9f638b3a7d8ae4ebeff8062f258ada7a14f8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61424137"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932880"
 ---
 # <a name="useful-operators-in-azure-monitor-log-queries"></a>Hilfreiche Operatoren in Azure Monitor-Protokollabfragen
 
@@ -26,7 +20,7 @@ In der folgenden Tabelle sind einige allgemeine Funktionen zur Verwendung für v
 
 ## <a name="useful-operators"></a>Hilfreiche Operatoren
 
-Category (Kategorie)                                |Relevante Analytics-Funktion
+Category                                |Relevante Analytics-Funktion
 ----------------------------------------|----------------------------------------
 Auswahl- und Spaltenaliase            |`project`, `project-away`, `extend`
 Temporäre Tabellen und Konstanten          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 

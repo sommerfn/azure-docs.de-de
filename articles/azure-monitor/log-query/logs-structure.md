@@ -1,18 +1,18 @@
 ---
 title: Struktur von Azure Monitor-Protokollen | Microsoft-Dokumentation
 description: Sie benötigen eine Protokollabfrage, um Protokolldaten aus Azure Monitor abzurufen.  In diesem Artikel wird beschrieben, wie neue Protokollabfragen in Azure Monitor verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen bekannt sein sollten.
-services: log-analytics
-author: bwren
-ms.service: log-analytics
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/22/2019
+ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034872"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894246"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktur von Azure Monitor-Protokollen
 Die Möglichkeit, mit einer [Protokollabfrage](log-query-overview.md) schnell Einblicke in Ihre Daten zu gewinnen, ist ein leistungsstarkes Feature von Azure Monitor. Sie sollten mit den grundlegenden Konzepten vertraut sein, um effiziente und nützliche Abfragen zu erstellen. Dazu gehört beispielsweise, dass Sie wissen, wo sich die gewünschten Daten befinden und wie diese strukturiert sind. Dieser Artikel enthält die grundlegenden Konzepte, die Sie für den Einstieg benötigen.

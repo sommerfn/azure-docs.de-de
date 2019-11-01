@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: c1f1f1b7448fb87135973a596017441ec02d8023
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338783"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73102025"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Inhaltsschutz mit der dynamischen Verschlüsselung von Media Services
 
@@ -108,8 +108,6 @@ Ein Sicherheitstokendienst (Security Token Service, STS) gibt JWT als Zugriffsto
 * Ansprüche, die von Geschäftsanforderungen für den Inhaltsschutz abhängen
 * Symmetrische oder asymmetrische Überprüfung für die Signaturüberprüfung
 * Unterstützung des Schlüsselrollovers (sofern erforderlich)
-
-Mit [diesem STS-Tool](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) können Sie den Sicherheitstokendienst testen. Es unterstützt alle drei Typen von Überprüfungsschlüsseln: symmetrisch, asymmetrisch oder Azure Active Directory (Azure AD) mit Schlüsselrollover. 
 
 ## <a name="streaming-protocols-and-encryption-types"></a>Streamingprotokolle und Verschlüsselungstypen
 

@@ -1,24 +1,18 @@
 ---
 title: Protokollabfragen in Azure Monitor | Microsoft-Dokumentation
 description: Verweise auf Ressourcen zum Erlernen des Schreibens von Protokollabfragen in Azure Monitor
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 01/11/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 6fae245e4d72f7f6f7809d85da17023deb1518e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/11/2019
+ms.openlocfilehash: 7c6530416f0eb6b822b6f5f3eb53f59aeae05d53
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560852"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894354"
 ---
 # <a name="azure-monitor-log-queries"></a>Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Protokollabfragen verwenden eine Version der gleichen Abfragesprache Kusto. Die [Dokumentation über die Abfragesprache Kusto](/azure/kusto/query) enthält alle Informationen zur Sprache und ist die wichtigste Ressource zum Schreiben von Azure Monitor-Protokollabfragen. Diese Seite enthält Links zu anderen Ressourcen, die Sie beim Erlernen des Schreibens von Abfragen unterstützen und die Unterschiede der Sprachversionen bei der Azure Monitor-Implementierung erläutern.

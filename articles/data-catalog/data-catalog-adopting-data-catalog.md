@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 38a9f3a7020e866ccb000ed0c54499258f5e651a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734671"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72801877"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Vorgehensweise und entsprechende Schritte für die Azure Data Catalog-Einführung
 
@@ -125,7 +125,7 @@ Weitere Informationen zum Registrierungstool für Datenquellen finden Sie unter 
 Im Rahmen des Pilotprojekts setzt das Team von Nancy auch Datenquellen ein, die in einer von David und seinen Kollegen verwalteten Excel-Arbeitsmappe beschrieben sind. Da andere Teams im Unternehmen ebenfalls Excel-Arbeitsmappen zum Beschreiben von Datenquellen verwenden, trifft das IT-Team die Entscheidung, ein Tool zum Migrieren der Excel-Arbeitsmappe zu Data Catalog zu erstellen. Indem die Data Catalog-REST-API zum Importieren von vorhandenen Anmerkungen genutzt wird, kann das Pilotprojektteam einen vollständigen Datenkatalog mit Metadaten erstellen, die mit dem Registrierungstool für Datenquellen aus den Datenquellen extrahiert wurden. Hierin sind auch Informationen enthalten, die von Datenproduzenten und -nutzern bereits dokumentiert wurden, ohne dass diese Daten erneut manuell eingegeben werden müssen. Wenn der Datenkatalog des Unternehmens an Umfang zunimmt, kann das Unternehmen das Registrierungstool für Datenquellen für allgemeine Datenquellen und die Data Catalog-API für benutzerdefinierte Quellen und Spezialfälle einsetzen.
 
 > [!NOTE]
-> Wir haben ein Beispieltool erstellt, bei dem die **Azure Data Catalog** -API zum Migrieren einer Excel-Arbeitsmappe zu Data Catalog verwendet wird. Informationen zur Data Catalog-API und zum Beispieltool erhalten Sie, indem Sie das [Ad-hoc-Arbeitsmappen-Codebeispiel herunterladen](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/) und die Dokumentation zur [Azure Data Catalog-REST-API](/rest/api/datacatalog/) lesen.
+> Wir haben ein Beispieltool erstellt, bei dem die **Azure Data Catalog** -API zum Migrieren einer Excel-Arbeitsmappe zu Data Catalog verwendet wird. Informationen zur Data Catalog-API und zum Beispieltool erhalten Sie, indem Sie das [Ad-hoc-Arbeitsmappen-Codebeispiel herunterladen](https://github.com/Azure-Samples/data-catalog-dotnet-excel-register-data-assets) und die Dokumentation zur [Azure Data Catalog-REST-API](/rest/api/datacatalog/) lesen.
 
 Nachdem das Pilotprojekt erstellt wurde, können Sie Ihren Plan für die Einführung von Data Catalog ausführen.
 

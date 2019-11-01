@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2601d05c5d2302bedb51e959747939aa3c33db44
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7ba38e1aa7196263b0ac64a6c92984cc3e7416a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839629"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964798"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -28,7 +28,7 @@ In diesem Artikel richten Sie die Azure CLI und die IoT-Erweiterung ein. Anschli
 ## <a name="cli-prerequisites"></a>Voraussetzungen für die Befehlszeilenschnittstelle
 
 * Ein [IoT-Hub](../iot-hub/iot-hub-create-using-cli.md) in Ihrem Azure-Abonnement 
-* [IoT Edge-Geräte](how-to-register-device-cli.md) mit installierter IoT Edge-Runtime
+* [IoT Edge-Geräte](how-to-register-device.md#prerequisites-for-the-azure-cli) mit installierter IoT Edge-Runtime
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ist in Ihrer Umgebung vorhanden. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az --version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. 
 * Die [IoT-Erweiterung für die Azure CLI](https://github.com/Azure/azure-iot-cli-extension) ist vorhanden.
 

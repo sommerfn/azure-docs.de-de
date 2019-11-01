@@ -1,23 +1,18 @@
 ---
 title: Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich über Azure-Mandanten hinweg | Microsoft-Dokumentation
 description: Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an einen Log Analytics-Arbeitsbereich in Azure Monitor eines anderen Mandanten.
-services: log-analytics, logic-apps, event-hubs
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 02/06/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: d8cea59cd0bbeff410f585693cb7ffed82fd9327
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/06/2019
+ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245599"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932890"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Erfassen von Azure-Aktivitätsprotokollen in Azure Monitor über Azure Active Directory-Mandanten hinweg
 
@@ -129,7 +124,7 @@ Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die un
    |Einstellung | BESCHREIBUNG  |
    |:---|:---|
    | NAME           | Eindeutiger Name für die Logik-App. |
-   | Abonnement   | Wählen Sie das Azure-Abonnement aus, das die Logik-App enthalten soll. |
+   | Subscription   | Wählen Sie das Azure-Abonnement aus, das die Logik-App enthalten soll. |
    | Ressourcengruppe | Wählen Sie für die Logik-App eine vorhandene Azure-Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. |
    | Location       | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus. |
    | Log Analytics  | Aktivieren Sie diese Einstellung, wenn bei jeder Ausführung der Logik-App der Status in einem Log Analytics-Arbeitsbereich protokolliert werden soll.  |

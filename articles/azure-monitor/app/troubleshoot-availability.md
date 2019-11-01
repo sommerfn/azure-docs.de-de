@@ -1,24 +1,19 @@
 ---
 title: Behandeln von Problemen mit Azure Application Insights-Verfügbarkeitstests | Microsoft-Dokumentation
 description: Behandeln von Problemen mit Webtests in Azure Application Insights Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
-services: application-insights
-documentationcenter: ''
-author: lgayhardt
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.author: lagayhar
-ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695035"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899540"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 

@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von Modellen mit einem benutzerdefinierten Docker-Basisimage
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie bei der Bereitstellung Ihrer Azure Machine Learning-Modelle ein benutzerdefiniertes Docker-Basisimage verwenden können. Beim Bereitstellen eines trainierten Modells wird ein Basiscontainerimage bereitgestellt, um Ihr Modell für einen Rückschluss auszuführen. Azure Machine Learning stellt ein Standardbasisimage für Sie bereit, Sie können aber auch Ihr eigenes Basisimage verwenden.
+description: Erfahren Sie, wie Sie bei der Bereitstellung Ihrer Azure Machine Learning-Modelle ein benutzerdefiniertes Docker-Basisimage verwenden können. Azure Machine Learning stellt ein Standardbasisimage für Sie bereit, Sie können aber auch Ihr eigenes Basisimage verwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 47387108de09c9b24471c4afc06a25fa0cbeca00
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326494"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053400"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 

@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 82a0d98b7a9bb29a69830f1d8bd9b1e7db977273
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 19f06ee2d254e927fde4ca087fdd46f596c7dcbd
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598411"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819908"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -101,7 +101,7 @@ Wählen Sie mindestens eine und höchstens drei Kategorien aus. Diese werden ver
 
 ### <a name="industry"></a>Branche
 
-Sie können optional bis zu zwei Branchen auswählen, um Ihr Angebot im Marketplace zu kategorisieren. Wenn Ihr Angebot nicht für eine bestimmte Branche bestimmt ist, lassen Sie diesen Abschnitt leer. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, wie sich Ihr Angebot für die ausgewählten Branchen eignet. 
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="applicable-dynamics-365-products"></a>Gilt für Dynamics 365-Produkte
 

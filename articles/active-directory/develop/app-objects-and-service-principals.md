@@ -1,5 +1,6 @@
 ---
 title: Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Hier finden Sie Informationen zur Beziehung zwischen Anwendungsobjekten und Dienstprinzipalobjekten in Azure Active Directory.
 documentationcenter: dev-center-name
 author: rwike77
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83083026b20573d93777e77f44bf8d5480bfdd97
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c1a4d9301894c6a98abd8244fdd6c10a058a26ad
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853320"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803422"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 

@@ -1,24 +1,18 @@
 ---
 title: Arbeiten mit Werten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Beschreibt das Arbeiten mit Daten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/16/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 402511ba3c45e8bd12cb7f92ecd54f6084c8ada2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/16/2018
+ms.openlocfilehash: 6ff095d674a11d95ed4fd2d008c3e664dd595fef
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62112356"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72894217"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen
 
@@ -137,9 +131,9 @@ Diese Abfrage erzeugt die folgenden Ergebnisse:
 |timestamp|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7\.136|
-|2018-07-29T00:00:00.000|12\.315|
-|2018-07-30T00:00:00.000|16\.847|
-|2018-07-31T00:00:00.000|12\.616|
+|2018-07-29T00:00:00.000|12.315|
+|2018-07-30T00:00:00.000|16.847|
+|2018-07-31T00:00:00.000|12.616|
 |2018-08-01T00:00:00.000|5\.416|
 
 
@@ -153,7 +147,7 @@ Event
 
 ## <a name="related-functions"></a>Zugehörige Funktionen
 
-| Category (Kategorie) | Funktion |
+| Category | Funktion |
 |:---|:---|
 | Konvertieren von Datentypen | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
 | Runden eines Werts auf die bin-Größe | [bin](/azure/kusto/query/binfunction) |

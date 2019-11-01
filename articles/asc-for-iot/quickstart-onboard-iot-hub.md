@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cdf9f61c88d93f0cbf0b80576aa30dff5ce9cab
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551597"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991397"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>Schnellstart: Durchführen des Onboardings für den Dienst „Azure Security Center für IoT“ in IoT Hub
 
@@ -43,14 +43,8 @@ In diesem Artikel erfahren Sie, wie Sie den Dienst „Azure Security Center für
 So aktivieren Sie die Sicherheit für Ihre IoT Hub-Instanz: 
 
 1. Öffnen Sie im Azure-Portal Ihre Instanz von **IoT Hub**. 
-1. Klicken Sie im Menü **Sicherheit** auf **Secure your IoT solution** (IoT-Lösung schützen).
-1. Behalten Sie die Standardeinstellung **Aktivieren** bei. 
-1. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus.
-1. Geben Sie die Details Ihres Log Analytics-Arbeitsbereichs an. 
-   - Legen Sie die Einstellung für **twin collection** (Zwillingserfassung) auf **Ein** fest, um die Zwillingserfassung zu **aktivieren**.
-   - Wählen Sie in Log Analytics **Store raw device security events** (Sicherheitsrohereignisse für Geräte speichern) aus, um zusätzlich zu den Speicher-Standardinformationstypen **Rohereignisse** zu speichern. Lassen Sie die Umschaltfläche **Rohereignisse** auf **Ein** festgelegt. 
-    
-1. Klicken Sie auf **Speichern**. 
+1. Klicken Sie im Menü **Sicherheit** auf **Secure your IoT solution** (IoT-Lösung schützen).    
+
 
 Glückwunsch! Sie haben Azure Security Center für IoT in Ihrer IoT Hub-Instanz aktiviert. 
 

@@ -4,14 +4,14 @@ description: In diesem Dokument werden die verschiedenen Optionen zum Migrieren 
 author: bharathsreenivas
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 0a2423421c6dfda02646546a6e071c8c78396f2c
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170856"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882388"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Optionen zum Migrieren von lokalen oder Clouddaten zu Azure Cosmos DB
 
@@ -72,8 +72,4 @@ Bei anderen APIs als SQL-API, Mongo-API und Cassandra-API werden in den Umgebung
 
 * Erfahren Sie mehr darüber, indem Sie die Beispielanwendungen ausprobieren, die die BulkExecutor-Bibliothek in [.NET](bulk-executor-dot-net.md) und [Java](bulk-executor-java.md) nutzen. 
 * Die BulkExecutor-Bibliothek ist in den Cosmos DB Spark-Connector integriert. Weitere Informationen finden Sie im Artikel [Spark-Connector für Azure Cosmos DB](spark-connector.md).  
-* Wenden Sie sich an das Azure Cosmos DB-Team, indem Sie unter dem Problemtyp „General Advisory“ (Allgemeine Ratschläge) und dem Problemuntertyp „Large (TB+) migrations“ (Umfangreiche Migrationen (TB+)) ein Supportticket erstellen, um weitere Hilfe zu größeren Migrationen zu erhalten. 
-* Verwenden Sie das [Cosmos DB-Bootstrap-Programm](https://azurecosmosdb.github.io/CosmosBootstrap/), um das Erstellen oder Migrieren Ihrer Anwendungen in Azure Cosmos DB zu beschleunigen.
-
-> [!div class="nextstepaction"]
-> [Cosmos DB-Bootstrap-Programm](https://azurecosmosdb.github.io/CosmosBootstrap/)
+* Wenden Sie sich an das Azure Cosmos DB-Team, indem Sie unter dem Problemtyp „General Advisory“ (Allgemeine Ratschläge) und dem Problemuntertyp „Large (TB+) migrations“ (Umfangreiche Migrationen (TB+)) ein Supportticket erstellen, um weitere Hilfe zu größeren Migrationen zu erhalten.
