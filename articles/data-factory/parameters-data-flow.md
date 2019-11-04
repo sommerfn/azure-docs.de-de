@@ -40,9 +40,9 @@ Parameter können in jedem Datenflussausdruck verwendet werden. Parameter beginn
 
 ## <a name="use-parameters-in-your-data-flow"></a>Verwenden von Parametern in Ihrem Datenfluss
 
-* Sie können Parameterwerte innerhalb Ihrer Transformationsausdrücke verwenden. Sie finden die Parameterliste im Ausdrucks-Generator auf der Registerkarte „Parameter“. ![Verwenden von Datenflussparametern](media/data-flow/params9.png "UVerwenden von Datenflussparametern)
+* Sie können Parameterwerte innerhalb Ihrer Transformationsausdrücke verwenden. Sie finden die Parameterliste im Ausdrucks-Generator auf der Registerkarte „Parameter“. ![Verwenden von Datenflussparametern](media/data-flow/params9.png "UVerwenden von Datenflussparametern")
 
-* Parameter werden auch verwendet, um dynamische Werte für Ihre Einstellungen der Quell- und Senkentransformation zu konfigurieren. Wenn Sie in konfigurierbare Felder klicken, wird der Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie darauf klicken, gelangen Sie zu einem Ausdrucks-Generator, in dem Sie Parameter zur Verwendung dynamischer Werte einsetzen können. ![Dynamischer Inhalt im Datenfluss](media/data-flow/params6.png "DDynamischer Inhalt im Datenfluss)
+* Parameter werden auch verwendet, um dynamische Werte für Ihre Einstellungen der Quell- und Senkentransformation zu konfigurieren. Wenn Sie in konfigurierbare Felder klicken, wird der Link „Dynamischen Inhalt hinzufügen“ angezeigt. Wenn Sie darauf klicken, gelangen Sie zu einem Ausdrucks-Generator, in dem Sie Parameter zur Verwendung dynamischer Werte einsetzen können. ![Dynamischer Inhalt im Datenfluss](media/data-flow/params6.png "DDynamischer Inhalt im Datenfluss")
 
 ## <a name="set-mapping-data-flow-parameters-from-pipeline"></a>Festlegen von Mapping Data Flow-Parametern aus der Pipeline
 

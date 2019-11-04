@@ -46,6 +46,12 @@
           href: prevent-translation.md
         - name: Verwenden der Funktion für das dynamische Wörterbuch
           href: dynamic-dictionary.md
+        - name: Verwenden von Containern
+          items:
+            - name: Installieren und Ausführen von Containern
+              href: how-to-install-containers.md
+            - name: Konfigurieren von Containern
+              href: translator-text-container-config.md
         - name: Übersetzen hinter Firewalls
           href: firewalls.md
     - name: Beispiele
