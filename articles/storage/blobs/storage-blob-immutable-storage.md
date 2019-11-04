@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 633c5944f7d813b78f7a0c9b71266d4012fd72cf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0c7e178d520084dbf963c4c7ebaf9b8873a36938
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673393"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521050"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>Speichern unternehmenskritischer Daten auf unveränderliche Weise in Azure-Blobspeicher 
 
@@ -108,7 +108,7 @@ Unveränderlicher Speicher steht nur für Universell v2-Konten und Blobspeicher
 
 Die aktuellen Releases von [Azure-Portal](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) unterstützen unveränderlichen Speicher für Azure-Blobspeicher. [Unterstützung für Clientbibliotheken](#client-libraries) ist ebenfalls vorhanden.
 
-### <a name="azure-portal"></a>Azure-Portal
+### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Erstellen Sie einen neuen Container, oder wählen Sie einen vorhandenen Container aus, um die Blobs zu speichern, die im unveränderlichen Zustand aufbewahrt werden müssen.
  Der Container muss sich in einem GPv2- oder Blob-Speicherkonto befinden.
@@ -144,11 +144,11 @@ Die aktuellen Releases von [Azure-Portal](https://portal.azure.com), [Azure CLI]
 
 9. Entfernen Sie einfach das entsprechende angewendete ID-Tag, um eine gesetzliche Aufbewahrungspflicht zu löschen.
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Die Funktion ist in den folgenden Befehlsgruppen enthalten: `az storage container immutability-policy` und `az storage container legal-hold`. Führen Sie `-h` darauf aus, um die Befehle anzuzeigen.
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Das Modul „Az.Storage“ unterstützt unveränderlichen Speicher.  Gehen Sie folgendermaßen vor, um diese Funktion zu aktivieren:
 
@@ -157,6 +157,8 @@ Das Modul „Az.Storage“ unterstützt unveränderlichen Speicher.  Gehen Sie f
 3. Installieren Sie Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
 Der Abschnitt [PowerShell-Beispielcode](#sample-powershell-code) weiter unten in diesem Artikel veranschaulicht die Verwendung der Funktion.
+
+---
 
 ## <a name="client-libraries"></a>Clientbibliotheken
 

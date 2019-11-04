@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bf8b2551390fa36736f678c756093a55d6ceb0c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a99b2e7097f2abf36f184368b3b4fdaba8f2730b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932875"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467407"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
 
  Batchtests sind umfassende Tests Ihres aktuellen trainierten Modells zum Messen seiner Leistung in LUIS. Die für Batchtests verwendeten Datasets dürfen keine Beispieläußerungen in den Absichten oder Äußerungen enthalten, die vom Vorhersagelaufzeit-Endpunkt empfangen werden. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="batch-testing"></a>
 
@@ -52,7 +54,7 @@ Um den Test auszuführen, wählen Sie den Namen des Datasets aus. Wenn der Test 
 
 Das herunterladbare Dataset ist dieselbe Datei, die für die Batchtests hochgeladen wurde.
 
-|Zustand|Bedeutung|
+|State|Bedeutung|
 |--|--|
 |![Symbol mit grünem Kreis für erfolgreichen Test](./media/luis-how-to-batch-test/batch-test-result-green.png)|Alle Äußerungen sind erfolgreich.|
 |![Symbol mit rotem x für Fehler beim Test](./media/luis-how-to-batch-test/batch-test-result-red.png)|Mindestens eine Absicht einer Äußerung entsprach nicht der Vorhersage.|

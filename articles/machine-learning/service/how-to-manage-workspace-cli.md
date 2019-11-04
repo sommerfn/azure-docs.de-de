@@ -9,14 +9,15 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8606ac2578c45062182517b5e67d669a09b8e5c0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002634"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489723"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erlernen Sie das Erstellen eines Azure Machine Learning-Arbeitsbereichs mit der Azure CLI. Die Azure CLI bietet Befehle zum Verwalten von Azure-Ressourcen. Die Erweiterung der CLI für maschinelles Lernen unterstützt Befehle für die Arbeit mit Azure Machine Learning-Ressourcen.
 

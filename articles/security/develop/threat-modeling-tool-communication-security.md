@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c9562f413fa0ed52d61d0b38df358f1a2cd03f9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828582"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498689"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Sicherheitsrahmen: Kommunikationssicherheit | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -102,7 +102,7 @@ ms.locfileid: "71828582"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | EnvironmentType: Azure |
-| **Referenzen**              | [Aktivieren von HTTPS für eine App in Azure App Service](../../app-service/app-service-web-tutorial-custom-ssl.md) |
+| **Referenzen**              | [Aktivieren von HTTPS für eine App in Azure App Service](../../app-service/configure-ssl-bindings.md) |
 | **Schritte** | Standardmäßig aktiviert Azure HTTPS bereits für jede App mit einem Platzhalterzertifikat für die Domäne „*.azurewebsites.net“. Platzhalterdomänen sind jedoch generell nicht so sicher wie die Verwendung einer benutzerdefinierten Domäne mit eigenem Zertifikat. (Weitere Informationen finden Sie [hier](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/).) Es empfiehlt sich, SSL für die benutzerdefinierte Domäne zu aktivieren, über die auf die bereitgestellte App zugegriffen wird.|
 
 ## <a id="appservice-https"></a>Erzwingen Sie, dass der gesamte an Azure App Service gerichtete Datenverkehr über eine HTTPS-Verbindung abgewickelt wird.
@@ -113,7 +113,7 @@ ms.locfileid: "71828582"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | EnvironmentType: Azure |
-| **Referenzen**              | [Erzwingen von HTTPS in Azure App Service](../../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
+| **Referenzen**              | [Erzwingen von HTTPS in Azure App Service](../../app-service/configure-ssl-bindings.md#enforce-https) |
 | **Schritte** | <p>Azure aktiviert zwar bereits standardmäßig HTTPS für Azure App Services mit einem Platzhalterzertifikat für die Domäne „*.azurewebsites.net“, erzwingt es aber nicht. Besucher können weiterhin über HTTP auf die App zugreifen, dies kann allerdings die Sicherheit der App gefährden. Daher muss explizit HTTPS erzwungen werden. ASP.NET-MVC-Anwendungen müssen den [RequireHttps-Filter](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) verwenden. Dieser sorgt dafür, dass ungeschützte HTTP-Anforderungen erneut über HTTPS gesendet werden müssen.</p><p>Alternativ kann HTTPS mithilfe des in Azure App Service enthaltenen URL-Rewrite-Moduls erzwungen werden. Mit dem URL-Rewrite-Modul können Entwickler Regeln definieren, die auf eingehende Anforderungen angewendet werden, bevor diese an Ihre Anwendung übergeben werden. URL-Rewrite-Regeln werden im Stammverzeichnis der Anwendung in einer Datei vom Typ „web.config“ gespeichert.</p>|
 
 ### <a name="example"></a>Beispiel

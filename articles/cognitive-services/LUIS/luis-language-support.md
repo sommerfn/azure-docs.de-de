@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949546"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500193"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -47,15 +47,9 @@ LUIS versteht Äußerungen in den folgenden Sprachen:
 | Spanisch (Mexiko)|`es-MX` |-|  -   |✔|✔|
 | Türkisch | `tr-TR` |✔|-|-|Nur Stimmung|
 
-
 Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und [vordefinierte Domänen](luis-reference-prebuilt-domains.md).
 
-### <a name="chinese-support-notes"></a>\* Hinweise zur Unterstützung von Chinesisch
-
- - In der Kultur `zh-cn` erwartet LUIS den vereinfachten chinesischen Zeichensatz anstelle des traditionellen.
- - Die Namen der Absichten, Entitäten, Features und regulären Ausdrücke können in chinesischen oder lateinischen Zeichen vorliegen.
- - Informationen zu den in der Kultur `zh-cn` unterstützten vordefinierten Domänen finden Sie in der [Referenz zu vordefinierten Domänen](luis-reference-prebuilt-domains.md).
-<!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
 ### <a name="japanese-support-notes"></a>\* Hinweise zur Unterstützung von Japanisch
 
@@ -63,8 +57,7 @@ Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference
      - でございます ist nicht dasselbe wie です.
      - です ist nicht dasselbe wie だ.
 
-### <a name="text-analytics-support-notes"></a>** Hinweise zur Textanalyseunterstützung
-Die Textanalyse beinhaltet eine vorgefertigte keyPhrase-Entität und Standpunktanalyse. Für die Subkulturen `pt-PT` und `pt-BR` wird nur Portugiesisch unterstützt. Alle anderen Kulturen werden auf primärer Kulturebene unterstützt. Erfahren Sie mehr über [unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) für die Textanalyse.
+[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
 ### <a name="speech-api-supported-languages"></a>Unterstützte Sprachen der Speech-API
 Informationen zu den Sprachen für den Spracherkennungsmodus von Speech finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/Speech/api-reference-rest/supportedlanguages##interactive-and-dictation-mode) für Speech.

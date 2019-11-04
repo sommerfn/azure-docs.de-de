@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: 40f30ddece9881f565f45f4ef6c9d0e2ad85fe95
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0ca849e75f01573bbb356105b281f03d267836e6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561132"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73520459"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Schnellstart: Informationen zum Erstellen einer Objekterkennung mit Custom Vision
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
 
-Für die Verwendung des Custom Vision Service müssen Sie im Azure-Portal Custom Vision-Trainingsressourcen und -Vorhersageressourcen erstellen. Füllen Sie das Dialogfenster auf der Seite [Custom Vision erstellen](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) aus, um sowohl eine Trainings- als auch eine Vorhersageressource zu erstellen. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 
@@ -51,7 +51,7 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 
 1. Wählen Sie dann eine der verfügbaren Domänen aus. Jede Domäne optimiert das Erkennungsmodul für bestimmte Bildtypen, wie in der folgenden Tabelle beschrieben. Sie können die Domäne später bei Bedarf ändern.
 
-    |Domäne|Zweck|
+    |Domain|Zweck|
     |---|---|
     |__Allgemein__| Für eine Vielzahl von Aufgaben der Objekterkennung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“. |
     |__Logo__|Für die Suche nach Markenlogos in Bildern optimiert.|

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: e075091461949639fc36ffb9feab69ac5399ae61
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673096"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491979"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS) zum Erstellen hochverfügbarer Azure Storage-Anwendungen
 
@@ -42,6 +42,7 @@ Für Konten vom Typ „Allgemein v2“ ist ZRS allgemein in den folgenden Region
 Für Konten vom Typ „FileStorage“ ist ZRS allgemein in den folgenden Regionen verfügbar:
 
 - Europa, Westen
+- USA, Osten
 
 Microsoft arbeitet daran, ZRS in weiteren Azure-Regionen zu aktivieren. Sehen Sie regelmäßig auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/) nach, um Informationen zu neuen Regionen zu erhalten.
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 7b61aef13b113d9b2502c24e3001da25fa186c76
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 841fa89f2e893052473bb1e2b7e634f1216ab505
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559566"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464590"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrieren von der Sprachübersetzungs-API zum Spracherkennungsdienst
 
-Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-API von Microsoft zum [Spracherkennungsdienst](index.yml) zu migrieren. Diese Anleitung beschreibt die Unterschiede zwischen der Sprachübersetzungs-API von Microsoft und dem Spracherkennungsdienst und schlägt Strategien für die Migration Ihrer Anwendungen vor.
+Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-API von Microsoft zum [Spracherkennungsdienst](index.md) zu migrieren. Diese Anleitung beschreibt die Unterschiede zwischen der Sprachübersetzungs-API von Microsoft und dem Spracherkennungsdienst und schlägt Strategien für die Migration Ihrer Anwendungen vor.
 
 > [!NOTE]
 > Ihr Abonnementschlüssel für die Sprachübersetzungs-API wird nicht vom Spracherkennungsdienst akzeptiert. Sie müssen ein neues Spracherkennungsdienst-Abonnement erstellen.
@@ -35,7 +35,7 @@ Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-AP
 | Verbindungszeitlimit                             | 90 Minuten                                               | Mit SDK unbegrenzt 10 Minuten mit einer WebSockets-Verbindung.                                                                                                                                                                                                                                                                                   |
 | Authentifizierungsschlüssel im Header                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Mehrere Sprachen in einer einzelnen Anforderung übersetzt | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| SDKs verfügbar                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Informationen zu verfügbaren SDKs finden Sie in der [Dokumentation zum Spracherkennungsdienst](index.yml).                                                                                                                                                    |
+| SDKs verfügbar                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Informationen zu verfügbaren SDKs finden Sie in der [Dokumentation zum Spracherkennungsdienst](index.md).                                                                                                                                                    |
 | WebSockets-Verbindungen                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Sprachen-API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Der Spracherkennungsdienst unterstützt denselben Sprachumfang, der im Artikel [Sprachenreferenz für Sprachübersetzungs-API](../translator-speech/languages-reference.md) beschrieben ist. |
 | Filter und Markierung für Obszönitäten                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-AP
 
 ## <a name="migration-strategies"></a>Migrationsstrategien
 
-Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung verwenden, die die Sprachübersetzungs-API verwenden, sollten Sie diese aktualisieren, um den Spracherkennungsdienst zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der Dokumentation zum [Spracherkennungsdienst](index.yml). Berücksichtigen Sie bei der Migration Folgendes:
+Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung verwenden, die die Sprachübersetzungs-API verwenden, sollten Sie diese aktualisieren, um den Spracherkennungsdienst zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der Dokumentation zum [Spracherkennungsdienst](index.md). Berücksichtigen Sie bei der Migration Folgendes:
 
 * Die Spracherkennungsdienste bieten keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen.
 
@@ -62,7 +62,7 @@ Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsu
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Kostenloses Testen des Spracherkennungsdiensts](get-started.md)
-* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK](quickstart-csharp-uwp.md)
+* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Weitere Informationen
 

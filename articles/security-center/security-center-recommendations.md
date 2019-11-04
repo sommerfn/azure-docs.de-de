@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 32b7f1d699c0d620d70614c441a8c18520c1b2d5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6a01ddbc733ce52c02e9abef2569adbfbd19c6a8
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201045"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520736"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
@@ -36,7 +36,7 @@ Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus de
 Jede Empfehlung beinhaltet Folgendes:
 
 - Eine kurze Beschreibung der empfohlenen Aktion
-- Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen <!-- In some cases, one-click remediation is available. -->
+- Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen <!-- In some cases, Quick Fix remediation is available. -->
 - Angaben zu den Ressourcen, für die die empfohlene Aktion ausgeführt werden sollte
 - Die **Secure Score-Auswirkung**, d. h. die Punkte, um die Ihre Sicherheitsbewertung erhöht wird, wenn Sie die Empfehlung implementieren
 

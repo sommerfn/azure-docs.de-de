@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61369292"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73484025"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Senden von Nachrichten an einen MQTT-Server
 
@@ -90,4 +90,4 @@ Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellt
 In diesem Artikel haben Sie erfahren, wie Sie Ihr MXChip-Iot-DevKit als MQTT-Client konfigurieren und die MQTT-Clientbibliothek verwenden, um Nachrichten an einen MQTT-Broker zu senden. Dies sind die empfohlenen nächsten Schritte:
 
 * [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
-* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](/azure/iot-central/core/howto-connect-devkit)

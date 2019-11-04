@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae1c1a6c151d0bfae1b608ccefdfeaaaa74b608
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803838"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473804"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Gewusst wie: Konfigurieren von MSAL für iOS und macOS für die Verwendung verschiedener Identitätsanbieter
 
@@ -34,7 +34,7 @@ Dieser Artikel zeigt Ihnen, wie Sie Ihre Microsoft-Authentifizierungsbibliothek-
 `MSALPublicClientApplication` ist mit einer Standard-URL der autoritativen Stelle von `https://login.microsoftonline.com/common` konfiguriert, die für die meisten Azure Active Directory-Szenarios (AAD) geeignet ist. Wenn Sie keine fortgeschrittenen Szenarios wie nationale Clouds oder die Arbeit mit B2C implementieren, müssen Sie diese nicht ändern.
 
 > [!NOTE]
-> Eine moderne Authentifizierung mit Active Directory-Verbunddienste als Identitätsanbieter (ADFS) wird nicht unterstützt (Weitere Informationen finden Sie unter [ADFS für Entwickler](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)). ADFS wird vom Verbund unterstützt.
+> Eine moderne Authentifizierung mit Active Directory-Verbunddienste als Identitätsanbieter (ADFS) wird nicht unterstützt (Weitere Informationen finden Sie unter [ADFS für Entwickler](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)). ADFS wird vom Verbund unterstützt.
 
 ## <a name="change-the-default-authority"></a>Änderung der autoritativen Standardstelle
 

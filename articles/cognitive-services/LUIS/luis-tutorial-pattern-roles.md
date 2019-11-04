@@ -9,19 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 7b95dcf6a93c9abdeab9520f0a0fd80eb17dccff
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 13a1589a6cc6ed48f159f361ff69a5a3ba8f0f80
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387641"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499448"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Tutorial: Extrahieren kontextbezogener Muster mithilfe von Rollen
 
 In diesem Tutorial verwenden Sie ein Muster, um Daten aus einer wohlgeformten Vorlagenäußerung zu extrahieren. Die Vorlagenäußerung verwendet eine [einfache Entität](luis-concept-entity-types.md#simple-entity) und [Rollen](luis-concept-roles.md) zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.  Bei der Verwendung von Mustern sind weniger Beispieläußerungen für die Absicht erforderlich.
 
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 

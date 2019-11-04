@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
-ms.date: 07/24/2019
-ms.openlocfilehash: d0e0c5601a6cddf936604df6d5b48b8bf48e7c8d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/25/2019
+ms.openlocfilehash: 2e088557bf61141d3ea3cbeb25d53f711a71fd97
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162447"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496859"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Bereitstellen eines Deep Learning-Modells für das Ziehen von Rückschlüssen mit einer GPU
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dieser Artikel zeigt Ihnen, wie Sie Azure Machine Learning verwenden können, um ein GPU-fähiges Modell als Webservice bereitzustellen. Die Informationen in diesem Artikel basieren auf der Bereitstellung eines Modells in Azure Kubernetes Service (AKS). Der AKS-Cluster stellt eine GPU-Ressource bereit, die vom Modell für das Ziehen von Rückschlüssen verwendet wird.
 

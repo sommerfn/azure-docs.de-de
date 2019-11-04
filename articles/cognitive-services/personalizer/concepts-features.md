@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756103"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490762"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -69,7 +69,10 @@ Im Folgenden finden Sie Beispiele für Merkmalsnamespaces, die von Anwendungen v
 Sie können Merkmalsnamespaces nach Ihren eigenen Konventionen benennen, solange es sich dabei um gültige JSON-Schlüssel handelt. Namespaces werden zum Sortieren von Features in verschiedene Gruppen und zum Unterscheiden von Features mit ähnlichen Namen verwendet. Sie können sich Namespaces als „Präfix“ vorstellen, der zu Namen von Features hinzugefügt wird. Namespaces können nicht geschachtelt werden.
 
 
-Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces. Hinweis zur Public Preview: Derzeit wird dringend empfohlen, UTF-8-basierte Namen mit verschiedenen Anfangsbuchstaben für Featurenamespaces zu verwenden. Beispielsweise Namen wie `user`, `state` und `device`, die jeweils mit `u`, `s` und `d` beginnen. Derzeit können Namespaces mit denselben Anfangsbuchstaben zu Konflikten in Indizes für maschinelles Lernen führen.
+Im folgenden JSON-Code sind `user`, `state` und `device` Merkmalsnamespaces. 
+
+> [!Note]
+> Derzeit wird dringend empfohlen, UTF-8-basierte Namen mit verschiedenen Anfangsbuchstaben für Featurenamespaces zu verwenden. Beispielsweise Namen wie `user`, `state` und `device`, die jeweils mit `u`, `s` und `d` beginnen. Derzeit können Namespaces mit denselben Anfangsbuchstaben zu Konflikten in Indizes für maschinelles Lernen führen.
 
 JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte enthalten. Ein Array kann nur einbezogen werden, wenn die Arrayelemente Zahlen sind. 
 

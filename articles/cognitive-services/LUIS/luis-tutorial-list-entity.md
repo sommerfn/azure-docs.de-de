@@ -10,15 +10,17 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f3c99856eaffc454754618a1eac34630b985a77e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390270"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499476"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
 Dieser Artikel veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

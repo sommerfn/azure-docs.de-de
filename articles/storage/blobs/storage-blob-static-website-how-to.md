@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 5664bf1eaee85d2492601ef00968d9b17d857abb
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900482"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489089"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie das Hosting statischer Websites über da
 
 <a id="portal" />
 
-## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Ein Tutorial mit schrittweisen Anleitungen finden Sie unter [Tutorial: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host) (Tutorial: Hosten einer statischen Website in Blob Storage) aus, bevor Sie mit diesem Tutorial beginnen.
 
@@ -38,7 +38,7 @@ Wählen Sie in dem Bereich, der neben der Übersichtsseite für Ihr Speicherkont
 
 <a id="cli" />
 
-## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
+## <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Sie können das Hosting statischer Websites über die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) aktivieren.
 
@@ -102,7 +102,7 @@ az storage account show -n <storage-account-name> -g <resource-group-name> --que
 
 <a id="powershell" />
 
-## <a name="use-powershell"></a>Verwenden von PowerShell
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Sie können das Hosting statischer Websites über das Azure PowerShell-Modul aktivieren.
 
@@ -184,6 +184,8 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
 <a id="metrics" />
+
+---
 
 ## <a name="enable-metrics-on-static-website-pages"></a>Aktivieren von Metriken auf Seiten der statischen Website
 

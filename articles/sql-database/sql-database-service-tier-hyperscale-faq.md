@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 906beabe527db41f41793a7fb1f76aef27487cdd
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 379629cfe3c742bd247e02cdf7a891afab08107f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044976"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496183"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 
@@ -127,7 +127,7 @@ Derzeit leider nicht. Sie können Ihre Computeleistung und die Anzahl von Replik
 
 ### <a name="can-i-provision-a-compute-replica-with-extra-ram-for-my-memory-intensive-workload"></a>Kann ich ein Computereplikat mit zusätzlichem RAM für meine speicherintensive Workload bereitstellen?
 
-Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-for-provisioned-compute).
+Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5).
 
 ### <a name="can-i-provision-multiple-compute-replicas-of-different-sizes"></a>Kann ich mehrere Computereplikate unterschiedlicher Größe bereitstellen?
 

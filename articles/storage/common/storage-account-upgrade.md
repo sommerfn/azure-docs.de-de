@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: d1c7edc2973231607cade89df56906190c2abbcf
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671143"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495985"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -23,7 +23,7 @@ Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 > [!IMPORTANT]
 > Ein Upgrade eines Speicherkontos vom Typ „Allgemein v1“ oder eines Blob-Speicherkontos auf „Allgemein v2“ ist dauerhaft und kann nicht rückgängig gemacht werden.
 
-## <a name="upgrade-using-the-azure-portal"></a>Upgrade mithilfe des Azure-Portals
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zum Speicherkonto.
@@ -34,7 +34,7 @@ Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
     ![Upgrade für Konto durchführen](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-## <a name="upgrade-with-powershell"></a>Aktualisieren mit PowerShell
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -45,8 +45,7 @@ Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren,
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
 ```
-
-## <a name="upgrade-with-azure-cli"></a>Aktualisieren per Azure CLI
+# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit der Azure CLI ein Upgrade auf ein Konto vom Typ „Allgemein v2“ durchführen möchten, installieren Sie zuerst die aktuelle Version der Azure CLI. Informationen zum Installieren der CLI finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -55,6 +54,8 @@ Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren,
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
 ```
+
+---
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Angeben einer Zugriffsebene für Blobdaten
 

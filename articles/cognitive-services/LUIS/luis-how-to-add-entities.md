@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 80e1052cb7acbdcec2dcb94f1667cae3c554d18e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 54c9d79c62052daeee76de5dffb1099dc7d75180
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932918"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467719"
 ---
 # <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
 
@@ -25,6 +25,8 @@ Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, d
 Sie können Entitäten in Ihrer LUIS-App über die **Entitätenlisten** auf der Seite **Entitäten** hinzufügen, bearbeiten oder löschen. LUIS verfügt über zwei Haupttypen von Entitäten: [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und Ihre eigenen [benutzerdefinierten Entitäten](luis-concept-entity-types.md#types-of-entities).
 
 Sobald eine maschinell erlernte Entität erstellt wurde, müssen Sie diese Entität in der gesamten Beispieläußerung aller Absichten, in denen sie sich befindet, markieren.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="add-prebuilt-entity"></a>
 

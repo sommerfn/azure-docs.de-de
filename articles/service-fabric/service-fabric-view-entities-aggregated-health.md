@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 1721f10f8950577080a89ba58a3eb4dd3a25c188
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: c4a312654fb54660a229c334071d33a5d6bc172f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249187"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496376"
 ---
 # <a name="view-service-fabric-health-reports"></a>Anzeigen von Service Fabric-Integritätsberichten
 Mit Azure Service Fabric wird ein [Integritätsmodell](service-fabric-health-introduction.md) eingeführt, das Integritätsentitäten enthält, auf denen Systemkomponenten und Watchdogs die von ihnen überwachten lokalen Bedingungen melden können. Im so genannten [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden alle Integritätsdaten zusammengefasst, um zu ermitteln, ob die Entitäten fehlerfrei sind.
@@ -32,7 +32,7 @@ Service Fabric bietet Ihnen mehrere Möglichkeiten, den aggregierten Integrität
 * Integritätsabfragen (über PowerShell, API oder REST)
 * Allgemeine Abfragen, die eine Liste mit Entitäten zurückgeben, von denen eine der Eigenschaften die Integrität ist (über PowerShell, API oder REST)
 
-Um diese Optionen zu demonstrieren, verwenden wir einen lokalen Cluster mit fünf Knoten und der Anwendung [fabric:/WordCount](https://aka.ms/servicefabric-wordcountapp). Die Anwendung **fabric:/WordCount** enthält zwei Standarddienste: einen zustandsbehafteten Dienst vom Typ `WordCountServiceType` und einen zustandslosen Dienst vom Typ `WordCountWebServiceType`. Ich habe `ApplicationManifest.xml` dahin gehend geändert, dass sieben Zielreplikate für den zustandsbehafteten Dienst und eine Partition erforderlich sind. Da nur fünf Knoten im Cluster vorhanden sind, melden die Systemkomponenten eine Warnung zur Dienstpartition, da sie die Zielanzahl unterschreitet.
+Um diese Optionen zu demonstrieren, verwenden wir einen lokalen Cluster mit fünf Knoten und der Anwendung [fabric:/WordCount](https://github.com/Azure-Samples/service-fabric-wordcount/raw/master/WordCountV1.sfpkg). Die Anwendung **fabric:/WordCount** enthält zwei Standarddienste: einen zustandsbehafteten Dienst vom Typ `WordCountServiceType` und einen zustandslosen Dienst vom Typ `WordCountWebServiceType`. Ich habe `ApplicationManifest.xml` dahin gehend geändert, dass sieben Zielreplikate für den zustandsbehafteten Dienst und eine Partition erforderlich sind. Da nur fünf Knoten im Cluster vorhanden sind, melden die Systemkomponenten eine Warnung zur Dienstpartition, da sie die Zielanzahl unterschreitet.
 
 ```xml
 <Service Name="WordCountService">

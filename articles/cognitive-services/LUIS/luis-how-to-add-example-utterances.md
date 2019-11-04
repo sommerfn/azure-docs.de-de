@@ -9,20 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1e170b86f573112cc5bc8dddd6f080921ef29d2d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ed6321963422cf17c858f43593092f8ffa4a1119
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932949"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467730"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Hinzufügen einer Entität zu Beispieläußerungen 
 
 Beispieläußerungen sind Textbeispiele für Benutzerfragen oder -befehle. Fügen Sie [Beispieläußerungen](luis-concept-utterance.md) zu einer [Absicht](luis-concept-intent.md) hinzu, um Language Understanding-Apps zu trainieren.
 
+
 Im Allgemeinen fügen Sie einer Absicht zunächst eine Beispieläußerung hinzu und erstellen dann Entitäten und bezeichnen Äußerungen auf der Seite **Absichten**. Wenn Sie zuerst Entitäten erstellen möchten, finden Sie weitere Informationen unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="marking-entities-in-example-utterances"></a>Markieren von Entitäten in Beispieläußerungen
 

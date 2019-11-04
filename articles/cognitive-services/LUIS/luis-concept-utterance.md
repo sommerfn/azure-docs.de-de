@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 3c3c54faa882a38fb6c55c9fc0476a569f25cb98
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638333"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486631"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App
 
@@ -135,6 +135,20 @@ Nachdem Ihr Modell trainiert sowie veröffentlicht ist und [Endpunktabfragen](lu
 ## <a name="best-practices"></a>Bewährte Methoden
 
 Machen Sie sich mit den [bewährten Methoden](luis-concept-best-practices.md) vertraut, und integrieren Sie sie in Ihren Erstellungszyklus.
+
+## <a name="label-for-word-meaning"></a>Bezeichnungen für Wortbedeutungen
+
+Wenn die Wortauswahl oder die Anordnung der Wörter identisch ist, sie aber nicht dieselbe Bedeutung haben, sollten Sie sie nicht mit der Entität bezeichnen. 
+
+In den folgenden Äußerungen ist das Wort `fair` ein Homograph. Die Schreibweise ist identisch, aber die Bedeutung ist eine andere:
+
+|Äußerung|
+|--|
+|Welche Arten von Jahrmärkten finden in diesem Sommer in der Region Seattle statt?|
+|Ist die aktuelle Bewertung für die Seattle-Rezension fair?|
+
+Wenn Sie mit einer Veranstaltungsentität alle Veranstaltungsdaten suchen möchten, bezeichnen Sie das Wort `fair` in der ersten Äußerung, aber nicht in der zweiten.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Trainieren einer LUIS-App, damit sie Benutzeräußerungen versteht, finden Sie unter [Hinzufügen von Beispieläußerungen und -beschriftungen bei Entitäten](luis-how-to-add-example-utterances.md).

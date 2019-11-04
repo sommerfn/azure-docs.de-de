@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bebfad57da41d257749acd3842a75ace114ed643
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516799"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492807"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Schritte zum Migrieren zur Azure-Erstellungsressource
 
 Migrieren Sie alle Apps, deren Besitzer Sie sind, über das LUIS-Portal (Language Understanding), damit in ihnen die Azure-Erstellungsressource verwendet wird.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d94f6297f27eb3ea130b443ccf94052d391eb46d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985340"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521007"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Initiieren eines Speicherkontofailovers (Vorschau)
 
@@ -44,7 +44,7 @@ Nach dem Failover wird der Speicherkontotyp automatisch in einen lokal redundant
 
 Nachdem Sie wieder GRS für Ihr Speicherkonto aktiviert haben, beginnt Microsoft, die Daten in Ihrem Konto in die neue sekundäre Region zu replizieren. Die Dauer der Replikation hängt von der Menge der zu replizierenden Daten ab.  
 
-## <a name="azure-portal"></a>Azure-Portal
+## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie die folgenden Schritte aus, um ein Kontofailover im Azure-Portal zu initiieren:
 
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um ein Kontofailover im Azure-Portal zu 
 
     ![Screenshot: Bestätigungsdialogfeld für ein Kontofailover](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Zur Verwendung von PowerShell zum Initiieren eines Kontofailovers müssen Sie zunächst das 6.0.1-Vorschaumodul installieren. Führen Sie dazu folgende Schritte aus:
 
@@ -97,7 +97,7 @@ Führen Sie den folgenden Befehl aus, um ein Kontofailover über PowerShell zu i
 Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Führen Sie die folgenden Befehle aus, um ein Kontofailover über die Azure-Befehlszeilenschnittstelle zu initiieren:
 
@@ -105,6 +105,8 @@ Führen Sie die folgenden Befehle aus, um ein Kontofailover über die Azure-Befe
 az storage account show \ --name accountName \ --expand geoReplicationStats
 az storage account failover \ --name accountName
 ```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

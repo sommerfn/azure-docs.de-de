@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: anroth
-ms.openlocfilehash: dfc137375e35d0d13a34ff45b0c6639bcf6784df
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561064"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "73519157"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Schnellstart: Erstellen einer Klassifizierung mit Custom Vision
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
 
-Für die Verwendung des Custom Vision Service müssen Sie im Azure-Portal Custom Vision-Trainingsressourcen und -Vorhersageressourcen erstellen. Füllen Sie das Dialogfenster auf der Seite [Custom Vision erstellen](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) aus, um sowohl eine Trainings- als auch eine Vorhersageressource zu erstellen. 
+[!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 
@@ -51,7 +51,7 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 
 1. Wählen Sie dann eine der verfügbaren Domänen aus. Jede Domäne optimiert die Klassifizierung für bestimmte Bildtypen, wie in der folgenden Tabelle beschrieben. Sie können die Domäne später bei Bedarf ändern.
 
-    |Domäne|Zweck|
+    |Domain|Zweck|
     |---|---|
     |__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“. |
     |__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“.|

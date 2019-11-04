@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 84f13f7e1d83f1ead00303b694b617d3ba1c8931
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e748e81de39b2bef14b543063adeb51b8b3ecdb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486710"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Erstellen eines Geschäftskontinuitätsplans für Ihren QnA Maker-Dienst
 
@@ -33,7 +33,7 @@ Das oben dargestellte allgemeine Konzept lautet wie folgt:
 
 4. Verwenden Sie [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) nach der Einrichtung der primären und sekundären Stapel, um die zwei Endpunkte zu konfigurieren und eine Routingmethode einzurichten.
 
-5. Sie müssen ein SSL-Zertifikat für Ihren Traffic Manager-Endpunkt erstellen. [Binden Sie das SSL-Zertifikat](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) an Ihre App-Dienste.
+5. Sie müssen ein SSL-Zertifikat für Ihren Traffic Manager-Endpunkt erstellen. [Binden Sie das SSL-Zertifikat](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) an Ihre App-Dienste.
 
 6. Verwenden Sie dann den Traffic Manager-Endpunkt in Ihrem Bot oder in Ihrer App.
 

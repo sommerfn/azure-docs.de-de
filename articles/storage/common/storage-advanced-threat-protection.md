@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: c19b64441d7afbe7544a4401314078b807a8c939
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b9413807cda096adf1056c07e026373ea19359b9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673253"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495969"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
@@ -30,7 +30,7 @@ Bei Advanced Threat Protection für Azure Storage werden Diagnoseprotokolle von 
 
 Advanced Threat Protection ist für Ihr Speicherkonto standardmäßig aktiviert. Sie können Advanced Threat Protection auf verschiedene Arten konfigurieren, die in den folgenden Abschnitten beschrieben werden.
 
-### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Starten Sie das [Azure-Portal](https://portal.azure.com/).
 1. Navigieren Sie zu Ihrem Azure Storage-Konto. Wählen Sie unter **Einstellungen** die Option **Erweiterte Sicherheit** aus.
@@ -40,7 +40,7 @@ Advanced Threat Protection ist für Ihr Speicherkonto standardmäßig aktiviert.
 
     ![Aktivieren von Azure Storage Advanced Threat Protection](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
-### <a name="using-azure-security-center"></a>Verwenden von Azure Security Center
+### <a name="azure-security-centertabazure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
 Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Advanced Threat Protection automatisch in all Ihren Speicherkonten eingerichtet. Sie können Advanced Threat Protection für Ihre Speicherkonten in einem bestimmten Abonnement folgendermaßen aktivieren oder deaktivieren:
 
@@ -56,11 +56,11 @@ Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Advanced T
     ![Aktivieren von ATP in Security Center](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. Klicken Sie auf **Speichern**.
 
-### <a name="using-azure-resource-manager-templates"></a>Verwenden von Azure-Ressourcen-Manager-Vorlagen
+### <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
 
 Verwenden Sie zur Bereitstellung eines Azure Storage-Kontos, bei dem Advanced Threat Protection aktiviert ist, eine Azure Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Storage-Konto mit Advanced Threat Protection](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
 
-### <a name="using-an-azure-policy"></a>Verwenden von Azure Policy
+### <a name="azure-policytabazure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 Verwenden Sie eine Azure Policy-Instanz zum Aktivieren von Advanced Threat Protection für Speicherkonten unter einem bestimmten Abonnement oder einer bestimmten Ressourcengruppe.
 
@@ -78,20 +78,22 @@ Verwenden Sie eine Azure Policy-Instanz zum Aktivieren von Advanced Threat Prote
 
     ![Seite „Richtliniendefinitionen“](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
-### <a name="using-the-rest-api"></a>Verwenden der REST-API
+### <a name="rest-apitabrest-api"></a>[REST-API](#tab/rest-api)
 
 Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung für ein bestimmtes Speicherkonto zu erstellen, zu aktualisieren oder abzurufen.
 
 * [Advanced Threat Protection – Create (Erstellen)](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/create)
 * [Advanced Threat Protection – Get (Abrufen)](https://docs.microsoft.com/rest/api/securitycenter/advancedthreatprotection/get)
 
-### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
+### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwenden Sie die folgenden PowerShell-Cmdlets:
 
 * [Enable Advanced Threat Protection (Advanced Threat Protection aktivieren)](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
 * [Get Advanced Threat Protection (Advanced Threat Protection abrufen)](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
 * [Disable Advanced Threat Protection (Advanced Threat Protection deaktivieren)](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+
+---
 
 ## <a name="explore-security-anomalies"></a>Untersuchen von sicherheitsrelevanten Anomalien
 

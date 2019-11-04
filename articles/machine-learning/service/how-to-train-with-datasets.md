@@ -1,6 +1,6 @@
 ---
 title: Trainieren mit „azureml-datasets“
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Datasets beim Training einsetzen.
 services: machine-learning
 ms.service: machine-learning
@@ -11,14 +11,15 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 9ccc5f5721d1ddc8459918913a4f3ce707766dea
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 12c08a95cd43f9f988c98711141b1b1f879e8b3a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316691"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489387"
 ---
 # <a name="train-with-datasets-preview-in-azure-machine-learning"></a>Trainieren mit Datasets (Vorschauversion) in Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel lernen Sie die beiden Möglichkeiten kennen, wie Sie [Azure Machine Learning-Datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) in Trainingsläufen von Remoteexperimenten nutzen können, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssen.
 
@@ -32,9 +33,9 @@ Azure Machine Learning-Datasets bieten eine nahtlose Integration in Azure Machin
 
 Sie benötigen Folgendes, um Datasets zu erstellen und für das Training zu nutzen:
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-* Ein [Azure Machine Learning Service-Arbeitsbereich](how-to-manage-workspace.md).
+* Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
 * Eine [Installation des Azure Machine Learning-SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), in dem das Paket „azureml-datasets“ enthalten ist.
 

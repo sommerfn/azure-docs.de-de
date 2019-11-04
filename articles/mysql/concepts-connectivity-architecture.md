@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 7a7ac843960e253b3172d1ed22fe5b59633897dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 664d3d4333f8c34a8c5dc6648da2beccc4d7a6a2
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67062469"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498440"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Verbindungsarchitektur in Azure Database for MySQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for MySQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for MySQL-Instanz weitergeleitet wird.
@@ -54,6 +54,9 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | Nordeuropa | 191.235.193.75 | 40.113.93.91 |
 | USA Süd Mitte | 23.98.162.75 | 13.66.62.124 |
 | Südostasien | 23.100.117.95 | 104.43.15.0 |
+| Südafrika, Norden | 102.133.152.0 | |
+| Südafrika, Westen | 102.133.24.0 | |
+| Vereinigte Arabische Emirate, Norden | 65.52.248.0 | |
 | UK, Süden | 51.140.184.11 | |
 | UK, Westen | 51.141.8.11| |
 | Europa, Westen | 191.237.232.75 | 40.68.37.158 |

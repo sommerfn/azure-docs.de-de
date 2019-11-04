@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 57a7deee3112737dc457646d040d5d3e02e63d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 43ad6558b685d3959562be720f7494b3d2a7334e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499423"
 ---
 # <a name="tutorial-extract-free-form-data-with-patternany-entity"></a>Tutorial: Extrahieren von Freiformdaten mit der Entität „pattern.any“
 
 In diesem Tutorial verwenden Sie die Entität „pattern.any“, um Daten aus Äußerungen zu extrahieren, in denen die Äußerungen wohlgeformt sind und das Ende der Daten leicht mit den verbleibenden Wörtern der Äußerung zu verwechseln ist. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 

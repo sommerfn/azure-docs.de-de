@@ -11,18 +11,20 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: diberry
-ms.openlocfilehash: cf0ef1095946b1c8e9479b3cd47fe403baeed7d1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 0a59d9783eac122f96b1671f2dba5d0d708e1d83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757120"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499394"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Tutorial: Identifizieren häufiger Absichten und Entitäten
 
 Fügen Sie in diesem Tutorial der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. Sie müssen Äußerungen nicht mit vordefinierten Entitäten markieren, da die Entität automatisch erkannt wird.
 
 Vordefinierte Modelle (Domänen, Absichten und Entitäten) unterstützen Sie bei der schnellen Erstellung Ihres Modells.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 

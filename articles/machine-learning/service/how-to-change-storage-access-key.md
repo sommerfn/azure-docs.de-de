@@ -10,14 +10,15 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: 77cafceee35f00a81b2e07b59f0f4a13146fd906
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7f6744590a81d2fb29854b103f4ad63bea2d8aca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063317"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497296"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Erfahren Sie, wie Sie die Zugriffsschlüssel für Azure Storage-Konten ändern, die von Azure Machine Learning verwendet werden. Azure Machine Learning kann Speicherkonten verwenden, um Daten oder trainierte Modelle zu speichern.
 

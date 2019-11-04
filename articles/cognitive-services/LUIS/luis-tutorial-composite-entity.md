@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f20661a74397487e141e69681f207418db8ac386
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: adb8941fd60a955a44a04717958c5203b721639a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70388044"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498992"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
@@ -28,6 +28,8 @@ Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da f�
 * Sind aufeinander bezogen. 
 * Verwenden eine Vielzahl von Entitätstypen.
 * Müssen gruppiert und von einer Client-App als eine Informationseinheit verarbeitet werden.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 

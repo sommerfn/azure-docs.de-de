@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cfaa2598d53fa57b4a628a7ad1b847a9b078bf2b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6b59995dc09c0ecf1e5700d8337bd30074083f76
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598158"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483910"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -73,7 +73,7 @@ Darüber hinaus können Azure Key Vault-Instanzen auch zur Isolierung von Anwend
 Als sicherer Speicher in Azure wurde Key Vault u. a. zur Vereinfachung folgender Szenarien verwendet:
 -  [Azure-Datenträgerverschlüsselung](../security/fundamentals/encryption-overview.md)
 -  Funktion [Immer verschlüsselt]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) in SQL-Server und Azure SQL-Datenbank
-- [Azure App Service]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site) 
+- [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate) 
 
 Key Vault selbst kann in Speicherkonten, Event Hubs und Protokollanalysen integriert werden.
 

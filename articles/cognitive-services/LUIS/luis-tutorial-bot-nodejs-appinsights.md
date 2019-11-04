@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: f488cfaf1e55edd8ae0d2bfd177553deb2677f8b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b0bc4a93df7db7145accf2b485c45256f53c324d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387904"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498951"
 ---
 # <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Tutorial: Hinzufügen von LUIS-Ergebnissen zu Application Insights von einem Bot in Node.js
 In diesem Tutorial werden [Application Insights](https://azure.microsoft.com/services/application-insights/)-Telemetriedatenspeichern Informationen aus Bots und Language Understanding (LUIS) hinzugefügt. Sobald Sie über diese Daten verfügen, können Sie mit der Sprache Kusto oder mit Power BI Absichten und Entitäten der Äußerung in Echtzeit analysieren, aggregieren und Berichte dafür erstellen. Diese Analyse hilft Ihnen dabei, zu ermitteln, ob Sie die Absichten und Entitäten aus Ihrer LUIS-App hinzufügen oder bearbeiten sollten.
+
+[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
 In diesem Tutorial lernen Sie Folgendes:
 

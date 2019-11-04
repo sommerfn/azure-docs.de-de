@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8b6a342dd32d430f7a40a1e0a0a17a482a0816d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035859"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469052"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -92,7 +92,7 @@ Die eingehende IP-Adresse **kann** geändert werden, wenn Sie:
 
 - eine Funktionen App löschen und in einer anderen Ressourcengruppe neu erstellen.
 - die letzte Funktionen-App in einer Kombination aus Ressourcengruppe und Region löschen und neu erstellen.
-- eine SSL-Bindung löschen, z.B. während der [Zertifikaterneuerung](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)).
+- eine SSL-Bindung löschen, z.B. während der [Zertifikaterneuerung](../app-service/configure-ssl-certificate.md#renew-certificate)).
 
 Wenn Ihre Funktions-App in einem [Verbrauchstarif](functions-scale.md#consumption-plan) ausgeführt wird, kann sich die eingehende IP-Adresse auch ändern, wenn Sie noch keine der oben aufgeführten Aktionen ausgeführt haben.
 
