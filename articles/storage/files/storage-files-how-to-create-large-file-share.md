@@ -51,7 +51,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
    |Kontoart     |StorageV2 (universell v2)         |
    |Zugriffsebene     |Heiß         |
 
-1. Wählen Sie erst **Erweitert** und dann für große **** Dateifreigaben die Option **Aktiviert** aus.
+1. Wählen Sie erst **Erweitert** und dann für **große Dateifreigaben** die Option **Aktiviert** aus.
 1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
 
     ![large-file-shares-advanced-enable.png](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
