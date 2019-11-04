@@ -129,10 +129,16 @@
           href: ../aks/tutorial-kubernetes-prepare-app.md
         - name: Service Fabric
           href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: Überwachen
+      items:
+        - name: Diagnose- und Überwachungsprotokolle (Vorschau)
+          href: container-registry-diagnostics-audit-logs.md
     - name: Problembehandlung
       items:
-        - name: Diagnostizieren allgemeiner Probleme
+        - name: Erkennen allgemeiner Probleme
           href: container-registry-check-health.md
+        - name: Häufig gestellte Fragen
+          href: container-registry-faq.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -176,5 +182,3 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
     - name: Videos
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'
-    - name: Häufig gestellte Fragen
-      href: container-registry-faq.md

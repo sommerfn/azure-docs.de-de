@@ -31,6 +31,8 @@
       href: location-condition.md
     - name: Kontrollen
       href: controls.md
+    - name: Modus „Nur Bericht“
+      href: concept-conditional-access-report-only.md
     - name: Dienstabhängigkeiten
       href: service-dependencies.md
     - name: Was-wäre-wenn-Tool
@@ -76,6 +78,8 @@
       href: untrusted-networks.md
     - name: Vorschreiben der Verwendung von Nutzungsbedingungen
       href: terms-of-use.md
+    - name: Konfigurieren des Modus „Nur Bericht“
+      href: howto-conditional-access-report-only.md
     - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
       href: howto-conditional-access-session-lifetime.md
     - name: Migrieren von klassischen Richtlinien

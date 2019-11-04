@@ -1,17 +1,17 @@
 ---
 title: 'Blaupausenbeispiel „Canada Federal PBMM“: Übersicht'
-description: Übersicht über das Blaupausenbeispiel „Canada Federal PBMM“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Canada Federal PBMM-Steuerungen.
+description: Übersicht über das Blaupausenbeispiel „Canada Federal PBMM“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Canada Federal PBMM-Kontrollen.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: e4f4e289b8d8648c583d9803b02b9533e52367e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 32573e4a2a046af069a6b51edd0636beabb9d9f6
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163896"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200441"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „Canada Federal PBMM“
 

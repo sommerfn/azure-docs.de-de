@@ -32,7 +32,7 @@
     - name: '8: Hinzufügen mehrerer Versionen'
       href: api-management-get-started-publish-versions.md
     - name: '9: Anpassen des Entwicklerportals'
-      href: api-management-customize-styles.md
+      href: api-management-howto-developer-portal-customize.md
 - name: Beispiele
   items:
     - name: Richtlinien
@@ -123,15 +123,11 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Anpassen der Entwickleroberfläche
       items:
-        - name: Zugreifen auf das neue Entwicklerportal und Anpassen dieses Portals
+        - name: Grundlegendes zum Entwicklerportal
           href: api-management-howto-developer-portal.md
-        - name: Ändern von Seiteninhalt und Layout
-          href: api-management-modify-content-layout.md
-        - name: Anpassen der Systemseiten mithilfe von Vorlagen
-          href: api-management-developer-portal-templates.md
-        - name: Authentifizierung mit Azure AD
+        - name: Authentifizierung über Azure AD
           href: api-management-howto-aad.md
-        - name: Authentifizierung mit Azure AD B2C
+        - name: Authentifizierung über Azure AD B2C
           href: api-management-howto-aad-b2c.md
         - name: Delegierte Authentifizierung
           href: api-management-howto-setup-delegation.md
@@ -139,6 +135,34 @@
           href: api-management-howto-configure-notifications.md
         - name: Aktivieren der OAuth-Konsolenunterstützung
           href: api-management-howto-oauth2.md
+        - name: 'Legacyportal: Anpassen des Portals'
+          href: api-management-customize-styles.md
+        - name: 'Legacyportal: Ändern von Seiten und Layouts'
+          href: api-management-modify-content-layout.md
+        - name: 'Legacyportal: Anpassen mit Vorlagen'
+          href: api-management-developer-portal-templates.md
+    - name: 'Legacyportal: Vorlagen'
+      items:
+        - name: Datenmodellreferenz
+          href: api-management-template-data-model-reference.md
+        - name: Seitensteuerelemente
+          href: api-management-page-controls.md
+        - name: Vorlagen
+          href: api-management-developer-portal-templates-reference.md
+        - name: APIs
+          href: api-management-api-templates.md
+        - name: Produkte
+          href: api-management-product-templates.md
+        - name: ANWENDUNGEN
+          href: api-management-application-templates.md
+        - name: Probleme
+          href: api-management-issue-templates.md
+        - name: Benutzerprofil
+          href: api-management-user-profile-templates.md
+        - name: Seiten
+          href: api-management-page-templates.md
+        - name: Vorlagenressourcen
+          href: api-management-template-resources.md
     - name: Definieren von Richtlinien
       items:
         - name: Festlegen oder Bearbeiten von Richtlinien
@@ -167,28 +191,6 @@
           href: api-management-cross-domain-policies.md
         - name: Transformationsrichtlinien
           href: api-management-transformation-policies.md
-    - name: Vorlagenreferenz
-      items:
-        - name: Vorlagen
-          href: api-management-developer-portal-templates-reference.md
-        - name: APIs
-          href: api-management-api-templates.md
-        - name: Produkte
-          href: api-management-product-templates.md
-        - name: ANWENDUNGEN
-          href: api-management-application-templates.md
-        - name: Probleme
-          href: api-management-issue-templates.md
-        - name: Benutzerprofil
-          href: api-management-user-profile-templates.md
-        - name: Seiten
-          href: api-management-page-templates.md
-        - name: Vorlagenressourcen
-          href: api-management-template-resources.md
-    - name: Datenmodellreferenz
-      href: api-management-template-data-model-reference.md
-    - name: Seitensteuerelemente
-      href: api-management-page-controls.md
     - name: Verwalten in Produktion
       items:
         - name: Verwalten von Gruppen

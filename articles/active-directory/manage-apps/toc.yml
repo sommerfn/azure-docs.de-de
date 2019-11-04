@@ -131,10 +131,14 @@
           items:
             - name: Konfigurieren der Benutzereinwilligung
               href: configure-user-consent.md
+            - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
+              href: configure-admin-consent-workflow.md
             - name: Methoden zum Zuweisen von Benutzern und Gruppen zu einer App
               href: methods-for-assigning-users-and-groups.md
             - name: Zuweisen eines Benutzers zu einer App
               href: assign-user-or-group-access-portal.md
+            - name: Erstellen von Arbeitsbereichen unter „Meine Apps“ (Vorschau)
+              href: access-panel-workspaces.md
             - name: Verwenden des Self-Service-App-Zugriffs
               href: access-panel-manage-self-service-access.md
             - name: Methoden zum Entfernen des Benutzerzugriffs auf eine App
@@ -155,6 +159,8 @@
               href: migration-resources.md
             - name: Migrieren einer ADFS-App zu Azure
               href: migrate-adfs-apps-to-azure.md
+            - name: "Verwenden des AD\_FS-Anwendungsaktivitätsberichts (Vorschau)"
+              href: migrate-adfs-application-activity.md
         - name: Problembehandlung
           items:
             - name: Behandeln von Problemen beim Hinzufügen von Apps
