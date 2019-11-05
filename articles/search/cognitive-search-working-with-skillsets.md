@@ -37,7 +37,7 @@ Qualifikationsgruppen werden in JSON erstellt. Mithilfe der [Ausdruckssprache](h
 ### <a name="enrichment-tree"></a>Anreicherungsstruktur
 
 Um zu sehen, wie eine Qualifikationsgruppe Ihr Dokument zunehmend anreichert, beginnen wir damit, wie das Dokument vor den Anreicherungen aussieht. Die Ausgabe der Dokumententschlüsselung ist abhängig von der Datenquelle und dem ausgewählten spezifischen Analysemodus. Dies ist auch der Zustand des Dokuments, aus dem die [Feldzuordnungen](search-indexer-field-mappings.md) beim Hinzufügen von Daten zum Suchindex Inhalte abrufen können.
-![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "KWissensspeicher im Pipelinediagramm“)
+![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "KWissensspeicher im Pipelinediagramm")
 
 Sobald sich ein Dokument in der Anreicherungspipeline befindet, wird es als Inhaltsstruktur mit zugeordneten Anreicherungen dargestellt. Diese Struktur wird als Ausgabe der Dokumententschlüsselung instanziiert. Das Anreicherungsstruktur-Format ermöglicht der Anreicherungspipeline das Anfügen von Metadaten auch an primitive Datentypen. Es handelt sich nicht um ein gültiges JSON-Objekt, kann jedoch in ein gültiges JSON-Format projiziert werden. In der folgenden Tabelle wird der Zustand eines Dokuments gezeigt, das in die Anreicherungspipeline wechselt:
 
@@ -100,7 +100,7 @@ Der Stammknoten für alle Anreicherungen ist `"/document"`. Wenn Sie Blob-Indexe
 
 ### <a name="skill-2-language-detection"></a>Qualifikation 2: Sprachenerkennung
  Die Qualifikation „Spracherkennung“ ist zwar die dritte in der Qualifikationsgruppe definierte Qualifikation (Qualifikation 3), sie wird aber als nächste Qualifikation ausgeführt. Da keine Eingaben erforderlich sind, wird sie nicht blockiert und parallel mit der vorherigen Qualifikation ausgeführt. Genau wie die Qualifikation „Aufteilung“ wird die Qualifikation „Spracherkennung“ auch einmal für jedes Dokument aufgerufen. Die Anreicherungsstruktur verfügt jetzt über einen neuen Knoten für die Sprache.
- ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "EnAnreicherungsstruktur nach Ausführung von Qualifikation 2“
+ ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "EnAnreicherungsstruktur nach Ausführung von Qualifikation 2"
  
  ### <a name="skill-3-key-phrases-skill"></a>Qualifikation 3: Qualifikation „Schlüsselbegriffe“ 
 
