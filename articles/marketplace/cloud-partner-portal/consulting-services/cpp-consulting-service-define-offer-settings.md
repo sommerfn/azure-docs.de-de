@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 601ad62bddd1373742b0cab5a388a55cfd52f4bc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a89c1c548469b568a34521b240683af285c2342
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942788"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485191"
 ---
 # <a name="offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“
 
@@ -59,7 +59,7 @@ In der folgenden Liste sind einige ordnungsgemäß benannte Angebote aufgeführt
 -   Das Wichtigste für professionelle Dienstleistungen: 1-Std. Einweisung
 -   Plattform für Cloudmigration: 1-Std. Einweisung
 -   PowerApps und Microsoft Flow: 1-Tag Workshop
--   Azure Machine Learning Services: 3-Wo PoC
+-   Azure Machine Learning: 3-Wo PoC
 -   Einzelhandelslösung für Ladengeschäft und Onlineshop: Einstündige Einweisung
 -   Aufbereitung Ihrer Daten: 1-Wo Workshop
 -   Cloud-Analysen: 3-Tag Workshop

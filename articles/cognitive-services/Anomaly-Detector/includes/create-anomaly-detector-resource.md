@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: b40f1833f08074cb0a8d45fe3afc6bac7cbac7f0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717087"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522917"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Erstellen einer Anomalieerkennungsressource
 
@@ -24,7 +24,7 @@ ms.locfileid: "67717087"
     |Einstellung|Wert|
     |--|--|
     |NAME|Gewünschter Name (2 bis 64 Zeichen)|
-    |Abonnement|Wählen Sie ein passendes Abonnement aus|
+    |Subscription|Wählen Sie ein passendes Abonnement aus|
     |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
     |Preisstufe|`F0` – der Mindesttarif|
     |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|

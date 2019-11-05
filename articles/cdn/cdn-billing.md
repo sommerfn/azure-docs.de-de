@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996806"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495478"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
 
@@ -113,7 +113,7 @@ Wenn Sie einen der folgenden Azure-Dienste als CDN-Ursprung verwenden, wird Ihne
 - HDInsight
 - Azure Cosmos DB
 - Azure Data Lake Store
-- Azure Machine Learning-Dienst 
+- Azure Machine Learning 
 - Azure SQL-Datenbank
 - Azure Cache for Redis
 

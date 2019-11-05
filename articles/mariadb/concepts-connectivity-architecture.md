@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d49e4dff1664d6630c966583a722f8e136061de5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5c24a89ca12c36a54a84c61c6343ce960da012c5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595254"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498064"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Verbindungsarchitektur in Azure Database for MariaDB
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for MariaDB beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for MariaDB-Instanz weitergeleitet wird.
@@ -56,6 +56,9 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | Nordeuropa | 191.235.193.75 | 40.113.93.91 |
 | USA Süd Mitte | 23.98.162.75 | 13.66.62.124 |
 | Südostasien | 23.100.117.95 | 104.43.15.0 |
+| Südafrika, Norden | 102.133.152.0 | |
+| Südafrika, Westen | 102.133.24.0 | |
+| Vereinigte Arabische Emirate, Norden | 65.52.248.0 | |
 | UK, Süden | 51.140.184.11 | |
 | UK, Westen | 51.141.8.11| |
 | Europa, Westen | 191.237.232.75 | 40.68.37.158 |
