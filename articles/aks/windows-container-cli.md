@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: ff4367194f06a8a6895c9c16252b01c3b94995d3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241259"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472496"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vorschauversion – Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 
@@ -79,7 +79,6 @@ az provider register --namespace Microsoft.ContainerService
 
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die mehrere Knotenpools unterstützen:
 
-* Für Cluster, die erstellt wurden, nachdem Sie die *WindowsPreview* erfolgreich registriert haben, stehen mehrere Knotenpools zur Verfügung. Mehrere Knotenpools sind auch verfügbar, wenn Sie das Feature *MultiAgentpoolPreview* für Ihr Abonnement registrieren. Sie können keine Knotenpools mit einem bestehenden AKS-Cluster hinzufügen oder verwalten, die vor der erfolgreichen Registrierung dieses Features erstellt wurden.
 * Sie können den ersten Knotenpool nicht löschen.
 
 Während sich diese Funktion in der Vorschau befindet, gelten die folgenden zusätzlichen Einschränkungen:
@@ -141,7 +140,8 @@ az aks create \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
+    --load-balancer-sku standard \
     --network-plugin azure
 ```
 

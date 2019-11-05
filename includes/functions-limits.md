@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: d00af77a2d502cb534a4ab4a0db9231e5e8748b7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ad87964216db72cfef447a18d4cd05b8a976491b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69636451"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476931"
 ---
 | Resource | [Verbrauchstarif](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service-Plan](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
@@ -27,7 +27,7 @@ ms.locfileid: "69636451"
 | [App Service-Pläne](../articles/app-service/overview-hosting-plans.md) | 100 pro [Region](https://azure.microsoft.com/global-infrastructure/regions/) |100 pro Ressourcengruppe |100 pro Ressourcengruppe |
 | Speicher<sup>6</sup> |1 GB |250 GB |50–1.000 GB |
 | Benutzerdefinierte Domänen pro App</a> |500<sup>7</sup> |500 |500 |
-| benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Unbegrenzte Anzahl von SNI SSL-Verbindungen inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | 
+| benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-bindings.md) |Unbegrenzte Anzahl von SNI SSL-Verbindungen inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | 
 
 <sup>1</sup> Spezifische Grenzwerte für die verschiedenen Optionen des App Service-Plans finden Sie unter [Grenzwerte für App Service-Pläne](../articles/azure-subscription-service-limits.md#app-service-limits).  
 <sup>2</sup> Das Timeout für die Laufzeit von Functions 1.x in einem App Service-Plan ist standardmäßig unbegrenzt.  

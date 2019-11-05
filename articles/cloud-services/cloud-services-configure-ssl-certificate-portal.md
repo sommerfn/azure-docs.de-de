@@ -8,19 +8,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: gwallace
-ms.openlocfilehash: 9e7b7526f13fa6b9ae648c4ddb4004a627d85154
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359736"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469023"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurieren von SSL für eine Anwendung in Azure
 
 Secure Socket Layer (SSL)-Verschlüsselung ist die am häufigsten verwendete Methode zur Sicherung von Daten im Internet. Im Folgenden erfahren Sie, wie Sie einen HTTPS-Endpunkt für eine Webrolle angeben und ein SSL-Zertifikat zur Sicherung Ihrer Anwendung hochladen können.
 
 > [!NOTE]
-> Die Vorgehensweisen in dieser Aufgabe gelten für Azure Cloud Services. Entsprechende Informationen zu App Services finden Sie [hier](../app-service/app-service-web-tutorial-custom-ssl.md).
+> Die Vorgehensweisen in dieser Aufgabe gelten für Azure Cloud Services. Entsprechende Informationen zu App Services finden Sie [hier](../app-service/configure-ssl-bindings.md).
 >
 
 Diese Aufgabe erfordert die Verwendung einer Produktionsbereitstellung. Informationen zur Verwendung einer Stagingbereitstellung erhalten Sie am Ende dieses Themas.
