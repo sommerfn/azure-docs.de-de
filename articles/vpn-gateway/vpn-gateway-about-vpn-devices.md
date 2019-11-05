@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: 1d80c30e3573d76aabcf854b2d97ea849197577c
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c945fa7e2e8eccb12cc105610adee3d25a5e5316
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173041"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495784"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
 
@@ -128,7 +128,7 @@ Für die folgenden Tabellen gilt:
 
 | **Eigenschaft**          |**PolicyBased**    | **RouteBased**    |
 | ---                   | ---               | ---               |
-| IKE-Version           |IKEv1              |IKEv2              |
+| IKE-Version           |IKEv1              |IKEv1 und IKEv2    |
 | Diffie-Hellman-Gruppe  |Gruppe 2 (1024 Bit) |Gruppe 2 (1024 Bit) |
 | Authentifizierungsmethode |Vorab ausgetauschter Schlüssel     |Vorab ausgetauschter Schlüssel     |
 | Verschlüsselung und Hashalgorithmen |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |1. AES256, SHA1<br>2. AES256, SHA256<br>3. AES128, SHA1<br>4. AES128, SHA256<br>5. 3DES, SHA1<br>6. 3DES, SHA256 |
@@ -138,9 +138,9 @@ Für die folgenden Tabellen gilt:
 
 | **Eigenschaft**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
-| IKE-Version                   |IKEv1          |IKEv2                                        |
+| IKE-Version                   |IKEv1          |IKEv1 und IKEv2                              |
 | Verschlüsselung und Hashalgorithmen |1. AES256, SHA256<br>2. AES256, SHA1<br>3. AES128, SHA1<br>4. 3DES, SHA1 |[SA-Angebote für RouteBased QM](#RouteBasedOffers) |
-| SA-Gültigkeitsdauer (Zeit)            |3\.600 Sekunden  |27.000 Sekunden                                |
+| SA-Gültigkeitsdauer (Zeit)            |3\.600 Sekunden  |27.000 Sekunden                               |
 | SA-Gültigkeitsdauer (Bytes)           |102.400.000 KB | -                                           |
 | Perfect Forward Secrecy (PFS) |Nein             |[SA-Angebote für RouteBased QM](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |Nicht unterstützt  |Unterstützt                                    |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 964bc915347d11e087da0b34a8d4160d807a4158
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f89218b066b0a22559c00c4a53316f0df9c0bb8f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965414"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488439"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 
@@ -48,7 +48,7 @@ Sie können die folgenden Ressourcen einer statischen öffentlichen IP-Adresse a
 
 |Resource|Szenario|Schritte|
 |---|---|---|
-|Virtual Machines| Die Zuweisung öffentlicher IPs zu Ihren virtuellen Computern in Azure aus einem Präfix reduziert den Verwaltungsaufwand für das Führen von Whitelists für IPs in einer Firewall. Sie können ganz einfach ein ganzes Präfix mit einer einzigen Firewallregel in die Whitelist aufnehmen. Wenn Sie Ihre virtuellen Computer in Azure skalieren, können Sie IP-Adressen aus dem gleichen Präfix zuweisen und so viel Zeit, Geld und Verwaltungsaufwand sparen.| So weisen Sie Ihrem virtuellen Computer IP-Adressen aus einem Präfix zu 1. [Erstellen Sie ein Präfix](manage-public-ip-address-prefix.md). 2. [Erstellen Sie eine IP-Adresse aus dem Präfix](manage-public-ip-address-prefix.md). 3. [Weisen Sie die IP-Adresse der Netzwerkschnittstelle Ihres virtuellen Computers zu](virtual-network-network-interface-addresses.md#add-ip-addresses).
+|Virtual Machines| Die Zuweisung öffentlicher IPs zu Ihren virtuellen Computern in Azure aus einem Präfix reduziert den Verwaltungsaufwand für das Führen von Whitelists für IPs in einer Firewall. Sie können ganz einfach ein ganzes Präfix mit einer einzigen Firewallregel in die Whitelist aufnehmen. Wenn Sie Ihre virtuellen Computer in Azure skalieren, können Sie IP-Adressen aus dem gleichen Präfix zuweisen und so viel Zeit, Geld und Verwaltungsaufwand sparen.| So weisen Sie Ihrem virtuellen Computer IP-Adressen aus einem Präfix zu 1. [Erstellen Sie ein Präfix](manage-public-ip-address-prefix.md). 2. [Erstellen Sie eine IP-Adresse aus dem Präfix](manage-public-ip-address-prefix.md). 3. [Weisen Sie die IP-Adresse der Netzwerkschnittstelle Ihres virtuellen Computers zu](virtual-network-network-interface-addresses.md#add-ip-addresses). Sie können [die IPs auch einem Virtual Machine Scale Set zuordnen](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 | Load Balancer Standard-Instanzen | Die Zuweisung öffentlicher IP-Adressen aus einem Präfix zu Ihrer Front-End-IP-Konfiguration oder der Ausgangsregel eines Lastenausgleichsmoduls vereinfacht die Verwaltung Ihres öffentlichen IP-Adressraums für Azure. Sie können das Szenario vereinfachen, indem Sie für ausgehende Verbindungen IP-Adressen aus einem Bereich zusammenhängender IP-Adressen verwenden, die durch ein öffentliches IP-Präfix definiert werden. | So weisen Sie Ihrem Lastenausgleichsmodul IP-Adressen aus einem Präfix zu 1. [Erstellen Sie ein Präfix](manage-public-ip-address-prefix.md). 2. [Erstellen Sie eine IP-Adresse aus dem Präfix](manage-public-ip-address-prefix.md). 3. Wenn Sie das Lastenausgleichsmodul erstellen, wählen Sie die in Schritt 2 erstellte IP-Adresse als Front-End-IP-Adresse Ihres Lastenausgleichsmoduls aus, oder aktualisieren Sie die Adresse. |
 | Azure Firewall | Sie können eine öffentliche IP-Adresse aus einem Präfix für ausgehende SNAT-Vorgänge verwenden. Das bedeutet, dass der gesamte ausgehende VNET-Datenverkehr in die öffentliche IP-Adresse von [Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) übersetzt wird. Da diese IP-Adresse aus einem vordefinierten Präfix stammt, wissen Sie bereits vorab, wie die öffentlichen IP-Adressen in Azure aussehen werden. | 1. [Erstellen Sie ein Präfix](manage-public-ip-address-prefix.md). 2. [Erstellen Sie eine IP-Adresse aus dem Präfix](manage-public-ip-address-prefix.md). 3. Wenn Sie [die Azure Firewall bereitstellen](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), stellen Sie sicher, dass Sie die IP-Adresse auswählen, die Sie zuvor aus dem Präfix zugeordnet haben.|
 | Application Gateway v2 | Sie können eine öffentliche IP-Adresse aus einem Präfix für Ihr zonenredundante Application Gateway v2-Instanz mit automatischer Skalierung verwenden. Da diese IP-Adresse aus einem vordefinierten Präfix stammt, wissen Sie bereits vorab, wie die öffentlichen IP-Adressen in Azure aussehen werden. | 1. [Erstellen Sie ein Präfix](manage-public-ip-address-prefix.md). 2. [Erstellen Sie eine IP-Adresse aus dem Präfix](manage-public-ip-address-prefix.md). 3. Wählen Sie beim [Erstellen der Application Gateway-Instanz](../application-gateway/quick-create-portal.md#create-an-application-gateway) die IP-Adresse aus, die Sie zuvor aus dem Präfix zugeordnet haben.|
