@@ -92,6 +92,8 @@
               href: concepts-data-access-and-security-vnet.md
             - name: Verbindungsarchitektur
               href: concepts-connectivity-architecture.md
+            - name: Azure AD-Authentifizierung
+              href: concepts-aad-authentication.md
         - name: Geschäftskontinuität
           items:
             - name: Einführung in Geschäftskontinuität
@@ -153,8 +155,14 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: Konfigurieren von SSL
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Überwachen und Optimieren
+          items:
+            - name: Überwachen und Optimieren
+              href: concepts-hyperscale-monitoring.md
         - name: PostgreSQL-Erweiterungen
           href: concepts-hyperscale-extensions.md
+        - name: Hochverfügbarkeit
+          href: concepts-hyperscale-high-availability.md
         - name: Ressourcen
           items:
             - name: Konfigurationsoptionen
@@ -163,8 +171,12 @@
   items:
     - name: Einzelserver
       items:
-        - name: Erstellen von Benutzern
-          href: howto-create-users.md
+        - name: Authentication
+          items:
+            - name: Erstellen von Benutzern
+              href: howto-create-users.md
+            - name: "Konfigurieren der Azure\_AD-Integration"
+              href: howto-configure-sign-in-aad-authentication.md
         - name: Optimierung
           items:
             - name: Masseneinfügungen
@@ -245,12 +257,20 @@
               href: howto-read-replicas-cli.md
     - name: Hyperscale (Citus)
       items:
+        - name: Erstellen von Benutzern
+          href: howto-hyperscale-create-users.md
         - name: Skalieren
           href: howto-hyperscale-scaling.md
         - name: Verwalten der Firewall
           items:
             - name: Azure-Portal
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: Hochverfügbarkeit
+          href: howto-hyperscale-high-availability.md
+        - name: Überwachen
+          items:
+            - name: Erstellen von Warnungen zu Metriken
+              href: howto-hyperscale-alert-on-metric.md
         - name: Problembehandlung
           items:
             - name: Beheben von Verbindungsproblemen

@@ -76,12 +76,26 @@
               href: connect-fortinet.md
             - name: Herstellen einer Verbindung mit F5
               href: connect-f5.md
+            - name: "Herstellen einer Verbindung mit F5\_BIG-IP"
+              href: connect-f5-big-ip.md
             - name: Herstellen einer Verbindung mit Syslog
               href: connect-syslog.md
             - name: Herstellen einer Verbindung mit Symantec ICDX
               href: connect-symantec.md
             - name: Herstellen einer Verbindung mit Cisco
               href: connect-cisco.md
+            - name: Herstellen einer Verbindung mit Barracuda CloudGen Firewall
+              href: connect-barracuda-cloudgen-firewall.md
+            - name: Herstellen einer Verbindung mit Citrix Analytics (Security)
+              href: connect-citrix-analytics.md
+            - name: Herstellen einer Verbindung mit ExtraHop Reveal(x)
+              href: connect-extrahop.md
+            - name: One Identity Safeguard
+              href: connect-one-identity.md
+            - name: Trend Micro Deep Security
+              href: connect-trend-micro.md
+            - name: Herstellen einer Verbindung mit Zscaler
+              href: connect-zscaler.md
         - name: Herstellen einer Verbindung mit Threat Intelligence
           href: connect-threat-intelligence.md
         - name: Herstellen einer Verbindung mit virtuellen Azure Stack-Computern
@@ -97,6 +111,8 @@
           href: notebooks.md
         - name: Suchen mithilfe von Textmarken
           href: bookmarks.md
+        - name: Suchen mithilfe eines Livestreams
+          href: livestream.md
     - name: Entfernen von Azure Sentinel
       href: offboard.md
 - name: Ressourcen

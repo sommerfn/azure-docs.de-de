@@ -80,8 +80,12 @@
           items:
             - name: Tool zum Kopieren von Daten
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Transformieren von Daten per Zuordnungsdatenfluss
-      href: tutorial-data-flow.md
+    - name: Transformieren und Vorbereiten von Daten mit Datenflüssen
+      items:
+        - name: Transformieren von Daten mit einem Zuordnungsdatenfluss
+          href: tutorial-data-flow.md
+        - name: Vorbereiten von Daten mit einem Wrangling-Datenfluss
+          href: wrangling-data-flow-tutorial.md
     - name: Externe Transformationen
       items:
         - name: HDInsight Spark
@@ -143,28 +147,36 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integrationslaufzeit
       href: concepts-integration-runtime.md
-    - name: Zuordnen von Datenflüssen
+    - name: Datenflüsse
       items:
-        - name: Übersicht über die Zuordnung von Datenflüssen
-          href: concepts-data-flow-overview.md
-        - name: Debugmodus
-          href: concepts-data-flow-debug-mode.md
-        - name: JSON-Behandlung
-          href: concepts-data-flow-json.md
-        - name: Schemaabweichung
-          href: concepts-data-flow-schema-drift.md
-        - name: Spaltenmuster
-          href: concepts-data-flow-column-pattern.md
-        - name: Datenflussüberwachung
-          href: concepts-data-flow-monitoring.md
-        - name: Datenflussleistung
-          href: concepts-data-flow-performance.md
-        - name: Verschieben von Knoten
-          href: concepts-data-flow-move-nodes.md
-        - name: Ausdrucks-Generator
-          href: concepts-data-flow-expression-builder.md
-        - name: Ausdruckssprache
-          href: data-flow-expression-functions.md
+        - name: Transformieren von Daten mit Zuordnungsdatenflüssen
+          items:
+            - name: Übersicht über die Zuordnung von Datenflüssen
+              href: concepts-data-flow-overview.md
+            - name: Debugmodus
+              href: concepts-data-flow-debug-mode.md
+            - name: JSON-Behandlung
+              href: concepts-data-flow-json.md
+            - name: Schemaabweichung
+              href: concepts-data-flow-schema-drift.md
+            - name: Spaltenmuster
+              href: concepts-data-flow-column-pattern.md
+            - name: Datenflussüberwachung
+              href: concepts-data-flow-monitoring.md
+            - name: Datenflussleistung
+              href: concepts-data-flow-performance.md
+            - name: Verschieben von Knoten
+              href: concepts-data-flow-move-nodes.md
+            - name: Ausdrucks-Generator
+              href: concepts-data-flow-expression-builder.md
+            - name: Ausdruckssprache
+              href: data-flow-expression-functions.md
+        - name: Vorbereiten von Daten mit Wrangling-Datenflüssen
+          items:
+            - name: Übersicht über Wrangling-Datenflüsse
+              href: wrangling-data-flow-overview.md
+            - name: Unterstützte Funktionen
+              href: wrangling-data-flow-functions.md
     - name: Rollen und Berechtigungen
       href: concepts-roles-permissions.md
     - name: Grundlegendes zu Preisen

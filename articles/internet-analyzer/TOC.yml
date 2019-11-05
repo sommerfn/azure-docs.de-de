@@ -1,0 +1,34 @@
+- name: Dokumentation für Internet Analyzer
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Internet Analyzer
+      href: internet-analyzer-overview.md
+- name: Tutorial
+  items:
+    - name: "Erstellen eines Internet\_Analyzer-Tests über das Portal"
+      href: internet-analyzer-create-test-portal.md
+    - name: "Erstellen eines Internet\_Analyzer-Tests mithilfe der Befehlszeilenschnittstelle"
+      herf: internet-analyzer-cli.md
+- name: Anleitungen
+  items:
+    - name: Einbetten des Clients
+      href: internet-analyzer-embed-client.md
+    - name: Konfigurieren eines benutzerdefinierten Endpunkts
+      href: internet-analyzer-custom-endpoint.md
+    - name: Interpretieren Ihrer Scorecard
+      href: internet-analyzer-scorecard.md
+- name: Ressourcen
+  items:
+    - name: Häufig gestellte Fragen zu Internet Analyzer
+      href: internet-analyzer-faq.md
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Blog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Vorschau-SLA
+      href: 'https://azure.microsoft.com/support/legal/preview-supplemental-terms'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla'

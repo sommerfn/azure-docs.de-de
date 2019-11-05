@@ -253,8 +253,8 @@
           href: functions-monitor-log-analytics.md
     - name: Schützen
       items:
-        - name: Kaufen eines SSL-Zertifikats
-          href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: Hinzufügen eines SSL-Zertifikats
+          href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Authentifizieren von Benutzern
           items:
             - name: Authentifizierung über Azure AD

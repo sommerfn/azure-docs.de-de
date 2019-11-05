@@ -220,6 +220,8 @@
           href: disk-encryption.md
         - name: Entwerfen für hohe Leistung
           href: premium-storage-performance.md
+        - name: Datenträgerbursting
+          href: disk-bursting.md
         - name: Skalierbarkeitsziele für Datenträger
           href: disk-scalability-targets.md
         - name: Sicherung und Notfallwiederherstellung für Datenträger

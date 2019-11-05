@@ -12,7 +12,9 @@
       items:
         - name: Azure-Portal
           href: create-cosmosdb-resources-portal.md
-        - name: .NET-App
+        - name: ".NET-App: V4\_SDK"
+          href: create-sql-api-dotnet-v4.md
+        - name: ".NET-App: V3\_SDK"
           href: create-sql-api-dotnet.md
         - name: Java-App
           href: create-sql-api-java.md
@@ -47,8 +49,11 @@
             - name: Xamarin
               href: mobile-apps-with-xamarin.md
     - name: 2. Migrieren von Daten
-      displayName: import
-      href: import-data.md
+      items:
+        - name: Unter Verwendung des Datenmigrationstools
+          href: import-data.md
+        - name: Unter Verwendung der .NET-Unterstützung für Massenvorgänge
+          href: tutorial-sql-api-dotnet-bulk-import.md
     - name: 3. Abfragen von Daten
       href: tutorial-query-sql-api.md
     - name: 4. Erstellen eines Notebooks
@@ -122,6 +127,8 @@
         - name: Bereitstellen des Durchsatzes für Container und Datenbanken
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
+        - name: 'Bereitstellungsdurchsatz: Autopilot'
+          href: provision-throughput-autopilot.md
     - name: SQL-Abfragereferenz
       items:
         - name: Erste Schritte
@@ -953,6 +960,11 @@
           href: how-to-configure-firewall.md
         - name: Konfigurieren des Zugriffs über virtuelle Netzwerke
           href: how-to-configure-vnet-service-endpoint.md
+        - name: Konfigurieren des Zugriffs über private Endpunkte
+          href: how-to-configure-private-endpoints.md
+        - name: "Herstellen einer privaten Verbindung mit einem Cosmos\_DB-Konto"
+          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
+          maintainContext: true
         - name: Konfigurieren von CORS (Cross-Origin Resource Sharing)
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Sichern von Azure Cosmos-Schlüsseln mit Key Vault

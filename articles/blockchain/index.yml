@@ -10,13 +10,13 @@ metadata:
   ms.topic: hub-page
   author: PatAltimore
   ms.author: patricka
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 0bdf46585a05ffc286e26087dad005eb102ed6b8
-  ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+  ms.date: 10/23/2019
+  ms.openlocfilehash: 87184cc5be0494ade7cc3e055083134b6cbe4bd7
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/29/2019
-  ms.locfileid: "73027122"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73466085"
 productDirectory:
   items:
   - title: Azure Blockchain-Dienst
@@ -32,6 +32,13 @@ productDirectory:
     - url: ./workbench/overview.md
       text: Was ist Azure Blockchain Workbench?
     - url: ./workbench/index.yml
+      text: Mehr anzeigen >
+  - title: Azure Blockchain Tokens
+    imageSrc: ./media/index/blockchain-tokens.svg
+    links:
+    - url: ./tokens/overview.md
+      text: Was ist Azure Blockchain Tokens?
+    - url: ./tokens/index.yml
       text: Mehr anzeigen >
 conceptualContent:
   title: Erste Schritte
@@ -64,6 +71,28 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: Ansehen, wie Ihre erste Anwendung erstellt wird
+  - title: Erstellen und Verwalten von Token
+    links:
+    - url: ./tokens/templates.md
+      itemType: concept
+      text: Definieren Ihrer Token mithilfe einer vordefinierten Vorlage
+    - url: ./tokens/account-management.md
+      itemType: concept
+      text: Verwalten von Token mithilfe von Azure Blockchain Tokens
+    - url: https://aka.ms/ABTokensPartI
+      itemType: video
+      text: Ansehen einer Einführung in Azure Blockchain Tokens
+  - title: Veröffentlichen von Blockchain-Daten mithilfe von Blockchain Data Manager
+    links:
+    - url: ./service/data-manager.md
+      itemType: concept
+      text: Was ist Blockchain Data Manager für Azure Blockchain Service?
+    - url: ./service/data-manager-portal.md
+      itemType: how-to-guide
+      text: Erstellen einer Blockchain Data Manager-Instanz über das Azure-Portal
+    - url: https://aka.ms/BTDataManager
+      itemType: video
+      text: Ansehen einer Einführung in Blockchain Data Manager
   - title: Der passende Ledger für Ihren Anwendungsfall
     links:
     - url: ./templates/ethereum-poa-deployment.md
@@ -78,7 +107,7 @@ additionalContent:
     summary: Entwicklungstools und Codebeispiele für Blockchain-Apps
     items:
     - title: Azure Blockchain Development Kit für Ethereum
-      summary: Entwickeln, Bereitstellen, Debuggen und Verwalten Ihrer Azure Blockchain Service-Lösung
+      summary: Entwickeln, Bereitstellen, Debuggen und Verwalten Ihrer Azure Blockchain Service-Lösung
       url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
     - title: Ethereum-Blockchain-Connector
       summary: Verwenden von Azure Logic Apps, Microsoft Flow und Microsoft PowerApps, um Smart Contract-Aktionen durchzuführen, z. B. Übermitteln von Transaktionen, Lesen des Vertragsstatus und Auslösen von Flows bei Vertragsaktualisierungen

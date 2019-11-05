@@ -102,6 +102,8 @@
       href: supported-kubernetes-versions.md
     - name: Sicherheitshärtung im Hostbetriebssystem
       href: security-hardened-vm-host-image.md
+    - name: Übersicht über die Azure Kubernetes Service-Diagnose
+      href: concepts-diagnostics.md
 - name: Anleitungen
   items:
     - name: Clustervorgänge
@@ -128,11 +130,11 @@
               href: virtual-nodes-portal.md
         - name: Verwenden von Virtual Kubelet
           href: virtual-kubelet.md
-        - name: Verwenden der automatischen Skalierungsfunktion für Cluster (Vorschauversion)
+        - name: Verwenden der automatischen Skalierungsfunktion für Cluster
           href: cluster-autoscaler.md
-        - name: Verwenden von Verfügbarkeitszonen (Vorschauversion)
+        - name: Verwenden von Verfügbarkeitszonen
           href: availability-zones.md
-        - name: Verwenden mehrerer Knotenpools (Vorschauversion)
+        - name: Verwenden mehrerer Knotenpools
           href: use-multiple-node-pools.md
         - name: Bereitstellen von AKS mit Terraform
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
@@ -199,7 +201,7 @@
           href: use-network-policies.md
         - name: Verwenden von Podsicherheitsrichtlinien (Vorschauversion)
           href: use-pod-security-policies.md
-        - name: Definieren der vom API-Server autorisierten IP-Bereiche (Vorschauversion)
+        - name: Definieren der vom API-Server autorisierten IP-Bereiche
           href: api-server-authorized-ip-ranges.md
         - name: Steuern von Bereitstellungen mit Azure Policy (Vorschauversion)
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
@@ -225,8 +227,8 @@
           href: view-master-logs.md
         - name: Anzeigen der Kubelet-Protokolle
           href: kubelet-logs.md
-        - name: Anzeigen von Containerprotokollen in Echtzeit (Vorschau)
-          href: ../azure-monitor/insights/container-insights-live-logs.md
+        - name: Anzeigen von Containerdaten in Echtzeit
+          href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
     - name: Verwenden von Windows Server-Containern (Vorschauversion)
       items:

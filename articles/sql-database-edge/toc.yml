@@ -1,0 +1,27 @@
+- name: Dokumentation für SQL Database Edge
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist SQL Database Edge?
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Bereitstellen von SQL Database Edge
+      href: deploy-portal.md
+    - name: Bereitstellen von ONNX in SQL Database Edge
+      href: deploy-onnx.md
+- name: Lernprogramme
+  items:
+    - name: Synchronisieren von Daten mit Azure Data Factory
+      href: tutorial-sync-data-factory.md
+    - name: Synchronisieren von Daten mit der SQL-Datensynchronisierung
+      href: tutorial-sync-data-sync.md
+- name: Anleitung
+  items:
+    - name: "DAC-Pakete und Stream\_Analytics-Aufträge"
+      href: stream-analytics.md
+- name: Konzepte
+  items:
+    - name: Machine Learning und KI mit ONNX
+      href: onnx-overview.md

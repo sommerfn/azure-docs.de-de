@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Machine Learning Studio
-summary: Machine Learning Studio ist ein Drag & Drop-Tool, mit dem Sie Predictive Analytics-Lösungen erstellen, testen und bereitstellen können.
+title: Dokumentation für Azure Machine Learning Studio (klassisch)
+summary: Machine Learning Studio (klassisch) ist ein Drag & Drop-Tool, mit dem Sie Predictive Analytics-Lösungen erstellen, testen und bereitstellen können.
 metadata:
-  title: Dokumentation zu Machine Learning Studio – Azure
-  description: Machine Learning Studio ist ein Drag & Drop-Tool, mit dem Sie Predictive Analytics-Lösungen erstellen, testen und bereitstellen können.
+  title: Dokumentation für Machine Learning Studio (klassisch) – Azure
+  description: Machine Learning Studio (klassisch) ist ein Drag & Drop-Tool, mit dem Sie Predictive Analytics-Lösungen erstellen, testen und bereitstellen können.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
@@ -12,18 +12,18 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 09/04/2019
-  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.openlocfilehash: 651c816b72dd63845b786dcf73a8c395b9c8f337
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309187"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73492875"
 landingContent:
-- title: Erste Schritte mit Studio
+- title: Erste Schritte mit Studio (klassisch)
   linkLists:
   - linkListType: get-started
     links:
-    - text: Was ist Studio?
+    - text: Was ist Studio (klassisch)?
       url: what-is-ml-studio.md
     - text: Erstellen Ihres ersten ML-Experiments
       url: create-experiment.md
@@ -45,7 +45,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Machine Learning-Dienst
+    - text: Azure Machine Learning
       url: /azure/machine-learning/
     - text: Virtueller Computer für Data Science
       url: /azure/machine-learning/data-science-virtual-machine

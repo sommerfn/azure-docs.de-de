@@ -45,7 +45,7 @@
           href: tutorial-deploy-function.md
         - name: Ermitteln von Durchschnittswerten mit Azure Stream Analytics
           href: tutorial-deploy-stream-analytics.md
-        - name: Bewerten von Daten mit Azure Machine Learning Service
+        - name: Bewerten von Daten mit Azure Machine Learning
           href: tutorial-deploy-machine-learning.md
         - name: Klassifizieren von Bildern mit Custom Vision
           href: tutorial-deploy-custom-vision.md

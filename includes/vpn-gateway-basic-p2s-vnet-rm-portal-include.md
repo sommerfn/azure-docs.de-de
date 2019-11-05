@@ -28,7 +28,7 @@ Wenn Sie mit dem Azure-Portal ein VNET im Resource Manager-Bereitstellungsmodell
    ![Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
 3. Wählen Sie unten auf der Seite „Virtuelles Netzwerk“ in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus, und klicken Sie dann auf **Erstellen**.
 
-   ![Auswählen von „Resource Manager“](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "„Ressourcen-Manager“ auswählen")
+   ![Auswählen von „Resource Manager“](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Ressourcen-Manager auswählen")
 4. Konfigurieren Sie auf der Seite **Virtuelles Netzwerk erstellen** die VNET-Einstellungen. Beim Ausfüllen der Felder ändert sich das rote Ausrufezeichen in ein grünes Häkchen, sofern die in das Feld eingegebenen Zeichen zulässig sind. Unter Umständen wurden bestimmte Werte bereits automatisch ausgefüllt. Ersetzen Sie sie in diesem Fall durch Ihre eigenen Werte. Die Seite **Virtuelles Netzwerk erstellen** sieht in etwa wie im folgenden Beispiel aus:
 
    ![Feldüberprüfung](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/vnetp2s.png "Feldprüfung")
@@ -43,4 +43,4 @@ Wenn Sie mit dem Azure-Portal ein VNET im Resource Manager-Bereitstellungsmodell
     ![An Dashboard anheften](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/pintodashboard150.png "An Dashboard anheften")
 12. Nach dem Klicken auf **Erstellen** wird auf dem Dashboard eine Kachel angezeigt, auf der der Status des VNET angegeben wird. Die Kachel verändert sich, wenn das VNet erstellt wird.
 
-    ![Kachel für die VNET-Erstellung](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/deploying150.png "Kachel "Erstellen eines virtuellen Netzwerks"")
+    ![Kachel für die VNET-Erstellung](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/deploying150.png "Kachel Erstellen eines virtuellen Netzwerks")

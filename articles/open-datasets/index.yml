@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Open Datasets (Vorschauversion)
-summary: Azure Open Datasets bietet kuratierte und bereinigte Daten, die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können. Hierzu zählen beispielsweise Wetterdaten, Volkszählungen oder Feiertage.
+title: Dokumentation für Azure Open Datasets
+summary: Azure Open Datasets bietet zusammengestellte bereinigte Daten (etwa Wetterdaten, Volkszählungsdaten und Feiertage), die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können.
 metadata:
-  title: Dokumentation zu Open Datasets (Vorschauversion) – Azure
-  description: Azure Open Datasets bietet kuratierte und bereinigte Daten, die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können. Hierzu zählen beispielsweise Wetterdaten, Volkszählungen oder Feiertage.
+  title: Dokumentation für Open Datasets – Azure
+  description: Azure Open Datasets bietet zusammengestellte bereinigte Daten (etwa Wetterdaten, Volkszählungsdaten und Feiertage), die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: data-science-vm
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 09/03/2019
-  ms.openlocfilehash: 44dea30e44e204664a5266a37c740b2eb23a49f7
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.date: 11/04/2019
+  ms.openlocfilehash: b6813c3fd521b12ec91eddb0176efedb8c5c120a
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70309362"
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73496617"
 landingContent:
 - title: Informationen zu Azure Open Datasets
   linkLists:
@@ -32,7 +32,9 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen
-      url: tutorial-opendatasets-automl.md
+      url: /azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context
+    - text: Anreichern eines Bildklassifizierungsmodells in Azure Machine Learning
+      url: /azure/machine-learning/service/tutorial-train-models-with-aml?context=azure/open-datasets/context/open-datasets-context
 - title: Erkunden des Referenzinhalts
   linkLists:
   - linkListType: reference

@@ -20,29 +20,34 @@
           items:
             - name: Übersicht
               href: sql-database-purchase-models.md
-            - name: V-Kern-basiertes Modell
-              href: sql-database-service-tiers-vcore.md
+            - name: V-Kern-Modell
               items:
-                - name: Serverlose Computeebene
+                - name: Übersicht über das V-Kern-Modell
+                  href: sql-database-service-tiers-vcore.md
+                - name: Serverlos
                   href: sql-database-serverless.md
-                - name: Vorauszahlen für eine reservierte Kapazität
+                - name: Azure-Hybridvorteil
+                  href: sql-database-azure-hybrid-benefit.md
+                - name: Reservierte Kapazität
                   href: sql-database-reserved-capacity.md
-            - name: DTU-Dienstebenen
+            - name: Übersicht über das DTU-Modell
               href: sql-database-service-tiers-dtu.md
+            - name: Migrieren von DTU zu V-Kern
+              href: sql-database-dtu-to-vcore.md
         - name: Compute und Speicher
           items:
             - name: Übersicht
               href: sql-database-service-tiers-general-purpose-business-critical.md
               displayName: provisioned compute tier
-            - name: Dienstebenen „Universell“ und „Standard“
+            - name: Universell/Standard
               href: sql-database-service-tier-general-purpose.md
-            - name: Dienstebenen „Unternehmenskritisch“ und „Premium“
+            - name: Unternehmenskritisch/Premium
               href: sql-database-service-tier-business-critical.md
-            - name: Hyperscale-Dienstebene
+            - name: Hyperscale
               href: sql-database-service-tier-hyperscale.md
             - name: Häufig gestellte Fragen zu Hyperscale
               href: sql-database-service-tier-hyperscale-faq.md
-            - name: Migrieren von der Premium RS-Dienstebene
+            - name: "Migrieren von Premium\_RS"
               href: sql-database-service-tiers-prs.md
 - name: Schnellstarts
   expanded: true
@@ -501,17 +506,17 @@
       items:
         - name: Einzeldatenbankressourcen
           items:
-            - name: V-Kern-basierte Ressourceneinschränkungen
+            - name: V-Kern-Ressourcenlimits
               href: sql-database-vcore-resource-limits-single-databases.md
-            - name: DTU-basierte Ressourceneinschränkungen
+            - name: DTU-Ressourcenlimits
               href: sql-database-dtu-resource-limits-single-databases.md
             - name: Skalieren von Ressourcen
               href: sql-database-single-database-scale.md
         - name: Ressourcen von Pools für elastische Datenbanken
           items:
-            - name: V-Kern-basierte Ressourceneinschränkungen
+            - name: V-Kern-Ressourcenlimits
               href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: DTU-basierte Ressourceneinschränkungen
+            - name: DTU-Ressourcenlimits
               href: sql-database-dtu-resource-limits-elastic-pools.md
             - name: Skalieren von Ressourcen
               href: sql-database-elastic-pool-scale.md

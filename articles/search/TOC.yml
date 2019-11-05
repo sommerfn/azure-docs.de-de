@@ -33,7 +33,7 @@
       href: search-get-started-python.md
 - name: Lernprogramme
   items:
-    - name: Erstellen Ihrer ersten App
+    - name: 'Erstellen Ihrer ersten C#-App'
       items:
         - name: 1. Seite für die Standardsuche
           href: tutorial-csharp-create-first-app.md
@@ -215,8 +215,6 @@
           href: search-howto-schedule-indexers.md
         - name: Zuordnen von Feldern
           href: search-indexer-field-mappings.md
-        - name: Inkrementelle Indizierung
-          href: search-howto-incremental-index.md
         - name: Herstellen einer Verbindung mit einer verwalteten SQL-Instanz
           href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
         - name: Herstellen einer Verbindung mit virtuellen SQL Server-Computern
@@ -239,14 +237,14 @@
               href: cognitive-search-output-field-mapping.md
             - name: Verarbeiten und Extrahieren von Informationen aus Bildern
               href: cognitive-search-concept-image-scenarios.md
+            - name: Einrichten der inkrementellen Indizierung
+              href: search-howto-incremental-index.md
         - name: Benutzerdefinierte Qualifikationen
           items:
             - name: Integrieren benutzerdefinierter Fertigkeiten
               href: cognitive-search-custom-skill-interface.md
             - name: 'Beispiel: Azure Functions'
               href: cognitive-search-create-custom-skill-example.md
-            - name: 'Beispiele: Fachliche Fähigkeiten'
-              href: 'https://aka.ms/powerskills'
             - name: 'Beispiel: Container'
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Tipps zur Problembehandlung
@@ -378,6 +376,8 @@
           href: cognitive-search-skill-shaper.md
         - name: Bedingt
           href: cognitive-search-skill-conditional.md
+        - name: Dokumentextrahierung
+          href: cognitive-search-skill-document-extraction.md
     - name: Benutzerdefinierte Qualifikationen
       items:
         - name: Benutzerdefinierte Web-API

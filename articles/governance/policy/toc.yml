@@ -28,6 +28,9 @@
     - name: Erstellen einer benutzerdefinierten Richtliniendefinition
       displayName: 'disabled, parameters, rule, mode'
       href: ./tutorials/create-custom-policy-definition.md
+    - name: Verwalten der Tag-Governance
+      displayName: 'modify, append, effects'
+      href: ./tutorials/govern-tags.md
     - name: 'Praxislab: Erkunden von Azure Policy'
       displayName: 'create, policy, training, learn'
       href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
@@ -263,14 +266,25 @@
     - name: Auswerten der Auswirkung einer neuen Richtlinie
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Entwerfen von Richtlinien als Codeworkflows
+      displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
+      href: ./concepts/policy-as-code.md
     - name: Azure Policy für Kubernetes
-      displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
-      href: ./concepts/rego-for-aks.md
+      items:
+        - name: Richtlinie für AKS
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          href: ./concepts/rego-for-aks.md
+        - name: Richtlinie für die AKS-Engine
+          displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
+          href: ./concepts/aks-engine.md
     - name: Überwachen virtueller Computer mit der Gastkonfiguration
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
 - name: Anleitungen
   items:
+    - name: "Azure\_Policy-Erweiterung für VSCode"
+      displayName: visual studio code
+      href: ./how-to/extension-for-vscode.md
     - name: Programmgesteuertes Erstellen von Richtlinien
       displayName: 'assign, definition'
       href: ./how-to/programmatically-create.md

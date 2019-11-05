@@ -5,10 +5,12 @@
   items:
     - name: Was ist Cognitive Services?
       href: Welcome.md
-    - name: Benutzerdefinierte Unterdomänen für Cognitive Services
-      href: cognitive-services-custom-subdomains.md
     - name: Cognitive Services und maschinelles Lernen
       href: cognitive-services-and-machine-learning.md
+    - name: Virtuelle Netzwerke für Cognitive Services
+      href: cognitive-services-virtual-networks.md
+    - name: Benutzerdefinierte Unterdomänen für Cognitive Services
+      href: cognitive-services-custom-subdomains.md
     - name: Sprachunterstützung
       href: language-support.md
 - name: Containerunterstützung

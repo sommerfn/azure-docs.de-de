@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Dokumentation für Azure Blockchain Tokens
+summary: Erfahren Sie, wie Sie Blockchain-Token erstellen, ausstellen und verwalten.
+metadata:
+  title: 'Dokumentation für Azure Blockchain Tokens: Tutorials, API-Referenz'
+  description: Erfahren Sie, wie Sie Blockchain-Token ausstellen und verwalten. Tutorials, API-Referenzen und anderes Dokumentationsmaterial mit Informationen zur Erstellung und Verwaltung von Blockchain-Token in Azure unter Verwendung von Azure Blockchain Tokens.
+  services: azure-blockchain
+  ms.service: azure-blockchain
+  ms.topic: landing-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 11/04/2019
+  ms.openlocfilehash: 6df625c2264db279e29c4ebcf5aab5695b335a0e
+  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73508430"
+landingContent:
+- title: Informationen zu Azure Blockchain Tokens
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Blockchain Tokens?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Kontenverwaltung
+      url: account-management.md
+    - text: Vorlagen
+      url: templates.md
+    - text: Kombinierbarkeit
+      url: composability.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Registrieren für Zugriff auf die Vorschauversion
+      url: https://aka.ms/PreviewForm
+  - linkListType: video
+    links:
+    - text: Erste Schritte mit Azure Blockchain Tokens
+      url: https://aka.ms/ABTokensPartI
+    - text: Verwalten von Konten
+      url: https://aka.ms/ABTokensPartII
+    - text: Vorlagen und Kombinierbarkeit
+      url: https://aka.ms/ABTokensPartIII
+    - text: Token und Tokentaxonomie-Framework
+      url: https://aka.ms/TokenTaxFramework
