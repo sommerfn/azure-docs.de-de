@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: dapine
 ms.openlocfilehash: 3c42bf2b2acc2472741bd603ea9d653a314ecc40
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67717265"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522959"
 ---
 ## <a name="create-a-speech-resource"></a>Erstellen einer Speech-Ressource
 
@@ -24,7 +24,7 @@ ms.locfileid: "67717265"
     |Einstellung|Wert|
     |--|--|
     |NAME|Gewünschter Name (2 bis 64 Zeichen)|
-    |Abonnement|Wählen Sie ein passendes Abonnement aus|
+    |Subscription|Wählen Sie ein passendes Abonnement aus|
     |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
     |Preisstufe|`F0` – der Mindesttarif|
     |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|

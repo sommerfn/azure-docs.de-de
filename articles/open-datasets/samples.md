@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 05/02/2019
-ms.openlocfilehash: 6991b641bc85a8944bfd12a43f9b049e44ea88d8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.date: 11/04/2019
+ms.openlocfilehash: 2ccdb7adcae40d22a36fbfb47fba6e4c87b3349a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598959"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496579"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Jupyter-Beispielnotebooks zeigen das Anreichern von Daten mit öffentlichen Datasets. 
 Die Jupyter-Beispielnotebooks für öffentliche Azure-Datasets zeigen Ihnen, wie Sie öffentliche Datasets laden und zum Anreichern von Demodaten verwenden. Zu den Techniken gehören die Verwendung von Apache Spark und Pandas zur Verarbeitung von Daten.

@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: b84b503fad951b5a6998bf0b06d466ce41031aa8
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 1f08067768f2d4a0a0c2ab31b3db1c9f2c9e1521
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72526745"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476902"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -28,7 +28,7 @@ ms.locfileid: "72526745"
 | Gleichzeitige [Debuggerverbindungen](../articles/app-service/troubleshoot-dotnet-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |5 |
 | App Service-Zertifikate pro Abonnement<sup>9</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |
-| benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
+| benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-certificate.md) |Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
 | Hybridverbindungen pro Plan | | | 5 | 25 | 200 | 200 |
 | Integrierter Lastenausgleich | |X |X |X |X |X<sup>10</sup> |
 | [Immer aktiviert](../articles/app-service/configure-common.md) | | |X |X |X |X |

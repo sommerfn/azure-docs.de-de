@@ -1,25 +1,25 @@
 ---
-title: Analysetools für linguistische Analyse und Textverarbeitung – Azure Search
+title: Analysetools für linguistische Analyse und Textverarbeitung
+titleSuffix: Azure Cognitive Search
 description: Weisen Sie durchsuchbaren Textfeldern in einem Index Analysen zu, um die Lucene-Standardanalyse durch benutzerdefinierte, vordefinierte oder sprachspezifische Alternativen zu ersetzen.
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 08/08/2019
-ms.author: heidist
-manager: nitinme
 author: HeidiSteen
-ms.openlocfilehash: 85ebc75a22a4b27803df758d3f411a46a6206eb7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+manager: nitinme
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.openlocfilehash: 32ac91df042eb29c39cc54b738dbb96aff3104f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72987616"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496509"
 ---
-# <a name="analyzers-for-text-processing-in-azure-search"></a>Analysetools für Textverarbeitung in Azure Search
+# <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analysetools für Textverarbeitung in der kognitiven Azure-Suche
 
 Ein *Analysetool* ist eine Komponente der [Volltext-Suchmaschine](search-lucene-query-architecture.md), mit der Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Verschiedene Analysetools bearbeiten Text je nach Szenario auf verschiedene Arten. Sprachanalysetools verarbeiten Text mit linguistischen Regeln, um die Suchqualität zu verbessern, während andere Analysetools grundlegendere Aufgaben wie z.B. das Konvertieren von Zeichen in Kleinschreibung ausführen. 
 
-Sprachanalysetools sind die am häufigsten verwendeten, und jedem durchsuchbaren Feld in einem Azure Search-Index ist ein Standard-Sprachanalysetool zugewiesen. Die folgenden Sprachtransformationen sind während der Textanalyse typisch:
+Sprachanalysetools sind die am häufigsten verwendeten, und jedem durchsuchbaren Feld in einem Index für die kognitive Azure-Suche ist ein Standard-Sprachanalysetool zugewiesen. Die folgenden Sprachtransformationen sind während der Textanalyse typisch:
 
 + Nicht unbedingt benötigte Wörter (Stoppwörter) und Satzzeichen werden entfernt.
 + Wörter mit Bindestrichen und Ausdrücke werden in Einzelwörter unterteilt.
@@ -30,19 +30,19 @@ Linguistische Analysetools konvertieren eine Texteingabe in primitive oder Stamm
 
 ## <a name="default-analyzer"></a>Standardanalysemodul  
 
-Azure Search verwendet standardmäßig das [Standardanalysetool von Apache Lucene (Standard-Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieses unterteilt Text gemäß den Regeln der [Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.  
+Die kognitive Azure-Suche verwendet standardmäßig das [Standardanalysetool von Apache Lucene (Standard-Lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieses unterteilt Text gemäß den Regeln der [Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.  
 
 Es wird automatisch auf jedes durchsuchbare Feld verwendet. Dieser Standard kann feldspezifisch überschrieben werden. Alternative Analysetools können ein [Sprachanalysetool](index-add-language-analyzers.md), ein [benutzerdefiniertes Analysetool](index-add-custom-analyzers.md) oder ein vordefiniertes Analysetool aus der [Liste der verfügbaren Analysetools](index-add-custom-analyzers.md#AnalyzerTable) sein.
 
 
 ## <a name="types-of-analyzers"></a>Typen von Analysetools
 
-Die folgende Liste gibt Aufschluss darüber, welche Analysetools in Azure Search unterstützt werden.
+Die folgende Liste gibt Aufschluss darüber, welche Analysetools in der kognitiven Azure-Suche unterstützt werden.
 
 | Category | BESCHREIBUNG |
 |----------|-------------|
 | [Lucene-Standardanalyse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standard. Muss nicht angegeben oder konfiguriert werden. Diese allgemeine Analyse eignet sich für die meisten Sprachen und Szenarien.|
-| Vordefinierte Analysen | Werden als fertiges Produkt angeboten und in der Regel unverändert verwendet. <br/>Es gibt spezialisierte und sprachspezifische Typen. Sie sind „vordefiniert“, da Sie ihren Namen angeben und sie nicht weiter konfigurieren oder anpassen. <br/><br/>[Spezialisierte (sprachunabhängige) Analysetools](index-add-custom-analyzers.md#AnalyzerTable) werden verwendet, wenn Texteingaben eine spezielle oder minimale Verarbeitung erfordern. Zu sprachunabhängigen vordefinierten Analysen zählen **Asciifolding**, **Keyword**, **Pattern**, **Simple**, **Stop** und **Whitespace**.<br/><br/>[Sprachanalyzer](index-add-language-analyzers.md) werden verwendet, wenn umfassende linguistische Unterstützung für einzelne Sprachen benötigt werden. Azure Search unterstützt 35 Lucene-Sprachanalysen und 50 Microsoft-Analysen für die Verarbeitung natürlicher Sprache. |
+| Vordefinierte Analysen | Werden als fertiges Produkt angeboten und in der Regel unverändert verwendet. <br/>Es gibt spezialisierte und sprachspezifische Typen. Sie sind „vordefiniert“, da Sie ihren Namen angeben und sie nicht weiter konfigurieren oder anpassen. <br/><br/>[Spezialisierte (sprachunabhängige) Analysetools](index-add-custom-analyzers.md#AnalyzerTable) werden verwendet, wenn Texteingaben eine spezielle oder minimale Verarbeitung erfordern. Zu sprachunabhängigen vordefinierten Analysen zählen **Asciifolding**, **Keyword**, **Pattern**, **Simple**, **Stop** und **Whitespace**.<br/><br/>[Sprachanalyzer](index-add-language-analyzers.md) werden verwendet, wenn umfassende linguistische Unterstützung für einzelne Sprachen benötigt werden. Die kognitive Azure-Suche unterstützt 35 Lucene-Sprachanalysen und 50 Microsoft-Analysen für die Verarbeitung natürlicher Sprache. |
 |[Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Eine benutzerdefinierte Konfiguration einer Kombination vorhandener Elemente, bestehend aus einem Tokenizer (erforderlich) und optionalen Filtern („char“ oder „token“).|
 
 Ein paar vordefinierte Analysetools, wie z.B. **Pattern** oder **Stop**, unterstützen eine begrenzte Anzahl von Konfigurationsoptionen. Um diese Optionen festzulegen, erstellen Sie ein benutzerdefiniertes Analysetool, bestehend aus dem vordefinierten Analysetool und einer der unter [Vordefinierte Analysetoolreferenz](index-add-custom-analyzers.md#AnalyzerTable) dokumentierten alternativen Optionen. Versehen Sie Ihre neue Konfiguration wie üblich mit einem Namen (etwa *myPatternAnalyzer*), damit sie von der Lucene-Musteranalyse zu unterscheiden ist.
@@ -80,7 +80,7 @@ Dieser Abschnitt enthält Tipps zur Verwendung von Analyzern.
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Eine einzelne Analyse für Lese-/Schreibvorgänge, sofern keine besonderen Anforderungen gelten
 
-In Azure Search können Sie verschiedene Analysetools für das Indizieren und Suchen über zusätzliche **indexAnalyzer**- und **searchAnalyzer**-Feldparameter angeben. Wenn keine Angabe vorhanden ist, wird das mit der **analyzer**-Eigenschaft festgelegte Analysetool sowohl für die Indizierung als auch für die Suche verwendet. Ohne Angabe von `analyzer` wird die Standardanalyse von Lucene verwendet.
+In der kognitiven Azure-Suche können Sie verschiedene Analysetools für das Indizieren und Suchen über zusätzliche **indexAnalyzer**- und **searchAnalyzer**-Feldparameter angeben. Wenn keine Angabe vorhanden ist, wird das mit der **analyzer**-Eigenschaft festgelegte Analysetool sowohl für die Indizierung als auch für die Suche verwendet. Ohne Angabe von `analyzer` wird die Standardanalyse von Lucene verwendet.
 
 Allgemeine Regel: Verwenden Sie für die Indizierung und für Abfragen die gleiche Analyse, es sei denn, es müssen besondere Anforderungen erfüllt werden. Führen Sie die Tests sorgfältig durch. Wenn sich die Textverarbeitung zur Such- und Indizierungszeit unterscheidet, besteht das Risiko der Nichtübereinstimmung zwischen Abfrageausdrücken und indizierten Ausdrücken, wenn die Konfigurationen des Analyzers für die Suche und die Indizierung nicht abgestimmt sind.
 
@@ -286,7 +286,7 @@ Jedes in unveränderter Form ohne Konfiguration verwendete Analysetool wird in e
 
 In diesem Beispiel werden Beschreibungsfeldern Microsoft-Analysetools für Englisch und Französisch zugewiesen. Es ist ein Codeausschnitt aus einer größeren Definition des Hotelindex, der unter Verwendung der Hotelklasse in der Datei „hotels.cs“ des Beispiels [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) erstellt wird.
 
-Rufen Sie das [Analysetool](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) unter Angabe des Typs [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) auf, mit dem ein in Azure Search unterstützten Textanalysetool bereitgestellt wird.
+Rufen Sie das [Analysetool](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) unter Angabe des Typs [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) auf, mit dem ein in der kognitiven Azure-Suche unterstütztes Textanalysetool bereitgestellt wird.
 
 ```csharp
     public partial class Hotel
@@ -336,7 +336,7 @@ Erstellen Sie ein [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ Lesen Sie unsere umfassende Erläuterung der [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md). In diesem Artikel werden anhand von Beispielen Verhaltensweisen erklärt, die auf den ersten Blick vielleicht nicht intuitiv erscheinen.
++ Lesen Sie unsere umfassende Erläuterung der [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md). In diesem Artikel werden anhand von Beispielen Verhaltensweisen erklärt, die auf den ersten Blick vielleicht nicht intuitiv erscheinen.
 
 + Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
 

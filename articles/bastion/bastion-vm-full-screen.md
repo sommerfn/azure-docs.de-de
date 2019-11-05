@@ -5,22 +5,18 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a063d6c8891133126924bfb934770f7818db71a
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: a8c9cab825644fe797713c80d3a710c7a2d54850
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191253"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498045"
 ---
-# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion-preview"></a>Wechsel zur Vollbildansicht für eine VM-Sitzung: Azure Bastion (Vorschauversion)
+# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Wechsel zur Vollbildansicht für eine VM-Sitzung: Azure Bastion
 
 Dieser Artikel hilft Ihnen, die Ansicht der VM in Ihrem Browser in den Vollbildmodus zu setzen und wieder zurück. Bevor Sie mit einem virtuellen Computer arbeiten, stellen Sie sicher, dass Sie die Schritte zum [Erstellen eines Azure Bastion-Hosts (Vorschauversion)](bastion-create-host-portal.md) befolgt haben. Stellen Sie dann entweder mit [RDP](bastion-connect-vm-rdp.md) oder [SSH](bastion-connect-vm-ssh.md) eine Verbindung mit der VM her, mit der Sie arbeiten möchten.
-
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="launch-the-clipboard-tool"></a>Starten des Zwischenablagetools
 
