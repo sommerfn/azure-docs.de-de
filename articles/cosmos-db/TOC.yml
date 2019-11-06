@@ -469,9 +469,6 @@
           href: change-feed-functions.md
     - name: Global verteilte Analysen und KI
       items:
-        - name: Einführung
-          displayName: 'Apache Spark, spark'
-          href: spark-api-introduction.md
         - name: Anwendungsfälle für Analytics
           href: analytics-usecases.md
         - name: 'Analytics: Lösungsarchitekturen'
