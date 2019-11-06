@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a4daaac6abababcedb5d6dd7eb2122ef29846ef4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: dff6473fd01fc2d41c5bb100eefd583afe4175b0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792530"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496473"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>REST-API für den Dienst für die kognitive Azure-Suche: Version 2019-05-06-Preview
 
@@ -24,6 +24,8 @@ Dieser Artikel beschreibt die Version `api-version=2019-05-06-Preview` der Searc
 
 
 ## <a name="new-in-2019-05-06-preview"></a>Neuerungen in 2019-05-06-Preview
+
+[**Inkrementelle Indizierung](cognitive-search-incremental-indexing-conceptual.md) ist ein neuer Modus für die Indizierung, der Status und Zwischenspeicherung hinzufügt, sodass Sie vorhandene Ausgaben bei unveränderten Daten, Indexer und Skillsetdefinitionen wiederverwenden können. Dieses Feature gilt nur für Anreicherungen durch ein kognitives Skillset.
 
 Der [**Wissensspeicher** ](knowledge-store-concept-intro.md) ist ein neues Ziel einer Pipeline für KI-basierte Anreicherung. Zusätzlich zu einem Index können Sie nun aufgefüllte Datenstrukturen speichern, die während der Indizierung in Azure Storage erstellt wurden. Sie steuern die physischen Strukturen Ihrer Daten durch Elemente in einer Qualifikationsgruppe, z. B. wie Daten dargestellt werden, ob Daten in Table Storage oder Blob Storage gespeichert werden und ob mehrere Ansichten verfügbar sind.
 

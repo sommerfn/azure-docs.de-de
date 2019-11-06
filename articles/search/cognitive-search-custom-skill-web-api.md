@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54c51993733091d326c59c4ac4ec3662cc704021
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784903"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466738"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Qualifikation „Benutzerdefinierte Web-API“ in einer Anreicherungspipeline der kognitiven Azure-Suche
 
@@ -41,6 +41,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | httpHeaders | Eine Sammlung von Schlüssel-Wert-Paaren, bei denen die Schlüssel Headernamen und -Werte Headerwerte darstellen, die zusammen mit der Nutzlast an Ihre Web-API gesendet werden. Die folgenden Header dürfen nicht in der Sammlung enthalten sein: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
 | timeout | (Optional) Wenn angegeben, wird damit das Zeitlimit für den HTTP-Client angegeben, der den API-Aufruf durchführt. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Zum Beispiel `PT60S` für 60 Sekunden. Wenn kein Wert festgelegt ist, wird ein Standardwert von 30 Sekunden ausgewählt. Das Zeitlimit kann auf maximal 230 Sekunden und mindestens 1 Sekunde festgelegt werden. |
 | batchSize | (Optional) Gibt an, wie viele „Datensätze“ (siehe _JSON_ Nutzlaststruktur unten) pro API-Aufruf gesendet werden. Wenn kein Wert festgelegt ist, wird der Standardwert 1000 ausgewählt. Wir empfehlen Ihnen, diesen Parameter zu verwenden, um einen angemessenen Kompromiss zwischen Indexierungsdurchsatz und Auslastung Ihrer API zu erreichen. |
+| degreeOfParallelism | (Optional) Wenn angegeben, wird die Anzahl der Aufrufe angezeigt, die der Indexer parallel zum von Ihnen bereitgestellten Endpunkt vornimmt. Sie können diesen Wert herab setzen, wenn der Endpunkt bei einer zu hohen Anforderungslast ausfällt, oder herauf setzen, wenn der Endpunkt mehr Anforderungen verarbeiten kann und Sie die Leistung des Indexers erhöhen möchten.  Wenn kein Wert festgelegt ist, wird ein Standardwert von 5 verwendet. „degreeOfParallelism“ kann auf maximal 10 und mindestens 1 festgelegt werden. |
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
@@ -56,7 +57,7 @@ Es gibt keine „vordefinierten“ Ausgaben für diese Qualifikation. Abhängig 
 ```json
   {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
-        "description": "A custom skill that can count the number of words or characters or lines in text",
+        "description": "A custom skill that can identify positions of different phrases in the source text",
         "uri": "https://contoso.count-things.com",
         "batchSize": 4,
         "context": "/document",
@@ -70,14 +71,13 @@ Es gibt keine „vordefinierten“ Ausgaben für diese Qualifikation. Abhängig 
             "source": "/document/languageCode"
           },
           {
-            "name": "countOf",
-            "source": "/document/propertyToCount"
+            "name": "phraseList",
+            "source": "/document/keyphrases"
           }
         ],
         "outputs": [
           {
-            "name": "count",
-            "targetName": "countOfThings"
+            "name": "hitPositions"
           }
         ]
       }
@@ -101,7 +101,7 @@ Es gelten immer diese Einschränkungen:
            {
              "text": "Este es un contrato en Inglés",
              "language": "es",
-             "countOf": "words"
+             "phraseList": ["Este", "Inglés"]
            }
       },
       {
@@ -110,16 +110,16 @@ Es gelten immer diese Einschränkungen:
            {
              "text": "Hello world",
              "language": "en",
-             "countOf": "characters"
+             "phraseList": ["Hi"]
            }
       },
       {
         "recordId": "2",
         "data":
            {
-             "text": "Hello world \r\n Hi World",
+             "text": "Hello world, Hi world",
              "language": "en",
-             "countOf": "lines"
+             "phraseList": ["world"]
            }
       },
       {
@@ -128,7 +128,7 @@ Es gelten immer diese Einschränkungen:
            {
              "text": "Test",
              "language": "es",
-             "countOf": null
+             "phraseList": []
            }
       }
     ]
@@ -157,7 +157,7 @@ Die „Ausgabe“ entspricht der Antwort, die von Ihrer Web-API zurückgegebenen
             },
             "errors": [
               {
-                "message" : "Cannot understand what needs to be counted"
+                "message" : "'phraseList' should not be null or empty"
               }
             ],
             "warnings": null
@@ -165,7 +165,7 @@ Die „Ausgabe“ entspricht der Antwort, die von Ihrer Web-API zurückgegebenen
         {
             "recordId": "2",
             "data": {
-                "count": 2
+                "hitPositions": [6, 16]
             },
             "errors": null,
             "warnings": null
@@ -173,7 +173,7 @@ Die „Ausgabe“ entspricht der Antwort, die von Ihrer Web-API zurückgegebenen
         {
             "recordId": "0",
             "data": {
-                "count": 6
+                "hitPositions": [0, 23]
             },
             "errors": null,
             "warnings": null
@@ -181,10 +181,12 @@ Die „Ausgabe“ entspricht der Antwort, die von Ihrer Web-API zurückgegebenen
         {
             "recordId": "1",
             "data": {
-                "count": 11
+                "hitPositions": []
             },
             "errors": null,
-            "warnings": null
+            "warnings": {
+                "message": "No occurrences of 'Hi' were found in the input text"
+            }
         },
     ]
 }
@@ -201,7 +203,6 @@ In Fällen, in denen die Web-API nicht verfügbar ist oder einen HTTP-Fehler zur
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Power Skills: ein Repository benutzerdefinierter Qualifikationen](https://aka.ms/powerskills)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 + [Beispiel: Erstellen einer benutzerdefinierten Qualifikation für KI-Anreicherung (cognitive-search-create-custom-skill-example.md)

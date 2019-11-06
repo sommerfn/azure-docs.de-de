@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26a751924985f94a7d7d12a382d4e6654f36ea48
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793712"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466446"
 ---
 # <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Neuerstellen eines Index der kognitiven Azure-Suche
 
@@ -46,7 +46,7 @@ Alle übrigen Änderungen können ohne Auswirkungen auf die vorhandenen physisch
 
 Wenn Sie ein neues Feld hinzufügen, erhalten vorhandene indizierte Dokumente einen NULL-Wert für das neue Feld. Bei einer späteren Datenaktualisierung werden die mit der kognitiven Azure-Suche hinzugefügten NULL-Werte durch Werte aus externen Quelldaten ersetzt. Weitere Informationen zum Aktualisieren von Indexinhalten finden Sie unter [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-## <a name="partial-or-incremental-indexing"></a>Teilindizierung oder inkrementelle Indizierung
+## <a name="partial-indexing"></a>Partielle Indizierung
 
 In der kognitiven Azure-Suche können Sie die Indizierung nicht nach Feldern steuern, um bestimmte Felder zu löschen oder neu zu erstellen. Ebenso gibt es keinen integrierten Mechanismus für das [Indizieren von Dokumenten basierend auf Kriterien](https://stackoverflow.com/questions/40539019/azure-search-what-is-the-best-way-to-update-a-batch-of-documents). Alle Anforderungen im Hinblick auf die kriteriengesteuerte Indizierung müssen durch benutzerdefinierten Code abgedeckt werden.
 
