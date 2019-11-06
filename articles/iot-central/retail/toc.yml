@@ -71,9 +71,9 @@
         - name: Konfigurieren des fortlaufenden Datenexports
           href: ../core/howto-export-data-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Benutzerdefinierte Regeln erstellen
-          href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+          href: ../core/howto-create-custom-rules-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Erstellen einer benutzerdefinierten Analyse mit Databricks
-          href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
+          href: ../core/howto-create-custom-analytics-pnp.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Verwaltung
       items:
         - name: Ändern der Anwendungseinstellungen

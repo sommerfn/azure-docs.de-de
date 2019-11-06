@@ -59,6 +59,8 @@
       items:
         - name: Vorbereiten und Verbinden eines MXChip IoT DevKit
           href: ../iot-central/core/howto-connect-devkit-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Vorbereiten und Verbinden eines RuuviTag-Geräts
+          href: ../iot-central/core/howto-connect-ruuvi-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: "Vorbereiten und Verbinden einer Rigado Cascade\_500-Einheit"
           href: ../iot-central/core/howto-connect-rigado-cascade-500-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: In Verbindung bleiben
@@ -69,6 +71,8 @@
           href: ../iot-central/core/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Verwalten von Geräten
           href: ../iot-central/core/howto-manage-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+        - name: Analysieren von Gerätedaten
+          href: ../iot-central/core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Hinzufügen von Kacheln zu Ihrem Dashboard
           href: ../iot-central/core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Erstellen persönlicher Dashboards für Azure IoT Central
@@ -77,10 +81,6 @@
           href: ../iot-central/core/howto-run-a-job.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Gerätevorlagenversion
           href: ../iot-central/core/howto-version-device-template-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - name: Überwachung und Analyse
-      items:
-        - name: Analysieren von Gerätedaten
-          href: ../iot-central/core/howto-create-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Transformieren
       items:
         - name: Konfigurieren des fortlaufenden Datenexports
@@ -90,9 +90,9 @@
         - name: Verbinden von Azure Monitor-Aktionsgruppen für Regeln
           href: ../iot-central/core/howto-use-action-groups-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Benutzerdefinierte Regeln erstellen
-          href: ../iot-central/core/howto-create-custom-rules.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+          href: ../iot-central/core/howto-create-custom-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
         - name: Erstellen einer benutzerdefinierten Analyse mit Databricks
-          href: ../iot-central/core/howto-create-custom-analytics.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+          href: ../iot-central/core/howto-create-custom-analytics-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Verwaltung
       items:
         - name: Verwalten Ihrer Anwendung

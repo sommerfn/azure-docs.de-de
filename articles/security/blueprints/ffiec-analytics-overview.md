@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 35c696e47c0a01c2cdb4d91db5a654208f2196e2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9dd24a962ddece4ae7841effea7fc36bba1b727b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71257261"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496450"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Azure-Blaupause für Sicherheit und Compliance: Analysen für FFIEC-Finanzdienstleistungen
 
@@ -29,7 +29,7 @@ Um die FFIEC-Konformität zu erreichen, müssen Produktionskundenlösungen von q
 
 Dieser Azure Security and Compliance Blueprint umfasst eine Analyseplattform, auf der Kunden ihre eigenen Analysetools aufbauen können. Die Referenzarchitektur stellt einen generischen Anwendungsfall dar. Dabei geben Kunden Daten entweder durch einen Massenimport durch den SQL- bzw. den Datenadministrator oder durch betriebliche Datenupdates über einen betrieblichen Benutzer ein. Bei beiden Möglichkeiten wird Azure Functions für den Import von Daten in Azure SQL-Datenbank integriert. Azure Functions muss vom Kunden über das Azure-Portal konfiguriert werden, damit die Importaufgaben entsprechend der jeweiligen Analyseanforderungen des Kunden verarbeitet werden können.
 
-Azure bietet eine Vielzahl von Berichts- und Analysediensten für Kunden. Diese Lösung integriert Azure Machine Learning-Dienste in Azure SQL-Datenbank, damit Daten schnell durchsucht werden und durch eine bessere Modellierung schneller Ergebnisse geliefert werden können. Azure Machine Learning erhöht die Abfragegeschwindigkeit, indem neue Beziehungen zwischen Datasets ermittelt werden. Wenn die Daten über verschiedene statistische Funktionen trainiert wurden, können bis zu sieben zusätzliche Abfragepools (mit dem Kundenserver acht) mit denselben tabellarischen Modellen synchronisiert werden, um die Abfrageworkloads auszuweiten und die Antwortzeiten zu reduzieren.
+Azure bietet eine Vielzahl von Berichts- und Analysediensten für Kunden. Diese Lösung integriert Azure Machine Learning in Azure SQL-Datenbank, damit Daten schnell durchsucht werden und durch eine bessere Modellierung schneller Ergebnisse geliefert werden können. Azure Machine Learning erhöht die Abfragegeschwindigkeit, indem neue Beziehungen zwischen Datasets ermittelt werden. Wenn die Daten über verschiedene statistische Funktionen trainiert wurden, können bis zu sieben zusätzliche Abfragepools (mit dem Kundenserver acht) mit denselben tabellarischen Modellen synchronisiert werden, um die Abfrageworkloads auszuweiten und die Antwortzeiten zu reduzieren.
 
 Für erweiterte Analysen und Berichterstattungen können Azure SQL-Datenbanken mit Columnstore-Indizes konfiguriert werden. Azure Machine Learning und Azure SQL-Datenbanken können abhängig von der Nutzung durch den Kunden zentral hoch- bzw. herunterskaliert oder vollständig deaktiviert werden. Jeglicher SQL-Datenverkehr wird mit SSL über selbstsignierte Zertifikate verschlüsselt. Azure empfiehlt als bewährte Methode die Verwendung einer vertrauenswürdigen Zertifizierungsstelle für erweiterte Sicherheit.
 
@@ -71,7 +71,7 @@ Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung 
 
 **Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) ist ein serverloser Computedienst, mit dem Benutzer Code bedarfsgesteuert ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Verwenden Sie Azure Functions, um ein Skript oder einen Codeabschnitt als Reaktion auf verschiedene Ereignisse auszuführen.
 
-**Azure Machine Learning Service**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) ist ein Data Science-Verfahren, mit dem Computer aus vorhandenen Daten lernen können, um zukünftiges Verhalten, Ergebnisse und Trends vorherzusagen.
+**Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) ist ein Data Science-Verfahren, mit dem Computer aus vorhandenen Daten lernen können, um zukünftiges Verhalten, Ergebnisse und Trends vorherzusagen.
 
 **Azure Data Catalog**: [Data Catalog](../../data-catalog/overview.md) macht Datenquellen für Benutzer, die die Daten verwalten, einfach ermittelbar und verständlich. Häufig verwendete Datenquellen können registriert und markiert und nach Finanzdaten durchsucht werden. Die Daten verbleiben an ihrem vorhandenen Speicherort, aber eine Kopie der Metadaten wird Azure Data Catalog hinzugefügt, zusammen mit einem Verweis auf den Speicherort der Datenquelle. Die Metadaten werden außerdem indiziert, damit jede Datenquelle per Suchfunktion einfach ermittelt werden kann und für die Benutzer, die sie ermitteln, verständlich ist.
 

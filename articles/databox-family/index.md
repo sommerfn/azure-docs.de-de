@@ -9,14 +9,14 @@ ms.service: databox
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hub-page
-ms.date: 09/24/2018
+ms.date: 10/28/2019
 ms.author: alkohli
-ms.openlocfilehash: c0c5ea8dc069d24d01313bb68c0afb7c7aac1a33
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2a3d17dda5f0d7a1cecc13583981d3659775283
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61456635"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583206"
 ---
 <div id="main" class="v2">
 <h1>Azure Data Box</h1>
@@ -94,24 +94,6 @@ ms.locfileid: "61456635"
                         </div>
                         <div class="cardText">
                             <p><b>Data Box Gateway</b>: virtuelles Gerät mit Speicher. Verwenden Sie dieses Gerät, um Ihre Daten über das Netzwerk an Azure zu senden.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/databox-online/data-box-edge-overview">
-            <div class="cardSize">
-                <div class="cardPadding">
-                    <div class="card">
-                        <div class="cardImageOuter">
-                            <div class="cardImage"> 
-                                <img src="media/Edge_Icon_w_gear.svg" alt="" />
-                            </div>
-                        </div>
-                        <div class="cardText">
-                            <p><b>Data Box Edge</b>: physisches Speicher- und Computegerät. Verwenden Sie dieses Gerät, wenn Sie Ihre Daten während des Verschiebens in Azure analysieren, umwandeln oder filtern möchten.</p>
                         </div>
                     </div>
                 </div>

@@ -42,7 +42,7 @@
     - name: Erstellen einer App
       items:
         - name: Bestimmen von Benutzerabsichten
-          href: luis-quickstart-intents-only.md
+          href: tutorial-intents-only.md
         - name: Identifizieren von gängigen Benutzerdaten mit vordefinierten Modellen
           href: luis-tutorial-prebuilt-intents-entities.md
         - name: Ermitteln der Stimmung anhand von Benutzeräußerungen
@@ -116,6 +116,7 @@
           displayName: roles
         - name: Features
           href: luis-concept-feature.md
+          displayName: 'descriptor, phrase list'
     - name: Vorhersageergebnis
       href: luis-concept-prediction-score.md
     - name: Bewährte Methoden

@@ -100,7 +100,7 @@ Der Stammknoten für alle Anreicherungen ist `"/document"`. Wenn Sie Blob-Indexe
 
 ### <a name="skill-2-language-detection"></a>Qualifikation 2: Sprachenerkennung
  Die Qualifikation „Spracherkennung“ ist zwar die dritte in der Qualifikationsgruppe definierte Qualifikation (Qualifikation 3), sie wird aber als nächste Qualifikation ausgeführt. Da keine Eingaben erforderlich sind, wird sie nicht blockiert und parallel mit der vorherigen Qualifikation ausgeführt. Genau wie die Qualifikation „Aufteilung“ wird die Qualifikation „Spracherkennung“ auch einmal für jedes Dokument aufgerufen. Die Anreicherungsstruktur verfügt jetzt über einen neuen Knoten für die Sprache.
- ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "EnAnreicherungsstruktur nach Ausführung von Qualifikation 2"
+ ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Enrichment-Struktur nach dem Ausführen der Fähigkeiten #2 ")
  
  ### <a name="skill-3-key-phrases-skill"></a>Qualifikation 3: Qualifikation „Schlüsselbegriffe“ 
 

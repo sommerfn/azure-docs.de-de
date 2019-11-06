@@ -12,12 +12,12 @@ metadata:
   title: Dokumentation zur Personalisierung
   titleSuffix: Azure Cognitive Services
   description: Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
-  ms.openlocfilehash: f3ba5f5eef7885896d774fd8aab35784cfb6465e
-  ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/04/2019
-  ms.locfileid: "71950041"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73604199"
 landingContent:
 - title: Informationen zur Personalisierung
   linkLists:
@@ -97,7 +97,7 @@ landingContent:
       url: concepts-exploration.md
     - text: Merkmale, Aktion und Kontext
       url: concepts-features.md
-    - text: Aktives Lernen
+    - text: Aktive und inaktive Ereignisse
       url: concept-active-learning.md
     - text: Belohnungen
       url: concept-rewards.md
@@ -107,7 +107,7 @@ landingContent:
     links:
     - text: Verbessern einer Schleife mit Offlineauswertungen
       url: concepts-offline-evaluation.md
-    - text: Aktives Lernen
+    - text: Aktive und inaktive Ereignisse
       url: concept-active-learning.md
     - text: Skalierbarkeit und Leistung
       url: concepts-scalability-performance.md

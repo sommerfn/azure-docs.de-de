@@ -9,7 +9,7 @@
     - name: "Erstellen eines Internet\_Analyzer-Tests über das Portal"
       href: internet-analyzer-create-test-portal.md
     - name: "Erstellen eines Internet\_Analyzer-Tests mithilfe der Befehlszeilenschnittstelle"
-      herf: internet-analyzer-cli.md
+      href: internet-analyzer-cli.md
 - name: Anleitungen
   items:
     - name: Einbetten des Clients

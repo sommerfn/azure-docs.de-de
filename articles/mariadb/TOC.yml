@@ -43,6 +43,8 @@
       items:
         - name: Tarife
           href: concepts-pricing-tiers.md
+        - name: Vorauszahlen für eine reservierte Kapazität
+          href: concept-reserved-pricing.md
         - name: Einschränkungen
           href: concepts-limits.md
     - name: Datenzugriff und Sicherheit
