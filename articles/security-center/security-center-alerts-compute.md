@@ -1,6 +1,6 @@
 ---
-title: Bedrohungserkennung für Cloud Native Compute in Azure Security Center | Microsoft-Dokumentation
-description: In diesem Thema werden die in Azure Security Center verfügbaren Warnungen für Cloud Native Compute vorgestellt.
+title: Bedrohungserkennung für cloudnatives Computing in Azure Security Center | Microsoft-Dokumentation
+description: In diesem Artikel werden die in Azure Security Center verfügbaren Warnungen für cloudnatives Computing vorgestellt.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,29 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/02/2019
+ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c3fcbadf93ff72f7d2a1dca3b25ace81c9d4f1ae
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f6fba7bc8e8b7d040805f0be62d436caebf638af
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202626"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520903"
 ---
-# <a name="threat-detection-for-cloud-native-compute-in-azure-security-center"></a>Bedrohungserkennung für Cloud Native Compute in Azure Security Center
+# <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Bedrohungserkennung für cloudnatives Computing in Azure Security Center
 
-Als Cloudanbieter nutzt Azure Security Center seine einzigartigen Möglichkeiten, um interne Protokolle zu analysieren und Angriffsmethoden für mehrere Ziele zu identifizieren. In diesem Thema werden die Warnungen vorgestellt, die für folgende Azure-Dienste zur Verfügung stehen:
+Als native Lösung bietet Azure Security Center einzigartige Einblicke in interne Protokolle zur Erkennung von Angriffsmethoden über mehrere Ziele hinweg. In diesem Artikel werden die Warnungen vorgestellt, die für folgende Azure-Dienste zur Verfügung stehen:
 
 * [Azure App Service](#app-services)
-* [Azure Container Service](#azure-containers) 
+* [Azure-Container](#azure-containers) 
+
+> [!NOTE]
+> Diese Dienste sind derzeit nicht in Azure Government- und Sovereign Cloud-Regionen verfügbar.
 
 ## Azure App Service <a name="app-services"></a>
 
-Security Center nutzt die Kapazitäten der Cloud, um Angriffe auf Anwendungen unter App Service zu identifizieren. Webanwendungen sind in modernen Netzwerken weit verbreitet, und Angreifer versuchen, diese ausfindig zu machen und Schwachstellen auszunutzen. Bevor Anforderungen für in Azure ausgeführte Anwendungen an bestimmte Umgebungen weitergeleitet werden, durchlaufen sie mehrere Gateways, wo sie jeweils überprüft und protokolliert werden. Diese Daten werden dann verwendet, um Exploits und Angreifer zu identifizieren sowie um neue Muster zu erkennen, die später zur Anwendung kommen.
+Security Center nutzt die Kapazitäten der Cloud, um Angriffe auf Anwendungen unter App Service zu identifizieren. Angreifer testen Webanwendungen, um Schwachstellen zu suchen und auszunutzen. Bevor Anforderungen für in Azure ausgeführte Anwendungen an bestimmte Umgebungen weitergeleitet werden, durchlaufen sie mehrere Gateways, wo sie jeweils überprüft und protokolliert werden. Diese Daten werden dann verwendet, um Exploits und Angreifer zu identifizieren sowie um neue Muster zu erkennen, die später zur Anwendung kommen.
 
 Dank der Möglichkeiten, über die Azure als Cloudanbieter verfügt, kann Security Center interne App Service-Protokolle analysieren und Angriffsmethoden für mehrere Ziele identifizieren. Die Methodik umfasst beispielsweise großflächige Scans und verteilte Angriffe. Bei dieser Art von Angriff, der in der Regel von einer kleinen Untergruppe von IP-Adressen ausgeht, werden ähnliche Endpunkte auf mehreren Hosts durchforstet. Die Angriffe dienen dazu, anfällige Seiten oder Plug-Ins ausfindig zu machen, und sind aus der Perspektive eines einzelnen Hosts nicht erkennbar.
 
-Security Center hat auch Zugriff auf die zugrunde liegenden Sandboxes und virtuellen Computer. In Kombination mit forensischen Techniken für den Arbeitsspeicher kann die Infrastruktur das gesamte Spektrum erfassen – von neu in Umlauf gebrachten Angriffen bis hin zu kompromittierten Kundencomputern. So kann Security Center Angriffe auf Webanwendungen erkennen, auch wenn diese bereits längere Zeit missbraucht werden.
+Security Center hat auch Zugriff auf die zugrunde liegenden Sandboxes und virtuellen Computer. In Kombination mit forensischen Techniken für den Arbeitsspeicher kann die Infrastruktur das gesamte Spektrum erfassen – von neu in Umlauf gebrachten Angriffen bis hin zu kompromittierten Kundencomputern. Auch wenn Security Center bereitgestellt wird, nachdem eine Web-App ausgenutzt wurde, können fortlaufende Angriffe möglicherweise erkannt werden.
 
 > [!div class="mx-tableFixed"]
 
@@ -50,11 +53,21 @@ Security Center hat auch Zugriff auf die zugrunde liegenden Sandboxes und virtue
 |**Process execution from temporary folder** (Ausführung eines Prozesses aus dem temporären Ordner)|Bei der Analyse von App Service-Prozessen wurde die Ausführung eines Prozesses aus dem temporären Ordner der App erkannt. Dieses Verhalten kann zwar legitim sein, in Webanwendungen kann es jedoch auch auf schädliche Aktivitäten hindeuten.|
 |**Attempt to run high privilege command detected** (Versuchte Ausführung eines Befehls mit hohen Berechtigungen erkannt)|Bei der Analyse von App Service-Prozessen wurde die versuchte Ausführung eines Befehls erkannt, für den hohe Berechtigungen erforderlich sind. Der Befehl wurde im Kontext der Webanwendung ausgeführt. Dieses Verhalten kann zwar legitim sein, in Webanwendungen kann es jedoch auch auf schädliche Aktivitäten hindeuten.|
 
-> [!NOTE]
-> Die Security Center-Bedrohungserkennung für App Service ist momentan in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
+## Azure-Container <a name="azure-containers"></a>
 
-## Azure Container Service <a name="azure-containers"></a>
+Security Center bietet eine Echtzeit-Bedrohungserkennung für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
 
-Für Container auf Linux-Computern bietet Security Center eine Echtzeit-Bedrohungserkennung auf der Grundlage des AuditD-Frameworks. Die Warnungen identifizieren verschiedene verdächtige Docker-Aktivitäten – etwa die Erstellung eines privilegierten Containers auf dem Host (ein Anzeichen dafür, dass ein SSH-Server (Secure Shell) in einem Docker-Container ausgeführt wird) oder die Verwendung von Crypto-Minern. 
+Bedrohungen auf unterschiedlichen Ebenen werden erkannt: 
 
-Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern. Neben der Linux-Erkennung bietet Security Center auch spezifischere Analysen für Containerbereitstellungen.
+* **Hostebene**: der Security Center-Agent (verfügbar im Tarif „Standard“, weitere Informationen unter [Preise](security-center-pricing.md)) überwacht Linux auf verdächtige Aktivitäten. Der Agent löst Warnungen für verdächtige Aktivitäten aus, die aus dem Knoten oder einem darauf ausgeführten Container stammen. Beispiele für derartige Aktivitäten sind Webshell-Erkennung und Verbindungen mit bekannten verdächtigen IP-Adressen. </br>
+Um einen tieferen Einblick in die Sicherheit Ihrer Containerumgebung zu erhalten, überwacht der Agent containerspezifische Analysen. Er löst Warnungen für Ereignisse aus, z.B. die Erstellung privilegierter Container, den verdächtigen Zugriff auf API-Server und Secure Shell (SSH)-Server, die in einem Docker-Container ausgeführt werden.
+
+    >[!NOTE]
+    > Wenn Sie die Agents nicht auf Ihren Hosts installieren möchten, kommen Sie nur in den Genuss eines Teils der Vorteile und Warnungen der Bedrohungserkennung. Sie erhalten weiterhin Warnungen im Zusammenhang mit der Netzwerkanalyse und der Kommunikation mit schädlichen Servern.
+
+* Für die **AKS-Clusterebene** ist eine Bedrohungserkennung basierend auf der Analyse der Kubernetes-Überwachungsprotokolle vorhanden. Um diese Überwachung **ohne Agents** zu aktivieren, fügen Sie die Kubernetes-Option über die Seite **Preise und Einstellungen** (siehe [Preise](security-center-pricing.md)) zu Ihrem Abonnement hinzu. Zum Generieren von Warnungen auf dieser Ebene überwacht Security Center Ihre von AKS verwalteten Dienste mithilfe der von AKS abgerufenen Protokolle. Beispiele für Ereignisse auf dieser Ebene sind offengelegte Kubernetes-Dashboards, die Erstellung von Rollen mit hohen Berechtigungen und sensiblen Einbindungen. 
+
+    >[!NOTE]
+    > Security Center generiert Erkennungswarnungen für Azure Kubernetes Service-Aktionen und -Bereitstellungen, die nach der Aktivierung der Kubernetes-Option in den Abonnementeinstellungen erfolgen. 
+
+Außerdem wird die Bedrohungslandschaft von unserem globalen Team von Sicherheitsforschern ständig überwacht. Sie fügen containerspezifische Warnungen und Sicherheitsrisiken hinzu, sobald sie erkannt werden.

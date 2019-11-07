@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2317d0206e3fc4a342606d17c172ac42cbe82870
+ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200777"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73520691"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen, Nicht-Azure-Server und virtuellen Computer. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
@@ -30,7 +30,7 @@ Auf dem Dashboard **Security Center – Übersicht** können Sie den Sicherheits
 
 Sie können eine Liste aller Probleme anzeigen, indem Sie auf **Empfehlungen** klicken. Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
-Eine vollständige Liste der Empfehlungen für Compute Services und App Services finden Sie unter [Empfehlungen](security-center-virtual-machine-protection.md#compute-and-app-recommendations).
+Eine vollständige Liste der Empfehlungen für Compute Services und App Services finden Sie unter [Empfehlungen](security-center-virtual-machine-protection.md#compute-and-app-recs).
 
 Wählen Sie zum Fortsetzen des Vorgangs unter **Ressourcen** oder im Security Center-Hauptmenü die Option **Compute und Apps** aus.
 ![Security Center-Dashboard](./media/security-center-virtual-machine-recommendations/overview.png)
@@ -42,7 +42,7 @@ Unter **Compute und Apps** finden Sie die folgenden Registerkarten:
 - **VMs und Computer:** Liste Ihrer virtuellen und physischen Computer sowie deren aktueller Sicherheitsstatus
 - **Clouddienste:** Liste mit Ihren von Security Center überwachten Web- und Workerrollen
 - **App Services**: Liste mit Ihren App Service-Umgebungen und deren jeweiliger aktueller Sicherheitsstatus.
-- **Container (Vorschau)** : Liste der auf IaaS-Linux-Computern gehosteten Container und Bewertung der Sicherheit ihrer Docker-Konfigurationen.
+- **Container**: Liste Ihrer Container und Sicherheitsbewertung ihrer Konfigurationen.
 - **Computeressourcen (Vorschauversion)** : Liste mit Empfehlungen für Ihre Computeressourcen wie Service Fabric-Cluster und Event Hubs.
 
 Wählen Sie zum Fortsetzen des Vorgangs **Compute und Apps** unter **Ressourcensicherheitshygiene** aus.
@@ -178,7 +178,7 @@ Festlegen einer neuen Skalierungsgruppen, um automatisch Microsoft Monitoring Ag
 Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für alle vorhandenen Skalierungsgruppen festlegen möchten, wenden Sie unter **Wiederherstellung** die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
 
 
-## <a name="compute-and-app-recommendations"></a>Compute- und App-Empfehlungen
+## Compute- und App-Empfehlungen<a name="compute-and-app-recs"></a>
 |Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
 |----|----|----|----|
 |App Service|20|Zugriff auf Webanwendung nur über HTTPS gestatten|Beschränken Sie den Zugriff von Webanwendungen nur auf HTTPS.|
