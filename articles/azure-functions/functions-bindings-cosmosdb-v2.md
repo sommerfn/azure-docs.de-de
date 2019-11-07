@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 419241bf1e8511dd6015cd3f791099d6959c3e34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8aee88f6ef3f6a73beadfdf242d79d9b361de0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086750"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469393"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB-Bindungen für Azure Functions 2.x
 
@@ -274,7 +274,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**leaseExpirationInterval**| **LeaseExpirationInterval**| (Optional) Wenn gesetzt, wird das Intervall in Millisekunden definiert, für das die Lease für eine Lease, die eine Partition darstellt, ausgeführt wird. Wenn die Lease innerhalb dieses Intervalls nicht erneuert wird, läuft sie ab, und der Besitz der Partition wechselt zu einer anderen Instanz. Der Standardwert ist 60000 (60 Sekunden).
 |**leaseRenewInterval**| **LeaseRenewInterval**| (Optional) Wenn gesetzt, wird das Erneuerungsintervall in Millisekunden für alle Leases für Partitionen definiert, die aktuell in einer Instanz vorhanden sind. Der Standardwert ist 17000 (17 Sekunden).
 |**checkpointFrequency**| **CheckpointFrequency**| (Optional) Wenn gesetzt, wird das Intervall in Millisekunden zwischen Leaseprüfpunkten definiert. Dies ist standardmäßig immer nach einem erfolgreichen Funktionsaufruf der Fall.
-|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Optional) Wenn gesetzt, wird die Höchstzahl von Elementen angepasst, die von einem Funktionsaufruf empfangen werden können.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (Optional) Wenn festgelegt, legt diese Eigenschaft die Höchstzahl von Elementen fest, die pro Funktionsaufruf empfangen werden können. Wenn Vorgänge in der überwachten Sammlung über gespeicherte Prozeduren ausgeführt werden, wird der [Transaktionsbereich](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) beim Lesen von Elementen aus dem Änderungsfeed beibehalten. Dadurch ist es möglich, dass die Anzahl der empfangenen Elemente höher als der angegebene Wert ist, sodass die von derselben Transaktion geänderten Elemente als Teil eines atomischen Batches zurückgegeben werden.
 |**startFromBeginning**| **StartFromBeginning**| (Optional) Wenn dieser Parameter festgelegt ist, liest der Trigger Änderungen beginnend vom Anfang des Verlaufs der Sammlung anstatt ab der aktuellen Zeit. Dies funktioniert nur beim ersten Start des Triggers. Bei nachfolgenden Ausführungen sind die Prüfpunkte bereits gespeichert. Wenn die Leases bereits erstellt sind, hat das Festlegen auf den Wert `true` keine Auswirkungen.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 26f9bac42ef98f1063194340a5aa20aef6fe316e
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972946"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470903"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurieren einer Linux-Java-App für Azure App Service
 
@@ -110,7 +110,7 @@ Azure App Service für Linux unterstützt eine sofort verfügbare Optimierung un
 
 - [Konfigurieren von App-Einstellungen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
 - [Einrichten einer benutzerdefinierten Domäne](../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Aktivieren von SSL](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Konfigurieren von SSL-Bindungen](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Hinzufügen eines CDN](../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Konfigurieren der Kudu-Website](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
@@ -229,7 +229,7 @@ Spring Boot-Entwickler können die [Azure Active Directory-Startoption für Spri
 
 ### <a name="configure-tlsssl"></a>Konfigurieren von TLS/SSL
 
-Befolgen Sie die Anweisungen unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), um ein vorhandenes SSL-Zertifikat hochzuladen und an den Domänennamen Ihrer Anwendung zu binden. Standardmäßig lässt Ihre Anwendung dennoch HTTP-Verbindungen zu. Befolgen Sie die spezifischen Schritte im Tutorial, um SSL und TLS zu erzwingen.
+Befolgen Sie die Anweisungen unter [Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung in Azure App Service](../configure-ssl-bindings.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), um ein vorhandenes SSL-Zertifikat hochzuladen und dieses an den Domänennamen Ihrer Anwendung zu binden. Standardmäßig lässt Ihre Anwendung dennoch HTTP-Verbindungen zu. Befolgen Sie die spezifischen Schritte im Tutorial, um SSL und TLS zu erzwingen.
 
 ### <a name="use-keyvault-references"></a>Verwenden von KeyVault-Verweisen
 

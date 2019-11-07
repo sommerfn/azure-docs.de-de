@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 540435e3e018ae77477030ae8b9f727d71782121
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704592"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496331"
 ---
 # <a name="use-firewall-rules"></a>Verwenden von Firewallregeln
 
@@ -24,7 +24,7 @@ Für Szenarien, in denen Azure Service Bus nur von bestimmten bekannten Sites au
 
 ## <a name="when-to-use"></a>Einsatzgebiete
 
-Wenn Sie Ihre Umgebung so einrichten möchten, dass Service Bus nur Datenverkehr aus einem bestimmten IP-Adressbereich empfängt, können Sie eine *Firewall* verwenden, um andere IP-Adressen für Service Bus-Endpunkte zu blockieren. Ein Beispiel wäre etwa, wenn Sie Service Bus mit [Azure Express Route][express-route] verwenden, um private Verbindungen mit Ihrer lokalen Infrastruktur zu erstellen. 
+Wenn Sie Ihre Umgebung so einrichten möchten, dass Service Bus nur Datenverkehr aus einem bestimmten IP-Adressbereich empfängt, können Sie eine *Firewall* verwenden, um andere IP-Adressen für Service Bus-Endpunkte zu blockieren. Sie verwenden beispielsweise Service Bus mit [Azure Express Route][express-route], um private Verbindungen mit Ihrer lokalen Infrastruktur herzustellen. 
 
 ## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
 
@@ -51,7 +51,6 @@ IP-Filterregeln werden der Reihenfolge nach angewendet, und die erste Regel, die
 > - Integration in Azure Event Grid
 > - Azure IoT Hub-Routen
 > - Azure IoT Device Explorer
-> - Azure-Daten-Explorer
 >
 > Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
 > - Azure App Service
@@ -143,13 +142,13 @@ Vorlagenparameter:
   }
 ```
 
-Gehen Sie zum Bereitstellen der Vorlage gemäß der Anleitung für [Azure Resource Manager][lnk-deploy] vor.
+Gehen Sie zum Bereitstellen der Vorlage gemäß den Anweisungen für [Azure Resource Manager][lnk-deploy] vor.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Einschränken des Service Bus-Zugriffs für virtuelle Azure-Netzwerke finden Sie unter dem folgenden Link:
 
-- [Use Virtual Network service endpoints with Azure Service Bus][lnk-vnet] (Verwenden von Virtual Network-Dienstendpunkten für Service Bus)
+- [Verwenden von Virtual Network-Dienstendpunkten für Service Bus][lnk-vnet]
 
 <!-- Links -->
 

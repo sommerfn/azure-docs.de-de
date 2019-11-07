@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 8e4c817437c22d15e60cf48d5976c30433e83d75
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 715db36921427dc0ac5dcdad24c2c026b1ea1326
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970019"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496690"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Ermitteln und Verwenden von Beispielnotebooks
 
@@ -30,7 +30,7 @@ Sobald Sie ein Notebook ermittelt haben, das Sie untersuchen möchten, sollten S
 
 ## <a name="great-sample-notebooks"></a>Tolle Beispielnotebooks
 
-- Das [Azure Notebooks-Startset](https://notebooks.azure.com/#sample-redirect) beinhaltet Einführungen in Python, R und F#, außerdem Notebooks zur Veranschaulichung des Datenzugriffs, Azure Machine Learning Services und einige Data Science-Übungen.
+- Das [Azure Notebooks-Startset](https://notebooks.azure.com/#sample-redirect) beinhaltet Einführungen in Python, R und F#, außerdem Notebooks zur Veranschaulichung des Datenzugriffs, Azure Machine Learning und einige Data Science-Übungen.
 - [Introduction to Jupyter notebooks](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) (Einführung in Jupyter-Notebooks, jupyter.org)
 - [Introduction to Data Science](https://github.com/jakevdp/PythonDataScienceHandbook/tree/master/notebooks) (Einführung in Data Science) von Jake Vanderplas.
 - [Katalog mit interessanten Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks) (Jupyter-Projekt auf GitHub)
@@ -43,4 +43,4 @@ Sobald Sie ein Notebook ermittelt haben, das Sie untersuchen möchten, sollten S
 - [Gewusst wie: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
 - [Gewusst wie: Arbeiten mit Datendateien](work-with-project-data-files.md)
 - [Gewusst wie: Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)
-- [Gewusst wie: Verwenden von Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Gewusst wie: Verwenden von Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

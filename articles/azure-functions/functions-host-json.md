@@ -1,20 +1,18 @@
 ---
 title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
-services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 96c346db74c1e6c43c3501b657621d09e019309c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596858"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469199"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host.json-Referenz für Azure Functions 2.x  
 
@@ -73,6 +71,9 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
             }
         }
     },
+    "managedDependency": {
+        "enabled": true
+    },
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -80,10 +81,7 @@ Für die folgenden *host.json*-Beispieldateien sind alle möglichen Optionen ang
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ],
-    "managedDependency": {
-        "enabled": true
-    }
+    "watchDirectories": [ "Shared", "Test" ]
 }
 ```
 
@@ -150,9 +148,7 @@ Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden. Ein leeres A
 ## <a name="functiontimeout"></a>functionTimeout
 
 Gibt die Timeoutdauer für alle Funktionen an. Die Angabe erfolgt im TimeSpan-Zeichenfolgenformat. Bei einem serverlosen Verbrauchsplan liegt der gültige Bereich zwischen 1 Sekunde und 10 Minuten, wobei der Standardwert bei 5 Minuten liegt.  
-Bei einem App Service-Plan vom Typ „Dedicated“ gibt es keine allgemeine Beschränkung, und der Standardwert hängt von der Version der Runtime ab: 
-+ Version 1.x: Der Standardwert ist *null*, was bedeutet, dass kein Timeout erfolgt.   
-+ Version 2.x: Der Standardwert lautet 30 Minuten. Der Wert `-1` gibt eine unbegrenzte Ausführung an.
+Bei einem dedizierten App Service-Plan gibt es keine allgemeine Beschränkung, und der Standardwert beträgt 30 Minuten. Der Wert `-1` gibt eine unbegrenzte Ausführung an.
 
 ```json
 {
@@ -251,6 +247,18 @@ Diese Einstellung ist ein untergeordnetes Element von [logging](#logging). Sie s
 |---------|---------|---------| 
 |isEnabled|false|Aktiviert oder deaktiviert die Konsolenprotokollierung.| 
 
+## <a name="manageddependency"></a>managedDependency
+
+Verwaltete Abhängigkeit ist ein Vorschaufeature, das derzeit nur mit PowerShell-basierten Funktionen unterstützt wird. Sie ermöglicht, dass Abhängigkeiten automatisch vom Dienst verwaltet werden können. Wenn die `enabled`-Eigenschaft auf `true` festgelegt ist, wird die Datei `requirements.psd1` verarbeitet. Abhängigkeiten werden aktualisiert, wenn Nebenversionen veröffentlicht werden. Weitere Informationen finden Sie unter [Verwaltete Abhängigkeit](functions-reference-powershell.md#dependency-management) im PowerShell-Artikel.
+
+```json
+{
+    "managedDependency": {
+        "enabled": true
+    }
+}
+```
+
 ## <a name="queues"></a>queues
 
 Die Konfigurationseinstellungen finden Sie in [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue.md#host-json).  
@@ -298,18 +306,6 @@ Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-cshar
 ```json
 {
     "watchDirectories": [ "Shared" ]
-}
-```
-
-## <a name="manageddependency"></a>managedDependency
-
-Verwaltete Abhängigkeit ist eine Previewfunktion (Vorschaufeature), die derzeit nur mit PowerShell-basierten Funktionen unterstützt wird. Sie ermöglicht, dass Abhängigkeiten automatisch vom Dienst verwaltet werden können. Ist die enabled-Eigenschaft auf „true“ festgelegt, wird die Datei [requirements.psd1](functions-reference-powershell.md#dependency-management) verarbeitet. Abhängigkeiten werden aktualisiert, wenn irgendwelche Nebenversionen veröffentlicht werden.
-
-```json
-{
-    "managedDependency": {
-        "enabled": true
-    }
 }
 ```
 

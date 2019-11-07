@@ -12,18 +12,23 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b0fab51e002ecb431bf68f58984290889296b2a9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097545"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470111"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
 Azure bietet integrierte Diagnosefunktionen zur Unterstützung beim Debuggen einer [App Service-App](overview.md). In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung aktivieren und Ihrer Anwendung Instrumentierung hinzufügen und wie Sie die von Azure protokollierten Informationen abrufen.
 
 In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet, um mit Diagnoseprotokollen zu arbeiten. Informationen zum Arbeiten mit Diagnoseprotokollen in Visual Studio finden Sie unter [Problembehandlung von Azure in Visual Studio](troubleshoot-dotnet-visual-studio.md).
+
+> [!NOTE]
+> Zusätzlich zu den Protokollierungsanweisungen in diesem Artikel gibt es eine neue, integrierte Protokollierungsfunktion mit Azure Monitor. Sie finden diese Funktion auf den Seiten zu [Protokollen und Diagnoseeinstellungen (Vorschau)](https://aka.ms/appsvcblog-azmon). 
+>
+>
 
 |type|Plattform|Location|BESCHREIBUNG|
 |-|-|-|-|
@@ -59,7 +64,7 @@ Die Option **Dateisystem** ist für das temporäre Debuggen bestimmt und schalte
 
 Wählen Sie die **Ebene** oder die zu protokollierende Detailebene aus. Die folgende Tabelle zeigt die Protokollkategorien der einzelnen Ebenen:
 
-| Ebene | Enthaltene Kategorien |
+| Level | Enthaltene Kategorien |
 |-|-|
 |**Disabled** | Keine |
 |**Fehler** | Fehler, Kritisch |

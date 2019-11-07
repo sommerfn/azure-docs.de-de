@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: b9e910f24503f6bbf86e8ed8cdcb6f422d2490d9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073994"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470126"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile Back-Ends und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -70,7 +70,7 @@ Für eine App sind folgende Metriken verfügbar:
 
 | Metrik | BESCHREIBUNG |
 | --- | --- |
-| **Durchschnittliche Antwortzeit** | Die durchschnittliche Zeit in Millisekunden, die die App zum Verarbeiten von Anforderungen benötigt. |
+| **Durchschnittliche Antwortzeit** | Die durchschnittliche Zeit in Sekunden, die die App zum Bereitstellen von Anforderungen benötigt. |
 | **Durchschnittlicher Arbeitssatz für Arbeitsspeicher** | Die durchschnittliche Menge an Arbeitsspeicher, die von der App verwendet wird, in Megabytes (MiB). |
 | **Verbindungen** | Die Anzahl gebundener Sockets in der Sandbox („w3wp.exe“ und untergeordnete Prozesse).  Ein gebundener Socket wird durch Aufrufen von bind()-/connect()-APIs erstellt und bleibt erhalten, bis er per „CloseHandle()“/“closesocket()“ geschlossen wird. |
 | **CPU-Zeit** | Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu dieser Metrik finden Sie unter [CPU-Zeit und CPU-Prozentsatz](#cpu-time-vs-cpu-percentage). |

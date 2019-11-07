@@ -16,16 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: edba2a18e3b086a132f0bba7622df5df389671c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372406"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489198"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
-
-
+# <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
 Wenn Sie ein Ermittler sind, der proaktiv nach Sicherheitsbedrohungen suchen möchte, können Sie die leistungsstarken Bedrohungssuch- und Abfragetools von Azure Sentinel verwenden, um nach Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation zu suchen. Aber Ihre Systeme und Sicherheitsappliances erzeugen Unmengen von Daten, für die es schwierig sein kann, sie zu aussagefähigen Ereignissen zu analysieren und zu filtern. Um Sicherheitsanalysten dabei zu unterstützen, proaktiv nach neuen Anomalien zu suchen, die von Ihren Sicherheitsanwendungen nicht erkannt wurden, werden Sie von den in Azure Sentinel integrierten Bedrohungssuchabfragen dazu geführt, die richtigen Fragen zu stellen, um Probleme in den Daten zu finden, die bereits in Ihrem Netzwerk vorhanden sind. 
 

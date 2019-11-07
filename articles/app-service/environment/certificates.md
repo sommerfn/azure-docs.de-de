@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8b8e7270851c71869b1a67f0f0f0ba2187f0e87
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069708"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470672"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
 
@@ -64,7 +64,7 @@ In einer ASE gehostete Apps können die anwendungsorientierten Zertifikatsfeatur
 - IP-basiertes SSL, das nur mit einer externen ASE unterstützt wird.  Eine ILB-ASE unterstützt kein IP-basiertes SSL.
 - KeyVault-gehostete Zertifikate 
 
-Die Anweisungen zum Hochladen und Verwalten dieser Zertifikate finden Sie im App Service SSL-Tutorial https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl.  Wenn Sie lediglich Zertifikate so konfigurieren, dass sie mit einem benutzerdefinierten Domänennamen übereinstimmen, den Sie Ihrer Web-App zugewiesen haben, dann reichen diese Anweisungen aus. Wenn Sie das Zertifikat für eine ILB-ASE-Web-App mit dem Standarddomänennamen hochladen, dann geben Sie die SCM-Website im SAN des Zertifikats an, wie bereits erwähnt. 
+Anweisungen zum Hochladen und Verwalten dieser Zertifikate finden Sie unter [Hinzufügen eines SSL-Zertifikats in Azure App Service](../configure-ssl-certificate.md).  Wenn Sie lediglich Zertifikate so konfigurieren, dass sie mit einem benutzerdefinierten Domänennamen übereinstimmen, den Sie Ihrer Web-App zugewiesen haben, dann reichen diese Anweisungen aus. Wenn Sie das Zertifikat für eine ILB-ASE-Web-App mit dem Standarddomänennamen hochladen, dann geben Sie die SCM-Website im SAN des Zertifikats an, wie bereits erwähnt. 
 
 ## <a name="tls-settings"></a>TLS-Einstellungen 
 

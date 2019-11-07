@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 3d478c2421066c8347622f9064c479bb8255b112
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 28734e5eaa693ca4ee31603863b69605a1d92c88
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621751"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467873"
 ---
-# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen
+# <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen (klassisch)
 
 In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics-Aufträge effizient skalieren, die Azure Machine Learning-Funktionen nutzen. Allgemeine Informationen zum Skalieren von Stream Analytics-Aufträgen finden Sie im Artikel [Skalieren von Aufträgen](stream-analytics-scale-jobs.md).
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics-Aufträge eff
 
 Eine Machine Learning-Funktion kann in Stream Analytics wie ein normaler Funktionsaufruf in der Stream Analytics-Abfragesprache verwendet werden. Im Hintergrund handelt es sich bei den Funktionsaufrufen aber um Azure Machine Learning-Webdienstanforderungen.
 
-Sie können den Durchsatz von Machine Learning-Webdienstanforderungen verbessern, indem Sie mehrere Zeilen im selben Webdienst-API-Aufruf zusammen im Batch verarbeiten. Diese Gruppierung wird als Mini-Batch bezeichnet. Weitere Informationen finden Sie unter [Azure Machine Learning Studio-Webdienste](../machine-learning/studio/consume-web-services.md). Die Unterstützung für Azure Machine Learning Studio in Stream Analytics befindet sich in der Vorschau.
+Sie können den Durchsatz von Machine Learning-Webdienstanforderungen verbessern, indem Sie mehrere Zeilen im selben Webdienst-API-Aufruf zusammen im Batch verarbeiten. Diese Gruppierung wird als Mini-Batch bezeichnet. Weitere Informationen finden Sie unter [Azure Machine Learning Studio-Webdienste (klassisch)](../machine-learning/studio/consume-web-services.md). Die Unterstützung für Azure Machine Learning Studio (klassisch) in Stream Analytics befindet sich in der Vorschau.
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>Konfigurieren eines Stream Analytics-Auftrags mit Machine Learning-Funktionen
 
@@ -34,7 +34,7 @@ Die vom Stream Analytics-Auftrag verwendete Machine Learning-Funktion wird mit z
 
 Um die geeigneten Werte für SUs zu ermitteln, entscheiden Sie, ob Sie die Latenz des Stream Analytics-Auftrags oder den Durchsatz der einzelnen SUs optimieren möchten. SUs können einem Auftrag immer hinzugefügt werden, um den Durchsatz einer gut partitionierten Stream Analytics-Abfrage zu erhöhen. Durch zusätzliche SUs erhöhen sich aber die Kosten für die Ausführung des Auftrags.
 
-Ermitteln Sie die *Latenztoleranz* für Ihren Stream Analytics-Auftrag. Durch eine höhere Batchgröße erhöht sich auch die Latenz Ihrer Azure Machine Learning Service-Anforderungen und die Latenz des Stream Analytics-Auftrags.
+Ermitteln Sie die *Latenztoleranz* für Ihren Stream Analytics-Auftrag. Durch eine höhere Batchgröße erhöht sich auch die Latenz Ihrer Azure Machine Learning-Anforderungen und die Latenz des Stream Analytics-Auftrags.
 
 Eine höhere Batchgröße ermöglicht es dem Stream Analytics-Auftrag, **mehr Ereignisse** mit **derselben Anzahl** von Machine Learning-Webdienstanforderungen zu verarbeiten. Die wachsende Latenz des Machine Learning-Webdiensts verhält sich in der Regel sublinear zum Anstieg der Batchgröße. 
 

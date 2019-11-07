@@ -1,6 +1,6 @@
 ---
-title: Zugriff auf und Anpassen des neuen Entwicklerportals – Azure API Management | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie das neue Entwicklerportal in API Management verwenden.
+title: Überblick über das Azure API Management-Entwicklerportal – Azure API Management | Microsoft-Dokumentation
+description: Erfahren Sie mehr über das Entwicklerportal in API Management.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -10,105 +10,125 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 1311328dde6fc70202ce3c6271b33f79d52102cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672788"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472226"
 ---
-# <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Zugriff auf und Anpassen des neuen Entwicklerportals – Azure API Management
+# <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
-Dieser Artikel veranschaulicht, wie Sie auf das neue Azure API Management-Entwicklerportal zugreifen. Er führt Sie durch die Visual Editor-Erfahrung – Hinzufügen und Bearbeiten von Inhalten – sowie durch das Anpassen des Aussehens der Website.
+Das Entwicklerportal ist eine automatisch generierte, vollständig anpassbare Website mit der Dokumentation Ihrer APIs. Dort können API-Consumer ihre APIs ermitteln, erfahren, wie sie verwendet werden, Zugriff anfordern und die APIs ausprobieren.
 
-![Neues Entwicklerportal für API Management](media/api-management-howto-developer-portal/cover.png)
+In diesem Artikel werden die Unterschiede zwischen selbstgehosteten und verwalteten Versionen des Entwicklerportals in API Management beschrieben. Außerdem wird die Architektur erläutert, und es werden Antworten auf häufig gestellte Fragen bereitgestellt.
 
-## <a name="prerequisites"></a> Voraussetzungen
+> [!WARNING]
+> Zurzeit erfolgt das Rollout des neuen Entwicklerportals in die API Management-Dienste.
+> Wenn Ihr Dienst neu erstellt wurde oder es sich um einen Dienst der Entwicklerebene handelt, sollten Sie bereits über die neueste Version verfügen. Andernfalls können Probleme auftreten (z.B. mit der Veröffentlichungsfunktion). Das Featurerollout wird am Montag, den 11. November 2019 abgeschlossen.
+>
+> Erfahren Sie, wie Sie von der Vorschauversion zur allgemein verfügbaren Version des neuen Entwicklerportals [migrieren](#preview-to-ga) können.
 
-- Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
-- Importieren und veröffentlichen Sie eine Azure API Management-Instanz. Weitere Informationen finden Sie unter [Importieren und Veröffentlichen](import-and-publish.md).
+![Entwicklerportal für API Management](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
-
-> [!NOTE]
-> Das neue Entwicklerportal ist zurzeit als Vorschauversion verfügbar.
 
 ## <a name="managed-vs-self-hosted"></a> Verwaltete und selbstgehostete Versionen
 
 Sie können Ihr Entwicklerportal auf zwei Arten erstellen:
 
-- **Verwaltete Version**: Indem Sie das in Ihre API Management-Instanz integrierte Portal bearbeiten und anpassen, auf das Sie über die URL `<your-api-management-instance-name>.developer.azure-api.net` zugreifen können.
-- **Selbst gehostete Version**: Indem Sie Ihr Portal außerhalb einer API Management-Instanz bereitstellen und selbst hosten. Dieser Ansatz ermöglicht es Ihnen, die Codebasis des Portals zu bearbeiten und die bereitgestellten Kernfunktionen zu erweitern. Details und Anweisungen finden Sie im [GitHub-Repository mit dem Quellcode des Portals][1].
+- **Verwaltete Version**: Indem Sie das in Ihre API Management-Instanz integrierte Portal bearbeiten und anpassen, auf das Sie über die URL `<your-api-management-instance-name>.developer.azure-api.net` zugreifen können. Lesen Sie [diesen Dokumentationsartikel](api-management-howto-developer-portal-customize.md), um zu erfahren, wie Sie auf das verwaltete Portal zugreifen und es anpassen können.
+- **Selbst gehostete Version**: Indem Sie Ihr Portal außerhalb einer API Management-Instanz bereitstellen und selbst hosten. Dieser Ansatz ermöglicht es Ihnen, die Codebasis des Portals zu bearbeiten und die bereitgestellten Kernfunktionen zu erweitern. Sie müssen auch ein Upgrade des Portals auf die neueste Version ausführen. Details und Anweisungen finden Sie im [GitHub-Repository mit dem Quellcode des Portals][1]. Das [Tutorial für die verwaltete Version](api-management-howto-developer-portal-customize.md) führt Sie schrittweise durch den Verwaltungsbereich des Portals, der auch in der selbstgehosteten Version enthalten ist.
 
-## <a name="managed-access"></a> Zugreifen auf die verwaltete Version des Portals
+## <a name="portal-architectural-concepts"></a>Konzepte der Portarchitektur
 
-Führen Sie die folgenden Schritte aus, um auf die verwaltete Version des Portals zuzugreifen.
+Die Portalkomponenten können logisch in zwei Kategorien unterteilt werden: *Code* und *Inhalt*.
 
-1. Wechseln Sie im Azure-Portal zu Ihrer API Management-Dienstinstanz.
-1. Klicken Sie oben in der Navigationsleiste auf die Schaltfläche **Neues Entwicklerportal (Vorschau)** . Eine neue Browserregisterkarte mit einer administrativen Version des Portals wird geöffnet. Wenn Sie zum ersten Mal auf das Portal zugreifen, wird der Standardinhalt automatisch bereitgestellt.
+*Code* wird im [GitHub-Repository][1] verwaltet und umfasst Folgendes:
 
-## <a name="managed-tutorial"></a> Bearbeiten und Anpassen der verwalteten Version des Portals
+- Widgets, die visuelle Elemente darstellen und HTML, JavaScript, Formatierungsfunktionen, Einstellungen und Inhaltszuordnung kombinieren. Beispiele hierfür sind ein Bild, ein Textabsatz, ein Formular, eine Liste mit APIs usw.
+- Formatierungsdefinitionen, die angeben, wie Widgets formatiert werden können.
+- Die Engine, die statische Webseiten aus Portalinhalten generiert und in JavaScript geschrieben ist.
+- Einen visuellen Editor, der das Anpassen und Erstellen im Browser ermöglicht.
 
-In dem folgenden Video demonstrieren wir, wie Sie den Inhalt des Portals bearbeiten, das Aussehen der Website anpassen und die Änderungen veröffentlichen.
+*Inhalt* wird in zwei Unterkategorien unterteilt: *Portalinhalt* und *API Management-Inhalt*.
 
-> [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
+*Portalinhalt* ist für das Portal spezifisch und umfasst Folgendes:
+
+- Seiten: etwa Landing Page, API-Tutorials, Blogbeiträge
+- Medien: Bilder, Animationen und andere dateibasierte Inhalte
+- Layouts: Vorlagen, die mit einer URL abgeglichen werden und definieren, wie Seiten angezeigt werden
+- Formatvorlagen: Werte für Formatierungsdefinitionen, z.B. Schriftarten, Farben, Rahmen
+- Einstellungen: Konfiguration, z.B. Favicon, Websitemetadaten
+
+*Portalinhalte* (mit Ausnahme von Medien) werden als JSON-Dokumente ausgedrückt.
+
+*API Management-Inhalte* umfassen Entitäten wie APIs, Vorgänge, Produkte und Abonnements.
+
+Das Portal basiert auf einem angepassten Fork des [Paperbits-Frameworks](https://paperbits.io/). Die ursprüngliche Paperbits-Funktionalität wurde erweitert, um für API Management spezifische Widgets (z.B. eine Liste von APIs, eine Liste von Produkten) und einen Connector zum API Management-Dienst zum Speichern und Abrufen von Inhalten bereitzustellen.
 
 ## <a name="faq"></a> Häufig gestellte Fragen
 
-In diesem Abschnitt beantworten wir allgemeine häufig gestellte Fragen zum neuen Entwicklerportal. Fragen, die sich speziell auf die selbstgehostete Version beziehen, finden Sie im [GitHub-Repository im Abschnitt „Wiki“](https://github.com/Azure/api-management-developer-portal/wiki).
+In diesem Abschnitt beantworten wir häufig gestellte Fragen zum neuen Entwicklerportal, die allgemeiner Natur sind. Fragen, die sich speziell auf die selbstgehostete Version beziehen, finden Sie im [GitHub-Repository im Abschnitt „Wiki“](https://github.com/Azure/api-management-developer-portal/wiki).
 
-### <a name="how-can-i-migrate-content-from-the-old-developer-portal-to-the-new-one"></a>Wie kann ich Inhalte aus dem alten Entwicklerportal zu dem neuen Portal migrieren?
+### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> Wie kann ich von der Vorschauversion des Portals migrieren?
 
-Das ist nicht möglich. Die Portale sind nicht miteinander kompatibel.
+Mit der Vorschauversion des Entwicklerportals haben Sie den Vorschauinhalt in Ihrem API Management-Dienst bereitgestellt. Der Standardinhalt wurde in der allgemein verfügbaren Version zur Verbesserung der Benutzerfreundlichkeit erheblich geändert. Außerdem sind neue Widgets enthalten.
 
-### <a name="when-will-the-portal-become-generally-available"></a>Wann wird das Portal allgemein verfügbar sein?
+Wenn Sie die verwaltete Version verwenden, setzen Sie den Inhalt des Portals zurück, indem Sie im Abschnitt **Vorgänge** des Menüs auf **Inhalt zurücksetzen** klicken. Wenn Sie diesen Vorgang bestätigen, wird der gesamte Inhalt des Portals entfernt, und die neuen Standardinhalte werden bereitgestellt. Die Engine des Portals wurde automatisch in Ihrem API Management-Dienst aktualisiert.
 
-Das Portal befindet sich derzeit in der Vorschauphase und wird bis Ende des Kalenderjahres (2019) allgemein verfügbar sein. Die Vorschauversion sollte nicht zu Produktionszwecken verwendet werden.
+![Zurücksetzen des Portalinhalts](media/api-management-howto-developer-portal/reset-content.png)
 
-### <a name="will-the-old-portal-be-deprecated"></a>Wird das alte Portal eingestellt?
+Wenn Sie die selbstgehostete Version verwenden, verwenden Sie die Dateien `scripts/cleanup.bat` und `scripts/generate.bat` aus dem GitHub-Repository, um vorhandene Inhalte zu entfernen und neue Inhalte bereitzustellen. Stellen Sie sicher, dass Sie den Code Ihres Portals im Vorfeld im GitHub-Repository auf die neueste Version aktualisieren.
 
-Ja, es wird eingestellt, wenn das neue Portal allgemein verfügbar wird. Wenn Sie Bedenken haben, posten Sie diese in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/121).
+Wenn Sie den Inhalt des Portals nicht zurücksetzen möchten, ziehen Sie ggf. in Erwägung, neu verfügbare Widgets auf Ihren Seiten zu verwenden. Vorhandene Widgets wurden automatisch auf die neuesten Versionen aktualisiert.
+
+Wenn Ihr Portal nach der Ankündigung der allgemeinen Verfügbarkeit bereitgestellt wurde, sollte es bereits über die neuen Standardinhalte verfügen. Von Ihrer Seite ist keine Aktion erforderlich.
+
+### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-new-developer-portal"></a>Wie kann ich aus dem alten Entwicklerportal zum neuen Portal migrieren?
+
+Die Portale sind nicht kompatibel, und Sie müssen den Inhalt manuell migrieren.
 
 ### <a name="does-the-new-portal-have-all-the-features-of-the-old-portal"></a>Verfügt das neue Portal über alle Features des alten Portals?
 
-Das Ziel der allgemeinen Verfügbarkeit besteht darin, eine szenariobasierte Featureparität mit dem alten Portal zu bieten. Bis dahin wurden in der Vorschauversion möglicherweise noch keine ausgewählten Features implementiert.
+Das neue Entwicklerportal unterstützt keine *Anwendungen* und *Issues*. Wenn Sie *Issues* im alten Portal verwendet haben und diese im neuen Portal benötigen, posten Sie einen Kommentar in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/122).
 
-Ausnahmen sind die *Anwendungen* und *Issues* aus dem alten Portal, die im neuen Portal nicht verfügbar sein werden. Wenn Sie *Issues* im alten Portal verwenden und diese im neuen Portal benötigen, posten Sie einen Kommentar in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/122).
+### <a name="has-the-old-portal-been-deprecated"></a>Wurde das alte Portal eingestellt?
 
-### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Ich habe Fehler gefunden und/oder möchte eine Funktion anfordern.
+Die alten Entwickler- und Herausgeberportale sind nun *Legacyfeatures*. Sie erhalten nur noch Sicherheitsupdates. Neue Features werden nur im neuen Entwicklerportal implementiert.
 
-Prima. Sie können uns Feedback geben, eine Funktionsanforderung übermitteln oder einen Fehlerbericht im [Abschnitt „Probleme“ des GitHub-Repositorys](https://github.com/Azure/api-management-developer-portal/issues) einreichen. Wenn Sie einmal dort sind, würden wir uns über Ihr Feedback zu den Problemen freuen, die mit der Bezeichnung `community` markiert sind.
+Die Einstellung veralteter Portale wird separat angekündigt. Wenn Sie Fragen, Bedenken oder Kommentare haben, posten Sie diese in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/121).
 
-### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Ich möchte den Inhalt des neuen Portals zwischen Umgebungen verschieben. Wie kann ich das machen, und muss ich dazu die selbstgehostete Version verwenden?
+### <a name="how-can-i-automate-portal-deployments"></a>Wie kann ich Portalbereitstellungen automatisieren?
 
-Dies ist sowohl in der verwalteten als auch in der selbstgehosteten Portalversion möglich. Das neue Entwicklerportal unterstützt das Extrahieren von Inhalten über die Verwaltungs-API Ihres API Management-Diensts. Die APIs sind im [GitHub-Repository im Abschnitt „Wiki“](https://github.com/Azure/api-management-developer-portal/wiki/) dokumentiert. Wir haben auch [ein Skript](https://github.com/Azure/api-management-developer-portal/blob/master/scripts/migrate.bat) geschrieben, das Ihnen beim Einstieg helfen könnte.
+Sie können über die REST-API programmgesteuert auf die Inhalte des Entwicklerportals zugreifen und diese verwalten, und zwar unabhängig davon, ob Sie eine verwaltete oder eine selbstgehostete Version verwenden.
 
-Wir arbeiten noch daran, diesen Prozess auf das API Management DevOps Resource Kit auszurichten.
+Die APIs sind im [Wiki-Abschnitt des GitHub-Repositorys][2] dokumentiert. Diese Dokumentation kann auch für die Automatisierung von Migrationen von Portalinhalten zwischen Umgebungen verwendet werden (z.B. aus einer Testumgebung in die Produktionsumgebung). Weitere Informationen zu diesem Vorgang finden Sie [in diesem Dokumentationsartikel](https://aka.ms/apimdocs/migrateportal) auf GitHub.
 
-### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Was muss ich konfigurieren, damit das neue Portal in meinem API Management-Dienst im VNET funktioniert?
+### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>Unterstützt das Portal Azure Resource Manager-Vorlagen und/oder ist es mit dem API Management DevOps Resource Kit kompatibel?
 
-Während der Vorschauphase des neuen Entwicklerportals müssen Sie Konnektivität mit den Azure Storage-Diensten in der Region „USA, Westen“ zulassen, damit das verwaltete Portal in einem API Management-Dienst im VNET funktioniert. Weitere Informationen finden Sie in der [Storage-Dokumentation](../storage/common/storage-network-security.md#available-virtual-network-regions).
+Nein.
 
-Das oben beschriebene Setup ist nicht mehr erforderlich, wenn das neue Portal allgemein verfügbar wird.
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Muss ich zusätzliche VNET-Konnektivität für die Abhängigkeiten des verwalteten Portals aktivieren?
 
-Die selbstgehostete Version des Portals erfordert abhängig von Ihrem Setup möglicherweise eine zusätzliche Konfiguration der Konnektivität.
+Nein.
 
-### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Wie kann ich ein *Layout* beim Erstellen einer neuen *Seite* auswählen?
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Beim Verwenden der interaktiven Konsole erhalte ich einen CORS-Fehler. Wie sollte ich vorgehen?
 
-Ein *Layout* wird auf eine Seite angewendet, indem die zugehörige URL-Vorlage mit der URL *der Seite* abgeglichen wird. Beispielsweise wird das *Layout* mit einer URL-Vorlage vom Typ `/wiki/*` auf jede *Seite* mit dem Segment `/wiki/` angewendet: `/wiki/getting-started`, `/wiki/styles` usw.
-
-### <a name="why-doesnt-the-interactive-developer-console-work"></a>Warum funktioniert die interaktive Entwicklerkonsole nicht?
-
-Das liegt wahrscheinlich an CORS. Die interaktive Konsole sendet eine clientseitige API-Anforderung über den Browser. Sie können das CORS-Problem beheben, indem Sie [eine CORS-Richtlinie](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) für Ihre API(s) hinzufügen. Sie können entweder alle Parameter manuell angeben (z. B. „origin“ als https://contoso.com) oder einen Platzhalterwert `*` verwenden.
+Die interaktive Konsole sendet eine clientseitige API-Anforderung über den Browser. Sie können das CORS-Problem beheben, indem Sie [eine CORS-Richtlinie](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) für Ihre API(s) hinzufügen. Sie können entweder alle Parameter manuell angeben (z. B. „origin“ als https://contoso.com) oder einen Platzhalterwert `*` verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum neuen Entwicklerportal:
 
+- [Zugreifen auf das neue Entwicklerportal und Verwalten des Portals](api-management-howto-developer-portal-customize.md)
+- [Einrichten einer selbstgehosteten Version des Portals][2]
+
+Weitere Ressourcen:
+
 - [GitHub-Repository mit dem Quellcode][1]
-- [Anweisungen zum Selbsthosten des Portals][2]
 - [Öffentliche Roadmap des Projekts][3]
 
 [1]: https://aka.ms/apimdevportal

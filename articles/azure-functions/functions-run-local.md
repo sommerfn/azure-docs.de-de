@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336929"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469070"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -156,8 +156,8 @@ In Version 2.x müssen Sie beim Ausführen des Befehls eine Runtime für das Pro
 Select a worker runtime:
 dotnet
 node
-python (preview)
-powershell (preview)
+python 
+powershell
 ```
 
 Verwenden Sie die NACH-OBEN- oder NACH-UNTEN-TASTE, um eine Sprache auszuwählen, und drücken Sie dann die EINGABETASTE. Wenn Sie JavaScript- oder TypeScript-Funktionen entwickeln möchten, wählen Sie **node** und dann die Sprache aus. Für TypeScript gelten [einige zusätzliche Anforderungen](functions-reference-node.md#typescript). 
@@ -208,11 +208,13 @@ Wenn keine gültige Speicherverbindungszeichenfolge für [`AzureWebJobsStorage`]
 
 Auch wenn der Speicheremulator für die Entwicklung verwendet wird, empfiehlt es sich, einen Test mit einer tatsächlichen Speicherverbindung durchzuführen. Wenn Sie bereits [ein Speicherkonto erstellt haben](../storage/common/storage-create-storage-account.md), können Sie eine gültige Speicherverbindungszeichenfolge anhand einer der folgenden Methoden abrufen:
 
-+ Im [Azure-Portal]. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie **Zugriffsschlüssel** unter **Einstellungen** aus, und kopieren Sie dann einen der Werte für **Verbindungszeichenfolge**.
-
+- Suchen Sie im [Azure-Portal] nach **Speicherkonten**, und wählen Sie diese Option aus. 
+  ![Auswählen von Speicherkonten im Azure-Portal](./media/functions-run-local/select-storage-accounts.png)
+  
+  Wählen Sie Ihr Speicherkonto aus, wählen Sie **Zugriffsschlüssel** unter **Einstellungen** aus, und kopieren Sie dann einen der Werte für **Verbindungszeichenfolge**.
   ![Kopieren der Verbindungszeichenfolge im Azure-Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-+ Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement, wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
+- Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement, wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
 
   ![Kopieren der Verbindungszeichenfolge im Storage-Explorer](./media/functions-run-local/storage-explorer.png)
 
@@ -441,7 +443,7 @@ Um Ihren lokalen Code in einer Funktions-App in Azure zu veröffentlichen, verwe
 func azure functionapp publish <FunctionAppName>
 ```
 
-Mit diesem Befehl wird in eine vorhandene Funktionen-App in Azure veröffentlicht. Sie erhalten eine Fehlermeldung, wenn Sie versuchen, an einen `<FunctionAppName>` zu veröffentlichen, der in Ihrem Abonnement nicht vorhanden ist. Informationen zum Erstellen einer Funktions-App über die Eingabeaufforderung oder ein Terminalfenster mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen einer Funktions-App für die serverlose Ausführung](./scripts/functions-cli-create-serverless.md). Dieser Befehl stellt Ihre App standardmäßig für die [Ausführung über das Bereitstellungspaket](run-functions-from-deployment-package.md) bereit. Dieser empfohlene Bereitstellungsmodus kann auf Wunsch mithilfe der Option `--nozip` deaktiviert werden.
+Mit diesem Befehl wird in eine vorhandene Funktionen-App in Azure veröffentlicht. Sie erhalten eine Fehlermeldung, wenn Sie versuchen, an einen `<FunctionAppName>` zu veröffentlichen, der in Ihrem Abonnement nicht vorhanden ist. Informationen zum Erstellen einer Funktions-App über die Eingabeaufforderung oder ein Terminalfenster mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Erstellen einer Funktions-App für die serverlose Ausführung](./scripts/functions-cli-create-serverless.md). Dieser Befehl verwendet standardmäßig die [Remotebuildfunktion](functions-deployment-technologies.md#remote-build) und stellt Ihre App für die [Ausführung über das Bereitstellungspaket](run-functions-from-deployment-package.md) bereit. Dieser empfohlene Bereitstellungsmodus kann auf Wunsch mithilfe der Option `--nozip` deaktiviert werden.
 
 >[!IMPORTANT]
 > Wenn Sie eine Funktions-App im Azure-Portal erstellen, verwendet sie standardmäßig Version 2.x der Functions-Laufzeit. Damit die Funktions-App Version 1.x der Laufzeit verwendet, befolgen Sie die Anweisungen unter [Run on version 1.x](functions-versions.md#creating-1x-apps) (Ausführen unter Version 1.x).
@@ -463,6 +465,7 @@ Die folgenden Veröffentlichungsoptionen werden nur in Version 2.x unterstützt:
 | **`--list-included-files`** | Zeigt eine Liste mit Dateien an, die veröffentlicht werden (basierend auf der Datei vom Typ „.funcignore“). |
 | **`--nozip`** | Deaktiviert den Standardmodus `Run-From-Package`. |
 | **`--build-native-deps`** | Überspringt das Generieren des Ordners „.wheels“ beim Veröffentlichen von Python-Funktions-Apps. |
+| **`--build [-b]`** | Führt beim Bereitstellen in einer Linux-Funktions-App eine Buildaktion durch. (Akzeptiert: remote, lokal) |
 | **`--additional-packages`** | Liste der zu installierenden Pakete beim Erstellen nativer Abhängigkeiten. Beispiel: `python3-dev libevent-dev`. |
 | **`--force`** | In bestimmten Szenarien wird die Überprüfung vor der Veröffentlichung ignoriert. |
 | **`--csx`** | Veröffentlicht ein C#-Skriptprojekt (.csx). |

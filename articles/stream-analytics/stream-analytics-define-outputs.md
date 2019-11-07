@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: 20da8abff943e71deb5d5ec8b7bd6411c176e2e3
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6f04ccf216edb4e6a654c83c6220451bfccfe6ac
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244547"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488513"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -69,11 +69,11 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 
 ## <a name="blob-storage-and-azure-data-lake-gen2"></a>Blobspeicher und Azure Data Lake Gen2
 
-Ausgehender Datenverkehr an Azure Data Lake Gen2 wird in ausgewählten Regionen weltweit als Previewfunktion angeboten. Sie können Zugriff auf die Vorschau anfordern, indem Sie in unserem [Anforderungsformular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) zusätzliche Informationen bereitstellen.
+Mit Data Lake Storage Gen2 wird Azure Storage zur Grundlage für das Erstellen von Enterprise Data Lakes in Azure. Data Lake Storage Gen2 wurde eigens für die Verarbeitung mehrerer Petabyte an Informationen bei gleichzeitiger Unterstützung eines Durchsatzes von Hunderten von Gigabit konzipiert und bietet Ihnen eine einfache Möglichkeit, riesige Datenmengen zu verwalten. Ein wesentlicher Bestandteil von Data Lake Storage Gen2 ist das Hinzufügen eines hierarchischen Namespace zum Blobspeicher.
 
 Azure Blob Storage bietet eine kostengünstige und skalierbare Lösung zum Speichern von großen Mengen unstrukturierter Daten in der Cloud. Eine Einführung in Blobspeicher und seine Nutzung finden Sie unter [Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Blobausgabe.
+Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Blob- oder ADLS Gen2-Ausgabe.
 
 | Eigenschaftenname       | BESCHREIBUNG                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|

@@ -7,16 +7,16 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 0b29567dcd22c79c30e70594066f7ff87c18fdb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a61c52773c4c6036a76d7b233988c713c1da861f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947590"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482856"
 ---
 # <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Auswählen von Verteilungsspalten in Azure Database for PostgreSQL: Hyperscale (Citus)
 
-Die Auswahl der Verteilungsspalte für die einzelnen Tabellen ist eine der wichtigsten Entscheidungen bei der Modellierung, die Sie treffen. Azure Database for PostgreSQL – Hyperscale (Citus) Vorschau speichert Zeilen basierend auf dem Wert der Verteilungsspalte der Zeilen in Shards.
+Die Auswahl der Verteilungsspalte für die einzelnen Tabellen ist eine der wichtigsten Entscheidungen bei der Modellierung, die Sie treffen. Azure Database for PostgreSQL – Hyperscale (Citus) speichert Zeilen basierend auf dem Wert der Verteilungsspalte der Zeilen in Shards.
 
 Durch die richtige Wahl werden verwandte Daten in denselben physischen Knoten gruppiert, was zu schnellen Abfragen führt und Unterstützung für alle SQL-Funktionen hinzufügt. Durch eine falsche Auswahl wird das System langsam ausgeführt und unterstützt nicht alle SQL-Funktionen auf allen Knoten.
 

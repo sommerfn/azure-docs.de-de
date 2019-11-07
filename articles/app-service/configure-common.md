@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 11a29a980fbbbafad850daeda5af11b78580bcaa
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c22f88487fd8b34d48d3012c706bb0415760b21e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067011"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470943"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -176,7 +176,7 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
     - **Verwalteter Pipelinemodus**: Der IIS-[Pipelinemodus]. Legen Sie ihn auf **Klassisch** fest, wenn Sie eine ältere App haben, die eine ältere Version von IIS erfordert.
     - **HTTP-Version**: Legen Sie die Einstellung auf **2.0** fest, um die Unterstützung für das [HTTPS/2](https://wikipedia.org/wiki/HTTP/2)-Protokoll zu aktivieren.
     > [!NOTE]
-    > Die aktuellen Browser unterstützen das HTTP/2-Protokoll in der Regel nur über TLS, während unverschlüsselter Datenverkehr weiterhin HTTP/1.1 verwendet. Um sicherzustellen, dass sich Clientbrowser mit Ihrer App über HTTP/2 verbinden, erwerben Sie entweder [ein App Service Certificate](web-sites-purchase-ssl-web-site.md) für die benutzerdefinierte Domäne der App, oder [binden Sie ein Zertifikat eines Drittanbieters](app-service-web-tutorial-custom-ssl.md).
+    > Die aktuellen Browser unterstützen das HTTP/2-Protokoll in der Regel nur über TLS, während unverschlüsselter Datenverkehr weiterhin HTTP/1.1 verwendet. Um sicherzustellen, dass Clientbrowser eine Verbindung mit Ihrer App mit HTTP/2 herstellen können, [sichern Sie den benutzerdefinierten DNS-Namen mit einer SSL-Bindung in Azure App Service](configure-ssl-bindings.md).
     - **ARR-Affinität**: In einer Bereitstellung mit mehreren Instanzen stellen Sie sicher, dass der Client für die Lebensdauer der Sitzung an die gleiche Instanz weitergeleitet wird. Sie können für zustandslose Anwendungen für diese Option **Aus** festlegen.
 - **Debuggen**: Aktivieren Sie das Remotedebuggen für [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)- oder [Node.js](containers/configure-language-nodejs.md#debug-remotely)-Apps. Diese Option wird nach 48 Stunden automatisch deaktiviert.
 - **Eingehende Clientzertifikate**: erforderliche Clientzertifikate bei [gegenseitiger Authentifizierung](app-service-web-configure-tls-mutual-auth.md).
@@ -251,7 +251,7 @@ Siehe [Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App S
 
 - [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]
 - [Einrichten von Stagingumgebungen in Azure App Service]
-- [Aktivieren von HTTPS für eine App in Azure App Service]
+- [Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung in Azure App Service](configure-ssl-bindings.md)
 - [Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service](troubleshoot-diagnostic-logs.md)
 - [Skalieren einer App in Azure App Service]
 - [Grundlagen der Überwachung in Azure App Service]
@@ -263,7 +263,6 @@ Siehe [Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App S
 [Azure-Portal]: https://portal.azure.com/
 [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Einrichten von Stagingumgebungen in Azure App Service]: ./deploy-staging-slots.md
-[Aktivieren von HTTPS für eine App in Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Grundlagen der Überwachung in Azure App Service]: ./web-sites-monitor.md
 [Pipelinemodus]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application

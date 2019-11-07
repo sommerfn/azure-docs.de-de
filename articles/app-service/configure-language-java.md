@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 91f0c059d22fb921aeb0c65f7d4eba95debd530d
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 75632d4fcdbf27f70b1b84f08f7295212dbac6a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471096"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurieren einer Windows-Java-App für Azure App Service
 
@@ -53,7 +53,7 @@ Weitere Informationen finden Sie unter [Streamen von Protokollen in Cloud Shell]
 
 ### <a name="app-logging"></a>App-Protokollierung
 
-Aktivieren Sie die [Anwendungsprotokollierung](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) über das Azure-Portal oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/webapp/log#az-webapp-log-config), um App Service so zu konfigurieren, dass die Streams mit der Standardkonsolenausgabe und den Standardkonsolenfehlern Ihrer Anwendung in das lokale Dateisystem oder Azure Blob Storage geschrieben werden. Die Protokollierung in der lokalen App Service-Dateisysteminstanz wird 12 Stunden nach der Konfiguration deaktiviert. Wenn Sie eine längere Beibehaltung benötigen, konfigurieren Sie die Anwendung für die Ausgabe in einen Blob Storage-Container. Ihre Java- und Tomcat-App-Protokolle befinden sich im Verzeichnis */LogFiles/Application/* .
+Aktivieren Sie die [Anwendungsprotokollierung](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) über das Azure-Portal oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/webapp/log#az-webapp-log-config), um App Service so zu konfigurieren, dass die Streams mit der Standardkonsolenausgabe und den Standardkonsolenfehlern Ihrer Anwendung in das lokale Dateisystem oder Azure Blob Storage geschrieben werden. Die Protokollierung in der lokalen App Service-Dateisysteminstanz wird 12 Stunden nach der Konfiguration deaktiviert. Wenn Sie eine längere Beibehaltung benötigen, konfigurieren Sie die Anwendung für die Ausgabe in einen Blob Storage-Container. Ihre Java- und Tomcat-App-Protokolle befinden sich im Verzeichnis */LogFiles/Application/* .
 
 Wenn Ihre Anwendung [Logback](https://logback.qos.ch/) oder [Log4j](https://logging.apache.org/log4j) für die Ablaufverfolgung verwendet, können Sie diese Ablaufverfolgungen mithilfe der Konfigurationsanweisungen für das Protokollierungsframework unter [Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights](/azure/application-insights/app-insights-java-trace-logs) zur Überprüfung an Azure Application Insights weiterleiten.
 
@@ -62,15 +62,15 @@ Wenn Ihre Anwendung [Logback](https://logback.qos.ch/) oder [Log4j](https://logg
 
 Azure App Service unterstützt eine sofort verfügbare Optimierung und Anpassung über das Azure-Portal und die CLI. Lesen Sie die folgenden Artikel zur nicht Java-spezifischen Web-App-Konfiguration:
 
-- [Konfigurieren von App-Einstellungen](configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings)
-- [Einrichten einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Aktivieren von SSL](app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-- [Hinzufügen eines CDN](../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Konfigurieren von App-Einstellungen](configure-common.md#configure-app-settings)
+- [Einrichten einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain.md)
+- [Konfigurieren von SSL-Bindungen](configure-ssl-bindings.md)
+- [Hinzufügen eines CDN](../cdn/cdn-add-to-web-app.md)
 - [Konfigurieren der Kudu-Website](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
 ### <a name="set-java-runtime-options"></a>Festlegen von Java-Runtimeoptionen
 
-Um reservierten Arbeitsspeicher oder andere JVM-Runtimeoptionen festzulegen, erstellen Sie mit den Optionen eine [App-Einstellung](configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mit dem Namen `JAVA_OPTS`. App Service übergibt diese Einstellung beim Start als Umgebungsvariable an die Java-Runtime.
+Um reservierten Arbeitsspeicher oder andere JVM-Runtimeoptionen festzulegen, erstellen Sie mit den Optionen eine [App-Einstellung](configure-common.md#configure-app-settings) mit dem Namen `JAVA_OPTS`. App Service übergibt diese Einstellung beim Start als Umgebungsvariable an die Java-Runtime.
 
 Erstellen Sie im Azure-Portal unter **Anwendungseinstellungen** für die Web-App eine neue App-Einstellung namens `JAVA_OPTS`, welche die zusätzlichen Einstellungen enthält, z.B. `-Xms512m -Xmx1204m`.
 
@@ -135,7 +135,7 @@ Für in App Service ausgeführte Java-Anwendungen gelten dieselben [bewährten S
 
 ### <a name="authenticate-users-easy-auth"></a>Authentifizieren von Benutzern (einfache Authentifizierung)
 
-Richten Sie die App-Authentifizierung im Azure-Portal über die Option **Authentifizierung und Autorisierung** ein. Von dort aus können Sie die Authentifizierung über Azure Active Directory oder soziale Netzwerke wie Facebook, Google oder GitHub aktivieren. Die Konfiguration des Azure-Portals funktioniert nur, wenn Sie einen einzelnen Authentifizierungsanbieter konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung](configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) und in den entsprechenden Artikeln für andere Identitätsanbieter. Wenn Sie mehrere Anmeldungsanbieter aktivieren müssen, befolgen Sie die Anweisungen im Artikel [Anpassen der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+Richten Sie die App-Authentifizierung im Azure-Portal über die Option **Authentifizierung und Autorisierung** ein. Von dort aus können Sie die Authentifizierung über Azure Active Directory oder soziale Netzwerke wie Facebook, Google oder GitHub aktivieren. Die Konfiguration des Azure-Portals funktioniert nur, wenn Sie einen einzelnen Authentifizierungsanbieter konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung](configure-authentication-provider-aad.md) und in den entsprechenden Artikeln für andere Identitätsanbieter. Wenn Sie mehrere Anmeldungsanbieter aktivieren müssen, befolgen Sie die Anweisungen im Artikel [Anpassen der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md).
 
 #### <a name="tomcat-and-wildfly"></a>Tomcat und WildFly
 
@@ -173,7 +173,7 @@ Um dieses Feature zu deaktivieren, erstellen Sie eine Anwendungseinstellung mit 
 
 ### <a name="configure-tlsssl"></a>Konfigurieren von TLS/SSL
 
-Befolgen Sie die Anweisungen unter [Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), um ein vorhandenes SSL-Zertifikat hochzuladen und an den Domänennamen Ihrer Anwendung zu binden. Standardmäßig lässt Ihre Anwendung dennoch HTTP-Verbindungen zu. Befolgen Sie die spezifischen Schritte im Tutorial, um SSL und TLS zu erzwingen.
+Befolgen Sie die Anweisungen unter [Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung in Azure App Service](configure-ssl-bindings.md), um ein vorhandenes SSL-Zertifikat hochzuladen und dieses an den Domänennamen Ihrer Anwendung zu binden. Standardmäßig lässt Ihre Anwendung dennoch HTTP-Verbindungen zu. Befolgen Sie die spezifischen Schritte im Tutorial, um SSL und TLS zu erzwingen.
 
 ### <a name="use-keyvault-references"></a>Verwenden von KeyVault-Verweisen
 
@@ -285,7 +285,7 @@ Platzieren Sie abschließend die JAR-Dateien des Treibers im Tomcat-Klassenpfad,
 
 3. Stellen Sie mit Ihrem SFTP-Client eine Verbindung mit dem lokalen Tunnelport her, und laden Sie die Dateien in den Ordner */home/tomcat/lib* hoch.
 
-Alternativ können Sie zum Hochladen des JDBC-Treibers auch einen FTP-Client verwenden. Führen Sie dazu die [Schritte zum Abrufen Ihrer FTP-Anmeldeinformationen](deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) aus.
+Alternativ können Sie zum Hochladen des JDBC-Treibers auch einen FTP-Client verwenden. Führen Sie dazu die [Schritte zum Abrufen Ihrer FTP-Anmeldeinformationen](deploy-configure-credentials.md) aus.
 
 ## <a name="configuring-tomcat"></a>Konfigurieren von Tomcat
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 172003b13807720df2431a3610947b36d8303fed
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679810"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470370"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 
@@ -140,4 +140,4 @@ Sie finden die Bereitstellungseinheit für Ihre App, indem Sie sich den Domänen
 Informieren Sie sich darüber, wie Sie ein benutzerdefiniertes SSL-Zertifikat an App Service binden.
 
 > [!div class="nextstepaction"]
-> [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure App Service](app-service-web-tutorial-custom-ssl.md)
+> [Binden eines SSL-Zertifikats an Azure App Service](configure-ssl-bindings.md)

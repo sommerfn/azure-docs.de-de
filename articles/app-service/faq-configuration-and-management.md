@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121326"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470534"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -43,12 +43,12 @@ Weitere Informationen zum Kauf und Einrichten einer benutzerdefinierten Domäne 
 
 ## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Wie kann ich ein vorhandenes SSL-Zertifikat für meine Web-App hochladen und konfigurieren?
 
-Informationen zum Hochladen und Einrichten eines vorhandenen benutzerdefinierten SSL-Zertifikats finden Sie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md#upload).
+Informationen zum Hochladen und Einrichten eines vorhandenen benutzerdefinierten SSL-Zertifikats finden Sie unter [Hinzufügen eines SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
 
 
 ## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Wie kaufe und konfiguriere ich ein neues SSL-Zertifikat für meine Web-App in Azure?
 
-Informationen zum Erwerben und Einrichten eines SSL-Zertifikats für Ihre App Service-Web-App finden Sie unter [Hinzufügen eines SSL-Zertifikats zu Ihrer App Service-App](web-sites-purchase-ssl-web-site.md).
+Informationen zum Erwerben und Einrichten eines SSL-Zertifikats für Ihre App Service-Web-App finden Sie unter [Hinzufügen eines SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Wie verschiebe ich Application Insights-Ressourcen?

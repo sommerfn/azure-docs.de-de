@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858532"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470074"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -72,7 +73,7 @@ Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, finden Sie die Inf
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Ändert sich die IP-Adresse oder der DNS-Name während der Lebensdauer des Anwendungsgateways?
 
-Die VIP kann sich ändern, wenn Sie das Anwendungsgateway beenden und starten. Der zugeordnete DNS-Name des Anwendungsgateways ändert sich während der Lebensdauer des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse des Anwendungsgateways zu verweisen.
+In der Application Gateway V1-SKU kann sich die VIP ändern, wenn Sie das Anwendungsgateway beenden und dann erneut starten. Der zugeordnete DNS-Name des Anwendungsgateways ändert sich während der Lebensdauer des Gateways nicht. Daher wird empfohlen, einen CNAME-Alias zu verwenden und damit auf die DNS-Adresse des Anwendungsgateways zu verweisen. In der Application Gateway V2-SKU können Sie die IP-Adresse als statisch festlegen, sodass sich die IP-Adresse und der DNS-Name während der Lebensdauer des Anwendungsgateways nicht ändern. 
 
 ### <a name="does-application-gateway-support-static-ip"></a>Unterstützt Application Gateway statische IP-Adressen?
 
@@ -269,7 +270,7 @@ Application Gateway unterstützt bis zu 100 SSL-Zertifikate.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Wie viele Authentifizierungszertifikate für die erneute Back-End-Verschlüsselung werden von Application Gateway unterstützt?
 
-Application Gateway unterstützt bis zu 10 Authentifizierungszertifikate. Der Standardwert ist 5.
+Application Gateway unterstützt bis zu 100 Authentifizierungszertifikate.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Lässt sich Application Gateway nativ in Azure Key Vault integrieren?
 
@@ -326,6 +327,19 @@ Ja. Sie können DDoS-Schutz im virtuellen Netzwerk aktivieren, in dem das Anwend
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Gibt es Richtlinien für die Migration von der v1-SKU zur v2-SKU?
 
 Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
+
+## <a name="configuration---ingress-controller-for-aks"></a>Konfiguration: Eingangscontroller für AKS
+
+### <a name="what-is-an-ingress-controller"></a>Was ist ein Eingangscontroller?
+
+Kubernetes ermöglicht die Erstellung von `deployment`- und `service`-Ressourcen, um eine Gruppe von Pods intern im Cluster bereitzustellen. Um denselben Dienst extern verfügbar zu machen, wird eine [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/)-Ressource definiert, die Lastenausgleich, SSL-Beendigung und namensbasiertes virtuelles Hosting bereitstellt.
+Um diese `Ingress`-Ressource zu bedienen, ist ein Eingangscontroller erforderlich, der auf Änderungen an `Ingress`-Ressourcen lauscht und die Lastenausgleichsrichtlinien konfiguriert.
+
+Der Application Gateway-Eingangscontroller ermöglicht die Verwendung von [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) als Eingangsressource für einen [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/), der auch als AKS-Cluster bezeichnet wird.
+
+### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Kann eine einzelne Eingangscontrollerinstanz mehrere Application Gateways verwalten?
+
+Derzeit kann eine Instanz des Eingangscontrollers nur einem Application Gateway zugeordnet werden.
 
 ## <a name="diagnostics-and-logging"></a>Diagnose und Protokollierung
 

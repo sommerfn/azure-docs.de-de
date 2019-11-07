@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4a5ebf810771efe49ee40e272d1fa4683140eda1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998059"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482749"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Tabellenzusammenstellung in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -20,7 +20,7 @@ Zusammenstellen bedeutet, verwandte Informationen zusammen auf denselben Knoten 
 
 ## <a name="data-colocation-for-hash-distributed-tables"></a>Datenzusammenstellung für Tabellen mit Hashverteilung
 
-In Azure Database for PostgreSQL – Hyperscale (Citus) Vorschau wird eine Zeile in einem Shard gespeichert, wenn der Hashwert des Werts in der Verteilungsspalte innerhalb des Hashbereichs des Shards liegt. Shards mit gleichem Hash-Bereich werden immer auf demselben Knoten platziert. Zeilen mit identischen Werten in der Verteilungsspalte werden tabellenübergreifend immer auf demselben Knoten platziert.
+In Azure Database for PostgreSQL – Hyperscale (Citus) wird eine Zeile in einem Shard gespeichert, wenn der Hashwert des Werts in der Verteilungsspalte innerhalb des Hashbereichs des Shards liegt. Shards mit gleichem Hash-Bereich werden immer auf demselben Knoten platziert. Zeilen mit identischen Werten in der Verteilungsspalte werden tabellenübergreifend immer auf demselben Knoten platziert.
 
 ![Shards](media/concepts-hyperscale-colocation/colocation-shards.png)
 
