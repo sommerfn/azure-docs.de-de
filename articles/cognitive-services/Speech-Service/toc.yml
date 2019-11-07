@@ -65,6 +65,10 @@
               href: rest-speech-to-text.md
             - name: REST-APIs für die Batch-Transkription
               href: batch-transcription.md
+    - name: Ressourcen
+      items:
+        - name: Häufig gestellte Fragen zur Spracherkennung
+          href: faq-stt.md
 - name: Text-zu-Sprache
   exanded: false
   items:
@@ -112,6 +116,10 @@
           items:
             - name: Text-to-Speech-REST-API
               href: rest-text-to-speech.md
+    - name: Ressourcen
+      items:
+        - name: Häufig gestellte Fragen zur Sprachsynthese
+          href: faq-text-to-speech.md
 - name: Absichtserkennung
   exanded: false
   items:
@@ -182,6 +190,10 @@
               href: 'https://aka.ms/csspeech/pythonref'
             - name: Versionshinweise
               href: releasenotes.md
+    - name: Ressourcen
+      items:
+        - name: Häufig gestellte Fragen zur Sprachübersetzung
+          href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Unterhaltungstranskription
   expanded: false
   items:
@@ -254,7 +266,7 @@
       items:
         - name: "Ermöglichen der Verwendung von Sprache mit dem Speech\_SDK"
           href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Verweis
+    - name: Ressourcen
       items:
         - name: Häufig gestellte Fragen zu Sprachassistenten
           href: faq-voice-assistants.md
@@ -368,6 +380,8 @@
           href: scenario-availability.md
     - name: Schnellstarts
       items:
+        - name: Erstellen eines Projekts
+          href: quickstarts/create-project.md
         - name: "Einrichten des Speech\_SDK mit C#"
           href: quickstarts/setup-platform.md?pivots=programming-language-csharp
         - name: "Einrichten des Speech\_SDK mit C++"
