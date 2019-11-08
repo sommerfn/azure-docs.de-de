@@ -1,19 +1,19 @@
 ---
-title: 'Tutorial: Freigeben außerhalb Ihrer Organisation: Azure Data Share (Vorschauversion)'
-description: 'Tutorial: Freigeben von Daten für Kunden und Partner mit Azure Data Share (Vorschauversion)'
+title: 'Tutorial: Freigeben außerhalb Ihrer Organisation: Azure Data Share'
+description: 'Tutorial: Freigeben von Daten für Kunden und Partner mit Azure Data Share'
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327420"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499320"
 ---
-# <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>Tutorial: Freigeben von Daten mit Azure Data Share (Vorschauversion)
+# <a name="tutorial-share-data-using-azure-data-share"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share  
 
 In diesem Tutorial wird beschrieben, wie Sie eine neue Azure Data Share-Instanz einrichten und mit dem Freigeben Ihrer Daten für Kunden und Partner außerhalb Ihrer Azure-Organisation beginnen. 
 
@@ -28,9 +28,28 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* E-Mail-Adresse für die Azure-Anmeldung Ihrer Empfänger (Ein E-Mail-Alias funktioniert nicht.)
+
+### <a name="share-from-a-storage-account"></a>Freigeben über ein Speicherkonto:
+
 * Ein Azure Storage-Konto: Falls Sie noch nicht über ein Konto verfügen, können Sie [hier ein Azure Storage-Konto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 * Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (in der Berechtigung *Microsoft.Authorization/role assignments/write* enthalten). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden. 
-* E-Mail-Adresse für die Azure-Anmeldung Ihrer Empfänger (ein E-Mail-Alias funktioniert nicht).
+
+### <a name="share-from-a-sql-based-source"></a>Freigeben über eine SQL-basierte Quelle:
+
+* Eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz mit Tabellen und Ansichten, die Sie freigeben möchten
+* Berechtigung der Datenfreigabe für den Zugriff auf Data Warehouse. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+    1. Legen Sie sich als Azure Active Directory-Administrator für den Server fest.
+    1. Stellen Sie mithilfe von Azure Active Directory eine Verbindung mit der Azure SQL-Datenbank-/Data Warehouse-Instanz her.
+    1. Führen Sie mit dem Abfrage-Editor (Vorschau) das folgende Skript aus, um die Data Share-MSI als „db_owner“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
+    
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```                   
+Beachten Sie, dass *<share_acc_name>* der Name Ihres Data Share-Kontos ist. Wenn Sie noch kein Data Share-Konto erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.  
+
+* Client-IP-SQL Server-Firewallzugriff: Die Berechtigung kann mit folgenden Schritten gewährt werden: 1. Navigieren Sie zu *Firewalls und virtuelle Netzwerke*. 2. Legen Sie die Umschaltfläche auf **Ein** fest, um den Zugriff auf Azure-Dienste zuzulassen. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -44,7 +63,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Suchen Sie nach *Data Share*.
 
-1. Wählen Sie „Data Share“ (Vorschauversion) und dann die Option **Erstellen** aus.
+1. Wählen Sie „Data Share“ und dann die Option **Erstellen** aus.
 
 1. Geben Sie die folgenden Informationen als grundlegende Details Ihrer Azure Data Share-Ressource ein. 
 
@@ -72,7 +91,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Geben Sie die Details für Ihre Datenfreigabe ein. Geben Sie einen Namen, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
 
-    ![EnterShareDetails](./media/enter-share-details.png "Eingeben von Details zur Freigabe") 
+    ![EnterShareDetails](./media/enter-share-details.png "Eingeben der Details zur Freigabe") 
 
 1. Wählen Sie **Weiter**.
 
@@ -86,7 +105,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Navigieren Sie zum Objekt, das Sie freigeben möchten, und wählen Sie „Datasets hinzufügen“. 
 
-    ![SelectDatasets](./media/select-datasets.png "Auswählen von Datasets")    
+    ![SelectDatasets](./media/select-datasets.png "Auswählen der Datasets")    
 
 1. Geben Sie auf der Registerkarte „Empfänger“ die E-Mail-Adressen Ihrer Datenconsumer ein, indem Sie die Option „+ Empfänger hinzufügen“ wählen. 
 

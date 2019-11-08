@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f9da031fd4b35c2fa9126f545eecacf6143b18a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc70e2e6475620bfb8842fc740772e326f8ee8d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478860"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480349"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
@@ -376,7 +376,7 @@ In diesem Beispiel werden die „medallions“ (Taxinummern) mit mehr als 100 a
 
 **Ausgabe:** Die Abfrage sollte eine Tabelle mit Zeilen zurückgeben, die 13.369 Taxinummern und die Anzahl der mit diesen 2013 erfolgten Fahrten enthalten. Die letzte Spalte enthält die Anzahl erfolgter Fahrten.
 
-### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Untersuchung: Verteilung der Fahrten nach „medallion“ und „hack_license“
+### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Untersuchung: Verteilung der Fahrten nach „medallion“ und „hack_license“
 In diesem Beispiel werden die Taxinummern („medallions“) und Fahrer („hack_license“) mit mehr als 100 abgeschlossenen Fahrten innerhalb eines bestimmten Zeitraums ermittelt.
 
     SELECT medallion, hack_license, COUNT(*)
@@ -540,7 +540,7 @@ Es folgt ein Beispiel zum Aufrufen dieser Funktion, um Features in Ihrer SQL-Abf
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0,7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Vorbereiten von Daten für die Modellerstellung
-Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert der binäre Klassifikationsbezeichner **tipped**, den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit.  Diese Abfrage kann kopiert und dann direkt in das Modul [Import Data][import-data] in [Azure Machine Learning Studio](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbank-Instanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
+Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert der binäre Klassifikationsbezeichner **tipped**, den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit.  Diese Abfrage kann kopiert und dann direkt in das Modul [Import Data](https://studio.azureml.net) in [Azure Machine Learning Studio][import-data] eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbank-Instanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -615,7 +615,7 @@ Hier ist die Verbindungszeichenfolge aufgeführt, die die Verbindung mit der Dat
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-### <a name="report-number-of-rows-and-columns-in-table-nyctaxitrip"></a>Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi_trip>
+### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi_trip>
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_trip>')
@@ -633,7 +633,7 @@ Hier ist die Verbindungszeichenfolge aufgeführt, die die Verbindung mit der Dat
 * Gesamtanzahl von Zeilen = 173.179.759
 * Gesamtanzahl von Spalten = 14
 
-### <a name="report-number-of-rows-and-columns-in-table-nyctaxifare"></a>Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi_fare>
+### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_fare"></a>Melden der Anzahl von Zeilen und Spalten in der Tabelle <nyctaxi_fare>
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_fare>')
@@ -809,7 +809,7 @@ Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine L
 2. **Multiklassenklassifizierung**: Zur Vorhersage des Trinkgeldbereichs gemäß den zuvor definierten Klassen.
 3. **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für eine Fahrt.
 
-Melden Sie sich zum Starten der Modellierungsübung bei Ihrem **Azure Machine Learning** -Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs](../studio/create-workspace.md).
+Melden Sie sich zum Starten der Modellierungsübung bei Ihrem **(klassischen) Azure Machine Learning**-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs](../studio/create-workspace.md).
 
 1. Informationen zu den ersten Schritten in Azure Machine Learning finden Sie unter [Was ist Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
 2. Melden Sie sich in [Azure Machine Learning Studio](https://studio.azureml.net)an.
@@ -830,7 +830,7 @@ Ein typisches Trainingsexperiment umfasst die folgenden Schritte:
 
 Sie haben in dieser Übung bereits die Daten in SQL Data Warehouse untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning Studio entschieden. Im Folgenden ist das Verfahren zum Erstellen eines oder mehrerer der Vorhersagemodelle aufgeführt:
 
-1. Übertragen Sie die Daten mithilfe des Moduls [Import Data][import-data] im Abschnitt **Data Input and Output** (Datenein- und -ausgabe) in Azure Machine Learning Studio. Weitere Informationen finden Sie auf der Referenzseite zum Modul [Import Data][import-data].
+1. Übertragen Sie die Daten mithilfe des Moduls [Import Data][import-data] im Abschnitt **Data Input and Output** (Datenein- und -ausgabe) in Azure Machine Learning Studio (klassisch). Weitere Informationen finden Sie auf der Referenzseite zum Modul [Import Data][import-data].
 
     ![Azure ML – Import Data][17]
 2. Wählen Sie **Azure SQL-Datenbank** als **Datenquelle** im **Eigenschaften**bereich aus.
@@ -868,7 +868,7 @@ Azure Machine Learning versucht, ein Bewertungsexperiment basierend auf den Komp
 2. Ermitteln eines logischen **Eingabeports** für das erwartete Eingabedatenschema
 3. Ermitteln eines logischen **Ausgabeport** s für das erwartete Ausgabeschema für den Webdienst
 
-Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** und die **Scored Probabilities** mit dem Modul [Select Columns in Dataset][select-columns] in die Ausgabe einzuschließen.
+Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** und die **Scored Probabilities** mit dem Modul [Select Columns][select-columns] in Dataset in die Ausgabe einzuschließen.
 
 In der folgenden Abbildung finden Sie ein Beispiel für ein Bewertungsexperiment. Wenn Sie die Bereitstellung fertig vorbereitet haben, klicken Sie auf der unteren Aktionsleiste auf die Schaltfläche **PUBLISH WEB SERVICE** .
 

@@ -11,17 +11,15 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a74f2c21746deb16372174d4a769f9abb825a1cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da5da64538ceaf906388c49963c0d5115e1b5ab9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809634"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480214"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Featureauswahl im Team Data Science-Prozess (TDSP)
-In diesem Artikel werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für maschinelles Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio. 
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+In diesem Artikel werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für maschinelles Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
 Entwicklung und Auswahl von Features gehören zum Team Data Science-Prozess (TDSP), der unter [Was ist der Team Data Science-Prozess?](overview.md) beschrieben wird. Entwicklung und Auswahl von Features sind Teile des Schritts **Entwickeln von Features** des TDSP.
 

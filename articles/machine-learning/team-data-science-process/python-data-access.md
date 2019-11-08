@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf0e679ab46752d71ba4f5ef2b014e0cb2b4c6ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593992"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498107"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
 Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann einen sicheren Zugriff auf Ihre Azure Machine Learning-Datasets aus einer lokalen Python-Umgebung aktivieren und ermöglicht die Erstellung und Verwaltung von Datasets im Arbeitsbereich.
@@ -27,8 +27,6 @@ Dieses Thema enthält Anweisungen zu:
 * Zugriff auf und Hochladen von Datasets, einschließlich Anweisungen zur Autorisierung des Zugriffs auf Azure Machine Learning Datasets aus Ihrer lokalen Python-Umgebung
 * Zugriff auf Zwischen-Datasets von Experimenten
 * Verwendung der Python-Clientbibliothek zum Auflisten von Datasets, Zugriff auf Metadaten, Lesen des Inhalts eines Datasets, Erstellen neuer Datasets und Aktualisieren vorhandener Datasets
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Die Python-Clientbibliothek wurde in den folgenden Umgebungen getestet:
@@ -66,7 +64,7 @@ Mit der Python-Clientbibliothek erhalten Sie programmgesteuerten Zugriff auf Ihr
 ### <a name="security"></a>Sicherheit für den Datenzugriff
 Die von Studio bereitgestellten Codeausschnitte zur Verwendung mit Python-Clientbibliotheken umfassen Ihre Arbeitsbereichs-ID und Authentifizierungstoken. Diese bieten vollständigen Zugriff auf den Arbeitsbereich und müssen wie ein Kennwort geschützt werden.
 
-Aus Sicherheitsgründen ist die Codeausschnitt-Funktionalität nur für Benutzer verfügbar, deren Rolle als **Besitzer** für den Arbeitsbereich eingestellt ist. Die Rolle wird in Azure Machine Learning Studio auf der Seite **BENUTZER** unter **Einstellungen** angezeigt.
+Aus Sicherheitsgründen ist die Codeausschnitt-Funktionalität nur für Benutzer verfügbar, deren Rolle als **Besitzer** für den Arbeitsbereich eingestellt ist. Die Rolle wird in Azure Machine Learning Studio (klassisch) auf der Seite **BENUTZER** unter **Einstellungen** angezeigt.
 
 ![Sicherheit][security]
 
@@ -112,11 +110,11 @@ Die folgenden Formate werden unterstützt (Konstanten hierfür sind der `azureml
 
 Sie können das Format bestimmen, indem Sie mit dem Mauszeiger über einen Modulausgabeknoten fahren. Er wird zusammen mit den Knotennamen in einer QuickInfo angezeigt.
 
-Einige der Module, wie z.B. das Modul [Split][split] geben ein Format mit dem Namen `Dataset` aus, das von der Python-Clientbibliothek nicht unterstützt wird.
+Einige der Module, wie z. B. das Modul [Split][split] geben ein Format mit dem Namen `Dataset` aus, das von der Python-Clientbibliothek nicht unterstützt wird.
 
 ![Dataset-Format][dataset-format]
 
-Sie müssen ein Konvertierungsmodul wie z.B. [Convert to CSV][convert-to-csv] verwenden, um eine Ausgabe in einem unterstützten Format abzurufen.
+Sie müssen ein Konvertierungsmodul wie z. B. [Convert to CSV][convert-to-csv] verwenden, um eine Ausgabe in einem unterstützten Format abzurufen.
 
 ![GenericCSV-Format][csv-format]
 
@@ -193,7 +191,7 @@ Andere sind Werte, die von Azure ML zugewiesen werden:
 Siehe `SourceDataset` -Klasse für weitere Informationen zu verfügbaren Metadaten.
 
 ### <a name="read-contents"></a>Inhalte lesen
-Die von Machine Learning Studio automatisch bereitgestellten Codeausschnitte werden automatisch herunterladen und deserialisieren das Dataset zu einem Pandas DataFrame-Objekt. Dies erfolgt mit der `to_dataframe`-Methode:
+Die von Machine Learning Studio (klassisch) automatisch bereitgestellten Codeausschnitte werden automatisch herunterladen und deserialisieren das Dataset zu einem Pandas DataFrame-Objekt. Dies erfolgt mit der `to_dataframe`-Methode:
 
     frame = ds.to_dataframe()
 

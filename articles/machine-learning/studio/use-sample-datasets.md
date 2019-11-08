@@ -1,7 +1,7 @@
 ---
 title: Verwenden der Beispieldatasets
-titleSuffix: Azure Machine Learning Studio
-description: Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio (klassisch) verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,21 +10,21 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f86ae4977621927a09d9b83287a00dfa3bc17196
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c44fd4fcc6672d81332d79d1f5cc6845868a09d5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736614"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466970"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio
+# <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio (klassisch)
 [top]: #machine-learning-sample-datasets
 
-Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning Studio ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure KI-Katalog](https://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
+Beim Erstellen eines neuen Arbeitsbereichs in Azure Machine Learning Studio (klassisch) ist eine Reihe von Beispieldatasets und -experimenten standardmäßig enthalten. Viele dieser Beispieldatasets werden von den Beispielmodellen im [Azure KI-Katalog](https://gallery.azure.ai/) verwendet. Andere sind als Beispiele für verschiedene Arten von Daten vorhanden, die normalerweise für Machine Learning verwendet werden.
 
 Einige dieser Datasets sind in Azure Blob Storage verfügbar. Für diese Datasets enthält die folgende Tabelle einen direkten Link. Sie können die Datasets mithilfe des Moduls [Import Data][import-data] in Ihren Experimenten nutzen.
 
-Die restlichen dieser Beispieldatasets sind in Ihrem Arbeitsbereich unter **Saved Datasets** verfügbar. Sie finden dies in der Modulpalette links vom Experimentbereich in Machine Learning Studio.
+Die restlichen dieser Beispieldatasets sind in Ihrem Arbeitsbereich unter **Saved Datasets** verfügbar. Sie finden dies in der Modulpalette links vom Experimentbereich in Machine Learning Studio (klassisch).
 Sie können alle diese DataSets für Ihre eigenen Experimente verwenden, indem Sie sie auf Ihren Experimentcanvas ziehen.
 
 ## <a name="datasets"></a>Datasets
@@ -169,7 +169,7 @@ Eine Sammlung von simulierten Energieprofilen, die auf 12 verschiedenen Gebäude
   <td>
 Pünktlichkeitsratendaten zu Passagierflügen aus der TranStats-Datensammlung des US-Verkehrsministeriums (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).
 <p></p>
-Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:
+Das DataSet deckt den Zeitraum April bis Oktober 2013 ab. Das Dataset wurde vor dem Hochladen in die klassische Version von Azure Machine Learning Studio wie folgt verarbeitet:
 <ul>
   <li>Es wurde gefiltert, damit nur die 70 verkehrsreichsten Flughäfen in Kontinental-USA enthalten waren.</li>
   <li>Ausgefallene Flüge wurden als um mehr als 15 Minuten verspätet gekennzeichnet.</li>
@@ -329,7 +329,7 @@ Beachten Sie außerdem, dass die Anzahl der Hintergrundereignisse (h für hadron
   <td>
 Stündliche flächenbasierte Wetterbeobachtungen aus NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">zusammengeführte Daten von 201304 bis 201310</a>).
 <p></p>
-Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:
+Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für den Zeitraum April bis Oktober 2013. Das Dataset wurde vor dem Hochladen in die klassische Version von Azure Machine Learning Studio wie folgt verarbeitet:
 <ul>
   <li>Die IDs der Wetterstationen wurden den entsprechenden Flughafen-IDs zugeordnet.</li>
   <li>Wetterstationen, die nicht zu den 70 verkehrsreichsten Flughäfen gehören, wurden herausgefiltert</li>
@@ -344,7 +344,7 @@ Die Wetterdaten umfassen Beobachtungen der Wetterstationen von Flughäfen für d
   <td>
 Die Daten stammen aus Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) und basieren auf Artikeln der einzelnen S&P-500-Unternehmen, die als XML-Daten gespeichert wurden.
 <p></p>
-Das Dataset wurde vor dem Hochladen in Azure Machine Learning Studio wie folgt verarbeitet:
+Das Dataset wurde vor dem Hochladen in die klassische Version von Azure Machine Learning Studio wie folgt verarbeitet:
 <ul>
   <li>Extrahieren der Textinhalte für die einzelnen Unternehmen</li>
   <li>Entfernen der Wiki-Formatierung</li>

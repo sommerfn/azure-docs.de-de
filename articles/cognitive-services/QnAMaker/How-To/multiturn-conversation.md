@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 06b16af941004f6506b43fb36b4d79297b403595
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695147"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73486836"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -42,12 +42,10 @@ In der vorstehenden Abbildung hat ein Benutzer durch Eingabe von **My account** 
 
 Wenn der Benutzer eine Option (#3) auswählt, wird die nächste Liste von Verfeinerungsoptionen (#4) angezeigt. Diese Sequenz wird so lange fortgesetzt (#5), bis der Benutzer die richtige, endgültige Antwort (#6) bestimmt.
 
-> [!NOTE]
-> In der vorstehenden Abbildung wurde das Kontrollkästchen **Enable multi-turn** (Mehrfachdurchlauf aktivieren) ausgewählt, um sicherzustellen, dass die Eingabeaufforderungen angezeigt werden. 
 
 ### <a name="use-multi-turn-in-a-bot"></a>Verwenden von Mehrfachdurchläufen in einem Bot
 
-Ändern Sie zum Verwalten der kontextbezogenen Konversation Ihre Clientanwendung, indem Sie [Ihrem Bot Code hinzufügen](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-prompting). Durch das Hinzufügen des Codes wird es ermöglicht, dass Benutzern die Eingabeaufforderungen angezeigt werden.  
+Nach dem Veröffentlichen Ihrer Wissensdatenbank können Sie die Schaltfläche **Bot erstellen** auswählen, um Ihren QnA Maker-Bot im Azure-Botdienst bereitzustellen. Die Aufforderungen werden in den Chatclients angezeigt, die Sie für Ihren Bot aktiviert haben.
 
 ## <a name="create-a-multi-turn-conversation-from-a-documents-structure"></a>Erstellen einer Mehrfachdurchlauf-Konversation anhand der Struktur eines Dokuments
 
@@ -55,25 +53,25 @@ Wenn Sie eine Wissensdatenbank erstellen, zeigt der Abschnitt **Populate your KB
 
 ![Kontrollkästchen zum Aktivieren der Mehrfachdurchlauf-Extrahierung](../media/conversational-context/enable-multi-turn.png)
 
-Wenn Sie diese Option auswählen, kann die Mehrfachdurchlauf-Konversation aus der Dokumentstruktur abgeleitet werden. Wenn diese Struktur vorhanden ist, erstellt QnA Maker im Rahmen des Importvorgangs die Folgeaufforderung, die Fragen und Antworten für Sie als Paare zusammenfügt. 
+Wenn Sie diese Option auswählen, extrahiert QnA Maker die in der Dokumentstruktur vorhandene Hierarchie. Die Hierarchie wird in Folgeaufforderungen konvertiert, und der Stamm der Hierarchie dient als übergeordnete QnA. In manchen Dokumenten weist der Stamm der Hierarchie keine Inhalte auf, die als Antwort dienen könnten; in diesen Fällen können Sie den „Standardantworttext“ bereitstellen, der als Ersatzantworttext zum Extrahieren solcher Hierarchien dienen kann.   
 
-Die Mehrfachdurchlauf-Struktur kann nur aus URLs, PDF-Dateien oder DOCX-Dateien abgeleitet werden. Ein Beispiel für eine Struktur zeigt eine Abbildung aus einer [PDF-Datei eines Microsoft Surface-Benutzerhandbuchs](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). Aufgrund der Größe dieser PDF-Datei erfordert die QnA Maker-Ressource als **Tarif für die Suche** mindestens **B** (15 Indizes). 
+Die Mehrfachdurchlauf-Struktur kann nur aus URLs, PDF-Dateien oder DOCX-Dateien abgeleitet werden. Ein Beispiel für eine Struktur zeigt eine Abbildung aus einer [PDF-Datei eines Microsoft Surface-Benutzerhandbuchs](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf). 
 
 ![![Beispiel für eine Struktur in einem Benutzerhandbuch](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-### <a name="determine-multi-turn-structure-from-format"></a>Ermitteln der Struktur von Mehrfachdurchläufen aus dem Format
+### <a name="building-your-own-multi-turn-document"></a>Erstellen eines eigenen Mehrfachdurchlauf-Dokuments
 
-QnA Maker ermittelt die Struktur von Mehrfachdurchläufen wie folgt:
+Beachten Sie beim Erstellen eines Mehrfachdurchlauf-Dokuments die folgenden Richtlinien:
 
-* Schriftgrad der Überschrift – wenn Sie Stil, Farbe oder einen anderen Mechanismus verwenden, um eine Struktur in Ihrem Dokument anzudeuten, extrahiert QnA Maker die Aufforderungen für Mehrfachdurchläufe nicht. 
-
-Zu den Regeln für Überschriften gehören:
+* Verwenden Sie Überschriften und Unterüberschriften zum Angeben der Hierarchie. Beispielsweise können Sie h1 hinzufügen, um die übergeordnete QnA zu bezeichnen, und h2, um die QnA anzugeben, die als Aufforderung verwendet werden soll. Verwenden Sie einen kleinen Überschrifts-Schriftgrad, um nachfolgende Hierarchie anzugeben. Verwenden Sie keine Auszeichnung, Farbe oder einen anderen Mechanismus zum Angeben von Struktur in Ihrem Dokument, QnA Maker kann die Mehrfachdurchlauf-Aufforderungen nicht extrahieren. 
 
 * Beenden Sie eine Überschrift nicht mit einem Fragezeichen, `?`. 
 
-### <a name="add-file-with-multi-turn-prompts"></a>Hinzufügen einer Datei mit Aufforderungen für Mehrfachdurchläufe
+* Sie können das [Beispieldokument](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) als Beispiel zum Erstellen Ihres eigenen Mehrfachdurchlauf-Dokuments verwenden.
 
-Beim Hinzufügen eines Dokuments mit Mehrfachdurchläufen bestimmt QnA Maker Folgeaufforderungen anhand der Struktur, um den Konversationsablauf zu erstellen. 
+### <a name="adding-files-to-a-multi-turn-kb"></a>Hinzufügen von Dateien zu einer Mehrfachdurchlauf-Wissensdatenbank
+
+Beim Hinzufügen eines hierarchischen Dokuments bestimmt QnA Maker Folgeaufforderungen anhand der Struktur, um den Konversationsablauf zu erstellen. 
 
 1. Wählen Sie in QnA Maker eine vorhandene Wissensdatenbank aus, die mit aktivierter Option **Enable multi-turn extraction from URLs, .pdf or .docx files.** (Aktivieren der Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien) erstellt wurde. 
 1. Wechseln Sie zur Seite **Einstellungen**, und wählen Sie die hinzuzufügende Datei oder URL aus. 
@@ -91,7 +89,7 @@ Sie können eine Wissensdatenbank mit Eingabeaufforderungen mit Mehrfachdurchlä
 
 Reduzieren Sie die Anzahl der angezeigten Frage- und Antwortpaare auf nur diejenigen mit kontextbezogenen Konversationen. 
 
-Wählen Sie **Optionen anzeigen** und dann **Show context (PREVIEW)** (Kontext anzeigen (VORSCHAU)) aus. Die Liste zeigt Frage- und Antwortpaare mit Folgeaufforderungen an. 
+Wählen Sie **View options** (Optionen anzeigen) und dann **Show context** (Kontext anzeigen) aus. Die Liste zeigt Frage- und Antwortpaare mit Folgeaufforderungen an. 
 
 ![Filtern von Frage- und Antwortpaaren nach kontextbezogenen Konversationen](../media/conversational-context/filter-question-and-answers-by-context.png)
 
@@ -111,7 +109,7 @@ Fügen Sie eine Folgeaufforderung zu einem vorhandenen Frage- und Antwortpaar hi
 
 1. Um ein vorhandenes Frage- und Antwortpaar als Folgeaufforderung zu verknüpfen, wählen Sie die Zeile für das betreffende Frage- und Antwortpaar aus. Für das Surface-Handbuch suchen Sie nach **Sign out** (Abmelden), um die Liste zu reduzieren.
 1. Wählen Sie in der Zeile für **Sign out** in der Spalte **Answer** (Antwort) die Option **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus.
-1. Geben Sie in den Feldern des Popupfensters **Follow-up prompt (PREVIEW)** (Folgeaufforderung (VORSCHAU)) die folgenden Werte ein:
+1. Geben Sie in den Feldern des Popupfensters **Follow-up prompt** (Folgeaufforderung) die folgenden Werte ein:
 
     |Feld|Wert|
     |--|--|
@@ -356,11 +354,8 @@ QnA Maker-JSON-Antwort _GenerateAnswer_ enthält die Folgeaufforderungen in der 
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Abfragen der Wissensdatenbank mit der QnA Maker-ID
 
-In der Antwort auf die erste Frage werden alle Folgeaufforderungen und zugehörigen `qnaId` zurückgegeben. Da Sie nun über die ID verfügen, können Sie diese im Anforderungstext der Folgeaufforderung übergeben. Wenn der Anforderungstext die `qnaId` und das Kontextobjekt (mit den vorherigen QnA Maker-Eigenschaften) enthält, gibt „GenerateAnswer“ die genaue Frage anhand der ID zurück, statt den Rangfolgenalgorithmus zu verwenden, um die Antwort anhand des Fragentexts zu suchen. 
+Wenn Sie eine benutzerdefinierte Anwendung mithilfe des Mehrfachdurchlauf-Features entwickeln. In der Antwort auf die erste Frage werden alle Folgeaufforderungen und zugehörigen `qnaId` zurückgegeben. Da Sie nun über die ID verfügen, können Sie diese im Anforderungstext der Folgeaufforderung übergeben. Wenn der Anforderungstext die `qnaId` und das Kontextobjekt (mit den vorherigen QnA Maker-Eigenschaften) enthält, gibt „GenerateAnswer“ die genaue Frage anhand der ID zurück, statt den Rangfolgenalgorithmus zu verwenden, um die Antwort anhand des Fragentexts zu suchen. 
 
-## <a name="display-prompts-and-send-context-in-the-client-application"></a>Anzeigen von Eingabeaufforderungen und Senden von Kontext in der Clientanwendung 
-
-Sie haben Eingabeaufforderungen zu Ihrer Wissensdatenbank hinzugefügt und den Datenfluss im Testbereich getestet. Jetzt müssen Sie diese Eingabeaufforderungen in der Clientanwendung verwenden. Bei Bot Framework werden die Eingabeaufforderungen in den Clientanwendungen nicht automatisch angezeigt. Sie können die Aufforderungen als vorgeschlagene Aktionen oder Schaltflächen als Teil der Antwort auf die Abfrage des Benutzers in Clientanwendungen anzeigen, indem Sie dieses [Bot Framework-Beispiel](https://aka.ms/qnamakermultiturnsample) in Ihren Code einbeziehen. Die Clientanwendung sollte die aktuelle QnA Maker-ID sowie die Benutzerabfrage speichern und für die nächste Benutzerabfrage an das [Kontextobjekt der GenerateAnswer-API](#a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts) übergeben. 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>Die Anzeigereihenfolge wird in der Update-API unterstützt
 

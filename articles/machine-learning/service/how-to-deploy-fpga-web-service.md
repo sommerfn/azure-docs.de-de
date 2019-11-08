@@ -7,18 +7,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.author: tedway
-author: tedway
-ms.date: 07/25/2019
+ms.author: jordane
+author: jpe316
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c3c844ba7044f8e1c9c313f1ac63b94310ea322
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 5e8dc6181660f0c1545df0688e2749f8f0187027
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350534"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496892"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Was sind Field Programmable Gate Arrays (FPGA) und wie werden sie bereitgestellt?
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dieser Artikel enthält eine Einführung in Field Programmable Gate Arrays (FPGAs) und erläutert, wie Sie Ihre Modelle mit Azure Machine Learning für ein Azure-FPGA bereitstellen. 
 
@@ -319,7 +320,7 @@ for i in Image.list(workspace=ws):
 
 ### <a name="deploy-to-the-cloud"></a>Bereitstellen in der Cloud
 
-Um Ihr Modell als hochgradig skalierbaren Produktionswebdienst bereitzustellen, verwenden Sie Azure Kubernetes Service (AKS). Sie können mit dem Azure Machine Learning SDK, der CLI, dem [Azure-Portal](https://portal.azure.com) oder der [Angebotsseite des Arbeitsbereichs](https://ml.azure.com) einen neuen AKS-Cluster erstellen.
+Um Ihr Modell als hochgradig skalierbaren Produktionswebdienst bereitzustellen, verwenden Sie Azure Kubernetes Service (AKS). Sie können mit dem Azure Machine Learning SDK, der CLI oder [Azure Machine Learning Studio](https://ml.azure.com) einen neuen erstellen.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9ac95896e67338437325e8290a96b8e42b2fa3a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 30e7059605ef86e6afd86251db0e416c9143a9ec
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374245"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475110"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über eine Single-Page-Webanwendung mithilfe von Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Bereiche ermöglichen die Steuerung des Zugriffs auf geschützte Ressourcen. Ber
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Notieren Sie sich den Wert **VOLLSTÄNDIGER BEREICHSWERT** für den Bereich `demo.read`, der in einem späteren Schritt bei der Konfiguration der Single-Page-Webanwendung verwendet werden soll. Der vollständige Bereichswert ist ähnlich wie bei `https://yourtenant.onmicrosoft.com/api/demo.read`.
+Notieren Sie sich den Wert unter **BEREICHE** für den Bereich `demo.read`, der in einem späteren Schritt bei der Konfiguration der Single-Page-Webanwendung verwendet werden soll. Der vollständige Bereichswert ist ähnlich wie bei `https://contosob2c.onmicrosoft.com/api/demo.read`.
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
@@ -133,8 +133,8 @@ So ändern Sie die Einstellungen in der SPA
 
 1. Öffnen Sie die Datei *index.html* im Projekt [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa], das Sie im vorherigen Tutorial heruntergeladen oder kopiert haben.
 1. Konfigurieren Sie das Beispiel mit dem URI für den zuvor erstellten Bereich *demo.read* und der URL der Web-API.
-    1. Ersetzen Sie in der `appConfig`-Definition den Wert `b2cScopes` durch den vollständigen URI für den Bereich (den **VOLLSTÄNDIGEN BEREICHSWERT**, den Sie zuvor aufgezeichnet haben).
-    1. Ändern Sie den Wert `webApi` in den Wert `applicationURL`, den Sie im vorherigen Abschnitt angegeben haben.
+    1. Ersetzen Sie in der `appConfig`-Definition den Wert `b2cScopes` durch den vollständigen URI für den Bereich (den Wert **BEREICH**, den Sie sich zuvor notiert haben).
+    1. Ändern Sie den Wert `webApi` in den Umleitungs-URI, den Sie zuvor beim Registrieren der Web-API-Anwendung hinzugefügt haben.
 
     Die `appConfig`-Definition sollte ähnlich wie der folgende Codeblock aussehen (mit Ihrem Mandantennamen anstelle von `<your-tenant-name>`):
 

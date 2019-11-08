@@ -1,8 +1,7 @@
 ---
-title: 'Webdienstparameter: Azure Machine Learning Studio | Microsoft-Dokumentation'
+title: 'Webdienstparameter: Azure Machine Learning Studio (klassisch) | Microsoft-Dokumentation'
 description: 'Anleitung: Verwenden von Azure Machine Learning Webdienstparametern, um das Verhalten des Modells beim Zugriff auf den Webdienst zu ändern.'
 services: machine-learning
-documentationcenter: ''
 author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
@@ -11,18 +10,16 @@ ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
 ms.subservice: studio
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: a236043d5622e5a2e1ffd572c887fb5ffac2174a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 62c6488cfcb30c969c388343c766c482cff7e03b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345426"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466993"
 ---
-# <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Verwenden von Azure Machine Learning Studio-Webdienstparametern
+# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Verwenden von (klassischen) Azure Machine Learning Studio-Webdienstparametern
 Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
 
 Ein typisches Beispiel ist das Einrichten des Moduls [Import Data][reader], damit die Benutzer des veröffentlichten Webdiensts beim Zugreifen auf den Webdienst eine andere Datenquelle angeben können. Ein weiteres Beispiel ist die Konfiguration des Moduls [Export Data][writer], damit ein anderes Ziel angegeben werden kann. Zu weiteren Beispielen zählen die Änderung der Anzahl von Bits für das Modul [Feature Hashing][feature-hashing] oder der Anzahl der gewünschten Funktionen für das Modul [Filter-Based Feature Selection][filter-based-feature-selection]. 
@@ -41,14 +38,14 @@ Sie können entscheiden, ob Sie einen Standardwert für den Webdienstparameter a
 Die API-Dokumentation für den Webdienst enthält Informationen, denen die Webdienstbenutzer entnehmen können, wie der Webdienstparameter beim Zugriff auf den Webdienst programmgesteuert angegeben werden kann.
 
 > [!NOTE]
-> Die API-Dokumentation für einen klassischen Webdienst wird über den Link **API-Hilfeseite** im **DASHBOARD** des Webdiensts in Machine Learning Studio bereitgestellt. Die API-Dokumentation für einen neuen Webdienst wird über das [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart)-Portal auf den Seiten **Consume** und **Swagger API** für den Webdienst bereitgestellt.
+> Die API-Dokumentation für einen klassischen Webdienst wird über den Link **API-Hilfeseite** im **DASHBOARD** des Webdiensts in Machine Learning Studio (klassisch) bereitgestellt. Die API-Dokumentation für einen neuen Webdienst wird über das [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart)-Portal auf den Seiten **Consume** und **Swagger API** für den Webdienst bereitgestellt.
 > 
 > 
 
 ## <a name="example"></a>Beispiel
 Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export Data][writer], das Informationen an Azure Blob Storage sendet. Wir definieren einen Webdienstparameter namens "Blob path", mit dem die Benutzer des Webdienst beim Zugriff auf den Dienst den Blob-Speicherpfad ändern können.
 
-1. Klicken Sie in Machine Learning Studio auf das Modul [Export Data][writer], um es auszuwählen. Die Moduleigenschaften werden rechts neben dem Canvas mit dem Experiment im Eigenschaftenbereich angezeigt.
+1. Klicken Sie in der klassischen Version von Machine Learning Studio auf das Modul [Export Data][writer], um es auszuwählen. Die Moduleigenschaften werden rechts neben dem Canvas mit dem Experiment im Eigenschaftenbereich angezeigt.
 2. Geben Sie den Speichertyp an:
    
    * Wählen Sie unter **Please specify data destination**(Datenziel angeben) das Ziel "Azure Blob Storage" (Azure-Blob-Speicher" aus.

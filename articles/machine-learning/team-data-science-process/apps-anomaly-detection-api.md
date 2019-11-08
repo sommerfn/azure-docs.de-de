@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 25b08bf78de61e556bab790869b45131a01ce6b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "64926188"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495104"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 
@@ -46,7 +46,7 @@ Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Sc
 -->
 
 ## <a name="api-deployment"></a>API-Bereitstellung
-Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies über den [Azure KI-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei Azure Machine Learning Studio-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs von der Seite [Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) aus verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies über den [Azure KI-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei (klassische) Azure Machine Learning Studio-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs auf der Seite [ (klassische) Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Skalieren der API
 Standardmäßig enthält der kostenlose Dev/Test-Abrechnungsplan Ihrer Bereitstellung 1.000 Transaktionen/Monat und 2 Computestunden/Monat.  Sie können nach Ihren Bedürfnissen auf einen anderen Plan aktualisieren.  Informationen zu den Preisen verschiedener Pläne finden Sie [hier](https://azure.microsoft.com/pricing/details/machine-learning/) unter „Produktions-Web-API-Preise“.
@@ -58,7 +58,7 @@ Sie können Ihren Abrechnungsplan [hier](https://services.azureml.net/plans/) ve
 Der Webdienst stellt eine REST-basierte API über HTTPS bereit, die auf unterschiedliche Weise genutzt werden kann, beispielsweise durch eine Web- oder mobile Anwendung, R, Python, Excel usw.  Sie senden Zeitreihendaten über einen REST-API-Aufruf an diesen Dienst, und dann wird eine Kombination der unten beschriebenen drei Anomaliearten ausgeführt.
 
 ## <a name="calling-the-api"></a>Aufrufen der API
-Um die API aufrufen zu können, müssen Sie die Endpunktposition und den API-Schlüssel kennen.  Beides ist zusammen mit dem Beispielcode für das Aufrufen der API auf der Seite der [Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) verfügbar.  Navigieren Sie zu der gewünschten API, und klicken Sie dann auf die Registerkarte „Nutzen“, um sie zu finden.  Beachten Sie, dass Sie die API als Swagger-API (d.h. mit dem URL-Parameter `format=swagger`) oder als Nicht-Swagger-API (d.h. ohne `format`-URL-Parameter) aufrufen können.  Im Beispielcode wird das Swagger-Format verwendet.  Im Folgenden finden Sie ein Beispiel für eine Anforderung und Antwort im Nicht-Swagger-Format.  Diese Beispiele gelten für den Saisonabhängigkeits-Endpunkt.  Der Nicht-Saisonabhängigkeits-Endpunkt ist ähnlich.
+Um die API aufrufen zu können, müssen Sie die Endpunktposition und den API-Schlüssel kennen.  Beides ist zusammen mit dem Beispielcode für das Aufrufen der API auf der Seite der [(klassisch) Azure Machine Learning Studio-Webdienste](https://services.azureml.net/webservices/) verfügbar.  Navigieren Sie zu der gewünschten API, und klicken Sie dann auf die Registerkarte „Nutzen“, um sie zu finden.  Beachten Sie, dass Sie die API als Swagger-API (d.h. mit dem URL-Parameter `format=swagger`) oder als Nicht-Swagger-API (d.h. ohne `format`-URL-Parameter) aufrufen können.  Im Beispielcode wird das Swagger-Format verwendet.  Im Folgenden finden Sie ein Beispiel für eine Anforderung und Antwort im Nicht-Swagger-Format.  Diese Beispiele gelten für den Saisonabhängigkeits-Endpunkt.  Der Nicht-Saisonabhängigkeits-Endpunkt ist ähnlich.
 
 ### <a name="sample-request-body"></a>Inhalt der Beispielanforderung
 Die Anforderung enthält zwei Objekte: `Inputs` und `GlobalParameters`.  In der folgenden Beispielanforderung werden einige Parameter explizit gesendet, andere hingegen nicht (scrollen Sie nach unten, um eine vollständige Liste von Parametern für jeden Endpunkt anzuzeigen).  Parameter, die nicht explizit in der Anforderung gesendet werden, verwenden die unten angegebenen Standardwerte.

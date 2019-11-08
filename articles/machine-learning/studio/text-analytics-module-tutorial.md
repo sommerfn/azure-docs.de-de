@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines Standpunktanalysemodells
-titleSuffix: Azure Machine Learning Studio
-description: Erstellen von Textanalysemodellen in Azure Machine Learning Studio unter Verwendung von Modulen für Textvorverarbeitung, N-Gramme oder Feature Hashing
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Erstellen von Textanalysemodellen in Azure Machine Learning Studio (klassisch) unter Verwendung von Modulen für Textvorverarbeitung, N-Gramme oder Feature Hashing
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 08d62e7a6c9503d415fe144da57eee72ce3bfafd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d24e4f98e987cb911a8bc0ffcd1b49e1bed8b920
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636567"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467161"
 ---
-# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Erstellen eines Standpunktanalysemodells in Azure Machine Learning Studio
+# <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio-classic"></a>Erstellen eines Standpunktanalysemodells in Azure Machine Learning Studio (klassisch)
 
-Mit Azure Machine Learning Studio können Sie Textanalysemodelle erstellen und operationalisieren. Diese Modelle können Ihnen z.B. helfen, Probleme bei der Klassifizierung von Dokumenten oder Stimmungsanalyse zu lösen.
+Mit Azure Machine Learning Studio (klassisch) können Sie Textanalysemodelle erstellen und operationalisieren. Diese Modelle können Ihnen z.B. helfen, Probleme bei der Klassifizierung von Dokumenten oder Stimmungsanalyse zu lösen.
 
 In einem Experiment zur Textanalyse würden Sie in der Regel Folgendes tun:
 
@@ -66,7 +66,7 @@ Als Alternativansatz zum Extrahieren von N-Gramm-Features können Sie das Featur
 ## <a name="step-3-train-classification-or-regression-model"></a>Schritt 3: Trainieren des Klassifikations- oder Regressionsmodells
 Jetzt ist der Text in numerische Featurespalten transformiert. Da das Dataset weiterhin Zeichenfolgenspalten aus vorherigen Phasen enthält, schließen wir sie mit „Select Columns in Dataset“ aus.
 
-Anschließend verwenden wir [Two-Class Logistic Regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) zur Vorhersage unseres Ziels: hohes oder niedriges Beurteilungsergebnis. An diesem Punkt wurde das Textanalyseproblem in ein reguläres Klassifizierungsproblem transformiert. Sie können die in Azure Machine Learning Studio verfügbaren Tools zur Verbesserung des Modells verwenden. Beispielsweise können Sie mit verschiedenen Klassifizierungen experimentieren, um herauszufinden, wie präzise die von ihnen gelieferten Ergebnisse sind, oder die Genauigkeit durch Optimierung der Hyperparameter verbessern.
+Anschließend verwenden wir [Two-Class Logistic Regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) zur Vorhersage unseres Ziels: hohes oder niedriges Beurteilungsergebnis. An diesem Punkt wurde das Textanalyseproblem in ein reguläres Klassifizierungsproblem transformiert. Sie können die in der klassischen Version von Azure Machine Learning Studio verfügbaren Tools zur Verbesserung des Modells verwenden. Beispielsweise können Sie mit verschiedenen Klassifizierungen experimentieren, um herauszufinden, wie präzise die von ihnen gelieferten Ergebnisse sind, oder die Genauigkeit durch Optimierung der Hyperparameter verbessern.
 
 ![Trainieren und bewerten](./media/text-analytics-module-tutorial/scoring-text.png)
 

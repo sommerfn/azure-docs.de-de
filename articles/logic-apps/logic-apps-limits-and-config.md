@@ -1,6 +1,6 @@
 ---
 title: Grenzwerte und Konfiguration – Azure Logic Apps
-description: Dienstlimits und Konfigurationswerte für Azure Logic Apps
+description: Grenzwerte für Dienste wie Dauer, Durchsatz und Kapazität, sowie Konfigurationswerte wie zulässige IP-Adressen für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 9579dd86f6291481ab227fc1d13abee2a7c158ae
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e2b866ddd888261e7d8817c73952d4830a4f8147
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330259"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464010"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -146,7 +146,7 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 | NAME | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
 | Nachrichtengröße | 100 MB | 200 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. |
-| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p>Für die Integrationsdienstumgebung unterstützt die Logic Apps-Engine diesen Grenzwert, Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen unter [Azure Blob Storage-Connector](/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
+| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p>Für die Integrationsdienstumgebung unterstützt die Logic Apps-Engine diesen Grenzwert. Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen in der [Referenz zur API des Azure Blob Storage-Connectors](https://docs.microsoft.com/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
 | Grenzwert für die Auswertung von Ausdrücken | 131.072 Zeichen | 131.072 Zeichen | Keiner der Ausdrücke `@concat()`, `@base64()` und `@string()` darf länger sein, als dieser Grenzwert angibt. |
 |||||
 
@@ -177,7 +177,7 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 
 | NAME | Begrenzung |
 | ---- | ----- |
-| Anzahl von Logik-Apps mit vom System zugewiesenen verwalteten Identitäten pro Azure-Abonnement | 100 |
+| Anzahl von Logik-Apps mit vom System zugewiesener Identität pro Azure-Abonnement und Region | 100 |
 |||
 
 <a name="integration-account-limits"></a>
@@ -273,13 +273,11 @@ Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe ver
 
 * Um die Aufrufe zu unterstützen, die [von Microsoft verwalteten Connectors](../connectors/apis-list.md) ausführen, richten Sie Ihre Firewall mit *allen* [ausgehenden](#outbound) IP-Adressen ein, die von diesen Connectors verwendet werden, basierend auf den Regionen, in denen Ihre Logik-Apps vorhanden sind. Diese Adressen werden unter der Überschrift **Ausgehend** in diesem Abschnitt angezeigt, wobei sie nach Region sortiert sind. 
 
-* Für Logik-Apps, die in einer Integrationsdienstumgebung (ISE) ausgeführt werden, müssen Sie [diese Ports öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
+* Zum Ermöglichen der Kommunikation für Logik-Apps, die in einer Integrationsdienstumgebung (ISE) ausgeführt werden, müssen Sie [diese Ports öffnen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-* Logik-Apps können nicht direkt auf Azure-Speicherkonten zugreifen, die über [Firewallregeln](../storage/common/storage-network-security.md) verfügen und in derselben Region vorhanden sind. Wenn Sie jedoch die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound) zulassen, können Logik-Apps auf Speicherkonten in einer anderen Region zugreifen, außer wenn Sie den Azure Table Storage-Connector oder den Azure Queue Storage-Connector verwenden. Um auf ihren Table Storage oder Queue Storage zuzugreifen, können Sie weiterhin HTTP-Trigger und -Aktionen verwenden. Andernfalls können Sie auch hier die erweiterten Optionen verwenden:
+* Wenn Ihre Logik-Apps Probleme beim Zugriff auf Azure-Speicherkonten mit aktiven [Firewalls und Firewallregeln](../storage/common/storage-network-security.md) haben, stehen Ihnen [verschiedene Optionen zum Ermöglichen des Zugriffs](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls) zur Verfügung.
 
-  * Erstellen Sie eine [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), die eine Verbindung mit Ressourcen in einem virtuellen Azure-Netzwerk herstellen kann.
-
-  * Wenn Sie für API Management einen Dedicated-Tarif verwenden, können Sie die Speicher-API als Front-End verwenden, indem Sie API Management verwenden und dessen IP-Adressen das Passieren der Firewall gestatten. Im Grunde fügen Sie das virtuelle Azure-Netzwerk, das von API Management verwendet wird, der Firewalleinstellung des Speicherkontos hinzu. Sie können dann entweder die API Management-Aktion oder die HTTP-Aktion verwenden, um die Azure Storage-APIs aufzurufen. Wenn Sie diese Option auswählen, müssen Sie den Authentifizierungsprozess jedoch selbst handhaben. Weitere Informationen finden Sie unter [Einfache Unternehmensintegrationsarchitektur](https://aka.ms/aisarch).
+  Beispielsweise können Logik-Apps nicht direkt auf Speicherkonten zugreifen, für die Firewallregeln gelten und die sich in derselben Region befinden. Wenn Sie jedoch die [ausgehenden IP-Adressen für verwaltete Connectors in Ihrer Region](../logic-apps/logic-apps-limits-and-config.md#outbound) zulassen, können Ihre Logik-Apps auf Speicherkonten in einer anderen Region zugreifen, außer wenn Sie den Azure Table Storage- oder Azure Queue Storage-Connector verwenden. Um auf Ihren Table Storage oder Queue Storage zuzugreifen, können Sie stattdessen HTTP-Trigger und -Aktionen verwenden. Weitere Optionen finden Sie unter [Zugreifen auf Speicherkonten hinter Firewalls](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls).
 
 * Für benutzerdefinierte Connectors, [Azure Government](../azure-government/documentation-government-overview.md) und [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) sind keine festen oder reservierten IP-Adressen verfügbar.
 
@@ -338,12 +336,12 @@ Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe ver
 | Asien, Osten | 13.75.94.173, 40.83.73.39, 40.83.75.165, 40.83.77.208, 40.83.100.69, 40.83.127.19, 52.175.33.254, 65.52.175.34 | 13.75.36.64 – 13.75.36.79, 52.175.23.169 |
 | East US | 13.92.98.111, 23.100.29.190, 23.101.132.208, 23.101.136.201, 23.101.139.153, 40.114.82.191, 40.121.91.41, 104.45.153.81 | 40.71.11.80 - 40.71.11.95, 40.71.249.205 |
 | USA (Ost) 2 | 40.70.26.154, 40.70.27.236, 40.70.29.214, 40.70.131.151, 40.84.30.147, 104.208.140.40, 104.208.155.200, 104.208.158.174 | 40.70.146.208 – 40.70.146.223, 52.232.188.154 |
-| Frankreich, Mitte | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28,40.89.190.104 | 40.89.135.2 |
-| Frankreich, Süden | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 52.136.133.184 |
+| Frankreich, Mitte | 52.143.164.80, 52.143.164.15, 40.89.186.30, 20.188.39.105, 40.89.191.161, 40.89.188.169, 40.89.186.28,40.89.190.104 | 40.89.135.2, 40.79.130.208 - 40.79.130.223 |
+| Frankreich, Süden | 52.136.132.40, 52.136.129.89, 52.136.131.155, 52.136.133.62, 52.136.139.225, 52.136.130.144, 52.136.140.226, 52.136.129.51 | 52.136.133.184, 40.79.178.240 - 40.79.178.255 |
 | Japan, Osten | 13.71.158.3, 13.71.158.120, 13.73.4.207, 13.78.18.168, 13.78.20.232, 13.78.21.155, 13.78.35.229, 13.78.42.223 | 13.78.108.0 – 13.78.108.15, 13.71.153.19 |
 | Japan, Westen | 40.74.64.207, 40.74.68.85, 40.74.74.21, 40.74.76.213, 40.74.77.205, 40.74.140.4, 104.214.137.243, 138.91.26.45 | 40.74.100.224 – 40.74.100.239, 104.215.61.248 |
-| Korea, Mitte | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.141.36.214 |
-| Korea, Süden | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.163.10 |
+| Korea, Mitte | 52.231.14.11, 52.231.14.219, 52.231.15.6, 52.231.10.111, 52.231.14.223, 52.231.77.107, 52.231.8.175, 52.231.9.39 | 52.141.36.214, 52.231.18.208 - 52.231.18.223 |
+| Korea, Süden | 52.231.204.74, 52.231.188.115, 52.231.189.221, 52.231.203.118, 52.231.166.28, 52.231.153.89, 52.231.155.206, 52.231.164.23 | 52.231.163.10, 52.231.147.0 - 52.231.147.15 |
 | USA Nord Mitte | 52.162.208.216, 52.162.213.231, 65.52.8.225, 65.52.9.96, 65.52.10.183, 157.55.210.61, 157.55.212.238, 168.62.248.37 | 52.162.107.160 – 52.162.107.175, 52.162.242.161 |
 | Nordeuropa | 40.112.92.104, 40.112.95.216, 40.113.1.181, 40.113.3.202, 40.113.4.18, 40.113.12.95, 52.178.165.215, 52.178.166.21 | 13.69.227.208 – 13.69.227.223, 52.178.150.68 |
 | USA Süd Mitte | 13.65.82.17, 13.66.52.232, 23.100.124.84, 23.100.127.172, 23.101.183.225, 70.37.54.122, 70.37.50.6, 104.210.144.48 | 104.214.19.48 – 104.214.19.63, 13.65.86.57 |

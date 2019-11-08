@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9fc9eb347e97fe6ab57b3e30651e4ea77a4ce9c8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d1874d610feb041545e1675ad5b40a1b5e753b67
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790249"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497981"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -86,7 +86,7 @@ Verwenden Sie den folgenden Parameter, um 10.000 SNAT-Ports pro VM zuzuordnen (N
 
 Jede öffentliche IP-Adresse aller Front-Ends einer Ausgangsregel stellt bis zu 64.000 kurzlebige Ports als SNAT-Ports bereit.  Load Balancer weist SNAT-Ports als ein Vielfaches von 8 zu. Wenn Sie einen Wert angeben, der nicht durch 8 teilbar ist, wird der Konfigurationsvorgang abgelehnt.  Wenn Sie versuchen, mehr SNAT-Ports zuzuordnen als öffentliche IP-Adressen vorhanden sind, wird der Konfigurationsvorgang abgelehnt.  Wenn Sie beispielsweise 10.000 Ports pro VM zuweisen und 7 VMs in einem Back-End-Pool eine einzige öffentliche IP-Adresse teilen würden, wird die Konfiguration zurückgewiesen (7 x 10.000 SNAT-Ports > 64.000 SNAT-Ports).  Dem Front-End der Ausgangsregel lassen sich weitere öffentliche IP-Adressen hinzufügen, um das Szenario zu ermöglichen.
 
-Sie können die [automatische SNAT-Portzuordnung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) wiederherstellen, indem Sie als Portanzahl „0“ angeben.
+Sie können die [automatische SNAT-Portzuordnung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) wiederherstellen, indem Sie als Portanzahl „0“ angeben. In diesem Fall erhalten die ersten 50 VM-Instanzen 1024 Ports. Die VM-Instanzen von 51-100 erhalten 512 usw. entsprechend der Tabelle.
 
 ### <a name="idletimeout"></a> Steuern des Leerlauftimeouts für ausgehenden Datenfluss
 

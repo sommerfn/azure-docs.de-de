@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erstellen Ihres ersten ML-Experiments: Einrichtung'
 titleSuffix: Azure Machine Learning
-description: In dieser Tutorialreihe erfahren Sie Schritt für Schritt, wie Sie die ersten Schritte mit dem in Jupyter Notebook-Instanzen ausgeführten Azure Machine Learning Python SDK ausführen.  In Teil 1 wird die Erstellung einer Cloudumgebung für Notebook-Server sowie eines Arbeitsbereichs für das Verwalten Ihrer Experimente und Machine Learning-Modelle erläutert.
+description: In diesem Tutorial erhalten Sie Informationen zu den ersten Schritten mit dem in Jupyter-Notebooks ausgeführten Azure Machine Learning Python SDK.  In Teil 1 erstellen Sie einen Arbeitsbereich, in dem Sie Experimente und ML-Modelle verwalten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,23 +10,25 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828034"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475979"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie das in Jupyter-Notebooks ausgeführte Azure Machine Learning Python SDK einrichten. Dieses Tutorial ist der **erste Teil einer zweiteiligen Tutorialreihe** und behandelt die Einrichtung und Konfiguration der Python-Umgebung sowie die Erstellung eines Arbeitsbereichs zur Verwaltung Ihrer Experimente und Machine Learning-Modelle. Der [**zweite Teil**](tutorial-1st-experiment-sdk-train.md) baut auf diesem Tutorial auf und zeigt, wie Sie mehrere Machine Learning-Modelle trainieren und über das Azure-Portal sowie mithilfe des SDK verwalten.
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie das in Jupyter-Notebooks ausgeführte Azure Machine Learning Python SDK einrichten. Dieses Tutorial ist der **erste Teil einer zweiteiligen Tutorialreihe** und behandelt die Einrichtung und Konfiguration der Python-Umgebung sowie die Erstellung eines Arbeitsbereichs zur Verwaltung Ihrer Experimente und Machine Learning-Modelle. Der [**zweite Teil**](tutorial-1st-experiment-sdk-train.md) baut auf diesem Tutorial auf und zeigt, wie Sie mehrere Machine Learning-Modelle trainieren und über Azure Machine Learning Studio sowie mithilfe des SDK verwalten.
 
 In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Erstellen eines [Azure Machine Learning-Arbeitsbereichs](concept-workspace.md) für das nächste Tutorial
 > * Klonen Sie das Tutorial-Notebook in Ihrem Ordner im Arbeitsbereich.
-> * Erstellen einer cloudbasierten Jupyter Notebook-VM, auf der das Azure Machine Learning Python SDK installiert und vorkonfiguriert ist
+> * Erstellen einer cloudbasierten Computeinstanz, in der das Azure Machine Learning Python SDK installiert und vorkonfiguriert ist
+
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
@@ -46,23 +48,27 @@ Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Ko
 
 In diesem Beispiel wird der cloudbasierte Notebook-Server in Ihrem Arbeitsbereich für eine vorkonfigurierte Umgebung ohne Installationsaufwand verwendet. Verwenden Sie [Ihre eigene Umgebung](how-to-configure-environment.md#local), wenn Sie Ihre Umgebung, Pakete und Abhängigkeiten lieber selbst gestalten möchten.
 
-Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf der Landing Page des Arbeitsbereichs (Vorschauversion) aus. Diese konsolidierte Oberfläche enthält Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Data Science-Fachleute aller Kenntnisstufen.
+Sie führen die folgende Experimenteinrichtung durch und führen Schritte in Azure Machine Learning Studio aus. Diese konsolidierte Oberfläche enthält Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler aller Qualifikationen.
 
-1. Melden Sie sich auf der [Angebotsseite des Arbeitsbereichs](https://ml.azure.com/) an.
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
 
 1. Wählen Sie Ihr Abonnement und den erstellten Arbeitsbereich aus.
 
-1. Wählen Sie links **Notebooks and Files** (Notebooks und Dateien) aus.
+1. Wählen Sie links **Notebooks** aus.
 
 1. Öffnen Sie den Ordner **Beispiele**.
+
+1. Öffnen Sie den Ordner **Python**.
+
+1. Öffnen Sie den Ordner mit Versionsnummer.  Diese Zahl stellt die aktuelle Version des Python SDK dar.
 
 1. Wählen Sie rechts vom Ordner **Tutorials** die Auslassungspunkte ( **„...“** ) und anschließend **Klonen** aus.
 
     ![Klonen des Ordners](media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Für jeden Benutzer, der auf den Arbeitsbereich zugreift, wird ein Ordner angezeigt.  Wählen Sie Ihren Ordner aus, um den Ordner **Tutorials** dort zu klonen.
+1. Eine Liste der Ordner mit den einzelnen Benutzern wird angezeigt, die auf den Arbeitsbereich zugreifen.  Wählen Sie Ihren Ordner aus, um den Ordner **Tutorials** dort zu klonen.
 
-## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open">Auswählen eines virtuellen Computers zum Ausführen des Notebooks
+## <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">Öffnen des geklonten Notebooks
 
 1. Öffnen Sie unter **Benutzerdateien** Ihren Ordner und anschließend den geklonten Ordner **Tutorials**.
 
@@ -73,11 +79,9 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf de
     
 1. Wählen Sie die Datei **tutorial-1st-experiment-sdk-train.ipynb** im Ordner **Tutorials** aus.
 
-1. Wählen Sie auf der oberen Leiste eine Notebook-VM aus, die zum Ausführen des Notebooks verwendet werden soll. Diese VMs werden mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen. Sie können einen virtuellen Computer auswählen, der von einem beliebigen Benutzer Ihres Arbeitsbereichs erstellt wurde. 
+1. Wählen Sie auf der oberen Leiste eine Computeinstanz aus, die zum Ausführen des Notebooks verwendet werden soll. Diese VMs werden [mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen](concept-compute-instance.md#contents). Sie können einen virtuellen Computer auswählen, der von einem beliebigen Benutzer Ihres Arbeitsbereichs erstellt wurde. 
 
-1. Werden keine virtuellen Computer gefunden, wählen Sie **+ Neue VM** aus, um den virtuellen Computer zu erstellen.
-
-    ![Erstellen einer VM](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+1. Werden keine virtuellen Computer gefunden, wählen Sie **+ Computeressource hinzufügen** aus, um den virtuellen Computer zu erstellen.
 
     1. Geben Sie beim Erstellen eines virtuellen Computers einen Namen an.  Der Name muss zwischen 2 und 16 Zeichen lang sein. Gültige Zeichen sind Buchstaben, Ziffern und Bindestriche (-), und der Name muss in Ihrem Azure-Abonnement eindeutig sein.
 
@@ -85,6 +89,9 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte auf de
 
 1. Sobald der virtuelle Computer verfügbar ist, wird er auf der oberen Symbolleiste angezeigt.  Sie können das Notebook jetzt entweder über **Alle ausführen** auf der Symbolleiste oder unter Verwendung von **UMSCHALT+EINGABE** in den Codezellen des Notebooks ausführen.
 
+> [!NOTE]
+> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar.
+>Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.  Sie können entweder eine Notebook-VM oder eine Computeinstanz für die Ausführung Ihres Notebooks verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

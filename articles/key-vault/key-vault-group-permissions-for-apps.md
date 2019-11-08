@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9e51249bdcfa3cf506700cd3032b1ca39b773d82
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7c31c04137a8d36adfe41a18cbc276a45483b05b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73102362"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467180"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie
 
@@ -162,7 +162,7 @@ Set-AzKeyVaultAccessPolicy –VaultName <your-key-vault-name> -PermissionsToKeys
 
 Sie können eine Azure AD-Gruppe erstellen, Anwendungen und Benutzer zur Gruppe hinzufügen und der Gruppe anschließend Zugriff auf Ihren Schlüsseltresor gewähren.  Dies ermöglicht es Ihnen, einem Schlüsseltresor eine Reihe von Anwendungen als einzelnen Zugriffsrichtlinieneintrag hinzuzufügen, und es ist nicht mehr erforderlich, Benutzern direkten Zugriff auf Ihren Schlüsseltresor zu gewähren (wovon abgeraten wird). Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen](../active-directory/fundamentals/active-directory-manage-groups.md).
 
-### <a name="addition-prerequisites"></a>Zusätzliche Voraussetzungen
+### <a name="additional-prerequisites"></a>Zusätzliche Voraussetzungen
 
 Zusätzlich zu den [oben genannten Voraussetzungen](#prerequisites) benötigen Sie Berechtigungen zum Erstellen/Bearbeiten von Gruppen in Ihrem Azure Active Directory-Mandanten. Falls Sie nicht über die entsprechenden Berechtigungen verfügen, müssen Sie sich ggf. an Ihren Azure Active Directory-Administrator wenden.
 
