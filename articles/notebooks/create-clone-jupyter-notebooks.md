@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 3e0c49d1141d976558ece325baaa99fc9981275e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970088"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496717"
 ---
 # <a name="create-and-clone-projects"></a>Erstellen und Klonen von Projekten
 
@@ -125,4 +125,4 @@ So klonen Sie ein Projekt:
 - [Gewusst wie: Zeigen einer Bildschirmpräsentation](present-jupyter-notebooks-slideshow.md)
 - [Gewusst wie: Arbeiten mit Datendateien](work-with-project-data-files.md)
 - [Gewusst wie: Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)
-- [Gewusst wie: Verwenden von Azure Machine Learning Services](use-machine-learning-services-jupyter-notebooks.md)
+- [Gewusst wie: Verwenden von Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)

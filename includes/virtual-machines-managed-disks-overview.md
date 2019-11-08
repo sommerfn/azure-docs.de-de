@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: f041381534dfe59036ce1b9d91792f9e78d0dace
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949718"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522885"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -51,11 +51,11 @@ Sie können die [Rollenbasierte Zugriffssteuerung in Azure (RBAC)](../articles/r
 
 ## <a name="encryption"></a>Verschlüsselung
 
-Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die erste ist Storage Service Encryption (SSE), die vom Speicherdienst durchgeführt wird. Die zweite ist Azure Disk Encryption (ADE), die Sie für Datenträger für das Betriebssystem und die Daten Ihrer virtuellen Computer aktivieren können.
+Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die erste ist die serverseitige Verschlüsselung (Server Side Encryption, SSE), die vom Speicherdienst durchgeführt wird. Die zweite ist Azure Disk Encryption (ADE), die Sie für Datenträger für das Betriebssystem und die Daten Ihrer virtuellen Computer aktivieren können.
 
-### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
+### <a name="server-side-encryption"></a>Serverseitige Verschlüsselung
 
-[Azure Storage Service Encryption](../articles/storage/common/storage-service-encryption.md) bietet Verschlüsselung für ruhende Daten und schützt Ihre Daten, um die Sicherheits- und Konformitätsverpflichtungen Ihrer Organisation zu erfüllen. SSE ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. Weitere Einzelheiten finden Sie auf der Seite mit [FAQs zu Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption).
+Die [serverseitige Verschlüsselung von Azure](../articles/storage/common/storage-service-encryption.md) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. Die serverseitige Verschlüsselung ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. Weitere Einzelheiten finden Sie auf der Seite mit [FAQs zu Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption).
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -85,12 +85,12 @@ Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwa
 
 Bei einer Momentaufnahme eines verwalteten Datenträgers handelt es sich um eine absturzkonsistente, schreibgeschützte vollständige Kopie eines verwalteten Datenträgers, die standardmäßig als verwalteter Standarddatenträger gespeichert wird. Mit Momentaufnahmen können Sie Ihre verwalteten Datenträger jederzeit sichern. Diese Momentaufnahmen existieren unabhängig vom Quelldatenträger und können zum Erstellen neuer verwalteter Datenträger verwendet werden. 
 
-Momentaufnahmen werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt. Sie können die verwendete Größe Ihrer Momentaufnahmen im [Azure-Nutzungsbericht](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill) ansehen. Beispiel: Beträgt die verwendete Datengröße einer Momentaufnahme 10 GiB, wird im Nutzungsbericht als verbrauchte Menge Folgendes angezeigt: 10 GiB/(31 Tage · 24 Stunden) = 0,013441 GiB.
+Momentaufnahmen werden auf Basis der verwendeten Größe in Rechnung gestellt. Wenn Sie beispielsweise eine Momentaufnahme eines verwalteten Datenträgers mit einer bereitgestellten Kapazität von 64GiB und einer tatsächlichen Datengröße von 10GiB erstellen, wird die Momentaufnahme nur für die in Anspruch genommene Datengröße von 10GiB in Rechnung gestellt. Sie können die verwendete Größe Ihrer Momentaufnahmen im [Azure-Nutzungsbericht](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill) ansehen. Beispiel: Beträgt die verwendete Datengröße einer Momentaufnahme 10 GiB, wird im **täglichen** Nutzungsbericht als verbrauchte Menge Folgendes angezeigt: 10 GiB/(31 Tage) = 0,3226.
 
-Weitere Informationen dazu, wie Sie Momentaufnahmen mit verwalteten Datenträgern erstellen, finden Sie in den folgenden Ressourcen:
+Weitere Informationen zur Erstellung von Momentaufnahmen für verwaltete Datenträger finden Sie in den folgenden Ressourcen:
 
-* [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Erstellen einer Kopie einer als verwalteter Datenträger gespeicherten virtuellen Festplatte mithilfe von Momentaufnahmen unter Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Erstellen einer Momentaufnahme](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md) (Windows)
+* [Erstellen einer Momentaufnahme](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md) (Linux)
 
 ### <a name="images"></a>Bilder
 

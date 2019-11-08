@@ -9,16 +9,16 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: a755fe1607e581cb0a25eb9bd90c2ba223829a46
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ac7ae0d7933e1d1b4d716eb157bf74152155a969
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350604"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497342"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
-Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen, von Code First-Lösungen mit dem SDK bis zu Low-Code-Lösungen wie automatisiertes ML und die grafische Benutzeroberfläche. Anhand der folgenden Liste können Sie ermitteln, welche Trainingsmethode für Sie die richtige ist:
+Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen, von Code-First-Lösungen mit dem SDK bis zu Low-Code-Lösungen wie automatisiertes ML und der visuelle Designer. Anhand der folgenden Liste können Sie ermitteln, welche Trainingsmethode für Sie die richtige ist:
 
 + [Azure Machine Learning SDK für Python](#python-sdk): Das Python SDK bietet verschiedene Möglichkeiten, Modelle mit jeweils unterschiedlichen Funktionen zu trainieren.
 
@@ -29,7 +29,7 @@ Azure Machine Learning bietet verschiedene Methoden zum Trainieren von Modellen,
     | [Schätzfunktionen](#estimators) | Mithilfe der Estimator-Klassen können **Modelle auf Grundlage beliebter Frameworks für maschinelles Lernen einfach trainiert werden**. Es gibt Estimator-Klassen für **Scikit-learn**, **PyTorch**, **TensorFlow** und **Chainer**. Es gibt auch einen allgemeinen Estimator, der mit Frameworks verwendet werden kann, die noch keine dedizierte Estimator-Klasse aufweisen. Sie müssen sich nicht um die Definition einer Laufzeitkonfiguration kümmern, wenn Sie Estimators verwenden. |
     | [Machine Learning-Pipeline](#machine-learning-pipeline) | Pipelines sind keine andere Trainingsmethode, sondern eine **Möglichkeit, einen Workflow mit modularen, wiederverwendbaren Schritten zu definieren**, die Training als Teil des Workflows enthalten können. Machine Learning-Pipelines unterstützen die Verwendung des automatisierten maschinellen Lernens sowie die Verwendung von Estimators und der Laufzeitkonfiguration zum Trainieren von Modellen. Da Pipelines nicht speziell auf das Training ausgerichtet sind, variieren die Gründe für den Einsatz einer Pipeline stärker als die anderen Trainingsmethoden. Im Allgemeinen können Sie eine Pipeline in folgenden Situationen verwenden:<br>* Sie möchten **unbeaufsichtigte Prozesse planen**, z. B. zeitintensive Trainingsaufträge oder Datenaufbereitungen.<br>* Sie möchten **mehrere Schritte** verwenden, die über heterogene Computeressourcen und Speicherorte hinweg koordiniert sind.<br>* Sie möchten die Pipeline als **wiederverwendbare Vorlage** für bestimmte Szenarien verwenden, z. B. für erneutes Training oder Batchbewertungen.<br>* **Nachverfolgung und Versionierung von Datenquellen, Eingaben und Ausgaben** für Ihren Workflow.<br>* Ihr Workflow wird von **verschiedenen Teams implementiert, die unabhängig voneinander an bestimmten Schritten arbeiten**. Die Schritte können dann in einer Pipeline zusammengeführt werden, um den Workflow zu implementieren. |
 
-+ **Grafische Benutzeroberfläche**: Die __grafische Benutzeroberfläche__ von Azure Machine Learning bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
++ **Designer**: Azure Machine Learning-Designer (Vorschauversion) bietet einen einfachen Einstiegspunkt in das maschinelle Lernen zum Erstellen von Proof of Concepts oder für Benutzer mit wenig Programmiererfahrung. Sie ermöglicht es Ihnen, Modelle per Drag & Drop über eine webbasierte Benutzeroberfläche zu trainieren. Sie können Python-Code als Teil des Designs verwenden oder Modelle trainieren, ohne Code zu schreiben.
 
 + **CLI**: Die Befehlszeilenschnittstelle für das maschinelle Lernen stellt Befehle für häufige Aufgaben mit Azure Machine Learning bereit und wird häufig für **Skripting- und Automatisierungsaufgaben** verwendet. Nachdem Sie z. B. ein Trainingsskript oder eine Pipeline erstellt haben, können Sie mit der Befehlszeilenschnittstelle einen Trainingsdurchlauf starten, der sich nach einem Zeitplan oder nach der Aktualisierung der für das Training verwendeten Datendateien richtet. Für Trainingsmodelle werden Befehle bereitgestellt, die Trainingsaufträge übermitteln. Sie kann Aufträge über Laufzeitkonfigurationen oder Pipelines übermitteln.
 
@@ -59,7 +59,7 @@ Sie können mit einer Laufzeitkonfiguration für Ihren lokalen Computer beginnen
 Definieren Sie Iterationen, Hyperparametereinstellungen, Featurebereitstellungen und andere Einstellungen. Während des Trainings testet Azure Machine Learning verschiedene Algorithmen und Parameter gleichzeitig. Das Training wird beendet, sobald es die von Ihnen definierten Beendigungskriterien erfüllt. Sie müssen sich nicht um die Definition einer Laufzeitkonfiguration kümmern, wenn Sie Estimators verwenden.
 
 > [!TIP]
-> Zusätzlich zum Python SDK können Sie das automatisierte maschinelle Lernen auch über die [Landing Page des Arbeitsbereichs (Vorschau)](https://ml.azure.com) verwenden.
+> Zusätzlich zum Python SDK können Sie automatisiertes maschinelles Lernen auch über [Azure Machine Learning-Studio](https://ml.azure.com) verwenden.
 
 * [Was ist automatisiertes maschinelles Lernen?](concept-automated-ml.md)
 * [Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellen Lernen](tutorial-first-experiment-automated-ml.md)
@@ -67,7 +67,7 @@ Definieren Sie Iterationen, Hyperparametereinstellungen, Featurebereitstellungen
 * [Beispiele: Jupyter Notebook-Beispiele für automatisiertes maschinelles Lernen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)
 * [Gewusst wie: Konfigurieren automatisierter ML-Experimente in Python](how-to-configure-auto-train.md)
 * [Gewusst wie: Automatisches Trainieren eines Modells für die Zeitreihenprognose](how-to-auto-train-forecast.md)
-* [Gewusst wie: Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten über die Landing Page des Arbeitsbereichs von Azure Machine Learning (Vorschau)](how-to-create-portal-experiments.md)
+* [Gewusst wie: Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten mit [Azure Machine Learning-Studio](how-to-create-portal-experiments.md)
 
 ### <a name="estimators"></a>Schätzfunktionen
 
@@ -89,15 +89,17 @@ Machine Learning-Pipelines können die zuvor genannten Trainingsmethoden (Laufze
 * [Beispiele: Pipeline mit automatisiertem maschinellen Lernen](https://aka.ms/pl-automl)
 * [Beispiele: Pipeline mit Estimators](https://aka.ms/pl-estimator)
 
-## <a name="visual-interface"></a>Grafische Benutzeroberfläche
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 
-Die grafische Benutzeroberfläche (Vorschauversion) ermöglicht es Ihnen, Modelle per Drag & Drop in Ihrem Webbrowser zu trainieren.
+Der Designer ermöglicht es Ihnen, Modelle über eine Drag & Drop-Schnittstelle in Ihrem Webbrowser zu trainieren.
 
-+ [Was ist die grafische Benutzeroberfläche?](ui-concept-visual-interface.md)
-+ [Tutorial: Prognostizieren von Fahrzeugpreisen](ui-tutorial-automobile-price-train-score.md)
-+ [Regression: Preisprognose](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-+ [Klassifizierung: Vorhersagen des Kreditrisikos](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-+ [Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling](how-to-ui-sample-classification-predict-churn.md)
++ [Was ist der Designer?](concept-designer.md)
++ [Tutorial: Prognostizieren von Fahrzeugpreisen](tutorial-designer-automobile-price-train-score.md)
++ [Regression: Preisprognose](how-to-designer-sample-regression-automobile-price-basic.md)
++ [Klassifizierung: Einkommensprognose](how-to-designer-sample-classification-predict-income.md)
++ [Klassifizierung: Vorhersage von Kundenabwanderung, Kauflust und Up-Selling](how-to-designer-sample-classification-churn.md)
++ [Klassifizierung mit benutzerdefiniertem R-Skript: Vorhersage von Flugverspätungen](how-to-designer-sample-classification-flight-delay.md)
++ [Textklassifizierung: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 

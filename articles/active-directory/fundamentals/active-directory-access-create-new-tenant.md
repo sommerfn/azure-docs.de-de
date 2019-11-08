@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bc3e3bb178efbbc8f4cee6d81417ce70bd7a662
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c8310b6fc33f1d03e1ccc9ccddfcd7b9e6c35d37
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562068"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473366"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory
 Sie können alle Verwaltungsaufgaben über das Azure Active Directory-Portal (Azure AD-Portal) ausführen. Dazu gehört auch das Erstellen eines neuen Mandanten für Ihre Organisation. 
@@ -26,22 +26,24 @@ In diesem Schnellstart erfahren Sie, wie Sie das Azure-Portal und Azure Active D
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
-Melden Sie sich mit dem Konto eines globalen Administrators im [Azure-Portal](https://portal.azure.com/) Ihrer Organisation an.
-
-![Bildschirm des Azure-Portals mit Azure AD-Option](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
-
 ## <a name="create-a-new-tenant-for-your-organization"></a>Erstellen eines neuen Mandanten für Ihre Organisation
 Nach der Anmeldung im Azure-Portal können Sie einen neuen Mandanten für Ihre Organisation erstellen. Ihr neuer Mandant stellt Ihre Organisation dar und unterstützt Sie dabei, eine bestimmte Microsoft Cloud Services-Instanz für Ihre internen und externen Benutzer zu verwalten.
 
 ### <a name="to-create-a-new-tenant"></a>Erstellen eines neuen Mandanten
-1. Wählen Sie **Ressource erstellen** > **Identität** > **Azure Active Directory** aus.
+
+1. Melden Sie sich mit dem Konto eines globalen Administrators im [Azure-Portal](https://portal.azure.com/) Ihrer Organisation an.
+
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.  
+
+    ![Azure Active Directory: Seite „Ressource erstellen“](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+
+1. Wählen Sie **Identität** und anschließend **Azure Active Directory** aus.
 
     Daraufhin wird die Seite **Verzeichnis erstellen** angezeigt.
 
     ![Seite zum Erstellen eines Azure Active Directory-Verzeichnisses](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
 
-2.  Geben Sie auf der Seite **Verzeichnis erstellen** die folgenden Informationen ein:
+1.  Geben Sie auf der Seite **Verzeichnis erstellen** die folgenden Informationen ein:
     
     - Geben Sie in das Feld **Organisationsname** _Contoso_ ein.
 
@@ -49,7 +51,7 @@ Nach der Anmeldung im Azure-Portal können Sie einen neuen Mandanten für Ihre O
 
     - Übernehmen Sie im Feld **Land oder Region** die Option _USA_.
 
-3. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
 Ihr neuer Mandant wird mit der Domäne „contoso.onmicrosoft.com“ erstellt.
 

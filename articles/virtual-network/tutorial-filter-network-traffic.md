@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: a700cc83c6bd34f5f726b9cc1c97bd7e1476963b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984904"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519295"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal
 
@@ -41,7 +41,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
 
@@ -59,7 +59,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Funktionen gruppieren, wie etwa Webserver.
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Geben Sie in das Feld **Marketplace durchsuchen** den Suchbegriff *Anwendungssicherheitsgruppe* ein. Wenn in den Suchergebnissen **Anwendungssicherheitsgruppe** angezeigt wird, wählen Sie dieses Ergebnis aus. Wählen Sie unter **Alles** erneut **Anwendungssicherheitsgruppe** aus, und wählen Sie anschließend **Erstellen**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
 
@@ -81,7 +81,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Wählen Sie die Option **Netzwerk** und dann **Netzwerksicherheitsgruppe** aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
 
@@ -138,7 +138,7 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
 
 ### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Ressource erstellen** aus. 
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und übernehmen Sie die Standardwerte für die übrigen Einstellungen:
 

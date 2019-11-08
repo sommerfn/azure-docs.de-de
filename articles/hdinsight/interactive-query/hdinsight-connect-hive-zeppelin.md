@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Ausführen von Apache Hive-Abfragen in Azure HDInsight – Apache Zeppelin'
+title: 'Schnellstart: Apache Hive in Azure HDInsight mit Apache Zeppelin'
 description: In diesem Schnellstart erfahren Sie, wie Sie Apache Hive-Abfragen mit Apache Zeppelin ausführen können.
 keywords: hdinsight, hadoop, hive, interactive query, LLAP
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1642c64b0b14c2e290aad689399b59d896660a28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 36d9e9b34deb4bc6cd5f599cfe2d09a12f680730
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056697"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494289"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Schnellstart: Ausführen von Apache Hive-Abfragen in Azure HDInsight mit Apache Zeppelin
 

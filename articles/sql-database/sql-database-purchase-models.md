@@ -1,5 +1,5 @@
 ---
-title: Kaufmodelle für Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Kaufmodelle
 description: Erhalten Sie Informationen zu den Kaufmodellen, die für Azure SQL-Datenbank verfügbar sind.
 services: sql-database
 ms.service: sql-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 98d257c28ab5ff2cf902c0b8205ac8918ccf4d45
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567017"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821265"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“
 
 Azure SQL-Datenbank ermöglicht Ihnen den einfachen Kauf einer vollständig verwalteten PaaS-Datenbank-Engine (Platform-as-a-Service), die Ihre Anforderungen an Leistung und Kosten erfüllt. Je nach dem Bereitstellungsmodell, das Sie für Azure SQL-Datenbank ausgewählt haben, können Sie das Kaufmodell auswählen, das für Sie funktioniert:
 
-- [Auf virtuellem Kern basierendes (vCore-basiertes) Kaufmodell](sql-database-service-tiers-vcore.md) (empfohlen). Dieses Kaufmodell ermöglicht die Wahl zwischen einer bereitgestellten Computeebene und einer serverlosen Computeebene (Vorschauversion). Mit der bereitgestellten Computeebene wählen Sie die genaue Menge an Computeressourcen aus, die immer für Ihre Workload bereitgestellt werden. Mit der serverlosen Computeebene geben Sie die automatische Skalierung der Computeressourcen über einen konfigurierbaren Computebereich an. Mit dieser Computeebene haben Sie auch die Möglichkeit, die Datenbank entsprechend der Workloadaktivität automatisch anzuhalten und fortzusetzen. Der V-Kern-Einzelpreis pro Zeiteinheit ist auf der bereitgestellten Computeebene niedriger als auf der serverlosen Computeebene.
+- [Auf virtuellem Kern basierendes (vCore-basiertes) Kaufmodell](sql-database-service-tiers-vcore.md) (empfohlen). Dieses Kaufmodell ermöglicht die Wahl zwischen einer bereitgestellten Computeebene und einer serverlosen Computeebene. Mit der bereitgestellten Computeebene wählen Sie die genaue Menge an Computeressourcen aus, die immer für Ihre Workload bereitgestellt werden. Mit der serverlosen Computeebene geben Sie die automatische Skalierung der Computeressourcen über einen konfigurierbaren Computebereich an. Mit dieser Computeebene haben Sie auch die Möglichkeit, die Datenbank entsprechend der Workloadaktivität automatisch anzuhalten und fortzusetzen. Der V-Kern-Einzelpreis pro Zeiteinheit ist auf der bereitgestellten Computeebene niedriger als auf der serverlosen Computeebene.
 - [Auf Datenbanktransaktionseinheit basierendes (DTU-basiertes) Kaufmodell](sql-database-service-tiers-dtu.md). Dieses Kaufmodell bietet gebündelte Compute- und Speicherpakete, die für gängige Workloads zusammengestellt wurden.
 
 Es sind unterschiedliche Kaufmodelle für unterschiedliche Azure SQL-Datenbank-Bereitstellungsmodelle verfügbar:
@@ -53,7 +53,7 @@ Die Kosten für Sicherungsspeicher sind für die Dienstebene „Unternehmenskrit
 
 ### <a name="serverless-compute-costs"></a>Serverlose Computekosten
 
-Eine Beschreibung, wie Computekapazität definiert ist und Kosten für die serverlose Computeebene berechnet werden, finden Sie unter [SQL-Datenbank – serverlos (Vorschau)](sql-database-serverless.md).
+Eine Beschreibung, wie Computekapazität definiert ist und Kosten für die serverlose Computeebene berechnet werden, finden Sie unter [SQL-Datenbank – serverlos](sql-database-serverless.md).
 
 ## <a name="storage-costs"></a>Speicherkosten
 

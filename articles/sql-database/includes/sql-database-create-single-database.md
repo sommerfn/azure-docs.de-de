@@ -3,14 +3,14 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 07/31/2019
+ms.date: 11/04/2019
 ms.author: mathoma
-ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099143"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496138"
 ---
 In diesem Schritt erstellen Sie eine Azure SQL-Einzeldatenbank. 
 
@@ -55,12 +55,12 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Por
 
      ![SQL-Datenbankdetails](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Wählen Sie **Bereitgestellt** und **Gen5** aus.
+   - Wählen Sie **Bereitgestellt** aus.
 
      ![Bereitgestellt Gen4](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
-   - Überprüfen Sie die Einstellungen für **Max. virtuelle Kerne**, **Min. virtuelle Kerne**, **Verzögerung für automatisches Anhalten** und **Maximale Datengröße**. Ändern Sie diese wie gewünscht.
-   - Akzeptieren Sie die Nutzungsbedingungen für die Vorschau, und klicken Sie auf **OK**.
+   - Überprüfen Sie die Einstellungen für **Virtuelle Kerne** und **Maximale Datengröße**. Ändern Sie diese wie gewünscht. 
+     - Optional können Sie auch **Konfiguration ändern** auswählen, um die Hardwaregeneration zu ändern.
    - Wählen Sie **Übernehmen**.
 
 5. Wählen Sie die Registerkarte **Zusätzliche Einstellungen**. 
@@ -142,6 +142,15 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit PowerShell.
    $database
    ```
 
+In diesem Teil des Artikels werden die folgenden PowerShell-Cmdlets verwendet:
+
+| Get-Help | Notizen |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen logischen Server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine neue Azure SQL-Einzeldatenbank. | 
+
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
@@ -207,5 +216,16 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
       --family Gen5 \
       --capacity 2
    ```
+
+Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+
+| Get-Help | Notizen |
+|---|---|
+| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Legt ein Abonnement als aktuelles aktives Abonnement fest. | 
+| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen SQL-Datenbank-Server, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule) | Erstellt die Firewallregeln eines Servers. | 
+| [az sql db create](/cli/azure/sql/db?view=azure-cli-latest) | Erstellt eine Datenbank. | 
+
 
 ---

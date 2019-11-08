@@ -8,26 +8,30 @@ ms.topic: include
 ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ecdd419331c88e712644851f9213861f882cf0f6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3a44dc35c27cd084e6589482f180b13b258f0b24
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178251"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470992"
 ---
 ## <a name="prepare-your-web-app"></a>Vorbereiten Ihrer Web-App
 
 Um ein benutzerdefiniertes SSL-Zertifikat (Drittanbieterzertifikat oder App Service-Zertifikat) an Ihre Web-App zu binden, muss Ihr [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) den Tarif **Basic**, **Standard**, **Premium** oder **App Service (isoliert)** aufweisen. Stellen Sie in diesem Schritt sicher, dass sich Ihre Web-App im richtigen Tarif befindet.
 
-### <a name="log-in-to-azure"></a>Anmelden an Azure
+### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Navigieren zu Ihrer Web-App
 
-Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Web-App.
+Suchen Sie nach **App Services**, und wählen Sie diese Option aus.
 
-![Auswählen der Web-App](./media/app-service-ssl-prepare-app/select-app.png)
+![Auswählen von „App Services“](./media/app-service-ssl-prepare-app/app-services.png)
+
+Wählen Sie auf der Seite **App Services** und den Namen Ihrer Azure-App aus.
+
+![Portalnavigation zur Azure-App](./media/app-service-ssl-prepare-app/select-app.png)
 
 Sie befinden sich auf der Verwaltungsseite Ihrer Web-App.  
 

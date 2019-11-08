@@ -1,9 +1,8 @@
 ---
-title: 'Fehlercodes der REST-API: Azure Machine Learning Studio | Microsoft-Dokumentation'
+title: 'Fehlercodes der REST-API: Azure Machine Learning Studio (klassisch) | Microsoft-Dokumentation'
 description: Diese Fehlercodes können für den Vorgang eines Azure Machine Learning-Webdiensts zurückgegeben werden.
 keywords: ''
 services: machine-learning
-documentationcenter: ''
 author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
@@ -11,21 +10,18 @@ editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
 ms.subservice: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15e73740f5d932d0fa4cfb9a56c9fe7b155555cc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736563"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468163"
 ---
-# <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure Machine Learning Studio: Fehlercodes der REST-API
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (klassisch): Fehlercodes der REST-API
  
-Die folgenden Fehlercodes können für den Vorgang eines Azure Machine Learning Studio-Webdiensts zurückgegeben werden.
+Die folgenden Fehlercodes können für den Vorgang eines Azure Machine Learning Studio-Webdiensts (klassisch) zurückgegeben werden.
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP-Statuscode 400)
  
@@ -55,7 +51,7 @@ Diese Klasse von Fehlern bedeutet, dass ein angegebenes Argument ungültig war. 
 | InvalidBlobExtension | The blob reference: {0} has an invalid or missing file extension. (Der Blobverweis {0} verfügt über eine ungültige oder fehlende Dateierweiterung.) Supported file extensions for this output type are: (Unterstützte Dateierweiterungen für diesen Ausgabetyp sind:) „{1}“. |
 | InvalidInputNames | Invalid service input name(s) specified in the request: (In der Anforderung wurden ungültige Diensteingabenamen angegeben:) {0}. Please map the input data to the correct service inputs and try again. (Ordnen Sie die Eingabedaten den richtigen Diensteingaben zu, und wiederholen Sie den Vorgang.) |
 | InvalidOutputOverrideName | Invalid output override name: (Ungültiger Ausgabeüberschreibungsname:) {0}. The service does not have an output node with this name. (Der Dienst weist keinen Ausgabeknoten mit diesem Namen auf.) Please pass in a correct output node name to override (case sensitivity applies). (Übergeben Sie einen korrekten Ausgabeknotennamen für die Überschreibung (Groß-/Kleinschreibung wird berücksichtigt).) |
-| InvalidQueryParameter | Invalid query parameter (Ungültiger Abfrageparameter) „{0}“. [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/]({1}) |
+| InvalidQueryParameter | Invalid query parameter (Ungültiger Abfrageparameter) „{0}“. [https://doi.org/10.13012/J8PN93H8]({1}) |
 | MissingInputBlobInformation | Missing Azure storage blob information. (Fehlende Informationen für das Azure-Speicherblob.) Provide a valid connection string and relative path or URI and try again. (Geben Sie eine gültige Verbindungszeichenfolge und einen relativen Pfad oder einen URI ein, und wiederholen Sie den Vorgang.) |
 | MissingJobId | No job Id provided. (Es wurde keine Auftrags-ID angegeben.) A job Id is returned when a job was submitted for the first time. (Eine Auftrags-ID wird zurückgegeben, wenn ein Auftrag zum ersten Mal übermittelt wurde.) Verify the job Id is correct and try again. (Stellen Sie sicher, dass die Auftrags-ID korrekt ist, und wiederholen Sie den Vorgang.) |
 | MissingKeys | No Keys provided or one of Primary or Secondary Key is not provided. (Es wurden keine Schlüssel oder kein Primär- oder Sekundärschlüssel angegeben.) |
