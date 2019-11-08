@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 10/11/2019
 ms.author: hamusa
-ms.openlocfilehash: 04162f074dba05ac6492c16acb446912296cd673
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952102"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73521221"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Bewerten von VMware-VMs mit der Azure Migrate-Serverbewertung
 
@@ -82,8 +82,8 @@ Von der Azure Von der Serverbewertung wird eine einfache VMware-VM-Appliance aus
 
 - Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an die Azure Migrate-Serverbewertung.
 - Die Einrichtung der Appliance umfasst Folgendes:
-    - Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server.
-    - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung.
+    - Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server
+    - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
     - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
 - Für ein einzelnes Azure Migrate-Projekt können mehrere Appliances eingerichtet werden. Für alle Appliances können insgesamt bis zu 35.000 VMs ermittelt werden. Pro Appliance können maximal 10.000 Server ermittelt werden.
 
@@ -104,7 +104,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für die Version 2.19.07.30 muss der generierte Hash den folgenden Werten entsprechen: 
+3. Für die Version 2.19.07.30 muss der generierte Hash den folgenden Werten entsprechen:
 
   **Algorithmus** | **Hashwert**
   --- | ---
@@ -166,17 +166,30 @@ Richten Sie die Appliance wie folgt ein:
 3. Geben Sie einen Namen für die Appliance an. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
 4. Klicken Sie auf **Registrieren**.
 
-
 ## <a name="start-continuous-discovery"></a>Starten der kontinuierlichen Ermittlung
 
-Stellen Sie als Nächstes über die Appliance eine Verbindung mit vCenter Server her, und starten Sie die VM-Ermittlung.
+Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um die Konfigurations- und Leistungsdaten der VMs zu ermitteln.
 
+### <a name="specify-vcenter-server-details"></a>vCenter Server-Details angeben
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem Ihre vCenter Server-Instanz lauscht.
 2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt. Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff für das vCenter-Konto entsprechend beschränken. Weitere Informationen zur Beschränkung der Ermittlung finden Sie [hier](tutorial-assess-vmware.md#scoping-discovery).
 3. Vergewissern Sie sich durch Klicken auf **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
-4. Klicken Sie nach der Verbindungsherstellung auf **Speichern und Ermittlung starten**.
 
-Daraufhin wird die Ermittlung gestartet. Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Portal angezeigt werden.
+### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen
+Zum Ermitteln von Anwendungen, Rollen und Features sowie zum Visualisieren von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen bereitstellen, die Zugriff auf die virtuellen VMware-Computer ermöglichen. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) zu erforderlichen Zugriffsberechtigungen.
+
+> [!NOTE]
+> Diese Eingabe ist optional und wird benötigt, um die Anwendungsermittlung und die Visualisierung von Abhängigkeiten ohne Agent zu aktivieren.
+
+1. Klicken Sie unter **Anwendungen und Abhängigkeiten auf VMs ermitteln** auf **Anmeldeinformationen hinzufügen**.
+2. Wählen Sie das **Betriebssystem** aus.
+3. Geben Sie einen Anzeigenamen für die Anmeldeinformationen an.
+4. Geben Sie unter **Benutzername** und **Kennwort** ein Konto an, das mindestens über den Gastzugriff auf die virtuellen Computer verfügt.
+5. Klicken Sie auf **Hinzufügen**.
+
+Nachdem Sie die vCenter Server- und VM-Anmeldeinformationen angegeben haben (optional), klicken Sie auf **Speichern und Ermittlung starten**, um die Ermittlung der lokalen Umgebung zu starten.
+
+Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Portal angezeigt werden. Die Ermittlung von installierten Anwendungen, Rollen und Features dauert einige Zeit. Die Dauer hängt von der Anzahl der ermittelten VMS ab. Bei 500 VMs dauert es ungefähr 1 Stunde, bis der Anwendungsbestand im Azure Migrate-Portal angezeigt wird.
 
 ### <a name="scoping-discovery"></a>Beschränken der Ermittlung
 
@@ -205,18 +218,18 @@ Zum Festlegen des Bereichs müssen Sie die folgenden Schritte ausführen:
 **Zuweisen von Berechtigungen für vCenter-Objekte**
 
 Es gibt zwei Ansätze, um Berechtigungen in Inventarobjekten in vCenter dem vCenter-Benutzerkonto mit einer Rolle zuzuweisen.
-- Für die Serverbewertung muss auf das vCenter-Benutzerkonto eine Rolle vom Typ **Schreibgeschützt** für alle übergeordneten Objekte angewendet werden, auf denen die zu ermittelnden VMs gehostet werden. Alle übergeordneten Objekte – Host, Hostordner, Cluster, Clusterordner – in der Hierarchie bis hinauf zum Rechenzentrum müssen eingebunden werden. Diese Berechtigungen müssen an die untergeordneten Objekte in der Hierarchie weitergegeben werden. 
+- Für die Serverbewertung muss auf das vCenter-Benutzerkonto eine Rolle vom Typ **Schreibgeschützt** für alle übergeordneten Objekte angewendet werden, auf denen die zu ermittelnden VMs gehostet werden. Alle übergeordneten Objekte – Host, Hostordner, Cluster, Clusterordner – in der Hierarchie bis hinauf zum Rechenzentrum müssen eingebunden werden. Diese Berechtigungen müssen an die untergeordneten Objekte in der Hierarchie weitergegeben werden.
 
     Bei der Servermigration muss entsprechend eine benutzerdefinierte Rolle (kann den Namen <em>Azure_Migrate</em> haben) mit diesen zugewiesenen [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, auf denen die zu migrierenden VMs gehostet werden.
 
 ![Zuweisen von Berechtigungen](./media/tutorial-assess-vmware/assign-perms.png)
 
 - Die alternative Vorgehensweise besteht darin, das Benutzerkonto und die Rolle auf Rechenzentrumsebene zuzuweisen und diese an die untergeordneten Objekte weiterzugeben. Weisen Sie dem Konto dann eine Rolle vom Typ **Kein Zugriff** für jedes Objekt zu (z. B. VMs), das Sie nicht ermitteln bzw. migrieren möchten. Diese Konfiguration ist mühsam. Dabei besteht das Risiko einer versehentlichen Preisgabe von Zugangsdaten, da jedem neuen untergeordneten Objekt auch automatisch die vom übergeordneten Objekt geerbten Zugangsrechte erteilt werden. Aus diesem Grund wird empfohlen, die erste Methode zu verwenden.
- 
+
 > [!NOTE]
 > Die Serverbewertung kann aktuell keine VMs ermitteln, wenn dem vCenter-Konto Zugriff auf der vCenter-VM-Ordnerebene gewährt wurde. Wenn Ihre Ermittlung auf VM-Ordnern basieren soll, muss das vCenter-Konto reinen Lesezugriff auf der VM-Ebene haben.  Im Anschluss finden Sie eine entsprechende Anleitung hierfür:
 >
-> 1. Weisen Sie reine Leseberechtigungen für alle VMs in den VM-Ordnern zu, auf denen die Ermittlung basieren soll. 
+> 1. Weisen Sie reine Leseberechtigungen für alle VMs in den VM-Ordnern zu, auf denen die Ermittlung basieren soll.
 > 2. Erteilen Sie überall dort, wo die VMs gehostet werden, reinen Lesezugriff auf alle übergeordneten Objekte. Alle übergeordneten Objekte – Host, Hostordner, Cluster, Clusterordner – in der Hierarchie bis hinauf zum Rechenzentrum müssen eingeschlossen werden. Sie brauchen die Berechtigungen nicht an alle untergeordneten Objekte weiterzugeben.
 > 3. Verwenden Sie die Anmeldeinformationen für die Ermittlung, und wählen Sie das Rechenzentrum als *Sammlungsbereich* aus. Durch die eingerichtete rollenbasierte Zugriffssteuerung wird sichergestellt, dass der entsprechende vCenter-Benutzer nur Zugriff auf die mandantenspezifischen VMs hat.
 >

@@ -1,5 +1,6 @@
 ---
-title: Authentifizierungsflows (Microsoft-Authentifizierungsbibliothek) | Azure
+title: Authentifizierungsflows (Microsoft-Authentifizierungsbibliothek)
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die von der Microsoft-Authentifizierungsbibliothek (MSAL) verwendeten Authentifizierungsflüsse/-zuweisungen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41e011fd58c20cbe6d2dc8d9029e645f8851bd9
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513036"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473813"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -202,7 +203,7 @@ Dies bedeutet, dass eine der folgenden Aussagen zutrifft:
 - Sie haben Benutzern die Möglichkeit geboten, in die Nutzung der Anwendung einzuwilligen (siehe [Anfordern der Einwilligung einzelner Benutzer](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Sie haben dem Mandantenadministrator die Möglichkeit geboten, der Anwendung eine Einwilligung zu erteilen (siehe [Administratoreinwilligung](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-Der IWA-Flow ist für .NET-Desktop-, .NET Core- und UWP-Apps (universelle Windows-Plattform) aktiviert. Unter .NET Core ist nur eine Überladung mit dem Benutzernamen möglich. Die .NET Core-Plattform sendet den Benutzernamen nicht an das Betriebssystem.
+Der IWA-Flow ist für .NET-Desktop-, .NET Core- und UWP-Apps (universelle Windows-Plattform) aktiviert. In .NET Core müssen Sie den Benutzernamen für IWA angeben, da .NET Core keine Benutzernamen vom Betriebssystem abrufen kann.
   
 Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung für v2.0](v2-permissions-and-consent.md).
 

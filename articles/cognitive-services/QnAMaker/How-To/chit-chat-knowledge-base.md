@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a8ebd0b36c6ee8bf6762a70af9f4a7c09f6b118d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 418324ea0d50cb2f8ff4a30018a31e7807d52eac
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955151"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602598"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Hinzufügen von Geplauder zu einer Wissensdatenbank
 
@@ -38,13 +38,26 @@ Für die Benutzerabfrage von `When is your birthday?` hat jede Persönlichkeit e
 |Begeistert|Ich bin ein Bot, also habe ich kein Alter.|
 ||
 
-> [!NOTE]
-> Unterstützung für Geplauder ist zurzeit nur in englischer Sprache verfügbar. 
+
+## <a name="language-support"></a>Sprachunterstützung
+
+Geplauderdatasets werden in den folgenden Sprachen unterstützt:
+
+|Sprache|
+|--|
+|Chinesisch|
+|Englisch|
+|Französisch|
+|Deutschland|
+|Italienisch|
+|Japanisch|
+|Koreanisch|
+|Portugiesisch|
+|Spanisch|
+
 
 ## <a name="add-chit-chat-during-kb-creation"></a>Hinzufügen von Geplauder während der Erstellung der Wissensdatenbank
 Während der Erstellung der Wissensdatenbank besteht nach dem Hinzufügen Ihrer Quell-URLs und Dateien eine Option zum Hinzufügen von Geplauder. Wählen Sie die Persönlichkeit aus, die Sie als Grundlage für das Geplauder verwenden möchten. Wenn Sie kein Geplauder hinzufügen möchten oder bereits Unterstützung für Geplauder in Ihren Datenquellen verwenden, wählen Sie **Keine** aus. 
-   
-![Hinzufügen von Geplauder während der Erstellung](../media/qnamaker-how-to-chit-chat/create-kb-chit-chat.png)
 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Hinzufügen von Geplauder zu einer vorhandenen Wissensdatenbank
 Wählen Sie Ihre Wissensdatenbank aus, und navigieren Sie zur Seite **Einstellungen**. Dort finden Sie einen Link zu allen Geplauderdatasets im entsprechenden **TSV**-Format. Laden Sie die gewünschte Persönlichkeit herunter, und laden Sie sie dann als Dateiquelle hoch. Achten Sie darauf, dass Sie das Format oder die Metadaten nicht bearbeiten, wenn Sie die Datei herunterladen und hochladen. 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5eded3217e96ccc45951acae004d1424e16cb098
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432662"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605664"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Bereitstellen von Azure Databricks in Ihrem virtuellen Netzwerk
 
@@ -119,7 +119,7 @@ Wenn Sie diese Vorlage verwenden, ohne auch die Vorlage für Netzwerksicherheits
 
 ## <a name="whitelisting-subnet-traffic"></a>Erstellen von Whitelists für den Subnetzdatenverkehr
 
-Wenn Sie zur Erstellung Ihrer Netzwerksicherheitsgruppen nicht das [Azure-Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) oder die [Azure Resource Manager-Vorlagen](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) verwenden, müssen Sie den folgenden Datenverkehr in Ihren Subnetzen manuell auf die Whitelist setzen.
+Wenn Sie zur Erstellung Ihrer Netzwerksicherheitsgruppen nicht das [Azure-Portal](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject#vnet-inject-portal) oder die [Azure Resource Manager-Vorlagen](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) verwenden, müssen Sie den folgenden Datenverkehr in Ihren Subnetzen manuell auf die Whitelist setzen.
 
 |Direction|Protocol|`Source`|Quellport|Ziel|Zielport|
 |---------|--------|------|-----------|-----------|----------------|

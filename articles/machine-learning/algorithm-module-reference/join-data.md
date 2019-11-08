@@ -1,7 +1,7 @@
 ---
 title: 'Join Data (Daten verknüpfen): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie das Modul Join Data (Daten verknüpfen) in Azure Machine Learning Service verwenden, um Datasets zusammenzuführen.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie das Modul Join Data (Daten verknüpfen) in Azure Machine Learning verwenden, um Datasets zusammenzuführen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693089"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495087"
 ---
 # <a name="join-data"></a>Verknüpfen von Daten
 
-In diesem Artikel erfahren Sie, wie Sie das Modul **Join Data** (Daten verknüpfen) auf der grafischen Benutzeroberfläche von Azure Machine Learning Service verwenden, um zwei Datasets mithilfe eines datenbankähnlichen Join-Vorgangs zusammenzuführen.  
+In diesem Artikel erfahren Sie, wie Sie das Modul **Join Data** (Daten verknüpfen) in Azure Machine Learning-Designer (Vorschauversion) verwenden, um zwei Datasets mithilfe eines datenbankähnlichen Join-Vorgangs zusammenzuführen.  
 
 ## <a name="how-to-configure-join-data"></a>Konfigurieren von „Join Data“ (Daten verknüpfen)
 
@@ -68,4 +68,4 @@ Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

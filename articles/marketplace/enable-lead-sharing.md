@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 9aecef81547131e6f843fdd55db259d2c4299c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4475f6aecb0fe80cd20138eb885b79b6e7e82208
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938690"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818686"
 ---
 # <a name="enable-lead-sharing"></a>Gemeinsamen Zugriff auf Leads aktivieren
 Sicherzustellen, dass die Verwaltung von Leads für Ihr Angebot in [Azure Marketplace](https://azuremarketplace.microsoft.com) oder [Microsoft AppSource](https://appsource.microsoft.com) aktiviert ist, kann Ihnen helfen, Kontaktinformationen für die folgenden Zielgruppen zu erhalten:

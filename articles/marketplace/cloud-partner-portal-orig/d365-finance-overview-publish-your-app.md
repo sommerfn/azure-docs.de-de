@@ -4,15 +4,16 @@ description: 'Veralteter Artikel mit Links zu PC-Artikeln. Bisher: „Übersicht
 services: Azure, Marketplace, Cloud Partner Portal
 author: ChJenk
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: aad59ab0ebcf545c7b688843bbdb4f8c02040e4a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1c4ed269fe4efe55e4218beee8f41cb9cee904e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105099"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819987"
 ---
 # <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>Veröffentlichen Ihrer Microsoft Dynamics 365 Business Central-App in Microsoft AppSource
 

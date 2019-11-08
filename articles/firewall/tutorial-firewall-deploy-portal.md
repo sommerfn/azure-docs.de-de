@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0892bde09891d2edbd7f8cc8715ccc0d2f047ed4
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 124a87728a8d201c329b15d94ae7e61a225646ab
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113470"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468453"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -57,8 +57,8 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
 Die Ressourcengruppe enthält alle Ressourcen für das Tutorial.
 
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Wählen Sie auf der Startseite des Azure-Portals **Ressourcengruppen** > **Hinzufügen** aus.
-3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge **Test-FW-RG** ein.
+2. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach *Ressourcengruppen*, und wählen Sie diese Option anschließend aus. Wählen Sie anschließend **Hinzufügen**.
+3. Geben Sie unter **Ressourcengruppenname** die Zeichenfolge *Test-FW-RG* ein.
 4. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
 5. Wählen Sie unter **Ressourcengruppenstandort** einen Standort aus. Alle weiteren Ressourcen, die Sie erstellen, müssen sich am gleichen Standort befinden.
 6. Klicken Sie auf **Erstellen**.
@@ -70,22 +70,22 @@ Dieses VNET soll drei Subnetze enthalten.
 > [!NOTE]
 > Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
 
-1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
-2. Wählen Sie unter **Netzwerk** die Option **Virtuelles Netzwerk** aus.
-4. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
-5. Geben Sie unter **Adressraum** die Zeichenfolge **10.0.0.0/16** ein.
-6. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
-7. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
-8. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-9. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
-10. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
-11. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie dann **Erstellen** aus.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
+1. Wählen Sie **Netzwerk** > **Virtuelles Netzwerk** aus.
+1. Geben Sie unter **Name** die Zeichenfolge **Test-FW-VN** ein.
+1. Geben Sie unter **Adressraum** die Zeichenfolge **10.0.0.0/16** ein.
+1. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
+1. Wählen Sie für **Ressourcengruppe** die Gruppe **Test-FW-RG** aus.
+1. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
+1. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
+1. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/26** ein.
+1. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie dann **Erstellen** aus.
 
 ### <a name="create-additional-subnets"></a>Erstellen zusätzlicher Subnetze
 
 Erstellen Sie als Nächstes Subnetze für den Sprungserver sowie ein Subnetz für die Workloadserver.
 
-1. Wählen Sie auf der Startseite des Azure-Portals **Ressourcengruppen** > **Test-FW-RG** aus.
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach *Ressourcengruppen*, und wählen Sie diese Option anschließend aus. Wählen Sie anschließend **Test-FW-RG** aus.
 2. Wählen Sie das virtuelle Netzwerk **Test-FW-VN** aus.
 3. Wählen Sie **Subnetze** >  **+ Subnetz** aus.
 4. Geben Sie unter **Name** die Zeichenfolge **Workload-SN** ein.
@@ -98,7 +98,7 @@ Erstellen Sie ein weiteres Subnetz namens **Jump-SN** mit dem Adressbereich **10
 
 Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Sie sie in den entsprechenden Subnetzen.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 2. Wählen Sie **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
@@ -133,7 +133,7 @@ Konfigurieren Sie anhand der Angaben in der folgenden Tabelle eine weitere VM mi
 
 Stellen Sie die Firewall im VNET bereit.
 
-1. Wählen Sie auf der Startseite des Portals **Ressource erstellen** aus.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 2. Geben Sie **Firewall** in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
 3. Wählen Sie **Firewall** aus, und klicken Sie anschließend auf **Erstellen**.
 4. Konfigurieren Sie die Firewall auf der Seite **Firewall erstellen** anhand der folgenden Tabelle:
@@ -158,7 +158,7 @@ Stellen Sie die Firewall im VNET bereit.
 
 Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** so, dass sie die Firewall durchläuft.
 
-1. Wählen Sie auf der Startseite des Azure-Portals **Alle Dienste** aus.
+1. Wählen Sie im Menü des Azure-Portals die Option **Alle Dienste** aus, oder suchen Sie auf einer beliebigen Seite nach *Alle Dienste*, und wählen Sie diese Option anschließend aus.
 2. Wählen Sie unter **Netzwerk** die Option **Routingtabellen** aus.
 3. Wählen Sie **Hinzufügen**.
 4. Geben Sie unter **Name** die Zeichenfolge **Firewall-route** ein.
@@ -183,7 +183,7 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 
 ## <a name="configure-an-application-rule"></a>Konfigurieren einer Anwendungsregel
 
-Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf [www.google.com](www.google.com) zulässt.
+Hierbei handelt es sich um die Anwendungsregel, die ausgehenden Zugriff auf [www.google.com]\(www.google.com) zulässt.
 
 1. Öffnen Sie **Test-FW-RG**, und wählen Sie die Firewall **Test-FW01** aus.
 2. Wählen Sie auf der Seite **Test-FW01** unter **Einstellungen** die Option **Regeln** aus.
@@ -209,19 +209,20 @@ Hierbei handelt es sich um die Netzwerkregel, die ausgehenden Zugriff auf zwei I
 3. Geben Sie unter **Name** die Zeichenfolge **Net-Coll01** ein.
 4. Geben Sie für **Priorität** den Wert **200** ein.
 5. Wählen Sie für **Aktion** die Option **Zulassen** aus.
-
 6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **Allow-DNS** ein.
 7. Wählen Sie für **Protokoll** die Option **UDP** aus.
 8. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
 9. Geben Sie für die Zieladresse die Zeichenfolge **209.244.0.3,209.244.0.4** ein.
-10. Geben Sie unter **Zielports** den Wert **53** ein.
-11. Wählen Sie **Hinzufügen**.
+
+   Dies sind öffentliche DNS-Server, die von CenturyLink betrieben werden.
+1. Geben Sie unter **Zielports** den Wert **53** ein.
+2. Wählen Sie **Hinzufügen**.
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Ändern der primären und sekundären DNS-Adresse für die Netzwerkschnittstelle **Srv-Work**
 
 In diesem Tutorial konfigurieren Sie zu Testzwecken die primäre und sekundäre DNS-Adresse des Servers. Hierbei handelt es sich nicht um eine generelle Azure Firewall-Anforderung.
 
-1. Öffnen Sie über das Azure-Portal die Ressourcengruppe **Test-FW-RG**.
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach *Ressourcengruppen*, und wählen Sie diese Option anschließend aus. Wählen Sie die Ressourcengruppe **Test-FW-RG** aus.
 2. Wählen Sie die Netzwerkschnittstelle für die VM **Srv-Work** aus.
 3. Wählen Sie unter **Einstellungen** die Option **DNS-Server** aus.
 4. Wählen Sie unter **DNS-Server** die Option **Benutzerdefiniert** aus.
@@ -235,7 +236,6 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
 
 1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Srv-Work**, und notieren Sie sich die private IP-Adresse.
 2. Verbinden Sie einen Remotedesktop mit der VM **Srv-Jump**, und melden Sie sich an. Öffnen Sie auf der VM eine Remotedesktopverbindung mit der privaten IP-Adresse von **Srv-Work**.
-
 3. Navigieren Sie in Internet Explorer zu https://www.google.com.
 4. Klicken Sie in den Sicherheitswarnungen von Internet Explorer auf **OK** > **Schließen**.
 

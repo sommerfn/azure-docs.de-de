@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3b94e3e352f4d6b5cd7da41feb9660be2ffed2bd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786483"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795636"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#-Tutorial: Vereinen von Daten aus mehreren Datenquellen in einem einzelnen Azure Cognitive Search-Index
 
@@ -36,7 +36,7 @@ In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet.
 
 - [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
-- [Erstellen Sie ein Azure Cosmos DB-Konto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der exemplarischen Hoteldaten.
+- [Erstellen Sie ein Azure Cosmos DB-Konto](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) zum Speichern der exemplarischen Hoteldaten.
 
 - [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der exemplarischen JSON-Blobdaten.
 

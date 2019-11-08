@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Tools für elastische Datenbanken – Azure| Microsoft Docs
+title: Erste Schritte mit Tools für elastische Datenbanken
 description: Grundlegende Erläuterung der Tools für elastische Datenbanken von Azure SQL-Datenbank, einschließlich einer einfachen Beispiel-App.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: aa0827bdf6deb388123ed701013ee95f5493eee3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568472"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823658"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Erste Schritte mit Tools für elastische Datenbanken
 

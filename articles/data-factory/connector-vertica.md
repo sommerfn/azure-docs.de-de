@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Vertica mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Vertica mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Vertica mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d33540aa60bdb86294c386314055a4c21c698902
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bf3fd0a6a68575ecbfaa5738cd7ad5655dd6b1ba
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089096"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680066"
 ---
 # <a name="copy-data-from-vertica-using-azure-data-factory"></a>Kopieren von Daten aus Vertica mithilfe von Azure Data Factory 
 

@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d6519ad5a130eee25ab17135e26d7207047dcf7a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: f3030b6336ef9bd1274edd674b0d10f0c1b4cd3a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327258"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607280"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Unterstützung für natürliche Sprachen in Azure Cognitive Services
 
@@ -90,7 +90,7 @@ In diesen Tabellen ist die Verfügbarkeit von Sprachen nach Dienstkategorie ange
 
 Die folgenden Cognitive Services-Instanzen sind sprachunabhängig, und für sie gelten keine auf der Sprache basierenden Einschränkungen.
 
-* [Personalizer (Vorschau)](https://docs.microsoft.com/azure/cognitive-services/personalizer/)
+* [Personalisierung](https://docs.microsoft.com/azure/cognitive-services/personalizer/)
 * [Anomalieerkennung (Vorschau)](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/overview)
 
 

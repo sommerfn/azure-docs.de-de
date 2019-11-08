@@ -4,15 +4,16 @@ description: Aktualisieren von Angeboten in Azure Marketplace und AppSource übe
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pabutler
-ms.openlocfilehash: 73e2812c678dca7e21089ee9cc091db756d7e25a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b3f579dbdc943b2380c9de3dde6b2ebf4754d4d1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942342"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826726"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualisieren von Azure Marketplace- und AppSource-Angeboten
 

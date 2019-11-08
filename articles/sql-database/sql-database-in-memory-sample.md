@@ -1,5 +1,5 @@
 ---
-title: In-Memory-Beispiel für Azure SQL-Datenbank | Microsoft-Dokumentation
+title: In-Memory-Beispiel
 description: Testen Sie In-Memory-Technologien von Azure SQL-Datenbank mit OLTP und dem Columnstore-Beispiel.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828213"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810327"
 ---
 # <a name="in-memory-sample"></a>In-Memory-Beispiel
 

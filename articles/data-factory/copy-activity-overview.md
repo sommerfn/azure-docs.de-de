@@ -1,5 +1,5 @@
 ---
-title: Kopieraktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Kopieraktivität in Azure Data Factory
 description: Erfahren Sie mehr über die Kopieraktivität in Azure Data Factory. Mit der dieser Aktivität können Sie Daten aus einem unterstützten Quelldatenspeicher in einen unterstützten Senkendatenspeicher kopieren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 8af5673ff0ffef7306a13eceda86f879b5b31413
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b88983b4941143e5323ee795908cb332bdd79817
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060672"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678420"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
