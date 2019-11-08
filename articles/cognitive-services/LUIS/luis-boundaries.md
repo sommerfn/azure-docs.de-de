@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 5a65ee27d5175887b7bf0d9146afa025e665657c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844802"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488408"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen für das LUIS-Modell und die Schlüssel
 Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs. 
@@ -36,10 +36,11 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 | [Absichten][intents]|500 pro Anwendung: 499 benutzerdefinierte Absichten und die erforderliche Absicht _None_.<br>[Dispatchbasierte](https://aka.ms/dispatch-tool) Anwendungen verfügen entsprechend über 500 Dispatchquellen.|
 | [List-Entitäten](./luis-concept-entity-types.md) | Übergeordnet: 50, untergeordnet: 20.000 Elemente. Kanonischer Name mit * Standardzeichenlimit. Für Synonymwerte gelten keine Längenbeschränkungen. |
 | [Durch maschinelles Lernen erworbene Entitäten und Rollen:](./luis-concept-entity-types.md)<br> Zusammengesetzt,<br>Einfach,<br>Entitätsrolle|Maximal 100 übergeordnete Entitäten oder 330 Entitäten, je nachdem, welches Limit der Benutzer zuerst erreicht. Eine Rolle zählt für diese Grenze als eine Entität. Ein Beispiel für eine zusammengesetzte Entität mit einer einfachen Entität, die über zwei Rollen verfügt: 1 zusammengesetzte + 1 einfache + 2 Rollen = 4 der 330 Entitäten.|
+|Modell als Feature| Die maximale Anzahl von Modellen, die als Deskriptor (Feature) für ein bestimmtes Modell verwendet werden können, beträgt 10 Modelle. Die maximale Anzahl von Ausdruckslisten, die als Deskriptor (Feature) für ein bestimmtes Modell verwendet werden können, beträgt 10 Ausdruckslisten.|
 | [Vorschau – Entitäten vom Typ „dynamische Liste“](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 Listen mit ca. 1.000 pro Anforderung für den Endpunkt der Abfragevorhersage|
 | [Muster](luis-concept-patterns.md)|500 Muster pro Anwendung.<br>Muster dürfen maximal 400 Zeichen lang sein.<br>3 Pattern.any-Entitäten pro Muster<br>Maximal 2 geschachtelte optionale Texte im Muster|
 | [Pattern.any-Entitäten](./luis-concept-entity-types.md)|100 pro Anwendung, 3 Pattern.any-Entitäten pro Muster |
-| [Begriffsliste][phrase-list]|10 Ausdruckslisten; 5.000 Elemente pro Liste|
+| [Begriffsliste][phrase-list]|500 Ausdruckslisten Nicht austauschbare Ausdrucksliste mit maximal 5.000 Ausdrücken. Austauschbare Ausdrucksliste mit maximal 50.000 Ausdrücken. Die maximale Anzahl von Ausdrücken pro Anwendung beträgt 500.000 Ausdrücke.|
 | [Vordefinierte Entitäten](./luis-prebuilt-entities.md) | Keine Begrenzung|
 | [RegEx-Entitäten](./luis-concept-entity-types.md)|20 Entitäten<br>max. 500 Zeichen pro RegEx-Entitätsmuster|
 | [Rollen](luis-concept-roles.md)|300 Rollen pro Anwendung. 10 Rollen pro Entität|
@@ -51,6 +52,21 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 \* Das Standardzeichenlimit beträgt 50 Zeichen. 
 
 <a name="intent-and-entity-naming"></a>
+
+## <a name="name-uniqueness"></a>Eindeutigkeit des Namens
+
+Verwenden Sie die folgenden Regeln zur Eindeutigkeit bei der Benennung.
+
+Folgendes muss innerhalb einer LUIS-App eindeutig sein:
+
+* Versionsname
+* Absicht
+* Entität
+* roles
+
+Folgendes muss innerhalb des Gültigkeitsbereichs eindeutig sein:
+
+* Ausdrucksliste 
 
 ## <a name="object-naming"></a>Benennung der Objekte
 

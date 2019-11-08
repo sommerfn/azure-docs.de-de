@@ -9,108 +9,65 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 973a8dd56437506d907159f212164ff147ba975c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703185"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487494"
 ---
 # <a name="authoring-and-runtime-keys"></a>Erstellungs- und Laufzeitschlüssel
 
+Language Understanding (LUIS) verfügt über zwei Sätze von Diensten und APIs: 
 
->[!NOTE]
->[Migrieren](luis-migration-authoring.md) Sie alle Apps, in denen die Azure-Erstellungsressource nicht verwendet wird, bevor Sie die weiteren Schritte ausführen.
+* Erstellung (bisher als _programmgesteuert_ bezeichnet)
+* Vorhersagelaufzeit
 
-In LUIS werden zwei Typen von Azure-Ressourcen verwendet, wobei jeder Typ Schlüssel hat: 
+Abhängig von dem Service, mit dem Sie arbeiten möchten, und der Art seiner Verwendung, gibt es verschiedene Schlüsseltypen.
+
+## <a name="non-azure-resources-for-luis"></a>Azure-fremde Ressourcen für LUIS
+
+### <a name="starter-key"></a>Startschlüssel
+
+Wenn Sie ganz neu in die Verwendung von LUIS einsteigen, wird ein **Startschlüssel** für Sie erstellt. Diese Ressource bietet:
+
+* kostenlose Anforderungen an den Erstellungsdienst über das LUIS-Portal oder APIs (einschließlich SDKs)
+* 1\.000 kostenlose Anforderungen an Vorhersageendpunkte über einen Browser, API oder SDKs
+
+## <a name="azure-resources-for-luis"></a>Azure-Ressourcen für LUIS
+
+<a name="programmatic-key" ></a>
+<a name="endpoint-key"></a>
+<a name="authoring-key"></a>
+
+LUIS lässt drei Arten von Azure-Ressourcen zu: 
  
-* [Erstellung](#programmatic-key), um Absichten und Entitäten zu erstellen, Äußerungen zu bezeichnen sowie zu trainieren und zu veröffentlichen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, benötigen Sie einen [Vorhersageendpunktschlüssel für die Laufzeit](luis-how-to-azure-subscription.md), der der APP zugewiesen ist.
-* [Vorhersageendpunktschlüssel für die Laufzeit](#prediction-endpoint-runtime-key). Clientanwendungen, etwa ein Chatbot, benötigen zur Laufzeit Zugriff auf den **Abfragevorhersageendpunkt** über diesen Schlüssel. 
-
 |Schlüssel|Zweck|Cognitive Service `kind`|Cognitive Service `type`|
 |--|--|--|--|
-|[Erstellungsschlüssel](#programmatic-key)|Erstellung, Training, Veröffentlichung, Testen|`LUIS.Authoring`|`Cognitive Services`|
-|[Laufzeitschlüssel für Vorhersageendpunkt](#prediction-endpoint-runtime-key)| Abfragevorhersageendpunkt zur Laufzeit mit einer Benutzeräußerung, um Absichten und Entitäten zu ermitteln|`LUIS`|`Cognitive Services`|
+|[Erstellungsschlüssel](#programmatic-key)|Sie greifen auf die Daten der Anwendung durch Erstellen, Trainieren, Veröffentlichen und Testen zu, und verwalten diese Daten auch so. Erstellen Sie einen LUIS-Erstellungsschlüssel, wenn Sie LUIS-Apps programmgesteuert erstellen möchten.<br><br>Der Zweck des `LUIS.Authoring`-Schlüssels besteht darin, Ihnen Folgendes zu ermöglichen:<br>* programmgesteuerte Verwaltung von Language Understanding-Apps und -Modellen, einschließlich Training und Veröffentlichung<br> * Steuern der Berechtigungen für die Erstellungsressource, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen.|`LUIS.Authoring`|`Cognitive Services`|
+|[Vorhersageschlüssel](#prediction-endpoint-runtime-key)| Anforderungen von Abfragen eines Vorhersageendpunkts. Erstellen Sie einen LUIS-Vorhersageschlüssel, bevor Ihre Client-App Vorhersagen über die 1.000 Anforderungen hinaus anfordert, die durch die Startressource zur Verfügung gestellt werden. |`LUIS`|`Cognitive Services`|
+|[Cognitive Service-Ressourcenschlüssel für mehrere Dienste](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|Anforderungen von Abfragevorhersageendpunkten, die mit LUIS und anderen unterstützten Cognitive Services geteilt werden.|`CognitiveServices`|`Cognitive Services`|
 
-Außerdem stellt LUIS einen [Startschlüssel](luis-how-to-azure-subscription.md#starter-key) mit einem Vorhersageendpunktkontingent von 1000 Transaktionen pro Monat bereit. 
-
-Sie müssen zwar nicht beide Schlüssel gleichzeitig erstellen, es ist aber viel einfacher, wenn Sie dies tun.
+Wenn der Vorgang der Ressourcenerstellung abgeschlossen ist, [weisen Sie den Schlüssel](luis-how-to-azure-subscription.md) im LUIS-Portal der App zu.
 
 Es ist wichtig, LUIS-Apps in den [Regionen](luis-reference-regions.md#publishing-regions) zu erstellen, in denen sie veröffentlicht und abgefragt werden sollen.
 
-<a name="programmatic-key" ></a>
-
-## <a name="authoring-key"></a>Erstellungsschlüssel
-
-Ein Erstellungsschlüssel wird automatisch erstellt, wenn Sie ein LUIS-Konto erstellen. Er ist kostenlos. Wenn Sie mit LUIS beginnen, haben Sie einen Erstellungsschlüssel für sämtliche Ihrer LUIS-Apps für jede [Erstellungsregion](luis-reference-regions.md). Der Zweck des Erstellungsschlüssels besteht darin, Authentifizierung bereitzustellen, damit Sie Ihre LUIS-App verwalten oder Ihre Vorhersageendpunktabfragen testen können. 
-
-Durch Erstellen von Erstellungsschlüsseln im Azure-Portal können Sie die Berechtigungen für die Erstellungsressource steuern, indem Sie Personen [die Rolle „Mitwirkender“](#contributions-from-other-authors) zuweisen. Sie benötigen Berechtigung auf der Azure-Abonnementebene, damit Sie Mitwirkende hinzufügen können. 
-
-Sie finden den Erstellungsschlüssel, indem Sie sich bei [LUIS](luis-reference-regions.md#luis-website) anmelden. Klicken Sie auf der Navigationsleiste rechts oben auf den Kontonamen, um die **Kontoeinstellungen** zu öffnen.
-
-![Erstellungsschlüssel](./media/luis-concept-keys/authoring-key.png)
-
-Wenn Sie **Laufzeitabfragen** ausführen möchten, erstellen Sie die Azure-[LUIS-Ressource](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
-
 > [!CAUTION]
-> Der Einfachheit halber wird in vielen der Beispiele der [Startschlüssel](#starter-prediction-endpoint-runtime-key) verwendet, weil sein [Kontingent](luis-boundaries.md#key-limits) einige kostenlose Vorhersageendpunktaufrufe umfasst.  
+> Der Einfachheit halber wird in vielen der Beispiele der [Startschlüssel](#starter-key) verwendet, weil sein [Kontingent](luis-boundaries.md#key-limits) einige kostenlose Vorhersageendpunktaufrufe umfasst.  
 
-<a name="endpoint-key"></a>
 
-## <a name="prediction-endpoint-runtime-key"></a>Laufzeitschlüssel für Vorhersageendpunkt 
-
-Wenn Sie **Laufzeitendpunktabfragen** benötigen, erstellen Sie eine Language Understanding-Ressource (LUIS-Ressource), und weisen Sie diese anschließend der LUIS-App. 
-
-[!INCLUDE [Azure runtime resource creation for Language Understanding and Cognitive Service resources](../../../includes/cognitive-services-luis-azure-resource-instructions.md)]
-
-Nach Abschluss der Erstellung der Ressource müssen Sie der App [den Schlüssel zuweisen](luis-how-to-azure-subscription.md). 
-
-* Der Laufzeitschlüssel (Schlüssel für Abfragevorhersageendpunkt) umfasst ein Kontingent an Endpunkttreffern basierend auf dem Nutzungsplan, den Sie beim Erstellen des Laufzeitschlüssels angegeben haben. Weitere Informationen zu den Preisen finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h).
+### <a name="query-prediction-resources"></a>Ressourcen zur Abfragevorhersage
 
 * Der Laufzeitschlüssel kann für alle LUIS-Apps oder für bestimmte LUIS-Apps verwendet werden. 
 * Verwenden Sie die Laufzeitschlüssel nicht für das Erstellen von LUIS-Apps. 
 
-### <a name="starter-prediction-endpoint-runtime-key"></a>Startlaufzeitschlüssel für Vorhersageendpunkt
-
-Der **Startschlüssel** für einen Vorhersageendpunkt ist kostenlos und umfasst 1000 Vorhersageendpunktabfragen. Nachdem diese Abfragen verwendet wurden, sollten Sie eine eigene Vorhersageendpunktressource für Language Understanding (LUIS) erstellen.  
-
-Dies ist eine spezielle Ressource, die für Sie erstellt wurde. Sie wird nicht in der Liste der Azure-Ressourcen angezeigt, da sie als temporärer Anfangsschlüssel gedacht ist. 
-
-<a name="use-endpoint-key-in-query"></a>
-
-### <a name="use-runtime-key-in-query"></a>Verwenden des Laufzeitschlüssels in einer Abfrage
 Der LUIS-Laufzeitendpunkt akzeptiert zwei Arten von Abfragen, die beide den Vorhersageendpunkt-Laufzeitschlüssel verwenden, jedoch an verschiedenen Positionen.
 
 Für den Endpunkt, der für den Zugriff zur Laufzeit verwendet wird, wird eine Unterdomäne verwendet, die für die Region Ihrer Ressource eindeutig ist. In der folgenden Tabelle ist diese Region durch `{region}` gekennzeichnet. 
 
-
-#### <a name="v2-prediction-endpointtabv2"></a>[V2-Vorhersageendpunkt](#tab/V2)
-
-|Verb|Beispiel-URL und Schlüsselposition|
-|--|--|
-|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
-|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
-
-#### <a name="v3-prediction-endpointtabv3"></a>[V3-Vorhersageendpunkt](#tab/V3)
-
-|Verb|Beispiel-URL und Schlüsselposition|
-|--|--|
-|[GET](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
-|[POST](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
-
-Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
-
-* * * 
-
-**GET**: Ändern Sie den Wert Ihrer Endpunktabfrage für den `runtime-key` vom Erstellungsschlüssel (Startschlüssel) zum neuen Endpunktschlüssel, um das Schlüsselkontingent des LUIS-Endpunkts zu verwenden. Wenn Sie den Schlüssel erstellen und zuweisen, aber nicht den Wert in der Endpunktabfrage für `runtime-key` ändern, nutzen Sie nicht das Kontingent Ihres Endpunktschlüssels.
-
-**POST**: Ändern des Headerwerts für `Ocp-Apim-Subscription-Key`<br>Wenn Sie den Laufzeitschlüssel erstellen und zuweisen, aber nicht den Endpunktabfragewert für `Ocp-Apim-Subscription-Key` ändern, nutzen Sie nicht Ihren Laufzeitschlüssel.
-
-Die App-ID, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, die in den vorherigen URLs verwendet wurde, ist die öffentliche IoT-App für die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
-
-## <a name="assignment-of-the-runtime-key"></a>Zuweisen des Laufzeitschlüssels
+## <a name="assignment-of-the-key"></a>Zuweisen des Schlüssels
 
 Sie können den Laufzeitschlüssel im [LUIS-Portal](https://www.luis.ai) oder über die entsprechenden APIs [zuweisen](luis-how-to-azure-subscription.md). 
 
@@ -127,19 +84,11 @@ Wenn Sie Ihr TPS-Kontingent (Transaktionen pro Sekunde) überschreiten, erhalten
 
 ## <a name="contributions-from-other-authors"></a>Beiträge von anderen Autoren
 
-
-
-Die Verwaltung von Beiträgen von Projektmitarbeitern ist abhängig vom aktuellen Status der App.
-
 **Für Apps, die zur [Erstellungsressource migriert](luis-migration-authoring.md) wurden**: _Mitwirkende_ werden im Azure-Portal für die Erstellungsressource über die Seite **Zugriffssteuerung (IAM)** verwaltet. Erfahren Sie, [wie Sie einen Benutzer hinzufügen](luis-how-to-collaborate.md), indem Sie die E-Mail-Adresse des Projektmitarbeiters und die Rolle _Mitwirkender_ verwenden. 
 
 **Für Apps, die noch nicht migriert wurden**: Alle _Projektmitarbeiter_ werden im LUIS-Portal über die Seite **Verwalten –> Projektmitarbeiter** App verwaltet.
 
-### <a name="contributor-roles-vs-entity-roles"></a>Mitwirkender-Rollen im Vergleich zu Entitätsrollen
-
-[Entitätsrollen](luis-concept-roles.md) gelten für das Datenmodell der LUIS-App. Die Projektmitarbeiter/Mitwirkender-Rollen gelten für die Ebenen des Erstellungszugriffs. 
-
-## <a name="moving-or-changing-ownership"></a>Verschieben oder Ändern des Besitzes
+## <a name="move-transfer-or-change-ownership"></a>Verschieben, Übertragen oder Ändern des Besitzes
 
 Eine App ist durch ihre Azure-Ressourcen definiert, die durch das Abonnement des Besitzers bestimmt sind. 
 
@@ -148,7 +97,12 @@ Sie können Ihre LUIS-App verschieben. Verwenden Sie die folgenden Dokumentation
 * [Move app to another LUIS authoring Azure resource](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
 * [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/resource-group-move-resources.md)
 * [Anleitung zum Verschieben von App Service-Ressourcen](../../azure-resource-manager/move-limitations/app-service-move-limitations.md)
-* [Übertragen des Besitzes](../../billing/billing-subscription-transfer.md) Ihres Abonnements 
+
+So übertragen Sie den [Besitz](../../billing/billing-subscription-transfer.md) Ihres Abonnements: 
+
+**Für migrierte Benutzer – [Erstellen von ressourcenmigrierten ](luis-migration-authoring.md) Apps**: Als Besitzer der Ressource können Sie ein `contributor` hinzufügen.
+
+**Für Benutzer, die noch nicht migriert wurden**: Exportieren Sie Ihre App als JSON-Datei. Ein anderer LUIS-Benutzer kann die App importieren, wodurch er der App-Besitzer wird. Die neue App hat eine andere App-ID.  
 
 ## <a name="access-for-private-and-public-apps"></a>Zugriff für private und öffentliche Apps
 
@@ -173,11 +127,11 @@ Der Besitzer und alle Mitwirkenden haben Zugriff für die Erstellung der App.
 |Überprüfen von Endpunktäußerungen für das [aktive Lernen](luis-how-to-review-endpoint-utterances.md)|
 |Trainieren|
 
+<a name="prediction-endpoint-runtime-key"></a>
+
 ### <a name="prediction-endpoint-runtime-access"></a>Laufzeitzugriff auf Vorhersageendpunkt
 
 Der Zugriff zum Abfragen des Vorhersageendpunkts wird von einer Einstellung auf der Seite **Anwendungsinformationen** im Abschnitt **Verwalten** gesteuert. 
-
-![Festlegen der App als öffentlich](./media/luis-concept-security/set-application-as-public.png)
 
 |[Privater Endpunkt](#runtime-security-for-private-apps)|[Öffentlicher Endpunkt](#runtime-security-for-public-apps)|
 |:--|:--|
@@ -205,9 +159,7 @@ Eine öffentliche App wird in allen Regionen veröffentlicht, so dass ein Benutz
 
 ## <a name="transfer-of-ownership"></a>Übertragen des Besitzes
 
-**Für Apps, die zur [Erstellungsressource migriert](luis-migration-authoring.md) wurden**: Als Besitzer der Ressource können Sie ein `contributor` hinzufügen.
-
-**Für Apps, die noch nicht migriert wurden**: Exportieren Sie Ihre App als JSON-Datei. Ein anderer LUIS-Benutzer kann die App importieren, wodurch er der App-Besitzer wird. Die neue App hat eine andere App-ID.  
+LUIS kennt das Konzept der Übertragung des Ressourcenbesitzes nicht. 
 
 ## <a name="securing-the-endpoint"></a>Schützen von Endpunkten 
 

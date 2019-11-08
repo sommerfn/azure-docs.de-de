@@ -11,108 +11,76 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4a1bc9ae7ccf48b9dc8b47b57ea43b9259786d01
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 6f262752a50b58eae8ffbea81b8e7fc4d8c65b98
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464981"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Vordefinierte E-Mail-Entität für eine LUIS-App
 Die E-Mail-Entität extrahiert die vollständige E-Mail-Adresse aus einer Äußerung. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit E-Mail-Adressen hinzufügen. Die E-Mail-Entität wird nur in der Kultur `en-us` unterstützt. 
 
 ## <a name="resolution-for-prebuilt-email"></a>Auflösung der vorgefertigten E-Mail-Entität
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
-Im folgenden Beispiel wird die Auflösung der Entität **builtin.email** veranschaulicht.
+`please send the information to patti@contoso.com`
 
-```json
-{
-  "query": "please send the information to patti@contoso.com",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.811592042
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.811592042
-    }
-  ],
-  "entities": [
-    {
-      "entity": "patti@contoso.com",
-      "type": "builtin.email",
-      "startIndex": 31,
-      "endIndex": 55,
-      "resolution": {
-        "value": "patti@contoso.com"
-      }
-    }
-  ]
-}
-```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
 ```json
-{
-    "query": "please send the information to patti@contoso.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti@contoso.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti@contoso.com"
-            ]
-        }
-    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
-{
-    "query": "please send the information to patti@contoso.com",
-    "prediction": {
-        "normalizedQuery": "please send the information to patti@contoso.com",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.5023781
-            }
-        },
-        "entities": {
-            "email": [
-                "patti@contoso.com"
-            ],
-            "$instance": {
-                "email": [
-                    {
-                        "type": "builtin.email",
-                        "text": "patti@contoso.com",
-                        "startIndex": 31,
-                        "length": 25,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "email": [
+        "patti@contoso.com"
+    ],
+    "$instance": {
+        "email": [
+            {
+                "type": "builtin.email",
+                "text": "patti@contoso.com",
+                "startIndex": 31,
+                "length": 17,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
 
+Im folgenden Beispiel wird die Auflösung der Entität **builtin.email** veranschaulicht.
+
+```json
+"entities": [
+    {
+        "entity": "patti@contoso.com",
+        "type": "builtin.email",
+        "startIndex": 31,
+        "endIndex": 55,
+        "resolution": {
+        "value": "patti@contoso.com"
+        }
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>Nächste Schritte

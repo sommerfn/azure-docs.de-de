@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 28b1c3622ca449b0ce539937369fe43bd1d508ee
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326312"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468968"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Anmelden mit einer Android-Anwendung in Azure Active Directory B2C
 
@@ -38,7 +38,9 @@ Registrieren Sie als Nächstes eine Anwendung in Ihrem Azure AD B2C-Mandanten. 
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-Notieren Sie sich die **ANWENDUNGS-ID** zur Verwendung in einem späteren Schritt. Wählen Sie als Nächstes die Anwendung in der Liste aus, und notieren Sie sich den **benutzerdefinierten Umleitungs-URI** ebenfalls zur Verwendung in einem späteren Schritt. Beispiel: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt.
+
+Notieren Sie außerdem Ihren benutzerdefinierten Umleitungs-URI für die Verwendung in einem späteren Schritt. Beispiel: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Erstellen Ihrer Benutzerflows
 

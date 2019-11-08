@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: f51f5a8583a73219ffb419c76fcd009d102f6ffb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0e3e4226eaaa0505eea96d8b3aca820f2327349e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932914"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467618"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken
 
@@ -25,6 +25,10 @@ Sie können Ihrer LUIS-App Features hinzufügen, um ihre Genauigkeit zu verbesse
 Eine [Ausdrucksliste](luis-concept-feature.md) enthält eine Gruppe von Werten (Wörter oder Ausdrücke), die derselben Klasse angehören und auf ähnliche Weise behandelt werden sollen (z.B. Städte- oder Produktnamen). Erkenntnisse, die LUIS zu einem davon sammelt, werden automatisch auch auf die anderen angewandt. Diese Liste ist nicht dasselbe wie eine [Listenentität](reference-entity-list.md) (genaue Textübereinstimmungen) der übereinstimmenden Wörter.
 
 Eine Ausdrucksliste ist Teil des Vokabulars der App-Domäne als zweiter Hinweis zu diesen Wörtern für LUIS.
+
+Lesen Sie [Featurekonzepte](luis-concept-feature.md), um zu verstehen, wann und warum eine Ausdrucksliste verwendet werden soll. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="add-phrase-list"></a>Hinzufügen einer Begriffsliste
 

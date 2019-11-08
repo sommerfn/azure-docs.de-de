@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: e6e4c0018f11e216afd5a8c295fc336036885e68
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302542"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468944"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Häufig gestellte Fragen (FAQ)
 
@@ -130,15 +130,20 @@ Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Sie erreichen 
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Wie lösche ich meinen Azure AD B2C-Mandanten?
 
-Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu löschen:
+Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu löschen.
 
+Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. [Erfahren Sie mehr über die Vorschaubenutzeroberfläche](http://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als *Abonnementadministrator* an. Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Löschen Sie alle **Benutzerabläufe (Richtlinien)** in Ihrem Azure AD B2C-Mandanten.
 1. Löschen Sie alle **Anwendungen**, die Sie in Ihrem Azure AD B2C-Mandanten registriert haben.
-1. Melden Sie sich anschließend als Abonnementadministrator beim [Azure-Portal](https://portal.azure.com/) an. Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.
-1. Wechseln Sie zu dem Azure AD B2C-Mandanten, den Sie löschen möchten.
 1. Wählen Sie im linken Menü **Azure Active Directory** aus.
 1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
-1. Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Abonnementadministrator-Benutzers, als der Sie gerade angemeldet sind. Wählen Sie unten auf der Seite **Löschen** aus, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
+1. Wählen Sie nacheinander die einzelnen Benutzer aus (mit Ausnahme des *Abonnementadministrator*-Benutzers, als der Sie aktuell angemeldet sind). Wählen Sie unten auf der Seite **Löschen** aus, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
 1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** (oder **App-Registrierungen (Legacy)** ) aus.
 1. Wählen Sie **Alle Anwendungen anzeigen** aus.
 1. Wählen Sie die Anwendung **b2c-extensions-app** und anschließend **Löschen** aus, und klicken Sie dann auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
@@ -149,6 +154,28 @@ Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu lösc
 1. Melden Sie sich vom Azure-Portal ab und dann wieder an, um Ihren Zugriff zu aktualisieren.
 1. Wählen Sie im linken Menü **Azure Active Directory** aus.
 1. Wählen Sie auf der Seite **Übersicht** die Option **Verzeichnis löschen** aus. Folgen Sie den Anweisungen auf dem Bildschirm, um den Prozess abzuschließen.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als *Abonnementadministrator* an. Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Löschen Sie alle **Benutzerabläufe (Richtlinien)** in Ihrem Azure AD B2C-Mandanten.
+1. Wählen Sie **App-Registrierungen (Vorschau)** und dann die Registerkarte **Alle Anwendungen** aus.
+1. Löschen Sie alle Anwendungen, die Sie registriert haben.
+1. Löschen Sie **b2c-extensions-app**.
+1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
+1. Wählen Sie nacheinander die einzelnen Benutzer aus (mit Ausnahme des *Abonnementadministrator*-Benutzers, als der Sie aktuell angemeldet sind). Wählen Sie unten auf der Seite **Löschen** aus, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
+1. Wählen Sie im linken Menü **Azure Active Directory** aus.
+1. Wählen Sie unter **Verwalten** die Option **Benutzereinstellungen** aus.
+1. Wählen Sie unter **LinkedIn-Kontoverbindungen** die Option **Nein** und dann **Speichern** aus (sofern vorhanden).
+1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
+1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja** und dann **Speichern** aus.
+1. Melden Sie sich vom Azure-Portal ab und dann wieder an, um Ihren Zugriff zu aktualisieren.
+1. Wählen Sie im linken Menü **Azure Active Directory** aus.
+1. Wählen Sie auf der Seite **Übersicht** die Option **Verzeichnis löschen** aus. Folgen Sie den Anweisungen auf dem Bildschirm, um den Prozess abzuschließen.
+
+* * *
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Kann ich Azure AD B2C als Teil der Enterprise Mobility Suite erwerben?
 

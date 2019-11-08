@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 9e237b09bd2b0ecc3e91e10697f6c025f73057da
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 1cc7469bf6b29ed864fac3955dc8770aa879f84d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677434"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499528"
 ---
 # <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Entität PhoneNumber für eine LUIS-App
 Die `phonenumber` extrahiert verschiedene Telefonnummern mit Ländervorwahl. Da diese Entität bereits trainiert wurde, müssen Sie der Anwendung keine Beispieläußerungen mit Telefonnummern hinzufügen. Die `phonenumber` wird nur in der Kultur `en-us` unterstützt. 
@@ -26,24 +26,54 @@ Die `phonenumber` extrahiert verschiedene Telefonnummern mit Ländervorwahl. Da 
 
 ## <a name="resolution-for-this-prebuilt-entity"></a>Auflösung für diese vordefinierte Entität
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
+
+`my mobile is 1 (800) 642-7676`
+
+#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
+
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ]
+}
+```
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
+Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
+
+```json
+"entities": {
+    "phonenumber": [
+        "1 (800) 642-7676"
+    ],
+    "$instance": {
+
+        "phonenumber": [
+            {
+                "type": "builtin.phonenumber",
+                "text": "1 (800) 642-7676",
+                "startIndex": 13,
+                "length": 16,
+                "score": 1.0,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
 
 Im folgenden Beispiel wird die Auflösung der Entität **builtin.phonenumber** veranschaulicht.
 
 ```json
-{
-  "query": "my mobile is 1 (800) 642-7676",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.8448457
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.8448457
-    }
-  ],
-  "entities": [
+"entities": [
     {
         "entity": "1 (800) 642-7676",
         "type": "builtin.phonenumber",
@@ -54,69 +84,8 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.phonenumber** v
             "value": "1 (800) 642-7676"
         }
     }
-  ]
-}
+]
 ```
-
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
-
-Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ]
-        }
-    }
-}
-```
-
-Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
-
-```json
-{
-    "query": "my mobile is 1 (800) 642-7676",
-    "prediction": {
-        "normalizedQuery": "my mobile is 1 (800) 642-7676",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.592748761
-            }
-        },
-        "entities": {
-            "phonenumber": [
-                "1 (800) 642-7676"
-            ],
-            "$instance": {
-                "phonenumber": [
-                    {
-                        "type": "builtin.phonenumber",
-                        "text": "1 (800) 642-7676",
-                        "startIndex": 13,
-                        "length": 16,
-                        "score": 1,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
 * * * 
 
 ## <a name="next-steps"></a>Nächste Schritte

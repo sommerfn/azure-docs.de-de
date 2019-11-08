@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b8ce4565a2df3ad5f144508010265c1029a6856d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468862"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -67,9 +67,15 @@ Fügen Sie das [App-Geheimnis](active-directory-b2c-setup-fb-app.md) der Faceboo
 
 ## <a name="register-identity-experience-framework-applications"></a>Registrieren von Identity Experience Framework-Anwendungen
 
-Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registrierung und Anmeldung von Benutzern verwendet werden. IdentityExperienceFramework (eine Web-App) und ProxyIdentityExperienceFramework (eine native App) mit delegierter Berechtigung von der IdentityExperienceFramework-App. Lokale Konten sind nur in Ihrem Mandanten vorhanden. Ihre Benutzer melden sich mit einer eindeutigen Kombination aus E-Mail-Adresse und Kennwort an, um auf Ihre bei Mandanten registrierten Anwendungen zuzugreifen.
+Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registrierung und Anmeldung von Benutzern mit lokalen Konten verwendet werden: *IdentityExperienceFramework* (eine Web-API) und *ProxyIdentityExperienceFramework* (eine native App) mit delegierter Berechtigung für die IdentityExperienceFramework-App. Ihre Benutzer können sich mit einer E-Mail-Adresse oder einem Benutzernamen und einem Kennwort für den Zugriff auf Ihre mandantenregistrierten Anwendungen anmelden, wodurch ein „lokales Konto“ erstellt wird. Lokale Konten sind nur in Ihrem Azure AD B2C-Mandanten vorhanden.
+
+Sie müssen diese beiden Anwendungen nur ein Mal in Ihrem Azure AD B2C-Mandanten registrieren.
 
 ### <a name="register-the-identityexperienceframework-application"></a>Registrieren der IdentityExperienceFramework-Anwendung
+
+Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. [Erfahren Sie mehr über die Vorschaubenutzeroberfläche](https://aka.ms/b2cappregintro).
+
+#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
 
 1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus.
 1. Geben Sie im Suchfeld `Azure Active Directory`ein.
@@ -81,7 +87,31 @@ Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registri
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Anmelde-URL** ein, wobei `your-tenant-name` für den Domänennamen Ihres Azure AD B2C-Mandanten steht. Alle URLs sollten jetzt [b2clogin.com](b2clogin.md) verwenden.
 1. Klicken Sie auf **Erstellen**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
 
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+
+1. Wählen Sie **App-Registrierungen (Vorschau)** aus, und wählen Sie dann **Neue Registrierung** aus.
+1. Geben Sie unter **Name** `IdentityExperienceFramework` ein.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
+1. Wählen Sie unter **Umleitungs-URI** die Option **Web** aus, und geben Sie dann `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` ein, wobei `your-tenant-name` für den Domänennamen des Azure AD B2C-Mandanten steht.
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
+1. Wählen Sie **Registrieren**.
+1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt.
+
+Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
+
+1. Wählen Sie unter **Verwalten** die Option **Eine API verfügbar machen** aus.
+1. Wählen Sie **Bereich hinzufügen** und dann **Speichern und fortfahren** aus, um den URI der Standardanwendungs-ID zu akzeptieren.
+1. Geben Sie die folgenden Werte ein, um einen Bereich zu erstellen, der die benutzerdefinierte Richtlinienausführung in Ihrem Azure AD B2C-Mandanten ermöglicht:
+    * **Bereichsname**: `user_impersonation`
+    * **Anzeigename der Administratoreinwilligung**: `Access IdentityExperienceFramework`
+    * **Beschreibung der Administratoreinwilligung**: `Allow the application to access IdentityExperienceFramework on behalf of the signed-in user.`
+1. Wählen Sie **Bereich hinzufügen** aus.
+
+* * *
+
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrieren der ProxyIdentityExperienceFramework-Anwendung
+
+#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
 
 1. Wählen Sie unter **App-Registrierungen (Legacy)** die Option **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** `ProxyIdentityExperienceFramework` ein.
@@ -92,6 +122,38 @@ Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registri
 1. Wählen Sie **API auswählen** aus, suchen Sie nach **IdentityExperienceFramework**, wählen Sie diese API aus, und klicken Sie anschließend auf **Auswählen**.
 1. Aktivieren Sie das Kontrollkästchen neben **Access IdentityExperienceFramework** (Auf IdentityExperienceFramework zugreifen), und klicken Sie erst auf **Auswählen** und dann auf **Done** (Fertig).
 1. Wählen Sie **Berechtigungen erteilen** aus, und bestätigen Sie dies anschließend durch Auswahl von **Ja**.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+
+1. Wählen Sie **App-Registrierungen (Vorschau)** aus, und wählen Sie dann **Neue Registrierung** aus.
+1. Geben Sie unter **Name** `ProxyIdentityExperienceFramework` ein.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
+1. Verwenden Sie unter **Umleitungs-URI**die Dropdownliste, um **Öffentlicher Client/nativ (mobil und Desktop)** auszuwählen.
+1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `your-tenant-name` für Ihren Azure AD B2C-Mandanten steht.
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen *Administratoreinwilligung für openid- und offline_access-Berechtigungen erteilen*.
+1. Wählen Sie **Registrieren**.
+1. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt.
+
+Geben Sie nun an, dass die Anwendung als öffentlicher Client behandelt werden soll:
+
+1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Wählen Sie **Neue Benutzeroberfläche ausprobieren** aus (sofern die Option angezeigt wird).
+1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Anwendung als öffentlichen Client behandeln** aus (wählen Sie **Ja** aus).
+1. Wählen Sie **Speichern** aus.
+
+Erteilen Sie nun Berechtigungen für den API-Bereich, den Sie zuvor in der Registrierung *IdentityExperienceFramework* verfügbar gemacht haben:
+
+1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.
+1. Wählen Sie unter **Konfigurierte Berechtigungen** die Option **Berechtigung hinzufügen** aus.
+1. Wählen Sie die Registerkarte **Meine APIs** aus, und wählen Sie dann die Anwendung **IdentityExperienceFramework** aus.
+1. Wählen Sie unter **Berechtigung** den Bereich **user_impersonation** aus, den Sie zuvor definiert haben.
+1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie gemäß der Anweisung einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
+1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
+1. Wählen Sie das derzeit angemeldete Administratorkonto aus, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem mindestens die Rolle *Cloudanwendungsadministrator* zugewiesen wurde.
+1. Wählen Sie **Akzeptieren** aus.
+1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für beide Bereiche unter **STATUS** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
+
+* * *
 
 ## <a name="custom-policy-starter-pack"></a>Starter Pack für benutzerdefinierte Richtlinien
 

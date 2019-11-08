@@ -1,5 +1,5 @@
 ---
-title: Containerunterstützung
+title: Erstellen einer LUIS-Ressource
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: IEvangelist
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: dapine
-ms.openlocfilehash: ecb172aec37fdab21bed8373ac7484dc52a54829
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821985"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465930"
 ---
 ## <a name="create-a-luis-resource"></a>Erstellen einer LUIS-Ressource
 
@@ -30,9 +30,6 @@ ms.locfileid: "72821985"
     |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|
 
 1. Klicken Sie auf **Erstellen**, und warten Sie, bis die Ressource erstellt wird. Nachdem sie erstellt wurde, navigieren Sie zur Ressourcenseite.
-1. Erfassen Sie den konfigurierten `endpoint` und einen API-Schlüssel:
+1. Erfassen Sie den konfigurierten `endpoint` und einen API-Schlüssel. Weitere Informationen finden Sie unter [Ermitteln erforderlicher Parameter](#gathering-required-parameters).
 
-    |Registerkarte „Ressource“ im Portal|Einstellung|Wert|
-    |--|--|--|
-    |**Übersicht**|Endpunkt|Kopieren Sie den Endpunkt. Er sieht etwa so aus: `https://luis.cognitiveservices.azure.com/luis/v2.0`.|
-    |**Schlüssel**|API-Schlüssel|Kopieren Sie einen der beiden Schlüssel. Es handelt sich um eine aus 32 alphanumerischen Zeichen bestehende Zeichenfolge ohne Leerzeichen oder Bindestriche, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
+[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]

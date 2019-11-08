@@ -1,5 +1,6 @@
 ---
-title: AD FS-Unterstützung in der Microsoft Authentication Library für .NET | Azure
+title: AD FS-Unterstützung in der Microsoft Authentication Library für .NET
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterstützung der Active Directory-Verbunddienste (AD FS) in der Microsoft Authentication Library für .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,15 +18,15 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb1bcc4599a891b8748b63c5e7c5c09f5acdac7
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 273a8b06b3bd3bf299b47a1cc52fd4660353cec3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532675"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473753"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>Unterstützung der Active Directory-Verbunddienste in MSAL.NET
-Mithilfe der Active Directory-Verbunddienste (AD FS) in Windows Server können Sie den von Ihnen entwickelten Anwendungen die OpenID Connect- und OAuth 2.0-basierte Authentifizierung und Autorisierung hinzufügen. So können Benutzer von diesen Anwendungen direkt gegenüber AD FS authentifiziert werden. Weitere Informationen finden Sie in den [AD FS-Szenarien für Entwickler](/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Mithilfe der Active Directory-Verbunddienste (AD FS) in Windows Server können Sie den von Ihnen entwickelten Anwendungen die OpenID Connect- und OAuth 2.0-basierte Authentifizierung und Autorisierung hinzufügen. So können Benutzer von diesen Anwendungen direkt gegenüber AD FS authentifiziert werden. Weitere Informationen finden Sie in den [AD FS-Szenarien für Entwickler](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios).
 
 Die Microsoft Authentication Library für .NET (MSAL.NET) unterstützt zwei Szenarien für die Authentifizierung gegenüber AD FS:
 
