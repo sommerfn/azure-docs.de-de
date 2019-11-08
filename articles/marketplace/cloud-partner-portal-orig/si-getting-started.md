@@ -4,15 +4,16 @@ description: Einführung in das Feature für Verkäufer-Insights des Cloud-Partn
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 6c903c87bc153864381a3f1763afaeeb7796090a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d335525a23ca2e1442ae009dcfbc062bff8cc77d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943056"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824762"
 ---
 <a name="getting-started-with-seller-insights"></a>Erste Schritte mit Verkäufer-Insights
 ====================================

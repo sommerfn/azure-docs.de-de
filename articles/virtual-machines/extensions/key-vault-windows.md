@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 43c4b363f223c61bac3d3f7dbd272519a0cd014d
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7c730ad3f14cc26cd1251b497ef2d146fe99e448
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899047"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584352"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -71,7 +71,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 | publisher | Microsoft.Azure.KeyVault.Edp | Zeichenfolge |
 | type | KeyVaultForWindows | Zeichenfolge |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | int |
+| pollingIntervalInS | 3600 | Zeichenfolge |
 | certificateStoreName | MY | Zeichenfolge |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | LocalMachine | Zeichenfolge |

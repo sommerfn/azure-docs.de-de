@@ -1,7 +1,7 @@
 ---
 title: 'K-Means Clustering: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie das Modul „K-Means Clustering“ in Azure Machine Learning Service zum Trainieren von Clusteringmodellen verwendet wird.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie das Modul „K-Means Clustering“ in Azure Machine Learning zum Trainieren von Clusteringmodellen verwendet wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: bb39a57f565a542e5106b7ba14e58bc39041f53d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693108"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497762"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
 
-In diesem Artikel wird beschrieben, wie Sie das Modul *K-Means Clustering* in Azure Machine Learning Studio verwenden können, um ein untrainiertes K-Means-Clusteringmodell zu erstellen. 
+In diesem Artikel wird beschrieben, wie Sie das Modul *K-Means Clustering* in Azure Machine Learning-Designer (Vorschauversion) verwenden können, um ein untrainiertes K-Means-Clusteringmodell zu erstellen. 
  
 k-Means ist einer der einfachsten und bekanntesten *unüberwachten* Lernalgorithmen. Sie können den Algorithmus für eine Vielzahl von Aufgaben des maschinellen Lernens verwenden, z. B.: 
 
@@ -60,7 +60,7 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
   
     -   **Single Parameter** (Einzelner Parameter): Wenn Sie die genauen Parameter kennen, die Sie im Clusteringmodell verwenden möchten, können Sie eine bestimmte Menge von Werten als Argumente angeben.  
   
-3.  Für **Number of Centroids** (Anzahl der Schwerpunkte) geben Sie die Anzahl von Clustern ein, mit der der Algorithmus beginnen soll.  
+3.  Für **Number of centroids** (Anzahl der Schwerpunkte) geben Sie die Anzahl von Clustern ein, mit der der Algorithmus beginnen soll.  
   
      Es gibt keine Garantie dafür, dass das Modell genau diese Anzahl von Clustern produziert. Der Algorithmus beginnt mit dieser Anzahl von Datenpunkten und iteriert, um die optimale Konfiguration zu finden.  
   

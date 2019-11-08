@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 858ca114ca4c4b469ce4a5dd5275c9ac9874feb5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516760"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464992"
 ---
 # <a name="speech-services-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -38,7 +38,7 @@ Nachfolgend sind einige der Technologien und zugehörigen Features der Azure Spe
 
 * Analysen nach dem Anruf, d.h. Batchverarbeitung von Anrufaufzeichnungen
 * Analyseverarbeitung des Audiosignals in Echtzeit, um verschiedene Erkenntnisse während des Anrufs zu gewinnen (wobei die Stimmungserkennung ein bedeutender Anwendungsfall ist)
-* Virtuelle Assistenten (Bots), die entweder den Dialog zwischen dem Kunden und dem Bot führen, um das Problem des Kunden ohne Beteiligung eines Mitarbeiters zu lösen, oder die Anwendung von KI-Protokollen zur Unterstützung des Mitarbeiters
+* Sprachassistenten (Bots), die entweder den Dialog zwischen dem Kunden und dem Bot führen, um das Problem des Kunden ohne Beteiligung eines Mitarbeiters zu lösen, oder die Anwendung von KI-Protokollen zur Unterstützung des Mitarbeiters.
 
 Die folgende Abbildung zeigt ein Diagramm der typischen Architektur zur Implementierung eines Batch-Szenarios. ![Architektur der Callcentertranskription](media/scenarios/call-center-transcription-architecture.png)
 

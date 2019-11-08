@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f2819dd2194193ffa8171034fdbe01ac4cb26174
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 243072477c7d249d7066a7a448061c51a0bd2f34
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558928"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468718"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informationen zum Speech-Geräte-SDK
 
@@ -29,9 +29,9 @@ Anwendungsmöglichkeiten für das Speech-Geräte-SDK:
 
 Das Speech-Geräte-SDK nutzt das [Speech-SDK](speech-sdk.md). Es verwendet das Speech-SDK zum Senden von Audioinhalten, die mit unserem Audioverarbeitungsalgorithmus bearbeitet wurden, vom Mikrofonarray des Geräts an die [Speech Services](overview.md). Es verwendet Mehrkanal-Audio für eine präzisere Fernfeld-[Spracherkennung](speech-to-text.md) mit Geräuschunterdrückung, Echounterdrückung, Beamforming und Hallunterdrückung.
 
-Mit dem Speech Devices SDK können Sie auch Ambient Devices mit einem [benutzerdefinierten Aktivierungswort](speech-devices-sdk-create-kws.md) erstellen, sodass der Auslöser zum Initiieren einer Benutzerinteraktion in Bezug auf Ihre Marke einmalig ist.
+Mit dem Speech Devices SDK können Sie auch Ambient Devices mit einem [benutzerdefinierten Schlüsselwort](speech-devices-sdk-create-kws.md) erstellen, sodass der Auslöser zum Initiieren einer Benutzerinteraktion in Bezug auf Ihre Marke einmalig ist.
 
-Mit dem Speech Devices SDK lassen sich verschiedenste stimmaktivierte Szenarien entwickeln, z. B. [benutzerdefinierte virtuelle Voice-First-Assistenten](https://aka.ms/bots/speech/va), Drive-through-Bestellsysteme, [Unterhaltungstranskription](conversation-transcription-service.md) und intelligente Lautsprecher. Es ist möglich, Benutzern mit Textausgaben oder mit Sprachausgaben in einer Standard- oder [benutzerdefinierten Stimme](how-to-customize-voice-font.md) zu antworten, Suchergebnisse bereitzustellen, [Übersetzungen](speech-translation.md) in andere Sprachen durchzuführen und vieles mehr. Wir freuen uns darauf, zu sehen, was Sie erstellen!
+Mit dem Speech Devices SDK lassen sich verschiedenste stimmaktivierte Szenarien entwickeln, z. B. [Sprachassistenten](https://aka.ms/bots/speech/va), Drive-through-Bestellsysteme, [Unterhaltungstranskription](conversation-transcription-service.md) und intelligente Lautsprecher. Es ist möglich, Benutzern mit Textausgaben oder mit Sprachausgaben in einer Standard- oder [benutzerdefinierten Stimme](how-to-customize-voice-font.md) zu antworten, Suchergebnisse bereitzustellen, [Übersetzungen](speech-translation.md) in andere Sprachen durchzuführen und vieles mehr. Wir freuen uns darauf, zu sehen, was Sie erstellen!
 
 ## <a name="get-the-speech-devices-sdk"></a>Abrufen des SDK für sprachaktivierte Geräte
 

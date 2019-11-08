@@ -1,82 +1,53 @@
 ---
 title: 'Export Data (Daten exportieren): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Export Data“ in Azure Machine Learning Service verwenden, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Pipelines in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Export Data“ in Azure Machine Learning verwenden, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Pipelines in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: b7b4b9de1e91279243e35f1b71f1ef6d2244e9e0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693719"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497893"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
-Verwenden Sie dieses Modul, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Pipelines in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern.
+Verwenden Sie dieses Modul, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Pipelines in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern. 
 
-Dieses Modul unterstützt das Exportieren oder Speichern von Daten in folgenden Clouddatendiensten:
+Dieses Modul unterstützt das Exportieren von Daten in folgende Clouddatendiensten:
 
+- Azure-Blobcontainer
+- Azure-Dateifreigabe
+- Azure Data Lake
+- Azure Data Lake Gen2
 
-- **Export to Azure Blob Storage** (Daten in Azure Blob Storage exportieren): Speichert Daten im Blob-Dienst in Azure. Daten im Blob-Dienst können öffentlich freigegeben oder in gesicherten Anwendungsdatenspeichern gespeichert werden.
+Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen hierzu finden Sie unter [Zugreifen auf Daten](../service/how-to-access-data.md).
 
-  
 ## <a name="how-to-configure-export-data"></a>Gewusst wie: Konfigurieren von „Export Data“
 
-1. Fügen Sie das Modul **Export Data** Ihrer Pipeline auf der Oberfläche hinzu. Sie finden dieses Modul in der Kategorie **Input and Output** (Eingabe und Ausgabe).
+1. Fügen Sie das Modul **Export Data** zu Ihrer Pipeline im Designer hinzu. Sie finden dieses Modul in der Kategorie **Input and Output** (Eingabe und Ausgabe).
 
-2. Verbinden Sie **Export Data** mit dem Modul, das die zu exportierenden Daten enthält.
+1. Verbinden Sie **Export Data** mit dem Modul, das die zu exportierenden Daten enthält.
 
-3. Doppelklicken Sie auf **Export Data**, um den Bereich **Properties** (Eigenschaften) zu öffnen.
+1. Wählen Sie **Export Data** aus, um den Bereich **Properties** (Eigenschaften) zu öffnen.
 
-4. Wählen Sie für **Data destination** (Datenziel) den Typ des Cloudspeichers aus, in dem Sie Ihre Daten speichern möchten. Wenn Sie diese Option ändern, werden alle anderen Eigenschaften zurückgesetzt. Legen Sie deshalb diese Option zuerst fest!
+1. Wählen Sie für **Datastore** (Datenspeicher) in der Dropdownliste einen vorhandenen Datenspeicher aus. Sie können auch einen neuen Datenspeicher erstellen. Informationen, wie Sie dazu vorgehen, finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../service/how-to-access-data.md).
 
-5. Geben Sie einen Kontonamen und eine Authentifizierungsmethode an, die für den Zugriff auf das angegebene Speicherkonto erforderlich sind.
-
-    **Export to Azure Blob Storage** (In Azure Blob Storage exportieren) ist die einzige Option in der privaten Vorschau. Im Folgenden erfahren Sie, wie Sie Einstellungen für das Modul festlegen.
-    1. Der Blob-Dienst in Azure dient zum Speichern großer Datenmengen, einschließlich binärer Daten. Es gibt zwei Blob-Speichertypen: öffentliche Blobs und Blobs, die Anmeldeinformationen erfordern.
-
-    2. Wählen Sie für **Authentication type** (Authentifizierungstyp) die Option **Public (SAS)** (Öffentlich, SAS) aus, wenn Sie sicher sind, dass der Speicher den Zugriff über eine SAS-URL unterstützt.
-
-          Eine SAS-URL ist ein bestimmter URL-Typ, der mithilfe eines Azure Storage-Hilfsprogramms generiert werden kann und nur begrenzte Zeit zur Verfügung steht.  Die URL enthält alle Informationen, die für die Authentifizierung und für Downloads erforderlich sind.
-
-        Unter **URI** geben oder fügen Sie den vollständigen URI ein, der das Konto und den öffentlichen Blob definiert.
-
-        Als Dateiformate werden CSV und TSV unterstützt.
-
-    3. Wählen Sie bei privaten Konten **Konto** aus, und geben Sie den Kontonamen und Kontoschlüssel an, damit die Pipeline Schreibzugriff auf das Speicherkonto erhält.
-
-         - **Kontoname**: Geben oder fügen Sie den Namen des Kontos ein, unter dem Sie die Daten speichern möchten. Wenn die vollständige URL des Speicherkontos z.B. `http://myshared.blob.core.windows.net` lautet, geben Sie `myshared` ein.
-
-        - **Account key**: Fügen Sie den Speicherzugriffsschlüssel ein, der dem Konto zugeordnet ist.
-
-        -  **Path to container, directory, or blob** (Pfad zum Container, Verzeichnis oder Blob): Geben Sie den Namen des Blobs ein, in dem die exportierten Daten gespeichert werden sollen. Wenn Sie die Ergebnisse Ihrer Pipeline in einem neuen Blob namens **results01.csv** im Container **predictions** unter einem Konto namens **mymldata** speichern möchten, lautet die vollständige URL des Blobs: `http://mymldata.blob.core.windows.net/predictions/results01.csv`.
-
-            Daher würden Sie den Container- und Blob-Namen im Feld **Path to container, directory, or blob** wie folgt eingeben: `predictions/results01.csv`
-
-        - Wenn Sie den Namen eines Blobs angeben, der noch nicht vorhanden ist, wird der Blob in Azure für Sie erstellt.
-
-       -  Beim Schreiben in einen bestehenden Blob können Sie mithilfe der Eigenschaft **Azure blob storage write mode** (Azure Blob Storage im Schreibmodus) angeben, dass der aktuelle Inhalt des Blobs überschrieben werden soll. Diese Eigenschaft wird standardmäßig auf **Error** (Fehler) festgelegt. Das bedeutet, dass ein Fehler gemeldet wird, sobald eine bestehende Blob-Datei mit demselben Namen gefunden wird.
+1. Geben Sie den Pfad im Datenspeicher an, in den die Daten geschrieben werden sollen. 
 
 
-    4. Wählen Sie für **File format for blob file** (Dateiformat für Blob-Datei) das Format aus, in dem die Daten gespeichert werden sollen.
-
-        - **CSV**: Durch Trennzeichen getrennte Werte (CSV) ist das Standardspeicherformat. Um Spaltenüberschriften zusammen mit den Daten zu exportieren, wählen Sie die Option **Write blob header row** (Blob-Kopfzeile schreiben) aus.  Weitere Informationen zum CSV-Format (durch Trennzeichen getrennt), das in Azure Machine Learning verwendet wird, finden Sie unter [Convert to CSV (In CSV konvertieren)](./convert-to-csv.md).
-
-        - **TSV**: Durch Tabstopps getrennte Werte (TSV) ist ein Format, das mit vielen Machine Learning-Tools kompatibel ist. Um Spaltenüberschriften zusammen mit den Daten zu exportieren, wählen Sie die Option **Write blob header row** (Blob-Kopfzeile schreiben) aus.  
-
+1. Wählen Sie für **File format** (Dateiformat) das Format aus, in dem die Daten gespeichert werden sollen.
  
-    5. **Use cached results** (Zwischengespeicherte Ergebnisse verwenden): Wählen Sie diese Option aus, wenn Sie verhindern möchten, dass die Ergebnisse bei jeder Ausführung der Pipeline erneut in die Blob-Datei geschrieben werden. Sofern es keine weiteren Änderungen an den Modulparametern gibt, werden die Ergebnisse der Pipeline entweder bei der ersten Ausführung des Moduls oder bei der Änderung von Daten in die Datei geschrieben.
-
-    6. Ausführen der Pipeline.
+1. Ausführen der Pipeline.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0fdc58ba54c63ba7dd6b74f56aa91e9c2b3c0936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 370b5005f27fbfe6ee8fc96d6dd7e467a581ec67
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562830"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464614"
 ---
 # <a name="create-a-custom-voice"></a>Erstellen einer benutzerdefinierten Stimme
 
@@ -44,7 +44,7 @@ Datasets werden nach dem Klicken auf „Hochladen“ automatisch überprüft. Be
 
 In der folgenden Tabelle werden die Verarbeitungsstatus der importierten Datasets angezeigt:
 
-| Zustand | Bedeutung |
+| State | Bedeutung |
 | ----- | ------- |
 | Verarbeitung | Ihr Dataset wurde empfangen und wird verarbeitet. |
 | Succeeded | Ihr Dataset wurde überprüft und kann nun zur Erstellung eines Stimmmodells verwendet werden. |
@@ -78,7 +78,7 @@ Nachdem Ihr Dataset überprüft wurde, können Sie damit Ihr benutzerdefiniertes
     > Doppelte Audionamen werden aus dem Training entfernt. Achten Sie darauf, dass die ausgewählten Datasets in mehreren ZIP-Dateien nicht die gleichen Audionamen enthalten.
 
     > [!TIP]
-    > Verwenden Sie Datasets des gleichen Sprechers, um optimale Ergebnisse zu erzielen. Wenn die für das Training übermittelten Datasets insgesamt weniger als 6.000 unterschiedliche Äußerungen enthalten, wird Ihr Stimmmodell mittels statistischer parametrischer Sprachsynthese trainiert. Wenn die Trainingsdaten insgesamt mehr als 6.000 unterschiedliche Äußerungen enthalten, wird ein Trainingsprozess mit verketteter Sprachsynthese initiiert. Mit der verketteten Sprachsynthese lassen sich in der Regel natürlichere, präzisere Ergebnisse erzielen. [Wenden Sie sich an das Custom Voice-Team](mailto:speechsupport@microsoft.com), wenn Sie ein Modell mit der neuesten neuronalen TTS-Technologie trainieren möchten, um eine digitale Stimme zu generieren, die mit den öffentlich verfügbaren [neuronalen Stimmen](language-support.md#neural-voices) vergleichbar ist.
+    > Verwenden Sie Datasets des gleichen Sprechers, um optimale Ergebnisse zu erzielen. Wenn die für das Training übermittelten Datasets insgesamt weniger als 6.000 unterschiedliche Äußerungen enthalten, wird Ihr Stimmmodell mittels statistischer parametrischer Sprachsynthese trainiert. Wenn die Trainingsdaten insgesamt mehr als 6.000 unterschiedliche Äußerungen enthalten, wird ein Trainingsprozess mit verketteter Sprachsynthese initiiert. Mit der verketteten Sprachsynthese lassen sich in der Regel natürlichere, präzisere Ergebnisse erzielen. [Wenden Sie sich an das Custom Voice-Team](https://go.microsoft.com/fwlink/?linkid=2108737), wenn Sie ein Modell mit der neuesten neuronalen TTS-Technologie trainieren möchten, um eine digitale Stimme zu generieren, die mit den öffentlich verfügbaren [neuronalen Stimmen](language-support.md#neural-voices) vergleichbar ist.
 
 5.  Klicken Sie auf **Trainieren**, um mit der Erstellung Ihres Stimmmodells zu beginnen.
 
@@ -86,7 +86,7 @@ In der Trainingstabelle wird ein neuer Eintrag angezeigt, der diesem neu erstell
 
 Der angezeigte Status gibt Aufschluss über die Konvertierung Ihres Datasets in ein Stimmmodell (wie hier gezeigt).
 
-| Zustand | Bedeutung |
+| State | Bedeutung |
 | ----- | ------- |
 | Verarbeitung | Ihr Stimmmodell wird erstellt. |
 | Succeeded | Ihr Stimmmodell wurde erstellt und kann bereitgestellt werden. |
@@ -99,6 +99,8 @@ Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der R
 
 > [!NOTE]
 > Benutzer mit einem kostenlosen Abonnement (F0) können pro Abonnement maximal zehn Stimmmodelle trainieren. Benutzer mit einem Standard-Abonnement (S0) können maximal 100 Stimmmodelle trainieren.
+
+Wenn Sie die neuronale Stimmtrainingsfunktion verwenden, können Sie auswählen, ob Sie ein Modell trainieren möchten, das für Echtzeitstreamingszenarien optimiert ist, oder ein neuronales HD-Modell, das für die asynchrone [Synthese für langes Audio](long-audio-api.md) optimiert ist.  
 
 ## <a name="test-your-voice-model"></a>Testen Ihres Stimmmodells
 
@@ -145,3 +147,4 @@ Der benutzerdefinierte Endpunkt verfügt über dieselben Funktionen wie der Stan
 
 * [Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme](record-custom-voice-samples.md)
 * [Text-to-Speech-REST-API](rest-text-to-speech.md)
+* [API für lange Audioinhalte](long-audio-api.md)

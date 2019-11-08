@@ -1,5 +1,5 @@
 ---
-title: Einschränkungen von Azure SQL-Datenbank-Funktionen | Microsoft-Dokumentation
+title: Featureeinschränkungen
 description: Bei Verwendung der Einschränkungen von Azure SQL-Datenbank-Funktionen verbessert sich Ihre Datenbanksicherheit. In Ihrer Datenbank werden Features eingeschränkt, über die sich Angreifer ggf. Zugang zu den darin enthaltenen Informationen verschaffen können.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: f2fd6cb73428c69fbb27cb93377f851a4e06221d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ce10daca23299f838e4086426fa89d9cade314ea
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959129"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823445"
 ---
 # <a name="azure-sql-database-feature-restrictions"></a>Einschränkungen von Azure SQL-Datenbank-Funktionen
 

@@ -1,19 +1,19 @@
 ---
-title: Einbinden einer Azure HPC Cache-Instanz (Vorschauversion)
+title: Einbinden einer Azure HPC Cache-Instanz
 description: Herstellen einer Verbindung von Clients mit einem Azure HPC Cache-Dienst
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3257cf92c628650fc50e0a36ec37fcab920aba2f
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254567"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582213"
 ---
-# <a name="mount-the-azure-hpc-cache-preview"></a>Einbinden der Azure HPC Cache-Instanz (Vorschauversion)
+# <a name="mount-the-azure-hpc-cache"></a>Einbinden einer Azure HPC Cache-Instanz
 
 Nachdem der Cache erstellt wurde, können NFS-Clients mit einem einfachen Einbindebefehl darauf zugreifen.
 

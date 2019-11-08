@@ -1,5 +1,5 @@
 ---
-title: Schützen einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Schützen einer Einzel- oder Pooldatenbank
 description: In diesem Tutorial erfahren Sie mehr über die Methoden und Funktionen zum Schützen einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 05ea21f7b3221425e5b052797d79e629fdfe3ba5
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231194"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818039"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
 

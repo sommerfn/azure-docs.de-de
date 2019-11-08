@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 22d7ef90ee0cf4d09467516b7bb0664327b7dabe
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 4eb19a5b344cc5bda5ecad724daaddf9b0000d7e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509690"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580902"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergleich der Features von Azure Stream Analytics
 
@@ -59,7 +59,7 @@ Mit Azure Stream Analytics können Sie mit [Azure-Portal](stream-analytics-quick
 |Abfragetests mit einer Beispieldatei     |Ja         |Ja         |Nein         |
 |Mehrere Abfragen übergreifende Freigabe von Eingaben und Ausgaben     |Nein         |Ja         |Nein         |
 |C#-UDF     |Nein         |Ja         |Nein         |
-|Senden, Starten und Beenden von Aufträgen     |Ja         |Ja         |Nein         |
+|Übermitteln von Aufträgen     |Ja         |Ja         |Nein         |
 |Auflisten von Aufträgen und Anzeigen von Auftragsentitäten     |Ja         |Ja         |Nein         |
 |Anzeigen von Auftragsmetriken und Diagramm     |Ja         |Teilweise         |Nein         |
 |Anzeigen von Auftragslaufzeitfehlern     |Ja         |Teilweise         |Nein         |

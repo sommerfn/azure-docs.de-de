@@ -1,5 +1,5 @@
 ---
-title: Rollen und Berechtigungen für Azure Data Factory | Microsoft-Dokumentation
+title: Rollen und Berechtigungen für Azure Data Factory
 description: Dieser Artikel beschreibt die Rollen und Berechtigungen, die erforderlich sind, um Data Factorys zu erstellen und mit untergeordneten Ressourcen zu arbeiten.
 ms.date: 11/5/2018
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 9df65322958bffd3182aaa8d734e8b29717d939d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142523"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681425"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 

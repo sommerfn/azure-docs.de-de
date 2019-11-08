@@ -7,18 +7,20 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129562"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747481"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Sichern und Wiederherstellen von Azure-Dateifreigaben
+
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern und wiederherstellen.
 
 In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
+>
 > * Konfigurieren eines Recovery Services-Tresors zum Sichern von Azure Files
 > * Ausführen eines bedarfsbasierten Sicherungsauftrags zum Erstellen eines Wiederherstellungspunkts
 > * Wiederherstellen von Dateien auf der Grundlage eines Wiederherstellungspunkts
@@ -27,22 +29,24 @@ In diesem Artikel lernen Sie Folgendes:
 > * Löschen der Sicherungsdaten
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [unterstützten Speicherkontotypen](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) befinden. Sobald Sie dies überprüft haben, können Sie Ihre Dateifreigaben schützen.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
+
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Universell V1“ und „Universell V2“ werden unterstützt. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
-- Unterstützung für die Sicherung von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) ist momentan auf [diese Regionen](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares-) beschränkt.
-- Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
-- Azure Backup unterstützt derzeit das Konfigurieren geplanter einmaliger täglicher Sicherungen von Azure-Dateifreigaben.
-- Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
-- Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
-- Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
-- Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
-- Löschen Sie keine Dateifreigaben, die durch Azure Backup geschützt sind. In der aktuellen Lösung werden nach dem Löschen der Dateifreigabe alle von Azure Backup erstellten Momentaufnahmen gelöscht, sodass alle Wiederherstellungspunkte verloren gehen.
 
-
+* Unterstützung für die Sicherung von Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) ist momentan auf [diese Regionen](backup-azure-files-faq.md#in-which-geos-can-i-back-up-azure-file-shares) beschränkt.
+* Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
+* Azure Backup unterstützt derzeit das Konfigurieren geplanter einmaliger täglicher Sicherungen von Azure-Dateifreigaben.
+* Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
+* Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
+* Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
+* Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
+* Löschen Sie keine Dateifreigaben, die durch Azure Backup geschützt sind. In der aktuellen Lösung werden nach dem Löschen der Dateifreigabe alle von Azure Backup erstellten Momentaufnahmen gelöscht, sodass alle Wiederherstellungspunkte verloren gehen.
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurieren der Sicherung für eine Azure-Dateifreigabe
+
 In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifreigabe eingerichtet haben. So sichern Sie Ihre Azure-Dateifreigabe
 
 1. Erstellen Sie einen Recovery Services-Tresor in der Region, in der sich auch die Dateifreigabe befindet. Wenn Sie bereits einen Tresor besitzen, öffnen Sie die Seite „Übersicht“ des Tresors, und klicken Sie auf **Sicherung**.
@@ -74,6 +78,7 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifrei
     Nach dem Einrichten einer Sicherungsrichtlinie wird eine Momentaufnahme der Dateifreigaben zum geplanten Zeitpunkt erstellt, und der Wiederherstellungspunkt wird für den ausgewählten Zeitraum aufbewahrt.
 
 ## <a name="create-an-on-demand-backup"></a>Erstellen einer bedarfsgesteuerten Sicherung
+
 Gelegentlich empfiehlt es sich, eine Sicherungsmomentaufnahme oder einen Wiederherstellungspunkt außerhalb der geplanten Zeiten in der Sicherungsrichtlinie zu erstellen. Häufig wird eine bedarfsgesteuerte Sicherung direkt nach dem Konfigurieren der Sicherungsrichtlinie erstellt. Basierend auf den Zeitplan in der Sicherungsrichtlinie, kann es Stunden oder Tage dauern, bis eine Momentaufnahme erstellt wird. Initiieren Sie eine bedarfsgesteuerte Sicherung, um Ihre Daten zu schützen, bevor die Sicherungsrichtlinie in Kraft tritt. Die Erstellung einer bedarfsgesteuerten Sicherung ist häufig erforderlich, bevor Sie geplante Änderungen an den Dateifreigaben vornehmen.
 
 ### <a name="to-create-an-on-demand-backup"></a>So erstellen Sie eine bedarfsgesteuerte Sicherung
@@ -97,11 +102,13 @@ Gelegentlich empfiehlt es sich, eine Sicherungsmomentaufnahme oder einen Wiederh
 5. Klicken Sie auf **OK**, um den bedarfsgesteuerten Sicherungsauftrag zu bestätigen.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Wiederherstellen aus der Sicherung einer Azure-Dateifreigabe
+
 Wenn Sie eine gesamte Dateifreigabe oder einzelne Dateien oder Ordner auf der Grundlage eines Wiederherstellungspunkts wiederherstellen müssen, navigieren Sie zu „Sicherungselemente“, wie im vorherigen Abschnitt erläutert. Wählen Sie **Restore Share** (Freigabe wiederherstellen), um für eine gesamte Dateifreigabe eine Zeitpunktwiederherstellung durchzuführen. Wählen Sie in der Liste der angezeigten Wiederherstellungspunkte einen Punkt aus, um die aktuelle Dateifreigabe zu überschreiben oder den Punkt als alternative Dateifreigabe in der gleichen Region wiederherzustellen.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/select-restore-location.png)
 
 ## <a name="restore-individual-files-or-folders-from-backup-of-azure-file-shares"></a>Wiederherstellen einzelner Dateien oder Ordner aus einer Sicherung von Azure-Dateifreigaben
+
 Azure Backup bietet die Option, einen Wiederherstellungspunkt im Azure-Portal zu durchsuchen. Klicken Sie zum Wiederherstellen der gewünschten Datei oder des gewünschten Ordners auf der Seite „Sicherungselemente“ auf „Dateiwiederherstellung“, und treffen Sie in der Liste der Wiederherstellungspunkte Ihre Auswahl. Wählen Sie das Wiederherstellungsziel aus, und klicken Sie dann auf **Datei auswählen**, um den Wiederherstellungspunkt zu durchsuchen. Wählen Sie die gewünschte Datei bzw. den gewünschten Ordner aus, und klicken Sie auf **Wiederherstellen**.
 
    ![Klicken auf „Sicherung“, um die Azure-Dateifreigabe mit dem Tresor zu verknüpfen](./media/backup-file-shares/restore-individual-files-folders.png)
@@ -109,11 +116,12 @@ Azure Backup bietet die Option, einen Wiederherstellungspunkt im Azure-Portal zu
 ## <a name="manage-azure-file-share-backups"></a>Verwalten der Sicherungen von Azure-Dateifreigaben
 
 Sie können auf der Seite **Sicherungsaufträge** verschiedene Verwaltungsaufgaben für Dateifreigabesicherungen ausführen:
-- [Überwachen von Aufträgen](backup-azure-files.md#monitor-jobs)
-- [Erstellen einer neuen Richtlinie](backup-azure-files.md#create-a-new-policy)
-- [Beenden des Schutzes für eine Dateifreigabe](backup-azure-files.md#stop-protecting-an-azure-file-share)
-- [Fortsetzen des Schutzes für eine Dateifreigabe](backup-azure-files.md#resume-protection-for-azure-file-share)
-- [Löschen von Sicherungsdaten](backup-azure-files.md#delete-backup-data)
+
+* [Überwachen von Aufträgen](backup-azure-files.md#monitor-jobs)
+* [Erstellen einer neuen Richtlinie](backup-azure-files.md#create-a-new-policy)
+* [Beenden des Schutzes für eine Dateifreigabe](backup-azure-files.md#stop-protecting-an-azure-file-share)
+* [Fortsetzen des Schutzes für eine Dateifreigabe](backup-azure-files.md#resume-protection-for-azure-file-share)
+* [Löschen von Sicherungsdaten](backup-azure-files.md#delete-backup-data)
 
 ### <a name="monitor-jobs"></a>Überwachen von Aufträgen
 
@@ -121,7 +129,7 @@ Sie können den Status aller Aufträge auf der Seite **Sicherungsaufträgen** ü
 
 So öffnen Sie die Seite **Sicherungsaufträge**
 
-- Öffnen Sie den zu überwachenden Recovery Services-Tresor, und klicken Sie im Menü des Recovery Services-Tresors auf **Aufträge** und anschließend auf **Sicherungsaufträge**.
+* Öffnen Sie den zu überwachenden Recovery Services-Tresor, und klicken Sie im Menü des Recovery Services-Tresors auf **Aufträge** und anschließend auf **Sicherungsaufträge**.
 
    ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/open-backup-jobs.png)
 
@@ -135,7 +143,7 @@ Sie können im Recovery Services-Tresor über **Sicherungsrichtlinien** eine neu
 
 So zeigen Sie die vorhandenen Sicherungsrichtlinien an
 
-- Öffnen Sie den gewünschten Recovery Services-Tresor, und klicken Sie im Menü des Recovery Services-Tresors auf **Sicherungsrichtlinien**. Alle Sicherungsrichtlinien werden aufgeführt.
+* Öffnen Sie den gewünschten Recovery Services-Tresor, und klicken Sie im Menü des Recovery Services-Tresors auf **Sicherungsrichtlinien**. Alle Sicherungsrichtlinien werden aufgeführt.
 
    ![Auswählen des zu überwachenden Auftrags](./media/backup-file-shares/list-of-backup-policies.png)
 
@@ -154,8 +162,8 @@ So erstellen Sie eine neue Sicherungsrichtlinie
 
 Wenn Sie sich für das Beenden des Schutzes für eine Azure-Dateifreigabe entscheiden, werden Sie gefragt, ob Sie die Wiederherstellungspunkte beibehalten möchten. Der Schutz für Azure-Dateifreigaben kann auf zwei Arten beendet werden:
 
-- Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte oder
-- Beenden aller zukünftigen Sicherungsaufträge und Beibehaltung der Wiederherstellungspunkte
+* Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte oder
+* Beenden aller zukünftigen Sicherungsaufträge und Beibehaltung der Wiederherstellungspunkte
 
 Unter Umständen fallen für die Aufbewahrung der Wiederherstellungspunkte im Speicher Gebühren an, da die von Azure Backup erstellten zugrundeliegenden Momentaufnahmen beibehalten werden. Der Vorteil der Beibehaltung von Wiederherstellungspunkten ist, dass Sie die Dateifreigabe bei Bedarf später wiederherstellen können. Informationen zu den Kosten, die durch die Beibehaltung der Wiederherstellungspunkte entstehen, finden Sie in der Preisübersicht. Wenn Sie alle Wiederherstellungspunkte löschen, kann die Dateifreigabe nicht mehr wiederhergestellt werden.
 
@@ -194,6 +202,8 @@ Sie können die Sicherung einer Dateifreigabe während des Auftrags zum Beenden 
 Beim folgenden Verfahren wird davon ausgegangen, dass der Sicherungsauftrag für den virtuellen Computer beendet wurde. Nach dem Beenden des Sicherungsauftrags sind die Optionen „Sicherung fortsetzen“ und „Sicherungsdaten löschen“ auf dem Dashboard für die Sicherungselemente verfügbar. Klicken Sie auf „Sicherungsdaten löschen“, und geben Sie den Namen der Dateifreigabe ein, um den Löschvorgang zu bestätigen. Geben Sie optional einen Grund oder einen Kommentar für den Löschvorgang an.
 
 ## <a name="see-also"></a>Siehe auch
+
 Weitere Informationen zu Azure-Dateifreigaben finden Sie in den folgenden Artikeln:
-- [Fragen zum Sichern von Azure Files](backup-azure-files-faq.md)
-- [Problembehandlung beim Sichern von Azure-Dateifreigaben](troubleshoot-azure-files.md)
+
+* [Fragen zum Sichern von Azure Files](backup-azure-files-faq.md)
+* [Problembehandlung beim Sichern von Azure-Dateifreigaben](troubleshoot-azure-files.md)

@@ -1,24 +1,24 @@
 ---
 title: 'Entscheidungswaldregression: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe des Moduls „Two-Class Averaged Perceptron“ (Gemitteltes Perzeptron mit zwei Klassen) in Azure Machine Learning Service ein Modell für maschinelles Lernen erstellen, das auf dem „Gemitteltes Perzeptron“-Algorithmus basiert.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mithilfe des Moduls „Two-Class Averaged Perceptron“ (Gemitteltes Perzeptron mit zwei Klassen) in Azure Machine Learning ein Modell für maschinelles Lernen erstellen, das auf dem „Gemitteltes Perzeptron“-Algorithmus basiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693644"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490365"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>„Two-Class Averaged Perceptron“-Modul
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Modell für maschinelles Lernen zu erstellen, das auf dem „Gemitteltes Perzeptron“-Algorithmus basiert.  
   
@@ -61,4 +61,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

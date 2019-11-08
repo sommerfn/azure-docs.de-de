@@ -3,18 +3,18 @@ title: Übermitteln von Azure Media Clipper-Beschneidungsaufträgen | Microsoft-
 description: Schritte zum Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper
 services: media-services
 keywords: Beschneiden;Subclip;Codierung;Medien
-author: dbgeorge
-manager: jasonsue
-ms.author: dwgeo
+author: Juliako
+manager: femila
+ms.author: juliako
 ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f0dc6879ccbb22dbebd57de98e4610cd593318db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04d0d2bb8939c8036ec6817c58f9ac2fbb3acd72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61242847"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684980"
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper 
 

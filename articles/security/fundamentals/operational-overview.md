@@ -4,7 +4,7 @@ description: Dieser Artikel bietet eine Übersicht über die Azure-Betriebssiche
 services: security
 documentationcenter: na
 author: unifycloud
-manager: barbkess
+manager: rkarlin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2018
+ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899823"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643784"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 
@@ -34,7 +34,7 @@ Das IT-Betriebsteam ist für die Verwaltung der Rechenzentrumsinfrastruktur, der
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-[Azure Monitor](/azure/azure-monitor/overview) erfasst Daten aus verwalteten Quellen in zentralen Datenspeichern. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. 
+[Azure Monitor](/azure/azure-monitor/overview) erfasst Daten aus verwalteten Quellen in zentralen Datenspeichern. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.
 
 Sie können Daten aus einer Vielzahl von Quellen zusammenführen und Daten aus Ihren Azure-Diensten mit Ihrer vorhandenen lokalen Umgebung kombinieren. Azure Monitor-Protokolle trennt zudem die Datensammlung klar von der Aktion, die für diese Daten ausgeführt wird, sodass alle Aktionen für alle Arten von Daten verfügbar sind.
 
@@ -44,9 +44,9 @@ Sie können Daten aus einer Vielzahl von Quellen zusammenführen und Daten aus I
 
 ### <a name="backup"></a>Backup
 
-[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Sicherungslösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. 
+[Azure Backup](/azure/backup/backup-introduction-to-azure-backup) ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Sicherungslösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung.
 
-Azure Backup bietet verschiedene Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Azure Recovery Services-Tresor in Azure zu sichern. 
+Azure Backup bietet verschiedene Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Azure Recovery Services-Tresor in Azure zu sichern.
 
 Weitere Informationen finden Sie in der [Tabelle mit den Azure Backup-Komponenten](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use).
 
@@ -102,7 +102,7 @@ Leistungsprobleme in Ihrer Cloud-App können Ihr Unternehmen beeinträchtigen. D
 
 [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) ist ein grundlegendes Tool zum Überwachen von Diensten, die in Azure ausgeführt werden. Dieses Tool bietet Ihnen Daten auf Infrastrukturebene über den Durchsatz eines Diensts und über dessen Umgebung. Wenn Sie Ihre Apps vollständig in Azure verwalten und entscheiden müssen, ob Sie Ihre Ressourcen zentral hoch- oder herunterskalieren, bietet Azure Monitor den richtigen Ausgangspunkt.
 
-Sie können anhand der Überwachungsdaten auch umfassende Erkenntnisse zu Ihrer Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten. 
+Sie können anhand der Überwachungsdaten auch umfassende Erkenntnisse zu Ihrer Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
 
 Azure Monitor enthält die folgenden Komponenten.
 
@@ -154,13 +154,15 @@ Weitere Informationen finden Sie unter [Konfigurieren von Network Watcher](/azur
 
 ## <a name="cloud-service-provider-access-transparency"></a>Transparenz für den Clouddienstanbieter-Zugriff
 
-[Kunden-Lockbox für Microsoft Azure](https://azure.microsoft.com/blog/approve-audit-support-access-requests-to-vms-using-customer-lockbox-for-azure/) ist ein in das Azure-Portal integrierter Dienst, der Ihnen in dem seltenen Fall, dass ein Microsoft-Supportmitarbeiter zum Beheben eines Problems Zugriff auf Ihre Daten benötigt, explizite Kontrolle verleiht. Es gibt sehr wenige Situationen, wie z.B. das Debuggen eines RAS-Problems, in denen ein Microsoft-Supportmitarbeiter erhöhte Berechtigungen zum Beheben dieses Problems benötigt. In solchen Fällen verwenden Microsoft-Techniker den Just-In-Time-Zugriffsdienst, der begrenzte, zeitlich beschränkte Autorisierung mit auf den Dienst beschränktem Zugriff bereitstellt.  
+[Kunden-Lockbox für Microsoft Azure](customer-lockbox-overview.md) ist ein in das Azure-Portal integrierter Dienst, der Ihnen in dem seltenen Fall, dass ein Microsoft-Supportmitarbeiter zum Beheben eines Problems Zugriff auf Ihre Daten benötigt, explizite Kontrolle verleiht.
+Es gibt sehr wenige Situationen, wie z.B. das Debuggen eines RAS-Problems, in denen ein Microsoft-Supportmitarbeiter erhöhte Berechtigungen zum Beheben dieses Problems benötigt. In solchen Fällen verwenden Microsoft-Techniker den Just-In-Time-Zugriffsdienst, der begrenzte, zeitlich beschränkte Autorisierung mit auf den Dienst beschränktem Zugriff bereitstellt.  
 Microsoft hat zwar immer die Zustimmung des Kunden für den Zugriff eingeholt, mit Kunden Lockbox haben Sie jetzt jedoch die Möglichkeit, solche Anforderungen aus dem Azure-Portal zu überprüfen und zu genehmigen oder zu verweigern. Microsoft-Supporttechniker erhalten keinen Zugriff, bis Sie die Anforderung genehmigen.
 
 ## <a name="standardized-and-compliant-deployments"></a>Standardisierte und konforme Bereitstellungen
 
 [Azure Blueprints](/azure/governance/blueprints/overview) ermöglicht es Cloudarchitekten und zentralen IT-Gruppen, eine wiederholbare Gruppe von Azure-Ressourcen zu definieren, mit der die Standards, Muster und Anforderungen einer Organisation implementiert und erzwungen werden.  
-Dadurch können DevOps-Teams schnell neue Umgebungen erstellen und einrichten und sich dabei darauf verlassen, dass die verwendete Infrastruktur mit den Organisationsanforderungen konform ist. Blaupausen bieten eine deklarative Möglichkeit zum Orchestrieren der Bereitstellung mehrerer Ressourcenvorlagen und anderer Artefakte wie etwa: 
+Dadurch können DevOps-Teams schnell neue Umgebungen erstellen und einrichten und sich dabei darauf verlassen, dass die verwendete Infrastruktur mit den Organisationsanforderungen konform ist.
+Blaupausen bieten eine deklarative Möglichkeit zum Orchestrieren der Bereitstellung mehrerer Ressourcenvorlagen und anderer Artefakte wie etwa:
 
 - Rollenzuweisungen
 - Richtlinienzuweisungen
@@ -189,6 +191,6 @@ Erfahrene DevOps-Praktiker nutzen beispielsweise die folgenden Vorgehensweisen. 
 
 Informationen zur Sicherheits- und Überwachungslösung finden Sie in den folgenden Artikeln:
 
-- [Sicherheit und Konformität](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Sicherheit und Konformität](https://azure.microsoft.com/overview/trusted-cloud/)
 - [Azure Security Center](/azure/security-center/security-center-intro)
 - [Azure Monitor](/azure/azure-monitor/overview)

@@ -1,7 +1,7 @@
 ---
 title: Referenz des Moduls „Feature Hashing“
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Feature Hashing“ im Azure Machine Learning-Dienst verwenden, um Textdaten in Merkmale zu zerlegen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Feature Hashing“ in Azure Machine Learning verwenden, um Textdaten in Merkmale zu zerlegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170875"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497835"
 ---
 # <a name="feature-hashing-module-reference"></a>Referenz des Moduls „Feature Hashing“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Designer (Vorschauversion) enthalten ist.
 
 Verwenden Sie das Modul „Feature Hashing“, um einen Datenstrom aus englischem Text in eine Reihe von ganzzahligen Merkmalen umzuwandeln. Anschließend können Sie diese gehashte Merkmalssammlung an einen Machine Learning-Algorithmus übergeben, um ein Textanalysemodell zu trainieren.
 
@@ -73,7 +73,7 @@ Numerische Ausgaben ermöglichen auch die Verwendung gängiger Machine Learning-
 
 ## <a name="configure-the-feature-hashing-module"></a>Konfigurieren des Moduls „Feature Hashing“
 
-1.  Fügen Sie dem Experiment in einer visuellen Benutzeroberfläche das Modul „Feature Hashing“ hinzu.
+1.  Fügen Sie das Modul „Feature Hashing“ zu Ihrer Pipeline im Designer hinzu.
 
 1. Verbinden Sie das Dataset, das den zu analysierenden Text enthält.
 
@@ -94,7 +94,7 @@ Numerische Ausgaben ermöglichen auch die Verwendung gängiger Machine Learning-
 
     Wenn Sie z.B. 3 eingeben, werden Unigramme, Bigramme und Trigramme erstellt.
 
-1. Führen Sie das Experiment aus.
+1. Ausführen der Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -131,4 +131,4 @@ Der optimale Satz von Vorverarbeitungsmethoden, der in einer Lösung zum Einsatz
 
 ## <a name="next-steps"></a>Nächste Schritte
             
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

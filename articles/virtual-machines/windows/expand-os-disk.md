@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 692046070ffc04942a5d8a73825f6cb59e462f8b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 12fa8cb09a9864b49c9368462ae3d5ca1d88f2c9
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147208"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749412"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Erweitern des Betriebssystemlaufwerks eines virtuellen Computers
 
@@ -37,7 +37,7 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 > 
 
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 
 ## <a name="resize-a-managed-disk"></a>Ändern der Größe eines verwalteten Datenträgers

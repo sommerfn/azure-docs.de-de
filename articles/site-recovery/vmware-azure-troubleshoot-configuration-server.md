@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725566"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748553"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -122,7 +122,7 @@ Wenn Sie andere Anwendungen als den Konfigurationsserver auf dem virtuellen Comp
 
 Der Konfigurationsserver ist nur für seinen jeweiligen Zweck vorgesehen. Der Einsatz als gemeinsam genutzter Server wird nicht unterstützt. 
 
-Weitere Informationen finden Sie in den häufig gestellten Fragen zur Konfiguration unter [Bereitstellen eines Konfigurationsservers](vmware-azure-deploy-configuration-server.md#faq). 
+Weitere Informationen finden Sie in den häufig gestellten Fragen zur Konfiguration unter [Bereitstellen eines Konfigurationsservers](vmware-azure-deploy-configuration-server.md#faqs). 
 
 ## <a name="remove-the-stale-entries-for-protected-items-from-the-configuration-server-database"></a>Entfernen der veralteten Einträge für geschützte Elemente aus der Datenbank des Konfigurationsservers 
 
@@ -185,7 +185,7 @@ Um den Konfigurationsserver zu aktualisieren, führen Sie das [vereinheitlichte 
 
 ## <a name="azure-active-directory-application-creation-failure"></a>Fehler beim Erstellen der Azure Active Directory-Anwendung
 
-Sie haben keine ausreichenden Berechtigungen, um eine Anwendung in Azure Active Directory (AAD) mit der Vorlage [Open Virtualization Application (OVA)](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template
+Sie haben keine ausreichenden Berechtigungen, um eine Anwendung in Azure Active Directory (AAD) mit der Vorlage [Open Virtualization Application (OVA)](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template
 ) zu erstellen.
 
 Um das Problem zu beheben, melden Sie sich beim Azure-Portal an, und führen Sie einen der folgenden Schritte aus:

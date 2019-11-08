@@ -1,5 +1,5 @@
 ---
-title: Visuelles Überwachen von Azure Data Factory | Microsoft-Dokumentation
+title: Visuelles Überwachen von Azure Data Factory
 description: Erfahren Sie, wie Sie Azure Data Factorys visuell überwachen.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029142"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684641"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Visuelles Überwachen von Azure Data Factory
 Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst. Mit diesem Dienst können Sie in der Cloud datengesteuerte Workflows zur Orchestrierung und Automatisierung der Datenverschiebung und Datentransformation erstellen. Durch Verwendung von Azure Data Factory haben Sie folgende Möglichkeiten:

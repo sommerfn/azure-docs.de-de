@@ -1,22 +1,22 @@
 ---
-title: 'Senden und Empfangen von Ereignissen mit Python: Azure Event Hubs'
-description: Diese exemplarische Vorgehensweise zeigt, wie Sie Python-Skripts erstellen und ausführen, die Ereignisse an Azure Event Hubs senden oder von Azure Event Hubs empfangen.
+title: 'Schnellstart: Senden und Empfangen von Ereignissen mit Python: Azure Event Hubs'
+description: 'Schnellstart: Diese exemplarische Vorgehensweise zeigt, wie Sie Python-Skripts erstellen und ausführen, die Ereignisse an Azure Event Hubs senden oder von Azure Event Hubs empfangen.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 10/11/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 330a7f5dc325c707b5be7ce9f9b3242a1d4c9547
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428884"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720548"
 ---
-# <a name="send-and-receive-events-with-event-hubs-using-python"></a>Senden und Empfangen von Ereignissen mit Azure Event Hubs mithilfe von Python
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>Schnellstart: Senden und Empfangen von Ereignissen mit Azure Event Hubs mithilfe von Python
 
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten von verteilter Software und verteilten Geräten verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Weitere Informationen zu Event Hubs finden Sie unter [Azure Event Hubs](event-hubs-about.md) und [Features und Terminologie in Azure Event Hubs](event-hubs-features.md).
 
@@ -42,7 +42,7 @@ Zum Durchführen dieser Schnellstartanleitung benötigen Sie Folgendes:
   > [!NOTE]
   > Dieser Code in diesem Schnellstart verwendet die aktuelle stabile Version 1.3.1 des Event Hubs SDK. Beispielcode, der die Vorschauversion des SDK verwendet, finden Sie unter [https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples).
 
-## <a name="send-events"></a>Senden von Ereignissen
+## <a name="send-events"></a>Senden von Ereignisse
 
 Um eine Python-Anwendung zu erstellen, die Ereignisse an einen Event Hub sendet:
 

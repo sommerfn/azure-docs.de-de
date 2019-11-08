@@ -1,5 +1,5 @@
 ---
-title: Azure-Support für VMs der Generation 2 (Vorschau) | Microsoft-Dokumentation
+title: Azure-Support für VMs der Generation 2 | Microsoft-Dokumentation
 description: 'Übersicht: Azure-Support für VMs der Generation 2'
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,31 +11,26 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: c85e02b01e11b94d9e23e669bf2f6fcde7f2c1de
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 63cf3301a08ce4073998c5d281f155a6b3eefe4d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064014"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491923"
 ---
-# <a name="support-for-generation-2-vms-preview-on-azure"></a>Unterstützung für VMs der Generation 2 (Vorschau) in Azure
+# <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
-> [!IMPORTANT]
-> Der Azure-Support für VMs der Generation 2 (Vorschau) befindet sich derzeit in der Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Die Unterstützung für virtuelle Computer (VMs) der Generation 2 ist jetzt in Azure verfügbar. Sie können die Generation eines virtuellen Computers nach der Erstellung nicht mehr ändern, deshalb sollten Sie die Aspekte auf dieser Seite genauestens prüfen, bevor Sie eine Generation auswählen.
 
-Die Unterstützung für virtuelle Computer (VMs) der Generation 2 ist jetzt als Vorschauversion in Azure verfügbar. Sie können die Generation eines virtuellen Computers nach der Erstellung nicht mehr ändern, deshalb sollten Sie die Aspekte auf dieser Seite genauestens prüfen, bevor Sie eine Generation auswählen. 
-
-VMs der Generation 2 unterstützen wichtige Features, die bei VMs der Generation 1 nicht unterstützt werden. Zu diesen Features gehören mehr Speicher, Intel Software Guard Extensions (Intel SGX) und virtualisierter persistenter Speicher (vPMEM). VMs der Generation 2 weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Features und Funktionen](#features-and-capabilities).
+VMs der Generation 2 unterstützen wichtige Features, die bei VMs der Generation 1 nicht unterstützt werden. Zu diesen Features gehören mehr Speicher, Intel Software Guard Extensions (Intel SGX) und virtualisierter persistenter Speicher (vPMEM). VMs der Generation 2, die lokal ausgeführt werden, weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Features und Funktionen](#features-and-capabilities).
 
 VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht mehr die BIOS-basierte Architektur von VMs der Generation 1. Im Vergleich zu VMs der Generation 1 können VMs der Generation 2 eine verbesserte Start- und Installationszeit aufweisen. Einen Überblick über VMs der Generation 2 und einige der Unterschiede zwischen Generation 1 und Generation 2 finden Sie unter [Sollte ich einen virtuellen Computer der Generation 1 oder 2 in Hyper-V erstellen?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>VM-Größen der Generation 2
 
-VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt. Azure bietet jetzt Unterstützung für die Vorschauversion von Generation 2 für die folgenden ausgewählten VM-Serien:
+VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt. Azure bietet jetzt Unterstützung für die Generation 2 für die folgenden ausgewählten VM-Serien:
 
 * [B-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -65,7 +60,6 @@ VMs der Generation 2 unterstützen die folgenden Marketplace-Images:
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04+
-
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokale VMs und Azure-VMs der Generation 2 im Vergleich
 

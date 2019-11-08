@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 08/07/2019
-ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: e834c55ec35195ff627176603c7611abbf6adf1c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035558"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497510"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -100,6 +100,7 @@ Die folgende Tabelle enthält einige der wichtigsten Azure Machine Learning-Vorg
 | ---- |:----:|:----:|:----:|
 | Arbeitsbereich erstellen | ✓ | ✓ | |
 | Freigeben des Arbeitsbereichs | ✓ | |  |
+| Upgraden des Arbeitsbereichs auf Enterprise Edition | ✓ | |
 | Erstellen eines Computeziels | ✓ | ✓ | |
 | Anfügen eines Computeziels | ✓ | ✓ | |
 | Anfügen von Datenspeichern | ✓ | ✓ | |

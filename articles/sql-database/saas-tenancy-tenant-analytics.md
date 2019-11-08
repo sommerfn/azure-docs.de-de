@@ -1,5 +1,5 @@
 ---
-title: Ausführen mandantenübergreifender Analysen mit extrahierten Daten| Microsoft-Dokumentation
+title: Mandantenübergreifende Analysen mit extrahierten Daten
 description: Mandantenübergreifende Analyseabfragen mithilfe von Daten, die in einer App mit einem Mandanten aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
-ms.openlocfilehash: 2c24a87377eb4b893cbcae1b9a36522e586a6d56
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570160"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826383"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten
  

@@ -1,7 +1,7 @@
 ---
 title: 'Evaluate Model: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Evaluate Model“ (Auswerten des Modells) in Azure Machine Learning Service verwenden können, um die Qualität eines trainierten Modells zu messen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Evaluate Model“ (Auswerten des Modells) in Azure Machine Learning verwenden können, um die Qualität eines trainierten Modells zu messen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 0ad4ceedf9c1d65339c9e4aabebc0a47475ed568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693799"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497909"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells messen. Sie stellen ein Dataset zur Verfügung, das die anhand eines Modells generierten Ergebnisse enthält. Anschließend berechnet das Modul **Evaluate Model** eine Reihe branchenüblicher Auswertungsmetriken.
   
@@ -69,7 +69,7 @@ Dieses Feature ist nützlich, da Sie die Ergebnisse zweier verschiedener Modelle
 Klicken Sie nach der Ausführung von **Evaluate Model** mit der rechten Maustaste auf das Modul, und wählen Sie **Evaluation results** (Auswertungsergebnisse) aus, um die Ergebnisse anzuzeigen. Ihre Möglichkeiten:
 
 + Speichern der Ergebnisse als Dataset, damit Sie sie mit anderen Tools einfacher analysieren können
-+ Generieren einer Visualisierung auf der Benutzeroberfläche
++ Generieren einer Visualisierung im Designer
 
 Wenn Sie Datasets mit beiden Eingaben von **Evaluate Model** verbinden, enthalten die Ergebnisse Metriken für beide Datasets bzw. beide Modelle.
 Das Modell oder die Daten, die an den linken Port angefügt wurden, werden zuerst im Bericht dargestellt, gefolgt von den Metriken für das Dataset oder das Modell, das an den rechten Port angefügt wurde.  
@@ -126,4 +126,4 @@ Die für Regressionsmodelle zurückgegebenen Metriken sind im Allgemeinen so ges
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

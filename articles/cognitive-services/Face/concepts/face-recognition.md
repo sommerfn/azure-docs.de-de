@@ -1,7 +1,7 @@
 ---
 title: Konzepte der Gesichtserkennung
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie etwas über die Konzepte der Gesichtserkennung.
+description: In diesem Artikel werden Konzepte der Vorgänge Verify, Find Similar, Group und Identify für die Gesichtserkennung und die zugrunde liegenden Datenstrukturen erläutert.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pafarley
-ms.openlocfilehash: fa38c492530cb8938e49bc15e13fdd39ed5b6f1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 164e5a8c107f445b376d26f9be7db92a7983b0d3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65890885"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743081"
 ---
 # <a name="face-recognition-concepts"></a>Konzepte der Gesichtserkennung
 

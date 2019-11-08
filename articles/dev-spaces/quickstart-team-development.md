@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Kubernetes-Entwicklung im Team mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 15833294e1dd5b75251ad54fa1f33bc4ed5e2c20
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9bdd52f2c120d338859259b046f7f4b97bbc4eed
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035165"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585196"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces
 
@@ -31,7 +31,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 - Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 - [Azure-CLI installiert](/cli/azure/install-azure-cli?view=azure-cli-latest).
-- [Helm 2.13 oder höher installiert](https://github.com/helm/helm/blob/master/docs/install.md).
+- [Helm 2.13 oder höher installiert][helm-installed].
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
 
@@ -239,5 +239,5 @@ Erfahren Sie, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer, containe
 > [!div class="nextstepaction"]
 > [Arbeiten mit mehreren Containern und Teamentwicklung](multi-service-nodejs.md)
 
-
+[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [supported-regions]: about.md#supported-regions-and-configurations

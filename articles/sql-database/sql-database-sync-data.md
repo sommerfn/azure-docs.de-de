@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
+title: Datensynchronisierung
 description: Diese Übersicht bietet eine Einführung in die Azure SQL-Datensynchronisierung.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 7ff7712130372dcfd277750e881cccce23b36465
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d69378b2e791732fb478a66f226c6269e2c515f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648357"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820817"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 

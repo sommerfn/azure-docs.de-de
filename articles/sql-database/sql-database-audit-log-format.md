@@ -1,5 +1,5 @@
 ---
-title: Überwachungsprotokollformate in SQL-Datenbank | Microsoft-Dokumentation
+title: Format der Überwachungsprotokolle
 description: Erfahren Sie mehr über die Struktur von Überwachungsprotokollen in SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 19795d5dc3998f601de8121176e52ef9dc83ee47
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 389404f59b5a0cba1acd7aa097ddd3dd929d8082
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958455"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821993"
 ---
 # <a name="sql-database-audit-log-format"></a>Überwachungsprotokollformate in SQL-Datenbank
 

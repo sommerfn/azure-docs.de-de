@@ -1,19 +1,19 @@
 ---
-title: Datenbankmigrationstool für Azure Cosmos DB
-description: Erfahren Sie, wie Sie das Open-Source-basierte Azure Cosmos DB-Datenmigrationstool verwenden, um Daten aus verschiedenen Quellen (beispielsweise MongoDB, SQL Server, Azure Table Storage, Amazon DynamoDB, CSV- und JSON-Dateien) in Azure Cosmos DB zu importieren. CSV-zu-JSON-Konvertierung.
+title: 'Tutorial: Datenbankmigrationstool für Azure Cosmos DB'
+description: 'Tutorial: Erfahren Sie, wie Sie das Open-Source-basierte Azure Cosmos DB-Datenmigrationstool verwenden, um Daten aus verschiedenen Quellen (beispielsweise MongoDB, SQL Server, Azure Table Storage, Amazon DynamoDB, CSV- und JSON-Dateien) in Azure Cosmos DB zu importieren. CSV-zu-JSON-Konvertierung.'
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 11/05/2019
 ms.author: dech
-ms.openlocfilehash: 0981a0810ee64f78443512d794d172a69fb54494
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1d25a2c9a3fda48c2f7de01563e01dd0c7de7762
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617009"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721143"
 ---
-# <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
+# <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Tutorial: Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 
 In diesem Tutorial erfahren Sie, wie Sie das Azure Cosmos DB-Datenmigrationstool verwenden, mit dem Sie Daten aus verschiedenen Quellen in Azure Cosmos-Container und -Tabellen importieren können. Sie können Daten aus JSON-Dateien, CSV-Dateien, SQL-, MongoDB-, Azure Table Storage-, Amazon DynamoDB- und sogar Azure Cosmos DB-SQL-API-Sammlungen importieren. Sie migrieren diese Daten zu Sammlungen und Tabellen, die in Azure Cosmos DB verwendet werden können. Das Datenmigrationstool kann auch für die Migration von einer Sammlung mit einer einzelnen Partition zu einer Sammlung mit mehreren Partitionen für die SQL-API verwendet werden.
 

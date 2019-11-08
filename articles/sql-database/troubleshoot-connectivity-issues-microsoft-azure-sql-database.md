@@ -1,19 +1,20 @@
 ---
-title: Beheben von Verbindungsproblemen mit Microsoft Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Behandeln von Konnektivitätsproblemen
 description: Erfahren Sie, wie Sie in Azure SQL-Datenbank Verbindungsprobleme beheben.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
+ms.custom: seo-lt-2019
 author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 9de6d85e1fc54d60f999cfa18665067b3998a432
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390661"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807273"
 ---
 # <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>Beheben von Verbindungsproblemen mit Microsoft Azure SQL-Datenbank
 
@@ -28,9 +29,9 @@ Wenn keine Verbindung mit Azure SQL-Datenbank hergestellt werden kann, erhalten 
 So lösen Sie dieses Problem:
 
 1. Informationen zu bekannten Ausfällen finden Sie im [Microsoft Azure-Dienstdashboard](https://status.azure.com/status). 
-2. Wenn es keine bekannten Ausfälle gibt, navigieren Sie zur [Website des Microsoft Azure-Supports](http://azure.microsoft.com/support/options), um eine Supportanfrage zu öffnen.
+2. Wenn es keine bekannten Ausfälle gibt, navigieren Sie zur [Website des Microsoft Azure-Supports](https://azure.microsoft.com/support/options), um eine Supportanfrage zu öffnen.
 
-Weitere Informationen finden Sie unter [Behandlung von Fehlern des Typs „Die Datenbank auf dem Server ist zurzeit nicht verfügbar“](https://docs.microsoft.com/azure/sql-database/sql-database-troubleshoot-common-connection-issues#troubleshoot-transient-errors).
+Weitere Informationen finden Sie unter [Behandlung von Fehlern des Typs „Die Datenbank auf dem Server ist zurzeit nicht verfügbar“](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors).
 
 ## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit SQL Server
 
@@ -197,7 +198,7 @@ Verwenden Sie zum Beheben dieses Problems die folgenden Methoden:
   2. Bestimmen Sie den **Eingabepuffer** für „Blockiert andere Prozesse“.
   3. Optimieren Sie die Abfrage „Blockiert andere Prozesse“.
 
-    Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
+    Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
 
 * Wenn die Datenbank trotz Berücksichtigung von Blockierungen und zeitintensiven Abfragen konsistent an ihre Grenzen stößt, sollten Sie ein Upgrade auf eine der neuen Vorschau-Editionen (z. B. [Standard- oder Premium-Edition](https://azure.microsoft.com/pricing/details/sql-database/)) in Betracht ziehen.
 
@@ -275,7 +276,7 @@ Wenn diese Fehlermeldung wiederholt auftritt, führen Sie die folgenden Schritte
 
 Sie sollten auch Batchverarbeitung für Ihre Abfragen in Erwägung ziehen. Weitere Informationen finden Sie unter [Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance).
 
-Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
+Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>Fehler 40551: Die Sitzung wurde aufgrund übermäßiger TEMPDB-Auslastung beendet
 
@@ -311,7 +312,7 @@ Probieren Sie die folgenden Methoden aus, um dieses Problem zu beheben:
 
 Um dieses Problem zu umgehen, versuchen Sie, die Abfrage zu optimieren.
 
-Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
+Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der Cloud einwandfrei ausgeführt?](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)
 
 
 ### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>Der von der Anmeldung angeforderte „Master“ der Datenbank kann nicht geöffnet werden. Fehler bei der Anmeldung.
@@ -336,7 +337,7 @@ System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
 ClientConnectionId:<Client connection ID>
 ```
 
-Wenn die Ausnahme durch Abfrageprobleme ausgelöst wird, ähnelt der Aufrufstapel dem folgenden (beachten Sie den Verweis auf die **SqlCommand**-Klasse). [Optimieren Sie Ihre Abfragen](http://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx) in dieser Situation.
+Wenn die Ausnahme durch Abfrageprobleme ausgelöst wird, ähnelt der Aufrufstapel dem folgenden (beachten Sie den Verweis auf die **SqlCommand**-Klasse). [Optimieren Sie Ihre Abfragen](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx) in dieser Situation.
 
 ```
   at System.Data.SqlClient.SqlCommand.ExecuteReader()
@@ -364,7 +365,7 @@ Siehe [Abrufen von SQL Server-Verbindungsinformationen](https://docs.microsoft.c
 
 5. Stellen Sie als bewährte Methode sicher, dass die Wiederholungslogik vorhanden ist. Weitere Informationen zur Wiederholungslogik finden Sie unter [Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues).
 
-Wenn Ihr Problem mit diesen Schritten nicht behoben werden kann, versuchen Sie, weitere Daten zu erfassen, und wenden Sie sich dann an den Support. Wenn es sich bei Ihrer Anwendung um einen Clouddienst handelt, aktivieren Sie die Protokollierung. Dieser Schritt gibt einen UTC-Zeitstempel des Fehlers zurück. Außerdem gibt SQL Azure die Ablaufverfolgungs-ID zurück. [Microsoft Customer Support Services](http://azure.microsoft.com/support/options/) kann diese Informationen verwenden. 
+Wenn Ihr Problem mit diesen Schritten nicht behoben werden kann, versuchen Sie, weitere Daten zu erfassen, und wenden Sie sich dann an den Support. Wenn es sich bei Ihrer Anwendung um einen Clouddienst handelt, aktivieren Sie die Protokollierung. Dieser Schritt gibt einen UTC-Zeitstempel des Fehlers zurück. Außerdem gibt SQL Azure die Ablaufverfolgungs-ID zurück. [Microsoft Customer Support Services](https://azure.microsoft.com/support/options/) kann diese Informationen verwenden. 
 
 Weitere Informationen zum Aktivieren der Protokollierung finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/).
 

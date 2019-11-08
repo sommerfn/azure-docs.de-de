@@ -4,15 +4,16 @@ description: Die API ruft eine zusammengefasste Liste der Angebote unter einem H
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 67109c3605ea96123ff41cb88d5ac328a09991e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935330"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819620"
 ---
 <a name="retrieve-offers"></a>Abrufen von Angeboten
 ===============
@@ -27,7 +28,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 
 | **Name**         |  **Beschreibung**                         |  **Datentyp** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Herausgeber-ID, z.B. `contoso` |   string    |
+|  publisherId     | Herausgeber-ID, z.B. `contoso` |   Zeichenfolge    |
 |  api-version     | Neueste Version der API                    |    Date        |
 |  |  |
 
@@ -37,8 +38,8 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 
 |  **Name**        |         **Wert**       |
 |  --------------- |       ----------------  |
-|  Content-Typ    | `application/json`      |
-|  Autorisierung   | `Bearer YOUR_TOKEN`     |
+|  Content-Type    | `application/json`      |
+|  Authorization   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
 

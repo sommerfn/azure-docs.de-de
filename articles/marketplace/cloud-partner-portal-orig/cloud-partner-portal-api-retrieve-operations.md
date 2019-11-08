@@ -4,15 +4,16 @@ description: Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für d
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 1fbcc1d50dbc4488c4123be64e85de612233ccc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935777"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819590"
 ---
 <a name="retrieve-operations"></a>Abrufen von Vorgängen
 ===================
@@ -33,10 +34,10 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 
 |  **Name**          |      **Beschreibung**                                                                                           | **Datentyp** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Herausgeber-ID, z.B. `Contoso`                                                                   |  string       |
-|  offerId           |  Angebots-ID                                                                                              |  string       |
+|  publisherId       |  Herausgeber-ID, z.B. `Contoso`                                                                   |  Zeichenfolge       |
+|  offerId           |  Angebots-ID                                                                                              |  Zeichenfolge       |
 |  operationId       |  GUID, die den Vorgang im Angebot eindeutig identifiziert. Die Vorgangs-ID kann mithilfe dieser API abgerufen werden. Sie wird auch im HTTP-Header der Antwort für lang ausgeführte Vorgänge zurückgegeben, wie z.B. bei der [API zum Veröffentlichen von Angeboten](./cloud-partner-portal-api-publish-offer.md).  |   Guid   |
-|  filteredStatus    | Optionaler Abfrageparameter zum Filtern nach dem Status (z.B. `running`) in der von dieser API zurückgegebenen Sammlung.  |   string |
+|  filteredStatus    | Optionaler Abfrageparameter zum Filtern nach dem Status (z.B. `running`) in der von dieser API zurückgegebenen Sammlung.  |   Zeichenfolge |
 |  api-version       | Neueste Version der API                                                                                           |    Date      |
 |  |  |  |
 
@@ -46,8 +47,8 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 
 |  **Name**          |  **Wert**           |
 |  ---------------   | -------------------- |
-|  Content-Typ      | `application/json`   |
-|  Autorisierung     | `Bearer YOUR_TOKEN`  |
+|  Content-Type      | `application/json`   |
+|  Authorization     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 

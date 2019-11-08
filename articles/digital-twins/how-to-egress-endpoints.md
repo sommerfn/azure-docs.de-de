@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959113"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822274"
 ---
 # <a name="egress-and-endpoints"></a>Ausgang und Endpunkte
 
@@ -61,7 +61,7 @@ Ereignisse werden von IoT-Objekten wie Geräte und Sensoren zur Verarbeitung dur
 Weitere Informationen zum Event Grid-Ereignisschema:
 
 - Lesen Sie den Artikel [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md).
-- Lesen Sie die Referenz zur [EventGridEvent-Schnittstelle](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
+- Lesen Sie die Referenz zur [EventGridEvent-Schnittstelle](https://docs.microsoft.com/javascript/api/@azure/eventgrid/eventgridevent?view=azure-node-latest).
 
 ## <a name="event-types"></a>Ereignistypen
 

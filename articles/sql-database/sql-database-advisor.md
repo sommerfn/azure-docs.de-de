@@ -1,5 +1,5 @@
 ---
-title: Empfehlungen zur Leistung – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Empfehlungen zur Leistung
 description: Azure SQL-Datenbank stellt Empfehlungen für Ihre SQL-Datenbanken bereit, die die aktuelle Abfrageleistung verbessern können.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: 08def3ac2fd94f01586bc690d867c04758b8856b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569529"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811385"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Empfehlungen zur Leistung für SQL-Datenbank
 

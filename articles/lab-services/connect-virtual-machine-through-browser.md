@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
-ms.openlocfilehash: 22d7afa889994068c3f906d0b9adbc1a74bc4839
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1bb5d979ff7c9fe6e2afec4c7ebd81649b4488e3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642014"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581228"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>Herstellen einer Verbindung mit Ihren virtuellen Computern über einen Browser 
 
@@ -26,8 +26,6 @@ DevTest Labs und [Azure Bastion](https://docs.microsoft.com/azure/bastion/) sind
 
 Nach dem Aktivieren der *Browserverbindung* können Benutzer des Labs über einen Browser auf virtuelle Computer zugreifen.  
 
-> [!NOTE]
-> Das Aktivieren der Browserverbindung auf Lab-VMs ist in der Vorschauphase.
 
 ## <a name="create-a-lab-virtual-machine"></a>Erstellen einer Lab-VM
 

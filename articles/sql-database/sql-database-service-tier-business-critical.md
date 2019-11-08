@@ -1,5 +1,5 @@
 ---
-title: Tarif „Unternehmenskritisch“ – Azure SQL-Datenbank-Dienst | Microsoft-Dokumentation
+title: Dienstebene „Unternehmenskritisch“
 description: Informationen zum Tarif „Unternehmenskritisch“ für Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: ef1f420e4c4dbd38ad703eb0573fae36af078edb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496238"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818245"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Tarif „Unternehmenskritisch“ – Azure SQL-Datenbank
 

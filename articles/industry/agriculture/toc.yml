@@ -1,0 +1,40 @@
+- name: Übersicht
+  items:
+    - name: Was ist FarmBeats?
+      href: overview.md
+- name: Lernprogramme
+  expanded: true
+  items:
+    - name: Struktur für Bodenfeuchtigkeit generieren
+      href: generate-soil-moisture-map.md
+    - name: Verlaufstelemetriedaten erfassen
+      href: ingest-historical-telemetry-data.md
+- name: Konzepte
+  items:
+    - name: Integrationsmuster
+      href: integration-patterns.md
+    - name: Partnerintegration für Sensor
+      href: sensor-partner-integration.md
+    - name: Partnerintegration für Bilder
+      href: imagery-partner-integration.md
+- name: Anleitungen
+  items:
+    - name: FarmBeats bereitstellen
+      href: prepare-for-deployment.md
+    - name: Bauernhöfe verwalten
+      href: manage-farms.md
+    - name: Sensordaten abrufen
+      href: get-sensor-data-from-sensor-partner.md
+    - name: Karten generieren
+      href: generate-maps.md
+    - name: Regeln konfigurieren und Warnungen verwalten
+      href: configure-rules-alerts.md
+    - name: Drohnenbilder abrufen
+      href: get-drone-imagery.md
+- name: Problembehandlung
+  items:
+    - name: Troubleshooting für FarmBeats
+      href: troubleshoot-project-farmbeats.md
+- name: Verweis
+  items: null
+  href: references-for-farmbeats.md

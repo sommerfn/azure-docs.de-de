@@ -1,5 +1,5 @@
 ---
-title: Webhook-Aktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Webhook-Aktivität in Azure Data Factory
 description: Die Webhook-Aktivität setzt die Ausführung der Pipeline erst fort, nachdem sie das angefügte Dataset mit bestimmten vom Benutzer angegebenen Kriterien überprüft hat.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: c11fb800dba06ab5566647489f020f727860a7ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3734472d9026d4e355c08b36d5ba58974288daac
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142407"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678223"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Webhook-Aktivität in Azure Data Factory
 Mithilfe einer Webhook-Aktivität können Sie die Ausführung von Pipelines über Ihren benutzerdefinierten Code steuern. Mithilfe der Webhook-Aktivität können Kunden einen Endpunkt aufrufen und eine Rückruf-URL übergeben. Die Pipelineausführung wartet, bis der Rückruf aufgerufen wurde, bevor sie mit der nächsten Aktivität fortfährt.

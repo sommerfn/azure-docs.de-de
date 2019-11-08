@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: e45346ce8bd23ea8431faf8a123d57ecdee71606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9a2e8b37f746eb86b2e0fe6a7304cd888a293e1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64937889"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823031"
 ---
 # <a name="requirements-by-listing-type"></a>Listingtyp-Anforderungen  
 Die technischen und inhaltlichen (Marketing) Anforderungen variieren je nach Storefront, Angebotstyp und Auflistungsart. Die folgenden Spezifikationen müssen Ihre Konformität erfüllen:  
@@ -53,7 +54,7 @@ Unten sind die Voraussetzungen für die Auflistung von Typen in Azure Marketplac
 ## <a name="non-transact-listings"></a>Nicht-Transaktionsauflistungen  
 Dieser Abschnitt beschreibt alle Angebotstypen, die die Auflistungsart „Transaktion“ nicht verwenden. 
 
-### <a name="list"></a>Auflisten  
+### <a name="list"></a>List  
 Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Storefronts im Marketplace.  
 
 | Angebotstyp | Storefront | Details |  

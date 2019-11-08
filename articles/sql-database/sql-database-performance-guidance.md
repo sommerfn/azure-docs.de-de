@@ -1,5 +1,5 @@
 ---
-title: Anweisungen zur Leistungsoptimierung bei Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Schritte zur Optimierung der Leistung
 description: Erfahren Sie mehr über die Verwendung von Empfehlungen zur manuellen Optimierung der Abfrageleistung von Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 4ea5d6c734659d36822f62237a42a8fbe332c996
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567105"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821359"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuelle Optimierung der Abfrageleistung in Azure SQL-Datenbank
 

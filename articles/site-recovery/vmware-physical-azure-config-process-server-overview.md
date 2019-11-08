@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: d835eda044c2a6d1e0e7c678073711e45fde7395
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972145"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747825"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Informationen zu Site Recovery-Komponenten (Konfiguration, Prozess und Masterziel)
 
@@ -27,7 +27,7 @@ Für die Notfallwiederherstellung von lokalen virtuellen VMware-Computern und ph
 **Komponenten**  | Auf dem Konfigurationsservercomputer werden alle lokalen Site Recovery-Komponenten ausgeführt, einschließlich Konfigurationsserver, Prozessserver und Masterzielserver.<br/><br/> Wenn Sie den Konfigurationsserver einrichten, werden alle Komponenten automatisch installiert. | [Häufig gestellte Fragen](vmware-azure-common-questions.md#configuration-server) zum Konfigurationsserver
 **Rolle** | Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation. | Weitere Informationen zur Architektur für die Notfallwiederherstellung von [VMware](vmware-azure-architecture.md) und [physischen Servern](physical-azure-architecture.md) in Azure
 **VMware-Anforderungen** | Für die Notfallwiederherstellung von lokalen virtuellen VMware-Computern müssen Sie den Konfigurationsserver als lokalen und hochverfügbaren virtuellen VMware-Computer installieren und ausführen. | [Weitere Informationen](vmware-azure-deploy-configuration-server.md#prerequisites) zu den Voraussetzungen
-**VMware-Bereitstellung** | Es wird empfohlen, den Konfigurationsserver mit einer OVA-Vorlage bereitzustellen. Diese Methode bietet eine einfache Möglichkeit, den Konfigurationsserver so einzurichten, dass er alle Anforderungen und Voraussetzungen erfüllt.<br/><br/> Falls Sie aus irgendeinem Grund keinen virtuellen VMware-Computer mit einer OVA-Vorlage bereitstellen können, können Sie die Konfigurationsservercomputer manuell einrichten. Dies wird nachfolgend für die Notfallwiederherstellung von physischen Computern beschrieben. | [Bereitstellen](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template) mit einer OVA-Vorlage
+**VMware-Bereitstellung** | Es wird empfohlen, den Konfigurationsserver mit einer OVA-Vorlage bereitzustellen. Diese Methode bietet eine einfache Möglichkeit, den Konfigurationsserver so einzurichten, dass er alle Anforderungen und Voraussetzungen erfüllt.<br/><br/> Falls Sie aus irgendeinem Grund keinen virtuellen VMware-Computer mit einer OVA-Vorlage bereitstellen können, können Sie die Konfigurationsservercomputer manuell einrichten. Dies wird nachfolgend für die Notfallwiederherstellung von physischen Computern beschrieben. | [Bereitstellen](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) mit einer OVA-Vorlage
 **Anforderungen physischer Server** | Für die Notfallwiederherstellung auf lokalen physischen Servern stellen Sie den Konfigurationsserver manuell bereit. | [Weitere Informationen](physical-azure-set-up-source.md#prerequisites) zu den Voraussetzungen
 **Physische Serverbereitstellung** | Wenn das Installieren des Konfigurationsservers als virtueller VMware-Computer nicht möglich ist, können Sie ihn auf einem physischen Server installieren. | [Manuelles Bereitstellen](physical-azure-set-up-source.md#set-up-the-source-environment) des Konfigurationsservers
 

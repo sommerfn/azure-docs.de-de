@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: e235116ab77159a0e2e9c66ad09cdb86ce6da1e9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007713"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466930"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Bewährte Methoden für die Erstellung von Bewertungen
 
@@ -41,13 +41,19 @@ Wenn Sie beispielsweise eine lokale VM mit vier Kernen bei 20 % Auslastung und e
 
 ## <a name="best-practices-for-creating-assessments"></a>Bewährte Methoden für die Erstellung von Bewertungen
 
-Die Azure Migrate-Appliance erfasst fortlaufend Ihre lokale Umgebung und sendet Metadaten und Leistungsdaten an Azure. Befolgen Sie diese bewährten Methoden für die Erstellung von Bewertungen:
+Die Azure Migrate-Appliance erfasst fortlaufend Ihre lokale Umgebung und sendet Metadaten und Leistungsdaten an Azure. Befolgen Sie diese bewährten Methoden für die Bewertung von Servern, die mit einer Appliance ermittelt wurden:
 
 - **Erstellung von aktuellen Bewertungen**: Sie können aktuelle Bewertungen sofort erstellen, sobald Ihre Computer im Azure Migrate-Portal angezeigt werden.
 - **Erstellen von leistungsbezogenen Bewertungen**: Nach der Einrichtung der Ermittlung empfehlen wir Ihnen, mindestens einen Tag zu warten, bevor Sie eine leistungsbezogene Bewertung durchführen:
     - Die Erfassung von Leistungsdaten braucht Zeit. Wenn Sie mindestens einen Tag warten, stellen Sie damit sicher, dass genügend Leistungsdatenpunkte vorhanden sind, bevor Sie die Bewertung durchführen.
     - Wenn Sie leistungsbezogene Bewertungen durchführen, stellen Sie sicher, dass Sie Profile für Ihre Umgebung für die Dauer der Bewertungen erstellen. Wenn Sie z.B. die Bewertung mit einer auf eine Woche festgelegten Leistungsdauer erstellen, müssen Sie mindestens eine Woche nach dem Start der Ermittlung warten, bis alle Datenpunkte erfasst wurden. Wenn Sie nicht so lange warten, wird die Bewertung nicht mit fünf Sternen versehen.
 - **Neuberechnen von Bewertungen**: Da es sich bei den Bewertungen um Momentaufnahmen handelt, werden sie nicht automatisch mit den neuesten Daten aktualisiert. Um eine Bewertung mit den neuesten Daten zu aktualisieren, müssen Sie sie neu berechnen.
+
+Befolgen Sie diese bewährten Methoden für die Bewertung von Servern, die über eine CSV-Datei in Azure Migrate importiert werden:
+
+- **Erstellung von aktuellen Bewertungen**: Sie können aktuelle Bewertungen sofort erstellen, sobald Ihre Computer im Azure Migrate-Portal angezeigt werden.
+- **Erstellen von leistungsbezogenen Bewertungen**: Dadurch erhalten Sie eine bessere Kostenschätzung, insbesondere dann, wenn die lokale Serverkapazität überdimensioniert wurde. Die Genauigkeit der leistungsbasierten Bewertung hängt jedoch von den Leistungsdaten ab, die für die Server angegeben werden. 
+- **Neuberechnen von Bewertungen**: Da es sich bei den Bewertungen um Momentaufnahmen handelt, werden sie nicht automatisch mit den neuesten Daten aktualisiert. Um eine Bewertung mit den neuesten importierten Daten zu aktualisieren, müssen Sie eine Neuberechnung durchführen.
 
 ## <a name="best-practices-for-confidence-ratings"></a>Bewährte Methoden für Zuverlässigkeitsstufen
 

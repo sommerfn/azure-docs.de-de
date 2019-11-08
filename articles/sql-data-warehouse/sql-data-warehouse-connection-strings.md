@@ -1,5 +1,5 @@
 ---
-title: Verbindungszeichenfolgen für Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Verbindungszeichenfolgen
 description: Verbindungszeichenfolgen für SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: afc8dbfa0bc1b1ad37e5f1a0f290c42998ed1e4b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: dc2f03978e219a6fbbf3918bef4c44c072d60610
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68479707"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692884"
 ---
 # <a name="connection-strings-for-azure-sql-data-warehouse"></a>Verbindungszeichenfolgen für Azure SQL Data Warehouse
 Sie können über verschiedene Anwendungsprotokolle eine Verbindung mit SQL Data Warehouse herstellen, z.B. über [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] und [JDBC][JDBC]. Im Folgenden sind einige Beispiele für Verbindungszeichenfolgen für die einzelnen Protokolle aufgeführt.  Sie können auch das Azure-Portal zum Einrichten Ihrer Verbindungszeichenfolge verwenden.  Um die Verbindungszeichenfolge über das Azure-Portal zu erstellen, navigieren Sie zum Blatt Ihrer Datenbank, und klicken Sie unter *Zusammenfassung* auf *Datenbank-Verbindungszeichenfolgen anzeigen*.

@@ -2,7 +2,7 @@
 title: Azure Machine Learning-Dokumentation
 summary: Azure Machine Learning bietet Webschnittstellen und SDKs zum schnellen Trainieren und Bereitstellen skalierbarer Machine Learning-Modelle und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung.
 metadata:
-  title: Machine Learning-Dokumentation – Azure
+  title: Azure Machine Learning-Dokumentation
   description: Azure Machine Learning bietet Ihnen Webschnittstellen und SDKs zum schnellen Trainieren und Bereitstellen skalierbarer Machine Learning-Modelle und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung.
   services: machine-learning
   ms.service: machine-learning
@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 400ebc88faad1ba5d55aa81dd737c8913b131340
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: c6b0b67f206ec335a5e30098dd75b7e71db5770f
+  ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73497534"
+  ms.lasthandoff: 11/08/2019
+  ms.locfileid: "73828112"
 landingContent:
 - title: Erste Schritte mit Azure ML
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: service/tutorial-1st-r-experiment.md
     - text: Experimentieren mit dem Drag & Drop-Designer
       url: service/tutorial-designer-automobile-price-train-score.md
-    - text: Automatisieren Ihres ersten ML-Experiments
+    - text: Experimentieren mit automatisiertem ML
       url: service/tutorial-first-experiment-automated-ml.md
   - linkListType: overview
     links:
@@ -97,7 +97,9 @@ landingContent:
       url: service/how-to-consume-web-service.md
     - text: Batchvorhersage
       url: service/how-to-run-batch-predictions.md
-- title: Erkunden von Referenzdokumenten
+    - text: End-to-End-Beispiele (GitHub)
+      url: https://github.com/microsoft/MLOps
+- title: Zu Referenzdokumentation wechseln
   linkLists:
   - linkListType: reference
     links:
@@ -109,3 +111,7 @@ landingContent:
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
     - text: Designeralgorithmen und -module
       url: algorithm-module-reference/module-reference.md
+    - text: REST-API
+      url: https://docs.microsoft.com/rest/api/azureml/
+    - text: KI-Referenzarchitekturen (GitHub)
+      url: https://github.com/Microsoft/AI

@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über Bewertungsberechnungen im Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/06/2019
-ms.author: raynew
-ms.openlocfilehash: 4511c42514a5399d41029b61297bd4c1b0b63d9a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 10/15/2019
+ms.author: hamusa
+ms.openlocfilehash: d72e5a6dea8b411b6214e7749b8993f9f5a6e7a8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827549"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466919"
 ---
 # <a name="assessment-calculations-in-azure-migrate"></a>Bewertungsberechnungen in Azure Migrate
 
@@ -23,7 +23,7 @@ Die Serverbewertung ist ein Tool in Azure Migrate, das lokale Server für die Mi
 
 **Eigenschaft** | **Details**
 --- | ---
-**Zielstandort** | Gibt den Azure-Standort an, zu dem die Migration durchgeführt werden soll.<br/><br/>Die Serverbewertung unterstützt derzeit die folgenden Regionen: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „US Gov Arizona“, „US Gov Texas“, „US Gov Virginia“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“.
+**Zielstandort** | Gibt den Azure-Standort an, zu dem die Migration durchgeführt werden soll.<br/><br/>Die Serverbewertung unterstützt derzeit die folgenden Zielregionen: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „US Gov Arizona“, „US Gov Texas“, „US Gov Virginia“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“.
 **Speichertyp** | Gibt den Typ der Datenträger an, die Sie für die Speicherung in Azure verwenden möchten. <br/><br/> Für die Größenanpassung für die lokale Umgebung können Sie die Zieldatenträgertypen „Managed Disks Premium“, „Managed Disks SSD Standard“ oder „Managed Disks HDD Standard“ angeben. Für die leistungsorientierte Größenanpassung können Sie die Zieldatenträgertypen „Automatisch“, „Managed Disks Premium“, „Managed Disks HDD Standard“ oder „Managed Disks SSD Standard“ angeben. Bei Angabe des Speichertyps „Automatisch“ erfolgt die Datenträgerempfehlung basierend auf den Leistungsdaten der Datenträger: IOPS (Eingabe-/Ausgabevorgänge pro Sekunde) und Durchsatz. <br/><br/>Wenn Sie den Speichertyp Premium oder Standard angeben, empfiehlt die Bewertung eine Datenträger-SKU innerhalb des ausgewählten Speichertyps. Wenn Sie eine Einzelinstanz-VM-SLA von 99,9 % erreichen möchten, könnten Sie als Speichertyp „Managed Disks Premium“ angeben. Dadurch wird sichergestellt, dass für alle Datenträger in der Bewertung „Managed Disks Premium“ empfohlen wird. Hinweis: Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
 **Reservierte Instanzen (RI)** | Mit dieser Eigenschaft können Sie [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) in Azure angeben. Für Kostenschätzungen in der Bewertung werden dann die RI-Rabatte berücksichtigt. Reservierte Instanzen werden derzeit nur für das Angebot mit nutzungsbasierter Bezahlung in Azure Migrate unterstützt.
 **Größenkriterien** | Legt das Kriterium fest, das zur *Größenanpassung* virtueller Computer für Azure verwendet werden soll. Sie können eine *leistungsbasierte* Größenanpassung vornehmen oder die Größe der virtuellen Computer *lokal* ändern, ohne den Leistungsverlauf zu berücksichtigen.
@@ -39,7 +39,7 @@ Die Serverbewertung ist ein Tool in Azure Migrate, das lokale Server für die Mi
 
 ## <a name="how-are-assessments-calculated"></a>Wie werden Bewertungen berechnet?
 
-Eine Bewertung in der Azure Migrate-Serverbewertung wird anhand der Metadaten berechnet, die über die lokalen Server gesammelt wurden. Die Bewertungsberechnung erfolgt in drei Schritten: Für jeden Server beginnt die Bewertung mit der Azure-Eignungsanalyse, gefolgt von der Größenanpassung und schließlich einer monatlichen Kostenschätzung. Ein Server gelangt nur in die nächste Phase, wenn er die vorherige besteht. Beispiel: Besteht ein Server die Azure-Eignungsprüfung nicht, wird er als ungeeignet für Azure markiert, und die Größen- und Kostenschätzungen werden für diesen Server nicht durchgeführt.
+Eine Bewertung in der Azure Migrate-Serverbewertung wird anhand der Metadaten berechnet, die über die lokalen Server gesammelt wurden. Wenn es sich bei der Ermittlungsquelle um einen Import mit einer CSV-Datei handelt, wird die Bewertung anhand der vom Benutzer bereitgestellten Metadaten für die Server berechnet. Die Bewertungsberechnung erfolgt in drei Schritten: Für jeden Server beginnt die Bewertung mit der Azure-Eignungsanalyse, gefolgt von der Größenanpassung und schließlich einer monatlichen Kostenschätzung. Ein Server gelangt nur in die nächste Phase, wenn er die vorherige besteht. Beispiel: Besteht ein Server die Azure-Eignungsprüfung nicht, wird er als ungeeignet für Azure markiert, und die Größen- und Kostenschätzungen werden für diesen Server nicht durchgeführt.
 
 ## <a name="azure-suitability-analysis"></a>Azure-Eignungsanalyse
 
@@ -67,7 +67,7 @@ Die Serverbewertung überprüft die folgenden Eigenschaften des lokalen virtuell
 Neben den VM-Eigenschaften untersucht die Serverbewertung auch das Gastbetriebssystem der Computer, um zu ermitteln, ob sie auf Azure ausgeführt werden können.
 
 > [!NOTE]
-> Für VMware-VMs verwendet die Serverbewertung das für die VM in vCenter Server angegebene Betriebssystem, um die Gastbetriebssystemanalyse durchzuführen. Für Linux-VMs, die auf VMware ausgeführt werden, wird derzeit nicht genau die Kernelversion des Gastbetriebsystems identifiziert.
+> Für VMware-VMs verwendet die Serverbewertung das für die VM in vCenter Server angegebene Betriebssystem, um die Gastbetriebssystemanalyse durchzuführen. Für Linux-VMs, die unter VMware ausgeführt werden, wird die Kernelversion des Gastbetriebssystems derzeit nicht genau identifiziert.
 
 Zur Ermittlung der Azure-Bereitschaft basierend auf dem Betriebssystem wird von der Serverbewertung folgende Logik verwendet.
 
@@ -92,21 +92,24 @@ In vCenter Server als **Sonstige** angegebenes Betriebssystem | In diesem Fall k
 
 Nachdem ein Computer als bereit für Azure vorgemerkt wurde, gibt die Serverbewertung Empfehlungen für die Größenanpassung, bei der die geeignete Azure-VM und Festplatten-SKU für die lokale VM identifiziert wird. Die Empfehlungen variieren je nach den angegebenen Bewertungseigenschaften.
 
-- Wenn Die Bewertung ein *leistungsbasiertes Größenkriterium* verwendet, berücksichtigt Azure Migrate den Leistungsverlauf des Computers, um die VM-Größe und den Datenträgertyp in Azure zu ermitteln. Diese Methode ist besonders hilfreich, wenn Sie die lokalen virtuellen Computer überbelegt haben, die Auslastung jedoch gering ist, und Sie die Größe der virtuellen Computer in Azure optimal anpassen möchten, um Kosten zu sparen. Diese Methode wird Ihnen helfen, die Größen während der Migration zu optimieren.
+- Wenn die Bewertung eine *leistungsbasierte Dimensionierung* verwendet, berücksichtigt Azure Migrate den Leistungsverlauf des Computers, um die VM-Größe und den Datenträgertyp in Azure zu ermitteln. Bei Servern mit einer Ermittlungsquelle als Import werden die vom Benutzer angegebenen Werte für die Leistungsauslastung berücksichtigt. Diese Methode ist besonders hilfreich, wenn Sie die lokalen virtuellen Computer überbelegt haben, die Auslastung jedoch gering ist, und Sie die Größe der virtuellen Computer in Azure optimal anpassen möchten, um Kosten zu sparen. Diese Methode ist hilfreich, um die Größen bei der Migration zu optimieren.
 - Wenn Sie die Leistungsdaten für die VM-Größe nicht berücksichtigen und stattdessen die lokalen Computer unverändert zu Azure übertragen möchten, können Sie die Größenkriterien auf *Wie lokal* festlegen. Anschließend wird die Größe der virtuellen Computer basierend auf der lokalen Konfiguration ohne Berücksichtigung der Nutzungsdaten von der Serverbewertung berechnet. Die Größenanpassung für den Datenträger erfolgt in diesem Fall basierend auf dem Speichertyp, den Sie in den Bewertungseigenschaften angeben (HDD Standard-, SSD Standard- oder Premium-Datenträger).
 
 ### <a name="performance-based-sizing"></a>Leistungsbasierte Größenanpassung
 
-Bei der leistungsbasierten Größenanpassung beginnt die Serverbewertung mit den Datenträgern, die an den virtuellen Computer angefügt sind, und fährt danach mit den Netzwerkadaptern fort. Anschließend wird basierend auf den Computeanforderungen der lokalen VM eine Azure-VM-SKU zugeordnet. Die Azure Migrate-Appliance erstellt Profile von der lokalen Umgebung, um Leistungsdaten für CPU, Speicher, Festplatten und Netzwerkadapter zu sammeln.
+Bei der leistungsbasierten Größenanpassung beginnt die Serverbewertung mit den Datenträgern, die an den virtuellen Computer angefügt sind, und fährt danach mit den Netzwerkadaptern fort. Anschließend wird basierend auf den Computeanforderungen der lokalen VM eine Azure-VM-SKU zugeordnet. Die Azure Migrate-Appliance erstellt Profile der lokalen Umgebung, um Leistungsdaten für CPU, Speicher, Festplatten und Netzwerkadapter zu sammeln.
 
 **Schritte zur Leistungsdatensammlung:**
 
-1. Bei virtuellen VMware-Computern sammelt die Azure Migrate-Appliance Echtzeit-Abtastpunkte in einem 20-Sekunden-Intervall. Bei Hyper-V-VMs werden die Echtzeit-Abtastpunkte in einem Intervall von 30 Sekunden erfasst.
-1. Das Gerät führt einen Rollup für die alle 10 Minuten gesammelten Abtastpunkte aus und sendet den Maximalwert der letzten 10 Minuten an die Serverbewertung.
-1. Die Serverbewertung speichert alle 10-Minuten-Abtastpunkte des letzten Monats. Abhängig von den Bewertungseigenschaften, die für den *Leistungsverlauf* und die *prozentuale Auslastung* angegeben werden, wird der entsprechende Datenpunkt identifiziert, der für die richtige Größenanpassung verwendet werden soll. Wenn beispielsweise der Leistungsverlauf auf einen Tag festgelegt ist und die prozentuale Auslastung das 95. Perzentil ist, dann verwendet die Serverbewertung die 10-minütigen Abtastpunkte für den letzten Tag, sortiert sie in aufsteigender Reihenfolge und wählt das 95. Perzentil für die richtige Größe aus.
-1. Dieser Wert wird dann mit dem Komfortfaktor multipliziert, um die effektiven Leistungsauslastungsdaten für jede Metrik (CPU-Auslastung, Speicherauslastung, Festplatten-IOPS (Lesen und Schreiben), Festplattendurchsatz (Lesen und Schreiben), Netzwerkdurchsatz (Ein- und Ausgabe)) zu erhalten, die die Appliance sammelt.
+1. Bei virtuellen VMware-Computern sammelt die Azure Migrate-Appliance Echtzeit-Abtastpunkte in einem 20-Sekunden-Intervall. Bei Hyper-V-VMs werden die Echtzeit-Abtastpunkte in einem Intervall von 30 Sekunden erfasst. Bei physischen Servern werden die Echtzeit-Abtastpunkte in einem Zeitabstand von 5 Minuten erfasst. 
+2. Das Gerät führt einen Rollup für die alle 10 Minuten gesammelten Abtastpunkte aus und sendet den Maximalwert der letzten 10 Minuten an die Serverbewertung. 
+3. Die Serverbewertung speichert alle 10-Minuten-Abtastpunkte des letzten Monats. Abhängig von den Bewertungseigenschaften, die für den *Leistungsverlauf* und die *prozentuale Auslastung* angegeben werden, wird der entsprechende Datenpunkt identifiziert, der für die richtige Größenanpassung verwendet werden soll. Wenn beispielsweise der Leistungsverlauf auf einen Tag festgelegt ist und die prozentuale Auslastung das 95. Perzentil ist, dann verwendet die Serverbewertung die 10-minütigen Abtastpunkte für den letzten Tag, sortiert sie in aufsteigender Reihenfolge und wählt das 95. Perzentil für die richtige Größe aus. 
+4. Dieser Wert wird dann mit dem Komfortfaktor multipliziert, um die effektiven Leistungsauslastungsdaten für jede Metrik (CPU-Auslastung, Speicherauslastung, Festplatten-IOPS (Lesen und Schreiben), Festplattendurchsatz (Lesen und Schreiben), Netzwerkdurchsatz (Ein- und Ausgabe)) zu erhalten, die die Appliance sammelt.
 
 Nachdem der Wert für die effektive Auslastung festgelegt wurde, werden Speicher-, Netzwerk- und Computegröße wie folgt behandelt.
+
+> [!NOTE]
+> Für Server, die über einen Import hinzugefügt wurden, werden die vom Benutzer bereitgestellten Leistungsdaten direkt für die richtige Dimensionierung verwendet.
 
 **Speichergröße**: Azure Migrate versucht, jeden an den Computer angefügten Datenträger einem Datenträger in Azure zuzuordnen.
 
@@ -121,9 +124,12 @@ Nachdem der Wert für die effektive Auslastung festgelegt wurde, werden Speicher
   - Wenn für eine Festplatte keine Leistungsdaten verfügbar sind, werden die Konfigurationsdaten des Datenträgers (Datenträgergröße) verwendet, um einen SSD Standard-Datenträger in Azure zu finden.
 
 **Netzwerkgröße**: Die Serverbewertung versucht, einen virtuellen Azure-Computer zu finden, der die Anzahl der an den lokalen Computer angefügten Netzwerkadapter und die für diese Netzwerkadapter erforderliche Leistung unterstützen kann.
-- Um die effektive Netzwerkleistung des lokalen virtuellen Computers zu ermitteln, aggregiert die Azure Migrate-Serverbewertung die vom Computer (Netzwerk ausgehend) pro Sekunde übertragenen Daten (MBit/s) für alle Netzwerkadapter und wendet den Komfortfaktor an. Mithilfe dieser Zahl wird ein virtueller Azure-Computer gesucht, der die erforderliche Netzwerkleistung unterstützen kann.
+- Um die effektive Netzwerkleistung des lokalen virtuellen Computers zu ermitteln, aggregiert die Azure Migrate-Serverbewertung die vom Computer (Netzwerk ausgehend) pro Sekunde übertragenen Daten (Mbit/s) für alle Netzwerkadapter und wendet den Komfortfaktor an. Mithilfe dieser Zahl wird ein virtueller Azure-Computer gesucht, der die erforderliche Netzwerkleistung unterstützen kann.
 - Neben der Netzwerkleistung prüft die Serverbewertung zudem, ob der virtuelle Azure-Computer die erforderliche Anzahl der Netzwerkadapter unterstützen kann.
 - Wenn keine Netzwerkleistungsdaten verfügbar sind, berücksichtigt die Serverbewertung bei der Größenanpassung für virtuelle Computer nur die Anzahl der Netzwerkadapter.
+
+> [!NOTE]
+> Die Angabe der Anzahl von Netzwerkadaptern wird für importierte Server derzeit nicht unterstützt.
 
 **Computegröße**: Nach der Berechnung der Speicher- und Netzwerkanforderungen prüft die Serverbewertung die CPU- und Arbeitsspeicheranforderungen, um eine geeignete VM-Größe in Azure zu suchen.
 - Azure Migrate betrachtet die effektiv genutzten Kerne und den Speicher, um eine geeignete VM-Größe in Azure zu finden.
@@ -135,7 +141,7 @@ Nachdem der Wert für die effektive Auslastung festgelegt wurde, werden Speicher
 
 Wenn Sie die Größenanpassung *Wie lokal* verwenden, wird der Leistungsverlauf der VMs und Datenträger von der Serverbewertung nicht berücksichtigt. Stattdessen wird eine VM-SKU in Azure basierend auf der lokal zugeordneten Größe zugewiesen. Analog dazu berücksichtigt die Serverbewertung bei der Größenanpassung des Datenträgers den Speichertyp, der in den Bewertungseigenschaften angegeben wurde (HDD Standard/SSD Standard oder Premium), und empfiehlt einen entsprechenden Datenträgertyp. Der Standardspeichertyp ist Premium.
 
-## <a name="confidence-ratings"></a>Zuverlässigkeitsstufe
+## <a name="confidence-ratings"></a>Zuverlässigkeitsstufen
 Jeder leistungsbasierten Bewertung in Azure Migrate wird eine Zuverlässigkeitsstufe zugeordnet, die zwischen ein (niedrigster Wert) bis fünf Sterne (höchster Wert) betragen kann.
 - Die Zuverlässigkeitsstufe wird einer Bewertung auf der Grundlage der Verfügbarkeit von Datenpunkten zugeordnet, die zum Berechnen der Bewertung erforderlich sind.
 - Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von Azure Migrate bereitgestellten Größenempfehlungen besser einschätzen.
@@ -157,11 +163,14 @@ Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Dat
    61–80 % | 4 Sterne
    81–100 % | 5 Sterne
 
-### <a name="low-confidence-ratings"></a>Geringe Zuverlässigkeitsstufe
+> [!NOTE]
+> Bewertungen von Servern, die über eine CSV-Datei in Azure Migrate importiert wurden, werden keine Zuverlässigkeitsstufen zugewiesen. 
+
+### <a name="low-confidence-ratings"></a>Niedrige Zuverlässigkeitsstufen
 
 Einige mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung:
 
-- Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie z. B. die Bewertung mit einer auf 1 Tag festgelegten Leistungsdauer erstellen, müssen Sie bis mindestens einen Tag nach dem Start der Ermittlung warten, bis alle Datenpunkte gesammelt sind.
+- Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil der Umgebung erstellt. Wenn Sie z. B. die Bewertung mit einer auf 1 Tag festgelegten Leistungsdauer erstellen, müssen Sie bis mindestens einen Tag nach dem Start der Ermittlung warten, bis alle Datenpunkte gesammelt sind.
 - Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, heruntergefahren. Wenn einige VMs für eine gewisse Zeit heruntergefahren wurden, kann die Serverbewertung für diesen Zeitraum keine Leistungsdaten sammeln.
 - Einige virtuelle Computer wurden während des Zeitraums erstellt, für den die Bewertung berechnet wird. Wenn Sie beispielsweise eine Bewertung für den Leistungsverlauf des letzten Monats erstellen, aber einige VMs erst vor einer Woche in der Umgebung erstellt wurden, dann ist der Leistungsverlauf der neuen VMs nicht für die gesamte Dauer abrufbar.
 
@@ -170,7 +179,7 @@ Einige mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertu
 
 ## <a name="monthly-cost-estimation"></a>Schätzung der monatlichen Kosten
 
-Nach Abschluss der Größenempfehlungen berechnet Azure Migrate die Computer- und Speicherkosten nach der Migration.
+Nachdem die Größenempfehlungen ermittelt wurden, berechnet Azure Migrate die Compute- und Speicherkosten nach der Migration.
 
 - **Computekosten**: Azure Migrate berechnet anhand der empfohlenen Azure-VM-Größe mithilfe der Abrechnungs-API die monatlichen Kosten für den virtuellen Computer.
     - Bei der Berechnung werden Betriebssystem, Software Assurance, reservierte Instanzen, VM-Betriebszeit, Standort und Währungseinstellungen berücksichtigt.

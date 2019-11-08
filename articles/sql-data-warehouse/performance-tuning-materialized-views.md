@@ -1,5 +1,5 @@
 ---
-title: Leistungsoptimierung mit materialisierten Sichten in Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Leistungsoptimierung mit materialisierten Sichten
 description: Empfehlungen und Überlegungen, die Sie kennen sollten, wenn Sie materialisierte Sichten zur Verbesserung Ihrer Abfrageleistung verwenden.
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c1cfd3b4c365a04c3d4704f37e4ed4177fa74619
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338914"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692990"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten 
 Die materialisierten Sichten in Azure SQL Data Warehouse bieten eine niedrige Wartungsmethode für komplexe analytische Abfragen, um eine schnelle Leistung ohne irgendeine Abfrageänderung zu erzielen. Dieser Artikel erläutert den allgemeinen Leitfaden zur Verwendung materialisierter Sichten.

@@ -1,24 +1,24 @@
 ---
 title: 'Multiclass Decision Forest: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe des Moduls „Multiclass Decision Forest“ (Entscheidungswald mit mehreren Klassen) in Azure Machine Learning Service ein Modell für maschinelles Lernen erstellen, das auf dem *Entscheidungswald*-Algorithmus basiert.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mithilfe des Moduls „Multiclass Decision Forest“ (Entscheidungswald mit mehreren Klassen) in Azure Machine Learning ein Modell für maschinelles Lernen erstellen, das auf dem *Entscheidungswald*-Algorithmus basiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 80d8fc886ec62cf6abea7620f0c5763b619b5de4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692777"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466024"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul „Multiclass Decision Forest“ (Entscheidungswald mit mehreren Klassen)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Modell für maschinelles Lernen zu erstellen, das auf dem *Entscheidungswald*-Algorithmus basiert. Ein Entscheidungswald ist ein Ensemblemodell, das in kurzer Zeit eine Reihe von Entscheidungsbäumen erstellt und dabei aus mit Tags versehenen Daten lernt.
 
@@ -39,9 +39,7 @@ Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem 
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Konfigurieren des Moduls „Multiclass Decision Forest“
 
-
-
-1. Fügen Sie Ihrer Pipeline über die Benutzeroberfläche das Modul **Multiclass Decision Forest** (Entscheidungswald mit mehreren Klassen) hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren), **Classification** (Klassifizierung).
+1. Fügen Sie Ihrer Pipeline im Designer das Modul **Multiclass Decision Forest** (Entscheidungswald mit mehreren Klassen) hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren), **Classification** (Klassifizierung).
 
 2. Doppelklicken Sie auf das Modul, um den Bereich **Properties** (Eigenschaften) zu öffnen.
 
@@ -88,4 +86,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -4,15 +4,16 @@ description: Erläutert, wie ein Benutzer-VHD-Image bereitgestellt wird, um eine
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e4da523fa54a513fe77fda037aea0a5fd530250b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8421e9b7b7e2b7d13054e977da83be044b4e6af7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938240"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816642"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Bereitstellen einer Azure-VM aus einer Benutzer-VHD
 

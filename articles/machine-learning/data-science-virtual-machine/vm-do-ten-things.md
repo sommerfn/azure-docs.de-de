@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6af9f2c80915745f995144c24ae1649fb02a31ae
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 75a685dc90db9133ee9bc5d52d046246270ea32a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192274"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497606"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können
 
@@ -85,12 +85,7 @@ Nachdem Sie das Notebook geöffnet haben, können Sie mit den Bibliotheken Ihrer
 ## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Trainieren und Bereitstellen von Modellen über Azure Machine Learning
 Nachdem Sie Ihr Modell erstellt und überprüft haben, ist der nächste Schritt in der Regel die Bereitstellung des Modells für die Produktion. Dieser Schritt ermöglicht es Ihren Clientanwendungen, die Modellvorhersagen auf einer Echtzeitbasis oder einer Batchmodusbasis aufzurufen. Azure Machine Learning bietet einen Mechanismus zum Operationalisieren eines in R oder Python erstellten Modells.
 
-Wenn Sie das Modell in Azure Machine Learning operationalisieren, wird ein Webdienst verfügbar gemacht. Dieser ermöglicht Clients das Ausführen von REST-Aufrufen, in denen Eingabeparameter übergeben und Vorhersagen aus dem Modell als Ausgaben empfangen werden.   
-
-> [!NOTE]
-> Wenn Sie sich noch nicht für Azure Machine Learning registriert haben, können Sie einen kostenlosen Arbeitsbereich oder einen Standardarbeitsbereich erhalten, indem Sie die Startseite von [Azure Machine Learning Studio](https://studio.azureml.net/) besuchen und auf **Sign In** klicken.   
-> 
-> 
+Wenn Sie das Modell in Azure Machine Learning operationalisieren, wird ein Webdienst verfügbar gemacht. Dieser ermöglicht Clients das Ausführen von REST-Aufrufen, in denen Eingabeparameter übergeben und Vorhersagen aus dem Modell als Ausgaben empfangen werden.
 
 ### <a name="build-and-operationalize-python-models"></a>Erstellen und Operationalisieren von Python-Modellen
 Hier sehen Sie einen Ausschnitt eines in einem Python Jupyter-Notebook entwickelten Codes, der durch Verwenden der Scikit-learn-Bibliothek ein einfaches Modell erstellt:
@@ -809,9 +804,9 @@ pd.read_sql(queryString, connection)
 
 ![Oberen Zeilen der Daten aus der Tabelle](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-#### <a name="read-data-from-hdi-by-using-machine-learning-reader-module"></a>Lesen von Daten aus HDI über Machine Learning: Readermodul
+#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Lesen von Daten aus HDI über Azure Machine Learning Studio (klassisch): Readermodul
 
-Sie können auch das Readermodul in Azure Machine Learning Studio verwenden, um auf die Datenbank in einem Hadoop-Cluster zuzugreifen. Geben Sie die Anmeldeinformationen für Ihre HDI-Cluster und Ihr Azure Storage-Konto an, um das Erstellen von Machine Learning-Modellen zu ermöglichen, indem eine Datenbank in HDI-Clustern verwendet wird.
+Sie können auch das Readermodul in Azure Machine Learning Studio (klassisch) verwenden, um auf die Datenbank in einem Hadoop-Cluster zuzugreifen. Geben Sie die Anmeldeinformationen für Ihre HDI-Cluster und Ihr Azure Storage-Konto an, um das Erstellen von Machine Learning-Modellen zu ermöglichen, indem eine Datenbank in HDI-Clustern verwendet wird.
 
 ![Eigenschaften des Readermoduls](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
 

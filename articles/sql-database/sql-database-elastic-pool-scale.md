@@ -1,5 +1,5 @@
 ---
-title: Skalieren von Ressourcen für Pools für elastische Datenbanken – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Skalieren der Ressourcen von Pools für elastische Datenbanken
 description: Diese Seite beschreibt die Skalierung von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: c96be7930a33185077134d051b49cba0695327e3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568644"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823812"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank
 

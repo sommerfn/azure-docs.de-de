@@ -1,7 +1,7 @@
 ---
 title: Anwendungslebenszyklusverwaltung
-titleSuffix: Azure Machine Learning Studio
-description: Anwenden bewährter Application Lifecycle Management-Methoden in Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
+description: Anwenden bewährter Application Lifecycle Management-Methoden in der klassischen Version von Azure Machine Learning Studio
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,15 +9,15 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: 046afaa0e83fa572d6cd43a3717707892b25af69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d5e2ee72c30933305356cd2a7792d1972fa938da
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66171091"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684743"
 ---
-# <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Application Lifecycle Management in Azure Machine Learning Studio
-Azure Machine Learning Studio ist ein Tool, mit dem Machine Learning-Experimente entwickelt und auf der Azure-Cloudplattform ausgeführt werden. Es ist vergleichbar mit der Zusammenführung der Visual Studio IDE mit skalierbaren Clouddiensten zu einer einzelnen Plattform. Sie können standardmäßige ALM-Vorgehensweisen (Application Lifecycle Management) – von der Versionsverwaltung verschiedener Ressourcen bis zur automatischen Ausführung und Bereitstellung – in Azure Machine Learning Studio integrieren. In diesem Artikel werden einige der Optionen und Ansätze behandelt.
+# <a name="application-lifecycle-management-in-azure-machine-learning-studio-classic"></a>Application Lifecycle Management in Azure Machine Learning Studio (klassisch)
+Azure Machine Learning Studio (klassisch) ist ein Tool, mit dem Machine Learning-Experimente entwickelt und auf der Azure-Cloudplattform ausgeführt werden. Es ist vergleichbar mit der Zusammenführung der Visual Studio IDE mit skalierbaren Clouddiensten zu einer einzelnen Plattform. Sie können standardmäßige ALM-Vorgehensweisen (Application Lifecycle Management) – von der Versionsverwaltung verschiedener Ressourcen bis zur automatischen Ausführung und Bereitstellung – in die klassische Version von Azure Machine Learning Studio integrieren. In diesem Artikel werden einige der Optionen und Ansätze behandelt.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -25,7 +25,7 @@ Azure Machine Learning Studio ist ein Tool, mit dem Machine Learning-Experimente
 Es gibt zwei empfohlene Methoden zur Verwaltung der Versionen Ihrer Experimente. Sie können sich entweder auf den integrierten Ausführungsverlauf verlassen oder das Experiment in einem JSON-Format exportieren, um es extern zu verwalten. Jeder Ansatz hat Vor- und Nachteile.
 
 ### <a name="experiment-snapshots-using-run-history"></a>Momentaufnahmen des Experiments mithilfe des Ausführungsverlaufs
-Das Ausführungsmodell des Azure Machine Learning Studio-Experiments sieht vor, das immer dann, wenn Sie im Experiment-Editor auf **Run** klicken, eine unveränderliche Momentaufnahme des Experiments an den Auftragsplaner gesendet wird. Klicken Sie zum Anzeigen der Liste mit den Momentaufnahmen in der Experiment-Editor-Ansicht in der Befehlsleiste auf **Run History**.
+Das Ausführungsmodell des Lernexperiments in der klassischen Version von Azure Machine Learning Studio sieht vor, das immer dann, wenn Sie im Experiment-Editor auf **Run** klicken, eine unveränderliche Momentaufnahme des Experiments an den Auftragsplaner gesendet wird. Klicken Sie zum Anzeigen der Liste mit den Momentaufnahmen in der Experiment-Editor-Ansicht in der Befehlsleiste auf **Run History**.
 
 ![Schaltfläche „RUN HISTORY“](./media/version-control/runhistory.png)
 
@@ -33,17 +33,17 @@ Sie können dann eine Momentaufnahme im gesperrten Modus öffnen, indem Sie auf 
 
 ![Liste „Run History“](./media/version-control/runhistorylist.png)
 
-Nach dem Öffnen können Sie das Momentaufnahmenexperiment als neues Experiment speichern und dann bearbeiten. Wenn Ihre Experimentmomentaufnahme Ressourcen, z.B. trainierte Modelle, Transformationen, Datasets usw., enthält, deren Versionen mittlerweile aktualisiert wurden, behält die Momentaufnahme die Verweise auf die ursprüngliche Version bei, die zum Zeitpunkt der Momentaufnahme vorlag. Wenn Sie die gesperrte Momentaufnahme als neues Experiment speichern, erkennt Azure Machine Learning Studio das Vorhandensein einer neueren Version dieser Ressourcen und aktualisiert sie automatisch im neuen Experiment.
+Nach dem Öffnen können Sie das Momentaufnahmenexperiment als neues Experiment speichern und dann bearbeiten. Wenn Ihre Experimentmomentaufnahme Ressourcen, z.B. trainierte Modelle, Transformationen, Datasets usw., enthält, deren Versionen mittlerweile aktualisiert wurden, behält die Momentaufnahme die Verweise auf die ursprüngliche Version bei, die zum Zeitpunkt der Momentaufnahme vorlag. Wenn Sie die gesperrte Momentaufnahme als neues Experiment speichern, erkennt die klassische Version von Azure Machine Learning Studio das Vorhandensein einer neueren Version dieser Ressourcen und aktualisiert sie automatisch im neuen Experiment.
 
 Beim Löschen des Experiments werden alle Momentaufnahmen dieses Experiments gelöscht.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Exportieren/Importieren des Experiments im JSON-Format
-Die „Run History“-Momentaufnahmen dienen zum Beibehalten einer unveränderlichen Version des Experiments in Azure Machine Learning Studio jedes Mal, wenn es zur Ausführung übermittelt wird. Sie können auch eine lokale Kopie des Experiments speichern und sie in Ihrem bevorzugten Quellcodeverwaltungssystem einchecken, z.B. Team Foundation Server, und später anhand dieser lokalen Datei ein Experiment neu erstellen. Sie können hierzu die [Azure Machine Learning PowerShell](https://aka.ms/amlps)-Cmdlets [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) und [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) verwenden.
+Die „Run History“-Momentaufnahmen dienen zum Beibehalten einer unveränderlichen Version des Experiments in der klassischen Version von Azure Machine Learning Studio jedes Mal, wenn es zur Ausführung übermittelt wird. Sie können auch eine lokale Kopie des Experiments speichern und sie in Ihrem bevorzugten Quellcodeverwaltungssystem einchecken, z.B. Team Foundation Server, und später anhand dieser lokalen Datei ein Experiment neu erstellen. Sie können hierzu die [Azure Machine Learning PowerShell](https://aka.ms/amlps)-Cmdlets [*Export-AmlExperimentGraph*](https://github.com/hning86/azuremlps#export-amlexperimentgraph) und [*Import-AmlExperimentGraph*](https://github.com/hning86/azuremlps#import-amlexperimentgraph) verwenden.
 
 Die JSON-Datei ist eine Textdarstellung des Experimentdiagramms, die möglicherweise Verweise auf Ressourcen im Arbeitsbereich enthält, z.B. ein Dataset oder ein trainiertes Modell. Sie enthält keine serialisierte Version des Assets. Wenn Sie versuchen, das JSON-Dokument wieder in den Arbeitsbereich zu importieren, müssen die referenzierten Assets bereits mit den gleichen Asset-IDs vorhanden sein, auf die im Experiment verwiesen wird. Andernfalls können Sie nicht auf das importierte Experiment zugreifen.
 
 ## <a name="versioning-trained-model"></a>Versionsverwaltung trainierter Modelle
-Ein trainiertes Modell in Azure Machine Learning Studio wird in ein als „iLearner-Datei“ (`.iLearner`) bezeichnetes Format serialisiert und in dem Azure Blob Storage-Konto gespeichert, das mit dem Arbeitsbereich verknüpft ist. Eine Möglichkeit zum Abrufen einer Kopie der iLearner-Datei bietet die API zum erneuten Trainieren. [In diesem Artikel](/azure/machine-learning/studio/retrain-machine-learning-model) wird die Funktionsweise der API zum erneuten Trainieren erläutert. Allgemeine Schritte:
+Ein trainiertes Modell in der klassischen Version von Azure Machine Learning Studio wird in ein als „iLearner-Datei“ (`.iLearner`) bezeichnetes Format serialisiert und in dem Azure Blob Storage-Konto gespeichert, das mit dem Arbeitsbereich verknüpft ist. Eine Möglichkeit zum Abrufen einer Kopie der iLearner-Datei bietet die API zum erneuten Trainieren. [In diesem Artikel](/azure/machine-learning/studio/retrain-machine-learning-model) wird die Funktionsweise der API zum erneuten Trainieren erläutert. Allgemeine Schritte:
 
 1. Richten Sie Ihr Trainingsexperiment ein.
 2. Fügen Sie einen Webdienst-Ausgabeport dem Train Model-Modul oder dem Modul hinzu, das das trainierte Modell erzeugt, z.B. Tune Model Hyperparameter oder Create R Model.
@@ -58,7 +58,7 @@ Sobald Sie über die iLearner-Datei mit dem trainierten Modell verfügen, könne
 Die gespeicherte iLearner-Datei kann dann für die Bewertung über bereitgestellte Webdienste verwendet werden.
 
 ## <a name="versioning-web-service"></a>Versionsverwaltung-Webdienst
-Sie können zwei Arten von Webdiensten aus einem Azure Machine Learning Studio-Experiment bereitstellen. Der klassische Webdienst ist sowohl mit dem Experiment als auch dem Arbeitsbereich eng verbunden. Der neue Webdienst nutzt das Azure Resource Manager-Framework und ist nicht mehr mit dem ursprünglichen Experiment oder dem Arbeitsbereich verbunden.
+Sie können zwei Arten von Webdiensten aus einem (klassischen) Azure Machine Learning Studio-Experiment bereitstellen. Der klassische Webdienst ist sowohl mit dem Experiment als auch dem Arbeitsbereich eng verbunden. Der neue Webdienst nutzt das Azure Resource Manager-Framework und ist nicht mehr mit dem ursprünglichen Experiment oder dem Arbeitsbereich verbunden.
 
 ### <a name="classic-web-service"></a>Klassischer Webdienst
 Zur Versionsverwaltung bei einem klassischen Webdienst können Sie das Webdienst-Endpunktkonstrukt nutzen. Hier sehen Sie einen typischen Ablauf:
@@ -80,7 +80,7 @@ Wenn Sie einen neuen Webdienst auf Azure Resource Manager-Basis erstellen, ist d
 Nachdem Sie die WSD-Datei exportiert haben und ihre Version verwalten, können Sie auch die WSD in einem anderen Webdienstplan in einer anderen Azure-Region als neuen Webdienst bereitstellen. Achten Sie nur darauf, dass Sie sowohl die richtige Speicherkontokonfiguration als auch die neue Webdienstplan-ID angeben. Um in verschiedenen iLearner-Dateien zu patchen, können Sie die WSD-Datei ändern und den Speicherortverweis des trainierten Modells aktualisieren und als neuen Webdienst bereitstellen.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatisieren von Ausführung und Bereitstellung des Experiments
-Ein wichtiger Aspekt von ALM ist die Möglichkeit, den Ausführungs- und Bereitstellungsprozess der Anwendung zu automatisieren. In Azure Machine Learning Studio erreichen Sie dies mithilfe des [PowerShell-Moduls](https://aka.ms/amlps). Hier ist ein Beispiel aller Schritte, die für einen standardmäßigen automatisierten ALM-Ausführungs-/Bereitstellungsprozess mit dem [Azure Machine Learning Studio PowerShell-Modul](https://aka.ms/amlps) relevant sind. Jeder Schritt ist mit mindestens einem PowerShell-Cmdlet verknüpft, das Sie nutzen können, um diesen Schritt auszuführen.
+Ein wichtiger Aspekt von ALM ist die Möglichkeit, den Ausführungs- und Bereitstellungsprozess der Anwendung zu automatisieren. In der klassischen Version von Azure Machine Learning Studio erreichen Sie dies mithilfe des [PowerShell-Moduls](https://aka.ms/amlps). Hier ist ein Beispiel aller Schritte, die für einen standardmäßigen automatisierten ALM-Ausführungs-/Bereitstellungsprozess mit dem [(klassischen) Azure Machine Learning Studio PowerShell-Modul](https://aka.ms/amlps) relevant sind. Jeder Schritt ist mit mindestens einem PowerShell-Cmdlet verknüpft, das Sie nutzen können, um diesen Schritt auszuführen.
 
 1. [Laden Sie ein Dataset hoch.](https://github.com/hning86/azuremlps#upload-amldataset)
 2. Kopieren Sie ein Trainingsexperiment aus einem [Arbeitsbereich](https://github.com/hning86/azuremlps#copy-amlexperiment) oder [Katalog](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery) in den Arbeitsbereich, oder [importieren](https://github.com/hning86/azuremlps#import-amlexperimentgraph) Sie ein [exportiertes](https://github.com/hning86/azuremlps#export-amlexperimentgraph) Experiment vom lokalen Datenträger.
@@ -94,6 +94,6 @@ Ein wichtiger Aspekt von ALM ist die Möglichkeit, den Ausführungs- und Bereits
 10. Testen Sie den [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint)- oder [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint)-Endpunkt des Webdiensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Laden Sie das [Azure Machine Learning Studio PowerShell](https://aka.ms/amlps)-Modul herunter, und starten Sie die Automatisierung Ihrer ALM-Aufgaben.
+* Laden Sie das [(klassische) Azure Machine Learning Studio PowerShell](https://aka.ms/amlps)-Modul herunter, und starten Sie die Automatisierung Ihrer ALM-Aufgaben.
 * Erfahren Sie, wie Sie über PowerShell und die API zum Umtrainieren [eine große Anzahl von ML-Modellen mit nur einem einzigen Experiment erstellen und verwalten](create-models-and-endpoints-with-powershell.md).
-* Erfahren Sie mehr über [das Bereitstellen von Azure Machine Learning-Webdiensten](publish-a-machine-learning-web-service.md).
+* Erfahren Sie mehr über [das Bereitstellen von Azure Machine Learning-Webdiensten](deploy-a-machine-learning-web-service.md).

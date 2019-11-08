@@ -1,19 +1,19 @@
 ---
-title: 'Azure HPC Cache-Datenerfassung (Vorschau): manuelles Kopieren'
+title: 'Azure HPC Cache-Datenerfassung: manuelles Kopieren'
 description: Verwenden von cp-Befehlen zum Verschieben von Daten in ein Blobspeicherziel in Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254472"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582284"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC Cache-Datenerfassung (Vorschau): Methode zum manuellen Kopieren
+# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC Cache-Datenerfassung: Methode manuelles Kopieren
 
 Dieser Artikel enthält detaillierte Anweisungen zum manuellen Kopieren von Daten in einen Blobspeichercontainer für die Verwendung mit Azure HPC Cache. Er verwendet parallele Multithreadvorgänge, um die Kopiergeschwindigkeit zu optimieren.
 

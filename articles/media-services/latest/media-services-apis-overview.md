@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0c263e1353a07ca388ea9a7fb48ebcf99be07fc1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025631"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820633"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -75,7 +75,7 @@ Azure Media Services-v3-Ressourcennamen (beispielsweise Objekte, Aufträge und T
 
 Media Services-Ressourcennamen dürfen Folgendes nicht enthalten: „<“, „>“, „%“, „&“, „:“, „&#92;“, „?“, „/“, „*“, „+“, „.“, einzelne Anführungszeichen oder Steuerzeichen. Alle anderen Zeichen sind zulässig. Ein Ressourcenname darf maximal 260 Zeichen lang sein. 
 
-Weitere Informationen zur Benennung in Azure Resource Manager finden Sie unter: [Namensanforderungen](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) und [Namenskonvention](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+Weitere Informationen zur Benennung in Azure Resource Manager finden Sie unter: [Namensanforderungen](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) und [Namenskonvention](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Namen von Dateien/Blobs in einer Ressource
 
@@ -107,6 +107,8 @@ Media Services verfügt über die folgenden zeitintensiven Vorgänge:
 * [Skalieren eines Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
 Nach erfolgreicher Übermittlung eines zeitintensiven Vorgangs erhalten Sie eine Bestätigung vom Typ „202 – Akzeptiert“ und müssen anhand der zurückgegebenen Vorgangs-ID abfragen, ob der Vorgang abgeschlossen ist.
+
+Der Artikel [Nachverfolgen asynchroner Vorgänge in Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) enthält ausführliche Informationen zur Nachverfolgung des Status asynchroner Azure-Vorgänge anhand von Werten aus der zurückgegebenen Antwort.
 
 Für jedes Liveereignis bzw. für jede zugehörige Liveausgabe wird jeweils nur ein einzelner zeitintensiver Vorgang unterstützt. Wurde ein zeitintensiver Vorgang gestartet, muss er erst abgeschlossen werden, bevor der nächste zeitintensive Vorgang für das gleiche Liveereignis oder für eine der zugehörigen Liveausgaben gestartet wird. Bei Liveereignissen mit mehreren Liveausgaben müssen Sie warten, bis ein zeitintensiver Vorgang für eine Liveausgabe abgeschlossen wurde, bevor Sie einen zeitintensiven Vorgang für eine weitere Liveausgabe auslösen. 
 

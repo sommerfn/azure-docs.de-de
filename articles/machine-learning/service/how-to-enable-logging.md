@@ -10,14 +10,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a47ce44a325720fb1b6df919a0a324a4d3319d86
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002752"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489888"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Aktivieren der Protokollierung in Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Das Python-SDK für Azure Machine Learning gestattet Ihnen die Aktivierung der Protokollierung unter Verwendung sowohl des Python-Standardpakets für die Protokollierung als auch der SDK-spezifischen Funktionen für die lokale Protokollierung sowie die Protokollierung in Ihrem Arbeitsbereich im Portal. Protokolle bieten Entwicklern Echtzeitinformationen zum Anwendungszustand und können bei der Diagnose von Fehlern oder Warnungen helfen. In diesem Artikel lernen Sie verschiedene Möglichkeiten kennen, um die Protokollierung in den folgenden Bereichen zu aktivieren:
 
@@ -117,7 +118,7 @@ Sie können auch benutzerdefinierte Stapelüberwachungen für Ihren Webdienst pr
 service.update(enable_app_insights=True)
 ```
 
-Weitere Informationen finden Sie im [Gewusst-wie](how-to-enable-app-insights.md)-Artikel zur Arbeitsweise mit Application Insights im Azure-Portal.
+Weitere Informationen, wie mit Application Insights in Azure Machine Learning-Studio gearbeitet werden kann, finden Sie unter [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](how-to-enable-app-insights.md).
 
 ## <a name="python-native-logging-settings"></a>Native Protokollierungseinstellungen für Python
 

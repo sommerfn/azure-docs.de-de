@@ -1,9 +1,10 @@
 ---
-title: Dynamische Datenmaskierung für Azure SQL-Datenbank und Data Warehouse | Microsoft-Dokumentation
+title: Dynamische Datenmaskierung
 description: Die dynamische Datenmaskierung schränkt für SQL-Datenbank und Data Warehouse die Offenlegung sensibler Daten ein, indem diese für nicht berechtigte Benutzer maskiert werden.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: e36e91330232a90ff51cf92ce8dc920b51e2d914
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 2ff2dfe6384acc8a56558e6e7ba0fc5cc05f7783
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430121"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819967"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamische Datenmaskierung für Azure SQL-Datenbank und Data Warehouse
 

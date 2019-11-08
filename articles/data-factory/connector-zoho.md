@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion) | Microsoft-Dokumentation
+title: Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion)
 description: Erfahren Sie, wie Daten aus Zoho mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: e87ec0f24c07cc703b623043080d8968d08e0817
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 525599dcc262b8250e96d02707c0baa29d973196
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089039"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679994"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopieren von Daten aus Zoho mithilfe von Azure Data Factory (Vorschauversion)
 

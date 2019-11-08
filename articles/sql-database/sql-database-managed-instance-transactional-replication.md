@@ -1,5 +1,5 @@
 ---
-title: Transaktionsreplikation mit Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Transaktionsreplikation
 description: Erfahren Sie mehr über die Verwendung der SQL Server-Transaktionsreplikation mit Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 86bd479eff48a7feb42557eb1d175345728f0a69
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879053"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823308"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 

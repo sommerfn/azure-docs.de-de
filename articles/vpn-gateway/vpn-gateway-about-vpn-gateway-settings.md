@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: fa08ea44722b2def684c269c3f9a0a30a4890a12
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970904"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495741"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informationen zu VPN Gateway-Einstellungen
 
@@ -79,9 +79,9 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 Wenn Sie über ein VPN-Gateway verfügen und eine andere Gateway-SKU verwenden möchten, können Sie entweder die Größe Ihrer Gateway-SKU ändern oder zu einer anderen SKU wechseln. Wenn Sie zu einer anderen Gateway-SKU wechseln, löschen Sie das vorhandene Gateway vollständig und erstellen ein neues. Die Erstellung eines Gateways kann bis zu 45 Minuten dauern. Wenn Sie hingegen die Größe einer Gateway-SKU ändern, gibt es nur eine geringe Ausfallzeit, da Sie das Gateway nicht löschen und neu erstellen müssen. Wenn Sie die Möglichkeit haben, die Größe der Gateways-SKU zu ändern anstatt zu einer anderen SKU zu wechseln, sollten Sie diese Option bevorzugen. Es gibt jedoch auch Regeln hinsichtlich der Größenänderung:
 
-1. Sie können die SKU-Größe zwischen VpnGw1, VpnGw2 und VpnGw3 ändern.
+1. Mit Ausnahme der Basic-SKU können Sie die Größe einer VPN Gateway-SKU in die Größe einer anderen VPN Gateway-SKU innerhalb derselben Generation (Generation1 oder Generation2) ändern. So kann die VpnGw1-Größe von Generation1 z. B. in die VpnGw2-Größe von Generation1, aber nicht in die VpnGw2-Größe von Generation2 geändert werden.
 2. Bei Verwendung der alten Gateway-SKUs kann die Größe weiterhin zwischen Basic-, Standard- und HighPerformance-SKUs geändert werden.
-3. Sie können die Größe **nicht** von Basic/Standard/HighPerformance-SKUs in die neuen VpnGw1/VpnGw2/VpnGw3-SKUs ändern. Sie müssen stattdessen zu den neuen SKUs [wechseln](#change).
+3. Sie können die Größe von Basic/Standard/HighPerformance-SKUs **nicht** in die Größe von VpnGw-SKUs ändern. Sie müssen stattdessen zu den neuen SKUs [wechseln](#change).
 
 #### <a name="resizegwsku"></a>So ändern Sie die Größe eines Gateways
 

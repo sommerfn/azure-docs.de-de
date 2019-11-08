@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 831e75ba2d3f6af62496d437da3d1413dc612594
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695655"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686553"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -86,6 +86,7 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 * Japan, Osten 
 * Japan, Westen
 * US Government, Virginia
+* China, Osten 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Unterstützte Regionen: Log Analytics-Arbeitsbereiche
 
@@ -110,6 +111,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 * Indien, Mitte
 * Japan, Osten
 * US Government, Virginia
+* China, Osten 2
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

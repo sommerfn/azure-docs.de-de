@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure Service Bus-Themen und -Abonnements mit Java
-description: Verwenden von Service Bus-Themen und -Abonnements in Azure.
+title: 'Schnellstart: Verwenden von Azure Service Bus-Themen und -Abonnements mit Java'
+description: 'Schnellstart: Verwenden von Service Bus-Themen und -Abonnements in Azure.'
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -11,18 +11,18 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155586"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720001"
 ---
-# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 

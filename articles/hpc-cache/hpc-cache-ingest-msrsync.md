@@ -1,19 +1,19 @@
 ---
-title: 'Azure HPC Cache-Datenerfassung (Vorschau): msrsync'
+title: 'Azure HPC Cache-Datenerfassung: msrsync'
 description: Verwenden von msrsync zum Verschieben von Daten in ein Blobspeicherziel in Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 6eac6c367be42021a4654f85c8f4ec980c9f6925
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3e5937a036763fab57f9e37494ace33e8452b1f2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255283"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582271"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC Cache-Datenerfassung (Vorschau): msrsync-Methode
+# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache-Datenerfassung: msrsync-Methode
 
 Dieser Artikel enthält detaillierte Anweisungen zum Verwenden des ``msrsync``-Hilfsprogramms zum Kopieren von Daten in einen Azure-Blobspeichercontainer für die Verwendung mit Azure HPC Cache.
 

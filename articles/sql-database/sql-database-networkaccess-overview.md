@@ -1,9 +1,10 @@
 ---
-title: Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse | Microsoft-Dokumentation
+title: Kontrolle des Netzwerkzugriffs
 description: Übersicht über die Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse, um den Zugriff zu verwalten und eine einzelne oder eine Pooldatenbank zu konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703272"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73802942"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netzwerkzugriffssteuerung für Azure SQL-Datenbank und Data Warehouse
 

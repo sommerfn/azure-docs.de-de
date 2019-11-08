@@ -1,24 +1,24 @@
 ---
 title: 'Two-Class Boosted Decision Tree: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie mithilfe des Moduls „Two-Class Boosted Decision Tree“ in Azure Machine Learning Service ein Machine Learning-Modell erstellen, das auf dem Algorithmus für Boosted Decision Trees basiert.
+titleSuffix: Azure Machine Learning
+description: Hier erfahren Sie, wie Sie mithilfe des Moduls „Two-Class Boosted Decision Tree“ in Azure Machine Learning ein Machine Learning-Modell erstellen, das auf dem Algorithmus für Boosted Decision Trees basiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 5795dc994872ac5da37a1226524dddd35aa35126
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692632"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490167"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Modul „Two-Class Boosted Decision Tree“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschauversion) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Machine Learning-Modell zu erstellen, das auf dem Algorithmus für Boosted Decision Trees basiert. 
 
@@ -75,4 +75,4 @@ Klicken Sie nach Abschluss des Modelltrainings mit der rechten Maustaste auf die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

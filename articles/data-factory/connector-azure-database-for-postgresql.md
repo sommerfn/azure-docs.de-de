@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten in und aus Azure Database for PostgreSQL mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten in und aus Azure Database for PostgreSQL mithilfe von Azure Data Factory
 description: Hier erfahren Sie, wie Sie Daten mit einer Kopieraktivität in einer Azure Data Factory-Pipeline für Azure Database for PostgreSQL kopieren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: b92177b162f4649f253bf74372b175fc16130af6
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7443ab3abb12451619e77d925912b4bfc118cfaa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300389"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681223"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Database for PostgreSQL mithilfe von Azure Data Factory
 

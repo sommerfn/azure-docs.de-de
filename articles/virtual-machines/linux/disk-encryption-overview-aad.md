@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b0e3e683b2c103bc7f9b6812115e2e7a5d871034
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5f3de0f877186daa8f6add7fcd1546f91d6ce3d2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71829995"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748916"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption mit Azure AD (vorherige Version)
 
@@ -26,7 +26,7 @@ Die Angaben in folgenden Abschnitten bleiben unverändert:
 - [Weitere VM-Anforderungen](disk-encryption-overview.md#additional-vm-requirements)
 
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="networking-and-group-policy"></a>Netzwerk und Gruppenrichtlinie
 

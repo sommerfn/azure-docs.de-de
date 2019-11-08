@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Oracle Responsys mithilfe von Azure Data Factory (Vorschau) | Microsoft Docs
+title: Kopieren von Daten aus Oracle Responsys mithilfe von Azure Data Factory (Vorschau)
 description: Erfahren Sie, wie Daten aus Oracle Responsys mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 40a6c81008c7e4edefff94101022338590fe971b
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 9fdf031b5cd215cee5ed7d76e4fc320c824f3755
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089876"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680543"
 ---
 # <a name="copy-data-from-oracle-responsys-using-azure-data-factory-preview"></a>Kopieren von Daten aus Oracle Responsys mithilfe von Azure Data Factory (Vorschau)
 

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: moderakh
-ms.openlocfilehash: 61824d1f979d54f49d23f3805ff249c75a62baa4
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 05f597093c27f84d7f20cf0abd5858f44645b88d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063939"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574923"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 | **Leistungstipps**| [GitHub-Infodatei](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
 | **Unterstützte Mindestlaufzeit**|[JDK 8](https://aka.ms/azure-jdks) | 
 
-[!INCLUDE[Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
+[!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

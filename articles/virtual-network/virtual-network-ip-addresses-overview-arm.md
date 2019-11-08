@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: a0c86f9ad134e9b640d33d1a391c5387af9f9afd
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 40797c1b46bc88ecdaab6e28ef64f05a73e3ba8d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965662"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495915"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -151,7 +151,7 @@ Im Azure Resource Manager-Bereitstellungsmodell wird den folgenden Typen von Azu
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
 
-Eine private IP-Adresse wird aus dem Adressbereich des VNET-Subnetzes zugeteilt, in dem eine Ressource bereitgestellt wurde. Azure reserviert die ersten vier Adressen jedes Subnetzadressbereichs, sodass die Adressen keinen Ressourcen zugewiesen werden können. Wenn der Adressbereich des Subnetzes beispielsweise 10.0.0.0/16 ist, können die Adressen 10.0.0.0 bis 10.0.0.3 keinen Ressourcen zugewiesen werden. IP-Adressen innerhalb des Adressbereichs des Subnetzes können jeweils nur einer Ressource zugewiesen werden. 
+Eine private IP-Adresse wird aus dem Adressbereich des VNET-Subnetzes zugeteilt, in dem eine Ressource bereitgestellt wurde. Azure reserviert die ersten vier Adressen jedes Subnetzadressbereichs, sodass die Adressen keinen Ressourcen zugewiesen werden können. Wenn der Adressbereich des Subnetzes beispielsweise 10.0.0.0/16 ist, können die Adressen 10.0.0.0 bis 10.0.0.3 und 10.0.255.255 keinen Ressourcen zugewiesen werden. IP-Adressen innerhalb des Adressbereichs des Subnetzes können jeweils nur einer Ressource zugewiesen werden. 
 
 Es gibt zwei Methoden zum Zuordnen von privaten IP-Adressen:
 

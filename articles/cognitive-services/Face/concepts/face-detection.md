@@ -1,7 +1,7 @@
 ---
 title: Gesichtserkennung und -attribute – Konzepte
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie etwas über Konzepte zu Gesichtserkennung und Gesichtsattributen.
+description: Bei der Gesichtserkennung werden menschliche Gesichter in einem Bild gesucht und optional verschiedene Arten von gesichtsbezogenen Daten zurückgegeben.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: e61048eeab9d7061c18f3237db22fc87ca52f526
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65891151"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743058"
 ---
 # <a name="face-detection-and-attributes"></a>Gesichtserkennung und -attribute
 

@@ -4,15 +4,16 @@ description: Konfigurieren der Leadverwaltung für Dynamics CRM
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 6fdab26bb5a4da5402a3a0a895a7c8835ef22c2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ccc8b85e72a4da3b0e640abcc70d24b7cdc54af
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935799"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825260"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurieren der Leadverwaltung für Dynamics CRM Online
 

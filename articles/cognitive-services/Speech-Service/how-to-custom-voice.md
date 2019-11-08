@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959395"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464516"
 ---
 # <a name="get-started-with-custom-voice"></a>Erste Schritte mit Custom Voice
 
@@ -36,6 +36,13 @@ Im folgenden Diagramm sind die Schritte zum Erstellen eines benutzerdefinierten 
 3.  [Trainieren Ihres Modells:](how-to-custom-voice-create-voice.md#build-your-custom-voice-model) Erstellen Sie unter Verwendung Ihrer Daten ein benutzerdefiniertes Stimmmodell für die Sprachsynthese. Sie können ein Modell in verschiedenen Sprachen trainieren. Testen Sie Ihr trainiertes Modell. Wenn Sie mit dem Ergebnis zufrieden sind, können Sie das Modell bereitstellen.
 
 4.  [Bereitstellen Ihres Modells:](how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint) Erstellen Sie einen benutzerdefinierten Endpunkt für Ihr Stimmmodell für die Sprachsynthese, und verwenden sie ihn für die Sprachsynthese in Ihren Produkten, Tools und Anwendungen.
+
+## <a name="custom-neural-voices"></a>Benutzerdefinierte neuronale Stimmen
+
+Die neuronale Stimmenanpassungsfunktion befindet sich derzeit in der öffentlichen Vorschauversion und ist auf ausgewählte Kunden beschränkt. Füllen Sie dieses [Antragsformular](https://go.microsoft.com/fwlink/?linkid=2108737) aus, um loszulegen.
+
+> [!NOTE]
+> Im Rahmen der Verpflichtung von Microsoft für die Entwicklung einer verantwortungsvollen KI ist es unsere Absicht, die Rechte von Personen und der Gesellschaft zu schützen und transparente Interaktionen zwischen Mensch und Computer zu fördern. Aus diesem Grund ist die benutzerdefinierte neuronale Stimme nicht für alle Kunden verfügbar. Sie erhalten erst Zugriff auf die Technologie, nachdem Ihre Anwendungen überprüft wurden und Sie sich zur Einhaltung der ethischen Grundlagen verpflichtet haben. Erfahren Sie mehr über unseren [Anwendungskontrollprozess](https://aka.ms/custom-neural-gating-overview).
 
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 

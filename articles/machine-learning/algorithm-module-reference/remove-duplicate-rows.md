@@ -1,24 +1,24 @@
 ---
 title: 'Remove Duplicate Rows: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Remove Duplicate Rows“ (Doppelte Zeilen entfernen) im Azure Machine Learning Service verwenden, um potenzielle Duplikate aus einem Dataset zu entfernen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Remove Duplicate Rows“ (Doppelte Zeilen entfernen) in Azure Machine Learning verwenden, um potenzielle Duplikate aus einem Dataset zu entfernen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 8b3f73c56d85eecd50633085eca0e632abaa6b4c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693663"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497693"
 ---
 # <a name="remove-duplicate-rows-module"></a>Modul „Remove Duplicate Rows“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Mit diesem Modul können Sie potenzielle Duplikate aus einem Dataset entfernen.
 
@@ -78,4 +78,4 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

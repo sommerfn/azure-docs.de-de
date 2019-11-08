@@ -1,5 +1,5 @@
 ---
-title: Aktivität „Variable festlegen“ in Azure Data Factory | Microsoft-Dokumentation
+title: Aktivität „Variable festlegen“ in Azure Data Factory
 description: Erfahren Sie, wie Sie die Aktivität „Variable festlegen“ zum Festlegen des Werts einer vorhandenen Variablen verwenden, die in einer Data Factory-Pipeline definiert ist.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: cfe6dd63234a7750fe01614d6f1b38bb7cce1adb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2589e56d3170b235f31d07f902eb75c749e8573f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142443"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679301"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Aktivität „Variable festlegen“ in Azure Data Factory
 

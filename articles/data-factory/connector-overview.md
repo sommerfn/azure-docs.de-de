@@ -1,5 +1,5 @@
 ---
-title: Übersicht über Azure Data Factory-Connectors | Microsoft-Dokumentation
+title: Übersicht über Azure Data Factory-Connectors
 description: Informationen zu den unterstützten Connectors in Data Factory.
 services: data-factory
 author: linda33wj
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 8/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 14efe4d71ef11f0a4d32266368f0eefa167dff4b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 386372b73940c4917305d89f2e4d16759797bb87
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129538"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680465"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Übersicht über Azure Data Factory-Connectors
 

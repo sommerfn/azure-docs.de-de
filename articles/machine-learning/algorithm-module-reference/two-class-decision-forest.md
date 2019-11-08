@@ -1,24 +1,24 @@
 ---
 title: 'Entscheidungswald mit zwei Klassen: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe des Moduls „Entscheidungswald mit zwei Klassen“ in Azure Machine Learning Service ein Modell für maschinelles Lernen erstellen, das auf dem Entscheidungswald-Algorithmus basiert.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mithilfe des Moduls „Entscheidungswald mit zwei Klassen“ in Azure Machine Learning ein Modell für maschinelles Lernen erstellen, das auf dem Entscheidungswald-Algorithmus basiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 243f1774069f048d0e8a1ce11e3ac42e4e73f58b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: ebe9a0368f2111fa6787b7fa4f4432d7ad4106c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693620"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485958"
 ---
 # <a name="two-class-decision-forest-module"></a>Modul „Entscheidungswald mit zwei Klassen“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Modell für maschinelles Lernen zu erstellen, das auf dem Entscheidungswald-Algorithmus basiert.  
 
@@ -101,7 +101,6 @@ Nach Abschluss des Trainings:
 
 + Um das Modell zur Bewertung zu verwenden, fügen Sie einer Pipeline das Modul **Score Model** hinzu.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

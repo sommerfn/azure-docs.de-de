@@ -1,19 +1,19 @@
 ---
-title: 'Azure HPC Cache-Datenerfassung (Vorschau): Skript für paralleles Kopieren'
+title: 'Azure HPC Cache-Datenerfassung: Skript für paralleles Kopieren'
 description: Verwenden eines Skript für paralleles Kopieren zum Verschieben von Daten in ein Blobspeicherziel in Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 0bb74dcd683145fbae22cf0b6d2827ad9e16de0e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582695"
 ---
-# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache-Datenerfassung (Vorschau): Methode mit Skript für paralleles Kopieren
+# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache-Datenerfassung: Methode mit Skript für paralleles Kopieren
 
 Dieser Artikel enthält Anweisungen zum Erstellen des ``parallelcp``-Skripts und für seine Verwendung zum Verschieben von Daten in einen Blobspeichercontainer für die Verwendung mit Azure HPC Cache.
 

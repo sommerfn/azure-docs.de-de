@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: d8e23188aa07b1b271c3adc7c5550b18c0c60977
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104463"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827681"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -57,7 +57,7 @@ Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto.
 1. Klicken Sie auf **Create**.
 1. Auf dem Bildschirm **Speicherkonto erstellen**:
     1. Wählen Sie das richtige Abonnement und die Ressourcengruppe aus.
-    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein. Weitere Informationen zu Namenskonventionen für Speicherkonten finden Sie unter [Namenskonventionen für Azure-Ressourcen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage).
+    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein. Weitere Informationen zu Namenskonventionen für Speicherkonten finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage).
     1. Klicken Sie auf die Registerkarte **Erweitert**.
     1. Klicken Sie auf **Aktiviert** neben **Hierarchischer Namespace** unter **Data Lake Storage Gen2**.
     1. Klicken Sie auf **Überprüfen + erstellen**.

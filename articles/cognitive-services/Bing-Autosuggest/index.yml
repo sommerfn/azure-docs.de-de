@@ -1,91 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentation zur Bing-Vorschlagssuche
+summary: Mit der Bing-Vorschlagssuche-API können Sie Teilsuchanfragen an Bing senden und eine Liste von Vorschlägen erhalten, die auf der Absicht des Benutzers und vergangenen Suchanfragen basieren. Rufen Sie die API auf, um Suchfelder und Dropdownlisten in Ihrer App mit Vorschlägen zu auszufüllen, während die Benutzer tippen.
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: 'Dokumentation zur Bing-Vorschlagssuche: Tutorials, Schnellstartanleitungen, API-Referenzen'
   titleSuffix: Azure Cognitive Services
-  description: 'Erfahren Sie, wie Sie mit der Bing-Vorschlagssuche-API vorgeschlagene Abfragen auf Basis einer partiellen Abfrage erhalten. In Tutorials wird gezeigt, wie Sie Apps erstellen, die den Dienst nutzen.'
+  description: Erfahren Sie, wie Sie mit der Bing-Vorschlagssuche-API vorgeschlagene Abfragen auf Basis einer partiellen Abfrage erhalten. In Tutorials wird gezeigt, wie Sie Apps erstellen, die den Dienst nutzen.
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.topic: landing-page
-  ms.date: 07/25/2019
+  ms.date: 10/28/2019
   ms.author: aahi
-abstract:
-  description: 'Mit der Bing-Vorschlagssuche-API können Sie einen Teil eines Suchbegriffs an Bing senden und erhalten dann eine Liste mit vorgeschlagenen Begriffen, die andere Benutzer gesucht haben.  Während Benutzer beispielsweise die einzelnen Zeichen ihres Suchbegriffs eingeben, können Sie diese API aufrufen, um die Dropdown-Liste des Suchfelds mit Vorschlägen aufzufüllen. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie mehr über die Vorschlagssuche-API.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/bing-autosuggest/get-suggested-search-terms
-            html: <p>Informationen zur Bing-Vorschlagssuche-API</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Worum handelt es sich bei der Bing-Vorschlagssuche-API?
-          - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
-            html: '<p>Hier erfahren Sie, wie Sie Suchvorschläge in Echtzeit abrufen.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Abrufen von Vorschlägen über die Bing-Vorschlagssuche-API
-          - href: /azure/cognitive-services/bing-autosuggest/language-support
-            html: '<p>Lesen Sie, welche Sprachen von der API unterstützt werden.</p>'
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Unterstützte Sprachen
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Erste Schritte mit der Bing-Vorschlagssuche-API durch Ausführen einer Abfrage und Anzeigen der JSON-Antwort:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            href: quickstarts/csharp
-            text: 'C&#35;'
-          - image:
-              src: media/index/logo_java.svg
-            href: quickstarts/java
-            text: Java
-          - image:
-              src: media/index/logo_nodejs.svg
-            href: quickstarts/nodejs
-            text: Node.js
-          - image:
-              src: media/index/logo_php.svg
-            href: quickstarts/php
-            text: PHP
-          - image:
-              src: media/index/logo_python.svg
-            href: quickstarts/python
-            text: Python
-          - image:
-              src: media/index/logo_ruby.svg
-            href: quickstarts/ruby
-            text: Ruby
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Anwendungen mit der Bing-Vorschlagssuche-API entwickeln:'
-      - type: paragraph
-        text: <a href="tutorials/autosuggest.md">Einzelseiten-Web-App</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: APIs
-            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference">Bing-Vorschlagssuche-API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference">Bing-Vorschlagssuche-API v5</p>'
-          - title: SDKs
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet">.NET</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable">Java</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: Befehlszeilenschnittstelle (CLI)
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>'
+  ms.openlocfilehash: b0618f5bd0ed9deb1241dd3ff752a49686ca9073
+  ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/07/2019
+  ms.locfileid: "73746143"
+landingContent:
+- title: Informationen zur Bing-Vorschlagssuche-API
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich bei der Bing-Vorschlagssuche-API?
+      url: get-suggested-search-terms.md
+    - text: Vergleichen der Bing-Suche-APIs
+      url: ../bing-web-search/bing-api-comparison.md
+- title: Vorgeschlagene Suchbegriffe abrufen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verwenden von C#
+      url: quickstarts/csharp.md
+    - text: Verwenden von Python
+      url: quickstarts/python.md
+    - text: Verwenden von Java
+      url: quickstarts/java.md
+    - text: Verwenden von Node.js
+      url: quickstarts/nodejs.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen einer Einzelseiten-Web-App
+      url: tutorials/autosuggest.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden von vorgeschlagenen Begriffen
+      url: concepts/get-suggestions.md
+    - text: Senden von API-Anforderungen
+      url: concepts/sending-requests.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Vorschlagssuche-REST-API v7
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference
+    - text: Vorschlagssuche-REST-API v5
+      url: https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v5-reference
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-dotnet
+    - text: Java-SDK
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingautosuggest?view=azure-java-stable
+    - text: Go SDK
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/autosuggest
+    - text: Node.js SDK
+      url: https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-autosuggest/?view=azure-node-latest

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: e9e41ffa335aa95b139a5d5658424c1c5915b569
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 771124d0b8ca15bf72501fdeff8c31d0a43050b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914965"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73578686"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service FAQ
 
@@ -59,11 +59,11 @@ In ASP.NET Core SignalR ist `HubConnectionContext context` der Kontext aus der p
 In der Azure SignalR Service SDK ist `HubConnectionContext context` der Kontext aus der logischen Clientverbindung. Die physische Clientverbindung besteht mit der SignalR Service-Instanz, weshalb also nur eine begrenzte Anzahl von Eigenschaften bereitgestellt wird.
 
 Vorerst sind nur `HubConnectionContext.GetHttpContext()` und `HubConnectionContext.User` für den Zugriff verfügbar.
-Den Quellcode können Sie sich [hier](https://github.com/Azure/azure-signalr/blob/kevinzha/faq/src/Microsoft.Azure.SignalR/ServiceHubConnectionContext.cs) ansehen.
+Den Quellcode können Sie sich [hier](https://github.com/Azure/azure-signalr/blob/dev/src/Microsoft.Azure.SignalR/HubHost/ServiceHubConnectionContext.cs) ansehen.
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>Kann ich die in SignalR Service verfügbaren Transporte so konfigurieren, wie sie sich serverseitig bei ASP.NET Core SignalR konfigurieren lassen? Kann ich beispielsweise den WebSocket-Transport deaktivieren?
 
- Nein.
+Nein.
 
 Azure SignalR Service bietet alle drei Transporte, die von ASP.NET Core SignalR standardmäßig unterstützt werden. Dies ist nicht konfigurierbar. SignalR Service verarbeitet Verbindungen und Transporte für alle Clientverbindungen.
 

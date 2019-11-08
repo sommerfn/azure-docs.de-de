@@ -1,5 +1,5 @@
 ---
-title: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank | Microsoft-Dokumentation
+title: 'Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank '
 description: In diesem Artikel wird beschrieben, wie Sie SSISDB-Protokolle über Aufträge für die elastische Azure-Datenbank bereinigen, um die gespeicherte Prozedur auszulösen, die für diesen Zweck vorhanden ist.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0697addb14894855f554c1d82f59f3798e63d03b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61345552"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674735"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Azure-Datenbank
 

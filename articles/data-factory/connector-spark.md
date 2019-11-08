@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Spark mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Spark mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Spark mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 3556c3f2cc56c85bf256f7a352a1a74ad06735d8
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: c155f72d2c95f47b450207ae4b6a8d9a79f61030
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71089351"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680162"
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopieren von Daten aus Spark mithilfe von Azure Data Factory 
 

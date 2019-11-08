@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 11/04/2019
+ms.openlocfilehash: 67ca6aa36166e8ae08bedec82441e45930976b80
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166228"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603997"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Überwachen der Leistung von Azure Database for MariaDB mit dem Abfragespeicher
 
 **Anwendungsbereich:** Azure Database for MariaDB 10.2
-
-> [!IMPORTANT]
-> Der Abfragespeicher befindet sich in der Vorschauphase.
 
 Das Abfragespeicherfeature in Azure Database for MariaDB ermöglicht die Nachverfolgung der Abfrageleistung im Zeitverlauf. Der Abfragespeicher vereinfacht das Beheben von Leistungsproblemen, da er es Ihnen ermöglicht, die am längsten ausgeführten und ressourcenintensivsten Abfragen schnell zu ermitteln. Der Abfragespeicher erfasst automatisch einen Verlauf der Abfragen und Laufzeitstatistiken und bewahrt diese auf, damit Sie sie überprüfen können. Er unterteilt die Daten nach Zeitfenstern, damit Sie Verwendungsmuster für Datenbanken erkennen können. Die Daten für alle Benutzer, Datenbanken und Abfragen werden in der Schemadatenbank **mysql** der Azure Database for MariaDB-Instanz gespeichert.
 
@@ -70,6 +67,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 ```
 
 ## <a name="finding-wait-queries"></a>Suchen von Warteanfragen
+
+> [!NOTE]
+> Die Wartestatistik sollte während Workloadspitzenzeiten nicht aktiviert oder bei leistungsabhängigen Workloads nicht unbegrenzt aktiviert werden. <br>Gehen Sie bei Workloads, die mit hoher CPU-Auslastung oder Servern mit niedrigeren virtuellen Kernen ausgeführt werden, mit Bedacht vor, wenn Sie die Wartestatistik aktivieren. Sie sollte nicht unbegrenzt aktiviert werden. 
 
 Warteereignistypen kombinieren verschiedene Warteereignisse nach Ähnlichkeit in Buckets. Der Abfragespeicher enthält den Warteereignistyp, den spezifischen Warteereignisnamen und die entsprechende Abfrage. Die Möglichkeit zum Korrelieren dieser Warteinformationen mit den Abfragelaufzeitstatistiken bedeutet, dass Sie einen ausführlicheren Überblick darüber erhalten, welche Faktoren sich auf die Abfrageleistung auswirken.
 

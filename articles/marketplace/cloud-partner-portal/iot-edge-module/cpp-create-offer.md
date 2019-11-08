@@ -4,15 +4,16 @@ description: Hier erfahren Sie, wie Sie ein neues IoT Edge-Modul für den Market
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pabutler
-ms.openlocfilehash: 98eb537a5c064cd22b995ae214c8d61db7a8b6b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c1e2f5ac6078309b7bd8753a3fc57a592a67dcec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942499"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826088"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Erstellen eines neuen IoT Edge-Modulangebots im Cloud-Partnerportal
 

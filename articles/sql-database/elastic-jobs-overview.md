@@ -1,22 +1,22 @@
 ---
-title: Aufträge für elastische Azure SQL-Datenbanken (Vorschauversion) | Microsoft-Dokumentation
+title: Aufträge für die elastische Datenbank (Vorschau)
 description: Konfigurieren von Aufträgen für elastische Datenbanken (Vorschauversion), um T-SQL-Skripts (Transact-SQL) für einzelne oder mehrere Azure SQL-Datenbank-Instanzen auszuführen
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3a0aa6e28ea4c40d5cad5ba99edec344c7979acf
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f5eaed807e69dcc1a0b7ad426bab91abd2f8309a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935080"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827265"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank
 

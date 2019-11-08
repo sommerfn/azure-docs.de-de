@@ -1,22 +1,22 @@
 ---
-title: Replikation zu Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Replikation
 description: Erfahren Sie mehr über die Verwendung der SQL Server-Replikation mit Azure SQL-Datenbank-Einzeldatenbanken und Datenbanken in Pools für elastische Datenbanken.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: eab8f4809742b69e92cb835801493722d28afe49
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570472"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815778"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und -Pooldatenbanken
 

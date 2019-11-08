@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 1980ee0bdea1316f6117d9deb7d2adb9df941768
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 6566ce4b9cec9ff09666e734625f15033c85127b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162616"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73749576"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
 Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zunächst stellen Sie eine Verbindung mit dem virtuellen Computer her, dann melden Sie sich an.
@@ -55,7 +55,7 @@ Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzu
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>Herstellen einer Verbindung mit dem virtuellen Computer über PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+ 
 
 Wenn Sie PowerShell verwenden und das Azure PowerShell-Modul installiert haben, können Sie die Verbindung auch über das Cmdlet `Get-AzRemoteDesktopFile` herstellen, wie unten dargestellt.
 

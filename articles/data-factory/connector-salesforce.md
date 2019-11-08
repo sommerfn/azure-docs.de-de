@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus und nach Salesforce mit Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
 description: Erfahren Sie, wie Sie mithilfe einer Kopieraktivität in einer Data Factory-Pipeline Daten aus Salesforce in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern nach Salesforce kopieren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 08d1afb4175a61b70d8e04b19db187bcc87dd129
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 1bcfc0386925d142fd765547ff60e1f2a3bd9101
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010513"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680332"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

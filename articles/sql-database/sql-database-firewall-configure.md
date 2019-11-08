@@ -1,9 +1,10 @@
 ---
-title: IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: IP-Firewallregeln
 description: Hier erfahren Sie, wie Sie IP-Firewallregeln auf Serverebene für eine SQL-Datenbank- oder SQL Data Warehouse-Firewall konfigurieren. Außerdem erfahren Sie, wie Sie den Zugriff verwalten und IP-Firewallregeln auf Datenbankebene für eine Einzel- oder Pooldatenbank konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 668744121c41a6e4797bc335b2736c8b31d87a41
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686468"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807928"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse
 

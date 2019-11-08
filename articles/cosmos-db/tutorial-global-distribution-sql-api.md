@@ -1,20 +1,20 @@
 ---
-title: Tutorial zur globalen Verteilung von Azure Cosmos DB mit der SQL-API
-description: Hier erfahren Sie, wie Sie die globale Verteilung von Azure Cosmos DB mithilfe der SQL-API einrichten.
+title: 'Tutorial: Tutorial zur globalen Verteilung von Azure Cosmos DB mit der SQL-API'
+description: 'Tutorial: Hier erfahren Sie, wie Sie die globale Verteilung von Azure Cosmos DB mithilfe der SQL-API einrichten.'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 07/15/2019
+ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b6b8be29afc25a3862a440e46d41e8c911189c04
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b76fee17b64d50831d5bceca9d8512e7b7498d73
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756840"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720773"
 ---
-# <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der SQL-API
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Tutorial: Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der SQL-API
 
 In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal die globale Verteilung von Azure Cosmos DB einrichten und dann mithilfe der SQL-API eine Verbindung herstellen.
 

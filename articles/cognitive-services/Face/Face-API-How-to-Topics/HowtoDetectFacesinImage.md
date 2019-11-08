@@ -1,7 +1,7 @@
 ---
 title: Erkennen von Gesichtern auf einem Bild – Gesichtserkennungs-API
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie die verschiedenen Daten verwenden, die vom Gesichtserkennungsfeature zurückgegeben werden.
+description: In diesem Leitfaden wird gezeigt, wie mithilfe der Gesichtserkennung aus einem bestimmten Bild Attribute wie Geschlecht, Alter oder Körperhaltung extrahiert werden können.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306635"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744281"
 ---
 # <a name="get-face-detection-data"></a>Abrufen von Gesichtserkennungsdaten
 

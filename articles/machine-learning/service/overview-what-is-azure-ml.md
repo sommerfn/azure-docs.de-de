@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: f0f9a2e59e0e231c956e9f1c36bb6a54bcbaca24
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476334"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824076"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -44,7 +44,7 @@ Azure Machine Learning verfügt über alle Tools, die Entwickler und Data Scient
 
 + Jupyter-Notebooks: Verwenden Sie unsere [Beispielnotebooks](https://aka.ms/aml-notebooks), oder erstellen Sie Ihre eigenen Notebooks, um unsere <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK für Python</a>-Beispiele für Ihre Machine Learning-Zwecke zu nutzen. 
 
-+ R-Skripts oder Notebooks, in denen Sie das <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html on" target="_blank">SDK für R</a> zum Schreiben Ihres eigenen Codes verwenden (oder die R-Module im Designer).
++ R-Skripts oder Notebooks, in denen Sie das <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK für R</a> zum Schreiben Ihres eigenen Codes verwenden (oder die R-Module im Designer).
 
 + [Visual Studio Code-Erweiterung](how-to-vscode-tools.md)
 
@@ -73,7 +73,7 @@ Optionen für Training und Bereitstellung ohne oder mit nur wenig Code:
 
   Weitere Informationen finden Sie im [Artikel mit der Übersicht über den Azure Machine Learning-Designer](concept-designer.md). 
 
-  ![Azure Machine Learning-Designer: Beispiel](/media/concept-ml-pipelines/visual-design-surface.gif)
+  ![Azure Machine Learning-Designer: Beispiel](media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 + **Benutzeroberfläche für automatisiertes maschinelles Lernen**
 

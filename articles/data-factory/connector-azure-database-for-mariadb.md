@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Azure Database for MariaDB mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Azure Database for MariaDB mithilfe von Azure Data Factory
 description: Es wird beschrieben, wie Daten aus Azure Database for MariaDB mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 370cafb5d73878e49315014c2fc1bdf8cd8a85e2
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 937207f9a26b275dea4255198b8a4623229f1cb6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090492"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681258"
 ---
 # <a name="copy-data-from-azure-database-for-mariadb-using-azure-data-factory"></a>Kopieren von Daten aus Azure Database for MariaDB mithilfe von Azure Data Factory 
 

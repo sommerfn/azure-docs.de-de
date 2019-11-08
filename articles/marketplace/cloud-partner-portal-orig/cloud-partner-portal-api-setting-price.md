@@ -4,15 +4,16 @@ description: Erläutert die drei Methoden zum Festlegen der Preise für VM-Angeb
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: e398b43e679fb6420c2256e77d34359ae537ac1c
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868741"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827334"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
 ==================================

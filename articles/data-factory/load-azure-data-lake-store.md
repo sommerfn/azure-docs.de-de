@@ -1,5 +1,5 @@
 ---
-title: Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory | Microsoft-Dokumentation
+title: Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory
 description: Kopieren von Daten in Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 522b9743af28dedb2aec5682a1ae95b9d52ad2d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b8e5841e6869bd6f19b07bf71434de809cdcb74f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60549121"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672716"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen1 mit Azure Data Factory
 

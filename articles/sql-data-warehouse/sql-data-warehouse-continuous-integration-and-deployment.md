@@ -1,5 +1,5 @@
 ---
-title: Continuous Integration und Continuous Deployment | Microsoft-Dokumentation
+title: Continuous Integration und Continuous Deployment
 description: Professionelle DevOps-Datenbankumgebung für SQL Data Warehouse mit integrierter Unterstützung für Continuous Integration und Continuous Deployment mithilfe von Azure Pipelines
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7afb616fffaf01b1efa4f5d5a4af9dddd9683781
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70143846"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646149"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continuous Integration und Continuous Deployment für Azure SQL Data Warehouse
 

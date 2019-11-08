@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e427a7b80b28f1cc70a02890152f9f2247a8bcd2
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68360285"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612069"
 ---
 Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT Hub Device Provisioning-Diensts gelten.
 
@@ -20,7 +20,7 @@ Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT 
 | Maximale Anzahl von Registrierungen (Registrations) | 1\.000.000 |
 | Maximale Anzahl von Registrierungsgruppen | 100 |
 | Maximale Anzahl von Zertifizierungsstellen | 25 |
-| Maximale Anzahl der verknüpften IoT-Hubs | 10 |
+| Maximale Anzahl der verknüpften IoT-Hubs | 50 |
 | Maximale Nachrichtengröße | 96 KB|
 
 

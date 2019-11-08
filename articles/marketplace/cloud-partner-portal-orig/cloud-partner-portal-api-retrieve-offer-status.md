@@ -4,15 +4,16 @@ description: Die API ruft den aktuellen Status des Angebots ab.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 26ee8b5b1879c505f8200671558fe065ace068a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935451"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819662"
 ---
 <a name="retrieve-offer-status"></a>Abrufen des Angebotsstatus 
 =====================
@@ -26,8 +27,8 @@ Ruft den aktuellen Status des Angebots ab.
 
 |  **Name**       |   **Beschreibung**                            |  **Datentyp** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Herausgeber-ID, z.B. `Contoso`  |     string     |
-|  offerId        | GUID, die das Angebot eindeutig identifiziert      |     string     |
+|  publisherId    | Herausgeber-ID, z.B. `Contoso`  |     Zeichenfolge     |
+|  offerId        | GUID, die das Angebot eindeutig identifiziert      |     Zeichenfolge     |
 |  api-version    | Neueste Version der API                        |     Date       |
 |  |  |
 
@@ -37,8 +38,8 @@ Ruft den aktuellen Status des Angebots ab.
 
 |  NAME           |  Wert               |
 |  -------------  | -------------------  |
-|  Content-Typ   |  `application/json`  |
-|  Autorisierung  | `Bearer YOUR_TOKEN`  |
+|  Content-Type   |  `application/json`  |
+|  Authorization  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 

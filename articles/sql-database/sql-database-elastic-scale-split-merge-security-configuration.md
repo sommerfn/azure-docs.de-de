@@ -1,5 +1,5 @@
 ---
-title: Split-Merge-Sicherheitskonfiguration| Microsoft Docs
+title: Split-Merge-Sicherheitskonfiguration
 description: Richten Sie X409-Zertifikate für die Verschlüsselung mit dem Split/Merge-Dienst für elastische Skalierung ein.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: ada794807f980854c203b56874e452713ecef6ea
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568355"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823527"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 

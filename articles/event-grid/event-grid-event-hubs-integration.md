@@ -1,19 +1,19 @@
 ---
-title: Senden von Event Hubs-Daten an Data Warehouse – Event Grid
-description: Hier wird erläutert, wie Daten mithilfe von Azure Event Grid und Event Hubs zu einem SQL Data Warehouse migriert werden. Zum Abrufen einer Capture-Datei wird eine Azure-Funktion verwendet.
+title: 'Tutorial: Senden von Event Hubs-Daten an Data Warehouse – Event Grid'
+description: 'Tutorial: Hier wird erläutert, wie Daten mithilfe von Azure Event Grid und Event Hubs zu einem SQL Data Warehouse migriert werden. Zum Abrufen einer Capture-Datei wird eine Azure-Funktion verwendet.'
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 01/13/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 1ae7a18660d2a7324bc5897d6b3952da42b6c4b2
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65603443"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718179"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
 Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einem SQL Data Warehouse verwenden.
@@ -87,7 +87,7 @@ In diesem Schritt stellen Sie die erforderliche Infrastruktur mit einer [Resourc
     1. Geben Sie einen Namen für die **Ressourcengruppe** an.
     2. Betätigen Sie die **EINGABETASTE**. 
 
-        Beispiel: 
+        Beispiel:
     
         ```azurecli
         user@Azure:~$ az group create -l eastus -n ehubegridgrp

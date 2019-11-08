@@ -1,7 +1,7 @@
 ---
 title: 'Preprocess Text: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Preprocess Text“ (Text vorverarbeiten) in Azure Machine Learning Service verwenden, um Text zu bereinigen und zu vereinfachen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Preprocess Text“ (Text vorverarbeiten) in Azure Machine Learning verwenden, um Text zu bereinigen und zu vereinfachen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 2213d26e6d3b2b6a7aca9d65e74a4499ff0da6c1
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9bf81b4e4c305c864592c32a8737d1a5eeb18651
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692684"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497684"
 ---
 # <a name="preprocess-text"></a>Preprocess Text
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie das Modul **Preprocess Text** (Text vorverarbeiten), um Text zu bereinigen und zu vereinfachen. Es unterstützt diese gängigen Textverarbeitungsvorgänge:
 
@@ -33,7 +33,7 @@ Das Modul **Preprocess Text** (Text vorverarbeiten) unterstützt zurzeit nur Eng
 
 ## <a name="configure-text-preprocessing"></a>Konfigurieren der Textvorverarbeitung  
 
-1.  Fügen Sie das Modul **Preprocess Text** (Text vorverarbeiten) dem Experiment in Azure Machine Learning Service hinzu. Sie finden dieses Modul unter **Textanalyse**.
+1.  Fügen Sie das Modul **Preprocess Text** (Text vorverarbeiten) zu Ihrer Pipeline in Azure Machine Learning hinzu. Sie finden dieses Modul unter **Textanalyse**.
 
 1. Stellen Sie eine Verbindung mit einem Dataset her, das mindestens eine Spalte mit Text enthält.
 
@@ -83,8 +83,8 @@ Das Modul **Preprocess Text** (Text vorverarbeiten) unterstützt zurzeit nur Eng
 
     Beispielsweise würde die Zeichenfolge `MS---WORD` in drei Token aufgeteilt: `MS`, `-` und `WORD`.
 
-1. Führen Sie das Experiment aus.
+1. Ausführen der Pipeline.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

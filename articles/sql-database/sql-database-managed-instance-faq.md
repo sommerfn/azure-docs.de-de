@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zur verwalteten SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu verwalteten Instanzen
 description: Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 7e341cf8a4ff2a18e44e36d73ad5dbc642582802
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 34ffcd63879920c3c744deb4cf0b28684081dc25
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496277"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825730"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 

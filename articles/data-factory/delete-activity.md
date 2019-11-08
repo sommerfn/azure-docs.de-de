@@ -1,5 +1,5 @@
 ---
-title: Delete-Aktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Delete-Aktivität in Azure Data Factory
 description: Hier erfahren Sie, wie Sie mit der Delete-Aktivität in Azure Data Factory Dateien in verschiedenen Dateispeichern löschen.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8efbf5cd6003781450afe70b8019b39d75290546
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996318"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675620"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Delete-Aktivität in Azure Data Factory
 
@@ -117,7 +117,7 @@ Es gibt zwei Stellen, an denen Sie die Ergebnisse der Delete-Aktivität anzeigen
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Beispielprotokolldatei der Delete-Aktivität
 
-| NAME | Category (Kategorie) | Status | Error |
+| NAME | Category | Status | Error |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | Datei | Deleted |  |
 | test2/hello789.txt | Datei | Deleted |  |

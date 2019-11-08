@@ -1,6 +1,6 @@
 ---
-title: Verwenden von azure/service-bus-Warteschlangen in Node.js
-description: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App unter Verwendung des „azure/service-bus“-Pakets.
+title: 'Schnellstart: Verwenden von azure/service-bus-Warteschlangen in Node.js'
+description: 'Schnellstart: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App unter Verwendung des „azure/service-bus“-Pakets.'
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -10,17 +10,17 @@ ms.service: service-bus-messaging
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
-ms.topic: article
-ms.date: 10/22/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 58049855cc27d51134b9f76a773f32f49c6381b6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9901ccd6bb1abf27bb1141c618d0bfde167b9cc3
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790309"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721686"
 ---
-# <a name="how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „azure/service-bus“
+# <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „azure/service-bus“
 > [!div class="op_multi_selector" title1="Programmiersprache" title2="Node.js-Paket"]
 > - [(Node.js | azure-sb)](service-bus-nodejs-how-to-use-queues.md)
 > - [(Node.js | @azure/service-bus)](service-bus-nodejs-how-to-use-queues-new-package.md)

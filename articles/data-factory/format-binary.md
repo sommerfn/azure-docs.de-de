@@ -1,5 +1,5 @@
 ---
-title: Binärformat in Azure Data Factory | Microsoft-Dokumentation
+title: Binärformat in Azure Data Factory
 description: In diesem Thema wird der Umgang mit dem Binärformat in Azure Data Factory beschrieben.
 author: linda33wj
 manager: craigg
@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: jingwang
-ms.openlocfilehash: a3b3e4e873497b3b0f726d815a798919ace4f931
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 82f7c380c66dc6b42f4ca5c67c13524428c78221
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841953"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73674811"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binärformat in Azure Data Factory
 

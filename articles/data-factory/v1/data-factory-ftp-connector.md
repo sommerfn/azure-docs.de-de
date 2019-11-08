@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory von einem FTP-Server verschieben.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5d043072244ede5b1d7bd28d4628ffe3cf4961d8
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e5a6485e93e8f617883a7dfef511709ec857b411
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836320"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682594"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -68,7 +68,7 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | type |Legen Sie diese Eigenschaft auf „FtpServer“ fest. |Ja |&nbsp; |
 | host |Gibt den Namen oder die IP-Adresse des FTP-Servers an. |Ja |&nbsp; |
 | authenticationType |Gibt den Authentifizierungstyp an. |Ja |Standard, Anonym |
-| userName |Gibt den Benutzer an, der Zugriff auf den FTP-Server hat. |Nein |&nbsp; |
+| username |Gibt den Benutzer an, der Zugriff auf den FTP-Server hat. |Nein |&nbsp; |
 | password |Gibt das Kennwort für den Benutzer (username) an. |Nein |&nbsp; |
 | encryptedCredential |Gibt die verschlüsselten Anmeldeinformationen für den Zugriff auf den FTP-Server an. |Nein |&nbsp; |
 | gatewayName |Gibt den Namen des Gateways im Datenverwaltungsgateway zum Herstellen einer Verbindung mit einem lokalen FTP-Server an. |Nein |&nbsp; |
