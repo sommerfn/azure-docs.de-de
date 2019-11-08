@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: f7039b525cf0d52670b8d76a24d8ec3ea5115772
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: acb041ce29d0340686a09764158063ad8d000c7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559104"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491302"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>Schnellstart: Ausführen der Speech Devices SDK-Beispiel-App unter Android
 
@@ -102,14 +102,14 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Das standardmäßige Aktivierungswort (Schlüsselwort) ist „Computer“. Auf Wunsch können Sie eines der anderen angebotenen Aktivierungswörter wie „Maschine“ oder „Assistent“ ausprobieren. Die Ressourcendateien für diese alternativen Aktivierungswörter finden Sie im Speech-Geräte-SDK im Ordner „keyword“. „C:\SDSDK\Android-Sample-Release\keyword\Computer“ enthält beispielsweise die Dateien, die für das Aktivierungswort „Computer“ verwendet werden.
+1. Das Standardschlüsselwort ist „Computer“. Sie können auch eines der anderen angebotenen Schlüsselwörter wie „Machine“ oder „Assistant“ ausprobieren. Die Ressourcendateien für diese alternativen Schlüsselwörter finden Sie im Speech Devices SDK im Ordner „keyword“. „C:\SDSDK\Android-Sample-Release\keyword\Computer“ enthält beispielsweise die Dateien, die für das Schlüsselwort „Computer“ verwendet werden.
 
    > [!TIP]
-   > Sie können auch [ein benutzerdefiniertes Aktivierungswort erstellen](speech-devices-sdk-create-kws.md).
+   > Sie können auch [ein benutzerdefiniertes Schlüsselwort erstellen](speech-devices-sdk-create-kws.md).
 
-    Um ein neues Wort für die Aktivierung zu verwenden, aktualisieren Sie die folgenden zwei Codezeilen in `MainActivity.java`, und kopieren Sie das Paket mit dem Aktivierungswort in Ihre App. Wenn Sie beispielsweise das Aktivierungswort „Machine“ aus dem Aktivierungswortpaket „kws-machine.zip“ verwenden möchten, gehen Sie wie folgt vor:
+    Um ein neues Schlüsselwort zu verwenden, aktualisieren Sie die folgenden zwei Codezeilen in `MainActivity.java` und kopieren das Paket mit dem Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket „kws-machine.zip“ verwenden möchten:
 
-   * Kopieren Sie das Aktivierungswortpaket in den Ordner „C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\“.
+   * Kopieren Sie das Schlüsselwortpaket in den Ordner „C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\“.
    * Aktualisieren Sie die Datei `MainActivity.java` mit dem Schlüsselwort und dem Paketnamen:
 
      ```java

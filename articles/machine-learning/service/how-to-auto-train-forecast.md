@@ -9,15 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 06/20/2019
-ms.openlocfilehash: eb13e6d279ffd8efc0cdb5ce675b77aac5be9c18
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 11/04/2019
+ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436633"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580709"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen trainieren. Das Konfigurieren eines Vorhersagemodells ähnelt zwar der Einrichtung eines Standard-Regressionsmodells mit automatisiertem maschinellem Lernen, die Verwendung von Zeitreihendaten erfordert jedoch bestimmte Konfigurationsoptionen und Vorverarbeitungsschritte. In den Beispielen dieses Artikels wird Folgendes gezeigt:
 
@@ -34,6 +35,27 @@ Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, da
 Sie können u. a. [konfigurieren](#config), wie weit die Vorhersage in die Zukunft reichen soll (Vorhersagehorizont), und ob es Verzögerungen geben soll. Beim automatisierten Machine Learning wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich.
 
 Features, die aus den Trainingsdaten extrahiert werden, spielen eine wichtige Rolle. Zudem werden beim automatisierten Machine Learning einige Standardschritte für die Vorverarbeitung durchgeführt, und es werden zusätzliche Zeitreihenfeatures generiert, um saisonale Auswirkungen zu erfassen und die Vorhersage so genau wie möglich zu gestalten.
+
+## <a name="time-series-and-deep-learning-models"></a>Zeitreihen- und Deep Learning-Modelle
+
+
+Automatisiertes maschinelles Lernen bietet Benutzern sowohl native Zeitreihen- als auch Deep Learning-Modelle als Teil des Empfehlungssystems. Zu diesen Lernmodellen gehören:
++ Prophet
++ Auto-ARIMA
++ ForecastTCN
+
+Deep Learning mit automatisiertem maschinellem Lernen ermöglicht das Vorhersagen von ein- und mehrdimensionalen Zeitreihendaten.
+
+Deep Learning-Modelle weisen drei intrinsische Funktionen auf:
+1. Sie können von beliebigen Zuordnungen von Eingaben zu Ausgaben lernen.
+1. Sie unterstützen mehrere Eingaben und Ausgaben.
+1. Sie können automatisch Muster in Eingabedaten extrahieren, die lange Folgen umfassen.
+
+Mit größeren Daten können Deep Learning-Modelle wie ForecastTCN von Microsofts die Scores des resultierenden Modells verbessern. 
+
+Native Zeitreihenlernmodelle werden auch als Teil von automatisiertem maschinellem Lernen bereitgestellt. Prophet funktioniert am besten mit Zeitreihen, die starke saisonale Effekte aufweisen und viele Saisons von historischen Daten umfassen. Prophet ist schnell und genau, stabil gegenüber Ausreißern, fehlenden Daten und dramatischen Änderungen in den Zeitreihen. 
+
+Der autoregressive integrierte gleitende Mittelwert (Autoregressive Integrated Moving Average, ARIMA) ist eine beliebte statistische Methode für Zeitreihenvorhersagen. Diese Vorhersagemethode wird häufig in kurzfristigen Vorhersageszenarien verwendet, in denen die Daten Hinweise auf Trends wie z. B. Zyklen enthalten. Solche Trends können unerwartet und schwierig zu modellieren oder vorherzusagen sein. Auto-ARIMA transformiert Ihre Daten in stationäre Daten, um konsistente, zuverlässige Ergebnisse zu erhalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,6 +120,7 @@ Das Objekt `AutoMLConfig` definiert die erforderlichen Einstellungen und Daten f
 |`max_horizon`|Definiert den maximal gewünschten Vorhersagehorizont in Einheiten von Zeitreihen. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
 |`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Dies wird als eine Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. Wenn Sie beispielsweise versuchen, die Nachfrage nach einem Produkt vorherzusagen, hängt die Nachfrage in einem Monat möglicherweise vom Preis für bestimmte Produkte vor 3 Monaten ab. In diesem Beispiel möchten Sie möglicherweise den Zielwert (Nachfrage) um 3 Monate negativ verzögern, sodass das Modell mit der richtigen Beziehung trainiert wird.||
 |`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge. Geben Sie diesen Parameter an, wenn Sie beim Trainieren des Modells nur eine bestimmte Menge des Verlaufs beachten möchten.||
+|`enable_dnn`|Aktivieren Sie Vorhersage-DNNs.||
 
 Weitere Informationen finden Sie in der [Referenzdokumentation](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -129,7 +152,8 @@ import logging
 
 automl_config = AutoMLConfig(task='forecasting',
                              primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
+                             experiment_timeout_minutes=15,
+                             enable_early_stopping=True,
                              training_data=train_data,
                              label_column_name=label,
                              n_cross_validations=5,
@@ -149,6 +173,17 @@ Sehen Sie sich das Notebook zu Energiebedarf ([auto-ml-forecasting-energy-demand
 * Kreuzvalidierung mit rollierendem Ursprung (Rolling Origin Validation)
 * Konfigurierbare Verzögerungen (Lags)
 * Aggregierte Zeitfenstermerkmale (Rolling Window Features)
+
+### <a name="configure-a-dnn-enable-forecasting-experiment"></a>Konfigurieren eines DNN-fähigen Vorhersageexperiments
+
+> [!NOTE]
+> Die DNN-Unterstützung für Vorhersagen beim automatisierten maschinellen Lernen befindet sich in der Vorschauphase.
+
+Um DNNs für die Vorhersage zu nutzen, müssen Sie den Parameter `enable_dnn` in AutoMLConfig auf TRUE festlegen. 
+
+Um DNNs verwenden zu können, wird die Verwendung eines AML-Computeclusters mit GPU-SKUs und mindestens zwei Knoten als Computeziel empfohlen. Weitere Informationen finden Sie in der [Dokumentation zu AML-Compute](how-to-set-up-training-targets.md#amlcompute). Weitere Informationen zu den VM-Größen mit GPUs finden Sie unter [Für GPU optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+
+Es wird empfohlen, das Experimenttimeout auf mindestens einige Stunden festzulegen, damit ausreichend Zeit für das DNN-Training zur Verfügung steht.
 
 ### <a name="view-feature-engineering-summary"></a>Anzeigen der Zusammenfassung der Featureentwicklung
 

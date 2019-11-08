@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: daperlov
-ms.openlocfilehash: bf8534ce40460637141bea2b9582e63a2a5cd04a
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 24a1a5d132990db2aa10b7860774eecafb4b4edb
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620634"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "73520616"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
 
@@ -30,7 +30,7 @@ Verwenden Sie diese erweiterte Funktion zum Erstellen einer Abhängigkeit für d
 
 Wählen Sie zum Erstellen einer Abhängigkeit von einem Trigger die Optionen **Trigger > Erweitert > Neu** aus, und wählen Sie dann den gewünschten Trigger mit dem entsprechenden Offset und der entsprechenden Größe aus. Wählen Sie **Fertig stellen** aus, und veröffentlichen Sie die Data Factory-Änderungen, damit die Abhängigkeiten wirksam werden.
 
-![Erstellung einer Abhängigkeit](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Erstellung einer Abhängigkeit")
+![Abhängigkeitserstellung](media/tumbling-window-trigger-dependency/tumbling-window-dependency01.png "Abhängigkeitserstellung")
 
 ## <a name="tumbling-window-dependency-properties"></a>Eigenschaften der Abhängigkeit für ein rollierendes Fenster
 
@@ -151,16 +151,18 @@ Ein täglicher Auftrag ohne Lücken in den Ausgabedatenströmen des Auftrags:
 
 ## <a name="monitor-dependencies"></a>Überwachen von Abhängigkeiten
 
-Sie können die Abhängigkeitskette und die entsprechenden Fenster auf der Seite für die Überwachung von Triggerausführungen überwachen. Navigieren Sie zu **Überwachung > Triggerausführungen**.
+Sie können die Abhängigkeitskette und die entsprechenden Fenster auf der Seite für die Überwachung von Triggerausführungen überwachen. Navigieren Sie zu **Überwachung > Triggerausführungen**. In der Spalte „Aktionen“ können Sie den Trigger erneut ausführen oder seine Abhängigkeiten anzeigen.
 
 ![Überwachen von Triggerausführungen](media/tumbling-window-trigger-dependency/tumbling-window-dependency07.png "Überwachen von Triggerausführungen")
 
-Klicken Sie auf das Aktionssymbol, um alle abhängigen Triggerausführungen des ausgewählten Fensters anzuzeigen.
+Wenn Sie auf „Triggerabhängigkeiten anzeigen“ klicken, können Sie den Status der Abhängigkeiten sehen. Wenn einer der Abhängigkeitstrigger fehlschlägt, müssen Sie ihn erneut erfolgreich ausführen, damit der abhängige Trigger ausgeführt werden kann. Ein Trigger für ein rollierendes Fenster wartet sieben Tage lang auf Abhängigkeiten, bevor ein Timeout eintritt.
 
 ![Überwachen von Abhängigkeiten](media/tumbling-window-trigger-dependency/tumbling-window-dependency08.png "Überwachen von Abhängigkeiten")
 
-Im oben gezeigten Beispiel ist ein täglicher Trigger abhängig von einem stündlichen Trigger ohne definiertes Fenster und mit einem Offset von drei Stunden. Dies führt dazu, dass der Trigger nach 24 erfolgreichen Ausführungen der Abhängigkeit ausgeführt wird.
+Wählen Sie die Gantt-Ansicht aus, um eine visuelle Darstellung des Zeitplans für Triggerabhängigkeiten anzuzeigen.
+
+![Überwachen von Abhängigkeiten](media/tumbling-window-trigger-dependency/tumbling-window-dependency09.png "Überwachen von Abhängigkeiten")
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie [Erstellen eines Triggers für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
+* Lesen Sie [Erstellen eines Triggers für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).

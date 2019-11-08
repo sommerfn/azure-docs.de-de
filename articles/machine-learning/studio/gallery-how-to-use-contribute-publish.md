@@ -1,6 +1,6 @@
 ---
 title: Azure KI-Katalog
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure KI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f02c7377242dc031cd2d21d2b57bbd5f839eec3
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811538"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619145"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
 
@@ -26,10 +26,10 @@ Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lös
 
 Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Das umfasst:
 
-* **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
+* **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio (klassisch) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
 * **Tutorials**: In mehreren Tutorials werden Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben.
 * **Sammlungen**: Mit einer Sammlung können Sie Experimente, APIs und andere Ressourcen gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen.
-* **Benutzerdefinierte Module**: Sie können benutzerdefinierte Module in Ihrem Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
+* **Benutzerdefinierte Module**: Sie können benutzerdefinierte Module in Ihren (klassischen) Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
 * **Jupyter Notebooks**: Jupyter Notebooks umfassen Code, Datenvisualisierungen und Dokumentationen in einem einzelnen, interaktiven Zeichenbereich. Über Notebooks im Katalog werden Tutorials und ausführliche Erklärungen von erweiterten Machine Learning-Verfahren und -Lösungen bereitgestellt.
 
 ## <a name="discover-and-contribute"></a>Entdecken und Mitwirken
@@ -50,7 +50,7 @@ Sie können mit **Experimenten**, **Tutorials** und **Sammlungen** zur Gallery b
 
 ## <a name="download-experiments-modules-notebooks"></a>Herunterladen von Experimenten, Modulen, Notebooks
 
-Sie können **Experimente**, **benutzerdefinierte Module** und **Jupyter Notebooks** in Ihren eigenen Machine Learning Studio-Arbeitsbereich herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
+Sie können **Experimente**, **benutzerdefinierte Module** und **Jupyter Notebooks** in Ihren eigenen (klassischen) Machine Learning Studio-Arbeitsbereich herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
 
 So laden Sie eine Ressource aus dem Azure KI-Katalog herunter:
 
@@ -59,15 +59,15 @@ So laden Sie eine Ressource aus dem Azure KI-Katalog herunter:
 
 ![Öffnen eines Elements aus dem Azure KI-Katalog](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
-So laden Sie eine Ressource aus Studio herunter:
+So laden Sie eine Ressource innerhalb der klassischen Version von Studio herunter
 
-1. Wählen Sie in Studio **NEU**.
+1. Wählen Sie in der klassischen Version von Studio **NEU** aus.
 1. Wählen Sie **Modul**, **Experiment** oder **Notebook**.
 1. Suchen Sie eine Gallery-Ressource.
 1. Zeigen Sie mit der Maus auf eine Ressource, und wählen Sie dann **In Studio öffnen**.
-    ![Öffnen des Gallery-Experiments in Machine Learning Studio](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
+    ![Öffnen des Gallery-Experiments in Machine Learning Studio (klassisch)](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
 
-Sobald die Ressource in Ihrem Arbeitsbereich vorhanden ist, können Sie sie anpassen und genauso verwenden, wie wenn Sie etwas in Studio erstellen.
+Sobald die Ressource in Ihrem Arbeitsbereich vorhanden ist, können Sie sie anpassen und genauso verwenden, wie wenn Sie etwas in der klassischen Version von Studio erstellen.
 
 So verwenden Sie ein importiertes benutzerdefiniertes Modul:
 
@@ -77,12 +77,12 @@ So verwenden Sie ein importiertes benutzerdefiniertes Modul:
 
 ## <a name="contribute-experiments"></a>Beitragen mit Experimenten
 
-Wenn Sie Ihre Analysemethode zeigen oder andere Mitglieder beim Einstieg unterstützen möchten, können Sie **Experimente**, die Sie in Studio entwickelt haben, beitragen.
+Wenn Sie Ihre Analysemethode zeigen oder andere Mitglieder beim Einstieg unterstützen möchten, können Sie **Experimente**, die Sie in der klassischen Version von Studio entwickelt haben, beitragen.
 Sie können verfolgen, wie viele andere Benutzer Ihren Beitrag in der Gallery aufrufen und herunterladen.
 Benutzer können auch Kommentare hinzufügen und Ihre Beiträge mit anderen Mitgliedern der Data Science-Community teilen.
 Zudem können Sie sich mit einem Diskussionstool wie Disqus anmelden und Benachrichtigungen über Kommentare zu Ihrem Beitrag erhalten.
 
-1. Öffnen Sie Ihr Experiment in Studio.
+1. Öffnen Sie Ihr Experiment in der klassischen Version von Studio.
 
 1. Wählen Sie in der Liste der Aktionen unter dem Experimentbereich **Publish to Gallery** (In Gallery veröffentlichen).
 
@@ -114,7 +114,7 @@ Zudem können Sie sich mit einem Diskussionstool wie Disqus anmelden und Benachr
 
 ### <a name="update-your-experiment"></a>Aktualisieren Sie Ihr Experiment
 
-Sie können bei Bedarf Änderungen am Workflow (Module, Parameter usw.) eines Experiments vornehmen, das Sie im Katalog veröffentlicht haben. Nehmen Sie in Machine Learning Studio die gewünschten Änderungen am Experiment vor, und veröffentlichen Sie es dann erneut. Das veröffentlichte Experiment wird mit den Änderungen aktualisiert.
+Sie können bei Bedarf Änderungen am Workflow (Module, Parameter usw.) eines Experiments vornehmen, das Sie im Katalog veröffentlicht haben. Nehmen Sie in Machine Learning Studio (klassisch) die gewünschten Änderungen am Experiment vor, und veröffentlichen Sie es dann erneut. Das veröffentlichte Experiment wird mit den Änderungen aktualisiert.
 
 Sie können die folgenden Informationen Ihres Experiments direkt im Katalog ändern:
 

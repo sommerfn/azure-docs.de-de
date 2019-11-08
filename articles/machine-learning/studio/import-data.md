@@ -1,7 +1,7 @@
 ---
-title: Importieren von Daten aus verschiedenen Datenquellen
-titleSuffix: Azure Machine Learning Studio
-description: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio importieren. Erfahren Sie, welche Datentypen und Datenformate unterstützt werden.
+title: Importieren von Trainingsdaten
+titleSuffix: ML Studio (classic) Azure
+description: Erfahren Sie, wie Sie Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio (klassisch) importieren. Erfahren Sie, welche Datentypen und Datenformate unterstützt werden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,34 +10,34 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 41cc1d6638871f26ae942e724a402e17f52150fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 453efc1129ad9ef2a8b68a571c98e3f5620a671f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811014"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684795"
 ---
-# <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Importieren von Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio
+# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Importieren von Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio (klassisch)
 
-Um Ihre eigenen Daten in Machine Learning Studio zum Entwickeln und Trainieren einer Predictive Analytics-Lösung zu verwenden, können Sie Daten aus folgenden Quellen verwenden: 
+Um Ihre eigenen Daten in Machine Learning Studio (klassisch) zum Entwickeln und Trainieren einer Predictive Analytics-Lösung zu verwenden, können Sie Daten aus folgenden Quellen verwenden: 
 
 * **Lokale Datei:** Laden Sie lokale Daten von der Festplatte im Voraus, um damit ein Datasetmodul in Ihrem Arbeitsbereich zu erstellen.
 * **Onlinedatenquellen:** Greifen Sie mithilfe des Moduls [Daten importieren][import-data] auf Daten aus einer von mehreren Onlinequellen zu, während Ihr Experiment ausgeführt wird.
-* **Machine Learning Studio-Experiment:** Verwenden Sie Daten, die als Dataset in Machine Learning Studio gespeichert wurden.
+* **Experiment in Machine Learning Studio (klassisch):** Verwenden Sie Daten, die als Dataset in der klassischen Version von Machine Learning Studio gespeichert wurden.
 * [**Lokale SQL Server-Datenbank**](use-data-from-an-on-premises-sql-server.md): Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, ohne Daten manuell kopieren zu müssen.
 
 > [!NOTE]
-> Es gibt eine Reihe von Beispiel-Datasets in Machine Learning Studio, die Sie als Trainingsdaten verwenden können. Weitere Informationen finden Sie unter [Verwenden von Beispieldatasets in Azure Machine Learning Studio](use-sample-datasets.md).
+> Es gibt in der klassischen Version von Machine Learning Studio eine Reihe von Beispiel-Datasets, die Sie als Trainingsdaten verwenden können. Weitere Informationen finden Sie unter [Verwenden von Beispieldatasets in Azure Machine Learning Studio (klassisch)](use-sample-datasets.md).
 
 ## <a name="prepare-data"></a>Vorbereiten von Daten
 
-Machine Learning Studio ist für die Nutzung von rechteckigen oder tabellarischen Daten vorgesehen, z. B. Textdaten, bei denen es sich um mit Trennzeichen versehene oder strukturierte Daten aus einer Datenbank handelt. Unter Umständen können nicht rechteckige Daten verwendet werden.
+Die klassische Version von Machine Learning Studio ist für die Nutzung von rechteckigen oder tabellarischen Daten vorgesehen, z. B. Textdaten, bei denen es sich um mit Trennzeichen versehene oder strukturierte Daten aus einer Datenbank handelt. Unter Umständen können nicht rechteckige Daten verwendet werden.
 
-Ihre Daten sollten relativ problemfrei sein, bevor Sie sie in Studio importieren. Beispielsweise sollten Sie vermeiden, dass Zeichenfolgen nicht in Anführungszeichen eingeschlossen sind.
+Ihre Daten sollten relativ problemfrei sein, bevor Sie sie in die klassische Version von Studio importieren. Beispielsweise sollten Sie vermeiden, dass Zeichenfolgen nicht in Anführungszeichen eingeschlossen sind.
 
-In Studio sind jedoch Module verfügbar, mit denen Sie nach dem Importieren Ihrer Daten bestimmte Änderungen an den Daten im Experiment vornehmen können. Abhängig vom verwendeten Machine Learning-Algorithmen müssen Sie möglicherweise entscheiden, wie Sie mit Datenstrukturproblemen wie fehlenden Werten und geringen Datenmengen umgehen möchten. Es gibt Module, die dabei helfen können. Suchen Sie im Abschnitt **Data Transformation** der Modulpalette nach Modulen, die diese Funktionen ausführen.
+In der klassischen Version von Studio sind jedoch Module verfügbar, mit denen Sie nach dem Importieren Ihrer Daten bestimmte Änderungen an den Daten im Experiment vornehmen können. Abhängig vom verwendeten Machine Learning-Algorithmen müssen Sie möglicherweise entscheiden, wie Sie mit Datenstrukturproblemen wie fehlenden Werten und geringen Datenmengen umgehen möchten. Es gibt Module, die dabei helfen können. Suchen Sie im Abschnitt **Data Transformation** der Modulpalette nach Modulen, die diese Funktionen ausführen.
 
-Zu jedem Zeitpunkt des Experiments können Sie die von einem Modul erstellten Daten anzeigen oder herunterladen, indem Sie auf den Ausgabeport klicken. Je nach Modul können verschiedene Downloadoptionen verfügbar sein, oder Sie können die Daten in Ihrem Webbrowser in Studio anzeigen.
+Zu jedem Zeitpunkt des Experiments können Sie die von einem Modul erstellten Daten anzeigen oder herunterladen, indem Sie auf den Ausgabeport klicken. Je nach Modul können verschiedene Downloadoptionen verfügbar sein, oder Sie können die Daten in Ihrem Webbrowser in der klassischen Version von Studio anzeigen.
 
 ## <a name="supported-data-formats-and-data-types"></a>Unterstützte Datenformate und Datentypen
 
@@ -56,19 +56,19 @@ Sie können eine Reihe von Datentypen in das Experiment importieren, je nachdem,
 * ZIP-Datei (.zip)
 * R-Objektdatei oder -Arbeitsbereichsdatei (.RData)
 
-Wenn Sie Daten in einem Format wie z.B. ARFF importieren, das Metadaten enthält, verwendet Studio diese Metadaten, um die Kopfzeile und den Datentyp der einzelnen Spalten zu definieren.
+Wenn Sie Daten in einem Format wie z. B. ARFF importieren, das Metadaten enthält, verwendet die klassische Version von Studio diese Metadaten, um die Kopfzeile und den Datentyp der einzelnen Spalten zu definieren.
 
-Wenn Sie Daten im TSV- oder CSV-Format importieren, das diese Metadaten nicht enthält, leitet Studio den Datentyp für jede Spalte durch Entnahme von Datenstichproben ab. Wenn die Daten zudem keine Spaltenüberschriften aufweisen, legt Studio Standardnamen fest.
+Wenn Sie Daten im TSV- oder CSV-Format importieren, das diese Metadaten nicht enthält, leitet die klassische Version von Studio den Datentyp für jede Spalte durch Entnahme von Datenstichproben ab. Wenn die Daten zudem keine Spaltenüberschriften aufweisen, legt die klassische Version von Studio Standardnamen fest.
 
 Sie können die Überschriften und Datentypen für Spalten mit dem Modul [Edit Metadata][edit-metadata] (Metadaten bearbeiten) explizit angeben oder ändern.
 
-Die folgenden Datentypen werden von Studio erkannt:
+Die folgenden Datentypen werden von der klassischen Version von Studio erkannt:
 
-* string
+* Zeichenfolge
 * Integer
 * Double
 * Boolean
-* DateTime
+* Datetime
 * TimeSpan
 
 Studio verwendet einen internen Datentyp mit dem Namen ***data table*** zum Übergeben von Daten zwischen Modulen. Mit dem Modul [Convert to Dataset][convert-to-dataset] (In Dataset konvertieren) können Sie Daten explizit in das data table-Format konvertieren.
@@ -80,7 +80,7 @@ Suchen Sie im Abschnitt **Data Format Conversions** der Modulpalette nach Module
 
 ## <a name="data-capacities"></a>Datenkapazitäten
 
-Module in Machine Learning Studio unterstützen in normalen Anwendungsfällen Datasets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn ein Modul mehrere Eingaben akzeptiert, entspricht der Wert von 10 GB der Summe aller Eingabegrößen. Sie können Teile größerer Datasets übernehmen, indem Sie Abfragen aus Hive oder Azure SQL-Datenbank verwenden, oder Sie können die Vorverarbeitung per Lernen nach Anzahl vor dem Importieren der Daten nutzen.  
+Module in der klassischen Version von Machine Learning Studio unterstützen in normalen Anwendungsfällen Datasets bis zu einer Größe von 10 GB an dichten numerischen Daten. Wenn ein Modul mehrere Eingaben akzeptiert, entspricht der Wert von 10 GB der Summe aller Eingabegrößen. Sie können Teile größerer Datasets übernehmen, indem Sie Abfragen aus Hive oder Azure SQL-Datenbank verwenden, oder Sie können die Vorverarbeitung per Lernen nach Anzahl vor dem Importieren der Daten nutzen.  
 
 Die folgenden Typen von Daten können während der Featurenormalisierung in größere Datasets erweitert werden und sind auf weniger als 10 GB beschränkt:
 
@@ -103,11 +103,11 @@ Informationen zu Bilddaten finden Sie in der Modulreferenz [Import Images](https
 
 ## <a name="import-from-a-local-file"></a>Importieren aus einer lokalen Datei
 
-Sie können eine Datendatei von der Festplatte zur Verwendung als Trainingsdaten in Studio hochladen. Wenn Sie eine Datei importieren, erstellen Sie ein Datasetmodul, das direkt in Experimenten in Ihrem Arbeitsbereich verwendet werden kann.
+Sie können eine Datendatei von der Festplatte zur Verwendung als Trainingsdaten in die klassische Version von Studio hochladen. Wenn Sie eine Datei importieren, erstellen Sie ein Datasetmodul, das direkt in Experimenten in Ihrem Arbeitsbereich verwendet werden kann.
 
 Sie können wie folgt Daten von einer lokalen Festplatte importieren:
 
-1. Klicken Sie unten im Studio-Fenster auf **+NEU**.
+1. Klicken Sie unten im Fenster von Studio (klassisch) auf **+NEU**.
 2. Wählen Sie **DATASET** und **FROM LOCAL FILE** aus.
 3. Navigieren Sie im Dialogfeld **Upload a new dataset** (Neues Dataset hochladen) zu der Datei, die Sie hochladen möchten.
 4. Geben Sie einen Namen ein, identifizieren Sie den Datentyp, und geben Sie optional eine Beschreibung ein. Eine Beschreibung wird empfohlen: Damit können Sie beliebige Merkmale der Daten erfassen, die Sie bei zukünftiger Nutzung der Daten berücksichtigen möchten.
@@ -115,7 +115,7 @@ Sie können wie folgt Daten von einer lokalen Festplatte importieren:
 
 ![Hochladen eines neuen Datasets](./media/import-data/upload-dataset-from-local-file.png)
 
-Die Dauer für das Hochladen hängt von der Größe Ihrer Daten und der Geschwindigkeit der Verbindung mit dem Dienst ab. Wenn Sie wissen, dass das Hochladen der Datei eine lange Zeit dauern kann, können Sie andere Dinge in Studio erledigen, während Sie warten. Wenn Sie den Browser jedoch vor Abschluss des Datenuploads schließen, tritt beim Hochladen ein Fehler auf.
+Die Dauer für das Hochladen hängt von der Größe Ihrer Daten und der Geschwindigkeit der Verbindung mit dem Dienst ab. Wenn Sie wissen, dass das Hochladen der Datei eine lange Zeit dauern kann, können Sie andere Dinge in der klassischen Version von Studio erledigen, während Sie warten. Wenn Sie den Browser jedoch vor Abschluss des Datenuploads schließen, tritt beim Hochladen ein Fehler auf.
 
 Sobald Ihre Daten hochgeladen wurden, werden sie in einem Datasetmodul gespeichert und stehen für alle Experimente im Arbeitsbereich zur Verfügung.
 
@@ -141,7 +141,7 @@ Mit dem Modul [Import Data][import-data] kann Ihr Experiment Daten aus verschied
 
 Da auf diese Trainingsdaten zugegriffen wird, während das Experiment ausgeführt wird, stehen sie nur in diesem Experiment zur Verfügung. Im Vergleich dazu stehen Daten, die in Datasetmodulen gespeichert sind, allen Experimenten in Ihrem Arbeitsbereich zur Verfügung.
 
-Um in Ihrem Studio-Experiment auf Onlinedatenquellen zuzugreifen, fügen Sie dem Experiment das Modul [Import Data][import-data] hinzu. Wählen Sie dann **Launch Import Data Wizard** (Datenimport-Assistenten starten) unter **Eigenschaften** aus, um eine ausführliche Anleitung zum Auswählen und Konfigurieren der Datenquelle zu erhalten. Alternativ können Sie **Datenquelle** unter **Eigenschaften** manuell auswählen und die erforderlichen Parameter für den Datenzugriff angeben.
+Um in Ihrem (klassischen) Studio-Experiment auf Onlinedatenquellen zuzugreifen, fügen Sie dem Experiment das Modul [Import Data][import-data] hinzu. Wählen Sie dann **Launch Import Data Wizard** (Datenimport-Assistenten starten) unter **Eigenschaften** aus, um eine ausführliche Anleitung zum Auswählen und Konfigurieren der Datenquelle zu erhalten. Alternativ können Sie **Datenquelle** unter **Eigenschaften** manuell auswählen und die erforderlichen Parameter für den Datenzugriff angeben.
 
 In der folgenden Tabelle werden die unterstützten Onlinedatenquellen beschrieben. Diese Tabelle enthält auch die unterstützten Dateiformate und die Parameter für den Zugriff auf die Daten.
 
@@ -154,14 +154,14 @@ In der folgenden Tabelle werden die unterstützten Onlinedatenquellen beschriebe
 > Weitere Informationen finden Sie unter [Azure Blob Storage: „Heiße“ und „kalte“ Speicherebenen](../../storage/blobs/storage-blob-storage-tiers.md).
 
 ### <a name="supported-online-data-sources"></a>Unterstützte Onlinedatenquellen
-Das **Import Data**-Modul von Azure Machine Learning Studio unterstützt die folgenden Datenquellen:
+Das **Import Data**-Modul der klassischen Version von Azure Machine Learning Studio unterstützt die folgenden Datenquellen:
 
 | Data source | BESCHREIBUNG | Parameter |
 | --- | --- | --- |
 | Web URL via HTTP |Liest Daten im CSV-Format (mit Trennzeichen getrennte Werte), im TSV-Format (mit Tabulatoren getrennte Werte), im ARFF-Format (Attribute-Relation File Format) und SVM-light-Format (Support Vector Machines) aus allen Web-URLs, die HTTP verwenden. |<b>URL</b>: Gibt den vollständigen Namen der Datei (einschließlich Website-URL und Dateiname) mit beliebiger Erweiterung an. <br/><br/><b>Data Format</b>: Gibt eines der unterstützten Datenformate an: CSV, TSV, ARFF oder SVM-light. Wenn die Daten eine Kopfzeile haben, wird sie für das Zuweisen von Spaltennamen verwendet. |
-| Hadoop/HDFS |Liest Daten aus verteiltem Speicher in Hadoop. Sie geben die gewünschten Daten an, indem Sie HiveQL, eine SQL-ähnliche Abfragesprache, verwenden. HiveQL kann auch für die Aggregation von Daten und die Datenfilterung verwendet werden, bevor Sie die Daten in Studio hinzufügen. |<b>Hive database query</b>: Gibt die Hive-Abfrage zum Generieren der Daten an.<br/><br/><b>HCatalog server URI </b> : Gibt den Namen Ihres Clusters im Format *&lt;Ihr Clustername&gt;.azurehdinsight.net* an.<br/><br/><b>Hadoop user account name</b>: Gibt den Hadoop-Benutzerkontonamen an, der zum Bereitstellen des Clusters verwendet wird.<br/><br/><b>Hadoop user account password</b> : Gibt die Anmeldeinformationen an, die beim Bereitstellen des Clusters verwendet werden. Weitere Informationen finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Location of output data</b>: Gibt an, ob die Daten in einem HDFS (Hadoop Distributed File System) oder in Azure gespeichert werden. <br/><ul>Wenn Sie die Ausgabedaten in HDFS speichern, geben Sie den HDFS-Server-URI an. (Achten Sie darauf, den Namen des HDInsight-Clusters ohne das Präfix HTTPS:// zu verwenden). <br/><br/>Wenn Sie Ausgabedaten in Azure speichern, müssen Sie den Namen des Azure-Speicherkontos, den Speicherzugriffsschlüssel und Speichercontainernamen angeben.</ul> |
+| Hadoop/HDFS |Liest Daten aus verteiltem Speicher in Hadoop. Sie geben die gewünschten Daten an, indem Sie HiveQL, eine SQL-ähnliche Abfragesprache, verwenden. HiveQL kann auch für die Aggregation von Daten und die Datenfilterung verwendet werden, bevor Sie die Daten der klassischen Version von Studio hinzufügen. |<b>Hive database query</b>: Gibt die Hive-Abfrage zum Generieren der Daten an.<br/><br/><b>HCatalog server URI </b> : Gibt den Namen Ihres Clusters im Format *&lt;Ihr Clustername&gt;.azurehdinsight.net* an.<br/><br/><b>Hadoop user account name</b>: Gibt den Hadoop-Benutzerkontonamen an, der zum Bereitstellen des Clusters verwendet wird.<br/><br/><b>Hadoop user account password</b> : Gibt die Anmeldeinformationen an, die beim Bereitstellen des Clusters verwendet werden. Weitere Informationen finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Location of output data</b>: Gibt an, ob die Daten in einem HDFS (Hadoop Distributed File System) oder in Azure gespeichert werden. <br/><ul>Wenn Sie die Ausgabedaten in HDFS speichern, geben Sie den HDFS-Server-URI an. (Achten Sie darauf, den Namen des HDInsight-Clusters ohne das Präfix HTTPS:// zu verwenden). <br/><br/>Wenn Sie Ausgabedaten in Azure speichern, müssen Sie den Namen des Azure-Speicherkontos, den Speicherzugriffsschlüssel und Speichercontainernamen angeben.</ul> |
 | SQL database |Liest Daten, die in einer Azure SQL-Datenbank oder einer SQL Server-Datenbank gespeichert sind, die in einer Azure-VM ausgeführt wird. |<b>Database server name</b>: Gibt den Namen des Servers an, auf dem die Datenbank ausgeführt wird.<br/><ul>Geben Sie bei Azure SQL-Datenbank den Servernamen ein, der generiert wird. Dieser hat meist das Format *&lt;Generierter_Bezeichner&gt;.database.windows.net*. <br/><br/>Geben Sie Folgendes ein, wenn eine SQL Server-Instanz auf einem virtuellen Azure-Computer gehostet wird: *tcp:&lt;DNS-Name des virtuellen Computers&gt;, 1433*.</ul><br/><b>Database name </b>: Gibt den Namen der Datenbank auf dem Server an. <br/><br/><b>Server user account name</b>: Gibt einen Benutzernamen für ein Konto an, das über Zugriffsberechtigungen für die Datenbank verfügt. <br/><br/><b>Server user account password</b>: Gibt das Kennwort für das Benutzerkonto an.<br/><br/><b>Database query</b>: Geben Sie eine SQL-Anweisung ein, die die Daten beschreibt, die Sie lesen möchten. |
-| On-premises SQL database |Liest Daten, die in einer lokalen SQL-Datenbank gespeichert ist. |<b>Data gateway</b>: Gibt den Namen des Datenverwaltungsgateways an, das auf einem Computer installiert ist, auf dem es auf Ihre SQL Server-Datenbank zugreifen kann. Informationen zum Einrichten des Gateways finden Sie unter [Durchführen von Analysen mit Azure Machine Learning Studio mit einer lokalen SQL Server-Datenbank](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Database server name</b>: Gibt den Namen des Servers an, auf dem die Datenbank ausgeführt wird.<br/><br/><b>Database name </b>: Gibt den Namen der Datenbank auf dem Server an. <br/><br/><b>Server user account name</b>: Gibt einen Benutzernamen für ein Konto an, das über Zugriffsberechtigungen für die Datenbank verfügt. <br/><br/><b>User name and password</b>: Klicken Sie auf <b>Enter values</b>, und geben Sie Ihre Datenbank-Anmeldeinformationen ein. Je nach Ihrer lokalen SQL Server-Konfiguration können Sie die Integrierte Windows-Authentifizierung oder SQL Server-Authentifizierung verwenden.<br/><br/><b>Database query</b>: Geben Sie eine SQL-Anweisung ein, die die Daten beschreibt, die Sie lesen möchten. |
+| On-premises SQL database |Liest Daten, die in einer lokalen SQL-Datenbank gespeichert ist. |<b>Data gateway</b>: Gibt den Namen des Datenverwaltungsgateways an, das auf einem Computer installiert ist, auf dem es auf Ihre SQL Server-Datenbank zugreifen kann. Informationen zum Einrichten des Gateways finden Sie unter [Durchführen von Analysen mit der klassischen Version von Azure Machine Learning Studio mit einer lokalen SQL Server-Datenbank](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Database server name</b>: Gibt den Namen des Servers an, auf dem die Datenbank ausgeführt wird.<br/><br/><b>Database name </b>: Gibt den Namen der Datenbank auf dem Server an. <br/><br/><b>Server user account name</b>: Gibt einen Benutzernamen für ein Konto an, das über Zugriffsberechtigungen für die Datenbank verfügt. <br/><br/><b>User name and password</b>: Klicken Sie auf <b>Enter values</b>, und geben Sie Ihre Datenbank-Anmeldeinformationen ein. Je nach Ihrer lokalen SQL Server-Konfiguration können Sie die Integrierte Windows-Authentifizierung oder SQL Server-Authentifizierung verwenden.<br/><br/><b>Database query</b>: Geben Sie eine SQL-Anweisung ein, die die Daten beschreibt, die Sie lesen möchten. |
 | Azure Table |Liest Daten aus dem Tabellenspeicherdienst in Azure Storage.<br/><br/>Wenn große Mengen von Daten selten gelesen werden, verwenden Sie den Azure-Tabellenspeicherdienst. Dieser Dienst bietet eine flexible, nicht relationale (NoSQL), überaus skalierbare, kostengünstige und hochverfügbare Speicherlösung. |Die Optionen im **Import Data**-Modul ändern sich je nachdem, ob Sie auf öffentliche Informationen oder ein privates Speicherkonto zugreifen, das Anmeldeinformationen erfordert. Dies wird anhand der Option <b>Authentication Type</b> bestimmt, die den Wert „PublicOrSAS“ oder „Account“ haben kann, der jeweils über einen eigenen Satz von Parametern verfügen kann. <br/><br/><b>Öffentlicher oder SAS-URI (Shared Access Signature)</b>: Die Parameter lauten wie folgt:<br/><br/><ul><b>Table URI</b>: Gibt die öffentliche URL oder SAS-URL für die Tabelle an.<br/><br/><b>Gibt die Zeilen an, die nach Eigenschaftennamen durchsucht werden sollen</b>: Die Werte sind <i>TopN</i> zum Ermitteln der angegebenen Anzahl von Zeilen und <i>ScanAll</i> zum Abrufen aller Zeilen der Tabelle. <br/><br/>Wenn die Daten homogen und vorhersagbar sind, wird empfohlen, *TopN* auszuwählen und eine Zahl für N einzugeben. Für große Tabellen kann dies zu kürzeren Lesedauern führen.<br/><br/>Wenn die Daten mit Sätzen von Eigenschaften strukturiert sind, die abhängig von der Tiefe und Position der Tabelle variieren, wählen Sie die Option *ScanAll*, um alle Zeilen zu überprüfen. Dadurch wird die Integrität der resultierenden Eigenschafts- und Metadatenkonvertierung sichergestellt.<br/><br/></ul><b>Privates Speicherkonto</b>: Die Parameter lauten wie folgt: <br/><br/><ul><b>Account name</b>: Gibt den Namen des Kontos an, das die zu lesende Tabelle enthält.<br/><br/><b>Account key</b>: Gibt den Speicherschlüssel an, der dem Konto zugeordnet ist.<br/><br/><b>Table name</b> : Gibt den Namen der Tabelle an, die die zu lesenden Daten enthält.<br/><br/><b>Rows to scan for property names</b>: Die Werte sind <i>TopN</i> zum Ermitteln der angegebenen Anzahl von Zeilen und <i>ScanAll</i> zum Abrufen aller Zeilen der Tabelle.<br/><br/>Wenn die Daten homogen und vorhersagbar sind, wird empfohlen, *TopN* auszuwählen und eine Zahl für N einzugeben. Für große Tabellen kann dies zu kürzeren Lesedauern führen.<br/><br/>Wenn die Daten mit Sätzen von Eigenschaften strukturiert sind, die abhängig von der Tiefe und Position der Tabelle variieren, wählen Sie die Option *ScanAll*, um alle Zeilen zu überprüfen. Dadurch wird die Integrität der resultierenden Eigenschafts- und Metadatenkonvertierung sichergestellt.<br/><br/> |
 | Azure Blob Storage |Liest im Blob-Dienst in Azure Storage gespeicherte Daten, so z. B. Bilder, unstrukturierten Text oder Binärdaten.<br/><br/>Mithilfe des Blob-Diensts können Sie Daten öffentlich verfügbar machen oder Anwendungsdaten privat speichern. Über HTTP oder HTTPS-Verbindungen können Sie von überall auf Ihre Daten zugreifen. |Die Optionen im **Import Data** -Modul ändern sich je nachdem, ob Sie auf öffentliche Informationen oder ein privates Speicherkonto zugreifen, das Anmeldeinformationen erfordert. Dies wird anhand der Option <b>Authentication Type</b> bestimmt, die den Wert "PublicOrSAS" oder "Account" haben kann.<br/><br/><b>Öffentlicher oder SAS-URI (Shared Access Signature)</b>: Die Parameter lauten wie folgt:<br/><br/><ul><b>URI</b>: Gibt die öffentliche URL oder SAS-URL für das Speicherblob an.<br/><br/><b>File Format</b>: Gibt das Format der Daten im Blob-Dienst an. Die unterstützten Formate sind CSV, TSV und ARFF.<br/><br/></ul><b>Privates Speicherkonto</b>: Die Parameter lauten wie folgt: <br/><br/><ul><b>Account name</b>: Gibt den Namen des Kontos an, das das zu lesende Blob enthält.<br/><br/><b>Account key</b>: Gibt den Speicherschlüssel an, der dem Konto zugeordnet ist.<br/><br/><b>Path to container, directory, or blob </b>: Gibt den Namen des Blobs an, das die zu lesenden Daten enthält.<br/><br/><b>Blob file format</b>: Gibt das Format der Daten im Blobdienst an. Die unterstützten Datenformate sind CSV, TSV, ARFF, CSV mit einer angegebenen Codierung und Excel. <br/><br/><ul>Wenn das Format CSV oder TSV ist, müssen Sie angeben, ob die Datei eine Kopfzeile enthält.<br/><br/>Sie können die Excel-Option zum Lesen von Daten aus Excel-Arbeitsmappen verwenden. Bei der Option <i>Excel data format</i> geben Sie an, ob die Daten in einem Excel-Arbeitsblattbereich oder einer Excel-Tabelle enthalten sind. Bei der Option <i>Excel sheet or embedded table</i> geben Sie den Namen des Blatts oder der Tabelle an, das bzw. die Sie lesen möchten.</ul><br/> |
 | Data Feed Provider |Liest Daten aus einem unterstützten Feedanbieter. Derzeit wird nur das OData-Format (Open Data Protocol) unterstützt. |<b>Data content type</b>: Gibt das OData-Format an.<br/><br/><b>Source URL</b>: Gibt die vollständige URL für den Datenfeed an. <br/>Beispielsweise liest die folgende URL aus der Northwind-Beispieldatenbank: https://services.odata.org/northwind/northwind.svc/ |

@@ -1,7 +1,7 @@
 ---
 title: Erstellen von Webdienst-Endpunkten
-titleSuffix: Azure Machine Learning Studio
-description: Erstellen von Webdienst-Endpunkten in Azure Machine Learning Studio Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet.
+titleSuffix: ML Studio (classic) Azure
+description: Erstellen von Webdienst-Endpunkten in Azure Machine Learning Studio (klassisch) Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,14 +10,14 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca7061171eb68b7473f3bf72423e481f6c5dfee1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751177"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619567"
 ---
-# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Erstellen von Endpunkten für bereitgestellte Azure Machine Learning Studio-Webdienste
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Erstellen von Endpunkten für bereitgestellte (klassische) Azure Machine Learning Studio-Webdienste
 
 > [!NOTE]
 > Die in diesem Thema beschriebenen Verfahren beziehen sich auf einen **klassischen** Machine Learning-Webdienst.
@@ -32,14 +32,14 @@ Mithilfe des Azure Machine Learning-Webdienstportals können Sie einen Endpunkt 
 > [!NOTE]
 > Wenn Sie dem Webdienst zusätzliche Endpunkte hinzugefügt haben, können Sie den Standardendpunkt nicht löschen.
 
-1. Klicken Sie in Machine Learning Studio links auf „Webdienste“.
+1. Klicken Sie in Machine Learning Studio (klassisch) in der linken Navigationsspalte auf „Webdienste“.
 2. Klicken Sie unten im Dashboard des Webdiensts auf **Manage endpoints** (Endpunkte verwalten). Das Azure Machine Learning-Webdienstportal wird mit der Seite mit den Endpunkten für den Webdienst geöffnet.
 3. Klicken Sie auf **New**.
 4. Geben Sie einen Namen und eine Beschreibung für den neuen Endpunkt ein. Endpunktnamen dürfen maximal 24 Zeichen lang sein und müssen aus Kleinbuchstaben oder Zahlen bestehen. Wählen Sie die Protokollierungsstufe aus, und legen Sie fest, ob Beispieldaten aktiviert sind. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](web-services-logging.md).
 
 ## <a id="scaling"></a> Skalieren eines Webdiensts durch Hinzufügen zusätzlicher Endpunkte
 
-Standardmäßig ist jeder veröffentlichte Webdienst so konfiguriert, dass er 20 Anforderungen gleichzeitig unterstützt, wobei maximal 200 Anforderungen gleichzeitig unterstützt werden können. Azure Machine Learning Studio optimiert die Einstellung automatisch, um die beste Leistung für Ihren Webdienst zu bieten. Der Portalwert wird ignoriert.
+Standardmäßig ist jeder veröffentlichte Webdienst so konfiguriert, dass er 20 Anforderungen gleichzeitig unterstützt, wobei maximal 200 Anforderungen gleichzeitig unterstützt werden können. Die klassische Version von Azure Machine Learning Studio optimiert die Einstellung automatisch, um die beste Leistung für Ihren Webdienst zu bieten. Der Portalwert wird ignoriert.
 
 Wenn Sie die API stärker als mit dem unterstützen Maximalwert von 200 gleichzeitigen Aufrufen auslasten möchten, müssen Sie mehrere Endpunkte im gleichen Webdienst erstellen. Sie können die Last dann wahllos auf alle Endpunkte verteilen.
 

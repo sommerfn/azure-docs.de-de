@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522884"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73612077"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -170,15 +170,6 @@ Azure-Datenträgerreservierungen werden für eine bestimmte Region und SKU erwor
 Sie erhalten 30 Tage vor dem Ablauf und am Ablaufdatum eine E-Mail-Benachrichtigung. Nach dem Ablauf der Reservierung werden bereitgestellte Datenträger weiterhin ausgeführt und mit dem aktuellen [Satz für die nutzungsbasierte Bezahlung](https://azure.microsoft.com/pricing/details/managed-disks/) in Rechnung gestellt.
 
 ## <a name="ultra-disks"></a>Ultra-Datenträger
-
-**Welche Regionen unterstützen derzeit Ultra-Datenträger?**
-- USA (Ost) 2
-- Asien, Südosten
-- Nordeuropa
-
-**Welche VM-Serien unterstützen derzeit Ultra-Datenträger?**
-- ESv3
-- DSv3
 
 **Auf welchen Wert sollte ich den Durchsatz meines Ultra-Datenträgers festlegen?**
 Wenn Sie nicht sicher sind, auf welchen Wert Sie den Datenträgerdurchsatz festlegen sollen, nehmen Sie zunächst eine E/A-Größe von 16 KiB an, und passen Sie die Leistung davon ausgehend an, während Sie Ihre Anwendung überwachen. Die Formel lautet: Durchsatz in MBit/s = Wert von IOPS * 16/1000.

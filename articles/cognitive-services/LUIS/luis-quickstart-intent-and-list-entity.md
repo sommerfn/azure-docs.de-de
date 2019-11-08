@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 25882f2aaa5d32dfb594d5f8fdb9cdc46f2ad958
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492709"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung
 
 In diesem Tutorial lernen Sie, wie Entitätsdaten abgerufen werden, die mit einer vordefinierten Liste von Elementen übereinstimmen. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -78,7 +80,7 @@ Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes 
     |Steve Standish in 1234|
     |Tanner Thompson in 3456|
 
-    [![Screenshot einer Absicht mit Beispieläußerungen](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Screenshot einer Absicht mit Beispieläußerungen")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
+    [![Screenshot: Absicht mit Beispieläußerungen](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png "Screenshot: Absicht mit Beispieläußerungen")](media/luis-quickstart-intent-and-list-entity/intent-transfer-employee-to-department.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
@@ -104,7 +106,7 @@ Der primäre, _kanonische_ Name für jedes Element ist der Abteilungsname. Dies 
 
 1. Geben Sie im Popupdialogfeld `Department` als Entitätsname und **List** (Liste) als Entitätstyp ein. Wählen Sie **Fertig**aus.  
 
-    [![Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Screenshot des Popupdialogfensters zum Erstellen einer neuen Entität")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
+    [![Screenshot: Popupdialogfeld zur Erstellung einer neuen Entität](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png "Screenshot: Popupdialogfeld zur Erstellung einer neuen Entität")](media/luis-quickstart-intent-and-list-entity/create-new-list-entity-named-department.png#lightbox)
 
 1. Geben Sie auf der Seite mit der Abteilungsentität `Accounting` als neuen Wert ein.
 

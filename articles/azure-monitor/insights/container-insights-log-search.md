@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/12/2019
-ms.openlocfilehash: c3a034776b32db57f70ddee960c1cd5fc96b170b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555410"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73477092"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Abfragen von Protokollen aus Azure Monitor für Container
 
@@ -46,7 +46,7 @@ Die folgende Tabelle zeigt Beispiele für Datensätze, die von Azure Monitor fü
 
 Mit Azure Monitor-Protokollen können Sie nach Trends suchen, Engpässe diagnostizieren, Prognosen erstellen oder Daten korrelieren, die Ihnen die Einschätzung ermöglichen, ob die aktuelle Clusterkonfiguration optimal funktioniert. Ihnen werden vordefinierte Protokollsuchen für die sofortige Verwendung bereitgestellt. Alternativ können Sie diese so anpassen, dass die Informationen auf die gewünschte Weise zurückgegeben werden.
 
-Im Arbeitsbereich können Sie interaktive Datenanalysen durchführen, indem Sie im Vorschaubereich die Option **Kubernetes-Ereignisprotokolle anzeigen** oder **Containerprotokolle anzeigen** auswählen. Die Seite **Protokollsuche** wird rechts von der Azure-Portalseite angezeigt, die Sie besucht haben.
+Im Arbeitsbereich können Sie interaktive Datenanalysen durchführen, indem Sie im Vorschaubereich in der Dropdownliste **In Analytics anzeigen** die Option **Kubernetes-Ereignisprotokolle anzeigen** oder **Containerprotokolle anzeigen** auswählen. Die Seite **Protokollsuche** wird rechts von der Azure-Portalseite angezeigt, die Sie besucht haben.
 
 ![Analysieren von Daten in Log Analytics](./media/container-insights-analyze/container-health-log-search-example.png)   
 
@@ -65,37 +65,57 @@ Es ist oft hilfreich, die Abfrageerstellung ausgehend von einem oder zwei Beispi
 | **Wählen Sie die Anzeigeoption Liniendiagramm aus**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | Containerspeicher |
 | InsightsMetrics<br> &#124; where Name == "requests_count"<br> &#124; summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)<br> &#124; sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated <br> &#124; render barchart  | Anforderungen pro Minute mit benutzerdefinierten Metriken |
 
-Das folgende Beispiel zeigt eine Prometheus-Metrikabfrage. Die erfassten Metriken sind Zählungen. Um zu bestimmen, wie viele Fehler innerhalb eines bestimmten Zeitraums aufgetreten sind, ist eine Subtraktion von der Anzahl erforderlich. Das Dataset wird nach *partitionKey* partitioniert, d.h. für jeden eindeutigen Satz aus *Name*, *HostName* und *OperationType* wird eine Unterabfrage für diesen Satz ausgeführt, der die Protokolle nach *TimeGenerated* sortiert. Dieser Prozess ermöglicht es, den vorherigen *TimeGenerated*-Wert und die aufgezeichnete Anzahl für diesen Zeitpunkt zu ermitteln, um ein Verhältnis zu bestimmen.
+## <a name="query-prometheus-metrics-data"></a>Abfragen von Prometheus-Metrikdaten
+
+Das folgende Beispiel zeigt eine Prometheus-Metrikabfrage mit Datenträgerlesevorgänge pro Sekunde und Datenträger pro Knoten.
 
 ```
-let data = InsightsMetrics 
-| where Namespace contains 'prometheus' 
-| where Name == 'kubelet_docker_operations' or Name == 'kubelet_docker_operations_errors'    
-| extend Tags = todynamic(Tags) 
-| extend OperationType = tostring(Tags['operation_type']), HostName = tostring(Tags.hostName) 
-| extend partitionKey = strcat(HostName, '/' , Name, '/', OperationType) 
-| partition by partitionKey ( 
-    order by TimeGenerated asc 
-    | extend PrevVal = prev(Val, 1), PrevTimeGenerated = prev(TimeGenerated, 1) 
-    | extend Rate = iif(TimeGenerated == PrevTimeGenerated, 0.0, Val - PrevVal) 
-    | where isnull(Rate) == false 
-) 
-| project TimeGenerated, Name, HostName, OperationType, Rate; 
-let operationData = data 
-| where Name == 'kubelet_docker_operations' 
-| project-rename OperationCount = Rate; 
-let errorData = data 
-| where Name == 'kubelet_docker_operations_errors' 
-| project-rename ErrorCount = Rate; 
-operationData 
-| join kind = inner ( errorData ) on TimeGenerated, HostName, OperationType 
-| project-away TimeGenerated1, Name1, HostName1, OperationType1 
-| extend SuccessPercentage = iif(OperationCount == 0, 1.0, 1 - (ErrorCount / OperationCount))
+InsightsMetrics
+| where Namespace == 'container.azm.ms/diskio'
+| where TimeGenerated > ago(1h)
+| where Name == 'reads'
+| extend Tags = todynamic(Tags)
+| extend HostName = tostring(Tags.hostName), Device = Tags.name
+| extend NodeDisk = strcat(Device, "/", HostName)
+| order by NodeDisk asc, TimeGenerated asc
+| serialize
+| extend PrevVal = iif(prev(NodeDisk) != NodeDisk, 0.0, prev(Val)), PrevTimeGenerated = iif(prev(NodeDisk) != NodeDisk, datetime(null), prev(TimeGenerated))
+| where isnotnull(PrevTimeGenerated) and PrevTimeGenerated != TimeGenerated
+| extend Rate = iif(PrevVal > Val, Val / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1), iif(PrevVal == Val, 0.0, (Val - PrevVal) / (datetime_diff('Second', TimeGenerated, PrevTimeGenerated) * 1)))
+| where isnotnull(Rate)
+| project TimeGenerated, NodeDisk, Rate
+| render timechart
+
 ```
 
-Die Ausgabe enthält ähnliche Ergebnisse wie die folgenden:
+Zum Anzeigen von Prometheus-Metriken, die von Azure Monitor nach Namespace gefiltert abgerufen wurden, geben Sie „prometheus“ an. Hier sehen Sie eine Beispielabfrage zum Anzeigen von Prometheus-Metriken aus dem `default`-Kubernetes-Namespace.
 
-![Protokollabfrageergebnisse zur Menge der erfassten Daten](./media/container-insights-log-search/log-query-example-prometheus-metrics.png)
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| extend tags=parse_json(Tags)
+| summarize count() by Name
+```
+
+Prometheus-Daten können außerdem direkt anhand des Namens abgefragt werden.
+
+```
+InsightsMetrics 
+| where Namespace == "prometheus"
+| where Name contains "some_prometheus_metric"
+```
+
+### <a name="query-config-or-scraping-errors"></a>Abfragen von Konfigurations- oder Abruffehlern
+
+Zum Untersuchen von Konfigurations- oder Abruffehlern werden mit der folgenden Beispielabfrage Informationsereignisse aus der Tabelle `KubeMonAgentEvents` zurückgegeben.
+
+```
+KubeMonAgentEvents | where Level != "Info" 
+```
+
+Die Ausgabe zeigt ähnliche Ergebnisse wie die folgenden an:
+
+![Protokollabfrageergebnisse von Informationsereignissen vom Agent](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

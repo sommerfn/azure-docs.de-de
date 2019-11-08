@@ -1,141 +1,183 @@
 ---
-title: Azure SQL-Datenbank-Dienst – virtueller Kern | Microsoft-Dokumentation
-description: Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren.
+title: Übersicht über das V-Kern-Modell
+description: Mit dem V-Kern-Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 11/04/2019
+ms.openlocfilehash: b9de02bf0836727ac88b78194641238621e87a79
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034998"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821058"
 ---
-# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Auswählen einer V-Kern-Dienstebene und Migrieren von DTU-Dienstebenen
+# <a name="vcore-model-overview"></a>Übersicht über das V-Kern-Modell
 
-Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Darüber hinaus können Sie die Hardwaregeneration auswählen:
+Das V-Kern-Modell (virtueller Kern) bietet mehrere Vorteile:
 
-- **Gen4:** Bis zu 24 logische CPUs, basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
-- **Gen5:** Bis zu 80 logische CPUs basierend auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, virtueller Kern = 1 LP (Hyperthread), 5,1 GB pro virtuellem Kern für bereitgestelltes Computing und bis zu 24 GB pro virtuellem Kern für serverloses Computing, schnelle eNVM-SSD
+- Höhere Limits für Compute, Arbeitsspeicher, E/A und Speicher
+- Kontrolle über die Hardwaregeneration, um besser auf Compute- und Arbeitsspeicheranforderungen der Workload reagieren zu können
+- Preisrabatte für [Azure-Hybridvorteil](sql-database-azure-hybrid-benefit.md) und [reservierte Instanzen (RI)](sql-database-reserved-capacity.md)
+- Mehr Transparenz bei den Hardwaredetails für das Computing zur besseren Planung von Migrationsvorgängen von lokalen Bereitstellungen
 
-Gen4-Hardware verfügt über deutlich mehr Arbeitsspeicher pro V-Kern. Bei Gen5-Hardware können die Computeressourcen aber viel stärker zentral hochskaliert werden.
+## <a name="service-tiers"></a>Dienstebenen
 
-> [!IMPORTANT]
-> Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
-> [!NOTE]
-> Informationen zu den DTU-basierten Dienstebenen finden Sie unter [Diensttarife beim DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md). Informationen zu den Unterschieden zwischen den Dienstebenen des DTU-basierten und des V-Kern-basierten Kaufmodells finden Sie unter [Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“](sql-database-purchase-models.md).
-
-## <a name="service-tier-characteristics"></a>Dienstebenenmerkmale
-
-Das V-Kern-basierte Kaufmodell bietet drei Dienstebenen: „Universell“, Hyperscale“ und „Unternehmenskritisch“. Diese Dienstebenen unterscheiden sich in Bezug auf Computegröße, Hochverfügbarkeitsdesign, Fehlerisolationsmethode, Speichertyp und -größe sowie E/A-Bereich.
-
-Sie müssen den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Navigieren Sie zum Festlegen des Aufbewahrungszeitraums für Sicherungen im Azure-Portal zum Server (nicht zur Datenbank) und anschließend zu **Sicherungen verwalten** > **Richtlinie konfigurieren** > **Konfiguration der Point-in-Time-Wiederherstellung** > **7–35 Tage**.
-
-In der folgenden Tabelle werden die Unterschiede zwischen den drei Ebenen erläutert:
+Als Optionen für die Dienstebene stehen im V-Kern-Modell „Universell“, „Unternehmenskritisch“ und „Hyperscale“ zur Verfügung. Die Dienstebene definiert ganz allgemein Speicherarchitektur, Speicherplatz- und E/A-Limits sowie Optionen für die Geschäftskontinuität im Zusammenhang mit der Verfügbarkeit und Notfallwiederherstellung.
 
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|**Hyperscale**|
 |---|---|---|---|
-|Am besten geeignet für:|Bietet budgetorientierte ausgewogene Compute- und Speicheroptionen.|OLTP-Anwendungen mit hoher Transaktionsrate und geringen Latenzen bei E/A-Vorgängen. Bietet mit mehreren synchron aktualisierten Replikaten höchste Resilienz gegenüber Fehlern und schnelle Failover.|Die meisten geschäftlichen Workloads. Automatische Skalierung der Speichergröße bis zu 100 TB, fluide vertikale und horizontale Computeskalierung, schnelle Datenbankwiederherstellung.|
-|Compute|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne<br/>**Serverloses Computing**:<br/>Gen5: 0,5 bis 16 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|**Bereitgestelltes Computing**:<br/>Gen4: 1 bis 24 V-Kerne<br/>Gen5: 2 bis 80 V-Kerne|
-|Arbeitsspeicher|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern<br/>**Serverloses Computing**:<br/>Gen5: Bis zu 24 GB pro V-Kern|**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern |**Bereitgestelltes Computing**:<br/>Gen4: 7 GB pro V-Kern<br/>Gen5: 5,1 GB pro virtuellem Kern|
-|Storage|Verwendet Remotespeicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
-|E/A-Durchsatz (ungefähr)|**Einzeldatenbank und Pool für elastische Datenbanken**: 500 IOPS pro V-Kern, bis zu 40.000 IOPS maximal.<br/>**Verwaltete Instanz**: Abhängig von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5\.000 IOPS pro V-Kern, bis zu 200.000 IOPS maximal.|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab.|
+|Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen. |Bietet Geschäftsanwendungen die höchste Resilienz gegenüber Fehlern durch die Verwendung mehrerer isolierter Replikate sowie die höchste E/A-Leistung pro Datenbankreplikat.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung.  Bietet eine höhere Ausfallsicherheit, da mehrere isolierte Datenbankreplikate konfiguriert werden können. |
+|Storage|Verwendet Remotespeicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 4 TB<br/>**Serverloses Computing**:<br/>5 GB bis 3 TB<br/>**Verwaltete Instanz**: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher.<br/>**Einzeldatenbank und Pool für elastische Datenbanken: Bereitgestelltes Computing**:<br/>5 GB – 8 TB<br/>**Verwaltete Instanz**:<br/>32 GB – 4 TB |Flexible automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher. Verwendet lokalen SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Verwendet Azure-Remotespeicher als endgültigen langfristigen Datenspeicher. |
+|E/A-Durchsatz (ungefähr)|**Einzeldatenbank und Pool für elastische Datenbanken**: 500 IOPS pro V-Kern, bis zu 40.000 IOPS maximal.<br/>**Verwaltete Instanz**: Abhängig von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5\.000 IOPS pro V-Kern, bis zu 320.000 IOPS maximal|Hyperscale ist eine mehrstufige Architektur mit Caching auf mehreren Ebenen. Die tatsächlichen IOPs hängen von der Workload ab.|
 |Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>zonenredundante Hochverfügbarkeit (High Availability, HA)|Einzelnes Replikat mit Lese-/Schreibzugriff sowie bis zu vier [Replikate mit Leseskalierung](sql-database-read-scale-out.md)|
 |Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), sieben bis 35 Tage (standardmäßig sieben Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|Auf Momentaufnahmen basierende Sicherungen in Azure-Remotespeicher. Bei Wiederherstellungen werden diese Momentaufnahmen zur schnellen Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind schnell und nicht datenintensiv (dauern also nicht Stunden oder Tage, sondern nur Minuten).|
 |In-Memory|Nicht unterstützt|Unterstützt|Nicht unterstützt|
 |||
 
-> [!NOTE]
-> Im Rahmen eines kostenlosen Azure-Kontos können Sie eine kostenlose Azure SQL-Datenbank mit der Dienstebene „Basic“ erhalten. Weitere Informationen finden Sie unter [Mit dem kostenlosen Azure-Konto eine verwaltete Clouddatenbank erstellen](https://azure.microsoft.com/free/services/sql-database/).
 
-- Weitere Informationen zu V-Kern-Ressourcengrenzwerten finden Sie unter [V-Kern-Ressourcengrenzwerte in einer Einzeldatenbank](sql-database-vcore-resource-limits-single-databases.md) sowie unter [V-Kern-Ressourcengrenzwerte in einer verwalteten Instanz](sql-database-managed-instance.md#vcore-based-purchasing-model).
-- Weitere Informationen zu den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Dienstebenen „Universell“ und „Unternehmenskritisch“](sql-database-service-tiers-general-purpose-business-critical.md).
-- Weitere Informationen zur Dienstebene „Hyperscale“ im V-Kern-basierten Kaufmodell finden Sie unter [Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md).  
+### <a name="choosing-a-service-tier"></a>Auswählen einer Dienstebene
 
-## <a name="azure-hybrid-benefit"></a>Azure-Hybridvorteil
+Weitere Informationen zum Auswählen einer Dienstebene für die jeweilige Workload finden Sie in den folgenden Artikeln:
 
-Bei der bereitgestellten Computeebene des V-Kern-basierten Kaufmodells können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Mit diesem Azure-Vorteil können Sie bei Azure SQL-Datenbank bis zu 30 Prozent sparen, indem Sie Ihre lokalen SQL Server-Lizenzen mit Software Assurance verwenden.
+- [Wann sollte die Dienstebene „Universell“ ausgewählt werden?](sql-database-service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Wann sollte die Dienstebene „Unternehmenskritisch“ ausgewählt werden?](sql-database-service-tier-business-critical.md#when-to-choose-this-service-tier)
+- [Wann sollte die Dienstebene „Hyperscale“ ausgewählt werden?](sql-database-service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
-![Preise](./media/sql-database-service-tiers/pricing.png)
 
-Mit dem Azure-Hybridvorteil können Sie wahlweise nur die zugrunde liegende Azure-Infrastruktur bezahlen und Ihre vorhandene SQL Server-Lizenz für die eigentliche SQL-Datenbank-Engine verwenden (Grundpreis für Computeleistung), oder Sie bezahlen für die zugrunde liegende Infrastruktur sowie für die SQL Server-Lizenz (Preismodell mit enthaltener Lizenz).
+## <a name="compute-tiers"></a>Computetarife
 
-Sie können Ihr Lizenzierungsmodell im Azure-Portal oder mithilfe einer der folgenden APIs auswählen oder ändern:
+Als Optionen für den Computetarif stehen im V-Kern-Modell die bereitgestellten und serverlosen Computetarife zur Auswahl.
 
-- Festlegen oder Aktualisieren des Lizenztyps mithilfe von PowerShell:
 
-  - [New-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase)
-  - [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase)
-  - [New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)
-  - [Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)
+### <a name="provisioned-compute"></a>Bereitgestelltes Computing
 
-- Festlegen oder Aktualisieren des Lizenztyps mithilfe der Azure-Befehlszeilenschnittstelle:
+Bereitgestellte Computetarife bieten eine bestimmte Menge an Computeressourcen, die unabhängig von der Workloadaktivität ständig bereitgestellt werden. Die Abrechnung erfolgt dann zu einem Festpreis pro Stunde für die Menge an bereitgestellten Computeressourcen.
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
-  - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
-  - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
-- Festlegen oder Aktualisieren des Lizenztyps mithilfe der REST-API:
+### <a name="serverless-compute"></a>Serverloses Computing
 
-  - [Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [Verwaltete Instanzen – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [Verwaltete Instanzen – Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+Beim [serverlosen Computetarif](sql-database-serverless.md) erfolgt auch eine automatische Skalierung der Computeressourcen basierend auf den Workloadaktivitäten, und die Abrechnung erfolgt nach Menge der verbrauchten Computeressourcen pro Sekunde.
 
-## <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>Migrieren vom DTU-basierten Modell zum V-Kern-basierten Modell
 
-### <a name="migrate-a-database"></a>Migrieren einer Datenbank
 
-Die Migration einer Datenbank vom DTU-basierten zum V-Kern-basierten Kaufmodell ist vergleichbar mit einem Up- oder Downgrade zwischen der Standard- und Premium-Dienstebene im DTU-basierten Kaufmodell.
+## <a name="hardware-generations"></a>Hardwaregenerationen
 
-### <a name="migrate-databases-with-geo-replication-links"></a>Migrieren von Datenbanken mit Georeplikationsverknüpfungen
+Zu den Optionen für die Hardwaregeneration im V-Kern-Modell gehören Gen4/Gen5, M-Serie (Vorschau) und Fsv2-Serie (Vorschau). Die Hardwaregeneration definiert im Allgemeinen die Compute- und Arbeitsspeicherlimits sowie weitere Eigenschaften, die sich auf die Leistung der Workload auswirken.
 
-Die Migration vom DTU-basierten zum V-Kern-basierten Modell ähnelt dem Up- oder Downgrade der Georeplikationsbeziehungen zwischen Datenbanken auf der Standard- und Premium-Dienstebene. Sie müssen die Georeplikation während der Migration nicht beenden, es müssen jedoch die folgenden Sequenzierungsregeln eingehalten werden:
+### <a name="gen4gen5"></a>Gen4/Gen5
 
-- Bei einem Upgrade müssen Sie zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank durchführen.
-- Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank durch.
+- Gen4/Gen5-Hardware bietet ausgeglichene Compute- und Arbeitsspeicherressourcen und eignet sich für die meisten Datenbankworkloads, die keine erhöhten Anforderungen an Arbeitsspeicher, virtuelle Kerne oder schnellere Einzel-V-Kerne stellen, wie sie von der Fsv2-Serie oder der M-Serie bereitgestellt werden.
 
-Bei Verwendung der Georeplikation zwischen zwei Pools für elastische Datenbanken empfiehlt es sich, einen Pool als primäres Element und den anderen als sekundäres Element festzulegen. In diesem Fall sollten Sie sich beim Migrieren von Pools für elastische Datenbanken an die gleiche Sequenzierungsanleitung halten. Falls Sie jedoch über Pools für elastische Datenbanken verfügen, die sowohl primäre als auch sekundäre Datenbanken enthalten, müssen Sie den Pool mit der höheren Auslastung als primäres Element behandeln und die Sequenzierungsregeln entsprechend befolgen.  
+Informationen zu den Regionen, in denen Gen4/Gen5 verfügbar ist, finden Sie unter [Verfügbarkeit von Gen4/Gen5](#gen4gen5-1).
 
-Die folgende Tabelle enthält eine Anleitung für spezifische Migrationsszenarien:
+### <a name="fsv2-seriespreview"></a>Fsv2-Serie (Vorschau)
 
-|Aktuelle Dienstebene|Zieldienstebene|Migrationstyp|Benutzeraktionen|
-|---|---|---|---|
-|Standard|Allgemeiner Zweck|Seitwärts|Die Migration ist in einer beliebigen Reihenfolge möglich, aber Sie müssen für eine geeignete V-Kern-Größe sorgen*|
-|Premium|Unternehmenskritisch|Seitwärts|Die Migration ist in einer beliebigen Reihenfolge möglich, aber Sie müssen für eine geeignete V-Kern-Größe sorgen*|
-|Standard|Unternehmenskritisch|Upgrade|Sekundäre Einheit muss zuerst migriert werden|
-|Unternehmenskritisch|Standard|Downgrade|Primäre Einheit muss zuerst migriert werden|
-|Premium|Allgemeiner Zweck|Downgrade|Primäre Einheit muss zuerst migriert werden|
-|Allgemeiner Zweck|Premium|Upgrade|Sekundäre Einheit muss zuerst migriert werden|
-|Unternehmenskritisch|Allgemeiner Zweck|Downgrade|Primäre Einheit muss zuerst migriert werden|
-|Allgemeiner Zweck|Unternehmenskritisch|Upgrade|Sekundäre Einheit muss zuerst migriert werden|
-||||
+- Die Fsv2-Serie ist eine für Compute optimierte Hardwareoption, die eine niedrige CPU-Latenz und eine hohe Taktfrequenz für die meisten Workloads mit hohen CPU-Anforderungen bereitstellt.
+- Abhängig von der Workload kann die Fsv2-Serie eine höhere CPU-Leistung pro virtuellem Kern erzielen als Gen5, und mit der Größe von 72 V-Kernen erzielen Sie mehr CPU-Leistung für weniger Kosten als mit 80 virtuellen Kernen bei Gen5. 
+- Fsv2 bietet weniger Arbeitsspeicher und tempdb pro virtuellem Kern als andere Hardware, sodass für Workloads, für die diese Grenzwerte wichtig sind, stattdessen Gen5 oder die M-Serie in Erwägung gezogen werden sollte.  
 
-\* Auf der Standardebene wird für jeweils 100 DTUs mindestens ein V-Kern benötigt. Auf der Premiumebene wird für jeweils 125 DTUs mindestens ein V-Kern benötigt.
+Weitere Informationen zu Regionen, in denen die Fsv2-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der Fsv2-Serie](#fsv2-series).
 
-### <a name="migrate-failover-groups"></a>Migrieren von Failovergruppen
 
-Für die Migration von Failovergruppen mit mehreren Datenbanken ist eine individuelle Migration der primären und sekundären Datenbank erforderlich. Während dieses Prozesses gelten die gleichen Aspekte und Sequenzierungsregeln. Nachdem die Datenbanken auf das V-Kern-basierte Kaufmodell umgestellt wurden, bleibt die Failovergruppe mit den gleichen Richtlinieneinstellungen wirksam.
+### <a name="m-seriespreview"></a>M-Serie (Vorschau)
 
-### <a name="create-a-geo-replication-secondary-database"></a>Erstellen einer sekundären Datenbank für die Georeplikation
+- Die M-Serie ist eine arbeitsspeicheroptimierte Hardwareoption für Workloads, die mehr Arbeitsspeicher und höhere Computegrenzwerte erfordert, als von Gen5 bereitgestellt werden.
+- Die M-Serie bietet 29 GB pro V-Kern und 128 V-Kerne. Dadurch erhöht sich der Grenzwert für den Arbeitsspeicher im Vergleich zu Gen5 um das Achtfache auf fast 4 TB.
 
-Eine sekundäre Datenbank für die Georeplikation (Geo-Sekundärdatenbank) kann nur mit der gleichen Dienstebene erstellt werden, die auch für die primäre Datenbank verwendet wurde. Bei Datenbanken mit hoher Protokollgenerierungsrate empfiehlt es sich, die Geo-Sekundärdatenbank mit der gleichen Computegröße zu erstellen wie die primäre Datenbank.
+Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müssen Sie eine Supportanfrage erstellen. Wenn die Supportanfrage genehmigt wird, erfolgt die Auswahl und die Bereitstellung der M-Serie nach dem gleichen Muster wie bei anderen Hardwaregenerationen. Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
 
-Wenn Sie eine Geo-Sekundärdatenbank im Pool für elastische Datenbanken für eine einzelne primäre Datenbank erstellen, muss die Einstellung `maxVCore` für den Pool der Computegröße der primären Datenbank entsprechen. Wenn Sie eine Geo-Sekundärdatenbank für eine primäre Datenbank in einem anderen Pool für elastische Datenbanken erstellen, sollte die Einstellung `maxVCore` der Pools gleich sein.
 
-### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Verwenden einer Datenbankkopie zum Konvertieren einer DTU-basierten Datenbank in eine V-Kern-basierte Datenbank
+### <a name="compute-and-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
 
-Sie können eine beliebige Datenbank mit einer DTU-basierten Computegröße in eine Datenbank mit einer V-Kern-basierten Computegröße kopieren, ohne dass hierfür Einschränkungen oder spezielle Sequenzierungen gelten, solange die Zielcomputegröße die maximale Datenbankgröße der Quelldatenbank unterstützt. Die Datenbankkopie erstellt eine Momentaufnahme der Daten zum Startzeitpunkt des Kopiervorgangs und synchronisiert keine Daten zwischen Quelle und Ziel.
+
+|Hardwaregeneration  |Compute  |Arbeitsspeicher  |
+|:---------|:---------|:---------|
+|Gen4     |- Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz<br>- Bereitstellung von bis zu 24 virtuellen Kernen (1 virtueller Kern = 1 physischer Kern)  |- 7 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 168 GB|
+|Gen5     |**Bereitgestelltes Computing**<br>- Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz<br>- Bereitstellung von bis zu 80 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)<br><br>**Serverloses Computing**:<br>- Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz<br>- Automatische Skalierung auf bis zu 16 virtuelle Kerne (1 virtueller Kern = 1 Hyperthread)|**Bereitgestelltes Computing**<br>- 5,1 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 408 GB<br><br>**Serverloses Computing**:<br>- Automatische Skalierung auf bis zu 24 GB pro V-Kern<br>- Automatische Skalierung auf bis zu 48 GB|
+|Fsv2-Serie     |- Intel Xeon Platinum 8168-Prozessoren (Skylake)<br>- Kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne und maximale Turbo-Taktfrequenz für Einzelkerne von 3,7 GHz<br>- Bereitstellung von 72 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|- 1,9 GB pro virtuellem Kern<br>- Bereitstellung von 136 GB|
+|M-Serie     |- Intel Xeon E7-8890 v3-Prozessoren mit 2,5 GHz<br>- Bereitstellung von 128 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|- 29 GB pro virtuellem Kern<br>- Bereitstellung von 3,7 TB|
+
+
+Weitere Informationen zu Ressourcenlimits finden Sie unter [Ressourcenlimits für Singletons (V-Kern)](sql-database-vcore-resource-limits-single-databases.md) oder [Ressourcenlimits für Pools für elastische Datenbanken (V-Kern)](sql-database-vcore-resource-limits-elastic-pools.md).
+
+### <a name="selecting-a-hardware-generation"></a>Auswählen einer Hardwaregeneration
+
+Sie können im Azure-Portal die Hardwaregeneration für eine SQL-Datenbank oder einen Pool zum Zeitpunkt der Erstellung auswählen, und Sie können die Hardwaregeneration einer vorhandenen SQL-Datenbank oder eines Pools ändern.
+
+**So wählen Sie eine Hardwaregeneration beim Erstellen einer SQL-Datenbank oder eines Pools aus**
+
+Ausführliche Informationen finden Sie unter [Erstellen einer SQL-Datenbank](sql-database-single-database-get-started.md).
+
+Wählen Sie auf der Registerkarte **Grundlagen** im Abschnitt **Compute + Speicher** den Link **Datenbank konfigurieren** und dann den Link **Konfiguration ändern** aus:
+
+  ![Datenbank konfigurieren](media/sql-database-service-tiers-vcore/configure-sql-database.png)
+
+Wählen Sie die gewünschte Hardwaregeneration aus:
+
+  ![Auswählen der Hardware](media/sql-database-service-tiers-vcore/select-hardware.png)
+
+
+**So ändern Sie die Hardwaregeneration einer vorhandenen SQL-Datenbank oder eines Pools**
+
+Wählen Sie für eine Datenbank auf der Seite „Übersicht“ den Link **Tarif** aus:
+
+  ![Ändern der Hardware](media/sql-database-service-tiers-vcore/change-hardware.png)
+
+Wählen Sie für einen Pool auf der Seite „Übersicht“ die Option **Konfigurieren** aus.
+
+Führen Sie die Schritte zum Ändern der Konfiguration aus, und wählen Sie die Hardwaregeneration wie in den vorherigen Schritten beschrieben aus.
+
+### <a name="hardware-availability"></a>Hardwareverfügbarkeit
+
+#### <a name="gen4gen5"></a>Gen4/Gen5
+
+Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt. 
+
+Gen5 ist in den meisten Regionen weltweit verfügbar.
+
+#### <a name="fsv2-series"></a>Fsv2-Serie
+
+Die Fsv2-Serie ist in den folgenden Regionen verfügbar: „Australien, Mitte“, „Australien, Mitte 2“, „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Asien, Osten“, „USA, Osten“, „Frankreich, Mitte“, „Indien, Mitte“, „Indien, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Europa, Norden“, „Südafrika, Norden“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen 2“.
+
+
+#### <a name="m-series"></a>M-Serie
+
+Die M-Serie ist in den folgenden Regionen verfügbar: „USA, Osten“, „Europa, Norden“, „Europa, Westen“, „USA, Westen 2“.
+In einigen weiteren Regionen ist die M-Serie möglicherweise eingeschränkt verfügbar. Sie können eine andere Region als die hier aufgelisteten anfordern, die Umsetzung ist jedoch eventuell nicht möglich.
+
+Um die Verfügbarkeit der M-Serie in einem Abonnement zu aktivieren, muss der Zugriff durch das [Erstellen einer neuen Supportanfrage](#create-a-support-request-to-enable-m-series) angefordert werden.
+
+
+##### <a name="create-a-support-request-to-enable-m-series"></a>Erstellen Sie eine Supportanfrage zum Aktivieren der M-Serie: 
+
+1. Wählen Sie **Hilfe und Support** im Portal aus.
+2. Wählen Sie **Neue Supportanfrage** aus.
+
+Geben Sie unter **Grundlagen** die Folgendes an:
+
+1. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
+2. Wählen Sie unter **Abonnement** das Abonnement aus, in dem Sie die M-Serie aktivieren möchten.
+3. Wählen Sie unter **Kontingenttyp** den Eintrag **SQL-Datenbank** aus.
+4. Wählen Sie **Weiter** aus, um zur Seite **Details** zu wechseln.
+
+Geben Sie auf der Seite **Details** Folgendes an:
+
+5. Wählen Sie im Abschnitt **PROBLEMDETAILS** den Link **Details angeben** aus. 
+6. Wählen Sie unter **Kontingenttyp für SQL-Datenbank** den Eintrag **M-Serie** aus.
+7. Wählen Sie für **Region** die Region aus, in der die M-Serie aktiviert werden soll.
+    Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
+
+Genehmigte Supportanfragen werden in der Regel innerhalb von fünf Werktagen bearbeitet.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Weitere Informationen zum Erstellen einer SQL-Datenbank finden Sie unter [Erstellen einer SQL-Datenbank mit dem Azure-Portal](sql-database-single-database-get-started.md).
 - Die spezifischen Computegrößen und Speichergrößenoptionen für Einzeldatenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md).
-- Die spezifischen Computegrößen und Speichergrößenoptionen für Pools für elastische Datenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Die spezifischen Computegrößen und Speichergrößenoptionen für Pools für elastische Datenbanken finden Sie unter [V-Kern-basierte Ressourceneinschränkungen in SQL-Datenbank für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).
+- Ausführliche Informationen zu Preisen finden Sie auf der [Preisseite für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/).

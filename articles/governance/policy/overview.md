@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
-ms.openlocfilehash: b8628d60110818fe64e5b09b400a1396213147b6
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 46d78ca9f82017e1a11642af6e5dcdc68e239c8a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498276"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Übersicht über den Azure Policy-Dienst
 
@@ -48,12 +48,11 @@ Die Erstellung und Implementierung einer Richtlinie in Azure Policy beginnt mit 
 
 In Azure Policy bieten wir mehrere integrierte Richtlinien an, die standardmäßig zur Verfügung stehen. Beispiel:
 
-- **SQL Server-Version 12.0 erforderlich**: Überprüft, ob für alle Server mit SQL Server die Version 12.0 verwendet wird. Alle Server, die diese Kriterien nicht erfüllen, werden abgelehnt.
 - **Zulässige Speicherkonten-SKUs**: Bestimmt, ob ein bereitzustellendes Speicherkonto innerhalb einer Gruppe von SKU-Größen liegt. Alle Speicherkonten, die nicht der definierten Gruppe von SKU-Größen entsprechen, werden abgelehnt.
 - **Zulässiger Ressourcentyp**: Definiert die Ressourcentypen, die Sie bereitstellen können. Alle Ressourcen, die nicht in dieser Liste enthalten sind, werden abgelehnt.
 - **Zulässige Standorte**: Schränkt die verfügbaren Standorte für neue Ressourcen ein. Der dazugehörige Effekt dient zur Erzwingung Ihrer Geokonformitätsanforderungen.
 - **Zulässige SKUs für virtuelle Computer**: Gibt eine Gruppe von SKUs für virtuelle Computer an, die Sie bereitstellen können.
-- **Tag und Standardwert anwenden**: Wendet ein erforderliches Tag und dessen Standardwert an, falls dies nicht mit der Bereitstellungsanforderung angegeben wird.
+- **Tag zu Ressourcen hinzufügen**: Wendet ein erforderliches Tag und dessen Standardwert an, falls dies nicht mit der Bereitstellungsanforderung angegeben wird.
 - **Tag und dessen Wert erzwingen**: Erzwingt ein erforderliches Tag und den zugehörigen Wert für eine Ressource.
 - **Nicht zulässige Ressourcentypen**: Verhindert, dass die in der Liste enthaltenen Ressourcentypen bereitgestellt werden.
 

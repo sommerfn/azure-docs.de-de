@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316775"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795800"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -260,10 +260,10 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 
 |                                  |                    | **Verschlüsselungsmodell und Schlüsselverwaltung** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit Clientverwaltung**      |
+|                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit vom Client verwaltetem Schlüssel**      |
 | **KI und Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Ja                | Vorschau            | -                  |
-| Azure Machine Learning-Dienst   | Ja                | -                  | -                  |
+| Azure Cognitive Search                     | Ja                | Vorschau            | -                  |
+| Azure Machine Learning   | Ja                | -                  | -                  |
 | Azure Machine Learning Studio    | Ja                | RSA 2048 Bit, Vorschauversion | -               |
 | Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -                  |
 | **Analyse**                    |                    |                    |                    |

@@ -1,7 +1,7 @@
 ---
 title: Vorbereiten des Modells für die Bereitstellung
-titleSuffix: Azure Machine Learning Studio
-description: Sie erfahren, wie Sie das trainierte Modell für die Bereitstellung als Webdienst vorbereiten, indem Sie Ihr Machine Learning Studio-Trainingsexperiment in ein Vorhersageexperiment konvertieren.
+titleSuffix: ML Studio (classic) Azure
+description: Sie erfahren, wie Sie das trainierte Modell für die Bereitstellung als Webdienst vorbereiten, indem Sie Ihr (klassisches) Machine Learning Studio-Trainingsexperiment in ein Vorhersageexperiment konvertieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 2a318edada5cdc4124e221fdc8c441ab323a9289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e24393783dac0f918009f3138f31bdda98bbd22e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751969"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684855"
 ---
-# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio
+# <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio (klassisch)
 
-Azure Machine Learning Studio bietet Ihnen die Tools, die Sie benötigen, um ein Vorhersageanalysenmodell zu entwickeln und dann zu operationalisieren, indem Sie es als Azure-Webdienst bereitstellen.
+Azure Machine Learning Studio (klassisch) bietet Ihnen die Tools, die Sie benötigen, um ein Vorhersageanalysenmodell zu entwickeln und dann zu operationalisieren, indem Sie es als Azure-Webdienst bereitstellen.
 
-Dabei verwenden Sie Studio zum Erstellen eines als *Trainingsexperiment* bezeichneten Experiments, in dem Sie das Modell trainieren, bewerten und bearbeiten. Sobald Sie zufrieden sind, bereiten Sie das Modell auf die Bereitstellung vor, indem Sie Ihr Trainingsexperiment in ein *Vorhersageexperiment* konvertieren, das zum Bewerten von Benutzerdaten konfiguriert ist.
+Dabei verwenden Sie die klassische Version von Studio zum Erstellen eines als *Trainingsexperiment* bezeichneten Experiments, in dem Sie das Modell trainieren, bewerten und bearbeiten. Sobald Sie zufrieden sind, bereiten Sie das Modell auf die Bereitstellung vor, indem Sie Ihr Trainingsexperiment in ein *Vorhersageexperiment* konvertieren, das zum Bewerten von Benutzerdaten konfiguriert ist.
 
 Ein Beispiel für diesen Vorgang finden Sie unter [Tutorial 1: Vorhersagen des Kreditrisikos](tutorial-part1-credit-risk.md).
 
@@ -66,7 +66,7 @@ Wenn Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren, we
 
 * **Train** – Diese Module werden zum Trainieren des Modells verwendet. Wenn Sie auf **Set Up Web Service** klicken, werden diese Module durch ein einzelnes Modul ersetzt, das das von Ihnen trainierte Modell enthält. Dieses neue Modul wird im Abschnitt **Trained Models** der Modulpalette gespeichert.
 
-* **Score**: In diesem Beispiel wird das Modul [Split Data][split] zum Unterteilen des Datenstroms in Testdaten und Trainingsdaten verwendet. Im Vorhersageexperiment trainieren wir nicht mehr, sodass [Split Data][split] entfernt werden kann. Ebenso werden das zweite Modul [Score Model][score-model] und das Modul [Evaluate Model][evaluate-model] verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und daher im Vorhersageexperiment nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
+* **Score**: In diesem Beispiel wird das Modul [Split Data][split] zum Unterteilen des Datenstroms in Testdaten und Trainingsdaten verwendet. Im Vorhersageexperiment trainieren wir nicht mehr, sodass [Split Data][split] entfernt werden kann. Ebenso werden das zweite [Score Model][score-model]-Modul und das [Evaluate Model][evaluate-model]-Modul verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und daher im Vorhersageexperiment nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
 
 So sieht das Beispiel nach dem Klicken auf **Webdienst einrichten**aus:
 
@@ -115,7 +115,7 @@ Nachdem das Vorhersageexperiment ausreichend vorbereitet wurde, können Sie es a
 
 Weitere Informationen zum vollständigen Bereitstellungsprozess finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][deploy].
 
-[deploy]: publish-a-machine-learning-web-service.md
+[deploy]: deploy-a-machine-learning-web-service.md
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

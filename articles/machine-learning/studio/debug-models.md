@@ -1,7 +1,7 @@
 ---
 title: Debuggen Ihres Modells
-titleSuffix: Azure Machine Learning Studio
-description: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning Studio generiert wurden.
+titleSuffix: ML Studio (classic) Azure
+description: Debuggen von Fehlern, die von den Modulen „Train Model“ und „Score Model“ in Azure Machine Learning Studio (klassisch) generiert wurden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: 9c505262030e5b5aa13b8d221cf1e39c4a9c7833
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ab7f041da63731706742547a53df47462bc584a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751120"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619442"
 ---
-# <a name="debug-your-model-in-azure-machine-learning-studio"></a>Debuggen Ihres Modells in Azure Machine Learning Studio
+# <a name="debug-your-model-in-azure-machine-learning-studio-classic"></a>Debuggen Ihres Modells in Azure Machine Learning Studio (klassisch)
 
 Wenn Sie ein Modell ausführen, können die folgenden Fehler auftreten:
 
-* Für das Modul [Train Model][train-model] tritt ein Fehler auf. 
+* Das Modul [Train Model][train-model] erzeugt einen Fehler. 
 * Das Modul [Score Model][score-model] liefert falsche Ergebnisse. 
 
 Dieser Artikel beschreibt mögliche Ursachen für diese Fehler.
@@ -33,14 +33,14 @@ Dieser Artikel beschreibt mögliche Ursachen für diese Fehler.
 
 Für das Modul [Train Model][train-model] werden zwei Eingaben erwartet:
 
-1. Der Typ des Modells für maschinelles Lernen aus der in Azure Machine Learning Studio bereitgestellten Modellsammlung.
+1. Der Typ des Modells für maschinelles Lernen aus der in Azure Machine Learning Studio (klassisch) bereitgestellten Modellsammlung.
 2. Die Trainingsdaten mit einer angegebenen Spalte „Label“, die die vorherzusagende Variable angibt. (Bei den anderen Spalten wird davon ausgegangen, dass es sich um Features handelt).
 
 Für dieses Modul kann in den folgenden Fällen ein Fehler auftreten:
 
 1. Die Spalte „Label“ wurde falsch angegeben. Dies kann vorkommen, wenn entweder als Bezeichner (Label) mehrere Spalten ausgewählt sind oder ein falscher Spaltenindex ausgewählt ist. Der zweite Fall gilt beispielsweise, wenn der Spaltenindex „30“ für ein Eingabedataset verwendet wird, das nur 25 Spalten umfasst.
 
-2. Das Dataset enthält keine Spalten mit Funktionen. Wenn das Eingabedataset beispielsweise nur eine Spalte umfasst, die als Spalte „Label“ gekennzeichnet ist, sind keine Funktionen vorhanden, mit denen das Modell erstellt werden kann. In diesem Fall löst das Modul [Train Model][train-model] einen Fehler aus.
+2. Das Dataset enthält keine Spalten mit Funktionen. Wenn das Eingabedataset beispielsweise nur eine Spalte umfasst, die als Spalte „Label“ gekennzeichnet ist, sind keine Funktionen vorhanden, mit denen das Modell erstellt werden kann. In diesem Fall erzeugt das Modul [Train Model][train-model] einen Fehler.
 
 3. Das Eingabedataset (Funktionen oder Bezeichner) enthält „Infinity“ als Wert.
 

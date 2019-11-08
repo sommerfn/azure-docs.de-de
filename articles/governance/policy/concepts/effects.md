@@ -3,15 +3,15 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/17/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 4f657cd8c804a597220a7e74d1fce0401c4cd9ae
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c448ab889ad263f4f8b6c9a59048551ca761d69a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176337"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464056"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -25,6 +25,7 @@ Derzeit werden in einer Richtliniendefinition diese Auswirkungen unterstützt:
 - [Deny](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled)
+- [EnforceOPAConstraint](#enforceopaconstraint) (Vorschau)
 - [EnforceRegoPolicy](#enforceregopolicy) (Vorschau)
 - [Modify](#modify)
 
@@ -39,7 +40,7 @@ Anforderungen zum Erstellen oder Aktualisieren einer Ressource über Azure Resou
 
 Nachdem der Ressourcenanbieter einen Erfolgscode zurückgegeben hat, werden **AuditIfNotExists** und **DeployIfNotExists** ausgewertet, um zu bestimmen, ob eine zusätzliche Konformitätsprotokollierung oder -aktion erforderlich ist.
 
-Für die Auswirkung **EnforceRegoPolicy** gibt es derzeit keine Reihenfolge der Auswertung.
+Für die Auswirkungen **EnforceOPAConstraint** und **EnforceRegoPolicy** gibt es derzeit keine Reihenfolge der Auswertung.
 
 ## <a name="disabled"></a>Deaktiviert
 
@@ -431,12 +432,68 @@ Beispiel: Mithilfe einer Auswertung von SQL Server-Datenbanken wird bestimmt, ob
 }
 ```
 
-## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus* `Microsoft.ContainerService.Data` verwendet. Sie dient zum Übergeben von Zugangskontrollregeln, die mit [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) definiert wurden, an den [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus* `Microsoft.Kubernetes.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v3-Zugangskontrollregeln, die mit [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für selbstverwaltete Kubernetes-Cluster in Azure.
 
 > [!NOTE]
-> [Azure Policy für Kubernetes](rego-for-aks.md) ist in der Public Preview-Phase und unterstützt nur integrierte Richtliniendefinitionen.
+> [Azure Policy für die AKS-Engine](aks-engine.md) befindet sich in der öffentlichen Vorschauphase und unterstützt nur integrierte Richtliniendefinitionen.
+
+### <a name="enforceopaconstraint-evaluation"></a>Auswertung von EnforceOPAConstraint
+
+Der Zugangscontroller des Open Policy Agent bewertet jede neue Anforderung an den Cluster in Echtzeit.
+Alle 5 Minuten erfolgt ein vollständiger Scan des Clusters, dessen Ergebnisse Azure Policy gemeldet werden.
+
+### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint-Eigenschaften
+
+Die Eigenschaft **details** der Auswirkung EnforceOPAConstraint hat die Untereigenschaften, die die Gatekeeper v3-Zugangskontrollregel beschreiben.
+
+- **constraintTemplate** [erforderlich]
+  - Die Einschränkungsvorlage CustomResourceDefinition (CRD), die neue Einschränkungen definiert. Die Vorlage definiert die Rego-Logik, das Einschränkungsschema und die Einschränkungsparameter, die über **values** von Azure Policy übergeben werden.
+- **constraint** [erforderlich]
+  - Die CRD-Implementierung der Einschränkungsvorlage. Verwendet Parameter, die über **values** als `{{ .Values.<valuename> }}`übergeben werden. Im folgenden Beispiel sind das `{{ .Values.cpuLimit }}` und `{{ .Values.memoryLimit }}`.
+- **values** [optional]
+  - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
+
+### <a name="enforceregopolicy-example"></a>Beispiel für EnforceRegoPolicy
+
+Beispiel: Gatekeeper v3-Zugangskontrollregel, um Ressourcenlimits für CPU- und Arbeitsspeicher für einen Container in der AKS-Engine festzulegen.
+
+```json
+"if": {
+    "allOf": [
+        {
+            "field": "type",
+            "in": [
+                "Microsoft.ContainerService/managedClusters",
+                "AKS Engine"
+            ]
+        },
+        {
+            "field": "location",
+            "equals": "westus2"
+        }
+    ]
+},
+"then": {
+    "effect": "enforceOPAConstraint",
+    "details": {
+        "constraintTemplate": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/template.yaml",
+        "constraint": "https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-resource-limits/constraint.yaml",
+        "values": {
+            "cpuLimit": "[parameters('cpuLimit')]",
+            "memoryLimit": "[parameters('memoryLimit')]"
+        }
+    }
+}
+```
+
+## <a name="enforceregopolicy"></a>EnforceRegoPolicy
+
+Diese Auswirkung wird bei einer Richtliniendefinition mit dem *Modus* `Microsoft.ContainerService.Data` verwendet. Sie dient zum Übergeben von Gatekeeper v2-Zugangskontrollregeln, die mit [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) definiert wurden, an [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+
+> [!NOTE]
+> [Azure Policy für AKS](rego-for-aks.md) befindet sich in der eingeschränkten Vorschauversion und unterstützt nur integrierte Richtliniendefinitionen.
 
 ### <a name="enforceregopolicy-evaluation"></a>Auswertung von EnforceRegoPolicy
 
@@ -445,7 +502,7 @@ Alle 5 Minuten erfolgt ein vollständiger Scan des Clusters, dessen Ergebnisse A
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy-Eigenschaften
 
-Die Eigenschaft **details** der Auswirkung EnforceRegoPolicy hat die Untereigenschaften, die die Rego-Zugangskontrollregel beschreiben.
+Die Eigenschaft **details** der Auswirkung EnforceRegoPolicy hat die Untereigenschaften, die die Gatekeeper v2-Zugangskontrollregel beschreiben.
 
 - **policyId** [erforderlich]
   - Ein eindeutiger Name, der als Parameter an die Rego-Zugangskontrollregel übergeben wird.
@@ -456,7 +513,7 @@ Die Eigenschaft **details** der Auswirkung EnforceRegoPolicy hat die Untereigens
 
 ### <a name="enforceregopolicy-example"></a>Beispiel für EnforceRegoPolicy
 
-Beispiel: Rego-Zugangskontrollregel, um nur die angegebenen Containerimages in AKS zuzulassen.
+Beispiel: Gatekeeper v2-Zugangskontrollregel, um nur die angegebenen Containerimages in AKS zuzulassen.
 
 ```json
 "if": {

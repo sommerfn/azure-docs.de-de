@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Entwerfen einer mehrmandantenfähigen Datenbank mit Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
-description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL Hyperscale (Citus) (Vorschau) erstellen, auffüllen und abfragen.
+title: 'Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank mit Azure Database for PostgreSQL – Hyperscale (Citus)'
+description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus) erstellen, auffüllen und abfragen.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,16 +9,16 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 130c3e9f5abb24ffcc4e0c4ad6b96af5fca62090
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70163983"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73496536"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Tutorial: Entwerfen einer mehrmandantenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
-In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau), um Folgendes zu lernen:
+In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus), um Folgendes zu lernen:
 
 > [!div class="checklist"]
 > * Erstellen einer Hyperscale (Citus)-Servergruppe
@@ -35,7 +35,7 @@ In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (C
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Verwenden des psql-Hilfsprogramms zum Erstellen eines Schemas
 
-Nach dem Herstellen der Verbindung mit der Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie durch die Erstellung einer Web-App, die Werbetreibenden das Nachverfolgen ihrer Kampagnen ermöglicht.
+Nach dem Herstellen der Verbindung mit Azure Database for PostgreSQL – Hyperscale (Citus) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie durch die Erstellung einer Web-App, die Werbetreibenden das Nachverfolgen ihrer Kampagnen ermöglicht.
 
 Die App kann von mehreren Firmen verwendet werden, erstellen wir also eine Tabelle, die die Firmen enthält, und eine weitere für ihre Kampagnen. Führen Sie in der psql-Konsole diese Befehle aus:
 

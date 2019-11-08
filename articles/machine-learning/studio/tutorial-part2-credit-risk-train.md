@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial 2: Trainieren von Kreditrisikomodellen'
-titleSuffix: Azure Machine Learning Studio
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio. Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. Es zeigt, wie Sie Modelle trainieren und auswerten.
+titleSuffix: ML Studio (classic) Azure
+description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in der klassischen Version von Azure Machine Learning Studio Dieses Tutorial ist der zweite Teil einer dreiteiligen Reihe. Es zeigt, wie Sie Modelle trainieren und auswerten.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
 ms.author: sgilley
@@ -10,24 +10,24 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 375fdf9b64afcce2d521008d353949e650f9df5e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453478"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622074"
 ---
-# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Azure Machine Learning Studio
+# <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Azure Machine Learning Studio (klassisch)
 
-Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
+Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in der klassischen Version von Machine Learning Studio ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **zweite Teil einer dreiteiligen Reihe**.
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio erstellen können. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden die klassische Version von Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
-Im [ersten Teil des Tutorials](tutorial-part1-credit-risk.md) haben Sie einen Machine Learning Studio-Arbeitsbereich erstellt, Daten hochgeladen und ein Experiment erstellt.
+Im [ersten Teil des Tutorials](tutorial-part1-credit-risk.md) haben Sie einen Arbeitsbereich in Machine Learning Studio (klassisch) erstellt, Daten hochgeladen und ein Experiment erstellt.
 
 In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
  
@@ -38,23 +38,20 @@ In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
 
 Im [dritten Teil des Tutorials](tutorial-part3-credit-risk-deploy.md) stellen Sie das Modell als Webdienst bereit.
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Schließen Sie den [ersten Teil des Tutorials](tutorial-part1-credit-risk.md) ab.
 
 ## <a name="train"></a>Trainieren mehrerer Modelle
 
-Einer der Vorteile von Azure Machine Learning Studio zum Erstellen von Machine Learning-Modellen ist die Möglichkeit, mehr als einen Typ von Modell gleichzeitig in einem einzelnen Experiment zu testen und die Ergebnisse zu vergleichen. Dieser Typ von Experiment hilft Ihnen, die beste Lösung für Ihr Problem zu finden.
+Einer der Vorteile der klassischen Azure Machine Learning Studio-Version zum Erstellen von Machine Learning-Modellen ist die Möglichkeit, mehrere Modelltypen gleichzeitig in einem einzelnen Experiment zu testen und die Ergebnisse zu vergleichen. Dieser Typ von Experiment hilft Ihnen, die beste Lösung für Ihr Problem zu finden.
 
 In dem Experiment, das wir in diesem Tutorial entwickeln, werden zwei verschiedene Modelltypen erstellt und anschließend deren Bewertungsergebnisse verglichen, um zu entscheiden, welcher Algorithmus im endgültigen Experiment verwendet werden soll.  
 
 Es stehen verschiedene Modelle zur Auswahl. Um die verfügbaren Modelle anzuzeigen, erweitern Sie den Knoten **Machine Learning** in der Modulpalette, und erweitern Sie dann **Initialize Model** und die darunter liegenden Knoten. Für dieses Experiment werden die Module [Two-Class Support Vector Machine][two-class-support-vector-machine] (SVM) und [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] verwendet.
 
 > [!TIP]
-> Hilfe für die Entscheidung, welcher Machine Learning-Algorithmus für das Lösen des jeweiligen Problems am besten geeignet ist, finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning Studio](algorithm-choice.md).
+> Hilfe für die Entscheidung, welcher Machine Learning-Algorithmus für das Lösen des jeweiligen Problems am besten geeignet ist, finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning Studio (klassisch)](algorithm-choice.md).
 > 
 > 
 
@@ -83,9 +80,9 @@ Dieser Teil des Experiments sieht jetzt in etwa wie folgt aus:
 
 Nun müssen Sie dem Modul [Train Model][train-model] mitteilen, dass das Modell den Wert des Kreditrisikos vorhersagen soll.
 
-1. Wählen Sie das Modul [Train Model][train-model] aus. Klicken Sie im Bereich **Properties** auf **Launch column selector**.
+1. Wählen Sie das Modul [Train Model][train-model] (Modell trainieren) aus. Klicken Sie im Bereich **Properties** auf **Launch column selector**.
 
-1. Geben Sie im Dialogfeld **Select a single column** in das Suchfeld unter **Available Columns** „Credit risk“ ein. Wählen Sie unten „Credit risk“ aus, und klicken Sie auf den nach rechts zeigenden Pfeil (**>**), um „Credit risk“ in **Selected Columns** zu verschieben. 
+1. Geben Sie im Dialogfeld **Select a single column** in das Suchfeld unter **Available Columns** „Credit risk“ ein. Wählen Sie unten „Credit risk“ aus, und klicken Sie auf den nach rechts zeigenden Pfeil ( **>** ), um „Credit risk“ in **Selected Columns** zu verschieben. 
 
     ![Wählen Sie die Spalte „Credit Risk“ des Moduls „Train Model“ aus](./media/tutorial-part2-credit-risk-train/train-model-select-column.png)
 
@@ -101,13 +98,13 @@ Um das SVM-Modell einzurichten, führen Sie folgende Schritte aus:
 
 1. Suchen Sie das Modul [Two-Class Support Vector Machine][two-class-support-vector-machine] in der Modulpalette, und ziehen Sie es in den Experimentbereich.
 
-1. Klicken Sie mit der rechten Maustaste auf das Modul [Train Model][train-model], und wählen Sie **Copy** aus. Klicken Sie anschließend mit der rechten Maustaste auf die Canvas, und wählen Sie **Paste** aus. Beachten Sie, dass die Kopie des Moduls [Train Model][train-model] die gleiche Spaltenauswahl wie das Original hat.
+1. Klicken Sie mit der rechten Maustaste auf das Modul [Train Model][train-model], und wählen Sie **Copy** (Kopieren) aus. Klicken Sie anschließend mit der rechten Maustaste auf die Canvas, und wählen Sie **Paste** (Einfügen) aus. Beachten Sie, dass die Kopie des Moduls [Train Model][train-model] die gleiche Spaltenauswahl wie das Original hat.
 
 1. Verbinden Sie die Ausgabe des Moduls [Two-Class Support Vector Machine][two-class-support-vector-machine] mit dem linken Eingabeport des zweiten Moduls [Train Model][train-model].
 
 1. Suchen Sie das Modul [Normalize Data][normalize-data], und ziehen Sie es in den Experimentbereich.
 
-1. Verbinden Sie die Eingabe dieses Moduls mit der linken Ausgabe des linken Moduls [Execute R Script][execute-r-script] (beachten Sie, dass der Ausgabeport eines Moduls mit mehr als einem anderen Modul verbunden sein kann).
+1. Verbinden Sie die Eingabe dieses Moduls mit der linken Ausgabe des linken Moduls [Execute R Script][execute-r-script]. (Beachten Sie, dass der Ausgabeport eines Moduls mit mehr als einem anderen Modul verbunden sein kann.)
 
 1. Verbinden Sie den linken Ausgabeport des Moduls [Normalize Data][normalize-data] mit dem rechten Eingabeport des Moduls [Train Model][train-model].
 
@@ -128,7 +125,7 @@ Konfigurieren Sie jetzt das Modul [Normalize Data][normalize-data]:
     ![Wählen von Spalten für das Modul „Normalize Data“](./media/tutorial-part2-credit-risk-train/normalize-data-select-column.png)
 
 
-Das Modul [Normalize Data][normalize-data] ist jetzt für eine Tanh-Transformation aller numerischen Spalten mit Ausnahme der Spalte „Credit Risk“ eingerichtet.  
+Das Modul [Normalize Data][normalize-data] ist jetzt für eine Tanh-Transformation aller numerischen Spalten mit Ausnahme der Spalte „Credit Risk“ (Kreditrisiko) eingerichtet.  
 
 ## <a name="score-and-evaluate-the-models"></a>Bewerten und Auswerten der Modelle
 
@@ -149,7 +146,7 @@ Sie verwenden die Testdaten, die durch das Modul [Split Data][split] getrennt wu
 
 1. Kopieren Sie das Modul [Score Model][score-model], und fügen Sie es ein, um eine zweite Kopie zu erstellen.
 
-1. Verbinden Sie die Ausgabe des SVM-Modells (d.h. den Ausgabeport des Moduls [Train Model][train-model], der mit dem Modul [Two-Class Support Vector Machine][two-class-support-vector-machine] verbunden ist) mit dem Eingabeport des zweiten Moduls [Score Model][score-model].
+1. Verbinden Sie die Ausgabe des SVM-Modells (d. h. den Ausgabeport des Moduls [Train Model][train-model], der mit dem Modul [Two-Class Support Vector Machine][two-class-support-vector-machine] verbunden ist) mit dem Eingabeport des zweiten Moduls [Score Model][score-model].
 
 1. Für das SVM-Modell muss die gleiche Transformation für die Testdaten durchgeführt werden wie für die Trainingsdaten. Kopieren Sie also das Modul [Normalize Data][normalize-data], und fügen Sie es ein, um eine zweite Kopie zu erstellen, und verbinden Sie es mit dem rechten Modul [Execute R Script][execute-r-script].
 
@@ -164,7 +161,7 @@ Zum Evaluieren und Vergleichen der beiden Bewertungsergebnisse wird das Modul [E
 
 1. Suchen Sie das Modul [Evaluate Model][evaluate-model], und ziehen Sie es in den Bereich.
 
-1. Verbinden Sie den Ausgangsport des Moduls [Score Model][score-model], der dem „Boosted Decision Tree“-Modell zugeordnet ist, mit dem linken Eingabeport des Moduls [Evaluate Model][evaluate-model].
+1. Verbinden Sie den Ausgabeport des Moduls [Score Model][score-model], der dem Modell „Boosted Decision Tree“ zugeordnet ist, mit dem linken Eingabeport des Moduls [Evaluate Model][evaluate-model].
 
 1. Verbinden Sie das andere Modul [Score Model][score-model] mit dem rechten Eingabeport.  
 
@@ -191,9 +188,9 @@ Klicken Sie rechts neben dem Graph auf **Scored dataset** oder auf **Scored data
 Wenn Sie diese Werte prüfen, können Sie entscheiden, welches Modell am ehesten den gewünschten Ergebnissen entspricht. Sie können zurückgehen und das Experiment erneut ausführen, indem Sie Parameterwerte in den verschiedenen Modellen ändern. 
 
 Die wissenschaftliche Vorgehensweise und Kunst der Interpretation dieser Ergebnisse und das Optimieren der Modellleistung werden in diesem Tutorial nicht behandelt. Weitere Hilfe erhalten Sie in den folgenden Artikeln:
-- [Auswerten der Modellleistung in Azure Machine Learning Studio](evaluate-model-performance.md)
-- [Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio](algorithm-parameters-optimize.md)
-- [Interpretieren von Modellergebnissen in Azure Machine Learning Studio](interpret-model-results.md)
+- [Auswerten der Modellleistung in Azure Machine Learning Studio (klassisch)](evaluate-model-performance.md)
+- [Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (klassisch)](algorithm-parameters-optimize.md)
+- [Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)](interpret-model-results.md)
 
 > [!TIP]
 > Jedes Mal, wenn Sie das Experiment ausführen, wird im Ausführungsverlauf ein Dataset für diese Iteration aufbewahrt. Sie können die Iterationen anzeigen und zu jeder von ihnen zurückkehren, indem Sie unter dem Bereich auf **VIEW RUN HISTORY** klicken. Sie können auch im Fenster **Properties** auf **Prior Run** klicken, um zur Iteration unmittelbar vor der geöffneten Iteration zurückzukehren.
@@ -201,7 +198,7 @@ Die wissenschaftliche Vorgehensweise und Kunst der Interpretation dieser Ergebni
 > Sie können eine Kopie jeder Iteration des Experiments anfertigen, indem Sie unter dem Bereich auf **SAVE AS** klicken. 
 > Verwenden Sie die Eigenschaften **Summary** und **Description** des Experiments, um nachzuhalten, was Sie in den Iterationen Ihres Experiments versucht haben.
 > 
-> Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning-Studio](manage-experiment-iterations.md).  
+> Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning-Studio (klassisch)](manage-experiment-iterations.md).  
 > 
 > 
 

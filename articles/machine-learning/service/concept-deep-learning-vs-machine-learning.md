@@ -1,20 +1,20 @@
 ---
 title: Deep Learning im Vergleich zu maschinellem Lernen
-titleSuffix: Azure Machine Learning
-description: Erfahren Sie mehr über Deep Learning im Vergleich zu maschinellem Lernen und die Beziehung beider Konzepte zur künstlichen Intelligenz. Deep Learning kann in Szenarien wie Betrugserkennung, Sprach- und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen angewendet werden.
+titleSuffix: Azure
+description: Erfahren Sie, wie Deep Learning mit maschinellem Lernen (Machine Learning) und künstlicher Intelligenz zusammenhängt. Deep Learning wird in Szenarien wie Betrugserkennung, Sprach- und Gesichtserkennung, Standpunktanalyse und Zeitreihenvorhersagen verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 08/07/2019
-ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 11/04/2019
+ms.openlocfilehash: 2ed9f933e790aa70b257e27fa2bbbc04f6a2e077
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123137"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73648007"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
 
@@ -113,6 +113,11 @@ Convolutional Neural Networks werden in Bereichen wie Video- und Bilderkennung s
 In den folgenden Artikeln erfahren Sie, wie Sie Deep Learning in [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri) verwenden:
 
 - [Klassifizieren handschriftlicher Ziffern mit einem TensorFlow-Modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
+
 - [Klassifizieren von handschriftlichen Ziffern mithilfe einer TensorFlow-Schätzung und Keras](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
+
 - [Klassifizieren von Bildern mit einem Pytorch-Modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
+
 - [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+
+Verwenden Sie außerdem das [Machine Learning Algorithm Cheat Sheet](../algorithm-cheat-sheet.md), um Algorithmen für Ihr Modell auszuwählen.

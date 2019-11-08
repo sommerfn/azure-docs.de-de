@@ -1,21 +1,21 @@
 ---
-title: Konfigurieren einer Datasetzuordnung in Azure Data Share (Vorschau)
-description: Hier erfahren Sie, wie Sie eine Datasetzuordnung für eine empfangene Freigabe mithilfe von Azure Data Share (Vorschau) konfigurieren.
+title: Konfigurieren einer Datasetzuordnung in Azure Data Share
+description: Hier erfahren Sie, wie Sie eine Datasetzuordnung für eine empfangene Freigabe mithilfe von Azure Data Share konfigurieren.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169133"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490653"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Konfigurieren einer Datasetzuordnung für eine empfangene Freigabe in Azure Data Share (Vorschau)
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Konfigurieren einer Datasetzuordnung für eine empfangene Freigabe in Azure Data Share
 
-In diesem Artikel wird gezeigt, wie eine Datasetzuordnung für eine empfangene Freigabe in Azure Data Share (Vorschau) konfiguriert wird. Sie sollten so vorgehen, wenn Sie eine Datenfreigabeeinladung zwar angenommen, sich aber für „Annehmen und später konfigurieren“ entschieden haben. Andernfalls möchten Sie vielleicht einfach das Zielspeicherkonto für die empfangenen Daten ändern. 
+In diesem Artikel wird gezeigt, wie eine Datasetzuordnung für eine empfangene Freigabe in Azure Data Share konfiguriert wird. Sie sollten so vorgehen, wenn Sie eine Datenfreigabeeinladung zwar angenommen, sich aber für „Annehmen und später konfigurieren“ entschieden haben. Möglicherweise möchten Sie eine Datasetzuordnung konfigurieren, wenn Sie das Ziel für Daten ändern müssen, die für Sie freigegeben wurden, oder wenn Sie Daten in einer SQL Server-Instanz empfangen möchten. 
 
 ## <a name="navigate-to-a-received-data-share"></a>Navigieren zu einer empfangenen Datenfreigabe
 
@@ -23,15 +23,21 @@ Navigieren Sie im Azure Data Share-Dienst zu der empfangenen Freigabe, und wähl
 
 ![Datasetzuordnung](./media/dataset-mapping.png "Datasetzuordnung") 
 
-Aktivieren Sie das Kontrollkästchen neben dem Dataset, dem Sie ein Ziel zuweisen möchten, und klicken Sie auf **+ Ziel zuordnen**. Sie müssen die Zuordnung möglicherweise zunächst aufheben, wenn Sie bereits ein Zielspeicherkonto konfiguriert haben und die Zuordnung nun in ein anderes Speicherkonto ändern möchten. 
+Aktivieren Sie das Kontrollkästchen neben dem Dataset, dem Sie ein Ziel zuweisen möchten. Wählen Sie **Zuordnung aufheben** aus, um die vorhandene Zuordnung aufzuheben. Wählen Sie **+ Dem Ziel zuordnen** aus, um einen neuen Zielspeicher auszuwählen. 
 
-![Zuordnung zum Ziel](./media/dataset-map-target.png "Zuordnung auf Ziel") 
+![Dem Ziel zuordnen](./media/dataset-map-target.png "Dem Ziel zuordnen") 
 
-## <a name="select-a-new-storage-account"></a>Auswählen eines neuen Speicherkontos 
+## <a name="select-a-new-destination-store"></a>Auswählen eines neuen Zielspeichers
 
-Wählen Sie ein Speicherkonto aus, in dem die Daten gespeichert werden sollen. Beachten Sie, dass alle Daten, die bereits in einem zuvor zugeordneten Speicherkonto vorhanden sind, nicht automatisch in das neue Speicherkonto verschoben werden.
+Wählen Sie einen Zieldatentyp aus, in dem die Daten gespeichert werden sollen. Beachten Sie, dass alle Daten, die bereits in einem zuvor zugeordneten Speicherkonto vorhanden sind, nicht automatisch in das neue Ziel verschoben werden.
 
-![Zielspeicherkonto](./media/map-target.png "Zielspeicher") 
+![Zielspeicherkonto](./media/dataset-map-target-sql.png "Zielspeicher") 
+
+## <a name="select-a-file-format-sql-sources-only"></a>Auswählen eines Dateiformats (nur SQL-Quellen)
+
+Wenn die Quelldaten aus einer SQL-basierten Quelle stammen, können Sie auswählen, in welchem Format sie empfangen werden. 
+
+![Auswählen des Formats](./media/sql-file-formats.png "SQL-Dateiformate")
 
 ## <a name="next-steps"></a>Nächste Schritte
 

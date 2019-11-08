@@ -1,7 +1,7 @@
 ---
 title: Analysieren der Kundenabwanderung
-titleSuffix: Azure Machine Learning Studio
-description: Fallstudie zur Entwicklung eines integrierten Modells für die Analyse und Bewertung der Kundenbindung unter Verwendung von Azure Machine Learning Studio.
+titleSuffix: ML Studio (classic) Azure
+description: Fallstudie zur Entwicklung eines integrierten Modells für die Analyse und Bewertung der Kundenbindung unter Verwendung von Azure Machine Learning Studio (klassisch).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: e6a7eaa94e7196c830a66b2d77023bd562119c92
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 063b745bbf1c5e8453e0f6abe3cefdc76a60b5f9
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699440"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619750"
 ---
-# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio (klassisch)
 ## <a name="overview"></a>Übersicht
-Dieser Artikel beschreibt eine Referenzimplementierung für ein Projekt zur Analyse der Kundenabwanderung, das in Azure Machine Learning Studio erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
+Dieser Artikel beschreibt eine Referenzimplementierung für ein Projekt zur Analyse der Kundenabwanderung, das in Azure Machine Learning Studio (klassisch) erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
 
 ### <a name="acknowledgements"></a>Danksagung
-Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning Studio, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
+Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning Studio (klassisch), entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
 
 > [!NOTE]
 > Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) im [Azure KI-Katalog](https://gallery.azure.ai/)
@@ -70,29 +70,29 @@ Eine interessante Ergänzung ist hier die Analyse großer Datenmengen. Die heuti
 
  
 
-## <a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>Implementieren des Modellierungs-Prototyps in Machine Learning Studio
-Wie kann für das beschriebene Problem am besten ein integrierter Ansatz für die Modellierung und Bewertung implementiert werden? In diesem Abschnitt wird veranschaulicht, wie dies mithilfe von Azure Machine Learning Studio erreicht wird.  
+## <a name="implementing-the-modeling-archetype-in-machine-learning-studio-classic"></a>Implementieren des Modellierungsprototyps in Machine Learning Studio (klassisch)
+Wie kann für das beschriebene Problem am besten ein integrierter Ansatz für die Modellierung und Bewertung implementiert werden? In diesem Abschnitt wird veranschaulicht, wie dies mithilfe der klassischen Version von Azure Machine Learning Studio erreicht wird.  
 
 Der Multi-Modell-Ansatz ist beim Entwerfen eines globalen Prototyps für die Abwanderung zwingend erforderlich. Selbst der (voraussagende) Bewertungsteil des Ansatzes sollte mehrere Modelle einbeziehen.  
 
-Das folgende Diagramm zeigt den erstellten Prototyp, der vier Bewertungsalgorithmen in Machine Learning Studio einbezieht, um die Abwanderung vorherzusagen. Der Grund für die Verwendung eines Multi-Modell-Ansatzes besteht nicht nur darin, einen Gesamtklassifizierer zum Erhöhen der Genauigkeit zu erstellen, sondern er dient auch zum Schutz vor einer Überanpassung sowie zur Verbesserung der vorgeschriebenen Funktionsauswahl.  
+Das folgende Diagramm zeigt den erstellten Prototyp, der vier Bewertungsalgorithmen in Machine Learning Studio (klassisch) einbezieht, um die Abwanderung vorherzusagen. Der Grund für die Verwendung eines Multi-Modell-Ansatzes besteht nicht nur darin, einen Gesamtklassifizierer zum Erhöhen der Genauigkeit zu erstellen, sondern er dient auch zum Schutz vor einer Überanpassung sowie zur Verbesserung der vorgeschriebenen Funktionsauswahl.  
 
-![Screenshot eines komplexen Studio-Arbeitsbereichs mit vielen verbundenen Modulen](./media/azure-ml-customer-churn-scenario/churn-3.png)
+![Screenshot eines komplexen (klassischen) Studio-Arbeitsbereichs mit vielen miteinander verbundenen Modulen](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
 *Abbildung 5: Prototyp eines Abwanderungsmodell-Ansatzes*  
 
-Die folgenden Abschnitte enthalten Einzelheiten zum Bewertungsmodell des Prototyps, das wir mithilfe von Machine Learning Studio implementiert haben.  
+Die folgenden Abschnitte enthalten Einzelheiten zum Bewertungsmodell des Prototyps, das wir mithilfe von Machine Learning Studio (klassisch) implementiert haben.  
 
 ### <a name="data-selection-and-preparation"></a>Datenauswahl und Vorbereitung
 Die zum Erstellen der Modelle und zum Bewerten der Kunden verwendeten Daten wurden aus einer vertikalen CRM-Lösung abgerufen, wobei die Daten verschleiert wurden, um den Datenschutz der Kunden zu gewährleisten. Die Daten enthalten Informationen über 8.000 Abonnements in den USA, und es werden drei Quellen kombiniert: Bereitstellungsdaten (Abonnementmetadaten), Aktivitätsdaten (Nutzung des Systems) und Kundensupportdaten. Die Daten beinhalten keine geschäftlichen Daten der Kunden, so sind z. B. keine Treuemetadaten oder Bonitätsbewertungen enthalten.  
 
 Der Einfachheit halber liegen die ETL- und Datenbereinigungsprozesse außerhalb des Anwendungsbereichs, da wir annehmen, dass die Vorbereitung der Daten bereits an anderer Stelle durchgeführt wurde.
 
-Die Funktionsauswahl für die Modellerstellung basiert auf der Bewertung der vorläufigen Signifikanz für eine Reihe von in den Prozess einbezogenen Einflusswerten, wobei das Random Forest-Modul verwendet wird. Für die Implementierung in Machine Learning Studio haben wir den Mittelwert, den Medianwert und Bereiche für repräsentative Funktionen berechnet. Es wurden z. B. Mengen für die qualitativen Daten hinzugefügt, etwa Mindest- und Höchstwerte für die Benutzeraktivität.
+Die Funktionsauswahl für die Modellerstellung basiert auf der Bewertung der vorläufigen Signifikanz für eine Reihe von in den Prozess einbezogenen Einflusswerten, wobei das Random Forest-Modul verwendet wird. Für die Implementierung in Machine Learning Studio (klassisch) haben wir den Mittelwert, den Medianwert und Bereiche für repräsentative Funktionen berechnet. Es wurden z. B. Mengen für die qualitativen Daten hinzugefügt, etwa Mindest- und Höchstwerte für die Benutzeraktivität.
 
 Zudem wurden temporale Informationen für die letzten sechs Monate erfasst. Wir haben die Daten eines Jahres analysiert und dabei bewiesen, dass die Auswirkung auf die Abwanderung nach sechs Monaten erheblich abnimmt, auch wenn statistisch signifikante Trends vorhanden sind.  
 
-Der wichtigste Punkt dabei ist, dass der gesamte Prozess, einschließlich ETL, Funktionsauswahl und Modellerstellung, mithilfe von Datenquellen in Microsoft Azure in Machine Learning Studio implementiert wurde.   
+Der wichtigste Punkt dabei ist, dass der gesamte Prozess, einschließlich ETL, Funktionsauswahl und Modellerstellung, mithilfe von Datenquellen in Microsoft Azure in Machine Learning Studio (klassisch) implementiert wurde.   
 
 Die folgenden Diagramme veranschaulichen die verwendeten Daten.  
 
@@ -124,18 +124,18 @@ Das folgende Diagramm veranschaulicht einen Teil der Experimententwurfsoberfläc
 
 ![Screenshot mit einem kleinen Abschnitt des Studio-Experimentbereichs](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
-*Abbildung 8: Erstellen von Modellen in Machine Learning Studio*  
+*Abbildung 8: Erstellen von Modellen in Machine Learning Studio (klassisch)*  
 
 ### <a name="scoring-methods"></a>Bewertungsmethoden
 Wir haben die vier Modelle mithilfe eines bezeichneten Trainings-DataSets bewertet.  
 
-Wir haben das Bewertungs-DataSet auch mit der Desktop-Edition von SAS Enterprise Miner 12 an ein vergleichbares Modell übermittelt. Wir maßen die Genauigkeit des SAS-Modells und aller vier Machine Learning Studio-Modelle.  
+Wir haben das Bewertungs-DataSet auch mit der Desktop-Edition von SAS Enterprise Miner 12 an ein vergleichbares Modell übermittelt. Wir maßen die Genauigkeit des SAS-Modells und aller vier (klassischen) Machine Learning Studio-Modelle.  
 
 ## <a name="results"></a>Ergebnisse
 In diesem Abschnitt werden unsere Ergebnisse zur Genauigkeit der Modelle auf Basis des Bewertungsdatasets präsentiert.  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>Richtigkeit und Genauigkeit der Bewertung
-Im Allgemeinen ist die Implementierung in Azure Machine Learning Studio etwas ungenauer als SAS, und zwar um etwa 10 – 15 % (Area Under Curve oder AUC).  
+Im Allgemeinen ist die Implementierung in der klassischen Version von Azure Machine Learning Studio etwas ungenauer als SAS, und zwar um etwa 10-15 % (Area Under Curve oder AUC).  
 
 Die wichtigste Kennzahl in Codeänderung ist jedoch die Rate der falschen Klassifizierung: Welcher der vom Klassifizierer vorhergesagten wichtigsten N Abwanderer ist tatsächlich **nicht** abgewandert und hat trotzdem besondere Behandlung erhalten? Das folgende Diagramm vergleicht die Fehlklassifizierungsrate für alle Modelle:  
 
@@ -152,9 +152,9 @@ AUC wird als Maßstab für den Wert verschiedener Algorithmen (oder verschiedene
 Wir haben die Fehlklassifikationsraten für das fragliche Dataset mithilfe der CRM-Daten von ungefähr 8.000 Kunden verglichen.  
 
 * Die SAS-Fehlklassifizierungsrate lag bei 10-15 %.
-* Die Fehlklassifizierungsrate von Machine Learning Studio lag für die obersten 200-300 Abwanderer bei 15-20 %.  
+* Die Fehlklassifizierungsrate von Machine Learning Studio (klassisch) lag für die obersten 200-300 Abwanderer bei 15-20 %.  
 
-In der Telekommunikationsbranche ist es wichtig, sich nur mit den Kunden mit dem höchsten Abwanderungsrisiko zu befassen, indem ihnen ein Concierge-Dienst oder andere Sonderbehandlungen angeboten werden. In dieser Hinsicht erzielt die Machine Learning Studio-Implementierung Ergebnisse, die mit dem SAS-Modell vergleichbar sind.  
+In der Telekommunikationsbranche ist es wichtig, sich nur mit den Kunden mit dem höchsten Abwanderungsrisiko zu befassen, indem ihnen ein Concierge-Dienst oder andere Sonderbehandlungen angeboten werden. In dieser Hinsicht erzielt die (klassische) Machine Learning Studio-Implementierung Ergebnisse, die mit dem SAS-Modell vergleichbar sind.  
 
 Ebenso ist die Richtigkeit wichtiger als die Genauigkeit, da wir am stärksten an der korrekten Klassifizierung potenzieller Abwanderer interessiert sind.  
 
@@ -172,7 +172,7 @@ Das folgende Diagramm zeigt die Originalergebnisse der Bewertung mithilfe des Ma
 *Abbildung 11: Merkmale des Boosted Decision Tree-Modells*
 
 ## <a name="performance-comparison"></a>Leistungsvergleich
-Wir haben die Geschwindigkeit, mit der Daten mithilfe der Machine Learning Studio-Modelle bewertet wurden, mit einem vergleichbaren Modell verglichen, das mithilfe der Desktopversion von SAS Enterprise Miner 12.1 erstellt wurde.  
+Wir haben die Geschwindigkeit, mit der Daten mithilfe der (klassischen) Machine Learning Studio-Modelle bewertet wurden, mit einem vergleichbaren Modell verglichen, das mithilfe der Desktopversion von SAS Enterprise Miner 12.1 erstellt wurde.  
 
 Die folgende Tabelle fasst die Leistung der Algorithmen zusammen:  
 
@@ -182,7 +182,7 @@ Die folgende Tabelle fasst die Leistung der Algorithmen zusammen:
 | --- | --- | --- | --- |
 | Durchschnittliches Modell |Bestes Modell |Unterdurchschnittliches Modell |Durchschnittliches Modell |
 
-Die in Machine Learning Studio gehosteten Modelle haben SAS hinsichtlich der Ausführungsgeschwindigkeit um 15-25 % übertroffen, aber die Richtigkeit war größtenteils vergleichbar.  
+Die in Machine Learning Studio (klassisch) gehosteten Modelle haben SAS hinsichtlich der Ausführungsgeschwindigkeit um 15-25 % übertroffen, aber die Richtigkeit war größtenteils vergleichbar.  
 
 ## <a name="discussion-and-recommendations"></a>Diskussion und Empfehlungen
 In der Telekommunikationsbranche haben sich verschiedene Methoden zur Analyse der Abwanderung entwickelt, darunter:  
@@ -198,15 +198,15 @@ Die Verwendung dieser vier Kategorien schafft die Illusion, dass ein einfacher *
 
 Diese wichtige Beobachtung wird in Unternehmen häufig übersehen, die im Allgemeinen einen Business Intelligence-orientierten Ansatz für die Analyse bevorzugen (hauptsächlich, da er besser zu verkaufen ist und eine unkomplizierte Automatisierung gestattet).  
 
-Die Aussicht der Self-Service-Analyse mithilfe von Machine Learning Studio ist jedoch, dass die vier Informationskategorien, die nach Geschäftsbereich oder Abteilung bewertet werden, für das maschinelle Lernen hinsichtlich der Abwanderung zu einer wichtigen Quelle werden.  
+Die Aussicht der Self-Service-Analyse mithilfe von Machine Learning Studio (klassisch) ist jedoch, dass die vier Informationskategorien, die nach Geschäftsbereich oder Abteilung bewertet werden, für das maschinelle Lernen hinsichtlich der Abwanderung zu einer wichtigen Quelle werden.  
 
-Eine weitere interessante Funktion von Azure Machine Learning Studio ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal von Azure Machine Learning Studio.  
+Eine weitere interessante Funktion in der klassischen Version von Azure Machine Learning Studio ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal der klassischen Version von Azure Machine Learning Studio.  
 
 Wir hoffen, dieses Thema weiter behandeln zu können, insbesondere in Bezug auf die Analyse großer Datenmengen.
   
 
 ## <a name="conclusion"></a>Zusammenfassung
-In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe von Azure Machine Learning Studio implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
+In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe der klassischen Version von Azure Machine Learning Studio implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
 
  
 

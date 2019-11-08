@@ -5,18 +5,16 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7ebcf865ad23e75b2aa9070fe14fc3ee8f1397c7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387057"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481137"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Data Factory.  
@@ -180,32 +178,95 @@ NULL-Werte können mithilfe des `@coalesce`-Konstrukts in den Ausdrücken ordnun
 
 ## <a name="mapping-data-flows"></a>Zuordnen von Datenflüssen
 
-### <a name="which-data-factory-version-do-i-use-to-create-data-flows"></a>Mit welcher Data Factory-Version können Datenflüsse erstellt werden?
-Verwenden Sie zum Erstellen von Datenflüssen Data Factory V2.
-  
-### <a name="i-was-a-previous-private-preview-customer-who-used-data-flows-and-i-used-the-data-factory-v2-preview-version-for-data-flows"></a>Ich war zuvor Kunde mit privater Vorschau und habe die Vorschauversion von Data Factory V2 für Datenflüsse verwendet.
-Diese Version ist mittlerweile veraltet. Verwenden Sie Data Factory V2 für Datenflüsse.
-  
-### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-regard-to-data-flows"></a>Was hat sich bei Datenflüssen zwischen der privaten Vorschau und der eingeschränkten öffentlichen Vorschau geändert?
-Sie müssen nicht mehr Ihre eigenen Azure Databricks-Cluster bereitstellen. Data Factory kümmert sich um das Erstellen und Löschen von Clustern. Blobdatasets und Azure Data Lake Storage Gen2-Datasets sind in Datasets vom Typ „Text mit Trennzeichen“ und „Apache Parquet“ unterteilt. Zum Speichern dieser Dateien können Sie weiterhin Data Lake Storage Gen2 und Blob Storage verwenden. Verwenden Sie den entsprechenden verknüpften Dienst für diese Speicher-Engines.
-
-### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>Kann ich meine Factorys aus der privaten Vorschau zu Data Factory V2 migrieren?
-
-Ja. Eine entsprechende Anleitung finden Sie [hier](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration).
-
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>Ich brauche Hilfe bei der Behandlung von Problemen mit meiner Datenflusslogik. Welche Informationen muss ich angeben, um Hilfe zu erhalten?
 
-Wenn Microsoft Hilfe oder eine Problembehandlung für Datenflüsse bereitstellt, geben Sie bitte den DSL-Codeplan an. Gehen Sie dazu folgendermaßen vor:
+Wenn Microsoft Hilfe oder eine Problembehandlung für Datenflüsse bereitstellt, geben Sie bitte das Datenflussskript an. Dies ist das CodeBehind-Skript aus dem Datenflussdiagramm. Öffnen Sie den Datenfluss über die ADF-Benutzeroberfläche, und klicken Sie dann oben rechts auf die Schaltfläche „Skript“. Kopieren Sie dieses Skript, und fügen Sie es ein, oder speichern Sie es in einer Textdatei.
 
-1. Wählen Sie rechts oben im Datenfluss-Designer die Option **Code** aus. Dadurch wird der bearbeitbare JSON-Code für den Datenfluss angezeigt.
-2. Wählen Sie rechts oben in der Codeansicht die Option **Plan** aus. Mit diesem Umschalter können Sie von JSON zum schreibgeschützten DSL-Skriptplan wechseln.
-3. Kopieren Sie dieses Skript, und fügen Sie es ein, oder speichern Sie es in einer Textdatei.
-
-### <a name="how-do-i-access-data-by-using-the-other-80-dataset-types-in-data-factory"></a>Wie kann ich mit den anderen 80 Datasettypen in Data Factory auf Daten zugreifen?
+### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Wie kann ich mit den anderen 90 Datasettypen in Data Factory auf Daten zugreifen?
 
 Mit dem Feature „Mapping Data Flow“ können aktuell Azure SQL-Datenbank, Azure SQL Data Warehouse, durch Trennzeichen getrennte Textdateien aus Azure Blob Storage oder Azure Data Lake Storage Gen2 sowie Parquet-Dateien aus Blob Storage oder Data Lake Storage Gen2 nativ für Quelle und Senke verwendet werden. 
 
 Verwenden Sie die Kopieraktivität, um Daten aus einem der anderen Connectors bereitzustellen, und führen Sie dann eine Datenflussaktivität aus, um Daten nach der Bereitstellung zu transformieren. So führt Ihre Pipeline beispielsweise zuerst einen Kopiervorgang nach Blob Storage aus, und anschließend verwendet eine Datenflussaktivität ein Dataset in der Quelle, um diese Daten zu transformieren.
+
+### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Ist die selbstgehostete Integration Runtime für Datenflüsse verfügbar?
+
+Die selbstgehostete IR ist ein ADF-Pipelinekonstrukt, das Sie mit der Kopieraktivität zum Abrufen oder Verschieben von Daten in und aus lokalen oder VM-basierten Datenquellen und -senken verwenden können. Stellen Sie die Daten zuerst mit einem Kopiervorgang, dann einem Datenfluss für die Transformation und dann einem nachfolgenden Kopiervorgang bereit, wenn Sie die transformierten Daten zurück in den lokalen Speicher verschieben müssen.
+
+## <a name="wrangling-data-flows"></a>Wranglingdatenflüsse
+
+### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Welche Regionen werden für den Wranglingdatenfluss unterstützt?
+
+Der Wranglingdatenfluss wird derzeit in Data Factorys unterstützt, die in folgenden Regionen erstellt wurden:
+
+* Australien (Osten)
+* Kanada, Mitte
+* Indien, Mitte
+* USA (Mitte)
+* East US
+* USA (Ost) 2
+* Japan, Osten
+* Nordeuropa
+* Asien, Südosten
+* USA Süd Mitte
+* UK, Süden
+* USA, Westen-Mitte
+* Europa, Westen
+* USA (Westen)
+* USA, Westen 2
+
+### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Welche Einschränkungen bestehen beim Wranglingdatenfluss?
+
+Datasetnamen dürfen nur alphanumerische Zeichen enthalten. Die folgenden Datenspeicher werden unterstützt:
+
+* DelimitedText-Dataset in Azure Blob Storage mithilfe der Kontoschlüsselauthentifizierung
+* DelimitedText-Dataset in Azure Data Lake Storage gen2 mithilfe der Kontoschlüssel- oder Dienstprinzipalauthentifizierung
+* DelimitedText-Dataset in Azure Data Lake Storage gen1 mithilfe der Dienstprinzipalauthentifizierung
+* Azure SQL-Datenbank und Data Warehouse mithilfe der SQL-Authentifizierung. Siehe unterstützte SQL-Typen weiter unten. Es gibt keine PolyBase- oder Stagingunterstützung für Data Warehouse.
+
+Derzeit wird die Key Vault-Integration verknüpfter Dienste in Wranglingdatenflüssen nicht unterstützt.
+
+### <a name="what-is-the-difference-between-mapping-and-wrangling-data-flows"></a>Was ist der Unterschied zwischen Zuordnungsdatenflüssen und Wranglingdatenflüssen?
+
+Mit Zuordnungsdatenflüssen können Sie Daten nach Maß transformieren, ohne Code schreiben zu müssen. Sie können einen Datentransformationsauftrag auf der Datenflusscanvas entwerfen, indem Sie eine Reihe von Transformationen erstellen. Beginnen Sie mit einer beliebigen Anzahl von Quelltransformationen, gefolgt von Datentransformationsschritten. Vervollständigen Sie Ihren Datenfluss mit einer Senke, damit Ihre Ergebnisse an ein Ziel gelangen. Der Zuordnungsdatenfluss eignet sich besonders für das Zuordnen und Transformieren von Daten mit bekannten und unbekannten Schemas in den Senken und Quellen.
+
+Wranglingdatenflüsse ermöglichen Ihnen das Vorbereiten und Durchsuchen agiler Daten mithilfe des Power Query Online-Mashup-Editors in jeder Größenordnung per Spark-Ausführung. Mit dem Anstieg von Data Lakes ist es manchmal erforderlich, ein Dataset zu durchsuchen oder ein Dataset im Lake zu erstellen. Sie nehmen keine Zuordnung zu einem bekannten Ziel vor. Wranglingdatenflüsse werden für weniger formale und modellbasierte Analyseszenarien verwendet.
+
+### <a name="what-is-the-difference-between-power-platform-dataflows-and-wrangling-data-flows"></a>Was ist der Unterschied zwischen Power Platform-Dataflows und Wranglingdatenflüssen?
+
+Mithilfe von Power Platform-Dataflows können Benutzer Daten aus einer Vielzahl von Datenquellen in Common Data Service und Azure Data Lake importieren und transformieren, um PowerApps-Anwendungen, Power BI-Berichten oder Flow-Automatisierungen zu erstellen. Power Platform-Dataflows verwenden die bestehenden Power Query-Oberflächen für die Datenvorbereitung, ähnlich wie Power BI und Excel. Power Platform-Dataflows ermöglichen außerdem die einfache Wiederverwendung innerhalb einer Organisation und die automatische Orchestrierung (z.B. automatisches Aktualisieren von Datenflüssen, die von einem anderen Datenfluss abhängig sind, wenn Erstere aktualisiert werden).
+
+Azure Data Factory (ADF) ist ein verwalteter Datenintegrationsdienst, mit dem Datentechniker und Datenintegratoren ohne Programmiererfahrung komplexe Hybridworkflows mit ETL (Extract-Transform-Load) und ELT (Extract-Load-Transform) erstellen können. Wranglingdatenflüsse in ADF stellen Benutzern eine codefreie, serverlose Umgebung bereit, die die Datenvorbereitung in der Cloud vereinfacht und ohne jegliche Infrastrukturverwaltung auf jede Datengröße skaliert werden kann. Hierbei wird die Datenvorbereitungstechnologie von Power Query (auch in Power Platform-Dataflows, Excel, Power BI verwendet) zum Vorbereiten und Formen der Daten verwendet. Wranglingdatenflüsse sind darauf ausgelegt, mit sämtlichen Komplexitäten und Skalierungsherausforderungen von Big Data-Integrationen umzugehen und ermöglichen Benutzern, Daten schnell in jeder Größenordnung per Spark-Ausführung vorzubereiten. Mit unserer browserbasierten Schnittstelle können Benutzer resiliente Datenpipelines in einer zugänglichen visuellen Umgebung erstellen und ADF die komplexe Spark-Ausführung überlassen. Erstellen Sie Zeitpläne für Ihre Pipelines, und überwachen Sie Ihre Datenflussausführungen über das ADF-Überwachungsportal. Verwalten Sie Datenverfügbarkeits-SLAs ganz einfach mit der umfangreichen Verfügbarkeitsüberwachung und den Warnungen von ADF. Nutzen Sie integrierte Funktionen für Continuous Integration und Continuous Deployment zum Speichern und Verwalten Ihrer Flüsse in einer verwalteten Umgebung. Richten Sie Warnungen ein, und zeigen Sie Ausführungspläne an, um beim Feinabstimmen Ihrer Datenflüsse sicherzustellen, dass Ihre Logik wie geplant abläuft.
+
+### <a name="supported-sql-types"></a>Unterstützte SQL-Typen
+
+Der Wranglingdatenfluss unterstützt die folgenden Datentypen in SQL. Bei Verwendung eines nicht unterstützten Datentyps wird ein Validierungsfehler angezeigt.
+
+* short
+* double
+* real
+* float
+* char
+* nchar
+* varchar
+* nvarchar
+* integer
+* int
+* bit
+* boolean
+* smallint
+* tinyint
+* bigint
+* long
+* text
+* date
+* datetime
+* datetime2
+* smalldatetime
+* timestamp
+* uniqueidentifier
+* Xml
+
+In Zukunft werden weitere Datentypen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Schritt-für-Schritt-Anleitungen zum Erstellen einer Data Factory-Instanz finden Sie in den folgenden Tutorials:

@@ -1,7 +1,7 @@
 ---
 title: Nutzen des Webdiensts in Excel
-titleSuffix: Azure Machine Learning Studio
-description: Mit Azure Machine Learning Studio können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
+titleSuffix: ML Studio (classic) Azure
+description: Mit Azure Machine Learning Studio (klassisch) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa1e457cf401e74ffb8a7a02b5eba5f4c4f0c334
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773756"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621848"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Nutzen ein Azure Machine Learning Studio-Webdiensts aus Excel
+# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Nutzen eines (klassischen) Azure Machine Learning Studio-Webdiensts aus Excel
 
- Mit Azure Machine Learning Studio können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
+ Mit Azure Machine Learning Studio (klassisch) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
 
 Wenn Sie Excel 2013 (oder höher) oder Excel Online verwenden, empfehlen wir die Verwendung des [Excel-Add-Ins](excel-add-in-for-web-services.md).
 
@@ -34,7 +34,7 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 
 1. Auf der Registerkarte **DASHBOARD** für den Webdienst befindet sich die Zeile **REQUEST/RESPONSE** für den Antwort-/Anfrage-Dienst. Wenn dieser Dienst eine einzelne Ausgabe hat, sollte sich in dieser Zeile der Link **Download Excel Workbook** befinden.
 
-    ![Herunterladen der Excel-Arbeitsmappe mit dem Studio-Webdienst-Portal](./media/consuming-from-excel/excellink.png)
+    ![Herunterladen der Excel-Arbeitsmappe im Webdienstportal von Studio (klassisch)](./media/consuming-from-excel/excellink.png)
 2. Klicken Sie auf **Download Excel Workbook**.
 
 **Neuer Webdienst**

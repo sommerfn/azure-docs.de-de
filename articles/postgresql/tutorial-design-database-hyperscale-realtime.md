@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Entwerfen eines Echtzeitdashboards mit Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
-description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL Hyperscale (Citus) (Vorschau) erstellen, auffüllen und abfragen.
+title: 'Tutorial: Entwerfen eines Echtzeitdashboards mit Azure Database for PostgreSQL – Hyperscale (Citus)'
+description: In diesem Tutorial erfahren Sie, wie Sie verteilte Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus) erstellen, auffüllen und abfragen.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,16 +8,16 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: a5e4b2073a29785ee851b2733c12d6331afe59d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65791328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73482874"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Tutorial: Entwerfen eines Dashboards zur Echtzeitanalyse mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau)
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen eines Dashboards für die Echtzeitanalyse mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
-In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau), um Folgendes zu lernen:
+In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (Citus), um Folgendes zu lernen:
 
 > [!div class="checklist"]
 > * Erstellen einer Hyperscale (Citus)-Servergruppe
@@ -34,7 +34,7 @@ In diesem Tutorial verwenden Sie Azure Database for PostgreSQL – Hyperscale (C
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Verwenden des psql-Hilfsprogramms zum Erstellen eines Schemas
 
-Nach dem Herstellen der Verbindung mit der Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschau) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie schrittweise durch das Erfassen von Verkehrsdaten aus Webanalysen und den anschließenden Rollup der Daten, um Echtzeitdashboards auf der Grundlage dieser Daten bereitzustellen.
+Nach dem Herstellen der Verbindung mit Azure Database for PostgreSQL – Hyperscale (Citus) mithilfe von psql können Sie ein paar einfache Aufgaben ausführen. Dieses Tutorial führt Sie schrittweise durch das Erfassen von Verkehrsdaten aus Webanalysen und den anschließenden Rollup der Daten, um Echtzeitdashboards auf der Grundlage dieser Daten bereitzustellen.
 
 Erstellen wir eine Tabelle, die unsere gesamten Webdatenverkehrs-Rohdaten nutzt. Führen Sie die folgenden Befehle im psql-Terminal aus:
 

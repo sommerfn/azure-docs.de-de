@@ -1,6 +1,6 @@
 ---
 title: Interpretieren von Modellergebnissen
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: Auswahl des optimalen Parametersatzes für einen Algorithmus mit Verwendung und Visualisierung von Bewertungsmodellausgaben.
 services: machine-learning
 ms.service: machine-learning
@@ -10,19 +10,19 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cdeded35e1afb9313f2dd2c5842aef511ea0dd61
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60867021"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621668"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio
-In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
+# <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)
+In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio (klassisch) erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
 
 
 
-Es gibt vier Hauptarten von Machine Learning-Modellen in Azure Machine Learning Studio:
+Es gibt vier Hauptarten von Machine Learning-Modellen in der klassischen Version von Azure Machine Learning Studio:
 
 * Classification
 * Clustering
@@ -33,13 +33,13 @@ Folgende Module werden am Anfang dieser Modelle für die Vorhersage verwendet:
 
 * [Score Model][score-model] ist ein Modul für Klassifizierung und Regression.
 * [Assign to Clusters][assign-to-clusters] ist ein Modul für das Clustering.
-* [Score Matchbox Recommender][score-matchbox-recommender] ist ein Modul für Empfehlungssysteme
+* [Score Matchbox Recommender][score-matchbox-recommender] ist ein Modul für Empfehlungssysteme.
 
-Dieses Dokument erläutert, wie Sie die Vorhersageergebnisse für jedes dieser Module interpretieren können. Einen Überblick über diese Module finden Sie unter [Auswählen von Parametern zum Optimieren Ihres Algorithmus in Azure Machine Learning Studio](algorithm-parameters-optimize.md).
+Dieses Dokument erläutert, wie Sie die Vorhersageergebnisse für jedes dieser Module interpretieren können. Eine Übersicht über diese Module finden Sie unter [Auswählen von Parametern zum Optimieren Ihres Algorithmus in Azure Machine Learning Studio (klassisch)](algorithm-parameters-optimize.md).
 
-Dieses Thema behandelt die Interpretation der Vorhersage, aber nicht die Modellauswertung. Weitere Informationen zum Auswerten Ihres Modells finden Sie unter [Auswerten der Modellleistung in Azure Machine Learning Studio](evaluate-model-performance.md).
+Dieses Thema behandelt die Interpretation der Vorhersage, aber nicht die Modellauswertung. Weitere Informationen zum Auswerten Ihres Modells finden Sie unter [Auswerten der Modellleistung in Azure Machine Learning Studio (klassisch)](evaluate-model-performance.md).
 
-Wenn Sie gerade erst in Azure Machine Learning Studio einsteigen und Hilfe beim Erstellen eines einfachen Experiments benötigen, finden Sie diese in Azure Machine Learning Studio unter [Erstellen eines einfachen Experiments in Azure Machine Learning Studio](create-experiment.md).
+Wenn Sie gerade erst in die klassische Version von Azure Machine Learning Studio einsteigen und Hilfe beim Erstellen eines einfachen Experiments benötigen, finden Sie weitere Informationen unter [Erstellen eines einfachen Experiments in Azure Machine Learning Studio (klassisch)](create-experiment.md).
 
 ## <a name="classification"></a>Classification
 Es gibt zwei Unterkategorien von Klassifizierungsproblemen:
@@ -47,18 +47,18 @@ Es gibt zwei Unterkategorien von Klassifizierungsproblemen:
 * Probleme mit nur zwei Klassen (Zwei-Klassen- oder binäre Klassifizierung)
 * Probleme mit mehr als zwei Klassen (Klassifizierung mit mehreren Klassen)
 
-Azure Machine Learning Studio bietet unterschiedliche Module für den Umgang mit jedem dieser Klassifizierungstypen, die Methoden zur Interpretation der Vorhersageergebnisse sind aber ähnlich.
+Azure Machine Learning Studio (klassisch) bietet unterschiedliche Module für den Umgang mit den einzelnen Klassifizierungstypen, die Methoden zur Interpretation der Vorhersageergebnisse sind aber ähnlich.
 
 ### <a name="two-class-classification"></a>Klassifizierung mit zwei Klassen
 **Beispielexperiment**
 
-Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das in Azure Machine Learning Studio bereitgestellte Iris-Dataset ist eine Teilmenge des beliebten [Iris-Datasets](https://en.wikipedia.org/wiki/Iris_flower_data_set) und enthält nur Instanzen von zwei Blumenarten (Klasse 0 und 1). Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
+Ein Beispiel für ein Zwei-Klassen-Klassifizierungsproblem ist die Klassifizierung der Schwertlilien. Schwertlilien sollen gemäß ihrer Features klassifiziert werden. Das in der klassischen Version von Azure Machine Learning Studio bereitgestellte Schwertliliendataset ist eine Teilmenge des beliebten [Iris-Datasets](https://en.wikipedia.org/wiki/Iris_flower_data_set), das Instanzen von nur zwei Blumenarten (Klassen 0 und 1) enthält. Es gibt vier Features für jede Blume (Länge und Breite des Kelchblatts sowie Länge und Breite des Kronblatts).
 
 ![Screenshot des Irisexperiments](./media/interpret-model-results/1.png)
 
 Abbildung 1. Experiment mit Schwertlilien für ein Klassifizierungsproblem mit zwei Klassen
 
-Es wurde ein Experiment ausgeführt, um dieses Problem zu beheben, wie in Abbildung 1 dargestellt. Ein zweiklassiges Modell mit gewichtetem Entscheidungsbaum wurde trainiert und bewertet. Jetzt können Sie die Vorhersageergebnisse aus dem Modul [Score Model][score-model] grafisch darstellen, indem Sie auf den Ausgabeport des Moduls [Score Model][score-model] und dann auf **Visualize** klicken.
+Es wurde ein Experiment ausgeführt, um dieses Problem zu beheben, wie in Abbildung 1 dargestellt. Ein zweiklassiges Modell mit gewichtetem Entscheidungsbaum wurde trainiert und bewertet. Jetzt können Sie die Vorhersageergebnisse aus dem Modul [Score Model][score-model] grafisch darstellen, indem Sie auf den Ausgabeport des Moduls [Score Model][score-model] und dann auf **Visualisieren** klicken.
 
 ![Bewertungsmodellmodul](./media/interpret-model-results/1_1.png)
 
@@ -80,7 +80,7 @@ Sobald Sie die Vorhersageergebnisse verstanden und als solide eingestuft haben, 
 
 Abbildung 3. Experiment zur Bewertung von Schwertlilien in Verbindung mit einem Zwei-Klassen-Klassifizierungsproblem
 
-Jetzt müssen Sie die Eingabe und Ausgabe für den Webdienst festlegen. Die Eingabe erfolgt über den rechten Eingangsport von [Score Model][score-model], also die Eingabe der Schwertlilienmerkmale. Die Wahl der Ausgabe hängt davon ab, ob Sie an der vorhergesagten Klasse (ausgewerteter Bezeichner), der ausgewerteten Wahrscheinlichkeit oder an beiden Werten interessiert sind. In diesem Beispiel wird vorausgesetzt, dass Sie an beiden Werten interessiert sind. Um die gewünschten Ausgabespalten auszuwählen, müssen Sie das Modul [Select Columns in Data set][select-columns] verwenden. Klicken Sie auf [Select Columns in Data set][select-columns], dann auf **Launch column selector**, und wählen Sie **Scored Labels** und **Scored Probabilities** aus. Nach dem Festlegen des Ausgangsports für [Select Columns in Data set][select-columns] und erneutem Ausführen sollten Sie das Bewertungsexperiment als Webdienst veröffentlichen können, indem Sie auf **PUBLISH WEB SERVICE** klicken. Das letzte Experiment sieht aus wie in Abbildung 4.
+Jetzt müssen Sie die Eingabe und Ausgabe für den Webdienst festlegen. Die Eingabe erfolgt über den rechten Eingangsport von [Score Model][score-model], also die Eingabe der Schwertlilienmerkmale. Die Wahl der Ausgabe hängt davon ab, ob Sie an der vorhergesagten Klasse (ausgewerteter Bezeichner), der ausgewerteten Wahrscheinlichkeit oder an beiden Werten interessiert sind. In diesem Beispiel wird vorausgesetzt, dass Sie an beiden Werten interessiert sind. Um die gewünschten Ausgabespalten auszuwählen, müssen Sie das Modul [Select Columns in Data set][select-columns] verwenden. Klicken Sie auf [Select Columns in Data set][select-columns], dann auf **Launch column selector** (Spaltenauswahl starten), und wählen Sie **Scored Labels** (Bewertete Bezeichnungen) und **Scored Probabilities** (Bewertete Wahrscheinlichkeiten) aus. Nach dem Festlegen des Ausgangsports für [Select Columns in Data set][select-columns] und dem erneuten Ausführen sollten Sie das Bewertungsexperiment als Webdienst veröffentlichen können, indem Sie auf **WEBDIENST VERÖFFENTLICHEN** klicken. Das letzte Experiment sieht aus wie in Abbildung 4.
 
 ![Das Experiment mit Schwertlilien zur Klassifizierung mit zwei Klassen](./media/interpret-model-results/4.png)
 
@@ -107,7 +107,7 @@ In den Trainingsdaten gibt es 16 Features, die aus handschriftlichen Bildern ext
 
 Abbildung 6. Experiment zum Problem der Buchstabenerkennung bei Klassifizierung mit mehreren Klassen
 
-Visualisieren Sie die Ergebnisse aus dem Modul [Score Model][score-model], indem Sie auf den Ausgabeport des Moduls [Score Model][score-model] und dann auf **Visualize** klicken. Es sollte Inhalt wie in Abbildung 7 angezeigt werden.
+Visualisieren Sie die Ergebnisse aus dem Modul [Score Model][score-model], indem Sie auf den Ausgabeport des Moduls [Score Model][score-model] und dann auf **Visualisieren** klicken. Der Inhalt sollte dem in Abbildung 7 ähneln.
 
 ![Bewertungsmodellergebnisse](./media/interpret-model-results/7.png)
 
@@ -119,7 +119,7 @@ Die linken 16 Spalten stellen die Featurewerte des Testsatzes dar. Die Spalten m
 
 **Webdienstveröffentlichung**
 
-Sie können auch die bewertete Bezeichnung für jeden Eintrag und die Wahrscheinlichkeit der bewerteten Bezeichnung abrufen. Die grundlegende Logik ist, die größte Wahrscheinlichkeit unter allen ausgewerteten Wahrscheinlichkeiten zu finden. Zu diesem Zweck müssen Sie das Modul [Execute R Script][execute-r-script] verwenden. Der R-Code ist in Abbildung 8 dargestellt, das Ergebnis des Experiments in Abbildung 9.
+Sie können auch die bewertete Bezeichnung für jeden Eintrag und die Wahrscheinlichkeit der bewerteten Bezeichnung abrufen. Die grundlegende Logik ist, die größte Wahrscheinlichkeit unter allen ausgewerteten Wahrscheinlichkeiten zu finden. Zu diesem Zweck müssen Sie das Modul [Execute R Script][execute-r-script] verwenden. Der R-Code ist in Abbildung 8 dargestellt, das Ergebnis des Experiments in Abbildung 9.
 
 ![R-Codebeispiel](./media/interpret-model-results/8.png)
 
@@ -148,7 +148,7 @@ Verwenden Sie die Automobilpreisvorhersage als Beispiel für Regression. Der Pre
 
 Abbildung 11. Regressionsproblemexperiment mit Automobilpreis
 
-Eine Visualisierung des Moduls [Score Model][score-model] liefert das in Abbildung 12 gezeigte Ergebnis.
+Eine Visualisierung des Moduls [Score Model][score-model] liefert das in Abbildung 12 gezeigte Ergebnis.
 
 ![Bewertungsergebnisse für das Problem der Automobilpreisvorhersage](./media/interpret-model-results/12.png)
 
@@ -185,7 +185,7 @@ Abbildung 15. Experiment zum Iris-Clusteringproblem
 
 Das Clustering unterscheidet sich von der Klassifizierung darin, dass das Trainingsdataset nicht selbst über Ground-Truth-Bezeichner verfügt. Das Clustering gruppiert die Instanzen des Trainingsdatasets in verschiedenen Clustern. Während des Trainingsprozesses versieht das Modell die Einträge mit Bezeichnern, indem es die Unterschiede zwischen deren Features lernt. Danach kann das trainierte Modell weiter zum Klassifizieren von zukünftigen Einträge verwendet werden. Zwei Teile des Ergebnisses sind in einem Clusteringproblem relevant. Der erste Teil besteht im Bezeichnen des Trainingsdatasets und der zweite im Klassifizieren eines neuen Datasets mit dem trainierten Modell.
 
-Der erste Teil des Ergebnisses kann durch Klicken auf den linken Ausgabeport des Moduls [Train Clustering Model][train-clustering-model] und anschließendes Klicken auf **Visualize** visualisiert werden. Die Visualisierung wird in Abbildung 16 dargestellt.
+Der erste Teil des Ergebnisses kann durch Klicken auf den linken Ausgabeport des Moduls [Train Clustering Model][train-clustering-model] und anschließendes Klicken auf **Visualisieren** visualisiert werden. Die Visualisierung wird in Abbildung 16 dargestellt.
 
 ![Clusteringergebnis](./media/interpret-model-results/16.png)
 
@@ -226,7 +226,7 @@ Für Empfehlungssysteme verwenden Sie das Restaurantempfehlungsproblem als Beisp
 * Kundenfeaturedaten
 * Daten zu Restaurantmerkmalen
 
-Mit dem Modul [Train Matchbox Recommender][train-matchbox-recommender] in Azure Machine Learning Studio können Sie verschiedene Aufgaben durchführen:
+Mit dem Modul [Train Matchbox Recommender][train-matchbox-recommender] in der klassischen Version von Azure Machine Learning Studio können Sie verschiedene Aufgaben durchführen:
 
 * Vorhersagen von Bewertungen für einen bestimmten Benutzer und ein bestimmtes Element
 * Empfehlen von Elementen für einen bestimmten Benutzer
@@ -237,7 +237,7 @@ Im Menü **Recommender prediction kind** können Sie zwischen vier Optionen wäh
 
 ![Matchbox Recommender](./media/interpret-model-results/19_1.png)
 
-Ein typisches Experiment für Empfehlungssysteme in Azure Machine Learning Studio sieht wie in Abbildung 20 aus. Ausführliche Informationen zur Verwendung dieser Empfehlungssystemmodule finden Sie in der Hilfe zu [Train Matchbox Recommender][train-matchbox-recommender] und [Score Matchbox Recommender][score-matchbox-recommender].
+Ein typisches Experiment für Empfehlungssysteme in Azure Machine Learning Studio (klassisch) sieht wie in Abbildung 20 aus. Ausführliche Informationen zur Verwendung dieser Empfehlungssystemmodule finden Sie in der Hilfe zu [Train Matchbox Recommender][train-matchbox-recommender] und [Score Matchbox Recommender][score-matchbox-recommender].
 
 ![Empfehlungssystemexperiment](./media/interpret-model-results/20.png)
 
@@ -247,7 +247,7 @@ Abbildung 20. Empfehlungssystemexperiment
 
 **Vorhersagen von Bewertungen für einen bestimmten Benutzer und ein bestimmtes Element**
 
-Durch Auswahl von **Rating Prediction** im Menü **Recommender prediction kind** wird das Empfehlungssystem aufgefordert, die Bewertung für einen bestimmten Benutzer und ein bestimmtes Element vorauszusagen. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 21 aus.
+Durch Auswahl von **Rating Prediction** im Menü **Recommender prediction kind** wird das Empfehlungssystem aufgefordert, die Bewertung für einen bestimmten Benutzer und ein bestimmtes Element vorauszusagen. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 21 aus.
 
 ![Bewertungsergebnis des Empfehlungssystems – „Rating Prediction“](./media/interpret-model-results/21.png)
 
@@ -257,7 +257,7 @@ Die ersten beiden Spalten sind die Benutzer-Element-Paare, die durch die eingege
 
 **Empfehlen von Elementen für einen bestimmten Benutzer**
 
-Bei Auswahl von **Item Recommendation** im Menü **Recommender prediction kind** empfiehlt das System Elemente für einen bestimmten Benutzer. Der letzte Parameter, den Sie in diesem Szenario auswählen müssen, ist *Recommended item selection*. Die Option **From Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie für diese Vorhersagephase **From All Items**aus. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 22 aus.
+Bei Auswahl von **Item Recommendation** im Menü **Recommender prediction kind** empfiehlt das System Elemente für einen bestimmten Benutzer. Der letzte Parameter, den Sie in diesem Szenario auswählen müssen, ist *Recommended item selection*. Die Option **From Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie für diese Vorhersagephase **From All Items**aus. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 22 aus.
 
 ![Bewertungsergebnis des Empfehlungssystems – Elementempfehlung](./media/interpret-model-results/22.png)
 
@@ -267,7 +267,7 @@ Die erste der sechs Spalten stellt die angegebenen Benutzer-IDs dar, für die El
 
 **Suchen von Benutzern, die im Zusammenhang mit einem bestimmten Benutzer stehen**
 
-Bei Auswahl von **Related Users** unter **Recommender prediction kind** sucht das Empfehlungssystem zu einem bestimmten Benutzer in Beziehung stehende Benutzer. Diese verwandten Benutzer sind Benutzer mit ähnlichen Präferenzen. Der letzte Parameter, den Sie in diesem Szenario auswählen müssen, ist *Related user selection*. Die Option **From Users That Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie für diese Vorhersagephase **From All Users** aus. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 23 aus.
+Bei Auswahl von **Related Users** unter **Recommender prediction kind** sucht das Empfehlungssystem zu einem bestimmten Benutzer in Beziehung stehende Benutzer. Diese verwandten Benutzer sind Benutzer mit ähnlichen Präferenzen. Der letzte Parameter, den Sie in diesem Szenario auswählen müssen, ist *Related user selection*. Die Option **From Users That Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie für diese Vorhersagephase **From All Users** aus. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 23 aus.
 
 ![Bewertungsergebnis des Empfehlungssystems – verwandte Benutzer](./media/interpret-model-results/23.png)
 
@@ -277,7 +277,7 @@ Die erste von sechs Spalten zeigt die angegebenen Benutzer-IDs an, die erforderl
 
 **Suchen von Elementen, die im Zusammenhang mit einem bestimmten Element stehen**
 
-Bei Auswahl von **Related Items** unter **Recommender prediction kind** sucht das Empfehlungssystem zugehörige Elemente zu einem bestimmten Element. Verwandte Elemente sind die Elemente, für die es am wahrscheinlichsten ist, dass sie dem gleichen Benutzer gefallen. Der letzte Parameter, den Sie in diesem Szenario auswählen müssen, ist *Related item selection*. Die Option **From Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie **From All Items** für diese Vorhersagephase aus. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 24 aus.
+Bei Auswahl von **Related Items** unter **Recommender prediction kind** sucht das Empfehlungssystem zugehörige Elemente zu einem bestimmten Element. Verwandte Elemente sind die Elemente, für die es am wahrscheinlichsten ist, dass sie dem gleichen Benutzer gefallen. Der letzte Parameter, den Sie in diesem Szenario auswählen müssen, ist *Related item selection*. Die Option **From Rated Items (for model evaluation)** wird in erster Linie für die Auswertung von Modellen während des Trainings verwendet. Wählen Sie **From All Items** für diese Vorhersagephase aus. Die Visualisierung der Ausgabe von [Score Matchbox Recommender][score-matchbox-recommender] sieht wie in Abbildung 24 aus.
 
 ![Bewertungsergebnis des Empfehlungssystems – verwandte Elemente](./media/interpret-model-results/24.png)
 

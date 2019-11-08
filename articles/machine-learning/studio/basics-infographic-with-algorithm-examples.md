@@ -1,6 +1,6 @@
 ---
 title: Algorithmusbeispiele
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: Eine einfach verständliche Übersicht über Grundlagen des maschinellen Lernens mit Algorithmusbeispielen. Die herunterladbare Infografik behandelt die meisten Fragen zu maschinellem Lernen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: 6e0a355852be57a3b0869a6bf094e98a89f49f28
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 31bf3a5aed69e7fd903342ef229dbc4d1e2530bc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514921"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619680"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen von Machine Learning mit Algorithmusbeispielen
 
 Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von Machine Learning herunter, um die gängigen Algorithmen für häufige Fragen zu Machine Learning zu identifizieren. Algorithmusbeispiele helfen Einsteigern in das Machine Learning zu verstehen, welche Algorithmen verwendet werden können und welche Einsatzgebiete es für sie gibt.
 
-## <a name="popular-algorithms-in-machine-learning-studio"></a>Beliebte Algorithmen in Machine Learning Studio
+## <a name="popular-algorithms-in-machine-learning-studio-classic"></a>Beliebte Algorithmen in Machine Learning Studio (klassisch)
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine große Bibliothek von Algorithmen für Predictive Analytics. Diese Infografik identifiziert vier beliebte Algorithmusfamilien (Regression, Anomalieerkennung, Clustering und Klassifizierung) und enthält Links zu funktionierenden Beispielen im [Azure KI-Katalog](https://gallery.azure.ai/). Der Katalog enthält Beispielexperimente und Tutorials, die veranschaulichen, wie diese Algorithmen in vielen realen Lösungen angewendet werden können.
+[Azure Machine Learning Studio (klassisch)](https://studio.azureml.net/) bietet eine große Bibliothek von Algorithmen für Predictive Analytics. Diese Infografik identifiziert vier beliebte Algorithmusfamilien (Regression, Anomalieerkennung, Clustering und Klassifizierung) und enthält Links zu funktionierenden Beispielen im [Azure KI-Katalog](https://gallery.azure.ai/). Der Katalog enthält Beispielexperimente und Tutorials, die veranschaulichen, wie diese Algorithmen in vielen realen Lösungen angewendet werden können.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Die Infografik mit Algorithmusbeispielen herunterladen
 
@@ -33,9 +33,9 @@ Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Weitere Hilfe zu Algorithmen für Einsteiger und erfahrene Benutzer
 
-* Eine ausführlichere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung sowie zur Auswahl des richtigen Algorithmus für Ihre Lösung finden Sie unter [Auswählen von Algorithmen für Azure Machine Learning Studio](algorithm-choice.md).
-* Eine in Kategorien unterteilte Liste aller in Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Initialisieren des Modells][initialize-model].
-* Eine vollständige alphabetische Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio in der [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
+* Eine ausführlichere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung sowie zur Auswahl des richtigen Algorithmus für Ihre Lösung finden Sie unter [Auswählen von Algorithmen für Azure Machine Learning Studio (klassisch)](algorithm-choice.md).
+* Eine in Kategorien unterteilte Liste aller in der klassischen Version von Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio (klassisch) unter [Initialisieren des Modells][initialize-model].
+* Eine vollständige alphabetische Liste aller in der klassischen Version von Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio (klassisch) in der [Modulliste von A bis Z für Machine Learning Studio (klassisch)][a-z-list].
 * Eine Übersicht über den Azure KI-Katalog und die zahlreichen von der Community erstellten verfügbaren Ressourcen finden Sie unter [Freigeben und Entdecken von Ressourcen im Azure KI-Katalog](gallery-how-to-use-contribute-publish.md).
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Toolkit für Eclipse: Erstellen von Scala-Anwendungen für HDInsight Spark '
+title: 'Azure-Toolkit für Eclipse: Erstellen von Scala-Apps für HDInsight Spark'
 description: Verwenden Sie die HDInsight Tools im Azure-Toolkit für Eclipse, um in Scala geschriebene Spark-Anwendungen zu entwickeln und direkt in der integrierten Eclipse-Entwicklungsumgebung (IDE) an einen HDInsight Spark-Cluster zu übermitteln.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 5336153a776f3324e5f73564ba2804389cd96938
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257569"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494682"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Apache Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse
 
@@ -312,9 +312,9 @@ Beim Verknüpfen eines Clusters würde ich empfehlen, die Anmeldeinformationen d
 
 Es gibt zwei Modi zum Übermitteln der Aufträge. Wenn Speicheranmeldeinformationen bereitgestellt werden, wird der Auftrag im Batchmodus übermittelt. Andernfalls wird der interaktive Modus verwendet. Wenn der Cluster ausgelastet ist, erhalten Sie möglicherweise die folgende Fehlermeldung.
 
-![Eclipse-Fehlermeldung, wenn der Cluster ausgelastet ist](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "Eclipse-Fehlermeldung, wenn der Cluster ausgelastet ist")
+![Ecplipse-Fehler beim Abrufen bei ausgelastetem Cluster](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png "Ecplipse-Fehler beim Abrufen bei ausgelastetem Cluster")
 
-![Eclipse-Fehlermeldung, wenn der Cluster ausgelastet ist – Yarn](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "Eclipse-Fehlermeldung, wenn der Cluster ausgelastet ist – Yarn")
+![Ecplipse-Fehler beim Abrufen bei ausgelastetem Cluster – Yarn](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png "Ecplipse-Fehler beim Abrufen bei ausgelastetem Cluster – Yarn")
 
 ## <a name="seealso"></a>Weitere Informationen
 

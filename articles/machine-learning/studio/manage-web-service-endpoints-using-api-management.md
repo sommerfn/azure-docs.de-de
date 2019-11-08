@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Webdiensten mithilfe von API Management
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten. Verwalten Sie Ihre REST-API-Endpunkte, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren.
 services: machine-learning
 ms.service: machine-learning
@@ -10,26 +10,26 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 5b6ece20f67258391e31b941edfc1ec0aa5db98f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 227a7205788194cc507dcd9dab7e5cad57abc7f9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279267"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671579"
 ---
-# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Verwalten von Azure Machine Learning Studio-Webdiensten mit API Management
+# <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Verwalten von (klassischen) Azure Machine Learning Studio-Webdiensten mit API Management
 ## <a name="overview"></a>Übersicht
-Dieser Leitfaden beschreibt die ersten Schritte zur Verwaltung Ihrer Azure Machine Learning Studio-Webdienste mit API Management.
+Dieser Leitfaden beschreibt die ersten Schritte zur Verwaltung Ihrer (klassischen) Azure Machine Learning Studio-Webdienste mit API Management.
 
 ## <a name="what-is-azure-api-management"></a>Was ist Azure API Management?
-Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Klicken Sie [hier](https://azure.microsoft.com/services/api-management/), um Informationen zu Azure API Management zu erhalten. Klicken Sie [hier](/azure/api-management/import-and-publish), um eine Anleitung zum Einstieg in Azure API Management zu erhalten. In diesem Leitfaden (auf dem der vorliegende Leitfaden basiert) werden weitere Themen behandelt, z.B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.
+Azure API Management ist ein Azure-Dienst, mit dem Sie Ihre REST-API-Endpunkte verwalten können, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren. Weitere Informationen finden Sie auf der [API Management-Website](https://azure.microsoft.com/services/api-management/). Informationen zu den ersten Schritten mit Azure API Management finden Sie im [Leitfaden zum Importieren und Veröffentlichen](/azure/api-management/import-and-publish). In diesem Leitfaden (auf dem der vorliegende Leitfaden basiert) werden weitere Themen behandelt, z.B. Benachrichtigungskonfiguration, Tarife, Antwortverarbeitung, Benutzerauthentifizierung, Produkterstellung, Entwicklerabonnements und Nutzungsdashboards.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 
-* Ein Azure-Konto. Wenn Sie kein Azure-Konto haben, klicken Sie [hier](https://azure.microsoft.com/pricing/free-trial/) , um zu erfahren, wie Sie ein kostenloses Testkonto erstellen.
-* Ein Azure ML-Konto. Wenn Sie kein Azure ML-Konto haben, klicken Sie [hier](https://studio.azureml.net/) , um zu erfahren, wie Sie ein kostenloses Testkonto erstellen.
-* Den Arbeitsbereich, den Dienst und den API-Schlüssel für ein als Webdienst bereitgestelltes Azure ML-Experiment. Klicken Sie [hier](create-experiment.md) , um Informationen zum Erstellen eines Azure ML-Experiments zu erhalten. Klicken Sie [hier](publish-a-machine-learning-web-service.md) , um Informationen zum Bereitstellen eines Azure ML-Experiments als Webdienst zu erhalten. Alternativ dazu enthält Anhang A Anweisungen zum Erstellen und Testen eines einfachen Azure ML-Experiments und zum Bereitstellen dieses Experiments als Webdienst.
+* Ein Azure-Konto.
+* Ein Azure ML-Konto.
+* Den Arbeitsbereich, den Dienst und den API-Schlüssel für ein als Webdienst bereitgestelltes Azure ML-Experiment. Einzelheiten zum Erstellen eines AzureML-Experiments finden Sie im [Schnellstart für Studio](create-experiment.md). Informationen zum Bereitstellen eines (klassischen) Studio-Experiments als Webdienst finden Sie in der [Anleitung zur Bereitstellung von Studio](deploy-a-machine-learning-web-service.md). Hier erfahren Sie, wie Sie ein AzureML-Experiment als Webdienst bereitstellen. Alternativ dazu enthält Anhang A Anweisungen zum Erstellen und Testen eines einfachen Azure ML-Experiments und zum Bereitstellen dieses Experiments als Webdienst.
 
 ## <a name="create-an-api-management-instance"></a>Erstellen einer API Management-Instanz
 
@@ -55,7 +55,7 @@ Nach der Erstellung der Dienstinstanz können Sie die API erstellen. Eine API be
 
 Gehen Sie wie folgt vor, um die API zu erstellen:
 
-1. Öffnen Sie im Azure-Portal die Dienstinstanz, die Sie gerade erstellt haben.
+1. Öffnen Sie im Azure-Portal die von Ihnen erstellte Dienstinstanz.
 2. Wählen Sie im linken Navigationsbereich die Option **APIs**.
 
    ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)

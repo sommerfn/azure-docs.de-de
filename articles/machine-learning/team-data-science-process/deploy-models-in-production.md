@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1a75c842989cfbaf7bb1880831fda2bc6994622b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6f371d07fdf09aae6ce4396f0916758f8588506b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60238346"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670308"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Bereitstellen von Modellen in der Produktion, um eine aktive Rolle bei geschäftlichen Entscheidungen zu spielen
 
@@ -25,7 +25,7 @@ Bei einer Produktionsbereitstellung kann ein Modell eine aktive Rolle in einem U
 
 Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen in die Produktion. Hier sind einige Optionen angegeben:
 
-- [Bereitstellen von Modellen im Azure Machine Learning Service](../service/how-to-deploy-and-where.md)
+- [Bereitstellen von Modellen mit Azure Machine Learning](../service/how-to-deploy-and-where.md)
 - [Bereitstellung eines Modells in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -34,7 +34,7 @@ Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen i
 >
 
 >[!NOTE]
->Informationen zur Bereitstellung mit Azure Machine Learning Studio finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/publish-a-machine-learning-web-service.md).
+>Informationen zur Bereitstellung mit Azure Machine Learning Studio finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/deploy-a-machine-learning-web-service.md).
 >
 
 ## <a name="ab-testing"></a>A/B-Tests

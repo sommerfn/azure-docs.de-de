@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3c0b9ad774d336da9bc60d2ef9f7ff2645602b6c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2530fb0bd27cd98b702d804b0cb5a1dc60419f2f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259223"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490411"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -29,14 +29,12 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-vault"></a>Erstellen eines Tresors
 
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Option **Ressource erstellen**.
-
-    ![Ausgabe nach Erstellung der Key Vault-Instanz](./media/quick-create-portal/search-services.png)
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 2. Geben Sie **Key Vault** in das Suchfeld ein.
 3. Wählen Sie in der Ergebnisliste **Key Vault** aus.
 4. Klicken Sie im Abschnitt „Key Vault“ auf **Erstellen**.
 5. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
-    - **Name**: Es ist ein eindeutiger Name erforderlich. Im Rahmen dieser Schnellstartanleitung verwenden wir **Contoso-vault2**. 
+    - **Name**: Es ist ein eindeutiger Name erforderlich. Für diesen Schnellstart verwenden wir **Contoso-vault2**. 
     - **Abonnement**: Wählen Sie ein Abonnement aus.
     - Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.
     - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.

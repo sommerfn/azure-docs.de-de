@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 90f83e3e6fa1910641b3e384460cf4aa14016c1a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 386229bc272a520ec8093c95bc861704ce9ea7eb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067328"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471406"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Erstellen einer PHP-Web-App in Azure
 
@@ -182,17 +182,19 @@ Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das
 
 ## <a name="manage-your-new-azure-app"></a>Verwalten Ihrer neuen Azure-App
 
-Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte Web-App zu verwalten.
+1. Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte Web-App zu verwalten. Suchen Sie nach **App Services**, und wählen Sie diese Option aus.
 
-Klicken Sie im linken Menü auf **App Services** und anschließend auf den Namen Ihrer Azure-App.
+    ![Suchen nach App Services, Azure-Portal, Erstellen einer PHP-Web-App](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
-![Portalnavigation zur Azure-App](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
+2. Wählen Sie den Namen Ihrer Azure-App aus.
 
-Die Übersichtsseite Ihrer Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen.
+    ![Portalnavigation zur Azure-App](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-![App Service-Seite im Azure-Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+    Die Seite **Übersicht** für Ihre Web-App wird angezeigt. Hier können Sie einfache Verwaltungsaufgaben wie **Durchsuchen**, **Beenden**, **Neustarten** und **Löschen** durchführen.
 
-Im linken Menü werden verschiedene Konfigurationsoptionen für Ihre App angezeigt. 
+    ![App Service-Seite im Azure-Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
+
+    Im Web-App-Menü werden verschiedene Konfigurationsoptionen für Ihre App angezeigt. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

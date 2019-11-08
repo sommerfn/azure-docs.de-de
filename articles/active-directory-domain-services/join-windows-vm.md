@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 00e717202116cf9a48c2c2d889374d451b8e4d45
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754372"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474698"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Tutorial: Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne
 
@@ -54,12 +54,13 @@ Um zu erläutern, wie ein Computer in eine verwaltete Azure AD DS-Domäne eing
 
 Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möchten, fahren Sie mit dem Abschnitt [Einbinden der VM in die verwaltete Azure AD DS-Domäne](#join-the-vm-to-the-azure-ad-ds-managed-domain) fort.
 
-1. Klicken Sie im Azure-Portal oben links auf **+ Ressource erstellen**.
-2. Wählen Sie unter **Erste Schritte** die Option **Windows Server 2016 Datacenter** aus.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
+
+1. Wählen Sie unter **Erste Schritte** die Option **Windows Server 2016 Datacenter** aus.
 
     ![Erstellen einer Windows Server-2016 Datacenter-VM im Azure-Portal](./media/join-windows-vm/select-vm-image.png)
 
-3. Konfigurieren Sie im Bereich **Grundlagen** die wichtigsten Einstellungen für den virtuellen Computer. Übernehmen Sie die Standardeinstellungen für *Verfügbarkeitsoptionen*, *Image* und *Größe*.
+1. Konfigurieren Sie im Bereich **Grundlagen** die wichtigsten Einstellungen für den virtuellen Computer. Übernehmen Sie die Standardeinstellungen für *Verfügbarkeitsoptionen*, *Image* und *Größe*.
 
     | Parameter            | Empfohlener Wert   |
     |----------------------|-------------------|
@@ -69,17 +70,17 @@ Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möch
     | Username             | Geben Sie einen Benutzernamen für das lokale Administratorkonto ein, das auf der VM erstellt werden soll, z. B. *azureuser*. |
     | Kennwort             | Geben Sie ein sicheres Kennwort für das auf der VM zu erstellende lokale Administratorkonto ein, und bestätigen Sie es. Geben Sie nicht die Anmeldeinformationen eines Domänenbenutzerkontos ein. |
 
-4. Auf VMs, die in Azure erstellt werden, kann standardmäßig nicht aus dem Internet zugegriffen werden. Diese Konfiguration trägt zur Sicherheit der VM bei und reduziert potenzielle Angriffsflächen. Im nächsten Schritt dieses Tutorials müssen Sie über das Remotedesktopprotokoll (RDP) eine Verbindung mit der VM herstellen und dann diese Windows Server-Instanz in die verwaltete Azure AD DS-Domäne einbinden.
+1. Auf VMs, die in Azure erstellt werden, kann standardmäßig nicht aus dem Internet zugegriffen werden. Diese Konfiguration trägt zur Sicherheit der VM bei und reduziert potenzielle Angriffsflächen. Im nächsten Schritt dieses Tutorials müssen Sie über das Remotedesktopprotokoll (RDP) eine Verbindung mit der VM herstellen und dann diese Windows Server-Instanz in die verwaltete Azure AD DS-Domäne einbinden.
 
     Wenn das Remotedesktopprotokoll aktiviert ist, treten wahrscheinlich Angriffe durch automatisierte Anmeldeversuche auf, wodurch Konten mit allgemeinen Namen wie *Admin* oder *Administrator* aufgrund mehrerer aufeinanderfolgender fehlerhafter Anmeldeversuche deaktiviert werden können. RDP sollte nur aktiviert werden, wenn es benötigt wird, und es sollte auf eine Reihe autorisierter IP-Adressbereiche beschränkt werden. Der [Just-in-Time-VM-Zugriff][jit-access] von Azure, der Bestandteil von Azure Security Center ist, kann diese kurzfristigen, eingeschränkten RDP-Sitzungen ermöglichen. Sie können auch einen [Azure Bastion-Host erstellen und verwenden (zurzeit in der Vorschau)][azure-bastion], um den Zugriff nur im Azure-Portal über SSL zuzulassen.
 
     Aktivieren Sie für dieses Tutorial manuell RDP-Verbindungen mit der VM.
 
-    Wählen Sie unter **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus. Wählen Sie im Dropdownmenü für **Eingangsports auswählen** die Option *RDP* aus.
+    Wählen Sie unter **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus. Wählen Sie im Dropdownmenü für **Eingangsports auswählen** die Option *RDP (3389)* aus.
 
-5. Klicken Sie dann auf **Weiter: Datenträger**.
-6. Wählen Sie im Dropdownmenü **Typ des Betriebssystemdatenträgers** die Option *SSD Standard* aus, und klicken Sie dann auf **Weiter: Netzwerk** aus.
-7. Ihre VM muss eine Verbindung mit einem Subnetz eines virtuellen Azure-Netzwerks herstellen können, das mit dem Subnetz kommunizieren kann, in dem Ihre verwaltete Azure AD DS-Domäne bereitgestellt ist. Es wird empfohlen, eine verwaltete Azure AD DS-Domäne in einem eigenen dedizierten Subnetz bereitzustellen. Stellen Sie Ihre VM nicht im gleichen Subnetz wie Ihre verwaltete Azure AD DS-Domäne bereit.
+1. Klicken Sie dann auf **Weiter: Datenträger**.
+1. Wählen Sie im Dropdownmenü **Typ des Betriebssystemdatenträgers** die Option *SSD Standard* aus, und klicken Sie dann auf **Weiter: Netzwerk** aus.
+1. Ihre VM muss eine Verbindung mit einem Subnetz eines virtuellen Azure-Netzwerks herstellen können, das mit dem Subnetz kommunizieren kann, in dem Ihre verwaltete Azure AD DS-Domäne bereitgestellt ist. Es wird empfohlen, eine verwaltete Azure AD DS-Domäne in einem eigenen dedizierten Subnetz bereitzustellen. Stellen Sie Ihre VM nicht im gleichen Subnetz wie Ihre verwaltete Azure AD DS-Domäne bereit.
 
     Es gibt zwei Hauptmethoden, die VM bereitzustellen und eine Verbindung mit einem geeigneten virtuellen Subnetz herzustellen:
     
@@ -88,20 +89,30 @@ Wenn Sie bereits über eine VM verfügen, die Sie in die Domäne einbinden möch
     
     Wenn Sie ein virtuelles Subnetz auswählen, das nicht mit dem Subnetz für Ihre Azure AD DS-Instanz verbunden ist, können Sie die VM nicht in die verwaltete Domäne einbinden. In diesem Tutorial erstellen wir ein neues Subnetz im virtuellen Azure-Netzwerk.
 
-    Wählen Sie im Bereich **Netzwerk** das virtuelle Netzwerk aus, in dem Ihre per Azure AD DS verwaltete Domäne bereitgestellt wurde, z. B. *myVnet*.
-8. In diesem Beispiel wird das vorhandene Subnetz *DomainServices* gezeigt, mit der die verwaltete Azure AD DS-Domäne verbunden ist. Verbinden Sie Ihre VM nicht mit diesem Subnetz. Um ein Subnetz für die VM zu erstellen, wählen Sie **Subnetzkonfiguration verwalten** aus.
+    Wählen Sie im Bereich **Netzwerk** das virtuelle Netzwerk aus, in dem Ihre per Azure AD DS verwaltete Domäne bereitgestellt wurde, z. B. *aaads-vnet*.
+1. In diesem Beispiel wird das vorhandene Subnetz *aaads-subnet* angezeigt, mit dem die verwaltete Azure AD DS-Domäne verbunden ist. Verbinden Sie Ihre VM nicht mit diesem Subnetz. Um ein Subnetz für die VM zu erstellen, wählen Sie **Subnetzkonfiguration verwalten** aus.
 
     ![Auswählen von „Subnetzkonfiguration verwalten“ im Azure-Portal](./media/join-windows-vm/manage-subnet.png)
 
-9. Wählen Sie **+ Subnetz** aus, und geben Sie einen Namen für das Subnetz ein, z. B. *ManagedVMs*. Geben Sie einen **Adressbereich (CIDR-Block)** an, wie etwa *10.1.1.0/24*. Stellen Sie sicher, dass sich dieser Adressbereich nicht mit einem vorhandenen Azure- oder lokalen Adressbereich überschneidet. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **OK**.
+1. Wählen Sie im Menü auf der linken Seite des Fensters des virtuellen Netzwerks die Option **Adressraum** aus. Das virtuelle Netzwerk wird mit einem einzelnen Adressraum (*10.0.1.0/24*) erstellt. Dieser wird vom Standardsubnetz verwendet.
+
+    Fügen Sie dem virtuellen Netzwerk einen zusätzlichen IP-Adressbereich hinzu. Die Größe dieses Adressbereichs und der tatsächlich zu verwendende IP-Adressbereich hängen von anderen, bereits bereitgestellten Netzwerkressourcen ab. Der IP-Adressbereich darf sich nicht mit vorhandenen Adressbereichen in Ihrer Azure-Umgebung oder in Ihrer lokalen Umgebung überschneiden. Wählen Sie die Größe des IP-Adressbereichs so, dass sie für die Anzahl virtueller Computer ausreicht, die voraussichtlich im Subnetz bereitgestellt werden.
+
+    Im folgenden Beispiel wird ein zusätzlicher IP-Adressbereich (*10.0.2.0/24*) hinzugefügt. Wählen Sie **Speichern** aus, wenn Sie so weit sind.
+
+    ![Hinzufügen eines zusätzlichen IP-Adressbereichs für das virtuelle Netzwerk im Azure-Portal](./media/tutorial-configure-networking/add-vnet-address-range.png)
+
+1. Wählen Sie als Nächstes im Menü auf der linken Seite des Fensters für das virtuelle Netzwerk die Option **Subnetze** und anschließend **+ Subnetz** aus, um ein Subnetz hinzuzufügen.
+
+1. Wählen Sie **+ Subnetz** aus, und geben Sie einen Namen für das Subnetz ein, z. B. *management*. Geben Sie einen **Adressbereich (CIDR-Block)** an, z. B. *10.0.2.0/24*. Stellen Sie sicher, dass sich dieser Adressbereich nicht mit einem vorhandenen Azure- oder lokalen Adressbereich überschneidet. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **OK**.
 
     ![Erstellen einer Subnetzkonfiguration im Azure-Portal](./media/join-windows-vm/create-subnet.png)
 
-10. Das Erstellen des Subnetzes dauert einige Sekunden. Klicken Sie nach dem Erstellen auf das *X*, um das Subnetzfenster zu schließen.
-11. Wählen Sie im Bereich **Netzwerk** für die VM-Erstellung aus dem Dropdownmenü das erstellte Subnetz aus, in diesem Fall also *ManagedVMs*. Vergewissern Sie sich, dass Sie das richtige Subnetz auswählen und die VM nicht im gleichen Subnetz bereitstellen wie Ihre verwaltete Azure AD DS-Domäne.
-12. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Verwaltung**.
-13. Legen Sie **Startdiagnose** auf *Aus* fest. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Überprüfen + erstellen**.
-14. Überprüfen Sie die VM-Einstellungen, und klicken Sie dann auf **Erstellen**.
+1. Das Erstellen des Subnetzes dauert einige Sekunden. Klicken Sie nach dem Erstellen auf das *X*, um das Subnetzfenster zu schließen.
+1. Wählen Sie für die VM-Erstellung im Bereich **Netzwerk** im Dropdownmenü das erstellte Subnetz aus (hier also *management*). Vergewissern Sie sich, dass Sie das richtige Subnetz auswählen und die VM nicht im gleichen Subnetz bereitstellen wie Ihre verwaltete Azure AD DS-Domäne.
+1. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Verwaltung**.
+1. Legen Sie **Startdiagnose** auf *Aus* fest. Behalten Sie bei den anderen Optionen die Standardwerte bei, und klicken Sie auf **Überprüfen + erstellen**.
+1. Überprüfen Sie die VM-Einstellungen, und klicken Sie dann auf **Erstellen**.
 
 Das Erstellen der VM dauert einige Minuten. Im Azure-Portal wird der Status der Bereitstellung angezeigt. Wenn die VM bereit ist, wählen Sie **Zu Ressource wechseln** aus.
 
@@ -124,7 +135,7 @@ Als Nächstes stellen wir über das Remotedesktopprotokoll eine Verbindung mit d
 
 Nach dem Erstellen der VM erstellt und dem Herstellen der RDP-Verbindung binden wir den virtuellen Windows Server-Computer jetzt in die verwaltete Azure AD DS-Domäne ein. Dieser Prozess ist der gleiche wie beim Herstellen einer Verbindung eines Computers mit einer regulären lokalen Active Directory Domain Services-Domäne.
 
-1. Der **Server-Manager** sollte standardmäßig geöffnet werden, wenn Sie sich bei der VM anmelden. Wenn dies nicht der Fall ist, wählen Sie im Menü **Start** die Option **Server-Manager** aus.
+1. Wenn **Server-Manager** bei der Anmeldung beim virtuellen Computer nicht standardmäßig geöffnet wird, wählen Sie das **Startmenü** und dann **Server-Manager** aus.
 1. Wählen Sie im linken Bereich des **Server-Manager**-Fensters die Option **Lokaler Server**. Wählen Sie im rechten Bereich unter **Eigenschaften** die Option **Arbeitsgruppe** aus.
 
     ![Öffnen des Server-Managers auf der VM und Bearbeiten der Eigenschaften für die Arbeitsgruppe](./media/join-windows-vm/server-manager.png)
@@ -137,7 +148,7 @@ Nach dem Erstellen der VM erstellt und dem Herstellen der RDP-Verbindung binden 
 
     ![Angeben der verwalteten Azure AD DS-Domäne für die Einbindung](./media/join-windows-vm/join-domain.png)
 
-1. Geben Sie für die Einbindung in die Domäne Domänenanmeldeinformationen ein. Verwenden Sie die Anmeldeinformationen eines Benutzers, der zur Gruppe *AAD DC-Administratoren* gehört. Nur Mitglieder dieser Gruppen verfügen über die Berechtigungen, Computer in die verwaltete Azure AD DS-Domäne einzubinden. Anmeldeinformationen können auf eine der folgenden Arten angegeben werden:
+1. Geben Sie für die Einbindung in die Domäne Domänenanmeldeinformationen ein. Verwenden Sie die Anmeldeinformationen eines Benutzers, der zur Gruppe *AAD DC-Administratoren* gehört. Nur Mitglieder dieser Gruppen verfügen über die Berechtigungen, Computer in die verwaltete Azure AD DS-Domäne einzubinden. Das Konto muss Teil der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden. Anmeldeinformationen können auf eine der folgenden Arten angegeben werden:
 
     * **UPN-Format** (empfohlen): Geben Sie das Suffix für den Benutzerprinzipalnamen (User Principal Name, UPN) für das Benutzerkonto an, wie in Azure AD konfiguriert. Das UPN-Suffix des Benutzers *contosoadmin* würde beispielsweise `contosoadmin@contoso.onmicrosoft.com` lauten. Es gibt einige Anwendungsfälle, in denen das UPN-Format zuverlässig anstelle des *SAMAccountName*-Formats zum Anmelden bei der Domäne verwendet werden kann:
         * Wenn das UPN-Präfix eines Benutzers lang ist (z.B. *Janwirklichlangerbenutzername*), wird der *SAMAccountName* möglicherweise automatisch generiert.
@@ -157,7 +168,7 @@ Nach dem Erstellen der VM erstellt und dem Herstellen der RDP-Verbindung binden 
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
 >
-> Wenn Sie eine VM in die Domäne einbinden möchten, ohne eine Verbindung mit ihr herzustellen und die Verbindung manuell zu konfigurieren, können Sie sich auch die Verwendung des Azure PowerShell-Cmdlets [Set-AzVmAdDomainExtension][set-azvmaddomainextension] ansehen.
+> Wenn Sie eine VM in die Domäne einbinden möchten, ohne eine Verbindung damit herzustellen und die Verbindung manuell zu konfigurieren, können Sie das Azure PowerShell-Cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] nutzen.
 
 Sobald die Windows Server-VM neu gestartet wurde, werden alle auf die verwaltete Azure AD DS-Domäne angewendeten Richtlinien per Push an die VM übertragen. Sie können sich jetzt auch mit den geeigneten Domänenanmeldeinformationen bei der Windows Server-VM anmelden.
 
@@ -212,6 +223,7 @@ Wenn Sie beim Einbinden in die Domäne dazu aufgefordert werden, Anmeldeinformat
 Führen Sie die folgenden Problembehandlungsschritte aus, und versuchen Sie erneut, die Windows Server-VM in die verwaltete Domäne einzubinden.
 
 * Stellen Sie sicher, dass das angegebene Benutzerkonto zur Gruppe *AAD DC-Administratoren* gehört.
+* Vergewissern Sie sich, dass das Konto Teil der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten ist. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden.
 * Geben Sie die Anmeldeinformationen im UPN-Format an, z. B. als `contosoadmin@contoso.onmicrosoft.com`. Wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder das UPN-Präfix sehr lang ist, wird der *SAMAccountName* für Ihr Konto möglicherweise automatisch generiert. In diesen Fällen ist das *SAMAccountName*-Format für Ihr Konto möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
 * Überprüfen Sie, ob Sie die [Kennwortsynchronisierung für Ihre verwaltete Domäne aktiviert haben][password-sync]. Ohne diesen Konfigurationsschritt sind die erforderlichen Kennworthashes in der verwalteten Azure AD DS-Domäne nicht vorhanden und können Ihren Anmeldeversuch nicht ordnungsgemäß authentifizieren.
 * Warten Sie, bis die Kennwortsynchronisierung abgeschlossen ist. Wird das Kennwort eines Benutzerkontos geändert, aktualisiert eine automatische Hintergrundsynchronisierung von Azure AD das Kennwort in Azure AD DS. Es dauert einige Zeit, bis das Kennwort für das Einbinden in die Domäne verfügbar ist.

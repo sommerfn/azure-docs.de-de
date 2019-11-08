@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: bdc645bf8de95265158c3bb7ebf71952369e4ab2
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: c8ead7abc454df387db31b2ce65d2ba714b0067d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190907"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494091"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Verwenden Sie Apache Spark MLlib zum Erstellen einer Machine Learning-Anwendung und zur Analyse eines Datasets.
 
@@ -195,7 +195,7 @@ Verschaffen Sie sich zunächst einen Überblick darüber, was in dem Dataset ent
 
     Die Ausgabe ist:
 
-    ![Ausgabe der Spark-Machine Learning-Anwendung im Kreisdiagramm mit fünf unterschiedlichen Messergebnissen](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark-Machine-Learning-Ergebnisausgaben")
+    ![Ausgabe der Spark Machine Learning-Anwendung im Kreisdiagramm mit fünf unterschiedlichen Messergebnissen](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark Machine Learning-Ergebnisausgabe")
 
     Um das Ergebnis einer Lebensmittelkontrolle vorherzusagen, müssen Sie ein Modell basierend auf den Verstößen entwickeln. Da die logistische Regression eine binäre Klassifizierungsmethode ist, können Sie die Ergebnisdaten in zwei Kategorien gruppieren: **Fail** und **Pass**:
 
@@ -352,7 +352,7 @@ Nun können Sie eine endgültige Visualisierung erstellen, um sich mit den Ergeb
 
     Die folgende Ausgabe wird angezeigt.
 
-    ![Spark-Machine Learning-Anwendungsausgabe: Prozentsätze der nicht bestandenen Lebensmittelkontrollen im Kreisdiagramm](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark-Machine Learning-Ergebnisausgaben")
+    ![Spark Machine Learning-Anwendungsausgabe: Prozentsätze der nicht bestandenen Lebensmittelkontrollen im Kreisdiagramm](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-2.png "Spark Machine Learning-Ergebnisausgabe")
 
     In diesem Diagramm bezieht sich ein „positives“ Ergebnis auf eine nicht bestandene Lebensmittelkontrolle, wohingegen sich ein negatives Ergebnis auf eine bestandene Kontrolle bezieht.
 

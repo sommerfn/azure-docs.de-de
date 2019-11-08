@@ -3,20 +3,20 @@ title: Informationen zu Azure Policy für Azure Kubernetes Service
 description: Erfahren Sie, wie Azure Policy Rego und Open Policy Agent verwendet, um Cluster im Azure Kubernetes Service zu verwalten.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/24/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 6a3d1fb347819015887ffc4fd8089bbc1f3a70de
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 248f96b4385e97605986b53bd94fd83236ec8f08
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176318"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480899"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Grundlegendes zu Azure Policy für Azure Kubernetes Service
 
 Mit der Integration von Azure Policy mit [Azure Kubernetes Service](../../../aks/intro-kubernetes.md) (AKS) können Schutz- und Sicherheitsmaßnahmen in großem Umfang zentral und einheitlich auf Ihre Cluster angewendet werden.
-Durch die Erweiterung der Verwendung von [GateKeeper](https://github.com/open-policy-agent/gatekeeper), einem _Webhook für die Zugangssteuerung_ für [Open Policy Agent](https://www.openpolicyagent.org/) (OPA), ermöglicht es Azure Policy, den Konformitätsstatus Ihrer Azure-Ressourcen und AKS-Cluster von einer zentralen Stelle aus zu verwalten und zu melden.
+Durch die erweiterte Verwendung von [Gatekeeper](https://github.com/open-policy-agent/gatekeeper/tree/master/deprecated) v2, einem _Webhook für die Zugangssteuerung_ für [Open Policy Agent](https://www.openpolicyagent.org/) (OPA), bietet Azure Policy die Möglichkeit, den Konformitätsstatus Ihrer Azure-Ressourcen und AKS-Cluster von einer zentralen Stelle aus zu verwalten und zu melden.
 
 > [!NOTE]
 > Azure Policy für AKS befindet sich in der eingeschränkten Vorschauversion und unterstützt nur integrierte Richtliniendefinitionen.
@@ -83,7 +83,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
 ## <a name="azure-policy-add-on"></a>Azure Policy-Add-On
 
-Das _Azure Policy-Add-On_ für Kubernetes verbindet den Azure Policy-Dienst mit der GateKeeper-Zugangssteuerung. Das Add-On, das in den Namespace _azure-policy_ installiert wird, führt die folgenden Funktionen aus:
+Das _Azure Policy-Add-On_ für Kubernetes verbindet den Azure Policy-Dienst mit der Gatekeeper-Zugangssteuerung. Das Add-On, das in den Namespace _azure-policy_ installiert wird, führt die folgenden Funktionen aus:
 
 - Überprüfen auf Zuweisungen an den AKS-Cluster mit Azure Policy
 - Herunterladen und Zwischenspeichern von Richtliniendetails, einschließlich der _rego_-Richtliniendefinition, als **configmaps**
@@ -153,18 +153,18 @@ Nachdem die Voraussetzungen erfüllt sind, installieren Sie das Azure Policy-Add
 
 ### <a name="validation-and-reporting-frequency"></a>Häufigkeit der Prüfung und Berichterstellung
 
-Das Add-On prüft alle fünf Minuten mit Azure Policy, ob sich die Richtlinienzuweisungen geändert haben. Während dieses Aktualisierungszyklus entfernt das Add-On alle _configmaps_ im Namespace _azure-policy_ und erstellt die _configmaps_ für die Verwendung mit GateKeeper neu.
+Das Add-On prüft alle fünf Minuten mit Azure Policy, ob sich die Richtlinienzuweisungen geändert haben. Während dieses Aktualisierungszyklus entfernt das Add-On alle _configmaps_ im Namespace _azure-policy_ und erstellt die _configmaps_ für die Verwendung mit Gatekeeper neu.
 
 > [!NOTE]
 > Obwohl ein _Clusteradministrator_ möglicherweise über die Berechtigung für den Namespace _azure-policy_ verfügt, wird es nicht empfohlen oder unterstützt, Änderungen am Namespace vorzunehmen. Alle manuellen Änderungen gehen während des Aktualisierungszyklus verloren.
 
-Das Add-On fordert alle fünf Minuten einen vollständigen Scan des Clusters an. Nachdem Details des vollständigen Scans und alle Echtzeitauswertungen von versuchten Änderungen am Cluster durch GateKeeper erfasst wurden, meldet das Add-On die Ergebnisse an Azure Policy zurück, um sie in [Konformitätsdetails](../how-to/get-compliance-data.md) wie bei allen Azure Policy-Zuweisungen aufzunehmen. Während des Prüfzyklus werden nur Ergebnisse für aktive Richtlinienzuweisungen zurückgegeben.
+Das Add-On fordert alle fünf Minuten einen vollständigen Scan des Clusters an. Nachdem Details des vollständigen Scans und alle Echtzeitauswertungen von versuchten Änderungen am Cluster durch Gatekeeper erfasst wurden, meldet das Add-On die Ergebnisse an Azure Policy zurück, um sie in [Konformitätsdetails](../how-to/get-compliance-data.md) wie bei allen Azure Policy-Zuweisungen aufzunehmen. Während des Prüfzyklus werden nur Ergebnisse für aktive Richtlinienzuweisungen zurückgegeben.
 
 ## <a name="policy-language"></a>Richtliniensprache
 
-Die Azure Policy-Sprachstruktur zum Verwalten von AKS folgt derjenigen der bestehenden Richtlinien. Der Effekt _EnforceRegoPolicy_ wird verwendet, um Ihre AKS-Cluster zu verwalten und er übernimmt _details_-Eigenschaften, die für die Arbeit mit OPA und GateKeeper spezifisch sind. Details und Beispiele finden Sie unter dem Effekt [EnforceRegoPolicy](effects.md#enforceregopolicy).
+Die Azure Policy-Sprachstruktur zum Verwalten von AKS folgt derjenigen der bestehenden Richtlinien. Die Auswirkung _EnforceRegoPolicy_ wird verwendet, um Ihre AKS-Cluster zu verwalten, und er übernimmt _details_-Eigenschaften, die für die Arbeit mit OPA und Gatekeeper v2 spezifisch sind. Details und Beispiele finden Sie unter dem Effekt [EnforceRegoPolicy](effects.md#enforceregopolicy).
 
-Als Teil der Eigenschaft _details.policy_ in der Richtliniendefinition übergibt Azure Policy den URI einer Rego-Richtlinie an das Add-On. Rego ist die Sprache, die von OPA und GateKeeper unterstützt wird, um eine Anforderung an den Kubernetes-Cluster zu validieren oder zu ändern. Durch die Unterstützung eines bestehenden Standards für das Kubernetes-Management ermöglicht Azure Policy die Wiederverwendung bestehender Regeln und deren Kombination mit Azure Policy für eine einheitliche Berichterstellungsumgebung zur Cloud-Compliance. Weitere Informationen finden Sie unter [Was ist Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)
+Als Teil der Eigenschaft _details.policy_ in der Richtliniendefinition übergibt Azure Policy den URI einer Rego-Richtlinie an das Add-On. Rego ist die Sprache, die von OPA und Gatekeeper unterstützt wird, um eine Anforderung an den Kubernetes-Cluster zu validieren oder zu ändern. Durch die Unterstützung eines bestehenden Standards für das Kubernetes-Management ermöglicht Azure Policy die Wiederverwendung bestehender Regeln und deren Kombination mit Azure Policy für eine einheitliche Berichterstellungsumgebung zur Cloud-Compliance. Weitere Informationen finden Sie unter [Was ist Rego?](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego)
 
 ## <a name="built-in-policies"></a>Integrierte Richtlinien
 
@@ -183,15 +183,18 @@ Um die integrierten Richtlinien für die Verwaltung von AKS über das Azure-Port
 
 Verwenden Sie alternativ die Schnellstartanleitung [Zuweisen einer Richtlinie – Portal](../assign-policy-portal.md), um eine AKS-Richtlinie zu finden und zuzuweisen. Suchen Sie nach einer Kubernetes-Richtliniendefinition anstelle des Musters „audit vms“.
 
+> [!IMPORTANT]
+> Integrierte Richtlinien in der Kategorie **Kubernetes-Dienst** können nur mit AKS verwendet werden.
+
 ## <a name="logging"></a>Protokollierung
 
 ### <a name="azure-policy-add-on-logs"></a>Protokolle des Azure Policy-Add-Ons
 
-Als Kubernetes-Controller/-Container erstellt das Azure Policy-Add-On Protokolle im AKS-Cluster und sucht nach einer Kubernetes-Richtliniendefinition anstelle des Musters „audit vms“. Die Protokolle werden auf der Seite **Insights** des AKS-Clusters angezeigt. Weitere Informationen finden Sie unter [Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container](../../../azure-monitor/insights/container-insights-analyze.md).
+Als Kubernetes-Controller/-Container erstellt das Azure Policy-Add-On Protokolle im AKS-Cluster. Die Protokolle werden auf der Seite **Insights** des AKS-Clusters angezeigt. Weitere Informationen finden Sie unter [Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container](../../../azure-monitor/insights/container-insights-analyze.md).
 
 ### <a name="gatekeeper-logs"></a>Gatekeeper-Protokolle
 
-Führen Sie die Schritte unter [Aktivieren und Prüfen von Kubernetes-Masterknotenprotokollen in AKS](../../../aks/view-master-logs.md) aus, um GateKeeper-Protokolle für neue Ressourcenanforderungen zu aktivieren.
+Führen Sie die Schritte unter [Aktivieren und Prüfen von Kubernetes-Masterknotenprotokollen in AKS](../../../aks/view-master-logs.md) aus, um Gatekeeper-Protokolle für neue Ressourcenanforderungen zu aktivieren.
 Hier folgt eine Beispielabfrage, um abgelehnte Ereignisse bei neuen Ressourcenanforderungen anzuzeigen:
 
 ```kusto
@@ -200,7 +203,7 @@ Hier folgt eine Beispielabfrage, um abgelehnte Ereignisse bei neuen Ressourcenan
 | limit 100
 ```
 
-Um Protokolle aus GateKeeper-Containern anzuzeigen, führen Sie die Schritte im Abschnitt [Aktivieren und Prüfen von Kubernetes-Masterknotenprotokollen in AKS](../../../aks/view-master-logs.md) aus, und aktivieren Sie die Option _kube-apiserver_ im Abschnitt **Diagnoseeinstellungen**.
+Um Protokolle aus Gatekeeper-Containern anzuzeigen, führen Sie die Schritte im Abschnitt [Aktivieren und Prüfen von Kubernetes-Masterknotenprotokollen in AKS](../../../aks/view-master-logs.md) aus, und aktivieren Sie die Option _kube-apiserver_ im Abschnitt **Diagnoseeinstellungen**.
 
 ## <a name="remove-the-add-on"></a>Entfernen des Add-Ons
 
@@ -227,6 +230,29 @@ Verwenden Sie zum Entfernen des Azure Policy-Add-Ons aus Ihrem AKS-Cluster entwe
 
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
+
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Vom Azure Policy-Add-On gesammelte Diagnosedaten
+
+Das Azure Policy-Add-On für Kubernetes sammelt begrenzte Clusterdiagnosedaten. Diese Diagnosedaten sind wichtige technische Daten in Bezug auf Software und Leistung. Sie werden für folgende Zwecke verwendet:
+
+- Azure Policy Add-On auf dem neuesten Stand halten
+- Azure Policy Add-On sicher, zuverlässig und leistungsfähig halten
+- Azure Policy Add-On verbessern – durch die aggregierte Analyse der Verwendung des Add-Ons
+
+Die vom Add-On gesammelten Informationen sind keine persönlichen Daten. Die folgenden Details werden derzeit gesammelt:
+
+- Version des Azure Policy-Add-On-Agents
+- Clustertyp
+- Clusterregion
+- Clusterressourcengruppe
+- Clusterressourcen-ID
+- Clusterabonnement-ID
+- Clusterbetriebssystem (Beispiel: Linux)
+- Ort für den Cluster (Beispiel: Seattle)
+- Bundesland oder Kanton für den Cluster (Beispiel: Washington)
+- Land oder Region für den Cluster (Beispiel: USA)
+- Ausnahmen/Fehler, die während der Installation des Agents bei der Richtlinienauswertung durch das Azure Policy Add-On festgestellt werden
+- Anzahl von Gatekeeper-Richtlinien, die nicht vom Azure Policy Add-On installiert werden
 
 ## <a name="next-steps"></a>Nächste Schritte
 

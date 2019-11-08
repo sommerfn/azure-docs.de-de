@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 3ee39f4cf0c78850b0128fc5e497f2b2aee57bbc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559076"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490974"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Schnellstart: Ausführen der Speech Devices SDK-Beispiel-App unter Linux
 
@@ -113,14 +113,14 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
     ```
 
-1. Das standardmäßige Aktivierungswort (Schlüsselwort) ist „Computer“. Auf Wunsch können Sie eines der anderen angebotenen Aktivierungswörter wie „Maschine“ oder „Assistent“ ausprobieren. Die Ressourcendateien für diese alternativen Aktivierungswörter finden Sie im Speech-Geräte-SDK im Ordner „keyword“. Beispielsweise enthält `/home/wcaltest/JRE-Sample-Release/keyword/Computer` die Dateien für das Aktivierungswort „Computer“.
+1. Das Standardschlüsselwort (keyword) ist „Computer“. Sie können auch eines der anderen angebotenen Schlüsselwörter wie „Machine“ oder „Assistant“ ausprobieren. Die Ressourcendateien für diese alternativen Schlüsselwörter finden Sie im Speech Devices SDK im Ordner „keyword“. Beispielsweise enthält `/home/wcaltest/JRE-Sample-Release/keyword/Computer` die Dateien für das Schlüsselwort „Computer“.
 
    > [!TIP]
-   > Sie können auch [ein benutzerdefiniertes Aktivierungswort erstellen](speech-devices-sdk-create-kws.md).
+   > Sie können auch [ein benutzerdefiniertes Schlüsselwort erstellen](speech-devices-sdk-create-kws.md).
 
-    Um ein neues Wort für die Aktivierung zu verwenden, aktualisieren Sie die folgenden zwei Codezeilen in `FunctionsList.java`, und kopieren Sie das Paket mit dem Aktivierungswort in Ihre App. Wenn Sie beispielsweise das Aktivierungswort „Machine“ aus dem Aktivierungswortpaket `kws-machine.zip` verwenden möchten, gehen Sie wie folgt vor:
+    Um ein neues Schlüsselwort zu verwenden, aktualisieren Sie die folgenden zwei Codezeilen in `FunctionsList.java` und kopieren das Paket mit dem Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket `kws-machine.zip` verwenden möchten:
 
-   * Kopieren Sie das Aktivierungswortpaket in den Projektordner **target/classes**.
+   * Kopieren Sie das Schlüsselwortpaket in den Projektordner **target/classes**.
 
    * Aktualisieren Sie die Datei `FunctionsList.java` mit dem Schlüsselwort und dem Paketnamen:
 

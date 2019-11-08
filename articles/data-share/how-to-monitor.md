@@ -1,21 +1,21 @@
 ---
-title: Überwachen von Azure Data Share Vorschau
-description: In diesem Artikel erfahren Sie, wie Sie den Status der Einladung, Freigabeabonnements und den Momentaufnahmeverlauf in Azure Data Share Vorschau überwachen.
+title: Überwachen von Azure Data Share
+description: In diesem Artikel erfahren Sie, wie Sie den Status der Einladung, Freigabeabonnements und den Momentaufnahmeverlauf in Azure Data Share überwachen.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 22c95f1ac541e1288494ed85cc9654d42780ea60
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169127"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490503"
 ---
-# <a name="monitor-azure-data-share-preview"></a>Überwachen von Azure Data Share Vorschau 
+# <a name="monitor-azure-data-share"></a>Überwachen von Azure Data Share  
 
-In diesem Artikel wird erläutert, wie Sie Ihre Datenfreigaben mit Azure Data Share Vorschau überwachen können. Als Datenanbieter können Sie verschiedene Aspekte Ihrer Datenfreigabebeziehungen überwachen. Details wie Antworten auf die Fragen, ob Ihre Datenconsumer Ihre Einladung für die Datenfreigabe angenommen haben, ob sie ein Freigabeabonnement erstellt und mit der Nutzung Ihrer Daten begonnen haben, stehen für die Überwachung zur Verfügung. 
+In diesem Artikel wird erläutert, wie Sie Ihre Datenfreigaben mit Azure Data Share überwachen können. Als Datenanbieter können Sie verschiedene Aspekte Ihrer Datenfreigabebeziehungen überwachen. Details wie Antworten auf die Fragen, ob Ihre Datenconsumer Ihre Einladung für die Datenfreigabe angenommen haben, ob sie ein Freigabeabonnement erstellt und mit der Nutzung Ihrer Daten begonnen haben, stehen für die Überwachung zur Verfügung. 
 
 Als Datenconsumer können Sie die Momentaufnahmen überwachen, die in Ihrem Azure-Abonnement ausgelöst wurden. 
 
@@ -23,7 +23,7 @@ Als Datenconsumer können Sie die Momentaufnahmen überwachen, die in Ihrem Azur
 
 Zeigen Sie den Status Ihrer Einladungen zur Datenfreigabe an, indem Sie zu „Gesendete Freigaben > Einladungen“ navigieren. 
 
-![Status der Einladung](./media/invitation-status.png "Status der Einladung") 
+![Einladungsstatus](./media/invitation-status.png "Einladungsstatus") 
 
 Es gibt drei Zustände, in denen sich Ihre Einladung befinden kann:
 

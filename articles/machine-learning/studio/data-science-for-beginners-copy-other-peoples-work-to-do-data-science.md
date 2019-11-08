@@ -1,6 +1,6 @@
 ---
 title: Kopieren der Data Science-Beispiele von anderen
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: 'Das Geschäftsgeheimnis von Data Science: Lassen Sie Andere Ihre Arbeit machen. Rufen Sie Machine Learning-Beispiele aus dem Azure KI-Katalog ab.'
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 8bacc3940cebaf9c62179cee0788e5903e56a310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6004a3092856b0dbe55e044676b6a93e77debb1e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751821"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619503"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Reihe „Data Science für Einsteiger“
@@ -50,9 +50,9 @@ Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von an
 
 ## <a name="find-examples-in-the-azure-ai-gallery"></a>Suchen nach Beispielen im Azure KI-Katalog
 
-Microsoft bietet einen cloudbasierten Dienst namens [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/), den Sie kostenlos testen können. Dabei wird ein Arbeitsbereich bereitgestellt, in dem Sie mit unterschiedlichen Machine Learning-Algorithmen experimentieren können. Nachdem Sie Ihre Lösung erstellt haben, können Sie sie als Webdienst starten.
+Microsoft bietet einen cloudbasierten Dienst namens [Azure Machine Learning Studio (klassisch)](https://azure.microsoft.com/services/machine-learning-studio/). Dabei wird ein Arbeitsbereich bereitgestellt, in dem Sie mit unterschiedlichen Machine Learning-Algorithmen experimentieren können. Nachdem Sie Ihre Lösung erstellt haben, können Sie sie als Webdienst starten.
 
-Ein Teil dieses Diensts ist der **[Azure KI-Katalog](https://gallery.azure.ai/)** . Er enthält Ressourcen, z.B. eine Sammlung mit Azure Machine Learning Studio-Experimenten oder Modelle, die von Benutzern erstellt und für andere Benutzer zur Verfügung gestellt wurden. Diese Experimente stellen eine hervorragende Möglichkeit dar, die investierte Arbeit anderer Benutzer als Starthilfe für Ihre eigenen Lösungen zu nutzen. Er ist für alle interessierten Benutzer zugänglich.
+Ein Teil dieses Diensts ist der **[Azure KI-Katalog](https://gallery.azure.ai/)** . Er enthält Ressourcen, z.B. eine Sammlung mit (klassischen) Azure Machine Learning Studio-Experimenten oder Modelle, die von Benutzern erstellt und für andere Benutzer zur Verfügung gestellt wurden. Diese Experimente stellen eine hervorragende Möglichkeit dar, die investierte Arbeit anderer Benutzer als Starthilfe für Ihre eigenen Lösungen zu nutzen. Er ist für alle interessierten Benutzer zugänglich.
 
 ![Azure KI-Katalog](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -71,25 +71,25 @@ Wenn Sie auf dieses Experiment klicken, wird eine Webseite angezeigt, auf der di
 
 ![Seite mit Beschreibung von Clusteringexperimenten](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-Beachten Sie den Link **Open in Studio**.
+Beachten Sie den Link **In Studio öffnen (klassisch)** .
 
-![Schaltfläche „In Studio öffnen“](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
+![Schaltfläche „In Studio öffnen (klassisch)“](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-Ich kann auf den Link klicken, um direkt zu **Azure Machine Learning Studio**zu gelangen. Es wird eine Kopie des Experiments erstellt und in meinen Arbeitsbereich eingefügt. Dies umfasst das Dataset des Erstellers, alle Verarbeitungsschritte, alle verwendeten Algorithmen und die Speicherung der Ergebnisse.
+Ich kann auf den Link klicken, um direkt zu **Azure Machine Learning Studio (klassisch)** zu gelangen. Es wird eine Kopie des Experiments erstellt und in meinen Arbeitsbereich eingefügt. Dies umfasst das Dataset des Erstellers, alle Verarbeitungsschritte, alle verwendeten Algorithmen und die Speicherung der Ergebnisse.
 
-![Öffnen Sie ein Katalogexperiment in Machine Learning Studio – Beispiel eines Clusteringalgorithmus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
+![Öffnen Sie ein Katalogexperiment in Machine Learning Studio (klassisch): Beispiel eines Clusteringalgorithmus](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
 Außerdem verfüge ich jetzt über einen Ausgangspunkt. Ich kann die Daten des Erstellers gegen meine Daten austauschen und das Modell für meine Zwecke optimieren. So verschaffe ich mir einen Vorsprung, und ich kann auf der Arbeit von Benutzern aufbauen, die wissen, was sie tun.
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Suchen nach Experimenten zur Veranschaulichung von Machine Learning-Verfahren
 Der [Azure KI-Katalog](https://gallery.azure.ai) enthält noch weitere Experimente, die speziell als Gewusst-wie-Beispiele für Personen bereitgestellt wurden, für die Data Science neu ist. Im Katalog ist beispielsweise ein Experiment enthalten, das veranschaulicht, wie Sie mit fehlenden Werten umgehen ([Methods for handling missing values](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)Methoden zum Behandeln fehlender Werte). Es werden 15 unterschiedliche Wege zum Ersetzen leerer Werte beschrieben, und es werden jeweils die Vorteile der einzelnen Methoden und die Anwendungsmöglichkeiten erläutert.
 
-![In Machine Learning Studio geöffnete Katalogexperimente – Methoden für fehlende Werte](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![In Machine Learning Studio (klassisch) geöffnete Katalogexperimente: Methoden für fehlende Werte](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
 Im [Azure KI-Katalog](https://gallery.azure.ai) finden Sie funktionierende Experimente, die Sie als Ausgangspunkt für Ihre eigenen Lösungen verwenden können.
 
-Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Microsoft Azure Machine Learning Studio an.
+Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Microsoft Azure Machine Learning Studio (klassisch) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning Studio](create-experiment.md)
+* [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning Studio (klassisch)](create-experiment.md)
 * [Einführung in Machine Learning in Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

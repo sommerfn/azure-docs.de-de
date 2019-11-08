@@ -1,23 +1,23 @@
 ---
 title: Azure Batch-Dienstaufträge
-titleSuffix: Azure Machine Learning Studio
-description: Übersicht über Azure Batch-Dienste für Machine Learning Studio-Aufträge. Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können.
+titleSuffix: ML Studio (classic) Azure
+description: Übersicht über Azure Batch-Dienste für (klassische) Machine Learning Studio-Aufträge. Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
-ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 24efa3caba3918a38c09b1c921c600b117dedbc1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0e829f61117df25f8643301a0acdadeafd7c267
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751151"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684800"
 ---
-# <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Batch-Dienst für Azure Machine Learning Studio-Aufträge
+# <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Azure Batch-Dienst für (klassische) Azure Machine Learning Studio-Aufträge
 
 Die Machine Learning Batch-Poolverarbeitung ermöglicht für den Azure Machine Learning-Batchausführungsdienst eine vom Kunden verwaltete Skalierung. Klassische Batchverarbeitung für Machine Learning erfolgt in einer Umgebung mit mehreren Mandanten, wodurch die Anzahl gleichzeitiger Aufträge, die Sie senden können, begrenzt wird, und Aufträge werden auf FIFO-Basis in eine Warteschlange gestellt. Diese Unsicherheit bedeutet, dass Sie nicht genau vorhersagen können, wann Ihr Auftrag ausgeführt wird.
 
@@ -43,7 +43,7 @@ Sie erstellen Pools, indem Sie den Vorgang „Pool erstellen“ für die Pool-Di
 
 Sie können jeden Neuer Resource Manager-basierten Webdienst verwenden, sollten aber beachten, dass die Abrechnung für die Aufträge entsprechend dem Abrechnungsplan erfolgt, der diesem Dienst zugeordnet ist. Es bietet sich möglicherweise an, dass Sie einen Webdienst und einen neuen Abrechnungsplan speziell für das Ausführen von Batch-Pool-Aufträgen erstellen.
 
-Weitere Informationen zum Erstellen von Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](publish-a-machine-learning-web-service.md).
+Weitere Informationen zum Erstellen von Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](deploy-a-machine-learning-web-service.md).
 
 Nachdem Sie einen Pool erstellt haben, können Sie den BES-Auftrag über die Batchanforderungs-URL für den Webdienst senden. Sie können auswählen, den Auftrag an einen Pool oder an eine klassische Batchverarbeitung zu senden. Um einen Auftrag an Batch-Pool-Verarbeitung zu senden, fügen Sie dem Textkörper der Anforderung, in der der Auftrag gesendet wird, den folgenden Parameter hinzu:
 

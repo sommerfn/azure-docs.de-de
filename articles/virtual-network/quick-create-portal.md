@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: f95174efbffedd09946f5910a39285e7bec062c1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d8e95f9c345a943eb458800b852640e3f1fde907
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161484"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488490"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal
 
@@ -34,9 +34,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.
 
-1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
+2. Wählen Sie im Azure Marketplace die Option **Netzwerk** > **Virtuelles Netzwerk** aus.
+
+3. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -48,7 +50,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | Subnetz – Name | Geben Sie *myVirtualSubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
 
-1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
+4. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
@@ -56,9 +58,11 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
 
 ### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-1. Wählen Sie oben links auf dem Bildschirm die Option **Ressource erstellen** > **Compute** > **Windows Server 2019 Datacenter** aus.
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.
 
-1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
+2. Wählen Sie im Azure Marketplace die Option **Compute** > **Windows Server 2019 Datacenter** aus.
+
+3. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -80,11 +84,11 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
     | **SPAREN SIE GELD** |  |
     | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein**. |
 
-1. Wählen Sie **Weiter: Datenträger** aus.
+4. Wählen Sie **Weiter: Datenträger** aus.
 
-1. Übernehmen Sie in **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk**.
+5. Übernehmen Sie in **Virtuellen Computer erstellen – Datenträger** die Standardwerte, und wählen Sie **Weiter: Netzwerk**.
 
-1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
+6. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -94,11 +98,11 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
     | Öffentliche Eingangsports | Wählen Sie **Ausgewählte Ports zulassen** aus. |
     | Eingangsports auswählen | Wählen Sie **HTTP** und **RDP** aus.
 
-1. Wählen Sie **Weiter: Verwaltung** aus.
+7. Wählen Sie **Weiter: Verwaltung** aus.
 
-1. Wählen Sie in **Virtuellen Computer erstellen – Verwaltung** für **Diagnosespeicherkonto** **Neu erstellen** aus.
+8. Wählen Sie in **Virtuellen Computer erstellen – Verwaltung** für **Diagnosespeicherkonto** **Neu erstellen** aus.
 
-1. Geben Sie in **Speicherkonto erstellen** diese Informationen ein, oder wählen Sie sie aus:
+9. Geben Sie in **Speicherkonto erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |
@@ -107,11 +111,11 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
     | Leistung | Übernehmen Sie den Standardwert **Standard**. |
     | Replikation | Übernehmen Sie den Standardwert **Lokal redundanter Speicher (LRS)** . |
 
-1. Klicken Sie auf **OK**.
+10. Klicken Sie auf **OK**.
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+11. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
-1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+12. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
 ### <a name="create-the-second-vm"></a>Erstellen des zweiten virtuellen Computers
 
@@ -122,9 +126,9 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
     >
     > Achten Sie in Schritt 7 darauf, für **Diagnosespeicherkonto** **myvmstorageaccount** auszuwählen.
 
-1. Klicken Sie auf **Überprüfen + erstellen**. Sie gelangen auf die Seite **Bewerten + erstellen**, und Azure überprüft Ihre Konfiguration.
+2. Klicken Sie auf **Überprüfen + erstellen**. Sie gelangen auf die Seite **Bewerten + erstellen**, und Azure überprüft Ihre Konfiguration.
 
-1. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
+3. Wenn die Meldung **Überprüfung erfolgreich** angezeigt wird, wählen Sie **Erstellen** aus.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
 
@@ -132,34 +136,34 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie eine Verbindung mit dem Internet
 
 1. Geben Sie in der Suchleiste des Portals *myVm1* ein.
 
-1. Wählen Sie die Schaltfläche **Verbinden** aus.
+2. Wählen Sie die Schaltfläche **Verbinden** aus.
 
     ![Herstellen einer Verbindung mit einem virtuellen Computer](./media/quick-create-portal/connect-to-virtual-machine.png)
 
     Nach dem Auswählen der Schaltfläche **Verbinden** wird **Verbindung mit virtuellem Computer herstellen** geöffnet.
 
-1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
+3. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
 
-1. Öffnen Sie die heruntergeladene *RDP*-Datei.
+4. Öffnen Sie die heruntergeladene *RDP*-Datei.
 
     1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
-    1. Geben Sie den Benutzernamen und das Kennwort ein, den/das Sie beim Erstellen des virtuellen Computers angegeben haben.
+    2. Geben Sie den Benutzernamen und das Kennwort ein, den/das Sie beim Erstellen des virtuellen Computers angegeben haben.
 
         > [!NOTE]
         > Unter Umständen müssen Sie **Weitere Optionen** > **Anderes Konto verwenden** auswählen, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.
 
-1. Klicken Sie auf **OK**.
+5. Klicken Sie auf **OK**.
 
-1. Während des Anmeldevorgangs wird vielleicht eine Zertifikatwarnung angezeigt. Wenn Sie eine Zertifikatwarnung erhalten, wählen Sie **Ja** oder **Weiter** aus.
+6. Während des Anmeldevorgangs wird vielleicht eine Zertifikatwarnung angezeigt. Wenn Sie eine Zertifikatwarnung erhalten, wählen Sie **Ja** oder **Weiter** aus.
 
-1. Sobald der VM-Desktop angezeigt wird, minimieren Sie ihn, um zu Ihrem lokalen Desktop zurückzukehren.
+7. Sobald der VM-Desktop angezeigt wird, minimieren Sie ihn, um zu Ihrem lokalen Desktop zurückzukehren.
 
 ## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 
 1. Öffnen Sie auf dem Remote Desktop von *myVm1* PowerShell.
 
-1. Geben Sie `ping myVm2` ein.
+2. Geben Sie `ping myVm2` ein.
 
     Sie erhalten eine Meldung wie die folgende:
 
@@ -176,7 +180,7 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie eine Verbindung mit dem Internet
 
     Bei `ping` tritt ein Fehler auf, weil `ping` das Internet Control Message-Protokoll (ICMP) verwendet. Standardmäßig kann ICMP nicht durch die Windows-Firewall ausgeführt werden.
 
-1. Damit *myVm2* in einem späteren Schritt ein Pingsignal an *myVm1* senden kann, geben Sie diesen Befehl ein:
+3. Damit *myVm2* in einem späteren Schritt ein Pingsignal an *myVm1* senden kann, geben Sie diesen Befehl ein:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -184,11 +188,11 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie eine Verbindung mit dem Internet
 
     Dieser Befehl lässt eingehenden ICMP-Datenverkehr durch die Windows-Firewall zu:
 
-1. Schließen Sie die Remotedesktopverbindung mit *myVm1*.
+4. Schließen Sie die Remotedesktopverbindung mit *myVm1*.
 
-1. Führen Sie die Schritte unter [Herstellen einer Verbindung mit einem virtuellen Computer über das Internet](#connect-to-a-vm-from-the-internet) erneut aus, stellen Sie jedoch die Verbindung mit *myVm2* her.
+5. Führen Sie die Schritte unter [Herstellen einer Verbindung mit einem virtuellen Computer über das Internet](#connect-to-a-vm-from-the-internet) erneut aus, stellen Sie jedoch die Verbindung mit *myVm2* her.
 
-1. Geben Sie an einer Befehlszeile `ping myvm1` ein.
+6. Geben Sie an einer Befehlszeile `ping myvm1` ein.
 
     Es wird etwa diese Meldung angezeigt:
 
@@ -207,7 +211,7 @@ Nachdem Sie *myVm1* erstellt haben, stellen Sie eine Verbindung mit dem Internet
 
     Sie erhalten Antworten von *myVm1*, weil Sie in Schritt 3 ICMP-Datenverkehr durch die Windows-Firewall auf dem virtuellen Computer *myVm1* zugelassen haben.
 
-1. Schließen Sie die Remotedesktopverbindung mit *myVm2*.
+7. Schließen Sie die Remotedesktopverbindung mit *myVm2*.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -215,9 +219,9 @@ Wenn Sie Ihre Arbeit mit dem virtuellen Netzwerk und den virtuellen Computern ab
 
 1. Geben Sie oben im Portal im Feld **Suchen** die Zeichenfolge *myResourceGroup* ein, und wählen Sie in den Suchergebnissen den Eintrag **myResourceGroup** aus.
 
-1. Wählen Sie die Option **Ressourcengruppe löschen**.
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
 
-1. Geben Sie *myResourceGroup* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
+3. Geben Sie *myResourceGroup* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

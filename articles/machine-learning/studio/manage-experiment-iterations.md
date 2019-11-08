@@ -1,7 +1,7 @@
 ---
 title: Verwalten von Experimentiterationen
-titleSuffix: Azure Machine Learning Studio
-description: Verwalten von Experimentiterationen in Azure Machine Learning Studio Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern.
+titleSuffix: ML Studio (classic) Azure
+description: Verwalten von Experimentiterationen in Azure Machine Learning Studio (klassisch) Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +10,22 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 34a72f2e7b6be90654c0f053d5b8978b0283d56c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fedd613d2a9de90f5ee04ca4266d06c6ed725a4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860242"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621593"
 ---
-# <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Verwalten von Experimentiterationen in Azure Machine Learning-Studio
+# <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Verwalten von Experimentiterationen in Azure Machine Learning Studio (klassisch)
 Das Entwickeln eines solchen Vorhersageanalysemodells ist ein iterativer Prozess: Sie ändern die verschiedenen Funktionen und Parameter des Experiments, und die Ergebnisse nähern sich solange an, bis Sie der Ansicht sind, ein trainiertes, effektives Modell erreicht zu haben. Wichtig für diesen Prozess ist das Verfolgen der verschiedenen Iterationen der Experimentparameter und -konfigurationen.
 
 
 
-Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern. Wenn Sie ein Experiment ausführen, speichert Machine Learning Studio den Verlauf des Testlaufs, einschließlich DataSets, Modul sowie Portverbindungen und Parameter. In diesem Verlauf werden auch Ergebnisse, Laufzeitinformationen, z. B. Start- und Endzeiten, Protokollmeldungen und der Ausführungsstatus aufgezeichnet. Sie können jeden dieser Testläufe jederzeit überprüfen, um die Chronologie des Experiments und die Zwischenergebnisse  zu betrachten. Ein vorheriger Testlauf des Experiment kann sogar den Ausgangspunkt einer neuen Untersuchungsphase auf dem Weg zur Erstellung einfacher, komplexer oder mehrfacher Modellierungslösungen bilden.
+Sie können die vorherigen Testläufe der Experimente zu jedem beliebigen Zeitpunkt noch einmal überprüfen, um die vorherigen Annahmen infrage zu stellen, neu aufzugreifen und letztendlich entweder zu bestätigen oder zu verfeinern. Wenn Sie ein Experiment ausführen, speichert Machine Learning Studio (klassisch) den Verlauf des Testlaufs, einschließlich Dataset, Modul sowie Portverbindungen und Parameter. In diesem Verlauf werden auch Ergebnisse, Laufzeitinformationen, z. B. Start- und Endzeiten, Protokollmeldungen und der Ausführungsstatus aufgezeichnet. Sie können jeden dieser Testläufe jederzeit überprüfen, um die Chronologie des Experiments und die Zwischenergebnisse  zu betrachten. Ein vorheriger Testlauf des Experiment kann sogar den Ausgangspunkt einer neuen Untersuchungsphase auf dem Weg zur Erstellung einfacher, komplexer oder mehrfacher Modellierungslösungen bilden.
 
 > [!NOTE]
-> Wenn Sie einen vorherigen Testlauf des Experiments anzeigen, wird diese Version des Experiments gesperrt und kann daher nicht bearbeitet werden. Sie können jedoch eine Kopie speichern, indem Sie auf **SAVE AS** (SPEICHERN UNTER) klicken und einen neuen Namen für die Kopie eingeben. Machine Learning Studio öffnet die neue Kopie, die Sie dann bearbeiten und ausführen können. Diese Kopie des Experiments steht in der Liste **EXPERIMENTS** (EXPERIMENTE) zusammen mit allen anderen Experimenten zur Verfügung.
+> Wenn Sie einen vorherigen Testlauf des Experiments anzeigen, wird diese Version des Experiments gesperrt und kann daher nicht bearbeitet werden. Sie können jedoch eine Kopie speichern, indem Sie auf **SAVE AS** (SPEICHERN UNTER) klicken und einen neuen Namen für die Kopie eingeben. Machine Learning Studio (klassisch) öffnet die neue Kopie, die Sie dann bearbeiten und ausführen können. Diese Kopie des Experiments steht in der Liste **EXPERIMENTS** (EXPERIMENTE) zusammen mit allen anderen Experimenten zur Verfügung.
 > 
 > 
 
@@ -41,10 +41,10 @@ Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linea
 
 | Der Wert von "Learning Rate" | Startzeit des Testlaufs |
 | --- | --- |
-| 0,1 |11\.9.2014 16:18:58 |
-| 0,2 |11\.9.2014 16:24:33 |
-| 0,4 |11\.9.2014 16:28:36 |
-| 0,5 |11\.9.2014 16:33:31 |
+| 0,1 |11.9.2014 16:18:58 |
+| 0.2 |11.9.2014 16:24:33 |
+| 0,4 |11.9.2014 16:28:36 |
+| 0,5 |11.9.2014 16:33:31 |
 
 Wenn Sie auf **VIEW RUN HISTORY**(AUSFÜHRUNGSVERLAUF ANZEIGEN) klicken, wird eine Liste aller Testläufe angezeigt:
 
@@ -57,12 +57,12 @@ Klicken Sie auf einen dieser Testläufe, um eine Momentaufnahme des Experiments 
 > 
 > 
 
-In der Liste der Experimente auf der Registerkarte **EXPERIMENTS** in Machine Learning Studio wird immer die neueste Version eines Experiments angezeigt. Wenn Sie einen früheren Testlauf des Experiments öffnen (mit **Prior Run** [Vorheriger Testlauf] oder **VIEW RUN HISTORY** [AUSFÜHRUNGSVERLAUF ANZEIGEN]), können Sie zur Entwurfsversion zurückkehren, indem Sie auf **VIEW RUN HISTORY** klicken und die Iteration auswählen, für die unter **STATE** (STATUS) der Status **Editable** (Bearbeitbar) angezeigt wird.
+In der Liste der Experimente auf der Registerkarte **EXPERIMENTS** in Machine Learning Studio (klassisch) wird immer die neueste Version eines Experiments angezeigt. Wenn Sie einen früheren Testlauf des Experiments öffnen (mit **Prior Run** [Vorheriger Testlauf] oder **VIEW RUN HISTORY** [AUSFÜHRUNGSVERLAUF ANZEIGEN]), können Sie zur Entwurfsversion zurückkehren, indem Sie auf **VIEW RUN HISTORY** klicken und die Iteration auswählen, für die unter **STATE** (STATUS) der Status **Editable** (Bearbeitbar) angezeigt wird.
 
 ## <a name="iterating-on-a-previous-run"></a>Iterieren mit einem vorherigen Testlauf
 Wenn Sie auf **Prior Run** (Vorheriger Testlauf) oder **VIEW RUN HISTORY** (AUSFÜHRUNGSVERLAUF ANZEIGEN) klicken und einen vorherigen Testlauf öffnen, wird ein fertiges Experiment im schreibgeschützten Modus angezeigt.
 
-Wenn Sie ausgehend von der Konfiguration eines vorherigen Testlaufs eine Iteration des Experiments beginnen möchten, können Sie dazu den Testlauf öffnen und auf **SAVE AS** (SPEICHERN UNTER) klicken. Damit wird ein neues Experiment mit einem neuen Titel, einem leeren Ausführungsverlauf sowie allen Komponenten und Parameterwerten des vorherigen Testlaufs erstellt. Dieses neue Experiment wird auf der Registerkarte **EXPERIMENTS** auf der Startseite von Machine Learning Studio aufgeführt. Sie können es ändern und ausführen und dadurch einen neuen Ausführungsverlauf für diese Iteration des Experiments anlegen. 
+Wenn Sie ausgehend von der Konfiguration eines vorherigen Testlaufs eine Iteration des Experiments beginnen möchten, können Sie dazu den Testlauf öffnen und auf **SAVE AS** (SPEICHERN UNTER) klicken. Damit wird ein neues Experiment mit einem neuen Titel, einem leeren Ausführungsverlauf sowie allen Komponenten und Parameterwerten des vorherigen Testlaufs erstellt. Dieses neue Experiment wird auf der Registerkarte **EXPERIMENTS** auf der Startseite von Machine Learning Studio (klassisch) aufgeführt. Sie können es ändern und ausführen und dadurch einen neuen Ausführungsverlauf für diese Iteration des Experiments anlegen. 
 
 Nehmen wir beispielsweise an, Sie haben den Ausführungsverlauf des Experiments aus dem vorherigen Abschnitt. Sie möchten sehen, was geschieht, wenn Sie den Parameter **Learning rate** (Lernrate) auf 0,4 festlegen und verschiedene Werte für den Parameter **Number of training epochs** (Anzahl der Trainingsperioden) ausprobieren.
 

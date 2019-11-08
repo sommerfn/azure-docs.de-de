@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial 3: Bereitstellen eines Kreditrisikomodells'
-titleSuffix: Azure Machine Learning Studio
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio. Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe. Hier erfahren Sie, wie Sie ein Modell als Webdienst bereitstellen.
+titleSuffix: ML Studio (classic) Azure
+description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in der klassischen Version von Azure Machine Learning Studio Dieses Tutorial ist der dritte Teil einer dreiteiligen Reihe. Hier erfahren Sie, wie Sie ein Modell als Webdienst bereitstellen.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung, bereitstellen, Webdienst
 author: sdgilley
 ms.author: sgilley
@@ -10,24 +10,24 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6cdccd54546296c85864f1588b71109ed8b8f79f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 0f4ee6cfebcb5edb38b1cc7a11b070dab5d2098c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620512"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619015"
 ---
-# <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio
+# <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio (klassisch)
 
-Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**.
+Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **dritte Teil einer dreiteiligen Reihe**.
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio erstellen können. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet. 
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden die klassische Version von Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet. 
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
-Im [ersten Teil des Tutorials](tutorial-part1-credit-risk.md) haben Sie einen Machine Learning Studio-Arbeitsbereich erstellt, Daten hochgeladen und ein Experiment erstellt.
+Im [ersten Teil des Tutorials](tutorial-part1-credit-risk.md) haben Sie einen Arbeitsbereich in Machine Learning Studio (klassisch) erstellt, Daten hochgeladen und ein Experiment erstellt.
 
 Im [zweiten Teil des Tutorials](tutorial-part2-credit-risk-train.md) haben Sie Modelle trainiert und ausgewertet.
 
@@ -39,8 +39,6 @@ In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
 > * Testen des Webdiensts
 > * Verwalten des Webdiensts
 > * Zugreifen auf den Webdienst
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -65,7 +63,7 @@ Angenommen, Sie haben entschieden, dass das Boosted Tree-Modell eine bessere Lei
 
 Folgende Module müssen gelöscht werden:  
 
-* [Two-Class Support Vector Machine][two-class-support-vector-machine]
+* [Zweiklassige Support Vector Machine][two-class-support-vector-machine]
 * Die damit verbundenen Module [Train Model][train-model] und [Score Model][score-model]
 * [Normalize Data][normalize-data] (beide)
 * [Evaluate Model][evaluate-model] (da wir das Bewerten der Modelle abgeschlossen haben)
@@ -91,15 +89,15 @@ Um dieses Modell auf die Bereitstellung vorzubereiten, muss das Trainingsexperim
 Dieser Prozess könnte zwar auch manuell ausgeführt werden, glücklicherweise können Sie aber alle drei Schritte ausführen, indem Sie einfach unten im Experimentbereich auf **Set Up Web Service** (Webdienst einrichten) klicken und die Option **Predictive Web Service** (Vorhersagewebdienst) auswählen.
 
 > [!TIP]
-> Wenn Sie weitere Details dazu erhalten möchten, was geschieht, wenn Sie ein Trainingsexperiment in ein Vorhersageexperiment konvertieren, siehe [Vorbereiten der Bereitstellung Ihres Modells in Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
+> Wenn Sie weitere Details dazu erhalten möchten, was geschieht, wenn Sie ein Trainingsexperiment in ein Vorhersageexperiment konvertieren, lesen Sie [Vorbereiten der Bereitstellung Ihres Modells in Azure Machine Learning Studio (klassisch)](convert-training-experiment-to-scoring-experiment.md).
 
 Beim Klicken auf **Set Up Web Service**geschehen mehrere Dinge:
 
 * Das trainierte Modell wird in ein einzelnes **Trained Model**-Modul konvertiert und in der Modulpalette gespeichert, die sich links neben dem Experimentbereich befindet. (Sie finden sie unter **Trained Models**.)
 * Module, die zum Training verwendet wurden, werden entfernt. Das gilt insbesondere für:
-  * [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree]
-  * [Train Model][train-model]
-  * [Split Data][split]
+  * [Verstärkter Entscheidungsbaum mit zwei Klassen][two-class-boosted-decision-tree]
+  * [Train Model][train-model] (Modell trainieren)
+  * [Aufteilen von Daten][split]
   * Das zweite [Execute R Script][execute-r-script]-Modul, das für die Testdaten verwendet wurde
 * Das gespeicherte trainierte Modell wird dem Experiment wieder hinzugefügt
 * Die Module **Web service input** und **Web service output** werden hinzugefügt. (Sie dienen zum Bestimmen, wo die Daten des Benutzers in das Modell eingehen und welche Daten zurückgegeben werden, wenn auf den Webdienst zugegriffen wird.)
@@ -109,7 +107,7 @@ Beim Klicken auf **Set Up Web Service**geschehen mehrere Dinge:
 
 Bei diesem Experiment ist ein zusätzlicher Schritt erforderlich.
 Sie haben zwei Module vom Typ [Execute R Script][execute-r-script] hinzugefügt, um die Daten mit einer Gewichtungsfunktion zu versehen. Das war nur ein Trick, der zum Trainieren und Testen erforderlich war. Die Module können nun also aus dem endgültigen Modell entfernt werden.
-Machine Learning Studio hat beim Entfernen des [Split][split]-Moduls eines der [Execute R Script][execute-r-script]-Module entfernt. Nun können Sie auch das andere entfernen und [Metadata Editor][metadata-editor] direkt mit [Score Model][score-model] verbinden.    
+Machine Learning Studio (klassisch) hat beim Entfernen des [Split][split]-Moduls eines der [Execute R Script][execute-r-script]-Module entfernt. Nun können Sie auch das andere entfernen und [Metadata Editor][metadata-editor] direkt mit [Score Model][score-model] verbinden.    
 
 Unser Experiment sollte nun wie folgt aussehen:  
 
@@ -124,13 +122,13 @@ Unser Experiment sollte nun wie folgt aussehen:
 >Es ist wichtig zu beachten, dass das erwartete Schema aus der Webeingabe auch eine Spalte mit der Bezeichnung erwartet, wenn Ihr ursprüngliches Dataset die Bezeichnung enthielt! Eine Umgehung dieses Problems besteht darin, die Bezeichnung und alle anderen Daten zu entfernen, die sich im Trainingsdataset befanden, jedoch nicht in den Webeingaben enthalten sein werden, bevor Sie die Webeingabe und das Trainingsdataset in einem allgemeinen Modul verbinden. 
 > 
 
-Führen Sie das Experiment ein letztes Mal aus (klicken Sie auf **Run**). Wenn Sie überprüfen möchten, ob das Modell noch funktioniert, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Score Model][score-model] und wählen **View Results**. Sie sehen, dass die Originaldaten zusammen mit dem Wert für das Kreditrisiko („Bewertete Beschriftungen“)' und dem Bewertungswahrscheinlichkeitswert („Bewertete Wahrscheinlichkeiten“) angezeigt werden. 
+Führen Sie das Experiment ein letztes Mal aus (klicken Sie auf **Run**). Wenn Sie überprüfen möchten, ob das Modell noch funktioniert, klicken Sie auf die Ausgabe des Moduls [Score Model][score-model] und wählen **Ergebnisse anzeigen** aus. Sie sehen, dass die Originaldaten zusammen mit dem Wert für das Kreditrisiko („Bewertete Beschriftungen“)' und dem Bewertungswahrscheinlichkeitswert („Bewertete Wahrscheinlichkeiten“) angezeigt werden. 
 
 ## <a name="deploy-the-web-service"></a>Bereitstellen des Webdiensts
 Sie können das Experiment entweder als klassischen Webdienst oder neuen auf Azure Resource Manager basierenden Webdienst bereitstellen.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Bereitstellen als klassischen Webdienst
-Zum Bereitstellen eines aus dem Experiment abgeleiteten klassischen Webdiensts klicken Sie unter dem Experimentbereich auf **Deploy Web Service** und wählen dann **Deploy Web Service [Classic]**. Machine Learning Studio stellt das Experiment als Webdienst bereit und führt Sie zum Dashboard dieses Webdiensts. Von hier aus können Sie zum Experiment zurückkehren (**Momentaufnahme anzeigen** oder **View latest** (Neuestes anzeigen)) und einen einfachen Test des Webdiensts ausführen (siehe **Testen des Webdiensts** weiter unten). Dort befinden sich auch Informationen zum Erstellen von Anwendungen, die auf den Webdienst zugreifen können (mehr dazu im nächsten Schritt dieses Tutorials).
+Zum Bereitstellen eines aus dem Experiment abgeleiteten klassischen Webdiensts klicken Sie unter dem Experimentbereich auf **Deploy Web Service** und wählen dann **Deploy Web Service [Classic]** . Machine Learning Studio (klassisch) stellt das Experiment als Webdienst bereit und führt Sie zum Dashboard dieses Webdiensts. Von hier aus können Sie zum Experiment zurückkehren (**Momentaufnahme anzeigen** oder **View latest** (Neuestes anzeigen)) und einen einfachen Test des Webdiensts ausführen (siehe **Testen des Webdiensts** weiter unten). Dort befinden sich auch Informationen zum Erstellen von Anwendungen, die auf den Webdienst zugreifen können (mehr dazu im nächsten Schritt dieses Tutorials).
 
 ![Dashboard des Webdiensts](./media/tutorial-part3-credit-risk-deploy/publish6.png)
 
@@ -147,7 +145,7 @@ Sie können den Dienst konfigurieren, indem Sie auf die Registerkarte **KONFIGUR
 
 So stellen wir einen aus unserem Experiment abgeleiteten neuen Webdienst bereit
 
-1. Klicken Sie unter dem Experimentbereich auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [New]**. Machine Learning Studio leitet Sie zur Seite **Deploy Experiment** von Azure Machine Learning Web Services weiter.
+1. Klicken Sie unter dem Experimentbereich auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [New]** . Machine Learning Studio (klassisch) leitet Sie zur Seite **Deploy Experiment** (Experiment bereitstellen) von Azure Machine Learning-Webdienste weiter.
 
 1. Geben Sie einen Namen für den Webdienst ein. 
 
@@ -162,7 +160,7 @@ Sie können den Dienst konfigurieren, indem Sie auf die Registerkarte **Configur
 Um den Webdienst zu testen, klicken Sie auf die Registerkarte **Test** (siehe **Testen des Webdiensts** unten). Informationen zum Erstellen von Anwendungen, die auf den Webdienst zugreifen können, erhalten Sie durch Klicken auf die Registerkarte **Consume** (Nutzen) (mehr dazu im nächsten Schritt dieses Tutorials).
 
 > [!TIP]
-> Sie können den Webdienst nach der Bereitstellung aktualisieren. Wenn Sie das Modell ändern möchten, bearbeiten Sie einfach die Modellparameter im Trainingsexperiment und klicken auf **Deploy Web Service**. Wählen Sie **Deploy Web Service [Classic]** oder **Deploy Web Service [New]**. Wenn Sie das Experiment erneut bereitstellen, wird der Webdienst ersetzt und das aktualisierte Modell verwendet.  
+> Sie können den Webdienst nach der Bereitstellung aktualisieren. Wenn Sie das Modell ändern möchten, bearbeiten Sie einfach die Modellparameter im Trainingsexperiment und klicken auf **Deploy Web Service**. Wählen Sie **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** . Wenn Sie das Experiment erneut bereitstellen, wird der Webdienst ersetzt und das aktualisierte Modell verwendet.  
 > 
 > 
 
@@ -176,7 +174,7 @@ Die Ergebnisse werden danach vom Webdienst über das Modul **Web service output*
 > 
 > 
 
-Sie können einen klassischen Webdienst entweder in **Machine Learning Studio** oder im **Azure Machine Learning Web Services**-Portal testen.
+Sie können einen klassischen Webdienst entweder in **Machine Learning Studio (klassisch)** oder im Portal der **Azure Machine Learning-Webdienste** testen.
 Einen neuen Webdienst können Sie nur im **Machine Learning Web Services**-Portal testen.
 
 > [!TIP]
@@ -184,9 +182,9 @@ Einen neuen Webdienst können Sie nur im **Machine Learning Web Services**-Porta
 
 ### <a name="test-a-classic-web-service"></a>Testen eines klassischen Webdiensts
 
-Sie können einen klassischen Webdienst in Machine Learning Studio oder im Machine Learning Web Services-Portal testen. 
+Sie können einen klassischen Webdienst in Machine Learning Studio (klassisch) oder im Portal der Machine Learning-Webdienste testen. 
 
-#### <a name="test-in-machine-learning-studio"></a>Testen in Machine Learning Studio
+#### <a name="test-in-machine-learning-studio-classic"></a>Testen in Machine Learning Studio (klassisch)
 
 1. Klicken Sie auf der Seite **DASHBOARD** des Webdiensts unter **Default Endpoint** auf die Schaltfläche **Test**. Ein Dialogfeld wird geöffnet, in dem nach den Eingabedaten für den Dienst gefragt werden. Dies sind die gleichen Spalten, die im Originaldataset „Credit Risk“ angezeigt wurden.  
 

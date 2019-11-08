@@ -1,7 +1,7 @@
 ---
 title: Optimieren von Algorithmen
-titleSuffix: Azure Machine Learning Studio
-description: Hier erfahren Sie, wie Sie die optimalen Parameter für einen Algorithmus in Azure Machine Learning Studio auswählen.
+titleSuffix: ML Studio (classic) Azure
+description: Hier erfahren Sie, wie Sie die optimalen Parameter für einen Algorithmus in Azure Machine Learning Studio (klassisch) auswählen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 6dc9476f603d5664b7ea23489042b69f86647cf5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a0434b0f0768447f9922e651297924ad86f63c8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60752195"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621918"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio
+# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (klassisch)
 
-In diesem Thema wird das Auswählen des richtigen Hyperparametersatzes für einen Algorithmus in Azure Machine Learning Studio beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
+In diesem Thema wird das Auswählen des richtigen Hyperparametersatzes für einen Algorithmus in Azure Machine Learning Studio (klassisch) beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
 
 
 
-Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim maschinellen Lernen ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl in Azure Machine Learning Studio. Da Azure Machine Learning Studio sowohl R als auch Python unterstützt, können Sie ihren eigenen Modellauswahlmechanismus in R oder Python implementieren.
+Es gibt verschiedene Möglichkeiten zur Modellauswahl. Beim maschinellen Lernen ist die Kreuzvalidierung eine der am häufigsten verwendeten Methoden für die Modellauswahl und der Standardmechanismus für die Modellauswahl in der klassischen Version von Azure Machine Learning Studio. Da in der klassischen Version Azure Machine Learning Studio sowohl R als auch Python unterstützt, können Sie ihren eigenen Modellauswahlmechanismus in R oder Python implementieren.
 
 Das Ermitteln des besten Parametersatzes umfasst vier Schritte:
 
@@ -32,7 +32,7 @@ Das Ermitteln des besten Parametersatzes umfasst vier Schritte:
 3. **Definieren der Metrik**: Anschließend entscheiden Sie, welche Metrik zum Ermitteln des besten Parametersatzes verwendet werden soll, z.B. Richtigkeit, mittlere quadratische Abweichung, Genauigkeit, Sensitivität oder F-Maß.
 4. **Trainieren, Evaluieren und Vergleichen**: Für jede eindeutige Kombination der Parameterwerte wird eine Kreuzvalidierung anhand der von Ihnen definierten Fehlermetrik durchgeführt. Nach Auswertung und Vergleich können Sie das leistungsfähigste Modell auswählen.
 
-Die folgende Abbildung veranschaulicht, wie dies in Azure Machine Learning Studio erzielt werden kann.
+Die folgende Abbildung veranschaulicht, wie dies in der klassischen Version von Azure Machine Learning Studio erzielt werden kann.
 
 ![Suchen des besten Parametersatzes](./media/algorithm-parameters-optimize/fig1.png)
 

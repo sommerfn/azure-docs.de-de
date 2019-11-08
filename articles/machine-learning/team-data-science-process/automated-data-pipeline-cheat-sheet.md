@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=garyericson, previous-ms.author=garye
-ms.openlocfilehash: 1245255e65412f9bbcba3c8d9caa76b9ffd2dcc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c7011991deb632110264233ea0e7aeabe793fbb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826192"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670469"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Cheat Sheet für eine automatisierte Datenpipeline für Azure Machine Learning-Vorhersagen
 Das **Cheat Sheet für eine automatisierte Datenpipeline für Microsoft Azure Machine Learning** hilft Ihnen bei der Navigation durch die Technologie, mit deren Hilfe Sie Ihre Daten an Ihren Machine Learning-Webdienst senden können, in dem sie von Ihrem Predictive Analytics-Modell bewertet werden.
@@ -29,15 +29,13 @@ Nachdem Sie das Cheat Sheet heruntergeladen haben, können Sie es im Tabloid-For
 
 Laden Sie das Cheat Sheet hier herunter: **[Cheat Sheet für automatisierte Datenpipeline in Microsoft Azure Machine Learning](https://download.microsoft.com/download/C/C/7/CC726F8B-2E6F-4C20-9B6F-AFBEE8253023/microsoft-machine-learning-operationalization-cheat-sheet_v1.pdf)**
 
-![Übersicht der Microsoft Azure Machine Learning Studio-Funktionen][op-cheat-sheet]
+![Übersicht über die Funktionen von Microsoft Azure Machine Learning Studio (klassisch)][op-cheat-sheet]
 
 [op-cheat-sheet]: ./media/automated-data-pipeline-cheat-sheet/machine-learning-automated-data-pipeline-cheat-sheet_v1.1.png
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>Weitere Hilfe zu Machine Learning Studio
 * Eine Übersicht über Microsoft Azure Machine Learning finden Sie unter [Einführung in das maschinelle Lernen in Microsoft Azure](../studio/what-is-machine-learning.md).
-* Informationen zum Bereitstellen eines Webdiensts zur Bewertung finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/publish-a-machine-learning-web-service.md).
+* Informationen zum Bereitstellen eines Webdiensts zur Bewertung finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](../studio/deploy-a-machine-learning-web-service.md).
 * Weitere Erläuterungen zur Nutzung eines Bewertungswebdiensts finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](../studio/consume-web-services.md).
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
