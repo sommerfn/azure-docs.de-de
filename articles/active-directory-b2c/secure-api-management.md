@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c5fb79fc3aa3297068f93b631d11e967c9345f4c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 531f6d86d57be550d0a1147e131d93ae6e298406
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717161"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474750"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 
@@ -35,11 +35,25 @@ Sie benötigen die folgenden Ressourcen, bevor Sie mit den Schritten in diesem A
 
 Wenn Sie eine API in Azure API Management mit Azure AD B2C sichern, benötigen Sie mehrere Werte für die [eingehende Richtlinie](../api-management/api-management-howto-policies.md), die Sie in APIM erstellen. Notieren Sie sich zuerst die Anwendungs-ID einer Anwendung, die Sie zuvor in Ihrem Azure AD B2C-Mandanten registriert haben. Wenn Sie die Anwendung verwenden, die Sie in den Voraussetzungen erstellt haben, verwenden Sie die Anwendungs-ID für *webbapp1*.
 
-1. Navigieren Sie zu Ihrem Azure AD B2C Mandanten im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie unter **Verwalten** die Option **Anwendungen**.
-1. Notieren Sie den Wert unter **ANWENDUNGS-ID** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
+Sie können die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden, um die Anwendungs-ID abzurufen. [Erfahren Sie mehr über die Vorschaubenutzeroberfläche](http://aka.ms/b2cappregintro).
 
-  ![Speicherort der Anwendungs-ID einer B2C-Anwendung im Azure-Portal](media/secure-apim-with-b2c-token/portal-02-app-id.png)
+#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Wählen Sie unter **Verwalten** die Option **Anwendungen**.
+1. Notieren Sie den Wert in der Spalte **ANWENDUNGS-ID** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Wählen Sie **App-Registrierungen (Vorschau)** und dann die Registerkarte **Anwendungen mit Besitzer** aus.
+1. Notieren Sie den Wert in der Spalte **ANWENDUNGS-ID (CLIENT)** für *webapp1* oder eine andere Anwendung, die Sie zuvor erstellt haben.
+
+* * *
 
 ## <a name="get-token-issuer-endpoint"></a>Abrufen des Tokenaussteller-Endpunkts
 

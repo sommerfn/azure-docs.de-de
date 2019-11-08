@@ -1,5 +1,6 @@
 ---
-title: Erstellen einer Identität für die Azure-App im Portal | Microsoft-Dokumentation
+title: Erstellen einer Identität für eine Azure-App im Portal
+titleSuffix: Microsoft identity platform
 description: Beschreibt das Erstellen einer neuen Azure Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: active-directory
 documentationcenter: na
@@ -16,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72324715"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473850"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -50,7 +51,7 @@ Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung ein
 
 Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
 
-1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um z. B. einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Alle Dienste** und **Abonnements** aus.
+1. Wählen Sie im Azure-Portal die Bereichsebene aus, der Sie die Anwendung zuweisen möchten. Um beispielsweise eine Rolle im Abonnementbereich zuzuweisen, suchen Sie nach **Abonnements** und wählen diese Option aus, oder wählen Sie **Abonnements** auf der **Homepage** aus.
 
    ![Beispiel: Zuweisen einer Rolle im Abonnementkontext](./media/howto-create-service-principal-portal/select-subscription.png)
 

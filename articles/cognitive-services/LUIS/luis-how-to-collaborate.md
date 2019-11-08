@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 004da6c84e6226c4de3114d32cde826cd167e1ab
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 15c7c6664b0c17d02f1f4e9120c9509fda21e0f4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844836"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467531"
 ---
 # <a name="add-contributors-to-your-app"></a>Hinzufügen von Mitwirkenden zu Ihrer App
 
 Ein App-Besitzer kann Mitwirkende zu Apps hinzufügen. Diese Projektmitarbeiter können das Modell ändern und die App trainieren und veröffentlichen. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -55,7 +57,7 @@ Eine App hat einen einzelnen Autor, den Besitzer, sie kann aber viele Mitarbeite
 
 1. Wählen Sie auf der Symbolleiste **Projektmitarbeiter hinzufügen** aus.
 
-    [![Hinzufügen von Projektmitarbeitern](./media/luis-how-to-collaborate/add-collaborator.png "Hinzufügen von Projektmitarbeitern")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+    [![Projektmitarbeiter hinzufügen](./media/luis-how-to-collaborate/add-collaborator.png "Mitarbeiter hinzufügen")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
 1. Geben Sie die E-Mail-Adresse ein, die der Projektmitarbeiter für die Anmeldung beim LUIS-Portal verwendet.
 

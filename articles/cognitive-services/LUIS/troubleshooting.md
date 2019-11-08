@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971967"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488697"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -50,7 +50,7 @@ Ja, beim Hinzufügen von weiteren Bezeichnungen für andere Absichten sollten Si
 Informationen hierzu finden Sie im Tutorial zur [Bing-Rechtschreibprüfungs-API v7](luis-tutorial-bing-spellcheck.md). LUIS setzt die Einschränkungen um, die durch die Bing-Rechtschreibprüfungs-API v7 vorgegeben werden.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Wie kann ich eine LUIS-App programmgesteuert bearbeiten?
-Sie können Ihre LUIS-App mit der [Erstellungs-API](https://go.microsoft.com/fwlink/?linkid=2092087) programmgesteuert bearbeiten. Unter [Aufrufen der Erstellungs-API für LUIS-Apps](./luis-quickstart-node-add-utterance.md) und [Build a LUIS app programmatically using Node.js (Programmgesteuertes Erstellen einer LUIS-App mit Node.js)](./luis-tutorial-node-import-utterances-csv.md) finden Sie Beispiele zum Aufrufen der Erstellungs-API. Die Erstellungs-API setzt voraus, dass Sie einen [Erstellungsschlüssel](luis-concept-keys.md#authoring-key) anstelle eines Endpunktschlüssels verwenden. Bei der programmgesteuerte Erstellung sind bis 1.000.000 Aufrufe pro Monat und fünf Transaktionen pro Sekunde möglich. Weitere Informationen zu den mit LUIS verwendeten Schlüsseln finden Sie unter [Verwalten von Schlüsseln](./luis-concept-keys.md).
+Sie können Ihre LUIS-App mit der [Erstellungs-API](https://go.microsoft.com/fwlink/?linkid=2092087) programmgesteuert bearbeiten. Unter [Aufrufen der Erstellungs-API für LUIS-Apps](./luis-quickstart-node-add-utterance.md) und [Build a LUIS app programmatically using Node.js (Programmgesteuertes Erstellen einer LUIS-App mit Node.js)](./luis-tutorial-node-import-utterances-csv.md) finden Sie Beispiele zum Aufrufen der Erstellungs-API. Die Erstellungs-API setzt voraus, dass Sie einen [Erstellungsschlüssel](luis-concept-keys.md#azure-resources-for-luis) anstelle eines Endpunktschlüssels verwenden. Bei der programmgesteuerte Erstellung sind bis 1.000.000 Aufrufe pro Monat und fünf Transaktionen pro Sekunde möglich. Weitere Informationen zu den mit LUIS verwendeten Schlüsseln finden Sie unter [Verwalten von Schlüsseln](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Wo finde ich das Feature für Muster, mit den bisher nach regulären Ausdrücken gesucht werden konnte?
 Das bisherige **Feature für Muster** ist als veraltet gekennzeichnet und wurde durch **[Muster](luis-concept-patterns.md)** ersetzt.
@@ -70,7 +70,7 @@ Wenn Sie eine LUIS-App an ein anderes Azure-Abonnement übertragen möchten, mü
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Eine vordefinierte Entität wird in einer Beispieläußerung anstelle meiner benutzerdefinierten Entität markiert. Wie kann ich dies korrigieren? 
 
-Weitere Informationen finden Sie unter [Problembehandlung vordefinierte Entitäten](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
+Im LUIS-Portal können Sie Text für genau die Entität bezeichnen, die Sie extrahieren möchten. Wenn das LUIS-Portal nicht die richtige Absichtsvorhersage anzeigt, müssen Sie möglicherweise weitere Äußerungen hinzufügen und die Entität innerhalb des Texts bezeichnen oder einen Deskriptor (wie etwa ein Feature) hinzufügen. 
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ich habe versucht, eine App- oder Versionsdatei zu importieren, aber eine Fehlermeldung erhalten. Was ist passiert? 
 

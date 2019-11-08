@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/30/2019
+ms.date: 10/21/2019
 ms.author: aahi
-ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984263"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73488647"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -29,15 +29,75 @@ Der Textanalyseendpunkt `entities` unterstützt sowohl die Erkennung benannter E
 Die Entitätsverknüpfung ist die Möglichkeit, die Identität einer im Text gefundenen Entität zu identifizieren und eindeutig zu machen (beispielsweise die Ermittlung, ob „Mars“ als Planet oder als römischer Kriegsgott verwendet wird). Für diesen Prozess ist das Vorhandensein einer Knowledge Base erforderlich, mit der erkannte Entitäten verknüpft sind. Wikipedia wird als Knowledge Base für den `entities`-Endpunkt der Textanalyse verwendet.
 
 ### <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
-Die Erkennung benannter Entitäten (Named Entity Recognition, NER) ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen zu kategorisieren. Die unterstützten Klassen von Entitäten sind unten aufgeführt.
+Die Erkennung benannter Entitäten (Named Entity Recognition, NER) ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen oder Typen zu kategorisieren. 
 
-In [Version 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) der Textanalyse sind sowohl die Entitätsverknüpfung als auch die Erkennung benannter Entitäten für mehrere Sprachen verfügbar. Weitere Information finden Sie im Artikel zu den [unterstützten Sprachen](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition).
+## <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 – öffentliche Vorschau
 
-### <a name="language-support"></a>Sprachunterstützung
+Die [nächste Version der Named Entity Recognition](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) steht jetzt als öffentliche Vorschauversion zur Verfügung. Sie enthält Updates sowohl für die Entitätsverknüpfung als auch für die Erkennung benannter Entitäten. 
 
-Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzung einer entsprechenden Knowledge Base in jeder Sprache erforderlich. Für die Entitätsverknüpfung in der Textanalyse bedeutet dies, dass jede Sprache, die vom `entities`-Endpunkt unterstützt wird, über einen Link zum entsprechenden Wikipedia-Corpus dieser Sprache verfügt. Da die Größe der Corpora zwischen Sprachen variiert, ist zu erwarten, dass auch der Abruf der Funktionalität für die Entitätsverknüpfung variiert.
+:::row:::
+    :::column span="":::
+        **Feature**
+    :::column-end:::
+    ::: column span="":::
+        **Beschreibung** 
+    :::column-end:::
+:::row-end:::
+<!-- expanded types and subtypes row-->
+:::row:::
+    :::column span="":::
+        Erweiterte Entitätstypen und Untertypen
+    :::column-end:::
+    :::column span="":::
+     Erweiterte Klassifizierung und Erkennung für mehrere benannte Entitätstypen.
+    :::column-end:::
+:::row-end:::
+<!-- separate endpoints row-->
+:::row:::
+    :::column span="":::
+        Separate Anforderungsendpunkte 
+    :::column-end:::
+    :::column span="":::
+        Separate Endpunkte zum Senden von Entitätsverknüpfungs- und NER-Anforderungen.
+    :::column-end:::
+:::row-end:::
+<!-- model-version row -->
+:::row:::
+    :::column span="":::
+        `model-version`-Parameter
+    :::column-end:::
+    :::column span="":::
+        Ein optionaler Parameter zum Auswählen einer Version des Textanalysemodells. Zurzeit steht nur das Standardmodell zur Verwendung zur Verfügung.
+    :::column-end:::
+:::row-end:::
 
-## <a name="supported-types-for-named-entity-recognition"></a>Unterstützte Typen für die Erkennung benannter Entitäten
+### <a name="entity-types"></a>Entitätstypen
+
+Named Entity Recognition v3 bietet erweiterte Erkennung über mehrere Typen hinweg. Aktuell kann NER v3 die folgenden Kategorien von Entitäten erkennen. Eine ausführliche Liste der unterstützten Entitäten und Sprachen finden Sie im Artikel [Benannte Entitätstypen](../named-entity-types.md).
+
+* Allgemein
+* Personenbezogene Informationen 
+
+### <a name="request-endpoints"></a>Anforderungsendpunkte
+
+Named Entity Recognition v3 verwendet separate Endpunkte für NER-Anforderungen und Entitätsverknüpfungsanforderungen. Verwenden Sie basierend auf Ihrer Anforderung ein URL-Format unten:
+
+NER
+* Allgemeine Entitäten: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Entitäten für personenbezogene Informationen: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Entitätsverknüpfung
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Versionsverwaltung der Modelle
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+## <a name="supported-types-for-named-entity-recognition-v2"></a>Unterstützte Typen für Named Entity Recognition v2
+
+> [!NOTE]
+> Die folgenden Entitäten werden von Named Entity Recognition (NER) Version 2 unterstützt. [NER V3](#named-entity-recognition-v3-public-preview) befindet sich in der öffentlichen Vorschauphase und erweitert die Anzahl und Tiefe der in Text erkannten Entitäten erheblich.   
 
 | type  | SubType | Beispiel |
 |:-----------   |:------------- |:---------|
@@ -61,9 +121,11 @@ Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzun
 | URL           | N/V\*         | "https:\//www.bing.com"    |
 | Email         | N/V\*         | "support@contoso.com" |
 
-\* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.  Alle aufgelisteten unterstützten Entitätstypen, die nur für Englisch, Chinesisch (vereinfacht), Französisch, Deutsch und Spanisch verfügbar sind.
+\* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.  Alle aufgelisteten unterstützten Entitätstypen sind nur für Englisch, Chinesisch (vereinfacht), Französisch, Deutsch und Spanisch verfügbar.
 
+### <a name="language-support"></a>Sprachunterstützung
 
+Zum Verwenden der Entitätsverknüpfung in verschiedenen Sprachen ist die Nutzung einer entsprechenden Knowledge Base in jeder Sprache erforderlich. Für die Entitätsverknüpfung in der Textanalyse bedeutet dies, dass jede Sprache, die vom `entities`-Endpunkt unterstützt wird, über einen Link zum entsprechenden Wikipedia-Corpus dieser Sprache verfügt. Da die Größe der Corpora zwischen Sprachen variiert, ist zu erwarten, dass auch der Abruf der Funktionalität für die Entitätsverknüpfung variiert. Weitere Information finden Sie im Artikel zu den [unterstützten Sprachen](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition).
 
 ## <a name="preparation"></a>Vorbereitung
 

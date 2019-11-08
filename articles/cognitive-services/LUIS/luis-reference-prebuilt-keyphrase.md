@@ -11,117 +11,90 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e55c0453c117c51e5a8e4986631516d3e61ed10b
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 51d1bd515651824545d486207ad4a74476aa7092
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677595"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491269"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>Vordefinierte KeyPhrase-Entität für eine LUIS-App
 Die keyPhrase-Entität extrahiert eine Vielzahl von Schlüsselbegriffen aus einer Äußerung. Sie müssen der App keine Beispieläußerungen hinzufügen, die „keyPhrase“ enthalten. Die keyPhrase-Entität wird für [viele Kulturen](luis-language-support.md#languages-supported) im Rahmen der Features der [Textanalyse](../text-analytics/overview.md) unterstützt. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Auflösung der vorgefertigten keyPhrase-Entität
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
-Im folgenden Beispiel wird die Auflösung der Entität **builtin.keyPhrase** veranschaulicht.
+`where is the educational requirements form for the development and engineering group`
 
-```json
-{
-  "query": "where is the educational requirements form for the development and engineering group",
-  "topScoringIntent": {
-    "intent": "GetJobInformation",
-    "score": 0.182757929
-  },
-  "entities": [
-    {
-      "entity": "development",
-      "type": "builtin.keyPhrase",
-      "startIndex": 51,
-      "endIndex": 61
-    },
-    {
-      "entity": "educational requirements",
-      "type": "builtin.keyPhrase",
-      "startIndex": 13,
-      "endIndex": 36
-    }
-  ]
-}
-```
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
 ```json
-{
-    "query": "where is the educational requirements form for the development and engineering group",
-    "prediction": {
-        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
-        "topIntent": "GetJobInformation",
-        "intents": {
-            "GetJobInformation": {
-                "score": 0.157861546
-            }
-        },
-        "entities": {
-            "keyPhrase": [
-                "educational requirements",
-                "development"
-            ]
-        }
-    }
+"entities": {
+    "keyPhrase": [
+        "educational requirements",
+        "development"
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
-{
-    "query": "where is the educational requirements form for the development and engineering group",
-    "prediction": {
-        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
-        "topIntent": "GetJobInformation",
-        "intents": {
-            "GetJobInformation": {
-                "score": 0.157861546
-            }
-        },
-        "entities": {
-            "keyPhrase": [
-                "educational requirements",
-                "development"
-            ],
-            "$instance": {
-                "keyPhrase": [
-                    {
-                        "type": "builtin.keyPhrase",
-                        "text": "educational requirements",
-                        "startIndex": 13,
-                        "length": 24,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    },
-                    {
-                        "type": "builtin.keyPhrase",
-                        "text": "development",
-                        "startIndex": 51,
-                        "length": 11,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    }
+"entities": {
+    "keyPhrase": [
+        "educational requirements",
+        "development"
+    ],
+    "$instance": {
+        "keyPhrase": [
+            {
+                "type": "builtin.keyPhrase",
+                "text": "educational requirements",
+                "startIndex": 13,
+                "length": 24,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.keyPhrase",
+                "text": "development",
+                "startIndex": 51,
+                "length": 11,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
+```
+#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
+
+Im folgenden Beispiel wird die Auflösung der Entität **builtin.keyPhrase** veranschaulicht.
+
+```json
+"entities": [
+    {
+        "entity": "development",
+        "type": "builtin.keyPhrase",
+        "startIndex": 51,
+        "endIndex": 61
+    },
+    {
+        "entity": "educational requirements",
+        "type": "builtin.keyPhrase",
+        "startIndex": 13,
+        "endIndex": 36
+    }
+]
 ```
 * * * 
 

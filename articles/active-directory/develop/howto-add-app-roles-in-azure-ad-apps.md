@@ -1,5 +1,6 @@
 ---
-title: Hinzufügen von App-Rollen in Ihrer bei Azure Active Directory registrierten Anwendung und Empfangen der Rollen im Token
+title: Hinzufügen von App-Rollen in Ihrer in Azure Active Directory registrierten App und Empfangen der Rollen im Token
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie App-Rollen in einer bei Azure Active Directory registrierten Anwendung hinzufügen, diesen Rollen Benutzer und Gruppen zuweisen und die Rollen im `roles`-Anspruch im Token empfangen.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8c0e761c7a03efda470aba83bfa02a30b22a21
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754316"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473773"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -42,9 +43,9 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 1. Wählen Sie auf der oberen Leiste Ihr Konto und dann **Verzeichnis wechseln** aus.
 1. Wählen Sie im geöffneten Bereich **Verzeichnis + Abonnement** in der Liste **Favoriten** oder **Alle Verzeichnisse** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 1. Wählen Sie im linken Navigationsbereich **Alle Dienste** und dann **Azure Active Directory** aus.
-1. Wählen Sie im Bereich **Azure Active Directory** die Option **App-Registrierungen** aus, um eine Liste aller Anwendungen anzuzeigen.
+1. Wählen Sie im Bereich **Azure Active Directory** die Option **App-Registrierungen (Legacy)** aus, um eine Liste aller Anwendungen anzuzeigen.
 
-     Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **App-Registrierungen** die verschiedenen Filter verwenden, um die Liste einzuschränken. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
+     Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **App-Registrierungen (Legacy)** die verschiedenen Filter verwenden, um die Liste einzuschränken. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
 
 1. Wählen Sie die Anwendung aus, in der Sie App-Rollen definieren möchten.
 1. Wählen Sie auf dem Blatt für Ihre Anwendung die Option **Manifest** aus.

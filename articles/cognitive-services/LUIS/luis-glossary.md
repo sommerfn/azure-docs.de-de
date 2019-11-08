@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 0bf7fe649a5a604c610307b9be0717dce01cb238
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 22e8fa8fb6999828076ea5f8f34b1f601b920013
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638297"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499570"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
@@ -39,16 +39,20 @@ Batchtests ermöglichen die Überprüfung des Modells einer aktuellen LUIS-App m
 Weitere Informationen: 
 * [Konzepte](luis-concept-batch-test.md)
 * [Anleitung](luis-how-to-batch-test.md)
-* [Tutorial]luis-tutorial-batch-testing.md)
+* [Tutorial](luis-tutorial-batch-testing.md)
 
 
 ## <a name="collaborator"></a>Projektmitarbeiter
 
-Ein Projektmitarbeiter ist nicht der [Besitzer](#owner) der App, er verfügt aber über dieselben Berechtigungen zum Hinzufügen, Bearbeiten und Löschen der Absichten, Entitäten und Äußerungen.
+Ein Mitarbeiter/Mitwirkender ist nicht der [Besitzer](#owner) der App, er verfügt aber über dieselben Berechtigungen zum Hinzufügen, Bearbeiten und Löschen der Absichten, Entitäten und Äußerungen.
 
-## <a name="currently-editing"></a>Derzeit bearbeitet
+## <a name="contributor"></a>Mitwirkender
 
-Identisch mit der [aktiven Version](#active-version).
+Ein Mitwirkender ist das gleiche wie ein [Mitarbeiter](#collaborator).
+
+## <a name="descriptor"></a>Deskriptor
+
+Ein Deskriptor ist ein [Feature](#features), das zur Trainingszeit auf ein Modell angewendet wird, einschließlich [Ausdruckslisten](#phrase-list) und [Entitäten](#entity). 
 
 ## <a name="domain"></a>Domäne
 
@@ -57,18 +61,6 @@ Im LUIS-Kontext ist eine **Domäne** ein Themenbereich. Die Domäne bezieht sich
 ## <a name="endpoint"></a>Endpunkt
 
 In der [LUIS-Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356)-URL übermitteln Sie LUIS Abfragen, nachdem die [LUIS-App](#luis-app) erstellt und veröffentlicht wurde. Die Endpunkt-URL enthält die Region der veröffentlichten App und die App-ID. Sie finden den Endpunkt auf der Seite **[Schlüssel und Endpunkte](luis-how-to-azure-subscription.md)** Ihrer App, oder Sie können die Endpunkt-URL bei der [Get App Info](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37)-API abrufen.
-
-Ein Beispiel für einen Endpunkt:
-
-`https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscriptionID>&verbose=true&timezoneOffset=0&q=<utterance>`
-
-|QueryString-Parameter|description|
-|--|--|
-|region| [veröffentlichte Region](luis-reference-regions.md#publishing-regions) |
-|appID | LUIS-App-ID |
-|subscriptionID | LUIS-Endpunktschlüssel (Abonnementschlüssel), im Azure-Portal erstellt |
-|q | Äußerung |
-|timezoneOffset| minutes|
 
 ## <a name="entity"></a>Entität
 
@@ -100,7 +92,7 @@ Beim Bezeichnen (oder Markieren) wird ein Wort oder Ausdruck in der [Äußerung]
 
 ## <a name="luis-app"></a>LUIS-App
 
-Eine LUIS-App ist ein trainiertes Datenmodell für die Verarbeitung natürlicher Sprache, einschließlich [Absichten](#intent), [Entitäten](#entity) und bezeichneten [Äußerungen](#utterance).
+Eine LUIS-App ist eine Sammlung von Sprachmodellen für die Verarbeitung natürlicher Sprache, einschließlich [Absichten](#intent), [Entitäten](#entity) und bezeichneten [Äußerungen](#utterance).
 
 ## <a name="owner"></a>Besitzer
 
@@ -111,7 +103,7 @@ Das frühere Muster-Feature wurde durch [Muster](luis-concept-patterns.md) erset
 
 ## <a name="phrase-list"></a>Ausdrucksliste
 
-Eine [Ausdrucksliste](luis-concept-feature.md#what-is-a-phrase-list-feature) enthält eine Gruppe von Werten (Wörter oder Ausdrücke), die derselben Klasse angehören und auf ähnliche Weise behandelt werden sollen (z.B. Städte- oder Produktnamen). Die Elemente einer austauschbaren Liste werden als Synonyme behandelt.
+Eine [Ausdrucksliste](luis-concept-feature.md) enthält eine Gruppe von Werten (Wörter oder Ausdrücke), die derselben Klasse angehören und auf ähnliche Weise behandelt werden sollen (z.B. Städte- oder Produktnamen). Die Elemente einer austauschbaren Liste werden als Synonyme behandelt.
 
 ## <a name="prebuilt-domains"></a>Vordefinierte Domäne
 
@@ -130,7 +122,7 @@ Umbenannt in [Erstellungsschlüssel](#authoring-key).
 
 ## <a name="publish"></a>Veröffentlichen
 
-Veröffentlichen bedeutet, dass die [aktive Version](#active-version) einer LUIS-App auf einem [Endpunkt](#endpoint) für Staging oder Produktion verfügbar gemacht wird.  
+Veröffentlichen bedeutet, dass die aktive Version einer LUIS-App auf einem [Endpunkt](#endpoint) für Staging oder Produktion verfügbar gemacht wird.  
 
 ## <a name="quota"></a>Kontingent
 
@@ -155,11 +147,15 @@ Aktivieren Sie die Bing-Rechtschreibprüfung, damit falsch geschriebene Wörter 
 
 ## <a name="starter-key"></a>Startschlüssel
 
-Identisch mit [Programmierschlüssel](#programmatic-key); umbenannt in Erstellungsschlüssel.
+Ein öffentlicher Schlüssel für die ersten Gehversuche in LUIS.
+
+## <a name="structure"></a>Struktur
+
+Fügen Sie einer maschinell gelernten Entität eine Struktur hinzu, um Unterkomponenten mit Deskriptoren (Features) und Einschränkungen (regulären Ausdrücken oder Listenentitäten) bereitzustellen.
 
 ## <a name="subscription-key"></a>Abonnementschlüssel
 
-Der Abonnementschlüssel ist der **Endpunktschlüssel**, der dem LUIS-Dienst zugewiesen ist, [den Sie in Azure erstellt haben](luis-how-to-azure-subscription.md). Dieser Schlüssel ist nicht der [Erstellungsschlüssel](#programmatic-key). Wenn Sie einen Endpunktschlüssel besitzen, sollte dieser anstelle des Erstellungsschlüssels für alle Endpunktanforderungen verwendet werden. Sie finden Ihren aktuellen Endpunktschlüssel in der Endpunkt-URL im unteren Bereich der Seite [**Schlüssel und Endpunkte**](luis-how-to-azure-subscription.md) auf der [LUIS](luis-reference-regions.md)-Website. Es ist der Wert des Name-Wert-Paars **subscription-key**.
+Der Abonnementschlüssel ist der dem LUIS-Dienst zugewiesene **Vorhersageendpunktschlüssel**, [den Sie in Azure erstellt haben](luis-how-to-azure-subscription.md). Dieser Schlüssel ist nicht der [Erstellungsschlüssel](#programmatic-key). Wenn Sie einen Endpunktschlüssel besitzen, sollte dieser anstelle des Erstellungsschlüssels für alle Endpunktanforderungen verwendet werden. Sie finden Ihren aktuellen Endpunktschlüssel in der Endpunkt-URL im unteren Bereich der Seite [**Schlüssel und Endpunkte**](luis-how-to-azure-subscription.md) auf der [LUIS](luis-reference-regions.md)-Website. Es ist der Wert des Name-Wert-Paars **subscription-key**.
 
 ## <a name="test"></a>Testen
 
@@ -176,7 +172,7 @@ Ein Token ist die kleinste Einheit, die in einer Entität bezeichnet werden kann
 
 ## <a name="train"></a>Trainieren
 
-Unter Training versteht man, LUIS alle Änderungen an der [aktiven Version](#active-version) seit dem letzten Training beizubringen.
+Unter Training versteht man, LUIS alle Änderungen an der aktiven Version seit dem letzten Training beizubringen.
 
 ## <a name="true-negative"></a>Richtig negatives Ergebnis (TN)
 

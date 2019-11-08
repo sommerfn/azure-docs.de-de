@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: bf87b1709c355faf6f06ff2d23b2c819f88750cd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802108"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475196"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -89,8 +89,7 @@ Zum Herunterladen der Liste der Aktivitätsereignisse in einer CSV-Datei wählen
 
 Um den skript- oder anwendungsbasierten Zugriff auf die Azure AD-Berichterstellungs-API zu ermöglichen, benötigen Sie eine Azure Active Directory-Anwendung, die in Ihrem Azure AD B2C-Mandanten mit den folgenden API-Berechtigungen registriert ist:
 
-* Microsoft Graph
-  * Anwendung: Alle Überwachungsprotokolldaten lesen
+* Microsoft Graph > Anwendungsberechtigungen > AuditLog.Read.All
 
 Sie können diese Berechtigungen für eine vorhandene Azure Active Directory-Anwendungsregistrierung in Ihrem B2C-Mandanten aktivieren oder eine neue Anwendung erstellen, die speziell für die Verwendung mit der Überwachungsprotokollautomatisierung verwendet wird.
 
@@ -102,6 +101,8 @@ Führen Sie die folgenden Schritte zum Registrieren einer Anwendung aus, erteile
 
 ### <a name="assign-api-access-permissions"></a>Zuweisen von API-Zugriffsberechtigungen
 
+#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+
 1. Wählen Sie auf der Übersichtsseite **Registrierte App** die Option **Einstellungen** aus.
 1. Wählen Sie unter **API-ZUGRIFF** die Option **Erforderliche Berechtigungen** aus.
 1. Wählen Sie **Hinzufügen** aus, und wählen Sie dann **Hiermit wählen Sie eine API aus** aus.
@@ -109,6 +110,22 @@ Führen Sie die folgenden Schritte zum Registrieren einer Anwendung aus, erteile
 1. Wählen Sie unter **ANWENDUNGSBERECHTIGUNGEN** die Option **Alle Überwachungsprotokolldaten lesen** aus.
 1. Wählen Sie die Schaltfläche **Auswählen** aus, und wählen Sie dann **Fertig** aus.
 1. Wählen Sie **Berechtigungen erteilen** und dann **Ja** aus.
+
+#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+
+1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.
+1. Wählen Sie unter **Konfigurierte Berechtigungen** die Option **Berechtigung hinzufügen** aus.
+1. Wählen Sie die Registerkarte **Microsoft-APIs** aus.
+1. Wählen Sie **Microsoft Graph**.
+1. Wählen Sie **Anwendungsberechtigungen**.
+1. Erweitern Sie **AuditLog**, und aktivieren Sie dann das Kontrollkästchen **AuditLog.Read.All**.
+1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie gemäß der Anweisung einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
+1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
+1. Wählen Sie Ihr aktuell angemeldetes Konto aus, wenn ihm die Rolle *Globaler Administrator* zugewiesen wurde, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem die Rolle *Globaler Administrator* zugewiesen wurde.
+1. Wählen Sie **Akzeptieren** aus.
+1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für die Berechtigung *AuditLog.Read.All* unter **STATUS** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
+
+* * *
 
 ### <a name="create-client-secret"></a>Erstellen eines geheimen Clientschlüssels
 
@@ -128,15 +145,15 @@ https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByServi
 
 Im folgenden PowerShell-Skript sehen Sie ein Beispiel für das Abfragen der Azure AD-Berichterstellungs-API. Nach dem Abfragen der API werden die protokollierten Ereignisse an die Standardausgabe ausgegeben, und dann wird die JSON-Ausgabe in eine Datei geschrieben.
 
-Sie können dieses Skript in der [Azure Cloud Shell](../cloud-shell/overview.md) ausprobieren. Sie müssen es dann mit Ihrer Anwendungs-ID, dem Schlüssel und dem Namen Ihres Azure AD B2C-Mandanten aktualisieren.
+Sie können dieses Skript in der [Azure Cloud Shell](../cloud-shell/overview.md) ausprobieren. Sie müssen es dann mit Ihrer Anwendungs-ID, dem Clientgeheimnis und dem Namen Ihres Azure AD B2C-Mandanten aktualisieren.
 
 ```powershell
 # This script requires the registration of a Web Application in Azure Active Directory:
 # https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's Client ID, a GUID (registered by Global Admin)
-$ClientSecret   = "your-client-application-secret-here"   # Insert your application's Client secret/key
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
 $tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 0c16a60b0ddcde733cfbc7b9c90e07b697526015
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f2ea08694419caaaf54e4fed45c7c1589be2473d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677387"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499518"
 ---
 # <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Vordefinierte Temperature-Entität für eine LUIS-App
 Die Temperaturentität extrahiert verschiedene Temperaturtypen. Da diese Entität bereits trainiert wurde, müssen Sie der Anwendung keine Beispieläußerungen mit Temperaturen hinzufügen. Die Temperaturentität wird in [vielen Kulturen](luis-reference-prebuilt-entities.md) unterstützt. 
@@ -26,102 +26,71 @@ Die Entität „temperature“ wird über das GitHub-Repository [Recognizers-tex
 
 ## <a name="resolution-for-prebuilt-temperature-entity"></a>Auflösung der vorgefertigten Temperaturentität
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+Die folgenden Entitätsobjekte werden für die Abfrage zurückgegeben:
 
-Im folgenden Beispiel wird die Auflösung der Entität **builtin.temperature** veranschaulicht.
+`set the temperature to 30 degrees`
 
-```json
-{
-  "query": "set the temperature to 30 degrees",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.85310787
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.85310787
-    }
-  ],
-  "entities": [
-    {
-      "entity": "30 degrees",
-      "type": "builtin.temperature",
-      "startIndex": 23,
-      "endIndex": 32,
-      "resolution": {
-        "unit": "Degree",
-        "value": "30"
-      }
-    }
-  ]
-}
-```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-responsetabv3"></a>[V3-Antwort](#tab/V3)
 
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `false` festgelegt:
 
 ```json
-{
-    "query": "set the temperature to 30 degrees",
-    "prediction": {
-        "normalizedQuery": "set the temperature to 30 degrees",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.656305432
-            }
-        },
-        "entities": {
-            "temperature": [
-                {
-                    "number": 30,
-                    "unit": "Degree"
-                }
-            ]
+"entities": {
+    "temperature": [
+        {
+            "number": 30,
+            "units": "Degree"
         }
-    }
+    ]
 }
 ```
-
+#### <a name="v3-verbose-responsetabv3-verbose"></a>[Ausführliche V3-Antwort](#tab/V3-verbose)
 Beim folgenden JSON-Code wurde der `verbose`-Parameter auf `true` festgelegt:
 
 ```json
-{
-    "query": "set the temperature to 30 degrees",
-    "prediction": {
-        "normalizedQuery": "set the temperature to 30 degrees",
-        "topIntent": "None",
-        "intents": {
-            "None": {
-                "score": 0.656305432
-            }
-        },
-        "entities": {
-            "temperature": [
-                {
-                    "number": 30,
-                    "unit": "Degree"
-                }
-            ],
-            "$instance": {
-                "temperature": [
-                    {
-                        "type": "builtin.temperature",
-                        "text": "30 degrees",
-                        "startIndex": 23,
-                        "length": 10,
-                        "modelTypeId": 2,
-                        "modelType": "Prebuilt Entity Extractor"
-                    }
+"entities": {
+    "temperature": [
+        {
+            "number": 30,
+            "units": "Degree"
+        }
+    ],
+    "$instance": {
+        "temperature": [
+            {
+                "type": "builtin.temperature",
+                "text": "30 degrees",
+                "startIndex": 23,
+                "length": 10,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
                 ]
             }
-        }
+        ]
     }
 }
 ```
+#### <a name="v2-responsetabv2"></a>[V2-Antwort](#tab/V2)
 
+Im folgenden Beispiel wird die Auflösung der Entität **builtin.temperature** veranschaulicht.
+
+```json
+"entities": [
+    {
+        "entity": "30 degrees",
+        "type": "builtin.temperature",
+        "startIndex": 23,
+        "endIndex": 32,
+        "resolution": {
+        "unit": "Degree",
+        "value": "30"
+        }
+    }
+]
+```
 * * * 
 
 ## <a name="next-steps"></a>Nächste Schritte

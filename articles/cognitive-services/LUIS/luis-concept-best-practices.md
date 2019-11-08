@@ -9,41 +9,42 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 64d67edaf5affbc908fba7b6c261096589bc84d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382876"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487615"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App: 
 
-* Erstellen des Sprachmodells
-* Hinzufügen einiger Beispieläußerungen für das Training (10–15 pro Absicht)
-* Veröffentlichen 
+* Erstellen Sie Sprachmodelle (Absichten und Entitäten)
+* Fügen Sie einige Beispieläußerungen zum Trainieren hinzu (15–30 pro Absicht)
+* Veröffentlichen Sie am Endpunkt
 * Testen am Endpunkt 
-* Hinzufügen von Features
 
-Nachdem die App [veröffentlicht](luis-how-to-publish-app.md) wurde, können Sie über den Erstellungszyklus Features hinzufügen, die Veröffentlichung durchführen und Tests am Endpunkt durchführen. Beginnen Sie den nächsten Erstellungszyklus nicht durch das Hinzufügen weiterer Beispieläußerungen. Damit lernt LUIS Ihr Modell nicht durch reale Benutzeräußerungen kennen. 
+Nachdem die App [veröffentlicht](luis-how-to-publish-app.md) wurde, folgen Sie dem Entwicklungslebenszyklus, um Features hinzuzufügen, zu veröffentlichen und am Endpunkt zu testen. Beginnen Sie den nächsten Erstellungszyklus nicht, indem Sie weitere Beispieläußerungen hinzufügen, weil LUIS bei diesem Vorgehen Ihr Modell nicht an echten Benutzeräußerungen lernen lässt. 
 
-Damit LUIS effizient lernen kann, erweitern Sie die Äußerungen erst, wenn der aktuelle Satz von Beispiel- und Endpunktäußerungen angemessene Zuverlässigkeits- und Vorhersagebewertungen aufweist. Verbessern Sie die Bewertungen durch [aktives Lernen](luis-concept-review-endpoint-utterances.md), [Muster](luis-concept-patterns.md) und [Ausdruckslisten](luis-concept-feature.md). 
+Erweitern Sie die Äußerungen erst, wenn der aktuelle Satz von Beispiel- und Endpunktäußerungen angemessene Zuverlässigkeits- und Vorhersagebewertungen ergibt. Verbessern Sie die Punktestände mithilfe von [aktivem Lernen](luis-concept-review-endpoint-utterances.md). 
+
+
+
 
 ## <a name="do-and-dont"></a>Empfehlungen
 Die folgende Liste enthält bewährte Methoden für LUIS-Apps:
 
 |Empfohlene Vorgehensweise|Nicht empfohlene Vorgehensweise|
 |--|--|
-|[Definieren unterschiedlicher Absichten](#do-define-distinct-intents) |[Hinzufügen vieler Beispieläußerungen zu Absichten](#dont-add-many-example-utterances-to-intents) |
+|[Definieren unterschiedlicher Absichten](#do-define-distinct-intents)<br>[Hinzufügen von Deskriptoren zu Absichten](#do-add-descriptors-to-intents) |[Hinzufügen vieler Beispieläußerungen zu Absichten](#dont-add-many-example-utterances-to-intents)<br>[Verwenden weniger oder einfacher Entitäten](#dont-use-few-or-simple-entities) |
 |[Anstreben einer Balance zwischen zu allgemeinen und zu spezifischen Absichten](#do-find-sweet-spot-for-intents)|[Verwenden von LUIS als Trainingsplattform](#dont-use-luis-as-a-training-platform)|
-|[Iteratives Erstellen der App](#do-build-the-app-iteratively)|[Hinzufügen sehr vieler Beispieläußerungen im gleichen Format und Ignorieren anderer Formate](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[Hinzufügen von Ausdruckslisten und Mustern in späteren Iterationen](#do-add-phrase-lists-and-patterns-in-later-iterations)|[Kombinieren der Definition von Absichten und Entitäten](#dont-mix-the-definition-of-intents-and-entities)|
-|[Verwenden Sie für alle Absichten die gleiche Menge an Äußerungen](#balance-your-utterances-across-all-intents), mit Ausnahme der Absicht „None“.<br>[Hinzufügen von Beispieläußerungen zur Absicht „None“](#do-add-example-utterances-to-none-intent)|[Erstellen von Ausdruckslisten mit allen möglichen Werten](#dont-create-phrase-lists-with-all-the-possible-values)|
+|[Iteratives Aufbauen der App mit Versionen](#do-build-your-app-iteratively-with-versions)<br>[Erstellen von Entitäten zur Modellaufschlüsselung](#do-build-for-model-decomposition)|[Hinzufügen sehr vieler Beispieläußerungen im gleichen Format und Ignorieren anderer Formate](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[Hinzufügen von Mustern in späteren Iterationen](#do-add-patterns-in-later-iterations)|[Kombinieren der Definition von Absichten und Entitäten](#dont-mix-the-definition-of-intents-and-entities)|
+|[Verwenden Sie für alle Absichten die gleiche Menge an Äußerungen](#balance-your-utterances-across-all-intents), mit Ausnahme der Absicht „None“.<br>[Hinzufügen von Beispieläußerungen zur Absicht „None“](#do-add-example-utterances-to-none-intent)|[Erstellen von Deskriptoren mit allen möglichen Werten](#dont-create-descriptors-with-all-the-possible-values)|
 |[Verwenden des Vorschlagfeatures für das aktive Lernen](#do-leverage-the-suggest-feature-for-active-learning)|[Hinzufügen von zu vielen Mustern](#dont-add-many-patterns)|
-|[Überwachen der Leistung Ihrer App](#do-monitor-the-performance-of-your-app)|[Trainieren und Veröffentlichen jeder einzelnen hinzugefügten Beispieläußerung](#dont-train-and-publish-with-every-single-example-utterance)|
-|[Verwenden von Versionen für jede App-Iteration](#do-use-versions-for-each-app-iteration)||
+|[Überwachen der Leistung Ihrer App mit Batchtests](#do-monitor-the-performance-of-your-app)|[Trainieren und Veröffentlichen jeder einzelnen hinzugefügten Beispieläußerung](#dont-train-and-publish-with-every-single-example-utterance)|
 
 ## <a name="do-define-distinct-intents"></a>Definieren Sie unterschiedliche Absichten
 Stellen Sie sicher, dass sich das Vokabular der einzelnen Absichten nicht mit dem anderer Absichten überschneidet. Wenn Sie z.B. eine App planen, die Reisebuchungen wie Flüge oder Hotels verarbeiten soll, können Sie diese Themenbereiche als separate Absichten oder als dieselbe Absicht mit separaten Entitäten für bestimmte Daten innerhalb der Äußerung planen.
@@ -57,57 +58,78 @@ Erwägen Sie die folgenden Beispieläußerungen:
 |Book a flight|
 |Book a hotel|
 
-„Book a flight“ und „Book a hotel“ verwenden das gleiche Vokabular „Book a “. Das Format ist das gleiche. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
+`Book a flight` und `Book a hotel` verwenden dasselbe Vokabular in Form von `book a `. Das Format ist das gleiche. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter `flight` und `hotel` in Entitäten. 
 
-Weitere Informationen finden Sie unter:
-* Konzept: [Konzepte zu Absichten in Ihrer LUIS-App](luis-concept-intent.md)
-* Tutorial: [Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten](luis-quickstart-intents-only.md)
-* Gewusst wie: [Hinzufügen von Absichten, um die Absicht von Benutzeräußerungen zu bestimmen](luis-how-to-add-intents.md)
+## <a name="do-add-descriptors-to-intents"></a>Fügen Sie Absichten Deskriptoren hinzu
 
+Deskriptoren helfen, Features für eine Absicht zu beschreiben. Bei einem Deskriptor kann es sich um eine Ausdrucksliste aus Wörtern handeln, die für die betreffende Absicht wichtig sind, oder um eine Entität, die für die Absicht wichtig ist. 
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Streben Sie eine Balance zwischen Absichten an
 Verwenden Sie die Vorhersagedaten von LUIS, um zu bestimmen, ob die Absichten überlappen. Überlappende Absichten verwirren LUIS. Im Ergebnis ist die Absicht mit der höchsten Bewertung zu nah an einer anderen Absicht. Da LUIS nicht bei jedem Training genau denselben Pfad durch die Daten anwendet, kann eine überlappende Absicht beim Training den ersten oder zweiten Platz erreichen. Damit eine solche Überlappung nicht eintritt, sollten Sie das Ergebnis der Äußerung für jede Absicht weiter voneinander trennen. Bei einer guten Unterscheidung der Absichten sollte das Ergebnis jedes Mal die erwartete bestbewertete Absicht sein. 
  
-## <a name="do-build-the-app-iteratively"></a>Erstellen Sie die App iterativ
-Behalten Sie einen separaten Satz von Äußerungen bei, der nicht für [Beispieläußerungen](luis-concept-utterance.md) oder Endpunktäußerungen verwendet wird. Optimieren Sie die App immer weiter mit Ihrem Testsatz. Passen Sie den Testsatz an die tatsächlichen Benutzeräußerungen an. Verwenden Sie diesen Testsatz, um die einzelnen Iterationen oder Versionen der App zu bewerten. 
+<a name="#do-build-the-app-iteratively"></a>
 
-Entwickler sollten über drei Datensätze verfügen. Der erste enthält die Beispieläußerungen zum Erstellen des Modells. Der zweite dient zum Testen des Modells am Endpunkt. Der dritte enthält die blinden Testdaten für das [Testen in Batches](luis-how-to-batch-test.md). Der letzte Datensatz wird nicht zum Trainieren der Anwendung verwendet und auch nicht an den Endpunkt gesendet.  
+## <a name="do-build-your-app-iteratively-with-versions"></a>Bauen Sie Ihre App iterativ mit Versionen auf
 
-Weitere Informationen finden Sie unter:
-* Konzept: [Erstellungszyklus für Ihre LUIS-App](luis-concept-app-iteration.md)
+Jeder Erstellungszyklus muss innerhalb einer neuen [Version](luis-concept-version.md) erfolgen und aus einer vorhandenen Version geklont sein. 
 
-## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Fügen Sie Ausdruckslisten und Muster in späteren Iterationen hinzu
+## <a name="do-build-for-model-decomposition"></a>Erstellen Sie mit dem Ziel der Modellaufschlüsselung
 
-Eine bewährte Methode besteht darin, diese Methoden nicht anzuwenden, bevor Ihre App getestet wurde. Sie sollten verstehen, wie sich die App verhält, bevor Sie [Begriffslisten](luis-concept-feature.md) und [Muster](luis-concept-patterns.md) hinzufügen, da diese Funktionen stärker gewichtet werden als Beispieläußerungen und die Zuverlässigkeit verzerren. 
+Die Modellaufschlüsselung folgt dem typischen Prozess von:
 
-Nachdem Sie das Verhalten Ihrer App ohne diese kennen, fügen Sie Ihrer App nach Bedarf diese Funktionen hinzu. Sie müssen diese Funktionen nicht bei jedem [Durchlauf](luis-concept-app-iteration.md) hinzufügen oder bei jeder Version ändern. 
+* Erstellen einer **Absicht** basierend auf den Benutzerabsichten der Client-App
+* Hinzufügen von 15–30 Beispieläußerungen, die auf echten Benutzereingaben beruhen
+* Bezeichnen des Datenkonzepts der oberen Ebene in Beispieläußerungen
+* Aufschlüsseln des Datenkonzepts in Unterkomponenten
+* Hinzufügen von Deskriptoren (Features) zu Unterkomponenten
+* Hinzufügen von Deskriptoren (Features) zur Absicht 
 
-Es ist nicht schädlich, sie am Anfang der Modellentwicklung hinzuzufügen, aber es ist einfacher, festzustellen, welchen Einfluss jede Funktion auf die Ergebnisse hat, nachdem das Modell mit Äußerungen getestet wurde. 
+Nachdem Sie die Absicht erstellt und Beispieläußerungen hinzugefügt haben, wird im folgenden Beispiel die Entitätsaufschlüsselung beschrieben. 
 
-Eine bewährte Methode ist das Testen über den [Endpunkt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint), damit Sie vom zusätzlichen Vorteil des [aktiven Lernens](luis-concept-review-endpoint-utterances.md) profitieren. Der [interaktive Testbereich](luis-interactive-test.md) ist auch eine gültige Testmethode. 
+Beginnen Sie mit der Identifizierung der vollständigen Datenkonzepte, die Sie in einer Äußerung extrahieren möchten. Dies ist Ihre durch maschinelles Lernen erworbene Entität. Schlüsseln Sie anschließend den Ausdruck in seine Teile auf. Dies beinhaltet das Identifizieren der Unterkomponenten (als Entitäten) zusammen mit Deskriptoren und Einschränkungen. 
+
+Wenn Sie beispielsweise eine Adresse extrahieren möchten, könnte die oberste durch maschinelles Lernen erworbene Entität `Address` heißen. Identifizieren Sie beim Erstellen der Adresse einige ihrer Unterkomponenten, wie etwa die Straßenanschrift, die Stadt, das Bundesland und die Postleitzahl. 
+
+Fahren Sie fort, diese Elemente aufzuschlüsseln, indem Sie die Postleitzahl zu einem regulären Ausdruck **einschränken**. Schlüsseln Sie die Straßenanschrift in die Bestandteile der Hausnummer (unter Verwendung einer vordefinierten Zahl), des Straßennamens und des Straßentyps auf. Der Straßentyp kann mit einer **Deskriptorliste** beschrieben werden, beispielsweise als Allee, Weg, Straße oder Platz.
+
+Die V3-Erstellungs-API ermöglicht die Aufschlüsselung von Modellen. 
+
+## <a name="do-add-patterns-in-later-iterations"></a>Fügen Sie in späteren Iterationen Muster hinzu
+
+Sie sollten verstehen, wie sich die App verhält, bevor Sie [Muster](luis-concept-patterns.md) hinzufügen, da Muster stärker gewichtet werden als Beispieläußerungen und die Zuverlässigkeit verzerren. 
+
+Sobald Sie verstehen, wie sich Ihre App verhält, fügen Sie Muster hinzu, sofern sie für Ihre App relevant sind. Sie müssen sie nicht bei jeder [Iteration](luis-concept-app-iteration.md) hinzufügen. 
+
+Es ist nicht schädlich, sie am Anfang der Modellentwicklung hinzuzufügen, aber es ist einfacher, festzustellen, welchen Einfluss jedes Muster auf das Modell hat, nachdem das Modell mit Äußerungen getestet wurde. 
  
+<!--
 
-### <a name="phrase-lists"></a>Begriffslisten
+### Phrase lists
 
-Mithilfe von [Ausdruckslisten](luis-concept-feature.md) können Sie Wörterbücher definieren, die Wörter im Zusammenhang mit Ihrer App-Domäne enthalten. Beginnen Sie die Ausdrucksliste mit wenigen Wörtern, und nutzen Sie dann das Vorschlagfeature, damit LUIS weitere für Ihre App spezifische Wörter im Vokabular kennt. Eine Begriffsliste verbessert die Absichtserkennung und die Entitätsklassifizierung durch eine stärkere Berücksichtigung des Signals, das Wörtern oder Ausdrücken zugeordnet ist, die für Ihre App von Bedeutung sind. 
+[Phrase lists](luis-concept-feature.md) allow you to define dictionaries of words related to your app domain. Seed your phrase list with a few words then use the suggest feature so LUIS knows about more words in the vocabulary specific to your app. A Phrase List improves intent detection and entity classification by boosting the signal associated with words or phrases that are significant to your app. 
 
-Fügen Sie dem Vokabular nicht jedes Wort hinzu, da die Ausdrucksliste keine genaue Übereinstimmung darstellen soll. 
+Don't add every word to the vocabulary since the phrase list isn't an exact match. 
 
-Weitere Informationen finden Sie unter:
-* Konzept: [Features für Begriffslisten in Ihrer LUIS-App](luis-concept-feature.md)
-* Gewusst wie: [Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken](luis-how-to-add-features.md)
+For more information:
+* Concept: [Phrase list features in your LUIS app](luis-concept-feature.md)
+* How-to: [Use phrase lists to boost signal of word list](luis-how-to-add-features.md)
 
-### <a name="patterns"></a>Muster
 
-Äußerungen echter Benutzer des Endpunkts, die sich sehr stark ähneln, können auf Muster bei der Wortwahl und -anordnung hinweisen. Das [Musterfeature](luis-concept-patterns.md) übernimmt diese Wortwahl und -anordnung zusammen mit regulären Ausdrücken, um die Vorhersagegenauigkeit zu verbessern. Ein regulärer Ausdruck im Muster ermöglicht es Ihnen, Wörter und Satzzeichen zu ignorieren, während das Muster weiterhin übereinstimmt. 
 
-Verwenden Sie die [optionale Syntax](luis-concept-patterns.md) des Musters für Satzzeichen, sodass diese ignoriert werden können. Verwenden Sie die [explizite Liste](luis-concept-patterns.md#explicit-lists) um Syntaxfehler vom Typ „pattern.any“ zu kompensieren. 
+### Patterns
 
-Weitere Informationen finden Sie unter:
-* Konzept: [Verbessern der Vorhersagegenauigkeit mit Mustern](luis-concept-patterns.md)
-* Gewusst wie: [Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit](luis-how-to-model-intent-pattern.md)
+Real user utterances from the endpoint, very similar to each other, may reveal patterns of word choice and placement. The [pattern](luis-concept-patterns.md) feature takes this word choice and placement along with regular expressions to improve your prediction accuracy. A regular expression in the pattern allows for words and punctuation you intend to ignore while still matching the pattern. 
 
-## <a name="balance-your-utterances-across-all-intents"></a>Für alle Absichten die gleiche Menge an Äußerungen verwenden
+Use pattern's [optional syntax](luis-concept-patterns.md) for punctuation so punctuation can be ignored. Use the [explicit list](luis-concept-patterns.md#explicit-lists) to compensate for pattern.any syntax issues. 
+
+For more information:
+* Concept: [Patterns improve prediction accuracy](luis-concept-patterns.md)
+* How-to: [How to add Patterns to improve prediction accuracy](luis-how-to-model-intent-pattern.md)
+-->
+
+<a name="balance-your-utterances-across-all-intents"></a>
+
+## <a name="do-balance-your-utterances-across-all-intents"></a>Gleichen Sie Ihre Äußerungen über alle Absichten hinweg aus
 
 Damit LUIS-Vorhersagen präzise sind, muss die Menge an Beispieläußerungen in jeder Absicht (mit Ausnahme der Absicht „None“) relativ gleich sein. 
 
@@ -117,25 +139,23 @@ Wenn Sie eine Absicht mit 100 Beispieläußerungen und eine Absicht mit 20 Beisp
 
 Diese Absicht ist die Fallbackabsicht, die alles außerhalb der Anwendung angibt. Fügen Sie der Absicht „None“ eine Beispieläußerung für jeweils 10 Beispieläußerungen im Rest der LUIS-App hinzu.
 
-Weitere Informationen finden Sie unter:
-* Konzept: [Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App](luis-concept-utterance.md)
-
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Verwenden Sie das Vorschlagfeature für das aktive Lernen
 
 Verwenden Sie beim [aktiven Lernen](luis-how-to-review-endpoint-utterances.md) regelmäßig das **Überprüfen von Endpunktäußerungen**, anstatt Absichten zusätzliche Beispieläußerungen hinzuzufügen. Da die App ständig Endpunktäußerungen empfängt, nimmt diese Liste fortlaufend zu und ändert sich.
-
-Weitere Informationen finden Sie unter:
-* Konzept: [Konzepte für das Aktivieren des aktiven Lernens durch Überprüfen von Endpunktäußerungen](luis-concept-review-endpoint-utterances.md)
-* Tutorial: [Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen](luis-tutorial-review-endpoint-utterances.md)
-* Gewusst wie: [Überprüfen von Endpunktäußerungen im LUIS-Portal](luis-how-to-review-endpoint-utterances.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Überwachen Sie die Leistung Ihrer App.
 
 Überwachen Sie die Vorhersagegenauigkeit mithilfe eines [Batchtestsatzes](luis-concept-batch-test.md). 
 
+Reservieren Sie eine separate Menge von Äußerungen, die nicht als [Beispieläußerungen](luis-concept-utterance.md) oder Endpunktäußerungen verwendet werden. Optimieren Sie die App immer weiter mit Ihrem Testsatz. Passen Sie den Testsatz an die tatsächlichen Benutzeräußerungen an. Verwenden Sie diesen Testsatz, um die einzelnen Iterationen oder Versionen der App zu bewerten. 
+
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Fügen Sie Absichten nur wenige Beispieläußerungen hinzu.
 
-Nachdem die Anwendung veröffentlicht wurde, fügen Sie in nachfolgenden Iterationen nur Äußerungen aus dem aktiven Lernen hinzu. Wenn sich die Äußerungen zu ähnlich sind, fügen Sie ein Muster hinzu. 
+Nachdem die Anwendung veröffentlicht wurde, fügen Sie im Entwicklungslebenszyklus-Prozess nur Äußerungen aus dem aktiven Lernen hinzu. Wenn sich die Äußerungen zu ähnlich sind, fügen Sie ein Muster hinzu. 
+
+## <a name="dont-use-few-or-simple-entities"></a>Verwenden Sie nicht wenige oder einfache Entitäten
+
+Entitäten werden zum Zweck der Datenextrahierung und -vorhersage erstellt. Es ist entscheidend, dass jede Absicht über durch maschinelles Lernen erworbene Entitäten verfügt, die die in der Absicht enthaltenen Daten beschreiben. Dies hilft LUIS beim Vorhersagen der Absicht, selbst wenn Ihre Clientanwendung die extrahierte Entität nicht verwenden muss. 
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>Verwenden Sie LUIS nicht als Trainingsplattform
 
@@ -155,11 +175,11 @@ In der zweiten Spalte werden verschiedene Verben (buy, reserve, book), verschied
 
 Erstellen Sie eine Absicht für jede Aktion, die Ihr Bot akzeptieren soll. Verwenden Sie Entitäten als Parameter, die diese Aktionen möglich machen. 
 
-Erstellen Sie für einen Chatbot, der Flüge buchen soll, die Absicht **BookFlight**. Sie sollten nicht für jede Fluggesellschaft oder jedes Ziel eine Absicht erstellen. Verwenden Sie diese Datenelemente als [Entitäten](luis-concept-entity-types.md), und kennzeichnen Sie sie in den Beispieläußerungen. 
+Erstellen Sie für einen Bot, der Flüge buchen soll, die Absicht **BookFlight**. Sie sollten nicht für jede Fluggesellschaft oder jedes Ziel eine Absicht erstellen. Verwenden Sie diese Datenelemente als [Entitäten](luis-concept-entity-types.md), und kennzeichnen Sie sie in den Beispieläußerungen. 
 
-## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>Erstellen Sie keine Ausdruckslisten mit allen möglichen Werten
+## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Erstellen Sie keine Deskriptoren mit sämtlichen möglichen Werten
 
-Stellen Sie einige wenige Beispiele in den [Ausdruckslisten](luis-concept-feature.md) bereit, aber fügen Sie nicht jedes Wort hinzu. LUIS generalisiert und berücksichtigt dabei den Kontext. 
+Stellen Sie einige wenige Beispiele in den [Deskriptorausdruckslisten](luis-concept-feature.md) bereit, aber fügen Sie nicht jedes Wort hinzu. LUIS generalisiert und berücksichtigt dabei den Kontext. 
 
 ## <a name="dont-add-many-patterns"></a>Fügen Sie nicht viele Muster hinzu.
 
@@ -168,15 +188,6 @@ Fügen Sie nicht zu viele [Muster](luis-concept-patterns.md) hinzu. LUIS ist daf
 ## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Führen Sie nicht für jede einzelne hinzugefügte Beispieläußerung Training und Veröffentlichung durch
 
 Fügen Sie vor dem Training und der Veröffentlichung 10–15 Äußerungen hinzu. Damit können Sie die Auswirkungen auf die Vorhersagegenauigkeit überprüfen. Das Hinzufügen einer einzelnen Äußerung hat möglicherweise keine sichtbaren Auswirkung auf das Ergebnis. 
-
-## <a name="do-use-versions-for-each-app-iteration"></a>Verwenden von Versionen für jede App-Iteration
-
-Jeder Erstellungszyklus muss innerhalb einer neuen [Version](luis-concept-version.md) erfolgen und aus einer vorhandenen Version geklont sein. In LUIS gilt keine Beschränkung für Versionen. Ein Versionsname wird als Teil der API-Route verwendet. Daher ist es wichtig, Zeichen auswählen, die in einer URL zulässig sind, und die Anzahl von 10 Zeichen für eine Version einzuhalten. Entwickeln Sie eine Strategie für Versionsnamen, um Ihre Versionen organisiert zu halten. 
-
-Weitere Informationen finden Sie unter:
-* Konzept: [Grundlegendes zur Verwendung einer LUIS-Version](luis-concept-version.md)
-* Gewusst wie: [Verwenden von Versionen, um Staging- und Produktions-Apps nicht durch Bearbeitungsschritte oder Tests zu beeinträchtigen](luis-how-to-manage-versions.md)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

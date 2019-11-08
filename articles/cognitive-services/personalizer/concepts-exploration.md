@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: cfecea6a64301d86aa657420dc300c26d4ed6f1e
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663398"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490824"
 ---
 # <a name="exploration-and-exploitation"></a>Sondieren und Einsetzen
 
@@ -25,22 +25,15 @@ Wenn die Personalisierung einen Aufruf zum Zuweisen eines Rangs empfängt, gibt 
 * Das wahrscheinlichste Benutzerverhalten wird durch Einsetzen des aktuellen Machine Learning-Modells ermittelt.
 * Das Verhalten wird durch Sondieren ermittelt. Dabei wird nicht zwangsläufig die Aktion gefunden, deren Rang die höchste Wahrscheinlichkeit aufweist.
 
-<!--
-Returning the most probable action is called *exploit* behavior. Returning a different action is called *exploration*.
--->
 Die Personalisierung verwendet für das Sondieren derzeit den *Epsilon-Greedy-Algorithmus*. 
 
 ## <a name="choosing-an-exploration-setting"></a>Auswählen einer Sondierungseinstellung
 
-Sie konfigurieren den Prozentsatz des Datenverkehrs für die Sondierung im Azure-Portal auf der Seite **Einstellungen** für die Personalisierung. Diese Einstellung bestimmt den Prozentsatz von Rangaufrufen, bei denen eine Sondierung erfolgt. 
+Sie konfigurieren den Prozentsatz des Datenverkehrs für die Sondierung im Azure-Portal auf der Seite **Konfiguration** für die Personalisierung. Diese Einstellung bestimmt den Prozentsatz von Rangaufrufen, bei denen eine Sondierung erfolgt. 
 
 Die Personalisierung ermittelt dann anhand dieser Wahrscheinlichkeit bei jedem Priorisierungsaufruf, ob sie sondiert oder das derzeitige Modell einsetzt. Dies unterscheidet sich vom Verhalten bei einigen A/B-Frameworks, in denen eine Vorgehensweise für bestimmte Benutzer-IDs festgelegt ist.
 
 ## <a name="best-practices-for-choosing-an-exploration-setting"></a>Best Practices für das Auswählen einer Sondierungseinstellung
-
-<!--
-@edjez - you say what not to do, but make no recommendations of what **to** do. 
--->
 
 Die Auswahl der Einstellung für das Sondieren ist eine geschäftliche Entscheidung über den Anteil der Benutzerinteraktionen für die Untersuchung, um das Modell zu verbessern. 
 

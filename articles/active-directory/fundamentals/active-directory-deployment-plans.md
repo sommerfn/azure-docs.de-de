@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 949676c622c87831d22dcfc7e1bc6d920b622738
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336876"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473290"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
@@ -61,9 +61,10 @@ Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Aus
 
 | Funktion | BESCHREIBUNG|
 | -| -|
-| [Multi-Factor Authentication](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-mfa-getstarted)| Azure Multi-Factor Authentication (MFA) ist die Lösung von Microsoft für die zweistufige Überprüfung. Mit vom Administrator genehmigten Authentifizierungsmethoden trägt Azure MFA zum Schutz des Zugriffs auf Ihre Daten und Anwendungen bei, während gleichzeitig das Ziel eines einfachen Anmeldevorgangs erreicht wird. |
+| [Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)| Azure Multi-Factor Authentication (MFA) ist die Lösung von Microsoft für die zweistufige Überprüfung. Mit vom Administrator genehmigten Authentifizierungsmethoden trägt Azure MFA zum Schutz des Zugriffs auf Ihre Daten und Anwendungen bei, während gleichzeitig das Ziel eines einfachen Anmeldevorgangs erreicht wird. |
 | [Bedingter Zugriff](https://aka.ms/deploymentplans/ca)| Mit dem bedingten Zugriff können Sie basierend auf bestimmten Bedingungen automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung für den Zugriff auf Ihre Cloud-Apps implementieren. |
 | [Self-Service-Kennwortzurücksetzung](https://aka.ms/deploymentplans/sspr)| Mit der Self-Service-Kennwortzurücksetzung können Ihre Benutzer jederzeit ihr Kennwort zurücksetzen, ohne dass ein Administrator eingreifen muss. |
+| [Kennwortlos](https://aka.ms/deploymentplans/passwordless) | Implementieren Sie kennwortlose Authentifizierung mit der Microsoft Authenticator-App oder mit FIDO2-Sicherheitsschlüsseln in Ihrer Organisation. |
 
 ## <a name="deploy-application-management"></a>Bereitstellen der Anwendungsverwaltung
 
@@ -86,7 +87,7 @@ Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Aus
 
 | Funktion | BESCHREIBUNG|
 | -| -|
-| [Benutzerbereitstellung](https://aka.ms/UserProvisioningDPDownload)| Mit Azure AD können Sie die Erstellung, Wartung und Entfernung von Benutzeridentitäten in Cloudanwendungen (SaaS) wie Dropbox, Salesforce, ServiceNow usw. automatisieren. |
+| [Benutzerbereitstellung](https://aka.ms/deploymentplans/userprovisioning)| Mit Azure AD können Sie die Erstellung, Wartung und Entfernung von Benutzeridentitäten in Cloudanwendungen (SaaS) wie Dropbox, Salesforce, ServiceNow usw. automatisieren. |
 | [Workday-driven Inbound User Provisioning](https://aka.ms/WorkdayDeploymentPlan) (Workday-gesteuerte eingehende Benutzerbereitstellung)| Bei der Workday-gesteuerten eingehenden Benutzerbereitstellung für Active Directory wird die Grundlage für eine fortlaufende Identitätsgovernance geschaffen und die Qualität von Geschäftsprozessen verbessert, die auf autoritativen Identitätsdaten basieren. Mit diesem Feature können Sie den Identitätslebenszyklus von Mitarbeitern und Zeitarbeitern nahtlos verwalten, indem Sie Regeln konfigurieren, mit denen Mitarbeiterprozesse (z. B. Neueinstellung, Kündigung, Wechsel) IT-Bereitstellungsaktionen (z. B. Erstellen, Aktivieren, Deaktivieren) zugeordnet werden. |
 
 ## <a name="deploy-governance-and-reporting"></a>Bereitstellen von Governance und Berichterstellung

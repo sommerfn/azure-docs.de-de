@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: dc648b30dc1236080be06044f510557ae0ce9476
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: b5e5df111b81cb60b6d194be190421bdb5ce2683
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638313"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467699"
 ---
-# <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>Planen Ihrer LUIS-App mit Thema, Absichten und Entitäten
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Planen Ihres LUIS-App-Schemas mit Motivdomäne und Datenextraktion
 
-Bestimmen Sie zur Planung Ihrer App Ihren Themenbereich. Dies schließt mögliche Absichten und Entitäten mit ein, die für Ihre Anwendung relevant sind.  
+Ein LUIS-App-Schema enthält Absichten und Entitäten, die für Ihre Motivdomäne relevant sind. Die Absichten klassifizieren Benutzeräußerungen, und die Entitäten extrahieren Daten aus den Benutzeräußerungen. 
 
 ## <a name="identify-your-domain"></a>Identifizieren Ihrer Domäne
 
@@ -32,10 +32,16 @@ Eine LUIS-App baut auf einem domänenspezifischen Thema auf.  Beispielsweise kö
 
 ## <a name="identify-your-intents"></a>Identifizieren Ihrer Absichten
 
-Überlegen Sie sich, welche [Absichten](luis-concept-intent.md) wichtig für die Aufgabe Ihrer Anwendung sind. Beispiel: eine Reise-App mit Funktionen zum Buchen eines Flugs und Überprüfen des Wetters am Ziel des Benutzers. Sie können die Absichten „BookFlight“ und „GetWeather“ für diese Aktionen definieren. In einer komplexeren App mit umfassenderen Funktionen gibt es weitere Absichten, und Sie sollten diese sorgfältig definieren, damit sie nicht zu spezifisch sind. Beispielsweise sind „BookFlight“ und „BookHotel“ möglicherweise separate Absichten, aber „BookInternationalFlight“ und „BookDomesticFlight“ könnten zu ähnlich sein.
+Überlegen Sie sich, welche [Absichten](luis-concept-intent.md) wichtig für die Aufgabe Ihrer Anwendung sind. 
+
+Beispiel: eine Reise-App mit Funktionen zum Buchen eines Flugs und Überprüfen des Wetters am Ziel des Benutzers. Sie können für diese Aktionen die Absichten `BookFlight` und `GetWeather` definieren. 
+
+In einer komplexeren App mit umfassenderen Funktionen gibt es weitere Absichten, und Sie sollten diese sorgfältig definieren, damit sie nicht zu spezifisch sind. Beispielsweise müssen möglicherweise `BookFlight` und `BookHotel` separate Absichten sein, aber `BookInternationalFlight` und `BookDomesticFlight` können zu ähnlich sein.
 
 > [!NOTE]
 > Als bewährte Methode sollten Sie nur so viele Absichten verwenden, wie zum Ausführen der Funktionen Ihrer App erforderlich sind. Wenn Sie zu viele Absichten definieren, wird es für LUIS schwieriger, Äußerungen richtig zu klassifizieren. Wenn Sie zu wenige definieren, sind sie möglicherweise so allgemein gehalten, dass sie sich überschneiden.
+
+Wenn Sie nicht die Gesamtabsicht identifizieren müssen, fügen Sie alle Beispielbenutzeräußerungen zur Absicht „None“ hinzu. Wenn sich bei Ihrer App die Notwendigkeit weiterer Absichten herausstellt, können Sie diese später erstellen. 
 
 ## <a name="create-example-utterances-for-each-intent"></a>Erstellen von Beispieläußerungen für jede Absicht
 
@@ -51,7 +57,4 @@ Wenn Sie festlegen, welche Entitäten in Ihrer App verwendet werden sollen, bede
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Ihre App trainiert und veröffentlicht wurde und Endpunktäußerungen erhält, sollten Sie planen, Vorhersageverbesserungen mit [aktivem Lernen](luis-how-to-review-endpoint-utterances.md), [Ausdruckslisten](luis-concept-feature.md) und [Mustern](luis-concept-patterns.md) zu implementieren. 
-
-
-* Eine kurze exemplarische Vorgehensweise zum Erstellen einer LUIS-App finden Sie unter [Erstellen Ihrer ersten LUIS-App (Language Understanding Intelligent Service)](luis-get-started-create-app.md).
+Erfahren Sie mehr über den typischen [Entwicklungszyklus](luis-concept-app-iteration.md).  
