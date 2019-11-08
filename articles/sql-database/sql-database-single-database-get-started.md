@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Einzeldatenbank – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Erstellen einer Einzeldatenbank
 description: Erstellen und Abfragen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal, PowerShell und Azure CLI.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845291"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821005"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal, PowerShell und Azure CLI
 
@@ -28,7 +28,7 @@ Melden Sie sich zum Durchführen aller Schritte in diesem Schnellstart beim [Azu
 
 ## <a name="create-a-single-database"></a>Erstellen einer Einzeldatenbank
 
-Eine Einzeldatenbank kann entweder auf der bereitgestellten Computeebene oder der serverlosen Computeebene (Vorschauversion) erstellt werden.
+Eine Einzeldatenbank kann entweder auf der bereitgestellten Computeebene oder der serverlosen Computeebene erstellt werden.
 
 - Einer Einzeldatenbank auf der bereitgestellten Computeebene wird mit einem von zwei [Kaufmodellen](sql-database-purchase-models.md) vorab eine festgelegte Menge an Computeressourcen zugeordnet, einschließlich CPU und Arbeitsspeicher.
 - Eine Einzeldatenbank auf der serverlosen Computeebene verfügt über einen Bereich von Computeressourcen (einschließlich CPU und Arbeitsspeicher), die automatisch skaliert werden, und ist nur in [vCore-basierten Kaufmodellen](sql-database-service-tiers-vcore.md) verfügbar.

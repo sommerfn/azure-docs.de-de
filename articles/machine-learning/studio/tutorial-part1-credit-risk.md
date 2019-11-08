@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial 1: Vorhersagen des Kreditrisikos'
-titleSuffix: Azure Machine Learning Studio
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.  Es wird beschrieben, wie Sie einen Arbeitsbereich erstellen, Daten hochladen und ein Experiment erstellen.
+titleSuffix: ML Studio (classic) Azure
+description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in der klassischen Version von Azure Machine Learning Studio. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.  Es wird beschrieben, wie Sie einen Arbeitsbereich erstellen, Daten hochladen und ein Experiment erstellen.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
 ms.author: sgilley
@@ -10,59 +10,58 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f9746dae4cdf10a10922be41602f4ecd7f032f5b
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 78092bd4ad4da896cd2fd36768f181764335ee85
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65949795"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73619178"
 ---
-# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio
+# <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio (klassisch)
 
-Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **erste Teil einer dreiteiligen Reihe**.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Analytics-Lösung. Hierzu wird in Machine Learning Studio (klassisch) ein einfaches Modell entwickelt.  Anschließend wird das Modell als Azure Machine Learning-Webdienst bereitgestellt.  Dieses bereitgestellte Modell kann auf der Grundlage neuer Daten Vorhersagen generieren. Dieses Tutorial ist der **erste Teil einer dreiteiligen Reihe**.
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio erstellen können. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden die klassische Version von Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
 In diesem Teil des Tutorials führen Sie die folgenden Schritte aus: 
  
 > [!div class="checklist"]
-> * Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs
+> * Erstellen eines (klassischen) Machine Learning Studio-Arbeitsbereichs
 > * Hochladen vorhandener Daten
 > * Erstellen eines Experiments
 
 Sie können dieses Experiment dann nutzen, um [in Teil 2 Modelle zu trainieren](tutorial-part2-credit-risk-train.md) und diese dann [in Teil 3 bereitzustellen](tutorial-part3-credit-risk-deploy.md).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorial wird vorausgesetzt, dass Sie Machine Learning Studio bereits mindestens einmal verwendet haben und über Grundkenntnisse in Bezug auf Machine Learning-Konzepte verfügen. Es wird aber nicht davon ausgegangen, dass Sie Experte in diesen Bereichen sind.
+In diesem Tutorial wird vorausgesetzt, dass Sie Machine Learning Studio (klassisch) bereits mindestens einmal verwendet haben und über Grundkenntnisse in Bezug auf Machine Learning-Konzepte verfügen. Es wird aber nicht davon ausgegangen, dass Sie Experte in diesen Bereichen sind.
 
-Wenn Sie **Azure Machine Learning Studio** noch nicht verwendet haben, sollten Sie mit der Schnellstartanleitung [Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio](create-experiment.md) beginnen. In dieser Schnellstartanleitung wird die erstmalige Verwendung von Machine Learning Studio Schritt für Schritt beschrieben. Es vermittelt die Grundlagen, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen.
+Wenn Sie **Azure Machine Learning Studio (klassisch)** noch nicht verwendet haben, sollten Sie mit der Schnellstartanleitung [Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio (klassisch)](create-experiment.md) beginnen. In dieser Schnellstartanleitung wird die erstmalige Verwendung von Machine Learning Studio (klassisch) Schritt für Schritt beschrieben. Es vermittelt die Grundlagen, wie Sie Module per Drag & Drop in Ihr Experiment aufnehmen, sie miteinander verbinden, das Experiment ausführen und die Ergebnisse anzeigen.
 
 
 > [!TIP] 
-> Eine Arbeitskopie des Experiments, das Sie in diesem Tutorial entwickeln, finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Navigieren Sie zu **[Tutorial – Predict credit risk](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** (Tutorial: Vorhersagen des Kreditrisikos), und klicken Sie auf **Open in Studio**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
+> Eine Arbeitskopie des Experiments, das Sie in diesem Tutorial entwickeln, finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Navigieren Sie zu **[Tutorial – Predict credit risk](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** (Tutorial: Vorhersagen des Kreditrisikos), und klicken Sie auf **Open in Studio** (In Studio öffnen), um eine Kopie des Experiments in Ihren Arbeitsbereich von Machine Learning Studio (klassisch) herunterzuladen.
 > 
 
 
-## <a name="create-a-machine-learning-studio-workspace"></a>Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs
+## <a name="create-a-machine-learning-studio-classic-workspace"></a>Erstellen eines (klassischen) Machine Learning Studio-Arbeitsbereichs
 
-Um Machine Learning Studio verwenden zu können, benötigen Sie einen Microsoft Azure Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.  
+Um Machine Learning Studio (klassisch) verwenden zu können, benötigen Sie einen (klassischen) Microsoft Azure Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.  
 
-Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning Studio-Arbeitsbereichs](create-workspace.md).
+Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning Studio-Arbeitsbereichs (klassisch)](create-workspace.md).
 
-Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Wenn Sie über mehrere Arbeitsbereiche verfügen, können Sie den Arbeitsbereich im Fenster oben rechts auf der Symbolleiste auswählen.
+Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio (klassisch) unter [https://studio.azureml.net/Home](https://studio.azureml.net/Home). Wenn Sie über mehrere Arbeitsbereiche verfügen, können Sie den Arbeitsbereich im Fenster oben rechts auf der Symbolleiste auswählen.
 
-![Auswählen eines Arbeitsbereichs in Studio](./media/tutorial-part1-credit-risk/open-workspace.png)
+![Auswählen eines Arbeitsbereichs in Studio (klassisch)](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> Wenn Sie der Besitzer des Arbeitsbereichs sind, können Sie die Experimente, an denen Sie arbeiten, mit anderen Personen teilen. Laden Sie diese Personen hierfür in den Arbeitsbereich ein. Dies können Sie in Machine Learning Studio auf der Seite **EINSTELLUNGEN** vornehmen. Sie benötigen nur das Microsoft-Konto oder Organisationskonto des betreffenden Benutzers.
+> Wenn Sie der Besitzer des Arbeitsbereichs sind, können Sie die Experimente, an denen Sie arbeiten, mit anderen Personen teilen. Laden Sie diese Personen hierfür in den Arbeitsbereich ein. Dies können Sie in Machine Learning Studio (klassisch) auf der Seite **EINSTELLUNGEN** vornehmen. Sie benötigen nur das Microsoft-Konto oder Organisationskonto des betreffenden Benutzers.
 > 
 > Klicken Sie auf der Seite **EINSTELLUNGEN** auf **BENUTZER** und dann unten in Fenster auf **INVITE MORE USERS** (WEITERE BENUTZER EINLADEN).
 > 
@@ -96,7 +95,7 @@ Wenn mit dem Modell eine Person dann fälschlicherweise als Person mit einem nie
 
 ### <a name="convert-the-dataset-format"></a>Konvertieren des Datensatzformats
 
-Der Originaldatensatz verwendet ein Format mit Trennung durch Leerzeichen. Machine Learning Studio funktioniert besser mit durch Trennzeichen getrennten Dateien (CSV). Daher konvertieren Sie den Datensatz, indem Sie die Leerzeichen durch Kommas ersetzen.  
+Der Originaldatensatz verwendet ein Format mit Trennung durch Leerzeichen. Die klassische Version von Machine Learning Studio funktioniert besser mit durch Trennzeichen getrennten Dateien (CSV). Daher konvertieren Sie das Dataset, indem Sie die Leerzeichen durch Kommas ersetzen.  
 
 Es gibt viele Möglichkeiten zum Konvertieren dieser Daten. Eine ist die Verwendung des folgenden Windows PowerShell-Befehls:   
 
@@ -108,11 +107,11 @@ Eine andere ist die Verwendung des sed-Befehls unter Unix:
 
 In beiden Fällen haben Sie eine durch Kommas getrennte Version der Daten in der Datei **german.csv** erstellt, die Sie in Ihrem Experiment verwenden können.
 
-### <a name="upload-the-dataset-to-machine-learning-studio"></a>Hochladen des DataSets in Machine Learning Studio
+### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Hochladen des Datasets in Machine Learning Studio (klassisch)
 
-Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Learning Studio hochladen. 
+Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in die klassische Version von Machine Learning Studio hochladen. 
 
-1. Öffnen Sie die Startseite von Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
+1. Öffnen Sie die Startseite von Machine Learning Studio (klassisch) unter [https://studio.azureml.net](https://studio.azureml.net). 
 
 2. Klicken Sie im Fenster oben links auf das ![Menü](./media/tutorial-part1-credit-risk/menu.png), klicken Sie auf **Azure Machine Learning**, wählen Sie **Studio** aus, und melden Sie sich an.
 
@@ -138,17 +137,17 @@ Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Lea
 
 Daraufhin werden die Daten in ein Datasetmodul hochgeladen, das Sie in einem Experiment verwenden können.
 
-Zum Verwalten von Datasets, die Sie in Studio hochgeladen haben, klicken Sie auf der linken Seite des Studio-Fensters auf die Registerkarte **DATASETS**.
+Zum Verwalten von Datasets, die Sie in Studio (klassisch) hochgeladen haben, klicken Sie auf der linken Seite des Fensters von Studio (klassisch) auf die Registerkarte **DATASETS**.
 
 ![Verwalten von Datasets](./media/tutorial-part1-credit-risk/dataset-list.png)
 
-Weitere Informationen zum Importieren anderer Datentypen in einem Experiment finden Sie unter [Importieren von Trainingsdaten in Azure Machine Learning Studio](import-data.md).
+Weitere Informationen zum Importieren anderer Datentypen in einem Experiment finden Sie unter [Importieren von Trainingsdaten in Azure Machine Learning Studio (klassisch)](import-data.md).
 
 ## <a name="create-an-experiment"></a>Erstellen eines Experiments
 
-Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in Machine Learning Studio, in dem das von Ihnen hochgeladene Dataset verwendet wird.  
+Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in der klassischen Version von Machine Learning Studio, in der das von Ihnen hochgeladene Dataset verwendet wird.  
 
-1. Klicken Sie in Studio unten auf der Seite auf **+NEW** .
+1. Klicken Sie in Studio (klassisch) unten auf der Seite auf **+NEW**.
 1. Wählen Sie **EXPERIMENT**und anschließend "Blank Experiment" aus. 
 
     ![Erstellen eines neuen Experiments](./media/tutorial-part1-credit-risk/create-new-experiment.png)
@@ -174,7 +173,7 @@ Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in 
 
 Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie **Visualisieren**.  
 
-Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio allgemeine Überschriften (Col1, Col2 *usw.* ) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn Sie dieses Modell später in einem Webdienst veröffentlichen, kann der Benutzer des Diensts die Spalten anhand der Überschriften außerdem leichter identifizieren.  
+Da die Datendatei keine Spaltenüberschriften aufweist, hat die klassische Version von Studio allgemeine Überschriften (Col1, Col2 *usw.* ) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn Sie dieses Modell später in einem Webdienst veröffentlichen, kann der Benutzer des Diensts die Spalten anhand der Überschriften außerdem leichter identifizieren.  
 
 Verwenden Sie das Modul [Edit Metadata][edit-metadata], um Spaltenüberschriften hinzuzufügen.
 
@@ -200,7 +199,7 @@ Zum Verwenden von [Edit Metadata][edit-metadata] müssen Sie zuerst die zu ände
     > ![Modul „Edit Metadata“ mit hinzugefügtem Kommentar](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. Klicken Sie bei ausgewähltem Modul [Edit Metadata][edit-metadata] im Bereich **Eigenschaften** rechts neben dem Experimentbereich auf **Launch column selector**.
+1. Wählen Sie [Edit Metadata][edit-metadata] aus, und klicken Sie im Bereich **Properties** rechts neben dem Experimentbereich auf **Launch column selector**.
 
 1. Wählen Sie im Dialogfeld **Select columns** in **Available Columns** alle Zeilen aus, und klicken Sie auf „>“, um sie in **Selected Columns** zu verschieben.
    Das Dialogfeld sollte wie folgt aussehen:
@@ -221,7 +220,7 @@ Zum Verwenden von [Edit Metadata][edit-metadata] müssen Sie zuerst die zu ände
    ![Eigenschaften für „Edit Metadata“](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > Wenn Sie die Spaltenüberschriften überprüfen möchten, führen Sie das Experiment aus (klicken Sie unter dem Experimentbereich auf **RUN** ). Wenn die Ausführung abgeschlossen ist (in [Edit Metadata][edit-metadata] wird ein grünes Häkchen angezeigt), klicken Sie auf den Ausgabeport des Moduls [Edit Metadata][edit-metadata], und wählen Sie **Visualize**. Auf die gleiche Weise können Sie die Ausgabe jedes anderen Moduls anzeigen, um den Datenfortschritt im Experiment zu sehen.
+   > Wenn Sie die Spaltenüberschriften überprüfen möchten, führen Sie das Experiment aus (klicken Sie unter dem Experimentbereich auf **RUN** ). Wenn die Ausführung abgeschlossen ist (in [Edit Metadata][edit-metadata] wird ein grünes Häkchen angezeigt), klicken Sie auf den Ausgabeport des Moduls [Edit Metadata][edit-metadata], und wählen Sie **Visualize** aus. Auf die gleiche Weise können Sie die Ausgabe jedes anderen Moduls anzeigen, um den Datenfortschritt im Experiment zu sehen.
    > 
    > 
 
@@ -267,7 +266,7 @@ Für diese Replikation können Sie den R-Code verwenden:
 
 Sie müssen den gleichen Replikationsvorgang für jede Ausgabe des Moduls [Split Data][split] durchführen, damit die Trainings- und die Testdaten die gleiche Kostenanpassung aufweisen. Dies erfolgt am einfachsten durch das Duplizieren des eben erstellten Moduls [Execute R Script][execute-r-script] und das Verbinden dieses Moduls mit dem anderen Ausgabeport des Moduls [Split Data][split].
 
-1. Klicken Sie mit der rechten Maustaste auf das Modul [Execute R Script][execute-r-script], und wählen Sie die Option **Kopieren**.
+1. Klicken Sie mit der rechten Maustaste auf das Modul [Execute R Script][execute-r-script], und wählen Sie die Option **Kopieren** aus.
 
 1. Klicken Sie mit der rechten Maustaste in den Experimentbereich, und wählen Sie **Einfügen**aus.
 
@@ -296,7 +295,7 @@ Weitere Informationen zum Verwenden von R-Skripts in Ihren Experimenten finden S
 In diesem Tutorial haben Sie die folgenden Schritte ausgeführt: 
  
 > [!div class="checklist"]
-> * Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs
+> * Erstellen eines (klassischen) Machine Learning Studio-Arbeitsbereichs
 > * Hochladen vorhandener Daten in den Arbeitsbereich
 > * Erstellen eines Experiments
 

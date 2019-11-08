@@ -5,15 +5,16 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Patrick .Butler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 92c55c7f15b3f350ad802157bf401f3e75983789
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03783424544588a4bc147b232d41b103fb2e5b3e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606440"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827551"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -78,7 +79,7 @@ Sie können jeden gültigen Namen für die Parameter verwenden. In der Testversi
 }
 ```
 
-Zudem ist zu beachten, dass **alle Parameter optional sind**. Wenn Sie also keine Parameter verwenden möchten, ist dies nicht erforderlich.
+Zudem ist zu beachten, dass **alle Parameter optional sind**. Wenn Sie also keine Parameter verwenden möchten, ist\' dies nicht\' erforderlich.
 
 ### <a name="accepted-parameter-metadata-types"></a>Unterstützte Metadatentypen für Parameter
 
@@ -89,7 +90,7 @@ Zudem ist zu beachten, dass **alle Parameter optional sind**. Wenn Sie also kein
 | **password**    | Sichere Zeichenfolge    | Neues zufälliges Kennwort | Lp!ACS\^2kh     |
 | **session id**   | Zeichenfolge          | Eindeutige Sitzungs-ID für Testversion (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>userName
+#### <a name="username"></a>username
 
 In der Testversion wird dieser Parameter mit einem **Basis-URI** des Bereitstellungspakets initialisiert, sodass Sie mit diesem Parameter den URI einer beliebigen in dem Paket enthaltenen Datei erstellen können.
 
@@ -116,7 +117,7 @@ In Ihrer Vorlage können Sie mit diesem Parameter einen URI einer in dem Bereits
 }
 ```
 
-#### <a name="username"></a>userName
+#### <a name="username"></a>username
 
 In der Testversion wird dieser Parameter mit einem neuen zufälligen Benutzernamen initialisiert:
 
@@ -192,7 +193,7 @@ Mit diesem Parameter können Sie bei Bedarf die Sitzung der Testversion eindeuti
 
 Für einige Azure-Ressourcen, z.B. Speicherkonten oder DNS-Namen, müssen global eindeutige Namen verwendet werden.
 
-Das bedeutet, dass jedes Mal, wenn die Testversion die Resource Manager-Vorlage bereitstellt, eine **neue Ressourcengruppe mit einem eindeutigen Namen** für alle zugehörigen Ressourcen erstellt wird. Daher muss die Funktion [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) verwendet werden, die mit den Variablennamen für Ressourcengruppen-IDs verkettet ist, damit zufällige eindeutige Werte generiert werden:
+Das bedeutet, dass jedes Mal, wenn die Testversion die Resource Manager-Vorlage bereitstellt, eine **neue Ressourcengruppe mit einem eindeutigen Namen** für alle zugehörigen\' Ressourcen erstellt wird. Daher muss die Funktion [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) verwendet werden, die mit den Variablennamen für Ressourcengruppen-IDs verkettet ist, damit zufällige eindeutige Werte generiert werden:
 
 ```json
 "variables": {
@@ -261,7 +262,7 @@ Sie müssen sicherstellen, dass in Ihrem Abonnement alle Ressourcen, die Sie ber
 
 Normalerweise können Sie mit Resource Manager-Vorlagen die Bereitstellung durchführen, ohne dass eine Ausgabe generiert wird. Dies ist möglich, da Sie alle Werte kennen, die Sie zum Ausfüllen der Vorlagenparameter verwenden, und Sie die Eigenschaften der Ressourcen immer manuell überprüfen können.
 
-Bei den Resource Manager-Vorlagen für die Testversion ist es jedoch wichtig, dass alle Informationen an die Testversion zurückgegeben werden. Dies ist erforderlich, um Zugriff auf das Lab (Website-URIs, VM-Hostnamen, Benutzernamen und Kennwörter) zu erhalten. Stellen Sie sicher, dass alle Ausgabenamen lesbar sind, da diese Variablen für den Kunden angezeigt werden.
+Bei den Resource Manager-Vorlagen für die Testversion ist\' es jedoch wichtig, dass alle Informationen an die Testversion zurückgegeben werden. Dies ist erforderlich, um Zugriff auf das Lab (Website-URIs, VM-Hostnamen, Benutzernamen und Kennwörter) zu erhalten. Stellen Sie sicher, dass alle Ausgabenamen lesbar sind, da diese Variablen für den Kunden angezeigt werden.
 
 Für Vorlagenausgaben gelten keine Einschränkungen. Es ist lediglich zu beachten, dass alle Ausgabewerte in der Testversion in **Zeichenfolgen** konvertiert werden. Wenn Sie also ein Objekt an die Ausgabe senden, wird für den Benutzer eine JSON-Zeichenfolge angezeigt.
 
@@ -288,7 +289,7 @@ Beispiel:
 
 Ein weiterer zu berücksichtigender Aspekt sind die Limits für Abonnements und Dienste. Wenn Sie z.B. bis zu zehn virtuelle Computer mit 4 Kernen bereitstellen möchten, müssen Sie sich vergewissern, dass in dem Abonnement, das Sie für das Lab verwenden, 40 Kerne verwendet werden können.
 
-Weitere Informationen zu Grenzwerten für Azure-Abonnements und Azure-Dienste in [diesem Artikel](https://docs.microsoft.com/azure/azure-subscription-service-limits). Da mehrere Testversionen gleichzeitig ausgeführt werden können, sollten Sie überprüfen, ob in Ihrem Abonnement die Anzahl der Kerne multipliziert mit der Gesamtzahl der Testversionen, die gleichzeitig ausgeführt werden können, verarbeitet werden kann.
+Weitere Informationen zu Grenzwerten für Azure-Abonnements und Azure-Dienste in [diesem Artikel](https://docs.microsoft.com/azure/azure-subscription-service-limits). Da mehrere Testversionen gleichzeitig ausgeführt werden können, sollten Sie überprüfen, ob in Ihrem Abonnement die Anzahl der Kerne multipliziert mit der Gesamtzahl der Testversionen, die\# gleichzeitig ausgeführt werden können, verarbeitet werden kann.
 
 ### <a name="what-to-upload"></a>Hochladen der Vorlage
 
@@ -309,7 +310,7 @@ Der URI dieses Blobcontainers wird als Basis-URI bezeichnet. Jeder Version des L
 
 ## <a name="transforming-template-examples-for-test-drive"></a>Transformieren von Vorlagenbeispielen für die Testversion
 
-Der Vorgang zum Transformieren einer Ressourcenarchitektur in einer Resource Manager-Vorlage für die Testversion kann schwierig sein. Zur Vereinfachung dieses Vorgangs haben wir [hier](./transforming-examples-for-test-drive.md) Beispiele für die optimale Transformation aktueller Bereitstellungsvorlagen erstellt.
+Der Vorgang zum Transformieren einer Ressourcenarchitektur in einer Resource Manager-Vorlage für die Testversion kann schwierig sein. Zur Vereinfachung dieses Vorgangs haben \'wir [hier](./transforming-examples-for-test-drive.md) Beispiele für die optimale Transformation aktueller Bereitstellungsvorlagen erstellt.
 
 ## <a name="how-to-publish-a-test-drive"></a>Veröffentlichen einer Testversion
 
@@ -356,13 +357,13 @@ Im nächsten Abschnitt geben Sie an, an welchen Speicherort die Resource Manager
 
 Berechnen Sie nun die Gesamtanzahl der möglichen gleichzeitig ausführbaren Testversionen, die Sie zur Verfügung stellen, und überprüfen Sie, ob diese Zahl innerhalb der Kontingentgrenze Ihres Abonnements liegt:
 
-**(Anzahl der ausgewählten Regionen x Instanzen des Typs „Heiß“) + (Anzahl der ausgewählten Regionen x Instanzen des Typs „Warm“) + (Anzahl der ausgewählten Regionen x Instanzen des Typs „Kalt“)**
+**(Anzahl der ausgewählten Regionen x Instanzen des Typs „Heiß“) + (Anzahl der ausgewählten Regionen x Instanzen des Typs „Warm“) + (Anzahl der ausgewählten Regionen x Instanzen des Typs Kalt“)**
 
-**Dauer der Testversion (Stunden):** *Erforderlich* Zeitraum, in dem die Testversion aktiv bleibt, angegeben in Stunden. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet.
+**Dauer der Testversion (Stunden):** *Erforderlich* Zeitraum, in dem die Testversion aktiv bleibt, angegeben \#in Stunden. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet.
 
 **Test Drive Resource Manager template** (Resource Manager-Vorlage für Testversion): *Erforderlich* Laden Sie hier Ihre Resource Manager-Vorlage hoch. Dies ist die Datei, die Sie im vorherigen Abschnitt oben erstellt haben. Geben Sie der Hauptvorlagendatei den Namen „main-template.json“, und stellen Sie sicher, dass die Resource Manager-Vorlage Ausgabeparameter für erforderliche Hauptvariablen enthält. (Es muss sich um eine ZIP-Datei handeln.)
 
-**Zugriffsinformationen:** *Erforderlich* Nachdem ein Kunde seine Testversion erhalten hat, erhält er auch die Zugriffsinformationen. In diesen Anweisungen können die nützlichen Ausgabeparameter aus der Resource Manager-Vorlage für die Testversion angegeben werden. Verwenden Sie zum Einfügen von Ausgabeparametern doppelte geschweifte Klammern (z.B. **{{Ausgabename}}** ). So werden sie am Speicherort korrekt eingefügt. (Zur Darstellung im Front-End wird die HTML-Formatierung von Zeichenfolgen empfohlen.)
+**Zugriffsinformationen:** *Erforderlich* Nachdem ein Kunde seine Testversion erhalten hat, erhält er auch die Zugriffsinformationen. In diesen Anweisungen können die nützlichen Ausgabeparameter aus der Resource Manager-Vorlage für die Testversion angegeben werden. Verwenden Sie zum Einfügen von Ausgabeparametern doppelte geschweifte Klammern (z.B. **{{Ausgabename}}**). So werden sie am Speicherort korrekt eingefügt. (Zur Darstellung im Front-End wird die HTML-Formatierung von Zeichenfolgen empfohlen.)
 
 ### <a name="test-drive-deployment-subscription-details"></a>Abonnementdetails für Bereitstellung der Testversion
 
@@ -392,7 +393,7 @@ Erstellen Sie andernfalls einen neuen Mandanten in Azure Active Directory.
 2. Suchen Sie „App-Registrierungen“, und klicken Sie auf „Hinzufügen“.
 3. Geben Sie einen Anwendungsnamen an.
 4. Wählen Sie den Typ „Web-App/API“ aus.
-5. Geben Sie in „Anmelde-URL“ einen beliebigen Wert an. Dieses Feld wird nicht verwendet.
+5. Geben Sie in „Anmelde-URL“ einen beliebigen Wert an. \'Dieses Feld wird nicht verwendet.
 6. Klicken Sie auf "Erstellen".
 7. Navigieren Sie nach der Erstellung der Anwendung zu „Eigenschaften“ -\> „Set the application as multi-tenant“ (Anwendung als mehrinstanzenfähig festlegen), und klicken Sie auf „Speichern“.
 
@@ -403,7 +404,7 @@ Klicken Sie auf Speichern. Im letzten Schritt wird die Anwendungs-ID für diese 
 Wenn die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet wird, muss die Anwendung im Abonnement als Mitwirkender hinzugefügt werden. Dazu müssen folgende Schritte ausgeführt werden:
 
 1. Navigieren Sie zum Blatt „Abonnements“, und wählen Sie das entsprechende Abonnement aus, das nur für die Testversion verwendet wird.
-1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.  ![Hinzufügen eines neuen Zugriffssteuerungsprinzipals](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Klicken Sie auf **Rollenzuweisung hinzufügen**.
 1. Legen Sie die Rolle als **Mitwirkender** fest.

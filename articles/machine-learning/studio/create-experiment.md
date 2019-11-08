@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen eines Data Science-Experiments'
-titleSuffix: Azure Machine Learning Studio
+titleSuffix: ML Studio (classic) Azure
 description: In dieser Machine Learning-Schnellstartanleitung werden die Schritte eines einfachen Data Science-Experiments beschrieben. Wir sagen den Preis für ein Auto vorher, indem wir einen Regressionsalgorithmus verwenden.
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: e5c004b69f24b50ed2eb3a10dbd0a7915c0773ce
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 99cc453387ed32c4d7cbba31c1fec2ff24a8255f
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515115"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621894"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Schnellstart: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
+# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>Schnellstart: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio (klassisch)
 
-In dieser Schnellstartanleitung erstellen Sie ein Machine Learning-Experiment in [Azure Machine Learning Studio](what-is-ml-studio.md), mit dem der Preis eines Autos basierend auf verschiedenen Variablen vorhergesagt wird, z. B. Marke und technische Daten.
+[!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
+
+In dieser Schnellstartanleitung erstellen Sie ein Machine Learning-Experiment in [Azure Machine Learning Studio (klassisch)](what-is-ml-studio.md), mit dem der Preis eines Autos basierend auf verschiedenen Variablen vorhergesagt wird, z. B. Marke und technische Daten.
 
 Falls maschinelles Lernen neu für Sie ist, hilft Ihnen die Videoreihe [Data Science für Anfänger](data-science-for-beginners-the-5-questions-data-science-answers.md) weiter. Hierbei handelt es sich um eine gute Einführung in maschinelles Lernen in alltäglicher Sprache und mit entsprechenden Konzepten.
 
@@ -40,20 +42,18 @@ In dieser Schnellstartanleitung wird der Standardworkflow für ein Experiment ve
 [Auswählen und Anwenden eines Algorithmus]: #choose-and-apply-an-algorithm
 [Erstellen von Preisprognosen für neue Fahrzeuge]: #predict-new-automobile-prices
 
-Falls Sie kein Studio-Konto haben, können Sie auf der [Studio-Startseite](https://studio.azureml.net) die Option **Sign up here** (Hier registrieren) wählen, um ein kostenloses Konto zu erstellen. Der kostenlose Arbeitsbereich enthält alle Funktionen, die Sie für diese Schnellstartanleitung benötigen.
-
 ## <a name="get-the-data"></a>Abrufen von Daten
 
 Grundvoraussetzung für maschinelles Lernen sind Daten.
-Studio enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ hierzu können Sie auch Daten aus vielen anderen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
+Die klassische Version von Studio enthält bereits einige Beispieldatasets, die Sie verwenden können. Alternativ hierzu können Sie auch Daten aus vielen anderen Quellen importieren. Für dieses Beispiel verwenden wir das Beispieldataset **Automobile price data (Raw)** (Automobilpreisdaten (roh)), das in Ihrem Arbeitsbereich zu finden ist.
 Dieses Dataset enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.
 
 > [!TIP]
-> Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Wechseln Sie zu **[Your first data science experiment - Automobile price prediction (Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen)](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
+> Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Wechseln Sie zu **[Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich (klassisch) herunterzuladen.
 
 Hier wird erklärt, wie Sie das Dataset in Ihr Experiment importieren.
 
-1. Erstellen Sie ein neues Experiment, indem Sie unten im Machine Learning Studio-Fenster auf **+ NEU** klicken. Wählen Sie **EXPERIMENT** >  **Blank Experiment** (Leeres Experiment).
+1. Erstellen Sie ein neues Experiment, indem Sie unten im Machine Learning Studio-Fenster (klassisch) auf **+ NEU** klicken. Wählen Sie **EXPERIMENT** >  **Blank Experiment** (Leeres Experiment).
 
 1. Dieses Experiment erhält einen Standardnamen, der oben im Zeichenbereich angezeigt wird. Wählen Sie den Text aus, und benennen Sie das Experiment mit einem aussagekräftigen Namen um, z.B. **Automobile price prediction** (Vorhersage für Automobilpreise). Der Name muss nicht eindeutig sein.
 
@@ -240,7 +240,7 @@ Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an
 In dieser Schnellstartanleitung haben Sie anhand eines Beispieldatasets ein einfaches Experiment erstellt. Fahren Sie mit dem Tutorial zur prädiktiven Lösung fort, um sich eingehender mit dem Prozess zum Erstellen und Bereitstellen eines Modells zu beschäftigen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Entwickeln einer prädiktiven Lösung in Studio](tutorial-part1-credit-risk.md)
+> [Tutorial: Entwickeln einer prädiktiven Lösung in Studio (klassisch)](tutorial-part1-credit-risk.md)
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/
