@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 10/16/2019
 ms.author: diberry
-ms.openlocfilehash: 8accac7fe6068007180403fdab27013da161b28c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437194"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465729"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Entwicklerressourcen für Language Understanding
 
@@ -54,6 +54,17 @@ Sowohl Erstellungs- als auch Vorhersage-Endpunkt-APIs sind über Rest-APIs verf�
 |Node.js|[Erstellung](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Vorhersage](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM-Erstellung](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM-Vorhersage](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Erstellung](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Vorhersage](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Erstellung mithilfe von REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-get-intent)<br>[Vorhersage mithilfe von REST](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-node-add-utterance)|
 |Python|[Erstellung und Vorhersage](sdk-python-quickstart-authoring-app.md)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Erstellung](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Erstellung](sdk-python-quickstart-authoring-app.md)<br>[Vorhersage mithilfe von REST](luis-get-started-python-get-intent.md)
 
+
+### <a name="containers"></a>Container
+
+Language Understanding (LUIS) stellt einen [Container](luis-container-howto.md) bereit, um lokale und in Containern enthaltene Versionen Ihrer App bereitzustellen. 
+
+### <a name="export-and-import-formats"></a>Export- und Importformate
+
+Language Understanding bietet die Möglichkeit, Ihre App und ihre Modelle in einem JSON-Format, dem `.LU`-Format ([LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)), und einem komprimierten Paket für den Language Understanding-Container zu verwalten. 
+
+Das Importieren und Exportieren in diesen Formaten ist über die APIs und das LUIS-Portal möglich. Das Portal bietet Import und Export als Teil der App-Liste und der Versionsliste. 
+
 ## <a name="other-tools-and-sdks"></a>Weitere Tools und SDKs
 
 Das Bot Framework ist als [SDK](https://github.com/Microsoft/botframework) in einer Vielzahl von Sprachen und als Dienst mit [Azure Bot Service](https://dev.botframework.com/) verfügbar. 
@@ -69,4 +80,8 @@ Bot Framework bietet [verschiedene Tools](https://github.com/microsoft/botbuilde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu allgemeinen [HTTP-Fehlercodes](luis-reference-response-codes.md)
+* Weitere Informationen zu allgemeinen [HTTP-Fehlercodes](luis-reference-response-codes.md)
+* [Referenzdokumentation](https://docs.microsoft.com/azure/index#pivot=sdkstools) für alle APIs und SDKs
+* [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) und [Azure Bot Service](https://dev.botframework.com/)
+* [LUDown](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Ludown)
+* [Cognitive-Container](../cognitive-services-container-support.md)

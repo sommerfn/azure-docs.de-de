@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 9279f97d5260eae698d5dbee10e077b71ab01992
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c225be5a1123c89d8a470a8dea48b3c57eb893b5
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612336"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474577"
 ---
 # <a name="administer-dns-in-an-azure-ad-domain-services-managed-domain"></a>Verwalten von DNS in einer durch Azure AD Domain Services verwalteten Domäne
 
@@ -23,7 +23,9 @@ In Azure Active Directory Domain Services (Azure AD DS) ist DNS eine Schlüsselk
 
 Wenn Sie Ihre eigenen Anwendungen und Dienste ausführen, müssen Sie unter Umständen DNS-Einträge für nicht in die Domäne eingebundene Computer erstellen, virtuelle IP-Adressen für Load Balancer konfigurieren oder externe DNS-Weiterleitungen einrichten. Benutzern, die zur Gruppe *AAD DC-Administratoren* gehören, werden DNS-Administratorrechte in der von Azure AD DS verwalteten Domäne gewährt und sie können benutzerdefinierte DNS-Einträge erstellen und bearbeiten.
 
-In diesem Artikel erfahren Sie, wie Sie die DNS-Servertools installieren und dann die DNS-Konsole zur Verwaltung von Einträgen verwenden.
+In einer Hybridumgebung werden in einer lokalen AD DS-Umgebung konfigurierte DNS-Zonen und DNS-Einträge nicht mit Azure AD DS synchronisiert. Um Ihre eigenen DNS-Einträge zu definieren und zu verwenden, erstellen Sie Einträge im Azure AD DS DNS-Server, oder verwenden Sie bedingte Weiterleitungen, die auf vorhandene DNS-Server in Ihrer Umgebung verweisen.
+
+In diesem Artikel erfahren Sie, wie Sie die DNS-Servertools installieren und dann die DNS-Konsole zur Verwaltung von Einträgen in Azure AD DS verwenden.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
@@ -43,10 +45,10 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 ## <a name="install-dns-server-tools"></a>Installieren von DNS-Servertools
 
-Zum Erstellen und Ändern von DNS müssen Sie die DNS-Servertools installieren. Diese Tools können als Feature in Windows Server installiert werden. Weitere Informationen zum Installieren der Verwaltungstools auf einem Windows-Client finden Sie unter [Installieren der Remoteserver-Verwaltungstools (RSAT)][install-rsat].
+Zum Erstellen und Ändern von DNS-Einträgen in Azure AD DS müssen Sie die DNS-Servertools installieren. Diese Tools können als Feature in Windows Server installiert werden. Weitere Informationen zum Installieren der Verwaltungstools auf einem Windows-Client finden Sie unter [Installieren der Remoteserver-Verwaltungstools (RSAT)][install-rsat].
 
 1. Melden Sie sich bei Ihrer Verwaltungs-VM an. Weitere Informationen zu den Schritten zum Herstellen einer Verbindung mithilfe des Azure-Portals finden Sie unter [Herstellen einer Verbindung mit einer Windows Server-VM][connect-windows-server-vm].
-1. Der **Server-Manager** sollte standardmäßig geöffnet werden, wenn Sie sich bei der VM anmelden. Wenn dies nicht der Fall ist, wählen Sie im **Startmenü** die Option **Server-Manager** aus.
+1. Wenn **Server-Manager** bei der Anmeldung beim virtuellen Computer nicht standardmäßig geöffnet wird, wählen Sie das **Startmenü** und dann **Server-Manager** aus.
 1. Wählen Sie im Bereich *Dashboard* des Fensters **Server-Manager** die Option **Rollen und Features hinzufügen** aus.
 1. Klicken Sie auf der Seite **Vorbereitung** des *Assistenten zum Hinzufügen von Rollen und Features* auf **Weiter**.
 1. Lassen Sie für *Installationstyp* die Option **Rollenbasierte oder featurebasierte Installation** aktiviert, und wählen Sie **Weiter** aus.

@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b962fc32cdcde0509cfa60d105022bb208633ae3
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639288"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487731"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Testen von Batches mit 1.000 Äußerungen im LUIS-Portal
 
-Mit Batchtests wird Ihr [aktives](luis-concept-version.md#active-version) trainiertes Modell überprüft, um seine Vorhersagegenauigkeit zu messen. Ein Batchtest zeigt die Ergebnisse in einem Diagramm an, sodass Sie einen besseren Einblick in die Genauigkeit der einzelnen Absichten und Entitäten in Ihrem aktuellen trainierten Modell erhalten. Überprüfen Sie die Ergebnisse des Batchtests, um geeignete Maßnahmen zum Verbessern der Genauigkeit einzuleiten, etwa indem Sie einer Absicht weitere Beispieläußerungen hinzufügen, wenn Ihre App häufig Fehler beim Erkennen der korrekten Absicht macht.
+Mit Batchtests wird Ihre aktive trainierte Version überprüft, um ihre Vorhersagegenauigkeit zu messen. Ein Batchtest zeigt die Ergebnisse in einem Diagramm an, sodass Sie einen besseren Einblick in die Genauigkeit der einzelnen Absichten und Entitäten in Ihrer aktuellen Version erhalten. Überprüfen Sie die Ergebnisse des Batchtests, um geeignete Maßnahmen zum Verbessern der Genauigkeit einzuleiten, etwa indem Sie einer Absicht weitere Beispieläußerungen hinzufügen, wenn Ihre App häufig Fehler beim Erkennen der korrekten Absicht oder beim Bezeichnen von Entitäten innerhalb der Äußerung macht.
 
 ## <a name="group-data-for-batch-test"></a>Gruppieren von Daten für Batchtests
 

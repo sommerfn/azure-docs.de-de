@@ -9,20 +9,39 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813284"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498926"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.  
 
 ## <a name="release-notes"></a>Versionshinweise 
+
+### <a name="november-4-2019---ignite"></a>4\. November 2019 – Ignite
+
+* Verbesserte Produktivität von Entwicklern
+    * Allgemeine Verfügbarkeit unseres [Vorhersageendpunkts V3](luis-migration-api-v3.md). 
+    * Möglichkeit zum Importieren und Exportieren von Apps mit dem LU-Format ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Dies ebnet den Weg für einen effektiven CI/CD-Prozess. 
+* Spracherweiterung
+    * [Arabisch und Hindi](luis-language-support.md) in der öffentlichen Vorschau.
+* Vordefinierte Modelle
+    * [Vordefinierte Domänen](luis-reference-prebuilt-domains.md) sind jetzt allgemein verfügbar (GA)
+    * Japanische [vordefinierte Entitäten](luis-reference-prebuilt-entities.md#japanese-entity-support) Alter, Währung, Anzahl, Prozentsatz: werden in V3 nicht unterstützt.
+    * Italienische [vordefinierte Entitäten](luis-reference-prebuilt-entities.md#italian-entity-support) Alter, Währung, Dimension, Anzahl, Prozentsatz: die Auflösung wurde gegenüber V2 geändert.
+* Verbesserte Benutzeroberfläche in [preview.luis.ai portal](https://preview.luis.ai): neu gestaltete Bezeichungsoberfläche, um das Erstellen und Debuggen komplexer Modelle zu ermöglichen.
+* Erweiterte Funktionen zum Sprachverständnis: [Erstellen ausgereifter Sprachmodelle](luis-concept-entity-types.md) mit weniger Aufwand. 
+* Definition von Machine Learning-Funktionen auf Modellebene und Ermöglichen der Verwendung von Modellen als Signale für andere Modelle, wie das Verwenden von Entitäten als Features für Absichten und für andere Entitäten.
+* Neue, erweiterte [Grenzwerte](luis-boundaries.md): höheres Maximum für Ausdruckslisten und ganze Ausdrücke, neues Modell als Featuregrenzwert
+* Extrahieren von Informationen aus Text im Format einer tiefen Hierarchiestruktur, wodurch Dialoganwendungen noch leistungsfähiger werden.
+
+    ![Abbildung einer durch maschinelles Lernen erworbenen Entität](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>3\. September 2019
 

@@ -1,0 +1,66 @@
+---
+title: 'Einschränkungen für Container: LUIS'
+titleSuffix: Azure Cognitive Services
+description: Die unterstützten LUIS-Container Sprachen.
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: language-understanding
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.author: dapine
+ms.openlocfilehash: bd8a7a63113bcf4e972ab08655aa58b35ddff03d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73506813"
+---
+# <a name="language-understanding-luis-container-limitations"></a>Einschränkungen für Language Understanding-Container (LUIS)
+
+Die LUIS-Container weisen eine Reihe von beachtenswerten Einschränkungen auf. Von nicht unterstützten Abhängigkeiten bis zu einer Teilmenge der unterstützten Sprachen befasst sich dieser Artikel im Detail mit diesen Einschränkungen.
+
+## <a name="supported-dependencies-for-latest-container"></a>Unterstützte Abhängigkeiten für `latest`-Container
+
+Der neueste LUIS-Container, der unter [//build/ 2019](https://news.microsoft.com/build2019/) veröffentlicht wird, unterstützt diese Punkte:
+
+* [Neue vordefinierte Bereiche](luis-reference-prebuilt-domains.md): Zu diesen auf Unternehmen fokussierten Domänen gehören Entitäten, Beispieläußerungen und Muster. Erweitern Sie diese Domänen für Ihre eigenen Zwecke.
+
+## <a name="unsupported-dependencies-for-latest-container"></a>Nicht unterstützte Abhängigkeiten für `latest`-Container
+
+Für das [Exportieren von Containern](luis-container-howto.md#export-packaged-app-from-luis) müssen Sie nicht unterstützte Abhängigkeiten aus Ihrer LUIS-App entfernen. Wenn Sie den Export für Container versuchen, meldet das LUIS-Portal, dass Sie diese nicht unterstützten Features entfernen müssen.
+
+Sie können eine LUIS-Anwendung verwenden, sofern diese **keine** der folgenden Abhängigkeiten enthält:
+
+Nicht unterstützte App-Konfigurationen|Details|
+|--|--|
+|Nicht unterstützte Containerkulturen| Niederländisch (`nl-NL`)<br>Japanisch (`ja-JP`)<br>Deutsch wird nur ab [Tokenizer 1.0.2](luis-language-support.md#custom-tokenizer-versions) unterstützt.|
+|Nicht unterstützte Entitäten für alle Kulturen|Vordefinierte [KeyPhrase](luis-reference-prebuilt-keyphrase.md)-Entität für alle Kulturen|
+|Nicht unterstützte Entitäten für die Kultur Englisch (`en-US`)|Vordefinierte [GeographyV2](luis-reference-prebuilt-geographyV2.md)-Entitäten|
+|Sprachvorbereitung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
+|Stimmungsanalyse|Externe Abhängigkeiten werden im Container nicht unterstützt.|
+|Bing-Rechtschreibprüfung|Externe Abhängigkeiten werden im Container nicht unterstützt.|
+
+## <a name="languages-supported"></a>Unterstützte Sprachen
+
+LUIS-Container unterstützen eine Teilmenge der von LUIS insgesamt [unterstützten Sprachen](luis-language-support.md#languages-supported). Die LUIS-Container sind imstande, Äußerungen in den folgenden Sprachen zu verstehen:
+
+| Sprache | Gebietsschema | Vordefinierte Domäne | Vordefinierte Entität | Ausdrucklistenempfehlungen | \**[Textanalyse](../text-analytics/language-support.md)<br>(Stimmung und<br>Schlüsselwörter)|
+|--|--|:--:|:--:|:--:|:--:|
+| Englisch (USA) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
+| Französisch (Frankreich) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Französisch (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
+| Deutsch |`de-DE` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Hindi | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
+| Italienisch |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Koreanisch |`ko-KR` | ✔️ | ❌ | ❌ | Nur *Schlüsselausdruck* |
+| Portugiesisch (Brasilien) |`pt-BR` | ✔️ | ✔️ | ✔️ | Nicht alle Unterkulturen |
+| Spanisch (Spanien) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
+| Spanisch (Mexiko)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| Türkisch | `tr-TR` |✔️| ❌ | ❌ | Nur *Stimmung* |
+
+[!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
+
+[!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]

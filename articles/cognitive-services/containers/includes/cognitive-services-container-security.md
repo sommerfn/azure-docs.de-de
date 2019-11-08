@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 09/30/2019
 ms.author: dapine
-ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 35f5cffdc644370082e229c88d67db33e853c446
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842566"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499177"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Containersicherheit in Azure Cognitive Services
 
-Bei der Entwicklung von Anwendungen sollte die Sicherheit im Vordergrund stehen. Die Bedeutung von Sicherheit ist ein Erfolgskriterium. Wenn Sie eine Softwarelösung entwickeln, die Cognitive Services-Container enthält, ist es wichtig, die Grenzen und Möglichkeiten zu verstehen, die Ihnen zur Verfügung stehen. Weitere Informationen finden Sie unter [Azure Security][az-security].
+Bei der Entwicklung von Anwendungen sollte die Sicherheit im Vordergrund stehen. Die Bedeutung von Sicherheit ist ein Erfolgskriterium. Wenn Sie eine Softwarelösung entwickeln, die Cognitive Services-Container enthält, ist es wichtig, die Grenzen und Möglichkeiten zu verstehen, die Ihnen zur Verfügung stehen. Weitere Informationen zur Netzwerksicherheit finden Sie unter [Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services][az-security].
 
 > [!IMPORTANT]
 > Standardmäßig ist *keine Sicherheit* für die Cognitive Services-Container-API vorhanden. Der Grund dafür ist, dass der Container meist als Teil eines Pod ausgeführt wird, das von außen durch eine Netzwerkbrücke geschützt ist. Es ist jedoch möglich, die Authentifizierung zu aktivieren, die identisch zu der Authentifizierung funktioniert, die beim Zugriff auf die [cloudbasierten Cognitive Services][request-authentication] verwendet wird.
@@ -51,4 +51,4 @@ Deaktivieren Sie DPI für die sicheren Kanäle, die von Cognitive Services-Conta
 [istio]: https://istio.io/
 [nginx]: https://www.nginx.com
 [request-authentication]: ../../authentication.md
-[az-security]: ../../../security/fundamentals/overview.md
+[az-security]: ../../cognitive-services-virtual-networks.md
