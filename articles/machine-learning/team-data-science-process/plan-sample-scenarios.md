@@ -11,21 +11,17 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 130ab6ee8e59b157d1fbdd8769f14814445dea18
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: de02e94014fa2a28e364c4f85bcb31a1a4827b8c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202754"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495055"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
 
 Die **Entscheidungsstruktur** , mit deren Hilfe Sie die für Ihre Daten und Ziele geeigneten Beispielszenarien auswählen, wird im letzten Abschnitt vorgestellt.
-
-> [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-> 
-> 
 
 In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für jedes Szenario werden ein möglicher Ablauf für Datenwissenschaft oder erweiterte Analyse sowie die unterstützenden Azure-Ressourcen aufgeführt.
 
@@ -102,7 +98,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 1. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
 1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
+1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt aus der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
 ## <a name="largelocaltodb"></a>Szenario \#5: Großes Dataset in lokalen Dateien, Ziel-SQL Server-Instanz in Azure-VM
@@ -143,7 +139,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 1. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
 1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
+1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt aus der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ## <a name="largedbtodb"></a>Szenario \#6: Großes Dataset in einer lokalen SQL Server-Datenbank, das auf SQL Server auf einem virtuellen Azure-Computer ausgerichtet ist
@@ -179,7 +175,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
 1. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
 1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
+1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt aus der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
 1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternative Methode zum Kopieren einer vollständigen Datenbank aus einem lokalen SQL Server in Azure SQL-Datenbank

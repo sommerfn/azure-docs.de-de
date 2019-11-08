@@ -1,7 +1,7 @@
 ---
 title: Erneutes Trainieren und Bereitstellen eines klassischen Webdiensts
-titleSuffix: Azure Machine Learning Studio
-description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio erneut trainieren und einen klassischen Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
+titleSuffix: Azure Machine Learning Studio (classic)
+description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio (klassisch) erneut trainieren und einen klassischen Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,16 +10,16 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: b636883ee1f08fa0fb6d080b6980cd07553dde1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 477e099bb759e09402a245b693d95f3b3980699e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65234049"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73480205"
 ---
-# <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Erneutes Trainieren und Bereitstellen eines klassischen Studio-Webdiensts
+# <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Erneutes Trainieren und Bereitstellen eines (klassischen) Studio-Webdiensts
 
-Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. In diesem Artikel werden das erneute Trainieren eines klassischen Studio-Webdiensts erläutert. Eine Anleitung zum erneuten Trainieren eines neues Studio-Webdiensts [finden Sie in dieser Anleitung](retrain-machine-learning-model.md).
+Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. In diesem Artikel werden das erneute Trainieren eines (klassischen) Studio-Webdiensts erläutert. Eine Anleitung zum erneuten Trainieren eines neues (klassischen) Studio-Webdiensts [finden Sie in dieser Anleitung](retrain-machine-learning-model.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +44,7 @@ Sie können Bewertungsendpunkte mithilfe des Beispielcodes in diesem [GitHub-Rep
 
 ### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Hinzufügen eines Endpunkts im Azure Web Services-Portal
 
-1. Klicken Sie in Machine Learning Studio links auf „Webdienste“.
+1. Klicken Sie in Machine Learning Studio (klassisch) in der linken Navigationsspalte auf „Webdienste“.
 1. Klicken Sie unten auf dem Dashboards des Webdiensts auf **Manage endpoints preview**(Endpunktvorschau verwalten).
 1. Klicken Sie auf **Hinzufügen**.
 1. Geben Sie einen Namen und eine Beschreibung für den neuen Endpunkt ein. Wählen Sie die Protokollierungsstufe aus, und legen Sie fest, ob Beispieldaten aktiviert sind. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](web-services-logging.md).

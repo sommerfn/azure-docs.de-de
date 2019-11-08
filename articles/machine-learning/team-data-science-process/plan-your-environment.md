@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8eed4f2425cdbfec7d3addad11ddaba57e5370e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46d0e8aa1fa934f778e950f0187a853ba46772d1
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704481"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495032"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 
@@ -30,8 +30,6 @@ Beantworten Sie wichtige Fragen in den folgenden Bereichen, um Ihr Szenario zu b
 * Dateneigenschaften
 * Dataset-Qualität
 * bevorzugte Tools und Sprachen
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="logistic-questions-data-locations-and-movement"></a>Logistische Fragen: Datenspeicherorte und -verschiebung
 
@@ -68,7 +66,7 @@ Wo müssen sich Ihre Daten für Verarbeitungs- oder Modellierungszwecke befinden
 Verfahren und Ressourcen zum Erfassen oder Laden von Daten in eine Vielzahl von verschiedenen Speicher- und Verarbeitungsumgebungen finden Sie hier:
 
 * [Laden von Daten in Speicherumgebungen für Analysen](ingest-data.md)
-* [Importieren von Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio](../studio/import-data.md)
+* [Importieren von Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio (klassisch)](../studio/import-data.md)
 
 ### <a name="does-the-data-need-to-be-moved-on-a-regular-schedule-or-modified-during-migration"></a>Müssen die Daten nach einem regelmäßigen Zeitplan verschoben oder während der Migration geändert werden?
 
@@ -81,7 +79,7 @@ Weitere Informationen finden Sie unter [Verschieben von Daten von einem lokalen 
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Wie viele Daten werden in Azure verschoben?
 
-Extrem große Datasets können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Team Data Science-Prozess](sample-data.md).
+Extrem große Datasets können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio (klassisch) im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Team Data Science-Prozess](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Fragen zu Datenmerkmalen: Typ, Format und Größe
 
@@ -108,7 +106,7 @@ Diese Fragen sind wichtig für die Planung Ihrer Speicher- und Verarbeitungsumge
 * Mittel: Mehr als 2 GB, aber weniger als 10 GB
 * Groß: Mehr als 10 GB
 
-Nehmen wir beispielsweise die Azure Machine Learning Studio-Umgebung:
+Nehmen wir beispielsweise die (klassische) Azure Machine Learning Studio-Umgebung:
 
 * Eine Liste der Datenformate und -typen, die von Azure Machine Learning Studio unterstützt werden, finden Sie im Abschnitt [Unterstützte Datenformate und Datentypen](../studio/import-data.md#supported-data-formats-and-data-types) .
 * Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseprozess verwendet werden, finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md).
