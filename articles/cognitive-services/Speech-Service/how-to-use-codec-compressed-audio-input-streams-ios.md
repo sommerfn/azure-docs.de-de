@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9a66e4ecf2230caad233a4eff12c0fadc95409d5
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 45b45c6c9afd43b711fc548f470ce0f0acd04a0a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803791"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464284"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK unter iOS
 
@@ -64,4 +64,4 @@ Der nächste Codeausschnitt zeigt, wie komprimierte Audiodaten aus einer Datei g
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+* [Erkennen von Sprache in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

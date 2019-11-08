@@ -1,7 +1,7 @@
 ---
 title: 'Train Clustering Model: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Train Clustering Model“ (Trainieren von Clusteringmodellen) in Azure Machine Learning Service verwenden, um Clusteringmodelle zu trainieren.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul Train Clustering Model in Azure Machine Learning verwenden, um Clusteringmodelle zu trainieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: fc6d889fb9be40c98e1a2a0de6fddb29939f3b5d
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 1b26fc251aeb527041b1e648f19f9dd67f7701b7
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693647"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490391"
 ---
 # <a name="train-clustering-model"></a>Trainieren eines Clusteringmodells
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Clusteringmodell zu trainieren.
 
@@ -28,8 +28,8 @@ In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie berei
 > Ein Clusteringmodell kann nicht mit dem Modul [Train Model](train-model.md) (Trainieren des Modells) trainiert werden, bei dem es sich um das generische Modul zum Training von Machine Learning-Modellen handelt. Das liegt daran, dass [Train Model](train-model.md) nur mit überwachten Lernalgorithmen funktioniert. k-Means- und andere Clusteringalgorithmen ermöglichen unüberwachtes Lernen, was bedeutet, dass der Algorithmus aus unbezeichneten Daten lernen kann.  
   
 ## <a name="how-to-use-train-clustering-model"></a>Verwenden des Moduls „Train Clustering Model“  
-  
-1.  Fügen Sie das Modul **Train Clustering Model** Ihrer Pipeline in Studio hinzu. Sie finden das Modul unter **Machine Learning Modules**in der Kategorie **Train**.  
+
+1.  Fügen Sie das Modul **Train Clustering Model** Ihrer Pipeline im Designer hinzu. Sie finden das Modul unter **Machine Learning Modules**in der Kategorie **Train**.  
   
 2. Fügen Sie das Modul [K-Means Clustering](k-means-clustering.md) oder ein anderes benutzerdefiniertes Modul hinzu, mit dem ein kompatibles Clusteringmodell erstellt wird, und legen Sie dessen Parameter fest.  
     
@@ -39,7 +39,7 @@ In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie berei
 
     Wenn eine Bezeichnung verfügbar ist, können Sie sie entweder als Feature verwenden oder weglassen.  
   
-6. Aktivieren Sie die Option **Check for Append or Uncheck for Result Only** (Für Anfügen aktivieren oder für reine Ergebnisse deaktivieren), wenn Sie die Trainingsdaten zusammen mit der neuen Clusterbezeichnung ausgeben möchten.
+6. Aktivieren Sie die Option **Check for Append or Uncheck for Result Only** (Für Anfügen aktivieren oder für reines Ergebnis deaktivieren), wenn Sie die Trainingsdaten zusammen mit der neuen Clusterbezeichnung ausgeben möchten.
 
     Wenn Sie diese Option deaktivieren, werden nur die Clusterzuweisungen ausgegeben. 
 
@@ -60,4 +60,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

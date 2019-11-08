@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 99a3ca0115611f45ed080c39767d13e087b8efb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779775"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464220"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Tutorial: Hosten Ihrer Domäne in Azure DNS
 
@@ -40,11 +40,11 @@ Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.net“. Ve
 
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
-1. Melden Sie sich beim Azure-Portal an.
-1. Klicken Sie oben links auf **Ressource erstellen** > **Netzwerk** > **DNS-Zone**, um die Seite **DNS-Zone erstellen** zu öffnen.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), um eine DNS-Zone zu erstellen. Suchen Sie **DNS-Zonen**, und wählen Sie diese aus.
 
    ![DNS-Zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
+1. Wählen Sie **DNS-Zone erstellen** aus.
 1. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und wählen Sie dann **Erstellen**:
 
    | **Einstellung** | **Wert** | **Details** |
@@ -52,7 +52,7 @@ Die für dieses Tutorial verwendete Beispieldomäne lautet „contoso.net“. Ve
    |**Name**|[Ihr Domänenname] |Der von Ihnen erworbene Domänenname. In diesem Tutorial wird als Beispiel „contoso.net“ verwendet.|
    |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, in dem Sie die Zone erstellen möchten.|
    |**Ressourcengruppe**|**Neu erstellen:** contosoRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des von Ihnen ausgewählten Abonnements eindeutig sein.<br>Der Standort der Ressourcengruppe hat keine Auswirkung auf die DNS-Zone. Der Standort der DNS-Zone ist immer „global“ und wird nicht angezeigt.|
-   |**Location**|USA (Ost)||
+   |**Location**|East US||
 
 ## <a name="retrieve-name-servers"></a>Abrufen von Namenservern
 

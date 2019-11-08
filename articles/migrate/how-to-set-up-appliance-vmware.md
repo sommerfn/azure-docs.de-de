@@ -1,17 +1,17 @@
 ---
 title: Einrichten einer Appliance für die Azure Migrate-Serverbewertung/-migration für VMware-VMs | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Appliance unter Verwendung der Azure Migrate-Serverbewertung/-migration für die Ermittlung, Bewertung und Agent-lose Migration von VMware-VMs einrichten.
+description: Hier erfahren Sie, wie Sie eine Appliance unter Verwendung der Azure Migrate-Serverbewertung/-migration für die Ermittlung, Bewertung und Migration ohne Agent von VMware-VMs einrichten.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: fe190381df346278e75a3e6fd9876b80c33bd86b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 77bf9a0f73519aa979da49614475daf70f582a9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810197"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467122"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
@@ -20,17 +20,17 @@ In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance einrichten
 Bei der VMware-VM-Appliance handelt es sich um eine einfache Appliance, die von der Azure Migrate-Serverbewertung/-migration für Folgendes verwendet wird:
 
 - Ermitteln Sie lokale virtuelle VMware-Computer.
-- Senden von Meta- und Leistungsdaten für ermittelte VMs an die Azure Migrate-Serverbewertung/-migration.
+- Senden von Meta- und Leistungsdaten für ermittelte VMs an die Azure Migrate-Serverbewertung/-migration
 
-Weitere Informationen zur Azure Migrate-Appliance finden Sie [hier](migrate-appliance.md).
+[Weitere Informationen](migrate-appliance.md) zur Azure Migrate-Appliance.
 
 
-## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
+## <a name="appliance-deployment-steps"></a>Schritte der Appliancebereitstellung
 
 Die Einrichtung der Appliance umfasst Folgendes:
-- Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server.
-- Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung. 
-- Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt.
+- Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server
+- Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
+- Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
 
 ## <a name="download-the-ova-template"></a>Herunterladen der OVA-Vorlage
 
@@ -48,7 +48,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für die Applianceversion 1.0.0.5 muss der generierte Hash den folgenden Einstellungen entsprechen: 
+3. Für die Applianceversion 1.0.0.5 muss der generierte Hash den folgenden Einstellungen entsprechen.
 
   **Algorithmus** | **Hashwert**
   --- | ---
@@ -90,7 +90,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
         - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
         - Es werden nur HTTP-Proxys unterstützt.
     - **Uhrzeitsynchronisierung**: Die Uhrzeit wird überprüft. Die Uhrzeit der Appliance muss mit der Internetzeit synchronisiert werden, damit die Ermittlung ordnungsgemäß funktioniert.
-    - **Updates installieren**: Azure Migrate überprüft, ob die neusten Appliance-Updates installiert sind.
+    - **Updates installieren**: Azure Migrate überprüft, ob die neusten Applianceupdates installiert sind.
     - **Install VDDK** (VDDK installieren): Azure Migrate überprüft, ob das VMware vSphere-VDDK (Virtual Disk Development Kit) installiert ist.
         - Azure Migrate verwendet das VDDK, um Computer bei der Migration zu Azure zu replizieren.
         - Laden Sie VDDK 6.7 von VMware herunter, und extrahieren Sie den Inhalt der heruntergeladenen ZIP-Datei am angegebenen Ort auf der Appliance.
@@ -98,7 +98,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 ## <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
 
 1. Klicken Sie auf **Anmelden**. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
-2. Melden Sie sich auf der neuen Registerkarte mit Ihren Azure-Anmeldeinformationen an. 
+2. Melden Sie sich auf der neuen Registerkarte mit Ihren Azure-Anmeldeinformationen an.
     - Melden Sie sich mit Ihrem Benutzernamen und Ihrem Kennwort an.
     - Die Anmeldung mit einer PIN wird nicht unterstützt.
 3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück.
@@ -107,18 +107,30 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 4. Klicken Sie auf **Registrieren**.
 
 
-## <a name="start-continuous-discovery"></a>Starten der kontinuierlichen Ermittlung
+## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>Starten der kontinuierlichen Ermittlung durch Bereitstellen von vCenter Server- und VM-Anmeldeinformationen
 
-Stellen Sie als Nächstes über die Appliance eine Verbindung mit vCenter Server her, und starten Sie die VM-Ermittlung. 
+Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um die Konfigurations- und Leistungsdaten der VMs zu ermitteln.
 
+### <a name="specify-vcenter-server-details"></a>vCenter Server-Details angeben
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem Ihre vCenter Server-Instanz lauscht.
-2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt.
+2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Stellen Sie sicher, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt. Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff für das vCenter-Konto entsprechend beschränken. Weitere Informationen zur Beschränkung der Ermittlung finden Sie [hier](tutorial-assess-vmware.md#scoping-discovery).
 3. Vergewissern Sie sich durch Klicken auf **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
-4. Klicken Sie nach der Verbindungsherstellung auf **Speichern und Ermittlung starten**.
 
+### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen
+Zum Ermitteln von Anwendungen, Rollen und Features sowie zum Visualisieren von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen bereitstellen, die Zugriff auf die virtuellen VMware-Computer ermöglichen. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) zu erforderlichen Zugriffsberechtigungen.
 
-Daraufhin wird die Ermittlung gestartet. Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Portal angezeigt werden. 
+> [!NOTE]
+> Diese Eingabe ist optional und wird benötigt, um die Anwendungsermittlung und die Visualisierung von Abhängigkeiten ohne Agent zu aktivieren.
 
+1. Klicken Sie unter **Anwendungen und Abhängigkeiten auf VMs ermitteln** auf **Anmeldeinformationen hinzufügen**.
+2. Wählen Sie das **Betriebssystem** aus.
+3. Geben Sie einen Anzeigenamen für die Anmeldeinformationen an.
+4. Geben Sie unter **Benutzername** und **Kennwort** ein Konto an, das mindestens über den Gastzugriff auf die virtuellen Computer verfügt.
+5. Klicken Sie auf **Hinzufügen**.
+
+Nachdem Sie die vCenter Server- und VM-Anmeldeinformationen angegeben haben (optional), klicken Sie auf **Speichern und Ermittlung starten**, um die Ermittlung der lokalen Umgebung zu starten.
+
+Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Portal angezeigt werden. Die Ermittlung von installierten Anwendungen, Rollen und Features dauert einige Zeit. Die Dauer hängt von der Anzahl der ermittelten VMS ab. Bei 500 VMs dauert es ungefähr 1 Stunde, bis der Anwendungsbestand im Azure Migrate-Portal angezeigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

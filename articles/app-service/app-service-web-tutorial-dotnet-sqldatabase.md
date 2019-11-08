@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f010e7564f097f28269070d85e2895e73f454054
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: 2f815d99c32c2dcaa1fd35d00110b27a90f53ab4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415577"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471196"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
@@ -201,7 +201,7 @@ Sobald das Erstellen der Firewalleinstellung in Visual Studio für die SQL-Daten
 
 Hier können Sie häufige Datenbankvorgänge ausführen, und z.B. Abfragen ausführen, Ansichten und gespeicherte Prozeduren erstellen usw. 
 
-Erweitern Sie Ihre Verbindung unter **Datenbanken** > **&lt;Ihre Datenbank>** > **Tabellen**. Klicken Sie mit der rechten Maustaste auf die Tabelle `Todoes`, und wählen Sie **Daten anzeigen**. 
+Erweitern Sie Ihre Verbindung unter **Datenbanken** >  **&lt;Ihre Datenbank>**  > **Tabellen**. Klicken Sie mit der rechten Maustaste auf die Tabelle `Todoes`, und wählen Sie **Daten anzeigen**. 
 
 ![SQL-Datenbank-Objekte ansehen](./media/app-service-web-tutorial-dotnet-sqldatabase/explore-sql-database.png)
 
@@ -392,11 +392,11 @@ Klicken Sie zum Beenden des Diensts für das Protokollstreaming auf die Schaltfl
 
 ## <a name="manage-your-azure-app"></a>Verwalten der Azure-App
 
-Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die erstellte App anzuzeigen. 
+Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die Web-App zu verwalten. Suchen Sie nach **App Services**, und wählen Sie diese Option aus. 
 
+![Suchen nach „Azure App Services“](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-portal-navigate-app-services.png)
 
-
-Klicken Sie im linken Menü auf **App Service** und anschließend auf den Namen Ihrer Azure-App.
+Wählen Sie den Namen Ihrer Azure-App aus.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-dotnet-sqldatabase/access-portal.png)
 

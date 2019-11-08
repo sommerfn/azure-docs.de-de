@@ -7,15 +7,15 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 0c5541d7a80c3b6157ccadd979412163122ca8a2
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300750"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475941"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Was ist Azure Private Link? (Vorschau)
-Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) in Ihrem virtuellen Netzwerk (VNet) erstellen und Ihren Kunden privat zur Verfügung stellen. Die Einrichtung und Nutzung von Azure Private Links ist in Azure-PaaS-, Kunden- und gemeinsamen Partnerdiensten konsistent.
+Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage, Azure Cosmos DB und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) in Ihrem virtuellen Netzwerk (VNet) erstellen und Ihren Kunden privat zur Verfügung stellen. Die Einrichtung und Nutzung von Azure Private Links ist in Azure-PaaS-, Kunden- und gemeinsamen Partnerdiensten konsistent.
 
 > [!IMPORTANT]
 > Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Weitere Informationen zu bekannten Einschränkungen finden Sie unter [Privater Endpunkt](private-endpoint-overview.md#limitations) und [Private Link-Dienst](private-link-service-overview.md#limitations).
@@ -45,8 +45,9 @@ Azure Private Link bietet folgende Vorteile:
 |  | Azure Data Lake Storage Gen2        |  USA, Osten; USA, Westen; USA, Westen-Mitte       | Vorschau         |
 |  |  Azure SQL-Datenbank         | USA, Westen-Mitte; USA, Westen; USA, Süden-Mitte; USA, Osten; USA, Norden-Mitte      |   Vorschau      |
 ||Azure SQL Data Warehouse| USA, Westen-Mitte; USA, Westen; USA, Süden-Mitte; USA, Osten; USA, Norden-Mitte |Vorschau|
+||Azure Cosmos DB| USA, Westen-Mitte; USA, Westen; USA, Osten; USA, Norden-Mitte; USA, Osten 2; USA, Westen 2 |Vorschau|
 
-Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network). 
+Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="logging-and-monitoring"></a>Protokollierung und Überwachung
 
@@ -67,10 +68,11 @@ Häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Azure Pri
 Informationen zu Einschränkungen finden Sie unter [Einschränkungen für Azure Private Link](../azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen eines privaten Endpunkts für den SQL-Datenbank-Server im Portal](create-private-endpoint-portal.md)
-- [Erstellen eines privaten Endpunkts für den SQL-Datenbank-Server über PowerShell](create-private-endpoint-powershell.md)
-- [Erstellen eines privaten Endpunkts für den SQL-Datenbank-Server über die CLI](create-private-endpoint-cli.md)
+- [Erstellen eines privaten Endpunkts mit dem Azure-Portal](create-private-endpoint-portal.md)
+- [Erstellen eines privaten Endpunkts über PowerShell](create-private-endpoint-powershell.md)
+- [Erstellen eines privaten Endpunkts über die Azure CLI](create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts für das Speicherkonto im Portal](create-private-endpoint-storage-portal.md)
+- [Erstellen eines privaten Endpunkts für das Azure Cosmos-Konto im Portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Erstellen eines eigenen Private Link-Diensts mit Azure PowerShell](create-private-link-service-powershell.md)
 
 

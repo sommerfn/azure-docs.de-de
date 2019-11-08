@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: nacharya1
-ms.author: nilesha
-ms.date: 06/20/2019
-ms.custom: seodec18
-ms.openlocfilehash: 999f554bf4a2b9ddda83ee6398950cefb11d32aa
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+author: cartacioS
+ms.author: sacartac
+ms.date: 11/04/2019
+ms.openlocfilehash: 5c8ce6a588fd630f69d8ffc682b611baba3afdd4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929340"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497568"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -54,7 +53,9 @@ Mithilfe von **Azure Machine Learning** können Sie automatisierte ML-Trainingse
 
 1. **Konfigurieren des Computeziels für das Modelltraining**, z.B. [lokaler Computer, Azure Machine Learning Computes, Remote-VMs oder Azure Databricks](how-to-set-up-training-targets.md).  Weitere Informationen zu automatisiertem Training [für eine Remoteressource](how-to-auto-train-remote.md).
 
-1. **Konfigurieren der automatisierten Machine Learning-Parameter**, die die Anzahl der Iterationen über verschiedene Modelle, die Hyperparametereinstellungen, erweiterte Vorverarbeitung/Featurebereitstellung und die Metriken bestimmen, die bei der Ermittlung des besten Modells zu berücksichtigen sind.  Sie können die Einstellungen für ein automatisches Trainingsexperiment im [Azure-Portal](how-to-create-portal-experiments.md), über [die Landing Page des Arbeitsbereichs (Vorschau)](https://ml.azure.com) oder [mit dem SDK](how-to-configure-auto-train.md) konfigurieren. 
+1. **Konfigurieren der automatisierten Machine Learning-Parameter**, die die Anzahl der Iterationen über verschiedene Modelle, die Hyperparametereinstellungen, erweiterte Vorverarbeitung/Featurebereitstellung und die Metriken bestimmen, die bei der Ermittlung des besten Modells zu berücksichtigen sind.  Sie können die Einstellungen für ein automatisches Trainingsexperiment [in Azure Machine Learning Studio](https://ml.azure.com) oder [mit dem SDK](how-to-configure-auto-train.md) konfigurieren. 
+
+    [!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
 1. **Übermitteln der Trainingsausführung.**
 
@@ -94,6 +95,8 @@ In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatis
 ### <a name="advanced-preprocessing-optional-featurization"></a>Erweiterte Vorverarbeitung: optionale Featurebereitstellung
 
 Zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung sind ebenfalls verfügbar, z.B. Imputation fehlender Werte, Codierung und Transformationen. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#preprocess). Diese Einstellung kann aktiviert werden über:
+
++ Azure Machine Learning Studio: Auswählen von **Einstellungen für die Merkmalserstellung anzeigen** im Abschnitt **Configuration Run** (Konfigurationsausführung) [über diese Schritte](how-to-create-portal-experiments.md).
 
 + Python SDK: Angeben von `"feauturization": auto' / 'off' / FeaturizationConfig` für die [`AutoMLConfig`-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
@@ -175,7 +178,7 @@ Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erst
 + [Tutorial: Automatisches Trainieren eines Regressionsmodell mithilfe von Azure Automated Machine Learning](tutorial-auto-train-models.md)
 
 + Konfigurieren Sie die Einstellungen für ein automatisches Trainingsexperiment:
-  + Führen Sie im Azure-Portal oder über die Landing Page des Arbeitsbereichs (Vorschau) [diese Schritte](how-to-create-portal-experiments.md) aus.
+  + Verwenden Sie in Azure Machine Learning Studio [diese Schritte](how-to-create-portal-experiments.md).
   + Mit dem Python SDK [verwenden Sie diese Schritte](how-to-configure-auto-train.md).
 
 + Erfahren Sie, wie automatisches Training mithilfe von Zeitreihendaten funktioniert, indem Sie [diese Schritte verwenden](how-to-auto-train-forecast.md).

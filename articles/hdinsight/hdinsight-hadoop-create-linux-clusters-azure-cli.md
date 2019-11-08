@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Apache Hadoop-Clustern mithilfe der Azure CLI – Azure HDInsight
+title: Erstellen von Apache Hadoop-Clustern mit Azure CLI – Azure HDInsight
 description: Erfahren Sie, wie Sie Azure HDInsight-Cluster mit der plattformübergreifenden Azure CLI erstellen.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: c26c0b16331ae01f7505e44cef3fe91b3282750b
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 09696f5a3df7cc4170c57b862a11bbd5a82e2bc9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809850"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494800"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Erstellen von HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 

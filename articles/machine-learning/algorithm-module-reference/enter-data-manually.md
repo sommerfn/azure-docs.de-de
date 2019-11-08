@@ -1,24 +1,24 @@
 ---
 title: 'Enter Data Manually: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Enter Data Manually“ (Manuelles Eingeben von Daten) in Azure Machine Learning Service ein kleines Dataset durch Eingabe von Werten erstellen können. Das Dataset kann mehrere Spalten enthalten.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul „Enter Data Manually“ (Manuelles Eingeben von Daten) in Azure Machine Learning ein kleines Dataset durch Eingabe von Werten erstellen können. Das Dataset kann mehrere Spalten enthalten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693163"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497926"
 ---
 # <a name="enter-data-manually-module"></a>Modul „Enter Data Manually“ (Manuelles Eingeben von Daten)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Mithilfe dieses Moduls können Sie ein kleines Dataset durch Eingabe von Werten erstellen. Das Dataset kann mehrere Spalten enthalten.
   
@@ -102,4 +102,4 @@ Dieses Modul kann in folgenden Szenarien hilfreich sein:
      Um eine Vorschau des Datasets anzuzeigen, klicken Sie auf den Ausgabeport, und wählen Sie **Visualize** (Visualisieren).  
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

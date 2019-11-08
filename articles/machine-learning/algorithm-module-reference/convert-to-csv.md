@@ -1,24 +1,24 @@
 ---
 title: 'Convert to CSV: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Convert to CSV“ (Konvertieren in das CSV-Format) in Azure Machine Learning Service ein Dataset in ein CSV-Format konvertieren, das heruntergeladen, exportiert oder mit R- oder Python-Skriptmodulen gemeinsam genutzt werden kann.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul „Convert to CSV“ (Konvertieren in das CSV-Format) in Azure Machine Learning ein Dataset in ein CSV-Format konvertieren, das heruntergeladen, exportiert oder mit R- oder Python-Skriptmodulen gemeinsam genutzt werden kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 37c1653b31049dc0142cf8c0c6f6d405338b1d1f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693194"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493853"
 ---
 # <a name="convert-to-csv-module"></a>Modul „Convert to CSV (Konvertieren in das CSV-Format)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Nutzen Sie dieses Modul, um ein Dataset in ein CSV-Format konvertieren, das heruntergeladen, exportiert oder mit R- oder Python-Skriptmodulen gemeinsam genutzt werden kann.
 
@@ -36,7 +36,8 @@ Wenn Sie einen Datensatz in das CSV-Format konvertieren, wird die Datei in Ihrem
 
 ## <a name="how-to-configure-convert-to-csv"></a>Konfigurieren von „Convert to CSV“
 
-1.  Fügen Sie Ihrer Pipeline das Modul [Convert to CSV](./convert-to-csv.md) (In CSV konvertieren) hinzu. Sie finden dieses Modul auf der Benutzeroberfläche in der Gruppe **Data Format Conversions**. 
+
+1.  Fügen Sie Ihrer Pipeline das Modul [Convert to CSV](./convert-to-csv.md) (In CSV konvertieren) hinzu. Sie finden dieses Modul im Designer in der Gruppe **Data Format Conversions**. 
 
 2. Verbinden Sie es mit einem beliebigen Modul, das ein Dataset ausgibt.   
   
@@ -56,4 +57,4 @@ Doppelklicken Sie auf die Ausgabe von [Convert to CSV](./convert-to-csv.md), und
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

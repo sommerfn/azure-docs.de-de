@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: chris-lauren
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 07/09/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997172"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489366"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
 
@@ -154,15 +154,15 @@ Folgende Ansätze werden empfohlen, um dieses Problem zu umgehen:
 
 ## <a name="debug-locally"></a>Lokales Debuggen
 
-Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es als lokalen Webdienst bereitzustellen. Das Verwenden eines lokalen Webdiensts erleichtert die Problembehandlung. Das Docker-Image mit dem Modell wird heruntergeladen und auf dem lokalen System gestartet.
+Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es lokal bereitzustellen. Die lokale Verwendung erleichtert die Problembehandlung. Das Docker-Image mit dem Modell wird heruntergeladen und auf dem lokalen System gestartet.
 
 > [!IMPORTANT]
-> Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Docker muss ausgeführt werden, bevor Sie einen lokalen Webdienst bereitstellen. Informationen zum Installieren und Verwenden von Docker finden Sie unter [https://www.docker.com/](https://www.docker.com/).
+> Lokale Bereitstellungen erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Docker muss vor der lokalen Bereitstellung ausgeführt werden. Informationen zum Installieren und Verwenden von Docker finden Sie unter [https://www.docker.com/](https://www.docker.com/).
 
 > [!WARNING]
-> Bereitstellungen lokaler Webdienste werden nicht für Produktionsszenarien unterstützt.
+> Lokale Bereitstellungen werden nicht für Produktionsszenarien unterstützt.
 
-Ändern Sie zum lokalen Bereitstellen Ihren Code so, dass `LocalWebservice.deploy_configuration()` zum Erstellen einer Bereitstellungskonfiguration verwendet wird. Verwenden Sie dann `Model.deploy()`, um den Dienst bereitzustellen. Im folgenden Beispiel wird ein (in der `model`-Variable enthaltenes) Modell als lokaler Webdienst bereitgestellt:
+Ändern Sie zum lokalen Bereitstellen Ihren Code so, dass `LocalWebservice.deploy_configuration()` zum Erstellen einer Bereitstellungskonfiguration verwendet wird. Verwenden Sie dann `Model.deploy()`, um den Dienst bereitzustellen. Im folgenden Beispiel wird ein (in der `model`-Variable enthaltenes) Modell lokal bereitgestellt:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -173,14 +173,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the web service endpoint
+# Create a local deployment, using port 8890 for the  endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the web service is available on
+# Display the port that the  is available on
 print(service.port)
 ```
 
@@ -290,7 +290,7 @@ Es gibt zwei Möglichkeiten, die beim Verhindern des Statuscodes 503 helfen kö
     > [!IMPORTANT]
     > Durch diese Änderung werden Replikate *nicht schneller* erstellt. Stattdessen werden sie mit einem niedrigeren Schwellenwert für die Auslastung erstellt. Anstatt abzuwarten, bis der Dienst zu 70 % ausgelastet ist, werden Replikate schon bei 30 % Auslastung erstellt, wenn Sie den Wert in 30 % ändern.
     
-    Wenn der Webdienst bereits die derzeit maximale Anzahl von Replikaten verwendet und Sie weiterhin den Statuscode 503 erhalten, erhöhen Sie den `autoscale_max_replicas`-Wert, um die maximale Anzahl der Replikate zu erhöhen.
+    Wenn bereits die derzeit maximale Anzahl von Replikaten verwendet wird, und Sie weiterhin den Statuscode 503 erhalten, erhöhen Sie den `autoscale_max_replicas`-Wert, um die maximale Anzahl der Replikate zu erhöhen.
 
 * Ändern Sie die Mindestanzahl der Replikate. Indem Sie die Mindestanzahl der Replikate erhöhen, wird ein größerer Pool für die Verarbeitung eingehender Spitzen bereitgestellt.
 
@@ -326,7 +326,7 @@ In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Pytho
 > [!IMPORTANT]
 > Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)-Klasse erstellen. 
 >
-> Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Docker muss ausgeführt werden, bevor Sie einen lokalen Webdienst bereitstellen. Informationen zum Installieren und Verwenden von Docker finden Sie unter [https://www.docker.com/](https://www.docker.com/).
+> Lokale Bereitstellungen erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Docker muss vor der lokalen Bereitstellung ausgeführt werden. Informationen zum Installieren und Verwenden von Docker finden Sie unter [https://www.docker.com/](https://www.docker.com/).
 
 ### <a name="configure-development-environment"></a>Konfigurieren der Entwicklungsumgebung
 

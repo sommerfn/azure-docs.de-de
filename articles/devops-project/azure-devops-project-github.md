@@ -16,12 +16,12 @@ ms.date: 06/27/2019
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4a48b5c413f6dfb58a1ba3f896ded49250cde306
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 15ac201a078864717d8e0079801507cf5fc0fe3b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286329"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481116"
 ---
 # <a name="tutorial-create-a-cicd-pipeline-for-your-existing-code-by-using-azure-devops-projects"></a>Tutorial: Erstellen einer CI/CD-Pipeline für vorhandenen Code mit Azure DevOps Projects
 
@@ -48,7 +48,11 @@ Mit Azure DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Wählen Sie im linken Bereich auf der linken Navigationsleiste **+Ressource erstellen** aus. Suchen Sie nach **DevOps Projects**, und wählen Sie **Erstellen** aus.
+2. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.
+
+   ![Menü des Azure-Portals: Ressource erstellen](_img/azure-devops-project-github/createaresource.png)
+
+3. Wählen Sie **DevOps > DevOps-Projekt** aus.
 
    ![DevOps Projects-Dashboard](_img/azure-devops-project-github/azuredashboard.png)
 

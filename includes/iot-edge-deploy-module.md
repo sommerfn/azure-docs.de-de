@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/04/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: c20a14ef2bc74d73b93ab39ee52fe1be8a5f984f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12661c77c6a950b482187b09e4465c964e6d6652
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178209"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494057"
 ---
 Eine der wichtigen Funktionen von Azure IoT Edge ist die Möglichkeit, Code aus der Cloud auf IoT Edge-Geräten bereitzustellen. Bei **IoT Edge-Modulen** handelt es sich um ausführbare Pakete, die als Container implementiert werden. In diesem Abschnitt stellen Sie ein fertig erstelltes Modul aus dem [Bereich mit den IoT Edge-Modulen im Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) bereit. 
 
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, um über den Azure Marketplace Ihr erste
 
 3. Nachdem Sie nun ein IoT Edge-Modul im Azure Marketplace und ein IoT Edge-Gerät für das Modul ausgewählt haben, gelangen Sie zu einem aus drei Schritten bestehenden Assistenten, der Sie bei der genauen Definition der Modulbereitstellung unterstützt. Beachten Sie im Schritt **Module hinzufügen** des Assistenten, dass das Modul **SimulatedTemperatureSensor** (Simulierter Temperatursensor) automatisch aufgefüllt wird. In den Tutorials verwenden Sie diese Seite, um Ihrer Bereitstellung weitere Module hinzuzufügen. Im Rahmen dieses Schnellstarts stellen Sie einfach dieses eine Modul bereit. Wählen Sie **Weiter** aus, um mit dem nächsten Schritt des Assistenten fortzufahren.
 
-4. Im Schritt **Specify Routes** (Routen festlegen) des Assistenten definierten Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden. Im Rahmen des Schnellstarts sollen alle Nachrichten von allen Modulen an den IoT Hub (`$upstream`) gelangen. Wenn er nicht automatisch aufgefüllt wurde, fügen Sie in diesem Schritt den folgenden Code hinzu, und wählen Sie dann **Weiter** aus:
+4. Im Schritt **Specify Routes** (Routen festlegen) des Assistenten definierten Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden. Im Rahmen des Schnellstarts sollen alle Nachrichten von allen Modulen an den IoT Hub (`$upstream`) gelangen. Wenn er nicht automatisch aufgefüllt wurde, fügen Sie den folgenden Code hinzu:
 
    ```json
     {
@@ -46,6 +46,7 @@ Führen Sie die folgenden Schritte aus, um über den Azure Marketplace Ihr erste
         }
     }
    ```
+   Klicken Sie anschließend auf **Weiter**.
 
 5. Im Schritt **Bereitstellung überprüfen** des Assistenten können Sie eine Vorschau der JSON-Datei anzeigen, in der alle Module definiert sind, die auf Ihrem IoT Edge-Gerät bereitgestellt werden. Beachten Sie, dass hier das Modul **SimulatedTemperatureSensor** ebenso wie zwei zusätzliche Systemmodule mit den Namen **edgeAgent** und **edgeHub** enthalten sind. Wählen Sie **Übermitteln** aus, wenn Sie die Überprüfung abgeschlossen haben.
 

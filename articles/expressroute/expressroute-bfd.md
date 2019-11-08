@@ -5,19 +5,19 @@ services: expressroute
 author: rambk
 ms.service: expressroute
 ms.topic: article
-ms.date: 8/17/2018
+ms.date: 11/1/2018
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 14f65851e50ed25024524f6d988ba2b2f2b3aeba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a24e021c34fe1ad315ca7f75f9bfdb29d94b253a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367665"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495000"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurieren von BFD über ExpressRoute
 
-ExpressRoute unterstützt Bidirectional Forwarding Detection (BFD) über privates Peering. Durch die Aktivierung von BFD über ExpressRoute können Sie die Erkennung von Verbindungsfehlern zwischen MSEE-Geräten (MSEE = Microsoft Enterprise-Edge) und den Routern beschleunigen, auf denen Sie die ExpressRoute-Leitung (PE) beenden. Sie können ExpressRoute Customer-Edge-Routinggeräte oder Partner Edge-Routinggeräte beenden (wenn Sie den verwalteten Layer 3-Verbindungsdienst verwendet haben). In diesem Dokument werden die Notwendigkeit von BFD und die Vorgehensweise zur Aktivierung von BFD über ExpressRoute erläutert.
+ExpressRoute unterstützt Bidirectional Forwarding Detection (BFD) sowohl über privates als auch Microsoft-Peering. Durch die Aktivierung von BFD über ExpressRoute können Sie die Erkennung von Verbindungsfehlern zwischen MSEE-Geräten (Microsoft Enterprise Edge) und den Routern beschleunigen, auf denen Sie die ExpressRoute-Leitung (CE/PE) beenden. Sie können ExpressRoute Customer-Edge-Routinggeräte oder Partner Edge-Routinggeräte beenden (wenn Sie den verwalteten Layer 3-Verbindungsdienst verwendet haben). In diesem Dokument werden die Notwendigkeit von BFD und die Vorgehensweise zur Aktivierung von BFD über ExpressRoute erläutert.
 
 ## <a name="need-for-bfd"></a>Notwendigkeit von BFD
 
@@ -34,9 +34,9 @@ In diesem Szenario kann BFD helfen. Mit BFD können Verbindungsfehler mit gering
 
 ## <a name="enabling-bfd"></a>Aktivieren von BFD
 
-BFD wird standardmäßig unter allen neu erstellten privaten ExpressRoute-Peeringschnittstellen auf den MSEE-Geräten konfiguriert. Zum Aktivieren von BFD müssen Sie folglich nur BFD auf Ihren PEs konfigurieren. BFD wird in zwei Schritten konfiguriert: Sie müssen BFD in der Schnittstelle konfigurieren und anschließend mit der BGP-Sitzung verknüpfen.
+BFD wird standardmäßig unter allen neu erstellten privaten ExpressRoute-Peeringschnittstellen auf den MSEE-Geräten konfiguriert. Daher müssen Sie zum Aktivieren von BFD nur auf Ihren CEs/PEs (sowohl auf den primären als auch den sekundären Geräten) BFD konfigurieren. BFD wird in zwei Schritten konfiguriert: Sie müssen BFD in der Schnittstelle konfigurieren und anschließend mit der BGP-Sitzung verknüpfen.
 
-Eine PE-Beispielkonfiguration (unter Verwendung von Cisco IOS XE) wird unten dargestellt. 
+Eine CE/PE-Beispielkonfiguration (unter Verwendung von Cisco IOS XE) ist unten dargestellt. 
 
     interface TenGigabitEthernet2/0/0.150
       description private peering to Azure
@@ -56,7 +56,7 @@ Eine PE-Beispielkonfiguration (unter Verwendung von Cisco IOS XE) wird unten dar
       exit-address-family
 
 >[!NOTE]
->Zum Aktivieren von BFD unter einem bereits vorhandenen privaten Peering müssen Sie das Peering zurücksetzen. Siehe [Zurücksetzen von ExpressRoute-Peerings][ResetPeering]
+>Zum Aktivieren von BFD unter einem bereits vorhandenen privaten Peering müssen Sie das Peering zurücksetzen. Informationen dazu finden Sie unter [Zurücksetzen von ExpressRoute-Peerings][ResetPeering].
 >
 
 ## <a name="bfd-timer-negotiation"></a>Aushandlung des BFD-Zeitgebers
@@ -64,7 +64,7 @@ Eine PE-Beispielkonfiguration (unter Verwendung von Cisco IOS XE) wird unten dar
 Zwischen BFD-Peers bestimmt der langsamere der beiden Peers die Übertragungsrate. BFD-Übertragung auf MSEE-Geräten/Empfangsintervalle werden auf 300 Millisekunden festgelegt. In bestimmten Szenarien kann das Intervall auf einen höheren Wert von 750 Millisekunden festgelegt werden. Durch das Konfigurieren höherer Werte können Sie erzwingen, dass diese Intervalle länger sind; kürzere Intervalle können jedoch nicht erzwungen werden.
 
 >[!NOTE]
->Wenn Sie georedundante Leitungen für das private ExpressRoute-Peering konfiguriert haben oder IPSec-VPN-Konnektivität zwischen Standorten als Sicherung für das private ExpressRoute-Peering verwenden; durch die Aktivierung von BFD über das private Peering könnte der Failover nach einem ExpressRoute-Konnektivitätsfehler schneller erfolgen. 
+>Wenn Sie georedundante ExpressRoute-Leitungen konfiguriert haben oder IPSec-VPN-Konnektivität zwischen Standorten als Sicherung verwenden; durch die Aktivierung von BFD könnte der Failover nach einem ExpressRoute-Konnektivitätsfehler schneller erfolgen. 
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

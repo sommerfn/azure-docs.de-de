@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: ef874e5d773e87963b6de8371986ac2196fc38f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a0917f2649f1b780429f78406900c599c5ac853e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901388"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472011"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Erstellen einer neuen Azure API Management-Dienstinstanz
 
@@ -27,25 +27,27 @@ In dieser Schnellstartanleitung werden die Schritte zum Erstellen einer neuen AP
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-![Neue Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
+![API Management-Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-new-service"></a>Erstellen eines neuen Diensts
 
-![Neue Azure API Management-Instanz](./media/get-started-create-service-instance/00-CreateResource-01.png)
-
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Ressource erstellen** > **Enterprise Integration** > **API Management**.
-
-    Alternativ können Sie **Neu** wählen, `API management` in das Suchfeld eingeben und die EINGABETASTE drücken. Klicken Sie auf **Create**.
-
-2. Geben Sie im Fenster **API Management-Dienst** Einstellungen ein.
-
-    ![Neue Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
-
-    | Einstellung                 | Empfohlener Wert                               | Beschreibung                                                                                                                                                                                                                                                                                                                         |
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus. Die Option **Ressource erstellen** kann auch auf der **Startseite** von Azure ausgewählt werden. 
+   
+   ![Auswählen von „Ressource erstellen“](./media/get-started-create-service-instance/00-CreateResource-01.png)
+   
+1. Wählen Sie im Bildschirm **Neu** die Option **Integration** und anschließend **API Management** aus.
+   
+   ![Neue Azure API Management-Instanz](./media/get-started-create-service-instance/00-CreateResource-02.png)
+   
+1. Geben Sie im Bildschirm **API Management-Dienst** Einstellungen ein.
+   
+   ![Neue Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
+   
+   | Einstellung                 | Empfohlener Wert                               | Beschreibung                                                                                                                                                                                                                                                                                                                         |
 |-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                | Eindeutiger Name für Ihren API Management-Dienst | Den Namen können Sie später nicht mehr ändern. Der Name des Diensts wird verwendet, um einen Standarddomänennamen in der Form *{Name}.azure-api.net* zu generieren. Wenn Sie einen benutzerdefinierten Domänennamen verwenden möchten, lesen Sie [Configure a custom domain name](configure-custom-domain.md) (Konfigurieren eines benutzerdefinierten Domänennamens). <br/> Der Dienstname wird verwendet, um auf den Dienst und die entsprechende Azure-Ressource zu verweisen. |
 | **Abonnement**        | Ihr Abonnement                             | Das Abonnement, unter dem diese neue Dienstinstanz erstellt wird. Sie können aus den verschiedenen Azure-Abonnements, auf die Sie Zugriff haben, ein Abonnement auswählen.                                                                                                                                                            |
@@ -60,24 +62,25 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     > [!TIP]
     > Es dauert in der Regel zwischen 20 und 30 Minuten, einen API Management-Dienst zu erstellen. Durch Auswählen von **An Dashboard anheften** ist ein neu erstellter Dienst einfacher zu finden.
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+[!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn die Ressourcengruppe und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit den folgenden Schritten entfernen:
 
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus.
-2. Geben Sie `resource groups` in das Suchfeld ein, und klicken Sie auf das Ergebnis.
+1. Suchen Sie im Azure-Portal nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus. Die Option **Ressourcengruppen** kann auch auf der **Startseite** von Azure ausgewählt werden. 
 
-    ![Ressourcengruppennavigation](./media/get-started-create-service-instance/00-DeleteResource-01.png)
+   ![Ressourcengruppennavigation](./media/get-started-create-service-instance/00-DeleteResource-01.png)
 
-3. Suchen Sie nach Ihrer Ressourcengruppe, und klicken Sie darauf.
-4. Klicken Sie auf **Ressourcengruppe löschen**.
+1. Wählen Sie auf der Seite **Ressourcengruppen** Ihre Ressourcengruppe aus.
 
-    ![Ressourcengruppennavigation](./media/get-started-create-service-instance/00-DeleteResource-02.png)
+   ![Ressourcengruppennavigation](./media/get-started-create-service-instance/00-DeleteResource-02.png)
 
-5. Bestätigen Sie den Löschvorgang, indem Sie den Namen Ihrer Ressourcengruppe eingeben.
-6. Klicken Sie auf **Löschen**.
+1. Wählen Sie auf der Ressourcengruppenseite die Option **Ressourcengruppe löschen** aus. 
+   
+1. Geben Sie den Namen Ihrer Ressourcengruppe ein, und wählen Sie **Löschen** aus.
+
+   ![Ressourcengruppe löschen](./media/get-started-create-service-instance/00-DeleteResource-03.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

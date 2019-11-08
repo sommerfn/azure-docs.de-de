@@ -1,21 +1,21 @@
 ---
 title: Planen Ihrer Azure Time Series Insights Preview-Umgebung | Microsoft-Dokumentation
 description: Planen Sie Ihre Azure Time Series Insights Preview-Umgebung.
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b97db5fcebeea67cc593a4d2c1fd677a55ad8559
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f5a12ca2bdccee1d2f738aa3c810577caf3d8eac
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550177"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491964"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planen Ihrer Azure Time Series Insights Preview-Umgebung
 
@@ -26,7 +26,7 @@ Dieser Artikel beschreibt bewährte Methoden zum Planen und schnellen Starten mi
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Bewährte Methoden für Planung und Vorbereitung
 
-Kenntnis und Verständnis der folgenden Aspekte erleichtern die ersten Schritte mit Time Series Insights:
+Bewährte Methoden zur Planung und Vorbereitung Ihrer Umgebung werden in den folgenden Artikeln ausführlicher beschrieben:
 
 * Was Sie erhalten, wenn Sie [eine Azure Time Series Insights Preview-Umgebung bereitstellen](#the-preview-environment).
 * Wie die [Time Series-IDs und Zeitstempeleigenschaften lauten](#configure-time-series-ids-and-timestamp-properties).
@@ -43,11 +43,22 @@ Wenn Sie eine Time Series Insights Preview-Umgebung bereitstellen, erstellen Sie
 * Eine Azure Time Series Insights Preview-Umgebung
 * Ein Azure-Speicherkonto vom Typ „Allgemein v1“
 
+Im Rahmen des Bereitstellungsprozesses geben Sie an, ob Sie einen Warm Storage aktivieren möchten. Der Warm Storage bietet Ihnen ein mehrstufiges Abfrageerlebnis. Wenn diese Option aktiviert ist, müssen Sie einen Aufbewahrungszeitraum zwischen 7 und 30 Tagen angeben. Abfragen, die innerhalb des Warm Storage-Aufbewahrungszeitraums ausgeführt werden, bieten in der Regel schnellere Antwortzeiten. Wenn sich eine Abfrage über den Warm Storage-Aufbewahrungszeitraum erstreckt, wird sie aus dem Cold Storage bearbeitet.
+
+Abfragen zum Warm Storage sind kostenlos, während Abfragen zum Cold Storage Kosten verursachen. Es ist wichtig, Ihre Abfragemuster zu verstehen und Ihre Warm Storage-Konfiguration entsprechend zu planen. Es wird empfohlen, dass sich die interaktiven Analysen der aktuellsten Daten in Ihrem Warm Storage und die Musteranalysen sowie langfristigen Trends im Cold Storage befinden.
+
+> [!NOTE]
+> Derzeit unterstützen wir maximal 1.000 Eigenschaften mit Warm Storage.
+
 Um zu beginnen, benötigen Sie drei zusätzliche Elemente:
 
 * Ein [Zeitreihenmodell](./time-series-insights-update-tsm.md)
 * Eine [mit Time Series Insights verbundene Ereignisquelle](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * [In die Ereignisquelle fließende Ereignisse](./time-series-insights-send-events.md), die sowohl dem Modell zugeordnet als auch im gültigen JSON-Format sind
+
+## <a name="review-preview-limits"></a>Überprüfen der Grenzwerte der Vorschau
+
+[!INCLUDE [Review Time Series Insights Preview limits](../../includes/time-series-insights-preview-limits.md)]
 
 ## <a name="configure-time-series-ids-and-timestamp-properties"></a>Konfigurieren von Time Series-IDs und Zeitstempeleigenschaften
 
@@ -58,7 +69,7 @@ Um eine neue Time Series Insights-Umgebung zu erstellen, wählen Sie eine Time S
 
 Sie können bis zu drei Schlüssel auswählen, um Ihre Ressourcen eindeutig zu unterscheiden. Weitere Informationen finden Sie unter [Bewährte Methoden für die Auswahl einer Time Series-ID](./time-series-insights-update-how-to-id.md) und [Speicherung und Dateneingang](./time-series-insights-update-storage-ingress.md).
 
-Die Timestamp-Eigenschaft ist ebenfalls wichtig. Sie können diese Eigenschaft festlegen, wenn Sie Ereignisquellen hinzufügen. Jede Ereignisquelle besitzt eine optionale Timestamp-Eigenschaft, die zum Nachverfolgen von Ereignisquellen im Laufe der Zeit verwendet wird. Zeitstempelwerte beachten die Groß- und Kleinschreibung und müssen gemäß der individuellen Spezifikation jeder Ereignisquelle formatiert sein.
+Die **Timestamp**-Eigenschaft ist ebenfalls wichtig. Sie können diese Eigenschaft festlegen, wenn Sie Ereignisquellen hinzufügen. Jede Ereignisquelle besitzt eine optionale Timestamp-Eigenschaft, die zum Nachverfolgen von Ereignisquellen im Laufe der Zeit verwendet wird. Zeitstempelwerte beachten die Groß- und Kleinschreibung und müssen gemäß der individuellen Spezifikation jeder Ereignisquelle formatiert sein.
 
 > [!TIP]
 > Überprüfen Sie die Formatierungs- und Analyseanforderungen für Ihre Ereignisquellen.
@@ -80,7 +91,7 @@ Sie können die Art überprüfen, in der Sie Ereignisse an Time Series Insights 
 Eine gute Faustregel ist:
 
 * Speichern Sie Metadaten in Ihrem Zeitreihenmodell.
-* Time Series-Modus, Instanzfelder und Ereignisse enthalten nur erforderliche Informationen, z.B. eine Time Series-ID oder einen Zeitstempel.
+* Stellen Sie sicher, dass Time Series-Modus, Instanzfelder und Ereignisse nur erforderliche Informationen enthalten, z. B. eine Time Series-ID oder eine Timestamp-Eigenschaft.
 
 Weitere Informationen finden Sie unter [Gestalten von Ereignissen](./time-series-insights-send-events.md#supported-json-shapes).
 
@@ -89,7 +100,5 @@ Weitere Informationen finden Sie unter [Gestalten von Ereignissen](./time-series
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Planen Sie mithilfe des Artikels [Einführung in Azure Advisor](../advisor/advisor-overview.md) Ihre Konfigurationseinstellungen für die Geschäftswiederherstellung.
-
 - Weitere Informationen zu [Speicherung und Dateneingang](./time-series-insights-update-storage-ingress.md) finden Sie in der Time Series Insights-Vorschauversion.
-
 - Weitere Informationen zu [Datenmodellierung](./time-series-insights-update-tsm.md) finden Sie in der Time Series Insights-Vorschauversion.

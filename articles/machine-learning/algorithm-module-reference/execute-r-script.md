@@ -1,7 +1,7 @@
 ---
 title: 'Execute R Script: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie das Modul „Execute R Script“ in Azure Machine Learning Service zum Ausführen von R-Code verwendet wird.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie das Modul Execute R Script in Azure Machine Learning zum Ausführen von R-Code verwendet wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 01d4e3a06b8c6a95374b9ee246864167e6d2ac85
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f9aae1302f0d83c27d5d8f01745ddecbaeea9467
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497879"
 ---
 # <a name="execute-r-script"></a>Execute R Script
 
-In diesem Artikel wird beschrieben, wie Sie das Modul **Execute R Script** verwenden, um R-Code in Ihrer Pipeline auf der grafischen Benutzeroberfläche auszuführen.
+In diesem Artikel wird beschrieben, wie Sie das Modul **Execute R Script** verwenden, um R-Code in Ihrer Azure Machine Learning-Designer-Pipeline (Vorschauversion) auszuführen.
 
 Mit R können Sie Aufgaben ausführen, die von vorhandenen Modulen aktuell nicht unterstützt werden, beispielsweise: 
 - Erstellen benutzerdefinierter Datentransformationen
 - Verwenden eigener Metriken zum Auswerten von Vorhersagen
-- Entwickeln von Modellen mit Algorithmen, die nicht als eigenständige Module auf der grafischen Benutzeroberfläche implementiert sind
+- Entwickeln von Modellen mit Algorithmen, die nicht als eigenständige Module im Designer implementiert sind
 
 ## <a name="r-version-support"></a>Unterstützte Versionen von R
 
-Die grafische Benutzeroberfläche von Azure Machine Learning Service verwendet die CRAN-Distribution (Comprehensive R Archive Network) von R. Die aktuell verwendete Version ist CRAN 3.5.1.
+Der Azure Machine Learning-Designer verwendet die CRAN-Distribution (Comprehensive R Archive Network) von R. Die derzeit verwendete Version ist CRAN 3.5.1.
 
 ## <a name="supported-r-packages"></a>Unterstützte R-Pakete
 
@@ -73,7 +73,7 @@ Das Modul **Execute R Script** enthält R-Beispielcode, den Sie als Ausgangspunk
 
 ![R-Modul](media/module/execute-r-script.png)
 
-Auf der grafischen Benutzeroberfläche gespeicherte Datasets werden automatisch in einen R-Datenrahmen konvertiert, wenn sie mit diesem Modul geladen werden.
+Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konvertiert, wenn sie mit diesem Modul geladen werden.
 
 1.  Fügen Sie Ihrer Pipeline das Modul **Execute R Script** hinzu.
 
@@ -116,10 +116,10 @@ azureml_main <- function(dataframe1, dataframe2){
  * Die Einstiegspunktfunktion kann bis zu zwei Eingabeargumente enthalten: `Param<dataframe1>` und `Param<dataframe2>`
  
    > [!NOTE]
-    > Auf die an das Modul **Execute R Script** übermittelten Daten wird als `dataframe1` und `dataframe2` verwiesen. Dies unterscheidet sich von Azure Machine Learning Studio (Studio-Referenzen `dataset1` und `dataset2`). Stellen Sie sicher, dass in Ihrem Skript ordnungsgemäß auf die Eingabedaten verwiesen wird.  
+    > Auf die an das Modul **Execute R Script** übermittelten Daten wird als `dataframe1` und `dataframe2` verwiesen. Dies unterscheidet sich vom Azure Machine Learning-Designer (Designer-Referenzen `dataset1` und `dataset2`). Stellen Sie sicher, dass in Ihrem Skript ordnungsgemäß auf die Eingabedaten verwiesen wird.  
  
     > [!NOTE]
-    >  Vorhandener R-Code kann kleinere Änderungen erfordern, um in einer Pipeline auf der grafischen Benutzeroberfläche ausgeführt zu werden. Beispielsweise müssen Eingabedaten, die Sie im CSV-Format bereitstellen, explizit in ein Dataset konvertiert werden, bevor Sie sie in Ihrem Code verwenden können. Daten- und Spaltentypen, die in der Sprache R verwendet werden, unterscheiden sich ebenfalls durch einige Besonderheiten von den Daten- und Spaltentypen, die auf der grafischen Benutzeroberfläche verwendet werden.
+    >  Vorhandener R-Code kann kleinere Änderungen erfordern, damit er in einer Designer-Pipeline ausgeführt werden kann. Beispielsweise müssen Eingabedaten, die Sie im CSV-Format bereitstellen, explizit in ein Dataset konvertiert werden, bevor Sie sie in Ihrem Code verwenden können. Daten- und Spaltentypen, die in der Sprache R verwendet werden, unterscheiden sich ebenfalls durch einige Besonderheiten von den im Designer verwendeten Daten- und Spaltentypen.
 
 1.  **Random Seed** (Zufälliger Startwert): Geben Sie einen Wert ein, der in der R-Umgebung als zufälliger Startwert verwendet werden soll. Dieser Parameter entspricht dem Aufrufen von `set.seed(value)` im R-Code.  
 
@@ -127,7 +127,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 ## <a name="results"></a>Ergebnisse
 
-Die **Execute R Script**-Module können mehrere Ausgaben zurückgeben, müssen aber als R-Datenrahmen bereitgestellt werden. Datenrahmen werden aus Kompatibilitätsgründen mit anderen Modulen automatisch in Datasets für grafische Benutzeroberflächen konvertiert.
+Die **Execute R Script**-Module können mehrere Ausgaben zurückgeben, müssen aber als R-Datenrahmen bereitgestellt werden. Datenrahmen werden aus Gründen der Kompatibilität mit anderen Modulen automatisch in Datasets im Designer konvertiert.
 
 Standardmeldungen und -fehler aus R werden im Protokoll des Moduls zurückgegeben.
 
@@ -235,7 +235,7 @@ Sie können R-Objekte zwischen Instanzen des Moduls **Execute R Script** überge
     }
     ```
 
-    Die explizite Konvertierung in den Typ „Ganze Zahl“ erfolgt, da die Serialisierungsfunktion Daten im `Raw`-Format von R ausgibt, was von der grafischen Benutzeroberfläche nicht unterstützt wird.
+    Die explizite Konvertierung in den Typ Integer erfolgt, da die Serialisierungsfunktion Daten im `Raw`-Format von R ausgibt und dies vom Designer nicht unterstützt wird.
 
 1. Fügen Sie eine zweite Instanz des Moduls **Execute R Script** hinzu, und verbinden Sie sie mit dem Ausgangsport des vorherigen Moduls.
 
@@ -402,4 +402,4 @@ Die aktuelle Liste bereits installierter R-Pakete, die zur Verfügung stehen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f8c049cc8d2b09cb37dbd444427b03c1013da65c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973012"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73522884"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -144,6 +144,30 @@ Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betrieb
 **Welche Datenträgertypen unterstützen Momentaufnahmen?**
 
 Für SSD Premium, SSD Standard und HDD Standard werden Momentaufnahmen unterstützt. Für diese drei Datenträgertypen werden Momentaufnahmen für alle Datenträgergrößen unterstützt (einschließlich Datenträger mit einer Größe von bis zu 32 TiB). Ultra-Datenträger unterstützen keine Momentaufnahmen.
+
+### <a name="disk-reservation"></a>Datenträgerreservierung
+
+**Was ist die Azure-Datenträgerreservierung?**
+Die Datenträgerreservierung bietet die Möglichkeit, Datenträgerspeicher ein Jahr im Voraus zu erwerben und so die Gesamtkosten zu reduzieren.
+
+**Welche Optionen werden für die Azure-Datenträgerreservierung angeboten?**
+Die Azure-Datenträgerreservierung bietet die Option, SSD Premium in den angegebenen SKUs von P30 (1 TiB) bis P80 (32 TiB) für eine einjährige Laufzeit zu erwerben. Es gibt keine Beschränkung für die Mindestmenge an Datenträgern zum Erwerb einer Datenträgerreservierung. Darüber hinaus können Sie entweder eine einmalige Vorauszahlung oder monatliche Zahlungen durchführen. Es fallen keine zusätzlichen Transaktionskosten für die verwalteten SSD Premium-Datenträger an.
+
+Reservierungen werden in Form von Datenträgern vorgenommen, nicht nach Kapazität. Anders ausgedrückt: Wenn Sie einen P80-Datenträger (32 TiB) reservieren, erhalten Sie einen einzelnen P80-Datenträger. Sie können diese Reservierung nicht in zwei kleinere P70-Datenträger (16 TiB) aufteilen. Sie können natürlich beliebig viele (oder wenige) Datenträger reservieren, auch zwei separate P70-Datenträger (16 TiB).
+
+**Wie wird die Azure-Datenträgerreservierung abgerechnet?**
+- Bei EA-Kunden (Enterprise Agreement) werden Azure-Zahlungsverpflichtungen zuerst für den Kauf von Azure-Datenträgerreservierungen verwendet. In Szenarien, in denen EA-Kunden sämtliche Zahlungsverpflichtungen aufgebraucht haben, können trotzdem Datenträgerreservierungen erworben werden. Diese Käufe werden dann im Rahmen der einmaligen Vorauszahlung mit der nächsten Überschreitungsrechnung in Rechnung gestellt.
+
+- Für Kunden, die über Azure.com kaufen, wird die registrierte Kreditkarte mit der gesamten Vorauszahlung (oder den monatlichen Festbeträgen) für die Azure-Datenträgerreservierung belastet.
+
+**Wie wird die Azure-Datenträgerreservierung angewandt?**
+Die Datenträgerreservierung folgt einem Modell, das reservierten VM-Instanzen ähnelt. Der Unterschied besteht darin, dass eine Datenträgerreservierung im Gegensatz zu einer VM-Instanz nicht auf verschiedene SKUs angewandt werden kann. Weitere Informationen zu VM-Instanzen finden Sie unter [Kostensparen mit Azure Reserved VM Instances](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md). 
+
+**Kann ich meinen über die Azure-Datenträgerreservierung erworbenen Datenspeicher in mehreren Regionen verwenden?**
+Azure-Datenträgerreservierungen werden für eine bestimmte Region und SKU erworben (z. B. P30 in „USA, Osten 2“) und können daher nicht außerhalb dieser Vorgaben verwendet werden. Sie können jederzeit eine zusätzliche Azure-Datenträgerreservierung für Ihre Datenträger-Speicheranforderungen in anderen Regionen oder SKUs erwerben.
+
+**Was geschieht beim Ablauf meiner Azure-Datenträgerreservierung?**
+Sie erhalten 30 Tage vor dem Ablauf und am Ablaufdatum eine E-Mail-Benachrichtigung. Nach dem Ablauf der Reservierung werden bereitgestellte Datenträger weiterhin ausgeführt und mit dem aktuellen [Satz für die nutzungsbasierte Bezahlung](https://azure.microsoft.com/pricing/details/managed-disks/) in Rechnung gestellt.
 
 ## <a name="ultra-disks"></a>Ultra-Datenträger
 
@@ -334,6 +358,18 @@ Ja
 Nein. Wenn Sie allerdings eine VHD-Datei von einem verschlüsselten, verwalteten Datenträger oder einer Momentaufnahme in ein verschlüsseltes Speicherkonto exportieren, ist sie verschlüsselt. 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium-Datenträger: verwaltet und nicht verwaltet
+
+**Welche Regionen unterstützen die Burstfunktion für die gültigen SSD Premium-Datenträgergrößen?**
+
+Die Burstfunktion wird derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
+
+**In welchen Regionen werden die Größen mit 4/8/16 GiB für verwaltete Datenträger (P1/P2/P3, E1/E2/E3) unterstützt?**
+
+Diese neuen Datenträgergrößen werden derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
+
+**Werden die Datenträgergrößen P1/P2/P3 für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
+
+Nein, sie werden nur auf verwalteten SSD Premium-Datenträgern unterstützt. 
 
 **Kann ich sowohl Premium- als auch Standard-Datenträger anfügen, wenn ein virtueller Computer eine Größenserie mit Unterstützung für Premium-SSD-Datenträger (beispielsweise DSv2) verwendet?** 
 

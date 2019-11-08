@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6f81bc2ccf11cbcc3621dc1149879864c88cf0cf
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980519"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474441"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gängige Anwendungsfälle und Szenarien für Azure Active Directory Domain Services
 
-Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, LDAP und Kerberos/NTLM-Authentifizierung bereit. Azure AD DS lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren, sodass Benutzer sich mit ihren vorhandenen Anmeldeinformationen anmelden können. Sie verwenden diese Domänendienste, ohne Domänencontroller in der Cloud bereitstellen, verwalten und patchen zu müssen, was eine reibungslosere Migration lokaler Ressourcen per Lift & Shift zu Azure ermöglicht.
+Azure Active Directory Domain Services (Azure AD DS) stellt verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, Lightweight Directory Access Protocol (LDAP) und Kerberos/NTLM-Authentifizierung bereit. Azure AD DS lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren, sodass Benutzer sich mit ihren vorhandenen Anmeldeinformationen anmelden können. Sie verwenden diese Domänendienste, ohne Domänencontroller in der Cloud bereitstellen, verwalten und patchen zu müssen, was eine reibungslosere Migration lokaler Ressourcen per Lift & Shift zu Azure ermöglicht.
 
 In diesem Artikel werden einige gängige Geschäftsszenarien beschrieben, in denen Azure AD DS einen Mehrwert bietet und die entsprechenden Anforderungen erfüllt.
 
@@ -32,7 +32,7 @@ Einer verwalteten Azure AD DS-Domäne hinzugefügte VMs können auch mithilfe vo
 
 ![Optimierte Verwaltung von virtuellen Azure-Computern](./media/active-directory-domain-services-scenarios/streamlined-vm-administration.png)
 
-Im Folgenden wird ein gängiges Beispielszenario beschrieben. Wenn Server und andere Infrastrukturkomponenten das Ende ihrer Lebensdauer erreichen, möchte Contoso die aktuell lokal gehosteten Anwendungen in die Cloud verschieben. Der aktuelle IT-Standard des Unternehmens gibt vor, dass Server, auf denen Unternehmensanwendungen gehostet werden, einer Domäne angehören und mithilfe von Gruppenrichtlinien verwaltet werden müssen. Der IT-Administrator von Contoso zieht es vor, für in Azure bereitgestellte VMs den Beitritt zu einer Domäne durchzuführen, um die Verwaltung zu vereinfachen, da sich Benutzer mit ihren Unternehmensanmeldeinformationen anmelden können. Wenn die VMs in die Domäne eingebunden sind, können sie mithilfe von Gruppenrichtlinien auch so konfiguriert werden, dass sie die erforderlichen Sicherheitsbaselines erfüllen. Contoso würde es vorziehen, die eigenen Domänencontroller in Azure nicht bereitstellen, überwachen und verwalten zu müssen.
+Im Folgenden wird ein gängiges Beispielszenario beschrieben. Wenn Server und andere Infrastrukturkomponenten das Ende ihrer Lebensdauer erreichen, möchte Contoso die aktuell lokal gehosteten Anwendungen in die Cloud verschieben. Der aktuelle IT-Standard des Unternehmens gibt vor, dass Server, auf denen Unternehmensanwendungen gehostet werden, einer Domäne angehören und mithilfe von Gruppenrichtlinien verwaltet werden müssen. Der IT-Administrator von Contoso zieht es vor, für in Azure bereitgestellte VMs den Beitritt zu einer Domäne durchzuführen, um die Verwaltung zu vereinfachen, da sich Benutzer mit ihren Unternehmensanmeldeinformationen anmelden können. Wenn die VMs in die Domäne eingebunden sind, können sie mithilfe von Gruppenrichtlinienobjekten (Group Policy Objects, GPOs) auch so konfiguriert werden, dass sie die erforderlichen Sicherheitsbaselines erfüllen. Contoso würde es vorziehen, die eigenen Domänencontroller in Azure nicht bereitstellen, überwachen und verwalten zu müssen.
 
 Für diesen Anwendungsfall ist Azure AD DS hervorragend geeignet. Mit einer verwalteten Azure AD DS-Domäne können Sie VMs in eine Domäne einbinden, einen einzelnen Satz Anmeldeinformationen verwenden und Gruppenrichtlinien anwenden. Bei einer verwalteten Domäne müssen Sie die Domänencontroller nicht selbst konfigurieren und verwalten.
 
@@ -63,7 +63,7 @@ Beachten Sie die folgenden Bereitstellungsaspekte für diesen Beispielanwendungs
 
 ## <a name="lift-and-shift-on-premises-applications-that-use-ldap-read-to-access-the-directory"></a>Migrieren lokaler Anwendungen per Lift & Shift, die LDAP-Lesevorgänge zum Zugreifen auf das Verzeichnis verwenden
 
-Wie im vorherigen Beispielszenario gehen wir davon aus, dass Contoso über eine lokale Branchenanwendung verfügt, die vor fast zehn Jahren entwickelt wurde. Diese Anwendung ist verzeichnisfähig und wurde für die Verwendung von Lightweight Directory Access Protocol (LDAP) zum Lesen von Informationen/Attributen der Benutzer aus AD DS konzipiert. Die Anwendung ändert keine Attribute und schreibt auch nicht in das Verzeichnis.
+Wie im vorherigen Beispielszenario gehen wir davon aus, dass Contoso über eine lokale Branchenanwendung verfügt, die vor fast zehn Jahren entwickelt wurde. Diese Anwendung ist verzeichnisfähig und wurde für die Verwendung von LDAP zum Lesen von Informationen/Attributen der Benutzer aus AD DS konzipiert. Die Anwendung ändert keine Attribute und schreibt auch nicht in das Verzeichnis.
 
 Contoso möchte diese Anwendung zu Azure migrieren und die ältere lokale Hardware außer Betrieb nehmen, auf der diese Anwendung aktuell gehostet wird. Die Anwendung kann nicht zur Verwendung moderner Verzeichnis-APIs (wie der REST-basierten Azure AD Graph-API) umgeschrieben werden. Eine Option zum Migrieren per Lift & Shift ist erwünscht, bei der die Anwendung zur Ausführung in der Cloud migriert werden kann, ohne dass Code geändert oder die Anwendung umgeschrieben wird.
 
@@ -99,7 +99,7 @@ Mit Azure AD DS können Sie verwaltete Domänendienste für in Azure bereitgeste
 
 ## <a name="domain-joined-hdinsight-clusters-preview"></a>In die Domäne eingebundene HDInsight-Cluster (Vorschau)
 
-Sie können einen in eine verwaltete Azure AD DS-Domäne eingebundenen Azure HDInsight-Cluster einrichten, für den Apache Ranger aktiviert ist. Diese Funktion steht derzeit als Vorschau zur Verfügung. Sie können Hive-Richtlinien über Apache Ranger erstellen und anwenden und zulassen, dass Benutzer (z. B. Datenanalysten) mithilfe von ODBC-basierten Tools wie Excel oder Tableau eine Verbindung mit Hive herstellen. Wir arbeiten weiterhin daran, andere Workloads wie HBase, Spark und Storm zu HDInsight-Instanzen hinzuzufügen, die in eine Domäne eingebunden sind.
+Sie können einen in eine verwaltete Azure AD DS-Domäne eingebundenen Azure HDInsight-Cluster einrichten, für den Apache Ranger aktiviert ist. Sie können Hive-Richtlinien über Apache Ranger erstellen und anwenden und zulassen, dass Benutzer (z. B. Datenanalysten) mithilfe von ODBC-basierten Tools wie Excel oder Tableau eine Verbindung mit Hive herstellen. Wir arbeiten weiterhin daran, andere Workloads wie HBase, Spark und Storm zu HDInsight-Instanzen hinzuzufügen, die in eine Domäne eingebunden sind.
 
 Weitere Informationen zu diesem Bereitstellungsszenario finden Sie unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern][hdinsight].
 

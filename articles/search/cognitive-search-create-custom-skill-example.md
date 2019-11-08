@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9ab828daa009f7204abb1c64291d937a1f0dba2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1f134ac360b6c5bd04c0e141da52b6dad950e208
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784930"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466819"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API
 
@@ -313,7 +313,7 @@ namespace SampleSkills
 
 Wichtig: Geben Sie in der Konstanten `key` *Ihren* eigenen Schlüsselwert ein (auf der Grundlage des Schlüssels, den Sie bei der Anmeldung für die Bing-Entitätssuche-API erhalten haben).
 
-Der Einfachheit halber ist der gesamte erforderliche Code in diesem Beispiel in einer einzelnen Datei enthalten. Eine strukturiertere Version der gleichen Qualifikation sowie weitere Beispiele für benutzerdefinierte Qualifikationen finden Sie im Repository [Azure Search Power Skills](https://aka.ms/entity-search-power-skill).
+Der Einfachheit halber ist der gesamte erforderliche Code in diesem Beispiel in einer einzelnen Datei enthalten. Eine strukturiertere Version der gleichen Qualifikation finden Sie im Repository [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch).
 
 Sie können die Datei natürlich von `Function1.cs` in `BingEntitySearch.cs` umbenennen.
 
@@ -476,10 +476,10 @@ Hier wird vorausgesetzt, dass die integrierte [Qualifikation „Entitätserkennu
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Glückwunsch! Sie haben Ihre erste benutzerdefinierte Anreicherungsfunktion erstellt. Nun können Sie Ihre eigene benutzerdefinierte Funktionalität nach dem gleichen Muster hinzufügen. 
+Glückwunsch! Sie haben Ihre erste benutzerdefinierte Qualifikation erstellt. Nun können Sie Ihre eigene benutzerdefinierte Funktionalität nach dem gleichen Muster hinzufügen. Klicken Sie auf die folgenden Links, um weitere Informationen zu erhalten.
 
-+ [Power Skills: ein Repository benutzerdefinierter Qualifikationen](https://aka.ms/powerskills)
-+ [Hinzufügen eines benutzerdefinierten Skills zu einer Pipeline der kognitiven Suche](cognitive-search-custom-skill-interface.md)
++ [Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
++ [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

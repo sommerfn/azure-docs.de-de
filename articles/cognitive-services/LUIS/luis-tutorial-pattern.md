@@ -9,18 +9,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 4e4f1787db86378eaeff9df196cc061c42d0ab1e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499011"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Tutorial: Hinzufügen von Formaten für allgemeine Mustervorlagen
 
 In diesem Tutorial verwenden Sie Muster, um die Vorhersage von Absichten und Entitäten zu verbessern und zugleich weniger Beispieläußerungen anzugeben. Das Muster wird als Beispiel für eine Vorlagenäußerung bereitgestellt, die die Syntax zum Identifizieren von Entitäten und ignorierbarem Text enthält. Ein Muster ist eine Kombination aus der Suche nach Übereinstimmungen mit Ausdrücken und maschinellem Lernen.  Das Beispiel für Vorlagenäußerungen und die Äußerungen der Absicht vermitteln LUIS ein besseres Verständnis dafür, welche Äußerungen zur Absicht passen. 
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -69,7 +71,7 @@ Führen Sie die folgenden Schritte aus:
     |Who does Jill Jones directly report to?|
     |Who is Jill Jones supervisor?|
 
-    [![Screenshot von LUIS beim Hinzufügen neuer Äußerungen für eine Absicht](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Screenshot von LUIS beim Hinzufügen neuer Äußerungen für eine Absicht")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
+    [![Screenshot von LUIS – Hinzufügen von neuen Äußerungen zu einer Absicht](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png "Screenshot von LUIS – Hinzufügen von neuen Äußerungen zu einer Absicht")](media/luis-tutorial-pattern/hr-orgchart-manager-intent.png#lightbox)
 
     Möglicherweise wird auch die keyPhrase-Entität in den Äußerungen der Absicht bezeichnet, anstelle der Employee-Entität. Beide werden im Testbereich und am Endpunkt korrekt vorhergesagt. 
 

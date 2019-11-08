@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von Apache Hive-Bibliotheken während der Erstellung des HDInsight-Clusters – Azure
+title: Apache Hive-Bibliotheken während der Clustererstellung – Azure HDInsight
 description: Erfahren Sie, wie Sie während der Erstellung des Clusters Apache Hive-Bibliotheken (JAR-Dateien) zu einem HDInsight-Cluster hinzufügen.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: c3ef5362c4d97b8d805212f9cf813c7bc9c8c18c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 51a93aaec4abdb2dd9d8fad042c079a48d4ea7a3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059446"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494835"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Hinzufügen benutzerdefinierter Apache Hive-Bibliotheken beim Erstellen des HDInsight-Clusters
 

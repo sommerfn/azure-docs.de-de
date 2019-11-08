@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 0a2bf306ccfa3a4a4fc80d0d55493f284185bba9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 26793c91c85ba4cc33a07358ab8ff318becb325f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648402"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490687"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,8 +42,10 @@ Sie verwenden in diesem Schnellstart ein allgemeines Azure-Speicherkonto (Blobsp
 In dieser Schnellstartanleitung benötigen Sie den Namen Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens für Ihr Speicherkonto: 
 
 1. Navigieren Sie in einem Webbrowser zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Benutzernamen und dem zugehörigen Kennwort an.
-2. Wählen Sie **Alle Dienste** > **Speicher** > **Speicherkonten** aus.
+2. Wählen Sie im Menü des Azure-Portals die Option **Alle Dienste** und anschließend **Storage** > **Speicherkonten** aus. Alternativ können Sie auf einer beliebigen Seite nach *Speicherkonten* suchen und die entsprechende Option auswählen.
 3. Filtern Sie auf der Seite **Speicherkonten** nach Ihrem Speicherkonto (falls erforderlich), und wählen Sie dann Ihr Speicherkonto aus. 
+
+Alternativ können Sie auf einer beliebigen Seite nach *Speicherkonten* suchen und die entsprechende Option auswählen.
 
 #### <a name="create-a-blob-container"></a>Erstellen eines Blobcontainers
 In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** in Azure Blob Storage.
@@ -64,7 +66,12 @@ Jane, Doe
 
 Speichern Sie die Datei im Ordner **C:\ADFv2QuickStartPSH**. (Erstellen Sie den Ordner, falls er noch nicht vorhanden ist.) Kehren Sie dann zum Azure-Portal zurück, und führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie auf der Seite *\<Kontoname>*  - **Blobs**, auf der Sie Ihre Arbeit unterbrochen haben, in der aktualisierten Liste der Container den Eintrag **adftutorial** aus. (Wenn Sie das Fenster geschlossen haben oder zu einer anderen Seite gewechselt sind, melden Sie sich erneut beim [Azure-Portal](https://portal.azure.com) an, wählen Sie **Alle Dienste** > **Speicher** > **Speicherkonten** aus, und wählen Sie dann **Blobs** > **adftutorial** aus.)
+1. Wählen Sie auf der Seite *\<Kontoname>*  - **Blobs**, auf der Sie Ihre Arbeit unterbrochen haben, in der aktualisierten Liste der Container den Eintrag **adftutorial** aus.
+
+   1. Falls Sie das Fenster geschlossen oder zu einer anderen Seite gewechselt haben, melden Sie sich erneut beim [Azure-Portal](https://portal.azure.com) an.
+   1. Wählen Sie im Menü des Azure-Portals die Option **Alle Dienste** und anschließend **Storage** > **Speicherkonten** aus. Alternativ können Sie auf einer beliebigen Seite nach *Speicherkonten* suchen und die entsprechende Option auswählen.
+   1. Wählen Sie Ihr Speicherkonto und anschließend **Blobs** > **adftutorial** aus.
+
 2. Wählen Sie auf der Symbolleiste der Seite des Containers **adftutorial** die Option **Hochladen** aus.
 3. Wählen Sie auf der Seite **Blob hochladen** das Feld **Dateien** aus. Navigieren Sie zur Datei **emp.txt**, und wählen Sie dann die Datei aus.
 4. Erweitern Sie die Überschrift **Erweitert**. Die Seite wird jetzt wie folgt angezeigt:

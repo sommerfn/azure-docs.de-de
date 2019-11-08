@@ -5,85 +5,92 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: edf5e04b7cf9b5c79666c54fbeca49858cf21079
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8ad86280eab3041667bf9d1713ae2b4bc82a4c9e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077504"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491534"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung per Azure Virtual WAN (Vorschauversion)
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung mithilfe von Azure Virtual WAN
 
-In diesem Tutorial wird veranschaulicht, wie Sie mit Virtual WAN eine Verbindung mit Ihren Ressourcen in Azure herstellen, indem Sie eine ExpressRoute-Verbindung und -Zuordnung verwenden. Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
+In diesem Tutorial wird veranschaulicht, wie Sie mit Virtual WAN über eine ExpressRoute-Leitung eine Verbindung mit Ihren Ressourcen in Azure herstellen. Weitere Informationen zu Virtual WAN und zugehörigen Ressourcen finden Sie in der [Übersicht über Virtual WAN](virtual-wan-about.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines vWAN
-> * Erstellen eines Hubs
-> * Suchen und Zuordnen einer Verbindung mit dem Hub
-> * Zuordnen der Verbindung mit einem oder mehreren Hubs
+> * Erstellen eines virtuellen WAN
+> * Erstellen eines Hubs und eines Gateways
 > * Verbinden eines VNET mit einem Hub
-> * Anzeigen Ihrer Virtual WAN-Instanz
-> * Anzeigen der Ressourcenintegrität
-> * Überwachen einer Verbindung
-
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
+> * Verbinden einer Leitung mit einem Hubgateway
+> * Testen der Konnektivität
+> * Ändern einer Gatewaygröße
+> * Ankündigen einer Standardroute
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
-[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
+* Sie verfügen über ein virtuelles Netzwerk, mit dem Sie eine Verbindung herstellen möchten. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken überlappt, mit denen Sie eine Verbindung herstellen möchten. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im [Schnellstart](../virtual-network/quick-create-portal.md).
 
-## <a name="register"></a>Registrieren dieses Features
+* Ihr virtuelles Netzwerk verfügt nicht über Gateways für virtuelle Netzwerke. Falls Ihr virtuelles Netzwerk über ein Gateway verfügt (entweder VPN oder ExpressRoute), müssen Sie alle Gateways entfernen. Für diese Konfiguration ist es erforderlich, dass virtuelle Netzwerke stattdessen mit dem Gateway des Virtual WAN-Hubs verbunden werden.
 
-Bevor Sie Virtual WAN konfigurieren können, müssen Sie Ihr Abonnement zunächst für die Vorschauversion registrieren. Andernfalls können Sie Virtual WAN im Portal nicht verwenden. Senden Sie eine E-Mail mit Ihrer Abonnement-ID an **azurevirtualwan\@microsoft.com**, um sich zu registrieren. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde.
+* Beschaffen Sie sich einen IP-Adressbereich für Ihre Hubregion. Der Hub ist ein virtuelles Netzwerk, das von Virtual WAN erstellt und verwendet wird. Der von Ihnen für den Hub angegebene Adressbereich darf sich nicht mit einem Ihrer vorhandenen virtuellen Netzwerke überlappen, mit denen Sie eine Verbindung herstellen. Außerdem ist keine Überlappung mit Ihren Adressbereichen möglich, mit denen Sie lokal eine Verbindung herstellen. Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, sollten Sie sich an eine Person wenden, die Ihnen diese Informationen zur Verfügung stellen kann.
 
-**Hinweise zur Vorschauversion:**
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
-  * Die ExpressRoute-Leitung muss in einem Land/einer Region aktiviert werden, das/die [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) unterstützt.
-  * Zum Herstellen einer Verbindung mit dem Virtual WAN-Hub muss eine ExpressRoute Premium-Leitung verwendet werden. 
+## <a name="openvwan"></a>Erstellen eines Virtual WAN
 
-## <a name="vnet"></a>1. Erstellen eines virtuellen Netzwerks
+Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 
-[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
+1. Navigieren Sie zur Seite „Virtual WAN“. Klicken Sie im Portal auf **Ressource erstellen**. Geben Sie **Virtual WAN** in das Suchfeld ein, und drücken Sie die EINGABETASTE.
+2. Wählen Sie in den Ergebnissen **Virtual WAN** aus. Klicken Sie auf der Seite „Virtual WAN“ auf **Erstellen**, um die Seite „WAN erstellen“ zu öffnen.
+3. Füllen Sie auf der Seite **WAN erstellen** auf der Registerkarte **Grundlagen** die folgenden Felder aus:
 
-## <a name="openvwan"></a>2. Erstellen eines virtuellen WAN
+   ![Erstellen des WAN](./media/virtual-wan-expressroute-portal/createwan.png)
 
-Navigieren Sie in einem Browser zum [Azure-Portal (Vorschauversion)](https://aka.ms/azurevirtualwanpreviewfeatures), und melden Sie sich mit Ihrem Azure-Konto an.
+   * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten.
+   * **Ressourcengruppe**: Erstellen Sie eine neue oder verwenden Sie eine vorhandene Ressourcengruppe.
+   * **Ressourcengruppenstandort**: Wählen Sie in der Dropdownliste einen Ressourcengruppenstandort aus. Ein WAN ist eine globale Ressource, die nicht in einer bestimmten Region angeordnet ist. Sie müssen aber eine Region auswählen, damit Sie die von Ihnen erstellte WAN-Ressource leichter verwalten und finden können.
+   * **Name**: Geben Sie den für Ihr WAN gewünschten Namen ein.
+   * **Typ**: Wählen Sie **Standard** aus. Mit der SKU „Basic“ können Sie kein ExpressRoute-Gateway erstellen.
+4. Klicken Sie nach dem Ausfüllen der Felder auf **Überprüfen + erstellen**.
+5. Klicken Sie nach bestandenen Überprüfung auf **Erstellen**, um das virtuelle WAN zu erstellen.
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
+## <a name="hub"></a>Erstellen eines virtuellen Hubs und eines Gateways
 
-### <a name="getting-started-page"></a>Seite „Erste Schritte“
+Ein virtueller Hub ist ein virtuelles Netzwerk, das von Virtual WAN erstellt und genutzt wird. Es kann verschiedene Gateways wie VPN und ExpressRoute enthalten. In diesem Abschnitt erstellen Sie für Ihren virtuellen Hub ein ExpressRoute-Gateway. Sie können das Gateway entweder beim [Erstellen eines neuen virtuellen Hubs](#newhub) erstellen oder es in einem [bestehenden Hub](#existinghub) erstellen, indem Sie es bearbeiten. 
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-gettingstarted-include.md)]
+ExpressRoute-Gateways werden in Einheiten von 2 Gbit/s bereitgestellt. 1 Skalierungseinheit = 2 Gbit/s mit Unterstützung von bis zu 10 Skalierungseinheiten = 20 Gbit/s. Die vollständige Erstellung eines virtuellen Hubs und eines Gateways dauert ca. 30 Minuten.
 
-## <a name="hub"></a>3. Erstellen eines Hubs
+### <a name="newhub"></a>Erstellen eines neuen virtuellen Hubs und eines Gateways
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+Erstellen Sie einen neuen virtuellen Hub. Nachdem ein Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Websites zuordnen.
 
-## <a name="hub"></a>4. Suchen und Zuordnen einer Verbindung mit dem Hub
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-1. Wählen Sie Ihr vWAN und unter **Virtual WAN Architecture** (Virtual WAN-Architektur) dann die Option **ExpressRoute-Leitungen** aus.
-1. Klicken Sie für Ihr Abonnement bzw. Ihre Abonnements auf **Select ExpressRoute circuit** (ExpressRoute-Leitung auswählen), wenn sich die ExpressRoute-Leitung unter demselben Abonnement wie Ihr vWAN befindet. 
-1. Wählen Sie über das Pulldownmenü die ExpressRoute-Leitung, die Sie dem Hub zuordnen möchten.
-1. Falls sich die ExpressRoute-Leitung nicht unter demselben Abonnement befindet oder Sie einen [Autorisierungsschlüssel und eine Peer-ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) erhalten haben, wählen Sie die Option **Find a circuit redeeming an authorization key** (Leitung durch Einlösen eines Autorisierungsschlüssels finden).
-1. Geben Sie die folgenden Details ein:
-1. **Autorisierungsschlüssel**: Wird wie oben beschrieben vom Leitungsbesitzer generiert.
-1. **Peerleitungs-URI**: Der Leitungs-URI, der vom Leitungsbesitzer bereitgestellt wird und als eindeutiger Bezeichner für die Leitung verwendet wird.
-1. **Routinggewichtung** - [Routinggewichtung](../expressroute/expressroute-optimize-routing.md) ermöglicht Ihnen die Bevorzugung bestimmter Pfade, wenn mehrere Leitungen unterschiedlicher Peeringstandorte mit demselben Hub verbunden sind.
-1. Klicken Sie auf **Find circuit** (Leitung suchen), und wählen Sie die Leitung aus, falls sie gefunden wird.
-1. Wählen Sie über die Dropdownliste mindestens einen Hub aus, und klicken Sie auf **Speichern**.
+### <a name="existinghub"></a>Erstellen eines Gateways in einem bestehenden Hub
 
-## <a name="vnet"></a>5. Verbinden Ihres VNET mit einem Hub
+Sie können auch ein Gateway in einem bestehenden Hub erstellen, indem Sie es bearbeiten.
 
-In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und einem VNET. Wiederholen Sie diese Schritte für jedes VNET, mit dem Sie eine Verbindung herstellen möchten.
+1. Navigieren Sie zum virtuellen Hub, den Sie bearbeiten möchten, und wählen Sie ihn aus.
+2. Aktivieren Sie auf der Seite **Virtuellen Hub bearbeiten** das Kontrollkästchen **ExpressRoute-Gateway einschließen**.
+3. Klicken Sie zum Bestätigen der Änderungen auf **Bestätigen**. Die vollständige Erstellung eines Hubs samt Ressourcen dauert ca. 30 Minuten.
+
+   ![Bestehender Hub](./media/virtual-wan-expressroute-portal/edithub.png "Bearbeiten eines Hubs")
+
+### <a name="to-view-a-gateway"></a>Anzeigen eines Gateways
+
+Nachdem Sie ein ExpressRoute-Gateway erstellt haben, können Sie dessen Details anzeigen. Navigieren Sie zum Hub, wählen Sie **ExpressRoute** aus, und zeigen Sie das Gateway an.
+
+![Gateway anzeigen](./media/virtual-wan-expressroute-portal/viewgw.png "Gateway anzeigen")
+
+## <a name="connectvnet"></a>Verbinden Ihres VNET mit dem Hub
+
+In diesem Abschnitt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und einem VNET. Wiederholen Sie diese Schritte für jedes VNET, mit dem Sie eine Verbindung herstellen möchten.
 
 1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Virtual network connection** (VNET-Verbindung).
 2. Klicken Sie auf der Seite für die VNET-Verbindung auf **+Add connection** (+Verbindung hinzufügen).
@@ -92,44 +99,58 @@ In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und ein
     * **Verbindungsname**: Dies ist der Name Ihrer Verbindung.
     * **Hubs**: Wählen Sie den Hub aus, den Sie dieser Verbindung zuordnen möchten.
     * **Abonnement**: Überprüfen Sie das Abonnement.
-    * **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, das Sie mit diesem Hub verbinden möchten. Für das virtuelle Netzwerk kann nicht bereits ein Gateway für virtuelle Netzwerke vorhanden sein.
+    * **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, das Sie mit diesem Hub verbinden möchten. Für das virtuelle Netzwerk darf nicht bereits ein Gateway für virtuelle Netzwerke vorhanden sein (weder VPN noch ExpressRoute).
 
+## <a name="connectcircuit"></a>Verbinden Ihrer Leitung mit dem Hubgateway
 
-## <a name="viewwan"></a>6. Anzeigen Ihrer Virtual WAN-Instanz
+Nachdem das Gateway erstellt wurde, können Sie es mit einer [ExpressRoute-Leitung](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbinden. Beachten Sie, dass ExpressRoute Premium-Leitungen, die sich an von ExpressRoute Global Reach unterstützten Standorten befinden, eine Verbindung mit einem Virtual WAN ExpressRoute-Gateway herstellen können.
 
-1. Navigieren Sie zum virtuellen WAN.
-2. Auf der Seite „Übersicht“ steht jeder Punkt auf der Karte für einen Hub. Bewegen Sie den Mauszeiger jeweils auf einen dieser Punkte, um die Zusammenfassung zur Integrität des Hubs anzuzeigen.
-3. Im Abschnitt mit den Hubs und Verbindungen können Sie den Hubstatus, die Site, die Region, den VPN-Verbindungsstatus und die Anzahl von ein- und ausgehenden Byte anzeigen.
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Verbinden der Leitung mit dem Hubgateway
 
-## <a name="viewhealth"></a>7. Anzeigen der Ressourcenintegrität
+Wechseln Sie im Portal zur Seite **Virtueller Hub -> Konnektivität -> ExpressRoute**. Wenn Sie in Ihrem Abonnement Zugriff auf eine ExpressRoute-Leitung haben, sehen Sie die zu verwendende Leitung in der Liste der Leitungen. Wenn Sie keine Leitungen sehen, aber über einen Autorisierungsschlüssel und einen Peerleitungs-URI verfügen, können Sie eine Leitung einlösen und verbinden. Siehe [Herstellen einer Verbindung durch Einlösen eines Autorisierungsschlüssels](#authkey).
 
-1. Navigieren Sie zu Ihrem WAN.
-2. Klicken Sie auf der Seite für Ihr WAN im Abschnitt **Support + Problembehandlung** auf **Integrität**, und zeigen Sie Ihre Ressource an.
+1. Wählen Sie die Leitung aus.
+2. Wählen Sie **Leitung(en) verbinden** aus.
 
-## <a name="connectmon"></a>8. Überwachen einer Verbindung
+   ![Leitung(en) verbinden](./media/virtual-wan-expressroute-portal/cktconnect.png "Leitungen verbinden")
 
-Erstellen Sie eine Verbindung, um die Kommunikation zwischen einer Azure-VM und einem Remotestandort zu überwachen. Weitere Informationen zum Einrichten einer Verbindungsüberwachung finden Sie unter [Überwachen der Netzwerkkommunikation](~/articles/network-watcher/connection-monitor.md). Das Quellfeld ist die VM-IP in Azure, und die Ziel-IP ist die Site-IP.
+### <a name="authkey"></a>Herstellen einer Verbindung durch Einlösen eines Autorisierungsschlüssels
 
-## <a name="cleanup"></a>9. Bereinigen von Ressourcen
+Verwenden Sie den Autorisierungsschlüssel und den Leitungs-URI, die Ihnen zur Verfügung gestellt wurden, um eine Verbindung herzustellen.
 
-Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
+1. Klicken Sie auf der Seite „ExpressRoute“ auf **+Autorisierungsschlüssel einlösen**.
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+   ![Einlösen](./media/virtual-wan-expressroute-portal/redeem.png "einlösen")
+2. Füllen Sie auf der Seite „Autorisierungsschlüssel einlösen“ die Werte aus.
+
+   ![Einlösen von Schlüsselwerten](./media/virtual-wan-expressroute-portal/redeemkey2.png "Schlüsselwerte einlösen")
+3. Klicken Sie auf **Hinzufügen**, um den Schlüssel hinzuzufügen.
+4. Zeigen Sie die Leitung an. Bei einer eingelösten Leitung wird nur der Name (ohne Typ, Anbieter und andere Informationen) angezeigt, da sie sich in einem anderen Abonnement als dem des Benutzers befindet.
+
+## <a name="to-test-connectivity"></a>Testen der Konnektivität
+
+Nachdem die Leitungsverbindung hergestellt wurde, wird als Hubverbindungsstatus „dieser Hub“ angezeigt, was bedeutet, dass die Verbindung mit dem ExpressRoute-Gateway des Hubs hergestellt wird. Warten Sie ca. 5 Minuten, bevor Sie die Konnektivität auf einem Client hinter Ihrer ExpressRoute-Leitung testen, z. B. einer VM im VNET, das Sie zuvor erstellt haben.
+
+Wenn Sie Standorte haben, die mit einem Virtual WAN VPN-Gateway im gleichen Hub wie das ExpressRoute-Gateway verbunden sind, können Sie eine bidirektionale Verbindung zwischen VPN- und ExpressRoute-Endpunkten herstellen. Dynamisches Routing (BGP) wird unterstützt. Die ASN der Gateways im Hub ist zur Zeit unveränderlich.
+
+## <a name="to-change-the-size-of-a-gateway"></a>Ändern der Größe des Gateways
+
+Wenn Sie die Größe Ihres ExpressRoute-Gateways ändern möchten, wechseln Sie zum ExpressRoute-Gateway innerhalb des Hubs, und wählen Sie die Skalierungseinheiten im Dropdownmenü aus. Speichern Sie die Änderung. Das Aktualisieren des Hubgateways dauert ca. 30 Minuten.
+
+![Ändern einer Gatewaygröße](./media/virtual-wan-expressroute-portal/changescale.png "Gatewaygröße ändern")
+
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>Ankündigen der Standardroute 0.0.0.0/0 für Endpunkte
+
+Wenn Sie möchten, dass der virtuelle Azure-Hub die Standardroute 0.0.0.0.0.0/0 Ihren ExpressRoute-Endpunkten ankündigt, müssen Sie das Weitergeben der Standardroute aktivieren.
+
+1. Wählen Sie Ihre **Leitung ->…-> Verbindung bearbeiten** aus.
+
+   ![Bearbeiten der Verbindung](./media/virtual-wan-expressroute-portal/defaultroute1.png "Bearbeiten der Verbindung")
+
+2. Wählen Sie **Aktivieren** aus, um die Standardroute weiterzugeben.
+
+   ![Standardroute weitergeben](./media/virtual-wan-expressroute-portal/defaultroute2.png "Standardroute weitergeben")
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines vWAN
-> * Erstellen eines Hubs
-> * Suchen und Zuordnen einer Verbindung mit dem Hub
-> * Zuordnen der Verbindung mit einem oder mehreren Hubs
-> * Verbinden eines VNET mit einem Hub
-> * Anzeigen Ihrer Virtual WAN-Instanz
-> * Anzeigen der Ressourcenintegrität
-> * Überwachen einer Verbindung
 
 Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).

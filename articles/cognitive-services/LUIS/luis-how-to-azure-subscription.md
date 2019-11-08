@@ -9,18 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 1fb57a7c6cc694c56667d589eae39442ee9e82ac
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 957b12ad00f53a5aed7ff2a1ecd4afd21e58eb93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984381"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467449"
 ---
 # <a name="using-authoring-and-runtime-resource-keys"></a>Verwenden von Erstellungs- und Laufzeitressourcenschlüsseln
 
 Erstellungs- und Laufzeitressourcen stellen Authentifizierung für Ihre LUIS-App und ihren Vorhersageendpunkt bereit.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 <a name="create-luis-service"></a>
 <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
@@ -28,7 +30,7 @@ Erstellungs- und Laufzeitressourcen stellen Authentifizierung für Ihre LUIS-App
 Wenn Sie sich beim LUIS-Portal anmelden, können Sie wählen, wie Sie Ihre Arbeit fortsetzen möchten:
 
 * mit einem kostenlosen [Testschlüssel](#trial-key): Es werden Erstellung und einige Vorhersageendpunktabfragen bereitgestellt.
-* mit einer neuen Azure-LUIS-Erstellungsressource: Erstellen Sie eine neue Ressource. Diese Ressource ist nicht mit der Vorhersageendpunktressource identisch. 
+* eine Azure-Ressource für die [LUIS-Erstellung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne). 
 
 
 <a name="starter-key"></a>
@@ -52,10 +54,7 @@ Wenn Sie Ihren Vorhersageendpunkt veröffentlichen möchten, erstellen Sie Erste
 
 ## <a name="create-resources-in-the-azure-portal"></a>Erstellen von Ressourcen im Azure-Portal
 
-1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/free/) an. 
-1. Wählen Sie **+ Ressource erstellen**.
-1. Geben Sie im Suchfeld `Language understanding`ein.
-1. Wählen Sie **Erstellen**, um den Erstellungsprozess zu starten. 
+1. Über [diesen Link](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) öffnen Sie das Azure-Portal für die Ressourcenerstellung.
 1. Wählen Sie **Beide** aus, um einen Erstellungs- und einen Vorhersageendpunkt-Laufzeitschlüssel zu erstellen. 
 1. Geben Sie die zum Erstellen der Ressource erforderlichen Informationen ein, und wählen Sie dann **Erstellen** aus, um den Prozess abzuschließen.
 

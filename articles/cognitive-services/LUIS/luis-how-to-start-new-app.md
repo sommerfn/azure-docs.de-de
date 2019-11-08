@@ -9,17 +9,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 227efcdbcb7d8e776dd77b38c5d1dedd54d71b6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258502"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73500310"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Erstellen einer LUIS-App im LUIS-Portal
 Es gibt zwei Verfahren zum Erstellen einer LUIS-App. Sie können eine LUIS-App im [LUIS](https://www.luis.ai)-Portal oder mithilfe der LUIS-Erstellungs-[APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) erstellen.
+
+[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="using-the-luis-portal"></a>Mithilfe des LUIS-Portals
 
@@ -45,7 +47,7 @@ Sie können eine neue App mit den Erstellungs-APIs auf zwei Arten erstellen:
 
 ## <a name="create-new-app-in-luis"></a>Erstellen einer neuen App in LUIS
 
-1. Wählen Sie auf der Seite **Meine Apps** die Option **Neue App erstellen** aus.
+1. Wählen Sie auf der Seite **Meine Apps** die Option **+ Erstellen** aus.
 
     ![Liste der LUIS-Apps](./media/luis-create-new-app/apps-list.png)
 

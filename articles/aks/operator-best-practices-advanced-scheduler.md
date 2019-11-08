@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026110"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472613"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Dieser Artikel zu Best Practices konzentriert sich auf erweiterten Kubernetes-Pl
 
 Wenn Sie Ihren AKS-Cluster erstellen, können Sie Knoten mit GPU-Unterstützung oder einer großen Anzahl leistungsstarker CPUs bereitstellen. Diese Knoten werden häufig für große Datenverarbeitungsworkloads wie Machine Learning (ML) oder Künstliche Intelligenz (KI) verwendet. Da diese Art von Hardware in der Regel eine teure Knotenressource ist, die bereitgestellt werden muss, begrenzen Sie die Workloads, die auf diesen Knoten geplant werden können. Möglicherweise möchten Sie stattdessen einige Knoten im Cluster für die Ausführung von Eingangsdiensten und die Verhinderung anderer Workloads verwenden.
 
-Diese Unterstützung für verschiedene Knoten erhalten Sie durch die Verwendung von mehrerer Knotenpools. Ein AKS-Cluster bietet einen oder mehrere Knotenpools. Die Unterstützung für mehrere Knotenpools in AKS ist derzeit in der Vorschauversion verfügbar.
+Diese Unterstützung für verschiedene Knoten erhalten Sie durch die Verwendung von mehrerer Knotenpools. Ein AKS-Cluster bietet einen oder mehrere Knotenpools.
 
 Der Kubernetes-Planer kann Taints und Toleranzen verwenden, um einzuschränken, welche Workloads auf Knoten ausgeführt werden können.
 
@@ -81,16 +81,16 @@ Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unte
 
 Wenn Sie ein Upgrade für einen Knotenpool in AKS durchführen, folgen Taints und Toleranzen einem festen Muster, da sie für neue Knoten angewendet werden:
 
-- **Standardcluster ohne VM-Skalierungsunterstützung**
-  - Stellen Sie sich vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Wenn Sie ein Upgrade durchführen, wird ein zusätzlicher Knoten (*node3*) erstellt.
+- **Standardcluster, die VM-Skalierungsgruppen verwenden**
+  - Stellen Sie sich vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
+  - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
+  - Die ursprünglichen *node1* und *node2* werden gelöscht.
+
+- **Cluster ohne Unterstützung für VM-Skalierungsgruppen**
+  - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Wenn Sie ein Upgrade durchführen, wird ein zusätzlicher Knoten (*node3*) erstellt.
   - Die Taints aus *node1* gelten für *node3*. *node1* wird gelöscht.
   - Ein weiterer neuer Knoten wird erstellt (mit dem Namen *node1*, da der vorherige *node1* gelöscht wurde), und die Taints aus *node2* gelten nun für den neuen *node1*. *node2* wird gelöscht.
   - Zusammengefasst wird *node1* zu *node3*, und *node2* wird zu *node1*.
-
-- **Cluster, die VM-Skalierungsgruppen verwenden**
-  - Stellen Sie sich noch einmal vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
-  - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
-  - Die ursprünglichen *node1* und *node2* werden gelöscht.
 
 Wenn Sie einen Knotenpool in AKS skalieren, werden Taints und Toleranzen absichtlich nicht übertragen.
 

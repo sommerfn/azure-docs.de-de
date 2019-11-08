@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fa13f209d6f4df0ebd531f803e75cdb657abf5c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 731abdde2160c16123ed648b5e552e9e62378438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163122"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494002"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
 
@@ -172,7 +172,7 @@ Als Nächstes fügen wir unserer Projektmappe das Router-Modul hinzu. Das Router
 4. Wenn Sie nach Ihrem Docker Image Repository gefragt werden, verwenden Sie die Registrierung aus dem Machine Learning-Arbeitsbereich (Sie finden die Registrierung im registryCredentials-Knoten Ihrer *deployment.template.json*-Datei). Dieser Wert ist die vollqualifizierte Adresse der Registrierung, wie z.B. **\<Ihre Registrierung\>.azurecr.io/turbofanrouter**.
 
     > [!NOTE]
-    > In diesem Artikel verwenden wir die vom Azure Machine Learning Service-Arbeitsbereich erstellte Azure Container Registry, die wir zum Trainieren und Bereitstellen unseres Klassifizierers verwendet haben. Dies dient ausschließlich der Benutzerfreundlichkeit. Wir hätten eine neue Containerregistrierung erstellen und unsere Module dort veröffentlichen können.
+    > In diesem Artikel verwenden wir die Azure Container Registry-Instanz, die durch den Azure Machine Learning-Arbeitsbereich erstellt wurde, den wir zum Trainieren und Bereitstellen unseres Klassifizierers verwendet haben. Dies dient ausschließlich der Benutzerfreundlichkeit. Wir hätten eine neue Containerregistrierung erstellen und unsere Module dort veröffentlichen können.
 
 5. Öffnen Sie ein neues Terminalfenster in Visual Studio Code (**Ansicht** > **Terminal**), und kopieren Sie Dateien aus dem modules-Verzeichnis.
 
@@ -752,7 +752,7 @@ Nachdem wir nun die Konfigurationsänderungen vorgenommen haben, können wir die
 
 Nachdem der Build erfolgreich abgeschlossen wurde, können wir im Azure-Portal unsere veröffentlichten Module überprüfen.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Azure Machine Learning Service-Arbeitsbereich, und klicken Sie auf den Hyperlink für **Registrierung**.
+1. Navigieren Sie im Azure-Portal zu Ihrem Azure Machine Learning-Arbeitsbereich, und klicken Sie auf den Hyperlink für **Registrierung**.
 
     ![Navigieren zur Registrierung vom Machine Learning Service-Arbeitsbereich aus](media/tutorial-machine-learning-edge-06-custom-modules/follow-registry-link.png)
 

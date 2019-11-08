@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 949595b35c6d989be62dbda43a3b8ccb1608a23d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 2a8a19dfd2cdc7a64a5ea90b96808963b19f73bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937572"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498651"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Unterstützungsmatrix für die VMware-Bewertung und -Migration
 
@@ -36,7 +36,7 @@ In der Tabelle sind die unterstützten Szenarien für VMware-VMs zusammengefasst
 --- | ---
 **Azure-Berechtigungen** | Sie benötigen Berechtigungen für Mitwirkende oder Eigentümer im Abonnement, um ein Azure Migrate-Projekt zu erstellen.
 **VMware-Einschränkungen**  | Bewerten Sie bis zu 35.000 VMware-VMs in einem einzigen Projekt. Sie können mehrere Projekte in einem Azure-Abonnement erstellen. Ein Projekt kann im Rahmen der Bewertungseinschränkungen sowohl VMware-VMs als auch Hyper-V-VMs umfassen.
-**Geografie** | Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen erstellen. Obwohl Sie Projekte nur in diesen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren. Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
+**Geografie** | [Überprüfen](migrate-support-matrix.md#supported-geographies) Sie die unterstützten geografischen Regionen.
 
 **Geografie** | **Speicherort der Metadaten**
 --- | ---
@@ -57,6 +57,17 @@ USA | „USA, Mitte“ oder „USA, Westen 2“
  > [!NOTE]
  > Der Support für Azure Government ist derzeit nur für die [ältere Version](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) von Azure Migrate verfügbar.
 
+
+## <a name="application-discovery"></a>Anwendungsermittlung
+
+Von der Azure Die Serverbewertung kann Apps, Rollen und Features ermitteln. Durch das Ermitteln Ihres App-Bestands können Sie einen maßgeschneiderten Migrationspfad für Ihre lokalen Workloads festlegen und planen. Von der Azure Die Serverbewertung ermöglicht die Ermittlung ohne Agent mithilfe von Gastanmeldeinformationen auf Computern, wobei mithilfe der WMI und von SSH-Aufrufen remote auf Computer zugegriffen wird.
+
+**Unterstützung** | **Details**
+--- | ---
+Unterstützte Computer | Lokale VMware-VMs
+Betriebssystem des Computers | Alle Windows- und Linux-Versionen
+Anmeldeinformationen | Unterstützt derzeit die Verwendung von Anmeldeinformationen für alle Windows-Server sowie einen Satz Anmeldeinformationen für alle Linux-Server. Sie erstellen ein Gastbenutzerkonto für Windows-VMs und ein normales Benutzerkonto (ohne sudo-Zugriff) für alle Linux-VMs.
+Computergrenzwerte für die App-Ermittlung | 10.000 pro Appliance 35.000 pro Projekt
 
 ## <a name="assessment-vcenter-server-requirements"></a>Anforderungen an vCenter Server für die Bewertung
 
@@ -109,6 +120,22 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 --- | ---
 Appliance | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ```https://<appliance-ip-or-name>:44368``` auf die Applianceverwaltungs-App zugreifen zu können. <br/><br/>Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
 vCenter-Server | Eingehende Verbindungen an TCP-Port 443, damit die Appliance Konfigurations- und Leistungsmetadaten für Bewertungen sammeln kann <br/><br/> Die Appliance stellt standardmäßig über Port 443 eine Verbindung mit vCenter her. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie den Port beim Einrichten der Ermittlung ändern.
+
+## <a name="assessment-dependency-visualization"></a>Bewertung von Abhängigkeitsvisualisierungen
+
+Mit der Abhängigkeitsvisualisierung können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie auf Computer mit höheren Zuverlässigkeitsgraden zugreifen möchten. Für VMware-VMs wird die Abhängigkeitsvisualisierung wie folgt unterstützt:
+
+- **Visualisierung von Abhängigkeiten ohne Agent:** Diese Option befindet sich zurzeit in der Vorschau. Sie erfordert keine Installation von Agents auf Computern.
+    - Sie erfasst TCP-Verbindungsdaten von den Computern, für die sie aktiviert wurde. Nachdem die Abhängigkeitsermittlung gestartet wurde, sammelt die Appliance Daten von Computern in einem Abrufintervall von fünf Minuten.
+    - Die folgenden Daten werden gesammelt:
+        - TCP-Verbindungen
+        - Namen von Prozessen mit aktiven Verbindungen
+        - Namen der installierten Anwendungen, die die obigen Prozesse ausführen
+        - Nein. von Verbindungen, die in jedem Abrufintervall erkannt werden
+- **Agent-basierte Visualisierung von Abhängigkeiten:** Zur Verwendung der Agent-basierten Visualisierung von Abhängigkeiten müssen Sie die folgenden Agents auf alle lokalen Computer, die Sie analysieren möchten, herunterladen und dort installieren.
+    - Der Microsoft Monitoring Agent (MMA) muss auf jedem Computer installiert werden. [Weitere Informationen](how-to-create-group-machine-dependencies.md#install-the-mma) zum Installieren des MMA-Agent.
+    - Der Dependency-Agent muss auf jedem Computer installiert werden. [Weitere Informationen](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) zum Installieren des Abhängigkeits-Agent.
+    - Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, auf diesen das Log Analytics-Gateway herunterzuladen und zu installieren.
 
 ## <a name="migration---limitations"></a>Migration – Einschränkungen
 Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Sie weitere Computer migrieren möchten, replizieren Sie sie in Gruppen von 10. Bei der VMware-Migration ohne Agents können Sie bis zu 100 Replikationsvorgänge gleichzeitig ausführen.

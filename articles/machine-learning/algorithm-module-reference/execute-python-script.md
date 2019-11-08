@@ -1,26 +1,26 @@
 ---
 title: 'Python-Skript ausführen: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie das Modul „Python-Skript ausführen“ in Azure Machine Learning Service zum Ausführen von Python-Code verwendet wird.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie das Modul Execute Python Script in Azure Machine Learning zum Ausführen von Python-Code verwendet wird.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: ac68239c12fb284dd3cb5179b5719f3d36acbd34
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693795"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497868"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
-Verwenden Sie dieses Modul zum Ausführen von Python-Code. Weitere Informationen zur Architektur und den Entwurfsprinzipien von Python finden Sie [im folgenden Artikel.](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)
+Verwenden Sie dieses Modul zum Ausführen von Python-Code. Weitere Informationen zur Architektur und den Entwurfsprinzipien von Python finden Sie [im folgenden Artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
 
 Mit Python können Sie Aufgaben ausführen, die aktuell von vorhandenen Modulen nicht unterstützt werden, beispielsweise:
 
@@ -81,7 +81,7 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 
 1. Fügen Sie Ihrer Pipeline das Modul **Python-Skript ausführen** hinzu.
 
-2. Fügen Sie in **Dataset1** alle Datasets aus der Schnittstelle hinzu, die Sie als Eingabe verwenden möchten. Verweisen Sie auf dieses Dataset in Ihrem Python-Skript als **DataFrame1**.
+2. Fügen Sie in **Dataset1** alle Datasets aus dem Designer hinzu, die Sie als Eingabe verwenden möchten. Verweisen Sie auf dieses Dataset in Ihrem Python-Skript als **DataFrame1**.
 
     Die Verwendung eines Datasets ist optional, wenn Sie Daten mithilfe von Python generieren oder Python-Code zum direkten Importieren der Daten in das Modul verwenden möchten.
 
@@ -97,7 +97,7 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 
 5. Geben oder fügen Sie in das Textfeld **Python script** (Python-Skript) ein gültiges Python-Skript ein.
 
-    Das Textfeld **Python script** (Python-Skript) ist mit einigen Anweisungen in Kommentaren und Beispielcode für den Datenzugriff und die Datenausgabe voraufgefüllt. **Sie müssen diesen Code bearbeiten oder ersetzen.** Achten Sie darauf, die Python-Konventionen zu Einzug und Schreibweise zu beachten.
+    Das Textfeld **Python script** (Python-Skript) ist mit einigen Anweisungen in Kommentaren und Beispielcode für den Datenzugriff und die Datenausgabe voraufgefüllt. Sie müssen diesen Code bearbeiten oder ersetzen. Achten Sie darauf, die Python-Konventionen zu Einzug und Schreibweise zu beachten.
 
     + Das Skript muss eine Funktion mit dem Namen `azureml_main` als Einstiegspunkt für dieses Modul enthalten.
     + Die Einstiegspunktfunktion kann bis zu zwei Eingabeargumente enthalten: `Param<dataframe1>` und `Param<dataframe2>`
@@ -105,7 +105,7 @@ Das Modul **Execute Python Script** enthält Python-Beispielcode, den Sie als Au
 
     Wenn Ihre ZIP-Datei `mymodule.py` enthält, importieren Sie sie daher mit `import mymodule`.
 
-    + Zwei Datasets können an die Schnittstelle zurückgegeben werden, dabei muss es sich um eine Sequenz vom Typ `pandas.DataFrame` handeln. Sie können weitere Ausgaben in Ihrem Python-Code erstellen und sie direkt in den Azure-Speicher schreiben.
+    + Es können zwei Datasets den Designer zurückgegeben werden, bei denen es sich um eine Sequenz vom Typ `pandas.DataFrame` handeln muss. Sie können weitere Ausgaben in Ihrem Python-Code erstellen und sie direkt in den Azure-Speicher schreiben.
 
 6. Führen Sie die Pipeline aus, oder wählen Sie das Modul aus, und klicken Sie auf **Auswahl ausführen**, um nur das Python-Skript auszuführen.
 
@@ -124,4 +124,4 @@ Das Modul gibt zwei Datasets zurück:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8b4b5553605042499a9a8f3343ac4e6678e7006f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a954118cd0697213674bb9981f0d94100488fb38
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640429"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464509"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme
 
@@ -33,9 +33,9 @@ In der folgenden Tabelle sind die Datentypen und ihre Verwendung zum Erstellen e
 
 | Datentyp | BESCHREIBUNG | Einsatzgebiete | Zusätzlicher Dienst erforderlich | Menge zum Trainieren eines Modells | Gebietsschema(s) |
 | --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
-| **Einzelne Äußerungen und entsprechendes Transkript** | Eine Sammlung (.zip) von Audiodateien (.wav) als einzelne Äußerungen. Jede Audiodatei sollte maximal 15 Sekunden lang sein und über ein zugehöriges formatiertes Transkript (.txt) verfügen. | Professionelle Aufnahmen mit entsprechenden Transkripten | Bereit zum Training. | Keine zwingende Anforderung für „en-US“ und „zh-CN“. Mehr als 2.000 unterschiedliche Äußerungen für andere Gebietsschemas. | Alle Custom Voice-Gebietsschemas |
-| **Lange Audiodatei und Transkript (Betaversion)** | Eine Sammlung (.zip) von langen, nicht segmentierten Audiodateien (länger als 20 Sekunden) mit einem zugehörigen Transkript (.txt), das alle gesprochenen Wörter enthält. | Sie haben Audiodateien und entsprechende Transkripte, die aber nicht in Äußerungen segmentiert sind. | Segmentierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich). | Keine zwingende Anforderung für „en-US“ und „zh-CN“. | `en-US` und `zh-CN` |
-| **Nur Audio (Betaversion)** | Eine Sammlung (.zip) von Audiodateien ohne Transkript. | Sie haben nur Audiodateien ohne Transkripte. | Segmentierung und Transkriptgenerierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich).| Keine zwingenden Anforderungen für `en-US` und `zh-CN`. | `en-US` und `zh-CN` |
+| **Einzelne Äußerungen und entsprechendes Transkript** | Eine Sammlung (.zip) von Audiodateien (.wav) als einzelne Äußerungen. Jede Audiodatei sollte maximal 15 Sekunden lang sein und über ein zugehöriges formatiertes Transkript (.txt) verfügen. | Professionelle Aufnahmen mit entsprechenden Transkripten | Bereit zum Training. | Keine zwingende Anforderung für „en-US“ und „zh-CN“. Mehr als 2.000 unterschiedliche Äußerungen für andere Gebietsschemas. | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
+| **Lange Audiodatei und Transkript (Betaversion)** | Eine Sammlung (.zip) von langen, nicht segmentierten Audiodateien (länger als 20 Sekunden) mit einem zugehörigen Transkript (.txt), das alle gesprochenen Wörter enthält. | Sie haben Audiodateien und entsprechende Transkripte, die aber nicht in Äußerungen segmentiert sind. | Segmentierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich). | Keine zwingende Anforderung  | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
+| **Nur Audio (Betaversion)** | Eine Sammlung (.zip) von Audiodateien ohne Transkript. | Sie haben nur Audiodateien ohne Transkripte. | Segmentierung und Transkriptgenerierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich).| Keine zwingende Anforderung | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
 
 Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgeladen werden. Jedes Dataset darf nur einen einzelnen Datentyp enthalten.
 
@@ -65,7 +65,7 @@ Beachten Sie beim Vorbereiten der Audiodateien die folgenden Richtlinien.
 | Dateiname | Numerisch, mit der Erweiterung WAV. Doppelte Dateinamen sind nicht zulässig. |
 | Länge der Audiodatei | Kürzer als 15 Sekunden |
 | Archivierungsformat | .zip |
-| Maximale Archivgröße | 200 MB |
+| Maximale Archivgröße | 2048 MB |
 
 > [!NOTE]
 > WAV-Dateien mit einer Samplingrate unter 16.000 Hz werden zurückgewiesen. Wenn eine ZIP-Datei WAV-Dateien mit unterschiedlichen Samplingraten enthält, werden nur die Dateien importiert, deren Rate mindestens 16.000 Hz beträgt. Aktuell werden im Portal ZIP-Archiv-Importe von bis zu 200 MB unterstützt. Es besteht allerdings die Möglichkeit, mehrere Archive hochzuladen.
@@ -79,7 +79,7 @@ Die Transkriptionsdatei ist eine reine Textdatei. Beachten Sie beim Vorbereiten 
 | Dateiformat | Nur-Text (.txt) |
 | Codierungsformat | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE. Für zh-CN werden ANSI/ASCII- und UTF-8-Codierungen nicht unterstützt. |
 | Anzahl von Äußerungen pro Zeile | **Eine**: Jede Zeile der Transkriptionsdatei muss den Namen einer der Audiodateien enthalten, gefolgt von der jeweiligen Transkription. Der Dateiname und die Transkription sollten durch ein Tabulatorzeichen (\t) getrennt werden. |
-| Maximale Dateigröße | 50 MB |
+| Maximale Dateigröße | 2048 MB |
 
 Das folgende Beispiel zeigt, wie die Transkripte nach Äußerungen unterteilt in einer TXT-Datei organisiert werden:
 
@@ -107,12 +107,12 @@ Beachten Sie beim Vorbereiten der Audiodateien für die Segmentierung die folgen
 | Eigenschaft | Wert |
 | -------- | ----- |
 | Dateiformat | RIFF-Dateien (.wav) mit einer Samplingrate von mindestens 16 kHz und 16 Bit in PCM oder MP3-Dateien mit einer Bitrate von mindestens 256 Kbit/s, die in einer ZIP-Datei gruppiert sind |
-| Dateiname | Nur ASCII-Zeichen. Unicode-Zeichen im Namen führen zu einem Fehler (z. B. chinesische Zeichen oder Symbole wie „—“). Doppelte Namen sind nicht zulässig. |
+| Dateiname | ASCII- und Unicode-Zeichen werden unterstützt. Doppelte Namen sind nicht zulässig. |
 | Länge der Audiodatei | Länger als 20 Sekunden |
 | Archivierungsformat | .zip |
-| Maximale Archivgröße | 200 MB |
+| Maximale Archivgröße | 2048 MB |
 
-Alle Audiodateien müssen in einer ZIP-Datei gruppiert werden. Audiodateien im WAV- und MP3-Format können in einer Audio-ZIP-Datei gespeichert werden, die ZIP-Datei darf aber keine Unterordner enthalten. Sie können beispielsweise eine ZIP-Datei ohne Unterordner hochladen, die eine 45 Sekunden lange Audiodatei mit dem Namen „kingstory.wav“ und eine weitere 200 Sekunden lange Audiodatei mit dem Namen „queenstory.mp3“ enthält. Alle MP3-Dateien werden nach der Verarbeitung in das WAV-Format transformiert.
+Alle Audiodateien müssen in einer ZIP-Datei gruppiert werden. Das gemeinsame Speichern von WAV- und MP3-Dateien in einer einzelnen Audio-ZIP-Datei ist zulässig. Sie können z. B. eine ZIP-Datei hochladen, die eine 45 Sekunden lange Audiodatei mit dem Namen „kingstory.wav“ und eine weitere 200 Sekunden lange Audiodatei mit dem Namen „queenstory.mp3“ enthält. Alle MP3-Dateien werden nach der Verarbeitung in das WAV-Format transformiert.
 
 ### <a name="transcripts"></a>Transkripte
 
@@ -124,9 +124,9 @@ Transkripte müssen entsprechend den Spezifikationen in dieser Tabelle vorbereit
 | Dateiname | Namen der entsprechenden Audiodatei verwenden |
 | Codierungsformat | Nur UTF-8-BOM |
 | Anzahl von Äußerungen pro Zeile | Keine Begrenzung |
-| Maximale Dateigröße | 50 MB |
+| Maximale Dateigröße | 2048 MB |
 
-Alle Transkriptdateien dieses Datentyps müssen in einer ZIP-Datei gruppiert werden. In der ZIP-Datei sind keine Unterordner zulässig. Angenommen, Sie haben eine ZIP-Datei hochgeladen, die eine 45 Sekunden lange Audiodatei mit dem Namen „kingstory.wav“ und eine weitere 200 Sekunden lange Audiodatei mit dem Namen „queenstory.mp3“ enthält. In diesem Fall müssen Sie eine weitere ZIP-Datei hochladen, die zwei Transkripte enthält – eine mit dem Namen „kingstory.txt“ und eine mit dem Namen „queenstory.txt“. In jeder Nur-Text-Datei stellen Sie die richtige und vollständige Transkription für die entsprechende Audioaufnahme bereit.
+Alle Transkriptdateien dieses Datentyps müssen in einer ZIP-Datei gruppiert werden. Angenommen, Sie haben eine ZIP-Datei hochgeladen, die eine 45 Sekunden lange Audiodatei mit dem Namen „kingstory.wav“ und eine weitere 200 Sekunden lange Audiodatei mit dem Namen „queenstory.mp3“ enthält. In diesem Fall müssen Sie eine weitere ZIP-Datei hochladen, die zwei Transkripte enthält – eine mit dem Namen „kingstory.txt“ und eine mit dem Namen „queenstory.txt“. In jeder Nur-Text-Datei stellen Sie die richtige und vollständige Transkription für die entsprechende Audioaufnahme bereit.
 
 Nachdem das Dataset erfolgreich hochgeladen wurde, helfen wir Ihnen dabei, die Audiodatei basierend auf dem bereitgestellten Transkript in Äußerungen zu segmentieren. Sie können die segmentierten Äußerungen und die entsprechenden Transkripte überprüfen, indem Sie das Dataset herunterladen. Den segmentierten Äußerungen werden automatisch eindeutige IDs zugewiesen. Sie müssen unbedingt sicherstellen, dass die von Ihnen bereitgestellten Transkripte zu 100 % genau sind. Fehler in den Transkripten können die Genauigkeit der Audiosegmentierung beeinträchtigen und später beim Training zu weiteren Qualitätsverlusten führen.
 
@@ -142,12 +142,12 @@ Beachten Sie beim Vorbereiten der Audiodateien die folgenden Richtlinien.
 | Eigenschaft | Wert |
 | -------- | ----- |
 | Dateiformat | RIFF-Dateien (.wav) mit einer Samplingrate von mindestens 16 kHz und 16 Bit in PCM oder MP3-Dateien mit einer Bitrate von mindestens 256 Kbit/s, die in einer ZIP-Datei gruppiert sind |
-| Dateiname | Nur ASCII-Zeichen. Unicode-Zeichen im Namen führen zu einem Fehler (z. B. chinesische Zeichen oder Symbole wie „—“). Doppelte Namen sind nicht zulässig. |
+| Dateiname | ASCII- und Unicode-Zeichen werden unterstützt. Doppelte Namen sind nicht zulässig. |
 | Länge der Audiodatei | Länger als 20 Sekunden |
 | Archivierungsformat | .zip |
-| Maximale Archivgröße | 200 MB |
+| Maximale Archivgröße | 2048 MB |
 
-Alle Audiodateien müssen in einer ZIP-Datei gruppiert werden. In der ZIP-Datei sind keine Unterordner zulässig. Nachdem das Dataset erfolgreich hochgeladen wurde, helfen wir Ihnen dabei, die Audiodatei mit unserem Dienst für die Batch-Sprachtranskription in Äußerungen zu segmentieren. Den segmentierten Äußerungen werden automatisch eindeutige IDs zugewiesen. Zugehörige Transkripte werden mittels Spracherkennung generiert. Alle MP3-Dateien werden nach der Verarbeitung in das WAV-Format transformiert. Sie können die segmentierten Äußerungen und die entsprechenden Transkripte überprüfen, indem Sie das Dataset herunterladen.
+Alle Audiodateien müssen in einer ZIP-Datei gruppiert werden. Nachdem das Dataset erfolgreich hochgeladen wurde, helfen wir Ihnen dabei, die Audiodatei mit unserem Dienst für die Batch-Sprachtranskription in Äußerungen zu segmentieren. Den segmentierten Äußerungen werden automatisch eindeutige IDs zugewiesen. Zugehörige Transkripte werden mittels Spracherkennung generiert. Alle MP3-Dateien werden nach der Verarbeitung in das WAV-Format transformiert. Sie können die segmentierten Äußerungen und die entsprechenden Transkripte überprüfen, indem Sie das Dataset herunterladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

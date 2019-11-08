@@ -1,5 +1,6 @@
 ---
-title: Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory | Microsoft-Dokumentation
+title: Konfigurierbare Tokenlebensdauern in Azure Active Directory
+titleSuffix: Microsoft identity platform
 description: Es wird beschrieben, wie Sie Gültigkeitsdauern für Token festlegen, die von Azure AD ausgestellt werden.
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024446"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73473953"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -44,11 +45,19 @@ Sie können eine Richtlinie als Standardrichtlinie für Ihre Organisation festle
 
 ## <a name="token-types"></a>Tokentypen
 
-Sie können die Tokengültigkeitsdauer-Richtlinien für Aktualisierungstoken, Zugriffstoken, Sitzungstoken und ID-Token festlegen.
+Sie können die Tokenlebensdauer-Richtlinien für Aktualisierungstoken, Zugriffstoken, SAML-Token, Sitzungstoken und ID-Token festlegen.
 
 ### <a name="access-tokens"></a>Zugriffstoken
 
 Clients nutzen Zugriffstoken, um auf eine geschützte Ressource zuzugreifen. Ein Zugriffstoken kann nur für eine bestimmte Kombination aus Benutzer, Client und Ressource verwendet werden. Zugriffstoken können nicht widerrufen werden und sind bis zu ihrem Ablauf gültig. Ein böswilliger Akteur, der ein Zugriffstoken abgerufen hat, kann es während seiner gesamten Lebensdauer verwenden. Das Anpassen der Gültigkeitsdauer eines Zugriffstokens erfordert einen Kompromiss. Hierbei steht eine Verbesserung der Systemleistung einer Verlängerung der Zeitspanne gegenüber, über die der Client weiterhin Zugriff hat, nachdem das Konto des Benutzers deaktiviert wurde. Eine verbesserte Systemleistung wird dadurch erzielt, dass ein Client weniger oft ein neues Zugriffstoken abrufen muss.  Die Standardeinstellung ist „1 Stunde“. Nach einer Stunde muss der Client das Aktualisierungstoken verwenden, um (meist im Hintergrund) ein neues Aktualisierungstoken und Zugriffstoken abzurufen. 
+
+### <a name="saml-tokens"></a>SAML-Token
+
+SAML-Token werden in vielen webbasierten SaaS-Anwendungen verwendet und über den SAML2-Protokollendpunkt von Azure Active Directory abgerufen.  Sie werden auch in Anwendungen genutzt, in denen WS-Verbund verwendet wird.    Die Standardlebensdauer des Tokens beträgt 1 Stunde. Für eine Anwendung wird die Lebensdauer des Tokens durch den Wert „NotOnOrAfter“ des <conditions …>-Elements im Token angegeben.  Nach der Lebensdauer des Tokens muss der Client eine neue Authentifizierungsanforderung initiieren, die häufig als Ergebnis des SSO-Sitzungstokens ohne interaktive Anmeldung erfüllt wird.
+
+Der Wert von „NotOnOrAfter“ kann mithilfe des AccessTokenLifetime-Parameters in einer TokenLifetimePolicy geändert werden.  Der Wert wird auf die in der Richtlinie konfigurierte Lebensdauer (sofern vorhanden) zuzüglich eines Zeitversatzfaktors von fünf Minuten festgelegt.
+
+Beachten Sie, dass die im <SubjectConfirmationData>-Element angegebene Antragstellerbestätigung für NotOnOrAfter nicht von der Konfiguration der Tokenlebensdauer betroffen ist. 
 
 ### <a name="refresh-tokens"></a>Aktualisierungstoken
 
@@ -62,6 +71,9 @@ Vertrauliche Clients sind Anwendungen, die ein Clientkennwort (Geheimnis) sicher
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Tokengültigkeitsdauer bei Aktualisierungstoken von öffentlichen Clients
 
 Öffentliche Clients können ein Clientkennwort (Geheimnis) nicht sicher speichern. Eine iOS- oder Android-App kann beispielsweise kein Geheimnis vor dem Ressourcenbesitzer verbergen und gilt daher als öffentlicher Client. Sie können Richtlinien für Ressourcen festlegen, um zu verhindern, dass Aktualisierungstoken aus öffentlichen Clients, deren Alter einen festgelegten Wert überschritten hat, ein neues Zugriffs-/Aktualisierungstoken-Paar abrufen können. (Verwenden Sie hierfür die Eigenschaft „Max. Zeit der Inaktivität für Aktualisierungstoken“ (`MaxInactiveTime`).) Sie können Richtlinien auch verwenden, um einen Zeitraum bis zum einem Punkt festzulegen, ab dem die Aktualisierungstoken nicht mehr akzeptiert werden. (Verwenden Sie hierfür die Eigenschaft „Max. Alter Aktualisierungstoken“.) Sie können die Gültigkeitsdauer eines Aktualisierungstokens anpassen, um zu steuern, wann und wie oft der Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch erneut authentifiziert zu werden, wenn er eine öffentliche Clientanwendung verwendet.
+
+> [!NOTE]
+> Die Eigenschaft „Max. Alter“ ist die Zeitspanne, in der ein Token verwendet werden kann. 
 
 ### <a name="id-tokens"></a>ID-Token
 ID-Token werden an Websites und native Clients übergeben. ID-Token enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zu ihrem Ablaufdatum als gültig betrachtet. In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an. Sie können die Gültigkeitsdauer eines ID-Tokens anpassen, um zu steuern, wie oft die Webanwendung den Ablauf der Anwendungssitzung veranlasst und wie oft der Benutzer für Azure AD erneut authentifiziert werden muss (entweder im Hintergrund oder interaktiv).
@@ -89,7 +101,7 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | Max. Alter Multi-Factor-Sitzungstoken |MaxAgeSessionMultiFactor |Sitzungstoken (beständig und nicht beständig) |Bis zum Widerruf |10 Minuten |Bis zum Widerruf<sup>1</sup> |
 
 * <sup>1</sup>365 Tage ist die explizite Maximallänge, die für diese Attribute festgelegt werden kann.
-* <sup>2</sup>Damit der Microsoft Teams-Webclient funktioniert, empfiehlt es sich, „AccessTokenLifetime“ für Microsoft Teams auf mehr als 15 Minuten festzulegen.
+* <sup>2</sup>Damit der Microsoft Teams-Webclient funktioniert, empfiehlt es sich, „AccessTokenLifetime“ für Microsoft Teams auf mehr als 15 Minuten festzulegen.
 
 ### <a name="exceptions"></a>Ausnahmen
 | Eigenschaft | Betrifft | Standard |
@@ -139,7 +151,7 @@ Alle hier verwendeten Zeiträume werden nach dem C#-Objekt [TimeSpan](/dotnet/ap
 ### <a name="access-token-lifetime"></a>Gültigkeitsdauer Zugriffstoken
 **Zeichenfolge:** AccessTokenLifetime
 
-**Betrifft:** Zugriffstoken, ID-Token
+**Betrifft:** Zugriffstoken, ID-Token, SAML-Token
 
 **Zusammenfassung:** Diese Richtlinie steuert, wie lange Zugriffstoken und ID-Token für diese Ressource als gültig angesehen werden. Durch das Reduzieren des Werts für die Eigenschaft „Gültigkeitsdauer Zugriffstoken“ wird das Risiko verringert, dass ein Zugriffstoken oder ID-Token von einem böswilligen Akteur für einen längeren Zeitraum verwendet wird. (Diese Token können nicht widerrufen werden.) Der Nachteil hierbei ist, dass die Leistung beeinträchtigt wird, da die Token häufiger ersetzt werden müssen.
 

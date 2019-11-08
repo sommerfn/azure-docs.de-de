@@ -9,16 +9,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a7b0276ca41e1b9342b3602a67dea0517c60f66a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999384"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489339"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Optimieren von Hyperparametern für Ihr Modell mit Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Mit Azure Machine Learning können Sie die Hyperparameter für Ihr Modell effizient optimieren.  Die Optimierung von Hyperparametern umfasst die folgenden Schritte:
 
@@ -95,6 +96,12 @@ Dieser Code definiert einen Suchbereich mit zwei Parametern: `learning_rate` und
 ### <a name="sampling-the-hyperparameter-space"></a>Stichprobenentnahme im Hyperparameterraum
 
 Sie können außerdem die für die Definition des Hyperparameterbereichs zu verwendende Parametersamplingmethode (Stichprobenentnahme) festlegen. Azure Machine Learning unterstützt Zufallssampling, Rastersampling und Bayessches Sampling.
+
+#### <a name="picking-a-sampling-method"></a>Wählen einer Samplingmethode
+
+* Rastersampling kann verwendet werden, wenn Ihr Hyperparameterraum als eine Wahl zwischen diskreten Werten definiert werden kann und wenn Sie über ein ausreichendes Budget verfügen, um alle Werte im definierten Suchraum vollständig durchzusuchen. Darüber hinaus können Sie die automatisierte vorzeitige Beendigung leistungsschwacher Läufe nutzen, wodurch die Vergeudung von Ressourcen reduziert wird.
+* Beim Zufallssampling darf der Hyperparameterraum sowohl diskrete als auch kontinuierliche Hyperparameter enthalten. In der Praxis führt dies meist zu guten Ergebnissen und ermöglicht auch die vorzeitige automatisierte Beendigung leistungsschwacher Läufe. Einige Benutzer führen eine erste Suche mit Zufallssampling durch und verfeinern anschließend den Suchraum iterativ, um Ergebnisse zu verbessern.
+* Bayessches Sampling nutzt Kenntnisse früherer Stichproben bei der Wahl von Hyperparameterwerten und versucht, die gemeldete primäre Metrik effektiv zu verbessern. Bayessches Sampling wird empfohlen, wenn Sie über ein ausreichendes Budget verfügen, um den Hyperparameterraum zu erkunden. Für beste Ergebnisse beim bayesschen Sampling empfehlen wir eine maximale Anzahl von Läufen, die größer oder gleich dem 20-fachen der Anzahl der zu optimierenden Hyperparameter ist. Beim bayesschen Sampling wird zurzeit keine Richtlinie für frühzeitige Beendigung unterstützt.
 
 #### <a name="random-sampling"></a>Zufallssampling
 
@@ -248,8 +255,10 @@ policy=None
 
 Ist keine Richtlinie angegeben, lässt der Dienst zur Optimierung von Hyperparametern alle Trainingsläufe bis zum Abschluss ausführen.
 
->[!NOTE] 
->Wenn Sie eine konservative Richtlinie möchten, die eine Ersparnis ohne Beendigung vielversprechender Aufträge ermöglicht, können Sie eine Medianstopprichtlinie mit den Werten 1 für `evaluation_interval` und 5 für `delay_evaluation` verwenden. Dies ist eine konservative Einstellung, die annähernd 25 %–35 % Ersparnis ohne Verluste bei der primären Metrik erbringen kann (bezogen auf unsere Auswertungsdaten).
+### <a name="picking-an-early-termination-policy"></a>Wählen einer Richtlinie für frühzeitige Beendigung
+
+* Wenn Sie eine konservative Richtlinie möchten, die eine Ersparnis ohne Beendigung vielversprechender Aufträge ermöglicht, können Sie eine Medianstopprichtlinie mit den Werten 1 für `evaluation_interval` und 5 für `delay_evaluation` verwenden. Dies ist eine konservative Einstellung, die annähernd 25 %–35 % Ersparnis ohne Verluste bei der primären Metrik erbringen kann (bezogen auf unsere Auswertungsdaten).
+* Wenn Sie nach aggressiveren Einsparungen durch vorzeitige Beendigung suchen, können Sie entweder die sog. Bandit-Richtlinie mit einem strengeren (kleineren) zulässigen Puffer oder die Kürzungsauswahlrichtlinie mit einem höheren Kürzungsprozentsatz verwenden.
 
 ## <a name="allocate-resources"></a>Zuordnen von Ressourcen
 
@@ -305,6 +314,46 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
 `experiment_name` ist der Name, den Sie Ihrem Experiment zur Hyperparameteroptimierung zuweisen, und `workspace` ist der Arbeitsbereich, in dem Sie das Experiment erstellen möchten (weitere Informationen zu Experimenten finden Sie unter [Wie funktioniert Azure Machine Learning?](concept-azure-machine-learning-architecture.md)).
+
+## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>Warmstart Ihres Experiments zur Optimierung von Hyperparametern (optional)
+
+Häufig kann das Finden der besten Hyperparameterwerte für Ihr Modell ein iterativer Prozess sein, der mehrere Optimierungsläufe erfordert, die von vorherigen Läufen zur Hyperparameteroptimierung lernen. Durch die Wiederverwendung des Wissens aus diesen vorherigen Läufen wird der Prozess der Hyperparameteroptimierung beschleunigt. Dadurch werden die Kosten für die Optimierung des Modells reduziert und die primäre Metrik des resultierenden Modells möglicherweise verbessert. Beim Warmstart eines Experiments zur Hyperparameteroptimierung mit bayesschem Sampling werden Versuche aus dem vorherigen Lauf als Vorkenntnisse verwendet, um intelligent neue Stichproben mit dem Ziel auszuwählen, die primäre Metrik zu verbessern. Darüber hinaus werden beim Zufalls- oder Rastersampling bei vorzeitigen Beendigungsentscheidungen Metriken aus den vorangegangenen Läufen herangezogen, um schlecht abschneidende Trainingsläufe zu ermitteln. 
+
+Azure Machine Learning ermöglicht Ihnen einen Warmstart Ihres Laufs zur Hyperparameteroptimierung, indem Sie das Wissen von bis zu 5 zuvor abgeschlossenen/abgebrochenen übergeordneten Läufen zur Hyperparameteroptimierung nutzen. Sie können die Liste der übergeordneten Läufe für einen Warmstart angeben, indem Sie diesen Codeausschnitt verwenden:
+
+```Python
+from azureml.train.hyperdrive import HyperDriveRun
+
+warmstart_parent_1 = HyperDriveRun(experiment, "warmstart_parent_run_ID_1")
+warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
+warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
+```
+
+Darüber hinaus kann es vorkommen, dass einzelne Trainingsläufe eines Experiments zur Hyperparameteroptimierung aus Budgetgründen abgebrochen werden oder aus anderen Gründen nicht stattfinden. Es ist nun möglich, solche individuellen Trainingsläufe ab dem letzten Prüfpunkt fortzusetzen (vorausgesetzt, Ihr Trainingsskript unterstützt Prüfpunkte). Wenn Sie einen einzelnen Trainingslauf fortsetzen, wird die gleiche Hyperparameterkonfiguration verwendet und der Ordner mit den Ausgaben eingebunden, der für diesen Lauf verwendet wird. Das Trainingsskript muss das Argument `resume-from` akzeptieren, das die Prüfpunkt- oder Modelldateien enthält, mit denen der Trainingslauf fortgesetzt werden kann. Mithilfe des folgenden Codeausschnitts können Sie einzelne Trainingsläufe fortsetzen:
+
+```Python
+from azureml.core.run import Run
+
+resume_child_run_1 = Run(experiment, "resume_child_run_ID_1")
+resume_child_run_2 = Run(experiment, "resume_child_run_ID_2")
+child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
+```
+
+Sie können Ihr Experiment zur Hyperparameteroptimierung so konfigurieren, dass es einen Warmstart aus einem früheren Experiment ermöglicht, oder einzelne Trainingsläufe mithilfe der optionalen Parameter `resume_from` und `resume_child_runs` in der Konfiguration fortsetzen:
+
+```Python
+from azureml.train.hyperdrive import HyperDriveConfig
+
+hyperdrive_run_config = HyperDriveConfig(estimator=estimator,
+                          hyperparameter_sampling=param_sampling, 
+                          policy=early_termination_policy,
+                          resume_from=warmstart_parents_to_resume_from, 
+                          resume_child_runs=child_runs_to_resume,
+                          primary_metric_name="accuracy", 
+                          primary_metric_goal=PrimaryMetricGoal.MAXIMIZE,
+                          max_total_runs=100,
+                          max_concurrent_runs=4)
+```
 
 ## <a name="visualize-experiment"></a>Visualisieren des Experiments
 

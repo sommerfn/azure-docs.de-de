@@ -8,14 +8,14 @@ manager: xdh
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959019"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73491338"
 ---
 # <a name="scenario-availability"></a>Szenarioverfügbarkeit
 
@@ -31,13 +31,13 @@ Das Speech-Dienst-SDK bietet zahlreiche Szenarien für eine Vielzahl von Program
   - Swift
   - Objective-C
   - Die TTS-REST-API kann in allen anderen Situationen verwendet werden.
-- **Aktivierungswort (Keyword Spotter/KWS)**
+- **Schlüsselworterkennung**
   - C++/Windows und Linux
   - C#/Windows und Linux
   - Python/Windows und Linux
   - Java/Windows und Linux und Android (Speech Devices SDK)
-  - Die Funktionalität für das Aktivierungswort (Keyword Spotter/KWS) kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
-- **Virtueller Voice-First-Assistent**
+  - Die Funktionalität zur Schlüsselworterkennung (Keyword Spotting, KWS) kann eventuell mit allen Mikrofontypen verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech-Geräte-SDK unterstützt.
+- **Sprachassistenten**
   - C++/Windows und Linux und macOS
   - C#/Windows
   - Java/Windows und Linux und macOS und Android (Speech Devices SDK)

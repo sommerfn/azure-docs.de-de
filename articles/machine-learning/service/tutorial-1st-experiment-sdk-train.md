@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/03/2019
-ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: b5b3ca127aba62b39bd7236412d4c6a542347db3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173305"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73476186"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Tutorial: Trainieren Ihres ersten ML-Modells
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Dieses Tutorial ist der **zweite Teil einer zweiteiligen Reihe**. Im vorherigen Tutorial haben Sie [einen Arbeitsbereich erstellt und eine Entwicklungsumgebung ausgewählt](tutorial-1st-experiment-sdk-setup.md). In diesem Tutorial werden die grundlegenden Entwurfsmuster in Azure Machine Learning vorgestellt, und es wird ein einfaches Scikit-learn-Modell auf der Grundlage des Diabetes-Datasets trainiert. Nach Abschluss dieses Tutorials verfügen Sie über die praktischen Kenntnisse für das SDK, die Sie für komplexere Experimente und Workflows benötigen.
 
@@ -37,7 +39,7 @@ In diesem Teil des Tutorials führen Sie den Code im Jupyter-Beispielnotebook `t
 
 ## <a name="open-the-notebook"></a>Öffnen des Notebooks
 
-1. Melden Sie sich auf der [Angebotsseite des Arbeitsbereichs](https://ml.azure.com/) an.
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
 
 1. Öffnen Sie in Ihrem Ordner **tutorial-1st-experiment-sdk-train.ipynb**, wie in [Teil 1](tutorial-1st-experiment-sdk-setup.md#open) veranschaulicht.
 
@@ -62,7 +64,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Erstellen Sie als Nächstes ein Experiment in Ihrem Arbeitsbereich. Bei einem Experiment handelt es sich um eine weitere grundlegende Cloudressource, die eine Sammlung von Tests (einzelne Modellausführungen) darstellt. In diesem Tutorial wird das Experiment verwendet, um Ausführungen zu erstellen und das Modelltraining im Azure-Portal nachzuverfolgen. Die Parameter umfassen einen Verweis auf Ihren Arbeitsbereich sowie einen Zeichenfolgennamen für das Experiment.
+Erstellen Sie als Nächstes ein Experiment in Ihrem Arbeitsbereich. Bei einem Experiment handelt es sich um eine weitere grundlegende Cloudressource, die eine Sammlung von Tests (einzelne Modellausführungen) darstellt. In diesem Tutorial wird das Experiment verwendet, um Ausführungen zu erstellen und das Modelltraining in Azure Machine Learning Studio nachzuverfolgen. Die Parameter umfassen einen Verweis auf Ihren Arbeitsbereich sowie einen Zeichenfolgennamen für das Experiment.
 
 
 ```python
@@ -72,15 +74,17 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Laden von Daten und Vorbereiten des Trainings
 
-In diesem Tutorial wird das Diabetes-Dataset verwendet – ein vornormalisiertes Dataset aus Scikit-learn. Dieses Dataset dient zur Vorhersage des Diabetesverlaufs auf der Grundlage von Merkmalen wie Alter, Geschlecht und BMI. Laden Sie die Daten über die statische Funktion `load_diabetes()`, und teilen Sie sie mithilfe von `train_test_split()` in Trainings- und Testsätze auf. Diese Funktion trennt die Daten, sodass das Modell über unbekannte Daten verfügt, die nach dem Trainieren zu Testzwecken verwenden werden können.
+In diesem Tutorial wird das Diabetes-Dataset mit Features wie Alter, Geschlecht und BMI verwendet, um den Diabetesverlauf zu prognostizieren. Laden Sie die Daten aus der Klasse [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/), und teilen Sie sie mithilfe von `train_test_split()` in Trainings- und Testsätze auf. Diese Funktion trennt die Daten, sodass das Modell über unbekannte Daten verfügt, die nach dem Trainieren zu Testzwecken verwenden werden können.
 
 
 ```python
-from sklearn.datasets import load_diabetes
+from azureml.opendatasets import Diabetes
 from sklearn.model_selection import train_test_split
 
-X, y = load_diabetes(return_X_y = True)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
+x_df = Diabetes.get_tabular_dataset().to_pandas_dataframe().dropna()
+y_df = x_df.pop("Y")
+
+X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
 ## <a name="train-a-model"></a>Trainieren eines Modells
@@ -193,19 +197,9 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 Überspringen Sie diesen Abschnitt, wenn Sie weitere Azure Machine Learning-Tutorials absolvieren möchten.
 
-### <a name="stop-the-notebook-vm"></a>Beenden der Notebook-VM
+### <a name="stop-the-compute-instance"></a>Beenden der Compute-Instanz
 
-Sollten Sie einen cloudbasierten Notebook-Server verwendet haben, beenden Sie aus Kostengründen den virtuellen Computer, wenn Sie ihn nicht verwenden.
-
-1. Wählen Sie in Ihrem Arbeitsbereich **Notebook-VMs** aus.
-
-   ![Beenden des VM-Servers](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. Wählen Sie die VM in der Liste aus.
-
-1. Wählen Sie **Stop** (Beenden) aus.
-
-1. Wenn Sie bereit sind, den Server erneut zu verwenden, wählen Sie **Starten** aus.
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>Alles löschen
 

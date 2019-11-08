@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 10/24/2019
 ms.author: diberry
-ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: a47d6014e51dce81c9caf82f8624896c439f050d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154661"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490888"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Relevanzbewertungen geben den Erfolg der Personalisierung an.
 
@@ -71,9 +71,9 @@ Anschließend können Sie die Summe der Relevanzwerte an die API senden.
 
 ## <a name="calling-the-reward-api-multiple-times"></a>Mehrfaches Aufrufen der Relevanz-API
 
-Sie können die Relevanz-API auch mit derselben Ereignis-ID aufrufen und dabei unterschiedliche Relevanzbewertungen übermitteln. Wenn die Personalisierung diese Relevanzwerte empfängt, bestimmt sie die abschließende Relevanz für dieses Ereignis durch Aggregieren der Werte gemäß den Einstellungen der Personalisierung.
+Sie können die Relevanz-API auch mit derselben Ereignis-ID aufrufen und dabei unterschiedliche Relevanzbewertungen übermitteln. Wenn die Personalisierung diese Relevanzwerte empfängt, bestimmt sie die abschließende Relevanz für dieses Ereignis durch Aggregieren der Werte gemäß der Konfiguration der Personalisierung.
 
-Aggregationseinstellungen:
+Aggregationswerte:
 
 *  **Erstes:** Die erste empfangene Relevanzbewertung für das Ereignis wird angewandt, alle späteren werden verworfen.
 * **Sum**: Alle für die eventId erfassten Relevanzbewertungen werden übernommen und zusammenführt.
@@ -81,10 +81,6 @@ Aggregationseinstellungen:
 Sämtliche nach der **Reward Wait Time** (Relevanzwartezeit) empfangenen Bewertungen für ein Ereignis werden verworfen und nicht in das Training von Modellen einbezogen.
 
 Durch die Addition der Relevanzbewertungen kann das Endergebnis für die Relevanz außerhalb des erwarteten Bewertungsbereichs liegen. Dies führt nicht zu einem Fehler beim Dienst.
-
-<!--
-@edjez - is the number ignored if it is outside the acceptable range?
--->
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Bewährte Methoden für die Berechnung von Relevanzbewertungen
 
@@ -106,13 +102,11 @@ Die Personalisierung korreliert die Informationen eines Rangfolgeaufrufs mit den
 
 Wenn die **Reward Wait Time** (Relevanzwartezeit) abgelaufen ist und keine Relevanzinformationen eingegangen sind, erhält dieses Ereignis für das Training die Standardrelevanz. Die maximale Wartezeit beträgt 6 Tage.
 
-## <a name="best-practices-for-setting-reward-wait-time"></a>Bewährte Methoden zum Festlegen der Relevanzwartezeit
+## <a name="best-practices-for-reward-wait-time"></a>Bewährte Methoden für die Belohnungswartezeit
 
 Befolgen Sie diese Empfehlungen für bessere Ergebnisse.
 
 * Legen Sie die Relevanzwartezeit so kurz wie möglich fest. Sie sollte jedoch ausreichen, um Feedback vom Benutzer zu erhalten. 
-
-<!--@Edjez - storage quota? -->
 
 * Wählen Sie keine Dauer unterhalb der für Feedback erforderlichen Zeit aus. Wenn einige Ihrer Relevanzbewertungen eingehen, nachdem ein Benutzer eine Minute eines Videos angesehen hat, sollte das Experiment mindestens doppelt so lang dauern.
 

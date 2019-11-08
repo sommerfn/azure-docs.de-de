@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 10/15/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: af8bb24862c05b232b7bb5d831b1eb3b1add3a7f
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970384"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468812"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Sprach- und Regionsunterstützung für den Spracherkennungsdienst
 
@@ -24,11 +24,15 @@ Für verschiedene Funktionen von Speech Services werden verschiedene Sprachen un
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
-Sowohl die Microsoft-Spracherkennungs-API und die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von Audio- und menschenmarkierten Transkripten oder verwandten Texten angeboten: Sätze  Die Anpassung der Aussprache ist zurzeit nur für en-US und de-DE verfügbar. [Hier](how-to-custom-speech.md) erhalten Sie weitere Informationen zur Anpassung.
+Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von Audio- und menschenmarkierten Transkripten oder verwandten Texten angeboten: Sätze  Die Anpassung der Aussprache ist zurzeit nur für en-US und de-DE verfügbar. [Hier](how-to-custom-speech.md) erhalten Sie weitere Informationen zur Anpassung.
 
-  Code | Sprache | Unterstützt | Anpassbar
+  Gebietsschema | Sprache | Unterstützt | Anpassbar
  ------|----------|---------------------|---------------------
  ar-EG | Arabisch (Ägypten), modernes Hocharabisch | Ja | Ja
+ ar-SA | Arabisch (Saudi-Arabien) | Ja | Ja
+ ar-AE | Arabisch (VAE) | Ja | Ja
+ ar-KW | Arabisch (Kuwait) | Ja | Ja
+ ar-QA | Arabisch (Katar) | Ja | Ja
  ca-ES | Katalanisch | Ja | Nein
  da-DK | Dänisch (Dänemark) | Ja | Nein
  de-DE | Deutsch (Deutschland) | Ja | Ja
@@ -43,10 +47,12 @@ Sowohl die Microsoft-Spracherkennungs-API und die REST-API unterstützen die fol
  fi-FI | Finnisch (Finnland) | Ja | Nein
  fr-CA | Französisch (Kanada) | Ja | Ja
  fr-FR | Französisch (Frankreich) | Ja | Ja
+ gu-IN | Gujarati (Indien) | Ja | Ja
  hi-IN | Hindi (Indien) | Ja | Ja
  it-IT | Italienisch (Italien) | Ja | Ja
  ja-JP | Japanisch (Japan) | Ja | Ja
  ko-KR | Koreanisch (Korea) | Ja | Ja
+ mr-IN | Marathi (Indien) | Ja | Ja
  nb-NO | Norwegisch, Bokmål (Norwegen) | Ja | Nein
  nl-NL | Niederländisch (Niederlande) | Ja | Ja
  pl-PL | Polnisch (Polen) | Ja | Nein
@@ -54,15 +60,18 @@ Sowohl die Microsoft-Spracherkennungs-API und die REST-API unterstützen die fol
  pt-PT | Portugiesisch (Portugal) | Ja | Ja
  ru-RU | Russisch (Russland) | Ja | Ja
  sv-SE | Schwedisch (Schweden) | Ja | Nein
+ ta-IN | Tamil (Indien) | Ja | Ja
+ te-IN | Telugu (Indien) | Ja | Ja
  zh-CN | Chinesisch (Mandarin, vereinfacht) | Ja | Ja
  zh-HK | Chinesisch (Kantonesisch, traditionell) | Ja | Ja
  zh-TW | Chinesisch (Taiwanesisch, Mandarin) | Ja | Ja
- th-TH | Thailändisch (Thailand) | Ja | Nein 
+ th-TH | Thailändisch (Thailand) | Ja | Nein
+ tr-TR | Türkei | Ja | Ja |
 
 
 ## <a name="text-to-speech"></a>Text-zu-Sprache
 
-Die Text-to-Speech-REST-API unterstützt diese Stimmen. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
+Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen diese Stimmen. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
 
 > [!IMPORTANT]
 > Die Preise variieren für Standardstimmen, benutzerdefinierte und neuronale Stimmen. Weitere Informationen finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
@@ -71,7 +80,7 @@ Die Text-to-Speech-REST-API unterstützt diese Stimmen. Jede dieser Stimmen steh
 
 Die neuronale Sprachsynthese ist eine neue Art der Sprachsynthese mithilfe von Deep Neural Networks. Wenn Sie eine neuronale Stimme verwenden, kann die synthetisierte Sprache kaum von menschlichen Aufzeichnungen unterschieden werden.
 
-Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und virtuellen Helfern noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern.
+Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassistenten noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern.
 
 Eine vollständige Liste der neuronalen Stimmen mit der regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-and-neural-voices).
 
@@ -261,4 +270,4 @@ Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übe
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Abrufen Ihres Speech Services-Testabonnements](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
+* [Erkennen von Sprache in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

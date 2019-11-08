@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 02c4e0142ed7b3719cc07306f089769c532d6653
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515190"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494425"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Schnellstart: Personalisierungsclientbibliothek für Python
 
@@ -39,7 +39,7 @@ Hier erhalten Sie Informationen zu den ersten Schritten mit der Personalisierung
 Diese Schnellstartanleitung umfasst mehrere Schritte:
 
 * Erstellen Sie im Azure-Portal eine Personalisierungsressource.
-* Ändern Sie im Azure-Portal auf der Seite **Einstellungen** für die Personalisierungsressource die Häufigkeit der Modellaktualisierung.
+* Ändern Sie im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource die Häufigkeit der Modellaktualisierung.
 * Erstellen Sie in einem Code-Editor eine Codedatei, und bearbeiten Sie sie.
 * Installieren Sie in der Befehlszeile oder im Terminal das SDK über die Befehlszeile.
 * Führen Sie die Codedatei in der Befehlszeile oder im Terminal aus.
@@ -70,7 +70,7 @@ pip install azure-cognitiveservices-personalizer
 
 ## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
-Ändern Sie im Azure-Portal auf der Seite **Einstellungen** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
+Ändern Sie im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in „10 Sekunden“. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 
 ![Ändern der Häufigkeit der Modellaktualisierung](./media/settings/configure-model-update-frequency-settings.png)
 

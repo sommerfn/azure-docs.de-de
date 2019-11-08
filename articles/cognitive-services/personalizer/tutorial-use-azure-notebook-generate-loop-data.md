@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/04/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c0dc40ee2d748b1f48c3254a3e3a6e197069c08
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515171"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467249"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutorial: Verwenden der Personalisierung in Azure Notebook
 
@@ -81,7 +81,7 @@ Dateibeschreibungen:
 
 ## <a name="configure-personalizer-resource"></a>Konfigurieren der Personalisierungsressource
 
-Konfigurieren Sie im Azure-Portal Ihre [Personalisierungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) so, dass die **Häufigkeit der Modellaktualisierung** auf 15 Sekunden und die **Wartezeit für Belohnung** ebenfalls auf 15 Sekunden festgelegt ist. Diese Einstellungen finden Sie auf der Seite **[Einstellungen](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
+Konfigurieren Sie im Azure-Portal Ihre [Personalisierungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) so, dass die **Häufigkeit der Modellaktualisierung** auf 15 Sekunden und die **Wartezeit für Belohnung** ebenfalls auf 15 Sekunden festgelegt ist. Diese Werte finden Sie auf der Seite **[Konfiguration](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
 
 |Einstellung|Wert|
 |--|--|
@@ -170,7 +170,7 @@ def get_last_updated(currentModifiedDate):
 
 Dient zum Überprüfen des Dienststatus mit diesen beiden REST-Aufrufen.
 
-Diese Zellen haben keine Ausgabe. Wenn diese Funktion aufgerufen wird, gibt sie die Diensteinstellungen aus.
+Diese Zellen haben keine Ausgabe. Wenn diese Funktion aufgerufen wird, gibt sie die Dienstwerte aus.
 
 ```python
 def get_service_settings():
@@ -574,11 +574,11 @@ In diesem Diagramm ist der Erfolg des Modells für die aktuelle Standardlernrich
 ![In diesem Diagramm ist der Erfolg der aktuellen Lernrichtlinie für die Dauer des Tests dargestellt.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Das ideale Ziel besteht darin, dass sich für die Schleife nach Abschluss des Tests eine Erfolgsrate ergibt, die nahe bei 100 Prozent liegt (abzüglich der Durchsuchung). Die Standardeinstellung für die Durchsuchung beträgt 20 %. 
+Das ideale Ziel besteht darin, dass sich für die Schleife nach Abschluss des Tests eine Erfolgsrate ergibt, die nahe bei 100 Prozent liegt (abzüglich der Durchsuchung). Der Standardwert für die Durchsuchung beträgt 20 %. 
 
 `100-20=80`
 
-Sie finden diese Durchsuchungseinstellung im Azure-Portal auf der Seite **Einstellungen** für die Personalisierungsressource. 
+Sie finden diesen Durchsuchungswert im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource. 
 
 Sie können eine bessere Lernrichtlinie ermitteln, indem Sie basierend auf Ihren Daten für die Rangfolge-API im Portal für Ihre Personalisierungsschleife eine [Offlinebewertung](how-to-offline-evaluation.md) durchführen.
 
@@ -598,7 +598,7 @@ Sie können eine bessere Lernrichtlinie ermitteln, indem Sie basierend auf Ihren
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Ändern der Häufigkeit der Modellaktualisierung in „5 Minuten“
 
-1. Wählen Sie im Azure-Portal für die Personalisierungsressource die Seite **Einstellungen** aus. 
+1. Wählen Sie im Azure-Portal für die Personalisierungsressource die Seite **Konfiguration** aus. 
 1. Ändern Sie die **Häufigkeit der Modellaktualisierung** und die **Wartezeit für Belohnung** jeweils in „5 Minuten“, und wählen Sie anschließend **Speichern** aus.
 
 Informieren Sie sich weiter über die [Wartezeit für Belohnung](concept-rewards.md#reward-wait-time) und die [Häufigkeit der Modellaktualisierung](how-to-settings.md#model-update-frequency).

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: c0414277b4851891911908ba4f42e92abedc86e4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 469dab093ed7a62171d232695af3258cc874b5f3
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553188"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481308"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -74,9 +74,9 @@ Verfügbare Regionen für **Absichtserkennung** über das Speech SDK sind die fo
 
 Dies ist eine Teilmenge der Veröffentlichungsregionen, die vom [Language Understanding Intelligent Service (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) unterstützt werden.
 
-### <a name="voice-first-virtual-assistants"></a>Virtuelle Voice-First-Assistenten
+### <a name="voice-assistants"></a>Sprachassistenten
 
-Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **virtuellen Voice-First-Assistenten** in den folgenden Regionen:
+Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprachassistenten** in den folgenden Regionen:
 
 Region | Speech SDK-Parameter
 -------|---------------------

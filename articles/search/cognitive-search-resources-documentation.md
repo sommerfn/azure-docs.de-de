@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 5fb1050fed2ab7318ad5b4ecafec7a96a9324575
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792067"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466716"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentationressourcen für die KI-Anreicherung in Azure Cognitive Search
 
@@ -22,8 +22,8 @@ Die KI-Anreicherung ist eine Funktion im Azure Cognitive Search-Index, die laten
 Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
 
 ## <a name="getting-started"></a>Erste Schritte
-+ [Einführung in die KI-Anreicherung in Azure Cognitive Search](cognitive-search-concept-intro.md)
-+ [Schnellstart: Testen der KI-Anreicherung im Portal](cognitive-search-quickstart-blob.md)
++ [Einführung in die KI in Azure Cognitive Search](cognitive-search-concept-intro.md)
++ [Schnellstart: Erstellen eines kognitiven Skillsets im Azure-Portal](cognitive-search-quickstart-blob.md)
 + [Tutorial: Angereicherte Indizierung mit KI](cognitive-search-tutorial-blob.md)
 + [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
 
@@ -49,6 +49,7 @@ Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
   + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
   + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
   + [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
   + [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md)
 
 + Benutzerdefinierte Qualifikationen

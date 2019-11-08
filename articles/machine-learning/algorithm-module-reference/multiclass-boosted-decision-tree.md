@@ -1,7 +1,7 @@
 ---
 title: 'Verstärkte Entscheidungsstruktur mit mehreren Klassen: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul für verstärkte Entscheidungsstruktur mit mehreren Klassen in Azure Machine Learning Service verwenden, um einen Klassifizierer mithilfe von bezeichneten Daten zu erstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul für verstärkte Entscheidungsstruktur mit mehreren Klassen in Azure Machine Learning verwenden, um einen Klassifizierer mithilfe von bezeichneten Daten zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/22/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09d2a637099bae414400f49bb89efc5b6652f150
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b53e504e98cab34fdc50ee8715ec162c910dd40d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692821"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73465978"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Verstärkte Entscheidungsstruktur mit mehreren Klassen
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Machine Learning-Modell zu erstellen, das auf dem Algorithmus für Boosted Decision Trees basiert.
 
@@ -61,4 +61,4 @@ Diese Art von Modell kann mithilfe von [Modell trainieren](././train-model.md) t
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

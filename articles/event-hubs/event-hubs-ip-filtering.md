@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f96c25dbb85ed92141636487f10d861a8c5e5f28
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821676"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73468438"
 ---
 # <a name="use-firewall-rules"></a>Verwenden Sie Firewallregeln
 
@@ -24,7 +24,7 @@ Für Szenarien, in denen Azure Event Hubs nur von bestimmten bekannten Sites aus
 
 ## <a name="when-to-use"></a>Einsatzgebiete
 
-Wenn Sie Ihren Event Hubs-Namespace so einrichten möchten, dass nur Datenverkehr aus einem bestimmten IP-Adressbereich empfangen wird, können Sie eine *Firewallregel* verwenden, um Event Hub-Endpunkte von anderen IP-Adressen zu blockieren. Wenn Sie z. B. Event Hubs mit [Azure Express Route][express-route] verwenden, können Sie eine *Firewallregel* erstellen, um den Datenverkehr von den IP-Adressen Ihrer lokalen Infrastruktur einzuschränken.
+Wenn Sie Ihren Event Hubs-Namespace so einrichten möchten, dass nur Datenverkehr aus einem bestimmten IP-Adressbereich empfangen wird, können Sie eine *Firewallregel* verwenden, um Event Hub-Endpunkte von anderen IP-Adressen zu blockieren. Wenn Sie z. B. Event Hubs mit [Azure Express Route][express-route] verwenden, können Sie eine *Firewallregel* erstellen, um den Datenverkehr von den IP-Adressen Ihrer lokalen Infrastruktur einzuschränken.
 
 ## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
 
@@ -51,7 +51,6 @@ IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine 
 > - Integration in Azure Event Grid
 > - Azure IoT Hub-Routen
 > - Azure IoT Device Explorer
-> - Azure-Daten-Explorer
 >
 > Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
 > - Azure-Web-Apps
@@ -143,7 +142,7 @@ Vorlagenparameter:
   }
 ```
 
-Gehen Sie zum Bereitstellen der Vorlage gemäß der Anleitung für [Azure Resource Manager][lnk-deploy] vor.
+Gehen Sie zum Bereitstellen der Vorlage gemäß den Anweisungen für [Azure Resource Manager][lnk-deploy] vor.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

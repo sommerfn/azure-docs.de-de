@@ -1,24 +1,24 @@
 ---
 title: 'Split Data (Daten aufteilen): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Split Data“ (Daten aufteilen) in Azure Machine Learning Service verwenden, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Split Data“ (Daten aufteilen) in Azure Machine Learning verwenden, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 3fa6b61b1b1761756339d6a7f05c74eb4a968777
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0f6ba3c608c90d8634309a1843dc803b98be3d6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692654"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492647"
 ---
 # <a name="split-data-module"></a>Modul „Split Data“ (Daten aufteilen)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
 
@@ -30,7 +30,7 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
 > Informieren Sie sich vor der Wahl des Aufteilungsmodus über alle Optionen, um den benötigten Aufteilungstyp zu ermitteln.
 > Wenn Sie den Aufteilungsmodus ändern, können alle anderen Optionen zurückgesetzt werden.
 
-1. Fügen Sie das Modul **Split Data** Ihrer Pipeline auf der Oberfläche hinzu. Sie finden dieses Modul unter **Data Transformation** (Datentransformation) in der Kategorie **Sample and Split** (Stichprobe entnehmen und aufteilen).
+1. Fügen Sie das Modul **Split Data** zu Ihrer Pipeline im Designer hinzu. Sie finden dieses Modul unter **Data Transformation** (Datentransformation) in der Kategorie **Sample and Split** (Stichprobe entnehmen und aufteilen).
 
 2. **Splitting mode** (Aufteilungsmodus): Wählen Sie je nach Datentyp und gewünschter Aufteilung einen der folgenden Modi. Jeder Aufteilungsmodus verfügt über unterschiedliche Optionen. Klicken Sie auf die folgenden Themen, um ausführliche Anweisungen und Beispiele zu erhalten. 
 
@@ -45,7 +45,8 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
     - **Relative Expression Split** (Nach relativem Ausdruck aufteilen):  Verwenden Sie diese Option, wenn Sie eine Bedingung auf eine Ziffernspalte anwenden möchten. Die Ziffer kann für ein Datums-/Uhrzeitfeld, eine Spalte mit Alters- oder Währungsangaben oder sogar für einen Prozentsatz stehen. Beispielsweise ist es möglich, das Dataset nach den Kosten der einzelnen Posten zu unterteilen, Personen nach Alter zu gruppieren oder Daten nach einem Kalenderdatum aufzuteilen.
 
 ### <a name="split-rows"></a>Aufteilen von Zeilen
-1.  Fügen Sie das Modul [Split Data](./split-data.md) Ihrer Pipeline auf der Oberfläche hinzu, und verbinden Sie das aufzuteilende Dataset.
+
+1.  Fügen Sie das Modul [Split Data](./split-data.md) zu Ihrer Pipeline im Designer hinzu, und verbinden Sie das aufzuteilende Dataset.
   
 2.  Wählen Sie für **Splitting mode** (Aufteilungsmodus) die Option **Split rows** (Zeilen aufteilen) aus. 
 
@@ -114,4 +115,4 @@ Dieses Modul ist besonders hilfreich, wenn Sie Daten in Trainings- und Testsätz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

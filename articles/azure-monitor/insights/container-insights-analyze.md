@@ -1,27 +1,28 @@
 ---
-title: Überwachen der Leistung von AKS-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
+title: Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung analysieren und Daten protokollieren können.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/17/2019
-ms.openlocfilehash: a65951a90767acce5570244af8a9250845e12def
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 10/15/2019
+ms.openlocfilehash: f1a5d0d98a442fab80744636eea05d4c2d26f919
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554249"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73478907"
 ---
-# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container
-Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer AKS-Cluster (Azure Kubernetes Service) aus zwei Perspektiven zu überwachen. Sie können die Überwachung direkt aus einem AKS-Cluster durchführen, oder Sie können alle AKS-Cluster unter einem Abonnement mit Azure Monitor überwachen. Die Anzeige von Azure Container Instances ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
+# <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
+
+Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload von Kubernetes-Clustern, die in Azure Kubernetes Service (AKS), Azure Stack oder einer anderen Umgebung gehostet werden, aus zwei Perspektiven zu überwachen. Sie können die Überwachung direkt aus dem Cluster durchführen, oder Sie können alle Cluster unter einem Abonnement mit Azure Monitor anzeigen. Die Anzeige von Azure Container Instances ist auch bei Überwachung eines bestimmten AKS-Clusters möglich.
 
 In diesem Artikel werden die beiden Perspektiven beschrieben, und Sie erfahren, wie Sie erkannte Probleme mit Azure Monitor schnell bewerten, untersuchen und beheben.
 
 Weitere Informationen zum Aktivieren von Azure Monitor für Container finden Sie unter [Onboarding von Azure Monitor für Container](container-insights-onboard.md).
 
-Azure Monitor verfügt über eine Multi-Cluster-Ansicht, in der der Integritätsstatus aller überwachten AKS-Cluster angezeigt wird, auf denen Linux und Windows Server 2019 ausgeführt wird und die in Ressourcengruppen in Ihrem Abonnement bereitgestellt wurden. Es werden auch ermittelte AKS-Cluster angezeigt, die nicht von der Lösung überwacht werden. Sie können die Clusterintegrität auf einen Blick einschätzen und von diesem Punkt aus einen Drilldown zur Seite mit der Knoten- bzw. Controllerleistung ausführen oder alternativ zu den Leistungsdiagrammen für den Cluster navigieren. Für AKS-Cluster, die ermittelt und als nicht überwacht erkannt wurden, können Sie die Überwachung jederzeit aktivieren. 
+Azure Monitor verfügt über eine Multi-Cluster-Ansicht, in der der Integritätsstatus aller überwachten Kubernetes-Cluster angezeigt wird, auf denen Linux und Windows Server 2019 ausgeführt wird und die in Ressourcengruppen in Ihrem Abonnement bereitgestellt wurden. Es werden ermittelte Cluster für alle Umgebungen angezeigt, die nicht von der Lösung überwacht werden. Sie können die Clusterintegrität auf einen Blick einschätzen und von diesem Punkt aus einen Drilldown zur Seite mit der Knoten- bzw. Controllerleistung ausführen oder alternativ zu den Leistungsdiagrammen für den Cluster navigieren. Für AKS-Cluster, die ermittelt und als nicht überwacht erkannt wurden, können Sie die Überwachung jederzeit aktivieren. 
 
 Die wichtigsten Unterschiede zwischen der Überwachung eines Windows Server-Clusters mit Azure Monitor für Container gegenüber einem Linux-Cluster sind:
 
@@ -37,9 +38,20 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Multi-Cluster-Ansicht in Azure Monitor
 
-Zum Anzeigen des Integritätsstatus aller bereitgestellten AKS-Cluster wählen Sie im linken Seitenbereich im Azure-Portal die Option **Überwachen** aus. Wählen Sie im Abschnitt **Insights** die Option **Container** aus. 
+Zum Anzeigen des Integritätsstatus aller bereitgestellten Kubernetes-Cluster wählen Sie im linken Seitenbereich im Azure-Portal die Option **Überwachen** aus. Wählen Sie im Abschnitt **Insights** die Option **Container** aus. 
 
 ![Beispiel für ein Multi-Cluster-Dashboard in Azure Monitor](./media/container-insights-analyze/azmon-containers-multiview.png)
+
+Sie können die im Raster dargestellten Ergebnisse so festlegen, dass folgende Cluster angezeigt werden:
+
+* **Azure**: AKS- und AKS-Engine-Cluster, die in Azure Kubernetes Service gehostet werden
+* **Azure Stack (Vorschau)** : AKS-Engine-Cluster, die in Azure Stack gehostet werden
+* **Nicht-Azure (Vorschau)** : Kubernetes-Cluster, die lokal gehostet werden
+* **Alle**: Anzeigen aller in Azure, Azure Stack und lokalen Umgebungen gehosteten Kubernetes-Cluster, die in Azure Monitor für Container integriert sind
+
+Zum Anzeigen von Clustern aus einer bestimmten Umgebung wählen Sie diese im Bereich **Umgebungen** oben links auf der Seite aus.
+
+![Beispiel für Umgebungsauswahl](./media/container-insights-analyze/clusters-multiview-environment-pill.png)
 
 Die Registerkarte **Überwachte Cluster** enthält die folgenden Informationen:
 
@@ -82,18 +94,21 @@ Die folgende Tabelle enthält eine Aufschlüsselung der Berechnung, mit der die 
 | |Kritisch |<60 % |
 | |Unknown |Wenn keine Meldung in den letzten 30 Minuten erfolgt ist |
 
-In der Liste mit den Clustern können Sie einen Drilldown zur Seite **Cluster** ausführen, indem Sie den Namen des Clusters auswählen. Navigieren Sie dann zur Seite **Knoten** mit der Leistungsanzeige, indem Sie in der Spalte **Knoten** den Rollup der Knoten für den jeweiligen Cluster auswählen. Außerdem können Sie auch einen Drilldown zur Leistungsseite **Controller** ausführen, indem Sie den Rollup der Spalte **Benutzerpods** oder **Systempods** auswählen.  
+In der Liste mit den Clustern können Sie einen Drilldown zur Seite **Cluster** ausführen, indem Sie den Namen des Clusters auswählen. Navigieren Sie dann zur Seite **Knoten** mit der Leistungsanzeige, indem Sie in der Spalte **Knoten** den Rollup der Knoten für den jeweiligen Cluster auswählen. Außerdem können Sie auch einen Drilldown zur Leistungsseite **Controller** ausführen, indem Sie den Rollup der Spalte **Benutzerpods** oder **Systempods** auswählen.
 
-## <a name="view-performance-directly-from-an-aks-cluster"></a>Direktes Anzeigen der Leistung auf einem AKS-Cluster
+## <a name="view-performance-directly-from-a-cluster"></a>Direktes Anzeigen der Leistung aus einem Cluster
 
-Der Zugriff auf Azure Monitor für Container ist direkt aus einem AKS-Cluster möglich, indem Sie im linken Randbereich die Option **Insights** auswählen. Die Informationen zu Ihrem AKS-Cluster sind in vier Perspektiven unterteilt:
+Der Zugriff auf Azure Monitor für Container ist direkt aus einem AKS-Cluster möglich, indem Sie im linken Bereich die Option **Insights** > **Cluster** auswählen oder wenn Sie einen Cluster in der Multi-Cluster-Ansicht ausgewählt haben. Die Informationen zu Ihrem Cluster sind in vier Perspektiven unterteilt:
 
 - Cluster
 - Nodes 
 - Controllers 
 - Container
 
-Die Standardseite wird geöffnet, wenn Sie **Insights** > **Cluster** auswählen. In vier Leistungsliniendiagrammen werden wichtige Leistungsmetriken Ihres Clusters angezeigt. 
+>[!NOTE]
+>Die im weiteren Verlauf dieses Artikels beschriebene Funktionalität gilt auch für die Anzeige von Leistungs- und Integritätsstatus Ihrer in Azure Stack oder einer anderen Umgebung gehosteten Kubernetes-Cluster bei Auswahl in der Multi-Cluster-Ansicht. 
+
+Die Standardseite wird geöffnet und zeigt vier Leistungsliniendiagramme, in denen wichtige Leistungsmetriken des Clusters dargestellt sind. 
 
 ![Beispielleistungsdiagramme auf der Registerkarte „Cluster“](./media/container-insights-analyze/containers-cluster-perfview.png)
 
@@ -136,13 +151,9 @@ Sie können eine Metrik [teilen](../platform/metrics-charts.md#apply-splitting-t
 
 Wenn Sie zur Registerkarte **Knoten**, **Controller** oder **Container** wechseln, wird rechts auf der Seite automatisch ein Eigenschaftenbereich angezeigt. Dort werden die Eigenschaften des ausgewählten Elements angezeigt. Dies umfasst auch die Bezeichnungen, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Wenn ein Linux-Knoten ausgewählt ist, werden im Abschnitt **Local Disk Capacity** (Kapazität der lokalen Festplatte) auch der verfügbare Speicherplatz auf der Festplatte und der prozentual für jede Festplatte auf dem Knoten genutzte Speicherplatz angezeigt. Wählen Sie im Bereich den Link **>>** aus, um den Bereich ein- und auszublenden.
 
-![Beispiel für Eigenschaftenbereiche von Kubernetes-Perspektiven](./media/container-insights-analyze/perspectives-preview-pane-01.png)
-
-Wenn Sie die Objekte in der Hierarchie erweitern, wird der Eigenschaftenbereich auf Basis des ausgewählten Objekts aktualisiert. Im Bereich können Sie auch Kubernetes-Ereignisse mit vordefinierten Protokollsuchen anzeigen, indem Sie am oberen Rand des Bereichs die Option **Kubernetes-Ereignisprotokolle anzeigen** auswählen. Weitere Informationen zum Anzeigen von Kubernetes-Protokolldaten finden Sie unter [Suchen von Protokollen zur Datenanalyse](container-insights-log-search.md). Beim Überprüfen von Clusterressourcen können Sie Protokolle zu Containern und Ereignissen in Echtzeit sehen. Weitere Informationen zu diesem Feature und zu der Konfiguration, die für die Gewährung und Steuerung des Zugriffs erforderlich ist, finden Sie unter [Anzeigen von Containerprotokollen in Echtzeit mit Azure Monitor für Container](container-insights-live-logs.md). 
+Wenn Sie die Objekte in der Hierarchie erweitern, wird der Eigenschaftenbereich auf Basis des ausgewählten Objekts aktualisiert. In dem Bereich können Sie auch Kubernetes-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken anzeigen, indem Sie im oberen Bereich auf den Link **Livedaten anzeigen (Vorschau)** klicken. Weitere Informationen zur erforderlichen Konfiguration zum Erteilen und Steuern des Zugriffs für die Anzeige dieser Daten finden Sie unter [Einrichten der Funktion für Livedaten (Vorschau)](container-insights-livedata-setup.md). Beim Überprüfen von Clusterressourcen können Sie diese Daten aus dem Containern in Echtzeit sehen. Weitere Informationen zu dieser Funktion finden Sie unter [Anzeigen von Kubernetes-Protokollen, -Ereignissen und Podmetriken in Echtzeit](container-insights-livedata-overview.md). Zum Anzeigen von Kubernetes-Protokolldaten, die in Ihrem Arbeitsbereich basierend auf vordefinierten Protokollsuchen gespeichert wurden, wählen Sie in der Dropdownliste **In Analytics anzeigen** die Option **Containerprotokolle anzeigen** aus. Weitere Informationen zu diesem Thema finden Sie unter [Suchen von Protokollen zur Datenanalyse](container-insights-log-search.md#search-logs-to-analyze-data).
 
 Verwenden Sie die Option **+ Filter hinzufügen** oben auf der Seite, um die Ergebnisse für die Ansicht nach **Dienst**, **Knoten**, **Namespace** oder **Knotenpool** zu filtern. Nachdem Sie den Filterbereich ausgewählt haben, wählen Sie einen der Werte im Feld **Wert(e) auswählen** aus. Nachdem der Filter konfiguriert wurde, wird er global auf alle Perspektiven des AKS-Clusters angewendet. Die Formel unterstützt nur das Gleichheitszeichen. Sie können zusätzlich zum obersten weitere Filter hinzufügen, um Ihre Ergebnisse weiter einzugrenzen. Wenn Sie beispielsweise einen Filter nach **Knoten** angeben, können Sie für den zweiten Filter nur **Dienst** oder **Namespace** auswählen.
-
-![Beispiel zur Verwendung des Filters zum Eingrenzen der Ergebnisse](./media/container-insights-analyze/add-filter-option-01.png)
 
 Die Angabe eines Filters auf einer Registerkarte wird weiterhin angewendet, wenn Sie eine andere Registerkarte auswählen. Sie wird gelöscht, wenn Sie das Symbol **x** neben dem angegebenen Filter auswählen. 
 
@@ -307,4 +318,5 @@ Sie greifen auf diese Arbeitsmappen zu, indem Sie sie jeweils in der Dropdownlis
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Erstellen von Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](container-insights-alerts.md).
+
 - Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.

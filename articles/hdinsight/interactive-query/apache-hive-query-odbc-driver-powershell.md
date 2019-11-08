@@ -1,5 +1,5 @@
 ---
-title: Abfragen von Apache Hive mit ODBC-Treiber und PowerShell – Azure HDInsight
+title: Abfragen von Apache Hive mit ODBC-Treiber und PowerShell – Azure HDInsight
 description: Verwenden Sie den Microsoft Hive ODBC-Treiber und PowerShell zum Abfragen von Apache Hive-Clustern in Azure HDInsight.
 keywords: Hive, Hive ODBC, PowerShell
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
-ms.openlocfilehash: 04771ddc633c210ce8c7b3c42a9e46cb2f1ed349
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122172"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494317"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Tutorial: Abfragen von Apache Hive mit ODBC und PowerShell
 
@@ -36,7 +36,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Installieren des Microsoft Hive ODBC-Treibers
 
-Laden Sie den [Microsoft Hive ODBC-Treiber](https://go.microsoft.com/fwlink/?LinkID=286698) herunter, und installieren Sie ihn.
+Laden Sie den [Microsoft Hive ODBC-Treiber](https://www.microsoft.com/download/details.aspx?id=40886) herunter, und installieren Sie ihn.
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Erstellen einer Apache Hive ODBC-Datenquelle
 

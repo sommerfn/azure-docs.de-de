@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36cb3b1555a339249528e290e376454dd78f1e53
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7a23f8fc10e0e5a19be1f93cc6d6e5e8e301f86d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509056"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474026"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory
 
@@ -66,7 +66,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 **So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-1. Klicken Sie im Azure-Portal auf der linken Navigationsleiste auf **Azure Active Directory**.
+1. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
 
    ![Azure Active Directory](./media/app-based-mfa/02.png)
 

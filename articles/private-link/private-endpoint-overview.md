@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592376"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73475918"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
-Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse in Ihrem VNet und bindet den Dienst effektiv in Ihr VNet ein. Dabei kann es sich um einen Azure-Dienst wie z. B. Azure Storage, Azure SQL-Datenbank usw. oder Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) handeln.
+Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse in Ihrem VNet und bindet den Dienst effektiv in Ihr VNet ein. Dabei kann es sich um einen Azure-Dienst wie z. B. Azure Storage, Azure Cosmos DB, SQL usw. oder Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) handeln.
   
 ## <a name="private-endpoint-properties"></a>Eigenschaften eines privaten Endpunkts 
  Für einen privaten Endpunkt werden die folgenden Eigenschaften angegeben: 
@@ -57,7 +57,7 @@ Eine Private Link-Ressource ist das Ziel eines bestimmten privaten Endpunkts. Es
 |**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Storage (in englischer Sprache)**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tabelle (table, table_secondary)<BR> Warteschlange (queue, queue_secondary)<BR> Datei (file, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
- 
+|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Table|
  
 ## <a name="network-security-of-private-endpoints"></a>Netzwerksicherheit privater Endpunkte 
 Bei Verwenden privater Endpunkte für Azure-Dienste wird der Datenverkehr zu einer bestimmten Private Link-Ressource abgesichert. Die Plattform führt eine Zugriffssteuerung durch, um zu bestätigen, dass Netzwerkverbindungen nur die angegebene Private Link-Ressource erreichen. Um auf zusätzliche Ressourcen innerhalb desselben Azure-Diensts zuzugreifen, sind zusätzliche private Endpunkte erforderlich. 
@@ -81,7 +81,7 @@ Der Besitzer der Private Link-Ressource kann über eine private Endpunktverbindu
 > Nur ein privater Endpunkt im genehmigten Zustand kann Datenverkehr an eine angegebene Private Link-Ressource senden. 
 
 ### <a name="connecting-using-alias"></a>Verbindungsherstellung per Alias
-Der Alias ist ein eindeutiger Moniker, der generiert wird, wenn der Dienstbesitzer den Private Link-Dienst hinter einem Standardlastenausgleich erstellt. Der Dienstbesitzer kann diesen Alias mit seinen Consumern offline gemeinsam nutzen. Verbraucher können eine Verbindung mit dem Private Link-Dienst anfordern, indem sie entweder den Ressourcen-URI oder Alias verwenden. Wenn Sie eine Verbindung per Alias herstellen möchten, müssen Sie einen privaten Endpunkt mithilfe der manuellen Verbindungsgenehmigungsmethode erstellen. Um die manuelle Verbindungsgenehmigungsmethode zu verwenden, legen Sie den Parameter für die manuelle Anforderung während des Flows zum Erstellen eines privaten Endpunkts auf TRUE fest. Ausführliche Informationen finden Sie unter [New-AzPrivateEndpoint](https://docs.microsoft.com/en-us/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) und [az network private-endpoint create](https://docs.microsoft.com/en-us/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create). 
+Der Alias ist ein eindeutiger Moniker, der generiert wird, wenn der Dienstbesitzer den Private Link-Dienst hinter einem Standardlastenausgleich erstellt. Der Dienstbesitzer kann diesen Alias mit seinen Consumern offline gemeinsam nutzen. Verbraucher können eine Verbindung mit dem Private Link-Dienst anfordern, indem sie entweder den Ressourcen-URI oder Alias verwenden. Wenn Sie eine Verbindung per Alias herstellen möchten, müssen Sie einen privaten Endpunkt mithilfe der manuellen Verbindungsgenehmigungsmethode erstellen. Um die manuelle Verbindungsgenehmigungsmethode zu verwenden, legen Sie den Parameter für die manuelle Anforderung während des Flows zum Erstellen eines privaten Endpunkts auf TRUE fest. Ausführliche Informationen finden Sie unter [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) und [az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create). 
 
 ## <a name="dns-configuration"></a>DNS-Konfiguration 
 Wenn Sie eine Verbindung mit einer Private Link-Ressource über einen voll qualifizierten Domänennamen (FQDN) als Teil der Verbindungszeichenfolge herstellen, ist es wichtig, Ihre DNS-Einstellungen so zu konfigurieren, dass sie in die zugewiesene private IP-Adresse aufgelöst werden. Bestehende Azure-Dienste verfügen möglicherweise bereits über eine DNS-Konfiguration, die beim Herstellen einer Verbindung über einen öffentlichen Endpunkt verwendet werden kann. Diese muss überschrieben werden, um eine Verbindung mithilfe Ihres privaten Endpunkts herzustellen. 
@@ -91,7 +91,7 @@ Die Netzwerkschnittstelle, die dem privaten Endpunkt zugeordnet ist, enthält al
 Mit den folgenden Optionen können Sie Ihre DNS-Einstellungen für private Endpunkte konfigurieren: 
 - **Hostdatei (wird nur für Tests empfohlen)** . Sie können die Hostdatei auf einem virtuellen Computer verwenden, um das DNS zu überschreiben.  
 - **Private DNS-Zone**. Sie können private DNS-Zonen verwenden, um die DNS-Auflösung für einen bestimmten privaten Endpunkt zu überschreiben. Eine private DNS-Zone kann mit Ihrem virtuellen Netzwerk verknüpft werden, um bestimmte Domänen aufzulösen.
-- **Benutzerdefinierter DNS-Server**. Sie können Ihren eigenen DNS-Server verwenden, um die DNS-Auflösung für eine angegebene Private Link-Ressource zu überschreiben. Wenn Ihr DNS-Server in einem virtuellen Netzwerk gehostet wird, können Sie zum Verwenden einer privaten DNS-Zone eine DNS-Weiterleitungsregel erstellen, um die Konfiguration für alle Private Link-Ressourcen zu vereinfachen.
+- **Benutzerdefinierter DNS-Server**. Sie können Ihren eigenen DNS-Server verwenden, um die DNS-Auflösung für eine angegebene Private Link-Ressource zu überschreiben. Wenn Ihr [DNS-Server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) in einem virtuellen Netzwerk gehostet wird, können Sie zum Verwenden einer privaten DNS-Zone eine DNS-Weiterleitungsregel erstellen, um die Konfiguration für alle Private Link-Ressourcen zu vereinfachen.
  
 > [!IMPORTANT]
 > Es wird nicht empfohlen, eine Zone zu überschreiben, die aktiv zur Auflösung öffentlicher Endpunkte genutzt wird. Verbindungen mit Ressourcen können ohne DNS-Weiterleitung an das öffentliche DNS nicht ordnungsgemäß aufgelöst werden. Um Probleme zu vermeiden, erstellen Sie einen anderen Domänennamen, oder halten Sie sich an den vorgeschlagenen Namen für jeden der folgenden Dienste. 
@@ -107,9 +107,12 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 |Speicherkonto (Microsoft.Storage/storageAccounts)   |    Datei (file, file_secondary)      |    privatelink.file.core.windows.net      |
 |Speicherkonto (Microsoft.Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
 |Data Lake-Dateisystem Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake-Dateisystem Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-||||
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Table|privatelink.table.cosmos.azure.com|
  
-
 Azure erstellt einen DNS-Eintrag des Typs CNAME (kanonischer Name) im öffentlichen DNS zum Umleiten der Auflösung an die vorgeschlagenen Domänennamen. Sie können die Auflösung mit der privaten IP-Adresse Ihrer privaten Endpunkte überschreiben. 
  
 Ihre Anwendungen müssen die Verbindungs-URL nicht ändern. Beim Versuch der Auflösung mithilfe eines öffentlichen DNS wird der DNS-Server nun in Ihre privaten Endpunkten aufgelöst. Der Prozess wirkt sich nicht auf Ihre Anwendungen aus. 
@@ -122,8 +125,6 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 |Einschränkung |BESCHREIBUNG |Lösung  |
 |---------|---------|---------|
 |Regeln für Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich.  | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Bereitstellen einzelner Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte        |
-|Private Endpunkte können nicht in Subnetzen erstellt werden, die für Dienstendpunkte oder spezialisierte Workloads aktiviert sind    |Private Endpunkte können nicht in Subnetzen erstellt werden, die für Dienstendpunkte oder Subnetze aktiviert sind, die an spezialisierte Workloads delegiert wurden|  Erstellen Sie ein separates Subnetz, um die privaten Endpunkte bereitzustellen.        |
-|Der private Endpunkt kann nur dem Private Link-Dienst (im Besitz des Kunden) in derselben Region zugeordnet werden    |   Das Herstellen einer Verbindung mit einem Private Link-Dienst (Ihrem eigenen) aus einer anderen Region wird nicht unterstützt       |  In der Vorschauphase müssen Sie Ihren Private Link-Dienst in derselben Region bereitstellen.        |
 |  Virtuelle Netzwerke mit Peering mit nur privaten Endpunkten werden nicht unterstützt.   |   Das Herstellen einer Verbindung mit privaten Endpunkten in einem virtuellen Netzwerk mit Peering ohne andere Workload wird nicht unterstützt.       | Stellen Sie einen einzelnen virtuellen Computer im virtuellen Netzwerk mit Peering bereit, um die Konnektivität zu ermöglichen. |
 |Spezialisierte Workloads können nicht auf private Endpunkte zugreifen    |   Die folgenden Dienste, die in Ihrem virtuellen Netzwerk bereitgestellt werden, können nicht über private Endpunkte auf Private Link-Ressourcen zugreifen:<br>App Service-Plan</br>Azure Container Instances</br>Azure NetApp Files</br>Dediziertes HSM von Azure<br>       |   Keine Risikominderung in der Vorschauphase.       |
 
@@ -133,4 +134,5 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 - [Erstellen eines privaten Endpunkts über PowerShell](create-private-endpoint-powershell.md)
 - [Erstellen eines privaten Endpunkts über die Azure CLI](create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts für das Speicherkonto im Portal](create-private-endpoint-storage-portal.md)
+- [Erstellen eines privaten Endpunkts für das Azure Cosmos-Konto im Portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Erstellen eines eigenen Private Link-Diensts mit Azure PowerShell](create-private-link-service-powershell.md)

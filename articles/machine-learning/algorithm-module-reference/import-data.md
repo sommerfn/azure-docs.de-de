@@ -1,53 +1,64 @@
 ---
 title: 'Import Data (Daten importieren): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie das Modul „Import Data“ (Daten importieren) in Azure Machine Learning Service verwenden, um Daten aus vorhandenen Clouddatendiensten in eine Machine Learning-Pipeline zu laden.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul Import Data in Azure Machine Learning verwenden, um Daten aus vorhandenen Clouddatendiensten in eine Machine Learning-Pipeline zu laden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: fef7d686479b24b0402ab6f1e6990df74231b8d6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693150"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497815"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
-Verwenden Sie dieses Modul, um Daten aus vorhandenen Clouddatendiensten in eine Machine Learning-Pipeline zu laden.  
+Verwenden Sie dieses Modul, um Daten aus vorhandenen Clouddatendiensten in eine Machine Learning-Pipeline zu laden. 
 
-Wählen Sie zunächst die Art des cloudbasierten Speichers aus, aus dem gelesen werden soll, und legen Sie die zusätzlichen Einstellungen fest. Nachdem Sie die gewünschten Daten definiert und eine Verbindung mit der Quelle hergestellt haben, leitet das Modul [Import Data](./import-data.md) den Datentyp jeder Spalte basierend auf den darin enthaltenen Werten ab und lädt die Daten in Ihren Azure Machine Learning-Arbeitsbereich. Das Modul [Import Data](./import-data.md) (Daten importieren) gibt ein Dataset aus, das für beliebige Pipelines verwendet werden kann.
+> [!Note]
+> Alle von diesem Modul bereitgestellten Funktionen können über **Datenspeicher** und **Datasets** auf der Landing Page des Arbeitsbereichs ausgeführt werden. Die Verwendung von **Datenspeichern** und **Datasets** wird empfohlen, da hierbei zusätzliche Features wie Datenüberwachung eingeschlossen sind. Weitere Informationen finden Sie in den Artikeln [Zugreifen auf Daten](../service/how-to-access-data.md) und [Registrieren von Datasets](../service/how-to-create-register-datasets.md).
+> Nachdem Sie ein Dataset registriert haben, finden Sie es auf der Designer-Oberfläche in der Kategorie **Datasets** -> **My Datasets** (Meine Datasets). Dieses Modul ist für Benutzer von Studio (klassisch) reserviert, die eine vertraute Benutzeroberfläche verwenden möchten. 
+>
 
-  
-Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neue Daten hinzufügen, indem Sie [Import Data](./import-data.md) erneut ausführen. Wenn die Daten jedoch nicht bei jeder Ausführung der Pipeline erneut aus der Quelle gelesen werden sollen, legen Sie die Option **Use cached results** (Zwischengespeicherte Ergebnisse verwenden) auf „TRUE“ fest. Ist diese Option ausgewählt, überprüft das Modul, ob die Pipeline schon einmal unter Verwendung der gleichen Quelle und der gleichen Eingabeoptionen ausgeführt wurde. Wenn eine frühere Ausführung gefunden wird, werden die Daten aus dem Cache verwendet, statt die Daten erneut aus der Quelle zu laden.
- 
+Wählen Sie zunächst die Quelle aus, aus der gelesen werden soll, und schließen Sie die weiteren Einstellungen ab. Das Modul **Import Data** unterstützt das Lesen von Daten aus den folgenden Quellen:
 
-## <a name="data-sources"></a>Datenquellen
+- URL über HTTP
+- Azure-Cloudspeicher über [**Datenspeicher**](../service/how-to-access-data.md)
+    - Azure-Blobcontainer
+    - Azure-Dateifreigabe
+    - Azure Data Lake
+    - Azure Data Lake Gen2
+    - Azure SQL-Datenbank
+    - Azure PostgreSQL    
 
-Das Modul „Import Data“ unterstützt die folgenden Datenquellen: Klicken Sie auf die Links, um ausführliche Anleitungen und Beispiele zur Verwendung der einzelnen Datenquellen zu erhalten. 
- 
-Wenn Sie nicht sicher sind, wie bzw. wo Daten gespeichert werden sollen, informieren Sie sich in diesem Leitfaden über allgemeine Datenszenarien im Data Science-Prozess:  [Szenarien für die erweiterte Analyse in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
+Bevor Sie Cloudspeicher verwenden können, müssen Sie zunächst einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen hierzu finden Sie unter [Zugreifen auf Daten](../service/how-to-access-data.md). 
 
+Nachdem Sie die gewünschten Daten definiert und eine Verbindung mit der Quelle hergestellt haben, leitet **[Import Data](./import-data.md)** den Datentyp jeder Spalte basierend auf den darin enthaltenen Werten ab und lädt die Daten in Ihre Designer-Pipeline. **Import Data** gibt ein Dataset aus, das mit beliebigen Designer-Pipelines verwendet werden kann.
 
-|Datenquelle| Nutzung|
-|-----------|-----------|  
-|[Web URL via HTTP](./import-from-web-url-via-http.md)|Ruft Daten ab, die unter einer Web-URL gehostet sind. Die Web-URL verwendet HTTP und wurde im CSV-, TSV-, ARFF- oder SvmLight-Format bereitgestellt.|  
-|[Import from Azure Blob Storage](./import-from-azure-blob-storage.md) (Daten aus Azure Blob Storage importieren) |Ruft Daten ab, die im Blob-Dienst von Azure gespeichert sind.|  
-|[Importieren aus Azure SQL-Datenbank](./import-from-azure-sql-database.md) |Abrufen von Daten aus Azure SQL-Datenbank|
+Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neue Daten hinzufügen, indem Sie [Import Data](./import-data.md) erneut ausführen. Wenn die Daten jedoch nicht bei jeder Ausführung der Pipeline erneut aus der Quelle gelesen werden sollen, legen Sie die Option **Use cached results** (Zwischengespeicherte Ergebnisse verwenden) auf TRUE fest. Ist diese Option ausgewählt, überprüft das Modul, ob die Pipeline schon einmal unter Verwendung der gleichen Quelle und der gleichen Eingabeoptionen ausgeführt wurde. Wenn eine frühere Ausführung gefunden wird, werden die Daten aus dem Cache verwendet, statt die Daten erneut aus der Quelle zu laden.
 
 ## <a name="how-to-configure-import-data"></a>Konfigurieren von „Import Data“ (Daten importieren)
- 
-1. Fügen Sie Ihrer Pipeline das Modul **Import Data** (Daten importieren) hinzu. Sie finden dieses Modul in der Kategorie **Data Input and Output** (Dateieingabe und -ausgabe) in der Oberfläche.
 
-1. Klicken Sie auf **Datenquelle**, und wählen Sie die Art des cloudbasierten Speichers aus, aus dem gelesen werden soll. 
+1. Fügen Sie Ihrer Pipeline das Modul **Import Data** (Daten importieren) hinzu. Sie finden dieses Modul in der Kategorie **Data Input and Output** (Dateieingabe und -ausgabe) im Designer.
 
-    Zusätzliche Einstellungen hängen vom ausgewählten Speichertyp und davon ab, ob der Speicher gesichert ist oder nicht. Möglicherweise müssen Sie den Kontonamen, den Dateityp oder Anmeldeinformationen angeben. Einige Quellen erfordern keine Authentifizierung, bei anderen werden Sie jedoch u. U. nach Kontonamen, Schlüssel oder Containernamen gefragt.
+1. Klicken Sie auf **Launch Data Import Wizard** (Datenimport-Assistenten starten), um die Datenquelle mithilfe eines Assistenten zu konfigurieren.
+
+    Der Assistent ruft den Kontonamen und die Anmeldeinformationen ab und unterstützt Sie bei der Konfiguration weiterer Optionen. Wenn Sie eine bestehende Konfiguration bearbeiten, werden die aktuellen Werte zuerst geladen.
+
+1. Wählen Sie **Datenquelle** und dann den Datenquellentyp aus. Dabei kann es sich um „HTTP“ oder „Datenspeicher“ handeln.
+
+    Wenn Sie „Datenspeicher“ auswählen, können Sie vorhandene Datenspeicher auswählen, die bereits in Ihrem Azure Machine Learning-Arbeitsbereich registriert sind, oder einen neuen Datenspeicher erstellen. Anschließend definieren Sie den Pfad der zu importierenden Daten im Datenspeicher. Sie können den Pfad ganz einfach durchsuchen, indem Sie auf **Pfad durchsuchen** ![import-data-path](media/module/import-data-path.png) klicken.
+
+1. Wählen Sie das Vorschauschema aus, um die Spalten zu filtern, die Sie einschließen möchten. Sie können auch erweiterte Einstellungen wie Trennzeichen in den Analyseoptionen definieren.
+
+    ![import-data-preview](media/module/import-data.png)
 
 1. Wählen Sie die Option **Use cached results**, wenn Sie das Dataset für sukzessive Ausführungen zwischenspeichern möchten.
 
@@ -57,11 +68,11 @@ Wenn Sie nicht sicher sind, wie bzw. wo Daten gespeichert werden sollen, informi
 
 1. Ausführen der Pipeline.
 
-    Wenn die Daten durch „Import Data“ in die Oberfläche geladen werden, wird der Datentyp jeder Spalte basierend auf den darin enthaltenen Werten (entweder numerisch oder kategorisch) abgeleitet.
+    Wenn die Daten durch Import Data in den Designer geladen werden, wird der Datentyp jeder Spalte basierend auf den darin enthaltenen Werten (numerisch oder kategorisch) abgeleitet.
 
-    - Sofern eine Spaltenüberschrift vorhanden ist, wird diese zur Benennung der Spalten im Ausgabedataset verwendet.
+    Sofern eine Spaltenüberschrift vorhanden ist, wird diese zur Benennung der Spalten im Ausgabedataset verwendet.
 
-    - Wenn keine Spaltenüberschriften in den Daten enthalten sind, werden neue Spaltennamen im Format col1, col2,... , coln* generiert.
+    Wenn keine Spaltenüberschriften in den Daten enthalten sind, werden neue Spaltennamen im Format col1, col2,... , coln* generiert.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -71,7 +82,6 @@ Wenn Sie die Daten zur Wiederverwendung speichern möchten, anstatt bei jeder Pi
 
 Nach dem Importieren der Daten können einige zusätzliche Vorbereitungen zur Modellierung und Analyse erforderlich sein:
 
-
 - Verwenden Sie [Edit Metadata](./edit-metadata.md) (Metadaten bearbeiten), um Spaltennamen zu ändern, einen abweichenden Datentyp für eine Spalte festzulegen, oder um anzugeben, dass einige Spalten für Bezeichnungen oder Features stehen.
 
 - Verwenden Sie [Select Columns in Dataset](./select-columns-in-dataset.md) (Spalten im Dataset auswählen), um eine Teilmenge von Spalten auszuwählen, die während der Modellierung transformiert oder verwendet werden sollen. Über das Modul [Add Columns](./add-columns.md) (Spalten hinzufügen) lassen sich die transformierten oder entfernten Spalten ganz einfach wieder mit dem ursprünglichen Dataset verknüpfen.  
@@ -80,4 +90,4 @@ Nach dem Importieren der Daten können einige zusätzliche Vorbereitungen zur Mo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

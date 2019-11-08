@@ -3,18 +3,18 @@ title: Authentifizierung mit Azure Maps | Microsoft-Dokumentation
 description: Enthält Informationen zur Authentifizierung für die Verwendung von Azure Maps-Diensten.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/11/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a4608d0631c9a590fdde583e399883a023275c30
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838051"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575652"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
@@ -41,12 +41,15 @@ Azure Maps akzeptiert **OAuth 2.0**-Zugriffstoken für Azure AD-Mandanten, die e
 * Partneranwendungen, für die von Benutzern delegierte Berechtigungen verwendet werden.
 * Verwaltete Identitäten für Azure-Ressourcen.
 
-Azure Maps generiert für jedes Azure Maps-Konto einen *eindeutigen Bezeichner (Client-ID)* . Wenn Sie diese Client-ID mit zusätzlichen Parametern kombinieren, können Sie Token von Azure AD anfordern, indem Sie den folgenden Wert angeben:
+Azure Maps generiert für jedes Azure Maps-Konto einen *eindeutigen Bezeichner (Client-ID)* . Wenn Sie diese Client-ID mit zusätzlichen Parametern kombinieren, können Sie Token von Azure AD anfordern, indem Sie die Werte in der folgenden Tabelle von Ihrer Azure-Umgebung abhängig angeben.
 
-```
-https://login.microsoftonline.com
-```
-Weitere Informationen zum Konfigurieren von Azure AD und Anforderungstoken für Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+| Azure-Umgebung   | Azure AD-Tokenendpunkt |
+| --------------------|-------------------------|
+| Azure – Öffentlich        | https://login.microsoftonline.com |
+| Azure Government    | https://login.microsoftonline.us |
+
+
+Weitere Informationen zum Konfigurieren von Azure AD und Anforderungstoken für Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
 Allgemeine Informationen zum Anfordern von Token aus Azure AD finden Sie unter [Was ist Authentifizierung?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 
@@ -89,6 +92,6 @@ Informationen zum Anzeigen Ihrer RBAC-Einstellungen finden Sie im Artikel zum Th
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Authentifizierung einer Anwendung mit Azure AD und Azure Maps finden Sie im Artikel zum Thema [Verwalten der Authentifizierung in Azure Maps](https://review.docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
+* Weitere Informationen zur Authentifizierung einer Anwendung mit Azure AD und Azure Maps finden Sie im Artikel zum Thema [Verwalten der Authentifizierung in Azure Maps](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
 * Weitere Informationen zur Authentifizierung von Azure Maps, des Kartensteuerelements und von Azure AD finden Sie unter [Verwenden des Azure Maps-Kartensteuerelements](https://aka.ms/amaadmc).

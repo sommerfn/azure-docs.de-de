@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: 408ee11b318143b3128833a741e04dd68f3816ed
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d78904fde53da0e800a69d2148a9c4e3acf57307
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343222"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494408"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Verknüpfungen in Azure Cosmos DB
 
@@ -103,7 +103,7 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
 ## <a name="examples"></a>Beispiele
 
-Die folgenden Beispiele veranschaulichen die Funktionsweise der JOIN-Klausel. Das Ergebnis im folgenden Beispiel ist leer, da das Kreuzprodukt der einzelnen Quellelemente und einem leeren Satz leer ist:
+Die folgenden Beispiele veranschaulichen die Funktionsweise der JOIN-Klausel. Bevor Sie diese Beispiele ausführen, laden Sie die [Beispielfamiliendaten](sql-query-getting-started.md#upload-sample-data) hoch. Das Ergebnis im folgenden Beispiel ist leer, da das Kreuzprodukt der einzelnen Quellelemente und einem leeren Satz leer ist:
 
 ```sql
     SELECT f.id

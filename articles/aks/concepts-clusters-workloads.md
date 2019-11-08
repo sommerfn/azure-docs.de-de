@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: da84f72c1ccf85e1f3d0f003a5aca961118c0a0e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672807"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472895"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -76,7 +76,7 @@ Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benöt
 
 ### <a name="resource-reservations"></a>Ressourcenreservierungen
 
-Knotenressourcen werden von AKS verwendet, damit der Knoten als Teil Ihres Clusters fungieren kann. Dies kann zu einer Abweichung zwischen den Gesamtressourcen Ihres Knotens und den Ressourcen führen, die bei der Verwendung in AKS zugewiesen werden können. Dies sollte unbedingt beachtet werden, wenn Anforderungen und Grenzwerte für vom Benutzer bereitgestellte Pods festgelegt werden.
+Knotenressourcen werden von AKS verwendet, damit der Knoten als Teil Ihres Clusters fungieren kann. Dies kann zu einer Abweichung zwischen den Gesamtressourcen des Knotens und den Ressourcen führen, die bei der Verwendung in AKS zugewiesen werden können. Dies sollte unbedingt beachtet werden, wenn Anforderungen und Grenzwerte für vom Benutzer bereitgestellte Pods festgelegt werden.
 
 Führen Sie Folgendes aus, um die Ressourcen, die einem Knoten zugewiesen werden können, zu ermitteln:
 ```kubectl
@@ -110,10 +110,10 @@ Entsprechende bewährte Methoden finden Sie unter [Best Practices für grundlege
 
 ### <a name="node-pools"></a>Knotenpools
 
-Knoten mit der gleichen Konfiguration werden in *Knotenpools* gruppiert. Ein Kubernetes-Cluster enthält mindestens einen Knotenpool. Die anfängliche Knotenanzahl und -größe wird beim Erstellen eines AKS-Clusters definiert, wobei ein *Standardknotenpool* erstellt wird. Dieser Standardknotenpool in AKS enthält die zugrunde liegenden VMs, die Ihre Agent-Knoten ausführen. Die Unterstützung für mehrere Knotenpools in AKS ist derzeit in der Vorschauversion.
+Knoten mit der gleichen Konfiguration werden in *Knotenpools* gruppiert. Ein Kubernetes-Cluster enthält mindestens einen Knotenpool. Die anfängliche Knotenanzahl und -größe wird beim Erstellen eines AKS-Clusters definiert, wobei ein *Standardknotenpool* erstellt wird. Dieser Standardknotenpool in AKS enthält die zugrunde liegenden VMs, die Ihre Agent-Knoten ausführen.
 
 > [!NOTE]
-> Um zu gewährleisten, dass Ihr Cluster zuverlässig funktioniert, sollten Sie mindestens zwei (2) Knoten im Standardknotenpool ausführen.
+> Um zu gewährleisten, dass Ihr Cluster zuverlässig funktioniert, sollten Sie mindestens zwei Knoten im Standardknotenpool ausführen.
 
 Wenn Sie einen AKS-Cluster skalieren oder ein Upgrade des Clusters durchführen, wird die Aktion im Standardknotenpool ausgeführt. Sie können auch auswählen, einen bestimmten Knotenpool zu skalieren oder ein Upgrade für diesen auszuführen. Bei Upgradevorgängen wird die Ausführung von Containern in anderen Knoten im Knotenpool geplant, bis das Upgrade für alle Knoten erfolgreich durchgeführt wurde.
 

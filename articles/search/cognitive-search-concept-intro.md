@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 27578e50c56a9c7dac3d74b88e14d0f8fbe9d402
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 97622df578b6c1357601b32a22c806e9eef77c96
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784993"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466870"
 ---
-# <a name="introduction-to-ai-enrichment-in-azure-cognitive-search"></a>Einführung in die KI-Anreicherung in Azure Cognitive Search
+# <a name="introduction-to-ai-in-azure-cognitive-search"></a>Einführung in die KI in Azure Cognitive Search
 
-Die KI-Anreicherung ist eine Funktion der Azure Cognitive Search-Indizierung zum Extrahieren von Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen, um den Inhalt anzureichern und in einem Index oder Wissensspeicher besser durchsuchbar zu machen. Extrahierung und Erweiterung werden über *kognitive Fähigkeiten* implementiert, die einer Indizierungspipeline angefügt sind. Bei kognitiven Fähigkeiten wird zwischen folgenden Kategorien unterschieden: 
+Die KI-Anreicherung ist eine Funktion der Azure Cognitive Search-Indizierung zum Extrahieren von Text aus Bildern, Blobs und anderen unstrukturierten Datenquellen, um den Inhalt anzureichern und in einem Index oder Wissensspeicher besser durchsuchbar zu machen. Extrahierung und Erweiterung werden über *kognitive Fähigkeiten* implementiert, die einer Indizierungspipeline angefügt sind. In den Dienst integrierte kognitive Qualifikationen werden wie folgt kategorisiert: 
 
 + Zu den Fähigkeiten in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-entity-recognition.md), Spracherkennung, [Schlüsselbegriffserkennung](cognitive-search-skill-language-detection.md), [Textbearbeitung](cognitive-search-skill-keyphrases.md) und [Stimmungserkennung](cognitive-search-skill-sentiment.md). Mithilfe dieser Fähigkeiten kann unstrukturierter Text neue Formen annehmen, die als durchsuchbare und filterbare Felder in einem Index zugeordnet sind.
 
@@ -30,11 +30,17 @@ Die kognitiven Fähigkeiten in Azure Cognitive Search basieren auf Machine Learn
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Cognitive Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden. Die Architektur ist erweiterbar. Falls die integrierten Fähigkeiten also nicht ausreichen, können Sie [benutzerdefinierte Fähigkeiten](cognitive-search-create-custom-skill-example.md) erstellen und anfügen, um die benutzerdefinierte Verarbeitung zu integrieren. Beispiele hierfür sind ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, z.B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
 > [!NOTE]
-> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in der kognitiven Azure-Suche an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
 > Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
 
 ## <a name="when-to-use-cognitive-skills"></a>Einsatzgebiete der kognitiven Fähigkeiten
+
+Integrierte kognitive Qualifikationen können verwendet werden, wenn es sich bei Ihren Rohinhalten um unstrukturierten Text, um Bildinhalte oder um Inhalte handelt, für die Spracherkennung und -übersetzung benötigt werden. Die Anwendung von KI in Form der integrierten kognitiven Qualifikationen kann den Nutzen dieser Inhalte in Ihren Such- und Data Science-Apps erhöhen. 
+
+Darüber hinaus können Sie auch eine benutzerdefinierte Qualifikation hinzufügen, wenn Sie über Open-Source-, Drittanbieter- oder Erstanbietercode verfügen, den Sie in die Pipeline integrieren möchten. Zu dieser Kategorie zählen Klassifizierungsmodelle, mit denen wichtige Merkmale verschiedener Dokumenttypen identifiziert werden. Es können aber auch andere Pakete verwendet werden, die den Nutzen Ihrer Inhalte erhöhen.
+
+### <a name="more-about-built-in-skills"></a>Weitere Informationen zu integrierten Qualifikationen
 
 Ein Skillset mit vorkonfigurierten Fähigkeiten eignet sich sehr gut für die folgenden Anwendungsszenarien:
 
@@ -49,6 +55,8 @@ Ein Skillset mit vorkonfigurierten Fähigkeiten eignet sich sehr gut für die fo
   Insbesondere Blobs enthalten häufig einen großen Textteil in einem einzelnen „Feld“. Durch das Anfügen von Fähigkeiten zur Bildverarbeitung und natürlicher Sprachverarbeitung an einen Indexer können Sie neue Informationen erstellen, die in den Rohdaten noch vorhanden sind, aber sonst nicht als unterschiedliche Felder aufgeführt werden. Einige einsatzbereite, integrierte kognitive Fähigkeiten, die hilfreich sein können: Schlüsselbegriffserkennung, Stimmungsanalyse und Entitätserkennung (Personen, Organisationen und Standorte).
 
   Darüber hinaus können Sie mit integrierten Fähigkeiten Inhalte durch Textaufteilung, Textzusammenführung und Shape-Vorgänge neu strukturieren.
+
+### <a name="more-about-custom-skills"></a>Weitere Informationen zu benutzerdefinierten Qualifikationen
 
 Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. B. das Erkennen von Formularen oder die benutzerdefinierte Entitätserkennung mithilfe eines Modells, das Sie bereitstellen und in der [benutzerdefinierten Skills-Webschnittstelle](cognitive-search-custom-skill-interface.md) umschließen. Beispiele für benutzerdefinierte Fähigkeiten sind die [Formularerkennung](/azure/cognitive-services/form-recognizer/overview), die Integration der [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) und [die Erkennung von benutzerdefinierten Entitäten](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 

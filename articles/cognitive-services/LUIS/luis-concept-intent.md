@@ -1,5 +1,5 @@
 ---
-title: 'Absichten: LUIS'
+title: Absichten und Entitäten – LUIS
 titleSuffix: Azure Cognitive Services
 description: Eine einzelne Absicht stellt eine Aufgabe oder Aktion dar, die der Benutzer ausführen möchte. Sie ist ein Zweck oder Ziel, das in einer Äußerung des Benutzers ausgedrückt wurde. Definieren Sie einen Satz von Absichten, die Aktionen entsprechen, die Benutzer in Ihrer Anwendung ausführen möchten.
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: bb7fa9d930f4c1ab3c241048804060e17fe5a8e4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 3d2895fa8d45ad594963d3f26cbe04fd968f5fcc
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619923"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73487535"
 ---
-# <a name="concepts-about-intents-in-your-luis-app"></a>Konzepte zu Absichten in Ihrer LUIS-App
+# <a name="intents-in-your-luis-app"></a>Absichten in Ihrer LUIS-App
 
 Eine Absicht stellt eine Aufgabe oder Aktion dar, die der Benutzer ausführen möchte. Sie ist ein Zweck oder Ziel, das in einer [Äußerung](luis-concept-utterance.md) des Benutzers ausgedrückt wurde.
 
@@ -31,55 +31,45 @@ Absichten einer Reise-App   |   Beispiele für Äußerungen   |
  CheckWeather | „Wie ist das Wetter in Boston?“ <br/> „Zeige mir die Vorhersage für das Wochenende“ |
  Keine         | „Zeige mit ein Keksrezept“<br>„Haben die Lakers gewonnen?“ |
 
-Alle Anwendungen enthalten die vordefinierte Absicht „[None](#none-intent-is-fallback-for-app)“, die als Fallbackabsicht fungiert. 
+Alle Anwendungen enthalten die vordefinierte Absicht „[None](#none-intent)“, die als Fallbackabsicht fungiert. 
 
 ## <a name="prebuilt-domains-provide-intents"></a>Vordefinierte Domänen stellen Absichten bereit
-Zusätzlich zu den von Ihnen definierten Absichten können Sie die von einer vordefinierten Domäne vordefinierten Absichten verwenden. Weitere Informationen zum Anpassen von Absichten aus einer vordefinierten Domäne für die Verwendung in Ihrer App finden Sie unter [Verwenden von vordefinierten Domänen in LUIS-Apps](luis-how-to-use-prebuilt-domains.md).
+Zusätzlich zu den von Ihnen definierten Absichten können Sie die von einer [vordefinierten Domäne](luis-how-to-use-prebuilt-domains.md) vordefinierten Absichten verwenden. 
 
 ## <a name="return-all-intents-scores"></a>Zurückgeben von Bewertungen für alle Absichten
-Sie weisen eine Äußerung einer einzigen Absicht zu. Wenn LUIS eine Äußerung am Endpunkt empfängt, gibt es die am besten bewertete Absicht für die Äußerung zurück. Wenn Sie Ergebnisse für alle Absichten der Äußerung bewerten möchten, können Sie das Flag `verbose=true` in der Abfragezeichenfolge der API für den [Endpunktaufruf](https://aka.ms/v1-endpoint-api-docs) angeben. 
+Sie weisen eine Äußerung einer einzigen Absicht zu. Wenn LUIS eine Äußerung am Endpunkt empfängt, gibt es standardmäßig die am besten bewertete Absicht für die Äußerung zurück. 
+
+Wenn Sie die Scores für alle Absichten der Äußerung benötigen, können Sie in der Abfragezeichenfolge der Vorhersage-API ein Flag angeben. 
+
+|Version der Vorhersage-API|Flag|
+|--|--|
+|V2|`verbose=true`|
+|V3|`show-all-intents=true`|
 
 ## <a name="intent-compared-to-entity"></a>Absichten im Vergleich zu Entitäten
-Die Absicht stellt die Aktion dar, die der Chatbot für den Benutzer ausführen soll. Sie basiert auf der gesamten Äußerung. Die Entität stellt Wörter oder Ausdrücke dar, die in der Äußerung enthalten sind. Ein Äußerung kann nur eine Absicht mit der höchsten Bewertung, aber viele Entitäten enthalten. 
+Die Absicht stellt die Aktion dar, die der Bot für den Benutzer ausführen soll. Sie basiert auf der gesamten Äußerung. Ein Äußerung kann nur eine Absicht mit der höchsten Bewertung, aber viele Entitäten enthalten. 
 
 <a name="how-do-intents-relate-to-entities"></a>
 
-Erstellen Sie eine Absicht, wenn die _Benutzerabsicht_ eine Aktion in der Clientanwendung auslösen würde. Dies kann z. B. ein Aufruf der checkweather()-Funktion sein. Erstellen Sie dann eine Entität zur Darstellung der Parameter, die zum Ausführen der Aktion erforderlich sind. 
+Erstellen Sie eine Absicht, wenn die _Benutzerabsicht_ eine Aktion in der Clientanwendung auslösen würde. Dies kann z. B. ein Aufruf der checkweather()-Funktion sein. Erstellen Sie dann Entitäten zur Darstellung der Parameter, die zum Ausführen der Aktion erforderlich sind. 
 
-|Beispielabsicht   | Entität | Entität in Beispieläußerungen   | 
+|Absicht   | Entität | Beispieläußerung   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | What's the weather like in `Seattle` `tomorrow`? |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend` | 
 ||||
 
-## <a name="custom-intents"></a>Benutzerdefinierte Absichten
-
-Ebenso entsprechen [Äußerungen](luis-concept-utterance.md) einer einzigen Absicht. Äußerungen in Ihrer Absicht können eine beliebige [Entität](luis-concept-entity-types.md) in der App verwenden, da Entitäten nicht absichtsspezifisch sind. 
-
 ## <a name="prebuilt-domain-intents"></a>Absichten vordefinierter Domänen
 
-[Vordefinierte Domänen](luis-how-to-use-prebuilt-domains.md) enthalten Absichten mit Äußerungen.  
+[Vordefinierte Domänen](luis-how-to-use-prebuilt-domains.md) stellen Absichten mit Äußerungen bereit. 
 
 ## <a name="none-intent"></a>Absicht „None“
 
-Die Absicht **None** ist für jede App wichtig und sollte keine Null-Äußerungen aufweisen.
+Die Absicht **None** wird erstellt, aber absichtlich leer gelassen. Die Absicht **None** ist eine erforderliche Absicht, die weder gelöscht noch umbenannt werden kann. Füllen Sie sie mit Äußerungen, die außerhalb Ihres Themenbereichs liegen.
 
-### <a name="none-intent-is-fallback-for-app"></a>Absicht „None“ als Fallback für die App
-Die Absicht **None** ist eine Sammel- bzw. Ausweichabsicht. Sie dient dazu, LUIS Äußerungen beizubringen, die in der App-Domäne (dem Themenbereich) nicht wichtig sind. Die Absicht **None** sollte zwischen 10 und 20 Prozent der gesamten Äußerungen in der Anwendung ausmachen. Lassen Sie „None“ (Keine) nicht leer. 
+Die Absicht **None** ist die Fallbackabsicht, die in jeder App wichtig ist und 10 % der gesamten Äußerungen umfassen sollte. Sie dient dazu, LUIS Äußerungen beizubringen, die in der App-Domäne (dem Themenbereich) nicht wichtig sind. Wenn Sie der Absicht **None** keine Äußerungen hinzufügen, zwingt LUIS eine Äußerung von außerhalb der Domäne in eine Absicht der Domäne. Dadurch werden die Vorhersagebewertungen verzerrt, da LUIS die falsche Absicht für die Äußerung erlernt. 
 
-### <a name="none-intent-helps-conversation-direction"></a>Absicht „None“ unterstützt Konversationsführung
-Wenn eine Äußerung als Absicht „None“ vorhergesagt und an den Chatbot mit dieser Vorhersage zurückgegeben wird, kann der Bot weitere Fragen stellen oder ein Menü angeben, über das der Benutzer gültige Auswahlmöglichkeiten für den Chatbot angeben kann. 
-
-### <a name="no-utterances-in-none-intent-skews-predictions"></a>Fehlende Äußerungen in der Absicht „None“ beeinträchtigen Vorhersagen
-Wenn Sie der Absicht **None** keine Äußerungen hinzufügen, zwingt LUIS eine Äußerung von außerhalb der Domäne in eine Absicht der Domäne. Dadurch werden die Vorhersagebewertungen verzerrt, da LUIS die falsche Absicht für die Äußerung erlernt. 
-
-### <a name="add-utterances-to-the-none-intent"></a>Hinzufügen von Äußerungen zur Absicht „None“
-Die Absicht **None** wird erstellt, aber absichtlich leer gelassen. Füllen Sie sie mit Äußerungen, die außerhalb Ihres Themenbereichs liegen. Eine gute Äußerung für **None** liegt vollständig außerhalb der App und auch der Branche, in der die App angewandt wird. Bei einer Reise-App sollten beispielsweise keine Äußerungen für **None** verwendet werden, die auf Reisen bezogen werden könnten, also z.B. zu Reservierung, Abrechnung, Essen, Gastronomie, Fracht, Unterhaltung im Flugzeug. 
-
-Welche Art von Äußerungen bleiben für die Absicht „None“? Beginnen Sie mit etwas, das Ihr Bot keinesfalls beantworten soll, z.B. „Welche Dinosaurierart hat blaue Zähne?“. Dies ist eine sehr spezifische Frage weit außerhalb einer Reise-App. 
-
-### <a name="none-is-a-required-intent"></a>„None“ ist eine erforderliche Absicht
-Die Absicht **None** ist eine erforderliche Absicht, die weder gelöscht noch umbenannt werden kann.
+Wenn eine Äußerung als Absicht „None“ vorhergesagt wird, kann die Clientanwendung weitere Fragen stellen oder ein Menü bereitstellen, über das der Benutzer gültige Auswahlmöglichkeiten angeben kann. 
 
 ## <a name="negative-intentions"></a>Negative Absichten 
 Wenn Sie negative und positive Absichten ermitteln möchten, z.B. „ich **möchte** ein Auto“ und „ich möchte **kein** Auto“, können Sie zwei Absichten erstellen (eine positive und eine negative) und jeder entsprechende Äußerungen hinzufügen. Sie können aber auch eine einzige Absicht erstellen und die beiden positiven und negativen Begriffe als Entität kennzeichnen.  
@@ -109,8 +99,6 @@ Erfahren Sie mehr über das Kombinieren von LUIS- und QnA Maker-Apps mit dem [Di
 
 ### <a name="request-help-for-apps-with-significant-number-of-intents"></a>Anfordern von Hilfe für Apps mit einer erheblichen Anzahl von Absichten
 Wenn die Verringerung der Anzahl von Absichten oder das Aufteilen eines Teils Ihrer Absichten auf mehrere Apps für Sie nicht funktioniert, wenden Sie sich an den Support. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/). 
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

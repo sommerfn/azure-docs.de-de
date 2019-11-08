@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: mlearned
-ms.openlocfilehash: 3010973c7d0af784938e9295bb80fc22b7f718f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cfef8ff79f62eca9946dcbb49cafc253f36ab7bb
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018641"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472748"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Um die Sicherheit Ihres AKS-Clusters zu erhöhen, können Sie den ausgehenden Da
 Sie können [Azure Firewall][azure-firewall] oder eine Firewallappliance eines Drittanbieters verwenden, um den ausgehenden Datenverkehr zu schützen und diese erforderlichen Ports und Adressen zu definieren. AKS erstellt diese Regeln nicht automatisch für Sie. Die folgenden Ports und Adressen dienen als Referenz, wenn Sie die entsprechenden Regeln in Ihrer Netzwerkfirewall erstellen.
 
 > [!IMPORTANT]
-> Wenn Sie Azure Firewall verwenden, um ausgehenden Datenverkehr einzuschränken, und eine benutzerdefinierte Route (UDR) erstellen, um den gesamten ausgehenden Datenverkehr zu erzwingen, stellen Sie sicher, dass Sie in der Firewall eine entsprechende DNAT-Regel erstellen, um ausgehenden Datenverkehr zuzulassen. Durch die Verwendung von Azure Firewall mit einer UDR wird das Setup für eingehenden Datenverkehr aufgrund von asymmetrischem Routing unterbrochen. (Das Problem tritt auf, wenn das AKS-Subnetz über eine Standardroute verfügt, die zur privaten IP-Adresse der Firewall wechselt, Sie aber einen öffentlichen Load Balancer verwenden – Eingangs- oder Kubernetes-Dienst vom Typ  „LoadBalancer“.) In diesem Fall wird der eingehende Load Balancer-Datenverkehr über die öffentliche IP-Adresse empfangen, während der Rückpfad über die private IP-Adresse der Firewall verläuft. Die Firewall löscht das zurückgegebene Paket, weil sie zustandsbehaftet ist und nichts über eine vorhandene Sitzung weiß. Informationen zur Integration von Azure Firewall in ihren Eingangs- oder Service Dienst-Load Balancer finden Sie unter [Integrieren von Azure Firewall mit Azure Load Balancer Standard](https://docs.microsoft.com/azure/firewall/integrate-lb).
+> Wenn Sie Azure Firewall verwenden, um ausgehenden Datenverkehr einzuschränken, und eine benutzerdefinierte Route (UDR) erstellen, um den gesamten ausgehenden Datenverkehr zu erzwingen, stellen Sie sicher, dass Sie in der Firewall eine entsprechende DNAT-Regel erstellen, um ausgehenden Datenverkehr zuzulassen. Durch die Verwendung von Azure Firewall mit einer UDR wird das Setup für eingehenden Datenverkehr aufgrund von asymmetrischem Routing unterbrochen. (Das Problem tritt auf, wenn das AKS-Subnetz über eine Standardroute verfügt, die zur privaten IP-Adresse der Firewall wechselt, Sie aber einen öffentlichen Load Balancer verwenden – Eingangs- oder Kubernetes-Dienst vom Typ LoadBalancer). In diesem Fall wird der eingehende Load Balancer-Datenverkehr über die öffentliche IP-Adresse empfangen, während der Rückpfad über die private IP-Adresse der Firewall verläuft. Die Firewall löscht das zurückgegebene Paket, weil sie zustandsbehaftet ist und nichts über eine vorhandene Sitzung weiß. Informationen zur Integration von Azure Firewall in ihren Eingangs- oder Service Dienst-Load Balancer finden Sie unter [Integrieren von Azure Firewall mit Azure Load Balancer Standard](https://docs.microsoft.com/azure/firewall/integrate-lb).
 > Sie können den Datenverkehr für TCP-Port 9000 und TCP-Port 22 mithilfe einer Netzwerkregel zwischen den IP-Adressen der ausgehenden Workerknoten und der IP-Adresse für den API-Server sperren.
 
 In AKS gibt es zwei Gruppen von Ports und Adressen:
@@ -58,6 +58,7 @@ Die folgenden ausgehenden Ports und Netzwerkregeln sind für einen AKS-Cluster e
 * UDP-Port *53* für DNS ist ebenfalls erforderlich, wenn Sie über Pods verfügen, die direkt auf den API-Server zugreifen.
 
 Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforderlich:
+- Azure Global
 
 | FQDN                       | Port      | Zweck      |
 |----------------------------|-----------|----------|
@@ -72,7 +73,34 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
 | packages.microsoft.com     | HTTPS: 443 | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
 | acs-mirror.azureedge.net   | HTTPS: 443 | Diese Adresse ist für das Repository, das zum Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
+- Azure China
 
+| FQDN                       | Port      | Zweck      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
+| *.tun.\<location\>.cx.prod.service.azk8s.cn | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
+| *.azk8s.cn        | HTTPS: 443 | Diese Adresse wird benötigt, um erforderliche Binärdateien und Images herunterzuladen.|
+| mcr.microsoft.com          | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Microsoft Container Registry (MCR) erforderlich. Diese Registrierung enthält Images/Diagramme von Erstanbietern (z. B. moby usw.), die für die Funktion des Clusters während des Upgrades und der Skalierung des Clusters erforderlich sind. |
+| *.cdn.mscr.io              | HTTPS: 443 | Diese Adresse ist für den von Azure CDN (Content Delivery Network) unterstützten MCR-Speicher erforderlich. |
+| management.chinacloudapi.cn       | HTTPS: 443 | Diese Adresse ist für GET/PUT-Vorgänge in Kubernetes erforderlich. |
+| login.chinacloudapi.cn  | HTTPS: 443 | Diese Adresse ist für die Azure Active Directory-Authentifizierung erforderlich. |
+| ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
+| packages.microsoft.com     | HTTPS: 443 | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
+- Azure Government
+
+| FQDN                       | Port      | Zweck      |
+|----------------------------|-----------|----------|
+| *.hcp.\<location\>.cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
+| *.tun.\<location\>.cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
+| aksrepos.azurecr.io        | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Azure Container Registry (ACR) erforderlich. Diese Registrierung enthält Images/Diagramme von Drittanbietern (z. B. metrics server, core dns usw.), die für die Funktion des Clusters während des Upgrades und der Skalierung des Clusters erforderlich sind.|
+| *.blob.core.windows.net    | HTTPS: 443 | Diese Adresse ist der Back-End-Speicher für in ACR gespeicherte Images. |
+| mcr.microsoft.com          | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Microsoft Container Registry (MCR) erforderlich. Diese Registrierung enthält Images/Diagramme von Erstanbietern (z. B. moby usw.), die für die Funktion des Clusters während des Upgrades und der Skalierung des Clusters erforderlich sind. |
+| *.cdn.mscr.io              | HTTPS: 443 | Diese Adresse ist für den von Azure CDN (Content Delivery Network) unterstützten MCR-Speicher erforderlich. |
+| management.usgovcloudapi.net       | HTTPS: 443 | Diese Adresse ist für GET/PUT-Vorgänge in Kubernetes erforderlich. |
+| login.microsoftonline.us  | HTTPS: 443 | Diese Adresse ist für die Azure Active Directory-Authentifizierung erforderlich. |
+| ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
+| packages.microsoft.com     | HTTPS: 443 | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
+| acs-mirror.azureedge.net   | HTTPS: 443 | Diese Adresse ist für das Repository, das zum Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Optionale empfohlene Adressen und Ports für AKS-Cluster
 
 Die folgenden ausgehenden Ports und Netzwerkregeln sind für einen AKS-Cluster optional:
@@ -114,8 +142,8 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 
 | FQDN                                    | Port      | Zweck      |
 |-----------------------------------------|-----------|----------|
-| gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | Diese Adresse wird für den ordnungsgemäßen Betrieb von Azure Policy (derzeit als Vorschauversion in AKS) verwendet. |
-| raw.githubusercontent.com | HTTPS: 443 | Diese Adresse wird verwendet, um die integrierten Richtlinien aus GitHub abzurufen und so den ordnungsgemäßen Betrieb von Azure Policy (derzeit als Vorschauversion in AKS) sicherzustellen. |
+| gov-prod-policy-data.trafficmanager.net | HTTPS: 443 | Diese Adresse wird für den ordnungsgemäßen Betrieb von Azure Policy verwendet. (Derzeit als Vorschauversion in AKS) |
+| raw.githubusercontent.com | HTTPS: 443 | Diese Adresse wird verwendet, um die integrierten Richtlinien aus GitHub abzurufen und so den ordnungsgemäßen Betrieb von Azure Policy sicherzustellen. (Derzeit als Vorschauversion in AKS) |
 | *.gk.<location>.azmk8s.io | HTTPS: 443 | Das Azure Policy-Add-On kommuniziert mit dem Gatekeeper-Überwachungsendpunkt, der auf dem Masterserver ausgeführt wird, um die Überwachungsergebnisse abzurufen. |
 | dc.services.visualstudio.com | HTTPS: 443 | Das Azure Policy-Add-On sendet Telemetriedaten an den Application Insights-Endpunkt. |
 

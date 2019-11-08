@@ -8,19 +8,19 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: acf0b1984eb3e68858be6ed68731612448e672f4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6e1ee1fda658ef0884975e4055891f705c4f5058
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432705"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493983"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Tutorial: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
 
 > [!NOTE]
 > Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Falls Sie direkt zu diesem Artikel navigiert sind, ist es ratsam, mit dem [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) der Reihe zu beginnen.
 
-In diesem Artikel nutzen wir Azure Notebooks zunächst, um ein Machine Learning-Modell per Azure Machine Learning zu trainieren, und verpacken dieses Modell dann als Containerimage, das als Azure IoT Edge-Modul bereitgestellt werden kann. Für Azure Notebooks wird ein Azure Machine Learning Service-Arbeitsbereich genutzt. Dies ist die Grundlage für das Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen.
+In diesem Artikel nutzen wir Azure Notebooks zunächst, um ein Machine Learning-Modell per Azure Machine Learning zu trainieren, und verpacken dieses Modell dann als Containerimage, das als Azure IoT Edge-Modul bereitgestellt werden kann. Von Azure Notebooks wird ein Azure Machine Learning-Arbeitsbereich genutzt. Dabei handelt es sich um eine grundlegende Komponente für das Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen.
 
 Die Aktivitäten in diesem Teil des Tutorials sind auf zwei Notebooks aufgeteilt.
 
@@ -72,7 +72,7 @@ In diesem Schritt erstellen wir ein neues Azure Notebooks-Projekt und laden Date
 
 * **01-turbofan\_regression.ipynb**: Jupyter Notebook-Datei, mit der der Prozess zum Herunterladen der von der Geräteumgebung generierten Daten aus dem Azure-Speicherkonto durchlaufen wird. Die Daten für das Trainieren des Klassifizierers werden untersucht und vorbereitet, das Modell wird trainiert, die Daten werden mit dem Testdataset aus der Datei „Test\_FD003.txt“ getestet, und abschließend wird das Klassifizierermodell im Machine Learning Service-Arbeitsbereich gespeichert.
 
-* **02-turbofan\_deploy\_model.ipynb:** Jupyter Notebook zum Durchlaufen des Prozesses für die Verwendung des Klassifizierermodells, das im Machine Learning Service-Arbeitsbereich gespeichert ist, um ein Containerimage zu erzeugen. Nach der Erstellung des Images wird mit dem Notebook der Prozess zum Bereitstellen des Images als Webdienst durchlaufen, damit Sie überprüfen können, ob dies wie gewünscht funktioniert. Das überprüfte Image wird im Teil [Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen](tutorial-machine-learning-edge-06-custom-modules.md) dieses Tutorials auf unserem Edgegerät bereitgestellt.
+* **02-turbofan\_deploy\_model.ipynb:** Jupyter Notebook zum Durchlaufen des Prozesses für die Verwendung des Klassifizierermodells, das im Machine Learning Service-Arbeitsbereich gespeichert ist, um ein Containerimage zu erzeugen. Nach der Erstellung des Images wird mit dem Notebook der Prozess zum Bereitstellen des Images als Webdienst durchlaufen, damit Sie überprüfen können, ob dies wie gewünscht funktioniert. Das überprüfte Image wird im Teil [Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen](tutorial-machine-learning-edge-06-custom-modules.md) dieses Tutorials auf unserem IoT Edge-Gerät bereitgestellt.
 
 * **Test\_FD003.txt:** Diese Datei enthält die Daten, die wir beim Überprüfen unseres trainierten Klassifizierers als unseren Testsatz verwenden. Der Einfachheit halber haben wir für dieses Beispiel die Testdaten so genutzt, wie sie ursprünglich bereitgestellt wurden.
 

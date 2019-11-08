@@ -6,16 +6,14 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387775"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73519328"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Senkentransformation für einen Datenfluss
-
-
 
 Nach der Transformation Ihres Datenflusses können Sie die Daten in ein Zieldataset weiterleiten. Wählen Sie in der Senkentransformation die Datasetdefinition für die Zielausgabedaten aus. Sie können so viele Senkentransformationen einrichten, wie Ihr Datenfluss erfordert.
 
@@ -53,14 +51,24 @@ Wählen Sie **Schema überprüfen** aus, damit die Senke einen Fehler auslöst, 
 
 Wählen Sie **Clear the folder** (Ordner leeren) aus, um den Inhalt des Senkenordners abzuschneiden, bevor die Zieldateien in diesen Zielordner geschrieben werden.
 
-## <a name="rule-based-mapping"></a>Regelbasierte Zuordnung
-Wenn Sie die automatische Zuordnung deaktivieren, können Sie eine spaltenbasierte Zuordnung (feste Zuordnung) oder eine regelbasierte Zuordnung hinzuzufügen. Bei Verwendung der regelbasierten Zuordnung können Sie Ausdrücke mit Musterabgleich schreiben. 
+## <a name="fixed-mapping-vs-rule-based-mapping"></a>Feste Zuordnung und regelbasierte Zuordnung
+Wenn Sie die automatische Zuordnung deaktivieren, können Sie eine spaltenbasierte Zuordnung (feste Zuordnung) oder eine regelbasierte Zuordnung hinzuzufügen. Die regelbasierte Zuordnung ermöglicht Ihnen das Schreiben von Ausdrücken mit Musterabgleich, während bei der festen Zuordnung logische und physische Spaltennamen zugeordnet werden.
 
 ![Regelbasierte Zuordnung](media/data-flow/rules4.png "Regelbasierte Zuordnung")
 
 Wenn Sie die regelbasierte Zuordnung auswählen, weisen Sie ADF an, Ihren Abgleichsausdruck auszuwerten, um passende Eingangsmusterregeln zu ermitteln und die Ausgangsfeldnamen zu definieren. Sie können eine beliebige Kombination aus feld- und regelbasierten Zuordnungen hinzufügen. Feldnamen werden dann von ADF zur Laufzeit auf der Grundlage eingehender Metadaten aus der Quelle generiert. Sie können die Namen der generierten Felder während des Debuggens sowie im Datenvorschaubereich anzeigen.
 
 Details zum Musterabgleich finden Sie in der [Dokumentation zu Spaltenmustern](concepts-data-flow-column-pattern.md).
+
+Beim regelbasierten Abgleich können Sie auch Muster mit regulären Ausdrücken eingeben. Dazu erweitern Sie die Zeile und geben einen regulären Ausdruck neben „Namensübereinstimmungen:“ ein.
+
+![Zuordnung mit regulärem Ausdruck](media/data-flow/scdt1g4.png "Zuordnung mit regulärem Ausdruck")
+
+Ein sehr einfaches gängiges Beispiel zur Gegenüberstellung von regelbasierter Zuordnung und fester Zuordnung ist der Fall, in dem Sie alle eingehenden Felder demselben Namen im Ziel zuordnen möchten. Bei der festen Zuordnung listen Sie jede einzelne Spalte in der Tabelle auf. Bei der regelbasierten Zuordnung haben Sie eine einzelne Regel, die alle Felder mithilfe von ```true()``` dem gleichen eingehenden Feldnamen zuordnet, der durch ```$$``` dargestellt wird.
+
+### <a name="sink-association-with-dataset"></a>Senkenzuordnung mit Dataset
+
+Für das Dataset, das Sie für die Senke auswählen, ist möglicherweise ein Schema in der Datasetdefinition festgelegt. Wenn kein Schema definiert ist, müssen Sie eine Schemaabweichung zulassen. Wenn Sie eine feste Zuordnung definiert haben, wird die Zuordnung zwischen logischen und physischen Namen bei der Senkentransformation beibehalten. Wenn Sie die Schemadefinition des Datasets ändern, unterbrechen Sie möglicherweise die Senkenzuordnung. Um dies zu vermeiden, verwenden Sie die regelbasierte Zuordnung. Regelbasierte Zuordnungen werden generalisiert, das heißt, dass Schemaänderungen im Dataset keine Unterbrechung der Zuordnung bewirken.
 
 ## <a name="file-name-options"></a>Dateinamenoptionen
 
@@ -97,6 +105,13 @@ Wählen Sie die Datenbankeinstellungen aus:
 
 > [!NOTE]
 > Beim Aktualisieren oder Löschen von Zeilen in Ihrer Datenbanksenke müssen Sie die Schlüsselspalte festlegen. Diese Einstellung ermöglicht die Transformation zur Zeilenänderung, um die eindeutige Zeile in der Datenverschiebungsbibliothek (Data Movement Library, DML) zu bestimmen.
+
+### <a name="cosmosdb-specific-settings"></a>CosmosDB-spezifische Einstellungen
+
+Beim Anordnen von Daten in CosmosDB müssen Sie die folgenden zusätzlichen Optionen beachten:
+
+* Partitionsschlüssel: Dies ist ein Pflichtfeld. Geben Sie eine Zeichenfolge ein, die den Partitionsschlüssel für Ihre Sammlung darstellt. Beispiel: ```/movies/title```
+* Durchsatz: Legen Sie einen optionalen Wert für die Anzahl von RUs fest, die Sie für jede Ausführung dieses Datenflusses auf die CosmosDB-Sammlung anwenden möchten. Der Mindestwert ist 400.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Da Sie nun Ihren Datenfluss erstellt haben, fügen Sie [Ihrer Pipeline eine Aktivität zur Ausführung eines Datenflusses](concepts-data-flow-overview.md) hinzu.

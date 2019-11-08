@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170689"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485396"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Science mit Linux Data Science Virtual Machine in Azure
 
@@ -32,7 +32,7 @@ Bevor Sie eine Linux DSVM verwenden können, müssen die folgenden Voraussetzung
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informationen zur Bereitstellung des virtuellen Computers finden Sie unter [Bereitstellen von Linux Data Science Virtual Machine](linux-dsvm-intro.md).
 * [**X2Go**](https://wiki.x2go.org/doku.php)-Installation auf dem Computer mit einer geöffneten XFCE-Sitzung. Weitere Informationen finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](linux-dsvm-intro.md#x2go).
 * Um reibungsloser scrollen zu können, schalten Sie im Firefox-Webbrowser von DSVM das Flag `gfx.xrender.enabled` in `about:config` um. [Weitere Informationen](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/) Sie sollten außerdem `mousewheel.enable_pixel_scrolling` auf `False` festlegen. [Weitere Informationen](https://support.mozilla.org/questions/981140)
-* **Azure Machine Learning-Konto**. Wenn Sie noch nicht über ein Konto verfügen, registrieren Sie sich auf der [Azure Machine Learning-Homepage](https://studio.azureml.net/) für ein neues Konto. Sie können es kostenlos testen, um Ihnen den Einstieg zu erleichtern.
+* **Azure Machine Learning-Konto**. Wenn Sie noch nicht über ein Konto verfügen, registrieren Sie sich auf der [Azure Machine Learning-Homepage](https://azure.microsoft.com/free/services/machine-learning//) für ein neues Konto.
 
 ## <a name="download-the-spambase-dataset"></a>Herunterladen des Datasets „spambase“
 
@@ -172,11 +172,11 @@ Wir probieren auch ein Modell mit einer zufälligen Gesamtstruktur aus. Mit zuf�
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Bereitstellen eines Modells in Azure Machine Learning Studio
+## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Bereitstellen eines Modells in Azure Machine Learning Studio (klassisch)
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) ist ein Clouddienst, der das Erstellen und Bereitstellen von Predictive Analytics-Modellen vereinfacht. Eine hilfreiche Funktion von Azure Machine Learning Studio ist die Fähigkeit, beliebige R-Funktionen als Webdienst zu veröffentlichen. Das R-Paket von Azure Machine Learning Studio ermöglicht die einfache Bereitstellung direkt in unserer R-Sitzung auf der DSVM.
+[Azure Machine Learning Studio (klassisch)](https://studio.azureml.net/) ist ein Clouddienst, der das Erstellen und Bereitstellen von Predictive Analytics-Modellen vereinfacht. Ein hilfreiches Feature der klassischen Version von Azure Machine Learning Studio ist die Fähigkeit, beliebige R-Funktionen als Webdienst zu veröffentlichen. Das R-Paket von Azure Machine Learning Studio ermöglicht die einfache Bereitstellung direkt in unserer R-Sitzung auf der DSVM.
 
-Zum Bereitstellen des Entscheidungsstrukturcodes aus dem vorherigen Abschnitt müssen Sie sich bei Azure Machine Learning Studio anmelden. Sie benötigen für die Anmeldung Ihre Arbeitsbereich-ID und ein Autorisierungstoken. Führen Sie die folgenden Schritte aus, um diese Werte zu ermitteln und die Azure Machine Learning-Variablen damit zu initialisieren:
+Zum Bereitstellen des Entscheidungsstrukturcodes aus dem vorherigen Abschnitt müssen Sie sich bei Azure Machine Learning Studio (klassisch) anmelden. Sie benötigen für die Anmeldung Ihre Arbeitsbereich-ID und ein Autorisierungstoken. Führen Sie die folgenden Schritte aus, um diese Werte zu ermitteln und die Azure Machine Learning-Variablen damit zu initialisieren:
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Einstellungen** aus. Notieren Sie sich den Wert für **ARBEITSBEREICH-ID**.
 

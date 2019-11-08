@@ -9,14 +9,14 @@ ms.assetid: 26CA595B-0866-43E8-93A2-F2B5E09D1F3B
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: 9fc05ab42c75bac1f8e192dd4fe20bb142881479
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ea883bb294a8769b3c9be1e0eafc2e3e7c811b48
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176902"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73481738"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Durchblättern der Suchergebnisse der Bing-Suche-APIs
 
@@ -64,6 +64,8 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&offs
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
 Host: api.cognitive.microsoft.com  
 ```
+
+Wenn Sie die Bing-Bildersuche- und Bing-Videosuche-APIs verwenden, können Sie mit dem Wert `nextOffset` doppelte Suchergebnisse vermeiden. Rufen Sie den Wert aus den Antwortobjekten `Images` oder `Videos` ab, und verwenden Sie ihn in Ihren Anforderungen mit dem `offset`-Parameter.  
 
 > [!NOTE]
 > Die Bing-Websuche-API gibt Suchergebnisse zurück, die Webseiten, Bilder, Videos und Nachrichten enthalten können. Wenn Sie durch die Suchergebnisse aus dem Bing-Websuche-API blättern, werden nur [Webseiten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) angezeigt, keine anderen Antworttypen, wie etwa Bilder oder Nachrichten. Suchergebnisse in `WebPage`-Objekten enthalten möglicherweise Ergebnisse, die auch in anderen Antworttypen angezeigt werden.

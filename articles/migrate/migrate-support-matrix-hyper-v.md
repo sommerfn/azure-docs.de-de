@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0964dac6b4f381e2ec52bd9ec078741d0ee85712
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802179"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498694"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Unterstützungsmatrix für die Hyper-V-Bewertung und -Migration
 
@@ -35,26 +35,7 @@ Die Tabelle fasst die unterstützten Szenarien für Hyper-V-VMs zusammen.
 --- | ---
 Azure-Berechtigungen | Sie benötigen Berechtigungen für Mitwirkende oder Eigentümer im Abonnement, um ein Azure Migrate-Projekt zu erstellen.
 Virtuelle Hyper-V-Computer | Bewerten Sie bis zu 35.000 Hyper-V-VMs in einem einzigen Projekt. Ein Azure-Abonnement kann mehrere Projekte enthalten. Ein Projekt kann im Rahmen der Bewertungseinschränkungen sowohl VMware-VMs als auch Hyper-V-VMs umfassen.
-Gebiet | Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen erstellen. Obwohl Sie Projekte nur in spezifischen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren. Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
-
-  **Geografie** | **Speicherort der Metadaten**
-  --- | ---
-  Azure Government | US Government, Virginia
-  Asien-Pazifik | „Asien, Osten“ und „Asien, Südosten“
-  Australien | „Australien, Osten“ oder „Australien, Südosten“
-  Brasilien | Brasilien Süd
-  Kanada | „Kanada, Mitte“ oder „Kanada, Osten“
-  Europa | „Europa, Norden“ oder „Europa, Westen“
-  Frankreich | Frankreich, Mitte
-  Indien | „Indien, Mitte“ oder „Indien, Süden“
-  Japan |  „Japan, Osten“ oder „Japan, Westen“
-  Korea | „Südkorea, Mitte“ oder „Südkorea, Süden“
-  Vereinigtes Königreich | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
-  USA | „USA, Mitte“ oder „USA, Westen 2“
-
-
- > [!NOTE]
- > Der Support für Azure Government ist derzeit nur für die [ältere Version](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) von Azure Migrate verfügbar.
+Gebiet | [Überprüfen](migrate-support-matrix.md#supported-geographies) Sie die unterstützten geografischen Regionen.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Anforderungen an Bewertungs-Hyper-V-Hosts

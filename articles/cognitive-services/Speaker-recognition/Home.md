@@ -1,7 +1,7 @@
 ---
 title: Was ist die Sprechererkennungs-API?
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie fortschrittliche Algorithmen zur Sprecherüberprüfung und Sprecheridentifikation mit der Sprechererkennungs-API in Cognitive Services.
+description: Sprecherüberprüfung und Sprecheridentifikation mit der Sprechererkennungs-API in Cognitive Services.
 services: cognitive-services
 author: dwlin
 manager: nitinme
@@ -11,50 +11,59 @@ ms.topic: overview
 ms.date: 10/01/2018
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9cdfd5d09451968487bafbcad643e179ffe82aa7
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f354793e3779f4d9f7be9bae8a21545a15ed1c4c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707159"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464921"
 ---
-# <a name="speaker-recognition-api"></a>Sprechererkennungs-API
+# <a name="speaker-recognition-api---preview"></a>Sprechererkennungs-API: Vorschauversion
 
-Willkommen bei den Sprechererkennungs-APIs in Azure Cognitive Services. Bei Sprechererkennungs-APIs handelt es sich um cloudbasierte APIs, die modernste Algorithmen zur Sprecherüberprüfung und Sprecheridentifikation bereitstellen. Die Sprechererkennung lässt sich in zwei Kategorien unterteilen: Sprecherüberprüfung und Sprecheridentifikation.
-
+Bei Sprechererkennungs-APIs handelt es sich um cloudbasierte APIs, die hochentwickelte Algorithmen zur Sprecherüberprüfung und -identifikation bereitstellen. Die Sprechererkennung ist in zwei Kategorien unterteilt: Sprecherüberprüfung und Sprecheridentifikation.
 
 ## <a name="speaker-verification"></a>Sprecherüberprüfung
 
-Jede menschliche Stimme verfügt über eindeutige Merkmale, die zum Identifizieren einer Person verwendet werden können – genauso wie ein Fingerabdruck.  Das Verwenden von Stimme und Sprache als Signal für die Zugriffssteuerung hat sich als innovatives Werkzeug erwiesen, mit dem sich ein höheres Niveau an Sicherheit und mehr Komfort bei der Authentifizierung für die Kunden erreichen lässt.
+Die Stimme hat unverwechselbare Eigenschaften, die einem Individuum zugeordnet werden können.  Anwendungen können in Szenarien wie Callcentern und Webdiensten die Stimme als zusätzlichen Faktor für die Überprüfung nutzen.
 
-Die Sprecherüberprüfungs-APIs können Benutzer anhand ihrer Stimme und Sprache automatisch authentifizieren.
+Sprecherüberprüfungs-APIs dienen als intelligentes Tool, um Benutzer anhand ihrer Stimme und gesprochenen Passphrase zu überprüfen.
 
 ### <a name="enrollment"></a>Registrierung
 
-Die Registrierung für die Sprecherüberprüfung ist textabhängig. Das bedeutet, Sprecher müssen sich für eine bestimmte Passphrase entscheiden und diese sowohl bei der Registrierung als auch bei der Überprüfung verwenden.
+Die Registrierung für die Sprecherüberprüfung ist textabhängig. Das bedeutet, dass sich Sprecher für eine bestimmte Passphrase entscheiden und diese sowohl in der Registrierungs- als auch der Überprüfungsphase verwenden müssen.
 
-Bei der Registrierung wird die Stimme des Sprechers aufgezeichnet, während dieser eine bestimmte Phrase spricht. Anschließend wird eine Reihe von Merkmalen extrahiert, und die gewählte Phrase wird erkannt. Die extrahierten Merkmale bilden zusammen mit der gewählten Phrase eine eindeutige Stimmsignatur.
+In der Sprecherregistrierungsphase wird die Stimme des Sprechers mit einer bestimmten Aussage aufgezeichnet. Stimmmerkmale werden extrahiert, um eine eindeutige Stimmsignatur zu bilden, während die gewählte Aussage erkannt wird. Diese Sprecherregistrierungsdaten werden anschließend verwendet, um den Sprecher zu überprüfen. Die Sprecherregistrierungsdaten werden in einem abgesicherten System gespeichert. Der Kunde bestimmt, wie lange sie aufbewahrt werden sollen. Kunden können über API-Aufrufe Registrierungsdaten für einzelne Sprecher erstellen, aktualisieren und entfernen.  Beim Löschen des Abonnements werden auch alle mit dem Abonnement verbundenen Sprecherregistrierungsdaten gelöscht.
+
+Kunden müssen sicherstellen, dass sie von den Benutzern die entsprechende Erlaubnis für die Sprecherüberprüfung erhalten haben.
 
 ### <a name="verification"></a>Überprüfung
 
-Bei der Überprüfung werden Spracheingabe und Passphrase mit der Stimmsignatur und der Passphrase aus der Registrierung abgeglichen, um zu ermitteln, ob sie von derselben Person stammen und ob die korrekte Passphrase verwendet wurde.
+In der Überprüfungsphase muss der Kunde die Sprecherüberprüfungs-API mit der ID der zu überprüfenden Person aufrufen.  Der Dienst extrahiert Stimmmerkmale und die Passphrase aus der Sprachaufzeichnung der Eingabe. Anschließend vergleicht der Dienst die Merkmale mit den entsprechenden Elementen der Sprecherregistrierungsdaten für den Sprecher, den der Kunde zu überprüfen versucht, und bestimmt etwaige Übereinstimmungen.  Als Antwort wird „Akzeptieren“ oder „Ablehnen“ mit unterschiedlichen Konfidenzniveaus zurückgegeben.  Der Kunde bestimmt dann, wie er die Ergebnisse nutzen möchte, um zu entscheiden, ob es sich bei dieser Person um den registrierten Sprecher handelt.
 
-Weitere Informationen zur Sprecherüberprüfung finden Sie unter  [Speaker Recognition API](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652) (Sprechererkennungs-API).
+Der Schwellenwert des Konfidenzniveaus muss abhängig vom Szenario und anderen verwendeten Überprüfungsfaktoren festgelegt werden. Es wird empfohlen, mit dem Konfidenzniveau zu experimentieren und die für die jeweilige Anwendung geeignete Einstellung zu wählen. Die APIs dienen nicht zum Bestimmen, ob das Audio von einer echten Person oder einer Imitation oder Aufzeichnung eines registrierten Sprechers stammt.
+
+Der Dienst speichert weder die Sprachaufzeichnung noch die extrahierten Stimmmerkmale, die während der Überprüfungsphase an den Dienst gesendet werden.
+
+Weitere Informationen zur Sprecherüberprüfung finden Sie unter [Speaker Recognition API](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652) (Sprechererkennungs-API).
 
 ## <a name="speaker-identification"></a>Sprecheridentifikation
 
-Sprecheridentifikations-APIs können die sprechende Person anhand einer Audiodatei automatisch erkennen, sofern sie zur einer Gruppe erwarteter Sprecher gehört. Das eingehende Audiosignal wird mit den Daten der bereitgestellten Gruppe von Sprechern abgeglichen, und im Fall einer Übereinstimmung wird die Identität des Sprechers zurückgegeben.
-
-Alle Sprecher müssen zuerst einen Registrierungsprozess absolvieren, bei dem ihre Stimme im System erfasst und ihr stimmlicher Fingerabdruck erstellt wird.
-
+Anwendungen können mithilfe der Stimme feststellen, wer in einer Gruppe registrierter Sprecher spricht. Sprecheridentifikations-APIs können in Szenarien wie Produktivität von Besprechungen, Personalisierung und Transkription im Callcenter verwendet werden.
 
 ### <a name="enrollment"></a>Registrierung
 
-Die Registrierung für die Sprecheridentifikation ist textunabhängig. Es spielt also keine Rolle, was der Sprecher im Audio sagt. Die Stimme des Sprechers wird aufgezeichnet, und es wird eine Reihe von Merkmalen extrahiert, um eine eindeutige Stimmsignatur zu erhalten.
+Die Registrierung für die Sprecheridentifikation ist textunabhängig. Es spielt also keine Rolle, was der Sprecher im Audio sagt. Eine Passphrase ist nicht erforderlich.
 
+In der Registrierungsphase wird die Stimme des Sprechers aufgezeichnet. Stimmmerkmale werden extrahiert, um eine eindeutige Stimmsignatur zu bilden. Die extrahierten Stimmmerkmale werden in einem abgesicherten System gespeichert. Der Kunde bestimmt, wie lange sie aufbewahrt werden sollen. Kunden können über API-Aufrufe Registrierungsdaten für einzelne Sprecher erstellen, aktualisieren und entfernen. Beim Löschen des Abonnements werden auch alle mit dem Abonnement verbundenen Sprecherregistrierungsdaten gelöscht.
 
-### <a name="recognition"></a>Erkennung
+Kunden müssen sicherstellen, dass sie von den Benutzern die entsprechende Erlaubnis zur Sprecheridentifikation erhalten haben.
 
-Für die Erkennung werden das Audio des unbekannten Sprechers sowie die Gruppe potenzieller Sprecher bereitgestellt. Die Spracheingabe wird mit allen Sprechern verglichen, um zu ermitteln, zu wem die Stimme gehört. Wird eine Übereinstimmung gefunden, wird die Identität des Sprechers zurückgegeben.
+### <a name="identification"></a>Identifikation
+
+In der Identifikationsphase extrahiert der Sprecheridentifikationsdienst Stimmmerkmale in der Sprachaufzeichnung der Eingabe. Anschließend werden diese Merkmale mit den Registrierungsdaten in der angegebenen Sprecherliste verglichen. Wenn eine Übereinstimmung mit einem registrierten Sprecher gefunden wird, enthält die Antwort die ID des Sprechers mit einem Konfidenzniveau.  Andernfalls wird von der Antwort „Ablehnen“ zurückgegeben, wenn kein Sprecher mit einem registrierten Sprecher übereinstimmt.
+
+Der Schwellenwert des Konfidenzniveaus muss abhängig vom Szenario festgelegt werden. Es wird empfohlen, mit dem Konfidenzniveau zu experimentieren und die für die jeweilige Anwendung geeignete Einstellung zu wählen. Die APIs dienen nicht zum Bestimmen, ob das Audio von einer echten Person oder einer Imitation oder Aufzeichnung eines registrierten Sprechers stammt.
+
+Der Dienst speichert weder die Sprachaufzeichnung noch die extrahierten Stimmmerkmale, die während der Identifikationsphase an den Dienst gesendet werden.
 
 Weitere Informationen zur Sprecheridentifikation finden Sie unter  [Speaker Recognition API](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e) (Sprechererkennungs-API).

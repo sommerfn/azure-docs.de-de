@@ -1,22 +1,22 @@
 ---
-title: Behandeln von Problemen mit Azure Data Share (Vorschauversion)
-description: Hier erfahren Sie, wie Sie Probleme mit Einladungen und Fehlern beim Erstellen oder Empfangen von Datenfreigaben mit Azure Data Share (Vorschauversion) behandeln.
+title: Behandeln von Problemen mit Azure Data Share
+description: Hier erfahren Sie, wie Sie Probleme mit Einladungen und Fehlern beim Erstellen oder Empfangen von Datenfreigaben mit Azure Data Share behandeln.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6ad612d56b25da9e092070198e321e7fca8ad96b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169224"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490561"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Behandeln allgemeiner Probleme in Azure Data Share (Vorschauversion)
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
-In diesem Artikel erfahren Sie, wie Sie allgemeine Probleme mit Azure Data Share (Vorschauversion) behandeln. 
+In diesem Artikel erfahren Sie, wie Sie allgemeine Probleme mit Azure Data Share behandeln. 
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share-Einladungen 
 
@@ -55,6 +55,20 @@ Sollte einer der obigen Fehler auftreten, wenn Sie eine neue Datenfreigabe erste
 1. Wählen Sie **Zugriffssteuerung (IAM)** aus.
 1. Klicken Sie auf **Hinzufügen**.
 1. Fügen Sie sich als Besitzer hinzu.
+
+## <a name="troubleshooting-sql-based-sharing"></a>Behandeln allgemeiner Probleme bei der SQL-basierten Freigabe
+
+„Fehler: x Datasets wurden nicht hinzugefügt, weil Sie nicht über die erforderlichen Berechtigungen für die Freigabe verfügen.“
+
+Wenn Sie diese Fehlermeldung erhalten, wenn Sie ein Dataset aus einer SQL-basierten Quelle hinzufügen, liegt dies möglicherweise daran, dass Sie keinen Benutzer für die Azure Data Share-MSI auf Ihrer SQL Server-Instanz erstellt haben.  Führen Sie zum Beheben dieses Problems das folgende Skript aus:
+
+```sql
+    create user <share_acct_name> from external provider;     
+    exec sp_addrolemember db_owner, <share_acct_name>; 
+```      
+Beachten Sie, dass *<share_acc_name>* der Name Ihres Data Share-Kontos ist. Wenn Sie noch kein Data Share-Konto erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.         
+
+Stellen Sie sicher, dass Sie alle Voraussetzungen befolgt haben, die im Tutorial [Freigeben Ihrer Daten](share-your-data.md) aufgeführt sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

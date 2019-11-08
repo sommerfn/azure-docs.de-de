@@ -1,24 +1,24 @@
 ---
 title: 'Clean Missing Data: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Clean Missing Data “ (Fehlende Daten bereinigen) im Azure Machine Learning Service fehlende Werte entfernen, ersetzen oder ableiten können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul Clean Missing Data in Azure Machine Learning fehlende Werte entfernen, ersetzen oder ableiten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7167d53cce2c44f754f438753acda008e53bb2b3
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693214"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493813"
 ---
 # <a name="clean-missing-data-module"></a>Modul „Clean Missing Data“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Mit diesem Modul können Sie fehlende Werte entfernen, ersetzen oder ableiten. 
 
@@ -133,8 +133,8 @@ Wenn Sie Bereinigungsvorgänge oft wiederholen müssen, empfehlen wir, dass Sie 
   
 2.  Fügen Sie dann das zu bereinigende Dataset hinzu, und verbinden Sie es mit dem rechten Eingangsport.  
   
-3.  Erweitern Sie die Gruppe **Transforms** (Transformationen) im linken Bereich der Oberfläche. Suchen Sie nach der gespeicherten Transformation, und ziehen Sie sie in die Pipeline.  
-  
+3.  Erweitern Sie die Gruppe **Transforms** im linken Bereich des Designers. Suchen Sie nach der gespeicherten Transformation, und ziehen Sie sie in die Pipeline.  
+
 4.  Verbinden Sie die gespeicherte Transformation mit dem linken Eingangsport von [Apply Transformation](./apply-transformation.md). 
 
     Wenn Sie eine gespeicherte Transformation anwenden, können Sie die Spalten, auf die die Transformation angewendet wird, nicht auswählen. Der Grund: Die Transformation wurde bereits definiert und gilt automatisch für die Spalten, die im ursprünglichen Vorgang angegeben wurden.
@@ -145,4 +145,4 @@ Wenn Sie Bereinigungsvorgänge oft wiederholen müssen, empfehlen wir, dass Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -1,24 +1,24 @@
 ---
 title: 'Zweiklassige Support Vector Machine: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hier erfahren Sie, wie Sie mithilfe des Moduls **Zweiklassige Support Vector Machine** in Azure Machine Learning Service ein Modell erstellen, das auf dem Algorithmus für die Support Vector Machine basiert.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mithilfe des Moduls **Two-Class Support Vector Machine** in Azure Machine Learning ein Modell erstellen, das auf dem Algorithmus für die Support Vector Machine basiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: c58e66070f137f9c5d713a45682afac5f30bbd1e
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 0ab4a0ebf2844d064e40c8417ab22162d2d0ded6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692600"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73485858"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Modul „Zweiklassige Support Vector Machine“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Modell zu erstellen, das auf dem Algorithmus der Support Vector Machine basiert. 
 
@@ -80,4 +80,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

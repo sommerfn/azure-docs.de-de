@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4f1f60ef50b65c13464e7a777e9b8ce66b5fa122
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399956"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492461"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise
 Diese exemplarische Vorgehensweise veranschaulicht die Nutzung von Azure Data Lake zum Anwenden von Datenuntersuchungs- und binären Klassifizierungsaufgaben auf das Dataset „NYC Taxi Trip and Fare“, um vorherzusagen, ob neben dem Fahrpreis ein Trinkgeld gezahlt wird. Sie werden lückenlos durch die Schritte des [Data Science-Prozesses](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)begleitet – von der Datenerfassung über das Training des Modells bis zur Bereitstellung eines Webdiensts zum Veröffentlichen des Modells.
@@ -26,7 +26,7 @@ Diese exemplarische Vorgehensweise veranschaulicht die Nutzung von Azure Data La
 
 Darüber hinaus ist Data Lake Analytics ein wichtiger Bestandteil von Cortana Analytics Suite und kann mit Azure SQL Data Warehouse, Power BI und Data Factory eingesetzt werden. Damit erhalten Sie eine umfassende cloudbasierte Big Data-Lösung und erweiterte Analyseplattform.
 
-Am Anfang dieser exemplarischen Vorgehensweise wird das Installieren der Komponenten und Ressourcen beschrieben, die zum Ausführen der Aufgaben für den Data Science-Prozess benötigt werden. Anschließend werden die Datenverarbeitungsschritte beschrieben, die U-SQL verwenden, und zum Abschluss wird die Verwendung von Python und Hive mit Azure Machine Learning Studio zum Erstellen und Bereitstellen der Vorhersagemodelle demonstriert.
+Am Anfang dieser exemplarischen Vorgehensweise wird das Installieren der Komponenten und Ressourcen beschrieben, die zum Ausführen der Aufgaben für den Data Science-Prozess benötigt werden. Anschließend werden die Datenverarbeitungsschritte beschrieben, die U-SQL verwenden, und zum Abschluss wird die Verwendung von Python und Hive mit Azure Machine Learning Studio (klassisch) zum Erstellen und Bereitstellen der Vorhersagemodelle demonstriert.
 
 ### <a name="u-sql-and-visual-studio"></a>U-SQL und Visual Studio
 In dieser exemplarischen Vorgehensweise wird die Verwendung von Visual Studio zum Bearbeiten von U-SQL-Skripts und Verarbeiten des Datasets empfohlen. Die U-SQL-Skripts werden hier beschrieben und in einer separaten Datei bereitgestellt. Der Prozess umfasst das Erfassen, Untersuchen und Ziehen von Stichproben der Daten. Ferner wird gezeigt, wie Sie einen skriptgestützten U-SQL-Auftrag im Azure-Portal ausführen. In einem zugeordneten HDInsight-Cluster werden Hive-Tabellen für die Daten generiert, um die Erstellung und Bereitstellung eines binären Klassifizierungsmodells in Azure Machine Learning Studio zu vereinfachen.
@@ -35,7 +35,7 @@ In dieser exemplarischen Vorgehensweise wird die Verwendung von Visual Studio zu
 Diese exemplarische Vorgehensweise enthält auch einen Abschnitt, der das Erstellen und Bereitstellen von Vorhersagemodellen mit Python mit Azure Machine Learning Studio veranschaulicht. Sie stellt ein Jupyter Notebook mit den Python-Skripts für die Schritte in diesem Prozess bereit. Das Notebook enthält Code für einige zusätzliche Feature-Engineering-Schritte und modelliert Konstruktionen, wie z. B. mehrklassige Klassifizierungs- und Regressionsmodellierung, zusätzlich zum hier vorgestellten binären Klassifizierungsmodell. Die Regressionsaufgabe besteht darin, die Höhe des Trinkgelds basierend auf anderen Trinkgeldmerkmalen vorherzusagen.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Azure Machine Learning Studio dient zum Erstellen und Bereitstellen der Vorhersagemodelle. Dies erfolgt mit zwei Ansätzen: zuerst mit Python-Skripts und dann mit Hive-Tabellen in einem HDInsight-Cluster (Hadoop).
+Azure Machine Learning Studio (klassisch) dient zum Erstellen und Bereitstellen der Vorhersagemodelle. Dies erfolgt mit zwei Ansätzen: zuerst mit Python-Skripts und dann mit Hive-Tabellen in einem HDInsight-Cluster (Hadoop).
 
 ### <a name="scripts"></a>Skripts
 In dieser exemplarischen Vorgehensweise werden nur die wichtigsten Schritte beschrieben. Sie können das vollständige **U-SQL-Skript** und **Jupyter Notebook** von [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough) herunterladen.
@@ -58,7 +58,7 @@ Um die Data Science-Umgebung für diese exemplarische Vorgehensweise vorzubereit
 * Azure Data Lake-Speicher (ADLS)
 * Azure Data Lake Analytics (ADLA)
 * Azure Blob Storage-Konto
-* Azure Machine Learning Studio-Konto
+* Azure Machine Learning Studio-Konto (klassisch)
 * Azure Data Lake-Tools für Visual Studio (empfohlen)
 
 Dieser Abschnitt enthält Anweisungen zum Erstellen dieser Ressourcen. Wenn Sie zum Erstellen eines Modells Hive-Tabellen mit Azure Machine Learning anstelle von Python wählen, müssen Sie auch einen HDInsight-Cluster (Hadoop) bereitstellen. Das alternative Verfahren wird im Abschnitt „Option 2“ beschrieben.
@@ -86,8 +86,8 @@ Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein Azure Blob Storage
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
-### <a name="set-up-an-azure-machine-learning-studio-account"></a>Einrichten eines Azure Machine Learning Studio-Kontos
-Registrieren Sie sich über die Seite [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/) für Azure Machine Learning Studio, bzw. melden Sie sich an. Klicken Sie auf die Schaltfläche **Get started now**, und wählen Sie „Free Workspace“ oder „Standard Workspace“. Jetzt können Sie in Azure Machine Learning Studio Experimente erstellen.
+### <a name="set-up-an-azure-machine-learning-studio-classic-account"></a>Einrichten eines Azure Machine Learning Studio-Kontos (klassisch)
+Registrieren Sie sich über die Seite [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning/) für Azure Machine Learning Studio (klassisch), bzw. melden Sie sich an. Klicken Sie auf die Schaltfläche **Get started now**, und wählen Sie „Free Workspace“ oder „Standard Workspace“. Jetzt können Sie in Azure Machine Learning Studio Experimente erstellen.
 
 ### <a name="install-azure-data-lake-tools-recommended"></a>Installieren von Azure Data Lake-Tools [Empfohlen]
 Installieren Sie Azure Data Lake-Tools für Ihre Version von Visual Studio entsprechend den Angaben unter [Azure Data Lake-Tools für Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
@@ -559,7 +559,7 @@ Sie erstellen nun ein binäres Klassifizierungsmodell zum Vorhersagen, ob für e
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Erstellen der Webdienst-API zur anschließenden Verwendung in Python
 Nachdem das Machine Learning-Modell erstellt wurde, sollten Sie es in Betrieb nehmen. Hier wird das binäre logistische Modell als Beispiel verwendet. Stellen Sie sicher, dass die „scikit-learn“-Version auf Ihrem lokalen Computer 0.15.1 ist. Dies betrifft Sie nicht, wenn Sie Azure Machine Learning Studio verwenden.
 
-* Suchen Sie in den Azure Machine Learning Studio-Einstellungen die Anmeldeinformationen für Ihren Arbeitsbereich. Klicken Sie in Azure Machine Learning Studio auf **Settings** --> **Name** --> **Authorization Tokens**.
+* Suchen Sie in den Einstellungen von Azure Machine Learning Studio (klassisch) die Anmeldeinformationen für Ihren Arbeitsbereich. Klicken Sie in Azure Machine Learning Studio auf **Settings** --> **Name** --> **Authorization Tokens**.
 
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -594,7 +594,7 @@ Nachdem das Machine Learning-Modell erstellt wurde, sollten Sie es in Betrieb ne
        ![c4](./media/data-lake-walkthrough/c4-call-API.PNG)
 
 ## <a name="option-2-create-and-deploy-models-directly-in-azure-machine-learning"></a>Option 2: Direktes Erstellen und Bereitstellen von Modellen in Azure Machine Learning
-Azure Machine Learning Studio kann Daten direkt aus Azure Data Lake-Speicher einlesen und dann zum Erstellen und Bereitstellen von Modellen verwendet werden. Bei diesem Ansatz verweist eine Hive-Tabelle auf Azure Data Lake-Speicher. Dies setzt voraus, dass ein separater Azure HDInsight-Cluster bereitgestellt wird, auf dem die Hive-Tabelle erstellt wird. Dies wird in den folgenden Abschnitte gezeigt.
+Azure Machine Learning Studio (klassisch) kann Daten direkt aus Azure Data Lake Store einlesen und dann zum Erstellen und Bereitstellen von Modellen verwendet werden. Bei diesem Ansatz verweist eine Hive-Tabelle auf Azure Data Lake-Speicher. Dies setzt voraus, dass ein separater Azure HDInsight-Cluster bereitgestellt wird, auf dem die Hive-Tabelle erstellt wird. Dies wird in den folgenden Abschnitte gezeigt.
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>Erstellen eines HDInsight Linux-Clusters
 Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen HDInsight-Cluster (Linux). Ausführliche Informationen finden Sie unter [Erstellen von HDInsight-Clustern mit Azure Data Lake Store mithilfe des Azure-Portals](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) im Abschnitt **Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Store**.
@@ -602,7 +602,7 @@ Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen HDInsight-Cluste
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>Erstellen einer Hive-Tabelle in HDInsight
-Nun erstellen Sie mithilfe der Daten, die im vorherigen Schritt in Azure Data Lake Store gespeichert wurden, Hive-Tabellen, die in Azure Machine Learning Studio im HDInsight-Cluster verwendet werden sollen. Wechseln Sie zu dem erstellten HDInsight-Cluster. Klicken Sie auf **Einstellungen** --> **Eigenschaften** --> **Azure Active Directory-Identität für den Cluster** --> **ADLS-Zugriff**. Vergewissern Sie sich, dass das Azure Data Lake Store-Konto der Liste mit Lese-, Schreib- und Ausführungsrechten hinzugefügt wurde.
+Nun erstellen Sie mithilfe der Daten, die im vorherigen Schritt in Azure Data Lake Store gespeichert wurden, Hive-Tabellen, die in Azure Machine Learning Studio (klassisch) im HDInsight-Cluster verwendet werden sollen. Wechseln Sie zu dem erstellten HDInsight-Cluster. Klicken Sie auf **Einstellungen** --> **Eigenschaften** --> **Azure Active Directory-Identität für den Cluster** --> **ADLS-Zugriff**. Vergewissern Sie sich, dass das Azure Data Lake Store-Konto der Liste mit Lese-, Schreib- und Ausführungsrechten hinzugefügt wurde.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 
@@ -652,7 +652,7 @@ Nachdem die Abfrage ausgeführt wurde, sollten die Ergebnisse wie folgt angezeig
 ### <a name="build-and-deploy-models-in-azure-machine-learning-studio"></a>Erstellen und Bereitstellen von Modellen in Azure Machine Learning Studio
 Sie können jetzt mit Azure Machine Learning ein Modell erstellen und bereitstellen, das vorhersagt, ob Trinkgeld gezahlt wird oder nicht. Die geschichteten Beispieldaten können für dieses binäre Klassifizierungsproblem (Trinkgeld oder nicht) verwendet werden. Die Vorhersagemodelle mit mehrklassiger Klassifizierung (tip_class) und Regression (tip_amount) können auch mit Azure Machine Learning Studio erstellt und bereitgestellt werden. Hier wird jedoch nur gezeigt, wie der Fall mithilfe des Modells für binäre Klassifizierung behandelt wird.
 
-1. Übertragen Sie die Daten mithilfe des Moduls **Import Data** im Abschnitt **Data Input and Output** (Datenein- und -ausgabe) in Azure Machine Learning Studio. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) -Modul.
+1. Übertragen Sie die Daten mithilfe des Moduls **Import Data** im Abschnitt **Data Input and Output** (Dateneingabe und -ausgabe) in Azure Machine Learning Studio (klassisch). Weitere Informationen finden Sie auf der Referenzseite zum [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) -Modul.
 2. Wählen Sie **Hive-Abfrage** als **Datenquelle** im Bereich **Eigenschaften** aus.
 3. Fügen Sie das folgende Hive-Skript in den Editor **Hive-Datenbankabfrage** ein.
 
@@ -678,7 +678,7 @@ Das Dashboard des Webdiensts wird kurz darauf angezeigt:
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
 ## <a name="summary"></a>Zusammenfassung
-Mit Abschluss dieser exemplarischen Vorgehensweise haben Sie eine Data Science-Umgebung zum Erstellen skalierbarer lückenloser Lösungen in Azure Data Lake eingerichtet. Diese Umgebung wurde verwendet, um ein großes öffentliches Dataset in den ordnungsgemäßen Schritten im Data Science-Prozess zu analysieren, von der Datenerfassung über das Training des Modells bis zur Bereitstellung des Modells als Webdienst. U-SQL wurde zum Verarbeiten, Untersuchen und Sammeln der Beispieldaten verwendet. Python und Hive wurden mit Azure Machine Learning Studio verwendet, um Vorhersagemodelle zu erstellen und bereitzustellen.
+Mit Abschluss dieser exemplarischen Vorgehensweise haben Sie eine Data Science-Umgebung zum Erstellen skalierbarer lückenloser Lösungen in Azure Data Lake eingerichtet. Diese Umgebung wurde verwendet, um ein großes öffentliches Dataset in den ordnungsgemäßen Schritten im Data Science-Prozess zu analysieren, von der Datenerfassung über das Training des Modells bis zur Bereitstellung des Modells als Webdienst. U-SQL wurde zum Verarbeiten, Untersuchen und Sammeln der Beispieldaten verwendet. Python und Hive wurden mit Azure Machine Learning Studio (klassisch) verwendet, um Vorhersagemodelle zu erstellen und bereitzustellen.
 
 ## <a name="whats-next"></a>Wie geht es weiter?
 Der Lernpfad für den [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) enthält Links zu Themen, in denen jeder Schritt im erweiterten Analyseprozess beschrieben wird. Auf der Seite [Team Data Science-Prozess: Exemplarische Vorgehensweisen](walkthroughs.md) finden Sie eine Reihe exemplarischer Vorgehensweisen, die veranschaulichen, wie Ressourcen und Dienste in den verschiedenen Predictive Analytics-Szenarien genutzt werden:

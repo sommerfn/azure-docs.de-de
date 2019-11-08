@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2172ac30cd5b4251933e5012affdb41a0202a344
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784847"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73479666"
 ---
 # <a name="text-split-cognitive-skill"></a>Der Skill „Text teilen“
 
@@ -33,7 +33,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 |--------------------|-------------|
 | textSplitMode      | Entweder „Seiten“ oder „Sätze“ | 
 | maximumPageLength | Wenn „textSplitMode“ auf „Seiten“ gesetzt ist, bezieht sich dies auf die maximale Seitenlänge, gemessen durch `String.Length`. Der Mindestwert ist 100.  Wenn textSplitMode auf „pages“ festgelegt ist, versucht der Algorithmus, den Text in Blöcke aufzuteilen, deren Größe höchstens „maximumPageLenth“ beträgt. Dabei versucht der Algorithmus, Sätze an Satzgrenzen zu teilen, sodass die Größe der Blöcke etwas kleiner als „maximumPageLength“ sein kann. | 
-| defaultLanguageCode   | (Optional) Einer der folgenden Sprachcodes: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (en). Zu beachtende Aspekte:<ul><li>Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.</li><li>Ist die Sprache nicht in der obigen Liste aufgeführt, wird der Text durch der Skill „Text teilen“ an Zeichengrenzen getrennt.</li><li>Die Angabe eines Sprachcodes ist sinnvoll, um bei Sprachen ohne Leerzeichen wie Chinesisch, Japanisch oder Koreanisch zu vermeiden, dass ein Wort in der Mitte getrennt wird.</li></ul>  |
+| defaultLanguageCode   | (Optional) Einer der folgenden Sprachcodes: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (en). Zu beachtende Aspekte:<ul><li>Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.</li><li>Ist die Sprache nicht in der obigen Liste aufgeführt, wird der Text durch der Skill „Text teilen“ an Zeichengrenzen getrennt.</li><li>Die Angabe eines Sprachcodes ist sinnvoll, um bei Sprachen ohne Leerzeichen wie Chinesisch, Japanisch oder Koreanisch zu vermeiden, dass ein Wort in der Mitte getrennt wird.</li><li>Wenn Sie die Sprache nicht kennen (d. h., Sie müssen den Text für die Eingabe in [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) teilen), sollte der Standardwert „English (en)“ ausreichen. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
@@ -41,7 +41,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | Parametername       | BESCHREIBUNG      |
 |----------------------|------------------|
 | text  | Der Text, der in Teilzeichenfolgen aufgeteilt werden soll. |
-| languageCode  | (Optional) Der Sprachcode für das Dokument.  |
+| languageCode  | (Optional) Der Sprachcode für das Dokument. Wenn Sie die Sprache nicht kennen (d. h., Sie müssen den Text für die Eingabe in [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) teilen), können Sie diese Eingabe sicher entfernen.  |
 
 ## <a name="skill-outputs"></a>Skillausgaben 
 

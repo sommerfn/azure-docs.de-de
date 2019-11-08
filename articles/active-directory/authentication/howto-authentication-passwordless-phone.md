@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c21ff5c4c94eecc7bb1a6643e46166df80edf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648322"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474360"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
@@ -46,7 +46,7 @@ Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung s
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Aktivieren von Authentifizierungsmethoden für die kennwortlose Anmeldung per Telefon
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
-1. Navigieren Sie zu **Azure Active Directory** > **Authentifizierungsmethoden** > **Authentication method policy (Preview)** (Authentifizierungsmethodenrichtlinie (Vorschauversion)).
+1. Navigieren Sie zu **Azure AD-Sicherheit** > **Authentifizierungsmethoden** > **Authentifizierungsmethodenrichtlinie (Vorschau)** .
 1. Wählen Sie unter **Kennwortlose Anmeldung per Telefon** die folgenden Optionen aus:
    1. **Aktivieren**: „Ja“ oder „Nein“
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“

@@ -1,28 +1,28 @@
 ---
 title: 'Entscheidungswaldregression: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Entscheidungswaldregression“ in Azure Machine Learning Service verwenden, um auf der Grundlage eines Ensembles von Entscheidungsstrukturen ein Regressionsmodell zu erstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Entscheidungswaldregression“ in Azure Machine Learning verwenden, um auf der Grundlage eines Ensembles von Entscheidungsstrukturen ein Regressionsmodell zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 7b89d08f4621ecde77a60510b05d96decff0cfde
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693170"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497961"
 ---
 # <a name="decision-forest-regression-module"></a>Modul „Entscheidungswaldregression“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul im Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um auf der Grundlage eines Ensembles von Entscheidungsstrukturen ein Regressionsmodell zu erstellen.
 
-Nachdem Sie das Modell konfiguriert haben, müssen Sie es mit einem bezeichneten Dataset und dem Modul [Modell trainieren](./train-model.md) trainieren.  Das trainierte Modell kann danach verwendet werden, um Vorhersagen zu treffen. 
+Nachdem Sie das Modell konfiguriert haben, müssen Sie es mit einem bezeichneten Dataset und dem Modul [Modell trainieren](./train-model.md) trainieren. Das trainierte Modell kann danach verwendet werden, um Vorhersagen zu treffen. 
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -42,11 +42,11 @@ Weitere Informationen zum theoretischen Gerüst für diesen Algorithmus und sein
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Vorgehensweise: Konfigurieren des Entscheidungswald-Regressionsmodells
 
-1. Fügen Sie der Pipeline das Modul **Entscheidungswaldregression** hinzu. Sie finden dieses Modul auf der Oberfläche unter **Machine Learning**, **Initialize** (Initialisieren), **Regression**.
+1. Fügen Sie der Pipeline das Modul **Entscheidungswaldregression** hinzu. Sie finden dieses Modul im Designer unter **Machine Learning**, **Initialize** (Initialisieren), **Regression**.
 
 2. Öffnen Sie die Moduleigenschaften, und wählen Sie für **Resampling method** (Methode für Wiederholungsprobennahme) die Methode aus, mit der die einzelnen Bäume erstellt wurden.  Sie können zwischen **Bagging** und **Replikation** wählen.
 
-    - **Bagging**: Bagging ist die Abkürzung von *Bootstrap aggregating*. Jeder Baum in einem Regressionsentscheidungswald gibt eine Gauß-Verteilung als Vorhersage aus. Aufgabe der Aggregation ist es, eine Gauß-Verteilung zu finden, deren erste zwei Momente mit den Momenten der Mischung der Gauß-Verteilungen übereinstimmen, die sich durch Kombination aller von den einzelnen Bäumen zurückgegebenen Gauß-Verteilungen ergeben.
+    - **Bagging**: Bagging ist die Abkürzung von *Bootstrap aggregating*. Jeder Baum in einem Regressionsentscheidungswald gibt eine Gauß-Verteilung als Vorhersage aus. Aufgabe der Aggregation ist es, eine Gauß-Verteilung zu finden, deren erste zwei Momente mit den Momenten der Mischung der Gauß-Verteilungen übereinstimmen, die sich durch Kombination aller von den einzelnen Bäumen zurückgegebenen Verteilungen ergeben.
 
          Weitere Informationen finden Sie im Wikipedia-Eintrag zu [Bootstrap aggregating](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
@@ -96,4 +96,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

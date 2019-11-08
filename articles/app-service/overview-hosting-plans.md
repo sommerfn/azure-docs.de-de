@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3118be297caabbd4b829344e42361fa6b7602aad
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066729"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470240"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -95,7 +95,7 @@ Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfigu
 
 Ihr App Service-Plan kann jederzeit zentral hoch- und herunterskaliert werden. Hierzu wird einfach der Tarif für den Plan geändert. Sie können zuerst einen niedrigeren Tarif wählen und dann später zentral hochskalieren, wenn Sie mehr App Service-Features benötigen.
 
-Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem Tarif **Free** testen, ohne dass Kosten anfallen. Wenn Sie der Web-App Ihren [benutzerdefinierten DNS-Namen](app-service-web-tutorial-custom-domain.md) hinzufügen möchten, können Sie Ihren Plan einfach zentral auf den Tarif **Shared** hochskalieren. Falls Sie dann später ein [benutzerdefiniertes SSL-Zertifikat](app-service-web-tutorial-custom-ssl.md) hinzufügen möchten, skalieren Sie Ihren Plan zentral auf den Tarif **Basic** hoch. Die Nutzung von [Stagingumgebungen](deploy-staging-slots.md) wird durch das zentrale Hochskalieren auf den Tarif **Standard** erreicht. Falls Sie mehr Kerne, Arbeitsspeicher oder Speicherplatz benötigen, können Sie für denselben Tarif zentral auf eine höhere VM-Größe hochskalieren.
+Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem Tarif **Free** testen, ohne dass Kosten anfallen. Wenn Sie der Web-App Ihren [benutzerdefinierten DNS-Namen](app-service-web-tutorial-custom-domain.md) hinzufügen möchten, können Sie Ihren Plan einfach zentral auf den Tarif **Shared** hochskalieren. Wenn Sie später [eine SSL-Bindung erstellen](configure-ssl-bindings.md) möchten, skalieren Sie Ihren Tarif zentral auf den Tarif **Basic** hoch. Die Nutzung von [Stagingumgebungen](deploy-staging-slots.md) wird durch das zentrale Hochskalieren auf den Tarif **Standard** erreicht. Falls Sie mehr Kerne, Arbeitsspeicher oder Speicherplatz benötigen, können Sie für denselben Tarif zentral auf eine höhere VM-Größe hochskalieren.
 
 Dies funktioniert auch umgekehrt. Sobald Sie die Funktionen oder Features eines höheren Tarifs nicht mehr benötigen, können Sie zentral auf einen niedrigeren Tarif herunterskalieren und Kosten sparen.
 

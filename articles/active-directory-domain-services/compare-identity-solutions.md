@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2019
+ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: e3a8a537ae8c971119cfd08fbf80dc169df1d384
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 04a1f19ddf894467a9129e8a16c951298a6af529
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619751"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474711"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Vergleichen von selbstverwalteten Active Directory Domain Services, Azure Active Directory und verwalteten Azure Active Directory Domain Services
 
-Es gibt drei gängige Möglichkeiten zur Verwendung von Active Directory-basierten Diensten in Azure, um für Anwendungen, Dienste oder Geräte den Zugriff auf eine zentrale Identität bereitzustellen. Mit dieser Auswahl von Identitätslösungen können Sie flexibel das am besten geeignete Verzeichnis für die Anforderungen Ihrer Organisation nutzen. Wenn Sie beispielsweise reine Cloudbenutzer verwalten, die mobile Geräte nutzen, ist es unter Umständen nicht sinnvoll, Ihre eigene Active Directory Domain Services-Identitätslösung zu erstellen und auszuführen. Stattdessen können Sie einfach Azure Active Directory verwenden.
+Es gibt drei gängige Möglichkeiten zur Verwendung von Active Directory-basierten Diensten in Azure, um für Anwendungen, Dienste oder Geräte den Zugriff auf eine zentrale Identität bereitzustellen. Mit dieser Auswahl von Identitätslösungen können Sie flexibel das am besten geeignete Verzeichnis für die Anforderungen Ihrer Organisation nutzen. Wenn Sie beispielsweise in erster Linie reine Cloudbenutzer verwalten, die mobile Geräte nutzen, ist es unter Umständen nicht sinnvoll, Ihre eigene AD DS-Identitätslösung (Active Directory Domain Services) zu erstellen und zu betreiben. Stattdessen können Sie einfach Azure Active Directory verwenden.
 
 Die drei Active Directory-basierten Identitätslösungen haben zwar einen gemeinsamen Namen und die gleiche Technologie, aber sie sind so konzipiert, dass Dienste für die unterschiedlichen Anforderungen von Kunden bereitgestellt werden. Die allgemeinen Identitätslösungen und Featuresätze sind:
 
@@ -36,12 +36,16 @@ In diesem Übersichtsartikel wird verglichen und gegenübergestellt, wie diese I
 
 Wenn Sie über Anwendungen und Dienste verfügen, die Zugriff auf herkömmliche Authentifizierungsmechanismen benötigen, z. B. Kerberos oder NTLM, gibt es zwei Möglichkeiten für die Bereitstellung von Active Directory Domain Services in der Cloud:
 
-* Eine *verwaltete* Domäne, die Sie mit Azure Active Directory Domain Services erstellen. Microsoft erstellt und verwaltet die erforderlichen Ressourcen.
-* Eine *selbstverwaltete* Domäne, die Sie mithilfe von herkömmlichen Ressourcen, z. B. virtuelle Computer (VMs), Windows Server-Gastbetriebssystem und Active Directory Domain Services, erstellen und konfigurieren. Anschließend können Sie diese Ressourcen weiter verwalten.
+* Eine *verwaltete* Domäne, die Sie mit Azure Active Directory Domain Services (Azure AD DS) erstellen. Microsoft erstellt und verwaltet die erforderlichen Ressourcen.
+* Eine *selbstverwaltete* Domäne, die Sie unter Verwendung von herkömmlichen Ressourcen wie etwa virtuellen Computern (virtual machines, VMs), Windows Server-Gastbetriebssystem und Active Directory Domain Services (AD DS) erstellen und konfigurieren. Anschließend können Sie diese Ressourcen weiter verwalten.
 
-Mit Azure AD DS werden die wichtigen Dienstkomponenten von Microsoft für Sie als Umgebung für *verwaltete* Domänen bereitgestellt und gepflegt. Sie führen die Bereitstellung, die Verwaltung, das Patchen und das Schützen der AD DS-Infrastruktur für Komponenten wie VMs, Windows Server-Betriebssystem oder Domänencontroller (DCs) nicht durch. Mit Azure AD DS wird verglichen mit herkömmlichen selbstverwalteten AD DS-Umgebungen eine geringere Menge von Features bereitgestellt, sodass die Komplexität des Entwurfs und der Verwaltung teilweise reduziert wird. Es müssen beispielsweise keine AD-Gesamtstrukturen, -Domänen, -Websites und -Replikationslinks entworfen und gepflegt werden. Für Anwendungen und Dienste, die in der Cloud ausgeführt werden und Zugriff auf herkömmliche Authentifizierungsmechanismen benötigen, z. B. Kerberos oder NTLM, wird von Azure AD DS eine verwaltete Domänenumgebung mit minimalem Verwaltungsaufwand bereitgestellt.
+Mit Azure AD DS werden die wichtigen Dienstkomponenten von Microsoft für Sie als Umgebung für *verwaltete* Domänen bereitgestellt und gepflegt. Sie führen die Bereitstellung, die Verwaltung, das Patchen und das Schützen der AD DS-Infrastruktur für Komponenten wie VMs, Windows Server-Betriebssystem oder Domänencontroller (DCs) nicht durch.
 
-Wenn Sie eine selbstverwaltete AD DS-Umgebung bereitstellen und ausführen, müssen Sie alle zugeordneten Infrastruktur- und Verzeichniskomponenten pflegen. Für eine selbstverwaltete AD DS-Umgebung fällt zusätzlicher Verwaltungsaufwand an, aber Sie können dann weitere Aufgaben durchführen, z. B. eine Erweiterung des Schemas oder die Erstellung von Gesamtstrukturvertrauensstellungen. Häufig genutzte Bereitstellungsmodelle für eine selbstverwaltete AD DS-Umgebung, über die eine Identität für Anwendungen und Dienste in der Cloud bereitgestellt wird, sind beispielsweise:
+Mit Azure AD DS wird verglichen mit herkömmlichen selbstverwalteten AD DS-Umgebungen eine geringere Menge von Features bereitgestellt, sodass die Komplexität des Entwurfs und der Verwaltung teilweise reduziert wird. Es müssen beispielsweise keine AD-Gesamtstrukturen, -Domänen, -Websites und -Replikationslinks entworfen und gepflegt werden. Für Anwendungen und Dienste, die in der Cloud ausgeführt werden und Zugriff auf herkömmliche Authentifizierungsmechanismen benötigen, z. B. Kerberos oder NTLM, wird von Azure AD DS eine verwaltete Domänenumgebung mit minimalem Verwaltungsaufwand bereitgestellt.
+
+Wenn Sie eine selbstverwaltete AD DS-Umgebung bereitstellen und ausführen, müssen Sie alle zugeordneten Infrastruktur- und Verzeichniskomponenten pflegen. Für eine selbstverwaltete AD DS-Umgebung fällt zusätzlicher Verwaltungsaufwand an, aber Sie können dann weitere Aufgaben durchführen, z. B. eine Erweiterung des Schemas oder die Erstellung von Gesamtstrukturvertrauensstellungen.
+
+Häufig genutzte Bereitstellungsmodelle für eine selbstverwaltete AD DS-Umgebung, über die eine Identität für Anwendungen und Dienste in der Cloud bereitgestellt wird, sind beispielsweise:
 
 * **Eigenständige Nur-Cloud-AD DS**: Azure-VMs werden als Domänencontroller konfiguriert, und es wird eine separate AD DS-Umgebung erstellt, die auf die Cloud beschränkt ist. Diese AD DS-Umgebung wird nicht in eine lokale AD DS-Umgebung integriert. Es wird ein anderer Satz mit Anmeldeinformationen verwendet, um die Anmeldung und Verwaltung für VMs in der Cloud durchzuführen.
 * **Ressourcengesamtstruktur-Bereitstellung**: Azure-VMs werden als Domänencontroller konfiguriert, und es wird eine AD DS-Domäne im Rahmen einer vorhandenen Gesamtstruktur erstellt. Anschließend wird eine Vertrauensstellung mit einer lokalen AD DS-Umgebung konfiguriert. Andere Azure-VMs können den Domänenbeitritt für diese Ressourcengesamtstruktur in der Cloud durchführen. Die Benutzerauthentifizierung erfolgt über eine VPN-/ExpressRoute-Verbindung mit der lokalen AD DS-Umgebung.
@@ -70,9 +74,11 @@ In der folgenden Tabelle sind einige Features aufgeführt, die Sie für Ihre Org
 
 ## <a name="azure-ad-ds-and-azure-ad"></a>Azure AD DS und Azure AD
 
-Azure AD ermöglicht Ihnen das Verwalten der Identität von Geräten, die von der Organisation verwendet werden, und das Steuern des Zugriffs auf Unternehmensressourcen über diese Geräte. Benutzer können ihr persönliches Gerät (Bring Your Own-Modell, BYO) bei Azure AD registrieren, damit das Gerät eine Identität erhält. Azure AD kann das Gerät anschließend authentifizieren, wenn ein Benutzer sich bei Azure AD anmeldet und das Gerät für den Zugriff auf gesicherte Ressourcen verwendet. Darüber hinaus kann das Gerät mithilfe von Software zur mobilen Geräteverwaltung (Mobile Device Management, MDM), z. B. Microsoft Intune, verwaltet werden. Mit dieser Verwaltungsfunktion können Sie den Zugriff auf vertrauliche Ressourcen von verwalteten und richtlinienkompatiblen Geräten einschränken.
+Azure AD ermöglicht Ihnen das Verwalten der Identität von Geräten, die von der Organisation verwendet werden, und das Steuern des Zugriffs auf Unternehmensressourcen über diese Geräte. Benutzer können auch ihr persönliches Gerät (Bring Your Own-Modell oder BYO-Modell) bei Azure AD registrieren, wodurch das Gerät eine Identität erhält. Daraufhin wird das Gerät von Azure AD authentifiziert, wenn ein Benutzer sich bei Azure AD anmeldet und das Gerät für den Zugriff auf geschützte Ressourcen verwendet. Darüber hinaus kann das Gerät mithilfe von Software zur mobilen Geräteverwaltung (Mobile Device Management, MDM), z. B. Microsoft Intune, verwaltet werden. Mit dieser Verwaltungsfunktion können Sie den Zugriff auf vertrauliche Ressourcen von verwalteten und richtlinienkompatiblen Geräten einschränken.
 
-Herkömmliche Computer und Laptops können ebenfalls Azure AD beitreten. Dieser Mechanismus bietet die gleichen Vorteile wie das Registrieren eines persönlichen Geräts bei Azure AD, z. B. die Zulassung einer Anmeldung von Benutzern am Gerät mit ihren Anmeldeinformationen des Unternehmens. In Azure AD eingebundene Geräte bieten Ihnen folgende Vorteile:
+Herkömmliche Computer und Laptops können ebenfalls Azure AD beitreten. Dieser Mechanismus bietet die gleichen Vorteile wie das Registrieren eines persönlichen Geräts bei Azure AD, z. B. die Zulassung einer Anmeldung von Benutzern am Gerät mit ihren Anmeldeinformationen des Unternehmens.
+
+In Azure AD eingebundene Geräte bieten Ihnen folgende Vorteile:
 
 * Einmaliges Anmelden (Single Sign-On, SSO) bei Anwendungen, die per Azure AD geschützt sind.
 * Mit der Unternehmensrichtlinie kompatibles Roaming von Benutzereinstellungen auf allen Geräten.
@@ -88,7 +94,9 @@ Für Geräte kann der Beitritt zu Azure AD mit oder ohne Hybridbereitstellung, d
 | Im Besitz der Organisation befindliches Gerät, das nicht in die lokale AD DS-Instanz eingebunden ist | Windows 10                       | In Azure AD eingebunden        |
 | Im Besitz der Organisation befindliches Gerät, das in eine lokale AD DS-Instanz eingebunden ist  | Windows 10                       | Hybrid in Azure AD eingebunden |
 
-Auf einem in Azure AD eingebundenen oder registrierten Gerät wird die Benutzerauthentifizierung mit modernen Protokollen auf OAuth-/OpenID Connect-Basis durchgeführt. Diese Protokolle sind für den Einsatz im Internet konzipiert und eignen sich daher hervorragend für mobile Szenarien, in denen Benutzer von überall auf Unternehmensressourcen zugreifen. Mit in Azure AD DS eingebundenen Geräten können Anwendungen die Kerberos- und NTLM-Protokolle für die Authentifizierung verwenden und so Legacyanwendungen unterstützen, die migriert werden, um im Rahmen einer Lift & Shift-Strategie auf Azure-VMs ausgeführt zu werden. In der folgenden Tabelle sind die Unterschiede aufgeführt, die in Bezug auf die Darstellung der Geräte und deren Authentifizierung gegenüber dem Verzeichnis gelten:
+Auf einem in Azure AD eingebundenen oder registrierten Gerät wird die Benutzerauthentifizierung mit modernen Protokollen auf OAuth-/OpenID Connect-Basis durchgeführt. Diese Protokolle sind für den Einsatz im Internet konzipiert und eignen sich daher hervorragend für mobile Szenarien, in denen Benutzer von überall auf Unternehmensressourcen zugreifen.
+
+Mit in Azure AD DS eingebundenen Geräten können Anwendungen die Kerberos- und NTLM-Protokolle für die Authentifizierung verwenden und so Legacyanwendungen unterstützen, die migriert werden, um im Rahmen einer Lift & Shift-Strategie auf Azure-VMs ausgeführt zu werden. In der folgenden Tabelle sind die Unterschiede aufgeführt, die in Bezug auf die Darstellung der Geräte und deren Authentifizierung gegenüber dem Verzeichnis gelten:
 
 | **Aspekt**                      | **Eingebunden in Azure AD**                                 | **Eingebunden in Azure AD DS**                                                    |
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -96,7 +104,7 @@ Auf einem in Azure AD eingebundenen oder registrierten Gerät wird die Benutzera
 | Darstellung im Verzeichnis | Geräteobjekte im Azure AD-Verzeichnis            | Computerobjekte in der verwalteten Azure AD DS-Domäne                        |
 | Authentication                  | OAuth-/OpenID Connect-basierte Protokolle              | Kerberos- und NTLM-Protokolle                                               |
 | Verwaltung                      | Software zur mobilen Geräteverwaltung (Mobile Device Management, MDM) wie z.B. Intune | Gruppenrichtlinie                                                              |
-| Netzwerk                      | Im Internet einsetzbar                             | Setzt voraus, dass die Computer sich in demselben virtuellen Netzwerk wie die verwaltete Domäne befinden |
+| Netzwerk                      | Im Internet einsetzbar                             | Muss über eine Verbindung oder eine Peeringverknüpfung mit dem virtuellen Netzwerk verfügen, in dem die virtuelle Domäne bereitgestellt wird |
 | Ideal für...                    | Mobile oder Desktop-Endbenutzergeräte                  | In Azure bereitgestellte Server-VMs                                              |
 
 ## <a name="next-steps"></a>Nächste Schritte

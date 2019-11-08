@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 902bf84ebf090cf9f0f886ad1e774ff7bdfeca93
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002888"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490746"
 ---
 # <a name="how-personalizer-works"></a>Funktionsweise der Personalisierung
 
@@ -33,13 +33,13 @@ Die **Rangfolge**-API entscheidet über die Verwendung einer der beiden folgende
 Die **Relevanz**-API:
 
 * Sammelt Daten zum Trainieren des Modells durch Aufzeichnung der Merkmale und Relevanzbewertungen jedes Rangfolgeaufrufs.
-* Verwendet diese Daten zum Aktualisieren des Modells, basierend auf den in der _Lernrichtlinie_ angegebenen Einstellungen.
+* Verwendet diese Daten zum Aktualisieren des Modells, basierend auf der in der _Lernrichtlinie_ angegebenen Konfiguration.
 
 ## <a name="architecture"></a>Architecture
 
 Die folgende Abbildung zeigt den Fluss der Rangfolge- und Relevanzaufrufe durch die Architektur:
 
-![Alternativtext](./media/how-personalizer-works/personalization-how-it-works.png "Funktionsweise der Personalisierung")
+![Alternativer Text](./media/how-personalizer-works/personalization-how-it-works.png "Funktionsweise der Personalisierung")
 
 1. Personalisierung verwendet ein internes KI-Modell, um den Rang der Aktion zu bestimmen.
 1. Der Dienst entscheidet, ob das aktuelle Modell genutzt oder neue Auswahlmöglichkeiten für das Modell erkundet werden sollen.  

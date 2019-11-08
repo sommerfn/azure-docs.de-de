@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: cabailey
 manager: barbkess
-ms.date: 06/20/2019
-ms.openlocfilehash: 7ca5c890b1f3161923cd808c5ecec0ccf0165d64
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.date: 11/04/2019
+ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727511"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466403"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Kunden-Lockbox für Microsoft Azure
 
@@ -91,7 +91,7 @@ Beispiel:
 
 ![Azure Kunden-Lockbox – Aktivitätsprotokolle](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios"></a>Unterstützte Dienste und Szenarien
+## <a name="supported-services-and-scenarios-in-general-availability"></a>Unterstützte Dienste und Szenarien bei allgemeiner Verfügbarkeit
 
 Die folgenden Dienste und Szenarien sind derzeit für Kunden-Lockbox allgemein verfügbar.
 
@@ -108,6 +108,23 @@ Kunden-Lockbox ist derzeit für Remotedesktop-Zugriffsanforderungen auf virtuell
 #### <a name="detailed-audit-logs"></a>Ausführliche Überwachungsprotokolle
 
 In Szenarien mit Remotedesktopzugriff können Sie die vom Microsoft-Techniker ausgeführten Aktionen mithilfe von Windows-Ereignisprotokollen überprüfen. Ziehen Sie in Erwägung, die Ereignisprotokolle mit Azure Security Center zu sammeln und die Daten für die Analyse in Ihren Arbeitsbereich zu kopieren. Weitere Informationen finden Sie unter [Datensammlung in Azure Security Center](../../security-center/security-center-enable-data-collection.md).
+
+## <a name="supported-services-and-scenarios-in-preview"></a>Unterstützte Dienste und Szenarien während der Vorschau
+
+Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verfügbar:
+
+- Azure Storage 
+
+- Azure SQL-Datenbank 
+
+- Azure-Daten-Explorer 
+
+- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger) 
+
+- Azure-Abonnementübertragung
+
+Wenn Sie Kunden-Lockbox für diese Vorschauangebote für Ihre Organisation aktivieren möchten, registrieren Sie sich für dir [Public Preview von Kunden-Lockbox für Azure](https://aka.ms/customerlockbox/insiderprogram).
+
 
 ## <a name="exclusions"></a>Ausschlüsse
 

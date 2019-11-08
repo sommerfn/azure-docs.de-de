@@ -3,26 +3,27 @@ title: Erstellen und Verwenden von Computezielen für das Modelltraining
 titleSuffix: Azure Machine Learning
 description: Konfigurieren Sie die Trainingsumgebungen (Computeziele) für das Machine Learning-Modelltraining. Sie können problemlos zwischen Trainingsumgebungen wechseln. Beginnen Sie das Training lokal. Wenn ein horizontales Hochskalieren erforderlich ist, wechseln Sie zu einem cloudbasierten Computeziel.
 services: machine-learning
-author: heatherbshapiro
-ms.author: hshapiro
+author: sdgilley
+ms.author: sgilley
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244430"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73489582"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Mit Azure Machine Learning können Sie Ihr Modell für eine Vielzahl von Ressourcen oder Umgebungen trainieren, die zusammen als [__Computeziele__](concept-azure-machine-learning-architecture.md#compute-targets) bezeichnet werden. Ein Computeziel kann ein lokaler Computer oder eine Cloudressource sein, wie beispielsweise Azure Machine Learning Compute, Azure HDInsight oder ein virtueller Remotecomputer.  Sie können auch Computeziele für die Modellimplementierung erstellen, wie in [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md) beschrieben.
 
-Sie können ein Computeziel mit dem Azure Machine Learning SDK, im Azure-Portal, über die Landing Page Ihres Arbeitsbereichs (Vorschau), über die Azure-Befehlszeilenschnittstelle (Azure CLI) oder über die Azure Machine Learning VS Code-Erweiterung erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning-Arbeitsbereich anfügen, um sie verwenden zu können.
+Sie können Computeziele mit dem Azure Machine Learning SDK, in Azure Machine Learning Studio, über die Azure-Befehlszeilenschnittstelle oder über die Azure Machine Learning-VS Code-Erweiterung erstellen und verwalten. Wenn Sie Computeziele haben, die über einen anderen Dienst (z. B. einen HDInsight-Cluster) erstellt wurden, können Sie diese an Ihren Azure Machine Learning-Arbeitsbereich anfügen, um sie verwenden zu können.
  
 In diesem Artikel erfahren Sie, wie Sie verschiedene Computeziele für das Modelltraining verwenden.  Die Schritte für alle Computeziele führen Sie den gleichen Workflow:
 1. __Erstellen__ Sie ein Computeziel, wenn noch keines vorhanden ist.
@@ -132,7 +133,7 @@ Eine persistente Azure Machine Learning Compute-Ressource kann für mehrere Auft
    Sie können beim Erstellen von Azure Machine Learning Compute auch mehrere erweiterte Eigenschaften konfigurieren. Mithilfe der Eigenschaften können Sie einen persistenten Cluster mit einer festen Größe oder in einem vorhandenen virtuellen Azure-Netzwerk in Ihrem Abonnement erstellen.  Weitere Informationen finden Sie in der [AmlCompute-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
     ).
     
-   Oder Sie können eine persistente Azure Machine Learning Compute-Ressource [ im Azure Portal](#portal-create) erstellen und anfügen.
+   Sie können auch eine persistente Azure Machine Learning Compute-Ressource [ in Azure Machine Learning Studio](#portal-create) erstellen und anfügen.
 
 1. **Konfigurieren**: Erstellen Sie eine Ausführungskonfiguration für das persistente Computeziel.
 
@@ -179,7 +180,7 @@ Verwenden Sie in diesem Szenario die Data Science Virtual Machine (DSVM) als Azu
    compute.wait_for_completion(show_output=True)
    ```
 
-   Oder Sie können die DSVM [über das Azure-Portal](#portal-reuse) an Ihren Arbeitsbereich anfügen.
+   Sie können die DSVM auch [über Azure Machine Learning Studio](#portal-reuse) an Ihren Arbeitsbereich anfügen.
 
 1. **Konfigurieren**: Erstellen Sie eine Ausführungskonfiguration für das DSVM-Computeziel. Zum Erstellen und Konfigurieren der Trainingsumgebung in der DSVM werden Docker und Conda verwendet.
 
@@ -220,7 +221,7 @@ Azure HDInsight ist eine beliebte Plattform für Big Data-Analysen. Die Plattfor
    hdi_compute.wait_for_completion(show_output=True)
    ```
 
-   Oder Sie fügen den HDInsight-Cluster [über das Azure-Portal](#portal-reuse) an Ihren Arbeitsbereich an.
+   Sie können den HDInsight-Cluster auch [über Azure Machine Learning Studio](#portal-reuse) an Ihren Arbeitsbereich anfügen.
 
 1. **Konfigurieren**: Erstellen Sie eine Ausführungskonfiguration für das HDI-Computeziel. 
 
@@ -270,9 +271,9 @@ except ComputeTargetException:
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
 
-## <a name="set-up-in-azure-portal"></a>Einrichtung im Azure-Portal
+## <a name="set-up-in-azure-machine-learning-studio"></a>Einrichten in Azure Machine Learning Studio
 
-Sie können im Azure-Portal auf Computeziele zugreifen, die Ihrem Arbeitsbereich zugeordnet sind.  Das Portal bietet Ihnen folgende Möglichkeiten:
+Sie können in Azure Machine Learning Studio auf Computeziele zugreifen, die Ihrem Arbeitsbereich zugeordnet sind.  Sie können Studio für Folgendes verwenden:
 
 * [Anzeigen von Computezielen](#portal-view), die an Ihren Arbeitsbereich angefügt sind
 * [Erstellen eines Computeziels](#portal-create) in Ihrem Arbeitsbereich
@@ -291,7 +292,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 Um die Compute-Ziele für Ihren Arbeitsbereich anzuzeigen, führen Sie die folgenden Schritte aus:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie Ihren Arbeitsbereich. Sie können auf diese Schritte auch über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) zugreifen. In den folgenden Abbildungen ist allerdings das Azure-Portal gezeigt.
+1. Navigieren Sie zu [Azure Machine Learning Studio](https://ml.azure.com).
  
 1. Wählen Sie unter __Anwendungen__ den Eintrag __Compute__.
 
@@ -310,7 +311,7 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 1. Wählen Sie **Machine Learning Compute** als Computetyp für __Training__ aus. 
 
     >[!NOTE]
-    >Azure Machine Learning Compute ist die einzige verwaltete Computeressource, die Sie im Azure-Portal erstellen können.  Alle anderen Computeressourcen können erst nach dem Erstellen angefügt werden.
+    >Azure Machine Learning Compute ist die einzige verwaltete Computeressource, die Sie in Azure Machine Learning Studio erstellen können.  Alle anderen Computeressourcen können erst nach dem Erstellen angefügt werden.
 
 1. Füllen Sie das Formular aus. Geben Sie für die Einrichtung des Computeziels Werte für die Pflichteigenschaften ein, insbesondere die **VM-Familie** und die **maximale Anzahl von Knoten**.  
 
@@ -336,7 +337,7 @@ Führen Sie die zuvor beschriebenen Schritte aus, um die Liste der Computeziele 
 1. Wählen Sie den Computetyp aus, den Sie für __Training__ anfügen möchten:
 
     > [!IMPORTANT]
-    > Nicht alle Computetypen können im Azure-Portal angefügt werden. Derzeit können folgende Computetypen für das Training angefügt werden:
+    > Nicht alle Computetypen können in Azure Machine Learning Studio angefügt werden. Derzeit können folgende Computetypen für das Training angefügt werden:
     >
     > * Eine Remote-VM
     > * Azure Databricks (zur Verwendung in Machine Learning-Pipelines)
@@ -447,6 +448,8 @@ Die Laufzeitkonfigurationsdatei ist eine als YAML formatierte Datei mit den folg
  * Datenverweis- und Datenspeicherdetails.
  * Konfigurationsdetails, die spezifisch für Machine Learning Compute für das Erstellen eines neuen Clusters sind.
 
+Ein vollständiges runconfig-Schema finden Sie in der [JSON-Beispieldatei](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
+
 ### <a name="create-an-experiment"></a>Erstellen eines Experiments
 
 Erstellen Sie zunächst ein Experiment für Ihre Ausführungen.
@@ -499,7 +502,7 @@ Weitere Einzelheiten zu diesen ```az ml```-CLI-Befehlen und zum vollständigen S
 
 ## <a name="git-tracking-and-integration"></a>Git-Nachverfolgung und -Integration
 
-Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Zum Beispiel wird die aktuelle Commit-ID für das Repository als Teil des Verlaufs protokolliert.
+Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).
 
 ## <a name="notebook-examples"></a>Notebook-Beispiele
 

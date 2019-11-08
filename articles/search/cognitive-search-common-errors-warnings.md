@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 08d15f20f69c0c42d8b4dd4bac72e7d9f367a957
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787975"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466775"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Häufige Fehler und Warnungen der KI-Anreicherungspipeline in der kognitiven Azure-Suche
 
@@ -117,6 +117,7 @@ Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum
 | Probleme beim Herstellen einer Verbindung mit dem Zielindex (die nach Wiederholungsversuchen weiterhin bestehen), da der Dienst durch eine andere Aufgabe ausgelastet ist, z.B. eine Abfrage oder Indizierung. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist stark ausgelastet. | [Zentrales Hochskalieren des Suchdiensts](search-capacity-planning.md)
 | Der Suchdienst wird für das Dienstupdate gepatcht oder befindet sich mitten in einer Neukonfiguration der Topologie. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist derzeit nicht verfügbar / Der Suchdienst befindet sich im Übergang. | Konfigurieren Sie den Dienst mit mindestens 3 Replikaten für eine Verfügbarkeit von 99,9 % gemäß [SLA-Dokumentation](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 | Fehler in der zugrunde liegenden Compute-/Netzwerkressource (selten) | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Ein unbekannter Fehler ist aufgetreten. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen.
+| Eine Indizierungsanforderung an den Zielindex wurde aufgrund von Netzwerkproblemen nicht innerhalb eines Zeitlimits bestätigt. | Die Verbindung mit dem Suchindex konnte nicht rechtzeitig hergestellt werden. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen. Versuchen Sie außerdem, die [Batchgröße](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters) des Indexers zu verringern, wenn dieser Fehler weiterhin auftritt.
 
 ### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Dokument konnte nicht indiziert werden, da die zu indizierenden Indexerdaten ungültig waren.
 
@@ -130,7 +131,11 @@ Das Dokument wurde gelesen und verarbeitet, konnte jedoch aufgrund eines Konflik
 | Im Quelldokument wurde ein unbekannter Typ gefunden. | Unbekannter Typ _unknown_ kann nicht indiziert werden. |
 | Im Quelldokument wurde eine nicht kompatible Notation für Geografiepunkte verwendet. | WKT POINT-Zeichenfolgenliterale werden nicht unterstützt. Verwenden Sie stattdessen GeoJson-Punkt-Literale. |
 
-Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Datentypen (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) und [Datentypzuordnung für Indexer in Azure Search](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search), um sicherzustellen, dass Sie das Indexschema ordnungsgemäß erstellen und geeignete [Indexerfeldzuordnungen](search-indexer-field-mappings.md) eingerichtet haben. Die Fehlermeldung enthält Details, anhand derer die Quelle des Konflikts ermittelt werden kann.
+Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) und [Datentypzuordnung für Indexer](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search), um sicherzustellen, dass Sie das Indexschema ordnungsgemäß erstellen und geeignete [Indexerfeldzuordnungen](search-indexer-field-mappings.md) eingerichtet haben. Die Fehlermeldung enthält Details, anhand derer die Quelle des Konflikts ermittelt werden kann.
+
+### <a name="could-not-process-document-within-indexer-max-run-time"></a>Das Dokument konnte nicht innerhalb der maximalen Laufzeit des Indexers verarbeitet werden.
+
+Dieser Fehler tritt auf, wenn der Indexer die Verarbeitung eines einzelnen Dokuments aus der Datenquelle nicht innerhalb der zulässigen Ausführungszeit beenden kann. Die [maximale Ausführungszeit](search-limits-quotas-capacity.md#indexer-limits) ist kürzer, wenn Skillsets verwendet werden. Wenn dieser Fehler auftritt und maxFailedItems auf einen anderen Wert als 0 festgelegt ist, umgeht der Indexer das Dokument bei zukünftigen Ausführungen, sodass die Indizierung fortgesetzt werden kann. Wenn kein Dokument übersprungen werden darf oder wenn dieser Fehler dauerhaft auftritt, sollten Sie die Dokumente in kleinere Dokumente aufteilen, damit ein Teilfortschritt innerhalb einer einzelnen Indexerausführung erfolgen kann.
 
 ##  <a name="warnings"></a>Warnungen
 Die Indizierung wird von Warnungen nicht beendet, aber Warnungen weisen auf Bedingungen hin, die zu unerwarteten Ergebnissen führen können. Ob Sie Maßnahmen ergreifen oder nicht, hängt von den Daten und Ihrem Szenario ab.
@@ -220,3 +225,8 @@ Die Möglichkeit, einen nicht abgeschlossenen Indizierungsauftrag fortzusetzen, 
 Dieses Verhalten kann außer Kraft gesetzt werden, indem durch Verwendung der Konfigurationseigenschaft `assumeOrderByHighWatermarkColumn` der inkrementelle Fortschritt aktiviert und diese Warnung unterdrückt wird.
 
 [Weitere Informationen zum inkrementellen Status und zu benutzerdefinierten Abfragen in Cosmos DB](https://go.microsoft.com/fwlink/?linkid=2099593)
+
+### <a name="could-not-map-output-field-x-to-search-index"></a>Das Ausgabefeld „X“ konnte dem Suchindex nicht zugeordnet werden.
+Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führen zu Warnungen für jedes Dokument und damit zu einem leeren Indexfeld. Um dieses Problem zu umgehen, überprüfen Sie die Quellpfade des Ausgabefelds auf mögliche Tippfehler, oder legen Sie mit dem [bedingten Skill](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist) einen Standardwert fest.
+
+Der Indexer konnte einen Skill im Skillset ausführen, aber die Antwort auf die Web-API-Anforderung ergab, dass während der Ausführung Warnungen aufgetreten sind. Überprüfen Sie die Warnungen, um zu verstehen, wie sich dies auf die Daten auswirkt und ob Handlungsbedarf besteht.

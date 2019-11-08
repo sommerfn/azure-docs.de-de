@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 7f62e437d80f023972327d98b4add193eb7b8dd6
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044414"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73469728"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
@@ -47,8 +47,9 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Aktivieren Sie für dieses Tutorial zuerst die Updateverwaltung auf Ihrem virtuellen Computer:
 
-1. Wählen Sie im Azure-Portal im Menü Bereich die Option **Virtuelle Computer**. Wählen Sie einen virtuellen Computer aus der Liste aus.
-2. Wählen Sie auf der Seite der virtuellen Computer unter **VORGÄNGE** die Option **Updateverwaltung**. Der Bereich **Updateverwaltung aktivieren** wird geöffnet.
+1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) die Option **Virtuelle Computer** aus, oder suchen Sie auf der **Startseite** nach **Virtuelle Computer**, und wählen Sie die entsprechende Option aus.
+1. Wählen Sie den virtuellen Computer aus, für den Sie die Updateverwaltung aktivieren möchten.
+1. Wählen Sie auf der Seite der virtuellen Computer unter **VORGÄNGE** die Option **Updateverwaltung**. Der Bereich **Updateverwaltung aktivieren** wird geöffnet.
 
 Eine Überprüfung wird ausgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist. Dabei wird auf einen Azure Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto geprüft und überprüft, ob die Lösung für die Updateverwaltung im Arbeitsbereich vorhanden ist.
 

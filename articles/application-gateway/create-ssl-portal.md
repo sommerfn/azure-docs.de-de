@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: victorh
-ms.openlocfilehash: 53a4fca0c05cd54bae6d01d07e72e1033a247a05
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: afdb5d256c33042655c122e9c84a4ab07c94f14c
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327361"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73470038"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Tutorial: Konfigurieren eines Anwendungsgateways mit SSL-Terminierung mithilfe des Azure-Portals
 
@@ -62,7 +62,7 @@ Verwenden Sie [Export-PfxCertificate](https://docs.microsoft.com/powershell/modu
 > Ihr PFX-Dateikennwort darf keine Sonderzeichen enthalten. Es werden ausschließlich alphanumerische Zeichen unterstützt.
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +150,7 @@ Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und den von 
 
    - **PFX-Zertifikatsdatei**: Navigieren Sie zur zuvor erstellten Datei „c:\appgwcert.pfx“.
    - **Zertifikatname**: Geben Sie als Name für das Zertifikat *mycert1* ein.
-   - **Kennwort**: Geben Sie *Azure123456!* ein. als Kennwort
+   - **Kennwort**: Geben Sie *Azure123456!* als Kennwort ein.
   
         Übernehmen Sie auf der Registerkarte **Listener** die Standardwerte für die übrigen Einstellungen. Wählen Sie dann die Registerkarte **Back-End-Ziele** aus, um den Rest der Routingregel zu konfigurieren.
 
@@ -194,7 +194,7 @@ Gehen Sie dazu wie folgt vor:
     - **Ressourcengruppe**: Wählen Sie **myResourceGroupAG** als Namen der Ressourcengruppe aus.
     - **Name des virtuellen Computers**: Geben Sie *myVM* als Namen der VM ein.
     - **Benutzername**: Geben *azureuser* als Namen des Administratorbenutzers ein.
-    - **Kennwort**: Geben Sie *Azure123456!* als Administratorkennwort ein.
+    - **Kennwort**: Geben Sie *Azure123456* als Administratorkennwort ein.
 4. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.  
 5. Übernehmen Sie auf der Registerkarte **Datenträger** die Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
 6. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/26/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: ee647668e8b5826706e8d9bb8a82acaf53fd3d8c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f7667ce99ceaa713332ad9419ffab9d57aa0f075
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515208"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73494452"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Schnellstart: Personalisierungsclientbibliothek für Node.js
 
@@ -39,7 +39,7 @@ Hier finden Sie Informationen zu den ersten Schritten mit der Personalisierungsc
 Diese Schnellstartanleitung umfasst mehrere Schritte:
 
 * Erstellen Sie im Azure-Portal eine Personalisierungsressource.
-* Ändern Sie im Azure-Portal auf der Seite **Einstellungen** für die Personalisierungsressource die Häufigkeit der Modellaktualisierung.
+* Ändern Sie im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource die Häufigkeit der Modellaktualisierung.
 * Erstellen Sie in einem Code-Editor eine Codedatei, und bearbeiten Sie sie.
 * Installieren Sie in der Befehlszeile oder im Terminal das SDK über die Befehlszeile.
 * Führen Sie die Codedatei in der Befehlszeile oder im Terminal aus.
@@ -90,7 +90,7 @@ npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 
 ## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
-Ändern Sie im Azure-Portal auf der Seite **Einstellungen** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
+Ändern Sie im Azure-Portal auf der Seite **Konfiguration** in der Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in 10 Sekunden. Dadurch wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 
 ![Ändern der Häufigkeit der Modellaktualisierung](./media/settings/configure-model-update-frequency-settings.png)
 

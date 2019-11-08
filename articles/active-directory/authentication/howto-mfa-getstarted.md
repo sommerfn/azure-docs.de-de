@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7504d14d522a440572aa25491270c0afc73325a9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2d80ac949dea3c9d6c3d28d2a343c4ed7bad8983
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554390"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73474325"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung
 
@@ -220,6 +220,7 @@ Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure AD-Mandanten 
 1. Melden Sie sich mit dem globalen Administratorkonto am [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zu **Azure Active Directory**  > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
+   ![Erstellen einer Richtlinie für bedingten Zugriff zum Aktivieren von MFA für die Benutzer des Azure-Portals in der Pilotgruppe](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Geben Sie einen aussagekräftigen Namen für Ihre Richtlinie an.
 1. Unter **Benutzer und Gruppen**:
    * Wählen Sie auf der Registerkarte **Einschließen** das Optionsfeld **Alle Benutzer**.
@@ -237,8 +238,6 @@ Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure AD-Mandanten 
 1. Überspringen Sie den Abschnitt **Sitzung**.
 1. Legen Sie die Umschaltfläche **Richtlinie aktivieren** auf **Ein** fest.
 1. Klicken Sie auf **Create**.
-
-![Erstellen einer Richtlinie für bedingten Zugriff zum Aktivieren von MFA für die Benutzer des Azure-Portals in der Pilotgruppe](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Planen der Integration mit lokalen Systemen
 

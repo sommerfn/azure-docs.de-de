@@ -6,14 +6,14 @@ documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: 9085d5ee21b1e955b7d9416a379ee730ba26ad3e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c753320b8d525e0c3ac031777bee15ba2050fcc0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66150077"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495669"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell
 
@@ -39,12 +39,12 @@ Die beiden Modelle sind in den folgenden Diagrammen dargestellt:
 ### <a name="azure-support-for-policy-based-vpn"></a>Azure-Unterstützung für richtlinienbasiertes VPN
 Azure unterstützt derzeit beide Modi von VPN-Gateways: routenbasierte VPN-Gateways und richtlinienbasierte VPN-Gateways. Diese werden auf unterschiedlichen internen Plattformen erstellt, und dies führt zu unterschiedlichen Spezifikationen:
 
-|                          | **Richtlinienbasiertes VPN Gateway** | **Routenbasiertes VPN Gateway**               |
-| ---                      | ---                         | ---                                      |
-| **Azure-Gateway-SKU**    | Basic                       | Basic, Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3 |
-| **IKE-Version**          | IKEv1                       | IKEv2                                    |
-| **Max. S2S-Verbindungen** | **1**                       | Basic/Standard: 10<br> HighPerformance: 30 |
-|                          |                             |                                          |
+|                          | **Richtlinienbasiertes VPN Gateway** | **Routenbasiertes VPN Gateway**       |**Routenbasiertes VPN Gateway**                          |
+| ---                      | ---                         | ---                              |---                                                 |
+| **Azure-Gateway-SKU**    | Basic                       | Basic                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
+| **IKE-Version**          | IKEv1                       | IKEv2                            | IKEv1 und IKEv2                                    |
+| **Max. S2S-Verbindungen** | **1**                       | 10                               |Standard: 10<br> Andere SKUs: 30                     |
+|                          |                             |                                  |                                                    |
 
 Mit der benutzerdefinierten IPsec/IKE-Richtlinie können Sie jetzt routenbasierte Azure-VPN-Gateways konfigurieren, um mithilfe von auf Präfixen basierenden Datenverkehrsselektoren mit der Option „**PolicyBasedTrafficSelectors**“ eine Verbindung mit lokalen richtlinienbasierten VPN-Geräten herzustellen. Mit dieser Funktion können Sie eine Verbindung von einem virtuellen Azure-Netzwerk und VPN-Gateway mit mehreren lokalen richtlinienbasierten VPN-/Firewallgeräten herstellen, indem Sie die Einzelverbindungsbeschränkung für die aktuellen VPN-Gateways aufheben, die auf Azure-Richtlinien basieren.
 

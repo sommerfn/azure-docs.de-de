@@ -1,23 +1,23 @@
 ---
 title: 'Linear Regression: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit dem Modul „Linear Regression“ in Azure Machine Learning Service ein lineares Regressionsmodell für den Einsatz in einer Pipeline erstellen können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mit dem Modul Linear Regression in Azure Machine Learning ein Modell für lineare Regression für den Einsatz in einer Pipeline erstellen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 10/22/2019
+ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693707"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73497738"
 ---
 # <a name="linear-regression-module"></a>Modul „Linear Regression“
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein lineares Regressionsmodell für den Einsatz in einer Pipeline zu erstellen.  Bei der linearen Regression wird versucht, eine lineare Beziehung zwischen einer oder mehreren unabhängigen Variablen und einem numerischen Ergebnis oder einer abhängigen Variablen herzustellen. 
 
@@ -63,7 +63,7 @@ Dieses Modul unterstützt zwei Methoden zur Anpassung eines Regressionsmodells m
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a> Erstellen eines Regressionsmodells mithilfe der Methode der kleinsten Quadrate
 
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** Ihrer Pipeline hinzu.
+1. Fügen Sie im Designer Ihrer Pipeline das Modul **Linear Regression Model** hinzu.
 
     Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Modell initialisieren**, dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** in Ihre Pipeline.
 
@@ -97,7 +97,7 @@ Nach Abschluss des Trainings:
 
 ## <a name="bkmk_GradientDescent"></a> Erstellen eines Regressionsmodells mithilfe des Onlinegradientenabstiegs
 
-1. Fügen Sie auf der Benutzeroberfläche das Modul **Linear Regression Model** Ihrer Pipeline hinzu.
+1. Fügen Sie im Designer Ihrer Pipeline das Modul **Linear Regression Model** hinzu.
 
     Sie finden dieses Modul in der Kategorie **Machine Learning**. Erweitern Sie **Modell initialisieren**, dann **Regression**, und ziehen Sie das Modul **Linear Regression Model** in Ihre Pipeline.
 
@@ -143,4 +143,4 @@ Nach Abschluss des Trainings:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

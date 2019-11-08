@@ -1,7 +1,7 @@
 ---
 title: 'Create Python Model: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe des „Create Python Model“-Moduls in Azure Machine Learning Service ein benutzerdefiniertes Modellierungs- oder Datenverarbeitungsmodul erstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie mithilfe des Moduls Create Python Model in Azure Machine Learning ein benutzerdefiniertes Modellierungs- oder Datenverarbeitungsmodul erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,18 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/06/2019
-ms.openlocfilehash: 2a035644dc0d3d533aa052217c89968a5692230b
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 33e15055958ac99f2aa9eb160f9e5cf3c5b0cd41
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693888"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493796"
 ---
-# <a name="create-python-model"></a>Create Python Model
+# <a name="create-python-model"></a>Erstellen eines Python-Modells
 
 In diesem Artikel wird beschrieben, wie Sie das **Create Python Model**-Modul verwenden, um anhand eines Python-Skripts ein untrainiertes Modell zu erstellen. 
 
-Sie können das Modell auf Grundlage jedes Learners erstellen, der in einem Python-Paket in der Azure Machine Learning-Umgebung enthalten ist. 
+Sie können das Modell auf der Grundlage jedes Lernmodells erstellen, das in einem Python-Paket in der Azure Machine Learning-Designer-Umgebung enthalten ist. 
 
 Nachdem Sie das Modell erstellt haben, können Sie es mithilfe von [Train Model](train-model.md) wie alle anderen Learner in Azure Machine Learning mit einem Dataset trainieren. Das trainierte Modell kann an [Score Model](score-model.md) übergeben werden, um es zum Treffen von Vorhersagen zu verwenden. Anschließend können Sie das trainierte Modell speichern und den Bewertungsworkflow als Webdienst veröffentlichen.
 

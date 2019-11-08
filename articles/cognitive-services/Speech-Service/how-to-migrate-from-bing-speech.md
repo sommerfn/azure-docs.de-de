@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 5694894a78a46ad658ec18f210c6a82fb82df23f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 00a20ac2d7f05c42be9e955eeb8f47c302db7885
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559609"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464576"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 
@@ -61,7 +61,7 @@ Der Spracherkennungsdienst verwendet ein zeitbasiertes Preismodell (anstelle ein
 
 ## <a name="migration-strategies"></a>Migrationsstrategien
 
-Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung verwenden, die eine Bing-Spracheingabe-API verwenden, sollten Sie diese aktualisieren, um den Spracherkennungsdienst so schnell wie möglich zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der Dokumentation zum [Spracherkennungsdienst](index.yml).
+Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung verwenden, die eine Bing-Spracheingabe-API verwenden, sollten Sie diese aktualisieren, um den Spracherkennungsdienst so schnell wie möglich zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der Dokumentation zum [Spracherkennungsdienst](index.md).
 
 Die Spracherkennungsdienst-[REST-APIs](rest-apis.md) sind mit den Bing-Spracheingabe-APIs kompatibel. Wenn Sie derzeit die Bing-Spracheingabe-REST-APIs verwenden, müssen Sie nur den REST-Endpunkt ändern und zu einem Abonnementschlüssel des Spracherkennungsdiensts wechseln.
 
@@ -78,7 +78,7 @@ Wenn Ihre Anwendung langlebige Verbindungen verwendet und kein verfügbares SDK 
 Erste Schritte mit dem Spracherkennungs-SDK:
 
 1. Laden Sie das [Spracherkennungs-SDK](speech-sdk.md) herunter.
-1. Arbeiten Sie die [Leitfäden für den Schnellstart](quickstart-csharp-dotnet-windows.md) und die [Tutorials](how-to-recognize-intents-from-speech-csharp.md) für den Spracherkennungsdienst durch. Sehen Sie sich auch die [Codebeispiele](samples.md) an, um sich mit den neuen APIs vertraut zu machen.
+1. Arbeiten Sie die [Leitfäden für den Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) und die [Tutorials](how-to-recognize-intents-from-speech-csharp.md) für den Spracherkennungsdienst durch. Sehen Sie sich auch die [Codebeispiele](samples.md) an, um sich mit den neuen APIs vertraut zu machen.
 1. Aktualisieren Sie Ihre Anwendung, um den Spracherkennungsdienst zu verwenden.
 
 ## <a name="support"></a>Support
@@ -90,7 +90,7 @@ Informationen zur Unterstützung von Spracherkennungsdienst, SDK und API finden 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Kostenloses Testen des Spracherkennungsdiensts](get-started.md)
-* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK](quickstart-csharp-uwp.md)
+* [Schnellstart: Erkennen von Sprache in einer UWP-App mit dem Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Versionshinweise zu den Spracherkennungsdiensten](releasenotes.md)

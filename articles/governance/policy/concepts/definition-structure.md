@@ -3,15 +3,15 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie die von Azure Policy verwendete Definition von Ressourcenrichtlinien es Ihnen ermöglicht, Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem Sie beschreiben, wann die Richtlinie erzwungen werden soll und welche Auswirkungen erfolgen sollen.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/09/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fe0f16fd4c07eac92ab3c1ae2c6f78b0bd1595eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d415075bda4ff58d4a3a633fe820f22d8a157459
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053498"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464030"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -81,12 +81,17 @@ Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle üb
 
 `indexed` sollte beim Erstellen von Richtlinien verwendet werden, die Tags oder Speicherorte erzwingen. Dies ist nicht erforderlich, verhindert aber, dass Ressourcen, die keine Tags und Speicherorte unterstützen, bei der Konformitätsprüfung als nicht konform angezeigt werden. Die Ausnahme sind **Ressourcengruppen**. Richtlinien zum Erzwingen von Speicherort oder Tags für eine Ressourcengruppe sollten **mode** auf `all` festlegen und speziell auf den Typ `Microsoft.Resources/subscriptions/resourceGroups` abzielen. Ein Beispiel finden Sie unter [Ressourcengruppen-Tags erzwingen](../samples/enforce-tag-rg.md). Eine Liste der Ressourcen, die Tags unterstützen, finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../../azure-resource-manager/tag-support.md).
 
-### <a name="resource-provider-modes"></a>Ressourcenanbietermodi
+### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />Ressourcenanbietermodi (Vorschau)
 
-Der einzige derzeit unterstützte Ressourcenanbietermodus ist `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+Die folgenden Ressourcenanbietermodi werden derzeit in der Vorschauphase unterstützt:
+
+- `Microsoft.ContainerService.Data` zur Verwaltung der Zugangscontrollerregeln für [Azure Kubernetes Service](../../../aks/intro-kubernetes.md). Richtlinien, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceRegoPolicy](./effects.md#enforceregopolicy) verwenden.
+- `Microsoft.Kubernetes.Data` zur Verwaltung selbstverwalteter Kubernetes-Cluster der AKS-Engine in Azure.
+  Richtlinien, die diesen Ressourcenanbietermodus verwenden, **müssen** die Auswirkung [EnforceOPAConstraint](./effects.md#enforceopaconstraint) verwenden.
+- `Microsoft.KeyVault.Data` zur Verwaltung von Tresoren und Zertifikaten in [Azure Key Vault](../../../key-vault/key-vault-overview.md).
 
 > [!NOTE]
-> [Azure Policy für Kubernetes](rego-for-aks.md) ist in der Public Preview-Phase und unterstützt nur integrierte Richtliniendefinitionen.
+> Ressourcenanbietermodi unterstützen in der Vorschauphase nur integrierte Richtliniendefinitionen und keine Initiativen.
 
 ## <a name="parameters"></a>Parameter
 
@@ -134,7 +139,7 @@ Beispielsweise können Sie eine Richtliniendefinition verwenden, um die Speicher
 
 ### <a name="using-a-parameter-value"></a>Verwenden eines Parameterwerts
 
-In der Richtlinienregel wird die folgende Syntax für die `parameters`Bereitstellungswertefunktion verwendet, um auf Parameter zu verweisen:
+In der Richtlinienregel wird die folgende Syntax der Funktion `parameters` verwendet, um auf Parameter zu verweisen:
 
 ```json
 {
@@ -272,7 +277,7 @@ Folgende Felder werden unterstützt:
 - `tags['''<tagName>''']`
   - Diese Klammersyntax unterstützt Tagnamen, die Apostrophe enthalten, und verwendet doppelte Apostrophe als Escapezeichen.
   - Wobei **'\<tagName\>'** der Name des Tags ist, auf das die Bedingung geprüft wird.
-  - Beispiel: `tags['''My.Apostrophe.Tag''']`, wobei **'\<tagName\>'** der Name des Tags ist.
+  - Beispiel: `tags['''My.Apostrophe.Tag''']`, wobei **'My.Apostrophe.Tag'** der Name des Tags ist.
 - Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
 
 > [!NOTE]
@@ -282,7 +287,7 @@ Folgende Felder werden unterstützt:
 
 Ein Parameterwert kann an ein Tagfeld übergeben werden. Das Übergeben eines Parameters an ein Tagfeld erhöht die Flexibilität der Richtliniendefinition während der Richtlinienzuweisung.
 
-Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt, das als Namen den Wert des **TagName**-Parameters aufweist. Wenn dieses Tag nicht vorhanden ist, wird die Auswirkung **append** verwendet, um mithilfe der Nachschlagefunktion `resourcegroup()` das Tag mit dem Wert dieses benannten Tags hinzuzufügen, das für die übergeordnete Ressourcengruppe der überwachten Ressourcen festgelegt ist.
+Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt, das als Namen den Wert des **TagName**-Parameters aufweist. Wenn dieses Tag nicht vorhanden ist, wird die Auswirkung **modify** verwendet, um mithilfe der Nachschlagefunktion `resourcegroup()` das Tag mit dem Wert dieses benannten Tags hinzuzufügen, das für die übergeordnete Ressourcengruppe der überwachten Ressourcen festgelegt ist.
 
 ```json
 {
@@ -291,11 +296,17 @@ Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt,
         "exists": "false"
     },
     "then": {
-        "effect": "append",
-        "details": [{
-            "field": "[concat('tags[', parameters('tagName'), ']')]",
-            "value": "[resourcegroup().tags[parameters('tagName')]]"
-        }]
+        "effect": "modify",
+        "details": {
+            "operations": [{
+                "operation": "add",
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "value": "[resourcegroup().tags[parameters('tagName')]]"
+            }],
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ]
+        }
     }
 }
 ```
@@ -390,42 +401,15 @@ Mit der überarbeiteten Richtlinienregel überprüft `if()` die Länge des **Nam
 
 Azure Policy unterstützt die folgenden Auswirkungstypen:
 
-- **Deny** generiert ein Ereignis im Aktivitätsprotokoll und führt zu einem Fehler bei der Anforderung.
-- **Audit** generiert eine Warnung im Überwachungsprotokoll, führt jedoch nicht zu einem Fehler bei der Anforderung.
 - **Append** fügt der Anforderung verschiedene definierte Felder hinzu.
-- **AuditIfNotExists** aktiviert das Überwachen, wenn eine Ressource nicht vorhanden ist.
-- **DeployIfNotExists** stellt eine Ressource bereit, falls noch keine vorhanden ist.
+- **Audit** generiert eine Warnung im Überwachungsprotokoll, führt jedoch nicht zu einem Fehler bei der Anforderung.
+- **AuditIfNotExists** generiert eine Warnung im Aktivitätsprotokoll, wenn keine verwandte Ressource vorhanden ist.
+- **Deny** generiert ein Ereignis im Aktivitätsprotokoll und führt zu einem Fehler bei der Anforderung.
+- **DeployIfNotExists** stellt eine verwandte Ressource bereit, falls noch keine vorhanden ist.
 - **Deaktiviert** wertet Ressourcen nicht auf Konformität mit der Richtlinienregel aus.
-- **EnforceRegoPolicy** konfiguriert den Open Policy Agent-Zugangscontroller in Azure Kubernetes Service (Vorschauversion).
+- **EnforceOPAConstraint** (Vorschau) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v3 für selbstverwaltete Kubernetes-Cluster in Azure (Vorschau).
+- **EnforceRegoPolicy** (Vorschau) konfiguriert den Open Policy Agent-Zugangscontroller mit Gatekeeper v2 in Azure Kubernetes Service.
 - **Modify** fügt die definierten Tags zu einer Ressource hinzu, aktualisiert sie oder entfernt sie aus einer Ressource.
-
-Für **append**müssen Sie die folgenden Details angeben:
-
-```json
-"effect": "append",
-"details": [{
-    "field": "field name",
-    "value": "value of the field"
-}]
-```
-
-Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
-
-Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer zugehörigen Ressource auswerten und eine Regel anwenden. Wenn die Ressource nicht mit die Regel übereinstimmt, wird die Auswirkung implementiert. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird. Weitere Informationen finden Sie im Beispiel [Überwachung, wenn keine Erweiterung vorhanden ist](../samples/audit-ext-not-exist.md).
-
-Der Effekt **DeployIfNotExists** erfordert die **roleDefinitionId**-Eigenschaft im Bereich **details** der Richtlinienregel. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
-
-```json
-"details": {
-    ...
-    "roleDefinitionIds": [
-        "/subscription/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleGUID}",
-        "/providers/Microsoft.Authorization/roleDefinitions/{builtinroleGUID}"
-    ]
-}
-```
-
-Auf ähnliche Weise erfordert **Modify** die Eigenschaft **roleDefinitionId** im Bereich **details** der Richtlinienregel für den [Wartungstask](../how-to/remediate-resources.md). **Modify** erfordert auch ein **operations**-Array zur Definition, welche Aktionen für die Ressourcentags ausgeführt werden müssen.
 
 Ausführliche Informationen zu den einzelnen Auswirkungen, der Reihenfolge der Auswertung, den Eigenschaften und Beispielen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](effects.md).
 

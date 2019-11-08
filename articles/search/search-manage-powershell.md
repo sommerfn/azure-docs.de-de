@@ -1,22 +1,22 @@
 ---
-title: PowerShell-Skripts mit Az.Search-Modul – Azure Search
-description: Erstellen und Konfigurieren Sie einen Azure Search-Dienst mit PowerShell. Sie können einen Dienst zentral hoch- oder herunterskalieren, Administrator- und Abfrage-API-Schlüssel verwalten und Systeminformationen abfragen.
-author: HeidiSteen
+title: PowerShell-Skripts mit Az.Search-Modul
+titleSuffix: Azure Cognitive Search
+description: Erstellen und konfigurieren Sie einen Azure Cognitive Search-Dienst mit PowerShell. Sie können einen Dienst zentral hoch- oder herunterskalieren, Administrator- und Abfrage-API-Schlüssel verwalten und Systeminformationen abfragen.
 manager: nitinme
-services: search
-ms.service: search
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/28/2019
-ms.author: heidist
-ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/04/2019
+ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331239"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73466522"
 ---
-# <a name="manage-your-azure-search-service-with-powershell"></a>Verwalten des Azure Search-Diensts mit PowerShell
+# <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Verwalten des Azure Cognitive Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
 > * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "72331239"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ausführen, um Azure Search zu erstellen und zu konfigurieren. Das **Az.Search**-Modul erweitert Azure PowerShell um vollständige Parität mit den [REST-APIs für die Azure Search-Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement). Mit Azure PowerShell und **Az.Search** können Sie folgende Aufgaben ausführen:
+Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ausführen, um Azure Cognitive Search zu erstellen und zu konfigurieren. Das **Az.Search**-Modul erweitert Azure PowerShell um vollständige Parität mit den [REST-APIs für die Azure Cognitive Search-Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement). Mit Azure PowerShell und **Az.Search** können Sie folgende Aufgaben ausführen:
 
 > [!div class="checklist"]
 > * [Auflisten aller Suchdienste in Ihrem Abonnement](#list-search-services)
@@ -40,7 +40,7 @@ Zwar sind keine dedizierten PowerShell-Befehle für die Inhaltsverwaltung vorhan
 
 Nachfolgend sind noch andere Aufgaben aufgeführt, die nicht durch PowerShell oder eine andere API (nur Portal) unterstützt werden:
 + [Anfügen einer Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) für [um KI erweiterte Indizierung](cognitive-search-concept-intro.md). Ein Cognitive Service wird einer Qualifikationsgruppe und nicht einem Abonnement oder Dienst angefügt.
-+ [Add-On-Überwachungslösungen ](search-monitor-usage.md#add-on-monitoring-solutions) für die Überwachung von Azure Search.
++ [Add-On-Überwachungslösungen](search-monitor-usage.md#add-on-monitoring-solutions) für die Überwachung von Azure Cognitive Search.
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +92,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-search-services-in-your-subscription"></a>Auflisten aller Azure Search-Dienste in Ihrem Abonnement
+## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Auflisten aller Azure Cognitive Search-Dienste in Ihrem Abonnement
 
 Die folgenden Befehle stammen von [**Az.Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources) und geben Informationen zu vorhandenen Ressourcen und Diensten zurück, die bereits in Ihrem Abonnement bereitgestellt sind. Wenn Sie nicht wissen, wie viele Suchdienste bereits erstellt wurden, geben die folgenden Befehle diese Information zurück und ersparen Ihnen dadurch das Aufrufen des Portals.
 
@@ -201,7 +201,7 @@ Sie können immer nur jeweils einen Schlüssel erneut generieren, der entweder a
 
 Wenn Sie Schlüssel ohne Aktualisierung des Clientcodes erneut generieren, treten bei Anforderungen, bei denen der alte Schlüssel verwendet wird, Fehler auf. Durch das erneute Generieren aller neuen Schlüssel werden Sie nicht dauerhaft vom Dienst ausgesperrt, und Sie können weiterhin über das Portal auf den Dienst zugreifen. Nachdem Sie primäre und sekundäre Schlüssel erneut generiert haben, können Sie den Clientcode zur Verwendung der neuen Schlüssel aktualisieren, und die Vorgänge werden entsprechend fortgesetzt.
 
-Werte für die API-Schlüssel werden vom Dienst generiert. Sie können keinen benutzerdefinierten Schlüssel für die Verwendung in Azure Search bereitstellen. Ebenso ist kein benutzerdefinierter Name für Administrator-API-Schlüssel vorhanden. Verweise auf den Schlüssel sind feste Zeichenfolgen, entweder `primary` oder `secondary`. 
+Werte für die API-Schlüssel werden vom Dienst generiert. Sie können keinen benutzerdefinierten Schlüssel für die Verwendung in Azure Cognitive Search bereitstellen. Ebenso ist kein benutzerdefinierter Name für Administrator-API-Schlüssel vorhanden. Verweise auf den Schlüssel sind feste Zeichenfolgen, entweder `primary` oder `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,9 +217,9 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Erstellen oder Löschen von Abfrageschlüsseln
 
-Mit [**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) werden Abfrage-[API-Schlüssel](search-security-api-keys.md) für schreibgeschützten Zugriff von Client-Apps auf einen Azure Search-Index erstellt. Abfrageschlüssel werden zum Authentifizieren bei einem bestimmten Index für das Abrufen von Suchergebnissen verwendet. Abfrageschlüssel gewähren keinen schreibgeschützten Zugriff auf andere Elemente im Dienst, z.B. Index, Datenquelle oder Indexer.
+Mit [**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) werden Abfrage-[API-Schlüssel](search-security-api-keys.md) für schreibgeschützten Zugriff von Client-Apps auf einen Azure Cognitive Search-Index erstellt. Abfrageschlüssel werden zum Authentifizieren bei einem bestimmten Index für das Abrufen von Suchergebnissen verwendet. Abfrageschlüssel gewähren keinen schreibgeschützten Zugriff auf andere Elemente im Dienst, z.B. Index, Datenquelle oder Indexer.
 
-Sie können keinen Schlüssel für die Verwendung in Azure Search bereitstellen. API-Schlüssel werden vom Dienst generiert.
+Sie können keinen Schlüssel für die Verwendung in Azure Cognitive Search bereitstellen. API-Schlüssel werden vom Dienst generiert.
 
 ```azurepowershell-interactive
 New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -Name <query-key-name> 
@@ -257,7 +257,7 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 
 Erstellen Sie einen [Index](search-what-is-an-index.md), verwenden Sie das Portal, REST-APIs oder das .NET SDK zum [Abfragen eines Index](search-query-overview.md).
 
-* [Erstellen eines Azure Search-Index im Azure-Portal](search-create-index-portal.md)
+* [Erstellen eines Indexes für Azure Cognitive Search im Azure-Portal](search-create-index-portal.md)
 * [Einrichten eines Indexers zum Laden von Daten anderer Dienste](search-indexer-overview.md)
-* [Abfragen eines Azure Search-Index per Suchexplorer im Azure-Portal](search-explorer.md)
-* [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md)
+* [Abfragen eines Azure Cognitive Search-Indexes per Suchexplorer im Azure-Portal](search-explorer.md)
+* [Verwendung von Azure Cognitive Search in .NET](search-howto-dotnet-sdk.md)

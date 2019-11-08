@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390161"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73499237"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -125,7 +125,7 @@ Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen Enterprise, eine M
 
 ## <a name="when-the-reservation-term-expires"></a>Wann das Ende des Reservierungszeitraums erreicht ist
 
-Am Ende des Reservierungszeitraums läuft der Abrechnungsrabatt ab. Für den virtuellen Computer, die SQL-Datenbank, Azure Cosmos DB oder andere Ressourcen wird der Preis für die nutzungsbasierte Bezahlung berechnet. Azure-Reservierungen werden nicht automatisch verlängert. Zur weiteren Nutzung des Abrechnungsrabatts müssen Sie eine neue Reservierung für Dienste und Software erwerben, die für Reservierungen berechtigt sind.
+Am Ende der Reservierungslaufzeit läuft der Abrechnungsrabatt ab, und die Ressourcen werden zu den Preisen für die nutzungsbasierte Bezahlung abgerechnet. Die Reservierungen werden standardmäßig nicht automatisch verlängert. Sie können die automatische Verlängerung einer Reservierung aktivieren, indem Sie die Option in den Verlängerungseinstellungen auswählen. Bei aktivierter automatischer Verlängerung wird nach Ablauf der vorhandenen Reservierung eine Ersatzreservierung erworben. Die Ersatzreservierung hat standardmäßig die gleichen Attribute wie die ablaufende Reservierung. Fakturierungsintervall, Laufzeit und Menge können jedoch optional in den Verlängerungseinstellungen geändert werden. Alle Benutzer mit Besitzerzugriff auf die Reservierung und das Abonnement, das für die Abrechnung verwendet wird, können eine Verlängerung einrichten.  
 
 ## <a name="discount-applies-to-different-sizes"></a>Rabatt gilt für verschiedene Größen
 

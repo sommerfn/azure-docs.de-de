@@ -7,20 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 55ded9a733baaac7fbc78621bd625d57d1d37ad1
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8ebd91f8f02ad7eacd8440b34a31b78f5cac5741
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255468"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472627"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
 Sie können eine Azure Load Balancer-Instanz erstellen und verwenden, um den Zugriff auf Ihre Anwendungen in Azure Kubernetes Service (AKS) zu ermöglichen. Ein in AKS ausgeführter Lastenausgleich kann als interner oder externer Lastenausgleich verwendet werden. Bei einem internen Lastenausgleich können nur Anwendungen, die im gleichen virtuellen Netzwerk ausgeführt werden wie der AKS-Cluster, auf einen Kubernetes-Dienst zugreifen. Ein externer Lastenausgleich erhält mindestens eine öffentliche IP-Adresse für eingehenden Datenverkehr, um externe Zugriffe auf einen Kubernetes-Dienst über die öffentlichen IP-Adressen zu ermöglichen.
 
-Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Standardmäßig wird die SKU *Basic* verwendet, wenn in AKS ein Lastenausgleich unter Verwendung eines Dienstmanifests erstellt wird. Bei Verwendung eines Lastenausgleichs mit einer SKU vom Typ *Standard* stehen zusätzliche Features und Funktionen zur Verfügung (etwa ein größerer Back-End-Pool und Verfügbarkeitszonen). Wichtig: Machen Sie sich mit den Unterschieden zwischen *Standard* und *Basic* vertraut, bevor Sie sich für einen Lastenausgleich entscheiden. Nach Erstellung eines AKS-Clusters kann die Lastenausgleichs-SKU für diesen Cluster nicht mehr geändert werden. Weitere Informationen zu den SKUs *Basic* und *Standard* finden Sie unter [Vergleich der Load Balancer-SKUs][azure-lb-comparison].
-
-In diesem Artikel erfahren Sie, wie Sie eine Azure Load Balancer-Instanz mit der SKU *Standard* mit Azure Kubernetes Service (AKS) erstellen und verwenden.
+Azure Load Balancer ist in zwei SKUs verfügbar: *Basic* und *Standard*. Beim Erstellen eines AKS-Clusters wird normalerweise die SKU vom Typ *Standard* verwendet. Bei Verwendung eines Lastenausgleichs mit einer SKU vom Typ *Standard* stehen zusätzliche Features und Funktionen zur Verfügung (etwa ein größerer Back-End-Pool und Verfügbarkeitszonen). Wichtig: Machen Sie sich mit den Unterschieden zwischen *Standard* und *Basic* vertraut, bevor Sie sich für einen Lastenausgleich entscheiden. Nach Erstellung eines AKS-Clusters kann die Lastenausgleichs-SKU für diesen Cluster nicht mehr geändert werden. Weitere Informationen zu den SKUs *Basic* und *Standard* finden Sie unter [Vergleich der Load Balancer-SKUs][azure-lb-comparison].
 
 Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Azure Load Balancer vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts] und [Was versteht man unter Azure Load Balancer?][azure-lb].
 
@@ -31,10 +29,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens die Version 2.0.74 der Azure-Befehlszeilenschnittstelle verwenden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
+In diesem Artikel wird davon ausgegangen, dass Sie über einen AKS-Cluster mit der Azure Load Balancer-SKU *Standard* verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Der AKS-Clusterdienstprinzipal benötigt die Berechtigung zum Verwalten von Netzwerkressourcen, wenn Sie ein bestehendes Subnetz oder eine vorhandene Ressourcengruppe verwenden. Im Allgemeinen weisen Sie die Rolle *Netzwerkmitwirkender* Ihrem Dienstprinzipal für die delegierten Ressourcen zu. Weitere Informationen zu Berechtigungen finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][aks-sp].
-
-Sie müssen einen AKS-Cluster erstellen, der die SKU für den Lastenausgleich auf *Standard* festlegt anstatt auf den Standardwert *Basic*.
+Der AKS-Clusterdienstprinzipal benötigt auch die Berechtigung zum Verwalten von Netzwerkressourcen, wenn Sie ein bestehendes Subnetz oder eine vorhandene Ressourcengruppe verwenden. Im Allgemeinen weisen Sie die Rolle *Netzwerkmitwirkender* Ihrem Dienstprinzipal für die delegierten Ressourcen zu. Weitere Informationen zu Berechtigungen finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen][aks-sp].
 
 ### <a name="limitations"></a>Einschränkungen
 
@@ -48,220 +45,11 @@ Wenn Sie AKS-Cluster erstellen und verwalten, die einen Lastenausgleich mit der 
 * Das Definieren der Lastenausgleichs-SKU kann nur durchgeführt werden, wenn Sie einen AKS-Cluster erstellen. Nach der Erstellung eines AKS-Clusters kann die Lastenausgleichs-SKU nicht mehr geändert werden.
 * Sie können pro Cluster nur eine einzelne Lastenausgleichs-SKU verwenden.
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurieren des Load Balancers als internen Lastenausgleich
 
-Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. Wenn Sie eine Ressourcengruppe erstellen, müssen Sie einen Speicherort angeben. An diesem Speicherort werden die Metadaten der Ressourcengruppe gespeichert. Darüber hinaus werden dort die Ressourcen in Azure ausgeführt, wenn Sie während der Ressourcenerstellung keine andere Region angeben. Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe.
+Sie können den Lastenausgleich auch als internen Lastenausgleich konfigurieren und keine öffentliche IP-Adresse verfügbar machen. Wenn Sie den Lastenausgleich als intern konfigurieren möchten, müssen Sie dem Dienst *LoadBalancer* die Anmerkung `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` hinzufügen. Ein exemplarisches YAML-Manifest sowie weitere Details zum internen Lastenausgleich finden Sie [hier][internal-lb-yaml].
 
-Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
-
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
-
-Die folgende Beispielausgabe zeigt, dass die Ressourcengruppe erfolgreich erstellt wurde:
-
-```json
-{
-  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup",
-  "location": "eastus",
-  "managedBy": null,
-  "name": "myResourceGroup",
-  "properties": {
-    "provisioningState": "Succeeded"
-  },
-  "tags": null,
-  "type": null
-}
-```
-
-## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
-Wenn Sie einen AKS-Cluster verwenden möchten, der einen Lastenausgleich mit der SKU *Standard* unterstützt, muss der Parameter *load-balancer-sku* des Clusters auf *standard* festgelegt werden. Dieser Parameter sorgt bei der Clustererstellung dafür, dass ein Lastenausgleich mit der SKU *Standard* erstellt wird. Wenn Sie in Ihrem Cluster einen Dienst vom Typ *LoadBalancer* ausführen, wird die Konfiguration des Lastenausgleichs mit der *Standard*-SKU mit der Konfiguration des Diensts aktualisiert. Erstellen Sie mithilfe des Befehls [az aks create][az-aks-create] einen AKS-Cluster namens *myAKSCluster*.
-
-> [!NOTE]
-> Die Eigenschaft *load-balancer-sku* kann nur bei der Clustererstellung verwendet werden. Nach der Erstellung eines AKS-Clusters kann die Lastenausgleichs-SKU nicht mehr geändert werden. Darüber hinaus kann pro Cluster immer nur eine einzelne Art von Lastenausgleichs-SKU verwendet werden.
-> 
-> Wenn Sie Ihre eigenen öffentlichen IP-Adressen verwenden möchten, verwenden Sie die Parameter *load-balancer-outbound-ips* oder *load-balancer-outbound-ip-prefixes*. Beide Parameter können auch beim [Aktualisieren des Clusters](#optional---provide-your-own-public-ips-or-prefixes-for-egress) verwendet werden.
-
-```azurecli-interactive
-az aks create \
-    --resource-group myResourceGroup \
-    --name myAKSCluster \
-    --vm-set-type VirtualMachineScaleSets \
-    --node-count 1 \
-    --load-balancer-sku standard \
-    --generate-ssh-keys
-```
-
-Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben.
-
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
-
-Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeilenclient [kubectl][kubectl]. Bei Verwendung von Azure Cloud Shell ist `kubectl` bereits installiert. Verwenden Sie für die lokale Installation von `kubectl` den Befehl [az aks install-cli][az-aks-install-cli]:
-
-```azurecli
-az aks install-cli
-```
-
-Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
-
-```azurecli-interactive
-az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
-```
-
-Verwenden Sie zum Überprüfen der Verbindung mit Ihrem Cluster den Befehl [kubectl get][kubectl-get], um eine Liste der Clusterknoten zu erhalten.
-
-```azurecli-interactive
-kubectl get nodes
-```
-
-Die folgende Beispielausgabe zeigt den in den vorherigen Schritten erstellten Knoten. Vergewissern Sie sich, dass der Knoten den Status *Bereit* hat:
-
-```
-NAME                       STATUS   ROLES   AGE     VERSION
-aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.13.10
-```
-
-## <a name="verify-your-cluster-uses-the-standard-sku"></a>Vergewissern, dass der Cluster die SKU *Standard* verwendet
-
-Verwenden Sie den Befehl [az aks show][az-aks-show], um die Konfiguration Ihres Clusters anzuzeigen.
-
-```console
-$ az aks show --resource-group myResourceGroup --name myAKSCluster
-
-{
-  "aadProfile": null,
-  "addonProfiles": null,
-   ...
-   "networkProfile": {
-    "dnsServiceIp": "10.0.0.10",
-    "dockerBridgeCidr": "172.17.0.1/16",
-    "loadBalancerSku": "standard",
-    ...
-```
-
-Vergewissern Sie sich, dass die Eigenschaft *loadBalancerSku* den Wert *standard* hat.
-
-## <a name="use-the-load-balancer"></a>Verwenden des Lastenausgleichs
-
-Erstellen Sie ein Dienstmanifest mit dem Diensttyp *LoadBalancer*, um den Lastenausgleich für Ihren Cluster zu verwenden. Erstellen Sie ein weiteres Manifest mit einer in Ihrem Cluster ausgeführten Beispielanwendung, um zu zeigen, dass der Lastenausgleich funktioniert. Diese Beispielanwendung wird über den Lastenausgleich verfügbar gemacht und kann über einen Browser angezeigt werden.
-
-Erstellen Sie ein Manifest namens `sample.yaml`, wie im folgenden Beispiel gezeigt:
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-back
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-back
-  template:
-    metadata:
-      labels:
-        app: azure-vote-back
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-back
-        image: redis
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 6379
-          name: redis
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-back
-spec:
-  ports:
-  - port: 6379
-  selector:
-    app: azure-vote-back
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: azure-vote-front
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: azure-vote-front
-  template:
-    metadata:
-      labels:
-        app: azure-vote-front
-    spec:
-      nodeSelector:
-        "beta.kubernetes.io/os": linux
-      containers:
-      - name: azure-vote-front
-        image: microsoft/azure-vote-front:v1
-        resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
-        ports:
-        - containerPort: 80
-        env:
-        - name: REDIS
-          value: "azure-vote-back"
-```
-
-Das obige Manifest konfiguriert zwei Bereitstellungen: *azure-vote-front* und *azure-vote-back*. Erstellen Sie ein Manifest namens `standard-lb.yaml`, wie im folgenden Beispiel zu sehen, um die Bereitstellung *azure-vote-front* so zu konfigurieren, dass sie unter Verwendung des Lastenausgleichs verfügbar gemacht wird:
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-vote-front
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-vote-front
-```
-
-Der Dienst *azure-vote-front* verwendet den Typ *LoadBalancer*, um den Lastenausgleich in Ihrem AKS-Cluster für die Verbindungsherstellung mit der Bereitstellung *azure-vote-front* zu konfigurieren.
-
-Stellen Sie die Beispielanwendung und den Lastenausgleich mithilfe des Befehls [kubectl apply][kubectl-apply] bereit, und geben Sie den Namen Ihrer YAML-Manifeste an:
-
-```console
-kubectl apply -f sample.yaml
-kubectl apply -f standard-lb.yaml
-```
-
-Der Lastenausgleich mit der SKU *Standard* ist nun konfiguriert, um die Beispielanwendung verfügbar zu machen. Verwenden Sie [kubectl get][kubectl-get], um die Dienstdetails von *azure-vote-front* (einschließlich der öffentlichen IP-Adresse des Lastenausgleichs) anzuzeigen. Die öffentliche IP-Adresse des Lastenausgleichs befindet sich in der Spalte *EXTERNAL-IP* (EXTERNE IP-ADRESSE). Es dauert möglicherweise ein oder zwei Minuten, bis sich die IP-Adresse von *\<pending\>* (<Ausstehend>) in eine tatsächliche externe IP-Adresse ändert, wie im folgenden Beispiel gezeigt:
-
-```
-$ kubectl get service azure-vote-front
-
-NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
-azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP   16s
-```
-
-Navigieren Sie in einem Browser zu der öffentlichen IP-Adresse. Daraufhin sollte die Beispielanwendung angezeigt werden. Im obigen Beispiel lautet die öffentliche IP-Adresse `52.179.23.131`.
-
-![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
-
-> [!NOTE]
-> Sie können den Lastenausgleich auch als internen Lastenausgleich konfigurieren und keine öffentliche IP-Adresse verfügbar machen. Wenn Sie den Lastenausgleich als intern konfigurieren möchten, müssen Sie dem Dienst *LoadBalancer* die Anmerkung `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` hinzufügen. Ein exemplarisches YAML-Manifest sowie weitere Details zum internen Lastenausgleich finden Sie [hier][internal-lb-yaml].
-
-## <a name="optional---scale-the-number-of-managed-public-ips"></a>Optional: Skalieren der Anzahl der verwalteten öffentlichen IP-Adressen
+## <a name="scale-the-number-of-managed-public-ips"></a>Skalieren der Anzahl der verwalteten öffentlichen IP-Adressen
 
 Wenn Sie einen *Standard*-SKU-Lastenausgleich mit verwalteten ausgehenden öffentlichen IP-Adressen verwenden, die standardmäßig erstellt werden, können Sie die Anzahl verwalteter ausgehender öffentlicher IP-Adressen mit dem *load-balancer-managed-ip-count*-Parameter skalieren.
 
@@ -278,7 +66,7 @@ Im obigen Beispiel wird die Anzahl der verwalteten ausgehenden öffentlichen IP-
 
 Sie können auch den Parameter *load-balancer-managed-ip-count* verwenden, um die anfängliche Anzahl von verwalteten ausgehenden öffentlichen IP-Adressen beim Erstellen des Clusters festzulegen. Dazu fügen Sie den Parameter `--load-balancer-managed-outbound-ip-count` an und legen ihn auf den gewünschten Wert fest. Die Standardanzahl von verwalteten ausgehenden öffentlichen IP-Adressen beträgt 1.
 
-## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Optional: Angeben Ihrer eigenen öffentlichen IP-Adressen oder Präfixe für ausgehenden Datenverkehr
+## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Angeben Ihrer eigenen öffentlichen IP-Adressen oder Präfixe für ausgehenden Datenverkehr
 
 Wenn Sie einen *Standard*-SKU-Lastenausgleich verwenden, erstellt der AKS-Cluster automatisch eine öffentliche IP-Adresse in derselben Ressourcengruppe, die für den AKS-Cluster erstellt wurde, und weist die öffentliche IP-Adresse dem *Standard*-SKU-Lastenausgleich zu. Alternativ können Sie Ihre eigene öffentliche IP-Adresse zum Zeitpunkt der Clustererstellung zuweisen, oder Sie können die Lastenausgleichseigenschaften eines vorhandenen Clusters aktualisieren.
 
@@ -336,7 +124,7 @@ Möglicherweise möchten Sie zum Zeitpunkt der Clustererstellung Ihre eigenen IP
 
 Verwenden Sie den Befehl *az aks create* mit dem Parameter *load-balancer-outbound-ips*, um einen neuen Cluster mit Ihren öffentlichen IP-Adressen zu Beginn zu erstellen.
 
-```
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -349,7 +137,7 @@ az aks create \
 
 Verwenden Sie den Befehl *az aks create* mit dem Parameter *load-balancer-outbound-ip-prefixes*, um einen neuen Cluster mit Ihren öffentlichen IP-Präfixen zu Beginn zu erstellen.
 
-```
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
@@ -358,15 +146,6 @@ az aks create \
     --load-balancer-sku standard \
     --generate-ssh-keys \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
-```
-
-## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>Bereinigen der Konfiguration des Lastenausgleichs mit der SKU „Standard“
-
-Verwenden Sie [kubectl delete][kubectl-delete], um die Beispielanwendung und die Konfiguration des Lastenausgleichs zu entfernen:
-
-```console
-kubectl delete -f sample.yaml
-kubectl delete -f standard-lb.yaml
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -408,4 +187,3 @@ Weitere Informationen zu Kubernetes-Diensten finden Sie in der entsprechenden [D
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-

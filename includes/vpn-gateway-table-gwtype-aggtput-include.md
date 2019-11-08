@@ -5,27 +5,38 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 65c1011e6e005c190d1ae5d51fdd009f66a20956
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 17499fad64c8ae313f7a544015a04cc20e8bbabe
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70919681"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495709"
 ---
-|**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br>-IKEv2/OpenVPN-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** | **BGP** | **Zonenredundant** |
-|---       | ---        | ---       | ---            | ---       | --- | --- |
-|**Basic** | Maximal 10    | Maximal 128  | Nicht unterstützt  | 100 MBit/s  | Nicht unterstützt| Nein |
-|**VpnGw1**| Maximal 30*   | Maximal 128  | Maximal 250       | 650 MBit/s  | Unterstützt | Nein |
-|**VpnGw2**| Maximal 30*   | Maximal 128  | Maximal 500       | 1 GBit/s    | Unterstützt | Nein |
-|**VpnGw3**| Maximal 30*   | Maximal 128  | Maximal 1000      | 1,25 GBit/s | Unterstützt | Nein |
-|**VpnGw1AZ**| Maximal 30*   | Maximal 128  | Maximal 250       | 650 MBit/s  | Unterstützt | Ja |
-|**VpnGw2AZ**| Maximal 30*   | Maximal 128  | Maximal 500       | 1 GBit/s    | Unterstützt | Ja |
-|**VpnGw3AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 1,25 GBit/s | Unterstützt | Ja |
+|**VPN<br>Gateway-<br>Generation** |**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br>-IKEv2/OpenVPN-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** | **BGP** | **Zonenredundant** |
+|---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
+|**Generation 1**|**Basic**   | Maximal 10    | Maximal 128  | Nicht unterstützt  | 100 MBit/s  | Nicht unterstützt| Nein |
+|**Generation 1**|**VpnGw1**  | Maximal 30*   | Maximal 128  | Maximal 250       | 650 MBit/s  | Unterstützt | Nein |
+|**Generation 1**|**VpnGw2**  | Maximal 30*   | Maximal 128  | Maximal 500       | 1 GBit/s    | Unterstützt | Nein |
+|**Generation 1**|**VpnGw3**  | Maximal 30*   | Maximal 128  | Maximal 1000      | 1,25 GBit/s | Unterstützt | Nein |
+|**Generation 1**|**VpnGw1AZ**| Maximal 30*   | Maximal 128  | Maximal 250       | 650 MBit/s  | Unterstützt | Ja |
+|**Generation 1**|**VpnGw2AZ**| Maximal 30*   | Maximal 128  | Maximal 500       | 1 GBit/s    | Unterstützt | Ja |
+|**Generation 1**|**VpnGw3AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 1,25 GBit/s | Unterstützt | Ja |
+|        |            |            |           |                |           |           |     |
+|**Generation 2**|**VpnGw2**  | Maximal 30*   | Maximal 128  | Maximal 500       | 1,25 GBit/s | Unterstützt | Nein |
+|**Generation 2**|**VpnGw3**  | Maximal 30*   | Maximal 128  | Maximal 1000      | 2,5 GBit/s  | Unterstützt | Nein |
+|**Generation 2**|**VpnGw4**  | Maximal 30*   | Maximal 128  | Maximal 1000      | 5 GBit/s    | Unterstützt | Nein |
+|**Generation 2**|**VpnGw5**  | Maximal 30*   | Maximal 128  | Maximal 1000      | 10 GBit/s   | Unterstützt | Nein |
+|**Generation 2**|**VpnGw2AZ**| Maximal 30*   | Maximal 128  | Maximal 500       | 1,25 GBit/s | Unterstützt | Ja |
+|**Generation 2**|**VpnGw3AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 2,5 GBit/s  | Unterstützt | Ja |
+|**Generation 2**|**VpnGw4AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 5 GBit/s    | Unterstützt | Ja |
+|**Generation 2**|**VpnGw5AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 10 GBit/s   | Unterstützt | Ja |
 
 (\*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
+
+* Größenänderungen für VpnGw-SKUs sind innerhalb der gleichen Generation möglich. Dies gilt jedoch nicht für die Basic-SKU. Die Basic-SKU ist eine Legacy-SKU und unterliegt Featureeinschränkungen. Wenn Sie von der Basic-SKU zu einer anderen VpnGw-SKU wechseln möchten, müssen Sie das VPN-Gateway der Basic-SKU löschen und ein neues Gateway mit der gewünschten Generation und SKU-Größe erstellen.
 
 * Diese Verbindungsgrenzwerte sind voneinander getrennt. Sie können beispielsweise 128 SSTP-Verbindungen und 250 IKEv2-Verbindungen in der SKU „VpnGw1“ nutzen.
 
@@ -33,19 +44,15 @@ ms.locfileid: "70919681"
 
 * Informationen zum SLA (Vereinbarung zum Servicelevel) finden Sie auf der [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/)-Seite.
 
-* „VpnGw1“, „VpnGw2“, „VpnGw3“, „VpnGw1AZ“, „VpnGw2AZ“ und „VpnGw3AZ“ werden nur für VPN-Gateways unterstützt, die das Resource Manager-Bereitstellungsmodell verwenden.
+* Mit einem einzelnen Tunnel kann maximal ein Durchsatz von 1 GBit/s erzielt werden. Der Benchmark für den aggregierten Durchsatz in der obigen Tabelle basiert auf Messungen für mehrere, über ein einzelnes Gateway aggregierte Tunnel. Der Benchmark für den aggregierten Durchsatz für ein VPN-Gateway besteht aus einer Kombination aus S2S und P2S. **Bei zahlreichen P2S-Verbindungen kann eine S2S-Verbindung aufgrund von Durchsatzeinschränkungen beeinträchtigt sein.** Aufgrund der Bedingungen für den Internetdatenverkehr und dem Verhalten Ihrer Anwendung kann der Benchmark für den aggregierten Durchsatz nicht garantiert werden.
 
-* Die Basic-SKU wird als Legacy-SKU betrachtet. Für die Basic-SKU gelten bestimmte Featurebeschränkungen. Die Größe eines Gateways mit einer Basic-SKU kann nicht auf eine der neuen Gateway-SKUs festgelegt werden. Stattdessen müssen Sie zu einer neuen SKU wechseln und dazu Ihr VPN-Gateway löschen und neu erstellen. Vergewissern Sie sich vor der Verwendung der Basic-SKU, dass das von Ihnen benötigte Feature unterstützt wird.
+* Damit unsere Kunden die relative Leistung von SKUs mit unterschiedlichen Algorithmen besser nachvollziehen können, haben wir für die Leistungsermittlung die öffentlich verfügbaren Tools iperf und CTSTraffic verwendet. Die folgende Tabelle enthält die Ergebnisse von Leistungstests für VpnGw-SKUs der ersten Generation. Wie Sie sehen, wird die beste Leistung erzielt, wenn sowohl für die IPSec-Verschlüsselung als auch für die Integrität der GCMAES256-Algorithmus verwendet wird. Bei Verwendung von AES256 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde eine durchschnittliche Leistung erzielt. Bei Verwendung von DES3 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde die geringste Leistung erzielt.
 
-* Der Benchmark für den aggregierten Durchsatz basiert auf Messungen von mehreren, durch ein Gateway aggregierten Tunneln. Der Benchmark für den aggregierten Durchsatz für ein VPN-Gateway besteht aus einer Kombination aus S2S und P2S. **Bei zahlreichen P2S-Verbindungen kann eine S2S-Verbindung aufgrund von Durchsatzeinschränkungen beeinträchtigt sein.** Aufgrund der Bedingungen für den Internetdatenverkehr und dem Verhalten Ihrer Anwendung kann der Benchmark für den aggregierten Durchsatz nicht garantiert werden.
-
-* Damit unsere Kunden die relative Leistung von VpnGw-SKUs besser nachvollziehen können, haben wir zum Messen der Leistung die öffentlich verfügbaren Tools Iperf und CtsTraffic verwendet. Die folgende Tabelle enthält die Ergebnisse von Leistungstests mit verschiedenen Algorithmen. Wie Sie sehen, wird die beste Leistung erzielt, wenn sowohl für die IPSec-Verschlüsselung als auch für die Integrität der GCMAES256-Algorithmus verwendet wird. Bei Verwendung von AES256 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde eine durchschnittliche Leistung erzielt. Bei Verwendung von DES3 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde die geringste Leistung erzielt.
-
-|**SKU**   | **Verwendete<br>Algorithmen** | **Ermittelter<br>Durchsatz** | **Ermittelte<br>Pakete pro Sekunde** |
-|---       | ---                 | ---            | ---                    |
-|**VpnGw1**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 650 MBit/s<br>500 MBit/s<br>120 MBit/s   | 58.000<br>50.000<br>50.000|
-|**VpnGw2**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1 GBit/s<br>500 MBit/s<br>120 MBit/s | 90.000<br>80.000<br>55.000|
-|**VpnGw3**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1,25 GBit/s<br>550 MBit/s<br>120 MBit/s | 105.000<br>90.000<br>60.000|
-|**VpnGw1AZ**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 650 MBit/s<br>500 MBit/s<br>120 MBit/s   | 58.000<br>50.000<br>50.000|
-|**VpnGw2AZ**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1 GBit/s<br>500 MBit/s<br>120 MBit/s | 90.000<br>80.000<br>55.000|
-|**VpnGw3AZ**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1,25 GBit/s<br>550 MBit/s<br>120 MBit/s | 105.000<br>90.000<br>60.000|
+|**Generation**|**SKU**   | **Verwendete<br>Algorithmen** | **Ermittelter<br>Durchsatz** | **Ermittelte<br>Pakete pro Sekunde** |
+|---           |---       | ---                 | ---            | ---                    |
+|**Generation 1**|**VpnGw1**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 650 MBit/s<br>500 MBit/s<br>120 MBit/s   | 58.000<br>50.000<br>50.000|
+|**Generation 1**|**VpnGw2**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1 GBit/s<br>500 MBit/s<br>120 MBit/s | 90.000<br>80.000<br>55.000|
+|**Generation 1**|**VpnGw3**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1,25 GBit/s<br>550 MBit/s<br>120 MBit/s | 105.000<br>90.000<br>60.000|
+|**Generation 1**|**VpnGw1AZ**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 650 MBit/s<br>500 MBit/s<br>120 MBit/s   | 58.000<br>50.000<br>50.000|
+|**Generation 1**|**VpnGw2AZ**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1 GBit/s<br>500 MBit/s<br>120 MBit/s | 90.000<br>80.000<br>55.000|
+|**Generation 1**|**VpnGw3AZ**| GCMAES256<br>AES256 und SHA256<br>DES3 und SHA256| 1,25 GBit/s<br>550 MBit/s<br>120 MBit/s | 105.000<br>90.000<br>60.000|

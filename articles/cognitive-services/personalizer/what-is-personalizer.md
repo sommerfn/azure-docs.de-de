@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203782"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467194"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
-Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
+Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren gemeinschaftlichem Verhalten lernen können.
 
 * Stellen Sie Informationen über Ihre Benutzer und Inhalt bereit, und empfangen Sie die Top-Aktion, um Sie Ihren Benutzern anzuzeigen. 
 * Vor der Verwendung der Personalisierung müssen Sie keine Daten bereinigen oder bezeichnen.
 * Senden Sie Feedback an die Personalisierung, wenn es Ihnen am besten passt. 
 * Zeigen Sie Echtzeitanalysen an. 
-* Verwenden Sie die Personalisierung als Teil eines größeren Data Science-Vorgangs zum Überprüfen vorhandener Experimente.
+
+Die Funktionsweise der Personalisierung wird [hier](https://personalizercontentdemo.azurewebsites.net/) veranschaulicht.
 
 ## <a name="how-does-personalizer-work"></a>Wie funktioniert die Personalisierung?
 
@@ -37,9 +38,9 @@ Die Personalisierung verwendet Machine Learning-Modelle, um zu ermitteln, welche
 
 1. Wählen Sie eine zu personalisierende Benutzeroberfläche in Ihrer App aus.
 1. Erstellen und konfigurieren sie den Personalisierungsdienst im Azure-Portal. Jede Instanz ist eine Personalisierungsschleife.
-1. Verwenden Sie das SDK zum Aufrufen der Personalisierung mit Informationen (_Features_) zu Ihren Benutzern und dem Inhalt (_Aktionen_). Sie müssen vor der Verwendung der Personalisierung keine bereinigten, bezeichneten Daten bereitstellen. 
+1. Verwenden Sie die [Rangfolge-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank), um die Personalisierung mit Informationen (_Features_) zu Ihren Benutzern und dem Inhalt (_Aktionen_) aufzurufen. Sie müssen vor der Verwendung der Personalisierung keine bereinigten, bezeichneten Daten bereitstellen. APIs können direkt oder über SDKs aufgerufen werden, die für verschiedene Programmiersprachen zur Verfügung stehen.
 1. Zeigen Sie dem Benutzer in der Clientanwendung die von der Personalisierung ausgewählte Aktion an.
-1. Verwenden Sie das SDK, um an die Personalisierung Feedback dazu zu senden, ob der Benutzer die von der Personalisierung vorgeschlagene Aktion ausgewählt hat. Dies ist eine _[Relevanzbewertung](concept-rewards.md)_ .
+1. Verwenden Sie die [Relevanz-API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward), um die Personalisierung mittels Feedback darüber zu informieren, ob der Benutzer die von der Personalisierung vorgeschlagene Aktion ausgewählt hat. Dies ist eine _[Relevanzbewertung](concept-rewards.md)_ .
 1. Zeigen Sie die Analyse im Azure-Portal an, um auszuwerten, wie das System funktioniert und wie Ihre Daten die Personalisierung unterstützen.
 
 ## <a name="where-can-i-use-personalizer"></a>Wo kann ich die Personalisierung verwenden?

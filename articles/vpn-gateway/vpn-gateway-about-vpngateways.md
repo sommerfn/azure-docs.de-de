@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 05/22/2019
+ms.date: 10/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: b4ad8697997a8c90a6548c66819bfe790c8235e3
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 82e9003036f67ecd3b3ecd7d8ab6cd434fcfc438
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798992"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73495695"
 ---
 # <a name="what-is-vpn-gateway"></a>Was ist VPN Gateway?
 
@@ -21,11 +21,13 @@ Ein VPN-Gateway ist eine spezielle Art von Gateway für virtuelle Netzwerke, das
 
 ## <a name="whatis"></a>Was ist ein Gateway für virtuelle Netzwerke?
 
-Ein Gateway für virtuelle Netzwerke besteht aus mindestens zwei virtuellen Computern, die für ein spezielles von Ihnen erstelltes Subnetz bereitgestellt werden, das als *Gatewaysubnetz* bezeichnet wird. Die virtuellen Computer im Gatewaysubnetz werden erstellt, wenn Sie das Gateway für virtuelle Netzwerke erstellen. Virtuelle Computer im Gateway für virtuelle Netzwerke werden so konfiguriert, dass sie spezifische Routingtabellen und Gatewaydienste für das Gateway enthalten. Sie können die virtuellen Computer, die Teil des Gateways für virtuelle Netzwerke sind, nicht direkt konfigurieren, und im Gatewaysubnetz dürfen keine weiteren Ressourcen bereitgestellt werden.
+Ein Gateway für virtuelle Netzwerke besteht aus mindestens zwei VMs, die in einem von Ihnen erstellten speziellen Subnetz namens *Gatewaysubnetz* bereitgestellt werden. VMs für das Gateway für virtuelle Netzwerke enthalten Routingtabellen und führen bestimmte Gatewaydienste aus. Diese VMs werden beim Erstellen des Gateways für virtuelle Netzwerke erstellt. Sie können die VMs, die Teil des Gateways für virtuelle Netzwerke sind, nicht direkt konfigurieren.
+
+Eine Einstellung, die Sie für ein Gateway für virtuelle Netzwerke konfigurieren, ist der Gatewaytyp. Der Gatewaytyp gibt an, wie das Gateway für virtuelle Netzwerke verwendet wird und welche Aktionen es ausführt. Der Gatewaytyp „VPN“ gibt an, dass es sich beim Typ des erstellten Gateways für virtuelle Netzwerke um ein VPN- statt um ein ExpressRoute-Gateway handelt. Ein virtuelles Netzwerk kann zwei Gateways für virtuelle Netzwerke haben: ein VPN-Gateway und ein ExpressRoute-Gateway. Dies ist bei [parallel bestehenden](#coexisting) Verbindungskonfigurationen der Fall. Weitere Informationen finden Sie unter [Gatewaytypen](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 
 VPN-Gateways können in Azure-Verfügbarkeitszonen bereitgestellt werden. So erzielen Sie Stabilität, Skalierbarkeit und eine höhere Verfügbarkeit für die Gateways des virtuellen Netzwerks. Durch die Bereitstellung von Gateways in Azure-Verfügbarkeitszonen werden die Gateways innerhalb einer Region physisch und logisch getrennt. Gleichzeitig wird die Konnektivität Ihres lokalen Netzwerks mit Azure vor Ausfällen auf Zonenebene geschützt. Unter [Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen](about-zone-redundant-vnet-gateways.md) erfahren Sie mehr dazu.
 
-Die Erstellung eines Gateways des virtuellen Netzwerks kann bis zu 45 Minuten dauern. Bei der Erstellung des Gateways des virtuellen Netzwerks werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den von Ihnen angegebenen Einstellungen konfiguriert. Eine der Einstellungen, die Sie konfigurieren, ist der Gatewaytyp. Der Gatewaytyp „VPN“ gibt an, dass es sich beim Typ des erstellten Gateways des virtuellen Netzwerks um ein VPN-Gateway handelt. Nach der Erstellung eines VPN-Gateways können Sie eine IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem anderen VPN-Gateway (VNet-to-VNet) oder eine standortübergreifende IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem lokalen VPN-Gerät ( Site-to-Site) erstellen. Sie können auch eine Point-to-Site-VPN-Verbindung (VPN über OpenVPN, IKEv2 oder SSTP) erstellen und so von einem Remotestandort aus (beispielsweise auf einer Konferenz oder zu Hause) eine Verbindung mit Ihrem virtuellen Netzwerk herstellen.
+Die Erstellung eines Gateways des virtuellen Netzwerks kann bis zu 45 Minuten dauern. Bei der Erstellung des Gateways des virtuellen Netzwerks werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den von Ihnen angegebenen Einstellungen konfiguriert. Nach der Erstellung eines VPN-Gateways können Sie eine IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem anderen VPN-Gateway (VNet-to-VNet) oder eine standortübergreifende IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem lokalen VPN-Gerät ( Site-to-Site) erstellen. Sie können auch eine Point-to-Site-VPN-Verbindung (VPN über OpenVPN, IKEv2 oder SSTP) erstellen und so von einem Remotestandort aus (beispielsweise in einer Konferenz oder zu Hause) eine Verbindung mit Ihrem virtuellen Netzwerk herstellen.
 
 ## <a name="configuring"></a>Konfigurieren von VPN Gateway
 

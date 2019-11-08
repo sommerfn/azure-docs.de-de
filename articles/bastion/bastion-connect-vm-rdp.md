@@ -5,26 +5,22 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 376b7042a513dd50647dc8f88bf1de70f65bb21c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: dc741007c7de8d8e24f9c0f9e4e0c03306d036a4
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478400"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73498359"
 ---
-# <a name="connect-to-a-windows-virtual-machine-using-azure-bastion-preview"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer mit Azure Bastion (Vorschauversion)
+# <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer mit Azure Bastion
 
 In diesem Artikel erfahren Sie, wie Sie mit Azure Bastion sicher und problemlos RDP auf Ihren virtuellen Windows-Computern in einem virtuellen Azure-Netzwerk durchführen können. Sie können sich direkt vom Azure-Portal aus mit einer VM verbinden. Wenn Sie Azure Bastion verwenden, benötigen VMs keinen Client, keinen Agent und auch keine zusätzliche Software. Weitere Informationen über Azure Bastion finden Sie in der [Übersicht](bastion-overview.md).
 
-> [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie einen Azure Bastion-Host für das virtuelle Netzwerk eingerichtet haben, in dem sich die VM befindet. Weitere Informationen finden Sie unter [Erstellen eines Azure Bastion-Hosts](bastion-create-host-portal.md). Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitgestellt wurde, können Sie ihn verwenden, um sich mit jeder VM in diesem virtuellen Netzwerk zu verbinden. In dieser Vorschau geht Bastion davon aus, dass Sie RDP für die Verbindung mit einer Windows-VM und SSH für die Verbindung mit Ihren Linux-VMs verwenden. Informationen zur Verbindung mit einer Linux-VM finden Sie unter [Herstellen einer Verbindung mit einer VM – Linux](bastion-connect-vm-ssh.md).
+Stellen Sie sicher, dass Sie einen Azure Bastion-Host für das virtuelle Netzwerk eingerichtet haben, in dem sich die VM befindet. Weitere Informationen finden Sie unter [Erstellen eines Azure Bastion-Hosts](bastion-create-host-portal.md). Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitgestellt wurde, können Sie ihn verwenden, um sich mit jeder VM in diesem virtuellen Netzwerk zu verbinden. In Bastion wird vorausgesetzt, dass Sie RDP für die Verbindung mit virtuellen Windows-Computern und SSH für die Verbindung mit virtuellen Linux-Computern verwenden. Informationen zur Verbindung mit einer Linux-VM finden Sie unter [Herstellen einer Verbindung mit einer VM – Linux](bastion-connect-vm-ssh.md).
 
 Zum Herstellen einer Verbindung sind die folgenden Rollen erforderlich:
 
@@ -34,18 +30,16 @@ Zum Herstellen einer Verbindung sind die folgenden Rollen erforderlich:
 
 ## <a name="rdp"></a>Verbindung über RDP
 
-1. Verwenden Sie [diesen Link](https://aka.ms/BastionHost), um die Vorschau-Portalseite für Azure Bastion zu öffnen. Navigieren Sie zu dem virtuellen Computer, mit dem Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**. Die VM sollte ein virtueller Windows-Computer sein, wenn Sie eine RDP-Verbindung verwenden.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zu dem virtuellen Computer, mit dem Sie eine Verbindung herstellen möchten, und klicken Sie dann auf **Verbinden**. Die VM sollte ein virtueller Windows-Computer sein, wenn Sie eine RDP-Verbindung verwenden.
 
-    ![VM-Verbindung](./media/bastion-connect-vm-rdp/connect.png)
+   ![VM-Verbindung](./media/bastion-connect-vm-rdp/connect.png)
+1. Nachdem Sie auf Verbinden geklickt haben, erscheint eine Seitenleiste mit drei Registerkarten – RDP, SSH und Bastion. Wenn Bastion für das virtuelle Netzwerk bereitgestellt wurde, ist die Registerkarte Bastion standardmäßig aktiv. Wenn Sie Bastion nicht für das virtuelle Netzwerk bereitgestellt haben, können Sie auf den Link klicken, um Bastion zu konfigurieren. Konfigurationsanweisungen finden Sie unter [Konfigurieren von Bastion](bastion-create-host-portal.md).
 
-1. Nachdem Sie auf Verbinden geklickt haben, erscheint eine Seitenleiste mit drei Registerkarten – RDP, SSH und Bastion. Wenn Bastion für das virtuelle Netzwerk bereitgestellt wurde, ist die Registerkarte Bastion standardmäßig aktiv. Wenn Sie Bastion nicht für das virtuelle Netzwerk bereitgestellt haben, können Sie auf den Link klicken, um Bastion zu konfigurieren. Konfigurationsanweisungen finden Sie unter [Konfigurieren von Bastion](bastion-create-host-portal.md). Wenn Sie die **Bastion** nicht aufgelistet sehen, haben Sie das Vorschauportal nicht geöffnet. Öffnen Sie das Portal mit diesem [Vorschaulink](https://aka.ms/BastionHost).
-
-    ![VM-Verbindung](./media/bastion-connect-vm-rdp/bastion.png)
-
+   ![VM-Verbindung](./media/bastion-connect-vm-rdp/bastion.png)
 1. Geben Sie auf der Registerkarte „Bastion“ den Benutzernamen und das Kennwort für Ihren virtuellen Computer ein, und klicken Sie dann auf **Verbinden**. Die RDP-Verbindung zu diesem virtuellen Computer über Bastion wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet.
 
-    ![VM-Verbindung](./media/bastion-connect-vm-rdp/443rdp.png)
+   ![VM-Verbindung](./media/bastion-connect-vm-rdp/443rdp.png)
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die [Bastion FAQs](bastion-faq.md)
+Lesen Sie die [häufig gestellten Fragen zu Bastion](bastion-faq.md).

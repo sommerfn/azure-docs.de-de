@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: afc026ccb602538b0749fa294cee763efa3d27d0
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331773"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73483231"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Schnellstart: Einrichten der Data Science Virtual Machine für Windows
 
@@ -34,7 +34,7 @@ So erstellen Sie eine DSVM-Instanz:
 
 1. Wählen Sie unten auf dem Bildschirm die Option **Erstellen**.
 
-    [![](media/provision-vm/create-windows.png "Schaltfläche zum Erstellen eines Windows-Computers")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows.png "Button to create a Windows machine")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. Sie sollten auf das Blatt „Virtuellen Computer erstellen“ umgeleitet werden.
    ![Registerkarte „Grundlagen“ für virtuellen Windows-Computer](./media/provision-vm/review-create-windows.png)
@@ -72,7 +72,7 @@ Sie können eine DSVM-Instanz auch an Azure Notebooks anfügen, um Jupyter-Noteb
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erkunden Sie die Tools in der DSVM-Instanz über das Menü **Start**.
-* Machen Sie sich mit Azure Machine Learning Service vertraut. Lesen Sie hierzu [Was ist Azure Machine Learning Service?](../service/overview-what-is-azure-ml.md), und probieren Sie die [Tutorials](../index.yml) aus.
+* Machen Sie sich mit Azure Machine Learning vertraut. Lesen Sie hierzu [Was ist Azure Machine Learning?](../service/overview-what-is-azure-ml.md), und probieren Sie die [Tutorials](../index.yml) aus.
 * Navigieren Sie im Explorer zu „C:\Programme\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts“, um Beispiele für die RevoScaleR-Bibliothek in R zu finden, die Datenanalysen auf Unternehmensebene unterstützt. 
 * Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](https://aka.ms/dsvmtenthings).
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](../team-data-science-process/index.yml)systematisch vollständige Analyselösungen erstellen.

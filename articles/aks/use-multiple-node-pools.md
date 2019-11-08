@@ -7,91 +7,45 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212272"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472451"
 ---
-# <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vorschau – Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
+# <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
 Im Azure Kubernetes Service (AKS) werden Knoten derselben Konfiguration zu *Knotenpools* zusammengefasst. Diese Knotenpools enthalten die zugrunde liegenden virtuellen Computer, die Ihre Anwendungen ausführen. Die anfängliche Anzahl der Knoten und ihre Größe (SKU) werden beim Erstellen eines AKS-Clusters festgelegt, der einen *Standardknotenpool* erstellt. Sie können zusätzliche Knotenpools erstellen, um Anwendungen mit unterschiedlichen Compute- oder Speicheranforderungen zu unterstützen. Verwenden Sie diese zusätzlichen Knotenpools z. B. zum Bereitstellen von GPUs für rechenintensive Anwendungen oder für den Zugriff auf leistungsstarken SSD-Speicher.
 
 > [!NOTE]
 > Diese Funktion ermöglicht eine höhere Kontrolle über das Erstellen und Verwalten mehrerer Knotenpools. Daher sind separate Befehle zum Erstellen, Aktualisieren und Löschen erforderlich. Für über `az aks create` oder `az aks update` ausgeführte Clustervorgänge wurde bisher die managedCluster-API verwendet, und diese Vorgänge stellten die einzige Möglichkeit zum Ändern der Steuerungsebene und eines einzelnen Knotenpools dar. Diese Funktion stellt einen separaten Vorgang für Agent-Pools über die agentPool-API zur Verfügung und erfordert die Verwendung des `az aks nodepool`-Befehlssatzes zum Ausführen von Vorgängen für einen einzelnen Knotenpool.
 
-In diesem Artikel erfahren Sie, wie Sie mehrere Knotenpools in einem AKS-Cluster erstellen und verwalten. Diese Funktion steht derzeit als Vorschau zur Verfügung.
-
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
->
-> * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
-> * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
+In diesem Artikel erfahren Sie, wie Sie mehrere Knotenpools in einem AKS-Cluster erstellen und verwalten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
-
-### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
-
-Um mehrere Knotenpools verwenden zu können, benötigen Sie mindestens Version 0.4.16 der CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
-
-### <a name="register-multiple-node-pool-feature-provider"></a>Registrieren von Featureanbietern für mehrere Knotenpools
-
-Aktivieren Sie zunächst ein Featureflag in Ihrem Abonnement, um einen AKS-Cluster zu erstellen, der mehrere Knotenpools verwenden kann. Registrieren Sie das Featureflag *MultiAgentpoolPreview* mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
-
-> [!CAUTION]
-> Wenn Sie ein Feature für ein Abonnement registrieren, können Sie die Registrierung dieses Features momentan nicht mehr aufheben. Nachdem Sie einige Vorschaufeatures aktiviert haben, können Standardwerte für alle AKS-Cluster verwendet werden, die dann im Abonnement erstellt werden. Aktivieren Sie keine Vorschaufeatures für Produktionsabonnements. Verwenden Sie ein separates Abonnement, um Vorschaufeatures zu testen und Feedback zu sammeln.
-
-```azurecli-interactive
-az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-```
-
-> [!NOTE]
-> Jeder von Ihnen nach der erfolgreichen Registrierung von *MultiAgentpoolPreview* erstellte AKS-Cluster verwendet diese Möglichkeit zur Clustervorschau. Um weiterhin normale, vollständig unterstützte Cluster zu erstellen, sollten Sie keine Vorschaufeatures für Produktionsabonnements aktivieren. Verwenden Sie ein separates Test- oder Entwickungsabonnement von Azure, um Vorschaufeatures zu testen.
-
-Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-```
-
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="limitations"></a>Einschränkungen
 
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die mehrere Knotenpools unterstützen:
 
-* Mehrere Knotenpools sind nur für Cluster verfügbar, die nach der erfolgreichen Registrierung des Features *MultiAgentpoolPreview* für Ihr Abonnement erstellt wurden. Sie können keine Knotenpools mit einem bestehenden AKS-Cluster hinzufügen oder verwalten, die vor der erfolgreichen Registrierung dieses Features erstellt wurden.
 * Der Standardknotenpool (der erste) kann nicht gelöscht werden.
 * Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
 * Sie können Knotenpools nicht mit einer vorhandenen Resource Manager-Vorlage hinzufügen oder löschen wie mit den meisten Vorgängen. Stattdessen [verwenden Sie eine gesonderte Resource Manager-Vorlage](#manage-node-pools-using-a-resource-manager-template), um Änderungen an Knotenpools in einem AKS-Cluster vorzunehmen.
 * Der Name eines Knotenpools muss mit einem Kleinbuchstaben beginnen und darf nur alphanumerische Zeichen enthalten. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.
-
-Während sich dieses Feature in der Vorschauversion befindet, gelten die folgenden zusätzlichen Einschränkungen:
-
 * Der AKS-Cluster kann maximal acht Knotenpools umfassen.
 * Der AKS-Cluster kann maximal 400 Knoten in diesen acht Knotenpools enthalten.
 * Alle Knotenpools müssen sich in demselben Subnetz befinden.
+* Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
 Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *eastus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt. *--kubernetes-version* *1.13.10* wird verwendet, um die Aktualisierung eines Knotenpools in einem nachfolgenden Schritt zu veranschaulichen. Sie können eine beliebige [unterstützte Kubernetes-Version][supported-versions] angeben.
 
-Bei Verwendung mehrerer Knotenpools wird dringend empfohlen, den Load Balancer der Standard-SKU zu verwenden. Lesen Sie [dieses Dokument](load-balancer-standard.md), um weitere Informationen zur Verwendung von Load Balancern der Standard-SKU mit AKS zu erhalten.
+> [!NOTE]
+> Die Load Balancer-SKU *Basic* wird bei Verwendung mehrerer Knotenpools nicht unterstützt. Standardmäßig werden AKS-Cluster mit der Load Balancer-SKU *Standard* erstellt.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -244,20 +198,20 @@ Als bewährte Methode sollten Sie alle Knotenpools in einem AKS-Cluster auf dies
 
 Ein AKS-Cluster verfügt über zwei Clusterressourcenobjekte mit zugeordneten Kubernetes-Versionen. Beim ersten Objekt handelt es sich um eine Kubernetes-Version der Steuerungsebene. Das zweite ist ein Agent-Pool mit einer Kubernetes-Version. Eine Steuerungsebene ist einem oder mehreren Knotenpools zugeordnet. Das Verhalten eines Upgradevorgangs hängt davon ab, welcher Azure CLI-Befehl verwendet wird.
 
-1. Zum Aktualisieren der Steuerungsebene muss `az aks upgrade` verwendet werden.
+* Zum Aktualisieren der Steuerungsebene muss `az aks upgrade` verwendet werden.
    * Dadurch werden die Version der Steuerungsebene und alle Knotenpools im Cluster aktualisiert.
-   * Beim Übergeben von `az aks upgrade` mit dem Flag `--control-plane-only` wird nur die Clustersteuerungsebene aktualisiert und keiner der zugeordneten Knotenpools geändert. Das Flag `--control-plane-only` ist in **AKS-Vorschauerweiterung v0.4.16** oder höher verfügbar.
-1. Zum Aktualisieren einzelner Knotenpools muss `az aks nodepool upgrade` verwendet werden.
+   * Beim Übergeben von `az aks upgrade` mit dem Flag `--control-plane-only` wird nur die Clustersteuerungsebene aktualisiert und keiner der zugeordneten Knotenpools geändert.
+* Zum Aktualisieren einzelner Knotenpools muss `az aks nodepool upgrade` verwendet werden.
    * Dadurch wird nur der Zielknotenpool mit der angegebenen Kubernetes-Version aktualisiert.
 
 Die Beziehung zwischen Kubernetes-Versionen von Knotenpools muss auch einem Satz von Regeln folgen.
 
-1. Sie können weder die Kubernetes-Version der Steuerungsebene noch die des Knotenpools herabstufen.
-1. Wenn die Kubernetes-Version eines Knotenpools nicht angegeben ist, hängt das Verhalten vom verwendeten Client ab. Bei der Deklaration in der ARM-Vorlage wird die für den Knotenpool definierte vorhandene Version verwendet. Wenn kein Wert festgelegt ist, wird die Version der Steuerungsebene verwendet.
-1. Sie können eine Steuerungsebene oder einen Knotenpool zu einem bestimmten Zeitpunkt aktualisieren oder skalieren. Die beiden Vorgänge können jedoch nicht gleichzeitig übermittelt werden.
-1. Die Kubernetes-Version eines Knotenpools muss der Hauptversion der Steuerungsebene entsprechen.
-1. Die Kubernetes-Version eines Knotenpools darf maximal zwei (2) Versionen niedriger sein als die der Steuerungsebene, aber niemals höher.
-1. Die Kubernetes-Patchversion eines Knotenpools kann niedriger sein als die Version der Steuerungsebene oder dieser entsprechen, aber sie darf niemals höher sein.
+* Sie können weder die Kubernetes-Version der Steuerungsebene noch die des Knotenpools herabstufen.
+* Wenn die Kubernetes-Version eines Knotenpools nicht angegeben ist, hängt das Verhalten vom verwendeten Client ab. Bei der Deklaration in der Resource Manager-Vorlage wird die für den Knotenpool definierte vorhandene Version verwendet. Wenn kein Wert festgelegt ist, wird die Version der Steuerungsebene verwendet.
+* Sie können eine Steuerungsebene oder einen Knotenpool zu einem bestimmten Zeitpunkt aktualisieren oder skalieren. Die beiden Vorgänge können jedoch nicht gleichzeitig übermittelt werden.
+* Die Kubernetes-Version eines Knotenpools muss der Hauptversion der Steuerungsebene entsprechen.
+* Die Kubernetes-Version eines Knotenpools darf maximal zwei (2) Versionen niedriger sein als die der Steuerungsebene, aber niemals höher.
+* Die Kubernetes-Patchversion eines Knotenpools kann niedriger sein als die Version der Steuerungsebene oder dieser entsprechen, aber sie darf niemals höher sein.
 
 ## <a name="scale-a-node-pool-manually"></a>Manuelles Skalieren eines Knotenpools
 
@@ -313,7 +267,7 @@ Es dauert einige Minuten, bis die Skalierung abgeschlossen ist.
 
 ## <a name="scale-a-specific-node-pool-automatically-by-enabling-the-cluster-autoscaler"></a>Automatisches Skalieren eines bestimmten Knotenpools durch Aktivieren der automatischen Clusterskalierung
 
-AKS bietet eine separate Funktion in der Vorschauphase zum automatischen Skalieren von Knotenpools mit einem als [automatische Clusterskalierung](cluster-autoscaler.md) bezeichneten Feature. Bei diesem Feature handelt es sich um ein AKS-Add-On, das mit eindeutigen minimalen und maximalen Skalierungen pro Knotenpool aktiviert werden kann. Erfahren Sie, wie Sie [die automatische Clusterskalierung pro Knotenpool verwenden](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
+AKS bietet eine separate Funktion zum automatischen Skalieren von Knotenpools mit einem als [automatische Clusterskalierung](cluster-autoscaler.md) bezeichneten Feature. Das Feature kann mit einer eindeutigen minimalen und maximalen Anzahl von Skalierungen pro Knotenpool aktiviert werden. Erfahren Sie, wie Sie [die automatische Clusterskalierung pro Knotenpool verwenden](cluster-autoscaler.md#use-the-cluster-autoscaler-with-multiple-node-pools-enabled).
 
 ## <a name="delete-a-node-pool"></a>Löschen eines Knotenpools
 
@@ -637,11 +591,6 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
@@ -659,7 +608,3 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[aks-support-policies]: support-policies.md
-[aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update

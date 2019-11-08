@@ -4,22 +4,22 @@ description: Erfahren Sie, wie Sie über das Azure-Portal, Azure PowerShell oder
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: quickstart
-ms.date: 08/19/2019
+ms.topic: conceptual
+ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2063dd22e3253b0707f6920f3a5c0c7a6bb01126
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992319"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73467928"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos
 
 Azure Data Lake Storage Gen2 [unterstützt einen hierarchischen Namespace](data-lake-storage-introduction.md), der einen nativen verzeichnisbasierten Container für die Verwendung mit dem Hadoop Distributed File System (HDFS) bereitstellt. Wenn Sie über Hadoop Distributed File System auf Data Lake Storage Gen2-Daten zugreifen möchten, ist dies über den [ABFS-Treiber](data-lake-storage-abfs-driver.md) möglich.
 
-In dieser Schnellstartanleitung wird gezeigt, wie Sie ein Konto mit dem [Azure-Portal](https://portal.azure.com/), mit [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder mit der [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) erstellen.
+In diesem Artikel wird gezeigt, wie Sie ein Konto über das Azure-Portal, mit Azure PowerShell oder über die Azure CLI erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 |           | Voraussetzung |
 |-----------|--------------|
 |Portal     | Keine         |
-|PowerShell | Für diesen Schnellstart ist Version **0.7** oder höher des PowerShell-Moduls „Az.Storage“ erforderlich. Führen Sie den Befehl `Get-Module -ListAvailable Az.Storage` aus, um Ihre aktuelle Version zu ermitteln. Wenn nach dem Ausführen dieses Befehls keine Ergebnisse angezeigt werden oder eine ältere Version als **0.7** angezeigt wird, müssen Sie Ihr PowerShell-Modul aktualisieren. Informationen dazu finden Sie im Abschnitt [Aktualisieren Ihres PowerShell-Moduls](#upgrade-your-powershell-module) dieser Anleitung.
+|PowerShell | Für diesen Artikel ist Version **0.7** oder höher des PowerShell-Moduls „Az.Storage“ erforderlich. Führen Sie den Befehl `Get-Module -ListAvailable Az.Storage` aus, um Ihre aktuelle Version zu ermitteln. Wenn nach dem Ausführen dieses Befehls keine Ergebnisse angezeigt werden oder eine ältere Version als **0.7** angezeigt wird, müssen Sie Ihr PowerShell-Modul aktualisieren. Informationen dazu finden Sie im Abschnitt [Aktualisieren Ihres PowerShell-Moduls](#upgrade-your-powershell-module) dieser Anleitung.
 |Befehlszeilenschnittstelle (CLI)        | Sie können sich bei Azure anmelden und Azure-CLI-Befehle ausführen. Dazu haben Sie zwei Möglichkeiten: <ul><li>Sie können CLI-Befehle innerhalb des Azure-Portals in Azure Cloud Shell ausführen. </li><li>Sie können die Befehlszeilenschnittstelle installieren und CLI-Befehle lokal ausführen.</li></ul>|
 
 Bei Verwendung der Befehlszeile können Sie Azure Cloud Shell ausführen oder die Befehlszeilenschnittstelle lokal installieren.
@@ -39,64 +39,49 @@ Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal
 
 [![Cloud Shell](./media/data-lake-storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
-Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die Schritte in dieser Schnellstartanleitung ausführen können:
+Die Schaltfläche öffnet eine interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können:
 
 [![Screenshot des Fensters „Cloud Shell“ im Portal](./media/data-lake-storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
 
 ### <a name="install-the-cli-locally"></a>Lokales Installieren der Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Für diese Schnellstartanleitung müssen Sie mindestens Version 2.0.38 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
+Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und verwenden. Dieser Artikel setzt voraus, dass Sie mindestens Version 2.0.38 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account-with-azure-data-lake-storage-gen2-enabled"></a>Erstellen eines Speicherkontos mit aktivierter Azure Data Lake Storage Gen2-SKU
 
-Erstellen Sie vor der Erstellung des Kontos zunächst eine Ressourcengruppe, die als logischer Container für Speicherkonten oder andere von Ihnen erstellte Azure-Ressourcen fungiert. Um die Ressourcen zu bereinigen, die im Rahmen dieser Schnellstartanleitung erstellt wurden, können Sie einfach die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden sowohl das zugeordnete Speicherkonto als auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Das Speicherkonto stellt einen eindeutigen Namespace für Ihre Azure Storage-Daten bereit, auf den von jedem Ort der Welt aus über HTTP oder HTTPS zugegriffen werden kann. Daten in Ihrem Azure Storage-Konto sind dauerhaft und hochverfügbar, sicher und extrem skalierbar.
 
 > [!NOTE]
 > Die neuen Speicherkonten müssen vom Typ **StorageV2 (Allgemein v2 (GPv2))** sein, damit Sie die Funktionen von Data Lake Storage Gen2 nutzen können.  
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
-Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
-
-- Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
-- Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Zwei Speicherkonten können nicht denselben Namen haben.
-
 ## <a name="create-an-account-using-the-azure-portal"></a>Erstellen eines Kontos im Azure-Portal
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Führen Sie die folgenden Schritte aus, um über das Azure-Portal eine Ressourcengruppe zu erstellen:
-
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Ressourcengruppen**.
-2. Klicken Sie auf **Hinzufügen**, um eine neue Ressourcengruppe hinzuzufügen.
-3. Geben Sie einen Namen für die neue Ressourcengruppe ein.
-4. Wählen Sie das Abonnement aus, in dem die neue Ressourcengruppe erstellt werden soll.
-5. Wählen Sie den Standort für die Ressourcengruppe aus.
-6. Klicken Sie auf die Schaltfläche **Erstellen** .  
-
-   ![Screenshot mit der Ressourcengruppenerstellung über das Azure-Portal](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
-
-### <a name="create-a-general-purpose-v2-storage-account"></a>Erstellen eines Speicherkontos vom Typ „Allgemein v2 (GPv2)“
+Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Artikel wird gezeigt, wie Sie eine neue Ressourcengruppe erstellen.
 
 Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
 > [!NOTE]
 > Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung.
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Alle Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
-2. Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, die Sie zuvor erstellt haben.
-3. Geben Sie einen Namen für Ihr Speicherkonto ein.
-4. Legen Sie für **Standort** die Option **USA, Westen 2** fest.
-5. Übernehmen Sie für die folgenden Felder die Standardwerte: **Leistung**, **Kontoart**, **Replikation** und **Zugriffsebene**.
-6. Wählen Sie das Abonnement aus, in dem Sie das Speicherkonto erstellen möchten.
-7. Klicken Sie auf **Weiter: Erweitert >** .
-8. Übernehmen Sie unter **SICHERHEIT** und **VIRTUELLE NETZWERKE** die Standardwerte.
-9. Legen Sie im Abschnitt **Data Lake Storage Gen2** die Option **Hierarchischer Namespace** auf **Aktiviert** fest.
-10. Klicken Sie auf **Bewerten + erstellen**, um das Speicherkonto zu erstellen.
+1. Wählen Sie das Abonnement aus, in dem Sie das Speicherkonto erstellen möchten.
+2. Wählen Sie im Azure-Portal die Schaltfläche **Ressource erstellen** und dann **Speicherkonto**aus.
+3. Wählen Sie unter dem Feld **Ressourcengruppe** die Option **Neu erstellen**. Geben Sie einen Namen für die neue Ressourcengruppe ein.
+   
+   Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Wahlmöglichkeit, entweder eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden.
 
-    ![Screenshot zur Speicherkontoerstellung im Azure-Portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+4. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
+5. Wählen Sie einen Standort aus.
+6. Stellen Sie sicher, dass **StorageV2 (universell v2)** in der Dropdownliste **Kontoart** als ausgewählt angezeigt wird.
+7. Ändern Sie optional die Werte in diesen Feldern: **Leistung**, **Replikation**, **Zugriffsebene**. Weitere Informationen zu diesen Optionen finden Sie unter [Einführung in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction#azure-storage-services).
+8. Wählen Sie die Registerkarte **Erweitert** aus.
+10. Legen Sie im Abschnitt **Data Lake Storage Gen2** die Option **Hierarchischer Namespace** auf **Aktiviert** fest.
+11. Klicken Sie auf **Bewerten + erstellen**, um das Speicherkonto zu erstellen.
 
 Das Speicherkonto wird jetzt über das Portal erstellt.
 
@@ -227,6 +212,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie ein Speicherkonto mit Data Lake Storage Gen2-Funktionen erstellt. Informationen zum Hoch- und Herunterladen von Blobs in Ihr bzw. aus Ihrem Speicherkonto finden Sie im folgenden Thema.
+In diesem Artikel haben Sie ein Speicherkonto mit Data Lake Storage Gen2-Funktionen erstellt. Informationen zum Hoch- und Herunterladen von Blobs in Ihr bzw. aus Ihrem Speicherkonto finden Sie im folgenden Thema.
 
 * [AzCopy V10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

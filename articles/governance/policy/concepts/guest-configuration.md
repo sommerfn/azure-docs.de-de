@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255850"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73464057"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -122,6 +122,29 @@ Azure Policy verwendet die Eigenschaft **complianceStatus** des Guest Configurat
 > Die Richtlinie **DeployIfNotExists** ist erforderlich, damit die Richtlinie **AuditIfNotExists** Ergebnisse zurückgibt. Ohne die Richtlinie **DeployIfNotExists** gibt die Richtlinie **AuditIfNotExists** „0 von 0“ Ressourcen als Status an.
 
 Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf Linux- und Windows-Computern überwachen* umfasst 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Die Logik der [Richtliniendefinition](definition-structure.md#policy-rule) stellt sicher, dass nur das Zielbetriebssystem ausgewertet wird.
+
+#### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Überwachen von Betriebssystemeinstellungen anhand von Branchenrichtlinien
+
+Eine der in Azure Policy verfügbaren Initiativen bietet die Möglichkeit, Betriebssystemeinstellungen auf virtuellen Computern anhand einer „Baseline“ von Microsoft zu überwachen.  Die Definition *[Vorschau]: Überwachen von Windows-VMs, die nicht den Einstellungen für Azure-Sicherheitsbaselines entsprechen* enthält einen umfassenden Satz von Überwachungsregeln, die auf Einstellungen der Active Directory-Gruppenrichtlinie basieren.
+
+Die meisten Einstellungen sind als Parameter verfügbar.  Mit dieser Funktion können Sie anpassen, was überwacht werden soll, um die Richtlinie an die Anforderungen Ihrer Organisation anzupassen, oder die Richtlinie Drittanbieterinformationen (z.B. branchenspezifischen Standards) zuordnen.
+
+Einige Parameter unterstützen einen ganzzahligen Wertebereich.  Beispielsweise kann der Parameter „Maximales Kennwortalter“ mit einem Bereichsoperator festgelegt werden, um den Computerbesitzern Flexibilität zu bieten.  Sie können überwachen, dass die gültige Gruppenrichtlinieneinstellung, bei der Benutzer ihre Kennwörter ändern müssen, nicht mehr als 70 Tage, aber nicht weniger als 1 Tag betragen darf.  Wie in der Infoblase für den Parameter beschrieben, muss der Wert auf „1,70“ festgelegt werden, damit er zum gültigen Überwachungswert wird.
+
+Wenn Sie die Richtlinie mithilfe einer Azure Resource Manager-Bereitstellungsvorlage zuweisen, können Sie mithilfe einer Parameterdatei diese Einstellungen aus der Quellcodeverwaltung verwalten.
+Mithilfe eines Tools wie Git zum Verwalten von Änderungen an Überwachungsrichtlinien mit Kommentaren bei jedem Einchecken werden Nachweise dafür dokumentiert, warum eine Zuweisung eine Ausnahme vom erwarteten Wert sein sollte.
+
+#### <a name="applying-configurations-using-guest-configuration"></a>Anwenden von Konfigurationen mithilfe der Gastkonfiguration
+
+Mit der neuesten Funktion von Azure Policy werden Einstellungen in Computern konfiguriert.
+Mit der Definition *Konfigurieren der Zeitzone auf Windows-Computern* werden Änderungen am Computer durch Konfigurieren der Zeitzone vorgenommen.
+
+Beim Zuweisen von Definitionen, die mit *Konfigurieren* beginnen, müssen Sie auch die Definition *Bereitstellen von Voraussetzungen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren* zuweisen.
+Sie können diese Definitionen auf Wunsch in einer Initiative kombinieren.
+
+#### <a name="assigning-policies-to-machines-outside-of-azure"></a>Zuweisen von Richtlinien zu Computern außerhalb von Azure
+
+Die für die Gastkonfiguration verfügbaren Überwachungsrichtlinien umfassen den Ressourcentyp **Microsoft.HybridCompute/machines**.  Alle Computer, die in Azure Arc integriert sind und sich im Bereich der Zuweisung befinden, werden automatisch eingeschlossen.
 
 ### <a name="multiple-assignments"></a>Mehrere Zuweisungen
 

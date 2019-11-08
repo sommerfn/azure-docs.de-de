@@ -1,24 +1,24 @@
 ---
 title: 'Boosted Decision Tree Regression (Regression bei verstärktem Entscheidungsbaum): Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul „Boosted Decision Tree Regression“ (Regression bei verstärktem Entscheidungsbaum) in Azure Machine Learning Service verwenden, um mithilfe von Verstärkung ein Ensemble von Regressionsbäumen zu erstellen.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul Boosted Decision Tree Regression in Azure Machine Learning verwenden, um mithilfe von Verstärkung ein Ensemble von Regressionsbäumen zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 5f26dfbdd8d3ef094ed380b7bd00ab0169152502
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 10/22/2019
+ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208170"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73493886"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Modul „Boosted Decision Tree Regression“ (Regression bei verstärktem Entscheidungsbaum)
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um mithilfe von Verstärkung ein Ensemble von Regressionsbäumen zu erstellen. *Verstärkung* bedeutet, dass jeder Baum von früheren Bäumen abhängig ist. Der Algorithmus lernt durch Anpassung der übrigen, früher trainierten Bäume. Daher führt die Verstärkung in einem Ensemble von Entscheidungsbäumen meist zu höherer Genauigkeit, allerdings mit dem minimalen Risiko einer geringeren Abdeckung.  
   
@@ -52,7 +52,7 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
 
 ## <a name="how-to-configure-boosted-decision-tree-regression"></a>Gewusst wie: Konfigurieren von „Boosted Decision Tree Regression“
 
-1.  Fügen Sie das Modul **Boosted Decision Tree** (Verstärkter Entscheidungsbaum) Ihrem Experiment hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
+1.  Fügen Sie das Modul **Boosted Decision Tree** Ihrer Pipeline hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
   
 2.  Geben Sie an, wie das Modell trainiert werden soll, indem Sie die Option **Create trainer mode** (Trainermodus erstellen) festlegen.  
   
@@ -71,7 +71,7 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
 
 6. **Number of trees constructed**: (Anzahl der erstellten Bäume) Geben Sie die Gesamtzahl von Entscheidungsbäumen an, die im Ensemble erstellt werden sollen. Mit einer höheren Anzahl von Entscheidungsbäumen erzielen Sie u. U. eine bessere Abdeckung, allerdings verlängert sich dadurch auch die Trainingsdauer.
 
-    Dieser Wert steuert auch die Anzahl von Bäumen, die bei der Visualisierung des trainierten Modells angezeigt werden. Um einen einzelnen Baum anzuzeigen oder auszugeben, können Sie den Wert auf 1 festlegen. Das bedeutet jedoch, dass nur ein Baum erzeugt wird (der Baum mit dem anfänglichen Parametersatz) und keine weiteren Iterationen erfolgen.
+    Dieser Wert steuert auch die Anzahl von Bäumen, die bei der Visualisierung des trainierten Modells angezeigt werden. Um einen einzelnen Baum anzuzeigen oder auszugeben, können Sie den Wert auf 1 festlegen. Das bedeutet jedoch, dass nur ein Baum erzeugt wird (der Baum mit dem anfänglichen Parametersatz) und keine weiteren Iterationen erfolgen.
 
 7. **Random number seed** (Zufälliger Startwert): Geben Sie eine optionale, nicht negative ganze Zahl als zufälligen Startwert an. Die Angabe eines Startwerts gewährleistet Reproduzierbarkeit in verschiedenen Ausführungen, die auf den gleichen Daten und Parametern basieren.
 
@@ -85,7 +85,7 @@ Die Gradient Boosting-Methode kann auch für Klassifizierungsprobleme verwendet 
   
     
 
-10. Führen Sie das Experiment aus.  
+10. Ausführen der Pipeline.  
   
 ## <a name="results"></a>Ergebnisse
 
@@ -97,8 +97,8 @@ Nach Abschluss des Trainings:
 
 + Wenn Sie das Modell zur Bewertung verwenden möchten, verbinden Sie es mit [Score Model](./score-model.md) (Modell bewerten), um Werte für neue Eingabebeispiele vorherzusagen.
 
-+ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell) des Trainingsmoduls, und wählen Sie **Save As** (Speichern unter) aus. Die Kopie des trainierten Modells, das Sie speichern, wird bei nachfolgenden Durchläufen des Experiments nicht aktualisiert.
++ Um eine Momentaufnahme des trainierten Modells zu speichern, klicken Sie mit der rechten Maustaste auf die Ausgabe **Trained model** (Trainiertes Modell) des Trainingsmoduls, und wählen Sie **Save As** (Speichern unter) aus. Die Kopie des trainierten Modells, das Sie speichern, wird bei nachfolgenden Ausführungen der Pipeline nicht aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 37acd88dbfe8ed1790f1bfa68d5e9762a861ddc7
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: a73308274c9aedf6a85745c17c14637e2ef3d27d
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626405"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73492473"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage für Predictive Maintenance in der Luft- und Raumfahrt
 
@@ -70,7 +70,7 @@ Treffen Sie mithilfe des (von Azure Data Factory orchestrierten) [Azure Machine 
 
 ## <a name="data-publishing"></a>Veröffentlichung der Daten
 ### <a name="azure-sql-database"></a>Azure SQL-Datenbank
-Mit dem [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)-Dienst speichern Sie die von Azure Machine Learning empfangenen Vorhersagen, die dann im [Power BI](https://powerbi.microsoft.com)-Dashboard genutzt werden.
+Mit [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) speichern Sie die von Azure Machine Learning empfangenen Vorhersagen, die dann im [Power BI](https://powerbi.microsoft.com)-Dashboard genutzt werden.
 
 ## <a name="data-consumption"></a>Nutzung der Daten
 ### <a name="power-bi"></a>Power BI

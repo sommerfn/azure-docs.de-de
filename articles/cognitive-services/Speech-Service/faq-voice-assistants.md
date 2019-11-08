@@ -1,0 +1,64 @@
+---
+title: Häufig gestellte Fragen zu Sprachassistenten
+titleSuffix: Azure Cognitive Services
+description: Hier erhalten Sie Antworten auf die häufigsten Fragen zu Sprachassistenten, die benutzerdefinierte Befehle (Vorschauversion) oder den Kanal „Direct Line Speech“ verwenden.
+services: cognitive-services
+author: trrwilson
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: conceptual
+ms.date: 11/05/2019
+ms.author: travisw
+ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73506529"
+---
+# <a name="voice-assistants-frequently-asked-questions"></a>Sprachassistenten: Häufig gestellte Fragen
+
+Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie sich die [weiteren Supportoptionen](support.md) an.
+
+## <a name="general"></a>Allgemein
+
+**F: Was ist ein Sprachassistent?**
+
+**A:** Ebenso wie Cortana ist ein Sprachassistent eine Lösung, die auf die gesprochenen Äußerungen eines Benutzers lauscht, den Inhalt dieser Äußerungen auf eine Bedeutung hin analysiert, eine oder mehrere Aktionen als Reaktion auf die Absicht der Äußerung ausführt und dann dem Benutzer eine Antwort präsentiert, die häufig eine gesprochene Komponente enthält. Es handelt sich um eine „Sprachein-/Sprachausgabe“-Funktion zur Interaktion mit einem System. Autoren von Sprachassistenten erstellen mithilfe des `DialogServiceConnector` im Sprach-SDK eine Anwendung auf dem Gerät, um mit einem Assistenten zu kommunizieren, der mithilfe [benutzerdefinierter Befehle (Vorschau)](custom-commands.md) oder mit dem Kanal [Direct Line Speech](direct-line-speech.md) des Bot Framework erstellt wurde. Diese Assistenten können benutzerdefinierte Schlüsselwörter, Custom Speech und Custom Voice verwenden, um eine auf Ihre Marke oder Ihr Produkt zugeschnittene Erfahrung zu bieten.
+
+**F: Sollte ich benutzerdefinierte Befehle (Vorschau) oder „Direct Line Speech“ verwenden? Wo liegt der Unterschied?**
+
+**A:** [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) ist eine Reihe von Tools mit geringer Komplexität, mit denen Sie problemlos einen Assistenten erstellen und hosten können, der für Aufgabenabschluss-Szenarien gut geeignet ist. [Direct Line Speech](direct-line-speech.md) bietet umfangreichere, anspruchsvollere Funktionen, die stabile Konversationsszenarien ermöglichen. Weitere Informationen finden Sie im [Vergleich der Assistenten-Lösungen](voice-assistants.md#comparing-assistant-solutions).
+
+**F: Wie fange ich an?**
+
+**A:** Die beste Möglichkeit, um mit dem Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschau) oder eines grundlegenden Bot Framework-Bots zu beginnen.
+
+* [Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschauversion)](quickstart-custom-speech-commands-create-new.md)
+* [Tutorial: Erstellen und Bereitstellen eines Basisbots](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Herstellen einer Verbindung mit einem Direct Line Speech-Kanal für einen Bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+
+## <a name="debugging"></a>Debuggen
+
+**F: Ich erhalte bei der Verbindungsherstellung eine 401-Fehlermeldung, und nichts funktioniert. Ich weiß, dass mein Speech-Abonnementschlüssel gültig. Was geht da vor?**
+
+**A:** Wenn Sie Ihr Abonnement im Azure-Portal verwalten, stellen Sie sicher, dass Sie die Ressource **Speech** (Microsoft.CognitiveServicesSpeechServices, „Speech“) und *nicht* die Ressource **Cognitive Services** (Microsoft.CognitiveServicesAllInOne, „Alle Cognitive Services“) verwenden. Überprüfen Sie außerdem die [Spracherkennungsdienst-Unterstützung für Sprachassistenten in der Region](regions.md#voice-assistants).
+
+![Korrektes Abonnement für „Direct Line Speech“](media/voice-assistants/faq-supported-subscription.png "Beispiel für ein kompatibles Sprachabonnement")
+
+**F: Mein `DialogServiceConnector` gibt erkannten Text zurück, es wird aber ein Fehler vom Typ 1011 angezeigt, und mein Bot reagiert nicht. Warum?**
+
+**A:** Dieser Fehler weist auf ein Kommunikationsproblem zwischen dem Assistenten und dem Sprachassistentendienst hin.
+
+* Stellen Sie für benutzerdefinierte Befehle (Vorschau) sicher, dass die Anwendung für benutzerdefinierte Befehle (Vorschau) veröffentlicht wurde.
+* Stellen Sie für „Direct Line Speech“ sicher, dass Sie eine [Verbindung Ihres Bots mit dem Direct Line Speech-Kanal hergestellt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) und Ihrem Bot [Unterstützung für das Streaming-Protokoll hinzugefügt](https://aka.ms/botframework/addstreamingprotocolsupport) haben (mit der entsprechenden Websocketunterstützung). Überprüfen Sie dann, ob Ihr Bot auf eingehende Anforderungen vom Kanal reagiert.
+
+**F: Dieser Code funktioniert trotzdem nicht, und/oder ich erhalte bei der Verwendung eines `DialogServiceConnector` eine andere Fehlermeldung. Wie soll ich vorgehen?**
+
+**A:** Die dateibasierte Protokollierung bietet deutlich mehr Details und kann Supportanfragen beschleunigen. Informationen zum Aktivieren dieser Funktion finden Sie unter [Verwenden der Dateiprotokollierung](how-to-use-logging.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Problembehandlung](troubleshooting.md)
+* [Versionshinweise](releasenotes.md)

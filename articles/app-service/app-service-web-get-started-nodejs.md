@@ -16,12 +16,12 @@ ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433207"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73471469"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Erstellen einer Node.js-Web-App in Azure 
 
@@ -124,13 +124,13 @@ Wählen Sie im **AZURE APP SERVICE-Explorer** den blauen, nach oben weisenden Pf
 1. Wählen Sie eine Erstellungsoption basierend auf dem Betriebssystem aus, auf dem die Bereitstellung erfolgen soll:
 
     - Linux: Klicken Sie auf **Neue Web-App erstellen**.
-    - Windows: Wählen Sie **Create new Web App...Advanced** (Neue Web-App erstellen...Erweitert) aus.
+    - Windows: Wählen Sie **Neue Web-App erstellen** und anschließend die Option **Erweitert** aus.
 
 1. Geben Sie einen global eindeutigen Namen für Ihre Web-App ein, und drücken Sie die EINGABETASTE. Gültige Zeichen für den Namen einer App sind die Buchstaben a-z, die Ziffern 0-9 und der Bindestrich (-).
 
 1. Wenn Linux Ihre Zielplattform ist, wählen Sie eine Node.js-Version aus, wenn Sie dazu aufgefordert werden. Eine **LTS**-Version wird empfohlen.
 
-1. Wenn Sie Windows als Zielplattform mithilfe der Option *Advanced* (Erweitert)* verwenden, folgen Sie den zusätzlichen Eingabeaufforderungen:
+1. Wenn Sie mithilfe der Option **Erweitert** Windows als Zielplattform festgelegt haben, folgen Sie den zusätzlichen Eingabeaufforderungen:
     1. Wählen Sie **Neue Ressourcengruppe erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
     1. Wählen Sie als Betriebssystem **Windows** aus.
     1. Wählen Sie einen vorhandenen App Service-Plan aus, oder erstellen Sie einen neuen Plan. Sie können einen Tarif auswählen, wenn Sie einen neuen Plan erstellen.

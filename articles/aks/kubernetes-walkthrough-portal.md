@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 5/31/2019
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 0e09d541cb84ef7857e4d68f776b92f845488771
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329885"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73472693"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal
 
@@ -31,27 +31,29 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
-Klicken Sie im Azure-Portal oben links auf **+ Ressource erstellen** > **Container** >  **Kubernetes Service**.
-
 Führen Sie zum Erstellen eines AKS-Clusters die folgenden Schritte aus:
 
-1. Konfigurieren Sie auf der Seite **Grundlagen** die folgenden Optionen:
-   - *PROJEKTDETAILS*: Wählen Sie ein Azure-Abonnement und dann eine Azure-Ressourcengruppe aus, bzw. erstellen Sie eine Ressourcengruppe, z.B. *myResourceGroup*. Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*.
-   - *CLUSTERDETAILS*: Wählen Sie eine Region, eine Kubernetes-Version und ein DNS-Namenspräfix für den AKS-Cluster aus.
-   - **PRIMÄRER KNOTENPOOL:** Wählen Sie eine VM-Größe für die AKS-Knoten aus. Die VM-Größe kann **nicht** geändert werden, sobald ein AKS-Cluster bereitgestellt wurde. 
-       - Wählen Sie die Anzahl von Knoten für die Bereitstellung im Cluster aus. Legen Sie für diese Schnellstartanleitung für **Anzahl von Knoten** die Option *1* fest. Die Knotenanzahl **kann** nach der Clusterbereitstellung angepasst werden.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
+
+2. Wählen Sie **Container** >  **Kubernetes-Dienst** aus.
+
+3. Konfigurieren Sie auf der Seite **Grundlagen** die folgenden Optionen:
+    - **Projektdetails**: Wählen Sie unter **Abonnement** ein Azure-Abonnement aus, und wählen Sie anschließend unter **Ressourcengruppe** eine Azure-Ressourcengruppe aus, oder erstellen Sie eine Azure-Ressourcengruppe (beispielsweise *myResourceGroup*).
+    - **Clusterdetails**: Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*. Wählen Sie eine **Region**, eine **Kubernetes-Version** und ein **DNS-Namenspräfix** für den AKS-Cluster aus.
+    - **Primärer Knotenpool**: Wählen Sie unter **Knotengröße** eine VM-Knotengröße für die AKS-Knoten aus. Die VM-Größe kann nach der Bereitstellung eines AKS-Clusters *nicht mehr geändert* werden. 
+            - Wählen Sie die Anzahl von Knoten aus, die im Cluster bereitgestellt werden sollen. Legen Sie für diese Schnellstartanleitung für **Anzahl von Knoten** die Option *1* fest. Die Knotenanzahl *kann* nach der Clusterbereitstellung angepasst werden.
     
-     ![Erstellen eines AKS-Clusters – Angeben grundlegender Informationen](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
+    ![Erstellen eines AKS-Clusters – Angeben grundlegender Informationen](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-     Klicken Sie auf **Weiter: Skalieren**, wenn der Vorgang abgeschlossen ist.
+    Klicken Sie auf **Weiter: Skalieren**, wenn der Vorgang abgeschlossen ist.
 
-2. Behalten Sie auf der Seite **Skalieren** die Standardoptionen bei. Klicken Sie am unteren Bildschirmrand auf **Weiter: Authentifizierung**.
-> [!CAUTION]
-> Die Verteilung und Bereitstellung neuer AAD-Dienstprinzipale kann mehrere Minuten dauern. Dadurch können im Azure-Portal Fehler vom Typ „Dienstprinzipal nicht gefunden“ sowie Validierungsfehler auftreten. [Hier](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) finden Sie Lösungen für dieses Problem.
+4. Behalten Sie auf der Seite **Skalieren** die Standardoptionen bei. Klicken Sie im unteren Bildschirmbereich auf **Weiter: Authentifizierung**.
+    > [!CAUTION]
+    > Die Verteilung und Bereitstellung neuer AAD-Dienstprinzipale kann mehrere Minuten dauern. Dadurch können im Azure-Portal Fehler vom Typ „Dienstprinzipal nicht gefunden“ sowie Validierungsfehler auftreten. [Hier](troubleshooting.md#im-receiving-errors-that-my-service-principal-was-not-found-when-i-try-to-create-a-new-cluster-without-passing-in-an-existing-one) finden Sie Lösungen für dieses Problem.
 
-3. Konfigurieren Sie auf der Seite **Authentifizierung** die folgenden Optionen:
-   - Erstellen Sie einen neuen Dienstprinzipal, indem Sie das Feld **Dienstprinzipal** in der Einstellung **(neu) Standarddienstprinzipal** belassen. Alternativ dazu können Sie *Dienstprinzipal konfigurieren* auswählen, um einen vorhandenen zu verwenden. Bei Verwendung eines vorhandenen Dienstprinzipals müssen Sie die SPN-Client-ID und das Geheimnis angeben.
-   - Aktivieren Sie die Option für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes. So wird eine präzisere Steuerung des Zugriffs auf die im AKS-Cluster bereitgestellten Kubernetes-Ressourcen ermöglicht.
+5. Konfigurieren Sie auf der Seite **Authentifizierung** die folgenden Optionen:
+    - Erstellen Sie einen neuen Dienstprinzipal, indem Sie das Feld **Dienstprinzipal** in der Einstellung **(neu) Standarddienstprinzipal** belassen. Alternativ dazu können Sie *Dienstprinzipal konfigurieren* auswählen, um einen vorhandenen zu verwenden. Bei Verwendung eines vorhandenen Dienstprinzipals müssen Sie die SPN-Client-ID und das Geheimnis angeben.
+    - Aktivieren Sie die Option für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes. So wird eine präzisere Steuerung des Zugriffs auf die im AKS-Cluster bereitgestellten Kubernetes-Ressourcen ermöglicht.
 
 Standardmäßig werden *Basis*-Netzwerke verwendet, und Azure Monitor für Container ist aktiviert. Klicken Sie auf **Überprüfen + erstellen** und danach auf **Erstellen**, wenn die Überprüfung abgeschlossen ist.
 

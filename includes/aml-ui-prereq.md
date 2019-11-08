@@ -8,19 +8,20 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 05/06/2019
-ms.openlocfilehash: 695153438ba33d9803f7f938aa15b6552d28da40
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 18e855a5f87e700481b69c39c4fe03a69437895e
+ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692806"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73490031"
 ---
-1. [Erstellen Sie einen Azure Machine Learning Service-Arbeitsbereich](../articles/machine-learning/service/how-to-manage-workspace.md), sofern Sie keinen besitzen.
+1. [Erstellen Sie einen Azure Machine Learning-Arbeitsbereich](../articles/machine-learning/service/how-to-manage-workspace.md), sofern Sie noch keinen besitzen.
 
-1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  Wenn Sie sich nicht sicher sind, wie Sie Ihren Arbeitsbereich im Portal finden können, lesen Sie [Suchen nach Ihren Arbeitsbereich](../articles/machine-learning/service/how-to-manage-workspace.md#view).  
+1. Melden Sie sich bei [ml.azure.com](https://ml.azure.com) an, und wählen Sie den gewünschten Arbeitsbereich aus.
 
-1. Wählen Sie in Ihrem Arbeitsbereich die Option **Grafische Benutzeroberfläche** aus.  
- 
-    ![Starten der grafische Benutzeroberfläche](./media/aml-ui-prereq/launch-ui.png)
+1. Wählen Sie **Designer** aus.
 
-    Sie können auf die visuelle Schnittstelle auch über die [Landing Page Ihres Arbeitsbereichs (Vorschauversion)](https://ml.azure.com) zugreifen.
+    ![Starten des Designers](./media/aml-ui-prereq/launch-designer.png)
+
+
+
