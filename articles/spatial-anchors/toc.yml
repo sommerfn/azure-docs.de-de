@@ -86,7 +86,7 @@
 - name: Ressourcen
   items:
     - name: Ressourcenverwaltungs-REST-API von Azure Mixed Reality
-      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
+      href: 'https://docs.microsoft.com/rest/api/mixedreality/'
     - name: Häufig gestellte Fragen
       href: spatial-anchor-faq.md
     - name: Abgeben von Produktfeedback

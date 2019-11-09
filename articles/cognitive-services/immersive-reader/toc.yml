@@ -13,7 +13,7 @@
       href: ios-quickstart.md
 - name: Lernprogramme
   items:
-    - name: Starten des plastischen Readers (Node.js)
+    - name: Starten von Plastischer Reader (Node.js)
       href: tutorial-nodejs.md
     - name: Starten des plastischen Readers (Python)
       href: tutorial-python.md
@@ -32,8 +32,8 @@
 - name: Ressourcen
   items:
     - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Sprachunterstützung
       href: 'https://aka.ms/ltlangsupport'
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

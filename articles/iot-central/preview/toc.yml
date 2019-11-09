@@ -1,0 +1,155 @@
+- name: "Dokumentation zu Azure\_IoT\_Central (Previewfunktionen)"
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Azure IoT Central?
+      href: overview-iot-central.md
+    - name: IoT-Lösungsoptionen
+      href: ../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - name: Überblick über die Benutzeroberfläche
+      href: overview-iot-central-tour.md
+    - name: Herstellen einer Verbindung
+      href: overview-iot-central-get-connected.md
+    - name: In Verbindung bleiben
+      href: overview-iot-central-stay-connected.md
+    - name: Transformieren
+      href: overview-iot-central-transform.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: 1. Erstellen einer neuen Anwendung
+      href: quick-deploy-iot-central.md
+    - name: 2. Hinzufügen eines simulierten Geräts
+      href: quick-create-pnp-device.md
+    - name: 3. Konfigurieren von Regeln und Aktionen
+      href: quick-configure-rules.md
+    - name: 4. Überwachen Ihrer Geräte
+      href: quick-monitor-devices.md
+- name: Lernprogramme
+  items:
+    - name: Herstellen einer Verbindung
+      items:
+        - name: Erstellen und Verwalten einer IoT-Gerätevorlage
+          href: tutorial-define-iot-device-type.md
+        - name: Verbinden eines Geräts
+          href: tutorial-connect-pnp-device.md
+        - name: Erstellen und Verwalten einer IoT Edge-Gerätevorlage
+          href: tutorial-define-edge-device-type.md
+        - name: Verbinden mit einem IoT Edge-Gerät
+          href: tutorial-add-edge-as-leaf-device.md
+    - name: In Verbindung bleiben
+      items:
+        - name: Erstellen einer Gerätegruppe
+          href: tutorial-use-device-groups.md
+    - name: Transformieren
+      items:
+        - name: Erstellen einer Regel
+          href: tutorial-create-telemetry-rules.md
+        - name: Verwenden der REST-API
+          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
+- name: Konzepte
+  items:
+    - name: Architecture
+      href: concepts-architecture.md
+    - name: Was sind Anwendungsvorlagen?
+      href: ../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+- name: Anleitungen
+  items:
+    - name: Herstellen einer Verbindung
+      items:
+        - name: Vorbereiten und Verbinden eines MXChip IoT DevKit
+          href: howto-connect-devkit.md
+        - name: Vorbereiten und Verbinden eines RuuviTag-Geräts
+          href: howto-connect-ruuvi.md
+        - name: "Vorbereiten und Verbinden einer Rigado Cascade\_500-Einheit"
+          href: howto-connect-rigado-cascade-500.md
+    - name: In Verbindung bleiben
+      items:
+        - name: Überwachen der Gerätekonnektivität per Azure CLI
+          href: howto-monitor-devices-azure-cli.md
+        - name: Gerätevorlagenversion
+          href: howto-version-device-template.md
+        - name: Verwalten von Geräten
+          href: howto-manage-devices.md
+        - name: Analysieren von Gerätedaten
+          href: howto-create-analytics.md
+        - name: Hinzufügen von Kacheln zu Ihrem Dashboard
+          href: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+        - name: Erstellen persönlicher Dashboards für Azure IoT Central
+          href: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+        - name: Ausführen eines Auftrags
+          href: ../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+        - name: Gerätevorlagenversion
+          href: howto-version-device-template.md
+    - name: Transformieren
+      items:
+        - name: Konfigurieren des fortlaufenden Datenexports
+          href: howto-export-data.md
+        - name: Erstellen von Webhooks für Regeln
+          href: howto-create-webhooks.md
+        - name: Verbinden von Azure Monitor-Aktionsgruppen für Regeln
+          href: howto-use-action-groups.md
+        - name: Benutzerdefinierte Regeln erstellen
+          href: howto-create-custom-rules.md
+        - name: Erstellen einer benutzerdefinierten Analyse mit Databricks
+          href: howto-create-custom-analytics.md
+    - name: Verwaltung
+      items:
+        - name: Verwalten Ihrer Anwendung
+          items:
+            - name: Ändern der Anwendungseinstellungen
+              href: howto-administer.md
+            - name: Verwalten von Benutzern und Rollen
+              href: howto-manage-users-roles.md
+            - name: Verwalten Ihrer Rechnung
+              href: howto-view-bill.md
+            - name: Anpassen der Anwendungsbenutzeroberfläche
+              href: howto-customize-ui.md
+            - name: Exportieren Ihrer Anwendung
+              href: howto-use-app-templates.md
+        - name: Verwalten von anderen Orten
+          items:
+            - name: Verwalten über das Azure-Portal
+              href: ../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+            - name: Verwalten über die Azure-Befehlszeilenschnittstelle
+              href: ../core/howto-manage-iot-central-from-cli.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+            - name: Verwalten über Azure PowerShell
+              href: ../core/howto-manage-iot-central-from-powershell.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+            - name: Verwalten über das CSP-Portal
+              href: ../core/howto-create-and-manage-applications-csp.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+        - name: Personalisieren der Anwendung
+          items:
+            - name: Verwalten Ihrer persönlichen Einstellungen
+              href: ../core/howto-manage-preferences.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+            - name: Ein-/Ausschalten des Livechats
+              href: ../core/howto-show-hide-chat.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+- name: Verwandte Themen
+  items:
+    - name: Plattformdienste
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: "IoT\_Plug\_&\_Play"
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: IoT Edge
+      items:
+        - name: Azure IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-Geräte-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Ressourcen
+  items:
+    - name: REST-API
+      href: 'https://docs.microsoft.com/rest/api/iotcentral/'
+    - name: Kundendatenanforderungen
+      href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
+    - name: Unterstützte Browser
+      href: ../core/iot-central-supported-browsers.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json

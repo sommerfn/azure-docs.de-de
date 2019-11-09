@@ -12,12 +12,12 @@ metadata:
   title: Dokumentation zur Personalisierung
   titleSuffix: Azure Cognitive Services
   description: Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.
-  ms.openlocfilehash: 19736d881400a311964920f5669a0e9423891f9e
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: d71f5f673a3008f13f7bb762fc48a687c0cf0ddb
+  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73604199"
+  ms.lasthandoff: 11/09/2019
+  ms.locfileid: "73889259"
 landingContent:
 - title: Informationen zur Personalisierung
   linkLists:
@@ -66,7 +66,7 @@ landingContent:
     - text: NuGet-Paket
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet-Referenzdokumentation
-      url: https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
   - linkListType: get-started
     links:
     - text: Entwickeln einer Personalisierungsschleife mit Node.js

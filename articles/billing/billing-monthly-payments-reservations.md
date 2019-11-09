@@ -6,14 +6,14 @@ author: bandersmsft
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: d211334ad2aa760cd63b98c6827fb2512811a1d3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806923"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746461"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Erwerben von Reservierungen mit monatlicher Zahlung
 
@@ -24,6 +24,7 @@ Ihr monatlicher Zahlungsbetrag variiert möglicherweise abhängig vom Wechselkur
 Monatliche Zahlungen sind für Folgendes verfügbar:
 
 - Virtuelle Computer
+- Azure Storage
 - SQL-Datenbank
 - SQL Data Warehouse
 - Cosmos DB
@@ -60,20 +61,6 @@ Wenn Sie eine Reservierung mit monatlicher Zahlung umtauschen, müssen die Koste
 Wenn Sie eine Reservierung mit monatlicher Zahlung stornieren, erhebt Microsoft ggf. eine Stornogebühr für die stornierten weiteren Zahlungen. Die übrigen ausstehenden Zahlungen werden mit dem Rückerstattungslimit von 50.000 USD verrechnet.
 
 Weitere Informationen zu Umtausch und Rückerstattungen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](billing-azure-reservations-self-service-exchange-and-refund.md).
-
-## <a name="faq"></a>Häufig gestellte Fragen
-
-F: Bietet Azure Reservierungen mit partieller Vorauszahlung an?<br>
-A. Nein. Da die Kosten bei Reservierungen mit Vorauszahlung und Reservierungen mit monatlicher Zahlung gleich sind, unterstützt Microsoft keine partiellen Vorauszahlungen.
-
-F: Sind monatliche Zahlungen für das Microsoft CSP-Programm (Cloud Solution Provider) verfügbar?<br>
-A. Ja. Partner können Reservierungen für ihre CSP-Kunden über das Azure-Portal erwerben. In Partner Center können keine Reservierungen mit monatlicher Abrechnung erworben werden.
-
-F: Kann ich als US-amerikanischer Azure Government-Kunde monatlich für Reservierungskäufe bezahlen?<br>
-A. Derzeit ist dies nicht möglich.
-
-F: Wann können Umtausch und Rückerstattungen über das Azure-Portal abgewickelt werden, anstatt ein Supportticket zu erstellen?<br>
-A. Derzeit ist dies nicht möglich. Anforderungen für den Umtausch oder die Rückerstattung von Reservierungen mit monatlicher Zahlung werden vom Azure-Support bearbeitet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

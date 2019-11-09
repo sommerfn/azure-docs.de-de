@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: ff8f5772880f047bbe0b0d798c944b38da486468
+  ms.openlocfilehash: d769b906324c1022baffff198fea6e4e44821757
   ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73888796"
+  ms.locfileid: "73891804"
 landingContent:
 - title: Informationen zu Azure IoT Central
   linkLists:
@@ -42,35 +42,37 @@ landingContent:
     - text: Einrichten einer Gerätevorlage
       url: howto-set-up-template.md
     - text: Herstellen einer Verbindung mit einem IoT Plug & Play-Gerät
-      url: tutorial-add-device.md
+      url: tutorial-connect-pnp-device.md
   - linkListType: how-to-guide
     links:
     - text: Vorbereiten und Verbinden eines MXChip IoT DevKit
       url: howto-connect-devkit.md
     - text: Herstellen einer Verbindung mit anderen IoT-Clouds
-      url: howto-build-iotc-device-bridge.md
+      url: ../core/howto-build-iotc-device-bridge.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
 - title: In Verbindung bleiben
   linkLists:
   - linkListType: tutorial
     links:
     - text: Verwenden von Gerätegruppen
-      url: howto-use-device-sets.md
+      url: tutorial-use-device-groups.md
   - linkListType: how-to-guide
     links:
     - text: Verwalten von Geräten
       url: howto-manage-devices.md
     - text: Ausführen eines Auftrags
-      url: howto-run-a-job.md
+      url: ../core/howto-run-a-job.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - text: Analysieren von Gerätedaten
       url: howto-create-analytics.md
 - title: Transformieren
   linkLists:
   - linkListType: tutorial
     links:
+    - text: Erstellen einer Regel
+      url: quick-configure-rules.md
     - text: Erstellen von Telemetrieregeln
-      url: howto-create-telemetry-rules.md
+      url: tutorial-create-telemetry-rules.md
     - text: Exportieren in Blob Storage
-      url: howto-export-data-blob-storage.md
+      url: howto-export-data.md
   - linkListType: how-to-guide
     links:
     - text: Benutzerdefinierte Regeln erstellen
@@ -90,8 +92,8 @@ landingContent:
     - text: Anpassen der Anwendungsbenutzeroberfläche
       url: howto-customize-ui.md
     - text: Konfigurieren von persönlichen Dashboards
-      url: howto-create-personal-dashboards.md
+      url: ../core/howto-create-personal-dashboards.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - text: Verwenden von Dashboardkacheln
-      url: howto-add-tiles-to-your-dashboard.md
+      url: ../core/howto-add-tiles-to-your-dashboard.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - text: Verwenden von Anwendungsvorlagen
       url: howto-use-app-templates.md
