@@ -16,7 +16,7 @@
     - name: "Verbinden eines Geräts mit IoT\_Hub: Linux"
       href: quickstart-connect-pnp-device-linux.md
     - name: "Verbinden eines Geräts mit IoT\_Central"
-      href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+      href: ../iot-central/preview/quick-create-pnp-device.md
     - name: Herstellen einer Verbindung mit einem Gerät in Ihrer Lösung
       href: quickstart-connect-pnp-device-solution.md
 - name: Lernprogramme

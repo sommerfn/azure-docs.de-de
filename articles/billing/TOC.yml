@@ -5,8 +5,6 @@
   items:
     - name: Erläuterungen zur Rechnung
       href: billing-understand-your-bill.md
-    - name: Erläuterungen zur EA-Rechnung
-      href: billing-understand-your-bill-ea.md
     - name: 'Erläuterungen zur Rechnung: Microsoft-Kundenvereinbarung'
       href: billing-mca-understand-your-bill.md
     - name: 'Erläuterungen zur Rechnung: Microsoft-Partnervereinbarung'
@@ -159,6 +157,8 @@
       items:
         - name: "Erste Schritte im Azure\_EA-Portal"
           href: billing-ea-portal-get-started.md
+        - name: Erläuterungen zur EA-Rechnung
+          href: billing-understand-your-bill-ea.md
         - name: EA-Rollen in Azure
           href: billing-understand-ea-roles.md
         - name: "Azure\_EA-Portalverwaltung"
