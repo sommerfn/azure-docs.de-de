@@ -1,22 +1,23 @@
 ---
-title: 'Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung | Microsoft-Dokumentation'
+title: Datenermittlung und -klassifizierung
 description: Azure SQL-Datenbank und Datenermittlung sowie -klassifizierung
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 2767b1b5603baa311d480109988d66dd136297ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009993"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808065"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung
 
@@ -144,8 +145,8 @@ Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu
 
 - [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) erstellt oder aktualisiert die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
 - [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) löscht die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
-- [Empfehlung deaktivieren](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation): deaktiviert die Vertraulichkeitsempfehlungen für eine bestimmte Spalte.
-- [Empfehlung aktivieren](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation): aktiviert die Vertraulichkeitsempfehlungen für eine bestimmte Spalte (Empfehlungen sind standardmäßig für alle Spalten aktiviert).
+- [Empfehlung deaktivieren](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): deaktiviert die Vertraulichkeitsempfehlungen für eine bestimmte Spalte.
+- [Empfehlung aktivieren](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): aktiviert die Vertraulichkeitsempfehlungen für eine bestimmte Spalte (Empfehlungen sind standardmäßig für alle Spalten aktiviert).
 - [Abrufen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab.
 - [Aktuelle nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) listet die derzeitigen Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
 
@@ -161,6 +162,8 @@ Sie können PowerShell verwenden, um alle empfohlenen Spalten in einer Azure SQL
 - [Set-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
 - [Remove-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
 - [Get-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [Enable-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [Disable-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
 ### <a name="powershell-cmdlets-for-managed-instance"></a>PowerShell-Cmdlets für eine verwaltete Instanz
 
@@ -168,6 +171,8 @@ Sie können PowerShell verwenden, um alle empfohlenen Spalten in einer Azure SQL
 - [Set-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
 - [Remove-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
 - [Get-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [Enable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [Disable-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/en-us/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 ## <a name="permissions"></a>Berechtigungen
 
