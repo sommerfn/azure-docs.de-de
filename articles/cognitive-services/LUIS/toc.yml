@@ -39,12 +39,15 @@
           href: get-started-get-model-rest-apis.md
 - name: Lernprogramme
   items:
+    - name: Erstellen einer zerlegbaren App
+      items:
+        - name: 1. Bestimmen von Benutzerabsichten
+          href: tutorial-intents-only.md
+        - name: 2. Extrahieren von Benutzerdaten
+          href: tutorial-machine-learned-entity.md
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
     - name: Erstellen einer App
       items:
-        - name: Bestimmen von Benutzerabsichten
-          href: tutorial-intents-only.md
-        - name: Identifizieren von gängigen Benutzerdaten mit vordefinierten Modellen
-          href: luis-tutorial-prebuilt-intents-entities.md
         - name: Ermitteln der Stimmung anhand von Benutzeräußerungen
           href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Abrufen von gut formatierten Daten mit regulären Ausdrücken

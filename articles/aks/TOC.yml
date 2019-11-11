@@ -345,6 +345,8 @@
           maintainContext: true
         - name: Startprogramm für Bereitstellungscenter
           href: deployment-center-launcher.md
+        - name: GitHub-Aktionen für Kubernetes
+          href: ../aks/kubernetes-action.md
     - name: Problembehandlung
       items:
         - name: Häufige Probleme

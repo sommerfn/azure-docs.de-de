@@ -3,7 +3,7 @@ documentType: LandingData
 title: 'Azure SQL-Datenbank: Einzeldatenbank'
 metadata:
   document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
-  title: 'Dokumentation für Azure SQL-Datenbank – Tutorials, API-Referenz'
+  title: "Dokumentation zu Azure\_SQL-Datenbank: Einzeldatenbank"
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
   requires-business-manager-approval: false

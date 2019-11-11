@@ -26,6 +26,8 @@
       href: cdn-custom-ssl.md
     - name: Festlegen von Cacheregeln
       href: cdn-caching-rules-tutorial.md
+    - name: Erzwingen von HTTPS mithilfe der Standardregel-Engine
+      href: cdn-standard-rules-engine.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -134,6 +136,13 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Verweis
   items:
+    - name: Referenz zur Microsoft-Standardregel-Engine
+      href: cdn-standard-rules-engine-reference.md
+      items:
+        - name: Übereinstimmungsbedingungen der Standardregel-Engine
+          href: cdn-standard-rules-engine-match-conditions.md
+        - name: Aktionen der Standardregel-Engine
+          href: cdn-standard-rules-engine-actions.md
     - name: Referenz zur Verizon Premium-Regel-Engine
       href: cdn-verizon-premium-rules-engine-reference.md
       items:

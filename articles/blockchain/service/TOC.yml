@@ -57,6 +57,8 @@
       href: data-manager-portal.md
     - name: "Konfigurieren von Data Manager\_– Befehlszeilenschnittstelle"
       href: data-manager-cli.md
+    - name: "Veröffentlichen von Daten in Cosmos\_DB"
+      href: data-manager-cosmosdb.md
 - name: Ressourcen
   items:
     - name: Blockchain-REST-API

@@ -876,6 +876,8 @@
       href: service-fabric-common-questions.md
     - name: MSDN-Forum
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+    - name: Schutzmaßnahmen für die Azure Resource Manager-Bereitstellung
+      href: service-fabric-azure-resource-manager-guardrails.md
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: Preisrechner

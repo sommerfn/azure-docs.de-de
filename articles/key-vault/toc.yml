@@ -7,17 +7,21 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Festlegen und Abrufen eines Geheimnisses: CLI'
+    - name: Befehlszeilenschnittstelle (CLI)
       href: quick-create-cli.md
-    - name: 'Festlegen und Abrufen eines Geheimnisses: PowerShell'
+    - name: PowerShell
       href: quick-create-powershell.md
-    - name: 'Festlegen und Abrufen eines Geheimnisses: Portal'
+    - name: Portal
       href: quick-create-portal.md
-    - name: 'Festlegen und Abrufen eines Geheimnisses: .NET'
+    - name: Python
+      href: quick-create-python.md
+    - name: ".NET (SDK\_v4)"
       href: quick-create-net.md
-    - name: 'Festlegen und Abrufen eines Geheimnisses: .Node.js'
+    - name: ".NET (SDK\_v3)"
+      href: quick-create-net-v3.md
+    - name: Node.js
       href: quick-create-node.md
-    - name: 'Festlegen und Abrufen eines Geheimnisses: Vorlage'
+    - name: Azure Resource Manager-Vorlage
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: Lernprogramme

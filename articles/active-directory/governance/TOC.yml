@@ -84,6 +84,14 @@
               href: entitlement-management-request-access.md
     - name: Zugriffsüberprüfungen
       items:
+        - name: Zugriffspakete
+          items:
+            - name: Erstellen einer Zugriffsüberprüfung
+              href: entitlement-management-access-reviews-create.md
+            - name: Überprüfen des Zugriffs
+              href: entitlement-management-access-reviews-review-access.md
+            - name: Überprüfen des eigenen Zugriffs
+              href: entitlement-management-access-reviews-self-review.md
         - name: Gruppen und Apps
           items:
             - name: Erstellen einer Zugriffsüberprüfung

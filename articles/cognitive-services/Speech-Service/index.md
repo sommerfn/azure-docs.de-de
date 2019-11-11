@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: Dokumentation zum Speech-Dienst
 description: Erste Schritte mit dem Speech-Dienst.
-ms.openlocfilehash: 0a878e3ad736347e61ea62aed96a15a1c2167a4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508090"
+ms.locfileid: "73580329"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -560,32 +560,13 @@ ms.locfileid: "73508090"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://aka.ms/speech/va-no-code">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_conversational_agent.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Erstellen eines Assistenten ohne Code</h3>
-                                                    <p>Erstellen Sie einen Sprachassistenten ohne Programmieraufwand.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>          
-                            <li>
                                 <a href="https://aka.ms/speech/va-bot-framework">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech_conversational_agent.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -596,7 +577,26 @@ ms.locfileid: "73508090"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
+                            <li>
+                                <a href="https://aka.ms/speech/va-no-code">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Verwenden benutzerdefinierter Befehle</h3>
+                                                    <p>Hier erfahren Sie, wie Sie einfache und stabile Befehls- und Steuerungsinteraktionen mit Language Understanding und Fehlerkorrektur erstellen.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -748,7 +748,7 @@ ms.locfileid: "73508090"
                                 </a>
                             </li>
                             <li>
-                                <a href="https://aka.ms/speech/custom-tts-overview">
+                                <a href="https://aka.ms/speech/custom-tts-audio-content-creation">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">

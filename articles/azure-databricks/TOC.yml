@@ -260,7 +260,7 @@
             - name: Cosmos DB
               href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
               maintainContext: true
-            - name: SQL Data Warehouse
+            - name: Azure SQL Data Warehouse
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
             - name: Binärdateien
@@ -272,7 +272,7 @@
             - name: Couchbase
               href: /azure/databricks/data/data-sources/couchbase
               maintainContext: true
-            - name: Elastic Search
+            - name: ElasticSearch
               href: /azure/databricks/data/data-sources/elasticsearch
               maintainContext: true
             - name: Bilder
@@ -708,14 +708,17 @@
             - name: Beispiel für Entscheidungsstrukturen
               href: /azure/databricks/applications/machine-learning/mllib/decision-trees
               maintainContext: true
-            - name: MLib-Pipelines und strukturiertes Streaming
+            - name: MLlib-Pipelines und strukturiertes Streaming
               href: /azure/databricks/applications/machine-learning/mllib/mllib-pipelines-and-stuctured-streaming
               maintainContext: true
-            - name: Erweitertes MLib-Beispiel
+            - name: Erweitertes MLlib-Beispiel
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
         - name: Auto ML
           items:
+            - name: 'Übersicht: Automatisiertes maschinelles Lernen (Machine Learning, ML)'
+              href: /azure/databricks/applications/machine-learning/automl/index
+              maintainContext: true
             - name: Hyperopt
               items:
                 - name: 'Hyperopt: Übersicht'
@@ -730,8 +733,16 @@
                 - name: Modellsuche mit verteiltem Hyperopt
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
-            - name: MLib und automatisierte MLflow-Nachverfolgung
+            - name: MLlib und automatisierte MLflow-Nachverfolgung
               href: /azure/databricks/applications/machine-learning/automl/mllib-mlflow-integration
+              maintainContext: true
+        - name: Exportieren und Importieren von ML-Modellen
+          items:
+            - name: 'Übersicht: Exportieren und Importieren'
+              href: /azure/databricks/applications/machine-learning/model-export-import/index
+              maintainContext: true
+            - name: 'MLeap: ML-Modellexport'
+              href: /azure/databricks/applications/machine-learning/model-export-import/mleap-model-export
               maintainContext: true
         - name: Integration von Drittanbieter-Machine Learning
           href: /azure/databricks/applications/machine-learning/third-party/index
@@ -826,33 +837,39 @@
         - name: 'MLflow: Übersicht'
           href: /azure/databricks/applications/mlflow/index
           maintainContext: true
-        - name: Erste Schritte mit MLflow
-          href: /azure/databricks/applications/mlflow/quick-start
-          maintainContext: true
-        - name: Erste Schritte mit MLflow Java und Scala
-          href: /azure/databricks/applications/mlflow/quick-start-java-scala
-          maintainContext: true
-        - name: Erste Schritte mit MLflow Python
-          href: /azure/databricks/applications/mlflow/quick-start-python
-          maintainContext: true
-        - name: Erste Schritte mit MLflow R
-          href: /azure/databricks/applications/mlflow/quick-start-r
-          maintainContext: true
+        - name: Erste Schritte
+          items:
+            - name: Erste Schritte mit MLflow
+              href: /azure/databricks/applications/mlflow/quick-start
+              maintainContext: true
+            - name: Erste Schritte mit MLflow Java und Scala
+              href: /azure/databricks/applications/mlflow/  quick-start-java-scala
+              maintainContext: true
+            - name: Erste Schritte mit MLflow Python
+              href: /azure/databricks/applications/mlflow/  quick-start-python
+              maintainContext: true
+            - name: Erste Schritte mit MLflow R
+              href: /azure/databricks/applications/mlflow/quick-start-r
+              maintainContext: true
         - name: Nachverfolgen von Machine Learning-Trainingsausführungen
-          href: /azure/databricks/applications/mlflow/tracking
-          maintainContext: true
-        - name: Beispiele für MLflow-Nachverfolgung
-          href: /azure/databricks/applications/mlflow/tracking-examples
-          maintainContext: true
-        - name: Externes Zugreifen auf die Nachverfolgung
-          href: /azure/databricks/applications/mlflow/access-hosted-tracking-server
-          maintainContext: true
+          items:
+            - name: 'Übersicht: Nachverfolgung'
+              href: /azure/databricks/applications/mlflow/tracking
+              maintainContext: true
+            - name: Beispiele für MLflow-Nachverfolgung
+              href: /azure/databricks/applications/mlflow/  tracking-examples
+              maintainContext: true
+            - name: Externes Zugreifen auf die Nachverfolgung
+              href: /azure/databricks/applications/mlflow/  access-hosted-tracking-server
+              maintainContext: true
         - name: 'Speichern, Laden und Bereitstellen von Modellen'
-          href: /azure/databricks/applications/mlflow/models
-          maintainContext: true
-        - name: MLflow-Modellbeispiele
-          href: /azure/databricks/applications/mlflow/model-examples
-          maintainContext: true
+          items:
+            - name: 'Übersicht: Speichern, Laden und Bereitstellen'
+              href: /azure/databricks/applications/mlflow/models
+              maintainContext: true
+            - name: MLflow-Modellbeispiele
+              href: /azure/databricks/applications/mlflow/  model-examples
+              maintainContext: true
         - name: Reproduzieren von Ausführungen mit MLflow-Projekten
           href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
@@ -880,9 +897,6 @@
         - name: Übersicht über Genomics
           href: /azure/databricks/applications/genomics/index
           maintainContext: true
-        - name: 'Genomics ETL: Übersicht'
-          href: /azure/databricks/applications/genomics/etl/index
-          maintainContext: true
         - name: Sekundäre Analyse
           items:
             - name: 'Sekundäre Analyse: Übersicht'
@@ -908,6 +922,9 @@
               maintainContext: true
         - name: ETL
           items:
+            - name: 'Genomics ETL: Übersicht'
+              href: /azure/databricks/applications/genomics/etl/index
+              maintainContext: true
             - name: Varianten-E/A mit Apache Spark SQL
               href: /azure/databricks/applications/genomics/etl/variant-data
               maintainContext: true
@@ -1211,10 +1228,7 @@
               maintainContext: true
             - name: Fehler beim Erkennen der Codierung in JSON
               href: /azure/databricks/kb/data-sources/json-unicode
-              maintainContext: true
-            - name: JDBC-Abfrageoption funktioniert nicht für Oracle-Datenbank
-              href: /azure/databricks/kb/data-sources/query-option-not-work-oracle
-              maintainContext: true
+              maintainContext: true j
         - name: DBFS
           items:
             - name: Im DBFS-Stamm gespeicherte Objekte können nicht gelesen werden
@@ -1294,6 +1308,9 @@
             - name: Auftragsfehler (maxresultsize)
               href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
               maintainContext: true
+            - name: Sicherstellen der Idempotenz
+              href: /azure/databricks/kb/jobs/jobs-idempotency
+              maintainContext: true
         - name: Bibliotheken
           items:
             - name: Deinstallieren der Bibliothek über die Benutzeroberfläche nicht möglich
@@ -1370,7 +1387,7 @@
             - name: Ausführen des Notebooks nach Abbruch der Streamingzelle nicht möglich
               href: /azure/databricks/kb/notebooks/streaming-notebook-stuck
               maintainContext: true
-            - name: Problembehandlung für den Abbruchsbefehl
+            - name: Problembehandlung für den Abbruchbefehl
               href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
               maintainContext: true
         - name: Sicherheit und Berechtigungen

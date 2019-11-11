@@ -31,6 +31,8 @@
       href: publish-marketplace-app.md
     - name: Erstellen einer verwalteten Anwendung mit einem benutzerdefinierten Anbieter
       href: tutorial-create-managed-app-with-custom-provider.md
+    - name: Onboarding von Ressourcen mit benutzerdefinierten Anbietern
+      href: tutorial-custom-providers-resource-onboarding.md
 - name: Beispiele
   items:
     - name: Die Azure-CLI
@@ -45,6 +47,10 @@
       href: custom-providers-overview.md
     - name: Anzeigen des Definitionsartefakts
       href: concepts-view-definition.md
+    - name: Rollendefinitionsartefakt
+      href: concepts-custom-role-definition.md
+    - name: Onboarding von Ressourcen
+      href: concepts-custom-providers-resourceonboarding.md
 - name: Anleitungen
   items:
     - name: Benutzerdefinierte Anbieter

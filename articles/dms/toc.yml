@@ -8,6 +8,8 @@
   items:
     - name: 'Erstellen eines Diensts: Portal'
       href: quickstart-create-data-migration-service-portal.md
+    - name: 'Erstellen eines Diensts im Hybridmodus: Portal'
+      href: quickstart-create-data-migration-service-hybrid-portal.md
 - name: Lernprogramme
   items:
     - name: Offlinemigration von SQL Server zu einer Einzeldatenbank in Azure SQL-Datenbank

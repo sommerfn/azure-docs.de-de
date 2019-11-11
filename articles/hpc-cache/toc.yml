@@ -30,6 +30,8 @@
                   href: hpc-cache-ingest-msrsync.md
                 - name: Auffüllen des Caches per manuellem Dateikopiervorgang
                   href: hpc-cache-ingest-manual.md
+        - name: Bearbeiten von Speicherzielen
+          href: hpc-cache-edit-storage.md
     - name: Herstellen einer Verbindung mit dem Cache
       href: hpc-cache-mount.md
     - name: Verwalten des Caches

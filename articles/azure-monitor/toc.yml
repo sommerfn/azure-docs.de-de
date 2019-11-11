@@ -295,7 +295,7 @@
                 - name: Ausnahmen
                   href: app/asp-net-exceptions.md
                 - name: Protokollablaufverfolgungen
-                  href: app/java-trace-logs.md
+                  href: app/asp-net-trace-logs.md
                 - name: UNIX-Metriken
                   href: app/java-collectd.md
                 - name: Abhängigkeiten
@@ -318,6 +318,8 @@
                   href: app/opencensus-python.md
                 - name: Abhängigkeiten
                   href: app/opencensus-python-dependency.md
+                - name: Requests
+                  href: app/opencensus-python-request.md
             - name: Webseiten
               items:
                 - name: Clientseitiges JavaScript
@@ -593,26 +595,39 @@
         - name: Ressourcenprotokolle
           items:
             - name: Übersicht
+              displayname: Resource logs
               href: platform/resource-logs-overview.md
             - name: "Erfassen in Azure\_Monitor-Protokollen"
+              displayname: Resource logs
               href: platform/resource-logs-collect-workspace.md
             - name: Archivieren im Speicher
+              displayname: Resource logs
               href: platform/resource-logs-collect-storage.md
             - name: Stream für Event Hubs
+              displayname: Resource logs
               href: platform/resource-logs-stream-event-hubs.md
         - name: Aktivitätsprotokoll
           items:
             - name: Übersicht
+              displayname: Activity log
               href: platform/activity-logs-overview.md
+            - name: Erfassen von Daten mit der Diagnoseeinstellung
+              displayname: Activity log
+              href: platform/diagnostic-settings-subscription.md
             - name: Anzeigen und Abrufen
+              displayname: Activity log
               href: platform/activity-log-view.md
             - name: Sammeln und Analysieren
+              displayname: Activity log
               href: platform/activity-log-collect.md
             - name: Mandantenübergreifendes Sammeln
+              displayname: Activity log
               href: platform/activity-log-collect-tenants.md
             - name: Export
+              displayname: Activity log
               href: platform/activity-log-export.md
             - name: Schema
+              displayname: Activity log
               href: platform/activity-log-schema.md
         - name: Diagnoseeinstellungen
           items:
@@ -621,6 +636,7 @@
             - name: Erstellen einer Diagnoseeinstellung mit Resource Manager
               href: platform/diagnostic-settings-template.md
             - name: Ändern in das Blobspeicherformat
+              displayname: Diagnostic settings
               href: platform/resource-logs-blob-format.md
         - name: Streamen von Daten an Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md

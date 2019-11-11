@@ -434,9 +434,9 @@
                   href: msal-js-pass-custom-state-authentication-request.md
                 - name: Verhalten der Eingabeaufforderung
                   href: msal-js-prompt-behavior.md
-            - name: MSAL für iOS und MacOS
+            - name: MSAL für iOS und macOS
               items:
-                - name: 'Microsoft Authentication Library für iOS und macOS: Unterschiede'
+                - name: Unterschiede zwischen MSAL für iOS und macOS
                   href: msal-differences-ios-macos.md
                 - name: Konfigurieren einer Keychain
                   href: howto-v2-keychain-objc.md

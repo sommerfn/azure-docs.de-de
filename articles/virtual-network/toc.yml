@@ -39,6 +39,8 @@
       href: security-overview.md
     - name: Routing
       href: virtual-networks-udr-overview.md
+    - name: Diensttags
+      href: service-tags-overview.md
     - name: Dienstendpunkte
       href: virtual-network-service-endpoints-overview.md
     - name: Dienstendpunkt-Richtlinien
@@ -65,6 +67,8 @@
       href: ipv6-public-ip-address-prefix.md
     - name: DDoS-Schutz
       href: ddos-protection-overview.md
+    - name: Subnetzerweiterung
+      href: subnet-extension.md
     - name: Interoperabilität der Back-End-Konnektivität
       items:
         - name: Einleitung und Testeinrichtung
@@ -297,6 +301,8 @@
           href: diagnose-network-routing-problem.md
         - name: Durchsatztests
           href: virtual-network-bandwidth-testing.md
+        - name: Testen der VM-Netzwerklatenz
+          href: virtual-network-test-latency.md
         - name: Löschen virtueller Netzwerke nicht möglich
           href: virtual-network-troubleshoot-cannot-delete-vnet.md
         - name: Konnektivitätsprobleme zwischen virtuellen Computern

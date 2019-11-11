@@ -138,6 +138,8 @@
           href: resource-group-create-multiple.md
         - name: Ressourcen auf Abonnementebene
           href: deploy-to-subscription.md
+        - name: Ressourcen auf Verwaltungsgruppenebene
+          href: deploy-to-management-group.md
     - name: Bereitstellen von Vorlagen
       items:
         - name: 'Bereitstellen: Portal'

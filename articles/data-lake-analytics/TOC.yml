@@ -121,11 +121,17 @@
     - name: Grundlegendes zu Apache Spark für U-SQL-Entwickler
       items:
         - name: Grundlegendes zu Apache Spark für U-SQL-Entwickler
-          href: data-lake-analytics-understand-spark-for-usql-developers.md
+          href: understand-spark-for-usql-developers.md
         - name: Grundlegendes zu Apache Spark-Datenformaten
-          href: data-lake-analytics-understand-spark-data-formats.md
+          href: understand-spark-data-formats.md
         - name: Grundlegendes zu Apache Spark-Codekonzepten
-          href: data-lake-analytics-understand-spark-code-concepts.md
+          href: understand-spark-code-concepts.md
+    - name: Problembehandlung für U-SQL-Aufträge
+      items:
+        - name: Problembehandlung für U-SQL-Laufzeitfehler
+          href: runtime-troubleshoot.md
+        - name: Problembehandlung für ein .NET-Upgrade
+          href: dotnet-upgrade-troubleshoot.md
 - name: Verweis
   items:
     - name: Azure PowerShell

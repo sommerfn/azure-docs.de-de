@@ -18,6 +18,9 @@
     - name: Mandantenübergreifende Verwaltungsmöglichkeiten
       displayName: scenarios
       href: ./concepts/cross-tenant-management-experience.md
+    - name: 'Mandanten, Rollen und Benutzer'
+      displayName: 'Azure AD, Azure Active Directory'
+      href: ./concepts/tenants-users-roles.md
     - name: Angebote für verwaltete Dienste in Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md

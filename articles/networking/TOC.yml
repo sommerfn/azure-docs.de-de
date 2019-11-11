@@ -42,8 +42,9 @@
       items:
         - name: Globales Microsoft-Netzwerk
           href: microsoft-global-network.md
-        - name: Testen der VM-Netzwerklatenz
-          href: virtual-network-test-latency.md
+          items:
+            - name: Azure-Netzwerklatenz
+              href: azure-network-latency.md
         - name: Virtuelle Netzwerke
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Netzwerklastenausgleich

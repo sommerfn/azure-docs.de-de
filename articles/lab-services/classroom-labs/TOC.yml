@@ -52,6 +52,8 @@
       items:
         - name: Erstellen und Verwalten von Classroom-Labs
           href: how-to-manage-classroom-labs.md
+        - name: Verwenden des Dashboards
+          href: use-dashboard.md
         - name: 'Einrichten, Anpassen und Veröffentlichen von Vorlagen'
           href: how-to-create-manage-template.md
         - name: Einrichten und Verwalten eines VM-Pools
@@ -80,6 +82,8 @@
   items:
     - name: REST-API
       href: 'https://docs.microsoft.com/rest/api/labservices/'
+    - name: PowerShell-Modul „Az.LabServices“ (Vorschauversion)
+      href: reference-powershell-module.md
 - name: Ressourcen
   items:
     - name: Azure-Updates

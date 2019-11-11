@@ -12,12 +12,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 48140c014492383fd4c714669b070df1fa6214e6
-  ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+  ms.openlocfilehash: 8174498a5cc94eca0883102c95b543630cd37fdf
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73521151"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73607500"
 landingContent:
 - title: Informationen zu Security Center
   linkLists:
@@ -27,6 +27,22 @@ landingContent:
       url: security-center-intro.md
     - text: Welche Versionen von Windows Server und Linux werden unterstützt?
       url: security-center-os-coverage.md
+- title: Auf dem Laufenden bleiben
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Schützen Ihrer Container
+      url: container-security.md
+    - text: Hinzufügen dynamische Compliancepakete
+      url: update-regulatory-compliance-packages.md
+    - text: Integrieren mit Windows Admin Center
+      url: windows-admin-center-integration.md
+    - text: Automatisieren von Reaktionen auf Warnungen und Empfehlungen
+      url: workflow-automation.md
+    - text: Exportieren von Sicherheitswarnungen und -empfehlungen
+      url: continuous-export.md
+    - text: Einrichten von Advanced Threat Protection für Azure Key Vault
+      url: advanced-threat-protection-key-vault.md
 - title: Erste Schritte
   linkLists:
   - linkListType: get-started

@@ -326,7 +326,7 @@
               href: shared-images.md
             - name: Portal
               href: shared-images-portal.md
-            - name: Mandantenübergreifende Freigabe von Images
+            - name: App-Registrierung für die Freigabe
               href: share-images-across-tenants.md
             - name: Problembehandlung für freigegebene Images
               href: troubleshooting-shared-images.md

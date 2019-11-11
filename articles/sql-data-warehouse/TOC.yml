@@ -47,10 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: Workloadverwaltung
       items:
-        - name: Erstellen eines Workloadklassifizierers
+        - name: Erstellen einer Workloadisolation
           items:
             - name: T-SQL
-              href: quickstart-create-a-workload-classifier-tsql.md
+              href: quickstart-configure-workload-isolation-tsql.md
 - name: Konzepte
   items:
     - name: Sicherheit
@@ -213,14 +213,18 @@
           href: sql-data-warehouse-develop-label.md
     - name: Workloadverwaltung
       items:
-        - name: Ressourcenklassen und Workloadverwaltung
-          href: resource-classes-for-workload-management.md
+        - name: Übersicht
+          href: sql-data-warehouse-workload-management.md
         - name: Workloadklassifizierung
           href: sql-data-warehouse-workload-classification.md
         - name: Workloadpriorität
           href: sql-data-warehouse-workload-importance.md
+        - name: Workloadisolation
+          href: sql-data-warehouse-workload-isolation.md
         - name: Speicher- und Parallelitätslimits
-          href: memory-and-concurrency-limits.md
+          href: memory-concurrency-limits.md
+        - name: Ressourcenklassen
+          href: resource-classes-for-workload-management.md
     - name: Verwaltbarkeit und Überwachung
       items:
         - name: Übersicht
@@ -303,6 +307,8 @@
           href: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
         - name: Konfigurieren der Workloadpriorität
           href: sql-data-warehouse-how-to-configure-workload-importance.md
+        - name: Konvertieren von Ressourcenklassen in Arbeitsauslastungsgruppen
+          href: sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md
     - name: Verwalten und Überwachen
       items:
         - name: Upgrade auf Gen2

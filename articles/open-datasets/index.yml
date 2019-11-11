@@ -2,7 +2,7 @@
 title: Dokumentation für Azure Open Datasets
 summary: Azure Open Datasets bietet zusammengestellte bereinigte Daten (etwa Wetterdaten, Volkszählungsdaten und Feiertage), die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können.
 metadata:
-  title: Dokumentation für Open Datasets – Azure
+  title: 'Dokumentation zu Open Datasets: Tutorials, API-Referenz – Azure'
   description: Azure Open Datasets bietet zusammengestellte bereinigte Daten (etwa Wetterdaten, Volkszählungsdaten und Feiertage), die mit minimaler Vorbereitung zur Anreicherung von ML-Modellen verwendet werden können.
   services: machine-learning
   ms.service: machine-learning
@@ -12,12 +12,12 @@ metadata:
   author: cjgronlund
   ms.author: cgronlun
   ms.date: 11/04/2019
-  ms.openlocfilehash: b6813c3fd521b12ec91eddb0176efedb8c5c120a
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 76baa1362eb1eaa4c062fccd4eea84815cb08c50
+  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73496617"
+  ms.lasthandoff: 11/05/2019
+  ms.locfileid: "73603642"
 landingContent:
 - title: Informationen zu Azure Open Datasets
   linkLists:

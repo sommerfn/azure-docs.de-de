@@ -1,39 +1,74 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: "Dokumentation zu IoT\_Plug\_&\_Play (Vorschauversion)"
+### YamlMime:Landing
+title: Dokumentation zu IoT Plug & Play (Vorschauversion)
+summary: Mit IoT Plug & Play (Vorschauversion) können Sie ein Gerätemodell definieren, damit Cloudlösungen Ihr Gerät automatisch verstehen und mit ihm interagieren können – und das alles, ohne Gerätecode schreiben zu müssen.
 metadata:
-  title: "Dokumentation zu IoT\_Plug\_&\_Play (Vorschauversion): Tutorials, API-Referenz | Microsoft-Dokumentation"
-  description: "Hier erfahren Sie anhand von Tutorials, API-Referenzen, Videos und anderem Dokumentationsmaterial, wie Sie IoT\_Plug\_&\_Play verwenden."
-  author: dominicbetts
-  manager: philmea
-  ms.service: iot-pnp
+  title: Dokumentation zu IoT Plug & Play (Vorschauversion)
+  description: Mit IoT Plug & Play (Vorschauversion) können Sie ein Gerätemodell definieren, damit Cloudlösungen Ihr Gerät automatisch verstehen und mit ihm interagieren können – und das alles, ohne Gerätecode schreiben zu müssen.
   services: iot-pnp
+  ms.service: iot-pnp
   ms.topic: landing-page
-  ms.date: 07/23/2019
+  author: dominicbetts
   ms.author: dobett
-abstract:
-  description: "Erfahren Sie, wie Sie mithilfe von IoT\_Plug\_&\_Play (Vorschauversion) ein Gerätemodell definieren, damit Cloudlösungen Ihr Gerät automatisch verstehen und mit ihm interagieren können\_– und das alles, ohne Gerätecode schreiben zu müssen. Nutzen Sie Tutorials, API-Referenzen, Videos und anderes Dokumentationsmaterial, um eine Verbindung zwischen Geräten und Cloudlösungen wie Azure\_IoT\_Central oder Partneranwendungen herzustellen."
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-pnp-introduction.png
-      width: 250
-    title: "Einführung in IoT\_Plug\_&\_Play (11:54)"
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player'
-    width: 250
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie <a href="quickstart-create-pnp-device">ein Gerätefunktionsmodell zum Erstellen eines Geräts verwenden</a>.'
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie <a href="quickstart-connect-pnp-device-solution">ein Gerät mit Ihrer Lösung verbinden</a>.'
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-pnp-visual-studio-code">Erstellen eines Geräts mit Visual Studio Code</a>
-          - html: <a href="tutorial-build-device-certification">Erstellen eines zertifizierungsbereiten Geräts</a>
-          - html: <a href="tutorial-certification-test">Zertifizieren Ihres Geräts</a>
+  manager: philmea
+  ms.date: 10/31/2019
+  ms.openlocfilehash: 442b9c5028ef899329912fa9d21ce780437d7970
+  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/04/2019
+  ms.locfileid: "73570173"
+landingContent:
+- title: Grundlegendes zu IoT Plug & Play
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist IoT Plug & Play?
+      url: overview-iot-plug-and-play.md
+  - linkListType: video
+    links:
+    - text: Einführung in IoT Plug & Play
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
+- title: Entwickeln von Geräten
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Verbinden eines Beispielgeräts mit IoT Hub
+      url: quickstart-connect-pnp-device.md
+    - text: Verbinden eines Beispielgeräts mit IoT Central
+      url: ../iot-central/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
+    - text: Verwenden eines Gerätefunktionsmodells zum Erstellen eines Geräts
+      url: quickstart-create-pnp-device.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen und Testen eines Gerätefunktionsmodells mit Visual Studio Code
+      url: tutorial-pnp-visual-studio-code.md
+    - text: Erstellen eines zertifizierungsbereiten Geräts
+      url: tutorial-build-device-certification.md
+    - text: Zertifizieren Ihres Geräts
+      url: tutorial-certification-test.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden von Azure IoT Tools für Visual Studio Code
+      url: howto-develop-with-vs-vscode.md
+    - text: Onboarding von Geräten im Azure Certified for IoT-Portal
+      url: howto-onboard-portal.md
+  - linkListType: concept
+    links:
+    - text: Gängige Schnittstellen
+      url: concepts-common-interfaces.md
+- title: Erstellen von Lösungen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Interagieren mit einem Gerät, das mit Ihrer Lösung verbunden ist
+      url: quickstart-connect-pnp-device-solution.md
+  - linkListType: concept
+    links:
+    - text: Modellermittlung
+      url: concepts-model-discovery.md
+    - text: Gängige Schnittstellen
+      url: concepts-common-interfaces.md
+  - linkListType: how-to-guide
+    links:
+    - text: Herstellen einer Verbindung mit Geräten in Ihrer Lösung
+      url: howto-develop-solution.md

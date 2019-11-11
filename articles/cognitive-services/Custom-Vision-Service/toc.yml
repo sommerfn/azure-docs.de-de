@@ -56,7 +56,7 @@
       href: getting-started-improving-your-classifier.md
     - name: Verwenden der Vorhersage-API
       href: use-prediction-api.md
-    - name: Verwenden vorgeschlagener Tags
+    - name: Verwenden des intelligenten Beschriftungserstellers
       href: suggested-tags.md
     - name: Exportieren von Modellen
       items:

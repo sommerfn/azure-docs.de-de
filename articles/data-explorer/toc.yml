@@ -88,10 +88,6 @@
           href: ingest-data-logstash.md
         - name: Kopieren von Daten mit Azure Data Factory
           href: data-factory-load-data.md
-    - name: Bereitstellen
-      items:
-        - name: DevOps-Aufgabe
-          href: devops.md
     - name: Abfragen von Daten
       items:
         - name: Schreiben von Abfragen
@@ -136,6 +132,8 @@
           href: tableau.md
         - name: Sisense
           href: sisense.md
+        - name: Redash
+          href: redash.md
     - name: Verwalten
       items:
         - name: Cluster
@@ -166,6 +164,10 @@
               href: delete-data.md
             - name: Behandeln von doppelten Daten
               href: dealing-with-duplicates.md
+    - name: Bereitstellen
+      items:
+        - name: Bereitstellen des Clusters in Ihrem VNET
+          href: vnet-deployment.md
     - name: Überwachen
       items:
         - name: Verwenden von Diagnoseprotokollen zum Überwachen der Erfassung
@@ -186,6 +188,8 @@
           href: connect-from-databricks.md
         - name: Analysieren von Daten in Jupyter Notebooks und Kqlmagic
           href: kqlmagic.md
+        - name: Azure Pipelines
+          href: devops.md
     - name: Problembehandlung
       items:
         - name: Erstellen eines Clusters
@@ -220,9 +224,13 @@
           href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
     - name: Produktfeedback
       href: 'https://aka.ms/adefeedback'
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
-    - name: Cost Estimator
-      href: 'https://aka.ms/adecostestimator'
+    - name: Preise und Abrechnung
+      items:
+        - name: Seite mit der Preisübersicht
+          href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+        - name: Kostenschätzungstool
+          href: 'https://aka.ms/adecostestimator'
+        - name: Reservierte Kapazität
+          href: pricing-reserved-capacity.md
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=data-explorer'

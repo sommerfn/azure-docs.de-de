@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zu Custom Vision
-summary: Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
+summary: Custom Vision ermöglicht Ihnen das Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der basierend auf den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
 metadata:
   title: Dokumentation zu Custom Vision – Schnellstarts, Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation
-  description: Custom Vision ist ein Cognitive Services-Dienst zum Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der entsprechend den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
+  description: Custom Vision ermöglicht Ihnen das Erstellen, Bereitstellen und Optimieren eigener Bildklassifizierungen. Eine Bildklassifizierung ist ein KI-Dienst, der basierend auf den visuellen Merkmalen in einem Bild Bezeichnungen (die Klassen darstellen) auf Bilder anwendet.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 21e4c324b947cb863614f50bb2ee0bfe09246372
-  ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+  ms.openlocfilehash: 2ef22176b64638dc43a4a45096cf072a7c79931e
+  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/25/2019
-  ms.locfileid: "72931636"
+  ms.lasthandoff: 11/06/2019
+  ms.locfileid: "73647594"
 landingContent:
 - title: Informationen zu Custom Vision
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
       url: test-your-model.md
     - text: Verbessern Ihres Modells
       url: getting-started-improving-your-classifier.md
-    - text: Verwenden vorgeschlagener Tags
+    - text: Verwenden des intelligenten Beschriftungserstellers
       url: suggested-tags.md
 - title: Exportieren von Modellen
   linkLists:

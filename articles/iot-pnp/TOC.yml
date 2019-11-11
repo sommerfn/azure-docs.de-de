@@ -7,10 +7,14 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Verwenden eines Gerätefunktionsmodells zum Erstellen eines Geräts
+    - name: 'Erstellen eines Geräts: Windows'
       href: quickstart-create-pnp-device.md
-    - name: "Verbinden eines Geräts mit IoT\_Hub"
+    - name: 'Erstellen eines Geräts: Linux'
+      href: quickstart-create-pnp-device-linux.md
+    - name: "Verbinden eines Geräts mit IoT\_Hub: Windows"
       href: quickstart-connect-pnp-device.md
+    - name: "Verbinden eines Geräts mit IoT\_Hub: Linux"
+      href: quickstart-connect-pnp-device-linux.md
     - name: "Verbinden eines Geräts mit IoT\_Central"
       href: ../iot-central/core/quick-create-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
     - name: Herstellen einer Verbindung mit einem Gerät in Ihrer Lösung

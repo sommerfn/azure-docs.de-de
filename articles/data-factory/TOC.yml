@@ -518,6 +518,8 @@
           href: data-movement-security-considerations.md
         - name: Speichern von Anmeldeinformationen in Azure Key Vault
           href: store-credentials-in-key-vault.md
+        - name: "Verwenden von Azure Key\_Vault-Geheimnissen in Pipelineaktivitäten"
+          href: how-to-use-azure-key-vault-secrets-pipeline-activities.md
         - name: Verschlüsseln der Anmeldeinformationen für die selbstgehostete Integrationslaufzeit
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Verwaltete Identität für Data Factory
