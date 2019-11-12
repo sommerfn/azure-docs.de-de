@@ -241,6 +241,8 @@
                   href: migrate-android-adal-msal.md
                 - name: Migrieren zu MSAL.iOS und MacOS
                   href: migrate-objc-adal-msal.md
+                - name: Migrieren zu MSAL Java
+                  href: migrate-adal-msal-java.md
                 - name: Migrieren von Xamarin-Apps von ADAL.NET zu MSAL.NET unter Verwendung von Brokern
                   href: msal-net-migration-ios-broker.md
             - name: Unterstützte Authentifizierungsflows
@@ -390,6 +392,10 @@
               href: active-directory-configurable-token-lifetimes.md
         - name: Anwendungskonfiguration
           items:
+            - name: Trainingshandbuch zu App-Registrierungen im Azure-Portal (Vorversion)
+              href: app-registrations-training-guide-for-app-registrations-legacy-users.md
+            - name: Leitfaden zu App-Registrierungen im Anwendungsregistrierungsportal
+              href: app-registration-portal-training-guide.md
             - name: Umwandeln einer App mit nur einem Mandanten in eine mehrinstanzenfähige App
               href: howto-convert-app-to-be-multi-tenant.md
             - name: Erstellen eines Dienstprinzipals
@@ -446,6 +452,12 @@
                   href: request-custom-claims.md
                 - name: Konfiguration des Umleitungs-URI
                   href: redirect-uris-ios.md
+            - name: MSAL Java
+              items:
+                - name: Tokencacheserialisierung
+                  href: msal-java-token-cache-serialization.md
+                - name: Hinzufügen und Entfernen von Konten aus dem Tokencache
+                  href: msal-java-get-remove-accounts-token-cache.md
         - name: Arbeiten mit Visual Studio
           items:
             - name: Verwenden des verbundenen Active Directory-Diensts
@@ -594,8 +606,6 @@
               href: reference-saml-tokens.md
         - name: Anwendungskonfiguration
           items:
-            - name: Trainingshandbuch für App-Registrierungen
-              href: app-registrations-training-guide.md
             - name: Anwendungen und Dienstprinzipale
               href: app-objects-and-service-principals.md
             - name: Wie und warum werden Apps zu Azure AD hinzugefügt?

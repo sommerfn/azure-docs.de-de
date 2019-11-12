@@ -13,10 +13,10 @@
 - name: Konzepte
   items:
     - name: Delegierte Azure-Ressourcenverwaltung
-      displayName: delegation
+      displayName: 'delegation, projection'
       href: ./concepts/azure-delegated-resource-management.md
     - name: Mandantenübergreifende Verwaltungsmöglichkeiten
-      displayName: scenarios
+      displayName: 'scenarios, supported, enhanced, services, limitations, current'
       href: ./concepts/cross-tenant-management-experience.md
     - name: 'Mandanten, Rollen und Benutzer'
       displayName: 'Azure AD, Azure Active Directory'
@@ -39,16 +39,22 @@
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Angebote für verwaltete Dienste in Azure Marketplace veröffentlichen
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Kunden anzeigen und verwalten
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: my customers
       href: ./how-to/view-manage-customers.md
     - name: Dienstanbieter anzeigen und verwalten
-      displayName: 'managed services offer, azure marketplace, publish'
+      displayName: 'customer, update'
       href: ./how-to/view-manage-service-providers.md
-    - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
-      href: ./how-to/deploy-policy-remediation.md
+    - name: Azure Policy-Integration
+      items:
+        - name: Bedarfsorientiertes Bereitstellen einer Richtlinie
+          displayName: storage
+          href: ./how-to/policy-at-scale.md
+        - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
+          displayName: 'deployIfNotExists, modify, managed identities, managed identity'
+          href: ./how-to/deploy-policy-remediation.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

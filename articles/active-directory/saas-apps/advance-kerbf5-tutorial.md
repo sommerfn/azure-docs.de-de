@@ -248,13 +248,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 * **Schritt 1: Erstellen eines Delegierungskontos**
 
-    * Beispieldomänenname: superdemo.live SAM-Kontoname: big-ipuser
+    * Example Domain Name : superdemo.live Sam Account Name : big-ipuser
 
-    * New-ADUser -Name "APM-Delegierungskonto" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
+    * New-ADUser -Name "APM Delegation Account" -UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -SamAccountName "big-ipuser" -PasswordNeverExpires $true -Enabled $true -AccountPassword (Read-Host -AsSecureString "Password!1234")
 
 * **Schritt 2: Festlegen des SPN (für das APM-Delegierungskonto)**
 
-    *  Beispiel: setspn –A host/big-ipuser.superdemo.live big-ipuser
+    *  Example setspn –A host/big-ipuser.superdemo.live big-ipuser
 
 * **Schritt 3: SPN-Delegierung (für das App Service-Konto)**
 
@@ -265,7 +265,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Geben Sie die Details wie in [diesem Referenzdokument](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) beschrieben ein.
 
-1. Appendix: SAML – F5 BIG-IP: Hier sehen Sie die Variablenzuordnungen:
+1. Appendix- SAML – F5 BIG-IP Variable mappings shown below:
 
     ![F5-Konfiguration (Advanced Kerberos)](./media/advance-kerbf5-tutorial/configure26.png)
 

@@ -307,8 +307,8 @@
               href: concepts-gating-overview.md
             - name: Bereitstellung von Synthesetechnologie
               href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Transparenzhinweis für Custom Voice
-              href: 'https://aka.ms/neural-tts-transparency-note'
+            - name: Offenlegung für Sprecher
+              href: 'https://aka.ms/disclosure-voice-talent'
             - name: Entwurfsrichtlinien für die Offenlegung
               href: concepts-disclosure-guidelines.md
             - name: Entwurfsmuster für die Offenlegung

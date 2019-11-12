@@ -96,6 +96,8 @@
       href: troubleshoot-vm-configuration.md
     - name: "Problembehandlung für virtuelle Windows\_7-Computer in Windows Virtual Desktop"
       href: troubleshoot-windows-7-vm.md
+    - name: Problembehandlung für das Windows Virtual Desktop-Verwaltungstool
+      href: troubleshoot-management-tool.md
     - name: Remotedesktop-Clientverbindungen
       href: troubleshoot-client-connection.md
     - name: 'Windows Virtual Desktop: PowerShell'
