@@ -67,8 +67,6 @@
           href: how-to-navigate-apis.md
         - name: Gängige Abfragemuster
           href: how-to-query-common-apis.md
-    - name: Registrieren Ihrer App mit einer AAD-Legacyinstanz
-      href: how-to-use-legacy-aad.md
 - name: Verweis
   items:
     - name: Clientbibliothek mit benutzerdefinierten Funktionen
