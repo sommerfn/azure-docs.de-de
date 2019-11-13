@@ -55,7 +55,7 @@ Dieser Abschnitt enthält detaillierte Anweisungen zum Integrieren einer Windows
 In diesem Leitfaden wird eine Anwendung mit einer Schaltfläche erstellt, über die die Graph-API abgefragt werden kann, und es ist auch eine Schaltfläche zum Abmelden vorhanden. Darüber hinaus werden Textfelder mit den Ergebnissen der Aufrufe angezeigt.
 
 > [!NOTE]
-> Möchten Sie lieber das Visual Studio-Projekt dieses Beispiels herunterladen, anstatt die Erstellung durchzuführen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip), und fahren Sie mit dem Schritt [Anwendungsregistrierung](#register-your-application "aAnwendungsregistrierung) fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
+> Möchten Sie lieber das Visual Studio-Projekt dieses Beispiels herunterladen, anstatt die Erstellung durchzuführen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip), und fahren Sie mit dem Schritt [Anwendungsregistrierung“](#register-your-application "aAnwendungsregistrierung“) fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
 
 ### <a name="create-your-application"></a>Erstellen der Anwendung
 
