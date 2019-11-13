@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie gespeicherte Prozeduren, Triggern und benutze
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: bec28874bbd67ece4b29f6975e8c7fdcea457bd5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092838"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606255"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 
@@ -21,6 +21,9 @@ Um eine gespeicherte Prozedur, einen Trigger und einer benutzerdefinierte Funkti
 
 > [!NOTE]
 > Wenn Sie eine gespeicherte Prozedur in partitionierten Containern ausführen, muss in den Anforderungsoptionen ein Partitionsschlüsselwert angegeben werden. Gespeicherte Prozeduren gelten immer für einen bestimmten Partitionsschlüssel. Elemente, die einen anderen Partitionsschlüsselwert aufweisen, sind in der gespeicherten Prozedur nicht sichtbar. Dies gilt auch für Trigger.
+
+> [!Tip]
+> Cosmos unterstützt die Bereitstellung von Containern mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen. Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Containers mit serverseitiger Funktionalität](manage-sql-with-resource-manager.md#create-sproc).
 
 ## <a id="stored-procedures"></a>Schreiben gespeicherter Prozeduren
 
@@ -52,7 +55,7 @@ Wenn Sie ein Element mithilfe einer gespeicherten Prozedur erstellen, wird diese
 
 Die gespeicherte Prozedur enthält auch einen Parameter zum Festlegen der Beschreibung. Hierbei handelt es sich um einen booleschen Wert. Wenn der Parameter auf TRUE festgelegt wird und die Beschreibung fehlt, löst die gespeicherte Prozedur eine Ausnahme aus. Andernfalls wird der Rest der gespeicherten Prozedur weiter ausgeführt.
 
-Die folgende gespeicherte Beispielprozedur akzeptiert ein neues Azure Cosmos-Element als Eingabe, fügt es in den Azure Cosmos-Container ein und gibt die ID für das neu erstellte Element zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
+Die folgende exemplarische gespeicherte Prozedur akzeptiert ein neues Azure Cosmos-Element als Eingabe, fügt es in den Azure Cosmos-Container ein und gibt die ID für das neu erstellte Element zurück. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md).
 
 ```javascript
 function createToDoItem(itemToCreate) {

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631421"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796648"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 
-In diesem Artikel wird erläutert, wie Sie die Benutzeroberfläche von StorSimple Data Manager verwenden können, um Daten zu transformieren, die sich auf den Geräten der StorSimple 8000-Serie befinden. Die transformierten Daten können von anderen Azure-Diensten, wie z.B. Azure Media Services, Azure HDInsight, Azure Machine Learning und Azure Search, genutzt werden.
+In diesem Artikel wird erläutert, wie Sie die Benutzeroberfläche von StorSimple Data Manager verwenden können, um Daten zu transformieren, die sich auf den Geräten der StorSimple 8000-Serie befinden. Die transformierten Daten können von anderen Azure-Diensten, z. B. Azure Media Services, Azure HDInsight, Azure Machine Learning und Azure Cognitive Search, genutzt werden.
 
 
 ## <a name="use-storsimple-data-transformation"></a>Verwenden der StorSimple-Datentransformation

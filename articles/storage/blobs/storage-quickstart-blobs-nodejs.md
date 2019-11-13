@@ -1,364 +1,357 @@
 ---
-title: Erstellen eines Blobs in Azure Storage für Node.js
-description: Erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Verwenden Sie anschließend die Azure Storage-Clientbibliothek für Node.js v2, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
+title: 'Schnellstart: Azure Blob Storage-Bibliothek v12 – JavaScript'
+description: In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek, Version 12 für JavaScript ein Container und ein Blob im Blobspeicher (Objektspeicher) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 8d0afc5a224e752bdd745ab4df0473a134b4180b
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.topic: quickstart
+ms.openlocfilehash: 28a75158b161e680f857b986bcb754f1f99e8fab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671347"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825306"
 ---
-# <a name="upload-download-and-list-blobs-using-the-client-library-for-nodejs"></a>Hochladen, Herunterladen und Auflisten von Blobs mit der Clientbibliothek für Node.js
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für JavaScript
 
-In dieser Schrittanleitung erfahren Sie, wie Sie mit der Clientbibliothek für Node.js v2 Blobs in Azure Blob Storage hochladen, herunterladen und auflisten.
+Erfahren Sie etwas über die ersten Schritte mit der Azure Blob Storage-Clientbibliothek v12 für JavaScript. Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Führen Sie die Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Blobspeicher ist für die Speicherung großer Mengen unstrukturierter Daten optimiert.
 
-> [!TIP]
-> Die neueste Version der Azure Storage-Clientbibliothek für Node.js ist v10. Microsoft empfiehlt, nach Möglichkeit die neueste Version der Clientbibliothek zu verwenden. Informationen zum Einstieg in v10 finden Sie unter [Schnellstart: Hochladen, Herunterladen, Auflisten und Löschen von Blobs mit der Azure Storage-Clientbibliothek für JavaScript v10 (Vorschau)](storage-quickstart-blobs-nodejs-v10.md).
+> [!NOTE]
+> Informationen zu den ersten Schritten mit der vorherigen SDK-Version finden Sie unter [Schnellstart: Azure Blob Storage-Clientbibliothek für JavaScript](storage-quickstart-blobs-nodejs-v10.md).
+
+Mit der Azure Blob Storage-Clientbibliothek v12 für JavaScript können Sie Folgendes erledigen:
+
+* Erstellen eines Containers
+* Hochladen eines Blobs in Azure Storage
+* Auflisten aller Blobs in einem Container
+* Herunterladen des Blobs auf den lokalen Computer
+* Löschen eines Containers
+
+[API-Referenzdokumentation](/javascript/api/@azure/storage-blob) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob/v/12.0.0) | [Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+* Azure-Speicherkonto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Aktuelle [Node.js](https://nodejs.org/en/download/) für Ihr Betriebssystem.
 
-Erstellen Sie ein Azure-Speicherkonto im [Azure-Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Hilfe zur Erstellung des Kontos finden Sie unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md).
+## <a name="setting-up"></a>Einrichten
 
-## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
+In diesem Abschnitt wird beschrieben, wie ein Projekt zur Verwendung mit der Azure Blob Storage-Clientbibliothek v12 für JavaScript vorbereitet wird.
 
-Bei der [Beispielanwendung](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) handelt es sich um eine einfache Node.js-Konsolenanwendung. Klonen Sie zunächst das Repository auf Ihren Computer, indem Sie den folgenden Befehl verwenden:
+### <a name="create-the-project"></a>Erstellen des Projekts
 
-```bash
-git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
-```
+Erstellen Sie zunächst eine JavaScript-Anwendung mit dem Namen *blob-quickstart-v12*.
 
-Suchen Sie zum Öffnen der Anwendung nach dem Ordner *storage-blobs-node-quickstart*, und öffnen Sie ihn in Ihrer bevorzugten Bearbeitungsumgebung.
+1. Erstellen Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) ein neues Verzeichnis für das Projekt.
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
+    ```console
+    mkdir blob-quickstart-v12
+    ```
 
-## <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
+1. Wechseln Sie zum neu erstellten *blob-quickstart-v12*-Verzeichnis.
 
-Vor dem Ausführen der Anwendung müssen Sie die Verbindungszeichenfolge für das Speicherkonto angeben. Das Beispielrepository enthält eine Datei mit dem Namen *.env.example*. Sie können diese Datei umbenennen, indem Sie die Erweiterung *.example* entfernen, sodass die Datei nur noch *.env* heißt. Fügen Sie in der Datei *.env* Ihren Wert für die Verbindungszeichenfolge nach dem Schlüssel *AZURE_STORAGE_CONNECTION_STRING* hinzu.
+    ```console
+    cd blob-quickstart-v12
+    ```
 
-## <a name="install-required-packages"></a>Installieren erforderlicher Pakete
+1. Erstellen Sie eine neue Textdatei mit dem Namen *package.json*. Diese Datei definiert das Node.js-Projekt. Speichern Sie diese Datei im Verzeichnis *blob-quickstart-v12*. Der Inhalt der Datei ist nachstehend aufgeführt:
 
-Führen Sie im Anwendungsverzeichnis *npm install* aus, um die erforderlichen Pakete für die Anwendung zu installieren.
+    ```json
+    {
+        "name": "blob-quickstart-v12",
+        "version": "1.0.0",
+        "description": "Use the @azure/storage-blob SDK version 12 to interact with Azure Blob storage",
+        "main": "blob-quickstart-v12.js",
+        "scripts": {
+            "start": "node blob-quickstart-v12.js"
+        },
+        "author": "Your Name",
+        "license": "MIT",
+        "dependencies": {
+            "@azure/storage-blob": "^12.0.0",
+            "@types/dotenv": "^4.0.3",
+            "dotenv": "^6.0.0"
+        }
+    }
+    ```
+    
+    Sie können ggf. Ihren eigenen Namen für das `author`-Feld eingeben.
+   
+### <a name="install-the-package"></a>Installieren des Pakets
 
-```bash
+Installieren Sie das Paket mit der Azure Blob Storage-Clientbibliothek für JavaScript im Verzeichnis *blob-quickstart-v12* mit dem Befehl `npm install`. Dieser Befehl lest die Datei *package.json* und installiert das Paket mit der Azure Blob Storage-Clientbibliothek v12 für JavaScript und alle Bibliotheken, von denen die Bibliothek abhängig ist.
+
+```console
 npm install
 ```
 
-## <a name="run-the-sample"></a>Ausführen des Beispiels
-Nachdem nun die Abhängigkeiten installiert wurden, können Sie das Beispiel ausführen, indem Sie den folgenden Befehl ausgeben:
+### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
+
+Über das Projektverzeichnis:
+
+1. Öffnen einer weiteren neuen Textdatei im Code-Editor
+1. Hinzufügen von `require`-Aufrufen zum Laden von Azure- und Node.js-Modulen
+1. Erstellen der Struktur für das Programm, einschließlich einer sehr einfachen Ausnahmebehandlung
+
+    Der Code lautet wie folgt:
+
+    ```javascript
+    const { BlobServiceClient } = require('@azure/storage-blob');
+    const uuidv1 = require('uuid/v1');
+    
+    async function main() {
+        console.log('Azure Blob storage v12 - Javascript quickstart sample');
+        // Quick start code goes here
+    }
+    
+    main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
+    ```
+
+1. Speichern Sie die neue Datei als *blob-quickstart-v12.js* im Verzeichnis *blob-quickstart-v12*.
+
+### <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieren Ihrer Anmeldeinformationen aus dem Azure-Portal
+
+Wenn die Beispielanwendung eine Anforderung an Azure Storage sendet, muss diese autorisiert werden. Fügen Sie zum Autorisieren einer Anforderung die Anmeldeinformationen für Ihr Speicherkonto in Form einer Verbindungszeichenfolge hinzu. Führen Sie zum Anzeigen der Anmeldeinformationen Ihres Speicherkontos die folgenden Schritte aus:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Suchen Sie nach Ihrem Speicherkonto.
+3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel**. Hier können Sie Ihre Kontozugriffsschlüssel und die vollständige Verbindungszeichenfolge für jeden Schlüssel anzeigen.
+4. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge**, und wählen Sie dann die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zu kopieren. Der Wert der Verbindungszeichenfolge wird in einem späteren Schritt einer Umgebungsvariablen hinzugefügt.
+
+    ![Screenshot: Kopieren einer Verbindungszeichenfolge aus dem Azure-Portal](../../../includes/media/storage-copy-connection-string-portal/portal-connection-string.png)
+
+### <a name="configure-your-storage-connection-string"></a>Konfigurieren der Speicherverbindungszeichenfolge
+
+Schreiben Sie die Verbindungszeichenfolge nach dem Kopieren in eine neue Umgebungsvariable auf dem lokalen Computer, auf dem die Anwendung ausgeführt wird. Öffnen Sie zum Festlegen der Umgebungsvariablen ein Konsolenfenster, und befolgen Sie die Anleitung für Ihr Betriebssystem. Ersetzen Sie `<yourconnectionstring>` durch Ihre Verbindungszeichenfolge.
+
+#### <a name="windows"></a>Windows
+
+```cmd
+setx CONNECT_STR "<yourconnectionstring>"
+```
+
+Sie müssen nach dem Hinzufügen der Umgebungsvariablen unter Windows eine neue Instanz des Befehlsfensters öffnen.
+
+#### <a name="linux"></a>Linux
 
 ```bash
-npm start
+export CONNECT_STR="<yourconnectionstring>"
 ```
 
-Die Ausgabe des Skripts sollte ungefähr wie folgt aussehen:
+#### <a name="macos"></a>macOS
 
 ```bash
-Containers:
- - container-one
- - container-two
-Container "demo" is created
-Blob "quickstart.txt" is uploaded
-Local file "./readme.md" is uploaded
-Blobs in "demo" container:
- - quickstart.txt
- - readme.md
-Blob downloaded blob content: "hello Blob SDK"
-Blob "quickstart.txt" is deleted
-Container "demo" is deleted
-Done
+export CONNECT_STR="<yourconnectionstring>"
 ```
 
-Wenn Sie für dieses Beispiel ein neues Speicherkonto verwenden, werden unter „*Container*“ möglicherweise keine Containernamen angezeigt.
+#### <a name="restart-programs"></a>Neustarten der Programme
 
-## <a name="understanding-the-code"></a>Grundlegendes zum Code
-Der erste Ausdruck wird verwendet, um Werte in Umgebungsvariablen zu laden.
+Nachdem Sie die Umgebungsvariable hinzugefügt haben, starten Sie alle ausgeführten Programme neu, in denen die Umgebungsvariable gelesen werden muss. Starten Sie beispielsweise die Entwicklungsumgebung oder den Editor neu, bevor Sie fortfahren.
+
+## <a name="object-model"></a>Objektmodell
+
+Azure Blob Storage ist für die Speicherung großer Mengen unstrukturierter Daten optimiert. Unstrukturierte Daten sind Daten, die keinem bestimmten Datenmodell und keiner bestimmten Definition entsprechen (also beispielsweise Text- oder Binärdaten). Blob Storage bietet drei Typen von Ressourcen:
+
+* Das Speicherkonto
+* Einen Container im Speicherkonto
+* Ein Blob im Container
+
+Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
+
+![Diagramm der Blob Storage-Architektur](./media/storage-blob-introduction/blob1.png)
+
+Verwenden Sie die folgenden JavaScript-Klassen für die Interaktion mit folgenden Ressourcen:
+
+* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): Die `BlobServiceClient`-Klasse ermöglicht es Ihnen, Azure Storage-Ressourcen und Blobcontainer zu bearbeiten.
+* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient): Die `ContainerClient`-Klasse ermöglicht es Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
+* [BlobClient](/javascript/api/@azure/storage-blob/blobclient): Die `BlobClient`-Klasse ermöglicht es Ihnen, Azure Storage-Blobs zu bearbeiten.
+
+## <a name="code-examples"></a>Codebeispiele
+
+Diese Beispielcodeausschnitte veranschaulichen, wie folgende Vorgänge mit der Azure Blob Storage-Clientbibliothek für JavaScript durchgeführt werden:
+
+* [Abrufen der Verbindungszeichenfolge](#get-the-connection-string)
+* [Container erstellen](#create-a-container)
+* [Hochladen von Blobs in einen Container](#upload-blobs-to-a-container)
+* [Auflisten der Blobs in einem Container](#list-the-blobs-in-a-container)
+* [Herunterladen von Blobs](#download-blobs)
+* [Löschen eines Containers](#delete-a-container)
+
+### <a name="get-the-connection-string"></a>Abrufen der Verbindungszeichenfolge
+
+Der folgende Code ruft die Verbindungszeichenfolge für das Speicherkonto aus der Umgebungsvariablen ab, die im Abschnitt [Konfigurieren der Speicherverbindungszeichenfolge](#configure-your-storage-connection-string) erstellt wurde.
+
+Fügen Sie diesen Code in der `main`-Funktion hinzu:
 
 ```javascript
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
-}
+// Retrieve the connection string for use with the application. The storage
+// connection string is stored in an environment variable on the machine
+// running the application called CONNECT_STR. If the environment variable is
+// created after the application is launched in a console or with Visual Studio,
+// the shell or application needs to be closed and reloaded to take the
+// environment variable into account.
+const CONNECT_STR = process.env.CONNECT_STR;
 ```
-
-Das Modul *dotenv* lädt Umgebungsvariablen, wenn die App lokal zum Debuggen ausgeführt wird. Werte werden in der Datei *.env* definiert und in den aktuellen Ausführungskontext geladen. In Kontexten von Produktionsumgebungen stellt die Serverkonfiguration diese Werte zur Verfügung, weshalb dieser Code nur ausgeführt wird, wenn das Skript nicht im Kontext einer Produktionsumgebung ausgeführt wird.
-
-```javascript
-const path = require('path');
-const storage = require('azure-storage');
-```
-
-Die Module haben den folgenden Zweck: 
-
-Datei namens *.env* in den aktuellen Ausführungskontext
-- *path* ist erforderlich, um den absoluten Dateipfad der Datei zu ermitteln, die in Blobspeicher hochgeladen werden soll.
-- *azure-storage* ist das [Azure Storage-Clientbibliothek](https://docs.microsoft.com/javascript/api/azure-storage)-Modul für Node.js.
-
-Anschließend wird die Variable **blobService** als neue Instanz des Azure Blob-Diensts initialisiert.
-
-```javascript
-const blobService = storage.createBlobService();
-```
-
-In der folgenden Implementierung sind die *blobService*-Funktionen jeweils von einem *Promise*-Element (Zusage) umschlossen, mit dem der Zugriff auf die *async*-Funktion und den *await*-Operator von JavaScript ermöglicht wird, um das Rückrufverhalten der [Azure Storage-API](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) zu optimieren. Wenn für jede Funktion eine erfolgreiche Antwort zurückgegeben wird, wird die Zusage mit relevanten Daten und einer spezifischen Nachricht für die Aktion aufgelöst.
-
-### <a name="list-containers"></a>Auflisten von Containern
-
-Die Funktion *listContainers* ruft [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) auf, um Sammlungen von Containern in Gruppen zurückzugeben.
-
-```javascript
-const listContainers = async () => {
-    return new Promise((resolve, reject) => {
-        blobService.listContainersSegmented(null, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `${data.entries.length} containers`, containers: data.entries });
-            }
-        });
-    });
-};
-```
-
-Die Größe der Gruppen ist über [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest) konfigurierbar. Der Aufruf von *listContainersSegmented* gibt Blobmetadaten als Array von [ContainerResult](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.containerresult?view=azure-node-latest)-Instanzen zurück. Ergebnisse werden in Batches mit einem Inkrement von 5.000 (Segmenten) zurückgegeben. Wenn in einem Container mehr als 5.000 Blobs vorhanden sind, enthalten die Ergebnisse einen Wert für *continuationToken*. Zum Auflisten nachfolgender Segmente aus dem Blobcontainer können Sie das Fortsetzungstoken als zweites Argument zurück an *listContainersSegment* übergeben.
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 
-Die Funktion *createContainer* ruft [createContainerIfNotExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) auf und legt die passende Zugriffsebene für das Blob fest.
+Legen Sie einen Namen für den neuen Container fest. Der folgende Code hängt einen UUID-Wert an den Containernamen an, damit dieser eindeutig ist.
+
+> [!IMPORTANT]
+> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zum Benennen von Containern und Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
+
+Erstellen Sie eine Instanz der [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient)-Klasse, indem Sie die [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--newpipelineoptions-)-Methode aufrufen. Rufen Sie dann die [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-)-Methode auf, um einen Verweis auf einen Container zu erhalten. Rufen Sie zum schließlich [create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) auf, um den Container in Ihrem Speicherkonto zu erstellen.
+
+Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
 ```javascript
-const createContainer = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.createContainerIfNotExists(containerName, { publicAccessLevel: 'blob' }, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Container '${containerName}' created` });
-            }
-        });
-    });
-};
+// Create the BlobServiceClient object which will be used to create a container client
+const blobServiceClient = await new BlobServiceClient.fromConnectionString(CONNECT_STR);
+
+// Create a unique name for the container
+const containerName = 'quickstart' + uuidv1();
+
+console.log('\nCreating container...');
+console.log('\t', containerName);
+
+// Get a reference to a container
+const containerClient = await blobServiceClient.getContainerClient(containerName);
+
+// Create the container
+await containerClient.create();
 ```
 
-Der zweite Parameter (*options*) für **createContainerIfNotExists** akzeptiert einen Wert für [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest). Der Wert *blob* für *publicAccessLevel* gibt an, dass bestimmte Blobdaten öffentlich verfügbar gemacht werden. Diese Einstellung ist anders als die Zugriffsebene *container*, bei der die Möglichkeit gewährt wird, den Inhalt des Containers aufzulisten.
+### <a name="upload-blobs-to-a-container"></a>Hochladen von Blobs in einen Container
 
-Durch die Verwendung von **createContainerIfNotExists** kann die Anwendung den Befehl mehrfach *createContainer* ausführen, ohne Fehler zurückzugeben, wenn der Container bereits vorhanden ist. In einer Produktionsumgebung rufen Sie **createContainerIfNotExists** häufig nur einmal auf, da derselbe Container für die gesamte Anwendung verwendet wird. In diesen Fällen können Sie den Container im Voraus über das Portal oder die Azure CLI erstellen.
+Der folgende Codeausschnitt führt folgende Aktionen durch:
 
-### <a name="upload-text"></a>Hochladen von Text
+1. Erstellen einer Textzeichenfolge, die in ein Blob hochgeladen werden soll.
+1. Abrufen eines Verweises auf ein [BlockBlobClient](/javascript/api/@azure/storage-blob/blockblobclient)-Objekt durch Aufrufen der [getBlockBlobClient](/javascript/api/@azure/storage-blob/containerclient#getblockblobclient-string-)-Methode für [ContainerClient](/javascript/api/@azure/storage-blob/containerclient) im Abschnitt [Erstellen eines Container](#create-a-container).
+1. Hochladen der Textzeichenfolgedaten in das Blob durch Aufrufen der [upload](/javascript/api/@azure/storage-blob/blockblobclient#upload-httprequestbody--number--blockblobuploadoptions-)-Methode.
 
-Die Funktion *uploadString* ruft [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) auf, um eine beliebige Zeichenkette in den Blobcontainer zu schreiben (oder sie zu überschreiben).
-
-```javascript
-const uploadString = async (containerName, blobName, text) => {
-    return new Promise((resolve, reject) => {
-        blobService.createBlockBlobFromText(containerName, blobName, text, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Text "${text}" is written to blob storage` });
-            }
-        });
-    });
-};
-```
-### <a name="upload-a-local-file"></a>Hochladen einer lokalen Datei
-
-Für die Funktion *uploadLocalFile* wird die Funktion [createBlockBlobFromLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile-string--string--string--errororresult-blobresult--) verwendet, um eine Datei aus dem Dateisystem in Blobspeicher hochzuladen und zu schreiben (bzw. zu überschreiben). 
+Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
 ```javascript
-const uploadLocalFile = async (containerName, filePath) => {
-    return new Promise((resolve, reject) => {
-        const fullPath = path.resolve(filePath);
-        const blobName = path.basename(filePath);
-        blobService.createBlockBlobFromLocalFile(containerName, blobName, fullPath, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Local file "${filePath}" is uploaded` });
-            }
-        });
-    });
-};
-```
-Weitere Ansätze zum Hochladen von Inhalt in Blobs sind die Verwendung von [text](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest-string--string--string---buffer--errororresult-blobresult--) und [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Für die Überprüfung des Dateiuploads in Ihren Blobspeicher können Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um die Daten in Ihrem Konto anzuzeigen.
+// Create a unique name for the blob
+const blobName = 'quickstart' + uuidv1() + '.txt';
 
-### <a name="list-the-blobs"></a>Auflisten der Blobs
+// Get a block blob client
+const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
-Mit der Funktion *listBlobs* rufen Sie die [listBlobsSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented-string--continuationtoken--errororresult-listblobsresult--)-Methode auf, um eine Liste mit Blobmetadaten in einem Container zurückzugeben. 
+console.log('\nUploading to Azure Storage as blob:\n\t', blobName);
 
-```javascript
-const listBlobs = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.listBlobsSegmented(containerName, null, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `${data.entries.length} blobs in '${containerName}'`, blobs: data.entries });
-            }
-        });
-    });
-};
+// Upload data to the blob
+const data = 'Hello, World!';
+await blockBlobClient.upload(data, data.length);
 ```
 
-Durch das Aufrufen von *listBlobsSegmented* werden Blobmetadaten als Array mit [BlobResult](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.blobresult?view=azure-node-latest)-Instanzen zurückgegeben. Ergebnisse werden in Batches mit einem Inkrement von 5.000 (Segmenten) zurückgegeben. Wenn in einem Container mehr als 5.000 Blobs vorhanden sind, enthalten die Ergebnisse einen Wert für **continuationToken**. Zum Auflisten nachfolgender Segmente aus dem Blobcontainer können Sie das Fortsetzungstoken als zweites Argument zurück an **listBlobSegmented** übergeben.
+### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-### <a name="download-a-blob"></a>Herunterladen eines Blobs
+Listen Sie die Blobs im Container auf, indem Sie die [listBlobsFlat](/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-)-Methode aufrufen. In diesem Fall wurde dem Container nur ein Blob hinzugefügt, sodass beim Auflisten auch nur ein Blob zurückgegeben wird.
 
-In der Funktion *downloadBlob* wird [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) verwendet, um den Inhalt des Blobs an den Speicherort des angegebenen absoluten Dateipfads herunterzuladen.
+Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
 ```javascript
-const downloadBlob = async (containerName, blobName) => {
-    const dowloadFilePath = path.resolve('./' + blobName.replace('.txt', '.downloaded.txt'));
-    return new Promise((resolve, reject) => {
-        blobService.getBlobToText(containerName, blobName, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Blob downloaded "${data}"`, text: data });
-            }
-        });
-    });
-};
+console.log('\nListing blobs...');
+
+// List the blob(s) in the container.
+for await (const blob of containerClient.listBlobsFlat()) {
+    console.log('\t', blob.name);
+}
 ```
-Die hier gezeigte Implementierung ändert die Quelle und gibt den Blobinhalt als Zeichenkette zurück. Sie können den Blob auch als [Datenstrom](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) sowie direkt in eine [lokale Datei](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) herunterladen.
 
-### <a name="delete-a-blob"></a>Löschen eines BLOBs
+### <a name="download-blobs"></a>Herunterladen von Blobs
 
-Die Funktion *deleteBlob* ruft die Funktion [deleteBlobIfExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists-string--string--errororresult-boolean--) auf. Wie der Name schon erahnen lässt, gibt diese Funktion keinen Fehler zurück, wenn das Blob bereits gelöscht wurde.
+Laden Sie das zuvor erstellte Blob herunter, indem Sie die [download](/javascript/api/@azure/storage-blob/blockblobclient#download-undefined---number--undefined---number--blobdownloadoptions-)-Methode aufrufen. Der Beispielcode enthält eine Hilfsfunktion namens `streamToString`, die verwendet wird, um einen lesbaren Node.js-Stream in eine Zeichenfolge einzulesen.
+
+Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
 ```javascript
-const deleteBlob = async (containerName, blobName) => {
-    return new Promise((resolve, reject) => {
-        blobService.deleteBlobIfExists(containerName, blobName, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Block blob '${blobName}' deleted` });
-            }
-        });
+// Get blob content from position 0 to the end
+// In Node.js, get downloaded data by accessing downloadBlockBlobResponse.readableStreamBody
+// In browsers, get downloaded data by accessing downloadBlockBlobResponse.blobBody
+const downloadBlockBlobResponse = await blockBlobClient.download(0);
+console.log('\nDownloaded blob content...');
+console.log('\t', await streamToString(downloadBlockBlobResponse.readableStreamBody));
+```
+
+Fügen Sie diese Hilfsfunktion *hinter* der `main`-Funktion hinzu:
+
+```javascript
+// A helper function used to read a Node.js readable stream into a string
+async function streamToString(readableStream) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    readableStream.on("data", (data) => {
+      chunks.push(data.toString());
     });
-};
+    readableStream.on("end", () => {
+      resolve(chunks.join(""));
+    });
+    readableStream.on("error", reject);
+  });
+}
 ```
 
 ### <a name="delete-a-container"></a>Löschen eines Containers
 
-Container werden durch Aufrufen der *deleteContainer*-Methode aus dem Blobdienst und durch Übergabe des Containernamens gelöscht.
+Im folgenden Code werden die mit der App erstellten Ressourcen bereinigt, indem der gesamte Container mit der [delete](/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-)-Methode gelöscht wird. Sie können ggf. auch die lokalen Dateien löschen.
+
+Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 
 ```javascript
-const deleteContainer = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.deleteContainer(containerName, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Container '${containerName}' deleted` });
-            }
-        });
-    });
-};
+console.log('\nDeleting container...');
+
+// Delete container
+await containerClient.delete();
 ```
 
-### <a name="calling-code"></a>Aufrufen von Code
+## <a name="run-the-code"></a>Ausführen des Codes
 
-Zur Unterstützung der *async/await*-Syntax von JavaScript wird der gesamte Aufrufcode in eine Funktion namens *execute* eingebettet. Dann wird „execute“ aufgerufen und als Zusicherung behandelt.
+Diese App erstellt eine Textzeichenfolge und lädt sie in den Blobspeicher hoch. Im Beispiel werden dann die Blobs im Container aufgelistet, das Blob heruntergeladen und die heruntergeladenen Daten angezeigt.
 
-```javascript
-async function execute() {
-    // commands 
-}
+Navigieren Sie in einer Konsoleneingabeaufforderung zu dem Verzeichnis, das die Datei *blob-quickstart-v12.py* enthält, und führen Sie dann den folgenden `node`-Befehl aus, um die App auszuführen.
 
-execute().then(() => console.log("Done")).catch((e) => console.log(e));
-```
-Der gesamte folgende Code wird innerhalb der Funktion „execute“ ausgeführt, in der der Kommentar `// commands` platziert ist.
-
-Zunächst werden die relevanten Variablen deklariert, um Namen, Beispielinhalt zuzuweisen und auf die lokale Datei zu verweisen, die in den Blobspeicher hochgeladen wird.
-
-```javascript
-const containerName = "demo";
-const blobName = "quickstart.txt";
-const content = "hello Node SDK";
-const localFilePath = "./readme.md";
-let response;
+```console
+node blob-quickstart-v12.js
 ```
 
-Um die Container im Speicherkonto aufzulisten, wird die Funktion „listContainers“ aufgerufen und die zurückgegebene Liste der Container wird im Ausgabefenster protokolliert.
+Die Ausgabe der App sieht in etwa wie das folgende Beispiel aus:
 
-```javascript
-console.log("Containers:");
-response = await listContainers();
-response.containers.forEach((container) => console.log(` -  ${container.name}`));
+```output
+Azure Blob storage v12 - JavaScript quickstart sample
+
+Creating container...
+         quickstart4a0780c0-fb72-11e9-b7b9-b387d3c488da
+
+Uploading to Azure Storage as blob:
+         quickstart4a3128d0-fb72-11e9-b7b9-b387d3c488da.txt
+
+Listing blobs...
+         quickstart4a3128d0-fb72-11e9-b7b9-b387d3c488da.txt
+
+Downloaded blob content...
+         Hello, World!
+
+Deleting container...
+Done
 ```
 
-Nachdem die Liste der Container verfügbar ist, können Sie mit der *findIndex*-Methode überprüfen, ob der zu erstellende Container bereits vorhanden ist. Wenn der Container nicht vorhanden ist, wird er erstellt.
-
-```javascript
-const containerDoesNotExist = response.containers.findIndex((container) => container.name === containerName) === -1;
-
-if (containerDoesNotExist) {
-    await createContainer(containerName);
-    console.log(`Container "${containerName}" is created`);
-}
-```
-Als nächstes werden eine Zeichenkette und eine lokale Datei in den Blobspeicher hochgeladen.
-
-```javascript
-await uploadString(containerName, blobName, content);
-console.log(`Blob "${blobName}" is uploaded`);
-
-response = await uploadLocalFile(containerName, localFilePath);
-console.log(response.message);
-```
-Der Vorgang zum Auflisten von Blobs ist identisch mit dem Auflisten von Containern. Der Aufruf von *listBlobs* gibt ein Array von Blobs im Container zurück und wird im Ausgabefenster protokolliert.
-
-```javascript
-console.log(`Blobs in "${containerName}" container:`);
-response = await listBlobs(containerName);
-response.blobs.forEach((blob) => console.log(` - ${blob.name}`));
-```
-
-Um einen Blob herunterzuladen, wird die Antwort erfasst und verwendet, um auf den Wert des Blobs zuzugreifen. Aus der Antwort wird „readableStreamBody“ in eine Zeichenfolge umgewandelt und im Ausgabefenster abgemeldet.
-
-```javascript
-response = await downloadBlob(containerName, blobName);
-console.log(`Downloaded blob content: "${response.text}"`);
-```
-
-Abschließend werden Blob und Container aus dem Speicherkonto gelöscht.
-
-```javascript
-await deleteBlob(containerName, blobName);
-console.log(`Blob "${blobName}" is deleted`);
-
-await deleteContainer(containerName);
-console.log(`Container "${containerName}" is deleted`);
-```
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Alle in das Speicherkonto geschriebenen Daten werden am Ende des Codebeispiels automatisch gelöscht. 
-
-## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Ressourcen für die Entwicklung von Node.js-Anwendungen mit Blobs
-
-Sehen Sie sich diese zusätzlichen Ressourcen zur Node.js-Entwicklung mit Blobspeicher an:
-
-### <a name="binaries-and-source-code"></a>Binärdateien und Quellcode
-
-- Zeigen Sie den [Quellcode der Node.js-Clientbibliothek](https://github.com/Azure/azure-storage-node) für Azure Storage auf GitHub an, und installieren Sie ihn.
-
-### <a name="client-library-reference-and-samples"></a>Clientbibliothek – Referenz und Beispiele
-
-- Weitere Informationen zur Node.js-Clientbibliothek finden Sie in der [Referenz zur Node.js-API](https://docs.microsoft.com/javascript/api/overview/azure/storage).
-- Erkunden Sie die [Beispiele für Blobspeicher](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob), die mit der Node.js-Clientbibliothek geschrieben wurden.
+Durchlaufen Sie den Code Schritt für Schritt im Debugger und überprüfen Sie das Azure-Portal während des gesamten Vorgangs. Stellen Sie fest, ob der Container erstellt wurde. Sie können das Blob im Container öffnen und den Inhalt anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde veranschaulicht, wie Sie den Upload einer Datei zwischen einem lokalen Datenträger und Azure Blob Storage mit Node.js durchführen. Weitere Informationen zur Arbeit mit Blobspeicher finden Sie im GitHub-Repository.
+In dieser Schnellstartanleitung wurde beschrieben, wie Sie Blobs mit JavaScript hochladen, herunterladen und auflisten.
+
+Weitere Beispiel-Apps für Blobspeicher finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure Storage SDK für Node.js und JavaScript für Browser](https://github.com/Azure/azure-storage-node)
+> [Azure Blob Storage SDK v12 – JavaScript-Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/azure-storage-blob/samples)
+
+* Weitere Informationen finden Sie unter [Azure SDK für JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md).
+* Tutorials, Beispiele, Schnellstartanleitungen und weitere Dokumentationen finden Sie in der [Dokumentation für das Azure SDK für JavaScript](/azure/javascript/).

@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit Windows Virtual Desktop in Android – Azure
+title: Herstellen einer Verbindung zu Windows Virtual Desktop in Android – Azure
 description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Android-Clients.
 services: virtual-desktop
 author: heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: helohr
-ms.openlocfilehash: c19aa6e0acc936c5b03afdab99ce0b9230838ce2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 41b0c1ced9e66bd58d73683865b2c40afc16c5d3
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341185"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605852"
 ---
 # <a name="connect-with-the-android-client"></a>Herstellen einer Verbindung mit dem Android-Client
 

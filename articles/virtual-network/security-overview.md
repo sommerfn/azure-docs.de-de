@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 1d9fc022a0b0d5ba96517b4ed06b4a2576245a26
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6046ab98e657cd14a2ac883cd32709c9a1b5da57
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886025"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721487"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -35,7 +35,7 @@ Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-subs
 |---------|---------|
 |NAME|Ein eindeutiger Name in der Netzwerksicherheitsgruppe.|
 |Priority | Eine Zahl zwischen 100 und 4.096. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.|
-|Quelle oder Ziel| Beliebiges Element oder eine einzelne IP-Adresse, ein CIDR-Block (klassenloses domänenübergreifendes Routing, z.B. 10.0.0.0/24), ein [Diensttag](#service-tags) oder eine [Anwendungssicherheitsgruppe](#application-security-groups). Wenn Sie eine Adresse für eine Azure-Ressource angeben, geben Sie die private IP-Adresse an, die der Ressource zugewiesen ist. Netzwerksicherheitsgruppen werden verarbeitet, nachdem Azure eine öffentliche IP-Adresse in eine private IP-Adresse für eingehenden Datenverkehr übersetzt hat und bevor Azure eine private IP-Adresse in eine öffentliche IP-Adresse für ausgehenden Datenverkehr übersetzt. Erfahren Sie mehr über Azure-[IP-Adressen](virtual-network-ip-addresses-overview-arm.md). Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. Die Option zum Angeben mehrerer einzelner IP-Adressen und Bereiche (die Angabe mehrerer Diensttags oder Anwendungsgruppen ist nicht zulässig) in einer Regel wird als [Ergänzte Sicherheitsregeln](#augmented-security-rules) bezeichnet. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Es ist nicht möglich, mehrere IP-Adressen und IP-Adressbereiche in Netzwerksicherheitsgruppen anzugeben, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über [Azure-Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+|Quelle oder Ziel| Beliebiges Element oder eine einzelne IP-Adresse, ein CIDR-Block (klassenloses domänenübergreifendes Routing, z.B. 10.0.0.0/24), ein [Diensttag](service-tags-overview.md) oder eine [Anwendungssicherheitsgruppe](#application-security-groups). Wenn Sie eine Adresse für eine Azure-Ressource angeben, geben Sie die private IP-Adresse an, die der Ressource zugewiesen ist. Netzwerksicherheitsgruppen werden verarbeitet, nachdem Azure eine öffentliche IP-Adresse in eine private IP-Adresse für eingehenden Datenverkehr übersetzt hat und bevor Azure eine private IP-Adresse in eine öffentliche IP-Adresse für ausgehenden Datenverkehr übersetzt. Erfahren Sie mehr über Azure-[IP-Adressen](virtual-network-ip-addresses-overview-arm.md). Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. Die Option zum Angeben mehrerer einzelner IP-Adressen und Bereiche (die Angabe mehrerer Diensttags oder Anwendungsgruppen ist nicht zulässig) in einer Regel wird als [Ergänzte Sicherheitsregeln](#augmented-security-rules) bezeichnet. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Es ist nicht möglich, mehrere IP-Adressen und IP-Adressbereiche in Netzwerksicherheitsgruppen anzugeben, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über [Azure-Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |Protocol     | „TCP“, „UDP“, „ICMP“ oder „Beliebig“.|
 |Direction| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
 |Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
@@ -48,60 +48,13 @@ Es gibt Beschränkungen für die Anzahl von Sicherheitsregeln, die Sie in einer 
 
 ## <a name="augmented-security-rules"></a>Ergänzte Sicherheitsregeln
 
-Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle Netzwerke vereinfacht, da Sie umfangreichere und komplexe Netzwerksicherheitsregeln mit weniger Regeln definieren können. Sie können mehrere Ports und mehrere explizite IP-Adressen und Bereiche zu einer einzelnen Sicherheitsregel zusammenfassen, die leicht verständlich ist. Verwenden Sie ergänzte Regeln in den Feldern für die Quelle, das Ziel und den Port einer Regel. Kombinieren Sie ergänzte Sicherheitsregeln mit [Diensttags](#service-tags) oder [Anwendungssicherheitsgruppen](#application-security-groups), um die Wartung Ihrer Sicherheitsregeldefinition zu vereinfachen. Es gibt Beschränkungen für die Anzahl von Adressen, Bereichen und Ports, die Sie in einer Regel angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle Netzwerke vereinfacht, da Sie umfangreichere und komplexe Netzwerksicherheitsregeln mit weniger Regeln definieren können. Sie können mehrere Ports und mehrere explizite IP-Adressen und Bereiche zu einer einzelnen Sicherheitsregel zusammenfassen, die leicht verständlich ist. Verwenden Sie ergänzte Regeln in den Feldern für die Quelle, das Ziel und den Port einer Regel. Kombinieren Sie ergänzte Sicherheitsregeln mit [Diensttags](service-tags-overview.md) oder [Anwendungssicherheitsgruppen](#application-security-groups), um die Wartung Ihrer Sicherheitsregeldefinition zu vereinfachen. Es gibt Beschränkungen für die Anzahl von Adressen, Bereichen und Ports, die Sie in einer Regel angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="service-tags"></a>Diensttags
 
-Ein Diensttag steht für eine Gruppe von IP-Adressen und hat die Aufgabe, bei der Erstellung von Sicherheitsregeln die Komplexität zu verringern. Sie können kein eigenes Diensttag erstellen und auch nicht angeben, welche IP-Adressen in einem Tag enthalten sind. Microsoft verwaltet die Adresspräfixe, die mit dem Diensttag abgedeckt werden, und aktualisiert das Diensttag automatisch, wenn sich die Adressen ändern. Sie können Diensttags anstelle von spezifischen IP-Adressen nutzen, wenn Sie Sicherheitsregeln erstellen. 
+Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Dienstes. Damit kann die Komplexität häufiger Aktualisierungen von Netzwerksicherheitsregeln minimiert werden.
 
-Die folgenden Diensttags können in [Netzwerksicherheitsgruppen-Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) verwendet werden. Diensttags mit Sternchen am Ende (d. h. „AzureCloud*“) können auch in [Azure Firewall-Netzwerkregeln](https://docs.microsoft.com/azure/firewall/service-tags) verwendet werden. 
-
-* **ApiManagement*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte APIM-Bereitstellungen an. Wenn Sie *ApiManagement* als Wert angeben, wird der Datenverkehr für ApiManagement zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen. 
-* **AppService*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure App Service-Diensts an. Wenn Sie *AppService* als Wert angeben, wird der Datenverkehr für AppService zugelassen oder verweigert. Falls Sie den Zugriff auf AppService nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AppService.[Name der Region]. Dieses Tag wird für ausgehende Sicherheitsregeln zu WebApps-Front-Ends empfohlen.  
-* **AppServiceManagement*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte App Service-Umgebungsbereitstellungen an. Wenn Sie *AppServiceManagement* als Wert angeben, wird der Datenverkehr für AppServiceManagement zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen. 
-* **AzureActiveDirectory*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Active Directory-Diensts an. Wenn Sie *AzureActiveDirectory* als Wert angeben, wird der Datenverkehr für AzureActiveDirectory zugelassen oder verweigert. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen.
-* **AzureActiveDirectoryDomainServices*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte Azure Active Directory Domain Services-Bereitstellungen an. Wenn Sie *AzureActiveDirectoryDomainServices* als Wert angeben, wird der Datenverkehr für AzureActiveDirectoryDomainServices zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen.  
-* **AzureBackup*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des AzureBackup-Diensts an. Wenn Sie *AzureBackup* als Wert angeben, wird der Datenverkehr für AzureBackup zugelassen oder verweigert. Dieses Tag weist eine Abhängigkeit vom Tag **Storage** und **AzureActiveDirectory** auf. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **AzureCloud*** (nur Resource Manager): Dieses Tag gibt den IP-Adressraum für Azure an, einschließlich aller [öffentlichen IP-Adressen für das Datencenter](https://www.microsoft.com/download/details.aspx?id=41653). Wenn Sie *AzureCloud* als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AzureCloud.[Name der Region]. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **AzureConnectors*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe der Logic Apps-Connectors für Test-/Back-End-Verbindungen an. Wenn Sie *AzureConnectors* als Wert angeben, wird der Datenverkehr für AzureConnectors zugelassen oder verweigert. Falls Sie den Zugriff auf AzureConnectors nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AzureConnectors.[Name der Region]. Dieses Tag wird für eingehende Sicherheitsregeln empfohlen. 
-* **AzureContainerRegistry*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Container Registry-Diensts an. Wenn Sie *AzureContainerRegistry* als Wert angeben, wird der Datenverkehr für AzureContainerRegistry zugelassen oder verweigert. Falls Sie den Zugriff auf AzureContainerRegistry nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AzureContainerRegistry.[Name der Region]. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **AzureCosmosDB*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Cosmos DB-Diensts an. Wenn Sie *AzureCosmosDB* als Wert angeben, wird der Datenverkehr für AzureCosmosDB zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCosmosDB nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AzureCosmosDB.[Name der Region]. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **AzureDataLake*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Data Lake-Diensts an. Wenn Sie *AzureDataLake* als Wert angeben, wird der Datenverkehr für AzureDataLake zugelassen oder verweigert. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **AzureKeyVault*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Key Vault-Diensts an. Wenn Sie *AzureKeyVault* als Wert angeben, wird der Datenverkehr für AzureKeyVault zugelassen oder verweigert. Falls Sie den Zugriff auf AzureKeyVault nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: AzureKeyVault.[Name der Region]. Dieses Tag weist eine Abhängigkeit vom Tag **AzureActiveDirectory** auf. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen.  
-* **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für das klassische Bereitstellungsmodell): Dieses Tag gibt den Lastenausgleich der Azure-Infrastruktur an. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden.
-* **AzureMachineLearning*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des AzureMachineLearning-Diensts an. Wenn Sie *AzureMachineLearning* als Wert angeben, wird der Datenverkehr für AzureMachineLearning zugelassen oder verweigert. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **AzureMonitor*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe der Log Analytics-, App Insights-, AzMon- und benutzerdefinierter Metriken (GiG-Endpunkte) an. Wenn Sie *AzureMonitor* als Wert angeben, wird der Datenverkehr für AzureMonitor zugelassen oder verweigert. Für Log Analytics weist dieses Tag eine Abhängigkeit von dem Tag **Storage** auf. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen.
-* **AzurePlatformDNS** (nur Resource Manager): Dieses Tag gibt DNS, einen grundlegenden Infrastrukturdienst, an. Wenn Sie *AzurePlatformDNS* als Wert angeben, können Sie die standardmäßigen [Aspekte der Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) für DNS deaktivieren. Verwenden Sie dieses Tag mit Vorsicht. Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. 
-* **AzurePlatformIMDS** (nur Resource Manager): Dieses Tag gibt IMDS, einen grundlegenden Infrastrukturdienst, an. Wenn Sie *AzurePlatformIMDS* als Wert angeben, können Sie die standardmäßigen [Aspekte der Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) für IMDS deaktivieren. Verwenden Sie dieses Tag mit Vorsicht. Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. 
-* **AzurePlatformLKM** (nur Resource Manager): Dieses Tag gibt Windows-Lizenzierung oder den Schlüsselverwaltungsdienst an. Wenn Sie *AzurePlatformLKM* als Wert angeben, können Sie die standardmäßigen [Aspekte der Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) für die Lizenzierung deaktivieren. Verwenden Sie dieses Tag mit Vorsicht. Es wird empfohlen, vor Verwendung dieses Tags Tests durchzuführen. 
-* **AzureTrafficManager*** (nur Resource Manager): Dieses Tag gibt den IP-Adressraum für die Test-IP-Adressen des Azure Traffic Manager an. Weitere Informationen zu Test-IP-Adressen von Traffic Manager finden Sie unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). Dieses Tag wird für eingehende Sicherheitsregeln empfohlen.  
-* **BatchNodeManagement*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte Azure Batch-Bereitstellungen an. Wenn Sie als Wert *BatchNodeManagement* angeben, wird Datenverkehr vom Batch-Dienst zu den Computeknoten zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen. 
-* **CognitiveServicesManagement** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Datenverkehrs für Cognitive Services an. Wenn Sie *CognitiveServicesManagement* als Wert angeben, wird der Datenverkehr für CognitiveServicesManagement zugelassen oder verweigert. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen.  
-* **Dynamics365ForMarketingEmail** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Marketing-E-Mail-Diensts von Dynamics 365 an. Wenn Sie *Dynamics365ForMarketingEmail* als Wert angeben, wird der Datenverkehr für Dynamics365ForMarketingEmail zugelassen oder verweigert. Falls Sie den Zugriff auf Dynamics365ForMarketingEmail nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: Dynamics365ForMarketingEmail.[Name der Region].
-* **EventHub*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure Event Hub-Diensts an. Wenn Sie *EventHub* als Wert angeben, wird der Datenverkehr für EventHub zugelassen oder verweigert. Falls Sie den Zugriff auf EventHub nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: EventHub.[Name der Region]. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **GatewayManager** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte VPN-/App Gateway-Bereitstellungen an. Wenn Sie *GatewayManager* als Wert angeben, wird der Datenverkehr für GatewayManager zugelassen oder verweigert. Dieses Tag wird für eingehende Sicherheitsregeln empfohlen. 
-* **Internet** (Resource Manager) (**INTERNET** für das klassische Bereitstellungsmodell): Dieses Tag gibt den IP-Adressraum an, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein.
-* **MicrosoftContainerRegistry*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Microsoft Container Registry-Diensts an. Wenn Sie *MicrosoftContainerRegistry* als Wert angeben, wird der Datenverkehr für MicrosoftContainerRegistry zugelassen oder verweigert. Falls Sie den Zugriff auf MicrosoftContainerRegistry nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: MicrosoftContainerRegistry.[Name der Region]. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **ServiceBus*** (nur Resource Manager): Mit diesem Tag werden die Adresspräfixe des ServiceBus-Diensts von Azure bei Verwendung der Premium-Dienstebene angegeben. Wenn Sie *ServiceBus* als Wert angeben, wird der Datenverkehr für ServiceBus zugelassen oder verweigert. Falls Sie den Zugriff auf ServiceBus nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: ServiceBus.[Name der Region]. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **ServiceFabric*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des ServiceFabric-Diensts an. Wenn Sie *ServiceFabric* als Wert angeben, wird der Datenverkehr für ServiceFabric zugelassen oder verweigert. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **Sql*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe der Azure SQL-Datenbank-, Azure Database for MySQL-, Azure Database for PostgreSQL- und Azure SQL Data Warehouse-Dienste an. Wenn Sie *Sql* als Wert angeben, wird der Datenverkehr für Sql zugelassen oder verweigert. Falls Sie den Zugriff auf Sql nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: Sql.[Name der Region]. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **SqlManagement*** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Verwaltungsdatenverkehrs für dedizierte SQL-Bereitstellungen an. Wenn Sie *SqlManagement* als Wert angeben, wird der Datenverkehr für SqlManagement zugelassen oder verweigert. Dieses Tag wird für ein-/ausgehende Sicherheitsregeln empfohlen. 
-* **Storage*** (nur Resource Manager): Dieses Tag gibt den IP-Adressraum für den Azure Storage-Dienst an. Wenn Sie *Storage* als Wert angeben, wird der Datenverkehr für den Speicher zugelassen oder verweigert. Falls Sie den Zugriff auf Speicher nur in einer bestimmten [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region im folgenden Format angeben: Speicher.[Name der Region]. Das Tag steht für den Dienst, aber nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. Dieses Tag wird für ausgehende Sicherheitsregeln empfohlen. 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für das klassische Bereitstellungsmodell): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume, [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json) verbunden sind, die [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) und Adresspräfixe, die für [benutzerdefinierte Routen](virtual-networks-udr-overview.md) verwendet werden. Denken Sie daran, dass dieses Tag die Standardroute enthalten kann. 
-
-> [!NOTE]
-> Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. 
-
-> [!NOTE]
-> Wenn Sie einen [VNET-Dienstendpunkt](virtual-network-service-endpoints-overview.md) für einen Dienst implementieren, z. B. Azure Storage oder Azure SQL-Datenbank, fügt Azure eine [Route](virtual-networks-udr-overview.md#optional-default-routes) zu einem Subnetz des virtuellen Netzwerks für den Dienst hinzu. Die Adresspräfixe für die Route sind die gleichen Adresspräfixe bzw. CIDR-Bereiche wie für das entsprechende Diensttag.
-
-### <a name="service-tags-in-on-premises"></a>Diensttags in lokalen Firewalls  
-Sie können die Liste mit den Diensttags mit Präfixdetails über die folgenden wöchentlichen Veröffentlichungen für Azure-Clouds herunterladen und in eine lokale Firewall integrieren: [öffentlich](https://www.microsoft.com/download/details.aspx?id=56519), [US Government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064).
-
-Sie können diese Informationen auch mithilfe der **Diensttagermittlungs-API** (öffentliche Vorschau) – [REST](https://aka.ms/discoveryapi_rest), [Azure PowerShell](https://aka.ms/discoveryapi_powershell), und [Azure CLI](https://aka.ms/discoveryapi_cli) programmgesteuert abrufen. 
-
-> [!NOTE]
-> Die folgenden wöchentlichen Veröffentlichungen (alte Version) für die Azure-Clouds [Öffentlich](https://www.microsoft.com/en-us/download/details.aspx?id=41653), [China](https://www.microsoft.com/en-us/download/details.aspx?id=42064) und [Deutschland](https://www.microsoft.com/en-us/download/details.aspx?id=54770) werden am 30. Juni 2020 eingestellt. Beginnen Sie bitte mit der Verwendung der aktualisierten Veröffentlichungen wie oben beschrieben. 
+Weitere Informationen finden Sie unter [Azure-Diensttags](service-tags-overview.md). 
 
 ## <a name="default-security-rules"></a>Standardsicherheitsregeln
 
@@ -113,13 +66,13 @@ Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folge
 
 |Priority|`Source`|Quellports|Destination|Zielports|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65000|VirtualNetwork|0 - 65535|VirtualNetwork|0 - 65535|Any|ZULASSEN|
+|65000|VirtualNetwork|0 - 65535|VirtualNetwork|0 - 65535|Any|Allow|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
 |Priority|`Source`|Quellports|Destination|Zielports|Protocol|Access|
 |---|---|---|---|---|---|---|
-|65001|AzureLoadBalancer|0 - 65535|0.0.0.0/0|0 - 65535|Any|ZULASSEN|
+|65001|AzureLoadBalancer|0 - 65535|0.0.0.0/0|0 - 65535|Any|Allow|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
@@ -133,13 +86,13 @@ Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folge
 
 |Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65000 | VirtualNetwork | 0 - 65535 | VirtualNetwork | 0 - 65535 | Any | ZULASSEN |
+| 65000 | VirtualNetwork | 0 - 65535 | VirtualNetwork | 0 - 65535 | Any | Allow |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
 |Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 65001 | 0.0.0.0/0 | 0 - 65535 | Internet | 0 - 65535 | Any | ZULASSEN |
+| 65001 | 0.0.0.0/0 | 0 - 65535 | Internet | 0 - 65535 | Any | Allow |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
@@ -147,7 +100,7 @@ Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folge
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0 - 65535 | 0.0.0.0/0 | 0 - 65535 | Any | Verweigern |
 
-In den Spalten **Quelle** und **Ziel** handelt es sich bei *VirtualNetwork*, *AzureLoadBalancer* und *Internet* um [Diensttags](#service-tags) und nicht um IP-Adressen. In der Protokollspalte steht **Beliebig** für TCP, UDP und ICMP. Beim Erstellen einer Regel können Sie „TCP“, „UDP“, „ICMP“ oder „Beliebig“ angeben. *0.0.0.0/0* in den Spalten **Quelle** und **Ziel** steht für alle Adressen. Clients wie Azure-Portal, Azure-Befehlszeilenschnittstelle oder PowerShell können „*“ oder „any“ für diesen Ausdruck verwenden.
+In den Spalten **Quelle** und **Ziel** handelt es sich bei *VirtualNetwork*, *AzureLoadBalancer* und *Internet* um [Diensttags](service-tags-overview.md) und nicht um IP-Adressen. In der Protokollspalte steht **Beliebig** für TCP, UDP und ICMP. Beim Erstellen einer Regel können Sie „TCP“, „UDP“, „ICMP“ oder „Beliebig“ angeben. *0.0.0.0/0* in den Spalten **Quelle** und **Ziel** steht für alle Adressen. Clients wie Azure-Portal, Azure-Befehlszeilenschnittstelle oder PowerShell können „*“ oder „any“ für diesen Ausdruck verwenden.
  
 Sie können die Standardregeln nicht entfernen, aber Sie können sie außer Kraft setzen, indem Sie Regeln mit höheren Prioritäten erstellen.
 
@@ -165,7 +118,7 @@ Diese Regel ist erforderlich, um Datenverkehr aus dem Internet an die Webserver 
 
 |Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | ZULASSEN |
+| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
 
 ### <a name="deny-database-all"></a>Deny-Database-All
 
@@ -181,7 +134,7 @@ Diese Regel lässt Datenverkehr von der Anwendungssicherheitsgruppe *AsgLogic* z
 
 |Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
 |---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | ZULASSEN |
+| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 
 Regeln, in denen eine Anwendungssicherheitsgruppe als Quelle oder Ziel angegeben ist, werden nur auf Netzwerkschnittstellen angewendet, bei denen es sich um Mitglieder der Anwendungssicherheitsgruppe handelt. Wenn die Netzwerkschnittstelle nicht Mitglied einer Anwendungssicherheitsgruppe ist, wird die Regel nicht auf die Netzwerkschnittstelle angewendet, auch wenn die Netzwerksicherheitsgruppe dem Subnetz zugeordnet ist.
 
@@ -222,6 +175,13 @@ Für ausgehenden Datenverkehr verarbeitet Azure zuerst die Regeln in einer Netzw
 - **VM2**: Der gesamte Datenverkehr wird über die Netzwerkschnittstelle an das Subnetz gesendet, da der Netzwerkschnittstelle, die an *VM2* angefügt ist, keine Netzwerksicherheitsgruppe zugeordnet ist. Die Regeln in *NSG1* werden verarbeitet.
 - **VM3**: Wenn *NSG2* über eine Sicherheitsregel verfügt, die Port 80 verweigert, wird der Datenverkehr verweigert. Wenn *NSG2* über eine Sicherheitsregel verfügt, die Port 80 zulässt, dann ist Port 80 als ausgehender Port für das Internet zulässig, da *Subnet2* keine Netzwerksicherheitsgruppe zugeordnet ist.
 - **VM4**: Der gesamte Netzwerkdatenverkehr von *VM4* ist zulässig, da der Netzwerkschnittstelle, die an die VM angefügt ist, oder *Subnet3* keine Netzwerksicherheitsgruppe zugeordnet ist.
+
+
+### <a name="intra-subnet-traffic"></a>Subnetzinterner Datenverkehr
+
+Hier muss darauf hingewiesen werden, dass Sicherheitsregeln in einer Netzwerksicherheitsgruppe, die einem Subnetz zugeordnet ist, die Konnektivität von darin enthaltenen VMs beeinflussen kann. Wenn z. B. eine Regel zu *NSG1* hinzugefügt wird, die den gesamten ein- und ausgehenden Datenverkehr sperrt, können *VM1* und *VM2* nicht mehr miteinander kommunizieren. Um dies möglich zu machen, müsste eine weitere spezielle Regel hinzugefügt werden. 
+
+
 
 Sie können die Aggregatregeln, die auf eine Netzwerkschnittstelle angewendet werden, leicht prüfen, indem Sie die [effektiven Sicherheitsregeln](virtual-network-network-interface.md#view-effective-security-rules) für eine Netzwerkschnittstelle anzeigen. Sie können auch in Azure Network Watcher die Funktion [Überprüfen des IP-Flusses](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden, um zu ermitteln, ob die Kommunikation für eine Netzwerkschnittstelle in ein- oder ausgehender Richtung zulässig ist. Die IP-Datenflussüberprüfung gibt an, ob die Kommunikation zugelassen oder verweigert wird und für welche Netzwerksicherheitsregel Datenverkehr zugelassen ist oder verweigert wird.
 

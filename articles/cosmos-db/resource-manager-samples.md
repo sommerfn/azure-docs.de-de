@@ -4,14 +4,14 @@ description: Verwenden Sie Azure Resource Manager-Vorlagen zum Erstellen und Kon
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4a32b0497d2457a740e9c082f990bb9112208bfd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969186"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582805"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Resource Manager-Vorlagen für Azure Cosmos DB
 
@@ -20,10 +20,9 @@ Die folgenden Tabellen enthalten Links zu Azure Resource Manager-Vorlagen für A
 ## <a name="sql-core-api"></a>SQL-API (Core-API)
 
 |**Vorlage**|**Beschreibung**|
-|---| ---|
-|[Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos](manage-sql-with-resource-manager.md#create-resource) | Diese Vorlage erstellt ein SQL-API-Konto (Core-API) in zwei Regionen mit aktivierter Multimasterunterstützung. Das Azure Cosmos-Konto enthält zwei Container, die den Durchsatz auf Datenbankebene gemeinsam nutzen. |
-|[Aktualisieren des Durchsatzes (RU/s) für eine Datenbank](manage-sql-with-resource-manager.md#database-ru-update) | Mit dieser Vorlage wird der Durchsatz für eine Datenbank in einem SQL-API-Konto (Core-API) aktualisiert. |
-|[Aktualisieren des Durchsatzes (RU/s) für einen Container](manage-sql-with-resource-manager.md#container-ru-update) | Mit dieser Vorlage wird der Durchsatz für einen Container in einem SQL-API-Konto (Core-API) aktualisiert. |
+|---|---|
+|[Erstellen eines Kontos, einer Datenbank und eines Containers in Azure Cosmos](manage-sql-with-resource-manager.md#create-resource) | Diese Vorlage erstellt ein SQL (Core) API-Konto in zwei Regionen mit zwei Containern mit gemeinsamem Datenbankdurchsatz und einem Container mit dediziertem Durchsatz. Der Durchsatz kann aktualisiert werden, indem die Vorlage mit dem aktualisierten Eigenschaftswert für den Durchsatz erneut übermittelt wird. |
+|[Erstellen eines Azure Cosmos-Kontos, einer Datenbank und eines Containers mit einer gespeicherten Prozedur, einem Trigger und einer UDF](manage-sql-with-resource-manager.md#create-sproc) | Diese Vorlage erstellt ein SQL(Core) API-Konto in zwei Regionen mit einer gespeicherten Prozedur, einem Trigger und einer UDF für einen Container. |
 
 ## <a name="mongodb-api"></a>MongoDB-API
 

@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 0812828f8d7c0be38fb03c06f4a10019e2ed153c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 499ac3a394339ebb07c36abeaaa761de22927941
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447302"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827775"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure Storage Table – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 
@@ -50,7 +50,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -107,7 +107,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -200,12 +200,12 @@ In den folgenden Beispielen wird angenommen, dass der Tabellenspeicherdienst Ent
 
 | *Spaltenname* | *Datentyp* |
 | --- | --- |
-| **PartitionKey** (Abteilungsname) |string |
-| **RowKey** (Mitarbeiter-ID) |string |
-| **Vorname** |string |
-| **Nachname** |string |
+| **PartitionKey** (Abteilungsname) |Zeichenfolge |
+| **RowKey** (Mitarbeiter-ID) |Zeichenfolge |
+| **Vorname** |Zeichenfolge |
+| **Nachname** |Zeichenfolge |
 | **Alter** |Integer |
-| **EmailAddress** |string |
+| **EmailAddress** |Zeichenfolge |
 
 Im Abschnitt „Übersicht über den Azure-Tabellenspeicherdienst“ weiter oben werden einige der wichtigsten Funktionen des Azure-Tabellenspeicherdiensts beschrieben, die direkten Einfluss auf den Entwurf für Abfragen haben. Dadurch ergeben sich die folgenden allgemeinen Richtlinien für den Entwurf von Abfragen für den Tabellenspeicherdienst. Die in den Beispielen unten verwendete Filtersyntax stammt aus dem REST-API-Tabellenspeicherdienst. Weitere Informationen finden Sie unter [Query Entities](https://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
 
@@ -531,7 +531,7 @@ EGTs ermöglichen atomische Transaktionen über mehrere Entitäten, die den glei
 * Entitäten, die in zwei verschiedenen Partitionen in derselben Tabelle, in verschiedenen Tabellen oder in verschiedenen Speicherkonten gespeichert sind.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und einen Blob, der im Blob-Dienst gespeichert ist.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und eine Datei in einem Dateisystem.  
-* Speicherung einer Entität im Tabellenspeicherdienst, der jedoch mithilfe des Azure-Suchdienstes indiziert ist.  
+* Speicherung einer Entität im Tabellenspeicherdienst, der jedoch mithilfe des Azure Cognitive Search-Dienstes indiziert ist.  
 
 #### <a name="solution"></a>Lösung
 Mithilfe von Azure-Warteschlangen können Sie eine Lösung implementieren, die Eventual Consistency über zwei oder mehr Partitionen oder Speichersysteme bietet.
@@ -1125,7 +1125,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1145,7 +1145,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1182,7 +1182,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td></td>
@@ -1218,7 +1218,7 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Mitarbeiter</td>
@@ -1240,7 +1240,7 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Mitarbeiter</td>
@@ -1281,7 +1281,7 @@ Trotzdem muss jede Entität über **PartitionKey**-, **RowKey**- und **Timestamp
 <th>FirstName</th>
 <th>LastName</th>
 <th>Alter</th>
-<th>E-Mail</th>
+<th>Email</th>
 </tr>
 <tr>
 <td>Mitarbeiter</td>

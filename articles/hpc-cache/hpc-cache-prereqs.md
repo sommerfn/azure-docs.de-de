@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache-Voraussetzungen (Vorschauversion)
+title: Azure HPC Cache-Voraussetzungen
 description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709972"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582151"
 ---
-# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Voraussetzungen für Azure HPC Cache (Vorschauversion)
+# <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
 Stellen Sie sicher, dass Ihre Umgebung diese Anforderungen erfüllt, bevor Sie das Azure-Portal zum Erstellen eines neuen Azure HPC Cache verwenden.
 
@@ -22,7 +22,7 @@ Stellen Sie sicher, dass Ihre Umgebung diese Anforderungen erfüllt, bevor Sie d
 Ein kostenpflichtiges Abonnement wird empfohlen.
 
 > [!NOTE]
-> Während der Vorschau muss das Azure HPC Cache-Team Ihr Abonnement der Zugriffsliste hinzufügen, damit es zum Erstellen einer Cache-Instanz verwendet werden kann. Dieses Vorgehen hilft, sicherzustellen, dass jeder Kunde gute Reaktionszeiten von seinen Testcaches erhält. Füllen Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) aus, um Zugriff anzufordern.
+> In den ersten Monaten muss das Azure HPC Cache-Team Ihr Abonnement der Zugriffsliste hinzufügen, damit es zum Erstellen einer Cache-Instanz verwendet werden kann. Mithilfe dieser Vorgehensweise wird sichergestellt, dass jeder Kunde gute Reaktionszeiten von seinen Caches erhält. Füllen Sie [dieses Formular](https://aka.ms/onboard-hpc-cache) aus, um Zugriff anzufordern.
 
 ## <a name="network-infrastructure"></a>Netzwerkinfrastruktur
 
@@ -86,7 +86,7 @@ Verwenden Sie diese Einstellungen, um ein kompatibles Speicherkonto zu erstellen
 * Zugriffsebene (Standard): **Heiße Ebene**
 
 Es wird empfohlen, ein Speicherkonto am Standort Ihres Caches zu verwenden.
-<!-- need to clarify location - same region or same resource group or same virtual network? -->
+<!-- clarify location - same region or same resource group or same virtual network? -->
 
 Außerdem müssen Sie der Cache-Anwendung Zugriff auf Ihr Azure-Speicherkonto erteilt haben. Folgen Sie der Beschreibung unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die Zugriffsrollen „Mitwirkender von Speicherkonto“ und „Mitwirkender an Storage-Blobdaten“ zu erteilen. Wenn Sie nicht der Besitzer des Speicherkontos sind, lassen Sie den Besitzer diesen Schritt ausführen.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 60d0425a7dbc532e856c7bf3c91065d2548c9b9a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955862"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601378"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Welche Datenträgertypen stehen in Azure zur Verfügung?
 
@@ -26,7 +26,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung von Ultra-Datenträgern, S
 |   | Ultra-Datenträger   | SSD Premium   | SSD Standard   | HDD Standard   |
 |---------|---------|---------|---------|---------|
 |Datenträgertyp   |SSD   |SSD   |SSD   |Festplattenlaufwerk   |
-|Szenario   |E/A-intensive Workloads wie SAP HANA, führende Datenbanken (z.B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
+|Szenario   |E/A-intensive Workloads wie [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), führende Datenbanken (z. B. SQL, Oracle) und andere Workloads mit vielen Transaktionen.   |Produktionsworkloads und leistungsabhängige Workloads   |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test   |Sicherung, nicht kritisch, sporadischer Zugriff   |
 |Maximale Datenträgergröße   |65.536 Gibibyte (GiB)    |32767 GiB    |32767 GiB   |32767 GiB   |
 |Max. Durchsatz   |2\.000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
 |Max. IOPS   |160.000    |20.000   |6\.000   |2\.000   |
@@ -62,13 +62,4 @@ Einige Hauptfunktionen von Ultra-Datenträgern sind:
 
 ### <a name="ga-scope-and-limitations"></a>Umfang und Einschränkungen für allgemeine Verfügbarkeit
 
-Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
-
-- Sie werden in den Regionen „USA, Osten 2“, „Asien, Südosten“ und „Europa, Norden“ in zwei Verfügbarkeitszonen pro Region unterstützt.  
-- Können nur mit Verfügbarkeitszonen verwendet werden. (Verfügbarkeitsgruppen und einzelne VM-Bereitstellungen außerhalb der Zonen können keine Ultra-Datenträger anfügen.)
-- Werden nur auf ES/DS v3 VMs unterstützt.
-- Sind nur als Datenträger für Daten verfügbar und unterstützen nur für physische Sektorgröße von 4K.  
-- Können nur als leere Datenträger erstellt werden.  
-- Unterstützen noch keine Datenträger-Momentaufnahmen, VM-Images, Verfügbarkeitsgruppen, VM-Skalierungsgruppen und Azure Disk Encryption.
-- Unterstützen noch keine Integration in Azure Backup oder Azure Site Recovery.
-- Die IOPS-Obergrenze liegt bei allgemein verfügbaren virtuellen Computern derzeit bei 80.000.
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](managed-disks-ultra-disks-GA-scope-and-limitations.md)]

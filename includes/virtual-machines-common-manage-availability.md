@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0879cb33a0796e19724bd143e57780d6ce27bfcf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657788"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590775"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -72,6 +72,14 @@ Falls Sie derzeit VMs mit nicht verwalteten Datenträgern verwenden, empfehlen w
 > Die Anzahl von Fehlerdomänen für verwaltete Verfügbarkeitsgruppen variieren je nach Region: zwei oder drei pro Region. In der folgenden Tabelle ist die Anzahl pro Region aufgeführt:
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
+
+> Hinweis: Unter bestimmten Umständen kann es vorkommen, dass zwei VMs, die Teil derselben Verfügbarkeitsgruppe sind, dieselbe Fehlerdomäne gemeinsam nutzen. Dies kann bestätigt werden, indem Sie zur betreffenden Verfügbarkeitsgruppe wechseln und die Spalte „Fehlerdomäne“ überprüfen.
+> Dieses Verhalten kann beobachtet werden, wenn die Bereitstellung der VMs wie folgt abgelaufen ist:
+> - 1\. VM bereitstellen
+> - 1\. VM beenden/freigeben
+> - 2\. VM bereitstellen
+> Unter diesen Umständen wird der Betriebssystemdatenträger der 2. VM möglicherweise in der Fehlerdomäne der 1. VM erstellt, sodass die 2. VM ebenfalls in derselben Fehlerdomäne landet. 
+> Um dieses Problem zu vermeiden, wird empfohlen, die VM zwischen den Bereitstellungen nicht zu beenden/freizugeben.
 
 Gehen Sie wie folgt vor, wenn Sie planen, VMs mit nicht verwalteten Datenträgern zu verwenden: Halten Sie sich an die unten angegebenen bewährten Methoden für Storage-Konten, bei denen virtuelle Festplatten (VHDs) von VMs als [Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) gespeichert werden.
 
