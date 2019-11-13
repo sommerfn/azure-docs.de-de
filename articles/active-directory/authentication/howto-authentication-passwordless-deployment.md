@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea4b8ea98365ec13f7f027215a75b9d79ea5c54e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9b6f07e1dd8e9252d2b6e00b85a47ba2e19f8bd8
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452952"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603453"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Durchführen einer Bereitstellung der kennwortlosen Authentifizierung
 
@@ -104,9 +104,9 @@ Sicherheitsschlüssel ermöglichen den Zugriff auf Ihre Ressourcen, und Sie soll
 
 Um die Windows 10-Anmeldung mit FIDO2-Sicherheitsschlüsseln zu aktivieren, muss die Anmeldeinformationsanbieter-Funktionalität in Windows 10 aktiviert werden. Sie können zum Aktivieren zwischen zwei Möglichkeiten wählen:
 
-- [Aktivieren der zielgerichteten Intune-Bereitstellung](howto-authentication-passwordless-security-key.md#enable-targeted-intune-deployment)
-   - Die Intune-Bereitstellung ist die empfohlene Option für Computer, die mit Azure Active Directory verbunden sind.
-- [Aktivieren des Anmeldeinformationsanbieters mittels eines Bereitstellungspakets](howto-authentication-passwordless-security-key.md#enable-credential-provider-via-provisioning-package)
+- [Aktivieren des Anmeldeinformationsanbieters mit Intune](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
+   - Die Intune-Bereitstellung ist die empfohlene Option.
+- [Aktivieren des Anmeldeinformationsanbieters mittels eines Bereitstellungspakets](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Wenn die Intune-Bereitstellung nicht möglich ist, müssen Administratoren auf jedem Computer ein Paket bereitstellen, um die Anmeldeinformationsanbieter-Funktionalität zu aktivieren. Die Paketinstallation kann mit einer der folgenden Optionen ausgeführt werden:
       - Gruppenrichtlinie oder System Center Configuration Manager (SCCM)
       - Lokale Installation auf einem Windows 10-Computer
@@ -115,7 +115,7 @@ Um die Windows 10-Anmeldung mit FIDO2-Sicherheitsschlüsseln zu aktivieren, mus
 
 Benutzer müssen ihren Sicherheitsschlüssel auf jedem ihrer mit Azure Active Directory verbundenen Windows 10-Computer registrieren.
 
-Weitere Informationen finden Sie unter [Benutzerregistrierung und Verwaltung von FIDO2-Sicherheitsschlüsseln](howto-authentication-passwordless-security-key.md).
+Weitere Informationen finden Sie unter [Benutzerregistrierung und Verwaltung von FIDO2-Sicherheitsschlüsseln](howto-authentication-passwordless-security-key.md#user-registration-and-management-of-fido2-security-keys).
 
 ### <a name="licensing-for-passwordless-authentication"></a>Lizenzierung der kennwortlosen Authentifizierung
 
@@ -185,7 +185,7 @@ Im Folgenden finden Sie Beispieltestfälle für die kennwortlose Authentifizieru
 | Der Benutzer kann sich mit dem FIDO2-Gerät (1809) anmelden | Der Benutzer kann den Sicherheitsschlüssel im Anmeldefenster auswählen und sich erfolgreich anmelden. |
 | Der Benutzer kann das FIDO2-Gerät registrieren (1903) | Der Benutzer kann das FIDO2-Gerät unter „Einstellungen > Konten > Anmeldeoptionen > Sicherheitsschlüssel“ registrieren |
 | Der Benutzer kann das FIDO2-Gerät zurücksetzen (1903) | Der Benutzer kann das FIDO2-Gerät unter „Einstellungen > Konten > Anmeldeoptionen > Sicherheitsschlüssel“ zurücksetzen |
-| Der Benutzer kann sich mit dem FIDO2-Gerät (1809) anmelden | Der Benutzer kann den Sicherheitsschlüssel im Anmeldefenster auswählen und sich erfolgreich anmelden. |
+| Der Benutzer kann sich mit dem FIDO2-Gerät (1903) anmelden | Der Benutzer kann den Sicherheitsschlüssel im Anmeldefenster auswählen und sich erfolgreich anmelden. |
 
 **Kennwortlose FIDO-Anmeldung bei Azure AD-Web-Apps**
 
@@ -257,7 +257,7 @@ Führen Sie die Schritte im Artikel [Aktivieren der kennwortlosen Anmeldung mit 
 ### <a name="deploy-fido2-security-key-sign-in"></a>Bereitstellen der FIDO2-Sicherheitsschlüsselanmeldung
 
 Führen Sie die Schritte im Artikel [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Azure AD (Vorschauversion)](howto-authentication-passwordless-security-key.md) aus, um FIDO2-Sicherheitsschlüssel als kennwortlose Authentifizierungsmethoden in Ihrer Organisation zu aktivieren.
- 
+
 ### <a name="troubleshoot-phone-sign-in"></a>Problembehandlung bei der Anmeldung per Telefon
 
 | Szenario | Lösung |

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2247b7678573594c4929bd33747fffb91203f457
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d071ff071c13637b15479d86a699d0b368119196
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561793"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73742595"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory
 Wenn für einen Benutzer in Ihrer Organisation die Berechtigung zum Verwalten von Azure AD-Ressourcen (Azure Active Directory) erforderlich ist, müssen Sie dem Benutzer eine geeignete Rolle in Azure AD zuweisen – basierend auf den Aktionen, für deren Durchführung der Benutzer die Berechtigung benötigt.
@@ -33,15 +33,17 @@ Sie können Rollen auch zuweisen, indem Sie Privileged Identity Management (PIM)
 ### <a name="to-assign-a-role-to-a-user"></a>So weisen Sie einem Benutzer eine Rolle zu
 1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie **Azure Active Directory** und **Benutzer**, und suchen Sie dann nach dem Benutzer, der die Rollenzuweisung erhalten soll, und wählen Sie ihn aus. Beispiel: _Alain Charon_.
+2. Wählen Sie **Azure Active Directory** und **Benutzer**, und suchen Sie dann nach dem Benutzer, der die Rollenzuweisung erhalten soll, und wählen Sie ihn aus. Beispielsweise _Alain Charon_.
 
-3. Wählen Sie auf der Seite **Alain Charon – Profil** die Option **Verzeichnisrolle**.
+      ![Seite „Alle Benutzer“ – Benutzer auswählen](media/active-directory-users-assign-role-azure-portal/directory-role-select-user.png)
+
+3. Wählen Sie auf der Seite **Alain Charon – Profil** die Option **Zugewiesene Rollen** aus.
 
     Die Seite **Alain Charon – Verzeichnisrolle** wird angezeigt.
 
-4. Wählen Sie **Rolle hinzufügen** und dann die Rolle aus, die Alain Charon zugewiesen werden soll (z.B. _Anwendungsadministrator_). Wählen Sie anschließend die Option **Auswählen**.
+4. Wählen Sie **Zuweisung hinzufügen** aus, wählen Sie die Rolle aus, die Alain Charon zugewiesen werden soll (z. B. _Anwendungsadministrator_), und wählen Sie dann **Auswählen** aus.
 
-    ![Seite „Verzeichnisrollen“ mit der ausgewählten Rolle](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+    ![Seite „Zugewiesene Rollen“ mit der ausgewählten Rolle](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
 
     Die Rolle „Anwendungsadministrator“ wird Alain Charon zugewiesen und auf der Seite **Alain Charon – Verzeichnisrolle** angezeigt.
 
@@ -50,11 +52,11 @@ Wenn Sie die Rollenzuweisung für einen Benutzer entfernen möchten, können Sie
 
 ### <a name="to-remove-a-role-assignment-from-a-user"></a>So entfernen Sie eine Rollenzuweisung für einen Benutzer
 
-1. Wählen Sie **Azure Active Directory** und **Benutzer**, und suchen Sie dann nach dem Benutzer, für den die Rollenzuweisung entfernt werden soll, und wählen Sie ihn aus. Beispiel: _Alain Charon_.
+1. Wählen Sie **Azure Active Directory** und **Benutzer**, und suchen Sie dann nach dem Benutzer, für den die Rollenzuweisung entfernt werden soll, und wählen Sie ihn aus. Beispielsweise _Alain Charon_.
 
-2. Wählen Sie **Verzeichnisrolle**, **Anwendungsadministrator** und dann **Rolle entfernen**.
+2. Wählen Sie **Zugewiesene Rollen** aus, wählen Sie **Anwendungsadministrator** aus, und wählen Sie dann **Zuweisung entfernen** aus.
 
-    ![Seite „Verzeichnisrollen“ mit der ausgewählten Rolle und der Option zum Entfernen](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+    ![Seite „Zugewiesene Rollen“ mit der ausgewählten Rolle und der Option zum Entfernen](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
 
     Die Rolle „Anwendungsadministrator“ wird für Alain Charon entfernt und auf der Seite **Alain Charon – Verzeichnisrolle** nicht mehr angezeigt.
 

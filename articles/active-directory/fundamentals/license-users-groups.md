@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/06/2018
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 869713967a6a89611ab2ea9ca7b7516f090a5f92
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 9f690d23ac4d8c452d731c2f6fd4ae67dc281639
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034287"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805524"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 
@@ -87,6 +87,8 @@ Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen mu
 1. Wählen Sie **Zuweisen** aus.
 
     Der Benutzer wird der Liste der lizenzierten Benutzer hinzugefügt und hat Zugriff auf die enthaltenen Azure AD-Dienste.
+    > [!NOTE]
+    > Über die Seite **Lizenzen** des Benutzers können dem Benutzer Lizenzen auch direkt zugewiesen werden. Wenn einem Benutzer eine Lizenz über eine Gruppenmitgliedschaft zugewiesen ist und Sie dem Benutzer die gleiche Lizenz direkt zuweisen möchten, können Sie dies nur über die in Schritt 1 erwähnte Seite **Produkte** tun.
 
 ### <a name="to-assign-a-license-to-a-group"></a>So weisen Sie einer Gruppe eine Lizenz zu
 

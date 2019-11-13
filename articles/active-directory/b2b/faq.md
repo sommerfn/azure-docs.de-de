@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/10/2019
+ms.date: 11/07/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 523f1adc94870f79d198366059f33ad52f5dad68
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293069"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816445"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -57,15 +57,21 @@ Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastb
 B2B Collaboration-Benutzer benötigen keinen Zugriff auf das Azure-Portal, falls ihnen nicht die Rolle eines eingeschränkten Administrators zugewiesen ist. Wenn ihnen diese Rolle jedoch zugewiesen ist, können sie auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer möglicherweise auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kann ich den Zugriff auf das Azure-Portal für Gastbenutzer sperren?
-Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
-Verwenden Sie eine Richtlinie für bedingten Zugriff in der API für das klassische Microsoft Azure-Bereitstellungsmodell, um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.com) zu blockieren:
-1. Ändern Sie die Gruppe **Alle Benutzer**, sodass sie nur Mitglieder enthält.
-   ![Screenshot der Gruppe „Alle Benutzer“, deren „UserType“ nicht gleich „Gast“ ist](media/faq/modify-all-users-group.png)
-2. Erstellen Sie eine dynamische Gruppe mit Gastbenutzern.
-   ![Screenshot mit einer neuen Gruppe „Alle Gastbenutzer“](media/faq/group-with-guest-users.png)
-3. Richten Sie wie im folgenden Video veranschaulicht eine Richtlinie für bedingten Zugriff ein, um den Zugriff auf das Portal durch Gastbenutzer zu blockieren:
-  
-   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+
+Ja. Sie können eine Richtlinie für bedingten Zugriff erstellen, durch die der Zugriff auf das Azure-Portal für alle Gast- und externen Benutzer blockiert wird. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+2. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus. 
+3. Wählen Sie unter **Verwalten** die Option **Sicherheit** aus.
+4. Wählen Sie unter **Schützen** die Option **Bedingter Zugriff** aus. Wählen Sie **Neue Richtlinie**.
+5. Geben Sie auf der Seite **Neu** im Textfeld **Name** einen Namen für die Richtlinie ein (z. B. „Blockieren des Zugriffs auf das Portal durch Gastbenutzer“).
+6. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
+7. Wählen Sie auf der Registerkarte **Einschließen** die Option **Benutzer und Gruppen auswählen** aus, und wählen Sie dann **Alle Gast- und externen Benutzer (Vorschau)** aus.
+9. Wählen Sie **Fertig**aus.
+10. Wählen Sie auf der Seite **Neu** im Abschnitt **Zuweisungen** die Option **Cloud-Apps oder -aktionen** aus.
+11. Wählen Sie auf der Seite **Cloud-Apps oder -aktionen** die Option **Apps auswählen** aus, und wählen Sie dann **Auswählen** aus.
+12. Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure-Verwaltung** und dann **Auswählen** aus.
+13. Wählen Sie auf der Seite **Cloud-Apps oder -aktionen** die Option **Fertig** aus.
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Unterstützt die Azure AD B2B-Zusammenarbeit Multi-Factor Authentication und E-Mail-Konten für Consumer?
 Ja. Sowohl Multi-Factor Authentication als auch E-Mail-Konten für Consumer werden für die Azure AD B2B-Zusammenarbeit unterstützt.

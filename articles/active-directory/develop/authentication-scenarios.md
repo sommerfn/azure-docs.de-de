@@ -16,14 +16,14 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2201b7701dae90b43a01a6fb45decd94e45bab74
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430018"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718367"
 ---
 # <a name="authentication-basics"></a>Authentifizierungsgrundlagen
 
@@ -35,15 +35,15 @@ Bei der **Authentifizierung** weisen Sie nach, dass Sie die Person sind, als die
 
 Die **Autorisierung** ist die Gewährung einer Handlungsberechtigung für eine authentifizierte Person. Sie gibt an, auf welche Daten Sie zugreifen dürfen und welche Aktionen Sie damit ausführen können. Autorisierung wird manchmal verkürzt als AuthZ bezeichnet.
 
-Anstatt Apps zu erstellen, die jeweils über eigene Informationen in Bezug auf Benutzername und Kennwort verfügen (verbunden mit hohem Verwaltungsaufwand, wenn Sie viele Apps nutzen und hierfür Benutzer hinzufügen bzw. entfernen müssen), können Apps diese Aufgabe an einen zentralen Identitätsanbieter delegieren.
+Statt Apps zu erstellen, die jeweils über eigene Informationen in Bezug auf Benutzername und Kennwort verfügen, was mit einem hohen Verwaltungsaufwand verbunden ist, wenn Sie für mehrere Apps Benutzer hinzufügen oder entfernen müssen, besteht die Möglichkeit, dass Apps diese Aufgabe an einen zentralen Identitätsanbieter delegieren können.
 
-Azure Active Directory (Azure AD) ist ein zentraler Identitätsanbieter in der Cloud. Die Delegierung der Authentifizierung und Autorisierung an den Anbieter ermöglicht beispielsweise die Verwendung von Richtlinien für bedingten Zugriff, bei denen ein Benutzer sich an einem bestimmten Ort befinden muss, die Nutzung der mehrstufigen Authentifizierung sowie die Schaffung der Möglichkeit, dass sich Benutzer nur einmal anmelden müssen und dann automatisch bei allen Web-Apps angemeldet werden, die dasselbe zentralisierte Verzeichnis nutzen. Diese Funktion wird als einmaliges Anmelden (Single Sign-On, SSO) bezeichnet.
+Azure Active Directory (Azure AD) ist ein zentraler Identitätsanbieter in der Cloud. Die Delegierung der Authentifizierung und Autorisierung an den Anbieter ermöglicht beispielsweise die Verwendung von Richtlinien für bedingten Zugriff, die erfordern, dass sich ein Benutzer an einem bestimmten Ort befindet, die Verwendung der mehrstufigen Authentifizierung sowie die Schaffung der Möglichkeit, dass sich Benutzer nur einmal anmelden müssen und dann automatisch bei allen Web-Apps angemeldet werden, die dasselbe zentralisierte Verzeichnis nutzen. Diese Funktion wird als einmaliges Anmelden (Single Sign-On, SSO) bezeichnet.
 
 Ein zentraler Identitätsanbieter ist noch wichtiger für Apps mit Benutzern auf der ganzen Welt, die sich nicht immer über das Netzwerk des Unternehmens anmelden. Azure AD authentifiziert Benutzer und stellt Zugriffstoken bereit. Ein Zugriffstoken ist ein Sicherheitstoken, das von einem Autorisierungsserver ausgestellt wird. Es enthält Informationen zum Benutzer und zu der App, für die das Token bestimmt ist, und diese Informationen können zum Zugreifen auf Web-APIs und andere geschützte Ressourcen verwendet werden.
 
 Die Microsoft Identity Platform vereinfacht die Authentifizierung für Anwendungsentwickler. Die Plattform verfügt über Identity-as-a-Service mit Unterstützung für branchenübliche Protokolle, z. B. OAuth 2.0 und OpenID Connect, sowie Open Source-Bibliotheken für verschiedene Plattformen, damit Sie schnell mit der Programmierung beginnen können. Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, und das Abrufen von Token zum Aufrufen von Microsoft Graph, anderen Microsoft-APIs oder von Entwicklern erstellten APIs. Weitere Informationen finden Sie unter [Entwicklung der Microsoft Identity Platform](about-microsoft-identity-platform.md).
 
-## <a name="tenants"></a>Mandanten
+### <a name="tenants"></a>Mandanten
 
 Ein Cloudidentitätsanbieter arbeitet für viele Organisationen. Um die Benutzer der verschiedenen Organisationen getrennt zu halten, ist Azure AD in Mandanten partitioniert, wobei ein Mandant pro Organisation verwendet wird.
 
@@ -76,32 +76,31 @@ Token sind nur für einen begrenzten Zeitraum gültig. Normalerweise wird vom ST
 
 Zugriffstoken werden als Bearertoken im `Authenticate`-Header an eine Web-API übergeben. Eine App kann ein Aktualisierungstoken an den STS übergeben, und wenn der Benutzerzugriff auf die App nicht widerrufen wurde, erhält sie ein neues Zugriffstoken und ein neues Aktualisierungstoken zurück. So wird ein Fall behandelt, bei dem eine Person aus dem Unternehmen ausscheidet. Wenn der STS ein Aktualisierungstoken empfängt, stellt er kein weiteres gültiges Zugriffstoken aus, falls der Benutzer nicht mehr autorisiert ist.
 
-### <a name="applications"></a>ANWENDUNGEN
+## <a name="application-model"></a>Anwendungsmodell
 
 Anwendungen können Benutzer selbst anmelden oder die Anmeldung an einen Identitätsanbieter delegieren. Informationen zu Anmeldeszenarien, die von Azure AD unterstützt werden, finden Sie unter [Authentifizierungsflüsse und App-Szenarien](authentication-flows-app-scenarios.md).
 
 Damit ein Identitätsanbieter weiß, dass ein Benutzer Zugriff auf eine bestimmte App hat, müssen sowohl der Benutzer als auch die Anwendung beim Identitätsanbieter registriert werden. Wenn Sie Ihre Anwendung bei Azure AD registrieren, stellen Sie eine Identitätskonfiguration für Ihre Anwendung bereit, die die Integration in Azure AD ermöglicht. Die Registrierung der App ermöglicht Ihnen außerdem Folgendes:
 
 - Anpassen des Brandings Ihrer Anwendung im Dialogfeld für die Anmeldung. Dies ist wichtig, da dies der erste Eindruck ist, den ein Benutzer von Ihrer App erhält.
-- Entscheiden, ob Sie die Anmeldung für Benutzer nur zulassen möchten, wenn sie Ihrer Organisation angehören. Hierbei handelt es sich um eine Einzelinstanzanwendung. Oder lassen Sie für Benutzer die Anmeldung per Geschäfts-, Schul-oder Unikonto zu. Hierbei handelt es sich um eine mehrinstanzenfähige Anwendung. Sie können auch persönliche Microsoft-Konten oder ein Social Media-Konto zulassen, z. B. LinkedIn, Google usw.
+- Entscheiden, ob Sie die Anmeldung für Benutzer nur zulassen möchten, wenn sie Ihrer Organisation angehören. Hierbei handelt es sich um eine Einzelinstanzanwendung. Oder lassen Sie für Benutzer die Anmeldung per Geschäfts-, Schul-oder Unikonto zu. Hierbei handelt es sich um eine mehrinstanzenfähige Anwendung. Sie können auch persönliche Microsoft-Konten oder ein Social Media-Konto zulassen, z. B. von LinkedIn, Google usw.
 - Anfordern von Bereichsberechtigungen. Sie können beispielsweise den Bereich „user.read“ anfordern, mit dem die Berechtigung zum Lesen des Profils des angemeldeten Benutzers gewährt wird.
 - Definieren von Bereichen, mit denen der Zugriff auf Ihre Web-API definiert wird. Wenn eine App auf Ihre API zugreifen möchte, muss sie normalerweise Berechtigungen für die von Ihnen definierten Bereiche anfordern.
 - Austauschen eines Geheimnisses mit Azure AD, um die Identität der App gegenüber Azure AD nachzuweisen.  Dies ist relevant für den Fall, dass es sich bei der App um eine vertrauliche Clientanwendung handelt. In einer vertraulichen Clientanwendung können Anmeldeinformationen sicher aufbewahrt werden. Zum Speichern der Anmeldeinformationen wird ein vertrauenswürdiger Back-End-Server benötigt.
 
 Nach der Registrierung erhält die Anwendung eine GUID, die von der App beim Anfordern von Token mit Azure AD ausgetauscht wird. Wenn es sich bei der App um eine vertrauliche Clientanwendung handelt, wird auch das Geheimnis oder der öffentliche Schlüssel ausgetauscht. Dies hängt davon ab, ob Zertifikate oder Geheimnisse verwendet werden.
 
-### <a name="application-model"></a>Anwendungsmodell
-
 Für die Microsoft Identity Platform werden Anwendungen mit einem Modell dargestellt, das zwei Hauptfunktionen erfüllt:
 
-**Identifizieren der App anhand der unterstützten Authentifizierungsprotokolle und Bereitstellen aller Bezeichner, URLs, Geheimnisse und zugehörigen Informationen, die für die Authentifizierung benötigt werden**
+Identifizieren der App anhand der unterstützten Authentifizierungsprotokolle und Bereitstellen aller Bezeichner, URLs, Geheimnisse und zugehörigen Informationen, die für die Authentifizierung benötigt werden
 Für die Microsoft Identity Platform gilt Folgendes:
 
 * Enthält alle Daten, die zur Unterstützung der Authentifizierung zur Laufzeit erforderlich sind.
 * Enthält alle Daten zum Treffen der Entscheidung, auf welche Ressourcen eine App ggf. zugreifen muss und unter welchen Umständen eine bestimmte Anforderung erfüllt werden soll.
 * Stellt Infrastruktur für die Implementierung der App-Bereitstellung innerhalb des Mandanten des App-Entwicklers und für andere Azure AD-Mandanten bereit.
+* Behandelt die Benutzereinwilligung während der Tokenanforderung und vereinfacht die dynamische mandantenübergreifenden Bereitstellung von Apps
 
-**Verarbeiten der Benutzereinwilligung während der Anforderung des Tokens und Durchführen der übergreifenden dynamischen Bereitstellung für Mandanten** Die Einwilligung ist der Prozess, bei dem ein Ressourcenbesitzer für eine Clientanwendung die Autorisierung erteilt, dass diese basierend auf bestimmten Berechtigungen im Namen des Ressourcenbesitzers auf geschützte Ressourcen zugreifen kann. Für die Microsoft Identity Platform gilt Folgendes:
+Die Einwilligung ist der Prozess, bei dem ein Ressourcenbesitzer einer Clientanwendung durch spezifische Berechtigungen die Autorisierung für den Zugriff auf geschützte Ressourcen im Auftrag des Ressourcenbesitzers gewährt. Für die Microsoft Identity Platform gilt Folgendes:
 
 * Ermöglicht Benutzern und Administratoren, der App dynamisch die Zustimmung zum Zugriff auf Ressourcen in ihrem Namen zu erteilen oder zu verweigern.
 * Ermöglicht es Administratoren, letztendlich zu entscheiden, welche Aktionen Apps ausführen und welche Benutzer bestimmte Apps verwenden dürfen und wie auf die Verzeichnisressourcen zugegriffen wird.
@@ -154,7 +153,7 @@ Die Benutzerauthentifizierung erfolgt über den Browser. Für das OpenID-Protoko
 - Die Umleitung durch die Web-App erfolgt in Form eines Umleitungs-URIs. Dieser Umleitungs-URI wird unter dem Azure AD-Anwendungsobjekt registriert. Es kann mehrere Umleitungs-URIs geben, weil die Anwendung ggf. unter mehreren URLs bereitgestellt wird. Daher muss die Web-App auch den zu verwendenden Umleitungs-URI angeben.
 - Azure AD überprüft, ob der von der Web-App gesendete Umleitungs-URI einer der registrierten URIs für die App ist.
 
-## <a name="generalization-to-desktop-and-mobile-apps"></a>Generalisierung für Desktop- und mobile Apps
+## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Anmeldefluss mit Azure AD für Desktop- und mobile Apps
 
 Der oben beschriebene Ablauf gilt mit geringfügigen Abweichungen auch für Desktop- und mobile Anwendungen.
 
