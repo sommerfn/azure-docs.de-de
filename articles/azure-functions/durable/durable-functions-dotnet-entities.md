@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 9eba76d78c2070f03ed835cdf2bf303ed72b1f7f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72801862"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614889"
 ---
-# <a name="developers-guide-to-durable-entities-in-net-preview"></a>Entwicklerhandbuch für dauerhafte Entitäten in .NET (Vorschauversion)
+# <a name="developers-guide-to-durable-entities-in-net"></a>Entwicklerhandbuch für dauerhafte Entitäten in .NET
 
 In diesem Artikel werden ausführlich die verfügbaren Schnittstellen für die Entwicklung dauerhafter Entitäten mit .NET beschrieben, z. B. mit Beispielen und in Form von allgemeinen Ratschlägen. 
 
@@ -130,7 +130,7 @@ Mit der folgenden Azure-HTTP-Funktion wird ein DELETE-Vorgang mit REST-Konventio
 [FunctionName("DeleteCounter")]
 public static async Task<HttpResponseMessage> DeleteCounter(
     [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -147,7 +147,7 @@ Mit der folgenden Azure-HTTP-Funktion wird ein GET-Vorgang mit REST-Konventionen
 [FunctionName("GetCounter")]
 public static async Task<HttpResponseMessage> GetCounter(
     [HttpTrigger(AuthorizationLevel.Function, "get", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -194,6 +194,7 @@ public interface ICounter
     Task<int> Get();
     void Delete();
 }
+
 public class Counter : ICounter
 {
     ...
@@ -212,7 +213,7 @@ Für den Clientcode kann `SignalEntityAsync<TEntityInterface>` verwendet werden,
 [FunctionName("DeleteCounter")]
 public static async Task<HttpResponseMessage> DeleteCounter(
     [HttpTrigger(AuthorizationLevel.Function, "delete", Route = "Counter/{entityKey}")] HttpRequestMessage req,
-    [DurableClient] IDurableClient client,
+    [DurableClient] IDurableEntityClient client,
     string entityKey)
 {
     var entityId = new EntityId("Counter", entityKey);
@@ -451,6 +452,9 @@ public class HttpEntity
 
 > [!NOTE]
 > Um Probleme mit der Serialisierung zu vermeiden, sollten Sie Felder ausschließen, die zum Speichern von injizierten Werten aus der Serialisierung dienen.
+
+> [!NOTE]
+> Anders als bei Verwendung der Konstruktorinjektion in regulären .NET-Azure-Funktionen *muss* die Funktionseinstiegspunkt-Methode für klassenbasierte Entitäten als `static` deklariert werden. Wenn Sie einen nicht statischen Funktionseinstiegspunkt deklarieren, kommt es unter Umständen zu Konflikten zwischen dem normalen Azure Functions-Objektinitialisierer und dem Durable Entities-Objektinitialisierer.
 
 ## <a name="function-based-syntax"></a>Funktionsbasierte Syntax
 

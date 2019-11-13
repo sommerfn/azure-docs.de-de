@@ -1,23 +1,20 @@
 ---
 title: Automatisieren der Ressourcenbereitstellung für eine Funktions-App in Azure Functions | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die Ihre Funktions-App bereitstellt.
-services: Functions
-documtationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Azure Functions, Funktionen, serverlose Architektur, Infrastruktur als Code, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.service: azure-functions
-ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: ff5b104c9fa1bedf1f710c06761b6449b20bbf05
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 8435aab65d26627de26fb8b5ad0510fcd7c57c33
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263199"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575936"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -28,9 +25,6 @@ Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von
 Beispielvorlagen finden Sie unter:
 - [Funktions-App im Verbrauchsplan]
 - [Funktions-App im Azure App Service-Plan]
-
-> [!NOTE]
-> Der Premium-Plan zum Hosten von Azure Functions befindet sich derzeit in der Vorschauphase. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)](functions-premium-plan.md).
 
 ## <a name="required-resources"></a>Erforderliche Ressourcen
 
@@ -314,7 +308,7 @@ Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt wer
 
 ## <a name="deploy-on-premium-plan"></a>Bereitstellen im Premium-Plan
 
-Der Premium-Plan bietet die gleiche Skalierung wie der Verbrauchsplan, umfasst jedoch dedizierte Ressourcen und zusätzliche Funktionen. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)](./functions-premium-plan.md).
+Der Premium-Plan bietet die gleiche Skalierung wie der Verbrauchsplan, umfasst jedoch dedizierte Ressourcen und zusätzliche Funktionen. Weitere Informationen finden Sie unter [Premium-Tarif für Azure Functions](./functions-premium-plan.md).
 
 ### <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
 

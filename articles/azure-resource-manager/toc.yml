@@ -154,6 +154,8 @@
         - name: 'Bereitstellen: REST-API'
           displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: Was-wäre-wenn-Bereitstellung
+          href: template-deploy-what-if.md
         - name: Erneute Bereitstellung bei einem Fehler
           displayName: rollback
           href: rollback-on-error.md

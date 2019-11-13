@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166467"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601317"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -206,9 +206,9 @@ Azure Container Instances bietet keinen direkten Zugriff auf die zugrundeliegend
 
 Azure Container Instances unterstützt noch nicht die Portzuordnung wie bei der regulären Docker-Konfiguration. Wenn die IP-Adresse einer Containergruppe unerwartet nicht erreichbar ist, vergewissern Sie sich, dass Sie das Containerimage so konfiguriert haben, dass es an den Ports lauscht, die Sie in der Containergruppe mithilfe der Eigenschaft `ports` verfügbar gemacht haben.
 
-Wenn Sie überprüfen möchten, ob Azure Container Instances an dem Port lauschen kann, den Sie im Containerimage konfiguriert haben, testen Sie eine Bereitstellung des Images `aci-helloworld`, das den Port verfügbar macht. Führen Sie außerdem die App `aci-helloworld` aus, sodass sie an dem Port lauscht. `aci-helloworld` akzeptiert die optionale Umgebungsvariable `PORT`, um den Standardport 80 zu überschreiben, an dem gelauscht wird. Gehen Sie beispielsweise zum Testen von Port 9000 wie folgt vor:
+Wenn Sie überprüfen möchten, ob Azure Container Instances an dem Port lauschen kann, den Sie im Containerimage konfiguriert haben, testen Sie eine Bereitstellung des Images `aci-helloworld`, das den Port verfügbar macht. Führen Sie außerdem die App `aci-helloworld` aus, sodass sie an dem Port lauscht. `aci-helloworld` akzeptiert die optionale Umgebungsvariable `PORT`, um den Standardport 80 zu überschreiben, an dem gelauscht wird. Wenn Sie z.B. Port 9000 testen möchten, legen Sie die [Umgebungsvariable](container-instances-environment-variables.md) beim Erstellen der Containergruppe fest:
 
-1. Richten Sie die Containergruppe so ein, dass Port 9000 verfügbar gemacht wird, und übergeben Sie die Portnummer als Wert der Umgebungsvariable:
+1. Richten Sie die Containergruppe so ein, dass Port 9000 verfügbar gemacht wird, und übergeben Sie die Portnummer als Wert der Umgebungsvariablen. Das Beispiel ist für die Bash-Shell formatiert. Wenn Sie eine andere Shell, wie PowerShell oder Eingabeaufforderung bevorzugen, müssen Sie die Variablenzuweisung entsprechend anpassen.
     ```azurecli
     az container create --resource-group myResourceGroup \
     --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \

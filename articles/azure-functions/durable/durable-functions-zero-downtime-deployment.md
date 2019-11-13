@@ -8,17 +8,21 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e6e51d2a058f89a04a81800b81f3c316be4eab7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302067"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614506"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Bereitstellung ohne Ausfallzeit für Durable Functions
+
 Für das [Modell „Zuverlässige Ausführung“](durable-functions-checkpointing-and-replay.md) von Durable Functions müssen Orchestrierungen deterministisch sein. Dies ist eine zusätzliche Anforderung, die beim Bereitstellen von Updates erfüllt werden muss. Wenn eine Bereitstellung Änderungen der Signaturen von Aktivitätsfunktionen oder der Orchestratorlogik umfasst, tritt für ausgeführte Orchestrierungsinstanzen ein Fehler auf. Diese Situation ist besonders für Instanzen von zeitintensiven Orchestrierungen ein Problem, für die mehrere Stunden oder Tage an Arbeit anfallen.
 
 Zur Verhinderung dieser Fehler müssen Sie Ihre Bereitstellung entweder zurückstellen, bis die Ausführung aller Orchestrierungsinstanzen abgeschlossen wurde, oder sicherstellen, dass für alle ausgeführten Orchestrierungsinstanzen die vorhandenen Versionen Ihrer Funktionen verwendet werden. Weitere Informationen zur Versionsverwaltung finden Sie unter [Versionsverwaltung in Durable Functions](durable-functions-versioning.md).
+
+> [!NOTE]
+> Dieser Artikel enthält Anleitungen für Funktions-Apps, die für Durable Functions 1.x vorgesehen sind. Er wurde noch nicht aktualisiert, um Änderungen zu berücksichtigen, die in Durable Functions 2.x eingeführt wurden. Weitere Informationen zu den Unterschieden zwischen den Erweiterungsversionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 Das folgende Diagramm enthält einen Vergleich der drei Hauptstrategien, um eine Bereitstellung ohne Ausfallzeit für Durable Functions zu erzielen: 
 
@@ -29,6 +33,7 @@ Das folgende Diagramm enthält einen Vergleich der drei Hauptstrategien, um eine
 | **[Anwendungsrouting](#application-routing)** | System ohne Zeiträume, in denen keine Orchestrierungen ausgeführt werden, z. B. bei Orchestrierungen mit einer Länge von mehr als 24 Stunden oder sich häufig überlappenden Orchestrierungen | Verarbeitung neuer Versionen von Systemen mit fortlaufend ausgeführten Orchestrierungen, die Breaking Changes aufweisen | Intelligenter Anwendungsrouter erforderlich<br/>Mögliche Erreichung der maximal zulässigen Anzahl von Funktions-Apps für Ihr Abonnement (Standard 100) |
 
 ## <a name="versioning"></a>Versionsverwaltung
+
 Definieren Sie neue Versionen Ihrer Funktionen, und belassen Sie die alten Versionen in Ihrer Funktions-App. Wie im Diagramm dargestellt, wird die Version einer Funktion zu einem Teil ihres Namens. Da frühere Versionen von Funktionen beibehalten werden, kann von ausgeführten Orchestrierungsinstanzen weiterhin darauf verwiesen werden. In der Zwischenzeit wird bei Anforderungen neuer Orchestrierungsinstanzen die aktuelle Version benötigt, auf die die Funktion Ihres Orchestrierungsclients über eine App-Einstellung verweisen kann.
 
 ![Strategie für Versionsverwaltung](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
@@ -62,7 +67,7 @@ Im Diagramm unten ist die beschriebene Konfiguration mit Bereitstellungsslots un
 
 Die folgenden JSON-Fragmente sind Beispiele für die Einstellung der Verbindungszeichenfolge in der Datei „host.json“.
 
-#### <a name="functions-2x"></a>Functions 2.x
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {

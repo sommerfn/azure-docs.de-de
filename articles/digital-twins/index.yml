@@ -3,7 +3,7 @@ title: Dokumentation zur Vorschauversion von Azure Digital Twins
 summary: Erfahren Sie, wie mithilfe von Azure Digital Twins Personen, Orte und Dinge verbunden sowie IoT-Lösungen mit räumlicher Intelligenz erstellt werden. Arbeiten Sie den Schnellstart und die Tutorials durch, um ein imaginäres intelligentes Gebäude zu überwachen, ausführliche Konzepte kennenzulernen und eine IoT-Lösung der nächsten Generation zu erstellen, die Ihre physische Umgebung modelliert.
 metadata:
   title: 'Dokumentation zur Vorschauversion von Azure Digital Twins-Dokumentation: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: Verwenden Sie Azure Digital Twins zum Erstellen von intelligenten räumlichen Lösungen.
+  description: Hier erfahren Sie, wie mithilfe von Azure Digital Twins Personen, Orte und Dinge verbunden sowie IoT-Lösungen mit Raumauswertung erstellt werden.
   services: digital-twins
   ms.service: digital-twins
   ms.subservice: digital-twins
@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/03/2019
-  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
-  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.openlocfilehash: 3d55dcfc4b57d0179ca6e02bae50bf3d37dc70f3
+  ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71219729"
+  ms.lasthandoff: 11/13/2019
+  ms.locfileid: "74009298"
 landingContent:
 - title: Über Azure Digital Twins
   linkLists:

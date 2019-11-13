@@ -166,9 +166,7 @@
       items:
         - name: Hinzufügen einer Absicht
           href: luis-how-to-add-intents.md
-        - name: Hinzufügen einer Entität zu einer Äußerung
-          href: luis-how-to-add-example-utterances.md
-        - name: Hinzufügen einer Entität ohne Äußerung
+        - name: Hinzufügen einer Entität zum Extrahieren von Daten
           href: luis-how-to-add-entities.md
           displayName: 'roles, import'
         - name: Verwenden von vordefinierten Modellen
@@ -306,6 +304,8 @@
       displayName: 'Calendar, Communication,Email,HomeAutomation,Note,Places, RestaurantReservation,ToDo,Utilities,Weather,Web'
     - name: Benutzerdefinierter Entitätsverweis
       items:
+        - name: Durch maschinelles Lernen erworbene Entität
+          href: reference-entity-machine-learned-entity.md
         - name: Entität vom Typ „Composite“
           href: reference-entity-composite.md
         - name: Entität vom Typ „List“
@@ -316,6 +316,8 @@
           href: reference-entity-regular-expression.md
         - name: Entität vom Typ „Simple“
           href: reference-entity-simple.md
+    - name: Mustersyntax
+      href: reference-pattern-syntax.md
     - name: Stimmung
       href: luis-reference-prebuilt-sentiment.md
     - name: Entwicklerressourcen

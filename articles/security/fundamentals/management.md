@@ -4,7 +4,7 @@ description: In diesem Artikel werden Schritte zur Verbesserung der Sicherheit b
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 5efd82a2cb0652f6dd2aab621c578ff90aca0111
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927854"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643794"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
@@ -224,7 +224,6 @@ Die Verwendung einer Arbeitsstation mit einer Konfiguration für verstärkte Sic
 ## <a name="next-steps"></a>Nächste Schritte
 Die folgenden Ressourcen enthalten allgemeinere Informationen zu Azure und verwandten Microsoft-Diensten sowie speziellen Komponenten, die in diesem Artikel erwähnt wurden:
 
-* [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx) (Schützen des privilegierten Zugriffs): Enthält die technischen Details zum Entwerfen und Erstellen einer sicheren Verwaltungsarbeitsstation für die Azure-Verwaltung.
+* [Securing Privileged Access](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access) (Schützen des privilegierten Zugriffs): Enthält die technischen Details zum Entwerfen und Erstellen einer sicheren Verwaltungsarbeitsstation für die Azure-Verwaltung.
 * [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure): Enthält Informationen zu Funktionen der Azure-Plattform, mit denen das Azure-Fabric und die unter Azure ausgeführten Workloads geschützt werden.
-* [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z. B. Probleme mit Azure, melden oder eine E-Mail an [secure@microsoft.com](mailto:secure@microsoft.com) schreiben.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier können Sie sich über den aktuellen Stand der Azure-Sicherheit informieren.
+* [Microsoft Security Response Center](https://www.microsoft.com/msrc): Hier können Sie Microsoft-Sicherheitsrisiken, z. B. Probleme mit Azure, melden oder eine E-Mail an [secure@microsoft.com](mailto:secure@microsoft.com) schreiben.

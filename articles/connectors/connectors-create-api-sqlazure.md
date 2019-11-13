@@ -10,13 +10,13 @@ ms.reviewer: klam; LADocs
 manager: carmonm
 ms.topic: conceptual
 tags: connectors
-ms.date: 10/14/2019
-ms.openlocfilehash: 6c86ef26bbf7bd9dbce8aa77aef2213b14b57f5f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.date: 11/08/2019
+ms.openlocfilehash: a6367e5897e9bd548550b099c0bd2e6186845d6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311940"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826337"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für SQL Server oder Azure SQL-Datenbank mithilfe von Azure Logic Apps
 
@@ -44,7 +44,11 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* Bevor Sie Logik-Apps mit lokalen Systemen wie SQL Server verbinden können, müssen Sie [ein lokales Datengateway einrichten](../logic-apps/logic-apps-gateway-install.md). Auf diese Weise können Sie das Gateway auswählen, wenn Sie die SQL-Verbindung für Ihre Logik-App erstellen.
+* Für diese Szenarien muss das [lokale Datengateway](../logic-apps/logic-apps-gateway-install.md) auf einem lokalen Computer installiert sein, und eine [Azure-Datengatewayressource muss im Azure-Portal erstellt worden sein](../logic-apps/logic-apps-gateway-connection.md):
+
+  * Ihre Logik-Apps werden nicht in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ausgeführt.
+
+  * Ihre Logik-Apps *werden* in einer Integrationsdienstumgebung ausgeführt, aber Sie müssen Windows-Authentifizierung für Ihre SQL Server-Verbindung verwenden. Verwenden Sie für dieses Szenario die Nicht-ISE-Version des SQL Server-Connectors zusammen mit dem Datengateway, da die ISE-Version keine Windows-Authentifizierung unterstützt.
 
 * Die Logik-App, über die Sie auf Ihre SQL-Datenbank zugreifen müssen. Um Ihre Logik-App mit einem SQL-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -68,7 +72,7 @@ In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-
 
 1. Legen Sie die Eigenschaften **Intervall** und **Häufigkeit** fest, die angeben, wie oft Ihre Logik-App die Tabelle überprüft.
 
-   Mit diesem Trigger wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Zum Ausführen weiterer Aufgaben fügen Sie weitere Aktionen hinzu, mit denen die gewünschten Aufgaben ausgeführt werden. Wenn Sie z.B. die Daten in dieser Zeile anzeigen möchten, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält, und dann E-Mail-Benachrichtigungen senden. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](/connectors/sql/).
+   Mit diesem Trigger wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Zum Ausführen weiterer Aufgaben fügen Sie weitere Aktionen hinzu, mit denen die gewünschten Aufgaben ausgeführt werden. Wenn Sie z.B. die Daten in dieser Zeile anzeigen möchten, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält, und dann E-Mail-Benachrichtigungen senden. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](https://docs.microsoft.com/connectors/sql/).
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -84,7 +88,7 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
 1. Wählen Sie unter dem Trigger oder der Aktion, dem bzw. der Sie die SQL-Aktion hinzufügen möchten, die Option **Neuer Schritt** aus.
 
-   ![Wählen Sie „Neuer Schritt“ aus.](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+   ![Hinzufügen eines neuen Schritts zu ihrer Logik-App](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
    Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
@@ -92,13 +96,13 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
    In diesem Beispiel wird die Aktion **Zeile abrufen** verwendet, die einen einzelnen Datensatz abruft.
 
-   ![SQL-Aktion „Zeile abrufen“ suchen und auswählen](./media/connectors-create-api-sqlazure/select-sql-get-row.png)
+   ![SQL-Aktion „Zeile abrufen“ suchen und auswählen](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
 
-   Mit dieser Aktion wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Um die Daten in dieser Zeile anzuzeigen, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält,und diese Datei in einem Cloudspeicherkonto speichern. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](/connectors/sql/).
+   Mit dieser Aktion wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Um die Daten in dieser Zeile anzuzeigen, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält,und diese Datei in einem Cloudspeicherkonto speichern. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](https://docs.microsoft.com/connectors/sql/).
 
 1. Wenn Sie zum Erstellen einer Verbindung aufgefordert werden, [erstellen Sie jetzt Ihre SQL-Verbindung](#create-connection). Falls Ihre Verbindung bereits vorhanden ist, wählen Sie einen **Tabellennamen** aus, und geben Sie die **Zeilen-ID** für den gewünschten Datensatz ein.
 
-   ![Den Tabellennamen und die Zeilen-ID eingeben](./media/connectors-create-api-sqlazure/table-row-id.png)
+   ![Den Tabellennamen und die Zeilen-ID eingeben](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
 
 1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
 
@@ -132,7 +136,7 @@ Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Co
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 
-Technische Informationen zu den Triggern, Aktionen und Limits dieses Connectors finden Sie auf der [Referenzseite zum Connector](/connectors/sql/).
+Technische Informationen zu den Triggern, Aktionen und Limits dieses Connectors finden Sie auf der [Referenzseite zum Connector](https://docs.microsoft.com/connectors/sql/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

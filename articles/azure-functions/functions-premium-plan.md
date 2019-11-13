@@ -1,22 +1,20 @@
 ---
-title: Premium-Plan für Azure Functions (Vorschau) | Microsoft-Dokumentation
+title: Premium-Tarif für Azure Functions
 description: Details und Konfigurationsoptionen (VNet, kein Kaltstart, unbegrenzte Ausführungsdauer) für den Premium-Plan (Premium-Tarif) für Azure Functions.
-services: functions
 author: jeffhollan
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 4/11/2019
+ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 2cc6493d01508d439d8dcef2d12ca1ea40632d81
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096225"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719038"
 ---
-# <a name="azure-functions-premium-plan-preview"></a>Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)
+# <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
 Der Premium-Plan für Azure Functions ist eine Hostingoption für Funktions-Apps. Der Premium-Plan bietet Features wie VNet-Konnektivität, keinen Kaltstart und Premium-Hardware.  Mehrere Funktions-Apps können im selben Premium-Plan bereitgestellt werden, und der Tarif ermöglicht es Ihnen, die Compute-Instanzgröße, Basisplangröße und maximale Plangröße zu konfigurieren.  Einen Vergleich des Premium-Plans und anderer Pläne und Hostingtypen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md).
 
@@ -59,7 +57,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Für Azure Functions, bereitgestellt in einem Premium-Plan, wird die [neue VNET-Integration für Web-Apps](../app-service/web-sites-integrate-with-vnet.md) genutzt.  Ist diese Integration konfiguriert, kann Ihre App mit Ressourcen in Ihrem VNET oder geschützt über Dienstendpunkte kommunizieren.  IP-Einschränkungen sind ebenfalls für die App verfügbar, um eingehenden Datenverkehr zu beschränken.
 
-Wenn Sie Ihrer Funktions-App in einem Premium-Plan ein Subnetz zuweisen, benötigen Sie ein Subnetz mit genügend IP-Adressen für jede mögliche-Instanz. Obwohl die maximale Anzahl von Instanzen in der Vorschauphase variieren kann, ist ein IP-Adressblock mit mindestens 100 verfügbaren Adressen erforderlich.
+Wenn Sie Ihrer Funktions-App in einem Premium-Plan ein Subnetz zuweisen, benötigen Sie ein Subnetz mit genügend IP-Adressen für jede mögliche-Instanz. Wir benötigen einen IP-Block mit mindestens 100 verfügbaren Adressen.
 
 Weitere Informationen finden Sie unter [Integrieren einer Funktions-App in ein Azure Virtual Network](functions-create-vnet.md).
 
@@ -71,11 +69,9 @@ Weitere Compute-Instanzen werden automatisch für Ihre App hinzugefügt. Dazu wi
 
 Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die host.json-Konfiguration ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Premium-Plan-Apps auf unbegrenzt festzulegen.
 
-In der Vorschauversion wird die Dauer nicht über 12 Minuten hinaus garantiert, und es besteht die beste Chance, dass die Ausführung länger als 30 Minuten erfolgt, wenn Ihre App nicht über ihre minimale Workeranzahl hinaus skaliert ist.
-
 ## <a name="plan-and-sku-settings"></a>Plan- und SKU-Einstellungen
 
-Wenn Sie den Plan erstellen, konfigurieren Sie zwei Einstellungen: die Mindestanzahl von Instanzen (oder Plangröße) und den maximalen Burstgrenzwert.  Die Mindestanzahl von Instanzen für einen Premium-Plan ist 1, und der maximale Burst für die Vorschauversion ist 20.  So viele Instanzen, wie die Mindestanzahl von Instanzen angibt, werden reserviert und immer ausgeführt.
+Wenn Sie den Plan erstellen, konfigurieren Sie zwei Einstellungen: die Mindestanzahl von Instanzen (oder Plangröße) und den maximalen Burstgrenzwert.  So viele Instanzen, wie die Mindestanzahl von Instanzen angibt, werden reserviert und immer ausgeführt.
 
 > [!IMPORTANT]
 > Ihnen wird jede Instanz, die entsprechend der Mindestanzahl von Instanzen zugeordnet ist, in Rechnung gestellt, unabhängig davon, ob Funktionen ausgeführt werden oder nicht.
@@ -102,19 +98,22 @@ Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzg
 
 ## <a name="regions"></a>Regions
 
-Nachstehend sind die derzeit unterstützten Regionen für die Public Preview des jeweiligen Betriebssystems aufgeführt.
+Nachstehend werden die derzeit unterstützten Regionen für jedes Betriebssystem aufgeführt.
 
 |Region| Windows | Linux |
 |--| -- | -- |
+|Australien, Mitte| ✔<sup>1</sup> | |
+|Australien, Mitte 2| ✔<sup>1</sup> | |
 |Australien (Osten)| ✔ | |
 |Australien, Südosten | ✔ | ✔ |
+|Brasilien Süd| ✔<sup>2</sup> |  |
 |Kanada, Mitte| ✔ |  |
 |USA (Mitte)| ✔ |  |
 |Asien, Osten| ✔ |  |
-|East US | | ✔ |
+|East US | ✔ | ✔ |
 |USA (Ost) 2| ✔ |  |
 |Frankreich, Mitte| ✔ |  |
-|Japan, Osten|  | ✔ |
+|Japan, Osten| ✔ | ✔ |
 |Japan, Westen| ✔ | |
 |Korea, Mitte| ✔ |  |
 |USA Nord Mitte| ✔ |  |
@@ -122,14 +121,16 @@ Nachstehend sind die derzeit unterstützten Regionen für die Public Preview des
 |USA Süd Mitte| ✔ |  |
 |Indien (Süden) | ✔ | |
 |Asien, Südosten| ✔ | ✔ |
+|UK, Süden| ✔ | |
 |UK, Westen| ✔ |  |
 |Europa, Westen| ✔ | ✔ |
 |Indien, Westen| ✔ |  |
 |USA (Westen)| ✔ | ✔ |
+|USA, Westen 2| ✔ |  |
 
-## <a name="known-issues"></a>Bekannte Probleme
+<sup>1</sup>Maximale horizontale Hochskalierung auf 20 Instanzen beschränkt.  
+<sup>2</sup>Maximale horizontale Hochskalierung auf 60 Instanzen beschränkt.
 
-Sie können den Status der bekannten Probleme der [öffentlichen Vorschauversion auf GitHub](https://github.com/Azure/Azure-Functions/wiki/Premium-plan-known-issues) verfolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

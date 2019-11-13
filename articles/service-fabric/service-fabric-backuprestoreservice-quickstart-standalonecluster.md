@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: f992aed6eba775052483b1657d04dead18b2b2ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: efdb2f51058eca456d622afda390dee17fffea0b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059174"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819423"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -116,6 +116,20 @@ Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihre
     ```
 
 4. Nachdem Sie die Clusterkonfigurationsdatei mit den vorhergehenden Änderungen aktualisiert haben, wenden Sie die Änderungen an und schließen die Bereitstellung/das Upgrade ab. Anschließend wird der _Dienst für Sicherungen und Wiederherstellungen_ im Cluster gestartet. Der URI für diesen Dienst lautet `fabric:/System/BackupRestoreService`, und Sie finden den Dienst im Abschnitt mit Systemdiensten im Service Fabric Explorer. 
+
+### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+1. Stellen Sie sicher, dass der erweiterte Modus aktiviert ist.
+
+    ![Aktivieren des erweiterten Modus][2]
+
+2. Wählen Sie eine Anwendung aus, und navigieren Sie zur Aktion. Klicken Sie auf „Anwendungssicherung aktivieren/aktualisieren“.
+
+    ![Aktivieren der Anwendungssicherung][3] 
+
+3. Wählen Sie schließlich die gewünschte Richtlinie aus, und klicken Sie auf „Sicherung aktivieren“.
+
+    ![Auswählen der Richtlinie][4]
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors
 Jetzt erläutern wir schrittweise das Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors. Diese Schritte setzen Folgendes voraus:
@@ -263,6 +277,12 @@ CreationTimeUtc         : 2018-04-01T20:09:44Z
 FailureError            : 
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+Um Sicherungen in Service Fabric Explorer anzuzeigen, navigieren Sie zu einer Partition, und wählen Sie die Registerkarte „Sicherungen“ aus.
+
+![Aufzählen von Sicherungen][5]
+
 ## <a name="limitation-caveats"></a>Einschränkungen/ Vorbehalte
 - Service Fabric PowerShell-Cmdlets befinden sich im Vorschaumodus.
 - Keine Unterstützung für Service Fabric-Cluster unter Linux.
@@ -271,5 +291,9 @@ FailureError            :
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
 
-[0]: ./media/service-fabric-backuprestoreservice/PartitionBackedUpHealthEvent.png
+[0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
+[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
+[3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
+[4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
+[5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
 

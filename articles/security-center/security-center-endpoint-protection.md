@@ -1,5 +1,5 @@
 ---
-title: Ermittlung von Endpoint Protection-Lösungen und Health Assessment in Azure Security Center | Microsoft-Dokumentation
+title: Endpoint Protection-Empfehlungen in Azure Security Center
 description: Erläutert, wie die Endpoint Protection-Lösungen ermittelt und als fehlerfrei identifiziert werden.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2019
 ms.author: memildin
-ms.openlocfilehash: 8de0caa5db4a7e1d97c7d6c055bcb01fed635821
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202259"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748431"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Endpoint Protection: Bewertung und Empfehlungen in Azure Security Center
 
@@ -29,29 +29,29 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](https:
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** ist.
+* Security Center empfiehlt Ihnen **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und das Ergebnis **AMServiceEnabled: False** zurückgibt.
 
 * Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) ausgeführt wird und eine der folgenden Situationen eintritt:
 
   * Eine der folgenden Eigenschaften ist FALSE:
 
-     **AMServiceEnabled**
+    **AMServiceEnabled**
 
-     **AntispywareEnabled**
+    **AntispywareEnabled**
 
-     **RealTimeProtectionEnabled**
+    **RealTimeProtectionEnabled**
 
-     **BehaviorMonitorEnabled**
+    **BehaviorMonitorEnabled**
 
-     **IoavProtectionEnabled**
+    **IoavProtectionEnabled**
 
-     **OnAccessProtectionEnabled**
+    **OnAccessProtectionEnabled**
 
   * Mindestens eine der folgenden Eigenschaften ist größer oder gleich 7.
 
-     **AntispywareSignatureAge**
+    **AntispywareSignatureAge**
 
-     **AntivirusSignatureAge**
+    **AntivirusSignatureAge**
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
@@ -61,30 +61,30 @@ Azure Security Center bietet Integritätsbewertungen von [unterstützten](https:
 
     * Mindestens eine der folgenden Eigenschaften ist „False“:
 
-       **AMServiceEnabled**
+            **AMServiceEnabled**
+
+            **AntispywareEnabled**
     
-       **AntispywareEnabled**
+            **RealTimeProtectionEnabled**
     
-       **RealTimeProtectionEnabled**
+            **BehaviorMonitorEnabled**
     
-       **BehaviorMonitorEnabled**
+            **IoavProtectionEnabled**
     
-       **IoavProtectionEnabled**
-    
-       **OnAccessProtectionEnabled**
+            **OnAccessProtectionEnabled**
           
     * Mindestens eine oder beide folgenden Signaturaktualisierungen ist größer oder gleich 7. 
 
-       **AntispywareSignatureAge**
+            **AntispywareSignatureAge**
     
-       **AntivirusSignatureAge**
+            **AntivirusSignatureAge**
 
 ## <a name="trend-micro"></a>Trend Micro
 
 * Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem virtuellen Computer zu installieren“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
     * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent** ist vorhanden
     * **HKLM:\SOFTWARE\TrendMicro\Deep Security Agent\InstallationFolder** ist vorhanden
-    * Die Datei **dsq_query.cmd** ist im Installationsordner vorhanden
+    * Die Datei **dsq_query.cmd** befindet sich im Installationsordner.
     * Das Ausführen von **dsa_query.cmd** führt zum Ergebnis **Component.AM.mode: on – Trend Micro Deep Security-Agent erkannt**
 
 ## <a name="symantec-endpoint-protection"></a>Symantec Endpoint Protection
@@ -102,7 +102,7 @@ oder
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
-* Überprüfen: Symantec-Version >= 12:  Registrierungspfad: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
+* Überprüfen: Symantec-Version >= 12: Registrierungspfad: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Value "PRODUCTVERSION"**
 
 * Echtzeitschutzstatus überprüfen: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
 
@@ -163,22 +163,21 @@ Security Center empfiehlt Ihnen, **„Endpoint Protection-Lösungen auf Ihrem vi
 
 Security Center empfiehlt Ihnen, **„Endpoint Protection-Integritätsprobleme auf Ihren Computern zu beheben“** , wenn eine der folgenden Überprüfungen nicht bestanden wird:
 
-- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** gibt einen Wert zurück   
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Scheduled scan .\* completed" | tail -1"** gibt einen Wert zurück
 
-- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" gibt einen Wert zurück   
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan finished"** | tail -1" gibt einen Wert zurück
 
 - **"/opt/sophos-av/bin/savdstatus --lastupdate"** gibt „lastUpdate“ zurück. Der Wert sollte kleiner oder gleich 7 Tage sein 
 
 - **"/opt/sophos-av/bin/savdstatus -v"** entspricht **"On-access scanning is running"** 
 
-- **"/opt/sophos-av/bin/savconfig get LiveProtection"** gibt „enabled“ zurück  
+- **"/opt/sophos-av/bin/savconfig get LiveProtection"** gibt „enabled“ zurück
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
 ### <a name="troubleshoot"></a>Problembehandlung
 
-Microsoft Antimalware-Erweiterungsprotokolle sind verfügbar unter:  
-**%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Or PaaSAntimalware)\1.5.5.x(version#)\CommandExecution.log**
+Die Protokolle der Microsoft Antimalware-Erweiterung sind unter **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Or PaaSAntimalware)\1.5.5.x(version#)\CommandExecution.log** verfügbar.
 
 ### <a name="support"></a>Support
 

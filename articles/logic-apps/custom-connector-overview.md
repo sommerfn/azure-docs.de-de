@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 1/30/2018
-ms.openlocfilehash: 6b02954f9f89074c5eff7e3b7fad2bc6afb29540
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4cc0201b8ac61c54aadcc59b549877238b95e54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689773"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574459"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>Benutzerdefinierte Connectors in Logic Apps
 
-Mit [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Microsoft Flow](https://flow.microsoft.com) oder [Microsoft PowerApps](https://powerapps.microsoft.com) können Sie ganz ohne Programmieraufwand Workflows und Apps erstellen. Um Ihnen die Integration von Apps, Daten und Geschäftsprozessen zu erleichtern, stellen diese Dienste [ca. 200 Connectors](https://docs.microsoft.com/connectors/) für Microsoft-Dienste und -Produkte sowie für andere Dienste wie GitHub, Salesforce, Twitter und viele weitere bereit.
+Mit [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps), [Power Automate](https://flow.microsoft.com) oder [PowerApps](https://powerapps.microsoft.com) können Sie ganz ohne Programmieraufwand Workflows und Apps erstellen. Um Ihnen die Integration von Apps, Daten und Geschäftsprozessen zu erleichtern, stellen diese Dienste [ca. 200 Connectors](https://docs.microsoft.com/connectors/) für Microsoft-Dienste und -Produkte sowie für andere Dienste wie GitHub, Salesforce, Twitter und viele weitere bereit.
 
 Manchmal empfiehlt es sich jedoch, APIs, Dienste und Systeme aufzurufen, die nicht als vordefinierte Connectors zur Verfügung stehen. Für individuellere Szenarien können Sie *benutzerdefinierte Connectors* mit eigenen Triggern und Aktionen erstellen. Auf der Dokumentationswebsite zu Connectors finden Sie vollständige grundlegende und fortgeschrittene Tutorials zu benutzerdefinierten Connectors. Sie können mit der [Übersicht über benutzerdefinierte Connectors](https://docs.microsoft.com/connectors/custom-connectors/) beginnen oder sich direkt zu diesen Themengebieten informieren:
 

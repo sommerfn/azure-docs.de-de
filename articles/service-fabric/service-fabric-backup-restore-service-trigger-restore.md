@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: e4ada412547360f97e869d3312b65d869fa3df48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413714"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819325"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Wiederherstellen von Sicherungsdaten in Azure Service Fabric
 
@@ -199,7 +199,18 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 Den Status einer Wiederherstellung können Sie mithilfe von TrackRestoreProgress nachverfolgen.
 
-### <a name="data-restore-for-data-corruptiondata-loss"></a>Datenwiederherstellung im Falle von _Datenbeschädigung_/_Datenverlust_
+### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+Sie können eine Wiederherstellung aus Service Fabric Explorer auslösen. Stellen Sie sicher, dass der erweiterte Modus in den Service Fabric Explorer-Einstellungen aktiviert wurde.
+1. Wählen Sie die gewünschten Partitionen aus, und klicken Sie auf „Aktionen“. 
+2. Wählen Sie die Option zum Auslösen der Wiederherstellung von Partitionen aus, und füllen Sie die Informationen für Azure aus:
+
+    ![Partitionswiederherstellung auslösen][2]
+
+    oder FileShare:
+
+    ![Partitionswiederherstellung FileShare auslösen][3]
+
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>Datenwiederherstellung im Falle von _Datenbeschädigung_/_Datenverlust_
 
 Bei einem _Datenverlust_ oder einer _Datenbeschädigung_ können gesicherte Partitionen für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors auf der Grundlage einer der ausgewählten Sicherungen wiederhergestellt werden.
 
@@ -324,3 +335,6 @@ Für die Partitionen des zuverlässigen zustandsbehafteten Diensts und der Relia
 ## <a name="next-steps"></a>Nächste Schritte
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [REST-API-Referenz zu Sicherung/Wiederherstellung](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
+[3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

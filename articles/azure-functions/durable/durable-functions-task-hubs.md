@@ -7,14 +7,14 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2017
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: b42294fdcf60add8496116bd1f83bf64f54a5f63
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734326"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614699"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Aufgabenhubs in Durable Functions (Azure Functions)
 
@@ -33,24 +33,15 @@ Ein Aufgabenhub umfasst folgende Speicherressourcen:
 * Eine Verlaufstabelle.
 * Eine Instanzentabelle.
 * Einen Speichercontainer, der mindestens ein Lease-Blob enthält.
+* Ein Speichercontainer, der große Nachrichtennutzlasten enthält, falls zutreffend.
 
-Alle diese Ressourcen werden automatisch im standardmäßigen Azure Storage-Konto erstellt, wenn Orchestrator- oder Aktivitätsfunktionen ausgeführt werden oder ihre Ausführung geplant wird. Im Artikel [Performance and Scale](durable-functions-perf-and-scale.md) (Leistung und Skalierung) wird erläutert, wie diese Ressourcen verwendet werden.
+Alle diese Ressourcen werden automatisch im standardmäßigen Azure Storage-Konto erstellt, wenn Orchestrator-, Entitäts- oder Aktivitätsfunktionen ausgeführt werden oder ihre Ausführung geplant wird. Im Artikel [Performance and Scale](durable-functions-perf-and-scale.md) (Leistung und Skalierung) wird erläutert, wie diese Ressourcen verwendet werden.
 
 ## <a name="task-hub-names"></a>Aufgabenhubnamen
 
 Aufgabenhubs werden über den Namen identifiziert, der in der Datei *host.json* deklariert ist, wie im folgenden Beispiel gezeigt:
 
-### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
-
-```json
-{
-  "durableTask": {
-    "hubName": "MyTaskHub"
-  }
-}
-```
-
-### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
 ```json
 {
@@ -63,9 +54,19 @@ Aufgabenhubs werden über den Namen identifiziert, der in der Datei *host.json* 
 }
 ```
 
-Aufgabenhubs können auch mithilfe von App-Einstellungen konfiguriert werden, wie in der folgenden Beispieldatei *host.json* gezeigt:
-
 ### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+
+```json
+{
+  "durableTask": {
+    "hubName": "MyTaskHub"
+  }
+}
+```
+
+Aufgabenhubs können auch mithilfe von App-Einstellungen konfiguriert werden, wie in der folgenden Beispieldatei `host.json` gezeigt:
+
+### <a name="hostjson-functions-10"></a>host.json (Functions 1.0)
 
 ```json
 {
@@ -75,7 +76,7 @@ Aufgabenhubs können auch mithilfe von App-Einstellungen konfiguriert werden, wi
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
+### <a name="hostjson-functions-20"></a>host.json (Functions 2.0)
 
 ```json
 {
@@ -99,7 +100,7 @@ Der Name des Aufgabenhubs wird auf den Wert der App-Einstellung `MyTaskHub` fest
 }
 ```
 
-Hier sehen Sie ein vorkompiliertes C#-Beispiel zum Schreiben einer Funktion, die eine [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zu arbeiten:
+Der folgende Code ist ein vorkompiliertes C#-Beispiel zum Schreiben einer Funktion, die eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zusammenzuarbeiten:
 
 ### <a name="c"></a>C#
 
@@ -107,7 +108,7 @@ Hier sehen Sie ein vorkompiliertes C#-Beispiel zum Schreiben einer Funktion, die
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}")] HttpRequestMessage req,
-    [OrchestrationClient(TaskHub = "%MyTaskHub%")] DurableOrchestrationClientBase starter,
+    [OrchestrationClient(TaskHub = "%MyTaskHub%")] IDurableOrchestrationClient starter,
     string functionName,
     ILogger log)
 {
@@ -121,9 +122,13 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+> [!NOTE]
+> Das vorherige C#-Beispiel gilt für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+
 ### <a name="javascript"></a>JavaScript
 
 Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Einstellung festgelegt:
+
 ```json
 {
     "name": "input",
@@ -133,12 +138,19 @@ Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Eins
 }
 ```
 
-Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn kein Name angegeben ist, wird der Standardname **DurableFunctionsHub** verwendet.
+Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn kein Name angegeben ist, wird ein Aufgabenhub-Standardname verwendet, wie in der folgenden Tabelle gezeigt:
+
+| Version der Durable-Erweiterung | Aufgabenhub-Standardname |
+| - | - |
+| 2.x | Bei der Bereitstellung in Azure wird der Aufgabenhubname vom Namen der _Funktions-App_ abgeleitet. Bei der Ausführung außerhalb von Azure lautet der Standardname des Aufgabenhubs `TestHubName`. |
+| 1.x | Der Standardname des Aufgabenhubs für alle Umgebungen lautet `DurableFunctionsHub`. |
+
+Weitere Informationen zu den Unterschieden zwischen den Erweiterungsversionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 > [!NOTE]
-> Die einzelnen Aufgabenhubs werden über den Namen unterschieden, wenn in einem freigegebenen Speicherkonto mehrere Aufgabenhubs vorhanden sind. Wenn sich mehrere Funktions-Apps ein freigegebenes Speicherkonto teilen, müssen Sie für die einzelnen Aufgabenhubs in der Datei *host.json* explizit unterschiedliche Namen konfigurieren. Andernfalls konkurrieren die verschiedenen Funktions-Apps miteinander um Nachrichten, was zu einem undefinierten Verhalten führen kann.
+> Die einzelnen Aufgabenhubs werden über den Namen unterschieden, wenn in einem freigegebenen Speicherkonto mehrere Aufgabenhubs vorhanden sind. Wenn sich mehrere Funktions-Apps ein freigegebenes Speicherkonto teilen, müssen Sie für die einzelnen Aufgabenhubs in der Datei *host.json* explizit unterschiedliche Namen konfigurieren. Andernfalls konkurrieren die verschiedenen Funktions-Apps miteinander um Nachrichten, was zu undefiniertem Verhalten führen kann, einschließlich Orchestrierungen, die unerwartet im Zustand `Pending` oder `Running` „stecken bleiben“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Versioning in Durable Functions (Azure Functions)](durable-functions-versioning.md) (Versionsverwaltung in Durable Functions [Azure Functions])
+> [Weitere Informationen zur Verarbeitung der Orchestrierungsversionsverwaltung](durable-functions-versioning.md)

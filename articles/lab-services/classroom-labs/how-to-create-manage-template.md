@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: f0fc1e143ce7d271d5faaa8dda0eb40cdfc9e006
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332743"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584858"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Erstellen und Verwalten einer Classroom-Vorlage in Azure Lab Services
 Eine Vorlage in einem Lab ist ein VM-Basisimage und dient zur Erstellung der virtuellen Computer aller Benutzer. Richten Sie den virtuellen Computer der Vorlage so ein, dass er genau das enthält, was Sie den Lab-Benutzern zur Verfügung stellen möchten. Sie können einen Namen und eine Beschreibung der Vorlage angeben, die den Lab-Benutzern angezeigt werden. Anschließend veröffentlichen Sie die Vorlage, um Instanzen der Vorlagen-VM für Ihre Lab-Benutzer zur Verfügung zu stellen. Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer erstellt. Die Anzahl der in diesem Vorgang erstellten virtuellen Computer entspricht der maximalen Anzahl von Benutzern im Lab, die Sie in der Nutzungsrichtlinie des Labs festlegen können. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage.
@@ -40,12 +40,10 @@ Gehen Sie wie folgt vor, um Titel und Beschreibung erstmals festzulegen und spä
 Gehen Sie wie folgt vor, um eine Vorlage für virtuelle Computer zu aktualisieren:  
 
 1. Wählen Sie auf der Seite **Vorlage** auf der Symbolleiste die Option**Customize template** (Vorlage anpassen) aus. 
-
-    ![Schaltfläche „Customize template“ (Vorlage anpassen)](../media/how-to-create-manage-template/customize-template-button.png)
 2. Wählen Sie im Dialogfeld **Customize template** (Vorlage anpassen) die Option **Weiter** aus. Wenn Sie die Vorlage gestartet und Änderungen vorgenommen haben, hat sie nicht mehr dasselbe Setup wie die virtuellen Computer, die zuletzt für die Benutzer veröffentlicht wurden. Vorlagenänderungen werden erst nach der erneuten Veröffentlichung auf den vorhandenen virtuellen Computern der Benutzer widergespiegelt.
 
     ![Dialogfeld „Anpassen“](../media/how-to-create-manage-template/customize-template-dialog.png)
-1. Wählen Sie auf der Symbolleiste die Schaltfläche **Connect to template** (Mit Vorlage verbinden) aus, um eine Verbindung mit der Vorlage für virtuelle Computer herzustellen, und befolgen Sie die Anweisungen. Handelt es sich um einen Windows-Computer, wird eine Option zum Herunterladen der RDP-Datei angezeigt. 
+1. Warten Sie, bis die Vorlage für virtuelle Computer gestartet wurde, und wählen Sie dann auf der Symbolleiste **Mit Vorlage verbinden** aus, um eine Verbindung mit der Vorlage für virtuelle Computer herzustellen. Befolgen Sie dann die Anweisungen. Handelt es sich um einen Windows-Computer, wird eine Option zum Herunterladen der RDP-Datei angezeigt. 
 
     ![Herstellen einer Verbindung mit der Vorlage für virtuelle Computer](../media/how-to-create-manage-template/connect-template-vm.png)
 1. Installieren Sie die Software, die die Teilnehmer für das Lab benötigen (z.B. Visual Studio, Azure Storage-Explorer usw.). 

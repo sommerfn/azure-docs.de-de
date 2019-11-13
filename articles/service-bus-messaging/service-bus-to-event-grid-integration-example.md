@@ -1,6 +1,6 @@
 ---
-title: Beispiele für die Integration von Azure Service Bus in Event Grid | Microsoft-Dokumentation
-description: Dieser Artikel enthält Beispiele für die Integration von Service Bus-Messaging und Event Grid.
+title: 'Tutorial: Beispiele zur Integration von Azure Service Bus in Event Grid'
+description: 'Tutorial: Dieser Artikel enthält Beispiele für die Integration von Service Bus-Messaging und Event Grid.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: f31e014cf242675577bedd29a3a79332ede32bf5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304233"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719028"
 ---
-# <a name="respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Reagieren auf Azure Service Bus-Ereignisse, die über Azure Event Grid empfangen wurden, mithilfe von Azure Functions und Azure Logic Apps
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Tutorial: Reagieren auf Azure Service Bus-Ereignisse, die über Azure Event Grid empfangen wurden, mithilfe von Azure Functions und Azure Logic Apps
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Functions und Azure Logic Apps auf Azure Service Bus-Ereignisse reagieren, die über Azure Event Grid empfangen wurden. Hierbei gehen Sie wie folgt vor:
  
 - Erstellen Sie eine Azure-Testfunktion zum Debuggen und Anzeigen des ursprünglichen Ereignisflusses aus Event Grid.

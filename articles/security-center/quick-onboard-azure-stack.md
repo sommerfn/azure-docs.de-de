@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart für Azure Security Center: Integrieren Ihrer Azure Stack-VMs in Security Center | Microsoft-Dokumentation'
+title: Integrieren von Azure Stack-VMs in Azure Security Center
 description: In diesem Schnellstart erfahren Sie, wie Sie die VM-Erweiterung zur Update- und Konfigurationsverwaltung für Azure Monitor auf einer Azure Stack-VM bereitstellen.
 services: security-center
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
-ms.openlocfilehash: 1772fd34a2d79b725b2b5ccaa66adb0b251b7e1d
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c186dcb2d7d7d423f5c001bdb4d3f3503beebd9c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202854"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686530"
 ---
-# <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Schnellstart:  Integrieren Ihrer Azure Stack-VMs in Security Center
+# <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>Schnellstart: Integrieren Ihrer Azure Stack-VMs in Security Center
 Nachdem Sie Ihr Azure-Abonnement eingebunden haben, können Sie Security Center zum Schützen Ihrer in Azure Stack ausgeführten VMs einrichten, indem Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Azure Monitor** aus dem Azure Stack-Marketplace hinzufügen.
 
 In diesem Schnellstart erfahren Sie, wie Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Azure Monitor** auf einer in Azure Stack ausgeführten VM (Linux und Windows werden unterstützt) bereitstellen.
@@ -69,7 +69,7 @@ Jetzt müssen Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung 
 > Falls die Erweiterung **Azure Monitor, Update- und Konfigurationsverwaltung** in Ihrem Marketplace nicht aufgeführt ist, können Sie sich an Ihren Azure Stack-Betreiber wenden, damit sie zur Verfügung gestellt wird.
 
 6. Fügen Sie auf dem Konfigurationsblatt **Erweiterung installieren** die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** ein, die Sie im vorherigen Schritt in Editor kopiert haben.
-7.  Geben Sie die erforderlichen Konfigurationseinstellungen an, und klicken Sie dann auf **Weiter**.
+7. Geben Sie die erforderlichen Konfigurationseinstellungen an, und klicken Sie dann auf **Weiter**.
 8. Nach Abschluss der Installation wird die Erweiterung mit dem Status **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis die VM im Security Center-Portal angezeigt wird.
 
 Weitere Informationen zur Installation und Konfiguration des Agents für Windows finden Sie unter [Verbinden von Windows-Computern](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).

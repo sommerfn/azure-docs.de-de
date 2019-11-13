@@ -165,8 +165,8 @@
               href: concepts-data-flow-monitoring.md
             - name: Datenflussleistung
               href: concepts-data-flow-performance.md
-            - name: Verschieben von Knoten
-              href: concepts-data-flow-move-nodes.md
+            - name: Verwalten eines Graphen
+              href: concepts-data-flow-manage-graph.md
             - name: Ausdrucks-Generator
               href: concepts-data-flow-expression-builder.md
             - name: Ausdruckssprache
@@ -648,6 +648,8 @@
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Verweis
   items:
+    - name: Datenflussskript
+      href: data-flow-script.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
     - name: PowerShell

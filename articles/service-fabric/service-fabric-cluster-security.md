@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: atsenthi
-ms.openlocfilehash: 6ee7c71a66488e9636752676d68a79fdfaf855cb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cf808bef75a73cef6e8c17045506f29fabf3b52e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599831"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819449"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
-Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist zwar möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 
+Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet bereitstellt, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 
 
 Dieser Artikel bietet eine Übersicht über Sicherheitsszenarien für Azure-Cluster und eigenständige Cluster sowie die verschiedenen Technologien, die Sie zu deren Implementierung verwenden können:
 
@@ -57,7 +57,7 @@ Client-zu-Knoten-Sicherheit authentifiziert Clients und schützt die Kommunikati
 Cluster unter Azure und eigenständige Cluster unter Windows können entweder [Zertifikatsicherheit](https://msdn.microsoft.com/library/ff649801.aspx) oder [Windows-Sicherheit](https://msdn.microsoft.com/library/ff649396.aspx) verwenden.
 
 ### <a name="client-to-node-certificate-security"></a>Zertifikatsicherheit (Client zu Knoten)
-Richten Sie die Client-zu-Knoten-Zertifikatsicherheit beim Erstellen des Clusters im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage ein. Um das Zertifikat zu erstellen, geben Sie ein Clientzertifikat für einen Administrator oder einen Benutzer an. Als bewährte Methode gilt: Die angegebenen Administrator- und Benutzerclientzertifikate müssen sich von den primären und sekundären Zertifikaten unterscheiden, die Sie für [Knoten-zu-Knoten-Sicherheit](#node-to-node-security) angeben. Standardmäßig werden die Clusterzertifikate für Knoten-zu-Knoten-Sicherheit der Liste zulässiger Clientadministratorzertifikate hinzugefügt.
+Richten Sie die Client-zu-Knoten-Zertifikatsicherheit beim Erstellen des Clusters im Azure-Portal, über Azure Resource Manager-Vorlagen oder eine eigenständige JSON-Vorlage ein. Um das Zertifikat zu erstellen, geben Sie ein Clientzertifikat für einen Administrator oder einen Benutzer an. Als bewährte Methode gilt: Die angegebenen Administrator- und Benutzerclientzertifikate müssen sich von den primären und sekundären Zertifikaten unterscheiden, die Sie für [Knoten-zu-Knoten-Sicherheit](#node-to-node-security) angeben. Clusterzertifikate verfügen über dieselben Rechte wie Clientadministratorzertifikate. Sie sollten jedoch als bewährte Sicherheitsmethode nur vom Cluster und nicht von Administratoren verwendet werden.
 
 Clients, die unter Verwendung des Administratorzertifikats eine Verbindung mit dem Cluster herstellen, haben uneingeschränkten Zugriff auf die Verwaltungsfunktionen. Clients, die unter Verwendung des schreibgeschützten Benutzerclientzertifikats eine Verbindung mit dem Cluster herstellen, haben nur Lesezugriff auf die Verwaltungsfunktionen. Diese Zertifikate werden für die später in diesem Artikel beschriebenen RBAC verwendet.
 

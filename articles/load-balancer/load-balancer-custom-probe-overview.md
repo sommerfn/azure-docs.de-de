@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274114"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571117"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -48,6 +48,9 @@ Die Integritätstestkonfiguration besteht aus den folgenden Elementen:
 - Protokoll des Tests
 - Port des Tests
 - HTTP-Pfad, der für HTTP GET bei Verwendung von HTTP(S)-Tests verwendet werden soll.
+
+> [!NOTE]
+> Wenn Sie Azure PowerShell, die Azure CLI, Vorlagen oder eine API verwenden, ist eine Testdefinition nicht obligatorisch, und ihr Vorhandensein wird nicht überprüft. Validierungstests werden nur bei Verwendung des Azure-Portals durchgeführt.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Verstehen des Anwendungssignals, Erkennen des Signals und Reaktion der Plattform
 

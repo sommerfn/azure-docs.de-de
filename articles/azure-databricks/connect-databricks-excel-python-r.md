@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: 1805f04d7833dea180847defadd865cb23e9df62
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340852"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601942"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Herstellen einer Verbindung mit Azure Databricks über Excel, Python oder R
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des ODBC-Treibers von Databrick
 
 * Laden Sie den ODBC-Treiber von Databricks von der [Downloadseite für Databricks-Treiber](https://databricks.com/spark/odbc-driver-download) herunter. Installieren Sie die 32-Bit- oder 64-Bit-Version abhängig von der Anwendung, über die Sie eine Verbindung mit Azure Databricks herstellen möchten. Beispiel: Wenn Sie eine Verbindung über Excel herstellen möchten, installieren Sie die 32-Bit-Version des Treibers. Zum Herstellen einer Verbindung über R und Python installieren Sie die 64-Bit-Version des Treibers.
 
-* Richten Sie ein persönliches Zugriffstoken in Databricks ein. Anweisungen hierzu finden Sie im Artikel zur [Tokenverwaltung](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Richten Sie ein persönliches Zugriffstoken in Databricks ein. Anweisungen hierzu finden Sie im Artikel zur [Tokenverwaltung](/azure/databricks/dev-tools/api/latest/authentication).
 
 ## <a name="set-up-a-dsn"></a>Einrichten eines DNS
 
@@ -34,7 +34,7 @@ Ein Datenquellenname (Data Source Name, DSN) enthält die Informationen zu einer
 
 1. Navigieren Sie im Azure Databricks-Arbeitsbereich zum Databricks-Cluster.
 
-    ![Öffnen des Databricks-Clusters](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Öffnen des Databricks-Clusters")
+    ![Öffnen eines Databricks-Clusters](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Öffnen eines Databricks-Clusters")
 
 2. Klicken Sie auf der Registerkarte **Konfiguration** auf die Registerkarte **JDBC/ODBC**, und kopieren Sie die Werte für **Server Hostname** (Serverhostname) und **HTTP Path** (HTTP-Pfad). Sie benötigen diese Werte, um die in diesem Artikel aufgeführten Schritte ausführen zu können.
 
@@ -78,7 +78,7 @@ In diesem Abschnitt übertragen Sie mithilfe des zuvor erstellten DSNS Daten aus
 
 1. Öffnen Sie eine leere Arbeitsmappe in Microsoft Excel. Klicken Sie auf dem Menüband **Daten** auf **Daten abrufen**. Klicken Sie auf **Aus anderen Quellen** und dann auf **Aus ODBC**.
 
-    ![Starten von ODBC über Excel](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "Starten von ODBC über Excel")
+    ![Starten von ODBC aus Excel](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "Starten von ODBC aus Excel")
 
 2. Wählen Sie im Dialogfeld **Aus ODBC** den zuvor erstellten DSN aus, und klicken Sie auf **OK**.
 
@@ -97,7 +97,7 @@ Sobald die Daten in die Excel-Arbeitsmappe geladen wurden, können Sie Analysevo
 ## <a name="connect-from-r"></a>Herstellen einer Verbindung über R
 
 > [!NOTE]
-> Dieser Abschnitt enthält Informationen zum Integrieren eines RStudio-Clients, der mit Azure Databricks auf Ihrem Desktop ausgeführt wird. Anweisungen zur Verwendung von RStudio im Azure Databricks-Cluster finden Sie unter [RStudio in Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
+> Dieser Abschnitt enthält Informationen zum Integrieren eines RStudio-Clients, der mit Azure Databricks auf Ihrem Desktop ausgeführt wird. Anweisungen zur Verwendung von RStudio im Azure Databricks-Cluster finden Sie unter [RStudio in Azure Databricks](/azure/databricks/spark/latest/sparkr/rstudio).
 
 In diesem Abschnitt verwenden Sie eine IDE in der Sprache R, um auf in Azure Databricks verfügbare Daten zu verweisen. Bevor Sie beginnen, muss Folgendes auf Ihrem Computer installiert sein:
 
@@ -165,6 +165,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Quellen, aus denen Sie Daten in Azure Databricks importieren können, finden Sie im Artikel zu [Datenquellen für Azure Databricks](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html#).
+* Weitere Informationen zu Quellen, aus denen Sie Daten in Azure Databricks importieren können, finden Sie im Artikel zu [Datenquellen für Azure Databricks](/azure/databricks/data/data-sources/index).
 
 

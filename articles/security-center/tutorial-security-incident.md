@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center-Tutorial – Reagieren auf Sicherheitsincidents | Microsoft-Dokumentation
+title: 'Tutorial: Reagieren auf Incidents – Azure Security Center'
 description: Azure Security Center-Tutorial – Reagieren auf Sicherheitsincidents
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 11c2543de2b5456d253e7e905065eea14810877a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200607"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663643"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsvorfälle
 Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Darüber hinaus können Sie Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Intelligence-Quellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. In diesem Lernprogramm lernen Sie Folgendes:
@@ -66,7 +66,7 @@ Mit Security Center erhalten Sie einen einheitlichen Überblick über alle Siche
 
 1. Wählen Sie im Hauptmenü von Security Center unter **ERKENNUNG** die Option **Sicherheitswarnungen**:
 
-   ![Sicherheitswarnungen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Sicherheitswarnungen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)
 
 2. Klicken Sie in der Liste mit den Warnungen auf einen Sicherheitsincident, bei dem es sich um eine Sammlung von Warnungen handelt, um weitere Informationen zu diesem Incident zu erhalten. **Security incident detected** (Sicherheitsincident erkannt) wird geöffnet.
 

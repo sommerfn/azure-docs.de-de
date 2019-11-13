@@ -5,18 +5,21 @@ author: ggailey777
 manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 11/03/2019
 ms.author: glenga
-ms.openlocfilehash: 0080365853e7a9c74d3ba0e5efb06ce5a3af2a21
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 95c6afcb2f7e864da4b9b43235326a17bed785fa
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967099"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614533"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions-Unittest
 
-Der Unittest ist ein wichtiger Bestandteil moderner Softwareentwicklungsverfahren. Mit Unittests wird das Verhalten der Geschäftslogik überprüft und verhindert, dass in der Zukunft unbemerkte gravierende Änderungen eingeführt werden. Die Komplexität von Durable Functions kann problemlos wachsen, sodass die Einführung von Unittests dazu beiträgt, gravierende Änderungen zu vermeiden. In den folgenden Abschnitten wird erläutert, wie Unittests der drei Funktionstypen durchgeführt werden – Orchestrierungsclient-, Orchestrator- und Aktivitätsfunktionen.
+Der Unittest ist ein wichtiger Bestandteil moderner Softwareentwicklungsverfahren. Mit Unittests wird das Verhalten der Geschäftslogik überprüft und verhindert, dass in der Zukunft unbemerkte gravierende Änderungen eingeführt werden. Die Komplexität von Durable Functions kann problemlos wachsen, sodass die Einführung von Unittests dazu beiträgt, gravierende Änderungen zu vermeiden. In den folgenden Abschnitten wird erläutert, wie Unittests der drei Funktionstypen durchgeführt werden: Orchestrierungsclient-, Orchestrator- und Aktivitätsfunktionen.
+
+> [!NOTE]
+> Dieser Artikel enthält Anleitungen für Unittests für Durable Functions-Apps, die für Durable Functions 1.x vorgesehen sind. Er wurde noch nicht aktualisiert, um Änderungen zu berücksichtigen, die in Durable Functions 2.x eingeführt wurden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,17 +35,17 @@ Die Beispiele in diesem Artikel setzen Kenntnisse der folgenden Konzepte und Fra
 
 ## <a name="base-classes-for-mocking"></a>Basisklassen für Simulation
 
-Simulation wird in Durable Functions über drei abstrakte Klassen unterstützt:
+Simulation wird in Durable Functions 1.x über drei abstrakte Klassen unterstützt:
 
-* [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)
+* `DurableOrchestrationClientBase`
 
-* [DurableOrchestrationContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContextBase.html)
+* `DurableOrchestrationContextBase`
 
-* [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html)
+* `DurableActivityContextBase`
 
-Diese Klassen sind die Basisklassen für [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html), [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) und [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), die Orchestrierungsclient-, Orchestrator- und Aktivitätsmethoden definieren. Die Simulationen legen erwartetes Verhalten für Basisklassenmethoden fest, sodass der Unittest die Geschäftslogik überprüfen kann. Der Unittest der Geschäftslogik wird als Workflow in zwei Schritten im Orchestrierungsclient und Orchestrator durchgeführt:
+Diese Klassen sind Basisklassen für `DurableOrchestrationClient`, `DurableOrchestrationContext`und `DurableActivityContext`, die Orchestrierungsclient-, Orchestrator- und Aktivitätsmethoden definieren. Die Simulationen legen erwartetes Verhalten für Basisklassenmethoden fest, sodass der Unittest die Geschäftslogik überprüfen kann. Der Unittest der Geschäftslogik wird als Workflow in zwei Schritten im Orchestrierungsclient und Orchestrator durchgeführt:
 
-1. Verwenden Sie beim Definieren der Signaturen von Orchestrierungsclient und Orchestrator die Basisklassen anstelle der konkreten Implementierung.
+1. Verwenden Sie beim Definieren der Signaturen von Orchestrierungsclient- und Orchestratorfunktionen die Basisklassen anstelle der konkreten Implementierung.
 2. Simulieren Sie in den Unittests das Verhalten der Basisklassen, und überprüfen Sie die Geschäftslogik.
 
 In den folgenden Abschnitten finden Sie weitere Informationen zu Testfunktionen, die die Orchestrierungsclientbindung und Orchestratorbindung verwenden.
@@ -53,9 +56,9 @@ In diesem Abschnitt überprüft der Unittest die Logik der folgenden HTTP-Trigge
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Die Unittestaufgabe überprüft den Wert des in der Antwortnutzlast bereitgestellten `Retry-After`-Headers. Dazu simuliert der Unittest einige der [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html)-Methoden, um vorhersagbares Verhalten sicherzustellen.
+Die Unittestaufgabe überprüft den Wert des in der Antwortnutzlast bereitgestellten `Retry-After`-Headers. Dazu simuliert der Unittest einige der `DurableOrchestrationClientBase`-Methoden, um vorhersagbares Verhalten sicherzustellen.
 
-Zunächst ist eine Simulation der Basisklasse erforderlich, [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Die Simulation kann eine neue Klasse sein, die [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) implementiert. Die Verwendung eines Simulationsframeworks wie [moq](https://github.com/moq/moq4) vereinfacht jedoch den Prozess:
+Zuerst ist eine Simulation der Basisklasse erforderlich: `DurableOrchestrationClientBase`. Die Simulation kann eine neue Klasse sein, die `DurableOrchestrationClientBase` implementiert. Die Verwendung eines Simulationsframeworks wie [moq](https://github.com/moq/moq4) vereinfacht jedoch den Prozess:
 
 ```csharp
     // Mock DurableOrchestrationClientBase
@@ -93,7 +96,6 @@ Als Nächstes wird `CreateCheckStatusResponse` simuliert, um immer eine leere HT
 ```csharp
     // Mock ILogger
     var loggerMock = new Mock<ILogger>();
-
 ```  
 
 Jetzt wird die `Run`-Methode vom Unittest aufgerufen:
@@ -174,7 +176,7 @@ In diesem Abschnitt überprüft der Unittest das Verhalten der `E1_SayHello`-Akt
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-Die Komponententests überprüfen auch das Format der Ausgabe. Die Komponententests können die Parametertypen direkt oder über die Pseudoklasse [DurableActivityContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContextBase.html) verwenden:
+Die Komponententests überprüfen auch das Format der Ausgabe. Die Unittests können die Parametertypen direkt oder über die Pseudoklasse `DurableActivityContextBase` verwenden:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceActivityTests.cs)]
 

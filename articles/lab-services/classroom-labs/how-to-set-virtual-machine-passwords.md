@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 40cdd0adf7bf100e1dbca64dbba68db3bc59a4fe
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331399"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583489"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Einrichten und Verwalten eines VM-Pools 
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -35,7 +35,7 @@ Führen Sie die folgenden Schritte aus, um die Labkapazität (Anzahl der virtuel
 3. Wählen Sie anschließend **Speichern** aus. 
 
     ![Schaltfläche „Start all“ (Alle starten)](../media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
-4. Wenn Sie die Kapazität erhöht haben, sehen Sie, wie die virtuellen Computer erstellt werden. 
+4. Wenn Sie die Kapazität erhöht haben, sehen Sie, wie die virtuellen Computer erstellt werden. Wenn die neue VM nicht in der Liste angezeigt wird, aktualisieren Sie die Seite. 
 
     ![Erstellung eines virtuellen Computers](../media/how-to-set-virtual-machine-passwords/vm-being-created.png)
 
@@ -51,11 +51,13 @@ Führen Sie die folgenden Schritte aus, um die Labkapazität (Anzahl der virtuel
     ![Schaltfläche „Stop all“ (Alle beenden)](../media/how-to-set-virtual-machine-passwords/stop-all-vms-button.png)
 
 ### <a name="start-selected-vms"></a>Starten von ausgewählten virtuellen Computern
-Es gibt zwei Möglichkeiten, ausgewählte virtuelle Computer (einen oder mehrere) zu starten. Eine Möglichkeit besteht darin, die virtuellen Computer in der Liste auszuwählen und dann auf der Symbolleiste auf **Starten** zu klicken. Bei der zweiten Möglichkeit wählen Sie die virtuellen Computer in der Liste aus, und wählen in einer Zeile in der Spalte **Zustand** die Dropdownliste und dann **Starten** aus. 
+Es gibt zwei Möglichkeiten, ausgewählte virtuelle Computer (einen oder mehrere) zu starten. Eine Möglichkeit besteht darin, die virtuellen Computer in der Liste auszuwählen und dann auf der Symbolleiste auf **Starten** zu klicken. 
+
+Die zweite Möglichkeit besteht darin, mindestens eine VM in der Liste auszuwählen und die Schaltfläche in der Spalte **Status** umzuschalten. 
 
 ![Starten von ausgewählten virtuellen Computern](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
-Auf ähnliche Weise können Sie virtuelle Computer über die Dropdownliste in der Spalte **Zustand** oder mit der Schaltfläche **Beenden** auf der Symbolleiste beenden. 
+Ebenso können Sie mindestens eine VM beenden, indem Sie die Schaltfläche in der Spalte **Status** umschalten oder **Beendem** in der Symbolleiste auswählen. 
 
 ## <a name="reset-vms"></a>Zurücksetzen von virtuellen Computern
 Wenn Sie virtuelle Computer zurücksetzen möchten, wählen Sie die entsprechenden Computer in der Liste aus, und klicken Sie dann auf der Symbolleiste auf **Zurücksetzen**. 
@@ -81,11 +83,19 @@ Durch das Aktivieren/Deaktivieren der Option **Use same password for all virtual
 ### <a name="reset-password-later"></a>Späteres Zurücksetzen des Kennworts
 
 1. Wählen Sie auf der Seite **Vorlage** des Labs auf der Symbolleiste die Option **Kennwort zurücksetzen** aus. 
-
-    ![Zurücksetzen des Kennworts im Menü auf der Startseite](../media/how-to-set-virtual-machine-passwords/reset-password-menu-dashboard.png)
 1. Geben Sie im Dialogfeld **Kennwort zurücksetzen** ein Kennwort ein, und wählen Sie **Kennwort zurücksetzen** aus.
     
     ![Dialogfeld „Kennwort festlegen“](../media/how-to-set-virtual-machine-passwords/set-password.png)
+
+## <a name="connect-to-student-vms"></a>Herstellen einer Verbindung virtuellen Computern von Kursteilnehmern
+Der Ersteller des Labs (Instruktor/Professor) kann eine Verbindung mit einer Kursteilnehmer-VM herstellen, wenn die folgenden Bedingungen erfüllt sind: 
+
+- Die Option **Gleiches Kennwort für alle virtuellen Computer verwenden** wurde beim Erstellen des Labs ausgewählt.
+- Die VM wird ausgeführt. 
+
+ Um eine Verbindung mit dem virtuellen Kursteilnehmercomputer herzustellen, zeigen Sie mit der Maus auf den virtuellen Computer in der Liste, und wählen Sie dann die Schaltfläche „Computer“ aus.  
+
+![Schaltfläche „Herstellen einer Verbindung mit Kursteilnehmer-VM“](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu anderen Verwendungsoptionen für Kursteilnehmer, die Sie (als Lab-Besitzer) konfigurieren können, finden Sie im folgenden Artikel: [Konfigurieren von Nutzungseinstellungen und Richtlinien](how-to-configure-student-usage.md).

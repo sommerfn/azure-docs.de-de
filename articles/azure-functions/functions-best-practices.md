@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 87071b8e1102067110baae70c424aa74a5e0702c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596883"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73570823"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -28,16 +28,16 @@ Nachfolgend finden Sie bewährte Methoden zum Entwickeln und Erstellen serverlos
 
 Umfangreiche Funktionen mit langer Ausführungsdauer können zu unerwarteten Zeitüberschreitungsfehlern führen. Weitere Informationen zu Timeouts für einen bestimmten Hostingplan finden Sie unter [Optimieren der Leistung und Zuverlässigkeit von Azure Functions](functions-scale.md#timeout). 
 
-Eine Funktion kann aufgrund der Vielzahl an Node.js-Abhängigkeiten umfangreich werden. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden. 
+Eine Funktion kann umfangreich werden, wenn sie über viele Node.js-Abhängigkeiten verfügt. Zudem kann das Importieren von Abhängigkeiten zu längeren Ladezeiten und somit zu unerwarteten Timeouts führen. Abhängigkeiten werden sowohl explizit als auch implizit geladen. Ein einzelnes Modul, das über Ihren Code geladen wird, kann eigene zusätzliche Module laden. 
 
-Nach Möglichkeit sollten Sie umfangreiche Funktionen durch Refactoring immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich; bei Webhooks ist üblicherweise eine unmittelbare Antwort notwendig. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben.
+Nach Möglichkeit sollten Sie umfangreiche Funktionen durch Refactoring immer in kleinere Funktionssätze unterteilen, die zusammenarbeiten und schnelle Reaktionen ermöglichen. Für einen Webhook oder eine HTTP-Triggerfunktion ist unter Umständen eine Bestätigungsantwort innerhalb eines bestimmten Zeitraums erforderlich. Bei Webhooks ist üblicherweise eine unmittelbare Antwort notwendig. Sie können die HTTP-Triggernutzlast an eine Warteschlange übergeben, damit sie von einer Funktion des Warteschlangentriggers verarbeitet wird. Dieser Ansatz ermöglicht es Ihnen, die eigentliche Arbeit zurückzustellen und sofort eine Antwort zurückzugeben.
 
 
 ### <a name="cross-function-communication"></a>Funktionsübergreifende Kommunikation
 
 [Durable Functions](durable/durable-functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) dienen zum Verwalten der Statusübergänge und der Kommunikation zwischen mehreren Funktionen.
 
-Wenn weder Durable Functions noch Logic Apps zum Integrieren mit mehreren Funktionen verwendet werden, haben sich Speicherwarteschlangen für die funktionsübergreifende Kommunikation bewährt.  Der Hauptgrund ist, dass Speicherwarteschlangen kostengünstiger und deutlich einfacher bereitzustellen sind. 
+Wenn weder Durable Functions noch Logic Apps zum Integrieren mit mehreren Funktionen verwendet werden, haben sich Speicherwarteschlangen für die funktionsübergreifende Kommunikation bewährt. Der Hauptgrund ist, dass Speicherwarteschlangen kostengünstiger und deutlich einfacher als andere Speicheroptionen bereitzustellen sind. 
 
 Einzelne Nachrichten in einer Speicherwarteschlange sind auf eine Größe von 64 KB beschränkt. Wenn Sie größere Nachrichten zwischen Funktionen übergeben müssen, kann eine Azure Service Bus-Warteschlange verwendet werden, um Nachrichtengrößen von bis zu 256 KB im Standard-Tarif und bis zu 1 MB im Premium-Tarif zu unterstützen.
 
@@ -50,7 +50,7 @@ Event Hubs sind hilfreich, um die Kommunikation mit hohen Volumina zu unterstüt
 
 Funktionen sollten nach Möglichkeit zustandslos und idempotent sein. Ordnen Sie Ihren Daten alle erforderlichen Zustandsinformationen zu. Einer Bestellung, die verarbeitet wird, ist beispielsweise meist ein `state`-Member zugeordnet. Eine Funktion kann eine Bestellung basierend auf diesem Zustand verarbeiten, während die Funktion selbst zustandslos bleibt. 
 
-Idempotente Funktionen sind besonders bei Triggern mit Timer zu empfehlen. Wenn bei Ihnen beispielsweise eine bestimmte Komponente immer einmal am Tag ausgeführt werden muss, sollten Sie sie so schreiben, dass sie zu einer beliebigen Tageszeit ausgeführt werden kann und immer die gleichen Ergebnisse liefert. Die Funktion kann beendet werden, wenn für einen bestimmten Tag keine Arbeit vorhanden ist. Falls die letzte Ausführung nicht abgeschlossen werden konnte, sollte die nächste Ausführung am entsprechenden Punkt fortgesetzt werden.
+Idempotente Funktionen sind besonders bei Triggern mit Timer zu empfehlen. Wenn bei Ihnen beispielsweise eine bestimmte Komponente immer ein Mal am Tag ausgeführt werden muss, sollten Sie sie so schreiben, dass sie zu einer beliebigen Tageszeit ausgeführt werden kann und immer die gleichen Ergebnisse liefert. Die Funktion kann beendet werden, wenn für einen bestimmten Tag keine Arbeit vorhanden ist. Falls die letzte Ausführung nicht abgeschlossen werden konnte, sollte die nächste Ausführung am entsprechenden Punkt fortgesetzt werden.
 
 
 ### <a name="write-defensive-functions"></a>Schreiben von defensiven Funktionen
@@ -62,7 +62,7 @@ Gehen Sie davon aus, dass es für Ihre Funktion jederzeit zu einer Ausnahme komm
  
 Je nach Komplexität Ihres Systems verfügen Sie ggf. über Folgendes: fehlerhaftes Verhalten von nachgelagerten Diensten, Netzwerkausfälle, Erreichung von Kontingentgrenzen usw. Alle diese Faktoren können sich jederzeit auf Ihre Funktion auswirken. Sie müssen Ihre Funktionen entsprechend entwerfen, um darauf vorbereitet zu sein.
 
-Wie reagiert Ihr Code, wenn nach dem Einfügen von 5.000 dieser Elemente in eine Warteschlange zur Verarbeitung ein Fehler auftritt? Verfolgen Sie, welche Elemente eines Satzes bereits abgeschlossen sind. Andernfalls kann es ein, dass Sie sie beim nächsten Mal erneut einfügen. Dies kann schwerwiegende Auswirkungen auf Ihren Workflow haben. 
+Wie reagiert Ihr Code, wenn nach dem Einfügen von 5.000 dieser Elemente in eine Warteschlange zur Verarbeitung ein Fehler auftritt? Verfolgen Sie, welche Elemente eines Satzes bereits abgeschlossen sind. Andernfalls kann es ein, dass Sie sie beim nächsten Mal erneut einfügen. Diese doppelte Einfügung kann ernsthafte Auswirkung auf Ihren Workflow haben, sodass Sie [idempotente](functions-idempotent.md) Funktionen verwenden sollten. 
 
 Wenn ein Warteschlangenelement bereits verarbeitet wurde, sollte es möglich sein, dass die Funktion eine No-Op-Funktion ist.
 
@@ -70,7 +70,7 @@ Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform v
 
 ## <a name="scalability-best-practices"></a>Skalierbarkeit: Bewährte Methoden
 
-Zahlreiche Faktoren beeinflussen die Skalierung von Instanzen Ihrer Funktionen-App. Ausführliche Informationen finden Sie in der Dokumentation zum [Skalieren von Funktionen-Apps](functions-scale.md).  Hier finden Sie bewährten Methoden, um die optimale Skalierbarkeit einer Funktionen-App sicherzustellen.
+Zahlreiche Faktoren beeinflussen die Skalierung von Instanzen Ihrer Funktions-App. Ausführliche Informationen finden Sie in der Dokumentation zum [Skalieren von Funktionen-Apps](functions-scale.md).  Hier finden Sie bewährten Methoden, um die optimale Skalierbarkeit einer Funktionen-App sicherzustellen.
 
 ### <a name="share-and-manage-connections"></a>Freigeben und Verwalten von Verbindungen
 
@@ -82,13 +82,9 @@ Für Funktionen innerhalb einer Funktionen-App werden Ressourcen gemeinsam genut
 
 Überlegen Sie sich gut, was Sie in Ihre Funktionen-Apps für die Produktion laden. Der Arbeitsspeicher wird gleichmäßig auf die einzelnen Funktionen der App verteilt.
 
-Wenn Sie eine gemeinsame Assembly nutzen, auf die in mehreren .NET-Funktionen verwiesen wird, sollten Sie sie in einem freigegebenen Ordner einfügen. Verweisen Sie mit einer Anweisung wie im folgenden Beispiel mit C# Scripts (.csx) auf die Assembly: 
+Wenn Sie eine gemeinsame Assembly nutzen, auf die in mehreren .NET-Funktionen verwiesen wird, sollten Sie sie in einem freigegebenen Ordner einfügen. Andernfalls ist es leicht möglich, dass Sie versehentlich mehrere Versionen der gleichen Binärdatei bereitstellen, die sich für die einzelnen Funktionen unterschiedlich verhalten.
 
-    #r "..\Shared\MyAssembly.dll". 
-
-Andernfalls ist es leicht möglich, dass Sie versehentlich mehrere Testversionen einer Binärdatei bereitstellen, die sich für die einzelnen Funktionen unterschiedlich verhalten.
-
-Verwenden Sie im Produktionscode keine ausführliche Protokollierung. Dies wirkt sich negativ auf die Leistung aus.
+Verwenden Sie im Produktionscode keine ausführliche Protokollierung, da sich dies negativ auf die Leistung auswirkt.
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Verwenden von asynchronem Code bei Vermeidung von blockierenden Aufrufen
 
@@ -104,15 +100,11 @@ Bei C#-Funktionen können Sie den Typ in ein stark typisiertes Array ändern.  B
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurieren des Host-Verhaltens zum besseren Verwalten der Parallelität
 
-Die Datei `host.json` in der Funktionen-App ermöglicht die Konfiguration der Host-Laufzeit und des Triggerverhaltens.  Zusätzlich zur Batchverarbeitung von Verhalten können Sie die Parallelität für mehrere Trigger verwalten.  Eine häufige Anpassung der Werte in diesen Optionen kann die Skalierung der Instanz an die Anforderungen der aufgerufenen Funktionen vereinfachen.
+Die Datei `host.json` in der Funktionen-App ermöglicht die Konfiguration der Host-Laufzeit und des Triggerverhaltens.  Zusätzlich zur Batchverarbeitung von Verhalten können Sie die Parallelität für mehrere Trigger verwalten. Eine häufige Anpassung der Werte in diesen Optionen kann die Skalierung der Instanz an die Anforderungen der aufgerufenen Funktionen vereinfachen.
 
-Die Einstellungen in der Hostdatei gelten für alle Funktionen innerhalb der App in einer *Einzelinstanz* der Funktion. Wenn Sie eine Funktionen-App mit 2 HTTP-Funktionen und parallelen Anforderungen auf 25 festlegen, zählt eine Anforderung an die HTTP-Trigger zu den 25 parallelen Anforderungen.  Beim Skalieren dieser Funktionen-App auf 10 Instanzen, genehmigen die 2 Funktionen effektiv 250 parallele Anforderungen (10 Instanzen * 25 gleichzeitige Anforderungen pro Instanz).
+Die Einstellungen in der Datei „host.json“ gelten für alle Funktionen innerhalb der App in einer *Einzelinstanz* der Funktion. Wenn Sie eine Funktionen-App mit zwei HTTP-Funktionen und [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings)-Anforderungen auf 25 festlegen, zählt eine Anforderung für einen der HTTP-Trigger zu den 25 gemeinsamen parallelen Anforderungen.  Beim Skalieren dieser Funktions-App auf 10 Instanzen erlauben die beiden Funktionen effektiv 250 parallele Anforderungen (10 Instanzen * 25 gleichzeitige Anforderungen pro Instanz). 
 
-**HTTP-Parallelitätshostoptionen**
-
-[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
-
-Weitere Hostkonfigurationsoptionen finden Sie [im Dokument zur Hostkonfiguration](functions-host-json.md).
+Weitere Hostkonfigurationsoptionen finden Sie [im Artikel zur host.json-Konfiguration](functions-host-json.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

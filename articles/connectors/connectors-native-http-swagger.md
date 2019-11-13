@@ -8,14 +8,14 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: f0410ed7a98e4838e41407868cf26b5254811ae3
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 030401623a61e7fcff40187f522309255482647f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541571"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824815"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit Azure Logic Apps
 
@@ -25,7 +25,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierte
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Die URL für die Swagger-Datei, die den Ziel-REST-Endpunkt beschreibt
+* Die URL für die Swagger-Datei (nicht OpenAPI), die den REST-Zielendpunkt beschreibt
 
   Der REST-Endpunkt muss in der Regel diese Kriterien für den Connector erfüllen, damit der Connector funktioniert:
 
@@ -71,7 +71,7 @@ Dieser integrierte Trigger sendet eine HTTP-Anfrage an eine URL für eine Swagge
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für „HTTP + Swagger“ finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP und Swagger finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Fahren Sie mit dem Erstellen des Workflows Ihrer Logik-App fort, und fügen Sie weitere Aktionen hinzu, die bei Auslösung des Triggers ausgeführt werden.
 
@@ -111,7 +111,7 @@ Diese integrierte Aktion sendet eine HTTP-Anfrage an eine URL für die Swagger-D
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
-   Weitere Informationen zu verfügbaren Authentifizierungstypen für „HTTP + Swagger“ finden Sie unter [Authentifizieren von HTTP-Triggern und -Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+   Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP und Swagger finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 

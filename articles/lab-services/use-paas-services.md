@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 865ae0b3f7a7965698a67183a4c820ba71f49cd8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833912"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621382"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Verwenden von Platform-as-a-Service-Diensten (PaaS) in Azure DevTest Labs
 PaaS wird in DevTest Labs über das Umgebungenfeature unterstützt. In DevTest Labs werden Umgebungen von vorkonfigurierten Azure Resource Manager-Vorlagen in einem Git-Repository unterstützt. Umgebungen können sowohl PaaS- als auch IaaS-Ressourcen enthalten. Sie ermöglichen Ihnen die Erstellung komplexer Systeme, die Azure-Ressourcen wie virtuelle Computer, Datenbanken, virtuelle Netzwerke und Web-Apps enthalten können, die zum Zusammenwirken angepasst sind. Diese Vorlagen erlauben konsistente Bereitstellung und verbesserte Verwaltung von Umgebungen mithilfe der Quellcodeverwaltung. 
@@ -50,7 +50,7 @@ Es gibt einige benutzerdefinierte Labinformationen, die außerhalb der Ressource
 - Speicherkonto, unter dem die Resource Manager-Vorlagendateien gespeichert werden. 
  
 #### <a name="lab-virtual-network"></a>Virtuelles Labnetzwerk
-Im Artikel [Herstellen einer Verbindung zwischen einer Umgebung und dem virtuellen Netzwerk Ihres Labs in Azure DevTest Labs](connect-environment-lab-virtual-network.md) wird beschrieben, wie Sie die Resource Manager-Vorlage zur Verwendung mit dem `$(LabSubnetId)`-Token ändern. Beim Erstellen einer Umgebung wird das `$(LabSubnetId)`-Token durch die erste Subnetzmaske ersetzt, bei der die Option zur **Verwendung zum Erstellen eines virtuellen Computers** auf **true** gesetzt ist. So kann unsere Umgebung zuvor erstellte Netzwerke nutzen. Wenn Sie die gleichen Resource Manager-Vorlagen in Staging- und Produktionstestumgebungen verwenden möchten, verwenden Sie `$(LabSubnetId)` als Standardwert in einem Resource Manager-Vorlagenparameter. 
+Im Artikel [Herstellen einer Verbindung zwischen einer Umgebung und dem virtuellen Netzwerk Ihres Labs in Azure DevTest Labs](connect-environment-lab-virtual-network.md) wird beschrieben, wie Sie die Resource Manager-Vorlage zur Verwendung mit dem `$(LabSubnetId)`-Token ändern. Beim Erstellen einer Umgebung wird das `$(LabSubnetId)`-Token durch die erste Subnetzmaske ersetzt, bei der die Option zur **Verwendung bei der Erstellung eines virtuellen Computers** auf **TRUE** festgelegt ist. So kann unsere Umgebung zuvor erstellte Netzwerke nutzen. Wenn Sie die gleichen Resource Manager-Vorlagen in Staging- und Produktionstestumgebungen verwenden möchten, verwenden Sie `$(LabSubnetId)` als Standardwert in einem Resource Manager-Vorlagenparameter. 
 
 #### <a name="environment-storage-account"></a>Umgebungsspeicherkonto
 DevTest Labs unterstützt die Verwendung [geschachtelter Resource Manager-Vorlagen](../azure-resource-manager/resource-group-linked-templates.md). Im Artikel [Bereitstellen geschachtelter Azure Resource Manager-Vorlagen für Testumgebungen](deploy-nested-template-environments.md) wird erläutert, wie Sie mit `_artifactsLocation`- und `_artifactsLocationSasToken`-Token einen URI zu einer Resource Manager-Vorlage im gleichen Ordner, in dem sich die Hauptvorlage befindet, oder in einem geschachtelten Ordner erstellen. Weitere Informationen zu diesen beiden Token finden Sie im Abschnitt **Deployment artifacts** (Bereitstellungsartefakte) von [Azure Resource Manager Templates – Best Practices Guide](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) (Azure Resource Manager-Vorlagen – Leitfaden zu bewährten Methoden).

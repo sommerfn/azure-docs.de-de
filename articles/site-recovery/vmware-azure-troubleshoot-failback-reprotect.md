@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung beim Failback auf lokale Umgebungen während der Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Problembehebung beim Failback während der Notfallwiederherstellung virtueller VMware-Computer mit Azure Site Recovery
 description: Dieser Artikel beschreibt Möglichkeiten zum Beheben von Fehlern beim Failback und erneuten Schützen während der Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery.
 author: rajani-janaki-ram
 manager: gauravd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b597ecb67ab30c8617029fe741af1014444a9b70
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565598"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693148"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Beheben von Fehlern beim Failback aus Azure auf lokale Umgebungen
 

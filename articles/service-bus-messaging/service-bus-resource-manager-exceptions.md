@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296389"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585202"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus Resource Manager-Ausnahmen
 
@@ -72,3 +72,20 @@ Diese Fehlerklasse gibt an, dass die Ressource nicht gefunden wurde.
 | Nicht gefunden | none | Nicht gefunden. Der Vorgang ist nicht vorhanden. | Der Vorgang, den Sie ausführen möchten, ist nicht vorhanden. | Überprüfen Sie den Vorgang, und versuchen Sie es noch mal. |
 | Nicht gefunden | none | Die eingehende Anforderung wird nicht als PUT-Anforderung für eine Namespacerichtlinie erkannt. | Der eingehende Anforderungstext ist NULL und kann daher nicht als PUT-Anforderung ausgeführt werden. | Überprüfen Sie den Anforderungstext, um sicherzustellen, dass er nicht NULL ist. | 
 | Nicht gefunden | none | Die Messagingentität *'Entitätsname'* wurde nicht gefunden. | Die Entität, für die Sie den Vorgang ausführen möchten, wurde nicht gefunden. | Überprüfen Sie, ob die Entität vorhanden ist, und wiederholen Sie den Vorgang. |
+
+## <a name="error-code-internal-server-error"></a>Fehlercode: Interner Serverfehler
+
+Diese Fehlerklasse gibt an, dass ein interner Serverfehler aufgetreten ist.
+
+| Fehlercode | Fehler-SubCode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Interner Serverfehler | 50000 | SubCode=50000. Interner Serverfehler| Dies kann aus verschiedenen Gründen geschehen. Einige der Symptome sind: <ul> <li> Clientanforderung/Text ist beschädigt und führt zu einem Fehler. </li> <li> Timeout bei der Clientanforderung aufgrund von Verarbeitungsproblemen für den Dienst. </li> </ul> | Problembehebung: <ul> <li> Stellen Sie sicher, dass die Anforderungsparameter nicht NULL oder falsch formatiert sind. </li> <li> Wiederholen Sie die Anforderung. </li> </ul> |
+
+## <a name="error-code-unauthorized"></a>Fehlercode: Nicht autorisiert
+
+Diese Fehlerklasse gibt an, dass keine Autorisierung zum Ausführen des Befehls vorhanden ist.
+
+| Fehlercode | Fehler-SubCode | Fehlermeldung | BESCHREIBUNG | Empfehlung |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Nicht autorisiert | none | Ungültiger Vorgang für den sekundären Namespace. Der sekundäre Namespace ist schreibgeschützt. | Der Vorgang wurde für den sekundären Namespace ausgeführt, der als schreibgeschützter Namespace eingerichtet ist. | Wiederholen Sie den Befehl für den primären Namespace. Weitere Informationen zum [sekundären Namespace](service-bus-geo-dr.md) |
+| Nicht autorisiert | none | MissingToken: Der Autorisierungsheader wurde nicht gefunden. | Dieser Fehler tritt auf, wenn die Autorisierung NULL oder falsche Werte aufweist. | Stellen Sie sicher, dass der im Autorisierungsheader angegebene Tokenwert richtig und nicht NULL ist. |

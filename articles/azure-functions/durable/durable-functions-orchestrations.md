@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 82c4a27ac2491e668c1d99e2a14b870e82ec5665
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4e11070f4e766f83b0e7ead7757c675de3fef33f
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935418"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614769"
 ---
 # <a name="durable-orchestrations"></a>Dauerhafte Orchestrierungen
 
@@ -64,7 +64,7 @@ Das Ereignissourcingverhalten des Durable Task Frameworks ist eng an den von Ihn
 ```csharp
 [FunctionName("E1_HelloSequence")]
 public static async Task<List<string>> Run(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     var outputs = new List<string>();
 
@@ -110,7 +110,7 @@ Nachdem der Prüfpunktvorgang abgeschlossen ist, kann die Orchestratorfunktion a
 
 Nach Abschluss des Vorgangs sieht der Verlauf der obigen Funktion in Azure Table Storage in etwa wie in der folgenden Tabelle aus (zur Veranschaulichung gekürzt):
 
-| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Eingabe | Name             | Ergebnis                                                    | Status |
+| PartitionKey (InstanceId)                     | EventType             | Timestamp               | Eingabe | NAME             | Ergebnis                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
@@ -133,7 +133,7 @@ Einige Hinweise zu den Spaltenwerten:
 
 * **PartitionKey**: Enthält die Instanz-ID der Orchestrierung.
 * **EventType**: Steht für den Typ des Ereignisses. Es kann sich um einen der folgenden Typen handeln:
-  * **OrchestrationStarted**: Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime)-API aufzufüllen.
+  * **OrchestrationStarted**: Die Orchestratorfunktion wurde aus einem Wartezustand fortgesetzt oder wird zum ersten Mal ausgeführt. Die Spalte `Timestamp` wird verwendet, um den deterministischen Wert für die `CurrentUtcDateTime`- (.NET) und `currentUtcDateTime`-APIs (JavaScript) aufzufüllen.
   * **ExecutionStarted**: Die Ausführung der Orchestratorfunktion wurde zum ersten Mal gestartet. Dieses Ereignis enthält auch die Funktionseingabe in der Spalte `Input`.
   * **TaskScheduled**: Eine Aktivitätsfunktion wurde geplant. Der Name der Aktivitätsfunktion wird in der Spalte `Name` erfasst.
   * **TaskCompleted**: Eine Aktivitätsfunktion wurde abgeschlossen. Das Ergebnis der Funktion ist in der Spalte `Result` enthalten.
@@ -186,7 +186,7 @@ Orchestratorfunktionen können den Aktivitäts- oder untergeordneten Orchestrato
 
 Weitere Informationen und Beispiele finden Sie im Artikel [Fehlerbehandlung in Durable Functions (Azure Functions)](durable-functions-error-handling.md).
 
-### <a name="critical-sections"></a>Kritische Abschnitte
+### <a name="critical-sections-durable-functions-2x"></a>Kritische Abschnitte (Durable Functions 2. x)
 
 Da es sich bei Orchestrierungsinstanzen um Singlethread-Instanzen handelt, müssen Sie sich keine Gedanken über Racebedingungen *innerhalb* einer Orchestrierung machen. Racebedingung sind jedoch möglich, wenn Orchestrierungen mit externen Systemen interagieren. Um Racebedingungen bei der Interaktion mit externen Systemen entgegenzuwirken, können Orchestratorfunktionen in .NET mithilfe einer Methode vom Typ `LockAsync` *kritische Abschnitte* definieren.
 
@@ -212,7 +212,7 @@ Das Feature „kritischer Abschnitt“ ist auch hilfreich, um Änderungen an dau
 > [!NOTE]
 > Kritische Abschnitte stehen ab Durable Functions 2.0 zur Verfügung. Aktuell wird dieses Feature nur von .NET-Orchestrierungen implementiert.
 
-### <a name="calling-http-endpoints"></a>Aufrufen von HTTP-Endpunkten
+### <a name="calling-http-endpoints-durable-functions-2x"></a>Aufrufen von HTTP-Endpunkten (Durable Functions 2.x)
 
 Von Orchestratorfunktionen dürfen keine E/A-Vorgänge ausgeführt werden, wie unter [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md) beschrieben. Zur Umgehung dieses Problems wird der Code, der E/A-Vorgänge ausführen muss, in der Regel in eine Aktivitätsfunktion eingeschlossen. Orchestrierungen, die mit externen Systemen interagieren, verwenden häufig Aktivitätsfunktionen, um HTTP-Aufrufe durchzuführen und das Ergebnis an die Orchestrierung zurückzugeben.
 
@@ -236,10 +236,22 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const url = context.df.getInput();
+    var res = yield context.df.callHttp("GET", url);
+    if (res.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
 Weitere Informationen und ausführliche Beispiele finden Sie im Artikel [HTTP-Features](durable-functions-http-features.md).
 
 > [!NOTE]
-> Das direkte Aufrufen von HTTP-Endpunkten über Orchestratorfunktionen ist ab Durable Functions 2.0 möglich. Aktuell wird dieses Feature nur von .NET-Orchestrierungen implementiert.
+> Das direkte Aufrufen von HTTP-Endpunkten über Orchestratorfunktionen ist ab Durable Functions 2.0 möglich.
 
 ### <a name="passing-multiple-parameters"></a>Übergeben von mehreren Parametern
 
@@ -250,7 +262,7 @@ Das folgende Beispiel verwendet neue Features von [ValueTuples](https://docs.mic
 ```csharp
 [FunctionName("GetCourseRecommendations")]
 public static async Task<object> RunOrchestrator(
-    [OrchestrationTrigger] DurableOrchestrationContext context)
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
 {
     string major = "ComputerScience";
     int universityYear = context.GetInput<int>();
@@ -262,7 +274,7 @@ public static async Task<object> RunOrchestrator(
 }
 
 [FunctionName("CourseRecommendations")]
-public static async Task<object> Mapper([ActivityTrigger] DurableActivityContext inputs)
+public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContext inputs)
 {
     // parse input for student's major and year in university
     (string Major, int UniversityYear) studentInfo = inputs.GetInput<(string, int)>();

@@ -1,21 +1,19 @@
 ---
 title: Bereitstellungstechnologien in Azure Functions | Microsoft-Dokumentation
 description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azure Functions bereitgestellt werden kann.
-services: functions
-documentationcenter: .net
 author: ColbyTresness
-manager: dariac
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: f468b2afce1609de126859546a72544ba403424e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ce8287626b390d6eac4a3461d928c24f515f4023
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838884"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576124"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -31,7 +29,7 @@ Azure Functions unterstützt die plattformübergreifende lokale Entwicklung sowi
 
 Jeder Plan weist ein anderes Verhalten auf. Nicht alle Bereitstellungstechnologien stehen für jede Variante von Azure Functions zur Verfügung. Das folgende Diagramm zeigt die jeweils unterstützten Bereitstellungstechnologien für die verschiedenen Kombination aus Betriebssystem und Hostingplan:
 
-| Bereitstellungstechnologie | Windows: Verbrauch | Windows Premium (Vorschau) | Windows: Dediziert  | Linux: Verbrauch | Linux: Premium (Vorschau) | Linux: Dediziert |
+| Bereitstellungstechnologie | Windows: Verbrauch | Windows Premium | Windows: Dediziert  | Linux: Verbrauch | Linux Premium | Linux: Dediziert |
 |-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
 | Externe Paket-URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | ZIP-Bereitstellung |✔|✔|✔|✔|✔|✔|
@@ -63,7 +61,7 @@ Wenn Sie einen Trigger ändern, muss die Infrastruktur von Functions über die v
 In Azure Functions können automatisch Builds für den Code ausgeführt werden, der nach ZIP-Bereitstellungen empfangen wird. Diese Builds verhalten sich etwas unterschiedlich, je nachdem, ob Ihre App unter Windows oder Linux ausgeführt wird. Remotebuilds werden nicht ausgeführt, wenn eine App bereits für die Ausführung im Modus [Run From Package](run-functions-from-deployment-package.md) (Aus Paket ausführen) festgelegt wurde. Informationen zum Verwenden von Remotebuilds finden Sie unter [ZIP-Bereitstellung](#zip-deploy).
 
 > [!NOTE]
-> Wenn bei der Verwendung eines Remotebuilds Probleme auftreten, liegt es möglicherweise daran, dass Ihre App erstellt wurde, bevor die Funktion verfügbar gemacht wurde (1. August 2019). Erstellen Sie eine neue Funktions-App.
+> Wenn bei der Verwendung eines Remotebuilds Probleme auftreten, liegt es möglicherweise daran, dass Ihre App erstellt wurde, bevor die Funktion verfügbar gemacht wurde (1. August 2019). Erstellen Sie eine neue Funktions-App, oder führen Sie `az functionapp update -g <RESOURCE_GROUP_NAME> -n <APP_NAME>` aus, um ihre Funktions-App zu aktualisieren. Dieser Befehl kann zwei Versuche in Anspruch nehmen, bis er erfolgreich ist.
 
 #### <a name="remote-build-on-windows"></a>Remotebuild unter Windows
 
@@ -71,23 +69,22 @@ Alle Funktions-Apps, die unter Windows ausgeführt werden, enthalten eine kleine
 
 Bei der Bereitstellung einer App unter Windows werden sprachspezifische Befehle, z. B. `dotnet restore` (C#) oder `npm install` (JavaScript) ausgeführt.
 
-#### <a name="remote-build-on-linux-preview"></a>Remotebuild unter Linux (Vorschau)
+#### <a name="remote-build-on-linux"></a>Remotebuild unter Linux
 
 Zum Aktivieren des Remotebuilds unter Linux müssen Sie die folgenden [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings) festlegen:
 
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Wenn Apps remote unter Linux erstellt werden, werden sie [über das Bereitstellungspaket ausgeführt](run-functions-from-deployment-package.md).
+Standardmäßig führen die [Azure Functions Core Tools](functions-run-local.md) und die [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) bei der Bereitstellung unter Linux Remotebuilds aus. Aus diesem Grund erstellen beide Tools diese Einstellungen automatisch für Sie in Azure. 
 
-> [!NOTE]
-> Ein Remotebuild mit dem App Service-Plan Dedicated für Linux wird derzeit nur für Node.js und Python unterstützt.
+Wenn Apps remote unter Linux erstellt werden, werden sie [über das Bereitstellungspaket ausgeführt](run-functions-from-deployment-package.md). 
 
-##### <a name="consumption-preview-plan"></a>Verbrauchsplan (Vorschau)
+##### <a name="consumption-plan"></a>Verbrauchsplan
 
 Linux-Funktions-Apps, die im Verbrauchsplan ausgeführt werden, umfassen keine SCM/Kudu-Website, wodurch die Bereitstellungsoptionen eingeschränkt sind. Funktions-Apps unter Linux, die im Verbrauchsplan ausgeführt werden, unterstützen jedoch Remotebuilds.
 
-##### <a name="dedicated-and-premium-preview-plans"></a>Pläne Dedicated und Premium (Vorschau)
+##### <a name="dedicated-and-premium-plans"></a>Dedizierte und Premium-Pläne
 
 Funktions-Apps, die unter Linux im [App Service-Plan Dedicated](functions-scale.md#app-service-plan) oder [Premium](functions-scale.md#premium-plan) ausgeführt werden, umfassen auch eine eingeschränkte SCM/Kudu-Website.
 
@@ -103,21 +100,13 @@ Sie können eine externe Paket-URL verwenden, um auf eine Remotepaketdatei (ZIP-
 >
 >Bei Verwendung von Blob Storage muss ein privater Container mit einer [Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) verwendet werden, damit Functions auf das Paket zugreifen kann. Jedes Mal, wenn die Anwendung neu gestartet wird, ruft Sie eine Kopie des Inhalts ab. Ihr Verweis muss für die Lebensdauer der Anwendung gültig sein.
 
->__Einsatzgebiete:__ Eine externe Paket-URL ist die einzige Bereitstellungsmethode, die für Azure Functions unter Linux im Verbrauchsplan unterstützt wird, wenn der Benutzer ausdrücklich nicht möchte, dass ein Remotebuild ausgeführt wird. Wenn Sie die Paketdatei aktualisieren, auf die eine Funktions-App verweist, müssen Sie die [Trigger manuell synchronisieren](#trigger-syncing), um Azure darüber zu informieren, dass sich Ihre Anwendung geändert hat.
+>__Einsatzgebiete:__ Eine externe Paket-URL ist die einzige Bereitstellungsmethode, die für Azure Functions unter Linux im Verbrauchsplan unterstützt wird, wenn der Benutzer nicht möchte, dass ein [Remotebuild](#remote-build) ausgeführt wird. Wenn Sie die Paketdatei aktualisieren, auf die eine Funktions-App verweist, müssen Sie die [Trigger manuell synchronisieren](#trigger-syncing), um Azure darüber zu informieren, dass sich Ihre Anwendung geändert hat.
 
 ### <a name="zip-deploy"></a>ZIP-Bereitstellung
 
 Verwenden Sie ZIP-Bereitstellung, um eine ZIP-Datei mit ihrer Funktions-APP in Azure zu pushen. Optional können Sie die App so festlegen, dass sie [über ein Paket ausgeführt wird](run-functions-from-deployment-package.md), oder Sie können angeben, dass ein [Remotebuild](#remote-build) ausgeführt wird.
 
->__Verwendung:__ Führen Sie die Bereitstellung mithilfe Ihres bevorzugten Clienttools aus: [VS Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure) oder [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Eine Anleitung zum manuellen Bereitstellen einer ZIP-Datei für Ihre Funktions-App finden Sie unter [Bereitstellen mithilfe einer ZIP-Datei oder URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
-
-Verwenden Sie zum Ausführen einer ZIP-Bereitstellung mit einem [Remotebuild](#remote-build) den folgenden [Core Tools](functions-run-local.md)-Befehl:
-
-```bash
-func azure functionapp publish <app name> --build remote
-```
-
-Alternativ können Sie in VS Code angeben, dass bei der Bereitstellung ein Remotebuild ausgeführt wird, indem Sie das Flag „azureFunctions.scmDoBuildDuringDeployment“ hinzufügen. Informationen zum Hinzufügen eines Flags in VS Code finden Sie in den Anweisungen im [Wiki zur Azure Functions-Erweiterung](https://github.com/microsoft/vscode-azurefunctions/wiki).
+>__Verwendung:__ Führen Sie die Bereitstellung mithilfe Ihres bevorzugten Clienttools aus: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md) oder [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Standardmäßig verwenden diese Tools ZIP-Bereitstellung und werden [aus dem Paket](run-functions-from-deployment-package.md) ausgeführt. Die Core Tools und die Visual Studio Code-Erweiterung aktivieren bei der Bereitstellung unter Linux die [Remotebuildfunktion](#remote-build). Eine Anleitung zum manuellen Bereitstellen einer ZIP-Datei für Ihre Funktions-App finden Sie unter [Bereitstellen mithilfe einer ZIP-Datei oder URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 >Wenn die Bereitstellung mithilfe der ZIP-Bereitstellung erfolgt, können Sie die App auf [Run from Package](run-functions-from-deployment-package.md) (Aus Paket ausführen) festlegen. Zur Ausführung über ein Paket legen Sie den Wert der Anwendungseinstellung `WEBSITE_RUN_FROM_PACKAGE` auf `1` fest. Wir empfehlen die ZIP-Bereitstellung. Sie führt zu schnelleren Ladezeiten für Ihre Anwendungen und ist die Standardeinstellung für VS Code, Visual Studio und die Azure CLI. 
 
@@ -192,8 +181,8 @@ Im portalbasierten Editor können Sie die Dateien, die sich in ihrer Funktions-A
 
 Die folgende Tabelle gibt Aufschluss über die Betriebssysteme und Programmiersprachen, die Portalbearbeitung unterstützen:
 
-| | Windows: Verbrauch | Windows Premium (Vorschau) | Windows: Dediziert | Linux: Verbrauch | Linux: Premium (Vorschau)| Linux: Dediziert |
-|-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
+| | Windows: Verbrauch | Windows Premium | Windows: Dediziert | Linux: Verbrauch | Linux Premium | Linux: Dediziert |
+|-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C#-Skript |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |

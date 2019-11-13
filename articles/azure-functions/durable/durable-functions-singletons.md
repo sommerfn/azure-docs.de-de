@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ba35999d5a7193ba691b14005dc8271120ac2be7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ec7eb1eba2bc029d592560b39cde20e93e5afcd6
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933225"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614665"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton-Orchestratoren in Durable Functions (Azure Functions)
 
-Für Hintergrundaufträge müssen Sie häufig sicherstellen, dass nur jeweils eine Instanz eines bestimmten Orchestrators ausgeführt wird. Dies ist in [Durable Functions](durable-functions-overview.md) möglich, indem einem Orchestrator bei der Erstellung eine spezifische Instanz-ID zugewiesen wird.
+Für Hintergrundaufträge müssen Sie häufig sicherstellen, dass nur jeweils eine Instanz eines bestimmten Orchestrators ausgeführt wird. Sie können diese Art des Verhaltens von Singletons in [Durable Functions](durable-functions-overview.md) sicherstellen, indem einem Orchestrator bei der Erstellung eine spezifische Instanz-ID zugewiesen wird.
 
 ## <a name="singleton-example"></a>Singleton-Beispiel
 
-In den folgenden C#- und JavaScript-Beispielen wird eine HTTP-Triggerfunktion veranschaulicht, mit der eine Orchestrierung für einen Singleton-Hintergrundauftrag erstellt wird. Der Code stellt sicher, dass für eine angegebene Instanz-ID nur eine Instanz vorhanden ist.
+Im folgenden Beispiel wird eine HTTP-Triggerfunktion veranschaulicht, mit der eine Orchestrierung für einen Singleton-Hintergrundauftrag erstellt wird. Der Code stellt sicher, dass für eine angegebene Instanz-ID nur eine Instanz vorhanden ist.
 
 ### <a name="c"></a>C#
 
@@ -30,7 +30,7 @@ In den folgenden C#- und JavaScript-Beispielen wird eine HTTP-Triggerfunktion ve
 [FunctionName("HttpStartSingle")]
 public static async Task<HttpResponseMessage> RunSingle(
     [HttpTrigger(AuthorizationLevel.Function, methods: "post", Route = "orchestrators/{functionName}/{instanceId}")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient starter,
+    [DurableClient] IDurableOrchestrationClient starter,
     string functionName,
     string instanceId,
     ILogger log)
@@ -55,7 +55,10 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+> [!NOTE]
+> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+
+### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
 Die Datei „function.json“ sieht wie folgt aus:
 ```json
@@ -111,12 +114,12 @@ module.exports = async function(context, req) {
 };
 ```
 
-Standardmäßig handelt es sich bei Instanz-IDs um zufällig generierte GUIDs. Aber in diesem Fall wird die Instanz-ID in den Routendaten von der URL übergeben. Der Code ruft [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) oder `getStatus` (JavaScript) auf, um zu überprüfen, ob bereits eine Instanz mit der angegebenen ID ausgeführt wird. Ist dies nicht der Fall, wird eine Instanz mit dieser ID erstellt.
+Standardmäßig handelt es sich bei Instanz-IDs um zufällig generierte GUIDs. Im vorherigen Beispiel wird die Instanz-ID jedoch in den Routendaten von der URL übergeben. Der Code ruft `GetStatusAsync` (C#) oder `getStatus` (JavaScript) auf, um zu überprüfen, ob bereits eine Instanz mit der angegebenen ID ausgeführt wird. Wenn eine solche Instanz nicht ausgeführt wird, wird eine neue Instanz mit dieser ID erstellt.
 
 > [!NOTE]
 > In diesem Beispiel gibt es eine potenzielle Racebedingung. Wenn zwei Instanzen von **HttpStartSingle** gleichzeitig ausgeführt werden, sind beide Funktionsaufrufe erfolgreich, aber nur eine Orchestrierungsinstanz wird gestartet. Je nach Ihren Anforderungen kann dies unerwünschte Nebenwirkungen haben. Aus diesem Grund muss sichergestellt werden, dass diese Triggerfunktion nicht von zwei Anforderungen gleichzeitig ausgeführt werden kann.
 
-Die Implementierungsdetails der Orchestratorfunktion sind hier nicht so wichtig. Es kann eine reguläre Orchestratorfunktion sein, die gestartet und abgeschlossen wird, oder es kann eine Orchestratorfunktion mit unendlicher Ausführung sein (also eine [endlose Orchestrierung](durable-functions-eternal-orchestrations.md)). Der wichtigste Punkt hierbei ist, dass nur jeweils eine Instanz ausgeführt wird.
+Die Implementierungsdetails der Orchestratorfunktion sind hier nicht wichtig. Es kann eine reguläre Orchestratorfunktion sein, die gestartet und abgeschlossen wird, oder es kann eine Orchestratorfunktion mit unendlicher Ausführung sein (also eine [endlose Orchestrierung](durable-functions-eternal-orchestrations.md)). Der wichtigste Punkt hierbei ist, dass nur jeweils eine Instanz ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

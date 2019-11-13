@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243277"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803621"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -398,22 +398,15 @@ pip install -r requirements.txt
 
 Wenn Sie zur Veröffentlichung bereit sind, stellen Sie sicher, dass alle Ihre Abhängigkeiten in der Datei *requirements.txt* aufgeführt sind, die sich im Stamm Ihres Projektverzeichnisses befindet. Azure Functions kann diese Abhängigkeiten [remote erstellen](functions-deployment-technologies.md#remote-build).
 
-Projektdateien und -ordner, die von der Veröffentlichung ausgeschlossen sind, einschließlich des Ordners der virtuellen Umgebung, werden in der .funcignore-Datei aufgelistet.  
+Projektdateien und -ordner, die von der Veröffentlichung ausgeschlossen sind, einschließlich des Ordners der virtuellen Umgebung, werden in der .funcignore-Datei aufgelistet. 
 
-Für die Bereitstellung in Azure und zur Ausführung einer Remoteerstellung verwenden Sie den folgenden Befehl:
+Die [Azure Functions Core Tools](functions-run-local.md#v2) und die [Azure Functions-Erweiterung für VS Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) führen standardmäßig einen Remotebuild aus. Verwenden Sie z.B. den folgenden Befehl:
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-Wenn Sie keine Remoteerstellung verwenden und ein Paket verwenden, das einen Compiler erfordert und nicht die Installation von manylinux-kompatiblen Wheels aus PyPI unterstützt, schlägt die Veröffentlichung in Azure ohne lokale Erstellung mit folgendem Fehler fehl:
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-Um die erforderlichen Binärdateien lokal zu erstellen und diese zu konfigurieren, [installieren Sie Docker](https://docs.docker.com/install/) auf Ihrem lokalen Computer, und führen Sie den folgenden Befehl aus, um mithilfe der [Azure Functions Core Tools](functions-run-local.md#v2) (func) zu veröffentlichen. Denken Sie daran, `<app name>` durch den Namen Ihrer Funktions-App in Azure zu ersetzen. 
+Wenn Sie Ihre App lokal anstatt in Azure erstellen möchten, [installieren Sie Docker](https://docs.docker.com/install/) auf Ihrem lokalen Computer, und führen Sie den folgenden Befehl aus, um mithilfe der [Azure Functions Core Tools](functions-run-local.md#v2) (func) zu veröffentlichen. Denken Sie daran, `<app name>` durch den Namen Ihrer Funktions-App in Azure zu ersetzen. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -540,6 +533,27 @@ class TestFunction(unittest.TestCase):
             'msg body: test',
         )
 ```
+## <a name="temporary-files"></a>Temporäre Dateien
+
+Die `tempfile.gettempdir()`-Methode gibt einen temporären Ordner zurück, unter Linux `/tmp`. Die Anwendung kann dieses Verzeichnis zum Speichern von temporären Dateien verwenden, die von ihren Funktionen während der Ausführung generiert und verwendet werden. 
+
+> [!IMPORTANT]
+> Für Dateien, die in das temporäre Verzeichnis geschrieben werden, wird nicht garantiert, dass sie über Aufrufe hinweg beibehalten werden. Beim horizontalen Hochskalieren werden temporäre Dateien nicht von Instanzen gemeinsam verwendet. 
+
+Im folgenden Beispiel wird eine benannte temporäre Datei im temporären Verzeichnis (`/tmp`) erstellt:
+
+```python
+import logging
+import azure.functions as func
+import tempfile
+from os import listdir
+
+#---
+   tempFilePath = tempfile.gettempdir()   
+   fp = tempfile.NamedTemporaryFile()     
+   fp.write(b'Hello world!')              
+   filesDirListInTemp = listdir(tempFilePath)     
+```   
 
 ## <a name="known-issues-and-faq"></a>Bekannte Probleme und FAQ
 

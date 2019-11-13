@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 555b4d95358978e84e14e8a2e8b3d1c9cb2efc18
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "70933155"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614596"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions-Typen und -Features (Azure Functions)
 
@@ -24,7 +24,7 @@ In Azure Functions stehen zurzeit vier Durable Functions-Typen zur Verfügung: A
 
 ## <a name="orchestrator-functions"></a>Orchestratorfunktionen
 
-Orchestratorfunktionen beschreiben, wie und in welcher Reihenfolge Aktionen ausgeführt werden. Orchestratorfunktionen beschreiben die Orchestrierung in Code (C# oder JavaScript), wie unter [Anwendungsmuster von Durable Functions](durable-functions-overview.md#application-patterns) gezeigt. Eine Orchestrierung kann viele verschiedene Aktionstypen umfassen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](durable-functions-orchestrations.md#sub-orchestrations), [das Warten auf externe Ereignisse](durable-functions-orchestrations.md#external-events), [HTTP](durable-functions-orchestrations.md#calling-http-endpoints) und [Timer](durable-functions-orchestrations.md#durable-timers). Orchestratorfunktionen können auch mit [Entitätsfunktionen](#entity-functions) interagieren.
+Orchestratorfunktionen beschreiben, wie und in welcher Reihenfolge Aktionen ausgeführt werden. Orchestratorfunktionen beschreiben die Orchestrierung in Code (C# oder JavaScript), wie unter [Anwendungsmuster von Durable Functions](durable-functions-overview.md#application-patterns) gezeigt. Eine Orchestrierung kann viele verschiedene Aktionstypen umfassen, z. B. [Aktivitätsfunktionen](#activity-functions), [untergeordnete Orchestrierungen](durable-functions-orchestrations.md#sub-orchestrations), [das Warten auf externe Ereignisse](durable-functions-orchestrations.md#external-events), [HTTP](durable-functions-http-features.md) und [Timer](durable-functions-orchestrations.md#durable-timers). Orchestratorfunktionen können auch mit [Entitätsfunktionen](#entity-functions) interagieren.
 
 > [!NOTE]
 > Orchestratorfunktionen werden mithilfe von normalem Code geschrieben, aber es gibt strenge Anforderungen zum Schreiben des Codes. Insbesondere muss Orchestratorfunktionscode *deterministisch* sein. Die Nichteinhaltung dieser Determinismusanforderungen kann dazu führen, dass die Orchestratorfunktionen nicht ordnungsgemäß ausgeführt werden. Detaillierte Informationen zu diesen Anforderungen und zu deren Umgehung finden Sie im Thema [Codeeinschränkungen](durable-functions-code-constraints.md).
@@ -40,7 +40,7 @@ Im Gegensatz zu Orchestratorfunktionen bestehen für Aktivitätsfunktionen hinsi
 > [!NOTE]
 > Da Aktivitätsfunktionen nur *mindestens eine* Ausführung garantieren, wird empfohlen, die Aktivitätsfunktionslogik der nach Möglichkeit *idempotent* zu gestalten.
 
-Verwenden Sie einen [Aktivitätstrigger](durable-functions-bindings.md#activity-trigger), um eine Aktivitätsfunktion zu definieren. .NET-Funktionen nehmen einen [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) als Parameter entgegen. Sie können den Trigger auch an beliebige andere JSON-serialisierbare Objekte binden, um Eingaben an die Funktion zu übergeben. In JavaScript können Sie über die `<activity trigger binding name>`-Eigenschaft des [`context.bindings`-Objekts](../functions-reference-node.md#bindings) auf die Eingabe zugreifen. An Aktivitätsfunktionen kann nur ein einzelner Wert übergeben werden. Um mehrere Werte zu übergeben, müssen Sie Tupel, Arrays oder komplexe Typen verwenden.
+Verwenden Sie einen [Aktivitätstrigger](durable-functions-bindings.md#activity-trigger), um eine Aktivitätsfunktion zu definieren. .NET-Funktionen empfangen einen `DurableActivityContext` als Parameter. Sie können den Trigger auch an beliebige andere JSON-serialisierbare Objekte binden, um Eingaben an die Funktion zu übergeben. In JavaScript können Sie über die `<activity trigger binding name>`-Eigenschaft des [`context.bindings`-Objekts](../functions-reference-node.md#bindings) auf die Eingabe zugreifen. An Aktivitätsfunktionen kann nur ein einzelner Wert übergeben werden. Um mehrere Werte zu übergeben, müssen Sie Tupel, Arrays oder komplexe Typen verwenden.
 
 > [!NOTE]
 > Eine Aktivitätsfunktion können Sie nur über eine Orchestratorfunktion auslösen.
@@ -50,7 +50,7 @@ Verwenden Sie einen [Aktivitätstrigger](durable-functions-bindings.md#activity-
 Entitätsfunktionen definieren Vorgänge zum Lesen und Aktualisieren kleinerer Zustandsinformationen. Diese zustandsbehafteten Entitäten werden häufig als *permanente Entitäten* bezeichnet. Wie Orchestratorfunktionen besitzen Entitätsfunktionen einen speziellen Triggertyp, den *Entitätstrigger*. Sie können auch aus Clientfunktionen oder Orchestratorfunktionen aufgerufen werden. Im Gegensatz zu Orchestratorfunktionen müssen Entitätsfunktionen keine spezifischen Codeeinschränkungen besitzen. Entitätsfunktionen verwalten Zustände auch explizit, statt Zustände implizit durch die Ablaufsteuerung darzustellen.
 
 > [!NOTE]
-> Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar. Entitätsfunktionen sind zurzeit als öffentliche Vorschau verfügbar.
+> Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar.
 
 Weitere Informationen zu Entitätsfunktionen finden Sie im Artikel [Permanente Entitäten](durable-functions-entities.md).
 
