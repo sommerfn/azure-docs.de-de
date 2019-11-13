@@ -141,27 +141,6 @@
       items:
         - name: Beheben von Problemen mit Azure Load Balancer
           href: load-balancer-troubleshoot.md
-    - name: Artikel zum klassischen Bereitstellungsmodell
-      items:
-        - name: Ausgehende Verbindungen (klassisch)
-          href: load-balancer-outbound-connections-classic.md
-        - name: Konfigurieren mehrerer VIPs für Clouddienst
-          href: load-balancer-multivip.md
-          items:
-            - name: Konfigurieren des internen Lastenausgleichs für Cloud Services
-              href: load-balancer-get-started-ilb-classic-cloud.md
-              items:
-                - name: Konfigurieren des internen Lastenausgleichs für Cloud Services (PowerShell)
-                  href: load-balancer-get-started-ilb-classic-ps.md
-                - name: Konfigurieren des internen Lastenausgleichs für Cloud Services (CLI)
-                  href: load-balancer-get-started-ilb-classic-cli.md
-            - name: 'Konfigurieren des öffentlichen Lastenausgleichs (PowerShell, klassisch)'
-              href: load-balancer-get-started-internet-classic-ps.md
-              items:
-                - name: 'Konfigurieren des öffentlichen Lastenausgleichs (Cloud, klassisch)'
-                  href: load-balancer-get-started-internet-classic-cloud.md
-                - name: 'Konfigurieren des öffentlichen Lastenausgleichs (CLI, klassisch)'
-                  href: load-balancer-get-started-internet-classic-cli.md
 - name: Verweis
   items:
     - name: Codebeispiele
