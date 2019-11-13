@@ -20,6 +20,8 @@
   items:
     - name: Sichern virtueller Azure-Computer nach Skalierung
       href: tutorial-backup-vm-at-scale.md
+    - name: Sichern virtueller Azure-Computer mit PowerShell
+      href: tutorial-backup-azure-vm.md
     - name: Wiederherstellen eines Datenträgers
       href: tutorial-restore-disk.md
     - name: Wiederherstellen einzelner Dateien
