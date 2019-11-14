@@ -5,7 +5,7 @@ metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
   title: 'Dokumentation zur Bing-Bildersuche-API: Tutorials, Schnellstarts, API-Referenzen'
   titleSuffix: Azure Cognitive Services
-  description: 'Hier erfahren Sie, wie Sie mithilfe der Bing-Bildersuche-API im Web nach Bildern suchen.'
+  description: Mithilfe der Bing-Bildersuche-API können Sie Bildersuchfunktionen von Bing in Ihre Anwendungen integrieren.
   services: cognitive-services
   author: nitinme
   manager: nitinme
