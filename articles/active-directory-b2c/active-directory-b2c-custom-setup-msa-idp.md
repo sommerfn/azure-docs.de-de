@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c04f578e73b81000fa605283a4afa4103655bcf4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1f068b624b5a8f580f61e9eb2ed0d197f05aa1b0
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826984"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643658"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Microsoft-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Sie müssen eine Anwendung im Azure AD-Mandanten registrieren, um die Anmeldung 
 1. Klicken Sie auf **Certificates & secrets** (Zertifikate und Geheimnisse).
 1. Klicken Sie auf **Neuer geheimer Clientschlüssel**.
 1. Geben Sie eine **Beschreibung** für das Geheimnis ein (z. B. *MSA Anwendung geheimer Clientschlüssel*), und klicken Sie dann auf **Hinzufügen**.
-1. Notieren Sie das in der Spalte **VALUE** angezeigte Kennwort der Anwendung. Sie verwenden diesen Wert im nächsten Abschnitt.
+1. Notieren Sie das in der Spalte **Wert** angezeigte Kennwort der Anwendung. Sie verwenden diesen Wert im nächsten Abschnitt.
 
 ## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 

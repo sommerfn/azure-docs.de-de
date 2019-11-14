@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517059"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720288"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Herunterladen einer Liste von Benutzern (Vorschau) im Azure Active Directory-Portal
 
@@ -31,8 +31,9 @@ Um die Liste der Benutzer aus dem Azure AD Admin Center herunterzuladen, müssen
 ## <a name="to-download-a-list-of-users"></a>So laden Sie eine Liste von Benutzern herunter
 
 1. [Melden Sie sich bei Ihrer Azure AD-Organisation](https://aad.portal.azure.com) mit einem Benutzeradministratorkonto an.
-1. Wählen Sie in Azure AD **Benutzer** > **Benutzer herunterladen** aus.
-1. Wählen Sie auf der Seite **Benutzer herunterladen** die Option **Start** aus, um eine CSV-Datei mit der Auflistung von Benutzerprofileigenschaften zu erhalten. Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite „Ergebnisse von Massenvorgängen“ herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
+2. Navigieren Sie zu Azure Active Directory > Benutzer. Wählen Sie dann die Benutzer aus, die Sie in den Download einbeziehen möchten, indem Sie in der linken Spalte neben den einzelnen Benutzern das Kontrollkästchen aktivieren. Hinweis: Derzeit gibt es keine Möglichkeit, alle Benutzer für den Export auszuwählen. Jeder muss einzeln ausgewählt werden.
+3. Wählen Sie in Azure AD **Benutzer** > **Benutzer herunterladen** aus.
+4. Wählen Sie auf der Seite **Benutzer herunterladen** die Option **Start** aus, um eine CSV-Datei mit der Auflistung von Benutzerprofileigenschaften zu erhalten. Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite „Ergebnisse von Massenvorgängen“ herunterladen und anzeigen. Die Datei enthält den Grund für die einzelnen Fehler.
 
    ![Wählen Sie den Speicherort aus, wo Sie die Liste der Benutzer herunterladen möchten.](./media/users-bulk-download/bulk-download.png)
 

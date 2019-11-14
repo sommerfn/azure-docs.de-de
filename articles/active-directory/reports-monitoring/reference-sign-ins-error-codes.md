@@ -1,5 +1,5 @@
 ---
-title: Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation
+title: Fehlercodes im Azure Active Directory-Portal | Microsoft-Dokumentation
 description: Enthält eine Referenz zu den Fehlercodes des Berichts mit den Anmeldeaktivitäten.
 services: active-directory
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 9bb7114611ce5c7eabb8124ad11db64d50e12946
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383172"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809819"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -127,6 +127,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |50177|Die externe Überprüfung wird für Passthroughbenutzer nicht unterstützt.|
 |50178|Die Sitzungssteuerung wird für Passthroughbenutzer nicht unterstützt.|
 |50180|Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden.|
+|50181|OTP-bezogener Fehler bei der Anmeldung. |
 |50201|Diese Meldung wird dem Benutzer während der Anmeldung angezeigt, wenn dem Benutzer zusätzliche Informationen bereitgestellt werden müssen.|
 |51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN.|
 |51004|Benutzerkonto ist nicht im Verzeichnis vorhanden.|

@@ -1,31 +1,34 @@
 ---
-title: Übersicht über Benutzerkonten in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Informationen zu Benutzerkonten in Azure Active Directory B2C
+title: Übersicht über Benutzerkonten in Azure Active Directory B2C
+description: Lernen Sie die Arten von Benutzerkonten kennen, die in Azure Active Directory B2C verwendet werden können.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063143"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620452"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
-In Azure Active Directory B2C (Azure AD B2C) können Sie verschiedene Arten von Konten verwenden. In Azure Active Directory, Azure Active Directory B2B und Azure Active Directory B2C können dieselben Arten von Benutzerkonten verwendet werden.
+In Azure Active Directory B2C (Azure AD B2C) gibt es mehrere Kontoarten, die erstellt werden können. Azure Active Directory, Azure Active Directory B2B und Azure Active Directory B2C verwenden dieselben Arten von Benutzerkonten.
 
 Die folgenden Arten von Konten sind verfügbar:
 
 - **Geschäftskonto**: Ein Geschäftskonto kann auf Ressourcen in einem Mandanten zugreifen und mit einer Administratorrolle Mandanten verwalten.
 - **Gastkonto**: Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
-- **Consumerkonto**: Ein Consumerkonto wird erstellt, indem ein Benutzerflow für die Registrierung in einer Azure AD B2C-Anwendung durchlaufen oder die Azure AD Graph-API verwendet wird. Ein Consumerkonto wird von Benutzern der Anwendungen verwendet, die bei Azure AD B2C registriert sind.
+- **Consumerkonto**: Ein Consumerkonto wird von einem Benutzer der Anwendungen verwendet, die Sie bei Azure AD B2C registriert haben. Consumerkonten können wie folgt erstellt werden:
+  - Durch den Benutzer, der einen Benutzeranmeldeflow in einer Azure AD B2C-Anwendung durchläuft
+  - Mithilfe der Azure AD Graph-API
+  - Verwenden des Azure-Portals
 
 ## <a name="work-account"></a>Geschäftskonto
 
@@ -73,7 +76,7 @@ Sie können auch mit der [Microsoft Graph-API](https://docs.microsoft.com/graph/
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 
-Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen.  Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird mithilfe eines [Benutzerflows für die Registrierung oder Anmeldung](../active-directory-b2c/active-directory-b2c-reference-policies.md) erstellt.
+Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen. Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird durch Verwendung eines [Benutzeranmeldeflows](../active-directory-b2c/active-directory-b2c-reference-policies.md), mithilfe der Azure AD Graph-API oder im Azure-Portal erstellt.
 
 Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden, indem Sie benutzerdefinierte Benutzerattribute verwenden. Weitere Informationen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

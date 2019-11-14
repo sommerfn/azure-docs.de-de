@@ -1,5 +1,5 @@
 ---
-title: Sichern und Wiederherstellen mit der Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
+title: Sichern und Wiederherstellen mit der Microsoft Authenticator-App – Azure AD
 description: Hier erfahren Sie, wie Sie Ihre Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App sichern und wiederherstellen.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b4e45fbe6533832765e90e5cf244f0dcbcf0b72
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 2404dd443c1e3ede1d3ad5a81888e9f805edb810
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035123"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820256"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 

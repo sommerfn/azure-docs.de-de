@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176821"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603407"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -185,6 +185,14 @@ Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jede
 
 Stellen Sie sicher, dass der Computer mit macOS in AD eingebunden ist. Anweisungen zum Einbinden Ihres macOS-Geräts in AD werden in diesem Artikel nicht bereitgestellt.
 
+#### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge auf Chromium-Basis (alle Plattformen)
+
+Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) oder [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) in Ihrer Umgebung überschrieben haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) hinzufügen.
+
+#### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Microsoft Edge auf Chromium-Basis (macOS und andere Nicht-Windows-Plattformen)
+
+Für Microsoft Edge auf Chromium-Basis auf Mac OS und anderen Nicht-Windows-Plattformen finden Sie unter [Microsoft Edge – Richtlinien](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) Informationen zum Hinzufügen der Azure AD-URL zu Ihrer Zulassungsliste für die integrierte Authentifizierung.
+
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
 
 Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie ihnen auch die URL von Azure AD (`https://autologon.microsoftazuread-sso.com`) hinzufügen.
@@ -197,7 +205,7 @@ Das Rollout der Azure AD-URL für Firefox und Google Chrome unter Mac mithilfe v
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
-Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microsoft Edge nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird.
+Das nahtlose einmalige Anmelden funktioniert in den Browsern Firefox und Microsoft Edge nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird. Bei der nächsten Version von Microsoft Edge auf Chromium-Basis funktioniert das einmalige Anmelden konstruktionsbedingt nicht mehr im privaten Modus und im Gastmodus.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 

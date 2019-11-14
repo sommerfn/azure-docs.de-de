@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c8e4027bd8892ff3bf5c598573b7736aea42953f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802094"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602575"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Benutzermigration
 
@@ -182,7 +182,7 @@ Verwenden Sie zum Überprüfen der Migration eine der beiden folgenden Methoden:
    1. Führen Sie den folgenden Befehl aus:
 
       ```Console
-          UserMigration.exe 3 {email address}
+          UserMigration.exe 3 {email address} > UserProfile.json
       ```
 
       > [!TIP]

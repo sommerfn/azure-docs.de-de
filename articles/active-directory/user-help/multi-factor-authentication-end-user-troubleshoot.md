@@ -1,5 +1,5 @@
 ---
-title: Beheben gängiger Probleme bei der zweistufigen Überprüfung – Azure Active Directory | Microsoft-Dokumentation
+title: Beheben gängiger Problemen bei der zweistufigen Überprüfung – Azure AD
 description: Erfahren Sie mehr über mögliche Lösungen für einige der gängigeren Probleme bei der zweistufigen Überprüfung.
 services: active-directory
 author: eross-msft
@@ -9,16 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616120"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805299"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>Beheben gängiger Problemen bei der zweistufigen Überprüfung
 
@@ -63,6 +63,8 @@ Das Nichtempfangen des Überprüfungscodes ist ein gängiges Problem, das typisc
 - **Stellen Sie sicher, dass Sie über ein Gerätesignal und eine Internetverbindung verfügen.** Vergewissern Sie sich, dass Ihre Telefonanrufe und SMS-Nachrichten zu Ihrem mobilen Gerät gelangen. Bitten Sie einen Freund, Sie anzurufen und Ihnen eine SMS zu schicken, um sicherzustellen, dass beides möglich ist. Falls nicht, überprüfen Sie zunächst, ob Ihr Mobilgerät eingeschaltet ist. Wenn Ihr Gerät eingeschaltet ist, Sie aber immer noch keinen Anruf bzw. keine SMS erhalten, liegt höchstwahrscheinlich ein Problem mit Ihrem Mobilfunknetz vor, weshalb Sie sich an Ihren Mobilfunkanbieter wenden müssen. Wenn Sie häufig signalbedingte Probleme haben, empfiehlt sich die Installation und Verwendung der [Microsoft Authenticator-App](user-help-auth-app-download-install.md) auf Ihrem mobilen Gerät. Diese App kann zufällige Sicherheitscodes für die Anmeldung generieren, ohne ein Mobilfunksignal oder eine Internetverbindung vorauszusetzen.
 
 - **Deaktivieren Sie „Nicht stören“.** Stellen Sie sicher, dass das Funktionsmerkmal **Nicht stören** für Ihr mobiles Gerät deaktiviert ist. Wenn dieses Funktionsmerkmal aktiviert ist, sind keine Benachrichtigungen auf Ihrem Mobilgerät möglich. In der Bedienungsanleitung Ihres Mobilgeräts finden Sie Anweisungen, wie Sie dieses Funktionsmerkmal deaktivieren können.
+
+- **Aufheben der Blockierung von Telefonnummern** In den USA stammen Anrufe von Microsoft von folgenden Telefonnummern: + 1 (866) 539 4191, + 1 (855) 330 8653 und + 1 (877) 668 6536.
 
 - **Überprüfen Sie akkubezogene Einstellungen.** Dies scheint auf den ersten Blick etwas seltsam zu sein, aber wenn Sie Ihre Akkuroptimierung so eingerichtet haben, dass weniger genutzte Anwendungen nicht im Hintergrund aktiv bleiben, ist Ihr Benachrichtigungssystem höchstwahrscheinlich betroffen. Um dieses Problem zu beheben, deaktivieren Sie die Akkuoptimierung für Ihre Authentifizierungs- und Messaging-App, und versuchen Sie dann, sich erneut bei Ihrem Konto anzumelden.
 

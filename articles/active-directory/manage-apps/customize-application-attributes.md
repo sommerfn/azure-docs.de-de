@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240994"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641508"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -77,6 +77,16 @@ Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die fol
   - **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
   - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
+## <a name="matching-users-in-the-source-and-target--systems"></a>Abgleichen von Benutzern im Quell- und Zielsystem
+Der Azure AD-Bereitstellungsdienst kann sowohl im Szenario „Greenfield“ (Benutzer sind im Zielsystem nicht vorhanden) als auch im Szenario „Brownfield“ (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
+
+- **Übereinstimmende Attribute sollten eindeutig sein:** Kunden verwenden häufig Attribute wie „userPrincipalName“, „mail“ oder „objectID“ als übereinstimmendes Attribut.
+- **Als übereinstimmende Attribute können auch mehrere Attribute verwendet werden:** Sie können mehrere Attribute festlegen, die beim Abgleich von Benutzern ausgewertet werden sollen, und auch die Auswertungsreihenfolge angeben (auf der Benutzeroberfläche als „Rangfolge für Abgleich“ definiert). Wenn Sie z.B. drei Attribute als übereinstimmende Attribute definieren und ein Benutzer nach der Auswertung der ersten beiden Attribute eindeutig zugeordnet werden kann, wertet der Dienst das dritte Attribut nicht mehr aus. Der Dienst wertet übereinstimmende Attribute in der angegebenen Reihenfolge aus und beendet die Auswertung, wenn eine Übereinstimmung gefunden wird.  
+- **Der Wert im Quell- und Zielsystem muss nicht genau übereinstimmen:** Der Wert im Zielsystem kann eine einfache Funktion des Werts im Quellsystem sein. Daher könnten die Attribute „emailAddress“ im Quellsystem und „userPrincipalName“ im Zielsystem anhand einer Funktion des Attributs „emailAddress“ abgeglichen werden, bei der einige Zeichen durch einen konstanten Wert ersetzt werden.  
+- **Der Abgleich anhand einer Kombination von Attributen wird nicht unterstützt:** Die meisten Anwendungen unterstützen keine Abfragen, die auf zwei Eigenschaften basieren. Daher ist es nicht möglich, einen Abgleich anhand einer Kombination von Attributen vorzunehmen. Es ist jedoch möglich, einzelne Eigenschaften nacheinander auszuwerten.
+- **Alle Benutzer müssen über einen Wert für mindestens ein übereinstimmendes Attribut verfügen:** Wenn Sie ein übereinstimmendes Attribut definieren, müssen im Quellsystem alle Benutzer einen Wert für dieses Attribut aufweisen. Wenn Sie beispielsweise „userPrincipalName“ als übereinstimmendes Attribut definieren, müssen alle Benutzer über das Attribut „userPrincipalName“ verfügen. Wenn Sie mehrere übereinstimmende Attribute (z.B. „extensionAttribute1“ und „mail“) definieren, müssen nicht alle Benutzer das gleiche übereinstimmende Attribut aufweisen. Ein Benutzer könnte über das Attribut „extensionAttribute1“, aber nicht über das Attribut „mail“, ein anderer Benutzer über „mail“, aber nicht über „extensionAttribute1“ verfügen. 
+- **Die Zielanwendung muss das Filtern nach dem übereinstimmenden Attribut unterstützen:** Anwendungsentwickler können bei ihrer Benutzer- oder Gruppen-API das Filtern nach einer Teilmenge von Attributen erlauben. Bei Anwendungen im Katalog stellen wir sicher, dass die Standardattributzuordnung für ein Attribut gilt, das die API der Zielanwendung beim Filtern unterstützt. Wenn Sie das standardmäßige übereinstimmende Attribut für die Zielanwendung ändern, müssen Sie anhand der Dokumentation für die Drittanbieter-API sicherstellen, dass nach dem Attribut gefiltert werden kann.  
+
 ## <a name="editing-group-attribute-mappings"></a>Bearbeiten von Gruppenattributzuordnungen
 
 Einige ausgewählte Anwendungen (z. B. ServiceNow, Box und G Suite) bieten die Möglichkeit, neben Benutzerobjekten auch Gruppenobjekte bereitzustellen. Gruppenobjekte können zusätzlich zu den Gruppenmitgliedern Gruppeneigenschaften wie Anzeigenamen und E-Mail-Aliase enthalten.
@@ -125,6 +135,113 @@ Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaf
 - **Referenced Object Attribute** (Referenziertes Objektattribut): Im Fall eines Attributs vom Typ „Reference“ können Sie in diesem Menü die Tabelle und das Attribut in der Zielanwendung auswählen, die den zugehörigen Wert für das Attribut enthält. Bei einem Attribut mit dem Namen „Abteilung“, dessen gespeicherter Wert auf ein Objekt in einer separaten Tabelle „Abteilungen“ verweist, würden Sie beispielsweise „Abteilungen.Name“ auswählen. Die unterstützten Verweistabellen und Felder für die primäre ID für eine bestimmte Anwendung sind vorkonfiguriert und können derzeit nicht im Azure-Portal, aber mit der [Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) bearbeitet werden.
 
 Um ein neues Attribut hinzuzufügen, scrollen Sie zum Ende der Liste der unterstützten Attribute, füllen Sie die obigen Felder anhand der verfügbaren Eingaben auf, und klicken Sie auf **Attribut hinzufügen**. Klicken Sie nach dem Hinzufügen von Attributen auf **Speichern**. Sie müssen die Registerkarte **Bereitstellung** anschließend erneut laden, damit die neuen Attribute im Attributzuordnungs-Editor verfügbar werden.
+## <a name="provisioning-a-role-to-a-scim-app"></a>Bereitstellen einer Rolle für eine SCIM-App
+Führen Sie die folgenden Schritte aus, um für Ihre Anwendung Rollen für einen Benutzer bereitzustellen. Beachten Sie, dass die folgende Beschreibung speziell für benutzerdefinierte SCIM-Anwendungen gilt. Verwenden Sie bei Kataloganwendungen wie Salesforce und ServiceNow die vordefinierten Rollenzuordnungen. In der folgenden Auflistung wird beschrieben, wie Sie das Attribut „AppRoleAssignments“ in das von Ihrer Anwendung erwartete Format umwandeln.
+
+- Das Zuordnen des Attributs „appRoleAssignment“ in Azure AD zu einer Rolle in Ihrer Anwendung setzt voraus, dass Sie das Attribut mithilfe eines [Ausdrucks](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data) umwandeln. Das Attribut „appRoleAssignment“ sollte einem Rollenattribut **nicht direkt** und ohne Verwendung eines Ausdrucks für die Analyse der Rollendetails zugeordnet werden. 
+
+- **SingleAppRoleAssignment** 
+  - **Einsatzgebiete:** Verwenden Sie den Ausdruck „SingleAppRoleAssignment“, um eine einzelne Rolle für einen Benutzer bereitzustellen und die primäre Rolle anzugeben. 
+  - **Vorgehensweise zur Konfiguration:** Navigieren Sie anhand der oben beschriebenen Schritte zur Seite mit den Attributzuordnungen, und verwenden Sie für die Zuordnung zum Rollenattribut den Ausdruck „SingleAppRoleAssignment“. Zur Auswahl stehen drei Rollenattribute: „roles[primary eq „True“].display“, „roles[primary eq „True“].type“ und „roles[primary eq „True“].value“. Sie können ein beliebiges Rollenattribut oder alle Attribute in Ihre Zuordnungen einbeziehen. Wenn Sie mehr als ein Attribut einbeziehen möchten, fügen Sie einfach eine neue Zuordnung hinzu und schließen das Attribut als Zielattribut ein.  
+  
+  ![„SingleAppRoleAssignment“ hinzufügen](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  - **Zu beachtende Aspekte**
+    - Stellen Sie sicher, dass einem Benutzer nicht mehrere Rollen zugeordnet sind. Wir können nicht garantieren, welche Rolle bereitgestellt wird.
+    
+  - **Beispielausgabe** 
+
+   ```json
+    {
+      "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": true,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "value": "Admin"
+         }
+      ]
+   }
+   ```
+  
+- **AppRoleAssignmentsComplex** 
+  - **Einsatzgebiete:** Verwenden Sie den Ausdruck „AppRoleAssignmentsComplex“, um mehrere Rollen für einen Benutzer bereitzustellen. 
+  - **Vorgehensweise zur Konfiguration:** Bearbeiten Sie die Liste der unterstützten Attribute, wie oben beschrieben, um ein neues Attribut für Rollen einzubeziehen: 
+  
+    ![Hinzufügen von Rollen](./media/customize-application-attributes/add-roles.png)<br>
+
+    Verwenden Sie dann den Ausdruck „AppRoleAssignmentsComplex“, um das benutzerdefinierte Rollenattribut zuzuordnen, wie in der folgenden Abbildung gezeigt:
+
+    ![„AppRoleAssignmentsComplex“ hinzufügen](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+  - **Zu beachtende Aspekte**
+    - Alle Rollen werden mit „primary = false“ bereitgestellt.
+    - Die POST-Anforderung enthält den Rollentyp. Die PATCH-Anforderung enthält keinen Typ. Wir arbeiten daran, den Typ sowohl in POST- als auch in PATCH-Anforderungen zu senden.
+    
+  - **Beispielausgabe** 
+  
+   ```json
+   {
+       "schemas": [
+           "urn:ietf:params:scim:schemas:core:2.0:User"
+      ],
+      "externalId": "alias",
+      "userName": "alias@contoso.OnMicrosoft.com",
+      "active": true,
+      "displayName": "First Name Last Name",
+      "meta": {
+           "resourceType": "User"
+      },
+      "roles": [
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "Admin",
+               "value": "Admin"
+         },
+         {
+               "primary": false,
+               "type": "WindowsAzureActiveDirectoryRole",
+               "display": "User",
+             "value": "User"
+         }
+      ]
+   }
+   ```
+
+  
+
+
+## <a name="provisioning-a-multi-value-attribute"></a>Bereitstellen eines Attributs mit mehreren Werten
+Bestimmte Attribute wie „phoneNumbers“ und „emails“ sind mehrwertige Attribute, bei denen Sie möglicherweise verschiedene Arten von Telefonnummern oder E-Mails angeben müssen. Verwenden Sie den folgenden Ausdruck für Attribute mit mehreren Werten. Mit ihm können Sie den Attributtyp angeben und diesen dem entsprechenden Azure AD-Benutzerattribut für den Wert zuordnen. 
+
+* phoneNumbers[type eq "work"].value
+* phoneNumbers[type eq "mobile"].value
+* phoneNumbers[type eq "fax"].value
+
+   ```json
+   "phoneNumbers": [
+       {
+         "value": "555-555-5555",
+         "type": "work"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "mobile"
+      },
+      {
+         "value": "555-555-5555",
+         "type": "fax"
+      }
+   ]
+   ```
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Wiederherstellen der Standardattribute und Attributzuordnungen
 

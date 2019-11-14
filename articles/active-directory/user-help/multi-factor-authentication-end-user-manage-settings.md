@@ -1,5 +1,5 @@
 ---
-title: Verwalten der Einstellungen für die zweistufige Überprüfung – Azure Active Directory | Microsoft-Dokumentation
+title: Verwalten der Einstellungen für die zweistufige Überprüfung – Azure AD
 description: Erfahren Sie, wie Sie die Details Ihrer Methode für die Sicherheitsüberprüfung in Bezug auf die zweistufige Überprüfung ändern.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4c402e0992a3a04d674477bc9dd19e0181fd6775
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616142"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805259"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>Verwalten der Einstellungen für die zweistufige Überprüfung
 

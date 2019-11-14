@@ -1,5 +1,5 @@
 ---
-title: Herunterladen und Installieren der Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
+title: Herunterladen und Installieren der Microsoft Authenticator-App – Azure AD
 description: Hier finden Sie Informationen zum Herunterladen, Installieren und Verwenden der Microsoft Authenticator-App für die zweistufige Überprüfung.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ecdf0feb0d8e5307eac9916748e0bacdf51620
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ebe80d44d52ffa348413e51cd5e82e8468537479
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616044"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820226"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Herunterladen und Installieren der Microsoft Authenticator-App
 
@@ -52,7 +52,7 @@ Installieren Sie die aktuelle Version der Microsoft Authenticator-App basierend 
 - **Apple iOS**: Wechseln Sie auf Ihrem Apple iOS-Gerät zum App Store, um [die Microsoft Authenticator-App herunterzuladen und zu installieren](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 >[!Important]
->Wenn Sie derzeit nicht an Ihrem mobilen Gerät arbeiten, können Sie die Microsoft Authenticator-App dennoch erhalten, indem Sie sich selbst von der [Microsoft Authenticator-Seite](https://www.microsoft.com/account/authenticator) einen Downloadlink senden.
+>Wenn Sie derzeit nicht an Ihrem mobilen Gerät arbeiten, können Sie die Microsoft Authenticator-App dennoch erhalten, indem Sie sich selbst von der [Microsoft Authenticator-Seite](https://www.microsoft.com/en-us/account/authenticator) einen Downloadlink senden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

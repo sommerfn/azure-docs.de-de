@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109446"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721032"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -165,7 +165,8 @@ Das Azure AD Connect Health-Portal zeigt Warnungen, Leistungsüberwachungsdaten 
 * **Active Directory Domain Services**: Diese Option zeigt alle AD DS-Gesamtstrukturen an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Gesamtstruktur auswählen, wird ein Blatt mit Informationen zu dieser Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
 * **Konfigurieren**: In diesem Abschnitt können Sie folgende Optionen aktivieren oder deaktivieren:
 
-  - Der Eintrag **Einstellungen** umfasst grundlegende Konfigurationen der Agents. Die Einstellung für automatische Upgrades ermöglicht die automatische Aktualisierung des Azure AD Connect Health-Agents auf die aktuelle Version: Eine automatische Aktualisierung auf die aktuelle Version des Azure AD Connect Health-Agents wird durchgeführt, sobald diese verfügbar ist. Diese Einstellung ist standardmäßig aktiviert. Microsoft zu Zwecken der Problembehandlung den Zugriff auf die Integritätsdaten für Azure AD-Verzeichnis erlauben: Wenn Sie diese Einstellung aktivieren, stehen Microsoft die gleichen Daten zur Verfügung wie Ihnen. Diese Informationen können bei der Problembehandlung und zur Unterstützung bei der Fehlerbeseitigung von Nutzen sein. Diese Einstellung ist standardmäßig deaktiviert.
+   - **Automatisches Update** des Azure AD Connect Health-Agents auf die aktuelle Version: Der Azure AD Connect Health-Agent wird automatisch aktualisiert, wenn neue Versionen verfügbar sind. Diese Option ist standardmäßig aktiviert.
+   - **Zugriff auf Daten** vom Azure AD-Verzeichnisintegritätsdienst durch Microsoft nur zur Problembehandlung: Wenn diese Option aktiviert ist, kann Microsoft auf dieselben Daten zugreifen, die vom Benutzer angezeigt werden. Diese Informationen können bei der Problembehandlung hilfreich sein und die nötige Unterstützung bereitstellen. Diese Option ist standardmäßig deaktiviert.
 * Im Abschnitt **Rollenbasierte Zugriffssteuerung (IAM)** wird der Zugriff auf Connect Health-Daten auf Rollenbasis verwaltet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
