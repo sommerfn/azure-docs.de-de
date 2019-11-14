@@ -6,18 +6,18 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 05/11/2019
+ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 32c7a2a79c8d6a35008255b3c117f20d04ad7749
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3b498911999e224003710eced8e0c34989672800
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927422"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809201"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 
-Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben.
+Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben. Wenn Sie in C# ein funktionierendes Beispiel sehen und erfahren möchten, wie Sie diese Funktion beim Klonen eines Hubs in eine andere Region verwenden können, lesen Sie [Klonen einer IoT Hub-Instanz](iot-hub-how-to-clone.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -421,7 +421,11 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Identitätsregistrierung in einem IoT Hub angewendet werden. Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
+In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Identitätsregistrierung in einem IoT Hub angewendet werden. Viele dieser Vorgänge, darunter das Verschieben von Geräten von einem Hub zu einem anderen, werden verwendet im Abschnitt [„Verwalten von Geräten, die im IoT Hub registriert wurden“ von „Klonen einer IoT Hub-Instanz“](iot-hub-how-to-clone.md#managing-the-devices-registered-to-the-iot-hub). 
+
+Dem Artikel zum Thema „Klonen“ ist ein funktionierendes Beispiel zugeordnet, das in den IoT C# -Beispielen auf dieser Seite zu finden ist: [Azure IoT-Beispiele zu C#](https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/); der Name des Projekts lautet „ImportExportDevicesSample“. Sie können das Beispiel herunterladen und ausprobieren; Anleitungen dazu finden Sie im Artikel [Klonen einer IoT Hub-Instanz](iot-hub-how-to-clone.md).
+
+Weitere Informationen zum Verwalten von Azure IoT Hub finden Sie in den folgenden Artikeln:
 
 * [IoT Hub-Metriken](iot-hub-metrics.md)
 * [IoT Hub-Protokolle](iot-hub-monitor-resource-health.md)

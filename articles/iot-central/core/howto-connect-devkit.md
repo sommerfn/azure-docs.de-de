@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 24ce6de63d06402e24abdeb33996a3853175ce91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4e04ae7d9594ac064c9f3707c797fb2709a79cb6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942783"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582972"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -119,7 +119,7 @@ Schütteln Sie das Gerät, um eine gemeldete Eigenschaft zu senden. Das Gerät s
 
 Sie können die Telemetriemessungen und die gemeldeten Eigenschaftswerte anzeigen und Einstellungen in Azure IoT Central konfigurieren:
 
-1. Verwenden Sie den **Device Explorer**, um die Seite **Messungen** für das reale MXChip-Gerät aufzurufen, das Sie hinzugefügt haben:
+1. Verwenden Sie **Geräte**, um die Seite **Messungen** für das reale MXChip-Gerät aufzurufen, das Sie hinzugefügt haben:
 
     ![Navigieren zum realen Gerät](media/howto-connect-devkit/realdevicenew.png)
 

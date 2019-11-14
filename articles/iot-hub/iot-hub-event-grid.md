@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: f411771fbf39a99642506253fc025d6b29840423
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7d5a232d92c37a94ff427a3bf203f6f20764060e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648637"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748581"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -204,4 +204,4 @@ Anwendungen, die IoT Hub-Ereignisse behandeln, sollten diesen empfohlenen Method
 
 * [Vergleichen der Unterschiede zwischen dem Routing von IoT Hub-Ereignissen und Nachrichten](iot-hub-event-grid-routing-comparison.md)
 
-* [Hier erfahren Sie, wie Sie IoT-Telemetrieereignisse verwenden, um mithilfe von Azure Maps (und IoT Hub Nachrichtenweiterleitung) räumliche IoT-Analysen implementieren.](../azure-maps/tutorial-iot-hub-maps.md#filter-events-using-iot-hub-message-routing)
+* [Erfahren Sie, wie Sie IoT-Telemetrieereignisse verwenden, um mithilfe von Azure Maps räumliche IoT-Analysen zu implementieren.](../azure-maps/tutorial-iot-hub-maps.md#create-an-azure-function-and-add-an-event-grid-subscription)

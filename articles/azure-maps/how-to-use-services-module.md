@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 77659fdf93947cfbaa0daa322dccf4e9cb1a41fa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3911d4e780e993fdd1c2945b34cd683d47fb884a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844713"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827274"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Verwenden des Moduls „Dienste“ von Azure Maps
 
@@ -124,7 +124,7 @@ Das Web SDK für Azure Maps stellt das *Modul „Dienste“* bereit. Dieses Modu
 
     Weitere Informationen finden Sie unter [Authentifizierung mit Azure Maps](azure-maps-authentication.md).
 
-1. Der folgende Code verwendet den neu erstellten URL-Client des Azure Search-Diensts, um eine Adresse mit einem Geocode zu versehen: "1 Microsoft Way, Redmond, WA". Der Code verwendet die `searchAddress`-Funktion und zeigt die Ergebnisse als Tabelle im Textkörper der Seite an.
+1. Der folgende Code verwendet den neu erstellten URL-Client des Azure Maps-Suchdiensts, um eine Adresse mit einem Geocode zu versehen: "1 Microsoft Way, Redmond, WA". Der Code verwendet die `searchAddress`-Funktion und zeigt die Ergebnisse als Tabelle im Textkörper der Seite an.
 
     ```javascript
     // Search for "1 microsoft way, redmond, wa".

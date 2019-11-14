@@ -1,6 +1,6 @@
 ---
 title: Wie Sie ein OPC Twin-Modul einem vorhandenen Azure-Projekt bereitstellen | Microsoft-Dokumentation
-description: Bereitstellen von OPC Twin in einem vorhandenen Projekt
+description: In diesem Artikel wird beschrieben, wie Sie OPC Twin in einem vorhandenen Projekt bereitstellen. Außerdem erfahren Sie, wie Sie Bereitstellungsfehler beheben können.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b971ec13c71ccfd7d28ae6987593d09201b9b764
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972279"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824119"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Bereitstellen von OPC Twin in einem vorhandenen Projekt
 

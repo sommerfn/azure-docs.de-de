@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ff50d972ad9590fb70dbcf67e21f8b5dc8c32fad
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372711"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748063"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -41,15 +41,15 @@ IoT Hub unterstützt derzeit folgende Dienste als benutzerdefinierte Endpunkte:
 
 Sie können standardmäßige [Event Hubs-Integration und -SDKs](iot-hub-devguide-messages-read-builtin.md) zum Empfangen von D2C-Nachrichten vom integrierten Endpunkt (**messages/events**) verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt.
 
-### <a name="azure-blob-storage"></a>Azure Blob Storage
+### <a name="azure-storage"></a>Azure Storage
 
-IoT Hub unterstützt das Schreiben von Daten in Azure Blob Storage im [Apache Avro](https://avro.apache.org/)- und im JSON-Format. Die Möglichkeit zum Codieren des JSON-Formats steht jetzt allgemein in allen Regionen zur Verfügung, in der IoT Hub verfügbar ist. Standardwert: AVRO. Das Codierungsformat kann nur festgelegt werden, wenn der Endpunkt des Blobspeichers konfiguriert ist. Das Format kann nicht für einen vorhandenen Endpunkt bearbeitet werden. Wenn Sie die JSON-Codierung verwenden, müssen Sie in der Nachricht [Systemeigenschaften](iot-hub-devguide-routing-query-syntax.md#system-properties) „contentType“ auf **application/json** und „contentEncoding“ auf **UTF-8** festlegen. Bei diesen beiden Werten wird die Groß-/Kleinschreibung nicht beachtet. Wenn die Inhaltscodierung nicht festgelegt ist, schreibt IoT Hub die Nachrichten in Base64-codiertem Format. Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen – insbesondere [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) oder die [Azure Powershell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Das folgende Diagramm zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
+Es gibt zwei Speicherdienste, an die IoT Hub Nachrichten weiterleiten kann: [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)- und [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) (ADLS Gen2)-Konten. Azure Data Lake Storage-Konten sind Speicherkonten mit aktivierten [hierarchischen Namespaces](../storage/blobs/data-lake-storage-namespace.md), die auf Blob-Speicher basieren. Beide verwenden Blobs als Speicher.
+
+IoT Hub unterstützt das Schreiben von Daten in Azure Storage in den Formaten [Apache Avro](https://avro.apache.org/) und „JSON“. Standardwert: AVRO. Das Codierungsformat kann nur festgelegt werden, wenn der Endpunkt des Blobspeichers konfiguriert ist. Das Format kann nicht für einen vorhandenen Endpunkt bearbeitet werden. Wenn Sie die JSON-Codierung verwenden, müssen Sie in der Nachricht [Systemeigenschaften](iot-hub-devguide-routing-query-syntax.md#system-properties) „contentType“ auf **application/json** und „contentEncoding“ auf **UTF-8** festlegen. Bei diesen beiden Werten wird die Groß-/Kleinschreibung nicht beachtet. Wenn die Inhaltscodierung nicht festgelegt ist, schreibt IoT Hub die Nachrichten in Base64-codiertem Format. Sie können das Codierungsformat über die IoT Hub-REST-API „Create“ oder „Update“ auswählen – insbesondere [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), das Azure-Portal, die [Azure CLI](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) oder die [Azure Powershell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). Das folgende Diagramm zeigt, wie Sie das Codierungsformat im Azure-Portal auswählen.
 
 ![Endpunktcodierung für Blobspeicher](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub unterstützt auch das Weiterleiten von Nachrichten an [Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) Gen2-Konten (ADLS), bei denen es sich um Speicherkonten mit aktivierten [hierarchischen Namespaces](../storage/blobs/data-lake-storage-namespace.md) handelt, die auf Blog Storage basieren. Diese Funktion befindet sich in der öffentlichen Vorschau und ist für neue ADLS Gen2-Konten in den Regionen „USA, Westen 2“ und „USA, Westen-Mitte“ verfügbar. [Registrieren Sie sich](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) für die Vorschauversion dieser Funktion. Wir werden diese Funktion in Kürze in allen Cloud-Regionen einführen. 
-
-IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn das Batch eine bestimmte Größe erreicht hat oder ein bestimmter Zeitraum verstrichen ist. IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention: 
+IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in den Speicher, wenn der Batch eine bestimmte Größe erreicht hat oder ein bestimmter Zeitraum verstrichen ist. IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention: 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
@@ -57,23 +57,28 @@ IoT Hub verarbeitet Nachrichten batchweise und schreibt Daten in ein Blob, wenn 
 
 Sie können eine beliebige Dateibenennungskonvention verwenden, müssen jedoch alle aufgelisteten Tokens verwenden. IoT Hub schreibt in ein leeres Blob, wenn keine Daten zum Schreiben vorhanden sind.
 
-Beim Weiterleiten an Blobspeicher sollten die Blobs eingetragen und dann durchlaufen werden, um sicherzustellen, dass alle Container gelesen werden, ohne Annahmen zu Partitionen anzustellen. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover) in Zusammenhang mit IoT Hub ändern. Sie können die [API zum Auflisten von Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) verwenden, um die Liste der Blobs aufzulisten. Das folgende Beispiel dient als Anleitung.
+Wir empfehlen, die Blobs oder Dateien aufzulisten und anschließend zu durchlaufen, um sicherzustellen, dass alle Blobs oder Dateien gelesen werden, ohne dass eine Partition vorhanden ist. Der Partitionsbereich könnte sich möglicherweise bei einem [von Microsoft initiierten Failover](iot-hub-ha-dr.md#microsoft-initiated-failover) oder einem [manuellen Failover](iot-hub-ha-dr.md#manual-failover) in Zusammenhang mit IoT Hub ändern. Sie können die Liste der Blobs oder die [Liste der ADLS Gen2-API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) mithilfe der [List Blobs-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) aufzählen, um die gewünschte Liste von Dateien zu erhalten. Das folgende Beispiel dient als Anleitung.
 
-   ```csharp
-        public void ListBlobsInContainer(string containerName, string iothub)
+```csharp
+public void ListBlobsInContainer(string containerName, string iothub)
+{
+    var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
+    var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+    if (cloudBlobContainer.Exists())
+    {
+        var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
+        foreach (IListBlobItem item in results)
         {
-            var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
-            var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
-            if (cloudBlobContainer.Exists())
-            {
-                var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
-                foreach (IListBlobItem item in results)
-                {
-                    Console.WriteLine(item.Uri);
-                }
-            }
+            Console.WriteLine(item.Uri);
         }
-   ```
+    }
+}
+```
+
+Wenn Sie ein Azure Data Lake Gen2-kompatibles Speicherkonto erstellen möchten, erstellen Sie ein neues V2-Speicherkonto, und wählen Sie auf der Registerkarte *Erweitert* im Feld *Hierarchischer Namespace* die Option **aktiviert** aus, wie in der folgenden Abbildung gezeigt wird:
+
+![Auswählen von Azure Data Lake Gen2-Speicher](./media/iot-hub-devguide-messages-d2c/selectadls2storage.png)
+
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus-Warteschlangen und Service Bus-Themen
 

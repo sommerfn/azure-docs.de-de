@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 72549a2df3490344987567d1e62c65f76f151097
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693269"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718732"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -213,10 +213,10 @@ Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzli
 |httpVersion     | HTTP-Version der Anforderung        |
 |receivedBytes     | Größe des empfangenen Pakets in Byte        |
 |sentBytes| Größe des gesendeten Pakets in Byte|
-|timeTaken| Dauer (in Millisekunden), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
+|timeTaken| Dauer (in **Sekunden**), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
 |sslEnabled| Gibt an, ob für die Kommunikation an die Back-End-Pools SSL verwendet wurde. Gültige Werte sind „on“ und „off“.|
 |sslCipher| Verschlüsselungssammlung, die für die SSL-Kommunikation verwendet wird (sofern SSL aktiviert ist)|
-|sslProtocol| Das verwendete SSL-Protokoll (sofern SSL aktiviert ist)|
+|sslProtocol| Das verwendete SSL/TLS-Protokoll (sofern SSL aktiviert ist)|
 |serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
 |serverStatus| HTTP-Statuscode des Back-End-Servers|
 |serverResponseLatency| Wartezeit für die Antwort vom Back-End-Server|

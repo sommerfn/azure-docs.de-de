@@ -1,18 +1,18 @@
 ---
 title: Verwalten von Serveradministratoren in Azure Analysis Services | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure Serveradministratoren für einen Analysis Services-Server verwalten.
+description: In diesem Artikel wird beschrieben, wie Sie Serveradministratoren für einen Azure Analysis Services-Server mithilfe des Azure-Portals bzw. mit PowerShell- oder REST-APIs verwalten können.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f597bc9e34a606a6e40a57e5fc7af791d972c68e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146281"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572624"
 ---
 # <a name="manage-server-administrators"></a>Verwalten von Serveradministratoren
 

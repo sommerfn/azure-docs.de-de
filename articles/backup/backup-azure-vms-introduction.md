@@ -1,18 +1,18 @@
 ---
 title: Informationen zur Sicherung von Azure-VMs
-description: Erfahren Sie mehr über die Sicherung von Azure-VMs und einige bewährte Methoden.
+description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e22c4c24e83be0f89b306eed0eb1d80bdd9387e1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018691"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747199"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -34,10 +34,10 @@ Hier erfahren Sie, wie Azure Backup eine Sicherung für Azure-VMs durchführt:
     - Zur Optimierung der Sicherung werden die einzelnen VM-Datenträger parallel gesichert.
     - Für jeden Datenträger, der gesichert wird, liest Azure Backup die Blöcke auf dem Datenträger und identifiziert und überträgt nur die Datenblöcke, die sich seit der vorherigen Sicherung geändert haben (das Delta).
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten vergehen unter Umständen mehrere Stunden. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
- 1. An einem virtuellen Windows-Computer werden folgende Änderungen vorgenommen, nachdem Azure Backup darauf aktiviert wurde:
-    -   Microsoft Visual C++ 2013 Redistributable(x64) – 12.0.40660 wird auf dem virtuellen Computer installiert.
-    -   Der Starttyp des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) wird von „automatisch“ in „manuell“ geändert.
-    -   Der IaaSVmProvider-Windows-Dienst wird hinzugefügt.
+1. An einem virtuellen Windows-Computer werden folgende Änderungen vorgenommen, nachdem Azure Backup darauf aktiviert wurde:
+    - Microsoft Visual C++ 2013 Redistributable(x64) – 12.0.40660 wird auf dem virtuellen Computer installiert.
+    - Der Starttyp des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) wird von „automatisch“ in „manuell“ geändert.
+    - Der IaaSVmProvider-Windows-Dienst wird hinzugefügt.
 
 1. Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
 
@@ -140,6 +140,7 @@ Datenträger 2 | 4095 GB | 0 GB
 Die tatsächliche Größe der VM beträgt in diesem Fall 17 GB + 30 GB + 0 GB = 47 GB. Diese Größe der geschützten Instanz (47GB) dient als Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
+
 ## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Public Preview: Sicherung des virtuellen Computers mit Datenträgergrößen von bis zu 30 TB
 
 Azure Backup unterstützt nun größere und leistungsfähigere [verwaltete Azure-Datenträger](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) mit einer Größe von bis zu 30 TB im Rahmen einer Public Preview. Diese Vorschauversion unterstützt verwaltete virtuelle Computer auf Produktionsebene.

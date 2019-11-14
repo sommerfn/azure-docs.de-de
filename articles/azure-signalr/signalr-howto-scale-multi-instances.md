@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: e284a0492774e02cab79db6d9006c1718a7fcfc9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60809247"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73672334"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Skalieren von SignalR Service mit mehreren Instanzen
 Das neueste SignalR Service SDK unterstützt mehrere Endpunkte für SignalR Service-Instanzen. Sie können dieses Feature zum Skalieren der gleichzeitigen Verbindungen oder für das regionsübergreifende Messaging verwenden.
@@ -223,7 +223,7 @@ In Fällen mit regionsübergreifender Nutzung kann das Netzwerk instabil sein. F
 
 ![Regionsübergreifende Infrastruktur](./media/signalr-howto-scale-multi-instances/cross_geo_infra.png)
 
-Wenn ein Client versucht, per `/negotiate` die Aushandlung mit dem App-Server über den Standardrouter durchzuführen, wird vom SDK ein Endpunkt aus den verfügbaren Endpunkten vom Typ `primary` **zufällig ausgewählt**. Wenn der Endpunkt verfügbar ist, führt das SDK dann eine **zufällige Auswahl** aus allen verfügbaren Endpunkten vom Typ `secondary` durch. Der Endpunkt wird als **verfügbar** gekennzeichnet, wenn die Verbindung zwischen Server und Dienstendpunkt aktiv ist.
+Wenn ein Client versucht, per `/negotiate` die Aushandlung mit dem App-Server über den Standardrouter durchzuführen, wird vom SDK ein Endpunkt aus den verfügbaren Endpunkten vom Typ `primary` **zufällig ausgewählt**. Wenn der primäre Endpunkt nicht verfügbar ist, führt das SDK dann eine **zufällige Auswahl** aus allen verfügbaren Endpunkten vom Typ `secondary` durch. Der Endpunkt wird als **verfügbar** gekennzeichnet, wenn die Verbindung zwischen Server und Dienstendpunkt aktiv ist.
 
 Wenn ein Client in einem regionsübergreifenden Szenario versucht, per `/negotiate` die Aushandlung mit dem App-Server durchzuführen, der in *USA, Osten* gehostet wird, wird standardmäßig immer der Endpunkt vom Typ `primary` zurückgegeben, der sich in derselben Region befindet. Falls alle Endpunkte der Region *USA, Osten* nicht verfügbar sind, wird der Client an die Endpunkte in anderen Regionen umgeleitet. Unten im Abschnitt „Failover“ ist das Szenario ausführlich beschrieben.
 

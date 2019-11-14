@@ -1,6 +1,6 @@
 ---
 title: Verwenden des Connected Factory-Dashboards – Azure | Microsoft-Dokumentation
-description: Einführung in die Dashboardfunktionen von Connected Factory
+description: In diesem Artikel wird beschrieben, wie Sie Ihre industriellen IoT-Geräte mithilfe der Features des Connected Factory-Dashboards überwachen und verwalten können.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
-ms.openlocfilehash: 82045ddcc204fe369b7330fe9b3c2a8cadd56d88
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b53177d578768428665891704269e63bd8edb09e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067931"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820176"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>Verwenden der Dashboardfunktionen des Solution Accelerators für Connected Factory
 

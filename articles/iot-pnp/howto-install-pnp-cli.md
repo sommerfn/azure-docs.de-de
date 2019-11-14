@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 41a626ba602ad33f22c3ea4acc39dd4f3438cbd0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935515"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571017"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Installieren und Verwenden der Azure IoT-Erweiterung für die Azure CLI
 
@@ -131,21 +131,21 @@ Ohne den Parameter `--repo-login` verwendet dieser Befehl das öffentliche Model
 Aufrufen eines Befehls:
 
 ```cmd/sh
-az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --command-name {CommandName} --command-payload {CommandPayload or FilePath}
+az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="telemetry"></a>Telemetrie
+#### <a name="digital-twin-events"></a>Digital Twins-Ereignisse
 
-Überwachen aller IoT Plug & Play-Telemetriedaten von einem bestimmten Gerät und einer bestimmten Schnittstelle, die zum Event Hub-Endpunkt **$Default** gesendet werden:
+Überwachen aller IoT Plug & Play-Digital Twins-Ereignisse, die zur Event Hub-Consumergruppe **$Default** gesendet werden, von einem bestimmten Gerät und einer bestimmten Schnittstelle aus:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Überwachen aller IoT Plug & Play-Telemetriedaten von einem bestimmten Gerät und einer bestimmten Schnittstelle, die an eine bestimmte Consumergruppe gesendet werden:
+Überwachen aller IoT Plug & Play-Digital Twins-Ereignisse, die an eine bestimmte Consumergruppe gesendet werden, von einem bestimmten Gerät und einer bestimmten Schnittstelle aus:
 
 ```cmd/sh
-az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString} --consumer-group {YourConsumerGroup}
+az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
 ### <a name="manage-interfaces-in-a-model-repository"></a>Verwalten von Schnittstellen in einem Modellrepository

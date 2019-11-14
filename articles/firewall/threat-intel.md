@@ -5,25 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 11/05/2019
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f6a60d7c29fc7e482e32233aa86d65a801e3f55c
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194046"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582249"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Threat Intelligence-gestütztes Filtern für Azure Firewall – Öffentliche Vorschauversion
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Threat Intelligence-gestütztes Filtern für Azure Firewall
 
 Das Filtern auf Basis von Threat Intelligence kann für Ihre Firewall aktiviert werden, damit diese Sie bei Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) und wird von mehreren Diensten einschließlich Azure Security Center verwendet.
 
 ![Threat Intelligence für die Firewall](media/threat-intel/firewall-threat.png)
 
-> [!IMPORTANT]
-> Das Filtern auf Basis von Threat Intelligence befindet sich derzeit in der öffentlichen Vorschau und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.  Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Wenn das Threat Intelligence-gestützte Filtern aktiviert ist, werden die zugehörigen Regeln vor allen anderen Regeln (NAT-Regeln, Netzwerkregeln oder Anwendungsregeln) verarbeitet. Während der Vorschauversion sind nur die Datensätze von höchster Zuverlässigkeit enthalten.
+Wenn Sie das Threat Intelligence-gestützte Filtern aktiviert haben, werden die zugehörigen Regeln vor allen anderen Regeln (NAT-Regeln, Netzwerkregeln oder Anwendungsregeln) verarbeitet.
 
 Beim Auslösen einer Regel können Sie wahlweise nur eine Warnung protokollieren oder den Modus „Warnen und Verweigern“ verwenden.
 
