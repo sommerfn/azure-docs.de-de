@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0e4daaa3417ce349111fbc811be36a4615058c76
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791724"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824865"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -94,7 +94,7 @@ Der NFS-Server verwendet einen dedizierten virtuellen Hostnamen und virtuelle IP
 * Testport
   * Port 61000 für NW1
   * Port 61001 für NW2
-* Lastenausgleichsregeln
+* Lastenausgleichsregeln (bei Verwendung von Load Balancer Basic)
   * 2049 TCP für NW1
   * 2049 UDP für NW1
   * 2049 TCP für NW2
@@ -114,7 +114,7 @@ Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforder
    1. Ressourcenpräfix  
       Geben Sie das Präfix ein, das verwendet werden soll. Der Wert wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
    2. Anzahl der SAP-Systeme  
-      Geben Sie die Anzahl der SAP-Systeme ein, die den Dateiserver verwenden. Dadurch wird die erforderliche Menge an Front-End-Konfigurationen, Lastenausgleichsregeln, Testports, Datenträger usw. bereitgestellt.
+      Geben Sie die Anzahl der SAP-Systeme ein, die den Dateiserver verwenden. Dadurch wird die erforderliche Menge an Front-End-Konfigurationen, Lastenausgleichsregeln, Testports, Datenträgern usw. bereitgestellt.
    3. Betriebssystemtyp  
       Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel die Option „SLES 12“.
    4. Administratorbenutzername und Administratorkennwort  
@@ -136,48 +136,88 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
    „SLES für SAP-Anwendungen 12 SP3 (BYOS)“, verwendet.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Fügen Sie einen Datenträger für jedes SAP-System auf beiden virtuellen Computern hinzu.
-1. Erstellen Sie einen Load Balancer (intern)  
-   1. Erstellen der Front-End-IP-Adressen
-      1. IP-Adresse 10.0.0.4 für NW1
-         1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend**).
-         1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4**).
-         1. OK klicken
-      1. IP-Adresse 10.0.0.5 für NW2
-         * Wiederholen Sie die oben genannten Schritte für NW2.
-   1. Erstellen der Back-End-Pools
-      1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW1 sein sollen
-         1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
-         1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
-         1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.
-         1. Wählen Sie die virtuellen Computer des NFS-Clusters aus.
-         1. OK klicken
-      1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW2 sein sollen
-         * Wiederholen Sie die oben genannten Schritte, um einen Back-End-Pool für NW2 zu erstellen.
-   1. Erstellen der Integritätstests
-      1. Port 61000 für NW1
-         1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-hp**).
-         1. Wählen Sie TCP als Protokoll und Port 610**00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
-         1. OK klicken
-      1. Port 61001 für NW2
-         * Wiederholen Sie die oben genannten Schritte, um einen Integritätstest für NW2 zu erstellen.
-   1. Lastenausgleichsregeln
-      1. 2049 TCP für NW1
-         1. Öffnen Sie den Load Balancer, wählen Sie das Laden von Lastenausgleichsregeln, und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-2049**).
-         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-frontend**).
-         1. Behalten Sie **TCP** als Protokoll bei, und geben Sie Port **2049** ein.
+1. Erstellen Sie einen Lastenausgleich (intern). Es wird empfohlen, [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden.  
+   1. Befolgen Sie diese Anleitung, um eine Load Balancer Standard-Instanz zu erstellen:
+      1. Erstellen der Front-End-IP-Adressen
+         1. IP-Adresse 10.0.0.4 für NW1
+            1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
+            1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend**).
+            1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4**).
+            1. OK klicken
+         1. IP-Adresse 10.0.0.5 für NW2
+            * Wiederholen Sie die oben genannten Schritte für NW2.
+      1. Erstellen der Back-End-Pools
+         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW1 sein sollen
+            1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+            1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
+            1. Virtuelles Netzwerk auswählen
+            1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+            1. Wählen Sie die virtuellen Computer des NFS-Clusters und deren IP-Adressen aus.
+            1. Klicken Sie auf "Hinzufügen".
+         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW2 sein sollen
+            * Wiederholen Sie die oben genannten Schritte, um einen Back-End-Pool für NW2 zu erstellen.
+      1. Erstellen der Integritätstests
+         1. Port 61000 für NW1
+            1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
+            1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-hp**).
+            1. Wählen Sie TCP als Protokoll und Port 610**00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
+            1. OK klicken
+         1. Port 61001 für NW2
+            * Wiederholen Sie die oben genannten Schritte, um einen Integritätstest für NW2 zu erstellen.
+      1. Lastenausgleichsregeln
+         1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **nw1-lb**).
+         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-frontend**, **nw1-backend** und **nw1-hp**).
+         1. Wählen Sie **HA-Ports** aus.
          1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
          1. OK klicken
-      1. 2049 UDP für NW1
-         * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW1.
-      1. 2049 TCP für NW2
-         * Wiederholen Sie die oben genannten Schritte für Port 2049 und TCP für NW2.
-      1. 2049 UDP für NW2
-         * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW2.
+         * Wiederholen Sie die oben genannten Schritte, um eine Lastenausgleichsregel für NW2 zu erstellen.
+   1. Wenn Ihr Szenario einen grundlegenden Lastenausgleich erfordert, befolgen Sie stattdessen die folgenden Anweisungen:
+      1. Erstellen der Front-End-IP-Adressen
+         1. IP-Adresse 10.0.0.4 für NW1
+            1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
+            1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend**).
+            1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4**).
+            1. OK klicken
+         1. IP-Adresse 10.0.0.5 für NW2
+            * Wiederholen Sie die oben genannten Schritte für NW2.
+      1. Erstellen der Back-End-Pools
+         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW1 sein sollen
+            1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+            1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
+            1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+            1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.
+            1. Wählen Sie die virtuellen Computer des NFS-Clusters aus.
+            1. OK klicken
+         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW2 sein sollen
+            * Wiederholen Sie die oben genannten Schritte, um einen Back-End-Pool für NW2 zu erstellen.
+      1. Erstellen der Integritätstests
+         1. Port 61000 für NW1
+            1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
+            1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-hp**).
+            1. Wählen Sie TCP als Protokoll und Port 610**00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
+            1. OK klicken
+         1. Port 61001 für NW2
+            * Wiederholen Sie die oben genannten Schritte, um einen Integritätstest für NW2 zu erstellen.
+      1. Lastenausgleichsregeln
+         1. 2049 TCP für NW1
+            1. Öffnen Sie den Load Balancer, wählen Sie das Laden von Lastenausgleichsregeln, und klicken Sie auf „Hinzufügen“.
+            1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-2049**).
+            1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-frontend**).
+            1. Behalten Sie **TCP** als Protokoll bei, und geben Sie Port **2049** ein.
+            1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
+            1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
+            1. OK klicken
+         1. 2049 UDP für NW1
+            * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW1.
+         1. 2049 TCP für NW2
+            * Wiederholen Sie die oben genannten Schritte für Port 2049 und TCP für NW2.
+         1. 2049 UDP für NW2
+            * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW2.
+
+> [!Note]
+> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen (keine öffentliche IP-Adresse) Azure Load Balancer Standard-Instanz platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
 > [!IMPORTANT]
 > Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
