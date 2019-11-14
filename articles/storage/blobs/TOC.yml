@@ -539,11 +539,11 @@
           items:
             - name: "Microsoft.Azure.Storage.Common (Version\_11.x)"
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-            - name: "Azure.Storage.Common (Version\_12.x – Vorschau)"
+            - name: Azure.Storage.Common (Version 12.x)
               href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
             - name: "Microsoft.Azure.Storage.Blob (Version\_11.x)"
               href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/'
-            - name: "Azure.Storage.Blob (Version\_12.x – Vorschau)"
+            - name: Azure.Storage.Blob (Version 12.x)
               href: 'https://www.nuget.org/packages/Azure.Storage.Blobs/'
             - name: Azure-Konfigurations-Manager
               href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
@@ -557,7 +557,7 @@
               items:
                 - name: Azure Storage-Clientbibliothek
                   items:
-                    - name: "Version\_12.x (Vorschau)"
+                    - name: Version 12.x
                       href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
                     - name: "Version\_11.x und früher"
                       href: 'https://github.com/Azure/azure-storage-net'
@@ -567,19 +567,19 @@
                   href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
             - name: Java
               items:
-                - name: "Azure Storage-Clientbibliothek, Version\_12.x (Vorschau)"
+                - name: "Azure Storage-Clientbibliothek, Version\_12.x"
                   href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
                 - name: "Azure Storage-Clientbibliothek, Version\_8.x und früher"
                   href: 'https://github.com/Azure/azure-storage-java'
             - name: Node.js
               items:
-                - name: "Azure Storage-Clientbibliothek, Version\_12.x (Vorschau)"
+                - name: "Azure Storage-Clientbibliothek, Version\_12.x"
                   href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
                 - name: "Azure Storage-Clientbibliothek, Version\_10.x"
                   href: 'https://github.com/Azure/azure-storage-node'
             - name: Python
               items:
-                - name: "Azure Storage-Clientbibliothek, Version\_12.x (Vorschau)"
+                - name: "Azure Storage-Clientbibliothek, Version\_12.x"
                   href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
                 - name: "Azure Storage-Clientbibliothek, Version\_2.1"
                   href: 'https://github.com/Azure/azure-storage-python'
@@ -754,7 +754,7 @@
             - name: Speicherressourcenanbieter
               href: /java/api/overview/azure/storage/management
         - name: JavaScript (Version 12.x)
-          href: /javascript/api/@azure/storage-blob/?view=azure-node-preview
+          href: /javascript/api/@azure/storage-blob/
         - name: Python (Version 12.x)
           href: /python/api/azure-storage-blob/
         - name: REST

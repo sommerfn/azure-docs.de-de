@@ -138,6 +138,8 @@
         - name: Timeshift und Live-to-VOD
           displayName: 'archive, dvr'
           href: live-event-cloud-dvr.md
+        - name: Livetranskription
+          href: live-transcription.md
         - name: Funktionsvergleiche
           href: live-event-types-comparison.md
         - name: Zustandswerte und Abrechnung
