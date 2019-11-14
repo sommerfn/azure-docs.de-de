@@ -3,15 +3,15 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Erfahren Sie, wie Azure Policy mithilfe der Gastkonfiguration Einstellungen auf einem Azure-Computer überprüft.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/20/2019
+ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: efe929a6ea38a8df7ad9fe37a92c181e3d409b25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e5592f629646db3132ffd65fd56b1a0d5d5be39
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464057"
+ms.locfileid: "73581432"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -121,30 +121,27 @@ Azure Policy verwendet die Eigenschaft **complianceStatus** des Guest Configurat
 > [!NOTE]
 > Die Richtlinie **DeployIfNotExists** ist erforderlich, damit die Richtlinie **AuditIfNotExists** Ergebnisse zurückgibt. Ohne die Richtlinie **DeployIfNotExists** gibt die Richtlinie **AuditIfNotExists** „0 von 0“ Ressourcen als Status an.
 
-Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen *[Vorschau]: Kennwortsicherheitseinstellungen auf Linux- und Windows-Computern überwachen* umfasst 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Die Logik der [Richtliniendefinition](definition-structure.md#policy-rule) stellt sicher, dass nur das Zielbetriebssystem ausgewertet wird.
+Alle integrierten Richtlinien für Guest Configuration sind in einer Initiative zum Gruppieren der Definitionen zur Verwendung in Zuweisungen enthalten. Der integrierte Initiative mit dem Namen _\[Vorschau\]: Kennwortsicherheitseinstellungen auf Linux- und Windows-Computern überwachen_ umfasst 18 Richtlinien. Es gibt sechs **DeployIfNotExists**- und **AuditIfNotExists**-Paare für Windows und drei für Linux. Die Logik der [Richtliniendefinition](definition-structure.md#policy-rule) stellt sicher, dass nur das Zielbetriebssystem ausgewertet wird.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Überwachen von Betriebssystemeinstellungen anhand von Branchenrichtlinien
 
-Eine der in Azure Policy verfügbaren Initiativen bietet die Möglichkeit, Betriebssystemeinstellungen auf virtuellen Computern anhand einer „Baseline“ von Microsoft zu überwachen.  Die Definition *[Vorschau]: Überwachen von Windows-VMs, die nicht den Einstellungen für Azure-Sicherheitsbaselines entsprechen* enthält einen umfassenden Satz von Überwachungsregeln, die auf Einstellungen der Active Directory-Gruppenrichtlinie basieren.
+Eine der in Azure Policy verfügbaren Initiativen bietet die Möglichkeit, Betriebssystemeinstellungen auf virtuellen Computern anhand einer „Baseline“ von Microsoft zu überwachen. Die Definition _\[Vorschau\]: Überwachen von Windows-VMs, die nicht den Einstellungen für Azure-Sicherheitsbaselines entsprechen_ enthält einen umfassenden Satz von Überwachungsregeln, die auf Einstellungen der Active Directory-Gruppenrichtlinie basieren.
 
-Die meisten Einstellungen sind als Parameter verfügbar.  Mit dieser Funktion können Sie anpassen, was überwacht werden soll, um die Richtlinie an die Anforderungen Ihrer Organisation anzupassen, oder die Richtlinie Drittanbieterinformationen (z.B. branchenspezifischen Standards) zuordnen.
+Die meisten Einstellungen sind als Parameter verfügbar. Mit dieser Funktion können Sie anpassen, was überwacht wird, um die Richtlinie an die Anforderungen Ihrer Organisation anzupassen oder um sie Drittanbieterinformationen (z. B. branchenspezifische Standards) zuordnen.
 
-Einige Parameter unterstützen einen ganzzahligen Wertebereich.  Beispielsweise kann der Parameter „Maximales Kennwortalter“ mit einem Bereichsoperator festgelegt werden, um den Computerbesitzern Flexibilität zu bieten.  Sie können überwachen, dass die gültige Gruppenrichtlinieneinstellung, bei der Benutzer ihre Kennwörter ändern müssen, nicht mehr als 70 Tage, aber nicht weniger als 1 Tag betragen darf.  Wie in der Infoblase für den Parameter beschrieben, muss der Wert auf „1,70“ festgelegt werden, damit er zum gültigen Überwachungswert wird.
+Einige Parameter unterstützen einen ganzzahligen Wertebereich. Beispielsweise kann der Parameter „Maximales Kennwortalter“ mit einem Bereichsoperator festgelegt werden, um den Computerbesitzern Flexibilität zu bieten. Sie können mittels Überwachung sicherstellen, dass die geltende Gruppenrichtlinieneinstellung, die vorschreibt, dass Benutzer ihre Kennwörter ändern müssen, nicht mehr als 70 Tage und nicht weniger als einen Tag beträgt. Wie in der Infoblase für den Parameter beschrieben, muss der Wert auf „1,70“ festgelegt werden, damit diese Geschäftsrichtlinie zum gültigen Überwachungswert wird.
 
-Wenn Sie die Richtlinie mithilfe einer Azure Resource Manager-Bereitstellungsvorlage zuweisen, können Sie mithilfe einer Parameterdatei diese Einstellungen aus der Quellcodeverwaltung verwalten.
-Mithilfe eines Tools wie Git zum Verwalten von Änderungen an Überwachungsrichtlinien mit Kommentaren bei jedem Einchecken werden Nachweise dafür dokumentiert, warum eine Zuweisung eine Ausnahme vom erwarteten Wert sein sollte.
+Wenn Sie die Richtlinie mithilfe einer Azure Resource Manager-Bereitstellungsvorlage zuweisen, können Sie diese Einstellungen aus der Quellcodeverwaltung mithilfe einer Parameterdatei verwalten. Mithilfe eines Tools wie Git für die Verwaltung von Änderungen an Überwachungsrichtlinien mit Kommentaren bei jedem Einchecken werden Nachweise dafür dokumentiert, warum eine Zuweisung eine Ausnahme vom erwarteten Wert sein sollte.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Anwenden von Konfigurationen mithilfe der Gastkonfiguration
 
-Mit der neuesten Funktion von Azure Policy werden Einstellungen in Computern konfiguriert.
-Mit der Definition *Konfigurieren der Zeitzone auf Windows-Computern* werden Änderungen am Computer durch Konfigurieren der Zeitzone vorgenommen.
+Mit der neuesten Funktion von Azure Policy werden Einstellungen in Computern konfiguriert. Mit der Definition _Konfigurieren der Zeitzone auf Windows-Computern_ werden Änderungen am Computer durch Konfigurieren der Zeitzone vorgenommen.
 
-Beim Zuweisen von Definitionen, die mit *Konfigurieren* beginnen, müssen Sie auch die Definition *Bereitstellen von Voraussetzungen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren* zuweisen.
-Sie können diese Definitionen auf Wunsch in einer Initiative kombinieren.
+Beim Zuweisen von Definitionen, die mit _Konfigurieren_ beginnen, müssen Sie auch die Definition _Bereitstellen von Voraussetzungen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren_ zuweisen. Sie können diese Definitionen auf Wunsch in einer Initiative kombinieren.
 
 #### <a name="assigning-policies-to-machines-outside-of-azure"></a>Zuweisen von Richtlinien zu Computern außerhalb von Azure
 
-Die für die Gastkonfiguration verfügbaren Überwachungsrichtlinien umfassen den Ressourcentyp **Microsoft.HybridCompute/machines**.  Alle Computer, die in Azure Arc integriert sind und sich im Bereich der Zuweisung befinden, werden automatisch eingeschlossen.
+Die für die Gastkonfiguration verfügbaren Überwachungsrichtlinien umfassen den Ressourcentyp **Microsoft.HybridCompute/machines**. Alle Computer, die in [Azure Arc für Server](../../../azure-arc/servers/overview.md) integriert sind und sich im Geltungsbereich der Zuweisung befinden, werden automatisch eingeschlossen.
 
 ### <a name="multiple-assignments"></a>Mehrere Zuweisungen
 
@@ -152,8 +149,7 @@ Aufgrund der Gastkonfigurationsrichtlinien kann die gleiche Gastzuweisung derzei
 
 ## <a name="built-in-resource-modules"></a>Integrierte Ressourcenmodule
 
-Beim Installieren der Gastkonfigurationserweiterung ist das PowerShell-Modul „GuestConfiguration“ in der neuesten Version von DSC-Ressourcenmodulen enthalten. Dieses Modul kann über den PowerShell-Katalog mithilfe des Links „Manueller Download“ auf der Modulseite [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/) heruntergeladen werden.
-Das Dateiformat „.nupkg“ kann zur Dekomprimierung und Überprüfung in „.zip“ umbenannt werden.
+Beim Installieren der Gastkonfigurationserweiterung ist das PowerShell-Modul „GuestConfiguration“ in der neuesten Version von DSC-Ressourcenmodulen enthalten. Dieses Modul kann über den PowerShell-Katalog mithilfe des Links „Manueller Download“ auf der Modulseite [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/) heruntergeladen werden. Das Dateiformat „.nupkg“ kann zur Dekomprimierung und Überprüfung in „.zip“ umbenannt werden.
 
 ## <a name="client-log-files"></a>Protokolldateien des Clients
 

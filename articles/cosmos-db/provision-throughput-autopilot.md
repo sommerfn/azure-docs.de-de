@@ -1,30 +1,32 @@
 ---
-title: Erstellen Sie Azure Cosmos-Container und -Datenbanken mit bereitgestelltem Durchsatz im Autopilot-Modus.
+title: Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus
 description: Erfahren Sie mehr über die Vorteile, die Anwendungsfälle und die Bereitstellung von Azure Cosmos-Datenbanken und -Containern im Autopilot-Modus.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 598dc6394e8be8b3372f4ed61a522454830a22d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510111"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748375"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-with-provisioned-throughput-in-autopilot-mode-preview"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken mit bereitgestelltem Durchsatz im Autopilot-Modus (Vorschau)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus (Vorschauversion)
 
 Mit Azure Cosmos DB können Sie Durchsatz für Ihre Container im manuellen oder Autopilot-Modus bereitstellen. In diesem Artikel werden die Vorteile des Autopilot-Modus und Anwendungsfälle beschrieben.
 
 > [!NOTE]
-> Der Autopilot-Modus ist derzeit in der öffentlichen Vorschau verfügbar.
+> Der Autopilot-Modus ist derzeit in der öffentlichen Vorschau verfügbar. Informationen zur Aktivierung der Autopilot-Funktion für Ihr Azure Cosmos-Konto finden Sie im Abschnitt [Aktivieren des Autopilot-Modus](#enable-autopilot) dieses Artikels. Sie können den Autopilot-Modus nur für neue Datenbanken und Container aktivieren. Er ist für vorhandene Container und Datenbanken nicht verfügbar.
 
 Zusätzlich zur manuellen Bereitstellung von Durchsatz können Sie jetzt Azure Cosmos-Container im Autopilot-Modus konfigurieren. Bei Azure Cosmos-Containern und -Datenbanken, die im Autopilot-Modus konfiguriert wurden, wird **der bereitgestellte Durchsatz automatisch und sofort basierend auf Ihren Anwendungsanforderungen skaliert, ohne die SLAs zu beeinträchtigen**.
 
 Es ist nicht länger erforderlich, den bereitgestellten Durchsatz manuell zu verwalten oder Probleme aufgrund von Ratenbegrenzungen zu behandeln. Im Autopilot-Modus konfigurierte Azure Cosmos-Container können sofort in Reaktion auf die Workload skaliert werden, ohne dass die Verfügbarkeit, die Wartezeit, der Durchsatz oder die Leistung der Workload insgesamt beeinträchtigt werden. Unter hoher Auslastung können im Autopilot-Modus konfigurierte Azure Cosmos-Container zentral hoch- oder herunterskaliert werden, ohne den laufenden Betrieb zu beeinflussen.
 
-Beim Konfigurieren von Containern und Datenbanken im Autopilot-Modus müssen Sie den maximalen Durchsatz `Tmax` angeben, der nicht überschritten werden darf. Container können dann basierend auf den Anforderungen der Workload innerhalb des Bereichs `0.1*Tmax < T < Tmax` sofort skaliert werden. Mit anderen Worten: Container und Datenbanken werden basierend auf den Anforderungen der Workload unverzüglich skaliert, und zwar von einem geringen Wert wie 10 % des konfigurierten Durchsatzwerts bis zum angegebenen konfigurierten Maximalwert. Sie können die Einstellung für den maximalen Durchsatz (Tmax) für eine Autopilot-Datenbank oder einen Autopilot-Container jederzeit ändern.
+Beim Konfigurieren von Containern und Datenbanken im Autopilot-Modus müssen Sie den maximalen Durchsatz `Tmax` angeben, der nicht überschritten werden darf. Container können dann basierend auf den Anforderungen der Workload innerhalb des Bereichs `0.1*Tmax < T < Tmax` sofort skaliert werden. Mit anderen Worten: Container und Datenbanken werden basierend auf den Anforderungen der Workload unverzüglich skaliert – von einem von Ihnen konfigurierten geringen Wert (z. B. 10 % des maximalen Durchsatzwerts) bis zum konfigurierten Maximalwert. Sie können die Einstellung für den maximalen Durchsatz (Tmax) für eine Autopilot-Datenbank oder einen Autopilot-Container jederzeit ändern.
+
+Während der Vorschauphase von Autopilot ist für den angegebenen maximalen Durchsatz im Container oder in der Datenbank der Betrieb innerhalb der berechneten Speicherbegrenzung zulässig. Wenn die Speicherbegrenzung überschritten wird, wird der maximale Durchsatz automatisch auf einen höheren Wert festgelegt. Bei Verwendung des Durchsatzes auf Datenbankebene im Autopilot-Modus wird die Anzahl von Containern, die in einer Datenbank zulässig ist, wie folgt berechnet: (0,001 · max. Durchsatz). Wenn Sie beispielsweise 20.000 RU/s im Autopilot-Modus bereitstellen, kann die Datenbank über 20 Container verfügen.
 
 ## <a name="benefits-of-autopilot-mode"></a>Vorteile des Autopilot-Modus
 
@@ -60,11 +62,21 @@ Lösungen für die vorherigen Probleme erfordern nicht nur eine sehr lange Imple
 
 |  | Im manuellen Modus konfigurierte Container  | Im Autopilot-Modus konfigurierte Container |
 |---------|---------|---------|
-| **Bereitgestellter Durchsatz** | Manuell bereitgestellt | Wird je nach Workload-Verwendungsmustern proaktiv und reaktiv skaliert. |
-| **Ratenbegrenzung von Anforderungen/Vorgängen (429)**  | Kann passieren, wenn die Nutzung die bereitgestellte Kapazität überschreitet. | Passiert nicht.  |
+| **Bereitgestellter Durchsatz** | Manuell bereitgestellt | Automatische und sofortige Skalierung basierend auf den Workload-Verwendungsmustern. |
+| **Ratenbegrenzung von Anforderungen/Vorgängen (429)**  | Kann passieren, wenn die Nutzung die bereitgestellte Kapazität überschreitet. | Wird nicht durchgeführt, wenn der verbrauchte Durchsatz unter dem maximalen Durchsatz liegt, den Sie für den Autopilot-Modus ausgewählt haben.   |
 | **Kapazitätsplanung** |  Sie müssen eine anfängliche Kapazitätsplanung durchführen und den benötigten Durchsatz bereitstellen. |    Sie müssen sich nicht um die Kapazitätsplanung kümmern. Das System übernimmt automatisch die Kapazitätsplanung und -verwaltung. |
 | **Preise** | Manuell bereitgestellte RU/s pro Stunde | Bei Konten mit einer Schreibregion zahlen Sie für den genutzten Durchsatz auf Stundenbasis nach dem Tarif für Autopilot-RU/s pro Stunde. <br/><br/>Bei Konten mit mehreren Schreibregionen fallen keine zusätzlichen Kosten für Autopilot an. Sie zahlen für den genutzten Durchsatz auf Stundenbasis nach demselben Tarif für Multimaster-RU/s pro Stunde. |
 | **Für folgende Workloadtypen am besten geeignet** |  Vorhersehbare und stabile Workloads|   Nicht vorhersehbare und variable Workloads  |
+
+## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot"> Aktivieren des Autopilot-Modus über das Azure-Portal
+
+Sie können den Autopilot-Modus unter Ihren Azure Cosmos-Konten ausprobieren, indem Sie ihn über das Azure-Portal aktivieren. Führen Sie die folgenden Schritte aus, um die Autopilot-Option zu aktivieren:
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+
+2. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie die Registerkarte **Neue Features**. Wählen Sie **Autopilot** und **Registrieren** aus. Dies ist im folgenden Screenshot dargestellt:
+
+![Erstellen eines Containers im Autopilot-Modus](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
 ## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Erstellen einer Datenbank oder eines Containers mit dem Autopilot-Modus
 
@@ -74,13 +86,13 @@ Sie können Autopilot für Datenbanken oder Container konfigurieren, während Si
 
 1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie die Registerkarte **Daten-Explorer**.
 
-1. Wählen Sie **Neue Datenbank** aus, und geben Sie einen Namen für die Datenbank ein. Wählen Sie für die **Autopilot**-Option **Aktiviert** aus, und geben Sie den maximalen Durchsatz an, den die Datenbank bei Verwendung der Autopilot-Option nicht überschreiten darf.
+1. Wählen Sie die Option **Neuer Container** aus, und geben Sie einen Namen und einen Partitionsschlüssel ein. Wählen Sie die Option **Autopilot** und dann den maximalen Durchsatz aus, der vom Container bei der Verwendung der Autopilot-Option nicht überschritten werden darf.
 
-   ![Erstellen einer Datenbank im Autopilot-Modus](./media/provision-throughput-autopilot/create-database-autopilot-mode.png)
+   ![Erstellen eines Containers im Autopilot-Modus](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Klicken Sie auf **OK**.
 
-Auf ähnliche Weise können Sie auch einen Container mit bereitgestelltem Durchsatz im Autopilot-Modus erstellen.
+Auf ähnliche Weise können Sie auch eine Datenbank mit bereitgestelltem Durchsatz im Autopilot-Modus erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

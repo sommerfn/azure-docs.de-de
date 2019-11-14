@@ -1,32 +1,40 @@
 ---
-title: Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
+title: Herstellen einer Verbindung mit einem Wissensspeicher (Vorschauversion) mit Power BI
 titleSuffix: Azure Cognitive Search
-description: Stellen Sie mit Power BI eine Verbindung mit einem Azure Cognitive Search-Wissensspeicher her, um diesen zu analysieren und zu untersuchen.
+description: Stellen Sie mit Power BI eine Verbindung mit einem Azure Cognitive Search-Wissensspeicher (Vorschauversion) her, um Analysen und Untersuchungen durchzuführen.
 author: lisaleib
 manager: nitinme
 ms.author: v-lilei
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 7852eda849dfb05343829875ba5a66fa47970e7e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7b12f0f14003389d36e2df5bcffe7828c135cf2b
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790065"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715493"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
 
-> [!Note]
-> Der Wissensspeicher befindet sich in der Vorschauphase und sollte nicht in der Produktion verwendet werden. Dieses Feature wird durch die [Azure Cognitive Search-REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
->
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Informationen zum Erstellen des in dieser exemplarischen Vorgehensweise verwendeten Beispielwissensspeichers finden Sie unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md).
+> [!IMPORTANT] 
+> „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) verfügt über Previewfunktionen. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
-## <a name="prerequisites"></a>Voraussetzungen
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Sie können mit Vorlagen schneller beginnen oder ein benutzerdefiniertes Dashboard von Grund auf neu erstellen.
 
-+ Führen Sie die unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) beschriebenen Schritte aus, um den Beispielwissensspeicher zu erstellen, der in dieser exemplarischen Vorgehensweise verwendet wird. Sie benötigen außerdem den Namen des Azure-Speicherkontos, das Sie zum Erstellen des Wissensspeichers verwendet haben, sowie den Zugriffsschlüssel aus dem Azure-Portal.
++ Führen Sie die Schritte aus, die unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) bzw. [Erstellen eines Azure Cognitive Search-Wissensspeichers mithilfe von REST](knowledge-store-create-rest.md) beschrieben sind, um den Beispielwissensspeicher zu erstellen, der in dieser exemplarischen Vorgehensweise verwendet wird. Sie benötigen außerdem den Namen des Azure-Speicherkontos, das Sie zum Erstellen des Wissensspeichers verwendet haben, sowie den Zugriffsschlüssel aus dem Azure-Portal.
 
 + [Installieren Sie Power BI Desktop](https://powerbi.microsoft.com/downloads/).
+
+## <a name="sample-power-bi-template---azure-portal-only"></a>Power BI-Beispielvorlage (nur Azure-Portal)
+
+Wenn Sie Ihren [Wissensspeicher über das Azure-Portal erstellt haben](knowledge-store-create-portal.md), können Sie das [Beispiel für eine Power BI-Vorlage für Azure Cognitive Search](https://github.com/Azure-Samples/cognitive-search-templates) nutzen, um Power BI-Visualisierungen anzuzeigen und damit zu experimentieren. Sie können diese Vorlage auch herunterladen, während Sie den Assistenten **Daten importieren** durcharbeiten.
+
+Mit der Beispielvorlage werden automatisch die Setupschritte ausgeführt, die im restlichen Teil dieses Artikels beschrieben sind. Falls Sie zum Erstellen Ihres Wissensspeichers aber die REST-API verwendet haben, können Sie die Vorlage überspringen und die Informationen in den verbleibenden Abschnitten dieses Artikels nutzen, um Ihren Wissensspeicher mit Power BI zu verbinden. Beginnen Sie mit [Herstellen einer Verbindung mit Power BI](#connect-with-power-bi).
+
+Die Beispielvorlage enthält mehrere Visualisierungen, z. B. WordCloud und Network Navigator. Einige Visualisierungen in der Vorlage, z. B. die Standortkarte und der Entitätsgraph-Viewer, zeigen keine Daten für den Beispielwissensspeicher an, der unter [Erstellen eines Wissensspeichers im Azure-Portal](knowledge-store-create-portal.md) erstellt wurde. Der Grund ist, dass nur eine Teilmenge der KI-Anreicherungen, die im Assistenten **Daten importieren** verfügbar sind, verwendet wurde.
+
+![Beispiel: Power BI-Vorlage für Azure Cognitive Search](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Beispiel für Power BI-Vorlage")
 
 ## <a name="connect-with-power-bi"></a>Herstellen einer Verbindung mit Power BI
 

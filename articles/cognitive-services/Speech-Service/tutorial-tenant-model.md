@@ -1,7 +1,7 @@
 ---
 title: 'Erstellen eines Mandantenmodells (Vorschau): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: Generieren Sie automatisch ein benutzerdefiniertes Sprachmodell, das Ihre Office 365-Daten nutzt, um eine optimale Spracherkennung für organisationsspezifische Begriffe bereitzustellen, die sowohl sicher als mit Vorschriften konform ist.
+description: Generieren Sie automatisch ein Mandantenmodell (Custom Speech mit Office 365-Daten), das Ihre Office 365-Daten nutzt, um eine optimale Spracherkennung für organisationsspezifische Begriffe bereitzustellen, die sowohl sicher als auch regelkonform ist.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 85b9291ee24c024ebc8ce81ddba46d04f7744081
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504595"
+ms.locfileid: "73578222"
 ---
 # <a name="create-a-tenant-model-preview"></a>Erstellen eines Mandantenmodells (Vorschau)
 
-Tenant Model (Mandantenmodell) ist ein abonnierbarer Dienst für Office 365-Unternehmenskunden, der automatisch ein kundenspezifisches Spracherkennungsmodell anhand der Office 365-Daten einer Organisation generiert. Das entstehende Modell ist für Fachbegriffe, Jargon und Namen von Personen optimiert und zeichnet sich durch hohe Sicherheit und Konformität aus.
+Ein Mandantenmodell (Custom Speech mit Office 365-Daten) ist ein abonnierbarer Dienst für Office 365-Unternehmenskunden, der automatisch ein kundenspezifisches Spracherkennungsmodell anhand der Office 365-Daten einer Organisation generiert. Das entstehende Modell ist für Fachbegriffe, Jargon und Namen von Personen optimiert und zeichnet sich durch hohe Sicherheit und Konformität aus.
 
 > [!IMPORTANT]
-> Wenn sich Ihre Organisation für Tenant Model registriert, kann der Speech-Dienst auf das Sprachmodell Ihrer Organisation zugreifen, das mithilfe von Office 365-Ressourcen wie E-Mails und Dokumenten generiert wird. Der Office 365-Administrator Ihrer Organisation kann die Nutzung des organisationsweiten Sprachmodells über das Office 365-Verwaltungsportal aktivieren und deaktivieren.
+> Wenn sich Ihre Organisation für ein Mandantenmodell registriert, kann der Speech-Dienst auf das Sprachmodell Ihrer Organisation zugreifen, das auf der Grundlage von E-Mails und Dokumenten öffentlicher Office 365-Gruppen generiert wird. Diese E-Mails und Dokumente sind für jeden in Ihrer Organisation sichtbar. Der Office 365-Administrator Ihrer Organisation kann die Nutzung des organisationsweiten Sprachmodells über das Office 365-Verwaltungsportal aktivieren und deaktivieren.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -33,8 +33,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Bereitstellen eines Mandantenmodells
 > * Verwenden eines Mandantenmodells mit dem Speech SDK
 
-![Diagramm des Mandantenmodells](media/tenant-language-model/tenant-language-model-diagram.png)
-
 ## <a name="enroll-using-the-microsoft-365-admin-center"></a>Registrieren im Microsoft 365 Admin Center
 
 Bevor Sie Ihr Mandantenmodell bereitstellen können, müssen Sie sich zunächst im Microsoft 365 Admin Center registrieren. Diese Aufgabe kann nur von Ihrem Microsoft 365-Administrator ausgeführt werden.
@@ -42,11 +40,11 @@ Bevor Sie Ihr Mandantenmodell bereitstellen können, müssen Sie sich zunächst 
 1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com ) an.
 2. Wählen Sie im linken Bereich **Einstellungen** und dann **Apps** aus.
 
-   ![Diagramm des Mandantenmodells](media/tenant-language-model/tenant-language-model-enrollment.png)
+   ![Registrierung für das Mandantenmodell](media/tenant-language-model/tenant-language-model-enrollment.png)
 
 3. Wechseln Sie zu **Azure Speech-Dienste**, und wählen Sie diesen Eintrag aus.
 
-   ![Diagramm des Mandantenmodells](media/tenant-language-model/tenant-language-model-enrollment-2.png)
+   ![Registrierung für das Mandantenmodell 2](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
 4. Aktivieren Sie das Kontrollkästchen, und speichern Sie Ihre Einstellungen.
 
@@ -77,9 +75,10 @@ Nachdem Ihr Administrator das Mandantenmodell für Ihre Organisation aktiviert h
 
 3. An dieser Stelle werden Sie in einer Meldung informiert, ob Sie für die Erstellung eines Mandantenmodells berechtigt sind.
    > [!NOTE]
-   > Office 365 Enterprise-Kunden in Nordamerika sind berechtigt, ein Mandantenmodell (Englisch) zu erstellen. Wenn Sie ein Kunde des Typs „Kunden-Lockbox“ (CLB) oder „Kundenschlüssel“ (CK) sind, ist dieses Feature nicht verfügbar. Gehen Sie folgendermaßen vor, um zu bestimmen, ob Sie ein Kunde des Typs „Kunden-Lockbox“ oder „Kundenschlüssel“ sind:
+   > Office 365 Enterprise-Kunden in Nordamerika sind berechtigt, ein Mandantenmodell (Englisch) zu erstellen. Für Kunden vom Typ „Kunden-Lockbox“ (Customer Lockbox, CLB), „Kundenschlüssel“ (Customer Key, CK) oder „Office 365 Government“ ist dieses Feature nicht verfügbar. Gehen Sie folgendermaßen vor, um zu bestimmen, ob Sie ein Kunde des Typs „Kunden-Lockbox“ oder „Kundenschlüssel“ sind:
    > * [Kunden-Lockbox](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
    > * [Kundenschlüssel](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
 
 4. Wählen Sie als Nächstes **Abonnieren** aus. Sie erhalten eine E-Mail mit Anweisungen, sobald Ihr Mandantenmodell bereit ist.
 

@@ -5,18 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/06/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57e8905fd9722d5b8a8b0ab76dbcea5b91c6d30a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6fa1912e80a98c98f058931708e191d0fff5bc66
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495856"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799858"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Wird die benutzerdefinierte IPsec-/IKE-Richtlinie von allen Azure VPN Gateway-SKUs unterstützt?
-Eine benutzerdefinierte IPsec-/IKE-Richtlinie wird auf **allen Azure-SKUs außer der SKU „Basic“** unterstützt.
+Die benutzerdefinierte IPsec-/IKE-Richtlinie wird von Azure-VPN-Gateways vom Typ **VpnGw1, VpnGw2, VpnGw3, Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird **nicht** unterstützt.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Wie viele Richtlinien kann ich für eine Verbindung angeben?
 Pro Verbindung kann jeweils nur ***eine*** Richtlinienkombination angegeben werden.
@@ -27,22 +27,22 @@ Nein. Sie müssen alle Algorithmen und Parameter für IKE (Hauptmodus) und IPsec
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Welche Algorithmen und Schlüsselstärken werden in der benutzerdefinierten Richtlinie unterstützt?
 Die folgende Tabelle gibt Aufschluss über die unterstützten Kryptografiealgorithmen und Schlüsselstärken, die von den Kunden konfiguriert werden können. Für jedes Feld muss eine Option ausgewählt werden.
 
-| **IPsec/IKEv2**  | **Optionen**                                                                   |
-| ---              | ---                                                                           |
-| IKEv2-Verschlüsselung | AES256, AES192, AES128, DES3, DES                                             |
-| IKEv2-Integrität  | SHA384, SHA256, SHA1, MD5                                                     |
-| DH-Gruppe         | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, keine |
-| IPsec-Verschlüsselung | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, keine      |
-| IPsec-Integrität  | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
-| PFS-Gruppe        | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, keine                              |
-| QM-SA-Gültigkeitsdauer   | Sekunden (ganze Zahl; **min. 300**/Standard: 27.000 Sekunden)<br>KB (ganze Zahl; **min. 1024**/Standard: 102.400.000 KB)           |
-| Datenverkehrsselektor | UsePolicyBasedTrafficSelectors ($True/$False; Standardwert: $False)                 |
-|                  |                                                                               |
+| **IPsec/IKEv1, IKEv2**  | **Optionen**                                                                   |
+| ---                     | ---                                                                           |
+| IKEv1, IKEv2-Verschlüsselung | AES256, AES192, AES128, DES3, DES                                             |
+| IKEv1, IKEv2-Integrität  | SHA384, SHA256, SHA1, MD5                                                     |
+| DH-Gruppe                | DHGroup24, ECP384, ECP256, DHGroup14 (DHGroup2048), DHGroup2, DHGroup1, keine  |
+| IPsec-Verschlüsselung        | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, keine      |
+| IPsec-Integrität         | GCMAES256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                            |
+| PFS-Gruppe               | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, keine                              |
+| QM-SA-Gültigkeitsdauer          | Sekunden (ganze Zahl; **min. 300**/Standard: 27.000 Sekunden)<br>KB (ganze Zahl; **min. 1024**/Standard: 102.400.000 KB) |
+| Datenverkehrsselektor        | UsePolicyBasedTrafficSelectors ($True/$False; Standardwert: $False)                 |
+|                         |                                                                               |
 
 > [!IMPORTANT]
 > 1. DHGroup2048 und PFS2048 sind identisch mit der Diffie-Hellman-Gruppe **14** in IKE- und IPsec-PFS. Die vollständigen Zuordnungen finden Sie unter [Welche Diffie-Hellman-Gruppen werden unterstützt?](#DH).
 > 2. Bei GCMAES-Algorithmen müssen Sie für IPsec-Verschlüsselung und Integrität den gleichen GCMAES-Algorithmus und die gleiche Schlüssellänge angeben.
-> 3. Die SA-Gültigkeitsdauer von IKEv2 (Hauptmodus) ist für die Azure-VPN-Gateways auf 28.800 Sekunden festgelegt.
+> 3. Die SA-Gültigkeitsdauer von IKEv1 und IKEv2 (Hauptmodus) ist für die Azure-VPN-Gateways auf 28.800 Sekunden festgelegt.
 > 4. QM-SA-Gültigkeitsdauern sind optionale Parameter. Ohne Angabe werden die folgenden Standardwerte verwendet: 27.000 Sekunden (7,5 Std.) und 102.400.000 KB (102 GB).
 > 5. „UsePolicyBasedTrafficSelector“ ist ein Optionsparameter für die Verbindung. Informationen zu „UsePolicyBasedTrafficSelectors“ finden Sie unter der nächsten häufig gestellten Frage.
 
@@ -102,6 +102,18 @@ Ja. Ein VNET-zu-VNET-Tunnel besteht aus zwei Verbindungsressourcen in Azure (je 
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>Können benutzerdefinierte IPsec-/IKE-Richtlinien für ExpressRoute-Verbindungen verwendet werden?
 Nein. IPsec-/IKE-Richtlinien können nur für S2S-VPN- und VNET-zu-VNET-Verbindungen über Azure-VPN-Gateways verwendet werden.
+
+### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Wie kann ich Verbindungen mit dem IKEv1- oder IKEv2-Protokolltyp erstellen?
+IKEv1-Verbindungen können für alle SKUs vom Typ „RouteBased VPN“, mit Ausnahme der SKU „Basic“, erstellt werden. Sie können beim Erstellen von Verbindungen IKEv1 oder IKEv2 als Verbindungsprotokolltyp angeben. Wenn Sie keinen Verbindungsprotokolltyp angeben, wird IKEv2 als Standardoption verwendet, sofern dies zutreffend ist. Weitere Informationen finden Sie in der Dokumentation zum [PowerShell-Cmdlet](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?). Informationen zu den SKU-Typen und zur IKEv1/IKEv2-Unterstützung finden Sie unter [Herstellen einer Verbindung zwischen Azure-VPN-Gateways und mehreren lokalen richtlinienbasierten VPN-Geräten mit PowerShell](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+
+### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Ist die Übertragung zwischen IKEv1- und IKEv2-Verbindungen zulässig?
+Ja. Die Übertragung zwischen IKEv1- und IKEv2-Verbindungen wird unterstützt.
+
+### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>Kann ich IKEv1-Site-to-Site-Verbindungen für Basic-SKUs mit dem Typ „RouteBased VPN“ verwenden?
+Nein. Für alle SKUs vom Typ „RouteBased VPN“ mit Ausnahme von Basic-SKUs dieses Typs werden IKEv1-Site-to-Site-Verbindungen unterstützt.
+
+### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>Kann ich den Verbindungsprotokolltyp ändern, nachdem die Verbindung erstellt wurde (IKEv1 in IKEv2 und umgekehrt)?
+Nein. Nachdem die Verbindung erstellt wurde, können die IKEv1/IKEv2-Protokolle nicht mehr geändert werden. Sie müssen einen Löschvorgang durchführen und eine neue Verbindung mit dem gewünschten Protokolltyp erstellen.
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>Wo finde ich weitere Informationen zur Konfiguration von IPsec?
 Lesen Sie [Konfigurieren der IPsec/IKE-Richtlinie für S2S- oder VNet-zu-VNet-Verbindungen](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

@@ -1,23 +1,25 @@
 ---
 title: 'Schnellstart: Erstellen einer neuen App im LUIS-Portal'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart erstellen Sie im LUIS-Portal eine neue App. Erstellen Sie die Grundbestandteile einer App, Absichten und Entitäten. Testen Sie die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten. Das Erstellen einer App ist kostenlos. Es ist kein Azure-Abonnement erforderlich.
+description: In dieser Schnellstartanleitung erstellen Sie die grundlegenden Komponenten einer App sowie Absichten und Entitäten. Außerdem verwenden Sie zu Testzwecken eine Beispieläußerung im LUIS-Portal.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307722"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669678"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 In diesem Schnellstart erstellen Sie eine neue App im [LUIS-Portal](https://www.luis.ai). Zuerst erstellen Sie die Grundbestandteile einer App, **Absichten** und **Entitäten**. Anschließend testen Sie die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten.
 
@@ -27,9 +29,9 @@ Das Erstellen einer App ist kostenlos, und es ist kein Azure-Abonnement erforder
 
 ## <a name="create-an-app"></a>Erstellen einer App
 
-1. Wählen Sie auf der Kontextsymbolleiste die Option **Neue App erstellen** aus.
+1. Wählen Sie auf der Kontextsymbolleiste die Option **+ Erstellen** aus.
 
-   [![Erstellen einer neuen App im LUIS-Portal](./media/get-started-portal-build-app/create-app-in-portal.png)](./media/get-started-portal-build-app/create-app-in-portal.png#lightbox)
+   [![Erstellen einer neuen App im LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. Konfigurieren Sie die App im Popupfenster mit den folgenden Einstellungen, und wählen Sie dann **Fertig** aus.
 
@@ -37,8 +39,8 @@ Das Erstellen einer App ist kostenlos, und es ist kein Azure-Abonnement erforder
    |--|--|--|
    |NAME|`myEnglishApp`|Eindeutiger Name der LUIS-App<br>required|
    |Kultur|**Englisch**|Sprache der Äußerungen von Benutzern, **en-us**<br>required|
-   |BESCHREIBUNG|`App made with LUIS Portal`|Beschreibung der App<br>optional|
-   | | | |
+   |Beschreibung (optional)|`App made with LUIS Portal`|Beschreibung der App<br>optional|
+   |Vorhersageressource (optional) |-  |Nicht auswählen. Sie erhalten von LUIS einen Startschlüssel für die kostenlose Erstellung sowie für 1.000 Vorhersageendpunktanforderungen. |
 
    ![Eingeben der Einstellungen für die neue App](./media/get-started-portal-build-app/create-new-app-settings.png)
 
@@ -58,13 +60,11 @@ Die zwei verschiedenen _Absichten_ der App richten sich an den folgenden Absicht
 
 Führen Sie die folgenden Schritte aus, um Absichten zu erstellen:
 
-1. Nachdem die App erstellt wurde, wird die Seite **Intents** (Absichten) des Abschnitts **Erstellen** angezeigt. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
+1. Nachdem die App erstellt wurde, wird die Seite **Intents** (Absichten) des Abschnitts **Erstellen** angezeigt. Klicken Sie auf **Erstellen**.
 
-   [![Auswählen der Schaltfläche „Create new intent“ (Neue Absicht erstellen)](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Auswählen von „Erstellen“, um eine neue Absicht zu erstellen](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
 1. Geben Sie den Namen der Absicht ein, `FindForm`, und wählen Sie dann **Fertig** aus.
-
-   ![Eingeben des Absichtsnamens „FindForm“](./media/get-started-portal-build-app/create-new-intent-dialog.png)
 
 ## <a name="add-an-example-utterance"></a>Hinzufügen einer Beispieläußerung
 
@@ -110,13 +110,16 @@ Um in der Vorhersageantwort zur Laufzeit die Formularnummer zurückzugeben, muss
 
 1. Wählen Sie im Menü links die Option **Entitäten** aus.
 
-1. Wählen Sie auf der Seite **Entitäten** die Option **Neue Entität erstellen** aus.
+1. Wählen Sie auf der Seite **Entitäten** die Option **Erstellen** aus.
 
-1. Geben Sie den Namen `Human Resources Form Number` ein, wählen Sie den Entitätstyp **RegEx** aus, und geben Sie den regulären Ausdruck `hrf-[0-9]{6}` ein. Dieser Eintrag entspricht den Literalzeichen `hrf-` und lässt genau sechs Ziffern zu.
+1. Geben Sie den Namen `Human Resources Form Number` ein, und wählen Sie den Entitätstyp **RegEx** und anschließend **Weiter** aus.
 
-   ![Eingeben der Entitätsinformationen für die Entität vom Typ „Regulärer Ausdruck“](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+   ![Erstellen einer Entität vom Typ „Regulärer Ausdruck“](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-1. Wählen Sie **Fertig**aus.
+1. Geben Sie den folgenden regulären Ausdruck (**RegEx**) ein: `hrf-[0-9]{6}`. Dieser Eintrag entspricht den Literalzeichen `hrf-` und lässt genau sechs Ziffern zu. Wählen Sie anschließend **Erstellen** aus.
+
+   ![Eingeben eines regulären Ausdrucks für eine Entität](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
+
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“
 
@@ -134,11 +137,11 @@ Die Beispieläußerungen der Absicht **None** dürfen nicht im Bereich der Clien
    |Bestell mir eine Pizza|
    |Pinguine im Ozean|
 
-   Diese Beispieläußerungen sind nicht im Bereich der Personal-App enthalten. Falls der Bereich Ihrer Personal-App Begriffe aus den Bereichen Tiere und Lebensmittel oder das Wort Ozean enthält, sollten Sie für die Absicht **None** andere Beispieläußerungen verwenden.
+   Diese Beispieläußerungen sind für die aktuelle App nicht relevant. Falls Begriffe für Tiere, Lebensmittel oder den Ozean für Ihre App relevant sind, müssen für die Absicht **None** andere Beispieläußerungen verwendet werden.
 
 ## <a name="train-the-app"></a>Trainieren der App
 
-Wählen Sie im Menü oben rechts **Train** (Trainieren) aus, um die Änderungen der Absicht und des Entitätsmodells auf die aktuelle Version der App anzuwenden.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="look-at-the-regular-expression-entity-in-the-example-utterances"></a>Überprüfen der Entität vom Typ „Regulärer Ausdruck“ in den Beispieläußerungen
 
@@ -165,8 +168,6 @@ Verwenden Sie den interaktiven **Testbereich** im LUIS-Portal, um zu überprüfe
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie mit diesem Schnellstart fertig sind und nicht mit dem nächsten Schnellstart fortfahren möchten, wählen Sie im oberen Navigationsmenü **Meine Apps** aus. Aktivieren Sie dann in der Liste das Kontrollkästchen links neben der App, und wählen Sie auf der Kontextsymbolleiste über der Liste die Option **Löschen** aus.
-
-[![App aus der Liste „Meine Apps“ löschen](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

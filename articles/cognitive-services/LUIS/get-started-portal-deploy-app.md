@@ -1,23 +1,25 @@
 ---
 title: 'Schnellstart: Bereitstellen einer App im LUIS-Portal'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Ihre LUIS-App im Vorhersageendpunkt bereitstellen, sobald die App bereit ist, Äußerungsvorhersagen an eine Clientanwendung wie einen Chatbot zurückzugeben. Diese Schnellstartanleitung führt Sie schrittweise durch die Bereitstellung einer Anwendung, indem Sie eine Vorhersageendpunktressource erstellen, der App die Ressource zuweisen, die App trainieren und die App veröffentlichen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine App bereitstellen, indem Sie eine Vorhersageendpunktressource erstellen, die Ressource zuweisen, ein Training durchführen und die App veröffentlichen.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/27/2019
+ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703219"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669418"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
+
+[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Wenn Ihre LUIS-App bereit ist, Äußerungsvorhersagen an eine Clientanwendung (beispielsweise einen Chatbot) zurückzugeben, müssen Sie die App für den Vorhersageendpunkt bereitstellen.
 
@@ -32,22 +34,23 @@ In diesem Schnellstart erfahren Sie, wie eine Anwendung bereitgestellt wird. Sie
 
 Sie erstellen die Vorhersageendpunktressource im Azure-Portal. Diese Ressource darf nur für Endpunktvorhersageabfragen verwendet werden. Verwenden Sie diese Ressource nicht für das Erstellen von Änderungen an der App.
 
-1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
-
-1. Wählen Sie das grüne **+** -Anmeldesymbol im oberen linken Bereich aus. Suchen Sie im Marketplace nach `Cognitive Services`, und wählen Sie sie aus.
+1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) an, und erstellen Sie eine Ressource.
 
 1. Konfigurieren Sie das Abonnement mit den folgenden Einstellungen:
 
    |Einstellung|Wert|Zweck|
    |--|--|--|
-   |NAME|`my-cognitive-service-resource`|Der Name der Azure-Ressource. Sie benötigen diesen Namen, wenn Sie der App im LUIS-Portal die Ressource zuweisen.|
+   |NAME|`my-luis-resource`|Der Name der Azure-Ressource. Sie benötigen diesen Namen, wenn Sie der App im LUIS-Portal die Ressource zuweisen.|
    |Subscription|Ihr Abonnement|Wählen Sie eines der mit Ihrem Konto verknüpften Abonnements aus.|
-   |Location|**USA, Westen**|Die Azure-Region für diese Ressource.|
-   |Tarif|**S0**|Der Standardtarif für diese Ressource.|
-   |Resource group|`my-cognitive-service-resource-group`|Erstellen Sie eine neue Ressourcengruppe für alle Ihre Cognitive Services-Ressourcen. Wenn Sie mit den Ressourcen fertig sind, können Sie die Ressourcengruppe löschen, um Ihr Abonnement zu bereinigen. |
+   |Resource group|`my-resource-group`|Erstellen Sie eine neue Ressourcengruppe für alle Ihre Cognitive Services-Ressourcen. Wenn Sie mit den Ressourcen fertig sind, können Sie die Ressourcengruppe löschen, um Ihr Abonnement zu bereinigen. |
+   |Authoring location (Erstellungsstandort)|**USA, Westen**|Die Azure-Region für die Erstellung.|
+   |Authoring pricing tier (Erstellungstarif)|**F0**|Der Standardtarif für die Erstellung.|
+   |Runtime location (Laufzeitstandort)|**USA, Westen**|Die Azure-Region für Vorhersageendpunktabfragen.|
+   |Runtime pricing tier (Laufzeittarif)|**S0**|Dieser Tarif ist für Websites mit hohem Datenverkehrsaufkommen geeignet.|
    | | | |
 
-   ![Azure-API-Auswahl](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
+
+   ![Azure-API-Auswahl](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
 1. Wählen Sie **Erstellen** aus, um die Azure-Ressource zu erstellen.
 
@@ -63,80 +66,81 @@ Jedes Mal, wenn Sie eine neue Ressource für LUIS erstellen, müssen Sie der LUI
 
 1. Um LUIS hinzuzufügen, wählen Sie **Add prediction resource** (Vorhersageressource hinzufügen) aus.
 
-    <!-- TBD: get screenshot-->
+    ![Hinzufügen der LUIS-Vorhersageressource durch Auswählen von „Vorhersageressource hinzufügen“](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
 1. Wählen Sie Ihren Mandanten, Ihr Abonnement und den Namen Ihrer Ressource aus. Wählen Sie **Ressource zuweisen** aus.
 
    ![Zuweisen einer Ressource zu Ihrer App](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Suchen Sie die neue Zeile in der Tabelle, und kopieren Sie die Endpunkt-URL. Sie ist ordnungsgemäß aufgebaut, um eine `HTTP GET`-Anforderung an den LUIS-API-Endpunkt zum Abrufen einer Vorhersage zu senden.
+1. Führen Sie die gleichen Schritte aus, um Ihrer App den Erstellungsschlüssel hinzuzufügen.
 
-## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
+1. Suchen Sie die neue Zeile in der Tabelle für die neue Vorhersageressource, und kopieren Sie die Endpunkt-URL. Sie ist ordnungsgemäß aufgebaut, um eine `HTTP GET`-Anforderung an den LUIS-API-Endpunkt zum Abrufen einer Vorhersage zu senden.
 
-Trainieren Sie die App, wenn Sie bereit sind, sie zu testen. Veröffentlichen Sie die App, sobald Sie die aktuell trainierte Version über die Laufzeit des Vorhersageendpunkts für Clientanwendungen verfügbar machen möchten.
+## <a name="train-the-app"></a>Trainieren der App
 
-1. Wenn die App noch nicht trainiert wurde, wählen Sie im Menü oben rechts die Option **Trainieren** aus.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-1. Wählen Sie im Menü oben die Option **Veröffentlichen** aus. Übernehmen Sie die Standardumgebungseinstellungen, und wählen Sie **Veröffentlichen** aus.
+## <a name="publish-the-app-to-the-prediction-endpoint"></a>Veröffentlichen der App für den Vorhersageendpunkt
 
-1. Wenn oben im Browserfenster die grüne Erfolgsbenachrichtigungsleiste angezeigt wird, wählen Sie **Auf die Liste der Endpunkte verweisen** aus.
-
-   ![Benachrichtigungsleiste im Browser für eine erfolgreich veröffentlichte App](./media/get-started-portal-deploy-app/successfully-published-notification.png)
-
-1. Auf der Seite **Schlüssel- und Endpunkteinstellungen** befindet sich im unteren Bereich die Liste mit den zugewiesenen Ressourcen und entsprechenden Endpunkt-URLs.
-
-1. Wählen Sie die Endpunkt-URL aus, die Ihrem neuen Ressourcennamen zugeordnet ist. Diese Aktion öffnet einen Webbrowser mit einer ordnungsgemäß aufgebauten URL, um eine `GET`-Anforderung an die Laufzeit des Vorhersageendpunkts zu senden.
+[!INCLUDE [LUIS How to Train steps](includes/howto-publish.md)]
 
 ## <a name="prediction-endpoint-request"></a>Anforderung für Vorhersageendpunkt
 
-<!-- V3FIX -->
-
-Die Zeichenfolge `q=` am Ende der URL ist die Kurzform für **Abfrage** (query). Dort wird die Äußerung des Benutzers an die GET-Anforderung angefügt. Geben Sie nach `q=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
+Die Äußerung des Benutzers wird am Ende der URL bei `query=` an die GET-Anforderung angefügt. Geben Sie nach `query=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
 
 ```Is there a form named hrf-234098```
 
-Im Browser wird die Antwort angezeigt, bei der es sich um die gleiche JSON handelt, die Ihre Clientanwendung erhält:
+Stellen Sie sicher, dass die Abfragezeichenfolge folgende Paare enthält:
+
+* `show-all-intents=true`
+* `verbose=true`
+
+Der Browser zeigt die folgende Antwort an:
 
 ```JSON
 {
-"query": "Is there a form named hrf-234098",
-"topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.9768753
-},
-"intents": [
-    {
-    "intent": "FindForm",
-    "score": 0.9768753
-    },
-    {
-    "intent": "None",
-    "score": 0.0216071066
+    "query": "Is there a form named hrf-234098",
+    "prediction": {
+        "topIntent": "FindForm",
+        "intents": {
+            "FindForm": {
+                "score": 0.9768753
+            },
+            "None": {
+                "score": 0.0216071177
+            }
+        },
+        "entities": {
+            "Human Resources Form Number": [
+                "hrf-234098"
+            ],
+            "$instance": {
+                "Human Resources Form Number": [
+                    {
+                        "type": "Human Resources Form Number",
+                        "text": "hrf-234098",
+                        "startIndex": 22,
+                        "length": 10,
+                        "modelTypeId": 8,
+                        "modelType": "Regex Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
     }
-],
-"entities": [
-    {
-    "entity": "hrf-234098",
-    "type": "Human Resources Form Number",
-    "startIndex": 22,
-    "endIndex": 31
-    }
-    ]
 }
 ```
 
-Diese Antwort bietet Ihnen mehr Informationen als der Standardtestbereich im vorherigen Tutorial. Um im Testbereich die gleiche Informationsmenge anzuzeigen, müssen Sie die App veröffentlichen. Wählen Sie nach dem Veröffentlichen der App im Testbereich **Compare with published** (Mit veröffentlichtem Element vergleichen) aus. Verwenden Sie im Testbereich für die Veröffentlichung die Option **JSON-Ansicht anzeigen**, um dieselbe JSON wie im vorherigen Schritt anzuzeigen. Auf diese Weise können Sie die aktuelle App, die Sie bearbeiten, mit der App vergleichen, die am Endpunkt veröffentlicht wird.
+Um im Testbereich die gleiche Informationsmenge anzuzeigen, müssen Sie die App veröffentlichen. Wählen Sie nach dem Veröffentlichen der App im Testbereich **Compare with published** (Mit veröffentlichtem Element vergleichen) aus. Verwenden Sie im Testbereich für die Veröffentlichung die Option **JSON-Ansicht anzeigen**, um dieselbe JSON wie im vorherigen Schritt anzuzeigen. Auf diese Weise können Sie Änderungen an der aktuell bearbeiteten App mit der App vergleichen, die für den Endpunkt veröffentlicht wird.
 
 [![Aktuell bearbeitete Version mit der veröffentlichten Version der App vergleichen](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
-
-
-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wählen Sie nach Abschluss dieses Schnellstarts im oberen Navigationsmenü die Option **Meine Apps** aus. Aktivieren Sie in der Liste das Kontrollkästchen der App, und wählen Sie auf der Kontextsymbolleiste oberhalb der Liste **Löschen** aus.
-
-[![App aus der Liste „Meine Apps“ löschen](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 540e72a4472fce626822f0b22bfac11a23aea205
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bbaec55666b877e1d9343d8b80ea44a189c0c5b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466775"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806122"
 ---
 # <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Häufige Fehler und Warnungen der KI-Anreicherungspipeline in der kognitiven Azure-Suche
 
@@ -63,6 +63,8 @@ Der Indexer konnte einen Skill im Skillset nicht ausführen.
 
 | `Reason` | Beispiel | Aktion |
 | --- | --- | --- |
+| Ein Feld enthält einen Begriff, der zu groß ist. | Ein Begriff in Ihrem Dokument ist größer als der [Grenzwert von 32 KB](search-limits-quotas-capacity.md#api-request-limits). | Sie können diese Einschränkung vermeiden, indem Sie sicherstellen, dass das Feld nicht als filterbar, facettierbar oder sortierbar konfiguriert ist.
+| Das Dokument ist zu groß für die Indizierung. | Ein Dokument ist größer als die [maximale API-Anforderungsgröße](search-limits-quotas-capacity.md#api-request-limits). | [Indizieren großer Datasets](search-howto-large-index.md)
 | Vorübergehende Konnektivitätsprobleme | Ein vorübergehender Fehler ist aufgetreten. Versuchen Sie es später noch mal. | Gelegentlich treten unerwartete Konnektivitätsprobleme auf. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
 | Potenzieller Produktfehler | Ein unerwarteter Fehler ist aufgetreten. | Dies weist auf eine unbekannte Fehlerklasse hin und kann bedeuten, dass ein Produktfehler vorliegt. Erstellen Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), um Hilfe zu erhalten. |
 | Fehler bei der Ausführung eines Skills | (Aus „Skill für Zusammenführung“:) Mindestens ein Offsetwert war ungültig und konnte nicht analysiert werden. Am Ende des Texts wurden Elemente eingefügt. | Beheben Sie das Problem anhand der Informationen in der Fehlermeldung. Für die Behebung dieser Art von Fehler sind Maßnahmen erforderlich. |
@@ -114,6 +116,7 @@ Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum
 | --- | --- | --- |
 | Ein Begriff in Ihrem Dokument ist größer als der [Grenzwert von 32 KB](search-limits-quotas-capacity.md#api-request-limits). | Ein Feld enthält einen Begriff, der zu groß ist. | Sie können diese Einschränkung vermeiden, indem Sie sicherstellen, dass das Feld nicht als filterbar, facettierbar oder sortierbar konfiguriert ist.
 | Ein Dokument ist größer als die [maximale API-Anforderungsgröße](search-limits-quotas-capacity.md#api-request-limits). | Das Dokument ist zu groß für die Indizierung. | [Indizieren großer Datasets](search-howto-large-index.md)
+| Das Dokument enthält zu viele Objekte in der Sammlung. | Bei einer Sammlung in Ihrem Dokument wurde die [maximale Anzahl der Elemente in allen komplexen Sammlungen pro Dokument](search-limits-quotas-capacity.md#index-limits) überschritten. | Wir empfehlen, die komplexe Sammlung im Dokument auf einen Wert unter dem Grenzwert zu verkleinern und eine hohe Speicherauslastung zu vermeiden.
 | Probleme beim Herstellen einer Verbindung mit dem Zielindex (die nach Wiederholungsversuchen weiterhin bestehen), da der Dienst durch eine andere Aufgabe ausgelastet ist, z.B. eine Abfrage oder Indizierung. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist stark ausgelastet. | [Zentrales Hochskalieren des Suchdiensts](search-capacity-planning.md)
 | Der Suchdienst wird für das Dienstupdate gepatcht oder befindet sich mitten in einer Neukonfiguration der Topologie. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist derzeit nicht verfügbar / Der Suchdienst befindet sich im Übergang. | Konfigurieren Sie den Dienst mit mindestens 3 Replikaten für eine Verfügbarkeit von 99,9 % gemäß [SLA-Dokumentation](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 | Fehler in der zugrunde liegenden Compute-/Netzwerkressource (selten) | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Ein unbekannter Fehler ist aufgetreten. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen.
@@ -224,7 +227,12 @@ Die Möglichkeit, einen nicht abgeschlossenen Indizierungsauftrag fortzusetzen, 
 
 Dieses Verhalten kann außer Kraft gesetzt werden, indem durch Verwendung der Konfigurationseigenschaft `assumeOrderByHighWatermarkColumn` der inkrementelle Fortschritt aktiviert und diese Warnung unterdrückt wird.
 
-[Weitere Informationen zum inkrementellen Status und zu benutzerdefinierten Abfragen in Cosmos DB](https://go.microsoft.com/fwlink/?linkid=2099593)
+Weitere Informationen finden Sie unter [Inkrementeller Status und benutzerdefinierte Abfragen](search-howto-index-cosmosdb.md#IncrementalProgress).
+
+### <a name="truncated-extracted-text-to-x-characters"></a>Der extrahierte Text wurde auf x Zeichen gekürzt.
+Indexer begrenzen die pro Dokument extrahierbare Textmenge. Dieser Grenzwert ist tarifabhängig: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“ und 4 Millionen Zeichen für die Tarife „Standard“, „Standard S2“ und „Standard S3“. Abgeschnittener Text wird nicht indiziert. Zur Vermeidung dieser Warnung können Sie versuchen, Dokumente mit umfangreichem Text in mehrere kleinere Dokumente aufzuteilen. 
+
+Weitere Informationen finden Sie unter [Indexergrenzwerte](search-limits-quotas-capacity.md#indexer-limits).
 
 ### <a name="could-not-map-output-field-x-to-search-index"></a>Das Ausgabefeld „X“ konnte dem Suchindex nicht zugeordnet werden.
 Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führen zu Warnungen für jedes Dokument und damit zu einem leeren Indexfeld. Um dieses Problem zu umgehen, überprüfen Sie die Quellpfade des Ausgabefelds auf mögliche Tippfehler, oder legen Sie mit dem [bedingten Skill](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist) einen Standardwert fest.

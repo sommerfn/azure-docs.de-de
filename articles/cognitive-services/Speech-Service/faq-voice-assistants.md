@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 7ad3f932e9a10723d6cc1bae2fc4854c932d4c64
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506529"
+ms.locfileid: "73579668"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Sprachassistenten: Häufig gestellte Fragen
 
@@ -29,7 +29,7 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 
 **F: Sollte ich benutzerdefinierte Befehle (Vorschau) oder „Direct Line Speech“ verwenden? Wo liegt der Unterschied?**
 
-**A:** [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) ist eine Reihe von Tools mit geringer Komplexität, mit denen Sie problemlos einen Assistenten erstellen und hosten können, der für Aufgabenabschluss-Szenarien gut geeignet ist. [Direct Line Speech](direct-line-speech.md) bietet umfangreichere, anspruchsvollere Funktionen, die stabile Konversationsszenarien ermöglichen. Weitere Informationen finden Sie im [Vergleich der Assistenten-Lösungen](voice-assistants.md#comparing-assistant-solutions).
+**A:** [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) ist eine Reihe von Tools mit geringer Komplexität, mit denen Sie problemlos einen Assistenten erstellen und hosten können, der für Aufgabenabschluss-Szenarien gut geeignet ist. [Direct Line Speech](direct-line-speech.md) bietet umfangreichere, anspruchsvollere Funktionen, die stabile Konversationsszenarien ermöglichen. Weitere Informationen finden Sie im [Vergleich der Assistenten-Lösungen](voice-assistants.md#choosing-an-assistant-solution).
 
 **F: Wie fange ich an?**
 
@@ -40,6 +40,17 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 * [Herstellen einer Verbindung mit einem Direct Line Speech-Kanal für einen Bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Debuggen
+
+**F: Wo befindet sich mein Kanalgeheimnis?**
+
+**A:** Wenn Sie die Vorschauversion von Direct Line Speech verwendet haben oder die zugehörige Dokumentation lesen, erwarten Sie unter Umständen, dass auf der Direct Line Speech-Seite für die Kanalregistrierung ein geheimer Schlüssel vorhanden ist. Für v1.7 der `DialogServiceConfig`-Factorymethode `FromBotSecret` im Speech SDK wird dieser Wert ebenfalls erwartet.
+
+In der neuesten Version von Direct Line Speech wurde der Prozess für die Kontaktaufnahme mit Ihrem Bot von einem Gerät aus vereinfacht. Auf der Seite für die Kanalregistrierung wird Ihre Direct Line Speech-Kanalregistrierung oben über die Dropdownliste einer Sprachressource zugeordnet. Nach der Zuordnung enthält Speech SDK v1.8 die `BotFrameworkConfig::FromSubscription`-Factorymethode, über die ein `DialogServiceConnector` für die Kontaktaufnahme mit dem Bot, den Sie Ihrem Abonnement zugeordnet haben, konfiguriert wird.
+
+Falls Sie noch mit der Migration Ihrer Clientanwendung von v1.7 zu v1.8 beschäftigt sind, funktioniert `DialogServiceConfig::FromBotSecret` ggf. mit einem Wert vom Typ „nicht leer, nicht Null“ als Kanalgeheimnisparameter, z. B. Ihrem zuvor verwendeten Geheimnis. Dieser Wert wird einfach ignoriert, wenn ein Sprachabonnement verwendet wird, das einer neueren Kanalregistrierung zugeordnet ist. Hierbei ist es *obligatorisch*, dass der Wert nicht Null und nicht leer ist. Dies wird auf dem Gerät überprüft, bevor die dienstseitige Zuordnung relevant wird.
+
+
+Eine ausführlichere Anleitung finden Sie im [Tutorialabschnitt](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel), in dem die Kanalregistrierung Schritt für Schritt beschrieben wird.
 
 **F: Ich erhalte bei der Verbindungsherstellung eine 401-Fehlermeldung, und nichts funktioniert. Ich weiß, dass mein Speech-Abonnementschlüssel gültig. Was geht da vor?**
 

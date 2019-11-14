@@ -8,17 +8,41 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 0e4d0eb19da2485b689b1c5d5192e344153aef0b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: b40df5878d08b222d145531bfdad1e30b2fe989d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71799973"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647397"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="speech-sdk-180-2019-november-release"></a>Speech SDK 1.8.0: Release von November 2019
+
+**Neue Features**
+*   FromHost()-API hinzugefügt, um die Verwendung mit lokalen Containern und Sovereign Clouds zu vereinfachen
+*   Automatische Erkennung der Ausgangssprache für die Spracherkennung hinzugefügt (in Java und C++)
+*   SourceLanguageConfig-Objekt zur Angabe erwarteter Ausgangssprachen für die Spracherkennung hinzugefügt (in Java und C++)
+*   KeywordRecognizer-Unterstützung unter Windows (UWP), Android und iOS über die Nuget- und Unity-Pakete hinzugefügt
+*   Java-Remoteunterhaltungs-API für die Unterhaltungstranskription in asynchronen Batches hinzugefügt
+
+**Wichtige Änderungen**
+*   Unterhaltungstranskriptionsfunktionen wurden in den Namespace „Microsoft.CognitiveServices.Speech.Transcription“verschoben.
+*   Ein Teil der Unterhaltungstranskriptionsmethoden wurden in die neue Conversation-Klasse verschoben.
+*   Die Unterstützung für 32-Bit-iOS (ARMv7 und x86) wurde eingestellt. 
+
+**Fehlerbehebungen**
+*   Ein Absturz wurde behoben, der auftrat, wenn die lokale KeywordRecognizer-Instanz ohne gültigen Abonnementschlüssel für den Speech-Dienst verwendet wird.
+
+**Beispiele**
+*   Xamarin-Beispiel für „KeywordRecognizer“
+*   Unity-Beispiel für „KeywordRecognizer“
+*   C++- und Java-Beispiele für die automatische Erkennung der Ausgangssprache
+
+
 ## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0: Release von September 2019
 
 **Neue Features**
@@ -37,7 +61,6 @@ ms.locfileid: "71799973"
 *   Es wurde ein Problem behoben, bei dem UUIDs in einigen Verbindungseigenschaften nicht eindeutig waren
 *   Es wurden einige Warnungen bezüglich Spezifizierer für die NULL-Zulässigkeit in den Swift-Bindungen behoben (möglicherweise sind kleine Codeänderungen erforderlich)
 *   Es wurde ein Fehler behoben, der dazu führte, dass WebSocket-Verbindungen unter Netzwerklast nicht ordnungsgemäß geschlossen wurden
-*   iOS: Unterstützung für die arm7s-Architektur wurde verworfen
 *   Es wurde ein Problem unter Android behoben, das „DialogServiceConnector“ gelegentlich doppelte Eindruck-IDs verwendet
 *   Es wurden Verbesserungen an der Stabilität von Verbindungen über Interaktionen mit Mehrfachdurchläufen und an der Berichterstellung bei Fehlern vorgenommen (über abgebrochene Ereignisse), wenn sie mit „DialogServiceConnector“ auftreten
 *   DialogServiceConnector-Sitzungsstarts stellen jetzt ordnungsgemäß Ereignisse bereit, einschließlich des Aufrufs von „ListenOnceAsync()“ während „StartKeywordRecognitionAsync()“ aktiv ist
@@ -86,17 +109,17 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 **Fehlerbehebungen**
 
 * Fehlerbehebung bei FromSubscription bei Verwendung mit Unterhaltungstranskription.
-* Fehlerbehebung bei der Schlüsselwortsuche für den virtuellen Voice-First-Assistenten.
+* Fehlerbehebung bei der Schlüsselworterkennung für Sprachassistenten.
 
 
 ## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0: Release von Mai 2019
 
 **Neue Features**
 
-* Die Funktionalität für das Aktivierungswort (Keyword Spotting/KWS) ist jetzt für Windows und Linux verfügbar. Die KWS-Funktionalität kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
+* Die Schlüsselworterkennung (Keyword Spotting Functionality, KWS) ist für Windows und Linux verfügbar. Die KWS-Funktionalität kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
 * Begriffshinweisfunktionalität ist über das SDK verfügbar. Weitere Informationen finden Sie [hier](how-to-phrase-lists.md).
 * Unterhaltungstranskriptionsfunktionalität ist über das SDK verfügbar. Klicken Sie [hier](conversation-transcription-service.md).
-* Unterstützung für virtuelle Voice-First-Assistenten über den Direct Line Speech-Kanal wurde hinzugefügt.
+* Unterstützung für Sprachassistenten über den Direct Line Speech-Kanal wurde hinzugefügt.
 
 **Beispiele**
 
@@ -163,7 +186,7 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 **Neue Features**
 
 * Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Speech-Dienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Funktion noch nicht verfügbar.
-* Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt „Issue“ im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](quickstart-csharp-unity.md).
+* Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt „Issue“ im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity).
 * Die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) ist nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
 
 
@@ -304,7 +327,7 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 **Neue Features**
 
-* Unterstützung für Objective-C unter iOS. Sehen Sie sich unseren [Objective-C-Schnellstart für iOS](quickstart-objectivec-ios.md) an.
+* Unterstützung für Objective-C unter iOS. Sehen Sie sich unseren [Objective-C-Schnellstart für iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md) an.
 * Unterstützung für JavaScript im Browser. Sehen Sich unseren [JavaScript-Schnellstart](quickstart-js-browser.md) an.
 
 **Wichtige Änderungen**
@@ -317,10 +340,10 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 **Neue Features**
 
 * Mit dem Speech SDK erstellte UWP-Apps erfüllen nun die Anforderungen des Windows App Certification Kit (WACK).
-  Sehen Sie sich den [UWP-Schnellstart](quickstart-csharp-uwp.md) an.
+  Sehen Sie sich den [UWP-Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp) an.
 * Unterstützung für .NET Standard 2.0 unter Linux (Ubuntu 16.04 x 64)
 * Experimentell: Unterstützung für Java 8 unter Windows (64 Bit) und Linux (Ubuntu 16.04 x64).
-  Sehen Sie sich den [Schnellstart zur Java Runtime Environment](quickstart-java-jre.md) an.
+  Sehen Sie sich den [Schnellstart zur Java Runtime Environment](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre) an.
 
 **Funktionale Änderung**
 
@@ -342,10 +365,10 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 **Neue Features**
 
-* Unterstützung für Android-Plattform (API 23: Android 6.0 Marshmallow oder höher). Sehen Sie sich den [Android-Schnellstart](quickstart-java-android.md) an.
-* Unterstützung für .NET Standard 2.0 unter Windows. Sehen Sie sich den [.NET Core-Schnellstart](quickstart-csharp-dotnetcore-windows.md) an.
+* Unterstützung für Android-Plattform (API 23: Android 6.0 Marshmallow oder höher). Sehen Sie sich den [Android-Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android) an.
+* Unterstützung für .NET Standard 2.0 unter Windows. Sehen Sie sich den [.NET Core-Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore) an.
 * Experimentell: Unterstützung für UWP unter Windows (Version 1709 oder höher).
-  * Sehen Sie sich den [UWP-Schnellstart](quickstart-csharp-uwp.md) an.
+  * Sehen Sie sich den [UWP-Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp) an.
   * Hinweis: Mit dem Speech SDK erstellte UWP-Apps erfüllen die Anforderungen des Windows App Certification Kit (WACK) noch nicht.
 * Unterstützung einer lang andauernden Erkennung mit automatischer erneuter Verbindungsherstellung.
 

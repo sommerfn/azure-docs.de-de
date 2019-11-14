@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/12/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: fe40eb27b07304aba48be4a47fb22168cb60434c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332279"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584977"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -60,7 +60,7 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
     3. Geben Sie auf der Seite mit den **Labrichtlinien** die Anzahl von Stunden ein, die jedem Benutzer (**Kontingent pro Benutzer**) außerhalb der geplanten Zeit für das Lab zugeordnet sind, und wählen Sie anschließend **Fertig stellen** aus. 
 
         ![Kontingent pro Benutzer](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
-5. Es sollte der folgende Bildschirm angezeigt werden, auf dem der Status der VM-Vorlagenerstellung angegeben ist. Die Erstellung der Vorlage im Lab dauert bis zu 20 Minuten. 
+5. Der folgende Bildschirm sollte angezeigt werden, auf dem der Status der VM-Vorlagenerstellung angegeben ist. Die Erstellung der Vorlage im Lab dauert bis zu 20 Minuten. 
 
     ![Status der VM-Vorlagenerstellung](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. Führen Sie auf der Seite **Vorlage** die folgenden Schritte aus: Diese Schritte sind für das Tutorial **optional**.
@@ -92,10 +92,15 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
     2. Wählen Sie in der Symbolleiste **Start all** (Alle starten) aus, um alle VMs auf einmal zu starten. 
     3. Wählen Sie zum Starten einer bestimmten VM unter **Status** den Abwärtspfeil und dann die Option **Starten** aus. Sie können eine VM auch starten, indem Sie sie in der ersten Spalte auswählen und in der Symbolleiste dann die Option **Starten** auswählen.
 
+    Weitere Informationen zum Erstellen und Verwalten von Vorlagen sowie zum Einrichten und Verwalten virtueller Computer für Kursteilnehmer finden Sie in den folgenden Artikeln: 
+    
+    - [Erstellen und Verwalten einer Classroom-Vorlage in Azure Lab Services](how-to-create-manage-template.md)
+    - [Einrichten und Verwalten eines VM-Pools](how-to-set-virtual-machine-passwords.md)
+
 ## <a name="add-users-to-the-lab"></a>Hinzufügen von Benutzern zum Lab
 
 1. Klicken Sie im linken Menü auf **Benutzer**. Die Option **Zugriff beschränken** ist standardmäßig aktiviert. Wenn diese Einstellung aktiviert ist, kann sich ein Benutzer auch dann nicht beim Lab registrieren, wenn er über den Registrierungslink verfügt. Um sich zu registrieren, muss er in der Liste der Benutzer enthalten sein. Nur Benutzer in der Liste können sich über den von Ihnen gesendeten Registrierungslink beim Lab registrieren. In diesem Verfahren fügen Sie der Liste Benutzer hinzu. Alternativ können Sie **Zugriff beschränken** deaktivieren. In diesem Fall können sich Benutzer beim Lab registrieren, wenn sie über den Registrierungslink verfügen. 
-2. Wählen Sie in der Symbolleiste die Option **Benutzer hinzufügen** und anschließend **Add by email addresses** (Nach E-Mail-Adressen hinzufügen) aus. 
+2. Wählen Sie auf der Symbolleiste die Option **Benutzer hinzufügen** und anschließend **Add by email addresses** (Nach E-Mail-Adressen hinzufügen) aus. 
 
     ![Schaltfläche „Benutzer hinzufügen“](../media/how-to-configure-student-usage/add-users-button.png)
 1. Geben Sie auf der Seite **Benutzer hinzufügen** die E-Mail-Adressen von Benutzern in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein. 
@@ -105,23 +110,27 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
     ![Benutzerliste](../media/how-to-configure-student-usage/users-list-new.png)
 
+    Nach der Registrierung für das Lab werden die Namen von Benutzern in der Liste angezeigt. 
+    
 ## <a name="set-a-schedule-for-the-lab"></a>Festlegen eines Zeitplans für das Lab
 Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmten Zeiten automatisch gestartet und beendet werden. Das von Ihnen zuvor angegebene Benutzerkontingent ist die zusätzliche Zeit, die jedem Benutzer außerhalb dieser geplanten Zeit zugewiesen ist. 
 
 1. Wechseln Sie zur Seite **Zeitpläne**, und wählen Sie in der Symbolleiste die Option **Add scheduled event** (Geplantes Ereignis hinzufügen) aus. 
 
     ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](../media/how-to-create-schedules/add-schedule-button.png)
-2. Vergewissern Sie sich, dass unter **Ereignistyp** die Option **Standard** ausgewählt ist. Wählen Sie **Start only** (Nur starten) aus, um nur die Startzeit für die VMs anzugeben. Wählen Sie **Stop only** (Nur beenden) aus, um nur die Endzeit für die VMs anzugeben. 
-7. Wählen Sie im Abschnitt **Wiederholen** den aktuellen Zeitplan aus. 
+2. Führen Sie auf der Seite **Add scheduled event** (Geplantes Ereignis hinzufügen) die folgenden Schritte aus:
+    1. Vergewissern Sie sich, dass unter **Ereignistyp** die Option **Standard** ausgewählt ist.  
+    2. Geben Sie das **Startdatum** für die Klasse an. 
+    4. Geben Sie die **Startzeit** an, zu der die virtuellen Computer gestartet werden sollen.
+    5. Geben Sie die **Endzeit** an, zu der die virtuellen Computer heruntergefahren werden sollen. 
+    6. Geben Sie die **Zeitzone** für die von Ihnen angegebene Start- und Endzeit an. 
+3. Wählen Sie auf der gleichen Seite (**Add scheduled event** (Geplantes Ereignis hinzufügen)) im Abschnitt **Wiederholen** den aktuellen Zeitplan aus.  
 
     ![Schaltfläche „Zeitplan hinzufügen“ auf der Seite „Zeitpläne“](../media/how-to-create-schedules/select-current-schedule.png)
 5. Führen Sie im Dialogfeld **Wiederholen** die folgenden Schritte aus:
     1. Vergewissern Sie sich, dass für das Feld **Wiederholen** die Option **Wöchentlich** festgelegt ist. 
-    3. Geben Sie das **Startdatum** an.
-    4. Geben Sie die **Startzeit** an, zu der die virtuellen Computer gestartet werden sollen.
-    5. Geben Sie die **Endzeit** an, zu der die virtuellen Computer heruntergefahren werden sollen. 
-    6. Geben Sie die **Zeitzone** für die von Ihnen angegebene Start- und Endzeit an. 
-    2. Wählen Sie die Tage aus, an denen der Zeitplan gelten soll. Im folgenden Beispiel ist „Montag bis Donnerstag“ ausgewählt. 
+    2. Wählen Sie die Tage aus, an denen der Zeitplan gelten soll. Im folgenden Beispiel sind Montag bis Freitag ausgewählt. 
+    3. Wählen Sie ein **Enddatum** für den Zeitplan aus.
     8. Wählen Sie **Speichern** aus. 
 
         ![Festlegen des Zeitplans für die Wiederholung](../media/how-to-create-schedules/set-repeat-schedule.png)
@@ -130,6 +139,11 @@ Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmte
 4. Wählen Sie auf der Seite **Add scheduled event** (Geplantes Ereignis hinzufügen) die Option **Speichern** aus. 
 
     ![Wöchentlicher Zeitplan](../media/how-to-create-schedules/add-schedule-page-weekly.png)
+5. Navigieren Sie im Kalender zum Startdatum, um sich zu vergewissern, dass der Zeitplan festgelegt wurde.
+    
+    ![Zeitplans im Kalender](../media/how-to-create-schedules/schedule-calendar.png)
+
+    Weitere Informationen zum Erstellen und Verwalten von Zeitplänen für eine Klasse finden Sie unter [Erstellen und Verwalten von Zeitplänen für Classroom-Labs in Azure Lab Services](how-to-create-schedules.md).
 
 ## <a name="send-invitation-emails-to-students"></a>Senden von Einladungs-E-Mails an Schüler/Studenten
 
@@ -141,6 +155,8 @@ Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmte
 
     ![Senden eines Registrierungslinks per E-Mail](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Der Status der **Einladung** wird in der Liste **Benutzer** angezeigt. Der Status sollte sich in **Wird gesendet** und dann in **Gesendet am &lt;Datum&gt;** ändern. 
+
+    Weitere Informationen zum Hinzufügen von Teilnehmern zu einer Klasse sowie zum Verwalten der Verwendung des Labs finden Sie unter [Hinzufügen und Verwalten von Labbenutzern](how-to-configure-student-usage.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie ein Classroom-Lab erstellt und konfiguriert. Um zu erfahren, wie ein Teilnehmer auf einen virtuellen Computer im Labor über den Registrierungslink zugreifen kann, fahren Sie mit nächsten Tutorial fort:
