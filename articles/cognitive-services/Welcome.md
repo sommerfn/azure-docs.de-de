@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 04/19/2019
+ms.date: 11/04/2019
 ms.author: nitinme
-ms.openlocfilehash: 5337f2d3df395650c65ae4a12cbdf4f8ba90ca3d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 081951e2e77c7fdd077dc92fe0368423db85f641
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840394"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606953"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -26,18 +26,18 @@ Azure Cognitive Services sind APIs, SDKs und Dienste, die Entwicklern beim Erste
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
 |[Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Maschinelles Sehen")|Über den Dienst für maschinelles Sehen haben Sie Zugriff auf erweiterte Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen.|
-|[Custom Vision-Dienst](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision-Dienst")|Mit dem Custom Vision Service können Sie benutzerdefinierte Bildklassifizierungen erstellen.|
+|[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Mit dem Custom Vision Service können Sie benutzerdefinierte Bildklassifizierungen erstellen.|
 |[Gesichtserkennungs-API](https://docs.microsoft.com/azure/cognitive-services/face/ "Gesichtserkennungs-API")|Die Gesichtserkennungs-API ermöglicht den Zugriff auf erweiterte Algorithmen zur Gesichtserkennung, wodurch die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung ermöglicht wird.|
-|[Formularerkennung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Formularerkennung") (Vorschau)|Die Formularerkennung identifiziert und extrahiert Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten und gibt dann strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen.|
-|[Freihanderkennung](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Freihanderkennung") (Vorschau)|Die Freihanderkennung ermöglicht das Erkennen und Analysieren von Daten, Formen und handschriftlichen Inhalten aus Freihandeingaben sowie die Ausgabe einer Dokumentstruktur mit allen erkannten Entitäten.|
+|[Formularerkennung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Formularerkennung") (Vorschauversion)|Die Formularerkennung identifiziert und extrahiert Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten und gibt dann strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen.|
+|[Freihanderkennung](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Freihanderkennung") (Vorschauversion)|Die Freihanderkennung ermöglicht das Erkennen und Analysieren von Daten, Formen und handschriftlichen Inhalten aus Freihandeingaben sowie die Ausgabe einer Dokumentstruktur mit allen erkannten Entitäten.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren.|
 
 ## <a name="speech-apis"></a>Spracherkennungs-APIs
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Speech-Dienste](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech-Dienste")|Der Spracherkennungsdienst erweitert Anwendungen um sprachaktivierte Features.|
-|[Sprechererkennungs-API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Sprechererkennungs-API") (Vorschau)|Die Sprechererkennungs-API stellt Algorithmen zur Sprecheridentifikation und -verifizierung zur Verfügung.|
+|[Speech-Dienste](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Spracherkennungsdienste")|Der Spracherkennungsdienst erweitert Anwendungen um sprachaktivierte Features.|
+|[Sprechererkennungs-API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Sprechererkennungs-API") (Vorschauversion)|Die Sprechererkennungs-API stellt Algorithmen zur Sprecheridentifikation und -verifizierung zur Verfügung.|
 |[Bing-Spracheingabe](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing-Spracheingabe") (wird eingestellt)|Die Bing-Spracheingabe-API bietet Ihnen eine einfache Möglichkeit, sprachaktivierte Features in Ihren Anwendungen zu erstellen.|
 |[Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Sprachübersetzung") (wird eingestellt)|Die Sprachübersetzung ist ein Dienst zur maschinellen Übersetzung.|
 
@@ -45,7 +45,7 @@ Azure Cognitive Services sind APIs, SDKs und Dienste, die Entwicklern beim Erste
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Mit dem Dienst „Language Understanding“ (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.|
+|[Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Mit dem Dienst „Language Understanding“ (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker ermöglicht es Ihnen, aus Ihren teilstrukturierten Inhalten einen Frage- und Antwortdienst zu erstellen.|
 |[Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Textanalyse")|Die Textanalyse bietet die Verarbeitung natürlicher Sprache für unformatierten Text für die Stimmungsanalyse, die Schlüsselbegriffserkennung und die Sprachenerkennung.|
 |[Textübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator/ "Textübersetzung")|Die Textübersetzung ermöglicht eine maschinenbasierte Textübersetzung in nahezu Echtzeit.|
@@ -55,7 +55,7 @@ Azure Cognitive Services sind APIs, SDKs und Dienste, die Entwicklern beim Erste
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Bing-News-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing-News-Suche")|Die Bing-News-Suche gibt eine Liste von Nachrichtenartikeln zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
+|[Bing-News-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing News-Suche")|Die Bing-News-Suche gibt eine Liste von Nachrichtenartikeln zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
 |[Bing-Videosuche](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing-Videosuche")|Die Bing-Videosuche gibt eine Liste von Videos zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
 |[Bing-Websuche](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing-Websuche")|Die Bing-Websuche gibt eine Liste von Suchergebnissen zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
 |[Bing-Vorschlagssuche](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing-Vorschlagssuche")|Mit der Bing-Vorschlagssuche können Sie einen Teil eines Suchbegriffs an Bing senden und erhalten dann eine Liste mit vorgeschlagenen Abfragen.|
@@ -72,11 +72,11 @@ Azure Cognitive Services sind APIs, SDKs und Dienste, die Entwicklern beim Erste
 |:-----------|:------------------|
 |[Anomalieerkennung](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomalieerkennung") (Vorschauversion)|Die Anomalieerkennung bietet Ihnen die Möglichkeit, Abweichungen in Ihren Zeitreihendaten zu überwachen und zu erkennen.|
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Der Content Moderator bietet die Überwachung auf möglicherweise anstößige, unerwünschte und risikobehaftete Inhalte.|
-|[Personalisierung](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalisierung") (Vorschauversion)|Mit der Personalisierung können Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen.|
+|[Personalisierung](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalisierung")|Mit der Personalisierung können Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen.|
 
 ## <a name="use-free-trials"></a>Verwenden kostenloser Testversionen
 
-Das [Registrieren für kostenlose Testversionen](https://azure.microsoft.com/try/cognitive-services/ "Registrierungshilfe") erfordert nur eine E-Mail und einige wenige einfache Schritte. Sie benötigen ein Microsoft-Konto, wenn Sie noch keines besitzen. Sie erhalten für jede angeforderte API ein eindeutiges Schlüsselpaar. Der zweite Schlüssel dient nur als Ersatz. Geben Sie die geheimen Schlüssel niemals an andere Personen weiter. Testversionen verfügen sowohl über ein Ratenlimit (Transaktionen pro Sekunde oder Minute) als auch über eine Begrenzung der monatlichen Nutzung. Eine Transaktion ist einfach ein API-Aufruf. Sie können ein Upgrade auf einen kostenpflichtigen Tarif durchführen, um die Einschränkungen aufzuheben.
+[Registrieren für kostenlose Testversionen](https://azure.microsoft.com/try/cognitive-services/ "Registrierungshilfe") erfordert nur eine E-Mail und ein paar einfache Schritte. Sie benötigen ein Microsoft-Konto, wenn Sie noch keines besitzen. Sie erhalten für jede angeforderte API ein eindeutiges Schlüsselpaar. Der zweite Schlüssel dient nur als Ersatz. Geben Sie die geheimen Schlüssel niemals an andere Personen weiter. Testversionen verfügen sowohl über ein Ratenlimit (Transaktionen pro Sekunde oder Minute) als auch über eine Begrenzung der monatlichen Nutzung. Eine Transaktion ist einfach ein API-Aufruf. Sie können ein Upgrade auf einen kostenpflichtigen Tarif durchführen, um die Einschränkungen aufzuheben.
 
 ## <a name="subscription-management"></a>Abonnementverwaltung
 
@@ -84,7 +84,7 @@ Nachdem Sie sich mit Ihrem Microsoft-Konto angemeldet haben, können Sie auf [Me
 
 ## <a name="upgrade-to-unlock-limits"></a>Durchführen eines Upgrades zum Aufheben von Einschränkungen
 
-Für alle APIs gibt es einen Tarif mit einer kostenlosen Testversion, für den Grenzwerte für die Nutzung und den Durchsatz gelten.  Sie können diese Grenzwerte erhöhen, indem Sie ein kostenpflichtiges Angebot nutzen und einen geeigneten Tarif auswählen, wenn Sie den Dienst im Azure-Portal bereitstellen. [Erfahren Sie mehr über die Angebote und Preise](https://azure.microsoft.com/pricing/details/cognitive-services/ "Angebote und Preise"). Hierfür müssen Sie ein Azure-Abonnentenkonto mit einer Kreditkarte und einer Telefonnummer einrichten. Falls Sie eine besondere Anforderung erfüllen oder einfach mit dem Vertrieb sprechen möchten, können Sie oben auf der Seite „Preise“ einfach auf die Schaltfläche „Vertrieb kontaktieren“ klicken.
+Für alle APIs gibt es einen Tarif mit einer kostenlosen Testversion, für den Grenzwerte für die Nutzung und den Durchsatz gelten.  Sie können diese Grenzwerte erhöhen, indem Sie ein kostenpflichtiges Angebot nutzen und einen geeigneten Tarif auswählen, wenn Sie den Dienst im Azure-Portal bereitstellen. [Erfahren Sie mehr über die Angebote und Preise](https://azure.microsoft.com/pricing/details/cognitive-services/ "oAngebote und Preise). Hierfür müssen Sie ein Azure-Abonnentenkonto mit einer Kreditkarte und einer Telefonnummer einrichten. Falls Sie eine besondere Anforderung erfüllen oder einfach mit dem Vertrieb sprechen möchten, können Sie oben auf der Seite „Preise“ einfach auf die Schaltfläche „Vertrieb kontaktieren“ klicken.
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 

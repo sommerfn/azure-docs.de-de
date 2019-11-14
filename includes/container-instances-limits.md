@@ -4,16 +4,16 @@ ms.service: container-instances
 ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
-ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3608eb6182f7806c0d4df8b96aa69faac68928f1
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178456"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73590785"
 ---
 | Resource | Standardlimit |
 | --- | :--- |
-| Containergruppen pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
+| Containergruppen pro Region pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
 | Anzahl von Containern pro Containergruppe | 60 |
 | Anzahl von Volumes pro Containergruppe | 20 |
 | Ports pro IP-Adresse | 5 |
