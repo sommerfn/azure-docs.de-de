@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer durch HTTP ausgelösten Funktion in Azure
+title: Erstellen einer durch HTTP ausgelösten Python-Funktion in Azure
 description: Hier erfahren Sie, wie Sie unter Verwendung von Azure Functions Core Tools und der Azure CLI Ihre erste Python-Funktion in Azure erstellen.
 author: ggailey777
 ms.author: glenga
@@ -9,14 +9,14 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: f2602e5a13f83090291656e7062c74c245bc6568
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 791348088d909785b36934c3b9a2ae00fc0acbb7
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693348"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622033"
 ---
-# <a name="create-an-http-triggered-function-in-azure"></a>Erstellen einer durch HTTP ausgelösten Funktion in Azure
+# <a name="create-an-http-triggered-python-function-in-azure"></a>Erstellen einer durch HTTP ausgelösten Python-Funktion in Azure
 
 Dieser Artikel demonstriert die Verwendung von Befehlszeilentools zum Erstellen eines Python-Projekts, das in Azure Functions ausgeführt wird. Sie können auch eine Funktion erstellen, die von einer HTTP-Anforderung ausgelöst wird. Abschließend veröffentlichen Sie Ihr Projekt zur Ausführung als [serverlose Funktion](functions-scale.md#consumption-plan) in Azure.
 

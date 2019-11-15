@@ -1,5 +1,5 @@
 ---
-title: Optimieren des Gen2-Cache | Microsoft-Dokumentation
+title: Optimieren des Gen2-Cache
 description: Erfahren Sie, wie Sie den Gen2-Cache im Azure-Portal überwachen.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 26791aecb2ca57b31358d3385d07230c73c84904
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33f7cedca4ef130eefa28c1dbaaedd82d11a9e4
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61474398"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645771"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Überwachen des Gen2-Cache
 In der Gen2-Speicherarchitektur werden die am häufigsten abgefragten Columnstore-Segmente automatisch in einem Cache eingeordnet, der sich auf NVMe-basierten SSDs befindet, die für Gen2-Data Warehouses entwickelt wurden. Es wird eine bessere Leistung erreicht, wenn bei Ihren Abfragen Segmente abgerufen werden, die sich im Cache befinden. In diesem Artikel wird beschrieben, wie eine langsame Abfrageleistung überwacht und behoben wird, indem bestimmt wird, ob die Workload den Gen2-Cache optimal nutzt.  

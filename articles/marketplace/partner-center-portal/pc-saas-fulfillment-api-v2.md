@@ -4,15 +4,16 @@ description: In diesem Artikel wird erläutert, wie Sie ein SaaS-Angebot im Azur
 services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 05/23/2019
+ms.date: 10/18/2019
 ms.author: evansma
-ms.openlocfilehash: 75e806e56fa94916f76f9e7fa6572ae07987e017
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4c73a59352422626ec3c6012607009995479d0cc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595559"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816606"
 ---
 # <a name="saas-fulfillment-apis-version-2"></a>SaaS-Fulfillment-APIs, Version 2 
 
@@ -59,7 +60,7 @@ Das folgende Diagramm zeigt die Aktionen im Rahmen eines Updates, das im SaaS-Di
 
 #### <a name="suspended"></a>Ausgesetzt
 
-Dieser Status gibt an, dass die Zahlung des Kunden noch nicht empfangen wurde. Richtliniengemäß gewähren wir dem Kunden eine Karenzzeit, bevor wir das Abonnement kündigen. Wenn sich ein Abonnement in diesem Zustand befindet, gibt es folgende Möglichkeiten: 
+Dieser Status gibt an, dass die Zahlung des Kunden noch nicht eingegangen ist. Richtliniengemäß gewähren wir dem Kunden eine Karenzzeit, bevor wir das Abonnement kündigen. Wenn sich ein Abonnement in diesem Zustand befindet, gibt es folgende Möglichkeiten: 
 
 - Partner können den Zugriff des Benutzers auf den Dienst herabstufen oder sperren.
 - Das Abonnement muss in einem wiederherstellbaren Zustand gespeichert werden, damit die vollständige Funktionalität ohne Verlust von Daten oder Einstellungen wiederhergestellt werden kann. 
@@ -87,7 +88,7 @@ Die folgende Tabelle enthält die Definitionen für allgemeine Parameter und Ent
 | `offerId`                | Ein eindeutiger Zeichenfolgenbezeichner für jedes Angebot, z. B. „Angebot1“  |
 | `planId`                 | Ein eindeutiger Zeichenfolgenbezeichner für jeden Plan bzw. jede SKU, z. B. „Silber“ |
 | `operationId`            | Der GUID-Bezeichner für einen bestimmten Vorgang  |
-|  `action`                | Die Aktion, die für eine Ressource ausgeführt wird: `unsubscribe`, `suspend`, `reinstate`, oder `changePlan`, `changeQuantity`, `transfer`.  |
+|  `action`                | Die Aktion, die für eine Ressource ausgeführt wird: `Unsubscribe`, `Suspend`, `Reinstate`, oder `ChangePlan`, `ChangeQuantity`, `Transfer`. |
 |   |   |
 
 Eindeutige Bezeichner (Globally Unique Identifier, [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) sind 128-Bit-Zahlen (32 hexadezimale Ziffern), die in der Regel automatisch generiert werden. 
@@ -134,7 +135,7 @@ Code: 400<br>
 Ungültige Anforderung. x-ms-marketplace-token fehlt, ist falsch formatiert oder ist abgelaufen.
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:
@@ -212,7 +213,7 @@ Antwortnutzlast für Pseudo-API:<br>
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": "true", // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.
+          "isFreeTrial": "true", // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
       }
   ],
@@ -250,7 +251,7 @@ Und für eine echte API: <br>
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "isFreeTrial": true, // true – the customer subscription is currently in free trial, false – the customer subscription is not currently in free trial.(optional field – default false)
+          "isFreeTrial": true, // true - the customer subscription is currently in free trial, false - the customer subscription is not currently in free trial.(optional field - default false)
           "isTest": false, //indicating whether the current subscription is a test asset
           "sandboxType": "None", // Possible Values: None, Csp (Csp sandbox purchase)
           "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation: [NotStarted, PendingFulfillmentStart, Subscribed, Suspended, Unsubscribed]
@@ -262,7 +263,7 @@ Und für eine echte API: <br>
 Das Fortsetzungstoken ist nur vorhanden, wenn zusätzliche „Seiten“ von Plänen abgerufen werden sollen. 
 
 Code: 403 <br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.) 
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört. 
 
 Code: 500<br>
 Interner Serverfehler.
@@ -320,7 +321,7 @@ Response Body:
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP-initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
-        "isFreeTrial": "true", // true – customer subscription is currently in free trial, false – customer subscription is not currently in free trial.
+        "isFreeTrial": "true", // true - customer subscription is currently in free trial, false - customer subscription is not currently in free trial.
         "status": "Subscribed", // Indicates the status of the operation.
           "term": { //This gives the free trial term start and end date
             "startDate": "2019-05-31",
@@ -331,7 +332,7 @@ Response Body:
 ```
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:<br> 
@@ -387,7 +388,7 @@ Code: 404<br>
 Nicht gefunden:<br> 
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.) <br> 
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört. <br> 
 
 Code: 500<br>
 Interner Serverfehler.<br>
@@ -438,7 +439,7 @@ Code: 400<br>
 Bad request: validation failures. (Ungültige Anforderung: Fehler bei der Überprüfung.)
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:
@@ -501,7 +502,7 @@ Code: 400<br>
 Bad request: validation failures. (Ungültige Anforderung: Fehler bei der Überprüfung.)
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:
@@ -568,7 +569,7 @@ Bad request: validation failures. (Ungültige Anforderung: Fehler bei der Überp
 
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:
@@ -619,7 +620,7 @@ Code: 400<br>
 Es wird ein Abonnement gelöscht, bei dem **DELETE** nicht zu den `allowedCustomerOperations` gehört.
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:
@@ -687,7 +688,7 @@ Code: 400<br>
 Bad request: validation failures. (Ungültige Anforderung: Fehler bei der Überprüfung.)
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:
@@ -707,7 +708,7 @@ Interner Serverfehler.
 
 #### <a name="get-operation-status"></a>Abrufen des Vorgangsstatus
 
-Ermöglicht dem Herausgeber das Nachverfolgen des Status des angegebenen ausgelösten asynchronen Vorgangs (z. B. `subscribe`, `unsubscribe`, `changePlan` oder `changeQuantity`).
+Ermöglicht dem Herausgeber das Nachverfolgen des Status des angegebenen ausgelösten asynchronen Vorgangs (z. B. `Subscribe`, `Unsubscribe`, `ChangePlan` oder `ChangeQuantity`).
 
 ##### <a name="getbr-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsoperationidapi-versionapiversion"></a>Get<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`
 
@@ -751,7 +752,7 @@ Code: 400<br>
 Bad request: validation failures. (Ungültige Anforderung: Fehler bei der Überprüfung.)
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
  
 Code: 404<br>
 Nicht gefunden:
@@ -809,7 +810,7 @@ Code: 400<br>
 Bad request: validation failures. (Ungültige Anforderung: Fehler bei der Überprüfung.)
 
 Code: 403<br>
-Nicht autorisiert. The authentication token wasn't provided or is invalid, or the request is attempting to access an acquisition that doesn’t belong to the current publisher. (Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.)
+Nicht autorisiert. Das Authentifizierungstoken wurde nicht bereitgestellt oder ist ungültig, oder die Anforderung versucht, auf einen Kauf zuzugreifen, der nicht zum aktuellen Herausgeber gehört.
 
 Code: 404<br>
 Nicht gefunden:
@@ -839,7 +840,7 @@ Der Herausgeber muss in diesen SaaS-Dienst einen Webhook implementieren, um proa
   "id": "<this is a GUID operation id, you can call operations API with this to get status>",
   "activityId": "<this is a Guid correlation id>",
   "subscriptionId": "<Guid to uniquely identify this resource>",
-  "publisherId": "<this is the publisher’s name>",
+  "publisherId": "<this is the publisher's name>",
   "offerId": "<this is the offer name>",
   "planId": "<this is the plan id>",
   "quantity": "<the number of seats, will be null if not per-seat saas offer>",
@@ -850,11 +851,11 @@ Der Herausgeber muss in diesen SaaS-Dienst einen Webhook implementieren, um proa
 }
 ```
 Eine der folgenden Aktionen kann verwendet werden: 
-- `unsubscribe` (wenn die Ressource gelöscht wurde)
-- `changePlan` (wenn der Vorgang zum Ändern des Plans abgeschlossen wurde)
-- `changeQuantity` (wenn der Vorgang zum Ändern der Menge abgeschlossen wurde)
-- `suspend` (wenn die Ressource angehalten wurde)
-- `reinstate` (wenn die Ressource nach dem Anhalten reaktiviert wurde)
+- `Unsubscribe` (wenn die Ressource gelöscht wurde)
+- `ChangePlan` (wenn der Vorgang zum Ändern des Plans abgeschlossen wurde)
+- `ChangeQuantity` (wenn der Vorgang zum Ändern der Menge abgeschlossen wurde)
+- `Suspend` (wenn die Ressource angehalten wurde)
+- `Reinstate` (wenn die Ressource nach dem Anhalten reaktiviert wurde)
 
 Folgende Statuswerte sind möglich: 
 - **NotStarted** <br>

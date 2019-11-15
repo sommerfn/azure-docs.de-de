@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: ellacroi
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 11ab9f6bb4ab61a669c9c898ee9f5668b7cd568f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b306c4e8f0362d714e9c5ae076f18e161f1dab53
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598662"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825981"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -81,14 +82,14 @@ Unser Marketplace-Onboardingteam überprüft die Details zu Ihrer Marketplace-Re
 Über das [Cloud-Partnerportal](https://cloudpartner.azure.com) können Sie Marketplace-Angebote erstellen, veröffentlichen und verwalten. Nachdem Sie die Willkommens-E-Mail als Bestätigung erhalten haben, können Sie sich mit Ihrem Microsoft-Konto direkt beim [Cloud-Partnerportal](https://cloudpartner.azure.com) anmelden, um weitere technische Informationen zum Veröffentlichen im Marketplace und Erstellen Ihres Angebots zu erhalten. 
 *   Weitere Informationen zur Verwendung des Cloud-Partnerportals finden Sie im [Artikel zu den ersten Schritten im Abschnitt mit den relevanten Informationen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). Sie müssen beim Cloud-Partnerportal angemeldet sein, um auf diese Informationen zugreifen zu können.
 *   Wenn Sie Fragen haben oder einen Anruf planen möchten, um eine Übersicht über das Onboarding zu erhalten, lesen Sie die anderen Artikel in diesem Herausgeberleitfaden, oder öffnen Sie im Cloud-Partnerportal unter „Problemtyp > Marketplace-Onboarding“ eine Supportanfrage.
-*   Wenn Sie keine Willkommens-E-Mail erhalten haben, suchen Sie in Ihrem Spamordner nach einer E-Mail mit der Betreffzeile „Willkommen beim Microsoft Azure Marketplace!“. Wenn keine E-Mail in Ihrem Spam-Ordner vorhanden ist, [wenden Sie sich an den Microsoft-Support](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Wählen Sie auf der Supportseite Folgendes aus: „Problemtyp“ > „Marketplace-Onboarding“.  Unser Marketplace-Onboardingteam für Herausgeber hilft Ihnen bei jeglichen Anfragen gerne weiter. 
+*   Wenn Sie keine Willkommens-E-Mail erhalten haben, suchen Sie in Ihrem Spamordner nach einer E-Mail mit der Betreffzeile „Willkommen beim Microsoft Marketplace!“. Wenn keine E-Mail in Ihrem Spam-Ordner vorhanden ist, [wenden Sie sich an den Microsoft-Support](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Wählen Sie auf der Supportseite Folgendes aus: „Problemtyp“ > „Marketplace-Onboarding“.  Unser Marketplace-Onboardingteam für Herausgeber hilft Ihnen bei jeglichen Anfragen gerne weiter. 
 
 
 ## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Registrieren beim Dev Center (nur für die Transaktionsveröffentlichungsoption) 
 | 5–10 Tage |  
 Für Angebote, bei denen die Transaktionsveröffentlichungsoption verwendet wird, ist ein [Dev Center](https://developer.microsoft.com/store/register)-Konto erforderlich. Dieses umfasst virtuelle Computer, Azure-Apps und SaaS-Apps, die für den Vertrieb über Azure konfiguriert sind. Die [Dev Center](https://developer.microsoft.com/store/register)-Kontodetails werden von Microsoft zur Überprüfung von rechtlichen Informationen, steuerlichen Angaben und Finanzdaten Ihrer Organisation verwendet. Diese werden wiederum für Auszahlungszwecke benötigt, wenn Sie Ihre Softwarelizenzierungsgebühren über den Azure Marketplace verkaufen und abrechnen. 
 
-Der [Dev Center](https://developer.microsoft.com/store/register)-Registrierungsprozess kann gestartet werden, bevor Sie Ihr Angebot im Cloud-Partnerportal erstellt haben, muss jedoch abgeschlossen sein, bevor Sie Ihr Marketplace-Angebot veröffentlichen. Aufgrund des durchschnittlichen Zeitaufwands für die Durchführung dieses Schritts (5–10 Tage) wird empfohlen, diesen Prozess schnellstmöglich in die Wege zu leiten, wenn Sie die Transaktionsveröffentlichungsoption verwenden möchten. 
+Der [Dev Center](https://developer.microsoft.com/store/register)-Registrierungsprozess kann gestartet werden, bevor Sie Ihr Angebot im Cloud-Partnerportal erstellt haben, muss jedoch abgeschlossen sein, bevor Sie Ihr Marketplace-Angebot veröffentlichen. Da dieser Schritt in der Regel 5–10 Tage dauert, wird empfohlen, diesen Prozess schnellstmöglich einzuleiten, wenn Sie die Veröffentlichungsoption „Transaktion“ verwenden möchten. 
 
 Die Person, die sich beim [Dev Center](https://developer.microsoft.com/store/register) registriert, muss ein offizieller Vertreter Ihrer Organisation sein und persönliche Informationen zur Überprüfung ihrer Identität bereitstellen. Registrieren Sie sich mit Ihrem Microsoft-Konto, das Sie in Schritt 2 erstellt haben, und verwenden Sie das Microsoft-Konto, mit dem Sie auf das Cloud-Partnerportal zugegriffen haben.
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37d895d5631cf8487549fd9a9ebfb9dc37209c60
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839613"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818595"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -4778,8 +4778,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Search/searchServices/delete | Löscht den Suchdienst. |
 > | Aktion | Microsoft.Search/searchServices/deleteQueryKey/delete | Löscht den Abfrageschlüssel. |
 > | Aktion | Microsoft.Search/searchServices/listAdminKeys/action | Liest die Administratorschlüssel. |
-> | Aktion | Microsoft.Search/searchServices/listQueryKeys/action | Gibt die Liste der API-Abfrageschlüssel für den angegebenen Azure Search-Dienst zurück. |
-> | Aktion | Microsoft.Search/searchServices/listQueryKeys/read | Gibt die Liste der API-Abfrageschlüssel für den angegebenen Azure Search-Dienst zurück. |
+> | Aktion | Microsoft.Search/searchServices/listQueryKeys/action | Gibt die Liste der API-Abfrageschlüssel für den angegebenen Azure Cognitive Search-Dienst zurück. |
+> | Aktion | Microsoft.Search/searchServices/listQueryKeys/read | Gibt die Liste der API-Abfrageschlüssel für den angegebenen Azure Cognitive Search-Dienst zurück. |
 > | Aktion | Microsoft.Search/searchServices/read | Liest den Suchdienst. |
 > | Aktion | Microsoft.Search/searchServices/regenerateAdminKey/action | Generiert die Administratorschlüssel neu. |
 > | Aktion | Microsoft.Search/searchServices/start/action | Startet den Suchdienst. |

@@ -1,5 +1,5 @@
 ---
-title: Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“ – Azure Active Directory | Microsoft-Dokumentation
+title: Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“ – Azure AD
 description: Erfahren Sie, wie Sie Ihre gruppenbezogenen Informationen anzeigen und aktualisieren können, einschließlich der Anzeige der Gruppen, die Sie besitzen, der Erstellung neuer Gruppen, der Anzeige der Gruppen, deren Mitglied Sie bereits sind, und des Beitritts zu allen Gruppen, denen Sie noch nicht angehören.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11b43d040dec838de350c23614ae42b6756ec6e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: aa251ee361af12ecf3fef3c7cd437fa06c1cea52
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383165"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803916"
 ---
-# <a name="update-your-groups-info-from-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
+# <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
 
 Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 

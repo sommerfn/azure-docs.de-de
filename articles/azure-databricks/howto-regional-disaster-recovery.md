@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 3718b79562ec05383b9881a1a97cc5bcc5e04258
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075451"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601761"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale Notfallwiederherstellung für Azure Databricks-Cluster
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zu einer praktischen Notfallwiederherstell
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks-Architektur
 
-Wenn Sie über das Azure-Portal einen Azure Databricks-Arbeitsbereich erstellen, wird ganz allgemein gesagt in Ihrem Abonnement eine [verwaltete Appliance](../managed-applications/overview.md) als Azure-Ressource in der ausgewählten Azure-Region (beispielsweise „USA, Westen“) bereitgestellt. Diese Appliance wird in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) mit einer [Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md) und einem in Ihrem Abonnement verfügbaren Azure Storage-Konto bereitgestellt. Das virtuelle Netzwerk bietet Sicherheit auf Umgebungsebene für den Databricks-Arbeitsbereich und wird durch die Netzwerksicherheitsgruppe geschützt. Innerhalb des Arbeitsbereichs können Sie Databricks-Cluster erstellen, indem Sie den VM-Typ für Worker und Treiber sowie die Databricks-Laufzeitversion angeben. Die gespeicherten Daten steht in Ihrem Speicherkonto (Azure Blob Storage oder Azure Data Lake Store) zur Verfügung. Nach der Clustererstellung können Sie Aufträge über Notebooks, REST-APIs und ODBC/JDBC-Endpunkte ausführen, indem Sie sie an einen bestimmten Cluster anfügen.
+Wenn Sie über das Azure-Portal einen Azure Databricks-Arbeitsbereich erstellen, wird ganz allgemein gesagt in Ihrem Abonnement eine [verwaltete Appliance](../managed-applications/overview.md) als Azure-Ressource in der ausgewählten Azure-Region (beispielsweise „USA, Westen“) bereitgestellt. Diese Appliance wird in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) mit einer [Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md) und einem in Ihrem Abonnement verfügbaren Azure Storage-Konto bereitgestellt. Das virtuelle Netzwerk bietet Sicherheit auf Umgebungsebene für den Databricks-Arbeitsbereich und wird durch die Netzwerksicherheitsgruppe geschützt. Innerhalb des Arbeitsbereichs können Sie Databricks-Cluster erstellen, indem Sie den VM-Typ für Worker und Treiber sowie die Databricks-Laufzeitversion angeben. Die gespeicherten Daten steht in Ihrem Speicherkonto (Azure Blob Storage oder Azure Data Lake Storage) zur Verfügung. Nach der Clustererstellung können Sie Aufträge über Notebooks, REST-APIs und ODBC/JDBC-Endpunkte ausführen, indem Sie sie an einen bestimmten Cluster anfügen.
 
 Die Databricks-Steuerungsebene verwaltet und überwacht die Umgebung des Databricks-Arbeitsbereichs. Verwaltungsvorgänge wie etwa das Erstellen eines Clusters werden über die Steuerungsebene initiiert. Alle Metadaten (beispielsweise geplante Aufträge) werden aus Gründen der Fehlertoleranz in einer Azure-Datenbank mit Georeplikation gespeichert.
 
@@ -47,7 +47,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
 
    Dieser Artikel enthält eine Reihe von Codebeispielen, in denen für die meisten der automatisierten Schritte die Befehlszeilenschnittstelle verwendet wird, da es sich dabei um einen benutzerfreundlichen Wrapper für die REST-API von Azure Databricks handelt.
 
-   Installieren Sie zunächst die Databricks-Befehlszeilenschnittstelle auf Ihrem Desktopcomputer oder auf einem virtuellen Computer, auf dem Sie die Migrationsschritte ausführen möchten. Weitere Informationen finden Sie in der [Dokumentation zur Databricks-Befehlszeilenschnittstelle](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+   Installieren Sie zunächst die Databricks-Befehlszeilenschnittstelle auf Ihrem Desktopcomputer oder auf einem virtuellen Computer, auf dem Sie die Migrationsschritte ausführen möchten. Weitere Informationen finden Sie in der [Dokumentation zur Databricks-Befehlszeilenschnittstelle](/azure/databricks/dev-tools/databricks-cli).
 
    ```bash
    pip install databricks-cli
@@ -284,9 +284,9 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
 
    Bibliotheken können derzeit nicht ohne Weiteres zwischen Arbeitsbereichen migriert werden. Sie müssen stattdessen manuell im neuen Arbeitsbereich installiert werden. Es ist möglich, den Vorgang durch eine Kombination aus [DBFS-CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) (zum Hochladen von benutzerdefinierten Bibliotheken in den Arbeitsbereich) und [Bibliotheken-CLI](https://github.com/databricks/databricks-cli#libraries-cli) zu automatisieren.
 
-8. **Migrieren von Azure-Blobspeicher- und Azure Data Lake Store-Einbindungen**
+8. **Migrieren von Azure Blob Storage- und Azure Data Lake Storage-Einbindungen**
 
-   Binden Sie alle [Azure-Blobspeicher](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html)- und [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)-Bereitstellungspunkte mithilfe einer notebookbasierten Lösung manuell ein. Die Speicherressourcen waren im primären Arbeitsbereich bereitgestellt, und dies muss im sekundären Arbeitsbereich wiederholt werden. Für Einbindungen steht keine externe API zur Verfügung.
+   Binden Sie alle [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html)- und [Azure Data Lake Storage (Gen2)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)-Bereitstellungspunkte mithilfe einer notebookbasierten Lösung manuell ein. Die Speicherressourcen waren im primären Arbeitsbereich bereitgestellt, und dies muss im sekundären Arbeitsbereich wiederholt werden. Für Einbindungen steht keine externe API zur Verfügung.
 
 9. **Migrieren von Clusterinitialisierungsskripts**
 
@@ -302,7 +302,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
 
 10. **Manuelles Konfigurieren und Anwenden der Zugriffssteuerung**
 
-    Wenn Ihr vorhandener primärer Arbeitsbereich für die Verwendung des Premium-Tarifs (SKU) konfiguriert ist, verwenden Sie wahrscheinlich auch das [Zugriffssteuerungsfeature](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
+    Wenn Ihr vorhandener primärer Arbeitsbereich für die Verwendung des Premium-Tarifs (SKU) konfiguriert ist, verwenden Sie wahrscheinlich auch das [Zugriffssteuerungsfeature](/azure/databricks/administration-guide/access-control/index).
 
     Wenn Sie das Zugriffssteuerungsfeature verwenden, wenden Sie die Zugriffssteuerung manuell auf die Ressourcen (Notebooks, Cluster, Aufträge, Tabellen) an.
 
@@ -312,4 +312,4 @@ Wenn Sie andere Azure-Dienste verwenden, achten Sie darauf, bewährte Methoden f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in der [Dokumentation zu Azure Databricks](https://docs.azuredatabricks.net/user-guide/index.html).
+Weitere Informationen finden Sie in der [Dokumentation zu Azure Databricks](index.yml).

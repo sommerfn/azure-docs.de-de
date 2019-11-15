@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei Timeouts | Microsoft-Dokumentation
+title: Problembehandlung bei Timeouts bei Azure Cache for Redis | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie häufige Probleme mit Timeouts bei Azure Cache for Redis beheben
 services: cache
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 8cf1ade80de015f1f981ff6610c242a5d0f1a1a7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795238"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826351"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problembehandlung bei Timeouts bei Azure Cache for Redis
 
@@ -34,7 +34,7 @@ In diesem Abschnitt wird die Problembehandlung bei Timeouts erläutert, die beim
 
 ## <a name="redis-server-patching"></a>Redis-Serverpatching
 
-Azure Cache for Redis aktualisiert regelmäßig im Rahmen der bereitgestellten verwalteten Dienstfunktionalität die Serversoftware. Diese [Patching](cache-failover.md)-Aktivität findet größtenteils im Hintergrund statt. Wenn Redis-Serverknoten gepatcht werden, können beim Failover Redis-Clients, die mit diesen Knoten verbunden sind, temporäre Timeouts erleben, da Verbindungen zwischen diesen Knoten umgeschaltet werden. Weitere Informationen zu den Nebenwirkungen des Patchings für Ihre Anwendung sowie Informationen zu einer besseren Handhabung von Patchereignissen finden Sie unter [Wie wirkt sich ein Failover auf meine Clientanwendung aus?](cache-failover.md#how-does-a-failover-impact-my-client-application).
+Azure Cache for Redis aktualisiert regelmäßig im Rahmen der bereitgestellten verwalteten Dienstfunktionalität die Serversoftware. Diese [Patching](cache-failover.md)-Aktivität findet größtenteils im Hintergrund statt. Wenn Redis-Serverknoten gepatcht werden, können beim Failover Redis-Clients, die mit diesen Knoten verbunden sind, temporäre Timeouts erleben, da Verbindungen zwischen diesen Knoten umgeschaltet werden. Weitere Informationen zu den Nebenwirkungen des Patchings für Ihre Anwendung sowie Informationen zu einer besseren Handhabung von Patchereignissen finden Sie unter [Wie wirkt sich ein Failover auf meine Clientanwendung aus?](cache-failover.md#how-does-a-failover-affect-my-client-application).
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis-Timeoutausnahmen
 

@@ -4,15 +4,16 @@ description: Konfigurieren der Leadverwaltung für Azure Blob
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: evansma
-ms.openlocfilehash: c67855422808f5ec4c81242edcece4e447f2f44f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901454"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812367"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Anweisungen für die Leadverwaltung für Azure Blob
 

@@ -1,5 +1,5 @@
 ---
-title: Ermitteln einer Firewall, die in eine verwaltete Azure SQL-Datenbank-Instanz integriert ist | Microsoft-Dokumentation
+title: Ermitteln der integrierten Firewall einer verwalteten Instanz
 description: Erfahren Sie, wie Sie den integrierten Firewallschutz in einer verwalteten Azure SQL-Datenbank-Instanz überprüfen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: c98b0fd5669140559b4840e157394c2e8c6086ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 555ef56aafa37a1e1d384f945b04f9237adc5f7d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567441"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821805"
 ---
 # <a name="verifying-the-managed-instance-built-in-firewall"></a>Überprüfen der integrierten Firewall einer verwalteten Instanz
 

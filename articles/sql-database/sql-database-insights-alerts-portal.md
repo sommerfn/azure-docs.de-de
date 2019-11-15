@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Warnungen und Benachrichtigungen über das Azure-Portal | Microsoft-Dokumentation
+title: Einrichten von Warnungen und Benachrichtigungen (Azure-Portal)
 description: Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: 3103b556098d0b9ccbfca7348ab70c183a69753d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ec625f203e9282d070e6c1b3b3d712be7ab789cf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262229"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810388"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Data Warehouse über das Azure-Portal
 

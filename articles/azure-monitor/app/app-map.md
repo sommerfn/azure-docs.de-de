@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678390"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73577057"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -180,13 +180,22 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 ### <a name="java"></a>Java
 
+Ab dem Java SDK 2.5.0 für Application Insights können Sie den Cloudrollennamen angeben, indem Sie der Datei `<RoleName>` den Eintrag `ApplicationInsights.xml` hinzufügen.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
 Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
 
 `spring.application.name=<name-of-app>`
 
 Das Spring Boot-Startprogramm weist dem von Ihnen für die Eigenschaft „spring.application.name“ eingegebenen Wert automatisch „Cloudrollenname“ zu.
-
-Weitere Informationen zur Java-Korrelation und zum Konfigurieren von „Cloudrollenname“ für SpringBoot-fremde Anwendungen finden Sie in [diesem Abschnitt](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name) zur Korrelation.
 
 ### <a name="clientbrowser-side-javascript"></a>Client-/Browserseitiger JavaScript-Code
 

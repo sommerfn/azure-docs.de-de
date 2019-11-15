@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972369"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825684"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Verkleinern einer privaten Cloud von CloudSimple
 
@@ -53,6 +53,10 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 8. Klicken Sie auf **Senden**, um die private Cloud zu verkleinern.
 
 Die Verkleinerung der privaten Cloud wird gestartet.  Sie können den Status unter „Aufgaben“ verfolgen.  Der Verkleinerungsprozess kann je nach den Daten, die mit vSAN erneut synchronisiert werden müssen, einige Stunden dauern.
+
+> [!NOTE]
+> Wenn Sie eine private Cloud verkleinern, indem Sie den letzten bzw. den einzigen Cluster im Rechenzentrum löschen, wird das Rechenzentrum nicht gelöscht.  
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

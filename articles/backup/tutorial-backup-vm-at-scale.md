@@ -1,6 +1,6 @@
 ---
 title: Bedarfsorientiertes Sichern von virtuellen Azure-Computern
-description: Gleichzeitiges Sichern mehrerer virtueller Computer in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie einen Recovery Services-Tresor erstellen, eine Sicherungsrichtlinie definieren und mehrere virtuelle Computer gleichzeitig sichern.
 keywords: Sicherung virtueller Computer; virtuelle Computer sichern; VM-Sicherung; VM sichern; Azure-VM sichern; Sicherung und Notfallwiederherstellung
 author: dcurwin
 manager: carmonm
@@ -9,26 +9,27 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: fa9f13bf4f4e06973f7b9125897366ad53d06857
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688430"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747019"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
-Wenn Sie Daten in Azure sichern, speichern Sie diese Daten in einer Azure-Ressource mit der Bezeichnung Recovery Services-Tresor. Sie finden den Recovery Services-Tresor in den meisten Azure-Diensten im Einstellungsmenü. Die Integration des Recovery Services-Tresors in das Einstellungsmenü der meisten Azure-Dienste macht das Sichern von Daten ganz einfach. Die Arbeit mit den einzelnen Datenbanken oder virtuellen Computern in Ihrem Unternehmen ist jedoch aufwendig. Was geschieht, wenn Sie die Daten für alle virtuellen Computer in einer Abteilung oder an einem Standort sichern möchten? Es ist einfach, mehrere virtuelle Computer zu sichern, indem Sie eine Sicherungsrichtlinie erstellen und diese Richtlinie auf die gewünschten virtuellen Computer anwenden. In diesem Tutorial werden folgende Punkte erläutert:
+Wenn Sie Daten in Azure sichern, speichern Sie diese Daten in einer Azure-Ressource mit der Bezeichnung Recovery Services-Tresor. Sie finden den Recovery Services-Tresor in den meisten Azure-Diensten im Einstellungsmenü. Die Integration des Recovery Services-Tresors in das Einstellungsmenü der meisten Azure-Dienste vereinfacht das Sichern von Daten. Die Arbeit mit den einzelnen Datenbanken oder virtuellen Computern in Ihrem Unternehmen ist jedoch aufwendig. Was geschieht, wenn Sie die Daten für alle virtuellen Computer in einer Abteilung oder an einem Standort sichern möchten? Es ist einfach, mehrere virtuelle Computer zu sichern, indem Sie eine Sicherungsrichtlinie erstellen und diese Richtlinie auf die gewünschten virtuellen Computer anwenden. In diesem Tutorial werden folgende Punkte erläutert:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines Recovery Services-Tresors
 > * Definieren einer Sicherungsrichtlinie
 > * Anwenden der Sicherungsrichtlinie zum Schützen mehrerer virtueller Computer
 > * Auslösen eines bedarfsgesteuerten Sicherungsauftrags für die geschützten virtuellen Computer
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -44,11 +45,11 @@ Der Recovery Services-Tresor enthält die Sicherungsdaten, und Sicherungsrichtli
 
 3. Führen Sie im Menü „Recovery Services-Tresor“ folgende Aktionen durch:
 
-    - Geben Sie *myRecoveryServicesVault* in **Name** ein.
-    - Die aktuelle Abonnement-ID wird unter **Abonnement** angezeigt. Wenn Sie über weitere Abonnements verfügen, können Sie ein anderes Abonnement für den neuen Tresor auswählen.
-    - Wählen Sie für **Ressourcengruppe** die Option **Vorhandene verwenden** und dann *myResourceGroup* aus. Wenn *myResourceGroup* nicht vorhanden ist, wählen Sie **Neu erstellen** aus und geben *myResourceGroup* ein.
-    - Wählen Sie im Dropdownmenü **Standort** die Region *Europa, Westen* aus.
-    - Klicken Sie auf **Erstellen**, um den Recovery Services-Tresor zu erstellen.
+    * Geben Sie *myRecoveryServicesVault* in **Name** ein.
+    * Die aktuelle Abonnement-ID wird unter **Abonnement** angezeigt. Wenn Sie über weitere Abonnements verfügen, können Sie ein anderes Abonnement für den neuen Tresor auswählen.
+    * Wählen Sie für **Ressourcengruppe** die Option **Vorhandene verwenden** und dann *myResourceGroup* aus. Wenn *myResourceGroup* nicht vorhanden ist, wählen Sie **Neu erstellen** aus und geben *myResourceGroup* ein.
+    * Wählen Sie im Dropdownmenü **Standort** die Region *Europa, Westen* aus.
+    * Klicken Sie auf **Erstellen**, um den Recovery Services-Tresor zu erstellen.
 
 Recovery Services-Tresore müssen sich am gleichen Standort wie die zu schützenden virtuellen Computer befinden. Falls Sie über virtuelle Computer in mehreren Regionen verfügen, erstellen Sie in jeder Region einen Recovery Services-Tresor. In diesem Tutorial wird ein Recovery Services-Tresor in *Europa, Westen* erstellt, da dort auch *myVM* (der im Schnellstart erstellte virtuelle Computer) erstellt wurde.
 
@@ -58,7 +59,7 @@ Wenn Sie einen Recovery Services-Tresor erstellen, verfügt dieser standardmäß
 
 ## <a name="set-backup-policy-to-protect-vms"></a>Festlegen der Sicherungsrichtlinie zum Schutz von virtuellen Computern
 
-Nach dem Erstellen des Recovery Services-Tresors konfigurieren Sie im nächsten Schritt den Tresor für den Datentyp und legen die Sicherungsrichtlinie fest. Die Sicherungsrichtlinie gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte. Für dieses Tutorial nehmen wir an, dass Ihr Unternehmen ein Sportkomplex mit Hotel, Stadion, Restaurants und Konzessionen ist und Sie die Daten auf den virtuellen Computern schützen möchten. Anhand der folgenden Schritte erstellen Sie eine Sicherungsrichtlinie für Finanzdaten.
+Nach dem Erstellen des Recovery Services-Tresors konfigurieren Sie im nächsten Schritt den Tresor für den Datentyp und legen die Sicherungsrichtlinie fest. Die Sicherungsrichtlinie gibt die Häufigkeit und den Zeitpunkt für die Erstellung von Wiederherstellungspunkten an. Darüber hinaus enthält die Richtlinie die Beibehaltungsdauer für die Wiederherstellungspunkte. Für dieses Tutorial wird davon ausgegangen, dass Ihr Unternehmen ein Sportkomplex mit Hotel, Stadion, Restaurants und Konzessionen ist und Sie die Daten auf den virtuellen Computern schützen möchten. Anhand der folgenden Schritte erstellen Sie eine Sicherungsrichtlinie für Finanzdaten.
 
 1. Wählen Sie in der Liste mit den Recovery Services-Tresoren **myRecoveryServicesVault** aus, um das zugehörige Dashboard zu öffnen.
 
@@ -77,12 +78,12 @@ Nach dem Erstellen des Recovery Services-Tresors konfigurieren Sie im nächsten 
     ![Workload auswählen](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. Geben Sie im Menü **Sicherungsrichtlinie** für **Richtlinienname** den Namen *Finance* ein. Geben Sie die folgenden Änderungen für die Sicherungsrichtlinie ein:
-   - Legen Sie für **Sicherungshäufigkeit** die Zeitzone auf *Central Time* fest. Der Sportkomplex befindet sich in Texas, und der Besitzer möchte die lokale Zeit verwenden. Lassen Sie die Sicherungshäufigkeit auf täglich um 3:30 Uhr festgelegt.
-   - Legen Sie für **Aufbewahrung für täglichen Sicherungspunkt** den Zeitraum auf 90 Tage fest.
-   - Verwenden Sie für **Aufbewahrung für wöchentlichen Sicherungspunkt** den Wiederherstellungspunkt *Monday*, und legen Sie als Aufbewahrungszeit 52 Wochen fest.
-   - Verwenden Sie für **Aufbewahrung für monatlichen Sicherungspunkt** den Wiederherstellungspunkt vom ersten Sonntag des Monats, und legen Sie als Aufbewahrungszeit 36 Monate fest.
-   - Deaktivieren Sie die Option **Aufbewahrung für jährlichen Sicherungspunkt**. Der Leiter der Finanzabteilung möchte die Daten nicht länger als 36 Monate aufbewahren.
-   - Klicken Sie auf **OK**, um die Sicherungsrichtlinie zu erstellen.
+   * Legen Sie für **Sicherungshäufigkeit** die Zeitzone auf *Central Time* fest. Der Sportkomplex befindet sich in Texas, und der Besitzer möchte die lokale Zeit verwenden. Lassen Sie die Sicherungshäufigkeit auf täglich um 3:30 Uhr festgelegt.
+   * Legen Sie für **Aufbewahrung für täglichen Sicherungspunkt** den Zeitraum auf 90 Tage fest.
+   * Verwenden Sie für **Aufbewahrung für wöchentlichen Sicherungspunkt** den Wiederherstellungspunkt *Monday*, und legen Sie als Aufbewahrungszeit 52 Wochen fest.
+   * Verwenden Sie für **Aufbewahrung für monatlichen Sicherungspunkt** den Wiederherstellungspunkt vom ersten Sonntag des Monats, und legen Sie als Aufbewahrungszeit 36 Monate fest.
+   * Deaktivieren Sie die Option **Aufbewahrung für jährlichen Sicherungspunkt**. Der Leiter der Finanzabteilung möchte die Daten nicht länger als 36 Monate aufbewahren.
+   * Klicken Sie auf **OK**, um die Sicherungsrichtlinie zu erstellen.
 
      ![Workload auswählen](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
@@ -142,7 +143,6 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
 
     ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
-
 2. Klicken Sie im Menü **Sicherungselemente** auf **Virtueller Azure-Computer**, um die Liste der virtuellen Computer, die dem Tresor zugeordnet sind, zu öffnen.
 
     ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/three-virtual-machines.png)
@@ -171,12 +171,12 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
 
     Nachdem der Tresor gelöscht wurde, wird wieder die Liste der Recovery Services-Tresore angezeigt.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie das Azure-Portal zu folgenden Zwecken verwendet:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines Recovery Services-Tresors
 > * Festlegen des Tresors zum Schutz von virtuellen Computern
 > * Erstellen einer benutzerdefinierte Sicherungs- und Aufbewahrungsrichtlinie

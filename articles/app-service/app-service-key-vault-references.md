@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8f237e4c676a53f6df15940a196a998bee529f6b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274415"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817969"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Verwenden von Key Vault-Verweisen für App Service und Azure Functions
 
@@ -51,15 +51,11 @@ Ein Key Vault-Verweis hat die Form `@Microsoft.KeyVault({referenceString})`, wob
 > | SecretUri=_secretUri_                                                       | **SecretUri** ist die vollständige URI der Datenebene eines Geheimnisses in Key Vault, einschließlich einer Version, z.B. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931.  |
 > | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** ist der Name Ihrer Key Vault-Ressource. **SecretName** ist der Name des Zielgeheimnisses. **SecretVersion** ist die Version des zu verwendenden Geheimnisses. |
 
-> [!NOTE] 
-> Zurzeit sind Versionen erforderlich. Beim Rotieren von Geheimnissen müssen Sie die Version in der Anwendungskonfiguration aktualisieren.
-
-Ein vollständiger Verweis kann beispielsweise wie folgt aussehen:
+Ein vollständiger Verweis mit Version sieht beispielsweise wie folgt aus:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
 ```
-
 Alternativ:
 
 ```

@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: e5dc913d682088296f84fb6bd7595a09d9d3fe7b
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 0d73f40c77c1b73a52522eafdb3c093b691d3e14
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609854"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583455"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -53,7 +53,7 @@ Mit benutzerdefinierten APIs können Sie APIs aufrufen, die keine Connectors sin
 * Werden im Designer für Logic Apps mit Symbolen neben von Microsoft verwalteten Connectors angezeigt.
 * Sind nur für die Ersteller der Connectors und Benutzer von Logik-Apps verfügbar, die denselben Azure Active Directory-Mandanten und dasselbe Azure-Abonnement in der Region haben, in der die Logik-Apps bereitgestellt werden.
 
-Sie können registrierte Connectors auch für die Microsoft-Zertifizierung vorschlagen. Dieser Prozess überprüft, ob registrierte Connectors die Kriterien für die öffentliche Nutzung erfüllen, und stellt diese Connectors Benutzern in Microsoft Flow und Microsoft PowerApps zur Verfügung.
+Sie können registrierte Connectors auch für die Microsoft-Zertifizierung vorschlagen. Dieser Prozess überprüft, ob registrierte Connectors die Kriterien für die öffentliche Nutzung erfüllen, und stellt diese Connectors Benutzern in Power Automate und Microsoft Power Apps zur Verfügung.
 
 Weitere Informationen zu benutzerdefinierten Connectors finden Sie unter 
 
@@ -222,7 +222,7 @@ Nachdem Sie die Authentifizierung eingerichtet haben, richten Sie Bereitstellung
 
 Um Ihre benutzerdefinierten APIs für andere Logic Apps-Benutzer in Azure verfügbar zu machen, müssen Sie Sicherheitseinstellungen hinzufügen und sie als Logic App-Connectors registrieren. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md). 
 
-Um Ihre benutzerdefinierten APIs allen Benutzern in Logic Apps, Microsoft Flow und Microsoft PowerApps zur Verfügung zu stellen, müssen Sie Sicherheitseinstellungen hinzufügen, Ihre APIs als Logic App-Connectors registrieren und Ihre Connectors für das [Microsoft Azure Certified-Programm](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/) vorschlagen. 
+Um Ihre benutzerdefinierten APIs allen Benutzern in Logic Apps, Power Automate und Microsoft Power Apps zur Verfügung zu stellen, müssen Sie Sicherheitseinstellungen hinzufügen, Ihre APIs als Logic App-Connectors registrieren und Ihre Connectors für das [Microsoft Azure Certified-Programm](https://azure.microsoft.com/marketplace/programs/certified/logic-apps/) vorschlagen. 
 
 ## <a name="get-support"></a>Support
 

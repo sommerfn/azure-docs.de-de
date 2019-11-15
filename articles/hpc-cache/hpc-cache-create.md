@@ -1,19 +1,19 @@
 ---
-title: Erstellen einer Azure HPC Cache-Instanz (Vorschauversion)
-description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
+title: Erstellen einer Azure HPC Cache-Instanz
+description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 7052b88a24ff5353656a71a7bfb044922ae1415c
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709977"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582707"
 ---
-# <a name="create-an-azure-hpc-cache-preview"></a>Erstellen einer Azure HPC Cache-Instanz (Vorschauversion)
+# <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
 Erstellen Sie Ihren Cache mithilfe des Azure-Portals.
 
@@ -23,7 +23,7 @@ Erstellen Sie Ihren Cache mithilfe des Azure-Portals.
 
 ![Screenshot: Projektdetailseite im Azure-Portal](media/hpc-cache-create-basics.png)
 
-Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus. Achten Sie darauf, dass sich das Abonnement in der Liste für den [Vorschauzugriff](hpc-cache-prereqs.md#azure-subscription) befindet.
+Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus. Achten Sie darauf, dass sich das Abonnement in der [Zugriffsliste](hpc-cache-prereqs.md#azure-subscription) befindet.
 
 Legen Sie unter **Dienstdetails** den Cachenamen sowie folgende weitere Attribute fest:
 

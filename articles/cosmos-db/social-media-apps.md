@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
-ms.openlocfilehash: 45e27b37ca7a1718674914fbe9203b7dc64475b1
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342102"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827294"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 
@@ -194,13 +194,13 @@ Wenn eine Bearbeitung ansteht, bei der ein Blockattribut betroffen ist, können 
 
 Benutzer generieren (glücklicherweise) viel Inhalt. Sie sollten daher auch in der Lage sein, Inhalte zu suchen, die nicht direkt in ihrem Stream erscheinen, da Sie vielleicht dem jeweiligen Ersteller nicht folgen oder einen eigenen, sechs Monate alten Beitrag suchen.
 
-Da Sie Azure Cosmos DB nutzen, können Sie ein Suchmodul mit [Azure Search](https://azure.microsoft.com/services/search/) leicht in wenigen Minuten implementieren, ohne Code eingeben zu müssen (bis auf den Suchprozess und die Benutzeroberfläche).
+Da Sie Azure Cosmos DB nutzen, können Sie ein Suchmodul mit [Azure Cognitive Search](https://azure.microsoft.com/services/search/) problemlos in wenigen Minuten implementieren, ohne Code eingeben zu müssen (bis auf den Suchprozess und die Benutzeroberfläche).
 
 Warum ist dieser Prozess so einfach?
 
-Azure Search implementiert sogenannte [Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch den Indizes hinzufügen, sie aktualisieren oder daraus entfernen. Unterstützt werden [Azure SQL-Datenbank-Indexer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure-Blobindexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure Cosmos DB-Indexer](../search/search-howto-index-documentdb.md). Die Übergabe von Informationen von Cosmos DB an Azure Search ist einfach. Bei beiden Technologien werden Informationen im JSON-Format gespeichert, sodass Sie nur [Ihren Index erstellen](../search/search-create-index-portal.md) und die Attribute aus Ihren Dokumenten zuordnen müssen, die indiziert werden sollen. Fertig! Ihr gesamter Inhalt ist verfügbar, um innerhalb weniger Minuten (je nach Umfang Ihrer Daten) mit der besten Search-as-a-Service-Lösung der Cloudinfrastruktur durchsucht zu werden.
+Azure Cognitive Search implementiert sogenannte [Indexer](https://msdn.microsoft.com/library/azure/dn946891.aspx). Das sind Hintergrundprozesse, die sich in Ihre Datenrepositorys einklinken und Ihre Objekte automatisch den Indizes hinzufügen, sie aktualisieren oder daraus entfernen. Unterstützt werden [Azure SQL-Datenbank-Indexer](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/), [Azure-Blobindexer](../search/search-howto-indexing-azure-blob-storage.md) und auch [Azure Cosmos DB-Indexer](../search/search-howto-index-documentdb.md). Die Übergabe von Informationen von Cosmos DB an Azure Cognitive Search ist einfach. Bei beiden Technologien werden Informationen im JSON-Format gespeichert, sodass Sie nur [Ihren Index erstellen](../search/search-create-index-portal.md) und die Attribute aus Ihren Dokumenten zuordnen müssen, die indiziert werden sollen. Fertig! Ihr gesamter Inhalt ist verfügbar, um innerhalb weniger Minuten (je nach Umfang Ihrer Daten) mit der besten Search-as-a-Service-Lösung der Cloudinfrastruktur durchsucht zu werden.
 
-Weitere Informationen zu Azure Search finden Sie im [Hitchhiker’s Guide to Search](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)(Per Anhalter durch Azure Search).
+Weitere Informationen zu Azure Cognitive Search finden Sie im [Hitchhiker’s Guide to Search](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/) (Per Anhalter durch Azure Search).
 
 ## <a name="the-underlying-knowledge"></a>Die verborgenen Informationen
 
@@ -248,7 +248,7 @@ In diesem Artikel wurden die Alternativen vorgestellt, die Ihnen in Bezug auf di
 
 ![Interaktionsdiagramm zwischen Azure-Diensten für soziale Netzwerke](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-In Wahrheit gibt es keine Patentlösung für diese Art von Szenarien. Vielmehr sind es die Synergieeffekte aus einer Kombination hervorragender Dienste, die zu einem großartigen Nutzererlebnis verhelfen: die Geschwindigkeit und die Freiheit von Azure Cosmos DB, die eine hervorragende soziale Anwendung ermöglichen, die Intelligenz hinter einer erstklassigen Suchlösung wie Azure Search und die Flexibilität von Azure App Services, nicht nur sprachunabhängige Anwendungen zu hosten, sondern sogar leistungsfähige Hintergrundprozesse. Dazu kommen erweiterbarer Azure Storage, die Azure SQL-Datenbank zum Speichern riesiger Datenmengen und die analytische Leistungsfähigkeit von Azure Machine Learning zur Gewinnung von Wissen und Intelligenz, was als Feedback für Ihre Prozesse dienen und helfen kann, den richtigen Benutzern die richtigen Inhalte zur Verfügung zu stellen.
+In Wahrheit gibt es keine Patentlösung für diese Art von Szenarien. Vielmehr sind es die Synergieeffekte aus einer Kombination hervorragender Dienste, die zu einem großartigen Benutzererlebnis verhelfen: die Geschwindigkeit und die Freiheit von Azure Cosmos DB, die eine hervorragende soziale Anwendung ermöglichen, die Intelligenz hinter einer erstklassigen Suchlösung wie Azure Cognitive Search und die Flexibilität von Azure App Services, nicht nur sprachunabhängige Anwendungen zu hosten, sondern sogar leistungsfähige Hintergrundprozesse. Dazu kommen erweiterbarer Azure Storage, Azure SQL-Datenbank zum Speichern riesiger Datenmengen und die analytische Leistungsfähigkeit von Azure Machine Learning zur Gewinnung von Wissen und Intelligenz, die Feedback für Ihre Prozesse liefern und helfen kann, den richtigen Benutzern die richtigen Inhalte zur Verfügung zu stellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

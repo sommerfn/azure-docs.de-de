@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 manager: nunoc
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: pabutler
-ms.openlocfilehash: 0aa7cec4dcdb480555cd0ecb7dee8d00a5a9ec2c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 060856cd43b978cec58ab08e1bb5b524bc2a4285
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870839"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822962"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
@@ -56,7 +57,7 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 | 3 | Testversion | Auswahl: Ja oder nein | Die nächsten verfügbaren Schritte sind für den Kunden leicht zu verstehen: <br>1. Testversion ausprobieren <br>2. Jetzt kaufen <br>3. Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termin für ein(en) Proof of Concept, Assessment oder Briefing zu vereinbaren |
 | 4 | Storefrontdetails: Angebotszusammenfassung | Die Zusammenfassung wird auf der Seite Ihrer App mit maximal 100 Zeichen angezeigt. | |
 | 5 | Storefrontdetails: Branchen | Branchen (max. zwei): Wählen Sie die Branchen aus, für die Ihre App am besten geeignet und am relevantesten ist. | |
-| 6 | Beschreibung des Angebots | <br>• Einfacher HTML-Code ist zulässig, einschließlich p, em, ul, li, ol und Headertags. Maximal 3.000 Zeichen. <br>• Umfasst zwei bis drei Absätze. <br>• Das Lösungsangebot ist auf einen Blick leicht verständlich. <br>• Die Beschreibung ist ausführlich und enthält die Zielgruppe, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen). <br>• Die Angebotsbeschreibung ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die leicht zu verstehen sind. | <br>• Die Zielbranche ist kurz beschrieben (sofern relevant). <br>• Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile und des Nutzens. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne mehrere Absätze lesen zu müssen. <br>• Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden, und die Beschreibung liest sich wie eine Autobroschüre. Das Angebot soll mit einfachen, verständlichen Worten beschrieben werden ohne Fachausdrücke für technische Funktionen oder Fachjargon. | 
+| 6 | Beschreibung des Angebots | <br>• Einfacher HTML-Code ist zulässig, einschließlich p, em, ul, li, ol und Headertags. Maximal 3.000 Zeichen. <br>• Umfasst zwei bis drei Absätze. <br>• Das Lösungsangebot ist auf einen Blick leicht verständlich. <br>• Die Beschreibung ist ausführlich und enthält die Zielgruppe*, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen). <br>• Die Angebotsbeschreibung ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die leicht zu verstehen sind. | <br>• Die Zielbranche ist kurz beschrieben (sofern relevant). <br>• Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile und des Nutzens. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne mehrere Absätze lesen zu müssen. <br>• Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden, und die Beschreibung liest sich wie eine Autobroschüre. Das Angebot soll mit einfachen, verständlichen Worten beschrieben werden ohne Fachausdrücke für technische Funktionen oder Fachjargon. | 
 | 7 | Marketingartefakte | Logos werden korrekt angezeigt. | <br>• Das Logo enthält das „Herobild“ (das großformatige Bild im Azure-Portal). <br>• Logos: klein (48×48) und groß (216×216) sind erforderlich. <br>• Anforderungen für das Herobild: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish <br>• Screenshots (max. fünf):  Das Cloudpartnerportal erfordert ein PNG-Bild mit einer Auflösung von 1280×720. |
 | 8 | Kategorien und Branchen | <br>• Die Kategorien entsprechen den Funktionen des Lösungsangebots. <br>• Mindestens ein Element sollte im Popupfeld ausgewählt werden. <br>• Es sind keine Kategorien angegeben, für die die Lösung nicht geeignet ist. <br>• Die optimale Branche oder „alle Branchen“ (sofern es keine optimalen Branchen gibt) ist ausgewählt. <br>• Es sind keine Kategorien angegeben, für die die Lösung nicht geeignet ist. <br>• Die optimale Branche oder „alle Branchen“ (sofern es keine optimalen Branchen gibt) ist ausgewählt. | Maximal drei Kategorien können ausgewählt werden (sofern zutreffend). |
 | 9 | Leadverwaltung | Wählen Sie das System aus, in dem Ihre Leads gespeichert werden. [Hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) erfahren Sie, wie Sie Ihr CRM-System verbinden. |  |
@@ -80,7 +81,7 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 
 |  | Auflistungselement | Anforderungen – einfach | Anforderungen – optimal |
 |:--- |:--- |:--- |:--- |
-| 1 | Titel des Angebots  |  <br>• Die Art und die Dauer des Diensts müssen eindeutig im folgenden Format angegeben sein: NAME: DAUER, ART. (d.h. „Angebotserstellung: 1 Woche, Proof-of-Concept“)  | <br>• Der Name des Herausgebers wird nicht wiederholt. <br>• Entspricht dem Stil des Titels in der Beschreibung (lange Titel sind nicht erwünscht). | 
+| 1 | Titel des Angebots  |  <br>• Die Art und die Dauer des Diensts müssen eindeutig im folgenden Format angegeben sein: NAME: DAUER, ART. (d. h. „Angebotserstellung: 1 Woche, Proof-of-Concept“)  | <br>• Der Name des Herausgebers wird nicht wiederholt. <br>• Entspricht dem Stil des Titels in der Beschreibung (lange Titel sind nicht erwünscht). | 
 | 2 | Beschreibung des Angebots  |<br>• Stellen Sie sicher, dass [Microsoft-Produktnamen](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx) korrekt verwendet werden. <br>• Mit einem Preis gekennzeichnete Angebote: Für geschätzte Preise muss die Variabilität der Preise in einem Hinweis am Anfang oder Ende des Angebots erläutert werden (Anfahrt zum Kunden, Anzahl von Servern, die migriert werden usw.). <br>• Folgende Anforderungen gelten für die Beschreibung der einzelnen Angebotstypen: <ul><br>o Für Briefings sind mindestens vier bis fünf Aufzählungszeichen mit Informationen zu den im Briefing behandelten Themen erforderlich. </ul> <ul><br>o Für alle Workshops ist eine Agenda erforderlich. </ul><ul><br>o Alle Agenden müssen je nach Dauer des Workshops nach Tag oder Woche aufgegliedert sein. </ul><ul><br>o Für Angebote für Assessments, Proofs of Concept, nicht trainingsbezogene Workshops und Implementierungen sind Projektleistungen erforderlich. </ul><ul><br>o Für Trainingsworkshops sind keine Projektleistungen erforderlich, sie erfordern aber eine ausführlichere Agenda mit den behandelten Themen. | <br>• Jedes Angebot enthält eine Agenda und Projektleistungen. <br>• Das Angebot enthält im obersten Abschnitt einen Absatz mit Hintergrundinformationen zu dem Unternehmen, das den Dienst bereitstellt. <br>• Das Angebot enthält am Anfang einen Absatz, in dem der Nutzen und Wert des Diensts erläutert werden. |
 | 3 | Markdown-Formatierung  | Alle Angebote müssen Markdown-Formatierung verwenden, damit sie bei der Konvertierung in HTML korrekt gerendert werden.  |  |
 | 4 | Kategorien und Branchen | Kategorien sind nicht relevant. |  | 
@@ -91,7 +92,7 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 | 9 | Kompetenzen |<br>• Mindestens eine der folgenden Kompetenzen muss angegeben sein:<br>• Anwendungsentwicklung <br>• Anwendungsintegration <br>• Application Lifecycle Management <br>• Cloudplattform <br>• Datenanalyse <br>• Rechenzentrum <br>• Datenplattform <br>• DevOps |
 | 10 | Produkte | Muss Azure sein. | |
 | 11 | Land/Region | Stellen Sie sicher, dass Land und Region der ausgewählten Währung entsprechen. | |
-| 12 | Weitere Informationen  | <br>• Links am unteren Rand (unter der Beschreibung, nicht die Marketplace-Links auf der linken Seite) führen zu weiteren Informationen zur Lösung, sind öffentlich verfügbar und werden korrekt angezeigt. <br>• Links müssen einen „Anzeigenamen“ haben und dürfen nicht als der Dateiname von Downloads angezeigt werden. | |
+| 12 | Weitere Informationen  | <br>• Links am unteren Rand (unter der Beschreibung, nicht die Marketplace-Links auf der linken Seite) führen zu weiteren Informationen zur Lösung, sind öffentlich verfügbar und werden korrekt angezeigt. <br>• Links müssen über einen „Anzeigenamen“ verfügen und dürfen nicht als der Dateiname von Downloads angezeigt werden. | |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,5 +1,5 @@
 ---
-title: Code für XEvent-Ringpuffer für SQL-Datenbank | Microsoft Docs
+title: Code für XEvent-Ringpuffer
 description: Zeigt ein Transact-SQL-Codebeispiel (für Azure SQL-Datenbank), das durch die Verwendung des Ringpufferziels eine einfache und schnelle Methode zum Erfassen und Ausgeben von Daten bietet.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: f1ec9cd3a4256597ade409fb3e04d44171277554
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7adffac045ddb2ba369993b1b805e3ce2304fb38
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566156"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822316"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank
 

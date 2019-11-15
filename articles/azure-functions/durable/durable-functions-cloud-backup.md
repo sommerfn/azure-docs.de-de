@@ -7,18 +7,20 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 81c1279670e786ddaa03946869773121a859d3b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: e2f1042fe1210fe51ae79b1152e51191e7fb066a
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735239"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615033"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Auffächerungsszenario (nach innen und außen) in Durable Functions – Beispiel der Cloudsicherung
 
 *Auffächern/Auffächern nach innen* bezieht sich auf das Muster, bei dem mehrere Funktionen gleichzeitig ausgeführt werden und die Ergebnisse im Anschluss zusammengefasst werden. In diesem Artikel wird ein Beispiel beschrieben, in dem [Durable Functions](durable-functions-overview.md) zum Implementieren eines Auffächerungsszenarios (nach innen und außen) verwendet wird. Das Beispiel stellt eine langlebige Funktion dar, die alle oder einige der Websiteinhalte in Azure Storage sichert.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -26,9 +28,9 @@ ms.locfileid: "70735239"
 
 In diesem Beispiel laden die Funktionen alle Dateien unter einem angegebenen Verzeichnis rekursiv in den Blobspeicher hoch. Zudem zählen sie die Gesamtzahl der hochgeladenen Bytes.
 
-Es ist möglich, eine einzelne Funktion zu schreiben, die alles übernimmt. Das Hauptproblem, mit dem Sie sich auseinandersetzen müssten, ist die **Skalierbarkeit**. Eine einzelne Funktion kann nur auf einem einzelnen virtuellen Computer ausgeführt werden. Der Durchsatz wird folglich durch den Durchsatz dieses virtuellen Computers beschränkt. Ein weiteres Problem stellt die **Zuverlässigkeit** dar. Wenn während des Vorgangs ein Fehler auftritt oder der gesamte Prozess mehr als 5 Minuten in Anspruch nimmt, könnte die Sicherung in einem teilweise abgeschlossenen Zustand fehlschlagen. Sie müsste anschließend neu gestartet werden.
+Es ist möglich, eine einzelne Funktion zu schreiben, die alles übernimmt. Das Hauptproblem, mit dem Sie sich auseinandersetzen müssten, ist die **Skalierbarkeit**. Eine einzelne Funktion kann nur auf einem einzelnen virtuellen Computer ausgeführt werden. Der Durchsatz wird folglich durch den Durchsatz dieses virtuellen Computers beschränkt. Ein weiteres Problem stellt die **Zuverlässigkeit** dar. Wenn während des Vorgangs ein Fehler auftritt oder der gesamte Prozess mehr als 5 Minuten in Anspruch nimmt, kann bei der Sicherung in einem teilweise abgeschlossenen Zustand ein Fehler auftreten. Sie müsste anschließend neu gestartet werden.
 
-Ein stabilerer Ansatz bestünde darin, zwei reguläre Funktionen zu schreiben: eine zum Aufzählen der Dateien und zum Hinzufügen der Dateinamen zu einer Warteschlange, und die andere zum Lesen aus der Warteschlange und zum Hochladen der Dateien in den Blobspeicher. Im Hinblick auf den Durchsatz und die Zuverlässigkeit ist dies besser, Sie müssen hierfür jedoch eine Warteschlange bereitstellen und verwalten. Im Hinblick auf die **Zustandsverwaltung** und die **Koordinierung** bringt dies vor allem eine hohe Komplexität mit sich, falls Sie weitere Funktionen ausführen möchten, wie z.B. die Gesamtzahl der hochgeladenen Bytes melden.
+Ein stabilerer Ansatz bestünde darin, zwei reguläre Funktionen zu schreiben: eine zum Aufzählen der Dateien und zum Hinzufügen der Dateinamen zu einer Warteschlange, und die andere zum Lesen aus der Warteschlange und zum Hochladen der Dateien in den Blobspeicher. Im Hinblick auf den Durchsatz und die Zuverlässigkeit ist diese Herangehensweise besser, Sie müssen hierfür jedoch eine Warteschlange bereitstellen und verwalten. Im Hinblick auf die **Zustandsverwaltung** und die **Koordinierung** bringt dies vor allem eine hohe Komplexität mit sich, falls Sie weitere Funktionen ausführen möchten, wie z.B. die Gesamtzahl der hochgeladenen Bytes melden.
 
 Ein Durable Functions-Ansatz bietet Ihnen alle genannten Vorteile mit sehr geringem Mehraufwand.
 
@@ -54,7 +56,7 @@ Im Folgenden wird der Code dargestellt, der die Orchestratorfunktion implementie
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
@@ -66,7 +68,7 @@ Diese Orchestratorfunktion führt im Wesentlichen Folgendes aus:
 4. Sie wartet, bis alle Uploads abgeschlossen wurden.
 5. Sie gibt die Gesamtzahl der Bytes zurück, die in Azure Blob Storage hochgeladen wurden.
 
-Beachten Sie die Zeilen `await Task.WhenAll(tasks);` (C#) und `yield context.df.Task.all(tasks);` (JavaScript). Alle einzelnen Aufrufe der `E2_CopyFileToBlob`-Funktion wurden *nicht* erwartet. Dies ist beabsichtigt, damit sie parallel ausgeführt werden können. Wenn dieses Array von Aufgaben an `Task.WhenAll` (C#) oder `context.df.Task.all` (JavaScript) übergeben wird, wird eine Aufgabe zurückgegeben, die erst *nach Abschluss aller Kopiervorgänge* abgeschlossen wird. Wenn Sie mit der Task Parallel Library (TPL) in .NET oder [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript vertraut sind, ist dies nicht neu für Sie. Der Unterschied besteht darin, dass diese Aufgaben auf mehreren virtuellen Computern gleichzeitig ausgeführt werden könnten. Die Durable Function-Erweiterung stellt dabei sicher, dass die End-to-End-Ausführung gegenüber der Prozesswiederverwendung robust ist.
+Beachten Sie die Zeilen `await Task.WhenAll(tasks);` (C#) und `yield context.df.Task.all(tasks);` (JavaScript). Sämtliche einzelnen Aufrufe der `E2_CopyFileToBlob`-Funktion wurden *nicht* erwartet, sodass sie parallel ausgeführt werden können. Wenn dieses Array von Aufgaben an `Task.WhenAll` (C#) oder `context.df.Task.all` (JavaScript) übergeben wird, wird eine Aufgabe zurückgegeben, die erst *nach Abschluss aller Kopiervorgänge* abgeschlossen wird. Wenn Sie mit der Task Parallel Library (TPL) in .NET oder [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript vertraut sind, ist dies nicht neu für Sie. Der Unterschied besteht darin, dass diese Aufgaben auf mehreren virtuellen Computern gleichzeitig ausgeführt werden könnten. Die Durable Function-Erweiterung stellt dabei sicher, dass die End-to-End-Ausführung gegenüber der Prozesswiederverwendung robust ist.
 
 > [!NOTE]
 > Obwohl Aufgaben ein ähnliches Konzept zugrunde liegt wie JavaScript-Zusagen, sollten für Orchestratorfunktionen `context.df.Task.all` und `context.df.Task.any` anstelle von `Promise.all` und `Promise.race` verwendet werden, um die Parallelisierung von Aufgaben zu verwalten.
@@ -85,7 +87,7 @@ Und hier ist die Implementierung:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
@@ -98,13 +100,13 @@ Die Datei *function.json* für `E2_CopyFileToBlob` ist ebenso einfach:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-Auch die C#-Implementierung ist ziemlich unkompliziert. Es werden einige erweiterte Features von Azure Functions-Bindungen verwendet (d.h. die Verwendung des Parameters `Binder`). Sie müssen sich zum Zwecke dieser ausführlichen Anleitung jedoch nicht um diese Details kümmern.
+Auch die C#-Implementierung ist unkompliziert. Es werden einige erweiterte Features von Azure Functions-Bindungen verwendet (d.h. die Verwendung des Parameters `Binder`). Sie müssen sich zum Zwecke dieser ausführlichen Anleitung jedoch nicht um diese Details kümmern.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
 Die JavaScript-Implementierung hat keinen Zugriff auf das `Binder`-Feature von Azure Functions, daher wird sie durch [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) ersetzt.
 
@@ -136,7 +138,7 @@ Diese HTTP-Anforderung löst den Orchestrator `E2_BackupSiteContent` aus und üb
 HTTP/1.1 202 Accepted
 Content-Length: 719
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
 (...trimmed...)
 ```
@@ -144,16 +146,16 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 Je nachdem, wie viele Protokolldateien in Ihrer Funktions-App enthalten sind, könnte dieser Vorgang einige Minuten in Anspruch nehmen. Sie können den aktuellen Status abrufen, indem Sie die URL im Header `Location` der vorherigen HTTP 202-Antwort abfragen.
 
 ```
-GET http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+GET http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
 ```
 HTTP/1.1 202 Accepted
 Content-Length: 148
 Content-Type: application/json; charset=utf-8
-Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
+Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
-{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:16Z"}
+{"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
 In diesem Fall wird die Funktion weiterhin ausgeführt. Sie können die Eingabe, die in den Orchestratorzustand gespeichert wurde, sowie die Zeit der letzten Aktualisierung anzeigen. Sie können weiterhin die `Location`-Headerwerte zum Abfragen der Beendigung verwenden. Wenn der Status „Abgeschlossen“ lautet, wird Ihnen ein HTTP-Antwortwert wie der folgende angezeigt:
@@ -163,7 +165,7 @@ HTTP/1.1 200 OK
 Content-Length: 152
 Content-Type: application/json; charset=utf-8
 
-{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:26Z"}
+{"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:26Z"}
 ```
 
 Jetzt können Sie sehen, dass die Orchestrierung abgeschlossen ist und wie viel Zeit für den Abschluss benötigt wurde. Zudem wird Ihnen ein Wert für das Feld `output` angezeigt, der angibt, dass etwa 450 KB Protokolle hochgeladen wurden.
@@ -173,7 +175,7 @@ Jetzt können Sie sehen, dass die Orchestrierung abgeschlossen ist und wie viel 
 So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt aus:
 
 > [!NOTE]
-> Sie müssen das `Microsoft.Azure.WebJobs.Extensions.Storage`-NuGet-Paket installieren, um den unten stehenden Beispielcode auszuführen.
+> Sie müssen das NuGet-Paket `Microsoft.Azure.WebJobs.Extensions.Storage` installieren, um den unten stehenden Beispielcode auszuführen.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 

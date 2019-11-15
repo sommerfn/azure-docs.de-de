@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Azure Active Directory-Authentifizierung – SQL| Microsoft-Dokumentation
+title: Konfigurieren der Azure Active Directory-Authentifizierung
 description: Hier erfahren Sie, wie Sie unter Verwendung der Azure Active Directory-Authentifizierung nach der Konfiguration von Azure AD eine Verbindung mit SQL-Datenbank, einer verwalteten Instanz und SQL Data Warehouse herstellen.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 10/16/2019
-ms.openlocfilehash: 1dbccf43d03907cefb68315b6908a35735f373ce
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 11/06/2019
+ms.openlocfilehash: 48334d8ce266ddcc92e4d2b27634db3d8c9f1bc9
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177636"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816797"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL
 
@@ -58,6 +58,9 @@ Bei Verwendung von Azure Active Directory mit Georeplikation muss der Azure Acti
 > [!IMPORTANT]
 > Führen Sie diese Schritte nur aus, wenn Sie eine verwaltete Instanz bereitstellen. Dieser Vorgang kann nur von einem globalen Administrator/Unternehmensadministrator oder von einem Administrator für privilegierte Rollen in Azure AD durchgeführt werden. Mit den folgenden Schritten wird der Prozess zum Gewähren von Berechtigungen für Benutzer mit unterschiedlichen Berechtigungen für das Verzeichnis beschrieben.
 
+> [!NOTE]
+> Für Azure AD Administratoren gibt es bei verwalteten Instanzen, die vor der allgemeinen Verfügbarkeit erstellt wurden und danach weiter verwendet werden, keine funktionalen Änderung am Verhalten. Weitere Informationen finden Sie im Abschnitt [Neue Azure AD-Administratorfunktionen für verwaltete Instanzen](#new-azure-ad-admin-functionality-for-mi).
+
 Für Ihre verwaltete Instanz sind Leseberechtigungen für Azure AD erforderlich, damit Aufgaben wie die Authentifizierung von Benutzern über die Mitgliedschaft in Sicherheitsgruppen oder die Erstellung neuer Benutzer erfolgreich durchgeführt werden können. Damit das funktioniert, müssen Sie der verwalteten Instanz Leseberechtigungen für Azure AD gewähren. Hierfür gibt es zwei Möglichkeiten: das Portal und PowerShell. Die folgenden Schritte gelten für beide Methoden.
 
 1. Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihre Verbindung aus, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen.
@@ -68,7 +71,7 @@ Für Ihre verwaltete Instanz sind Leseberechtigungen für Azure AD erforderlich
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
-4. Wählen Sie oben auf der Seite „Active Directory-Administrator“ das Banner aus, und erteilen Sie dem aktuellen Benutzer die Berechtigung. Wenn Sie an Azure AD als globaler bzw. Unternehmensadministrator angemeldet sind, können Sie dies über das Azure-Portal durchführen oder PowerShell mit dem nachfolgenden Skript verwenden.
+4. Wählen Sie oben auf der Seite „Active Directory-Administrator“ das Banner aus, und erteilen Sie dem aktuellen Benutzer die Berechtigung. Wenn Sie bei Azure AD als globaler bzw. Unternehmensadministrator angemeldet sind, können Sie dies über das Azure-Portal durchführen oder PowerShell mit dem nachfolgenden Skript verwenden.
 
     ![Erteilen von Berechtigungen – Portal](./media/sql-database-aad-authentication/grant-permissions.png)
 
@@ -146,10 +149,34 @@ Für Ihre verwaltete Instanz sind Leseberechtigungen für Azure AD erforderlich
 
     Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld „Active Directory-Administrator“ angezeigt.
 
-Nachdem Sie einen Azure AD-Administrator für die verwaltete Instanz bereitgestellt haben, können Sie unter Verwendung der Syntax <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> mit der Erstellung von Azure AD-Serverprinzipalen (Anmeldungen) (**Public Preview**) beginnen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration).
+Nachdem Sie einen Azure AD-Administrator für die verwaltete Instanz bereitgestellt haben, können Sie unter Verwendung der Syntax <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> mit der Erstellung von Azure AD-Serverprinzipalen (Anmeldungen) beginnen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
 > Wenn Sie später einen Administrator entfernen möchten, wählen Sie oben auf der Seite „Active Directory-Administrator“ **Administrator entfernen** und anschließend **Speichern** aus.
+
+### <a name="new-azure-ad-admin-functionality-for-mi"></a>Neue Azure AD-Administratorfunktionen für verwaltete Instanzen
+
+In der folgenden Tabelle werden die Administratorfunktionen für die Public Preview für Azure AD-Anmeldungen bei verwalteten Instanzen sowie die neuen Funktionen zusammengefasst, die mit der allgemeinen Verfügbarkeit von Azure AD-Anmeldungen eingeführt werden.
+
+| Azure AD-Anmeldeadministrator für verwaltete Instanzen während der Public Preview | Azure AD-Administratorfunktionen für verwaltete Instanzen seit der allgemeinen Verfügbarkeit |
+| --- | ---|
+| Das Verhalten ähnelt dem für Azure AD-Administratoren für SQL-Datenbank, die Azure AD-Authentifizierungen ermöglichen. Der Azure AD-Administrator kann jedoch keine Azure AD- oder SQL-Anmeldungen in der Masterdatenbank für die verwaltete Instanz erstellen. | Der Azure AD-Administrator verfügt über die sysadmin-Berechtigung und kann AAD- und SQL-Anmeldungen in der Masterdatenbank für die verwaltete Instanz erstellen. |
+| Ist in der Sicht sys.server_principals nicht enthalten | Ist in der Sicht sys.server_principals enthalten |
+| Ermöglicht die Einrichtung einzelner Azure AD-Gastbenutzer als Azure AD-Administrator für die verwaltete Instanz. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/b2b/add-users-administrator.md). | Erfordert das Erstellen einer Azure AD-Gruppe mit Gastbenutzern als Mitglieder, damit diese Gruppe als Azure AD-Administrator für die verwaltete Instanz eingerichtet werden kann. Weitere Informationen finden Sie unter [Azure AD-Business-to-Business-Unterstützung](sql-database-ssms-mfa-authentication.md#azure-ad-business-to-business-support). |
+
+Als bewährte Methode für vorhandene Azure AD-Administratoren von verwalteten Instanzen, die vor der allgemeinen Verfügbarkeit erstellt wurden und danach weiter verwendet werden, wird empfohlen, den Azure AD-Administrator im Azure-Portal mithilfe der Optionen „Administrator entfernen“ und „Administrator festlegen“ für denselben Azure AD-Benutzer oder dieselbe Gruppe zurückzusetzen.
+
+### <a name="known-issues-with-the-azure-ad-login-ga-for-mi"></a>Bekannte Probleme seit der allgemeinen Verfügbarkeit von Azure AD-Anmeldungen für verwaltete Instanzen
+
+- Wenn in der Masterdatenbank für die verwaltete Instanz eine Azure AD-Anmeldung vorhanden ist, die mit dem T-SQL-Befehl `CREATE LOGIN [myaadaccount] FROM EXTERNAL PROVIDER` erstellt wurde, kann diese nicht als Azure AD-Administrator für die verwaltete Instanz eingerichtet werden. Es tritt ein Fehler auf, wenn Sie die Anmeldung im Azure-Portal, mit PowerShell oder über CLI-Befehle zum Erstellen der Azure AD-Anmeldung als Azure AD-Administrator festlegen. 
+  - Die Anmeldung muss in der Masterdatenbank mithilfe des Befehls `DROP LOGIN [myaadaccount]` gelöscht werden, bevor das Konto als Azure AD-Administrator erstellt werden kann.
+  - Richten Sie das Azure AD-Administratorkonto im Azure-Portal ein, nachdem `DROP LOGIN` erfolgreich ausgeführt wurde. 
+  - Wenn Sie das Azure AD-Administratorkonto nicht einrichten können, suchen Sie in der Masterdatenbank der verwalteten Instanz nach der Anmeldung. Verwenden Sie den folgenden Befehl: `SELECT * FROM sys.server_principals`.
+  - Wenn Sie einen Azure AD-Administrator für die verwaltete Instanz einrichten, wird automatisch eine Anmeldung in der Masterdatenbank für dieses Konto erstellt. Durch das Entfernen des Azure AD-Administrators wird die Anmeldung auch automatisch aus der Masterdatenbank gelöscht.
+   
+- Einzelne Azure AD-Gastbenutzer werden nicht als Azure AD-Administratoren für verwaltete Instanzen unterstützt. Gastbenutzer müssen Teil einer Azure AD-Gruppe sein, damit sie als Azure AD-Administrator festgelegt werden können. Auf dem Blatt im Azure-Portal werden Gastbenutzer derzeit nicht für eine andere Azure AD-Instanz abgeblendet, sodass Benutzer die Einrichtung von Administratoren durchführen können. Das Speichern von Gastbenutzern als Azure AD-Administratoren führt jedoch zu einem Setupfehler. 
+  - Wenn Sie einen Gastbenutzer als Azure AD-Administrator für die verwaltete Instanz festlegen möchten, schließen Sie den Gastbenutzer in eine Azure AD-Gruppe ein, und legen Sie diese Gruppe dann als Azure AD-Administrator fest.
+
 
 ### <a name="powershell-for-sql-managed-instance"></a>PowerShell für eine verwaltete SQL-Instanz
 
@@ -318,8 +345,8 @@ Sie können diese Anforderungen folgendermaßen erfüllen:
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
 
->[!IMPORTANT]
->Die verwaltete Instanz unterstützt jetzt Azure AD-Serverprinzipale (Anmeldungen) (**Public Preview**), wodurch Sie Anmeldungen für Azure AD-Benutzer, Gruppen oder Anwendungen erstellen können. Mit Azure AD-Serverprinzipalen (Anmeldungen) ist eine Authentifizierung bei Ihrer verwalteten Instanz möglich, ohne dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden müssen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
+> [!IMPORTANT]
+> Die verwaltete Instanz unterstützt jetzt Azure AD-Serverprinzipale (Anmeldungen), sodass Sie Anmeldungen für Azure AD-Benutzer, -Gruppen oder -Anwendungen erstellen können. Mit Azure AD-Serverprinzipalen (Anmeldungen) ist eine Authentifizierung bei Ihrer verwalteten Instanz möglich, ohne dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden müssen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
 
 Für die Azure Active Directory-Authentifizierung ist es erforderlich, dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden. Ein eigenständiger Datenbankbenutzer basierend auf einer Azure AD-Identität ist ein Datenbankbenutzer, der über keine Anmeldung für die Masterdatenbank verfügt, und der einer Identität im Azure AD-Verzeichnis zugeordnet ist, das mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 

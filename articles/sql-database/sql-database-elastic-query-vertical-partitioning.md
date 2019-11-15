@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg | Microsoft Docs
+title: Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg
 description: Einrichten von datenbankübergreifenden Abfragen über vertikale Partitionen
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 5657490474a401d9e3074ed6ab250a34ef0a5d8d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d5983d25685242a696300f293231bbf987e8442d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568539"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823734"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg (Vorschau)
 
@@ -165,7 +165,7 @@ Die folgende Abfrage führt eine Dreiwegeverknüpfung zwischen den zwei lokalen 
     WHERE c_id = 100
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute_remote
 
 Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Remotedatenbank bietet. Die gespeicherte Prozedur heißt [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um gespeicherte Remoteprozeduren oder T-SQL-Code in der Remotedatenbank auszuführen. Hierfür werden die folgenden Parameter verwendet: 
 

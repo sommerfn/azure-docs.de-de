@@ -4,15 +4,16 @@ description: Konfigurieren des Supports für ein Azure-Anwendungsangebot im Azur
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 37c6a36afaad1e10d5075a207b35920531d6ace2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943257"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818186"
 ---
 # <a name="azure-application-support-tab"></a>Registerkarte „Support“ für Azure-Anwendungen
 
@@ -37,7 +38,7 @@ Verwenden Sie die nächste Bildschirmaufnahme als Leitfaden für die Bereitstell
    - **Telefon\*** : Geben Sie die Telefonnummer der Kontaktperson für den Support an.
  
 3. Geben Sie unter **Support-URLs** die entsprechenden Support-URLs an, die Microsoft verwenden soll, wenn Ihre Kunden Supporttickets öffnen. Diese URLs gelten entweder für Öffentliches Azure oder für die Azure Government Cloud.
-4. Wählen Sie **Speichern** aus, wenn Sie alle Angaben vorgenommen haben.
+4. Wählen Sie **Speichern** aus, wenn Sie fertig sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

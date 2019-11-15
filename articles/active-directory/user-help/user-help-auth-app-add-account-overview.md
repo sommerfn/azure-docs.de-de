@@ -1,6 +1,6 @@
 ---
-title: 'Übersicht: Hinzufügen von Konten zur Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation'
-description: Übersicht über das Hinzufügen von Geschäftskonten und persönlichen Konten zur Microsoft Authenticator-App, um die zweistufige Überprüfung zu nutzen.
+title: 'Übersicht: Hinzufügen von Konten zu einer Authentifikator-App – Azure AD'
+description: Links zu Inhalten über das Hinzufügen von Geschäftskonten und persönlichen Konten zur Microsoft Authenticator-App, um die zweistufige Überprüfung zu nutzen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d16699729e62953cb2369f39ecfe759aab663caf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 16244be7dee9faaa15105f9dc0ac6c074230d243
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382650"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820281"
 ---
 # <a name="overview-about-adding-accounts-to-the-microsoft-authenticator-app"></a>Übersicht: Hinzufügen von Konten zur Microsoft Authenticator-App
 
@@ -43,7 +43,7 @@ Sie können die zweistufige Überprüfung für viele Konten aktivieren, die Sie 
 | Geschäfts-, Schul- oder Unikonten | Das Konto, das Sie von Ihrer Schule oder Universität oder Ihrer Organisation erhalten haben, z. B. alain@contoso.com. |
 | Persönliche Konten | Die Microsoft-Konten und die nicht von Microsoft stammenden Konten, die Sie persönlich eingerichtet haben, z. B. Outlook.com, Xbox LIVE, Google, Facebook usw. |
 
-## <a name="in-this-section"></a>Inhalt dieses Abschnitts
+## <a name="articles-about-how-to-add-different-accounts"></a>Artikel zum Hinzufügen verschiedener Konten
 
 | Artikel |BESCHREIBUNG |
 | ------|------------|

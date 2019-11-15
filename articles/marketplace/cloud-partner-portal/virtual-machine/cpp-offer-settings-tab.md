@@ -4,15 +4,16 @@ description: Beschreibt die Registerkarte „Angebotseinstellungen“, die beim 
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: d361b6b8b08f9556cd57215ebdf82c1bf69d372d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f7b90f6b02999869026db24836091233692143c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938149"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824443"
 ---
 # <a name="virtual-machine-offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“ für virtuelle Computer
 

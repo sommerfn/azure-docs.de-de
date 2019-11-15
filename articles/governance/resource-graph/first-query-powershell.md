@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: a7d65d975d43a63a38863721273debab46115045
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 9e41ca2e7c6d789b3d18fa98c4845118fa6538ef
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389724"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622552"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell
 
@@ -106,9 +106,10 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md)
-- Lernen Sie, [Ressourcen zu untersuchen](./concepts/explore-resources.md)
+- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md).
+- Erfahren Sie mehr über das [Erkunden von Ressourcen](./concepts/explore-resources.md).
+- Führen Sie Ihre erste Abfrage über das [Azure-Portal](first-query-portal.md) aus.
 - Führen Sie Ihre erste Abfrage mit der [Azure CLI](first-query-azurecli.md) aus.
-- Siehe Beispiele der [einfachen Abfragen](./samples/starter.md)
-- Siehe Beispiele der [erweiterten Abfragen](./samples/advanced.md)
-- Senden von Feedback über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance)
+- Sehen Sie sich Beispiele für [einfache Abfragen](./samples/starter.md) an.
+- Sehen Sie sich Beispiele für [erweiterte Abfragen](./samples/advanced.md) an.
+- Geben Sie über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) Feedback ab.

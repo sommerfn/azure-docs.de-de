@@ -1,7 +1,7 @@
 ---
 title: 'Definition: Arbeitsbereich und Projekt – Custom Translator'
 titleSuffix: Azure Cognitive Services
-description: Ein Arbeitsbereich ist ein Bereich zum Erstellen und Entwickeln Ihres benutzerdefinierten Übersetzungssystems. Er kann mehrere Projekte, Modelle und Dokumente enthalten. Ein Projekt ist ein Wrapper für Modelle, Dokumente und Tests. Jedes Projekt enthält automatisch alle Dokumente, die in den Arbeitsbereich hochgeladen werden und über das korrekte Sprachenpaar verfügen.
+description: In diesem Artikel werden die Unterschiede zwischen einem Arbeitsbereich und einem Projekt sowie Projektkategorien und Bezeichnungen für den Dienst Benutzerdefinierter Translator erläutert.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 23db27ba7b51b0f5a312498dbcb1d0f2741245bb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595340"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647322"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Definition: Custom Translator-Arbeitsbereich
 

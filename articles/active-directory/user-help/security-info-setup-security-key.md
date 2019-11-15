@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau) – Azure Active Directory | Microsoft-Dokumentation
+title: Einrichten von Sicherheitsinformationen (Vorschauversion) für einen Sicherheitsschlüssel – Azure AD
 description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe eines FIDO2-Sicherheitsschlüssels (Fast Identity Online) zu bestätigen.
 services: active-directory
 author: eross-msft
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47ae7de87efd787b7d3cba14a33688c4b29637e6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160705"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803787"
 ---
-# <a name="set-up-security-info-to-use-a-security-key-preview"></a>Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau)
+# <a name="set-up-security-info-preview-for-a-security-key"></a>Einrichten von Sicherheitsinformationen (Vorschauversion) für einen Sicherheitsschlüssel
 
 Sie können Sicherheitsschlüssel als kennwortlose Anmeldemethode in Ihrer Organisation verwenden. Ein Sicherheitsschlüssel ist ein physisches Gerät, das mit einer eindeutigen PIN zum Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto verwendet wird. Weil Sicherheitsschlüssel erfordern, dass Sie über das physische Gerät und etwas verfügen, das nur Ihnen bekannt ist, wird ein Sicherheitsschlüssel als eine sicherere Authentifizierungsmethode angesehen als ein Benutzername und Kennwort.
 

@@ -1,5 +1,5 @@
 ---
-title: Abfragen von Azure SQL-Datenbank mithilfe von PHP | Microsoft-Dokumentation
+title: Verwenden von PHP für Abfragen
 description: Hier erfahren Sie, wie Sie unter Verwendung von PHP ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und sie mithilfe von T-SQL-Anweisungen abfragt.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 02/12/2019
-ms.openlocfilehash: a7da65438ffd7db6c43cf2ede7cc52378af056f1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae119dd23da670f16c0239b14119519c431e6326
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569222"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827016"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von PHP
 

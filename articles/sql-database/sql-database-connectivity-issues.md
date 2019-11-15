@@ -1,5 +1,5 @@
 ---
-title: 'Arbeiten mit vorübergehenden Fehlern: Azure SQL-Datenbank | Microsoft-Dokumentation'
+title: Arbeiten mit vorübergehenden Fehlern
 description: Erfahren Sie, wie Sie einen SQL-Verbindungsfehler oder vorübergehenden Fehler in Azure SQL-Datenbank behandeln, diagnostizieren und verhindern.
 keywords: SQL-Verbindung,Verbindungszeichenfolge,Verbindungsprobleme,vorübergehender Fehler,Verbindungsfehler
 services: sql-database
@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: aba404842658aaa946a14a3cde03853c2fb3062d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792572"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826809"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank
 

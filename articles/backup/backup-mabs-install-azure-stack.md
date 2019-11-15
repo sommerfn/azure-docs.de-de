@@ -1,6 +1,6 @@
 ---
 title: Installieren von Azure Backup Server in Azure Stack | Microsoft-Dokumentation
-description: Verwenden Sie Azure Backup Server, um Workloads in Azure Stack zu schützen oder zu sichern.
+description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um Workloads in Azure Stack zu schützen oder zu sichern.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: da941d0234fe78791f9a1c2f2a7d01122247534c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639862"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747292"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -25,6 +25,7 @@ In diesem Artikel wird das Installieren von Azure Backup Server in Azure Stack e
 >
 
 ## <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server-Schutzmatrix
+
 Azure Backup Server schützt die folgenden Workloads für virtuelle Azure Stack-Computer.
 
 | Geschützte Datenquelle | Schutz und Wiederherstellung |
@@ -46,20 +47,26 @@ Azure Backup Server schützt die folgenden Workloads für virtuelle Azure Stack-
 Berücksichtigen Sie die Empfehlungen in diesem Abschnitt bei der Installation von Azure Backup Server in Ihrer Azure Stack-Umgebung. Das Azure Backup Server-Installationsprogramm prüft, ob Ihre Umgebung die notwendigen Voraussetzungen erfüllt. Allerdings sparen Sie Zeit, wenn Sie die Installation vorbereiten.
 
 ### <a name="determining-size-of-virtual-machine"></a>Bestimmen der Größe des virtuellen Computers
+
 Verwenden Sie die Größe A2 oder höher, um Azure Backup Server auf einem virtuellen Azure Stack-Computer auszuführen. Laden Sie als Hilfe bei der Auswahl einer VM-Größe den [Rechner für die Azure Stack-VM-Größe](https://www.microsoft.com/download/details.aspx?id=56832) herunter.
 
 ### <a name="virtual-networks-on-azure-stack-virtual-machines"></a>Virtuelle Netzwerke auf virtuellen Azure Stack-Computern
+
 Alle virtuellen Computer, die in einer Azure Stack-Workload verwendet werden, müssen demselben virtuellen Azure-Netzwerk und Azure-Abonnement angehören.
 
 ### <a name="azure-backup-server-vm-performance"></a>Azure Backup Server-VM-Leistung
+
 Bei einer gemeinsamen Nutzung mit anderen virtuellen Computern können sich die Speicherkontogröße und IOPS-Grenzwerte auf die Leistung der Azure Backup Server-VM auswirken. Aus diesem Grund sollten Sie ein separates Speicherkonto für den virtuellen Azure Backup Server-Computer verwenden. Der Azure Backup-Agent, der auf dem Azure Backup Server ausgeführt wird, benötigt temporären Speicher für folgende Zwecke:
+
 - Eigene Nutzung (Cachespeicherort)
 - Aus der Cloud wiederhergestellte Daten (lokaler Stagingbereich)
 
 ### <a name="configuring-azure-backup-temporary-disk-storage"></a>Konfigurieren des temporären Azure Backup-Speichers
+
 Jeder virtuelle Azure Stack-Computer verfügt über temporären Datenträgerspeicher, der für den Benutzer als Volume `D:\` verfügbar ist. Der von Azure Backup benötigte lokale Stagingbereich kann so konfiguriert werden, dass er sich auf `D:\` befindet, und der Cachespeicherort kann auf `C:\` angeordnet werden. Auf diese Weise muss kein Speicher der Datenträger für Daten in Anspruch genommen werden, die an den virtuellen Azure Backup Server-Computer angefügt sind.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Speichern von Sicherungsdaten auf einem lokalen Datenträger in Azure
+
 Azure Backup Server speichert Sicherungsdaten auf Azure-Datenträgern, die an den virtuellen Computer angefügt sind, um die Wiederherstellung des Betriebs zu ermöglichen. Nachdem die Datenträger und der Speicherplatz an den virtuellen Computer angefügt wurden, wird der Speicher für Sie von Azure Backup Server verwaltet. Die Menge an Sicherungsdatenspeicher richtet sich nach der Anzahl und Größe von Datenträgern, die an die einzelnen [virtuellen Azure Stack-Computer](/azure-stack/user/azure-stack-storage-overview) angefügt sind. Jede Azure Stack-VM-Größe verfügt über eine maximale Anzahl von Datenträgern, die an den virtuellen Computer angefügt werden kann. Beispielsweise umfasst A2 vier Datenträger. A3 umfasst acht Datenträger. A4 umfasst 16 Datenträger. Auch hier bestimmt die Größe und Anzahl von Datenträgern die Gesamtgröße des Sicherungsspeicherpools.
 
 > [!IMPORTANT]
@@ -69,12 +76,14 @@ Azure Backup Server speichert Sicherungsdaten auf Azure-Datenträgern, die an de
 Durch das Speichern von Sicherungsdaten in Azure wird die Sicherungsinfrastruktur in Azure Stack reduziert. Wenn Daten mehr als fünf Tage alt sind, sollten sie in Azure gespeichert werden.
 
 Erstellen bzw. verwenden Sie einen Recovery Services-Tresor, um Sicherungsdaten in Azure zu speichern. Beim Vorbereiten einer Sicherung der Azure Backup Server-Workload [konfigurieren Sie den Recovery Services-Tresor](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Nach der Konfiguration wird bei jeder Ausführung eines Sicherungsauftrags im Tresor ein Wiederherstellungspunkt erstellt. Jeder Recovery Services-Tresor enthält bis zu 9999 Wiederherstellungspunkte. Je nach Anzahl von erstellten Wiederherstellungspunkten und Dauer ihrer Aufbewahrung können Sie Sicherungsdaten viele Jahre lang vorhalten. Beispielsweise können Sie monatliche Wiederherstellungspunkte erstellen und fünf Jahre lang aufbewahren.
- 
+
 ### <a name="scaling-deployment"></a>Skalieren der Bereitstellung
+
 Wenn Sie Ihre Bereitstellung skalieren möchten, haben Sie die folgenden Optionen:
-  - Zentral hochskalieren: Erhöhen Sie die Größe des virtuellen Azure Backup Server-Computers von der A-Serie auf die D-Serie, und erhöhen Sie den lokalen Speicher [gemäß der Anleitung zum virtuellen Azure Stack-Computer](/azure-stack/user/azure-stack-manage-vm-disks).
-  - Daten auslagern: Senden Sie ältere Daten an Azure, und behalten Sie nur die neuesten Daten in dem Speicher bei, der dem Azure Backup Server angefügt ist.
-  - Horizontal hochskalieren: Fügen Sie weitere Azure Backup Server-Instanzen hinzu, um die Workloads zu schützen.
+
+- Zentral hochskalieren: Erhöhen Sie die Größe des virtuellen Azure Backup Server-Computers von der A-Serie auf die D-Serie, und erhöhen Sie den lokalen Speicher [gemäß der Anleitung zum virtuellen Azure Stack-Computer](/azure-stack/user/azure-stack-manage-vm-disks).
+- Daten auslagern: Senden Sie ältere Daten an Azure, und behalten Sie nur die neuesten Daten in dem Speicher bei, der dem Azure Backup Server angefügt ist.
+- Horizontal hochskalieren: Fügen Sie weitere Azure Backup Server-Instanzen hinzu, um die Workloads zu schützen.
 
 ### <a name="net-framework"></a>.NET Framework
 
@@ -92,6 +101,7 @@ Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu be
 
 > [!NOTE]
 > Azure Backup Server ist für die Ausführung auf einer dedizierten VM konzipiert, die nur zu diesem Zweck verwendet wird. Azure Backup Server kann nicht auf folgenden Computern installiert werden:
+>
 > - Einem Computer, der als Domänencontroller ausgeführt wird
 > - Einem Computer, auf dem die Anwendungsserverrolle installiert ist
 > - Einem Computer, auf dem Exchange Server ausgeführt wird

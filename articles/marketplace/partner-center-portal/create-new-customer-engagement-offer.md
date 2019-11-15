@@ -5,14 +5,15 @@ author: JnHs
 manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 19f06ee2d254e927fde4ca087fdd46f596c7dcbd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b3aefb22f5b58d673d099e6b2b609b89b88c35c7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819908"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825612"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -31,7 +32,7 @@ Wählen Sie die Schaltfläche **+ Neues Angebot** und dann das Menüelement **Dy
 
 ### <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
 
-- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID muss aus alphanumerischen Zeichen bestehen und darf keine Großbuchstaben enthalten (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach der Auswahl von **Erstellen** nicht mehr geändert werden.  Wenn Sie hier z.B. *test-offer-1* eingeben, lautet die Angebots-URL `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID muss aus alphanumerischen Zeichen bestehen und darf keine Großbuchstaben enthalten (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach der Auswahl von **Erstellen** nicht mehr geändert werden.  Wenn Sie hier z.B. *test-offer-1* eingeben, lautet die Angebots-URL `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
 - **Angebotsalias**: Der Name, der zum Verweisen auf das Angebot im Partner Center verwendet wird. Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden. Dieser Wert kann nach der Auswahl von **Erstellen** nicht mehr geändert werden.
 
@@ -132,7 +133,7 @@ Auf der Seite „Angebotsliste“ werden die Sprachen angezeigt, in denen Ihr An
 Sie müssen für jede Sprache/jeden Markt Marketplace-Informationen (Angebotsname, Beschreibung, Bilder usw.) definieren. Wählen Sie die Sprache bzw. den Namen des Markts aus, um diese Informationen anzugeben.
 
 > [!NOTE]
-> Die Inhalte der Angebotsliste (z.B. Beschreibung, Dokumente, Screenshots, Nutzungsbedingungen usw.) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur in [nicht englische Sprache] verfügbar.“ Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
+> Die Inhalte der Angebotsliste (z. B. Beschreibung, Dokumente, Screenshots, Nutzungsbedingungen usw.) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“. Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
 
 ### <a name="name"></a>NAME
 
@@ -371,9 +372,9 @@ Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, kli
 Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
-    - *Nicht gestartet*: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - *Unvollständig*: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu dem/den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
-    - *Abgeschlossen*: Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+    - *Nicht gestartet:* Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+    - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu dem/den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
+    - *Abgeschlossen:* Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam im Abschnitt **Hinweise zur Zertifizierung** Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.
 - Senden Sie dazu das Angebot zur Veröffentlichung, indem Sie auf **Senden** klicken. Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können. Sie müssen zum Partner Center zurückkehren und **Live schalten** auswählen, um das Angebot für eine öffentliche Zielgruppe (oder bei einem privaten Angebot für eine private Zielgruppe) zu veröffentlichen.
 

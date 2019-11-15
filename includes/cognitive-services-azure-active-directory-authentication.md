@@ -4,17 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: 3a6807cc204a5f8a6957bb03cf4dcbaf3611c17c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: b9f84385e49fcf5f101b7ce642b0a82e3a4b9388
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148418"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73799871"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
 
 > [!IMPORTANT]
-> Zurzeit unterstützen **nur** die Maschinelles Sehen-API, die Gesichtserkennungs-API, die Textanalyse-API und der plastische Reader die Authentifizierung über Azure Active Directory (AAD).
+> 1. Derzeit unterstützen **nur** Maschinelles Sehen-API, Gesichtserkennungs-API, Textanalyse-API, Plastischer Reader, Formularerkennung, Anomalieerkennung und alle Bing-Dienste mit Ausnahme der benutzerdefinierten Bing-Suche die Authentifizierung mit Azure Active Directory (AAD).
+> 2. Die AAD-Authentifizierung muss immer mit dem Namen der benutzerdefinierten Unterdomäne Ihrer Azure-Ressource verwendet werden. [Regionale Endpunkte](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) unterstützen die AAD-Authentifizierung nicht.
 
 In den vorherigen Abschnitten haben wir Ihnen gezeigt, wie die Authentifizierung bei Azure Cognitive Services mit einem Abonnementschlüssel für einen einzelnen Dienst oder für mehrere Dienste funktioniert. Diese Schlüssel ermöglichen zwar einen schnellen und einfachen Einstieg in die Entwicklung, eignen sich aber nicht für komplexere Szenarien, die eine rollenbasierte Zugriffssteuerung erfordern. Sehen wir uns an, was für die Authentifizierung über Azure Active Directory (AAD) erforderlich ist.
 
@@ -22,7 +23,7 @@ In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebu
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>Erstellen einer Ressource mit einer benutzerdefinierten Unterdomäne
 
-Der erste Schritt besteht darin, eine benutzerdefinierte Unterdomäne zu erstellen.
+Der erste Schritt besteht darin, eine benutzerdefinierte Unterdomäne zu erstellen. Wenn Sie eine vorhandene Cognitive Services-Ressource verwenden möchten, die nicht über einen benutzerdefinierten Unterdomänennamen verfügt, befolgen Sie die Anweisungen in [Benutzerdefinierte Unterdomänennamen für Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources), um die benutzerdefinierte Unterdomäne für Ihre Ressource zu aktivieren.
 
 1. Öffnen Sie als Erstes die Azure Cloud Shell. [Wählen Sie dann ein Abonnement aus](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 

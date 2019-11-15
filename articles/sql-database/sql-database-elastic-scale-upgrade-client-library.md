@@ -1,5 +1,5 @@
 ---
-title: Upgrade auf die neueste Clientbibliothek für elastische Datenbanken | Microsoft Docs
+title: Upgrade auf die neueste Clientbibliothek für elastische Datenbanken
 description: Verwenden Sie NuGet, um ein Upgrade der Clientbibliothek für elastische Datenbanken durchzuführen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 286fa60fef8de5240fb2ccd0f14ced0c4e38ff73
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: a1ab684f13c56698d4359f2bf74826f3dd696c6d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981370"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823509"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken
 

@@ -1,5 +1,5 @@
 ---
-title: Verwaltete Azure SQL-Datenbank-Instanz – Herstellen einer Verbindung mit einer Anwendung | Microsoft-Dokumentation
+title: Verbinden einer Anwendung mit einer verwalteten Instanz
 description: In diesem Artikel wird erläutert, wie Sie eine Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz herstellen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060660"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823386"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz
 

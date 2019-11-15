@@ -1,5 +1,5 @@
 ---
-title: Verwaltete Azure SQL-Datenbank-Instanz – T-SQL-Unterschiede | Microsoft-Dokumentation
+title: T-SQL-Unterschiede bei verwalteten Instanzen
 description: In diesem Artikel werden die T-SQL-Unterschiede zwischen einer verwalteten Instanz in Azure SQL-Datenbank und SQL Server beschrieben.
 services: sql-database
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
-ms.date: 08/12/2019
+ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b7ace716f920304eff3ddcfa3fab887f780cec0e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372316"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823320"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -42,11 +42,11 @@ Auf dieser Seite werden auch [temporäre bekannte Probleme](#Issues) erläutert,
 
 [Hochverfügbarkeit](sql-database-high-availability.md) ist in verwalteten Instanzen integriert und kann von Benutzern nicht gesteuert werden. Folgende Anweisungen werden nicht unterstützt:
 
-- [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
-- [CREATE AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
-- [ALTER AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-availability-group-transact-sql)
-- [DROP AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
-- Die Klausel [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) der Anweisung [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)
+- [CREATE ENDPOINT … FOR DATABASE_MIRRORING](/sql/t-sql/statements/create-endpoint-transact-sql)
+- [CREATE AVAILABILITY GROUP](/sql/t-sql/statements/create-availability-group-transact-sql)
+- [ALTER AVAILABILITY GROUP](/sql/t-sql/statements/alter-availability-group-transact-sql)
+- [DROP AVAILABILITY GROUP](/sql/t-sql/statements/drop-availability-group-transact-sql)
+- Die Klausel [SET HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr) der Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)
 
 ### <a name="backup"></a>Backup
 
@@ -64,7 +64,7 @@ In verwalteten Instanzen werden automatische Sicherungen durchgeführt, sodass B
 Einschränkungen: 
 
 - Bei verwalteten Instanzen können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
-- Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen. Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
+- Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen. Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
 - Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in einer verwalteten Instanz beträgt 195 GB. Dies ist die maximale Blobgröße. Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
 
     > [!TIP]
@@ -76,7 +76,7 @@ Einschränkungen:
     >
     > Der Befehl `Restore` in einer verwalteten Instanz unterstützt höhere Blobgrößen in den Sicherungsdateien, da für die Speicherung der hochgeladenen Sicherungsdateien ein anderer Blobtyp verwendet wird.
 
-Informationen zu Sicherungen mithilfe von T-SQL finden Sie unter [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
+Informationen zu Sicherungen mithilfe von T-SQL finden Sie unter [BACKUP](/sql/t-sql/statements/backup-transact-sql).
 
 ## <a name="security"></a>Sicherheit
 
@@ -97,9 +97,9 @@ Wichtigste Unterschiede in der Syntax von `CREATE AUDIT` zur Überwachung in Azu
 
 Weitere Informationen finden Sie unter 
 
-- [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql) 
-- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
+- [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql) 
+- [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Überwachung](/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Zertifikate
 
@@ -108,9 +108,9 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 - Die `CREATE FROM`/`BACKUP TO`-Datei wird für Zertifikate nicht unterstützt.
 - Das `CREATE`/`BACKUP`-Zertifikat aus `FILE`/`ASSEMBLY` wird nicht unterstützt. Dateien mit privaten Schlüsseln können nicht verwendet werden. 
 
-Siehe [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) und [BACKUP CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql). 
+Siehe [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) und [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Problemumgehung**: Anstatt eine Sicherung des Zertifikats zu erstellen und die Sicherung wiederherzustellen, [rufen Sie den binären Inhalt des Zertifikats und den privaten Schlüssel ab, speichern Sie sie als SQL-Datei, und erstellen Sie Folgendes aus den Binärdaten](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Problemumgehung**: Anstatt eine Sicherung des Zertifikats zu erstellen und die Sicherung wiederherzustellen, [rufen Sie den binären Inhalt des Zertifikats und den privaten Schlüssel ab, speichern Sie sie als SQL-Datei, und erstellen Sie Folgendes aus den Binärdaten](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -122,19 +122,19 @@ WITH PRIVATE KEY (<private_key_options>)
 
 Nur Azure Key Vault- und `SHARED ACCESS SIGNATURE`-Identitäten werden unterstützt. Windows-Benutzer werden nicht unterstützt.
 
-Siehe [CREATE CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) und [ALTER CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/alter-credential-transact-sql).
+Siehe [CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql) und [ALTER CREDENTIAL](/sql/t-sql/statements/alter-credential-transact-sql).
 
 ### <a name="cryptographic-providers"></a>Kryptografieanbieter
 
 Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können keine Kryptografieanbieter erstellt werden:
 
-- `CREATE CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
-- `ALTER CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
+- `CREATE CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [CREATE CRYPTOGRAPHIC PROVIDER](/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
+- `ALTER CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [ALTER CRYPTOGRAPHIC PROVIDER](/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
 ### <a name="logins-and-users"></a>Anmeldungen und Benutzer
 
-- Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Azure Active Directory-Dienstprinzipale (Anmeldungen), die mit der Syntax [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) oder der Syntax [CREATE USER FROM LOGIN [Azure AD-Anmeldung]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) erstellt wurden, werden unterstützt (öffentliche Vorschau). Diese Anmeldungen werden auf Serverebene erstellt.
+- Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql).
+- Azure Active Directory-Dienstprinzipale (Anmeldungen), die mit der Syntax [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) oder der Syntax [CREATE USER FROM LOGIN [Azure AD-Anmeldung]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) erstellt wurden, werden unterstützt. Diese Anmeldungen werden auf Serverebene erstellt.
 
     Verwaltete Instanzen unterstützen Azure AD-Datenbankprinzipale mit der Syntax `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Dieses Feature wird auch als Azure AD-Benutzer für eigenständige Datenbanken bezeichnet.
 
@@ -155,17 +155,13 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können keine Kr
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
 
-- Einschränkungen der öffentlichen Vorschau für Azure AD-Serverprinzipale (Anmeldungen):
-
-  - Einschränkungen für Active Directory-Administratoren für verwaltete Instanzen:
-
-    - Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen eines Azure AD-Serverprinzipals (Anmeldung) innerhalb der verwalteten Instanz verwendet werden. Sie müssen den ersten Azure AD-Serverprinzipal (Anmeldung) mit einem SQL Server-Konto erstellen, das die Rolle `sysadmin` besitzt. Diese temporäre Einschränkung wird aufgehoben, wenn Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-      - Derzeit muss die erste Azure AD-Anmeldung in der Masterdatenbank unter Verwendung von [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER durch das SQL Server-Standardkonto (nicht Azure AD) erstellt werden, das die Rolle `sysadmin` besitzt. Wenn dieses Feature allgemein verfügbar ist, wird diese Einschränkung aufgehoben. Dann können Sie die erste Azure AD-Anmeldung mit dem Active Directory-Administrator für die verwaltete Instanz erstellen.
-    - DacFx (exportieren/importieren) in Verbindung mit SQL Server Management Studio (SSMS) oder SqlPackage wird für Azure AD-Anmeldungen nicht unterstützt. Diese Einschränkung wird aufgehoben, wenn Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind.
-    - Verwenden von Azure AD-Serverprinzipalen (Anmeldungen) mit SQL Server Management Studio:
-
-      - Das Erstellen von Azure AD-Anmeldungen per Skript, die eine beliebige authentifizierte Anmeldung verwenden, wird nicht unterstützt.
-      - IntelliSense erkennt die Anweisung CREATE LOGIN FROM EXTERNAL PROVIDER nicht und zeigt eine rote Unterstreichung an.
+- Das Exportieren/Importieren von Datenbanken mithilfe von BACPAC-Dateien wird für Azure AD Benutzer in einer verwalteten Instanz per [SSMS V18.4 oder höher](/sql/ssms/download-sql-server-management-studio-ssms) oder [SQLPackage.exe](/sql/tools/sqlpackage-download) unterstützt.
+  - Die folgenden Konfigurationen werden mit einer BACPAC-Datei für die Datenbank unterstützt: 
+    - Exportieren/Importieren einer Datenbank zwischen verschiedenen verwalteten Instanzen in derselben Azure AD-Domäne
+    - Exportieren einer Datenbank aus einer verwalteten Instanz und Importieren in SQL-Datenbank innerhalb derselben Azure AD-Domäne 
+    - Exportieren einer Datenbank aus SQL-Datenbank und Importieren in eine verwaltete Instanz innerhalb derselben Azure AD-Domäne
+    - Exportieren einer Datenbank aus einer verwalteten Instanz und Importieren in SQL Server (ab Version 2012).
+      - In dieser Konfiguration werden alle Azure AD Benutzer als SQL-Datenbank-Prinzipale (Benutzer) ohne Anmeldungen erstellt. Der Benutzertyp wird als „SQL“ aufgeführt (in sys.database_principals als SQL_USER angezeigt). Ihre Berechtigungen und Rollen verbleiben in den Metadaten der SQL Server-Datenbank und können für Identitätswechsel verwendet werden. Sie können jedoch nicht für den Zugriff und die Anmeldung bei SQL Server mithilfe der Anmeldeinformationen verwendet werden.
 
 - Nur die Prinzipalanmeldung auf Serverebene, die vom Bereitstellungsprozess der verwalteten Instanz, von Mitgliedern der Serverrollen, z.B. `securityadmin` oder `sysadmin`, oder von anderen Anmeldungen mit ALTER ANY LOGIN-Berechtigung auf Serverebene erstellt wurde, kann Azure AD-Serverprinzipale (Anmeldungen) in der Masterdatenbank für die verwaltete Instanz erstellen.
 - Wenn es sich bei der Anmeldung um einen SQL-Prinzipal handelt, können nur Anmeldungen, die der Rolle `sysadmin` angehören, den Befehl „create“ verwenden, um Anmeldungen für ein Azure AD-Konto zu erstellen.
@@ -183,21 +179,21 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können keine Kr
 
 ### <a name="service-key-and-service-master-key"></a>Dienstschlüssel und Diensthauptschlüssel
 
-- Die [Sicherung des Hauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
-- Die [Wiederherstellung des Hauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
-- Die [Sicherung des Diensthauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
-- Die [Wiederherstellung des Diensthauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
+- Die [Sicherung des Hauptschlüssels](/sql/t-sql/statements/backup-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
+- Die [Wiederherstellung des Hauptschlüssels](/sql/t-sql/statements/restore-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
+- Die [Sicherung des Diensthauptschlüssels](/sql/t-sql/statements/backup-service-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
+- Die [Wiederherstellung des Diensthauptschlüssels](/sql/t-sql/statements/restore-service-master-key-transact-sql) wird nicht unterstützt (wird durch den SQL-Datenbank-Dienst verwaltet).
 
 ## <a name="configuration"></a>Konfiguration
 
 ### <a name="buffer-pool-extension"></a>Pufferpoolerweiterung
 
-- Die [Pufferpoolerweiterung](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) wird nicht unterstützt.
-- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wird nicht unterstützt. Siehe [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+- Die [Pufferpoolerweiterung](/sql/database-engine/configure-windows/buffer-pool-extension) wird nicht unterstützt.
+- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wird nicht unterstützt. Siehe [ALTER SERVER CONFIGURATION](/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
 ### <a name="collation"></a>Collation
 
-Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie kann als Erstellungsparameter angegeben werden. Siehe [Sortierungen](https://docs.microsoft.com/sql/t-sql/statements/collations).
+Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie kann als Erstellungsparameter angegeben werden. Siehe [Sortierungen](/sql/t-sql/statements/collations).
 
 ### <a name="compatibility-levels"></a>Kompatibilitätsgrade
 
@@ -205,7 +201,7 @@ Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie k
 - Kompatibilitätsgrade unter 100 werden nicht unterstützt.
 - Der standardmäßige Kompatibilitätsgrad für neue Datenbanken ist 140. Bei wiederhergestellten Datenbanken bleibt der Kompatibilitätsgrad unverändert, wenn er zuvor bei 100 und höher lag.
 
-Siehe [ALTER DATABASE-Kompatibilitätsgrad](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
+Siehe [ALTER DATABASE-Kompatibilitätsgrad](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
 
 ### <a name="database-mirroring"></a>Datenbankspiegelung
 
@@ -214,7 +210,7 @@ Die Datenbankspiegelung wird nicht unterstützt.
 - Die Optionen `ALTER DATABASE SET PARTNER` und `SET WITNESS` werden nicht unterstützt.
 - `CREATE ENDPOINT … FOR DATABASE_MIRRORING` wird nicht unterstützt.
 
-Weitere Informationen finden Sie unter [ALTER DATABASE SET PARTNER und SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) und [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
+Weitere Informationen finden Sie unter [ALTER DATABASE SET PARTNER und SET WITNESS](/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) und [CREATE ENDPOINT … FOR DATABASE_MIRRORING](/sql/t-sql/statements/create-endpoint-transact-sql).
 
 ### <a name="database-options"></a>Datenbankoptionen
 
@@ -237,7 +233,7 @@ Für `CREATE DATABASE` gelten die folgenden Einschränkungen:
 - Die `FOR ATTACH`-Option wird nicht unterstützt.
 - Die `AS SNAPSHOT OF`-Option wird nicht unterstützt.
 
-Weitere Informationen finden Sie unter [CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-sql-server-transact-sql).
+Weitere Informationen finden Sie unter [CREATE DATABASE](/sql/t-sql/statements/create-database-sql-server-transact-sql).
 
 #### <a name="alter-database-statement"></a>ALTER DATABASE-Anweisung
 
@@ -274,7 +270,7 @@ Die folgenden Optionen können nicht geändert werden:
 - `SINGLE_USER`
 - `WITNESS`
 
-Weitere Informationen finden Sie unter [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
+Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>SQL Server-Agent
 
@@ -308,18 +304,18 @@ Die folgenden SQL-Agent-Funktionen werden derzeit nicht unterstützt:
 - Aktivieren oder Deaktivieren eines Agents
 - Alerts
 
-Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](/sql/ssms/agent/sql-server-agent).
 
 ### <a name="tables"></a>Tabellen
 
 Die folgenden Tabellentypen werden nicht unterstützt:
 
-- [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server)
-- [FILETABLE](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server)
-- [EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) (Polybase)
-- [MEMORY_OPTIMIZED](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (wird nur im universellen Tarif unterstützt)
+- [FILESTREAM](/sql/relational-databases/blob/filestream-sql-server)
+- [FILETABLE](/sql/relational-databases/blob/filetables-sql-server)
+- [EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql) (Polybase)
+- [MEMORY_OPTIMIZED](/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables) (wird nur im universellen Tarif unterstützt)
 
-Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
+Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql).
 
 ## <a name="functionalities"></a>Funktionen
 
@@ -327,17 +323,17 @@ Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TA
 
 Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher müssen die Dateien aus Azure Blob Storage importiert werden:
 
-- `DATASOURCE` ist beim Importieren von Dateien aus Azure Blob Storage im Befehl `BULK INSERT` erforderlich. Siehe [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE` ist beim Lesen von Inhalten einer Datei aus Azure Blob Storage in der Funktion `OPENROWSET` erforderlich. Siehe [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `DATASOURCE` ist beim Importieren von Dateien aus Azure Blob Storage im Befehl `BULK INSERT` erforderlich. Siehe [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql).
+- `DATASOURCE` ist beim Lesen von Inhalten einer Datei aus Azure Blob Storage in der Funktion `OPENROWSET` erforderlich. Siehe [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENROWSET` kann zum Lesen von Daten aus anderen Azure SQL-Einzeldatenbanken, verwalteten Instanzen oder SQL Server-Instanzen verwendet werden. Andere Quellen wie Oracle-Datenbanken oder Excel-Dateien werden nicht unterstützt.
 
 ### <a name="clr"></a>CLR
 
 Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher gelten folgende Einschränkungen:
 
-- Nur `CREATE ASSEMBLY FROM BINARY` wird unterstützt. Siehe [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
-- `CREATE ASSEMBLY FROM FILE` wird nicht unterstützt. Siehe [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
-- `ALTER ASSEMBLY` kann nicht auf Dateien verweisen. Siehe [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
+- Nur `CREATE ASSEMBLY FROM BINARY` wird unterstützt. Siehe [CREATE ASSEMBLY FROM BINARY](/sql/t-sql/statements/create-assembly-transact-sql). 
+- `CREATE ASSEMBLY FROM FILE` wird nicht unterstützt. Siehe [CREATE ASSEMBLY FROM FILE](/sql/t-sql/statements/create-assembly-transact-sql).
+- `ALTER ASSEMBLY` kann nicht auf Dateien verweisen. Siehe [ALTER ASSEMBLY](/sql/t-sql/statements/alter-assembly-transact-sql).
 
 ### <a name="database-mail-db_mail"></a>Datenbank-E-Mail – (db_mail)
  - `sp_send_dbmail` kann keine Anlagen mithilfe des Parameters @file_attachments senden. Aus dieser Prozedur kann auf das lokale Dateisystem und externe Freigaben oder Azure Blob Storage nicht zugegriffen werden.
@@ -347,9 +343,9 @@ Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreif
 
 Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden in verwalteten Instanzen nicht unterstützt.
 
-- Es wird nur eine begrenzte Anzahl von globalen Ablaufverfolgungsflags unterstützt. `Trace flags` auf Sitzungsebene werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
-- [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) und [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) funktionieren mit einer begrenzten Anzahl globaler Ablaufverfolgungsflags.
-- [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) mit den Optionen REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST und REPAIR_REBUILD kann nicht verwendet werden, weil die Datenbank im Modus `SINGLE_USER` nicht festgelegt werden kann. Siehe [ALTER DATABASE-Unterschiede.](#alter-database-statement) Potenzielle Datenbankbeschädigungen werden vom Azure-Supportteam behandelt. Wenden Sie sich an den Azure-Support, wenn Sie bemerken, dass eine Datenbankbeschädigung vorliegt.
+- Es wird nur eine begrenzte Anzahl von globalen Ablaufverfolgungsflags unterstützt. `Trace flags` auf Sitzungsebene werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
+- [DBCC TRACEOFF](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) und [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) funktionieren mit einer begrenzten Anzahl globaler Ablaufverfolgungsflags.
+- [DBCC CHECKDB](/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) mit den Optionen REPAIR_ALLOW_DATA_LOSS, REPAIR_FAST und REPAIR_REBUILD kann nicht verwendet werden, weil die Datenbank im Modus `SINGLE_USER` nicht festgelegt werden kann. Siehe [ALTER DATABASE-Unterschiede.](#alter-database-statement) Potenzielle Datenbankbeschädigungen werden vom Azure-Supportteam behandelt. Wenden Sie sich an den Azure-Support, wenn Sie bemerken, dass eine Datenbankbeschädigung vorliegt.
 
 ### <a name="distributed-transactions"></a>Verteilte Transaktionen
 
@@ -359,12 +355,12 @@ MS DTC und [elastische Transaktionen](sql-database-elastic-transactions-overview
 
 Einige Windows-spezifische Ziele für XEvents (Erweiterte Ereignisse) werden nicht unterstützt:
 
-- Das Ziel `etw_classic_sync` wird nicht unterstützt. Speichern Sie `.xel`-Dateien in Azure Blob Storage. Siehe [etw_classic_sync-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- Das Ziel `event_file` wird nicht unterstützt. Speichern Sie `.xel`-Dateien in Azure Blob Storage. Siehe [event_file-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- Das Ziel `etw_classic_sync` wird nicht unterstützt. Speichern Sie `.xel`-Dateien in Azure Blob Storage. Siehe [etw_classic_sync-Ziel](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
+- Das Ziel `event_file` wird nicht unterstützt. Speichern Sie `.xel`-Dateien in Azure Blob Storage. Siehe [event_file-Ziel](/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externe Bibliotheken
 
-Datenbankinterne R- und externe Python-Bibliotheken werden noch nicht unterstützt. Siehe [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
+Datenbankinterne R- und externe Python-Bibliotheken werden noch nicht unterstützt. Siehe [SQL Server Machine Learning Services](/sql/advanced-analytics/r/sql-server-r-services).
 
 ### <a name="filestream-and-filetable"></a>Filestream und Dateitabelle
 
@@ -379,11 +375,11 @@ Datenbankinterne R- und externe Python-Bibliotheken werden noch nicht unterstüt
   - `GetFileNamespacePat)`
   - `FileTableRootPath()`
 
-Weitere Informationen finden Sie unter [FILESTREAM](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) und [FileTables](https://docs.microsoft.com/sql/relational-databases/blob/filetables-sql-server).
+Weitere Informationen finden Sie unter [FILESTREAM](/sql/relational-databases/blob/filestream-sql-server) und [FileTables](/sql/relational-databases/blob/filetables-sql-server).
 
 ### <a name="full-text-semantic-search"></a>Semantische Volltextsuche
 
-Die [semantische Suche](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) wird nicht unterstützt.
+Die [semantische Suche](/sql/relational-databases/search/semantic-search-sql-server) wird nicht unterstützt.
 
 ### <a name="linked-servers"></a>Verknüpfte Server
 
@@ -396,14 +392,14 @@ Verbindungsserver in einer verwalteten Instanz unterstützen eine begrenzte Anza
 Vorgänge
 
 - Instanzübergreifende Schreibtransaktionen werden nicht unterstützt.
-- `sp_dropserver` wird zum Löschen eines Verbindungsservers unterstützt. Siehe [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
-- Die `OPENROWSET`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Siehe [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
-- Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. Ein Beispiel ist `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
-- Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie es mit [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file), welche CSV-Dateien aus Azure Blob Storage lesen. Verfolgen Sie diese Anforderungen im [Feedback zu verwalteten Instanzen](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|.
+- `sp_dropserver` wird zum Löschen eines Verbindungsservers unterstützt. Siehe [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
+- Die `OPENROWSET`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Siehe [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
+- Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. Ein Beispiel ist `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql).
+- Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie es mit [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file), welche CSV-Dateien aus Azure Blob Storage lesen. Verfolgen Sie diese Anforderungen im [Feedback zu verwalteten Instanzen](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|.
 
 ### <a name="polybase"></a>PolyBase
 
-Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, werden nicht unterstützt. Informationen zu PolyBase finden Sie unter [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
+Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, werden nicht unterstützt. Informationen zu PolyBase finden Sie unter [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikation
 
@@ -462,7 +458,7 @@ Wenn die Replikation für eine Datenbank in einer [Failovergruppe](sql-database-
   - `FROM DISK`/`TAPE`/Sicherungsmedium wird nicht unterstützt.
   - Sicherungssätze werden nicht unterstützt.
 - `WITH`-Optionen wie `DIFFERENTIAL` oder `STATS` werden nicht unterstützt.
-- `ASYNC RESTORE`: Die Wiederherstellung wird auch bei einer Unterbrechung der Clientverbindung fortgesetzt. Wenn die Verbindung ausfällt, können Sie sich in der Ansicht `sys.dm_operation_status` über den Status eines Wiederherstellungsvorgangs sowie über CREATE- und DROP-Vorgänge für die Datenbank informieren. Siehe [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: Die Wiederherstellung wird auch bei einer Unterbrechung der Clientverbindung fortgesetzt. Wenn die Verbindung ausfällt, können Sie sich in der Ansicht `sys.dm_operation_status` über den Status eines Wiederherstellungsvorgangs sowie über CREATE- und DROP-Vorgänge für die Datenbank informieren. Siehe [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 Die folgenden Datenbankoptionen werden festgelegt oder überschrieben und können später nicht geändert werden: 
 
@@ -482,7 +478,7 @@ Einschränkungen:
 - `.BAK`-Dateien mit mehreren Protokolldateien können nicht wiederhergestellt werden.
 - Sicherungen, die Datenbanken von mehr als 8 TB, aktive In-Memory-OLTP-Objekte oder eine Reihe von Dateien enthalten, die das Limit von 280 Dateien pro Instanz überschreiten würden, können auf einer universellen Instanz nicht wiederhergestellt werden. 
 - Sicherungen, die Datenbanken mit mehr als 4 TB oder In-Memory-OLTP-Objekte enthalten, deren Gesamtgröße größer ist als die unter [Ressourcenlimits](sql-database-managed-instance-resource-limits.md) beschriebene Größe, können auf der unternehmenskritischen Instanz nicht wiederhergestellt werden.
-Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
+Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [RESTORE-Anweisungen](/sql/t-sql/statements/restore-statements-transact-sql).
 
  > [!IMPORTANT]
  > Die gleichen Einschränkungen gelten für den integrierten Vorgang der Point-in-Time-Wiederherstellung. So kann beispielsweise eine universelle Datenbank, die größer als 4 TB ist, auf einer unternehmenskritischen Instanz nicht wiederhergestellt werden. Eine unternehmenskritische Datenbank mit In-Memory-OLTP-Dateien oder mehr als 280 Dateien kann auf einer universellen Instanz nicht wiederhergestellt werden.
@@ -491,35 +487,35 @@ Weitere Informationen zu Anweisungen für Wiederherstellungen finden Sie unter [
 
 Der instanzübergreifende Service Broker wird nicht unterstützt:
 
-- `sys.routes`: Als Voraussetzung müssen Sie die Adresse aus „sys.routes“ auswählen. Die Adresse muss für jede Route auf LOCAL festgelegt sein. Siehe [sys.routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE`: Sie können `CREATE ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Siehe [CREATE ROUTE](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
-- `ALTER ROUTE`: Sie können `ALTER ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Siehe [ALTER ROUTE](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql). 
+- `sys.routes`: Als Voraussetzung müssen Sie die Adresse aus „sys.routes“ auswählen. Die Adresse muss für jede Route auf LOCAL festgelegt sein. Siehe [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
+- `CREATE ROUTE`: Sie können `CREATE ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Siehe [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql).
+- `ALTER ROUTE`: Sie können `ALTER ROUTE` nicht mit einer anderen `ADDRESS` als `LOCAL` verwenden. Siehe [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql). 
 
 ### <a name="stored-procedures-functions-and-triggers"></a>Gespeicherte Prozeduren, Funktionen und Trigger
 
 - `NATIVE_COMPILATION` wird in der Dienstebene „Universell“ nicht unterstützt.
-- Die folgenden [sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql)-Optionen werden nicht unterstützt: 
+- Die folgenden [sp_configure](/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql)-Optionen werden nicht unterstützt: 
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
   - `remote data archive`
   - `remote proc trans`
-- `sp_execute_external_scripts` wird nicht unterstützt. Siehe [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
-- `xp_cmdshell` wird nicht unterstützt. Siehe [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
-- `Extended stored procedures` werden nicht unterstützt. Hierzu gehören `sp_addextendedproc` und `sp_dropextendedproc`. Siehe [Erweiterte gespeicherte Prozeduren](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
-- `sp_attach_db`, `sp_attach_single_file_db` und `sp_detach_db` werden nicht unterstützt. Siehe [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) und [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
+- `sp_execute_external_scripts` wird nicht unterstützt. Siehe [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
+- `xp_cmdshell` wird nicht unterstützt. Siehe [xp_cmdshell](/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
+- `Extended stored procedures` werden nicht unterstützt. Hierzu gehören `sp_addextendedproc` und `sp_dropextendedproc`. Siehe [Erweiterte gespeicherte Prozeduren](/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql).
+- `sp_attach_db`, `sp_attach_single_file_db` und `sp_detach_db` werden nicht unterstützt. Siehe [sp_attach_db](/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) und [sp_detach_db](/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 
 ### <a name="system-functions-and-variables"></a>Systemfunktionen und Variablen
 
 Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:
 
-- `SERVERPROPERTY('EngineEdition')` gibt den Wert 8 zurück. Durch diese Eigenschaft wird eine verwaltete Instanz eindeutig identifiziert. Siehe [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` gibt NULL zurück, weil das für SQL Server bestehende Konzept der Instanz für verwaltete Instanzen nicht gilt. Siehe [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `@@SERVERNAME` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. „meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net“. Siehe [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql). 
-- `SYS.SERVERS` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `myinstance.domain.database.windows.net` für die Eigenschaften „name“ und „data_source“. Siehe [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME` gibt NULL zurück, weil das für SQL Server bestehende Konzept des Diensts für verwaltete Instanzen nicht gilt. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die Azure AD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql). 
-- `SUSER_SID` wird nicht unterstützt. Es werden falsche Daten zurückgegeben. Dies ist ein bekanntes vorübergehendes Problem. Siehe [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
+- `SERVERPROPERTY('EngineEdition')` gibt den Wert 8 zurück. Durch diese Eigenschaft wird eine verwaltete Instanz eindeutig identifiziert. Siehe [SERVERPROPERTY](/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` gibt NULL zurück, weil das für SQL Server bestehende Konzept der Instanz für verwaltete Instanzen nicht gilt. Siehe [SERVERPROPERTY('InstanceName')](/sql/t-sql/functions/serverproperty-transact-sql).
+- `@@SERVERNAME` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. „meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net“. Siehe [@@SERVERNAME](/sql/t-sql/functions/servername-transact-sql). 
+- `SYS.SERVERS` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `myinstance.domain.database.windows.net` für die Eigenschaften „name“ und „data_source“. Siehe [SYS.SERVERS](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
+- `@@SERVICENAME` gibt NULL zurück, weil das für SQL Server bestehende Konzept des Diensts für verwaltete Instanzen nicht gilt. Siehe [@@SERVICENAME](/sql/t-sql/functions/servicename-transact-sql).
+- `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die Azure AD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
+- `SUSER_SID` wird nicht unterstützt. Es werden falsche Daten zurückgegeben. Dies ist ein bekanntes vorübergehendes Problem. Siehe [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
 ## <a name="Environment"></a>Umgebungseinschränkungen
 
@@ -541,7 +537,7 @@ Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 
 
 ### <a name="error-logs"></a>Fehlerprotokolle
 
-Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [verwaltete Instanz – sp_readmierrorlog ](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) oder [Verwaltete Instanzerweiterung (Vorschau)](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) für Azure Data Studio.
+Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog ](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) oder [Verwaltete Instanzerweiterung (Vorschauversion)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) für Azure Data Studio.
 
 ## <a name="Issues"></a> Bekannte Probleme
 
@@ -549,15 +545,15 @@ Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen 
 
 **Datum:** Oktober 2019
 
-In einigen Fällen wird die Dienstebene „Unternehmenskritisch“ [maximale Arbeitsspeicherlimits für speicheroptimierte Objekte](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) nicht ordnungsgemäß anwenden. Die verwaltete Instanz ermöglicht es vielleicht, dass die Workload mehr Arbeitsspeicher für In-Memory-OLTP-Vorgänge belegt. Dies kann sich auf die Verfügbarkeit und Stabilität der Instanz auswirken. In-Memory-OLTP-Abfragen, die die Limits erreichen, schlagen möglicherweise nicht sofort fehl. Dieses Problem wird bald behoben. Die Abfragen, die mehr In-Memory-OLTP-Arbeitsspeicher belegen, werden früher fehlschlagen, wenn sie die [Limits](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) erreichen.
+In einigen Fällen wird die Dienstebene „Unternehmenskritisch“ [maximale Arbeitsspeicherlimits für speicheroptimierte Objekte](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) nicht ordnungsgemäß anwenden. Die verwaltete Instanz ermöglicht es vielleicht, dass die Workload mehr Arbeitsspeicher für In-Memory-OLTP-Vorgänge belegt. Dies kann sich auf die Verfügbarkeit und Stabilität der Instanz auswirken. In-Memory-OLTP-Abfragen, die die Grenzwerte erreichen, führen möglicherweise nicht sofort zu Fehlern. Dieses Problem wird bald behoben. Die Abfragen, die mehr In-Memory-OLTP-Arbeitsspeicher belegen, werden früher fehlschlagen, wenn sie die [Limits](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) erreichen.
 
-**Problemumgehung:** [Überwachen der In-Memory-OLTP-Arbeitsspeichernutzung](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) mithilfe von [SQL Server Management Studio ](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring), um sicherzustellen, dass die Workload nicht mehr als den verfügbaren Arbeitsspeicher belegt. Erhöhen Sie die Arbeitsspeicherlimits, die von der Anzahl von virtuellen Kernen abhängen, oder optimieren Sie Ihre Workload, damit sie weniger Arbeitsspeicher belegt.
+**Problemumgehung:** [Überwachen der In-Memory-OLTP-Arbeitsspeichernutzung](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) mithilfe von [SQL Server Management Studio ](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring), um sicherzustellen, dass die Workload nicht mehr als den verfügbaren Arbeitsspeicher belegt. Erhöhen Sie die Arbeitsspeicherlimits, die von der Anzahl von virtuellen Kernen abhängen, oder optimieren Sie Ihre Workload, damit sie weniger Arbeitsspeicher belegt.
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Zurückgegebener Fehler bei dem Versuch, eine nicht leere Datei zu entfernen
 
 **Datum:** Oktober 2019
 
-SQL Server/Verwaltete Instanz [erlaubt Benutzern nicht das Löschen von Dateien, die nicht leer sind](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Wenn Sie versuchen, eine nicht leere Datendatei mithilfe der `ALTER DATABASE REMOVE FILE`-Anweisung zu entfernen, wird der Fehler `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` nicht sofort zurückgegeben. Die verwaltete Instanz versucht fortgesetzt, die Datei zu löschen, und der Vorgang schlägt nach 30 Minuten mit `Internal server error` fehl.
+SQL Server/Verwaltete Instanz [erlaubt Benutzern nicht das Löschen von Dateien, die nicht leer sind](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Wenn Sie versuchen, eine nicht leere Datendatei mithilfe der `ALTER DATABASE REMOVE FILE`-Anweisung zu entfernen, wird der Fehler `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` nicht sofort zurückgegeben. Die verwaltete Instanz versucht fortgesetzt, die Datei zu löschen, und der Vorgang schlägt nach 30 Minuten mit `Internal server error` fehl.
 
 **Problemumgehung**: Entfernen Sie den Inhalt der Datei mit dem `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)`-Befehl. Wenn es sich um die einzige Datei in der Dateigruppe handelt, müssten Sie Daten aus der Tabelle oder Partition löschen, die dieser Dateigruppe zugeordnet ist, bevor Sie die Datei verkleinern, und diese Daten optional in eine andere Tabelle/Partition laden.
 
@@ -583,15 +579,15 @@ Die Anweisung `RESTORE` und die integrierte Point-in-Time-Wiederherstellung füh
 
 **Datum:** September 2019
 
-Die Funktion [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor), die Ihnen ermöglicht, die der Benutzerworkload zugewiesenen Ressourcen einzuschränken, könnte eine andere Benutzerworkload nach einem Failover oder einer vom Benutzer initiierten Änderung der Dienstebene (z. B. Änderung der maximalen virtuellen Kerne oder maximalen Instanzspeichergröße) falsch klassifizieren.
+Die Funktion [Resource Governor](/sql/relational-databases/resource-governor/resource-governor), die Ihnen ermöglicht, die der Benutzerworkload zugewiesenen Ressourcen einzuschränken, könnte eine andere Benutzerworkload nach einem Failover oder einer vom Benutzer initiierten Änderung der Dienstebene (z. B. Änderung der maximalen virtuellen Kerne oder maximalen Instanzspeichergröße) falsch klassifizieren.
 
-**Problemumgehung**: Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL Agent-Auftrags aus, der den SQL-Task ausführt, wenn die Instanz gestartet wird, wenn Sie [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) verwenden.
+**Problemumgehung**: Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL Agent-Auftrags aus, der den SQL-Task ausführt, wenn die Instanz gestartet wird, wenn Sie [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) verwenden.
 
 ### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Authentifizierung bei externen E-Mail-Servern mit sicherer Verbindung (SSL) nicht möglich
 
 **Datum:** August 2019
 
-Datenbank-E-Mail, die [mit sicherer Verbindung (Secure Connection, SSL) konfiguriert wurde](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail), kann sich bei einigen E-Mail-Servern außerhalb von Azure nicht authentifizieren. Dies ist ein Sicherheitskonfigurationsproblem, das bald behoben sein wird.
+Datenbank-E-Mail, die [mit sicherer Verbindung (Secure Connection, SSL) konfiguriert wurde](/sql/relational-databases/database-mail/configure-database-mail), kann sich bei einigen E-Mail-Servern außerhalb von Azure nicht authentifizieren. Dies ist ein Sicherheitskonfigurationsproblem, das bald behoben sein wird.
 
 **Problemumgehung:** Entfernen Sie die sichere Verbindung (SSL) vorübergehend aus der Datenbank-E-Mail-Konfiguration, bis das Problem behoben wurde. 
 
@@ -599,11 +595,11 @@ Datenbank-E-Mail, die [mit sicherer Verbindung (Secure Connection, SSL) konfigur
 
 **Datum:** August 2019
 
-Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind **nicht verloren**, sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße in der verwalteten Instanz führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Ein `DIALOG`, der mit der Anweisung [BEGIN DIALOG](https://docs.microsoft.com/en-us/sql/t-sql/statements/begin-dialog-conversation-transact-sql) erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
+Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind **nicht verloren**, sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße in der verwalteten Instanz führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Ein `DIALOG`, der mit der Anweisung [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
 
 **Problemumgehung:** Beenden Sie alle Aktivitäten, die datenbankübergreifende Dialogkonversationen des Service Brokers verwenden, bevor Sie die Dienstebene aktualisieren, und initialisieren Sie sie danach neu. Wenn es noch Nachrichten gibt, die nach dem Ändern der Dienstebene nicht zugestellt werden, lesen Sie die Nachrichten aus der Quellwarteschlange, und senden Sie sie erneut an die Zielwarteschlange.
 
-### <a name="impersonification-of-aad-login-types-is-not-supported"></a>Der Identitätswechsel für AAD-Anmeldetypen wird nicht unterstützt.
+### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Identitätswechsel für Azure AD-Anmeldetypen werden nicht unterstützt.
 
 **Datum:** Juli 2019
 
@@ -615,7 +611,7 @@ Der Identitätswechsel mithilfe von `EXECUTE AS USER` oder `EXECUTE AS LOGIN` de
 
 **Datum:** April 2019
 
-Der `@query`-Parameter in der Prozedur [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) funktioniert nicht.
+Der `@query`-Parameter in der Prozedur [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) funktioniert nicht.
 
 ### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Die Transaktionsreplikation muss nach einem geografischen Failover neu konfiguriert werden.
 
@@ -623,13 +619,11 @@ Der `@query`-Parameter in der Prozedur [sp_send_db_mail](https://docs.microsoft.
 
 Wenn die Transaktionsreplikation für eine Datenbank in einer Autofailover-Gruppe aktiviert ist, muss der Administrator der verwalteten Instanz alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover in eine andere Region für die neue primäre Instanz erneut konfigurieren. Weitere Informationen finden Sie unter [Replikation](#replication).
 
-### <a name="aad-logins-and-users-are-not-supported-in-tools"></a>AAD-Anmeldungen und -Benutzer werden in Tools nicht unterstützt.
+### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>AAD-Anmeldungen und -Benutzer werden in SSDT nicht unterstützt.
 
-**Datum:** Januar 2019
+**Datum:** November 2019
 
-SQL Server Management Studio und SQL Server Data Tools unterstützen Azure Active Directory-Anmeldungen und -Benutzer nicht vollständig.
-- Die Verwendung von Azure AD-Serverprinzipalen (Anmeldungen) und Azure AD-Benutzern (öffentliche Vorschau) mit SQL Server Data Tools wird derzeit nicht unterstützt.
-- Das Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) und -Benutzern (öffentliche Vorschau) per Skript wird in SQL Server Management Studio nicht unterstützt.
+SQL Server Data Tools unterstützen Azure Active Directory-Anmeldungen und -Benutzer nicht vollständig.
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>Temporäre Datenbank wird während des RESTORE-Vorgangs verwendet
 
@@ -656,7 +650,7 @@ Dieses Beispiel verdeutlicht, dass eine verwaltete Instanz unter bestimmten Umst
 
 In diesem Beispiel funktionieren vorhandene Datenbanken weiterhin und können ohne Probleme weiter wachsen, solange keine neuen Dateien hinzugefügt werden. Es könnten jedoch keine neuen Datenbanken erstellt oder wiederhergestellt werden, da für neue Datenträgerlaufwerke nicht genügend Speicherplatz vorhanden ist, selbst nicht dann, wenn die Gesamtgröße aller Datenbanken das Größenlimit der Instanz nicht überschreitet. Der Fehler, der in diesem Fall zurückgegeben wird, ist nicht klar.
 
-Sie können mithilfe von Systemansichten [die Anzahl von verbleibenden Dateien identifizieren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1). Wenn Sie dieses Limit erreichen, versuchen Sie, [einige der kleineren Dateien mithilfe der DBCC SHRINKFILE-Anweisung zu leeren und zu löschen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file), oder wechseln Sie zur [Dienstebene „Unternehmenskritisch“, für die dieses Limit nicht gilt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
+Sie können mithilfe von Systemansichten [die Anzahl von verbleibenden Dateien identifizieren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1). Wenn Sie dieses Limit erreichen, versuchen Sie, [einige der kleineren Dateien mithilfe der DBCC SHRINKFILE-Anweisung zu leeren und zu löschen](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file), oder wechseln Sie zur [Dienstebene „Unternehmenskritisch“, für die dieses Limit nicht gilt](/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 
 ### <a name="guid-values-shown-instead-of-database-names"></a>Anstelle von Datenbanknamen werden GUID-Werte gezeigt.
 
@@ -695,7 +689,7 @@ using (var scope = new TransactionScope())
 
 Obwohl dieser Code mit Daten innerhalb derselben Instanz funktioniert, erforderte er MS DTC.
 
-**Problemumgehung:** Verwenden Sie [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um anstelle von zwei Verbindungen eine andere Datenbank im Verbindungskontext zu verwenden.
+**Problemumgehung:** Verwenden Sie [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um anstelle von zwei Verbindungen eine andere Datenbank im Verbindungskontext zu verwenden.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR-Module und Verbindungsserver können manchmal nicht auf eine lokale IP-Adresse verweisen
 

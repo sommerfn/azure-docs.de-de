@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcc704e7027903a1ede14c787a64c35d6b5fd9c0
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ac1b75536e092203490a390860a1cead7ac333b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373461"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73817979"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -32,7 +32,7 @@ Um Ihr Kennwort zu synchronisieren, extrahiert die Azure AD Connect-Synchronisie
 
 Der tatsächliche Datenfluss des Kennworthashsynchronisierungs-Vorgangs ähnelt der Synchronisierung von Benutzerdaten. Kennwörter werden jedoch häufiger synchronisiert als vom Standardzeitfenster für die Verzeichnissynchronisierung für andere Attribute vorgesehen. Der Prozess der Kennworthashsynchronisierung wird alle zwei Minuten ausgeführt. Sie können die Häufigkeit der Ausführung nicht ändern. Wenn Sie ein Kennwort synchronisieren, wird das vorhandene Cloudkennwort überschrieben.
 
-Bei der ersten Aktivierung der Kennworthashsynchronisierung wird eine anfängliche Synchronisierung der Kennwörter aller im Bereich befindlichen Benutzer durchgeführt. Es ist nicht möglich, explizit eine Teilmenge der Benutzerkennwörter zu definieren, die Sie synchronisieren möchten.
+Bei der ersten Aktivierung der Kennworthashsynchronisierung wird eine anfängliche Synchronisierung der Kennwörter aller im Bereich befindlichen Benutzer durchgeführt. Es ist nicht möglich, explizit eine Teilmenge der Benutzerkennwörter zu definieren, die Sie synchronisieren möchten. Wenn jedoch mehrere Connectors vorhanden sind, ist es möglich, die Kennworthash-Synchronisierung für einige Connectors selektiv mit dem Cmdlet [Set-ADSyncAADPasswordSyncConfiguration](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-getting-started-password-sync-synced-tenant) zu deaktivieren.
 
 Wenn Sie ein lokales Kennwort ändern, wird das aktualisierte Kennwort synchronisiert. Dies dauert meist nur wenige Minuten.
 Das Feature der Kennworthashsynchronisierung versucht automatisch, fehlerhafte Synchronisierungsversuche erneut auszuführen. Wenn beim Versuch, ein Kennwort zu synchronisieren, ein Fehler auftritt, wird der Fehler in der Ereignisanzeige protokolliert.
@@ -100,7 +100,7 @@ Wenn*EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standard
 
 Führen Sie den folgenden Befehl mit dem MSOnline PowerShell-Modul aus, um das EnforceCloudPasswordPolicyForPasswordSyncedUsers-Feature zu aktivieren:
 
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
 
 Nach der Aktivierung des Features wechselt Azure AD nicht zu jedem synchronisierten Benutzer, um den `DisablePasswordExpiration`-Wert aus dem „PasswordPolicies“-Attribut zu entfernen. Stattdessen wird der Wert während der nächsten Kennwortsynchronisierung für jeden Benutzer auf `None` festgelegt, wenn das Kennwort beim nächsten Mal in der lokalen AD-Instanz geändert wird.  
 

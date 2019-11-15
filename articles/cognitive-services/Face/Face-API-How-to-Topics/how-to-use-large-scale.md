@@ -1,7 +1,7 @@
 ---
 title: 'Beispiel: Verwenden der Funktion für die Verarbeitung in großem Umfang: Gesichtserkennungs-API'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie die Funktion für die Verarbeitung in großem Umfang in der Gesichtserkennungs-API verwenden.
+description: Diese Anleitung ist ein Artikel zum zentralen Hochskalieren der vorhandenen Objekte PersonGroup und FaceList auf die Objekte LargePersonGroup bzw. LargeFaceList.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: d8ecfb53b78277e4b0e4a85d60fb6712d0bc2292
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114835"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743725"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Beispiel: Verwenden des Features für die Verarbeitung in großem Umfang
 

@@ -4,15 +4,16 @@ description: Verwenden Sie die Registerkarte „Marketplace“, um Marketingress
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967b66a67d51b3a79bcf930ce977af48acc3dd63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962876"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827567"
 ---
 # <a name="azure-application-marketplace-tab"></a>Registerkarte „Marketplace“ für eine Azure-Anwendung
 
@@ -55,7 +56,7 @@ In der folgenden Tabelle sind die Marketingartefakte beschrieben.
 | **Breit\***         | Breites Logo: PNG-Format, 255 x 115 Pixel    |
 | **Hero**           | Optionales Herologo: PNG-Format, 815 x 290 Pixel **Hinweis:** Nachdem das Herologo hochgeladen wurde, kann es nicht mehr gelöscht werden. |
 | **Bildschirmfotos (max. 5)** |        Screenshots werden auf Ihrer Produktdetailseite angezeigt. Damit können Sie sehr gut die Features und die Funktionsweise Ihrer App visuell veranschaulichen. Sie können beispielsweise Architekturdiagramme oder Anwendungsfälle präsentieren. Screenshots sind optional, und pro SKU sind maximal 5 möglich. So fügen Sie einen Screenshot hinzu:<ul><li>Wählen Sie **+ Screenshot hinzufügen** aus, um das Fenster „Screenshot“ zu öffnen.</li><li>**Name**: Geben Sie einen Namen/Titel ein (maximale Länge ist 100 Zeichen).</li><li>**Hochladen**: Laden Sie das Bild hoch. Es muss im PNG-Format vorliegen und 533 x 324 Pixel groß sein.</li></ul>           |
-| **Video hinzufügen**      | Optional werden Videos auf Ihrer Produktdetailseite angezeigt. Damit können Sie sehr gut die Features und die Funktionsweise Ihrer Anwendung visuell veranschaulichen. So fügen Sie ein Video hinzu: <ul><li>Wählen Sie **+ Video hinzufügen** aus, um das Fenster „Video“ zu öffnen.</li><li>**Name**: Geben Sie einen Namen/Titel ein (maximale Länge ist 100 Zeichen).</li><li>**Link**: Geben Sie die URL für die Website ein, auf der das Video hostet wird (YouTube oder Vimeo).</li><li>**Miniaturansicht**: Laden Sie das Bild einer Miniaturansicht hoch. Es muss im PNG-Format vorliegen und 533 x 324 Pixel groß sein.</li></ul>          |
+| **Video hinzufügen**      | Optional werden Videos auf Ihrer Produktdetailseite angezeigt. Damit können Sie sehr gut die Features und die Funktionsweise Ihrer Anwendung visuell veranschaulichen. So fügen Sie ein Video hinzu: <ul><li>Wählen Sie **+ Video hinzufügen** aus, um das Fenster „Video“ zu öffnen.</li><li>**Name**: Geben Sie einen Namen/Titel ein (maximale Länge ist 100 Zeichen).</li><li>**Link**: Geben Sie die URL für die Website ein, auf der das Video gehostet wird (YouTube oder Vimeo).</li><li>**Miniaturansicht**: Laden Sie das Bild in einer Miniaturansicht hoch. Es muss im PNG-Format vorliegen und 533 x 324 Pixel groß sein.</li></ul>          |
 |  |  |
 
 

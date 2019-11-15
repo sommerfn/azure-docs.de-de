@@ -1,6 +1,6 @@
 ---
 title: Vorbereiten des DPM-Servers zum Sichern von Workloads in Azure
-description: Eine Einführung zur Sicherung von DPM-Daten in einem Azure Recovery Services-Tresor.
+description: In diesem Artikel erfahren Sie, wie Sie System Center Data Protection Manager-Sicherungen (DPM) in Azure mithilfe des Azure Backup-Diensts vorbereiten.
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71070a778e54e51cdb528041f746489bb64e979c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5c89dc8b5c8ee420c94d61763770cd37e763f2df
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954711"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747516"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -27,18 +27,17 @@ Der Artikel enthält Folgendes:
 - Schritte zum Vorbereiten des DPM-Servers, darunter der Download von Tresoranmeldeinformationen, das Installieren des Azure Backup-Agents und das Registrieren des DPM-Servers im Tresor
 - Tipps zur Problembehandlung bei häufigen Fehlern
 
-
 ## <a name="why-back-up-dpm-to-azure"></a>Gründe für die Sicherung von DPM in Azure
 
 [System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) sichert Datei- und Anwendungsdaten. DPM interagiert mit Azure Backup wie folgt:
 
-* **Auf einem physischen Server oder lokalen virtuellen Computer ausgeführter DPM:** Sie können Daten zusätzlich zu Sicherungen auf Festplatte und Band in einem Sicherungstresor in Azure sichern.
-* **Auf einem virtuellen Azure-Computer ausgeführter DPM:** Sie können von System Center 2012 R2 mit Update 3 oder höher DPM auf einem virtuellen Azure-Computer bereitstellen. Sie können Daten auf mit dem virtuellen Computer verbundenen Azure-Datenträgern sichern oder die Daten mit Azure Backup in einem Sicherungstresor sichern.
+- **Auf einem physischen Server oder lokalen virtuellen Computer ausgeführter DPM:** Sie können Daten zusätzlich zu Sicherungen auf Festplatte und Band in einem Sicherungstresor in Azure sichern.
+- **Auf einem virtuellen Azure-Computer ausgeführter DPM:** Sie können von System Center 2012 R2 mit Update 3 oder höher DPM auf einem virtuellen Azure-Computer bereitstellen. Sie können Daten auf mit dem virtuellen Computer verbundenen Azure-Datenträgern sichern oder die Daten mit Azure Backup in einem Sicherungstresor sichern.
 
 Durch die Sicherung von DPM-Servern in Azure ergeben sich folgende Geschäftsvorteile:
 
-* Für einen lokalen DPM bietet Azure Backup eine Alternative zur langfristigen Bereitstellung auf Band.
-* Für einen auf einem virtuellen Azure-Computer ausgeführten DPM ermöglicht Azure Backup das Auslagern von Speicher vom Azure-Datenträger. Die Speicherung älterer Daten in einem Sicherungstresor ermöglicht den Ausbau Ihres Unternehmens, indem Sie neue Daten auf Datenträgern speichern.
+- Für einen lokalen DPM bietet Azure Backup eine Alternative zur langfristigen Bereitstellung auf Band.
+- Für einen auf einem virtuellen Azure-Computer ausgeführten DPM ermöglicht Azure Backup das Auslagern von Speicher vom Azure-Datenträger. Die Speicherung älterer Daten in einem Sicherungstresor ermöglicht den Ausbau Ihres Unternehmens, indem Sie neue Daten auf Datenträgern speichern.
 
 ## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
 
@@ -52,8 +51,8 @@ Komponenten | Auf dem DPM-Server müssen die Komponenten Windows PowerShell und 
 Unterstützte Apps | [Erfahren Sie](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix), was DPM sichern kann.
 Unterstützte Dateitypen | Diese Dateitypen können mit Azure Backup gesichert werden: Verschlüsselt (nur vollständige Sicherungen), komprimiert (inkrementelle Sicherungen unterstützt), platzsparend (inkrementelle Sicherungen unterstützt), komprimiert und platzsparend (als platzsparend behandelt).
 Nicht unterstützte Dateitypen | Server auf Dateisystemen, bei denen die Groß-/Kleinschreibung beachtet werden muss, feste Links (übersprungen), Analysepunkte (übersprungen), verschlüsselt und komprimiert (übersprungen), verschlüsselt und platzsparend (übersprungen), komprimierter Stream, Analysestream.
-Lokaler Speicher | Jeder Computer, den Sie sichern möchten, muss mindestens 5 % der zu sichernden Datengröße als freien lokalen Speicher aufweisen. Beispielsweise erfordert das Sichern von 100GB an Daten mindestens 5GB freien Speicherplatz im Scratchverzeichnis.
-Tresorspeicher | Es gibt keine Beschränkung der Datenmenge, die Sie in einem Azure Backup-Tresor sichern, aber die Größe einer Datenquelle (beispielsweise ein virtueller Computer oder eine Datenbank) darf 54.400 GB nicht überschreiten.
+Lokaler Speicher | Jeder Computer, den Sie sichern möchten, muss mindestens 5 % der zu sichernden Datengröße als freien lokalen Speicher aufweisen. Beispielsweise erfordert das Sichern von 100GB an Daten mindestens 5GB freien Speicherplatz im Scratchverzeichnis.
+Tresorspeicher | Es gibt keine Beschränkung der Datenmenge, die Sie in einem Azure Backup-Tresor sichern, aber die Größe einer Datenquelle (beispielsweise ein virtueller Computer oder eine Datenbank) darf 54.400 GB nicht überschreiten.
 Azure ExpressRoute | Wenn Azure ExpressRoute mit privatem Peering oder Microsoft-Peering konfiguriert wird, können die Daten mit dem Dienst nicht in Azure gesichert werden.<br/><br/> Wenn Azure ExpressRoute mit öffentlichem Peering konfiguriert wird, können die Daten mit dem Dienst in Azure gesichert werden.<br/><br/> **Hinweis:** Öffentliches Peering gilt für neue Leitungen als veraltet.
 Azure Backup-Agent | Wenn DPM in System Center 2012 SP1 ausgeführt wird, installieren Sie mindestens Updaterollup 2 für DPM SP1. Dies ist für die Installation des Agents erforderlich.<br/><br/> In diesem Artikel wird beschrieben, wie Sie die neueste Version des Azure Backup-Agents, auch als MARS-Agent (Microsoft Azure Recovery Service) bezeichnet, bereitstellen. Wenn Sie eine frühere Version bereitgestellt haben, aktualisieren Sie sie auf die neueste Version, um sicherzustellen, dass die Sicherung wie erwartet funktioniert.
 
@@ -95,8 +94,8 @@ Um die Anmeldeinformationen abzurufen, laden Sie die Datei mit Tresoranmeldeinfo
 
 - Die Tresoranmeldeinformationen werden nur während des Registrierungsworkflows verwendet.
 - Sie müssen sicherstellen, dass die Datei mit den Tresoranmeldeinformationen sicher aufbewahrt und nicht kompromittiert wird.
-    - Wenn die Anmeldeinformationen verloren gehen, können die Anmeldeinformationen des Tresors zum Registrieren anderer Computer als Tresor verwendet werden.
-    - Die Sicherungsdaten sind jedoch durch eine Passphrase verschlüsselt, die dem Kunden gehört. Daher sind vorhandene Sicherungsdaten nicht gefährdet.
+  - Wenn die Anmeldeinformationen verloren gehen, können die Anmeldeinformationen des Tresors zum Registrieren anderer Computer als Tresor verwendet werden.
+  - Die Sicherungsdaten sind jedoch durch eine Passphrase verschlüsselt, die dem Kunden gehört. Daher sind vorhandene Sicherungsdaten nicht gefährdet.
 - Stellen Sie sicher, dass die Datei an einem Ort gespeichert wird, auf den vom DPM-Server aus zugegriffen werden kann. Wenn sie in einer Dateifreigabe/einem SMB gespeichert sind, überprüfen Sie die Zugriffsberechtigungen.
 - Tresoranmeldeinformationen laufen nach 48 Stunden ab. Sie können so oft wie erforderlich neue Tresoranmeldeinformationen herunterladen. Allerdings kann nur die neueste Datei mit Tresoranmeldeinformationen während des Registrierungsworkflows verwendet werden.
 - Der Azure Backup-Dienst kennt nicht den privaten Schlüssel des Zertifikats, und der private Schlüssel ist weder im Portal noch im Dienst verfügbar.
@@ -115,7 +114,6 @@ Laden Sie die Datei mit den Tresoranmeldeinformationen wie folgt auf einen lokal
 
 5. Klicken Sie auf **Speichern**, um die Tresoranmeldeinformationen in den Ordner herunterzuladen, oder auf **Speichern unter**, um einen Speicherort anzugeben. Es dauert bis zu einer Minute, bis die Datei generiert ist.
 
-
 ## <a name="install-the-backup-agent"></a>Installieren des Backup-Agents
 
 Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (auch als MARS-Agent (Microsoft Azure Recovery Service) bezeichnet) installiert sein. Installieren Sie den Agent wie folgt auf dem DPM-Server:
@@ -127,7 +125,6 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
 3. Laden Sie auf der Seite **Eigenschaften** den Azure Backup-Agent herunter.
 
     ![Download](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
-
 
 4. Führen Sie nach dem Download „MARSAgentInstaller.exe“ aus, um den Agent auf dem DPM-Computer zu installieren.
 5. Wählen Sie einen Installationsordner und einen Cacheordner für den Agent aus. Der freie Speicherplatz am Cachespeicherort muss mindestens 5 % der Sicherungsdaten umfassen.
@@ -143,15 +140,15 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
 2. Geben Sie unter **Proxykonfiguration** die erforderlichen Proxyeinstellungen an.
 
     ![Proxykonfiguration](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
-9. Navigieren Sie im **Backup-Tresor** zu der Datei mit Tresoranmeldeinformationen, die Sie heruntergeladen haben, und wählen Sie sie aus.
+3. Navigieren Sie im **Backup-Tresor** zu der Datei mit Tresoranmeldeinformationen, die Sie heruntergeladen haben, und wählen Sie sie aus.
 
     ![Tresoranmeldeinformationen](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
 
-10. Unter **Einstellung für die Bandbreiteneinschränkung** können Sie optional die Bandbreitenbeschränkung für Sicherungen aktivieren. Sie können Geschwindigkeitsgrenzwerte für Arbeitsstunden und -tage festlegen.
+4. Unter **Einstellung für die Bandbreiteneinschränkung** können Sie optional die Bandbreitenbeschränkung für Sicherungen aktivieren. Sie können Geschwindigkeitsgrenzwerte für Arbeitsstunden und -tage festlegen.
 
     ![Einstellung für die Bandbreiteneinschränkung](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 
-11. Geben Sie unter **Einstellungen für den Wiederherstellungsordner** einen Speicherort an, der für die Datenwiederherstellung verwendet werden kann.
+5. Geben Sie unter **Einstellungen für den Wiederherstellungsordner** einen Speicherort an, der für die Datenwiederherstellung verwendet werden kann.
 
     - Azure Backup verwendet diesen Speicherort als temporären Aufbewahrungsbereich für wiederhergestellte Daten.
     - Nach Abschluss der Datenwiederherstellung bereinigt Azure Backup die Daten in diesem Bereich.
@@ -159,7 +156,7 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
 
     ![Einstellungen für den Wiederherstellungsordner](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 
-12. Generieren Sie unter **Verschlüsselungseinstellung** eine Passphrase, oder geben Sie eine an.
+6. Generieren Sie unter **Verschlüsselungseinstellung** eine Passphrase, oder geben Sie eine an.
 
     - Mithilfe der Passphrase werden die Sicherungen in der Cloud verschlüsselt.
     - Geben Sie mindestens 16 Zeichen ein.
@@ -171,7 +168,7 @@ Auf jedem Computer, der von Azure Backup gesichert wird, muss der Backup-Agent (
     > Die Verschlüsselungspassphrase befindet sich in Ihrem Besitz, und Microsoft kann nicht auf sie zugreifen.
     > Wenn die Passphrase verloren geht oder vergessen wird, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein.
 
-13. Klicken Sie auf **Registrieren**, um den DPM-Server im Tresor zu registrieren.
+7. Klicken Sie auf **Registrieren**, um den DPM-Server im Tresor zu registrieren.
 
 Nach dem Registrieren des Servers beim Tresor können Sie mit der Sicherung in Microsoft Azure beginnen.
 

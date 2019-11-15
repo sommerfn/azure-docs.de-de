@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72033967"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815742"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -29,6 +29,11 @@ Mit der gruppenbasierten Lizenzierung in Azure Active Directory (Azure AD) wird 
 Wenn Sie Lizenzen direkt einzelnen Benutzern zuweisen, ohne die gruppenbasierte Lizenzierung zu verwenden, tritt für den Zuweisungsvorgang ggf. ein Fehler auf. Wenn Sie beispielsweise das PowerShell-Cmdlet `Set-MsolUserLicense` auf einem Benutzersystem ausführen, kann für das Cmdlet aufgrund der Geschäftslogik aus verschiedensten Gründen ein Fehler auftreten. Beispielsweise kann die Anzahl von Lizenzen nicht ausreichen, oder es kann ein Konflikt zwischen zwei Dienstplänen bestehen, die nicht gleichzeitig zugewiesen werden können. Das Problem wird Ihnen sofort gemeldet.
 
 Bei Verwendung der gruppenbasierten Lizenzierung können die gleichen Fehler auftreten. Diese treten allerdings im Hintergrund auf, während der Azure AD-Dienst Lizenzen zuweist. Daher können Ihnen die Fehler nicht sofort gemeldet werden. Stattdessen werden sie im Benutzerobjekt aufgezeichnet und anschließend über das Verwaltungsportal gemeldet. Das ursprüngliche Ziel (die Lizenzierung Benutzers) bleibt stets erhalten und wird im Falle eines Fehlers zur künftigen Untersuchung und Behebung aufgezeichnet.
+
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in Überwachungsprotokollen
+
+**Problem:** Für den Benutzer enthalten die Überwachungsprotokolle eine LicenseAssignmentAttributeConcurrencyException für die Lizenzzuweisung.
+Wenn die gruppenbasierte Lizenzierung versucht, gleichzeitige Lizenzzuweisungen derselben Lizenz zu einem Benutzer zu verarbeiten, wird diese Ausnahme für den Benutzer aufgezeichnet. Dies ist normalerweise der Fall, wenn ein Benutzer Mitglied mehrerer Gruppen ist, denen dieselbe Lizenz zugewiesen ist. Azure AD wiederholt den Verarbeitungsversuch der Benutzerlizenz und löst das Problem. Es ist keine Aktion durch den Kunden erforderlich, um dieses Problem zu beheben.
 
 ## <a name="find-license-assignment-errors"></a>Suchen von Fehlern bei der Lizenzzuweisung
 

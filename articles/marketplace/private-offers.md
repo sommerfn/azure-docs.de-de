@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute
 author: qianw211
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 16903d4f9b1bad8a588b1a234ac84bc9c0150c4a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598371"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827841"
 ---
 # <a name="private-offers"></a>Private Angebote
 
@@ -33,7 +34,7 @@ Private Angebote sind für Virtual Machines-Dienste, Azure-Anwendungen (implemen
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>Erstellen von privaten Angeboten mithilfe von SKUs und Plänen
 
-Bei *neuen oder vorhandenen Angeboten mit öffentlichen SKUs oder Plänen* können Herausgeber ganz einfach neue private Variationen erstellen, indem sie neue SKUs oder Pläne erstellen und diese als „privat“ kennzeichnen.  [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) und Pläne sind Komponenten eines Angebots und können nur von den ausgewählten Zielkunden angezeigt und erworben werden. Für private SKUs und Pläne können die Basisimages und/oder Angebotsmetadaten wiederverwendet werden, die bereits für öffentliche SKUs oder Pläne veröffentlicht wurden. Mit dieser Option können Herausgeber mehrere private Variationen eines öffentlichen Angebots erstellen, ohne mehrere Versionen der gleichen Basisimages und Angebotsmetadaten veröffentlichen zu müssen. Nur bei Angeboten für Virtual Machines und Azure-Anwendungen: Wenn eine private SKU das gleiche Basisimage nutzt wie eine öffentliche SKU, werden alle Änderungen am Basisimage des Angebots an alle öffentlichen und privaten SKUs weitergegeben, die dieses Basisimage nutzen.
+Bei *neuen oder vorhandenen Angeboten mit öffentlichen SKUs oder Plänen* können Herausgeber ganz einfach neue private Variationen erstellen, indem sie neue SKUs oder Pläne erstellen und diese als „privat“ kennzeichnen.  [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) und Pläne sind Komponenten eines Angebots und können nur von den ausgewählten Zielkunden angezeigt und erworben werden. Für private SKUs und Pläne können die Basisimages und/oder Angebotsmetadaten wiederverwendet werden, die bereits für öffentliche SKUs oder Pläne veröffentlicht wurden. Mit dieser Option können Herausgeber mehrere private Variationen eines öffentlichen Angebots erstellen, ohne mehrere Versionen der gleichen Basisimages und Angebotsmetadaten veröffentlichen zu müssen. Nur bei Angeboten für Virtual Machines und Azure-Anwendungen gilt: Wenn eine private SKU das gleiche Basisimage nutzt wie eine öffentliche SKU, werden alle Änderungen am Basisimage des Angebots an alle öffentlichen und privaten SKUs weitergegeben, die dieses Basisimage nutzen.
 
 Bei *neuen Angeboten, die nur private SKUs oder Pläne umfassen*, können Herausgeber diese als beliebiges anderes Angebot erstellen und dann die SKUs oder Pläne als „privat“ kennzeichnen. Angebote, die nur private SKUs oder Pläne umfassen, sind von Kunden, denen diese Angebote nicht zugeordnet sind, weder über den [Azure Marketplace](https://azuremarketplace.microsoft.com) noch über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) auffindbar oder erreichbar.
 

@@ -4,21 +4,22 @@ description: Konfigurieren von Kundenleads im kommerziellen Marketplace.
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: evansma
-ms.openlocfilehash: 31dcc8c1e35b627b231dbe2a62998c8514d05a20
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901542"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812655"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Kundenleads aus Ihrem Marketplace-Angebot
 
 Leads sind Kunden, die an Ihren Angeboten im [Azure Marketplace](https://azuremarketplace.microsoft.com) oder in [AppSource](https://appsource.microsoft.com) interessiert sind oder diese Angebote von dort bereitstellen. Sie erhalten Kundenleads, nachdem Ihr Angebot im Marketplace veröffentlicht wurde. In diesem Artikel wird Folgendes erläutert:
 
-* Generieren von Kundenleads aus Ihrem Marketplace-Angebot zum Sicherstellen, dass Sie keine Geschäftschancen verpassen 
+* Generieren von Kundenleads aus Ihrem Marketplace-Angebot, um sicherzustellen, dass Sie keine Geschäftschancen verpassen 
 * Verbinden Ihres CRM-Systems mit Ihrem Angebot zum Verwalten Ihrer Leads an einem zentralen Ort
 * Auswerten der von uns gesendeten Leaddaten, damit Sie Kunden nachverfolgen können, die sich an Sie wenden
 
@@ -30,7 +31,7 @@ Stellen, an denen Leads generiert werden:
 
       ![Dynamics 365 – Kontakt mit mir aufnehmen](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
 
-2. Wenn ein Kunde „Jetzt holen“ oder „Erstellen“ ([im Azure-Portal](https://portal.azure.com/)) auswählt, um Ihr Angebot zu erhalten, handelt es sich um einen **aktiven Lead**. In diesem Fall geben wir Informationen zu dem Kunden, der mit der Bereitstellung Ihres Produkts begonnen hat, weiter.
+2. Wenn ein Kunde „Jetzt anfordern“ oder „Erstellen“ (im [Azure-Portal](https://portal.azure.com/)) auswählt, um Ihr Angebot zu erhalten, handelt es sich um einen **aktiven Lead**. In diesem Fall geben wir Informationen zu dem Kunden, der mit der Bereitstellung Ihres Produkts begonnen hat, weiter.
 
     ![SQL – Jetzt holen](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
 
@@ -104,7 +105,7 @@ Die Antwort hängt davon ab, welchen Angebotstyp Sie veröffentlichen. SaaS- und
 
 ### <a name="how-can-i-find-the-test-lead"></a>Wie finde ich den Testlead?
 
-Suchen Sie in Ihrem Leadziel nach `“MSFT_TEST”`. Beispiel für einen Testlead von Microsoft:
+Suchen Sie in Ihrem Leadziel nach `"MSFT_TEST"`. Beispiel für einen Testlead von Microsoft:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -123,7 +124,7 @@ title = MSFT_TEST_636573304831318844
 
 ### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>Ich verfüge über ein Liveangebot, aber warum sehe ich keine Leads?
 
-Stellen Sie sicher, dass die Verbindung mit dem Leadziel gültig ist. Wir senden Ihnen einen Testlead, nachdem Sie in Partner Center für Ihr Angebot auf „Veröffentlichen“ geklickt haben. Wenn der Testlead angezeigt wird, ist die Verbindung gültig. Sie können die Leadverbindung auch testen, indem Sie versuchen, das Angebot während des Vorschauschritts in der Vorschauumgebung zu erwerben. Klicken Sie dazu in der Liste im Marketplace auf „Jetzt holen“, „Kontakt mit mir aufnehmen“ oder „Kostenlose Testversion“.
+Stellen Sie sicher, dass die Verbindung mit dem Leadziel gültig ist. Wir senden Ihnen einen Testlead, nachdem Sie in Partner Center für Ihr Angebot auf „Veröffentlichen“ geklickt haben. Wenn der Testlead angezeigt wird, ist die Verbindung gültig. Sie können die Leadverbindung auch testen, indem Sie versuchen, das Angebot während des Vorschauschritts in der Vorschauumgebung zu erwerben. Klicken Sie dazu in der Liste im Marketplace auf „Jetzt anfordern“, „Kontakt mit mir aufnehmen“ oder „Kostenlose Testversion“.
 
 Stellen Sie außerdem sicher, dass Sie nach den richtigen Daten suchen. Im Abschnitt [Grundlegendes zu Leaddaten](#understand-lead-data) in diesem Artikel werden die Leaddaten beschrieben, die wir an das Leadziel senden.
 

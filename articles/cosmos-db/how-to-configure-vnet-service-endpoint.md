@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: c399bed803145659bae1863e9e0b919f33254627
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811917"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820213"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs über virtuelle Netzwerke (VNET)
 
@@ -68,7 +68,7 @@ Im Folgenden finden Sie die Schritte zum Registrieren eines Abonnements bei eine
 
    ![Auswählen des virtuellen Netzwerks und Subnetzes für ein neues virtuelle Netzwerk](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-Wenn Ihr Azure Cosmos DB-Konto von anderen Azure-Diensten wie z. B. Azure Search verwendet wird oder Stream Analytics oder Power BI darauf zugreifen, gewähren Sie Zugriff, indem Sie das Kontrollkästchen **Accept connections from within global Azure datacenters** (Zugriff aus globalen Azure-Rechenzentren zulassen) aktivieren.
+Wenn Ihr Azure Cosmos DB-Konto von anderen Azure-Diensten wie z. B. Azure Cognitive Search verwendet wird oder Stream Analytics oder Power BI darauf zugreifen, gewähren Sie Zugriff, indem Sie das Kontrollkästchen **Accept connections from within global Azure datacenters** (Zugriff aus globalen Azure-Rechenzentren zulassen) aktivieren.
 
 Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen für **Zugriff über das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie im Artikel [Konfigurieren einer IP-Firewall](how-to-configure-firewall.md). Nachdem Sie den Zugriff aktiviert haben, klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 

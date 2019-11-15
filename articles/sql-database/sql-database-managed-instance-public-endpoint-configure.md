@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des öffentlichen Endpunkts – Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Konfigurieren des öffentlichen Endpunkts – verwaltete Instanz
 description: Erfahren Sie, wie Sie einen öffentlichen Endpunkt für die verwaltete Instanz konfigurieren.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cebe6b4ca61b835e7c77f51592c20799fe271853
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567397"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73828032"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Datenbank-Instanz
 
@@ -99,7 +99,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
     |**Ziel**     |Any         |Behalten Sie für das Ziel „Beliebig“ bei, um in das Subnetz der verwalteten Instanz eingehenden Datenverkehr zuzulassen |
     |**Zielportbereiche**     |3342         |Legen Sie den Zielport auf 3342 fest, den öffentlichen TDS-Endpunkt der verwalteten Instanz |
     |**Protokoll**     |TCP         |Die verwaltete Instanz verwendet das TCP-Protokoll für TDS |
-    |**Aktion**     |ZULASSEN         |Lassen Sie eingehenden Datenverkehr zur verwalteten Instanz über den öffentlichen Endpunkt zu |
+    |**Aktion**     |Allow         |Lassen Sie eingehenden Datenverkehr zur verwalteten Instanz über den öffentlichen Endpunkt zu |
     |**Priority**     |1300         |Stellen Sie sicher, dass diese Regel höhere Priorität hat als die Regel **deny_all_inbound** |
 
     ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)

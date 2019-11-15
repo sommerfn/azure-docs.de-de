@@ -4,15 +4,16 @@ description: Hier erfahren Sie Schritt für Schritt, wie Sie ein vorhandenes VM-
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 6796c2871cf8a5928beed2ab557cefdfe8ecaae9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b07f3f3edab47f8f75835dffd4cc3f89f17ab63
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938596"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824407"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>Veröffentlichen eines VM-Angebots
 

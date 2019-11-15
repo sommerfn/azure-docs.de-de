@@ -4,20 +4,21 @@ description: Eine Übersicht über verschiedene Themen zur Veröffentlichung von
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: pabutler
-ms.openlocfilehash: a89921d4b5ec25bc0c924646d3bd41aecf3e8d9c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 047ffd983cecd9f9bd971ee3f97e15734d14ce66
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67870925"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813278"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>Leadverwaltung für Cloud Marketplace
 
 
-Kunden spielen für erfolgreiche Unternehmen eine entscheidende Rolle. Angesichts des Wandels beim Kauf von Produkten sind Marketingfachleute darauf angewiesen, einen direkten Kontakt mit Kunden herzustellen und eine Beziehung aufzubauen. Aus diesem Grund stellt die Generierung hochwertiger Leads ein unverzichtbares Werkzeug für Ihren Vertriebszyklus dar. Nachdem Sie Ihr Angebot im [Cloud-Partnerportal](https://cloudpartner.azure.com/) gelistet haben, stehen Ihnen Tools zur Verfügung, mit denen Sie programmgesteuert Kundenkontaktinformationen erhalten können, sobald ein Kunde Interesse bekundet oder Ihr Produkt im Marketplace einsetzt. 
+Kunden spielen für erfolgreiche Unternehmen eine entscheidende Rolle. Angesichts des Wandels beim Produktkauf sind Marketingfachleute darauf angewiesen, einen direkten Kontakt mit Kunden herzustellen und eine Beziehung aufzubauen. Aus diesem Grund stellt die Generierung hochwertiger Leads ein unverzichtbares Werkzeug für Ihren Vertriebszyklus dar. Nachdem Sie Ihr Angebot im [Cloud-Partnerportal](https://cloudpartner.azure.com/) gelistet haben, stehen Ihnen Tools zur Verfügung, mit denen Sie programmgesteuert Kundenkontaktinformationen erhalten können, sobald ein Kunde Interesse bekundet oder Ihr Produkt im Marketplace einsetzt. 
 
 
 
@@ -38,9 +39,9 @@ Nachfolgend finden Sie eine schrittweise Anleitung, wie Sie die einzelnen mögli
 
 **Salesforce** - [ Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce), um Anweisungen zum Einrichten Ihrer Salesforce-Instanz zum Abrufen von Leads zu erhalten.
 
-**Azure-Tabelle** – [Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table), um Anweisungen zum Einrichten Ihres Azure Storage-Kontos zum Abrufen von Leads in einer Azure-Tabelle zu erhalten.
+**Azure-Tabelle** - [Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table), um Anweisungen zum Einrichten Ihres Azure Storage-Kontos zum Abrufen von Leads in einer Azure-Tabelle zu erhalten.
 
-**HTTPS-Endpunkt** – [Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https), um Anweisungen zum Einrichten Ihres HTTPS-Endpunkts zum Abrufen von Leads zu erhalten.
+**HTTPS-Endpunkt** - [Klicken Sie hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https), um Anweisungen zum Einrichten Ihres HTTPS-Endpunkts zum Abrufen von Leads zu erhalten.
 
 Nachdem Sie Ihr Leadziel ordnungsgemäß konfiguriert und in Ihrem Angebot auf „Veröffentlichen“ geklickt haben, überprüfen wir die Verbindung und senden Ihnen einen Testlead zu. Wenn Sie das Angebot vor der Liveschaltung anzeigen, können Sie Ihre Leadverbindung ebenfalls testen, indem Sie selbst versuchen, das Angebot in der Vorschauumgebung zu erwerben. Es muss unbedingt sichergestellt werden, dass Ihre Leadeinstellungen auf dem neuesten Stand sind, damit Sie keine Leads verlieren. Aktualisieren Sie daher immer diese Verbindungen, wenn sich bei Ihnen etwas geändert hat.
 
@@ -84,7 +85,7 @@ Nach der technischen Einrichtung sollten Sie diese Leads in Ihre aktuelle Vertri
 
 **Lead konnte nicht in Dynamics CRM gespeichert werden. LastCRMError: Timeout beim Anforderungskanal beim Warten auf eine Antwort nach 00:02:00. Erhöhen Sie den Zeitlimitwert, der an den Aufruf der Anforderung übergeben wird, oder erhöhen Sie den SendTimeout-Wert bei der Binding. Der für diesen Vorgang zugewiesene Zeitraum war möglicherweise ein Teil eines längeren Zeitlimits.**  
 
-> Lösung: Melden Sie sich beim Cloud-Partnerportal an, überprüfen Sie „Storefrontdetails“ > „Leadziel“ > „URL“, und überprüfen Sie, ob es sich um eine gültige Dynamic CRM-Instanz handelt.
+> Lösung: Melden Sie sich beim Cloud-Partnerportal an, wählen Sie „Storefrontdetails“ > „Leadziel“ > „URL“ aus, und überprüfen Sie, ob es sich um eine gültige Dynamic CRM-Instanz handelt.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -147,28 +148,28 @@ Für jeden Lead werden Daten in Feldern des ausgewählten Leadziels übergeben. 
 
   *Quellen:*
 
-    “AzureMarketplace”, 
-    “AzurePortal”, 
-    “TestDrive”,  
-    “SPZA” (acronym for AppSource) 
+    "AzureMarketplace", 
+    "AzurePortal", 
+    "TestDrive",  
+    "SPZA" (acronym for AppSource) 
 
   *Aktionen:*
 
-    “INS” – Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
-    “PLT” – Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
+    "INS" - Stands for Installation. This is on Azure Marketplace or AppSource whenever a customer hits the button to acquire your product. 
+    "PLT" - Stands for Partner Led Trial. This is on AppSource whenever a customer hits the Contact me button. 
 
-    “DNC” – Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
+    "DNC" - Stands for Do Not Contact. This is on AppSource whenever a Partner who was cross listed on your app page gets requested to be contacted. We are sharing the heads up that this customer was cross listed on your app, but they do not need to be contacted. 
 
-    “Create” – This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
+    "Create" - This is inside Azure Portal only and is whenever a customer purchases your offer to their account. 
 
-    “StartTestDrive” – This is for Test Drives only and is whenever a customer starts their test drive. 
+    "StartTestDrive" - This is for Test Drives only and is whenever a customer starts their test drive. 
 
 
   *Angebote:*
 
-    “checkpoint.check-point-r77-10sg-byol”, 
-    “bitnami.openedxcypress”, 
-    “docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a” 
+    "checkpoint.check-point-r77-10sg-byol", 
+    "bitnami.openedxcypress", 
+    "docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145a" 
 
  
 
@@ -207,7 +208,7 @@ Es ist möglich, dass die E-Mail-Domäne des Endbenutzers die Endung „.edu“ 
 
  **Ich habe Azure-Tabelle/Azure BLOB als Leadziel konfiguriert. Wie kann ich die Leads anzeigen?** 
 
-Sie können auf den Blob oder die Tabelle über das Azure-Portal zugreifen, oder Sie können [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) kostenlos herunterladen und installieren, um die Tabellen/Blobs Ihres Azure Storage-Kontos anzuzeigen. 
+Sie können auf das Blob oder die Tabelle über das Azure-Portal zugreifen, oder Sie können [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) kostenlos herunterladen und installieren, um die Tabellen/Blobs Ihres Azure Storage-Kontos anzuzeigen. 
 
 
 **Ich habe die Azure-Tabelle als Leadziel konfiguriert. Kann ich mich benachrichtigen lassen, wenn ein neuer Lead vom Marketplace gesendet wird?** 

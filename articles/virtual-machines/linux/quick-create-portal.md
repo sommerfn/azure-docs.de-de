@@ -1,26 +1,25 @@
 ---
 title: 'Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Linux-Computer erstellen.
+description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe des Azure-Portals einen virtuellen Linux-Computer erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 8/20/2019
+ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0c05eb59c42700394f755f226405f16a47edc73c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dbe8e43122fb7fa00129dec0d9961bd70e5a784
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091553"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693320"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
@@ -50,15 +49,14 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, falls Sie dies
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen**.
-
-1. Wählen Sie unter **Beliebt** die Option **Ubuntu Server 18.04 LTS** aus.
-
-1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** unter **Ressourcengruppe**  aus. Geben Sie *myResourceGroup* als Namen der Ressourcengruppe ein, und wählen Sie dann **OK** aus. 
+1. Geben Sie in das Suchfeld **virtuelle Computer** ein.
+1. Wählen Sie unter **Dienste** die Option **Virtuelle Computer** aus.
+1. Wählen Sie auf der Seite **Virtuelle Computer** die Option **Hinzufügen** aus. Die Seite **Virtuellen Computer erstellen** wird geöffnet.
+1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie als Namen *myResourceGroup* ein. 
 
     ![Erstellen einer neuen Ressourcengruppe für Ihre VM](./media/quick-create-portal/project-details.png)
 
-1. Geben Sie unter **Instanzdetails** *myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Region** aus. Behalten Sie die restlichen Standardwerte bei.
+1. Geben Sie unter **Instanzdetails** die Zeichenfolge *myVM* als **Namen des virtuellen Computers** ein, wählen Sie *USA, Osten* als Ihre **Region** aus, und wählen Sie *Ubuntu 18.04 LTS* als **Image** aus. Behalten Sie die restlichen Standardwerte bei.
 
     ![Abschnitt „Instanzdetails“](./media/quick-create-portal/instance-details.png)
 

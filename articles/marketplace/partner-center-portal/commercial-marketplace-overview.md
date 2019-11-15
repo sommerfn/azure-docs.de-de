@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: b0900dbfee81952ed014d976cc8d7136ea65f8fc
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191721"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812058"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Übersicht über das Portal des kommerziellen Marketplace in Partner Center
 
@@ -22,13 +23,13 @@ In dieser Dokumentation werden die Grundlagen der Erstellung und Verwendung Ihre
 
 ## <a name="about-microsofts-commercial-marketplace"></a>Informationen zum kommerziellen Marketplace von Microsoft
 
-Unternehmen, Regierungen und Organisationen jeder Größe finden Geschäftslösungen, innovative Technologien und Aktivierungsdienste über die [Azure Marketplace](https://azuremarketplace.microsoft.com/)- und [AppSource](https://appsource.microsoft.com/)-Webstores, die [produktinterne Oberfläche des Azure-Portals](https://portal.azure.com), [Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider) und Microsoft-Vertriebsteams. 
+Unternehmen, Regierungsbehörden und Organisationen jeder Größe finden Geschäftslösungen, innovative Technologien und Aktivierungsdienste über die [Azure Marketplace](https://azuremarketplace.microsoft.com/)- und [AppSource](https://appsource.microsoft.com/)-Webstores, die [produktinterne Oberfläche des Azure-Portals](https://portal.azure.com), [Cloud Solution Provider](https://partner.microsoft.com/cloud-solution-provider) und Microsoft-Vertriebsteams. 
 
 Partner Center ist der zentrale Ort für Microsoft-Partner. Für Organisationen, die die Markteinführung mit Microsoft durchführen und den Marketplace nutzen, ist Partner Center das Portal, über das Herausgeber Angebote erstellen und verwalten, Demos von Testversionen bereitstellen und Analysen zur Angebotsleistung anzeigen. 
 
 ## <a name="migration-from-cloud-partner-portal"></a>Migration vom Cloud-Partnerportal
 
-Partner Center wird weiterentwickelt, um alle Aspekte der Beziehung zwischen Microsoft und Softwareherstellern besser zu integrieren. Im Rahmen dieser Weiterentwicklung werden die Funktionen des [Cloud-Partnerportals](https://cloudpartner.azure.com/) zu Partner Center migriert. 
+Partner Center wird ständig weiterentwickelt, um alle Aspekte der Beziehung zwischen Microsoft und Softwareherstellern besser zu integrieren. Im Rahmen dieser Weiterentwicklung werden die Funktionen des [Cloud-Partnerportals](https://cloudpartner.azure.com/) zu Partner Center migriert. 
 
 **Derzeit wird in Partner Center nur die Erstellung und Verwaltung von Software-as-a-Service-Angeboten (SaaS) unterstützt.**
 

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a81ecd855b098ec59c5b6f7761ceebfa7a03fa9
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936725"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795622"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Ermöglichen des Remotezugriffs auf Power BI Mobile mit dem Azure AD-Anwendungsproxy
 
@@ -82,7 +82,7 @@ Weitere Informationen finden Sie unter [Eingeschränkte Delegierung von Kerberos
 Nun können Sie den Azure AD-Anwendungsproxy konfigurieren.
 
 1. Verwenden Sie die folgenden Einstellungen, um Berichtsdienste über den Anwendungsproxy zu veröffentlichen. Eine detaillierte Anleitung zum Veröffentlichen einer Anwendung über den Anwendungsproxy finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
-   - **Interne URL:** Geben Sie die URL des Berichtsservers ein, den der Connector im Unternehmensnetzwerk erreichen kann. Diese URL muss von dem Server aus erreichbar sein, auf dem der Connector installiert ist. Eine bewährte Methode ist die Verwendung einer Domäne der obersten Ebene (etwa `https://servername/`), um Probleme mit Unterpfaden (etwa `https://servername/reports/` und `https://servername/reportserver/`) zu vermeiden, die nicht über den Anwendungsproxy veröffentlicht werden.
+   - **Interne URL:** Geben Sie die URL des Berichtsservers ein, den der Connector im Unternehmensnetzwerk erreichen kann. Diese URL muss von dem Server aus erreichbar sein, auf dem der Connector installiert ist. Eine bewährte Methode ist die Verwendung einer Domäne der obersten Ebene (etwa `https://servername/`), um Probleme mit Unterpfaden zu vermeiden, die über den Anwendungsproxy veröffentlicht werden. Verwenden Sie beispielsweise `https://servername/`, aber nicht `https://servername/reports/` oder `https://servername/reportserver/`.
      > [!NOTE]
      > Wir empfehlen die Verwendung einer sicheren HTTPS-Verbindung mit dem Berichtsserver. Eine entsprechende Anleitung finden Sie unter [Konfigurieren von SSL-Verbindungen auf einem Berichtsserver im einheitlichen Modus](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017).
    - **Externe URL:** Geben Sie die öffentliche URL ein, mit der die Power BI Mobile-App eine Verbindung herstellt. Bei Verwendung einer benutzerdefinierten Domäne kann dieser Wert beispielsweise wie folgt aussehen: `https://reports.contoso.com`. Laden Sie zur Verwendung einer benutzerdefinierten Domäne ein Zertifikat für die Domäne hoch, und erstellen Sie für einen DNS-Eintrag einen Verweis auf die Standarddomäne „msappproxy.net“ für Ihre Anwendung. Eine ausführliche Anleitung finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).

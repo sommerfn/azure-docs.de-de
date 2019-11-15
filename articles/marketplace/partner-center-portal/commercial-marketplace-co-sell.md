@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 7364bc41a67d8651c91745a8763fff62fee722fe
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 027a35db9fcb6c0e95be5da276f673b9295ad436
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784817"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812716"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
@@ -77,7 +78,7 @@ Sie können auch Ihre bestehende Kontaktliste für ein Angebot exportieren und d
     | *:::no-loc text="Partner technical sales":::* | Unterstützt technische Überlegungen zur Architektur und Bereitstellung während des Vertriebszyklus, der Integration nach dem Verkauf und der Bereitstellungszeiträume. |
     | *:::no-loc text="Partner customer success manager":::* | Unterstützt in der Regel Kunden nach der Bereitstellung, um ihnen zu helfen, Ihre Lösung optimal zu nutzen und ihre Präsenz im Unternehmen des Kunden auszuweiten. |
 
-* *Länder/Regionen (erforderlich):*  Verwenden Sie beim Ausfüllen der Vorlage die [zweistelligen Länder-/Regionscodes wie aufgeführt](./commercial-marketplace-co-sell-countries.md). Wenn der Kontakt alle Länder/Regionen abdeckt, verwenden Sie den dreistelligen Code „OOO“. Wenn ein Kontakt mehr als ein Land bzw. eine Region umfasst, geben Sie jeden der zweistelligen Codes durch ein Komma getrennt ein (geben Sie z. B. „US, CA, FR“ ohne Anführungszeichen in die Vorlage ein).
+* *Länder/Regionen (erforderlich):*  Verwenden Sie beim Ausfüllen der Vorlage die [zweistelligen Länder-/Regionscodes wie aufgeführt](./commercial-marketplace-co-sell-countries.md). Wenn der Kontakt alle Länder/Regionen abdeckt, verwenden Sie den dreistelligen Code „OOO“. Wenn ein Kontakt mehr als ein Land bzw. eine Region umfasst, geben Sie jeden der zweistelligen Codes durch ein Komma getrennt ein (geben Sie z. B. „US, CA, FR“ ohne Anführungszeichen in die Vorlage ein).
 
     Die Länder/Regionen sollten das Gebiet der einzelnen Kontakte widerspiegeln. Microsoft-Vertriebsteams und Vertriebspartner verwenden diese Informationen für die Anforderung von Informationen oder die Zusammenarbeit bei Verkäufen innerhalb des jeweiligen Landes bzw. innerhalb der jeweiligen Region.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: f35ed65b25d469b524e7174affecb45ad7c4735c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d26210ab226f8e907aa845d51dca94f59badd6a3
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66115754"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748075"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering
 
@@ -24,7 +24,7 @@ Dieser Artikel hilft Ihnen bei der Konfiguration einer sicheren, verschlüsselte
 >
 >
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="architecture"></a>Architektur
 
@@ -67,7 +67,7 @@ Sobald Sie Ihre Verbindung und Microsoft-Peering konfiguriert haben, können Sie
 
 ## <a name="routefilter"></a>2. Konfigurieren von Routenfiltern
 
-Durch einen Routenfilter können Sie die Dienste identifizieren, die Sie über das Microsoft-Peering Ihrer ExpressRoute-Verbindung nutzen möchten. Im Wesentlichen handelt es sich um eine Whitelist aller BGP-Communitywerte. 
+Durch einen Routenfilter können Sie die Dienste identifizieren, die Sie über das Microsoft-Peering Ihrer ExpressRoute-Verbindung nutzen möchten. Im Wesentlichen handelt es sich um eine Zulassungsliste für alle BGP-Communitywerte. 
 
 ![Routenfilter](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 

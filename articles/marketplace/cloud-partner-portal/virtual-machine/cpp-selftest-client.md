@@ -4,15 +4,16 @@ description: Erfahren Sie, wie Sie einen Selbsttestclient zur Vorabüberprüfung
 services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pabutler
-ms.openlocfilehash: 46923ecd33a054a36aa6900a415d0b563e5afff0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163262"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809206"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Erstellen eines Selbsttestclients zur Vorabüberprüfung eines Azure-VM-Images
 
@@ -20,7 +21,7 @@ Verwenden Sie diesen Artikel als Anleitung zum Erstellen eines Clientdiensts, de
 
 ## <a name="development-and-testing-overview"></a>Entwicklungs- und Testübersicht
 
-Im Rahmen des Selbsttests erstellen Sie einen lokalen Client, der eine Verbindung mit Azure Marketplace herstellt, um einen virtuellen Computer zu überprüfen, der in Ihrem Azure-Abonnement ausgeführt wird. Der virtuelle Computer kann unter dem Betriebssystem Windows oder Linux ausgeführt werden.
+Im Rahmen des Selbsttests erstellen Sie einen lokalen Client, der eine Verbindung mit dem Azure Marketplace herstellt, um einen in Ihrem Azure-Abonnement ausgeführten virtuellen Computer zu überprüfen. Der virtuelle Computer kann unter dem Betriebssystem Windows oder Linux ausgeführt werden.
 
 Der lokale Client führt ein Skript aus, das sich mit der Selbsttest-API authentifiziert, Verbindungsinformationen sendet und die Testergebnisse empfängt.
 
@@ -99,7 +100,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Die folgende Bildschirmaufnahme zeigt ein Beispiel für das Aufrufen der API in PowerShell.
@@ -109,7 +110,7 @@ Die folgende Bildschirmaufnahme zeigt ein Beispiel für das Aufrufen der API in 
 Bei Verwendung des vorherigen Beispiels können Sie den JSON-Code abrufen und analysieren, um die folgenden Details zu erhalten:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -144,7 +145,7 @@ Führen Sie zum Aufrufen der API in PowerShell die folgenden Schritte aus:
 Das folgende Codebeispiel zeigt einen PowerShell-Aufruf an die API.
 
 ```powershell
-$accesstoken = “Get token for your Client AAD App”
+$accesstoken = "Get token for your Client AAD App"
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")
 $Body = @{
@@ -156,7 +157,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" -Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 
@@ -167,7 +168,7 @@ Die folgende Bildschirmaufnahme zeigt ein Beispiel für das Aufrufen der API in 
 Bei Verwendung des vorherigen Beispiels können Sie den JSON-Code abrufen und analysieren, um die folgenden Details zu erhalten:
 
 ```powershell
-$testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $res)
+$testresult = ConvertFrom-Json -InputObject (ConvertFrom-Json -InputObject $res)
 
   Write-Host "OSName: $($testresult.OSName)"
   Write-Host "OSVersion: $($testresult.OSVersion)"
@@ -230,7 +231,7 @@ Wählen Sie in den folgenden Schritten den Azure AD-Mandanten aus, bei dem Sie I
 
    **So erhalten Sie die Informationen über den Mandanten:**
 
-   Suchen Sie in **Azure Active Directory-Überblick** nach „Eigenschaften“, und wählen Sie dann **Eigenschaften** aus. Verwenden Sie die folgende Bildschirmaufnahme als Beispiel:
+   Suchen Sie unter **Azure Active Directory Overview** (Azure Active Directory-Übersicht) nach „Eigenschaften“, und wählen Sie dann **Eigenschaften** aus. Verwenden Sie die folgende Bildschirmaufnahme als Beispiel:
 
    - **Name**: Der Name des Mandanten oder Verzeichnisname
    - **Verzeichnis-ID**: Die Mandanten- oder Verzeichnis-ID, oder suchen Sie „Eigenschaften“ mit der Bildlaufleiste.
@@ -245,9 +246,9 @@ Führen Sie zum Registrieren der Client-App die folgenden Schritte aus.
 2. Wählen Sie unter **App-Registrierungen** die Option **+ Registrierung einer neuen Anwendung** aus.
 3. Geben Sie unter **Erstellen** die erforderlichen Informationen für die folgenden Felder ein:
 
-   - **Name**: Geben Sie einen Anzeigenamen für die App ein. Beispiel: „SelfTestClient“.
-   - **Anwendungstyp**: Wählen Sie **Web-App/API** aus.
-   - **Anmelde-URL**: Geben Sie „https:\//isvapp.azurewebsites.net/selftest-vm“ ein.
+   - **Name:** Geben Sie einen Anzeigenamen für die App ein. Beispiel: „SelfTestClient“.
+   - **Anwendungstyp:** Wählen Sie **Web-App/API** aus.
+   - **Anmelde-URL:** Geben Sie „https:\//isvapp.azurewebsites.net/selftest-vm“ ein.
 
 4. Klicken Sie auf **Erstellen**.
 5. Kopieren Sie unter **App-Registrierungen** oder **Registrierte App** die **Anwendungs-ID**.
@@ -258,13 +259,13 @@ Führen Sie zum Registrieren der Client-App die folgenden Schritte aus.
 7. Wählen Sie **Erforderliche Berechtigungen** aus, um Berechtigungen für die App zu konfigurieren.
 8. Wählen Sie unter **Erforderliche Berechtigungen** die Option **+ Hinzufügen** aus.
 9. Wählen Sie unter **API-Zugriff hinzufügen** die Option **API auswählen** aus.
-10. Geben Sie unter **API auswählen** „Klassisches Windows Azure-Bereitstellungsmodell“ ein, um die API zu suchen.
+10. Geben Sie unter **Hiermit wählen Sie eine API aus** die Zeichenfolge „Klassisches Windows Azure-Bereitstellungsmodell“ ein, um nach der API zu suchen.
 11. Wählen Sie in den Suchergebnissen **Klassisches Windows Azure-Bereitstellungsmodell** aus, und klicken Sie dann auf **Auswählen**.
 
     ![Konfigurieren der Mehrinstanzenfähigkeit für die App](./media/stclient-select-api.png)
 
 12. Wählen Sie unter **API-Zugriff hinzufügen** die Option **Berechtigungen auswählen** aus.
-13. Wählen Sie **Auf „Windows Azure-Dienstverwaltungs-API“ zugreifen** aus.
+13. Wählen Sie **Access „Windows Azure Service Management API“** (Auf „Microsoft Azure-Dienstverwaltungs-API“ zugreifen) aus.
 
     ![Aktivieren des API-Zugriffs für die App](./media/stclient-enable-api-access.png)
 
@@ -280,7 +281,7 @@ Führen Sie zum Registrieren der Client-App die folgenden Schritte aus.
 20. Erstellen Sie einen geheimen Schlüssel durch Auswahl des Textfelds **BESSCHREIBUNG**. Konfigurieren Sie die folgenden Felder:
 
     - Geben Sie einen Schlüsselnamen ein. Beispiel: „selftestclient“.
-    - Wählen Sie in der Dropdownliste **LÄUFT AB** „In 1 Jahr“ aus.
+    - Wählen Sie in der Dropdownliste **LÄUFT AB** die Option „In 1 Jahr“ aus.
     - Wählen Sie **Speichern** aus, um den Schlüssel zu generieren.
     - Kopieren Sie den Schlüssel unter **WERT**.
 
@@ -377,7 +378,7 @@ Um Auth0 für beliebige Ihrer autorisierten Anwendungen nach Token abzufragen, f
 
 ```powershell
 $clientId = "Application Id of AD Client APP";
-$clientSecret = "Secret Key of AD Client APP “
+$clientSecret = "Secret Key of AD Client APP "
 $audience = "https://management.core.windows.net";
 $authority = "https://login.microsoftonline.com/common/oauth2/token"
 $grantType = "client_credentials";
@@ -397,8 +398,8 @@ $token.AccessToken
 Übergeben Sie das Token mit dem folgenden Code im Autorisierungsheader an die Selbsttest-API:
 
 ```powershell
-$redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
-$accesstoken = ‘place your token here’
+$redirectUri = 'https://isvapp.azurewebsites.net/selftest-vm'
+$accesstoken = 'place your token here'
 
 $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer $accesstoken")

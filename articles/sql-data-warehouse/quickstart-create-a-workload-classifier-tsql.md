@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Workloadklassifizierers: T-SQL | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines Workloadklassifizierers – T-SQL '
 description: Verwenden Sie T-SQL, um einen Workloadklassifizierer mit hoher Wichtigkeit zu erstellen.
 services: sql-data-warehouse
 author: ronortloff
@@ -10,12 +10,12 @@ ms.subservice: workload-management
 ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea2e0a3bb55d16c0b413b114fca9da7f95f5c053
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1375605b6dab385b53af9212023767003e686e60
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574864"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73646292"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Schnellstart: Erstellen eines Workloadklassifizierers mit T-SQL
 

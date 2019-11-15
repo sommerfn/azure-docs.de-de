@@ -1,22 +1,22 @@
 ---
-title: Ausführen von Analyseabfragen für Mandantendatenbanken mit Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Ausführen von Analyseabfragen in Mandantendatenbanken
 description: Mandantenübergreifende Analyseabfragen mithilfe von aus Azure SQL-Datenbank, SQL Data Warehouse, Azure Data Factory oder Power BI extrahierten Daten.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: b22a9cf8c79530fd931cbe944ef5bfc876a02243
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4791cd3a6b6f72c5d9ee4ca828d66b0d361f356c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570131"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816780"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Machen Sie sich mit SaaS-Analysen mit Azure SQL-Datenbank, SQL Data Warehouse, Data Factory und Power BI vertraut
 

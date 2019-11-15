@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Datenpipelines mithilfe des Azure .NET SDK | Microsoft-Dokumentation
+title: Erstellen von Datenpipelines mithilfe des Azure .NET SDK
 description: Erfahren Sie, wie Sie Azure Data Factorys mithilfe des Data Factory .NET SDK programmgesteuert erstellen, überwachen und verwalten.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cabeb6314c16aa5bc37f1139954f8829a37af5bb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140210"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682761"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Erstellen, Überwachen und Verwalten von Azure Data Factorys mithilfe des Azure Data Factory .NET SDK
 > [!NOTE]

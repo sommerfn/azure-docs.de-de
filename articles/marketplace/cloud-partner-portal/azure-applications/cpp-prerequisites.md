@@ -4,15 +4,16 @@ description: Die Voraussetzungen für das Veröffentlichen eines Azure-Anwendung
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pabutler
-ms.openlocfilehash: 64039234a3863332ca19b915fb59a5271625d695
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 261af94e233bdb6189d7819f8f28c7e23b5dd112
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258183"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826139"
 ---
 # <a name="azure-application-prerequisites"></a>Voraussetzungen für eine Azure-Anwendung
 

@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.date: 11/07/2019
+ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273981"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747667"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Tutorial: Abfragen eines Linux-Docker-Containers für SQL Server in einem virtuellen Netzwerk aus einem Azure Databricks-Notebook
 
@@ -42,7 +42,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
     ![Hinzufügen eines neuen virtuellen Azure-Computers](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. Wählen Sie auf der Registerkarte **Grundlagen** die Option „Ubuntu Server 16.04 LTS“. Ändern Sie die VM-Größe in B1ms, die eine VCPUS und 2 GB RAM enthält. Die Mindestanforderung für einen Linux SQL Server-Docker-Container beträgt 2 GB. Wählen Sie den Benutzernamen und das Kennwort eines Administrators aus.
+2. Wählen Sie auf der Registerkarte **Grundlagen** die Option „Ubuntu Server 18.04 LTS“ aus, und ändern Sie die VM-Größe in B2s. Wählen Sie den Benutzernamen und das Kennwort eines Administrators aus.
 
     ![Registerkarte „Grundlagen“ der Konfiguration eines neuen virtuellen Computers](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
@@ -80,8 +80,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
     |Einstellung|Empfohlener Wert|BESCHREIBUNG|
     |-------|---------------|-----------|
-    |`Source`|IP-Adressen|„IP-Adressen“ legt fest, dass eingehender Datenverkehr von einer bestimmten Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
-    |Quell-IP-Adressen|10.179.0.0/16|Geben Sie den Adressbereich für Ihr virtuelles Netzwerk ein.|
+    |`Source`|Any|„Source“ (Quelle) legt fest, dass eingehender Datenverkehr von einer bestimmten Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Source port ranges|*|Lassen Sie Datenverkehr von einem beliebigen Port zu.|
     |Destination|IP-Adressen|„IP-Adressen“ legt fest, dass ausgehender Datenverkehr für eine bestimmte Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Ziel-IP-Adressen|<die öffentliche ip ihrer vm\>|Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein. Sie finden diese auf der Seite **Übersicht** Ihres virtuellen Computers.|

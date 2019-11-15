@@ -1,22 +1,22 @@
 ---
-title: 'SaaS-Apps: Georedundante Azure SQL-Datenbank-Sicherungen für die Notfallwiederherstellung | Microsoft-Dokumentation'
+title: 'SaaS-Apps: Georedundante Sicherungen für die Notfallwiederherstellung'
 description: Erfahren Sie, wie Sie georedundante Azure SQL-Datenbank-Sicherungen verwenden, um eine mehrinstanzenfähige SaaS-App nach einem Ausfall wiederherzustellen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
-ms.openlocfilehash: c8990e5183d09e8f530fdef952a80a09104d3617
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570499"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826473"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Verwenden der Geowiederherstellung zum Wiederherstellen einer mehrinstanzenfähigen SaaS-Anwendung aus Datenbanksicherungen
 

@@ -1,20 +1,20 @@
 ---
-title: Hochladen, Herunterladen, Auflisten und Löschen von Blobs mit Azure Storage v10 SDK für JavaScript
-description: Erstellen, Hochladen und Löschen von Blobs und Container in Node.js mit Azure Storage
+title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v10 für JavaScript'
+description: Erstellen, Hochladen und Löschen von Blobs und Containern in Node.js mit der Azure Storage-Clientbibliothek v10 für JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f8c7de63f2bd4b7329e8ae6a53123c9c1ea035af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: b909da5da0d7352d4086222fe0411ac37668bd92
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240441"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825320"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Schnellstart: Hochladen, Herunterladen, Auflisten und Löschen von Blobs mit Azure Storage v10 SDK für JavaScript
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v10 für JavaScript
 
 In diesem Schnellstart erfahren Sie, wie Sie das [Azure Storage v10 SDK für JavaScript](https://github.com/Azure/azure-sdk-for-js) in Node.js verwenden, um Blobs hochzuladen, herunterzuladen, aufzulisten und zu löschen sowie Container zu verwalten.
 

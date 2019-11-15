@@ -1,5 +1,5 @@
 ---
-title: Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und Sicherheit auf Zeilenebene | Microsoft-Dokumentation
+title: Mehrinstanzenfähige Apps mit Sicherheit auf Zeilenebene und Tools für elastische Datenbanken
 description: Verwenden Sie Tools für elastische Datenbanken mit Sicherheit auf Zeilenebene zum Erstellen einer Anwendung mit einer hochgradig skalierbaren Datenschicht.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 996d4e2ba62c06992b0433fd255800ba8cea0af3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570179"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822029"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 

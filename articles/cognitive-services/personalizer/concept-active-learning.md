@@ -1,7 +1,7 @@
 ---
 title: 'Aktive und inaktive Ereignisse: Personalisierung'
 titleSuffix: Azure Cognitive Services
-description: ''
+description: In diesem Artikel wird beschrieben, wie Sie aktive und inaktive Ereignisse, Lerneinstellungen und Lernrichtlinien im Personalisierungsdienst verwenden.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,51 +10,50 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429041"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681859"
 ---
 # <a name="active-and-inactive-events"></a>Aktive und inaktive Ereignisse
 
-Wenn Ihre Anwendung die Rank-API (Bewertungs-API) aufruft, erhalten Sie die Information, welche Aktion die Anwendung im Feld rewardActionId anzeigen soll.  Von diesem Moment an erwartet die Personalisierung einen Reward-Aufruf mit dieser Ereignis-ID. Der Relevanzpunktestand wird zum Trainieren des Modells verwendet, das für zukünftige Aufrufe der Bewertungs-API verwendet wird. Wenn für die Ereignis-ID kein Reward-Aufruf empfangen wird, wird eine Standardrelevanz angewendet. Standardrelevanzen werden im Azure-Portal eingerichtet.
+Wenn Ihre Anwendung die Rank-API aufruft, erhalten Sie die Angabe, welche Aktion die Anwendung im Feld **rewardActionId** anzeigen soll.  Von diesem Moment an erwartet die Personalisierung einen Reward-Aufruf mit dieser Ereignis-ID. Der Relevanzscore wird zum Trainieren des Modells für zukünftige Rank-Aufrufe verwendet. Wenn für die Ereignis-ID kein Reward-Aufruf empfangen wird, wird eine Standardrelevanz angewandt. Standardrelevanzen werden im Azure-Portal festgelegt.
 
-In einigen Fällen muss die Anwendung möglicherweise Rank aufrufen, bevor sie weiß, ob das Ergebnis verwendet oder dem Benutzer angezeigt wird. Dies kann beispielsweise geschehen, wenn das Seitenrendering von beworbenen Inhalten mit einer Marketingkampagne überschrieben wird. Wenn das Ergebnis des Rank-Aufrufs nie verwendet wurde und der Benutzer es nie zu Gesicht bekommen hat, wäre es falsch, es überhaupt mit einer Relevanz zu trainieren, nicht einmal mit einer Nullrelevanz.
-Dies geschieht normalerweise in diesen Fällen:
+In einigen Szenarien muss die Anwendung möglicherweise Rank aufrufen, bevor sie weiß, ob das Ergebnis verwendet oder dem Benutzer angezeigt wird. Dies kann beispielsweise geschehen, wenn das Seitenrendering von beworbenen Inhalten durch eine Marketingkampagne überschrieben wird. Wenn das Ergebnis des Rank-Aufrufs niemals verwendet und dem Benutzer niemals angezeigt wurde, übermitteln Sie keinen zugehörigen Reward-Aufruf.
 
-* Ein Element der Benutzeroberfläche wird vorab gerendert, dem Benutzer aber unter Umständen gar nicht angezeigt. 
-* Ihre Anwendung führt eine vorausschauende Personalisierung durch, bei der Rangfolgeaufrufe mit weniger Echtzeitkontext verwendet werden, und die Ausgabe wird von der Anwendung unter Umständen gar nicht genutzt. 
+In der Regel treten diese Szenarien in folgenden Fällen ein:
 
-In diesen Fällen besteht die richtige Verwendung der Personalisierung im Aufruf von Rank mit der Anforderung, dass das Ereignis _inaktiv_ sein muss. Die Personalisierung erwartet für dieses Ereignis keine Relevanz und wendet auch keine Standardrelevanz an. Wenn die Anwendung später in Ihrer Geschäftslogik die Informationen des Rangfolgeaufrufs verwendet, müssen Sie das Ereignis lediglich _aktivieren_. Von dem Moment an, da das Ereignis aktiv ist, erwartet die Personalisierung eine Relevanz für das Ereignis oder wendet eine Standardrelevanz an, wenn keine expliziten Aufrufe an die Reward API (Relevanz-API) erfolgen.
+* Sie rendern vorab die Benutzeroberfläche, die dem Benutzer möglicherweise gar nicht angezeigt wird. 
+* Ihre Anwendung führt eine vorausschauende Personalisierung durch, bei der Rank-Aufrufe mit wenig Echtzeitkontext ausgeführt werden, und die Ausgabe wird von der Anwendung unter Umständen gar nicht genutzt. 
 
-## <a name="get-inactive-events"></a>Abrufen inaktiver Ereignisse
+In diesen Fällen verwenden Sie die Personalisierung im Aufruf von Rank mit der Anforderung, dass das Ereignis _inaktiv_ sein muss. Die Personalisierung erwartet für dieses Ereignis keine Relevanz und wendet auch keine Standardrelevanz an. Wenn die Anwendung später in Ihrer Geschäftslogik die Informationen des Rank-Aufrufs verwendet, müssen Sie das Ereignis lediglich _aktivieren_. Sobald das Ereignis aktiv ist, erwartet die Personalisierung eine Ereignisrelevanz. Wenn kein expliziter Aufruf der Reward-API erfolgt, wendet die Personalisierung eine Standardrelevanz an.
 
-Um das Training für ein Ereignis zu deaktivieren, rufen Sie Rank mit `learningEnabled = False` auf.
+## <a name="inactive-events"></a>Inaktive Ereignisse
 
-Das Lernen für ein inaktives Ereignis wird implizit aktiviert, wenn Sie für die Ereignis-ID eine Relevanz senden oder die `activate`-API aufrufen.
+Um das Training für ein Ereignis zu deaktivieren, rufen Sie Rank mit `learningEnabled = False` auf. Für ein inaktives Ereignis wird das Lernen implizit aktiviert, wenn Sie für die Ereignis-ID eine Relevanz senden oder die `activate`-API aufrufen.
 
 ## <a name="learning-settings"></a>Lerneinstellungen
 
-Die Lerneinstellungen bestimmen die spezifischen *Hyperparameter* des Modelltrainings. Zwei Modelle, die über die gleichen Daten verfügen, aber mit unterschiedlichen Einstellungen trainiert wurden, sind im Ergebnis verschieden.
+Die Lerneinstellungen legen die *Hyperparameter* des Modelltrainings fest. Zwei Modelle, die anhand der gleichen Daten mit unterschiedlichen Einstellungen trainiert werden, sind im Ergebnis verschieden.
 
 ### <a name="import-and-export-learning-policies"></a>Importieren und Exportieren von Lernrichtlinien
 
-Sie können Lernrichtliniendateien über das Azure-Portal importieren und exportieren. Dadurch können Sie vorhandene Richtlinien speichern, testen, ersetzen und zur späteren Referenz und Überprüfung als Artefakte in Ihrer Quellcodeverwaltung archivieren.
+Sie können Lernrichtliniendateien über das Azure-Portal importieren und exportieren. Auf diese Weise können Sie vorhandene Richtlinien speichern, testen, ersetzen und zur späteren Referenz und Überprüfung als Artefakte in Ihrer Quellcodeverwaltung archivieren.
 
-### <a name="learning-policy-settings"></a>Lernrichtlinieneinstellungen
+### <a name="understand-learning-policy-settings"></a>Grundlegendes zu Lernrichtlinieneinstellungen
 
-Die Einstellungen in der **Lernrichtlinie** sollten nicht geändert werden. Ändern Sie die Einstellungen nur, wenn Sie deren Auswirkungen auf die Personalisierung verstehen. Andernfalls können Nebenwirkungen auftreten (bis hin zum Verlust der Gültigkeit von Personalisierungsmodellen).
+Die Einstellungen in der Lernrichtlinie sollten nicht geändert werden. Ändern Sie die Einstellungen nur, wenn Sie genau wissen, wie sich die Änderungen auf die Personalisierung auswirken. Ohne dieses Wissen könnten Sie Probleme verursachen, einschließlich der Invalidierung von Personalisierungsmodellen.
 
-### <a name="comparing-effectiveness-of-learning-policies"></a>Vergleichen der Effektivität von Lernrichtlinien
+### <a name="compare-learning-policies"></a>Vergleichen von Lernrichtlinien
 
 Mithilfe von [Offlineauswertungen](concepts-offline-evaluation.md) können Sie das Abschneiden verschiedener Lernrichtlinien anhand von Vergangenheitsdaten in Personalisierungsprotokollen vergleichen.
 
 [Laden Sie Ihre eigenen Lernrichtlinien hoch](how-to-offline-evaluation.md), um sie mit der aktuellen Lernrichtlinie zu vergleichen.
 
-### <a name="discovery-of-optimized-learning-policies"></a>Ermittlung optimierter Lernrichtlinien
+### <a name="optimize-learning-policies"></a>Optimieren von Lernrichtlinien
 
-Mittels einer [Offlineauswertung](how-to-offline-evaluation.md) kann die Personalisierung eine besser optimierte Lernrichtlinie erstellen. Eine besser optimierte Lernrichtlinie zeichnet sich in einer Offlineauswertung durch eine höhere Relevanz aus und liefert bessere Ergebnisse, wenn sie online bei der Personalisierung verwendet wird.
+Mithilfe einer [Offlineauswertung](how-to-offline-evaluation.md) kann die Personalisierung eine optimierte Lernrichtlinie erstellen. Eine optimierte Lernrichtlinie zeichnet sich bei einer Offlineauswertung durch eine höhere Relevanz aus und liefert bessere Ergebnisse, wenn sie online bei der Personalisierung verwendet wird.
 
-Die erstellte optimierte Lernrichtlinie kann direkt auf die Personalisierung angewendet werden, um die aktuelle Richtlinie umgehend zu ersetzen. Alternativ können Sie sie zur weiteren Auswertung speichern und später entscheiden, ob Sie sie verwerfen, speichern oder anwenden möchten.
+Nachdem Sie eine Lernrichtlinie optimiert haben, können Sie sie direkt auf die Personalisierung anwenden und damit die aktuelle Richtlinie sofort ersetzen. Sie können die optimierte Richtlinie aber auch zur weiteren Auswertung speichern und später entscheiden, ob sie verworfen, gespeichert oder angewandt werden soll.

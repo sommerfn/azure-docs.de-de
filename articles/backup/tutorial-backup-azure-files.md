@@ -1,44 +1,49 @@
 ---
 title: Sichern von Azure Files-Dateifreigaben mit dem Azure Backup-Dienst
-description: In diesem Tutorial erfahren Sie, wie Sie Azure-Dateifreigaben sichern.
+description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal einen Recovery Services-Tresors konfigurieren und Azure-Dateifreigaben sichern.
 author: dcurwin
 ms.author: dacurwin
 ms.date: 06/10/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: e63ad75effb03cf9dd5eb5c66b142cce629ea290
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a8b08f87441f9b4c67f718dfe9f0c894d0730a5f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736235"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747053"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Sichern von Azure-Dateifreigaben im Azure-Portal
+
 In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals [Azure Dateifreigaben](../storage/files/storage-files-introduction.md) sichern.
 
 In diesem Artikel lernen Sie Folgendes:
 > [!div class="checklist"]
+>
 > * Konfigurieren eines Recovery Services-Tresors zum Sichern von Azure Files
 > * Ausführen eines bedarfsbasierten Sicherungsauftrags zum Erstellen eines Wiederherstellungspunkts
 
-
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Um eine Azure-Dateifreigabe sichern zu können, muss sie sich unter einem der [unterstützten Speicherkontotypen](tutorial-backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview) befinden. Sobald Sie dies überprüft haben, können Sie Ihre Dateifreigaben schützen.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Einschränkungen beim Sichern von Azure-Dateifreigaben während der Vorschauphase
+
 Die Sicherung für Azure-Dateifreigaben befindet sich in der Vorschauphase. Azure-Dateifreigaben in Speicherkonten vom Typ „Universell V1“ und „Universell V2“ werden unterstützt. Folgende Sicherungsszenarien werden für Azure-Dateifreigaben nicht unterstützt:
-- Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
-- Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
-- Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
-- Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
-- Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
-- Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
-- Löschen Sie keine Dateifreigaben, die durch Azure Backup geschützt sind. In der aktuellen Lösung werden nach dem Löschen der Dateifreigabe alle von Azure Backup erstellten Momentaufnahmen gelöscht, sodass alle Wiederherstellungspunkte verloren gehen.
+
+* Sie können Azure-Dateifreigaben in Speicherkonten mit aktivierten virtuellen Netzwerken oder aktivierter Firewall nicht schützen.
+* Für den Schutz von Azure Files mit Azure Backup ist keine Befehlszeilenschnittstelle verfügbar.
+* Die Anzahl geplanter Sicherungen ist auf eine Sicherung pro Tag begrenzt.
+* Die Anzahl bedarfsgesteuerter Sicherungen ist auf vier Sicherungen pro Tag begrenzt.
+* Verwenden Sie [Ressourcensperren](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) für das Speicherkonto, um das versehentliche Löschen von Sicherungen in Ihrem Recovery Services-Tresor zu verhindern.
+* Löschen Sie keine Momentaufnahmen, die mit Azure Backup erstellt wurden. Das Löschen von Momentaufnahmen kann zum Verlust von Wiederherstellungspunkten bzw. zu Wiederherstellungsfehlern führen.
+* Löschen Sie keine Dateifreigaben, die durch Azure Backup geschützt sind. In der aktuellen Lösung werden nach dem Löschen der Dateifreigabe alle von Azure Backup erstellten Momentaufnahmen gelöscht, sodass alle Wiederherstellungspunkte verloren gehen.
 
 Sicherungen für Azure-Dateifreigaben in Speicherkonten mit Replikation vom Typ [ZRS](../storage/common/storage-redundancy-zrs.md) (Zone Redundant Storage, zonenredundanter Speicher) steht momentan nur in den Regionen „USA, Mitte“ (CUS), „USA, Osten (EUS), „USA, Osten 2“ (EUS2), „Europa, Norden“ (NE), „Asien, Südosten“ (SEA), „Europa, Westen“ (WE) und „USA, Westen 2“ (WUS2) zur Verfügung.
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurieren der Sicherung für eine Azure-Dateifreigabe
+
 In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifreigabe eingerichtet haben. So sichern Sie Ihre Azure-Dateifreigabe
 
 1. Erstellen Sie einen Recovery Services-Tresor in der Region, in der sich auch die Dateifreigabe befindet. Wenn Sie bereits einen Tresor besitzen, öffnen Sie die Seite „Übersicht“ des Tresors, und klicken Sie auf **Sicherung**.
@@ -70,8 +75,8 @@ In diesem Tutorial wird davon ausgegangen, dass Sie bereits eine Azure-Dateifrei
     Nach dem Einrichten einer Sicherungsrichtlinie wird eine Momentaufnahme der Dateifreigaben zum geplanten Zeitpunkt erstellt, und der Wiederherstellungspunkt wird für den ausgewählten Zeitraum aufbewahrt.
 
 ## <a name="create-an-on-demand-backup"></a>Erstellen einer bedarfsgesteuerten Sicherung
-Nachdem Sie die Sicherungsrichtlinie konfiguriert haben, sollten Sie eine bedarfsgesteuerte Sicherung erstellen, um zu gewährleisten, dass Ihre Daten bis zur nächsten geplanten Sicherung geschützt sind.
 
+Nachdem Sie die Sicherungsrichtlinie konfiguriert haben, sollten Sie eine bedarfsgesteuerte Sicherung erstellen, um zu gewährleisten, dass Ihre Daten bis zur nächsten geplanten Sicherung geschützt sind.
 
 ### <a name="to-create-an-on-demand-backup"></a>So erstellen Sie eine bedarfsgesteuerte Sicherung
 
@@ -91,12 +96,12 @@ Nachdem Sie die Sicherungsrichtlinie konfiguriert haben, sollten Sie eine bedarf
 
    ![Wählen des Datums für die Aufbewahrung des Wiederherstellungspunkts](./media/backup-file-shares/backup-now-menu.png)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie das Azure-Portal zu folgenden Zwecken verwendet:
 
 > [!div class="checklist"]
+>
 > * Konfigurieren eines Recovery Services-Tresors zum Sichern von Azure Files
 > * Ausführen eines bedarfsbasierten Sicherungsauftrags zum Erstellen eines Wiederherstellungspunkts
 
@@ -104,4 +109,3 @@ Fahren Sie mit dem nächsten Artikel fort, in dem Sie erfahren, wie Sie eine Azu
 
 > [!div class="nextstepaction"]
 > [Wiederherstellen einer Azure-Dateifreigabe aus einer Sicherung](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
- 

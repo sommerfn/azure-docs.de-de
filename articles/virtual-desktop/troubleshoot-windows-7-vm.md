@@ -1,5 +1,5 @@
 ---
-title: 'Problembehandlung für virtuelle Windows 7-Computer in Windows Virtual Desktop: Azure'
+title: Virtuelle Windows 7-Computer in Windows Virtual Desktop – Azure
 description: Vorgehensweise beim Beheben von Problemen mit virtuellen Windows 7-Computern (VMs) in einer Windows Virtual Desktop-Umgebung.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: ee641a694371ffd3fbc691a05edac707e37e959d
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374260"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607325"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Problembehandlung für virtuelle Windows 7-Computer in Windows Virtual Desktop
 

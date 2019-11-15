@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
 author: yijenj
 manager: nuno costa
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279741"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823019"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Transaktionen auf dem kommerziellen Marketplace: Funktionen und Überlegungen
 
@@ -30,7 +31,7 @@ Die folgenden Veröffentlichungsoptionen stehen Herausgebern des kommerziellen M
 
 ### <a name="list--trial-publishing-options"></a>Veröffentlichungsoptionen „Listung“ und „Testversion“
 
-Herausgeber können die Veröffentlichungsoptionen „Listung“, „Testversion“ und „BYOL“ für Werbezwecke und zur Neukundengewinnung nutzen. Bei diesen Veröffentlichungsoptionen nimmt Microsoft nicht direkt an den Softwarelizenztransaktionen des Herausgebers teil, und es fallen keine damit verbundenen Transaktionsgebühren an. Herausgeber sind für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf: Auftrag, Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso. Bei den Veröffentlichungsoptionen „Listung“ und „Testversion“ behalten Herausgeber 100 % der vom Kunden eingezogenen Lizenzgebühren für Software ein. 
+Herausgeber können die Veröffentlichungsoptionen „Listung“, „Testversion“ und „BYOL“ für Werbezwecke und zur Neukundengewinnung nutzen. Bei diesen Optionen ist Microsoft nicht direkt an den Softwarelizenztransaktionen des Herausgebers beteiligt, und es fallen keine damit verbundenen Transaktionsgebühren an. Herausgeber sind für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf: Auftrag, Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso. Bei den Veröffentlichungsoptionen „Listung“ und „Testversion“ behalten Herausgeber 100 % der vom Kunden eingezogenen Lizenzgebühren für Software ein. 
 
 ### <a name="transact-publishing-option"></a>Veröffentlichungsoption „Transaktion“
 
@@ -77,7 +78,7 @@ Bei der Veröffentlichung eines kostenlosen oder BYOL- Transaktionsangebots spie
 
 Bei der Veröffentlichung eine Transaktionsangebots mit dem Modell „Nutzungsbasierte Bezahlung“ oder „Abonnement“ stellt Microsoft die Technologie und Dienste zur Verfügung, um Käufe, Rückgaben und Rückbuchungen von Softwarelizenzen zu verarbeiten. In diesem Szenario autorisiert der Herausgeber Microsoft, als Vermittler für diese Zwecke zu fungieren. Der Herausgeber erlaubt Microsoft die Abwicklung der Softwarelizenzierungstransaktion, wobei er seine Kennzeichnung als Verkäufer, Anbieter, Distributor und Lizenzgeber beibehält.
 
-Microsoft ermöglicht Kunden, Software des Herausgebers zu bestellen, zu lizenzieren und zu nutzen, wobei die Bedingungen des kommerziellen Marketplace von Microsoft und des Endbenutzerlizenzvertrags des Herausgebers gelten. Herausgeber müssen ihren Endbenutzerlizenzvertrag bereitstellen oder beim Erstellen des Angebots den [Standardvertrag](https://docs.microsoft.com/azure/marketplace/standard-contract) auswählen.
+Microsoft ermöglicht es Kunden, Software des Herausgebers zu bestellen, zu lizenzieren und zu nutzen, wobei die Bedingungen des kommerziellen Marketplace von Microsoft und des Endbenutzerlizenzvertrags des Herausgebers gelten. Herausgeber müssen ihren Endbenutzerlizenzvertrag bereitstellen oder beim Erstellen des Angebots den [Standardvertrag](https://docs.microsoft.com/azure/marketplace/standard-contract) auswählen.
 
 
 ### <a name="free-software-trials"></a>Kostenlose Testversionen

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1a3d917775f6ba5b0b7f62d19de2b970a8b36838
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029734"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73571214"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App
 
@@ -32,7 +32,7 @@ Die .NET Core-Bibliotheken für die Featureverwaltung erweitern das Framework u
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download).
 
-## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
+## <a name="create-an-app-configuration-store"></a>Erstellen eines App-Konfigurationsspeichers
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -79,7 +79,7 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
 
 1. Speichern Sie die Datei .
 
-## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
+## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App-Konfigurationsspeicher
 
 1. Führen Sie die folgenden Befehle aus, um Verweise auf die NuGet-Pakete `Microsoft.Azure.AppConfiguration.AspNetCore` und `Microsoft.FeatureManagement.AspNetCore` hinzuzufügen:
 
@@ -115,6 +115,11 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
     ```
 
 1. Aktualisieren Sie die `CreateWebHostBuilder`-Methode für die Verwendung von App Configuration, indem Sie die Methode `config.AddAzureAppConfiguration()` aufrufen.
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder` ersetzt `CreateWebHostBuilder` in .NET Core 3.0.  Wählen Sie auf der Grundlage ihrer Umgebung die richtige Syntax aus.
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>Aktualisieren von `CreateWebHostBuilder` für .NET Core 2.x
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -124,11 +129,27 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
                 var settings = config.Build();
                 config.AddAzureAppConfiguration(options => {
                     options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .UseFeatureFlags();
+                            .UseFeatureFlags();
                 });
             })
             .UseStartup<Startup>();
     ```
+
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>Aktualisieren von `CreateHostBuilder` für .NET Core 3.x
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"])
+                .UseFeatureFlags();
+        })
+        .UseStartup<Startup>());
+    ```
+
 
 1. Öffnen Sie *Startup.cs*, und fügen Sie Verweise auf den .NET Core-Feature-Manager hinzu:
 
@@ -267,7 +288,7 @@ Fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https://docs.microsoft.com
     |---|---|
     | Beta | Andererseits |
 
-1. Starten Sie die Anwendung neu, indem Sie zur Eingabeaufforderung zurückkehren und `Ctrl-C` drücken, um den laufenden `dotnet`-Prozess abzubrechen, und führen Sie dann `dotnet run`erneut aus.
+1. Starten Sie die Anwendung neu, indem Sie zur Eingabeaufforderung zurückkehren und `Ctrl-C` drücken, um den laufenden `dotnet`-Prozess abzubrechen, und führen Sie dann `dotnet run` erneut aus.
 
 1. Aktualisieren Sie die Browserseite, um die neuen Konfigurationseinstellungen anzuzeigen.
 

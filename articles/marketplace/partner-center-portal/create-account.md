@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: beaca02807f3ee33022854f17150d8eeff1568ac
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695596"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811932"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -28,7 +29,7 @@ Zum Erstellen eines Kontos in Partner Center benötigen Sie Folgendes:
 - Vollmacht zur Unterzeichnung rechtlicher Vereinbarungen im Namen Ihres Unternehmens.
 - Angaben zu Firmenname, Adresse und Hauptansprechpartner (das können Sie sein) Ihres Unternehmens.
 
-Diese Informationen werden während des Vorgangs zur Kontoerstellung überprüft.
+Diese Informationen werden während der Kontoerstellung überprüft.
 
 Sie können ein Konto auf Arten erstellen:
 

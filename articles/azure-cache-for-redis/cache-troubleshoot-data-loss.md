@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung bei Azure Cache for Redis | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Probleme mit Datenverlusten bei Azure Cache for Redis beheben.
+title: Problembehandlung bei Datenverlust in Azure Cache for Redis | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Datenverlustprobleme für Azure Cache for Redis beheben.
 services: cache
 documentationcenter: ''
 author: yegu-ms
@@ -14,19 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yegu
-ms.openlocfilehash: 507a8aef36e4ea5db0b4fdecb54876158398d96a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8165ce3195c12af52cfee2fff598d9417697f4cb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795246"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806559"
 ---
-# <a name="troubleshoot-data-loss"></a>Problembehandlung bei Datenverlusten
+# <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Problembehandlung bei Datenverlust in Azure Cache for Redis
 
-In diesem Abschnitt wird erläutert, wie Sie tatsächliche oder vermeintliche Datenverluste, die in Azure Cache for Redis auftreten können, diagnostizieren.
-
-- [Partieller Verlust von Schlüsseln](#partial-loss-of-keys)
-- [Größerer oder kompletter Verlust von Schlüsseln](#major-or-complete-loss-of-keys)
+In diesem Artikel wird erläutert, wie Sie tatsächliche oder erkannte Datenverluste, die in Azure Cache for Redis auftreten können, diagnostizieren.
 
 > [!NOTE]
 > Etliche Problembehandlungsschritte in diesem Leitfaden enthalten Anleitungen zum Ausführen von Redis-Befehlen und zum Überwachen verschiedener Leistungsmetriken. Weitere Informationen und Anleitungen finden Sie in den Artikeln im Abschnitt [Weitere Informationen](#additional-information) .
@@ -34,22 +31,22 @@ In diesem Abschnitt wird erläutert, wie Sie tatsächliche oder vermeintliche Da
 
 ## <a name="partial-loss-of-keys"></a>Partieller Verlust von Schlüsseln
 
-Redis löscht Schlüssel nicht nach dem Zufallsprinzip, nachdem sie im Arbeitsspeicher gespeichert wurden. Schlüssel werden jedoch als Reaktion auf Ablauf- oder Entfernungsrichtlinien sowie durch explizite Befehle zum Löschen von Schlüsseln entfernt. Außerdem sind Schlüssel, die in Azure Cache for Redis (Tarife „Standard“ oder „Premium“) in den Masterknoten geschrieben wurden, möglicherweise nicht sofort auf einem Replikat verfügbar. Daten werden asynchron und auf nicht blockierende Weise vom Master auf das Replikat repliziert.
+Azure Cache for Redis löscht Schlüssel nicht nach dem Zufallsprinzip, nachdem sie im Arbeitsspeicher gespeichert wurden. Es löscht Schlüssel jedoch als Reaktion auf Ablauf- oder Entfernungsrichtlinien sowie auf explizite Befehle zum Löschen von Schlüsseln. Auch sind Schlüssel, die in den Masterknoten in einer Azure Cache for Redis-Instanz (Tarif „Standard“ oder „Premium“) geschrieben wurden, möglicherweise nicht sofort auf einem Replikat verfügbar. Daten werden asynchron und auf nicht blockierende Weise vom Master auf das Replikat repliziert.
 
-Wenn Sie feststellen, dass Schlüssel aus dem Cache verschwunden sind, können Sie Folgendes überprüfen, um nach der Ursache zu suchen:
+Wenn Sie feststellen, dass Schlüssel aus dem Cache verschwunden sind, sollten Sie auf folgende mögliche Ursachen prüfen:
 
 | Ursache | BESCHREIBUNG |
 |---|---|
-| [Ablauf von Schlüsseln](#key-expiration) | Schlüssel werden aufgrund der für sie festgelegten Timeouts entfernt. |
+| [Ablauf von Schlüsseln](#key-expiration) | Schlüssel werden entfernt, weil für sie Timeouts festgelegt wurden. |
 | [Entfernen von Schlüsseln](#key-eviction) | Schlüssel werden bei hoher Arbeitsspeicherauslastung entfernt. |
 | [Löschen von Schlüsseln](#key-deletion) | Schlüssel werden durch explizite Löschbefehle entfernt. |
 | [Asynchrone Replikation](#async-replication) | Schlüssel sind aufgrund von Verzögerungen bei der Datenreplikation auf einem Replikat nicht verfügbar. |
 
 ### <a name="key-expiration"></a>Ablauf von Schlüsseln
 
-Redis entfernt einen Schlüssel automatisch, wenn diesem ein Timeout zugewiesen wurde und dieser Zeitraum abgelaufen ist. Weitere Details zum Ablauf von Redis-Schlüsseln finden Sie in der Dokumentation zum Befehl [EXPIRE](http://redis.io/commands/expire). Timeoutwerte können auch über [SET](http://redis.io/commands/set), [SETEX](https://redis.io/commands/setex), [GETSET](https://redis.io/commands/getset) und andere \*STORE-Befehle festgelegt werden.
+Azure Cache for Redis entfernt einen Schlüssel automatisch, wenn dem Schlüssel ein Timeout zugewiesen und der zugehörige Zeitraum abgelaufen ist. Weitere Informationen zum Ablauf von Redis-Schlüsseln finden Sie in der Dokumentation des Befehls [EXPIRE](http://redis.io/commands/expire). Timeoutwerte können auch über die Befehle [SET](http://redis.io/commands/set), [SETEX](https://redis.io/commands/setex) und [GETSET](https://redis.io/commands/getset) sowie weitere **\*STORE**-Befehle festgelegt werden.
 
-Mit dem Befehl [INFO](http://redis.io/commands/info) können Sie Statistiken abrufen, die angeben, wie viele Schlüssel abgelaufen sind. Im Abschnitt *Statistik* wird die Gesamtzahl abgelaufener Schlüssel angezeigt. Der Abschnitt *Keyspace* enthält zusätzliche Informationen zur Anzahl der Schlüssel mit Timeouts und dem durchschnittlichen Timeoutwert.
+Wenn Sie Statistiken abrufen möchten, wie viele Schlüssel abgelaufen sind, verwenden Sie den Befehl [INFO](http://redis.io/commands/info). Im Abschnitt `Stats` wird die Gesamtzahl abgelaufener Schlüssel angezeigt. Der Abschnitt `Keyspace` enthält weitere Informationen zur Anzahl der Schlüssel mit Timeouts und zum durchschnittlichen Timeoutwert.
 
 ```
 # Stats
@@ -61,11 +58,11 @@ expired_keys:46583
 db0:keys=3450,expires=2,avg_ttl=91861015336
 ```
 
-Darüber hinaus können Sie die Diagnosemetriken für Ihren Cache überprüfen, um festzustellen, ob es eine Korrelation zwischen dem fehlendem Schlüssel und einer Spitze bei den abgelaufenen Schlüsseln gibt. Informationen zur Verwendung von Keyspace-Benachrichtigungen oder zum Debuggen dieser Arten von Problemen mit dem MONITOR-Befehl finden Sie im [Anhang](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix).
+Außerdem können Sie die Diagnosemetriken für Ihren Cache überprüfen, um festzustellen, ob es eine Korrelation zwischen dem fehlendem Schlüssel und einer Spitze bei den abgelaufenen Schlüsseln gibt. Im Anhang von [Debugging Redis Keyspace Misses](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) finden Sie unter „Keyspace Notifications“ Informationen zur Verwendung von Keyspace-Benachrichtigungen sowie unter **MONITOR** Informationen, wie Probleme dieses Typs debuggt werden.
 
 ### <a name="key-eviction"></a>Entfernen von Schlüsseln
 
-Redis benötigt Platz im Arbeitsspeicher zum Speichern von Daten. Bei Bedarf werden Schlüssel gelöscht, um verfügbaren Speicher freizugeben. Wenn sich die Werte **used_memory** oder **used_memory_rss** im Befehl [INFO](http://redis.io/commands/info) dem für die Einstellung **maxmemory** konfigurierten Wert nähern, beginnt Redis aufgrund der [Cacherichtlinie](http://redis.io/topics/lru-cache) mit dem Entfernen von Schlüsseln.
+Azure Cache for Redis benötigt Arbeitsspeicher, um Daten zu speichern. Es löscht bei Bedarf Schlüssel, um verfügbaren Speicher freizugeben. Wenn sich der Wert von **used_memory** oder **used_memory_rss** im Befehl [INFO](http://redis.io/commands/info) dem für die Einstellung **maxmemory** konfigurierten Wert nähert, beginnt Azure Cache for Redis aufgrund der [Cacherichtlinie](http://redis.io/topics/lru-cache) mit dem Entfernen von Schlüsseln.
 
 Mit dem Befehl [INFO](http://redis.io/commands/info) können Sie die Anzahl der entfernten Schlüssel überwachen.
 
@@ -75,11 +72,11 @@ Mit dem Befehl [INFO](http://redis.io/commands/info) können Sie die Anzahl der 
 evicted_keys:13224
 ```
 
-Darüber hinaus können Sie die Diagnosemetriken für Ihren Cache überprüfen, um festzustellen, ob es eine Korrelation zwischen dem fehlendem Schlüssel und einer Spitze bei den entfernten Schlüsseln gibt. Informationen zur Verwendung von Keyspace-Benachrichtigungen oder zum Debuggen dieser Arten von Problemen mit dem MONITOR-Befehl finden Sie im [Anhang](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix).
+Außerdem können Sie die Diagnosemetriken für Ihren Cache überprüfen, um festzustellen, ob es eine Korrelation zwischen dem fehlendem Schlüssel und einer Spitze bei den entfernten Schlüsseln gibt. Im Anhang von [Debugging Redis Keyspace Misses](https://gist.github.com/JonCole/4a249477142be839b904f7426ccccf82#appendix) finden Sie unter „Keyspace Notifications“ Informationen zur Verwendung von Keyspace-Benachrichtigungen sowie unter **MONITOR** Informationen, wie Probleme dieses Typs debuggt werden.
 
 ### <a name="key-deletion"></a>Löschen von Schlüsseln
 
-Redis-Clients können den Befehl [DEL](http://redis.io/commands/del) oder [HDEL](http://redis.io/commands/hdel) ausgeben, um Schlüssel explizit aus Redis zu entfernen. Mit dem Befehl [INFO](http://redis.io/commands/info) können Sie die Anzahl der Löschvorgänge verfolgen. Aufrufe von DEL- oder HDEL-Befehlen werden im Abschnitt *Befehlsstatistik* aufgelistet.
+Redis-Clients können den Befehl [DEL](http://redis.io/commands/del) oder [HDEL](http://redis.io/commands/hdel) ausgeben, um Schlüssel explizit aus Azure Cache for Redis zu entfernen. Mit dem Befehl [INFO](http://redis.io/commands/info) können Sie die Anzahl der Löschvorgänge verfolgen. Aufrufe von **DEL**- oder **HDEL**-Befehlen werden im Abschnitt `Commandstats` aufgelistet.
 
 ```
 # Commandstats
@@ -91,21 +88,21 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchrone Replikation
 
-Azure Cache for Redis ist sowohl im Tarif „Standard“ als auch im Tarif „Premium“ mit einem Masterknoten und mindestens einem Replikat konfiguriert. Daten werden über einen Prozess im Hintergrund asynchron aus dem Masterknoten in ein Replikat kopiert. Auf der Website [redis.io](http://redis.io/topics/replication) wird beschrieben, wie die Redis-Datenreplikation im Allgemeinen funktioniert. Bei Szenarien, in denen Clients häufig in Redis schreiben, kann aufgrund der Tatsache, dass eine sofortige Datenreplikation garantiert wird, ein partieller Datenverlust auftreten. Wenn beispielsweise der Masterknoten heruntergefahren wird, _nachdem_ ein Client einen Schlüssel in diesen geschrieben hat und _bevor_ der Hintergrundprozess die Möglichkeit hatte, diesen Schlüssel an das Replikat zu senden, geht der Schlüssel verloren, wenn das Replikat als neuer Masterknoten verwendet wird.
+Jede Azure Cache for Redis-Instanz ist sowohl im Tarif „Standard“ als auch im Tarif „Premium“ mit einem Masterknoten und mindestens einem Replikat konfiguriert. Daten werden in einem Hintergrundprozess asynchron aus dem Masterknoten in ein Replikat kopiert. Auf der Website [redis.io](http://redis.io/topics/replication) wird beschrieben, wie die Redis-Datenreplikation im Allgemeinen funktioniert. Bei Szenarien, in denen Clients häufig in Redis schreiben, kann ein partieller Datenverlust auftreten, weil diese Datenreplikation als sofortige Replikation garantiert wird. Wenn beispielsweise der Masterknoten heruntergefahren wird, *nachdem* ein Client einen Schlüssel in den Knoten geschrieben hat, aber *bevor* der Hintergrundprozess die Möglichkeit hatte, diesen Schlüssel an das Replikat zu senden, geht der Schlüssel verloren, wenn das Replikat als neuer Masterknoten verwendet wird.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Größerer oder kompletter Verlust von Schlüsseln
 
-Wenn Sie feststellen, dass die meisten oder alle Schlüssel im Cache nicht mehr vorhanden sind, können Sie Folgendes überprüfen, um nach der Ursache zu suchen:
+Sind die meisten oder alle Schlüssel aus dem Cache verschwunden, sollten Sie auf folgende mögliche Ursachen prüfen:
 
 | Ursache | BESCHREIBUNG |
 |---|---|
-| [Leeren von Schlüsseln](#key-flushing) | Die Schlüssel wurden manuell gelöscht. |
-| [Falsche Datenbankauswahl](#incorrect-database-selection) | Redis ist auf die Verwendung einer nicht standardmäßigen Datenbank eingestellt. |
-| [Redis-Instanzausfall](#redis-instance-failure) | Schlüssel werden durch explizite Löschbefehle entfernt. |
+| [Leeren von Schlüsseln](#key-flushing) | Schlüssel wurden manuell gelöscht. |
+| [Falsche Datenbankauswahl](#incorrect-database-selection) | Azure Cache for Redis ist so festgelegt, dass eine Nicht-Standarddatenbank verwendet wird. |
+| [Redis-Instanzausfall](#redis-instance-failure) | Der Redis-Server ist nicht verfügbar. |
 
 ### <a name="key-flushing"></a>Leeren von Schlüsseln
 
-Clients können den Befehl [FLUSHDB](http://redis.io/commands/flushdb) aufrufen, um alle Schlüssel in einer **einzelnen** Datenbank zu entfernen. Mit dem Befehl [FLUSHALL](http://redis.io/commands/flushall) werden alle Schlüssel aus **allen** Datenbanken in einem Redis-Cache entfernt. Mit dem Befehl [INFO](http://redis.io/commands/info) können Sie feststellen, ob Schlüssel geleert wurden. Im Abschnitt *Befehlsstatistik* wird angezeigt, ob einer der FLUSH-Befehle aufgerufen wurde.
+Clients können den Befehl [FLUSHDB](http://redis.io/commands/flushdb) aufrufen, um alle Schlüssel in einer *einzelnen* Datenbank zu entfernen. Mit dem Befehl [FLUSHALL](http://redis.io/commands/flushall) werden alle Schlüssel aus *allen* Datenbanken in einem Redis-Cache entfernt. Wenn Sie feststellen möchten, ob Schlüssel geleert (entfernt) wurden, verwenden Sie den Befehl [INFO](http://redis.io/commands/info). Im `Commandstats`-Abschnitt ist zu sehen, ob **FLUSH**-Befehle aufgerufen wurden:
 
 ```
 # Commandstats
@@ -117,13 +114,15 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>Falsche Datenbankauswahl
 
-Azure Cache for Redis verwendet standardmäßig die Datenbank **db0**. Wenn Sie zu einer anderen Datenbank wechseln (z.B. db1) und versuchen, Schlüssel daraus zu lesen, kann Redis sie nicht finden, da jede Datenbank eine logisch separate Einheit mit unterschiedlichen Datasets bildet. Wählen Sie mit dem Befehl [SELECT](http://redis.io/commands/select) andere verfügbare Datenbanken aus, und suchen Sie dort jeweils nach Schlüsseln.
+Azure Cache for Redis verwendet standardmäßig die Datenbank **db0**. Wenn Sie zu einer anderen Datenbank wechseln (z. B. **db1**) und versuchen, Schlüssel aus ihr zu lesen, kann Azure Cache for Redis dort keine Schlüssel finden. Jede Datenbank ist eine logisch separate Einheit und enthält ein anderes Dataset. Wählen Sie mit dem Befehl [SELECT](http://redis.io/commands/select) andere verfügbare Datenbanken aus, und suchen Sie dort jeweils nach Schlüsseln.
 
 ### <a name="redis-instance-failure"></a>Redis-Instanzausfall
 
-Redis ist ein In-Memory-Datenspeicher. Die Daten werden auf den physischen oder virtuellen Computern aufbewahrt, die Redis hosten. Eine Azure Cache for Redis-Instanz im Tarif „Basic“ wird nur auf einem einzelnen virtuellen Computer (VM) ausgeführt. Wenn dieser virtuelle Computer ausfällt, gehen alle Daten verloren, die Sie im Cache gespeichert haben. Caches der Tarife „Standard“ und „Premium“ bieten eine wesentlich höhere Resilienz vor Datenverlusten, da zwei virtuelle Computer in einer replizierten Konfiguration verwendet werden. Wenn der Masterknoten bei einem solchen Cache ausfällt, übernimmt der Replikatknoten automatisch die Bereitstellung der Daten. Diese virtuellen Computer befinden sich in separaten Fehler- und Updatedomänen, um das Risiko zu minimieren, dass beide gleichzeitig nicht verfügbar sind. Beim Ausfall eines größeren Rechenzentrums können die virtuellen Computer jedoch auch zusammen ausfallen. In diesen seltenen Fällen gehen Ihre Daten verloren.
+Redis ist ein In-Memory-Datenspeicher. Daten verbleiben auf dem physischen oder virtuellen Computer, auf dem der Redis-Cache gehostet wird. Eine Azure Cache for Redis-Instanz im Tarif „Basic“ wird nur auf einem einzelnen virtuellen Computer (VM) ausgeführt. Wenn dieser virtuelle Computer ausfällt, gehen alle Daten verloren, die Sie im Cache gespeichert haben. 
 
-Sie sollten die Verwendung von [Redis-Datenpersistenz](http://redis.io/topics/persistence) und [Georeplikation](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) in Erwägung ziehen, um den Schutz Ihrer Daten vor derartigen Infrastrukturausfällen zu erhöhen.
+Caches der Tarife „Standard“ und „Premium“ bieten eine wesentlich höhere Resilienz vor Datenverlusten, da zwei virtuelle Computer in einer replizierten Konfiguration verwendet werden. Wenn der Masterknoten für einen solchen Cache ausfällt, übernimmt der Replikatknoten automatisch die Bereitstellung der Daten. Diese virtuellen Computer befinden sich in getrennten Domänen für Ausfälle und Updates, um das Risiko zu minimieren, dass beide gleichzeitig nicht verfügbar sind. Kommt es zu einem größeren Ausfall des Rechenzentrums, können die virtuellen Computer dennoch gemeinsam ausfallen. In diesen seltenen Fällen gehen Ihre Daten verloren.
+
+Um dies zu verhindern, können Sie [Redis-Datenpersistenz](http://redis.io/topics/persistence) und [Georeplikation](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) verwenden, um den Schutz Ihrer Daten vor derartigen Infrastrukturausfällen zu erhöhen.
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 

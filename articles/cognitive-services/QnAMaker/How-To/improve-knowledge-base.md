@@ -1,7 +1,7 @@
 ---
 title: Verbessern der Wissensdatenbank – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Durch aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden. Sie überprüfen diese Vorschläge, indem Sie sie entweder zu vorhandenen Fragen hinzufügen oder ablehnen. Ihre Wissensdatenbank wird nicht automatisch geändert. Sie müssen die Vorschläge akzeptieren, damit eine Änderung wirksam wird. Mit diesen Vorschlägen werden Fragen hinzugefügt, vorhandene Fragen werden aber weder geändert noch entfernt.
+description: Nutzen Sie aktives Lernen, um die Qualität Ihrer Wissensdatenbank zu verbessern. Sie können Einträge überprüfen, annehmen oder ablehnen und hinzufügen, ohne vorhandene Fragen zu entfernen oder zu ändern.
 author: diberry
 manager: nitinme
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 83d60487922e3355aab8e34f6a8409c529901d14
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: add4bbead880fb9b74d342abc1d4b3c0e9475fad
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328033"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721180"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 

@@ -5,20 +5,21 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 49723a80bb198e8151c7e85a90453183068c9d2b
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 967d33cb7a9eb3ec922f9d85cfc2581b85bce537
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962817"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825900"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die Marketplace-GTM-Vorteile. Wichtiger ist, dass durch die Auswahl von Veröffentlichungsoption und Angebotstyp definiert wird, wie Benutzer mit Ihrem Marketplace-Angebot interagieren.
 
-Zum Konfigurieren Ihres Angebots müssen Sie die folgenden wesentlichen Marketplace-Konzepte verstehen: Veröffentlichungsoptionen, Angebotstypen und -konfiguration sowie Aktionsaufrufe, die regeln, wie und wo Ihr Angebot in den Marketplace-Storefronts präsentiert wird.
+Zum Konfigurieren Ihres Angebots müssen Sie die folgenden wesentlichen Marketplace-Konzepte verstehen: Veröffentlichungsoptionen, Angebotstypen und -konfiguration sowie Handlungsaufforderungen, die regeln, wie und wo Ihr Angebot in den Marketplace-Storefronts präsentiert wird.
 
 ![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 

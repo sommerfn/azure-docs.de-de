@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2dea1c160b07ac08075dad3a1ca1f6fc753e3481
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387627"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622650"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -240,4 +240,4 @@ Geben Sie die folgenden Informationen an:
 
 - Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](../samples/starter.md).
 - Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](../samples/advanced.md).
-- Erfahren Sie, wie Sie [Ressourcen untersuchen](explore-resources.md).
+- Erfahren Sie mehr über das [Erkunden von Ressourcen](explore-resources.md).

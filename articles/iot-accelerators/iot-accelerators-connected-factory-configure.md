@@ -1,6 +1,6 @@
 ---
 title: 'Konfigurieren der Connected Factory-Topologie: Azure | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie die Topologie eines Soluction Accelerators für Connected Factory konfigurieren.
+description: In diesem Artikel wird die Konfiguration des Solution Accelerators für Connected Factory einschließlich der Topologie beschrieben.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3ddbf5832424cdafad2c29254f51754203c7f079
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428318"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820129"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
 

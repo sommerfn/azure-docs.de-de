@@ -1,6 +1,6 @@
 ---
 title: Sichern von Workloads in Azure mithilfe von Azure Backup Server
-description: Verwenden Sie Azure Backup Server, um Workloads im Azure-Portal zu schützen und zu sichern.
+description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,16 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982851"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747423"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
 > [!div class="op_single_selector"]
+>
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
@@ -60,16 +61,16 @@ Wenn Sie den Basisserver nicht in Azure ausführen möchten, können Sie den Ser
 | Windows Server 2019 |64-Bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 und die neuesten SPs |64-Bit |Standard, Datacenter, Essentials  |
 
-
 Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Deduplizierung verwenden. Lesen Sie die weiteren Informationen zur Zusammenarbeit von [DPM und Deduplizierung](https://technet.microsoft.com/library/dn891438.aspx) bei Bereitstellung auf Hyper-V-VMs.
 
 > [!NOTE]
 > Azure Backup Server ist für die Ausführung auf einem dedizierten Server konzipiert, der nur zu einem Zweck verwendet wird. Azure Backup Server kann nicht auf folgenden Computern installiert werden:
-> - Einem Computer, der als Domänencontroller ausgeführt wird
-> - Einem Computer, auf dem die Anwendungsserverrolle installiert ist
-> - Eine Computer, der als System Center Operations Manager-Verwaltungsserver fungiert
-> - Einem Computer, auf dem Exchange Server ausgeführt wird
-> - Einem Computer, der einen Knoten eines Clusters darstellt
+>
+> * Einem Computer, der als Domänencontroller ausgeführt wird
+> * Einem Computer, auf dem die Anwendungsserverrolle installiert ist
+> * Eine Computer, der als System Center Operations Manager-Verwaltungsserver fungiert
+> * Einem Computer, auf dem Exchange Server ausgeführt wird
+> * Einem Computer, der einen Knoten eines Clusters darstellt
 
 Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie den Server in eine andere Domäne verschieben möchten, installieren Sie zuerst Azure Backup Server, und binden Sie dann den Server in die neue Domäne ein. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
@@ -182,11 +183,11 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 
     Wenn Sie eine eigene Instanz von SQL 2017 verwenden, müssen Sie die SSRS manuell konfigurieren. Stellen Sie nach der SSRS-Konfiguration sicher, dass die SSRS-Eigenschaft *IsInitialized* auf *True* festgelegt ist. Wenn sie auf „True“ festgelegt ist, geht MABS davon aus, dass die SSRS bereits konfiguriert sind, und MABS überspringt die SSRS-Konfiguration.
 
-    Verwenden Sie für die SSRS-Konfiguration die folgenden Werte: 
-    - Dienstkonto: „Integriertes Konto verwenden“ sollte „Netzwerkdienst“ lauten.
-    - Webdienst-URL: „Virtuelles Verzeichnis“ sollte „ReportServer_<SQLInstanceName>“ lauten.
-    - Datenbank: „DatabaseName“ sollte ReportServer$<SQLInstanceName> lauten.
-    - Webportal-URL: „Virtuelles Verzeichnis“ sollte „Reports_<SQLInstanceName>“ lauten.
+    Verwenden Sie für die SSRS-Konfiguration die folgenden Werte:
+    * Dienstkonto: „Integriertes Konto verwenden“ sollte „Netzwerkdienst“ lauten.
+    * Webdienst-URL: „Virtuelles Verzeichnis“ sollte „ReportServer_<SQLInstanceName>“ lauten.
+    * Datenbank: „DatabaseName“ sollte ReportServer$<SQLInstanceName> lauten.
+    * Webportal-URL: „Virtuelles Verzeichnis“ sollte „Reports_<SQLInstanceName>“ lauten.
 
     Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017).
 
@@ -257,10 +258,10 @@ In den folgenden Abschnitten wird beschrieben, wie Schutz-Agents für Clientcomp
 
 Im Folgenden werden die Schritte aufgeführt, wenn Sie MABS auf einen neuen Server verschieben und gleichzeitig den Speicher beibehalten müssen. Dies kann nur dann erreicht werden, wenn sich alle Daten in Modern Backup Storage befinden.
 
-
   > [!IMPORTANT]
-  > - Der neue Servername muss den gleichen Namen wie für die ursprüngliche Azure Backup Server-Instanz aufweisen. Der Name der neuen Azure Backup Server-Instanz kann nicht geändert werden, wenn Sie die Wiederherstellungspunkte über den vorherigen Speicherpool und die MABS-Datenbank (DPMDB) speichern möchten.
-  > - Sie benötigen eine Sicherung der MABS-Datenbank (DPMDB). Sie müssen die Datenbank wiederherstellen.
+  >
+  > * Der neue Servername muss den gleichen Namen wie für die ursprüngliche Azure Backup Server-Instanz aufweisen. Der Name der neuen Azure Backup Server-Instanz kann nicht geändert werden, wenn Sie die Wiederherstellungspunkte über den vorherigen Speicherpool und die MABS-Datenbank (DPMDB) speichern möchten.
+  > * Sie benötigen eine Sicherung der MABS-Datenbank (DPMDB). Sie müssen die Datenbank wiederherstellen.
 
 1. Wählen Sie im Anzeigebereich die Clientcomputer aus, für die Sie den Schutz-Agent aktualisieren möchten.
 2. Fahren Sie den ursprünglichen Azure Backup-Server herunter, oder stellen Sie ihn außer Dienst.

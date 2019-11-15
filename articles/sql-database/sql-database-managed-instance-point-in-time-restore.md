@@ -1,5 +1,5 @@
 ---
-title: 'Verwaltete SQL-Datenbank-Instanz: Point-in-Time-Wiederherstellung | Microsoft-Dokumentation'
+title: 'Verwaltete Instanz: Point-in-Time-Wiederherstellung'
 description: Wiederherstellen eines früheren Zeitpunkts einer SQL-Datenbank in einer verwalteten Instanz
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 61249d8ac21c3bb698deb92e5f46a8998205ced9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: ad96d0a04b03e070a7108832370749377d723826
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529663"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821761"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Wiederherstellen eines früheren Zeitpunkts einer SQL-Datenbank in einer verwalteten Instanz
 

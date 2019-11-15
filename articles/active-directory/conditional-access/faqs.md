@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad0494868c494b488a238a81e504c58552813907
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: b2cc562f155fe3b84e5d28b2e0e22d50238d480c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508975"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73816215"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Häufig gestellte Fragen zum bedingten Zugriff mit Azure Active Directory
 
@@ -24,7 +24,7 @@ ms.locfileid: "67508975"
 
 Informationen zu Anwendungen, von denen Richtlinien für den bedingten Zugriff verwendet werden, finden Sie unter [Anwendungen und Browser, die Regeln für den bedingten Zugriff in Azure Active Directory verwenden](technical-reference.md).
 
-## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Werden Richtlinien für den bedingten Zugriff für B2B-Kollaborations- und Gastbenutzer erzwungen?
+## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Werden Richtlinien für den bedingten Zugriff für B2B Collaboration- und Gastbenutzer erzwungen?
 
 Richtlinien werden für B2B-Kollaborationsbenutzer (Business-to-Business) erzwungen. In einigen Fällen kann es aber vorkommen, dass ein Benutzer die Richtlinienanforderungen nicht erfüllen kann. Beispielsweise kann es sein, dass die Organisation eines Gastbenutzers die mehrstufige Authentifizierung nicht unterstützt. 
 
@@ -32,13 +32,13 @@ Richtlinien werden für B2B-Kollaborationsbenutzer (Business-to-Business) erzwun
 
 Ja. Eine SharePoint Online-Richtlinie gilt auch für OneDrive for Business.
 
-## <a name="why-cant-i-set-a-policy-on-client-apps-like-word-or-outlook"></a>Warum kann ich keine Richtlinien für Clientanwendungen wie Word oder Outlook festlegen?
+## <a name="why-cant-i-set-a-policy-directly-on-client-apps-like-word-or-outlook"></a>Warum kann ich keine Richtlinien direkt in Client-Apps wie Word oder Outlook festlegen?
 
 Mit einer Richtlinie für bedingten Zugriff werden die Anforderungen für den Zugriff auf einen Dienst festgelegt. Die Richtlinie wird erzwungen, wenn die Authentifizierung für diesen Dienst durchgeführt wird. Die Richtlinie wird nicht direkt für eine Clientanwendung festgelegt. Stattdessen wird sie angewendet, wenn ein Client einen Dienst aufruft. Eine Richtlinie, die für SharePoint festgelegt wurde, gilt beispielsweise für Clients, die SharePoint aufrufen. Eine Richtlinie, die für Exchange festgelegt wurde, gilt für Outlook.
 
 ## <a name="does-a-conditional-access-policy-apply-to-service-accounts"></a>Gilt eine Richtlinie für bedingten Zugriff für Dienstkonten?
 
-Richtlinien für bedingten Zugriff gelten für alle Benutzerkonten. Dies schließt auch Benutzerkonten ein, die als Dienstkonten verwendet werden. Häufig kann ein Dienstkonto, das unbeaufsichtigt ausgeführt wird, die Anforderungen einer Richtlinie für bedingten Zugriff nicht erfüllen. Beispielsweise ist unter Umständen die mehrstufige Authentifizierung erforderlich. Dienstkonten können über die Einstellungen zur Verwaltung der Richtlinie für bedingten Zugriff von einer Richtlinie ausgeschlossen werden. 
+Richtlinien für bedingten Zugriff gelten für alle Benutzerkonten. Dies schließt auch Benutzerkonten ein, die als Dienstkonten verwendet werden. Häufig kann ein Dienstkonto, das unbeaufsichtigt ausgeführt wird, die Anforderungen einer Richtlinie für bedingten Zugriff nicht erfüllen. Beispielsweise ist unter Umständen die mehrstufige Authentifizierung erforderlich. Dienstkonten können über die Verwaltungseinstellungen der Richtlinie für bedingten Zugriff von einer Richtlinie ausgeschlossen werden. 
 
 ## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Sind Graph-APIs zum Konfigurieren von Richtlinien für bedingten Zugriff verfügbar?
 

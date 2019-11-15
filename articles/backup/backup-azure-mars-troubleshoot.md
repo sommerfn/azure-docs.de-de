@@ -1,6 +1,6 @@
 ---
 title: Behandeln von Problemen mit dem Azure Backup-Agent
-description: Behandeln von Problemen mit der Installation und Registrierung des Azure Backup-Agents
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installation und Registrierung des Azure Backup-Agents behandeln.
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2ff5d760579c31c4bd11252e09da1cbb94576229
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a59ac45d157f8674374c894a280e51392038524b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954659"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747417"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -50,6 +50,7 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 | **Antivirensoftware blockiert die Registrierung** | Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu: <br/><ul> <li> CBengine.exe <li> CSC.exe<li> Ablageordner. Der Standardspeicherort ist C:\Programme\Microsoft Azure Recovery Services Agent\Scratch. <li> Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ### <a name="additional-recommendations"></a>Weitere Empfehlungen
+
 - Navigieren Sie zu „C:/Windows/Temp“, und prüfen Sie, ob es mehr als 60.000 oder 65.000 Dateien mit der Erweiterung TMP gibt. Wenn dies der Fall ist, löschen Sie diese Dateien.
 - Stellen Sie sicher, dass Datum und Uhrzeit des Computers der lokalen Zeitzone entsprechen.
 - Stellen Sie sicher, dass [diese Websites](backup-configure-vault.md#verify-internet-access) in Internet Explorer den vertrauenswürdigen Sites hinzugefügt werden.
@@ -78,7 +79,6 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 | ---     | ---     | ---    |
 | <br /><ul><li>Es konnte keine Verbindung zwischen dem Microsoft Azure Recovery Services-Agent und Microsoft Azure Backup hergestellt werden. (ID: 100050) Überprüfen Sie Ihre Netzwerkeinstellungen, und stellen Sie sicher, dass Sie eine Verbindung mit dem Internet herstellen können.<li>(407) Proxyauthentifizierung erforderlich. |Ein Proxy blockiert die Verbindung. |  <ul><li>Navigieren Sie in Internet Explorer zu **Extras** > **Internetoptionen** > **Sicherheit** > **Internet**. Wählen Sie **Stufe anpassen** aus, und scrollen Sie zum Abschnitt **Dateidownload**. Wählen Sie **Aktivieren** aus.<p>Sie müssen möglicherweise auch [URLs und IP-Adressen](backup-configure-vault.md#verify-internet-access) zu Ihren vertrauenswürdigen Sites in Internet Explorer hinzufügen.<li>Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<li> Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxyserver diese [URLs und IP-Adressen](backup-configure-vault.md#verify-internet-access) zulassen. <li>Wenn Sie Antivirensoftware auf dem Server installiert haben, schließen Sie die folgenden Dateien vom Virenscan aus: <ul><li>CBEngine.exe (statt dpmra.exe)<li>CSC.exe: (Diese Datei ist mit dem .NET Framework verknüpft.) Für jede auf dem Server installierte .NET Framework-Version gibt es eine Datei namens „CSC.exe“. Schließen Sie Dateien mit dem Namen „CSC.exe“ für alle .NET Framework-Versionen auf dem betroffenen Server aus. <li>Speicherort des Ablageordners oder Caches. <br>Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“.<li>Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
-
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Fehler beim Festlegen des Verschlüsselungsschlüssels für sichere Sicherungen
 
 | Error | Mögliche Ursachen | Empfohlene Aktionen |
@@ -97,8 +97,8 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 |---------|---------|---------|
 | <br />Fehler 34506. Die auf diesem Computer gespeicherte Verschlüsselungspassphrase ist nicht richtig konfiguriert.    | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.        | <li>Führen Sie ein Upgrade auf die [neueste Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .         |
 
-
 ## <a name="backups-dont-run-according-to-schedule"></a>Sicherungen werden nicht nach Zeitplan ausgeführt
+
 Wenn geplante Sicherungen nicht automatisch ausgelöst werden, manuelle Sicherungen jedoch korrekt funktionieren, versuchen Sie es mit den folgenden Aktionen:
 
 - Stellen Sie sicher, dass der Sicherungszeitplan für Windows Server keine Konflikte mit dem Sicherungszeitplan für Azure-Dateien und -Ordner verursacht.
@@ -132,39 +132,36 @@ Wenn geplante Sicherungen nicht automatisch ausgelöst werden, manuelle Sicherun
 
      Wenn bereits ein Ordner „MSOnlineBackup“ auf dem Computer vorhanden ist, fügen Sie die Dateien ein, oder ersetzen Sie alle vorhandenen Dateien.
 
-
 > [!TIP]
 > Um sicherzustellen, dass die vorgenommenen Änderungen durchgängig übernommen werden, starten Sie den Server nach dem Durchführen der vorherigen Schritte neu.
-
 
 ## <a name="troubleshoot-restore-problems"></a>Behandlung von Problemen bei der Wiederherstellung
 
 Azure Backup kann das Wiederherstellungsvolume möglicherweise auch nach einigen Minuten nicht einbinden. Möglicherweise erhalten Sie während des Vorgangs auch Fehlermeldungen. Um eine normale Wiederherstellung zu starten, gehen Sie folgendermaßen vor:
 
-1.  Brechen Sie den laufenden Bereitstellungsvorgang ab, wenn dieser mehrere Minuten lang ausgeführt wurde.
+1. Brechen Sie den laufenden Bereitstellungsvorgang ab, wenn dieser mehrere Minuten lang ausgeführt wurde.
 
-2.  Prüfen Sie, ob Sie über die neueste Version des Backup-Agents verfügen. Wählen Sie zum Ermitteln der Version im Bereich **Aktionen** der MARS-Konsole die Option **Informationen zum Microsoft Azure Recovery Services-Agent** aus. Bestätigen Sie, dass die **Versionsnummer** gleich oder höher als die in [diesem Artikel](https://go.microsoft.com/fwlink/?linkid=229525) erwähnte Version ist. Wählen Sie diesen Link zum [Herunterladen der aktuellen Version](https://go.microsoft.com/fwLink/?LinkID=288905) aus.
+2. Prüfen Sie, ob Sie über die neueste Version des Backup-Agents verfügen. Wählen Sie zum Ermitteln der Version im Bereich **Aktionen** der MARS-Konsole die Option **Informationen zum Microsoft Azure Recovery Services-Agent** aus. Bestätigen Sie, dass die **Versionsnummer** gleich oder höher als die in [diesem Artikel](https://go.microsoft.com/fwlink/?linkid=229525) erwähnte Version ist. Wählen Sie diesen Link zum [Herunterladen der aktuellen Version](https://go.microsoft.com/fwLink/?LinkID=288905) aus.
 
-3.  Wechseln Sie zu **Geräte-Manager** > **Speichercontroller**, und suchen Sie nach **Microsoft iSCSI-Initiator**. Wenn Sie diese Option finden, fahren Sie direkt mit Schritt 7 fort.
+3. Wechseln Sie zu **Geräte-Manager** > **Speichercontroller**, und suchen Sie nach **Microsoft iSCSI-Initiator**. Wenn Sie diese Option finden, fahren Sie direkt mit Schritt 7 fort.
 
-4.  Wenn der Microsoft iSCSI-Initiator-Dienst nicht vorhanden ist, suchen Sie unter **Geräte-Manager** > **Speichercontroller** nach dem Eintrag **Unbekanntes Gerät** mit der Hardware-ID **ROOT\ISCSIPRT**.
+4. Wenn der Microsoft iSCSI-Initiator-Dienst nicht vorhanden ist, suchen Sie unter **Geräte-Manager** > **Speichercontroller** nach dem Eintrag **Unbekanntes Gerät** mit der Hardware-ID **ROOT\ISCSIPRT**.
 
-5.  Klicken Sie mit der rechten Maustaste auf **Unbekanntes Gerät**, und wählen Sie **Treibersoftware aktualisieren** aus.
+5. Klicken Sie mit der rechten Maustaste auf **Unbekanntes Gerät**, und wählen Sie **Treibersoftware aktualisieren** aus.
 
-6.  Aktualisieren Sie den Treiber durch Auswählen der Option **Automatisch nach aktueller Treibersoftware suchen**. Nach Abschluss des Updates sollte **Unbekanntes Gerät** durch **Microsoft iSCSI-Initiator** ersetzt werden:
+6. Aktualisieren Sie den Treiber durch Auswählen der Option **Automatisch nach aktueller Treibersoftware suchen**. Nach Abschluss des Updates sollte **Unbekanntes Gerät** durch **Microsoft iSCSI-Initiator** ersetzt werden:
 
     ![Screenshot des Geräte-Managers von Azure Backup mit hervorgehobener Option „Speichercontroller“](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7.  Wechseln Sie zu **Task-Manager** > **Dienste (lokal)**  > **Microsoft iSCSI-Initiator-Dienst**:
+7. Wechseln Sie zu **Task-Manager** > **Dienste (lokal)**  > **Microsoft iSCSI-Initiator-Dienst**:
 
     ![Screenshot des Task-Managers von Azure Backup mit hervorgehobener Option „Dienste (lokal)“](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8.  Starten Sie den Microsoft iSCSI-Initiator-Dienst neu. Klicken Sie dazu mit der rechten Maustaste auf den Dienst, und wählen Sie **Stop** aus. Klicken Sie dann erneut mit der rechten Maustaste, und wählen Sie **Start** aus.
+8. Starten Sie den Microsoft iSCSI-Initiator-Dienst neu. Klicken Sie dazu mit der rechten Maustaste auf den Dienst, und wählen Sie **Stop** aus. Klicken Sie dann erneut mit der rechten Maustaste, und wählen Sie **Start** aus.
 
-9.  Wiederholen Sie die Wiederherstellung mit der [sofortigen Wiederherstellung](backup-instant-restore-capability.md).
+9. Wiederholen Sie die Wiederherstellung mit der [sofortigen Wiederherstellung](backup-instant-restore-capability.md).
 
 Wenn bei der Wiederherstellung weiterhin ein Fehler auftritt, starten Sie Ihren Server oder Client neu. Wenn Sie keinen Neustart durchführen möchten oder auch nach einem Neustart des Servers ein Fehler bei der Wiederherstellung auftritt, führen Sie die [Wiederherstellung über einen anderen Computer](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) aus.
-
 
 ## <a name="troubleshoot-cache-problems"></a>Behandeln von Cacheproblemen
 
@@ -181,20 +178,25 @@ Damit MARS-Agent-Vorgänge erfolgreich ausgeführt werden können, muss der Cach
 - [Stellen Sie sicher, dass keine anderen Prozesse (z. B. Antivirensoftware) den Zugriff auf den Cacheordner beschränken](#another-process-or-antivirus-software-blocking-access-to-cache-folder).
 
 ### <a name="increase-shadow-copy-storage"></a>Vergrößern des Schattenkopiespeichers
+
 Sicherungsvorgänge können fehlschlagen, wenn der verfügbare Speicherplatz für Schattenkopien nicht ausreicht, um die Datenquelle zu schützen. Um dieses Problem zu beheben, erhöhen Sie mit Vssadmin den Speicherplatz für Schattenkopien auf dem geschützten Volume, wie unten gezeigt:
+
 - Überprüfen Sie an der Eingabeaufforderung mit erhöhten Rechten den aktuellen Speicherplatz für Schattenkopien:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
 - Vergrößern Sie mit dem folgenden Befehl den Speicherplatz für Schattenkopien:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Der Zugriff auf den Cacheordner wird durch einen anderen Prozess oder durch Antivirensoftware blockiert
+
 Wenn Sie auf dem Server Antivirensoftware installiert haben, fügen Sie den Virenscans die erforderlichen Ausschlussregeln für die folgenden Dateien und Ordner hinzu:  
+
 - Ablageordner. Der Standardspeicherort ist „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“.
 - Ordner „Bin“ im Pfad „C:\Programme\Microsoft Azure Recovery Services Agent\Bin“
 - CBengine.exe
 - CSC.exe
 
 ## <a name="common-issues"></a>Häufige Probleme
+
 In diesem Abschnitt werden häufige Fehler beschrieben, die bei der Verwendung des MARS-Agents auftreten können.
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
@@ -221,7 +223,7 @@ Fehlermeldung | Empfohlene Maßnahme |
 -- | --
 Es wurden keine Änderungen in einer Datei gefunden. Dies kann verschiedene Ursachen haben. Wiederholen Sie den Vorgang | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/> - [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409). <br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#pre-requisites).
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Einzelheiten finden Sie unter [Sichern von Windows Server mit dem Azure Backup-Agent](tutorial-backup-windows-server-to-azure.md).
-* Informationen zum Wiederherstellen einer Sicherung finden Sie unter [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).
+
+- Weitere Einzelheiten finden Sie unter [Sichern von Windows Server mit dem Azure Backup-Agent](tutorial-backup-windows-server-to-azure.md).
+- Informationen zum Wiederherstellen einer Sicherung finden Sie unter [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).

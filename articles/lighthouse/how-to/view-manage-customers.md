@@ -4,15 +4,15 @@ description: Als Dienstanbieter, der die delegierte Azure-Ressourcenverwaltung v
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 10/23/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d68ac0a1b6a66482a85f7ab79840099a34c731c2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302743"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615535"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 
@@ -20,7 +20,7 @@ Dienstanbieter, die die [delegierte Azure-Ressourcenverwaltung](../concepts/azur
 
 Um auf die Seite **Meine Kunden** im Azure-Portal zuzugreifen, wählen Sie **Alle Dienste** aus, und suchen Sie dann nach **Meine Kunden**, und wählen Sie es aus. Sie können die Seite auch finden, indem Sie im Suchfeld am oberen Rand des Azure-Portals „Meine Kunden“ eingeben.
 
-Beachten Sie, dass auf der Seite **Meine Kunden** nur Informationen zu Kunden angezeigt werden, die Abonnements oder Ressourcengruppen delegiert haben. Wenn Sie mit anderen Kunden arbeiten (z. B. durch das [CSP-Programm (Programm für Cloud-Lösungsanbieter)](https://docs.microsoft.com/partner-center/csp-overview)), werden hier keine Informationen zu diesen Kunden angezeigt, es sei denn, Sie integrieren deren Ressourcen für die delegierte Ressourcenverwaltung.
+Beachten Sie, dass im obersten Bereich der Seite **Meine Kunden** nur Informationen zu Kunden angezeigt werden, die Abonnements oder Ressourcengruppen delegiert haben. Wenn Sie mit anderen Kunden arbeiten (z. B. durch das [CSP-Programm (Programm für Cloud-Lösungsanbieter)](https://docs.microsoft.com/partner-center/csp-overview)), werden hier keine Informationen zu diesen Kunden angezeigt, es sei denn, Sie integrieren deren Ressourcen für die delegierte Ressourcenverwaltung. Unten auf der Seite werden im Abschnitt **Cloud Solution Provider (Vorschauversion)** Abrechnungsinformationen und Ressourcen für Ihre CSP-Kunden angezeigt, die die [Microsoft-Kundenvereinbarung](https://docs.microsoft.com/partner-center/confirm-customer-agreement) signiert haben und sich im Azure-Plan befinden, unabhängig davon, ob ein Onboarding für die delegierte Azure-Ressourcenverwaltung stattgefunden hat. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung](https://docs.microsoft.com/azure/billing/mpa-overview).
 
 > [!NOTE]
 > Ihre Kunden können Informationen zu Dienstanbietern anzeigen, indem sie im Azure-Portal zu **Dienstanbieter** navigieren. Weitere Informationen finden Sie unter [Anzeigen und Verwalten von Dienstanbietern](view-manage-service-providers.md).
@@ -30,6 +30,9 @@ Beachten Sie, dass auf der Seite **Meine Kunden** nur Informationen zu Kunden an
 Um Kundendetails anzuzeigen, wählen Sie im linken Bereich der Seite **Meine Kunden** die Option **Kunden** aus.
 
 Für jeden Kunden werden der Name des Kunden, die Kunden-ID (Mandanten-ID) und das Angebot, das mit dem Engagement verknüpft ist, angezeigt. In der Spalte **Delegierungen** wird die Anzahl der delegierten Abonnements und/oder die Anzahl der delegierten Ressourcengruppen angezeigt.
+
+> [!IMPORTANT]
+> Um eine Delegierung anzuzeigen, muss den Benutzern im Onboardingprozess die Rolle [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (oder eine andere integrierte Rolle mit Lesezugriff) erteilt worden sein.
 
 Mithilfe von Filtern am oberen Rand der Seite können Sie Ihre Kundeninformationen sortieren und gruppieren oder nach bestimmten Kunden, Angeboten oder Schlüsselwörtern filtern.
 

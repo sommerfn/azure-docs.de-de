@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 9eb283f538759f9591add4b04462de151f2cb014
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376282"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825546"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -36,7 +37,7 @@ Das Dialogfeld **Neues Angebot** wird angezeigt.
 
 ## <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
 
-- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID darf keine Großbuchstaben enthalten und muss alphanumerisch sein (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.  
+- **Angebots-ID:** Eindeutiger Bezeichner für jedes Angebot in Ihrem Konto. Diese ID wird für Kunden in der URL-Adresse für das Marketplace-Angebot und ggf. in Azure Resource Manager-Vorlagen angezeigt. Die Angebots-ID darf keine Großbuchstaben enthalten und muss alphanumerisch sein (Bindestriche und Unterstriche sind zulässig, Leerzeichen jedoch nicht). Sie ist auf 50 Zeichen beschränkt und kann nach der Auswahl von *Erstellen* nicht mehr geändert werden.  
 Beispiel: test-offer-1
 <br>Dies resultiert in der folgenden URL: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`
 
@@ -58,7 +59,7 @@ Die Seite **Angebotsübersicht** enthält Folgendes:
 
 - Das Menü **Angebotsübersicht** enthält eine Liste mit Links zum Ausführen von Vorgängen für das Angebot. Die Liste der Vorgänge ändert sich basierend auf der Auswahl, die Sie für das Angebot vornehmen.  
     - Wenn das Angebot ein Entwurf ist: „Entwurf löschen“ 
-    - Wenn das Angebot live: „Stop sell offer“ (Verkauf des Angebots einstellen) 
+    - Wenn das Angebot live ist: „Stop sell offer“ (Verkauf des Angebots einstellen) 
     - Wenn das Angebot in der Vorschau ist: „Live schalten“ 
     - Wenn keine Bestätigung durch den Herausgeber erfolgt ist: „Veröffentlichung abbrechen“
 
@@ -178,7 +179,8 @@ Klicken Sie auf **Speichern**, nachdem Sie die Angaben in diesen Feldern vorgeno
 Wählen Sie mindestens eine (1) und maximal drei (3) Kategorien zum Gruppieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen aus. Geben Sie in der Angebotsbeschreibung an, wie Ihr Angebot diesen Kategorien entspricht. 
 
 ### <a name="industry"></a>Branche
-Wählen Sie bis zu zwei (2) Branchen, die zum Gruppieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen verwendet werden. Wenn Ihr Angebot nicht für eine bestimmte Branche geeignet ist, wählen Sie keine aus. Geben Sie in der Angebotsbeschreibung an, wie sich Ihr Angebot für die ausgewählten Branchen eignet. 
+
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>App-Version
 Dies ist ein optionales Feld, das im AppSource Marketplace verwendet wird, um die Versionsnummer Ihres Angebots anzugeben. 
@@ -195,7 +197,7 @@ Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=
 
 #### <a name="terms-of-use"></a>Nutzungsbedingungen
 
-Wenn Ihre Lizenzbedingungen vom Standardvertrag abweichen, können Sie hier die eigenen Nutzungsbedingungen eingeben. Sie können in diesem Feld bis zu 10.000 Zeichen Text eingeben. Wenn Ihre Nutzungsbedingungen eine längere Beschreibung erfordern, geben Sie in diesem Feld einen einzelnen URL-Link ein, über den Ihre zusätzlichen Lizenzbedingungen aufgerufen werden können. Er wird für Kunden als aktiver Link angezeigt.
+Wenn Ihre Lizenzbedingungen vom Standardvertrag abweichen, können Sie hier die eigenen Nutzungsbedingungen eingeben. Diese können als Text eingegeben oder als einzelne URL zu Ihren Lizenzbedingungen angegeben werden.
 
 Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können. 
 
@@ -206,7 +208,7 @@ Klicken Sie auf **Speichern**, bevor Sie mit dem nächsten Abschnitt fortfahren!
 Auf der Registerkarte „Angebotsliste“ werden die Sprachen (und Märkte) angezeigt, in denen Ihr Angebot verfügbar ist. Derzeit ist nur der Standort „Englisch (USA)“ verfügbar. Auf dieser Seite werden zudem der Status der sprachspezifischen Liste und das Datum/die Uhrzeit der Hinzufügung angezeigt. Sie müssen für jede Sprache/jeden Markt die Marketplace-Informationen (Angebotsname, Beschreibung, Suchbegriffe usw.) definieren.
 
 > [!NOTE]
-> Die Inhalte der Angebotsliste (z.B. Angebotsbeschreibung, Dokumente, Screenshots, Nutzungsbedingungen und Datenschutzrichtlinien) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur in [nicht englische Sprache] verfügbar.“ Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
+> Die Inhalte der Angebotsliste (z. B. Angebotsbeschreibung, Dokumente, Screenshots, Nutzungsbedingungen und Datenschutzrichtlinien) müssen nicht in englischer Sprache vorliegen, solange die Angebotsbeschreibung mit dem folgenden Satz beginnt: „Diese Anwendung ist nur auf [nicht englische Sprache] verfügbar.“. Es ist auch zulässig, eine *Nützlicher Link-URL* bereitzustellen, um Inhalte in einer anderen Sprache als der in der Angebotsliste verwendeten anzubieten.
 
 ### <a name="offer-listings"></a>Angebotsauflistungen
 
@@ -482,9 +484,9 @@ Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, kli
 Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
-    - *Nicht gestartet*: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - *Unvollständig*: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu dem/den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
-    - *Abgeschlossen*: Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+    - *Nicht gestartet:* Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+    - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu dem/den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
+    - *Abgeschlossen:* Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.
 - Senden Sie dazu das Angebot zur Veröffentlichung, indem Sie auf **Senden** klicken. Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können. Sie müssen zum Partner Center zurückkehren und **Live schalten** auswählen, um das Angebot für eine öffentliche Zielgruppe (oder bei einem privaten Angebot für eine private Zielgruppe) zu veröffentlichen.
 

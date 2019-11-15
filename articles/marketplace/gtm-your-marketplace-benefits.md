@@ -4,19 +4,20 @@ description: Go-To-Market-Dienste – Die Microsoft-Ressourcen, die Herausgeber 
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 6ae761b9558a0d6c1b663c1202bc560382c7b0b6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72752343"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818647"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
-Sie haben im Marketplace veröffentlicht und möchten nun natürlich, dass Ihr Angebot erfolgreich ist. Wir bieten Ihnen die Vorteile Vertrieb, Technik und Marketing, um das Wachstum Ihres Angebots zu beschleunigen.
+Sie haben im Marketplace Ihr Angebot veröffentlicht und hoffen nun, dass es auf Interesse stößt. Wir bieten Ihnen vom Vertrieb über die technische Umsetzung bis hin zum Marketing Vorteile, die Ihrem Angebot schneller zum Erfolg verhelfen können.
 
 Wenn Sie Ihr Angebot veröffentlichen, wird das Marketplace-Prämienteam mit Ihnen gemeinsam an den Ihnen zustehenden Vorteilen arbeiten. Marketplace-Prämienvorteile werden basierend auf Ihrem Engagement im kommerziellen Marketplace und Ihrem Umsatz angesammelt. Je mehr Sie sich engagieren, desto mehr erhalten Sie zurück.
 
@@ -102,7 +103,7 @@ Microsoft behält sich vor, Marketplace-Prämienvorteile für Herausgeber zu wid
 
 Dieses Angebot wird für alle Partner mit einem aktiven Angebot im Azure Marketplace oder bei Microsoft AppSource in englischer Sprache abgewickelt.
 
-Transaktionen, die sich als betrügerisch erweisen, werden nicht zur [Ebene des abgerechneten Umsatzes](https://aka.ms/marketplacepublisherrewards) des Herausgebers gezählt, wie im Abschnitt [List, Trial, Consulting](#list-trial-and-consulting-benefits), im Abschnitt [Vorteile für Transact-Partner](#marketplace-rewards-for-transact-partners) und im [ausführlichen Folienstapel zum Programm](https://aka.ms/marketplacepublisherrewards) beschrieben. Microsoft weist Partner ihre Berechtigungsstufen basierend auf dem tatsächlichen abgerechneten Umsatz zu, nachdem der Betrug entfernt wurde. 
+Transaktionen, die sich als betrügerisch erweisen, werden nicht zur [Ebene des abgerechneten Umsatzes](https://aka.ms/marketplacepublisherrewards) des Herausgebers gezählt, wie im Abschnitt [List, Trial, Consulting](#list-trial-and-consulting-benefits), im Abschnitt [Vorteile für Transact-Partner](#marketplace-rewards-for-transact-partners) und in der [ausführlichen Programmpräsentation](https://aka.ms/marketplacepublisherrewards) beschrieben. Microsoft weist Partner ihre Berechtigungsstufen basierend auf dem tatsächlichen abgerechneten Umsatz zu, nachdem der Betrug entfernt wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

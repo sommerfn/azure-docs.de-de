@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 14290e000d5c6251216a6b0a0fc68c8a0897210a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883404"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824034"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots
 

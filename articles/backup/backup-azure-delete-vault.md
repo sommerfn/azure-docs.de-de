@@ -1,23 +1,22 @@
 ---
 title: Löschen eines Microsoft Azure Backup-Recovery Services-Tresors
-description: In diesem Artikel wird beschrieben, wie Sie einen Microsoft Azure Backup-Recovery Services-Tresor löschen.
+description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Microsoft Azure Backup-Recovery Services-Tresors (MARS) aufheben und diesen dann löschen.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 469d6532449df8327389b8117904b078d9340e5b
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72028277"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747572"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
 In diesem Artikel wird beschrieben, wie Sie einen Microsoft [Azure Backup](backup-overview.md)-Recovery Services-Tresor (MARS) löschen. Außerdem enthält er Anweisungen zum Entfernen von Abhängigkeiten und anschließenden Löschen eines Tresors.
-
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -47,7 +46,6 @@ Ich verfüge über geschützte Elemente in der Cloud (z.B. einen virtuellen IaaS
 Ich verfüge sowohl lokal als auch in der Cloud über geschützte Elemente. | Führen Sie die Schritte in den folgenden Abschnitten in der angegebenen Reihenfolge aus: <br> 1. [Löschen von geschützten Elementen in der Cloud](#delete-protected-items-in-the-cloud)<br> 2. [Löschen von Sicherungselementen über die MARS-Verwaltungskonsole](#delete-backup-items-from-the-mars-management-console) <br> 3. [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console)
 Ich verfüge weder lokal noch in der Cloud über geschützte Elemente, erhalte aber immer noch den „Fehler beim Löschen von Tresor“. | Führen Sie die Schritte unter [Löschen des Recovery Services-Tresors mit Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) aus.
 
-
 ## <a name="delete-protected-items-in-the-cloud"></a>Löschen von geschützten Elementen in der Cloud
 
 Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich mit den Abhängigkeiten und dem Prozess zum Löschen des Tresors vertraut zu machen.
@@ -64,12 +62,12 @@ Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicheru
 
         ![Bereich „Sicherung beenden“](./media/backup-azure-delete-vault/stop-backup-item.png)
 
-    - Wenn der Bereich **Sicherungsdaten löschen** angezeigt wird, geben Sie den Namen des Sicherungselements ein (bei diesem Feld muss die Groß-/Kleinschreibung beachtet werden), und wählen Sie dann im Dropdownmenü einen Grund aus. Geben Sie ggf. Ihre Kommentare ein. Wählen Sie dann **Löschen** aus. 
+    - Wenn der Bereich **Sicherungsdaten löschen** angezeigt wird, geben Sie den Namen des Sicherungselements ein (bei diesem Feld muss die Groß-/Kleinschreibung beachtet werden), und wählen Sie dann im Dropdownmenü einen Grund aus. Geben Sie ggf. Ihre Kommentare ein. Wählen Sie dann **Löschen** aus.
 
          ![Bereich „Sicherungsdaten löschen“](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. Überprüfen Sie das Symbol **Benachrichtigung**: ![Benachrichtigungssymbol](./media/backup-azure-delete-vault/messages.png) Nachdem der Vorgang abgeschlossen ist, zeigt der Dienst die folgende Meldung an: *Sicherung beenden und Sicherungsdaten für „* Sicherungselement *“ löschen*. *Der Vorgang wurde erfolgreich abgeschlossen.*
-6. Wählen Sie im Menü **Sicherungselemente** die Option **Aktualisieren** aus, um sich zu vergewissern, dass das Sicherungselement gelöscht wurde.
+3. Überprüfen Sie das Symbol **Benachrichtigung**: ![Benachrichtigungssymbol](./media/backup-azure-delete-vault/messages.png) Nachdem der Vorgang abgeschlossen ist, zeigt der Dienst die folgende Meldung an: *Sicherung beenden und Sicherungsdaten für „* Sicherungselement *“ löschen*. *Der Vorgang wurde erfolgreich abgeschlossen.*
+4. Wählen Sie im Menü **Sicherungselemente** die Option **Aktualisieren** aus, um sich zu vergewissern, dass das Sicherungselement gelöscht wurde.
 
       ![Seite „Sicherungselemente löschen“](./media/backup-azure-delete-vault/empty-items-list.png)
 
@@ -80,12 +78,11 @@ Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich m
 1. Wählen Sie im Menü des Tresordashboards die Option **Sicherungsinfrastruktur** aus.
 2. Wählen Sie je nach lokalem Szenario eine der folgenden Optionen aus:
 
-      - Wählen Sie für MARS die Option **Geschützte Server** und dann **Azure Backup-Agent** aus. Wählen Sie anschließend den Server aus, den Sie löschen möchten. 
+      - Wählen Sie für MARS die Option **Geschützte Server** und dann **Azure Backup-Agent** aus. Wählen Sie anschließend den Server aus, den Sie löschen möchten.
 
         ![MARS: Auswählen des Tresors zum Öffnen des zugehörigen Dashboards](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
-      - Wählen Sie für MABS oder DPM die Option **Sicherungsverwaltungsserver** aus. Wählen Sie anschließend den Server aus, den Sie löschen möchten. 
-
+      - Wählen Sie für MABS oder DPM die Option **Sicherungsverwaltungsserver** aus. Wählen Sie anschließend den Server aus, den Sie löschen möchten.
 
           ![MABS: Auswählen des Tresors zum Öffnen des zugehörigen Dashboards](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -101,15 +98,13 @@ Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich m
 
 4. Aktivieren Sie das Kontrollkästchen für die Zustimmung, und klicken Sie dann auf **Löschen**.
 
-
 5. Überprüfen Sie das Symbol **Benachrichtigung** ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png). Nach Abschluss des Vorgangs zeigt der Dienst die folgende Meldung an: *Sicherung beenden und Sicherungsdaten für „Sicherungselement“ löschen.* *Der Vorgang wurde erfolgreich abgeschlossen.*
 6. Wählen Sie im Menü **Sicherungselemente** die Option **Aktualisieren** aus, um sich zu vergewissern, dass das Sicherungselement gelöscht wurde.
 
 Nach Abschluss dieses Vorgangs können Sie die Sicherungselemente über die Verwaltungskonsole löschen:
-    
-   - [Löschen von Sicherungselementen über die MARS-Verwaltungskonsole](#delete-backup-items-from-the-mars-management-console)
-    - [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console)
 
+- [Löschen von Sicherungselementen über die MARS-Verwaltungskonsole](#delete-backup-items-from-the-mars-management-console)
+- [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console)
 
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Löschen von Sicherungselementen über die MARS-Verwaltungskonsole
 
@@ -139,11 +134,12 @@ Nachdem Sie die lokalen Sicherungselemente gelöscht haben, führen Sie die näc
 Es gibt zwei Methoden zum Löschen von Sicherungselementen über die MABS-Verwaltungskonsole.
 
 #### <a name="method-1"></a>Methode 1
+
 Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicherungsdaten zu löschen:
 
-1.  Öffnen Sie die DPM-Verwaltungskonsole, und wählen Sie dann auf der Navigationsleiste die Option **Schutz** aus.
-2.  Wählen Sie im Anzeigebereich das Schutzgruppenmitglied aus, das Sie entfernen möchten. Klicken Sie mit der rechten Maustaste, und wählen Sie **Schutz von Gruppenmitgliedern beenden** aus.
-3.  Aktivieren Sie im Dialogfeld **Schutz beenden** das Kontrollkästchen **Geschützte Daten löschen** und anschließend das Kontrollkästchen **Speicher online löschen**. Wählen Sie dann **Schutz beenden** aus.
+1. Öffnen Sie die DPM-Verwaltungskonsole, und wählen Sie dann auf der Navigationsleiste die Option **Schutz** aus.
+2. Wählen Sie im Anzeigebereich das Schutzgruppenmitglied aus, das Sie entfernen möchten. Klicken Sie mit der rechten Maustaste, und wählen Sie **Schutz von Gruppenmitgliedern beenden** aus.
+3. Aktivieren Sie im Dialogfeld **Schutz beenden** das Kontrollkästchen **Geschützte Daten löschen** und anschließend das Kontrollkästchen **Speicher online löschen**. Wählen Sie dann **Schutz beenden** aus.
 
     ![Auswählen von „Geschützte Daten löschen“ im Bereich „Schutz beenden“](./media/backup-azure-delete-vault/delete-storage-online.png)
 
@@ -158,12 +154,12 @@ Führen Sie die folgenden Schritte aus, um den Schutz zu beenden und die Sicheru
     ![Löschen des Onlinespeichers](./media/backup-azure-delete-vault/remove-replica-on-disk-and-online.png)
 
 #### <a name="method-2"></a>Methode 2
+
 Öffnen Sie die **MABS-Verwaltungskonsole**. Deaktivieren Sie unter **Datenschutzmethode auswählen** das Kontrollkästchen **Ich möchte Onlineschutz**.
 
   ![Wählen Sie die Methoden zum Schützen der Daten aus.](./media/backup-azure-delete-vault/data-protection-method.png)
 
 Nachdem Sie die lokalen Sicherungselemente gelöscht haben, führen Sie die nächsten Schritte im Portal aus.
-
 
 ## <a name="delete-the-recovery-services-vault"></a>Löschen des Recovery Services-Tresors
 
@@ -185,71 +181,73 @@ Schutz beenden und Sicherungsdaten löschen:
 - Wenn Sie SQL für die Sicherung von virtuellen Azure-Computern verwenden und den automatischen Schutz für SQL-Instanzen aktiviert haben, deaktivieren Sie zuerst den automatischen Schutz.
 
     ```PowerShell
-        Disable-AzRecoveryServicesBackupAutoProtection 
-           [-InputItem] <ProtectableItemBase> 
-           [-BackupManagementType] <BackupManagementType> 
-           [-WorkloadType] <WorkloadType> 
-           [-PassThru] 
-           [-VaultId <String>] 
-           [-DefaultProfile <IAzureContextContainer>] 
-           [-WhatIf] 
-           [-Confirm] 
-           [<CommonParameters>] 
+        Disable-AzRecoveryServicesBackupAutoProtection
+           [-InputItem] <ProtectableItemBase>
+           [-BackupManagementType] <BackupManagementType>
+           [-WorkloadType] <WorkloadType>
+           [-PassThru]
+           [-VaultId <String>]
+           [-DefaultProfile <IAzureContextContainer>]
+           [-WhatIf]
+           [-Confirm]
+           [<CommonParameters>]
     ```
 
-  [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) zum Deaktivieren des Schutzes für ein mit Azure Backup geschütztes Element 
+  [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) zum Deaktivieren des Schutzes für ein mit Azure Backup geschütztes Element
 
 - Beenden Sie den Schutz, und löschen Sie Daten für alle von der Sicherung geschützten Elemente in der Cloud (z. B. laaS VM, Azure-Dateifreigabe usw.):
 
     ```PowerShell
-       Disable-AzRecoveryServicesBackupProtection 
-       [-Item] <ItemBase> 
-       [-RemoveRecoveryPoints] 
-       [-Force] 
-       [-VaultId <String>] 
-       [-DefaultProfile <IAzureContextContainer>] 
-       [-WhatIf] 
-       [-Confirm] 
-       [<CommonParameters>] 
+       Disable-AzRecoveryServicesBackupProtection
+       [-Item] <ItemBase>
+       [-RemoveRecoveryPoints]
+       [-Force]
+       [-VaultId <String>]
+       [-DefaultProfile <IAzureContextContainer>]
+       [-WhatIf]
+       [-Confirm]
+       [<CommonParameters>]
     ```
-    [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)  zum Deaktivieren des Schutzes für ein mit Backup geschütztes Element. 
+
+    [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)  zum Deaktivieren des Schutzes für ein mit Backup geschütztes Element.
 
 - Verwenden Sie den folgenden PowerShell-Befehl, um lokale Dateien und Ordner, die mithilfe des Azure Backup-Agent (MARS) in Azure gesichert werden, die gesicherten Daten von den einzelnen MARS-PowerShell-Modulen zu löschen:
 
-    ```
+    ```powershell
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
     Anschließend wird die folgende Eingabeaufforderung angezeigt:
-     
+
     *Microsoft Azure Backup: Möchten Sie diese Sicherungsrichtlinie wirklich entfernen? Gelöschte Sicherungsdaten werden 14 Tage lang aufbewahrt. Nach diesem Zeitpunkt werden Sicherungsdaten dauerhaft gelöscht. <br/> [J] Ja [A] Ja, alle [N] Nein [L] Nein für alle [S] Anhalten [?] Hilfe (Standard ist „J“):*
 
+- Für lokale Computer, die per MABS (Microsoft Azure Backup Server) oder DPM (System Center Data Protection Manager) in Azure geschützt sind, verwenden Sie den folgenden Befehl, um die gesicherten Daten in Azure zu löschen.
 
-- Für lokale Computer, die per MABS (Microsoft Azure Backup Server) oder DPM in Azure (System Center Data Protection Manager) geschützt sind, verwenden Sie den folgenden Befehl, um die gesicherten Daten in Azure zu löschen.
-
+    ```powershell
+    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
-    Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin> 
-    ```
 
-    Anschließend wird die folgende Eingabeaufforderung angezeigt: 
-         
-   *Microsoft Azure Backup: Möchten Sie diese Sicherungsrichtlinie wirklich entfernen? Gelöschte Sicherungsdaten werden 14 Tage lang aufbewahrt. Nach diesem Zeitpunkt werden Sicherungsdaten dauerhaft gelöscht. <br/> [J] Ja [A] Ja, alle [N] Nein [L] Nein für alle [S] Anhalten [?] Hilfe (Standard ist „J“):*
+    Anschließend wird die folgende Eingabeaufforderung angezeigt:
 
-Nachdem Sie die gesicherten Daten gelöscht haben, heben Sie die Registrierung für lokale Container und Verwaltungsserver auf. 
+   *Microsoft Azure Backup:* Möchten Sie diese Sicherungsrichtlinie wirklich entfernen? Gelöschte Sicherungsdaten werden 14 Tage lang aufbewahrt. Danach werden Sicherungsdaten dauerhaft gelöscht. <br/>
+   [J] Ja [A] Ja, alle [N] Nein [L] Nein für alle [S] Anhalten [?] Hilfe (Standardeinstellung ist „J“):*
+
+Nachdem Sie die gesicherten Daten gelöscht haben, heben Sie die Registrierung für lokale Container und Verwaltungsserver auf.
 
 - Für lokale Dateien und Ordner, die per Azure Backup-Agent (MARS) geschützt sind und in Azure gesichert werden:
 
     ```PowerShell
-    Unregister-AzRecoveryServicesBackupContainer 
-              [-Container] <ContainerBase> 
-              [-PassThru] 
-              [-VaultId <String>] 
-              [-DefaultProfile <IAzureContextContainer>] 
-              [-WhatIf] 
-              [-Confirm] 
-              [<CommonParameters>] 
+    Unregister-AzRecoveryServicesBackupContainer
+              [-Container] <ContainerBase>
+              [-PassThru]
+              [-VaultId <String>]
+              [-DefaultProfile <IAzureContextContainer>]
+              [-WhatIf]
+              [-Confirm]
+              [<CommonParameters>]
     ```
-    [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) zum Aufheben der Registrierung eines Windows-Servers oder eines anderen Containers aus dem Tresor. 
+
+    [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) zum Aufheben der Registrierung eines Windows-Servers oder eines anderen Containers aus dem Tresor.
 
 - Für lokale Computer, die per MABS (Microsoft Azure Backup Server) oder DPM in Azure (System Center Data Protection Manager) geschützt sind:
 
@@ -266,57 +264,57 @@ Nachdem Sie die gesicherten Daten gelöscht haben, heben Sie die Registrierung f
 
     [Weitere Informationen](https://docs.microsoft.com/powershell/module/az.recoveryservices/unregister-azrecoveryservicesbackupcontainer?view=azps-2.6.0) zum Aufheben der Registrierung eines Sicherungsverwaltungscontainers aus dem Tresor.
 
-Nachdem Sie die gesicherten Daten dauerhaft gelöscht und die Registrierung aller Container aufgehoben haben, fahren Sie mit dem Löschen des Tresors fort. 
+Nachdem Sie die gesicherten Daten dauerhaft gelöscht und die Registrierung aller Container aufgehoben haben, fahren Sie mit dem Löschen des Tresors fort.
 
-So löschen Sie einen Recovery Services-Tresor: 
+So löschen Sie einen Recovery Services-Tresor:
 
    ```PowerShell
-       Remove-AzRecoveryServicesVault 
-      -Vault <ARSVault> 
-      [-DefaultProfile <IAzureContextContainer>] 
-      [-WhatIf] 
-      [-Confirm] 
-      [<CommonParameters>]        
+       Remove-AzRecoveryServicesVault
+      -Vault <ARSVault>
+      [-DefaultProfile <IAzureContextContainer>]
+      [-WhatIf]
+      [-Confirm]
+      [<CommonParameters>]
    ```
 
-[Erfahren Sie mehr](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) über das Löschen eines Recovery Services-Tresors. 
+[Erfahren Sie mehr](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) über das Löschen eines Recovery Services-Tresors.
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>Löschen des Recovery Services-Tresors mithilfe der CLI
 
 Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich mit den Abhängigkeiten und dem Prozess zum Löschen des Tresors vertraut zu machen.
 
 > [!NOTE]
-> Zurzeit unterstützt Azure Backup CLI nur die Verwaltung von Azure-VM-Sicherungen, sodass der folgende Befehl zum Löschen des Tresors nur dann funktioniert, wenn der Tresor Sicherungen virtueller Azure-Computer enthält. Sie können einen Tresor nicht mithilfe der Azure Backup CLI löschen, wenn der Tresor ein Sicherungselement eines anderen Typs als Azure-VMs enthält. 
+> Zurzeit unterstützt Azure Backup CLI nur die Verwaltung von Azure-VM-Sicherungen, sodass der folgende Befehl zum Löschen des Tresors nur dann funktioniert, wenn der Tresor Sicherungen virtueller Azure-Computer enthält. Sie können einen Tresor nicht mithilfe der Azure Backup CLI löschen, wenn der Tresor ein Sicherungselement eines anderen Typs als Azure-VMs enthält.
 
-Führen Sie die folgenden Schritte aus, um den vorhandenen Recovery Services-Tresor zu löschen: 
+Führen Sie die folgenden Schritte aus, um den vorhandenen Recovery Services-Tresor zu löschen:
 
-- Schutz beenden und Sicherungsdaten löschen 
-
-    ```CLI
-    az backup protection disable --container-name 
-                             --item-name 
-                             [--delete-backup-data {false, true}] 
-                             [--ids] 
-                             [--resource-group] 
-                             [--subscription] 
-                             [--vault-name] 
-                             [--yes] 
-    ```
-
-    Weitere Informationen finden Sie in diesem  [Artikel](/cli/azure/backup/protection#az-backup-protection-disable). 
-
-- Löschen eines vorhandenen Recovery Services-Tresors: 
+- Schutz beenden und Sicherungsdaten löschen
 
     ```CLI
-    az backup vault delete [--force] 
-                       [--ids] 
-                       [--name] 
-                       [--resource-group] 
-                       [--subscription] 
-                       [--yes] 
+    az backup protection disable --container-name
+                             --item-name
+                             [--delete-backup-data {false, true}]
+                             [--ids]
+                             [--resource-group]
+                             [--subscription]
+                             [--vault-name]
+                             [--yes]
     ```
 
-    Weitere Informationen finden Sie in diesem  [Artikel](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest). 
+    Weitere Informationen finden Sie in  [diesem Artikel](/cli/azure/backup/protection#az-backup-protection-disable).
+
+- Löschen eines vorhandenen Recovery Services-Tresors:
+
+    ```CLI
+    az backup vault delete [--force]
+                       [--ids]
+                       [--name]
+                       [--resource-group]
+                       [--subscription]
+                       [--yes]
+    ```
+
+    Weitere Informationen finden Sie in  [diesem Artikel](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest).
 
 ## <a name="delete-the-recovery-services-vault-by-using-azure-resource-manager"></a>Löschen des Recovery Services-Tresors mit Azure Resource Manager
 
@@ -344,6 +342,7 @@ Weitere Informationen zum ARMClient-Befehl finden Sie unter [ARMClient README](h
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
+
 2. Ist der Tresor nicht leer, erhalten Sie die folgende Fehlermeldung: *Der Tresor kann nicht gelöscht werden, weil sich im Tresor vorhandene Ressourcen befinden.* Führen Sie den folgenden Befehl aus, um in einem Tresor enthaltene geschützte Elemente oder Container zu entfernen:
 
    ```azurepowershell
@@ -351,7 +350,6 @@ Weitere Informationen zum ARMClient-Befehl finden Sie unter [ARMClient README](h
    ```
 
 3. Vergewissern Sie sich im Azure-Portal, dass der Tresor gelöscht wurde.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

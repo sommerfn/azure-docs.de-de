@@ -7,22 +7,22 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: overview
-ms.date: 08/31/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 62ca71e1b42e000f7528a2963793f9bf40663bf3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312142"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818504"
 ---
-# <a name="entity-functions-preview"></a>Entitätsfunktionen (Vorschauversion)
+# <a name="entity-functions"></a>Entitätsfunktionen
 
 Entitätsfunktionen definieren Vorgänge zum Lesen und Aktualisieren kleinerer Zustandsteile, bekannt als *dauerhafte Entitäten*. Wie Orchestratorfunktionen besitzen Entitätsfunktionen einen speziellen Triggertyp, den *Entitätstrigger*. Im Gegensatz zu Orchestratorfunktionen stellen Entitätsfunktionen den Zustand nicht über eine Ablaufsteuerung dar, sondern verwalten den Zustand einer Entität explizit.
 Anwendungen können mithilfe von Entitäten erweitert werden, indem die Arbeit auf zahlreiche Entitäten verteilt wird, deren Zustand jeweils eine bescheidene Größe aufweist.
 
 > [!NOTE]
-> Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar. Entitätsfunktionen befinden sich momentan in der Public Preview-Phase.
+> Entitätsfunktionen und zugehörige Funktionen sind nur in Durable Functions 2.0 und höher verfügbar.
 
 ## <a name="general-concepts"></a>Allgemeine Konzepte
 
@@ -58,7 +58,7 @@ Eine **funktionsbasierte Syntax**, bei der Entitäten als Funktionen dargestellt
 
 Eine **klassenbasierte Syntax**, bei der Entitäten und Vorgänge durch Klassen und Methoden dargestellt werden. Bei dieser Syntax ist der Code besser lesbar, und Vorgänge können typsicher aufgerufen werden. Da es sich bei der klassenbasierten Syntax lediglich um eine dünne Schicht über der funktionsbasierten Syntax handelt, können beide Varianten in der gleichen Anwendung verwendet werden.
 
-### <a name="example-function-based-syntax"></a>Beispiel: Funktionsbasierte Syntax
+### <a name="example-function-based-syntax---c"></a>Beispiel: Funktionsbasierte Syntax – C#
 
 Der folgende Code ist ein Beispiel für eine einfache Entität vom Typ *Counter*, die als dauerhafte Funktion implementiert wird. Diese Funktion definiert drei Vorgänge (`add`, `reset` und `get`), die jeweils auf einem ganzzahligen Zustand basieren.
 
@@ -75,7 +75,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
             ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(ctx.GetState<int>()));
+            ctx.Return(ctx.GetState<int>());
             break;
     }
 }
@@ -83,7 +83,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 Weitere Informationen zur funktionsbasierten Syntax sowie zu deren Verwendung finden Sie unter [Funktionsbasierte Syntax](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax"></a>Beispiel: Klassenbasierte Syntax
+### <a name="example-class-based-syntax---c"></a>Beispiel: Klassenbasierte Syntax – C#
 
 Beim folgenden Beispiel handelt es sich um eine äquivalente Implementierung der Entität `Counter` unter Verwendung von Klassen und Methoden:
 
@@ -109,6 +109,45 @@ public class Counter
 Der Zustand dieser Entität ist ein Objekt vom Typ `Counter`. Dieses enthält ein Feld, in dem der aktuelle Wert des Zählers gespeichert wird. Um dieses Objekt dauerhaft im Speicher aufzubewahren, wird es von der Bibliothek [Json.NET](https://www.newtonsoft.com/json) serialisiert und deserialisiert. 
 
 Weitere Informationen zur klassenbasierten Syntax sowie zu deren Verwendung finden Sie unter [Definieren von Entitätsklassen](durable-functions-dotnet-entities.md#defining-entity-classes).
+
+### <a name="example-javascript-entity"></a>Beispiel: JavaScript-Entität
+
+Dauerhafte Entitäten sind ab JavaScript-Version **1.3.0** des `durable-functions`-npm-Pakets verfügbar. Der folgende Code ist die Entität *Counter*, implementiert als dauerhafte Funktion in JavaScript.
+
+**function.json**
+```json
+{
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+**index.js**
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
 
 ## <a name="accessing-entities"></a>Zugreifen auf Entitäten
 
@@ -145,6 +184,16 @@ public static Task Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    await context.df.signalEntity(entityId, "add", 1);
+};
+```
+
 *Signalisierung* bedeutet, dass der Entitäts-API-Aufruf unidirektional und asynchron ist. Einer *Clientfunktion* ist nicht bekannt, wann der Vorgang durch die Entität verarbeitet wurde. Außerdem kann die Clientfunktion keine Ergebniswerte oder Ausnahmen berücksichtigen. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Beispiel: Client liest einen Entitätszustand
@@ -163,6 +212,16 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+```javascript
+const df = require("durable-functions");
+
+module.exports = async function (context) {
+    const client = df.getClient(context);
+    const entityId = new df.EntityId("Counter", "myCounter");
+    return context.df.readEntityState(entityId);
+};
+```
+
 Entitätszustandsabfragen werden an den dauerhaften Nachverfolgungsspeicher gesendet und geben den zuletzt *gespeicherten* Zustand der Entität zurück. Dieser Zustand ist immer ein committeter Zustand. Anders ausgedrückt: Hierbei handelt es sich niemals um einen temporären Übergangszustand während der Vorgangsausführung. Es kann jedoch sein, dass dieser Zustand im Vergleich zum In-Memory-Zustand der Entität veraltet ist. Der In-Memory-Zustand einer Entität kann nur von Orchestrierungen gelesen werden, wie im folgenden Abschnitt beschrieben.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Beispiel: Orchestrierung signalisiert eine Entität und ruft sie auf
@@ -176,7 +235,7 @@ public static async Task Run(
 {
     var entityId = new EntityId(nameof(Counter), "myCounter");
 
-   // Two-way call to the entity which returns a value - awaits the response
+    // Two-way call to the entity which returns a value - awaits the response
     int currentValue = await context.CallEntityAsync<int>(entityId, "Get");
     if (currentValue < 10)
     {
@@ -184,6 +243,21 @@ public static async Task Run(
         context.SignalEntity(entityId, "Add", 1);
     }
 }
+```
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const entityId = new df.EntityId("Counter", "myCounter");
+
+    // Two-way call to the entity which returns a value - awaits the response
+    currentValue = yield context.df.callEntity(entityId, "get");
+    if (currentValue < 10) {
+        // One-way signal to the entity which updates the value - does not await a response
+        yield context.df.signalEntity(entityId, "add", 1);
+    }
+});
 ```
 
 Nur Orchestrierungen können Entitäten aufrufen und eine Antwort erhalten. Dabei kann es sich entweder um einen Rückgabewert oder um eine Ausnahme handeln. Clientfunktionen, von denen die [Clientbindung](durable-functions-bindings.md#entity-client) verwendet wird, können Entitäten nur *signalisieren*.
@@ -198,82 +272,33 @@ Das obige Beispiel mit der Counter-Entität kann beispielsweise so angepasst wer
 
 ```csharp
    case "add":
+        var currentValue = ctx.GetState<int>();
         var amount = ctx.GetInput<int>();
         if (currentValue < 100 && currentValue + amount >= 100)
         {
             ctx.SignalEntity(new EntityId("MonitorEntity", ""), "milestone-reached", ctx.EntityKey);
         }
-        currentValue += amount;
+
+        ctx.SetState(currentValue + amount);
         break;
 ```
 
-Der folgende Codeausschnitt zeigt die Integration des eingefügten Diensts in Ihre Entitätsklasse:
-
-```csharp
-public class HttpEntity
-{
-    private readonly HttpClient client;
-
-    public HttpEntity(IHttpClientFactory factory)
-    {
-        this.client = factory.CreateClient();
-    }
-
-    public async Task<int> GetAsync(string url)
-    {
-        using (var response = await this.client.GetAsync(url))
-        {
-            return (int)response.StatusCode;
+```javascript
+    case "add":
+        const amount = context.df.getInput();
+        if (currentValue < 100 && currentValue + amount >= 100) {
+            const entityId = new df.EntityId("MonitorEntity", "");
+            context.df.signalEntity(entityId, "milestone-reached", context.df.instanceId);
         }
-    }
-
-    // The function entry point must be declared static
-    [FunctionName(nameof(HttpEntity))]
-    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
-        => ctx.DispatchAsync<HttpEntity>();
-}
+        context.df.setState(currentValue + amount);
+        break;
 ```
-
-> [!NOTE]
-> Anders als bei Verwendung der Konstruktorinjektion in regulären .NET-Azure-Funktionen *muss* die Funktionseinstiegspunkt-Methode für klassenbasierte Entitäten als `static` deklariert werden. Wenn Sie einen nicht statischen Funktionseinstiegspunkt deklarieren, kommt es unter Umständen zu Konflikten zwischen dem normalen Azure Functions-Objektinitialisierer und dem Durable Entities-Objektinitialisierer.
-
-### <a name="bindings-in-entity-classes-net"></a>Bindungen in Entitätsklassen (.NET)
-
-Im Gegensatz zu regulären Funktionen haben Entitätsklassenmethoden keinen direkten Zugriff auf Eingabe- und Ausgabebindungen. Stattdessen müssen Bindungsdaten in der Einstiegspunkt-Funktionsdeklaration erfasst und anschließend an die Methode `DispatchAsync<T>` übergeben werden. Alle an `DispatchAsync<T>` übergebenen Objekte werden automatisch als Argument an den Entitätsklassenkonstruktor übergeben.
-
-Im folgenden Beispiel wird gezeigt, wie ein Verweis vom Typ `CloudBlobContainer` aus der [Blobeingabebindung](../functions-bindings-storage-blob.md#input) für eine klassenbasierte Entität verfügbar gemacht werden kann.
-
-```csharp
-public class BlobBackedEntity
-{
-    private readonly CloudBlobContainer container;
-
-    public BlobBackedEntity(CloudBlobContainer container)
-    {
-        this.container = container;
-    }
-
-    // ... entity methods can use this.container in their implementations ...
-    
-    [FunctionName(nameof(BlobBackedEntity))]
-    public static Task Run(
-        [EntityTrigger] IDurableEntityContext context,
-        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
-    {
-        // passing the binding object as a parameter makes it available to the
-        // entity class constructor
-        return context.DispatchAsync<BlobBackedEntity>(container);
-    }
-}
-```
-
-Weitere Informationen zu Bindungen in Azure Functions finden Sie in der Dokumentation [Konzepte für Azure Functions-Trigger und -Bindungen](../functions-triggers-bindings.md).
 
 ## <a name="entity-coordination"></a>Koordination von Entitäten
 
 Manchmal müssen Vorgänge über mehrere Entitäten hinweg koordiniert werden. Eine Bankinganwendung kann beispielsweise Entitäten enthalten, die einzelne Bankkonten darstellen. Wenn Sie Geld von einem Konto auf ein anderes überweisen, muss sichergestellt sein, dass auf dem _Quellkonto_ genügend Guthaben vorhanden ist und dass Aktualisierungen für das _Quellkonto_ und das _Zielkonto_ transaktionskonsistent erfolgen.
 
-### <a name="example-transfer-funds"></a>Beispiel: Überweisung
+### <a name="example-transfer-funds-c"></a>Beispiel: Überweisung (C#)
 
 Der folgende Beispielcode führt eine Überweisung zwischen zwei _Kontoentitäten_ unter Verwendung einer Orchestratorfunktion durch. Für die Koordinierung von Entitätsaktualisierungen muss mithilfe der Methode `LockAsync` ein _kritischer Abschnitt_ in der Orchestrierung erstellt werden:
 
@@ -322,7 +347,7 @@ public static async Task<bool> TransferFundsAsync(
 
 In .NET gibt `LockAsync` ein Ergebnis vom Typ `IDisposable` zurück, das den kritischen Abschnitt beim Verwerfen beendet. Dieses Ergebnis vom Typ `IDisposable` kann zusammen mit einem Block vom Typ `using` verwendet werden, um eine syntaktische Darstellung des kritischen Abschnitts zu erhalten.
 
-Im vorherigen Beispiel wurde mithilfe einer Orchestratorfunktion eine Überweisung von einer _Quellentität_ zu einer _Zielentität_ getätigt. Die Methode `LockAsync` hat sowohl die _Quellkontoentität_ als auch die _Zielkontoentität_ gesperrt. Diese Sperrung sorgt dafür, dass kein anderer Client den Zustand der Konten abfragen oder ändern kann, bis die Orchestrierungslogik den _kritischen Abschnitt_ am Ende der Anweisung `using` verlassen hat. Dadurch wurde effektiv eine Überziehung des _Quellkontos_ verhindert.
+Im vorherigen Beispiel wurde mithilfe einer Orchestratorfunktion eine Überweisung von einer _Quellentität_ zu einer _Zielentität_ getätigt. Die Methode `LockAsync` hat sowohl die _Quellkontoentität_ als auch die _Zielkontoentität_ gesperrt. Diese Sperrung sorgt dafür, dass kein anderer Client den Zustand der Konten abfragen oder ändern kann, bis die Orchestrierungslogik den _kritischen Abschnitt_ am Ende der Anweisung `using` verlassen hat. Durch dieses Verhalten wird eine Überziehung des _Quellkontos_ verhindert.
 
 > [!NOTE] 
 > Wenn eine Orchestrierung beendet wird (entweder normal oder mit einem Fehler), werden alle kritischen Abschnitte, die noch aktiv sind, implizit beendet und alle Sperren aufgehoben.

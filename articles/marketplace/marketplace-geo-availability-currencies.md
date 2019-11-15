@@ -4,19 +4,20 @@ description: Geografische Verfügbarkeit in Azure Marketplace und AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 344479a270119137a256620304d88f139d0b0322
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619970"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822952"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografische Verfügbarkeit und Unterstützung von Währungen
 
-Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen abgeschlossen werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
+Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen durchgeführt werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
 
 |   Name des Landes/der Region               |   ISO-2   |   Currency   |
 |-------------------------------------|-----------|--------------|

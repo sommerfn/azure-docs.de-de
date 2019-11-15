@@ -4,15 +4,16 @@ description: Übersicht über die Nachverfolgung der Kundennutzung für Azure Ma
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c84f5538d2f553a713b52aa795a10acddac9aff8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260083"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819887"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -127,7 +128,7 @@ Weitere Informationen finden Sie unter [Azure SDK für Go](https://docs.microsof
 
 ## <a name="use-terraform"></a>Einsatz von Terraform
 
-Terraform wird seit dem Release 1.21.0 für Azure-Anbieter unterstützt: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Diese Unterstützung gilt für alle Partner, die ihre Lösungen über Terraform bereitstellen, sowie für alle bereitgestellten und vom Azure-Anbieter (Version 1.21.0 oder höher) abgerechneten Ressourcen.
+Terraform wird seit dem Release 1.21.0 für Azure-Anbieter unterstützt: [https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019](https://github.com/terraform-providers/terraform-provider-azurerm/blob/master/CHANGELOG.md#1210-january-11-2019).  Diese Unterstützung gilt für alle Partner, die ihre Lösungen über Terraform bereitstellen, sowie für alle bereitgestellten und vom Azure-Anbieter (Version 1.21.0 oder höher) abgerechneten Ressourcen.
 
 Im Azure-Anbieter für Terraform wurde ein neues optionales Feld namens [*partner_id*](https://www.terraform.io/docs/providers/azurerm/#partner_id) hinzugefügt, über das Sie die für die Lösung verwendete GUID nachverfolgen können. Der Wert dieses Feld kann zudem aus der Umgebungsvariable *ARM_PARTNER_ID* abgerufen werden.
 
@@ -137,7 +138,7 @@ provider "azurerm" {
           client_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           ……
           # new stuff for ISV attribution
-          partner_id = “xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
+          partner_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
 Partner, die Ihre Terraform-Bereitstellung durch die Zuordnung der Nutzung durch Kunden nachverfolgen möchten, müssen folgende Schritte durchführen:
 

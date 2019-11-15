@@ -1,6 +1,6 @@
 ---
-title: 'Senden von Ereignissen unter Verwendung von C: Azure Event Hubs | Microsoft-Dokumentation'
-description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer C-Anwendung, die Ereignisse an Azure Event Hubs sendet.
+title: 'Schnellstart: Senden von Ereignissen mit C – Azure Event Hubs'
+description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer C-Anwendung, die Ereignisse an Azure Event Hubs sendet.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: a8f647018ba6ed3c9e951db2054036b60c7d4ab5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822472"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720663"
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von C
+# <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Schnellstart: Senden von Ereignissen an Azure Event Hubs mithilfe von C
 
 ## <a name="introduction"></a>Einführung
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).

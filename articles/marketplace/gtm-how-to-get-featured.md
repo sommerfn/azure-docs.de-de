@@ -4,15 +4,16 @@ description: Markteinführungsdienste – In diesem Abschnitt wird beschrieben, 
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: a99237ec52d302dbb7fc3914c6abfff5fecf4523
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 12dcdff082ce1bac350d0e3a426df6acec6efe99
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962755"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819018"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>So präsentieren Sie sich in AppSource und im Marketplace
 
@@ -21,13 +22,13 @@ Azure Marketplace und AppSource verfügen über Abschnitte für **ausgewählte A
 * Erstens: Wenn Sie über ein TEST- oder TRANSAKTIONSANGEBOT verfügen, können Sie Ihren Vorteil der „Kategoriehöherstufung“ durch [Vorteile des kommerziellen Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits) nutzen.
 * Zweitens: Schauen Sie sich unten die Liste der bewährten Methoden und Kriterien an, um einen Platz zu erhalten.
 
-Der „Ausgewählte Apps“-Auswahlalgorithmus erzeugt eine Punktzahl von Microsoft für eine App, ganz ähnlich der Kreditwürdigkeit einer Person in den USA.  Die wöchentliche Auswahl der ausgewählten Apps basiert auf der Berechnung der Leistung von App und Dienst.
+Der Auswahlalgorithmus für „Ausgewählte Apps“ erzeugt eine Punktzahl von Microsoft für eine App, ganz ähnlich der Kreditwürdigkeit einer Person in den USA.  Die wöchentliche Auswahl der ausgewählten Apps basiert auf der Berechnung der Leistung von App und Dienst.
 
 ## <a name="steps-to-take"></a>Erforderliche Schritte
 
 Sie können die folgenden Maßnahmen ergreifen, um Ihre Punktzahl zu verbessern:
 
-1. *Stellen Sie sicher, dass Ihre App oder Ihr Dienst angemessen kategorisiert ist*: Wählen Sie drei Kategorien aus, die die Funktionen Ihrer App oder Ihres Diensts repräsentieren.
+1. *Stellen Sie sicher, dass Ihre App oder Ihr Dienst angemessen kategorisiert ist*: Wählen Sie drei Kategorien aus, die die Funktionen Ihrer App oder Ihres Diensts darstellen.
 2. *Azure Marketplace-Apps: Steigern Sie Ihren Azure-Verbrauch von Monat zu Monat.* Wenn Sie 1.000 Stunden Azure-Verbrauch pro Monat erreichen können, werden Ihre Chancen, vorgestellt zu werden, erheblich steigen.
 3. *AppSource-Apps: Erhöhen Sie die Akquisitionen für Ihr Angebot.* Wenn Sie in der Lage sind, 10 Akquisitionen pro Monat zu erzielen, werden Ihre Chancen, vorgestellt zu werden, erheblich steigen. 
 4. *Erreichen Sie den Co-Selling-Status*: Erfüllen Sie die Anforderungen für IP-Co-Selling.

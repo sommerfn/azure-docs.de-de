@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: b92975e3fe73fb1c882bdfc4338fd8e169728e8b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 58eb5abc9a8857b81ada65c96eb7deaaa5cc5aeb
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387649"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622670"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
 
@@ -312,6 +312,6 @@ Im Beispiel [Auflisten virtueller Computer mit deren Netzwerkschnittstelle und d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abfragesprache](query-language.md)
+- Erfahren Sie mehr über die [Abfragesprache](query-language.md).
 - Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](../samples/starter.md).
 - Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](../samples/advanced.md).

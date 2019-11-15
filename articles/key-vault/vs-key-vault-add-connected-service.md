@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 27c21171c2a53cb739215dcae070b94c8610a490
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880913"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815117"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -33,7 +33,7 @@ Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in 
 
 Vergewissern Sie sich zunächst, dass Sie bei Visual Studio angemeldet sind. Melden Sie sich mit dem gleichen Konto an, das Sie auch für Ihr Azure-Abonnement verwenden. Öffnen Sie dann ein Webprojekt (ASP.NET 4.7.1 oder höher oder ASP.NET Core 2.0), und führen Sie die folgenden Schritte aus:
 
-1. Wählen Sie im **Projektmappen-Explorer** die Option **Hinzufügen** > **Verbundener Dienst** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, dem Sie die Schlüsseltresorunterstützung hinzufügen möchten, und wählen Sie **Hinzufügen** > **Verbundener Dienst** aus.
    Die Seite „Verbundener Dienst“ wird mit den Diensten angezeigt, die Sie dem Projekt hinzufügen können.
 1. Wählen Sie im Menü der verfügbaren Dienste **Schutz für Geheimnisse mit Azure Key Vault**.
 

@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure SQL-Datenbanken mit Azure Automation | Microsoft-Dokumentation
+title: Verwalten von Datenbanken mit Azure Automation
 description: Erfahren Sie, wie der Azure Automation-Dienst zur angemessenen Verwaltung von Azure SQL-Datenbanken verwendet werden kann.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: bb195d5809ef0e2af2a4975a263a9739db1cdfa6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9d826a75f05cf2031565f89e21d7f3667ecc8f17
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567735"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822808"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Verwalten von Azure SQL-Datenbanken mit Azure Automation
 

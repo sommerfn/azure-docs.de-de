@@ -8,13 +8,13 @@ keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 10/28/2019
+ms.openlocfilehash: 8b914b8ffe995cf31f8a22b6f80250431facc770
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104424"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682235"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
 
@@ -24,7 +24,7 @@ Hadoop erzielt Hochverfügbarkeit und Zuverlässigkeit durch das Replizieren von
 
 ## <a name="availability-and-reliability-of-nodes"></a>Verfügbarkeit und Zuverlässigkeit von Knoten
 
-Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden. 
+Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern implementiert. In den folgenden Abschnitten werden die einzelnen Arten von Knoten erläutert, die mit HDInsight verwendet werden.
 
 > [!NOTE]  
 > Es werden nicht alle Knotentypen für alle Clustertypen verwendet. Ein Hadoop-Cluster weist z.B. keine Nimbusknoten auf. Weitere Informationen zu den von den HDInsight-Clustertypen verwendeten Knoten finden Sie im Dokument [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) im Abschnitt „Clustertypen“.
@@ -52,7 +52,7 @@ Workerknoten führen die eigentliche Analyse aus, wenn ein Auftrag an den Cluste
 
 ### <a name="edge-node"></a>Edgeknoten
 
-Ein Edgeknoten nimmt nicht aktiv an der Datenanalyse innerhalb des Clusters teil. Er wird von Entwicklern oder Datenspezialisten bei der Arbeit mit Hadoop verwendet. Der Edgeknoten befindet sich im gleichen virtuellen Azure-Netzwerk wie die anderen Knoten im Cluster und kann direkt auf alle anderen Knoten zugreifen. Der Edgeknoten kann verwendet werden, ohne dass er Ressourcen von wichtigen Hadoop-Diensten oder Analyseaufträgen verbraucht.
+Ein Edgeknoten nimmt nicht aktiv an der Datenanalyse innerhalb des Clusters teil. Er wird von Entwicklern oder Data Scientists bei der Arbeit mit Hadoop verwendet. Der Edgeknoten befindet sich im gleichen virtuellen Azure-Netzwerk wie die anderen Knoten im Cluster und kann direkt auf alle anderen Knoten zugreifen. Der Edgeknoten kann verwendet werden, ohne dass er Ressourcen von wichtigen Hadoop-Diensten oder Analyseaufträgen verbraucht.
 
 Zurzeit ist ML Services in HDInsight der einzige Clustertyp, der standardmäßig einen Edgeknoten bereitstellt. Für ML Services in HDInsight wird der Edgeknoten verwendet, um R-Code lokal auf dem Knoten zu testen, bevor er zur verteilten Verarbeitung an den Cluster übermittelt wird.
 
@@ -60,15 +60,15 @@ Informationen zur Verwendung eines Edgeknotens mit anderen Clustertypen finden S
 
 ## <a name="accessing-the-nodes"></a>Zugreifen auf die Knoten
 
-Zugriff auf den Cluster über das Internet ist über ein öffentliches Gateway möglich. Der Zugriff ist auf das Herstellen einer Verbindung mit den Hauptknoten und (falls vorhanden) dem Edgeknoten beschränkt. Der Zugriff auf Dienste, die auf den Hauptknoten ausgeführt werden, wird durch das Vorhandensein mehrerer Hauptknoten nicht beeinflusst. Das öffentliche Gateway leitet Anforderungen an den Hauptknoten, der den angeforderten Dienst hostet. Ein Beispiel: Apache Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
+Zugriff auf den Cluster über das Internet ist über ein öffentliches Gateway möglich. Der Zugriff ist auf das Herstellen einer Verbindung mit den Hauptknoten und ggf. dem Edgeknoten beschränkt. Der Zugriff auf Dienste, die auf den Hauptknoten ausgeführt werden, wird durch das Vorhandensein mehrerer Hauptknoten nicht beeinflusst. Das öffentliche Gateway leitet Anforderungen an den Hauptknoten, der den angeforderten Dienst hostet. Ein Beispiel: Apache Ambari wird zurzeit auf dem sekundären Hauptknoten gehostet, und das Gateway leitet eingehende Anforderungen für Ambari an diesen Knoten weiter.
 
-Der Zugriff über das öffentliche Gateway ist auf die Ports 443 (HTTPS), 22 und 23 beschränkt.
+Der Zugriff über das öffentliche Gateway ist auf die Ports 443 (HTTPS), 22 und 23 beschränkt.
 
-* Port __443__ wird für den Zugriff auf Ambari und andere Webbenutzeroberflächen oder REST-APIs verwendet, die auf dem Hauptknoten gehostet werden.
-
-* Port __22__ wird für den Zugriff auf den primären Hauptknoten oder den Edgeknoten mit SSH verwendet.
-
-* Port __23__ wird für den Zugriff auf den sekundären Hauptknoten mit SSH verwendet. `ssh username@mycluster-ssh.azurehdinsight.net` stellt z.B. eine Verbindung mit dem primären Hauptknoten des Clusters mit der Bezeichnung **mycluster** her.
+|Port |BESCHREIBUNG |
+|---|---|
+|443|Wird für den Zugriff auf Ambari und andere Webbenutzeroberflächen oder REST-APIs verwendet, die auf den Hauptknoten gehostet werden.|
+|22|Wird für den Zugriff auf den primären Hauptknoten oder den Edgeknoten mit SSH verwendet.|
+|23|Wird für den Zugriff auf den sekundären Hauptknoten mit SSH verwendet. `ssh username@mycluster-ssh.azurehdinsight.net` stellt z.B. eine Verbindung mit dem primären Hauptknoten des Clusters mit der Bezeichnung **mycluster** her.|
 
 Weitere Informationen zur Verwendung von SSH finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -78,11 +78,18 @@ Knoten in einem HDInsight-Cluster besitzen eine interne IP-Adresse und einen int
 
 Der Apache Oozie-Dienst kann z. B. nur auf einem Hauptknoten ausgeführt werden, und zur Verwendung des `oozie`-Befehls in einer SSH-Sitzung ist die URL des Diensts erforderlich. Diese URL kann mit dem folgenden Befehl aus Ambari abgerufen werden:
 
-    curl -u admin:PASSWORD "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
+```bash
+export password='PASSWORD'
+export clusterName="CLUSTERNAME"
 
-Dieser Befehl gibt einen dem folgenden Befehl ähnelnden Wert zurück, der die mit dem `oozie`-Befehl zu verwendende interne URL enthält:
+curl -u admin:$password "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=oozie-site&tag=TOPOLOGY_RESOLVED" | grep oozie.base.url
+```
 
-    "oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+Dieser Befehl gibt einen Wert ähnlich dem folgenden zurück, der die mit dem Befehl `oozie` zu verwendende interne URL enthält:
+
+```output
+"oozie.base.url": "http://hn0-CLUSTERNAME-randomcharacters.cx.internal.cloudapp.net:11000/oozie"
+```
 
 Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
@@ -90,11 +97,11 @@ Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Ver
 
 Mit den folgenden Methoden können Sie eine Verbindung mit Knoten herstellen, auf die nicht direkt über das Internet zugegriffen werden kann:
 
-* **SSH**: Sobald über SSH eine Verbindung mit dem Hauptknoten hergestellt wurde, können Sie SSH auf dem Hauptknoten verwenden, um Verbindungen mit anderen Knoten im Cluster herzustellen. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-* **SSH-Tunnel**: Wenn Sie auf einen Webdienst zugreifen müssen, der auf einem der nicht direkt mit dem Internet verbundenen Knoten gehostet wird, müssen Sie einen SSH-Tunnel verwenden. Weitere Informationen finden Sie im Dokument [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
-
-* **Azure Virtual Network**: Wenn Ihr HDInsight-Cluster zu einem Azure Virtual Network gehört, können alle Ressourcen in diesem virtuellen Netzwerk direkt auf alle Knoten im Cluster zugreifen. Weitere Informationen finden Sie im Dokument [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).
+|Methode |BESCHREIBUNG |
+|---|---|
+|SSH|Sobald über SSH eine Verbindung mit dem Hauptknoten hergestellt wurde, können Sie SSH auf dem Hauptknoten verwenden, um Verbindungen mit anderen Knoten im Cluster herzustellen. Weitere Informationen finden Sie im Dokument [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).|
+|SSH-Tunnel|Wenn Sie auf einen Webdienst zugreifen müssen, der auf einem der nicht direkt mit dem Internet verbundenen Knoten gehostet wird, müssen Sie einen SSH-Tunnel verwenden. Weitere Informationen finden Sie im Dokument [Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).|
+|Virtuelles Azure-Netzwerk|Wenn Ihr HDInsight-Cluster zu einem Azure Virtual Network gehört, können alle Ressourcen in diesem virtuellen Netzwerk direkt auf alle Knoten im Cluster zugreifen. Weitere Informationen finden Sie im Dokument [Planen eines virtuellen Netzwerks für HDInsight](hdinsight-plan-virtual-network-deployment.md).|
 
 ## <a name="how-to-check-on-a-service-status"></a>Überprüfen eines Dienststatus
 
@@ -116,44 +123,44 @@ Die folgenden Warnungen unterstützen die Überwachung der Verfügbarkeit eines 
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metric Monitor Status (Status der Metriküberwachung)                    | Diese Warnung gibt den Status des Metric Monitor-Prozesses an, wie er vom Überwachungsstatusskript bestimmt wird.                                                                                   |
 | Ambari Agent Heartbeat (Ambari-Agent-Heartbeat)                   | Diese Warnung wird ausgelöst, wenn der Server die Verbindung zu einem Agenten verloren hat.                                                                                                                        |
-| ZooKeeper Server Process (ZooKeeper-Serverprozess)                 | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der ZooKeeper-Serverprozess aktiv ist und im Netzwerk lauscht.                                                               |
-| IOCache Metadata Server Status (IOCache-Metadatenserverstatus)           | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der IOCache-Metadatenserver aktiv ist und auf die Anforderungen des Clients reagiert.                                                            |
+| ZooKeeper Server Process (ZooKeeper-Serverprozess)                 | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der ZooKeeper-Serverprozess aktiv ist und im Netzwerk lauscht.                                                               |
+| IOCache Metadata Server Status (IOCache-Metadatenserverstatus)           | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der IOCache-Metadatenserver aktiv ist und auf Clientanforderungen reagiert.                                                            |
 | JournalNode Web UI (JournalNode-Webbenutzeroberfläche)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn die JournalNode-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                 |
-| Spark2 Thrift Server (Spark2-Thrift-Server)                     | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Spark2-Thrift-Server aktiv ist.                                                                                                |
-| History Server Process (Verlaufsserverprozess)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Verlaufsserverprozess aktiv ist und im Netzwerk lauscht.                                                                |
+| Spark2 Thrift Server (Spark2-Thrift-Server)                     | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Spark2-Thrift-Server aktiv ist.                                                                                                |
+| History Server Process (Verlaufsserverprozess)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Verlaufsserverprozess aktiv ist und im Netzwerk lauscht.                                                                |
 | History Server Web UI (Verlaufsserver-Webbenutzeroberfläche)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn die Verlaufsserver-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                              |
-| ResourceManager-Webbenutzeroberfläche                   | Diese Warnung auf Hostebene wird ausgelöst, wenn die ResourceManager-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                             |
+| `ResourceManager`-Webbenutzeroberfläche                   | Diese Warnung auf Hostebene wird ausgelöst, wenn die `ResourceManager`-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                             |
 | NodeManager Health Summary (NodeManager-Integritätszusammenfassung)               | Diese Warnung auf Dienstebene wird ausgelöst, wenn es fehlerhafte NodeManager gibt.                                                                                                                    |
 | App Timeline Web UI (App-Zeitskala-Webbenutzeroberfläche)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn die App-Zeitskala-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                         |
 | DataNode Health Summary (DataNode-Integritätszusammenfassung)                  | Diese Warnung auf Dienstebene wird ausgelöst, wenn es fehlerhafte DataNodes gibt.                                                                                                                       |
 | NameNode Web UI (NameNode-Webbenutzeroberfläche)                          | Diese Warnung auf Hostebene wird ausgelöst, wenn die NameNode-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                    |
-| ZooKeeper Failover Controller Process (ZooKeeper-Failover-Controllerprozess)    | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der ZooKeeper-Failover-Controllerprozess aktiv ist und im Netzwerk lauscht.                                                   |
+| ZooKeeper Failover Controller Process (ZooKeeper-Failover-Controllerprozess)    | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der ZooKeeper-Failover-Controllerprozess aktiv ist und im Netzwerk lauscht.                                                   |
 | Oozie Server Web UI (Oozie-Server-Webbenutzeroberfläche)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn die Oozie-Server Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                |
-| Oozie Server Status (Oozie-Serverstatus)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Oozie-Server aktiv ist und auf die Anforderungen des Clients reagiert.                                                                      |
-| Hive Metastore Process (Hive Metastore-Prozess)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Hive Metastore-Prozess aktiv ist und im Netzwerk lauscht.                                                                 |
-| HiveServer2 Process (HiveServer2-Prozess)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der HiveServer aktiv ist und auf die Anforderungen des Clients reagiert.                                                                        |
-| WebHCat Server Status (WebHCat-Serverstatus)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn der Templetonserverstatus fehlerhaft ist.                                                                                                            |
+| Oozie Server Status (Oozie-Serverstatus)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Oozie-Server aktiv ist und auf Clientanforderungen reagiert.                                                                      |
+| Hive Metastore Process (Hive Metastore-Prozess)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Hive Metastore-Prozess aktiv ist und im Netzwerk lauscht.                                                                 |
+| HiveServer2 Process (HiveServer2-Prozess)                      | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Hive-Server aktiv ist und auf Clientanforderungen reagiert.                                                                        |
+| WebHCat Server Status (WebHCat-Serverstatus)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn der `templeton`-Serverstatus fehlerhaft ist.                                                                                                            |
 | Percent ZooKeeper Servers Available (Prozentsatz verfügbarer ZooKeeper-Server)      | Diese Warnung wird ausgelöst, wenn die Anzahl ausgefallener ZooKeeper-Server im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der ZooKeeper-Prozessüberprüfungen.     |
-| Spark2 Livy Server (Spark2 Livy-Server)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Livy2-Server aktiv ist.                                                                                                        |
-| Spark2 History Server (Spark2-Verlaufsserver)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Spark2-Verlaufsserver aktiv ist.                                                                                               |
-| Metrics Collector Process (Metrics-Collectorprozess)                | Diese Warnung wird ausgelöst, wenn nicht bestätigt werden kann, dass der Metrics-Collector aktiv ist und für eine bestimmte Anzahl an Sekunden auf den konfigurierten Port lauscht, die als Schwellenwert festgelegt wurde.                                 |
-| Metrics Collector - HBase Master Process (Metrics-Collector – HBase Master-Prozess) | Diese Warnung wird ausgelöst, wenn nicht bestätigt werden kann, dass die HBase Master-Prozesse des Metrics-Collectors aktiv sind und für eine bestimmte Anzahl an Sekunden im Netzwerk lauschen, die als kritischer Schwellenwert konfiguriert wurde. |
-| Percent Metrics Monitors Available (Prozentsatz verfügbarer Metrics Monitor-Prozesse)       | Diese Warnung wird ausgelöst, wenn ein Prozentsatz der Metrics Monitor-Prozesse nicht aktiv ist und im Netzwerk an der konfigurierten Warnung und den kritischen Schwellenwerten lauscht.                             |
+| Spark2 Livy Server (Spark2 Livy-Server)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Livy2-Server aktiv ist.                                                                                                        |
+| Spark2 History Server (Spark2-Verlaufsserver)                    | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Spark2-Verlaufsserver aktiv ist.                                                                                               |
+| Metrics Collector Process (Metrics-Collectorprozess)                | Diese Warnung wird ausgelöst, wenn nicht bestätigt werden kann, dass der Metrics-Collector aktiv ist und für eine bestimmte, als Schwellenwert festgelegte Anzahl von Sekunden am konfigurierten Port lauscht.                                 |
+| Metrics Collector - HBase Master Process (Metrics-Collector – HBase Master-Prozess) | Diese Warnung wird ausgelöst, wenn nicht bestätigt werden kann, dass die HBase Master-Prozesse des Metrics-Collectors aktiv sind und für eine bestimmte, als kritischer Schwellenwert konfigurierte Anzahl von Sekunden im Netzwerk lauschen. |
+| Percent Metrics Monitors Available (Prozentsatz verfügbarer Metrics Monitor-Prozesse)       | Diese Warnung wird ausgelöst, wenn ein Prozentanteil der Metrics Monitor-Prozesse nicht aktiv ist und im Netzwerk auf die konfigurierte Warnung und die kritischen Schwellenwerte lauscht.                             |
 | Percent NodeManagers Available (Prozentsatz verfügbarer NodeManager)           | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen NodeManager im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der NodeManager-Prozessüberprüfungen.        |
 | NodeManager Health (NodeManager-Integrität)                       | Diese Warnung auf Hostebene prüft die Knotenintegritätseigenschaft, die über die NodeManager-Komponente zur Verfügung steht.                                                                                              |
 | NodeManager Web UI (NodeManager-Webbenutzeroberfläche)                       | Diese Warnung auf Hostebene wird ausgelöst, wenn die NodeManager-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                 |
 | NameNode High Availability Health (NameNode-Hochverfügbarkeitsintegrität)        | Diese Warnung auf Dienstebene wird ausgelöst, wenn entweder der aktive NameNode oder der Standby-NameNode nicht ausgeführt werden.                                                                                     |
-| DataNode Process (DataNode-Prozess)                         | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob die individuellen DataNode-Prozesse aktiv sind und im Netzwerk lauschen.                                                         |
+| DataNode Process (DataNode-Prozess)                         | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob die individuellen DataNode-Prozesse aktiv sind und im Netzwerk lauschen.                                                         |
 | DataNode Web UI (DataNode-Webbenutzeroberfläche)                          | Diese Warnung auf Hostebene wird ausgelöst, wenn die DataNode-Webbenutzeroberfläche nicht erreichbar ist.                                                                                                                    |
 | Percent JournalNodes Available (Prozentsatz verfügbarer JournalNodes)           | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen JournalNodes im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der JournalNode-Prozessüberprüfungen.        |
 | Percent DataNodes Available (Prozentsatz verfügbarer DataNodes)              | Diese Warnung wird ausgelöst, wenn die Anzahl der ausgefallenen DataNodes im Cluster höher ist als der konfigurierte kritische Schwellenwert. Sie aggregiert die Ergebnisse der DataNode-Prozessüberprüfungen.              |
-| Zeppelin Server Status (Zeppelin Serverstatus)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, ob der Zeppelin-Server aktiv ist und auf die Anforderungen des Clients reagiert.                                                                   |
-| HiveServer2 Interactive Process (HiveServer2 Interactive-Prozess)          | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht bestimmt werden kann, dass der HiveServerInteractive-Prozess aktiv ist und auf die Anforderungen des Clients reagiert.                                                             |
-| LLAP Application (LLAP-Anwendung)                         | Diese Warnung wird ausgelöst, wenn nicht bestimmt werden kann, ob die LLAP-Anwendung aktiv ist und auf Anforderungen reagiert.                                                                                    |
+| Zeppelin Server Status (Zeppelin Serverstatus)                   | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der Zeppelin-Server aktiv ist und auf Clientanforderungen reagiert.                                                                   |
+| HiveServer2 Interactive Process (HiveServer2 Interactive-Prozess)          | Diese Warnung auf Hostebene wird ausgelöst, wenn nicht ermittelt werden kann, ob der HiveServerInteractive-Prozess aktiv ist und auf Clientanforderungen reagiert.                                                             |
+| LLAP Application (LLAP-Anwendung)                         | Diese Warnung wird ausgelöst, wenn nicht ermittelt werden kann, ob die LLAP-Anwendung aktiv ist und auf Anforderungen reagiert.                                                                                    |
 
 Sie können einen Dienst auswählen, um weitere Informationen anzuzeigen.
 
-Auf der Dienstseite werden zwar Informationen zum Status und zur Konfiguration jedes Diensts angezeigt, aber keine Informationen dazu, auf welchem Hauptknoten der Dienst ausgeführt wird. Diese Informationen können über den Link **Hosts** oben auf der Seite aufgerufen werden. Wenn Sie auf den Link klicken, werden die Hosts innerhalb des Clusters angezeigt, einschließlich der Hauptknoten.
+Dienstseitig werden zwar Informationen zum Status und zur Konfiguration jedes Diensts angezeigt, aber keine Informationen dazu, auf welchem Hauptknoten der Dienst ausgeführt wird. Diese Informationen können über den Link **Hosts** oben auf der Seite aufgerufen werden. Wenn Sie auf den Link klicken, werden die Hosts innerhalb des Clusters angezeigt, einschließlich der Hauptknoten.
 
 ![Apache Ambari – Liste der Hauptknotenhosts](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
@@ -169,7 +176,9 @@ Die Ambari-REST-API ist über das Internet verfügbar. Das öffentliche Gateway 
 
 Sie können den folgenden Befehl verwenden, um den Status eines Diensts über die Ambari-REST-API zu überprüfen:
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
+```bash
+curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICENAME?fields=ServiceInfo/state
+```
 
 * Ersetzen Sie **PASSWORD** durch das Kontokennwort des HTTP-Benutzers (Administrator).
 * Ersetzen Sie **CLUSTERNAME** durch den Namen des Clusters.
@@ -177,26 +186,32 @@ Sie können den folgenden Befehl verwenden, um den Status eines Diensts über di
 
 Wenn Sie z.B. den Status des **HDFS**-Diensts in einem Cluster mit dem Namen **mycluster** überprüfen möchten und das Kennwort **password** lautet, würden Sie folgenden Befehl verwenden:
 
-    curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
+```bash
+curl -u admin:password https://mycluster.azurehdinsight.net/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state
+```
 
 Die Antwort ähnelt dem folgenden JSON-Code:
 
-    {
-      "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
-      "ServiceInfo" : {
-        "cluster_name" : "mycluster",
-        "service_name" : "HDFS",
-        "state" : "STARTED"
-      }
+```json
+{
+    "href" : "http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8080/api/v1/clusters/mycluster/services/HDFS?fields=ServiceInfo/state",
+    "ServiceInfo" : {
+    "cluster_name" : "mycluster",
+    "service_name" : "HDFS",
+    "state" : "STARTED"
     }
+}
+```
 
 Der URL können Sie entnehmen, dass der Dienst zurzeit auf einem Hauptknoten namens **hn0-CLUSTERNAME** ausgeführt wird.
 
 Der Statuswert (state) gibt an, dass der Dienst zurzeit ausgeführt wird bzw. sich im Status **STARTED** befindet.
 
-Falls Sie nicht wissen, welche Dienste auf dem Cluster installiert sind, können Sie mit dem folgenden Befehl eine Liste abrufen:
+Falls Sie nicht wissen, welche Dienste im Cluster installiert sind, können Sie mit dem folgenden Befehl eine Liste abrufen:
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
+```bash
+curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services
+```
 
 Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
@@ -204,11 +219,15 @@ Weitere Informationen zum Arbeiten mit der Ambari-REST-API finden Sie unter [Ver
 
 Dienste können Komponenten enthalten, deren Status Sie einzeln überprüfen möchten. HDFS enthält z. B. die NameNode-Komponente. Der Befehl zum Anzeigen von Informationen zu einer Komponente lautet wie folgt:
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+```bash
+curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+```
 
 Falls Sie nicht wissen, welche Komponenten von einem Dienst bereitgestellt werden, können Sie mit dem folgenden Befehl eine Liste abrufen:
 
-    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+```bash
+curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/SERVICE/components/component
+```
 
 ## <a name="how-to-access-log-files-on-the-head-nodes"></a>Zugreifen auf Protokolldateien auf den Hauptknoten
 
@@ -224,7 +243,7 @@ Sie können auch über das SSH File Transfer Protocol oder das Secure File Trans
 
 Ähnlich wie bei der Verwendung eines SSH-Clients müssen Sie beim Herstellen einer Verbindung mit dem Cluster den SSH-Benutzerkontonamen und die SSD-Adresse des Clusters angeben. Beispiel: `sftp username@mycluster-ssh.azurehdinsight.net`. Geben Sie das Kennwort für das Konto ein, wenn Sie dazu aufgefordert werden, oder stellen Sie mit dem Parameter `-i` einen öffentlichen Schlüssel bereit.
 
-Wenn die Verbindung hergestellt ist, wird Ihnen eine `sftp>`-Eingabeaufforderung angezeigt. An dieser Eingabeaufforderung können Sie Verzeichnisse wechseln sowie Dateien hoch- und herunterladen. Durch die folgenden Befehle wird z.B. zum Verzeichnis **/var/log/hadoop/hdfs** gewechselt, und anschließend werden alle Dateien in diesem Verzeichnis heruntergeladen.
+Wenn die Verbindung hergestellt ist, wird die Eingabeaufforderung `sftp>` angezeigt. An dieser Eingabeaufforderung können Sie Verzeichnisse wechseln sowie Dateien hoch- und herunterladen. Durch die folgenden Befehle wird z.B. zum Verzeichnis **/var/log/hadoop/hdfs** gewechselt, und anschließend werden alle Dateien in diesem Verzeichnis heruntergeladen.
 
     cd /var/log/hadoop/hdfs
     get *
@@ -247,26 +266,22 @@ Wählen Sie auf der Ambari-Webbenutzeroberfläche den Dienst, für den Sie Proto
 
 Die Größe eines Knotens kann nur beim Erstellen des Clusters ausgewählt werden. Eine Liste der verschiedenen VM-Größen, die für HDInsight verfügbar sind, finden Sie auf der Seite [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die folgenden Informationen bieten eine Anleitung, wie die Größe über das [Azure-Portal][preview-portal], das [Azure PowerShell-Modul Az][azure-powershell] und mit der [Azure CLI][azure-cli] festgelegt werden kann:
+Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die folgenden Informationen bieten eine Anleitung, wie die Größe über das [Azure-Portal](https://portal.azure.com/), das [Azure PowerShell-Modul Az](/powershell/azureps-cmdlets-docs) und mit der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) festgelegt werden kann:
 
 * **Azure-Portal**: Beim Erstellen eines Clusters können Sie die Größe der vom Cluster genutzten Knoten festlegen:
 
     ![Screenshot des Assistenten zur Clustererstellung mit der Auswahl der Knotengröße](./media/hdinsight-high-availability-linux/hdinsight-headnodesize.png)
 
-* **Azure CLI**: Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Befehls [az hdinsight create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) mit den Parametern `--headnode-size`, `--workernode-size` und `--zookeepernode-size` festgelegt werden.
+* **Azure CLI**: Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Befehls [`az hdinsight create`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) mit den Parametern `--headnode-size`, `--workernode-size` und `--zookeepernode-size` festgelegt werden.
 
 * **Azure PowerShell:** Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Cmdlets [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) mit den Parametern `-HeadNodeSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` festgelegt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Über die folgenden Links erhalten Sie weiterführende Informationen.
+Weitere Informationen zu den in diesem Artikel erörterten Themen finden Sie unter:
 
 * [Apache Ambari-REST-Referenz](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Installieren und Konfigurieren des Azure PowerShell-Moduls Az](/powershell/azure/overview)
 * [Verwalten von HDInsight mit Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Bereitstellen Linux-basierter HDInsight-Cluster](hdinsight-hadoop-provision-linux-clusters.md)
-
-[preview-portal]: https://portal.azure.com/
-[azure-powershell]: /powershell/azureps-cmdlets-docs
-[azure-cli]: ../cli-install-nodejs.md

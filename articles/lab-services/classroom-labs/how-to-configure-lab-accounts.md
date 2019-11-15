@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: ba469c038f04a31a57e798b97b5120bec573feae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9faf7de25b8bf227dd4c7f3588972f98f7493439
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65414043"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583934"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurieren von Labkonten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -76,6 +76,9 @@ Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu ert
 
     ![Hinzufügen des Lab-Erstellers](../media/tutorial-setup-lab-account/add-lab-creator.png)
 
+    > [!NOTE]
+    > Wenn Sie einen Benutzer ohne Microsoft-Konto als Lab-Ersteller hinzufügen, finden Sie weitere Informationen im Abschnitt [Hinzufügen eines Benutzers ohne Microsoft-Konto als Lab-Ersteller](#add-a-non-microsoft-account-user-as-a-lab-creator). 
+
 ## <a name="specify-marketplace-images-available-to-lab-creators"></a>Angeben von für Lab-Ersteller verfügbare Marketplace-Images
 Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Ersteller zum Erstellen von Labs im Lab-Konto verwenden können. 
 
@@ -99,7 +102,36 @@ Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Erst
     1. Klicken Sie in der letzten Spalte auf die Ellipse ( **...** ) und dann auf **Enable image** (Image aktivieren). 
     2. Wählen Sie mindestens ein Image in der Liste aus, indem Sie die Kontrollkästchen vor den Imagenamen in der Liste aktivieren, und wählen Sie **Ausgewählte Images aktivieren** aus. 
 
+## <a name="add-a-non-microsoft-account-user-as-a-lab-creator"></a>Hinzufügen eines Benutzers ohne Microsoft-Konto als Lab-Ersteller
+Wenn Sie einen Benutzer als Lab-Ersteller hinzufügen möchten, verwenden Sie sein E-Mail-Konto. Die folgenden Arten von E-Mail-Konten können verwendet werden:
 
+- Ein E-Mail-Konto, das vom Office 365-Azure Active Directory (AAD) Ihrer Universität bereitgestellt wird 
+- Ein Microsoft-E-Mail-Konto, z. B. `@outlook.com`, `@hotmail.com`, `@msn.com` oder `@live.com`
+- Ein Microsoft-fremdes E-Mail-Konto, z. B. ein von Yahoo oder Google bereitgestelltes. Diese Kontotypen müssen jedoch mit einem Microsoft-Konto verknüpft werden.
+- Ein GitHub-Konto. Dieses Konto muss mit einem Microsoft-Konto verknüpft werden.
+
+### <a name="using-a-non-microsoft-email-account"></a>Verwenden eines Microsoft-fremden E-Mail-Kontos
+Lab-Ersteller/Kursleiter können Microsoft-fremde E-Mail-Konten verwenden, um sich für ein Classroom-Lab zu registrieren und sich bei diesem anzumelden.  Die Anmeldung beim Lab-Dienst-Portal erfordert jedoch, dass die Kursleiter zunächst ein Microsoft-Konto erstellen, das mit ihrer Microsoft-fremden E-Mail-Adresse verknüpft ist.
+
+Viele Kursleiter verfügen möglicherweise bereits über ein Microsoft-Konto, das mit ihren Microsoft-fremden E-Mail-Adressen verknüpft ist. Beispielsweise verfügen Kursleiter bereits über ein Microsoft-Konto, wenn sie ihre E-Mail-Adresse mit anderen Microsoft-Produkten oder -Diensten wie Office, Skype, OneDrive oder Windows verwendet haben.  
+
+Wenn sich ein Kursleiter beim Lab-Dienst-Portal anmeldet, wird er aufgefordert, seine E-Mail-Adresse und sein Kennwort einzugeben. Wenn der Kursleiter versucht, sich mit einem Microsoft-fremden Konto anzumelden, das nicht mit einem Microsoft-Konto verknüpft ist, erhält er die folgende Fehlermeldung: 
+
+![Fehlermeldung](../media/how-to-configure-student-usage/cant-find-account.png)
+
+Um sich für ein Microsoft-Konto anzumelden, sollten Kursleiter [http://signup.live.com](http://signup.live.com) besuchen.  
+
+
+### <a name="using-a-github-account"></a>Verwenden eines GitHub-Kontos
+Kursleiter können auch ein vorhandenes GitHub-Konto verwenden, um sich für ein Classroom-Lab zu registrieren und bei diesem anzumelden. Wenn der Kursleiter bereits über ein Microsoft-Konto verfügt, das mit seinem GitHub-Konto verknüpft ist, kann er sich anmelden und sein Kennwort angeben, wie im vorherigen Abschnitt gezeigt. Wenn er sein GitHub-Konto noch nicht mit einem Microsoft-Konto verknüpft hat, sollte er **Anmeldeoptionen** auswählen:
+
+![Link „Anmeldeoptionen“](../media/how-to-configure-student-usage/signin-options.png)
+
+Auf der Seite **Anmeldeoptionen** wählt er die Option **Mit GitHub anmelden** aus.
+
+![Link „Mit GitHub anmelden“](../media/how-to-configure-student-usage/signin-github.png)
+
+Schließlich wird er aufgefordert, ein Microsoft-Konto zu erstellen, das mit seinem GitHub-Konto verknüpft ist. Dies geschieht automatisch, wenn der Kursleiter **Weiter** auswählt.  Anschließend wird der Kursleiter sofort angemeldet und mit dem Classroom-Lab verbunden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 411b4bb74c21a445f4001c949e1c7811af212453
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772341"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606453"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Einrichten von Firewalltabellen und -regeln für private Clouds
 
@@ -33,6 +33,9 @@ Mit Firewalltabellen und den zugehörigen Regeln können Sie Einschränkungen f�
 4. Geben Sie einen Namen für die Tabelle ein.
 5. Eine Standardregel für die Tabelle wird aufgeführt. Klicken Sie auf **Create New Rule** (Neue Regel erstellen), um eine zusätzliche Regel zu erstellen. Details dazu finden Sie im folgenden Verfahren.
 6. Klicken Sie zum Speichern der Firewalltabelle auf **Done** (Fertig).
+
+> [!IMPORTANT]
+> Sie können bis zu zwei Firewalltabellen pro privater Cloud erstellen.
 
 ## <a name="firewall-rules"></a>Firewallregeln
 
@@ -61,6 +64,9 @@ Firewallregeln legen fest, wie die Firewall bestimmte Arten von Datenverkehr beh
     ![Firewall table add rule (Firewalltabelle, Regel hinzufügen)](media/firewall-rule-create.png)
 
 3. Klicken Sie auf **Done** (Fertig), um die Regel zu speichern und sie der Liste der Regeln für die Firewalltabelle hinzuzufügen.
+
+> [!IMPORTANT]
+> Jede Firewalltabelle kann bis zu 10 eingehende und 20 ausgehende Regeln aufweisen. Diese Grenzwerte können durch [Kontaktaufnahme mit dem Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) erhöht werden.
 
 ## <a name="attach-vlanssubnets"></a>Attach VLANs/Subnets (VLANs/Subnetze anzufügen)
 

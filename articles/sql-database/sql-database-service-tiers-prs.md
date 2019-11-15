@@ -1,5 +1,5 @@
 ---
-title: Einstellung der Premium RS-Dienstebene in Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Einstellung der Premium RS-Dienstebene
 description: Die Premium RS-Dienstebene wird eingestellt und ihr Support beendet (siehe Migrationsoptionen).
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/07/2019
-ms.openlocfilehash: d2637618ea9e2a0a0d0369eddce01fae073be221
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f00ecd19877ba6236bde5de73d450967abc1fe15
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566638"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821049"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Einstellung der Premium RS-Dienstebene (Vorschau) in Azure SQL-Datenbank – Optionen für die Migration
 

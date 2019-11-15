@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie | Microsoft Docs
+title: Verwalten von Verlaufsdaten in temporalen Tabellen
 description: Erfahren Sie, wie Sie eine temporale Aufbewahrungsrichtlinie verwenden, um die Kontrolle über Verlaufsdaten zu behalten.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 72022510676548fad79031d4334a2c95571fc16d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c2460c6f5e0905f45106148ecc3e8a949cf221f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566373"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820686"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie
 

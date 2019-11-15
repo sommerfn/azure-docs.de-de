@@ -4,15 +4,16 @@ description: Konfigurieren der Leadverwaltung für Dynamics 365 for Customer En
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 181a3f3a8d3cabb2fdf6caf79cef16201fab0c68
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 37cf613b6e0bd2ec9910dd3e7431c0feaa02431c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177805"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812307"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 for Customer Engagement
 
@@ -156,7 +157,7 @@ Der letzte Schritt ist das Aktivieren des erstellten Benutzers für das Schreibe
 
     ![Sicherheitsrollen](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. Wählen Sie in der Sicherheitsrolle die Registerkarte **Kerndatensätze** aus. Suchen Sie die Entität „UI-Einstellungen für Benutzerentität“, und aktivieren Sie die Berechtigungen zum Erstellen, Lesen und Schreiben für diese Entität (gelber Viertelkreis), indem Sie einmal auf die entsprechenden Kreise klicken.
+7. Wählen Sie in der Sicherheitsrolle die Registerkarte **Kerndatensätze** aus. Suchen Sie die Entität „UI-Einstellungen für Benutzerentität“, und aktivieren Sie die Berechtigungen zum Erstellen, Lesen und Schreiben für den Benutzer für diese Entität (gelber Viertelkreis), indem Sie einmal auf die entsprechenden Kreise klicken.
 
     ![Microsoft Marketplace Lead Writer – Kerndatensätze](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 

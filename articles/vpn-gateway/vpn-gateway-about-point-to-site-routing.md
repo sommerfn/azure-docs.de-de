@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ced1bc647f93beec73b8101a952944f31e497658
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168479"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693212"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
 
@@ -32,7 +32,7 @@ Es gibt eine Anzahl verschiedener Abbildungen in diesem Artikel. Jeder Abschnitt
 
 Die Point-to-Site-VPN-Gatewayverbindung in diesem Beispiel gilt für ein VNet, das nicht mit einem anderen virtuellen Netzwerk (VNet1) verbunden ist und auch kein Peering aufweist. In diesem Beispiel können alle Clients nur auf VNet1 zugreifen.
 
-![isoliertes VNet-Routing](./media/vpn-gateway-about-point-to-site-routing/1.jpg "isoliertes VNet-Routing")
+![Weiterleitung in einem isolierten VNET](./media/vpn-gateway-about-point-to-site-routing/1.jpg "Weiterleitung in einem isolierten VNET")
 
 ### <a name="address-space"></a>Adressraum
 
@@ -56,7 +56,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für
 
 Clients, die Windows verwenden, können auf VNets mit direktem Peering zugreifen, aber der VPN-Client muss erneut heruntergeladen werden, wenn Änderungen am VNet-Peering oder an der Netzwerktopologie vorgenommen werden. Nicht-Windows-Clients können auf VNets mit direktem Peering zugreifen. Der Zugriff ist nicht transitiv und nur auf VNets mit direktem Peering beschränkt.
 
-![mehrere VNets mit Peering](./media/vpn-gateway-about-point-to-site-routing/2.jpg "mehrere VNets mit Peering")
+![Mehrere VNETs mit Peering](./media/vpn-gateway-about-point-to-site-routing/2.jpg "Mehrere VNETs mit Peering")
 
 ### <a name="address-space"></a>Adressraum:
 
@@ -86,7 +86,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, können nur auf VNet1 zugreifen. Um auf zusätzliche VNets zugreifen zu können, muss BGP verwendet werden.
 
-![mehrere VNets und S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "mehrere VNets und S2S")
+![Mehrere VNETs und S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "Mehrere VNETs und S2S")
 
 ### <a name="address-space"></a>Adressraum
 
@@ -114,7 +114,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, können auf alle VNets zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind, aber Routen zu verbundenen VNets müssen den Windows-Clients manuell hinzugefügt werden.
 
-![mehrere VNets und S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "mehrere VNets und S2S (BGP)")
+![Mehrere VNETs und S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "Mehrere VNETs und S2S (BGP)")
 
 ### <a name="address-space"></a>Adressraum
 
@@ -142,7 +142,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für
 
 Windows-Clients und Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
-![Routing mit einem VNet und einer Filiale](./media/vpn-gateway-about-point-to-site-routing/5.jpg "Routing mit einem VNet und einer Filiale")
+![Weiterleitung mit einem VNET und einer Filiale](./media/vpn-gateway-about-point-to-site-routing/5.jpg "Weiterleitung mit einem VNET und einer Filiale")
 
 ### <a name="address-space"></a>Adressraum
 
@@ -168,7 +168,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für
 
 Windows-Clients können auf das VNet und die Filiale (Site1) zugreifen, die Routen zu Site1 müssen dem Client aber manuell hinzugefügt werden. Nicht-Windows-Clients können ebenfalls auf das VNet sowie die lokale Filiale zugreifen.
 
-![ein VNet und eine Filiale (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "ein VNet und eine Filiale (BGP)")
+![Ein VNET und eine Filiale (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "Ein VNET und eine Filiale")
 
 ### <a name="address-space"></a>Adressraum
 
@@ -195,7 +195,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Alle Clients können nur auf VNet1 zugreifen.
 
-![mehrere VNets mit S2S und eine Filiale](./media/vpn-gateway-about-point-to-site-routing/7.jpg "mehrere VNets mit S2S und eine Filiale")
+![S2S mit mehreren VNETs und einer Filiale](./media/vpn-gateway-about-point-to-site-routing/7.jpg "S2S mit mehreren VNETs und einer Filiale")
 
 ### <a name="address-space"></a>Adressraum
 
@@ -209,7 +209,7 @@ Alle Clients können nur auf VNet1 zugreifen.
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Zu Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
@@ -225,7 +225,7 @@ In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet
 
 Clients mit Windows können auf VNets und Standorte zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind, die Routen zu VNet2, VNet3 und Site1 müssen dem Client aber manuell hinzugefügt werden. Nicht-Windows-Clients können ohne manuelle Eingriffe auf VNets und Standorte zugreifen, die über eine Site-to-Site-VPN-Verbindung verbunden sind. Der Zugriff ist transitiv, und Clients besitzen Zugriff auf Ressourcen in allen verbundenen VNets und Standorten (lokal).
 
-![mehrere VNets mit S2S und eine Filiale](./media/vpn-gateway-about-point-to-site-routing/8.jpg "mehrere VNets mit S2S und eine Filiale")
+![S2S mit mehreren VNETs und einer Filiale](./media/vpn-gateway-about-point-to-site-routing/8.jpg "S2S mit mehreren VNETs und einer Filiale")
 
 ### <a name="address-space"></a>Adressraum
 
@@ -239,7 +239,7 @@ Clients mit Windows können auf VNets und Standorte zugreifen, die über eine Si
 
 ### <a name="routes-added"></a>Hinzugefügte Routen
 
-* Zu Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
+* Zu Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 

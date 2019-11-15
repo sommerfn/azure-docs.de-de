@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-Beispiel: Failovergruppe – Azure SQL-Einzeldatenbank | Microsoft-Dokumentation'
+title: 'PowerShell-Beispiel: Failovergruppe – Azure SQL-Datenbank-Singleton'
 description: Hier finden Sie ein Azure PowerShell-Beispielskript, mit dem Sie eine Azure SQL-Einzeldatenbank erstellen, die Datenbank zu einer Failovergruppe hinzufügen und das Failover testen können.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f975eb11e546a0ece862ac239ac4321ed8e4110
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7315f747fb7319521b25e2eb6e7af72449867888
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570083"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691769"
 ---
 # <a name="use-powershell-to-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Hinzufügen einer Azure SQL-Einzeldatenbank zu einer Failovergruppe mithilfe von PowerShell 
 

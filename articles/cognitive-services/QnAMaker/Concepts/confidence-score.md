@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 14339a61e48866d51089db9a0008a3de982b1710
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a80c61efbcbff569f5fed53734def3979ed70616
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277103"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820772"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Zuverlässigkeitsbewertung für eine QnA Maker-Wissensdatenbank
 Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist. 
@@ -72,9 +72,9 @@ Wenn mehrere Antworten eine ähnliche Zuverlässigkeitsbewertung aufweisen, ist 
 
 
 ## <a name="confidence-score-differences"></a>Abweichungen zwischen Zuverlässigkeitsbewertungen
-Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Search-Indizes befinden. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) funktioniert.
+Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Cognitive Search-Indizes befinden. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) funktioniert.
 
-Wenn Sie über eine Wissensdatenbank in verschiedenen Regionen verfügen, verwendet jede Region einen eigenen Azure Search-Index. Da verschiedene Indizes verwendet werden, werden die Ergebnisse nicht genau gleich sein. 
+Wenn Sie über eine Wissensdatenbank in verschiedenen Regionen verfügen, verwendet jede Region einen eigenen Azure Cognitive Search-Index. Da verschiedene Indizes verwendet werden, werden die Ergebnisse nicht genau gleich sein. 
 
 
 ## <a name="no-match-found"></a>Keine Übereinstimmung gefunden

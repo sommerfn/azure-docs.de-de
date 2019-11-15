@@ -4,15 +4,16 @@ description: Enthält Anleitungen zu Verbesserungen der Suchmaschinenoptimierung
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: pabutler
-ms.openlocfilehash: f5b956ed1197e3898c9536bda3a93a41e8ee35c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935156"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819582"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace-Leitfaden zur Suchmaschinenoptimierung (SEO)
 
@@ -21,7 +22,7 @@ In diesem Artikel wird erläutert, wie Sie die Auffindbarkeit Ihres Angebots dur
 
 ## <a name="general-explanation-of-algorithm"></a>Allgemeine Erläuterung des Algorithmus
 
-Microsoft Marketplace verwendet Azure Search, um die Suchfunktionen für die Website bereitzustellen. Der Algorithmus basiert auf dem Maß für Vorkommenshäufigkeit–inverse Dokumenthäufigkeit (term frequency–inverse document frequency, [Tf-idf-Maß](https://en.wikipedia.org/wiki/Tf–idf)). Es wird die Standardversion des [Lucene-Analysetools](https://lucene.apache.org/core/) verwendet.
+Microsoft Marketplace verwendet Azure Cognitive Search, um die Suchfunktionen der Website zu unterstützen. Der Algorithmus basiert auf dem Maß für Vorkommenshäufigkeit–inverse Dokumenthäufigkeit (term frequency–inverse document frequency, [Tf-idf-Maß](https://en.wikipedia.org/wiki/Tf–idf)). Es wird die Standardversion des [Lucene-Analysetools](https://lucene.apache.org/core/) verwendet.
 
 Grundsätzlich werden alle Textfelder, Kategorien und Branchen in die Gewichtung der Relevanz einbezogen. Spezielle Begriffe, die von Apps selten, in Ihrer App aber häufig verwendet werden, führen zu einer höheren Trefferquote bei einer Suche. Das heißt, ein Einbeziehen von Begriffen wie „VM“ würde nur wenige Vorteile bieten, wogegen „Azure Search“ sehr viel spezieller wäre.
 Nachstehend sind die wichtigsten zu berücksichtigenden Felder aufgeführt.

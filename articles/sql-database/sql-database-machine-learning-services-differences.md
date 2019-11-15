@@ -1,5 +1,5 @@
 ---
-title: Wichtige Unterschiede bei den Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)
+title: Wichtige Unterschiede bei Machine Learning Services (Vorschauversion)
 description: Dieses Thema beschreibt die wichtigsten Unterschiede zwischen Machine Learning Services von Azure SQL-Datenbank (mit R) und SQL Server Machine Learning Services.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: ee92b598625b1346cf87c661d1867cc1cb012b60
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1397f5d81ddf63740d733111b965a0517a2b917f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67485995"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827468"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Wichtige Unterschiede zwischen Machine Learning Services von Azure SQL-Datenbank (Vorschauversion) und SQL Server
 
@@ -46,7 +46,7 @@ Die R-Paketverwaltung und -Installation funktionieren für SQL-Datenbank und SQL
 
 ## <a name="writing-to-a-temporary-table"></a>Schreiben in einer temporären Tabelle
 
-Wenn Sie RODBC in Azure SQL-Datenbank verwenden, dann könnten Sie nicht in eine temporäre Tabelle schreiben. Dies ist unabhängig davon, ob sie innerhalb oder außerhalb der `sp_execute_external_script`-Sitzung erstellt wurde. Sie lösen dieses Problem, indem Sie [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) und [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (mit overwrite=FALSE und append="rows") verwenden, um eine globale temporäre Tabelle zu schreiben, die vor der `sp_execute_external_script`-Abfrage erstellt wurde.
+Wenn Sie RODBC in Azure SQL-Datenbank verwenden, können Sie nicht in eine temporäre Tabelle schreiben. Dies ist unabhängig davon, ob sie innerhalb oder außerhalb der `sp_execute_external_script`-Sitzung erstellt wurde. Sie lösen dieses Problem, indem Sie [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) und [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (mit overwrite=FALSE und append="rows") verwenden, um eine globale temporäre Tabelle zu schreiben, die vor der `sp_execute_external_script`-Abfrage erstellt wurde.
 
 ## <a name="resource-governance"></a>Ressourcenkontrolle
 

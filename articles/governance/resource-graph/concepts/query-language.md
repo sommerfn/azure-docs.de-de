@@ -3,15 +3,15 @@ title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/18/2019
+ms.date: 10/21/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 6189920cb03a6cf388f0b5d232c6ce97ae4f3f82
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d0ba3195aef246ff49042f61dcec0b4397b5dde6
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389761"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622638"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -29,8 +29,8 @@ Resource Graph stellt mehrere Tabellen für die Daten bereit, die in Bezug auf R
 
 |Resource Graph-Tabellen |BESCHREIBUNG |
 |---|---|
-|Resources |Die Standardtabelle, wenn keine in der Abfrage definiert ist. Die meisten Resource Manager-Ressourcentypen und -Eigenschaften sind hier enthalten. |
-|ResourceContainers |Umfasst die Ressourcentypen und Daten des Abonnements (`Microsoft.Resources/subscriptions`) und der Ressourcengruppe (`Microsoft.Resources/subscriptions/resourcegroups`). |
+|Ressourcen |Die Standardtabelle, wenn keine in der Abfrage definiert ist. Die meisten Resource Manager-Ressourcentypen und -Eigenschaften sind hier enthalten. |
+|ResourceContainers |Umfasst die Ressourcentypen und Daten des Abonnements (in der Vorschauphase – `Microsoft.Resources/subscriptions`) und der Ressourcengruppe (`Microsoft.Resources/subscriptions/resourcegroups`). |
 |AlertsManagementResources |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement` _in Zusammenhang stehen_. |
 |SecurityResources |Umfasst Ressourcen, die mit `Microsoft.Security` _in Zusammenhang stehen_. |
 
@@ -51,8 +51,8 @@ Die folgende Abfrage zeigt eine komplexere Verwendung von `join`. Die Abfrage sc
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
+| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | project type, name, SubName
 | limit 1
 ```
@@ -122,4 +122,4 @@ Einige Eigenschaftennamen, etwa diejenigen, die einen `.` oder ein `$` enthalten
 
 - Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](../samples/starter.md).
 - Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](../samples/advanced.md).
-- Lernen Sie, [Ressourcen zu untersuchen](explore-resources.md)
+- Erfahren Sie mehr über das [Erkunden von Ressourcen](explore-resources.md).

@@ -1,40 +1,40 @@
 ---
-title: Schnelleres Beschriften von Bildern mit vorgeschlagenen Tags
+title: Schnelleres Beschriften von Bildern mit der intelligenten Bezeichnungserstellung
 titleSuffix: Azure Cognitive Services
-description: In diesem Leitfaden erfahren Sie, wie Sie beim Training von Custom Vision-Modellen mit vorgeschlagenen Tags eine große Anzahl von Bildern schneller beschriften können.
+description: In dieser Anleitung erfahren Sie, wie Sie mit der intelligenten Bezeichnungserstellung vorgeschlagene Tags für Bilder generieren. Auf diese Weise können Sie eine große Anzahl von Bildern schneller beschriften, wenn Sie ein Custom Vision-Modell trainieren.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 10/29/2019
 ms.author: pafarley
-ms.openlocfilehash: 06735240729fb2bfd21b87f592e143e9ceabb390
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 94ca47e6114e4f8c3485f6072facd07c25e4b96a
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72753483"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647749"
 ---
-# <a name="label-images-faster-with-suggested-tags"></a>Schnelleres Beschriften von Bildern mit vorgeschlagenen Tags
+# <a name="label-images-faster-with-smart-labeler"></a>Schnelleres Beschriften von Bildern mit der intelligenten Bezeichnungserstellung
 
-In diesem Leitfaden erfahren Sie, wie Sie beim Training eines Custom Vision-Modells mit dem Feature für vorgeschlagene Tags eine große Anzahl von Bildern schneller beschriften können. 
+In dieser Anleitung erfahren Sie, wie Sie mit der intelligenten Bezeichnungserstellung vorgeschlagene Tags für Bilder generieren. Auf diese Weise können Sie eine große Anzahl von Bildern schneller beschriften, wenn Sie ein Custom Vision-Modell trainieren.
 
 Wenn Sie Bilder für ein Custom Vision-Modell kennzeichnen, verwendet der Dienst die neueste trainierte Iteration des Modells, um die Beschriftungen von nicht gekennzeichneten Bildern vorherzusagen. Anschließend werden diese Vorhersagen als vorgeschlagene Tags angezeigt, die auf dem ausgewählten Übereinstimmungsschwellenwert und der Vorhersageunsicherheit basieren. Sie können dann die Vorschläge entweder bestätigen oder ändern, um den Prozess der manuellen Kennzeichnung der Bilder für das Training zu beschleunigen.
 
-## <a name="when-to-use-suggested-tags"></a>Verwenden vorgeschlagener Tags
+## <a name="when-to-use-smart-labeler"></a>Szenarien für die intelligente Bezeichnungserstellung
 
 Beachten Sie die folgenden Einschränkungen:
 
 * Fordern Sie vorgeschlagene Tags möglichst nur für Bilder an, deren Inhalt bereits einmal trainiert wurde. Rufen Sie keine Vorschläge für ein neues Tag ab, das Sie gerade erst zu trainieren beginnen.
 
 > [!IMPORTANT]
-> Das Feature für vorgeschlagene Tags verwendet dasselbe [Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) wie normale Vorhersagen. Wenn Sie zum ersten Mal vorgeschlagene Tags für eine Reihe von Bildern auslösen, werden Ihnen dieselben Gebühren wie bei Vorhersageaufrufen berechnet. Danach speichert der Dienst die Ergebnisse für die ausgewählten Bilder 30 Tage lang in einer Datenbank, und Sie können innerhalb dieses Zeitraums jederzeit kostenlos darauf zugreifen. Nach 30 Tagen werden Sie belastet, wenn Sie die vorgeschlagenen Tags erneut anfordern.
+> Für das Feature zur intelligenten Bezeichnungserstellung gilt dasselbe [Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/) wie für normale Vorhersagen. Wenn Sie zum ersten Mal vorgeschlagene Tags für eine Reihe von Bildern auslösen, werden Ihnen dieselben Gebühren wie bei Vorhersageaufrufen berechnet. Danach speichert der Dienst die Ergebnisse für die ausgewählten Bilder 30 Tage lang in einer Datenbank, und Sie können innerhalb dieses Zeitraums jederzeit kostenlos darauf zugreifen. Nach 30 Tagen werden Sie belastet, wenn Sie die vorgeschlagenen Tags erneut anfordern.
 
-## <a name="suggested-tags-workflow"></a>Workflow für vorgeschlagene Tags
+## <a name="smart-labeler-workflow"></a>Workflow der intelligenten Bezeichnungserstellung
 
-Die folgenden Schritte veranschaulichen die Verwendung des Features für vorgeschlagene Tags:
+Die folgenden Schritte veranschaulichen die Verwendung der intelligenten Bezeichnungserstellung:
 
 1. Laden Sie alle Ihre Trainingsbilder in Ihr Custom Vision-Projekt hoch.
 1. Beschriften Sie einen Teil Ihres Datasets, und wählen Sie dieselbe Anzahl von Bildern für die einzelnen Tags aus.
@@ -44,7 +44,7 @@ Die folgenden Schritte veranschaulichen die Verwendung des Features für vorgesc
 1. Wenn das Training abgeschlossen ist, navigieren Sie zur Ansicht **Nicht gekennzeichnet**, und wählen Sie die Schaltfläche **Vorgeschlagene Tags abrufen** im linken Bereich aus.
     > [!div class="mx-imgBorder"]
     > ![Die Schaltfläche für die vorgeschlagenen Tags wird unter der Registerkarte für nicht gekennzeichnete Bilder angezeigt.](./media/suggested-tags/suggested-tags-button.png)
-1. Wählen Sie die Bildergruppe aus, für die Sie Vorschläge benötigen. Sie sollten nur für einen Teil der nicht gekennzeichneten Bilder erste Tagvorschläge erhalten. Sie erhalten bessere Tagvorschläge, wenn Sie diesen Prozess durchlaufen.
+1. Legen Sie im angezeigten Popupfenster die Anzahl der Bilder fest, für die Sie Vorschläge erhalten möchten. Sie sollten nur für einen Teil der nicht gekennzeichneten Bilder erste Tagvorschläge erhalten. Sie erhalten bessere Tagvorschläge, wenn Sie diesen Prozess durchlaufen.
 1. Bestätigen Sie die vorgeschlagenen Tags und korrigieren Sie diese, wenn sie nicht richtig sind.
     > [!TIP]
     > Bilder mit vorgeschlagenen Tags werden nach ihrer Vorhersageunsicherheit sortiert (niedrigere Werte bedeuten eine höhere Zuverlässigkeit). Sie können die Sortierreihenfolge mit der Option zum **Sortieren nach Unsicherheit** ändern. Wenn Sie die Reihenfolge **absteigend** festlegen, können Sie zuerst die Vorhersagen mit hoher Unsicherheit korrigieren und dann schnell die Vorhersagen mit geringer Unsicherheit bestätigen.

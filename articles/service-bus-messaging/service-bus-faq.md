@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 80809afc9f2a8e8da2f6adecfe916141c4cd3e45
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278337"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748451"
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 
@@ -111,6 +111,13 @@ Jede Datenübertragung innerhalb der jeweiligen Azure-Region ist ebenso wie jede
 
 ### <a name="does-service-bus-charge-for-storage"></a>Fallen für Service Bus Speicherkosten an?
 Nein, für Service Bus fallen keine Speicherkosten an. Es gibt allerdings ein Kontingent, das die Höchstmenge an Daten begrenzt, die pro Warteschlange/Thema beibehalten werden kann. Weitere Informationen finden Sie im nächsten Abschnitt.
+
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Ich habe einen Service Bus Standard-Namespace. Warum werden Gebühren unter der Ressourcengruppe „$system“ angezeigt?
+Vor Kurzem wurden die Abrechnungskomponenten für Azure Service Bus aktualisiert. Aus diesem Grund werden, wenn Sie über einen Service Bus Standard-Namespace verfügen, möglicherweise Zeilenelemente für die Ressource „/subscriptions/<azure_abonnement_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system“ unter der Ressourcengruppe „$system“ angezeigt.
+
+Diese Gebühren stellen die Grundgebühr für jedes Azure-Abonnement dar, das einen Service Bus Standard-Namespace bereitgestellt hat. 
+
+Beachten Sie, dass es sich hierbei nicht um neue Gebühren handelt, d. h., sie bestanden auch im vorherigen Abrechnungsmodell. Die einzige Änderung besteht darin, dass sie jetzt unter „$system“ aufgeführt sind. Dies erfolgt aufgrund von Einschränkungen im neuen Abrechnungssystem, bei denen die Gebühren auf Abonnementebene, die nicht an eine bestimmte Ressource gebunden sind, unter der Ressourcen-ID „$system“ gruppiert werden.
 
 ## <a name="quotas"></a>Kontingente
 

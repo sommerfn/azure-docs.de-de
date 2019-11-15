@@ -1,6 +1,6 @@
 ---
-title: Lesen erfasster Daten aus der Python-App – Azure Event Hubs | Microsoft-Dokumentation
-description: Skripts, die das Azure Python SDK verwenden, um die Funktion Event Hubs Capture zu veranschaulichen.
+title: 'Schnellstart: Lesen erfasster Daten von der Python-App – Azure Event Hubs'
+description: 'Schnellstart: Skripts, die das Azure Python SDK verwenden, um die Funktion Event Hubs Capture zu veranschaulichen.'
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,18 +11,18 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 10/10/2019
+ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: 354964e1b66b55dcccd9b5674f011f8c5a38a1c5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428949"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73717841"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Exemplarische Vorgehensweise für Event Hubs Capture: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Schnellstart: Exemplarische Vorgehensweise für Event Hubs Capture: Python
 
 Capture ist ein Feature von Azure Event Hubs. Mit Capture können Sie Streamingdaten in Ihrem Event Hub automatisch an ein Azure Blob Storage-Konto Ihrer Wahl übermitteln. Diese Funktion erleichtert die Batchverarbeitung von Echtzeit-Streamingdaten. In diesem Artikel erfahren Sie, wie Sie die Event Hubs-Erfassung mit Python verwenden. Weitere Informationen zu Event Hubs Capture finden Sie unter [Erfassen von Ereignissen über Azure Event Hubs ][Overview of Event Hubs Capture].
 
@@ -42,7 +42,7 @@ In dieser exemplarischen Vorgehensweise führen Sie folgende Aktionen aus:
   
 - Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
   
-- Ein aktiver Event Hubs-Namespace und Event Hub, erstellt durch Befolgen der Anweisungen unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md). Notieren Sie sich die Namen Ihres Namespace und Event Hub, weil sie später in dieser exemplarischen Vorgehensweise verwendet werden. 
+- Einen aktiven Event Hubs-Namespace und Event Hub, erstellt durch Befolgen der Anweisungen unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md). Notieren Sie sich die Namen Ihres Namespace und Event Hub, weil sie später in dieser exemplarischen Vorgehensweise verwendet werden. 
   
   > [!NOTE]
   > Wenn Sie bereits über einen Speichercontainer verfügen, den Sie nutzen können, können Sie Capture aktivieren und den Speichercontainer auswählen, wenn Sie den Event Hub erstellen. 
@@ -99,7 +99,7 @@ Dieses Skript sendet 200 Ereignisse an Ihren Event Hub. Bei den Ereignissen hand
            sbs.send_event('<eventhub>', s)
        print(y)
    ```
-4. Speichern Sie die Datei.
+4. Speichern Sie die Datei .
 
 ## <a name="create-a-python-script-to-read-capture-files"></a>Erstellen eines Python-Skripts zum Lesen Ihrer Capture-Dateien
 

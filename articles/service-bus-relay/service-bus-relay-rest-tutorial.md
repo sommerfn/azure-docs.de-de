@@ -1,6 +1,6 @@
 ---
-title: REST-Tutorial mit Azure Relay | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Azure Service Bus Relay-Hostanwendung erstellen, mit der eine REST-basierte Schnittstelle verfügbar gemacht wird.
+title: 'Tutorial: REST-Tutorial mit Azure Relay'
+description: 'Tutorial: Es wird beschrieben, wie Sie eine Azure Service Bus Relay-Hostanwendung erstellen, mit der eine REST-basierte Schnittstelle verfügbar gemacht wird.'
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -9,19 +9,19 @@ editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2019
+ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: a3daa7847ef037f0276792bf8173ad55aba0a944
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 229ed2b00582f2c73ce68c47406d68325abda736
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212921"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718831"
 ---
-# <a name="azure-wcf-relay-rest-tutorial"></a>Tutorial zu Azure WCF Relay mit REST
+# <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Tutorial: Tutorial zu Azure WCF Relay mit REST
 
 In diesem Tutorial wird beschrieben, wie Sie eine Azure Relay-Hostanwendung erstellen, die eine REST-basierte Schnittstelle verfügbar macht. REST ermöglicht einem Webclient, z. B. einem Webbrowser, den Zugriff auf die Service Bus-API über HTTP-Anforderungen.
 

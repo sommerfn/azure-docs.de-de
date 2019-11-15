@@ -4,15 +4,16 @@ description: Dieser Artikel beschreibt die Eignungskriterien und Veröffentlichu
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285981"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825974"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Beratungsdienste für Azure Marketplace und AppSource
 Mit Beratungsdiensten in Azure Marketplace und AppSource können Microsoft-Partner eine Verbindung zwischen Kunden und Diensten herstellen, um die Nutzung von Azure zu unterstützen und auszuweiten und den Kunden beim Erreichen ihrer Unternehmensziele zu helfen. 
@@ -124,12 +125,12 @@ Die folgenden Schritte sind erforderlich, um Ihr Beratungsdienstangebot in Azure
 Angebote müssen von einem der folgenden fünf Diensttypen sein (Sie können mehr als einen auflisten): 
 
 * **Bewertung:** Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und des zeitlichen Umfangs aufzustellen 
-* **Briefing:** Eine Einführung in eine Lösung oder einen Beratungsdienst, um das Interesse von Kunden durch Frameworks, Demos und Kundenbeispiele zu wecken 
+* **Einweisung**: Eine Einführung in eine Lösung oder einen Beratungsdienst, um das Interesse von Kunden durch Frameworks, Demos und Kundenbeispiele zu wecken 
 * **Implementierung:** Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird. Es wird empfohlen, sich auf Lösungen, die in maximal zwei Wochen implementiert werden können, zu beschränken. 
 * **Proof of Concept:** Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt 
-* **Workshop:** Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
+* **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
 
-**Hinweis:** Abgesehen von der Art des *Briefings* können Beratungsdienste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
+**Hinweis:** Abgesehen von der Art des *Briefings* können Beratungsdienste persönlich (d. h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d. h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
 
 Sobald Sie die oben genannten Pflichtelemente konfiguriert haben, prüft das Inhaltsprüfungsteam, ob Ihre Angebotsbeschreibung für Ihre Zielgruppe aussagekräftig und vollständig ist. 
 

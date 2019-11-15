@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von Fehlertoleranz der Kopieraktivität von Azure Data Factory durch Überspringen inkompatibler Zeilen | Microsoft-Dokumentation
+title: Hinzufügen von Fehlertoleranz zur Kopieraktivität von Azure Data Factory durch Überspringen inkompatibler Zeilen
 description: Erfahren Sie, wie Sie Fehlertoleranz der Kopieraktivität von Azure Data Factory durch Überspringen inkompatibler Zeilen hinzufügen.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3a255b21e8bfd7d78954603e9aa6e5ca39cee95b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84f5cdff72abe210ac1e39234b455e506d52ba5e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60566064"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682951"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hinzufügen von Fehlertoleranz der Kopieraktivität durch Überspringen inkompatibler Zeilen
 

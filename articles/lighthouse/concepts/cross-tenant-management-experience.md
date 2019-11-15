@@ -4,19 +4,19 @@ description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandante
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 10/18/2019
+ms.date: 11/7/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8d7b1f24d5dcf3d66ffd04704c79a284c4810365
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 182970cc39d200c37264a93d5e1b70c8839e5ef7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598452"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825818"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
-In diesem Artikel werden die Szenarien beschrieben, die Sie als Dienstanbieter mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) nutzen können, um Azure-Ressourcen für mehrere Kunden in Ihrem eigenen Mandanten im [Azure-Portal](https://portal.azure.com) zu verwalten.
+Als Dienstanbieter können Sie mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) Azure-Ressourcen für mehrere Kunden in Ihrem eigenen Mandanten im [Azure-Portal](https://portal.azure.com) verwalten. Die meisten Aufgaben und Dienste können auf delegierten Azure-Ressourcen über verwaltete Mandanten ausgeführt werden. In diesem Artikel werden einige der erweiterten Szenarien beschrieben, in denen die delegierte Azure-Ressourcenverwaltung effektiv sein kann.
 
 > [!NOTE]
 > Die delegierte Azure-Ressourcenverwaltung kann auch in einem Unternehmen verwendet werden, das über mehrere eigene Mandanten verfügt, um die mandantenübergreifende Verwaltung zu vereinfachen.
@@ -37,9 +37,20 @@ Mithilfe der delegierten Azure-Ressourcenverwaltung können sich autorisierte Be
 
 ![Über einen Dienstanbietermandanten verwaltete Kundenressourcen](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="supported-services-and-scenarios"></a>Unterstützte Dienste und Szenarien
+## <a name="apis-and-management-tool-support"></a>Unterstützung für APIs und Verwaltungstools
 
-Zurzeit unterstützt die mandantenübergreifende Verwaltung die folgenden Szenarien mit delegierten Kundenressourcen:
+Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder mithilfe von APIs und Verwaltungstools (z. B. Azure-Befehlszeilenschnittstelle und Azure PowerShell) durchführen. Alle vorhandenen APIs können für die Arbeit mit delegierten Ressourcen verwendet werden, solange die Funktionalität für mandantenübergreifende Verwaltung unterstützt wird und der Benutzer über die entsprechenden Berechtigungen verfügt.
+
+Wir stellen auch APIs bereit, um die Aufgaben der delegierten Azure-Ressourcenverwaltung durchzuführen. Weitere Informationen finden Sie im Abschnitt **Referenz**.
+
+## <a name="enhanced-services-and-scenarios"></a>Verbesserte Dienste und Szenarien
+
+Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwaltete Mandanten ausgeführt werden. Im Folgenden finden Sie einige wichtige Szenarien, in denen die mandantenübergreifende Verwaltung effektiv sein kann.
+
+[Azure Arc für Server (Vorschauversion):](https://docs.microsoft.com/azure/azure-arc/servers/overview)
+
+- [Verbinden von Windows Server- oder Linux-Computern außerhalb von Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) mit delegierten Abonnements oder Ressourcengruppen in Azure
+- Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
 
 [Azure Automation](https://docs.microsoft.com/azure/automation/):
 
@@ -55,7 +66,7 @@ Zurzeit unterstützt die mandantenübergreifende Verwaltung die folgenden Szenar
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
 
-- Anzeigen von Warnungen für delegierte Abonnements im Azure-Portal oder programmgesteuert durch REST-API-Aufrufe mit der Möglichkeit zum Anzeigen von Warnungen aus allen Abonnements
+- Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - Log Analytics: Abfragen von Daten aus Remote-Kundenarbeitsbereichen in mehreren Mandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im Dienstanbietermandanten über Webhooks
@@ -121,16 +132,9 @@ Supportanfragen:
 Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 
 - Von Azure Resource Manager verarbeitete Anforderungen können mithilfe der delegierten Azure-Ressourcenverwaltung durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (z. B. Zugriff auf Key Vault-Geheimnisse oder Zugriff auf Speicherdaten) verarbeitet werden, werden nicht von der delegierten Azure-Ressourcenverwaltung unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge. 
-- Rollenzuweisungen müssen [integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, mit Ausnahme von „Besitzer“, „Benutzerzugriffsadministrator“ und allen integrierten Rollen mit der [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions)-Berechtigung. Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) werden ebenfalls nicht unterstützt.
+- Rollenzuweisungen müssen [integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) werden nicht unterstützt.
 - Derzeit ist es nicht möglich, ein Abonnement (oder eine Ressourcengruppe innerhalb eines Abonnements) für die delegierte Azure-Ressourcenverwaltung zu integrieren, wenn das Abonnement Azure Databricks verwendet. Ähnlich können Sie, wenn ein Abonnement für das Onboarding mit dem **Microsoft.ManagedServices**-Ressourcenanbieter registriert wurde, zu diesem Zeitpunkt auch keinen Databricks-Arbeitsbereich für dieses Abonnement erstellen.
 - Sie können zwar Abonnements und Ressourcengruppen mit Ressourcensperren in die delegierte Azure-Ressourcenverwaltung integrieren, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
-
-## <a name="using-apis-and-management-tools-with-cross-tenant-management"></a>Verwenden von APIs und Verwaltungstools mit mandantenübergreifender Verwaltung
-
-Für die oben aufgeführten unterstützten Dienste und Szenarien können Sie Verwaltungsaufgaben entweder direkt im Portal oder mithilfe von APIs und Verwaltungstools (z. B. Azure CLI und Azure PowerShell) durchführen. Alle vorhandenen APIs können bei der Arbeit mit delegierten Ressourcen (für Dienste, die unterstützt werden) verwendet werden.
-
-Es gibt auch APIs, die speziell für die Durchführung von delegierten Azure-Ressourcenverwaltungsaufgaben gedacht sind. Weitere Informationen finden Sie im Abschnitt **Referenz**.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

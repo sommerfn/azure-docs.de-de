@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 6887430cad06ad33434f0f01e741979014b4558b
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: f8644a2aa989b7013cbbd64e8a8194bc08f40251
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219576"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813103"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Kontomigration vom Cloud-Partnerportal zu Partner Center
 
@@ -45,7 +46,7 @@ Klicken Sie auf das Banner, um den Prozess der Kontomigration zu starten. Es wer
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Registrieren für das Microsoft Partner Network-Programm
 
-Unternehmen, die mit Microsoft zusammenarbeiten möchten, müssen Mitglied im Microsoft Partner Network (MPN) werden und eine MPN-ID erhalten. Wenn Sie bereits Mitglied des Microsoft Partner Network sind und über eine MPN-ID verfügen, behalten Sie die Informationen bereit, da Sie sie während der Kontoaktivierung benötigen.  
+Unternehmen, die mit Microsoft zusammenarbeiten möchten, müssen Mitglied im Microsoft Partner Network (MPN) werden und eine MPN-ID erhalten. Wenn Sie bereits Mitglied des Microsoft Partner Network sind und über eine MPN-ID verfügen, halten Sie die Informationen bereit, da Sie sie während der Kontoaktivierung benötigen.  
 
 Wenn Sie noch kein Mitglied des Microsoft Partner Network sind, können Sie [hier beitreten](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new), um eine MPN-ID zu erhalten. Notieren Sie sich Ihre MPN-ID, da Sie sie während der Kontoaktivierung eingeben müssen.
 
@@ -69,7 +70,7 @@ Spezifische Informationen dazu, was Sie bis zum **15. Oktober 2019** für Ihre D
     * Vervollständigen Sie die Informationen auf den Bildschirmen, einschließlich der Bereitstellung Ihrer App für die Zertifizierung, sowie Marketinginformationen. Wählen Sie **Senden** (obere rechte Ecke des Bildschirms) bis zum  **15. Oktober 2019** aus. Diese Schritte müssen ausgeführt werden, um eine Beeinträchtigung der Verfügbarkeit des Angebots zu vermeiden.
     * Wenn Sie dazu berechtigt sind, können Sie während dieses Prozesses die Teilnahme am Premium-Tarif beantragen.
     * Die Zertifizierung oder erneute Zertifizierung erfordert, dass Ihre App die neueste Version unserer Business Applications-Plattform unterstützt.
-    * Nachdem Ihre App genehmigt wurde, erhalten Sie eine E-Mail. Kehren Sie darüber zum Angebot zurück, und wählen Sie „Live schalten“ aus, um das Angebot für die auf Microsoft AppSource live zu schalten.
+    * Nachdem Ihre App genehmigt wurde, erhalten Sie eine E-Mail. Kehren Sie darüber zum Angebot zurück, und wählen Sie „Live schalten“ aus, um das Angebot auf Microsoft AppSource live zu schalten.
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

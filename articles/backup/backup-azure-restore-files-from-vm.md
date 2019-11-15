@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung'
-description: Informationen zum Wiederherstellen von Dateien aus einem Wiederherstellungspunkt für virtuelle Azure-Computer
+description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ff4f1ff8a3d6143285b2842c351e1d26bd356ea
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210375"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747372"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -74,10 +74,9 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
     - Ausgehender Port 3260
 
 > [!Note]
-> 
-> * Für den Namen der heruntergeladenen Skriptdatei wird **geo-name** in die URL eingefügt. Beispiel: Der Name des heruntergeladenen Skripts beginnt mit \'VMname\'\_\'geoname\'_\'GUID\', z. B. ContosoVM_wcus_12345678...<br><br>
-> * Die URL wäre: https:\//pod01-rec2.wcus.backup.windowsazure.com
-
+>
+> - Für den Namen der heruntergeladenen Skriptdatei wird **geo-name** in die URL eingefügt. Beispiel: Der Name des heruntergeladenen Skripts beginnt mit \'VMname\'\_\'geoname\'_\'GUID\', z. B. ContosoVM_wcus_12345678...<br><br>
+> - Die URL wäre: https:\//pod01-rec2.wcus.backup.windowsazure.com
 
    Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
 
@@ -218,6 +217,35 @@ Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden 
 | Bash | ab 4 |
 | Python | ab 2.6.6  |
 | TLS | 1.2 muss unterstützt werden.  |
+
+## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>Dateiwiederherstellung von Sicherungen virtueller Computer mit großen Datenträgern
+
+In diesem Abschnitt wird erläutert, wie die Dateiwiederherstellung aus Sicherungen virtueller Azure-Computer durchgeführt wird, die über mehr als 16 Datenträger mit einer Größe von jeweils mehr als 4 TB verfügen.
+
+Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt werden, sollten bei einer großen Anzahl von Datenträgern (> 16) oder großen Datenträgern (> 4 TB) die folgenden Aktionspunkte berücksichtigt werden:
+
+- Verwalten Sie einen separaten Wiederherstellungsserver (Azure-VM der D2v3-Serie) für die Dateiwiederherstellung. Sie können diesen nur für die Dateiwiederherstellung verwenden und dann herunterfahren, wenn er nicht mehr benötigt wird. Die Wiederherstellung auf dem ursprünglichen Computer wird nicht empfohlen, da dies erhebliche Auswirkungen auf die VM selbst hat.
+- Führen Sie dann das Skript einmal aus, um zu überprüfen, ob die Dateiwiederherstellung erfolgreich durchgeführt wird.
+- Wenn die Dateiwiederherstellung nicht mehr reagiert (die Datenträger werden nicht eingebunden, oder sie werden eingebunden, aber es werden keine Volumes angezeigt), führen Sie die folgenden Schritte aus.
+  - Wenn der Wiederherstellungsserver ein virtueller Windows-Computer ist:
+    - Stellen Sie sicher, dass das Betriebssystem Windows Server 2012 oder höher ist.
+    - Stellen Sie sicher, dass die Registrierungsschlüssel auf dem Wiederherstellungsserver wie unten vorgeschlagen festgelegt sind, und starten Sie den Server neu. Die Zahl neben der GUID kann zwischen 0001 und 0005 liegen. Im folgenden Beispiel lautet sie 0004. Navigieren Sie im Registrierungsschlüsselpfad zum Abschnitt mit den Parametern.
+
+    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+
+```registry
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\SrbTimeoutDelta – change this from 15 to 1200
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\EnableNOPOut – change this from 0 to 1
+- HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Class\{4d36e97b-e325-11ce-bfc1-08002be10318}\0003\Parameters\MaxRequestHoldTime - change this from 60 to 1200
+```
+
+- Wenn der Wiederherstellungsserver ein virtueller Linux-Computer ist:
+  - Ändern Sie in der Datei „/etc/iscsi/iscsid.conf“ die Einstellung:
+    - node.conn[0].timeo.noop_out_timeout = 5  to node.conn[0].timeo.noop_out_timeout = 30
+- Nachdem Sie die Schritte ausgeführt haben, führen Sie das Skript erneut aus. Mit diesen Änderungen sollte die Dateiwiederherstellung sehr wahrscheinlich erfolgreich sein.
+- Jedes Mal, wenn ein Benutzer ein Skript herunterlädt, initiiert Azure Backup den Prozess zur Vorbereitung des Wiederherstellungspunkts für den Download. Bei großen Datenträgern nimmt dies eine beträchtliche Zeit in Anspruch. Bei aufeinanderfolgenden Anforderungsspitzen verfällt die Zielvorbereitung in eine Downloadspirale. Daher wird empfohlen, ein Skript im Portal, mit PowerShell oder mit der Befehlszeilenschnittstelle herunterzuladen, 20–30 Minuten (ungefähr) zu warten und es dann auszuführen. Zu diesem Zeitpunkt sollte das Ziel für die Verbindung mit dem Skript bereit sein.
+- Wechseln Sie nach der Dateiwiederherstellung unbedingt zurück zum Portal, und klicken Sie dort für die Wiederherstellungspunkte, bei denen Sie keine Volumes einbinden konnten, auf „Einbindung von Datenträgern aufheben“. Mit diesem Schritt werden alle vorhandenen Prozesse/Sitzungen bereinigt, und die Wahrscheinlichkeit für eine Wiederherstellung steigt.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

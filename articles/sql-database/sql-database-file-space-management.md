@@ -1,5 +1,5 @@
 ---
-title: Speicherplatzverwaltung bei Azure SQL-Datenbank-Dateien von Einzel-/Pooldatenbanken | Microsoft-Dokumentation
+title: Verwalten des Speicherplatzes für Einzel-/Pooldatenbankdateien
 description: Diese Seite beschreibt, wie Sie in Azure SQL-Datenbank Dateispeicherplatz bei Einzel- und Pooldatenbanken verwalten. Sie enthält Codebeispiele, mit denen Sie ermitteln können, ob eine Einzel- oder Pooldatenbank verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: c92ffb6aa6db9c77a859661115d54ff63ea02401
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a8fe58313bce6e9a21b07aa095672ec35ce572d2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568192"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803056"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 

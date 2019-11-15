@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 578f7a01c22bd5aafd4e4ac08c9f5ab78e340a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606518"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669394"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -150,8 +150,8 @@ In dieser Übung führen Sie die folgenden Aktionen durch:
 
 Wenn Sie bereit sind, mit Azure Machine Learning fortzufahren, können Sie:  
 
-1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen, oder
-2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen Datenbanktabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul in Azure Machine Learning verwenden.
+1. die fertige SQL-Abfrage speichern, mit der die Daten extrahiert und zusammengestellt werden, und die Abfrage per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen oder
+2. die zusammengestellten und verarbeiteten Daten, die Sie zur Modellerstellung verwenden möchten, in einer neuen Datenbanktabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul in Azure Machine Learning verwenden.
 
 In diesem Abschnitt speichern wir die endgültige Abfrage zum Extrahieren der Daten und zum Erstellen von Proben. Die zweite Methode wird im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in IPython Notebook](#ipnb) beschrieben.
 
@@ -172,7 +172,7 @@ In diesem Beispiel wird die Taxinummer ("medallion") mit mehr als 100 Fahrten i
     GROUP BY medallion
     HAVING COUNT(*) > 100
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hacklicense"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“ und „hack_license“
+#### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“ und „hack_license“
     SELECT medallion, hack_license, COUNT(*)
     FROM nyctaxi_fare
     WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
@@ -233,7 +233,7 @@ In diesem Beispiel werden die Werte von „longitude“ und „latitude“ für 
 Die Suchabfragen zur Generierung von Bezeichnern und zum Konvertieren der Geografiepunkte können auch zum Erstellen von Bezeichnern/Funktionen verwendet werden, indem der Zählaspekt entfernt wird. Weitere SQL-Beispiele zum Verarbeiten von Funktionen finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in IPython Notebook](#ipnb). Es ist effizienter, die Abfragen zum Generieren von Funktionen für das komplette DataSet oder einen großen Teil davon auszuführen und dazu SQL-Abfragen zu verwenden, die direkt auf der SQL Server-Datenbankinstanz ausgeführt werden. Die Abfragen können in **SQL Server Management Studio**, IPython Notebook oder einem Entwicklungstool bzw. einer Entwicklungsumgebung ausgeführt werden, sofern lokaler oder Remotezugriff auf die Datenbank besteht.
 
 #### <a name="preparing-data-for-model-building"></a>Vorbereiten von Daten für die Modellerstellung
-Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert den binären Klassifikationsbezeichner **tipped** und den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine zufällige 1-%-Stichprobe aus dem vollständig verbundenen Dataset. Diese Abfrage kann kopiert und dann direkt in das [Import Data][import-data]-Modul in [Azure Machine Learning Studio](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL Server-Datenbankinstanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
+Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert den binären Klassifikationsbezeichner **tipped** und den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine zufällige 1-%-Stichprobe aus dem vollständig verbundenen Dataset. Diese Abfrage kann kopiert und dann direkt in das [Import Data][import-data]-Modul von [Azure Machine Learning Studio](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL Server-Datenbankinstanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -264,8 +264,8 @@ Die empfohlene Reihenfolge beim Arbeiten mit großen Datenmengen lautet wie folg
 
 Wenn Sie bereit für die Weiterarbeit in Azure Machine Learning sind, können Sie Folgendes durchführen:  
 
-1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen. Dieses Verfahren wird im Abschnitt [Erstellen von Modellen in Azure Machine Learning](#mlmodel) veranschaulicht.    
-2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen Datenbanktabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul verwenden.
+1. die fertige SQL-Abfrage speichern, mit der die Daten extrahiert und zusammengestellt werden, und die Abfrage per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen. Dieses Verfahren wird im Abschnitt [Erstellen von Modellen in Azure Machine Learning](#mlmodel) veranschaulicht.    
+2. die zusammengestellten und verarbeiteten Daten, die Sie zur Modellerstellung verwenden möchten, in einer neuen Datenbanktabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul verwenden.
 
 Es folgen einige Beispiele für das Durchsuchen von Daten, die Datenvisualisierung und das Verarbeiten von Funktionen. Weitere Beispiele finden Sie im Beispiel-SQL-IPython Notebook im Ordner **Sample IPython Notebooks** .
 
@@ -282,7 +282,7 @@ Initialisieren Sie die Datenbank-Verbindungseinstellungen in den folgenden Varia
     CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
     conn = pyodbc.connect(CONNECTION_STRING)
 
-#### <a name="report-number-of-rows-and-columns-in-table-nyctaxitrip"></a>Melden der Anzahl von Zeilen und Spalten in der Tabelle "nyctaxi_trip"
+#### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>Melden der Anzahl von Zeilen und Spalten in der Tabelle "nyctaxi_trip"
     nrows = pd.read_sql('''
         SELECT SUM(rows) FROM sys.partitions
         WHERE object_id = OBJECT_ID('nyctaxi_trip')
@@ -376,7 +376,7 @@ Auf ähnliche Weise können wir die Beziehung zwischen **rate\_code** und **trip
 ![Grafik 8][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>Generieren von Stichproben aus den Daten in SQL
-Bei der Vorbereitung von Daten für die Modellerstellung in [Azure Machine Learning Studio](https://studio.azureml.net) können Sie sich entweder für eine **direkte Verwendung von SQL-Abfragen im „Import Data“-Modul** oder für das Beibehalten der bearbeiteten und erfassten Daten in einer neuen Tabelle entscheiden, die Sie im [Import Data][import-data]-Modul mit einer einfachen SELECT-Abfrage wie **SELECT * FROM <Name\_Ihrer\_neuen\_Tabelle>** verwenden können.
+Bei der Vorbereitung von Daten für die Modellerstellung in [Azure Machine Learning Studio](https://studio.azureml.net) können Sie sich entweder für eine **direkte Verwendung von SQL-Abfragen im „Import Data“-Modul** oder für das Beibehalten der verarbeiteten und zusammengestellten Daten in einer neuen Tabelle entscheiden, die Sie im [Import Data][import-data]-Modul mit einer einfachen SELECT-Abfrage wie **SELECT * FROM <Name\_Ihrer\_neuen\_Tabelle>** verwenden können.
 
 In diesem Abschnitt erstellen Sie eine neue Tabelle zum Speichern der erfassten und verarbeiteten Daten. Ein Beispiel für eine direkte SQL-Abfrage für die Modellerstellung finden Sie im Abschnitt [Durchsuchen von Daten und Verarbeiten von Funktionen in SQL Server](#dbexplore).
 
@@ -572,7 +572,7 @@ Ein typisches Trainingsexperiment umfasst Folgendes:
 
 Sie haben in dieser Übung bereits die Daten in SQL Server untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning entschieden. Für das Erstellen einer oder mehrerer Vorhersagemodelle gehen Sie folgendermaßen vor:
 
-1. Erfassen Sie die Daten in Azure Machine Learning mithilfe des [Import Data][import-data]-Moduls im Abschnitt **Data Input and Output** (Datenein- und ausgabe). Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
+1. Erfassen Sie die Daten in Azure Machine Learning mithilfe des [Import Data][import-data]-Moduls, das im Abschnitt **Data Input and Output** (Datenein- und -ausgabe) verfügbar ist. Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
    
     ![Azure Machine Learning: Importieren von Daten][17]
 2. Wählen Sie **Azure SQL-Datenbank** als **Datenquelle** im **Eigenschaften**bereich aus.
@@ -588,12 +588,12 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 > [!IMPORTANT]
 > In den Modellierungsbeispielen für Datenextraktion und Stichprobengenerierung in den vorherigen Abschnitten sind **alle Bezeichner für die drei Modellierungsübungen in der Abfrage enthalten**. Ein wichtiger (erforderlicher) Schritt in den einzelnen Modellierungsübungen ist das **Ausschließen** unnötiger Bezeichner für die anderen beiden Probleme und alle anderen **Zielverluste**. Wenn Sie z.B. eine binäre Klassifizierung nutzen, verwenden Sie den Bezeichner **tipped** und schließen die Felder **tip\_class**, **tip\_amount**und **total\_amount** aus. Letztere sind Zielverluste, da sie das bezahlte Trinkgeld beinhalten.
 > 
-> Um nicht benötigte Spalten und/oder Zielverluste auszuschließen, können Sie das Modul [Select Columns in Dataset][select-columns] oder [Edit Metadata][edit-metadata] verwenden. Weitere Informationen finden Sie auf den Referenzseiten zu [Select Columns in Dataset][select-columns] und [Edit Metadata][edit-metadata].
+> Um nicht benötigte Spalten und/oder Zielverluste auszuschließen, können Sie das [Select Columns in Dataset][select-columns]- (Spalten im Dataset auswählen) oder [Edit Metadata][edit-metadata]-Modul (Bearbeiten von Metadaten) verwenden. Weitere Informationen finden Sie auf den Referenzseiten zu [Select Columns in Dataset][select-columns] und [Edit Metadata][edit-metadata].
 > 
 > 
 
 ## <a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
-Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure Machine Learning-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](../studio/publish-a-machine-learning-web-service.md).
+Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure Machine Learning-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](../studio/deploy-a-machine-learning-web-service.md).
 
 So stellen Sie einen neuen Webdienst bereit:
 
@@ -610,7 +610,7 @@ Azure Machine Learning versucht, ein Bewertungsexperiment basierend auf den Komp
 2. Ermitteln eines logischen **Eingabeports** für das erwartete Eingabedatenschema
 3. Ermitteln eines logischen **Ausgabeport** s für das erwartete Ausgabeschema für den Webdienst
 
-Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** (Bewertete Beschriftungen) und die **Scored Probabilities** (Bewertete Wahrscheinlichkeiten) mit dem Modul [Select Columns in Dataset][select-columns] in die Ausgabe einzuschließen.
+Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** und die **Scored Probabilities** mit dem Modul [Select Columns in Dataset][select-columns] in die Ausgabe einzuschließen.
 
 In der folgenden Abbildung finden Sie ein Beispiel für ein Bewertungsexperiment. Wenn Sie die Bereitstellung fertig vorbereitet haben, klicken Sie auf der unteren Aktionsleiste auf die Schaltfläche **PUBLISH WEB SERVICE** .
 

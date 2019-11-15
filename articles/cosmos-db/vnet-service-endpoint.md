@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: dfc3ebc0274c87466d6dc27c93880483df023085
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 791821fbfe5854c27b7e3e6927a56a66ac1f1dc2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242471"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819084"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Zugreifen auf Azure Cosmos DB über virtuelle Netzwerke (VNET)
 
@@ -56,7 +56,7 @@ NSG-Regeln werden verwendet, um die Konnektivität mit einem Subnetz mit virtuel
 Nein, nur virtuelle Netzwerke mit Azure Resource Manager können einen Dienstendpunkt aktivieren. Klassische virtuelle Netzwerke unterstützen keine Dienstendpunkte.
 
 ### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Kann ich „Verbindungen aus öffentlichen Azure-Rechenzentren akzeptieren“, wenn der Zugriff auf den Dienstendpunkt für Azure Cosmos DB aktiviert ist?  
-Dies ist nur erforderlich, wenn Sie den Zugriff auf Ihr Azure Cosmos DB-Konto über andere Azure-Erstanbieterdienste wie Azure Data Factory, Azure Search oder einen beliebigen anderen Dienst ermöglichen möchten, der in einer bestimmten Azure-Region bereitgestellt wurde.
+Dies ist nur erforderlich, wenn Sie den Zugriff auf Ihr Azure Cosmos DB-Konto über andere Azure-Erstanbieterdienste wie Azure Data Factory, Azure Cognitive Search oder einen beliebigen anderen Dienst ermöglichen möchten, der in einer bestimmten Azure-Region bereitgestellt wurde.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

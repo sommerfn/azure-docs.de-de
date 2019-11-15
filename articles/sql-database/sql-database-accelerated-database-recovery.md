@@ -1,5 +1,5 @@
 ---
-title: Schnellere Datenbankwiederherstellung – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Schnellere Datenbankwiederherstellung
 description: Die Azure SQL-Datenbank verfügt über ein neues Feature, das eine schnelle und einheitliche Datenbankwiederherstellung, den sofortigen Transaktionsrollback und eine aggressive Protokollkürzung für Einzel- und Pooldatenbanken in Azure SQL-Datenbank sowie Datenbanken in Azure SQL Data Warehouse ermöglicht.
 ms.service: sql-database
 ms.subservice: high-availability
@@ -10,12 +10,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: d516dc51a25cbef92ff9fa22012773507b528a99
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eff81693ff4c34dc00f66e9e5ea22e56d3ff9d77
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569626"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808090"
 ---
 # <a name="accelerated-database-recovery"></a>Schnellere Datenbankwiederherstellung
 
@@ -99,11 +99,11 @@ Die vier wichtigsten Komponenten von ADR sind:
 
 - **Logische Wiederherstellung**
 
-  Die logische Wiederherstellung ist der asynchrone Prozess zur Durchführung des Rückgängigmachens basierend auf der Zeilenebenenversion – mit sofortigem Transaktionsrollback und Rückgängig-Vorgang für alle Vorgänge mit Versionsangabe.
+  Die logische Wiederherstellung ist der asynchrone Prozess zur Durchführung des Rückgängigmachens basierend auf der Zeilenebenenversion – mit sofortigem Transaktionsrollback und Rückgängig-Vorgang für alle Vorgänge mit Versionsangabe. Die logische Wiederherstellung erfolgt wie folgt:
 
-  - Nachverfolgung aller abgebrochenen Transaktionen
-  - Durchführung eines Rollbacks mit persistentem Versionsspeicher für alle Benutzertransaktionen
-  - Aufhebung aller Sperren sofort nach dem Abbruch der Transaktion
+  - Alle abgebrochenen Transaktionen werden nachverfolgt und für andere Transaktionen als unsichtbar markiert. 
+  - Es wird ein Rollback mithilfe von PVS für alle Benutzertransaktionen ausgeführt, anstatt das Transaktionsprotokoll physisch zu scannen und die Änderungen einzeln rückgängig zu machen.
+  - Nach dem Abbruch der Transaktion werden alle Sperren sofort aufgehoben. Da der Abbruch das einfache Markieren von Änderungen im Arbeitsspeicher beinhaltet, ist der Prozess sehr effizient, sodass die Sperren nicht sehr lange aufrechterhalten werden müssen.
 
 - **sLog**
 

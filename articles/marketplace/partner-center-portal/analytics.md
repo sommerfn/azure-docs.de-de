@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332127"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73813193"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 
@@ -247,10 +248,10 @@ Sie erhalten eine Popupbenachrichtigung und eine E-Mail mit einem Link zum Dashb
 | Kommunikationssprache des Kunden  | Kunde| Die vom Kunden für die Kommunikation bevorzugte Sprache.||
 | Firmenname des Kunden | Kunde, Bestellung | Der vom Kunden angegebene Firmenname. Der Name kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.|  |
 | Land des Kunden | Kunde, Bestellung | Der vom Kunden angegebene Ländername. Das Land kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land unterscheiden.|  |
-| E-Mail-Adresse des Kunden| Kunde| Die vom Endkunden angegebene E-Mail-Adresse. Die E-Mail kann sich von der im Azure-Abonnement eines Kunden angegebenen E-Mail-Adresse unterscheiden.||
+| E-Mail-Adresse des Kunden| Kunde| Die vom Endkunden angegebene E-Mail-Adresse. Die E-Mail-Adresse kann sich von der im Azure-Abonnement eines Kunden angegebenen E-Mail-Adresse unterscheiden.||
 | Vorname des Kunden| Kunde| Der vom Kunden angegebene Name. Der Name kann sich von dem im Azure-Abonnement eines Kunden angegebenen Namen unterscheiden.| |
 | Kunden-ID | Kunde, Bestellung | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements haben.|  |
-| Postleitzahl des Kunden  | Kunde| Die vom Kunden angegebene Postleitzahl. Der Code kann sich von der im Azure-Abonnement eines Kunden angegebenen Postleitzahl unterscheiden.| |
+| Postleitzahl des Kunden  | Kunde| Die vom Kunden angegebene Postleitzahl. Die Postleitzahl kann sich von der im Azure-Abonnement eines Kunden angegebenen Postleitzahl unterscheiden.| |
 | Bundesland/Kanton des Kunden| Kunde| Das vom Kunden angegebene Bundesland oder der angegebene Kanton. Das Bundesland bzw. der Kanton kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.| |
 | Erwerbsdatum| Kunde| Das erste Datum, an dem der Kunde ein von Ihnen veröffentlichtes Angebot erworben hat.| |
 | Verlustdatum| Kunde| Das letzte Datum, an dem der Kunde das letzte aller zuvor erworbenen Angebote storniert hat.||

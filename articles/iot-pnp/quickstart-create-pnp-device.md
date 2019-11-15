@@ -8,22 +8,22 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 019dbe8b977932c6a806f7efca8c0724597718d8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861209"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818073"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts (Vorschauversion, Windows)
 
-Mit einem _Gerätefunktionsmodell_ (Device Capability Model, DCM) werden die Funktionen eines IoT Plug & Play-Geräts beschrieben. Ein Gerätefunktionsmodell ist häufig einer Produkt-SKU zugeordnet. Die Funktionen, die im Gerätefunktionsmodell definiert sind, werden als wiederverwendbare Schnittstellen organisiert. Sie können ein Gerüst eines Gerätecodes aus einem Gerätefunktionsmodell generieren. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie VS Code zum Erstellen eines IoT Plug & Play-Geräts mit einem Gerätefunktionsmodell verwenden.
+Mit einem _Gerätefunktionsmodell_ (Device Capability Model, DCM) werden die Funktionen eines IoT Plug & Play-Geräts beschrieben. Ein Gerätefunktionsmodell ist häufig einer Produkt-SKU zugeordnet. Die Funktionen, die im Gerätefunktionsmodell definiert sind, werden als wiederverwendbare Schnittstellen organisiert. Sie können ein Gerüst eines Gerätecodes aus einem Gerätefunktionsmodell generieren. In diesem Schnellstart wird veranschaulicht, wie Sie VS Code unter Windows zum Erstellen eines IoT Plug & Play-Geräts mit einem Gerätefunktionsmodell verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Abschließen dieses Schnellstarts müssen Sie auf Ihrem lokalen Computer die folgende Software installieren:
 
-* [Visual Studio (Community, Professional oder Enterprise):](https://visualstudio.microsoft.com/downloads/) Stellen Sie sicher, dass Sie die Komponente **NuGet-Paket-Manager** und die Workload **Desktopentwicklung mit C++** aktivieren, wenn Sie Visual Studio installieren.
+* [Buildtools für Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) mit Workloads für **C++-Buildtools** und **NuGet-Paket-Manager-Komponenten**. Oder Sie haben bereits [Visual Studio (Community, Professional oder Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 oder 2015 mit denselben Workloads installiert.
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/).
 * [Visual Studio Code](https://code.visualstudio.com/).
@@ -38,7 +38,7 @@ Führen Sie die folgenden Schritte aus, um das Erweiterungspaket [Azure IoT Tool
 
 ### <a name="install-the-azure-iot-explorer"></a>Installieren von Azure IoT-Explorer
 
-Laden Sie das Tool Azure IoT-Explorer von der Seite mit dem [aktuellen Release](https://github.com/Azure/azure-iot-explorer/releases) herunter.
+Laden Sie das neueste Release von **Azure IoT Explorer** von der [Repositoryseite](https://github.com/Azure/azure-iot-explorer/releases) des Tools herunter, und installieren Sie es, indem Sie die MSI-Datei unter „Assets“ für das neueste Update auswählen.
 
 ### <a name="get-the-connection-string-for-your-company-model-repository"></a>Abrufen der Verbindungszeichenfolge für das Modellrepository Ihres Unternehmens
 
@@ -77,30 +77,46 @@ Führen Sie die folgenden Befehle aus, um die _IoT Hub-Verbindungszeichenfolge_ 
 az iot hub show-connection-string --hub-name [YourIoTHubName] --output table
 ```
 
+Notieren Sie sich die Geräteverbindungszeichenfolge, die wie folgt aussieht:
+
+```json
+HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}
+```
+
+Dieser Wert wird später in der Schnellstartanleitung benötigt.
+
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung
 
 ### <a name="get-azure-iot-device-sdk-for-c"></a>Abrufen des Azure IoT-Geräte-SDK für C
 
-In dieser Schnellstartanleitung bereiten Sie eine Entwicklungsumgebung vor, die Sie zum Klonen und Erstellen des Azure IoT-Geräte-SDK für C verwenden können.
+In diesem Schnellstart bereiten Sie eine Entwicklungsumgebung vor, indem Sie das Azure IoT-Geräte-SDK für C mittels [Vcpkg](https://github.com/microsoft/vcpkg) installieren.
 
-1. Öffnen Sie eine Eingabeaufforderung. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
+1. Öffnen Sie eine Eingabeaufforderung. Führen Sie den folgenden Befehl aus, um Vcpkg zu installieren:
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
+
+    .\bootstrap-vcpkg.bat
     ```
 
-    Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
-
-1. Erstellen Sie im Stammverzeichnis des lokalen Repositoryklons das Unterverzeichnis `pnp_app`. Sie verwenden diesen Ordner für die Gerätemodelldateien und den Gerätecode-Stub.
+    Führen Sie dann Folgendes aus, um die benutzerweite [Integration](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md) zu verbinden (Hinweis: erfordert bei der ersten Verwendung Administratorrechte):
 
     ```cmd/sh
-    cd azure-iot-sdk-c
-    mkdir pnp_app
+    .\vcpkg.exe integrate install
+    ```
+
+1. Installieren Sie Vcpkg für das Azure IoT-C-Geräte-SDK:
+
+    ```cmd/sh
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
 ## <a name="author-your-model"></a>Erstellen des Modells
 
 In dieser Schnellstartanleitung verwenden Sie ein vorhandenes Beispiel für ein Gerätefunktionsmodell und die zugehörigen Schnittstellen.
+
+1. Erstellen Sie das Verzeichnis `pnp_app` auf dem lokalen Laufwerk.
 
 1. Laden Sie das [Gerätefunktionsmodell](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) und das [Schnittstellenbeispiel](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) herunter, und speichern Sie die Dateien im Ordner `pnp_app`.
 
@@ -115,60 +131,63 @@ In dieser Schnellstartanleitung verwenden Sie ein vorhandenes Beispiel für ein 
 
 ## <a name="generate-the-c-code-stub"></a>Generieren des C-Code-Stubs
 
-Da Sie jetzt über ein Gerätefunktionsmodell und die zugeordneten Schnittstellen verfügen, können Sie den Gerätecode generieren, mit dem das Modell implementiert wird. Generieren Sie wie folgt den C-Code-Stub in VS Code:
+Da Sie jetzt über ein Gerätefunktionsmodell und die zugeordneten Schnittstellen verfügen, können Sie den Gerätecode generieren, mit dem das Modell implementiert wird. So generieren Sie den C-Codestub in VS Code
 
-1. Drücken Sie bei geöffnetem Ordner mit den Gerätefunktionsmodell-Dateien die Tastenkombination **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen. Geben Sie **IoT Plug & Play** ein, und wählen Sie **Generate Device Code Stub** (Gerätecode-Stub generieren).
+1. Drücken Sie bei geöffnetem Ordner mit den DCM-Dateien die Tastenkombination **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen. Geben Sie **IoT Plug & Play** ein, und wählen Sie **Gerätecodestub generieren** aus.
 
     > [!NOTE]
-    > Wenn Sie das Hilfsprogramm „IoT Plug & Play-Codegenerator“ zum ersten Mal verwenden, dauert der Download einige Sekunden.
+    > Wenn Sie die IoT Plug & Play-Codegenerator-Befehlszeilenschnittstelle zum ersten Mal verwenden, dauert es einige Sekunden, bis alles heruntergeladen und automatisch installiert wurde.
 
-1. Wählen Sie die Gerätefunktionsmodell-Datei aus, die Sie verwenden möchten, um den Gerätecode-Stub zu generieren.
+1. Wählen Sie die DCM-Datei aus, mit der Sie den Gerätecode-Stub generieren möchten.
 
 1. Geben Sie den Projektnamen **sample_device** ein. Dies ist der Name für Ihre Geräteanwendung.
 
 1. Wählen Sie **ANSI C** als Sprache aus.
 
-1. Wählen Sie **CMake-Projekt** als Projekttyp aus.
-
 1. Wählen Sie **Via IoT Hub device connection string** (Über IoT Hub-Geräteverbindungszeichenfolge) als Verbindungsmethode aus.
 
-1. VS Code öffnet ein neues Fenster mit generierten Gerätecode-Stubdateien.
+1. Wählen Sie **CMake Project on Windows** (CMake-Projekt unter Windows) als Projektvorlage aus.
+
+1. Wählen Sie **Via Vcpkg** (Über Vcpkg) als Methode zum Einschließen des Geräte-SDK aus.
+
+1. Ein neuer Ordner mit dem Namen **sample_device** wird am selben Speicherort wie die DCM-Datei erstellt. Dort befinden sich die generierten Gerätecodestub-Dateien. VS Code öffnet zum Anzeigen dieser Dateien ein neues Fenster.
     ![Gerätecode](media/quickstart-create-pnp-device/device-code.png)
 
 ## <a name="build-the-code"></a>Erstellen des Codes
 
-Sie verwenden das Geräte-SDK, um den generierten Gerätecode-Stub zu erstellen. Die von Ihnen erstellte Anwendung simuliert ein Gerät, mit dem eine Verbindung mit einem IoT-Hub hergestellt wird. Die Anwendung sendet Telemetriedaten und Eigenschaften und empfängt Befehle.
+Sie erstellen den generierten Gerätecodestub gemeinsam mit dem Geräte-SDK. Die von Ihnen erstellte Anwendung simuliert ein Gerät, mit dem eine Verbindung mit einem IoT-Hub hergestellt wird. Die Anwendung sendet Telemetriedaten und Eigenschaften und empfängt Befehle.
 
-1. Öffnen Sie in VS Code die Datei `CMakeLists.txt` im Stammordner des Geräte-SDK.
-
-1. Fügen Sie die unten angegebene Zeile am Ende der Datei `CMakeLists.txt` hinzu, um beim Kompilieren den Ordner mit dem Gerätecode-Stub einzubinden:
-
-    ```txt
-    add_subdirectory(pnp_app/sample_device)
-    ```
-
-1. Erstellen Sie im Stammordner des Geräte-SDK den Unterordner „cmake“, und navigieren Sie zu diesem Ordner:
+1. Erstellen Sie im Ordner `sample_device` den Unterordner `cmake`, und navigieren Sie zu diesem Ordner:
 
     ```cmd\sh
     mkdir cmake
     cd cmake
     ```
 
-1. Führen Sie die folgenden Befehle aus, um das Geräte-SDK und den generierten Code-Stub zu erstellen:
+1. Führen Sie die folgenden Befehle aus, um den generierten Codestub zu erstellen (wobei Sie den Platzhalter durch das Verzeichnis des Vcpkg-Repositorys ersetzen):
 
     ```cmd\sh
-    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
-    cmake --build . -- /m /p:Configuration=Release
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
     ```
+    
+    > [!NOTE]
+    > Wenn Sie Visual Studio 2017 oder 2015 verwenden, müssen Sie den CMake-Generator entsprechend den verwendeten Buildtools angeben:
+    >```cmd\sh
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
 
     > [!NOTE]
     > Falls CMake Ihren C++-Compiler nicht finden kann, treten beim Ausführen des obigen Befehls Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) aus.
 
-1. Führen Sie nach dem erfolgreichen Abschluss des Buildvorgangs Ihre Anwendung aus, und übergeben Sie die IoT Hub-Geräteverbindungszeichenfolge als Parameter.
+1. Führen Sie nach erfolgreichem Abschluss des Buildvorgangs Ihre Anwendung aus, und übergeben Sie dabei die IoT-Hub-Geräteverbindungszeichenfolge als Parameter.
 
     ```cmd\sh
-    cd azure-iot-sdk-c\cmake\pnp_app\sample_device\Release\
-    sample_device.exe "[IoT Hub device connection string]"
+    .\Debug\sample_device.exe "[IoT Hub device connection string]"
     ```
 
 1. Die Geräteanwendung beginnt mit dem Senden von Daten an IoT Hub.
@@ -181,7 +200,7 @@ Sie verwenden das Geräte-SDK, um den generierten Gerätecode-Stub zu erstellen.
 
 Zum Überprüfen des Gerätecodes mit **Azure IoT-Explorer** müssen Sie die Dateien im Modellrepository veröffentlichen.
 
-1. Drücken Sie bei geöffnetem Ordner mit den Gerätefunktionsmodell-Dateien **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen. Geben Sie **IoT Plug & Play: Submit files to Model Repository** (IoT Plug & Play: Dateien an Modellrepository übermitteln) ein, und wählen Sie diese Option aus.
+1. Drücken Sie bei geöffnetem Ordner mit den Gerätefunktionsmodell-Dateien in VS Code **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen. Geben Sie **IoT Plug & Play: Submit files to Model Repository** (IoT Plug & Play: Dateien an Modellrepository übermitteln) ein, und wählen Sie diese Option aus.
 
 1. Wählen Sie die Dateien `SampleDevice.capabilitymodel.json` und `EnvironmentalSensor.interface.json` aus.
 
@@ -190,7 +209,7 @@ Zum Überprüfen des Gerätecodes mit **Azure IoT-Explorer** müssen Sie die Dat
     > [!NOTE]
     > Sie benötigen die Verbindungszeichenfolge nur, wenn Sie sich zum ersten Mal am Repository anmelden.
 
-1. Im VS Code-Ausgabefenster und anhand der Benachrichtigung können Sie überprüfen, ob die Veröffentlichung der Dateien erfolgreich war.
+1. Im VS Code-Ausgabefenster und anhand der Benachrichtigung können Sie sich vergewissern, dass die Dateien erfolgreich veröffentlicht wurden.
 
     > [!NOTE]
     > Falls Sie beim Veröffentlichen der Gerätemodelldateien Fehler erhalten, können Sie den Befehl **IoT Plug & Play: Sign out Model Repository** (IoT Plug & Play: Modellrepository abmelden) verwenden, um sich abzumelden, und die Schritte dann erneut ausführen.
@@ -203,22 +222,21 @@ Zum Überprüfen des Gerätecodes mit **Azure IoT-Explorer** müssen Sie die Dat
 
 1. Nachdem Sie eine Verbindung hergestellt haben, wird die Seite mit der Geräteübersicht angezeigt.
 
-1. Wählen Sie zum Hinzufügen Ihres Unternehmensrepositorys die Option **Einstellungen**, **+ Neu** und dann **Company repository** (Unternehmensrepository).
-
-1. Fügen Sie Ihre Verbindungszeichenfolge für das Modellrepository Ihres Unternehmens hinzu. Wählen Sie **Verbinden**aus.
+1. Wählen Sie zum Hinzufügen Ihres Unternehmensrepositorys **Einstellungen**, **+ Add module definition source** (Moduldefinitionsquelle hinzufügen) und dann **Company repository** (Unternehmensrepository) aus. Fügen Sie die Verbindungszeichenfolge für das Modellrepository Ihres Unternehmens hinzu, und wählen Sie **Save and Connect** (Speichern und verbinden) aus.
 
 1. Suchen Sie auf der Seite mit der Geräteübersicht nach der Geräteidentität, die Sie zuvor erstellt haben, und wählen Sie sie aus, um weitere Details anzuzeigen.
 
-1. Erweitern Sie die Schnittstelle mit der ID **urn:azureiot:EnvironmentalSensor:1**, um die IoT Plug & Play-Primitive anzuzeigen: Eigenschaften, Befehle und Telemetriedaten.
+1. Erweitern Sie die Schnittstelle mit der ID **urn:<IHR_SCHNITTSTELLENNAME>:EnvironmentalSensor:1**, um die IoT Plug & Play-Grundtypen anzuzeigen: Eigenschaften, Befehle und Telemetriedaten. Der angezeigte Schnittstellenname ist der Name, den Sie beim Erstellen des Modells eingegeben haben.
 
-1. Wählen Sie die Seite **Telemetrie** aus, um die vom Gerät gesendeten Telemetriedaten anzuzeigen.
+1. Wählen Sie die Seite **Telemetrie** aus, und klicken Sie auf _Start_, um die vom Gerät gesendeten Telemetriedaten anzuzeigen.
 
 1. Wählen Sie die Seite **Properties(non-writable)** (Eigenschaften (nicht schreibbar)) aus, um die vom Gerät gemeldeten nicht schreibbaren Eigenschaften anzuzeigen.
 
 1. Wählen Sie die Seite **Properties(writable)** (Eigenschaften (schreibbar)) aus, um die schreibbaren Eigenschaften anzuzeigen, die Sie aktualisieren können.
 
-1. Erweitern Sie die Eigenschaft **name**, aktualisieren Sie sie mit einem neuen Namen, und wählen Sie **update writable property** (Schreibbare Eigenschaft aktualisieren) aus. 
-2. Klicken Sie zum Anzeigen des neuen Namens in der Spalte **Gemeldete Eigenschaft** oben auf der Seite auf die Schaltfläche **Aktualisieren**.
+1. Erweitern Sie die **name**-Eigenschaft, aktualisieren Sie sie mit einem neuen Namen, und wählen Sie **Update writable property** (Schreibbare Eigenschaft aktualisieren) aus.
+
+1. Klicken Sie zum Anzeigen des neuen Namens in der Spalte **Gemeldete Eigenschaft** oben auf der Seite auf die Schaltfläche **Aktualisieren**.
 
 1. Wählen Sie die Seite **Befehl** aus, um alle Befehle anzuzeigen, die vom Gerät unterstützt werden.
 

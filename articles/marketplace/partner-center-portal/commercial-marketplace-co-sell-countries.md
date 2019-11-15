@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 1c3227c89a6355c99cf31b48720dd022de8aae4a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dc27756cd231bc744e539321af7884cc85ca1e9a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076038"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812931"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Co-Selling – Länder- und Regionscodes
 
@@ -20,7 +21,7 @@ Verwenden Sie diese zweistelligen Länder-/Regionscodes, wenn Sie [Kontaktinform
 
 Wenn der Kontakt alle Länder/Regionen abdeckt, verwenden Sie den dreistelligen Code „OOO“.
 
-Wenn ein Kontakt mehr als ein Land bzw. eine Region umfasst, geben Sie jeden der zweistelligen Codes durch ein Komma getrennt ein (z. B. „US, CA, FR“ ohne Anführungszeichen).
+Wenn ein Kontakt mehrere Länder bzw. Regionen umfasst, geben Sie jeden der zweistelligen Codes durch ein Komma getrennt ein (z. B. „US, CA, FR“, ohne Anführungszeichen).
 
 ## <a name="countryregion-table"></a>Tabelle für Land/Region
 

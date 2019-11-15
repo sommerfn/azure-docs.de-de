@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: a48ba0d2d691314a1ca7c91ac7ae27b62fbb379b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695192"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825240"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -49,7 +49,7 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
 
 * Er verwendet die [SSH.NET](https://github.com/sshnet/SSH.NET)-Bibliothek, die eine Open Source-SSH-Bibliothek (Secure Shell) mit Unterstützung für .NET ist.
 
-* Standardmäßig können SFTP-SSH-Aktionen Dateien lesen oder schreiben, die *1 GB oder kleiner* sind, aber jeweils nur in Blöcken von *15 MB*. Um Dateien zu verarbeiten, die größer als 15 MB sind, können Aktionen auf [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. Die Aktion „Copy File“ (Datei kopieren) unterstützt jedoch nur 15 MB große Dateien, da diese Aktion keine Nachrichtensegmentierung unterstützt. SFTP-SSH-Trigger unterstützen keine Segmentierung.
+* Standardmäßig können SFTP-SSH-Aktionen Dateien lesen oder schreiben, die *1 GB oder kleiner* sind, aber jeweils nur in Blöcken von *15 MB*. Um Dateien zu verarbeiten, die größer als 15 MB sind, können Aktionen auf [Nachrichtensegmentierung](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. Um große Dateien hochzuladen, benötigen Sie sowohl Lese- als auch Schreibberechtigungen. Die Aktion „Copy File“ (Datei kopieren) unterstützt jedoch nur 15 MB große Dateien, da diese Aktion keine Nachrichtensegmentierung unterstützt. SFTP-SSH-Trigger unterstützen keine Segmentierung.
 
 * Er stellt die Aktion **Ordner erstellen** bereit, wodurch ein Ordner unter dem angegebenen Pfad auf dem SFTP-Server erstellt wird.
 
@@ -61,7 +61,7 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Ihre SFTP-Serveradresse und Kontoanmeldeinformationen, über die Ihre Logik-App auf Ihr SFTP-Konto zugreifen kann. Außerdem benötigen Sie Zugriff auf einen privaten SSH-Schlüssel und das Kennwort für den privaten SSH-Schlüssel.
+* Ihre SFTP-Serveradresse und Kontoanmeldeinformationen, über die Ihre Logik-App auf Ihr SFTP-Konto zugreifen kann. Außerdem benötigen Sie Zugriff auf einen privaten SSH-Schlüssel und das Kennwort für den privaten SSH-Schlüssel. Zum Verwenden der Blockerstellung beim Hochladen großer Dateien benötigen Sie sowohl Lese- als auch Schreibberechtigungen.
 
   > [!IMPORTANT]
   >

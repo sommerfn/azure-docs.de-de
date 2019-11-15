@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure Event Grid zum Automatisieren der Größenänderung hochgeladener Bilder | Microsoft Docs
-description: Azure Event Grid kann bei Blob-Uploads in Azure Storage ausgelöst werden. Sie können diese Funktion verwenden, um in Azure Storage hochgeladene Bilddateien an andere Dienste (z. B. Azure Functions) für die Größenänderung und andere Optimierungen zu senden.
+title: 'Tutorial: Verwenden von Azure Event Grid zum Automatisieren der Größenänderung hochgeladener Bilder'
+description: 'Tutorial: Azure Event Grid kann bei Blob-Uploads in Azure Storage ausgelöst werden. Sie können diese Funktion verwenden, um in Azure Storage hochgeladene Bilddateien an andere Dienste (z. B. Azure Functions) für die Größenänderung und andere Optimierungen zu senden.'
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 11/05/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c09e2cd812dd34976218ff71036734466943e8cd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4359ce859e3fbe270785c3cf4bbc673e71d19799
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "69623869"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718222"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 

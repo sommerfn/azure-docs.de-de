@@ -4,15 +4,16 @@ description: Vorgehensweise zum Konfigurieren der SKUs für eine verwaltete Azur
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: ef4ea2419c64d0376023ea5d291460df48a51c63
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943441"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826175"
 ---
 # <a name="azure-application-skus-tab"></a>Registerkarte „SKUs“ für Azure-Anwendungen
 
@@ -108,7 +109,7 @@ Geben Sie die folgenden Paketdetails an.  Die mit einem Sternchen gekennzeichnet
 Beachten Sie die folgenden Schlüsseleigenschaften dieser Ressource:
     - „kind“: Der Wert muss im Fall einer im Marketplace verwalteten Anwendung „Marketplace“ lauten.
     - „ManagedResourceGroupId“: Die Ressourcengruppe im Abonnement des Kunden, in der alle Ressourcen, die in der Datei „applianceMainTemplate.json“ definiert sind, bereitgestellt werden.
-    - „PublisherPackageId“: Die Zeichenfolge, die das Paket eindeutig identifiziert. Dieser Wert muss durch Verketten von [publisherId].[OfferId]-preview[SKUID].[PackageVersion] erstellt werden.
+    - „PublisherPackageId“: Die Zeichenfolge, die das Paket eindeutig identifiziert. Dieser Wert muss durch die Verkettung von [publisherId].[OfferId]-preview[SKUID].[PackageVersion] erstellt werden.
 
   >[!IMPORTANT] 
   >Dieses Paket sollte alle geschachtelten Vorlagen oder Skripts enthalten, die erforderlich sind, um diese Anwendung erfolgreich bereitzustellen. Diese Dateien müssen sich im Stammordner befinden:  „mainTemplate.json“, „applianceMainTemplate.json“ und „applianceCreateUIDefinition.json“.
@@ -122,7 +123,7 @@ Beachten Sie die folgenden Schlüsseleigenschaften dieser Ressource:
 Für eine verwaltete Anwendung müssen Sie „Autorisierung“ und „Richtlinieneinstellungen“ konfigurieren.
 
 
-#### <a name="authorization"></a>Autorisierung
+#### <a name="authorization"></a>Authorization
 
 Fügen Sie den Azure Active Directory-Bezeichner des Benutzers, der Gruppe oder der Anwendung hinzu, dem oder der Sie die Berechtigung für die verwaltete Ressourcengruppe erteilen möchten. Die erteilte Berechtigung ist durch die Rollendefinitions-ID gekennzeichnet. Dies kann ein „Besitzer“, ein „Mitwirkender“ oder eine benutzerdefinierte Rolle sein.
 
@@ -136,7 +137,7 @@ Fügen Sie die Richtlinien hinzu, denen die verwaltete Anwendung entspricht. Wei
 **So erstellen Sie eine neue Autorisierung:**
 
 1. Wählen Sie unter **Autorisierung** die Option **+ Neue Autorisierung** aus.
-2. Geben Sie für **Prinzipal-ID** den Azure Active Directory-Bezeichner des Benutzers, der Gruppe oder der Anwendung ein, dem oder der Sie die Berechtigung für die verwaltete Ressourcengruppe erteilen möchten. Die erteilte Berechtigung ist durch die Rollendefinition gekennzeichnet.
+2. Geben Sie für **Prinzipal-ID** den Azure Active Directory-Bezeichner des Benutzers, der Gruppe oder der Anwendung ein, dem oder der Sie die Berechtigung für die verwaltete Ressourcengruppe erteilen möchten. Die erteilte Berechtigung wird durch die Rollendefinition angegeben.
 3. Für **Rollendefinition** wählen Sie eine der folgenden Optionen in der Dropdownliste aus:  „Besitzer“ oder „Mitwirkender“. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
 >[!NOTE] 

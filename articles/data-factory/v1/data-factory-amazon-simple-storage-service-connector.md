@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten aus Amazon Simple Storage Service mithilfe von Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus Amazon Simple Storage Service mithilfe von Data Factory
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Amazon Simple Storage Service (S3) verschieben.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec44ae7956669ee4e16d2c6ca00794c566272037
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 970e8d2b960c3a4be1c5208d7fa3a21bc05d9e9a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892009"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683217"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Verschieben von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

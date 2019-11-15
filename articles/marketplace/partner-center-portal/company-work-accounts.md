@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 744b4e4975c5d4cec5c705e639e9cc8d252a7dd6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4783d3ac8ef78929621179d87f9c8948f6dd079c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194284"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811998"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Geschäftskonten und Partner Center
 
@@ -48,7 +49,7 @@ Weitere Informationen zum Hinzufügen von benutzerdefinierten Domänen in Azure 
 
 ## <a name="troubleshoot-work-email-sign-in"></a>Problembehandlung: Anmeldedaten für geschäftliche E-Mail-Konten
 
-Wenn Sie Probleme mit der Anmeldung bei Ihrem Geschäftskonto haben (auch bekannt als Azure AD-Mandant), suchen Sie unten im Diagramm das Szenario, das am besten zu Ihrer Situation passt, und führen Sie dann die empfohlenen Schritte aus.
+Wenn Sie Probleme mit der Anmeldung bei Ihrem Geschäftskonto haben (auch bekannt als Azure AD-Mandant), suchen Sie unten im Diagramm das Szenario, das Ihrer Situation am besten entspricht, und führen Sie dann die empfohlenen Schritte aus.
 
 ![Diagramm für Problembehandlung: Anmeldedaten für Geschäftskonto](./media/onboarding-aad-flow.png)
 

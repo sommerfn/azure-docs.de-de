@@ -1,5 +1,5 @@
 ---
-title: VNET-Endpunkte und -Regeln für Einzel- und Pooldatenbanken  in Azure SQL | Microsoft-Dokumentation
+title: VNET-Endpunkte und -Regeln für Einzel- und Pooldatenbanken
 description: Markieren Sie ein Subnetz als VNET-Dienstendpunkt. Nutzen Sie dann den Endpunkt als VNET-Regel für die Zugriffssteuerungsliste Ihrer Azure SQL-Datenbank-Instanz. Ihre Azure SQL-Datenbank-Instanz akzeptiert anschließend Nachrichten von allen virtuellen Computern und anderen Knoten im Subnetz.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f171181aa56287561aba3159f5039f70165dc8ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828824"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807510"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver
 

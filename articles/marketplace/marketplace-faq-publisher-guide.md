@@ -4,15 +4,16 @@ description: Antworten auf häufig gestellte Fragen zu Azure Marketplace und Mic
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330242"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822981"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
 
@@ -246,7 +247,7 @@ Gekündigte Lizenzen unterliegen der in diesen FAQ genannten Erstattungsrichtlin
 
 **Werden Erstattungen für nutzungsbasierte Angebote unterstützt?**
 
-Alle auf dem Verbrauch basierenden Gebühren – ob stündliche VMs oder benutzerdefinierte Zähler – sind bei einem Abbruch nicht erstattungsfähig. Nachdem die Nutzung erfolgt ist, werden die Gebühren von der Handelsplattform von Microsoft verarbeitet, und alle Streitigkeiten im Zusammenhang mit der Dienstqualität, bei denen eine Rückerstattung angefordert wird, werden außerhalb von Microsoft-Systemen direkt zwischen dem Herausgeber und dem Kunden behandelt. Für alle Angebote, die eine Pauschalgebühr zuzüglich getaktete Abrechnung unterstützen, gilt die standardmäßige Erstattungsrichtlinie für Pauschalgebühren.
+Alle auf dem Verbrauch basierenden Gebühren – ob stündliche VMs oder benutzerdefinierte Verbrauchseinheiten – sind bei einem Abbruch nicht erstattungsfähig. Nachdem die Nutzung erfolgt ist, werden die Gebühren von der Handelsplattform von Microsoft verarbeitet, und alle Streitigkeiten im Zusammenhang mit der Dienstqualität, bei denen eine Rückerstattung angefordert wird, werden außerhalb von Microsoft-Systemen direkt zwischen dem Herausgeber und dem Kunden verhandelt. Für alle Angebote, die eine Pauschalgebühr zuzüglich getaktete Abrechnung unterstützen, gilt die standardmäßige Erstattungsrichtlinie für Pauschalgebühren.
 
 **Ist es möglich, Pläne während der Laufzeit zu ändern?**
 

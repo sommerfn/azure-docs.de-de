@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 6fecd143055da2829ac49cee4f50d448a37a6e1b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6526f27177b5fb8640deb5302d8cb3aa4acf1a97
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514885"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824273"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -174,7 +174,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     Azure Files verfügt noch über zwei weitere Möglichkeiten zur Verwaltung der Zugriffssteuerung:
 
-    - Sie können Shared Access Signatures (SAS) zum Generieren von Token verwenden, die über bestimmte Berechtigungen verfügen und für ein angegebenes Zeitintervall gültig sind. Sie können beispielsweise ein Token mit Lesezugriff auf eine bestimmte Datei generieren, das nach zehn Minuten abläuft. Jeder Benutzer, der während des Gültigkeitszeitraums über das Token verfügt, hat für einen Zeitraum von zehn Minuten Lesezugriff auf die Datei. Shared Access Signature-Schlüssel werden derzeit nur per REST-API oder in Clientbibliotheken unterstützt. Sie müssen die Azure-Dateifreigabe per SMB einbinden, indem Sie die Speicherkontoschlüssel verwenden.
+    - Sie können Shared Access Signatures (SAS) zum Generieren von Token verwenden, die über bestimmte Berechtigungen verfügen und für ein angegebenes Zeitintervall gültig sind. Sie können beispielsweise ein Token mit Lesezugriff auf eine bestimmte Datei generieren, das nach zehn Minuten abläuft. Jeder Benutzer, der während des Gültigkeitszeitraums über das Token verfügt, hat für einen Zeitraum von zehn Minuten Lesezugriff auf die Datei. SAS-Schlüssel (Shared Access Signature) werden nur per REST-API oder in Clientbibliotheken unterstützt. Sie müssen die Azure-Dateifreigabe per SMB einbinden, indem Sie die Speicherkontoschlüssel verwenden.
 
     - Für die Azure-Dateisynchronisierung werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. Da Windows Server bereits bei Active Directory authentifiziert werden kann, stellt die Azure-Dateisynchronisierung eine ausgezeichnete Überbrückungsmaßnahme dar, bis die volle Unterstützung für eine Active Directory-basierte Authentifizierung und ACL-Unterstützung bereitgestellt wird.
     

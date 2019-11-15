@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 44e7bbde40dbd4b79a6ce3735ab5a1ac81421d3b
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274201"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622559"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 
@@ -292,4 +292,4 @@ Verwenden Sie zum Vergleichen der Ergebnisse die **changes**-Eigenschaft in **re
 
 - Informationen zur verwendeten Sprache finden Sie unter [Einfache Abfragen](../samples/starter.md).
 - Informationen zur anspruchsvolleren Nutzung finden Sie unter [Erweiterte Abfragen](../samples/advanced.md).
-- Erfahren Sie, wie Sie [Ressourcen untersuchen](../concepts/explore-resources.md).
+- Erfahren Sie mehr über das [Erkunden von Ressourcen](../concepts/explore-resources.md).

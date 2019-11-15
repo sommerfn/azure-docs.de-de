@@ -1,5 +1,5 @@
 ---
-title: Überwachen der Datenbankleistung mit Intelligent Insights – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Überwachen der Datenbankleistung mit Intelligent Insights
 description: Die in Intelligent Insights von Azure SQL-Datenbank integrierte Logik überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu schlechter Leistung führen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262157"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810184"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung
 

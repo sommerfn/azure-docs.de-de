@@ -1,5 +1,5 @@
 ---
-title: Schützen der öffentlichen Endpunkte verwalteter Instanzen – verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Schützen öffentlicher Endpunkte verwalteter Instanzen
 description: Sicheres Verwenden eines öffentlichen Endpunkts in Azure mit einer verwalteten Instanz
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: c7f57a636e95bb137dd4285b8f9ce8343b27d2a0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567366"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821736"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Sicheres Verwenden einer verwalteten Azure SQL-Datenbank-Instanz mit öffentlichen Endpunkten
 

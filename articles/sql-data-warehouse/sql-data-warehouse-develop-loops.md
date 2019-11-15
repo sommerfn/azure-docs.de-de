@@ -1,5 +1,5 @@
 ---
-title: Verwenden von T-SQL-Schleifen in Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Verwenden von T-SQL-Schleifen
 description: Tipps zum Verwenden von T-SQL-Schleifen und Ersetzen von Cursorn in Azure SQL Data Warehouse für die Entwicklung von Lösungen
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: e27edcc1383a235fbdb9513066e69e2f680ea2f9
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: b57358e32bda83ef51fe67aa1057411d51773fa6
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479624"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685826"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Verwenden von T-SQL-Schleifen in SQL Data Warehouse
 Tipps zum Verwenden von T-SQL-Schleifen und Ersetzen von Cursorn in Azure SQL Data Warehouse für die Entwicklung von Lösungen

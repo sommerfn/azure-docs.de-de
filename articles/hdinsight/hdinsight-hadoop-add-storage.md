@@ -2,24 +2,24 @@
 title: Hinzufügen zusätzlicher Azure-Speicherkonten zu HDInsight
 description: Erfahren Sie, wie Sie einem vorhandenen HDInsight-Cluster zusätzliche Azure-Speicherkonten hinzufügen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8a844465f7ba2222acd7efaf100c7b682c15adb2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 10/31/2019
+ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67433519"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665472"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
 Erfahren Sie, wie Sie Skriptaktionen verwenden, um in HDInsight zusätzliche Azure Storage-*Konten* hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen Linux-basierten HDInsight-Cluster ein Storage-*Konto* hinzu. Dieser Artikel bezieht sich auf Storage-*Konten* (nicht auf das standardmäßige Clusterspeicherkonto) sowie auf nicht zusätzlichen Speicher wie z. B. [Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) und [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 > [!IMPORTANT]  
-> Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlichen Speichers zu einem Cluster, nachdem es erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka und anderen](hdinsight-hadoop-provision-linux-clusters.md).
+> Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlicher Speicherkonten zu einem Cluster, nachdem dieser erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka und anderen](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Diesem Skript werden die folgenden Parameter übergeben:
 
 * __Azure-Speicherkontoschlüssel__: Ein Schlüssel, der Zugriff auf das Speicherkonto gewährt.
 
-* __-p__ (optional): Bei Angabe wird der Schlüssel nicht verschlüsselt und wird in der core-site.xml-Datei als Nur-Text gespeichert.
+* __-p__ (optional): Bei Angabe wird der Schlüssel nicht verschlüsselt und im Klartext in der Datei „core-site.xml“ gespeichert.
 
 Während der Verarbeitung führt dieses Skript folgende Aktionen aus:
 
@@ -112,7 +112,7 @@ Wenn Sie sich dazu entscheiden, Ihr Speicherkonto mit den **Firewalls und virtue
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Speicherkonten werden im Azure-Portal oder in Tools nicht angezeigt
 
-Wenn Sie beim Anzeigen des HDInsight-Clusters im Azure-Portal den Eintrag __Speicherkonten__ unter __Eigenschaften__ auswählen, werden keine Speicherkonten angezeigt, die über diese Skriptaktion hinzugefügt wurden. Azure PowerShell und Azure CLI zeigen das zusätzliche Speicherkonto ebenfalls nicht an.
+Wenn Sie beim Anzeigen des HDInsight-Clusters im Azure-Portal die Option __Speicherkonten__ unter __Eigenschaften__ auswählen, werden Speicherkonten, die über diese Skriptaktion hinzugefügt wurden, nicht angezeigt. Azure PowerShell und die Azure-Befehlszeilenschnittstelle zeigen das zusätzliche Speicherkonto ebenfalls nicht an.
 
 Die Speicherinformationen werden nicht angezeigt, da das Skript nur die core-site.xml-Konfiguration für den Cluster ändert. Diese Informationen werden nicht verwendet, wenn Sie die Clusterinformationen mit Azure-Verwaltungs-APIs abrufen.
 
@@ -120,49 +120,43 @@ Verwenden Sie die Ambari-REST-API, um Speicherkontoinformationen anzuzeigen, die
 
 ### <a name="powershell"></a>PowerShell
 
-Ersetzen Sie `CLUSTERNAME` durch den Clusternamen mit korrekter Groß-/Kleinschreibung. Geben Sie den folgenden Befehl ein, um zunächst die verwendete Konfigurationsversion des Diensts zu identifizieren:
-
-```powershell
-# getting service_config_version
-$clusterName = "CLUSTERNAME"
-
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
-    -Credential $creds -UseBasicParsing
-$respObj = ConvertFrom-Json $resp.Content
-$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
-```
-
-Ersetzen Sie `ACCOUNTNAME` durch die tatsächlichen Namen. Ersetzen Sie dann `4` durch die tatsächliche Konfigurationsversion des Diensts, und geben Sie den Befehl ein. Geben Sie bei entsprechender Aufforderung das Kennwort für die Clusteranmeldung ein.
+Ersetzen Sie `CLUSTERNAME` durch den Clusternamen mit korrekter Groß-/Kleinschreibung. Ersetzen Sie `ACCOUNTNAME` durch die tatsächlichen Namen. Geben Sie bei entsprechender Aufforderung das Kennwort für die Clusteranmeldung ein.
 
 ```powershell
 # Update values
+$clusterName = "CLUSTERNAME"
 $accountName = "ACCOUNTNAME"
-$version = 4
 
 $creds = Get-Credential -UserName "admin" -Message "Enter the cluster login credentials"
-$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$version" `
+
+# getting service_config_version
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName`?fields=Clusters/desired_service_config_versions/HDFS" `
+    -Credential $creds -UseBasicParsing
+$respObj = ConvertFrom-Json $resp.Content
+
+$configVersion=$respObj.Clusters.desired_service_config_versions.HDFS.service_config_version
+
+$resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" `
     -Credential $creds
 $respObj = ConvertFrom-Json $resp.Content
 $respObj.items.configurations.properties."fs.azure.account.key.$accountName.blob.core.windows.net"
 ```
 
 ### <a name="bash"></a>Bash
-Ersetzen Sie `myCluster` durch den Clusternamen mit korrekter Groß-/Kleinschreibung.
+
+Ersetzen Sie `CLUSTERNAME` durch den Clusternamen mit korrekter Groß-/Kleinschreibung. Ersetzen Sie `PASSWORD` durch das Clusteradministrator-Kennwort. Ersetzen Sie `STORAGEACCOUNT` durch den tatsächlichen Namen des Speicherkontos.
 
 ```bash
-export CLUSTERNAME='myCluster'
+export clusterName="CLUSTERNAME"
+export password='PASSWORD'
+export storageAccount="STORAGEACCOUNT"
 
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" \
-| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
-```
+export ACCOUNTNAME='"'fs.azure.account.key.$storageAccount.blob.core.windows.net'"'
 
-Ersetzen Sie `myAccount` durch den tatsächlichen Namen des Speicherkontos. Ersetzen Sie `4` dann durch die tatsächliche Konfigurationsversion des Diensts, und geben Sie den Befehl ein:
+export configVersion=$(curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName?fields=Clusters/desired_service_config_versions/HDFS" \
+| jq ".Clusters.desired_service_config_versions.HDFS[].service_config_version")
 
-```bash
-export ACCOUNTNAME='"fs.azure.account.key.myAccount.blob.core.windows.net"'
-export VERSION='4'
-
-curl --silent -u admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=$VERSION" \
+curl --silent -u admin:$password -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations/service_config_versions?service_name=HDFS&service_config_version=$configVersion" \
 | jq ".items[].configurations[].properties[$ACCOUNTNAME] | select(. != null)"
 ```
 
@@ -172,7 +166,7 @@ Ersetzen Sie `CLUSTERNAME` in beiden Skripts durch den Clusternamen mit korrekte
 
 ```cmd
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME?fields=Clusters/desired_service_config_versions/HDFS" | ^
-jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version" 
+jq-win64 ".Clusters.desired_service_config_versions.HDFS[].service_config_version"
 ```
 
 Ersetzen Sie `ACCOUNTNAME` durch den tatsächlichen Namen des Speicherkontos. Ersetzen Sie `4` dann durch die tatsächliche Konfigurationsversion des Diensts, und geben Sie den Befehl ein:
@@ -181,9 +175,10 @@ Ersetzen Sie `ACCOUNTNAME` durch den tatsächlichen Namen des Speicherkontos. Er
 curl --silent -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=4" | ^
 jq-win64 ".items[].configurations[].properties["""fs.azure.account.key.ACCOUNTNAME.blob.core.windows.net"""] | select(. != null)"
 ```
+
 ---
 
- Die Ausgabe dieses Befehls entspricht in etwa dem folgenden Text:
+Die Ausgabe dieses Befehls entspricht in etwa dem folgenden Text:
 
     "MIIB+gYJKoZIhvcNAQcDoIIB6zCCAecCAQAxggFaMIIBVgIBADA+MCoxKDAmBgNVBAMTH2RiZW5jcnlwdGlvbi5henVyZWhkaW5zaWdodC5uZXQCEA6GDZMW1oiESKFHFOOEgjcwDQYJKoZIhvcNAQEBBQAEggEATIuO8MJ45KEQAYBQld7WaRkJOWqaCLwFub9zNpscrquA2f3o0emy9Vr6vu5cD3GTt7PmaAF0pvssbKVMf/Z8yRpHmeezSco2y7e9Qd7xJKRLYtRHm80fsjiBHSW9CYkQwxHaOqdR7DBhZyhnj+DHhODsIO2FGM8MxWk4fgBRVO6CZ5eTmZ6KVR8wYbFLi8YZXb7GkUEeSn2PsjrKGiQjtpXw1RAyanCagr5vlg8CicZg1HuhCHWf/RYFWM3EBbVz+uFZPR3BqTgbvBhWYXRJaISwssvxotppe0ikevnEgaBYrflB2P+PVrwPTZ7f36HQcn4ifY1WRJQ4qRaUxdYEfzCBgwYJKoZIhvcNAQcBMBQGCCqGSIb3DQMHBAhRdscgRV3wmYBg3j/T1aEnO3wLWCRpgZa16MWqmfQPuansKHjLwbZjTpeirqUAQpZVyXdK/w4gKlK+t1heNsNo1Wwqu+Y47bSAX1k9Ud7+Ed2oETDI7724IJ213YeGxvu4Ngcf2eHW+FRK"
 
@@ -213,7 +208,7 @@ Um dieses Problem zu umgehen, müssen Sie den vorhandenen Eintrag für das Speic
         fs.azure.account.keyprovider.mystorage.blob.core.windows.net
         fs.azure.account.key.mystorage.blob.core.windows.net
 
-4. Nachdem Sie die Schlüssel für das Speicherkonto identifiziert haben, das Sie entfernen müssen, verwenden Sie das rote "-"-Symbol rechts neben den Eintrag, um es zu löschen. Klicken Sie dann auf die Schaltfläche __Speichern__, um die Änderungen zu speichern.
+4. Nachdem Sie die Schlüssel für das zu entfernende Speicherkonto identifiziert haben, verwenden Sie das rote Symbol „-“ rechts neben dem Eintrag, um es zu löschen. Klicken Sie dann auf die Schaltfläche __Speichern__, um die Änderungen zu speichern.
 
 5. Nachdem die Änderungen gespeichert wurden, fügen Sie das Speicherkonto und den neuen Schlüsselwert mit der Skriptaktion dem Cluster hinzu.
 

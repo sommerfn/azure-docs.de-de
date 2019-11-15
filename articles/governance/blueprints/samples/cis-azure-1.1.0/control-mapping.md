@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/01/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 64af398ec4829a0336294b33fef102392b9a4099
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6549cf030772d805b063510b9931968027639511
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163879"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73583135"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 
@@ -356,11 +356,11 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich nun mit der Steuerungszuordnung der Blaupause „CIS Microsoft Azure Foundations Benchmark“ vertraut gemacht haben, lesen Sie den folgenden Artikel, um sich über die Blaupause zu informieren, oder weisen Sie die Initiative über das Azure-Portal unter „Azure Policy“ zu:
+Nachdem Sie sich nun mit der Steuerungszuordnung der Blaupause „CIS Microsoft Azure Foundations Benchmark“ vertraut gemacht haben, lesen Sie die folgenden Artikel, um mehr über diese Blaupause zu erfahren, oder weisen Sie die Initiative über das Azure-Portal unter „Azure Policy“ zu:
 
 > [!div class="nextstepaction"]
-> [Übersicht über die Blaupause „CIS Microsoft Azure Foundations Benchmark“](./index.md)
-> [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
+> [Blaupause „CIS Microsoft Azure Foundations Benchmark“ – Übersicht](./index.md)
+> [Blaupause „CIS Microsoft Azure Foundations Benchmark“ – Bereitstellungsschritte](./deploy.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

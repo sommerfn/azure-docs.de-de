@@ -5,14 +5,15 @@ author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259191"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825517"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center 
 
@@ -113,11 +114,11 @@ Wenn Sie sich außerhalb der USA befinden, können Sie möglicherweise von Begü
 
 #### <a name="payout-hold-status"></a>Aufbewahrungsstatus für Auszahlungen
 
-Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Allerdings haben Sie die Möglichkeit, Ihre Auszahlungen zurückzuhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen an Ihr Konto senden, bis Sie die Haltesperre aufheben. 
+Standardmäßig sendet Microsoft Zahlungen auf monatlicher Basis. Allerdings haben Sie die Möglichkeit, Ihre Auszahlungen zurückzuhalten, sodass keine Zahlungen an Ihr Konto gesendet werden. Wenn Sie Ihre Auszahlungen zurückhalten möchten, werden wir weiterhin alle Ihre Umsätze erfassen und die Details in Ihrer **Auszahlungszusammenfassung** aufführen. Allerdings werden wir keine Zahlungen auf Ihr Konto überweisen, bis Sie die Haltesperre aufheben. 
 
 Um Ihre Zahlungen zurückzuhalten, wechseln Sie zu **Kontoeinstellungen**. Stellen Sie unter **Finanzielle Details** im Abschnitt **Aufbewahrungsstatus für Auszahlungen** den Schieberegler auf **Ein**. Sie können den Aufbewahrungsstatus für Auszahlungen jederzeit ändern, aber beachten Sie, dass sich Ihre Entscheidung auf die nächste monatliche Auszahlung auswirkt. Wenn Sie zum Beispiel die Auszahlung für April zurückhalten möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende März auf **Ein** fest.
 
-Sobald Sie den Aufbewahrungsstatus für Auszahlungen auf **Ein** festgelegt haben, werden alle Auszahlungen zurückgehalten, bis Sie den Schieberegler wieder auf **Aus** festlegen. In diesem Fall sind Sie im nächsten monatlichen Auszahlungszyklus eingeschlossen (vorausgesetzt, alle geltenden Zahlungsschwellenwerte sind erfüllt). Wenn Sie Ihre Auszahlungen zum Beispiel zurückgehalten haben, aber eine Auszahlung im Juni veranlassen möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende Mai auf **Aus** fest.
+Sobald Sie den Aufbewahrungsstatus für Auszahlungen auf **Ein** festgelegt haben, werden alle Auszahlungen zurückgehalten, bis Sie den Schieberegler wieder auf **Aus** festlegen. In diesem Fall werden Sie in den nächsten monatlichen Auszahlungszyklus eingeschlossen (vorausgesetzt, alle geltenden Zahlungsschwellenwerte sind erfüllt). Wenn Sie Ihre Auszahlungen zum Beispiel zurückgehalten haben, aber eine Auszahlung im Juni veranlassen möchten, legen Sie den Aufbewahrungsstatus für Auszahlungen vor Ende Mai auf **Aus** fest.
 
 > [!NOTE]
 > Ihre Auswahl für den **Aufbewahrungsstatus für Auszahlungen** gilt für **alle** Umsatzquellen, die über das Microsoft Partner Center bezahlt werden, einschließlich von Azure Marketplace, AppSource, Microsoft Store, Werbung usw.). Es ist nicht möglich, für jede Umsatzquelle einen anderen Aufbewahrungsstatus für Auszahlungen festzulegen.

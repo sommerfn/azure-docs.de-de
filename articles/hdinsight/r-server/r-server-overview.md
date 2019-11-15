@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/12/2019
-ms.openlocfilehash: 5108424c4e39c1c47710c0e25e4e22c4474e68ad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 782c860ca50c1ef12eda1ec33f29c5103b396349
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941697"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73665283"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Worum handelt es sich bei ML Services in Azure HDInsight?
 
@@ -23,7 +23,7 @@ ML Services in HDInsight bietet die neuesten Funktionen für die R-basierte Anal
 
 Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts. Mit einem Edgeknoten haben Sie die Möglichkeit, die parallelisierten verteilten Funktionen von ScaleR in allen Kernen der Edgeknotenserver auszuführen. Außerdem können Sie sie in allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR oder Apache Spark-Computekontexte verwenden.
 
-Die Modelle oder Vorhersagen, die sich aus der Analyse ergeben, können für die lokale Verwendung heruntergeladen werden. Sie können auch an anderer Stelle in Azure operationalisiert werden, insbesondere über den [Azure Machine Learning Studio](https://studio.azureml.net)-[Webdienst](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
+Die Modelle oder Vorhersagen, die sich aus der Analyse ergeben, können für die lokale Verwendung heruntergeladen werden. Sie können auch an anderer Stelle in Azure operationalisiert werden, insbesondere über den [Azure Machine Learning Studio](https://studio.azureml.net)-[Webdienst](../../machine-learning/studio/deploy-a-machine-learning-web-service.md) (klassisch).
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>Erste Schritte mit ML Services in HDInsight
 

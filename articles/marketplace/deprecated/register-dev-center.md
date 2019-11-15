@@ -5,15 +5,16 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
 manager: pabutler
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0dd53689f7528e73845ab47a9791f062e0f2cb0c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: a7abb73f229c444f88626ef03c90f62e138023c6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962780"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825925"
 ---
 # <a name="register-in-dev-center"></a>Registrieren bei Dev Center  
 Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind, öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung.  
@@ -163,7 +164,7 @@ Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich
   > Suchen Sie nach einer E-Mail von verify@microsoft.com mit der Betreffzeile „Action needed: Verify your email account with Microsoft“ (Aktion erforderlich: Lassen Sie Ihr E-Mail-Konto bei Microsoft überprüfen). Klicken Sie auf den zeitempfindlichen Link zur Überprüfung, um die Registrierung abzuschließen. *Wenn Sie innerhalb von 24 Stunden keine E-Mail erhalten haben, überprüfen Sie den Spamordner.*
 
 * **Welche Schritte folgen auf die Dev Center-Überprüfung?**
-  > Wechseln Sie zu „Your programs” (Ihre Programme) (https://developer.microsoft.com/dashboard/Account/Programs) ), und melden Sie sich beim Dev Center-Konto an. Wenn Azure nicht als registrierte Anwendung angezeigt wird, suchen Sie unter „Recommended programs for you“ (Für Sie empfohlene Programme), und suchen Sie dort nach Azure, um „Get Started“ (Erste Schritte) auszuwählen.
+  > Wechseln Sie zu „Your programs“ (https://developer.microsoft.com/dashboard/Account/Programs), und melden Sie sich beim Dev Center-Konto an. Wenn Azure nicht als registrierte Anwendung angezeigt wird, suchen Sie unter „Recommended programs for you“ (Für Sie empfohlene Programme) nach Azure, um „Get Started“ (Erste Schritte) auszuwählen.
 
 * **Wie verknüpfe ich mein Dev Center-Konto mit meinem Cloud-Partnerportal-Herausgeberprofil?**
   > Der letzte Schritt vor der Veröffentlichung besteht darin, Ihr Dev Center-Konto mit Ihrem Cloud-Partnerportal-[Profil](https://cloudpartner.azure.com/#profile) zu verknüpfen. Wenn Ihr Dev Center-Konto nicht mit Ihrem Konto im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) identisch ist, fügen Sie Ihr Dev Center-Konto als neuen [Benutzer](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) im Cloud-Partnerportal hinzu. Melden Sie sich im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) mit Ihrem Dev Center-Konto an. Wählen Sie das Herausgeberprofil im Menü aus, das sich oben rechts im Webbrowser befindet. Wählen Sie „Link Dev Center Account“ (Dev Center-Konto verknüpfen) aus.

@@ -4,15 +4,16 @@ description: Enthält eine Beschreibung der Registerkarte „SKUs“, die zum Er
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: dceb82af73061b91676ffb7061c7495995e76667
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 101f928e296d0b48b4e077676393772829aa76ab
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868718"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808964"
 ---
 # <a name="virtual-machine-skus-tab"></a>Registerkarte für VM-SKUs
 
@@ -71,7 +72,7 @@ Beim oben beschriebenen Preismodell handelt es sich um eine grundlegende Beschre
 
 ### <a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2. Juli 2019 hinzugefügt
 
-VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Die neuen Preise für diese Kerngrößen wurden für bestehende VM-Angebote basierend auf den vorherigen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn Sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
+VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Für vorhandene VM-Angebote wurden die neue Preise für diese Kerngrößen basierend auf den aktuellen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn Sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
 
 
 ### <a name="simplified-currency-pricing"></a>Vereinfachte Währungspreise

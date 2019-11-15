@@ -3,17 +3,17 @@ title: Gerätekonzepte bei der Azure-Gerätebereitstellung | Microsoft-Dokumenta
 description: Beschreibt Konzepte der Gerätebereitstellung, die speziell für Geräte mit dem Device Provisioning-Dienst und IoT Hub gelten
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 0e3557588281cd392a7a8a1c2654f10e8387dd83
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173384"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720537"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>Konzepte für Geräte mit dem IoT Hub Device Provisioning-Dienst
 
@@ -44,14 +44,14 @@ Gerätegeheimnisse können auch in Software (Arbeitsspeicher) gespeichert werden
 
 ## <a name="registration-id"></a>Registrierungs-ID
 
-Die Registrierungs-ID wird zur eindeutigen Identifizierung eines Geräts im Device Provisioning-Dienst verwendet. Die Registrierungs-ID muss im [ID-Bereich](#id-scope) des Bereitstellungsdiensts eindeutig sein. Jedes Gerät benötigt eine Registrierungs-ID. Die Registrierungs-ID ist alphanumerisch und besteht aus Kleinbuchstaben und ggf. Bindestrichen.
+Die Registrierungs-ID wird zur eindeutigen Identifizierung eines Geräts im Device Provisioning-Dienst verwendet. Die Geräte-ID muss im [ID-Bereich](#id-scope) des Bereitstellungsdiensts eindeutig sein. Jedes Gerät benötigt eine Registrierungs-ID. Die Registrierungs-ID ist alphanumerisch, es wird nicht zwischen Groß- und Kleinschreibung unterschieden, und sie kann Sonderzeichen wie Doppelpunkte, Punkte, Unterstriche und Bindestriche aufweisen.
 
 * Bei TPM wird die Registrierungs-ID durch das TPM selbst bereitgestellt.
 * Im Fall von X.509-basierten Nachweisen wird die Registrierungs-ID als Antragstellername des Zertifikats bereitgestellt.
 
 ## <a name="device-id"></a>Geräte-ID
 
-Die Geräte-ID ist die ID, die in IoT Hub angezeigt wird. Die gewünschte Geräte-ID kann im Registrierungseintrag festgelegt werden, eine Festlegung ist aber nicht zwingend. Wenn in der Registrierungsliste keine gewünschte Geräte-ID angegeben wurde, wird bei der Registrierung des Geräts die Registrierungs-ID als die Geräte-ID verwendet. Erfahren Sie mehr zu [Geräte-IDs in IoT Hub](../iot-hub/iot-hub-devguide-identity-registry.md).
+Die Geräte-ID ist die ID, die in IoT Hub angezeigt wird. Die gewünschte Geräte-ID kann im Registrierungseintrag festgelegt werden, eine Festlegung ist aber nicht zwingend. Das Festlegen der gewünschten Geräte-ID wird nur in Einzelregistrierungen unterstützt. Wenn in der Registrierungsliste keine gewünschte Geräte-ID angegeben wurde, wird bei der Registrierung des Geräts die Registrierungs-ID als die Geräte-ID verwendet. Erfahren Sie mehr zu [Geräte-IDs in IoT Hub](../iot-hub/iot-hub-devguide-identity-registry.md).
 
 ## <a name="id-scope"></a>ID-Bereich
 

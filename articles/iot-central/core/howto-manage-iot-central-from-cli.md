@@ -1,6 +1,6 @@
 ---
 title: Verwalten von IoT Central über Azure CLI | Microsoft-Dokumentation
-description: Verwalten von IoT Central über Azure CLI
+description: In diesem Artikel wird beschrieben, wie Sie Ihre IoT Central-Anwendung über die Befehlszeilenschnittstelle erstellen und verwalten. Sie können die Anwendung mithilfe der Befehlszeilenschnittstelle anzeigen, ändern und entfernen.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 91ef85a0e74af6488d22345ac056431ad5ba0533
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ddf1cfb1cb3997431b83812d03535ed990c88922
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942479"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73806889"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Verwalten von IoT Central über Azure CLI
 

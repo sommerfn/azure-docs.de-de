@@ -5,14 +5,15 @@ author: qianw211
 manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105497"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827929"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Getaktete Abrechnung mit dem Marketplace-Messungsdienst
 
@@ -82,7 +83,7 @@ Die anderen Attribute einer Dimension sind planspezifisch und können von Plan z
 * Enthaltene Menge für monatliche Kunden 
 * Enthaltene Menge für jährliche Kunden 
 
-Dimensionen verfügen auch über zwei spezielle Konzepte: „aktiviert“ und „unbegrenzt“.
+Dimensionen verfügen auch über zwei spezielle Konzepte: „aktiviert“ und „unbegrenzt“:
 
 * **Aktiviert** gibt an, dass dieser Plan Teil dieser Dimension ist.  Lassen Sie diese Option ggf. deaktiviert, wenn Sie einen neuen Plan erstellen, der keine auf dieser Dimension basierenden Nutzungsereignisse versendet.  Außerdem werden alle neuen Dimensionen, die nach der ersten Veröffentlichung eines Plans hinzugefügt wurden, für den bereits veröffentlichten Plan als „nicht aktiviert“ angezeigt.  Eine deaktivierte Dimension wird in keiner Dimensionenliste für einen Plan angezeigt, der für Kunden sichtbar ist.
 * **Unbegrenzt**, dargestellt durch das Unendlichkeitssymbol „∞“, gibt an, dass dieser Plan Teil dieser Dimension ist, die Nutzung aber nicht anhand dieser Dimension gemessen wird.  Dadurch können Sie Ihren Kunden vermitteln, dass die durch diese Dimension dargestellte Funktion im Plan enthalten und die Nutzung nicht begrenzt ist.  Eine Dimension mit unbegrenzter Nutzung wird in Dimensionenlisten für einen Plan, der für Kunden sichtbar ist, mit dem Hinweis angezeigt, dass dadurch für diesen Plan keine Kosten entstehen.
@@ -129,7 +130,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Supportticket zu übermitteln:
 
 1. Navigieren Sie zur [Supportseite](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Die ersten Dropdownmenüs werden automatisch für Sie ausgefüllt. Geben Sie für den Marketplace-Support die Produktfamilie als **Cloud und Onlinedienste** und das Produkt als **Marketplace-Herausgeber** an.  Ändern Sie die vorab ausgefüllten Angaben in den Dropdownmenüs nicht.
 2. Wählen Sie unter „Produktversion auswählen“ die Option **Live-Angebotsverwaltung** aus.
-3. Wählen Sie unter „Wählen Sie eine Kategorie, die das Problem am besten beschreibt“ die Option **SaaS-Apps** aus.
+3. Wählen Sie unter „Wählen Sie eine Kategorie aus, die das Problem am besten beschreibt“ die Option **SaaS-Apps** aus.
 4. Wählen Sie unter „Wählen Sie ein Problem aus, das das Problem am besten beschreibt“ die Option **getaktete Abrechnung** aus.
 5. Durch Auswählen der Schaltfläche **Weiter** gelangen Sie zur Seite **Problemdetails**, wo Sie weitere Details zu Ihrem Problem eingeben können.
 

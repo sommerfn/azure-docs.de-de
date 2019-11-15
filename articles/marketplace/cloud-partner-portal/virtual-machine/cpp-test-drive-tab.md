@@ -4,15 +4,16 @@ description: Enthält eine Beschreibung der Registerkarte „Testversion“, die
 services: Azure, Marketplace, Cloud Partner Portal, virtual machine
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 31c7968d0d96a44ff166444f73807e0ccb5dc583
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94ebbcca50916f1675ab990a4b45f3b90e069104
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938005"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808877"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Registerkarte „Testversion“ für virtuelle Computer
 
@@ -40,7 +41,7 @@ In der folgenden Tabelle werden Zweck und Inhalt dieser Felder beschrieben.  Erf
 |**ARM-Vorlage für Testversion\***| Laden Sie die Azure Resource Manager-Vorlage hoch, die dieser Testversion zugeordnet ist. Weitere Informationen finden Sie unter [Transforming Virtual Machine Deployment Template for Test Drive](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive) (Transformieren der VM-Bereitstellungsvorlage für die Testversion). |
 | **Zugriffsinformationen\***    | Informationen zum Azure Resource Manager-Zugriff und zur Anmeldung an der Testversion als einfacher Text oder im einfachen HTML-Format. |
 | *Abonnementdetails für Bereitstellung der Testversion* |  |
-| **Azure-Abonnement-ID\*** | Sie können die ID abrufen, indem Sie sich am [Microsoft Azure-Portal](https://ms.portal.azure.com) anmelden und in der Menüleiste auf der linken Seite auf **Abonnements** klicken. (Beispiel: „a83645ac-1234-5ab6-6789-1h234g764ghty“) Dieser Bezeichner sollte eine GUID im Format `a83645ac-1234-5ab6-6789-1h234g764ghty` sein.|
+| **Azure-Abonnement-ID\*** | Sie können die ID abrufen, indem Sie sich am [Microsoft Azure-Portal](https://ms.portal.azure.com) anmelden und in der Menüleiste auf der linken Seite auf **Abonnements** klicken. (Beispiel: „a83645ac-1234-5ab6-6789-1h234g764ghty“.) Dieser Bezeichner sollte eine GUID im Format `a83645ac-1234-5ab6-6789-1h234g764ghty` sein.|
 | **Azure AD-Mandanten-ID\***    | Die ID des Azure Active Directory-Mandanten.  Sie können die ID abrufen, indem Sie sich am [Microsoft Azure-Portal](https://ms.portal.azure.com) anmelden und in der Menüleiste auf der linken Seite auf **Azure Active Directory** und dann in der mittleren Menüleiste auf **Eigenschaften** klicken und die **Verzeichnis-ID** aus dem Formular kopieren.  Bei diesem Bezeichner sollte es sich ebenfalls um eine GUID handeln.  Wenn keine Angabe vorhanden ist, müssen Sie eine Mandanten-ID für Ihre Organisation erstellen. |
 | **Azure AD-App-ID\***       | Dies ist der Bezeichner für Ihre registrierte Azure-VM-Lösung.  |
 | **Azure AD-App-Schlüssel\***      | Der Authentifizierungsschlüssel für Ihre registrierte Lösung. |

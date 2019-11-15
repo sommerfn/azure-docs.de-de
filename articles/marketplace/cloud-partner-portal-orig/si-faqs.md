@@ -4,15 +4,16 @@ description: Häufig gestellte Fragen zum Feature Seller Insights des Cloud-Part
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b015d21005448d24d24923ba424a10a4af0d47b1
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030439"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821599"
 ---
 <a name="seller-insights-faq"></a>Seller Insights – häufig gestellte Fragen
 ===================
@@ -59,7 +60,7 @@ Melden Sie sich als Benutzer mit der Rolle „Besitzer“ und nicht „Mitwirken
 <a name="calculate-my-advance-payouts"></a>Berechnen meiner Vorauszahlungen
 ----------------------------
 
-Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlung“ die Spalte mit der Bezeichnung **Transaktionstyp** an, und wenden Sie den Filter zur ausschließlichen Anzeige des Werts „Gebühr“ an. Zeigen Sie als nächstes die Spalte mit der Bezeichnung **Endgültiger Inkassostatus** an, und wenden Sie den Filter zur ausschließlichen Anzeige des Werts „In Bearbeitung“ an. Bilden Sie schließlich die Summe der Spalte **Auszahlungsbetrag (PC)** , um alle Vorauszahlungen zu berechnen, die an Sie geleistet wurden, bevor Sie den Betrag beim Kunden eingezogen haben.
+Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlung“ die Spalte mit der Bezeichnung **Transaktionstyp** an, und wenden Sie den Filter zur ausschließlichen Anzeige des Werts „Gebühr“ an. Zeigen Sie als Nächstes die Spalte mit der Bezeichnung **Endgültiger Inkassostatus** an, und wenden Sie den Filter zur ausschließlichen Anzeige des Werts „In Bearbeitung“ an. Bilden Sie schließlich die Summe der Spalte **Auszahlungsbetrag (PC)** , um alle Vorauszahlungen zu berechnen, die an Sie geleistet wurden, bevor Sie den Betrag beim Kunden eingezogen haben.
 
 
 <a name="calculate-customer-refunds"></a>Berechnen von Erstattungen an Kunden

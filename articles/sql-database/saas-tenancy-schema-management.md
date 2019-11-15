@@ -1,5 +1,5 @@
 ---
-title: Verwalten eines Schemas für Azure SQL-Datenbank in einer App mit nur einem Mandanten | Microsoft-Dokumentation
+title: Verwalten des Schemas in einer Einzelmandanten-App
 description: Verwalten des Schemas für mehrere Mandanten in einer App mit nur einem Mandanten, die Azure SQL-Datenbank verwendet
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
-ms.openlocfilehash: 95d13c997d3871815ebd541e5985eb9fef726a76
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029744"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822010"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Verwalten von Schemas in einer SaaS-Anwendung mit dem Muster für eine Datenbank pro Mandant in Azure SQL-Datenbank
  

@@ -1,6 +1,6 @@
 ---
 title: 'Azure-Schnellstart: Sichern eines virtuellen Computers mit der Azure CLI'
-description: Es wird beschrieben, wie Sie Ihre virtuellen Computer mit der Azure CLI sichern.
+description: In diesem Schnellstart erfahren Sie, wie Sie einen Recovery Services-Tresor erstellen, den Schutz für einen virtuellen Computer aktivieren und mit der Azure-Befehlszeilenschnittstelle einen anfänglichen Wiederherstellungspunkt erstellen.
 author: dcurwin
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
@@ -10,24 +10,25 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0a0718387962f677184df85ef95d303a128d9166
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0d16237e0d5dc0e2176a2a9f600ca0be96328717
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874687"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747130"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Sichern eines virtuellen Computers in Azure per CLI
+
 Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) in Azure mit der Azure CLI sichern. Sie können diese Schritte auch mit [Azure PowerShell](quick-backup-vm-powershell.md) oder im [Azure-Portal](quick-backup-vm-portal.md) ausführen.
 
 In dieser Schnellstartanleitung wird die Sicherung für einen vorhandenen virtuellen Azure-Computer aktiviert. Wenn Sie eine VM erstellen müssen, können Sie die [Erstellung mit der Azure CLI durchführen](../virtual-machines/linux/quick-create-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie mindestens die Version 2.0.18 der Azure-Befehlszeilenschnittstelle. Führen Sie zum Ermitteln der CLI-Version `az --version` aus. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
-
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie mindestens die Version 2.0.18 der Azure-Befehlszeilenschnittstelle. Führen Sie zum Ermitteln der CLI-Version `az --version` aus. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
+
 Ein Recovery Services-Tresor ist ein logischer Container, in dem die Sicherungsdaten für jede geschützte Ressource, z.B. Azure-VMs, gespeichert werden. Wenn der Sicherungsauftrag für eine geschützte Ressource ausgeführt wird, wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen.
 
 Erstellen Sie einen Recovery Services-Tresor mit [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create). Geben Sie dieselbe Ressourcengruppe und denselben Standort wie für die zu schützende VM an. Wenn Sie den [VM-Schnellstart](../virtual-machines/linux/quick-create-cli.md) verwendet haben, haben Sie Folgendes erstellt:
@@ -36,7 +37,7 @@ Erstellen Sie einen Recovery Services-Tresor mit [az backup vault create](https:
 - Einen virtuellen Computer namens *myVM*.
 - Ressourcen am Standort *eastus*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup vault create --resource-group myResourceGroup \
     --name myRecoveryServicesVault \
     --location eastus
@@ -48,14 +49,14 @@ Für den Recovery Services-Tresor ist standardmäßig die georedundante Speicher
 az backup vault backup-properties set \
     --name myRecoveryServicesVault  \
     --resource-group myResourceGroup \
-    --backup-storage-redundancy "LocallyRedundant/GeoRedundant" 
+    --backup-storage-redundancy "LocallyRedundant/GeoRedundant"
 ```
 
-
 ## <a name="enable-backup-for-an-azure-vm"></a>Aktivieren der Sicherung für eine Azure-VM
+
 Erstellen Sie eine Schutzrichtlinie, um zu definieren, wann ein Sicherungsauftrag ausgeführt werden soll und wie lange die Wiederherstellungspunkte gespeichert werden sollen. Bei der Standardschutzrichtlinie wird jeden Tag ein Sicherungsauftrag ausgeführt, und Wiederherstellungspunkte werden 30 Tage lang beibehalten. Sie können diese Standardrichtlinienwerte verwenden, um Ihre VM schnell zu schützen. Verwenden Sie [az backup protection enable-for-vm](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-enable-for-vm), um den Sicherungsschutz für einen virtuellen Computer zu aktivieren. Geben Sie die Ressourcengruppe und die zu schützende VM und anschließend die Richtlinie an, die verwendet werden soll:
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup protection enable-for-vm \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
@@ -66,7 +67,7 @@ az backup protection enable-for-vm \
 > [!NOTE]
 > Wenn sich der virtuelle Computer nicht in der gleichen Ressourcengruppe befindet wie der Tresor, verweist „myResourceGroup“ auf die Ressourcengruppe, in der der Tresor erstellt wurde. Geben Sie anstelle des VM-Namens die VM-ID an, wie hier zu sehen:
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup protection enable-for-vm \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
@@ -78,6 +79,7 @@ az backup protection enable-for-vm \
 > Wenn Sie die Sicherung mithilfe der CLI für mehrere virtuelle Computer gleichzeitig aktivieren, dürfen pro Richtlinie maximal 100 virtuelle Computer zugeordnet sein. Dies wird als [bewährte Methode](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy) empfohlen. Derzeit blockiert der PS-Client bei mehr als 100 virtuellen Computern die Aktivierung nicht explizit, diese Überprüfung soll jedoch in Zukunft hinzugefügt werden.
 
 ## <a name="start-a-backup-job"></a>Starten eines Sicherungsauftrags
+
 Verwenden Sie [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now), um sofort einen Sicherungsvorgang zu starten, anstatt zu warten, bis die Standardrichtlinie den Auftrag zum geplanten Zeitpunkt ausführt. Bei diesem ersten Sicherungsauftrag wird ein vollständiger Wiederherstellungspunkt erstellt. Bei jedem Sicherungsauftrag nach diesem ersten Sicherungsvorgang werden dann inkrementelle Wiederherstellungspunkte erstellt. Inkrementelle Wiederherstellungspunkte sind in Bezug auf die Speicherung und die Dauer effizient, da nur Änderungen übertragen werden, die seit der letzten Sicherung vorgenommen wurden.
 
 Die folgenden Parameter werden verwendet, um die VM zu sichern:
@@ -88,7 +90,7 @@ Die folgenden Parameter werden verwendet, um die VM zu sichern:
 
 Im folgenden Beispiel wird die VM mit dem Namen *myVM* gesichert und der Ablauf des Wiederherstellungspunkts auf den 18. Oktober 2017 festgelegt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup protection backup-now \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
@@ -97,11 +99,11 @@ az backup protection backup-now \
     --retain-until 18-10-2017
 ```
 
-
 ## <a name="monitor-the-backup-job"></a>Überwachen des Sicherungsauftrags
+
 Verwenden Sie [az backup job list](https://docs.microsoft.com/cli/azure/backup/job#az-backup-job-list), um den Status von Sicherungsaufträgen zu überwachen:
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup job list \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
@@ -119,13 +121,13 @@ fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31
 
 Wenn der *Status* des Sicherungsauftrags als *Completed* gemeldet wird, ist Ihre VM durch Recovery Services geschützt und verfügt über einen gespeicherten vollständigen Wiederherstellungspunkt.
 
-
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
+
 Wenn die Komponenten nicht mehr benötigt werden, können Sie den Schutz auf der VM deaktivieren, die Wiederherstellungspunkte und den Recovery Services-Tresor entfernen und anschließend die Ressourcengruppe und die dazugehörigen VM-Ressourcen löschen. Falls Sie eine vorhandene VM verwendet haben, können Sie den abschließenden Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) überspringen, damit die Ressourcengruppe und die VM erhalten bleiben.
 
-Unter [Nächste Schritte](#next-steps) finden Sie ein Sicherungstutorial, in dem die Wiederherstellung von Daten für Ihren virtuellen Computer erläutert wird. 
+Unter [Nächste Schritte](#next-steps) finden Sie ein Sicherungstutorial, in dem die Wiederherstellung von Daten für Ihren virtuellen Computer erläutert wird.
 
-```azurecli-interactive 
+```azurecli-interactive
 az backup protection disable \
     --resource-group myResourceGroup \
     --vault-name myRecoveryServicesVault \
@@ -138,8 +140,8 @@ az backup vault delete \
 az group delete --name myResourceGroup
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 In dieser Schnellstartanleitung haben Sie einen Recovery Services-Tresor erstellt, den Schutz für einen virtuellen Computer aktiviert und den ersten Wiederherstellungspunkt erstellt. Weitere Informationen zu Azure Backup und Recovery Services sind in den Tutorials enthalten.
 
 > [!div class="nextstepaction"]

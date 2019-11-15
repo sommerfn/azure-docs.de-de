@@ -4,15 +4,16 @@ description: Enthält Definitionen für viele der in Seller Insights verwendeten
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 8b3447b8094eb95bd2f61baed7371bf718fdf730
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2571f916f6efc61772b2734119e197996e2ffe3c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606899"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73809111"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights – Definitionen
 =======================
@@ -45,14 +46,14 @@ Die folgende Tabelle enthält Definitionen für viele der in Seller Insights ver
 | **Kunden-ID**                               | Der eindeutige, einem Kunden zugewiesene Bezeichner.  Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements haben.                    |
 | **Zahlungsart des Kunden**                            | Das vom Kunden verwendete Zahlungsmittel.  Dies kann z. B. Kreditkarte, Rechnung oder Electronic Check sein.                             |
 | **Postleitzahl des Kunden**                             | Die vom Kunden angegebene Postleitzahl.  Diese kann sich von der im Azure-Abonnement eines Kunden angegebenen Postleitzahl unterscheiden.                                                                 |
-| **Bundesland/Kanton des Kunden**                                   | Das vom Kunden angegebene Bundesland oder der angegebene Kanton.  Dies kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.                                                                 |
+| **Bundesland/Kanton des Kunden**                                   | Das vom Kunden angegebene Bundesland oder der angegebene Kanton.  Dieses kann sich von der Angabe im Azure-Abonnement eines Kunden unterscheiden.                                                                 |
 | **Erwerbsdatum**                                    | Das erste Datum, an dem der Kunde ein von Ihnen veröffentlichtes Angebot erworben hat.                 |
 | **Verlustdatum**                                        | Das letzte Datum, an dem der Kunde das letzte aller zuvor erworbenen Angebote storniert hat.                                                         |
 | **Geschätzte erweiterte Gebühren (CC)**                   | Die geschätzten erweiterten Gebühren für die Menge der Verbrauchseinheiten für eine bestimmte SKU (in der Währung des Kunden). Dieser Wert kann aufgrund von Rundungs- oder Kürzungsfehlern nicht exakt sein.                            |
 | **Geschätzte erweiterte Gebühren (PC)**                   | Die geschätzten erweiterten Gebühren für die Menge der Verbrauchseinheiten für eine bestimmte SKU basierend auf dem Wechselkurs an dem Datum, an dem die Nutzung berechnet wird (in der Währung des Herausgebers). Dieser Wert kann aufgrund von Rundungs- oder Kürzungsfehlern nicht exakt sein.                  |
 | **Geschätzte Auszahlung (PC)**                            | Die geschätzte Zahlung für die Menge der Verbrauchseinheiten für eine bestimmte SKU basierend auf dem Wechselkurs an dem Datum, an dem die Nutzung berechnet wird (in der Währung des Herausgebers). Dieser Wert kann aufgrund von Rundungs- oder Kürzungsfehlern nicht exakt sein.                        |
 | **Geschätzter Preis (PC)**                             | Der geschätzte Preis für eine Verbrauchseinheit für eine bestimmte SKU basierend auf dem Wechselkurs an dem Datum, an dem die Nutzung berechnet wird (in der Währung des Herausgebers). Dieser Wert kann aufgrund von Rundungs- oder Kürzungsfehlern nicht exakt sein.                                             |
-| **Neuer Kunde**                                  | Der Wert teilt Ihnen mit, ob es sich um einen neuen Kunden handelt, der zum ersten Mal eines oder mehrere Ihrer Marketplace-Angebote nutzt oder erwirbt.  Der Wert ist „Ja“, wenn das Erwerbsdatum im gleichen Kalendermonat liegt.  Der Wert ist „Nein“, wenn der Kunde eines Ihrer Angebote vor dem berichteten Kalendermonat gekauft hat.                                                       |
+| **Neuer Kunde**                                  | Der Wert teilt Ihnen mit, ob es sich um einen neuen Kunden handelt, der zum ersten Mal eines oder mehrere Ihrer Marketplace-Angebote nutzt oder erwirbt.  Der Wert ist „Ja“, wenn das Erwerbsdatum im gleichen Kalendermonat liegt.  Der Wert ist „Nein“, wenn der Kunde eines Ihrer Angebote vor dem angegebenen Kalendermonat gekauft hat.                                                       |
 | **Vorschau-SKU**                                  | Der Wert gibt an, ob Sie die SKU als „Vorschau“ gekennzeichnet haben. Der Wert ist „Ja“, wenn Sie die SKU entsprechend gekennzeichnet haben und nur von Ihnen autorisierte Azure-Abonnements dieses Image bereitstellen und nutzen können.  Der Wert ist „Nein“, wenn die SKU nicht als „Vorschau“ definiert wurde.                                          |
 | **Zustimmung zur Kontaktaufnahme zu Werbezwecken**                   | Der Wert gibt an, ob der Kunde proaktiv der Kontaktaufnahme zu Werbezwecken durch die Herausgeber zugestimmt hat. Derzeit wird diese Option für Kunden nicht angezeigt. Daher ist allgemein „Nein“ angegeben. Sobald diese Funktion bereitgestellt wird, wird eine entsprechende Aktualisierung vorgenommen.                                          |
 | **Marketplace-Lizenztyp**                         | Die Abrechnungsmethode für das Marketplace-Angebot.                             |

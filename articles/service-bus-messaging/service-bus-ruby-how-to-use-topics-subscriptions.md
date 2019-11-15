@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Service Bus-Themen (Ruby) | Microsoft Docs
-description: Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements in Azure. Die Codebeispiele wurden für Ruby-Anwendungen geschrieben.
+title: 'Schnellstart: Verwenden von Service Bus-Themen (Ruby)'
+description: 'Schnellstart: Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements in Azure. Die Codebeispiele wurden für Ruby-Anwendungen geschrieben.'
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -11,17 +11,17 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
-ms.topic: article
-ms.date: 04/15/2019
+ms.topic: quickstart
+ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: b2a05a4695ee80873a2d7464c0a1cf4d46ed30f5
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: b5401eae844ed2113a9fbc07c8b3ad8601709d43
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543650"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718929"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Verwenden von Service Bus-Themen und -Abonnements mit Ruby
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Ruby
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 

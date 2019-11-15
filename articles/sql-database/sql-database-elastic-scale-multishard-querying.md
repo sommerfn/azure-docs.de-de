@@ -1,5 +1,5 @@
 ---
-title: Abfragen von Azure SQL-Sharddatenbanken | Microsoft-Dokumentation
+title: Abfragen von Sharddatenbanken
 description: Führen Sie mithilfe der Clientbibliothek für elastische Datenbanken Abfragen mehrerer Shards durch.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 471af9e1bc699ccaa8bc930ab930d6d40bbdc984
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6458b52e707b7e4c11fe8b501f3393e1009a748c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568367"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823537"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Abfragen mehrerer Shards mithilfe der Tools für elastische Datenbanken
 
