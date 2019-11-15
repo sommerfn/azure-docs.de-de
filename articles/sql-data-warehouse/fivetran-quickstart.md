@@ -1,5 +1,5 @@
 ---
-title: Schnellstartanleitung f체r Fivetran f체r Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Schnellstart f체r Fivetran
 description: Schneller Einstieg in Fivetran und Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d829ee67d516892283fa31d9180336d768170ac1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 250df3e106ae65cafc84a412c155e3a27c535c79
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65857015"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686121"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Schneller Einstieg in Fivetran und SQL Data Warehouse
 
@@ -70,7 +71,7 @@ Diese Schnellstartanleitung beschreibt, wie Sie einen neuen Fivetran-Benutzer f�
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    Weitere Informationen finden Sie in den Dokumenten zu [Speicher- und Parallelit채tsgrenzwerten](memory-and-concurrency-limits.md) und [Ressourcenklassen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
+    Weitere Informationen finden Sie in den Dokumenten zu [Speicher- und Parallelit채tsgrenzwerten](memory-concurrency-limits.md) und [Ressourcenklassen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
 
 ## <a name="sign-in-to-fivetran"></a>Anmelden bei Fivetran

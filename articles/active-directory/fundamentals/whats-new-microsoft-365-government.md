@@ -1,5 +1,5 @@
 ---
-title: Neuerungen bei Azure Active Directory in Microsoft 365 Government – Azure Active Directory | Microsoft-Dokumentation
+title: Neuerungen bei Azure AD in Microsoft 365 Government | Microsoft-Dokumentation
 description: Lernen Sie einige Änderungen bei Azure Active Directory (Azure AD) in der Microsoft 365 Government-Cloudinstanz kennen, von denen Sie möglicherweise betroffen sind.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b077c7b5efbad2add971d42ff31938b56f6bc33
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259348"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73805285"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Neuerungen bei Azure Active Directory in Microsoft 365 Government
 

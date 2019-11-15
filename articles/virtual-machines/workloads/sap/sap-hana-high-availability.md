@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
+ms.date: 11/06/2019
 ms.author: sedusch
-ms.openlocfilehash: 5632ccf6c9b9cb67d169c5b60f1adefd85b576b8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ffa2f937a14aa14750480d1c45498fb4c49fcc30
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791657"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721504"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -124,7 +124,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 1. Erstellen Sie ein virtuelles Netzwerk.
 1. Erstellen Sie eine Verfügbarkeitsgruppe.
    - Richten Sie die maximale Updatedomäne ein.
-1. Erstellen Sie einen Lastenausgleich (intern).
+1. Erstellen Sie einen Lastenausgleich (intern). Es wird empfohlen, [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden.
    - Wählen Sie das virtuelle Netzwerk aus, das Sie in Schritt 2 erstellt haben.
 1. Erstellen Sie den virtuellen Computer 1.
    - Verwenden Sie ein SLES4SAP-Abbild im Azure-Katalog, das für SAP HANA auf dem von Ihnen ausgewählten VM-Typ unterstützt wird.
@@ -133,64 +133,104 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
    - Verwenden Sie ein SLES4SAP-Abbild im Azure-Katalog, das für SAP HANA auf dem von Ihnen ausgewählten VM-Typ unterstützt wird.
    - Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben. 
 1. Fügen Sie Datenträger hinzu.
-1. Konfigurieren Sie den Lastenausgleich. Erstellen Sie zunächst einen Front-End-IP-Pool:
+1. Führen Sie bei Verwendung von Load Balancer Standard die folgenden Konfigurationsschritte aus:
+   1. Erstellen Sie zunächst einen Front-End-IP-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **hana-frontend**).
+      1. Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.13**).
+      1. Klicken Sie auf **OK**.
+      1. Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
+   
+   1. Erstellen Sie als Nächstes einen Back-End-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Back-End-Pools** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **hana-backend**).
+      1. Wählen Sie **Virtuelles Netzwerk** aus.
+      1. Wählen Sie **Virtuellen Computer hinzufügen** aus.
+      1. Wählen Sie **Virtueller Computer** aus.
+      1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters und deren IP-Adressen aus.
+      1. Wählen Sie **Hinzufügen**.
+   
+   1. Erstellen Sie als Nächstes einen Integritätstest:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Integritätstests** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **hana-hp**).
+      1. Wählen Sie als Protokoll **TCP** und als Port 625**03** aus. Behalten Sie für das **Intervall** den Wert „5“ und als **Fehlerschwellenwert** „2“ bei.
+      1. Klicken Sie auf **OK**.
+   
+   1. Erstellen Sie als Nächstes die Lastenausgleichsregeln:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-lb**).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **hana-frontend**, **hana-backend** und **hana-hp**).
+      1. Wählen Sie **HA-Ports** aus.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
 
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **hana-frontend**).
-   1. Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.13**).
-   1. Klicken Sie auf **OK**.
-   1. Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
+   > [!Note]
+   > Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
 
-1. Erstellen Sie als Nächstes einen Back-End-Pool:
+1. Wenn Ihr Szenario die Verwendung von Load Balancer Basic vorschreibt, führen Sie stattdessen die folgenden Konfigurationsschritte aus:
+   1. Erstellen Sie zunächst einen Front-End-IP-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **hana-frontend**).
+      1. Legen Sie die **Zuweisung** auf **Statisch** fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.13**).
+      1. Klicken Sie auf **OK**.
+      1. Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
+   
+   1. Erstellen Sie als Nächstes einen Back-End-Pool:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Back-End-Pools** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **hana-backend**).
+      1. Wählen Sie **Virtuellen Computer hinzufügen** aus.
+      1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben.
+      1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters aus.
+      1. Klicken Sie auf **OK**.
+   
+   1. Erstellen Sie als Nächstes einen Integritätstest:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Integritätstests** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **hana-hp**).
+      1. Wählen Sie als Protokoll **TCP** und als Port 625**03** aus. Behalten Sie für das **Intervall** den Wert „5“ und als **Fehlerschwellenwert** „2“ bei.
+      1. Klicken Sie auf **OK**.
+   
+   1. Erstellen Sie die Lastenausgleichsregeln für SAP HANA 1.0:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**15“).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
+      1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**15 ein.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
+      1. Wiederholen Sie diese Schritte für den Port 3**03**17.
+   
+   1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Systemdatenbank:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**13“).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
+      1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**13 ein.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
+      1. Wiederholen Sie diese Schritte für den Port 3**03**14.
+   
+   1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Mandantendatenbank:
+   
+      1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**40“).
+      1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**) aus.
+      1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**40 ein.
+      1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
+      1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
+      1. Klicken Sie auf **OK**.
+      1. Wiederholen Sie diese Schritte für die Ports 3**03**41 und 3**03**42.
 
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Back-End-Pools** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **hana-backend**).
-   1. Wählen Sie **Virtuellen Computer hinzufügen** aus.
-   1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie in Schritt 3 erstellt haben.
-   1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters aus.
-   1. Klicken Sie auf **OK**.
-
-1. Erstellen Sie als Nächstes einen Integritätstest:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Integritätstests** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **hana-hp**).
-   1. Wählen Sie als Protokoll **TCP** und als Port 625**03** aus. Behalten Sie für das **Intervall** den Wert „5“ und als **Fehlerschwellenwert** „2“ bei.
-   1. Klicken Sie auf **OK**.
-
-1. Erstellen Sie die Lastenausgleichsregeln für SAP HANA 1.0:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**15“).
-   1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
-   1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**15 ein.
-   1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
-   1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
-   1. Klicken Sie auf **OK**.
-   1. Wiederholen Sie diese Schritte für den Port 3**03**17.
-
-1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Systemdatenbank:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**13“).
-   1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**), aus.
-   1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**13 ein.
-   1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
-   1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
-   1. Klicken Sie auf **OK**.
-   1. Wiederholen Sie diese Schritte für den Port 3**03**14.
-
-1. Erstellen Sie für SAP HANA 2.0 Lastenausgleichsregeln für die Mandantendatenbank:
-
-   1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-   1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. „hana-lb-3**03**40“).
-   1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. **hana-frontend**) aus.
-   1. Behalten Sie als **Protokoll** den Wert **TCP** bei, und geben Sie als Port 3**03**40 ein.
-   1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
-   1. Achten Sie darauf, dass Sie **„Floating IP“ aktivieren**.
-   1. Klicken Sie auf **OK**.
-   1. Wiederholen Sie diese Schritte für die Ports 3**03**41 und 3**03**42.
-
-Weitere Informationen zu den erforderlichen Ports für SAP HANA finden Sie im Kapitel zu [Verbindungen mit Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) im Handbuch zu [SAP HANA-Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) oder im [SAP-Hinweis 2388694][2388694].
+   Weitere Informationen zu den erforderlichen Ports für SAP HANA finden Sie im Kapitel zu [Verbindungen mit Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) im Handbuch zu [SAP HANA-Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) oder im [SAP-Hinweis 2388694][2388694].
 
 > [!IMPORTANT]
 > Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).

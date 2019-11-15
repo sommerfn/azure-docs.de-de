@@ -7,14 +7,17 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 86d61dbd75363f68ee4651bfb36f940810909c00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509944"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715509"
 ---
 # <a name="assess-servers-using-imported-data"></a>Bewerten von Servern mit importierten Daten
+
+> [!NOTE]
+> Falls Sie dieses Feature noch nicht im Azure Migrate-Portal sehen, bitten wir Sie um etwas Geduld. Es wird voraussichtlich im Laufe der nächsten Woche verfügbar.
 
 In diesem Artikel wird beschrieben, wie Sie lokale Server mit der [ Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) bewerten, indem Sie Servermetadaten im CSV-Format importieren. Mit dieser Bewertungsmethode müssen Sie keine Azure Migrate-Appliance einrichten, um eine Bewertung zu erstellen. Dies ist in folgenden Situationen nützlich: 
 
@@ -185,7 +188,7 @@ Optional können Sie auch spezifische Felder nur für eine App hinzufügen.
 
 ## <a name="upload-the-server-information"></a>Hochladen der Serverinformationen
 
-Importieren Sie nach dem Hinzufügen der Informationen zur CSV-Vorlage die Server in die Azure Migrate-Serverbewertung.
+Importieren Sie nach dem Hinzufügen der Informationen zur CSV-Vorlage die Server in die Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
 
 1. Navigieren Sie in Azure Migrate zu **Computer ermitteln** und dann zur ausgefüllten Vorlage.
 2. Klicken Sie auf **Importieren**.
@@ -315,7 +318,7 @@ Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Wind
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Importieren von Servern in die Azure Migrate-Serverbewertung
