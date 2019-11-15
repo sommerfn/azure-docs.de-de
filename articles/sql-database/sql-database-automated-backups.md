@@ -1,5 +1,5 @@
 ---
-title: Automatische, georedundante Azure SQL-Datenbank-Sicherungen | Microsoft-Dokumentation
+title: Automatische, georedundante Sicherungen
 description: SQL-Datenbank erstellt alle paar Minuten automatisch eine lokale Datenbanksicherung und verwendet georedundanten Azure-Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS), um für Georedundanz zu sorgen.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843299"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821946"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -82,7 +82,7 @@ Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergr
 Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 
 ## <a name="storage-costs"></a>Speicherkosten
-Für Einzeldatenbanken wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße der Datenbank entspricht, kostenlos zur Verfügung gestellt. Bei Pools für elastische Datenbanken wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße des zugeordneten Datenspeichers für den Pool entspricht, ohne zusätzliche Kosten bereitgestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Dieser zusätzliche Verbrauch hängt von der Workload und der Größe der einzelnen Datenbanken ab.
+Für Einzeldatenbanken und verwaltete Instanzen wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße der Datenbank entspricht, kostenlos zur Verfügung gestellt. Bei Pools für elastische Datenbanken wird eine Mindestspeichermenge für die Sicherung, die der Gesamtgröße des zugeordneten Datenspeichers für den Pool entspricht, ohne zusätzliche Kosten bereitgestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Dieser zusätzliche Verbrauch hängt von der Workload und der Größe der einzelnen Datenbanken ab.
 
 Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/single/). 
 

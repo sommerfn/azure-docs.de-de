@@ -1,5 +1,5 @@
 ---
-title: Horizontales Hochskalieren einer Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Horizontales Skalieren einer Datenbank
 description: Erfahren Sie, wie Sie "ShardMapManager" und die Clienbtbibliothek für elastische Datenbanken verwenden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3e7e2294938179da83fb5ad03db177c1142ad096
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568336"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823558"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontales Skalieren von Datenbanken mit dem Shardzuordnungs-Manager
 
@@ -54,7 +54,7 @@ Die elastische Skalierung unterstützt die folgenden Typen als Shardingschlüsse
 | .NET | Java |
 | --- | --- |
 | integer |integer |
-| lang |lang |
+| long |long |
 | GUID |uuid |
 | Byte[]  |Byte[] |
 | datetime | timestamp |

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 10/25/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8741a9a362a10dfdb0150c9dc0dfddeed54594a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497439"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716602"
 ---
 # <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning
 
@@ -126,7 +126,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deplo
 Microsoft Power BI unterstützt die Verwendung von Machine Learning-Modellen für Datenanalysen. Weitere Informationen finden Sie unter [Integration von Azure Machine Learning in Power BI (Vorschau)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 
-## <a name="monitor-ml-applications-for-operational-and-ml-related-issues"></a>Überwachen von ML-Anwendungen auf betriebs- und ML-bezogene Probleme
+## <a name="monitor-for-operational--ml-issues"></a>Überwachen auf Betriebs- und ML-Probleme
 
 Die Überwachung ermöglicht Ihnen zu verstehen, welche Daten an Ihr Modell gesendet werden und welche Vorhersagen es zurückgibt.
 
@@ -135,7 +135,7 @@ Diese Informationen helfen Ihnen zu verstehen, wie Ihr Modell genutzt wird. Die 
 Weitere Informationen finden Sie unter [Gewusst wie: Aktivieren der Modelldatensammlung](how-to-enable-data-collection.md).
 
 
-## <a name="capture-an-end-to-end-audit-trail-of-the-ml-lifecycle"></a>Erfassen eines End-to-End-Überwachungspfads für den ML-Lebenszyklus
+## <a name="audit-trail-of-the-ml-lifecycle"></a>Überwachungsprotokoll des ML-Lebenszyklus
 
 Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ressourcen nachverfolgen. Dies gilt insbesondere in folgenden Fällen:
 
@@ -144,7 +144,7 @@ Bei Azure ML können Sie den End-to-End-Überwachungspfad Ihrer gesamten ML-Ress
 - Azure ML-Ausführungsverlauf speichert eine Momentaufnahme des Codes, der Daten und des Computevorgangs, mit denen ein Modell trainiert wurde.
 - Die Azure ML-Modellregistrierung erfasst alle Metadaten, die Ihrem Modell zugeordnet sind (welches Experiment wurde für das Training verwendet, wo wird es bereitgestellt und ob die Bereitstellungen fehlerfrei sind).
 
-## <a name="automate-the-end-to-end-ml-lifecycle"></a>Automatisieren des End-to-End-ML-Lebenszyklus 
+## <a name="automate-the-ml-lifecycle"></a>Automatisieren des ML-Lebenszyklus 
 
 Sie können GitHub und Azure Pipelines verwenden, um einen Continuous Integration-Prozess zu erstellen, der ein Modell trainiert. In einem typischen Szenario, in dem ein Data Scientist eine Änderung in das Git-Repository für ein Projekt eincheckt, startet die Azure-Pipeline einen Trainingsdurchlauf. Die Ergebnisse dieses Durchlaufs können dann untersucht werden, um die Leistungsmerkmale des trainierten Modells zu ermitteln. Sie können auch eine Pipeline erstelle, die das Modell als Webdienst bereitstellt.
 
@@ -157,8 +157,18 @@ Weitere Informationen zum Verwenden von Azure Pipelines mit Azure Machine Learni
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr darüber, [wie und wo Modelle mit Azure Machine Learning bereitgestellt werden können](how-to-deploy-and-where.md). Ein Bereitstellungsbeispiel finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
+Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-Erfahren Sie, wie Sie [durchgängige Integration und Bereitstellung von ML-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning) erstellen. 
++ [Bereitstellen von Modellen](how-to-deploy-and-where.md) mit Azure Machine Learning
 
-Erfahren Sie, wie Sie Clientanwendungen und -dienste erstellen, die [ein Modell verwenden, das als Webdienst bereitgestellt wird](how-to-consume-web-service.md).
++ [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md)
+
++ [Repository mit End-to-End-Beispielen für MLOps](https://github.com/microsoft/MLOps)
+
++ [CI/CD von ML-Modellen mit Azure Pipelines](/azure/devops/pipelines/targets/azure-machine-learning)
+
++ Erstellen von Clients, die ein [bereitgestelltes Modell nutzen](how-to-consume-web-service.md)
+
++ [Bedarfsorientiertes Machine Learning](/architecture/data-guide/big-data/machine-learning-at-scale)
+
++ [Repository mit bewährten Methoden und Referenzarchitekturen für Azure KI](https://github.com/microsoft/AI)

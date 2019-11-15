@@ -1,17 +1,17 @@
 ---
-title: Transformation für abgeleitete Spalten in Azure Data Factory Mapping Data Flow | Microsoft-Dokumentation
+title: Transformation für abgeleitete Spalten im Azure Data Factory-Zuordnungsdatenfluss
 description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Transformation für abgeleitete Spalten.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 387af25b87fdedff5d15ccb6a03819ad8b020e9a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514814"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676886"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformation für abgeleitete Spalten in Mapping Data Flow
 

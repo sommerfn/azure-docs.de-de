@@ -1,5 +1,5 @@
 ---
-title: Leistungsoptimierung mit dem sortierten gruppierten Columnstore-Index von Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index
 description: Empfehlungen und Überlegungen, die Sie kennen sollten, wenn Sie einen sortierten gruppierten Columnstore-Index zur Verbesserung Ihrer Abfrageleistung verwenden
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595365"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685990"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index  
 
@@ -43,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> In einer geordneten CCI-Tabelle werden neue Daten, die sich aus DML- oder Datenladevorgängen ergeben, nicht automatisch sortiert.  Benutzer können die geordnete CCI-Tabelle neu erstellen (REBUILD), um alle Daten in der Tabelle zu sortieren.  In Azure SQL Data Warehouse ist die Neuerstellung (REBUILD) des Columnstore-Indexes ein Offlinevorgang.  Bei einer partitionierten Tabelle erfolgt die Neuerstellung (REBUILD) der Partitionen nacheinander.  Die Daten in der Partition, die neu erstellt wird, sind „offline“ und nicht verfügbar, bis die Neuerstellung (REBUILD) für diese Partition beendet ist. 
+> In einer sortierten CCI-Tabelle werden die neuen Daten aus dem gleichen Batch von DML- oder Datenladevorgängen innerhalb dieses Batches sortiert, es findet jedoch keine globale Sortierung aller Daten in der Tabelle statt.  Benutzer können die geordnete CCI-Tabelle neu erstellen (REBUILD), um alle Daten in der Tabelle zu sortieren.  In Azure SQL Data Warehouse ist die Neuerstellung (REBUILD) des Columnstore-Indexes ein Offlinevorgang.  Bei einer partitionierten Tabelle erfolgt die Neuerstellung (REBUILD) der Partitionen nacheinander.  Die Daten in der Partition, die neu erstellt wird, sind „offline“ und nicht verfügbar, bis die Neuerstellung (REBUILD) für diese Partition beendet ist. 
 
 ## <a name="query-performance"></a>Abfrageleistung
 
@@ -63,7 +64,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Die Leistung von Abfrage 1 kann mehr von geordneten CCI-Tabellen als die anderen drei Abfragen profitieren. 
+Die Leistung von Abfrage 1 kann mehr von geordneten CCI-Tabellen als die anderen drei Abfragen profitieren. 
 
 ```sql
 -- Query #1: 
@@ -112,12 +113,12 @@ OPTION (MAXDOP 1);
 - Sortieren Sie die Daten vorab nach den Sortierschlüsseln, bevor Sie sie in Azure SQL Data Warehouse-Tabellen laden.
 
 
-Im Folgenden finden Sie ein Beispiel für eine Verteilung einer geordneten CCI-Tabelle ohne Segmentüberlappungen, bei dem die oben genannten Empfehlungen beachtet wurden. Die geordnete CCI-Tabelle wird in einer DWU1000c-Datenbank über CTAS aus einer Heaptabelle mit 20 GB mithilfe von MAXDOP 1 und xlargerc erstellt.  Die CCI-Tabelle wird in einer BIGINT-Spalte ohne Duplikate sortiert.  
+Im Folgenden finden Sie ein Beispiel für eine Verteilung einer geordneten CCI-Tabelle ohne Segmentüberlappungen, bei dem die oben genannten Empfehlungen beachtet wurden. Die geordnete CCI-Tabelle wird in einer DWU1000c-Datenbank über CTAS aus einer Heaptabelle mit 20 GB mithilfe von MAXDOP 1 und xlargerc erstellt.  Die CCI-Tabelle wird in einer BIGINT-Spalte ohne Duplikate sortiert.  
 
 ![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Erstellen eines sortierten CCI für große Tabellen
-Das Erstellen eines sortierten CCI ist ein Offlinevorgang.  Bei Tabellen ohne Partitionen sind die Daten für Benutzer erst verfügbar, wenn der Erstellungsprozess des sortierten CCI abgeschlossen ist.   Da die Engine geordnete CCI-Partitionen für partitionierte Tabellen nach Partition erstellt, können Benutzer auf die Daten in den Partitionen weiterhin zugreifen, für die die Erstellung der sortierten CCI-Tabelle aktuell nicht erfolgt.   Mit dieser Option können Sie die Ausfallzeiten beim Erstellen eines sortierten CCI für große Tabellen minimieren: 
+Das Erstellen eines sortierten CCI ist ein Offlinevorgang.  Bei Tabellen ohne Partitionen sind die Daten für Benutzer erst verfügbar, wenn der Erstellungsprozess des sortierten CCI abgeschlossen ist.   Da die Engine sortierte CCI-Partitionen für partitionierte Tabellen nach Partition erstellt, können die Benutzer auf die Daten in den Partitionen weiterhin zugreifen, für die die Erstellung des sortierten CCI nicht gerade erfolgt.   Mit dieser Option können Sie die Ausfallzeiten beim Erstellen eines sortierten CCI für große Tabellen minimieren: 
 
 1.  Erstellen Sie Partitionen für die große Zieltabelle (Table_A).
 2.  Erstellen Sie eine leere sortierte CCI-Tabelle (Table_B), die dieselben Tabellen- und Partitionsschemas wie Tabelle A aufweist.

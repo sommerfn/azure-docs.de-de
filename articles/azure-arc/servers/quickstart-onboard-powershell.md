@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 91d8ddf7d8051baeb42ceb58673c93555908f03a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ddade9472517d080d01b04c853db9dd1848fe0f3
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488176"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668465"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Schnellstart: Verbinden von Computern mit Azure mithilfe von Azure Arc für Server – PowerShell
 
@@ -198,6 +198,29 @@ Wenn Sie die Verbindung zwischen einem Computer und Azure Arc für Server trenne
 
 1. Wählen Sie im [Portal](https://aka.ms/hybridmachineportal) den Computer aus, klicken Sie auf die Auslassungspunkte (`...`), und wählen Sie **Löschen** aus.
 1. Deinstallieren Sie den Agent auf dem Computer.
+
+   Unter Windows können Sie den Agent in der Systemsteuerung unter „Apps & Features“ deinstallieren.
+  
+  ![Apps & Features](./media/quickstart-onboard/apps-and-features.png)
+
+   Wenn Sie ein Skript für die Deinstallation erstellen möchten, können Sie das folgende Beispiel verwenden, das **PackageId** abruft und den Agent mithilfe von `msiexec /X`deinstalliert.
+
+   Suchen Sie unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` nach **PackageId**. Anschließend können Sie den Agent mithilfe von `msiexec` deinstallieren.
+
+   Im folgenden Beispiel wird die Deinstallation des Agents veranschaulicht.
+
+   ```powershell
+   Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
+   Get-ItemProperty | `
+   Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
+   ForEach-Object {MsiExec.exe /Quiet /X "$($_.PsChildName)"}
+   ```
+
+   Führen Sie unter Linux den folgenden Befehl aus, um den Agent zu deinstallieren.
+
+   ```bash
+   sudo apt purge hybridagent
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: Auswählen der richtigen Bereitstellungsoption in Azure SQL | Microsoft-Dokumentation
+title: Auswählen der richtigen Bereitstellungsoption
 description: Hier erfahren Sie, wie Sie sich bei den Bereitstellungsoptionen in Azure SQL zwischen SQL-Datenbanken, verwalteten SQL-Instanzen und SQL Server auf virtuellen Azure-Computern entscheiden.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: 998318ad1418c1076676725af03bd7f33c963b3a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e642454807511e8e0bc0b6b6ca7af837e03de2cf
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279938"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821350"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Auswählen der richtigen Bereitstellungsoption in Azure SQL
 

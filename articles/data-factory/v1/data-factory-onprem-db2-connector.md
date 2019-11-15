@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten aus DB2 mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus DB2 mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus einer lokalen DB2-Datenbank mit der Kopieraktivität von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e473858ed02afce89313c0bfeffd95c785120d40
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 0d066e66e4b9600eb5734ef2f3c6031dbc44f17a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839031"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666599"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -317,23 +317,23 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |string |
-| VarChar |string |
-| LongVarChar |string |
-| DB2DynArray |string |
+| Char |Zeichenfolge |
+| VarChar |Zeichenfolge |
+| LongVarChar |Zeichenfolge |
+| DB2DynArray |Zeichenfolge |
 | Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |string |
-| VarGraphic |string |
-| LongVarGraphic |string |
-| Clob |string |
+| Graphic |Zeichenfolge |
+| VarGraphic |Zeichenfolge |
+| LongVarGraphic |Zeichenfolge |
+| Clob |Zeichenfolge |
 | Blob |Byte[] |
-| DbClob |string |
+| DbClob |Zeichenfolge |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
@@ -343,11 +343,11 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |DateTime |
+| Date |Datetime |
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |string |
+| Char |Zeichenfolge |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

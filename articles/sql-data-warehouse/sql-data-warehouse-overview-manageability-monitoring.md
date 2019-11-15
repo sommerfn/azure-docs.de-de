@@ -1,6 +1,6 @@
 ---
-title: Verwaltung und Überwachung von SQL Data Warehouse – Übersicht | Microsoft-Dokumentation
-description: Übersicht über die Überwachungs- und Verwaltungsfunktionen für die Ressourcennutzung, Protokoll- und Abfrageaktivitäten, Empfehlungen und den Schutz von Daten (Sichern und Wiederherstellen).
+title: Verwaltung und Überwachung – Übersicht
+description: Übersicht über die Überwachungs- und Verwaltungsfunktionen für die Ressourcennutzung, Protokoll- und Abfrageaktivitäten, Empfehlungen und den Schutz von Daten (Sichern und Wiederherstellen) in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: manage
 ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9fb06b8ba34566689f769ca9a69328eee37e3c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 3bacd77f49f97bd98a5e1bee844bc80c595f5cbe
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60747573"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685600"
 ---
 # <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Verwaltung und Überwachung von Azure SQL Data Warehouse
 
@@ -27,8 +28,8 @@ Sehen Sie sich an, welche Funktionen verfügbar sind, die Sie beim Verwalten und
 * [Informationen zu den im Azure-Portal verfügbaren Metriken und Protokollen][resource utilization]
 * [Informationen zu Sicherungs- und Wiederherstellungsfunktionen][data protection]
 * [Informationen zu integrierter Intelligenz und Empfehlungen][recommendations]
-* [Informationen zu Wartungszeiträumen und Möglichkeiten zum Minimieren der Downtime Ihres Data Warehouse][maintenance]
-* [Problembehandlung bei Azure SQL Data Warehouse][troubleshoot]
+* [Informationen zu Wartungszeiträumen und Möglichkeiten zum Minimieren von Ausfallzeiten Ihres Data Warehouse][maintenance]
+* [Anleitungen zur Problembehandlung bei Azure SQL Data Warehouse][troubleshoot]
 
 
 ## <a name="next-steps"></a>Nächste Schritte

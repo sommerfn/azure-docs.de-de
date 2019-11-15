@@ -1,24 +1,24 @@
 ---
 title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
-description: Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst.
+description: Antworten auf häufig gestellte Fragen zum Logs Analytics-Dienst in Azure Monitor.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 11/13/2018
-ms.openlocfilehash: e3ebb87a7a5f6200d860c1c79591719c32313e11
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/01/2019
+ms.openlocfilehash: 9eb921fc8ea19486db0fc3311764931f09e11464
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932213"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579310"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
+Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zum Log Analytics-Arbeitsbereich in Azure Monitor. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 
 ## <a name="new-logs-experience"></a>Neue Oberfläche für Protokolle
@@ -62,10 +62,12 @@ A: Zum Anzeigen von VM-Protokollen benötigen Sie eine Leseberechtigung für die
 
 A: Für den Zugriff auf einen Arbeitsbereich in Azure benötigen Sie Azure-Berechtigungen. Es kann Fälle geben, in denen Sie nicht über die entsprechenden Zugriffsberechtigungen verfügen. In diesen Fällen muss Ihnen Ihr Administrator Berechtigungen in Azure erteilen. Weitere Informationen finden Sie unter [OMS portal moving to Azure](oms-portal-transition.md) (Übergang vom OMS-Portal zu Azure).
 
-### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>F: Warum kann ich den Ansicht-Designer-Eintrag in Protokolle nicht sehen? 
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>F: Warum kann ich den Ansicht-Designer-Eintrag in Protokolle nicht sehen?
+
 A: Der Ansicht-Designer ist in der Protokollumgebung nur für Benutzer verfügbar, denen mindestens Berechtigungen vom Typ „Mitwirkender“ zugewiesen wurden.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>F: Kann ich das Analytics-Portal weiterhin außerhalb von Azure nutzen?
+
 A. Ja, die Seite „Protokolle“ in Azure und das Advanced Analytics-Portal basieren auf demselben Code. Log Analytics ist als Feature in Azure Monitor integriert, um eine einheitlichere Überwachungsoberfläche zu realisieren. Sie können weiterhin über diese URL auf das Analytics-Portal zugreifen: https:\/\/portal.loganalytics.io/subscriptions/{abonnementId}/resourcegroups/{ressourcengruppenname}/workspaces/{arbeitsbereichsname}.
 
 
@@ -105,29 +107,6 @@ Die Aktualisierung der Textzeichenfolgen für *OMS* befindet sich in einem Manag
 
 A:  Nein. Log Analytics ist ein skalierbarer Clouddienst, der große Datenmengen verarbeitet und speichert. 
 
-### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>F: Wie behebe ich das Problem, wenn Log Analytics keine Daten mehr erfasst?
-
-A: Für ein Abonnement und einen Arbeitsbereich, die vor dem 2. April 2018 erstellt wurden und sich im Tarif *Free* befinden, wird die Datensammlung für den Rest des Tages eingestellt, wenn mehr als 500 MB an einem Tag gesendet wurden. Das Erreichen des Tageslimits ist häufig die Ursache dafür, dass Log Analytics die Datensammlung beendet oder Daten scheinbar fehlen.  
-
-Log Analytics erstellt ein Ereignis vom Typ *Heartbeat* und kann verwendet werden, um zu ermitteln, ob die Datensammlung beendet wurde. 
-
-Führen Sie die folgende Abfrage in der Suche aus, um zu überprüfen, ob Sie das Tageslimit erreichen und Daten fehlen: `Heartbeat | summarize max(TimeGenerated)`
-
-Führen Sie zum Überprüfen eines bestimmten Computers die folgende Abfrage aus: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
-
-Wenn die Datensammlung beendet wird, werden je nach gewähltem Zeitbereich keine zurückgegebenen Datensätze angezeigt.   
-
-Die folgende Tabelle beschreibt die Gründe, warum die Datensammlung endet, und eine empfohlene Aktion zum Fortsetzen der Datensammlung:
-
-| Grund für Beenden der Datensammlung                       | Aktion zum Fortsetzen der Datensammlung |
-| -------------------------------------------------- | ----------------  |
-| Limit für kostenlose Daten erreicht<sup>1</sup>       | Warten Sie, bis die Sammlung im Folgemonat automatisch neu gestartet wird. Oder:<br> Wechseln Sie zu einem kostenpflichtigen Tarif |
-| Das Azure-Abonnement befindet sich aus folgendem Grund in einem angehaltenen Zustand: <br> Kostenlose Testversion endete <br> Azure Pass ist abgelaufen <br> Monatliches Ausgabenlimit ist erreicht (z.B. in einem MSDN- oder Visual Studio-Abonnement)                          | Konvertieren in ein kostenpflichtiges Abonnement <br> Konvertieren in ein kostenpflichtiges Abonnement <br> Limit entfernen oder warten, bis das Limit zurückgesetzt wird |
-
-<sup>1</sup> Wenn Ihr Arbeitsbereich im Tarif *Free* liegt, können Sie täglich nur 500 MB an Daten an den Dienst senden. Wenn Sie das Tageslimit erreichen, wird die Datensammlung bis zum nächsten Tag angehalten. Daten, die gesendet werden, während die Datensammlung angehalten ist, werden nicht indiziert und stehen nicht für die Suche zur Verfügung. Bei Fortsetzung der Datensammlung erfolgt nur die Verarbeitung neu gesendeter Daten. 
-
-Log Analytics orientiert sich an der UTC-Zeit, und jeder Tag beginnt um Mitternacht. Wenn der Arbeitsbereich das Tageslimit erreicht, wird die Verarbeitung während der ersten Stunde des nächsten UTC-Tages fortgesetzt.
-
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>F: Wie kann ich benachrichtigt werden, wenn die Datensammlung beendet wird?
 
 A: Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](../../azure-monitor/platform/alerts-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird.
@@ -147,6 +126,7 @@ Legen Sie beim Erstellen der Warnung für das Beenden der Datensammlung Folgende
 Geben Sie eine vorhandene [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
 
 ## <a name="configuration"></a>Konfiguration
+
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>F: Kann ich den Namen der Tabelle bzw. des Blobcontainers zum Einlesen von Daten aus Azure-Diagnose (WAD) ändern?
 
 A. Nein, derzeit ist es nicht möglich, aus beliebigen Tabellen oder Containern im Azure-Speicher zu lesen.
@@ -180,7 +160,7 @@ A:  Nach dem Aktualisieren auf den neuen Updaterollup und dem Importieren von Ma
 
 ### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>F: Wie überprüfe ich, ob ein Agent mit Log Analytics kommunizieren kann?
 
-A: Wenn Sie sich vergewissern möchten, dass der Agent mit OMS kommunizieren kann, navigieren Sie zu „Systemsteuerung“ > „Sicherheit und Einstellungen“ > **Microsoft Monitoring Agent**.
+A: Wenn Sie sich vergewissern möchten, dass der Agent mit dem Log Analytics-Arbeitsbereich kommunizieren kann, navigieren Sie zu „Systemsteuerung“ > „Sicherheit und Einstellungen“ > **Microsoft Monitoring Agent** navigieren.
 
 Suchen Sie unter der Registerkarte **Azure Log Analytics (OMS)** nach einem grünen Häkchen. Ein grünes Häkchen bestätigt, dass der Agent mit dem Azure-Dienst kommunizieren kann.
 
@@ -188,7 +168,7 @@ Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme bei der Kommunikation mi
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>F: Wie beende ich die Kommunikation eines Agents mit Log Analytics?
 
-A: Entfernen Sie in System Center Operations Manager den Computer aus der Liste der OMS-verwalteten Computer. Operations Manager aktualisiert die Konfiguration des Agents so, dass er keine Berichte mehr an Log Analytics sendet. Bei Agents, die direkt mit Log Analytics verbunden sind, können Sie die Kommunikation beenden, indem Sie zu „Systemsteuerung“ > „Sicherheit und Einstellungen“ > **Microsoft Monitoring Agent** navigieren.
+A: Entfernen Sie in System Center Operations Manager den Computer aus der Liste der Log Analytics-verwalteten Computer. Operations Manager aktualisiert die Konfiguration des Agents so, dass er keine Berichte mehr an Log Analytics sendet. Bei Agents, die direkt mit Log Analytics verbunden sind, können Sie die Kommunikation beenden, indem Sie zu „Systemsteuerung“ > „Sicherheit und Einstellungen“ > **Microsoft Monitoring Agent** navigieren.
 Entfernen Sie unter **Azure Log Analytics (OMS)** alle aufgeführten Arbeitsbereiche.
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>F: Warum tritt ein Fehler auf, wenn ich versuche, meinen Arbeitsbereich in ein anderes Azure-Abonnement zu verschieben?
@@ -212,11 +192,11 @@ A: Sie müssen im API-Text oder in den Eigenschaften der Azure Resource Manager-
 
 ## <a name="agent-data"></a>Agent-Daten
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>F: Wie viele Daten kann ich über den Agent an Log Analytics senden? Gibt es eine maximale Datenmenge pro Kunde?
-A. Im Tarif Free gilt eine tägliche Obergrenze von 500 MB pro Arbeitsbereich. Die Tarife Standard und Premium sehen keine Begrenzung der Datenmenge vor, die hochgeladen werden kann. Als Clouddienst ist Log Analytics so ausgelegt, dass ein automatisches Hochskalieren erfolgt, um das vom Kunden eingehende Datenvolumen zu bewältigen, selbst wenn es sich um mehrere Terabytes pro Tag handelt.
+A. Es gibt keine Beschränkung für die Datenmenge, die hochgeladen wird. Diese basiert auf der von Ihnen ausgewählten Preisoption: Kapazitätsreservierung oder nutzungsbasierte Bezahlung. Ein Log Analytics-Arbeitsbereich ist so ausgelegt, dass ein automatisches Hochskalieren erfolgt, um das vom Kunden eingehende Datenvolumen zu bewältigen, selbst wenn es sich um mehrere Terabytes pro Tag handelt. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/monitor/).
 
 Der Log Analytics-Agent ist auf einen kleinen Speicherbedarf ausgelegt. Das Datenvolumen variiert basierend auf den Lösungen, die Sie aktivieren. Ausführliche Informationen zum Datenvolumen sowie eine Aufschlüsselung nach Lösung finden Sie auf der Seite [Verwendung](../../azure-monitor/platform/data-usage.md).
 
-Weitere Informationen finden Sie in einem [Kundenblog](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html), in dem die Ergebnisse nach Auswertung der Ressourcennutzung (Speicherbedarf) des OMS-Agents angezeigt werden.
+Weitere Informationen finden Sie in einem [Kundenblog](https://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html), in dem die Ergebnisse nach Auswertung der Ressourcennutzung (Speicherbedarf) des Log Analytics-Agents angezeigt werden.
 
 ### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>F: Wie viel Netzwerkbandbreite nutzt der Microsoft-Verwaltungs-Agent (MMA) beim Senden von Daten an Log Analytics?
 
@@ -230,7 +210,7 @@ A. Die pro Agent gesendete Datenmenge hängt von Folgendem ab:
 * Der Anzahl der Protokolle und Leistungsindikatoren, die gesammelt werden
 * Der Menge der Daten in den Protokollen
 
-Der Tarif Free ist eine gute Möglichkeit, dem Dienst mehrere Server hinzuzufügen und das typische Datenvolumen zu messen. Die Gesamtverwendung wird auf der Seite [Verwendung](../../azure-monitor/platform/data-usage.md) gezeigt.
+Die Gesamtverwendung wird auf der Seite [Verwendung](../../azure-monitor/platform/data-usage.md) gezeigt.
 
 Für Computer, die den WireData-Agent ausführen können, zeigen Sie mithilfe der folgenden Abfrage an, wie viele Daten gesendet werden:
 
@@ -239,4 +219,5 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erste Schritte mit Log Analytics](../../azure-monitor/overview.md). Hier erfahren Sie mehr über Log Analytics und wie Sie binnen Minuten loslegen können.
+
+[Erste Schritte mit Azure Monitor](../../azure-monitor/overview.md). Hier erfahren Sie mehr über Log Analytics und wie Sie innerhalb weniger Minuten loslegen können.

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 07/12/2019
+ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: c886289f098eb41f4b215b4abc2e206db93a27f9
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 36c496b77be5bfda83b3ed424a7fdf2b53101aa4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710144"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580616"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -28,7 +28,7 @@ Informationen zu Architektur, Konzepten und Workflows von Azure Machine Learning
 Für den Workflow des Machine Learning-Modells werden in der Regel diese Schritte ausgeführt:
 
 1. **Trainieren**
-    + Entwickeln Sie Machine Learning-Trainingsskripts in **Python** oder mit der grafischen Benutzeroberfläche.
+    + Entwickeln Sie Machine Learning-Trainingsskripts in **Python** oder mit dem Visual Designer.
     + Erstellen und Konfigurieren eines **Computeziels**
     + **Übermitteln der Skripts** an das konfigurierte Computeziel zur Ausführung in dieser Umgebung. Während des Trainings können die Skripts **Datenspeicher** lesen oder beschreiben. Die Datensätze zur Ausführung werden zudem als **Ausführungen** im **Arbeitsbereich** gespeichert und unter **Experimente** gruppiert.
 
@@ -45,23 +45,26 @@ Für den Workflow des Machine Learning-Modells werden in der Regel diese Schritt
 Verwenden Sie diese Tools für Azure Machine Learning:
 
 +  Interagieren Sie mit dem Dienst in einer beliebigen Python-Umgebung, indem Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) verwenden.
++ Interagieren Sie mit dem Dienst in einer beliebigen R-Umgebung, indem Sie das [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) verwenden.
 + Automatisieren Sie Ihre Machine Learning-Aktivitäten mit der [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
 + Schreiben Sie Code in Visual Studio Code mit der [VS Code-Erweiterung für Azure Machine Learning](how-to-vscode-tools.md).
-+ Verwenden Sie die [grafische Benutzeroberfläche (Vorschauversion) für Azure Machine Learning](ui-concept-visual-interface.md), um die Workflowschritte auszuführen – ganz ohne Programmierung.
++ Verwenden Sie den [Azure Machine Learning-Designer (Vorschauversion)](concept-designer.md), um die Workflowschritte auszuführen – ganz ohne Programmierung.
+
 
 > [!NOTE]
 > In diesem Artikel werden von Azure Machine Learning genutzte Begriffe und Konzepte definiert, aber keine Begriffe und Konzepte für Azure Platform. Weitere Informationen zur Azure Platform-Terminologie finden Sie im [Microsoft Azure-Glossar](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Glossar
 + <a href="#activities">Aktivität</a>
++ <a href="#compute-instance">Notebook-VM</a>
 + <a href="#compute-targets">Computeziele</a>
 + <a href="#datasets-and-datastores">Dataset und Datenspeicher</a>
-+ <a href="#deployment">Bereitstellung</a>
++ <a href="#endpoints">Endpunkte</a>
 + <a href="#environments">Umgebungen</a>
 + [Schätzfunktionen](#estimators)
 + <a href="#experiments">Experimente</a>
 + <a href="#github-tracking-and-integration">Git-Tracking</a>
-+ <a href="#iot-module-deployments">IoT-Module</a>
++ <a href="#iot-module-endpoints">IoT-Module</a>
 + <a href="#logging">Protokollierung</a>
 + <a href="#ml-pipelines">ML-Pipelines</a>
 + <a href="#models">Modelle</a>
@@ -69,7 +72,7 @@ Verwenden Sie diese Tools für Azure Machine Learning:
 + <a href="#run-configurations">Laufzeitkonfiguration</a>
 + <a href="#snapshots">Momentaufnahme</a>
 + <a href="#training-scripts">Trainingsskript</a>
-+ <a href="#web-service-deployments">Webdienste</a>
++ <a href="#web-service-endpoint">Webdienste</a>
 + <a href="#workspaces">Arbeitsbereich</a>
 
 ### <a name="activities"></a>activities
@@ -81,9 +84,15 @@ Eine Aktivität stellt einen Vorgang mit langer Ausführungsdauer dar. Die folge
 
 Aktivitäten können Benachrichtigungen über das SDK oder eine Webbenutzeroberfläche bereitstellen, damit Sie den Status dieser Vorgänge auf einfache Weise überwachen können.
 
+### <a name="compute-instance"></a>Notebook-VM
+
+Eine **Azure Machine Learning-Notebook-VM** ist eine vollständig verwaltete, cloudbasierte Arbeitsstation, die mehrere für Machine Learning installierte Tools und Umgebungen umfasst. Notebook-VMs können als Computeziel für kleinere Trainings- und Rückschlussaufträge verwendet werden. Bei großen Aufgaben sind [Azure Machine Learning-Computecluster](how-to-set-up-training-targets.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten die bessere Wahl eines Computeziels.
+
+Erfahren Sie mehr über Notebook-VMs.
+
 ### <a name="compute-targets"></a>Computeziele
 
-Mit einem [Computeziel](concept-compute-target.md) können Sie die Computeressource angeben, auf der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Hierbei kann es sich um Ihren lokalen Computer oder eine cloudbasierte Computeressource handeln. Mithilfe von Computezielen können Sie Ihre Compute-Umgebung ohne Änderung des Codes problemlos ändern.
+Mit einem [Computeziel](concept-compute-target.md) können Sie die Computeressource angeben, auf der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Hierbei kann es sich um Ihren lokalen Computer oder eine cloudbasierte Computeressource handeln.
 
 Informieren Sie sich weiter über die [verfügbaren Computeziele für das Training und die Bereitstellung](concept-compute-target.md).
 
@@ -97,23 +106,23 @@ Weitere Informationen finden Sie unter [Erstellen und Registrieren von Azure Mac
 
 Ein **Datenspeicher** ist eine Speicherabstraktion eines Azure-Speicherkontos. Der Datenspeicher kann entweder einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Back-End-Speicher verwenden. Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher, und Sie können auch zusätzliche Datenspeicher registrieren. Verwenden Sie die Python SDK-API oder die Azure Machine Learning-CLI, um Dateien zu speichern und aus dem Datenspeicher abzurufen.
 
-### <a name="deployment"></a>Bereitstellung
+### <a name="endpoints"></a>Endpunkte
 
-Eine Bereitstellung ist eine Instanziierung Ihres Modells in einem Webdienst, der in der Cloud gehostet werden kann, oder in einem IoT-Modul für Bereitstellungen von integrierten Diensten.
+Ein Endpunkt ist eine Instanziierung Ihres Modells in einem Webdienst, der in der Cloud gehostet werden kann, oder in einem IoT-Modul für Bereitstellungen von integrierten Diensten.
 
-#### <a name="web-service-deployments"></a>Webdienstbereitstellungen
+#### <a name="web-service-endpoint"></a>Webdienst-Endpunkt
 
-Für einen bereitgestellten Webdienst können Azure Container Instances, Azure Kubernetes Service oder FPGAs verwendet werden. Sie erstellen den Dienst aus Ihrem Modell, dem Skript und zugeordneten Dateien. Diese sind in einem Image gekapselt, das die Laufzeitumgebung für den Webdienst bereitstellt. Das Image verfügt über einen HTTP-Endpunkt mit Lastenausgleich, der die an den Webdienst gesendeten Bewertungsanforderungen empfängt.
+Wenn Sie ein Modell als Webdienst bereitstellen, kann der Endpunkt auf Azure Container Instances, Azure Kubernetes Service oder FPGAs bereitgestellt werden. Sie erstellen den Dienst aus Ihrem Modell, dem Skript und zugeordneten Dateien. Diese werden in ein Basiscontainerimage eingefügt, das die Ausführungsumgebung für das Modell enthält. Das Image verfügt über einen HTTP-Endpunkt mit Lastenausgleich, der die an den Webdienst gesendeten Bewertungsanforderungen empfängt.
 
-Azure dient Ihnen als Hilfe beim Überwachen der Bereitstellung Ihres Webdiensts, indem die Application Insight- bzw. Modelltelemetriedaten erfasst werden, wenn Sie dieses Feature aktiviert haben. Die Telemetriedaten sind nur für Sie zugänglich und werden in Ihren Application Insights- und Speicherkontoinstanzen gespeichert.
+Azure dient Ihnen als Hilfe beim Überwachen Ihres Webdiensts, indem die Application Insights- bzw. Modelltelemetriedaten erfasst werden, wenn Sie dieses Feature aktiviert haben. Die Telemetriedaten sind nur für Sie zugänglich und werden in Ihren Application Insights- und Speicherkontoinstanzen gespeichert.
 
 Wenn Sie die automatische Skalierung aktiviert haben, führt Azure für Ihre Bereitstellung automatisch eine Skalierung durch.
 
 Ein Beispiel für die Bereitstellung eines Modells als Webdienst finden Sie unter [Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
-#### <a name="iot-module-deployments"></a>Bereitstellung eines IoT-Moduls
+#### <a name="iot-module-endpoints"></a>IoT-Modulendpunkte
 
-Ein bereitgestelltes IoT-Modul ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edge-Geräten bereit.
+Ein bereitgestellter IoT-Modulendpunkt ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edge-Geräten bereit.
 
 Wenn Sie die Überwachung aktiviert haben, erfasst Azure Telemetriedaten aus dem Modell im Azure IoT Edge-Modul. Die Telemetriedaten sind nur für Sie zugänglich und werden in Ihrer Speicherkontoinstanz gespeichert.
 
@@ -149,8 +158,9 @@ Ein Beispiel zum Verwenden eines Experiments finden Sie im [Tutorial: Trainieren
 
 ### <a name="github-tracking-and-integration"></a>GitHub-Nachverfolgung und -Integration
 
-Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Zum Beispiel wird die aktuelle Commit-ID für das Repository als Teil des Verlaufs protokolliert. Dies funktioniert für Ausführungen, die über eine Schätzfunktion, ML-Pipeline oder Skriptausführung übermittelt wurden. Dies funktioniert auch für Ausführungen, die aus dem SDK oder der Machine Learning-CLI übermittelt wurden.
+Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Dies funktioniert für Ausführungen, die über eine Schätzfunktion, ML-Pipeline oder Skriptausführung übermittelt wurden. Dies funktioniert auch für Ausführungen, die aus dem SDK oder der Machine Learning-CLI übermittelt wurden.
 
+Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).
 
 ### <a name="logging"></a>Protokollierung
 
@@ -187,7 +197,6 @@ Sie können kein registriertes Modell löschen, das von einer aktiven Bereitstel
 
 Ein Beispiel für das Registrieren eines Modells finden Sie unter [Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning Service](tutorial-train-models-with-aml.md).
 
-
 ### <a name="runs"></a>Ausführungen
 
 Eine Ausführung ist eine einzelne Ausführung eines Trainingsskripts. Azure Machine Learning zeichnet alle Ausführungen auf und speichert die folgenden Informationen:
@@ -222,7 +231,6 @@ Ein Beispiel finden Sie unter [Tutorial: Trainieren eines Bildklassifizierungsmo
 ### <a name="workspaces"></a>Arbeitsbereiche
 
 [Der Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für Azure Machine Learning. Er bietet einen zentralen Ort für die Arbeit mit allen Artefakten, die Sie bei der Verwendung von Azure Machine Learning erstellen. Sie können einen Arbeitsbereich mit anderen Benutzern teilen. Eine detaillierte Beschreibung von Arbeitsbereichen finden Sie unter [Was ist ein Azure Machine Learning-Arbeitsbereich?](concept-workspace.md).
-
 
 ### <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 62fb5552d86a802c3ba0213d99be2f91f21025e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472125"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620435"
 ---
 # <a name="access-and-customize-developer-portal"></a>Zugreifen auf das Entwicklerportal und Anpassen dieses Portals
 
@@ -125,7 +125,7 @@ Um Ihr Portal mit den neuesten Änderungen Besuchern zur Verfügung zu stellen, 
 
 ## <a name="visit-the-published-portal"></a>Besuchen des veröffentlichten Portals
 
-Nachdem Sie das Portal veröffentlicht haben, können Sie über die gleiche URL wie für das Verwaltungspanel darauf zugreifen, z. B. über `https://contoso-api.portal.azure-api.net`. Öffnen Sie das Portal in einer neuen Registerkarte, um es als externer Besucher anzuzeigen.
+Nachdem Sie das Portal veröffentlicht haben, können Sie über die gleiche URL wie für das Verwaltungspanel darauf zugreifen, z. B. über `https://contoso-api.developer.azure-api.net`. Sie können es in einer separaten Browsersitzung (inkognito/privater Modus) als externer Besucher anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

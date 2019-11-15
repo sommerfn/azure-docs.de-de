@@ -1,5 +1,5 @@
 ---
-title: Skalieren von Einzeldatenbankressourcen – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Skalieren von Einzeldatenbankressourcen
 description: In diesem Artikel wird beschrieben, wie die für eine Einzeldatenbank in Azure SQL-Datenbank verfügbaren Compute- und Speicherressourcen skaliert werden können.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: e03c68854d9150c25019fe198fe855a011750844
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2a16735e65201314328d2315479ccc467b9d555e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566546"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820999"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
-In diesem Artikel wird beschrieben, wie die für eine Einzeldatenbank auf der bereitgestellten Dienstebene verfügbaren Compute- und Speicherressourcen skaliert werden können. Alternativ bietet die [serverlose Computeebene (Vorschauversion)](sql-database-serverless.md) automatische Computeskalierung und eine Abrechnung der genutzten Computekapazität pro Sekunde.
+In diesem Artikel wird beschrieben, wie die für eine Azure SQL-Datenbank-Instanz im bereitgestellten Computetarif verfügbaren Compute- und Speicherressourcen skaliert werden können. Alternativ bietet der [serverlose Computetarif](sql-database-serverless.md) automatische Computeskalierung und eine Abrechnung der genutzten Computekapazität pro Sekunde.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -38,20 +38,20 @@ Das folgende Video zeigt die dynamische Änderung von Dienstebene und Computegr�
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Auswirkungen der Änderung der Dienstebene oder der Neuskalierung der Computegröße
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Auswirkungen der Änderung der Dienstebene oder der Skalierung der Computegröße
 
-Zum Ändern der Dienstebene oder der Computegröße eines Singleton müssen hauptsächlich die folgenden Schritte ausgeführt werden:
+Zum Ändern der Dienstebene oder der Computegröße müssen hauptsächlich die folgenden Schritte ausgeführt werden:
 
 1. Erstellen einer neuen Computeinstanz für die Datenbank  
 
-    Eine neue Computeinstanz für die Datenbank wird mit der angeforderten Dienstebene und der Computegröße erstellt. Für einige Kombinationen von Änderungen der Dienstebene und der Computegröße muss ein Datenbankreplikat in der neuen Computeinstanz erstellt werden. Dies umfasst das Kopieren von Daten und kann sich stark auf die Gesamtwartezeit auswirken. Die Datenbank bleibt unabhängig davon während dieses Schritts online, und Verbindungen werden weiterhin an die Datenbank in der ursprünglichen Computeinstanz weitergeleitet.
+    Eine neue Computeinstanz wird mit der angeforderten Dienstebene und Computegröße erstellt. Für einige Kombinationen von Änderungen der Dienstebene und der Computegröße muss ein Datenbankreplikat in der neuen Computeinstanz erstellt werden. Dies umfasst das Kopieren von Daten und kann sich stark auf die Gesamtwartezeit auswirken. Die Datenbank bleibt unabhängig davon während dieses Schritts online, und Verbindungen werden weiterhin an die Datenbank in der ursprünglichen Computeinstanz weitergeleitet.
 
 2. Umleiten der Verbindungen zur neuen Computeinstanz
 
     Vorhandene Verbindungen zur Datenbank in der ursprünglichen Computeinstanz werden verworfen. Alle neuen Verbindungen werden mit der Datenbank in der neuen Computeinstanz hergestellt. Für einige Kombinationen von Änderungen der Dienstebene und der Computegröße werden Datenbankdateien während des Wechsels getrennt und neu angefügt.  Der Wechsel kann zu einer kurzen Dienstunterbrechung führen, in der die Datenbank in der Regel für weniger als 30 Sekunden nicht verfügbar ist. Wenn zeitintensive Transaktionen zu dem Zeitpunkt ausgeführt werden, an dem die Verbindungen getrennt werden, kann dieser Schritt mehr Zeit beanspruchen, da abgebrochene Transaktionen wiederhergestellt werden. Mit der [schnelleren Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) können die Auswirkungen abgebrochener, zeitintensiver Transaktionen reduziert werden.
 
 > [!IMPORTANT]
-> Während dieses Workflows gehen keine Daten verloren.
+> Während dieses Workflows gehen keine Daten verloren. Implementieren Sie unbedingt auch [Wiederholungslogik](sql-database-connectivity-issues.md) in den Anwendungen und Komponenten, die Azure SQL-Datenbank verwenden, während die Dienstebene geändert wird.
 
 ### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Wartezeit beim Ändern der Dienstebene oder beim Skalieren der Computegröße
 

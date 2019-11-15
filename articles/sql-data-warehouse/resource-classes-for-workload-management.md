@@ -1,5 +1,5 @@
 ---
-title: Ressourcenklassen für die Workloadverwaltung in Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Ressourcenklassen für die Workloadverwaltung
 description: Enthält eine Anleitung für die Verwendung von Ressourcenklassen zum Verwalten der Parallelität und von Computeressourcen für Abfragen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,15 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 11/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5ef95faf162a6774e42b7cf258515757fdc9c7eb
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035079"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685928"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Workloadverwaltung mit Ressourcenklassen in Azure SQL Data Warehouse
 
@@ -35,7 +36,7 @@ Es gibt zwei Arten von Ressourcenklassen:
 
 Ressourcenklassen verwenden Parallelitätsslots zum Messen des Ressourcenverbrauchs.  [Parallelitätsslots](#concurrency-slots) werden weiter unten in diesem Artikel erläutert.
 
-- Die Ressourcenauslastung für die Ressourcenklassen finden Sie unter [Speicher- und Parallelitätsgrenzwerte](memory-and-concurrency-limits.md#concurrency-maximums).
+- Die Ressourcenauslastung für die Ressourcenklassen finden Sie unter [Speicher- und Parallelitätsgrenzwerte]memory-concurrency-limits.md).
 - Um die Ressourcenklasse anzupassen, können Sie die Abfrage unter einem anderen Benutzerkonto ausführen oder [Ressourcenklassenmitgliedschaft des aktuellen Benutzers ändern](#change-a-users-resource-class).
 
 ### <a name="static-resource-classes"></a>Statische Ressourcenklassen
@@ -331,7 +332,7 @@ SELECT 'DW100c' AS DWU,4 AS max_queries,4 AS max_slots,1 AS slots_used_
     SELECT 'DW30000c', 128, 1200, 36, 120, 264, 840, 1, 2, 4, 8, 16, 32, 64, 128 
 )
 -- Creating workload mapping to their corresponding slot consumption and default memory grant.
-,map
+,map  
 AS
 (
   SELECT CONVERT(varchar(20), 'SloDWGroupSmall') AS wg_name, slots_used_smallrc AS slots_used FROM alloc WHERE DWU = @DWU
@@ -580,7 +581,7 @@ SELECT  CASE
 GO
 ```
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse][Secure a database in SQL Data Warehouse]. Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität des gruppierten Columnstore-Index verbessern können, finden Sie unter [Arbeitsspeicheroptimierung für Columnstore-Komprimierung](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Erstellen und Automatisieren Ihres ersten Workflows: Azure Logic Apps'
-description: 'Schnellstart: Erstellen erster automatisierter Aufgaben oder Workflows mithilfe von Azure Logic Apps für Systemintegrationslösungen und EAI-Lösungen (Enterprise Application Integration)'
+title: Erstellen Ihres ersten automatisierten Workflows – Azure Logic Apps
+description: 'Schnellstart: Erstellen Ihres ersten automatisierten Workflows mithilfe von Azure Logic Apps für Systemintegrationslösungen und EAI-Lösungen (Enterprise Application Integration)'
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,21 +10,21 @@ ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 08/20/2019
-ms.openlocfilehash: 8886472b9840c27bcbceb70265379db1682673a9
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 10/20/2019
+ms.openlocfilehash: b6222747e352f446dab33314729f7f697e328909
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679142"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824901"
 ---
-# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal
+# <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps – Azure-Portal
 
-Diese Schnellstartanleitung enthält eine Einführung in die Erstellung Ihres ersten automatisierten Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md). In diesem Artikel erstellen Sie eine Logik-App, die den RSS-Feed einer Website regelmäßig auf neue Elemente überprüft. Wenn neue Elemente vorhanden sind, sendet die Logik-App eine E-Mail für jedes Element. Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
+In dieser Schnellstartanleitung werden die grundlegenden allgemeinen Konzepte vorgestellt, auf denen das Erstellen Ihres ersten Workflows mithilfe von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) beruht. Dazu gehören z.B. das Erstellen einer leeren Logik-App, das Hinzufügen eines Triggers und einer Aktion sowie das anschließende Testen Ihrer Logik-App. In diesem Schnellstart erstellen Sie eine Logik-App, die den RSS-Feed einer Website regelmäßig auf neue Elemente überprüft. Wenn neue Elemente vorhanden sind, sendet die Logik-App eine E-Mail für jedes Element. Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 ![Allgemeiner Logik-App-Beispielworkflow](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Für diese Schnellstartanleitung benötigen Sie ein E-Mail-Konto bei einem von Logic Apps unterstützten E-Mail-Anbieter wie Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In dieser Logik-App verwenden wir ein Office 365 Outlook-Konto. Bei Verwendung eines anderen E-Mail-Kontos sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab.
+Für dieses Szenario benötigen Sie ein E-Mail-Konto von einem von Azure Logic Apps unterstützten Dienst wie Office 365 Outlook, Outlook.com oder Gmail. Weitere unterstützte E-Mail-Dienste finden Sie im [Artikel zu den Connectors](https://docs.microsoft.com/connectors/). In diesem Beispiel wird Office 365 Outlook für die Logik-App verwendet. Wenn Sie einen anderen E-Mail-Dienst verwenden, sind die allgemeinen Schritte identisch, doch kann die Benutzeroberfläche geringfügig abweichen.
 
 Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich darüber hinaus [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
@@ -34,11 +34,15 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
 ## <a name="create-your-logic-app"></a>Erstellen Ihrer Logik-App
 
-1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
+1. Suchen Sie auf der Azure-Startseite im Suchfeld nach **Logic Apps**, und wählen Sie den entsprechenden Eintrag aus.
 
-   ![Erstellen von Logik-Apps: Azure-Portal](./media/quickstart-create-first-logic-app-workflow/create-new-logic-app.png)
+   ![Suchen und Auswählen von „Logic Apps“](./media/quickstart-create-first-logic-app-workflow/find-select-logic-apps.png)
 
-1. Geben Sie unter **Logik-App erstellen** Details zur Logik-App wie hier gezeigt ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
+1. Wählen Sie auf der Seite **Logic Apps** die Option **Hinzufügen** aus.
+
+   ![Hinzufügen einer neuen Logik-App](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+
+1. Geben Sie im Bereich **Logik-App** Details zu Ihrer Logik-App wie nachfolgend gezeigt ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
 
    ![Angeben von Details für eine neue Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
@@ -61,15 +65,15 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
    ![Auswählen der leeren Vorlage für die Logik-App](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
-Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, der bei einem neuen RSS-Feedelement ausgelöst wird. Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt die Logic Apps-Engine eine Logik-App-Instanz, mit der Ihr Workflow gestartet und ausgeführt wird.
+Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, der bei einem neuen RSS-Feedelement ausgelöst wird. Jede Logik-App muss mit einem Trigger beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt die Azure Logic Apps-Engine eine Logik-App-Instanz, mit der Ihr Workflow gestartet und ausgeführt wird.
 
 <a name="add-rss-trigger"></a>
 
-## <a name="check-rss-feed-with-a-trigger"></a>Überprüfen des RSS-Feeds mit einem Trigger
+## <a name="add-the-rss-trigger"></a>Hinzufügen des RSS-Triggers
 
-1. Wählen Sie im Logik-App-Designer unterhalb des Suchfelds **Alle** aus.
+1. Wählen Sie im **Logik-App-Designer** unterhalb des Suchfelds die Option **Alle** aus.
 
-1. Geben Sie im Suchfeld „rss“ ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Beim Veröffentlichen eines Feedelements: RSS**
+1. Geben Sie im Suchfeld `rss` ein, um den RSS-Connector zu suchen. Wählen Sie in der Triggerliste den Eintrag **Beim Veröffentlichen eines Feedelements** aus.
 
    ![Auswählen des Triggers „Beim Veröffentlichen eines Feedelements“](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-new-feed-item.png)
 
@@ -94,7 +98,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
 Ihre Logik-App befindet sich jetzt im Livemodus, aber es wird vorerst nur der RSS-Feed überprüft. Fügen Sie daher eine Aktion hinzu, die reagiert, wenn der Trigger ausgelöst wird.
 
-## <a name="send-email-with-an-action"></a>Senden einer E-Mail mit einer Aktion
+## <a name="add-the-send-email-action"></a>Hinzufügen der Aktion „E-Mail senden“
 
 Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzu, die eine E-Mail sendet, wenn im RSS-Feed ein neues Element erscheint.
 
@@ -104,7 +108,7 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 1. Wählen Sie unterhalb von **Aktion auswählen** und unterhalb des Suchfelds die Option **Alle** aus.
 
-1. Geben Sie im Suchfeld „E-Mail senden“ ein. Wählen Sie aus der Liste der Aktionen die Aktion "E-Mail senden" für den gewünschten E-Mail-Anbieter aus.
+1. Geben Sie im Suchfeld `send an email` ein, um Connectors zu suchen, die diese Aktion anbieten. Wählen Sie in der Liste der Aktionen die Aktion „E-Mail senden“ für den gewünschten E-Mail-Dienst aus. In diesem Beispiel wird der Office 365 Outlook-Connector verwendet, der über die Aktion **E-Mail senden** verfügt.
 
    ![Auswählen der Aktion „E-Mail senden“ für Office 365 Outlook](./media/quickstart-create-first-logic-app-workflow/add-action-send-email.png)
 
@@ -113,15 +117,23 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
    * Wählen Sie für Geschäfts-, Schul- oder Unikonten für Azure die Option „Office 365 Outlook“.
    * Wählen Sie für persönliche Microsoft-Konten die Option „Outlook.com“.
 
-1. Falls Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, melden Sie sich bei Ihrem E-Mail-Konto an, damit Logic Apps eine Verbindung mit Ihrem E-Mail-Konto herstellt.
+1. Wenn der ausgewählte E-Mail-Connector Sie auffordert, Ihre Identität zu authentifizieren, führen Sie diesen Schritt jetzt aus, um eine Verbindung zwischen Ihrer Logik-App und Ihrem E-Mail-Dienst herzustellen.
+
+   > [!NOTE]
+   > In diesem speziellen Beispiel authentifizieren Sie Ihre Identität manuell. Connectors, die eine Authentifizierung erfordern, unterscheiden sich jedoch in Hinsicht auf die jeweils unterstützten Authentifizierungstypen. Außerdem stehen Optionen bereit, mit denen Sie die Handhabung der Authentifizierung einrichten können. Wenn Sie z.B. Azure Resource Manager-Vorlagen für die Bereitstellung verwenden, können Sie Eingaben, die Sie häufig oder einfach ändern möchten (z.B. Verbindungsinformationen), parametrisieren und sichern. Weitere Informationen finden Sie in den folgenden Themen:
+   >
+   > * [Vorlagenparameter für die Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
+   > * [Autorisieren von OAuth-Verbindungen](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
+   > * [Authentifizieren des Zugriffs mit verwalteten Identitäten](../logic-apps/create-managed-service-identity.md)
+   > * [Authentifizieren von Verbindungen für die Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#authenticate-connections)
 
 1. Geben Sie in der Aktion **E-Mail senden** die Daten an, die die E-Mail enthalten soll.
 
-   1. Geben Sie im Feld **An** die E-Mail-Adresse des Empfängers ein. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben.
+   1. Geben Sie im Feld **An** die E-Mail-Adresse des Empfängers ein. Zu Testzwecken können Sie hier Ihre E-Mail-Adresse angeben.
 
       Ignorieren Sie vorerst die angezeigte Liste **Dynamischen Inhalt hinzufügen**. Wenn Sie in einige Bearbeitungsfelder klicken, wird die Liste mit verfügbaren Parametern aus dem vorherigen Schritt angezeigt, die Sie als Eingaben in Ihren Workflow aufnehmen können.
 
-   1. Geben Sie im Feld **Betreff** den folgenden Text mit einem nachstehenden Leerzeichen ein: ```New RSS item:```.
+   1. Geben Sie im Feld **Betreff** den folgenden Text mit einem nachstehenden Leerzeichen ein: `New RSS item: `.
 
       ![Eingeben des E-Mail-Betreffs in der Betreffeigenschaft](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
 
@@ -158,7 +170,7 @@ Im Anschluss sehen Sie eine Beispiel-E-Mail, die von dieser Logik-App gesendet w
 
 ![Beispiel-E-Mail bei Anzeige eines neuen RSS-Feedelements gesendet](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-Aus technischer Sicht passiert Folgendes: Wenn der Trigger den RSS-Feed prüft und neue Elemente findet, wird der Trigger ausgelöst, und die Logic Apps-Engine erstellt eine Instanz Ihres Logik-App-Workflows, mit der Aktionen im Workflow ausgeführt werden. Falls der Trigger keine neuen Elemente findet, wird er nicht ausgelöst und überspringt das Instanziieren des Workflows.
+Aus technischer Sicht passiert Folgendes: Wenn der Trigger den RSS-Feed prüft und neue Elemente findet, wird der Trigger ausgelöst, und die Azure Logic Apps-Engine erstellt eine Instanz Ihres Logik-App-Workflows, mit der Aktionen im Workflow ausgeführt werden. Falls der Trigger keine neuen Elemente findet, wird er nicht ausgelöst und überspringt das Instanziieren des Workflows.
 
 Herzlichen Glückwunsch! Sie haben Ihre erste Logik-App über das Azure-Portal erstellt und ausgeführt.
 
@@ -170,16 +182,12 @@ Wenn Sie dieses Beispiel nicht mehr benötigen, löschen Sie die Ressourcengrupp
 
    ![Suchen, Auswählen und Löschen einer Ressourcengruppe](./media/quickstart-create-first-logic-app-workflow/delete-resource-group.png)
 
-1. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und wählen Sie **Löschen** aus.
+1. Wenn der Bestätigungsbereich angezeigt wird, geben Sie den Ressourcengruppennamen ein, und wählen Sie **Löschen** aus.
 
    ![Auswählen von „Löschen“ zum Bestätigen des Löschvorgangs](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
 
 > [!NOTE]
 > Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden abgebrochen. Bei Tausenden von Ausführungen kann der Abbruch möglicherweise erhebliche Zeit in Anspruch nehmen.
-
-## <a name="get-support"></a>Support
-
-Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurelogicapps).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755885"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622532"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
 
@@ -92,7 +92,9 @@ Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle, Azure PowerShe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Führen Sie Ihre erste Abfrage über das [Azure-Portal](first-query-portal.md) aus.
 - Führen Sie Ihre erste Abfrage mit der [Azure CLI](first-query-azurecli.md) aus.
 - Führen Sie Ihre erste Abfrage mit [Azure PowerShell](first-query-powershell.md) aus.
+- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md).
 - Beginnen Sie mit [einfachen Abfragen](./samples/starter.md).
 - Verbessern Sie Ihre Kenntnisse mit [Erweiterten Abfragen](./samples/advanced.md).

@@ -1,42 +1,61 @@
 ---
 title: Verwenden von beständigem Speicher in Azure Spring Cloud | Microsoft-Dokumentation
 description: Verwenden von beständigem Speicher in Azure Spring Cloud
-services: spring-cloud
-author: v-vasuke
-manager: gwallace
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8c57698471d1363438c10e5806f9ed6f1da5333f
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: d70e7ff747b80b661e848f1c208f0d1c2c928248
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038449"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607773"
 ---
 # <a name="how-to-use-persistent-storage-in-azure-spring-cloud"></a>Verwenden von beständigem Speicher in Azure Spring Cloud
 
-Azure Spring Cloud bietet zwei Arten von Speicher für Ihre Anwendung: beständigen und temporären Speicher.  Azure Spring Cloud aktiviert standardmäßig temporären Speicher für jede Anwendungsinstanz. Der temporäre Speicher ist auf 5 GB beschränkt, und der standardmäßige Einbindungspfad lautet `/tmp`.
+Azure Spring Cloud bietet zwei Arten von Speicher für Ihre Anwendung: beständigen und temporären Speicher.  Azure Spring Cloud aktiviert standardmäßig temporären Speicher für jede Anwendungsinstanz. Der temporäre Speicher ist auf 5 GB beschränkt, und der standardmäßige Einbindungspfad lautet: `/tmp`.
 
 > [!WARNING]
 > Durch das Neustarten einer Anwendungsinstanz wird der zugehörige temporäre Speicher dauerhaft gelöscht.
 
-Der beständige Speicher ist ein von Azure verwalteter Dateifreigabecontainer, der pro Anwendung zugeordnet wird. Im beständigen Speicher gespeicherte Daten werden für alle Instanzen der Anwendung freigegeben. Eine Azure Spring Cloud-Dienstinstanz kann maximal zehn Anwendungen mit aktiviertem beständigen Speicher enthalten, und jeder Anwendung werden 50 GB an beständigem Speicher zugeordnet. Der Standardeinbindungspfad für beständigen Speicher lautet `/persistent`.
-
-## <a name="enable-persistent-storage-using-the-azure-portal"></a>Aktivieren des beständigen Speichers mithilfe des Azure-Portals
-
-1. Navigieren Sie zur Seite Ihres Azure Spring Cloud-Diensts, und wählen Sie **Anwendungsdashboard** und anschließend die Anwendung aus, für die beständiger Speicher erforderlich ist.
-1. Suchen Sie auf der Registerkarte **Übersicht** das Attribut **Persistent Storage** (Beständiger Speicher), und wählen Sie **Deaktiviert** aus.
-1. Klicken Sie auf **Aktivieren**, um beständigen Speicher zu aktivieren, und wählen Sie die Schaltfläche **OK** aus, um die Änderung zu übernehmen.
-
-Wurde der beständige Speicher aktiviert, werden seine Größe und sein Pfad auf der Seite **Übersicht** im Attribut **Persistent Storage** (Beständiger Speicher) angezeigt.
+Der beständige Speicher ist ein von Azure verwalteter Dateifreigabecontainer, der pro Anwendung zugeordnet wird. Im beständigen Speicher gespeicherte Daten werden für alle Instanzen der Anwendung freigegeben. Eine Azure Spring Cloud-Dienstinstanz kann maximal zehn Anwendungen mit aktiviertem beständigen Speicher enthalten. Jeder Anwendung werden 50 GB an beständigem Speicher zugeordnet. Der Standardeinbindungspfad für beständigen Speicher lautet `/persistent`.
 
 > [!WARNING]
 > Durch die *Deaktivierung* des beständigen Speichers wird die Zuordnung des Speichers für diese Anwendung aufgehoben.  Alle Daten in diesem Speicherkonto gehen verloren. 
 
-## <a name="enable-persistent-storage-using-the-azure-cli"></a>Aktivieren des beständigen Speichers mithilfe der Azure CLI
+## <a name="enable-persistent-storage-using-the-azure-portal"></a>Aktivieren des beständigen Speichers mithilfe des Azure-Portals
+
+1. Wählen Sie auf dem Startbildschirm Ihres Azure-Portals **Alle Ressourcen** aus.
+
+     >![Suchen des Symbols „Alle Ressourcen“](media/portal-all-resources.jpg)
+
+1. Suchen Sie die Azure Spring Cloud-Ressource, die beständigen Speicher benötigt, und wählen Sie sie aus.  In diesem Beispiel heißt die Anwendung *jpspring*.
+
+    > ![Suchen Ihrer Anwendung](media/select-service.jpg)
+
+1. Wählen Sie unter der Überschrift **Einstellungen** die Option **Apps** aus.
+
+1. Ihre Spring Cloud-Dienste werden in der Tabelle angezeigt.  Wählen Sie den Dienst aus, dem Sie beständigen Speicher hinzufügen möchten.  In diesem Beispiel wählen wir unseren **Gateway**-Dienst aus.
+
+    > ![Auswählen Ihres Dienstes](media/select-gateway.jpg)
+
+1. Wählen Sie auf dem Blatt „Konfiguration“ des Dienstes die Option **Konfiguration** aus.
+
+1. Wählen Sie die Registerkarte **Beständiger Speicher**, und aktivieren Sie den beständigen Speicher.
+
+    > ![Aktivieren von beständigem Speicher](media/enable-persistent-storage.jpg)
+
+Wenn der beständige Speicher aktiviert ist, werden Größe und Pfad auf dieser Seite angezeigt.
+
+## <a name="use-the-azure-cli-to-modify-persistent-storage"></a>Verwenden Sie die Azure-Befehlszeilenschnittstelle, um den beständigen Speicher zu ändern.
+
+Installieren Sie bei Bedarf die Spring Cloud-Erweiterung für die Azure-Befehlszeilenschnittstelle:
+
+```azurecli
+az extension add --name spring-cloud
+```
 
 Erstellen Sie eine App mit aktiviertem persistenten Datenträger:
  
@@ -48,7 +67,7 @@ Aktivieren Sie beständigen Speicher in einer vorhandenen App:
 
 ```azurecli
 az spring-cloud app update -n <app> -g <resource-group> -s <service-name> --enable-persistent-storage true
-```
+``` 
 
 Deaktivieren Sie beständigen Speicher in einer vorhandenen App:
 

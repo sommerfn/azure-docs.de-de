@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
+title: Konfigurieren einer Failovergruppe
 description: Erfahren Sie, wie Sie eine Autofailover-Gruppe für eine einzelne Datenbank, einen Pool für elastische Datenbanken und eine verwaltete Instanz von Azure SQL-Datenbank mithilfe des Azure-Portals, des AZ-CLI und PowerShell konfigurieren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 9206fd264854cd9e5d8e46473dd60b05a3362fdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fb9ee2378679c420a7675856ec95e60f6ae1d14f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71328708"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827153"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
 
@@ -484,20 +484,24 @@ Der gemeinsam verwendete Schlüssel für beide Verbindungen sollte übereinstimm
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 Erstellen Sie Verbindungen zwischen den beiden Gateways mithilfe des Azure-Portals. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu ihrer Ressourcengruppe, und wählen Sie das primäre Gateway aus, das Sie in Schritt 4 erstellt haben. 
-1. Wählen Sie **Verbindungen** unter **Einstellungen** und dann **Hinzufügen** aus, um eine neue Verbindung zu erstellen. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus.
+1. Geben Sie `connection` in das Suchfeld ein, und drücken Sie die EINGABETASTE, um die Suche zu starten. Sie gelangen zur Ressource **Verbindung**, die von Microsoft veröffentlicht wurde.
+1. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen. 
+1. Wählen Sie auf der Registerkarte **Grundlagen** die folgenden Werte und dann **OK** aus. 
+    1. Wählen Sie für **Verbindungstyp** den Eintrag `VNet-to-VNet` aus. 
+    1. Wählen Sie in der Dropdownliste Ihr Abonnement aus. 
+    1. Wählen Sie die Ressourcengruppe für Ihre verwaltete Instanz aus der Dropdownliste aus. 
+    1. Wählen Sie den Speicherort der primären verwalteten Instanz aus der Dropdownliste aus. 
+1. Wählen Sie auf der Seite **Einstellungen** die folgenden Werte aus, oder geben Sie die Werte ein, und klicken Sie dann auf **OK**:
+    1. Wählen Sie das primäre Netzwerkgateway für **Erstes Gateway für virtuelle Netzwerke** aus, z.B. `Primary-Gateway`.  
+    1. Wählen Sie das sekundäre Netzwerkgateway für **Zweites Gateway für virtuelle Netzwerke** aus, z.B. `Secondary-Gateway`. 
+    1. Aktivieren Sie das Kontrollkästchen neben **Bidirektionale Konnektivität einrichten**. 
+    1. Übernehmen Sie entweder den Standardnamen für die primäre Verbindung, oder ändern Sie ihn in einen Namen Ihrer Wahl. 
+    1. Geben Sie einen **Gemeinsam verwendeter Schlüssel (PSK)** für die Verbindung an, z.B. `mi1m2psk`. 
 
-   ![Hinzufügen der Verbindung zum primären Gateway](media/sql-database-managed-instance-failover-group-tutorial/add-primary-gateway-connection.png)
+   ![Erstellen einer Gatewayverbindung](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. Geben Sie einen Namen für die Verbindung ein, und geben Sie einen Wert für den **gemeinsam verwendeten Schlüssel** ein. 
-1. Wählen Sie das **Gateway des zweiten virtuellen Netzwerks** aus, und wählen Sie dann das Gateway für die verwaltete sekundäre Instanz aus. 
-
-   ![Herstellen einer Verbindung zwischen dem primären und dem sekundären Gateway](media/sql-database-managed-instance-failover-group-tutorial/create-primary-to-secondary-connection.png)
-
-1. Wählen Sie **OK** aus, um die neue Verbindung zwischen dem primären und dem sekundären Gateway hinzuzufügen.
-1. Wiederholen Sie diese Schritte, um eine Verbindung zwischen dem Gateway der sekundären verwalteten Instanz und dem Gateway der primären verwalteten Instanz zu erstellen. 
-
-   ![Herstellen einer Verbindung zwischen dem sekundären und dem primären Gateway](media/sql-database-managed-instance-failover-group-tutorial/create-secondary-to-primary-connection.png)
+1. Überprüfen Sie auf der Registerkarte **Zusammenfassung** die Einstellungen für die bidirektionale Verbindung, und wählen Sie dann **OK** aus, um die Verbindung zu erstellen. 
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -643,7 +647,7 @@ Der Listenerendpunkt hat die Form `fog-name.database.windows.net` und ist beim A
 
 ## <a name="remarks"></a>Anmerkungen
 
-- Wenn Sie eine Failovergruppe für eine einzelne Datenbank oder eine Datenbank im Pool entfernen, wird die Replikation nicht beendet, und die replizierte Datenbank wird nicht gelöscht. Sie müssen die Georeplikation manuell beenden und die Datenbank von dem sekundären Server löschen, wenn Sie eine einzelne oder gepoolte Datenbank nach dem Löschen wieder zu einer Failovergruppe hinzufügen möchten. Wenn Sie keine der beiden Aktionen ausführen, kann ein Fehler in der Art von `The operation cannot be performed due to multiple errors` angezeigt werden, wenn Sie versuchen, der Failovergruppe die Datenbank hinzuzufügen. 
+- Wenn Sie eine Failovergruppe für eine einzelne Datenbank oder eine Datenbank im Pool entfernen, wird die Replikation nicht beendet, und die replizierte Datenbank wird nicht gelöscht. Sie müssen die Georeplikation manuell beenden und die Datenbank von dem sekundären Server löschen, wenn Sie eine einzelne Datenbank oder eine Datenbank im Pool nach dem Löschen wieder zu einer Failovergruppe hinzufügen möchten. Wenn Sie keine der beiden Aktionen ausführen, kann ein Fehler in der Art von `The operation cannot be performed due to multiple errors` angezeigt werden, wenn Sie versuchen, der Failovergruppe die Datenbank hinzuzufügen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

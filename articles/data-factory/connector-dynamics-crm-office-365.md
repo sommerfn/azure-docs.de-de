@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus und nach Dynamics CRM oder Dynamics 365 (Common Data Service) mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus und nach Dynamics CRM oder Dynamics 365 (Common Data Service) mithilfe von Azure Data Factory
 description: Erfahren Sie, wie mithilfe einer Kopieraktivität in eine Data Factory-Pipeline Daten aus Microsoft Dynamics CRM oder Microsoft Dynamics 365 (Common Data Service) in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern nach Dynamics CRM oder Dynamics 365 kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 18fdb14430eee97ff2780d963abf3e5ceafe1126
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: c9adcf72eeec82fd4b8f1805fca1f284c0b953b7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009392"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680981"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
 
@@ -74,7 +74,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **Dynamics** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft muss auf **Dynamics**, **DynamicsCrm** oder **CommonDataServiceForApps** festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Für Dynamics Online muss der Typ **Online** lauten. | Ja |
 | serviceUri | Die Dienst-URL Ihrer Dynamics-Instanz, z.B. `https://adfdynamics.crm.dynamics.com` | Ja |
 | authenticationType | Der Authentifizierungstyp für die Herstellung der Verbindung mit dem Dynamics-Server. Geben Sie für Dynamics Online **Office 365** an. | Ja |
@@ -117,7 +117,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **Dynamics** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft muss auf **Dynamics**, **DynamicsCrm** oder **CommonDataServiceForApps** festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Muss für Dynamics lokal mit IFD **OnPremisesWithIfd** lauten.| Ja |
 | hostName | Der Hostname des lokalen Dynamics-Servers. | Ja |
 | port | Der Port des lokalen Dynamics-Servers. | Nein (Standard = 443) |
@@ -159,17 +159,12 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Dynamics-Dataset unterstützt werden.
 
-Legen Sie zum Kopieren von Daten aus und nach Dynamics die type-Eigenschaft des Datasets auf **DynamicsEntity** fest. Die folgenden Eigenschaften werden unterstützt.
+Beim Kopieren von Daten aus und in Dynamics werden die folgenden Eigenschaften unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf **DynamicsEntity** festgelegt werden. |Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **DynamicsEntity**, **DynamicsCrmEntity** oder **CommonDataServiceForAppsEntity** festgelegt werden. |Ja |
 | entityName | Der logische Name der abzurufenden Entität. | Nein für die Quelle (wenn „query“ in der Aktivitätsquelle angegeben ist), Ja für die Senke. |
-
-> [!IMPORTANT]
->- Wenn Sie Daten von Dynamics kopieren, ist der „structure“-Abschnitt optional, wird jedoch im Dynamics-Dataset dringend empfohlen, um ein deterministisches Kopierergebnis sicherzustellen. Darin werden Spaltenname und Datentyp für die Dynamics-Daten definiert, die Sie kopieren möchten. Weitere Informationen finden Sie unter [Datasetstruktur](concepts-datasets-linked-services.md#dataset-structure-or-schema) und [Datentypzuordnung für Dynamics](#data-type-mapping-for-dynamics).
->- Wenn Sie ein Schema in die Erstellungsbenutzeroberfläche importieren, leiten Sie das Schema mit der ADF-Datei ab, indem Stichproben der oberen Zeilen des Dynamics-Testergebnisses entnommen werden, um die Strukturerstellung zu initialisieren. In diesem Fall werden Spalten ohne Werte ausgelassen. Dasselbe Verhalten gilt für Kopiervorgänge, wenn keine explizite Strukturdefinition vorliegt. Sie können bei Bedarf weitere Spalten zum Datasetschema bzw. zur Datasetstruktur hinzufügen und überprüfen. Dieser Vorgang wird während der Laufzeit des Kopiervorgangs berücksichtigt.
->- Beim Kopieren von Daten nach Dynamics ist der Abschnitt „structure“ im Dynamics-Dataset optional. Welche Spalten kopiert werden sollen, wird vom Quelldatenschema bestimmt. Wenn es sich bei Ihrer Quelle um eine CSV-Datei ohne Header handelt, geben Sie im Eingabedataset die „structure“ mit Spaltenname und Datentyp an. Diese werden den Feldern in der CSV-Datei nacheinander in der entsprechenden Reihenfolge zugeordnet.
 
 **Beispiel:**
 
@@ -178,24 +173,7 @@ Legen Sie zum Kopieren von Daten aus und nach Dynamics die type-Eigenschaft des 
     "name": "DynamicsDataset",
     "properties": {
         "type": "DynamicsEntity",
-        "structure": [
-            {
-                "name": "accountid",
-                "type": "Guid"
-            },
-            {
-                "name": "name",
-                "type": "String"
-            },
-            {
-                "name": "marketingonly",
-                "type": "Boolean"
-            },
-            {
-                "name": "modifiedon",
-                "type": "Datetime"
-            }
-        ],
+        "schema": [],
         "typeProperties": {
             "entityName": "account"
         },
@@ -213,15 +191,19 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="dynamics-as-a-source-type"></a>Dynamics als Quelltyp
 
-Legen Sie zum Kopieren von Daten aus Dynamics den Quelltyp in der Kopieraktivität auf **DynamicsSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
+Beim Kopieren von Daten aus Dynamics werden die folgenden Eigenschaften im Abschnitt **source** der Copy-Aktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DynamicsSource** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft der Quelle der Copy-Aktivität muss auf **DynamicsSource**, **DynamicsCrmSource** oder **CommonDataServiceForAppsSource** festgelegt werden. | Ja |
 | query | FetchXML ist eine proprietäre Abfragesprache, die in Dynamics (online und lokal) verwendet wird. Siehe folgendes Beispiel. Weitere Informationen finden Sie unter [Erstellen von Abfragen mit FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nein (wenn „entityName“ im Dataset angegeben ist) |
 
 >[!NOTE]
 >Die PK-Spalte wird immer herauskopiert. Dies gilt auch, wenn sie nicht in der Spaltenprojektion enthalten ist, die Sie in der FetchXML-Abfrage konfigurieren.
+
+> [!IMPORTANT]
+>- Wenn Sie Daten aus Dynamics kopieren, ist die explizite Spaltenzuordnung von Dynamics zur Senke optional, sie wird jedoch dringend empfohlen, um ein deterministisches Kopierergebnis sicherzustellen.
+>- Wenn Sie ein Schema in die Erstellungsbenutzeroberfläche importieren, leitet ADF das Schema ab, indem Stichproben der oberen Zeilen des Dynamics-Abfrageergebnisses entnommen werden, um die Quellspaltenliste zu initialisieren. In diesem Fall werden Spalten ohne Werte in den oberen Zeilen ausgelassen. Dasselbe Verhalten gilt für Kopiervorgänge, wenn keine explizite Zuordnung vorliegt. Sie können weitere Spalten zur Zuordnung hinzufügen und überprüfen. Dieser Vorgang wird während der Laufzeit des Kopiervorgangs berücksichtigt.
 
 **Beispiel:**
 
@@ -277,12 +259,13 @@ Legen Sie zum Kopieren von Daten aus Dynamics den Quelltyp in der Kopieraktivit�
 
 ### <a name="dynamics-as-a-sink-type"></a>Dynamics als Senkentyp
 
-Legen Sie zum Kopieren von Daten zu Dynamics den Senkentyp in der Kopieraktivität auf **DynamicsSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt.
+Beim Kopieren von Daten in Dynamics werden die folgenden Eigenschaften im Abschnitt **source** der Copy-Aktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **DynamicsSink** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft der Senke der Copy-Aktivität muss auf **DynamicsSink**, **DynamicsCrmSink** oder **CommonDataServiceForAppsSink** festgelegt werden. | Ja |
 | writeBehavior | Das Schreibverhalten des Vorgangs.<br/>Der zulässige Wert ist **Upsert**. | Ja |
+| alternateKeyName | Geben Sie zum Ausführen von „upsert“ den für Ihre Entität definierten alternativen Schlüsselnamen an. | Nein |
 | writeBatchSize | Die Zeilenanzahl der Daten, die in jedem Batch in Dynamics geschrieben werden. | Nein (Standard = 10) |
 | ignoreNullValues | Gibt an, ob NULL-Werte von Eingabedaten (außer Schlüsselfeldern) während des Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte sind **true** und **false**.<br>- **true**: Lässt die Daten im Zielobjekt unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.<br/>- **false**: Aktualisiert die Daten im Zielobjekt auf NULL, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen NULL-Wert ein. | Nein (Standardwert ist „false“) |
 

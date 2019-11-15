@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights | Microsoft-Dokumentation
+title: Behandeln von Leistungsproblemen mithilfe von Intelligent Insights
 description: Intelligent Insights hilft Ihnen, Probleme mit der Leistung von Azure SQL-Datenbank zu beheben.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262189"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810369"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 

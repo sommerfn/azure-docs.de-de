@@ -1,5 +1,5 @@
 ---
-title: Referenz zur Verwaltungs-API für eine verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Referenz zur Verwaltungs-API für eine verwaltete Instanz
 description: Erfahren Sie mehr über das Erstellen und Verwalten von verwalteten Azure SQL-Datenbank-Instanzen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 6bbba3910315be39d9fca81b95083f32ebd60e64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 713217a933c646cc4d04759f5697bbc0312827ce
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567598"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823402"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Referenz zur Verwaltungs-API für verwaltete Azure SQL-Datenbank-Instanzen
 

@@ -1,6 +1,6 @@
 ---
-title: Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells in Azure SQL-Datenbank – Einzeldatenbank | Microsoft-Dokumentation
-description: Diese Seite beschreibt einige allgemeine Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank.
+title: 'V-Kern-Ressourcenlimits: Einzeldatenbank'
+description: Auf dieser Seite werden einige allgemeine Ressourcenlimits für virtuelle Kerne für Singletons in Azure SQL-Datenbank beschrieben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -10,29 +10,115 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/21/2019
-ms.openlocfilehash: 108e31ebff5910c139bcaf83675cc8161c2a96f6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.date: 11/04/2019
+ms.openlocfilehash: 11d9115893f8d0632110d86a671a6590ca48e220
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693363"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822331"
 ---
-# <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das auf virtuellen Kernen (V-Kernen) basierende (vCore-basierte) Kaufmodell verwenden
+# <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 
-Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Einzeldatenbanken in Azure SQL-Datenbank, die das vCore-basierte Kaufmodell verwenden.
+Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Singletons in Azure SQL-Datenbank, die das V-Kern-basierte Kaufmodell verwenden.
 
-Das DTU-basierte Kaufmodell weist Ressourcenlimits für Einzeldatenbanken auf einem SQL-Datenbank-Server auf. Informationen dazu finden Sie unter [Übersicht über Ressourcenlimits auf einem SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).
+Weitere Informationen zu Ressourcenlimits für Singletons auf einem SQL-Datenbank-Server mit dem DTU-basierten Kaufmodell finden Sie unter [Übersicht über Ressourcenlimits auf einem SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).
 
-> [!IMPORTANT]
-> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
 Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), der [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) oder der [REST-API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases) Dienstebene, Computegröße und Speichermenge für eine einzelne Datenbank festlegen.
 
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Singletons](sql-database-single-database-scale.md).
 
-## <a name="general-purpose-service-tier-for-provisioned-compute"></a>Universelle Dienstebene für die bereitgestellte Computeebene
+
+## <a name="general-purpose---serverless-compute---gen5"></a>Universell – serverloses Computing – Gen5
+
+Der [serverlose Computetarif](sql-database-serverless.md) ist derzeit nur auf Gen5-Hardware verfügbar.
+
+### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
+
+|Computegröße|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|:--- | --: |--: |--: |--: |--: |
+|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|
+|Min-Max V-Kerne|0,5 - 1|0,5 - 2|0,5 - 4|0,75 - 6|1,0 - 8|
+|Min-Max-Arbeitsspeicher (GB)|2,02 - 3|2,05 - 6|2,10 - 12|2,25 - 18|3,00 - 24|
+|Min. Verzögerung für automatische Pause (Minuten)|60|60|60|60|60|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
+|Maximale Datengröße (GB)|512|1024|1024|1024|1536|
+|Maximale Protokollgröße (GB)|154|307|307|307|461|
+|Max. Datengröße von TempDB (GB)|32|64|128|192|256|
+|Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. Datenrate, IOPS (64 KB)|500|1000|2000|3000|4000|
+|Max. Protokollrate (MBit/s)|2.5|5.6|10|15|20|
+|Max. gleichzeitige Worker (Anforderungen)|75|150|300|450|600|
+|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|
+|Anzahl von Replikaten|1|1|1|1|1|
+|Multi-AZ|–|–|–|–|–|
+|Horizontale Leseskalierung|–|–|–|–|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
+
+|Computegröße|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|:--- | --: |--: |--: |--: |
+|Computegeneration|Gen5|Gen5|Gen5|Gen5|
+|Min-Max V-Kerne|1,25 - 10|1,50 - 12|1,75–14|2,00 - 16|
+|Min-Max-Arbeitsspeicher (GB)|3,75 - 30|4,50 - 36|5,25 - 42|6,00 - 48|
+|Min. Verzögerung für automatische Pause (Minuten)|60|60|60|60|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|
+|Maximale Datengröße (GB)|1536|1536|1536|3072|
+|Maximale Protokollgröße (GB)|461|461|461|922|
+|Max. Datengröße von TempDB (GB)|320|384|448|512|
+|Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. Datenrate, IOPS (64 KB)|5\.000|6000|7\.000|8\.000|
+|Max. Protokollrate (MBit/s)|20|20|20|20|
+|Max. gleichzeitige Worker (Anforderungen)|750|900|1050|1200|
+|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|
+|Anzahl von Replikaten|1|1|1|1|
+|Multi-AZ|–|–|–|–|
+|Horizontale Leseskalierung|–|–|–|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+
+## <a name="hyperscale---provisioned-compute---gen5"></a>Hyperscale – bereitgestelltes Computing – Gen5
+
+### <a name="gen5-compute-generation"></a>Computegeneration Gen5
+
+|Leistungsstufe|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
+|V-Kerne|2|4|8|16|24|32|40|80|
+|Arbeitsspeicher (GB)|10.2|20.4|40.8|81.6|122.4|163,2|204|408|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|–|
+|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|Max. Datengröße von TempDB (GB)|64|128|256|384|384|384|384|384|
+|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) | [Hinweis 1](#notes) |
+|Max. Datenrate, IOPS (64 KB)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
+|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8\.000|
+|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
+|Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
+|Multi-AZ|–|–|–|–|–|–|–|–|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
+|||
+
+#### <a name="notes"></a>Notizen
+
+**Hinweis 1:** Hyperscale ist eine mehrschichtige Architektur mit separaten Compute- und Speicherkomponenten: [Architektur der Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
+
+**Hinweis 2:** Hyperscale ist eine mehrschichtige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab.
+
+**Hinweis 3:** Die Latenz beträgt 1–2 ms für Daten im SSD-basierten RBPEX-Cache auf Computereplikaten, der die am häufigsten verwendeten Datenseiten zwischenspeichert. Für Daten, die von Seitenservern abgerufen werden, gilt eine höhere Latenz.
+
+## <a name="general-purpose---provisioned-compute---gen4"></a>Universell – bereitgestelltes Computing – Gen4
 
 > [!IMPORTANT]
 > Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
@@ -83,6 +169,8 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Horizontale Leseskalierung|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
+## <a name="general-purpose---provisioned-compute---gen5"></a>Universell – bereitgestelltes Computing – Gen5
+
 ### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
 |Computegröße|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
@@ -129,59 +217,34 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Horizontale Leseskalierung|–|–|–|–|–|–|–|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
-## <a name="general-purpose-service-tier-for-serverless-compute"></a>Universelle Dienstebene für serverlose Computeebene
+## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Universell – bereitgestelltes Computing – Fsv2-Serie
 
-Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschauphase.
+### <a name="fsv2-series-compute-generation-preview"></a>Computegeneration der Fsv2-Serie (Vorschau)
 
-### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
+|Computegröße|GP_Fsv2_72|
+|:--- | --: |
+|Computegeneration|Fsv2-Serie|
+|V-Kerne|72|
+|Arbeitsspeicher (GB)|136|
+|Columnstore-Unterstützung|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|
+|Maximale Datengröße (GB)|4096|
+|Maximale Protokollgröße (GB)|1024|
+|Max. Datengröße von TempDB (GB)|333|
+|Speichertyp|Remote-SSD|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. Datenrate, IOPS (64 KB)|36000|
+|Max. Protokollrate (MBit/s)|30|
+|Max. gleichzeitige Worker (Anforderungen)|3600|
+|Max. gleichzeitige Sitzungen|30000|
+|Anzahl von Replikaten|1|
+|Multi-AZ|–|
+|Horizontale Leseskalierung|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|
 
-|Computegröße|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
-|:--- | --: |--: |--: |--: |--: |
-|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|
-|Min-Max V-Kerne|0,5 - 1|0,5 - 2|0,5 - 4|0,75 - 6|1,0 - 8|
-|Min-Max-Arbeitsspeicher (GB)|2,02 - 3|2,05 - 6|2,10 - 12|2,25 - 18|3,00 - 24|
-|Min. Verzögerung für automatische Pause (Minuten)|60|60|60|60|60|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
-|Maximale Datengröße (GB)|512|1024|1024|1024|1536|
-|Maximale Protokollgröße (GB)|154|307|307|307|461|
-|Max. Datengröße von TempDB (GB)|32|64|128|192|256|
-|Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
-|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|500|1000|2000|3000|4000|
-|Max. Protokollrate (MBit/s)|2.5|5.6|10|15|20|
-|Max. gleichzeitige Worker (Anforderungen)|75|150|300|450|600|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|
-|Anzahl von Replikaten|1|1|1|1|1|
-|Multi-AZ|–|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|–|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
-### <a name="gen5-compute-generation-part-2"></a>Computegeneration Gen5 (Teil 2)
 
-|Computegröße|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
-|:--- | --: |--: |--: |--: |
-|Computegeneration|Gen5|Gen5|Gen5|Gen5|
-|Min-Max V-Kerne|1,25 - 10|1,50 - 12|1,75–14|2,00 - 16|
-|Min-Max-Arbeitsspeicher (GB)|3,75 - 30|4,50 - 36|5,25 - 42|6,00 - 48|
-|Min. Verzögerung für automatische Pause (Minuten)|60|60|60|60|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|
-|Maximale Datengröße (GB)|1536|1536|1536|3072|
-|Maximale Protokollgröße (GB)|461|461|461|922|
-|Max. Datengröße von TempDB (GB)|320|384|448|512|
-|Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
-|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. Datenrate, IOPS (64 KB)|5\.000|6000|7\.000|8\.000|
-|Max. Protokollrate (MBit/s)|20|20|20|20|
-|Max. gleichzeitige Worker (Anforderungen)|750|900|1050|1200|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|
-|Anzahl von Replikaten|1|1|1|1|
-|Multi-AZ|–|–|–|–|
-|Horizontale Leseskalierung|–|–|–|–|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
-
-## <a name="business-critical-service-tier-for-provisioned-compute"></a>Dienstebene „Unternehmenskritisch“ für die bereitgestellte Computeebene
+## <a name="business-critical---provisioned-compute---gen4"></a>Unternehmenskritisch – bereitgestelltes Computing – Gen4
 
 > [!IMPORTANT]
 > Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
@@ -234,7 +297,9 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschaupha
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
-### <a name="gen5-compute-compute-part-1"></a>Computegeneration Gen5 (Teil 1)
+## <a name="business-critical---provisioned-compute---gen5"></a>Unternehmenskritisch – bereitgestelltes Computing – Gen5
+
+### <a name="gen5-compute-generation-part-1"></a>Computegeneration Gen5 (Teil 1)
 
 |Computegröße|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -282,45 +347,43 @@ Die [serverlose Computeebene](sql-database-serverless.md) ist in der Vorschaupha
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 
-## <a name="hyperscale-service-tier-for-provisioned-compute"></a>Dienstebene „Hyperscale“ für die bereitgestellte Computeebene
 
-### <a name="gen5-compute-generation"></a>Computegeneration Gen5
+## <a name="business-critical---provisioned-compute---m-series"></a>Unternehmenskritisch – bereitgestelltes Computing – M-Serie
 
-|Leistungsstufe|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
-|Computegeneration|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
-|V-Kerne|2|4|8|16|24|32|40|80|
-|Arbeitsspeicher (GB)|10.2|20.4|40.8|81.6|122.4|163,2|204|408|
-|[RBPEX](sql-database-service-tier-hyperscale.md#compute)-Größe|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|3 × Arbeitsspeicher|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|–|
-|Maximale Datengröße (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
-|Maximale Protokollgröße (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
-|Max. Datengröße von TempDB (GB)|64|128|256|384|384|384|384|384|
-|Speichertyp| [Hinweis 1](#notes) |[Hinweis 1](#notes)|[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) |[Hinweis 1](#notes) | [Hinweis 1](#notes) |
-|Max. Datenrate, IOPS (64 KB)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|[Hinweis 2](#notes)|
-|E/A-Wartezeit (ungefähr)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|[Hinweis 3](#notes)|
-|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8\.000|
-|Max. gleichzeitige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
-|Sekundäre Replikate|0–4|0–4|0–4|0–4|0–4|0–4|0–4|0–4|
-|Multi-AZ|–|–|–|–|–|–|–|–|
-|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|Vermerkdauer im Sicherungsspeicher|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|7 Tage|
-|||
+### <a name="m-series-compute-generation-preview"></a>Computegeneration der M-Serie (Vorschau)
 
-#### <a name="notes"></a>Notizen
+|Computegröße|GP_M_128|
+|:--- | --: |
+|Computegeneration|M-Serie|
+|V-Kerne|128|
+|Arbeitsspeicher (GB)|3767|
+|Columnstore-Unterstützung|Ja|
+|In-Memory-OLTP-Speicher (GB)|481|
+|Maximale Datengröße (GB)|4096|
+|Maximale Protokollgröße (GB)|2048|
+|Max. Datengröße von TempDB (GB)|4096|
+|Speichertyp|Lokale SSD|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Max. Datenrate, IOPS (64 KB)|204800|
+|Max. Protokollrate (MBit/s)|192|
+|Max. gleichzeitige Worker (Anforderungen)|12800|
+|Max. gleichzeitige Sitzungen|30000|
+|Anzahl von Replikaten|4|
+|Multi-AZ|Ja|
+|Horizontale Leseskalierung|Ja|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|
 
-**Hinweis 1:** Hyperscale ist eine mehrschichtige Architektur mit separaten Compute- und Speicherkomponenten: [Architektur der Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-**Hinweis 2:** Hyperscale ist eine mehrschichtige Architektur mit Caching auf mehreren Ebenen. Der tatsächliche IOPS-Wert hängt von der Workload ab.
 
-**Hinweis 3:** Die Latenz beträgt 1–2 ms für Daten im SSD-basierten RBPEX-Cache auf Computereplikaten, der die am häufigsten verwendeten Datenseiten zwischenspeichert. Für Daten, die von Seitenservern abgerufen werden, gilt eine höhere Latenz.
+
+> [!IMPORTANT]
+> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu DTU-Ressourcenlimits bei Singletons finden Sie unter [Ressourcenlimits bei Singletons, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md).
-- Informationen zu V-Kern-Ressourcenlimits bei Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits bei Pools für elastische Datenbanken, die das vCore-basierte Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).
-- Informationen zu Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-elastic-pools.md).
+- Informationen zu DTU-Ressourcenlimits für einen Singleton finden Sie unter [Ressourcenlimits für Singletons, die das DTU-Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md).
+- Informationen zu V-Kern-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).
+- Informationen zu DTU-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden](sql-database-dtu-resource-limits-elastic-pools.md).
 - Informationen zu den Ressourcenlimits für verwaltete Instanzen finden Sie unter [Ressourcenlimits bei verwalteten Instanzen](sql-database-managed-instance-resource-limits.md).
 - Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 - Informationen zu Ressourcenlimits auf Server- und Abonnementebene auf einem Datenbankserver finden Sie unter [Übersicht über Ressourcenlimits für einen SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).

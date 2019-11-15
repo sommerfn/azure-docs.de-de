@@ -11,12 +11,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bf87b1709c355faf6f06ff2d23b2c819f88750cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475196"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643604"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -123,7 +123,7 @@ Führen Sie die folgenden Schritte zum Registrieren einer Anwendung aus, erteile
 1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
 1. Wählen Sie Ihr aktuell angemeldetes Konto aus, wenn ihm die Rolle *Globaler Administrator* zugewiesen wurde, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem die Rolle *Globaler Administrator* zugewiesen wurde.
 1. Wählen Sie **Akzeptieren** aus.
-1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für die Berechtigung *AuditLog.Read.All* unter **STATUS** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
+1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für die Berechtigung *AuditLog.Read.All* unter **Status** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
 
 * * *
 

@@ -1,5 +1,5 @@
 ---
-title: 'Planen von Azure-Wartungsereignissen: Azure SQL-Datenbank | Microsoft-Dokumentation'
+title: Planen von Azure-Wartungsereignissen
 description: Erfahren Sie, wie Sie sich auf geplante Wartungsereignisse für Ihre Azure SQL-Datenbank vorbereiten.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
-ms.openlocfilehash: 1bb88d6f74ab4b93e226fe8630f07f0a96f4ba47
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567043"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821318"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank
 

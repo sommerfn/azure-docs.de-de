@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: 89bf4a3a6b8ea0cb04f3a1a663cc2365fa4fefc3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 839bb24996ab782a386d7d28bcc1c06c686e6cd5
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468686"
+ms.locfileid: "73578038"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 
@@ -28,18 +28,18 @@ Dieses Tutorial richtet sich an Entwickler, die gerade mit Azure, Bot Framework-
 Am Ende dieser Übung haben Sie ein System eingerichtet, das folgendermaßen funktioniert:
 
 1. Die Beispielclientanwendung ist so konfiguriert, dass eine Verbindung mit dem Direct Line Speech-Kanal und dem Echobot hergestellt wird.
-2. Die Audioaufzeichnung erfolgt über das Standardmikrofon durch Klicken auf die entsprechende Schaltfläche (oder kontinuierlich, wenn ein benutzerdefiniertes Schlüsselwort aktiviert ist).
-3. Optional erfolgt die Erkennung des benutzerdefinierten Schlüsselworts und die Übertragung des Audiostreamings in die Cloud.
-4. Die App stellt mithilfe des Speech SDK eine Verbindung mit dem Direct Line Speech-Kanal her und streamt Audioinhalte.
-5. Optional wird die Überprüfung des Schlüsselworts mit höherer Genauigkeit für den Dienst durchgeführt.
-6. Die Audioinhalte werden an den Spracherkennungsdienst übermittelt und in Text umgewandelt.
-7. Der erkannte Text wird als Bot Framework-Aktivität an den Echobot übermittelt. 
-8. Der Antworttext wird vom Text-to-Speech-Dienst (TTS) in Audioinhalte umgewandelt und zur Wiedergabe zurück an die Clientanwendung gestreamt.
+1. Die Audioaufzeichnung erfolgt über das Standardmikrofon durch Klicken auf die entsprechende Schaltfläche (oder kontinuierlich, wenn ein benutzerdefiniertes Schlüsselwort aktiviert ist).
+1. Optional erfolgt die Erkennung des benutzerdefinierten Schlüsselworts und die Übertragung des Audiostreamings in die Cloud.
+1. Die App stellt mithilfe des Speech SDK eine Verbindung mit dem Direct Line Speech-Kanal her und streamt Audioinhalte.
+1. Optional wird die Überprüfung des Schlüsselworts mit höherer Genauigkeit für den Dienst durchgeführt.
+1. Die Audioinhalte werden an den Spracherkennungsdienst übermittelt und in Text umgewandelt.
+1. Der erkannte Text wird als Bot Framework-Aktivität an den Echobot übermittelt. 
+1. Der Antworttext wird vom Text-to-Speech-Dienst (TTS) in Audioinhalte umgewandelt und zur Wiedergabe zurück an die Clientanwendung gestreamt.
 
 ![Diagramm-Tag](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "Flow des Speech-Kanals")
 
 > [!NOTE]
-> Für die in diesem Tutorial beschriebenen Schritte ist kein kostenpflichtiger Dienst erforderlich. Als neuer Azure-Benutzer können Sie Guthaben aus Ihrem kostenlosen Azure-Abonnement und den Free-Tarif der Speech-Dienste für dieses Tutorial verwenden.
+> Für die in diesem Tutorial beschriebenen Schritte ist kein kostenpflichtiger Dienst erforderlich. Als neuer Azure-Benutzer können Sie Guthaben aus Ihrem kostenlosen Azure-Testabonnement und den Free-Tarif der Speech-Dienste für dieses Tutorial verwenden.
 
 Hier ist angegeben, was in diesem Tutorial vermittelt wird:
 > [!div class="checklist"]
@@ -66,21 +66,21 @@ Für dieses Tutorial benötigen Sie Folgendes:
 In der Client-App, die Sie in diesem Tutorial erstellen, werden einige Azure-Dienste verwendet. Um die Roundtripzeit für Antworten vom Bot zu verkürzen, sollten Sie sicherstellen, dass sich diese Dienste in derselben Azure-Region befinden. In diesem Abschnitt erstellen Sie eine Ressourcengruppe in der Region **USA, Westen**. Diese Ressourcengruppe wird beim Erstellen einzelner Ressourcen für das Bot Framework, den Direct Line Speech-Kanal und die Speech-Dienste verwendet.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im linken Navigationsbereich die Option **Ressourcengruppen** aus. Klicken Sie dann auf **Hinzufügen**, um eine neue Ressourcengruppe hinzuzufügen.
-3. Sie werden aufgefordert, einige Informationen anzugeben:
+1. Wählen Sie im linken Navigationsbereich die Option **Ressourcengruppen** aus. Klicken Sie dann auf **Hinzufügen**, um eine neue Ressourcengruppe hinzuzufügen.
+1. Sie werden aufgefordert, einige Informationen anzugeben:
    * Legen Sie **Abonnement** auf **Kostenlose Testversion** fest (Sie können auch ein vorhandenes Abonnement verwenden).
    * Geben Sie einen Namen für die **Ressourcengruppe** ein. Wir empfehlen den Namen **SpeechEchoBotTutorial-ResourceGroup**.
    * Wählen Sie in der Dropdownliste **Region** den Eintrag **USA, Westen** aus.
-4. Klicken Sie auf **Überprüfen und erstellen**. Es sollte das Banner **Überprüfung erfolgreich** angezeigt werden.
-5. Klicken Sie auf **Create**. Die Erstellung der Ressourcengruppe kann einige Minuten dauern.
-6. Wie bei den Ressourcen, die Sie später in diesem Tutorial erstellen, empfiehlt es sich, diese Ressourcengruppe für den einfachen Zugriff an Ihr Dashboard anzuheften. Wenn Sie die Ressourcengruppe anheften möchten, klicken Sie auf das Stecknadelsymbol rechts oben im Dashboard.
+1. Klicken Sie auf **Überprüfen und erstellen**. Es sollte das Banner **Überprüfung erfolgreich** angezeigt werden.
+1. Klicken Sie auf **Create**. Die Erstellung der Ressourcengruppe kann einige Minuten dauern.
+1. Wie bei den Ressourcen, die Sie später in diesem Tutorial erstellen, empfiehlt es sich, diese Ressourcengruppe für den einfachen Zugriff an Ihr Dashboard anzuheften. Wenn Sie die Ressourcengruppe anheften möchten, klicken Sie auf das Stecknadelsymbol rechts oben im Dashboard.
 
 ### <a name="choosing-an-azure-region"></a>Auswählen einer Azure-Region
 
 Wenn Sie für dieses Tutorial eine andere Region verwenden möchten, kann Ihre Wahl durch folgende Faktoren eingeschränkt werden:
 
-* Stellen Sie sicher, dass Sie eine [unterstützte Azure-Region](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#voice-assistants) verwenden.
-* Im Direct Line Speech-Kanal wird der Text-to-Speech-Dienst verwendet, der Standard- und neuronale Stimmen enthält. Neuronale Stimmen sind [auf spezifische Azure-Regionen beschränkt](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).
+* Stellen Sie sicher, dass Sie eine [unterstützte Azure-Region](regions.md#voice-assistants) verwenden.
+* Im Direct Line Speech-Kanal wird der Text-to-Speech-Dienst verwendet, der Standard- und neuronale Stimmen enthält. Neuronale Stimmen sind [auf spezifische Azure-Regionen beschränkt](regions.md#standard-and-neural-voices).
 * Kostenlose Testschlüssel können auf eine bestimmte Region beschränkt sein.
 
 Weitere Informationen zu Regionen finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
@@ -145,14 +145,18 @@ Nachdem Sie einige Ressourcen erstellt haben, erstellen Sie nun einen Bot. Wir b
 ### <a name="download-and-run-the-sample"></a>Herunterladen und Ausführen des Beispiels
 
 1. Klonen Sie das Beispielrepository:
+
    ```bash
    git clone https://github.com/Microsoft/botbuilder-samples.git
    ```
+
 2. Starten Sie Visual Studio.
 3. Wählen Sie auf der Symbolleiste die Option **Datei** > **Öffnen** > **Projekt/Projektmappe** aus, und öffnen Sie die Projektdatei des Echobots, der zur Verwendung mit dem Direct Line Speech-Kanal konfiguriert ist:
+
    ```
    experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
    ```
+
 4. Drücken Sie nach dem Laden des Projekts die Taste `F5`, um das Projekt auszuführen.
 
 ### <a name="test-with-the-bot-framework-emulator"></a>Testen mithilfe von Bot Framework Emulator
@@ -163,11 +167,12 @@ Nachdem Sie einige Ressourcen erstellt haben, erstellen Sie nun einen Bot. Wir b
 2. Starten Sie Bot Framework Emulator, und öffnen Sie Ihren Bot:
    * **File** -> **Open Bot** (Dabei -> Bot öffnen)
 3. Geben Sie die URL für den Bot ein. Beispiel:
+
    ```
    http://localhost:3978/api/messages
    ```
-4. Geben Sie für die Kommunikation mit dem Bot über die Benutzeroberfläche Text ein. Überprüfen Sie, ob Sie eine Antwort erhalten.
 
+4. Geben Sie für die Kommunikation mit dem Bot über die Benutzeroberfläche Text ein. Überprüfen Sie, ob Sie eine Antwort erhalten.
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Bereitstellen des Bots in einer Azure App Service-Instanz
 
@@ -177,26 +182,30 @@ Im nächsten Schritt wird der Echobot in Azure bereitgestellt. Es gibt mehrere M
 > Alternativ können Sie einen Bot mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) und über [Bereitstellungsvorlagen](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/DeploymentTemplates) bereitstellen.
 
 1. Öffnen Sie in Visual Studio den Echobot, der zur Verwendung mit dem Direct Line Speech-Kanal konfiguriert ist:
+
    ```
    experimental\directline-speech\csharp_dotnetcore\02.echo-bot\EchoBot.csproj
    ```
-2. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe **EchoBot**, und wählen Sie **Veröffentlichen** aus.
-3. Ein neues Fenster mit dem Titel **Veröffentlichungsziel auswählen** wird geöffnet.
-3. Wählen Sie im linken Navigationsbereich die Option **App Service** aus, wählen Sie **Neu erstellen** aus, und klicken Sie dann auf **Veröffentlichen**.
-5. Bei Anzeige des Fensters **App Service erstellen**:
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe **EchoBot**, und wählen Sie **Veröffentlichen** aus.
+1. Ein neues Fenster mit dem Titel **Veröffentlichungsziel auswählen** wird geöffnet.
+1. Wählen Sie im linken Navigationsbereich die Option **App Service** aus, wählen Sie **Neu erstellen** aus, und klicken Sie dann auf **Veröffentlichen**.
+1. Bei Anzeige des Fensters **App Service erstellen**:
    * Klicken Sie auf **Konto hinzufügen**, und melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto an. Wenn Sie bereits angemeldet sind, wählen Sie in der Dropdownliste das gewünschte Konto aus.
    * Für den **App-Namen** müssen Sie einen global eindeutigen Namen für den Bot eingeben. Anhand dieses Namens wird eine eindeutige Bot-URL erstellt. Ein Standardwert, der Datum und Uhrzeit beinhaltet (z. B. „EchoBot20190805125647“), wird automatisch eingetragen. In diesem Tutorial können Sie den Standardnamen verwenden.
    * Legen Sie unter **Abonnement** die Option **Kostenlose Testversion** fest.
    * Wählen Sie unter **Ressourcengruppe** die Gruppe **SpeechEchoBotTutorial-ResourceGroup** aus.
    * Wählen Sie unter **Hostingplan** die Option **SpeechEchoBotTutorial-AppServicePlan** aus.
-6. Klicken Sie auf **Erstellen**
-7. In Visual Studio sollte eine Erfolgsmeldung angezeigt werden, die wie folgt aussieht:
+1. Klicken Sie auf **Erstellen**
+1. In Visual Studio sollte eine Erfolgsmeldung angezeigt werden, die wie folgt aussieht:
+
    ```
    Publish Succeeded.
    Web App was published successfully https://EchoBot20190805125647.azurewebsites.net/
    ```
-8. Im geöffneten Standardbrowser sollte die folgende Seite angezeigt werden: „Your bot is ready!“ (Ihr Bot wurde erstellt.).
-9. Überprüfen Sie hier, ob die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal drei Ressourcen enthält:
+
+1. Im geöffneten Standardbrowser sollte die folgende Seite angezeigt werden: „Your bot is ready!“ (Ihr Bot wurde erstellt.).
+1. Überprüfen Sie hier, ob die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal drei Ressourcen enthält:
 
 | NAME | TYPE  | LOCATION |
 |------|-------|----------|
@@ -255,12 +264,12 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 Nun muss der Bot beim Direct Line Speech-Kanal registriert werden. Dieser Kanal dient zum Erstellen einer Verbindung zwischen dem Echobot und einer Client-App, die mit dem Speech SDK kompiliert wurde.
 
 1. Suchen und öffnen Sie die Ressource **SpeechEchoBotTutorial-BotRegistration** im [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie im linken Navigationsbereich die Option **Kanäle** aus.
+1. Wählen Sie im linken Navigationsbereich die Option **Kanäle** aus.
    * Suchen Sie nach **Weitere Kanäle**, und klicken Sie auf **Direct Line Speech**.
-   * Überprüfen Sie den Text auf der Seite **Configure Direct line Speech** (Direct Line Speech konfigurieren), und klicken Sie dann auf **Speichern**.
-   * Bei der Erstellung wurden zwei **geheime Schlüssel** generiert. Diese Schlüssel sind eindeutig für Ihren Bot. Wenn Sie eine Client-App mithilfe des [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/) schreiben, geben Sie einen dieser Schlüssel an, um eine Verbindung zwischen der Client-App, dem Direct Line Speech-Kanal und dem Botdienst herzustellen. In diesem Tutorial wird der Direct Line Speech-Client (WPF, C#) verwendet.
-   * Klicken Sie auf **Anzeigen**, und kopieren Sie einen der Schlüssel an einen Ort, an dem Sie problemlos darauf zugreifen können. Keine Sorge, Sie können auch stets im Azure-Portal auf die Schlüssel zugreifen.
-3. Klicken Sie im linken Navigationsbereich auf **Einstellungen**.
+   * Überprüfen Sie den Text auf der Seite **Configure Direct line Speech** (Direct Line Speech konfigurieren), und erweitern Sie dann das Dropdownmenü „Cognitive Services-Konto“.
+   * Wählen Sie im Menü die zuvor erstellte Speech-Ressource (z. B. **SpeechEchoBotTutorial-Speech**) aus, um Ihren Bot dem Speech-Abonnementschlüssel zuzuordnen.
+
+1. Klicken Sie im linken Navigationsbereich auf **Einstellungen**.
    * Aktivieren Sie das Kontrollkästchen **Enable Streaming Endpoint** (Streamingendpunkt aktivieren). Dies ist erforderlich, um zwischen dem Bot und dem Direct Line Speech-Kanal ein Kommunikationsprotokoll auf der Basis von WebSockets zu aktivieren.
    * Klicken Sie auf **Speichern**.
 

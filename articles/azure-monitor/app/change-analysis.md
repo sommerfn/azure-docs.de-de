@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678251"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605995"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -37,7 +37,7 @@ Derzeit ist die Änderungsanalyse in die **Diagnose und Problembehandlung** für
 
 Mithilfe von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) stellt die Änderungsanalyse in Form von Verlaufsdaten dar, wie sich die Azure-Ressourcen, die Ihre Anwendung hosten, im Laufe der Zeit verändert haben. Die Änderungsanalyse kann beispielsweise Änderungen bei den IP-Konfigurationsregeln, den verwalteten Identitäten und den SSL-Einstellungen erkennen. Wenn also einer Web-App ein Tag hinzugefügt wird, gibt die Änderungsanalyse diese Änderung wieder. Diese Informationen sind so lange verfügbar, wie der `Microsoft.ChangeAnalysis`-Ressourcenanbieter im Azure-Abonnement aktiviert ist.
 
-### <a name="changes-in-web-app-deployment-and-configuration"></a>Änderungen bei Bereitstellung und Konfiguration einer Web-App
+### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Änderungen bei Bereitstellung und Konfiguration einer Web-App (Änderungen auf Gastsystemen)
 
 Die Änderungsanalyse erfasst alle vier Stunden den Bereitstellungs- und Konfigurationsstatus der Anwendung. Sie kann z. B. Änderungen in den Umgebungsvariablen der Anwendung erkennen. Das Tool berechnet die Unterschiede und zeigt die Änderungen an. Im Gegensatz zu Resource Manager-Änderungen sind die Informationen zu Änderungen an der Codebereitstellung möglicherweise nicht sofort im Tool verfügbar. Wählen Sie zum Anzeigen der jüngsten Änderungen in der Änderungsanalyse **Jetzt auf Änderungen prüfen** aus.
 
@@ -51,10 +51,32 @@ Derzeit werden die folgenden Abhängigkeiten unterstützt:
 - Azure Storage
 - Azure SQL
 
+## <a name="viewing-changes-for-all-resources-in-azure"></a>Anzeigen von Änderungen für alle Ressourcen in Azure
+In Azure Monitor gibt es ein eigenständiges Blatt für die Änderungsanalyse, auf dem alle Änderungen mit Ressourcen für Einblicke und Anwendungsabhängigkeiten angezeigt werden.
+
+Suchen Sie im Azure-Portal in der Suchleiste nach „Änderungsanalyse“, um das Blatt zu öffnen.
+
+![Screenshot der Suche nach „Änderungsanalyse“ im Azure-Portal](./media/change-analysis/search-change-analysis.png)
+
+Wählen Sie die Ressourcengruppe und Ressourcen aus, um Änderungen anzuzeigen.
+
+![Screenshot des Blatts „Änderungsanalyse“ im Azure-Portal](./media/change-analysis/change-analysis-standalone-blade.png)
+
+Sie können Ressourcen für Einblicke und zugehörige Abhängigkeiten sehen, die Ihre Anwendung hosten. Diese Sicht wurde anwendungsorientiert entwickelt, damit Entwickler Probleme beheben können.
+
+Derzeit unterstützte Ressourcen:
+- Virtual Machines
+- VM-Skalierungsgruppe
+- Azure-Netzwerkressourcen
+- Web-App mit Nachverfolgung von Dateien und Änderungen von Umgebungsvariablen auf Gastsystemen
+
+Zum Senden von Feedback verwenden Sie die entsprechende Schaltfläche auf dem Blatt, oder senden Sie eine E-Mail an changeanalysisteam@microsoft.com. 
+
+![Screenshot der Feedbackschaltfläche auf dem Blatt „Änderungsanalyse“](./media/change-analysis/change-analysis-feedback.png)
 
 ## <a name="change-analysis-for-the-web-apps-feature"></a>Änderungsanalyse für die Web-Apps-Funktion
 
-In Azure Monitor ist die Änderungsanalyse derzeit in die Self-Service-Umgebung **Diagnose und Problembehandlung** integriert. Der Zugriff auf diese Umgebung erfolgt von der Seite **Übersicht** Ihrer App Service-Anwendung.
+In Azure Monitor ist die Änderungsanalyse auch in die Self-Service-Umgebung **Diagnose und Problembehandlung** integriert. Der Zugriff auf diese Umgebung erfolgt von der Seite **Übersicht** Ihrer App Service-Anwendung.
 
 ![Screenshot der Schaltflächen „Übersicht“ und „Diagnose und Problembehandlung“](./media/change-analysis/change-analysis.png)
 

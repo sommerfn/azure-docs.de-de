@@ -1,5 +1,5 @@
 ---
-title: Dienstebene „Universell“ – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Dienstebene „Allgemein“
 description: Informationen zur Dienstebene „Universell“ für Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: b4c0f88a1a21b0734c1652d19f74dc662d0a7ce1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7c57755ae63f8af5a2a4faa4764bc6a9597e8c2d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496209"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819228"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Dienstebene „Universell“ – Azure SQL-Datenbank
 

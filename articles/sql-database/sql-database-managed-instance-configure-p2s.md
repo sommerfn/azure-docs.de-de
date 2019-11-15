@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Point-to-Site-Verbindungen (P2S)  – Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Konfigurieren von P2S – Verwaltete Instanz
 description: Stellen Sie mit einer Point-to-Site-Verbindung und SQL Server Management Studio (SSMS) von einem lokalen Clientcomputer eine Verbindung zu einer verwalteten Azure SQL-Datenbank-Instanz her.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
-ms.openlocfilehash: 3ba5190050d45385ad17a87f6dce88ffd601e83d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567693"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818910"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz
 

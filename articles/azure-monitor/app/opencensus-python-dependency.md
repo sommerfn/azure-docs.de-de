@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 00ebf86bf6d0d57b29d660f78aae3dd828d44ded
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: c28ef627e9ef65f9985a520c8c4f3facc7a160da
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819145"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73575495"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Nachverfolgen von Abhängigkeiten mit OpenCensus Python
 
-Eine Abhängigkeit ist eine externe Komponente, die von Ihrer Anwendung aufgerufen wird. Abhängigkeitsdaten werden mithilfe von OpenCensus Python und den verschiedenen Integrationen erfasst. Die Daten werden dann an Application Insights unter Azure Monitor gesendet.
+Eine Abhängigkeit ist eine externe Komponente, die von Ihrer Anwendung aufgerufen wird. Abhängigkeitsdaten werden mithilfe von OpenCensus Python und den verschiedenen Integrationen erfasst. Die Daten werden dann als `dependencies`-Telemetriedaten an Application Insights unter Azure Monitor gesendet.
 
 Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
 

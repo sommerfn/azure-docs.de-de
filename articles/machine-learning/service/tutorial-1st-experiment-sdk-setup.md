@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 891615ea301348b83124823b10403964d394c224
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475979"
+ms.locfileid: "73582490"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ In diesem Tutorial führen Sie Folgendes durch:
 > [!div class="checklist"]
 > * Erstellen eines [Azure Machine Learning-Arbeitsbereichs](concept-workspace.md) für das nächste Tutorial
 > * Klonen Sie das Tutorial-Notebook in Ihrem Ordner im Arbeitsbereich.
-> * Erstellen einer cloudbasierten Computeinstanz, in der das Azure Machine Learning Python SDK installiert und vorkonfiguriert ist
+> * Erstellen einer cloudbasierten Notebook-VM, auf der das Azure Machine Learning Python SDK installiert und vorkonfiguriert ist
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
@@ -79,7 +79,7 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte in Azu
     
 1. Wählen Sie die Datei **tutorial-1st-experiment-sdk-train.ipynb** im Ordner **Tutorials** aus.
 
-1. Wählen Sie auf der oberen Leiste eine Computeinstanz aus, die zum Ausführen des Notebooks verwendet werden soll. Diese VMs werden [mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen](concept-compute-instance.md#contents). Sie können einen virtuellen Computer auswählen, der von einem beliebigen Benutzer Ihres Arbeitsbereichs erstellt wurde. 
+1. Wählen Sie auf der oberen Leiste eine Notebook-VM aus, die zum Ausführen des Notebooks verwendet werden soll. Diese VMs werden mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen. Sie können einen virtuellen Computer auswählen, der von einem beliebigen Benutzer Ihres Arbeitsbereichs erstellt wurde. 
 
 1. Werden keine virtuellen Computer gefunden, wählen Sie **+ Computeressource hinzufügen** aus, um den virtuellen Computer zu erstellen.
 
@@ -89,9 +89,6 @@ Sie führen die folgende Experimenteinrichtung durch und führen Schritte in Azu
 
 1. Sobald der virtuelle Computer verfügbar ist, wird er auf der oberen Symbolleiste angezeigt.  Sie können das Notebook jetzt entweder über **Alle ausführen** auf der Symbolleiste oder unter Verwendung von **UMSCHALT+EINGABE** in den Codezellen des Notebooks ausführen.
 
-> [!NOTE]
-> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar.
->Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.  Sie können entweder eine Notebook-VM oder eine Computeinstanz für die Ausführung Ihres Notebooks verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,26 +1,24 @@
 ---
 title: Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln in Azure Key Vault (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Ergänzung der serverseitigen Verschlüsselung über Indizes und Synonymzuordnungen in der kognitiven Azure-Suche durch Schlüssel, die Sie in Azure Key Vault erstellen und verwalten.
+description: Ergänzung der serverseitigen Verschlüsselung über Indizes und Synonymzuordnungen in der kognitiven Azure-Suche durch Schlüssel, die Sie in Azure Key Vault erstellen und verwalten. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 94c9d94edb9a9ca3f6117bd43ab9cefe1dad52a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794351"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721757"
 ---
 # <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Inhaltsverschlüsselung der kognitiven Azure-Suche mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
-> [!Note]
-> Verschlüsselung mit vom Kunden verwalteten Schlüsseln befindet sich in der Vorschau und ist nicht für die Produktion ausgelegt. Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Sie können auch die Vorschauversion 8.0 von .NET SDK verwenden.
->
-> Dieses Feature ist nicht für kostenlose Dienste verfügbar. Sie müssen einen abrechenbaren Suchdienst verwenden, der am bzw. nach 1.1.2019 erstellt wurde. Für das Portal ist derzeit noch keine Unterstützung vorhanden.
+> [!IMPORTANT] 
+> Die Unterstützung der Verschlüsselung ruhender Daten ist derzeit als öffentliche Vorschau verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) und die [.NET SDK-Version 8.0-preview](search-dotnet-sdk-migration-version-9.md) bereitgestellt. Das Portal wird derzeit nicht unterstützt.
 
 Standardmäßig werden in der kognitiven Azure-Suche ruhende Benutzerinhalte mit [dienstseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models) verschlüsselt. Sie können die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. In diesem Artikel werden die entsprechenden Schritte beschrieben.
 

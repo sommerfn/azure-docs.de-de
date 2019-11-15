@@ -1,5 +1,5 @@
 ---
-title: Anpassen der SQL Information Protection-Richtlinie im Azure Security Center | Microsoft-Dokumentation
+title: 'Anpassen von SQL Information Protection: Azure Security Center'
 description: Erfahren Sie, wie Sie Information Protection-Richtlinien im Azure Security Center anpassen.
 services: security-center
 documentationcenter: na
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: f9b161bbb692c1336083640250b93f9d87f1e0d9
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520802"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664389"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
-Im Azure Security Center kann eine SQL Information Protection-Richtlinie für Ihren gesamten Azure-Mandanten definiert und angepasst werden.
+In Azure Security Center kann eine SQL Information Protection-Richtlinie für Ihren gesamten Azure-Mandanten definiert und angepasst werden.
 
-Information Protection ist eine erweiterte Sicherheitsfunktion für die Ermittlung, Klassifizierung, Bezeichnung und den Schutz sensibler Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-, Finanz-, Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
+Information Protection ist eine erweiterte Sicherheitsfunktion für die Ermittlung, Klassifizierung, Bezeichnung und den Schutz vertraulicher Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-, Finanz-, Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
 - Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
-- Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnung bei anomalen Zugriff auf sensible Daten
+- Sicherheitsszenarien wie Überwachung und Warnung bei anomalem Zugriff auf vertrauliche Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenspeichern, die sensible Daten enthalten
  
 [SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementiert dieses Paradigma für Ihre SQL-Datenspeicher, die derzeit für Azure SQL-Datenbank unterstützt. SQL Information Protection ermittelt und klassifiziert automatisch potenziell sensible Daten, stellt einen Bezeichnungsmechanismus zum dauerhaften Kennzeichnen der sensiblen Daten mit Klassifizierungsattributen bereit und bietet ein detailliertes Dashboard, das den Klassifizierungsstatus der Datenbank zeigt. Darüber hinaus wird die Vertraulichkeit des Resultsets von SQL-Abfragen berechnet, sodass Abfragen, die sensible Daten extrahieren, explizit überwacht und die Daten geschützt werden können. Weitere Informationen zu SQL Information Protection finden Sie unter [Azure SQL-Datenbank – Datenermittlung und -klassifizierung](../sql-database/sql-database-data-discovery-and-classification.md).
@@ -35,7 +35,7 @@ Der Klassifizierungsmechanismus basiert auf zwei primären Konstrukten, die die 
 - **Bezeichnungen**: Die wichtigsten Klassifizierungsattribute zum Definieren der Vertraulichkeitsstufe der in der Spalte gespeicherten Daten. 
 - **Informationstypen**: Bieten zusätzliche Granularität für den Typ der in der Spalte gespeicherten Daten.
  
-Information Protection umfasst eine integrierte Gruppe von Bezeichnungen und Typen von Informationen, die standardmäßig verwendet werden. Um diese anzupassen, können Sie die Information Protection-Richtlinie im Azure Security Center anpassen.
+Information Protection umfasst eine integrierte Gruppe von Bezeichnungen und Typen von Informationen, die standardmäßig verwendet werden. Um diese Bezeichnungen und Typen anzupassen, können Sie die Information Protection-Richtlinie in Azure Security Center anpassen.
  
 ## <a name="customize-the-information-protection-policy"></a>Anpassen der Information Protection-Richtlinie
 Um die Information Protection-Richtlinie für Ihren Azure-Mandanten anpassen zu können, benötigen Sie [Administratorrechte für die Stammverwaltungsgruppe des Mandanten](security-center-management-groups.md). 

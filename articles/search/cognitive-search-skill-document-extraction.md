@@ -1,21 +1,24 @@
 ---
-title: Cognitive Search-Qualifikation „Dokumentextrahierung“
+title: Cognitive Search-Qualifikation „Dokumentextrahierung“ (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Extrahiert Inhalt aus einer Datei innerhalb der Anreicherungspipeline.
+description: Extrahiert Inhalt aus einer Datei innerhalb der Anreicherungspipeline. Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510087"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720125"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Kognitive Qualifikation „Dokumentextrahierung“
+
+> [!IMPORTANT] 
+> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 Die Qualifikation **Dokumentextrahierung** extrahiert Inhalt aus einer Datei innerhalb der Anreicherungspipeline. Auf diese Weise können Sie die Vorteile des Schritts der Dokumentextrahierung nutzen, der normalerweise vor der Ausführung des Skillsets mit Dateien erfolgt, die möglicherweise durch andere Qualifikationen generiert werden.
 
@@ -61,9 +64,9 @@ Die Eingabe „file_data“ muss ein Objekt sein, das wie folgt definiert wurde:
 
 Dieses Dateiverweisobjekt kann auf eine von drei Arten generiert werden:
 
- - Indem Sie den `allowSkillsetToReadFileData`-Parameters in Ihrer Indexerdefinition auf „true“ festlegen.  Dadurch wird ein Pfad `/document/file_data` erstellt, bei dem es sich um ein Objekt handelt, das die aus der Blobdatenquelle heruntergeladenen ursprünglichen Dateidaten darstellt. Dieser Parameter gilt nur für Daten in Blobspeicher.
+ - Indem Sie den `allowSkillsetToReadFileData`-Parameters in Ihrer Indexerdefinition auf „true“ festlegen.  Dadurch wird der Pfad `/document/file_data` erstellt, bei dem es sich um ein Objekt handelt, das die aus der Blobdatenquelle heruntergeladenen ursprünglichen Dateidaten darstellt. Dieser Parameter gilt nur für Daten in Blobspeicher.
 
- - Indem Sie den `imageAction`-Parameters in Ihrer Indexerdefinition auf einen anderen Wert als `none` festlegen.  Dadurch wird ein Array von Bildern `/document/normalized_images` erstellt, die die erforderliche Konvention für die Eingaben für diese Qualifikation erfüllen, wenn sie einzeln übermittelt werden (d. h. `/document/normalized_images/*`).
+ - Indem Sie den `imageAction`-Parameters in Ihrer Indexerdefinition auf einen anderen Wert als `none` festlegen.  Dadurch wird ein Array von Bildern erstellt, die die erforderliche Konvention für die Eingaben für diese Qualifikation erfüllen, wenn sie einzeln übermittelt werden (d. h. `/document/normalized_images/*`).
 
  - Indem Sie eine benutzerdefinierte Qualifikation ein JSON-Objekt zurückgeben lassen, das EXAKT wie oben definiert ist.  Der `$type`-Parameter muss exakt auf `file` festgelegt werden, und der `data`-Parameter muss die Per Base-64 verschlüsselte Bytearraydaten des Dateiinhalts enthalten.
 

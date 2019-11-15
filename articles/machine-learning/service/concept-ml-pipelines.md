@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 11/04/2019
+ms.openlocfilehash: f1b061e92ce0650da4d5b95643eb6e9df917e3b8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514934"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73671550"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
@@ -85,7 +85,7 @@ Pipelines lösen diese Probleme. Azure Machine Learning orchestriert automatisch
 
 Darüber hinaus kann die Ausgabe eines Schritts auf Wunsch wiederverwendet werden. Wenn Sie die Wiederverwendung als eine Möglichkeit angeben und keine Abhängigkeiten im Upstream die Neuberechnung auslösen, verwendet der Pipelinedienst eine zwischengespeicherte Version der Ergebnisse des Schritts. Durch diese Art von Wiederverwendung kann die Entwicklungszeit erheblich verkürzt werden. Wenn Sie eine komplexe Datenaufbereitungsaufgabe bewältigen müssen, führen Sie sie wahrscheinlich öfter aus als unbedingt erforderlich. Pipelines nehmen Ihnen diese Sorge ab: Wenn es erforderlich ist, wird der Schritt ausgeführt, sonst nicht.
 
-Diese gesamte Abhängigkeitsanalyse, -orchestrierung und -aktivierung werden von Azure Machine Learning ausgeführt, wenn Sie ein [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class))-Objekt instanziieren, es an einen `Experiment` übergeben und `submit()` aufrufen. 
+Diese gesamte Abhängigkeitsanalyse, -orchestrierung und -aktivierung werden von Azure Machine Learning ausgeführt, wenn Sie ein [Pipeline](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py)-Objekt instanziieren, es an einen `Experiment` übergeben und `submit()` aufrufen. 
 
 ### <a name="coordinating-the-steps-involved"></a>Koordinieren der beteiligten Schritte
 
@@ -105,13 +105,21 @@ Beim Erstellen und Ausführen eines `Pipeline`-Objekts finden die folgenden Schr
 
 ![Pipelineschritte](media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
 
-## <a name="how-do-i-build-azure-ml-pipelines-using-the-python-sdk"></a>Wie lassen sich Azure ML-Pipelines mithilfe des Python SDK bauen?
+## <a name="building-pipelines-with-the-python-sdk"></a>Erstellen von Pipelines mit dem Python-SDK
 
-Im [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) ist eine Pipeline ein Python-Objekt, das im `azureml.pipeline.core`-Modul definiert ist. Ein [Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class))-Objekt enthält eine geordnete Abfolge von einem oder mehreren [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep)-Objekten. Die `PipelineStep`-Klasse ist abstrakt, und die eigentlichen Schritte gehören Unterklassen an, wie etwa [EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep), [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep) oder [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep). Die [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep)-Klasse enthält eine wiederverwendbare Abfolge von Schritten, die von mehreren Pipelines gemeinsam verwendet werden können. Eine `Pipeline` wird als Teil einer `Experiment` ausgeführt.
+Im [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) ist eine Pipeline ein Python-Objekt, das im `azureml.pipeline.core`-Modul definiert ist. Ein [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)-Objekt enthält eine geordnete Abfolge von einem oder mehreren [PipelineStep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)-Objekten. Die `PipelineStep`-Klasse ist abstrakt, und die eigentlichen Schritte gehören Unterklassen an, wie etwa [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py) oder [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). Die [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py)-Klasse enthält eine wiederverwendbare Abfolge von Schritten, die von mehreren Pipelines gemeinsam verwendet werden können. Eine `Pipeline` wird als Teil einer `Experiment` ausgeführt.
 
 Eine Azure ML-Pipeline ist einem Azure Machine Learning-Arbeitsbereich zugeordnet, und ein Pipelineschritt ist einem verfügbaren Computeziel in diesem Arbeitsbereich zugeordnet. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) oder [Was sind Computeziele in Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
 Für Azure Machine Learning stellt ein Computeziel die Umgebung dar, in der eine ML-Phase stattfindet. Bei der Softwareumgebung kann es sich um eine Remote-VM, Azure Machine Learning Compute, Azure Databricks, Azure Batch usw. handeln. Die Hardwareumgebung kann ebenfalls eine erhebliche Streubreite aufweisen, abhängig von GPU-Unterstützung, Arbeitsspeicher, Speicherplatz usw. Sie können das Computeziel für jeden Schritt festlegen, was Ihnen eine feiner abgestufte Kostenkontrolle erlaubt. Sie können für die spezifische Aktion, das Datenvolumen und die Leistungsanforderungen Ihres Projekts mehr oder weniger leistungsstarke Ressourcen einsetzen. 
+
+## <a name="building-pipelines-with-the-designer"></a>Erstellen von Pipelines mit dem Designer
+
+Entwickler, die eine visuelle Entwurfsoberfläche bevorzugen, können Pipelines mit dem Azure Machine Learning-Designer erstellen. Sie können über die Auswahl **Designer** auf der Startseite Ihres Arbeitsbereichs auf dieses Tool zugreifen.  Der Designer ermöglicht Ihnen, Schritte per Drag & Drop auf die Entwurfsoberfläche zu verschieben. Zur schnellen Entwicklung können Sie vorhandene Module im gesamten Spektrum von ML-Aufgaben verwenden. Die vorhandenen Module decken alle Schritte von der Datentransformation über die Algorithmusauswahl bis hin zur Bereitstellung ab. Sie können auch eine vollständig benutzerdefinierte Pipeline erstellen, indem Sie Ihre eigenen in Python-Skripts definierten Schritte kombinieren.
+
+Wenn Sie Pipelines visuell entwerfen, werden die Eingaben und Ausgaben eines Schritts sichtbar angezeigt. Für die Datenverbindungen wird Drag & Drop unterstützt, sodass Sie den Datenfluss Ihrer Pipeline schnell verstehen und ändern können.
+ 
+![Azure Machine Learning-Designer: Beispiel](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Grundlegendes zum Ausführungsdiagramm
 
@@ -159,7 +167,7 @@ pipeline_run.wait_for_completion()
 
 Dieser Codeausschnitt beginnt mit gebräuchlichen Azure Machine Learning-Objekten, einem `Workspace`, einem `Datastore`, einem [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py) und einem `Experiment`. Anschließend erstellt der Code die Objekte, die `input_data` und `output_data` aufnehmen. Das Array `steps` enthält ein einzelnen Element, ein `PythonScriptStep`, das die Datenobjekte verwendet und auf dem `compute_target` ausgeführt wird. Anschließend instanziiert der Code das eigentliche `Pipeline`-Objekt und übergibt den Workspace und das Array der Schritte. Mit dem Aufruf von `experiment.submit(pipeline)` beginnt die Ausführung der Azure ML-Pipeline. Der Aufruf von `wait_for_completion()` wird dann bis zum Abschluss der Pipeline gesperrt. 
 
-## <a name="best-practices-when-choosing-to-use-azure-ml-pipelines"></a>Bewährte Methoden bei der Entscheidung für Azure ML-Pipelines?
+## <a name="best-practices-when-using-pipelines"></a>Bewährte Methoden bei der Verwendung von Pipelines
 
 Wie Sie sehen können, ist das Erstellen einer Azure ML-Pipeline etwas komplexer als das Starten eines Skripts. Für Pipelines müssen einige Python-Objekte konfiguriert und erstellt werden. 
 

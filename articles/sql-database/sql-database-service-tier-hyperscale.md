@@ -1,5 +1,5 @@
 ---
-title: Übersicht zu Hyperscale in Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Übersicht über Hyperscale
 description: In diesem Artikel wird die Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell in Azure SQL-Datenbank beschrieben. Zudem werden die Unterschiede zu den Dienstebenen „Universell“ und „Unternehmenskritisch“ erläutert.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: dimitri-furman
+ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: df6926a8f50d7ffb2765557cdf75ed6d09b3810b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3a448147390ff2dd6a8049e8338a4cbf2bd94ce3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428037"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821115"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -38,7 +38,7 @@ Die Dienstebene „Hyperscale“ in Azure SQL-Datenbank bietet folgende zusätzl
 
 - Unterstützung für eine Datenbankgröße von bis zu 100 TB
 - Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Computeressourcen  
-- Schnelle Datenbankwiederherstellungen (basierend auf Dateimomentaufnahmen) in Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
+- Schnelle Point-in-Time-Wiederherstellungen (Zeitpunktwiederherstellungen) von Datenbanken (basierend auf Dateimomentaufnahmen) innerhalb von Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
 - Höhere Gesamtleistung aufgrund eines höheren Protokolldurchsatzes und schnellere Transaktionscommits unabhängig von Datenmengen
 - Schnelle horizontale Hochskalierung: Sie können einen oder mehrere schreibgeschützte Knoten zur Abladung Ihrer Leseworkload und zur Verwendung als unmittelbar betriebsbereite Standbyserver bereitstellen.
 - Schnelle zentrale Hochskalierung: Sie können Ihre Computeressourcen in konstanter Zeit zentral hochskalieren, um hohe Workloads nach Bedarf zu bewältigen, und anschließend wieder zentral herunterskalieren, sobald sie nicht mehr benötigt werden.
@@ -47,7 +47,7 @@ Die Dienstebene „Hyperscale“ beseitigt viele praktische Einschränkungen, di
 
 Darüber hinaus ist die Zeit, die zum Erstellen von Datenbanksicherungen oder zum zentralen Hoch- oder Herunterskalieren erforderlich ist, nicht mehr an die Menge der Daten in der Datenbank gebunden. Hyperscale-Datenbanken können praktisch sofort gesichert werden. Außerdem können Sie eine Datenbank in Minutenschnelle in der Größenordnung von zig Terabyte hoch- oder herunterskalieren. Durch diese Funktion müssen Sie nicht befürchten, durch Ihre Auswahl bei der Anfangskonfiguration eingeschränkt zu werden.
 
-Weitere Informationen zu den Computegrößen für die Dienstebene „Hyperscale“ finden Sie unter [Merkmale der Dienstebene](sql-database-service-tiers-vcore.md#service-tier-characteristics).
+Weitere Informationen zu den Computegrößen für die Dienstebene „Hyperscale“ finden Sie unter [Merkmale der Dienstebene](sql-database-service-tiers-vcore.md#service-tiers).
 
 ## <a name="who-should-consider-the-hyperscale-service-tier"></a>Wer sollte die Dienstebene „Hyperscale“ in Betracht ziehen?
 
@@ -82,7 +82,7 @@ Im Gegensatz zu herkömmlichen Datenbank-Engines, in denen alle Datenverwaltungs
 
 Das folgende Diagramm veranschaulicht die verschiedenen Typen von Knoten in einer Hyperscale-Datenbank:
 
-![Architektur](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![Architektur](./media/sql-database-hyperscale/hyperscale-architecture2.png)
 
 Eine Hyperscale-Datenbank enthält die folgenden verschiedenen Komponententypen:
 
@@ -104,7 +104,7 @@ Azure Storage enthält alle Datendateien in einer Datenbank. Seitenserver halten
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
-Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu unmittelbar. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf das primäre Computereplikat zu reduzieren. Folglich wirkt sich die Datenbanksicherung nicht auf die Leistung des primären Computeknotens aus. Ebenso werden Wiederherstellungen durch das Wiederherstellen von Dateimomentaufnahmen durchgeführt. Sie sind daher nicht abhängig von der Größe der Daten. Die Wiederherstellung ist ein konstanter Vorgang, und sogar mehrere TB große Datenbanken können innerhalb von Minuten anstelle von Stunden oder Tagen wieder hergestellt werden. Die Erstellung neuer Datenbanken durch Wiederherstellen einer vorhandenen Sicherung nutzt diese Funktion ebenfalls: Das Erstellen von Datenbankkopien für Entwicklungs- oder Testzwecke (auch von Datenbanken im TB-Bereich) ist innerhalb weniger Minuten möglich.
+Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu unmittelbar. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf das primäre Computereplikat zu reduzieren. Folglich wirkt sich die Datenbanksicherung nicht auf die Leistung des primären Computeknotens aus. Ebenso werden Wiederherstellungen durch das Wiederherstellen von Dateimomentaufnahmen durchgeführt. Sie sind daher nicht abhängig von der Größe der Daten. Die Wiederherstellung ist ein konstanter Vorgang, und sogar mehrere TB große Datenbanken können innerhalb von Minuten anstelle von Stunden oder Tagen wieder hergestellt werden. Bei der Erstellung neuer Datenbanken durch Wiederherstellen einer vorhandenen Sicherung wird diese Funktion ebenfalls genutzt: Das Erstellen von Datenbankkopien auf demselben logischen Server für Entwicklungs- oder Testzwecke (auch von Datenbanken im TB-Bereich) ist innerhalb weniger Minuten möglich.
 
 ## <a name="scale-and-performance-advantages"></a>Skalierungs- und Leistungsvorteile
 

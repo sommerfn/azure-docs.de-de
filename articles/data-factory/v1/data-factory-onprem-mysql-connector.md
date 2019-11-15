@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten aus MySQL mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus der MySQL-Datenbank mithilfe von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 20dd86a46ac1b50f5ce20da6ecf9dff251a8c0b0
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 4a7b42b51f49ab0c11aa8af3af6495c60907d230
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839021"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666112"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -42,10 +42,10 @@ Das Gateway ist erforderlich, auch wenn die MySQL-Datenbank auf einem virtuellen
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## <a name="supported-versions-and-installation"></a>Unterstützte Versionen und Installation
-Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herstellt, müssen Sie den [MySQL Connector/Net für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 bis 6.10.7) auf dem System installieren, auf dem sich auch das Datenverwaltungsgateway befindet. Dieser 32-Bit-Treiber ist mit 64-Bit-Datenverwaltungsgateways kompatibel. MySQL Version 5.1 und höher wird unterstützt.
+Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herstellt, müssen Sie den [MySQL-Connector/NET für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 bis 6.10.7) auf dem System installieren, auf dem sich auch das Datenverwaltungsgateway befindet. Dieser 32-Bit-Treiber ist mit 64-Bit-Datenverwaltungsgateways kompatibel. MySQL Version 5.1 und höher wird unterstützt.
 
 > [!TIP]
-> Wenn der Fehler „Fehler bei Authentifizierung, da die Gegenstelle den Transportdatenstrom geschlossen hat.“ auftritt, sollten Sie ein Upgrade für den MySQL-Connector/Net auf eine höhere Version durchführen.
+> Wenn der Fehler „Fehler bei Authentifizierung, da die Gegenstelle den Transportdatenstrom geschlossen hat.“ auftritt, sollten Sie ein Upgrade für den MySQL-Connector/NET auf eine höhere Version durchführen.
 
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
@@ -306,39 +306,39 @@ Beim Verschieben von Daten in MySQL werden die folgenden Zuordnungen zwischen My
 | bit |Decimal |
 | Blob |Byte[] |
 | bool |Boolean |
-| char |string |
-| date |DateTime |
-| datetime |DateTime |
+| char |Zeichenfolge |
+| date |Datetime |
+| datetime |Datetime |
 | decimal |Decimal |
 | double precision |Double |
 | Double |Double |
-| enum |string |
+| enum |Zeichenfolge |
 | float |Single |
 | int (ohne Vorzeichen) |Int64 |
 | int |Int32 |
 | integer (ohne Vorzeichen) |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |string |
+| long varchar |Zeichenfolge |
 | longblob |Byte[] |
-| longtext |string |
+| longtext |Zeichenfolge |
 | mediumblob |Byte[] |
 | mediumint (ohne Vorzeichen) |Int64 |
 | mediumint |Int32 |
-| mediumtext |string |
+| mediumtext |Zeichenfolge |
 | numeric |Decimal |
 | real |Double |
-| set |string |
+| set |Zeichenfolge |
 | smallint (ohne Vorzeichen) |Int32 |
 | smallint |Int16 |
-| text |string |
+| text |Zeichenfolge |
 | time |TimeSpan |
-| timestamp |DateTime |
+| timestamp |Datetime |
 | tinyblob |Byte[] |
 | tinyint (ohne Vorzeichen) |Int16 |
 | tinyint |Int16 |
-| tinytext |string |
-| varchar |string |
+| tinytext |Zeichenfolge |
+| varchar |Zeichenfolge |
 | year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten

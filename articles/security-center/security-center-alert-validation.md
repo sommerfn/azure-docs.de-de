@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d3ea0adb4adf88e557ca360799836555cb90078e
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520941"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748464"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Warnungsüberprüfung (EICAR-Testdatei) in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -33,7 +33,7 @@ Weitere Informationen finden Sie unter [Sicherheitswarnungen in Azure Security C
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## Überprüfen von Warnungen auf einem virtuellen Windows-Computer <a name="validate-windows"></a>
+## Überprüfen von Warnungen auf virtuellen Windows-Computern <a name="validate-windows"></a>
 
 Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie auf dem Computer, auf dem sich die angegriffene Ressource für die Warnung befinden soll, die folgenden Schritte aus:
 
@@ -46,7 +46,7 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## Überprüfen von Warnungen auf einem virtuellen Linux-Computer <a name="validate-linux"></a>
+## Überprüfen von Warnungen auf virtuellen Linux-Computern <a name="validate-linux"></a>
 
 Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie auf dem Computer, auf dem sich die angegriffene Ressource für die Warnung befinden soll, die folgenden Schritte aus:
 1. Kopieren Sie eine ausführbare Datei an einem geeigneten Speicherort, und benennen Sie sie in **./asc_alerttest_662jfi039n** um. Beispiel:

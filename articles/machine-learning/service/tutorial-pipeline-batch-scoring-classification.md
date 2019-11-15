@@ -9,15 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/05/2019
-ms.openlocfilehash: 3fe25f0f8297a7b743ed5f522e8a35deb165a039
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.date: 11/04/2019
+ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695609"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796690"
 ---
 # <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Erstellen und Verwenden einer Azure Machine Learning-Pipeline für die Batchbewertung
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Tutorial verwenden Sie eine Pipeline in Azure Machine Learning, um einen Batchbewertungsauftrag auszuführen. In diesem Beispiel wird das vorab trainierte TensorFlow-Modell [Inception-V3](https://arxiv.org/abs/1512.00567) eines künstlichen neuronalen Netzes (Convolutional Neural Network, CNN) verwendet, um Bilder ohne Bezeichnung zu klassifizieren. Nach dem Erstellen und Veröffentlichen einer Pipeline konfigurieren Sie einen REST-Endpunkt, mit dem Sie die Pipeline von einer beliebigen HTTP-Bibliothek auf einer beliebigen Plattform aus auslösen.
 
@@ -463,7 +465,7 @@ df.head(10)
 
 ## <a name="publish-and-run-from-a-rest-endpoint"></a>Veröffentlichen und Ausführen über einen REST-Endpunkt
 
-Führen Sie den folgenden Code aus, um die Pipeline in Ihrem Arbeitsbereich zu veröffentlichen. In Ihrem Arbeitsbereich im Azure-Portal werden Metadaten für die Pipeline angezeigt. Hierzu zählen unter anderem Ausführungsverlauf und -dauer. Über das Portal kann die Pipeline auch manuell ausgeführt werden.
+Führen Sie den folgenden Code aus, um die Pipeline in Ihrem Arbeitsbereich zu veröffentlichen. In Ihrem Arbeitsbereich in Azure Machine Learning werden Metadaten für die Pipeline angezeigt. Hierzu zählen unter anderem Ausführungsverlauf und -dauer. Über Studio kann die Pipeline auch manuell ausgeführt werden.
 
 Durch die Veröffentlichung der Pipeline wird ein REST-Endpunkt aktiviert, über den Sie die Pipeline von einer beliebigen HTTP-Bibliothek auf einer beliebigen Plattform aus ausführen können.
 
@@ -478,7 +480,7 @@ Um die Pipeline über den REST-Endpunkt ausführen zu können, benötigen Sie ei
 
 Für die Dienstprinzipalauthentifizierung muss eine *App-Registrierung* in *Azure Active Directory* erstellt werden. Sie generieren zunächst einen geheimen Clientschlüssel und gewähren dem Dienstprinzipal anschließend *Rollenzugriff* auf Ihren Machine Learning-Arbeitsbereich. Verwenden Sie zur Verwaltung des Authentifizierungsflusses die Klasse [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py). 
 
-`InteractiveLoginAuthentication` und `ServicePrincipalAuthentication` erben jeweils von `AbstractAuthentication`. In beiden Fällen wird die Funktion `get_authentication_header()` auf die gleiche Weise verwendet, um den Header abzurufen:
+[`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) und `ServicePrincipalAuthentication` erben jeweils von `AbstractAuthentication`. In beiden Fällen wird die Funktion [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) auf die gleiche Weise verwendet, um den Header abzurufen:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -487,7 +489,7 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-Rufen Sie die REST-URL aus der Eigenschaft `endpoint` des veröffentlichten Pipelineobjekts ab. Die REST-URL finden Sie auch in Ihrem Arbeitsbereich im Azure-Portal. 
+Rufen Sie die REST-URL aus der Eigenschaft `endpoint` des veröffentlichten Pipelineobjekts ab. Sie finden die REST-URL auch in Ihrem Arbeitsbereich in Azure Machine Learning Studio. 
 
 Erstellen Sie eine HTTP POST-Anforderung für den Endpunkt. Geben Sie Ihren Authentifizierungsheader in der Anforderung an. Fügen Sie ein JSON-Nutzlastobjekt mit dem Namen des Experiments und dem Parameter für die Batchgröße hinzu. Wie zuvor im Tutorial erwähnt, wird der Parameter für die Batchgröße (`param_batch_size`) an Ihr Skript (`batch_scoring.py`) übergeben, da Sie ihn in der Schrittkonfiguration als Objekt vom Typ `PipelineParameter` definiert haben.
 
@@ -522,12 +524,7 @@ RunDetails(published_pipeline_run).show()
 
 ### <a name="stop-the-notebook-vm"></a>Beenden der Notebook-VM
 
-Sollten Sie einen cloudbasierten Notebook-Server verwendet haben, beenden Sie aus Kostengründen den virtuellen Computer, wenn Sie ihn nicht verwenden:
-
-1. Wählen Sie in Ihrem Arbeitsbereich **Notebook-VMs** aus.
-1. Wählen Sie in der Liste der virtuellen Computer den virtuellen Computer aus, den Sie beenden möchten.
-1. Wählen Sie **Stop** (Beenden) aus.
-1. Wenn Sie bereit sind, den Server erneut zu verwenden, wählen Sie **Starten** aus.
+[!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
 ### <a name="delete-everything"></a>Alles löschen
 

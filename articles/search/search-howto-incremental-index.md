@@ -1,7 +1,7 @@
 ---
-title: Einrichten der inkrementellen Indizierung von angereichertem Inhalt basierten Änderungsnachverfolgung
+title: Einrichten der inkrementellen Indizierung (Vorschau) von angereichertem Inhalt basierend auf der Änderungsnachverfolgung
 titleSuffix: Azure Cognitive Search
-description: Aktivieren Sie die Änderungsnachverfolgung, und bewahren Sie den Status von angereicherten Inhalten für die kontrollierte Verarbeitung in einem kognitiven Skillset.
+description: Aktivieren Sie die Änderungsnachverfolgung, und bewahren Sie den Status von angereicherten Inhalten für die kontrollierte Verarbeitung in einem kognitiven Skillset. Dieses Feature ist zurzeit als öffentliche Preview verfügbar.
 author: vkurpad
 manager: eladz
 ms.author: vikurpad
@@ -9,24 +9,21 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ac082d6ecb6624dc0d5bc0ab927ff8b91ebdabce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510083"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719940"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Einrichten der inkrementellen Indizierung von angereicherten Dokumenten in Azure Cognitive Search
+
+> [!IMPORTANT] 
+> Die inkrementelle Indizierung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 In diesem Artikel erfahren Sie, wie Sie Status und Zwischenspeicherung zu mit angereicherten Dokumenten hinzufügen, indem Sie eine Azure Cognitive Search-Anreicherungspipeline durchlaufen, sodass Sie Dokumente aus allen unterstützten Datenquellen inkrementell indizieren können. Standardmäßig ist ein Skillset zustandslos, und eine Änderung eines beliebigen Teils seiner Komposition erfordert eine vollständige erneute Ausführung des Indexers. Bei der inkrementellen Indizierung kann der Indexer ermitteln, welche Teile der Pipeline geändert wurden, indem vorhandene Anreicherungen für unveränderte Teile wiederverwendet und Anreicherungen für die Schritte, die sich ändern, überarbeitet werden. Zwischengespeicherter Inhalt wird in Azure Storage platziert.
 
 Wenn Sie mit dem Einrichten von Indexern nicht vertraut sind, beginnen Sie mit [Übersicht über Indexer](search-indexer-overview.md), und fahren Sie dann mit [Skillsets](cognitive-search-working-with-skillsets.md) fort, um sich über Anreicherungspipelines zu informieren. Weitere Hintergrundinformationen zu Schlüsselkonzepten finden Sie unter [Inkrementelle Indizierung](cognitive-search-incremental-indexing-conceptual.md).
-
-Die inkrementelle Indizierung wird mithilfe der [Search REST-API (Version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) konfiguriert.
-
-> [!NOTE]
-> Diese Funktion ist im Portal noch nicht verfügbar und muss programmgesteuert verwendet werden.
->
 
 ## <a name="modify-an-existing-indexer"></a>Ändern eines vorhandenen Indexers
 

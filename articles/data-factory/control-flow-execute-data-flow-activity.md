@@ -1,5 +1,5 @@
 ---
-title: Datenflussaktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Datenflussaktivität in Azure Data Factory
 description: 'Gewusst wie: Ausführen von Datenflüssen aus einer Data Factory-Pipeline heraus.'
 services: data-factory
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: cbfa1acac34187263f8c4203e41bbe61d7e4c745
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030514"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679949"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
 
@@ -56,7 +56,7 @@ integrationRuntime | Die Computeumgebung, in der der Datenfluss ausgeführt wird
 staging.linkedService | Das für das PolyBase-Staging verwendete Speicherkonto, wenn Sie eine SQL Data Warehouse-Quelle oder -Senke verwenden. | LinkedServiceReference | Nur, wenn der Datenfluss Lese-oder Schreibvorgänge in SQL Data Warehouse ausführt.
 staging.folderPath | Der für das PolyBase-Staging verwendete Ordnerpfad im Blob-Speicherkonto, wenn Sie eine SQL Data Warehouse-Quelle oder -Senke verwenden. | Zeichenfolge | Nur, wenn der Datenfluss Lese-oder Schreibvorgänge in SQL Data Warehouse ausführt.
 
-![Datenfluss ausführen](media/data-flow/activity-data-flow.png "Datenfluss ausführen")
+![Ausführen eines Datenflusses](media/data-flow/activity-data-flow.png "Ausführen eines Datenflusses")
 
 ### <a name="data-flow-integration-runtime"></a>Datenfluss-Integration Runtime
 
@@ -79,13 +79,13 @@ Wenn Sie Azure SQL Data Warehouse als Senke oder Quelle verwenden, müssen Sie e
 
 Wenn im Datenfluss parametrisierte Datasets verwendet werden, legen Sie die Parameterwerte auf der Registerkarte **Einstellungen** fest.
 
-![Parameter für „Datenfluss ausführen“](media/data-flow/params.png "Parameter")
+![Ausführen von Datenflussparametern](media/data-flow/params.png "Parameter")
 
 ### <a name="parameterized-data-flows"></a>Parametrisierte Datenflüsse
 
 Wenn der Datenfluss parametrisiert ist, legen Sie die dynamischen Werte der Datenflussparameter auf der Registerkarte **Parameter** fest. Sie können entweder die Ausdruckssprache für die ADF-Pipeline (nur für Zeichenfolgentypen) oder die Ausdruckssprache für Datenflüsse verwenden, um dynamische oder literale Parameterwerte zuzuweisen. Weitere Informationen finden Sie unter [Datenflussparameter](parameters-data-flow.md).
 
-![Parameterbeispiel zu „Datenfluss ausführen“](media/data-flow/parameter-example.png "Parameterbeispiel")
+![Ausführen von Datenflussparametern (Beispiel)](media/data-flow/parameter-example.png "Parameterbeispiel")
 
 ## <a name="pipeline-debug-of-data-flow-activity"></a>Debuggen der Pipeline der Datenflussaktivität
 

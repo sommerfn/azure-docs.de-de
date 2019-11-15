@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e3a76abe840a70ba7410855cde1d82ec96c28eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506485"
+ms.locfileid: "73579627"
 ---
 # <a name="audio-content-creation"></a>Audio Content Creation
 
@@ -43,7 +43,7 @@ Dieses Diagramm zeigt die Schritte zum Optimieren und Exportieren von Sprachausg
 
 Führen Sie die folgenden Schritte aus, um eine Speech-Ressource zu erstellen und mit Speech Studio zu verbinden.
 
-1. Befolgen Sie diese Anweisungen, um sich [für ein Azure-Konto zu registrieren und eine Speech-Ressource zu erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Vergewissern Sie sich, dass Ihr Tarif **S0** ist. Wenn Sie eine der neuronalen Stimmen verwenden, müssen Sie die Ressource in einer [unterstützten Region](regions.md#standard-and-neural-voices) erstellen.
+1. Befolgen Sie diese Anweisungen, um sich [für ein Azure-Konto zu registrieren](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) und [eine Speech-Ressource zu erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Vergewissern Sie sich, dass Ihr Tarif **S0** ist. Wenn Sie eine der neuronalen Stimmen verwenden, müssen Sie die Ressource in einer [unterstützten Region](regions.md#standard-and-neural-voices) erstellen.
 2. Melden Sie sich bei [Audio Content Creation](https://aka.ms/audiocontentcreation) an.
 3. Wählen Sie ein vorhandenes Projekt aus, oder klicken Sie auf **Neu erstellen**.
 4. Sie können Ihr Abonnement jederzeit ändern, indem Sie im oberen Navigationsbereich die Option **Einstellungen** auswählen.

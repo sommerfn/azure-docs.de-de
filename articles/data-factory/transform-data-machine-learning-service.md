@@ -1,6 +1,6 @@
 ---
-title: Ausführen von Azure Machine Learning Service-Pipelines in Ihren Azure Data Factory-Pipelines | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Ihre Azure Machine Learning Service-Pipelines in Ihren Azure Data Factory-Pipelines ausführen.
+title: Ausführen von Azure Machine Learning-Pipelines in Ihren Azure Data Factory-Pipelines
+description: Hier erfahren Sie, wie Sie Ihre Azure Machine Learning-Pipelines in Ihren Azure Data Factory-Pipelines ausführen.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 author: djpmsft
 ms.author: daperlov
-ms.openlocfilehash: ddaa020b3567f8f00cfd7fc7f7728f1160d9306b
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a257c7d3f288f9a2e1998bf0679b7146b089cb50
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302023"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683887"
 ---
-# <a name="execute-azure-machine-learning-service-pipelines-in-azure-data-factory"></a>Ausführen von Azure Machine Learning Service-Pipelines in Azure Data Factory-Pipelines
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Ausführen von Azure Machine Learning-Pipelines in Azure Data Factory-Pipelines
 
-Führen Sie Ihre Azure Machine Learning Service-Pipelines als Schritt in Ihren Azure Data Factory-Pipelines aus. Die Machine Learning-Pipelineausführungsaktivität ermöglicht Batchvorhersageszenarien wie etwa die Ermittlung möglicher Kreditausfälle, die Ermittlung der Stimmung oder die Analyse von Kundenverhaltensmustern.
+Führen Sie Ihre Azure Machine Learning-Pipelines als Schritt in Ihren Azure Data Factory-Pipelines aus. Die Machine Learning-Pipelineausführungsaktivität ermöglicht Batchvorhersageszenarien wie etwa die Ermittlung möglicher Kreditausfälle, die Ermittlung der Stimmung oder die Analyse von Kundenverhaltensmustern.
 
 ## <a name="syntax"></a>Syntax
 
@@ -48,11 +48,11 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 name | Name der Aktivität in der Pipeline | Zeichenfolge | Ja
 type | Die Art der Aktivität lautet „AzureMLExecutePipeline“. | Zeichenfolge | Ja
-linkedServiceName | Mit Azure Machine Learning Service verknüpfter Dienst | Verweis auf den verknüpften Dienst | Ja
+linkedServiceName | Mit Azure Machine Learning verknüpfter Dienst | Verweis auf den verknüpften Dienst | Ja
 mlPipelineId | ID der veröffentlichten Azure Machine Learning-Pipeline | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Ja
 experimentName | Name des Ausführungsverlaufexperiments der Machine Learning-Pipelineausführung | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein
 mlPipelineParameters | Schlüssel-Wert-Paare, die an den veröffentlichten Azure Machine Learning-Pipeline-Endpunkt übergeben werden sollen. Die Schlüssel müssen den Namen von Pipelineparametern entsprechen, die in der veröffentlichten Machine Learning-Pipeline definiert sind. | Objekt mit Schlüssel-Wert-Paaren (oder Ausdruck mit resultType-Objekt) | Nein
-mlParentRunId | ID der übergeordneten Azure Machine Learning Service-Pipelineausführung | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein
+mlParentRunId | ID der übergeordneten Azure Machine Learning-Pipelineausführung | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein
 continueOnStepFailure | Gibt an, ob die Ausführung weiterer Schritte in der Machine Learning-Pipelineausführung fortgesetzt werden soll, wenn ein Schritt nicht erfolgreich war. | boolean | Nein
 
 ## <a name="next-steps"></a>Nächste Schritte

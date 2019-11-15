@@ -1,5 +1,5 @@
 ---
-title: Transformieren von Daten mit JAR in Databricks – Azure | Microsoft-Dokumentation
+title: 'Transformieren von Daten mit JAR in Databricks: Azure'
 description: Erfahren Sie, wie Sie mit JAR Daten in Databricks verarbeiten oder transformieren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 924367c6bb85b64bafbcb8feb546eeb490e07a34
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812788"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73683959"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformieren von Daten durch Ausführen einer JAR-Aktivität in Azure Databricks
 

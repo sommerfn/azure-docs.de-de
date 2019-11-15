@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Portal: Abfragen von Azure SQL-Datenbank mit dem Abfrage-Editor | Microsoft-Dokumentation'
+title: 'Azure-Portal: Abfragen mit dem Abfrage-Editor'
 description: Es wird beschrieben, wie Sie eine Verbindung mit SQL-Datenbank im Azure-Portal per SQL-Abfrage-Editor herstellen. Führen Sie anschließend T-SQL-Anweisungen (Transact-SQL) aus, um Daten abzufragen und zu bearbeiten.
 keywords: Verbindung mit SQL-Datenbank herstellen, Azure-Portal, Portal, Abfrage-Editor
 services: sql-database
@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/28/2019
-ms.openlocfilehash: 3702c88d0a5cdc7aa1f854f71e3aee8a42d9c22c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/24/2019
+ms.openlocfilehash: 3990d7ec63c312d38168fe76269e1a920f1a6817
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569176"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827108"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Schnellstart: Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten
 
@@ -46,41 +46,47 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="connect-using-sql-authentication"></a>Herstellen einer Verbindung per SQL-Authentifizierung
 
-1. Wählen Sie im Menü auf der linken Seite **SQL-Datenbanken** und anschließend **mySampleDatabase** aus.
+1. Öffnen Sie das Azure-Portal, um eine Verbindung mit einer SQL-Datenbank herzustellen. Suchen Sie nach **SQL-Datenbanken**, und wählen Sie diese Option aus.
 
-2. Suchen Sie im linken Menü nach **Abfrage-Editor (Vorschau)** , und wählen Sie die Option aus. Die Seite **Anmeldung** wird angezeigt.
+    ![Navigieren zur Liste der SQL-Datenbanken im Azure-Portal](./media/sql-database-connect-query-portal/search-for-sql-databases.png)
+
+2. Wählen Sie Ihre SQL-Datenbank aus.
+
+    ![Auswählen einer SQL-Datenbank im Azure-Portal](./media/sql-database-connect-query-portal/select-a-sql-database.png)
+
+3. Wählen Sie im Menü **SQL-Datenbank** die Option **Abfrage-Editor (Vorschau)** aus.
 
     ![Suchen des Abfrage-Editors](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. Wählen Sie im Dropdownmenü **Autorisierungstyp** die Option **SQL Server-Authentifizierung** aus, und geben Sie die Benutzer-ID und das Kennwort des Serveradministratorkontos ein, das zum Erstellen der Datenbank verwendet wurde.
+4. Geben Sie auf der **Anmeldeseite** unter **SQL Server-Authentifizierung** die **Anmelde-ID** und das **Kennwort** des Serveradministratorkontos ein, das zum Erstellen der Datenbank verwendet wurde. Wählen Sie dann **OK**aus.
 
     ![Anmelden](./media/sql-database-connect-query-portal/login-menu.png)
 
-4. Klicken Sie auf **OK**.
-
-
 ## <a name="connect-using-azure-active-directory"></a>Herstellen einer Verbindung mit Azure Active Directory
 
-Wenn Sie einen Active Directory-Administrator (AD) konfigurieren, können Sie eine einzelne Identität verwenden, um sich beim Azure-Portal und bei Ihrer SQL-Datenbank anzumelden. Führen Sie die unten beschriebenen Schritte aus, um einen AD-Administrator für Ihren SQL-Server zu konfigurieren.
+Wenn Sie einen Azure Active Directory-Administrator (Azure AD) konfigurieren, können Sie eine einzelne Identität verwenden, um sich beim Azure-Portal und bei Ihrer SQL-Datenbank anzumelden. Führen Sie die unten beschriebenen Schritte aus, um einen Azure AD-Administrator für Ihre SQL Server-Instanz zu konfigurieren.
 
 > [!NOTE]
-> * E-Mail-Konten (etwa „outlook.com“, „gmail.com“, „yahoo.com“ usw.) werden noch nicht als AD-Administratoren unterstützt. Stellen Sie sicher, dass Sie einen Benutzer auswählen, der entweder nativ in Azure AD erstellt oder in einen Azure AD-Verbund eingefügt wurde.
+> * E-Mail-Konten (etwa „outlook.com“, „gmail.com“, „yahoo.com“ usw.) werden noch nicht als Azure AD-Administratoren unterstützt. Stellen Sie sicher, dass Sie einen Benutzer auswählen, der entweder nativ in Azure AD erstellt oder in einen Azure AD-Verbund eingefügt wurde.
 > * Die Azure AD-Administratoranmeldung funktioniert nicht bei Konten, für die die zweistufige Authentifizierung aktiviert ist.
 
-1. Wählen Sie im linken Menü **Alle Ressourcen** und anschließend Ihren SQL-Server aus.
+1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Alle Ressourcen** aus.
 
-2. Wählen Sie im Menü **Einstellungen** Ihres SQL-Servers die Option **Active Directory-Administrator**.
+2. Wählen Sie Ihre SQL Server-Instanz aus.
 
-3. Wählen Sie auf der Symbolleiste der AD-Administratorseite **Administrator festlegen** aus, und legen Sie dann den Benutzer oder die Gruppe als AD-Administrator fest.
+3. Wählen Sie im Menü **SQL Server** unter **Einstellungen** die Option **Active Directory-Administrator** aus.
+
+4. Wählen Sie auf der Symbolleiste der Seite **Active Directory-Administrator** der SQL Server-Instanz die Option **Administrator festlegen** aus, und legen Sie dann den Benutzer oder die Gruppe als Azure AD-Administrator fest.
 
     ![Auswählen von Active Directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
-4. Wählen Sie auf der Symbolleiste der AD-Administratorseite **Speichern** aus.
+5. Geben Sie auf der Seite **Administrator hinzufügen** im Suchfeld einen Benutzer oder eine Gruppe ein, nach dem bzw. der Sie suchen möchten, und wählen Sie ihn bzw. sie als Administrator aus. Wählen Sie anschließend die Schaltfläche **Auswählen** aus.
 
-5. Navigieren Sie zur Datenbank **mySampleDatabase**, und wählen Sie im linken Menü **Abfrage-Editor (Vorschau)** aus. Die Seite **Anmeldung** wird angezeigt. Falls Sie ein AD-Administrator sind, wird auf der rechten Seite unterhalb von **Active Directory single sign-on** (Active Directory-SSO) eine Meldung mit dem Hinweis angezeigt, dass Sie angemeldet wurden.
+6. Wählen Sie auf der Symbolleiste der Seite **Active Directory-Administrator** der SQL Server-Instanz die Option **Speichern** aus.
 
-6. Klicken Sie auf **OK**.
+7. Wählen Sie im Menü **SQL Server** die Option **SQL-Datenbanken** und anschließend Ihre SQL-Datenbank aus.
 
+8. Wählen Sie im Menü **SQL-Datenbank** die Option **Abfrage-Editor (Vorschau)** aus. Auf der **Anmeldeseite** wird für Azure AD-Administratoren unter **Active Directory-Authentifizierung** eine Meldung mit dem Hinweis angezeigt, dass sie angemeldet wurden. Wählen Sie dann die Schaltfläche **Als *\<Benutzer- oder Gruppen-ID> fortsetzen*** aus.
 
 ## <a name="view-data"></a>Anzeigen von Daten
 
@@ -95,7 +101,7 @@ Wenn Sie einen Active Directory-Administrator (AD) konfigurieren, können Sie ei
 
 2. Wählen Sie auf der Symbolleiste **Ausführen** aus, und sehen Sie sich dann die Ausgabe im Bereich **Ergebnisse** an.
 
-![Abfrage-Editor – Ergebnisse](./media/sql-database-connect-query-portal/query-editor-results.png)
+   ![Abfrage-Editor – Ergebnisse](./media/sql-database-connect-query-portal/query-editor-results.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
@@ -103,8 +109,8 @@ Führen Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.as
 
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
-   ```sql
-   INSERT INTO [SalesLT].[Product]
+    ```sql
+    INSERT INTO [SalesLT].[Product]
            ( [Name]
            , [ProductNumber]
            , [Color]
@@ -113,7 +119,7 @@ Führen Sie die folgende [INSERT](https://msdn.microsoft.com/library/ms174335.as
            , [ListPrice]
            , [SellStartDate]
            )
-     VALUES
+    VALUES
            ('myNewProduct'
            ,123456789
            ,'NewColor'

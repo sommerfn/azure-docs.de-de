@@ -1,6 +1,6 @@
 ---
-title: Erstellen von integrierten Lösungen mit SQL Data Warehouse | Microsoft Docs
-description: 'Tools und Partner mit Lösungen, die in SQL Data Warehouse integriert werden können. '
+title: Erstellen von integrierten Lösungen
+description: Tools und Partner mit Lösungen, die in Azure SQL Data Warehouse integriert werden können.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: integration
 ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 43a714ae175e0d60f20b5e7ad79e1fa90125b0f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6e159e0e254ae8b2515515dfaeb2c514e0f25e0b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873338"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685644"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Integrieren anderer Dienste in SQL Data Warehouse
 Zusätzlich zur Kernfunktionalität ermöglicht SQL Data Warehouse Benutzern die Integration in viele andere Dienste in Azure. Zu diesen Diensten gehören u.a.:

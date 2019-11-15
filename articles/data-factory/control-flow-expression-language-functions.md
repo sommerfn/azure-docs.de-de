@@ -1,5 +1,5 @@
 ---
-title: Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
+title: Ausdrücke und Funktionen in Azure Data Factory
 description: Dieser Artikel enthält Informationen zu Ausdrücken und Funktionen, die Sie bei der Erstellung der Data Factory-Entitäten verwenden können.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9fc8dd1e22e16ef5342b405b602f8baaf8ce7edf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 75441a398e654893601cb7375ad3674d2b8aff29
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692861"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679919"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

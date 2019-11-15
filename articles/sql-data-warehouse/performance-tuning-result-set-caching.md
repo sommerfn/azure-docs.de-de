@@ -1,6 +1,6 @@
 ---
-title: Leistungsoptimierung mit Zwischenspeichern von Resultsets | Microsoft-Dokumentation
-description: Funktionsübersicht
+title: Leistungsoptimierung mit Zwischenspeichern von Resultsets
+description: Übersicht über die Funktion zum Zwischenspeichern von Resultsets für Azure SQL Data Warehouse
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 461320b9c3ed48176fb60fe695704c582edcd552
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513984"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692950"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Leistungsoptimierung mit Zwischenspeichern von Resultsets  
 Wenn das Zwischenspeichern von Resultsets aktiviert ist, werden die Abfrageergebnisse von Azure SQL Data Warehouse in der Benutzerdatenbank automatisch zwischengespeichert, damit sie wiederholt verwendet werden können.  Dies ermöglicht es, dass nachfolgende Abfrageausführungen die Ergebnisse direkt aus dem permanenten Cache erhalten und so keine Neuberechnung erforderlich ist.   Durch das Zwischenspeichern von Resultsets wird die Abfrageleistung verbessert und die Nutzung von Computeressourcen verringert.  Außerdem belegen Abfragen, die das zwischengespeicherte Resultset verwenden, keine Parallelitätsslots und werden daher auf vorhandene Parallelitätslimits nicht angerechnet. Aus Sicherheitsgründen können Benutzer nur dann auf die zwischengespeicherten Ergebnisse zugreifen, wenn sie über dieselben Datenzugriffsberechtigungen wie die Benutzer verfügen, die die zwischengespeicherten Ergebnisse erstellen.  
@@ -34,11 +35,27 @@ Wenn das Zwischenspeichern von Resultsets aktiviert ist, werden die Abfrageergeb
 Sobald das Zwischenspeichern von Resultsets für eine Datenbank aktiviert wurde, werden die Ergebnisse für alle Abfragen so lange zwischengespeichert, bis der Cache voll ist – mit Ausnahme der folgenden Abfragen:
 - Abfragen, die nicht deterministische Funktionen verwenden, z.B. „DateTime.Now()“
 - Abfragen, die benutzerdefinierte Funktionen verwenden
+- Abfragen, die Tabellen mit aktivierter Sicherheit auf Zeilenebene oder Spaltenebene verwenden
 - Abfragen, die Daten mit einer Zeilengröße von mehr als 64 KB zurückgeben
 
-Abfragen mit umfangreichen Resultsets (z.B. > 1 Million Zeilen) können die Leistung während der ersten Ausführung beim Erstellen des Ergebniscaches möglicherweise verlangsamen.
+> [!IMPORTANT]
+> Die Vorgänge zum Erstellen des Resultsetcaches und zum Abrufen von Daten aus dem Cache erfolgen auf dem Steuerknoten einer Data Warehouse-Instanz. Wenn das Zwischenspeichern von Resultsets aktiviert ist, kann das Ausführen von Abfragen, die ein großes Resultset zurückgeben (z.B. > 1 Million Zeilen), eine hohe CPU-Auslastung auf dem Steuerknoten verursachen und die Abfrageantwortzeit für die Instanz insgesamt verlangsamen.  Diese Abfragen werden häufig bei Datenuntersuchungen oder ETL-Vorgängen verwendet. Um zu vermeiden, dass der Steuerknoten überbeansprucht wird und Leistungsprobleme verursacht, sollten Benutzer das Zwischenspeichern von Resultsets für die Datenbank deaktivieren, bevor Sie diese Abfragetypen ausführen.  
 
-Sicherheit auf Zeilenebene wird durch das Zwischenspeichern von Resultsets nicht unterstützt.  
+Führen Sie diese Abfrage für die Zeit aus, die zum Zwischenspeichern von Resultsets für eine Abfrage benötigt wird:
+
+```sql
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
+FROM sys.dm_pdw_request_steps 
+WHERE request_id  = <'request_id'>; 
+```
+
+Hier sehen Sie eine Beispielausgabe für eine Abfrage, die mit deaktiviertem Zwischenspeichern von Resultsets ausgeführt wurde.
+
+![Query-steps-with-rsc-disabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-disabled.png)
+
+Hier sehen Sie eine Beispielausgabe für eine Abfrage, die mit aktiviertem Zwischenspeichern von Resultsets ausgeführt wurde.
+
+![Query-steps-with-rsc-enabled](media/performance-tuning-result-set-caching/query-steps-with-rsc-enabled.png)
 
 ## <a name="when-cached-results-are-used"></a>Wann zwischengespeicherte Ergebnisse verwendet werden
 
@@ -50,7 +67,7 @@ Das zwischengespeicherte Resultset wird für eine Abfrage erneut verwendet, wenn
 Führen Sie diesen Befehl aus, um zu überprüfen, ob eine Abfrage mit einem Ergebniscachetreffer oder -fehler ausgeführt wurde. Bei einem Cachetreffer gibt „result_cache_hit“ den Wert „1“ zurück.
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.pdw_exec_requests 
+SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

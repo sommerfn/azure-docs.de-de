@@ -1,39 +1,39 @@
 ---
-title: Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe (Vorschauversion)
+title: Authentifizieren der Blobausgabe mit Azure Stream Analytics der verwalteten Identität
 description: In diesem Artikel wird die Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe beschrieben.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 2bde1e8556fb1255e27595630e061f6b80870ce1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1854a99cac3ead386f38c1c7fe27a56b672f365c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278634"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73664333"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output-preview"></a>Verwendung von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen für die Azure Blob Storage-Ausgabe (Vorschauversion)
 
 Die [Authentifizierung der verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für die Ausgabe auf den Azure Blob Storage ist für Azure Stream Analytics als Vorschau verfügbar. Dadurch erhalten Stream Analytics-Aufträge direkten Zugriff auf ein Speicherkonto, anstatt eine Verbindungszeichenfolge zu verwenden. Neben der verbesserten Sicherheit ermöglicht Ihnen diese Funktion auch das Schreiben von Daten auf ein Speicherkonto in einem virtuellen Netzwerk (VNET) in Azure.
 
-Dieser Artikel zeigt Ihnen, wie Sie verwaltete Identitäten für die Blob-Ausgabe(n) eines Stream Analytics-Auftrags über das Azure-Portal und mit einer Azure Resource Manager-Bereitstellung aktivieren.
+Dieser Artikel zeigt Ihnen, wie Sie verwaltete Identitäten für die Blobausgabe(n) eines Stream Analytics-Auftrags über das Azure-Portal und mit einer Azure Resource Manager-Bereitstellung aktivieren.
 
 ## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
 
-1. Erstellen Sie einen neuen Stream Analytics-Auftrag oder öffnen Sie einen vorhandenen im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität**. Vergewissern Sie sich, dass „Systemseitig zugewiesene verwaltete Identität verwenden“ ausgewählt ist, und klicken Sie dann auf die Schaltfläche **„Speichern“** am unteren Bildschirmrand.
+1. Erstellen Sie einen neuen Stream Analytics-Auftrag oder öffnen Sie einen vorhandenen im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität**. Vergewissern Sie sich, dass „Systemseitig zugewiesene verwaltete Identität verwenden“ ausgewählt ist, und klicken Sie dann auf die Schaltfläche **Speichern** am unteren Bildschirmrand.
 
-   ![Konfigurieren einer verwalteten Identität für Stream Analytics](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-enable-managed-identity.png)
+   ![Konfigurieren einer verwalteten Identität für Stream Analytics](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. Wählen Sie im Fenster mit den Ausgabeeigenschaften der Azure Blob Storage-Ausgabesenke die Dropdownliste der Authentifizierungsmodi, und wählen Sie **„Verwaltete Identität“** aus. Informationen zu den anderen Ausgabeeigenschaften finden Sie unter [„Grundlegendes zu den Ausgaben von Azure Stream Analytics“](./stream-analytics-define-outputs.md). Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+2. Wählen Sie im Fenster mit den Ausgabeeigenschaften der Azure Blob Storage-Ausgabesenke die Dropdownliste der Authentifizierungsmodi, und wählen Sie **Verwaltete Identität** aus. Informationen zu den anderen Ausgabeeigenschaften finden Sie unter [Grundlegendes zu den Ausgaben von Azure Stream Analytics](./stream-analytics-define-outputs.md). Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
    ![Konfigurieren der Azure Blob Storage-Ausgabe](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
-3. Nachdem der Auftrag nun erstellt wurde, finden Sie weitere Informationen im Abschnitt [„Stream Analytics-Auftrag Zugriff auf Ihr Speicherkonto geben“](#give-the-stream-analytics-job-access-to-your-storage-account) in diesem Artikel.
+3. Nachdem der Auftrag nun erstellt wurde, finden Sie weitere Informationen im Abschnitt [Stream Analytics-Auftrag Zugriff auf Ihr Speicherkonto geben](#give-the-stream-analytics-job-access-to-your-storage-account) in diesem Artikel.
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager-Bereitstellung
 
-Mit dem Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics-Auftrags vollständig automatisieren. Sie können Ressourcen-Manager-Vorlagen entweder mit Azure PowerShell oder dem [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) bereitstellen. Die folgenden Beispiele verwenden die Azure CLI.
+Mit dem Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics-Auftrags vollständig automatisieren. Sie können Resource Manager-Vorlagen entweder mit Azure PowerShell oder der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) bereitstellen. In den folgenden Beispielen wird die Azure-Befehlszeilenschnittstelle verwendet.
 
 
 1. Sie können eine **Microsoft.StreamAnalytics/streamingjobs**-Ressource mit einer verwalteten Identität erstellen, indem Sie die folgende Eigenschaft in den Ressourcenabschnitt Ihrer Resource Manager-Vorlage einfügen:
@@ -95,7 +95,7 @@ Mit dem Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analy
     }
     ```
 
-    Der oben genannte Auftrag kann mit dem folgenden Azure CLI-Befehl in der Ressourcengruppe **„ExampleGroup“** bereitgestellt werden:
+    Der oben genannte Auftrag kann mit dem folgenden Azure CLI-Befehl in der Ressourcengruppe **ExampleGroup** bereitgestellt werden:
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
@@ -148,15 +148,15 @@ Mit dem Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analy
 
    Beachten Sie die **principalId** aus der Auftragsdefinition, die die verwaltete Identität Ihres Auftrags innerhalb von Azure Active Directory identifiziert und im nächsten Schritt verwendet wird, um dem Stream Analytics-Auftrag Zugriff auf das Speicherkonto zu gewähren.
 
-3. Nachdem der Auftrag nun erstellt wurde, finden Sie weitere Informationen im Abschnitt [„Stream Analytics-Auftrag Zugriff auf Ihr Speicherkonto geben“](#give-the-stream-analytics-job-access-to-your-storage-account) in diesem Artikel.
+3. Nachdem der Auftrag nun erstellt wurde, finden Sie weitere Informationen im Abschnitt [Stream Analytics-Auftrag Zugriff auf Ihr Speicherkonto geben](#give-the-stream-analytics-job-access-to-your-storage-account) in diesem Artikel.
 
 
 ## <a name="give-the-stream-analytics-job-access-to-your-storage-account"></a>Geben Sie dem Stream Analytics-Auftrag Zugriff auf Ihr Speicherkonto
 
-Es gibt zwei Zugriffsebenen, die Sie wählen können, um Ihren Stream Analytics-Auftrag zu erhalten:
+Es gibt zwei Zugriffsebenen, die Sie wählen können, um Ihren Stream Analytics-Auftrag Folgendes zuzuweisen:
 
 1. **Zugriff auf Containerebene:** Diese Option ermöglicht dem Auftrag den Zugriff auf einen bestimmten vorhandenen Container.
-2. **Zugriff auf Kontoebene:** Diese Option gibt dem Auftrag allgemeinen Zugriff auf das Speicherkonto, einschließlich der Möglichkeit, neue Container zu erstellen.
+2. **Zugriff auf Kontoebene:** Diese Option gewährt dem Auftrag allgemeinen Zugriff auf das Speicherkonto, einschließlich der Möglichkeit, neue Container zu erstellen.
 
 Wenn Sie den Auftrag nicht benötigen, um Container für Sie zu erstellen, sollten Sie den **Zugriff auf Containerebene** wählen, da diese Option dem Auftrag den erforderlichen Mindestzugang gewährt. Beide Optionen werden im Folgenden für das Azure-Portal und die Befehlszeile erläutert.
 
@@ -166,16 +166,16 @@ Wenn Sie den Auftrag nicht benötigen, um Container für Sie zu erstellen, sollt
 
 1. Navigieren Sie in Ihrem Speicherkonto zum Konfigurationsbereich des Containers.
 
-2. Wählen Sie auf der linken Seite **„Zugriffssteuerung (IAM)“** aus.
+2. Wählen Sie auf der linken Seite **Zugriffssteuerung (IAM)** aus.
 
-3. Klicken Sie im Abschnitt „Rollenzuweisung hinzufügen“ auf **„Hinzufügen“** .
+3. Klicken Sie im Abschnitt „Rollenzuweisung hinzufügen“ auf **Hinzufügen**.
 
 4. Im Bereich „Rollenzuweisung“:
 
-    1. Legen Sie die **Rolle** als „Mitwirkender an Speicherblobdaten“ fest
-    2. Stellen Sie sicher, dass die Dropdownliste **„Zugriff zuweisen“** auf „Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal“ gesetzt ist.
+    1. Legen Sie die **Rolle** als „Mitwirkender an Speicherblobdaten“ fest.
+    2. Stellen Sie sicher, dass die Dropdownliste **Zugriff zuweisen** auf „Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal“ gesetzt ist.
     3. Geben Sie den Namen Ihres Stream Analytics-Auftrags in das Suchfeld ein.
-    4. Wählen Sie Ihren Stream Analytics-Auftrag aus und klicken Sie auf **„Speichern“** .
+    4. Wählen Sie Ihren Stream Analytics-Auftrag aus, und klicken Sie auf **Speichern**.
 
    ![Containerzugriff gewähren](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
@@ -183,16 +183,16 @@ Wenn Sie den Auftrag nicht benötigen, um Container für Sie zu erstellen, sollt
 
 1. Navigieren Sie zum Speicherkonto.
 
-2. Wählen Sie auf der linken Seite **„Zugriffssteuerung (IAM)“** aus.
+2. Wählen Sie auf der linken Seite **Zugriffssteuerung (IAM)** aus.
 
-3. Klicken Sie im Abschnitt „Rollenzuweisung hinzufügen“ auf **„Hinzufügen“** .
+3. Klicken Sie im Abschnitt „Rollenzuweisung hinzufügen“ auf **Hinzufügen**.
 
 4. Im Bereich „Rollenzuweisung“:
 
-    1. Legen Sie die **Rolle** als „Mitwirkender an Speicherblobdaten“ fest
-    2. Stellen Sie sicher, dass die Dropdownliste **„Zugriff zuweisen“** auf „Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal“ gesetzt ist.
+    1. Legen Sie die **Rolle** als „Mitwirkender an Speicherblobdaten“ fest.
+    2. Stellen Sie sicher, dass die Dropdownliste **Zugriff zuweisen** auf „Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal“ gesetzt ist.
     3. Geben Sie den Namen Ihres Stream Analytics-Auftrags in das Suchfeld ein.
-    4. Wählen Sie Ihren Stream Analytics-Auftrag aus und klicken Sie auf **„Speichern“** .
+    4. Wählen Sie Ihren Stream Analytics-Auftrag aus, und klicken Sie auf **Speichern**.
 
    ![Zugriff auf das Konto gewähren](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
@@ -220,18 +220,18 @@ Bei der Konfiguration der **Firewalls und virtuellen Netzwerke** Ihres Speicherk
 
 1.  Navigieren Sie im Konfigurationsbereich des Speicherkonten zum Bereich „Firewalls und virtuelle Netzwerke“.
 2.  Sorgen Sie dafür, dass die Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ aktiviert ist.
-3.  Wenn Sie sie aktiviert haben, klicken Sie auf **„Speichern“** .
+3.  Wenn Sie sie aktiviert haben, klicken Sie auf **Speichern**.
 
    ![Aktivieren des VNET-Zugriffs](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 
 ## <a name="limitations"></a>Einschränkungen
-Nachfolgend finden Sie die aktuellen Einschränkungen dieser Funktion:
+Nachfolgend finden Sie die aktuellen Einschränkungen dieses Features:
 
 1. Klassische Azure Storage-Konten.
 
 2. Azure-Konten ohne Azure Active Directory.
 
-3. Mehrinstanzenfähiger Zugriff wird nicht unterstützt. Der für einen bestimmten Stream Analytics-Auftrag erstellte Dienstprinzipal muss in dem Azure Active Directory-Mandanten ausgeführt werden, in dem der Auftrag erstellt wurde, und kann nicht für eine Ressource verwendet werden, die sich in einem anderen Azure Active Directory-Mandanten befindet.
+3. Mehrinstanzenfähiger Zugriff wird nicht unterstützt. Der für einen bestimmten Stream Analytics-Auftrag erstellte Dienstprinzipal muss in dem Azure Active Directory-Mandanten ausgeführt werden, in dem der Auftrag erstellt wurde, und er kann nicht für eine Ressource in einem anderen Azure Active Directory-Mandanten verwendet werden.
 
 4. [Vom Benutzer zugewiesene Identität](../active-directory/managed-identities-azure-resources/overview.md) wird nicht unterstützt. Das heißt, der Benutzer kann nicht seinen eigenen Dienstprinzipal eingeben, um ihn für seinen Stream Analytics-Auftrag zu verwenden. Der Dienstprinzipal muss von Azure Stream Analytics generiert werden.
 

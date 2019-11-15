@@ -5,14 +5,14 @@ services: private-link
 author: KumudD
 ms.service: private-link
 ms.topic: overview
-ms.date: 09/16/2019
+ms.date: 11/04/2019
 ms.author: kumud
-ms.openlocfilehash: 9e6206e6f7e09ebe03659eb6e515a9b26d3469bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aa176cb5ffc67ebba826cf13a1a66608301af5e5
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475941"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73601527"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Was ist Azure Private Link? (Vorschau)
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage, Azure Cosmos DB und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) in Ihrem virtuellen Netzwerk (VNet) erstellen und Ihren Kunden privat zur Verfügung stellen. Die Einrichtung und Nutzung von Azure Private Links ist in Azure-PaaS-, Kunden- und gemeinsamen Partnerdiensten konsistent.
@@ -40,12 +40,12 @@ Azure Private Link bietet folgende Vorteile:
 
 |Szenario  |Unterstützte Dienste   |Verfügbare Regionen | Status   |
 |---------|---------|---------|---------|
-|Private Link für Kundendienste|Private Link-Dienste hinter Load Balancer Standard |USA, Westen-Mitte; USA, Westen; USA, Süden-Mitte; USA, Osten; USA, Norden-Mitte  |  Vorschau  |
-|Private Link für Azure PaaS-Dienste   | Azure Storage        |  USA, Osten; USA, Westen; USA, Westen-Mitte       | Vorschau         |
-|  | Azure Data Lake Storage Gen2        |  USA, Osten; USA, Westen; USA, Westen-Mitte       | Vorschau         |
-|  |  Azure SQL-Datenbank         | USA, Westen-Mitte; USA, Westen; USA, Süden-Mitte; USA, Osten; USA, Norden-Mitte      |   Vorschau      |
-||Azure SQL Data Warehouse| USA, Westen-Mitte; USA, Westen; USA, Süden-Mitte; USA, Osten; USA, Norden-Mitte |Vorschau|
-||Azure Cosmos DB| USA, Westen-Mitte; USA, Westen; USA, Osten; USA, Norden-Mitte; USA, Osten 2; USA, Westen 2 |Vorschau|
+|Private Link für Kundendienste|Private Link-Dienste hinter Load Balancer Standard | Alle öffentlichen Regionen  |  Vorschau  |
+|Private Link für Azure PaaS-Dienste   | Azure Storage        |  Alle öffentlichen Regionen      | Vorschau         |
+|  | Azure Data Lake Storage Gen2        |  Alle öffentlichen Regionen      | Vorschau         |
+|  |  Azure SQL-Datenbank         | Alle öffentlichen Regionen      |   Vorschau      |
+||Azure SQL Data Warehouse| Alle öffentlichen Regionen |Vorschau|
+||Azure Cosmos DB| USA, Westen-Mitte; USA, Westen; USA, Norden-Mitte |Vorschau|
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 

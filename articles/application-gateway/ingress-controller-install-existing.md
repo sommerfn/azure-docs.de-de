@@ -5,14 +5,14 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 045fb54956e78e826b06dc1c56c29e1c7bd430bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dec43a4d7eb5a9546fcd77cce972b93542ea3b10
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510463"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795952"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Installieren eines Application Gateway-Eingangscontrollers (Application Gateway Ingress Controller, AGIC) mithilfe eines vorhandenen Application Gateways
 
@@ -72,7 +72,7 @@ AGIC kommuniziert mit dem Kubernetes-API-Server und Azure Resource Manager. Für
 
 ## <a name="set-up-aad-pod-identity"></a>Einrichten von AAD-Podidentität
 
-[AAD-Podidentität](https://github.com/Azure/aad-pod-identity) ist ein Controller (ähnlich wie AGIC), der ebenfalls für AKS ausgeführt wird. Er bindet Azure Active Directory-Identitäten an Ihre Kubernetes-Pods. Für eine Anwendung in einem Kubernetes-Pod ist eine Identität erforderlich, um mit anderen Azure-Komponenten kommunizieren zu können. Im konkreten Fall benötigen wir hier die Berechtigung für den AGIC-Pod, um HTTP-Anforderungen an [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) auszugeben.
+[AAD-Podidentität](https://github.com/Azure/aad-pod-identity) ist ein Controller (ähnlich wie AGIC), der ebenfalls für AKS ausgeführt wird. Er bindet Azure Active Directory-Identitäten an Ihre Kubernetes-Pods. Für eine Anwendung in einem Kubernetes-Pod ist eine Identität erforderlich, um mit anderen Azure-Komponenten kommunizieren zu können. Im konkreten Fall benötigen wir hier die Berechtigung für den AGIC-Pod, um HTTP-Anforderungen an [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) zu senden.
 
 Befolgen Sie die [Installationsanweisungen für die AAD-Podidentität](https://github.com/Azure/aad-pod-identity#deploy-the-azure-aad-identity-infra), um diese Komponente Ihrem AKS hinzuzufügen.
 
@@ -91,7 +91,7 @@ Verwenden Sie [Cloud Shell](https://shell.azure.com/), um die folgenden Befehle 
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Gewähren Sie der Identität `Contributor` Zugriff auf Ihr Application Gateway. Hierfür benötigen Sie die ID des Application Gateways, die in etwa wie folgt aussieht: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Gewähren Sie der Identität `Contributor` Zugriff auf Ihre Application Gateway-Instanz. Hierfür benötigen Sie die ID des Application Gateways, die in etwa wie folgt aussieht: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
     Rufen Sie die Liste der Application Gateway-IDs in Ihrem Abonnement wie folgt ab: `az network application-gateway list --query '[].id'`
 
@@ -128,7 +128,7 @@ armAuth:
 ```
 
 ## <a name="install-ingress-controller-as-a-helm-chart"></a>Installieren des Eingangscontrollers als Helm-Diagramm
-In den ersten Schritten installieren wir den Tiller von Helm auf Ihrem Kubernetes-Cluster. Verwenden Sie [Cloud Shell](https://shell.azure.com/), um das AGIC Helm-Paket zu installieren:
+In den ersten Schritten installieren wir Tiller von Helm auf Ihrem Kubernetes-Cluster. Verwenden Sie [Cloud Shell](https://shell.azure.com/), um das AGIC Helm-Paket zu installieren:
 
 1. Hinzufügen des `application-gateway-kubernetes-ingress`-Repositorys von Helm und Ausführen eines Helm-Updates
 
@@ -244,7 +244,7 @@ __Sichern__ Sie die Konfiguration Ihres Application Gateways, bevor Sie diese Ei
 Die heruntergeladene ZIP-Datei enthält JSON-Vorlagen, die Bash und PowerShell-Skripts, die Sie zum Wiederherstellen des App Gateways verwenden können.
 
 ### <a name="example-scenario"></a>Beispielszenario
-Sehen wir uns ein imaginäres Application Gateway an, das den Datenverkehr für zwei Websites verwaltet:
+Sehen wir uns eine imaginäre Application Gateway-Instanz an, die den Datenverkehr für zwei Websites verwaltet:
   - `dev.contoso.com`: Gehostet in einem neuen AKS mithilfe von Application Gateway und AGIC
   - `prod.contoso.com`: Gehostet in einer [Azure-VM-Skalierungsgruppe](https://azure.microsoft.com/services/virtual-machine-scale-sets/)
 
@@ -323,7 +323,7 @@ Erweitern Sie die AGIC-Berechtigungen wie folgt:
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Aktivierung für eine vorhandene AGIC-Installation
-Nehmen wir an, dass wir bereits einen funktionierenden AKS, ein Application Gateway und einen konfigurierten AGIC in unserem Cluster verwenden. Wir verfügen über eingehenden Datenverkehr für `prod.contosor.com` und bedienen ihn erfolgreich aus AKS. Wir möchten unserem vorhandenen Application Gateway `staging.contoso.com` hinzufügen, müssen dies jedoch auf einer [VM](https://azure.microsoft.com/services/virtual-machines/) hosten. Wir verwenden das vorhandene Application Gateway erneut und konfigurieren manuell einen Listener und Back-End-Pools für `staging.contoso.com`. Eine manuelle Anpassung der Application Gateway-Konfiguration (über das [Portal](https://portal.azure.com), [ARM-APIs](https://docs.microsoft.com/rest/api/resources/) oder [Terraform](https://www.terraform.io/)) würde jedoch im Widerspruch zur Annahme des AGIC über den vollständigen Besitz stehen. Kurz nachdem wir Änderungen vorgenommen haben, überschreibt oder löscht AGIC diese.
+Nehmen wir an, dass wir bereits einen funktionierenden AKS, ein Application Gateway und einen konfigurierten AGIC in unserem Cluster verwenden. Wir verfügen über eingehenden Datenverkehr für `prod.contosor.com` und bedienen ihn erfolgreich aus AKS. Wir möchten unserem vorhandenen Application Gateway `staging.contoso.com` hinzufügen, müssen dies jedoch auf einer [VM](https://azure.microsoft.com/services/virtual-machines/) hosten. Wir verwenden die vorhandene Application Gateway-Instanz erneut und konfigurieren manuell einen Listener und Back-End-Pools für `staging.contoso.com`. Eine manuelle Anpassung der Application Gateway-Konfiguration (über das [Portal](https://portal.azure.com), [ARM-APIs](https://docs.microsoft.com/rest/api/resources/) oder [Terraform](https://www.terraform.io/)) würde jedoch im Widerspruch zur Annahme des AGIC über den vollständigen Besitz stehen. Kurz nachdem wir Änderungen vorgenommen haben, überschreibt oder löscht AGIC diese.
 
 Wir können AGIC verbieten, Änderungen an einer Teilmenge der Konfiguration vorzunehmen.
 

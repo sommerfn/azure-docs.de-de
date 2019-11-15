@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
-ms.date: 08/08/2019
-ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 10/25/2019
+ms.openlocfilehash: d4e37b02b3d7a21546a04c8948fbbfb7262bfa6a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002825"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584767"
 ---
-# <a name="deploy-a-model-to-notebook-vms"></a>Bereitstellen eines Modells auf Notebook-VMs
+# <a name="deploy-a-model-to-azure-machine-learning-notebook-vms"></a>Bereitstellen eines Modells auf Azure Machine Learning-Notebook-VMs
 
-Hier erfahren Sie, wie Sie mit Azure Machine Learning ein Modell als Webdienst auf einer Notebook-VM bereitstellen. Verwenden Sie Notebook-VMs, wenn eine der folgenden Bedingungen zutrifft:
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+Hier erfahren Sie, wie Sie mit Azure Machine Learning ein Modell als Webdienst auf Ihrer Azure Machine Learning-Notebook-VM bereitstellen. Verwenden Sie Notebook-VMs, wenn eine der folgenden Bedingungen zutrifft:
 
 - Sie müssen Ihr Modell schnell bereitstellen und überprüfen.
 - Sie testen ein Modell in der Entwicklungsphase.
 
 > [!TIP]
-> Bei der Bereitstellung eines Modells aus einer Jupyter Notebook-Instanz auf einer Notebook-VM in einem Webdienst auf der gleichen VM handelt es sich um eine _lokale Bereitstellung_. In diesem Fall ist der lokale Computer die Notebook-VM. Weitere Informationen zu Bereitstellungen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
+> Bei der Bereitstellung eines Modells aus einer Jupyter Notebook-Instanz auf einer Notebook-VM in einem Webdienst auf der gleichen VM handelt es sich um eine _lokale Bereitstellung_. In diesem Fall ist der lokale Computer die Notebook-VM. Weitere Informationen zu Bereitstellungen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +37,7 @@ Hier erfahren Sie, wie Sie mit Azure Machine Learning ein Modell als Webdienst a
 
 Ein Beispielnotebook mit einer Veranschaulichung lokaler Bereitstellungen ist in Ihrer Notebook-VM enthalten. Führen Sie die folgenden Schritte aus, um das Notebook zu laden und das Modell als Webdienst auf dem virtuellen Computer bereitzustellen:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihre Azure Machine Learning-Notebook-VMs aus.
+1. Wählen Sie in [Azure Machine Learning Studio](https://ml.azure.com) Ihre Azure Machine Learning-Notebook-VMs aus.
 
 1. Öffnen Sie das Unterverzeichnis `samples-*` und anschließend `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Führen Sie dann das Notebook aus.
 
@@ -45,7 +47,7 @@ Ein Beispielnotebook mit einer Veranschaulichung lokaler Bereitstellungen ist in
 
     ![Screenshot des Ports des ausgeführten lokalen Diensts](media/how-to-deploy-local-container-notebookvm/deploy-local-service-port.png)
 
-1. Verwenden Sie die URL `https://localhost:<local_service.port>`, um den Dienst über die Notebook-VM zu testen. Rufen Sie zum Testen über einen Remoteclient die öffentliche URL des auf der Notebook-VM ausgeführten Diensts ab. Die öffentliche URL hat das folgende Format: `https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. Beispiel: `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score`.
+1. Verwenden Sie die URL `https://localhost:<local_service.port>`, um den Dienst über die Notebook-VM zu testen. Rufen Sie zum Testen über einen Remoteclient die öffentliche URL des auf der Notebook-VM ausgeführten Diensts ab. Die öffentliche URL kann mit der folgenden Formel bestimmt werden: `https://<notebookvm_name>-<local_service_port>.<azure_region_of_notebook>.notebooks.azureml.net/score`. Beispiel: `https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score`.
 
 ## <a name="test-the-service"></a>Testen des Diensts
 
@@ -61,7 +63,8 @@ test_sample = json.dumps({'data': [
 test_sample = bytes(test_sample,encoding = 'utf8')
 access_token = "your bearer token"
 headers = {'Content-Type':'application/json', 'Authorization': 'Bearer ' + access_token}
-service_url = "https://mynotebookvm-6789.eastus2.notebooks.azureml.net/score"
+service_url = "https://vm-name-6789.northcentralus.notebooks.azureml.net/score"
+# for a compute instance, the url would be https://vm-name-6789.northcentralus.instances.azureml.net/score
 resp = requests.post(service_url, test_sample, headers=headers)
 print("prediction:", resp.text)
 ```

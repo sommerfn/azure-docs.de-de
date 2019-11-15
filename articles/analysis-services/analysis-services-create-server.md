@@ -1,18 +1,18 @@
 ---
-title: 'Schnellstart: Erstellen eines Analysis Services-Servers mithilfe des Azure-Portals | Microsoft-Dokumentation'
-description: Informationen zum Erstellen einer Analysis Services-Serverinstanz in Azure.
+title: 'Schnellstart: Erstellen eines Analysis Services-Servers im Azure-Portal | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie mithilfe des Azure-Portals schnell eine Azure Analysis Services-Serverinstanz erstellen.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/02/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e6973ee311f1d3f5ba19714695f67bd321d953b7
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cfd624ce49add0f8fd04bfccca9d6b7c3f1f71bd
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295037"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573066"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Schnellstart: Erstellen eines Servers – Portal
 
@@ -45,7 +45,7 @@ Diese Schnellstartanleitung erläutert, wie eine Analysis Services-Serverressour
    * **Einstellung „Sicherungsspeicher“** : Optional. Wenn Sie bereits über ein [Speicherkonto](../storage/common/storage-introduction.md), verfügen, können Sie es als Standardkonto für die Sicherung der Modelldatenbank angeben. Sie können später auch Einstellungen zum [Sichern und Wiederherstellen](analysis-services-backup.md) angeben.
    * **Speicherschlüssel-Ablaufdatum**: Optional. Geben Sie einen Ablaufzeitraum für den Speicherschlüssel an.
 
-Das Erstellen des Servers dauert normalerweise weniger als eine Minute. Wenn Sie **Add to Portal** (Zu Portal hinzufügen) ausgewählt haben, navigieren Sie zu Ihrem Portal, um den neuen Server anzuzeigen. Oder navigieren Sie zu **Alle Dienste** > **Analysis Services**, um zu überprüfen, ob der Server bereit ist. Server unterstützen tabellarische Modelle mit dem Kompatibilitätsgrad 1200 oder höher. Der Modellkompatibilitätsgrad wird in SSDT oder SSMS angegeben.
+Das Erstellen des Servers dauert normalerweise weniger als eine Minute. Wenn Sie **Add to Portal** (Zu Portal hinzufügen) ausgewählt haben, navigieren Sie zu Ihrem Portal, um den neuen Server anzuzeigen. Oder navigieren Sie zu **Alle Dienste** > **Analysis Services**, um zu überprüfen, ob der Server bereit ist. Server unterstützen tabellarische Modelle mit dem Kompatibilitätsgrad 1200 oder höher. Der Modellkompatibilitätsgrad wird in Visual Studio oder SSMS angegeben.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

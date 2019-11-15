@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ecd27c1be0fa6b4f13415cc21a57fcdaaf962de
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878833"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73824586"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopieren von Daten aus Azure Storage-Blobs in Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "60878833"
 >
 >
 
-Azure Data Lake Storage Gen1 bietet das Befehlszeilentool [AdlCopy](https://aka.ms/downloadadlcopy), mit dem Sie Daten aus den folgenden Quellen kopieren können:
+Azure Data Lake Storage Gen1 bietet das Befehlszeilentool [AdlCopy](https://www.microsoft.com/download/details.aspx?id=50358), mit dem Sie Daten aus den folgenden Quellen kopieren können:
 
 * Aus Azure Storage-Blobs in Data Lake Storage Gen1. Sie können AdlCopy nicht verwenden, um Daten aus Data Lake Storage Gen1 in Azure Storage-Blobs zu kopieren.
 * Zwischen zwei Azure Data Lake Storage Gen1-Konten.
@@ -43,7 +43,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 * **Azure Storage-Blobscontainer** mit einigen Daten.
 * **Ein Azure Data Lake Storage Gen1-Konto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 * **Azure Data Lake Analytics-Konto (optional)** – Anweisungen zum Erstellen eines Data Lake Analytics-Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
-* **AdlCopy-Tool**. Installieren Sie das AdlCopy-Tool über [https://aka.ms/downloadadlcopy](https://aka.ms/downloadadlcopy).
+* **AdlCopy-Tool**. Installieren Sie das [AdlCopy-Tool](https://www.microsoft.com/download/details.aspx?id=50358).
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>Syntax des AdlCopy-Tools
 Verwenden Sie die folgende Syntax, um mit dem AdlCopy-Tool zu arbeiten.

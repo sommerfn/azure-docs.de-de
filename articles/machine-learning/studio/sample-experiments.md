@@ -1,7 +1,7 @@
 ---
-title: Schnelles Starten Ihrer Experimente anhand von Beispielen
-titleSuffix: Azure Machine Learning Studio
-description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure KI-Katalog und Azure Machine Learning Studio neue Experimente zu erstellen.
+title: Schnelles Starten von Experimenten anhand von Beispielen
+titleSuffix: ML Studio (classic) Azure
+description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure KI-Katalog und Azure Machine Learning Studio (klassisch) neue Experimente zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: f88323069ed23f4a038ffa4a030b1c4d4541ec42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fa23612070a5b0c1a33c2effb9cd9e533ca5eada
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460392"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73670647"
 ---
-# <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von Azure Machine Learning Studio-Experimenten aus funktionierenden Beispielen im Azure KI-Katalog
+# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von (klassischen) Azure Machine Learning Studio-Experimenten aus funktionierenden Beispielen im Azure KI-Katalog
 
 Hier erfahren Sie, wie Sie Beispielexperimente aus dem [Azure KI-Katalog](https://gallery.azure.ai/) verwenden, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Auf der Grundlage der Beispiele können Sie eine eigene Machine Learning-Lösung erstellen.
 
-Der Katalog enthält Beispielexperimente des Microsoft Azure Machine Learning Studio-Teams und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
+Der Katalog enthält Beispielexperimente des Teams für Microsoft Azure Machine Learning Studio (klassisch) und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
 
 Die Nutzung des Katalogs wird in dem dreiminütigen Video [Kopieren der Arbeit anderer für Ihre Data Science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) der Reihe [Data Science für Einsteiger](data-science-for-beginners-the-5-questions-data-science-answers.md) veranschaulicht.
 
@@ -48,20 +48,15 @@ So durchsuchen Sie alle Experimente:
 
     ![Beispielexperiment](./media/sample-experiments/example-experiment.png)
 
-    > [!NOTE]
-    > Wenn Sie ein Experiment in Machine Learning Studio zum ersten Mal öffnen, können Sie es kostenlos testen oder ein Azure-Abonnement kaufen. [Informationen zur kostenlosen Testversion von Machine Learning Studio im Vergleich zum kostenpflichtigen Dienst](https://azure.microsoft.com/pricing/details/machine-learning/)
-    >
-    >
-
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>Erstellen eines neuen Experiments mit einem Beispiel als Vorlage
-Sie können in Machine Learning Studio auch ein neues Experiment erstellen, indem Sie ein Beispiel aus dem Katalog als Vorlage verwenden.
+Sie können in der klassischen Version von Machine Learning Studio auch ein neues Experiment erstellen, indem Sie ein Beispiel aus dem Katalog als Vorlage verwenden.
 
 1. Melden Sie sich mit den Anmeldeinformationen für Ihr Microsoft-Konto bei [Studio](https://studio.azureml.net)an, und klicken Sie dann auf **Neu**, um ein Experiment zu erstellen.
 2. Durchsuchen Sie die Beispiele, und wählen Sie eines aus.
 
-In Ihrem Machine Learning Studio-Arbeitsbereich wird auf der Grundlage des Beispielexperiments ein neues Experiment erstellt.
+In Ihrem Arbeitsbereich in Machine Learning Studio (klassisch) wird auf Grundlage des Beispielexperiments ein neues Experiment erstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Importieren von Daten aus verschiedenen Quellen](import-data.md)
 * [Schnellstart-Tutorial für die Sprache R in Machine Learning](r-quickstart.md)
-* [Bereitstellen eines Machine Learning-Webdiensts](publish-a-machine-learning-web-service.md)
+* [Bereitstellen eines Machine Learning-Webdiensts](deploy-a-machine-learning-web-service.md)

@@ -1,22 +1,22 @@
 ---
-title: 'Tutorial: Hinzufügen eines Pools für elastische Azure SQL-Datenbank-Instanzen zu einer Failovergruppe | Microsoft-Dokumentation'
+title: 'Tutorial: Hinzufügen eines Pools für elastische Datenbanken zu einer Failovergruppe'
 description: Fügen Sie einen Pool für elastische Azure SQL-Datenbanken mit dem Azure-Portal, PowerShell oder der Azure CLI zu einer Failovergruppe hinzu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
-ms.date: 06/19/2019
-ms.openlocfilehash: 2d46e6f1d5c7079ab5bbfea39a85ea0a7592afc8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 08/27/2019
+ms.openlocfilehash: e2ae9afaf7c1dcc1794b90d4851fdd60298b5ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099269"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823875"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Tutorial: Hinzufügen eines Pools für elastische Azure SQL-Datenbank-Instanzen zu einer Failovergruppe
 
@@ -25,7 +25,7 @@ Konfigurieren Sie eine ‚Failovergruppe für einen Pool für elastische Azure S
 > [!div class="checklist"]
 > - Erstellen einer Azure SQL-Einzeldatenbank.
 > - Hinzufügen einer Einzeldatenbank in einen Pool für elastische Datenbanken. 
-> - Erstellen einer [Failovergruppe](sql-database-auto-failover-group.md) für einen Pool für elastische Datenbanken zwischen zwei logischen SQL Server-Instanzen.
+> - Erstellen einer [Failovergruppe](sql-database-auto-failover-group.md) für zwei Pools für elastische Datenbanken zwischen zwei logischen SQL Server-Instanzen.
 > - Testen des Failovers.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,6 +40,13 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 [!INCLUDE [sql-database-create-single-database](includes/sql-database-create-single-database.md)]
 
 ## <a name="2---add-single-database-to-elastic-pool"></a>2 – Hinzufügen einer Einzeldatenbank zu einem Pool für elastische Datenbanken
+In diesem Schritt erstellen Sie einen Pool für elastische Datenbanken und fügen ihm Ihre Einzeldatenbank hinzu. 
+
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Erstellen Sie den Pool für elastische Datenbanken mithilfe des Azure-Portals. 
+
 
 1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel „Datenbanken“ die Option „Details“ anzeigen auswählen.
@@ -64,10 +71,69 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 1. Klicken Sie auf **Bewerten + erstellen**, um die Einstellung für den Pool für elastische Datenbanken anzuzeigen, und wählen Sie **Erstellen** aus, um Ihren Pool für elastische Datenbanken zu erstellen. 
 
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+Erstellen Sie die Pools für elastische Datenbanken und den sekundären Server mithilfe von PowerShell. 
+
+   ```powershell-interactive
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "East US"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   $poolName = "myElasticPool"
+   $databaseName = "mySampleDatabase"
+   $drLocation = "West US"
+   $drServerName = "mysqlsecondary-$(Get-Random)"
+   $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+   
+   # The ip address range that you want to allow to access your server 
+   # Leaving at 0.0.0.0 will prevent outside-of-azure connections
+   # $startIp = "0.0.0.0"
+   # $endIp = "0.0.0.0"
+   
+   # Show randomized variables
+   Write-host "DR Server name is" $drServerName 
+   Write-host "Failover group name is" $failoverGroupName
+   
+   # Create primary Gen5 elastic 2 vCore pool
+   Write-host "Creating elastic pool..."
+   $elasticPool = New-AzSqlElasticPool -ResourceGroupName $resourceGroupName `
+       -ServerName $serverName `
+       -ElasticPoolName $poolName `
+       -Edition "GeneralPurpose" `
+       -vCore 2 `
+       -ComputeGeneration Gen5
+   $elasticPool
+   
+   # Add single db into elastic pool
+   Write-host "Creating elastic pool..."
+   $addDatabase = Set-AzSqlDatabase -ResourceGroupName $resourceGroupName `
+       -ServerName $serverName `
+       -DatabaseName $databaseName `
+       -ElasticPoolName $poolName
+   $addDatabase
+   ```
+
+In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
+
+| Get-Help | Notizen |
+|---|---|
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken für eine Azure SQL-Datenbank.| 
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Legt Eigenschaften für eine Datenbank fest oder verschiebt eine vorhandene Datenbank in einen Pool für elastische Datenbanken. | 
+
+---
+
 ## <a name="3---create-the-failover-group"></a>3 – Erstellen der Failovergruppe 
 In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failover-group.md) zwischen einem vorhandenen Azure SQL Server und einem neuen Azure SQL-Server in einer anderen Region. Anschließend fügen Sie dann der Failovergruppe den Pool für elastische Datenbanken hinzu. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Erstellen Sie die Failovergruppe mithilfe des Azure-Portals. 
+
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie im vorherigen Abschnitt erstellt haben, beispielsweise `myElasticPool`. 
 1. Wählen Sie im Bereich **Übersicht** unter **Servername** den Namen des Servers aus, um die Einstellungen für den Server zu öffnen.
   
@@ -94,13 +160,103 @@ In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failove
         
     ![Hinzufügen eines Pools für elastische Datenbanken zu einer Failovergruppe](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. Wählen Sie **Auswählen** aus, um die Einstellungen für den Pool für elastische Datenbanken auf die Failovergruppe anzuwenden, und klicken Sie dann auf **Erstellen**, um Ihre Failovergruppe zu erstellen. Durch das Hinzufügen des Pool für elastische Datenbanken zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet. 
+1. Wählen Sie **Auswählen** aus, um die Einstellungen für den Pool für elastische Datenbanken auf die Failovergruppe anzuwenden, und klicken Sie dann auf **Erstellen**, um Ihre Failovergruppe zu erstellen. Durch das Hinzufügen des Pool für elastische Datenbanken zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet.
+
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Erstellen Sie die Failovergruppe mithilfe von PowerShell. 
+
+   ```powershell-interactive
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "East US"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $poolName = "myElasticPool"
+   # $databaseName = "mySampleDatabase"
+   # $drLocation = "West US"
+   # $drServerName = "mysqlsecondary-$(Get-Random)"
+   $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+
+   # Create a secondary server in the failover region
+   Write-host "Creating a secondary logical server in the failover region..."
+   New-AzSqlServer -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -Location $drLocation `
+      -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential `
+         -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+   Write-host "Secondary logical server =" $drServerName
+   
+   # Create a server firewall rule that allows access from the specified IP range
+   Write-host "Configuring firewall for secondary logical server..."
+   New-AzSqlServerFirewallRule -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -FirewallRuleName "AllowedIPs" -StartIpAddress $startIp -EndIpAddress $endIp
+   Write-host "Firewall configured" 
+   
+   # Create secondary Gen5 elastic 2 vCore pool
+   Write-host "Creating secondary elastic pool..."
+   $elasticPool = New-AzSqlElasticPool -ResourceGroupName $resourceGroupName `
+       -ServerName $drServerName `
+       -ElasticPoolName $poolName `
+       -Edition "GeneralPurpose" `
+       -vCore 2 `
+       -ComputeGeneration Gen5
+   $elasticPool
+   
+   # Create a failover group between the servers
+   Write-host "Creating failover group..." 
+   New-AzSqlDatabaseFailoverGroup `
+     –ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -PartnerServerName $drServerName  `
+      –FailoverGroupName $failoverGroupName `
+      –FailoverPolicy Automatic `
+      -GracePeriodWithDataLossHours 2
+   Write-host "Failover group created successfully." 
+   
+   # Add elastic pool to the failover group
+   Write-host "Enumerating databases in elastic pool...." 
+   $FailoverGroup = Get-AzSqlDatabaseFailoverGroup `
+                    -ResourceGroupName $resourceGroupName `
+                    -ServerName $serverName `
+                    -FailoverGroupName $failoverGroupName
+   $databases = Get-AzSqlElasticPoolDatabase `
+                  -ResourceGroupName $resourceGroupName `
+                  -ServerName $serverName `
+                  -ElasticPoolName $poolName
+   Write-host "Adding databases to failover group..." 
+   $failoverGroup = $failoverGroup | Add-AzSqlDatabaseToFailoverGroup `
+                                     -Database $databases 
+   $failoverGroup
+   ```
+
+In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
+
+| Get-Help | Notizen |
+|---|---|
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen logischen Server. | 
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken für eine Azure SQL-Datenbank.| 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Erstellt eine neue Failovergruppe. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Fügt einer Failovergruppe mindestens eine Azure SQL-Datenbank hinzu. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft Azure SQL-Datenbank-Failovergruppen ab oder listet diese auf. |
+
+---
 
 
 ## <a name="4---test-failover"></a>4 – Testen des Failovers 
 In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem sekundären Server und anschließend ein Failback mit dem Azure-Portal aus. 
 
-1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals. 
+
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie den Pool für elastische Datenbanken aus, den Sie im vorherigen Abschnitt erstellt haben, beispielsweise `myElasticPool`. 
 1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
@@ -119,22 +275,156 @@ In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem seku
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben. 
 1. Wählen Sie erneut **Failover** aus, um die Failovergruppe wieder auf die ursprünglichen Einstellungen zurückzusetzen. 
 
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Testen Sie das Failover Ihrer Failovergruppe mithilfe von PowerShell. 
+
+   ```powershell-interactive
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "East US"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $poolName = "myElasticPool"
+   # $databaseName = "mySampleDatabase"
+   # $drLocation = "West US"
+   # $drServerName = "mysqlsecondary-$(Get-Random)"
+   # $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+   
+   # Check role of secondary replica
+   Write-host "Confirming the secondary server is secondary...." 
+   (Get-AzSqlDatabaseFailoverGroup `
+      -FailoverGroupName $failoverGroupName `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName).ReplicationRole
+   
+   # Failover to secondary server
+   Write-host "Failing over failover group to the secondary..." 
+   Switch-AzSqlDatabaseFailoverGroup `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName `
+      -FailoverGroupName $failoverGroupName
+   Write-host "Failover group failed over to" $drServerName 
+   ```
+
+Führen Sie ein Failover für Ihre Failovergruppe auf den sekundären Server und anschließend ein Failback mithilfe von PowerShell aus. 
+
+   ```powershell-interactive
+   # Set variables for your server and database
+   # $subscriptionId = '<SubscriptionID>'
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   # $location = "East US"
+   # $adminLogin = "azureuser"
+   # $password = "PWD27!"+(New-Guid).Guid
+   # $serverName = "mysqlserver-$(Get-Random)"
+   # $poolName = "myElasticPool"
+   # $databaseName = "mySampleDatabase"
+   # $drLocation = "West US"
+   # $drServerName = "mysqlsecondary-$(Get-Random)"
+   # $failoverGroupName = "failovergrouptutorial-$(Get-Random)"
+
+   # Check role of secondary replica
+   Write-host "Confirming the secondary server is now primary" 
+   (Get-AzSqlDatabaseFailoverGroup `
+      -FailoverGroupName $failoverGroupName `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $drServerName).ReplicationRole
+   
+   # Revert failover to primary server
+   Write-host "Failing over failover group to the primary...." 
+   Switch-AzSqlDatabaseFailoverGroup `
+      -ResourceGroupName $resourceGroupName `
+      -ServerName $serverName `
+      -FailoverGroupName $failoverGroupName
+   Write-host "Failover group failed over to" $serverName 
+   ```
+
+In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
+
+| Get-Help | Notizen |
+|---|---|
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft Azure SQL-Datenbank-Failovergruppen ab oder listet diese auf. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Führt ein Failover für eine Azure SQL-Datenbank-Failovergruppe aus. |
+
+
+---
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
+
 Bereinigen Sie die Ressourcen, indem Sie die Ressourcengruppe löschen. 
+
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe.
 1. Wählen Sie **Ressourcengruppe löschen** aus, um alle Ressourcen in der Gruppe sowie die Ressourcengruppe selbst zu löschen. 
-1. Geben Sie den Namen der Ressourcengruppe `myResourceGroup` in das Textfeld ein, und wählen Sie dann **Löschen**, um die Ressourcengruppe zu löschen.  
+1. Geben Sie den Namen der Ressourcengruppe `myResourceGroup` in das Textfeld ein, und wählen Sie dann **Löschen**, um die Ressourcengruppe zu löschen. 
 
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Bereinigen Sie Ihre Ressourcen mithilfe von PowerShell. 
+
+   ```powershell-interactive
+   # Set variables for your server and database
+   # $resourceGroupName = "myResourceGroup-$(Get-Random)"
+   
+   # Clean up resources by removing the resource group
+   Write-host "Removing resource group..."
+   Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
+   Write-host "Resource group removed =" $resourceGroupName
+   ```
+---
+
+In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
+
+| Get-Help | Notizen |
+|---|---|
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. | 
+
+Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+
+## <a name="full-script"></a>Vollständiges Skript
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+[!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
+
+Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+
+| Get-Help | Notizen |
+|---|---|
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen logischen Server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine neue Azure SQL-Einzeldatenbank. | 
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken für eine Azure SQL-Datenbank.| 
+| [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Legt Eigenschaften für eine Datenbank fest oder verschiebt eine vorhandene Datenbank in einen Pool für elastische Datenbanken. | 
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) | Erstellt eine neue Failovergruppe. |
+| [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Ruft mindestens eine SQL-Datenbank ab. |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Fügt einer Failovergruppe mindestens eine Azure SQL-Datenbank hinzu. |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft Azure SQL-Datenbank-Failovergruppen ab oder listet diese auf. |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Führt ein Failover für eine Azure SQL-Datenbank-Failovergruppe aus. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. | 
+
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+Es sind keine Skripts für das Azure-Portal verfügbar.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Azure SQL-Einzeldatenbank zu einer Failovergruppe hinzugefügt und das Failover getestet. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einer Failovergruppe einen Pool für elastische Azure SQL-Datenbanken hinzugefügt und das Failover getestet. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > - Erstellen einer Azure SQL-Einzeldatenbank.
 > - Hinzufügen einer Einzeldatenbank in einen Pool für elastische Datenbanken. 
-> - Erstellen einer [Failovergruppe](sql-database-auto-failover-group.md) für einen Pool für elastische Datenbanken zwischen zwei logischen SQL Server-Instanzen.
+> - Erstellen einer [Failovergruppe](sql-database-auto-failover-group.md) für zwei Pools für elastische Datenbanken zwischen zwei logischen SQL Server-Instanzen.
 > - Testen des Failovers.
 
 Fahren Sie mit dem nächsten Tutorial zur Migration mithilfe von DMS fort.

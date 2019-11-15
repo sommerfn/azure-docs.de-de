@@ -1,5 +1,5 @@
 ---
-title: Was ist eine Einzeldatenbank in Azure SQL-Datebank? | Microsoft-Dokumentation
+title: Was ist eine einzelne Datenbank?
 description: Erfahren Sie mehr über die Einzeldatenbank in Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316663"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820943"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Einzeldatenbank in Azure SQL-Datenbank?
 
@@ -29,7 +29,7 @@ Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-D
 
 ## <a name="dynamic-scalability"></a>Dynamische Skalierbarkeit
 
-Sie können Ihre erste App auf einer kleinen Einzeldatenbank kostengünstig auf der serverlosen (Vorschauversion) Computeebene oder einer kleinen Computegröße auf der bereitgestellten Computeebene erstellen. Die [Compute- oder Dienstebene](sql-database-single-database-scale.md) können Sie jederzeit manuell oder programmgesteuert ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
+Sie können Ihre erste App auf einem kleinen Singleton kostengünstig im serverlosen Computetarif oder einer kleinen Computegröße im bereitgestellten Computetarif erstellen. Die [Compute- oder Dienstebene](sql-database-single-database-scale.md) können Sie jederzeit manuell oder programmgesteuert ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
 ## <a name="single-databases-and-elastic-pools"></a>Einzeldatenbanken und Pools für elastische Datenbanken
 

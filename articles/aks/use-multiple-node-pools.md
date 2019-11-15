@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 8a78c854e9c842915700d4a20c1a57e4f1594a2e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3495d62c7447ba50d9ffe48e68b15dbe36867ac9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472451"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73662599"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -33,19 +33,20 @@ Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS
 
 * Der Standardknotenpool (der erste) kann nicht gelöscht werden.
 * Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
+* Der AKS-Cluster muss den Lastenausgleich mit der SKU „Standard“ nutzen, um mehrere Knotenpools verwenden zu können. Das Feature wird für Lastenausgleichsmodule der SKU „Basic“ nicht unterstützt.
+* Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
 * Sie können Knotenpools nicht mit einer vorhandenen Resource Manager-Vorlage hinzufügen oder löschen wie mit den meisten Vorgängen. Stattdessen [verwenden Sie eine gesonderte Resource Manager-Vorlage](#manage-node-pools-using-a-resource-manager-template), um Änderungen an Knotenpools in einem AKS-Cluster vorzunehmen.
 * Der Name eines Knotenpools muss mit einem Kleinbuchstaben beginnen und darf nur alphanumerische Zeichen enthalten. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.
 * Der AKS-Cluster kann maximal acht Knotenpools umfassen.
 * Der AKS-Cluster kann maximal 400 Knoten in diesen acht Knotenpools enthalten.
 * Alle Knotenpools müssen sich in demselben Subnetz befinden.
-* Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
 Erstellen Sie zu Beginn einen AKS-Cluster mit einem einzelnen Knotenpool. Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *eastus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt. *--kubernetes-version* *1.13.10* wird verwendet, um die Aktualisierung eines Knotenpools in einem nachfolgenden Schritt zu veranschaulichen. Sie können eine beliebige [unterstützte Kubernetes-Version][supported-versions] angeben.
 
 > [!NOTE]
-> Die Load Balancer-SKU *Basic* wird bei Verwendung mehrerer Knotenpools nicht unterstützt. Standardmäßig werden AKS-Cluster mit der Load Balancer-SKU *Standard* erstellt.
+> Die Load Balancer-SKU *Basic* wird bei Verwendung mehrerer Knotenpools nicht unterstützt. Standardmäßig werden AKS-Cluster mit der Lastenausgleichs-SKU *Standard* über die Azure CLI und das Azure-Portal erstellt.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -547,20 +548,7 @@ AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikatio
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Stellen Sie nach der erfolgreichen Registrierung eine Azure Resource Manager-Vorlage bereit. Folgen Sie dazu den [obigen](#manage-node-pools-using-a-resource-manager-template) Anweisungen, und fügen Sie die folgende Eigenschaft (boolescher Wert) „enableNodePublicIP“ für die agentPoolProfiles hinzu. Sie müssen diese Eigenschaft auf `true` festlegen, weil sie standardmäßig auf `false` festgelegt wird, wenn keine Angabe erfolgt. Diese Eigenschaft wird nur zur Erstellungszeit verwendet und erfordert mindestens die API-Version 2019-06-01. Die Anwendung kann sowohl auf Linux- als auch auf Windows-Knotenpools erfolgen.
-
-```
-"agentPoolProfiles":[  
-    {  
-      "maxPods": 30,
-      "osDiskSizeGB": 0,
-      "agentCount": 3,
-      "agentVmSize": "Standard_DS2_v2",
-      "osType": "Linux",
-      "vnetSubnetId": "[parameters('vnetSubnetId')]",
-      "enableNodePublicIP":true
-    }
-```
+Stellen Sie nach der erfolgreichen Registrierung eine Azure Resource Manager-Vorlage bereit. Folgen Sie dazu den [obigen](#manage-node-pools-using-a-resource-manager-template) Anweisungen, und fügen Sie die Eigenschaft `enableNodePublicIP` (boolescher Wert) zu „agentPoolProfiles“ hinzu. Sie müssen den Wert auf `true` festlegen, da er standardmäßig auf `false` festgelegt wird, wenn keine Angabe erfolgt. Diese Eigenschaft wird nur zur Erstellungszeit verwendet und erfordert mindestens die API-Version 2019-06-01. Die Anwendung kann sowohl auf Linux- als auch auf Windows-Knotenpools erfolgen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

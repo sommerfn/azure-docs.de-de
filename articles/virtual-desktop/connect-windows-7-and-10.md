@@ -1,18 +1,18 @@
 ---
-title: 'Herstellen einer Verbindung mit Windows Virtual Desktop aus Windows 10 oder Windows 7: Azure'
+title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (Windows 10 oder 7): Azure'
 description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Windows Desktop-Clients.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/31/2019
 ms.author: helohr
-ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 2552fcbd860a0cc98aa7e2a6c7f92796a8d588ca
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676746"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605791"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient
 
@@ -25,11 +25,11 @@ Mit dem Windows Desktop-Client können Sie auf Geräten mit Windows 7 oder Windo
 
 ## <a name="install-the-windows-desktop-client"></a>Installieren des Windows Desktop-Clients
 
-Dies folgenden Clients können Sie zurzeit herunterladen:
+Wählen Sie den Client aus, der Ihrer Windows-Version entspricht:
 
 - [Windows (64-Bit)](https://go.microsoft.com/fwlink/?linkid=2068602)
-
-Wir aktualisieren diese Liste, wenn der Client für weitere Versionen von Windows verfügbar wird.
+- [Windows 32-Bit-Vorschau](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [Windows ARM64-Vorschau](https://go.microsoft.com/fwlink/?linkid=2098961)
 
 Sie können den Client für den aktuellen Benutzer installieren. Dafür sind keine Administratorrechte erforderlich. Der Administrator kann den Client aber auch so installieren und konfigurieren, dass alle Benutzer auf dem Gerät darauf zugreifen können.
 

@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake und Data Warehouse zu Azure | Microsoft-Dokumentation
+title: Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake und Data Warehouse zu Azure
 description: Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake und Data Warehouse zu Azure.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 0be9cbc9c5af2e0778654ef70c5350b48f10c35d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931133"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675759"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure
 

@@ -1,7 +1,7 @@
 ---
-title: Erstellen benutzerdefinierter neuronaler Netze mit Net#
-titleSuffix: Azure Machine Learning Studio
-description: Syntaxhandbuch zur Spezifikationssprache Net# für neuronale Netze. Erfahren Sie, wie Sie benutzerdefinierte Modelle für neuronale Netze in Azure Machine Learning Studio erstellen.
+title: Benutzerdefinierte neuronale Net#-Netze
+titleSuffix: ML Studio (classic) Azure
+description: Syntaxhandbuch zur Spezifikationssprache Net# für neuronale Netze. Erfahren Sie, wie Sie benutzerdefinierte Modelle für neuronale Netze in Azure Machine Learning Studio (klassisch) erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c413bbc3c3b0bd4b1a6e6d6ff40dc1061bbc834
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60751661"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684840"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio (klassisch)
 
 Net# ist eine von Microsoft entwickelte Sprache, mit der komplexe Architekturen neuronaler Netze wie Deep Neural Networks oder Faltungen beliebiger Dimensionen definiert werden. Sie können komplexe Strukturen verwenden, um das Lernen aus Bild-, Video- oder Audiodaten zu verbessern.
 
 Sie können eine Net#-Architekturspezifikation in den folgenden Kontexten verwenden:
 
-+ Alle neuronalen Netzwerke in Microsoft Azure Machine Learning Studio: [Mehrklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Zweiklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network) und [Regression mit neuralen Netzwerken](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Alle neuronalen Netzwerke in Microsoft Azure Machine Learning Studio (klassisch): [Mehrklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Zweiklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network) und [Regression mit neuralen Netzwerken](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
 + Funktionen neuronaler Netze in Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache R und [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
 
 
@@ -56,7 +56,7 @@ Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindun
 
 ## <a name="supported-customizations"></a>Unterstützte Anpassungen
 
-Die Architektur der neuronalen Netzwerkmodelle, die Sie in Azure Machine Learning Studio erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
+Die Architektur der neuronalen Netzwerkmodelle, die Sie in der klassischen Version von Azure Machine Learning Studio erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
 
 + verdeckte Schichten erstellen und die Anzahl der Knoten in jeder Schicht steuern;
 + angeben, wie Schichten miteinander verbunden werden sollen;

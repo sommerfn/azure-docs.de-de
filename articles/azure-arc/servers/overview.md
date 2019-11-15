@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 0178f27c39c065399208e7fc5afe7352ba4f8e30
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57dbfa0c2063c2059955294ccc1337bb76b72614
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488216"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606085"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Was ist Azure Arc für Server?
 
@@ -34,7 +34,7 @@ Je nachdem, wie lange das Einchecken des Agents zurückliegt, befinden sich die 
 
 In der öffentlichen Vorschauphase (Public Preview) wird Folgendes unterstützt:
 
-- Windows Server 2012 R2 und höher
+- Windows Server 2012 R2 und höher
 - Ubuntu 16.04 und 18.04
 
 Das Public Preview-Release ist für Evaluierungszwecke bestimmt und sollte nicht verwendet werden, um kritische Produktionsressourcen zu verwalten.
@@ -83,7 +83,7 @@ Informationen zum Konfigurieren des Agents für die Verwendung Ihres Proxys find
 
 ## <a name="register-the-required-resource-providers"></a>Registrieren der erforderlichen Ressourcenanbieter
 
-Nachdem die „Featureflag“-Registrierung genehmigt wurde, müssen Sie die erforderlichen Ressourcenanbieter registrieren.
+Damit Sie Azure Arc für Server verwenden können, müssen Sie die erforderlichen Ressourcenanbieter registrieren.
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**

@@ -1,5 +1,5 @@
 ---
-title: Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
+title: Datensynchronisierungs-Agent für die SQL-Datensynchronisierung
 description: Erfahren Sie, wie Sie den Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung installieren und ausführen, um Daten mit lokalen SQL Server-Datenbanken zu synchronisieren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 13a59a9b536a25897d7c545b6fb466c1192cb545
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 6d0a728401ac9f0156cc8fa913ce486bb577c6dd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177719"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73825173"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung
 

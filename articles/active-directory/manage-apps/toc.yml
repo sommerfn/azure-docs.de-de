@@ -24,6 +24,8 @@
 - name: Konzepte
   expanded: true
   items:
+    - name: Bewährte Methoden für die App-Verwaltung
+      href: application-management-fundamentals.md
     - name: Cloud-Apps und einmaliges Anmelden
       items:
         - name: Planen der Integration von Cloud-Apps

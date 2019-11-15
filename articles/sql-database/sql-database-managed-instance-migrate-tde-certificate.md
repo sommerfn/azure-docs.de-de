@@ -1,5 +1,5 @@
 ---
-title: 'Migrieren des TDE-Zertifikats: Verwaltete Azure SQL-Datenbank-Instanz | Microsoft Docs'
+title: Migrieren des TDE-Zertifikats – Verwaltete Instanz
 description: Migrieren des Zertifikats zum Schutz des Datenbankverschlüsselungsschlüssels einer Datenbank mit transparenter Datenverschlüsselung (TDE) zu einer verwalteten Azure SQL-Datenbank-Instanz
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: 6f9c1cefafdf6f7f33db3c5143e6b97b328fe699
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f0bc66260a0eaa66e71241148591146fa38d4120
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567426"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821792"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Datenbank-Instanz
 

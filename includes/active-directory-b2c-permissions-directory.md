@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: marsma
-ms.openlocfilehash: 6cb0ef848bdeab35c971ebd1a0b14eca1dfe3001
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 43bcd1f11eb228bd1454b2ad0f2addb851029f2f
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522877"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73799843"
 ---
 #### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
 
@@ -28,8 +28,8 @@ ms.locfileid: "73522877"
 1. Wählen Sie **Azure Active Directory Graph** aus.
 1. Wählen Sie **Anwendungsberechtigungen**.
 1. Erweitern Sie **Verzeichnis**, und aktivieren Sie dann das Kontrollkästchen **Directory.ReadWrite.All**.
-1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie ein paar Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
+1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
 1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
 1. Wählen Sie ein Mandantenadministratorkonto aus.
 1. Wählen Sie **Akzeptieren** aus.
-1. Wählen Sie **Aktualisieren** aus, und überprüfen Sie dann, ob „Gewährt für...“ unter **STATUS** angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen verteilt wurden.
+1. Wählen Sie **Aktualisieren** aus, und überprüfen Sie dann, ob „Gewährt für...“ unter **Status** angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.

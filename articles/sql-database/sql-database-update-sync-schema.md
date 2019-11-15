@@ -1,5 +1,5 @@
 ---
-title: Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
+title: Automatisieren der Replikation von Schemaänderungen in der SQL-Datensynchronisierung
 description: Erfahren Sie, wie Sie die Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung automatisieren.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: data-movement
 ms.custom: data sync
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: b1c3f49808a59576f02178dee1107b4019e34b5e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566265"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822430"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung
 

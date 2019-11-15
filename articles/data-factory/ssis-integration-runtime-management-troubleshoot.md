@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Anleitung zur Fehlerbehebung bei Managementproblemen der SSIS Integration Runtime (SSIS IR)
+title: 'Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory '
+description: Dieser Artikel enthält eine Anleitung zur Fehlerbehebung bei Problemen mit der Verwaltung von SSIS Integration Runtime (SSIS IR).
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,12 +12,12 @@ author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: 8abffdf443e26c03c38c12a3947a47a94157c9da
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609626"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684025"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory
 
@@ -31,7 +31,7 @@ Bei dem Fehlercode „InternalServerError“ hat der Dienst vorübergehende Prob
 
 Andernfalls können drei wesentliche externe Abhängigkeiten Fehler verursachen: ein Azure SQL-Datenbank-Server bzw. eine verwaltete Azure SQL-Datenbank-Instanz, ein benutzerdefiniertes Setupskript oder die Konfiguration eines virtuellen Netzwerks.
 
-## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Azure SQL-Datenbankserver oder verwaltete Instanz
+## <a name="azure-sql-database-server-or-managed-instance-issues"></a>Probleme mit dem Azure SQL-Datenbank-Server oder der verwalteten Instanz
 
 Ein Azure SQL-Datenbank-Server oder eine verwaltete Azure SQL-Datenbank-Instanz ist erforderlich, wenn Sie SSIS IR mit einer SSIS-Katalogdatenbank bereitstellen. SSIS IR muss auf den Azure SQL-Datenbank-Server oder die verwaltete Azure SQL-Datenbank-Instanz zugreifen können. Außerdem sollte das Konto des Azure SQL-Datenbank-Servers oder der verwalteten Azure SQL-Datenbank-Instanz über die Berechtigung zum Erstellen einer SSIS-Katalogdatenbank (SSISDB) verfügen. Wenn ein Fehler auftritt, wird im Data Factory-Portal ein Fehlercode mit einer detaillierten SQL-Ausnahmemeldung angezeigt. Anhand der Informationen in der folgenden Aufstellung können Sie die Fehlercodes beheben.
 
@@ -58,7 +58,7 @@ Diese Art von Fehlermeldung kann wie folgt aussehen: „Die Datenbank ‚SSISDB�
 Lösungsvorschläge:
 * Erhöhen Sie die Kontingentgröße der SSISDB-Datenbank.
 * Ändern Sie die Konfiguration von SSISDB, um die Größe folgendermaßen zu reduzieren:
-   * Verkürzung des Aufbewahrungszeitraums und der Anzahl der Projektversionen.
+   * Reduzieren des Aufbewahrungszeitraums und der Anzahl von Projektversionen
    * Verkürzung des Aufbewahrungszeitraums des Protokolls.
    * Ändern der Standardebene des Protokolls.
 
@@ -105,7 +105,7 @@ Dieser Fehler bedeutet, dass bei der Ausführung des benutzerdefinierten Setupsk
 
 ### <a name="customsetupscripttimeout"></a>CustomSetupScriptTimeout
 
-Dieser Fehler gibt ein Timeout bei der Ausführung des benutzerdefinierten Setupskripts an. Stellen Sie sicher, dass der Blobcontainer nur die notwendigen benutzerdefinierten Setupdateien enthält. Sie sollten auch die Ausführungsprotokolle für das benutzerdefinierte Setup im Blobcontainer überprüfen. Der maximale Zeitraum für das benutzerdefinierte Setup ist auf 45 Minuten vor der Zeitüberschreitung festgelegt. Der maximale Zeitraum umfasst die Zeit, in der alle Dateien aus dem Container heruntergeladen und in SSIS IR installiert werden. Wenn ein längerer Zeitraum erforderlich ist, erstellen Sie ein Supportticket.
+Dieser Fehler gibt ein Timeout bei der Ausführung des benutzerdefinierten Setupskripts an. Stellen Sie sicher, dass Ihr Skript unbeaufsichtigt ausgeführt werden kann und keine interaktive Eingabe erforderlich ist. Vergewissern Sie sich auch, dass Ihr Blobcontainer nur die erforderlichen Dateien für das benutzerdefinierte Setup enthält. Wir empfehlen Ihnen, das Skript zuerst auf dem lokalen Computer zu testen. Sie sollten auch die Ausführungsprotokolle für das benutzerdefinierte Setup im Blobcontainer überprüfen. Der maximale Zeitraum für das benutzerdefinierte Setup ist auf 45 Minuten vor der Zeitüberschreitung festgelegt. Der maximale Zeitraum umfasst die Zeit, in der alle Dateien aus dem Container heruntergeladen und in SSIS IR installiert werden. Wenn ein längerer Zeitraum erforderlich ist, erstellen Sie ein Supportticket.
 
 ### <a name="customsetupscriptloguploadfailure"></a>CustomSetupScriptLogUploadFailure
 
@@ -123,7 +123,7 @@ Dieser Fehler kann aus verschiedenen Gründen auftreten. Informationen zur Probl
 
 ### <a name="forbidden"></a>Verboten
 
-Diese Art von Fehlermeldung kann wie folgt aussehen: „SubnetId ist für das aktuelle Konto nicht aktiviert. Microsoft.Batch Ressourcenanbieter ist nicht unter dem gleichen Abonnement von VNet registriert.“
+Diese Art von Fehlermeldung kann wie folgt aussehen: „SubnetId ist für das aktuelle Konto nicht aktiviert. Der Microsoft.Batch-Ressourcenanbieter ist nicht unter dem gleichen Abonnement wie das VNET registriert.“
 
 Diese Details bedeuten, dass Azure Batch nicht auf Ihr virtuelles Netzwerk zugreifen kann. Registrieren Sie den Microsoft.Batch-Ressourcenanbieter unter demselben Abonnement wie das virtuelle Netzwerk.
 

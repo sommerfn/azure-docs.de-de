@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Massenkopiervorgängen aus einer Datenbank mithilfe einer Steuertabelle mit Azure Data Factory | Microsoft-Dokumentation
+title: Massenkopieren aus einer Datenbank mit einer Steuertabelle und Azure Data Factory
 description: Hier erfahren Sie, wie Sie eine Lösungsvorlage verwenden, um Massen von Daten aus einer Datenbank zu kopieren, indem Sie eine externe Steuertabelle mithilfe von Azure Data Factory zum Speichern einer Partitionsliste mit Quelltabellen verwenden.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
-ms.openlocfilehash: c4224693642e8c9f76deedc0c8ad8586e122cc23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b651721e9b833c02e4789c79ff5ad0b49ce31343
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635387"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684279"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Massenkopieren aus einer Datenbank mit einer Steuertabelle
 

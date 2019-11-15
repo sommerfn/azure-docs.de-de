@@ -1,5 +1,5 @@
 ---
-title: 'Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“: Azure | Microsoft-Dokumentation'
+title: 'Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“: Azure'
 description: In diesem Artikel wird das Ausführen eines SSIS-Pakets (SQL Server Integration Services) in einer Azure Data Factory-Pipeline mithilfe der Aktivität „SSIS-Paket ausführen“ beschrieben.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 965bb0641aac3224ac98820006f308e6b5fb0f71
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255645"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73673748"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory
 In diesem Artikel wird das Ausführen eines SSIS-Pakets (SQL Server Integration Services) in einer Azure Data Factory-Pipeline mithilfe der Aktivität „SSIS-Paket ausführen“ beschrieben. 
@@ -166,7 +166,7 @@ In diesem Abschnitt erstellen Sie mithilfe von Azure PowerShell eine Data Facto
 Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Schritt-für-Schritt-Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps) befolgen.
 
 ### <a name="create-a-data-factory-with-azure-ssis-ir"></a>Erstellen einer Data Factory mit Azure-SSIS IR
-Sie können entweder eine vorhandene Data Factory verwenden, in der Azure-SSIS IR bereits bereitgestellt wurde, oder eine neue Data Factory mit Azure-SSIS IR erstellen. Befolgen Sie dann die Schrittanleitungen unter [Tutorial: Bereitstellen von SSIS-Paketen in Azure mit PowerShell](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell).
+Sie können entweder eine vorhandene Data Factory verwenden, in der Azure-SSIS IR bereits bereitgestellt wurde, oder eine neue Data Factory mit Azure-SSIS IR erstellen. Befolgen Sie dann die Schrittanleitungen unter [Tutorial: Bereitstellen von SSIS-Paketen in Azure mit PowerShell](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell) folgen.
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Erstellen einer Pipeline mit einer Aktivität „SSIS-Paket ausführen“ 
 In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität „SSIS-Paket ausführen“. Die Aktivität führt Ihr SSIS-Paket aus. 

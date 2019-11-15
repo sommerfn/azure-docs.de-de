@@ -1,5 +1,5 @@
 ---
-title: Hochverfügbarkeit – Azure SQL-Datenbank-Dienst | Microsoft-Dokumentation
+title: Hochverfügbarkeit
 description: Erfahren Sie mehr über die Hochverfügbarkeitsfunktionen des Azure SQL-Datenbank-Diensts.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 86a3fd7c67dc2e544a1510dc910951452c32245d
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390695"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811349"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 
@@ -89,12 +89,14 @@ Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden
 
 Die [schnellere Datenbankwiederherstellung (Accelerated Database Recovery, ADR)](sql-database-accelerated-database-recovery.md) ist eine neue Funktion der SQL-Datenbank-Engine. Mit dieser Funktion wird die Datenbankverfügbarkeit erheblich verbessert, insbesondere bei Transaktionen mit langer Ausführungsdauer. ADR ist derzeit für Einzeldatenbanken, Pools für elastische Datenbanken und Azure SQL Data Warehouse verfügbar.
 
-## <a name="testing-database-fault-resiliency"></a>Testen der Resilienz von Datenbanken gegenüber Fehlern
+## <a name="testing-application-fault-resiliency"></a>Testen der Resilienz von Anwendungsfehlern
 
-Hochverfügbarkeit ist ein wesentlicher Bestandteil der Azure SQL Datenbank-Plattform und für Ihre Datenbankanwendung transparent. Es ist uns jedoch bewusst, dass Sie möglicherweise testen möchten, wie sich die bei geplanten oder ungeplanten Ereignissen eingeleiteten automatischen Failovervorgänge ggf. auf die Anwendung auswirken, ehe Sie sie in der Produktionsumgebung einsetzen. Sie können eine spezielle API aufrufen, um die Datenbank oder den Pool für elastische Datenbanken neu zu starten, was wiederum das Failover auslöst. Bei einer zonenredundanten Datenbank oder einem Pool für elastische Datenbanken führt der API-Aufruf dazu, dass die Clientverbindungen zur neuen primären Datenbank in einer anderen Verfügbarkeitszone umgeleitet werden. Zusätzlich zu den Tests, wie sich das Failover auf die bestehenden Datenbanksitzungen auswirkt, können Sie also auch prüfen, ob es sich auf die Gesamtleistung auswirkt. Da Neustartvorgänge aufwendig sind und eine große Anzahl von ihnen die Plattform belasten könnten, ist für jede Datenbank oder jeden Pool für elastische Datenbanken nur alle 30 Minuten ein Failoveraufruf erlaubt. Weitere Informationen finden Sie unter [Datenbankfailover](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) und [Failover für einen Pool für elastische Datenbanken](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+Hochverfügbarkeit ist ein wesentlicher Bestandteil der Azure SQL-Datenbank-Plattform, der für Ihre Datenbankanwendung transparent ausgeführt wird. Es ist uns jedoch bewusst, dass Sie möglicherweise testen möchten, wie sich die bei geplanten oder ungeplanten Ereignissen eingeleiteten automatischen Failovervorgänge ggf. auf die Anwendung auswirken, ehe Sie sie in der Produktionsumgebung einsetzen. Sie können eine spezielle API aufrufen, um eine Datenbank oder einen Pool für elastische Datenbanken neu zu starten, was wiederum ein Failover auslöst. Bei einer zonenredundanten Datenbank oder einem Pool für elastische Datenbanken führt der API-Aufruf dazu, dass Clientverbindungen von der Verfügbarkeitszone der alten primären Datenbank zur neuen primären Datenbank in einer anderen Verfügbarkeitszone umgeleitet werden. Zusätzlich zu den Tests, wie sich das Failover auf bestehende Datenbanksitzungen auswirkt, können Sie also auch prüfen, ob sich aufgrund von Änderungen an der Netzwerklatenz auch die Gesamtleistung ändert. Da Neustartvorgänge aufwendig sind und eine große Anzahl von ihnen die Plattform belasten könnte, ist für jede Datenbank oder jeden Pool für elastische Datenbanken nur alle 30 Minuten ein Failoveraufruf erlaubt. 
+
+Ein Failover kann mithilfe der Rest-API oder mit PowerShell initiiert werden. Informationen zur Vorgehensweise mit der REST-API finden Sie unter [Datenbankfailover](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) und [Failover für einen Pool für elastische Datenbanken](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover). Informationen zur Vorgehensweise mit PowerShell finden Sie unter [Invoke-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover) and [Invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover). Die Rest-API-Aufrufe können auch über die Azure CLI mithilfe des Befehls [az rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest) ausgeführt werden.
 
 > [!IMPORTANT]
-> Der Failover-Befehl ist zurzeit für Hyperscale-Datenbanken und verwaltete Instanzen nicht verfügbar.  
+> Der Failoverbefehl ist derzeit in der Dienstebene „Hyperscale“ und für die verwaltete Instanz nicht verfügbar.
 
 ## <a name="conclusion"></a>Zusammenfassung
 

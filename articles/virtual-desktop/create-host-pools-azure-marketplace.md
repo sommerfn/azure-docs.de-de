@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen eines Hostpools für Windows Virtual Desktop mit dem Azure Marketplace: Azure'
+title: 'Windows Virtual Desktop-Hostpool in Azure Marketplace: Azure'
 description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool mit dem Azure Marketplace erstellen.
 services: virtual-desktop
 author: Heidilohr
@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: f5b40e59a4ed2393e3b9912f8e4caa06ee267428
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e5be2490ebf756c030e6a53b226f91c49c7bccaf
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757517"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605584"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace
 
@@ -40,7 +40,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 So führen Sie das Azure Marketplace-Angebot aus, um einen neuen Hostpool bereitzustellen:
 
-1. Wählen Sie **+** oder **+ Ressource erstellen** aus.
+1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Ressource erstellen** aus.
 2. Geben Sie **Windows Virtual Desktop** in das Marketplace-Suchfenster ein.
 3. Wählen Sie **Windows Virtual Desktop – Hostpool bereitstellen** und anschließend **Erstellen** aus.
 
@@ -73,7 +73,9 @@ Gehen Sie auf dem Blatt zum **Konfigurieren virtueller Computer** wie folgt vor:
 Gehen Sie auf dem Blatt mit den **VM-Einstellungen** wie folgt vor:
 
 >[!NOTE]
-> Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services (Azure AD DS)-Umgebung verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer ebenfalls Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group) ist.
+> Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services-Umgebung (Azure AD DS) verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group) sind.
+>
+> Das Konto muss außerdem Teil der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während des Domänenbeitritts nicht richtig authentifiziert werden. 
 
 1. Wählen Sie die Quelle für die **Imagequelle** aus, und geben Sie entsprechende Informationen zum Speicherort und zur Art der Speicherung ein. Falls Sie keine verwalteten Datenträger verwenden möchten, wählen Sie das Speicherkonto mit der VHD-Datei aus.
 2. Geben Sie den Benutzerprinzipalnamen und das Kennwort für das Domänenkonto ein, über das die virtuellen Computer mit der Active Directory-Domäne verknüpft werden. Auf den virtuellen Computern wird ein lokales Konto mit dem gleichen Benutzernamen und Kennwort erstellt. Diese lokalen Konten können später zurückgesetzt werden.

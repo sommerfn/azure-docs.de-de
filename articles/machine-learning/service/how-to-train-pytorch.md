@@ -1,5 +1,5 @@
 ---
-title: Trainieren eines neuronalen Deep Learning-Netz mit PyTorch
+title: Trainieren von Deep Learning-PyTorch-Modellen
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Ihre PyTorch-Trainingsskripts im Unternehmensumfang mit der PyTorch-Estimator-Klasse von Azure Machine Learning ausführen.  Die Beispielskripts klassifizieren Hühner- und Truthahnbilder, um ein neuronales Deep Learning-Netz aufzubauen, basierend auf dem Tutorial zum Transferlernen von PyTorch.
 services: machine-learning
@@ -11,14 +11,15 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2c704e36f4353b34733ccc29b785c752b2a5c559
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002570"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822709"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Trainieren von PyTorch-Deep Learning-Modellen in großem Umfang mit Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Ihre [PyTorch](https://pytorch.org/)-Trainingsskripts im Unternehmensumfang mit der [PyTorch-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen.  
 

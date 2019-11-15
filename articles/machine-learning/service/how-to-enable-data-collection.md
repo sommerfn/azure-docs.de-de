@@ -6,19 +6,20 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
-ms.date: 07/15/2019
+ms.reviewer: laobri
+ms.author: copeters
+author: lostmygithubaccount
+ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 109db23976f6332b24bcfa565812bd9491062691
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330732"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576691"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 >[!IMPORTANT]
 > Dieses SDK wird in Kürze eingestellt. Dieses SDK ist nach wie vor für Entwickler geeignet, die die Datendrift in Modellen überwachen, aber die meisten Entwickler sollten die vereinfachte [Datenüberwachung mit Application Insights](https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-app-insights) verwenden. 
@@ -47,9 +48,12 @@ Die Ausgabe wird in einem Azure-Blob gespeichert. Da die Daten in einem Azure-Bl
 Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
+
+>[!Note]
+> In SDK-Versionen vor `0.1.0a16` wurde das `designation`-Argument `identifier` genannt. Wenn Ihr Code mit einer früheren Version entwickelt wurde, müssen Sie ihn entsprechend aktualisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -80,8 +84,8 @@ Zum Aktivieren müssen Sie folgende Schritte ausführen:
 
     ```python
     global inputs_dc, prediction_dc
-    inputs_dc = ModelDataCollector("best_model", identifier="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
-    prediction_dc = ModelDataCollector("best_model", identifier="predictions", feature_names=["prediction1", "prediction2"])
+    inputs_dc = ModelDataCollector("best_model", designation="inputs", feature_names=["feat1", "feat2", "feat3". "feat4", "feat5", "feat6"])
+    prediction_dc = ModelDataCollector("best_model", designation="predictions", feature_names=["prediction1", "prediction2"])
     ```
 
     *CorrelationId* ist ein optionaler Parameter. Er muss nicht festgelegt werden, wenn dies vom Modell nicht gefordert wird. Eine vorhandene Korrelations-ID erleichtert die Zuordnung zu anderen Daten. (Beispiele: LoanNumber, CustomerId etc.)
@@ -112,7 +116,7 @@ Zum Aktivieren müssen Sie folgende Schritte ausführen:
 
 Wenn Sie in der **Umgebungsdatei** und **Bewertungsdatei** bereits einen Dienst mit den Abhängigkeiten installiert haben, aktivieren Sie die Datensammlung wie folgt:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+1. Navigieren Sie zu [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. Öffnen Sie Ihren Arbeitsbereich.
 
@@ -120,7 +124,7 @@ Wenn Sie in der **Umgebungsdatei** und **Bewertungsdatei** bereits einen Dienst 
 
    ![Dienst bearbeiten](media/how-to-enable-data-collection/EditService.PNG)
 
-1. Deaktivieren Sie in **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**. 
+1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**. 
 
     [![Überprüfen der Datensammlung](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
@@ -130,10 +134,10 @@ Wenn Sie in der **Umgebungsdatei** und **Bewertungsdatei** bereits einen Dienst 
 
 
 ## <a name="disable-data-collection"></a>Datensammlung deaktivieren
-Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlung mithilfe von Python-Code oder im Azure-Portal.
+Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlung mithilfe von Python-Code oder Azure Machine Learning Studio.
 
-+ Option 1 – Deaktivieren im Azure-Portal: 
-  1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
++ Option 1: Deaktivieren in Azure Machine Learning Studio: 
+  1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
   1. Öffnen Sie Ihren Arbeitsbereich.
 
@@ -147,7 +151,7 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
 
   1. Klicken Sie auf **Aktualisieren**, um die Änderungen zu übernehmen.
 
-  Sie können auf diese Einstellungen auch über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com) zugreifen.
+  Sie können auf diese Einstellungen auch in Ihrem Arbeitsbereich in [Azure Machine Learning Studio](https://ml.azure.com) zugreifen.
 
 + Option 2 – Deaktivieren der Datensammlung mithilfe von Python-Code:
 
@@ -157,10 +161,10 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
   ```
 
 ## <a name="validate-your-data-and-analyze-it"></a>Überprüfen und Analysieren Ihrer Daten
-Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Azure-Blob erfassten Daten zu analysieren. 
+Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Azure-Blob erfassten Daten zu analysieren.
 
 Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
 1. Öffnen Sie Ihren Arbeitsbereich.
 1. Klicken Sie auf **Speicher**.
@@ -170,7 +174,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 1. Folgen Sie dem Pfad zu den Ausgabedaten im Blob mit dieser Syntax:
 
 ```
-/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<identifier>/<year>/<month>/<day>/data.csv
+/modeldata/<subscriptionid>/<resourcegroup>/<workspace>/<webservice>/<model>/<version>/<designation>/<year>/<month>/<day>/data.csv
 # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
 ```
 
@@ -190,7 +194,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
     [![Power BI Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
-1. Klicken Sie im Abfrage-Editor unter der Spalte „Name“, und fügen Sie Ihr erstes Speicherkonto hinzu. Modellieren Sie Ihren Pfad im Filter. Hinweis: Erweitern Sie den Filterpfad, wenn Sie sich nur die Dateien für ein bestimmtes Jahr oder einen Monat ansehen möchten. Beispielsweise nur die Daten für März: /modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/identifier>/year>/3
+1. Klicken Sie im Abfrage-Editor unter der Spalte „Name“, und fügen Sie Ihr erstes Speicherkonto hinzu. Modellieren Sie Ihren Pfad im Filter. Hinweis: Erweitern Sie den Filterpfad, wenn Sie sich nur die Dateien für ein bestimmtes Jahr oder einen Monat ansehen möchten. Beispielsweise nur die Daten für März: /modeldata/subscriptionid>/resourcegroupname>/workspacename>/webservicename>/modelname>/modelversion>/designation>/year>/3
 
 1. Filtern Sie die Daten, die für Sie relevant sind, nach dem **Namen**. Wenn Sie **Vorhersagen** und **Eingaben** gespeichert haben, müssen Sie für jede jeweils eine separate Abfrage erstellen.
 

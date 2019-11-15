@@ -1,22 +1,22 @@
 ---
-title: Notfallwiederherstellung für SaaS-Anwendungen über Azure SQL-Datenbank-Georeplikation | Microsoft-Dokumentation
+title: Notfallwiederherstellung für SaaS-Apps mit Georeplikation
 description: Erfahren Sie, wie Sie Azure SQL-Datenbank-Georeplikationen verwenden können, um eine mehrinstanzenfähige SaaS-Anwendung nach einem Ausfall wiederherzustellen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: AyoOlubeko
 ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: bebbb3d053db37a9716230dfbb14372696dd4936
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0668ccf5ceb972dd120e4e3f37be6d879a12d0a7
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570521"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73811702"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation
 

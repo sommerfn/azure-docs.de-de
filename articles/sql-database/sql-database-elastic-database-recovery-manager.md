@@ -1,22 +1,22 @@
 ---
-title: Verwenden von Recovery Manager zum Beheben von Shardzuordnungsproblemen | Microsoft Docs
+title: Recovery Manager zur Behebung von Problemen mit der Shard-Zuordnung
 description: Verwenden der RecoveryManager-Klasse zum Beheben von Problemen mit Shardzuordnungen
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: cbc4985f032c228db7a9ddf719390bbf2d0166b9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6101e00ab98b0d8d901f2e42bf4083d40d0a3227
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568688"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823862"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Verwenden der RecoveryManager-Klasse zur Behebung von Problemen mit der Shard-Zuordnung
 

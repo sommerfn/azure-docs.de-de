@@ -1,21 +1,19 @@
 ---
-title: 'Quelltransformation in Mapping Data Flow: Azure Data Factory | Microsoft-Dokumentation'
+title: 'Quelltransformation im Zuordnungsdatenfluss: Azure Data Factory'
 description: Erfahren Sie, wie Sie eine Quelltransformation in Mapping Data Flow einrichten.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5889d96057d4b028e8716e407819d17938f58b3c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029215"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73675951"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
-
-
 
 Mit einer Quelltransformation wird die Datenquelle für den Datenfluss konfiguriert. Beim Entwerfen von Datenflüssen ist der erste Schritt immer das Konfigurieren einer Quelltransformation. Um eine Quelle hinzuzufügen, klicken Sie im Datenfluss-Zeichenbereich auf das Feld **Quelle hinzufügen**.
 
@@ -23,15 +21,16 @@ Jeder Datenfluss erfordert mindestens eine Quelltransformation, aber Sie können
 
 Jede Quelltransformation ist genau einem Data Factory-Dataset zugeordnet. Das Dataset definiert die Form und Position der Daten, in die geschrieben oder aus denen gelesen werden soll. Wenn Sie ein dateibasiertes Dataset verwenden, können Sie Platzhalter und Dateilisten in Ihrer Quelle verwenden, um mit mehreren Dateien gleichzeitig zu arbeiten.
 
-## <a name="supported-connectors-in-mapping-data-flow"></a>Unterstützte Connectors bei der Zuordnung des Datenflusses
+## <a name="supported-connectors-in-mapping-data-flow"></a>Unterstützte Connectors in Mapping Data Flow
 
 Die Zuordnung des Datenflusses folgt einem Ansatz zum Extrahieren, Laden und Transformieren (ELT) und funktioniert mit *Stagingdatasets* in Azure. Derzeit können die folgenden Datasets in einer Quelltransformation verwendet werden:
     
-* Azure Blob Storage
-* Azure Data Lake Storage Gen1
-* Azure Data Lake Storage Gen2
+* Azure Blob Storage (JSON, Avro, Text, Parquet)
+* Azure Data Lake Storage Gen1 (JSON, Avro, Text, Parquet)
+* Azure Data Lake Storage Gen2 (JSON, Avro, Text, Parquet)
 * Azure SQL Data Warehouse
 * Azure SQL-Datenbank
+* Azure CosmosDB
 
 Azure Data Factory hat Zugriff auf über 80 native Connectors. Um Daten aus diesen anderen Quellen in Ihren Datenfluss einzubeziehen, verwenden Sie die Kopieraktivität, um die Daten in einen der unterstützten Stagingbereiche zu laden.
 
@@ -52,6 +51,8 @@ Nachdem Sie eine Quelle hinzugefügt haben, konfigurieren Sie sie über die Regi
 **Anzahl zu überspringender Zeilen**: Das Feld „Anzahl zu überspringender Zeilen“ gibt an, wie viele Zeilen am Anfang des Datasets ignoriert werden sollen.
 
 **Stichprobenentnahme**: Aktivieren Sie „Stichprobenentnahme“, um die Anzahl der Zeilen aus der Quelle zu beschränken. Verwenden Sie diese Einstellung, wenn Sie für das Debuggen Stichproben der Daten an der Quelle erstellen möchten.
+
+**Mehrzeilig:** Wählen Sie „Mehrzeilig“ aus, wenn die Quelltextdatei Zeichenfolgenwerte enthält, die mehrere Zeilen umfassen, d.h. Zeilenumbrüche innerhalb eines Werts.
 
 Um zu überprüfen, ob die Quelle ordnungsgemäß konfiguriert ist, aktivieren Sie den Debugmodus, und rufen Sie eine Datenvorschau ab. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
@@ -83,11 +84,11 @@ Beispiele für Platzhalter:
 
 Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partitionierten Ordner sind, sowie die zu lesenden Blattdateien einzuschließen.
 
-![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung für die Partitionsdatei")
+![Einstellungen für die Partitionsquelldatei](media/data-flow/partfile2.png "Einstellung der Partitionsdatei")
 
 Verwenden Sie die Einstellung „Partitionsstammpfad“, um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass ADF die aufgelösten Partitionen hinzufügen wird, die auf den einzelnen Ordnerebenen gefunden werden.
 
-![Partitionsstammpfad](media/data-flow/partfile1.png "Partitionsstammpfad – Vorschau")
+![Partitionsstammpfad](media/data-flow/partfile1.png "Vorschau des Partitionsstammpfads")
 
 **Liste der Dateien**: Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
 
@@ -128,7 +129,7 @@ Wenn sich Ihre Quelle in SQL-Datenbank oder SQL Data Warehouse befindet, sind au
 
 **Eingabe**: Wählen Sie aus, ob Sie Ihre Quelle auf eine Tabelle verweisen (Äquivalent von ```Select * from <table-name>```) oder eine benutzerdefinierte SQL-Abfrage eingeben.
 
-**Query** (Abfrage): Wenn Sie im Eingabefeld „Abfrage“ auswählen, geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. **Order By**-Klauseln werden hier nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können.
+**Query** (Abfrage): Wenn Sie im Eingabefeld „Abfrage“ auswählen, geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. **Order By**-Klauseln werden hier nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können. Die Verwendung von Abfragen stellt auch eine gute Möglichkeit dar, um die Zeilen für Tests oder Suchvorgänge zu verringern. Beispiel: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
 **Batchgröße**: Geben Sie eine Batchgröße ein, um große Datenmengen in Leseblöcke zu segmentieren.
 
@@ -150,6 +151,19 @@ Wie Schemas in Datasets definiert die Projektion in einer Quelle die Datenspalte
 Wenn in Ihrer Textdatei kein Schema definiert ist, wählen Sie **Datentyp erkennen** aus, damit Data Factory Stichproben erstellt und die Datentypen ableitet. Wählen Sie **Standarddatenformat** aus, um die Standarddatenformate automatisch zu ermitteln. 
 
 Sie können die Spaltendatentypen in einer späteren Transformation für nachgeschaltete Spalten ändern. Verwenden Sie eine Transformation, um die Spaltennamen zu ändern.
+
+### <a name="import-schema"></a>Schema importieren
+
+Datasets wie Avro und CosmosDB, die komplexe Datenstrukturen unterstützen, erfordern keine Schemadefinitionen, die im Dataset vorhanden sind. Daher können Sie bei diesen Quellentypen auf der Registerkarte „Projektion“ auf die Schaltfläche „Schema importieren“ klicken.
+
+## <a name="cosmosdb-specific-settings"></a>CosmosDB-spezifische Einstellungen
+
+Bei Verwendung von CosmosDB als Quellentyp sind einige Optionen zu beachten:
+
+* Systemspalten einschließen: Wenn Sie diese Option aktivieren, werden ```id```, ```_ts```und andere Systemspalten in die Datenflussmetadaten von CosmosDB eingeschlossen. Beim Aktualisieren von Sammlungen ist es wichtig, dass diese eingeschlossen sind, damit Sie die vorhandene Zeilen-ID erfassen können.
+* Seitengröße: Die Anzahl der Dokumente pro Seite des Abfrageergebnisses. Der Standardwert ist „-1“, bei dem die dynamische Seite des Diensts mit bis zu 1000 verwendet wird.
+* Durchsatz: Legen Sie einen optionalen Wert für die Anzahl von RUs fest, die Sie für jede Ausführung dieses Datenflusses während des Lesevorgangs auf die CosmosDB-Sammlung anwenden möchten. Der Mindestwert ist 400.
+* Bevorzugte Regionen: Sie können die bevorzugten Leseregionen für diesen Prozess auswählen.
 
 ## <a name="optimize-the-source-transformation"></a>Optimieren der Quelltransformation
 

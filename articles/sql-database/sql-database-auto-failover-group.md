@@ -1,5 +1,5 @@
 ---
-title: Failovergruppen – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Failovergruppen
 description: Autofailover-Gruppen sind ein SQL-Datenbank-Feature, mit dem Sie die Replikation und das automatische/koordinierte Failover einer Gruppe von Datenbanken auf einem SQL-Datenbank-Server oder aller Datenbanken in einer verwalteten Instanz verwalten können.
 services: sql-database
 ms.service: sql-database
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 10/21/2019
-ms.openlocfilehash: 1e847fd2ac39c93b28925cff3fe0a4c17a69da9f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 10/23/2019
+ms.openlocfilehash: 88bcee1cbb23bf298c5ad3920a7744d8da6ce3fb
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750467"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821954"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -65,7 +65,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
   Sie können mehrere einzelne Datenbanken auf demselben SQL-Datenbank-Server in dieselbe Failovergruppe einfügen. Wenn Sie der Failovergruppe eine einzelne Datenbank hinzufügen, wird auf dem sekundären Server automatisch eine sekundäre Datenbank mit derselben Edition und Computegröße erstellt.  Sie haben diesen Server beim Erstellen der Failovergruppe angegeben. Wenn Sie eine Datenbank hinzufügen, die bereits auf dem sekundären Server eine sekundäre Datenbank hat, erbt die Gruppe diese Verknüpfung für die Georeplikation. Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank auf dem sekundären Server erstellt.
   
   > [!IMPORTANT]
-  > In einer verwalteten Instanz werden alle Benutzerdatenbanken repliziert. Sie können nicht eine Teilmenge der Benutzerdatenbanken für die Replikation in der Failovergruppe auswählen.
+  > Stellen Sie sicher, dass der sekundäre Server keine Datenbank mit dem gleichen Namen hat, es sei denn, es handelt sich um eine vorhandene sekundäre Datenbank. In Failovergruppen für verwaltete Instanzen werden alle Benutzerdatenbanken repliziert. Sie können nicht eine Teilmenge der Benutzerdatenbanken für die Replikation in der Failovergruppe auswählen.
 
 - **Hinzufügen von Datenbanken im Pool für elastische Datenbanken zu Failovergruppe**
 
@@ -89,6 +89,9 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 - **Richtlinie für automatisches Failover**
 
   Standardmäßig wird eine Failovergruppe mit einer Richtlinie für automatisches Failover konfiguriert. Der SQL-Datenbank-Dienst löst das Failover aus, nachdem der Fehler erkannt und die Toleranzperiode abgelaufen ist. Das System muss sicherstellen, dass der Ausfall aufgrund des Ausmaßes der Auswirkungen nicht durch die integrierte [Hochverfügbarkeitsinfrastruktur des SQL-Datenbank-Diensts](sql-database-high-availability.md) gemildert werden kann. Wenn Sie den Failoverworkflow aus der Anwendung steuern möchten, können Sie automatisches Failover deaktivieren.
+  
+  > [!NOTE]
+  > Da das Betriebsteam Maßnahmen ergreifen muss, um das Ausmaß des Ausfalls zu überprüfen und festzustellen, wie schnell dieser minimiert werden kann, kann die Toleranzperiode nicht auf einen Wert unter einer Stunde festgelegt werden.  Diese Einschränkung gilt unabhängig vom jeweiligen Datensynchronisierungsstatus für alle Datenbanken in der Failovergruppe. 
 
 - **Schreibgeschützte Failoverrichtlinie**
 
@@ -150,7 +153,7 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
   Eine oder mehrere Failovergruppen können zwischen zwei Servern in verschiedenen Regionen erstellt werden (primäre und sekundäre Server). Jede Gruppe kann eine oder mehrere Datenbanken enthalten, die als Einheit wiederhergestellt werden, falls alle oder einige primäre Datenbanken aufgrund eines Ausfalls in der primären Region nicht mehr verfügbar sind. Die Failovergruppe erstellt eine geosekundäre Datenbank mit dem gleichen Dienstziel wie die primäre Datenbank. Wenn Sie der Failovergruppe eine vorhandene Georeplikationsbeziehung hinzufügen, stellen Sie sicher, dass die geosekundäre Datenbank mit der gleichen Dienstebene und Computegröße wie die primäre Datenbank konfiguriert ist.
   
   > [!IMPORTANT]
-  > Das Erstellen von Failovergruppen zwischen zwei Servern in verschiedenen Abonnements wird bei einzelnen Datenbanken und Pools für elastische Datenbanken derzeit nicht unterstützt.
+  > Das Erstellen von Failovergruppen zwischen zwei Servern in verschiedenen Abonnements wird bei einzelnen Datenbanken und Pools für elastische Datenbanken derzeit nicht unterstützt. Wenn Sie den primären oder sekundären Server nach dem Erstellen der Failovergruppe in ein anderes Abonnement verschieben, kann dies zu Fehlern bei den Failoveranforderungen und anderen Vorgängen führen.
 
 - **Lese-/Schreib-Listener für OLTP-Workload verwenden**
 
@@ -326,7 +329,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
 | [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Entfernt die Failovergruppe vom Server und löscht alle in der Gruppe enthaltenen sekundäre Datenbanken. |
 | [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Ruft die Konfiguration der Failovergruppe ab. |
 | [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Ändert die Konfiguration der Failovergruppe. |
@@ -342,7 +345,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 | Cmdlet | BESCHREIBUNG |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Ändert die Konfiguration der Failovergruppe.|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Ruft die Konfiguration der Failovergruppe ab.|
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Löst das Failover der Failovergruppe auf den sekundären Server aus.|

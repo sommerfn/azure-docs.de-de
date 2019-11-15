@@ -1,7 +1,7 @@
 ---
-title: Indizieren von CSV-Blobs mit einem Blobindexer der kognitiven Azure-Suche
+title: Indizieren von CSV-Blobs mithilfe des delimitedText-Analysemodus (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Durchforsten von CSV-Blobs in Azure Blob Storage für die Volltextsuche mithilfe eines Indexers der kognitiven Azure-Suche. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Blob Storage.
+description: Extrahieren und importieren Sie mithilfe des delimitedText-Analysemodus (derzeit als öffentliche Vorschauversion verfügbar) CSV-Dateien aus und in Azure Blob Storage.
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18d0eb704deba80bf83b5cae0a598f47181700f7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793779"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719234"
 ---
-# <a name="how-to-index-csv-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indizieren von CSV-Blobs mit einem Blobindexer in der kognitiven Azure-Suche 
+# <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indizieren von CSV-Blobs mit dem delimitedText-Analysemodus und mit Blobindexern in Azure Cognitive Search 
 
-> [!Note]
-> Der delimitedText-Analysemodus befindet sich in der Vorschau und ist nicht für die Produktion ausgelegt. Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Das .NET SDK wird derzeit nicht unterstützt.
->
+> [!IMPORTANT] 
+> Der delimitedText-Analysemodus ist derzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 Standardmäßig analysiert der [Blobindexer der kognitiven Azure-Suche](search-howto-indexing-azure-blob-storage.md) durch Trennzeichen getrennte Blobs als einzelnen Textblock. Bei Blobs mit CSV-Daten sollen die einzelnen Zeilen im Blob jedoch häufig als separates Dokument behandelt werden. Angenommen, Sie möchten den folgenden durch Trennzeichen getrennten Text in zwei Dokumente analysieren, die jeweils die Felder „Id“, „DatePublished“ und „Tags“ enthalten: 
 
@@ -28,7 +27,7 @@ Standardmäßig analysiert der [Blobindexer der kognitiven Azure-Suche](search-h
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-In diesem Artikel erfahren Sie, wie Sie CSV-Blobs mit einem Blobindexer der kognitiven Azure-Suche durch Festlegen des Analysemodus `delimitedText` analysieren. 
+In diesem Artikel erfahren Sie, wie Sie CSV-Blobs mit einem Azure Cognitive Search-Blobindexer durch Festlegen des Analysemodus `delimitedText` analysieren. 
 
 > [!NOTE]
 > Befolgen Sie die Empfehlungen zur Indexerkonfiguration in [1:n-Indizierung](search-howto-index-one-to-many-blobs.md), um mehrere Suchdokumente aus einem Azure-Blob auszugegeben.

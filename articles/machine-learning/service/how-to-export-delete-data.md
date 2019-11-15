@@ -1,24 +1,25 @@
 ---
 title: Exportieren oder Löschen von Arbeitsbereichsdaten
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Ihren Arbeitsbereich mit dem Azure-Portal, der CLI, dem SDK und authentifizierten REST-APIs exportieren oder löschen können.
+description: Erfahren Sie, wie Sie Ihren Arbeitsbereich mit Azure Machine Learning Studio, der Befehlszeilenschnittstelle, dem SDK und authentifizierten REST-APIs exportieren oder löschen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-author: ph-com
-ms.author: pahusban
-ms.date: 05/02/2019
+author: lobrien
+ms.author: laobri
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 34ff3f9704b9c84a7daddcfd14fb9cd3e990f794
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002841"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73716510"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst 
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In Azure Machine Learning können Sie Ihre Arbeitsbereichsdaten mit der authentifizierten REST-API exportieren oder löschen. In diesem Artikel erfahren Sie, wie das geht.
 
@@ -27,7 +28,7 @@ In Azure Machine Learning können Sie Ihre Arbeitsbereichsdaten mit der authenti
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>Steuern Ihrer Arbeitsbereichsdaten
-Im Produkt enthaltene und von Azure Machine Learning gespeicherte Daten stehen über das Azure-Portal, die CLI, das SDK und authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. 
+Im Produkt enthaltene und von Azure Machine Learning gespeicherte Daten stehen über Azure Machine Learning Studio, die Befehlszeilenschnittstelle, das SDK und authentifizierte REST-APIs zum Exportieren und Löschen zur Verfügung. Auf Telemetriedaten können Sie über das Azure Privacy-Portal zugreifen. 
 
 In Azure Machine Learning bestehen personenbezogene Daten aus Benutzerinformationen in Laufverlaufsdokumenten und Telemetriedatensätzen einiger Benutzerinteraktionen mit dem Dienst.
 
@@ -232,28 +233,26 @@ Datenquellen können folgendermaßen abgerufen werden:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>Löschen von Objekten der grafischen Benutzeroberfläche
+## <a name="delete-assets-in-the-designer"></a>Löschen von Ressourcen im Designer
 
-Löschen Sie auf der grafischen Benutzeroberfläche, auf der Sie Ihr Experiment erstellt haben, einzelne Objekte:
+Löschen Sie in dem Designer, in dem Sie Ihr Experiment erstellt haben, einzelne Ressourcen:
 
-1. Wählen Sie auf der linken Seite den Typ der Ressource aus, die Sie löschen möchten.
+1. Wechseln zum Designer
 
     ![Löschen von Assets](media/how-to-export-delete-data.md/delete-experiment.png)
 
-1. Wählen Sie in der Liste die zu löschenden Objekte einzeln aus.
+1. Wählen Sie in der Liste den zu löschenden Pipelineentwurf aus.
 
-1. Wählen Sie unten die Option **Löschen** aus.
+1. Klicken Sie auf **Löschen**.
 
-## <a name="export-visual-interface-data"></a>Exportieren von Daten der grafischen Benutzeroberfläche
+### <a name="delete-datasets-in-the-designer"></a>Löschen von Datasets im Designer
 
-Exportieren Sie auf der grafischen Benutzeroberfläche, auf der Sie Ihr Experiment erstellt haben, von Ihnen hinzugefügte Daten:
+Verwenden Sie zum Löschen von Datasets im Designer das Azure-Portal oder Storage-Explorer, um zu verbundenen Speicherkonten zu navigieren und die Datasets dort zu löschen. Durch die Aufhebung der Registrierung von Datasets im Designer wird nur der Referenzpunkt im Speicher entfernt. 
 
-1. Wählen Sie links die Option **Daten** aus.
+## <a name="export-data-in-the-designer"></a>Exportieren von Daten im Designer
 
-1. Wählen Sie oben die Option **Meine Datasets** oder **Beispiele** aus, um die Daten zu suchen, die Sie exportieren möchten.
+Exportieren Sie in dem Designer, in dem Sie Ihr Experiment erstellt haben, von Ihnen hinzugefügte Daten:
 
-    ![Herunterladen der Daten](media/how-to-export-delete-data.md/download-data.png)
+1. Wählen Sie links die Option **Datasets** aus.
 
-1. Wählen Sie in der Liste die zu exportierenden Datasets einzeln aus.
-
-1. Wählen Sie unten die Option **Herunterladen** aus.
+    ![Herunterladen der Daten](media/how-to-export-delete-data.md/unregister-dataset.png)

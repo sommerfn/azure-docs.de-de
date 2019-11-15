@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Microsoft Access-Quellen mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Microsoft Access-Quellen mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Microsoft Access-Quellen mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: f01607e6b7dbe5f126d240a51219a6829ff5aaf6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e587621cd420fab564ec4fa09ea131d0ff16fcdd
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090073"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680699"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus Microsoft Access-Datenspeichern bzw. in Microsoft Access-Datenspeicher mithilfe von Azure Data Factory
 

@@ -75,6 +75,8 @@
           href: key-vault-access.md
         - name: Bereitstellen mit verwalteten Identitäten
           href: publish-managed-identity.md
+        - name: Bereitstellen mit Benachrichtigungen
+          href: publish-notifications.md
     - name: Consumer
       items:
         - name: Überwachen der verwalteten Anwendung

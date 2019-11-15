@@ -1,5 +1,5 @@
 ---
-title: Verwenden eines SSL-Zertifikats in Anwendungscode – Azure App Service | Microsoft-Dokumentation
+title: 'Verwenden eines SSL-Zertifikats im Code: Azure App Service | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Clientzertifikate verwenden, um eine Verbindung mit Remoteressourcen herzustellen, die diese erfordern.
 services: app-service
 documentationcenter: ''
@@ -10,22 +10,22 @@ ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1f042f72f82d2198472fe81670c697c0c4b28321
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510547"
+ms.locfileid: "73572082"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service
+# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Verwenden eines SSL-Zertifikats in Ihrem Code in Azure App Service
 
-Der Code Ihrer App Service-App kann als Client fungieren und auf einen externen Dienst zugreifen, für den Zertifikatauthentifizierung erforderlich ist. Diese Schrittanleitung zeigt, wie Sie öffentliche oder private Zertifikate in Ihrem Anwendungscode verwenden.
+Sie können in Ihrem Anwendungscode auf die [öffentlichen oder privaten Zertifikate zugreifen, die Sie App Service hinzufügen](configure-ssl-certificate.md). Der App-Code kann als Client fungieren und auf einen externen Dienst mit erforderlicher Zertifikatauthentifizierung zugreifen oder ggf. kryptografische Aufgaben ausführen. Diese Schrittanleitung zeigt, wie Sie öffentliche oder private Zertifikate in Ihrem Anwendungscode verwenden.
 
-Bei der Verwendung von Zertifikaten in Ihrem Code wird die SSL-Funktionalität in App Service genutzt. Dazu muss Ihre App im Tarif **Basic** oder höher ausgeführt werden. Alternativ dazu können Sie [die Zertifikatdatei in Ihr App-Repository einschließen](#load-certificate-from-file), dies ist jedoch keine empfohlene Vorgehensweise für private Zertifikate.
+Bei der Verwendung von Zertifikaten in Ihrem Code wird die SSL-Funktionalität in App Service genutzt. Dazu muss Ihre App im Tarif **Basic** oder höher ausgeführt werden. Befindet sich Ihre App in der Ebene **Free** oder **Shared**, können Sie [die Zertifikatsdatei in Ihr App-Repository aufnehmen](#load-certificate-from-file).
 
 Wenn Sie Ihre SSL-Zertifikate über App Service verwalten, können Sie die Zertifikate und Ihren Anwendungscode separat verwalten und Ihre sensiblen Daten schützen.
 
@@ -46,9 +46,9 @@ Ermitteln Sie das Zertifikat, das Sie verwenden möchten, und kopieren Sie den F
 
 ![Kopieren des Zertifikatfingerabdrucks](./media/configure-ssl-certificate/create-free-cert-finished.png)
 
-## <a name="load-the-certificate"></a>Laden des Zertifikats
+## <a name="make-the-certificate-accessible"></a>Sicherstellen, dass auf das Zertifikat zugegriffen werden kann
 
-Um ein Zertifikat in Ihrem App-Code zu verwenden, fügen Sie der App-Einstellung `WEBSITE_LOAD_CERTIFICATES` seinen Fingerabdruck hinzu, indem Sie den folgenden Befehl in der <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> ausführen:
+Fügen Sie zum Zugreifen auf ein Zertifikat in Ihrem App-Code der App-Einstellung `WEBSITE_LOAD_CERTIFICATES` den Fingerabdruck hinzu, indem Sie den folgenden Befehl in <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> ausführen:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
@@ -56,15 +56,14 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Damit auf alle Zertifikate zugegriffen werden kann, legen Sie den Wert auf `*` fest.
 
-> [!NOTE]
-> Diese Einstellung platziert die angegebenen Zertifikate für die meisten Tarife im Speicher [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). Im Tarif **Isolated** allerdings (d.h., die App wird in einer [App Service-Umgebung](environment/intro.md) ausgeführt) wird das Zertifikat im Speicher [Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) platziert.
->
+## <a name="load-certificate-in-windows-apps"></a>Laden eines Zertifikats in Windows-Apps
 
-Die konfigurierten Zertifikate können jetzt von Ihrem Code verwendet werden.
+Die App-Einstellung `WEBSITE_LOAD_CERTIFICATES` macht die angegebenen Zertifikate für Ihre unter Windows gehostete App im Windows-Zertifikatspeicher zugänglich. Der Speicherort hängt vom [Tarif](overview-hosting-plans.md) ab:
 
-## <a name="load-the-certificate-in-code"></a>Laden des Zertifikats im Code
+- Tarif **Isolated**: [Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 
+- Alle anderen Tarife: [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores)
 
-Nachdem Ihr Zertifikat verfügbar ist, greifen Sie in C#-Code über den Fingerabdruck des Zertifikats auf dieses zu. Der folgende Code lädt ein Zertifikat mit dem Fingerabdruck `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+In C#-Code greifen Sie auf das Zertifikat anhand des Zertifikatfingerabdrucks zu. Der folgende Code lädt ein Zertifikat mit dem Fingerabdruck `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -89,30 +88,74 @@ certStore.Close();
 ...
 ```
 
-<a name="file"></a>
-## <a name="load-certificate-from-file"></a>Laden des Zertifikats aus einer Datei
+In Java-Code greifen Sie über den Speicher „Windows-MY“ unter Verwendung des Felds für den Antragstellernamen auf das Zertifikat zu (siehe [Öffentliches Schlüsselzertifikat](https://en.wikipedia.org/wiki/Public_key_certificate)). Der folgende Code zeigt, wie Sie ein Zertifikat für einen privaten Schlüssel laden:
 
-Wenn Sie die Zertifikatdatei aus Ihrem Anwendungsverzeichnis laden müssen, sollte der Upload besser über [FTPS](deploy-ftp.md) anstatt z.B. über [Git](deploy-local-git.md) erfolgen. Halten Sie vertrauliche Daten wie beispielsweise ein privates Zertifikat aus der Quellcodeverwaltung heraus.
+```java
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import java.security.KeyStore;
+import java.security.cert.Certificate;
+import java.security.PrivateKey;
 
-Auch wenn Sie die Datei direkt in Ihrem .NET-Code laden, überprüft die Bibliothek dennoch, ob das aktuelle Benutzerprofil geladen ist. Um das aktuelle Benutzerprofil zu laden, legen Sie die App-Einstellung `WEBSITE_LOAD_USER_PROFILE` mit dem folgenden Befehl in der <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a> fest.
+...
+KeyStore ks = KeyStore.getInstance("Windows-MY");
+ks.load(null, null); 
+Certificate cert = ks.getCertificate("<subject-cn>");
+PrivateKey privKey = (PrivateKey) ks.getKey("<subject-cn>", ("<password>").toCharArray());
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+// Use the certificate and key
+...
 ```
 
-Sobald diese Einstellung festgelegt ist, lädt das folgende C#-Beispiel ein Zertifikat namens `mycert.pfx` aus dem `certs`-Verzeichnis des Repositorys Ihrer App.
+Informationen zu Sprachen, die keine Unterstützung oder nur unzureichende Unterstützung für den Windows-Zertifikatspeicher bieten, finden Sie unter [Laden des Zertifikats aus einer Datei](#load-certificate-from-file).
+
+## <a name="load-certificate-in-linux-apps"></a>Laden eines Zertifikats in Linux-Apps
+
+Die App-Einstellungen `WEBSITE_LOAD_CERTIFICATES` machen die angegebenen Zertifikate für Ihre unter Linux gehosteten Apps (einschließlich benutzerdefinierter Container-Apps) als Dateien zugänglich. Die Dateien befinden sich in den folgenden Verzeichnissen:
+
+- Private Zertifikate: `/var/ssl/private` (Dateien vom Typ `.p12`)
+- Öffentliche Zertifikate: `/var/ssl/certs` (Dateien vom Typ `.der`)
+
+Die Zertifikatsdateinamen sind die Zertifikatfingerabdrücke. Der folgende C#-Code zeigt, wie ein öffentliches Zertifikat in eine Linux-App geladen wird.
 
 ```csharp
 using System;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-// Replace the parameter with "~/<relative-path-to-cert-file>".
-string certPath = Server.MapPath("~/certs/mycert.pfx");
+var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var cert = new X509Certificate2(bytes);
 
-X509Certificate2 cert = GetCertificate(certPath, signatureBlob.Thumbprint);
-...
+// Use the loaded certificate
 ```
+
+Informationen zum Laden eines SSL-Zertifikats aus einer Datei in Node.js, PHP, Python, Java oder Ruby finden Sie in der Dokumentation für die jeweilige Sprache oder Webplattform.
+
+## <a name="load-certificate-from-file"></a>Laden des Zertifikats aus einer Datei
+
+Wenn Sie eine manuell hochgeladene Zertifikatsdatei laden müssen, sollte der Upload eher über [FTPS](deploy-ftp.md) statt beispielsweise über [Git](deploy-local-git.md) erfolgen. Halten Sie vertrauliche Daten wie beispielsweise ein privates Zertifikat aus der Quellcodeverwaltung heraus.
+
+> [!NOTE]
+> ASP.NET und ASP.NET Core unter Windows müssen auf den Zertifikatspeicher auch dann zugreifen, wenn Sie ein Zertifikat aus einer Datei laden. Laden Sie zum Laden einer Zertifikatsdatei in eine Windows .NET-App das aktuelle Benutzerprofil mit dem folgenden Befehl in <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+>
+> ```azurecli-interactive
+> az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
+> ```
+
+Im folgenden C#-Beispiel wird ein öffentliches Zertifikat aus einem relativen Pfad in die App geladen:
+
+```csharp
+using System;
+using System.Security.Cryptography.X509Certificates;
+
+...
+var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var cert = new X509Certificate2(bytes);
+
+// Use the loaded certificate
+```
+
+Informationen zum Laden eines SSL-Zertifikats aus einer Datei in Node.js, PHP, Python, Java oder Ruby finden Sie in der Dokumentation für die jeweilige Sprache oder Webplattform.
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 

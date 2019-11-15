@@ -1,27 +1,23 @@
 ---
 title: Korrelation der Azure Application Insights-Telemetrie | Microsoft-Dokumentation
 description: Korrelation der Application Insights-Telemetrie
-services: application-insights
-documentationcenter: .net
-author: lgayhardt
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.author: lagayhar
-ms.openlocfilehash: fe52fe51b347b232e03bad943906413b90c853c0
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: bcdc6633980ec3684217c8c19b4799befe2af3a3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338175"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576856"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
-In der Welt der Mikroservices müssen für jeden logischen Vorgang Aufgaben mit den verschiedenen Dienstkomponenten durchgeführt werden. Jede dieser Komponenten kann separat von [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht werden. Die Web-App-Komponente kommuniziert mit der Authentifizierungsanbieterkomponente, um die Anmeldeinformationen des Benutzers zu überprüfen, und mit der API-Komponente, um Daten zur Visualisierung abzurufen. Die API-Komponente kann Daten von anderen Diensten abfragen und mithilfe von Cacheanbieterkomponenten die Abrechnungskomponente über diesen Aufruf benachrichtigen. Application Insights unterstützt verteilte Telemetriekorrelation, mit der Sie erkennen können, welche Komponente für Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
+In der Welt der Mikroservices müssen für jeden logischen Vorgang Aufgaben mit den verschiedenen Dienstkomponenten durchgeführt werden. Jede dieser Komponenten kann separat von [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht werden. Application Insights unterstützt verteilte Telemetriekorrelation, mit der Sie erkennen können, welche Komponente für Fehler oder Leistungsbeeinträchtigungen verantwortlich ist.
 
 In diesem Artikel wird das von Application Insights verwendete Datenmodell erläutert, mit dem die von mehreren Komponenten gesendeten Telemetriedaten korreliert werden. Es werden Techniken und Protokolle zur Kontextpropagierung erläutert. Darüber hinaus wird auch die Implementierung von Korrelationskonzepten in verschiedenen Sprachen und auf verschiedenen Plattformen behandelt.
 
@@ -219,6 +215,84 @@ Weitere Informationen finden Sie unter [Application Insights-Telemetriedatenmode
 
 Definitionen von OpenTracing-Konzepten finden Sie in den [Spezifikationen](https://github.com/opentracing/specification/blob/master/specification.md) und [semantischen Konventionen](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) für OpenTracing.
 
+## <a name="telemetry-correlation-in-opencensus-python"></a>Telemetriekorrelation in OpenCensus Python
+
+OpenCensus Python folgt den oben beschriebenen Spezifikationen für das `OpenTracing`-Datenmodell. Außerdem wird [W3C Trace-Context](https://w3c.github.io/trace-context/) unterstützt, ohne dass eine Konfiguration erforderlich ist.
+
+### <a name="incoming-request-correlation"></a>Korrelation eingehender Anforderungen
+
+OpenCensus Python korreliert W3C Trace Context-Header von eingehenden Anforderungen mit den Spannen, die aus den Anforderungen selbst generiert werden. OpenCensus führt dies automatisch mit Integrationen für die folgenden gängigen Webanwendungsframeworks aus: `flask`, `django` und `pyramid`. Die W3C Trace Context-Header müssen einfach nur mit dem [korrekten Format](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) aufgefüllt und mit der Anforderung gesendet werden. Es folgt eine `flask`-Beispielanwendung, die das veranschaulicht.
+
+```python
+from flask import Flask
+from opencensus.ext.azure.trace_exporter import AzureExporter
+from opencensus.ext.flask.flask_middleware import FlaskMiddleware
+from opencensus.trace.samplers import ProbabilitySampler
+
+app = Flask(__name__)
+middleware = FlaskMiddleware(
+    app,
+    exporter=AzureExporter(),
+    sampler=ProbabilitySampler(rate=1.0),
+)
+
+@app.route('/')
+def hello():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run(host='localhost', port=8080, threaded=True)
+```
+
+Hiermit wird eine `flask`-Beispielanwendung auf dem lokalen Computer ausgeführt, der an Port `8080` lauscht. Zum Korrelieren des Ablaufverfolgungskontexts wird eine Anforderung an den Endpunkt gesendet. In diesem Beispiel kann ein `curl`-Befehl verwendet werden.
+```
+curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01" localhost:8080
+```
+Durch einen Blick auf das [Format des Kontextheaders für die Ablaufverfolgung](https://www.w3.org/TR/trace-context/#trace-context-http-headers-format) können die folgenden Informationen abgeleitet werden: `version`: `00`
+`trace-id`: `4bf92f3577b34da6a3ce929d0e0e4736`
+`parent-id/span-id`: `00f067aa0ba902b7`
+`trace-flags`: `01`
+
+Wenn Sie sich den Anforderungseintrag ansehen, der an Azure Monitor gesendet wurde, sind dort Felder enthalten, die mit den Informationen des Ablaufverfolgungsheaders aufgefüllt wurden. Diese Daten sind in der Azure Monitor Application Insights-Ressource unter „Protokolle (Analytics)“ zu finden.
+
+![Screenshot der Anforderungstelemetrie in „Protokolle (Analytics)“ mit rot umrandeten Feldern für den Ablaufverfolgungsheader](./media/opencensus-python/0011-correlation.png)
+
+Das Feld `id` hat das Format `<trace-id>.<span-id>`. Hierbei wird `trace-id` aus dem in der Anforderung übergebenen Ablaufverfolgungsheader entnommen, und `span-id` ist ein generiertes 8-Byte-Array für diese Spanne. 
+
+Das Feld `operation_ParentId` hat das Format `<trace-id>.<parent-id>`. Hierbei werden sowohl `trace-id` als auch `parent-id` aus dem in der Anforderung übergebenen Ablaufverfolgungsheader entnommen.
+
+### <a name="logs-correlation"></a>Korrelation von Protokollen
+
+OpenCensus Python ermöglicht die Korrelation von Protokollen, indem Protokolldatensätze um Ablaufverfolgungs-ID, Spannen-ID und Stichprobenflag erweitert werden. Dazu wird die OpenCensus-[Protokollintegration](https://pypi.org/project/opencensus-ext-logging/) installiert. Python `LogRecord` werden die folgenden Attribute hinzugefügt: `traceId`, `spanId` und `traceSampled`. Beachten Sie, dass dies nur für Protokollierungen wirksam wird, die nach der Integration erstellt wurden.
+Es folgt eine Beispielanwendung, die das veranschaulicht.
+
+```python
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+    logger.warning('In the span')
+logger.warning('After the span')
+```
+Bei Ausführung dieses Codes wird Folgendes in der Konsole angezeigt:
+```
+2019-10-17 11:25:59,382 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 Before the span
+2019-10-17 11:25:59,384 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=70da28f5a4831014 In the span
+2019-10-17 11:25:59,385 traceId=c54cb1d4bbbec5864bf0917c64aeacdc spanId=0000000000000000 After the span
+```
+Sie können sehen, dass für die Protokollnachricht, die innerhalb der Spanne liegt, eine Spannen-ID vorhanden ist. Diese entspricht der Spannen-ID, die zur Spanne mit dem Namen `hello` gehört.
+
+Sie können die Protokolldaten mithilfe von `AzureLogHandler`exportieren. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)
+
 ## <a name="telemetry-correlation-in-net"></a>Telemetriekorrelation in .NET
 
 Im Lauf der Zeit wurden in .NET verschiedene Möglichkeiten zur Korrelation von Telemetrie- und Diagnoseprotokollen definiert:
@@ -260,25 +334,22 @@ Zum Korrelieren von Telemetriedaten in einer asynchronen Spring Boot-Anwendung f
 
 Gelegentlich möchten Sie möglicherweise die Art und Weise anpassen, wie Komponentennamen in der [Anwendungsübersicht](../../azure-monitor/app/app-map.md) angezeigt werden. Dazu können Sie `cloud_RoleName` manuell festlegen, indem Sie eine der folgenden Aktionen ausführen:
 
+- Ab Application Insights Java SDK 2.5.0 können Sie den Cloudrollennamen angeben, indem Sie der Datei `<RoleName>` den Eintrag `ApplicationInsights.xml` hinzufügen.
+
+  ```XML
+  <?xml version="1.0" encoding="utf-8"?>
+  <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+     <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+     <RoleName>** Your role name **</RoleName>
+     ...
+  </ApplicationInsights>
+  ```
+
 - Bei Verwendung von Spring Boot mit dem Application Insights Spring Boot-Startprogramm besteht die einzige erforderliche Änderung darin, Ihren benutzerdefinierten Namen für die Anwendung in der Datei „application.properties“ festzulegen.
 
   `spring.application.name=<name-of-app>`
 
   Der Spring Boot-Starter weist `cloudRoleName` automatisch den Wert zu, den Sie für die `spring.application.name`-Eigenschaft eingeben.
-
-- Wenn Sie `WebRequestTrackingFilter` verwenden, legt der `WebAppNameContextInitializer` automatisch den Anwendungsnamen fest. Fügen Sie Folgendes zu Ihrer Konfigurationsdatei (ApplicationInsights.xml) hinzu:
-
-  ```XML
-  <ContextInitializers>
-    <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebAppNameContextInitializer" />
-  </ContextInitializers>
-  ```
-
-- Wenn Sie die Cloudkontextklasse verwenden:
-
-  ```Java
-  telemetryClient.getContext().getCloud().setRole("My Component Name");
-  ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

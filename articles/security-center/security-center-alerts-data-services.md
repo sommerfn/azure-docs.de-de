@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244576"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621347"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Bedrohungserkennung für Datendienste in Azure Security Center
 
@@ -40,7 +40,7 @@ Die SQL-Bedrohungserkennung erkennt anormale Aktivitäten, die auf ungewöhnlich
 
 Weitere Informationen zu Warnungen im Zusammenhang mit der Erkennung von SQL-Bedrohungen finden Sie unter [Bedrohungserkennung von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview). Lesen Sie insbesondere den Abschnitt zu den Warnungen der Bedrohungserkennung. Unter [How Azure Security Center helps reveal a Cyberattack](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) (Erkennen von Cyberangriffen mit Azure Security Center) finden Sie ein Beispiel dafür, wie Security Center die Erkennung schädlicher SQL-Aktivitäten verwendet, um einen Angriff zu erkennen.
 
-## Storage <a name="azure-storage"></a>
+## Azure Storage <a name="azure-storage"></a>
 
 >[!NOTE]
 > Advanced Threat Protection für Storage ist derzeit nur für Blobspeicher verfügbar.
@@ -63,6 +63,7 @@ Security Center analysiert Diagnoseprotokolle von Lese-, Schreib- und Löschanfo
 |**Anomalie beim Berechtigungszugriff**|Gibt an, dass die Zugriffsberechtigungen für diesen Speichercontainer auf ungewöhnliche Weise geändert wurden. Mögliche Ursache: Ein Angreifer hat die Containerberechtigungen geändert, um die Sicherheit zu schwächen oder Persistenz zu erlangen.|
 |**Anomalie beim Überprüfungszugriff**|Gibt an, dass die Zugriffsberechtigungen eines Speicherkontos auf eine Weise überprüft wurden, die im Vergleich zur letzten Aktivität für dieses Konto ungewöhnlich ist. Mögliche Ursache: Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.|
 |**Anomalie bei der Datenuntersuchung**|Gibt an, dass Blobs oder Container in einem Speicherkonto in einer Weise aufgezählt wurden, die im Vergleich zur letzten Aktivität für dieses Konto anormal ist. Mögliche Ursache: Ein Angreifer hat für einen späteren Angriff eine Reconnaissance durchgeführt.|
+|**Potential Malware Upload** (Upload potenzieller Schadsoftware)|Gibt an, dass ein Blob mit potenzieller Schadsoftware in ein Speicherkonto hochgeladen wurde. Zu den möglichen Gründen zählen der absichtliche Upload von Schadsoftware durch einen Angreifer und der unabsichtliche Upload eines potenziell schädlichen Blobs durch einen berechtigten Benutzer.|
 
 >[!NOTE]
 >Advanced Threat Protection für Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.

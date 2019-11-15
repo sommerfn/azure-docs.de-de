@@ -1,7 +1,7 @@
 ---
-title: Erneutes Trainieren und Bereitstellen eines Webdiensts
-titleSuffix: Azure Machine Learning Studio
-description: Erfahren Sie, wie Sie einen Webdienst aktualisieren, sodass er das neu trainierte Machine Learning-Modell in Azure Machine Learning Studio verwendet.
+title: Erneutes Trainieren eines Webdiensts
+titleSuffix: ML Studio (classic) Azure
+description: Erfahren Sie, wie Sie einen Webdienst aktualisieren, sodass er das neu trainierte Machine Learning-Modell in Azure Machine Learning Studio (klassisch) verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: a3f441a0dd7f7b9f402390e853bd1c28f282f653
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e35ab4b3a45edd5a1172bc3a07d7c31abd2135f7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66245090"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684771"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
 
-Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. Dieser Artikel veranschaulicht das erneute Trainieren und Bereitstellen eines Machine Learning-Modells als neuer Webdienst in Studio. Wenn Sie einen klassischen Webdienst erneut trainieren möchten, [lesen Sie diese Anleitung](retrain-classic-web-service.md).
+Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. Dieser Artikel veranschaulicht das erneute Trainieren und Bereitstellen eines Machine Learning-Modells als neuer Webdienst in Studio (klassisch). Wenn Sie einen klassischen Webdienst erneut trainieren möchten, [lesen Sie diese Anleitung](retrain-classic-web-service.md).
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Vorhersagewebdienst bereitgestellt haben. Wenn Sie noch nicht über einen Vorhersagewebdienst verfügen, [erfahren Sie hier, wie Sie einen Studio-Webdienst bereitstellen](publish-a-machine-learning-web-service.md).
+In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Vorhersagewebdienst bereitgestellt haben. Wenn Sie noch nicht über einen Vorhersagewebdienst verfügen, [erfahren Sie hier, wie Sie einen (klassischen) Studio-Webdienst bereitstellen](deploy-a-machine-learning-web-service.md).
 
 Befolgen Sie diese Schritte, um einen neuen Machine Learning-Webdienst zu trainieren und bereitzustellen:
 

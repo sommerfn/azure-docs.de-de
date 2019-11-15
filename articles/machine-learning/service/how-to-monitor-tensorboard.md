@@ -9,14 +9,15 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: 0908ca232ee38e2b0d461aa9f597558adc4461ef
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350513"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73574296"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Ihre Experimentläufe und Metriken in TensorBoard mit [dem `tensorboard`Paket](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) im Azure Machine Learning SDK anzeigen können. Sobald Sie Ihre Experimentausführungen überprüft haben, können Sie Ihre Machine Learning-Modelle besser optimieren und erneut trainieren.
 
@@ -27,11 +28,14 @@ Wie Sie TensorBoard mit Azure Machine Learning-Experimenten starten, hängt von 
 
 + Für Experimente, die nativ keine für TensorBoard nutzbaren Dateien ausgeben, wie z.B. Scikit-learn- oder Azure Machine Learning-Experimente, verwenden Sie [die`export_to_tensorboard()`-Methode](#export), um die Ausführungsverläufe als TensorBoard-Protokolle zu exportieren und TensorBoard von dort aus zu starten. 
 
+> [!TIP]
+> Die Informationen in diesem Dokument sind hauptsächlich für Datenanalysten und Entwickler gedacht, die den Modelltrainingsprozess überwachen möchten. Wenn Sie Administrator sind und sich für die Überwachung der Nutzung und Ereignisse von Azure Machine Learning (z. B. Kontingente, abgeschlossene Trainingsausführungen oder abgeschlossene Modellimplementierungen) interessieren, helfen Ihnen die Informationen im Artikel [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md) weiter.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Um TensorBoard zu starten und Ihre Experimentausführungsverläufe anzuzeigen, müssen Ihre Experimente zuvor die Protokollierung aktiviert haben, um ihre Metriken und Leistungen zu verfolgen.  
 
-* Der Code in dieser Anleitung kann in einer der folgenden Umgebungen ausgeführt werden: 
+* Der Code in diesem Dokument kann in einer der folgenden Umgebungen ausgeführt werden: 
 
     * Azure Machine Learning Notebook VM: keine Downloads oder Installationen erforderlich
 

@@ -12,19 +12,23 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c72de809dc5818cced95be2cbd6b47308bad4f22
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045202"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584523"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Überwachen von Azure ML-Experimentausführungen und -metriken
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente nachverfolgen und Ausführungsmetriken überwachen. In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Protokollierungscode zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, diese Ausführung überwachen und die Ergebnisse untersuchen.
 
 > [!NOTE]
 > Azure Machine Learning kann während des Trainings auch Informationen aus anderen Quellen protokollieren, etwa aus automatisierten Machine Learning-Ausführungen oder aus dem Docker-Container, in dem der Trainingsauftrag ausgeführt wird. Diese Protokolle sind nicht dokumentiert. Wenn Sie Probleme haben und sich an den Microsoft-Support wenden, können diese Protokolle möglicherweise bei der Problembehandlung verwendet werden.
+
+> [!TIP]
+> Die Informationen in diesem Dokument sind hauptsächlich für Datenanalysten und Entwickler gedacht, die den Modelltrainingsprozess überwachen möchten. Wenn Sie Administrator sind und sich für die Überwachung der Nutzung und Ereignisse von Azure Machine Learning (etwa Kontingente, abgeschlossene Trainingsausführungen oder abgeschlossene Modellimplementierungen) interessieren, lesen Sie den Artikel [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
 
 ## <a name="available-metrics-to-track"></a>Zur Nachverfolgung verfügbare Metriken
 
@@ -261,7 +265,7 @@ print(run.get_portal_url())
    ![Jupyter Notebook-Widget für automatisiertes Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
-Zum Anzeigen weiterer Details zu einer Pipeline klicken Sie in der Tabelle auf die Pipeline, die Sie untersuchen möchten. Die Diagramme werden dann in einem Popupfenster über das Azure-Portal gerendert.
+Zum Anzeigen weiterer Details zu einer Pipeline klicken Sie in der Tabelle auf die Pipeline, die Sie untersuchen möchten. Die Diagramme werden dann in einem Popupfenster aus Azure Machine Learning-Studio gerendert.
 
 ### <a name="get-log-results-upon-completion"></a>Abrufen von Protokollergebnissen nach Abschluss
 
@@ -273,22 +277,19 @@ Modelltraining und -überwachung erfolgen im Hintergrund, sodass Sie währenddes
 Mit ```run.get_metrics()``` können Sie die Metriken eines trainierten Modells anzeigen. Sie können nun alle Metriken abrufen, die im obigen Beispiel protokolliert wurden, um das beste Modell zu ermitteln.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
-## <a name="view-the-experiment-in-the-azure-portal-or-your-workspace-landing-page-previewhttpsmlazurecom"></a>Anzeigen des Experiments im Azure-Portal oder über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com)
+## <a name="view-the-experiment-in-your-workspace-in-azure-machine-learning-studiohttpsmlazurecom"></a>Anzeigen des Experiments in Ihrem Arbeitsbereich in [Azure Machine Learning-Studio](https://ml.azure.com)
 
-Wenn ein Experiment abgeschlossen ist, können Sie zu der aufgezeichneten Ausführungsaufzeichnung des Experiments navigieren. Sie haben zwei Möglichkeiten, auf den Verlauf zuzugreifen:
+Wenn ein Experiment abgeschlossen ist, können Sie zu der aufgezeichneten Ausführungsaufzeichnung des Experiments navigieren. Sie können aus [Azure Machine Learning-Studio](https://ml.azure.com) auf den Verlauf zugreifen.
 
-* Direktes Abrufen der URL der Ausführung ```print(run.get_portal_url())```
-* Anzeigen der Ausführungsdetails durch Übermittlung des Namens der Ausführung (in diesem Fall ```run```). Diese Vorgehensweise verweist auf den Experimentnamen, die ID, den Typ, den Status, die Detailseite, einen Link zum Azure-Portal und einen Link zur Dokumentation.
+Navigieren Sie zur Registerkarte „Experimente“, und wählen Sie Ihr Experiment aus. Sie gelangen zum Dashboard „Experimentausführung“, auf dem Sie nachverfolgte Metriken und Diagramme sehen können, die für jede Ausführung protokolliert wurden. In diesem Fall protokollierten wir MSE und die Alphawerte.
 
-Der Link für die Ausführung leitet Sie direkt zur Detailseite für die Ausführung im Azure-Portal. Hier finden Sie alle Eigenschaften, nachverfolgten Metriken, Images und Diagramme, die im Experiment protokolliert werden. In diesem Fall protokollierten wir MSE und die Alphawerte.
+  ![Ausführungsdetails im Azure Machine Learning-Studio](./media/how-to-track-experiments/experiment-dashboard.png)
 
-  ![Ausführen von Details im Azure-Portal](./media/how-to-track-experiments/run-details-page.png)
-
-Sie können auch alle Ausgaben oder Protokolle für die Ausführung anzeigen oder die Momentaufnahme des von Ihnen übermittelten Experiments herunterladen, damit Sie den Experimentordner mit anderen teilen können.
+Sie können einen Drilldown für eine bestimmte Ausführung ausführen, um deren Ausgaben oder Protokolle anzuzeigen, oder Sie können die Momentaufnahme des von Ihnen übermittelten Experiments herunterladen, damit Sie den Experimentordner mit anderen teilen können.
 
 ### <a name="viewing-charts-in-run-details"></a>Anzeigen von Diagrammen in Ausführungsdetails
 
-Es gibt verschiedene Möglichkeiten, wie Sie die Protokollierungs-APIs während einer Ausführung zum Aufzeichnen verschiedener Arten von Metriken und zum Anzeigen als Diagramme im Azure-Portal nutzen können. 
+Es gibt verschiedene Möglichkeiten, wie Sie die Protokollierungs-APIs während einer Ausführung zum Aufzeichnen verschiedener Arten von Metriken und für deren Anzeige als Diagramme in Azure Machine Learning-Studio nutzen können.
 
 |Protokollierter Wert|Beispielcode| Anzeigen im Portal|
 |----|----|----|

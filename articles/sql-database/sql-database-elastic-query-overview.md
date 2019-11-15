@@ -1,5 +1,5 @@
 ---
-title: Übersicht über elastische Abfragen in Azure SQL-Datenbank | Microsoft Docs
+title: Übersicht über elastische Abfragen
 description: Durch elastische Abfragen können Sie eine Transact-SQL-Abfrage für mehrere Datenbanken ausführen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 07/01/2019
-ms.openlocfilehash: 313e8af0e42f5108a22261a475b5340208adb7bf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568552"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823743"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 
@@ -142,7 +142,7 @@ Elastische Abfragen sind in den Kosten für Azure SQL-Datenbanken enthalten. Bea
 * Mit Ausnahme von „nvarchar(max)“ (einschließlich räumlicher Typen) werden LOB-Typen in externen Tabellendefinitionen nicht unterstützt. Um dieses Problem zu umgehen, können Sie eine Sicht für die Remotedatenbank erstellen, die den LOB-Typ in „nvarchar(max)“ umwandelt, ihre externe Tabelle für die Sicht anstatt für die Basistabelle definieren und sie in Ihren Abfragen in den ursprünglichen LOB-Typ rückumwandeln.
 * Durch Spalten vom Datentyp „nvarchar(max)“ im Resultset werden erweiterte Batchverarbeitungstechniken deaktiviert, die bei der Implementierung elastischer Abfragen verwendet werden und möglicherweise die Leistung der Abfragen für eine Größenordnung oder sogar zwei Größenordnungen in nicht kanonischen Anwendungsfällen beeinträchtigen, in denen eine Vielzahl von nicht aggregierten Daten infolge der Abfrage übertragen werden.
 * Spaltenstatistiken werden für externe Tabellen derzeit nicht unterstützt. Tabellenstatistiken werden unterstützt, müssen aber manuell erstellt werden.
-* Elastische Abfragen funktionieren nur mit Azure SQL-Datenbank. Sie können sie nicht für Abfragen von lokalen SQL Servern oder SQL Servern in einem VM verwenden.
+* Elastische Abfragen funktionieren nur mit Azure SQL-Datenbank. Sie können sie nicht für Abfragen von lokalem SQL Server oder SQL Server auf einem virtuellen Computer verwenden.
 
 ## <a name="feedback"></a>Feedback
 

@@ -1,6 +1,6 @@
 ---
 title: Trainieren und Bereitstellen von Modellen über die Befehlszeilenschnittstelle
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie die Machine Learning-Erweiterung für die Azure-Befehlszeilenschnittstelle verwenden können, um ein Modell über die Befehlszeile zu trainieren, zu registrieren und bereitzustellen.
 ms.author: larryfr
 author: Blackmist
@@ -9,14 +9,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: fb46aaf04535c1b44cdd80810fbb6382dc727a67
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 1854599956755716955a6e691c3266ac54ddafd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350423"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581551"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Tutorial verwenden Sie die Machine Learning-Erweiterung für die Azure-Befehlszeilenschnittstelle, um ein Modell zu trainieren, zu registrieren und bereitzustellen.
 
@@ -97,12 +98,12 @@ az extension update -n azure-cli-ml
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein grundlegender Container mit Ressourcen auf der Azure-Plattform. Wenn Sie mit dem Azure Machine Learning Service arbeiten, enthält die Ressourcengruppe Ihren Azure Machine Learning Service-Arbeitsbereich. Sie enthält auch andere Azure-Dienste, die vom Arbeitsbereich verwendet werden. Wenn Sie Ihr Modell z. B. mit einer cloudbasierten Computeressource trainieren, wird diese Ressource in der Ressourcengruppe erstellt.
+Eine Ressourcengruppe ist ein grundlegender Container mit Ressourcen auf der Azure-Plattform. Wenn Sie mit Azure Machine Learning arbeiten, enthält die Ressourcengruppe Ihren Azure Machine Learning-Arbeitsbereich. Sie enthält auch andere Azure-Dienste, die vom Arbeitsbereich verwendet werden. Wenn Sie Ihr Modell z. B. mit einer cloudbasierten Computeressource trainieren, wird diese Ressource in der Ressourcengruppe erstellt.
 
 Um __eine neue Ressourcengruppe zu erstellen__, verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
 
 > [!TIP]
-> Wählen Sie eine Region aus, in der der Azure Machine Learning Service verfügbar ist. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Wählen Sie eine Region aus, in der Azure Machine Learning verfügbar ist. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -182,7 +183,7 @@ Dieser Befehl erstellt eine `.azureml/config.json`-Datei, die Informationen enth
 
 ## <a name="create-the-compute-target-for-training"></a>Erstellen des Computeziels für das Training
 
-In diesem Beispiel wird eine Azure Machine Learning Compute-Instanz verwendet, um das Modell zu trainieren. Verwenden Sie den folgenden Befehl, um eine neue Computeinstanz zu erstellen:
+In diesem Beispiel wird eine Azure Machine Learning-Notebook-VM verwendet, um das Modell zu trainieren. Verwenden Sie den folgenden Befehl, um eine neue Notebook-VM zu erstellen:
 
 ```azurecli-interactive
 az ml computetarget create amlcompute -n cpu --max-nodes 4 --vm-size Standard_D2_V2
@@ -217,7 +218,7 @@ Dieser Befehl gibt einen Namen für das Experiment an (`myexperiment`). Das Expe
 
 Der Parameter `-c sklearn` gibt die Datei `.azureml/sklearn.runconfig` an. Wie bereits erwähnt, enthält diese Datei Informationen zur Konfiguration der von der Trainingsausführung verwendeten Umgebung. Wenn Sie diese Datei untersuchen, werden Sie feststellen, dass sie auf das zuvor erstellte `cpu`-Computeziel verweist. Sie listet auch die Anzahl der Knoten auf, die beim Training verwendet werden sollen (`"nodeCount": "4"`), und enthält einen Abschnitt `"condaDependenciees"`, der die Python-Pakete auflistet, die für die Ausführung des Trainingsskripts erforderlich sind.
 
-Weitere Informationen zu Dateien für Laufzeitkonfigurationen finden Sie unter [Einrichten von und Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli).
+Weitere Informationen zu Laufzeitkonfigurationsdateien finden Sie unter [Einrichten von und Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). In dieser [JSON-Datei](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) finden Sie das vollständige Schema einer Laufzeitkonfiguration.
 
 Der Parameter `-t` speichert einen Verweis auf diese Ausführung in einer JSON-Datei und wird in den nächsten Schritten zur Registrierung und zum Herunterladen des Modells verwendet.
 
@@ -238,7 +239,7 @@ Dieser Text wird aus dem Trainingsskript (`train-sklearn.py`) protokolliert und 
 
 Wenn Sie die `train-sklearn.py` untersuchen, werden Sie feststellen, dass sie auch den Alphawert verwendet, wenn sie die trainierten Modelle in einer Datei speichert. In diesem Fall trainiert sie mehrere Modelle. Dasjenige mit dem höchsten Alphawert sollte das beste Modell sein. Unter Betrachtung der obigen Ausgabe und des Codes wurde das Modell mit einem Alphawert von 0,95 als `./outputs/ridge_0.95.pkl` gespeichert.
 
-Das Modell wurde im Verzeichnis `./outputs` auf dem Computeziel gespeichert, auf dem es trainiert wurde. In diesem Fall ist dies die Azure Machine Learning Compute-Instanz in der Azure-Cloud. Der Trainingsprozess lädt automatisch die Inhalte des Verzeichnisses `./outputs` aus dem Computeziel, in dem das Training erfolgt, in Ihren Azure Machine Learning-Arbeitsbereich hoch. Es wird als Teil des Experiments gespeichert (`myexperiment` in diesem Beispiel).
+Das Modell wurde im Verzeichnis `./outputs` auf dem Computeziel gespeichert, auf dem es trainiert wurde. In diesem Fall ist dies die Azure Machine Learning-Notebook-VM in der Azure-Cloud. Der Trainingsprozess lädt automatisch die Inhalte des Verzeichnisses `./outputs` aus dem Computeziel, in dem das Training erfolgt, in Ihren Azure Machine Learning-Arbeitsbereich hoch. Es wird als Teil des Experiments gespeichert (`myexperiment` in diesem Beispiel).
 
 ## <a name="register-the-model"></a>Registrieren des Modells
 
@@ -292,7 +293,7 @@ Sie erhalten möglicherweise die Meldung „Fehler beim Erstellen des Docker-Cli
 
 Dieser Befehl stellt einen neuen Dienst namens `myservice` bereit, der die Version 1 des Modells verwendet, das Sie zuvor registriert haben.
 
-Die Datei `inferenceConfig.yml` liefert Informationen darüber, wie Sie Rückschlüsse ziehen können, z. B. über das Eingabeskript (`score.py`) und über Softwareabhängigkeiten. Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst](how-to-deploy-and-where.md#prepare-to-deploy).
+Die Datei `inferenceConfig.yml` liefert Informationen darüber, wie Sie Rückschlüsse ziehen können, z. B. über das Eingabeskript (`score.py`) und über Softwareabhängigkeiten. Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
 Die `aciDeploymentConfig.yml` beschreibt die zum Hosten des Dienstes verwendete Bereitstellungsumgebung. Die Bereitstellungskonfiguration hängt vom Computetyp ab, den Sie für die Bereitstellung verwenden. In diesem Fall wird eine Azure Container Instance verwendet. Weitere Informationen finden Sie unter [Bereitstellungskonfigurationsschema](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
@@ -386,4 +387,4 @@ In diesem Azure Machine Learning-Tutorial haben Sie die Machine Learning-CLI fü
 > * Bereitstellen des Modells als Webdienst
 > * Bewerten von Daten mithilfe des Webdiensts
 
-Weitere Informationen zum Verwenden der Befehlszeilenschnittstelle (CLI) finden Sie unter [Verwenden der CLI-Erweiterung für Azure Machine Learning Service](reference-azure-machine-learning-cli.md).
+Weitere Informationen zum Verwenden der Befehlszeilenschnittstelle (CLI) finden Sie unter [Verwenden der CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).

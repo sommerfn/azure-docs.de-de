@@ -1,25 +1,24 @@
 ---
 title: Einführung in die inkrementelle Indizierung (Vorschau)
 titleSuffix: Azure Cognitive Search
-description: Konfigurieren Sie Ihre KI-Anreicherungspipeline für letztliche Datenkonsistenz, um für jegliche Aktualisierungen von Qualifikationen, Skillsets Indexern oder Datenquellen gewappnet zu sein.
+description: Konfigurieren Sie Ihre KI-Anreicherungspipeline für letztliche Datenkonsistenz, um für jegliche Aktualisierungen von Qualifikationen, Skillsets Indexern oder Datenquellen gewappnet zu sein. Dieses Feature ist zurzeit als öffentliche Vorschauversion verfügbar.
 manager: nitinme
 author: Vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ea3bcfc25040f09b6871d85412ac64061ec2f9e8
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73549117"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715420"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Was ist die inkrementelle Indizierung in Azure Cognitive Search?
 
-> [!Note]
-> Die inkrementelle Indizierung befindet sich in der Vorschauphase und ist nicht für die Produktion ausgelegt. Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
->
+> [!IMPORTANT] 
+> Die inkrementelle Indizierung ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 Die inkrementelle Indizierung ist ein neues Feature von Azure Cognitive Search, das Zwischenspeicherung und Status zu angereicherten Inhalten in einem kognitiven Skillset hinzufügt, sodass Sie die Verarbeitung und erneute Verarbeitung einzelner Schritte in einer Anreicherungspipeline steuern können. Dies sorgt nicht nur dafür, dass ihre monetären Investitionen in die Verarbeitung gesichert werden, sondern schafft auch ein effizienteres System. Wenn Strukturen und Inhalt zwischengespeichert werden, kann ein Indexer nun ermitteln, welche Qualifikationen sich geändert haben, und nur die geänderten Qualifikationen und alle abhängigen Downstreamqualifikationen ausführen. 
 

@@ -6,16 +6,19 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: d646187627d74810a846d7126562e2e796c5c9f7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510275"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720264"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung ohne Agent
 
-Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten ohne Agent in Azure Migrate: Server Assessment einrichten. Diese Funktion ist zurzeit als Vorschauversion für VMware-Computer verfügbar, die mit einer Azure Migrate-Appliance ermittelt wurden. 
+> [!NOTE]
+> Falls Sie dieses Feature noch nicht im Azure Migrate-Portal sehen, bitten wir Sie um etwas Geduld. Es wird voraussichtlich im Laufe der nächsten Woche verfügbar.
+
+Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten ohne Agent in Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. Diese Funktion ist zurzeit als Vorschauversion für VMware-Computer verfügbar, die mit einer Azure Migrate-Appliance ermittelt wurden. 
 
 > [!IMPORTANT]
 > Die Visualisierung von Abhängigkeiten ohne Agent ist derzeit als Vorschauversion für Azure VMware-VMs verfügbar, die mithilfe einer Azure Migrate-Appliance ermittelt wurden.
@@ -38,7 +41,7 @@ Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents a
     - TCP-Verbindungen
     - Namen von Prozessen mit aktiven Verbindungen
     - Namen der installierten Anwendungen, die die obigen Prozesse ausführen
-    - Anzahl von Verbindungen, die in jedem Abrufintervall erkannt werden
+    - Nein. von Verbindungen, die in jedem Abrufintervall erkannt werden
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

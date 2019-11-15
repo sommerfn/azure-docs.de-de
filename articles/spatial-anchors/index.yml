@@ -27,6 +27,7 @@ sections:
           - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">Ankerbeziehungen und Wegeleitsysteme</a>
           - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">Umgebungsleitfäden</a>
           - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">Protokollierung und Diagnose</a>
+          - html: <a href="/azure/spatial-anchors/concepts/coarse-reloc">Ungefähre Standortbestimmung</a>
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph

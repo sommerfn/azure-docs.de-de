@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/10/2019
-ms.openlocfilehash: fe60b740312ee49510ea931bba1346ceaef9f31a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 11/04/2019
+ms.openlocfilehash: 75e789ac1f9c161bc67ba90062be39f986f5b140
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035518"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580582"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -46,16 +46,20 @@ Erfahren Sie, [wo und wie Sie Ihr Modell auf einem Computeziel bereitstellen](ho
 <a name="amlcompute"></a>
 ## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning-Computeressource (verwaltet)
 
-Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und verwaltet. Diese Computeressource ist für Machine Learning-Workloads optimiert. Azure Machine Learning Compute ist ab dem 30. Mai 2019 die einzige verwaltete Computeressource. Möglicherweise werden künftig weitere verwaltete Computeressourcen hinzugefügt.
+Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und verwaltet. Diese Computeressource ist für Machine Learning-Workloads optimiert. Azure Machine Learning-Computecluster. Möglicherweise werden künftig weitere verwaltete Computeressourcen hinzugefügt.
 
-Sie können Azure Machine Learning Compute für das Training und für Batchrückschlüsse (Vorschau) verwenden.  Diese Computeressource bietet Folgendes:
+Sie können Azure Machine Learning-Computecluster in Azure Machine Learning Studio, im Azure-Portal, mit dem SDK, mit einer Resource Manager-Vorlage oder mit der CLI erstellen.
+
+Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
+
+Sie können Azure Machine Learning-Computecluster für zum Trainieren und für Batchrückschlüsse (Vorschau) verwenden.  Diese Computeressource bietet Folgendes:
 
 * Cluster mit einem oder mehreren Knoten
 * Automatische Skalierung bei jedem Übermitteln einer Ausführung 
 * Automatische Clusterverwaltung und Auftragsplanung 
 * Unterstützt CPU- und GPU-Ressourcen
 
-Sie können Azure Machine Learning Compute-Instanzen im Azure-Portal, über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com), mit dem SDK oder mit der CLI erstellen. Nach der Erstellung sind sie im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
+
 
 ## <a name="unmanaged-compute"></a>Nicht verwaltete Computeressourcen
 

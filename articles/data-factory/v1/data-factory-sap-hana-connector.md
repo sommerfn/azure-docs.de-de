@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten mithilfe von Azure Data Factory aus SAP HANA verschieben.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 159e10354726e86ff04cb12bff33b6a83bd1fa70
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: ebd1cf22bffc6a136845672cedcefa7936eeece5
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836105"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682360"
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Verschieben von Daten aus SAP HANA mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -62,7 +62,7 @@ Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
 server | Der Name des Servers, auf dem sich die SAP HANA-Instanz befindet. Wenn Ihr Server einen benutzerdefinierten Port verwendet, geben Sie `server:port` an. | Zeichenfolge | Ja
 authenticationType | Die Art der Authentifizierung. | string. „Basic“ oder „Windows“ | Ja 
-userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
+username | Der Name des Benutzers, der Zugriff auf den SAP-Server hat | Zeichenfolge | Ja
 password | Kennwort für den Benutzer | Zeichenfolge | Ja
 gatewayName | Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen SAP HANA-Instanz verwenden soll | Zeichenfolge | Ja
 encryptedCredential | Die verschlüsselte Zeichenfolge mit Anmeldeinformationen | Zeichenfolge | Nein
@@ -290,17 +290,17 @@ INT | Int32
 BIGINT | Int64
 REAL | Single
 DOUBLE | Single
-Decimal | Decimal
-Boolean | Byte
-VARCHAR | string
-NVARCHAR | string
+DECIMAL | Decimal
+BOOLEAN | Byte
+VARCHAR | Zeichenfolge
+NVARCHAR | Zeichenfolge
 CLOB | Byte[]
-ALPHANUM | string
+ALPHANUM | Zeichenfolge
 BLOB | Byte[]
-DATE | DateTime
+DATE | Datetime
 TIME | TimeSpan
-TIMESTAMP | DateTime
-SECONDDATE | DateTime
+TIMESTAMP | Datetime
+SECONDDATE | Datetime
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 Es gibt einige bekannte Einschränkungen, wenn Daten aus SAP HANA kopiert werden:

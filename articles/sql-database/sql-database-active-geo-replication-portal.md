@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Portal: SQL-Datenbank – Georeplikation | Microsoft-Dokumentation'
+title: 'Azure-Portal: Georeplikation'
 description: Konfigurieren der Georeplikation für eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank über das Azure-Portal und Initiieren eines Failovers
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 7ddaefb0f65db1cfc828e4baa844f6d8e01f9d2e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103224"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808124"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 

@@ -1,5 +1,5 @@
 ---
-title: Exists-Transformation in Azure Data Factory Mapping Data Flow | Microsoft-Dokumentation
+title: Exists-Transformation in einem Azure Data Factory-Zuordnungsdatenfluss
 description: Prüfen auf vorhandene Zeilen mithilfe der Exists-Transformation in Azure Data Factory Mapping Data Flow
 author: kromerm
 ms.author: makromer
@@ -7,24 +7,23 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: bfc2a810d34f03fc0f10c486344c6dccec548305
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515133"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73676727"
 ---
-# <a name="mapping-data-flow-exists-transformation"></a>Mapping Data Flow: Exists-Transformation
+# <a name="exists-transformation-in-mapping-data-flow"></a>Exists-Transformation in einem Zuordnungsdatenfluss
 
 Die Exists-Transformation ist eine Zeilenfilterungstransformation, mit der geprüft wird, ob Ihre Daten in einer anderen Quelle oder einem anderen Datenstrom vorhanden sind. Der Ausgabedatenstrom enthält alle Zeilen im linken Datenstrom, die im rechten Datenstrom entweder vorhanden oder nicht vorhanden sind. Die Exists-Transformation ist mit ```SQL WHERE EXISTS``` und ```SQL WHERE NOT EXISTS``` vergleichbar.
 
 ## <a name="configuration"></a>Konfiguration
 
-Wählen Sie in der Dropdownliste **Rechter Datenstrom** den Datenstrom aus, den Sie auf Vorhandensein prüfen möchten.
-
-Geben Sie in der Einstellung **Exist-Typ** an, ob das Vorhandensein oder das Nichtvorhandensein der Daten geprüft werden soll.
-
-Wählen Sie die Schlüsselspalten aus, die Sie als Exists-Bedingungen vergleichen möchten. Standardmäßig sucht der Datenfluss nach Übereinstimmung mit einer Spalte in jedem Datenstrom. Für den Vergleich mittels eines Computewerts zeigen Sie mit dem Mauszeiger auf die Dropdownliste für die Spalte, und wählen Sie **Berechnete Spalte** aus.
+1. Wählen Sie in der Dropdownliste **Rechter Datenstrom** den Datenstrom aus, den Sie auf Vorhandensein prüfen möchten.
+1. Geben Sie in der Einstellung **Exist-Typ** an, ob das Vorhandensein oder das Nichtvorhandensein der Daten geprüft werden soll.
+1. Legen Sie fest, ob Sie einen **benutzerdefinierten Ausdruck** verwenden möchten.
+1. Wählen Sie die Schlüsselspalten aus, die Sie als Exists-Bedingungen vergleichen möchten. Standardmäßig sucht der Datenfluss nach Übereinstimmung mit einer Spalte in jedem Datenstrom. Wenn der Vergleich auf einem berechneten Wert basieren soll, zeigen Sie mit dem Mauszeiger auf die Dropdownliste für die Spalte, und wählen Sie **Berechnete Spalte** aus.
 
 ![Exists-Einstellungen](media/data-flow/exists.png "Exists-Ausdruck 1")
 
@@ -45,11 +44,11 @@ Zum Erstellen eines Freiformausdrucks, der andere Operatoren als „und“ und �
 ### <a name="syntax"></a>Syntax
 
 ```
-<lefttream>, <rightStream>
+<leftStream>, <rightStream>
     exists(
         <conditionalExpression>,
-        negate: true | <false>,
-        broadcast: 'none' | 'left' | 'right' | 'both'
+        negate: { true | false },
+        broadcast: {'none' | 'left' | 'right' | 'both'}
     ) ~> <existsTransformationName>
 ```
 

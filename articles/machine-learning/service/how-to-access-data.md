@@ -9,16 +9,17 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 08/2/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3576f7cc0297ff1e9b10373ccc27b09e1a0ae8ae
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436698"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818456"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Zugreifen auf Daten in Azure Storage-Diensten
+[!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen. Aus diesen [Azure Storage-Lösungen](#matrix) können Sie Datenspeicher erstellen. Für nicht unterstützte Speicherlösungen empfiehlt es sich, Ihre Daten in unsere unterstützten Azure Storage-Lösungen zu verschieben, um bei Machine Learning-Experimenten Kosten für ausgehende Daten zu sparen. [Weitere Informationen zum Verschieben von Daten](#move). 
 
@@ -35,7 +36,7 @@ In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
 
 - Ein Azure-Speicherkonto mit einem [Azure-Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) oder einer [Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
-- Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), oder greifen Sie auf die [Landing Page Ihres Arbeitsbereichs (Vorschauversion)](https://ml.azure.com/) zu.
+- Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), oder greifen Sie auf [Azure Machine Learning-Studio](https://ml.azure.com/) zu.
 
 - Ein Azure Machine Learning-Arbeitsbereich. 
     - Sie können wahlweise [einen Azure Machine Learning-Arbeitsbereich erstellen](how-to-manage-workspace.md) oder mithilfe des Python SDKs einen vorhandenen verwenden.
@@ -51,13 +52,13 @@ In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
 
 ## <a name="create-and-register-datastores"></a>Erstellen und Registrieren von Datenspeichern
 
-Wenn Sie eine Azure Storage-Lösung als Datenspeicher registrieren, erstellen Sie diesen Datenspeicher automatisch in einem bestimmten Arbeitsbereich. Sie können Datenspeicher mithilfe des Python SDK oder der Landing Page des Arbeitsbereichs erstellen oder bei einem Arbeitsbereich registrieren.
+Wenn Sie eine Azure Storage-Lösung als Datenspeicher registrieren, erstellen Sie diesen Datenspeicher automatisch in einem bestimmten Arbeitsbereich. Sie können Datenspeicher über das Python SDK oder über Azure Machine Learning-Studio in einem Arbeitsbereich registrieren.
 
 ### <a name="using-the-python-sdk"></a>Verwenden des Python SDK
 
 Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format „register_azure_*“ auf.
 
-Die erforderlichen Informationen zum Auffüllen der Methode „register()“ lassen sich über das [Azure-Portal](https://ms.portal.azure.com) ermitteln. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Zum Abrufen von Authentifizierungsinformationen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**. 
+Die erforderlichen Informationen zum Festlegen der „register()“-Methode sind über [Azure Machine Learning-Studio](https://ml.azure.com) zu finden. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Zum Abrufen von Authentifizierungsinformationen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**. 
 
 In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Datenspeicher registrieren können.
 
@@ -73,6 +74,7 @@ In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
+    Befindet sich Ihr Speicherkonto in einem virtuellen Netzwerk, wird nur die Erstellung von Azure-Blobdatenspeicher unterstützt. Legen Sie den-Parameter `grant_workspace_access` auf `True` fest, um für Ihren Arbeitsbereich Zugriff auf Ihr Speicherkonto zu gewähren.
 
 + Verwenden Sie [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) für einen **Azure-Dateifreigabe-Datenspeicher**. 
 
@@ -91,16 +93,16 @@ In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder
 
 Wir empfehlen Azure-Blob-Container. Für Blobs stehen sowohl der Standard- als auch der Premiumspeicher zur Verfügung. Der Premiumspeicher ist zwar teurer, aber dennoch die bevorzugte Option, da er höhere Durchsätze ermöglicht. Dies kann sich vor allem bei einem Training mit einem großen Dataset positiv auf die Ausführungsgeschwindigkeit auswirken. Weitere Informationen zu den Kosten von Speicherkonten stellt der [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=machine-learning-service) bereit.
 
-### <a name="using-the-workspace-landing-page"></a>Verwenden der Landing Page des Arbeitsbereichs 
+### <a name="using-azure-machine-learning-studio"></a>Arbeiten mit Azure Machine Learning-Studio 
 
-Erstellen Sie in wenigen Schritten einen neuen Datenspeicher auf der Landing Page des Arbeitsbereichs.
+Erstellen Sie einen neuen Datenspeicher in wenigen Schritten in Azure Machine Learning-Studio.
 
-1. Melden Sie sich auf der [Angebotsseite des Arbeitsbereichs](https://ml.azure.com/) an.
+1. Melden Sie sich bei [Azure Machine Learning-Studio](https://ml.azure.com/)an.
 1. Wählen Sie im linken Bereich unter **Verwalten** **Datenspeicher** aus.
 1. Wählen Sie **+ Neuer Datenspeicher** aus.
 1. Füllen Sie das Formular „Neuer Datenspeicher“ aus. Das Formular wird ausgehend von den gewählten Optionen für den Azure-Speichertyp und den Authentifizierungstyp intelligent aktualisiert.
   
-Die Informationen, die Sie zum Ausfüllen des Formulars benötigen, lassen sich über das [Azure-Portal](https://ms.portal.azure.com) ermitteln. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Zum Abrufen von Authentifizierungselementen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**.
+Die erforderlichen Informationen zum Ausfüllen des Formulars sind über [Azure Machine Learning-Studio](https://ml.azure.com) zu finden. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Navigieren Sie zum Abrufen von Authentifizierungselementen wie Kontoschlüssel oder SAS-Token im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**.
 
 Das folgende Beispiel veranschaulicht das Aussehen des Formulars, wenn ein Azure-Blobdatenspeicher erstellt werden soll. 
     
@@ -161,7 +163,7 @@ datastore.upload(src_dir='your source directory',
                  show_progress=True)
 ```
 
-Der Parameter `target_path` gibt den Speicherort in der Dateifreigabe (oder im Blobcontainer) für den Upload an. Standardmäßig lautet er `None`. In diesem Fall werden die Daten in den Stamm hochgeladen. Bei `overwrite=True` werden alle in `target_path` vorhandenen Daten überschrieben.
+Der Parameter `target_path` gibt den Speicherort in der Dateifreigabe (oder im Blobcontainer) für den Upload an. Standardmäßig lautet er `None`. In diesem Fall werden die Daten in den Stamm hochgeladen. Andernfalls werden bei `overwrite=True` alle in `target_path` vorhandenen Daten überschrieben.
 
 Alternativ können Sie eine Liste einzelner Dateien mithilfe der `upload_files()`-Methode in den Datenspeicher hochladen.
 
@@ -181,7 +183,7 @@ Der Parameter `target_path` ist der Speicherort des lokalen Verzeichnisses, in d
 ## <a name="access-your-data-during-training"></a>Zugreifen auf Ihre Daten während des Trainings
 
 > [!IMPORTANT]
-> Die Verwendung von [Azure Machine Learning-Datasets (Vorschauversion)](how-to-create-register-datasets.md) ist die neue empfohlene Vorgehensweise für den Zugriff auf Ihre Daten im Training. Datasets bieten Funktionen, die tabellarische Daten in Pandas- oder Spark-Datenrahmen laden, sowie die Möglichkeit zum Herunterladen oder Einbinden von Dateien in beliebigen Formaten aus Azure-Blobs, Azure Files, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL und Azure PostgreSQL. Erfahren Sie mehr über das [Trainieren mit Datasets](how-to-train-with-datasets.md).
+> Die Verwendung von [Azure Machine Learning-Datasets](how-to-create-register-datasets.md) ist die neue empfohlene Vorgehensweise für den Zugriff auf Ihre Daten im Training. Datasets bieten Funktionen, die tabellarische Daten in Pandas- oder Spark-Datenrahmen laden, sowie die Möglichkeit zum Herunterladen oder Einbinden von Dateien in beliebigen Formaten aus Azure-Blobs, Azure Files, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL und Azure PostgreSQL. Erfahren Sie mehr über das [Trainieren mit Datasets](how-to-train-with-datasets.md).
 
 Die folgende Tabelle listet die Methoden auf, die dem Computeziel mitteilen, wie der Datenspeicher während der Ausführungen verwendet wird. 
 
@@ -280,10 +282,10 @@ Für Situationen, in denen das SDK keinen Zugriff auf Datenspeicher bietet, kön
 <a name="move"></a>
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>Verschieben von Daten in unterstützte Azure Storage-Lösungen
 
-Der Azure Machine Learning-Dienst unterstützt den Zugriff auf Daten aus Azure BLOB, Azure File, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL und Azure PostgreSQL. Für nicht unterstützte Speicherlösungen empfiehlt es sich, Ihre Daten mithilfe von Azure Data Factory in unsere unterstützten Azure Storage-Lösungen zu verschieben, um bei Machine Learning-Experimenten Kosten für ausgehende Daten  zu sparen. Azure Data Factory bietet effiziente und robuste Datenübertragung mit über 80 vordefinierten Connectors (z.B. Azure-Datendienste, lokale Datenquellen, Amazon S3 und Redshift sowie Google BigQuery) ohne zusätzliche Kosten. [Befolgen Sie die Schrittanleitung, um Ihre Daten mithilfe von Azure Data Factory zu verschieben](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
+Azure Machine Learning unterstützt den Zugriff auf Daten aus Azure BLOB, Azure File, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL und Azure PostgreSQL. Für nicht unterstützte Speicherlösungen empfiehlt es sich, Ihre Daten mithilfe von Azure Data Factory in unsere unterstützten Azure Storage-Lösungen zu verschieben, um bei Machine Learning-Experimenten Kosten für ausgehende Daten  zu sparen. Azure Data Factory bietet effiziente und robuste Datenübertragung mit über 80 vordefinierten Connectors (z.B. Azure-Datendienste, lokale Datenquellen, Amazon S3 und Redshift sowie Google BigQuery) ohne zusätzliche Kosten. [Befolgen Sie die Schrittanleitung, um Ihre Daten mithilfe von Azure Data Factory zu verschieben](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Trainieren eines Modells](how-to-train-ml-models.md)
+* [Trainieren eines Modells](how-to-train-ml-models.md).
 
 * [Bereitstellen eines Modells](how-to-deploy-and-where.md)

@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Erstellen eines virtuellen Netzwerks für verwaltete Instanzen
 description: In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen, in dem Sie eine verwaltete Azure SQL-Datenbank-Instanz bereitstellen können.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 2fd4055f1a2ec7b5b29d1a303f1c9ac3260f4cca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958466"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823379"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Erstellen eines virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz
 

@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Daten von Amazon S3 zu Azure Data Lake Storage Gen2 mit Azure Data Factory | Microsoft-Dokumentation
+title: Migrieren von Daten von Amazon S3 zu Azure Data Lake Storage Gen2 mit Azure Data Factory
 description: Hier erfahren Sie, wie Sie mithilfe einer Lösungsvorlage Daten aus Amazon S3 migrieren, indem Sie eine externe Steuertabelle zum Speichern einer Partitionsliste in AWS S3 mit Azure Data Factory verwenden.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2019
-ms.openlocfilehash: e4567d79b70fc18622e4a5e927031e9849b96e99
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092475"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684196"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Migrieren von Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 
@@ -35,7 +35,7 @@ Für die Datenmigration müssen in der Regel einmalig historische Daten migriert
 
 ### <a name="for-the-template-to-migrate-historical-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>So migrieren Sie mit der Vorlage historische Daten aus Amazon S3 zu Azure Data Lake Storage Gen2
 
-Bei dieser Vorlage (Vorlagenname: migrate historical data from AWS S3 to Azure Data Lake Storage Gen2) wird davon ausgegangen, dass Sie eine Partitionsliste in einer externen Steuertabelle in Azure SQL-Datenbank geschrieben haben. Sie verwendet daher eine *Lookup-Aktivität* zum Abrufen der Partitionsliste aus der externen Steuertabelle, durchläuft jede Partition und kopiert dann mit jedem ADF-Kopierauftrag jeweils eine Partition. Nach Abschluss eines Kopierauftrags wird die Aktivität *Gespeicherte Prozedur* verwendet, um den Status des Kopiervorgangs für jede Partition in der Steuertabelle zu aktualisieren.
+Bei dieser Vorlage (*Vorlagenname: migrate historical data from AWS S3 to Azure Data Lake Storage Gen2*) wird davon ausgegangen, dass Sie eine Partitionsliste in einer externen Steuertabelle in Azure SQL-Datenbank geschrieben haben. Sie verwendet daher eine *Lookup-Aktivität* zum Abrufen der Partitionsliste aus der externen Steuertabelle, durchläuft jede Partition und kopiert dann mit jedem ADF-Kopierauftrag jeweils eine Partition. Nach Abschluss eines Kopierauftrags wird die Aktivität *Gespeicherte Prozedur* verwendet, um den Status des Kopiervorgangs für jede Partition in der Steuertabelle zu aktualisieren.
 
 Die Vorlage enthält fünf Aktivitäten:
 - **Lookup** ruft die Partitionen ab, die noch nicht aus einer externen Steuertabelle in Azure Data Lake Storage Gen2 kopiert wurden. Der Tabellenname lautet *s3_partition_control_table* und die Abfrage zum Laden von Daten aus der Tabelle *"SELECT PartitionPrefix FROM s3_partition_control_table WHERE SuccessOrFailure = 0"* .

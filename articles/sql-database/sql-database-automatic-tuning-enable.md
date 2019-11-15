@@ -1,5 +1,5 @@
 ---
-title: Aktivieren der automatischen Optimierung für Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Aktivieren der automatischen Optimierung
 description: Sie können ganz einfach die automatische Optimierung für Ihre Azure SQL-Datenbank aktivieren.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 0abf4bb015be52a10178423a566433b87127a167
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162346"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821913"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung zum Überwachen von Abfragen und Verbessern der Workloadleistung
 
@@ -103,6 +103,12 @@ Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Opt
 ## <a name="disabled-by-the-system"></a>Vom System deaktiviert
 
 Die automatische Optimierung überwacht alle Aktionen, die sie für die Datenbank ausführt, und stellt manchmal unter Umständen fest, dass die automatische Optimierung für die Datenbank nicht ordnungsgemäß funktioniert. In diesem Fall wird die Optimierungsoption vom System deaktiviert. Das liegt meistens daran, dass der Abfragespeicher nicht aktiviert oder für eine bestimmte Datenbank schreibgeschützt ist.
+
+## <a name="permissions"></a>Berechtigungen
+
+Da die automatische Optimierung eine Azure-Funktion ist, müssen Sie für deren Nutzung die integrierten RBAC-Rollen von Azure verwenden. Die ausschließliche Verwendung der SQL-Authentifizierung reicht nicht aus, um die Funktion über das Azure-Portal zu nutzen.
+
+Zur Verwendung der automatischen Optimierung muss dem Benutzer mindestens die Berechtigung der integrierten Azure-Rolle [SQL-DB-Mitwirkender](../role-based-access-control/built-in-roles.md#sql-db-contributor) erteilt werden. Sie können auch Rollen mit höheren Berechtigungen verwenden, z.B. Mitwirkender von SQL Server, Mitwirkender und Besitzer.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurieren der automatischen Optimierung von E-Mail-Benachrichtigungen
 

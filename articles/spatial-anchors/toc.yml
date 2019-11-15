@@ -57,6 +57,20 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: In C++/WinRT
           href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: Verwenden der Sensoren auf einem Gerät zum Ermitteln von Ankern in der Nähe
+      items:
+        - name: 'In C#/Unity'
+          href: how-tos/set-up-coarse-reloc-unity.md
+        - name: In Objective-C
+          href: how-tos/set-up-coarse-reloc-objc.md
+        - name: In Swift
+          href: how-tos/set-up-coarse-reloc-swift.md
+        - name: In Java
+          href: how-tos/set-up-coarse-reloc-java.md
+        - name: In C++/NDK
+          href: how-tos/set-up-coarse-reloc-cpp-ndk.md
+        - name: In C++/WinRT
+          href: how-tos/set-up-coarse-reloc-cpp-winrt.md
 - name: Beispiele
   items:
     - name: Azure Spatial Anchors-Beispiele (GitHub)
@@ -71,6 +85,8 @@
       href: concepts/guidelines-effective-anchor-experiences.md
     - name: Protokollierung und Diagnose
       href: concepts/logging-diagnostics.md
+    - name: Ungefähre Standortbestimmung
+      href: concepts/coarse-reloc.md
 - name: Referenzen
   items:
     - name: SDK für Unity

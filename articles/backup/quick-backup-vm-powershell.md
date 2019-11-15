@@ -1,6 +1,6 @@
 ---
 title: 'Azure-Schnellstart: Sichern eines virtuellen Computers mit PowerShell'
-description: Es wird beschrieben, wie Sie Ihre virtuellen Computer mit Azure PowerShell sichern.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre virtuellen Azure-Computer mit dem Azure PowerShell-Modul sichern.
 author: dcurwin
 manager: carmonm
 ms.service: backup
@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: ea4f982409f339487cd570230ebbb75682f409ec
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 268cac453ed68903c73b597ffeff2569c13e9db7
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874599"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747086"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
-Mit dem [Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)-Modul können Sie Azure-Ressourcen über die Befehlszeile oder in Skripts erstellen und verwalten. 
+Mit dem [Azure PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0)-Modul können Sie Azure-Ressourcen über die Befehlszeile oder in Skripts erstellen und verwalten.
 
 Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird beschrieben, wie Sie mit dem Az-Modul einen virtuellen Azure-Computer sichern. Alternativ können Sie einen virtuellen Computer mithilfe der [Azure-Befehlszeilenschnittstelle](quick-backup-vm-cli.md) oder im [Azure-Portal](quick-backup-vm-portal.md) sichern.
 
@@ -35,12 +35,12 @@ Für diese Schnellstartanleitung ist Version 1.0.0 oder höher des Azure PowerSh
     ```powershell
     Connect-AzAccount
     ```
+
 2. Bei der ersten Verwendung von Azure Backup müssen Sie den Azure Recovery Service-Anbieter in Ihrem Abonnement mit [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider) wie folgt registrieren:
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -53,7 +53,6 @@ Beachten Sie beim Erstellen des Tresors die folgenden Punkte:
 - Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy-grs.md). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
 
 Erstellen Sie jetzt einen Tresor:
-
 
 1. Verwenden Sie das Cmdlet [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault), um den Tresor zu erstellen:
 
@@ -72,11 +71,12 @@ Erstellen Sie jetzt einen Tresor:
     ```
 
 3. Ändern Sie die Speicherredundanzkonfiguration (LRS/GRS) des Tresors wie folgt mit [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty):
-    
+
     ```powershell
     Get-AzRecoveryServicesVault `
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesBackupProperty -BackupStorageRedundancy LocallyRedundant/GeoRedundant
     ```
+
     > [!NOTE]
     > Die Speicherredundanz kann nur geändert werden, wenn im Tresor keine Sicherungselemente vorhanden sind.
 
@@ -85,7 +85,7 @@ Erstellen Sie jetzt einen Tresor:
 Sie aktivieren die Sicherung für einen virtuellen Azure-Computer und geben eine Sicherungsrichtlinie an.
 
 - Die Richtlinie definiert, wann Sicherungen ausgeführt werden und wie lange die von den Sicherungen erstellten Wiederherstellungspunkte beibehalten werden sollen.
-- Bei der Standardschutzrichtlinie wird einmal täglich eine Sicherung für den virtuellen Computer ausgeführt, und die erstellten Wiederherstellungspunkte werden 30 Tage lang beibehalten. Mit dieser Standardrichtlinie können Sie Ihren virtuellen Computer schnell schützen. 
+- Bei der Standardschutzrichtlinie wird einmal täglich eine Sicherung für den virtuellen Computer ausgeführt, und die erstellten Wiederherstellungspunkte werden 30 Tage lang beibehalten. Mit dieser Standardrichtlinie können Sie Ihren virtuellen Computer schnell schützen.
 
 Aktivieren Sie die Sicherung wie folgt:
 
@@ -112,7 +112,8 @@ Sicherungen werden gemäß dem in der Sicherungsrichtlinie angegebenen Zeitplan 
 - Bei jedem Sicherungsauftrag nach der ersten Sicherung werden inkrementelle Wiederherstellungspunkte erstellt.
 - Inkrementelle Wiederherstellungspunkte sind in Bezug auf die Speicherung und die Dauer effizient, da nur Änderungen übertragen werden, die seit der letzten Sicherung vorgenommen wurden.
 
-Zum Ausführen einer Ad-hoc-Sicherung verwenden Sie das Cmdlet [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem). 
+Zum Ausführen einer Ad-hoc-Sicherung verwenden Sie das Cmdlet [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem).
+
 - Mit [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer) geben Sie einen Container im Tresor an, der Ihre Sicherungsdaten enthält.
 - Jede zu sichernde VM wird als gesondertes Element behandelt. Zum Starten eines Sicherungsauftrags rufen Sie mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) Informationen zum virtuellen Computer ab.
 
@@ -134,7 +135,6 @@ Führen Sie einen Ad-hoc-Sicherungsauftrag wie folgt aus:
 
 2. Da beim ersten Sicherungsauftrag ein vollständiger Wiederherstellungspunkt erstellt wird, müssen Sie möglicherweise bis zu 20 Minuten warten. Überwachen Sie den Auftrag wie im nächsten Verfahren beschrieben.
 
-
 ## <a name="monitor-the-backup-job"></a>Überwachen des Sicherungsauftrags
 
 1. Führen Sie [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) aus, um den Auftragsstatus zu überwachen.
@@ -142,6 +142,7 @@ Führen Sie einen Ad-hoc-Sicherungsauftrag wie folgt aus:
     ```powershell
     Get-AzRecoveryservicesBackupJob
     ```
+
     Die Ausgabe ähnelt dem folgenden Beispiel, in dem für den Auftrag der Status **InProgress** angezeigt wird:
 
     ```output
@@ -153,10 +154,10 @@ Führen Sie einen Ad-hoc-Sicherungsauftrag wie folgt aus:
 
 2. Wenn der Auftragsstatus **Completed** lautet, ist der virtuelle Computer geschützt, und es wurde ein vollständiger Wiederherstellungspunkt gespeichert.
 
-
 ## <a name="clean-up-the-deployment"></a>Bereinigen der Bereitstellung
 
 Wenn der virtuelle Computer nicht mehr gesichert werden muss, können Sie ihn bereinigen.
+
 - Wenn Sie das Wiederherstellen des virtuellen Computers ausprobieren möchten, überspringen Sie die Bereinigung.
 - Wenn Sie einen vorhandenen virtuellen Computer verwendet haben, können Sie das letzte Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) überspringen, um die Ressourcengruppe und den VM beizubehalten.
 
@@ -169,10 +170,9 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen Recovery Services-Tresor erstellt, den Schutz für einen virtuellen Computer aktiviert und den ersten Wiederherstellungspunkt erstellt. 
+In dieser Schnellstartanleitung haben Sie einen Recovery Services-Tresor erstellt, den Schutz für einen virtuellen Computer aktiviert und den ersten Wiederherstellungspunkt erstellt.
 
 - [Erfahren Sie, wie](tutorial-backup-vm-at-scale.md) Sie im Azure-Portal VMs sichern.
 - [Erfahren Sie, wie](tutorial-restore-disk.md) Sie einen virtuellen Computer schnell wiederherstellen.

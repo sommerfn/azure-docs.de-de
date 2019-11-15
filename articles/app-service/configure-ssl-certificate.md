@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 683ea55bdc9eb878f7bcbe832d5364d50a6b23e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509004"
+ms.locfileid: "73572154"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
 
@@ -65,6 +65,7 @@ Zum Schützen einer benutzerdefinierten Domäne in einer SSL-Bindung gelten für
 
 Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lösung zum Schützen Ihres benutzerdefinierten DNS-Namens in App Service. Es handelt sich dabei um ein voll funktionsfähiges SSL-Zertifikat, das von App Service verwaltet und automatisch verlängert wird. Für das kostenlose Zertifikat gelten die folgenden Einschränkungen:
 
+- Platzhalterzertifikate werden nicht unterstützt.
 - Es unterstützt keine „nackten“ Domänen.
 - Es kann nicht exportiert werden.
 
@@ -281,7 +282,7 @@ Klicken Sie auf **Hochladen**.
 
 ![Hochladen eines öffentlichen Zertifikats in App Service](./media/configure-ssl-certificate/upload-public-cert.png)
 
-Sobald das Zertifikat hochgeladen wurde, kopieren Sie den Zertifikatfingerabdruck, und [stellen Sie sicher, dass auf das Zertifikat zugegriffen werden kann](configure-ssl-certificate-in-code.md#load-the-certificate).
+Sobald das Zertifikat hochgeladen wurde, kopieren Sie den Zertifikatfingerabdruck, und [stellen Sie sicher, dass auf das Zertifikat zugegriffen werden kann](configure-ssl-certificate-in-code.md#make-the-certificate-accessible).
 
 ## <a name="manage-app-service-certificates"></a>Verwalten von App Service-Zertifikaten
 

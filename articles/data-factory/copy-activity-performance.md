@@ -1,5 +1,5 @@
 ---
-title: Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität in Azure Data Factory | Microsoft-Dokumentation
+title: Handbuch zur Leistung und Skalierbarkeit der Copy-Aktivität in Azure Data Factory
 description: Hier erfahren Sie, welche Faktoren sich entscheidend auf die Leistung auswirken, wenn Sie Daten in Azure Data Factory mithilfe der Kopieraktivität verschieben.
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 701eaad8d36b352e946ae8d74204876b41ecb53d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232352"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73678263"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Handbuch zur Leistung und Skalierbarkeit der Kopieraktivität
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version von Azure Data Factory aus:"]
@@ -148,7 +148,7 @@ Sie können diese Standardeinstellung überschreiben, indem Sie wie folgt einen 
 Sie können die für die einzelnen Kopierausführungen verwendeten DIUs in der Ausgabe der Kopieraktivität sehen, wenn Sie eine Aktivitätsausführung überwachen. Weitere Informationen finden Sie unter [Überwachung der Kopieraktivität](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Ein höherer Wert als vier für DIUs gilt derzeit nur, wenn Sie mehrere Dateien aus Azure Storage, Azure Data Lake Storage, Amazon S3, Google Cloud Storage, Cloud-FTP oder Cloud-SFTP in einen beliebigen anderen Clouddatenspeicher kopieren.
+> Ein höherer Wert als vier für DIUs gilt derzeit nur, wenn Sie mehrere Dateien aus Azure Blob/ADLS Gen1/ADLS Gen2/Amazon S3/Google Cloud Storage/Cloud-FTP/Cloud-SFTP oder aus einem relationalen Datenspeicher mit aktivierter Partitionsoption (einschließlich [Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)) in einen beliebigen anderen Clouddatenspeicher kopieren.
 
 **Beispiel:**
 

@@ -9,18 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
-ms.openlocfilehash: d49a84f26453a6a7b2ff6d7f419fbc53ad8b98ba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ccd3e6129f4a061eacf83a1f4e70174c697480f
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475950"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73633663"
 ---
-1. Melden Sie sich mit den Anmeldeinformationen, die Sie für Ihr Azure-Abonnement verwenden, beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Wählen Sie im Azure-Portal oben links die Option **+ Ressource erstellen** aus.
 
-      ![Neue Ressource erstellen](media/aml-create-in-portal/portal-create-resource.png)
+    ![Neue Ressource erstellen](media/aml-create-in-portal/create-workspace.gif)
 
 1. Suchen Sie mithilfe der Suchleiste **Machine Learning**.
 

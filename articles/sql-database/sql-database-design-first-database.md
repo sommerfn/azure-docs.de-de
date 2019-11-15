@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Entwerfen Ihrer ersten relationalen Datenbank in Azure SQL-Datenbank mit SSMS | Microsoft-Dokumentation'
+title: 'Tutorial: Entwurf Ihrer ersten relationalen Datenbank mit SSMS'
 description: Hier erfahren Sie, wie Sie Ihre erste relationale Datenbank in einer Einzeldatenbank in Azure SQL-Datenbank mit SQL Server Management Studio entwerfen.
 services: sql-database
 ms.service: sql-database
@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: c6ad1cd7af02f281c53ece23a018f8b5ec0c7da9
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 97e603e6daa64bb70edefe06b52a7c45f90787f3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640937"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818302"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen einer relationalen Datenbank in einer Einzeldatenbank in Azure SQL-Datenbank mit SSMS
 
@@ -52,7 +52,7 @@ Eine Einzeldatenbank in Azure SQL-Datenbank wird mit einer definierten Gruppe vo
 
 Führen Sie die folgenden Schritte aus, um eine leere Einzeldatenbank zu erstellen:
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 2. Wählen Sie auf der Seite **Neu** im Abschnitt „Azure Marketplace“ die Option **Datenbanken** aus, und klicken Sie dann im Abschnitt **Empfohlen** auf **SQL-Datenbank**.
 
    ![Leere Datenbank erstellen](./media/sql-database-design-first-database/create-empty-database.png)
@@ -97,21 +97,23 @@ Der SQL-Datenbank-Dienst erstellt eine IP-Firewall auf Serverebene. Diese Firewa
 > [!IMPORTANT]
 > Der SQL-Datenbank-Dienst kommuniziert über Port 1433. Wenn Sie versuchen, mit diesem Dienst eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit der Einzeldatenbank herstellen, wenn Ihr Administrator Port 1433 öffnet.
 
-1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf *yourDatabase*. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten **Servernamen** (z.B. *yourserver.database.windows.net*) und Optionen für die weitere Konfiguration enthält.
+1. Wählen Sie nach Abschluss der Bereitstellung im Menü des Azure-Portals die Option **SQL-Datenbanken** aus, oder suchen Sie auf einer beliebigen Seite nach *SQL-Datenbanken*, und wählen Sie die entsprechende Option aus.  
 
-2. Kopieren Sie diesen vollqualifizierten Servernamen, um in SQL Server Management Studio eine Verbindung mit Ihrem Server und den Datenbanken herzustellen.
+1. Wählen Sie auf der Seite **SQL-Datenbanken** die Datenbank *yourDatabase* aus. Daraufhin wird die Übersichtsseite für Ihre Datenbank geöffnet. Dort finden Sie unter **Servername** den vollqualifizierten Servernamen (z. B. `contosodatabaseserver01.database.windows.net`) sowie Optionen für die weitere Konfiguration.
 
    ![Servername](./media/sql-database-design-first-database/server-name.png)
 
-3. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet.
+1. Kopieren Sie diesen vollqualifizierten Servernamen, um in SQL Server Management Studio eine Verbindung mit Ihrem Server und den Datenbanken herzustellen.
+
+1. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet.
 
    ![IP-Firewallregel auf Serverebene](./media/sql-database-design-first-database/server-firewall-rule.png)
 
-4. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen IP-Firewallregel hinzuzufügen. Eine IP-Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
+1. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen IP-Firewallregel hinzuzufügen. Eine IP-Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
 
-5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbank-Server wird der Port 1433 geöffnet.
+1. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbank-Server wird der Port 1433 geöffnet.
 
-6. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
+1. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
 
 Die IP-Adresse kann nun die IP-Firewall passieren. Nun können Sie mit SQL Server Management Studio oder einem anderen Tool Ihrer Wahl die Verbindung mit der Einzeldatenbank herstellen. Verwenden Sie das Serveradministratorkonto, das Sie zuvor erstellt haben.
 

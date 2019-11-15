@@ -4,13 +4,13 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 10/07/2019
 ms.author: orspodek
-ms.openlocfilehash: 4c98e8130ade4cd09cbcc1ac8140f0003733551f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a04f17ac809832b6fec51d1ffe0d9fcd6285b4ff
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031007"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73581801"
 ---
 ## <a name="authentication"></a>Authentication
 
-Um das folgende Beispiel ausführen zu können, benötigen Sie eine Azure AD-Anwendung und einen Dienstprinzipal, der auf Ressourcen zugreifen kann. Um eine kostenlose Azure AD-Anwendung zu erstellen und die Rollenzuweisung auf Abonnementebene hinzuzufügen, lesen Sie [Erstellen einer Azure AD-Anwendung](/azure/active-directory/develop/howto-create-service-principal-portal). Außerdem benötigen Sie die Angaben `directory (tenant) ID`, `application ID` und `client secret`.
+Um das folgende Beispiel ausführen zu können, benötigen Sie eine Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal, der auf Ressourcen zugreifen kann. Informationen zum Erstellen einer kostenlosen Azure AD-Anwendung und Hinzufügen einer Rollenzuweisung auf Abonnementebene finden Sie unter [Erstellen einer Azure AD-Anwendung](/azure/active-directory/develop/howto-create-service-principal-portal). Außerdem benötigen Sie die Verzeichnis-ID (Mandanten-ID), die Anwendungs-ID und den geheimen Clientschlüssel.

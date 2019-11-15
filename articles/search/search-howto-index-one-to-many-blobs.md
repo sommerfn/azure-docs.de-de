@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 863d38f6ea0f071a1c1a6678d025ec5b37a306dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466423"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818541"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indizieren von Blobs zum Generieren mehrerer Suchdokumente
 Standardmäßig behandelt ein Blobindexer die Inhalte eines Blobs als ein Suchdokument. Einige **parsingMode**-Werte unterstützen Szenarios, in denen sich aus einem einzigen Blob mehrere Suchdokumente ergeben können. Es gibt folgende unterschiedliche Typen von **parsingMode**, die es einem Indexer ermöglichen, mehr als ein Suchdokument aus einem Blob zu extrahieren:
@@ -99,7 +99,7 @@ Wenn Sie eine explizite Feldzuordnung einrichten möchten, sollten Sie sicherste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie noch nicht mit der grundlegenden Struktur und dem Workflow der Blobindizierung vertraut sind, sollten Sie zunächst [Indizieren von Azure Blob Storage mit Azure Search](search-howto-index-json-blobs.md) lesen. Weitere Informationen zum Analysemodus für die verschiedenen Blobinhaltstypen finden Sie in den folgenden Artikeln.
+Wenn Sie noch nicht mit der grundlegenden Struktur und dem Workflow der Blobindizierung vertraut sind, sollten Sie zunächst [Indizieren von Azure Blob Storage mit Azure Cognitive Search](search-howto-index-json-blobs.md) lesen. Weitere Informationen zum Analysemodus für die verschiedenen Blobinhaltstypen finden Sie in den folgenden Artikeln.
 
 > [!div class="nextstepaction"]
 > [Indizieren von CSV-Blobs](search-howto-index-csv-blobs.md)

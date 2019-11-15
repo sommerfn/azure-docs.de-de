@@ -2,19 +2,19 @@
 title: 'Schnellstart: Erstellen eines Suchindex in Node.js mithilfe von REST-APIs'
 titleSuffix: Azure Cognitive Search
 description: Dieses Node.js-Beispiel für Azure Cognitive Search veranschaulicht das Erstellen eines Indexes, das Laden von Daten in den Index und das Abfragen des Indexes aus JavaScript.
-author: lobrien
+author: HeidiSteen
 manager: nitinme
-ms.author: laobri
+ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 20a5af5ac7163c182ea01a9a9442d3c99614442d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787441"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719993"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Node.js mit REST-APIs
 > [!div class="op_single_selector"]

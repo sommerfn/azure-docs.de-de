@@ -9,33 +9,55 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949598"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647415"
 ---
-# <a name="phrase-list-features-in-your-luis-app"></a>Features für Begriffslisten in Ihrer LUIS-App
+# <a name="machine-learned-features"></a>Durch maschinelles Lernen erworbene Features 
 
-Beim maschinellen Lernen ist ein *Feature* ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht. 
+Beim maschinellen Lernen ist ein *Feature* ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht oder durch die es lernt. In Language Understanding (LUIS) beschreibt und erläutert ein Feature, was an Ihren Absichten und Entitäten wichtig ist.
 
-Fügen Sie einem Sprachmodell Features hinzu, um Hinweise zur Erkennung von Eingaben, die Sie bezeichnen oder klassifizieren möchten, bereitzustellen. Features helfen LUIS Absichten und Entitäten zu erkennen, Features sind jedoch nicht selbst Absichten oder Entitäten. Stattdessen können Features Beispiele für verwandte Begriffe liefern.  
+Im [LUIS-Vorschauportal](https://preview.luis.ai) handelt es sich bei Features um _Deskriptoren_, da sie zum _Beschreiben_ der Absicht oder Entität verwendet werden.  
 
-## <a name="what-is-a-phrase-list-feature"></a>Was ist ein Feature für eine Ausdrucksliste?
-Eine Begriffsliste ist eine Liste von Wörtern oder Wortgruppen, die für Ihre App relevanter als andere Wörter in Äußerungen sind. Eine Begriffsliste ist Teil des Vokabulars der App-Domäne als weiterer Hinweis zu diesen Wörtern für LUIS. Erkenntnisse, die LUIS zu einem davon sammelt, werden automatisch auch auf die anderen angewandt. Diese Liste ist keine geschlossene [Listenentität](luis-concept-entity-types.md#types-of-entities) mit genauen Textübereinstimmungen.
+## <a name="features-_descriptors_-in-language-understanding"></a>Features (_Deskriptoren_) in Language Understanding
 
-Begriffslisten tragen nicht zur Wortstammerkennung bei, sodass Sie Beispiele für Äußerungen hinzufügen müssen, die unterschiedliche Wortstammerkennungen für alle wichtigen Wörter und Ausdrücke verwenden.
+Features, die auch als Deskriptoren bezeichnet werden, beschreiben Hinweise, um Language Understanding das Identifizieren der Beispieläußerungen zu erleichtern. Folgende Features sind enthalten: 
 
-## <a name="phrase-lists-help-all-models"></a>Begriffslisten: hilfreich für alle Modelle
+* Ausdruckslisten als Features für Absichten oder Entitäten
+* Entitäten als Features für Absichten oder Entitäten
 
-Begriffslisten sind nicht mit einer bestimmten Absicht oder Entität verknüpft, sondern kommen allen Absichten und Entitäten zugute. Sie dienen zur Verbesserung der Absichtserkennung und der Entitätsklassifizierung.
+Features sollten zum Zweck der Modellaufschlüsselung als notwendiger Teil Ihres Schemas angesehen werden. 
 
-## <a name="how-to-use-phrase-lists"></a>Verwenden von Ausdruckslisten
+## <a name="what-is-a-phrase-list"></a>Was ist eine Ausdrucksliste
 
-[Erstellen Sie eine Begriffsliste](luis-how-to-add-features.md), wenn Ihre App Wörter oder Ausdrücke aufweist, die für die App wichtig sind, z. B.:
+Eine Ausdrucksliste ist eine Liste von Wörtern, Ausdrücken, Zahlen oder anderen Zeichen, die bei der Erkennung des Konzepts helfen, das Sie zu erkennen versuchen. In der Liste wird Groß-/Kleinschreibung unterschieden. 
+
+## <a name="when-to-use-a-phrase-list"></a>Wann Sie Ausdruckslisten verwenden
+
+Bei einer Ausdrucksliste berücksichtigt LUIS den Kontext und verallgemeinert, um Elemente zu erkennen, die einander ähnlich sind, ohne eine genaue textliche Übereinstimmung darzustellen. Wenn Sie Ihre LUIS-App in der Lage sein soll, zu generalisieren und neue Elemente zu identifizieren, verwenden Sie eine Ausdrucksliste. 
+
+Wenn Sie neue Instanzen erkennen möchten, z. B. einen Besprechungsplan, bei dem auch die Namen neuer Kontakte ermittelt werden, oder eine Inventur-App, bei der neue Produkte ermittelt werden sollen, beginnen Sie mit einer durch maschinelles Lernen erworbenen Entität. Erstellen Sie dann eine Ausdrucksliste, die LUIS hilft, Wörter mit ähnlicher Bedeutung zu finden. Diese Ausdrucksliste führt LUIS beim Erkennen von Beispielen, indem sie dem Wert dieser Wörter zusätzliche Wichtigkeit verleiht. 
+
+Ausdruckslisten ähneln einem domänenspezifischen Vokabular, das zur Verbesserung des Verständnisses von Absichten und Entitäten beiträgt. 
+
+## <a name="considerations-when-using-a-phrase-list"></a>Wichtige Aspekte bei Verwendung einer Ausdrucksliste
+
+Eine Ausdrucksliste wird standardmäßig auf alle Modelle in der App angewendet. Dies funktioniert bei Ausdruckslisten, die alle Absichten und Entitäten übergreifen können. Zum Zweck der Aufschlüsselung sollten Sie eine Ausdrucksliste nur auf die Modelle anwenden, für die sie relevant ist. 
+
+Wenn Sie eine Ausdrucksliste erstellen (standardmäßig global erstellt) und sie dann später als Deskriptor (Feature) auf ein bestimmtes Modell anwenden, wird sie aus den anderen Modellen entfernt. Diese Entfernung verleiht der Ausdruckliste für das Modell, auf das sie angewendet wird, Wichtigkeit, und hilft, die Genauigkeit, die sie im Modell bietet, zu verbessern. 
+
+Das `enabledForAllModels`-Flag steuert diesen Modellbereich in der API. 
+
+<a name="how-to-use-phrase-lists"></a>
+
+### <a name="how-to-use-a-phrase-list"></a>Verwenden von Ausdruckslisten
+
+[Erstellen Sie eine Ausdrucksliste](luis-how-to-add-features.md), wenn Ihre Absicht oder Entität wichtige Wörter oder Ausdrücke enthält, wie etwa:
 
 * Branchenbegriffe
 * Jargon
@@ -44,44 +66,25 @@ Begriffslisten sind nicht mit einer bestimmten Absicht oder Entität verknüpft,
 * Ausdrücke in einer anderen Sprache, die in Ihrer App jedoch häufig verwendet werden
 * Schlüsselwörter und -ausdrücke in Ihren Beispieläußerungen
 
-Nachdem Sie einige Wörter oder Ausdrücke eingegeben haben, verwenden Sie die Funktion **Empfehlen**, um ähnliche Werte zu ermitteln. Überprüfen Sie die verwandten Werte, bevor Sie sie Ihrer Begriffsliste als neue Werte hinzufügen.
-
-Eine Ausdrucksliste wird für synonyme Werte verwendet. Angenommen, Sie nutzen verschiedene Gewässer und eine Beispieläußerung wie: 
-
-* Welche Städte befinden sich in der Nähe der Great Lakes? 
-* Welche Straße führt entlang Lake Havasu?
-* Wo entspringt und mündet der Nil? 
-
-Jede Äußerung sollte unabhängig vom Gewässer sowohl für die Absicht als auch die Entitäten gelten: 
-
-* Welche Städte befinden sich in der Nähe von [Gewässer]?
-* Welche Straße führt entlang [Gewässer]?
-* Wo entspringt und mündet [Gewässer]? 
-
-Da die Wörter oder Begriffe für das Gewässer synonym sind, können sie in den Äußerungen untereinander austauschbar verwendet werden. 
+Fügen Sie **nicht** jedes denkbare Wort oder jeden denkbaren Ausdruck hinzu. Fügen Sie jeweils einige Wörter oder Ausdrücke hinzu, trainieren Sie erneut, und veröffentlichen Sie. Wenn die Liste Ihrer App mit der Zeit anwächst, können einige Ausdrücke möglicherweise verschiedene Formen (Synonyme) aufweisen. Gliedern Sie diese in eine weitere Liste aus. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Begriffslisten helfen bei der Erkennung einfacher austauschbarer Entitäten.
-Austauschbare Begriffslisten sind eine gute Möglichkeit, die Leistung Ihrer LUIS-App zu optimieren. Wenn die App Probleme bei der Vorhersage von Äußerungen zu den richtigen Absichten oder der Erkennung von Entitäten hat, sollten Sie überlegen, ob die Äußerungen ungewöhnliche oder mehrdeutige Wörter enthalten. Diese Wörter sind gute Kandidaten für eine Ausdrucksliste.
+## <a name="when-to-use-an-entity-as-a-feature"></a>Wann eine Entität als Feature verwendet werden soll 
 
-## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Ausdruckslisten helfen durch ein besseres Kontextverständnis bei der Erkennung von Absichten
-Eine Ausdrucksliste ist keine Anweisung an LUIS, einen strikten Abgleich auszuführen oder immer alle Begriffe in der Ausdrucksliste genau gleich zu bezeichnen. Sie stellt lediglich einen Hinweis dar. Angenommen, Sie verfügen über eine Begriffsliste, die angibt, dass „Patti“ und „Selma“ Namen sind, aber LUIS weiterhin Kontextinformationen verwenden kann, um zu erkennen, dass sie etwas anderes in „Reservierung für 2 Personen in Patti‘s Diner“ oder „zeige mir die Route nach Selma, Georgia“ bedeuten. 
+Eine Entität kann auf der Absichts- oder der Entitätsebene als Feature hinzugefügt werden. 
 
-Das Hinzufügen einer Ausdrucksliste stellt eine Alternative zum Hinzufügen zusätzlicher Beispieläußerungen zu einer Absicht dar. 
+### <a name="entity-as-a-feature-to-an-intent"></a>Entität als Feature einer Absicht
 
-## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Einsatzmöglichkeiten für Ausdruckslisten oder Listenentitäten
-Während sowohl eine Begriffsliste als auch [Listenentitäten](reference-entity-list.md) Auswirkungen auf Äußerungen für alle Absichten haben können, unterscheiden sich diese Auswirkungen. Sie verwenden eine Ausdrucksliste, um die Vorhersage von Absichten zu beeinflussen. Sie verwenden eine Listenentität, um die Extraktion von Entitäten für eine genaue Textübereinstimmung zu beeinflussen. 
+Fügen Sie eine Entität einer Absicht als Deskriptor (Feature) hinzu, wenn die Erkennung dieser Entität für die Absicht wichtig ist.
 
-### <a name="use-a-phrase-list"></a>Wann Sie Ausdruckslisten verwenden
-Mit einer Ausdrucksliste kann LUIS weiterhin den Kontext berücksichtigen und eine Generalisierung zum Identifizieren von ähnlichen Elementen ausführen, aber keine genaue Übereinstimmung wie bei Elementen in einer Liste. Wenn Sie Ihre LUIS-App in der Lage sein soll, zu generalisieren und neue Elemente in einer Kategorie zu identifizieren, verwenden Sie eine Ausdrucksliste. 
+Wenn die Absicht beispielsweise das Buchen eines Fluges und die Entität die Ticketinformationen sind (etwa die Anzahl der Sitze, Abflugort und Ankunftsort), dann würde das Auffinden der Entität mit den Ticketinformationen der Vorhersage der Flugbuchungsabsicht größeres Gewicht verleihen. 
 
-Wenn Sie neue Instanzen einer Entität erkennen möchten, z. B. einen Besprechungsplan, bei dem auch die Namen neuer Kontakte ermittelt werden, oder eine Inventur-App, bei der neue Produkte ermittelt werden sollen, verwenden Sie einen anderen Entitätstyp für das maschinelle Lernen, z. B. eine einfache Entität. Erstellen Sie anschließend eine Ausdrucksliste der Wörter und Ausdrücke, die LUIS beim Identifizieren von Wörtern hilft, die der Entität ähneln. Diese Liste unterstützt LUIS beim Erkennen von Beispielen für die Entität durch das Hinzufügen einer zusätzlichen Signifikanz zum Wert dieser Wörter. 
+### <a name="entity-as-a-feature-to-another-entity"></a>Entität als Feature einer anderen Entität
 
-Ausdruckslisten ähneln einem domänenspezifischen Vokabular, das zur Verbesserung des Verständnisses von Absichten und Entitäten beiträgt. Allgemein empfiehlt sich die Verwendung einer Ausdrucksliste mit Substantiven wie Ortsnamen. Der Name einer Stadt kann mehrere Wörter sowie Bindestriche oder Apostrophe enthalten.
- 
-### <a name="dont-use-a-phrase-list"></a>Wann Sie keine Ausdruckslisten verwenden 
-Eine Listenentität definiert explizit jeden Wert, den eine Entität annehmen kann. Es werden außerdem ausschließlich exakte übereinstimmende Werte identifiziert. Eine Listenentität kann sich für eine App eignen, in der alle Instanzen einer Entität bekannt sind und sich nicht häufig ändern. Dies gilt z.B. für die Gerichte auf der Speisekarte eines Restaurants, die sich selten ändern. Wenn Sie eine genaue Textübereinstimmung einer Entität benötigen, verwenden Sie keine Ausdrucksliste. 
+Eine Entität (A) sollte einer anderen Entität (B) als Feature hinzugefügt werden, wenn die Erkennung dieser Entität (A) für (B) wichtig ist.
+
+Wenn beispielsweise die Straßenanschriftsentität (A) erkannt wird, dann verleiht das Auffinden der Straßenanschrift (A) der Vorhersage für die Versandadressentität (B) zusätzliches Gewicht. 
 
 ## <a name="best-practices"></a>Bewährte Methoden
 Informationen zu [Best Practices](luis-concept-best-practices.md).

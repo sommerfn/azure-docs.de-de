@@ -1,5 +1,5 @@
 ---
-title: Azure SQL-Datenbank – serverlos (Vorschau) | Microsoft-Dokumentation
+title: Serverlos
 description: In diesem Artikel wird die neue serverlose Computeebene beschrieben und mit der vorhandenen bereitgestellten Computeebene verglichen.
 services: sql-database
 ms.service: sql-database
@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/04/2019
+ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173402"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818277"
 ---
-# <a name="azure-sql-database-serverless-preview"></a>Azure SQL-Datenbank – serverlos (Vorschauversion)
+# <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 
-Azure SQL-Datenbank – serverlos (Vorschauversion) ist eine Computeebene für Einzeldatenbanken, bei der auf Workloadbedarf basierende Computeressourcen automatisch skaliert werden und die Nutzung sekundengenau abrechnet wird. Wenn nur der verwendete Speicher in Rechnung gestellt wird, hält die serverlose Computeebene außerdem Datenbanken während inaktiver Zeiträume automatisch an und startet diese wieder, wenn es wieder zu Aktivität kommt.
+Azure SQL-Datenbank – Serverlos ist eine Computeebene für Einzeldatenbanken, bei der auf Workloadbedarf basierende Computeressourcen automatisch skaliert werden und die Nutzung sekundengenau abrechnet wird. Wenn nur der verwendete Speicher in Rechnung gestellt wird, hält die serverlose Computeebene außerdem Datenbanken während inaktiver Zeiträume automatisch an und startet diese wieder, wenn es wieder zu Aktivität kommt.
 
 ## <a name="serverless-compute-tier"></a>Serverlose Computeebene
 
@@ -171,11 +171,9 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
 
    |Parameter|Auswahlmöglichkeiten für Werte|Standardwert|
    |---|---|---|---|
-   |Mindestanzahl virtueller Kerne|Hängt von den konfigurierten maximalen virtuellen Kernen ab (siehe [Ressourceneinschränkungen](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)).|0,5 V-Kerne|
+   |Mindestanzahl virtueller Kerne|Hängt von den konfigurierten maximalen virtuellen Kernen ab (siehe [Ressourceneinschränkungen](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)).|0,5 V-Kerne|
    |Verzögerung für das automatische Anhalten|Minimum: 60 Minuten (1 Stunde)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 60 Minuten<br>Automatisches Anhalten deaktivieren: -1|60 Minuten|
 
-> [!NOTE]
-> Das Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene oder das Ändern der Computegröße mithilfe von T-SQL wird derzeit nicht unterstützt. Diese Vorgänge können jedoch über das Azure-Portal oder PowerShell ausgeführt werden.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Erstellen einer neuen Datenbank in der serverlosen Computeebene 
 
@@ -200,6 +198,17 @@ New-AzSqlDatabase `
   -AutoPauseDelayInMinutes 720
 ```
 
+#### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
+
+Das folgende Beispiel erstellt eine neue Datenbank in der serverlosen Computeebene.
+
+```sql
+CREATE DATABASE testdb
+( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
+```
+
+Weitere Informationen finden Sie unter [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
+
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Verschieben einer Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene
 
 #### <a name="use-powershell"></a>Verwenden von PowerShell
@@ -218,6 +227,17 @@ Set-AzSqlDatabase `
   -MaxVcore 4 `
   -AutoPauseDelayInMinutes 1440
 ```
+
+#### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
+
+Im folgenden Beispiel wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. 
+
+```sql
+ALTER DATABASE testdb 
+MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
+```
+
+Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
 ### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Verschieben einer Datenbank aus der serverlosen Computeebene in die bereitgestellte Computeebene
 
@@ -288,7 +308,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Ressourceneinschränkungen
 
-Ressourceneinschränkungen werden unter [serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute) beschrieben.
+Ressourceneinschränkungen werden unter [serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5) beschrieben.
 
 ## <a name="billing"></a>Abrechnung
 
@@ -324,6 +344,10 @@ Die genaue Berechnung der Computekosten für dieses Beispiel lautet:
 
 Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000073 USD/V-Kern/Sekunde * 50.400 Sekunden für virtuelle Kerne = 3,68 USD
 
+### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure-Hybridvorteil und reservierte Kapazität
+
+Rabatte für Azure-Hybridvorteil (Azure Hybrid Benefit, AHB) und reservierte Kapazität gelten nicht für die serverlose Computeebene.
+
 ## <a name="available-regions"></a>Verfügbare Regionen
 
 Die serverlose Computeebene ist weltweit verfügbar, mit Ausnahme der folgenden Regionen: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „Vereinigtes Königreich, Norden“, „Vereinigtes Königreich, Süden 2“, „USA, Westen-Mitte“ und „US Government, Mitte (Iowa)“.
@@ -331,4 +355,4 @@ Die serverlose Computeebene ist weltweit verfügbar, mit Ausnahme der folgenden 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu den ersten Schritten finden Sie unter [Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal](sql-database-single-database-get-started.md).
-- Ressourceneinschränkungen werden unter [Ressourceneinschränkungen für die serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute) beschrieben.
+- Ressourceneinschränkungen werden unter [Ressourceneinschränkungen für die serverlose Computeebene](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5) beschrieben.

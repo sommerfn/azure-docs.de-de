@@ -1,17 +1,17 @@
 ---
-title: Anleitung zur Leistung und Optimierung von Mapping Data Flow in Azure Data Factory | Microsoft-Dokumentation
+title: Anleitung zur Leistung und Optimierung von Zuordnungsdatenflüssen in Azure Data Factory
 description: Erfahren Sie, welche Faktoren sich entscheidend auf die Leistung der Mapping Data Flow-Funktion in Azure Data Factory auswirken.
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 24b0deb60f1047228dc3ff6000d423e7cb6939ca
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72387316"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681548"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 

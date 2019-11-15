@@ -1,5 +1,5 @@
 ---
-title: Aktivität „Azure Function“ in Azure Data Factory | Microsoft-Dokumentation
+title: Aktivität „Azure Function“ in Azure Data Factory
 description: Erfahren Sie, wie Sie die Aktivität „Azure Function“ verwenden, um eine Azure-Funktion in einer Data Factory-Pipeline auszuführen
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: a3499637fb5320afe80bf4eefa634173db31f1b6
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931864"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73679954"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivität „Azure Function“ in Azure Data Factory
 

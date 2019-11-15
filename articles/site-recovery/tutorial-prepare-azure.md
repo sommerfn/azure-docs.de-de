@@ -1,5 +1,5 @@
 ---
-title: Vorbereiten von Azure für die Notfallwiederherstellung von lokalen Computern mit Azure Site Recovery
+title: Vorbereiten von Azure für die lokale Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie Azure für die Notfallwiederherstellung von lokalen Computern mit Azure Site Recovery vorbereiten.
 services: site-recovery
 author: rayne-wiselman
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 1ec668fac087773001ca401eefb5ca8bc10ea2b8
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814348"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620597"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Notfallwiederherstellung von lokalen Computern
+# <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Vorbereiten von Azure für die lokale Notfallwiederherstellung in Azure
 
 In diesem Artikel wird beschrieben, wie Sie Azure-Ressourcen und -Komponenten so vorbereiten, dass Sie die Notfallwiederherstellung lokaler virtueller VMware- und Hyper-V-Computer oder physischer Windows-/Linux-Server in Azure mit dem Dienst [Azure Site Recovery](site-recovery-overview.md) einrichten können.
 
@@ -54,16 +54,17 @@ Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirk
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
-1. Klicken Sie im Azure-Portal auf **+ Ressource erstellen**, und suchen Sie im Marketplace nach **Wiederherstellung**.
-2. Klicken Sie auf **Backup & Site Recovery** und auf der Seite „Backup & Site Recovery“ auf **Erstellen**. 
-1. Geben Sie unter **Recovery Services-Tresor** > **Name** einen Anzeigenamen ein, über den der Tresor identifiziert wird. Für diese Tutorials verwenden wir **ContosoVMVault**.
-2. Wählen Sie in **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. Für dieses Tutorial verwenden wir **contosoRG**.
-3. Wählen Sie in **Standort** die Region aus, in der der Tresor gespeichert werden soll. verwenden wir **Europa, Westen**.
-4. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.
+1. Klicken Sie im Azure-Portal im Menü auf **Ressource erstellen**, und suchen Sie in Marketplace nach **Wiederherstellung**.
+2. Klicken Sie in den Suchergebnissen auf **Backup & Site Recovery**, und klicken Sie auf der Seite „Backup & Site Recovery“ auf **Erstellen**. 
+3. Wählen Sie auf der Seite **Recovery Services-Tresor erstellen** das **Abonnement** aus. Hier wird **Contoso Subscription** verwendet.
+4. Wählen Sie in **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. Für dieses Tutorial verwenden wir **contosoRG**.
+5. Geben Sie in **Tresorname** einen Anzeigenamen zum Bestimmen des Tresors ein. Für diese Tutorials verwenden wir **ContosoVMVault**.
+6. Wählen Sie in **Region** die Region aus, in der sich der Tresor befinden soll. verwenden wir **Europa, Westen**.
+7. Klicken Sie auf **Überprüfen + erstellen**.
 
    ![Erstellen eines neuen Tresors](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Der neue Tresor wird unter **Dashboard** > **Alle Ressourcen** und auf der Hauptseite **Recovery Services-Tresore** angezeigt.
+   Der neue Tresor wird nun unter **Dashboard** > **Alle Ressourcen** und auf der Hauptseite **Recovery Services-Tresore** aufgeführt.
 
 ## <a name="set-up-an-azure-network"></a>Richten Sie ein Azure-Netzwerk ein
 
@@ -72,12 +73,13 @@ Lokale Computer werden auf verwalteten Azure-Datenträgern repliziert. Bei einem
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
 2. Behalten Sie **Resource Manager** als Auswahl für das Bereitstellungsmodell bei.
 3. Geben Sie unter **Name** einen Netzwerknamen ein. Der Name muss innerhalb der Azure-Ressourcengruppe eindeutig sein. Wir verwenden **ContosoASRnet** in diesem Tutorial.
-4. Geben Sie die Ressourcengruppe an, in der das Netzwerk erstellt wird. Wir verwenden die vorhandene Ressourcengruppe **contosoRG**.
-5. Geben Sie unter **Adressbereich** den Netzwerkadressbereich ein. Hier wird **10.1.0.0/24** und kein Subnetz verwendet.
-6. Wählen Sie unter **Abonnement** das Abonnement aus, in dem das Netzwerk erstellt werden soll.
+4. Geben Sie unter **Adressraum** den Adressbereich des virtuellen Netzwerks in CIDR-Notation ein. Wir verwenden **10.1.0.0/24**.
+5. Wählen Sie unter **Abonnement** das Abonnement aus, in dem das Netzwerk erstellt werden soll.
+6. Geben Sie die **Ressourcengruppe** an, in der das Netzwerk erstellt wird. Wir verwenden die vorhandene Ressourcengruppe **contosoRG**.
 7. Wählen Sie unter **Standort** die gleiche Region aus, in der auch der Recovery Services-Tresor erstellt wurde. In diesem Tutorial wird **Europa, Westen** verwendet. Das Netzwerk muss sich in der gleichen Region wie der Tresor befinden.
-8. Wir behalten die Standardoptionen des DDoS-Basisschutzes ohne Dienstendpunkt im Netzwerk bei.
-9. Klicken Sie auf **Create**.
+8. Geben Sie unter **Adressbereich** den Netzwerkadressbereich ein. Hier wird **10.1.0.0/24** und kein Subnetz verwendet.
+9. Wir behalten die Standardoptionen des DDoS-Basisschutzes ohne Dienstendpunkt oder Firewall im Netzwerk bei.
+9. Klicken Sie auf **Erstellen**.
 
    ![Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
 

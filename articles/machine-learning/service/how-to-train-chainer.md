@@ -1,5 +1,5 @@
 ---
-title: Trainieren eines neuronalen Deep Learning-Netz mit Chainer
+title: Trainieren von Deep Learning-Chainer-Modellen
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Ihre PyTorch-Trainingsskripts im Unternehmensumfang mit der Chainer-Estimator-Klasse von Azure Machine Learning ausführen.  Das Beispielskript klassifiziert Bilder von handschriftlichen Ziffern, um ein neuronales Deep Learning-Netz zu erzeugen, wobei die Python-Bibliothek von Chainer verwendet wird, die auf numpy ausgeführt wird.
 services: machine-learning
@@ -10,14 +10,15 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 70d6bd9507670a8846b2a79509b6b6e571f17e37
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: bfe44e552618dfbee13e8c85ef424f52d4b7ae5f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710084"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73814995"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Ihre [Chainer](https://chainer.org/)-Trainingsskripts im Unternehmensumfang mit der [Chainer-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen. Das Beispieltrainingsskript in diesem Artikel verwendet das beliebte [MNIST-Dataset](http://yann.lecun.com/exdb/mnist/), um handschriftliche Ziffern mithilfe eines DNN (Deep Neural Network) zu klassifizieren, das mit der Python-Bibliothek von Chainer erstellt wurde, die auf [numpy](https://www.numpy.org/) ausgeführt wird.
 

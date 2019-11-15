@@ -1,5 +1,5 @@
 ---
-title: Öffentliche Datasets für Azure-Analysen | Microsoft-Dokumentation
+title: Öffentliche Datasets für Azure-Analysen
 description: Hier erhalten Sie Informationen zu öffentlichen Datasets, mit denen Sie einen Prototyp Ihrer Analysedienste und -lösungen in Azure erstellen und diese Dienste und Lösungen testen können.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: a16f6d6b0bf8600270fdf4e00cfa379ee4422fd0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566989"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73821278"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Öffentliche Datasets zum Testen und Erstellen von Prototypen
 
@@ -42,7 +42,7 @@ Durchsuchen Sie diese Liste mit öffentlichen Datasets nach Daten, mit denen Sie
 | [New York City-Taxidaten](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | „Datensätze zu Taxifahrten enthalten Felder mit Datum/Uhrzeit für Abholung und Ankunft, Start- und Zielort, Fahrtentfernungen, Einzelkosten, Tarifarten, Zahlungsarten und vom Fahrer gemeldeten Fahrgastzahlen.“ | Datasets liegen in CSV-Dateien sortiert nach Monat vor. |
 | [Microsoft Research-Datasets – „Data Science für Research“](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Mehrere Datasets zu Interaktionen zwischen Mensch und Computer, Audio/Video, Data Mining/Informationsabruf, raum-/standortbezogenen Daten, Verarbeitung natürlicher Sprache und Robotik/maschinellem Sehen. | Datasets sind in verschiedenen Formaten verfügbar (ZIP-Dateien für den Download). |
 | [Öffentliche Genomdaten](https://www.completegenomics.com/public-data/) | „Ein vielseitiges Dataset mit vollständigen menschlichen Genomen steht kostenlos zur öffentlichen Nutzung zur Verfügung und soll zur Verbesserung von Genomstudien beitragen...“. Der Anbieter, Complete Genomics, ist ein privates gewinnorientiertes Unternehmen. | Datasets stehen nach dem Extrahieren im UNIX-Textformat zur Verfügung. Analysetools sind ebenfalls verfügbar. |
-| [Open Science Data Cloud-Daten](https://www.opensciencedatacloud.org/) | „Open Science Data Cloud stellt der wissenschaftlichen Gemeinschaft Ressourcen zum Speichern, Teilen und Analysieren von wissenschaftlichen Datasets im Tera- und Petabytebereich zur Verfügung.“| Die Datasets liegen in verschiedenen Formaten vor. |
+| [Open Science Data Cloud-Daten](https://www.opensciencedatacloud.org/projects/) | „Open Science Data Cloud stellt der wissenschaftlichen Gemeinschaft Ressourcen zum Speichern, Teilen und Analysieren von wissenschaftlichen Datasets im Tera- und Petabytebereich zur Verfügung.“| Die Datasets liegen in verschiedenen Formaten vor. |
 | [Globale Klimadaten – WorldcLIM](https://worldclim.org/) | „Das WorldClim-Dataset enthält eine Reihe von globalen Klimastufen (gerasterte Klimadaten) mit einer räumlichen Auflösung von etwa einem Quadratkilometer. Diese Daten können für Kartierung und Raummodelle verwendet werden.“ | Diese Dateien enthalten Geodaten. Weitere Informationen finden Sie unter [Datenformat](https://worldclim.org/formats1). |
 | [Daten zur menschlichen Gesellschaft – The GDELT Project](https://www.gdeltproject.org/data.html) | „The GDELT Project ist die größte, umfangreichste und detaillierteste offene Datenbank zur menschlichen Gesellschaft, die je erstellt wurde.“ | Die Rohdatendateien liegen im CSV-Format vor. |
 | [Daten zur Werbungsklickvorhersage für Machine Learning von Criteo](https://labs.criteo.com/2013/12/download-terabyte-click-logs/) | „Das größte jemals öffentlich freigegebene ML-Dataset.“ Weitere Informationen finden Sie unter [Criteo's 1 TB Click Prediction Dataset](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/) (1-TB-Klickvorhersage-Dataset von Criterio). | |

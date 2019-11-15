@@ -1,21 +1,22 @@
 ---
-title: Sichern einer Datenbank in SQL Data Warehouse | Microsoft Docs
+title: Sichern einer Datenbank
 description: Tipps für das Sichern einer Datenbank in Azure SQL Data Warehouse für die Entwicklung von Lösungen.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/17/2018
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: 179925fc7411a1ccf3de02d7b6298cc66f93bc66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c51a945bae7cc0b03c219bc041d64f4703baef19
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61126939"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692576"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Sichern einer Datenbank in SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -59,9 +60,9 @@ Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindu
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Um einem Benutzer die Berechtigung zu erteilen, zusätzliche Vorgänge wie das Erstellen von Anmeldedaten oder neuer Datenbanken auszuführen, weisen Sie dem Benutzer die Rollen `Loginmanager` und `dbmanager` in der Masterdatenbank zu. Weitere Informationen zu diesen zusätzlichen Rollen sowie zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Managing databases and logins in Azure SQL Database][Managing databases and logins in Azure SQL Database] (Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank).  Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication].
+Um einem Benutzer die Berechtigung zu erteilen, zusätzliche Vorgänge wie das Erstellen von Anmeldedaten oder neuer Datenbanken auszuführen, weisen Sie dem Benutzer die Rollen `Loginmanager` und `dbmanager` in der Masterdatenbank zu. Weitere Informationen zu diesen zusätzlichen Rollen sowie zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank][Managing databases and logins in Azure SQL Database].  Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse mithilfe der Azure Active Directory-Authentifizierung][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication].
 
-## <a name="authorization"></a>Autorisierung
+## <a name="authorization"></a>Authorization
 Autorisierung bezieht sich auf Ihre Berechtigungen innerhalb einer Azure SQL Data Warehouse-Datenbank. Autorisierungsrechte werden anhand von Rollenmitgliedschaften und -berechtigungen festgelegt. Als bewährte Methode sollten Sie Benutzern nur die minimal erforderlichen Berechtigungen erteilen. Um Rollen zu verwalten, können Sie die folgenden gespeicherten Prozeduren verwenden:
 
 ```sql
@@ -74,8 +75,8 @@ Das Server-Admin-Konto, mit dem Sie eine Verbindung herstellen, ist Mitglied von
 Es gibt Möglichkeiten, Benutzerberechtigungen für Azure SQL Data Warehouse weiter einzuschränken:
 
 * Mithilfe von granularen [Berechtigungen][Permissions] können Sie steuern, welche Vorgänge in einzelnen Spalten, Tabellen, Sichten, Schemas, Prozeduren und anderen Objekten in der Datenbank ausgeführt werden dürfen. Verwenden Sie präzise Berechtigungen, um die größtmögliche Kontrolle zu haben und die geringstmöglichen Berechtigungen zu erteilen. 
-* [Datenbankrollen][Database roles] können – mit Ausnahme von „db_datareader“ und „db_datawriter“ – dazu verwendet werden, Anwendungsbenutzerkonten mit mehr Berechtigungen oder Verwaltungskonten mit weniger Berechtigungen zu erstellen. Die integrierten festen Datenbankrollen bieten eine einfache Möglichkeit zum Erteilen von Berechtigungen, können jedoch auch dazu führen, dass mehr Berechtigungen als nötig erteilt werden.
-* [Gespeicherte Prozeduren][Stored procedures] können verwendet werden, um die Aktionen zu begrenzen, die in der Datenbank ausgeführt werden können.
+* [Datenbankrollen][Database roles] können, mit Ausnahme von „db_datareader“ und „db_datawriter“, dazu verwendet werden, Anwendungsbenutzerkonten mit mehr Berechtigungen oder Verwaltungskonten mit weniger Berechtigungen zu erstellen. Die integrierten festen Datenbankrollen bieten eine einfache Möglichkeit zum Erteilen von Berechtigungen, können jedoch auch dazu führen, dass mehr Berechtigungen als nötig erteilt werden.
+* [Gespeicherten Prozeduren][Stored procedures] können verwendet werden, um die Aktionen zu begrenzen, die in der Datenbank ausgeführt werden können.
 
 Im folgenden Beispiel wird Lesezugriff für ein benutzerdefiniertes Schema erteilt.
 ```sql
@@ -88,7 +89,7 @@ Die Verwaltung von Datenbanken und logischen Servern über das Azure-Portal oder
 ## <a name="encryption"></a>Verschlüsselung
 Azure SQL Data Warehouse Transparent Data Encryption (TDE) ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu wird die Verschlüsselung und Entschlüsselung Ihrer ruhenden Daten ausgeführt.  Wenn Sie Ihre Datenbank verschlüsseln, werden zugehörige Sicherungen und Transaktionsprotokolle verschlüsselt, ohne dass Änderungen an Ihren Anwendungen erforderlich sind. TDE verschlüsselt die Speicherung einer gesamten Datenbank, indem ein symmetrischer Schlüssel verwendet wird, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. 
 
-In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Der von SQL Data Warehouse verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparente Datenverschlüsselung (TDE)][Transparent Data Encryption].
+In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. Der von SQL Data Warehouse verwendete Verschlüsselungsalgorithmus ist AES-256. Eine allgemeine Beschreibung von TDE finden Sie unter [Transparent Data Encryption (Transparente Datenverschlüsselung, TDE)][Transparent Data Encryption].
 
 Sie können Ihre Datenbank mit dem [Azure-Portal][Encryption with Portal] oder mit [T-SQL][Encryption with TSQL] verschlüsseln.
 

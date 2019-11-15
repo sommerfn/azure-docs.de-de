@@ -1,39 +1,55 @@
 ---
-title: Häufig gestellte Fragen zu Azure SQL Data Warehouse | Microsoft-Dokumentation
-description: Dieser Artikel enthält häufig gestellte Fragen von Kunden und Entwicklern zu Azure SQL Data Warehouse.
+title: 'Azure Synapse Analytics (früher SQL DW): Häufig gestellte Fragen'
+description: Dieser Artikel enthält häufig gestellte Fragen von Kunden und Entwicklern zu Azure Synapse Analytics (früher SQL DW).
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4679a3bb1935e9f3e2bc90c9bc9ef1247b7ecb30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515871"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73645593"
 ---
-# <a name="sql-data-warehouse-frequently-asked-questions"></a>Häufig gestellte Fragen zu SQL Data Warehouse
+# <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (früher SQL DW) – Häufig gestellte Fragen
 
 ## <a name="general"></a>Allgemein
 
-F: Welche Datensicherheit bietet SQL DW?
+F: Was ist Azure Synapse?
 
-A. SQL DW bietet verschiedene Lösungen für den Schutz von Daten, etwa transparente Datenverschlüsselung (Transparent Data Encryption, TDE) und Überwachung. Weitere Informationen finden Sie unter [Sicherheit].
+A. Azure Synapse ist ein grenzenloser Analysedienst, der Data Warehousing mit Big Data-Analysen kombiniert. Er ermöglicht flexible Datenabfragen nach Ihren Vorstellungen unter Verwendung von serverlosen On-Demand-Ressourcen oder bereitgestellten Ressourcen im gewünschten Umfang. Azure Synapse kombiniert diese beiden Welten in einer vereinheitlichten Oberfläche zur Erfassung, Vorbereitung, Verwaltung und Verarbeitung von Daten für sofortige BI- und Machine Learning-Anforderungen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
 
-F: Wo finde ich Informationen dazu, welche rechtlichen oder geschäftsspezifischen Standards SQL DW erfüllt?
+F: Was ist mit Azure SQL Data Warehouse geschehen?
 
-A. Auf der Seite [Microsoft-Compliance] finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO). Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure-Dienste anzuzeigen.
+A. Bei Azure Synapse handelt es sich um ein weiterentwickeltes Azure SQL Data Warehouse (SQL DW). Wir haben dasselbe branchenführende Data Warehouse auf ein ganz neues Leistungs-und Funktionsniveau gebracht. Sie können Ihre vorhandenen Data Warehouse Workloads in der Produktion heute mit Azure Synapse weiterhin ausführen und gleichzeitig von den neuen Funktionen (derzeit in der Vorschauversion) automatisch profitieren. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
 
-F: Kann ich eine Verbindung mit PowerBI herstellen?
+F: Was ist SQL Analytics?
 
-A. Ja. PowerBI unterstützt zwar direkte Abfragen mit SQL DW, ist jedoch nicht für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten vorgesehen. Für die Verwendung von PowerBI in der Produktion wird die Nutzung von PowerBI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen. 
+A. SQL Analytics bezieht sich auf die Data Warehousing-Features für Unternehmen, die in Azure Synapse allgemein zur Verfügung stehen. Weitere Informationen finden Sie unter [Was ist Azure Synapse Analytics?](sql-data-warehouse-overview-what-is.md).
 
-F: Welche Kapazitätsgrenzen hat SQL Data Warehouse?
+F: Wie beginne ich mit der Nutzung von Azure Synapse?
+
+A. Sie können mit einem [kostenlosen Azure-Konto](https://azure.microsoft.com/free/sql-data-warehouse/) beginnen oder [den Vertrieb kontaktieren, um weitere Informationen zu erhalten](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html). 
+
+F: Was bietet Azure Synapse für die Datensicherheit?
+
+A. Azure Synapse bietet verschiedene Lösungen für den Schutz von Daten, z.B. transparente Datenverschlüsselung (Transparent Data Encryption, TDE) und Überwachung. Weitere Informationen finden Sie unter [Sicherheit].
+
+F: Wo finde ich Informationen dazu, welche rechtlichen oder geschäftsspezifischen Standards Azure Synapse erfüllt?
+
+A. Auf der Seite [Microsoft-Compliance] finden Sie verschiedene nach Produkt sortierte Compliance-Angebote (beispielsweise für SOC und ISO). Wählen Sie zunächst einen Compliancetitel aus. Erweitern Sie anschließend rechts auf der Seite im Abschnitt mit den konformen Microsoft-Clouddiensten den Knoten „Azure“, um die richtlinienkonformen Azure Synapse-Dienste anzuzeigen.
+
+F: Kann ich eine Verbindung mit Power BI herstellen?
+
+A. Ja. Power BI unterstützt zwar direkte Abfragen mit Azure Synapse, ist für eine große Anzahl von Benutzern oder eine große Menge von Echtzeitdaten aber nicht vorgesehen. Um die Leistung von Power BI weiter zu steigern, wird die Nutzung von Power BI zusätzlich zu Azure Analysis Services oder Analysis Service IaaS empfohlen.
+
+F: Welche Kapazitätsgrenzen gibt es für SQL Analytics?
 
 A. Informationen finden Sie auf der Seite mit den [Kapazitätsgrenzen]. 
 
@@ -49,7 +65,7 @@ A. Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVo
 
 F: Wo finde ich Informationen zu x?
 
-A. Wenn Sie Hilfe bei der Entwicklung mit SQL Data Warehouse benötigen, können Sie Fragen auf der Seite [Stack Overflow] stellen. 
+A. Wenn Sie Hilfe bei der Entwicklung mit Azure Synapse benötigen, können Sie auf unserer Seite [Stack Overflow] Fragen stellen. 
 
 F: Wie übermittle ich ein Supportticket?
 
@@ -57,23 +73,23 @@ A. [Supporttickets] können über das Azure-Portal erstellt werden.
 
 ## <a name="sql-languagefeature-support"></a>Unterstützung von SQL-Sprache/-Features 
 
-F: Welche Datentypen werden von SQL Data Warehouse unterstützt?
+F: Welche Datentypen werden unterstützt?
 
-A. Informationen finden Sie im Thema zu SQL Data Warehouse-[Datentypen].
+A. Lesen Sie dazu [Datentypen].
 
 F: Welche Tabellenfunktionen werden unterstützt?
 
-A. SQL Data Warehouse unterstützt zahlreiche Funktionen. Die nicht unterstützten Funktionen sind unter [Nicht unterstützte Tabellenfunktionen] dokumentiert.
+A. Viele Funktionen werden unterstützt. Die nicht unterstützten sind in [Nicht unterstützte Tabellenfunktionen] dokumentiert.
 
 ## <a name="tooling-and-administration"></a>Tools und Verwaltung
 
 F: Werden Datenbankprojekte in Visual Studio unterstützt?
 
-A. Derzeit werden keine Datenbankprojekte in Visual Studio für SQL Data Warehouse unterstützt. Wenn Sie für die Einführung dieses Features stimmen möchten, besuchen Sie unsere User Voice-Seite für die [Anforderung von Features für Datenbankprojekte].
+A. Wir unterstützen in Visual Studio derzeit keine Datenbankprojekte. Wenn Sie für die Einführung dieses Features stimmen möchten, besuchen Sie unsere User Voice-Seite für die [Anforderung von Features für Datenbankprojekte].
 
-F: Unterstützt SQL Data Warehouse REST-APIs?
+F: Unterstützt SQL Analytics Rest-APIs?
 
-A. Ja. Die meisten REST-Funktionen, die mit SQL-Datenbank verwendet werden können, sind auch für SQL Data Warehouse verfügbar. API-Informationen finden Sie auf den REST-Dokumentationsseiten oder auf [MSDN].
+A. Ja. Die meisten REST-Funktionen, die bei SQL-Datenbank verwendet werden können, sind auch für SQL Analytics verfügbar. API-Informationen finden Sie auf den REST-Dokumentationsseiten oder auf [MSDN].
 
 
 ## <a name="loading"></a>Laden
@@ -82,24 +98,24 @@ F: Welche Clienttreiber werden unterstützt?
 
 A. Treiberunterstützung für DW finden Sie auf der Seite [Verbindungszeichenfolgen].
 
-F: Welche Dateiformate werden von PolyBase und SQL Data Warehouse unterstützt?
+F: Welche Dateiformate werden von PolyBase unterstützt?
 
 A: Orc, RC, Parquet und flacher, durch Trennzeichen getrennter Text
 
-F: Mit welchen Komponenten kann ich in SQL DW mithilfe von PolyBase Verbindungen herstellen? 
+F: Mit welchen Datenquellen kann ich mithilfe von PolyBase eine Verbindung herstellen? 
 
 A: [Azure Data Lake Store] und [Azure-Speicherblobs]
 
 F: Ist ein Berechnungs-Pushdown möglich, wenn ich eine Verbindung mit Azure Storage Blobs oder ADLS herstelle? 
 
-A: Nein. PolyBase in SQL DW interagiert nur mit den Speicherkomponenten. 
+A: Nein. PolyBase interagiert nur mit den Speicherkomponenten. 
 
 F: Kann ich eine Verbindung mit HDI herstellen?
 
 A: HDI kann entweder ADLS oder WASB als HDFS-Ebene verwenden. Wenn Sie eine der beiden Komponenten als HDFS-Ebene verwenden, können Sie diese Daten in SQL DW laden. Sie können jedoch keine Pushdown-Berechnung für die HDI-Instanz ausführen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu SQL Data Warehouse im Allgemeinen finden Sie auf der Seite mit der [Übersicht].
+Weitere Informationen zu Azure Synapse im Allgemeinen finden Sie auf unserer Seite mit der [Übersicht].
 
 
 <!-- Article references -->

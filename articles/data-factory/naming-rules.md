@@ -1,5 +1,5 @@
 ---
-title: Regeln für die Benennung von Azure Data Factory-Entitäten | Microsoft-Dokumentation
+title: Regeln für die Benennung von Azure Data Factory-Entitäten
 description: Beschreibt die Benennungsregeln für Data Factory-Entitäten.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: c31cffd3c1734e8f71f8971d597eb9e3703ae331
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 04de8a72d248311729fbee647322679634b5c982
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166422"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684585"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory – Benennungsregeln
 Die folgende Tabelle enthält Benennungsregeln für Data Factory-Artefakte.
