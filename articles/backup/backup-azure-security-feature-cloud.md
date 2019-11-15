@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129337"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622012"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
@@ -70,6 +70,29 @@ In diesem Flussdiagramm sind die unterschiedlichen Schritte und Status eines Sic
 
 Weitere Informationen finden Sie unten im Abschnitt [Häufig gestellte Fragen](backup-azure-security-feature-cloud.md#frequently-asked-questions).
 
+## <a name="disabling-soft-delete"></a>Deaktivieren des vorläufigen Löschens
+
+Das vorläufige Löschen ist bei neu erstellten Tresoren standardmäßig aktiviert. Wenn das Sicherheitsfeature für vorläufiges Löschen deaktiviert ist, sind die Sicherungsdaten nicht vor versehentlichen oder böswilligen Löschvorgängen geschützt. Ohne das Feature für vorläufiges Löschen führen alle Löschvorgänge von geschützten Elementen zu einer sofortigen Entfernung, ohne die Möglichkeit zur Wiederherstellung. Da für den Kunden keine Kosten für die Sicherung von Daten im Zustand „Vorläufiges Löschen“ anfallen, wird die Deaktivierung dieses Features nicht empfohlen. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung).
+
+### <a name="prerequisites-for-disabling-soft-delete"></a>Voraussetzungen für das Deaktivieren des vorläufigen Löschens
+
+- Das Aktivieren oder Deaktivieren des vorläufigen Löschens für Tresore (ohne geschützte Elemente) kann nur über das Azure-Portal erfolgen. Dies gilt für:
+  - Neu erstellte Tresore, die keine geschützten Elemente enthalten.
+  - Vorhandene Tresore, deren geschützte Objekte gelöscht und abgelaufen sind (über den festgelegten 14-tägigen Aufbewahrungszeitraum hinaus).
+- Wenn das Feature für vorläufiges Löschen für den Tresor deaktiviert ist, können Sie es erneut aktivieren, aber Sie können diese Option nicht rückgängig machen und wieder deaktivieren, wenn der Tresor geschützte Elemente enthält.
+- Sie können das Feature für vorläufiges Löschen für Tresore, die geschützte Elemente enthalten oder sich im Zustand „vorläufig gelöscht“ befinden, nicht deaktivieren. Führen Sie in diesem Fall die folgenden Schritte aus:
+  - Beenden Sie den Schutz der gelöschten Daten für alle geschützten Elemente.
+  - Warten Sie, bis die 14 Tage des Sicherheitsaufbewahrungszeitraums abgelaufen sind.
+  - Deaktivieren Sie das vorläufige Löschen.
+
+Um das vorläufige Löschen zu deaktivieren, stellen Sie sicher, dass die Voraussetzungen erfüllt sind, und führen Sie dann die folgenden Schritte aus:
+
+1. Wechseln Sie im Azure-Portal zu Ihrem Tresor und dann zu **Einstellungen** -> **Eigenschaften**.
+2. Wählen Sie im Eigenschaftenbereich **Sicherheitseinstellungen** -> **Aktualisieren** aus.
+3. Wählen Sie im Bereich „Sicherheitseinstellungen“ unter „Vorläufiges Löschen“ die Option **Deaktivieren** aus.
+
+![Deaktivieren des vorläufigen Löschens](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
 ## <a name="other-security-features"></a>Weitere Sicherheitsfeatures
 
 ### <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
@@ -78,17 +101,17 @@ Azure Storage verschlüsselt Ihre Daten beim Speichern in der Cloud automatisch.
 
 In Azure werden Daten bei der Übertragung zwischen Azure Storage und dem Tresor per HTTPS geschützt. Diese Daten bleiben im Azure-Backbone-Netzwerk.
 
-Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](https://docs.microsoft.com/en-in/azure/storage/common/storage-service-encryption).
+Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
 
 ### <a name="vm-encryption"></a>VM-Verschlüsselung
 
-Sie können virtuelle Azure-Computer (VMs) unter Windows oder Linux mit verschlüsselten Datenträgern mithilfe des Diensts Azure Backup sichern und wiederherstellen. Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).
+Sie können virtuelle Azure-Computer (VMs) unter Windows oder Linux mit verschlüsselten Datenträgern mithilfe des Diensts Azure Backup sichern und wiederherstellen. Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
 ### <a name="protection-of-azure-backup-recovery-points"></a>Schutz von Azure Backup-Wiederherstellungspunkten
 
 Von Recovery Services-Tresoren verwendete Speicherkonten sind isoliert, sodass böswillige Akteure keinen Zugriff darauf haben. Der Zugriff ist nur über Azure Backup-Verwaltungsvorgänge, z. B. eine Wiederherstellung, zulässig. Diese Verwaltungsvorgänge werden per rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) gesteuert.
 
-Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten](https://docs.microsoft.com/en-us/azure/backup/backup-rbac-rs-vault).
+Weitere Informationen finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -101,23 +124,23 @@ Nein. Sie wird standardmäßig für alle Recovery Services-Tresore erstellt und 
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>Kann ich konfigurieren, wie lange meine Daten nach Abschluss des Löschvorgangs im Status „Vorläufig gelöscht“ aufbewahrt werden?
 
 Nein. Der Zeitraum ist auf eine um 14 Tage verlängerte Aufbewahrung nach dem Löschvorgang festgelegt.
- 
+
 #### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>Muss ich die Kosten für diesen zusätzlichen Aufbewahrungszeitraum von 14 Tagen bezahlen?
 
 Nein. Dieser zusätzliche Aufbewahrungszeitraum von 14 Tagen ist im Rahmen der Funktion „Vorläufiges Löschen“ kostenlos.
- 
+
 #### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>Kann ich einen Wiederherstellungsvorgang durchführen, wenn sich meine Daten im Status „Vorläufig gelöscht“ befinden?
 
 Nein. Sie müssen das Löschen der vorläufig gelöschten Ressource rückgängig machen, um sie wiederherzustellen. Mit dem Vorgang „Wiederherstellen“ wird die Ressource zurück in den Status **Beendigung des Schutzes mit Beibehaltung der Daten** versetzt, und Sie können beliebige Wiederherstellungspunkte wiederherstellen. Der Garbage Collector bleibt in diesem Status angehalten.
- 
+
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>Gilt für meine Momentaufnahmen der gleiche Lebenszyklus wie für meine Wiederherstellungspunkte im Tresor?
 
 Ja.
- 
+
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>Wie kann ich die geplanten Sicherungen für eine vorläufig gelöschte Ressource erneut auslösen?
 
 Wenn Sie nach dem Wiederherstellen den Vorgang „Fortsetzen“ ausführen, ist die Ressource wieder geschützt. Beim Vorgang „Fortsetzen“ wird eine Sicherungsrichtlinie zugeordnet, um die geplanten Sicherungen mit dem ausgewählten Aufbewahrungszeitraum auszulösen. Darüber hinaus wird der Garbage Collector ausgeführt, sobald der Vorgang „Fortsetzen“ abgeschlossen ist. Falls Sie eine Wiederherstellung für einen Wiederherstellungspunkt durchführen möchten, für den das Ablaufdatum überschritten wurde, sollten Sie dies tun, bevor Sie den Wiederherstellungsvorgang auslösen.
- 
+
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kann ich meinen Tresor löschen, wenn er vorläufig gelöschte Elemente enthält?
 
 Der Recovery Services-Tresor kann nicht gelöscht werden, wenn sich darin Sicherungselemente mit dem Status „Vorläufig gelöscht“ befinden. Die vorläufig gelöschten Elemente werden 14 Tage nach dem ersten Löschvorgang endgültig gelöscht. Sie können den Tresor erst löschen, nachdem alle vorläufig gelöschten Elemente entfernt wurden.  
@@ -136,4 +159,4 @@ Nein. Das vorläufige Löschen wird derzeit nur für virtuelle Azure-Computer un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über [Sicherheitskontrollen für Azure Backup](backup-security-controls.md).
+- Informieren Sie sich über [Sicherheitskontrollen für Azure Backup](backup-security-controls.md).

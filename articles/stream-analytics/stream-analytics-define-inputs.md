@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 1f03f9e68640edd73d2f6bb55cf205a609450658
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: df111d605b7c05bcb934771b6063f2be04770ea9
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620495"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606461"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -56,7 +56,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Event Hub-Name** | Der Name des Event Hubs, der als Eingabe verwendet wird. |
 | **Event Hub-Richtlinienname** | Die SAS-Richtlinie, die Zugriff auf den Event Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Diese Option wird automatisch ausgefüllt, sofern Sie nicht die Option zum manuellen Festlegen der Event-Hub-Einstellungen wählen.|
 | **Event Hub-Consumergruppe** (empfohlen) | Es wird dringend empfohlen, für jeden Stream Analytics-Auftrag eine eigene Consumergruppe zu verwenden. Diese Zeichenfolge identifiziert die Consumergruppe, die zum Erfassen von Daten aus dem Event Hub verwendet werden soll. Wenn keine Consumergruppe angegeben wird, verwendet der Stream Analytics-Auftrag die $Default-Consumergruppe.  |
-| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
+| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | **Typ der Ereigniskomprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
@@ -105,7 +105,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Name der SAS-Richtlinie** | Die SAS-Richtlinie, die Zugriff auf IoT Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
 | **Schlüssel für SAS-Richtlinie** | Der Schlüssel für den gemeinsamen Zugriff, der für die Autorisierung des Zugriffs auf IoT Hub verwendet wird.  Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der IoT Hub-Einstellungen. |
 | **Consumergruppe** | Es wird dringend empfohlen, für jeden Stream Analytics-Auftrag eine andere Consumergruppe zu verwenden. Die Consumergruppe, die zum Erfassen von Daten aus IoT Hub verwendet werden soll. Stream Analytics verwendet die $Default-Consumergruppe, sofern nicht anders angegeben.  |
-| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
+| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | **Typ der Ereigniskomprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
@@ -129,7 +129,13 @@ Für Szenarien mit großen Mengen unstrukturierter Daten, die in der Cloud gespe
 
 Ein häufig verwendetes Szenario für Blob Storage-Eingaben bei Stream Analytics ist die Protokollverarbeitung. In diesem Szenario wurden Telemetriedatendateien von einem System erfasst, die zur Extraktion aussagekräftiger Daten analysiert und verarbeitet werden müssen.
 
-Der Standardzeitstempel von Blob Storage-Ereignissen in Stream Analytics ist der Zeitstempel, an dem das Blob zuletzt geändert wurde, also `BlobLastModifiedUtcTime`. Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) verwenden. Bei einem Stream Analytics-Auftrag werden Daten jede Sekunde per Pullvorgang aus der Azure-Blobspeichereingabe abgerufen, wenn die Blobdatei verfügbar ist. Falls die Blobdatei nicht verfügbar ist, kommt es zu einem exponentiellen Backoff mit einer maximalen Zeitverzögerung von 90 Sekunden.
+Der Standardzeitstempel von Blob Storage-Ereignissen in Stream Analytics ist der Zeitstempel, an dem das Blob zuletzt geändert wurde, also `BlobLastModifiedUtcTime`. Wenn ein Blob um 13:00 Uhr auf ein Speicherkonto hochgeladen wird und der Azure Stream Analytics-Auftrag mit der Option *Jetzt* um 13:01 Uhr gestartet wird, wird der Blob nicht abgeholt, da seine geänderte Zeit außerhalb des Zeitraums für die Auftragsausführung liegt.
+
+Wenn ein Blob um 13:00 Uhr in einen Speicherkontocontainer hochgeladen wird und der Azure Stream Analytics-Auftrag mit der Option *Benutzerdefinierte Uhrzeit* um 13:00 Uhr oder früher gestartet wird, wird der Blob abgeholt, da seine geänderte Zeit in den Zeitraum für die Auftragsausführung fällt.
+
+Wenn ein Azure Stream Analytics-Auftrag mit der Option *Jetzt* um 13:00 Uhr gestartet wird und ein Blob um 13:01 Uhr in den Speicherkontocontainer hochgeladen wird, holt Azure Stream Analytics den Blob ab.
+
+Zum Verarbeiten der Daten als Datenstrom mit einem Zeitstempel in der Ereignisnutzlast müssen Sie das Schlüsselwort [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) verwenden. Bei einem Stream Analytics-Auftrag werden Daten jede Sekunde per Pullvorgang aus der Azure-Blobspeichereingabe abgerufen, wenn die Blobdatei verfügbar ist. Falls die Blobdatei nicht verfügbar ist, kommt es zu einem exponentiellen Backoff mit einer maximalen Zeitverzögerung von 90 Sekunden.
 
 Eingaben im CSV-Format müssen über eine Überschriftenzeile verfügen, um Felder für das Dataset zu definieren. Alle Felder der Überschriftenzeile müssen eindeutig sein.
 
@@ -149,10 +155,10 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Speicherkonto** | Der Name des Speicherkontos an, in dem sich die Blobdateien befinden. |
 | **Speicherkontoschlüssel** | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der Blob Storage-Einstellungen. |
 | **Container** | Der Container für die Blobeingabe. Container stellen eine logische Gruppierung für Blobs bereit, die im Microsoft Azure-Blobdienst gespeichert sind. Wenn Sie ein Blob in den Azure Blob Storage-Dienst hochladen, müssen Sie einen Container für dieses Blob angeben. Sie können entweder **Vorhandenes Element verwenden** oder **Neues Element erstellen** wählen, um einen neuen Container zu erstellen.|
-| **Pfadmuster** (optional) | Der Dateipfad, der verwendet wird, um die Blobs im angegebenen Container zu suchen. In dem Pfad können Sie mindestens eine Instanz der folgenden drei Variablen angeben: `{date}`, `{time}` oder `{partition}`.<br/><br/>Beispiel 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Beispiel 2: `cluster1/logs/{date}`<br/><br/>Das Zeichen `*` ist kein zulässiger Wert für das Pfadpräfix. Es sind nur gültige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-Zeichen</a> zulässig. Schließen Sie keine Containernamen oder Dateinamen ein. |
+| **Pfadmuster** (optional) | Der Dateipfad, der verwendet wird, um die Blobs im angegebenen Container zu suchen. Wenn Sie Blobs aus dem Containerstamm lesen möchten, legen Sie kein Pfadmuster fest. In dem Pfad können Sie mindestens eine Instanz der folgenden drei Variablen angeben: `{date}`, `{time}` oder `{partition}`.<br/><br/>Beispiel 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Beispiel 2: `cluster1/logs/{date}`<br/><br/>Das Zeichen `*` ist kein zulässiger Wert für das Pfadpräfix. Es sind nur gültige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-Zeichen</a> zulässig. Schließen Sie keine Containernamen oder Dateinamen ein. |
 | **Datumsformat** (optional) | Wenn Sie die Datumsvariable im Pfad verwenden, wird das Datumsformat, in dem die Dateien organisiert sind, verwendet. Beispiel: `YYYY/MM/DD` |
 | **Zeitformat** (optional) |  Wenn Sie die Zeitvariable im Pfad verwenden, wird das Zeitformat, in dem die Dateien organisiert sind, verwendet. Der einzige derzeit unterstützte Wert ist `HH` für Stunden. |
-| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV oder Avro) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
+| **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | **Komprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
