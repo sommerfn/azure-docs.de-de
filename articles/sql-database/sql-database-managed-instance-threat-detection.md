@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Advanced Threat Protection – Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Konfigurieren von Advanced Threat Protection – Verwaltete Instanz
 description: Advanced Threat Protection identifiziert anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank in einer verwalteten Instanz hinweisen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: eb6d8229e85e54a6a3fc8591dc4688a73773fd8b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 69292a934af8b8777f11ab58ed3fe306abf8b408
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816582"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822547"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-database-managed-instance"></a>Konfigurieren von Advanced Threat Protection in einer verwalteten Azure SQL-Datenbank-Instanz
 

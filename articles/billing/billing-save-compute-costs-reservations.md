@@ -5,18 +5,18 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: 02a4ccc1bd7c18c36a7203f7d81cce8923ecf59a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499237"
+ms.locfileid: "73580093"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
-Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich für ein Jahr oder für drei Jahre für virtuelle Computer, SQL-Datenbank-Computekapazität, Azure Cosmos DB-Durchsatz oder andere Azure-Ressourcen entscheiden. Dadurch können Sie einen Rabatt für die von Ihnen genutzten Ressourcen in Anspruch nehmen. Reservierungen können Ihre Kosten für virtuelle Computer, SQL-Datenbank-Compute, Azure Cosmos DB-Kapazitäten oder andere Ressourcen deutlich um bis zu 72 % gegenüber der nutzungsbasierten Bezahlung reduzieren. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus.
+Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei virtuellen Computern, Azure Blob Storage oder Azure Data Lake Storage Gen2, SQL-Datenbank-Computekapazität, Azure Cosmos DB-Durchsatz oder anderen Azure-Ressourcen für Pläne mit einer Laufzeit von einem Jahr oder mit einer Laufzeit von drei Jahren entscheiden. Dadurch können Sie einen Rabatt für die von Ihnen genutzten Ressourcen in Anspruch nehmen. Reservierungen ermöglichen Kostensenkungen von bis zu 72 Prozent im Vergleich zur nutzungsbasierten Bezahlung. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus.
 
 Sie können für eine Reservierung im Voraus oder monatlich bezahlen. Die Gesamtkosten für vorab bezahlte und monatliche Reservierungen sind gleich. Es fallen keine zusätzlichen Gebühren an, wenn Sie sich für die monatliche Zahlung entscheiden. Die monatliche Zahlung ist für Azure-Reservierungen und nicht für Produkte von Drittanbietern verfügbar.
 
@@ -24,13 +24,14 @@ Sie können eine Reservierung im [Azure-Portal](https://ms.portal.azure.com/?mic
 
 ## <a name="why-buy-a-reservation"></a>Warum eine Reservierung kaufen?
 
-Wenn Sie über virtuelle Computer, Azure Cosmos DB- oder SQL-Datenbank-Instanzen verfügen, die für längere Zeiträume ausgeführt werden, erhalten Sie durch den Kauf einer reservierten Instanz die kostengünstigste Option. Wenn Sie beispielsweise kontinuierlich vier Instanzen von einem Dienst ohne Reservierung ausführen, fallen die Gebühren für die nutzungsbasierte Bezahlung an. Wenn Sie eine Reservierung für diese Ressourcen kaufen, erhalten Sie sofort den Rabatt auf Reservierungen. Die Ressourcen werden nicht mehr mit den Gebühren für die nutzungsbasierte Bezahlung in Rechnung gestellt.
+Wenn Sie über virtuelle Computer, Blobspeicherdaten, Azure Cosmos DB oder SQL-Datenbanken mit hohem Kapazitäts- oder Durchsatzbedarf oder mit langer Laufzeit verfügen, stellt der Erwerb einer Reservierung die kostengünstigste Option dar. Wenn Sie beispielsweise kontinuierlich vier Instanzen von einem Dienst ohne Reservierung ausführen, fallen die Gebühren für die nutzungsbasierte Bezahlung an. Wenn Sie eine Reservierung für diese Ressourcen kaufen, erhalten Sie sofort den Rabatt auf Reservierungen. Die Ressourcen werden nicht mehr mit den Gebühren für die nutzungsbasierte Bezahlung in Rechnung gestellt.
 
 ## <a name="charges-covered-by-reservation"></a>Gebühren, die durch Reservierung abgedeckt werden
 
 Servicepläne:
 
 - **Reservierte VM-Instanz**: Eine Reservierung deckt nur die Computekosten virtueller Computer ab. Eine Reservierung deckt keine zusätzlichen Kosten für Software, Netzwerke oder Speicher ab.
+- **Reservierte Azure Storage-Kapazität**: Eine Reservierung deckt die Speicherkapazität für Storage Standard-Konten für Blobspeicher oder Azure Data Lake Gen2-Speicher ab. Die Reservierung deckt keine Bandbreite oder Transaktionsraten ab.
 - **Reservierte Azure Cosmos DB-Kapazität**: Eine Reservierung deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab. Die Speicher- und Netzwerkkosten werden nicht abgedeckt.
 - **Reservierte virtuelle Kerne für SQL-Datenbank**: In einer Reservierung sind nur die Computekosten enthalten. Die Lizenz wird separat abgerechnet.
 - **SQL Data Warehouse**: Eine Reservierung deckt die cDWU-Nutzung ab. Sie deckt keine mit der SQL Data Warehouse-Nutzung verbundenen Speicher- oder Netzwerkgebühren ab.
@@ -134,6 +135,7 @@ Wenn Sie eine Reservierung erwerben, kann der Rabatt auf andere Instanzen mit At
 Servicepläne:
 
 - Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben und **Optimiert für: Flexibilität bei der Instanzgröße** wählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Reservierte Azure Storage-Kapazität: Sie können reservierte Kapazität für Azure Storage Standard-Konten in Einheiten von 100 TiB oder 1 PiB pro Monat erwerben. Reservierte Azure Storage-Kapazität ist in allen Regionen für alle Zugriffsebenen („Heiß“, „Kalt“ und „Archiv“) und für alle Replikationsoptionen (LRS, GRS und ZRS) verfügbar.
 - Reservierte SQL-Datenbank-Kapazität: Die Rabattabdeckung hängt von der ausgewählten Leistungsstufe ab. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung eines Rabatts für Azure-Reservierungen auf SQL-Datenbank-Instanzen](billing-understand-reservation-charges.md).
 - Reservierte Azure Cosmos DB-Kapazität: Die Rabattabdeckung hängt vom bereitgestellten Durchsatz ab. Weitere Informationen finden Sie unter [Understand how an Azure Cosmos DB reservation discount is applied (Grundlegendes zur Anwendung eines Rabatts für Azure Cosmos DB-Reservierungen)](billing-understand-cosmosdb-reservation-charges.md).
 

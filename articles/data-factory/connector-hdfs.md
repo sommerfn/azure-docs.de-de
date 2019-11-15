@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus HDFS mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus HDFS mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus einer Cloud- oder lokalen HDFS-Quelle mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 4bc6e5570870941f050bc289dddfd85d64843df2
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 49285ac4a15cb52f04f6d629d80449eb515c33fa
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092091"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73680865"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopieren von Daten aus HDFS mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -113,21 +113,15 @@ Folgende Eigenschaften werden für den mit HDFS verknüpften Dienst unterstützt
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). 
 
-- Informationen zum **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-dataset).
-- Informationen zu anderen Formaten wie **ORC** finden Sie im Abschnitt [Dataset in anderen Formaten](#other-format-dataset).
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-### <a name="format-based-dataset"></a> Dataset für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
-
-Informationen zum Kopieren von Daten und aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format oder Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Datasets und unterstützten Einstellungen. Folgende Eigenschaften werden für HDFS unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
+Folgende Eigenschaften werden für HDFS unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
 | Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **HdfsLocation** festgelegt werden. | Ja      |
 | folderPath | Der Pfad zum Ordner. Wenn Sie Platzhalter verwenden möchten, um Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie entsprechende Aktivitätsquelleneinstellungen an. | Nein       |
 | fileName   | Der Name der Datei unter dem angegebenen „folderPath“. Wenn Sie Platzhalter verwenden möchten, um Ordner zu filtern, überspringen Sie diese Einstellung, und geben Sie entsprechende Aktivitätsquelleneinstellungen an. | Nein       |
-
-> [!NOTE]
-> Das Dataset vom Typ **FileShare** mit dem im nächsten Abschnitt beschriebenen Parquet-Format/Textformat wird aus Gründen der Abwärtskompatibilität weiterhin unverändert für Kopieren-/Suchenaktivitäten unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden, da diese neuen Typen nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert werden.
 
 **Beispiel:**
 
@@ -155,9 +149,10 @@ Informationen zum Kopieren von Daten und aus dem **Parquet-Format, Textformat mi
 }
 ```
 
-### <a name="other-format-dataset"></a>Dataset in anderen Formaten
+### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-Für das Kopieren von Daten aus HDFS im **ORC-Format** werden folgende Eigenschaften unterstützt:
+>[!NOTE]
+>Das folgende Datasetmodell wird aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das im Abschnitt oben erwähnte neue Modell zu verwenden, da das neue Modell nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert wird.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -208,12 +203,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="hdfs-as-source"></a>HDFS als Quelle
 
-- Informationen zum Kopieren aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie im Abschnitt [Quelle im Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat](#format-based-source).
-- Informationen zum Kopieren aus anderen Formaten wie **ORC** finden Sie im Abschnitt [Quelle in anderen Formaten](#other-format-source).
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-#### <a name="format-based-source"></a> Quelle für Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat
-
-Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Trennzeichen, JSON-Format, Avro-Format und Binärformat** finden Sie in den Artikeln [Parquet-Format](format-parquet.md), [Textformat mit Trennzeichen](format-delimited-text.md), [Avro-Format](format-avro.md) und [Binärformat](format-binary.md) zu formatbasierten Quellen für Kopieraktivitäten und unterstützten Einstellungen. Folgende Eigenschaften werden für HDFS unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
+Folgende Eigenschaften werden für HDFS unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
 | Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -228,9 +220,6 @@ Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Tr
 | tempScriptPath | Ein Ordnerpfad zum Speichern von temporären DistCp-Befehlsskripts. Die Skriptdatei wird von Data Factory generiert und nach Abschluss des Kopierauftrags entfernt. | Ja, wenn DistCp verwendet wird |
 | distcpOptions | Zusätzliche für den DistCp-Befehl bereitgestellte Optionen | Nein |
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein                                            |
-
-> [!NOTE]
-> Für das Parquet-Format/Textformat mit Trennzeichen wird der im nächsten Abschnitt erwähnte Typ **FileSystemSource**der Quelle der Kopieraktivität aus Gründen der Abwärtskompatibilität weiterhin unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden, da diese neuen Typen nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert werden.
 
 **Beispiel:**
 
@@ -276,9 +265,10 @@ Informationen zum Kopieren von Daten aus dem **Parquet-Format, Textformat mit Tr
 ]
 ```
 
-#### <a name="other-format-source"></a>Quelle in anderen Formaten
+#### <a name="legacy-source-model"></a>Legacy-Quellmodell
 
-Für das Kopieren von Daten aus HDFS im **ORC-Format** werden folgende Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
+>[!NOTE]
+>Das folgende Modell für die Kopierquelle wird aus Gründen der Abwärtskompatibilität weiterhin unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das oben erwähnte neue Modell zu verwenden, da das neue Modell nun von der Benutzeroberfläche für die ADF-Dokumentenerstellung generiert wird.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |

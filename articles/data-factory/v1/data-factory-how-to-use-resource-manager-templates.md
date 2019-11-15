@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Resource Manager-Vorlagen in Data Factory | Microsoft Docs
+title: Verwenden von Resource Manager-Vorlagen in Data Factory
 description: Erfahren Sie, wie Sie Azure Resource Manager-Vorlagen erstellen und diese verwenden, um Data Factory-Entitäten zu erstellen.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d9ee060b7d1f7a443357c7116c01e8aaf972e666
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164677"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682533"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]

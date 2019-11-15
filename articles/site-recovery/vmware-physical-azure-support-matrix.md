@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 75b2c08ab02ef41ee4d196d8f81c633aeb46a14e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2cda2c4e640c48d712ea5ebc8534cf5a4e35da7a
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390054"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620549"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -50,7 +50,7 @@ RAM | 16 GB
 Anzahl der Datenträger | Drei Datenträger<br/><br/> Hierzu zählen der Betriebssystemdatenträger, der Prozessservercache-Datenträger und das Aufbewahrungslaufwerk für das Failback.
 Freier Speicherplatz auf dem Datenträger | 600 GB für den Prozessservercache.
 Freier Speicherplatz auf dem Datenträger | 600 GB für das Aufbewahrungslaufwerk.
-Betriebssystem  | Windows Server 2012 R2 oder Windows Server 2016 mit Desktopoberfläche |
+Betriebssystem  | Windows Server 2012 R2 oder Windows Server 2016 mit Desktopoberfläche <br/><br> Wenn Sie beabsichtigen, das integrierte Masterziel dieser Appliance als Failback zu verwenden, stellen Sie sicher, dass die Betriebssystemversion mindestens den replizierten Elementen entspricht.|
 Gebietsschema des Betriebssystems | Englisch (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Nicht erforderlich für die Konfigurationsserverversion [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) oder höher. 
 Windows Server-Rollen | Aktivieren Sie nicht Active Directory Domain Services, Internetinformationsdienste (IIS) oder Hyper-V. 
@@ -76,16 +76,15 @@ Windows Server 2008 ab SP2 (64 Bit/32 Bit) |  Nur für die Migration unterst�
 Windows 10, Windows 8.1, Windows 8 | Unterstützt.
 Windows 7 mit SP1 (64 Bit) | Unterstützt ab [Updaterollup 36](https://support.microsoft.com/help/4503156) (Version 9.22 des Mobility-Diensts). </br></br> Ab Version 9.30.x.x (Veröffentlichung voraussichtlich Anfang November 2019) des Mobility Service-Agents müssen auf Computern unter Windows 7 SP1 eine [Wartungsstapelaktualisierung (Servicing Stack Update, SSU)](https://support.microsoft.com/help/4490628) und ein [SHA-2-Update](https://support.microsoft.com/help/4474419) installiert sein.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn die SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum SHA-2-Upgrade und zu den Anforderungen finden Sie [hier](https://aka.ms/SHA-2KB).
 Linux | Es werden nur 64-Bit-Systeme unterstützt. 32-Bit-Systeme werden nicht unterstützt.<br/><br/>Auf allen Linux-Servern sollten [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installiert sein. Sie benötigen sie, um den Server in Azure nach einem Testfailover/Failover zu booten. Wenn LIS-Komponenten fehlen, dann stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten. <br/><br/> Site Recovery orchestriert Failover zum Ausführen von Linux-Servern in Azure. Linux-Anbieter sollten jedoch möglicherweise den Support auf Distributionsversionen einschränken, die noch nicht veraltet sind.<br/><br/> Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.<br/><br/> Das Aktualisieren geschützter Computer über die wichtigsten Linux-Distributionsversionen hinweg wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, aktualisieren das Betriebssystem und aktivieren die Replikation erneut.<br/><br/> [Erfahren Sie mehr](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) über die Unterstützung von Linux und Open-Source-Technologie in Azure.
-Linux Red Hat Enterprise | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.6<br/> <br/> Bei Servern mit Red Hat Enterprise Linux 5.2 bis 5.11 und 6.1 bis 6.10 sind keine [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) vorinstalliert. Stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten.
+Linux Red Hat Enterprise | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.7 </br>Version 7.7 wird von [Mobility Agent 9.29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) unterstützt.<br/> <br/> Bei Servern mit Red Hat Enterprise Linux 5.2 bis 5.11 und 6.1 bis 6.10 sind keine [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) vorinstalliert. Stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten.
 Linux: CentOS | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.6<br/> <br/> Bei Servern mit CentOS 5.2 bis 5.11 und 6.1 bis 6.10 sind keine [Linux Integration Services (LIS)-Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) vorinstalliert. Stellen Sie sicher, dass Sie die [Komponenten](https://www.microsoft.com/download/details.aspx?id=55106) installieren, bevor Sie die Replikation der Computer so aktivieren, dass sie in Azure booten.
-Ubuntu | Ubuntu 14.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions)
+Ubuntu | Ubuntu 14.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS Server [(Überprüfen Sie die unterstützten Kernel-Versionen)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(Überprüfen Sie die unterstützten Kernel-Versionen)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(Überprüfen Sie die unterstützten Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3 oder SUSE Linux Enterprise Server 11 SP4<br/> Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, und aktivieren Sie sie nach dem Upgrade erneut.
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6<br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7<br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5) 
 
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu-Kernelversionen
-
 
 **Unterstütztes Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
@@ -98,6 +97,10 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 16.04 LTS | [9.27][9.27 UR] | 4.4.0-21-generic bis 4.4.0-154-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-54-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1050-azure|
 16.04 LTS | [9.26][9.26 UR] | 4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-50-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1045-azure|
 16.04 LTS | [9.25][9.25 UR] | 4.4.0-21-generic bis 4.4.0-146-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-48-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1042-azure|
+16.04 LTS | [9.24][9.24 UR] | 4.4.0-21-generic bis 4.4.0-143-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-46-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1040-azure|
+|||
+18.04 LTS | [9.29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-generic bis 4.15.0-62-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-27-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1018-azure
+
 
 ### <a name="debian-kernel-versions"></a>Debian-Kernelversionen
 
@@ -276,7 +279,6 @@ Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |20 MB/s | 
 
 **Quell-Datenänderungsrate** | **Maximales Limit**
 ---|---
-Durchschnittliche Datenänderungsrate pro VM| 25 MB/s
 Spitzenänderungsrate für alle Datenträger auf einer VM | 54 MB/s
 Maximale Datenänderung pro Tag, die von einem Prozessserver unterstützt wird | 2 TB
 

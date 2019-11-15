@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 325de36f3aa480847bc647827260f7f65765b5d7
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: beef37b0ece9cf57c86927b9f57d85ad4a25dbd1
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103753"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73746320"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -202,6 +202,10 @@ Ihr Konto ist verantwortlich für die Bezahlung jeglicher Nutzung, die ab dem Ze
 ### <a name="can-i-use-a-different-payment-method"></a>Kann ich eine andere Zahlungsmethode verwenden?
 
 Ja. Bei der Annahme der Übertragungsanforderung können Sie eine vorhandene Zahlungsmethode auswählen, die mit Ihrem Konto verknüpft ist, oder eine neue Zahlungsmethode hinzufügen.
+
+### <a name="how-can-i-transfer-ownership-of-my-enterprise-agreement-ea-subscription-account-ownership-if-the-original-account-owner-is-no-longer-with-the-organization"></a>Wie kann ich den Kontobesitz meines EA-Abonnements (Enterprise Agreement) übertragen, wenn der ursprüngliche Kontobesitzer nicht mehr der Organisation angehört?
+
+Der Unternehmensadministrator kann den Kontobesitz für beliebige Konten aktualisieren, auch wenn der ursprüngliche Kontobesitzer nicht mehr der Organisation angehört. Eine entsprechende Anleitung steht im EA-Portal unter [Übertragen des Kontobesitzes für alle Abonnements](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) zur Verfügung.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

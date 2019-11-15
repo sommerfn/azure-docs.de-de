@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Blob Storage nach SQL-Datenbank – Azure | Microsoft Docs
+title: Kopieren von Daten aus Blob Storage in SQL-Datenbank – Azure
 description: In diesem Tutorial erfahren Sie, wie Sie die Kopieraktivität in einer Azure Data Factory-Pipeline verwenden, um Daten aus Blob Storage in SQL-Datenbank zu kopieren.
 services: data-factory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ad114ce3a40e11048d01c6768811089c43cdf1db
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5a254979e345ae07bef5c8e79006bd0aaa0bf7df
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839385"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682799"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory
 > [!div class="op_single_selector"]
