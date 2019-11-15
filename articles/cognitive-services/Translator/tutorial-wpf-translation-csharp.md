@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erstellen einer Übersetzungs-App mit WPF, C# – Textübersetzungs-API'
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial erstellen Sie eine WPF-App (Windows Presentation Foundation), bei der Cognitive Services-APIs für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. In dieser Übung wird veranschaulicht, wie Sie Features der Textübersetzungs-API und Bing-Rechtschreibprüfung-API nutzen.
+description: In diesem Tutorial erstellen Sie eine WPF-App, um Textübersetzung, Spracherkennung und Rechtschreibprüfung mit einem einzelnen Abonnementschlüssel durchzuführen.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 286b75166e6216513afc46e5779b8a2f969aeaf6
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858907"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647705"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 

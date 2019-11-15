@@ -1,18 +1,18 @@
 ---
 title: Verwalten von Azure Recovery Services-Tresoren und -Servern
-description: Verwalten von Aufträgen und Warnungen in einem Azure Recovery Services-Tresor.
+description: In diesem Artikel erfahren Sie, wie Sie das Dashboard „Übersicht“ des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 7e7312f942103125217c1f61ae8fe8007a49529b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954760"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747442"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -23,7 +23,6 @@ In diesem Artikel wird erläutert, wie Sie das Dashboard **Übersicht** des Reco
 Die Voraussetzungen für diesen Artikel sind: ein Azure-Abonnement, ein Recovery Services-Tresor und mindestens ein für den Tresor konfiguriertes Sicherungselement.
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
-
 
 ## <a name="open-a-recovery-services-vault"></a>Öffnen eines Recovery Services-Tresors
 
@@ -259,7 +258,6 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 * Cloud-LRS-Speicherverwendung des Tresors
 * Cloud-GRS-Speicherverwendung des Tresors
 
-
 ## <a name="troubleshooting-monitoring-issues"></a>Problembehandlung bei der Überwachung
 
 **Problem:** Aufträge und/oder Warnungen vom Azure Backup-Agent werden im Portal nicht angezeigt.
@@ -275,6 +273,7 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
 * Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
 * Besuchen Sie das [Azure Backup-Forum](https://go.microsoft.com/fwlink/p/?LinkId=290933)

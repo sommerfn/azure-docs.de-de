@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über Dienstkontingente und Servicepläne für Az
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 9/27/2019
+ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 89934ee0ab0c901a904a1a5ac2fb620185571a23
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038685"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607668"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kontingente und Servicepläne für Azure Spring Cloud
 
@@ -37,4 +37,4 @@ Wenn Sie ein Kontingent erreichen, erhalten Sie einen 400-Fehler mit folgendem I
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bestimmte Standardlimits und Kontingente können erhöht werden. Wenn für Ihre Ressource eine Erhöhung erforderlich ist, übermitteln Sie uns eine Anfrage: azure-spring-cloud@service.microsoft.com.
+Bestimmte Standardlimits und Kontingente können erhöht werden. Wenn für Ihre Ressource eine Erhöhung erforderlich ist, [erstellen Sie eine Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).

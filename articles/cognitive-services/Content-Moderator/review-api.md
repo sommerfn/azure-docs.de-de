@@ -1,7 +1,7 @@
 ---
 title: 'Konzepte: Überprüfungen, Workflows und Aufträge – Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Informationen zu Überprüfungen, Workflows und Aufträgen
+description: 'In diesem Artikel erhalten Sie Informationen zu den wichtigsten Konzepten des Prüfungstools: Überprüfungen, Workflows und Aufträge.'
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 0050e2b687b6001514d1ae80c269b1a0499efbea
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757292"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744427"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Inhaltsmoderationsüberprüfungen, -workflows und -aufträge
 
@@ -75,5 +75,5 @@ Informationen zur Verwendung von Aufträgen finden Sie in der [Anleitung für di
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Testen Sie die [API-Konsole für Aufträge](try-review-api-job.md), und verwenden Sie die REST-API-Codebeispiele. Falls Sie mit Visual Studio und C# vertraut sind, können Sie sich auch die [.NET-Schnellstartanleitung für Aufträge](moderation-jobs-quickstart-dotnet.md) ansehen. 
-* Machen Sie in Bezug auf Überprüfungen mit der [API-Konsole für Überprüfungen](try-review-api-review.md) vertraut, und verwenden Sie die REST-API-Codebeispiele. Gehen Sie anschließend den [.NET-Schnellstart für Überprüfungen](moderation-reviews-quickstart-dotnet.md) durch.
+* Machen Sie in Bezug auf Überprüfungen mit der [API-Konsole für Überprüfungen](try-review-api-review.md) vertraut, und verwenden Sie die REST-API-Codebeispiele. Gehen Sie anschließend den Abschnitt „Überprüfungen“ des [.NET-Schnellstarts](dotnet-sdk-quickstart.md) durch.
 * Verwenden Sie für Videoüberprüfungen den [Schnellstart für Videoüberprüfungen](video-reviews-quickstart-dotnet.md), und erfahren Sie, wie Sie [Transkripte zur Videoüberprüfung hinzufügen](video-transcript-reviews-quickstart-dotnet.md).

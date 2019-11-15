@@ -1,5 +1,5 @@
 ---
-title: Was ist die Maschinelles Sehen-API? Maschinelles Sehen
+title: Worum handelt es sich bei maschinellem Sehen? Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Über den Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen.
 services: cognitive-services
@@ -8,21 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 703e750c0d2515484cd9f1d2cb046096dfd1800d
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719538"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794960"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
-Über den Azure-Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen zurückgeben. Für die Bildanalyse können Sie entweder ein Bild hochladen oder eine Bild-URL angeben. Die Bildverarbeitungsalgorithmen können Inhalte auf unterschiedliche Weise analysieren – je nachdem, für welche visuellen Merkmale Sie sich interessieren. So kann maschinelles Sehen beispielsweise erkennen, ob ein Bild nicht jugendfreie Inhalte enthält, oder alle menschlichen Gesichter in einem Bild finden.
+Über den Azure-Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen zurückgeben, je nachdem, welche visuellen Features für Sie von Interesse sind. So kann maschinelles Sehen beispielsweise erkennen, ob ein Bild nicht jugendfreie Inhalte enthält, oder alle menschlichen Gesichter in einem Bild finden.
 
 Sie können maschinelles Sehen in Ihrer Anwendung entweder über ein natives SDK oder durch direktes Aufrufen der REST-API nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
+
+## <a name="computer-vision-for-digital-asset-management"></a>Maschinelles Sehen für Digital Asset Management (DAM)
+
+Das maschinelle Sehen kann viele DAM-Szenarien (Digital Asset Management) unterstützen. DAM ist der Geschäftsprozess der Organisation, Speicherung und Abfrage von Rich-Media-Medienobjekten und der Verwaltung digitaler Rechte und Berechtigungen. Beispielsweise kann ein Unternehmen Bilder basierend auf sichtbaren Logos, Gesichtern, Objekten, Farben usw. gruppieren und identifizieren. Oder Sie können automatisch [Beschriftungen für Bilder generieren](./Tutorials/storage-lab-tutorial.md) und Schlüsselwörter anhängen, damit sie durchsuchbar sind. Eine All-in-One-DAM-Lösung mit Cognitive Services, Azure Cognitive Search und intelligenter Berichterstellung finden Sie im Leitfaden [Knowledge Mining Solution Accelerator](https://github.com/Azure-Samples/azure-search-knowledge-mining) auf GitHub. Weitere DAM-Beispiele finden Sie im Repository zu [Lösungsvorlagen für maschinelles Sehen](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates).
 
 ## <a name="analyze-images-for-insight"></a>Analysieren von Bildern, um Erkenntnisse zu gewinnen
 
@@ -47,8 +51,6 @@ Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkenn
 Mit der [Lese-API](concept-recognizing-text.md#read-api) des maschinellen Sehens können Sie gedruckten und handschriftlichen Text aus Bildern in einen maschinenlesbaren Zeichendatenstrom extrahieren. Die Lese-API verwendet unsere neuesten Modelle und kann für Text auf bzw. mit verschiedenen Oberflächen und Hintergründen verwendet werden. Hierzu zählen etwa Belege, Poster, Visitenkarten, Briefe und Whiteboards. Englisch ist derzeit die einzige unterstützte Sprache.
 
 Sie können auch die [OCR](concept-recognizing-text.md#ocr-optical-character-recognition-api)-API (Optical Character Recognition, optische Zeichenerkennung) verwenden, um gedruckten Text in verschiedenen Sprachen zu extrahieren. Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
-
-
 
 ## <a name="moderate-content-in-images"></a>Moderieren von Bildinhalten
 

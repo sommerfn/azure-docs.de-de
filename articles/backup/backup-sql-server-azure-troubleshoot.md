@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: c456dfec72f98dc4ae06f1d7d5d9fb461182d579
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e4683547a7c305da3d3a3bc7a7d6a50f21ad46f2
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018977"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614398"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -32,7 +32,6 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 | severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|---|
 | Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen bestimmte Sicherungstypen nicht, die in der zugehörigen Richtlinie enthalten sind. | <li>Für die Masterdatenbank kann nur eine vollständige Datenbanksicherung ausgeführt werden. Weder die differenzielle Sicherung noch die Sicherung des Transaktionsprotokolls ist möglich. </li> <li>Datenbanken im einfachen Wiederherstellungsmodell erlauben die Sicherung von Transaktionsprotokollen nicht.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Sie können die aktuelle Richtlinie auch so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer Ad-hoc-Sicherung fehl.
-
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -83,7 +82,7 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 |---|---|---|
 | Fehler bei der Wiederherstellung, wie die Datenbank konnte nicht offline geschaltet werden konnte. | Während einer Wiederherstellung muss die Zieldatenbank offline geschaltet werden. Azure Backup kann diese Daten nicht offline schalten. | Verwenden Sie im Azure-Portal im Fehlermenü die Option „Zusätzliche Details“, um die Grundursache einzugrenzen. Weitere Informationen finden Sie in der [SQL Server-Dokumentation](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
+### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
@@ -94,7 +93,6 @@ Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuell
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Die für die Wiederherstellung verwendete Protokollsicherung enthält massenprotokollierte Änderungen. Sie kann gemäß SQL-Richtlinien nicht verwendet werden, um an einem beliebigen Punkt anzuhalten. | Wenn sich eine Datenbank im massenprotokollierten Wiederherstellungsmodus befindet, können die Daten zwischen einer massenprotokollierten Transaktion und der nächsten protokollierten Transaktion nicht wiederhergestellt werden. | Wählen Sie einen anderen Zeitpunkt für die Wiederherstellung aus. [Weitere Informationen](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
-
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -130,8 +128,7 @@ Der Vorgang ist blockiert, da Sie den Höchstwert für die Anzahl der innerhalb 
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden maximal zulässige Anzahl von Vorgängen erreicht hat. | Dieser Fehler tritt auf, wenn Sie den maximal zulässigen Grenzwert für einen Vorgang im Zeitraum von 24 Stunden erreicht haben. Dieser Fehler tritt in der Regel bei skalierten Vorgängen auf, z. B. beim Ändern von Richtlinien oder beim automatischen Schutz. Anders als bei CloudDosAbsoluteLimitReached lässt sich dieses Problem nicht beheben. Der Azure Backup-Dienst wiederholt die Vorgänge für alle betroffenen Elemente intern.<br> Beispiel:  Wenn eine große Anzahl von Datenquellen durch eine Richtlinie geschützt wird und Sie versuchen, diese Richtlinie zu ändern, werden Aufträge zum Konfigurieren des Schutzes für alle geschützten Elemente ausgelöst, sodass manchmal der pro Tag maximal zulässige Grenzwert für diese Vorgänge erreicht wird.| Der Azure Backup-Dienst wiederholt diesen Vorgang automatisch nach 24 Stunden. 
-
+Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden maximal zulässige Anzahl von Vorgängen erreicht hat. | Dieser Fehler tritt auf, wenn Sie den maximal zulässigen Grenzwert für einen Vorgang im Zeitraum von 24 Stunden erreicht haben. Dieser Fehler tritt in der Regel bei skalierten Vorgängen auf, z. B. beim Ändern von Richtlinien oder beim automatischen Schutz. Anders als bei CloudDosAbsoluteLimitReached lässt sich dieses Problem nicht beheben. Der Azure Backup-Dienst wiederholt die Vorgänge für alle betroffenen Elemente intern.<br> Beispiel:  Wenn eine große Anzahl von Datenquellen durch eine Richtlinie geschützt wird und Sie versuchen, diese Richtlinie zu ändern, werden Aufträge zum Konfigurieren des Schutzes für alle geschützten Elemente ausgelöst, sodass manchmal der pro Tag maximal zulässige Grenzwert für diese Vorgänge erreicht wird.| Der Azure Backup-Dienst wiederholt diesen Vorgang automatisch nach 24 Stunden.
 
 ## <a name="re-registration-failures"></a>Fehler bei der erneuten Registrierung
 
@@ -150,14 +147,14 @@ Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden 
 
 Zu diesen Symptomen kann es aufgrund von einer oder mehreren der folgenden Ursachen kommen:
 
-* Eine Erweiterung wurde gelöscht oder im Portal deinstalliert. 
+* Eine Erweiterung wurde gelöscht oder im Portal deinstalliert.
 * Eine Erweiterung wurde in der **Systemsteuerung** der VM unter **Programm deinstallieren oder ändern** deinstalliert.
 * Die VM wurde über eine direkte Datenträgerwiederherstellung rechtzeitig wiederhergestellt.
 * Die VM wurde für längere Zeit heruntergefahren, sodass die Erweiterungskonfiguration dafür abgelaufen ist.
 * Die VM wurde gelöscht, und eine andere VM wurde mit dem gleichen Namen und in derselben Ressourcengruppe wie die gelöschte VM erstellt.
 * Einer der Verfügbarkeitsgruppenknoten hat nicht die vollständige Sicherungskonfiguration erhalten. Dies kann passieren, wenn die Verfügbarkeitsgruppe im Tresor registriert ist, oder wenn ein neuer Knoten hinzugefügt wird.
 
-In den vorhergehenden Szenarien sollten Sie einen Neuregistrierungsvorgang auf der VM auszulösen. Derzeit ist diese Option nur über PowerShell verfügbar.
+In den vorhergehenden Szenarien sollten Sie einen Neuregistrierungsvorgang auf der VM auszulösen. Anweisungen zum Durchführen dieser Aufgabe in PowerShell finden Sie [hier](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup).
 
 ## <a name="size-limit-for-files"></a>Maximale Größe für Dateien
 
@@ -188,6 +185,7 @@ Wenn die Zeichenfolgegröße des Inhalts 20.000 Bytes überschreitet, werden die
 Sie können den Zieldateipfad für die Wiederherstellung während des Wiederherstellungsvorgangs außer Kraft setzen, indem Sie eine JSON-Datei mit der Zuordnung der Datenbankdatei zum Wiederherstellungszielpfad platzieren. Erstellen Sie eine Datei `database_name.json`, und speichern Sie sie am Speicherort *C:\Programme\Azure Workload Backup\bin\plugins\SQL*.
 
 Der Inhalt der Datei sollte dieses Format haben:
+
 ```json
 [
   {
@@ -227,7 +225,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
                 INNER JOIN sys.databases db ON db.database_id = mf.database_id
                 WHERE db.name = N'<Database Name>'"
   ```
-
 
 Diese Datei muss abgelegt werden, bevor Sie den Wiederherstellungsvorgang auslösen.
 

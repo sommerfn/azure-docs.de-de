@@ -1,7 +1,7 @@
 ---
-title: Migrieren Ihres Projekts zur 3.0 API
+title: Aktualisieren Ihres Projekts zur 3.0 API
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Custom Vision-Projekte von der vorherigen Version der API zur 3.0 API migrieren können.
+description: Erfahren Sie, wie Sie Custom Vision-Projekte von der vorherigen Version der API zur 3.0 API aktualisieren können.
 services: cognitive-services
 author: areddish
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: areddish
-ms.openlocfilehash: 353fc0a2d8396def17b8e23d9a1c685c755349c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c134f30b124113a23df0e73cd1bbc8209e335183
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560885"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647496"
 ---
-# <a name="migrate-to-the-30-api"></a>Migrieren zur 3.0 API
+# <a name="update-to-the-30-api"></a>Aktualisieren zur 3.0 API
 
 Custom Vision hat jetzt die allgemeine Verfügbarkeit erreicht und ein API-Update erhalten.
 Dieses Update umfasst ein paar neue Features sowie einige entscheidende Änderungen:
@@ -52,13 +52,6 @@ Sobald eine Iteration trainiert wurde, können Sie sie mit der Methode **[Publis
 > Sie können diese Informationen auch über das [Azur-Portal](https://portal.azure.com) abrufen, indem Sie zur Custom Vision-Vorhersageressource wechseln und **Eigenschaften** auswählen.
 
 Nachdem Ihre Iteration veröffentlicht wurde, kann sie von Apps zur Vorhersage verwendet werden, indem sie den Namen in ihrem Aufruf der Vorhersage-API angeben. Verwenden Sie die API **[UnpublishIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.0/operations/5c771cdcbf6a2b18a0c3b81a)** , um eine Iteration für Vorhersageaufrufe nicht verfügbar zu machen.
-
-## <a name="additional-export-options"></a>Zusätzliche Exportoptionen
-
-Mit den 3.0 APIs werden zwei zusätzliche Exportziele vorgestellt: ARM-Architektur und Vision AI Developer Kit.
-
-* Damit Sie ARM verwenden können, müssen Sie nur eine kompakte Domäne und dann DockerFile und ARM als Exportoptionen auswählen.
-* Für das Vision AI Developer Kit muss das Projekt mit der Domäne __Allgemein (kompakt)__ erstellt werden und VAIDK im Argument für die Zielexportplattformen angegeben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

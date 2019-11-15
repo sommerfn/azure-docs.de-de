@@ -4,14 +4,14 @@ description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: c08b80a841199ed2737f6fe8d7f2b76943c5b269
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249136"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795659"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
@@ -74,8 +74,18 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 * services
 
+## <a name="microsofteventhub"></a>Microsoft.EventHub
+
+* clusters
+* namespaces
+
+## <a name="microsoftexperimentation"></a>Microsoft.Experimentation
+
+* experimentWorkspaces
+
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
+* configurationProfileAssignments
 * guestConfigurationAssignments
 * software
 * softwareUpdateProfile
@@ -141,9 +151,17 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 
 * workspaceCollections: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 
+## <a name="microsoftrelay"></a>Microsoft.Relay
+
+* namespaces
+
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
+
+## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+
+* namespaces
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 

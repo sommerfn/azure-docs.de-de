@@ -1,18 +1,18 @@
 ---
-title: Sichern einer Azure-VM über die VM-Einstellungen mit dem Azure Backup-Dienst
-description: Erfahren Sie, wie Sie Azure-VMs mit dem Azure Backup-Dienst sichern.
+title: Sichern einer Azure-VM über die VM-Einstellungen mit Azure Backup
+description: In diesem Artikel erfahren Sie, wie Sie entweder einen einzelnen virtuellen Azure-Computer oder mehrere virtuelle Azure-Computer mit dem Azure Backup-Dienst sichern können.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 042fa44b8f24bb729b94c7631db9469de8493ba4
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639771"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747242"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 
@@ -20,8 +20,6 @@ Dieser Artikel beschreibt, wie Sie Azure-VMs mit dem [Azure Backup](backup-overv
 
 - Einzelne Azure-VM: Die Anweisungen in diesem Artikel beschreiben, wie Sie eine Azure-VM direkt aus den VM-Einstellungen sichern können.
 - Mehrere Azure-VMs: Sie können einen Recovery Services-Tresor einrichten und die Sicherung für mehrere Azure-VMs konfigurieren. Folgen Sie für dieses Szenario den Anweisungen in [diesem Artikel](backup-azure-arm-vms-prepare.md).
-
-
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -36,7 +34,6 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
 - Nach der Installation des Agent installiert Azure Backup die Sicherungserweiterung auf den Agent, wenn Sie die Sicherung aktivieren. Die Erweiterung wird ohne Eingreifen des Benutzers aktualisiert und gepatcht.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Sichern über Azure-VM-Einstellungen
-
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Alle Dienste** und geben Sie im Filter **Virtuelle Computer** ein, und klicken Sie dann auf **Virtuelle Computer**.
@@ -69,11 +66,9 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
     - Bis zum Abschluss des ersten Sicherungsvorgangs wird **Status der letzten Sicherung** als **Warnung (erste Sicherung steht aus)** angezeigt.
     - Um zu sehen, wann die nächste geplante Sicherung ausgeführt wird, klicken Sie auf den Namen der Sicherungsrichtlinie.
 
-
 > [!NOTE]
 > Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden für die Dauer (in Tagen) aufbewahrt, die in der Sicherungsrichtlinie für virtuelle Azure-Computer unter „Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für“ angegeben ist. Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
 Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Fehlern führen würde.
-
 
 ## <a name="run-a-backup-immediately"></a>Sofortige Ausführung einer Sicherung
 
@@ -86,9 +81,6 @@ Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlos
     ![Tage für Aufbewahrung von Sicherungen](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
 3. Sie werden über Portalbenachrichtigungen darüber informiert, dass der Sicherungsauftrag ausgelöst wurde. Um den Fortschritt der Sicherung zu überwachen, klicken Sie auf **Alle Aufträge anzeigen**.
-
-
-
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>Sichern über den Recovery Services-Tresor
 

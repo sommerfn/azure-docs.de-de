@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines R-Pakets zu Machine Learning Services in Azure SQL-Datenbank (Vorschauversion)
+title: Hinzufügen eines R-Pakets zu Machine Learning Services (Vorschauversion)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: In diesem Artikel wird erläutert, wie Sie ein R-Paket installieren, das in Machine Learning Services (Vorschauversion) in Azure SQL-Datenbank noch nicht installiert ist.
 services: sql-database
@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: f82408a6aaa7cf3a492f3036a6db5d8666b6f160
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598053"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819866"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Hinzufügen eines R-Pakets zu Machine Learning Services in Azure SQL-Datenbank (Vorschauversion)
 

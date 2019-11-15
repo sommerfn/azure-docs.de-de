@@ -1,6 +1,6 @@
 ---
 title: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern | Microsoft-Dokumentation
-description: Erfahren Sie, wie sie SQL Server-Datenbanken auf virtuellen Azure-Computern sichern
+description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup sichern können.
 ms.reviewer: vijayts
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 847a4ec7da3c9b00753e5d07baf2952b31d2b5bb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: a6752ffcf434b81c3013a2bd43c784bc92a8c1fe
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934845"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747170"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -24,10 +24,10 @@ In diesem Artikel wird veranschaulicht, wie eine SQL Server-Datenbank, die auf e
 In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen und Konfigurieren eines Tresors
 > * Ermitteln von Datenbanken und Einrichten von Sicherungen
 > * Einrichten des automatischen Schutzes für Datenbanken
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,40 +41,38 @@ Bevor Sie eine SQL Server-Datenbank sichern können, müssen folgende Kriterien 
 > [!NOTE]
 > Sie können Azure Backup für eine Azure-VM und auch für eine auf der VM ausgeführte SQL Server-Datenbank ohne Konflikte aktivieren.
 
-
 ### <a name="establish-network-connectivity"></a>Herstellen der Netzwerkverbindung
 
 Eine SQL Server-VM benötigt für alle Vorgänge eine Verbindung mit öffentlichen IP-Adressen von Azure. VM-Vorgänge (Ermitteln von Datenbanken, Konfigurieren von Sicherungen, Planen von Sicherungen, Zurücksetzen von Wiederherstellungspunkten usw.) schlagen ohne Verbindung mit öffentlichen IP-Adressen von Azure fehl.
 
 Stellen Sie die Verbindung mithilfe einer der folgenden Optionen her:
 
-- **Zulassen der IP-Adressbereiche des Azure-Rechenzentrums**. Diese Option lässt [IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=41653) im Download zu. Verwenden Sie für den Zugriff auf eine Netzwerksicherheitsgruppe (NSG) das Cmdlet Set-AzureNetworkSecurityRule. Wenn Ihre Liste sicherer Empfänger nur regionsspezifische IP-Adressen enthält, müssen Sie auch das Diensttag „Azure Active Directory“ (Azure AD) der Liste sicherer Empfänger aktualisieren, um die Authentifizierung zu ermöglichen.
+* **Zulassen der IP-Adressbereiche des Azure-Rechenzentrums**. Diese Option lässt [IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=41653) im Download zu. Verwenden Sie für den Zugriff auf eine Netzwerksicherheitsgruppe (NSG) das Cmdlet Set-AzureNetworkSecurityRule. Wenn Ihre Liste sicherer Empfänger nur regionsspezifische IP-Adressen enthält, müssen Sie auch das Diensttag „Azure Active Directory“ (Azure AD) der Liste sicherer Empfänger aktualisieren, um die Authentifizierung zu ermöglichen.
 
-- **Zulassen des Zugriffs mithilfe von NSG-Tags**.  Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup mit dem Diensttag AzureBackup zulassen. Zusätzlich sollten Sie die Konnektivität für Authentifizierung und Datenübertragung mithilfe von [Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Azure AD und Azure Storage ermöglichen. Dies kann über das Portal oder PowerShell erfolgen.
+* **Zulassen des Zugriffs mithilfe von NSG-Tags**.  Wenn Sie die Konnektivität mit NSG einschränken, sollten Sie den ausgehenden Zugriff auf Azure Backup mit dem Diensttag AzureBackup zulassen. Zusätzlich sollten Sie die Konnektivität für Authentifizierung und Datenübertragung mithilfe von [Regeln](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) für Azure AD und Azure Storage ermöglichen. Dies kann über das Portal oder PowerShell erfolgen.
 
-    So erstellen Sie eine Regel über das Portal:
-    
-    - Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
-    - Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
-    - Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf **Diensttag** und **Zieldiensttag** auf **AzureBackup** festgelegt wurde.
-    - Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
-    
+    So erstellen Sie eine Regel über das Portal
+
+  * Navigieren Sie unter **Alle Dienste** zu **Netzwerksicherheitsgruppen**, und wählen Sie die Netzwerksicherheitsgruppe aus.
+  * Wählen Sie unter **Einstellungen** die Option **Ausgangssicherheitsregeln** aus.
+  * Wählen Sie **Hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen einer neuen Regel ein, wie unter [Einstellungen zu Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings) beschrieben. Stellen Sie sicher, dass die Option **Ziel** auf **Diensttag** und **Zieldiensttag** auf **AzureBackup** festgelegt wurde.
+  * Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
+
    So erstellen Sie eine Regel mit PowerShell:
 
-   - Hinzufügen von Azure-Anmeldeinformationen und Aktualisieren der nationalen Clouds<br/>
+  * Hinzufügen von Azure-Anmeldeinformationen und Aktualisieren der nationalen Clouds<br/>
     ``Add-AzureRmAccount``
-  - Auswählen des NSG-Abonnements<br/>
+  * Auswählen des NSG-Abonnements<br/>
     ``Select-AzureRmSubscription "<Subscription Id>"``
-  - Auswählen der NSG<br/>
+  * Auswählen der NSG<br/>
     ```$nsg = Get-AzureRmNetworkSecurityGroup -Name "<NSG name>" -ResourceGroupName "<NSG resource group name>"```
-  - Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „Azure Backup“<br/>
+  * Hinzufügen der Ausgangsregel zum Zulassen des Diensttags „Azure Backup“<br/>
    ```Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name "AzureBackupAllowOutbound" -Access Allow -Protocol * -Direction Outbound -Priority <priority> -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix "AzureBackup" -DestinationPortRange 443 -Description "Allow outbound traffic to Azure Backup service"```
-  - Speichern der NSG<br/>
+  * Speichern der NSG<br/>
     ```Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg```
 
-   
-- **Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
-- **Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
+* **Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
+* **Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
 
 Die Konnektivitätsoptionen haben u.a. die folgenden Vor- und Nachteile:
 
@@ -89,14 +87,13 @@ Verwenden eines HTTP-Proxys | Feinsteuerung im Proxy über die Speicher-URLs zul
 
 Verwenden Sie in Datenbanknamen nicht die folgenden Elemente:
 
-  * Nachstehende und führende Leerzeichen
-  * Nachstehende Ausrufezeichen (!)
-  * Schließende eckige Klammern (])
-  * Semikolon ';'
-  * Schrägstrich '/'
+* Nachstehende und führende Leerzeichen
+* Nachstehende Ausrufezeichen (!)
+* Schließende eckige Klammern (])
+* Semikolon ';'
+* Schrägstrich '/'
 
 Obwohl Aliase für nicht unterstützte Zeichen möglich ist, wird empfohlen, sie zu vermeiden. Weitere Informationen finden Sie unter [Grundlegendes zum Tabellendienst-Datenmodell](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -118,9 +115,9 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
 5. Wählen Sie in **Sicherungsziel** > **DBs in VMs ermitteln** die Option **Ermittlung starten** aus, um nach nicht geschützten virtuellen Computern im Abonnement zu suchen. Diese Suche kann je nach Anzahl ungeschützter VMs im Abonnement eine Weile dauern.
 
-   - Nicht geschützte virtuelle Computer sollten nach der Ermittlung sortiert nach Name und Ressourcengruppe in der Liste angezeigt werden.
-   - Wenn eine VM nicht wie erwartet aufgeführt wird, prüfen Sie, ob sie bereits in einem Tresor gesichert wird.
-   - Mehrere VMs können den gleichen Namen aufweisen, gehören dann aber verschiedenen Ressourcengruppen an.
+   * Nicht geschützte virtuelle Computer sollten nach der Ermittlung sortiert nach Name und Ressourcengruppe in der Liste angezeigt werden.
+   * Wenn eine VM nicht wie erwartet aufgeführt wird, prüfen Sie, ob sie bereits in einem Tresor gesichert wird.
+   * Mehrere VMs können den gleichen Namen aufweisen, gehören dann aber verschiedenen Ressourcengruppen an.
 
      ![Ausstehende Sicherung bei der Suche nach Datenbanken in VMs](./media/backup-azure-sql-database/discovering-sql-databases.png)
 
@@ -132,12 +129,12 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
 8. Azure Backup ermittelt alle SQL Server-Datenbanken auf dem virtuellen Computer. Während der Ermittlung geschieht im Hintergrund Folgendes:
 
-    - Azure Backup registriert die VM beim Tresor für die Sicherung der Workload. Alle Datenbanken auf der registrierten VM können nur in diesem Tresor gesichert werden.
-    - Azure Backup installiert die Erweiterung AzureBackupWindowsWorkload auf der VM. In einer SQL Server-Datenbank ist kein Agent installiert.
-    - Azure Backup erstellt das Dienstkonto „NT Service\AzureWLBackupPluginSvc“ auf der VM.
-      - Für alle Sicherungs- und Wiederherstellungsvorgänge wird das Dienstkonto verwendet.
-      - „NT Service\AzureWLBackupPluginSvc erfordert“ Systemadministratorberechtigungen für SQL Server. Die Erweiterung SqlIaaSExtension ist auf allen in Azure Marketplace erstellten SQL Server-VMs vorinstalliert. Die Erweiterung AzureBackupWindowsWorkload verwendet SQLIaaSExtension, um erforderliche Berechtigungen automatisch abzurufen.
-    - Wenn Sie die VM nicht im Marketplace erstellt haben oder SQL Server 2008 und 2008 R2 verwenden, ist die Erweiterung „SqlIaaSExtension“ möglicherweise nicht auf der VM installiert, und der Ermittlungsvorgang schlägt mit der Fehlermeldung „UserErrorSQLNoSysAdminMembership“ fehl. Führen Sie die Schritte unter [Set VM permissions (Einrichten von VM-Berechtigungen)](backup-azure-sql-database.md#set-vm-permissions) aus, um dieses Problem zu beheben.
+    * Azure Backup registriert die VM beim Tresor für die Sicherung der Workload. Alle Datenbanken auf der registrierten VM können nur in diesem Tresor gesichert werden.
+    * Azure Backup installiert die Erweiterung AzureBackupWindowsWorkload auf der VM. In einer SQL Server-Datenbank ist kein Agent installiert.
+    * Azure Backup erstellt das Dienstkonto „NT Service\AzureWLBackupPluginSvc“ auf der VM.
+      * Für alle Sicherungs- und Wiederherstellungsvorgänge wird das Dienstkonto verwendet.
+      * „NT Service\AzureWLBackupPluginSvc erfordert“ Systemadministratorberechtigungen für SQL Server. Die Erweiterung SqlIaaSExtension ist auf allen in Azure Marketplace erstellten SQL Server-VMs vorinstalliert. Die Erweiterung AzureBackupWindowsWorkload verwendet SQLIaaSExtension, um erforderliche Berechtigungen automatisch abzurufen.
+    * Wenn Sie die VM nicht im Marketplace erstellt haben oder SQL Server 2008 und 2008 R2 verwenden, ist die Erweiterung „SqlIaaSExtension“ möglicherweise nicht auf der VM installiert, und der Ermittlungsvorgang schlägt mit der Fehlermeldung „UserErrorSQLNoSysAdminMembership“ fehl. Führen Sie die Schritte unter [Set VM permissions (Einrichten von VM-Berechtigungen)](backup-azure-sql-database.md#set-vm-permissions) aus, um dieses Problem zu beheben.
 
         ![Auswählen der VM und der Datenbank](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -169,9 +166,9 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
 5. Wählen Sie unter **Sicherungsrichtlinie**eine Richtlinie und anschließend **OK** aus.
 
-   - Wählen Sie als Standardrichtlinie HourlyLogBackup aus.
-   - Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
-   - Definieren einer neuen Richtlinie basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
+   * Wählen Sie als Standardrichtlinie HourlyLogBackup aus.
+   * Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
+   * Definieren einer neuen Richtlinie basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
 
      ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-sql-database/select-backup-policy.png)
 
@@ -187,11 +184,11 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
 Eine Sicherungsrichtlinie legt fest, wann Sicherungen erstellt und wie lange sie aufbewahrt werden.
 
-- Eine Richtlinie wird auf Tresorebene erstellt.
-- Mehrere Tresore können die gleiche Sicherungsrichtlinie verwenden. Allerdings müssen Sie die Sicherungsrichtlinie auf jeden Tresor anwenden.
-- Wenn Sie eine Sicherungsrichtlinie erstellen, entspricht eine tägliche vollständige Sicherung der Standardeinstellung.
-- Sie können eine differenzielle Sicherung nur hinzufügen, wenn Sie für die vollständige Sicherung festlegen, dass diese wöchentlich erfolgt.
-- Erfahren Sie mehr über [verschiedene Arten von Sicherungsrichtlinien](backup-architecture.md#sql-server-backup-types).
+* Eine Richtlinie wird auf Tresorebene erstellt.
+* Mehrere Tresore können die gleiche Sicherungsrichtlinie verwenden. Allerdings müssen Sie die Sicherungsrichtlinie auf jeden Tresor anwenden.
+* Wenn Sie eine Sicherungsrichtlinie erstellen, entspricht eine tägliche vollständige Sicherung der Standardeinstellung.
+* Sie können eine differenzielle Sicherung nur hinzufügen, wenn Sie für die vollständige Sicherung festlegen, dass diese wöchentlich erfolgt.
+* Erfahren Sie mehr über [verschiedene Arten von Sicherungsrichtlinien](backup-architecture.md#sql-server-backup-types).
 
 So erstellen Sie eine Sicherungsrichtlinie
 
@@ -203,20 +200,20 @@ So erstellen Sie eine Sicherungsrichtlinie
 3. Geben Sie unter **Richtlinienname** einen Namen für die neue Richtlinie ein.
 4. Wählen Sie in **Richtlinie für vollständige Sicherung** eine **Sicherungshäufigkeit** aus. Wählen Sie entweder **Täglich** oder **Wöchentlich**.
 
-   - Wählen Sie für **Täglich** die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
-   - Wählen Sie für **Wöchentlich** den Wochentag, die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
-   - Sie müssen eine vollständige Sicherung ausführen, da die Option **Vollständige Sicherung** nicht deaktiviert werden kann.
-   - Klicken Sie auf **Vollständige Sicherung**, um die Richtlinie anzuzeigen.
-   - Sie können keine differenziellen Sicherungen für tägliche vollständige Sicherungen erstellen.
+   * Wählen Sie für **Täglich** die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
+   * Wählen Sie für **Wöchentlich** den Wochentag, die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus.
+   * Sie müssen eine vollständige Sicherung ausführen, da die Option **Vollständige Sicherung** nicht deaktiviert werden kann.
+   * Klicken Sie auf **Vollständige Sicherung**, um die Richtlinie anzuzeigen.
+   * Sie können keine differenziellen Sicherungen für tägliche vollständige Sicherungen erstellen.
 
      ![Neue Felder für Sicherungsrichtlinien](./media/backup-azure-sql-database/full-backup-policy.png)  
 
 5. In **BEIBEHALTUNGSDAUER** sind standardmäßig alle Optionen aktiviert. Deaktivieren Sie alle Optionen für die Beibehaltungsdauer, die Sie nicht wünschen, und legen Sie dann die zu verwendenden Intervalle fest.
 
-    - Die Mindestbeibehaltungsdauer beträgt für alle Sicherungstypen (vollständig/differenziell/Protokoll) sieben Tage.
-    - Wiederherstellungspunkte werden unter Berücksichtigung ihrer Beibehaltungsdauer mit einer Markierung versehen. Wenn Sie beispielsweise eine tägliche vollständige Sicherung wählen, wird pro Tag nur eine vollständige Sicherung ausgelöst.
-    - Die Sicherung für einen bestimmten Tag wird auf Grundlage der wöchentlichen Beibehaltungsdauer und der wöchentlichen Beibehaltungseinstellung markiert und beibehalten.
-    - Mit der monatlichen und jährlichen Beibehaltungsdauer verhält es sich ähnlich.
+    * Die Mindestbeibehaltungsdauer beträgt für alle Sicherungstypen (vollständig/differenziell/Protokoll) sieben Tage.
+    * Wiederherstellungspunkte werden unter Berücksichtigung ihrer Beibehaltungsdauer mit einer Markierung versehen. Wenn Sie beispielsweise eine tägliche vollständige Sicherung wählen, wird pro Tag nur eine vollständige Sicherung ausgelöst.
+    * Die Sicherung für einen bestimmten Tag wird auf Grundlage der wöchentlichen Beibehaltungsdauer und der wöchentlichen Beibehaltungseinstellung markiert und beibehalten.
+    * Mit der monatlichen und jährlichen Beibehaltungsdauer verhält es sich ähnlich.
 
        ![Intervalleinstellungen für Beibehaltungsdauer](./media/backup-azure-sql-database/retention-range-interval.png)
 
@@ -228,8 +225,8 @@ So erstellen Sie eine Sicherungsrichtlinie
 
 8. Wählen Sie in **Richtlinie für differenzielle Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
 
-    - Pro Tag können Sie nur eine differenzielle Sicherung auslösen.
-    - Differenzielle Sicherungen können maximal 180 Tage aufbewahrt werden. Verwenden Sie für eine längere Aufbewahrung vollständige Sicherungen.
+    * Pro Tag können Sie nur eine differenzielle Sicherung auslösen.
+    * Differenzielle Sicherungen können maximal 180 Tage aufbewahrt werden. Verwenden Sie für eine längere Aufbewahrung vollständige Sicherungen.
 
 9. Wählen Sie **OK** aus, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
 
@@ -240,8 +237,8 @@ So erstellen Sie eine Sicherungsrichtlinie
     ![Bearbeiten der Richtlinie für die Transaktionsprotokollsicherung](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
 13. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird.
-    - Die Komprimierung ist standardmäßig deaktiviert.
-    - Auf dem Back-End verwendet Azure Backup die native SQL-Sicherungskomprimierung.
+    * Die Komprimierung ist standardmäßig deaktiviert.
+    * Auf dem Back-End verwendet Azure Backup die native SQL-Sicherungskomprimierung.
 
 14. Nachdem Sie die Sicherungsrichtlinie bearbeitet haben, wählen Sie **OK** aus.
 
@@ -249,9 +246,9 @@ So erstellen Sie eine Sicherungsrichtlinie
 
 Sie können den automatischen Schutz aktivieren, um automatisch alle vorhandenen und künftigen Datenbanken in einer eigenständigen SQL Server-Instanz oder Always On-Verfügbarkeitsgruppe zu sichern.
 
-- Die Anzahl der Datenbanken, die Sie für den automatischen Schutz in einer Aktion auswählen können, ist nicht begrenzt.
-- Es ist nicht möglich, beim Aktivieren des automatischen Schutzes Datenbanken selektiv zu schützen oder vom Schutz in einer Instanz auszuschließen.
-- Falls Ihre Instanz bereits einige geschützte Datenbanken enthält, sind sie unter den jeweiligen Richtlinien auch dann weiterhin geschützt, wenn Sie den automatischen Schutz deaktivieren. Für alle nicht geschützten Datenbanken, die später hinzugefügt werden, gilt aber nur eine einzelne Richtlinie, die Sie zum Zeitpunkt der Aktivierung des automatischen Schutzes unter **Sicherung konfigurieren** definieren. Sie können die Richtlinie, die einer automatisch geschützten Datenbank zugeordnet ist, später aber ändern.  
+* Die Anzahl der Datenbanken, die Sie für den automatischen Schutz in einer Aktion auswählen können, ist nicht begrenzt.
+* Es ist nicht möglich, beim Aktivieren des automatischen Schutzes Datenbanken selektiv zu schützen oder vom Schutz in einer Instanz auszuschließen.
+* Falls Ihre Instanz bereits einige geschützte Datenbanken enthält, sind sie unter den jeweiligen Richtlinien auch dann weiterhin geschützt, wenn Sie den automatischen Schutz deaktivieren. Für alle nicht geschützten Datenbanken, die später hinzugefügt werden, gilt aber nur eine einzelne Richtlinie, die Sie zum Zeitpunkt der Aktivierung des automatischen Schutzes unter **Sicherung konfigurieren** definieren. Sie können die Richtlinie, die einer automatisch geschützten Datenbank zugeordnet ist, später aber ändern.  
 
 So aktivieren Sie den automatischen Schutz
 
@@ -266,10 +263,9 @@ Wenn Sie den automatischen Schutz deaktivieren müssen, klicken Sie unter **Sich
 
 ![Deaktivieren des automatischen Schutzes für diese Instanz](./media/backup-azure-sql-database/disable-auto-protection.png)
 
- 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Wiederherstellen von gesicherten SQL Server-Datenbanken](restore-sql-database-azure-vm.md)
-- [Verwalten von gesicherten SQL Server-Datenbanken](manage-monitor-sql-database-backup.md)
+* [Wiederherstellen von gesicherten SQL Server-Datenbanken](restore-sql-database-azure-vm.md)
+* [Verwalten von gesicherten SQL Server-Datenbanken](manage-monitor-sql-database-backup.md)

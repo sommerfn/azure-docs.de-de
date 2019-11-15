@@ -1,7 +1,7 @@
 ---
 title: Markenerkennung – Maschinelles Sehen
 titleSuffix: Azure Cognitive Services
-description: Konzepte zur Erkennung von Marken/Logos mithilfe der Maschinelles Sehen-API.
+description: In diesem Artikel wird ein spezieller Modus der Objekterkennung, der Marken- und/oder Logoerkennung unter Verwendung der Maschinelles Sehen-API behandelt.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: c3a80cbdd166f77681665ee3675c1a71ce3a9bd6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 117beca1284f28c75c1ac772425423f732b8a236
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967088"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718637"
 ---
 # <a name="detect-popular-brands-in-images"></a>Erkennen von bekannten Marken in Bildern
 

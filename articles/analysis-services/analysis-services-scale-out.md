@@ -1,18 +1,18 @@
 ---
 title: Horizontales Hochskalieren von Azure Analysis Services | Microsoft-Dokumentation
-description: Replizieren von Azure Analysis Services-Servern mittels horizontalem Hochskalieren
+description: Replizieren Sie Azure Analysis Services-Server mittels horizontalem Hochskalieren. Dann können Clientabfragen auf mehrere Abfragereplikate in einem Abfragepool für die horizontale Skalierung verteilt werden.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301184"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572589"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -138,7 +138,7 @@ Auf der Übersichtsseite des Servers werden zwei Servernamen angezeigt. Wenn Sie
 
 Für Endbenutzer-Clientverbindungen wie Power BI Desktop, Excel und benutzerdefinierte Apps muss der **Servername** verwendet werden. 
 
-Für SSMS, SSDT und Verbindungszeichenfolgen in PowerShell, Azure Functions-Apps und AMO muss der **Name des Verwaltungsservers** verwendet werden. Der Name des Verwaltungsservers enthält einen speziellen `:rw`-Qualifizierer (Lesen/Schreiben). Sämtliche Verarbeitungsvorgänge finden auf dem (primären) Verwaltungsserver statt.
+Für SSMS, Visual Studio und Verbindungszeichenfolgen in PowerShell, Azure Functions-Apps und AMO muss der **Name des Verwaltungsservers** verwendet werden. Der Name des Verwaltungsservers enthält einen speziellen `:rw`-Qualifizierer (Lesen/Schreiben). Sämtliche Verarbeitungsvorgänge finden auf dem (primären) Verwaltungsserver statt.
 
 ![Servernamen](media/analysis-services-scale-out/aas-scale-out-name.png)
 

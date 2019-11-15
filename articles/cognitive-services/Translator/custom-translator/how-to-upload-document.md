@@ -1,7 +1,7 @@
 ---
 title: 'Hochladen eines Dokuments: Custom Translator'
 titleSuffix: Azure Cognitive Services
-description: Mithilfe des Dokumentuploadfeatures können Sie parallele Dokumente zu Trainingszwecken hochladen. Parallele Dokumente sind Dokumentpaare, bei denen ein Dokument die Übersetzung des anderen enthält. Das eine Dokument des Paars enthält also die Sätze in der Ausgangssprache und das andere die entsprechenden Sätze in der Zielsprache.
+description: Das Feature zum Hochladen von Dokumenten lädt parallele Dokumente (zwei Dokumente, von denen eines der Ursprung und das andere die Übersetzung ist) in den Dienst hoch.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f2bd6103c27d455265ee967554fb27513f78a472
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595652"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647383"
 ---
 # <a name="upload-a-document"></a>Hochladen eines Dokuments
 
