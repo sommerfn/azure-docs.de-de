@@ -1,20 +1,21 @@
 ---
-title: Migrieren lokaler Windows-Benutzer und -Gruppen in SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz unter Verwendung der T-SQL-DDL-Syntax | Microsoft-Dokumentation
+title: Migrieren Sie SQL Server-Windows-Benutzern und -Gruppen in eine verwaltete Instanz mit T-SQL
 description: Hier erfahren Sie, wie Sie lokale Windows-Benutzer und -Gruppen in SQL Server zu einer verwalteten Instanz migrieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+ms.custom: seo-lt-2019
 ms.topic: tutorial
 author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/22/2019
-ms.openlocfilehash: ca0997010fef40c0927960c04588c031dd85fff8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 10/30/2019
+ms.openlocfilehash: 3ed4e4b1d37a9705378281ca74b53a6b60713d97
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795061"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73807176"
 ---
 # <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-database-managed-instance-using-t-sql-ddl-syntax"></a>Tutorial: Migrieren lokaler Windows-Benutzer und -Gruppen in SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz unter Verwendung der T-SQL-DDL-Syntax
 
@@ -41,6 +42,8 @@ Für dieses Tutorials ist Folgendes erforderlich:
 - Zugriff auf Active Directory für die Erstellung von Benutzern/Gruppen
 - Eine SQL Server-Instanz in Ihrer lokalen Umgebung
 - Eine verwaltete Instanz. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md).
+  - Ein `sysadmin` in der verwalteten Instanz muss verwendet werden, um Azure AD-Anmeldungen zu erstellen.
+- [Erstellen Sie einen Azure AD-Administrator für die verwaltete Instanz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 - Erfolgreiche Verbindungsherstellung mit der verwalteten Instanz in Ihrem Netzwerk. Weitere Informationen finden Sie in den folgenden Artikeln: 
     - [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md)
     - [Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-p2s.md)
@@ -212,9 +215,12 @@ Gehen Sie wie unter [Schnellstart: Wiederherstellen einer Datenbank in einer ver
 
 ## <a name="part-4-migrate-users-to-managed-instance"></a>Teil 4: Migrieren von Benutzern zu einer verwalteten Instanz
 
+> [!NOTE]
+> Der Azure AD-Administrator für verwaltete Instanzfunktionen nach der Erstellung hat sich geändert. Weitere Informationen finden Sie unter [Neue Azure AD-Administratorfunktionen für verwaltete Instanzen](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi).
+
 Führen Sie den Befehl „ALTER USER“ aus, um die Migration zu einer verwalteten Instanz abzuschließen.
 
-1. Melden Sie sich mit Ihrem SQL-Administratorkonto für die verwaltete Instanz bei Ihrer verwalteten Instanz an. Erstellen Sie anschließend mithilfe der folgenden Syntax Ihre Azure AD-Anmeldung in der verwalteten Instanz:
+1. Melden Sie sich mit Ihrem Azure AD-Administratorkonto für die verwaltete Instanz bei Ihrer verwalteten Instanz an. Erstellen Sie anschließend mithilfe der folgenden Syntax Ihre Azure AD-Anmeldung in der verwalteten Instanz. Weitere Informationen finden Sie unter [Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)](sql-database-managed-instance-aad-security-tutorial.md).
 
     ```sql
     use master 

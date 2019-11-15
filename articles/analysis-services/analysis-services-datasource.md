@@ -1,18 +1,18 @@
 ---
 title: In Azure Analysis Services unterstützte Datenquellen | Microsoft-Dokumentation
-description: Beschreibt Datenquellen, die für Datenmodelle in Azure Analysis Services unterstützt werden.
+description: Beschreibt Datenquellen und Connectors, die für tabellarische Datenmodelle mit dem Kompatibilitätsgrad 1200 und höher in Azure Analysis Services unterstützt werden.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512455"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572956"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -97,12 +97,12 @@ Bei der Migration eines lokalen SQL Server Analysis Services-Tabellenmodells zu 
 
 **So geben Sie einen Anbieter an**
 
-1. Klicken Sie unter SSDT > **Tabular Model Explorer** (Explorer für tabellarisches Modell)  > **Datenquellen** mit der rechten Maustaste auf eine Datenquellenverbindung, und klicken Sie anschließend auf **Datenquelle bearbeiten**.
+1. Klicken Sie unter Visual Studio > **Tabular Model Explorer** (Explorer für tabellarisches Modell)  > **Datenquellen** mit der rechten Maustaste auf eine Datenquellenverbindung, und klicken Sie anschließend auf **Datenquelle bearbeiten**.
 2. Klicken Sie unter **Verbindung bearbeiten** auf **Erweitert**, um das Fenster „Erweiterte Eigenschaften“ zu öffnen.
 3. Wählen Sie anschließend unter **Erweiterte Eigenschaften festlegen** > **Anbieter** den gewünschten Anbieter aus.
 
 ## <a name="impersonation"></a>Identitätswechsel
-In einigen Fällen muss möglicherweise ein anderes Identitätswechselkonto angegeben werden. Das Identitätswechselkonto kann in Visual Studio (SSDT) oder SSMS angegeben werden.
+In einigen Fällen muss möglicherweise ein anderes Identitätswechselkonto angegeben werden. Das Identitätswechselkonto kann in Visual Studio oder SSMS angegeben werden.
 
 Für lokale Datenquellen:
 

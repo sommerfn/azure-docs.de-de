@@ -1,20 +1,17 @@
 ---
 title: Häufig gestellte Fragen zu Azure Spring Cloud | Microsoft-Dokumentation
 description: Lesen Sie die häufig gestellten Fragen zu Azure Spring Cloud.
-services: spring-cloud
-author: v-vasuke
-manager: jeconnoc
-editor: ''
+author: jpconnock
 ms.service: spring-cloud
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: v-vasuke
-ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.author: jeconnoc
+ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592309"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73607224"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -66,7 +63,7 @@ Im Folgenden finden Sie die bekannten Einschränkungen der Vorschauversion des D
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Wie kann ich Feedback geben und Probleme melden?
 
-Wenn Sie Ihre Spring-Dienstinstanzen in Azure Spring Cloud erstellt haben, können Sie eine [Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) erstellen. Wenn Sie das Onboarding in Azure Spring Cloud noch nicht durchgeführt haben, können Sie zu [Azure-Feedback](https://feedback.azure.com/) navigieren, um Funktionen anzufordern oder Feedback zu geben.
+Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Für Featureanforderungen wechseln Sie zu [Azure-Feedback](https://feedback.azure.com/forums/34192--general-feedback), um Features anzufordern oder Feedback zu senden.
 
 ## <a name="development"></a>Entwicklung
 

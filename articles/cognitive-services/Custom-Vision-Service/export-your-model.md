@@ -1,7 +1,7 @@
 ---
 title: Exportieren Ihres Modells auf Mobilgeräte – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Ihr Modell für die Erstellung von Mobilanwendungen exportieren.
+description: In diesem Artikel erfahren Sie, wie Sie Ihr Modell zur Erstellung mobiler Anwendungen exportieren oder lokal für die Echtzeitklassifizierung ausführen können.
 services: cognitive-services
 author: anrothMSFT
 manager: nitinme
@@ -10,23 +10,26 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 554a392a7f815a6e646927f137b1e6c2856099bd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f734f4f1a11f57b759615e7a9ce2cd2f7f8028fb
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561073"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718948"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>Exportieren Ihres Modells für die Verwendung mit Mobilgeräten
 
 Custom Vision Service ermöglicht das Exportieren von Klassifizierern für die Offlineausführung. Sie können den exportierten Klassifizierer in eine Anwendung einbetten und lokal auf einem Gerät ausführen, um eine Klassifizierung in Echtzeit zu erhalten.
+
+## <a name="export-options"></a>Exportoptionen
 
 Custom Vision Service unterstützt die folgenden Exporte:
 
 * __Tensorflow__ für __Android__
 * __Core ML__ für __iOS 11__
 * __ONNX__ für __Windows ML__
-* Einen Windows- oder Linux-__Container__. Der Container enthält ein Tensorflow-Modell und Dienstcode zur Verwendung der Custom Vision Service-API. 
+* __[Vision AI Developer Kit](https://azure.github.io/Vision-AI-DevKit-Pages/)__ .
+* Ein __Docker-Container__ für Windows-, Linux- oder ARM-Architekturen. Der Container enthält ein Tensorflow-Modell und Dienstcode zur Verwendung der Custom Vision-API.
 
 > [!IMPORTANT]
 > Custom Vision Service exportiert nur __kompakte__ Domänen. Die durch kompakte Domänen generierten Modelle sind für die Einschränkungen der Klassifizierung in Echtzeit auf Mobilgeräten optimiert. Mit einer kompakten Domäne erstellte Klassifizierer sind möglicherweise etwas weniger genau als eine Standarddomäne mit der gleichen Menge an Trainingsdaten.
@@ -36,23 +39,26 @@ Custom Vision Service unterstützt die folgenden Exporte:
 ## <a name="convert-to-a-compact-domain"></a>Konvertieren in eine kompakte Domäne
 
 > [!NOTE]
-> Die Schritte in diesem Abschnitt gelten nur, wenn Sie einen vorhandenen Klassifizierer haben, der nicht als kompakte Domäne festgelegt ist.
+> Die Schritte in diesem Abschnitt gelten nur, wenn Sie ein vorhandenes Modell haben, das nicht als kompakte Domäne festgelegt ist.
 
-Gehen Sie zum Konvertieren der Domäne einer vorhandenen Klassifizierung folgendermaßen vor:
+Gehen Sie zum Konvertieren der Domäne eines vorhandenen Modells folgendermaßen vor:
 
-1. Wählen Sie auf der [Custom Vision-Seite](https://customvision.ai) das Symbol __Home__ aus, um eine Liste Ihrer Projekte anzuzeigen. Sie können Ihre Projekte auch unter [https://customvision.ai/projects](https://customvision.ai/projects) einsehen.
+1. Wählen Sie auf der [Custom Vision-Website](https://customvision.ai) das Symbol __Home__ aus, um eine Liste Ihrer Projekte anzuzeigen.
 
     ![Abbildung des Symbols „Home“ und der Projektliste](./media/export-your-model/projects-list.png)
 
-2. Wählen Sie ein Projekt und dann das __Zahnradsymbol__ in der rechten oberen Ecke der Seite aus.
+1. Wählen Sie ein Projekt und dann das __Zahnradsymbol__ in der rechten oberen Ecke der Seite aus.
 
     ![Abbildung des Zahnradsymbols](./media/export-your-model/gear-icon.png)
 
-3. Wählen Sie im Abschnitt __Domänen__ eine __kompakte__ Domäne aus. Wählen Sie zum Speichern der Änderungen __Änderungen speichern__ aus.
+1. Wählen Sie im Abschnitt __Domänen__ eine der __kompakten__ Domänen aus. Wählen Sie zum Speichern der Änderungen __Änderungen speichern__ aus. 
+
+    > [!NOTE]
+    > Für das Vision AI Dev Kit muss das Projekt mit der Domäne __Allgemein (Kompakt)__ erstellt werden, und Sie müssen die Option **Vision AI Dev Kit** im Abschnitt **Exportfunktionen** angeben.
 
     ![Abbildung der Domänenauswahl](./media/export-your-model/domains.png)
 
-4. Wählen Sie im oberen Bereich der Seite __Trainieren__ aus, um das Training mit der neuen Domäne zu wiederholen.
+1. Wählen Sie im oberen Bereich der Seite __Trainieren__ aus, um das Training mit der neuen Domäne zu wiederholen.
 
 ## <a name="export-your-model"></a>Exportieren Ihres Modells
 
@@ -65,7 +71,7 @@ Um das Modell nach dem erneuten Training zu exportieren, gehen Sie folgendermaß
     > [!TIP]
     > Wenn der Eintrag __Exportieren__ nicht verfügbar ist, verwendet die ausgewählte Iteration keine kompakte Domäne. Wählen Sie im Abschnitt __Iterationen__ dieser Seite eine Iteration aus, die eine kompakte Domäne verwendet, und wählen Sie dann __Exportieren__ aus.
 
-2. Wählen Sie das Exportformat aus, und wählen Sie dann __Exportieren__ aus, um das Modell herunterzuladen.
+1. Wählen Sie das gewünschte Exportformat aus, und wählen Sie dann __Exportieren__ aus, um das Modell herunterzuladen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

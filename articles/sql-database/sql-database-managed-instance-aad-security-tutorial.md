@@ -1,20 +1,20 @@
 ---
-title: Sicherheit für verwaltete Azure SQL-Datenbank-Instanzen durch Azure AD-Serverprinzipale (Anmeldungen) | Microsoft-Dokumentation
+title: Sicherheit für verwaltete Instanzen mit Azure AD-Serverprinzipalen (Anmeldungen)
 description: Hier finden Sie Informationen zu Methoden und Features für den Schutz einer verwalteten Instanz in Azure SQL-Datenbank sowie zur Verwendung von Azure AD-Serverprinzipalen (Anmeldungen).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: tutorial
-author: VanMSFT
-ms.author: vanto
-ms.reviewer: carlrab
-ms.date: 02/20/2019
-ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+author: GitHubMirek
+ms.author: mireks
+ms.reviewer: vanto
+ms.date: 11/06/2019
+ms.openlocfilehash: bd65a21c2aa21643c76966410931949db7d17ad6
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231003"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822788"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)
 
@@ -35,9 +35,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Verwenden des Identitätswechsels mit Azure AD-Benutzern
 > - Verwenden datenbankübergreifender Abfragen mit Azure AD-Benutzern
 > - Kennenlernen von Sicherheitsfeatures wie Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung
-
-> [!NOTE]
-> Azure AD-Serverprinzipale (Anmeldungen) für verwaltete Instanzen befinden sich in der **Public Preview-Phase**.
 
 Weitere Informationen finden Sie im Artikel [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) sowie im [Artikel zu den Funktionen](sql-database-managed-instance.md).
 
@@ -64,15 +61,14 @@ Darüber hinaus kann ein Dienstendpunkt für die verwaltete Instanz konfiguriert
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>Erstellen eines Azure AD-Serverprinzipals (Anmeldung) für eine verwaltete Instanz mithilfe von SSMS
 
-Der erste Azure AD-Serverprinzipal (Anmeldung) muss unter Verwendung des SQL Server-Standardkontos (Azure-fremdes AD-Konto) vom Typ `sysadmin` erstellt werden. Beispiele für das Herstellen einer Verbindung mit Ihrer verwalteten Instanz finden Sie in den folgenden Artikeln:
+Der erste Azure AD-Serverprinzipal (Anmeldung) kann vom SQL Server-Standardkonto (Azure-fremdes AD-Konto), das ein `sysadmin` ist, oder vom Azure AD-Administrator für die verwaltete Instanz erstellt werden, die während des Bereitstellungsprozesses erstellt wurde. Weitere Informationen finden Sie unter [Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete SQL-Datenbank-Instanz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance). Diese Funktionalität hat sich seit der [GA der Azure AD-Serverprinzipale](sql-database-aad-authentication-configure.md#new-azure-ad-admin-functionality-for-mi) geändert.
+
+Beispiele für das Herstellen einer Verbindung mit Ihrer verwalteten Instanz finden Sie in den folgenden Artikeln:
 
 - [Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-vm.md)
 - [Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-p2s.md)
 
-> [!IMPORTANT]
-> Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen eines Azure AD-Serverprinzipals (Anmeldung) innerhalb der verwalteten Instanz verwendet werden. Der erste Azure AD-Serverprinzipal (Anmeldung) muss mit einem SQL Server-Konto vom Typ `sysadmin` erstellt werden. Dabei handelt es sich um eine temporäre Einschränkung, die entfernt wird, sobald Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-
-1. Melden Sie sich über [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) unter Verwendung eines SQL Server-Standardkontos (Azure-fremdes AD-Konto) vom Typ `sysadmin` bei Ihrer verwalteten Instanz an.
+1. Melden Sie sich über [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) unter Verwendung eines SQL Server-Standardkontos (Azure-fremdes AD-Konto), das ein `sysadmin` oder ein Azure AD-Administrator für verwaltete Instanzen ist, bei Ihrer verwalteten Instanz an.
 
 2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie **Neue Abfrage** aus.
 
@@ -125,7 +121,7 @@ Um weitere Azure AD-Serverprinzipale (Anmeldungen) erstellen zu können, müsse
 
 So fügen Sie die Anmeldung der Serverrolle `sysadmin` hinzu:
 
-1. Melden Sie sich erneut bei der verwalteten Instanz an, oder verwenden Sie die bestehende Verbindung mit dem SQL-Prinzipal vom Typ `sysadmin`.
+1. Melden Sie sich erneut bei der verwalteten Instanz an, oder verwenden Sie die bestehende Verbindung mit dem Azure AD-Administrator oder SQL-Prinzipal vom Typ `sysadmin`.
 
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie **Neue Abfrage** aus.
 
@@ -425,7 +421,7 @@ Datenbankübergreifende Abfragen werden für Azure AD-Konten mit Azure AD-Serv
 
     Daraufhin sollten die Tabellenergebnisse aus **TestTable2** angezeigt werden.
 
-## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins-public-preview"></a>Zusätzliche unterstützte Szenarien für Azure AD-Serverprinzipale (Anmeldungen) (Public Preview) 
+## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins"></a>Zusätzliche unterstützte Szenarien für Azure AD-Serverprinzipale (Anmeldungen)
 
 - Für Azure AD-Serverprinzipale (Anmeldungen) werden SQL-Agent-Verwaltung und Auftragsausführungen unterstützt.
 - Vorgänge für die Datenbanksicherung und -wiederherstellung können von Azure AD-Serverprinzipale (Anmeldungen) ausgeführt werden.

@@ -4,7 +4,7 @@ title: Dokumentation zur Bing-News-Suche-API
 metadata:
   title: 'Dokumentation zur Bing-News-Suche-API: Tutorials, Schnellstarts, API-Referenzen'
   titleSuffix: Azure Cognitive Services
-  description: 'Hier wird gezeigt, wie Sie das Web mithilfe der Bing-News-Suche-API nach Nachrichten durchsuchen.'
+  description: Mithilfe der Bing-News-Suche-API können Sie die Nachrichtensuchfunktionen von Bing in Ihre Anwendungen integrieren.
   services: cognitive-services
   author: aahill
   manager: nitinme

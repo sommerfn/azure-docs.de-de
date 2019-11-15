@@ -5,27 +5,25 @@ services: redis-cache
 author: wesmc7777
 ms.service: cache
 ms.topic: include
-ms.date: 03/28/2018
+ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 8d0973b8d4de280842930a8a70618600daab849b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a737e130d616a67bab28c7c96c0372216a6707af
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849933"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720318"
 ---
-### <a name="retrieve-host-name-ports-and-access-keys-by-using-the-azure-portal"></a>Abrufen von Hostname, Ports und Zugriffsschlüsseln mit dem Azure-Portal
+### <a name="retrieve-host-name-ports-and-access-keys-from-the-azure-portal"></a>Abrufen von Hostname, Ports und Zugriffsschlüsseln vom Azure-Portal
 
-Wenn Sie eine Verbindung mit einer Azure Cache for Redis-Instanz herstellen, benötigen Cacheclients den Hostnamen, die Ports und einen Schlüssel für den Cache. Von einigen Clients wird unter Umständen mit etwas anderen Namen auf diese Elemente verwiesen. Diese Informationen können Sie im Azure-Portal abrufen.
+Um eine Verbindung mit einer Azure Cache for Redis-Instanz herzustellen, benötigen Cacheclients den Hostnamen, die Ports und einen Schlüssel für den Cache. Von einigen Clients wird unter Umständen mit etwas anderen Namen auf diese Elemente verwiesen. Sie können den Hostnamen, Ports und Zugriffsschlüssel vom [Azure-Portal](https://portal.azure.com) abrufen.
 
-#### <a name="to-retrieve-the-access-keys-and-host-name"></a>Abrufen der Zugriffsschlüssel und des Hostnamens
+- Wählen Sie **Zugriffsschlüssel** aus, um die Zugriffsschlüssel aus dem linken Navigationsbereich des Cache abzurufen. 
+  
+  ![Azure Cache for Redis-Schlüssel](media/redis-cache-access-keys/redis-cache-keys.png)
 
-1. Zum Abrufen der Zugriffsschlüssel über das [Azure-Portal](https://portal.azure.com) navigieren Sie zu Ihrem Cache und klicken auf **Zugriffsschlüssel**. 
+- Wählen Sie **Eigenschaften** aus, um den Hostnamen und die Ports aus dem linken Navigationsbereich des Cache abzurufen. Der Hostname hat das Format *\<DNS-Name>.redis.cache.windows.net*.
 
-    ![Azure Cache for Redis-Schlüssel](media/redis-cache-access-keys/redis-cache-keys.png)
-
-2. Klicken Sie zum Abrufen des Hostnamens und der Ports auf **Eigenschaften**.
-
-    ![Azure Cache for Redis-Eigenschaften](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
+  ![Azure Cache for Redis-Eigenschaften](media/redis-cache-access-keys/redis-cache-hostname-ports.png)
 

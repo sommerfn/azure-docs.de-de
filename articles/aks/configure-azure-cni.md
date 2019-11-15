@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: e7c63d3b52a57a952c311937036f0f7da15ebefc
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ab28203a240cf360fb990ac42fdbc2d83864f68b
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299605"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604791"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -71,10 +71,12 @@ Die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster ist 250. *Standardm
 
 Sie können die maximale Anzahl von Pods pro Knoten *nur zum Zeitpunkt der Bereitstellung* konfigurieren. Wenn Sie die Bereitstellung mit der Azure CLI oder mit einer Resource Manager-Vorlage durchführen, können Sie die maximale Anzahl von Pods pro Knoten auf bis zu 250 festlegen.
 
+Ein Mindestwert für maximale Pods pro Knoten wird erzwungen, um Platz für Systempods zu garantieren, die für die Clusterintegrität entscheidend sind. Der Mindestwert, der für maximale Pods pro Knoten festgelegt werden kann, ist nur dann 10, wenn die Konfiguration der einzelnen Knotenpools Platz für mindestens 30 Pods bietet. Wenn Sie z. B. die maximalen Pods pro Knoten auf mindestens 10 festlegen, muss jeder einzelne Knotenpool mindestens drei Knoten aufweisen. Diese Anforderung gilt auch für jeden neu erstellten Knotenpool, d. h. wenn für die maximalen Pods pro Knoten der Wert 10 definiert ist, muss jeder weitere hinzugefügte Knotenpool mindestens drei Knoten aufweisen.
+
 | Netzwerk | Minimum | Maximum |
 | -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
-| Kubenet | 30 | 110 |
+| Azure CNI | 10 | 250 |
+| Kubenet | 10 | 110 |
 
 > [!NOTE]
 > Der Mindestwert in der obigen Tabelle wird vom AKS-Dienst strikt erzwungen. Sie können für maxPods keinen niedrigeren Wert als den angezeigten Mindestwert festlegen, da dadurch der Start des Clusters verhindert werden kann.
