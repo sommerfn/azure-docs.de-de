@@ -1,17 +1,14 @@
 ---
 title: 'Beispiel: Überwachen der Bedrohungserkennung auf Serverebene'
 description: In dieser Beispielrichtliniendefinition werden Richtlinien für Sicherheitswarnungen für SQL Server überwacht, wenn diese Richtlinien nicht auf den angegebenen Status festgelegt sind.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 0c5cfe2d30668102a356224b5efd141746ab0866
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.topic: sample
+ms.openlocfilehash: 8eeb557426ef2eaca855c30f1bce14ee2b7681f4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254762"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74071231"
 ---
 # <a name="sample---audit-server-level-threat-detection-setting"></a>Beispiel: Überwachen der Einstellung für die Bedrohungserkennung auf Serverebene
 
