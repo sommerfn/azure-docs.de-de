@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259173"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887712"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Konfi
 
 Wenn es beim Kompilieren oder Bereitstellen von Konfigurationen in Azure State Configuration zu Fehlern kommt, finden Sie hier einige Schritte, um das Problem zu diagnostizieren.
 
-1. **Stellen Sie sicher, dass die Konfiguration auf Ihrem lokalen Computer erfolgreich kompiliert wird:**  Azure State Configuration ist in PowerShell DSC integriert. Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](https://docs.microsoft.com/en-us/powershell/scripting/overview).
+1. **Stellen Sie sicher, dass die Konfiguration auf Ihrem lokalen Computer erfolgreich kompiliert wird:**  Azure State Configuration ist in PowerShell DSC integriert. Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
 
    Durch das Kompilieren der DSC-Konfiguration auf Ihrem lokalen Computer können Sie unter anderem die folgenden allgemeinen Fehler ermitteln und beheben:
 

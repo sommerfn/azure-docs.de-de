@@ -1,17 +1,14 @@
 ---
 title: 'Beispiel: Zulässige Load Balancer-SKUs'
 description: Diese Beispielrichtliniendefinition erfordert, dass Lastenausgleichsmodule eine genehmigte SKU verwenden.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 1436432cde8d2d33a393ad017423abea48f787b2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: f3872ffc2fc75445f4f51573474fc359227b431b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980655"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076435"
 ---
 # <a name="sample---allowed-load-balancer-skus"></a>Beispiel: Zulässige Load Balancer-SKUs
 

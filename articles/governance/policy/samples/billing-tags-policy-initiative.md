@@ -1,17 +1,14 @@
 ---
 title: 'Beispiel: Richtlinieninitiative zur Abrechnung von Tags'
 description: Diese Beispielrichtliniendefinition erfordert angegebene Tagwerte für die Kostenstelle und den Produktnamen.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: f2190b5759c53d645c1d0150004271ba04669c94
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: e2fc9a7251fbe548b22f24356e555f92a3a6e22f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981400"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076356"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>Beispiel: Richtlinieninitiative zur Abrechnung von Tags
 

@@ -1,5 +1,5 @@
 ---
-title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric | Microsoft-Dokumentation
+title: Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
 description: Verwenden Sie das Feature für regelmäßige Sicherungen und Wiederherstellungen von Service Fabric, um eine regelmäßige Datensicherung Ihrer Anwendungsdaten zu ermöglichen.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 9aeffa8b756340851ca4c82ebaed2453d4ac03bc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 43adb9f9d9989b39faa3af705a61ae8b0626a43e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819511"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005552"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric 
 > [!div class="op_single_selector"]
@@ -127,21 +127,6 @@ Zuerst müssen Sie den _Dienst für Sicherungen und Wiederherstellungen_ in Ihre
 
 4. Nachdem Sie die Clustervorlage mit den vorhergehenden Änderungen aktualisiert haben, wenden Sie die Änderungen an und schließen die Bereitstellung/das Upgrade ab. Anschließend wird der _Dienst für Sicherungen und Wiederherstellungen_ im Cluster gestartet. Der URI für diesen Dienst lautet `fabric:/System/BackupRestoreService`, und Sie finden den Dienst im Abschnitt mit Systemdiensten im Service Fabric Explorer. 
 
-### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
-
-1. Stellen Sie sicher, dass der erweiterte Modus aktiviert ist.
-
-    ![Aktivieren des erweiterten Modus][2]
-
-2. Wählen Sie eine Anwendung aus, und navigieren Sie zur Aktion. Klicken Sie auf „Anwendungssicherung aktivieren/aktualisieren“.
-
-    ![Aktivieren der Anwendungssicherung][3] 
-
-3. Wählen Sie schließlich die gewünschte Richtlinie aus, und klicken Sie auf „Sicherung aktivieren“.
-
-    ![Auswählen der Richtlinie][4]
-
-
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors
 Jetzt erläutern wir schrittweise das Aktivieren der regelmäßigen Sicherung für den zuverlässigen zustandsbehafteten Dienst und Reliable Actors. Diese Schritte setzen Folgendes voraus:
 - Der Cluster wurde unter Verwendung von X.509-Sicherheit mit dem _Dienst für Sicherungen und Wiederherstellungen_ eingerichtet.
@@ -224,6 +209,17 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
+
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+1. Wählen Sie eine Anwendung aus, und navigieren Sie zur Aktion. Klicken Sie auf „Anwendungssicherung aktivieren/aktualisieren“.
+
+    ![Aktivieren der Anwendungssicherung][3]
+
+2. Wählen Sie schließlich die gewünschte Richtlinie aus, und klicken Sie auf „Sicherung aktivieren“.
+
+    ![Auswählen der Richtlinie][4]
+
 
 ### <a name="verify-that-periodic-backups-are-working"></a>Sicherstellen, dass die regelmäßigen Sicherungen funktionieren
 
@@ -311,7 +307,6 @@ Um Sicherungen in Service Fabric Explorer anzuzeigen, navigieren Sie zu einer Pa
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png
-[2]: ./media/service-fabric-backuprestoreservice/advanced-mode.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png

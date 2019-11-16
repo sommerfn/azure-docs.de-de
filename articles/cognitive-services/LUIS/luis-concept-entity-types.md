@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 9dc26e50e1c0f43e816e422f0fee91a246ea04a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e91a475c7fd7f207c8b38d3da8abe7affd668b2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487600"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013499"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entitäten und ihr Zweck in LUIS
 
@@ -91,11 +91,11 @@ Wählen Sie die Entität basierend darauf aus, wie die Daten extrahiert und nach
 
 |Entitätstyp|Zweck|
 |--|--|
-|[**Durch maschinelles Lernen erworben**](#composite-entity)|Übergeordnete Gruppierung von Entitäten, unabhängig vom Entitätstyp. Durch maschinelles Lernen erworbene Entitäten lernen über den Kontext der Äußerung. Aus diesem Grund ist die Variation der Platzierung in Beispieläußerungen wichtig. |
-|[**Liste**](#list-entity)|Liste mit Elementen und den zugehörigen Synonymen, die per **genauer Textübereinstimmung** extrahiert werden.|
-|[**Pattern.any**](#patternany-entity)|Entität, bei der das Entitätsende schwierig zu ermitteln ist. |
-|[**Vordefiniert**](#prebuilt-entity)|Bereits trainierte oder extrahierte spezielle Daten URLs oder E-Mail-Adressen. Einige dieser vordefinierten Entitäten werden im Open-Source-Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) definiert. Wenn Ihre Kultur oder Entität derzeit nicht unterstützt wird, können Sie sich am Projekt beteiligen.|
-|[**Regulärer Ausdruck**](#regular-expression-entity)|Verwendet einen regulären Ausdruck für **genaue Textübereinstimmungen**.|
+|[**Durch maschinelles Lernen erworben**](tutorial-machine-learned-entity.md)|Übergeordnete Gruppierung von Entitäten, unabhängig vom Entitätstyp. Durch maschinelles Lernen erworbene Entitäten lernen über den Kontext der Äußerung. Aus diesem Grund ist die Variation der Platzierung in Beispieläußerungen wichtig. |
+|[**Liste**](reference-entity-list.md)|Liste mit Elementen und den zugehörigen Synonymen, die per **genauer Textübereinstimmung** extrahiert werden.|
+|[**Pattern.any**](reference-entity-pattern-any.md)|Entität, bei der das Entitätsende schwierig zu ermitteln ist. |
+|[**Vordefiniert**](luis-reference-prebuilt-entities.md)|Bereits trainierte oder extrahierte spezielle Daten URLs oder E-Mail-Adressen. Einige dieser vordefinierten Entitäten werden im Open-Source-Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) definiert. Wenn Ihre Kultur oder Entität derzeit nicht unterstützt wird, können Sie sich am Projekt beteiligen.|
+|[**Regulärer Ausdruck**](reference-entity-regular-expression.md)|Verwendet einen regulären Ausdruck für **genaue Textübereinstimmungen**.|
 
 ### <a name="entity-role-defines-context"></a>Die Entitätsrolle definiert den Kontext.
 

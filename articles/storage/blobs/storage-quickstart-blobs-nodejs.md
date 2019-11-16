@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 28a75158b161e680f857b986bcb754f1f99e8fab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825306"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929494"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für JavaScript
 
@@ -149,7 +149,7 @@ export CONNECT_STR="<yourconnectionstring>"
 export CONNECT_STR="<yourconnectionstring>"
 ```
 
-#### <a name="restart-programs"></a>Neustarten der Programme
+#### <a name="restart-programs"></a>Neustarten von Programmen
 
 Nachdem Sie die Umgebungsvariable hinzugefügt haben, starten Sie alle ausgeführten Programme neu, in denen die Umgebungsvariable gelesen werden muss. Starten Sie beispielsweise die Entwicklungsumgebung oder den Editor neu, bevor Sie fortfahren.
 
@@ -167,9 +167,9 @@ Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 
 Verwenden Sie die folgenden JavaScript-Klassen für die Interaktion mit folgenden Ressourcen:
 
-* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): Die `BlobServiceClient`-Klasse ermöglicht es Ihnen, Azure Storage-Ressourcen und Blobcontainer zu bearbeiten.
-* [ContainerClient](/javascript/api/@azure/storage-blob/containerclient): Die `ContainerClient`-Klasse ermöglicht es Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
-* [BlobClient](/javascript/api/@azure/storage-blob/blobclient): Die `BlobClient`-Klasse ermöglicht es Ihnen, Azure Storage-Blobs zu bearbeiten.
+* [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient): Die `BlobServiceClient`-Klasse ermöglicht Ihnen, Azure Storage-Ressourcen und Blobcontainer zu bearbeiten.
+* [ContainerClient:](/javascript/api/@azure/storage-blob/containerclient) Die `ContainerClient`-Klasse ermöglicht Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
+* [BlobClient:](/javascript/api/@azure/storage-blob/blobclient) Die `BlobClient`-Klasse ermöglicht Ihnen, Azure Storage-Blobs zu bearbeiten.
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -351,7 +351,7 @@ In dieser Schnellstartanleitung wurde beschrieben, wie Sie Blobs mit JavaScript 
 Weitere Beispiel-Apps für Blobspeicher finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Azure Blob Storage SDK v12 – JavaScript-Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Azure Blob Storage SDK v12 – JavaScript-Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
 * Weitere Informationen finden Sie unter [Azure SDK für JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/README.md).
 * Tutorials, Beispiele, Schnellstartanleitungen und weitere Dokumentationen finden Sie in der [Dokumentation für das Azure SDK für JavaScript](/azure/javascript/).

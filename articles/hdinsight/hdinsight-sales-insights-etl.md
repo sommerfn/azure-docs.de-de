@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d662ad59722658ed888aa732c1f45afdf48f850c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178007"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889207"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Tutorial: Erstellen einer End-to-End-Datenpipeline zum Gewinnen von Erkenntnissen aus Vertriebsdaten
 
@@ -124,7 +124,7 @@ Das Standardkennwort für den SSH-Zugriff auf die Cluster ist `Thisisapassword1`
 
 ### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-Azure Data Factory (ADF) ist ein Tool, mit dem Sie Azure Pipelines automatisieren können. Es ist nicht die einzige Möglichkeit, um diese Aufgaben durchzuführen, eignet sich aber hervorragend zum Automatisieren der Prozesse. Weitere Informationen zu Azure Data Factory finden Sie in der [Dokumentation zu Azure Data Factory](https://azure.microsoft.com/en-us/services/data-factory/). 
+Azure Data Factory (ADF) ist ein Tool, mit dem Sie Azure Pipelines automatisieren können. Es ist nicht die einzige Möglichkeit, um diese Aufgaben durchzuführen, eignet sich aber hervorragend zum Automatisieren der Prozesse. Weitere Informationen zu Azure Data Factory finden Sie in der [Dokumentation zu Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
 
 Diese Data Factory enthält eine Pipeline mit zwei Aktivitäten: 
 

@@ -1,6 +1,6 @@
 ---
 title: Verwenden des Video Indexer-Editors zum Erstellen von Projekten
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In diesem Thema wird veranschaulicht, wie Sie den Video Indexer-Editor zum Erstellen von Projekten verwenden.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: 725e265bb7f8c98db19971c50e690974cb38a0d2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518149"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839161"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Verwenden des Video Indexer-Editors zum Erstellen von Projekten
 

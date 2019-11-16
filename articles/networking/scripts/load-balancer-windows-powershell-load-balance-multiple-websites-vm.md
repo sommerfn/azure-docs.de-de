@@ -3,24 +3,21 @@ title: 'Azure PowerShell-Skriptbeispiel: Lastenausgleich für mehrere Websites m
 description: 'Azure PowerShell-Skriptbeispiel: Lastenausgleich für mehrere Websites auf demselben virtuellen Computer'
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 145b5a686b2707b6e60a481c08f187164d788580
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 0b266f5fcad0ef709e29a125f1b9b5ddba7fec90
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121232"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890288"
 ---
 # <a name="load-balance-multiple-websites"></a>Lastenausgleich für mehrere Websites
 

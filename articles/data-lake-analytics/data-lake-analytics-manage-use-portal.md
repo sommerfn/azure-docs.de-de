@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813438"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839475"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -165,4 +165,4 @@ So zeigen Sie eine Liste der wiederkehrenden U-SQL-Aufträge an
 
 * [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
 * [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-* [Verwalten von Azure Data Lake Analytics mit Richtlinien](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-policies)
+* [Verwalten von Azure Data Lake Analytics mit Richtlinien](data-lake-analytics-account-policies.md)

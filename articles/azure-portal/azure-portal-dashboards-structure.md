@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: kfollis
-ms.openlocfilehash: dccf1550052910269efe156b999882234669d7dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815701"
+ms.locfileid: "73832790"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktur von Azure-Dashboards
 In diesem Dokument wird die Struktur eines Azure-Dashboards beschrieben. Dabei wird das folgende Dashboard als Beispiel verwendet:
@@ -295,7 +295,7 @@ Wir unterteilen die relevanten Abschnitte der JSON-Darstellung.  Die Eigenschaft
 
 ### <a name="the-id-property"></a>Die „id“-Eigenschaft
 
-Die Azure-Ressourcen-ID; unterliegt den [Namenskonventionen von Azure-Ressourcen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). Wenn im Portal ein Dashboard erstellt wird, wird in der Regel eine ID in Form einer GUID erstellt. Sie können aber jeden gültigen Namen verwenden, wenn Sie Dashboards programmgesteuert erstellen. 
+Die Azure-Ressourcen-ID; unterliegt den [Namenskonventionen von Azure-Ressourcen](/azure/architecture/best-practices/resource-naming). Wenn im Portal ein Dashboard erstellt wird, wird in der Regel eine ID in Form einer GUID erstellt. Sie können aber jeden gültigen Namen verwenden, wenn Sie Dashboards programmgesteuert erstellen. 
 
 ### <a name="the-name-property"></a>Die „name“-Eigenschaft
 Die „name“-Eigenschaft ist das Segment der Ressourcen-ID, das keine Informationen zum Abonnement, Ressourcentyp oder der Ressourcengruppe enthält. Im Wesentlichen ist es das letzte Segment der Ressourcen-ID.

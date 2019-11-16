@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 09154c68ab5cb0c3db3cd3325a4bf37fa33c1144
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2d740c8d078770267669a0be749ca8d5d210bb72
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747067"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083182"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 
@@ -26,7 +26,7 @@ In dieser Schnellstartanleitung wird die Sicherung für einen vorhandenen virtue
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter <https://portal.azure.com.> beim Azure-Portal an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="select-a-vm-to-back-up"></a>Auswählen einer zu sichernden VM
 

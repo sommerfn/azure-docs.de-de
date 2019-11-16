@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 1965cc17f3d58932321c3ff14c99a962830d07b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615250"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890671"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren
 
@@ -113,4 +113,4 @@ Wenn Sie diese Anwendung nicht mehr verwenden möchten, löschen Sie die Anwendu
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur Digital Distribution Center-Lösungsarchitektur finden Sie unter [Konzepte in Digital Distribution Center](./architecture-digital-distribution-center-pnp.md).
 * Weitere Informationen zu anderen [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail-pnp.md)
-* Lesen Sie die [Übersicht über IoT Central](../core/overview-iot-central-pnp.md).
+* Lesen Sie die [Übersicht über IoT Central](../preview/overview-iot-central.md).

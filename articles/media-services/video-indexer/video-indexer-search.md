@@ -1,6 +1,6 @@
 ---
 title: 'Suchen bestimmter Momente in Videos: Video Indexer'
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In diesem Thema wird veranschaulicht, wie Sie mit Video Indexer in Videos nach bestimmten Momenten suchen können.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 93376059dac2a8336e581269d8289d893779b291
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ebf7606d1a0932cc2254e14a40a2fff550fd35f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799090"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833797"
 ---
 # <a name="find-exact-moments-within-videos"></a>Suchen bestimmter Momente in Videos
 

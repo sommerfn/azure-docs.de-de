@@ -3,16 +3,16 @@ title: Was ist Azure Lighthouse?
 description: Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste für Ihre Kunden bereitstellen, bei denen bedarfsorientiert eine höhere Automatisierung und Effizienz erzielt werden können.
 author: JnHs
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 11/11/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: ae8194e6d5764769019ac803a52cd54497a618c1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011914"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929581"
 ---
 # <a name="what-is-azure-lighthouse"></a>Was ist Azure Lighthouse?
 
@@ -39,9 +39,6 @@ Azure Lighthouse umfasst mehrere Möglichkeiten zur Optimierung von Kundenbindun
 - **Azure Resource Manager-Vorlagen**: Führen Sie Verwaltungsaufgaben leichter durch, einschließlich Onboarding von Kunden für die delegierte Azure-Ressourcenverwaltung. Weitere Informationen finden Sie in unserem [Beispielrepository](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) und unter [Onboarding eines Kunden für die delegierte Azure-Ressourcenverwaltung](how-to/onboard-customer.md).
 - **Angebote für verwaltete Dienste in Azure Marketplace**: Bieten Sie Ihre Dienste Kunden durch private oder öffentliche Angebote an, und lassen Sie diese automatisch in die delegierte Azure-Ressourcenverwaltung integrieren, als Alternative zum Onboarding mithilfe von Azure Resource Manager-Vorlagen. Weiter Informationen finden Sie unter [Angebote für verwaltete Dienste in Azure Marketplace](./concepts/managed-services-offers.md).
 - **Verwaltete Azure-Anwendungen**: Packen und versenden Sie Anwendungen, die von Ihren Kunden einfach bereitgestellt und in ihren eigenen Abonnements verwendet werden können. Die Anwendung wird in einer Ressourcengruppe bereitgestellt, auf die Sie von Ihrem Mandanten aus zugreifen, sodass Sie den Dienst im Rahmen der gesamten Azure Lighthouse-Erfahrung verwalten können. Weitere Informationen finden Sie unter [Übersicht über verwaltete Azure-Anwendungen](https://docs.microsoft.com/azure/managed-applications/overview).
-
-> [!NOTE]
-> Die oben beschriebenen Funktionen sind zurzeit in Public Clouds verfügbar. Informationen zur regionalen Verfügbarkeit einzelner Dienste finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

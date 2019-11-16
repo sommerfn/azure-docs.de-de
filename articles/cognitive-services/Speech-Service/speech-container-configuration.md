@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 4e09a476398134d92b4492c68ed4ebebc468f272
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f68bf989202c209f89ea273fee8d7610a49415ed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796193"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075737"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurieren von Containern für den Speech-Dienst
 
 Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann. Derzeit werden die vier Speech-Container **speech-to-text**, **custom-speech-to-text**, **text-to-speech** und **custom-text-to-speech** unterstützt.
 
-Die Runtimeumgebung für **Speech**-Container wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
+Die Runtimeumgebung für **Speech**-Container wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -36,7 +36,7 @@ Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem di
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: **Speech**-Ressourcenverwaltung (unter **Schlüssel**)
+- Azure-Portal: **Speech**-Ressourcenverwaltung (unter **Schlüssel**)
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights-Einstellung
 
@@ -48,11 +48,11 @@ Die Einstellung `Billing` gibt den Endpunkt-URI der _Speech_-Ressource in Azure 
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Übersicht über **Speech** mit der Bezeichnung `Endpoint`
+- Azure-Portal: Übersicht über **Speech** mit der Bezeichnung `Endpoint`
 
-|Erforderlich| NAME | Datentyp | BESCHREIBUNG |
-|--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](speech-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
+| Erforderlich | NAME | Datentyp | BESCHREIBUNG |
+| -------- | ---- | --------- | ----------- |
+| Ja | `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts. Weitere Informationen zum Erhalt eines Abrechnungs-URI finden Sie unter [Ermitteln erforderlicher Parameter](speech-container-howto.md#gathering-required-parameters). Weitere Informationen und eine vollständige Liste mit regionalen Endpunkten finden Sie unter [Benutzerdefinierte Unterdomänennamen für Cognitive Services](../cognitive-services-custom-subdomains.md). |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -67,7 +67,7 @@ Diese Einstellung finden Sie hier:
 [!INCLUDE [Container shared HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Logging-Einstellungen
- 
+
 [!INCLUDE [Container shared configuration logging settings](../../../includes/cognitive-services-containers-configuration-shared-settings-logging.md)]
 
 ## <a name="mount-settings"></a>Einbindungseinstellungen
@@ -76,12 +76,12 @@ Verwenden Sie Bindungsbereitstellungen zum Lesen und Schreiben von Daten im Cont
 
 Die Speech-Standardcontainer verwenden keine Eingabe- oder Ausgabeeinbindungen zum Speichern von Trainings- oder Dienstdaten. Benutzerdefinierte Speech-Container basieren jedoch auf Volumebereitstellungen.
 
-Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](speech-container-howto.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht. 
+Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](speech-container-howto.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht.
 
-|Optional| NAME | Datentyp | BESCHREIBUNG |
-|-------|------|-----------|-------------|
-|Nicht zulässig| `Input` | Zeichenfolge | Wird von Speech-Standardcontainern nicht verwendet. Benutzerdefinierte Speech-Container verwenden [Volumebereitstellungen](#volume-mount-settings). |
-|Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
+| Optional | NAME | Datentyp | BESCHREIBUNG |
+| -------- | ---- | --------- | ----------- |
+| Nicht zulässig | `Input` | Zeichenfolge | Wird von Speech-Standardcontainern nicht verwendet. Benutzerdefinierte Speech-Container verwenden [Volumebereitstellungen](#volume-mount-settings).                                                                                    |
+| Optional | `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output` |
 
 ## <a name="volume-mount-settings"></a>Einstellungen für Volumebereitstellungen
 
@@ -91,8 +91,8 @@ Benutzerdefinierte Modelle werden bei der erstmaligen Erfassung eines neuen Mode
 
 Die Einstellung für die Volumebereitstellung besteht aus drei durch Doppelpunkte (`:`) voneinander getrennten Feldern:
 
-1. Das erste Feld ist der Name des Volumes auf dem Hostcomputer, z. B. *C:\input*.
-2. Das zweite Feld ist das Verzeichnis im Container, z. B. */usr/local/models*.
+1. Das erste Feld ist der Name des Volumes auf dem Hostcomputer, z. B. _C:\input_.
+2. Das zweite Feld ist das Verzeichnis im Container, z. B. _/usr/local/models_.
 3. Das dritte (optionale) Feld ist eine durch Kommas getrennte Liste von Optionen. Weitere Informationen finden Sie unter [Verwenden von Volumes](https://docs.docker.com/storage/volumes/).
 
 ### <a name="volume-mount-example"></a>Beispiel für Volumebereitstellung
@@ -101,36 +101,36 @@ Die Einstellung für die Volumebereitstellung besteht aus drei durch Doppelpunkt
 -v C:\input:/usr/local/models
 ```
 
-Mit diesem Befehl wird das Verzeichnis *C:\input* vom Hostcomputer in das Verzeichnis */usr/local/models* des Containers eingebunden.
+Mit diesem Befehl wird das Verzeichnis _C:\input_ vom Hostcomputer in das Verzeichnis _/usr/local/models_ des Containers eingebunden.
 
 > [!IMPORTANT]
 > Die Einstellungen der Volumebereitstellung gelten nur für die benutzerdefinierten Container **speech-to-text** und **text-to-speech**. Die Standardcontainer **speech-to-text** und **text-to-speech** verwenden keine Volumebereitstellungen.
 
-## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
+## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
-Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](speech-container-howto.md#stop-the-container).
+Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden. Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](speech-container-howto.md#stop-the-container).
 
-* **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. 
-* **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern vertraut sind.
+- **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems.
+- **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern vertraut sind.
 
 Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
-|-------------|-------|---|
-| **{API_KEY}** | Der Endpunktschlüssel der `Speech`-Ressource auf der Azure `Speech`-Schlüsselseite. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
-| **{ENDPOINT_URI}** | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Speech`.| Ausführliche Beispiele finden Sie unter [Ermitteln erforderlicher Parameter](speech-container-howto.md#gathering-required-parameters). |
+| ----------- | ----- | ----------------- |
+| **{API_KEY}** | Der Endpunktschlüssel der `Speech`-Ressource auf der Azure `Speech`-Schlüsselseite.   | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                  |
+| **{ENDPOINT_URI}** | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Speech`. | Ausführliche Beispiele finden Sie unter [Ermitteln erforderlicher Parameter](speech-container-howto.md#gathering-required-parameters). |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](#billing-configuration-setting).
-> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure Speech-Ressource. 
+> Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet. Weitere Informationen finden Sie unter [Abrechnung](#billing-configuration-setting).
+> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure Speech-Ressource.
 
 ## <a name="speech-container-docker-examples"></a>Beispiele für Docker-Speech-Container
 
-Im Folgenden finden Sie Docker-Beispiele für den Speech-Container. 
+Im Folgenden finden Sie Docker-Beispiele für den Speech-Container.
 
-# <a name="speech-to-texttabstt"></a>[Spracherkennung](#tab/stt)
+## <a name="speech-to-texttabstt"></a>[Spracherkennung](#tab/stt)
 
 ### <a name="basic-example-for-speech-to-text"></a>Einfaches Beispiel für Spracherkennung
 
@@ -153,7 +153,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="custom-speech-to-texttabcstt"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
+## <a name="custom-speech-to-texttabcstt"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
 
 ### <a name="basic-example-for-custom-speech-to-text"></a>Einfaches Beispiel für benutzerdefinierte Spracherkennung
 
@@ -180,7 +180,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="text-to-speechtabtss"></a>[Sprachsynthese](#tab/tss)
+## <a name="text-to-speechtabtss"></a>[Sprachsynthese](#tab/tss)
 
 ### <a name="basic-example-for-text-to-speech"></a>Einfaches Beispiel für Sprachsynthese
 
@@ -203,7 +203,7 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-# <a name="custom-text-to-speechtabctts"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
+## <a name="custom-text-to-speechtabctts"></a>[Benutzerdefinierte Sprachsynthese](#tab/ctts)
 
 ### <a name="basic-example-for-custom-text-to-speech"></a>Einfaches Beispiel für benutzerdefinierte Sprachsynthese
 
@@ -230,8 +230,8 @@ ApiKey={API_KEY} \
 Logging:Console:LogLevel:Default=Information
 ```
 
-***
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern](speech-container-howto.md).
+- Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern](speech-container-howto.md).

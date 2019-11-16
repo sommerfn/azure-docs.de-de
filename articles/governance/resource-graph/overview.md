@@ -1,17 +1,14 @@
 ---
 title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen ermöglicht.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/21/2019
 ms.topic: overview
-ms.service: resource-graph
-ms.openlocfilehash: 41663ec04e194bcc4380f46f1e5cc5a6867e53fc
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f75a2b65b59a9f0367a6c52c2a1cf058df5b59c3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622532"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958746"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
 

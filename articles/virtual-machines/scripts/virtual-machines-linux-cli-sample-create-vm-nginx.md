@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit NGINX | Microsoft-Dokumentation
+title: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit NGINX
 description: Azure CLI-Skriptbeispiel – Erstellen einer Linux-VM mit NGINX
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f1ed8b2d943a377fc868344cffffff931bb6fba1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4e3e24565375f68b4b5bdf1dfb0b16bb280aa417
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709606"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039490"
 ---
 # <a name="create-a-vm-with-nginx"></a>Erstellen eines virtuellen Computers mit NGINX
 

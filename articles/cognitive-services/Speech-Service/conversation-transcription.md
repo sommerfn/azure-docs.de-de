@@ -1,7 +1,7 @@
 ---
 title: Was ist Unterhaltungstranskription (Vorschau)? – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Die Unterhaltungstranskription ist eine Spracherkennungslösung, die Spracherkennung, Sprecheridentifikation und Satzzuordnung zu jedem Sprecher (auch als Diarisierung bezeichnet) kombiniert, um eine Echtzeit- und/oder asynchrone Transkription einer beliebigen Unterhaltung zu ermöglichen. Die Unterhaltungstranskription schließt alle Beteiligten in Unterhaltungen ein, z. B. taube und schwerhörige Teilnehmer.
+description: Die Unterhaltungstranskription ist eine Spracherkennungslösung, die Spracherkennung, Sprecheridentifikation und Satzzuordnung zu jedem Sprecher (auch als Diarisierung bezeichnet) kombiniert, um eine Echtzeit- und/oder asynchrone Transkription einer beliebigen Unterhaltung zu ermöglichen.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f4b7591d5ddb138db0abbdb673cadc6afd71f315
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608010"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075850"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Was ist Unterhaltungstranskription (Vorschau)?
 

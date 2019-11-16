@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6c7a9fdb5ed60023a82984fd5be5b424c634e679
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 75317f73ad724b4ce8ad7a894890b2269bd8c5d0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720246"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837496"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität
 
@@ -34,7 +34,7 @@ Für diesen Leitfaden benötigen Sie die folgenden Ressourcen.
    - [Erstellen eines Schlüsseltresors mit Azure PowerShell](quick-create-powershell.md)
    - [Erstellen eines Schlüsseltresors im Azure-Portal](quick-create-portal.md)
 - Eine vorhandene App Service-Anwendung, der der Zugriff auf den Schlüsseltresor gewährt werden soll. Sie können schnell eine Anwendung erstellen, indem Sie die Schritte in der [App Service-Dokumentation](../app-service/overview.md) ausführen.
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/overview) Alternativ können Sie auch das [Azure-Portal](http://portal.azure.com) verwenden.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/overview) Alternativ können Sie auch das [Azure-Portal](https://portal.azure.com) verwenden.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität 

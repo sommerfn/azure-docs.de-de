@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329576"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082826"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
 
@@ -57,7 +57,7 @@ Sie können ebenso [Azure Cloud Shell](https://shell.azure.com/bash) verwenden.
 
 ## <a name="create-the-local-project"></a>Erstellen des lokalen Projekts
 
-Führen Sie den folgenden Befehl zum Erstellen eines Funktions-App-Projekts im `MyFunctionProj`-Ordner des aktuellen lokalen Verzeichnisses über die Befehlszeile aus. Für ein Python-Projekt muss eine [virtuelle Umgebung](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional) verwendet werden.
+Führen Sie den folgenden Befehl zum Erstellen eines Funktions-App-Projekts im `MyFunctionProj`-Ordner des aktuellen lokalen Verzeichnisses über die Befehlszeile aus. Für ein Python-Projekt muss eine [virtuelle Umgebung](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) verwendet werden.
 
 ```bash
 func init MyFunctionProj --docker

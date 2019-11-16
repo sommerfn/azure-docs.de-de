@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 12df79696033e69abbf48f053c1a594be9409cda
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721111"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889226"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
@@ -110,7 +110,7 @@ Im CQLSH-Befehlszeilen-Hilfsprogramm ist Apache Cassandra 3.1.1 enthalten, das s
 
 **Windows:**
 
-Wenn Sie Windows verwenden, empfiehlt es sich, das [Windows-Dateisystem für Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-the-windows-subsystem-for-linux) zu aktivieren. Anschließend können Sie die folgenden Linux-Befehle verwenden.
+Wenn Sie Windows verwenden, empfiehlt es sich, das [Windows-Dateisystem für Linux](https://docs.microsoft.com/windows/wsl/install-win10#install-the-windows-subsystem-for-linux) zu aktivieren. Anschließend können Sie die folgenden Linux-Befehle verwenden.
 
 **Unix/Linux/Mac:**
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 65a257cc4613fb9e4dece09a2544de2e78779ab4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 305de556cc6e50af21cb38aa1b8073b420efbf43
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577057"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887755"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -234,7 +234,7 @@ Alternativ kann **Cloudrolleninstanz** hilfreich in Szenarien sein, in denen üb
 
 Ein Fall, bei dem Sie den Wert für „Cloudrolleninstanz“ überschreiben können, ist beispielsweise ein Szenario, in dem die Anwendung in einer Containerumgebung ausgeführt wird und die Kenntnis des einzelnen Servers nicht genügt, um ein bestimmtes Problem zu lokalisieren.
 
-Weitere Informationen zum Überschreiben der Eigenschaft „Cloudrollenname“ mit Telemetrieinitialisierern finden Sie unter [Add properties: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer) (Hinzufügen von Eigenschaften: ITelemetryInitializer).
+Weitere Informationen zum Überschreiben der Eigenschaft „Cloudrollenname“ mit Telemetrieinitialisierern finden Sie unter [Add properties: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) (Hinzufügen von Eigenschaften: ITelemetryInitializer).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241716"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833167"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS
 
@@ -59,7 +59,7 @@ Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf eine
        - [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](/azure/virtual-machines/windows/premium-storage)
        - [Verwaltete Standard-SSD-Datenträger für Workloads virtueller Azure-Computer](/azure/virtual-machines/windows/disks-standard-ssd)
    - **Öffentliche IP-Adresse**: Geben Sie diese Einstellung an, wenn Sie von außerhalb des virtuellen Computers mit dem virtuellen Computer kommunizieren möchten. Standardmäßig wird eine neue öffentliche IP-Adresse namens `ansible-pip` verwendet. Wenn Sie eine andere IP-Adresse angeben möchten, wählen Sie den Pfeil aus, und geben Sie Attribute wie Name, SKU und Zuweisung für diese IP-Adresse an. 
-   - **Domänennamenbezeichnung**: Geben Sie den öffentlichen Domänennamen des virtuellen Computers ein. Der Name muss eindeutig sein und die Benennungsanforderungen erfüllen. Weitere Informationen zum Angeben eines Namens für den virtuellen Computer finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/naming-conventions).
+   - **Domänennamenbezeichnung**: Geben Sie den öffentlichen Domänennamen des virtuellen Computers ein. Der Name muss eindeutig sein und die Benennungsanforderungen erfüllen. Weitere Informationen zum Angeben eines Namens für den virtuellen Computer finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/resource-naming).
    - **Ansible-Version**: Geben Sie entweder eine Versionsnummer oder den Wert `latest` an, um die neueste Version bereitzustellen. Wählen Sie das Informationssymbol neben **Ansible-Version** aus, um weitere Informationen zu verfügbaren Versionen zu erhalten.
 
      ![Registerkarte mit zusätzlichen Ansible-Einstellungen im Azure-Portal](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-2.png)

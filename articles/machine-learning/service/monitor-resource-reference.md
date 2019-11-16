@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 178c60d82c8337987e9858a409fcdef7063c9559
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 743007d3636516a39dd36caf3d44d3edb650c030
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684914"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929520"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -128,7 +128,7 @@ In den folgenden Tabellen sind die für Azure Machine Learning gesammelten Metri
 
 **Modell**
 
-| Modell | Unit | BESCHREIBUNG |
+| Metrik | Unit | BESCHREIBUNG |
 | ----- | ----- | ----- |
 | Model deploy failed (Fehler bei der Modellimplementierung) | Count | Die Anzahl der fehlerhaften Modellimplementierungen |
 | Model deploy started (Gestartete Modellimplementierungen) | Count | Die Anzahl der gestarteten Modellimplementierungen |

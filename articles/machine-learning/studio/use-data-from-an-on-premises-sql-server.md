@@ -1,6 +1,6 @@
 ---
 title: Lokaler SQL Server
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Verwenden Sie Daten aus einer lokalen SQL Server-Datenbank, um erweiterte Analysen mit der klassischen Version von Azure Machine Learning Studio durchzuführen.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 7f525a2a81d6cda52b363d1fb808327c9d3c1fb1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 074a3e4521660f8f1ea905ddab1d3b13f48a0680
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622085"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839511"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Durchführen von Analysen mit Azure Machine Learning Studio (klassisch) mit einer lokalen SQL Server-Datenbank
 

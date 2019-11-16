@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: 9724e54b03e5de065b8b39cb57c6a9880cf37cc6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9ef939d46a02b8aa6b0b7f481fec9e30edf53fc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827190"
+ms.locfileid: "73839204"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Erstellen eines Agents für elastische Aufträge mithilfe von PowerShell
 
@@ -72,7 +72,7 @@ Um einen Agent für elastische Aufträge erstellen zu können, benötigen Sie ei
 
 *Das folgende Skript erstellt eine neue Ressourcengruppe, einen neuen Server und eine neue Datenbank, die Sie als Auftragsdatenbank verwenden können. Außerdem erstellt das Skript einen zweiten Server mit zwei leeren Datenbanken, für die Aufträge ausgeführt werden können.*
 
-Für elastische Aufträge gelten keine speziellen Benennungsanforderungen. Sie können also beliebige Namenskonventionen verwenden, solange diese die [Anforderungen von Azure](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) erfüllen.
+Für elastische Aufträge gelten keine speziellen Benennungsanforderungen. Sie können also beliebige Namenskonventionen verwenden, solange diese die [Anforderungen von Azure](/azure/architecture/best-practices/resource-naming) erfüllen.
 
 ```powershell
 # Sign in to your Azure account

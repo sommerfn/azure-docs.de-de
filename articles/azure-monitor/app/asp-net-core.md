@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 5b9b92cd39e8d540f784d82d6c7f4a5754c85b62
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8a87335dba237e8088275706f7dcc2eb7f34831a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677724"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887560"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -213,7 +213,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der adaptiven Stichprobene
 
 ### <a name="adding-telemetryinitializers"></a>Hinzufügen von TelemetryInitializers
 
-Mit [Telemetrieinitialisierern](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) legen Sie die globalen Eigenschaften fest, die zusammen mit allen Telemetriedaten gesendet werden.
+Mit [Telemetrieinitialisierern](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) legen Sie die globalen Eigenschaften fest, die zusammen mit allen Telemetriedaten gesendet werden.
 
 Fügen Sie wie im folgenden Code gezeigt dem `DependencyInjection`-Container einen neuen `TelemetryInitializer` hinzu. Das SDK erfasst automatisch alle `TelemetryInitializer`, die dem `DependencyInjection`-Container hinzugefügt werden.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 0bb32486ea3fcfd37337b18b02f4f432effa8f75
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678340"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887529"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
@@ -174,7 +174,7 @@ Sie können diese Funktion deaktivieren, aber dies ist nicht zu empfehlen. Die S
 Am 5. Februar 2018 wurde angekündigt, dass die Protokollierung der Client-IP-Adresse entfernt wurde. Dies wirkt sich nicht auf geografische Standorte aus.
 
 > [!NOTE]
-> Wenn Sie die ersten drei Oktette der IP-Adresse erfassen möchten, können Sie einen [Telemetrieinitialisierer](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) verwenden, um ein benutzerdefiniertes Attribut hinzuzufügen.
+> Wenn Sie die ersten drei Oktette der IP-Adresse erfassen möchten, können Sie einen [Telemetrieinitialisierer](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) verwenden, um ein benutzerdefiniertes Attribut hinzuzufügen.
 > Dies wirkt sich nicht auf Daten aus, die vor dem 5. Februar 2018 erfasst wurden.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Falsche geografische Daten in Benutzertelemetriedaten

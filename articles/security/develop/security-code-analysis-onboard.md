@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8936bc21af951cbabb90188b6a31d610caf80395
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: aaf59de2425e0725958847477f1043a5b7fac68a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241776"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839346"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding und Installation
 
@@ -51,7 +51,7 @@ Voraussetzungen für die Einführung der Microsoft-Sicherheitscodeanalyse:
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Installieren der Erweiterung „Microsoft-Sicherheitscodeanalyse“
 
-1. Nachdem die Erweiterung für Ihre Azure DevOps-Organisation freigegeben wurde, navigieren Sie zur Seite Ihrer Azure DevOps-Organisation. Eine Beispiel-URL für eine derartige Seite lautet http://dev.azure.com/contoso.
+1. Nachdem die Erweiterung für Ihre Azure DevOps-Organisation freigegeben wurde, navigieren Sie zur Seite Ihrer Azure DevOps-Organisation. Eine Beispiel-URL für eine derartige Seite lautet `https://dev.azure.com/contoso`.
 1. Wählen Sie oben rechts das Warenkorbsymbol neben Ihrem Namen und dann **Erweiterungen verwalten** aus.
 1. Wählen Sie die Erweiterung „Microsoft-Sicherheitscodeanalyse“ aus, und öffnen Sie dann den Assistenten für die Azure DevOps-Benutzeroberfläche, um die Installation zu starten.
 1. Wählen Sie in der Dropdownliste die Azure DevOps-Organisation aus, für die die Erweiterung installiert werden soll.

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a1c3bec4b32a9d3450e307f42958bb19263c3d7a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ddd631b809d4a0635107069f48281db4c0a2e7e0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717158"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837550"
 ---
 # <a name="permutation-feature-importance"></a>Permutation Feature Importance (PFI)
 
@@ -24,7 +24,7 @@ In diesem Modul werden Featurewerte Spalte für Spalte nach dem Zufallsprinzip n
 
 Die vom Modul zurückgegebenen Bewertungen repräsentieren die *Änderung* in der Leistung eines trainierten Modells nach der Permutation. Bei wichtigen Features hat die Neuanordnung in der Regel eine größere Auswirkung und führt deshalb zu höheren Relevanzbewertungen. 
 
-Dieser Artikel enthält eine Übersicht über das Permutationsfeature, die zugrunde liegende Theorie und seine Anwendung beim maschinellen Lernen: [Permutation Feature Importance](http://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
+Dieser Artikel enthält eine Übersicht über das Permutationsfeature, die zugrunde liegende Theorie und seine Anwendung beim maschinellen Lernen: [Permutation Feature Importance](https://blogs.technet.com/b/machinelearning/archive/2015/04/14/permutation-feature-importance.aspx).  
 
 ## <a name="how-to-use-permutation-feature-importance"></a>Verwenden des PFI-Moduls
 

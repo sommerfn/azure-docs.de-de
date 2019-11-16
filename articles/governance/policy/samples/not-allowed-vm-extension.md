@@ -1,17 +1,14 @@
 ---
 title: 'Beispiel: Nicht zulässige VM-Erweiterungen'
 description: Diese Beispielrichtliniendefinition untersagt die Verwendung von bestimmten Erweiterungen auf virtuellen Computern.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/23/2019
-ms.author: dacoulte
-ms.openlocfilehash: 6107dbd1d0c4ac1423f54f205a7da5ae939ebd70
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: 639a5dba7e33b9df51be1a7407ac5450af322e86
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976894"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069984"
 ---
 # <a name="sample---not-allowed-vm-extensions"></a>Beispiel: Nicht zulässige VM-Erweiterungen
 

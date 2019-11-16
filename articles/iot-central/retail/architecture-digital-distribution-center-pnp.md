@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 2ab79cccaafeb1b48100285a5fd495340b545278
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 478ebde1de5624796ebf1dde5cf89f4e1f9d9104
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615343"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890734"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>Architektur der IoT Central-Anwendungsvorlage für digitale Verteilzentren
 
@@ -48,4 +48,4 @@ Die IoT Central-Plattform bietet umfassende Optionen zur Erweiterbarkeit in Form
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die Bereitstellung der [Vorlage für digitale Verteilzentren](./tutorial-iot-central-digital-distribution-center-pnp.md).
 * Weitere Informationen zu [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail-pnp.md)
-* Lesen Sie die [Übersicht über IoT Central](../core/overview-iot-central-pnp.md).
+* Lesen Sie die [Übersicht über IoT Central](../preview/overview-iot-central.md).

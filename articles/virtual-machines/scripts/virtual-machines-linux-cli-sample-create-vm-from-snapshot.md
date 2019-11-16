@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen eines virtuellen Computers aus einer Momentaufnahme | Microsoft-Dokumentation
+title: Azure CLI-Skriptbeispiel – Erstellen eines virtuellen Computers aus einer Momentaufnahme
 description: Azure CLI-Skriptbeispiel – Erstellen eines virtuellen Computers aus einer Momentaufnahme
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 33f21786b1af4d169d184487a030b7e4ea321327
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92f56ef06583bbd59509337352e1509b35b449a6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694532"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032598"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Erstellen eines virtuellen Computers aus einer Momentaufnahme über die Befehlszeilenschnittstelle
 

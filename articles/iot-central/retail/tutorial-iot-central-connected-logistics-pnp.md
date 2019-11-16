@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 9d55eca3df8897650f78a6bd85b649349c806e95
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 17d429444b81746a5c5082b8310c5208bc35f3d2
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615270"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889042"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Tutorial: Bereitstellung und exemplarische Vorgehensweise für eine Anwendungsvorlage für vernetzte Logistik
 
@@ -25,12 +25,12 @@ In diesem Tutorial lernen Sie Folgendes:
 * Einführung in die Anwendung 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Zum Bereitstellen dieser App sind keine speziellen Voraussetzungen erforderlich
+* Zum Bereitstellen dieser App sind keine besonderen Voraussetzungen erforderlich.
 * Ein Azure-Abonnement ist empfehlenswert, Sie können es aber auch ohne versuchen
 
 ## <a name="create-connected-logistics-application-template"></a>Erstellen einer Anwendungsvorlage für vernetzte Logistik
 Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
-1. Navigate Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie in der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Retail**.
+1. Navigieren Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie in der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Retail**.
 
 > [!div class="mx-imgBorder"]
 > ![Vernetzte Logistik: Dashboard](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
@@ -38,7 +38,7 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
 2. Wählen Sie unter **Connected Logistics-Anwendung** die Option **App erstellen** aus.
 
 3. **App erstellen** öffnet ein neues Anwendungsformular und setzt die erforderlichen Details ein, wie unten dargestellt.
-   * **Anwendungsname**: Sie können den vorgeschlagenen Standardnamen verwenden oder einen eigenen Anwendungsnamen eingeben.
+   * **Anwendungsname:** Sie können den vorgeschlagenen Standardnamen verwenden oder einen eigenen Anwendungsnamen eingeben.
    * **URL**: Sie können die vorgeschlagene Standard-URL verwenden oder eine eigene, leicht merkbare und benutzerfreundliche URL eingeben. Im nächsten Schritt empfiehlt sich die Standardeinstellung, wenn Sie bereits über ein Azure-Abonnement verfügen. Andernfalls können Sie mit einer siebentägigen kostenlosen Testversion beginnen und jederzeit vor dem Ablauf der kostenlosen Testversion auf nutzungsbasierte Bezahlung umstellen.
    * **Abrechnungsinfo**: Die Detailangaben „Verzeichnis“, „Azure-Abonnement“ und „Region“ sind für die Bereitstellung der Ressourcen erforderlich.
    * **Erstellen** : Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
@@ -109,4 +109,4 @@ Wenn Sie diese Anwendung nicht weiter verwenden möchten, löschen Sie die Anwen
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum [Konzept der vernetzten Logistik](./architecture-connected-logistics-pnp.md)
 * Weitere Informationen zu anderen [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail-pnp.md)
-* Erfahren Sie mehr in der [IoT Central-Übersicht](../core/overview-iot-central-pnp.md)
+* Erfahren Sie mehr in der [IoT Central-Übersicht](../preview/overview-iot-central.md)

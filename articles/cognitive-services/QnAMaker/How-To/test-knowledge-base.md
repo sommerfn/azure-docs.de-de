@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 11/14/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 64b4b9a4ad5ceb0b3c33ae022b34daeafda93a62
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c139d3a740067e3cecaff90d3171d7b0cb3d52c7
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491209"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091756"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Testen Ihrer Wissensdatenbank in QnA Maker
 
@@ -83,7 +83,7 @@ Verwenden Sie das Batchtesttool für Folgendes:
 * Ermitteln der besten Antwort und des Scores für eine Reihe von Fragen
 * Überprüfen der erwarteten Antwort auf eine Reihe von Fragen
 
-Batchtests werden über das Batchtesttool bereitgestellt. Dieses Tool ist zum Download als [komprimierte ausführbare Datei](https://qnamakerstore.blob.core.windows.net/qnamakerdata/batchtesting/bt.zip) oder als [C#-Quellcode](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) verfügbar. 
+Batchtests werden über das Batchtesttool bereitgestellt. Dieses Tool ist zum Download als [komprimierte ausführbare Datei](https://aka.ms/qnamakerbatchtestingtool) oder als [C#-Quellcode](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/batchtesting) verfügbar. 
 
 Die [Referenzdokumentation zu dem Tool](../reference-tsv-format-batch-testing.md) umfasst Folgendes:
 

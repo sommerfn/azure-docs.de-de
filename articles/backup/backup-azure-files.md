@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747481"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091092"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Sichern und Wiederherstellen von Azure-Dateifreigaben
 
@@ -201,7 +201,7 @@ Sie können die Sicherung einer Dateifreigabe während des Auftrags zum Beenden 
 
 Beim folgenden Verfahren wird davon ausgegangen, dass der Sicherungsauftrag für den virtuellen Computer beendet wurde. Nach dem Beenden des Sicherungsauftrags sind die Optionen „Sicherung fortsetzen“ und „Sicherungsdaten löschen“ auf dem Dashboard für die Sicherungselemente verfügbar. Klicken Sie auf „Sicherungsdaten löschen“, und geben Sie den Namen der Dateifreigabe ein, um den Löschvorgang zu bestätigen. Geben Sie optional einen Grund oder einen Kommentar für den Löschvorgang an.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure-Dateifreigaben finden Sie in den folgenden Artikeln:
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 383cade6e8bb5f66aa240564912056ec345a1ee6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 83fd06078500be7b5bd58e9ea92d957f9d77f892
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500193"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904208"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -206,4 +206,4 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 
 Die Tokenisierung erfolgt auf App-Ebene. Die Tokenisierung auf Versionsebene wird nicht unterstützt. 
 
-[Importieren Sie die Datei als neue App](luis-how-to-start-new-app.md#import-an-app-from-file), anstelle einer Version. Diese Aktion bedeutet, dass die neue App eine andere App-ID besitzt, aber die in der Datei angegebene Tokenizer-Version verwendet. 
+[Importieren Sie die Datei als neue App](luis-how-to-start-new-app.md), anstelle einer Version. Diese Aktion bedeutet, dass die neue App eine andere App-ID besitzt, aber die in der Datei angegebene Tokenizer-Version verwendet. 

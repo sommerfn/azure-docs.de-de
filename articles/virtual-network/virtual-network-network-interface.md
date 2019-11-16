@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 102490335e91c95b53b5a6d37a00809d34d31e90
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 809e40f6616e8ab022a31d8dd29d4a5386c5e844
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168576"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838426"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -49,7 +49,7 @@ Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine N
 
     |Einstellung|Erforderlich?|Details|
     |---|---|---|
-    |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Im Lauf der Zeit verfügen Sie wahrscheinlich über mehrere Netzwerkschnittstellen in Ihrem Azure-Abonnement. Vorschläge zum Festlegen einer Benennungskonvention zum Vereinfachen der Verwaltung mehrerer Netzwerkschnittstellen finden Sie unter [Benennungskonventionen](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming). Nach dem Erstellen kann der Name der Netzwerkschnittstelle nicht mehr geändert werden.|
+    |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Im Lauf der Zeit verfügen Sie wahrscheinlich über mehrere Netzwerkschnittstellen in Ihrem Azure-Abonnement. Vorschläge zum Festlegen einer Benennungskonvention zum Vereinfachen der Verwaltung mehrerer Netzwerkschnittstellen finden Sie unter [Benennungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Nach dem Erstellen kann der Name der Netzwerkschnittstelle nicht mehr geändert werden.|
     |Virtuelles Netzwerk|Ja|Wählen Sie das virtuelle Netzwerk für die Netzwerkschnittstelle aus. Sie können eine Netzwerkschnittstelle nur einem virtuellen Netzwerk zuweisen, das dasselbe Abonnement und denselben Standort wie die Netzwerkschnittstelle hat. Nachdem eine Netzwerkschnittstelle erstellt wurde, können Sie das virtuelle Netzwerk, dem sie zugewiesen ist, nicht mehr ändern. Der virtuelle Computer, dem Sie die Netzwerkschnittstelle hinzufügen, muss auch denselben Standort und dasselbe Abonnement wie die Netzwerkschnittstelle aufweisen.|
     |Subnet|Ja|Wählen Sie ein Subnetz innerhalb des ausgewählten virtuellen Netzwerks aus. Das Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, kann nach der Erstellung geändert werden.|
     |Zuweisung der privaten IP-Adresse|Ja| Mit dieser Einstellung wählen Sie die Zuweisungsmethode für die IPv4-Adresse aus. Die folgenden Zuweisungsmethoden stehen zur Wahl: **Dynamisch:** Bei Wahl dieser Option weist Azure automatisch die nächste verfügbare Adresse aus dem Adressraum des Subnetzes zu, das Sie ausgewählt haben. **Statisch:** Bei Wahl dieser Option müssen Sie eine verfügbare IP-Adresse innerhalb des Adressraums des ausgewählten Subnetzes manuell zuweisen. Statische und dynamische Adressen bleiben unverändert, bis Sie sie ändern oder die Netzwerkschnittstelle gelöscht wird. Die Zuweisungsmethode kann nach Erstellung der Netzwerkschnittstelle geändert werden. Der DHCP-Server von Azure weist diese Adresse der Netzwerkschnittstelle innerhalb des Betriebssystems des virtuellen Computers zu.|

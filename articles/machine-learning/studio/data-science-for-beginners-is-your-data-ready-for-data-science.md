@@ -1,6 +1,6 @@
 ---
 title: Bewertung von Daten
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Vier Kriterien, die Ihre Daten erfüllen müssen, um für Data Science bereit zu sein. Dieses Video stellt konkrete Beispiele für die grundlegende Bewertung von Daten bereit.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: f01a2f6e8d219d4b8eee005087d8331b117ba7db
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: ccc422dfb3105fd1e12569a84a4ebfd22182b225
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621787"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837798"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Sind Ihre Daten für Data Science bereit?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Reihe „Data Science für Einsteiger“

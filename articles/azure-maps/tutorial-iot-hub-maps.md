@@ -1,22 +1,22 @@
 ---
-title: Implementieren der räumlichen IoT-Analyse mit Azure Maps | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie IoT Hub in Azure Maps-Dienst-APIs integrieren.
+title: 'Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps'
+description: 'Tutorial: Es wird beschrieben, wie Sie IoT Hub in Azure Maps-Dienst-APIs integrieren.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933205"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107044"
 ---
-# <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Implementieren der räumlichen IoT-Analyse mit Azure Maps
+# <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
 Das Nachverfolgen und Erfassen relevanter Ereignisse, die in Raum und Zeit eintreten, ist ein häufiges IoT-Szenario. Beispiele hierfür sind die Bereiche Verwaltung von Fuhrparks, Asset-Nachverfolgung, Mobilität und Smart City-Anwendungen. In diesem Tutorial wird anhand von relevanten Ereignissen Schritt für Schritt ein Lösungsmuster für die Verwendung von Azure Maps-APIs beschrieben, die mit IoT Hub erfasst werden. Hierfür nutzen Sie das von Event Grid bereitgestellte Ereignisabonnementmodell.
 

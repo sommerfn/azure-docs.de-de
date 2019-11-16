@@ -1,22 +1,22 @@
 ---
-title: Ermitteln einer Route mit Azure Maps | Microsoft-Dokumentation
-description: Route zu einem Point of Interest mit Azure Maps
+title: 'Tutorial: Ermitteln einer Route mit Azure Maps'
+description: 'Tutorial: Route zu einem Point of Interest mit Azure Maps'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 03/07/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52355a8896f4891e99d07e2b4106cede77a1f8df
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c9e407b271fd77397723ee49f530339847096749
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916208"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106622"
 ---
-# <a name="route-to-a-point-of-interest-using-azure-maps"></a>Route zu einem Point of Interest mit Azure Maps
+# <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Tutorial: Route zu einem Point of Interest mit Azure Maps
 
 In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und das Routendienst-SDK verwenden, um die Route zum Point of Interest zu ermitteln. In diesem Tutorial lernen Sie Folgendes:
 
