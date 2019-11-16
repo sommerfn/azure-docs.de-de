@@ -1,5 +1,5 @@
 ---
-title: Konvertieren verwalteter Azure-Datenträger von Storage Standard in Storage Premium (oder umgekehrt) | Microsoft-Dokumentation
+title: Konvertieren verwalteter Azure-Datenträger zwischen Storage Standard und Storage Premium
 description: Hier erfahren Sie, wie Sie verwaltete Azure-Datenträger mithilfe von Azure PowerShell von Storage Standard in Storage Premium konvertieren (oder umgekehrt).
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 274697d555974f286c2c71f26280640077c11f81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b63d4d0247fd640e961d03d336d6b211473c48fb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749551"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033924"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualisieren des Speichertyps eines verwalteten Datenträgers
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Skillsets in einer Anreicherungspipeline
+title: Erstellen eines Skillsets
 titleSuffix: Azure Cognitive Search
 description: Definieren Sie Schritte zur Datenextraktion, Verarbeitung natürlicher Sprache oder Bildanalyse, um strukturierte Informationen aus Ihren Daten für die Verwendung in der kognitiven Azure-Suche anzureichern und zu extrahieren.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787465"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114551"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Erstellen eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche 
 

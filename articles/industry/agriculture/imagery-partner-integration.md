@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c76fd151bf70bfff6eed3b45a673f94777e59467
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797299"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132024"
 ---
 # <a name="imagery-partner-integration"></a>Integration eines Partnerunternehmens für Bilder
 
@@ -42,7 +42,7 @@ Die APIs enthalten technische Swagger-Dokumentation. Unter [Swagger](https://aka
 
 ## <a name="authentication"></a>Authentication
 
-Für FarmBeats wird [Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)) von Microsoft Azure verwendet. Die Authentifizierungsfunktion von Azure App Service verfügt über eine integrierte Authentifizierungs- und Autorisierungsunterstützung. 
+Für FarmBeats wird [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) von Microsoft Azure verwendet. Der Azure App Service bietet eine integrierte Authentifizierungs- und Autorisierungsunterstützung. 
 
 Weitere Informationen finden Sie unter [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
 
@@ -97,7 +97,7 @@ Optional können Sie Abfrageparameter in GET-Aufrufe einfügen, um Daten zu filt
 
 Mit der unten angegebenen Beispielanforderung wird die Liste mit den Geräten abgerufen:
 
-```
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ Für die meisten GET-, POST- und PUT-Aufrufe ist ein JSON-Anforderungstext erfor
 Die folgende Beispielanforderung dient zum Erstellen eines Geräts (unter Verwendung von JSON-Eingabecode mit dem Anforderungstext).
 
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
@@ -326,6 +326,7 @@ Hier sind die vom System definierten Werte aufgeführt:
   ]
 }
 ```
+
 Dies ist ein einmalig durchzuführendes Setup. Der Bereich dieses neuen Szenentyps ist auf das Abonnement beschränkt, unter dem das FarmBeats-Projekt bereitgestellt wird.
 
 Beispiel: Zum Hinzufügen von „SceneSource: SlantRange“ verwenden Sie einen PUT-Vorgang für die ID von „/ExtendedType“ mit dem folgenden Schlüssel: „SceneSource“-Eingabenutzlast:

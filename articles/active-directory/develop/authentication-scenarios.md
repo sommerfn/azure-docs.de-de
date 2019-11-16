@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab2180c54f07ff5009e2c57d8522f2eb0b81aad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718367"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927117"
 ---
 # <a name="authentication-basics"></a>Authentifizierungsgrundlagen
 
@@ -74,7 +74,7 @@ Die Überprüfung des Tokens wird auf eine der folgenden Arten durchgeführt: vo
 
 Token sind nur für einen begrenzten Zeitraum gültig. Normalerweise wird vom STS ein Tokenpaar bereitgestellt: ein Zugriffstoken zum Zugreifen auf die Anwendung oder geschützte Ressource und ein Aktualisierungstoken, das zum Aktualisieren des Zugriffstokens verwendet wird, wenn der Ablauf des Zugriffstokens kurz bevorsteht. 
 
-Zugriffstoken werden als Bearertoken im `Authenticate`-Header an eine Web-API übergeben. Eine App kann ein Aktualisierungstoken an den STS übergeben, und wenn der Benutzerzugriff auf die App nicht widerrufen wurde, erhält sie ein neues Zugriffstoken und ein neues Aktualisierungstoken zurück. So wird ein Fall behandelt, bei dem eine Person aus dem Unternehmen ausscheidet. Wenn der STS ein Aktualisierungstoken empfängt, stellt er kein weiteres gültiges Zugriffstoken aus, falls der Benutzer nicht mehr autorisiert ist.
+Zugriffstoken werden als Bearertoken im `Authorization`-Header an eine Web-API übergeben. Eine App kann ein Aktualisierungstoken an den STS übergeben, und wenn der Benutzerzugriff auf die App nicht widerrufen wurde, erhält sie ein neues Zugriffstoken und ein neues Aktualisierungstoken zurück. So wird ein Fall behandelt, bei dem eine Person aus dem Unternehmen ausscheidet. Wenn der STS ein Aktualisierungstoken empfängt, stellt er kein weiteres gültiges Zugriffstoken aus, falls der Benutzer nicht mehr autorisiert ist.
 
 ## <a name="application-model"></a>Anwendungsmodell
 

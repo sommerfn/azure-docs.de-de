@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 225f26ac2133f45fe7eba9e39d64d0cfe9e20766
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219551"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885303"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -917,7 +917,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 
 * Die Richtlinie fügt der [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe eine benutzerdefinierte Ablaufverfolgung hinzu, wenn die Ablaufverfolgung ausgelöst wird, d. h. der `Ocp-Apim-Trace`-Anforderungsheader ist vorhanden und auf „true“ festgelegt, und der `Ocp-Apim-Subscription-Key`-Anforderungsheader ist vorhanden und enthält einen gültigen Schlüssel, der Ablaufverfolgung zulässt. 
 * Die Richtlinie erstellt in Application Insights eine [Ablaufverfolgungstelemetrie](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry), wenn die [Application Insights-Integration](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) aktiviert ist und der in der Richtlinie angegebene `severity`-Grad größer oder gleich dem in der Diagnose angegebenen `verbosity`-Grad ist. 
-* Die Richtlinie fügt eine Eigenschaft in den Protokolleintrag ein, wenn [Diagnoseprotokolle](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) aktiviert ist und der in der Richtlinie angegebene Schweregrad größer oder gleich dem Ausführlichkeitsgrad ist, der in der Diagnoseeinstellung angegeben ist.  
+* Die Richtlinie fügt eine Eigenschaft in den Protokolleintrag ein, wenn [Diagnoseprotokolle](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) aktiviert ist und der in der Richtlinie angegebene Schweregrad größer oder gleich dem Ausführlichkeitsgrad ist, der in der Diagnoseeinstellung angegeben ist.  
 
 
 ### <a name="policy-statement"></a>Richtlinienanweisung
@@ -946,7 +946,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 | ------- | ------------- | -------- |
 | Ablaufverfolgung   | Stammelement | Ja      |
 | message | Eine Zeichenfolge oder ein Ausdruck, die bzw. der protokolliert werden soll. | Ja |
-| metadata | Fügt der Application Insights-[Ablaufverfolgungstelemetrie](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry) eine benutzerdefinierte Eigenschaft hinzu. | Nein |
+| metadata | Fügt der Application Insights-[Ablaufverfolgungstelemetrie](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) eine benutzerdefinierte Eigenschaft hinzu. | Nein |
 
 ### <a name="attributes"></a>Attribute
 

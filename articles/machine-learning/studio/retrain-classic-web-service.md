@@ -1,6 +1,6 @@
 ---
 title: Erneutes Trainieren eines klassischen Webdienst
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio (klassisch) erneut trainieren und einen klassischen Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 17d15de3df73592c3ce410535235559c8c6fb584
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: eac7674ae4a88621a803c70bd55a88e65b2cb7e9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670531"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838689"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Erneutes Trainieren und Bereitstellen eines (klassischen) Studio-Webdiensts
 

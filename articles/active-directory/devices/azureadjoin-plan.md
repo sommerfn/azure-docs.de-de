@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c739e827589a9fd6adeb10255f869acef29a4f16
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 9c8219dd9ec971303fb62cf828da91ee877f4ca9
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562211"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882918"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -78,7 +78,7 @@ Bei Verwendung von AD FS müssen Sie die folgenden WS-Trust-Endpunkte aktivieren
 Wenn Ihr Identitätsanbieter diese Protokolle nicht unterstützt, funktioniert Azure AD Join nicht systemintern. Ab Windows 10 1809 können sich Ihre Benutzer bei einem in Azure AD eingebundenen Gerät mit einem SAML-basierten Identitätsanbieter über die [Webanmeldung unter Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10) anmelden. Die Webanmeldung ist zurzeit ein Vorschaufeature und wird nicht für Produktionsbereitstellungen empfohlen.
 
 >[!NOTE]
-> Derzeit funktioniert Azure AD Join nicht, wenn [AD FS 2019 mit externen Authentifizierungsanbietern als primäre Authentifizierungsmethode konfiguriert ist](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Für Azure AD Join ist standardmäßig die Kennwortauthentifizierung als primäre Methode festgelegt, was in diesem Szenario zu Authentifizierungsfehlern führt.
+> Derzeit funktioniert Azure AD Join nicht, wenn [AD FS 2019 mit externen Authentifizierungsanbietern als primäre Authentifizierungsmethode konfiguriert ist](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Für Azure AD Join ist standardmäßig die Kennwortauthentifizierung als primäre Methode festgelegt, was in diesem Szenario zu Authentifizierungsfehlern führt.
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Smartcards und zertifikatbasierte Authentifizierung

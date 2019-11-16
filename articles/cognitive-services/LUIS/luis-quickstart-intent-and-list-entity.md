@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 9531e86e63fa8d944aa216fddd0c8215b73038a9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a8021885bf51ab6d44bc8576b9fdd69f1bdd270a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492709"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953705"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung
 
@@ -49,7 +49,7 @@ Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes 
 
 * Bei den Datenwerten handelt es sich um einen bekannten Satz.
 * Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
-* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Wortstammerkennung, Pluralformen und andere Varianten lassen sich nur mithilfe einer Listenentität nicht auflösen. Um Varianten zu behandeln, ziehen Sie die Verwendung eines [Musters](luis-concept-patterns.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung. 
+* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Wortstammerkennung, Pluralformen und andere Varianten lassen sich nur mithilfe einer Listenentität nicht auflösen. Um Varianten zu behandeln, ziehen Sie die Verwendung eines [Musters](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung. 
 
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
 

@@ -16,12 +16,12 @@ ms.date: 05/04/2018
 ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 598a69593046354e83fe35b7b2ecfb0745e8b637
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 580207bb10680e84cfda7d4b1874f2b460602973
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66388330"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082166"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -63,7 +63,7 @@ Gehen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich wie f
 Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt von den folgenden Websites herunterladen:
 
 - [Chrome-Erweiterung](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Microsoft Edge-Erweiterung](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Microsoft Edge-Erweiterung](https://www.microsoft.com/en-us/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
 - [Firefox-Erweiterung](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Verwenden der Erweiterung zur sicheren Anmeldung bei „Meine Apps“

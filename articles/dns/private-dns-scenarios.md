@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3ac4db3a2d98e761183360c268d23efcc313cf09
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959325"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048495"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Private Azure DNS-Zonen: Szenarien
 
@@ -31,7 +31,7 @@ Dieses Szenario ist der üblichere Fall, in dem Sie eine private Zone mit mehrer
 
 Im folgenden Diagramm ist eine einfache Version dieses Szenarios dargestellt, in dem es nur zwei virtuelle Netzwerke gibt: A und B. A ist als ein virtuelles Registrierungsnetzwerk und B als ein virtuelles Auflösungsnetzwerk festgelegt. Vorgesehen ist, dass für beide virtuellen Netzwerke eine gemeinsame Zone „contoso.com“ verwendet wird. Wenn die Zone erstellt ist und das virtuelle Auflösungs- und das virtuelle Registrierungsnetzwerk mit der Zone verknüpft sind, registriert Azure automatisch DNS-Einträge für die virtuellen Computer (VNETA-VM1 und VNETA-VM2) aus dem virtuellen Netzwerk A. Sie können auch manuell DNS-Einträge in der Zone für virtuelle Computer im virtuellen Auflösungsnetzwerk B hinzufügen. Bei dieser Konfiguration ergibt sich das folgende Verhalten für Weiterleitungs- und Reverse-DNS-Abfragen:
 * Eine DNS-Abfrage von VNETB-VM1 im virtuellen Auflösungsnetzwerk B für „VNETA-VM1.contoso.com“ erhält eine DNS-Antwort, die die private IP-Adresse von VNETA-VM1 enthält.
-* Eine Reverse-DNS-Abfrage (PTR-Abfrage) von VNETB-VM2 im virtuellen Auflösungsnetzwerk B für 10.1.0.1 erhält eine DNS-Antwort, die „FQDN VNETB-VM1.contoso.com“ enthält. Der Grund ist, dass Reverse-DNS-Abfragen auf dasselbe virtuelle Netzwerk beschränkt sind. 
+* Eine Reverse-DNS-Abfrage (PTR-Abfrage) von VNETB-VM2 im virtuellen Auflösungsnetzwerk B für 10.1.0.1 erhält eine DNS-Antwort, die „FQDN VNETB-VM1.contoso.com“ enthält.  
 * Eine Reverse-DNS-Abfrage (PTR-Abfrage) von VNETB-VM3 im virtuellen Auflösungsnetzwerk B für 10.0.0.1 erhält NXDOMAIN. Der Grund ist, dass Reverse-DNS-Abfragen auf lediglich dasselbe virtuelle Netzwerk beschränkt sind. 
 
 

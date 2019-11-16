@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: f0bc66260a0eaa66e71241148591146fa38d4120
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 202267d4fffc7c6f0d99cd2a6ef3bbee82947a81
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821792"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132393"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -41,7 +41,7 @@ Eine alternative Option, einen vollständig verwalteten Dienst für die nahtlose
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 - Das [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx)-Befehlszeilentool, das auf dem lokalen Server oder einem anderen Computer mit Zugriff auf das Zertifikat installiert ist, das als Datei exportiert wurde. Das Pvk2pfx-Tool ist Bestandteil des [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), einer eigenständigen Befehlszeilenumgebung.
-- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell), Version 5.0 oder höher.
+- [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell), Version 5.0 oder höher.
 - Das Azure PowerShell-Modul ist [installiert und aktualisiert](https://docs.microsoft.com/powershell/azure/install-az-ps).
 - [Az.Sql-Modul](https://www.powershellgallery.com/packages/Az.Sql).
   Führen Sie die folgenden Befehle in PowerShell zum Installieren/Aktualisieren des PowerShell-Moduls aus:

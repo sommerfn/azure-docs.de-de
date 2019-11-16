@@ -3,20 +3,20 @@ title: Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für 
 description: 'In diesem Artikel erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: den Power BI-Connector für Azure Data Explorer.'
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349141"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024211"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Power BI ist eine Business Analytics-Lösung, mit der Sie Ihre Daten visualisieren und die Ergebnisse unternehmensweit teilen können. Azure Data Explorer bietet drei Optionen für die Verbindungsherstellung mit Daten in Power BI: Verwenden des integrierten Connectors, Importieren einer Abfrage aus Azure Data Explorer oder Verwenden einer SQL-Abfrage. In diesem Artikel wird der integrierte Connector verwendet, um Daten abzurufen und in einem Power BI-Bericht zu visualisieren. Die Erstellung von Power BI-Dashboards mit dem nativen Azure Data Explorer-Connector ist ganz einfach. Der Power BI-Connector unterstützt [Import- und Direktabfrage-Konnektivitätsmodi](https://docs.microsoft.com/power-bi/desktop-directquery-about). Je nach Szenario, Skalierung und Leistungsanforderungen können Sie Dashboards mit dem Modus **Import** oder **DirectQuery** erstellen. 
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Power BI ist eine Business Analytics-Lösung, mit der Sie Ihre Daten visualisieren und die Ergebnisse in Ihrer Organisation teilen können. Azure Data Explorer bietet drei Optionen für die Verbindungsherstellung mit Daten in Power BI: Verwenden des integrierten Connectors, Importieren einer Abfrage aus Azure Data Explorer oder Verwenden einer SQL-Abfrage. In diesem Artikel wird der integrierte Connector verwendet, um Daten abzurufen und in einem Power BI-Bericht zu visualisieren. Die Erstellung von Power BI-Dashboards mit dem nativen Azure Data Explorer-Connector ist ganz einfach. Der Power BI-Connector unterstützt [Import- und Direktabfrage-Konnektivitätsmodi](https://docs.microsoft.com/power-bi/desktop-directquery-about). Je nach Szenario, Skalierung und Leistungsanforderungen können Sie Dashboards mit dem Modus **Import** oder **DirectQuery** erstellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

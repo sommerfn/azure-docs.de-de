@@ -4,18 +4,21 @@ description: Hier wird beschrieben, wie Sie eine Appliance für die Bewertung ph
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/11/2019
 ms.author: raynew
-ms.openlocfilehash: ddd659e8cbcb54a36868848d0c6327f294d531b1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510219"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907166"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Einrichten einer Appliance für physische Server
 
 In diesem Artikel wird beschrieben, wie Sie die Azure Migrate-Appliance einrichten, wenn Sie physische Server mithilfe der Azure Migrate-Serverbewertung bewerten.
+
+> [!NOTE]
+> Werden hier Features erwähnt, die Sie noch nicht im Azure Migrate-Portal sehen, bitten wir Sie um etwas Geduld. Sie werden voraussichtlich im Laufe der nächsten Woche verfügbar.
 
 Die Azure Migrate-Appliance ist eine einfache Appliance, die von der Azure Migrate-Serverbewertung für folgende Aufgaben verwendet wird:
 
@@ -28,9 +31,9 @@ Die Azure Migrate-Appliance ist eine einfache Appliance, die von der Azure Migr
 ## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
 
 Die Einrichtung der Appliance umfasst Folgendes:
-- Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal
-- Herunterladen der Inhalte aus der gezippten Datei, Starten der PowerShell-Konsole mit Administratorrechten
-- Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung
+- Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal.
+- Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
+- Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung.
 - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
 
 ## <a name="download-the-installer-script"></a>Herunterladen des Installationsskripts
@@ -63,10 +66,10 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 ## <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts
 Das Installationsskript führt folgende Schritte aus:
 
-- Installation der Agents und einer Webanwendung für die Ermittlung und Bewertung physischer Server
-- Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE
-- Download und Installation eines wiederbeschreibbaren IIS-Moduls [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
-- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate
+- Installation der Agents und einer Webanwendung für die Ermittlung und Bewertung physischer Server.
+- Installation von Windows-Rollen, darunter beispielsweise Windows-Aktivierungsdienst, IIS und PowerShell ISE.
+- Download und Installation eines wiederbeschreibbaren IIS-Moduls. [Weitere Informationen](https://www.microsoft.com/download/details.aspx?id=7435)
+- Aktualisierung eines Registrierungsschlüssels (HKLM) mit dauerhaften Einstellungsdetails für Azure Migrate.
 - Erstellung der folgenden Dateien in diesem Pfad:
     - **Konfigurationsdateien**: %Programdata%\Microsoft Azure\Config
     - **Protokolldateien**: %Programdata%\Microsoft Azure\Logs
@@ -76,7 +79,7 @@ Führen Sie das Skript wie folgt aus:
 1. Extrahieren Sie die gezippte Datei in einem Ordner auf dem Server, der die Appliance hostet.
 2. Starten Sie PowerShell auf dem oben genannten Server mit Administratorberechtigungen (erhöhten Rechten).
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
-4. Führen Sie das Skript mit dem folgenden Befehl aus:
+4. Führen Sie das Skript mit folgendem Befehl aus:
     ```
     PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
     ```
@@ -126,7 +129,7 @@ Sie können für Windows- und Linux-Server je einen Satz Anmeldeinformationen an
 4. Klicken Sie auf **Server hinzufügen**, und geben Sie für die Verbindungsherstellung mit dem Server Details zum Server an: FQDN/IP-Adresse und einen Anzeigenamen für die Anmeldeinformationen (ein Eintrag pro Zeile).
 3. Klicken Sie auf **Überprüfen**. Nach der Überprüfung wird die Liste der Server angezeigt, die ermittelt werden können.
     - Sollte bei der Überprüfung eines Servers ein Fehler auftreten, sehen Sie sich den Fehler an, indem Sie mit dem Mauszeiger auf das Symbol in der Spalte **Status** zeigen. Beheben Sie mögliche Probleme, und wiederholen Sie die Überprüfung.
-    - Um einen Server zu entfernen, klicken Sie auf **Löschen**.
+    - Um einen Server zu entfernen, wählen Sie **Löschen** aus.
 4. Klicken Sie nach der Überprüfung auf **Speichern und Ermittlung starten**, um mit der Ermittlung zu beginnen.
 
 Daraufhin wird die Ermittlung gestartet. Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Azure-Portal angezeigt werden. 

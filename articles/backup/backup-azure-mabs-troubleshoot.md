@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0f9c2d1d2081ec22898ed3a4fbc73305ff0995e3
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 82d06c9f5db0d709bec5b94ce107c6f6894dc191
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954678"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074180"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -31,7 +31,6 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 - Wenn die Pushinstallation nicht erfolgreich ist, sollten Sie überprüfen, ob der DPM-Agent bereits vorhanden ist. Wenn ja, können Sie den Agent deinstallieren und dann versuchen, die Installation durchzuführen.
 - [Stellen Sie sicher, dass kein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](https://aka.ms/AA4nyr4)<br>
 - Stellen Sie sicher, dass der SQL-Agent-Dienst ausgeführt und auf dem MAB-Server auf „Automatisch“ festgelegt ist.<br>
-
 
 ## <a name="invalid-vault-credentials-provided"></a>Es wurden ungültige Tresoranmeldeinformationen angegeben.
 
@@ -63,7 +62,6 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | --- | --- | --- |
 | Backup | Fehler bei Aufträgen zum Erstellen von Onlinewiederherstellungspunkten für virtuellen VMware-Computer. DPM hat beim Abrufen von ChangeTracking-Informationen einen VMware-Fehler festgestellt. ErrorCode – FileFaultFault (ID 33621) |  <ol><li> Setzen Sie CTK für VMware für die betroffenen virtuellen Computer zurück.</li> <li>Überprüfen Sie, ob der unabhängige Datenträger für VMware ggf. nicht vorhanden ist.</li> <li>Beenden Sie den Schutz für die betroffenen virtuellen Computer, und schützen Sie sie dann erneut mit der Schaltfläche **Aktualisieren**. </li><li>Führen Sie einen CC-Vorgang für die betroffenen virtuellen Computer aus.</li></ol>|
 
-
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Fehler beim Agent-Vorgang. Bei der Kommunikation mit dem DPM-Agent-Koordinator-Dienst auf dem Server ist ein Fehler aufgetreten.
 
 | Vorgang | Fehlerdetails | Problemumgehung |
@@ -85,7 +83,6 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen (ID 100050). | Der Azure Backup-Agent konnte keine Verbindung mit dem Azure Backup-Dienst herstellen. | **Sollte die im Produkt empfohlene Aktion nicht funktionieren, führen Sie die folgenden Schritte aus**: <br>1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus: **psexec -i -s "C:\Programme\Internet Explorer\iexplore.exe**. Das Internet Explorer-Fenster wird geöffnet. <br/> 2. Navigieren Sie zu **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen**. <br/> 3. Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<br/> 4. Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy diese [URLs](backup-configure-vault.md#verify-internet-access) und [IP-Adressen](backup-configure-vault.md#verify-internet-access) zulassen.|
 | Fehler bei der Installation des Azure Backup-Agents | Bei der Installation von Microsoft Azure Recovery Services ist ein Fehler aufgetreten. Für alle Änderungen, die von der Microsoft Azure Recovery Services-Installation am System vorgenommen wurden, wurde ein Rollback ausgeführt. (ID: 4024) | Installieren Sie den Azure-Agent manuell.
 
-
 ## <a name="configuring-protection-group"></a>Konfigurieren von Schutzgruppen
 
 | Vorgang | Fehlerdetails | Problemumgehung |
@@ -105,7 +102,6 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Backup | Die Option zum erneuten Schützen eines virtuellen VMware-Computers in einer neuen Microsoft Azure Backup Server-Instanz wird nicht als zum Hinzufügen verfügbar angezeigt. | VMware-Eigenschaften verweisen auf eine alte, außer Betrieb genommene Instanz von Microsoft Azure Backup Server. So lösen Sie dieses Problem:<br><ol><li>Navigieren Sie in VCenter (entspricht SC-VMM) zur Registerkarte **Zusammenfassung**, und klicken Sie dann auf **Benutzerdefinierte Attribute**.</li>  <li>Löschen Sie den alten Microsoft Azure Backup Server-Namen aus dem Wert **DPMServer**.</li>  <li>Navigieren Sie zurück zum neuen Microsoft Azure Backup Server, und ändern Sie die PG.  Nachdem Sie die Schaltfläche **Aktualisieren** ausgewählt haben, wird der virtuelle Computer mit einem Kontrollkästchen zum Hinzufügen von Schutz angezeigt.</li></ol> |
 | Backup | Fehler beim Zugreifen auf Dateien/freigegebene Ordner | Versuchen Sie, die Einstellungen der Antivirensoftware zu ändern (wie im TechNet-Artikel [Ausführen von Antivirensoftware auf dem DPM-Server](https://technet.microsoft.com/library/hh757911.aspx) beschrieben).|
 
-
 ## <a name="change-passphrase"></a>Ändern der Passphrase
 
 | Vorgang | Fehlerdetails | Problemumgehung |
@@ -113,18 +109,15 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 | Ändern der Passphrase |Die eingegebene Sicherheits-PIN ist nicht richtig. Geben Sie die richtige Sicherheits-PIN an, um diesen Vorgang abzuschließen. |**Ursache:**<br/> Dieser Fehler tritt auf, wenn Sie eine ungültige oder abgelaufene Sicherheits-PIN eingeben, während Sie einen wichtigen Vorgang (z.B. das Ändern einer Passphrase) ausführen. <br/>**Empfohlene Maßnahme:**<br/> Um den Vorgang abzuschließen, müssen Sie eine gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich am Azure-Portal an, und navigieren Sie dann zum Recovery Services-Tresor. Navigieren Sie dann zu **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN generieren**. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 | Ändern der Passphrase |Fehler beim Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind oder Sie versuchen, die Passphrase zu ändern, wenn Sie eine nicht unterstützte Version verwenden.<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zunächst den Backup-Agent auf die minimale Version 2.0.9052 aktualisieren. Außerdem müssen Sie Azure Backup Server auf mindestens Update 1 aktualisieren und dann eine gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich am Azure-Portal an, und navigieren Sie dann zum Recovery Services-Tresor. Navigieren Sie dann zu **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN generieren**. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 
-
 ## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
 | Einrichten von E-Mail-Benachrichtigungen mit einem Office 365-Konto |Fehler-ID: 2013| **Ursache:**<br> Versuchte Verwendung des Office 365-Kontos <br>**Empfohlene Maßnahme:**<ol><li> Stellen Sie zuerst sicher, dass für Ihren DPM-Server in Exchange „Zulassen von anonymem Relay für einen Empfangsconnector“ eingerichtet ist. Weitere Informationen dazu, wie Sie diese Option konfigurieren, finden Sie unter [Zulassen von anonymem Relay für einen Empfangsconnector](https://technet.microsoft.com/library/bb232021.aspx) auf TechNet.</li> <li> Falls Sie kein internes SMTP-Relay verwenden können und für die Einrichtung Ihren Office 365-Server verwenden müssen, können Sie IIS als Relay einrichten. Konfigurieren Sie den DPM-Server so, dass er [SMTP mithilfe von ISS an O365 weiterleitet](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx).<br><br> **WICHTIG:** Achten Sie darauf, das Format „benutzer\@domäne.com“ und *nicht* „domäne\benutzer“ zu verwenden.<br><br><li>Weisen Sie DPM an, den lokalen Servernamen als SMTP-Server zu verwenden (Port 587). Verweisen Sie DPM dann auf die Benutzer-E-Mail, von der die E-Mail-Nachrichten stammen sollen.<li> Der Benutzername und das Kennwort auf der DPM-SMTP-Setupseite sollten sich auf ein Domänenkonto in der Domäne beziehen, in der sich DPM befindet. </li><br> **HINWEIS**: Nehmen Sie beim Ändern der SMTP-Serveradresse Änderungen an den neuen Einstellungen vor, schließen Sie das Feld mit den Einstellungen, und öffnen Sie es dann erneut. So können Sie prüfen, ob der neue Wert vorhanden ist.  Wenn Sie die Werte nur ändern und testen, werden die neuen Einstellungen unter Umständen nicht immer wirksam. Diese Überprüfung ist daher die empfohlene bewährte Methode.<br><br>Sie können diese Einstellungen während des Prozesses jederzeit löschen, indem Sie die DPM-Konsole schließen und die folgenden Registrierungsschlüssel bearbeiten: **HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**. Sie können sie der Benutzeroberfläche wieder hinzufügen, wenn Sie sie neu starten.
 
-
 ## <a name="common-issues"></a>Häufige Probleme
 
 In diesem Abschnitt werden häufige Fehler beschrieben, die bei der Verwendung von Azure Backup Server auftreten könnten.
-
 
 ### <a name="cbpsourcesnapshotfailedreplicamissingorinvalid"></a>CBPSourceSnapshotFailedReplicaMissingOrInvalid
 

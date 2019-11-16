@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 90ef1be4366205b1f655a0b93619a897d6d1f25d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2e5a5f2a4de4e01d2e4fa66f819e55839959afd0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929494"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130695"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für JavaScript
 
@@ -205,7 +205,7 @@ Legen Sie einen Namen für den neuen Container fest. Der folgende Code hängt ei
 > [!IMPORTANT]
 > Die Containernamen müssen klein geschrieben werden. Weitere Informationen zum Benennen von Containern und Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
 
-Erstellen Sie eine Instanz der [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient)-Klasse, indem Sie die [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--newpipelineoptions-)-Methode aufrufen. Rufen Sie dann die [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-)-Methode auf, um einen Verweis auf einen Container zu erhalten. Rufen Sie zum schließlich [create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) auf, um den Container in Ihrem Speicherkonto zu erstellen.
+Erstellen Sie eine Instanz der [BlobServiceClient](/javascript/api/@azure/storage-blob/blobserviceclient)-Klasse, indem Sie die [fromConnectionString](/javascript/api/@azure/storage-blob/blobserviceclient#fromconnectionstring-string--storagepipelineoptions-)-Methode aufrufen. Rufen Sie dann die [getContainerClient](/javascript/api/@azure/storage-blob/blobserviceclient#getcontainerclient-string-)-Methode auf, um einen Verweis auf einen Container zu erhalten. Rufen Sie zum schließlich [create](/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) auf, um den Container in Ihrem Speicherkonto zu erstellen.
 
 Fügen Sie diesen Code am Ende der `main`-Funktion hinzu:
 

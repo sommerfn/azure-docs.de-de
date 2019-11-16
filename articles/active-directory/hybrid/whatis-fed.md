@@ -13,12 +13,12 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52f9832a4307ea9519df448f192eeca70043a6d6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: aeb8886987c09b504262d6ea12863a646d6022cc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035171"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73883646"
 ---
 # <a name="what-is-federation-with-azure-ad"></a>Worum handelt es sich beim Verbund mit Azure AD?
 
@@ -35,7 +35,7 @@ Sie können für Ihre lokale Umgebung einen Verbund mit Azure AD einrichten und 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist eine Hybrididentität?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [Was ist eine Hybrididentität?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
 - [Worum handelt es sich bei Azure AD Connect und Connect Health?](whatis-azure-ad-connect.md)
 - [Was ist Kennworthashsynchronisierung?](whatis-phs.md)
 - [Was ist ein Verbund?](whatis-fed.md)

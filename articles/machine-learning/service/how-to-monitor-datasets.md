@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 6fa7ee6663aae24451af195de4a8225c7a6b351e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647146"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049171"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,7 +179,7 @@ Der resultierende Datasetmonitor wird in der Liste angezeigt. Wählen Sie diesen
 
 ### <a name="from-python-sdk"></a>Über das Python SDK
 
-Vollständige Informationen finden Sie in der [Python SDK-Referenzdokumentation zur Datendrift](https://aka.ms/datadriftapi). 
+Vollständige Informationen finden Sie in der [Python SDK-Referenzdokumentation zur Datendrift](/python/api/azureml-datadrift/azureml.datadrift). 
 
 Der folgende Code ist ein Beispiel für die Erstellung eines Datasetmonitors mit dem Python SDK.
 

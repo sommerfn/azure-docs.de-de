@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: cab67a9a50d8e9d91897c170ef2cb0884f169c64
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606676"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132431"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
@@ -38,7 +38,7 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 | MySQL-Patching     | Automatisch  | Von Kunden verwaltet |
 | Hochverfügbarkeit | Das Hochverfügbarkeitsmodell (HA) basiert auf integrierten Failovermechanismen, die bei einer Unterbrechung auf Knotenebene greifen. In solchen Fällen erstellt der Dienst automatisch eine neue Instanz und fügt Speicher an diese Instanz an. | Kunden übernehmen den Entwurf, die Implementierung, das Testen und die Wartung der Hochverfügbarkeit. Zu den Funktionen können Always On-Failoverclustering, Always On-Gruppenreplikation, Protokollversand oder Transaktionsreplikation gehören.|
 | Zonenredundanz | Wird derzeit nicht unterstützt. | Azure-VMs können so eingerichtet werden, dass Sie in unterschiedlichen Verfügbarkeitszonen ausgeführt werden. Für eine lokale Lösung müssen Kunden ihr eigenes sekundäres Rechenzentrum erstellen, verwalten und warten.|
-| Hybridszenario | Die [Datenreplikation](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication) ermöglicht Ihnen das Synchronisieren von Daten von einem externen MySQL-Server mit dem Dienst Azure Database for MySQL. Der externe Server kann lokal, in virtuellen Computern oder in einem Datenbankdienst vorhanden sein, der von anderen Cloudanbietern gehostet wird.<br/><br/> Mit dem Feature für [Lesereplikate](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) können Sie Daten von einem Azure Database for MySQL-Masterserver auf bis zu fünf schreibgeschützten Replikatservern replizieren. Die Replikate befinden sich entweder innerhalb derselben Azure-Region oder sind regionsübergreifend. Schreibgeschützte Replikate werden mithilfe der binlog-Replikationstechnologie asynchron aktualisiert.| Von Kunden verwaltet
+| Hybridszenario | Die [Datenreplikation](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication) ermöglicht Ihnen das Synchronisieren von Daten von einem externen MySQL-Server mit dem Dienst Azure Database for MySQL. Der externe Server kann lokal, in virtuellen Computern oder in einem Datenbankdienst vorhanden sein, der von anderen Cloudanbietern gehostet wird.<br/><br/> Mit dem Feature für [Lesereplikate](https://docs.microsoft.com/azure/mysql/concepts-read-replicas) können Sie Daten von einem Azure Database for MySQL-Masterserver auf bis zu fünf schreibgeschützten Replikatservern replizieren. Die Replikate befinden sich entweder innerhalb derselben Azure-Region oder sind regionsübergreifend. Schreibgeschützte Replikate werden mithilfe der binlog-Replikationstechnologie asynchron aktualisiert.| Von Kunden verwaltet
 | Sichern und Wiederherstellen | [Serversicherungen](https://docs.microsoft.com/azure/mysql/concepts-backup#backups) werden automatisch erstellt und in einem vom Benutzer konfigurierten Speicher, der entweder lokal redundant oder georedundant ist, gespeichert. Dieser Dienst erstellt vollständige, differenzielle und Transaktionsprotokollsicherungen. | Von Kunden verwaltet |
 | Überwachen von Datenbankvorgängen | Ermöglicht Kunden das [Festlegen von Warnungen](https://docs.microsoft.com/azure/mysql/concepts-monitoring) für den Datenbankvorgang und das Reagieren beim Erreichen von Schwellenwerten. | Von Kunden verwaltet |
 | Erweiterter Schutz vor Bedrohungen | Bietet [Advanced Threat Protection](https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal). Bei diesem Schutz werden anomale Aktivitäten erkannt, die auf ungewöhnliche und potenziell schädliche Versuche hindeuten, auf Datenbanken zuzugreifen oder sie missbräuchlich zu nutzen. | Kunden müssen diesen Schutz selbst erstellen.

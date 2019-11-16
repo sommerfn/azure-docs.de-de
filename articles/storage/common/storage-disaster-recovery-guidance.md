@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b265ff8831275a9f4b84f7dac28b82ae75630f8b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595203"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889787"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -47,8 +47,8 @@ Weitere Redundanzoptionen von Azure Storage sind zonenredundanter Speicher (ZRS)
 
 Es ist wichtig, Ihre Anwendung von Anfang an auf Hochverfügbarkeit auszurichten. Anleitungen zum Entwerfen Ihrer Anwendung und zum Planen der Notfallwiederherstellung finden Sie in diesen Azure-Ressourcen:
 
-* [Entwerfen resilienter Anwendungen für Azure](https://docs.microsoft.com/azure/architecture/resiliency/): Ein Überblick über die wichtigsten Konzepte für die Architektur hochverfügbarer Anwendungen in Azure.
-* [Checkliste für die Verfügbarkeit](https://docs.microsoft.com/azure/architecture/checklist/availability): Eine Checkliste zur Überprüfung, ob Ihre Anwendung die Best Practices für den Entwurf für Hochverfügbarkeit implementiert.
+* [Entwerfen resilienter Anwendungen für Azure](/azure/architecture/checklist/resiliency-per-service): Ein Überblick über die wichtigsten Konzepte für die Architektur hochverfügbarer Anwendungen in Azure.
+* [Checkliste für die Verfügbarkeit](/azure/architecture/checklist/resiliency-per-service): Eine Checkliste zur Überprüfung, ob Ihre Anwendung die Best Practices für den Entwurf für Hochverfügbarkeit implementiert.
 * [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS](storage-designing-ha-apps-with-ragrs.md): Entwurfsleitfaden zum Erstellen von Anwendungen zur Nutzung der Vorteile von RA-GRS.
 * [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage](../blobs/storage-create-geo-redundant-storage.md): Ein Tutorial, das zeigt, wie Sie eine hochverfügbare Anwendung erstellen, die automatisch zwischen Endpunkten wechselt, wenn Ausfälle und Wiederherstellungen simuliert werden. 
 

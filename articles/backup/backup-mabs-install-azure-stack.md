@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: dacurwin
-ms.openlocfilehash: bdcd7cbd24ca7023070585df46aa8cea7bdc70eb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747292"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012937"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -124,7 +124,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
 ## <a name="download-azure-backup-server-installer"></a>Herunterladen des Azure Backup Server-Installationsprogramms
 
-Es gibt zwei Möglichkeiten zum Herunterladen des Azure Backup Server-Installationsprogramms. Sie können es aus dem [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55269) herunterladen. Sie können das Installationsprogramm auch beim Konfigurieren eines Recovery Services-Tresors herunterladen. Die folgenden Schritte begleiten Sie beim Herunterladen des Installationsprogramms aus dem Azure-Portal, während Sie einen Recovery Services-Tresor konfigurieren.
+Es gibt zwei Möglichkeiten zum Herunterladen des Azure Backup Server-Installationsprogramms. Sie können es aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55269) herunterladen. Sie können das Installationsprogramm auch beim Konfigurieren eines Recovery Services-Tresors herunterladen. Die folgenden Schritte begleiten Sie beim Herunterladen des Installationsprogramms aus dem Azure-Portal, während Sie einen Recovery Services-Tresor konfigurieren.
 
 1. [Melden Sie sich auf Ihrer Azure Stack-VM im Azure-Portal bei Ihrem Azure-Abonnement an](https://portal.azure.com/).
 2. Klicken Sie im linken Menü auf **Alle Dienste**.
@@ -326,7 +326,7 @@ Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azu
 
 Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgreich ausgeführt werden zu können. Verwenden Sie zum Überprüfen, ob der Computer über eine Verbindung mit Azure verfügt, das Cmdlet ```Get-DPMCloudConnection``` in der Azure Backup Server-PowerShell-Konsole. Wenn die Ausgabe des Cmdlets „TRUE“ lautet, besteht eine Verbindung, andernfalls nicht.
 
-Gleichzeitig muss das Azure-Abonnement einen fehlerfreien Zustand aufweisen. Um den Status Ihres Abonnements zu ermitteln und es zu verwalten, melden Sie sich beim [Abonnementportal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)an.
+Gleichzeitig muss das Azure-Abonnement einen fehlerfreien Zustand aufweisen. Um den Status Ihres Abonnements zu ermitteln und es zu verwalten, melden Sie sich beim [Abonnementportal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
 
 Nachdem Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, können Sie anhand der Tabelle unten ermitteln, welche Auswirkungen mit einer Sicherungs-/Wiederherstellungsfunktion verbunden sind.
 

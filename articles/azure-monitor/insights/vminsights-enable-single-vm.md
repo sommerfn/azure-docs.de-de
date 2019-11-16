@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/09/2019
-ms.openlocfilehash: 1182f48d2d05c90cc90b1832f9305001dd2d1211
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/14/2019
+ms.openlocfilehash: 3ab3164db7702566e62b2eedf2a9a03e9f7fb55c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553818"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109128"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für die Auswertung
 
@@ -33,7 +33,7 @@ So aktivieren Sie die Überwachung Ihrer Azure-VM:
 
 1. Wählen Sie auf der Seite **Insights (Vorschau)** **Jetzt testen** aus.
 
-    ![Aktivieren von Azure Monitor for VMs für eine VM](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Aktivieren von Azure Monitor for VMs für eine VM](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 1. Wenn Sie im selben Abonnement einen Log Analytics-Arbeitsbereich haben, wählen Sie ihn auf der Seite **Azure Monitor Insights Onboarding** (Onboarding von Azure Monitor Insights) in der Dropdownliste aus.  
 
@@ -62,7 +62,7 @@ So aktivieren Sie die Überwachung Ihrer Azure-VM-Skalierungsgruppe:
 
     In der Liste sind Standardarbeitsbereich und Speicherort, für den die VM im Abonnement bereitgestellt wird, vorab ausgewählt. 
 
-    ![Aktivieren von Azure Monitor für VMs für eine VM-Skalierungsgruppe](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
+    ![Aktivieren von Azure Monitor für VMs für eine VM-Skalierungsgruppe](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal.png)
 
     >[!NOTE]
     >Informationen zum Erstellen eines neuen Log Analytics-Arbeitsbereichs für das Speichern der Überwachungsdaten aus der VM-Skalierungsgruppe finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../learn/quick-create-workspace.md). Der Log Analytics-Arbeitsbereich muss einer der [unterstützten Regionen](vminsights-enable-overview.md#log-analytics) angehören.
@@ -78,6 +78,5 @@ Nachdem Sie die Überwachung für Ihre VM oder VM-Skalierungsgruppe aktiviert ha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Verwenden des Integritätsfeatures finden Sie unter [Grundlegendes zur Integrität Ihrer Azure Monitor-VMs](vminsights-health.md). 
 * Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Verwenden der Zuordnung in Azure Monitor für VMs](vminsights-maps.md). 
 * Informationen zum Erkennen von Engpässen, der Gesamtauslastung und der Leistung Ihrer VM finden Sie unter [Anzeigen der Leistung von Azure-VMs](vminsights-performance.md).

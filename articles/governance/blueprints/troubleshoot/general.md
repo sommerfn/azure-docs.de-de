@@ -1,17 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie mehr über die Problembehandlung beim Erstellen, Zuweisen und Entfernen von Blaupausen.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
-ms.service: blueprints
-ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978230"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960288"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
 

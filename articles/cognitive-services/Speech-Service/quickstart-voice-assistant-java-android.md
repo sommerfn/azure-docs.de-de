@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1de9283e1ad609a1f81d7e8a6d8171cc8052e3ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506211"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111793"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Schnellstart: Erstellen eines Sprach-Assistenten in Java unter Android mit dem Speech SDK
 
@@ -30,9 +30,9 @@ Die Anwendung basiert auf dem Maven-Paket für das Speech SDK sowie auf Android 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com).
-* Ein zuvor erstellter, mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurierter Bot
-* [Android Studio 3.3](https://developer.android.com/studio/) oder höher
+- Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com).
+- Ein zuvor erstellter, mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurierter Bot
+- [Android Studio 3.3](https://developer.android.com/studio/) oder höher
 
     > [!NOTE]
     > Beachten Sie [die Liste mit den unterstützten Regionen für Sprach-Assistenten](regions.md#voice-assistants), und stellen Sie sicher, dass Ihre Ressourcen in einer dieser Regionen bereitgestellt werden.
@@ -96,9 +96,9 @@ Ersetzen Sie den Inhalt von `activity_main.xml` durch folgenden Code:
 
 Dieser XML-Code definiert eine einfache Benutzeroberfläche für die Interaktion mit Ihrem Bot.
 
-* Das `button`-Element löst eine Interaktion aus und ruft beim Klicken darauf die `onBotButtonClicked`-Methode auf.
-* Das `recoText`-Element zeigt die Ergebnisse der Spracherkennung, wenn Sie sich mit Ihrem Bot unterhalten.
-* Das `activityText`-Element zeigt die JSON-Nutzlast der neuesten Bot Framework-Aktivität in Ihren Bot.
+- Das `button`-Element löst eine Interaktion aus und ruft beim Klicken darauf die `onBotButtonClicked`-Methode auf.
+- Das `recoText`-Element zeigt die Ergebnisse der Spracherkennung, wenn Sie sich mit Ihrem Bot unterhalten.
+- Das `activityText`-Element zeigt die JSON-Nutzlast der neuesten Bot Framework-Aktivität in Ihren Bot.
 
 Der Text und die grafische Darstellung Ihrer Benutzeroberfläche sollten jetzt etwa wie folgt aussehen:
 

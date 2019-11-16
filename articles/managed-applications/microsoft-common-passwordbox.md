@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4a8b760d113e29efb0efacbd41dcaa7432ecdcfd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 083b0be20d4e9ad7769a9c673139a361fb7b70d4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332805"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009167"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.PasswordBox“
 Ein Steuerelement, das zum Angeben und Bestätigen eines Kennworts verwendet werden kann.
@@ -38,8 +38,8 @@ Ein Steuerelement, das zum Angeben und Bestätigen eines Kennworts verwendet wer
   "toolTip": "",
   "constraints": {
     "required": true,
-    "regex": "",
-    "validationMessage": ""
+    "regex": "^[a-zA-Z0-9]{8,}$",
+    "validationMessage": "Password must be at least 8 characters long, contain only numbers and letters"
   },
   "options": {
     "hideConfirmation": false

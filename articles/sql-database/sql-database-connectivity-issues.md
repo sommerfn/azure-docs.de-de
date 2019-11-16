@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826809"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082496"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Arbeiten mit Verbindungsproblemen und vorübergehenden Fehlern bei SQL-Datenbank
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergeh
 
 Bei einem vorübergehenden Fehler liegt ein Problem zugrunde, das sich nach kurzer Zeit von selbst löst. Wenn das Azure-System Hardwareressourcen für einen besseren Lastenausgleich bei verschiedenen Workloads rasch verschiebt, treten gelegentlich vorübergehende Fehler auf. Die meisten dieser Neukonfigurationsereignisse dauern weniger als 60 Sekunden. Während der Neukonfiguration kann es bei SQL-Datenbank zu Verbindungsproblemen kommen. Anwendungen, die eine Verbindung mit SQL-Datenbank herstellen, sollten dafür ausgelegt sein, vorübergehende Fehler zu tolerieren. Behandeln Sie diese Fehler, indem Sie Wiederholungslogik im Code implementieren und vermeiden, dass sie Benutzern als Anwendungsfehler gemeldet werden.
 
-Wenn Ihr Clientprogramm ADO.NET verwendet, wird eine **SqlException**-Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren. Suchen Sie die Entsprechung zur **Number**-Eigenschaft in der Liste vorübergehender Fehler am Anfang des Artikels [SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen](sql-database-develop-error-messages.md).
+Wenn Ihr Clientprogramm ADO.NET verwendet, wird eine **SqlException**-Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren. 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 

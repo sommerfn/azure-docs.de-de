@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen beim Bereitstellen von OpenShift Container Platform 3.11 in Azure | Microsoft-Dokumentation
+title: Behandeln von Problemen beim Bereitstellen von OpenShift Container Platform 3.11 in Azure
 description: Behandeln von Problemen beim Bereitstellen von OpenShift Container Platform 3.11 in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 4301d81a4d14c36c34d29a54bc146bc8985dfc00
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392101"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035493"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Behandeln von Problemen beim Bereitstellen von OpenShift Container Platform 3.11 in Azure
 

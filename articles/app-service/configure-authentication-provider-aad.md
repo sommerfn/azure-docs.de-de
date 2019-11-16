@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ac73b549546c353dce4c40005b7742577e03d26c
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 6812f99d8433ef318eca37eb2615d43f4749e944
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176995"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886186"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure AD-Anmeldung
 
@@ -28,7 +28,7 @@ ms.locfileid: "72176995"
 In diesem Artikel wird gezeigt, wie Sie Azure App Service so konfigurieren, dass Azure Active Directory (Azure AD) als Authentifizierungsanbieter verwendet wird.
 
 > [!NOTE]
-> Derzeit werden Azure App Service und Azure Functions nur von Azure AD v1.0 unterstützt. Sie werden von der [Microsoft Identity Platform v2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-overview), die Microsoft Authentication Librarys (MSAL) enthält, nicht unterstützt.
+> Derzeit werden Azure App Service und Azure Functions nur von Azure AD v1.0 unterstützt. Sie werden von der [Microsoft Identity Platform v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-overview), die Microsoft Authentication Librarys (MSAL) enthält, nicht unterstützt.
 
 Befolgen Sie diese bewährten Methoden, wenn Sie Ihre App und die Authentifizierung einrichten:
 

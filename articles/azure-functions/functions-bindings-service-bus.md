@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 64c99c6e7e33be5856e67db0500bf48123cdcf09
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: cf78712515ab91c66161d04dac0df601c5dcb625
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614476"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082786"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus-Bindungen für Azure Functions
 
@@ -381,26 +381,6 @@ Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bind
 > Zurzeit ist der Service Bus-Trigger, der mit sitzungsaktivierten Warteschlangen und Abonnements funktioniert, in der Vorschauphase. Verfolgen Sie [dieses Element](https://github.com/Azure/azure-webjobs-sdk/issues/529#issuecomment-491113458), um alle weiteren Updates zu dieser Funktion zu erhalten. 
 
 [Codebeispiele](#trigger---example) mit diesen Eigenschaften finden Sie weiter oben in diesem Artikel.
-
-## <a name="trigger---hostjson-properties"></a>Trigger: Eigenschaften von „host.json“
-
-Die Datei [host.json](functions-host-json.md#servicebus) enthält Einstellungen, mit denen das Verhalten des Service Bus-Triggers gesteuert werden kann.
-
-```json
-{
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "maxAutoRenewDuration": "00:05:00"
-    }
-}
-```
-
-|Eigenschaft  |Standard | BESCHREIBUNG |
-|---------|---------|---------|
-|maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `maxConcurrentCalls` auf „1“ fest. |
-|prefetchCount|–|Das standardmäßige PrefetchCount, das von dem zugrunde liegenden MessageReceiver verwendet wird.|
-|maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
 
 ## <a name="output"></a>Output
 

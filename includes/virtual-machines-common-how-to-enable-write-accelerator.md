@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/23/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 7b9b30f1598f7e50d25b15aaf2fda896ee9e5012
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8e0bb50e14467d2950d97da660fc8e6fa176b99
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248789"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008894"
 ---
-# <a name="enable-write-accelerator"></a>Aktivieren der Schreibbeschleunigung
-
 Bei der Schreibbeschleunigung handelt es sich um eine Datenträgerfunktion, die nur für virtuelle Computer (Virtual Machines, VMs) der M-Serie in Storage Premium mit Azure Managed Disks verfügbar ist. Wie der Name schon besagt, ist der Zweck der Funktion die Verbesserung der E/A-Wartezeit bei Schreibvorgängen für Azure Storage Premium. Die Schreibbeschleunigung ist hervorragend geeignet, wenn Protokolldateiupdates erforderlich sind, die für moderne Datenbanken auf äußerst leistungsfähige Weise auf dem Datenträger beibehalten werden sollen.
 
 Die Schreibbeschleunigung ist für virtuelle Computer der M-Serie in der öffentlichen Cloud allgemein verfügbar.

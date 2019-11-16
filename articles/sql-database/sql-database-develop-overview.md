@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-ms.date: 02/07/2019
-ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825839"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082448"
 ---
 # <a name="sql-database-application-development-overview"></a>Übersicht zur SQL-Datenbankanwendungsentwicklung
 
@@ -48,7 +48,7 @@ Vermeiden Sie lang andauernde Transaktionen, weil jeder Infrastruktur- oder Verb
 
 ## <a name="resiliency"></a>Resilienz
 
-Azure SQL-Datenbank ist ein Clouddienst, in dem ggf. vorübergehende Fehler in der zugrunde liegenden Infrastruktur oder bei der Kommunikation zwischen Cloudentitäten auftreten können. Obwohl Azure SQL-Datenbank bei transitiven infrastrukturausfällen resilient ist, können solche Fehler die Konnektivität beeinträchtigen. Tritt beim Herstellen der Verbindung mit SQL-Datenbank ein vorübergehender Fehler auf, sollte Ihr Code [den Aufruf wiederholen](sql-database-connectivity-issues.md). Die Wiederholungslogik sollte Backofflogik verwenden, damit die SQL-Datenbank nicht unnötig überlastet wird, wenn mehrere Clients die Wiederholung gleichzeitig durchführen. Die Wiederholungslogik hängt von den [Fehlermeldungen für Clientprogramme von SQL-Datenbank](sql-database-develop-error-messages.md) ab.
+Azure SQL-Datenbank ist ein Clouddienst, in dem ggf. vorübergehende Fehler in der zugrunde liegenden Infrastruktur oder bei der Kommunikation zwischen Cloudentitäten auftreten können. Obwohl Azure SQL-Datenbank bei transitiven infrastrukturausfällen resilient ist, können solche Fehler die Konnektivität beeinträchtigen. Tritt beim Herstellen der Verbindung mit SQL-Datenbank ein vorübergehender Fehler auf, sollte Ihr Code [den Aufruf wiederholen](sql-database-connectivity-issues.md). Die Wiederholungslogik sollte Backofflogik verwenden, damit die SQL-Datenbank nicht unnötig überlastet wird, wenn mehrere Clients die Wiederholung gleichzeitig durchführen. Die Wiederholungslogik hängt von den [Fehlermeldungen für Clientprogramme von SQL-Datenbank](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) ab.
 
 Weitere Informationen zur Vorbereitung auf geplante Wartungsereignisse in Azure SQL-Datenbank finden Sie unter [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank](sql-database-planned-maintenance.md).
 

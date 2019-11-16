@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: afa2dc950efe4c03b41afbd6090d9bf29ac5a798
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cac3ee99598f8bcb29bd15c60063159b51f71923
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499607"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125492"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -178,9 +178,9 @@ Verwenden Sie Java, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, wenn Sie mit dieser Schnellstartanleitung fertig sind. 
+Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Äußerungen und Trainieren mit Java](../luis-get-started-java-add-utterance.md)
+> [Hinzufügen von Äußerungen und Trainieren mit Java](../get-started-get-model-rest-apis.md)

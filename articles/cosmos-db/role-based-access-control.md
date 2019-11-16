@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: e519df8c116244b0c74be6b189d99599d89dee77
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c7605bbc1824e2e859cc94296834daf4e4e0907b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582822"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072366"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Rollenbasierte Zugriffssteuerung in Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Die folgenden vordefinierten Rollen werden von Azure Cosmos DB unterstützt:
 
 |**Integrierte Rolle**  |**Beschreibung**  |
 |---------|---------|
-|[DocumentDB-Kontomitwirkender](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kann Azure Cosmos DB-Konten verwalten.|
+|[Mitwirkender von DocumentDB-Konto](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Kann Azure Cosmos DB-Konten verwalten.|
 |[Cosmos DB-Kontoleser](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Kann Azure Cosmos DB-Kontodaten lesen.|
 |[Cosmos-Sicherungsoperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)|Kann eine Wiederherstellungsanforderung für eine Azure Cosmos-Datenbank oder einen Container übermitteln.|
 |[Cosmos DB-Operator](../role-based-access-control/built-in-roles.md#cosmos-db-operator)|Kann Azure Cosmos-Konten, -Datenbanken und -Container bereitstellen, aber nicht auf die Schlüssel zugreifen, die für den Zugriff auf die Daten erforderlich sind.|

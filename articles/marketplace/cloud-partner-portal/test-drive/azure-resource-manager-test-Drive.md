@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 03783424544588a4bc147b232d41b103fb2e5b3e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827551"
+ms.locfileid: "73838075"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -208,7 +208,7 @@ Verketten Sie die Parameter- und Variablenzeichenfolgen (\'contosovm\') mit eine
 
 Beispielsweise dürfen die meisten Ressourcennamen nicht mit einer Ziffer beginnen, eine eindeutige Zeichenfolgenfunktion kann jedoch eine Zeichenfolge zurückgeben, die mit einer Ziffer beginnt. Wenn Sie eindeutige Ausgaberohzeichenfolgen verwenden, treten daher bei den Bereitstellungen Fehler auf. 
 
-Weitere Informationen zu Benennungsregeln und Einschränkungen für Ressourcen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/guidance/guidance-naming-conventions).
+Weitere Informationen zu Benennungsregeln und Einschränkungen für Ressourcen finden Sie in [diesem Artikel](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
 ### <a name="deployment-location"></a>Bereitstellungsort
 
@@ -363,7 +363,7 @@ Berechnen Sie nun die Gesamtanzahl der möglichen gleichzeitig ausführbaren Tes
 
 **Test Drive Resource Manager template** (Resource Manager-Vorlage für Testversion): *Erforderlich* Laden Sie hier Ihre Resource Manager-Vorlage hoch. Dies ist die Datei, die Sie im vorherigen Abschnitt oben erstellt haben. Geben Sie der Hauptvorlagendatei den Namen „main-template.json“, und stellen Sie sicher, dass die Resource Manager-Vorlage Ausgabeparameter für erforderliche Hauptvariablen enthält. (Es muss sich um eine ZIP-Datei handeln.)
 
-**Zugriffsinformationen:** *Erforderlich* Nachdem ein Kunde seine Testversion erhalten hat, erhält er auch die Zugriffsinformationen. In diesen Anweisungen können die nützlichen Ausgabeparameter aus der Resource Manager-Vorlage für die Testversion angegeben werden. Verwenden Sie zum Einfügen von Ausgabeparametern doppelte geschweifte Klammern (z.B. **{{Ausgabename}}**). So werden sie am Speicherort korrekt eingefügt. (Zur Darstellung im Front-End wird die HTML-Formatierung von Zeichenfolgen empfohlen.)
+**Zugriffsinformationen:** *Erforderlich* Nachdem ein Kunde seine Testversion erhalten hat, erhält er auch die Zugriffsinformationen. In diesen Anweisungen können die nützlichen Ausgabeparameter aus der Resource Manager-Vorlage für die Testversion angegeben werden. Verwenden Sie zum Einfügen von Ausgabeparametern doppelte geschweifte Klammern (z.B. **{{Ausgabename}}** ). So werden sie am Speicherort korrekt eingefügt. (Zur Darstellung im Front-End wird die HTML-Formatierung von Zeichenfolgen empfohlen.)
 
 ### <a name="test-drive-deployment-subscription-details"></a>Abonnementdetails für Bereitstellung der Testversion
 
@@ -404,7 +404,7 @@ Klicken Sie auf Speichern. Im letzten Schritt wird die Anwendungs-ID für diese 
 Wenn die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet wird, muss die Anwendung im Abonnement als Mitwirkender hinzugefügt werden. Dazu müssen folgende Schritte ausgeführt werden:
 
 1. Navigieren Sie zum Blatt „Abonnements“, und wählen Sie das entsprechende Abonnement aus, das nur für die Testversion verwendet wird.
-1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.  ![Hinzufügen eines neuen Zugriffssteuerungsprinzipals](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
 1. Klicken Sie auf **Rollenzuweisung hinzufügen**.
 1. Legen Sie die Rolle als **Mitwirkender** fest.

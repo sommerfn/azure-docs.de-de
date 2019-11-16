@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 90b7d79cd2a0e215af17856796bcdda2fbabb43f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693815"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111858"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Verarbeiten von Änderungsfeeds in Azure Blob Storage (Vorschau)
 
@@ -26,7 +26,7 @@ Weitere Informationen zu Änderungsfeeds finden Sie unter [Änderungsfeed in Azu
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Anfordern der Change Feed Processor-Bibliothek
 
-1. Fügen Sie in Visual Studio die URL-`https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` zu den NuGet-Paketquellen hinzu. 
+1. Fügen Sie in Visual Studio die URL-`https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json` zu den NuGet-Paketquellen hinzu. 
 
    Entsprechende Informationen finden Sie unter [Paketquellen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
 
@@ -36,9 +36,9 @@ Weitere Informationen zu Änderungsfeeds finden Sie unter [Änderungsfeed in Azu
 
 ## <a name="connect-to-the-storage-account"></a>Verbinden mit dem Speicherkonto
 
-Analysieren Sie die Verbindungszeichenfolge, indem Sie die [CloudStorageAccount.TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse)-Methode aufrufen. 
+Analysieren Sie die Verbindungszeichenfolge, indem Sie die [CloudStorageAccount.TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse)-Methode aufrufen. 
 
-Erstellen Sie dann ein Objekt, das Blob Storage in Ihrem Speicherkonto darstellt, indem Sie die [CloudStorageAccount.CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.createcloudblobclient?view=azure-dotnet)-Methode aufrufen.
+Erstellen Sie dann ein Objekt, das Blob Storage in Ihrem Speicherkonto darstellt, indem Sie die [CloudStorageAccount.CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)-Methode aufrufen.
 
 ```cs
 public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)

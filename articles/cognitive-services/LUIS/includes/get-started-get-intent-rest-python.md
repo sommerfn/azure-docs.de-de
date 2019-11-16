@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: 491d97411cec65d4f747495a6246b4c62d33e973
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2c840b9de25ff6997037c284c60390e7afa03ec
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499579"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125495"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,7 +63,7 @@ Verwenden Sie Python, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-ap
 
 1. Ersetzen Sie die folgenden Werte:
 
-    * `YOUR-KEY` mit ihrem Startschlüssel
+    * `YOUR-KEY` durch Ihren Startschlüssel
     * `YOUR-ENDPOINT` mit ihrem Endpunkt, z. B. `westus2.api.cognitive.microsoft.com`
 
 1. Installieren Sie mit dem folgenden Konsolenbefehl Abhängigkeiten:
@@ -133,9 +133,9 @@ Verwenden Sie Python, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-ap
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie mit dieser Schnellstartanleitung fertig sind, löschen Sie die Datei aus dem Dateisystem. 
+Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Äußerungen und Trainieren](../luis-get-started-python-add-utterance.md)
+> [Hinzufügen von Äußerungen und Trainieren](../get-started-get-model-rest-apis.md)

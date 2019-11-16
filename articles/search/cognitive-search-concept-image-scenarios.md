@@ -1,5 +1,5 @@
 ---
-title: Verarbeiten und Extrahieren von Text aus Bildern in einer Anreicherungspipeline
+title: Extrahieren von Text aus Bildern
 titleSuffix: Azure Cognitive Search
 description: Verarbeiten und Extrahieren von Text und anderen Informationen aus Bildern in Pipelines der kognitiven Azure-Suche.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787738"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113854"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarien
 

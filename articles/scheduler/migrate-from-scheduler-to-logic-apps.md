@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695502"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890179"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Migrieren von Azure Scheduler-Aufträgen zu Azure Logic Apps
 
@@ -198,7 +198,7 @@ Weitere Informationen zur Behandlung von Ausnahmen finden Sie unter [Abfangen un
 <a name="retire-date"></a>
 
 **F:** Wann wird Azure Scheduler eingestellt? <br>
-**A:** Azure Scheduler wird voraussichtlich am 31. September 2019 vollständig eingestellt. Wichtige Schritte, die Sie vor diesem Datum ausführen sollten, sowie einen detaillierten Zeitplan finden Sie unter [Scheduler-Deaktivierung auf 31. Dezember 2019 verschoben](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/). Allgemeine Updates finden Sie unter [Azure-Updates: Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
+**A:** Azure Scheduler wird voraussichtlich am 31. September 2019 vollständig eingestellt. Wichtige Schritte, die Sie vor diesem Datum ausführen sollten, sowie einen detaillierten Zeitplan finden Sie unter [Scheduler-Deaktivierung auf 31. Dezember 2019 verschoben](https://azure.microsoft.com/updates/extending-retirement-date-of-scheduler/). Allgemeine Updates finden Sie unter [Azure-Updates: Scheduler](https://azure.microsoft.com/updates/?product=scheduler).
 
 **F:** Was geschieht mit meinen Auftragssammlungen und Aufträgen, nachdem der Dienst eingestellt wird? <br>
 **A:** Alle Scheduler-Auftragssammlungen und -Aufträge werden dann nicht mehr ausgeführt und aus dem System gelöscht.

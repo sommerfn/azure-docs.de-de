@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603476"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081555"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten (Vorschauversion)
 
@@ -88,7 +88,7 @@ Verwenden Sie zum Festlegen bestimmter Gerätegruppen als Ziel die folgenden ben
 
 ### <a name="enable-with-a-provisioning-package"></a>Aktivieren mit einem Bereitstellungspaket
 
-Für nicht von Intune verwaltete Geräte können Sie ein Bereitstellungspaket installieren, um die Funktion zu aktivieren. Die Windows Configuration Designer-App kann aus dem [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22) heruntergeladen und installiert werden.
+Für nicht von Intune verwaltete Geräte können Sie ein Bereitstellungspaket installieren, um die Funktion zu aktivieren. Die Windows Configuration Designer-App kann aus dem [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22) heruntergeladen und installiert werden.
 
 1. Starten Sie Windows Configuration Designer.
 1. Klicken Sie auf **Datei** > **Neues Projekt**.

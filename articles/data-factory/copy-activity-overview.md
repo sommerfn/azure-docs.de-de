@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b88983b4941143e5323ee795908cb332bdd79817
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fa2876b88a520480813ebfb8af8219d53c32057a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678420"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075556"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -52,20 +52,7 @@ Um Daten aus einer Quelle in eine Senke zu kopieren, führt der Dienst, der die 
 
 Sie können die Kopieraktivität verwenden, um Dateien unverändert zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten ohne jegliche Serialisierung oder Deserialisierung effizient kopiert.
 
-Die Kopieraktivität unterstützt auch Lese- und Schreibvorgänge in Dateien mit folgenden Formaten:
-- Text
-- JSON
-- Avro
-- ORC
-- Parquet
-
-Die Kopieraktivität kann Dateien mit folgenden Codecs komprimieren und dekomprimieren: 
-- GZip
-- Deflate
-- Bzip2
-- ZipDeflate
-
-Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
 Sie können z. B. folgende Kopieraktivitäten ausführen:
 

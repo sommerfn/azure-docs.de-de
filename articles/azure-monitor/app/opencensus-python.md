@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575568"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132211"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung (Vorschau)
 
@@ -24,7 +24,7 @@ Azure Monitor unterstützt durch die Integration mit [OpenCensus](https://opence
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 - Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/) verwendet, aber auch frühere Versionen können mit kleineren Änderungen wahrscheinlich verwendet werden.
 
-## <a name="sign-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -109,7 +109,6 @@ Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten 
     tracer = Tracer(
         exporter=AzureExporter(
             connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
-        ),
         sampler=ProbabilitySampler(1.0),
     )
 
@@ -215,7 +214,7 @@ Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten 
     # TODO: replace the all-zero GUID with your instrumentation key.
     exporter = metrics_exporter.new_metrics_exporter(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+
     view_manager.register_exporter(exporter)
 
     def prompt():
@@ -297,30 +296,6 @@ Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten 
 4. Das Exportprogramm sendet Protokolldaten an Azure Monitor. Sie finden die Daten unter `traces`.
 
 5. Ausführliche Informationen dazu, wie Sie die Protokolle um Daten im Ablaufverfolgungskontext erweitern können, finden Sie unter [Integration von Protokollen](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation) für OpenCensus Python.
-
-## <a name="start-monitoring-in-the-azure-portal"></a>Starten der Überwachung im Azure-Portal
-
-1. Sie können jetzt im Azure-Portal erneut den Bereich **Übersicht** für Application Insights öffnen, um Details zu Ihrer aktuell ausgeführten Anwendung anzuzeigen. Wählen Sie **Live Metrics Stream** aus.
-
-   ![Screenshot des Übersichtsbereichs mit „Live Metrics Stream“ in einem roten Kasten](./media/opencensus-python/0005-overview-live-metrics-stream.png)
-
-2. Kehren Sie zum Bereich **Übersicht** zurück. Wählen Sie **Anwendungsübersicht** aus, um ein visuelles Layout der Abhängigkeitsbeziehungen und der zeitlichen Steuerung der Aufrufe zwischen den Komponenten Ihrer Anwendung zu erhalten.
-
-   ![Screenshot einer einfachen Anwendungsübersicht](./media/opencensus-python/0007-application-map.png)
-
-   Da nur ein Methodenaufruf überwacht wurde, ist die Anwendungsübersicht nicht so interessant. Eine Anwendungsübersicht kann jedoch skaliert werden, um wesentlich mehr verteilte Anwendungen zu visualisieren:
-
-   ![Anwendungszuordnung](media/opencensus-python/application-map.png)
-
-3. Wählen Sie **Leistung untersuchen** aus, um die Leistung detailliert zu analysieren und die Hauptursache von Leistungseinbußen zu ermitteln.
-
-   ![Screenshot der Leistungsdetails](./media/opencensus-python/0008-performance.png)
-
-4. Zum Öffnen einer umfassenden Anzeige von Transaktionsdetails wählen Sie **Beispiele** und dann eines der im rechten Bereich angezeigten Beispiele aus. 
-
-   Von unserer Beispiel-App wird zwar nur ein einzelnes Ereignis angezeigt, eine komplexere Anwendung ermöglicht Ihnen jedoch, die End-to-End-Transaktion bis zur Ebene der Aufrufliste eines einzelnen Ereignisses zu untersuchen.
-
-   ![Screenshot der Schnittstelle der End-to-End-Transaktion](./media/opencensus-python/0009-end-to-end-transaction.png)
 
 ## <a name="view-your-data-with-queries"></a>Anzeigen Ihrer Daten mit Abfragen
 

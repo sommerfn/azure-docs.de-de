@@ -1,5 +1,5 @@
 ---
-title: Azure-Instanzmetadatendienst | Microsoft-Dokumentation
+title: Azure-Instanzmetadatendienst
 description: RESTful-Schnittstelle zum Abrufen von Informationen über Compute-, Netzwerk- und anstehende Wartungsereignisse einer Windows-VM.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4e411d986ffe88c0cf498262688afd2ecc71e51c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240387"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038526"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -343,7 +343,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 Data | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
-attested | Siehe [Bestätigte Daten](#attested-data) | 01.10.2018
+attested | Siehe [Bestätigte Daten](#attested-data) | 2018-10-01
 identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
 instance | Siehe [Instanz-API](#instance-api) | 2017-04-02
 scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Windows-VMs](scheduled-events.md) | 2017-08-01
@@ -356,7 +356,7 @@ scheduledevents | Siehe [Azure-Metadatendienst: Geplante Ereignisse (Vorschau) f
 
 Data | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
-azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 01.10.2018
+azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 2018-10-01
 customData | Siehe [Benutzerdefinierte Daten](#custom-data) | 2019-02-01
 location | Azure-Region, in der die VM ausgeführt wird | 2017-04-02
 name | Name des virtuellen Computers | 2017-04-02
@@ -366,7 +366,7 @@ placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual
 Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
 platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-Anbieter | Anbieter des virtuellen Computers | 01.10.2018
+Anbieter | Anbieter des virtuellen Computers | 2018-10-01
 publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 publisher | Herausgeber des VM-Images | 2017-04-02
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01

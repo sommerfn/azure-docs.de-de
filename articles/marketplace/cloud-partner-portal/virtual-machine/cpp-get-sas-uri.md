@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pabutler
-ms.openlocfilehash: dda074d81857247a922eb7a179b33aa2593e5bf8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb6f1772c7c6f9abd268a8cb58550b253f095dbf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824475"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132446"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
 
-Während des Veröffentlichungsprozesses müssen Sie einen Uniform Resource Identifier (URI) für jede virtuelle Festplatte (Virtual Hard Disk, VHD) bereitstellen, die Ihren SKUs zugeordnet ist. Microsoft benötigt während des Zertifizierungsprozesses Zugriff auf diese VHDs. In diesem Artikel wird erläutert, wie Sie einen Shared Access Signature-URI (SAS) für jede virtuelle Festplatte generieren. Sie müssen diesen URI im Cloud-Partnerportal auf der Registerkarte **SKUs** eingeben. 
+Während des Veröffentlichungsprozesses müssen Sie einen Uniform Resource Identifier (URI) für jede virtuelle Festplatte (Virtual Hard Disk, VHD) bereitstellen, die Ihren SKUs zugeordnet ist. Microsoft benötigt während des Zertifizierungsprozesses Zugriff auf diese VHDs. In diesem Artikel wird erläutert, wie Sie einen Shared Access Signature-URI (SAS) für jede virtuelle Festplatte generieren. Sie müssen diesen URI im Cloud-Partnerportal auf der Registerkarte **SKUs** eingeben.
 
 Beachten Sie beim Generieren der SAS-URIs für Ihre virtuellen Festplatten folgende Anforderungen:
 
@@ -38,35 +38,35 @@ Der SAS-URI kann auf zwei gängige Arten mithilfe der folgenden Tools generiert 
 
 Führen Sie zum Generieren eines SAS-URI mit der Azure CLI die folgenden Schritte aus.
 
-1. Laden Sie die [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) herunter, und installieren Sie sie.  Es stehen Versionen für Windows, macOS und verschiedene Linux-Distributionen zur Verfügung. 
+1. Laden Sie die [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) herunter, und installieren Sie sie.  Es stehen Versionen für Windows, macOS und verschiedene Linux-Distributionen zur Verfügung.
 2. Erstellen Sie eine PowerShell-Datei (Dateierweiterung: `.ps1`), kopieren Sie den folgenden Code in die Datei, und speichern Sie sie lokal.
 
    ``` powershell
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
-    
+
 3. Bearbeiten Sie die Datei, und geben Sie folgende Parameterwerte an.  Datumsangaben sollten im UTC-Datums- und -Uhrzeitformat angegeben werden, z.B. `2016-10-25T00:00:00Z`.
    - `<account-name>`: Der Name Ihres Azure Storage-Kontos.
    - `<account-key>`: Der Schlüssel Ihres Azure Storage-Kontos.
    - `<vhd-name>`: Der Name Ihrer virtuellen Festplatte.
-   - `<start-date>`: Das Startdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte. Geben Sie ein Datum an, das einen Tag vor dem aktuellen Datum liegt. 
-   - `<expiry-date>`: Das Ablaufdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte.  Geben Sie ein Datum an, das mindestens drei Wochen nach dem aktuellen Datum liegt. 
- 
+   - `<start-date>`: Das Startdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte. Geben Sie ein Datum an, das einen Tag vor dem aktuellen Datum liegt.
+   - `<expiry-date>`: Das Ablaufdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte.  Geben Sie ein Datum an, das mindestens drei Wochen nach dem aktuellen Datum liegt.
+
    Das folgende Beispiel zeigt richtige Parameterwerte (zum Zeitpunkt der Erstellung dieses Dokuments).
 
    ``` powershell
        az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
    ```
- 
+
 4. Speichern Sie die Änderungen an diesem PowerShell-Skript.
 5. Führen Sie das Skript unter Verwendung von Administratorberechtigungen aus, um eine *SAS-Verbindungszeichenfolge* für den Zugriff auf Containerebene zu generieren.  Sie können zwei grundlegende Vorgehensweisen anwenden:
    - Führen Sie das Skript an der Konsole aus.  Unter Windows klicken Sie mit der rechten Maustaste auf das Skript und wählen **Als Administrator ausführen** aus.
-   - Führen Sie das Skript unter Verwendung von Administratorberechtigungen über einen PowerShell-Skript-Editor aus, z.B. die [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise). 
-     Das folgende Beispiel veranschaulicht das Generieren einer SAS-Verbindungszeichenfolge in diesem Editor. 
+   - Führen Sie das Skript unter Verwendung von Administratorberechtigungen über einen PowerShell-Skript-Editor aus, z.B. die [Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise).
+     Das folgende Beispiel veranschaulicht das Generieren einer SAS-Verbindungszeichenfolge in diesem Editor.
 
      ![Generieren des SAS-URI in der PowerShell ISE](./media/publishvm_032.png)
 
-6. Kopieren Sie die resultierende SAS-Verbindungszeichenfolge, und speichern Sie sie in einer Textdatei in einem sicheren Speicherort.  Bearbeiten Sie diese Zeichenfolge, und fügen Sie die Informationen zum Standort der zugehörigen virtuellen Festplatte hinzu, um den endgültigen SAS-URI zu erstellen. 
+6. Kopieren Sie die resultierende SAS-Verbindungszeichenfolge, und speichern Sie sie in einer Textdatei in einem sicheren Speicherort.  Bearbeiten Sie diese Zeichenfolge, und fügen Sie die Informationen zum Standort der zugehörigen virtuellen Festplatte hinzu, um den endgültigen SAS-URI zu erstellen.
 7. Navigieren Sie im Azure-Portal zu dem Blobspeicher, der die mit diesem neu generierten URI verknüpfte virtuelle Festplatte enthält.
 8. Kopieren Sie den URL-Wert des **Blobdienst-Endpunkts**, wie unten gezeigt.
 
@@ -91,19 +91,19 @@ Führen Sie die folgenden Schritte aus, um einen SAS-URI mit dem Microsoft Azure
 2. Öffnen Sie den Explorer, und klicken Sie in der linken Menüleiste auf das Symbol **Konto hinzufügen**.  Das Dialogfeld **Verbindung mit Azure-Speicher herstellen** wird angezeigt.
 3. Wählen Sie **Azure-Konto hinzufügen**, und klicken Sie auf **Anmelden**.  Führen Sie die erforderlichen Schritte aus, um sich bei Ihrem Azure-Konto anzumelden.
 4. Navigieren Sie im linken **Explorer**-Bereich zu Ihren **Speicherkonten**, und erweitern Sie diesen Knoten.
-5. Klicken Sie mit der rechten Maustaste auf Ihre virtuelle Festplatte, und wählen Sie aus dem Kontextmenü die Option **Shared Access Signature abrufen** aus. 
+5. Klicken Sie mit der rechten Maustaste auf Ihre virtuelle Festplatte, und wählen Sie aus dem Kontextmenü die Option **Shared Access Signature abrufen** aus.
 
     ![Menüelement zum Abrufen der SAS im Azure-Explorer](./media/publishvm_034.png)
 
 6. Das **Shared Access Signature**-Dialogfeld wird angezeigt. Geben Sie Werte für die folgenden Felder ein:
    - **Startzeit**: Das Startdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte. Geben Sie ein Datum an, das einen Tag vor dem aktuellen Datum liegt.
    - **Ablaufzeit**: Das Ablaufdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte.  Geben Sie ein Datum an, das mindestens drei Wochen nach dem aktuellen Datum liegt.
-   - **Berechtigungen**: Wählen Sie die Berechtigungen `Read` und `List` aus. 
+   - **Berechtigungen**: Wählen Sie die Berechtigungen `Read` und `List` aus.
 
      ![SAS-Dialogfeld im Azure-Explorer](./media/publishvm_035.png)
 
-7. Klicken Sie auf **Erstellen**, um den zugehörigen SAS-URI für diese virtuelle Festplatte zu erstellen.  Das Dialogfeld zeigt Details zu diesem Vorgang an. 
-8. Kopieren Sie den **URL**-Wert, und speichern Sie ihn in einer Textdatei in einem sicheren Speicherort. 
+7. Klicken Sie auf **Erstellen**, um den zugehörigen SAS-URI für diese virtuelle Festplatte zu erstellen.  Das Dialogfeld zeigt Details zu diesem Vorgang an.
+8. Kopieren Sie den **URL**-Wert, und speichern Sie ihn in einer Textdatei in einem sicheren Speicherort.
 
     ![Erstellen des SAS-URI im Azure-Explorer](./media/publishvm_036.png)
 

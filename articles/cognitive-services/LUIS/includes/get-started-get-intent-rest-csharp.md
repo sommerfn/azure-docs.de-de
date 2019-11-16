@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: 81c95dc58e8cfaddf981e3911e88310cea508115
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9ab477ffd7001f0f492f63355baaee26827db845
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499661"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125496"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -102,7 +102,7 @@ Verwenden Sie C#, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim-v
 
 1. Ersetzen Sie die folgenden Werte:
 
-    * `YOUR-KEY` mit ihrem Startschlüssel
+    * `YOUR-KEY` durch Ihren Startschlüssel
     * `YOUR-ENDPOINT` mit ihrem Endpunkt, z. B. `westus2.api.cognitive.microsoft.com`
 
 1. Erstellen Sie die Konsolenanwendung. 
@@ -173,9 +173,9 @@ Verwenden Sie C#, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim-v
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie mit dieser Schnellstartanleitung fertig sind, löschen Sie die Datei aus dem Dateisystem. 
+Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Äußerungen und Trainieren](../luis-get-started-cs-add-utterance.md)
+> [Hinzufügen von Äußerungen und Trainieren](../get-started-get-model-rest-apis.md)

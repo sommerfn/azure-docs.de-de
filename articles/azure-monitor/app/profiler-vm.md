@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
-ms.date: 08/06/2018
+ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 44f45c53a12c7ac73c3de3f2734f024cb9bc6dd5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899999"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031011"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilerstellung von Web-Apps, die auf einem virtuellen Azure-Computer oder in einer VM-Skalierungsgruppe mit Application Insights Profiler ausgeführt werden
 
@@ -89,15 +89,15 @@ Derzeit besteht noch keine Möglichkeit, die Application Insights Profiler-Senke
 
     ![Überprüfen, ob WAD-Erweiterung installiert ist][wadextension]
 
-1. Suchen Sie die VM-Diagnoseerweiterung für Ihren virtuellen Computer. Erweitern Sie Ihre Ressourcengruppe, „Microsoft.Compute“, „virtualMachines“, den Namen des virtuellen Computers und „Erweiterungen“.  
+2. Suchen Sie die VM-Diagnoseerweiterung für Ihren virtuellen Computer. Navigieren Sie zu [https://resources.azure.com](https://resources.azure.com). Erweitern Sie Ihre Ressourcengruppe, „Microsoft.Compute“, „virtualMachines“, den Namen des virtuellen Computers und „Erweiterungen“.  
 
     ![Navigieren zur WAD-Konfiguration im Azure-Ressourcen-Explorer][azureresourceexplorer]
 
-1. Fügen Sie dem Knoten „SinksConfig“ unter „WadCfg“ die Application Insights Profiler-Senke hinzu. Wenn der Abschnitt „SinksConfig“ noch nicht vorhanden ist, müssen Sie ihn hinzufügen. Achten Sie darauf, in den Einstellungen den richtigen Application Insights-iKey anzugeben. Sie müssen in der oberen rechten Ecke in den Explorer-Modus zum Lesen und Schreiben wechseln, klicken Sie dann auf die blaue Schaltfläche „Bearbeiten“.
+3. Fügen Sie dem Knoten „SinksConfig“ unter „WadCfg“ die Application Insights Profiler-Senke hinzu. Wenn der Abschnitt „SinksConfig“ noch nicht vorhanden ist, müssen Sie ihn hinzufügen. Achten Sie darauf, in den Einstellungen den richtigen Application Insights-iKey anzugeben. Sie müssen in der oberen rechten Ecke in den Explorer-Modus zum Lesen und Schreiben wechseln, klicken Sie dann auf die blaue Schaltfläche „Bearbeiten“.
 
     ![Hinzufügen der Application Insights Profiler-Senke][resourceexplorersinksconfig]
 
-1. Klicken Sie auf „Put“, nachdem Sie die Bearbeitung der Konfiguration abgeschlossen haben. Wenn der Put-Vorgang erfolgreich durchgeführt wurde, wird in der Mitte des Bildschirms ein grünes Häkchen angezeigt.
+4. Klicken Sie auf „Put“, nachdem Sie die Bearbeitung der Konfiguration abgeschlossen haben. Wenn der Put-Vorgang erfolgreich durchgeführt wurde, wird in der Mitte des Bildschirms ein grünes Häkchen angezeigt.
 
     ![Senden einer Put-Anforderung zum Übernehmen von Änderungen][resourceexplorerput]
 

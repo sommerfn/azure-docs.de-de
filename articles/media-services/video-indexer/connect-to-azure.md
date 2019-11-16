@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines Video Indexer-Kontos im Azure-Portal
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In diesem Artikel wird veranschaulicht, wie Sie im Azure-Portal ein Video Indexer-Konto erstellen.
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: juliako
-ms.openlocfilehash: 0f67b2e37e264febf11f3fa55b4469d392c59712
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: dc844392d64178cb9000db15af39f923521efc19
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815663"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838377"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 

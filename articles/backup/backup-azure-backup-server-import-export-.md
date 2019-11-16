@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: c542abe0e778b9204a23ccea0f3617656ba101e1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 0763cbd4345dca39f37b77a0f3d991a7d77e30c4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210433"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074307"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server
+
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.
 
 Der Offlineseeding-Prozess von Azure Backup ist eng in den [Import/Export-Dienst von Azure](../storage/common/storage-import-export-service.md) integriert, der Ihnen die Übertragung von Daten mithilfe von Datenträgern in Azure ermöglicht. Wenn Sie bei der Erstsicherung mehrere Terabyte an Daten über ein Netzwerk mit hoher Latenz und niedriger Bandbreite übertragen müssen, können Sie die erste Sicherungskopie mithilfe des Offlineseeding-Workflows auf einer oder mehreren Festplatten an ein Azure-Datencenter senden. Dieser Artikel bietet eine Übersicht sowie Details zu den für diesen Workflow erforderlichen Schritten für System Center DPM und Azure Backup Server.
@@ -25,9 +26,11 @@ Der Offlineseeding-Prozess von Azure Backup ist eng in den [Import/Export-Dienst
 >
 
 ## <a name="overview"></a>Übersicht
+
 Mit der Offlineseeding-Funktion von Azure Backup und Azure Import/Export können die Daten einfach mithilfe von Datenträgern offline in Azure hochgeladen werden. Der Vorgang der Offlinesicherung umfasst die folgenden Schritte:
 
 > [!div class="checklist"]
+>
 > * Die Sicherungsdaten werden nicht über das Netzwerk gesendet, sondern an einen *Stagingspeicherort* gespeichert.
 > * Die Daten am *Stagingspeicherort* werden dann mithilfe des Hilfsprogramms *AzureOfflineBackupDiskPrep* auf SATA-Datenträger geschrieben.
 > * Ein Azure-Importauftrag wird automatisch vom Hilfsprogramm erstellt.
@@ -35,15 +38,19 @@ Mit der Offlineseeding-Funktion von Azure Backup und Azure Import/Export können
 > * Nachdem die Sicherungsdaten in Azure hochgeladen wurden, kopiert Azure Backup die Sicherungsdaten in den Sicherungstresor, und die inkrementellen Sicherungen werden geplant.
 
 ## <a name="supported-configurations"></a>Unterstützte Konfigurationen
+
 Die Offlinesicherung wird für alle Bereitstellungsmodelle von Azure Backup unterstützt, die lokale Sicherungsdaten extern in die Microsoft Cloud auslagern. Dies umfasst:
 
 > [!div class="checklist"]
+>
 > * Sichern von Dateien und Ordnern mit dem Microsoft Azure Recovery Services-Agent (MARS) oder dem Azure Backup-Agent
 > * Sichern aller Workloads und Dateien mit dem System Center Data Protection Manager (DPM SC)
-> * Sichern aller Workloads und Dateien mit dem Microsoft Azure Backup Server <br/>
+> * Sichern aller Workloads und Dateien mit dem Microsoft Azure Backup Server
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie den Offlinesicherungs-Workflow initiieren.
+
 * Es wurde ein [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md) erstellt. Weitere Informationen zur Erstellung finden Sie in den Schritten in [diesem Artikel](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault).
 * Der Azure Backup-Agent oder der Azure Backup Server oder SC DPM wurden auf dem Windows-Server oder dem Windows-Client installiert, und der Computer ist beim Recovery Services-Tresor registriert. Vergewissern Sie sich, dass [die neueste Version von Azure Backup](https://go.microsoft.com/fwlink/?linkid=229525) verwendet wird.
 * [Laden Sie die Datei mit den Azure-Veröffentlichungseinstellungen](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) auf den Computer herunter, von dem aus Sie Ihre Daten sichern möchten. Das Abonnement, aus dem Sie die Datei mit den Veröffentlichungseinstellungen herunterladen, kann ein anderes als das mit dem Recovery Services-Tresor sein. Wenn sich Ihr Abonnement in Sovereign Clouds von Azure befindet, verwenden Sie die folgenden Links zum Herunterladen der Datei mit den Veröffentlichungseinstellungen für Azure.
@@ -62,9 +69,11 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 * Die SATA-Laufwerke müssen mit einem Computer verbunden sein (als *Kopiercomputer* bezeichnet), auf dem die Sicherungsdaten vom *Stagingspeicherort* auf die SATA Laufwerke kopiert werden. Stellen Sie sicher, dass BitLocker auf dem *Kopiercomputer* aktiviert ist.
 
 ## <a name="workflow"></a>Workflow
+
 In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung durchführen, sodass Ihre Daten an ein Azure-Datencenter gesendet und in Azure Storage hochgeladen werden können. Falls Sie Fragen zum Import-Dienst oder zu einem anderen Aspekt des Prozesses haben, finden Sie in der oben erwähnten Dokumentation eine [Übersicht über den Import-Dienst](../storage/common/storage-import-export-service.md) .
 
 ### <a name="initiate-offline-backup"></a>Initiieren der Offlinesicherung
+
 1. Beim Planen einer Sicherung wird der folgende Bildschirm angezeigt (in Windows Server, auf dem Windows-Client oder in System Center Data Protection Manager).
 
     ![Importbildschirm](./media/backup-azure-backup-import-export/offlineBackupscreenInputs.png)
@@ -96,6 +105,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
     ![Sicherungsstatus](./media/backup-azure-backup-import-export/opbackupnow.png)
 
 ### <a name="prepare-sata-drives-and-ship-to-azure"></a>Vorbereiten der SATA-Laufwerke und Senden an Azure
+
 Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Laufwerke verwendet, die an das nächste Azure-Rechenzentrum gesendet werden. Dieses Hilfsprogramm steht im Installationsverzeichnis des Recovery Services-Agents unter folgendem Pfad zur Verfügung:
 
 *\\Microsoft Azure Recovery Services-Agent\\Hilfsprogramme\\*
@@ -110,7 +120,6 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
      > [!IMPORTANT]
      > Wenn der Quellcomputer ein virtueller Computer ist, muss ein anderer physischer Server- oder Clientcomputer als Kopiercomputer verwendet werden.
-
 
 2. Öffnen Sie auf dem Kopiercomputer eine Eingabeaufforderung mit erhöhten Rechten und dem Verzeichnis des Hilfsprogramms *AzureOfflineBackupDiskPrep* als aktuelles Verzeichnis. Führen Sie dann den folgenden Befehl aus:
 
@@ -149,7 +158,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
    > [!IMPORTANT]
    > Zwei Azure-Importaufträge dürfen nicht dieselbe Nachverfolgungsnummer aufweisen. Stellen Sie sicher, dass die vom Hilfsprogramm unter einem gemeinsamen Azure-Importauftrag vorbereiteten Laufwerke zusammen in einem einzelnen Paket versendet werden und dass das Paket eine einzelne eindeutige Nachverfolgungsnummer besitzt. Fassen Sie Laufwerke, die im Rahmen **unterschiedlicher** Azure Importaufträge vorbereitet wurden, nicht in einem Paket zusammen.
 
-5. Wenn Sie die Verfolgungsinformationen kennen, wechseln Sie zum Quellcomputer, der auf den Abschluss des Importauftrags wartet, und führen Sie den folgenden Befehl in einem Eingabeaufforderungsfenster mit erhöhten Rechten und dem Verzeichnis des Hilfsprogramms *AzureOfflineBackupDiskPrep* als aktuelles Verzeichnis aus:
+7. Wenn Sie die Verfolgungsinformationen kennen, wechseln Sie zum Quellcomputer, der auf den Abschluss des Importauftrags wartet, und führen Sie den folgenden Befehl in einem Eingabeaufforderungsfenster mit erhöhten Rechten und dem Verzeichnis des Hilfsprogramms *AzureOfflineBackupDiskPrep* als aktuelles Verzeichnis aus:
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:`
 
@@ -167,11 +176,11 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
     ![Versandinformationen eingeben](./media/backup-azure-backup-import-export/shippinginputs.png)<br/>
 
-6. Nachdem alle Eingaben bereitgestellt wurden, überprüfen Sie die Details sorgfältig, und committen Sie die bereitgestellten Versandinformationen durch Eingabe von *yes*.
+8. Nachdem alle Eingaben bereitgestellt wurden, überprüfen Sie die Details sorgfältig, und committen Sie die bereitgestellten Versandinformationen durch Eingabe von *yes*.
 
     ![Versandinformationen überprüfen](./media/backup-azure-backup-import-export/reviewshippinginformation.png)<br/>
 
-7. Wenn die Versandinformationen erfolgreich aktualisiert wurden, stellt das Hilfsprogramm einen lokalen Speicherort bereit, an dem die von Ihnen eingegebenen Versandinformationen wie unten dargestellt gespeichert werden.
+9. Wenn die Versandinformationen erfolgreich aktualisiert wurden, stellt das Hilfsprogramm einen lokalen Speicherort bereit, an dem die von Ihnen eingegebenen Versandinformationen wie unten dargestellt gespeichert werden.
 
     ![Versandinformationen speichern](./media/backup-azure-backup-import-export/storingshippinginformation.png)<br/>
 
@@ -181,25 +190,29 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 Nachdem Sie die oben beschriebenen Schritte abgeschlossen haben, kann das Azure-Rechenzentrum die Laufwerke annehmen und weiter verarbeiten, um die zu sichernden Daten von den Laufwerken in das klassische Azure Storage-Konto zu übertragen, das Sie erstellt haben.
 
 ### <a name="time-to-process-the-drives"></a>Verarbeitungsdauer der Laufwerke
+
 Die Verarbeitungsdauer eines Azure-Importauftrags kann aufgrund von verschiedenen Faktoren variieren, z.B. Versanddauer, Auftragstyp, Typ und Größe der zu kopierenden Daten und Größe der geschickten Festplatten. Der Azure Import/Export-Dienst verfügt nicht über eine SLA. Nach Erhalt der Datenträger versucht der Dienst jedoch, das Kopieren der Sicherungsdaten in Ihr Azure Storage-Konto innerhalb von sieben bis zehn Tagen fertigzustellen. Im nächsten Abschnitt wird erläutert, wie Sie den Status des Azure-Importauftrags überwachen können.
 
 ### <a name="monitoring-azure-import-job-status"></a>Überwachen des Status von Azure-Importaufträgen
+
 Während Ihre Laufwerke gesendet werden oder sich im Azure-Rechenzentrum befinden, um in das Speicherkonto kopiert zu werden, zeigt der Azure Backup-Agent oder SC DPM oder die Azure Backup Server-Konsole auf dem Quellcomputer den folgenden Auftragsstatus für geplante Sicherungen an.
 
   `Waiting for Azure Import Job to complete. Please check on Azure Management portal for more information on job status`
 
 Führen Sie die Schritte unten aus, um den Status des Importauftrags zu überprüfen.
+
 1. Öffnen Sie auf dem Quellcomputer eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus:
 
      `AzureOfflineBackupDiskPrep.exe u:`
 
-2.  Die Ausgabe zeigt den aktuellen Status des Importauftrags an, wie unten dargestellt:
+2. Die Ausgabe zeigt den aktuellen Status des Importauftrags an, wie unten dargestellt:
 
     ![Status des Importauftrags überprüfen](./media/backup-azure-backup-import-export/importjobstatusreporting.png)<br/>
 
 Weitere Informationen zu den verschiedenen Status von Azure-Importaufträgen finden Sie in [diesem Artikel](../storage/common/storage-import-export-view-drive-status.md).
 
 ### <a name="complete-the-workflow"></a>Ausführen des Workflows
+
 Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Speicherkonto verfügbar. Zum Zeitpunkt der nächsten geplanten Sicherung kopiert Azure Backup den Inhalt der Daten aus dem Speicherkonto in den Recovery Services-Tresor, wie im Folgenden dargestellt:
 
    ![Daten in den Recovery Services-Tresor kopieren](./media/backup-azure-backup-import-export/copyingfromstorageaccounttoazurebackup.png)<br/>
@@ -207,5 +220,6 @@ Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Spei
 Zum nächsten geplanten Sicherungszeitpunkt führt Azure Backup eine inkrementelle Sicherung für die erste Sicherungskopie durch.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/common/storage-import-export-service.md)weitere Informationen.
 * Bei Fragen zum Workflow finden Sie im Abschnitt zur Offlinesicherung in den [häufig gestellten Fragen](backup-azure-backup-faq.md) zu Azure Backup weitere Informationen.

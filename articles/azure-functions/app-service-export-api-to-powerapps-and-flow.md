@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087695"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082846"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
 
@@ -30,7 +30,7 @@ Analog dazu können Entwickler, die eine umfassendere Bereitstellung ihrer APIs 
 Vor dem Exportieren einer API müssen Sie die API mithilfe einer OpenAPI-Definition (ehemals als [Swagger](https://swagger.io/)-Datei bezeichnet) beschreiben. Diese Definition enthält Informationen zu den in einer API verfügbaren Vorgängen sowie zur Strukturierung der Anforderungs- und Antwortdaten für die API. PowerApps und Microsoft Flow können benutzerdefinierte Connectors für jede beliebige OpenAPI 2.0-Definition erstellen. In Azure Functions und Azure App Service ist die Unterstützung für das Erstellen, Hosten und Verwalten von OpenAPI-Definitionen bereits integriert. Weitere Informationen finden Sie unter [Hosten einer RESTful-API mit CORS in Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
-> Sie können auch benutzerdefinierte Connectors in der Benutzeroberfläche von PowerApps und Microsoft Flow erstellen, ohne eine OpenAPI-Definition zu verwenden. Weitere Informationen finden Sie unter [Registrieren und Verwenden von benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) und [Registrieren und Verwenden von benutzerdefinierten Connectors (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/).
+> Sie können auch benutzerdefinierte Connectors in der Benutzeroberfläche von PowerApps und Microsoft Flow erstellen, ohne eine OpenAPI-Definition zu verwenden. Weitere Informationen finden Sie unter [Registrieren und Verwenden von benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) und [Registrieren und Verwenden von benutzerdefinierten Connectors (Microsoft Flow)](/power-automate/developer/register-custom-api).
 
 Um die API-Definition zu exportieren, gehen Sie folgendermaßen vor:
 
@@ -127,7 +127,7 @@ Um die API-Definition in PowerApps und Microsoft Flow zu importieren, gehen Sie 
 
 7. Klicken Sie am oberen Rand der Seite auf **Connector erstellen**.
 
-Nun können Sie eine Verbindung mit dem benutzerdefinierten Connector in PowerApps und Microsoft Flow herstellen. Weitere Informationen zum Erstellen von Connectors in den Portalen PowerApps und Microsoft Flow finden Sie unter [Registrieren des benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) und [Registrieren des benutzerdefinierten Connectors (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/#register-your-custom-connector).
+Nun können Sie eine Verbindung mit dem benutzerdefinierten Connector in PowerApps und Microsoft Flow herstellen. Weitere Informationen zum Erstellen von Connectors in den Portalen PowerApps und Microsoft Flow finden Sie unter [Registrieren des benutzerdefinierten Connectors (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) und [Registrieren des benutzerdefinierten Connectors (Microsoft Flow)](/power-automate/get-started-flow-dev#create-a-custom-connector).
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>Angeben des Authentifizierungstyps
@@ -158,7 +158,7 @@ Für die Verwendung von Azure AD benötigen Sie zwei Azure AD-Anwendungsregistri
 
 - Um die Registrierung für den Connector zu konfigurieren, befolgen Sie die Schritte unter [Hinzufügen einer Anwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Für die Registrierung muss ein delegierter Zugriff auf Ihre API und die Antwort-URL `https://msmanaged-na.consent.azure-apim.net/redirect` vorhanden sein. 
 
-Weitere Informationen finden Sie in den Azure AD-Registrierungsbeispielen für [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) und [Microsoft Flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/). In diesen Beispielen wird Azure Resource Manager als API verwendet. Ersetzen Sie sie bei der Durchführung der Schritte durch Ihre API.
+Weitere Informationen finden Sie in den Azure AD-Registrierungsbeispielen für [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) und [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). In diesen Beispielen wird Azure Resource Manager als API verwendet. Ersetzen Sie sie bei der Durchführung der Schritte durch Ihre API.
 
 Die folgenden Konfigurationswerte sind erforderlich:
 - **Client-ID** – Die Client-ID der Azure AD-Registrierung Ihres Connectors

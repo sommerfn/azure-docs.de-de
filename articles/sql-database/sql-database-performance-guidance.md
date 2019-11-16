@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 6e42911d05f387ea47b56b913e9a1868100c1b3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821359"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009099"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuelle Optimierung der Abfrageleistung in Azure SQL-Datenbank
 
@@ -253,7 +253,7 @@ Wenn Sie eine Architektur mit horizontaler Hochskalierung in Azure SQL-Datenbank
 
 Für Anwendungen, bei denen mit sehr häufigen Ad-hoc-Abfragen mit hohem Volumen auf Daten zugegriffen wird, wird ein Großteil der Reaktionszeit für die Netzwerkkommunikation zwischen der Anwendungsebene und der Azure SQL-Datenbankebene verbraucht. Auch wenn sowohl die Anwendung als auch Azure SQL-Datenbank in demselben Rechenzentrum angeordnet sind, kann die Netzwerklatenz zwischen den beiden Komponenten durch eine hohe Anzahl von Datenzugriffsvorgängen verstärkt werden. Um die Netzwerkroundtrips für die Datenzugriffsvorgänge zu reduzieren, können Sie die Option zum Zusammenfassen von Ad-hoc-Abfragen in Batches oder zum Kompilieren als gespeicherte Prozeduren verwenden. Wenn Sie Ad-hoc-Abfragen zu einem Batch zusammenfassen, können Sie mehrere Abfragen in einem großen Batch innerhalb eines Vorgangs an Azure SQL-Datenbank senden. Wenn Sie Ad-hoc-Abfragen in einer gespeicherten Prozedur kompilieren, können Sie das gleiche Ergebnis wie beim Zusammenfassen zu Batches erzielen. Ein weiterer Vorteil der Verwendung einer gespeicherten Prozedur ist die Erhöhung der Wahrscheinlichkeit, dass die Abfragepläne in Azure SQL-Datenbank zwischengespeichert werden, sodass Sie die gespeicherte Prozedur erneut verwenden können.
 
-Einige Anwendungen sind mit vielen Schreibvorgängen verbunden. In einigen Fällen ist es auch möglich, die E/A-Gesamtlast einer Datenbank zu reduzieren, indem geprüft wird, wie Schreibvorgänge zu Batches zusammengefasst werden können. Dies ist häufig so einfach wie die Verwendung von expliziten Transaktionen anstelle von Transaktionen mit automatischem Commit innerhalb von gespeicherten Prozeduren und Ad-hoc-Batches. Eine Auswertung unterschiedlicher Verfahren, die verwendet werden können, finden Sie unter [Stapelverarbeitungsverfahren für SQL-Datenbankanwendungen in Azure](https://msdn.microsoft.com/library/windowsazure/dn132615.aspx). Experimentieren Sie mit Ihrer eigenen Workload, um das richtige Modell für die Erstellung von Batches zu ermitteln. Achten Sie hierbei darauf, dass ein Modell ggf. etwas andere Konsistenzgarantien in Bezug auf Transaktionen aufweisen kann. Für die Ermittlung der richtigen Workload, bei der die Ressourcenverwendung reduziert wird, ist die richtige Kombination aus Konsistenz und Abstrichen bei der Leistung erforderlich.
+Einige Anwendungen sind mit vielen Schreibvorgängen verbunden. In einigen Fällen ist es auch möglich, die E/A-Gesamtlast einer Datenbank zu reduzieren, indem geprüft wird, wie Schreibvorgänge zu Batches zusammengefasst werden können. Dies ist häufig so einfach wie die Verwendung von expliziten Transaktionen anstelle von Transaktionen mit automatischem Commit innerhalb von gespeicherten Prozeduren und Ad-hoc-Batches. Eine Auswertung unterschiedlicher Verfahren, die verwendet werden können, finden Sie unter [Stapelverarbeitungsverfahren für SQL-Datenbankanwendungen in Azure](sql-database-use-batching-to-improve-performance.md). Experimentieren Sie mit Ihrer eigenen Workload, um das richtige Modell für die Erstellung von Batches zu ermitteln. Achten Sie hierbei darauf, dass ein Modell ggf. etwas andere Konsistenzgarantien in Bezug auf Transaktionen aufweisen kann. Für die Ermittlung der richtigen Workload, bei der die Ressourcenverwendung reduziert wird, ist die richtige Kombination aus Konsistenz und Abstrichen bei der Leistung erforderlich.
 
 ### <a name="application-tier-caching"></a>Zwischenspeichern auf Anwendungsebene
 

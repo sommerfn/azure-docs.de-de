@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 1ea7ec0444ba80d3494afba77ad9d7fdabd5f982
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086420"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074401"
 ---
 # <a name="using-the-azure-function-return-value"></a>Verwenden des Rückgabewerts einer Azure-Funktion
 
@@ -29,15 +29,7 @@ Wenn mehrere Ausgabebindungen vorhanden sind, verwenden Sie den Rückgabewert f�
 
 In C# und C#-Skripts können Daten alternativ mithilfe von `out`-Parametern und [Collector-Objekten](functions-reference-csharp.md#writing-multiple-output-values) an eine Ausgabebindung gesendet werden.
 
-In diesen sprachspezifischen Beispielen wird die Verwendung des Rückgabewerts veranschaulicht:
-
-* [C#](#c-example)
-* [C#-Skript (.csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-## <a name="c-example"></a>C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Hier sehen Sie C#-Code, der den Rückgabewert für eine Ausgabebindung gefolgt von einem asynchronen Beispiel verwendet:
 
@@ -63,7 +55,7 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -96,7 +88,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F#-Beispiel
+# <a name="ftabfsharp"></a>[F#](#tab/fsharp)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -118,7 +110,7 @@ let Run(input: WorkItem, log: ILogger) =
     json
 ```
 
-## <a name="javascript-example"></a>JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -141,7 +133,7 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Hier sehen Sie die Bindungsdaten in der Datei *function.json*:
 
@@ -163,6 +155,8 @@ def main(input: azure.functions.InputStream) -> str:
         'content': input.read().decode('utf-8')
     })
 ```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

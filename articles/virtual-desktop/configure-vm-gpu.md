@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679586"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953949"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
 
@@ -34,9 +34,6 @@ Windows Virtual Desktop unterstützt das durch GPU beschleunigte Rendern und Cod
 * Windows Server 2016 oder höher
 
 Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App-Gruppe „Desktop Application Group“ verwenden, die automatisch erstellt wird, wenn Sie einen neuen Hostpool erstellen. Anweisungen dazu finden Sie unter: [Tutorial: Verwalten von App-Gruppen für Windows Virtual Desktop](/azure/virtual-desktop/manage-app-groups).
-
->[!NOTE]
->Windows Virtual Desktop unterstützt für GPU-fähige Hostpools nur den App-Gruppentyp „Desktop“. App-Gruppen des Typs „RemoteApp“ werden für GPU-fähige Hostpools nicht unterstützt.
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Installieren unterstützter Grafiktreiber auf Ihrer VM
 

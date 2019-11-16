@@ -7,19 +7,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028975"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091382"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
 
 Mit [GitHub Actions](https://github.com/features/actions) können Sie einen Workflow definieren, um Ihren Funktionscode für eine Funktions-App in Azure automatisch zu erstellen und bereitzustellen. 
-
-> [!IMPORTANT]  
-> GitHub Actions liegt zurzeit in einer Betaversion vor. Sie müssen sich zunächst mit Ihrem GitHub-Konto [registrieren, um die Vorschau nutzen zu können](https://github.com/features/actions).
 
 In GitHub Actions ist ein [Workflow](https://help.github.com/articles/about-github-actions#workflow) ein automatisierter Prozess, den Sie in Ihrem GitHub-Repository definieren. Dieser Prozess informiert GitHub, wie Ihr Funktions-App-Projekt auf GitHub erstellt und bereitgestellt werden soll. 
 
@@ -33,6 +30,9 @@ Bei einem Azure Functions-Workflow umfasst die Datei drei Abschnitte:
 | **Build** | <ol><li>Einrichten der Umgebung.</li><li>Erstellen Sie die Funktions-App.</li></ol> |
 | **Bereitstellen** | <ol><li>Bereitstellen der Funktions-App.</li></ol>|
 
+> [!NOTE]
+> Sie müssen keinen Dienstprinzipal erstellen, wenn Sie das Veröffentlichungsprofil für die Authentifizierung verwenden.
+
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
 Sie können mit dem Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in der [Azure CLI](/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Sie können diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** ausführen.
@@ -42,9 +42,6 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 ```
 
 Ersetzen Sie in diesem Beispiel die Platzhalter in der Ressource durch Ihre Abonnement-ID, die Ressourcengruppe und den Namen der Funktions-App. Bei der Ausgabe handelt es sich um die Anmeldeinformationen für die Rollenzuweisung, die Zugriff auf ihre Funktions-App bereitstellen. Kopieren Sie dieses JSON-Objekt, das Sie zum Authentifizieren aus GitHub verwenden können.
-
-> [!NOTE]
-> Sie müssen keinen Dienstprinzipal erstellen, wenn Sie das Veröffentlichungsprofil für die Authentifizierung verwenden.
 
 > [!IMPORTANT]
 > Es ist immer empfehlenswert, den minimalen Zugriff zu gewähren. Aus diesem Grund ist der Bereich im vorherigen Beispiel auf die spezifische Funktions-App und nicht auf die gesamte Ressourcengruppe eingeschränkt.
@@ -218,7 +215,7 @@ Im folgenden Beispiel wird Version 1 von `functions-action` verwendet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine vollständige YAML-Datei des Workflows finden Sie in einer der Dateien mit `functionapp` im Namen im [Repository mit Workflowbeispielen für Azure GitHub Actions ](https://github.com/Azure/actions-workflow-samples). Sie können diese Beispiele als Ausgangspunkt für den Workflow verwenden.
+Eine vollständige YAML-Datei des Workflows finden Sie in einer der Dateien mit `functionapp` im Namen im [Repository mit Workflowbeispielen für Azure GitHub Actions ](https://aka.ms/functions-actions-samples). Sie können diese Beispiele als Ausgangspunkt für den Workflow verwenden.
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu GitHub Actions](https://help.github.com/en/articles/about-github-actions)

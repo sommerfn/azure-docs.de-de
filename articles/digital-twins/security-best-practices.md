@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948921"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009249"
 ---
-# <a name="security-best-practices"></a>Bewährte Methoden für die Sicherheit
+# <a name="azure-digital-twins-security-best-practices"></a>Bewährte Methoden für Azure Digital Twins-Sicherheit
 
 Azure Digital Twins-Sicherheit ermöglicht präzisen Zugriff auf bestimmte Ressourcen und Aktionen in Ihrem IoT-Graphen. Dies erfolgt mithilfe einer detaillierten Rollen- und Rechteverwaltung namens [Rollenbasierte Zugriffssteuerung](./security-role-based-access-control.md).
 

@@ -15,15 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: e7a99ffdd42c02e5a18dc14c4774b428232b8293
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015998"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084803"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung  
+ 
 ## <a name="overview"></a>Übersicht
+
 Mit dem **Azure Media-Videovorschau**-Medienprozessor können Sie eine Zusammenfassung eines Videos erstellen. Das ist hilfreich für Kunden, die nur eine zusammenfassende Vorschau eines langen Videos ansehen möchten. Kunden möchten zum Beispiel nur eine kurze „Videozusammenfassung“ sehen, wenn sie mit der Maus auf eine Miniaturansicht zeigen. Durch Anpassen der Parameter von **Azure Media-Videovorschau** per Konfigurationsvoreinstellung können Sie die leistungsstarken Technologien des Medienprozessors für das Erkennen und Zusammenfügen von Szenen verwenden, um algorithmisch einen beschreibenden Subclip zu erstellen.  
 
 Der **Azure Media Video Thumbnails** -Medienprozessor befindet sich derzeit in der Vorschauphase.

@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Abrufen von Nachrichten mit der Bing-News-Suche-REST-API und Go'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie mit der Bing-News-Suche-API Ergebnisse für Nachrichten abrufen.
+description: In dieser Schnellstartanleitung wird Go zum Aufrufen der Bing-News-Suche-API verwendet. Die Ergebnisse enthalten Namen und URLs von Nachrichtenquellen, die in der Abfragezeichenfolge angegeben wurden.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 2/21/2019
 ms.author: aahi
-ms.openlocfilehash: 79e93e3ba0bbf9ac71a01bad0502b84dfee85297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: c3d18852086e202d9f818f2cac2c90fa4f464211
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65798499"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110806"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Schnellstart: Abrufen von Ergebnissen für Nachrichten mit der Bing-News-Suche-REST-API und Go
 

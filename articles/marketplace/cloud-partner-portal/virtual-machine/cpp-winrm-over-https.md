@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: pabutler
-ms.openlocfilehash: 6e159bd9b57b26c99afd590d6a9f2153dba2a205
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e39f83b2ed715afbfff69770c151cfc4d527105d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808421"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132261"
 ---
 # <a name="windows-remote-management-over-https"></a>Windows-Remoteverwaltung über HTTPS
 
-In diesem Abschnitt wird erläutert, wie ein in Azure gehosteter Windows-basierter virtueller Computer so konfiguriert wird, dass er mit Remotezugriff über PowerShell verwaltet und bereitgestellt werden kann.  Um PowerShell-Remoting zu aktivieren, muss der virtuelle Zielcomputer einen HTTPS-Endpunkt für Windows-Remoteverwaltung (WinRM) verfügbar machen.  Weitere Informationen über PowerShell-Remoting finden Sie unter [Ausführen von Remotebefehlen](https://docs.microsoft.com/powershell/scripting/core-powershell/running-remote-commands?view=powershell-6).  Weitere Informationen über WinRM finden Sie unter [Windows-Remoteverwaltung](https://docs.microsoft.com/windows/desktop/WinRM/portal).
+In diesem Abschnitt wird erläutert, wie ein in Azure gehosteter Windows-basierter virtueller Computer so konfiguriert wird, dass er mit Remotezugriff über PowerShell verwaltet und bereitgestellt werden kann.  Um PowerShell-Remoting zu aktivieren, muss der virtuelle Zielcomputer einen HTTPS-Endpunkt für Windows-Remoteverwaltung (WinRM) verfügbar machen.  Weitere Informationen über PowerShell-Remoting finden Sie unter [Ausführen von Remotebefehlen](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands).  Weitere Informationen über WinRM finden Sie unter [Windows-Remoteverwaltung](https://docs.microsoft.com/windows/desktop/WinRM/portal).
 
-Wenn Sie einen virtuellen Computer mit einer der „klassischen“ Azure-Methoden erstellt haben – entweder über das Azure Service Manager-Portal oder die veraltete [Azure Dienstverwaltungs-API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) –, wurde er automatisch mit einem WinRM-Endpunkt konfiguriert.  Wenn Sie einen virtuellen Computer jedoch über eine der folgenden „modernen“ Azure-Methoden erstellen, wird der virtuelle Computer *nicht* für WinRM über HTTPS konfiguriert.  
+Wenn Sie einen virtuellen Computer mit einer der „klassischen“ Azure-Methoden erstellt haben – entweder über das Azure Service Manager-Portal oder die veraltete [Azure Dienstverwaltungs-API](https://docs.microsoft.com/previous-versions/azure/ee460799(v=azure.100)) –, wurde er automatisch mit einem WinRM-Endpunkt konfiguriert.  Wenn Sie einen virtuellen Computer jedoch über eine der folgenden „modernen“ Azure-Methoden erstellen, wird der virtuelle Computer *nicht* für WinRM über HTTPS konfiguriert.
 
 - Über das [Azure-Portal](https://portal.azure.com/), in der Regel aus einem genehmigten Basisimage, wie dies im Abschnitt [Erstellen einer Azure-kompatiblen VHD](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-vhd) beschrieben ist
 - [Verwenden der Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/windows/ps-template)
@@ -34,9 +34,9 @@ Im Gegensatz dazu werden virtuelle Linux-Computer in der Regel remote verwaltet,
 
 Der WinRM-Endpunkt für einen Windows-basierten virtuellen Computer kann bei dessen Entwicklung in zwei verschiedenen Phasen konfiguriert werden:
 
-- Während der Erstellung: während der Bereitstellung eines virtuellen Computers auf einer vorhandenen virtuellen Festplatte.  Dies ist die bevorzugte Vorgehensweise für neue Angebote.  Diese Vorgehensweise erfordert die Erstellung eines Azure-Zertifikats, Verwenden von bereitgestellten Azure Resource Manager-Vorlagen und Ausführen von angepassten PowerShell-Skripts. 
-- Nach der Bereitstellung: auf einem vorhandenen virtuellen Computer, der in Azure gehostet wird.  Verwenden Sie diese Vorgehensweise, wenn Sie bereits eine in Azure bereitgestellte VM-Lösung haben und Windows-Remoteverwaltung für diese Lösung aktivieren müssen.  Diese Vorgehensweise erfordert manuelle Änderungen im Azure-Portal und das Ausführen eines Skripts auf dem virtuellen Zielcomputer. 
+- Während der Erstellung: während der Bereitstellung eines virtuellen Computers auf einer vorhandenen virtuellen Festplatte.  Dies ist die bevorzugte Vorgehensweise für neue Angebote.  Diese Vorgehensweise erfordert die Erstellung eines Azure-Zertifikats, Verwenden von bereitgestellten Azure Resource Manager-Vorlagen und Ausführen von angepassten PowerShell-Skripts.
+- Nach der Bereitstellung: auf einem vorhandenen virtuellen Computer, der in Azure gehostet wird.  Verwenden Sie diese Vorgehensweise, wenn Sie bereits eine in Azure bereitgestellte VM-Lösung haben und Windows-Remoteverwaltung für diese Lösung aktivieren müssen.  Diese Vorgehensweise erfordert manuelle Änderungen im Azure-Portal und das Ausführen eines Skripts auf dem virtuellen Zielcomputer.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie einen neuen virtuellen Computer erstellen, können Sie WinRM während des [Bereitstellens eines virtuellen Computers auf Basis der VHDs](./cpp-deploy-vm-vhd.md) aktivieren.  Andernfalls kann WinRM auf einem vorhandenen virtuellen Computer aktiviert werden.  
+Wenn Sie einen neuen virtuellen Computer erstellen, können Sie WinRM während des [Bereitstellens eines virtuellen Computers auf Basis der VHDs](./cpp-deploy-vm-vhd.md) aktivieren.  Andernfalls kann WinRM auf einem vorhandenen virtuellen Computer aktiviert werden.

@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: bdf0f64bf24f77d54a8fed8714a0cc7c3de814b1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a7a1b088868add308f128c5a51d8cce4339c637c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210464"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091720"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Sichern einer SharePoint-Farm in Azure mit MABS
+
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von Microsoft Azure Backup Server (MABS) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit MABS können Sie zudem lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Von SharePoint unterstützte Versionen und entsprechende Sicherungsszenarien
+
 Azure Backup für DPM unterstützt folgende Szenarios:
 
 | Workload | Version | SharePoint-Bereitstellung | Schutz und Wiederherstellung |
@@ -26,35 +28,44 @@ Azure Backup für DPM unterstützt folgende Szenarios:
 | SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010, SharePoint 2007 und SharePoint 3.0 |Bereitstellung von SharePoint als physischer Server oder als virtueller Hyper-V-/VMware-Computer <br> -------------- <br> SQL AlwaysOn | Schutz der SharePoint-Farm-Wiederherstellungsoptionen: Wiederherstellung von Farm, Datenbank und Datei oder Listenelement aus Datenträger-Wiederherstellungspunkten.  Farm und Datenbankwiederherstellung aus Azure-Wiederherstellungspunkten. |
 
 ## <a name="before-you-start"></a>Vorbereitung
+
 Vor dem Sichern einer SharePoint-Farm in Azure müssen Sie ein paar Punkte bestätigen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie fortfahren, stellen Sie sicher, [dass Azure Backup Server installiert und für den Schutz von Workloads vorbereitet wurde](backup-azure-microsoft-azure-backup.md).
 
 ### <a name="protection-agent"></a>Schutz-Agent
+
 Der Azure Backup-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. Azure Backup Server benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
 
 ### <a name="sharepoint-farm"></a>SharePoint-Farm
+
 Pro zehn Millionen Farmelemente müssen mindestens 2 GB Speicherplatz auf dem Volume verfügbar sein, auf dem sich der MABS-Ordner befindet. Dieser Speicherplatz wird für die Kataloggenerierung benötigt. Für die Wiederherstellung bestimmter Elemente (Websitesammlungen, Websites, Listen, Dokumentbibliotheken, Ordner, einzelne Dokumente und Listenelemente) durch MABS erstellt die Kataloggenerierung eine Liste mit den URLs aus den einzelnen Inhaltsdatenbanken. Sie können die URL-Liste im Bereich für wiederherstellbare Elemente (im Aufgabenbereich **Wiederherstellung** der MABS-Administratorkonsole) anzeigen.
 
 ### <a name="sql-server"></a>SQL Server
+
 Azure Backup Server wird als ein „LocalSystem“-Konto ausgeführt. Zum Sichern von SQL Server-Datenbanken benötigt MABS Systemadministratorberechtigungen für dieses Konto für den Server, auf dem SQL Server ausgeführt wird. Legen Sie für NT AUTHORITY\SYSTEM *sysadmin* auf dem Server fest, auf dem SQL Server ausgeführt wird, bevor Sie ihn sichern.
 
 Falls die SharePoint-Farm über SQL Server-Datenbanken verfügt, die mit SQL Server-Aliasnamen konfiguriert sind, installieren Sie die SQL Server-Clientkomponenten auf dem Front-End-Webserver, der von MABS geschützt wird.
 
 ### <a name="sharepoint-server"></a>SharePoint Server
+
 Die Leistung richtet sich nach zahlreichen Faktoren, unter anderem nach der Größe der SharePoint-Farm. Als allgemeine Regel gilt: Eine einzelne MABS-Instanz kann eine 25 TB große SharePoint-Farm schützten.
 
 ### <a name="whats-not-supported"></a>Nicht unterstützte Funktionen
+
 * Der MABS-Schutz einer SharePoint-Farm erstreckt sich nicht auf Suchindizes oder Anwendungsdienstdatenbanken. Für diese Datenbanken muss der Schutz separat konfiguriert werden.
 * Von MABS werden keine SharePoint-SQL Server-Datenbanken gesichert, die sich auf Freigaben von Dateiservern mit horizontaler Skalierung (Scale Out File Server, SOFS) befinden.
 
 ## <a name="configure-sharepoint-protection"></a>Konfigurieren des SharePoint-Schutzes
+
 Bevor Sie SharePoint mit MABS schützen können, müssen Sie den SharePoint VSS Writer-Dienst (WSS Writer-Dienst) mithilfe von **ConfigureSharePoint.exe**konfigurieren.
 
 Die Datei **ConfigureSharePoint.exe** befindet sich auf dem Front-End-Webserver im Ordner „[MABS-Installationspfad]\bin“. Dieses Tool stellt den Schutz-Agent mit den Anmeldeinformationen für die SharePoint-Farm bereit. Es wird auf einem einzelnen WFE-Server ausgeführt. Wählen Sie bei Verwendung mehrerer WFE-Server einen der Server aus, wenn Sie eine Schutzgruppe konfigurieren.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>So konfigurieren Sie den SharePoint VSS Writer-Dienst
+
 1. Navigieren Sie an einer Eingabeaufforderung auf dem WFE-Server zu „[MABS-Installationsort]\bin\“.
 2. Geben Sie ConfigureSharePoint -EnableSharePointProtection ein.
 3. Geben Sie die Administratoranmeldeinformationen für die Farm an. Dieses Konto muss der lokalen Administratorgruppe auf dem WFE-Server angehören. Wenn der Farmadministrator kein lokaler Administrator ist, erteilen Sie auf dem WFE-Server die folgenden Berechtigungen:
@@ -67,9 +78,11 @@ Die Datei **ConfigureSharePoint.exe** befindet sich auf dem Front-End-Webserver 
 >
 
 ## <a name="back-up-a-sharepoint-farm-by-using-mabs"></a>Sichern einer SharePoint-Farm mit MABS
+
 Wenn Sie MABS und die SharePoint-Farm wie oben beschrieben konfiguriert haben, kann SharePoint von MABS geschützt werden.
 
 ### <a name="to-protect-a-sharepoint-farm"></a>So schützen Sie eine SharePoint-Farm
+
 1. Klicken Sie auf der Registerkarte **Schutz** der MABS-Administratorkonsole auf **Neu**.
     ![Neue Registerkarte „Schutz“](./media/backup-azure-backup-sharepoint/dpm-new-protection-tab.png)
 2. Wählen Sie auf der Seite **Schutzgruppentyp auswählen** des Assistenten **Neue Schutzgruppe erstellen** die Option **Server** aus, und klicken Sie anschließend auf **Weiter**.
@@ -138,6 +151,7 @@ Wenn Sie MABS und die SharePoint-Farm wie oben beschrieben konfiguriert haben, k
     ![Zusammenfassung](./media/backup-azure-backup-sharepoint/summary.png)
 
 ## <a name="restore-a-sharepoint-item-from-disk-by-using-mabs"></a>Wiederherstellen eines SharePoint-Elements vom Datenträger mit MABS
+
 Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht und muss wiederhergestellt werden.
 ![MABS SharePoint Protection4](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection5.png)
 
@@ -199,6 +213,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
     >
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>Azure-basiertes Wiederherstellen einer SharePoint-Datenbank mit DPM
+
 1. Durchsuchen Sie zum Wiederherstellen einer SharePoint-Inhaltsdatenbank verschiedene Wiederherstellungspunkte (siehe oben), und wählen Sie den wiederherzustellenden Wiederherstellungspunkt aus.
 
     ![MABS SharePoint Protection8](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection9.png)

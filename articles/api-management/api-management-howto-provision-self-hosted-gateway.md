@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: ee9594e7aa3b55f7eb6fc7ba41783708555bd15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d33c5f75234ad7165a9062ecc3bb2a00d502f8c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510571"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075289"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Bereitstellen eines selbstgehosteten Gateways in Azure API Management
 
@@ -39,6 +39,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
 3. Geben Sie den **Namen** und die **Region** des Gateways ein.
 > [!TIP]
 > **Region** gibt den vorgesehenen Speicherort der Gatewayknoten an, die dieser Gatewayressource zugeordnet werden. Der Wert ist semantisch äquivalent mit einer ähnlichen Eigenschaft, die jeder Azure-Ressource zugeordnet wird, ihm kann aber ein beliebiger Zeichenfolgenwert zugewiesen werden.
+
 4. Geben Sie optional eine **Beschreibung** der Gatewayressource ein.
 5. Wählen Sie optional **+** unter **APIs** aus, um dieser Gatewayressource mindestens eine API zuzuordnen.
 > [!TIP]
@@ -46,6 +47,7 @@ Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure
 
 > [!IMPORTANT]
 > Standardmäßig wird keine der vorhandenen APIs der neuen Gatewayressource zugeordnet. Daher führt der Versuch, sie über das neue Gateway aufzurufen, zu Antworten des Typs `404 Resource Not Found`.
+
 6. Klicken Sie auf **Hinzufügen**.
 
 Die Gatewayressource wurde nun in Ihrer API Management-Instanz bereitgestellt. Sie können mit der Bereitstellung des Gateways fortfahren.

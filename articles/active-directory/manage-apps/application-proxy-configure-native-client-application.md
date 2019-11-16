@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cdc46ea3a45d04e6e837d0b7ad52ed8bf565cd2
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2cbee6bfcca3ddb356abe9dceab2fca07c152b07
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702420"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961809"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Aktivieren von nativen Clientanwendungen für die Interaktion mit Proxyanwendungen
 
@@ -70,7 +70,7 @@ Nachdem Sie Ihre native Anwendung registriert haben, können Sie ihr Zugriff auf
 1. Wählen Sie **Berechtigung hinzufügen** aus. Die Seite **API-Berechtigungen anfordern** wird angezeigt.
 1. Wählen Sie unter der Einstellung **Hiermit wählen Sie eine API aus** die Option **Von meiner Organisation verwendete APIs** aus. Eine Liste mit den Anwendungen in Ihrem Verzeichnis, die APIs verfügbar machen, wird angezeigt.
 1. Geben Sie die Proxyanwendung, die Sie in [Schritt 1: Veröffentlichen Ihrer Proxyanwendung](#step-1-publish-your-proxy-application) veröffentlicht haben, im Suchfeld ein, oder scrollen Sie zu ihr, und wählen Sie dann die Proxyanwendung aus.
-1. Wählen Sie unter der Überschrift **Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?** den Berechtigungstyp aus. Wenn Ihre native Anwendung als der angemeldete Benutzer auf die Proxy-Anwendung-API zugreifen muss, wählen Sie **Delegierte Berechtigungen** aus. Wenn Ihre native Anwendung als Hintergrunddienst oder Daemon ohne angemeldeten Benutzer ausgeführt wird, wählen Sie **Anwendungsberechtigungen** aus.
+1. Wählen Sie unter der Überschrift **Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?** den Berechtigungstyp aus. Wenn Ihre native Anwendung als der angemeldete Benutzer auf die Proxy-Anwendung-API zugreifen muss, wählen Sie **Delegierte Berechtigungen** aus.
 1. Wählen Sie unter der Überschrift **Berechtigungen auswählen** die gewünschte Berechtigung und dann **Berechtigungen hinzufügen** aus. Auf der Seite **API-Berechtigungen** für Ihre native Anwendung werden jetzt die hinzugefügte Proxyanwendung und die Berechtigungs-API angezeigt.
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>Schritt 4: Bearbeiten der Active Directory-Authentifizierungsbibliothek

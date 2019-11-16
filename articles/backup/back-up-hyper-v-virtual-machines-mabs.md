@@ -7,38 +7,37 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 46d9f33dedff5a5682385b9cb22cf310581eefde
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: f15606c83c221e4591a2a1f6a71fc7141bdf3daf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68466862"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074969"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Sichern von virtuellen Hyper-V-Computern mit Azure Backup Server
 
 In diesem Artikel wird das Sichern von virtuellen Hyper-V-Computern mit Microsoft Azure Backup Server (MABS) beschrieben.
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
+
 MABS kann virtuelle Computer, die auf Hyper-V-Hostservern ausgeführt werden, in den folgenden Szenarien sichern:
 
--   **Virtuelle Computer mit lokalem oder direktem Speicher**: Sichern Sie virtuelle Computer, die auf eigenständigen Hyper-V-Hostservern gehostet werden und über lokale oder direkt angefügte Speicher verfügen. Beispiel: eine Festplatte, ein SAN- (Storage Area Network) oder ein NAS-Gerät (Network Attached Storage). Der MABS-Schutz-Agent muss auf allen Hosts installiert sein.
+- **Virtuelle Computer mit lokalem oder direktem Speicher**: Sichern Sie virtuelle Computer, die auf eigenständigen Hyper-V-Hostservern gehostet werden und über lokale oder direkt angefügte Speicher verfügen. Beispiel: eine Festplatte, ein SAN- (Storage Area Network) oder ein NAS-Gerät (Network Attached Storage). Der MABS-Schutz-Agent muss auf allen Hosts installiert sein.
 
--   **Virtuelle Computer in einem Cluster mit CSV-Speicher**: Sichern Sie virtuelle Computer, die auf einem Hyper-V-Cluster mit freigegebenem Clustervolumespeicher (CSV) gehostet werden. Der MABS-Schutz-Agent wird auf jedem Clusterknoten installiert.
-
-
+- **Virtuelle Computer in einem Cluster mit CSV-Speicher**: Sichern Sie virtuelle Computer, die auf einem Hyper-V-Cluster mit freigegebenem Clustervolumespeicher (CSV) gehostet werden. Der MABS-Schutz-Agent wird auf jedem Clusterknoten installiert.
 
 ## <a name="host-versus-guest-backup"></a>Sicherung auf Host- und Gastebene im Vergleich
+
 MABS kann virtuelle Hyper-V-Computer auf Host- oder Gastebene sichern. Auf Hostebene ist der MABS-Schutz-Agent auf dem Hyper-V-Hostserver oder -Cluster installiert und schützt die gesamten VMs und Datendateien, die auf diesem Host ausgeführt werden.   Auf Gastebene wird der Agent auf allen virtuellen Computern installiert und schützt somit die auf der jeweiligen VM vorhandene Workload.
 
 Beide Methoden haben Vor- und Nachteile:
 
--   Sicherungen auf Hostebene sind flexibel, da Sie unabhängig von der Art des Betriebssystems auf den Gastcomputern arbeiten, und es ist nicht erforderlich, dass der MABS-Schutz-Agent auf jeder VM installiert ist. Wenn Sie Sicherungen auf Hostebene bereitstellen, stellen Sie einen kompletten virtuellen Computer oder Dateien und Ordner wieder her (Wiederherstellung auf Elementebene).
+- Sicherungen auf Hostebene sind flexibel, da Sie unabhängig von der Art des Betriebssystems auf den Gastcomputern arbeiten, und es ist nicht erforderlich, dass der MABS-Schutz-Agent auf jeder VM installiert ist. Wenn Sie Sicherungen auf Hostebene bereitstellen, stellen Sie einen kompletten virtuellen Computer oder Dateien und Ordner wieder her (Wiederherstellung auf Elementebene).
 
--   Die Sicherung auf Gastebene ist für den Schutz bestimmter Workloads auf einem virtuellen Computer von Vorteil. Auf Hostebene können Sie eine gesamte VM oder bestimmte Dateien wiederherstellen, jedoch keine Daten im Kontext einer bestimmten Anwendung. Um beispielsweise bestimmte SharePoint-Elemente von einer gesicherten VM wiederherzustellen, sollten Sie eine Sicherung auf Gastebene dieser VM durchführen. Wenn Sie auf Pass-Through-Datenträgern gespeicherte Daten schützen möchten, müssen Sie die Sicherung auf Gastebene wählen. Die Pass-Through-Technologie ermöglicht dem virtuellen Computer den Direktzugriff auf das Speichergerät und speichert keine virtuellen Volumedaten in einer VHD-Datei.
-
-
+- Die Sicherung auf Gastebene ist für den Schutz bestimmter Workloads auf einem virtuellen Computer von Vorteil. Auf Hostebene können Sie eine gesamte VM oder bestimmte Dateien wiederherstellen, jedoch keine Daten im Kontext einer bestimmten Anwendung. Um beispielsweise bestimmte SharePoint-Elemente von einer gesicherten VM wiederherzustellen, sollten Sie eine Sicherung auf Gastebene dieser VM durchführen. Wenn Sie auf Pass-Through-Datenträgern gespeicherte Daten schützen möchten, müssen Sie die Sicherung auf Gastebene wählen. Die Pass-Through-Technologie ermöglicht dem virtuellen Computer den Direktzugriff auf das Speichergerät und speichert keine virtuellen Volumedaten in einer VHD-Datei.
 
 ## <a name="how-the-backup-process-works"></a>Funktionsweise des Sicherungsvorgangs
+
 MABS führt die Sicherung mit VSS wie folgt aus. Die Schritte in dieser Beschreibung sind zur besseren Übersichtlichkeit nummeriert.
 
 1. Die blockbasierte Synchronisierungs-Engine von MABS erstellt eine erste Kopie des geschützten virtuellen Computers und stellt sicher, dass diese Kopie vollständig und konsistent ist.
@@ -61,8 +60,8 @@ MABS führt die Sicherung mit VSS wie folgt aus. Die Schritte in dieser Beschrei
 >
 >Ab Windows Server 2016 verfügen virtuelle Hyper-V-Festplatten über eine integrierte Änderungsnachverfolgung, die als robuste Änderungsnachverfolgung (Resilient Change Tracking, RCT) bezeichnet wird. MABS verwendet RCT, die systemeigene Änderungsnachverfolgung in Hyper-V, wodurch zeitaufwändige Konsistenzprüfungen etwa bei VM-Abstürzen entfallen. RCT bietet eine bessere Resilienz als die Änderungsnachverfolgung, die von Sicherungen bereitgestellt wird, die auf VSS-Momentaufnahmen basieren. MABS V3 optimiert den Netzwerk- und Speicherverbrauch außerdem, indem bei Konsistenzprüfungen nur die geänderten Daten übertragen werden.
 
-
 ## <a name="backup-prerequisites"></a>Voraussetzungen für eine Sicherung
+
 Dies sind die Voraussetzungen für die Sicherung virtueller Hyper-V-Computer mit MABS:
 
 |Voraussetzung|Details|
@@ -87,16 +86,13 @@ Dies sind die Voraussetzungen für die Sicherung virtueller Hyper-V-Computer mit
 
 4. Wählen Sie auf der Seite **Gruppenmitglieder auswählen** die VMs aus, die Sie vor den Hyper-V-Hostservern schützen möchten, auf denen sie sich befinden. Wir empfehlen Ihnen, alle VMs, die die gleiche Schutzrichtlinie verwenden, in einer Schutzgruppe zusammenzufassen. Um den Speicherplatz effizient zu nutzen, aktivieren Sie die Zusammenstellung. Mit der Zusammenstellung können Sie Daten aus verschiedenen Schutzgruppen auf demselben Datenträger oder Bandspeicher suchen, sodass mehrere Datenquellen ein einzelnes Replikat- und Wiederherstellungspunkt-Volume verwenden.
 
-5. Geben Sie auf der Seite **Methode für die Datensicherheit auswählen** einen Namen für die Schutzgruppe ein. Wählen Sie **Ich möchte einen kurzfristigen Schutz mit Datenträger** und dann **Ich möchte Onlineschutz** aus, wenn Sie Daten mit dem Azure Backup-Dienst in Azure sichern möchten. 
-
+5. Geben Sie auf der Seite **Methode für die Datensicherheit auswählen** einen Namen für die Schutzgruppe ein. Wählen Sie **Ich möchte einen kurzfristigen Schutz mit Datenträger** und dann **Ich möchte Onlineschutz** aus, wenn Sie Daten mit dem Azure Backup-Dienst in Azure sichern möchten.
 
 6. Geben Sie unter **Kurzfristige Ziele angeben** > **Aufbewahrungsdauer** an, wie lange Sie Datenträgerdaten aufbewahren möchten. Geben Sie unter **Synchronisierungsfrequenz** an, wie oft inkrementelle Sicherungen der Daten durchgeführt werden sollen. Alternativ können Sie anstelle der Auswahl eines Intervalls für inkrementelle Sicherungen auch **Direkt vor einen Wiederherstellungspunkt** aktivieren. Mit dieser Einstellung führt MABS eine vollständige Schnellsicherung unmittelbar vor jedem geplanten Wiederherstellungspunkt aus.
 
     > [!NOTE]
     >
     >Wenn Sie Anwendungsworkloads schützen, werden Wiederherstellungspunkte gemäß der Synchronisierungsfrequenz erstellt, sofern die Anwendung inkrementelle Sicherungen unterstützt. Wenn dies nicht der Fall ist, führt MABS anstelle einer inkrementellen Sicherung eine vollständige Schnellsicherung durch und erstellt Wiederherstellungspunkte gemäß dem Zeitplan für die Schnellsicherung.
-
-    
 
 7. Überprüfen Sie auf der Seite **Datenträgerzuordnungen überprüfen** den Speicherplatz im Speicherpool, der der Schutzgruppe zugeordnet ist.
 
@@ -109,9 +105,10 @@ Dies sind die Voraussetzungen für die Sicherung virtueller Hyper-V-Computer mit
     Nachdem Sie die Schutzgruppe erstellt haben, erfolgt die erste Replikation der Daten in Übereinstimmung mit der von Ihnen ausgewählten Methode. Nach der ersten Replikation erfolgt jede Sicherung entsprechend den Einstellungen der Schutzgruppe. Für die Wiederherstellung gesicherter Daten müssen Sie Folgendes beachten:
 
 ## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Sichern von für die Livemigration konfigurierte virtuelle Computer
+
 Wenn virtuelle Computer an der Livemigration beteiligt sind, sind diese durch MABS weiterhin geschützt, solange der MABS-Schutz-Agent auf dem Hyper-V-Host installiert ist. Wie MABS die virtuellen Computer schützt, hängt von der Art der Livemigration ab.
 
-**Livemigration innerhalb eines Clusters**: Wenn ein virtueller Computer innerhalb eines Clusters migriert wird, erkennt MABS die Migration und sichert den virtuellen Computer über den neuen Clusterknoten, ohne dass der Benutzer eingreifen muss. Da sich der Speicherort nicht geändert hat, fährt MABS mit einer vollständige Schnellsicherung fort. 
+**Livemigration innerhalb eines Clusters**: Wenn ein virtueller Computer innerhalb eines Clusters migriert wird, erkennt MABS die Migration und sichert den virtuellen Computer über den neuen Clusterknoten, ohne dass der Benutzer eingreifen muss. Da sich der Speicherort nicht geändert hat, fährt MABS mit einer vollständige Schnellsicherung fort.
 
 **Livemigration außerhalb des Clusters**: Wenn ein virtueller Computer zwischen eigenständigen Servern, verschiedenen Clustern oder zwischen einem eigenständigen Server und einem Cluster migriert wird, erkennt MABS die Migration und kann den virtuellen Computer ohne Benutzereingriff sichern.
 
@@ -131,7 +128,6 @@ Die folgenden Anforderungen gelten für die Aufrechterhaltung des Schutzes währ
 
 Für eine Sicherung während einer Livemigration ist Folgendes zu beachten:
 
-
 - Wenn bei einer Livemigration Speicher übertragen wird, führt MABS eine vollständige Konsistenzprüfung des virtuellen Computers durch und fährt dann mit einer vollständigen Schnellsicherung fort. Wenn eine Livemigration des Speichers stattfindet, organisiert Hyper-V die virtuelle Festplatte (VHD) oder VHDX neu. Dies führt zu einem einmaligen Anstieg der Größe der MABS-Sicherungsdaten.
 
 - Aktivieren Sie auf dem Host des virtuellen Computers die automatische Einbindung, um den virtuellen Schutz zu aktivieren, und deaktivieren Sie TCP Chimney Offload.
@@ -140,7 +136,7 @@ Für eine Sicherung während einer Livemigration ist Folgendes zu beachten:
 
     1. Navigieren Sie zu **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration**.
     2. Erstellen Sie einen 32-Bit-DWORD-Wert: „DpmVmmHelperServicePort“, und schreiben Sie die aktualisierte Portnummer als Teil des Registrierungsschlüssels.
-    3.  Öffnen Sie ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` und tauschen Sie die Portnummer 6070 gegen die neue Portnummer aus. Beispiel: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
+    3. Öffnen Sie ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` und tauschen Sie die Portnummer 6070 gegen die neue Portnummer aus. Beispiel: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
     4. Starten Sie den DPM-VMM-Hilfsprogrammdienst und den DPM-Dienst neu.
 
 ### <a name="set-up-protection-for-live-migration"></a>Einrichten des Schutzes für die Livemigration
@@ -173,7 +169,6 @@ So richten Sie den Schutz für die Livemigration ein:
 
    4. Öffnen Sie die von dieser Abfrage zurückgegebene .xml-Datei und überprüfen Sie, ob das Feld *VMMIdentifier* einen Wert hat.
 
-
 ### <a name="run-manual-migration"></a>Ausführen der manuellen Migration
 
 Nachdem Sie die Schritte in den vorherigen Abschnitten ausgeführt haben und der MABS Summary Manager-Auftrag abgeschlossen ist, ist die Migration aktiviert. Standardmäßig wird dieser Auftrag um Mitternacht gestartet und jeden Morgen ausgeführt. Wenn Sie eine manuelle Migration durchführen möchten, gehen Sie wie folgt vor, um sicherzustellen, dass alles wie erwartet funktioniert:
@@ -185,7 +180,6 @@ Nachdem Sie die Schritte in den vorherigen Abschnitten ausgeführt haben und der
 3. Erweitern Sie im SQL Server Management Studio **SQL Server-Agent** und dann **Aufträge**. Klicken Sie mit der rechten Maustaste auf **ScheduleID** die Sie notiert haben, und wählen Sie **Auftrag starten bei Schritt...** aus.
 
 Wenn der Auftrag ausgeführt wird, hat dies Einfluss auf die Sicherungsleistung. Die Größe und die Skalierung Ihrer Bereitstellung bestimmen, wie lange die Ausführung des Auftrags dauert.
-
 
 ## <a name="back-up-replica-virtual-machines"></a>Sichern von virtuellen Replikatcomputern
 
@@ -223,12 +217,12 @@ Wenn Sie einen gesicherten virtuellen Computer wiederherstellen können, wählen
 
 4. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp** aus, wo Sie die Daten wieder wiederherstellen möchten, und klicken Sie dann auf **Weiter**.
 
-    -   **In ursprünglicher Instanz wiederherstellen**: Wenn die Wiederherstellung in die ursprüngliche Instanz ausgeführt wird, wird die ursprüngliche VHD gelöscht. MABS stellt die VHD und andere Konfigurationsdateien mithilfe von Hyper-V-VSS Writer am ursprünglichen Speicherort wieder her. Am Ende des Wiederherstellungsprozesses sind virtuelle Computer weiterhin hoch verfügbar.
+    - **In ursprünglicher Instanz wiederherstellen**: Wenn die Wiederherstellung in die ursprüngliche Instanz ausgeführt wird, wird die ursprüngliche VHD gelöscht. MABS stellt die VHD und andere Konfigurationsdateien mithilfe von Hyper-V-VSS Writer am ursprünglichen Speicherort wieder her. Am Ende des Wiederherstellungsprozesses sind virtuelle Computer weiterhin hoch verfügbar.
         Die Ressourcengruppe muss für der Wiederherstellung vorhanden sein. Wenn Sie nicht verfügbar ist, führen Sie die Wiederherstellung an einem anderen Speicherort durch, und machen Sie den virtuellen Computer anschließend hoch verfügbar.
 
-    -   **Als virtuellen Computer für beliebigen Host wiederherstellen**: MABS unterstützt die Wiederherstellung an einem alternativen Speicherort (Alternate Location Recovery, ALR), mit der ein geschützter virtueller Hyper-V-Computer unabhängig von der Prozessorarchitektur nahtlos auf einem anderen Hyper-V-Host wiederhergestellt wird. Virtuelle Hyper-V-Computer, die in einem Clusterknoten wiederhergestellt werden, sind nicht hoch verfügbar. Wenn Sie diese Option auswählen, zeigt der Wiederherstellungs-Assistent einen zusätzlichen Bildschirm zum Angeben des Ziel und des Zielpfads an.
+    - **Als virtuellen Computer für beliebigen Host wiederherstellen**: MABS unterstützt die Wiederherstellung an einem alternativen Speicherort (Alternate Location Recovery, ALR), mit der ein geschützter virtueller Hyper-V-Computer unabhängig von der Prozessorarchitektur nahtlos auf einem anderen Hyper-V-Host wiederhergestellt wird. Virtuelle Hyper-V-Computer, die in einem Clusterknoten wiederhergestellt werden, sind nicht hoch verfügbar. Wenn Sie diese Option auswählen, zeigt der Wiederherstellungs-Assistent einen zusätzlichen Bildschirm zum Angeben des Ziel und des Zielpfads an.
 
-    -   **In einen Netzwerkordner kopieren**: MABS unterstützt die Wiederherstellung auf Elementebene (ILR), mit der Sie Dateien, Ordner, Volumes und virtuelle Festplatten (VHDs) auf Elementebene von einer Sicherung auf Hostebene von virtuellen Hyper-V-Computern auf eine Netzwerkfreigabe oder ein Volume auf einem mit MABS geschützten Server wiederherstellen können. Der MABS-Schutz-Agent muss für eine Wiederherstellung auf Elementebene nicht auf dem Gastbetriebssystem installiert sein. Wenn Sie diese Option auswählen, zeigt der Wiederherstellungs-Assistent einen zusätzlichen Bildschirm zum Angeben des Ziel und des Zielpfads an.
+    - **In einen Netzwerkordner kopieren**: MABS unterstützt die Wiederherstellung auf Elementebene (ILR), mit der Sie Dateien, Ordner, Volumes und virtuelle Festplatten (VHDs) auf Elementebene von einer Sicherung auf Hostebene von virtuellen Hyper-V-Computern auf eine Netzwerkfreigabe oder ein Volume auf einem mit MABS geschützten Server wiederherstellen können. Der MABS-Schutz-Agent muss für eine Wiederherstellung auf Elementebene nicht auf dem Gastbetriebssystem installiert sein. Wenn Sie diese Option auswählen, zeigt der Wiederherstellungs-Assistent einen zusätzlichen Bildschirm zum Angeben des Ziel und des Zielpfads an.
 
 5. Konfigurieren Sie unter **Wiederherstellungsoptionen angeben** die Wiederherstellungsoptionen, und klicken Sie auf **Weiter**:
 
@@ -240,6 +234,6 @@ Wenn Sie einen gesicherten virtuellen Computer wiederherstellen können, wählen
 
 7. Der Bildschirm **Wiederherstellungsstatus** enthält Informationen zum Wiederherstellungsauftrag.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Wiederherstellen von Daten von Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)

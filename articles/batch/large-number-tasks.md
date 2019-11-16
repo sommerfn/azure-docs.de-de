@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 1322b8eb14205ff29e109fae82466270f7507781
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc47b18dd51bbaa48d950515cccfe618d9e58426
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094017"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132753"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Übermitteln einer großen Anzahl von Aufgaben an einen Batch-Auftrag
 
@@ -37,7 +37,7 @@ Die maximale Größe der Aufgabensammlung, die Sie in einem einzigen Aufruf hinz
 
     * [REST-API](/rest/api/batchservice/task/addcollection)
     * [Python-API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
-    * [Node.js-API](/javascript/api/azure-batch/task?view=azure-node-latest)
+    * [Node.js-API](/javascript/api/@azure/batch/task?view=azure-node-latest)
 
   Wenn Sie diese APIs verwenden, müssen Sie die Logik zum Aufteilen der Anzahl von Aufgaben bereitstellen, um den Sammlungsgrenzwert einzuhalten. Sie müssen ebenfalls die Logik zum Behandeln von Fehlern und Wiederholungen bereitstellen, falls beim Hinzufügen von Aufgaben Fehler auftreten. Wenn eine Aufgabensammlung zu groß zum Hinzufügen ist, generiert die Anforderung einen Fehler und sollte mit einer geringeren Anzahl von Aufgaben wiederholt werden.
 

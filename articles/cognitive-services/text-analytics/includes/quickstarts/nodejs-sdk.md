@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: 5c5c2ed6b7806095dada40cc921a773d28421424
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 54aadd22b8f2bbccaa4c5e4f1444aa08279a4773
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750156"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125485"
 ---
 <a name="HOLTop"></a>
 
-[Referenzdokumentation](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [Paket (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [Paket (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +62,7 @@ Die Datei `package.json` Ihrer App wird mit den Abhängigkeiten aktualisiert.
 
 ## <a name="object-model"></a>Objektmodell
 
-Der Textanalyse-Client ist ein [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client verfügt über verschiedene Methoden zum Analysieren von Text als einzelne Zeichenfolge oder als Batch.
+Der Textanalyse-Client ist ein [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient)-Objekt, das sich mit Ihrem Schlüssel bei Azure authentifiziert. Der Client verfügt über verschiedene Methoden zum Analysieren von Text als einzelne Zeichenfolge oder als Batch.
 
 Text wird als `documents`-Liste an die API gesendet. Hierbei handelt es sich um `dictionary`-Objekte, die je nach verwendeter Methode eine Kombination aus den Attributen `id`, `text` und `language` enthalten. Das `text`-Attribut speichert den zu analysierenden Text in der Ausgangssprache (`language`), und `id` kann ein beliebiger Wert sein. 
 
@@ -79,14 +79,14 @@ Das Antwortobjekt ist eine Liste mit den Analyseinformationen für jedes Dokumen
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Erstellen Sie ein [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest)-Objekt mit `credentials` und `endpoint` als Parameter.
+Erstellen Sie ein [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient)-Objekt mit `credentials` und `endpoint` als Parameter.
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-Erstellen Sie eine Liste von Wörterbuchobjekten, die die Dokumente enthalten, die Sie analysieren möchten. Rufen Sie die [Sentiment()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#sentiment-object-)-Methode des Clients auf, und rufen Sie das zurückgegebene [SentimentBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/sentimentbatchresult?view=azure-node-latest) ab. Durchlaufen Sie die Liste der Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
+Erstellen Sie eine Liste von Wörterbuchobjekten, die die Dokumente enthalten, die Sie analysieren möchten. Rufen Sie die [Sentiment()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#sentiment-models-textanalyticsclientsentimentoptionalparams-)-Methode des Clients auf, und rufen Sie das zurückgegebene [SentimentBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/sentimentbatchresult) ab. Durchlaufen Sie die Liste der Ergebnisse, und drucken Sie die ID und den Stimmungswert jedes Dokuments. Eine gegen 0 tendierende Punktzahl deutet auf eine negative Stimmung hin, eine gegen 1 tendierende Punktzahl auf eine positive.
 
 [!code-javascript[Sentiment analysis](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=sentimentAnalysis)]
 
@@ -103,7 +103,7 @@ Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
 ## <a name="language-detection"></a>Spracherkennung
 
-Erstellen Sie eine Liste mit Wörterbuchobjekten, die Ihre Dokumente enthalten. Rufen Sie die [detectLanguage()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#detectlanguage-object-)-Methode des Clients auf, und rufen Sie das zurückgegebene [LanguageBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/languagebatchresult?view=azure-node-latest) ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die Sprache aus.
+Erstellen Sie eine Liste mit Wörterbuchobjekten, die Ihre Dokumente enthalten. Rufen Sie die [detectLanguage()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#detectlanguage-models-textanalyticsclientdetectlanguageoptionalparams-)-Methode des Clients auf, und rufen Sie das zurückgegebene [LanguageBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/languagebatchresult) ab. Durchlaufen Sie dann die Ergebnisse, und geben Sie für jedes Dokument die ID und die Sprache aus.
 
 [!code-javascript[Language detection](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=languageDetection)]
 
@@ -119,7 +119,7 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="entity-recognition"></a>Entitätserkennung
 
-Erstellen Sie eine Liste mit Objekten, die Ihre Dokumente enthält. Rufen Sie die [entities()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#entities-object-)-Methode des Clients auf, und rufen Sie das [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/entitiesbatchresult?view=azure-node-latest)-Objekt ab. Durchlaufen Sie die Liste der Ergebnisse, und geben Sie die ID jedes Dokuments aus. Drucken Sie für jede erkannte Entität ihren Wikipedia-Namen, den Typ und Untertypen (falls vorhanden) sowie die Fundstellen im Originaltext.
+Erstellen Sie eine Liste mit Objekten, die Ihre Dokumente enthält. Rufen Sie die [entities()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#entities-models-textanalyticscliententitiesoptionalparams-)-Methode des Clients auf, und rufen Sie das [EntitiesBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/entitiesbatchresult)-Objekt ab. Durchlaufen Sie die Liste der Ergebnisse, und geben Sie die ID jedes Dokuments aus. Drucken Sie für jede erkannte Entität ihren Wikipedia-Namen, den Typ und Untertypen (falls vorhanden) sowie die Fundstellen im Originaltext.
 
 [!code-javascript[Entity recognition](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=entityRecognition)]
 
@@ -157,7 +157,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
 
-Erstellen Sie eine Liste mit Objekten, die Ihre Dokumente enthält. Rufen Sie die [keyPhrases()](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/textanalyticsclient?view=azure-node-latest#keyphrases-object-)-Methode des Clients auf, und rufen Sie das zurückgegebene [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics/keyphrasebatchresult?view=azure-node-latest)-Objekt ab. Durchlaufen Sie die Ergebnisse, und geben Sie die ID und alle erkannten Schlüsselbegriffe aus.
+Erstellen Sie eine Liste mit Objekten, die Ihre Dokumente enthält. Rufen Sie die [keyPhrases()](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient#keyphrases-models-textanalyticsclientkeyphrasesoptionalparams-)-Methode des Clients auf, und rufen Sie das zurückgegebene [KeyPhraseBatchResult](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/keyphrasebatchresult)-Objekt ab. Durchlaufen Sie die Ergebnisse, und geben Sie die ID und alle erkannten Schlüsselbegriffe aus.
 
 [!code-javascript[Key phrase extraction](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyPhraseExtraction)]
 

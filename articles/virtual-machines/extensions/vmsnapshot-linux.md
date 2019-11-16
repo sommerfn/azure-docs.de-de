@@ -1,5 +1,5 @@
 ---
-title: VM-Momentaufnahmenerweiterung unter Linux für Azure Backup | Microsoft-Dokumentation
+title: VM-Momentaufnahmenerweiterung unter Linux für Azure Backup
 description: Durchführen von anwendungskonsistenten Sicherungen des virtuellen Computers aus Azure Backup mit der VM-Momentaufnahmenerweiterung
 services: backup, virtual-machines-linux
 documentationcenter: ''
@@ -10,12 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: e0e959647231fb87c023dcb5c4c48a205259de74
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 186468119fb5b630b56a91b38026f202b98630d6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705844"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072921"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>VM-Momentaufnahmenerweiterung unter Linux für Azure Backup
 

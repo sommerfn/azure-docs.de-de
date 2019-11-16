@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330844"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013145"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -70,7 +70,7 @@ Wenn Ihre Benutzer auf bestimmte Branchenanwendungen zugreifen müssen, empfehle
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Einrichten des Benutzerprofilcontainers (FSLogix)
 
-Befolgen Sie die Anleitung unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md#configure-the-fslogix-profile-container), um den FSLogix-Container als Teil des Images einzubeziehen. Sie können die Funktionalität des FSLogix-Containers testen, indem Sie [diese Schnellstartanleitung](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial) verwenden.
+Befolgen Sie die Anleitung unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md#configure-the-fslogix-profile-container), um den FSLogix-Container als Teil des Images einzubeziehen. Sie können die Funktionalität des FSLogix-Containers testen, indem Sie [diese Schnellstartanleitung](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial) verwenden.
 
 ### <a name="configure-windows-defender"></a>Konfigurieren von Windows Defender
 
@@ -101,28 +101,6 @@ Führen Sie diesen Befehl aus, um ein Startlayout für Windows 10-PCs anzugeben
 
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
-```
-
-### <a name="configure-session-timeout-policies"></a>Konfigurieren von Richtlinien für Sitzungstimeouts
-
-Richtlinien für Remotesitzungen können auf Gruppenrichtlinienebene erzwungen werden, da alle VMs in einem Hostpool Teil derselben Sicherheitsgruppe sind.
-
-Konfigurieren Sie die Richtlinien für Remotesitzungen wie folgt:
-
-1. Navigieren Sie zu **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktop-Sitzungshost** > **Sitzungszeitlimits**.
-2. Wählen Sie im Bereich auf der rechten Seite die Richtlinie **Zeitlimit für aktive, aber im Leerlauf befindliche Remotedesktopdienste-Sitzungen festlegen** aus.
-3. Ändern Sie im angezeigten modalen Fenster die Richtlinienoption von **Nicht konfiguriert** in **Aktiviert**, um die Richtlinie zu aktivieren.
-4. Legen Sie im Dropdownmenü unter der Richtlinienoption den Zeitraum auf **3 Stunden** fest.
-
-Sie können die Richtlinien für Remotesitzungen auch manuell konfigurieren, indem Sie die folgenden Befehle ausführen:
-
-```batch
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 10800000 /f
 ```
 
 ### <a name="set-up-time-zone-redirection"></a>Einrichten der Zeitzonenumleitung

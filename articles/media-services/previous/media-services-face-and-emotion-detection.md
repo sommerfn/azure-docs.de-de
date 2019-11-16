@@ -15,15 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 3ae2e49b812e7a9515cef81b328ceb87e1a7f017
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015464"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084619"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gesichts- und Emotionenerkennung mit Azure Media Analytics
+
 ## <a name="overview"></a>Übersicht
+
 Mit dem Medienprozessor (MP) **Azure Media Face Detector** können Sie Bewegungen zählen und nachverfolgen und sogar Teilnahme sowie Reaktion der Zielgruppe anhand von Gesichtsausdrücken einschätzen. Dieser Dienst enthält zwei Funktionen: 
 
 * **Gesichtserkennung**

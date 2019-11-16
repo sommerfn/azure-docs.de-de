@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991432"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083210"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
@@ -212,7 +212,6 @@ Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit de
 |Azure Media Motion Detector|Vorschau|Alle|
 |Azure Media OCR|Vorschau|Alle|
 |Azure Media Redactor|Vorschau|Alle|
-|Azure Media Stabilizer|Vorschau|Alle|
 |Azure Media Video Thumbnails|Vorschau|Alle|
 |Azure Media Indexer 2|Vorschau|Alle mit Ausnahme der Regionen für China und die US-Regierung|
 

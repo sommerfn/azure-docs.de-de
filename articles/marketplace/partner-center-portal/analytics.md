@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 2b1d3167828f2c2c49bb22580222fbd0e54d31d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 53d7cb125f59491190aadb07755954ade78356fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813193"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075524"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analysen für das Programm „Kommerzieller Marketplace“ im Partner Center
 
-Erfahren Sie, wie Sie im Microsoft Partner Center auf Analyseberichte zugreifen können, um Verkäufe zu überwachen, die Leistung zu bewerten und Ihre Marketplace-Angebote zu optimieren. Als Partner können Sie Ihre Angebotsauflistungen anhand der vom Partner Center unterstützten Diagramme für Datenvisualisierung und Einblicke überwachen und Wege finden, um Ihre Umsätze zu maximieren. Die verbesserten Analysetools ermöglichen es Ihnen, auf Leistungsergebnisse zu reagieren und bessere Beziehungen zu Ihren Kunden und Wiederverkäufern zu pflegen. 
+Erfahren Sie, wie Sie im Microsoft Partner Center auf Analyseberichte zugreifen können, um Verkäufe zu überwachen, die Leistung zu bewerten und Ihre Marketplace-Angebote zu optimieren. Als Partner können Sie Ihre Angebotsauflistungen anhand der vom Partner Center unterstützten Diagramme für Datenvisualisierung und Einblicke überwachen und Wege finden, um Ihre Umsätze zu maximieren. Die verbesserten Analysetools ermöglichen es Ihnen, auf Leistungsergebnisse zu reagieren und bessere Beziehungen zu Ihren Kunden und Wiederverkäufern zu pflegen.
 
 Um auf die Analysetools im Partner Center zuzugreifen, öffnen Sie das Dashboard **[Analyse](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** unter „Kommerzieller Marketplace“.
 
@@ -141,7 +141,7 @@ Das Diagramm **Bestellungen nach Marketplace-Lizenztyp** zeigt die Anzahl der Be
 - **Abrechnung über Azure**: Wenn Sie sich entscheiden, [Ihr Angebot über Microsoft zu verkaufen](./create-new-saas-offer.md#sell-through-microsoft)werden die Rechnungen bei diesem Lizenztyp von Microsoft in Ihrem Namen an den Kunden ausgestellt. Zahlungsarten sind beispielsweise nutzungsbasierte Bezahlung, Kreditkarte oder Enterprise-Rechnungsstellung.
 - **BYOL (Bring Your Own License)** : Microsoft stellt Kunden die Nutzung dieser Art von Marketplace-Angebot nicht in Rechnung. Wird im Marketplace als **[Jetzt abrufen (kostenlos)](./create-new-saas-offer.md#get-it-now-free)** aufgeführt.
 - **Free:** Microsoft stellt Kunden die Nutzung dieser Art von Marketplace-Angebot nicht in Rechnung. Wird im Marketplace als **[Kostenlose Testversion](./create-new-saas-offer.md##free-trial-listing)** aufgeführt.
-- **Microsoft als Handelspartner**: Stellt Angebote dar, die von Microsoft-Handelspartnern im Rahmen des **[CSP-Programms (Cloud Solution Provider)](./create-new-saas-offer.md#csp-program-opt-in)** verkauft werden.
+- **Microsoft als Handelspartner**: Stellt Angebote dar, die von Microsoft-Handelspartnern im Rahmen des **[CSP-Programms (Cloud Solution Provider)](./create-new-saas-offer.md)** verkauft werden.
 
 ![Partner Center, Bestellungen nach Lizenztyp analysieren](./media/analyze-license-type.png)
 

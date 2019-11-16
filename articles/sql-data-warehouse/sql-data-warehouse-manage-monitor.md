@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e1a754747ae5c0fb7c50653f4881b67a81e011ef
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645672"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083646"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
 In diesem Artikel wird beschrieben, wie Sie dynamische Verwaltungssichten (DMVs) verwenden, um Ihre Workload zu überwachen. Dazu gehört auch die Untersuchung der Abfrageausführung in Azure SQL Data Warehouse.
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 Notieren Sie sich aus den oben stehenden Abfrageergebnissen **die Anforderungs-ID** der Abfrage, die Sie untersuchen möchten.
 
-Abfragen im Zustand **Angehalten** können aufgrund einer großen Anzahl aktiv ausgeführter Abfragen in eine Warteschlange gestellt werden. Diese Abfragen werden auch in der Abfrage [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) mit dem Typ UserConcurrencyResourceType angezeigt. Informationen zu parallelen Grenzwerten finden Sie unter [Leistungsstufen](performance-tiers.md) oder [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md). Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Anfragen, die auf Ressourcen warten][Investigating queries waiting for resources] weiter unten in diesem Artikel.
+Abfragen im Zustand **Angehalten** können aufgrund einer großen Anzahl aktiv ausgeführter Abfragen in eine Warteschlange gestellt werden. Diese Abfragen werden auch in der Abfrage [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) mit dem Typ UserConcurrencyResourceType angezeigt. Informationen zu parallelen Grenzwerten finden Sie unter [Leistungsstufen](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units) oder [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md). Abfragen können auch aus anderen Gründen warten, beispielsweise wegen Objektsperren.  Wenn Ihre Abfrage auf eine Ressource wartet, finden Sie nähere Informationen unter [Untersuchen von Anfragen, die auf Ressourcen warten][Investigating queries waiting for resources] weiter unten in diesem Artikel.
 
 Vereinfachen Sie die Suche nach einer Abfrage in der Tabelle [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) mithilfe von [LABEL][LABEL], um Ihrer Abfrage einen Kommentar hinzuzufügen, der in der Ansicht „sys.dm_pdw_exec_requests“ gesucht werden kann.
 

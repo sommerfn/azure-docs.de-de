@@ -1,17 +1,14 @@
 ---
 title: Informationen zu Azure Policy für die AKS-Engine
 description: Erfahren Sie, wie Azure Policy CustomResourceDefinitions und Open Policy Agent von Gatekeeper v3 verwendet, um Cluster mit der AKS-Engine zu verwalten.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: 71f3f26b9ea7f24d674c911e18c785b0798a072c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510067"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072066"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Grundlegendes zu Azure Policy für die AKS-Engine
 

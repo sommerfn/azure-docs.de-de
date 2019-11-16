@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9c67d511f6c94c8b9af034835e149875304e2235
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918966"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891756"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testen eines Azure Stream Analytics-Auftrags mit Beispieldaten
 
-In Azure Stream Analytics können Sie Ihre Abfrage testen, ohne den Auftrag zu starten oder zu beenden. Sie können Abfragen mit eingehenden Daten aus Ihrer Eingabesenke oder hochgeladenen Beispieldaten aus einer lokalen Datei im Azure-Portal testen. Sie können Abfragen auch lokal mit Ihren lokalen Beispieldaten oder Livedaten in [Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-live-data-local-testing) und [Visual Studio Code](https://docs.microsoft.com/en-us/azure/stream-analytics/vscode-local-run) testen. 
+In Azure Stream Analytics können Sie Ihre Abfrage testen, ohne den Auftrag zu starten oder zu beenden. Sie können Abfragen mit eingehenden Daten aus Ihrer Eingabesenke oder hochgeladenen Beispieldaten aus einer lokalen Datei im Azure-Portal testen. Sie können Abfragen auch lokal mit Ihren lokalen Beispieldaten oder Livedaten in [Visual Studio](stream-analytics-live-data-local-testing.md) und [Visual Studio Code](vscode-local-run.md) testen. 
 
 ## <a name="sample-incoming-data-from-input"></a>Beispieleingangsdaten aus Eingabe
 

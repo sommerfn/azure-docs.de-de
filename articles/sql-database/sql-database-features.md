@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: bfb44a44967c474da319c574307c7c289b28648e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 294fd39bfa78219df4bb0134aa744dd7515ff0f2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807824"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092147"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL-Datenbank – Funktionen
 
@@ -124,7 +124,7 @@ Die Azure-Plattform bietet eine Reihe von PaaS-Funktionen, die den Standardfeatu
 | Sicherungsaufbewahrung | Ja. Standardmäßig 7 Tage, maximal 35 Tage. | Ja. Standardmäßig 7 Tage, maximal 35 Tage. |
 | [Data Migration Service (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | Ja | Ja |
 | Dateisystemzugriff | Nein. Verwenden Sie [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. | Nein. Verwenden Sie [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) oder [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#i-accessing-data-from-a-file-stored-on-azure-blob-storage) als Alternative für den Zugriff und das Laden von Daten aus Azure Blob Storage. |
-| [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) | Ja – alle Dienstebenen außer Hyperscale | Ja – mit [Azure PowerShell](https://medium.com/azure-sqldb-managed-instance/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa). |
+| [Geowiederherstellung](sql-database-recovery-using-backups.md#geo-restore) | Ja – alle Dienstebenen außer Hyperscale | Ja – alle Dienstebenen außer Hyperscale |
 | [Hyperscale-Architektur](sql-database-service-tier-hyperscale.md) | Ja | Nein |
 | [Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen](sql-database-long-term-retention.md) | Ja, automatisch erstellte Sicherungen werden bis zu zehn Jahre lang aufbewahrt. | Bisher nicht. Verwenden Sie [manuelle Sicherungen](sql-database-managed-instance-transact-sql-information.md#backup) mit `COPY_ONLY` als vorübergehende Problemumgehung. |
 | Anhalten/Fortsetzen | Ja, im [serverlosen Modell](sql-database-serverless.md) | Nein | 

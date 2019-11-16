@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Azure Video Indexer zur Anpassung des Markenmodells
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: In diesem Artikel wird gezeigt, wie Sie das Markenmodell mit dem Azure Video Indexer anpassen können.
 services: media-services
 author: anikaz
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 8d0806bc0262cd45a49e4f97ea629683ac239aa8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4289c592644d7570ff0dd9ce6aed0cd77f51f25e
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799638"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838333"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Anpassen eines Markenmodells mit der Video Indexer-API
 

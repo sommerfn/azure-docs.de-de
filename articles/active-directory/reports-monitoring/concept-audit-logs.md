@@ -3,7 +3,7 @@ title: Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal | 
 description: Enthält eine Einführung in die Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 07/17/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186290"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008541"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
-Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
+Mit Azure AD-Berichten (Azure Active Directory) können Sie alle Informationen abrufen, die Sie zum Ermitteln des Zustands Ihrer Umgebung benötigen.
 
 Diese Architektur für die Berichterstellung umfasst die folgenden Komponenten:
 
@@ -42,7 +42,6 @@ Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
 ## <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 
 * Benutzer mit den Rollen **Sicherheitsadministrator**, **Sicherheitsleseberechtigter**, **Berichtsleser** oder **Globaler Administrator**
-* Außerdem können alle Benutzer, die keine Administratoren sind, ihre eigenen Überwachungsaktivitäten anzeigen.
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
@@ -61,11 +60,11 @@ Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Inf
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/listview.png "Überwachungsprotokolle")
 
-Sie können die Listenansicht anpassen, indem Sie auf der Symbolleiste auf **Spalten** klicken.
+Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spalten** klicken.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/columns.png "Überwachungsprotokolle")
 
-So können Sie weitere Felder anzeigen oder bereits angezeigte Felder entfernen.
+Sie können dann weitere Felder anzeigen oder Felder entfernen, die bereits angezeigt werden.
 
 ![Überwachungsprotokolle](./media/concept-audit-logs/columnselect.png "Überwachungsprotokolle")
 
@@ -79,7 +78,7 @@ Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Information
 Sie können die Überwachungsdaten in den folgenden Feldern filtern:
 
 - Dienst
-- Category (Kategorie)
+- Category
 - Aktivität
 - Status
 - Ziel

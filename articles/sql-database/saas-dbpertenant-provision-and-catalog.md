@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6ec8f8835e925663fc6ac21a6eb1df09d6927109
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822192"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132109"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Hier erfahren Sie, wie Sie neue Mandanten bereitstellen und sie im Katalog registrieren.
 
@@ -25,7 +25,7 @@ In diesem Tutorial erfahren Sie, wie Sie SaaS-Muster bereitstellen und katalogis
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> 
+>
 > * Bereitstellen eines einzelnen neuen Mandanten
 > * Bereitstellen eines Batches von zusätzlichen Mandanten
 
@@ -39,17 +39,17 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Für eine mehrinstanzenfähige SaaS-Anwendung mit Datenbankunterstützung ist es wichtig zu wissen, wo die Informationen über jeden einzelnen Mandanten gespeichert sind. Im SaaS-Katalogmuster wird eine Katalogdatenbank zum Speichern der Zuordnungen zwischen den einzelnen Mandanten und der Datenbank verwendet, in der die Daten gespeichert werden. Dieses Muster trifft immer dann zu, wenn Mandantendaten auf mehrere Datenbanken verteilt sind.
 
-Jeder Mandant wird anhand eines Schlüssels im Katalog identifiziert, der dem Speicherort der jeweiligen Datenbank zugeordnet ist. In der Wingtip Tickets-App wird der Schlüssel aus einem Hash des Mandantennamens gebildet. Mithilfe dieses Schemas kann die App den Schlüssel aus dem in der Anwendungs-URL enthaltenen Mandantennamen bilden. Es können andere Mandantenschlüsselschemas verwendet werden.  
+Jeder Mandant wird anhand eines Schlüssels im Katalog identifiziert, der dem Speicherort der jeweiligen Datenbank zugeordnet ist. In der Wingtip Tickets-App wird der Schlüssel aus einem Hash des Mandantennamens gebildet. Mithilfe dieses Schemas kann die App den Schlüssel aus dem in der Anwendungs-URL enthaltenen Mandantennamen bilden. Es können andere Mandantenschlüsselschemas verwendet werden.
 
 Dank des Katalogs kann der Name oder Speicherort der Datenbank ohne größere Auswirkungen auf die Anwendung geändert werden. In einem Datenbankmodell mit mehreren Mandanten kann mithilfe dieser Funktion auch ein Mandant zwischen Datenbanken „verschoben“ werden. Darüber hinaus kann der Katalog angeben, ob ein Mandant oder eine Datenbank offline ist (beispielsweise zur Wartung). Weitere Informationen zu dieser Funktion finden Sie im Tutorial zum [Wiederherstellen eines einzelnen Mandanten](saas-dbpertenant-restore-single-tenant.md).
 
-Im Katalog können auch zusätzliche Mandanten- oder Datenbankmetadaten gespeichert werden, z.B. Schemaversion, Dienstplan oder Mandanten angebotene SLAs. Im Katalog können andere Informationen gespeichert werden, die eine Anwendungsverwaltung, Kundensupport oder DevOps ermöglichen. 
+Im Katalog können auch zusätzliche Mandanten- oder Datenbankmetadaten gespeichert werden, z.B. Schemaversion, Dienstplan oder Mandanten angebotene SLAs. Im Katalog können andere Informationen gespeichert werden, die eine Anwendungsverwaltung, Kundensupport oder DevOps ermöglichen.
 
-Abgesehen von der SaaS-Anwendung kann der Katalog auch die Verwendung von Datenbanktools ermöglichen. Im Beispiel zu Wingtip Tickets SaaS mit einer Datenbank pro Mandant wird der Katalog verwendet, um mandantenübergreifende Abfragen zu ermöglichen, die im [Tutorial zur Ad-hoc-Berichterstellung](saas-tenancy-cross-tenant-reporting.md) erläutert werden. Die datenbankübergreifende Auftragsverwaltung wird in den Tutorials zur [Schemaverwaltung](saas-tenancy-schema-management.md) und [Mandantenanalyse](saas-tenancy-tenant-analytics.md) behandelt. 
+Abgesehen von der SaaS-Anwendung kann der Katalog auch die Verwendung von Datenbanktools ermöglichen. Im Beispiel zu Wingtip Tickets SaaS mit einer Datenbank pro Mandant wird der Katalog verwendet, um mandantenübergreifende Abfragen zu ermöglichen, die im [Tutorial zur Ad-hoc-Berichterstellung](saas-tenancy-cross-tenant-reporting.md) erläutert werden. Die datenbankübergreifende Auftragsverwaltung wird in den Tutorials zur [Schemaverwaltung](saas-tenancy-schema-management.md) und [Mandantenanalyse](saas-tenancy-tenant-analytics.md) behandelt.
 
-In den Beispielen zu Wingtip Tickets SaaS wird der Katalog mithilfe der Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](sql-database-elastic-database-client-library.md) implementiert. Die EDCL ist in Java und .Net Framework verfügbar. Die EDCL ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer datenbankgestützten Shardzuordnung. 
+In den Beispielen zu Wingtip Tickets SaaS wird der Katalog mithilfe der Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](sql-database-elastic-database-client-library.md) implementiert. Die EDCL ist in Java und .Net Framework verfügbar. Die EDCL ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer datenbankgestützten Shardzuordnung.
 
-Eine Shardzuordnung enthält eine Liste mit Shards (Datenbanken) und die Zuordnung zwischen Schlüsseln (Mandanten) und Shards. EDCL-Funktionen werden im Rahmen der Mandantenbereitstellung verwendet, um Einträge in der Shardzuordnung zu erstellen. Sie werden zur Laufzeit von Anwendungen genutzt, um eine Verbindung mit der richtigen Datenbank herzustellen. EDCL speichert Verbindungsinformationen zwischen, um den Datenverkehr für die Katalogdatenbank zu minimieren und die Anwendung zu beschleunigen. 
+Eine Shardzuordnung enthält eine Liste mit Shards (Datenbanken) und die Zuordnung zwischen Schlüsseln (Mandanten) und Shards. EDCL-Funktionen werden im Rahmen der Mandantenbereitstellung verwendet, um Einträge in der Shardzuordnung zu erstellen. Sie werden zur Laufzeit von Anwendungen genutzt, um eine Verbindung mit der richtigen Datenbank herzustellen. EDCL speichert Verbindungsinformationen zwischen, um den Datenverkehr für die Katalogdatenbank zu minimieren und die Anwendung zu beschleunigen.
 
 > [!IMPORTANT]
 > Sie können auf die Zuordnungsdaten in der Katalogdatenbank zugreifen, *allerdings sollten Sie sie nicht bearbeiten*. Bearbeiten Sie Zuordnungsdaten nur über EDCL-APIs. Ein direktes Bearbeiten der Zuordnungsdaten birgt das Risiko, den Katalog zu beschädigen, und wird daher nicht unterstützt.
@@ -57,15 +57,15 @@ Eine Shardzuordnung enthält eine Liste mit Shards (Datenbanken) und die Zuordnu
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>Einführung in das SaaS-Bereitstellungsmuster
 
-Wenn Sie einen neuen Mandanten in einer SaaS-Anwendung hinzufügen, die ein Datenbankmodell mit einem einzelnen Mandanten verwendet, müssen Sie eine neue Mandantendatenbank bereitstellen. Die Datenbank muss am korrekten Ort und auf der korrekten Dienstebene erstellt werden. Sie muss außerdem mit dem korrekten Schema und den korrekten Referenzdaten initialisiert werden. Zudem muss sie im Katalog unter dem korrekten Mandantenschlüssel registriert werden. 
+Wenn Sie einen neuen Mandanten in einer SaaS-Anwendung hinzufügen, die ein Datenbankmodell mit einem einzelnen Mandanten verwendet, müssen Sie eine neue Mandantendatenbank bereitstellen. Die Datenbank muss am korrekten Ort und auf der korrekten Dienstebene erstellt werden. Sie muss außerdem mit dem korrekten Schema und den korrekten Referenzdaten initialisiert werden. Zudem muss sie im Katalog unter dem korrekten Mandantenschlüssel registriert werden.
 
-Für die Datenbankbereitstellung können verschiedene Ansätze verwendet werden. Sie können SQL-Skripts ausführen, eine BACPAC-Datei bereitstellen oder eine Vorlagendatenbank kopieren. 
+Für die Datenbankbereitstellung können verschiedene Ansätze verwendet werden. Sie können SQL-Skripts ausführen, eine BACPAC-Datei bereitstellen oder eine Vorlagendatenbank kopieren.
 
-Die Datenbankbereitstellung muss Teil Ihrer Schemaverwaltungsstrategie sein. Sie müssen sicherstellen, dass neue Datenbanken mit dem neuesten Schema bereitgestellt werden. Diese Anforderung wird im [Tutorial zur Schemaverwaltung](saas-tenancy-schema-management.md) behandelt. 
+Die Datenbankbereitstellung muss Teil Ihrer Schemaverwaltungsstrategie sein. Sie müssen sicherstellen, dass neue Datenbanken mit dem neuesten Schema bereitgestellt werden. Diese Anforderung wird im [Tutorial zur Schemaverwaltung](saas-tenancy-schema-management.md) behandelt.
 
-Die Wingtip Tickets-App mit einer Datenbank pro Mandant stellt neue Mandanten bereit, indem sie eine auf dem Katalogserver bereitgestellte Vorlagendatenbank namens _basetenantdb_ kopiert. Die Bereitstellung kann im Rahmen der Registrierung in die Anwendung integriert werden. Sie kann auch offline mithilfe von Skripts unterstützt werden. In diesem Tutorial wird die Bereitstellung mithilfe von PowerShell durchgeführt. 
+Die Wingtip Tickets-App mit einer Datenbank pro Mandant stellt neue Mandanten bereit, indem sie eine auf dem Katalogserver bereitgestellte Vorlagendatenbank namens _basetenantdb_ kopiert. Die Bereitstellung kann im Rahmen der Registrierung in die Anwendung integriert werden. Sie kann auch offline mithilfe von Skripts unterstützt werden. In diesem Tutorial wird die Bereitstellung mithilfe von PowerShell durchgeführt.
 
-Bereitstellungsskripts kopieren die Datenbank _basetenantdb_, um eine neue Mandantendatenbank in einem Pool für elastische Datenbanken zu erstellen. Die Mandantendatenbank wird in dem Mandantenserver erstellt, der dem _newtenant_-DNS-Alias zugeordnet ist. In diesem Alias wird ein Verweis auf den Server verwaltet, mit dem neue Mandanten bereitgestellt werden, und dieser Alias wird aktualisiert, um auf einen Wiederherstellungsmandantenserver in den Tutorials zur Notfallwiederherstellung zu verweisen ([Notfallwiederherstellung mithilfe von Geowiederherstellung](saas-dbpertenant-dr-geo-restore.md), [Notfallwiederherstellung mithilfe von Georeplikation](saas-dbpertenant-dr-geo-replication.md)). Anschließend wird die Datenbank von den Skripts mit mandantenspezifischen Informationen initialisiert und in der Katalogshardzuordnung registriert. Mandantendatenbanken erhalten ihre Namen auf Grundlage des Mandantennamens. Dieses Benennungsschema ist kein wichtiger Bestandteil des Musters. Da der Katalog den Mandantenschlüssel dem Datenbanknamen zuordnet, kann jede Benennungskonvention verwendet werden. 
+Bereitstellungsskripts kopieren die Datenbank _basetenantdb_, um eine neue Mandantendatenbank in einem Pool für elastische Datenbanken zu erstellen. Die Mandantendatenbank wird in dem Mandantenserver erstellt, der dem _newtenant_-DNS-Alias zugeordnet ist. In diesem Alias wird ein Verweis auf den Server verwaltet, mit dem neue Mandanten bereitgestellt werden, und dieser Alias wird aktualisiert, um auf einen Wiederherstellungsmandantenserver in den Tutorials zur Notfallwiederherstellung zu verweisen ([Notfallwiederherstellung mithilfe von Geowiederherstellung](saas-dbpertenant-dr-geo-restore.md), [Notfallwiederherstellung mithilfe von Georeplikation](saas-dbpertenant-dr-geo-replication.md)). Anschließend wird die Datenbank von den Skripts mit mandantenspezifischen Informationen initialisiert und in der Katalogshardzuordnung registriert. Mandantendatenbanken erhalten ihre Namen auf Grundlage des Mandantennamens. Dieses Benennungsschema ist kein wichtiger Bestandteil des Musters. Da der Katalog den Mandantenschlüssel dem Datenbanknamen zuordnet, kann jede Benennungskonvention verwendet werden.
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
@@ -95,7 +95,7 @@ Um nachzuvollziehen, wie die Wingtip Tickets-Anwendung die Bereitstellung neuer 
 
 
 
-Verfolgen Sie die Ausführung des Skripts mithilfe der Menüoptionen unter **Debug**. Drücken Sie F10 und F11, um die aufgerufenen Funktionen zu überspringen oder schrittweise auszuführen. Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+Verfolgen Sie die Ausführung des Skripts mithilfe der Menüoptionen unter **Debug**. Drücken Sie F10 und F11, um die aufgerufenen Funktionen zu überspringen oder schrittweise auszuführen. Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 
 Sie müssen diesen Workflow nicht genau befolgen. Er erläutert, wie Sie das Skript debuggen.
@@ -156,7 +156,7 @@ Weitere Bereitstellungsmuster, die in diesem Tutorial nicht behandelt werden:
 
 **Vorabbereitstellung von Datenbanken**: Die Vorabbereitstellung profitiert von der Tatsache, dass Datenbanken in einem Pool für elastische Datenbanken keine zusätzlichen Kosten hervorrufen. Die Abrechnung erfolgt für den Pool für elastische Datenbanken und nicht für die Datenbanken. Datenbanken im Leerlauf verbrauchen keine Ressourcen. Indem Sie Datenbanken vorab in einem Pool bereitstellen und später bei Bedarf zuordnen, können Sie den Zeitaufwand für das Hinzufügen von Mandanten verringern. Die Anzahl der vorab bereitgestellten Datenbanken kann bedarfsorientiert angepasst werden, um einen für die erwartete Bereitstellungsrate geeigneten Puffer bereitzuhalten.
 
-**Automatische Bereitstellung**: Beim Muster der automatischen Bereitstellung stellt ein Bereitstellungsdienst Server, Pools und Datenbanken bei Bedarf automatisch bereit. Auf Wunsch können Sie die Vorabbereitstellung von Datenbanken in Pools für elastische Datenbanken einbinden. Wenn Datenbanken außer Betrieb genommen und gelöscht werden, können Lücken in den Pools für elastische Datenbanken durch den Bereitstellungsdienst gefüllt werden. Ein solcher Dienst kann einfach oder komplex sein. Die Bereitstellung kann beispielsweise über mehrere geografische Regionen erfolgen und die Georeplikation zur Notfallwiederherstellung eingerichtet werden. 
+**Automatische Bereitstellung**: Beim Muster der automatischen Bereitstellung stellt ein Bereitstellungsdienst Server, Pools und Datenbanken bei Bedarf automatisch bereit. Auf Wunsch können Sie die Vorabbereitstellung von Datenbanken in Pools für elastische Datenbanken einbinden. Wenn Datenbanken außer Betrieb genommen und gelöscht werden, können Lücken in den Pools für elastische Datenbanken durch den Bereitstellungsdienst gefüllt werden. Ein solcher Dienst kann einfach oder komplex sein. Die Bereitstellung kann beispielsweise über mehrere geografische Regionen erfolgen und die Georeplikation zur Notfallwiederherstellung eingerichtet werden.
 
 Beim Muster der automatischen Bereitstellung sendet eine Clientanwendung oder ein Skript eine Bereitstellungsanforderung an eine Warteschlange, damit diese vom Bereitstellungsdienst verarbeitet wird. Anschließend wird vom Dienst der Abschluss des Vorgangs abgefragt. Bei Verwendung der Vorabbereitstellung werden Anforderungen schnell verarbeitet. Der Dienst stellt eine Ersatzdatenbank im Hintergrund bereit.
 
@@ -166,7 +166,7 @@ Beim Muster der automatischen Bereitstellung sendet eine Clientanwendung oder ei
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> 
+>
 > * Bereitstellen eines einzelnen neuen Mandanten
 > * Bereitstellen eines Batches von zusätzlichen Mandanten
 > * Kennenlernen der Details zur Bereitstellung von Mandanten und zu deren Registrierung im Katalog
@@ -177,4 +177,4 @@ Sehen Sie sich das [Tutorial zur Leistungsüberwachung](saas-dbpertenant-perform
 
 * [Weitere Tutorials, die auf der Wingtip Tickets SaaS-Anwendung mit einer Datenbank pro Mandant aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)
-* [Debuggen von Skripts in der Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [Debuggen von Skripts in der Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

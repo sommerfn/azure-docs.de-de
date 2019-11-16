@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca55d49721f9c22f35ba79e819efa354a660d92a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302311"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012532"
 ---
-# <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger
-
 In diesem Artikel wird beschrieben, wie Sie die Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) von virtuellen IaaS-Computern (Virtual Machines, VMs) und Datenträgern in Azure planen. Im Dokument werden sowohl Managed Disks als auch nicht verwaltete Datenträger behandelt.
 
 Zuerst werden die integrierten Fehlertoleranzfunktionen der Azure-Plattform behandelt, die Schutz vor lokalen Ausfällen bieten. Dann werden die Notfallszenarien behandelt, die durch die integrierten Funktionen nicht vollständig abgedeckt werden. Außerdem werden einige Beispiele für Workloadszenarien angegeben, für die unterschiedliche Aspekte der Sicherung und Notfallwiederherstellung gelten können. Anschließend werden mögliche Lösungen für die Notfallwiederherstellung von IaaS-Datenträgern beschrieben.

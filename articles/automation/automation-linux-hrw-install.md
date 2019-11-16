@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240302"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129853"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Bereitstellen eines Linux-Hybrid Runbook Workers
 
@@ -54,7 +54,7 @@ Die Mindestanforderungen für einen Linux Hybrid Runbook Worker sind:
 |Python-ctypes | Python 2.x ist erforderlich. |
 |PAM | Module für austauschbare Authentifizierung|
 | **Optionale Pakete** | **Beschreibung** | **Mindestversion**|
-| PowerShell Core | Zum Ausführen von PowerShell-Runbooks muss PowerShell installiert werden. Unter [Installieren von PowerShell Core unter Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) erfahren Sie, wie Sie PowerShell installieren.  | 6.0.0 |
+| PowerShell Core | Zum Ausführen von PowerShell-Runbooks muss PowerShell installiert werden. Unter [Installieren von PowerShell Core unter Linux](/powershell/scripting/install/installing-powershell-core-on-linux) erfahren Sie, wie Sie PowerShell installieren.  | 6.0.0 |
 
 ### <a name="installation"></a>Installation
 
@@ -106,7 +106,7 @@ Die folgenden Runbooktypen werden auf einem Linux Hybrid Worker unterstützt:
 * PowerShell
 
   > [!NOTE]
-  > PowerShell-Runbooks erfordern, dass PowerShell Core auf dem Linux-Computer installiert wird. Unter [Installieren von PowerShell Core unter Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) erfahren Sie, wie Sie PowerShell Core installieren.
+  > PowerShell-Runbooks erfordern, dass PowerShell Core auf dem Linux-Computer installiert wird. Unter [Installieren von PowerShell Core unter Linux](/powershell/scripting/install/installing-powershell-core-on-linux) erfahren Sie, wie Sie PowerShell Core installieren.
 
 Die folgenden Runbooktypen werden auf einem Linux Hybrid Worker nicht unterstützt:
 

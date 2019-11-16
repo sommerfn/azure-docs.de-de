@@ -1,25 +1,17 @@
 ---
-title: Problembehandlung bei Redis-Client | Microsoft-Dokumentation
+title: Behandeln von clientseitigen Problemen bei Azure Cache for Redis
 description: Erfahren Sie, wie Sie häufige clientseitige Probleme bei Azure Cache for Redis beheben
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 51039d7e586e598d443af737bcd7567fb59e1d63
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72795250"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122614"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Behandeln von clientseitigen Problemen bei Azure Cache for Redis
 
@@ -29,7 +21,7 @@ In diesem Abschnitt wird das Behandeln von Problemen beschrieben, die wegen eine
 - [Sprunghafter Anstieg des Datenverkehrsvolumens](#traffic-burst)
 - [Hohe Auslastung der Client-CPU](#high-client-cpu-usage)
 - [Clientseitige Bandbreitenbegrenzung](#client-side-bandwidth-limitation)
-- [Große Anforderungen/große Antworten](#large-request-or-response-size)
+- [Große Anforderungen oder große Antworten](#large-request-or-response-size)
 
 ## <a name="memory-pressure-on-redis-client"></a>Hohe Arbeitsspeicherauslastung auf dem Redis-Client
 
@@ -84,7 +76,7 @@ Je nach Architektur der Clientcomputer bestehen möglicherweise Einschränkungen
 
 Verringern Sie zur Minderung den Netzwerkbandbreitenverbrauch, oder vergrößern Sie die Client-VM auf eine mit höherer Netzwerkkapazität.
 
-## <a name="large-request-or-response-size"></a>Große Anforderungen/große Antworten
+## <a name="large-request-or-response-size"></a>Große Anforderungen oder große Antworten
 
 Eine große Anforderung oder eine große Antwort kann Timeouts verursachen. Nehmen Sie beispielsweise an, dass auf Ihrem Client ein Timeoutwert von einer Sekunde konfiguriert ist. Ihre Anwendung fordert (unter Verwendung derselben physischen Verbindung) zwei Schlüssel gleichzeitig an (z.B. „A“ und „B“). Die meisten Clients unterstützen das „Pipelining“ für Anforderungen, wobei bei Anforderungen „A“ und „B“ nacheinander gesendet werden, ohne dass auf ihre Antworten gewartet wird. Der Server sendet die Antworten in der gleichen Reihenfolge zurück. Wenn die Antwort „A“ groß ist, kann sie den Großteil der Timeoutzeit für spätere Anforderungen verbrauchen.
 

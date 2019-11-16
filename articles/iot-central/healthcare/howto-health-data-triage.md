@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 88b4df909e2c56f1a60e0f3c737b05ae4c27ca4a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 40e850bcbd177b15c91e57ec369c6b04963ffb84
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123245"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132284"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Tutorial: Erstellen eines Power BI-Anbieterdashboards
 
@@ -51,7 +51,7 @@ In diesem Tutorial lernen Sie Folgendes:
 * Ein Power BI-Dienstkonto. Wenn Sie noch nicht über ein solches Konto verfügen, können Sie [ein kostenloses Testkonto für den Power BI-Dienst erstellen](https://app.powerbi.com/). Wenn Sie Power BI noch nicht verwendet haben, sollten Sie zunächst das Tutorial [Erste Schritte mit Power BI](https://docs.microsoft.com/power-bi/service-get-started) lesen.
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Einrichten eines kontinuierlichen Datenexports nach Azure Event Hubs
-Sie müssen zuerst einen kontinuierlichen Datenexport aus Ihrer Azure IoT Central-App-Vorlage an die Azure Event Hub-Instanz in Ihrem Abonnement einrichten. Befolgen Sie dazu die Schritte zum [Exportieren nach Event Hubs](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp) im vorliegenden Azure IoT Central-Tutorial. Für dieses Tutorial müssen Sie nur die Telemetriedaten exportieren.
+Sie müssen zuerst einen kontinuierlichen Datenexport aus Ihrer Azure IoT Central-App-Vorlage an die Azure Event Hub-Instanz in Ihrem Abonnement einrichten. Befolgen Sie dazu die Schritte zum [Exportieren nach Event Hubs](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data) im vorliegenden Azure IoT Central-Tutorial. Für dieses Tutorial müssen Sie nur die Telemetriedaten exportieren.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Erstellen eines Power BI-Streamingdatasets
 

@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 16a8eb4eea4e5e1e3bb49049c49d73adb99eef55
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: c56ddf04b98cc2b38e023714fcb0ffc5452236f2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688618"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074910"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
+
 Dieser Artikel enthält Informationen zu Problembehandlungsschritten, mit denen Sie eine niedrige Geschwindigkeit beim Sichern von Dateien und Ordnern mit Azure Backup diagnostizieren können. Wenn Sie den Azure Backup-Agent zum Sichern von Dateien verwenden, kann der Sicherungsprozess länger als erwartet dauern. Diese Verzögerung kann eine oder mehrere der folgenden Ursachen haben:
 
 * [Es treten Leistungsengpässe auf dem Computer auf, der gesichert wird.](#cause1)
@@ -32,6 +33,7 @@ Wir empfehlen Ihnen auch dringend den Artikel [Azure Backup-Dienst – FAQ](back
 <a id="cause1"></a>
 
 ## <a name="cause-performance-bottlenecks-on-the-computer"></a>Ursache: Leistungsengpässe auf dem Computer
+
 Leistungsengpässe auf dem Computer, der gesichert wird, können Verzögerungen verursachen. Die Fähigkeit des Computers, vom Datenträger zu lesen oder darauf zu schreiben, und die verfügbare Bandbreite zum Senden von Daten über das Netzwerk können beispielsweise für Engpässe sorgen.
 
 Zum Erkennen dieser Engpässe bietet Windows ein integriertes Tool, den [Systemmonitor](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Perfmon).
@@ -56,6 +58,7 @@ Hier sind einige Leistungsindikatoren und Bereiche angegeben, die bei der Diagno
 <a id="cause2"></a>
 
 ## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>Ursache: Azure Backup wird durch einen anderen Prozess oder Antivirensoftware beeinträchtigt
+
 Es sind mehrere Fälle bekannt, in denen sich andere Prozesse innerhalb des Windows-Systems negativ auf die Leistung des Azure Backup-Agent-Prozesses ausgewirkt haben. Falls Sie beispielsweise sowohl den Azure Backup-Agent als auch ein anderes Programm zum Sichern der Daten verwenden, oder Antivirensoftware ausgeführt wird, und die zu sichernden Dateien mit einer Sperre versehen wurden, können die mehrfachen Sperren der Dateien zu Konflikten führen. In diesem Fall kann bei der Sicherung ein Fehler auftreten, oder der Auftrag kann länger als erwartet dauern.
 
 Bei diesem Szenario deaktivieren Sie am besten das andere Sicherungsprogramm, um zu testen, ob sich die Sicherungsdauer des Azure Backup-Agents ändert. Wenn Sie sicherstellen, dass nicht mehrere Sicherungsaufträge gleichzeitig ausgeführt werden, reicht dies normalerweise aus, um eine gegenseitige Behinderung zu vermeiden.
@@ -69,11 +72,13 @@ Für Antivirenprogramme empfehlen wir Ihnen, die folgenden Dateien und Speichero
 <a id="cause3"></a>
 
 ## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Ursache: Auf einem virtuellen Azure-Computer ausgeführter Backup-Agent
+
 Wenn Sie den Backup-Agent auf einem virtuellen Computer ausführen, ist die Leistung niedriger als bei Ausführung auf einem physischen Computer. Dies ist aufgrund der IOPS-Beschränkungen zu erwarten.  Sie können die Leistung aber optimieren, indem Sie die Datenlaufwerke, die gesichert werden, auf Azure Storage Premium umstellen. Wir arbeiten an der Behebung dieses Problems, und die Lösung wird Teil einer zukünftigen Version sein.
 
 <a id="cause4"></a>
 
 ## <a name="cause-backing-up-a-large-number-millions-of-files"></a>Ursache: Sichern einer großen Zahl von Dateien (mehrere Millionen)
+
 Das Verschieben einer großen Datenmenge dauert länger als das Verschieben einer kleineren Datenmenge . In einigen Fällen hängt die Sicherungszeit nicht nur von der Datenmenge ab, sondern auch von der Anzahl der Dateien oder Ordner. Dies ist insbesondere dann der Fall, wenn Millionen von kleinen Dateien (ein paar Bytes bis wenige Kilobytes) gesichert werden.
 
 Dieses Verhalten tritt auf, weil Azure simultan Ihre Dateien katalogisiert, während Sie die Daten sichern und in Azure verschieben. In einigen seltenen Fällen kann die Katalogisierung länger als erwartet dauern.

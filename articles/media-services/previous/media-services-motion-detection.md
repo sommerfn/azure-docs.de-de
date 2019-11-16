@@ -14,15 +14,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: c053e4dfc38fc0f055ec91a6622ef7f767c13a86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: fd31528325ddbe913333bc228fc3847242abcd24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "69015321"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083754"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Erkennen von Bewegungen mit Azure Media Analytics
+ 
 ## <a name="overview"></a>Übersicht
+
 Mit dem Medienprozessor (MP) **Azure Media Motion Detector** können Sie effizient Ihrem Interesse entsprechende Abschnitte innerhalb eines ansonsten langen und ereignislosen Videos identifizieren. Mit Bewegungserkennung können in Aufnahmen statischer Kameras Abschnitte des Videos identifiziert werden, wo Bewegung auftritt. Es wird eine JSON-Datei generiert, die Metadaten mit Zeitstempeln und der Umgebungsregion des Ereignisses enthält.
 
 Diese für Sicherheitsvideoaufnahmen konzipierte Technologie kann Bewegung in relevante Ereignisse und falsch-positive Ergebnisse – z. B. Schatten und Beleuchtungsänderungen – kategorisieren. So können Sie Sicherheitswarnungen aus Kameraaufnahmen generieren, ohne unzählige irrelevante Ereignisse auswerten zu müssen, und sind in der Lage, Momente von Interesse aus langen Überwachungsvideos zu extrahieren.

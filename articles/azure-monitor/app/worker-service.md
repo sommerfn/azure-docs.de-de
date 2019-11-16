@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cijothomas
 ms.author: cithomas
 ms.date: 09/15/2019
-ms.openlocfilehash: ccc7218575638c7ede2c56a99e41dd68cbd475c0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5f812d5fe1b25358a0bf09ebf879569ae29b33f3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899232"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131889"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights für Workerdienstanwendungen (Anwendungen ohne HTTP)
 
@@ -360,7 +360,7 @@ Häufig verwendete Einstellungen in `ApplicationInsightsServiceOptions`
 |EnableHeartbeat | Heartbeats-Feature aktivieren/deaktivieren, das in regelmäßigen Abständen (Standardwert: 15 Minuten) eine benutzerdefinierte Metrik namens „HeartBeatState“ mit Informationen zur Laufzeit wie .NET-Version, ggf. Informationen zur Azure-Umgebung usw. sendet. | true
 |AddAutoCollectedMetricExtractor | Extraktor für „AutoCollectedMetrics“ aktivieren/deaktivieren, bei dem es sich um einen Telemetrieprozessor handelt, der vorab aggregierte Metriken zu Anforderungen/Abhängigkeiten sendet, bevor die Stichprobenerstellung stattfindet. | true
 
-Die aktuelle Liste finden Sie unter den [konfigurierbaren Einstellungen in `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs).
+Die aktuelle Liste finden Sie unter den [konfigurierbaren Einstellungen in `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs).
 
 ### <a name="sampling"></a>Stichproben
 
@@ -368,7 +368,7 @@ Das Application Insights SDK für Workerdienstanwendungen unterstützt sowohl di
 
 ### <a name="adding-telemetryinitializers"></a>Hinzufügen von TelemetryInitializers
 
-Mit [Telemetrieinitialisierern](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) legen Sie die Eigenschaften fest, die zusammen mit allen Telemetriedaten gesendet werden.
+Mit [Telemetrieinitialisierern](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) legen Sie die Eigenschaften fest, die zusammen mit allen Telemetriedaten gesendet werden.
 
 Fügen Sie jeden neuen `TelemetryInitializer` dem Container `DependencyInjection` hinzu, und das SDK fügt ihn automatisch der `TelemetryConfiguration` hinzu.
 
@@ -406,7 +406,7 @@ Telemetrieinitialisierer sind standardmäßig vorhanden. Wenn Sie alle oder nur 
 
 ### <a name="adding-telemetry-processors"></a>Hinzufügen von Telemetrieprozessoren
 
-Sie können `TelemetryConfiguration` benutzerdefinierte Telemetrieprozessoren hinzufügen, indem Sie die Erweiterungsmethode `AddApplicationInsightsTelemetryProcessor` in `IServiceCollection` verwenden. Mit Telemetrieprozessoren können Sie in [komplexen Filterszenarios](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor) genauer steuern, welche Informationen in die Telemetriedaten, die an Application Insights gesendet werden, einbezogen oder daraus ausgeschlossen werden. Verwenden Sie das folgende Beispiel.
+Sie können `TelemetryConfiguration` benutzerdefinierte Telemetrieprozessoren hinzufügen, indem Sie die Erweiterungsmethode `AddApplicationInsightsTelemetryProcessor` in `IServiceCollection` verwenden. Mit Telemetrieprozessoren können Sie in [komplexen Filterszenarios](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#itelemetryprocessor-and-itelemetryinitializer) genauer steuern, welche Informationen in die Telemetriedaten, die an Application Insights gesendet werden, einbezogen oder daraus ausgeschlossen werden. Verwenden Sie das folgende Beispiel.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)

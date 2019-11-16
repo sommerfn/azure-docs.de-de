@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: 0771079eb338c2f22cb0b1f31c48b0b9f80a3ff5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819092"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928563"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights mithilfe von PowerShell
 
@@ -131,7 +131,7 @@ Die Metriken werden von verschiedenen Telemetriemodulen gesendet:
 Sie können [Ihre Reaktion auf eine Warnung automatisieren](../../azure-monitor/platform/alerts-webhooks.md). Azure ruft eine Webadresse Ihrer Wahl auf, wenn eine Warnung ausgelöst wird.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Skript zum Konfigurieren von Application Insights](powershell-script-create-resource.md)
+* [Skript zum Konfigurieren von Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [Erstellen von Application Insights- und Webtestressourcen aus Vorlagen](powershell.md)
 * [Automatisieren der Kopplung der Microsoft Azure-Diagnose mit Application Insights](powershell-azure-diagnostics.md)
 * [Automatisieren Ihrer Reaktion auf eine Warnung](../../azure-monitor/platform/alerts-webhooks.md)

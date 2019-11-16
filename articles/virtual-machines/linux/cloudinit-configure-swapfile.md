@@ -1,5 +1,5 @@
 ---
-title: Verwenden von „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM | Microsoft-Dokumentation
+title: Verwenden von „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM
 description: Es wird beschrieben, wie Sie „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM während der Erstellung mit der Azure CLI verwenden.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d8ce12b931b6a30fa375588b73a1140ed4697c2f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fad73a7dbed9351d684ef2464cf2fa6fa3489290
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640768"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036769"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Verwenden von „cloud-init“ zum Konfigurieren einer Swap-Partition auf einer Linux-VM
 In diesem Artikel wird veranschaulicht, wie Sie [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren der Swap-Partition auf verschiedenen Linux-Distributionen verwenden. Die Swap-Partition wurde traditionell vom Linux-Agent (WALA) konfiguriert – abhängig davon, für welche Distributionen eine Auslagerungsdatei benötigt wurde.  In diesem Dokument wird das Vorgehen für die bedarfsgesteuerte Erstellung der Swap-Partition zur Bereitstellungszeit unter Verwendung von „cloud-init“ beschrieben.  Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).

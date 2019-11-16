@@ -8,12 +8,12 @@ author: cijothomas
 ms.author: cithomas
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 82c0855e3ea3b6a89c1b20569971b0dc6b3d449c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c124e6c433f83212c0db815a2fd06cfcfdf86253
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899861"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884710"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -534,7 +534,7 @@ Befolgen Sie [diese](https://docs.microsoft.com/azure/azure-functions/functions-
 
 *Es gibt einige seltene Ereignisse, die ich immer untersuchen möchte. Wie bekomme ich sie durch das Stichprobenmodul?*
 
-* Dies erreichen Sie am besten, indem Sie einen benutzerdefinierten [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) schreiben, der `SamplingPercentage` für das Telemetriedatenelement, das Sie behalten möchten, auf 100 festlegt (wie unten veranschaulicht). Da Initialisierer garantiert vor Telemetrieprozessoren (einschließlich Stichprobenerstellung) ausgeführt werden, ist sichergestellt, dass alle Verfahren zur Stichprobenerstellung dieses Element bei jeglichen Überlegungen der Stichprobenerstellung ignorieren.
+* Dies erreichen Sie am besten, indem Sie einen benutzerdefinierten [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) schreiben, der `SamplingPercentage` für das Telemetriedatenelement, das Sie behalten möchten, auf 100 festlegt (wie unten veranschaulicht). Da Initialisierer garantiert vor Telemetrieprozessoren (einschließlich Stichprobenerstellung) ausgeführt werden, ist sichergestellt, dass alle Verfahren zur Stichprobenerstellung dieses Element bei jeglichen Überlegungen der Stichprobenerstellung ignorieren.
 
 ```csharp
      public class MyTelemetryInitializer : ITelemetryInitializer

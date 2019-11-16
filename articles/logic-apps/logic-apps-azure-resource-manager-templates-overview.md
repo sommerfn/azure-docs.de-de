@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: f2c6676284e8ed58f1626ab824aa7a7c9c456a31
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: bc61e39a02d16827521758ca8248488e46c109b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494459"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838093"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -326,7 +326,7 @@ Die folgenden Attribute gehören speziell zur Ressourcendefinition Ihrer Logik-A
 |-----------|----------|------|-------------|
 | `state` | Ja | Zeichenfolge | Der Zustand Ihrer Logik-App bei der Bereitstellung, wobei `Enabled` bedeutet, dass Ihre Logik-App aktiv ist, und `Disabled` bedeutet, dass Ihre Logik-App inaktiv ist. Die Option `Disabled` können Sie beispielsweise verwenden, wenn Ihre Logik-App noch nicht aktiviert, aber bereits als Entwurfsversion bereitgestellt werden soll. |
 | `integrationAccount` | Nein | Object | Wird in Ihrer Logik-App ein Integrationskonto verwendet, das Artefakte für B2B-Szenarien (Business-to-Business) speichert, enthält dieses Objekt das `id`-Attribut, das die ID für das Integrationskonto angibt. |
-| `definition` | Ja | Object | Die Workflowdefinition, die Ihrer Logik-App zugrunde liegt. Diese Definition ist das Objekt, das in der Codeansicht angezeigt wird und im Thema [Schemareferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md) vollständig beschrieben ist. In dieser Workflowdefinition sind im `parameters`-Objekt die Parameter für die Werte deklariert, die zur Logik-App-Laufzeit verwendet werden sollen. Weitere Informationen hierzu finden Sie unter [Workflowdefinition und -parameter](#workflow-definition-parameters). <p><p>Um die Attribute anzuzeigen, die zur Workflowdefinition ihrer Logik-App gehören, wechseln Sie im Azure-Portal oder in Visual Studio von der „Entwurfsansicht“ in die „Codeansicht“, oder verwenden Sie ein Tool wie [Azure-Ressourcen-Explorer](http://resources.azure.com). |
+| `definition` | Ja | Object | Die Workflowdefinition, die Ihrer Logik-App zugrunde liegt. Diese Definition ist das Objekt, das in der Codeansicht angezeigt wird und im Thema [Schemareferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md) vollständig beschrieben ist. In dieser Workflowdefinition sind im `parameters`-Objekt die Parameter für die Werte deklariert, die zur Logik-App-Laufzeit verwendet werden sollen. Weitere Informationen hierzu finden Sie unter [Workflowdefinition und -parameter](#workflow-definition-parameters). <p><p>Um die Attribute anzuzeigen, die zur Workflowdefinition ihrer Logik-App gehören, wechseln Sie im Azure-Portal oder in Visual Studio von der „Entwurfsansicht“ in die „Codeansicht“, oder verwenden Sie ein Tool wie [Azure-Ressourcen-Explorer](https://resources.azure.com). |
 | `parameters` | Nein | Object | Die zur [Workflowdefinition gehörenden Parameterwerte](#workflow-definition-parameters), die zur Logik-App-Laufzeit verwendet werden sollen. Die Parameterdefinitionen für diese Werte sind im [„parameters“-Objekt Ihrer Workflowdefinition](#workflow-definition-parameters) enthalten. Wenn in Ihrer Logik-App [verwaltete Connectors](../connectors/apis-list.md) für den Zugriff auf andere Dienste und Systeme verwendet werden, enthält dieses Objekt außerdem ein `$connections`-Objekt, das die zur Laufzeit zu verwendenden Verbindungswerte festlegt. |
 | `accessControl` | Nein | Object | Hiermit werden Sicherheitsattribute für Ihre Logik-App angegeben, etwa Einschränken des IP-Zugriffs auf Anforderungstrigger oder Ausführungsverlaufseingaben und -ausgaben. Weitere Informationen finden Sie unter [Schützen des Zugriffs und der Daten in Azure Logic Apps](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||

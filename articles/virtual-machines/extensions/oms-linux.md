@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor-VM-Erweiterung für Linux | Microsoft-Dokumentation
+title: Azure Monitor-VM-Erweiterung für Linux
 description: Stellen Sie den Log Analytics-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: akjosh
-ms.openlocfilehash: 75f659f9559703cedccef0d8e726b5c8c5bb49be
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: a021c76eb973eba11e1dc1ee89f3d7f829a53f70
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435843"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073060"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Azure Monitor-VM-Erweiterung für Linux
 

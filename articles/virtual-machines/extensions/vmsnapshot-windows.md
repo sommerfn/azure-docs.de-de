@@ -1,5 +1,5 @@
 ---
-title: VM-Momentaufnahmenerweiterung unter Windows für Azure Backup | Microsoft-Dokumentation
+title: VM-Momentaufnahmenerweiterung unter Windows für Azure Backup
 description: Durchführen von anwendungskonsistenten Sicherungen des virtuellen Computers aus Azure Backup mit der VM-Momentaufnahmenerweiterung
 services: backup, virtual-machines-windows
 documentationcenter: ''
@@ -9,12 +9,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 8e6468d06341f49e3c57532df8cacb0b6eb25b05
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 32e8b0099ef464312b6f2b9c0eb989154815af77
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706588"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072901"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>VM-Momentaufnahmenerweiterung unter Windows für Azure Backup
 

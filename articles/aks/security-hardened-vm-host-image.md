@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202982"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885643"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Sicherheitshärtung bei AKS-Hosts für virtuelle Computer 
 
@@ -30,7 +30,7 @@ Das Ziel des sicherheitsgehärteten Hostbetriebssystems ist es, die Angriffsflä
 
 * AKS stellt standardmäßig ein sicherheitsoptimiertes Hostbetriebssystem bereit. Es gibt aktuell keine Option zur Auswahl eines alternativen Betriebssystems. 
 
-* Azure wendet tägliche Patches (einschließlich Sicherheitspatches) auf AKS-Hosts für virtuelle Computer an. Für einige dieser Patches ist ein Neustart erforderlich, für andere hingegen nicht. Es ist Ihre Aufgabe, die Neustarts von AKS-VM-Hosts bedarfsgerecht zu planen. Anleitungen zum Automatisieren von AKS-Patches finden Sie unter [Patchen von AKS-Knoten](https://docs.microsoft.com/en-us/azure/aks/node-updates-kured).
+* Azure wendet tägliche Patches (einschließlich Sicherheitspatches) auf AKS-Hosts für virtuelle Computer an. Für einige dieser Patches ist ein Neustart erforderlich, für andere hingegen nicht. Es ist Ihre Aufgabe, die Neustarts von AKS-VM-Hosts bedarfsgerecht zu planen. Anleitungen zum Automatisieren von AKS-Patches finden Sie unter [Patchen von AKS-Knoten](https://docs.microsoft.com/azure/aks/node-updates-kured).
 
 Es folgt eine Zusammenfassung der Maßnahmen zur Härtung des Images, die in der AKS-Engine implementiert sind, um das sicherheitsoptimierte Hostbetriebssystem zu erzeugen. Die Maßnahmen wurden [in diesem GitHub-Projekt](https://github.com/Azure/aks-engine/projects/7) implementiert.  
 

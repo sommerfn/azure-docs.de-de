@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer vollständigen Linux-Umgebung mit der klassischen Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Erstellen einer vollständigen Linux-Umgebung mit der klassischen Azure-Befehlszeilenschnittstelle
 description: Hier erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Lastenausgleich, einen Netzwerkadapter, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die klassische Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) von Grund auf neu erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: aaf91aa81be5fc4c5944dde804798a61ceffc5a6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1ee89ce18600685f3f82bfb49d4d8ecbaf192b04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083712"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036525"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Erstellen einer vollständigen Linux-Umgebung mit der klassischen Azure-Befehlszeilenschnittstelle
 In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.

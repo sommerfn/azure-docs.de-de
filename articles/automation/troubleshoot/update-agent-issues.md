@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971276"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886396"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
@@ -107,7 +107,7 @@ Bei der Überprüfung des Zugriffs auf den Crypto-Ordner wird untersucht, ob das
 
 ## <a name="troubleshoot-offline"></a>Offlineproblembehandlung
 
-Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Sie finden das Skript [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) im PowerShell-Katalog. Zum Ausführen des Skripts muss WMF 4.0 oder höher installiert sein. Informationen zum Herunterladen der neueste Version von PowerShell finden Sie unter [Installieren verschiedener Versionen von PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell).
+Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Sie finden das Skript [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) im PowerShell-Katalog. Zum Ausführen des Skripts muss WMF 4.0 oder höher installiert sein. Informationen zum Herunterladen der neueste Version von PowerShell finden Sie unter [Installieren verschiedener Versionen von PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 Die Ausgabe dieses Skripts ähnelt dem folgenden Beispiel:
 

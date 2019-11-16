@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 771a4ffde9f3929a55ee8ce48c2b38e16b83ad49
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 4fd6de848756cedf21d7bb1f7f1be31175de6627
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650678"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838256"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 
@@ -331,15 +331,15 @@ Falls Sie die **HEALTHCHECK**-Integration für den gesamten Service Fabric-Clust
 ## <a name="deploy-the-container-application"></a>Bereitstellen der Containeranwendung
 Speichern Sie alle Änderungen, und erstellen Sie die Anwendung. Klicken Sie zum Veröffentlichen Ihrer Anwendung im Projektmappen-Explorer mit der rechten Maustaste auf **MyFirstContainer**, und wählen Sie **Veröffentlichen**.
 
-Geben Sie in **Verbindungsendpunkt** den Verwaltungsendpunkt für den Cluster ein, z.B. „containercluster.westus2.cloudapp.azure.com:19000“. Den Clientverbindungsendpunkt finden Sie im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Übersicht“ für Ihren Cluster.
+Geben Sie in **Verbindungsendpunkt** den Verwaltungsendpunkt für den Cluster ein, Beispiel: `containercluster.westus2.cloudapp.azure.com:19000`. Den Clientverbindungsendpunkt finden Sie im [Azure-Portal](https://portal.azure.com) auf der Registerkarte „Übersicht“ für Ihren Cluster.
 
 Klicken Sie auf **Veröffentlichen**.
 
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Service Fabric-Cluster. Navigieren Sie in einem Browser zu http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/, und führen Sie die Anwendungsbereitstellung durch. Die Anwendung wird bereitgestellt, befindet sich bis zum Herunterladen des Images auf die Clusterknoten aber in einem Fehlerzustand (je nach Imagegröße kann dies einige Zeit in Anspruch nehmen): ![Fehler][1]
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) ist ein webbasiertes Tool zum Untersuchen und Verwalten von Anwendungen und Knoten in einem Service Fabric-Cluster. Navigieren Sie in einem Browser zu `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/`, und führen Sie die Anwendungsbereitstellung durch. Die Anwendung wird bereitgestellt, befindet sich bis zum Herunterladen des Images auf die Clusterknoten aber in einem Fehlerzustand (je nach Imagegröße kann dies einige Zeit in Anspruch nehmen): ![Fehler][1]
 
 Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Bereit][2].
 
-Öffnen Sie einen Browser, und navigieren Sie zu http://containercluster.westus2.cloudapp.azure.com:8081. Die Überschrift „Hello World!“ wird im Browser angezeigt.
+Öffnen Sie einen Browser, und navigieren Sie zu `http://containercluster.westus2.cloudapp.azure.com:8081`. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ## <a name="clean-up"></a>Bereinigen
 

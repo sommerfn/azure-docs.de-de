@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3cd612200dc33fe37036146b00f52073403ecc
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 929479f2816ef979edb26ba5aa00cf449c49b70a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852039"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73942165"
 ---
 # <a name="supported-account-types"></a>Unterstützte Kontotypen
 
@@ -41,7 +41,7 @@ In der öffentlichen Microsoft Azure-Cloud können die meisten App-Typen Benutze
   - Bei ihrem Geschäfts-, Schul- oder Unikonto oder ihrem persönlichen Microsoft-Konto.
   - Nur bei ihrem persönlichen Microsoft-Konto.
     > [!NOTE]
-    > Derzeit unterstützt Microsoft Identity Platform persönliche Microsoft-Konten nur, wenn eine Anwendung für **Geschäfts-, Schul- oder Unikonten oder persönliche Microsoft-Konten** registriert und dann im Code für die Anwendung die Anmeldung einschränkt wird. Dazu wird beim Erstellen der Anwendung eine Azure AD-Autorität angegeben, wie beispielsweise `https://login.onmicrosoftonline.com/consumers`.
+    > Derzeit unterstützt Microsoft Identity Platform persönliche Microsoft-Konten nur, wenn eine Anwendung für **Geschäfts-, Schul- oder Unikonten oder persönliche Microsoft-Konten** registriert und dann im Code für die Anwendung die Anmeldung einschränkt wird. Dazu wird beim Erstellen der Anwendung eine Azure AD-Autorität angegeben, wie beispielsweise `https://login.microsoftonline.com/consumers`.
 
 - Wenn Sie eine B2C-Anwendung schreiben, können Sie Benutzer über Azure AD B2C auch mit Identitäten sozialer Netzwerke anmelden.
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 09/26/2019
-ms.openlocfilehash: 072fafac7294757afb26511af569ea75ace0d20a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: df857fb938ade329a971578ac206f16f1357d7e5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811932"
+ms.locfileid: "73838755"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -137,7 +137,7 @@ Nachdem Sie sich angemeldet haben, führen Sie die folgenden Schritte aus, um di
 
 1. Wählen Sie in Partner Center die Option **Einstellungen** > **Entwicklereinstellungen** > **Programme** > **Erste Schritte** aus, und geben Sie Ihre geschäftliche E-Mail-Adresse ein.
 2. Geben Sie auf der Seite mit dem Herausgeberprofil die erforderlichen Details an.
-3. Lesen Sie die Geschäftsbedingungen der [Microsoft Marketplace Herausgebervereinbarung](http://go.microsoft.com/fwlink/?LinkID=699560), und wählen Sie dann **Zustimmen und fortfahren** aus, um die Registrierung abzuschließen.
+3. Lesen Sie die Geschäftsbedingungen der [Microsoft Marketplace Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560), und wählen Sie dann **Zustimmen und fortfahren** aus, um die Registrierung abzuschließen.
 
     >[!Important]
     >*Sie müssen befugt sein, im Namen Ihres Unternehmens zu handeln, um diesen Bedingungen zuzustimmen.*

@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: f40edec088172bf7460d99b611e6be80f818ff9c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601892"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129391"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Verbinden mit Datenquellen aus Azure Databricks
 
@@ -26,34 +26,34 @@ Dieser Artikel enthält Links zu den verschiedenen Datenquellen in Azure, die mi
 
 ## <a name="data-sources-for-azure-databricks"></a>Datenquellen für Azure Databricks
 
-Die folgende Liste enthält die Datenquellen in Azure, die Sie mit Azure Databricks verwenden können. Eine vollständige Liste der Datenquellen, die mit Azure Databricks verwendet werden können, finden Sie unter [Datenquellen für Azure Databricks](/azure/databricks/data/data-sources/index.html).
+Die folgende Liste enthält die Datenquellen in Azure, die Sie mit Azure Databricks verwenden können. Eine vollständige Liste der Datenquellen, die mit Azure Databricks verwendet werden können, finden Sie unter [Datenquellen für Azure Databricks](/azure/databricks/data/data-sources/index).
 
-- [Azure SQL-Datenbank](/azure/databricks/data/data-sources/sql-databases.html)
+- [Azure SQL-Datenbank](/azure/databricks/data/data-sources/sql-databases)
 
     Dieser Link bietet die DataFrame-API für die Verbindung mit SQL-Datenbanken über JDBC und Informationen dazu, wie die Parallelität von Lesezugriffen über die JDBC-Schnittstelle gesteuert wird. Dieses Thema enthält detaillierte Beispiele unter Verwendung der Scala-API, mit abgekürzten Python- und Spark-SQL-Beispielen am Ende.
-- [Azure Data Lake-Speicher](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html)
+- [Azure Data Lake-Speicher](/azure/databricks/data/data-sources/azure/azure-datalake-gen2)
 
     Unter diesem Link finden Sie Beispiele für die Verwendung des Azure Active Directory-Dienstprinzipals zur Authentifizierung bei Azure Data Lake Storage. Es ist auch eine Anleitung dazu vorhanden, wie aus Azure Databricks auf die Daten in Azure Data Lake Storage zugegriffen werden kann.
 
-- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html)
+- [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage)
 
     Dieser Link enthält Beispiele für den direkten Zugriff aus Azure Databricks auf Azure Blob Storage mithilfe des Zugriffsschlüssels oder des SAS für einen bestimmten Container. Zudem bietet der Link Informationen darüber, wie Sie aus Azure Databricks über die RDD-API auf Azure Blob Storage zugreifen können.
 
-- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector.html)
+- [Azure Cosmos DB](/azure/databricks/data/data-sources/azure/cosmosdb-connector)
 
     Dieser Link enthält Anweisungen zur Verwendung des [Azure Cosmos DB-Spark-Connectors](https://github.com/Azure/azure-cosmosdb-spark) aus Azure Databricks für den Zugriff auf Daten in Azure Cosmos DB.
 
-- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector.html)
+- [Azure Event Hubs](/azure/event-hubs/event-hubs-spark-connector)
 
     Dieser Link enthält Anweisungen zur Verwendung des [Azure Event Hubs-Spark-Connectors](https://github.com/Azure/azure-event-hubs-spark) aus Azure Databricks für den Zugriff auf Daten in Azure Event Hubs.
 
-- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse.html)
+- [Azure SQL Data Warehouse](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
 
     Dieser Link enthält Anweisungen, wie über den Azure SQL Data Warehouse-Connector eine Verbindung aus Azure Databricks hergestellt werden kann.
     
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Quellen, aus denen Sie Daten in Azure Databricks importieren können, finden Sie im Artikel zu [Datenquellen für Azure Databricks](/azure/databricks/data/data-sources/index.html#).
+Weitere Informationen zu Quellen, aus denen Sie Daten in Azure Databricks importieren können, finden Sie im Artikel zu [Datenquellen für Azure Databricks](/azure/databricks/data/data-sources/index).
 
 

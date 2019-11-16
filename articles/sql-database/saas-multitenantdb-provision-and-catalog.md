@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817926"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133149"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank mit Sharding
 
@@ -63,11 +63,11 @@ Darüber hinaus kann der Katalog angeben, ob ein Mandant offline ist (beispielsw
 - Die Dienstebene oder die Edition einer Datenbank
 - Die Version des Datenbankschemas
 - Den Namen des Mandanten und seiner SLA (Vereinbarung zum Servicelevel)
-- Informationen zu Anwendungsverwaltung, Kundensupport oder DevOps-Prozessen  
+- Informationen zu Anwendungsverwaltung, Kundensupport oder DevOps-Prozessen
 
-Der Katalog kann auch verwendet werden, um eine mandantenübergreifende Berichterstellung, Schemaverwaltung und Datenextraktion für Analysezwecke zu ermöglichen. 
+Der Katalog kann auch verwendet werden, um eine mandantenübergreifende Berichterstellung, Schemaverwaltung und Datenextraktion für Analysezwecke zu ermöglichen.
 
-### <a name="elastic-database-client-library"></a>Clientbibliothek für elastische Datenbanken 
+### <a name="elastic-database-client-library"></a>Clientbibliothek für elastische Datenbanken
 
 In Wingtip wird der Katalog in der *tenantcatalog*-Datenbank implementiert. Die *tenantcatalog*-Datenbank wird mithilfe der Shardverwaltungsfeatures der [Clientbibliothek für elastische Datenbanken (Elastic Database Client Library, EDCL)](sql-database-elastic-database-client-library.md) erstellt. Die Bibliothek ermöglicht einer Anwendung die Erstellung, Verwaltung und Verwendung einer *Shardzuordnung*, die in einer Datenbank gespeichert wird. Eine Shardzuordnung stellt mithilfe von Querverweisen eine Verknüpfung zwischen dem Mandantenschlüssel und dem Shard her, d.h. der Datenbank mit Sharding.
 
@@ -108,7 +108,7 @@ Die Mandantenbereitstellungsskripts in diesem Tutorial unterstützen beide folge
 - Bereitstellung eines Mandanten für eine vorhandene gemeinsam mit anderen Mandanten genutzte Datenbank
 - Bereitstellung eines Mandanten in seiner eigenen Datenbank
 
-Mandantendaten werden anschließend initialisiert und in der Shardzuordnung im Katalog registriert. In der Beispiel-App wird Datenbanken mit mehreren Mandanten ein generischer Name wie *tenants1* oder *tenants2* zugewiesen. Datenbanken mit einem einzelnen Mandanten werden nach dem Mandanten benannt. Die spezifischen Benennungskonventionen, die im Beispiel verwendet werden, sind kein kritischer Teil des Musters, da die Verwendung eines Katalogs es ermöglicht, der Datenbank einen beliebigen Namen zuzuweisen.  
+Mandantendaten werden anschließend initialisiert und in der Shardzuordnung im Katalog registriert. In der Beispiel-App wird Datenbanken mit mehreren Mandanten ein generischer Name wie *tenants1* oder *tenants2* zugewiesen. Datenbanken mit einem einzelnen Mandanten werden nach dem Mandanten benannt. Die spezifischen Benennungskonventionen, die im Beispiel verwendet werden, sind kein kritischer Teil des Musters, da die Verwendung eines Katalogs es ermöglicht, der Datenbank einen beliebigen Namen zuzuweisen.
 
 <a name="goto_1_tutorial"/>
 
@@ -132,7 +132,7 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 - Rufen Sie die Wingtip-Skripts und den Quellcode ab:
     - Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) zur Verfügung.
-    - Die Schritte zum Herunterladen und Entsperren der Wingtip-Skripts finden Sie im [allgemeinen Leitfaden](saas-tenancy-wingtip-app-guidance-tips.md). 
+    - Die Schritte zum Herunterladen und Entsperren der Wingtip-Skripts finden Sie im [allgemeinen Leitfaden](saas-tenancy-wingtip-app-guidance-tips.md).
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>Bereitstellen eines Mandanten in einer mit anderen Mandanten *gemeinsam genutzten* Datenbank
 
@@ -144,8 +144,8 @@ Im Folgenden finden Sie die wichtigsten Elemente des Bereitstellungsworkflows, d
 
 - **Berechnen Sie den neuen Mandantenschlüssel**: Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
 - **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
-- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.  
-- **Registrieren Sie den Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der bestehenden Datenbank „tenants1“ wird dem Katalog hinzugefügt. 
+- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.
+- **Registrieren Sie den Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der bestehenden Datenbank „tenants1“ wird dem Katalog hinzugefügt.
 - **Fügen Sie den Namen des Mandanten einer Erweiterungstabelle des Katalogs hinzu**: Der Name des Veranstaltungsorts wird der Tabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.  Dieser Zusatz veranschaulicht, wie die Katalogdatenbank erweitert werden kann, um zusätzliche anwendungsspezifische Daten zu unterstützen.
 - **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**: Die zu *Bushwillow Blues* gehörige Veranstaltungsseite wird im Browser geöffnet.
 
@@ -172,7 +172,7 @@ Um nachzuvollziehen, wie die Wingtip-App die Bereitstellung neuer Mandanten in e
 
 5. Verfolgen Sie die Ausführung des Skripts mit den Optionen (**F10** und **F11**) im Menü **Debug** nach, um aufgerufene Funktionen zu überspringen oder einzeln auszuführen.
 
-Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>Bereitstellen eines Mandanten in seiner *eigenen* Datenbank
 
@@ -184,7 +184,7 @@ Im Folgenden finden Sie die wichtigsten Elemente des Workflows, den Sie beim Nac
 - **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
 - **Erstellen Sie eine neue Mandantendatenbank**: Die Datenbank wird durch Kopieren der Datenbank *basetenantdb* unter Verwendung einer Ressourcen-Manager-Vorlage erstellt.  Der Name der neuen Datenbank basiert auf dem Mandantennamen.
 - **Fügen Sie die Datenbank dem Katalog hinzu**: Die neue Mandantendatenbank wird als Shard im Katalog registriert.
-- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.  
+- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.
 - **Registrieren Sie den Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der *sequoiasoccer*-Datenbank wird dem Katalog hinzugefügt.
 - **Der Mandantenname wird dem Katalog hinzugefügt**: Der Name des Veranstaltungsorts wird der Erweiterungstabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.
 - **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**: Die zu *Sequoia Soccer* gehörige Veranstaltungsseite wird im Browser geöffnet.
@@ -217,7 +217,7 @@ In dieser Übung wird ein Batch mit 17 Mandanten bereitgestellt. Es empfiehlt si
 
 2. Drücken Sie **F5**, um das Skript auszuführen.
 
-### <a name="verify-the-deployed-set-of-tenants"></a>Überprüfen der bereitgestellten Gruppe von Mandanten 
+### <a name="verify-the-deployed-set-of-tenants"></a>Überprüfen der bereitgestellten Gruppe von Mandanten
 
 In dieser Phase haben Sie eine Kombination von Mandanten, die in einer gemeinsam genutzten Datenbank bereitgestellt wurden, und Mandanten, die in ihren eigenen Datenbanken bereitgestellt wurden. Im Azure-Portal können die erstellten Datenbanken überprüft werden. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Server **tenants1-mt-\<USER\>** , indem Sie zur Liste der SQL-Server navigieren.  Die Liste **SQL-Datenbanken** sollte die gemeinsame genutzte Datenbank **tenants1** und die Datenbanken für die Mandanten mit eigener Datenbank enthalten:
 
@@ -227,7 +227,7 @@ Sie können zwar im Azure-Portal die Mandantendatenbanken sehen, aber nicht die 
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>Verwenden der Wingtip Tickets-Seite zum Veranstaltungshub
 
-Öffnen Sie die Hubseite „Events“ im Browser (http:events.wingtip-mt.\<USER\>.trafficmanager.net).  
+Öffnen Sie die Hubseite „Events“ im Browser (http:events.wingtip-mt.\<USER\>.trafficmanager.net).
 
 #### <a name="using-catalog-database"></a>Verwenden der Katalogdatenbank
 
@@ -245,7 +245,7 @@ Die vollständige Liste der Mandanten und ihre entsprechende Datenbank sind im K
 3. Klicken Sie mit der rechten Maustaste auf die Sicht *TenantsExtended*, und wählen Sie **Select Top 1000 Rows** aus. Beachten Sie die Zuordnung zwischen dem Namen des Mandanten und der Datenbank für die verschiedenen Mandanten.
 
     ![Sicht „ExtendedTenants“ in SSMS](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
-      
+
 ## <a name="other-provisioning-patterns"></a>Weitere Bereitstellungsmuster
 
 In diesem Abschnitt werden weitere interessante Bereitstellungsmuster erläutert.
@@ -264,7 +264,7 @@ Diese Art von automatisiertem Dienst kann von einfacher oder komplexer Beschaffe
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)
-- [So wird's gemacht: Debuggen von Skripts in Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+- [So wird's gemacht: Debuggen von Skripts in Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

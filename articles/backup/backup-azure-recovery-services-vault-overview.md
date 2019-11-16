@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3c451d1bd77fa1cec85a9d42b5d4d3d819b2d19a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: e61949dc739230382fab4cfaad53a6cb449de79a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210343"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091618"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -37,6 +37,7 @@ Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azu
 - **Sofortige Wiederherstellung für IaaS-VMs**: Durch Recovery Services-Tresore können Sie Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt. Die sofortige Wiederherstellung für IaaS-VMs ist für Windows- und Linux-VMs verfügbar. [Weitere Informationen](https://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Verwalten von Recovery Services-Tresoren im Portal
+
 Die Erstellung und Verwaltung von Recovery Services-Tresoren im Azure-Portal ist einfach, da der Sicherungsdienst in andere Azure-Dienste integriert ist. Eine derartige Integration bedeutet, dass Sie einen Recovery Services-Tresor *im Kontext des Zieldiensts* erstellen oder verwalten können. Um beispielsweise die Wiederherstellungspunkte für eine VM anzuzeigen, wählen Sie Ihre VM aus, und klicken Sie im Menü „Vorgänge“ auf **Sicherung**.
 
 ![Details zum Recovery Services-Tresor über die VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
@@ -55,25 +56,28 @@ Die folgenden Abschnitte enthalten Links zu Artikeln, in denen erläutert wird, 
 > Ein Recovery Services-Tresor kann nach dem Löschen innerhalb von 24 Stunden nicht mit dem gleichen Namen erstellt werden. Verwenden Sie einen anderen Ressourcennamen, wählen Sie eine andere Ressourcengruppe aus, oder versuchen Sie es nach 24 Stunden erneut.
 
 ### <a name="back-up-data"></a>Sichern von Daten
+
 - [Sichern einer Azure-VM](backup-azure-vms-first-look-arm.md)
 - [Sichern von Daten von Windows Server oder einer Windows-Arbeitsstation](backup-try-azure-backup-in-10-mins.md)
 - [Sichern von DPM-Workloads in Azure](backup-azure-dpm-introduction.md)
 - [Vorbereiten der Sicherung von Workloads per Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 
 ### <a name="manage-recovery-points"></a>Verwalten von Wiederherstellungspunkten
+
 - [Verwalten von Azure-VM-Sicherungen](backup-azure-manage-vms.md)
 - [Verwalten von Dateien und Ordnern](backup-azure-manage-windows-server.md)
 
 ### <a name="restore-data-from-the-vault"></a>Wiederherstellen von Daten aus dem Tresor
+
 - [Wiederherstellen einzelner Dateien aus einer Azure-VM](backup-azure-restore-files-from-vm.md)
 - [Wiederherstellen einer Azure-VM](backup-azure-arm-restore-vms.md)
 
 ### <a name="secure-the-vault"></a>Sichern des Tresors
+
 - [Sichern von Cloudsicherungsdaten in Recovery Services-Tresoren](backup-azure-security-feature.md)
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 Verwenden Sie die folgenden Artikel für:</br>
 [Sichern eines virtuellen IaaS-Computers](backup-azure-arm-vms-prepare.md)</br>
 [Sichern eines Azure Backup Server-Computers](backup-azure-microsoft-azure-backup.md)</br>

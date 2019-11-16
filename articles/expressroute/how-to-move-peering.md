@@ -1,5 +1,5 @@
 ---
-title: Umstellen eines öffentlichen Peerings auf das Microsoft-Peering – Azure ExpressRoute | Microsoft-Dokumentation
+title: 'Azure ExpressRoute: Umstellen von öffentlichem Peering auf Microsoft-Peering'
 description: In diesem Artikel erfahren Sie, wie Sie Ihr öffentliches Peering über ExpressRoute auf Microsoft-Peering umstellen.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5581e2a5c2fe2ee5e154870f7ffc2ab1c3c0f3b4
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f9ed841d347d99a2208971d164bbd7b9044e3b09
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592144"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031600"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 

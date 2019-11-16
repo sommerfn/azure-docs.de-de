@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 95e38cee8f6995e09dbbb2194cd5a9d0ebc301c1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498671"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928218"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verknüpfen von Microsoft Cloud App Security-Daten 
 
@@ -30,7 +30,7 @@ Sie können Protokolle von [Cloud App Security](https://docs.microsoft.com/cloud
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Benutzer mit globalen Administrator- oder Sicherheitsadministratorberechtigungen.
-- Um Cloud Discovery-Protokolle in Azure Sentinel zu streamen, [aktivieren Sie Azure Sentinel als SIEM in Microsoft Cloud App Security](aka.ms. https://aka.ms/AzureSentinelMCAS).
+- Um Cloud Discovery-Protokolle in Azure Sentinel zu streamen, [aktivieren Sie Azure Sentinel als SIEM in Microsoft Cloud App Security](https://aka.ms/AzureSentinelMCAS).
 
 > [!IMPORTANT]
 > Die Erfassung von Cloud Discovery-Protokollen befindet sich derzeit in der öffentlichen Vorschauversion.

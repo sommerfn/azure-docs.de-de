@@ -8,12 +8,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: a46dbb95aaceb388d9a96eb066c6dda06c89b0a7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37f284f9a3dfe06e4d306b8d56a63d4b18d6cc2e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098305"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012088"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server-Schutzmatrix
 
@@ -97,17 +97,17 @@ Wenn Azure ExpressRoute mit öffentlichem Peering konfiguriert wird, können die
 
 Azure Backup Server kann Daten in den folgenden gruppierten Anwendungen schützen:
 
--   Dateiserver
+- Dateiserver
 
--   SQL Server
+- SQL Server
 
--   Hyper-V: Wenn Sie einen Hyper-V-Cluster mithilfe von horizontal skaliertem MABS-Schutz-Agent schützen, können Sie keinen sekundären Schutz für die geschützten Hyper-V-Workloads hinzufügen.
+- Hyper-V: Wenn Sie einen Hyper-V-Cluster mithilfe von horizontal skaliertem MABS-Schutz-Agent schützen, können Sie keinen sekundären Schutz für die geschützten Hyper-V-Workloads hinzufügen.
 
-    Wenn Sie Hyper-V unter Windows Server 2008 R2 ausführen, installieren Sie unbedingt das in KB [975354](https://support.microsoft.com/en-us/kb/975354) beschriebene Update.
-    Wenn Sie Hyper-V unter Windows Server 2008 R2 in einer Clusterkonfiguration ausführen, installieren Sie unbedingt SP2 und KB [971394](https://support.microsoft.com/en-us/kb/971394).
+    Wenn Sie Hyper-V unter Windows Server 2008 R2 ausführen, installieren Sie unbedingt das in KB [975354](https://support.microsoft.com/kb/975354) beschriebene Update.
+    Wenn Sie Hyper-V unter Windows Server 2008 R2 in einer Clusterkonfiguration ausführen, installieren Sie unbedingt SP2 und KB [971394](https://support.microsoft.com/kb/971394).
 
--   Exchange Server – Azure Backup Server kann nicht freigegebene Datenträgercluster für unterstützte Exchange Server-Versionen schützen (fortlaufende Clusterreplikation). Auch der Schutz von Exchange Server in einer Konfiguration für fortlaufende lokale Replikation ist mit Azure Backup Server möglich.
+- Exchange Server – Azure Backup Server kann nicht freigegebene Datenträgercluster für unterstützte Exchange Server-Versionen schützen (fortlaufende Clusterreplikation). Auch der Schutz von Exchange Server in einer Konfiguration für fortlaufende lokale Replikation ist mit Azure Backup Server möglich.
 
--   SQL Server – Azure Backup Server unterstützt nicht das Sichern von SQL Server-Datenbanken, die auf freigegebenen Clustervolumes (CSVs) gehostet werden.
+- SQL Server – Azure Backup Server unterstützt nicht das Sichern von SQL Server-Datenbanken, die auf freigegebenen Clustervolumes (CSVs) gehostet werden.
 
 Azure Backup Server kann Workloads schützen, die sich in derselben Domäne wie der MABS-Server, in einer untergeordneten oder in einer vertrauenswürdigen Domäne befinden. Wenn Sie Datenquellen in nicht vertrauenswürdigen Domänen oder Arbeitsgruppen schützen möchten, verwenden Sie NTLM, Zertifikatauthentifizierung für einen einzelnen Server oder Zertifikatauthentifizierung nur für einen Cluster.

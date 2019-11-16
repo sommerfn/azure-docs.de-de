@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858564"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891453"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-Images und deren Bereitstellung in Microsoft Azure
 
@@ -79,7 +79,7 @@ Diese Funktionen sind möglich, da Azure NetApp Files auf den vollständig auf F
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Lizenzieren von Oracle Database und Software in Azure
 Microsoft Azure ist eine autorisierte Cloudumgebung zum Ausführen von Oracle Database. Die Oracle Core Factor-Tabelle ist nicht anwendbar, wenn Sie Oracle-Datenbanken in der Cloud lizenzieren. Stattdessen können Sie, wenn Sie virtuelle Computer mit Hyperthreading-Technologie verwenden, die für Enterprise Edition-Datenbanken aktiviert ist, zwei vCPUs als gleichwertig zu einer Oracle Prozessor-Lizenz zählen, wenn Hyperthreading aktiviert ist (wie im Richtliniendokument angegeben). Die Richtliniendetails finden Sie [hier](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf).
-Oracle-Datenbanken erfordern grundsätzlich mehr Arbeitsspeicher und E/A. Aus diesem Grund werden für diese Workloads [virtuelle Computer mit optimierter Arbeitsspeichergröße](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) empfohlen. Um Ihre Workloads weiter zu optimieren, werden [vCPUs mit eingeschränkte Kernanzahl](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) für Oracle DB-Workloads empfohlen, die viel Arbeitsspeicher, Speicher und E/A-Bandbreite, aber keine hohe Anzahl von Kernen erfordern.
+Oracle-Datenbanken erfordern grundsätzlich mehr Arbeitsspeicher und E/A. Aus diesem Grund werden für diese Workloads [virtuelle Computer mit optimierter Arbeitsspeichergröße](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) empfohlen. Um Ihre Workloads weiter zu optimieren, werden [vCPUs mit eingeschränkte Kernanzahl](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) für Oracle DB-Workloads empfohlen, die viel Arbeitsspeicher, Speicher und E/A-Bandbreite, aber keine hohe Anzahl von Kernen erfordern.
 
 Wenn Oracle-Software und -Workloads aus einer lokalen Umgebung zu Microsoft Azure migriert werden, bietet Oracle Lizenzmobilität, wie sie unter [Oracle and Microsoft Azure: Frequently Asked Questions](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) beschrieben ist.
 

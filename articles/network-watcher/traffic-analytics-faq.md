@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026584"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907098"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -91,19 +91,22 @@ Datenverkehranalysen für Netzwerksicherheitsgruppen werden in den folgenden Reg
 - Japan, Osten
 - Japan, Westen
 - US Government, Virginia
+- China, Osten 2
 
 Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - Kanada, Mitte
 - USA, Westen-Mitte
-- USA (Westen)
-- USA, Westen 2
-- USA Süd Mitte
-- USA (Mitte)
 - East US
 - USA (Ost) 2
+- USA Nord Mitte
+- USA Süd Mitte
+- USA (Mitte)
+- USA (Westen)
+- USA, Westen 2
 - Frankreich, Mitte
 - Europa, Westen
 - Nordeuropa
+- UK, Westen
 - UK, Süden
 - Australien (Osten)
 - Australien, Südosten
@@ -113,6 +116,7 @@ Der Log Analytics-Arbeitsbereich muss in den folgenden Regionen vorhanden sein:
 - Indien, Mitte
 - Japan, Osten
 - US Government, Virginia
+- China, Osten 2
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Können sich die Netzwerksicherheitsgruppen, für die ich Datenflussprotokolle aktiviere, in anderen Regionen befinden als mein Arbeitsbereich?
 

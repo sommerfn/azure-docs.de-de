@@ -1,5 +1,5 @@
 ---
-title: Virtueller Azure-Computer – PowerShell-Beispiele | Microsoft-Dokumentation
+title: Virtueller Azure-Computer – PowerShell-Beispiele
 description: Virtueller Azure-Computer – PowerShell-Beispiele
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c106ee2110a8c023ab3ed4f2ec9903fc5ca146b2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f068b79f1b1eaa9a11df70052619c8e3993101cb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088967"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033011"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Virtueller Azure-Computer – PowerShell-Beispiele
 

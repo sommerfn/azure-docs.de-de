@@ -1,18 +1,14 @@
 ---
 title: Blaupausenbeispiel „Canada Federal PBMM“ – Bereitstellungsschritte
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Canada Federal PBMM“, einschließlich Details zum Blaupausenartefaktparameter.
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 22806f497283c1885446eadd5f444dacf3769c12
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 788c52ee9a2bf9a0a2c506c2a34d221ff08bd0af
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163327"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038414"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Bereitstellen des Blaupausenbeispiels „Canada Federal PBMM“
 
