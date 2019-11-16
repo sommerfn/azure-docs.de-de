@@ -1,17 +1,14 @@
 ---
 title: 'Beispiel: Zulässige ExpressRoute-SKUs'
 description: Diese Beispielrichtliniendefinition erfordert, dass ExpressRoute eine genehmigte SKU verwendet.
-author: DCtheGeek
-ms.service: azure-policy
-ms.topic: sample
 ms.date: 01/29/2019
-ms.author: dacoulte
-ms.openlocfilehash: e8e981bb177cc088dcbb1b60e100d21ab9f1e93a
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: sample
+ms.openlocfilehash: a9fa0e98a2973cbaa689358c0922b0eda23dd042
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980668"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072025"
 ---
 # <a name="sample---allowed-expressroute-skus"></a>Beispiel: Zulässige ExpressRoute-SKUs
 

@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: cf639be5db90e3632b8931564ac397c42e1d8403
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b105e8ba79e99be02420ca1821f6a080b0862d6f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899358"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887412"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Senden von Benutzerkontext-IDs zur Nutzung in Azure Application Insights
 
@@ -48,7 +48,7 @@ Eine ID, die personenbezogene Informationen über den Benutzer enthält, ist kei
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET-Apps: Festlegen des Benutzerkontexts in ITelemetryInitializer
 
-Erstellen Sie einen Telemetrieinitialisierer. Eine ausführliche Beschreibung finden Sie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer). Übergeben Sie die Sitzungs-ID über die Anforderungstelemetrie, und legen Sie „Context.User.Id“ und „Context.Session.Id“ fest.
+Erstellen Sie einen Telemetrieinitialisierer. Eine ausführliche Beschreibung finden Sie [hier](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer). Übergeben Sie die Sitzungs-ID über die Anforderungstelemetrie, und legen Sie „Context.User.Id“ und „Context.Session.Id“ fest.
 
 In diesem Beispiel wird die Benutzer-ID auf einen Bezeichner festgelegt, der nach der Sitzung abläuft. Wenn möglich, verwenden Sie eine Benutzer-ID, die sitzungsübergreifend beibehalten wird.
 

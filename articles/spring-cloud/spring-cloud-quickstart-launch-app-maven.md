@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: cb6032938379b632b743827153c61fd3e18c1cfe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721582"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123828"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Schnellstart: Starten einer Azure Spring Cloud-App mithilfe des Maven-Plug-Ins
 
@@ -52,8 +52,6 @@ az extension add --name spring-cloud
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Bereitstellen einer Dienstinstanz im Azure-Portal
 
 1. Öffnen Sie in einem Webbrowser [diesen Link zu Azure Spring Cloud im Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform), und melden Sie sich bei Ihrem Konto an.
-
-1. Wählen Sie auf der Seite **Übersicht** die Option **Erstellen** aus, um das Dialogfeld „Erstellen“ zu öffnen.
 
 1. Geben Sie **Projektdetails** für die Beispielanwendung wie folgt an:
 

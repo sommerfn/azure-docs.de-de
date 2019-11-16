@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 40543f55dc0cb56f6bc575f926456faf2d0ae5a3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c82edde98242ffe130c2022c428c86de80e3b034
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719209"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111777"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Node.js und dem azure-sb-Paket
 > [!div class="op_multi_selector" title1="Programmiersprache" title2="Node.js-Paket"]
@@ -150,7 +150,7 @@ Themenabonnements werden ebenfalls mit dem **ServiceBusService**-Objekt erstellt
 > [!NOTE]
 > Abonnements sind standardmäßig persistent, bis sie selbst oder die ihnen zugeordneten Themen gelöscht werden. Wenn Ihre Anwendung Logik zum Erstellen eines Abonnements beinhaltet, muss sie zuerst mithilfe der Methode `getSubscription` überprüfen, ob das Abonnement vorhanden ist.
 >
-> Sie können angeben, dass Abonnements automatisch gelöscht werden sollen, indem Sie die [AutoDeleteOnIdle-Eigenschaft](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) festlegen.
+> Sie können angeben, dass Abonnements automatisch gelöscht werden sollen, indem Sie die [AutoDeleteOnIdle-Eigenschaft](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) festlegen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
 Der Filter **MatchAll** ist der Standardfilter, der bei der Erstellung eines Abonnements verwendet wird. Wenn Sie den Filter **MatchAll** verwenden, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements eingereiht. Mit dem folgenden Beispiel wird ein Abonnement namens „AllMessages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
@@ -314,7 +314,7 @@ Einer innerhalb des Abonnements gesperrten Nachricht ist auch ein Zeitlimit zuge
 Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der Methode `deleteMessage` abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At-Least-Once Processing* (Mindestens einmalige Verarbeitung) bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei eine Nachricht in bestimmten Situationen unter Umständen erneut übermittelt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Sie Ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dazu können Sie die Eigenschaft **MessageId** der Nachricht verwenden, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
-Themen und Abonnements sind persistent, solange nicht die [autoDeleteOnIdle-Eigenschaft](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) festgelegt ist, und müssen über das [Azure-Portal][Azure portal] oder programmgesteuert explizit gelöscht werden.
+Themen und Abonnements sind persistent, solange nicht die [autoDeleteOnIdle-Eigenschaft](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) festgelegt ist, und müssen über das [Azure-Portal][Azure portal] oder programmgesteuert explizit gelöscht werden.
 Das folgende Beispiel zeigt das Löschen des Themas `MyTopic`:
 
 ```javascript

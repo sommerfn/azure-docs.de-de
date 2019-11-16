@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a1395c89b047bb120c7f7e2d2d9bb9b4d2b0c50
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959965"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886805"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -80,7 +80,7 @@ Azure Security Center wurde die auf der Azure-Änderungsnachverfolgung basierend
 Falls Sie FIM bereits aktiviert haben und die vollständige Änderungsnachverfolgungslösung ausprobieren möchten, müssen Sie die folgenden Schritte ausführen. Ihre Einstellungen werden durch diesen Prozess nicht entfernt.
 
 > [!NOTE]
-> Durch die Aktivierung der vollständigen Änderungsnachverfolgungslösung fallen unter Umständen zusätzlichen Kosten an. Weitere Informationen finden Sie unter [Automation – Preise](https://azure.microsoft.com/en-us/pricing/details/automation/).
+> Durch die Aktivierung der vollständigen Änderungsnachverfolgungslösung fallen unter Umständen zusätzlichen Kosten an. Weitere Informationen finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Entfernen Sie die Überwachungslösung, indem Sie zum Arbeitsbereich navigieren und in der [Liste mit den installierten Überwachungslösungen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions) danach suchen.
 2. Klicken Sie auf den Namen der Lösung, um die entsprechende Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf „Löschen“, wie unter [Entfernen einer Überwachungslösung](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution) beschrieben.

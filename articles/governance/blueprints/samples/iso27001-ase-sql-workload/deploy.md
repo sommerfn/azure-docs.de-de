@@ -1,17 +1,14 @@
 ---
 title: 'Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“ – Bereitstellungsschritte'
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“, einschließlich Details zum Blaupausenartefaktparameter'
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: 4836287f5308ffb11bf145b715dfd6f73672c038
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: edcf9920f3a65c182240da735b1883b3d67da650
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163461"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032135"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 

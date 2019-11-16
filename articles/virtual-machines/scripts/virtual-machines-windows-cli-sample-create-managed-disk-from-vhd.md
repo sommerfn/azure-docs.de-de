@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-Beispielskript: Erstellen verwalteter Datenträger aus einer VHD-Datei in einem Speicherkonto in demselben Abonnement | Microsoft-Dokumentation'
+title: 'Azure CLI-Beispielskript: Erstellen verwalteter Datenträger aus einer VHD-Datei in einem Speicherkonto in demselben Abonnement'
 description: 'Azure CLI-Beispielskript: Erstellen verwalteter Datenträger aus einer VHD-Datei in einem Speicherkonto in demselben Abonnement'
 services: virtual-machines-windows
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 3f68c4ccbcaad682303c9d67c95f8bf8a2d3041b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 12f8a8edc995a5b3e07244eb5c54835fa6dd832d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249612"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039942"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-the-same-subscription-with-cli"></a>Erstellen verwalteter Datenträger aus einer VHD-Datei in einem Speicherkonto in demselben Abonnement mithilfe der Befehlszeilenschnittstelle
 

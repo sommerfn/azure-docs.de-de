@@ -1,6 +1,6 @@
 ---
 title: Verwenden der Beispieldatasets
-titleSuffix: ML Studio (classic) Azure
+titleSuffix: ML Studio (classic) - Azure
 description: Enthält Beschreibungen der Datasets, die in Beispielmodellen von Machine Learning Studio (klassisch) verwendet werden. Sie können diese Beispieldatasets für Experimente verwenden.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: f22d27f7900ce9dda3a8e65451acb9b743a25811
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73618909"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839408"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Verwenden von Beispieldatasets in Azure Machine Learning Studio (klassisch)
 [top]: #machine-learning-sample-datasets

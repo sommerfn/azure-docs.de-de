@@ -1,17 +1,14 @@
 ---
 title: 'Blaupausenbeispiel für „ISO 27001: Gemeinsame Dienste“ – Steuerungszuordnung'
 description: 'Steuerungszuordnung für das Blaupausenbeispiel für „ISO 27001: Gemeinsame Dienste“ Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.'
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
-ms.service: blueprints
-ms.openlocfilehash: c43b2d2cf1eac4e8254fee78e8979bb163b3a9a4
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e3bba30ddffe85a067d091a328ae4cc4de7258df
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162062"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037374"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Steuerelementzuordnung für das Beispiel „Blaupause für ISO 27001: gemeinsame Dienste“
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c82cad30fcc2aa80eea52ab13f60fc0c4da33cd1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55ba5a193e15ac4e8bd83ac046deeac1f12d61d0
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471313"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961955"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -401,7 +401,7 @@ $routeProvider.when("/Home", {
 }).otherwise({ redirectTo: "/Home" });
 ```
 
-Mit der neuen Änderung wird die Zuordnung `revolve` hinzugefügt, die `/.auth/me` aufruft, und das Zugriffstoken wird festgelegt. Es wird sichergestellt, dass Sie über das Zugriffstoken verfügen, bevor Sie den Controller `todoListCtrl` instanziieren. Auf diese Weise ist das Token in allen API-Aufrufen vom Controller enthalten.
+Mit der neuen Änderung wird die Zuordnung `resolve` hinzugefügt, die `/.auth/me` aufruft, und das Zugriffstoken wird festgelegt. Es wird sichergestellt, dass Sie über das Zugriffstoken verfügen, bevor Sie den Controller `todoListCtrl` instanziieren. Auf diese Weise ist das Token in allen API-Aufrufen vom Controller enthalten.
 
 ### <a name="deploy-updates-and-test"></a>Bereitstellen von Updates und Durchführen von Tests
 

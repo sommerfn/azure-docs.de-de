@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17499fad64c8ae313f7a544015a04cc20e8bbabe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cba54c65a314919b5509e1de029ad05f8722baa2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495709"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075461"
 ---
 |**VPN<br>Gateway-<br>Generation** |**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br>-IKEv2/OpenVPN-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** | **BGP** | **Zonenredundant** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -46,7 +46,7 @@ ms.locfileid: "73495709"
 
 * Mit einem einzelnen Tunnel kann maximal ein Durchsatz von 1 GBit/s erzielt werden. Der Benchmark für den aggregierten Durchsatz in der obigen Tabelle basiert auf Messungen für mehrere, über ein einzelnes Gateway aggregierte Tunnel. Der Benchmark für den aggregierten Durchsatz für ein VPN-Gateway besteht aus einer Kombination aus S2S und P2S. **Bei zahlreichen P2S-Verbindungen kann eine S2S-Verbindung aufgrund von Durchsatzeinschränkungen beeinträchtigt sein.** Aufgrund der Bedingungen für den Internetdatenverkehr und dem Verhalten Ihrer Anwendung kann der Benchmark für den aggregierten Durchsatz nicht garantiert werden.
 
-* Damit unsere Kunden die relative Leistung von SKUs mit unterschiedlichen Algorithmen besser nachvollziehen können, haben wir für die Leistungsermittlung die öffentlich verfügbaren Tools iperf und CTSTraffic verwendet. Die folgende Tabelle enthält die Ergebnisse von Leistungstests für VpnGw-SKUs der ersten Generation. Wie Sie sehen, wird die beste Leistung erzielt, wenn sowohl für die IPSec-Verschlüsselung als auch für die Integrität der GCMAES256-Algorithmus verwendet wird. Bei Verwendung von AES256 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde eine durchschnittliche Leistung erzielt. Bei Verwendung von DES3 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde die geringste Leistung erzielt.
+Damit unsere Kunden die relative Leistung von SKUs mit unterschiedlichen Algorithmen besser nachvollziehen können, haben wir für die Leistungsermittlung die öffentlich verfügbaren Tools iperf und CTSTraffic verwendet. Die folgende Tabelle enthält die Ergebnisse von Leistungstests für VpnGw-SKUs der ersten Generation. Wie Sie sehen, wird die beste Leistung erzielt, wenn sowohl für die IPSec-Verschlüsselung als auch für die Integrität der GCMAES256-Algorithmus verwendet wird. Bei Verwendung von AES256 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde eine durchschnittliche Leistung erzielt. Bei Verwendung von DES3 für die IPSec-Verschlüsselung und SHA256 für die Integrität wurde die geringste Leistung erzielt.
 
 |**Generation**|**SKU**   | **Verwendete<br>Algorithmen** | **Ermittelter<br>Durchsatz** | **Ermittelte<br>Pakete pro Sekunde** |
 |---           |---       | ---                 | ---            | ---                    |

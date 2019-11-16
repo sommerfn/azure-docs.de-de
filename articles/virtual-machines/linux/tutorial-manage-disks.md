@@ -1,5 +1,5 @@
 ---
-title: Tutorial – Verwalten von Azure-Datenträgern mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: 'Tutorial: Verwalten von Azure-Datenträgern mit der Azure-CLI'
 description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Erstellen und Verwalten von Azure-Datenträgern für virtuelle Computer verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 9f4aec031d9ba8a162b022541c6e4cb35ce976a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9042bece9b9a4c914941d65d615045cf365b67b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081506"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034383"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Tutorial: Verwalten von Azure-Datenträgern mit der Azure-CLI
 

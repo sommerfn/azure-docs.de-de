@@ -4,15 +4,13 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08/29/2019
-ms.openlocfilehash: 75eebdf1e7628bc9c38305b7f11d4fc69af031b9
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 29cf947d1e9d26460dc34a6417e76b68bb75e9dc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391655"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005486"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Kostensparen mit reservierten Azure-VM-Instanzen
-
 Wenn Sie an eine reservierte Azure-VM-Instanz committen, können Sie Geld sparen. Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten virtuellen Computer angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie müssen einem virtuellen Computer keine Reservierung zuweisen, um die Rabatte zu erhalten. Beim Erwerb reservierter Instanzen wird nur der Computeteil ihrer VM-Nutzung abgedeckt. Bei Windows-VMs wird die Verwendungsmessung in zwei separate Verbrauchseinheiten aufgeteilt. Es gibt eine Computeverbrauchseinheit, die mit der Linux-Verbrauchseinheit identisch ist, und eine Windows-IP-Verbrauchseinheit. Die Gebühren, die Ihnen beim Kauf angezeigt werden, gelten nur für die Computekosten. Gebühren enthalten keine Windows-Softwarekosten. Weitere Informationen zu Softwarekosten finden Sie unter [In Azure Reserved VM Instances nicht enthaltene Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Bestimmen der passenden Größe des virtuellen Computers vor dem Kauf

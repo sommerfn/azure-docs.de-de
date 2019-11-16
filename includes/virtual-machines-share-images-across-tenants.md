@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cf05468af17a4fafa7c81c7ad8bc89b3306a54af
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68286306"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903705"
 ---
-Mithilfe von Katalogen mit freigegebenen Images können Sie Images über RBAC freigeben. Sie können RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, sollten Sie eine App-Registrierung erstellen, um die Freigabe zu erleichtern.  Die Verwendung einer App-Registrierung kann komplexere Freigabeszenarien ermöglichen, wie z.B.: 
+Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, sollten Sie eine App-Registrierung erstellen, um die Freigabe zu erleichtern.  Die Verwendung einer App-Registrierung kann komplexere Freigabeszenarien ermöglichen, wie z.B.: 
 
 * Verwaltung freigegebener Images, wenn ein Unternehmen ein anderes erwirbt, und die Azure-Infrastruktur ist auf verschiedene Mandanten verteilt. 
 * Azure-Partner verwalten Azure-Infrastruktur im Namen ihrer Kunden. Die Anpassung der Images erfolgt innerhalb des Partners, aber die Bereitstellung der Infrastruktur erfolgt beim Mandanten des Kunden. 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677576"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73887535"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -57,7 +57,7 @@ Jede Ressource gehört jeweils zu einer Ressourcengruppe. Ressourcengruppen werd
 ### <a name="resources-for-components"></a>Ressourcen für Komponenten
 Es wird empfohlen, für jede Komponente Ihrer App eine separate Ressource zu erstellen. D.h. Sie erstellen eine Ressource für jede Web- und Workerrolle. Sie können jede Komponente einzeln analysieren, können jedoch auch ein [Dashboard](../../azure-monitor/app/overview-dashboard.md) erstellen, das die wichtigsten Diagramme aus allen Komponenten vereint, sodass Sie diese in einer zentralen Ansicht vergleichen und zusammen überwachen können. 
 
-Ein alternativer Ansatz besteht darin, die Telemetriedaten von mehreren Rollen an dieselbe Ressource zu senden, jedoch [jedem Telemetriedatenelement eine Dimensionseigenschaft hinzuzufügen](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer), mit der die jeweilige Quellrolle identifiziert wird. In diesem Ansatz wird in Metrikdiagrammen (z.B. Ausnahmen) normalerweise eine Aggregation der Zählungen aus den unterschiedlichen Rollen angezeigt. Sie können jedoch das Diagramm bei Bedarf nach Rollenbezeichnern segmentieren. Suchvorgänge können auch nach der gleichen Dimension gefiltert werden. Mit dieser Alternative können alle Daten etwas einfacher gleichzeitig angezeigt werden, es kann jedoch zu einer gewissen Verwirrung im Hinblick auf die Rollen führen.
+Ein alternativer Ansatz besteht darin, die Telemetriedaten von mehreren Rollen an dieselbe Ressource zu senden, jedoch [jedem Telemetriedatenelement eine Dimensionseigenschaft hinzuzufügen](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer), mit der die jeweilige Quellrolle identifiziert wird. In diesem Ansatz wird in Metrikdiagrammen (z.B. Ausnahmen) normalerweise eine Aggregation der Zählungen aus den unterschiedlichen Rollen angezeigt. Sie können jedoch das Diagramm bei Bedarf nach Rollenbezeichnern segmentieren. Suchvorgänge können auch nach der gleichen Dimension gefiltert werden. Mit dieser Alternative können alle Daten etwas einfacher gleichzeitig angezeigt werden, es kann jedoch zu einer gewissen Verwirrung im Hinblick auf die Rollen führen.
 
 Browsertelemetriedaten sind in der Regel in der gleichen Ressource wie die zugehörige serverseitige Webrolle enthalten.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cdc4420758b67dc3a578b9530fb7039ed53ee66
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fcd12b0c47dc587153df51d4d30eb2abe4cc2657
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092797"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Tutorial: Azure Active Directory-Integration mit Reward Gateway
 
@@ -124,7 +124,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Reward Ga
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>`|
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Richten Sie zum Abrufen dieser Werte eine Integration im Reward Manager-Portal ein. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Richten Sie zum Abrufen dieser Werte eine Integration im Reward Manager-Portal ein. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -142,7 +142,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Reward Ga
 
 ### <a name="configure-reward-gateway-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Reward Gateway
 
-Wenn Sie einmaliges Anmelden in **Reward Gateway** konfigurieren möchten, richten Sie zunächst eine Integration im Reward Manager-Portal ein. Verwenden Sie die heruntergeladenen Metadaten, um Ihr Signaturzertifikat zu erhalten und es während der Konfiguration hochzuladen. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication.
+Wenn Sie einmaliges Anmelden in **Reward Gateway** konfigurieren möchten, richten Sie zunächst eine Integration im Reward Manager-Portal ein. Verwenden Sie die heruntergeladenen Metadaten, um Ihr Signaturzertifikat zu erhalten und es während der Konfiguration hochzuladen. Ausführliche Informationen finden Sie unter https://success.rewardgateway.com/hc/en-us/articles/360038650573-Microsoft-Azure-for-Authentication.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

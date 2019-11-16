@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme | Microsoft-Dokumentation
+title: Azure PowerShell-Skriptbeispiel – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
 description: Azure PowerShell-Skriptbeispiel – Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
 services: virtual-machines-windows
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 5ccff2a503994a4c1001148c371a007c63b13106
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: da6c9d376c432580d8d0765f5c3288fcdfe0abff
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748760"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037172"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-powershell"></a>Erstellen verwalteter Datenträger aus einer Momentaufnahme mithilfe von PowerShell
 

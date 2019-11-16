@@ -1,7 +1,7 @@
 ---
 title: Referenz zum iOS SDK für den plastischen Reader
 titleSuffix: Azure Cognitive Services
-description: Referenz zum iOS SDK für den plastischen Reader
+description: Das iOS SDK für den plastischen Reader ist eine Swift CocoaPod-Instanz, die es Ihnen ermöglicht, den plastischen Reader in Ihre Webanwendung zu integrieren.
 services: cognitive-services
 author: metanMSFT
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 67d6b8c22c5635bd789078a7f91b02f8b07e5e70
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388113"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903122"
 ---
 # <a name="immersive-reader-sdk-reference-for-ios"></a>SDK für plastischen Reader: Referenz für iOS
 

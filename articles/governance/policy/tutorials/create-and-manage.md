@@ -1,17 +1,14 @@
 ---
 title: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 description: Verwenden Sie Azure Policy, um die Einhaltung von Standards, gesetzlichen Vorschriften und Auditanforderungen durchzusetzen, Kosten zu steuern, für konsistente Sicherheit und Leistung zu sorgen und unternehmensweite Entwurfsprinzipien vorzugeben.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
-ms.service: azure-policy
-ms.openlocfilehash: d01a28e1b4cbd9b2dacef8059d46ea72e789094d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abbe4334767a48cf6444ce5aa7822cc8a79f9f69
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490446"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959546"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -408,7 +405,7 @@ Im folgenden Beispiel ist jede SQL Server-Version in einer einzigen Ressourcengr
 
 Eine von einer zugewiesenen Richtlinie oder Initiative verhinderte Bereitstellung kann an zwei Stellen eingesehen werden:
 
-- In der Ressourcengruppe, für die die Bereitstellung gilt: Wählen Sie links auf der Seite die Option **Bereitstellungen** und dann den **Bereitstellungsnamen** der fehlerhaften Bereitstellung aus. Die abgelehnte Ressource wird mit dem Status _Unzulässig_ angezeigt. Um die Richtlinie oder Initiative und die Zuweisung zu bestimmen, die die Ressource abgelehnt hat, wählen Sie auf der Übersichtsseite zur Bereitstellung **Fehler. Klicken Sie hier, um Details anzuzeigen. ->** aus.
+- In der Ressourcengruppe, für die die Bereitstellung gilt: Wählen Sie links auf der Seite die Option **Bereitstellungen** und dann den **Bereitstellungsnamen** der fehlerhaften Bereitstellung aus. Die abgelehnte Ressource wird mit dem Status _Unzulässig_ angezeigt. Um die Richtlinie oder Initiative und die Zuweisung zu bestimmen, die die Ressource abgelehnt hat, wählen Sie auf der Übersichtsseite zur Bereitstellung **Fehler. Klicken Sie hier, um Details anzuzeigen. ->** .
   Rechts auf der Seite wird ein Fenster mit den Fehlerinformationen geöffnet. Unter **Fehlerdetails** werden die GUIDs der zugehörigen Richtlinienobjekte angezeigt.
 
   ![Bereitstellung durch Richtlinienzuweisung abgelehnt](../media/create-and-manage/rg-deployment-denied.png)

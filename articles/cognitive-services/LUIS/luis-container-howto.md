@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/08/2019
 ms.author: dapine
-ms.openlocfilehash: 98f5c672e9da50f294df6da7d5abcb23b10fc1ba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a47e363e2b51b271c8103ac426362a61fc332601
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487007"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901911"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -36,7 +36,7 @@ Beachten Sie für die Ausführung des LUIS-Containers die folgenden Voraussetzun
 |--|--|
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
-|Azure `Cognitive Services`-Ressource und LUIS-[App-Paket](luis-how-to-start-new-app.md#export-app-for-containers)-Datei |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>* Eine Azure _Cognitive Services_-Ressource, den zugehörigen Abrechnungsschlüssel und den URI des Abrechnungsendpunkts. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt. <br>* Eine trainierte oder veröffentlichte App, die als eingebundene Eingabe für den Container mit der zugehörigen App-ID gepackt ist Sie können die verpackte Datei über das LUIS-Portal oder die Erstellungs-APIs abrufen. Wenn Sie das LUIS-App-Paket von den [Erstellungs-APIs](#authoring-apis-for-package-file) erhalten, benötigen Sie auch Ihren _Erstellungsschlüssel_.<br><br>Diese Anforderungen werden verwendet, um Befehlszeilenargumente an die folgenden Variablen zu übergeben:<br><br>**{AUTHORING_KEY}** : Dieser Schlüssel wird verwendet, um das App-Paket vom LUIS-Dienst in der Cloud abzurufen und die Abfrageprotokolle wieder in die Cloud hochzuladen. Das Format ist `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : Diese ID wird verwendet, um die App auszuwählen. Das Format ist `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Dieser Schlüssel wird verwendet, um den Container zu starten. Sie finden den Endpunktschlüssel an zwei Orten. Zum einen finden Sie ihn im Azure-Portal in der Liste der Schlüssel der _Cognitive Services_-Ressource. Zum anderen ist der Endpunktschlüssel auch im LUIS-Portal auf der Einstellungsseite für Schlüssel und Endpunkt verfügbar. Verwenden Sie nicht den Starterschlüssel.<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Übersichtsseite angegeben ist.<br><br>[Erstellungs- und Endpunktschlüssel](luis-boundaries.md#key-limits) haben unterschiedliche Zwecke. Verwenden Sie sie nicht im Austausch. |
+|Azure `Cognitive Services`-Ressource und LUIS-[App-Paket](luis-how-to-start-new-app.md)-Datei |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>* Eine Azure _Cognitive Services_-Ressource, den zugehörigen Abrechnungsschlüssel und den URI des Abrechnungsendpunkts. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt. <br>* Eine trainierte oder veröffentlichte App, die als eingebundene Eingabe für den Container mit der zugehörigen App-ID gepackt ist Sie können die verpackte Datei über das LUIS-Portal oder die Erstellungs-APIs abrufen. Wenn Sie das LUIS-App-Paket von den [Erstellungs-APIs](#authoring-apis-for-package-file) erhalten, benötigen Sie auch Ihren _Erstellungsschlüssel_.<br><br>Diese Anforderungen werden verwendet, um Befehlszeilenargumente an die folgenden Variablen zu übergeben:<br><br>**{AUTHORING_KEY}** : Dieser Schlüssel wird verwendet, um das App-Paket vom LUIS-Dienst in der Cloud abzurufen und die Abfrageprotokolle wieder in die Cloud hochzuladen. Das Format ist `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : Diese ID wird verwendet, um die App auszuwählen. Das Format ist `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : Dieser Schlüssel wird verwendet, um den Container zu starten. Sie finden den Endpunktschlüssel an zwei Orten. Zum einen finden Sie ihn im Azure-Portal in der Liste der Schlüssel der _Cognitive Services_-Ressource. Zum anderen ist der Endpunktschlüssel auch im LUIS-Portal auf der Einstellungsseite für Schlüssel und Endpunkt verfügbar. Verwenden Sie nicht den Starterschlüssel.<br><br>**{ENDPOINT_URI}** : Der Endpunkt, der auf der Übersichtsseite angegeben ist.<br><br>[Erstellungs- und Endpunktschlüssel](luis-boundaries.md#key-limits) haben unterschiedliche Zwecke. Verwenden Sie sie nicht im Austausch. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 

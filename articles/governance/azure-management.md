@@ -1,17 +1,14 @@
 ---
 title: Übersicht über die Verwaltung in Azure – Azure Governance
 description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools.
-author: DCtheGeek
-ms.service: governance
-ms.topic: article
 ms.date: 12/06/2018
-ms.author: dacoulte
-ms.openlocfilehash: 2535b64380f67da440698c7577840d5319e6ca4f
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.topic: article
+ms.openlocfilehash: e85d5162146fb716ed9f846dc5a828d83c669627
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978551"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013909"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Übersicht der Verwaltungsdienste in Azure
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969660"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888903"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Bereitstellen von auf Azure Cosmos DB basierenden Node.js-Apps mit DevOps Projects
 
@@ -169,6 +169,6 @@ Diese Build- und Releasepipelines können Sie den Anforderungen Ihres Teams anpa
 > * Committen von Änderungen in Git und automatisches Bereitstellen dieser Änderungen in Azure
 > * Bereinigen von Ressourcen
 
-Weitere Informationen und nächste Schritte finden Sie unter [Define your multi-stage continuous deployment (CD) pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) (Definieren einer mehrstufigen CD-Pipeline (Continuous Deployment)).
+Weitere Informationen und nächste Schritte finden Sie unter [Define your multi-stage continuous deployment (CD) pipeline](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) (Definieren einer mehrstufigen CD-Pipeline (Continuous Deployment)).
 
 

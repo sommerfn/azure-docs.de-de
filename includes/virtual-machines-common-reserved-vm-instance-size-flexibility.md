@@ -4,15 +4,13 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: a98a941477fc83a104b55ed91f457c5a48f90d59
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 9a7de2b41c8016bdb7849cdef428d6f54a8ccf64
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029791"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005450"
 ---
-# <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilität bei der VM-Größe mit reservierten VM-Instanzen
-
 Bei einer für Instanzgrößenflexibilität optimierten reservierten VM-Instanz kann die von Ihnen gekaufte Reservierung für die VM-Größen in derselben Gruppe der Instanzgrößenflexibilität gelten. Wenn Sie beispielsweise eine Reservierung für eine VM-Größe kaufen, die in der DSv2-Serie aufgeführt ist, z. B. Standard_DS5_v2, kann der Reservierungsrabatt für die anderen vier Größen gelten, die in derselben Gruppe der Instanzgrößenflexibilität aufgeführt sind:
 
 - Standard_DS1_v2

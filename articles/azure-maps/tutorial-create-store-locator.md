@@ -1,22 +1,22 @@
 ---
-title: Erstellen einer Shopsuche mit Azure Maps | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie mit Azure Maps eine Shopsuche erstellen.
+title: 'Tutorial: Erstellen einer Shopsuche mit Azure Maps'
+description: 'Tutorial: Es wird beschrieben, wie Sie mit Azure Maps eine Shopsuche erstellen.'
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/15/2018
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933066"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107087"
 ---
-# <a name="create-a-store-locator-by-using-azure-maps"></a>Erstellen einer Shopsuche mit Azure Maps
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
 In diesem Tutorial wird der Prozess für die Erstellung einer einfachen Shopsuche mit Azure Maps beschrieben. Shopsuchen werden häufig verwendet. Ein Großteil der Konzepte, die für diesen Anwendungstyp genutzt werden, gilt auch für viele andere Arten von Anwendungen. Die Bereitstellung einer Shopsuche für Kunden ist für die meisten Unternehmen unerlässlich, die Produkte direkt an Verbraucher verkaufen. In diesem Tutorial lernen Sie Folgendes:
     

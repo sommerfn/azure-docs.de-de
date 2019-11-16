@@ -1,17 +1,14 @@
 ---
 title: Arbeiten mit großen Datasets
 description: Hier erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph umfangreiche Datasets abrufen und steuern.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.service: resource-graph
-ms.openlocfilehash: 44f31a8c9e5b47fdcc62c87f6181a3812697aa4b
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: a7258534b867c57f89eeb432b579e87070b4fc1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622626"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73959013"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 

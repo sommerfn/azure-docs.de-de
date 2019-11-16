@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219886"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888930"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Häufige Anwendungsfälle für Azure Cosmos DB
 Dieser Artikel bietet eine Übersicht über verschiedene häufige Anwendungsfälle für Azure Cosmos DB.  Die Empfehlungen in diesem Artikel dienen als Ausgangspunkt für die Entwicklung Ihrer Anwendung mit Cosmos DB.   
@@ -101,4 +101,4 @@ JSON ist ein von Cosmos DB unterstütztes effektives Format zur Darstellung von 
 
 * Führen Sie für Ihre ersten Schritte mit Azure Cosmos DB die Schritte in den [Schnellstart](create-sql-api-dotnet.md)-Dokumenten aus. Darin werden das Erstellen eines Kontos und die ersten Schritte mit Cosmos DB beschrieben.
 
-* Weitere Informationen zu Kunden, die Azure Cosmos DB verwenden, finden Sie auf der Seite mit [Fallstudien](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db).
+* Weitere Informationen zu Kunden, die Azure Cosmos DB verwenden, finden Sie auf der Seite mit [Fallstudien](https://azure.microsoft.com/case-studies/?service=cosmos-db).

@@ -1,22 +1,22 @@
 ---
-title: Einrichten eines Geräts für den Azure IoT Hub Device Provisioning-Dienst
-description: Einrichten eines bereitzustellenden Geräts über den IoT Hub Device Provisioning-Dienst während des Geräteherstellungsprozesses
+title: 'Tutorial: Einrichten eines Geräts für den Azure IoT Hub Device Provisioning-Dienst'
+description: 'Tutorial: Einrichten eines bereitzustellenden Geräts über den IoT Hub Device Provisioning-Dienst während des Geräteherstellungsprozesses'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d5a4f6c7d7d19ced4f2cd9ff21b00e58703f795e
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65911683"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112757"
 ---
-# <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts
+# <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Tutorial: Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
 Im vorherigen Tutorial haben Sie erfahren, wie Sie den Azure IoT Hub Device Provisioning-Dienst einrichten, um Ihre Geräte automatisch für IoT Hub bereitzustellen. In diesem Tutorial wird gezeigt, wie Sie Ihr Gerät während des Herstellungsprozesses einrichten und dadurch die automatische Bereitstellung mit IoT Hub ermöglichen. Ihr Gerät wird beim ersten Starten und Herstellen einer Verbindung mit dem Bereitstellungsdienst basierend auf seinem [Nachweismechanismus](concepts-device.md#attestation-mechanism) bereitgestellt. Dieses Tutorial enthält die folgenden Aufgaben:
 

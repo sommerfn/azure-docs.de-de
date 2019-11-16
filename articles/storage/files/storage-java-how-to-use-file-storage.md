@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00130114b793b5f4d4459eee3404fc4adaf6a8b4
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699410"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837473"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Entwickeln für Azure Files mit Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -227,7 +227,7 @@ Folgen Sie diesen Links, wenn Sie mehr über andere Azure-Speicher-APIs erfahren
 * [Azure für Java-Entwickler](/java/azure)/)
 * [Azure Storage-SDK für Java](https://github.com/azure/azure-storage-java)
 * [Azure Storage-SDK für Android](https://github.com/azure/azure-storage-android)
-* [Referenz für Azure Storage-Client-SDKs](http://dl.windowsazure.com/storage/javadoc/)
+* [Referenz für Azure Storage-Client-SDKs](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
 * [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage-Teamblog](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../common/storage-use-azcopy.md)

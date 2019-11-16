@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: bcd1fff61e1612cc3361548527e5ed13affa3ba5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509274"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092261"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Tutorial: Trainieren und Bereitstellen Ihres ersten Modells in R mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ Passen Sie für dieses Tutorial ein logistisches Regressionsmodell an Ihre hochg
 Ein Trainingsskript mit dem Namen `accidents.R` wurde für Sie in demselben Verzeichnis wie dieses Tutorial bereitgestellt. Beachten Sie die folgenden Details **im Trainingsskript**, die angegeben wurden, um den Azure ML-Dienst für das Training zu nutzen:
 
 * Für das Trainingsskript wird das Argument `-d` genutzt, um das Verzeichnis mit den Trainingsdaten zu ermitteln. Wenn Sie Ihren Auftrag definieren und später dann senden, verweisen Sie auf den Datenspeicher für dieses Argument. Azure ML stellt den Speicherordner im Remotecluster für den Trainingsauftrag bereit.
-* Mit dem Trainingsskript wird die endgültige Genauigkeit als Metrik für die Ausführungsaufzeichnung in Azure ML mit `log_metric_to_run()` protokolliert. Das Azure ML SDK verfügt über Protokollierungs-APIs zum Protokollieren verschiedener Metriken bei Trainingsausführungen. Diese Metriken werden aufgezeichnet und in der Ausführungsaufzeichnung des Experiments dauerhaft gespeichert. Auf die Metriken kann dann jederzeit zugegriffen werden, oder sie können in [Azure Machine Learning Studio](http://ml.azure.com) auf der Seite mit den Ausführungsdetails angezeigt werden. In der [Referenz](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) finden Sie alle Protokollierungsmethoden (`log_*()`).
+* Mit dem Trainingsskript wird die endgültige Genauigkeit als Metrik für die Ausführungsaufzeichnung in Azure ML mit `log_metric_to_run()` protokolliert. Das Azure ML SDK verfügt über Protokollierungs-APIs zum Protokollieren verschiedener Metriken bei Trainingsausführungen. Diese Metriken werden aufgezeichnet und in der Ausführungsaufzeichnung des Experiments dauerhaft gespeichert. Auf die Metriken kann dann jederzeit zugegriffen werden, oder sie können in [Azure Machine Learning Studio](https://ml.azure.com) auf der Seite mit den Ausführungsdetails angezeigt werden. In der [Referenz](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) finden Sie alle Protokollierungsmethoden (`log_*()`).
 * Das Trainingsskript speichert Ihr Modell in einem Verzeichnis namens **outputs**. Der Ordner `./outputs` erhält von Azure ML eine Sonderbehandlung. Während des Trainings werden in `./outputs` geschriebene Dateien von Azure ML automatisch in Ihre Ausführungsaufzeichnung hochgeladen und dauerhaft als Artefakte gespeichert. Indem Sie das trainierte Modell in `./outputs` speichern, können Sie auch nach Abschluss der Ausführung auf Ihr Modell zugreifen und es abrufen. Der Zugriff auf Ihre Umgebung für das Remotetraining ist dann nicht mehr möglich.
 
 ### <a name="create-an-estimator"></a>Erstellen eines Estimators
@@ -269,7 +269,7 @@ as.numeric(predict(accident_model,newdata, type="response")*100)
 
 ## <a name="deploy-as-a-web-service"></a>Bereitstellen als Webdienst
 
-Mit Ihrem Modell können Sie die Gefahr einer tödlichen Verletzung aufgrund einer Kollision vorhersagen. Verwenden Sie Azure ML, um Ihr Modell als Vorhersagedienst bereitzustellen. In diesem Tutorial stellen Sie den Webdienst in [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI) bereit.
+Mit Ihrem Modell können Sie die Gefahr einer tödlichen Verletzung aufgrund einer Kollision vorhersagen. Verwenden Sie Azure ML, um Ihr Modell als Vorhersagedienst bereitzustellen. In diesem Tutorial stellen Sie den Webdienst in [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI) bereit.
 
 ### <a name="register-the-model"></a>Registrieren des Modells
 
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 Löschen Sie die Ressourcen, wenn Sie sie nicht mehr benötigen. Löschen Sie keine Ressourcen, die Sie noch verwenden möchten. 
 
 Löschen des Webdiensts:
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 Löschen des registrierten Modells:
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 Löschen des Computeclusters:
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 

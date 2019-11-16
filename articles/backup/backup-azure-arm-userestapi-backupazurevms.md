@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 901ae66281e1d68474304a4f5456a0163fcb6f2a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747613"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929169"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -69,14 +69,14 @@ x-ms-correlation-request-id: 43cf550d-e463-421c-8922-37e4766db27d
 x-ms-routing-request-id: SOUTHINDIA:20180521T105701Z:43cf550d-e463-421c-8922-37e4766db27d
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 10:57:00 GMT
-Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions//00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 Verfolgen Sie den resultierenden Vorgang mithilfe des „Location“-Headers mit einem einfachen *GET*-Befehl nach.
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/operationResults/aad204aa-a5cf-4be2-a7db-a224819e5890?api-version=2019-05-13
 ```
 
 Nachdem alle virtuellen Azure-Computer ermittelt wurden, gibt der GET-Befehl die Antwort „204 (Kein Inhalt)“ zurück. Der Tresor kann nun alle virtuellen Computer im Abonnement ermitteln.
@@ -168,12 +168,12 @@ Im Beispiel ergeben die Werte oben Folgendes:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Aktivieren des Schutzes für den virtuellen Azure-Computer
 
-Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten wurde „DefaultPolicy“ ausgewählt.
+Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten wurde „DefaultPolicy“ ausgewählt.
 
 Beim Aktivieren des Schutzes handelt es sich um einen asynchronen *PUT*-Vorgang, mit dem ein „geschütztes Element“ erstellt wird.
 
 ```http
-https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2016-12-01
+https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
 `{containerName}` und `{protectedItemName}` entsprechen der Erstellung oben. Für `{fabricName}` ist „Azure“ festgelegt. In unserem Beispiel ergibt dies Folgendes:
@@ -244,7 +244,7 @@ X-Powered-By: ASP.NET
 Verfolgen Sie anschließend den resultierenden Vorgang mithilfe des location- oder Azure-AsyncOperation-Headers mit einem einfachen *GET*-Befehl nach.
 
 ```http
-GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2016-12-01
+GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/a0866047-6fc7-4ac3-ba38-fb0ae8aa550f?api-version=2019-05-13
 ```
 
 Wenn der Vorgang abgeschlossen ist, wird „200 (OK)“ mit dem Inhalt des geschützten Elements im Antworttext zurückgegeben.
@@ -293,7 +293,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 `{containerName}` und `{protectedItemName}` entsprechen der Erstellung [oben](#responses-1). Für `{fabricName}` ist „Azure“ festgelegt. In unserem Beispiel ergibt dies Folgendes:
 
 ```http
-POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2019-05-13
+POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
 ```
 
 ### <a name="create-the-request-body"></a>Erstellen des Anforderungstexts
@@ -347,7 +347,7 @@ x-ms-correlation-request-id: 7885ca75-c7c6-43fb-a38c-c0cc437d8810
 x-ms-routing-request-id: SOUTHINDIA:20180521T083541Z:7885ca75-c7c6-43fb-a38c-c0cc437d8810
 Cache-Control: no-cache
 Date: Mon, 21 May 2018 08:35:41 GMT
-Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationResults/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testVaultRG;testVM/protectedItems/vm;testRG;testVM/operationResults/b8daecaa-f8f5-44ed-9f18-491a9e9ba01f?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 

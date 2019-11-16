@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0f3a486edb0c650a4a14e5e60b4459f758a64d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 88b4df909e2c56f1a60e0f3c737b05ae4c27ca4a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499936"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123245"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Tutorial: Erstellen eines Power BI-Anbieterdashboards
 
@@ -91,7 +91,7 @@ Am Ende dieses Schritts sollte Ihr Logik-App-Designer wie folgt aussehen:
 ## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Streamen von Daten aus Ihrer Logik-App nach Power BI
 Im nächsten Schritt analysieren Sie die Daten aus Ihrem Event Hub, um sie in die zuvor erstellten Power BI-Datasets zu streamen.
 
-1. Bevor Sie diesen Schritt ausführen, müssen Sie die JSON-Nutzlast kennen, die von Ihrem Gerät an Ihren Event Hub gesendet wird. Sehen Sie sich dafür dieses [Beispielschema](https://docs.microsoft.com/azure/iot-central/core/howto-export-data-pnp#telemetry) an, und ändern Sie es so, dass es Ihrem Schema entspricht, oder verwenden Sie den [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer), um die Meldungen zu untersuchen. Wenn Sie die Anwendungen zur kontinuierlichen Patientenüberwachung verwenden, sehen die Meldungen etwa wie folgt aus:
+1. Bevor Sie diesen Schritt ausführen, müssen Sie die JSON-Nutzlast kennen, die von Ihrem Gerät an Ihren Event Hub gesendet wird. Sehen Sie sich dafür dieses [Beispielschema](https://docs.microsoft.com/azure/iot-central/preview/howto-export-data#telemetry) an, und ändern Sie es so, dass es Ihrem Schema entspricht, oder verwenden Sie den [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer), um die Meldungen zu untersuchen. Wenn Sie die Anwendungen zur kontinuierlichen Patientenüberwachung verwenden, sehen die Meldungen etwa wie folgt aus:
 
 **Smart Vitals Patch-Telemetrie**
 

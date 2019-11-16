@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Docker | Microsoft-Dokumentation
+title: Azure PowerShell-Skriptbeispiel – Docker
 description: Azure PowerShell-Skriptbeispiel – Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ec8f578c49fbcdfe1554b7d1cf0383a84d243774
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 25c9712769c2fb9ee54a78989143625e325a9299
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748847"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040182"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Erstellen eines Docker-Hosts mit PowerShell
 
