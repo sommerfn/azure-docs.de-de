@@ -1,5 +1,5 @@
 ---
-title: Partner für die Datenintegration mit SQL Data Warehouse | Microsoft Docs
+title: Partner für die Datenintegration
 description: Liste der externen Partner mit Lösungen für die Datenintegration, die Azure SQL Data Warehouse unterstützen.
 services: sql-data-warehouse
 author: mabasile-MSFT
@@ -10,12 +10,13 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 5593d6e392915448845adcac95da869e72a11310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: e368894d7036d071285ebc7ba85056676d8d670d
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873803"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692643"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partner für die Datenintegration bei SQL Data Warehouse
 Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen. In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die offizielle Tools und Lösungen für die Datenintegration anbieten, die Azure SQL Data Warehouse unterstützen.
@@ -34,6 +35,7 @@ Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vi
 | ![Segment][10] |**Segment**<br>Segment ist eine Datenverwaltungs- und -analyselösung, die Ihnen das Verständnis und die Verwertung von Kundendaten aus verschiedenen Quellen ermöglicht. Mit Segment können Sie Ihre Daten mit mehr als 200 Tools verknüpfen, um bessere Entscheidungen zu treffen sowie bessere Produkte und Benutzererlebnisse zu erstellen. Mithilfe der integrierten Connectors transformiert Segment mehrere Datenquellen und lädt sie für Sie in Ihr Warehouse.|[Produktseite][segment_website]<br> |
 | ![Skyvia][11] |**Skyvia (Datenintegration)**<br>Die Skyvia-Datenintegration bietet einen Assistenten, der Datenimporte automatisiert. Der Assistent ermöglicht Ihnen das Migrieren von Daten zwischen einer Vielzahl von Quellen, beispielsweise CRM-Lösungen, Anwendungsdatenbanken, CSV-Dateien usw. |[Produktseite][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>Mit der SnapLogic-Plattform können Kunden Daten schnell in und aus Microsoft Azure SQL Data Warehouse übertragen. Sie bietet die Möglichkeit, Hunderte von Anwendungen, Diensten und IoT-Szenarien in einer Lösung zu integrieren.|[Produktseite][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
+| ![StreamSets][15] |**StreamSets**<br>StreamSets bietet eine Datenintegrationsplattform für DataOps. Es operationalisiert den vollständigen Lebenszyklus von Entwurf, Bereitstellung und Durchführung der Integration von Daten in Azure SQL Data Warehouse. Sie können nicht nur in das Warehouse eingehende und von dort ausgehende Daten über Streaming- und Batch-Datenübermittlungsmethoden oder Datenübermittlungsmethoden zur Erfassung geänderter Daten schnell erfassen und integrieren, sondern auch kontinuierliche Vorgänge mit intelligenten Datenpipelines sicherstellen, die eine End-to-End-Sichtbarkeit und -Resilienz des Datenflusses ermöglichen.|[Produktseite][streamsets_website]|
 | ![Talend][12] |**Talend Cloud**<br>Talend Cloud ist eine Integrationsplattform für Unternehmensdaten, mit der Sie auf beliebige cloudbasierte oder lokale Daten zugreifen und diese verknüpfen sowie transformieren können. Talend Cloud ist ein iPaaS-Angebot (Integration Platform-as-a-Service), das umfassende Konnektivität, integrierte Datenqualität und native Unterstützung für die neuesten Big Data- und Cloudtechnologien bietet. |[Produktseite][talend_website]<br> [Azure Marketplace][talend_marketplace] |
 | ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta ist eine Lösung für Einzelpersonen und Organisationen, die Sie beim Untersuchen und Verknüpfen unterschiedlicher Daten für die Analyse unterstützt. Trifacta Wrangler ist zur Verarbeitung von Data Wrangling-Workloads konzipiert, die große Datenmengen und eine große Anzahl von Benutzern unterstützen müssen.|[Produktseite][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
 | ![WhereScape][14] |**Wherescape RED**<br> WhereScape RED ist eine integrierte Entwicklungsumgebung (Integrated Development Environment, IDE), die Automatisierungstools zum Optimieren von ETL-Workflows für Teams bereitstellt. Die IDE bietet optimierten nativen Code für gängige Datenziele, der auf bewährten Methoden beruht. Mit WhereScape RED können Sie das Entwickeln, Bereitstellen und Betreiben Ihrer Dateninfrastruktur beschleunigen.|[Produktseite][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
@@ -64,6 +66,8 @@ Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligenc
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
 [13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
 [14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+
 
 
 <!--Website Links -->
@@ -84,6 +88,7 @@ Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligenc
 [talend_website]:https://www.talend.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
+[streamsets_website]:https://streamsets.com/partners/microsoft
 
 <!--Marketplace Links -->
 

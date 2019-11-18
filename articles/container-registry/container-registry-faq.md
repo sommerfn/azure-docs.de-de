@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286513"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622706"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -448,6 +448,8 @@ Konfigurieren Sie den Docker-Proxy für die Ausgabe des vorherigen Befehls und f
 
 - [Wie breche ich alle Ausführungen ab?](#how-do-i-batch-cancel-runs)
 - [Wie binde ich den Ordner „.git“ in den Befehl „az acr build“ ein?](#how-do-i-include-the-git-folder-in-az-acr-build-command)
+- [Unterstützen Aufgaben „GitLab for Source“-Trigger?](#does-tasks-support-gitlab-for-source-triggers)
+- [Welchen Git-Repositoryverwaltungsdienst unterstützen Aufgaben?](#what-git-repository-management-service-does-tasks-support)
 
 ### <a name="how-do-i-batch-cancel-runs"></a>Wie breche ich alle Ausführungen ab?
 
@@ -462,11 +464,30 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 Wenn Sie einen lokalen Quellordner an den Befehl `az acr build` übergeben, wird der Ordner `.git` standardmäßig aus dem hochgeladenen Paket ausgeschlossen. Sie können eine `.dockerignore`-Datei mit der folgenden Einstellung erstellen. Sie weist den Befehl an, alle Dateien unter `.git` im hochgeladenen Paket wiederherzustellen. 
 
-```
+```sh
 !.git/**
 ```
 
 Diese Einstellung gilt auch für den Befehl `az acr run`.
+
+### <a name="does-tasks-support-gitlab-for-source-triggers"></a>Unterstützen Aufgaben „GitLab for Source“-Trigger?
+
+„GitLab for Source“-Trigger werden derzeit nicht unterstützt.
+
+### <a name="what-git-repository-management-service-does-tasks-support"></a>Welchen Git-Repositoryverwaltungsdienst unterstützen Aufgaben?
+
+| Git-Dienst | Quellkontext | Manueller Build | Automatisches Erstellen durch Committrigger |
+|---|---|---|---|
+| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | Ja | Ja |
+| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | Ja | Ja |
+| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | Ja | Nein |
+| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | Ja | Nein |
+
+## <a name="run-error-message-troubleshooting"></a>Problembehandlung bei Fehlermeldung bei Ausführung
+
+| Fehlermeldung | Handbuch zur Problembehandlung |
+|---|---|
+|Da kein Zugriff auf den virtuellen Computer konfiguriert war, wurden keine Abonnements gefunden|Dies kann vorkommen, wenn Sie `az login --identity` in ihrer ACR-Aufgabe verwenden. Dieser vorübergehende Fehler tritt auf, wenn die Rollenzuweisung Ihrer verwalteten Identität nicht weitergegeben wurde. Warten Sie einige Sekunden, bis der Wiederholungsversuch funktioniert.|
 
 ## <a name="cicd-integration"></a>CI/CD-Integration
 

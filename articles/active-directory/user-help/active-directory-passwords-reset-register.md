@@ -1,6 +1,6 @@
 ---
-title: Registrieren für die Self-Service-Kennwortzurücksetzung – Azure Active Directory | Microsoft-Dokumentation
-description: Registrieren von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung von Azure AD
+title: Registrieren zum Zurückzusetzen Ihres Kennworts – Azure AD
+description: Registrieren Sie Ihre Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung in Azure AD, damit Sie Ihr eigenes Kennwort ohne Administratorhilfe zurücksetzen können.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f113c42ff45811f31eb77a92873fb187dd51ea6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 796702b2189dcfb001f72913e4a01c0ae01462ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530895"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820452"
 ---
-# <a name="register-for-self-service-password-reset"></a>Registrieren für die Self-Service-Kennwortzurücksetzung
+# <a name="register-to-reset-your-own-password"></a>Registrieren zum Zurückzusetzen Ihres Kennworts
 
 > [!IMPORTANT]
 > Haben Sie Probleme bei der Anmeldung? Dann lesen Sie unter [Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos](active-directory-passwords-update-your-own-password.md) weiter.

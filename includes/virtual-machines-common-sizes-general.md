@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: 9462d9c807f8300d65e8e5a3e997ebc858342a97
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3bccae7c0e45f21609a5a67d20811240648570d4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514471"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719147"
 ---
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz für die Größen in dieser Gruppe.
 
@@ -29,7 +29,7 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 
   Zu den möglichen Anwendungsfällen der D-Serie zählen Unternehmensanwendungen, relationale Datenbanken, In-Memory-Caching und Analysen.
 
-- Die Da-Serie und die Dasv3-Serie sind neue Größen, bei denen der AMD-Prozessor EPYC<sup>TM</sup> 7452V mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 GB L3-Cache verwendet wird. Hierbei werden 8 GB des L3-Caches jeweils acht Kernen zur Verfügung gestellt, was Kunden bei der Ausführung ihrer universellen Workloads mehr Optionen gibt. Die Da-Serie und die Dasv3-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D- und die Dsv3-Serie.
+- Die Dav4-Serie und die Dasv4-Serie sind neue Größen, bei denen der AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 GB L3-Cache verwendet wird. Hierbei werden 8 GB des L3-Caches jeweils acht Kernen zur Verfügung gestellt, was Kunden bei der Ausführung ihrer universellen Workloads mehr Optionen gibt. Die Dav4-Serie und die Dasv4-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D- und die Dsv3-Serie.
   
 ## <a name="b-series"></a>B-Serie
 
@@ -80,25 +80,28 @@ Die Größen der Dsv3-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,
 
 <sup>1</sup> Virtuelle Computer der Dsv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
-## <a name="dasv3-series-preview"></a>Dasv3-Serie (Vorschauversion)
+## <a name="dasv4-series"></a>Dasv4-Serie
+
+ACU:  230 – 260
 
 Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Unterstützt
 
-Die Größen der Dasv3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und Storage Premium verwenden kann. Die Größen der Dasv3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist.
+Die Größen der Dasv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Dasv4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist.
 
-[Klicken Sie hier, um sich für die Vorschauversion zu registrieren](http://aka.ms/azureamdpreview).
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) |
+|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2as_v4|2|8|16|4|4000/32 (50)|3200/48|2/1000 |
+| Standard_D4as_v4|4|16|32|8|8000/64 (100)|6400/96|2/2000 |
+| Standard_D8as_v4|8|32|64|16|16000/128 (200)|12800/192|4/4000 |
+| Standard_D16as_v4|16|64|128|32|32.000/255 (400)|25600/384|8 / 8000 |
+| Standard_D32as_v4|32|128|256|32|64.000/510 (800)|51200/768|8/16000 |
+| Standard_D48as_v4 <sup>**</sup>|48|192|384|32| | | 
+| Standard_D64as_v4 <sup>**</sup>|64|256|512|32| | | 
+| Standard_D96as_v4 <sup>**</sup>|96|384|768|32| | | 
 
-| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
-|---|---|---|---|
-| Standard_D2as_v3  | 2  | 8   | 16  |
-| Standard_D4as_v3  | 4  | 16  | 32  |
-| Standard_D8as_v3  | 8  | 32  | 64  |
-| Standard_D16as_v3 | 16 | 64  | 128 |
-| Standard_D32as_v3 | 32 | 128 | 256 |
-| Standard_D48as_v3 | 48 | 192 | 384 |
-| Standard_D64as_v3 | 64 | 256 | 512 |
+<sup>**</sup> Diese Größen befinden sich in der Vorschauphase.  Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="dv3-series-sup1sup"></a>Dv3-Serie <sup>1</sup>
 
@@ -125,25 +128,28 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 <sup>1</sup> Virtuelle Computer der Dv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
-## <a name="dav3-series-preview"></a>Dav3-Serie (Vorschauversion)
+## <a name="dav4-series"></a>Dav4-Serie
+
+ACU: 230 – 260
 
 Storage Premium Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
-Die Größen der Dav3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen kann. Die Größen der Dav3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Wenn Sie Datenträger mit Storage Premium nutzen möchten, verwenden Sie die Dasv3-Größen. Für Dasv3-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dav3-Serie.
+Die Größen der Dav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen kann. Die Größen der Dav4-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Um SSD Premium zu verwenden, verwenden Sie die Größen der Dasv4-Serie. Für Dasv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Dav4-Serie.
 
-[Klicken Sie hier, um sich für die Vorschauversion zu registrieren](http://aka.ms/azureamdpreview).
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) |
+|-----|-----|-----|-----|-----|-----|-----|
+| Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000/46/23   | 2/1000 |
+| Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000/93/46   | 2/2000 |
+| Standard_D8a_v4 |  8  | 32 | 200 | 16 | 12000/187/93 | 4/4000 |
+| Standard_D16a_v4|  16 | 64 | 400 |32  | 24000/375/187 |8 / 8000 |
+| Standard_D32a_v4|  32 | 128| 800 | 32 | 48000/750/375 |8/16000 |
+| Standard_D48a_v4 <sup>**</sup> | 48 | 192| 1200 | 32 | | |
+| Standard_D64a_v4 <sup>**</sup> | 64 | 256 | 1600 | 32 | | |
+| Standard_D96a_v4 <sup>**</sup> | 96 | 384 | 2400 | 32 | | |
 
-| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
-|---|---|---|---|
-| Standard_D2a_v3  | 2  | 8   | 50   |
-| Standard_D4a_v3  | 4  | 16  | 100  |
-| Standard_D8a_v3  | 8  | 32  | 200  |
-| Standard_D16a_v3 | 16 | 64  | 400  |
-| Standard_D32a_v3 | 32 | 128 | 800  |
-| Standard_D48a_v3 | 48 | 192 | 1200 |
-| Standard_D64a_v3 | 64 | 256 | 1600 |
+<sup>**</sup> Diese Größen befinden sich in der Vorschauphase.  Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="dsv2-series"></a>DSv2-Serie
 

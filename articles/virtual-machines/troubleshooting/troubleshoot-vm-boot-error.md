@@ -1,10 +1,10 @@
 ---
-title: Fehler beim Starten eines virtuellen Azure-Computers
+title: Linux-VM startet mit Grub Rescue
 description: Der virtuelle Computer konnte nicht gestartet werden, da auf ihm eine Rettungskonsole gestartet wurde.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
-manager: ''
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 29242b802dbbff4218506422293082a495c4d21e
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984842"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685133"
 ---
-# <a name="vm-boot-error"></a>Fehler beim Starten des virtuellen Computers
+# <a name="linux-vm-boots-to-grub-rescue"></a>Linux-VM startet mit Grub Rescue
 
 Wir haben festgestellt, dass auf Ihrem virtuellen Computer (virtual machine, VM) eine Rettungskonsole gestartet wurde. Dieses Problem tritt auf, wenn auf Ihrem virtuellen Linux-Computer kürzlich Kerneländerungen (beispielsweise ein Kernelupgrade) vorgenommen wurden und der Computer aufgrund von Kernelfehlern während des Startprozesses nicht mehr ordnungsgemäß startet. Wenn das Startladeprogramm im Zuge des Startprozesses versucht, den Linux-Kernel zu finden und die Startsteuerung an ihn zu übergeben, diese Übergabe aber nicht erfolgreich ist, wird für den virtuellen Computer eine Rettungskonsole gestartet.
 

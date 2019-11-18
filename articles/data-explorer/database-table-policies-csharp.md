@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: fa2dd4993dbf70bcbc6ea97726f8cd7254123429
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 8a5ea692bfdec7f676a80cc670f686af66152e6f
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997275"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606602"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-using-c"></a>Erstellen von Datenbank- und Tabellenrichtlinien für Azure Data Explorer mithilfe von C#
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Erstellen von Datenbank- und Tabellenrichtlinien für Azure Data Explorer mithilfe von C#
 
 > [!div class="op_single_selector"]
 > * [C#](database-table-policies-csharp.md)
@@ -25,32 +25,32 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2019 nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Visual Studio 2019: Falls Sie Visual Studio 2019 nicht besitzen, können Sie das *kostenlose* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 
-* Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Wenn erforderlich, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-* [Einen Testcluster und eine Testdatenbank](create-cluster-database-csharp.md)
+* [Ein Testcluster und eine Testdatenbank](create-cluster-database-csharp.md)
 
-* [Eine Testtabelle](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
+* [Eine Testtabelle](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
 ## <a name="install-c-nuget"></a>Installieren eines C#-NuGet-Pakets
 
 * Installieren Sie das [Azure Data Explorer-NuGet-Paket (Kusto)](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-* Installieren Sie das [NuGet-Paket Microsoft.Azure.Kusto.Data.NETStandard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/) (optional, zum Ändern von Richtlinien der Tabelle).
+* Installieren Sie das [NuGet-Paket Microsoft.Azure.Kusto.Data.NETStandard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Optional, zum Ändern von Tabellenrichtlinien.)
 
-* Installieren Sie das [NuGet-Paket „Microsoft.IdentityModel.Clients.ActiveDirectory“](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) für die Authentifizierung.
+* Installieren Sie das [NuGet-Paket Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) für die Authentifizierung.
 
 ## <a name="authentication"></a>Authentication
-Zum Ausführen der Beispiele in diesem Artikel benötigen wir eine Azure AD-Anwendung und einen Dienstprinzipal, der auf Ressourcen zugreifen kann. Sie können dieselbe Azure AD-Anwendung für die Authentifizierung aus einem [Testcluster und einer -datenbank](create-cluster-database-csharp.md#authentication) verwenden. Wenn Sie eine andere Azure AD Anwendung verwenden möchten, finden Sie weitere Informationen unter [Erstellen einer Azure AD-Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), um eine kostenlose Azure AD-Anwendung zu erstellen und die Rollenzuweisung im Abonnementbereich hinzuzufügen. Außerdem wird gezeigt, wie Sie die Angaben `Directory (tenant) ID`, `Application ID` und `Client Secret` abrufen. Möglicherweise müssen Sie die neue Azure AD-Anwendung als Prinzipal in der-Datenbank hinzufügen, siehe [Verwalten von Azure Data Explorer-Datenbankberechtigungen](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).   
+Um die Beispiele in diesem Artikel ausführen zu können, benötigen Sie eine Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal, der auf Ressourcen zugreifen kann. Sie können dieselbe Azure AD-Anwendung für die Authentifizierung aus einem [Testcluster und einer Datenbank](create-cluster-database-csharp.md#authentication) verwenden. Wenn Sie eine andere Azure AD Anwendung verwenden möchten, finden Sie weitere Informationen unter [Erstellen einer Azure AD-Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), um eine kostenlose Azure AD-Anwendung zu erstellen und die Rollenzuweisung im Abonnementbereich hinzuzufügen. Dieser Artikel zeigt außerdem, wie Sie die Angaben `Directory (tenant) ID`, `Application ID` und `Client secret` abrufen. Möglicherweise müssen Sie die neue Azure AD-Anwendung als Prinzipal in der Datenbank hinzufügen. Weitere Informationen finden Sie unter [Verwalten der Berechtigungen für Datenbanken in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
 
 ## <a name="alter-database-retention-policy"></a>Ändern der Aufbewahrungsrichtlinie für die Datenbank
-Legt eine Aufbewahrungsrichtlinie mit einem vorläufigen Löschzeitraum von 10 Tagen fest.
+Legt eine Aufbewahrungsrichtlinie mit einem vorläufigen Löschzeitraum von 10 Tagen fest.
     
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -64,19 +64,19 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(softDeletePeriod: TimeSpan.FromDays(10)));
 ```
 
 ## <a name="alter-database-cache-policy"></a>Ändern der Richtlinie für die Datenbankzwischenspeicherung
-Legt eine Cacherichtlinie für die Datenbank fest, dass sich die Daten der letzten fünf Tage auf dem Cluster-SSD befinden.
+Legt eine Cacherichtlinie für die Datenbank fest. Die letzten fünf Tage der Daten befinden sich auf dem Cluster-SSD.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
 var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
 var credential = new ClientCredential(clientId, clientSecret);
@@ -90,21 +90,21 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(hotCachePeriod: TimeSpan.FromDays(5)));
 ```
 
 ## <a name="alter-table-cache-policy"></a>Ändern der Richtlinie für die Tabellenzwischenspeicherung
-Legt eine Cacherichtlinie für die Tabelle fest, dass sich die Daten der letzten fünf Tage auf dem Cluster-SSD befinden.
+Legt eine Cacherichtlinie für die Tabelle fest. Die letzten fünf Tage der Daten befinden sich auf dem Cluster-SSD.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
 var databaseName = "<DatabaseName>";
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
 var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
-var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+var clientSecret = "xxxxxxxxxxxxxx";//Client secret
 var tableName = "<TableName>"
 
 var kustoConnectionStringBuilder =
@@ -128,8 +128,8 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
-## <a name="add-a-new-principal-for-database"></a>Hinzufügen eines neuen Prinzipals für die Datenbank
-Hinzufügen einer neuen Azure AD-Anwendung als Administratorprinzipal für die Datenbank
+## <a name="add-a-new-principal-for-the-database"></a>Hinzufügen eines neuen Prinzipals für die Datenbank
+Fügt eine neue Azure AD-Anwendung als Administratorprinzipal für die Datenbank hinzu.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -149,7 +149,7 @@ var kustoManagementClient = new KustoManagementClient(credentials)
 };
 
 var resourceGroupName = "testrg";
-//The cluster and database that are created as part of the Prerequisites
+//The cluster and database that are created as part of the prerequisites
 var clusterName = "mykustocluster";
 var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.AddPrincipalsAsync(resourceGroupName, clusterName, databaseName,

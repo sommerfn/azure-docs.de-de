@@ -1,5 +1,5 @@
 ---
-title: Migrieren eines vorhandenen Azure SQL Data Warehouse zu Gen2 | Microsoft-Dokumentation
+title: Migrieren Ihrer Data Warehouse-Instanz zu Gen2
 description: Anweisungen zum Migrieren eines vorhandenen Data Warehouse zu Gen2 und der Migrationsplan nach Region.
 services: sql-data-warehouse
 author: mlee3gsd
@@ -10,12 +10,13 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900319"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693038"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 

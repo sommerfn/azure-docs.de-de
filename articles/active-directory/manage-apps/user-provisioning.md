@@ -15,16 +15,16 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330021"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73641452"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 
-Mit Azure Active Directory (Azure AD) können Sie die Erstellung, Wartung und Entfernung von Benutzeridentitäten in Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) wie Dropbox, Salesforce, ServiceNow usw. automatisieren. Dies wird als automatisierte Benutzerbereitstellung für SaaS-Apps bezeichnet.
+Mit Azure Active Directory (Azure AD) können Sie die Erstellung, Wartung und Entfernung von Benutzeridentitäten in Cloudanwendungen (SaaS) wie [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) usw. automatisieren. Dies wird als automatisierte Benutzerbereitstellung für SaaS-Apps bezeichnet.
 
 > [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
@@ -90,11 +90,7 @@ Konfigurieren Sie im Azure Active Directory-Portal den Azure AD-Bereitstellungsd
 
 1. Öffnen Sie das **[Azure Active Directory-Portal](https://aad.portal.azure.com)** .
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Daraufhin wird eine Liste aller konfigurierten Apps angezeigt.
-1. Wählen Sie **+ Neue Anwendung** aus, um eine Anwendung hinzuzufügen. Fügen Sie je nach Szenario eine der folgenden Anwendungen hinzu:
-
-   - Die Option **Eigene App hinzufügen** unterstützt benutzerdefiniert entwickelte SCIM-Integrationen.
-   - Alle Anwendungen im Abschnitt **Aus Katalog hinzufügen** > **Ausgewählte Anwendungen** unterstützen die automatische Bereitstellung. Weitere Anwendungen finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](../saas-apps/tutorial-list.md).
-
+1. Wählen Sie **+ Neue Anwendung** aus, um eine Anwendung hinzuzufügen. 
 1. Geben Sie die Details an, und wählen Sie **Hinzufügen** aus. Die neue App wird der Liste der Unternehmensanwendungen hinzugefügt und auf dem Anwendungsverwaltungsbildschirm geöffnet.
 1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die App zu verwalten.
 
@@ -196,7 +192,7 @@ Einen szenariobasierten Leitfaden zur Problembehandlung bei der automatischen Be
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Einen ausführlichen exemplarischen Bereitstellungsplan für die ausgehende Benutzerbereitstellung einer Anwendung finden Sie im [Identitätsbereitstellungsleitfaden für die Benutzerbereitstellung](https://aka.ms/userprovisioningdeploymentplan).
+Einen ausführlichen exemplarischen Bereitstellungsplan für die ausgehende Benutzerbereitstellung einer Anwendung finden Sie im [Identitätsbereitstellungsleitfaden für die Benutzerbereitstellung](https://aka.ms/deploymentplans/userprovisioning).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

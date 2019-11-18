@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Konfigurieren von Caches in Azure-Cache für Redis mithilfe von Ansible'
-description: Es wird beschrieben, wie Sie Ansible verwenden, um Azure-Cache für Redis zu erstellen, zu skalieren und neu zu starten.
+description: Es wird beschrieben, wie Sie Ansible verwenden, um Azure Cache for Redis zu erstellen, zu skalieren, neu zu starten und eine Firewallregel hinzuzufügen.
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Cache, Redis
 ms.topic: tutorial
 ms.service: ansible
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 95b42bc9539c36a533eb528c3c26ade89e99290b
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241791"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614361"
 ---
 # <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Tutorial: Konfigurieren von Caches in Azure-Cache für Redis mit Ansible
 

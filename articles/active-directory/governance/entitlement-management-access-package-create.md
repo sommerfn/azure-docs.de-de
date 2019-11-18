@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion) – Azure Active Directory
-description: Erfahren Sie, wie Sie ein neues Zugriffspaket für freizugebende Ressourcen in der Azure Active Directory-Berechtigungsverwaltung (Vorschauversion) erstellen.
+title: Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung – Azure Active Directory
+description: Erfahren Sie, wie Sie ein neues Zugriffspaket für freizugebende Ressourcen in der Azure Active Directory-Berechtigungsverwaltung erstellen.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10a278fdd194b841cbb8620999fe79c3affb4e0b
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 71aa999809ba3d3e32d38162dfaba869d9716031
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389372"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73602717"
 ---
-# <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Erstellen eines neuen Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
 Mit einem Zugriffspaket können Sie Ressourcen und Richtlinien einmalig so einrichten, dass der Zugriff für die gesamte Lebensdauer des Zugriffspakets automatisch verwaltet wird. In diesem Artikel wird das Erstellen eines neuen Zugriffspakets beschrieben.
 
@@ -68,9 +63,9 @@ Nachfolgend sind die grundlegenden Schritte zum Erstellen eines neuen Zugriffspa
 
 1. Klicken Sie im linken Menü auf **Zugriffspakete**.
 
-    ![Berechtigungsverwaltung im Azure-Portal](./media/entitlement-management-shared/elm-access-packages.png)
-
 1. Klicken Sie auf **Neues Zugriffspaket**.
+   
+    ![Berechtigungsverwaltung im Azure-Portal](./media/entitlement-management-shared/access-packages-list.png)
 
 ## <a name="basics"></a>Grundlagen
 
@@ -118,7 +113,7 @@ Auf der Registerkarte **Anforderungen** erstellen Sie die erste Richtlinie, um a
 
 ![Zugriffspaket – Registerkarte „Anforderungen“](./media/entitlement-management-access-package-create/requests.png)
 
-Führen Sie die Schritte in einem der folgenden Abschnitte aus.
+Führen Sie die Schritte in einem der folgenden Abschnitte aus, je nachdem, wer in der Lage sein soll, dieses Zugriffspaket anzufordern.
 
 [!INCLUDE [Entitlement management request policy](../../../includes/active-directory-entitlement-management-request-policy.md)]
 

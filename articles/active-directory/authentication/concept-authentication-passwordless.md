@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8c8bfa5fc31ce8500d1ed339ba28afeed21e25a0
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430516"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603508"
 ---
 # <a name="passwordless-authentication-options"></a>Kennwortlose Authentifizierungsoptionen
 
@@ -28,13 +28,13 @@ Die Multi-Factor Authentication (MFA) ist eine großartige Möglichkeit, Ihre Or
 
 Jede Organisation hat unterschiedliche Anforderungen in Bezug auf die Authentifizierung. Microsoft bietet drei kennwortlose Authentifizierungsoptionen:
 
-- Windows Hello for Business 
-- Microsoft Authenticator-App 
+- Windows Hello for Business
+- Microsoft Authenticator-App
 - FIDO2-Sicherheitsschlüssel
 
 ![Authentifizierung: Sicherheits- und Komfortaspekte](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-## <a name="windows-hello-for-business"></a>Windows Hello for Business 
+## <a name="windows-hello-for-business"></a>Windows Hello for Business
 
 Windows Hello for Business eignet sich ideal für Information-Worker, die über einen eigenen Windows-PC verfügen. Die biometrischen Daten und die PIN sind direkt mit dem PC des Benutzers verknüpft, wodurch sichergestellt wird, dass nur der Besitzer darauf zugreifen kann. Mit PKI-Integration und integrierter Unterstützung für einmaliges Anmelden (SSO) bietet Windows Hello for Business eine einfache und praktische Methode für den nahtlosen Zugriff auf Unternehmensressourcen lokal und in der Cloud.
 
@@ -52,7 +52,7 @@ Sie verwandelt jedes iOS- oder Android-Handy in eine starke, kennwortlose Anmeld
 
 FIDO2-Sicherheitsschlüssel sind eine Phishing-resistente, standardbasierte Methode zur kennwortlosen Authentifizierung, die in jedem Formfaktor verfügbar sein kann. Fast Identity Online (FIDO) ist ein offener Standard für die kennwortlose Authentifizierung. Damit können Benutzer und Organisationen den Standard nutzen, um sich ohne Benutzername oder Kennwort mit einem externen Sicherheitsschlüssel oder einem in ein Gerät integrierten Plattformschlüssel bei ihren Ressourcen anzumelden.
 
-In der Public Preview können sich Mitarbeiter mit externen Sicherheitsschlüsseln bei ihren Azure Active Directory Joined Windows 10-Computern (mit Version 1809 oder höher) anmelden und mit einmaligem Anmelden auf ihre Cloudressourcen zugreifen. Sie können sich auch bei unterstützten Browsern anmelden.
+In der Public Preview können sich Mitarbeiter mit Sicherheitsschlüsseln bei ihren mit Azure AD verknüpften Windows 10-Geräten anmelden und mit einmaligem Anmelden auf ihre Cloud- und lokalen Ressourcen zugreifen. Sie können sich auch bei unterstützten Browsern anmelden.
 
 ![Anmelden bei Microsoft Edge mit einem Sicherheitsschlüssel](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -76,6 +76,10 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
+| AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
+
+> [!NOTE]
+> Wenn Sie auf NFC basierte Sicherheitsschlüssel erwerben und diese verwenden möchten, benötigen Sie einen unterstützten NFC-Leser.
 
 Wenn Sie ein Anbieter sind und möchten, dass Ihr Gerät auf diese Liste gesetzt wird, wenden Sie sich an [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
 
@@ -88,7 +92,7 @@ FIDO2-Sicherheitsschlüssel sind eine gute Option für Unternehmen, die sehr sic
 - Endbenutzer können diese kennwortlosen Authentifizierungsmethoden in ihrem Kontoportal registrieren und verwalten
 - Endbenutzer können sich mit diesen kennwortlosen Authentifizierungsmethoden anmelden
    - Microsoft Authenticator-App: Funktioniert in Szenarien, in denen die Azure AD-Authentifizierung verwendet wird, einschließlich aller Browser, während der Einrichtung der Windows 10-Out-of-Box-Experience (OOBE) und mit integrierten mobilen Apps unter jedem Betriebssystem.
-   - Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 Version 1809 oder höher und im Internet in unterstützten Browsern wie Microsoft Edge.
+   - Sicherheitsschlüssel: Funktioniert auf Sperrbildschirm für Windows 10 und im Internet in unterstützten Browsern wie Microsoft Edge.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

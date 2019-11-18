@@ -4,15 +4,16 @@ description: Herausgeber können jetzt ihre Angebote über den Microsoft CSP-Par
 services: Azure, Marketplace, Compute, Storage, Networking
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 0b47e5af0b0656cac4962c1007e999508f58a9e5
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 80f871301bbb67def3635b8beb3705ac99b88bda
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150933"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826061"
 ---
 # <a name="cloud-solution-providers"></a>Cloud Solution Provider (CSP)
 

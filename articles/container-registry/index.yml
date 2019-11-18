@@ -1,73 +1,89 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentation zur Azure-Containerregistrierung
+### YamlMime:Landing
+title: Dokumentation zur Azure Container Registry
+summary: Mit Azure Container Registry können Sie Containerimages und -artefakte in einer privaten Registrierung für alle Arten von Containerbereitstellungen erstellen, speichern und verwalten. Verwenden Sie Azure-Containerregistrierungen mit Ihren vorhandenen Pipelines für die Containerentwicklung und -bereitstellung. Verwenden Sie Azure Container Registry Tasks, um Containerimages in Azure bedarfsgesteuert zu erstellen oder Buildvorgänge zu automatisieren, die durch Quellcodeaktualisierungen, Aktualisierungen des Basisimages eines Containers oder Timer ausgelöst werden.
 metadata:
-  title: Dokumentation für Azure Container Registry – Tutorials | Microsoft-Dokumentation
-  description: 'Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen erstellen, speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.'
+  title: Dokumentation zur Azure Container Registry
+  description: Hier erfahren Sie mehr über den privaten Registrierungsdienst von Azure zum Hosten von Docker-Containerimages und zugehörigen Artefakten. Der Azure Container Registry-Dienst unterstützt außerdem ACR Tasks, eine Suite mi Diensten zum Erstellen, Verwalten und Patchen von Containerimages.
   services: container-registry
-  author: georgewallace
-  manager: gwallace
   ms.service: container-registry
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: gwallace
-abstract:
-  description: 'Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen erstellen, speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.'
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Es wird beschrieben, wie Sie eine Azure Container Registry-Instanz bereitstellen.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure-Befehlszeilenschnittstelle
-            href: /azure/container-registry/container-registry-get-started-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure-Portal
-            href: /azure/container-registry/container-registry-get-started-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-registry/container-registry-get-started-powershell
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Erfahren Sie anhand dieser Tutorials, wie Sie Azure Container Registry verwenden.'
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">Erstellen von Containerimages mit ACR-Aufgaben</a>
-          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Georeplikation für Containerregistrierung</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Containerregistrierung mit Azure Container Instances</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Containerregistrierung mit Azure Kubernetes Service (AKS)</a>
-          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">Containerregistrierung mit Service Fabric</a>
-  - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Erstellen und Speichern von Containerimages mit Azure Container Registry
-            href: /learn/modules/build-and-store-container-images/
-            image:
-              src: /learn/achievements/build-and-store-container-images.svg
-              href: /learn/modules/build-and-store-container-images/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-registry">Mehr interaktives Lernen...</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure/acr">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.containerregistry">PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/java/api/overview/azure/containerregistry">Java</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
-          - title: REST
-            html: '<p><a href="/rest/api/containerregistry">REST-API-Referenz</a></p><p><a href="/azure/templates/microsoft.containerregistry/registries">Resource Manager: Vorlage</a></p><p><a href="/azure/container-registry/container-registry-webhook-reference">Webhookschema</a></p>'
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 11/08/2019
+  ms.openlocfilehash: ace70edef26be143d8e2367818a3c4cc15bd769e
+  ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/17/2019
+  ms.locfileid: "74150088"
+landingContent:
+- title: Informationen zu Azure Container Registry
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Azure-Containerregistrierung?
+      url: container-registry-intro.md
+    - text: Registrierungen, Repositorys und Images
+      url: container-registry-concepts.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 'Bereitstellen der Containerregistrierung: CLI'
+      url: container-registry-get-started-azure-cli.md
+    - text: 'Bereitstellen der Containerregistrierung: Portal'
+      url: container-registry-get-started-portal.md
+    - text: Pushen und Pullen eines Images mit Docker
+      url: container-registry-get-started-docker-cli.md
+  - linkListType: concept
+    links:
+    - text: Dienstebenen
+      url: container-registry-skus.md
+  - linkListType: learn
+    links:
+    - text: Erstellen und Speichern von Containerimages mit Azure Container Registry
+      url: https://docs.microsoft.com/learn/modules/build-and-store-container-images/
+  - linkListType: video
+    links:
+    - text: Videos zu Azure Container Registry
+      url: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
+- title: Verwalten von Registrierungen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen von Repositorys und Tags
+      url: container-registry-repositories.md
+    - text: Importieren von Images
+      url: container-registry-import-images.md
+    - text: Sperren von Images
+      url: container-registry-image-lock.md
+    - text: Löschen von Images
+      url: container-registry-delete.md
+  - linkListType: concept
+    links:
+    - text: Georeplikation
+      url: container-registry-geo-replication.md
+    - text: Authentication
+      url: container-registry-authentication.md
+    - text: Bewährte Methoden
+      url: container-registry-best-practices.md
+    - text: Häufig gestellte Fragen
+      url: container-registry-faq.md
+- title: ACR-Aufgaben
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informationen zu ACR Tasks
+      url: container-registry-tasks-overview.md
+    - text: Mehrstufige Aufgaben
+      url: container-registry-tasks-multi-step.md
+  - linkListType: quickstart
+    links:
+    - text: 'Erstellen eines Images in der Cloud: CLI'
+      url: container-registry-quickstart-task-cli.md
+  - linkListType: tutorial
+    links:
+    - text: Automatisieren von Imagebuildvorgängen
+      url: container-registry-tutorial-quick-task.md

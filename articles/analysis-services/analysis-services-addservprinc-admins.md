@@ -1,18 +1,18 @@
 ---
-title: Hinzufügen eines Dienstprinzipals zur Azure Analysis Services-Serveradministratorrolle | Microsoft Docs
-description: Hier erfahren Sie, wie Sie einen Automatisierungsdienstprinzipal zur Serveradministratorrolle hinzufügen.
+title: Hinzufügen eines Dienstprinzipals zur Azure Analysis Services-Administratorrolle | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie einen Automatisierungsdienstprinzipal der Azure Analysis Services-Serveradministratorrolle hinzufügen.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c141bcea030f5afcc3cb33adba32f4a96c335eec
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 0a3a86283c8ec9876fbec049a2a1a110eb1a80f3
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147401"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573618"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle 
 

@@ -4,14 +4,14 @@ description: Lernen Sie die Features und Vorteile von Azure Spring Cloud zur Ber
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: overview
-ms.date: 10/04/2019
+ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9709d7edb7c48ccfdb551d0e837a098289a5097a
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166536"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73721269"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Was ist Azure Spring Cloud?
 
@@ -19,8 +19,7 @@ Azure Spring Cloud vereinfacht das Bereitstellen von Spring Boot-basierten Micro
 
 Als Teil des Azure-Ökosystems ermöglicht Azure Spring Cloud eine einfache Anbindung an andere Azure-Dienste wie Speicher, Datenbanken, Überwachung und mehr.
 
-Azure Spring Cloud befindet sich derzeit in der Vorschauphase.  Für den Zugriff auf diesen Dienst, während er sich in der Vorschauphase befindet, [füllen Sie dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
-).
+Azure Spring Cloud wird zurzeit als Public Preview angeboten. Angebote der Public Preview ermöglichen Kunden das Experimentieren mit neuen Funktionen vor der offiziellen Veröffentlichung.  Funktionen und Dienste in der Public Preview sind nicht zur Verwendung in der Produktion bestimmt.  Weitere Informationen zur Unterstützung während der Vorschauphase finden Sie in den [häufig gestellten Fragen](https://azure.microsoft.com/support/faq/). Sie können auch eine [Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) einreichen, um weitere Informationen zu erhalten.
 
 Führen Sie zum Einstieg den Spring Cloud-Schnellstart mit der [Azure CLI](spring-cloud-quickstart-launch-app-cli.md), dem [Azure-Portal](spring-cloud-quickstart-launch-app-portal.md) oder [Maven](spring-cloud-quickstart-launch-app-maven.md) durch.
 

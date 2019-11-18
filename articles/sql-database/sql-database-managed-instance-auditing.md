@@ -1,5 +1,5 @@
 ---
-title: 'Verwaltete Azure SQL-Datenbank-Instanz: Überwachung | Microsoft-Dokumentation'
+title: Überwachung verwalteter Instanzen
 description: Lernen Sie die ersten Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen mit T-SQL kennen.
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: a4941038288b90bcbfd61660458c564ce64add9e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958505"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73819007"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Erste Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -153,7 +153,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
 
 Weitere Informationen:
 
-- [Überwachungsunterschiede zwischen Einzeldatenbanken, Pools für elastische Datenbanken und verwaltete Instanzen in Azure SQL-Datenbank und Datenbanken in SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [Überwachungsunterschiede zwischen Einzeldatenbanken, Pools für elastische Datenbanken und verwalteten Instanzen in Azure SQL-Datenbank und Datenbanken in SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -225,7 +225,6 @@ Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards bieten A
 Die wichtigsten Unterschiede zwischen der Überwachung in Datenbanken in Azure SQL-Datenbank und SQL Server:
 
 - Bei der Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank wird die Überwachung auf Serverebene ausgeführt. Die Protokolldateien mit der Endung `.xel` werden in Azure Blob Storage gespeichert.
-- Bei Bereitstellungen als Singleton und in Pools für elastische Datenbanken in Azure SQL-Datenbank erfolgt die Überwachung auf Datenbankebene.
 - Auf lokalen oder virtuellen SQL Server-Computern wird die Überwachung auf Serverebene ausgeführt, Ereignisse werden jedoch in Dateisystemprotokollen bzw. Windows-Ereignisprotokollen gespeichert.
 
 Die XEvent-Überwachung in einer verwalteten Instanz unterstützt Azure Blob Storage-Ziele. Dateiprotokolle und Windows-Protokolle werden **nicht unterstützt**.

@@ -17,6 +17,8 @@
   items:
     - name: Containerunterstützung
       href: cognitive-services-container-support.md
+    - name: Containerimagetags
+      href: ./containers/container-image-tags.md
     - name: 'Container: Häufig gestellte Fragen'
       href: ./containers/container-faq.md
     - name: Containeranleitungen

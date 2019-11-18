@@ -4,23 +4,23 @@ description: Dieser Leitfaden dient CEOs, CIOs, CISOs, Chief Identity Architects
 keywords: ''
 author: martincoetzer
 ms.author: martinco
-ms.date: 04/12/2018
+ms.date: 10/30/2019
 ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529398"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820554"
 ---
-# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
+# <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
 Die Wahl der richtigen Authentifizierungsmethode ist die erste Hürde für Organisationen, die ihre Apps in die Cloud verschieben möchten. Nehmen Sie diese Entscheidung aus den folgenden Gründen nicht auf die leichte Schulter:
 
-1. Es ist die erste Entscheidung für eine Organisation, die die Umstellung auf die Cloud vollziehen möchte. 
+1. Es ist die erste Entscheidung für eine Organisation, die die Umstellung auf die Cloud vollziehen möchte.
 
 2. Die Authentifizierungsmethode ist eine wichtige Komponente der Präsenz einer Organisation in der Cloud. Hierüber wird der Zugriff auf alle Clouddaten und -ressourcen gesteuert.
 
@@ -36,21 +36,21 @@ Organisationen, die über keine lokalen Verzeichnisse verfügen, stehen nicht im
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 Wenn die Azure AD-Hybrididentitätslösung Ihre neue Steuerungsebene bildet, ist die Authentifizierung die Grundlage für den Cloudzugriff. Die Wahl der richtigen Authentifizierungsmethode ist daher eine wichtige erste Entscheidung bei der Einrichtung einer Azure AD-Hybrididentitätslösung. Implementieren Sie die Authentifizierungsmethode, die mit Azure AD Connect konfiguriert wird. Hierüber werden auch Benutzer in der Cloud bereitgestellt.
 
-Bei der Auswahl einer Authentifizierungsmethode müssen Sie die Zeit, die vorhandene Infrastruktur, die Komplexität und die Implementierungskosten für die gewählte Lösung berücksichtigen. Diese Faktoren sind für jede Organisation unterschiedlich und können sich im Laufe der Zeit ändern. 
+Bei der Auswahl einer Authentifizierungsmethode müssen Sie die Zeit, die vorhandene Infrastruktur, die Komplexität und die Implementierungskosten für die gewählte Lösung berücksichtigen. Diese Faktoren sind für jede Organisation unterschiedlich und können sich im Laufe der Zeit ändern.
 
 >[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Azure AD unterstützt für Hybrididentitätslösungen die folgenden Authentifizierungsmethoden.
 
 ### <a name="cloud-authentication"></a>Cloudauthentifizierung
-Wenn Sie diese Authentifizierungsmethode wählen, übernimmt Azure AD die Anmeldung für Benutzer. In Verbindung mit dem nahtlosen einmaligen Anmelden (SSO) können sich Benutzer bei Cloud-Apps anmelden, ohne ihre Anmeldeinformationen erneut eingeben zu müssen. Bei der Cloudauthentifizierung können Sie zwischen zwei Optionen wählen: 
+Wenn Sie diese Authentifizierungsmethode wählen, übernimmt Azure AD die Anmeldung für Benutzer. In Verbindung mit dem nahtlosen einmaligen Anmelden (SSO) können sich Benutzer bei Cloud-Apps anmelden, ohne ihre Anmeldeinformationen erneut eingeben zu müssen. Bei der Cloudauthentifizierung können Sie zwischen zwei Optionen wählen:
 
 **Azure AD-Kennworthashsynchronisierung**: Dies ist der einfachste Weg, die Authentifizierung für lokale Verzeichnisobjekte in Azure AD zu ermöglichen. Benutzer können den gleichen Benutzernamen und das gleiche Kennwort wie in der lokalen Umgebung verwenden, ohne eine zusätzliche Infrastruktur bereitstellen zu müssen. Für einige Premium-Features von Azure AD, z.B. Identity Protection und [Azure AD Domain Services](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md), ist unabhängig davon, welche Authentifizierungsmethode Sie wählen, eine Kennworthashsynchronisierung erforderlich.
 
-> [!NOTE] 
-> Kennwörter werden nie im Klartext gespeichert oder mit einem umkehrbaren Algorithmus in Azure AD verschlüsselt. Weitere Informationen zum eigentlichen Prozess der Kennworthashsynchronisierung finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
+> [!NOTE]
+> Kennwörter werden nie im Klartext gespeichert oder mit einem umkehrbaren Algorithmus in Azure AD verschlüsselt. Weitere Informationen zum eigentlichen Prozess der Kennworthashsynchronisierung finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
 
-**Azure AD-Passthrough-Authentifizierung**: Es wird eine einfache Kennwortüberprüfung für Azure AD-Authentifizierungsdienste bereitgestellt, indem ein Software-Agent verwendet wird, der auf einem oder mehreren lokalen Servern ausgeführt wird. Die Server überprüfen die Benutzer direkt über Ihre lokale Active Directory-Instanz, um sicherzustellen, dass die Kennwortüberprüfung nicht in der Cloud erfolgt. 
+**Azure AD-Passthrough-Authentifizierung**: Es wird eine einfache Kennwortüberprüfung für Azure AD-Authentifizierungsdienste bereitgestellt, indem ein Software-Agent verwendet wird, der auf einem oder mehreren lokalen Servern ausgeführt wird. Die Server überprüfen die Benutzer direkt über Ihre lokale Active Directory-Instanz, um sicherzustellen, dass die Kennwortüberprüfung nicht in der Cloud erfolgt.
 
 Unternehmen mit einer Sicherheitsanforderung zur sofortigen Durchsetzung von lokalen Benutzerkontozuständen, Kennwortrichtlinien und Anmeldezeiten würden ggf. diese Authentifizierungsmethode verwenden. Weitere Informationen zum eigentlichen Passthrough-Authentifizierungsprozess finden Sie unter [Benutzeranmeldung mit der Azure AD-Passthrough-Authentifizierung](../../active-directory/hybrid/how-to-connect-pta.md).
 
@@ -69,7 +69,7 @@ Informationen zu Entscheidungsfragen:
 
 1. Azure AD kann die Anmeldung für Benutzer verarbeiten, ohne auf lokale Komponenten zur Überprüfung von Kennwörtern angewiesen zu sein.
 2. Azure AD kann die Benutzeranmeldung an einen vertrauenswürdigen Authentifizierungsanbieter übergeben, z.B. Microsoft AD FS.
-3. Azure AD benötigt einige lokale Komponenten, wenn Sie Active Directory-Sicherheitsrichtlinien auf Benutzerebene anwenden müssen, z.B. für abgelaufene Konten, deaktivierte Konten, abgelaufene Kennwörter, gesperrte Konten und Anmeldezeiten für Benutzeranmeldungen.
+3. Azure AD benötigt einige lokale Komponenten, wenn Sie Active Directory-Sicherheitsrichtlinien auf Benutzerebene anwenden müssen, z. B. für abgelaufene Konten, deaktivierte Konten, abgelaufene Kennwörter, gesperrte Konten und Anmeldezeiten für Benutzeranmeldungen.
 4. Anmeldefeatures, die nicht nativ durch Azure AD unterstützt werden:
    * Melden Sie sich mit Smartcards oder Zertifikaten an.
    * Melden Sie sich mit einem lokalen MFA-Server an.
@@ -106,21 +106,21 @@ Informationen zu den Bereitstellungsschritten finden Sie unter [Implementieren d
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>Cloudauthentifizierung Passthrough-Authentifizierung  
 
-* **Aufwand**: Für die Passthrough-Authentifizierung benötigen Sie mindestens einen einfachen Agent (Empfehlung: drei Agents), die auf vorhandenen Servern installiert sind. Diese Agents müssen Zugriff auf Ihre lokale Instanz von Active Directory Domain Services haben, einschließlich Ihrer lokalen AD-Domänencontroller. Sie benötigen Berechtigungen für den Zugriff auf das Internet und den Zugriff auf Ihre Domänencontroller. Aus diesem Grund wird das Bereitstellen der Agents in einem Umkreisnetzwerk nicht unterstützt. 
+* **Aufwand**: Für die Passthrough-Authentifizierung benötigen Sie mindestens einen einfachen Agent (Empfehlung: drei Agents), die auf vorhandenen Servern installiert sind. Diese Agents müssen Zugriff auf Ihre lokale Instanz von Active Directory Domain Services haben, einschließlich Ihrer lokalen AD-Domänencontroller. Sie benötigen Berechtigungen für den Zugriff auf das Internet und den Zugriff auf Ihre Domänencontroller. Aus diesem Grund wird das Bereitstellen der Agents in einem Umkreisnetzwerk nicht unterstützt.
 
     Für die Passthrough-Authentifizierung ist der uneingeschränkte Netzwerkzugriff auf Domänencontroller erforderlich. Der gesamte Netzwerkverkehr ist verschlüsselt und auf Authentifizierungsanfragen beschränkt. Weitere Informationen zu diesem Prozess finden Sie unter [Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit](../../active-directory/hybrid/how-to-connect-pta-security-deep-dive.md).
 
 * **Benutzererfahrung**: Stellen Sie das nahtlose einmalige Anmelden mit Passthrough-Authentifizierung bereit, um die Anmeldeerfahrung für Benutzer zu verbessern. Beim nahtlosen einmaligen Anmelden werden nach der Anmeldung eines Benutzers keine unnötigen Aufforderungen angezeigt.
 
-* **Erweiterte Szenarien**: Bei der Passthrough-Authentifizierung wird die lokale Kontorichtlinie zum Zeitpunkt der Anmeldung erzwungen. Beispielsweise wird der Zugriff verweigert, wenn ein Konto eines lokalen Benutzers den Status „Deaktiviert“, „Gesperrt“ oder [Kennwort abgelaufen](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) hat oder wenn der Zugriffsversuch außerhalb der für den Benutzer zulässigen Anmeldestunden liegt. 
+* **Erweiterte Szenarien**: Bei der Passthrough-Authentifizierung wird die lokale Kontorichtlinie zum Zeitpunkt der Anmeldung erzwungen. Beispielsweise wird der Zugriff verweigert, wenn ein Konto eines lokalen Benutzers den Status „Deaktiviert“, „Gesperrt“ oder [Kennwort abgelaufen](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) hat oder wenn der Zugriffsversuch außerhalb der für den Benutzer zulässigen Anmeldestunden liegt.
 
     Organisationen, die eine mehrstufige Authentifizierung mit Passthrough-Authentifizierung benötigen, müssen die Multi-Factor Authentication (MFA) von Azure oder [benutzerdefinierte Steuerelemente für den bedingten Zugriff](../../active-directory/conditional-access/controls.md#custom-controls-preview) verwenden. Es ist für diese Organisationen nicht möglich, ein Verfahren zur mehrstufigen Authentifizierung basierend auf einem Verbund zu nutzen, das von Drittanbietern oder lokal angeboten wird. Für die erweiterten Features muss die Kennworthashsynchronisierung unabhängig davon bereitgestellt werden, ob Sie die Passthrough-Authentifizierung wählen. Ein Beispiel hierfür ist der Bericht zu kompromittierten Anmeldeinformationen von Identity Protection.
 
-* **Geschäftskontinuität**: Wir empfehlen Ihnen, zwei zusätzliche Agents für die Passthrough-Authentifizierung bereitzustellen. Diese Bereitstellung gilt zusätzlich zum ersten Agent auf dem Azure AD Connect-Server. Mit dieser zusätzlichen Bereitstellung wird für Authentifizierungsanforderungen die Hochverfügbarkeit sichergestellt. Wenn Sie drei Agents bereitgestellt haben, kann ein Agent immer noch ausfallen, wenn ein anderer Agent wegen Wartungsarbeiten ausfällt. 
+* **Geschäftskontinuität**: Wir empfehlen Ihnen, zwei zusätzliche Agents für die Passthrough-Authentifizierung bereitzustellen. Diese Bereitstellung gilt zusätzlich zum ersten Agent auf dem Azure AD Connect-Server. Mit dieser zusätzlichen Bereitstellung wird für Authentifizierungsanforderungen die Hochverfügbarkeit sichergestellt. Wenn Sie drei Agents bereitgestellt haben, kann ein Agent immer noch ausfallen, wenn ein anderer Agent wegen Wartungsarbeiten ausfällt.
 
     Die Bereitstellung der Kennworthashsynchronisierung zusätzlich zur Passthrough-Authentifizierung hat noch einen weiteren Vorteil. Sie dient als sekundäre Authentifizierungsmethode, wenn die primäre Authentifizierungsmethode nicht mehr verfügbar ist.
 
-* **Überlegungen**: Sie können die Kennworthashsynchronisierung als sekundäre Authentifizierungsmethode für die Passthrough-Authentifizierung verwenden, wenn die Agents die Anmeldeinformationen eines Benutzers aufgrund eines signifikanten lokalen Ausfalls nicht überprüfen können. Das Failover zur Kennworthashsynchronisierung erfolgt nicht automatisch, und Sie müssen Azure AD Connect verwenden, um die Anmeldemethode manuell zu wechseln. 
+* **Überlegungen**: Sie können die Kennworthashsynchronisierung als sekundäre Authentifizierungsmethode für die Passthrough-Authentifizierung verwenden, wenn die Agents die Anmeldeinformationen eines Benutzers aufgrund eines signifikanten lokalen Ausfalls nicht überprüfen können. Das Failover zur Kennworthashsynchronisierung erfolgt nicht automatisch, und Sie müssen Azure AD Connect verwenden, um die Anmeldemethode manuell zu wechseln.
 
     Mehr zu weiteren Überlegungen zur Passthrough-Authentifizierung, z.B. der Unterstützung alternativer IDs, erfahren Sie in den [häufig gestellten Fragen](../../active-directory/hybrid/how-to-connect-pta-faq.md).
 
@@ -128,7 +128,7 @@ Weitere Informationen zu den Bereitstellungsschritten finden Sie unter [Benutzer
 
 ### <a name="federated-authentication"></a>Verbundauthentifizierung
 
-* **Aufwand**: Ein Verbundauthentifizierungssystem greift auf ein externes vertrauenswürdiges System zurück, um Benutzer zu authentifizieren. Einige Unternehmen möchten ihre bestehenden Investitionen in Verbundsysteme in Verbindung mit ihrer Azure AD-Hybrididentitätslösung wiederverwenden. Die Wartung und Verwaltung des Verbundsystems wird nicht über Azure AD gesteuert. Die Organisation, die das Verbundsystem verwendet, muss selbst sicherstellen, dass es die erforderliche Sicherheit bietet und die Authentifizierungslast bewältigen kann. 
+* **Aufwand**: Ein Verbundauthentifizierungssystem greift auf ein externes vertrauenswürdiges System zurück, um Benutzer zu authentifizieren. Einige Unternehmen möchten ihre bestehenden Investitionen in Verbundsysteme in Verbindung mit ihrer Azure AD-Hybrididentitätslösung wiederverwenden. Die Wartung und Verwaltung des Verbundsystems wird nicht über Azure AD gesteuert. Die Organisation, die das Verbundsystem verwendet, muss selbst sicherstellen, dass es die erforderliche Sicherheit bietet und die Authentifizierungslast bewältigen kann.
 
 * **Benutzererfahrung**: Die Benutzererfahrung der Verbundauthentifizierung hängt von der Implementierung der Funktionen, der Topologie und der Konfiguration der Verbundfarm ab. Einige Organisationen benötigen diese Flexibilität, um den Zugriff auf die Verbundfarm an ihre Sicherheitsanforderungen anzupassen und zu konfigurieren. Beispielsweise ist es möglich, intern verbundene Benutzer und Geräte so zu konfigurieren, dass sie automatisch angemeldet werden, ohne dass die Anmeldeinformationen abgefragt werden. Diese Konfiguration funktioniert, weil die Anmeldung an den Geräten bereits erfolgt ist. Falls erforderlich, kann der Anmeldeprozess für Benutzer durch einige erweiterte Sicherheitsfeatures schwieriger gestaltet werden.
 
@@ -149,7 +149,7 @@ Für eine nicht routingfähige Domäne, die in Azure AD nicht verifiziert werden
 
 Informationen zu den Bereitstellungsschritten finden Sie unter [Bereitstellen von Verbundservern](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers).
 
-> [!NOTE] 
+> [!NOTE]
 > Bei der Bereitstellung Ihrer Azure AD-Hybrididentitätslösung müssen Sie eine der von Azure AD Connect unterstützten Topologien implementieren. Erfahren Sie mehr über unterstützte und nicht unterstützte Konfigurationen unter [Topologien für Azure AD Connect](../../active-directory/hybrid/plan-connect-topologies.md).
 
 ## <a name="architecture-diagrams"></a>Architekturdiagramme
@@ -187,7 +187,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Können das Logo, das Bild und die Beschreibung auf den Anmeldeseiten angepasst werden?|[Ja, mit Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja, mit Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |Welche erweiterten Szenarien werden unterstützt?|[Intelligente Kennwortsperrung](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[Berichte über kompromittierte Anmeldeinformationen mit Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Intelligente Kennwortsperrung](../../active-directory/authentication/howto-password-smart-lockout.md)|Authentifizierungssystem mit geringer Wartezeit für mehrere Standorte<br><br>[AD FS-Extranetsperre](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integration in Identitätssysteme von Drittanbietern](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
-> [!NOTE] 
+> [!NOTE]
 > Für den bedingten Zugriff in Azure AD über benutzerdefinierte Steuerelemente wird zurzeit keine Geräteregistrierung unterstützt.
 
 ## <a name="recommendations"></a>Empfehlungen
@@ -195,7 +195,7 @@ Mit Ihrem Identitätssystem wird sichergestellt, dass Ihre Benutzer Zugriff auf 
 
 Verwenden oder aktivieren Sie die Kennworthashsynchronisierung aus folgenden Gründen, unabhängig von der gewählten Authentifizierungsmethode:
 
-1. **Hochverfügbarkeit und Notfallwiederherstellung**: Die Passthrough-Authentifizierung und der Verbund richten sich nach der lokalen Infrastruktur. Für die Passthrough-Authentifizierung umfasst der lokale Aufwand die erforderliche Serverhardware und das Netzwerk für die Passthrough-Authentifizierungs-Agents. Für den Verbund ist der lokale Aufwand noch höher. In Ihrem Umkreisnetzwerk müssen Server vorhanden sein, die als Proxy für Authentifizierungsanforderungen und die internen Verbundserver dienen. 
+1. **Hochverfügbarkeit und Notfallwiederherstellung**: Die Passthrough-Authentifizierung und der Verbund richten sich nach der lokalen Infrastruktur. Für die Passthrough-Authentifizierung umfasst der lokale Aufwand die erforderliche Serverhardware und das Netzwerk für die Passthrough-Authentifizierungs-Agents. Für den Verbund ist der lokale Aufwand noch höher. In Ihrem Umkreisnetzwerk müssen Server vorhanden sein, die als Proxy für Authentifizierungsanforderungen und die internen Verbundserver dienen.
 
     Stellen Sie redundante Server bereit, um Single Points of Failure zu vermeiden. Authentifizierungsanforderungen werden dann, auch wenn Komponenten ausfallen, immer verarbeitet. Sowohl die Passthrough-Authentifizierung als auch der Verbund sind ebenfalls darauf angewiesen, dass Domänencontroller auf Authentifizierungsanforderungen antworten, und auch diese Controller können ausfallen. Für viele dieser Komponenten ist eine Wartung erforderlich, damit sie fehlerfrei bleiben. Die Wahrscheinlichkeit von Ausfällen ist höher, wenn die Wartung nicht richtig geplant und implementiert wird. Vermeiden Sie Ausfälle mithilfe der Kennworthashsynchronisierung. Der Dienst für die Microsoft Azure AD-Cloudauthentifizierung kann weltweit skaliert werden und ist immer verfügbar.
 
@@ -203,15 +203,13 @@ Verwenden oder aktivieren Sie die Kennworthashsynchronisierung aus folgenden Gr�
 
    * Organisationen, die die Kennworthashsynchronisierung bereits aktiviert hatten, haben ihre Authentifizierungsmethode geändert und die Kennworthashsynchronisierung verwendet. Der Onlinezustand konnte innerhalb weniger Stunden wiederhergestellt werden. Durch den Zugriff auf E-Mails über Office 365 konnten Probleme gelöst werden, und der Zugriff auf andere cloudbasierte Workloads wurde ermöglicht.
 
-   * Organisationen, die die Kennworthashsynchronisierung zuvor nicht aktiviert hatten, mussten für die Kommunikation und Problembehebung auf nicht vertrauenswürdige externe E-Mail-Systeme zurückgreifen. In diesen Fällen dauerte es Wochen, bis die Identitätsinfrastruktur vor Ort wiederhergestellt war, bevor sich die Benutzer wieder bei Cloud-basierten Anwendungen anmelden können.
+   * Organisationen, die die Kennworthashsynchronisierung zuvor nicht aktiviert hatten, mussten für die Kommunikation und Problembehebung auf nicht vertrauenswürdige externe E-Mail-Systeme zurückgreifen. In diesen Fällen dauerte es Wochen, bis die lokale Identitätsinfrastruktur wiederhergestellt war, sodass sich die Benutzer wieder bei cloudbasierten Anwendungen anmelden konnten.
 
 3. **Identitätsschutz**: Eine der besten Möglichkeiten, Benutzer in der Cloud zu schützen, ist Azure AD Identity Protection mit Azure AD Premium P2. Microsoft überprüft das Internet ständig auf Benutzer- und Kennwortlisten, die unautorisierte Akteure verkaufen möchten und im Darknet anbieten. Azure AD kann diese Informationen verwenden, um zu überprüfen, ob einer der Benutzernamen mit Kennwort in Ihrer Organisation kompromittiert ist. Daher ist es wichtig, die Kennworthashsynchronisierung unabhängig von der verwendeten Authentifizierungsmethode (Verbund- oder Passthrough-Authentifizierung) zu aktivieren. Kompromittierte Anmeldeinformationen werden in Berichtform angezeigt. Verwenden Sie diese Informationen, um Benutzer zu blockieren oder zum Ändern ihrer Kennwörter zu zwingen, wenn diese versuchen, sich mit kompromittierten Kennwörtern anzumelden.
 
-Schließlich soll noch erwähnt werden, dass Microsoft laut [Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html) über die umfangreichsten Funktionen für die Identitäts- und Zugriffsverwaltung verfügt. Microsoft verarbeitet jeden Monat [450 Milliarden Authentifizierungsanforderungen](https://www.microsoft.com/en-us/security/intelligence-report), um Zugriff auf Tausende von SaaS-Anwendungen wie Office 365 für nahezu jedes Gerät bereitzustellen. 
-
 ## <a name="conclusion"></a>Zusammenfassung
 
-Dieser Artikel beschreibt verschiedene Authentifizierungsoptionen, die Organisationen konfigurieren und bereitstellen können, um den Zugriff auf Cloud-Apps zu unterstützen. Um verschiedene geschäftliche, sicherheitsbezogene und technische Anforderungen zu erfüllen, können Organisationen zwischen Kennworthashsynchronisierung, Passthrough-Authentifizierung und der Verbundmethode wählen. 
+Dieser Artikel beschreibt verschiedene Authentifizierungsoptionen, die Organisationen konfigurieren und bereitstellen können, um den Zugriff auf Cloud-Apps zu unterstützen. Um verschiedene geschäftliche, sicherheitsbezogene und technische Anforderungen zu erfüllen, können Organisationen zwischen Kennworthashsynchronisierung, Passthrough-Authentifizierung und der Verbundmethode wählen.
 
 Sehen Sie sich die einzelnen Authentifizierungsmethoden an. Werden Ihre Geschäftsanforderungen durch den Aufwand für die Bereitstellung der Lösung und mit der Benutzeroberfläche für den Anmeldevorgang erfüllt? Prüfen Sie auch, ob Ihre Organisation die Funktionen für erweiterte Szenarien und Geschäftskontinuität der einzelnen Authentifizierungsmethoden benötigt. Evaluieren Sie außerdem die Aspekte der einzelnen Authentifizierungsmethoden. Werden Sie durch bestimmte Aspekte daran gehindert, die Methode Ihrer Wahl zu implementieren?
 
@@ -221,4 +219,4 @@ In der heutigen Welt sind Bedrohungen 24 Stunden am Tag präsent und kommen von 
 
 [Beginnen Sie](../../active-directory/fundamentals/get-started-azure-ad.md) mit Azure AD, und setzen Sie die richtige Authentifizierungslösung für Ihre Organisation ein.
 
-Wenn Sie eine Migration von der Verbund- zur Cloudauthentifizierung erwägen, helfen Ihnen die Informationen unter [Ändern der Benutzeranmeldungsmethode](../../active-directory/hybrid/plan-connect-user-signin.md) weiter. Verwenden Sie als Hilfe beim Planen und Implementieren der Migration [diese Pläne für die Projektbereitstellung](https://aka.ms/deploymentplans).
+Wenn Sie eine Migration von der Verbund- zur Cloudauthentifizierung erwägen, helfen Ihnen die Informationen unter [Ändern der Benutzeranmeldungsmethode](../../active-directory/hybrid/plan-connect-user-signin.md) weiter. Um Ihnen bei der Planung und Implementierung der Migration zu helfen, verwenden Sie [diese Projektbereitstellungspläne](https://aka.ms/deploymentplans) oder das neue Feature [Gestaffelter Rollout](../../active-directory/hybrid/how-to-connect-staged-rollout.md), um Verbundbenutzer in einem gestaffelten Ansatz zur Verwendung der Cloudauthentifizierung zu migrieren.

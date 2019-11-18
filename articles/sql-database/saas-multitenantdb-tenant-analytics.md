@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Analyseabfragen anhand von Azure SQL-Datenbanken | Microsoft-Dokumentation
+title: Ausführen von Analyseabfragen
 description: Mandantenübergreifende Analyseabfragen mithilfe von Daten, die in einer mehrinstanzenfähigen App aus mehreren Datenbanken von Azure SQL-Datenbank extrahiert wurden.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
-ms.openlocfilehash: b36911d274a3afb3582d60ea7e85b5afd5f52ece
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570289"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822143"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – Mehrinstanzenfähige App
  

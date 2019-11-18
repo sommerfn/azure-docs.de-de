@@ -171,6 +171,8 @@
           displayName: 'roles, import'
         - name: Verwenden von vordefinierten Modellen
           href: howto-add-prebuilt-models.md
+        - name: Bezeichnen der Entität in der Äußerung
+          href: label-entity-example-utterance.md
         - name: Mit REST-APIs
           items:
             - name: Programmgesteuertes Erstellen einer App per Node.js
@@ -188,8 +190,8 @@
         - name: Verwenden des Dashboards
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: Hinzufügen einer Begriffsliste
-          displayName: 'synonym, interchange'
+        - name: Hinzufügen eines Deskriptors
+          displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
         - name: Überprüfen von Endpunktäußerungen
           displayName: active learning

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 78fc9fe34eb3463021dae69990fe1d30668d453f
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300512"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794898"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>Was ist eine QnA Maker-Wissensdatenbank?
 
@@ -53,9 +53,9 @@ Der Prozess wird in der folgenden Tabelle erläutert:
 |1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
 |2|QnA Maker führt die Vorverarbeitung der Benutzerabfrage mit Spracherkennung, Rechtschreibprüfung und Worttrennung durch.|
 |3|Diese Vorverarbeitung hat das Ziel, die Benutzerabfrage so anzupassen, dass die besten Suchergebnisse erzielt werden.|
-|4|Die geänderte Abfrage wird an den Azure Search-Index gesendet, der die mit `top` festgelegte Anzahl von Ergebnissen empfängt. Falls diese Ergebnisse die richtige Antwort nicht enthalten, sollten Sie den Wert von `top` leicht erhöhen. Im Allgemeinen eignet sich der Wert „10“ für `top` bei 90 % aller Abfragen.|
-|5|QnA Maker wendet die erweiterte Featurebereitstellung an, um die Richtigkeit der abgerufenen Azure Search-Ergebnisse für die Benutzerabfrage zu ermitteln. |
-|6|Für das trainierte Rangfolgemodell wird die Featurebewertung aus Schritt 5 verwendet, um die Einstufung der Azure Search-Ergebnisse vorzunehmen.|
+|4|Die geänderte Abfrage wird an den Azure Cognitive Search-Index gesendet, der die mit `top` festgelegte Anzahl von Ergebnissen empfängt. Falls diese Ergebnisse die richtige Antwort nicht enthalten, sollten Sie den Wert von `top` leicht erhöhen. Im Allgemeinen eignet sich der Wert „10“ für `top` bei 90 % aller Abfragen.|
+|5|QnA Maker wendet die erweiterte Featurebereitstellung an, um die Richtigkeit der abgerufenen Suchergebnisse für die Benutzerabfrage zu ermitteln. |
+|6|Für das trainierte Rangfolgemodell wird die Featurebewertung aus Schritt 5 verwendet, um die Einstufung der Azure Cognitive Search-Ergebnisse vorzunehmen.|
 |7|Die neuen Ergebnisse werden in der Rangfolge an die Clientanwendung zurückgegeben.|
 |||
 
@@ -136,9 +136,9 @@ Die *veröffentlichte Wissensdatenbank* ist die Version, die in Ihrem Chatbot od
 [Übersicht über QnA Maker](../Overview/overview.md)
 
 Informationen zum Erstellen und Bearbeiten einer Wissensdatenbank finden Sie unter: 
-* [REST-API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+* [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
 Informationen zum Generieren einer Antwort finden Sie unter: 
-* [REST-API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
-* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)
+* [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

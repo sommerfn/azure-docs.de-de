@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviewer: shoatman
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d06c84e6afcabb19c985d242679d6db8616a62e2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: be8129de8b1c12965810bd5d9b5dfd1093e18d1c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678834"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667889"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Leitfaden für die Migration von ADAL zu MSAL für Android
 
@@ -29,45 +29,42 @@ In diesem Artikel werden die Änderungen beschrieben, die Sie durchführen müss
 
 ## <a name="difference-highlights"></a>Wichtige Unterschiede
 
-ADAL arbeitet mit dem Azure Active Directory v1.0-Endpunkt. MSAL (Microsoft Authentication Library) arbeitet mit Microsoft Identity Platform (ehemals Azure Active Directory v2.0-Endpunkt).
+ADAL arbeitet mit dem Azure Active Directory v1.0-Endpunkt. MSAL (Microsoft Authentication Library) arbeitet mit Microsoft Identity Platform (ehemals bekannt als Azure Active Directory v2.0-Endpunkt). Microsoft Identity Platform weist einige Unterschiede im Vergleich zu Azure Active Directory v1.0 auf:
 
-Microsoft Identity Platform weist einige Unterschiede im Vergleich zu Azure Active Directory v1.0 auf:
-
-- Unterstützt beides:
+Unterstützt:
   - Organisationsbezogene Identitäten (Azure Active Directory)
   - Nicht organisationsbezogene Identitäten wie Outlook.com, Xbox Live usw.
-  - (Nur B2C) Verbundanmeldung mit Google, Facebook, Twitter und Amazon.
+  - (Nur B2C) Verbundanmeldung mit Google, Facebook, Twitter und Amazon
 
 - Kompatible Standards:
   - OAuth v2.0
   - OpenID Connect (OIDC)
 
-Mit der öffentlichen MSAL-API werden wichtige Änderungen bezüglich der Benutzerfreundlichkeit eingeführt:
+Mit der öffentlichen MSAL-API werden wichtige Änderungen eingeführt einschließlich:
 
-- Neues Modell für den Tokenzugriff:
+- Einem neuen Modell für Tokenzugriffe:
   - ADAL ermöglicht den Zugriff auf Token über `AuthenticationContext`, was den Server darstellt. MSAL ermöglicht den Zugriff auf Token über `PublicClientApplication`, was den Client darstellt. Entwickler von Clients brauchen nicht für jede autoritative Stelle, mit der Sie interagieren müssen, eine neue `PublicClientApplication`-Instanz zu erstellen. Es ist nur eine `PublicClientApplication`-Konfiguration erforderlich.
   - Unterstützung der Anforderung von Zugriffstoken mithilfe von Bereichen (zusätzlich zu Ressourcenbezeichnern).
-  - Unterstützung der inkrementellen Zustimmung. Entwickler können Bereiche anfordern, und zwar auch solche, die bei der App-Registrierung nicht einbezogen wurden.
-  - Autoritätsüberprüfung-> Bekannte autoritative Stellen
-      * Autoritative Stellen werden nicht mehr zur Laufzeit überprüft. Stattdessen deklariert der Entwickler bei der Entwicklung eine Liste mit „bekannten autoritativen Stellen“.
+  - Unterstützung der inkrementellen Zustimmung. Entwickler können Bereiche anfordern, während Benutzer auf mehr Funktionen in der App zugreifen, einschließlich solcher, die während der App-Registrierung nicht enthalten sind.
+  - Autoritative Stellen werden nicht mehr zur Runtime überprüft. Stattdessen deklariert der Entwickler bei der Entwicklung eine Liste mit „bekannten autoritativen Stellen“.
 - API-Änderungen für Token:
-  - In ADAL versucht `AcquireToken` zunächst, eine automatische Anforderung vorzunehmen. Wenn diese fehlschlägt, erfolgt die Anforderung interaktiv. Dieses Verhalten führte dazu, dass einige Entwickler sich nur auf `AcquireToken` verließen, was manchmal dazu führte, dass eine Benutzerinteraktion zu einem unvorhergesehenen Zeitpunkt erfolgte. Bei MSAL müssen sich Entwickler bewusst entscheiden, wann dem Benutzer eine Eingabeaufforderung auf der Benutzeroberfläche angezeigt wird.
+  - In ADAL führt `AcquireToken()` zuerst eine automatische Anforderung durch. Wenn dabei ein Fehler auftritt, wird eine interaktive Anforderung durchgeführt. Dieses Verhalten hat dazu geführt, dass einige Entwickler sich nur auf `AcquireToken` verlassen haben, sodass der Benutzer manchmal unerwartet zur Eingabe von Anmeldeinformationen aufgefordert wurde. Bei MSAL müssen sich Entwickler bewusst entscheiden, wann dem Benutzer eine Eingabeaufforderung auf der Benutzeroberfläche angezeigt wird.
     - `AcquireTokenSilent` führt immer zu einer automatischen Anforderung, die entweder erfolgreich ist oder fehlschlägt.
-    - `AcquireToken` führt immer zu einer interaktiven Anforderung (Benutzereingabeaufforderung auf der Benutzeroberfläche).
-- MSAL unterstützt die Anmeldeinteraktion auf der Benutzeroberfläche entweder über einen Standardbrowser oder eine eingebettete Webansicht:
+    - `AcquireToken` führt immer zu einer Anforderung, die der Benutzer über die Benutzeroberfläche erhält.
+- MSAL unterstützt die Anmeldung entweder über einen Standardbrowser oder eine eingebettete Webansicht:
   - Standardmäßig wird der Standardbrowser des Geräts verwendet. Dies ermöglicht MSAL die Verwendung des Authentifizierungsstatus (über Cookies), der möglicherweise schon für ein oder mehrere angemeldete Konten vorhanden ist. Wenn kein Authentifizierungsstatus vorhanden ist, wird bei der Autorisierung über MSAL durch die Authentifizierung ein Authentifizierungsstatus (Cookie) erstellt, von dem auch andere Webanwendungen profitieren, die den gleichen Browser verwenden.
 - Neues Ausnahmemodell:
-  - Ausnahmen sind eindeutiger in Bezug auf den Typ der aufgetretenen Ausnahme und die Maßnahmen, die der Entwickler zum Beheben der Ausnahme ausführen muss.
+  - Ausnahmen definieren klarer den Typ des aufgetretenen Fehlers und die Maßnahmen, die der Entwickler zum Beheben der Ausnahme ausführen muss.
 - MSAL unterstützt Parameterobjekte für `AcquireToken`- und `AcquireTokenSilent`-Aufrufe.
 - MSAL unterstützt die deklarative Konfiguration für:
-  - Client-ID, Umleitungs-URI
+  - Client-ID, Umleitungs-URI.
   - Eingebettete Ansicht und Standardbrowser
   - Autoritative Stellen
   - HTTP-Einstellungen wie Lesen und Verbindungstimeout
 
 ## <a name="your-app-registration-and-migration-to-msal"></a>App-Registrierung und Migration zu MSAL
 
-Für die Verwendung von MSAL sind keine Änderungen an der vorhandenen App-Registrierung erforderlich. Wenn Sie die inkrementelle/progressive Zustimmung nutzen möchten, müssen Sie ggf. die Registrierung überprüfen und die speziellen Bereiche definieren, die inkrementell angefordert werden sollen. Weitere Informationen zu Bereichen und inkrementeller Zustimmung folgen.
+Für die Verwendung von MSAL müssen Sie Ihre vorhandene App-Registrierung nicht ändern. Wenn Sie die inkrementelle/progressive Zustimmung nutzen möchten, müssen Sie ggf. die Registrierung überprüfen und die speziellen Bereiche definieren, die inkrementell angefordert werden sollen. Weitere Informationen zu Bereichen und inkrementeller Zustimmung folgen.
 
 Bei der App-Registrierung im Portal wird die Registerkarte **API-Berechtigungen** angezeigt. Diese enthält eine Liste der APIs und Berechtigungen (Bereiche), für die Ihre App aufgrund ihrer aktuellen Konfiguration Zugriff anfordern kann. Sie enthält auch eine Liste der Bereichsnamen, die jeder API-Berechtigung zugeordnet sind.
 
@@ -98,12 +95,12 @@ Wenn Sie aktuell ADAL verwenden und keine inkrementelle Zustimmung verwenden mü
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Authentifizieren und Anfordern von Berechtigungen nur bei Bedarf
 
-Um die inkrementelle Zustimmung zu nutzen, müssen Sie eine Liste der Berechtigungen (Bereiche) erstellen, die Ihre App bei der App-Registrierung verwendet, und diese dann in zwei Listen organisieren, die auf folgenden Kriterien beruhen:
+Um die inkrementelle Zustimmung zu nutzen, erstellen Sie eine Liste der Berechtigungen (Bereiche), die Ihre App bei der App-Registrierung verwendet, und organisieren sie in zwei Listen, die auf folgenden Kriterien beruhen:
 
 - Die Bereiche, die während der ersten Interaktion des Benutzers mit Ihrer App während der Anmeldung angefordert werden sollen.
 - Die Berechtigungen, die mit einem wichtigen Feature der App verknüpft sind, und die Sie dem Benutzer auch erläutern müssen.
 
-Nachdem Sie die Bereiche organisiert haben, müssen Sie jede Liste nach der Ressource (API) organisieren, für die Sie ein Token anfordern möchten. Ebenso müssen Sie alle anderen Bereiche angeben, für die sich der Benutzer gleichzeitig autorisieren soll.
+Nachdem Sie die Bereiche organisiert haben, organisieren Sie jede Liste nach der Ressource (API), für die Sie ein Token anfordern möchten. Ebenso müssen Sie alle anderen Bereiche angeben, für die sich der Benutzer gleichzeitig autorisieren soll.
 
 Das Parameterobjekt, das für die MSAL-Anforderung verwendet wird, unterstützt Folgendes:
 
@@ -134,8 +131,8 @@ MSAL weist kein Flag zum Aktivieren oder Deaktivieren der Autoritätsüberprüfu
 Wenn Sie versuchen, eine autoritative Stelle zu verwenden, die Microsoft nicht bekannt und auch nicht in Ihrer Konfiguration enthalten ist, wird die Ausnahme `UnknownAuthorityException` ausgegeben.
 
 ### <a name="logging"></a>Protokollierung
-Sie können die Protokollierung jetzt deklarativ als Bestandteil ihrer Konfiguration konfigurieren, wie unten gezeigt.
- 
+Sie können die Protokollierung jetzt folgendermaßen deklarativ als Bestandteil ihrer Konfiguration konfigurieren:
+
  ```
  "logging": {
     "pii_enabled": false,

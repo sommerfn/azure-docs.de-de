@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: mamccrea
-ms.openlocfilehash: b327403b29f26f6c1f43f9dfe7aabd5c3c7e0a68
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: efb0d3222bfd98b15502163979425d47fa459e07
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299913"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605723"
 ---
 # <a name="use-databricks-cli-from-azure-cloud-shell"></a>Verwenden der Databricks-Befehlszeilenschnittstelle über Azure Cloud Shell
 
@@ -24,7 +24,7 @@ Hier erfahren Sie, wie Sie die Databricks-Befehlszeilenschnittstelle über Azure
 
 * Ein Azure Databricks Arbeitsbereich und -Cluster. Anweisungen finden Sie unter [Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal](quickstart-create-databricks-workspace-portal.md). 
 
-* Richten Sie ein persönliches Zugriffstoken in Databricks ein. Anweisungen hierzu finden Sie im Artikel zur [Tokenverwaltung](https://docs.azuredatabricks.net/api/latest/authentication.html#token-management).
+* Richten Sie ein persönliches Zugriffstoken in Databricks ein. Anweisungen hierzu finden Sie im Artikel zur [Tokenverwaltung](/azure/databricks/dev-tools/api/latest/authentication).
 
 ## <a name="use-the-azure-cloud-shell"></a>Verwenden der Azure Cloud Shell
 
@@ -36,7 +36,7 @@ Hier erfahren Sie, wie Sie die Databricks-Befehlszeilenschnittstelle über Azure
 
 3. Stellen Sie sicher, dass für die Cloud Shell-Umgebung **Bash** ausgewählt ist. Sie können die Option in der Dropdownliste auswählen, wie im folgenden Screenshot gezeigt:
 
-   ![Auswählen von Bash für die Cloud Shell-Umgebung](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Auswählen von Bash") 
+   ![Auswählen von Bash für die Cloud Shell-Umgebung](./media/databricks-cli-from-azure-cloud-shell/select-bash-for-shell.png "Wählen Sie „Bash“ aus.") 
 
 4. Erstellen Sie eine virtuelle Umgebung, in der Sie die Databricks-Befehlszeilenschnittstelle installieren können. Im folgenden Codeausschnitt erstellen Sie eine virtuelle Umgebung namens `databrickscli`.
 
@@ -73,13 +73,13 @@ Sie können auch den folgenden Befehl verwenden, um auf das Databricks-Dateisyst
     databricks fs ls
 
 
-Eine vollständige Referenz zu Befehlen finden Sie im Thema zur [Databricks-Befehlszeilenschnittstelle](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+Eine vollständige Referenz zu Befehlen finden Sie im Thema zur [Databricks-Befehlszeilenschnittstelle](/azure/databricks/dev-tools/databricks-cli).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur Azure-Befehlszeilenschnittstelle finden Sie unter [Übersicht über Azure Cloud Shell](../cloud-shell/overview.md).
 * Eine Liste mit Befehlen für die Azure-Befehlszeilenschnittstelle finden Sie in der [Azure-CLI-Referenz](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest).
-* Eine Liste mit Befehlen für die Databricks-Befehlszeilenschnittstelle finden Sie im Thema zur [Databricks-Befehlszeilenschnittstelle](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+* Eine Liste mit Befehlen für die Databricks-Befehlszeilenschnittstelle finden Sie im Thema zur [Databricks-Befehlszeilenschnittstelle](/azure/databricks/dev-tools/databricks-cli).
 
 

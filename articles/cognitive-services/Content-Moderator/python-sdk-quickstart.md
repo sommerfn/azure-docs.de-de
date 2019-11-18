@@ -1,20 +1,21 @@
 ---
 title: 'Schnellstart: Content Moderator-Clientbibliothek für Python | Microsoft-Dokumentation'
-description: Hier erhalten Sie Informationen zu den ersten Schritten mit der Content Moderator-Clientbibliothek für Python.
+titleSuffix: Azure Cognitive Services
+description: Informieren Sie sich über die ersten Schritte mit der Azure Cognitive Services Content Moderator-Clientbibliothek für Python.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 10/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 62407467e3c63b1752ee6816325f097ad9a1f09e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3978b4ec302bf4dd2390f2390c967ca6e12e67d5
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755250"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744413"
 ---
 # <a name="quickstart-content-moderator-client-library-for-python"></a>Schnellstart: Content Moderator-Clientbibliothek für Python
 
@@ -295,7 +296,7 @@ Verwenden Sie den folgenden Code, um eine bestimmte Bildliste zu löschen:
 
 ## <a name="create-a-review"></a>Erstellen einer Überprüfung
 
-Mithilfe des Content Moderator Python SDK können Sie Inhalte in das [Überprüfungstool](https://contentmoderator.cognitive.microsoft.com) eingeben, damit sie von menschlichen Moderatoren überprüft werden können. Weitere Informationen zum Überprüfungstool finden Sie im [konzeptionellen Leitfaden](./review-tool-user-guide/human-in-the-loop.md).
+Mithilfe des Content Moderator Python SDK können Sie Inhalte in das [Überprüfungstool](https://contentmoderator.cognitive.microsoft.com) eingeben, damit sie von menschlichen Moderatoren überprüft werden können. Weitere Informationen zum Überprüfungstool finden Sie im [konzeptionellen Leitfaden zum Überprüfungstool](./review-tool-user-guide/human-in-the-loop.md).
 
 Der folgende Code verwendet nach dem Eingang menschlicher Eingaben über das Webportal des Überprüfungstools die Klasse [ReviewsOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-contentmoderator/azure.cognitiveservices.vision.contentmoderator.operations.reviewsoperations?view=azure-python), um eine Überprüfung zu erstellen, ihre ID abzurufen und ihre Details zu überprüfen.
 
@@ -312,7 +313,7 @@ Fügen Sie den folgenden Code hinzu, um eine Überprüfung für die angegebene B
 
 ### <a name="get-review-details"></a>Abrufen von Bewertungsdetails
 
-Verwenden Sie den folgenden Code, um die Details einer bestimmten Überprüfung zu überprüfen. Nachdem Sie die Überprüfung erstellt haben, können Sie selbst das Überprüfungstool aufrufen und mit dem Inhalt interagieren. Wenn Sie fertig sind, können Sie diesen Code erneut ausführen. Die Ergebnisse des Überprüfungsvorgangs werden abrufen.
+Verwenden Sie den folgenden Code, um die Details einer bestimmten Überprüfung zu überprüfen. Nachdem Sie die Überprüfung erstellt haben, können Sie selbst das Überprüfungstool aufrufen und mit dem Inhalt interagieren. Weitere Informationen hierzu finden Sie unter [Erstellen von Überprüfungen durch Personen](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/review-moderated-images). Wenn Sie fertig sind, können Sie diesen Code erneut ausführen. Die Ergebnisse des Überprüfungsvorgangs werden abrufen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ContentModerator/ContentModeratorQuickstart.py?name=snippet_imagereview_getdetails)]
 

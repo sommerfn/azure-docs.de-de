@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren eines vorhandenen virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: Konfigurieren eines bestehenden virtuellen Netzwerks für eine verwaltete Instanz
 description: In diesem Artikel wird beschrieben, wie Sie ein vorhandenes virtuelles Netzwerk und Subnetz konfigurieren, in dem Sie eine verwaltete Azure SQL-Datenbank-Instanz bereitstellen können.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 01/15/2019
-ms.openlocfilehash: 509a08705d87e8f789e26ebbcec295a31f99f416
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6dfc0a59ab4150173196fae82d90eca4880d5364
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567641"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73818877"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurieren eines vorhandenen virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz
 

@@ -1,5 +1,5 @@
 ---
-title: In-Memory OLTP verbessert SQL-Transaktionsleistung | Microsoft Docs
+title: In-Memory OLTP verbessert SQL-Transaktionsleistung
 description: Verwenden von In-Memory OLTP zum Verbessern der Transaktionsleistung in einer vorhandenen SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: e869b2bba3bd64b58d9063e9445889ef709efdc3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567945"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73810303"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in SQL-Datenbank
 

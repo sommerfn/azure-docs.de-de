@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 8c3c0574389fc9808af3cd70c928ede82d375076
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025777"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720714"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -78,7 +78,7 @@ Basierend auf den bis jetzt im Budget ausgewählten Feldern wird ein Diagramm an
 
 ![Beispiel für die Erstellung eines Budgets mit monatlichen Kostendaten ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Nachdem Sie den Budgetbetrag konfiguriert haben, klicken Sie auf **Weiter**, um Budgetwarnungen zu konfigurieren. Budgets erfordern mindestens einen Kostenschwellenwert (% des Budgets) und eine entsprechende E-Mail-Adresse. Sie können optional bis zu fünf Schwellenwerte und fünf E-Mail-Adressen in ein einzelnes Budget aufnehmen. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise in weniger als 20 Stunden empfangen. Weitere Informationen zu Benachrichtigungen finden Sie unter [Verwenden von Kostenwarnungen](cost-mgt-alerts-monitor-usage-spending.md). Im nachstehenden Beispiel wird eine E-Mail-Warnung generiert, wenn 90% des Budgets erreicht sind.
+Nachdem Sie den Budgetbetrag konfiguriert haben, klicken Sie auf **Weiter**, um Budgetwarnungen zu konfigurieren. Budgets erfordern mindestens einen Kostenschwellenwert (% des Budgets) und eine entsprechende E-Mail-Adresse. Sie können optional bis zu fünf Schwellenwerte und fünf E-Mail-Adressen in ein einzelnes Budget aufnehmen. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise in weniger als 20 Stunden empfangen. Weitere Informationen zu Benachrichtigungen finden Sie unter [Verwenden von Kostenwarnungen](cost-mgt-alerts-monitor-usage-spending.md). Im nachstehenden Beispiel wird eine E-Mail-Warnung generiert, wenn 90% des Budgets erreicht sind. Wenn Sie ein Budget mit der API für Budgets erstellen, können Sie Personen auch Rollen zuweisen, damit sie Warnungen erhalten. Das Zuweisen von Rollen zu Personen wird im Azure-Portal nicht unterstützt. Weitere Informationen zur Budgets-API von Azure finden Sie unter [API für Budgets](/rest/api/consumption/budgets).
 
 ![Beispiel für Warnungsbedingungen](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -111,6 +111,8 @@ Konfigurieren Sie Ihr Budget so, dass Ihre Aktionsgruppe verwendet wird, wenn ei
 Das folgende Beispiel zeigt Budgetschwellenwerte für 50 %, 75 % und 100 %. Jeder ist so konfiguriert, dass die angegebenen Aktionen innerhalb der angegebenen Aktionsgruppe ausgelöst werden.
 
 ![Beispiel mit Warnungsbedingungen, die mit verschiedenen Aktionsgruppen und Aktionenstypen konfiguriert wurden](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
+
+Die Budgetintegration in Aktionsgruppen funktioniert nur bei Aktionsgruppen, für die das allgemeine Warnungsschema deaktiviert ist. Weitere Informationen zum Deaktivieren des Schemas finden Sie unter [Wie kann ich das allgemeine Warnungsschema aktivieren?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

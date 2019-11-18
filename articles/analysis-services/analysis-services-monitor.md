@@ -1,18 +1,18 @@
 ---
 title: Überwachen von Servermetriken in Azure Analysis Services | Microsoft-Dokumentation
-description: Informationen zum Überwachen von Analysis Services-Servermetriken im Azure-Portal.
+description: Erfahren Sie, wie Analysis Services Sie mit dem Azure Metrik-Explorer, einem kostenlosen Tool im Portal, beim Überwachen von Leistung und Integrität Ihres Servers unterstützt.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a66089d01ed9eabdb78975eb1738b87c99fbf311
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9e6eab38e0f7bd55fa671aa8c1e99693eeb54c84
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294870"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572731"
 ---
 # <a name="monitor-server-metrics"></a>Überwachen von Servermetriken
 
@@ -27,7 +27,7 @@ Um eine ausführlichere Diagnose auszuführen, Leistung nachzuverfolgen und mehr
 
     ![Überwachen im Azure-Portal](./media/analysis-services-monitor/aas-monitor-portal.png)
 
-2. Wählen Sie in **Verfügbare Metriken** die Metriken aus, die Sie in Ihr Diagramm aufnehmen möchten. 
+2. Wählen Sie in **Metriken** die Metriken aus, die Sie in Ihr Diagramm aufnehmen möchten. 
 
     ![Überwachungsdiagramm](./media/analysis-services-monitor/aas-monitor-chart.png)
 

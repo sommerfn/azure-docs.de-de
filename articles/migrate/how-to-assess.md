@@ -6,24 +6,24 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: d176e6276d69cd3465aa4943efa86ea1e6b0736d
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8d13222ec05fc97fa591ac67d636a1f8c5c88845
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810173"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73715856"
 ---
 # <a name="add-assessment-tools"></a>Hinzufügen von Bewertungstools
 
 In diesem Artikel wird beschrieben, wie Sie in [Azure Migrate](migrate-overview.md) Bewertungstools hinzufügen.
 
-Azure Migrate stellt einen Hub mit Tools für die Bewertung und Migration zu Azure bereit. Hier finden Sie native Tools, von anderen Azure-Diensten bereitgestellte Tools sowie ISV-Angebote (Independent Software Vendor) von Drittanbietern.
+Azure Migrate stellt einen Hub mit Tools für die Bewertung und Migration zu Azure bereit. Er umfasst Azure Migrate-Tools sowie andere Tools und Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
 
 Wenn Sie ein Bewertungstool hinzufügen möchten und noch nicht über ein Azure Migrate-Projekt verfügen, hilft Ihnen [dieser Artikel](how-to-add-tool-first-time.md) weiter.
 
-## <a name="selecting-an-isv-tool"></a>Auswählen eines ISV-Tools
+## <a name="select-a-tool"></a>Auswählen eines Tools
 
-Wenn Sie ein [ISV-Tool](migrate-services-overview.md#isv-integration) für die Bewertung auswählen, können Sie zunächst eine Lizenz erwerben oder sich in Übereinstimmung mit der ISV-Richtlinie für eine kostenlose Testversion anmelden. In jedem Tool ist eine Option zum Herstellen einer Verbindung mit Azure Migrate vorhanden. Befolgen Sie die Anleitung und Dokumentation zum Tool, um den Toolarbeitsbereich mit Azure Migrate zu verbinden. 
+Wenn Sie ein nicht zu Azure Migrate gehörendes Tool für die Bewertung auswählen, erwerben Sie zunächst eine Lizenz, oder melden Sie sich in Übereinstimmung mit der Toolrichtlinie für eine kostenlose Testversion an. Für Tools ist eine Option zum Herstellen einer Verbindung mit Azure Migrate verfügbar. Befolgen Sie die Anweisungen und die Dokumentation, um eine Verbindung des Tools mit Azure Migrate herzustellen. [Weitere Informationen](migrate-services-overview.md) zu Tools.
 
 
 ## <a name="select-an-assessment-scenario"></a>Auswählen eines Bewertungsszenarios
@@ -47,11 +47,8 @@ Wenn Sie ein [ISV-Tool](migrate-services-overview.md#isv-integration) für die B
 
 3. Wählen Sie in **Azure Migrate** das gewünschte Bewertungstool aus.
 
-    
-    ![Bewertungstools](./media/how-to-assess/assess-tool.png)
-
     - Bei Verwendung der Azure Migrate-Serverbewertung können Sie Bewertungen direkt im Azure Migrate-Projekt einrichten, ausführen und anzeigen.
-    - Navigieren Sie bei Verwendung eines Bewertungstools von einem Drittanbieter über den bereitgestellten Link zur entsprechenden Site, und führen Sie die Bewertung gemäß der angegebenen Anleitung durch.
+    - Navigieren Sie bei Verwendung eines anderen Bewertungstools über den bereitgestellten Link zur entsprechenden Site, und führen Sie die Bewertung gemäß der angegebenen Anleitung durch.
 
 
 ## <a name="select-a-database-assessment-tool"></a>Auswählen eines Tools für die Datenbankbewertung
@@ -72,4 +69,4 @@ Wenn Sie ein [ISV-Tool](migrate-services-overview.md#isv-integration) für die B
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Probieren Sie eine Bewertung aus, indem Sie die Azure Migrate-Serverbewertung für [Hyper-V](tutorial-prepare-hyper-v.md)- oder [VMware](tutorial-prepare-vmware.md)-VMs verwenden.
+Probieren Sie eine Bewertung aus, indem Sie die Azure Migrate-Serverbewertung für [VMware](tutorial-prepare-vmware.md)-VMs, [Hyper-V](tutorial-prepare-hyper-v.md) oder [physische Server](tutorial-prepare-physical.md) verwenden.

@@ -1,18 +1,18 @@
 ---
 title: Was ist Azure Analysis Services? | Microsoft Docs
-description: Verschaffen Sie sich einen Überblick über Analysis Services in Azure.
+description: Lernen Sie Azure Analysis Services kennen, eine vollständig verwaltete PaaS-Komponente (Platform-as-a-Service), über die für Unternehmen geeignete Datenmodelle in der Cloud bereitgestellt werden.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: eb69028a3b5ea232fbafe8286c3067a22f06d455
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512596"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572808"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -200,9 +200,9 @@ Weitere Informationen zur Sicherheit in Azure finden Sie im [Microsoft Trust Cen
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Modelle können mit dem kostenlosen [SQL Server Data Tools (SSDT) für Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) entwickelt und bereitgestellt werden. SSDT beinhaltet Analysis Services-Projektvorlagen, die Sie bei der Einrichtung unterstützen. SSDT beinhaltet nun die modernen datenabrufbezogenen Datenquellenabfrage- und Mashup-Funktionen für tabellarische Modelle mit Kompatibilitätsgrad 1400. Wenn Sie mit dem Datenabruf in Power BI Desktop und Excel 2016 vertraut sind, wissen Sie bereits, wie einfach sich hochgradig angepasste Datenquellenabfragen erstellen lassen. 
+Nutzen Sie Visual Studio mit Analysis Services-Projekten, um Modelle zu entwickeln und bereitzustellen. Die Analysis Services-Projekterweiterung beinhaltet Vorlagen und Assistenten, die Sie bei der Einrichtung unterstützen. Die Modellerstellungsumgebung in Visual Studio enthält nun die moderne Get Data-Datenquellenabfrage und Mashup-Funktionalität für tabellarische 1400- und höhere Modelle. Wenn Sie mit dem Datenabruf in Power BI Desktop und Excel 2016 vertraut sind, wissen Sie bereits, wie einfach sich hochgradig angepasste Datenquellenabfragen erstellen lassen. 
 
-Bei Verwendung von Visual Studio 2017 oder höher sind Microsoft Analysis Services-Projekte als kostenloses installierbares VSIX-Paket verfügbar. Sie können es [vom Marketplace herunterladen](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
+Microsoft Analysis Services-Projekte sind als kostenlos installierbares VSIX-Paket verfügbar. Sie können es [vom Marketplace herunterladen](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects). Die Erweiterung funktioniert mit jeder Version von Visual Studio 2017 und höher einschließlich der kostenlosen Community-Edition.
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

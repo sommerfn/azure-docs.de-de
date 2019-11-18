@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Abfragen von Azure SQL-Datenbank mithilfe von Node.js'
+title: 'Schnellstart: Verwenden von Node.js zum Abfragen'
 description: Hier erfahren Sie, wie Sie unter Verwendung von Node.js ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und sie mithilfe von T-SQL-Anweisungen abfragt.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 4d9c3954aea5fe64439190a2a0886fd8300c4cf9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b996b380195b8b339424c8d716c139072a98303f
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178043"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73827033"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Node.js
 

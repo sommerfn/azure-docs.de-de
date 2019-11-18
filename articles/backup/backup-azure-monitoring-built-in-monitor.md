@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Überwachen von geschützten Azure Backup-Workloads'
-description: Überwachen von Azure Backup-Workloads mithilfe des Azure-Portals
+description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Benachrichtigungsfunktionen für Azure Backup-Workloads im Azure-Portal.
 ms.reviewer: pullabhk
 author: dcurwin
 manager: carmonm
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: bae05e890ef76ada9f775293c673cb8baa82c8bf
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f1dc1c7fe6aa5e8d20504427679052f68612f65e
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954587"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747362"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -31,10 +31,10 @@ Aufträge werden generiert, wenn Vorgänge wie das Konfigurieren der Sicherung, 
 
 Im Folgenden werden die Aufträge der folgenden Azure Backup-Lösungen vorgestellt:
 
-  - Azure VM Backup
-  - Azure-Dateisicherung
-  - Azure-Workloadsicherung wie SQL
-  - Azure Backup-Agent (Microsoft Azure Backup, MAB)
+- Azure VM Backup
+- Azure-Dateisicherung
+- Azure-Workloadsicherung wie SQL
+- Azure Backup-Agent (Microsoft Azure Backup, MAB)
 
 Aufträge aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure Backup Server (MABS) werden nicht aufgeführt.
 
@@ -46,37 +46,40 @@ Aufträge aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure
 Bei Warnungen handelt es sich in erster Linie um Szenarios, in denen Benutzer benachrichtigt werden, damit Sie entsprechende Maßnahmen ergreifen können. Im Abschnitt **Sicherungswarnungen** werden die von Azure Backup generierten Warnungen angezeigt. Diese Warnungen werden vom Dienst definiert. Es können keine benutzerdefinierten Warnungen erstellt werden.
 
 ### <a name="alert-scenarios"></a>Warnungsszenarios
+
 Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnungen ausgelöst werden können.
 
-  - Fehler bei der Sicherung/Wiederherstellung
-  - Sicherung mit Warnungen für Azure Backup-Agent (MAB) erfolgreich abgeschlossen
-  - Beenden des Schutzes unter Beibehaltung der Daten/Beenden des Schutzes inklusive Löschung der Daten
+- Fehler bei der Sicherung/Wiederherstellung
+- Sicherung mit Warnungen für Azure Backup-Agent (MAB) erfolgreich abgeschlossen
+- Beenden des Schutzes unter Beibehaltung der Daten/Beenden des Schutzes inklusive Löschung der Daten
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Ausnahmen, bei denen keine Warnung ausgelöst wird
+
 Es gibt folgende Ausnahmefälle, in denen keine Warnung ausgelöst wird:
 
-  - Wenn der Benutzer den ausgeführten Auftrag explizit abgebrochen hat
-  - Wenn der Auftrag fehlschlägt, weil ein anderer Sicherungsauftrag gerade ausgeführt wird (keine Handlung erforderlich, da gewartet werden muss, bis der aktuelle Auftrag abgeschlossen ist)
-  - Wenn der Sicherungsauftrag der VM fehlschlägt, weil die gesicherte Azure-VM nicht mehr existiert
+- Wenn der Benutzer den ausgeführten Auftrag explizit abgebrochen hat
+- Wenn der Auftrag fehlschlägt, weil ein anderer Sicherungsauftrag gerade ausgeführt wird (keine Handlung erforderlich, da gewartet werden muss, bis der aktuelle Auftrag abgeschlossen ist)
+- Wenn der Sicherungsauftrag der VM fehlschlägt, weil die gesicherte Azure-VM nicht mehr existiert
 
 Diese Ausnahmen wurden eingeführt, weil das Ergebnis der oben aufgeführten Vorgänge, die in erster Linie vom Benutzer ausgelöst werden, direkt im Portal bzw. im PS- oder CLI-Client dargestellt wird. Sie sind dem Benutzer also bekannt, sodass keine Benachrichtigung erforderlich ist.
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Im Folgenden werden die Warnungen der folgenden Azure Backup-Lösungen vorgestellt:
 
-  - Azure-VM-Sicherungen
-  - Azure-Dateisicherungen
-  - Azure-Workloadsicherungen wie SQL
-  - Azure Backup-Agent (Microsoft Azure Backup, MAB)
+- Azure-VM-Sicherungen
+- Azure-Dateisicherungen
+- Azure-Workloadsicherungen wie SQL
+- Azure Backup-Agent (Microsoft Azure Backup, MAB)
 
 > [!NOTE]
 > Warnungen aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure Backup Server (MABS) werden hier nicht aufgeführt.
 
 ### <a name="alert-types"></a>Warnungstypen
+
 Je nach Schweregrad der Warnung werden diese drei Arten zugeordnet:
 
-  - **Kritisch**: Im Prinzip führt jeder Fehler bei der Sicherung oder Wiederherstellung (geplant oder vom Benutzer ausgelöst) zu einer Warnung, die als „Kritisch“ angezeigt wird. Das gilt auch für destruktive Vorgänge wie das Löschen der Sicherung.
-  - **Warnung**: Wenn der Sicherungsvorgang erfolgreich war, aber einige Warnungen auslöst werden, werden diese als „Warnung“ aufgeführt.
-  - **Informativ:** Derzeit werden keine informativen Warnungen von Azure Backup generiert.
+- **Kritisch**: Im Prinzip führt jeder Fehler bei der Sicherung oder Wiederherstellung (geplant oder vom Benutzer ausgelöst) zu einer Warnung, die als „Kritisch“ angezeigt wird. Das gilt auch für destruktive Vorgänge wie das Löschen der Sicherung.
+- **Warnung**: Wenn der Sicherungsvorgang erfolgreich war, aber einige Warnungen auslöst werden, werden diese als „Warnung“ aufgeführt.
+- **Informativ:** Derzeit werden keine informativen Warnungen von Azure Backup generiert.
 
 ## <a name="notification-for-backup-alerts"></a>Benachrichtigungen für Azure Backup-Warnungen
 
@@ -96,16 +99,14 @@ Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung
 
 > [!NOTE]
 >
-> * Wenn ein destruktiver Vorgang wie das **Beenden des Schutzes inklusive Löschung der Daten** durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor nicht konfiguriert wurden.
-> * Verwenden Sie [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace), um Benachrichtigungen für erfolgreiche Aufträge zu konfigurieren.
+> - Wenn ein destruktiver Vorgang wie das **Beenden des Schutzes inklusive Löschung der Daten** durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor nicht konfiguriert wurden.
+> - Verwenden Sie [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace), um Benachrichtigungen für erfolgreiche Aufträge zu konfigurieren.
 
 ## <a name="inactivating-alerts"></a>Deaktivieren von Warnungen
 
 Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie auf das Listenelement klicken, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum Deaktivieren. Wenn Sie auf diese Schaltfläche klicken, ändert sich der Status der Warnung zu „Inaktiv“. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann „Deaktivieren“ auswählen.
 
 ![Deaktivieren einer Warnung zum Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

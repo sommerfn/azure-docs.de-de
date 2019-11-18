@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery-Problembehandlung für Azure-zu-Azure-Netzwerkkonnektivitätsprobleme und -fehler| Microsoft-Dokumentation
+title: Behandlung von Konnektivitätsproblemen bei der Azure-zu-Azure-Notfallwiederherstellung mit Azure Site Recovery
 description: Hier finden Sie Informationen zum Beheben von Problemen und Fehlern beim Replizieren von virtuellen Azure-Computern für die Notfallwiederherstellung.
 services: site-recovery
 author: asgang
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/05/2019
 ms.author: asgang
-ms.openlocfilehash: 8e1350a22554bab257e8c99954c2beaa357de2ff
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4995a4086c471a06fe859febfd2d1af7fbb22a76
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934519"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73622454"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Netzwerkkonnektivitätsprobleme
 

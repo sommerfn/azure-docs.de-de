@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten in bzw. aus Oracle mit Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten in bzw. aus Oracle mit Data Factory
 description: Informationen zum Kopieren von Daten in eine und aus einer lokalen Oracle-Datenbank mit Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 51fae63b6db99f28a5b3bed056dadc0c2513ff0f
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 822713d67790906c972ad77a748ef8d52b871bc4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839935"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682421"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
@@ -601,7 +601,7 @@ Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen
 | BLOB |Byte[]<br/>(nur unterstützt für Oracle 10g oder höher bei Verwendung eines Microsoft-Treibers) |
 | CHAR |String |
 | CLOB |String |
-| DATE |DateTime |
+| DATE |Datetime |
 | FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTERVAL YEAR TO MONTH |Int32 |
@@ -614,12 +614,12 @@ Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |DateTime |
-| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
-| TIMESTAMP WITH TIME ZONE |DateTime |
+| TIMESTAMP |Datetime |
+| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
+| TIMESTAMP WITH TIME ZONE |Datetime |
 | UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
-| XML |string |
+| XML |Zeichenfolge |
 
 > [!NOTE]
 > Die Datentypen **INTERVAL YEAR TO MONTH** und **INTERVAL DAY TO SECOND** werden bei Verwendung eines Microsoft-Treibers nicht unterstützt.

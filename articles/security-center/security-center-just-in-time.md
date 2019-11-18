@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996380"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576402"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -61,12 +61,12 @@ Es gibt drei Möglichkeiten, eine JIT-Richtlinie auf einem virtuellen Computer z
 - [Konfigurieren des JIT-Zugriffs auf dem Blatt eines virtuellen Azure-Computers](#jit-vm)
 - [Programmgesteuertes Konfigurieren einer JIT-Richtlinie auf einem virtuellen Computer](#jit-program)
 
-## <a name="configure-jit-in-asc"></a>Konfigurieren von JIT in App Service Certificate (ASC)
+## <a name="configure-jit-in-security-center"></a>Konfigurieren von JIT in Security Center
 
-In ASC können Sie eine JIT-Richtlinie konfigurieren und mithilfe einer JIT-Richtlinie den Zugriff auf einen virtuellen Computer anfordern.
+In Security Center können Sie eine JIT-Richtlinie konfigurieren und mithilfe einer JIT-Richtlinie den Zugriff auf einen virtuellen Computer anfordern.
 
 
-### Konfigurieren des JIT-Zugriffs auf einen virtuellen Computer in ASC <a name="jit-asc"></a>
+### Konfigurieren des JIT-Zugriffs auf einen virtuellen Computer in Security Center <a name="jit-asc"></a>
 
 1. Öffnen Sie das Dashboard **Security Center**.
 
@@ -114,9 +114,9 @@ In ASC können Sie eine JIT-Richtlinie konfigurieren und mithilfe einer JIT-Rich
 >Wenn der JIT-VM-Zugriff für einen virtuellen Computer aktiviert ist, erstellt Azure Security Center Regeln zum Ablehnen von sämtlichem eingehenden Datenverkehr für die ausgewählten Ports in den ihr zugeordneten Netzwerksicherheitsgruppen und der Azure Firewall. Wurden für die ausgewählten Ports andere Regeln erstellt, so haben die bestehenden Regeln Vorrang vor den neuen Regeln zum Ablehnen von sämtlichem eingehenden Datenverkehr. Wenn es für die ausgewählten Ports keine Regeln gibt, dann haben die neuen Regeln zum Ablehnen von sämtlichem eingehenden Datenverkehr in den Netzwerksicherheitsgruppen und der Azure Firewall höchste Priorität.
 
 
-## <a name="request-jit-access-via-asc"></a>Anfordern von JIT-Zugriff über ASC
+## <a name="request-jit-access-via-security-center"></a>Anfordern des JIT-Zugriffs über Security Center
 
-So fordern Sie Zugriff auf einen virtuellen Computer über ASC:
+So fordern Sie den Zugriff auf einen virtuellen Computer in Security Center an:
 
 1. Wählen Sie unter **JIT-VM-Zugriff** die Registerkarte**Konfiguriert** aus.
 
@@ -140,7 +140,7 @@ So fordern Sie Zugriff auf einen virtuellen Computer über ASC:
 > [!NOTE]
 > Wenn sich ein Benutzer, der Zugriff anfordert, hinter einem Proxy befindet, funktioniert die Option **Meine IP-Adresse** möglicherweise nicht. Möglicherweise müssen Sie den vollständigen IP-Adressenbereich der Organisation definieren.
 
-## <a name="edit-a-jit-access-policy-via-asc"></a>Bearbeiten einer JIT-Zugriffsrichtlinie über ASC
+## <a name="edit-a-jit-access-policy-via-security-center"></a>Bearbeiten einer JIT-Zugriffsrichtlinie über Security Center
 
 Sie können die vorhandene Just-In-Time-Richtlinie eines virtuellen Computers ändern, indem Sie einen neuen Port, der für diesen virtuellen Computer geschützt werden soll, hinzufügen und konfigurieren oder eine beliebige andere Einstellung eines bereits geschützten Ports ändern.
 
@@ -151,7 +151,7 @@ So bearbeiten Sie eine vorhandene Just-In-Time-Richtlinie eines virtuellen Compu
 1. Unter **JIT-VM-Zugriffskonfiguration** können Sie die vorhandenen Einstellungen eines bereits geschützten Ports bearbeiten oder einen neuen benutzerdefinierten Port hinzufügen. 
   ![JIT-VM-Zugriff](./media/security-center-just-in-time/edit-policy.png)
 
-## <a name="audit-jit-access-activity-in-asc"></a>Überwachen der JIT-Zugriffsaktivität in ASC
+## <a name="audit-jit-access-activity-in-security-center"></a>Überwachen einer JIT-Zugriffsaktivität über Security Center
 
 Mit der Protokollsuche erhalten Sie Einblicke in VM-Aktivitäten. So zeigen Sie Protokolle an:
 
@@ -168,11 +168,11 @@ Sie können die Protokollinformationen herunterladen, indem Sie **Klicken Sie hi
 
 
 
-## Konfigurieren des JIT-Zugriffs auf dem Blatt eines virtuellen Azure-Computers <a name="jit-vm"></a>
+## Konfigurieren des JIT-Zugriffs auf der Seite eines virtuellen Azure-Computers <a name="jit-vm"></a>
 
-Zur Vereinfachung können Sie direkt vom Blatt eines virtuellen Computers in Azure über JIT eine Verbindung mit diesem virtuellen Computer herstellen.
+Zur Vereinfachung können Sie direkt von der Seite des virtuellen Computers in Security Center über JIT eine Verbindung mit einem virtuellen Computer herstellen.
 
-### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-blade"></a>Konfigurieren des JIT-Zugriffs auf einen virtuellen Computer über das Blatt eines virtuellen Azure-Computers
+### <a name="configure-jit-access-on-a-vm-via-the-azure-vm-page"></a>Konfigurieren des JIT-Zugriffs auf einen virtuellen Computer über die Seite des virtuellen Azure-Computers
 
 Um den Rollout des Just-In-Time-Zugriffs auf Ihre virtuellen Computer zu vereinfachen, können Sie einen virtuellen Computer so einrichten, dass er nur den direkten Just-In-Time-Zugriff innerhalb des virtuellen Computers gestattet.
 

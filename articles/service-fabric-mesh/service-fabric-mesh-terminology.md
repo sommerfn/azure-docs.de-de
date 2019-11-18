@@ -1,6 +1,6 @@
 ---
 title: Terminologie für Azure Service Fabric Mesh | Microsoft-Dokumentation
-description: Erfahren Sie mehr über gängige Begriffe im Zusammenhang mit Azure Service Fabric Mesh.
+description: In diesem Artikel wird die von Azure Service Fabric Mesh verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe besser verstehen.
 services: service-fabric-mesh
 keywords: ''
 author: dkkapur
@@ -9,16 +9,16 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 2d2661593ba3d9be2755d81803c8e248a2f7d0e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cacf3a7419982e8c0e8d55700c903e3414cfcbb4
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810610"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663011"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh-Terminologie
 
-Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der es Entwicklern ermöglicht, Microservicesanwendungen zu implementieren, ohne virtuelle Computer, Speicher oder Netzwerke verwalten zu müssen. In diesem Artikel wird die von Azure Service Fabric Mesh verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe verstehen.
+Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der es Entwicklern ermöglicht, Microservicesanwendungen zu implementieren, ohne virtuelle Computer, Speicher oder Netzwerke verwalten zu müssen. In diesem Artikel wird die von Azure Service Fabric Mesh verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe besser verstehen.
 
 ## <a name="service-fabric"></a>Service Fabric
 

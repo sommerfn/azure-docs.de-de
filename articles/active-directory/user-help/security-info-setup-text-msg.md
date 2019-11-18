@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten – Azure Active Directory | Microsoft-Dokumentation
+title: Einrichten von Sicherheitsinformationen (Vorschau) für SMS-Nachrichten – Azure AD
 description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe von SMS-Nachrichten auf Ihrem Mobilgerät zu bestätigen.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3544094da72c1c0f854f3d02a34f8540ad2f784
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160875"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803834"
 ---
 # <a name="set-up-security-info-preview-to-use-text-messaging"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten
 

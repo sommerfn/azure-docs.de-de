@@ -1,21 +1,22 @@
 ---
-title: Authentifizierung für Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Authentication
 description: Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
 services: sql-data-warehouse
-author: KavithaJonnakuti
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
 ms.date: 04/02/2019
-ms.author: kavithaj
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: fda29e432fbd952261893f3c32a4df7b9990ae66
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61475030"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692937"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Authentifizierung für Azure SQL Data Warehouse
 Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.
@@ -39,7 +40,7 @@ Standardmäßig wird die Verbindung mit der *Masterdatenbank* hergestellt, nicht
 * Markieren Sie die Benutzerdatenbank, bevor Sie eine Sitzung in SSDT erstellen.
 
 > [!NOTE]
-> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio][Query with Visual Studio].
+> Die Transact-SQL-Anweisung **USE MyDatabase;** wird nicht zum Ändern der Datenbank für eine Verbindung unterstützt. Eine Anleitung zum Herstellen einer Verbindung mit SQL Data Warehouse über SSDT finden Sie im Artikel [Abfragen mit Visual Studio][Query with Visual Studio] .
 > 
 > 
 
@@ -59,7 +60,7 @@ Azure Active Directory bietet folgende Vorteile:
 * Die Multi-Factor Authentication über die universelle Active Directory-Authentifizierung wird für verschiedene Tools einschließlich [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) und [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json) unterstützt.
 
 > [!NOTE]
-> Azure Active Directory ist immer noch relativ neu und weist einige Einschränkungen auf. Um sicherzustellen, dass Azure Active Directory für Ihre Umgebung geeignet ist, lesen Sie [Features und Einschränkungen von Azure AD][Azure AD features and limitations], und beachten Sie insbesondere den Abschnitt „Zusätzliche Überlegungen“.
+> Azure Active Directory ist immer noch relativ neu und weist einige Einschränkungen auf. Um sicherzustellen, dass Azure Active Directory für Ihre Umgebung geeignet ist, lesen Sie [Funktionen und Einschränkungen von Azure AD][Azure AD features and limitations], und beachten Sie insbesondere den Abschnitt „Zusätzliche Überlegungen“.
 > 
 > 
 

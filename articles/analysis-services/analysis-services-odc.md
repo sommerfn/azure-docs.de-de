@@ -1,18 +1,18 @@
 ---
-title: Erstellen einer ODC-Datei für die Verbindung mit einem Azure Analysis Services-Server | Microsoft Docs
+title: Verbinden von Azure Analysis Services mit einer ODC-Datei | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Office Data-Verbindung mit einem Analysis Services-Server in Azure herstellen und Daten von diesem abrufen.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5aa9645ec3138ed661305e1019b3e6dadfe4d212
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146683"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572687"
 ---
 # <a name="create-an-office-data-connection-file"></a>Erstellen einer Office Data Connection-Datei
 

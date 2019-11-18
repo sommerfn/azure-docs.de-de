@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 2c25069ce5231a1f89027dea69579231f0fe4bcd
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 270dbb24d851645ff7a7f0bcf5f78bfb95bcd095
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72517079"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604725"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -34,9 +34,9 @@ Die maximale Anzahl von Pods pro Knoten ist standardmäßig auf 110 festgelegt, 
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Bei der Bereitstellung eines AKS-Clusters mit erweitertem Netzwerk erhalte ich einen insufficientSubnetSize-Fehler. Wie sollte ich vorgehen?
 
-Wenn Azure CNI (erweiterte Netzwerke) verwendet wird, weist AKS auf Basis des unter „Max. Pods pro Knoten“ konfigurierten Werts vorab IP-Adressen zu. Die Anzahl der Knoten in einem AKS-Cluster können zwischen 1 und 110 liegen. Basierend auf dem unter „Max. Pods pro Knoten“ konfigurierten Wert sollte die Subnetzgröße die Summe aus der Anzahl der Knoten mal der Höchstzahl der Pods pro Knoten überschreiten. Die folgende einfache Gleichung zeigt dies:
+Wenn Azure CNI (erweiterte Netzwerke) verwendet wird, weist AKS auf Basis des unter „Max. Pods pro Knoten“ konfigurierten Werts IP-Adressen zu. Basierend auf dem unter „Max. Pods pro Knoten“ konfigurierten Wert sollte die Subnetzgröße das Produkt aus der Anzahl der Knoten und der Einstellung der Höchstzahl der Pods pro Knoten überschreiten. Die folgende Gleichung zeigt dies:
 
-Subnetzgröße > Anzahl der Knoten im Cluster (unter Berücksichtigung der zukünftigen Skalierungsanforderungen) * Max. Pods pro Knoten.
+Subnetzgröße > Anzahl der Knoten im Cluster (unter Berücksichtigung der zukünftigen Skalierungsanforderungen) * Max. Pods pro Knotensatz.
 
 Weitere Informationen finden Sie unter [Planen der IP-Adressierung für Ihren Cluster](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 

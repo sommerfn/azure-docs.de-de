@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 84e1dd77c6e873dc2facb5126bbddf795192b60d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257745"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73605617"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Abfragen von Avro-Daten mit Azure Data Lake Analytics
 
@@ -20,7 +20,7 @@ In diesem Artikel geht es um die Abfrage von Avro-Daten für ein effizientes Rou
 
 Die Herausforderung: Wenn Azure IoT Hub Nachrichten an Azure Blob Storage weiterleitet, schreibt IoT Hub den Inhalt standardmäßig im Avro-Format, das sowohl eine Nachrichtentext- als auch eine Nachrichteneigenschaft aufweist. Das Avro-Format wird für keinen anderen Endpunkt verwendet. Obwohl das Avro-Format hervorragend für die Beibehaltung von Daten und Nachrichten geeignet ist, ist es schwierig für Abfragedaten zu verwenden. Im Vergleich dazu lassen sich Daten im JSON- oder CSV-Format wesentlich einfacher abfragen. IoT Hub unterstützt jetzt das Schreiben von Daten in Blobspeicher sowohl im JSON- als auch im Avro-Format.
 
-Weitere Informationen finden Sie unter [Verwenden von Azure Blob Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+Weitere Informationen finden Sie unter [Verwenden von Azure Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-storage).
 
 Um nicht relationale Big Data-Anforderungen und Formate zu unterstützen und dies in den Griff zu bekommen, können Sie viele der Big Data-Muster sowohl für die Transformation als auch für die Skalierung von Daten verwenden. Eines der Muster, „Zahlung pro Abfrage“, ist Azure Data Lake Analytics, der Themenschwerpunkt dieses Artikels. Obwohl Sie die Abfrage einfach in Hadoop oder anderen Lösungen ausführen können, ist Data Lake Analytics meist besser für diesen „Zahlung pro Abfrage“-Ansatz geeignet.
 

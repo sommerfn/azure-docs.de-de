@@ -1,7 +1,7 @@
 ---
 title: Installieren und Ausführen von Containern – Gesichtserkennungs-API
 titleSuffix: Azure Cognitive Services
-description: In diesem Schritt-für-Schritt-Tutorial laden Sie Container für die Gesichtserkennung herunter, installieren diese und führen Sie anschließend aus.
+description: Dieser Artikel zeigt Ihnen in einem Schritt-für-Schritt-Tutorial, wie Sie Container für die Gesichtserkennung herunterladen, installieren und ausführen.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: f2bf5766dc09b85f276349a5e72f1bc3b8ba23b3
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: b3c064ae2dbc37858ca6fe89742161e0dda1784f
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316368"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73743271"
 ---
 # <a name="install-and-run-face-containers"></a>Installieren und Ausführen von Containern für die Gesichtserkennung
 

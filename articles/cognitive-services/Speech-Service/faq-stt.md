@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: panosper
-ms.openlocfilehash: 1f934bc5627331cc92ad3f497f1f7e4e0e5526cd
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3b957181015cba06eb361272ca1004ba3e7a7008
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595339"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73579677"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -175,6 +175,18 @@ oder
 **F: Kann ich nur eine Liste von Wörtern hochladen?**
 
 **A:** Das Hochladen einer Liste von Wörtern fügt die Wörter dem Wortschatz hinzu, trainiert das System aber nicht, wie die Wörter typischerweise verwendet werden. Durch die Bereitstellung vollständiger oder teilweiser Äußerungen (Sätze oder Ausdrücke, die von Benutzern üblicherweise verwendet werden) kann das Sprachmodell die neuen Wörter und deren Verwendung lernen. Das benutzerdefinierte Sprachmodell eignet sich nicht nur gut dazu, neue Wörter dem System hinzuzufügen, sondern auch, die Wahrscheinlichkeit bekannter Wörter für Ihre Anwendung anzupassen. Vollständige Äußerungen helfen dem System, besser zu lernen. 
+
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>Mandantenmodell (Custom Speech mit Office 365-Daten)
+
+**F: Welche Informationen sind im Mandantenmodell enthalten, und wie wird es erstellt?**
+
+**A:** Ein Mandantenmodell wird mit E-Mails und Dokumenten der [öffentlichen Gruppe ](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können. 
+ 
+**F: Welche Sprachfunktion wird durch das Mandantenmodell verbessert?**
+
+**A:** Wenn das Mandantenmodell aktiviert, erstellt und veröffentlicht ist, wird es verwendet, um die Erkennung für Unternehmensanwendungen zu verbessern, die mithilfe des Spracherkennungsdiensts erstellt wurden. Dadurch wird auch ein AAD-Token übergeben, das die Mitgliedschaft im Unternehmen angibt. 
+ 
+Die in Office 365 integrierten Sprachfunktionen, wie z. B. Diktat und PowerPoint-Untertitel, werden nicht geändert, wenn Sie ein Mandantenmodell für Ihre Spracherkennungsdienst-Anwendungen erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

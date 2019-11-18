@@ -1,5 +1,5 @@
 ---
-title: Transformieren von Daten mit der Hadoop-Streamingaktivität – Azure | Microsoft-Dokumentation
+title: Transformieren von Daten mit der Hadoop-Streamingaktivität – Azure
 description: Erfahren Sie, wie Sie die Hadoop-Streamingaktivität in Azure Data Factory verwenden können, um Daten durch die Ausführung von Hadoop-Streamingprogrammen in einem bedarfsgesteuerten oder einem eigenen HDInsight-Cluster zu transformieren.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c56961b28750f3ba6450c26c897c1ef6c54b3ed8
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139542"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73667505"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hadoop-Streamingaktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Transformationsaktivitäten"]

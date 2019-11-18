@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 04848f763fe8246f8e10f563169c04ea37b0ed37
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677313"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73668008"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -90,6 +90,8 @@ Dieser Fall kann eintreten, wenn Ihr Aktualisierungstoken nicht aktualisiert wur
 
 1. Melden Sie sich beim Azure-Portal an, und stellen Sie sicher, dass Sie auf die Ressource zugreifen können.
 2. Versuchen Sie, die Anmeldeinformationen für das Dashboard zu aktualisieren.
+3. Versuchen Sie, den Cache aus Power BI Desktop zu löschen.
+
 
    Falls Sie Zugriff haben und die Aktualisierung der Anmeldeinformationen das Problem nicht behebt, erstellen Sie ein Supportticket.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: a15d450d033c04c59f6981a887689f1fc08919f1
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 42c674e236d769d48f6f17fc43494ac006219a8a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958857"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795698"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-Verschlüsselung für ruhende Daten
 
@@ -74,7 +74,7 @@ In der folgenden Liste werden die nummerierten Schritte im Diagramm erläutert:
 
 Informationen zum Widerrufen des Zugriffs auf vom Kunden verwalteten Schlüssel für das Speicherkonto finden Sie in den Artikeln zu [Azure Key Vault-PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) und zur [Azure Key Vault-CLI](https://docs.microsoft.com/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Daten im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Verschlüsselungsschlüssel hat.
 
-Von Kunden verwaltete Schlüssel werden nicht für [verwaltete Azure-Datenträger](../../virtual-machines/windows/managed-disks-overview.md) unterstützt.
+Von Kunden verwaltete Schlüssel sind auch für verwaltete Azure-Datenträger als öffentliche Vorschau verfügbar und funktionieren bei verwalteten Datenträgern ein wenig anders als beim übrigen Speicher. Weitere Informationen finden Sie in unserem [Artikel zum Thema](../../virtual-machines/linux/disk-encryption.md#customer-managed-keys-public-preview).
 
 In den folgenden Artikeln erhalten Sie Informationen zum Verwenden von Kunden verwalteter Schlüsseln mit Azure Storage:
 

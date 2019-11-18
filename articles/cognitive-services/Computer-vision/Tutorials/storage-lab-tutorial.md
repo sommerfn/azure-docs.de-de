@@ -10,16 +10,18 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057740"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73604651"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Tutorial: Verwenden von „Maschinelles Sehen“ zum Generieren von Bildmetadaten in Azure Storage
 
-In diesem Tutorial wird beschrieben, wie Sie den Azure-Dienst „Maschinelles Sehen“ in eine Web-App integrieren, um Metadaten für hochgeladene Bilder zu generieren. Einen vollständigen App-Leitfaden finden Sie unter [Azure Storage and Cognitive Services Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) (Lab für Azure Storage und Cognitive Services) auf GitHub. Dieses Tutorial deckt im Wesentlichen Übung 5 des Labs ab. Es kann sein, dass Sie die End-to-End-Anwendung erstellen möchten, indem Sie jeden einzelnen Schritt ausführen. Falls Sie aber nur wissen möchten, wie Maschinelles Sehen in eine vorhandene Web-App integriert werden kann, sollten Sie weiterlesen.
+In diesem Tutorial wird beschrieben, wie Sie den Azure-Dienst „Maschinelles Sehen“ in eine Web-App integrieren, um Metadaten für hochgeladene Bilder zu generieren. Dies ist für [Digital Asset Management](../Home.md#computer-vision-for-digital-asset-management)-Szenarien (DAM) nützlich, wenn ein Unternehmen z. B. beschreibende Titel oder durchsuchbare Schlüsselwörter für alle seine Bilder schnell generieren möchte.
+
+Einen vollständigen App-Leitfaden finden Sie unter [Azure Storage and Cognitive Services Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) (Lab für Azure Storage und Cognitive Services) auf GitHub. Dieses Tutorial deckt im Wesentlichen Übung 5 des Labs ab. Es kann sein, dass Sie die End-to-End-Anwendung erstellen möchten, indem Sie jeden einzelnen Schritt ausführen. Falls Sie aber nur wissen möchten, wie Maschinelles Sehen in eine vorhandene Web-App integriert werden kann, sollten Sie weiterlesen.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 

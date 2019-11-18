@@ -9,16 +9,18 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5cb4602ac0431e09208953122f13b30124ab77f5
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734331"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73614752"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 
 Das Monitormuster bezieht sich auf einen flexiblen *wiederkehrenden* Prozess in einem Workflow – wenn beispielsweise bestimmte Elemente solange abgerufen werden, bis bestimmte Bedingungen erfüllt sind. In diesem Artikel wird ein Beispiel beschrieben, in dem [Durable Functions](durable-functions-overview.md) zum Implementieren der Überwachung verwendet wird.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -71,7 +73,7 @@ Im Folgenden wird der Code dargestellt, der die Funktion implementiert:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
@@ -82,7 +84,7 @@ Diese Orchestratorfunktion führt die folgenden Aktionen aus:
 3. Sie ruft **E3_GetIsClear** auf, um zu ermitteln, ob das Wetter am angeforderten Standort schön ist.
 4. Wenn dies der Fall ist, ruft die Funktion **E3_SendGoodWeatherAlert** auf, um eine SMS-Benachrichtigung an die angeforderte Telefonnummer zu senden.
 5. Sie erstellt einen permanenten Timer, um die Orchestrierung im nächsten Abrufintervall fortzusetzen. Aus Gründen der Übersichtlichkeit verwendet dieses Beispiel einen hartcodierten Wert.
-6. Sie wird ausgeführt, bis [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (C#) oder `currentUtcDateTime` (JavaScript) den Ablaufzeitpunkt des Monitors überschreitet oder eine SMS-Benachrichtigung gesendet wird.
+6. Die Ausführung wird fortgesetzt, bis `CurrentUtcDateTime` (.NET) oder `currentUtcDateTime` (JavaScript) den Ablaufzeitpunkt des Monitors überschreitet oder eine SMS-Benachrichtigung gesendet wird.
 
 Durch Senden mehrerer **MonitorRequests** können mehrere Orchestratorinstanzen gleichzeitig ausgeführt werden. Der zu überwachende Standort und die Telefonnummer, an die eine SMS-Benachrichtigung gesendet werden soll, können angegeben werden.
 
@@ -107,7 +109,7 @@ Hier ist die Implementierung. Wie bei den für die Datenübertragung verwendeten
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
@@ -121,7 +123,7 @@ Hier sehen Sie den Code, der die SMS-Nachricht sendet:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (nur Functions 2.x)
+### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
@@ -140,10 +142,10 @@ Content-Type: application/json
 ```
 HTTP/1.1 202 Accepted
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
+Location: https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={SystemKey}
 RetryAfter: 10
 
-{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
+{"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
 Die Instanz **E3_Monitor** wird gestartet und ruft die aktuellen Wetterbedingungen für den angeforderten Standort ab. Wenn das Wetter schön ist, ruft die Instanz eine Aktivitätsfunktion auf, die eine Benachrichtigung sendet. Andernfalls legt sie einen Timer fest. Wenn der Timer abläuft, wird die Orchestrierung fortgesetzt.
@@ -169,7 +171,7 @@ Sie können sich die Aktivität der Orchestrierung in den Funktionsprotokollen i
 Die Orchestrierung wird [beendet](durable-functions-instance-management.md), sobald das Zeitlimit erreicht ist oder schönes Wetter erkannt wird. Sie können auch `TerminateAsync` (.NET) oder `terminate` (JavaScript) in einer anderen Funktion verwenden oder den HTTP POST-Webhook **terminatePostUri** aufrufen, auf den oben in der 202-Antwort verwiesen wird. Dabei wird `{text}` durch den Grund für die Beendigung ersetzt:
 
 ```
-POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
+POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio-Beispielcode

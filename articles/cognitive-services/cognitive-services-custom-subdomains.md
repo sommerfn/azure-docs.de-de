@@ -1,7 +1,7 @@
 ---
 title: Benutzerdefinierte Unterdomänen
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Services verwenden benutzerdefinierte Unterdomänennamen für jede Ressource, die über das Azure-Portal, Azure Cloud Shell oder die Azure CLI erstellt wurde. Anders als bei regionalen Endpunkten, die für alle Kunden in einer bestimmten Azure-Region üblich waren, sind benutzerdefinierte Unterdomänennamen für die Ressource eindeutig. Benutzerdefinierte Unterdomänennamen sind erforderlich, um Funktionen wie Azure Active Directory (Azure AD) für die Authentifizierung zu aktivieren.
+description: Benutzerdefinierte Unterdomänennamen für jede Cognitive Service-Ressource werden über das Azure-Portal, Azure Cloud Shell oder die Azure CLI erstellt.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 7153735052f96bef65bf3daaccde4eab3e61b0f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68473011"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647694"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Benutzerdefinierte Unterdomänennamen für Cognitive Services
 

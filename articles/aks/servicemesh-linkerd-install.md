@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: ec8250f6cdb44af3c99c1d34d1f14fbd2209aac0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529738"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747708"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Installieren von Linkerd in Azure Kubernetes Service (AKS)
 
@@ -248,7 +248,7 @@ Opening Linkerd dashboard in the default browser
 > [!WARNING]
 > Das Löschen von Linkerd in einem laufenden System kann zu Problemen beim Datenverkehr zwischen Ihren Diensten führen. Stellen Sie sicher, dass Sie das System so weit vorbereitet haben, dass es auch ohne Linkerd ordnungsgemäß funktioniert, bevor Sie fortfahren.
 
-Zunächst müssen Sie die Proxys für die Datenebene entfernen. Entfernen Sie alle [Anmerkungen][linkerd-automatic-proxy-injection] zur automatischen Proxyeinschleusung aus Workloadnamespaces, und führen Sie einen Rollback der Workloadbereitstellungen durch. Ihre Workloads verfügen über keine zugeordneten Datenebenenkomponenten mehr.
+Zunächst müssen Sie die Proxys für die Datenebene entfernen. Entfernen Sie alle [Anmerkungen][linkerd-automatic-proxy-injection] zur automatischen Proxyeinschleusung aus Workloadnamespaces, und führen Sie einen Rollout der Workloadbereitstellungen durch. Ihre Workloads verfügen über keine zugeordneten Datenebenenkomponenten mehr.
 
 Entfernen Sie anschließend die Steuerungsebene wie folgt:
 

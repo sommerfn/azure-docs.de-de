@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 10/04/2019
 ms.author: danlep
-ms.openlocfilehash: 16ad37eaa50f0c3825d131338cc4a0abdc369978
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 4cb678e1ffa73731c6c1444f87fec588da7ddfbf
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262873"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73681831"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -65,13 +65,13 @@ Jeder Wert ist eine GUID mit den Format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 ### <a name="use-credentials-with-azure-services"></a>Verwenden von Anmeldeinformationen mit Azure-Diensten
 
-Sie können die Anmeldeinformationen des Dienstprinzipals in jedem Azure-Dienst verwenden, der mit einer Azure-Containerregistrierung authentifiziert werden kann.  Dienstprinzipal-Anmeldeinformationen können anstelle der Administratoranmeldeinformationen der Registrierung in einer Vielzahl von Szenarien verwendet werden.
+Sie können die Anmeldeinformationen des Dienstprinzipals in jedem Azure-Dienst verwenden, der mit einer Azure-Containerregistrierung authentifiziert wird.  Dienstprinzipal-Anmeldeinformationen können anstelle der Administratoranmeldeinformationen der Registrierung in einer Vielzahl von Szenarien verwendet werden.
 
 So können Sie mithilfe der Anmeldeinformationen beispielsweise ein Image aus einer Azure-Containerregistrierung in [Azure Container Instances](container-registry-auth-aci.md) pullen.
 
 ### <a name="use-with-docker-login"></a>Verwenden mit Docker-Anmeldung
 
-Sie können `docker login` auch unter Verwendung eines Dienstprinzipals ausführen. Im folgenden Beispiel wird die Anwendungs-ID des Dienstprinzipals in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben. Bewährte Methoden zur Verwaltung von Docker-Anmeldeinformationen finden Sie in der Befehlsreferenz zu [docker login](https://docs.docker.com/engine/reference/commandline/login/).
+Sie können `docker login` unter Verwendung eines Dienstprinzipals ausführen. Im folgenden Beispiel wird die Anwendungs-ID des Dienstprinzipals in der Umgebungsvariablen `$SP_APP_ID` und das Kennwort in der Variablen `$SP_PASSWD` übergeben. Bewährte Methoden zur Verwaltung von Docker-Anmeldeinformationen finden Sie in der Befehlsreferenz zu [docker login](https://docs.docker.com/engine/reference/commandline/login/).
 
 ```bash
 # Log in to Docker with service principal credentials
@@ -79,6 +79,26 @@ docker login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
 Nach der Anmeldung speichert Docker die Anmeldeinformationen zwischen.
+
+### <a name="use-with-certificate"></a>Verwenden mit Zertifikat
+
+Wenn Sie Ihrem Dienstprinzipal ein Zertifikat hinzugefügt haben, können Sie sich mit zertifikatbasierter Authentifizierung bei der Azure CLI anmelden und dann den Befehl [az acr login][az-acr-login] verwenden, um auf eine Registrierung zuzugreifen. Die Verwendung eines Zertifikats als Geheimnis anstelle eines Kennworts bietet zusätzliche Sicherheit bei der Verwendung der CLI. 
+
+Ein selbstsigniertes Zertifikat kann erstellt werden, wenn Sie [einen Dienstprinzipal erstellen](/cli/azure/create-an-azure-service-principal-azure-cli). Fügen Sie alternativ einem vorhandenen Dienstprinzipal ein oder mehrere Zertifikate hinzu. Wenn Sie z. B. eines der Skripts in diesem Artikel verwenden, um einen Dienstprinzipal mit Rechten zum Pullen oder Pushen von Images aus einer Registrierung zu erstellen oder zu aktualisieren, fügen Sie mithilfe des [az ad sp credential reset][az-ad-sp-credential-reset]-Befehls ein Zertifikat hinzu.
+
+Um den Dienstprinzipal mit einem Zertifikat zum [Anmelden bei der Azure CLI](/cli/azure/authenticate-azure-cli#sign-in-with-a-service-principal) zu verwenden, muss das Zertifikat im PEM-Format vorliegen und den privaten Schlüssel enthalten. Wenn das Zertifikat nicht im erforderlichen Format vorliegt, verwenden Sie ein Tool wie `openssl`, um es zu konvertieren. Wenn Sie [az login][az-login] ausführen, um sich mithilfe des Dienstprinzipals bei der CLI anzumelden, geben Sie auch die Anwendungs-ID und die Active Directory-Mandanten-ID des Dienstprinzipals an. Das folgende Beispiel zeigt diese Werte als Umgebungsvariablen:
+
+```azurecli
+az login --service-principal --username $SP_APP_ID --tenant $SP_TENANT_ID  --password /path/to/cert/pem/file
+```
+
+Führen Sie dann [az acr login][az-acr-login] aus, um sich bei der Registrierung zu authentifizieren:
+
+```azurecli
+az acr login --name myregistry
+```
+
+Die CLI verwendet das Token, das bei Ihrer Ausführung von `az login` erstellt wurde, um Ihre Sitzung bei der Registrierung zu authentifizieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -92,3 +112,5 @@ Nach der Anmeldung speichert Docker die Anmeldeinformationen zwischen.
 
 <!-- LINKS - Internal -->
 [az-acr-login]: /cli/azure/acr#az-acr-login
+[az-login]: /cli/azure/reference-index#az-login
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#[az-ad-sp-credential-reset]

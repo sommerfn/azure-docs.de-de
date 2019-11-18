@@ -6,19 +6,19 @@ ms.service: automation
 ms.subservice: process-automation
 author: bobbytreed
 ms.author: robreed
-ms.date: 05/21/2019
+ms.date: 11/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 15036b33e637953de7dc12100468d3dd8570f775
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d7a43ee2ed8719df2c38d00c9a50811c6d5ea70d
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376091"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718680"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
-Mit der Lösung VMs außerhalb der Geschäftszeiten starten/beenden können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem können Sie über Azure Monitor-Protokolle Erkenntnisse aus Ihre Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs. Wenn Sie diese Lösung mit klassischen VMs verwenden möchten, benötigen Sie ein klassisches ausführendes Konto. Dieses wird nicht standardmäßig erstellt. Eine Anleitung für die Erstellung eines klassischen ausführenden Kontos finden Sie unter [Klassische ausführende Konten](automation-create-standalone-account.md#classic-run-as-accounts).
+Mit der Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten können Sie Ihre virtuellen Azure-Computer nach benutzerdefinierten Zeitplänen starten und beenden. Zudem können Sie über Azure Monitor-Protokolle Erkenntnisse aus Ihre Daten ziehen und durch die Nutzung von [Aktionsgruppen](../azure-monitor/platform/action-groups.md) optional E-Mails senden. Die Lösung unterstützt in den meisten Szenarien sowohl Azure Resource Manager-VMs als auch klassische VMs. Wenn Sie diese Lösung mit klassischen VMs verwenden möchten, benötigen Sie ein klassisches ausführendes Konto. Dieses wird nicht standardmäßig erstellt. Eine Anleitung für die Erstellung eines klassischen ausführenden Kontos finden Sie unter [Klassische ausführende Konten](automation-create-standalone-account.md#classic-run-as-accounts).
 
 > [!NOTE]
 > Die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ wurde mit den Azure-Modulen getestet, die bei der Bereitstellung der Lösung in Ihr Azure Automation-Konto importiert werden. Die Lösung funktioniert derzeit nicht mit neueren Versionen des Azure-Moduls. Dies betrifft nur das Azure Automation-Konto, mit dem Sie die Lösung „VMs außerhalb der Geschäftszeiten starten/beenden“ ausführen. Sie können in Ihren anderen Azure Automation-Konten weiterhin neuere Versionen des Azure-Moduls verwenden, wie in [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](automation-update-azure-modules.md) beschrieben.
@@ -29,13 +29,13 @@ Diese Lösung bietet eine dezentrale und kostengünstige Automatisierungsoption 
 - Starten und Beenden von VMs nach Zeitplan in aufsteigender Reihenfolge mithilfe von Azure-Tags (wird für klassische VMs nicht unterstützt)
 - Automatisches Beenden von VMs bei geringer CPU-Auslastung
 
-Die aktuelle Lösung hat die folgenden Einschränkungen:
+Die aktuelle Lösung hat folgende Einschränkungen:
 
 - Mit dieser Lösung können VMs in allen Regionen verwaltet werden. Allerdings lässt sie sich nur unter demselben Abonnement wie Ihr Azure Automation-Konto verwenden.
 - Diese Lösung ist in Azure und Azure Government für jede Region verfügbar, die einen Log Analytics-Arbeitsbereich, ein Azure Automation-Konto und Warnungen unterstützt. Azure Government-Regionen unterstützen derzeit keine E-Mail-Funktionalität.
 
 > [!NOTE]
-> Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Virtuelle Computer werden weiterhin parallel in verschiedenen Clouddiensten verarbeitet.
+> Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Virtuelle Computer werden weiterhin parallel in verschiedenen Clouddiensten verarbeitet. Wenn Sie über mehr als 20 VMs pro Clouddienst verfügen, sollten Sie mehrere Zeitpläne mit dem übergeordneten Runbook **ScheduledStartStop_Parent** erstellen und 20 VMS pro Zeitplan angeben. Geben Sie in den Zeitplaneigenschaften als durch Trennzeichen getrennte Liste VM-Namen im **VMList**-Parameter an. Wenn andernfalls der Automatisierungsauftrag für diese Lösung mehr als drei Stunden ausgeführt wird, wird er gemäß des Limits für [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share) vorübergehend entladen oder angehalten.
 >
 > Azure Cloud Solution Provider-Abonnements (Azure CSP) unterstützen nur das Azure Resource Manager-Modell. Dienste, die nicht auf Azure Resource Manager basieren, sind in diesem Programm nicht verfügbar. Wenn die Lösung zum Starten/Beenden ausgeführt wird, erhalten Sie möglicherweise Fehler, da sie Cmdlets zur Verwaltung klassischer Ressourcen enthält. Weitere Informationen zu CSP finden Sie unter [Verfügbare Dienste in CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Wenn Sie ein CSP-Abonnement verwenden, sollten Sie die Variable [**External_EnableClassicVMs**](#variables) nach der Bereitstellung in **False** ändern.
 
@@ -45,15 +45,15 @@ Die aktuelle Lösung hat die folgenden Einschränkungen:
 
 Für die Runbooks für diese Lösung wird ein [ausführendes Azure-Konto](automation-create-runas-account.md) verwendet. Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 
-Es wird empfohlen, für die Lösung zum Starten/Beenden von VMs ein separates Automation-Konto zu verwenden. Der Grund hierfür ist, dass die Azure-Modulversionen häufig aktualisiert werden und sich ihre Parameter ändern können. Die Lösung zum Starten/Beenden von VMs wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihr Automation-Produktionskonto importieren.
+Sie sollten für die Lösung zum Starten/Beenden von VMs ein separates Automation-Konto zu verwenden. Der Grund hierfür ist, dass die Azure-Modulversionen häufig aktualisiert werden und sich ihre Parameter ändern können. Die Lösung zum Starten/Beenden von VMs wird nicht mit derselben Häufigkeit aktualisiert, sodass sie eventuell nicht mit neueren Versionen der verwendeten Cmdlets funktioniert. Sie sollten auch zum Testen auf Modulupdates ein Automation-Testkonto verwenden, bevor Sie sie in Ihre Automation-Produktionskonten importieren.
 
 ### <a name="permissions-needed-to-deploy"></a>Für die Bereitstellung erforderliche Berechtigungen
 
 Ein Benutzer muss über bestimmte Berechtigungen verfügen, um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten bereitzustellen. Diese Berechtigungen sind unterschiedlich – je nachdem, ob ein vorab erstelltes Automation-Konto und ein vorab erstellter Log Analytics-Arbeitsbereich verwendet oder beides während der Bereitstellung neu erstellt wird. Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Active Directory-Mandanten sind, müssen Sie die folgenden Berechtigungen nicht konfigurieren. Wenn Sie nicht über diese Rechte verfügen oder eine benutzerdefinierte Rolle konfigurieren müssen, finden Sie weiter unten die erforderlichen Berechtigungen.
 
-#### <a name="pre-existing-automation-account-and-log-analytics-account"></a>Bereits vorhandenes Automation- und Log Analytics-Konto
+#### <a name="pre-existing-automation-account-and-log-analytics-workspace"></a>Bereits vorhandenes Automation-Konto und bereits vorhandener Log Analytics-Arbeitsbereich
 
-Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein Automation-Konto und einen Log Analytics-Arbeitsbereich bereitzustellen, muss der Benutzer, der die Lösung bereitstellt, über die folgenden Berechtigungen für die **Ressourcengruppe** verfügen. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../role-based-access-control/custom-roles.md).
+Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein vorhandenes Automation-Konto und einen vorhandenen Log Analytics-Arbeitsbereich bereitzustellen, muss der Benutzer, der die Lösung bereitstellt, über die folgenden Berechtigungen für die **Ressourcengruppe** verfügen. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../role-based-access-control/custom-roles.md).
 
 | Berechtigung | `Scope`|
 | --- | --- |
@@ -81,7 +81,7 @@ Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten 
 Um die Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten für ein neues Automation-Konto und einen neuen Log Analytics-Arbeitsbereich bereitzustellen, benötigt der Benutzer, der die Lösung bereitstellt, neben den im obigen Abschnitt beschriebenen Berechtigungen zusätzlich die folgenden Berechtigungen:
 
 - Co-Administrator für das Abonnement: Dies ist nur erforderlich, um das klassische ausführende Konto zu erstellen, wenn Sie klassische VMs verwalten möchten. [Klassische ausführende Konten](automation-create-standalone-account.md#classic-run-as-accounts) werden nicht mehr standardmäßig erstellt.
-- Mitglied der Rolle [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **Anwendungsentwickler**. Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](manage-runas-account.md#permissions).
+- Ein Mitglied der Rolle [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)-**Anwendungsentwickler**. Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](manage-runas-account.md#permissions).
 - Mitwirkender im Abonnement oder die folgenden Berechtigungen.
 
 | Berechtigung |`Scope`|
@@ -395,7 +395,7 @@ Es stehen einige Optionen zur Verfügung, mit denen Sie sicherstellen können, d
 
 ### <a name="exclude-a-vm"></a>Ausschließen eines virtuellen Computers
 
-Wenn Sie eine VM von der Lösung ausschließen möchten, können Sie sie der Variablen **External_ExcludeVMNames** hinzufügen. Diese Variable ist eine durch Komma getrennte Liste von bestimmten VMs, die von der Lösung zum Starten/Beenden ausgeschlossen werden sollen. Diese Liste ist auf 140 virtuelle Computer beschränkt. Wenn Sie dieser durch Trennzeichen getrennten Liste mehr als 140 VMs hinzufügen, kann es bei VMs, für die Ausschluss festgelegt ist, zu unbeabsichtigtem Starten oder Beenden kommen.
+Wenn Sie eine VM von der Lösung ausschließen möchten, können Sie sie der Variablen **External_ExcludeVMNames** hinzufügen. Diese Variable ist eine durch Trennzeichen getrennte Liste von bestimmten VMs, die von der Lösung zum Starten/Beenden ausgeschlossen werden sollen. Diese Liste ist auf 140 virtuelle Computer beschränkt. Wenn Sie dieser durch Trennzeichen getrennten Liste mehr als 140 VMs hinzufügen, kann es bei VMs, für die Ausschluss festgelegt ist, zu unbeabsichtigtem Starten oder Beenden kommen.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Ändern der Zeitpläne für das Starten und Herunterfahren
 

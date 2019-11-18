@@ -1,32 +1,34 @@
 ---
-title: Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
+title: Unterstützung für die Notfallwiederherstellung von Hyper-V-VMs in Azure mit Azure Site Recovery
 description: Dieser Artikel fasst die unterstützten Komponenten und Anforderungen für die Hyper-V-Notfallwiederherstellung in Azure mit Azure Site Recovery zusammen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 784bf15a58e25ba4cba18494adc295343d0c175a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098896"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620832"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
 
 In diesem Artikel werden die unterstützten Komponenten und Einstellungen für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure mit [Azure Site Recovery](site-recovery-overview.md) beschrieben.
 
+> [!WARNING]
+> Beachten Sie, dass die ASR-Unterstützung für die Verwendung der SCVMM-Konfiguration in Kürze veraltet ist. Darum sollten Sie die Informationen zur [Veraltung](scvmm-site-recovery-deprecation.md) lesen, bevor Sie fortfahren.
+
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
 **Szenario** | **Details**
 --- | ---
-Hyper-V mit Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](hyper-v-vmm-disaster-recovery.md).
+Hyper-V mit Virtual Machine Manager <br> **Dieses Szenario befindet sich im Veraltungsprozess.** <br>| Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](hyper-v-vmm-disaster-recovery.md).
 Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts ausführen, die nicht von Virtual Machine Manager verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
-
 
 ## <a name="on-premises-servers"></a>Lokale Server
 

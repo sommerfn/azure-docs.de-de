@@ -5,31 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 11/1/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b26679542753d5fb429c33e4220c23a3937c5cb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430442"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73603590"
 ---
-# <a name="add-google-as-an-identity-provider-for-b2b-guest-users-preview"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer (Vorschau)
+# <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer
 
-|     |
-| --- |
-| Der Google-Verbund ist eine öffentliche Previewfunktion von Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
+Durch die Einrichtung eines Verbunds mit Google können Sie eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Gmail-Konten anzumelden, ohne dass sie Microsoft-Konten (Microsoft Accounts, MSAs) erstellen müssen. 
 
-Durch die Einrichtung eines Verbunds mit Google können Sie es eingeladenen Benutzern ermöglichen, sich bei Ihren freigegebenen Apps und Ressourcen mit ihren eigenen Gmail-Konten anzumelden, ohne dass sie Microsoft-Konten (Microsoft Accounts, MSAs) oder Azure AD-Konten erstellen müssen. Der Google-Verbund wurde speziell für Gmail-Benutzer konzipiert. Wenn Sie einen G Suite-Verbund benötigen, verwenden Sie stattdessen einen [direkten Verbund](direct-federation.md).
 > [!NOTE]
-> Ihre Google-Gastbenutzer müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z.B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` bei einer überprüften Domäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Die Verwendung beispielsweise von `https://myapps.microsoft.com`, `https://portal.azure.com` oder dem gemeinsamen Team-Endpunkt führt zu einem Fehler.
- 
+> Der Google-Verbund wurde speziell für Gmail-Benutzer konzipiert. Um einen Verbund mit G Suite-Domänen herzustellen, verwenden Sie das [Feature „Direkter Verbund“](direct-federation.md).
+
 ## <a name="what-is-the-experience-for-the-google-user"></a>Wie läuft der Vorgang für Google-Benutzer ab?
 Wenn Sie eine Einladung an einen Google Gmail-Benutzer senden, sollte der Gastbenutzer auf Ihre freigegebenen Apps oder Ressourcen über einen Link, der den Mandantenkontext enthält, zugreifen. Der Ablauf hängt davon ab, ob er bereits bei Google angemeldet ist:
   - Wenn der Gastbenutzer nicht bei Google angemeldet ist, wird er aufgefordert, sich bei Google anzumelden.
@@ -38,6 +34,19 @@ Wenn Sie eine Einladung an einen Google Gmail-Benutzer senden, sollte der Gastbe
 Wenn dem Gastbenutzer ein Fehler aufgrund eines zu langen Headers angezeigt wird, sollte er versuchen, seine Cookies zu löschen. Er kann auch ein privates oder Inkognitofenster öffnen und sich erneut anzumelden.
 
 ![Screenshot der Google-Anmeldeseite](media/google-federation/google-sign-in.png)
+
+## <a name="limitations"></a>Einschränkungen
+
+Teams unterstützt Google-Gastbenutzer vollständig auf allen Geräten. Google-Benutzer können sich über einen allgemeinen Endpunkt wie `https://teams.microsoft.com` bei Teams anmelden.
+
+Die allgemeinen Endpunkte anderer Anwendungen unterstützen Google-Benutzer möglicherweise nicht. Google-Gastbenutzer müssen sich über einen Link anmelden, der Mandanteninformationen enthält. Hier finden Sie einige Beispiele:
+  * `https://myapps.microsoft.com/?tenantid=<your tenant id>`
+  * `https://portal.azure.com/<your tenant id>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+
+   Wenn Google-Gastbenutzer versuchen, einen Link wie `https://myapps.microsoft.com` oder `https://portal.azure.com` zu verwenden, erhalten sie eine Fehlermeldung.
+
+Sie können Google-Gastbenutzern auch einen direkten Link zu einer Anwendung oder Ressource zur Verfügung stellen, sofern dieser Link Ihre Mandanteninformationen enthält, z. B. `https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>`. 
 
 ## <a name="step-1-configure-a-google-developer-project"></a>Schritt 1: Konfigurieren eines Google-Entwicklerprojekts
 Erstellen Sie zunächst ein neues Projekt in der Google Developers Console, um eine Client-ID und einen geheimen Clientschlüssel abzurufen. Beides fügen Sie später in Azure AD hinzu. 

@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen einer Pipeline mithilfe einer Resource Manager-Vorlage | Microsoft-Dokumentation'
+title: 'Tutorial: Erstellen einer Pipeline mithilfe einer Resource Manager-Vorlage '
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline mithilfe einer Azure Resource Manager-Vorlage. Diese Pipeline kopiert Daten aus Azure Blob Storage in Azure SQL-Datenbank.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 311f2b6f6f974476aa3c33e668e173ced0274f71
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a4f1c2d128e41e13a6e57732e8f97ff4c250d0a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140338"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682902"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]

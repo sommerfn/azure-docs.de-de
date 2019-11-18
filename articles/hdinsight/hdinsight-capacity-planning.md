@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 17b68de4766aa8f995a88bd583a7a84e646b9325
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d8d5ecd64ba689dc9cce342513702d8359038162
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529153"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682256"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -31,13 +31,13 @@ Die wichtigsten Fragen zur Kapazitätsplanung sind:
 
 Die Azure-Region bestimmt, wo Ihr Cluster physisch bereitgestellt wird. Um die Latenz der Lese- und Schreibvorgänge zu minimieren, sollte der Cluster sich in der Nähe Ihrer Daten befinden.
 
-HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=hdinsight/).
+HDInsight ist in vielen Azure-Regionen verfügbar. Die nächstgelegene Region finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=hdinsight).
 
 ## <a name="choose-storage-location-and-size"></a>Auswahl von Speicherort und -größe
 
 ### <a name="location-of-default-storage"></a>Speicherort des Standardspeichers
 
-Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Storage, muss sich am gleichen Standort wie der Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Storage Gen1 ist in einigen Regionen verfügbar. Welche das sind, erfahren Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage).
+Der Standardspeicher, ein Azure Storage-Konto oder Azure Data Lake Storage, muss sich am gleichen Standort wie der Cluster befinden. Azure Storage ist an allen Speicherorten verfügbar. Data Lake Storage Gen1 ist in einigen Regionen verfügbar. Welche das sind, erfahren Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage).
 
 ### <a name="location-of-existing-data"></a>Speicherort der vorhandenen Daten
 
@@ -68,13 +68,7 @@ Jeder Clustertyp hat einen Satz von Knotentypen, und jeder Knotentyp hat bestimm
 
 Um die optimale Clustergröße für Ihre Anwendung zu ermitteln, können Sie einen Vergleichstest für die Clusterkapazität durchführen und die Größe wie angegeben heraufsetzen. Sie können z.B. eine simulierte Workload oder eine *Testabfrage* verwenden. Bei einer simulierten Workload führen Sie die erwarteten Workloads auf Clustern verschiedener Größen aus und steigern allmählich die Größe, bis die gewünschte Leistung erreicht ist. Eine Testabfrage kann in regelmäßigen Abständen zwischen anderen Produktionsabfragen eingefügt werden, um zu zeigen, ob der Cluster über genügend Ressourcen verfügt.
 
-Größe und Typ des virtuellen Computers richten sich nach CPU-Verarbeitungsleistung, RAM-Größe und Netzwerklatenz:
-
-* CPU: Die VM-Größe bestimmt die Anzahl der Kerne. Je mehr Kerne, in desto höherem Maße kann jeder Knoten parallele Berechnungen durchführen. Außerdem weisen einige VM-Typen schnellere Kerne auf.
-
-* RAM: Die VM-Größe bestimmt auch, wie viel RAM die VM bietet. Stellen Sie für Workloads, bei denen Daten eher für die Verarbeitung im Arbeitsspeicher gespeichert als vom Datenträger gelesen werden, sicher, dass Ihre Workerknoten ausreichend Arbeitsspeicher für die Datenmenge aufweisen.
-
-* Netzwerk: Bei den meisten Clustertypen befinden sich die vom Cluster verarbeiteten Daten nicht auf dem lokalen Datenträger, sondern in einem externen Speicherdienst wie Data Lake Storage oder Azure Storage. Berücksichtigen Sie die Netzwerkbandbreite und den Durchsatz zwischen der Knoten-VM und dem Speicherdienst. Die für einen virtuellen Computer verfügbare Netzwerkbandbreite wird bei Erweiterungen in der Regel heraufgesetzt. Weitere Informationen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+Weitere Informationen zum Auswählen der richtigen VM-Familie für ihre Workload finden Sie unter [Auswählen der richtigen VM-Größe für Ihren Azure HDInsight-Cluster](hdinsight-selecting-vm-size.md).
 
 ## <a name="choose-the-cluster-scale"></a>Auswahl der Clusterskalierung
 
@@ -104,10 +98,11 @@ Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen 
 1. Wählen Sie unten links auf der Seite **Hilfe und Support** aus.
 1. Wählen Sie **Neue Supportanfrage** aus.
 1. Wählen Sie auf der Seite **Neue Supportanfrage** unter der Registerkarte **Grundlagen** die folgenden Optionen aus:
+
    - **Problemtyp**: **Grenzwerte für Dienste und Abonnements (Kontingente)**
    - **Abonnement**: Das zu ändernde Abonnement.
    - **Kontingenttyp**: **HDInsight**
-    
+
      ![Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. Klicken Sie auf **Weiter: Lösungen >>** .

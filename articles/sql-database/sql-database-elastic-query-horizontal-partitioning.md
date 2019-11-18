@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken | Microsoft Docs
+title: Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken
 description: Informationen zum Einrichten elastischer Abfragen, die horizontal partitionierte Datenbanken übergreifen
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
-ms.openlocfilehash: 1416cbdc29d355e2ed83737140b46306de734127
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568582"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823757"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken (Vorschau)
 
@@ -175,7 +175,7 @@ Die folgende Abfrage führt eine Verknüpfung in drei Richtungen zwischen Lagern
     group by w_id, o_c_id
 ```
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute_remote
+## <a name="stored-procedure-for-remote-t-sql-execution-sp_execute_remote"></a>Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute_remote
 
 Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur heißt [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um gespeicherte Remoteprozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet:
 

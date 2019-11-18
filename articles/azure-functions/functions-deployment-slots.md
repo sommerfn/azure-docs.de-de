@@ -1,8 +1,6 @@
 ---
 title: Azure Functions-Bereitstellungsslots
 description: Erfahren Sie, wie Sie Bereitstellungsslots mit Azure Functions erstellen und verwenden.
-services: functions
-documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 keywords: Azure Functions, Funktionen
@@ -10,12 +8,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70085665"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576316"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions-Bereitstellungsslots
 
@@ -27,7 +25,7 @@ Im Folgenden wird dargestellt, wie sich der Austausch von Slots auf Funktionen a
 - Wenn eine Funktion während eines Austauschs ausgeführt wird, wird die Ausführung fortgesetzt, und nachfolgende Trigger werden an die getauscht App-Instanz weitergeleitet.
 
 > [!NOTE]
-> Slots sind für den Linux-Verbrauch-Plan nicht verfügbar.
+> Slots sind für den Linux-Verbrauch-Plan derzeit nicht verfügbar.
 
 ## <a name="why-use-slots"></a>Gründe für die Verwendung von Slots
 
@@ -182,10 +180,10 @@ Es gibt zwei Ebenen der Unterstützung für Bereitstellungsslots:
 | Betriebssystem/Hostingplan           | Unterstützungsebene     |
 | ------------------------- | -------------------- |
 | Windows: Verbrauch       | Allgemeine Verfügbarkeit |
-| Windows Premium (Vorschau) | Vorschau              |
+| Windows Premium           | Allgemeine Verfügbarkeit  |
 | Windows: Dediziert         | Allgemeine Verfügbarkeit |
 | Linux: Verbrauch         | Nicht unterstützt          |
-| Linux: Premium (Vorschau)   | Vorschau              |
+| Linux Premium             | Allgemeine Verfügbarkeit  |
 | Linux: Dediziert           | Allgemeine Verfügbarkeit |
 
 ## <a name="next-steps"></a>Nächste Schritte

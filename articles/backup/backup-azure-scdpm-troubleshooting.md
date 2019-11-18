@@ -1,6 +1,6 @@
 ---
-title: Beheben von Problemen beim System Center Data Protection Manager mit Azure Backup
-description: Behandeln von Problemen in System Center Data Protection Manager.
+title: Beheben von Problemen beim System Center Data Protection Manager – Azure Backup
+description: Entdecken Sie in diesem Artikel Lösungen von Problemen, die bei der Verwendung von System Center Data Protection Manager auftreten könnten.
 ms.reviewer: kasinh
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 501e61d06b7724147d7224ae51bde5de736279b3
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1ff6db463821780975f855488c51663c6a75f83a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689028"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747332"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Behandeln von Problemen in System Center Data Protection Manager
 
@@ -21,10 +21,10 @@ Dieser Artikel beschreibt Lösungen für Probleme, die bei der Verwendung von Da
 
 Die neuesten Versionshinweise für System Center Data Protection Manager finden Sie in der [Dokumentation zu System Center](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). Weitere Informationen zur Unterstützung von Data Protection Manager finden Sie in [dieser Matrix](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
 
-
 ## <a name="error-replica-is-inconsistent"></a>Fehler Replikat inkonsistent
 
 Ein Replikat kann aus den folgenden Gründen inkonsistent sein:
+
 - Bei der Replikaterstellung tritt ein Fehler auf.
 - Es gibt Probleme mit dem Änderungsjournal.
 - Die Volumeebenenfilterbitmap enthält Fehler.
@@ -33,6 +33,7 @@ Ein Replikat kann aus den folgenden Gründen inkonsistent sein:
 - Das Replikat ist tatsächlich inkonsistent.
 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+
 - Führen Sie zum Entfernen des inkonsistenten Status die Konsistenzprüfung manuell durch, oder planen Sie eine tägliche Konsistenzprüfung.
 - Stellen Sie sicher, dass Sie die neueste Version von Microsoft Azure Backup Server und Data Protection Manager verwenden.
 - Stellen Sie sicher, dass die Einstellung für **automatische Konsistenz** aktiviert ist.
@@ -45,6 +46,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 ## <a name="error-online-recovery-point-creation-failed"></a>Fehler Fehler bei der Erstellung eines Onlinewiederherstellungspunkts.
 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+
 - Vergewissern Sie sich, dass Sie die neueste Version des Azure Backup-Agents verwenden.
 - Versuchen Sie, manuell einen Wiederherstellungspunkt im Aufgabenbereich „Schutz“ zu erstellen.
 - Stellen Sie sicher, dass Sie die Konsistenzprüfung für die Datenquelle ausführen.
@@ -55,9 +57,10 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 ## <a name="error-unable-to-configure-protection"></a>Fehler Der Schutz kann nicht konfiguriert werden.
 
-Dieser Fehler tritt auf, wenn der Data Protection Manager-Server keinen Kontakt zum geschützten Server herstellen kann. 
+Dieser Fehler tritt auf, wenn der Data Protection Manager-Server keinen Kontakt zum geschützten Server herstellen kann.
 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
+
 - Vergewissern Sie sich, dass Sie die neueste Version des Azure Backup-Agents verwenden.
 - Stellen Sie sicher, dass eine Verbindung (Netzwerk/Firewall/Proxy) zwischen dem Data Protection Manager-Server und dem geschützten Server besteht.
 - Wenn Sie einen SQLServer schützen, stellen Sie sicher, dass in der Eigenschaft **Anmeldungseigenschaften** > **NT AUTHORITY\SYSTEM** die Einstellung **Sysadmin** aktiviert ist.
@@ -67,17 +70,20 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 Dieser Fehler tritt während des Wiederherstellungsprozesses von Data Protection Manager/Azure Backup-Server-Daten aus. Die im Wiederherstellungsprozess verwendete Datei mit den Tresoranmeldeinformationen gehört nicht zum Recovery Services-Tresor für den Data Protection Manager/Azure Backup-Server.
 
 Gehen Sie folgendermaßen vor, um das Problem zu beheben:
+
 1. Laden Sie die Datei mit den Tresoranmeldeinformationen aus dem Recovery Services-Tresor herunter, bei dem der Data Protection Manager/Azure Backup-Server registriert ist.
 2. Versuchen Sie, den Server mit der neuesten heruntergeladenen Datei mit den Tresoranmeldeinformationen bei dem Tresor zu registrieren.
 
 ## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>Fehler Keine wiederherstellbaren Daten oder gewählter Server ist kein Data Protection Manager-Server
 
 Dieser Fehler tritt aus den folgenden Gründen auf:
+
 - Keine anderen Data Protection Manager/Azure Backup-Server sind im Recovery Services-Tresor registriert.
 - Der Server hat die Metadaten noch nicht hochgeladen.
 - Der ausgewählte Server ist kein Data Protection Manager/Azure Backup-Server.
 
 Führen Sie zum Beheben des Problems die folgenden Schritte aus, wenn keine anderen Data Protection Manager/Azure Backup-Server im Recovery Services-Tresor registriert sind:
+
 1. Prüfen Sie, ob der neueste Azure Backup-Agent installiert ist.
 2. Wenn Sie sichergestellt haben, dass der aktuelle Agent installiert ist, warten Sie ein Tag, bis Sie den Wiederherstellungsprozess starten. Im nächtlichen Sicherungsauftrag werden die Metadaten für alle geschützten Sicherungen in die Cloud hochgeladen. Die Sicherungsdaten sind dann für die Wiederherstellung verfügbar.
 
@@ -88,5 +94,5 @@ Dieser Fehler tritt bei der Verschlüsselung während des Wiederherstellungsproz
 > [!IMPORTANT]
 > Wenn Sie die Verschlüsselungspassphrase vergessen oder verlieren, sind keine anderen Methoden zum Wiederherstellen der Daten verfügbar. Die einzige Möglichkeit ist, die Passphrase erneut zu generieren. Verwenden Sie die neue Passphrase, um zukünftige Sicherungsdaten zu verschlüsseln.
 >
-> Wenn Sie Daten wiederherstellen, geben Sie immer die Verschlüsselungspassphrase an, die mit dem Data Protection Manager/Azure Backup-Server verknüpft ist. 
+> Wenn Sie Daten wiederherstellen, geben Sie immer die Verschlüsselungspassphrase an, die mit dem Data Protection Manager/Azure Backup-Server verknüpft ist.
 >

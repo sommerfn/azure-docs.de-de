@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 730ccd7c64ac9ca87fb6da5add130feb3b6ce502
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73b99b9ebcd18e1eb5b670d0809d1f0f6cbf8f9a
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201958"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73582913"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 Dieser Artikel erleichtert Ihnen den Einstieg, indem Sie mehrere Aktionen durchführen, mit denen die Vorteile von Azure Security Center maximiert werden. Mit diesen Aktionen können Sie Sichtbarkeit für alle Azure-Abonnements erzielen, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind, und den Sicherheitsstatus Ihrer Organisation bedarfsabhängig effektiv verwalten. Hierzu wenden Sie auf aggregierende Weise Sicherheitsrichtlinien übergreifend auf mehrere Abonnements an.
@@ -168,7 +168,7 @@ Nachdem den Benutzern die RBAC-Rollen zugewiesen wurden, sollte der Mandantenadm
 
 
 
-## <a name="adding-subscriptions-to-a-management-groups"></a>Hinzufügen von Abonnements zu Verwaltungsgruppen
+## <a name="adding-subscriptions-to-a-management-group"></a>Hinzufügen von Abonnements zu einer Verwaltungsgruppe
 Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen. Diese Schritte sind zum Erzielen der mandantenweiten Sichtbarkeit und der globalen Verwaltung der Richtlinien und des Zugriffs nicht obligatorisch.
 
 1. Wählen Sie unter **Verwaltungsgruppen** eine Verwaltungsgruppe aus, die Sie Ihrem Abonnement hinzufügen möchten.

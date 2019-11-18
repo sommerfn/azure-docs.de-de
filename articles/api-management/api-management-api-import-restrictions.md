@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 11/06/2019
 ms.author: apimpm
-ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 88ef235d47a548ce426eaa2e8a8a56fb9dcb01d2
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294343"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796032"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 
@@ -40,6 +40,8 @@ Wenn Sie beim Importieren Ihres OpenAPI-Dokuments Fehlermeldungen erhalten, stel
 -   Die Quelldatei-URL (sofern vorhanden) wird auf relative Server-URLs angewendet.
 -   Sicherheitsdefinitionen werden ignoriert.
 -   Inlineschemadefinitionen für API-Vorgänge werden nicht unterstützt. Schemadefinitionen werden im API-Bereich definiert, und auf sie kann in Anforderungs- oder Antwortbereichen von API-Vorgängen verwiesen werden.
+-   Ein definierter URL-Parameter muss Teil der URL-Vorlage sein.
+-   **Produces**-Schlüsselwort, mit dem von einer API zurückgegebene MIME-Typen beschrieben werden, wird nicht unterstützt. 
 
 ### <a name="open-api-v2"> </a>OpenAPI, Version 2
 

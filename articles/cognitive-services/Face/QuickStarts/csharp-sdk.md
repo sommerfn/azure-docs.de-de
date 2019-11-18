@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 08/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 4f06e423c6dcc561ef8e51c33f24cd9f88a681b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1848f7230ed189f139a223020f08db150295132d
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935886"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647481"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Schnellstart: Clientbibliothek zur Gesichtserkennung für .NET
 
@@ -144,9 +144,17 @@ Der endgültige Erkennungsvorgang nutzt ein [FaceClient](https://docs.microsoft.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
-In diesem Fall erkennt die `DetectFaceExtract`-Methode Gesichter in drei der Bilder unter der angegebenen URL und erstellt eine Liste von [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)-Objekten im Programmspeicher. Die Liste der [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)-Werte gibt an, welche Features extrahiert werden. Im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs) finden Sie Hilfscode, mit dem diese Daten auf intuitive Weise ausgegeben werden können.
+### <a name="get-detected-face-objects"></a>Abrufen erkannter Gesichtsobjekte
+
+Im nächsten Codeblock erkennt die `DetectFaceExtract`-Methode Gesichter in drei der Bilder unter der angegebenen URL und erstellt eine Liste von [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)-Objekten im Programmspeicher. Die Liste der [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)-Werte gibt an, welche Features extrahiert werden. 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
+
+### <a name="display-detected-face-data"></a>Anzeigen erkannter Gesichtsdaten
+
+Der Rest der `DetectFaceExtract`-Methode analysiert und druckt die Attributdaten für jedes erkannte Gesicht. Jedes Attribut muss separat im ursprünglichen Gesichtserkennungs-API-Rückruf (in der [FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)-Liste) angegeben werden. Mit dem folgenden Code werden alle Attribute verarbeitet, aber Sie müssen wahrscheinlich nur eines oder wenige verwenden.
+
+[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>Suchen ähnlicher Gesichter
 

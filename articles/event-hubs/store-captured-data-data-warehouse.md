@@ -1,22 +1,22 @@
 ---
-title: Migrieren von Ereignisdaten zu SQL Data Warehouse – Azure Event Hubs | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Daten aus Ihrem Event Hub mithilfe einer durch eine Event Grid-Instanz ausgelösten Azure-Funktion in einer SQL Data Warehouse-Instanz erfassen.
+title: 'Tutorial: Migrieren von Ereignisdaten zu SQL Data Warehouse – Azure Event Hubs'
+description: 'Tutorial: In diesem Tutorial erfahren Sie, wie Sie Daten aus Ihrem Event Hub mithilfe einer durch eine Event Grid-Instanz ausgelösten Azure-Funktion in einer SQL Data Warehouse-Instanz erfassen.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 11/05/2019
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 90a17839afdddb4d6ad8abfa57963b4c76b100ed
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65604295"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73718888"
 ---
-# <a name="migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Migrieren erfasster Event Hubs-Daten zu einer SQL Data Warehouse-Instanz mithilfe von Event Grid und Azure Functions
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Tutorial: Migrieren erfasster Event Hubs-Daten zu einer SQL Data Warehouse-Instanz mithilfe von Event Grid und Azure Functions
 
 Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) ist die einfachste Methode, um Streamingdaten in Event Hubs automatisch an Azure Blob Storage oder an Azure Data Lake Store zu übermitteln. Die Daten können anschließend verarbeitet und an beliebige andere Speicherorte (etwa SQL Data Warehouse oder Cosmos DB) übermittelt werden. In diesem Tutorial wird gezeigt, wie Sie Daten aus Ihrem Event Hub mithilfe einer durch eine [Event Grid](https://docs.microsoft.com/azure/event-grid/overview)-Instanz ausgelösten Azure-Funktion in einer SQL Data Warehouse-Instanz erfassen.
 

@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/14/2019
+ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: a52325a85c763d122414baa312f786f25dd80616
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 851fbf52571b12b60345a78af3e26a875919fb14
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434742"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73585223"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -43,9 +43,9 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | **Geopolitische Region** | **Azure-Regionen** | **ExpressRoute-Standorte** |
 | --- | --- | --- |
 | **Australische Behörden** |Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
-| **Europa** | „Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |Amsterdam, Amsterdam2, Kopenhagen, Dublin, Frankfurt, London, London2, Marseille, Newport (Wales), Paris, Stockholm, Zürich |
+| **Europa** | „Frankreich, Mitte“, „Frankreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“ |Amsterdam, Amsterdam2, Dublin, Frankfurt, Genf, Kopenhagen, London, London2, Mailand, Marseille, München, Newport (Wales), Paris, Stavanger, Stockholm, Zürich |
 | **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto |
-| **Asien** | Ostasien, Südostasien |Hongkong (SAR), Kuala Lumpur, Singapur, Singapur2, Taipeh |
+| **Asien** | Ostasien, Südostasien |Hongkong (SAR), Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipeh |
 | **Indien** | Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
 | **Japan** | Japan West, Japan Ost |Osaka, Tokio |
 | **Ozeanien** | Südostaustralien, Ostaustralien |Auckland, Melbourne, Perth, Sydney |
@@ -72,7 +72,7 @@ Konnektivität zwischen geopolitischen Regionen wird bei der ExpressRoute-Standa
 Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expressroute-locations-providers.md) finden Sie eine Tabelle, die nach den verfügbaren Service Providern mit den jeweiligen Standorten sortiert ist.
 
 
-### <a name="production-azure"></a>Azure-Produktionsumgebungen
+### <a name="global-commercial-azure"></a>Globales Azure Commercial
 
 | **Service Provider** | **Microsoft Azure** | **Office 365**  | **Standorte** |
 | --- | --- | --- | --- |
@@ -140,7 +140,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Unterstützt | Unterstützt | Zürich |
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |Unterstützt |Unterstützt |Amsterdam, Chennai, Hongkong (SAR), London, Mumbai, São Paulo, Silicon Valley, Singapur, Washington DC |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |Unterstützt |Unterstützt |Amsterdam, Sao Paulo |
-| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Unterstützt |Unterstützt |London |
+| **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Unterstützt |Unterstützt |London, London2 |
 | **Telenor** |Unterstützt |Unterstützt |Amsterdam, London |
 | **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | Unterstützt | Unterstützt |Amsterdam, Chicago, Dallas, Hongkong, London, Paris, Silicon Valley, Stockholm, Washington DC |
 | **Telmex Uninet**| Unterstützt | Unterstützt | Dallas |
@@ -160,6 +160,8 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
  **+** steht für "In Kürze"
 
 ### <a name="national-cloud-environment"></a>Nationale Cloudumgebungen
+
+Nationale Azure-Clouds sind voneinander und vom globalen Azure Commercial isoliert. ExpressRoute für eine Azure-Cloud kann keine Verbindung mit den Azure-Regionen in den anderen Clouds herstellen. 
 
 ### <a name="us-government-cloud"></a>US-Government Cloud
 

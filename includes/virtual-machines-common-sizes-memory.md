@@ -5,23 +5,23 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/08/2019
-ms.author: azcspmt;jonbeck;cynthn;joelpell
+ms.date: 10/17/2019
+ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 55f82344956af7d6096fce7dbc3d7023589daa69
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: da47a471ddcf2c083ed127b79e4d3da9713d2ed4
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428020"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73719052"
 ---
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe.
 
 * Die Ev3-Serie bietet den Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder den Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) in einer Hyperthreadkonfiguration und somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads, und sie bringt den Ev3 mit den allgemeinen VMs der meisten anderen Clouds in Einklang.  Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
 
-* Für die Vorschauversionsgrößen von Eav3-Serie und Easv3-Serie wird der AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 MB L3-Cache verwendet, wodurch bei der Ausführung der meisten arbeitsspeicheroptimierten Workloads mehr Optionen zur Verfügung stehen.  Die Eav3-Serie und die Easv3-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die Ev3- und die Esv3-Serie.
+* Die Eav4-Serie und die Easv4-Serie verwenden den AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz in einer Multithreadkonfiguration mit bis zu 256 MB L3-Cache, wodurch bei der Ausführung der meisten arbeitsspeicheroptimierten Workloads mehr Optionen zur Verfügung stehen.  Die Eav4-Serie und die Easv4-Serie verfügen über die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die Ev3- und die Esv3-Serie.
 
-* Die Mv2-Serie bietet die höchste vCPU-Anzahl (bis zu 208 vCPUs) und den größten Arbeitsspeicher (bis zu 5,7 TiB) für die virtuellen Computer in der Cloud. Dies ist ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
+* Die Mv2-Serie bietet die höchste vCPU-Anzahl (bis zu 416 vCPUs) und den größten Arbeitsspeicher (bis zu 8,19 TiB) für die virtuellen Computer in der Cloud. Dies ist ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
 
 * Die M-Serie verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge von Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden.
 
@@ -35,7 +35,7 @@ Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Ve
 
 ACU: 160–190 <sup>1</sup>
 
-Storage Premium  Unterstützt
+Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
 
@@ -61,33 +61,37 @@ Instanzen der ESv3-Serie verfügen über den Intel® Xeon®-Prozessor 8171M mit 
 
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
-## <a name="easv3-series-preview"></a>Easv3-Serie (Vorschauversion)
+## <a name="easv4-series"></a>Easv4-Serie
+
+ACU: 230-260
 
 Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Unterstützt
 
-Die Größen der Easv3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und Storage Premium verwenden kann. Die Größen der Easv3-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen.
+Die Größen der Easv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Easv4-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen.
 
-[Klicken Sie hier, um sich für die Vorschauversion zu registrieren](http://aka.ms/azureamdpreview).
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) |
+|-----|-----|-----|-----|-----|-----|-----|-----|
+| Standard_E2as_v4|2|16|32|4|4000/32 (50)|3200/48|2/1000 |
+| Standard_E4as_v4|4|32|64|8|8000/64 (100)|6400/96|2/2000 |
+| Standard_E8as_v4|8|64|128|16|16000/128 (200)|12800/192|4/4000 |
+| Standard_E16as_v4|16|128|256|32|32.000/255 (400)|25600/384|8 / 8000 |
+| Standard_E20as_v4|20|160|320|32|40.000/320 (500)|32000/480|8 / 10.000 |
+| Standard_E32as_v4|32|256|512|32|64.000/510 (800)|51200/768|8/16000 |
+| Standard_E48as_v4 <sup>**</sup> |48|384|768|32|  | | 
+| Standard_E64as_v4 <sup>**</sup> |64|512|1024|32| | | 
+| Standard_E96as_v4 <sup>**</sup> |96|672|1344|32| | |  
 
-| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
-|---|---|---|---|
-| Standard_E2as_v3  | 2  | 16  | 32  |
-| Standard_E4as_v3  | 4  | 32  | 64  |
-| Standard_E8as_v3  | 8  | 64  | 128 |
-| Standard_E16as_v3 | 16 | 128 | 256 |
-| Standard_E32as_v3 | 32 | 256 | 512 |
-| Standard_E48as_v3 | 48 | 384 | 768 |
-| Standard_E64as_v3 | 64 | 432 | 864 |
+<sup>**</sup>  Diese Größen befinden sich in der Vorschauphase. Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="ev3-series"></a>Ev3-Serie 
 
 ACU: 160–190 <sup>1</sup>
 
-Storage Premium  Nicht unterstützt
+Storage Premium Nicht unterstützt
 
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
 Instanzen der Ev3-Serie verfügen über den Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake) oder den Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) und können mit Intel Turbo Boost Technology 2.0 einen Wert von 3,5 GHz erreichen. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
 
@@ -112,27 +116,33 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
-## <a name="eav3-series-preview"></a>Eav3-Serie (Vorschauversion)
+## <a name="eav4-series"></a>Eav4-Serie
+
+ACU: 230-260
 
 Storage Premium Nicht unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
-Die Größen der Eav3-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und Storage Premium verwenden kann. Die Größen der Eav3-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Wenn Sie Datenträger mit Storage Premium nutzen möchten, verwenden Sie die Größen der Easv3-Serie. Für Easv3-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Eav3-Serie.
+Die Größen der Eav4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 7452 mit 2,35 GHz, der mittels Boosting einen maximalen Takt von 3,35 GHz erreichen und SSD Premium verwenden kann. Die Größen der Eav4-Serie sind ideal für arbeitsspeicherintensive Unternehmensanwendungen. Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Um SSD Premium zu verwenden, verwenden Sie die Größen der Easv4-Serie. Für Easv4-Größen gelten die gleichen Preise und Verbrauchseinheiten für die Abrechnung wie bei der Eav3-Serie.
 
-[Klicken Sie hier, um sich für die Vorschauversion zu registrieren](http://aka.ms/azureamdpreview).
+| Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) |
+| -----|-----|-----|-----|-----|-----|-----|
+| Standard\_E2a\_v4|2|16|50|4|3000/46/23|2/1000 |
+| Standard\_E4a\_v4|4|32|100|8|6000/93/46|2/2000 |
+| Standard\_E8a\_v4|8|64|200|16|12000/187/93|4/4000 |
+| Standard\_E16a\_v4|16|128|400|32|24000/375/187|8 / 8000 |
+| Standard\_E20a\_v4|20|160|500|32|30.000/468/234|8 / 10.000 |
+| Standard\_E32a\_v4|32|256|800|32|48000/750/375|8/16000 |
+| Standard\_E48a\_v4 <sup>**</sup> |48|384|1200|32| | |
+| Standard\_E64a\_v4 <sup>**</sup> |64|512|1600|32| | |
+| Standard\_E96a\_v4 <sup>**</sup> |96|672|2400|32| | |
 
-| Size             | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB |
-|------------------|------|-------------|-------------------------|
-| Standard_E2a_v3  | 2    | 16          | 50                      |
-| Standard_E4a_v3  | 4    | 32          | 100                     |
-| Standard_E8a_v3  | 8    | 64          | 200                     |
-| Standard_E16a_v3 | 16   | 128         | 400                     |
-| Standard_E32a_v3 | 32   | 256         | 800                     |
-| Standard_E48a_v3 | 48   | 384         | 1200                    |
-| Standard_E64a_v3 | 64   | 432         | 1600                    |
+<sup>**</sup>  Diese Größen befinden sich in der Vorschauphase.  Wenn Sie daran interessiert sind, diese größeren Größen zu testen, registrieren Sie sich unter [https://aka.ms/AzureAMDLargeVMPreview](https://aka.ms/AzureAMDLargeVMPreview).
 
 ## <a name="mv2-series"></a>Mv2-Serie
+
+ACU: 188-280<sup>1</sup>
 
 Storage Premium Unterstützt
 
@@ -140,65 +150,28 @@ Storage Premium-Zwischenspeicherung: Unterstützt
 
 Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-Die Mv2-Serie verfügt über hohen Durchsatz, geringe Latenz und direkt zugeordneten lokalen NVMe-Speicher, der auf einem Prozessor vom Typ Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) mit Hyperthreading ausgeführt wird und eine Basistaktfrequenz von 2,5 GHz für alle Kerne und eine maximale Turbotaktfrequenz von 3,8 GHz aufweist. Für alle VM-Größen der Mv2-Serie können sowohl persistente Standard- als auch Premium-Datenträger verwendet werden. Bei Instanzen der Mv2-Serie handelt es sich um arbeitsspeicheroptimierte VM-Größen zur Bereitstellung einer unvergleichlichen Computeleistung, um große In-Memory-Datenbanken und Workloads zu unterstützen. Sie verfügen über ein hohes Arbeitsspeicher/CPU-Verhältnis, das ideal für relationale Datenbankserver, große Caches und In-Memory-Analysen geeignet ist. 
+Die Mv2-Serie verfügt über eine Plattform mit hohem Durchsatz und geringer Latenz, die auf einem Prozessor vom Typ Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) mit Hyperthreading ausgeführt wird, der eine Basistaktfrequenz von 2,5 GHz für alle Kerne und eine maximale Turbotaktfrequenz von 3,8 GHz aufweist. Für alle VM-Größen der Mv2-Serie können sowohl persistente Standard- als auch Premium-Datenträger verwendet werden. Bei Instanzen der Mv2-Serie handelt es sich um arbeitsspeicheroptimierte VM-Größen zur Bereitstellung einer unvergleichlichen Computeleistung, um große In-Memory-Datenbanken und Workloads zu unterstützen. Sie verfügen über ein hohes Arbeitsspeicher/CPU-Verhältnis, das ideal für relationale Datenbankserver, große Caches und In-Memory-Analysen geeignet ist.
 
 |Size | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
-| Standard_M208ms_v2<sup>1, 2</sup> | 208 | 5\.700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8/16000 |
-| Standard_M208s_v2<sup>1, 2</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8/16000 |
+| Standard_M208ms_v2<sup>2</sup> | 208 | 5\.700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8/16000 |
+| Standard_M208s_v2<sup>2</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8/16000 |
+| Standard_M416ms_v2<sup>2, 3</sup> | 416 | 11.400 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
+| Standard_M416s_v2<sup>2, 3</sup> | 416 | 5\.700 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
 
-Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von Intel®  
+<sup>1</sup> Virtuelle Computer der Mv2-Serie verfügen über Hyperthreading-Technologie von Intel®
 
-<sup>1</sup> Für diese großen VMs ist eines der folgenden Gastbetriebssysteme erforderlich: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
+<sup>2</sup> VMs der Mv2-Serie sind nur als „Generation 2“ erhältlich. Wenn Sie Linux verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../articles/virtual-machines/linux/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images.
 
-<sup>2</sup> VMs der Mv2-Serie sind nur als „Generation 2“ erhältlich. Bei Verwendung von Linux helfen Ihnen die Informationen zur Ermittlung und Auswahl eines SUSE Linux-Images im folgenden Abschnitt weiter.
-
-#### <a name="find-a-suse-image"></a>Ermitteln eines SUSE-Images
-
-Wählen Sie wie folgt im Azure-Portal ein geeignetes SUSE Linux-Image aus: 
-
-1. Wählen Sie im Azure-Portal die Option **Ressource erstellen**. 
-1. Suchen nach „SUSE SAP“ 
-1. Images vom Typ „SLES für SAP Generation 2“ sind mit nutzungsbasierter Bezahlung oder als BYOS (Bring Your Own Subscription) erhältlich. Erweitern Sie in den Suchergebnissen die gewünschte Imagekategorie:
-
-    * SUSE Linux Enterprise Server (SLES) für SAP
-    * SUSE Linux Enterprise Server (SLES) für SAP (BYOS)
-    
-1. SUSE-Images, die mit der Mv2-Serie kompatibel sind, ist als Präfix der Name `GEN2:` vorangestellt. Die folgenden SUSE-Images sind für VMs der Mv2-Serie erhältlich:
-
-    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 für SAP-Anwendungen
-    * GEN2: SUSE Linux Enterprise Server (SLES) 15 für SAP-Anwendungen
-    * GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 für SAP-Anwendungen (BYOS)
-    * GEN2: SUSE Linux Enterprise Server (SLES) 15 für SAP-Anwendungen (BYOS)
-
-#### <a name="select-a-suse-image-via-azure-cli"></a>Auswählen eines SUSE-Images per Azure CLI
-
-Verwenden Sie den folgenden [`az vm image list`](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az-vm-image-list)-Befehl, um eine Liste mit dem derzeit verfügbaren SLES für SAP-Image für VMs der Mv2-Serie anzuzeigen:
-
-```azurecli
-az vm image list --output table --publisher SUSE --sku gen2 --all
-```
-
-Der Befehl gibt die derzeit verfügbaren VMs der Generation 2 aus, die bei SUSE für VMs der Mv2-Serie erhältlich sind. 
-
-Beispielausgabe:
-
-```
-Offer          Publisher  Sku          Urn                                        Version
--------------  ---------  -----------  -----------------------------------------  ----------
-SLES-SAP       SUSE       gen2-12-sp4  SUSE:SLES-SAP:gen2-12-sp4:2019.05.13       2019.05.13
-SLES-SAP       SUSE       gen2-15      SUSE:SLES-SAP:gen2-15:2019.05.13           2019.05.13
-SLES-SAP-BYOS  SUSE       gen2-12-sp4  SUSE:SLES-SAP-BYOS:gen2-12-sp4:2019.05.13  2019.05.13
-SLES-SAP-BYOS  SUSE       gen2-15      SUSE:SLES-SAP-BYOS:gen2-15:2019.05.13      2019.05.13
-```
+<sup>3</sup> Beachten Sie bei den Größen M416ms_v2 und M416s_v2, dass für das folgende Image nur Anfangsunterstützung verfügbar ist: „GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 für SAP-Anwendungen.“
 
 ## <a name="m-series"></a>M-Serie 
 
 ACU: 160–180 <sup>1</sup>
 
-Storage Premium  Unterstützt
+Storage Premium Unterstützt
 
-Storage Premium-Zwischenspeicherung:  Unterstützt
+Storage Premium-Zwischenspeicherung: Unterstützt
 
 Die Größen der M-Serie basieren auf der Intel(R) Xeon(R) CPU E7-8890 v3 mit 2,50 GHz.   
 
@@ -225,7 +198,7 @@ Schreibbeschleunigung:  [Unterstützt](https://docs.microsoft.com/azure/virtual-
 
 <sup>1</sup> Virtuelle Computer der M-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
-<sup>2</sup> Bei mehr als 64 vCPUs ist eines der folgenden Gastbetriebssysteme erforderlich: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 und Red Hat Enterprise Linux, CentOS 7.3 oder Oracle Linux 7.3 mit LIS 4.2.1.
+<sup>2</sup> Für mehr als 64 vCPUs ist eines dieser unterstützten Gastbetriebssysteme erforderlich: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 und Red Hat Enterprise Linux, CentOS 7.3 oder Oracle Linux 7.3 mit LIS 4.2.1.
 
 <sup>3</sup> Eingeschränkte Kerngrößen verfügbar.
 
@@ -237,9 +210,9 @@ Schreibbeschleunigung:  [Unterstützt](https://docs.microsoft.com/azure/virtual-
 
 ACU: 210–250 <sup>1</sup>
 
-Storage Premium  Unterstützt
+Storage Premium Unterstützt
 
-Storage Premium-Zwischenspeicherung:  Unterstützt
+Storage Premium-Zwischenspeicherung: Unterstützt
 
 Größen der DSv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) ausgeführt.
 
@@ -262,9 +235,9 @@ Größen der DSv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GH
 
 ACU: 210–250
 
-Storage Premium  Nicht unterstützt
+Storage Premium Nicht unterstützt
 
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
 Größen der DSv2-Serie werden auf dem Intel® Xeon®-Prozessor 8171M mit 2,1 GHz (Skylake), dem Intel® Xeon®-Prozessor E5-2673 v4 mit 2,3 GHz (Broadwell) oder dem Intel® Xeon®-Prozessor E5-2673 v3 mit 2,4 GHz (Haswell) ausgeführt.
 

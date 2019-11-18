@@ -1,5 +1,5 @@
 ---
-title: 'Always Encrypted: Azure SQL-Datenbank – Windows-Zertifikatspeicher | Microsoft-Dokumentation'
+title: Always Encrypted – Windows-Zertifikatspeicher
 description: In diesem Artikel erfahren Sie, wie Sie vertrauliche Daten in einer SQL-Datenbank mithilfe der Datenbankverschlüsselung unter Einsatz des Always Encrypted-Assistenten in SQL Server Management Studio (SSMS) sichern. Sie erfahren hier auch, wie Sie Ihre Verschlüsselungsschlüssel im Windows-Zertifikatspeicher speichern.
 keywords: Verschlüsseln von Daten, SQL-Verschlüsselung, Datenbankverschlüsselung, vertrauliche Daten, Always Encrypted
 services: sql-database
@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 03/08/2019
-ms.openlocfilehash: e9aaa7cb022d4096ec8a175611d0b4c118007b40
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 82c3c3274a8a9d66019ce906ee7be47cedac7470
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569553"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822046"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: Schützen von vertraulichen Daten und Speichern der Verschlüsselungsschlüssel im Windows-Zertifikatspeicher
 

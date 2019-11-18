@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61402131"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73747652"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Resilienz und Notfallwiederherstellung
 
@@ -51,11 +51,11 @@ Dafür stehen Ihnen zwei Möglichkeiten zur Auswahl:
 
 ### <a name="through-config"></a>Über die Konfigurationsdatei
 
-Sie sollten bereits wissen, wie Sie die SignalR Service-Verbindungszeichenfolge über „Umgebungsvariablen/App-Einstellungen/web.config“ mit einem Konfigurationseintrag namens `Azure:SignalR:ConnectionString` festlegen.
+Sie sollten bereits wissen, wie Sie die SignalR-Service-Verbindungszeichenfolge über Umgebungsvariablen/App-Einstellungen/web.config in einem Konfigurationseintrag namens `Azure:SignalR:ConnectionString` festlegen.
 Wenn Sie mehrere Endpunkte haben, können Sie diese in mehreren Konfigurationseinträgen im folgenden Format festlegen:
 
 ```
-Azure:SignalR:Connection:<name>:<role>
+Azure:SignalR:ConnectionString:<name>:<role>
 ```
 
 Hier ist `<name>` der Name des Endpunkts, und `<role>` ist die zugehörige Rolle (primär oder sekundär).
@@ -63,7 +63,7 @@ Der Name ist optional. Er ist jedoch hilfreich, wenn Sie das Routingverhalten zw
 
 ### <a name="through-code"></a>Über den Code
 
-Wenn Sie die Verbindungszeichenfolge an anderer Stelle speichern möchten, können Sie sie auch in Ihrem Code einlesen und als Parameter beim Aufrufen von `AddAzureSignalR()` (ASP.NET Core) oder `MapAzureSignalR()` (ASP.NET) verwenden.
+Wenn Sie die Verbindungszeichenfolgen an anderer Stelle speichern möchten, können Sie sie auch in Ihrem Code einlesen und als Parameter beim Aufrufen von `AddAzureSignalR()` (ASP.NET Core) oder `MapAzureSignalR()` (ASP.NET) verwenden.
 
 Hier sehen Sie den Beispielcode:
 
@@ -87,6 +87,11 @@ app.MapAzureSignalR(GetType().FullName, hub,  options => options.Endpoints = new
         new ServiceEndpoint("<connection_string2>", EndpointType.Secondary, "region2"),
     };
 ```
+
+Sie können mehrere primäre oder sekundäre Instanzen konfigurieren. Wenn mehrere primäre und/oder sekundäre Instanzen vorhanden sind, gibt das Aushandeln einen Endpunkt in dieser Reihenfolge zurück:
+
+1. Wenn mindestens eine primäre Instanz online ist, wird eine zufällige primäre Onlineinstanz zurückgegeben.
+2. Wenn alle primären Instanzen ausgefallen sind, wird eine zufällige sekundäre Onlineinstanz zurückgegeben.
 
 ## <a name="failover-sequence-and-best-practice"></a>Failoversequenz und bewährte Methode
 

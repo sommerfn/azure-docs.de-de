@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Schnellstart: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals | Microsoft-Dokumentation'
+title: 'Azure-Schnellstart: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals'
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure Event Hubs-Cluster im Azure-Portal erstellen.
 services: event-hubs
 documentationcenter: ''
@@ -8,14 +8,14 @@ manager: ''
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/02/2019
+ms.date: 11/05/2019
 ms.author: xurui
-ms.openlocfilehash: 269ecca8683229a56d40dfacc354abbd7ce10762
-ms.sourcegitcommit: 6932af4f4222786476fdf62e1e0bf09295d723a1
+ms.openlocfilehash: bde6844962561232e4af51f2b4e803d49bf5398e
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66688589"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720641"
 ---
 # <a name="quickstart-create-a-dedicated-event-hubs-cluster-using-azure-portal"></a>Schnellstart: Erstellen eines dedizierten Event Hubs-Clusters mithilfe des Azure-Portals 
 Event Hubs-Cluster bieten Bereitstellungen mit einem einzelnen Mandanten für Kunden mit äußerst anspruchsvollen Streaminganforderungen. Dieses Angebot umfasst eine SLA mit einer garantierten Verfügbarkeit von 99,99 % und ist nur in unserem Dedicated-Tarif verfügbar. Ein [Event Hubs-Cluster](event-hubs-dedicated-overview.md) kann Millionen Ereignisse pro Sekunde mit garantierter Kapazität und einer Latenz im Sekundenbruchteilbereich erfassen. Namespaces und Event Hubs, die innerhalb eines Clusters erstellt werden, bieten alle Funktionen des Standardangebots und mehr, aber ohne jegliche Einschränkung bei eingehenden Daten. Das Dedicated-Angebot umfasst ferner das beliebte [Event Hubs Capture](event-hubs-capture-overview.md)-Feature ohne zusätzliche Kosten, die es Ihnen ermöglicht, Datenströme zu Batches zusammenzufassen und in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) oder [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) zu protokollieren.

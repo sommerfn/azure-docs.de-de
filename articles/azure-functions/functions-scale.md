@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550645"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576060"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -47,8 +47,8 @@ Die folgende Tabelle zeigt die aktuelle Unterstützung für die drei Hostingplä
 
 | | Verbrauchsplan | Premium-Tarif | Dedizierter Plan |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | Allgemein verfügbar | preview | Allgemein verfügbar |
-| Linux | Allgemein verfügbar | preview | Allgemein verfügbar |
+| Windows | Allgemein verfügbar | Allgemein verfügbar | Allgemein verfügbar |
+| Linux | Allgemein verfügbar | Allgemein verfügbar | Allgemein verfügbar |
 
 ## <a name="consumption-plan"></a>Verbrauchsplan
 
@@ -65,7 +65,7 @@ Funktions-Apps in derselben Region können demselben Verbrauchsplan zugewiesen w
 
 Weitere Informationen zum Schätzen der Kosten bei Ausführung in einem Verbrauchstarif finden Sie unter [Grundlegendes zu Kosten des Verbrauchstarifs](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Premium-Plan (Vorschau)
+## <a name="premium-plan"></a>Premium-Plan
 
 Bei Verwendung des Premium-Plans werden Instanzen des Azure Functions-Hosts basierend auf der Anzahl der eingehenden Ereignisse hinzugefügt und entfernt, wie es auch beim Verbrauchsplan der Fall ist.  Der Premium-Plan unterstützt die folgenden Features:
 

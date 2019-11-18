@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/21/2019
+ms.date: 11/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3f065f77c6843b135554e61f5887655114571b08
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 128513c3af5ce6c0853b63d86959e4c3c35de93c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750248"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685116"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST
 
@@ -258,34 +258,36 @@ Weitere Informationen finden Sie unter [Fehlercodes](https://docs.microsoft.com/
 
 ### <a name="create-a-streaming-locator"></a>Erstellen Sie eines Streaminglocators
 
-Nach Abschluss des Codierungsauftrags muss das Video im **Ausgabemedienobjekt** für die Wiedergabe durch Clients verfügbar gemacht werden. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
+Nach Abschluss des Codierungsauftrags muss das Video im **Ausgabemedienobjekt** für die Wiedergabe durch Clients verfügbar gemacht werden. Sie können dies in zwei Schritten bewerkstelligen: Erstellen Sie zunächst einen [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und dann die Streaming-URLs, die Clients verwenden können. 
 
-Der Vorgang zum Erstellen eines **Streaminglocators** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **Streaminglocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
+Der Vorgang zum Erstellen eines Streaminglocators wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der Streaminglocator sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
 
-Beim Erstellen von [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten **StreamingPolicyName** angeben. In diesem Beispiel streamen Sie unverschlüsselte Inhalte. Daher wird die vordefinierte Richtlinie für unverschlüsseltes Streaming (Predefined_ClearStreamingOnly) verwendet.
+Beim Erstellen eines [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) müssen Sie den gewünschten **StreamingPolicyName** angeben. In diesem Beispiel streamen Sie unverschlüsselte Inhalte. Daher wird die vordefinierte Richtlinie für unverschlüsseltes Streaming (Predefined_ClearStreamingOnly) verwendet.
 
 > [!IMPORTANT]
 > Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre StreamingLocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. 
 
-Ihr Media Services-Konto weist ein Kontingent für die Anzahl von **Streamingrichtlinieneinträgen** auf. Sie sollten nicht für jeden **Streaminglocator** eine neue **Streamingrichtlinie** erstellen.
+Ihr Media Services-Konto weist ein Kontingent für die Anzahl von **Streamingrichtlinieneinträgen** auf. Sie sollten nicht für jeden Streaminglocator eine neue **Streamingrichtlinie** erstellen.
 
-1. Klicken Sie im linken Fenster der Postman-App auf „Streaming Policies“ (Streamingrichtlinien).
-2. Klicken Sie anschließend auf „Create a Streaming Locator“ (Streaminglocator erstellen).
+1. Wählen Sie im linken Fenster der Postman-App „Streaming Policies and Locators“ (Streamingrichtlinien und Locators) aus.
+2. Wählen Sie dann schließend „Create a Streaming Locator (clear)“ (Streaminglocator erstellen (löschen)) aus.
 3. Klicken Sie auf **Senden**.
 
     * Der folgende Vorgang vom Typ **PUT** wird gesendet:
 
         ```
-        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingPolicies/:streamingPolicyName?api-version={{api-version}}
+        https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/streamingLocators/:streamingLocatorName?api-version={{api-version}}
         ```
     * Der Vorgang hat den folgenden Text:
 
         ```json
         {
-            "properties":{
-            "assetName": "{{assetName}}",
-            "streamingPolicyName": "{{streamingPolicyName}}"
-            }
+          "properties": {
+            "streamingPolicyName": "Predefined_ClearStreamingOnly",
+            "assetName": "testAsset1",
+            "contentKeys": [],
+            "filters": []
+         }
         }
         ```
 

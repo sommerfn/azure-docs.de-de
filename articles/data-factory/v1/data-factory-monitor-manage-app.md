@@ -1,5 +1,5 @@
 ---
-title: Überwachen und Verwalten von Datenpipelines – Azure | Microsoft-Dokumentation
+title: Überwachen und Verwalten von Datenpipelines – Azure
 description: Informationen zum Verwenden der App „Überwachung und Verwaltung“ für Azure Data Factorys und Pipelines.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 052ea99f0489458269adf4dca2c6713535933638
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de56ba1281d0f20c8be838fa1bc9ebc24905b26c
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139586"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73666924"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“
 > [!div class="op_single_selector"]

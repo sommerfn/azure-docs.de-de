@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 849c919950c57a1df3b0fb76021de6e10254c7b4
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: a818d84bf3df712190ccc6c1721c26933a9fbcdb
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286370"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73793938"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Sprachunterstützung für Inhalte in QnA Maker-Wissensdatenbanken
 
@@ -38,9 +38,9 @@ Die Wahl der Sprache ist Teil der Schritte zur Erstellung der ersten Wissensdate
 ![Screenshot des QnA Maker-Portals zum Auswählen der Sprache für die erste Wissensdatenbank](../media/language-support/select-language-when-creating-knowledge-base.png)
 
 ## <a name="query-matching-and-relevance"></a>Abfrageabgleich und Relevanz
-QnA Maker nutzt [Sprachanalysefunktionen von Azure Search](https://docs.microsoft.com/rest/api/searchservice/language-support), um Ergebnisse bereitzustellen. 
+QnA Maker nutzt [Sprachanalysefunktionen von Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/language-support), um Ergebnisse bereitzustellen. 
 
-Während die Azure Search-Funktionen für unterstützte Sprachen ebenbürtig ist, verfügt QnA Maker über ein zusätzliches Rangfolgemodul, die oberhalb der Azure Search-Ergebnisse ansetzen. In diesem Rangfolgemodul verwenden wir einige besondere semantische und wortbasierte Funktionen in den folgenden Sprachen. 
+Während die Azure Cognitive Search-Funktionen für unterstützte Sprachen ebenbürtig sind, verfügt QnA Maker über ein zusätzliches Rangfolgemodul, das oberhalb der Azure-Suchergebnisse ansetzt. In diesem Rangfolgemodul verwenden wir einige besondere semantische und wortbasierte Funktionen in den folgenden Sprachen. 
 
 |Sprachen mit zusätzlichem Rangfolgemodul|
 |--|

@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Notfallwiederherstellung für eine Dynamics AX-Bereitstellung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Notfallwiederherstellung für eine Dynamics AX-Bereitstellung mit mehreren Ebenen mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung für Dynamics AX mithilfe von Azure Site Recovery einrichten.
 author: asgang
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61281432"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73620750"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Einrichten der Notfallwiederherstellung für eine Dynamics AX-Anwendung mit mehreren Ebenen   
 

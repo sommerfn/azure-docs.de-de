@@ -4,15 +4,16 @@ description: Konfigurieren der Leadverwaltung mit Azure-Tabellen
 services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 7151be3ac9f55825fd2e9dde35c9afda6a30726a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901538"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73812340"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurieren der Leadverwaltung mit Azure-Tabellen
 
@@ -88,7 +89,7 @@ Verwenden Sie dieses Beispiel als Leitfaden, um einen einfachen Flow zu erstelle
 >[!TIP] 
 >Sie können Ihren Flow jederzeit überprüfen, um sich zu vergewissern, dass jeder Schritt ordnungsgemäß konfiguriert ist. Um Ihren Flow zu überprüfen, wählen Sie **Flowprüfung** in der Menüleiste „Flow“ aus.
 
-Im nächsten Schritt stellen Sie eine Verbindung mit Ihrer Azure-Tabelle her, und richten Sie die Verarbeitungslogik ein, gemäß der neue Leads verarbeitet werden sollen.
+In den nächsten Schritten stellen Sie eine Verbindung mit Ihrer Azure-Tabelle her und richten die Verarbeitungslogik ein, gemäß der neue Leads verarbeitet werden sollen.
 
 9. Wählen Sie nach dem Schritt „Vergangene Zeit abrufen“ die Option **+ Neuer Schritt** aus, und suchen Sie dann im Fenster *Aktion auswählen* nach „Entitäten abrufen“.
 10. Wählen Sie unter **Aktionen** die Option **Get entities (Azure Table Storage)** (Entitäten abrufen (Azure-Tabellenspeicher)) aus.
@@ -102,7 +103,7 @@ Im nächsten Schritt stellen Sie eine Verbindung mit Ihrer Azure-Tabelle her, un
 
     Nachdem Sie auf „Erstellen“ geklickt haben, wird das Fenster *Entitäten abrufen* angezeigt. Wählen Sie **Erweiterte Optionen anzeigen** aus, und geben Sie Informationen für die folgenden Felder an:
 
-       * *Tabelle*: Wählen Sie den Namen des Azure-Tabellenspeichers aus (aus Schritt 6 der Anleitung zum Konfigurieren einer Azure-Tabelle). In der nächsten Bildschirmaufnahme ist die Eingabeaufforderung gezeigt, wenn für dieses Beispiel die Tabelle „marketplaceleads“ ausgewählt wurde.
+       * *Tabelle*: Wählen Sie den Namen des Azure-Tabellenspeichers aus (aus Schritt 6 der Anleitung zum Konfigurieren einer Azure-Tabelle). Der nächste Screenshot zeigt die Eingabeaufforderung, wenn für dieses Beispiel die Tabelle „marketplaceleads“ ausgewählt ist.
 
             ![Azure-Tabelle – Entitäten abrufen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -128,7 +129,7 @@ Im nächsten Schritt stellen Sie eine Verbindung mit Ihrer Azure-Tabelle her, un
 
 In den nächsten Schritten richten Sie die Aktion ein, die entsprechend dem Ergebnis der Bedingung ausgeführt werden soll.
 
-* Hat die Bedingung das Ergebnis **Wenn nein**, führen Sie keine Aktion aus.
+* Hat die Bedingung das Ergebnis **Wenn nein**, soll keine Aktion ausgeführt werden.
 * Hat die Bedingung das Ergebnis **Wenn ja**, lösen Sie eine Aktion aus, in der eine E-Mail an Ihr Office 365-Konto gesendet wird. 
 
 17. Wählen Sie unter **Wenn ja** die Option **Aktion hinzufügen** aus.
@@ -161,13 +162,13 @@ Die nächste Bildschirmaufnahme zeigt ein Beispiel, wie der fertige Flow aussehe
 
 ### <a name="manage-your-flow"></a>Verwalten Ihres Flows
 
-Das Verwalten Ihres Flows, nachdem er gestartet wurde, ist einfach. Sie haben vollständige Kontrolle über den Flow. Sie können ihn z. B. beenden und bearbeiten, und Sie können einen Ausführungsverlauf anzeigen und Analysen abrufen. Die nächste Bildschirmaufnahme zeigt die Optionen, die zum Verwalten eines Flows verfügbar sind. 
+Das Verwalten Ihres Flows nach dessen Start ist einfach. Sie haben vollständige Kontrolle über den Flow. Sie können ihn z. B. beenden und bearbeiten, und Sie können einen Ausführungsverlauf anzeigen und Analysen abrufen. Die nächste Bildschirmaufnahme zeigt die Optionen, die zum Verwalten eines Flows verfügbar sind. 
 
  ![Verwalten eines Flows](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-manage-completed.png)
 
 Der Flow wird solange ausgeführt, bis Sie ihn mit der Option **Flow deaktivieren** beendet haben.
 
-Erhalten Sie keine E-Mail-Benachrichtigungen zu Leads, wurden keine neuen Leads zur Azure-Tabelle hinzugefügt. Sind irgendwelche Flowfehler vorhanden, erhalten Sie eine E-Mail, die wie das Beispiel in der nächsten Bildschirmaufnahme aussieht.
+Erhalten Sie keine E-Mail-Benachrichtigungen zu Leads, wurden der Azure-Tabelle keine neuen Leads hinzugefügt. Sind Flowfehler vorhanden, erhalten Sie eine E-Mail, die wie das Beispiel im nächsten Screenshot aussieht.
 
  ![E-Mail-Benachrichtigung zu Flowfehler](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-failure-note.png)
 

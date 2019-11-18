@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen Ihrer Nicht-Microsoft-Konten zur Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
+title: Hinzufügen eines Nicht-Microsoft-Kontos zu einer Authentifikator-App – Azure AD
 description: Hier finden Sie Informationen zum Hinzufügen Ihrer nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1521d2b3d47667466636a1ac15f107826e40942
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 62d866e9bf543577887ee99173a52202fcfec632
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942927"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73803663"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Hinzufügen Ihrer Nicht-Microsoft-Konten
 
@@ -35,7 +35,7 @@ Im Allgemeinen müssen Sie für alle Ihre persönlichen Konten wie folgt vorgehe
 2. Fügen Sie das Konto zur Microsoft Authenticator-App hinzu. Im Rahmen dieses Vorgangs werden Sie möglicherweise aufgefordert, einen QR-Code zu scannen.
 
     >[!Note]
-    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authenticator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
+    >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authentifikator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die Authentifikator-App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
 
 Wir geben hier den Vorgang für Facebook-, Google-, GitHub- und Amazon-Konten an, aber dieser Vorgang ist für alle anderen Apps (wie z. B. Instagram, Netflix oder Adobe) gleich.
 

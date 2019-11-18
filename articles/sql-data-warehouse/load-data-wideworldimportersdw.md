@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Laden von Daten in Azure SQL Data Warehouse | Microsoft-Dokumentation'
+title: 'Tutorial: Laden von Daten mithilfe von Azure-Portal und SSMS'
 description: In diesem Tutorial werden das Azure-Portal und SQL Server Management Studio verwendet, um das Data Warehouse „WideWorldImportersDW“ aus einem globalen Azure-Blob in Azure SQL Data Warehouse zu laden.
 services: sql-data-warehouse
 author: kevinvngo
@@ -10,12 +10,13 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: f81a19631b29954f9bd3da55a4b332e37746152e
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 5ae6844cf11ffa095f56c429e17b9c39ad0c76aa
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574938"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73822920"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten in Azure SQL Data Warehouse
 
@@ -42,9 +43,9 @@ Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL S
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen eines leeren SQL Data Warehouse
+## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen einer leeren SQL Data Warehouse-Instanz
 
-Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
+Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen]memory-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz zu erstellen. 
 
@@ -60,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
    | ------- | --------------- | ----------- | 
    | **Datenbankname** | SampleDW | Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). | 
    | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
-   | **Ressourcengruppe** | SampleRG | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
+   | **Ressourcengruppe** | SampleRG | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Benennungsregeln und Einschränkungen). |
    | **Quelle auswählen** | Leere Datenbank | Gibt an, dass eine leere Datenbank erstellt werden soll. Hinweis: Ein Data Warehouse ist ein Datenbanktyp.|
 
     ![Erstellen eines Data Warehouse](media/load-data-wideworldimportersdw/create-data-warehouse.png)
@@ -69,7 +70,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 
     | Einstellung | Empfohlener Wert | BESCHREIBUNG | 
     | ------- | --------------- | ----------- |
-    | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). | 
+    | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging) (Benennungsregeln und Einschränkungen). | 
     | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
     | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
     | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b7583a0fda2fca0d8ff80879389b824a7b352a84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9563def1a7b510c403cf299a66066def0b03b59a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66752888"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73796786"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST  
 > [!div class="op_single_selector"]
@@ -45,6 +45,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine Datei hochladen und andere damit v
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 - [Erstellen Sie ein Azure Media Services-Konto mithilfe des Azure-Portals](media-services-portal-create-account.md).
 - Lesen Sie den Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung – Übersicht](media-services-use-aad-auth-to-access-ams-api.md).
+- Weitere Informationen finden Sie im Artikel [Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST](https://docs.microsoft.com/en-us/azure/media-services/previous/media-services-rest-connect-with-aad).
 - Konfigurieren Sie **Postman** gemäß der Beschreibung in [Konfigurieren von Postman für Media Services-REST-API-Aufrufe](media-rest-apis-with-postman.md).
 
 ## <a name="considerations"></a>Überlegungen

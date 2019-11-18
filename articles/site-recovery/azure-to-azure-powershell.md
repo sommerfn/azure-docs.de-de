@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery – Einrichten und Testen der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell | Microsoft-Dokumentation
+title: Notfallwiederherstellung für Azure-VMs mit Azure PowerShell und Azure Site Recovery
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für virtuelle Azure-Computer mit Azure Site Recovery über Azure PowerShell einrichten.
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: fe74080387f76b858f60c5285a98c9b67f051449
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: aa91725daf36113334849dd15dd01b6ce6ed4389
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671882"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621091"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell
 
@@ -613,7 +613,7 @@ Nachdem der erneute Schutz abgeschlossen ist, können Sie ein Failover in umgeke
 
 ## <a name="disable-replication"></a>Deaktivieren der Replikation
 
-Sie können die Replikation mit Remove-ASRReplicationProtectedItem deaktivieren.
+Sie können die Replikation mit dem Remove-ASRReplicationProtectedItem-Cmdlet deaktivieren.
 
 ```azurepowershell
 Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem

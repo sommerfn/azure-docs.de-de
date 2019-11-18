@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555345"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795734"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Übersicht über Erkenntnisse in Azure Monitor
 Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitgestellt. Hierbei werden Daten auf der [Azure Monitor-Datenplattform](../platform/data-platform.md) gespeichert und weitere Azure Monitor-Funktionen für Analyse und Warnungen genutzt, doch können auch zusätzliche Daten gesammelt und eine einzigartige Benutzeroberfläche im Azure-Portal bereitgestellt werden. Greifen Sie auf Erkenntnisse im Azure-Portal über den Abschnitt **Erkenntnisse** im Azure Monitor-Menü zu.
@@ -46,6 +46,11 @@ Azure Monitor für VMs überwacht Ihre virtuellen Azure-Computer (VM) und VM-Ska
 Informationen finden Sie unter [Was ist Azure Monitor für VMs?](vminsights-overview.md)
 
 ![Azure Monitor für VMs](media/insights-overview/vm-insights.png)
+
+## <a name="azure-monitor-for-network-preview"></a>Azure Monitor für Netzwerke (Vorschau)
+Azure Monitor für Netzwerke bietet einen umfassenden Überblick über Integrität und Metriken Ihrer gesamten Netzwerkressource. Die erweiterte Suchfunktion unterstützt Sie beim Identifizieren von Ressourcenabhängigkeiten und ermöglicht Szenarien wie das Identifizieren von Ressourcen, die Ihre Website gehostet werden, indem einfach nach dem Namen Ihrer Website gesucht wird.
+
+![Azure Monitor für Netzwerke](media/insights-overview/network-insights.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die [Azure Monitor-Datenplattform](../platform/data-platform.md), die von Erkenntnissen genutzt wird.

@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 6093e1017af2fb8c54eaf1c3192f937172567982
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 21a66b7389df64a776cdecb45c41de56d7d258e4
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080552"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606360"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Ereignishandler in Azure Event Grid
 
@@ -72,47 +72,8 @@ Verwenden Sie Logic Apps, um Geschäftsprozesse für die Reaktion auf Ereignisse
 | [Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Eine Logik-App sendet jedes Mal eine E-Mail-Benachrichtigung, wenn Ihrer IoT Hub-Instanz ein Gerät hinzugefügt wird. |
 | [Tutorial: Beispiele für die Integration von Azure Service Bus in Azure Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid sendet Nachrichten von einem Service Bus-Thema an eine Funktions-App und an eine Logik-App. |
 
-## <a name="service-bus-queue-preview"></a>Service Bus-Warteschlange (Vorschauversion)
-
-Verwenden Sie Service Bus als Ereignishandler, um die Ereignisse in Event Grid direkt an Service Bus-Warteschlangen für die Verwendung in Puffer- oder Befehls- und Kontrollszenarien in Unternehmensanwendungen weiterzuleiten. Die Vorschauversion funktioniert nicht mit Service Bus-Themen und -Sitzungen, aber mit allen Tarifen von Service Bus-Warteschlangen.
-
-Beachten Sie, dass Sie, solange sich Service Bus als Handler in der öffentlichen Vorschauphase befindet, die CLI oder PowerShell-Erweiterung installieren müssen, wenn Sie diese zum Erstellen von Ereignisabonnements verwenden.
-
-### <a name="install-extension-for-azure-cli"></a>Installieren der Erweiterung für Azure CLI
-
-Für die Azure CLI benötigen Sie die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list).
-
-In [CloudShell](/azure/cloud-shell/quickstart):
-
-* Wenn Sie die Erweiterung bereits installiert haben, aktualisieren Sie sie mit `az extension update -n eventgrid`.
-* Wenn Sie die Erweiterung noch nicht installiert haben, installieren Sie sie mit `az extension add -n eventgrid`.
-
-Für eine lokale Installation:
-
-1. [Installieren Sie die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). Vergewissern Sie sich mit `az --version`, dass Sie über die aktuelle Version verfügen.
-1. Deinstallieren Sie frühere Versionen der Erweiterung mit `az extension remove -n eventgrid`.
-1. Installieren Sie die Erweiterung `eventgrid` mit `az extension add -n eventgrid`.
-
-### <a name="install-module-for-powershell"></a>Installieren des Moduls für PowerShell
-
-Für PowerShell benötigen Sie das [AzureRM.EventGrid-Modul](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview).
-
-In [CloudShell](/azure/cloud-shell/quickstart-powershell):
-
-* Installieren Sie das Modul mit `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
-
-Für eine lokale Installation:
-
-1. Öffnen Sie die PowerShell-Konsole als Administrator.
-1. Installieren Sie das Modul mit `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
-
-Wenn der `-AllowPrerelease`-Parameter nicht verfügbar ist, führen Sie die folgenden Schritte aus:
-
-1. Führen Sie `Install-Module PowerShellGet -Force`aus.
-1. Führen Sie `Update-Module PowerShellGet`aus.
-1. Schließen Sie die PowerShell-Konsole.
-1. Starten Sie PowerShell als Administrator neu.
-1. Installieren Sie das Modul `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`.
+## <a name="service-bus-queue"></a>Service Bus-Warteschlange 
+Sie können Ereignisse in Event Grid zur Verwendung in Puffer- oder Befehls- und Kontrollszenarien in Unternehmensanwendungen direkt an Service Bus-Warteschlangen weiterleiten.
 
 ### <a name="using-cli-to-add-a-service-bus-handler"></a>Verwenden der CLI zum Hinzufügen eines Service Bus-Handlers
 

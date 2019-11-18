@@ -1,6 +1,6 @@
 ---
-title: Business Intelligence-Partner für SQL Data Warehouse | Microsoft Docs
-description: Liste der externen Business Intelligence-Partner mit Lösungen, die SQL Data Warehouse unterstützen.
+title: Business Intelligence-Partner
+description: Liste der externen Business Intelligence-Partner mit Lösungen, die Azure SQL Data Warehouse unterstützen.
 services: sql-data-warehouse
 author: mabasile-MSFT
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
-ms.openlocfilehash: 87379631cc7f7b9e31def157ba38336e41b693d8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873817"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685626"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Business Intelligence-Partner für SQL Data Warehouse
 Für die Erstellung Ihrer eigenen End-to-End-Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen.  In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die offizielle Business Intelligence-Lösungen (BI) für die Datenverwaltung anbieten, die Azure SQL Data Warehouse unterstützen.

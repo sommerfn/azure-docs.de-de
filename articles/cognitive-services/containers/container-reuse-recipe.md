@@ -1,7 +1,7 @@
 ---
 title: Rezepte für Docker-Container
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie Containerrezepte für die Erstellung wiederverwendbarer Cognitive Services-Container. Container können mit einzelnen oder allen Konfigurationseinstellungen erstellt werden, sodass diese beim Start des Containers nicht benötigt werden. Nachdem Sie über diese neue Containerebene (mit Einstellungen) verfügen und sie lokal getestet haben, können Sie den Container in einer Containerregistrierung speichern. Beim Start des Containers werden nur die Einstellungen benötigt, die momentan nicht im Container gespeichert sind.
+description: Erfahren Sie, wie Sie Container mit einigen oder allen Konfigurationseinstellungen für die Bereitstellung und Wiederverwendung erstellen, testen und speichern.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: a8162f96051a73b9f6e6a6fe3ece020e0a94f08f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: dbe2e288309b6682041bf3db9fe3d39455359806
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068826"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73647277"
 ---
 # <a name="create-containers-for-reuse"></a>Erstellen wiederverwendbarer Container
 

@@ -1,5 +1,6 @@
 ---
-title: 'Schnellstart: Microsoft Identity Platform – JavaScript – Azure'
+title: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie JavaScript-Anwendungen über Microsoft Identity Platform eine API aufrufen können, für die Zugriffstoken erforderlich sind.
 services: active-directory
 documentationcenter: dev-center-name
@@ -8,7 +9,7 @@ manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +17,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827110"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795613"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens von einer JavaScript-Single-Page-Webanwendung
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
 In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer JavaScript-Single-Page-Anwendung (SPA) Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können. Eine JavaScript-Single-Page-Anwendung kann zudem ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
 
@@ -79,12 +80,11 @@ Wählen Sie die Option aus, die für Ihre Entwicklungsumgebung geeignet ist:
 
 * (Optional:) Um das Projekt mit dem IIS-Server auszuführen, [laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Extrahieren Sie die ZIP-Datei in einen lokalen Ordner (z.B. *C:\Azure-Samples*).
 
-#### <a name="step-3-configure-your-javascript-app"></a>Schritt 3: Konfigurieren Ihrer JavaScript-App
-
 > [!div renderon="docs"]
+> #### <a name="step-3-configure-your-javascript-app"></a>Schritt 3: Konfigurieren Ihrer JavaScript-App
 > Bearbeiten Sie *index.html* im Ordner *JavaScriptSPA*, und legen Sie die Werte `clientID` und `authority` unter `msalConfig` fest.
 
-> [!div class="sxs-lookup" renderon="portal"]
+> [!div renderon="docs"]
 > Bearbeiten Sie *index.html* im Ordner *JavaScriptSPA*, und ersetzen Sie `msalConfig` durch folgenden Code:
 
 ```javascript
@@ -101,10 +101,6 @@ var msalConfig = {
 };
 
 ```
-> [!div renderon="portal"]
-> > [!NOTE]
-> > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
-
 
 > [!div renderon="docs"]
 >
@@ -119,7 +115,12 @@ var msalConfig = {
 > > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 >
 
-#### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
+> Wir haben das Projekt mit Werten der Eigenschaften ihrer App konfiguriert. 
+
+> [!div renderon="docs"]
+> #### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts
 
 * Wenn Sie [Node.js](https://nodejs.org/en/download/) verwenden, gehen Sie wie folgt vor:
 

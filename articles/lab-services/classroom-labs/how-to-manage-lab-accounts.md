@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 6f283ce007e96547e01a01a3753ddcb60574bfc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee64780bca13bf497793dc90ad22d3eaf91949a6
+ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65412802"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73606327"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Verwalten von Lab-Konten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -27,7 +27,7 @@ In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (
 Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein Lab-Konto in Azure Lab Services zu erstellen. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Menü links **Alle Dienste** aus. Wählen Sie im Abschnitt **DEVOPS** die Option **Labkonten**. Wenn Sie das Sternchen (`*`) neben **Labkonten** auswählen, wird die Option im linken Menü dem Abschnitt **FAVORITEN** hinzugefügt. Beim nächsten Mal wählen Sie **Labkonten** unter **FAVORITEN** aus.
+2. Wählen Sie im Menü links **Alle Dienste** aus. Wählen Sie im Abschnitt **DevOps** die Option **Labkonten** aus. Wenn Sie das Sternchen (`*`) neben **Labkonten** auswählen, wird die Option im linken Menü dem Abschnitt **FAVORITEN** hinzugefügt. Beim nächsten Mal wählen Sie **Labkonten** unter **FAVORITEN** aus.
 
     ![Alle Dienste -> Labkonten](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. Klicken Sie auf der Seite **Labkonten** auf der Symbolleiste auf **Hinzufügen**. 
@@ -96,6 +96,8 @@ Befolgen Sie die Anleitung im vorherigen Abschnitt, um Lab-Konten in einer Liste
 
     ![Labkonto löschen – Bestätigung](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
+> [!NOTE]
+> Sie können auch das PowerShell-Modul Az.LabServices (Vorschauversion) verwenden, um Labkonten zu verwalten. Weitere Informationen finden Sie auf der [Az.LabServices-Startseite auf GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie den folgenden Artikel: [Konfigurieren von Lab-Konten](how-to-configure-lab-accounts.md).

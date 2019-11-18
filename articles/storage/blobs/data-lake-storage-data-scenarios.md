@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d6347d75e0a3883f23fdf76016080c8b7b330163
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300333"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580804"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Verwenden von Azure Data Lake Storage Gen2 für Big Data-Anforderungen
 
@@ -27,7 +27,7 @@ Es gibt vier wichtige Phasen in der Big Data-Verarbeitung:
 
 Erstellen Sie zunächst ein Speicherkonto und einen Container. Gewähren Sie dann Zugriff auf die Daten. Die ersten Abschnitte in diesem Artikel unterstützen Sie bei der Ausführung dieser Aufgaben. In den verbleibenden Abschnitten werden wir die Optionen und Tools für jede Verarbeitungsphase hervorheben.
 
-Eine umfassende Liste der Azure-Dienste, die Sie mit Azure Data Lake Storage Gen2 verwenden können, finden Sie unter [Integrieren von Azure Data Lake Storage mit Azure-Diensten](data-lake-store-integrate-with-azure-services.md).
+Eine umfassende Liste der Azure-Dienste, die Sie mit Azure Data Lake Storage Gen2 verwenden können, finden Sie unter [Integrieren von Azure Data Lake Storage mit Azure-Diensten](data-lake-storage-integrate-with-azure-services.md).
 
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Erstellen eines Data Lake Storage Gen2-Kontos
 
@@ -191,7 +191,7 @@ Ggf. möchten Sie auch für Szenarien wie die folgenden Daten aus Azure Data Lak
 
 * Herunterladen von Daten auf Ihren lokalen Computer für die Verarbeitung in IDE-Umgebungen beim Erstellen von Anwendungsprototypen.
 
-![Ausgeben von Daten aus Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Ausgeben von Daten aus Data Lake Storage Gen2")
+![Ausgang von Daten aus Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Ausgang von Daten aus Data Lake Storage Gen2")
 
 Hier ist eine Liste von Tools, mit denen Sie Daten von Data Lake Storage Gen2 herunterladen können.
 

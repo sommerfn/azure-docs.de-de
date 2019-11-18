@@ -241,7 +241,9 @@
                   href: migrate-android-adal-msal.md
                 - name: Migrieren zu MSAL.iOS und MacOS
                   href: migrate-objc-adal-msal.md
-                - name: Migrieren zu MSAL Java
+                - name: Migrieren zu MSAL Python
+                  href: migrate-python-adal-msal.md
+                - name: Migrieren zu MSAL für Java
                   href: migrate-adal-msal-java.md
                 - name: Migrieren von Xamarin-Apps von ADAL.NET zu MSAL.NET unter Verwendung von Brokern
                   href: msal-net-migration-ios-broker.md
@@ -452,7 +454,11 @@
                   href: request-custom-claims.md
                 - name: Konfiguration des Umleitungs-URI
                   href: redirect-uris-ios.md
-            - name: MSAL Java
+            - name: MSAL für Python
+              items:
+                - name: Tokencacheserialisierung
+                  href: msal-python-token-cache-serialization.md
+            - name: MSAL für Java
               items:
                 - name: Tokencacheserialisierung
                   href: msal-java-token-cache-serialization.md

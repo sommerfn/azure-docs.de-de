@@ -1,6 +1,6 @@
 ---
-title: Anhalten, Fortsetzen und Skalieren mit REST in Azure SQL Data Warehouse | Microsoft-Dokumentation
-description: Verwalten der Rechenleistung in SQL Data Warehouse über REST-APIs.
+title: Anhalten, Fortsetzen und Skalieren mit REST-APIs
+description: Verwalten der Rechenleistung in Azure SQL Data Warehouse über REST-APIs.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,12 +10,13 @@ ms.subservice: implement
 ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5b8652a0b08b426e708a909ff988e51eee9c0821
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.custom: seo-lt-2019
+ms.openlocfilehash: f72b3fd1024a68a6f48d2e9e676fc7ca23bf2a4f
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476060"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686041"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST-APIs für Azure SQL Data Warehouse
 REST-APIs für die Verwaltung von Computeressourcen in Azure SQL Data Warehouse.

@@ -1,5 +1,5 @@
 ---
-title: Abfragen von Azure SQL-Datenbank mithilfe von Ruby | Microsoft-Dokumentation
+title: Verwenden von Ruby zum Abfragen
 description: In diesem Thema erfahren Sie, wie Sie unter Verwendung von Ruby ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und sie mithilfe von Transact-SQL-Anweisungen abfragt.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 5b47ddc2d865108e03b3c649536bfaa700e4a59d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4bef55b049ee542efdb9d72d13fa196c989c75ec
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569125"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826925"
 ---
 # <a name="quickstart-use-ruby-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Ruby
 

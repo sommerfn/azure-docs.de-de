@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Verwalten
           items:
-            - name: Einstellung der Notfallwiederherstellung zwischen Kundenstandorten
-              href: site-to-site-deprecation.md
+            - name: Einstellung der Site Recovery-Datenverschlüsselung
+              href: encryption-feature-deprecation.md
             - name: Aktualisieren der mit Site Recovery konfigurierten Windows-Server
               href: upgrade-2012R2-to-2016.md
             - name: Entfernen von Servern und Deaktivieren des Schutzes

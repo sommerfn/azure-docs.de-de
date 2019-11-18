@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984363"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73794210"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -52,8 +52,8 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
     * Wählen Sie den **Tarif** für die QnA Maker-Verwaltungsdienste (Portal und Verwaltungs-APIs) aus. Lesen Sie [weitere Informationen zu SKU-Preisen](https://aka.ms/qnamaker-pricing).
     * Erstellen Sie eine neue **Ressourcengruppe** (empfohlen), oder verwenden Sie eine vorhandene Ressourcengruppe, in der diese QnA Maker-Ressource bereitgestellt werden soll. QnA Maker erstellt verschiedene Azure-Ressourcen. Wenn Sie eine Ressourcengruppe für diese Ressourcen erstellen, können Sie die Ressourcen anhand des Ressourcengruppennamens leicht finden, verwalten und löschen.
     * Wählen Sie einen **Ressourcengruppenstandort** aus.
-    * Wählen Sie den **Tarif für Suche** des Azure Search-Diensts aus. Wenn die Option „Free-Tarif“ nicht verfügbar (abgeblendet) ist, bedeutet dies, dass Sie einen Free-Tarif für Azure Search über Ihr Abonnement schon bereitgestellt haben. In diesem Fall müssen Sie mit dem Basic-Tarif für Azure Search beginnen. Siehe [Preisdetails zu Azure Search](https://azure.microsoft.com/pricing/details/search/).
-    * Wählen Sie den **Suchspeicherort** aus, an dem die Azure Search-Daten bereitgestellt werden sollen. Einschränkungen zu den verpflichtenden Speicherorten für Kundendaten helfen bei der Bestimmung des Speicherorts, den Sie für Azure Search wählen.
+    * Wählen Sie den **Tarif für Suche** des Azure Cognitive Search-Diensts aus. Wenn die Option „Free-Tarif“ nicht verfügbar (abgeblendet) ist, bedeutet dies, dass Ihnen schon über Ihr Abonnement ein kostenloser Dienst bereitgestellt wird. In diesem Fall müssen Sie mit dem Basic-Tarif beginnen. Siehe [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/).
+    * Wählen Sie den **Suchspeicherort** aus, an dem die Azure Cognitive Search-Indizes bereitgestellt werden sollen. Einschränkungen zu den verpflichtenden Speicherorten für Kundendaten helfen bei der Bestimmung des Speicherorts, den Sie für Azure Cognitive Search wählen.
     * Geben Sie im Feld **App-Name** einen Namen für Ihre Azure App Service-Instanz ein.
     * Standardmäßig wird App Service nach dem Standardtarif (S1) abgerechnet. Sie können den Plan nach der Erstellung ändern. Erfahren Sie mehr über [App Service-Preise](https://azure.microsoft.com/pricing/details/app-service/).
     * Wählen Sie den **Website-Speicherort** aus, an dem App Service bereitgestellt werden soll.
@@ -128,7 +128,7 @@ Wenn Sie einen QnA-Dienst über Azure Resource Manager-Vorlagen erstellen, könn
 |--|--|
 |[Upgrade](#upgrade-qna-maker-sku) der QnA Maker Management-SKU|Ihre Wissensdatenbank soll mehr Fragen und Antworten enthalten.|
 |[Upgrade](#upgrade-app-service) der App Service-SKU|Ihre Wissensdatenbank muss mehr Anforderungen aus Ihrer Client-App verarbeiten, z.B. einen Chatbot.|
-|[Upgrade](#upgrade-the-azure-search-service) des Azure Search-Diensts|Sie benötigen voraussichtlich eine Vielzahl von Wissensdatenbanken.|
+|[Upgrade](#upgrade-the-azure-cognitive-search-service) des Azure Cognitive Search-Diensts|Sie benötigen voraussichtlich eine Vielzahl von Wissensdatenbanken.|
 
 
 ### <a name="upgrade-qna-maker-sku"></a>Upgraden der QnA Maker-SKU
@@ -155,9 +155,9 @@ Wechseln Sie im Azure-Portal zur App Service-Ressource, und wählen Sie nach Bed
 
 ![QnA Maker App Service-Staffelung](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-search-service"></a>Upgraden des Azure Search-Diensts
+### <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade des Azure Cognitive Search-Diensts
 
-Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Search-Diensts.
+Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Cognitive Search-Diensts.
 
 Sie können derzeit kein direktes Upgrade der Azure Search-SKU ausführen. Allerdings können Sie eine neue Azure Search-Ressource mit der gewünschten SKU erstellen, die Daten in der neuen Ressource wiederherstellen und anschließend eine Verknüpfung mit dem QnA Maker-Stapel herstellen. Gehen Sie dazu folgendermaßen vor:
 

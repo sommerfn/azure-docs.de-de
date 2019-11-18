@@ -1,5 +1,5 @@
 ---
-title: Ressourceneinschränkungen für Azure SQL-Datenbank – verwaltete Instanz | Microsoft-Dokumentation
+title: Ressourceneinschränkungen für verwaltete Instanzen
 description: Dieser Artikel bietet eine Übersicht über die Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 08e378c4b5f6d8e17ac67a80401edf69611c0a13
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372199"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73823335"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 

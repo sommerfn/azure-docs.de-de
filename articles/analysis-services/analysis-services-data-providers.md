@@ -1,22 +1,22 @@
 ---
-title: Zum Herstellen einer Verbindung mit Azure Analysis Services erforderliche Clientbibliotheken | Microsoft-Dokumentation
+title: Was sind Azure Analysis Services-Clientbibliotheken? | Microsoft-Dokumentation
 description: Beschreibt für Clientanwendungen und Tools erforderliche Clientbibliotheken zum Herstellen einer Verbindung mit Azure Analysis Services
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: f78ac8686f23c47995cab9686c2ca3f6cf88fa6b
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512769"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73573052"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Clientbibliotheken zum Herstellen einer Verbindung mit Azure Analysis Services
 
-Damit Clientanwendungen und Tools eine Verbindung mit Analysis Services-Servern herstellen können, sind Clientbibliotheken erforderlich. Microsoft-Clientanwendungen wie Power BI Desktop, Excel, SQL Server Management Studio (SSMS) und SQL Server Data Tools (SSDT) installieren alle drei Clientbibliotheken und aktualisieren sie im Rahmen der regulären Anwendungsupdates. In einigen Fällen müssen Sie möglicherweise neuere Versionen der Clientbibliotheken installieren. Auch für benutzerdefinierte Clientanwendungen müssen Clientbibliotheken installiert werden.
+Damit Clientanwendungen und Tools eine Verbindung mit Analysis Services-Servern herstellen können, sind Clientbibliotheken erforderlich. Microsoft-Clientanwendungen wie Power BI Desktop, Excel, SQL Server Management Studio (SSMS) und Analysis Services-Projekterweiterungen für Visual Studio installieren alle drei Clientbibliotheken und aktualisieren sie im Rahmen der regulären Anwendungsupdates. In einigen Fällen müssen Sie möglicherweise neuere Versionen der Clientbibliotheken installieren. Auch für benutzerdefinierte Clientanwendungen müssen Clientbibliotheken installiert werden.
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Herunterladen der neuesten Clientbibliotheken (Windows Installer)  
 
@@ -58,7 +58,7 @@ Clientbibliotheken für Clientverbindungen unterscheiden sich von Datenanbietern
 
 ### <a name="amo"></a>AMO  
 
- AMO ist eine verwaltete Clientbibliothek, die für die Serververwaltung und Datendefinition verwendet wird. Sie wird von Tools und Clientanwendungen installiert und genutzt. Für SQL Server Management Studio (SSMS) wird AMO beispielsweise zum Herstellen einer Verbindung mit Analysis Services genutzt. Eine Verbindung, für die AMO genutzt wird, ist meist eine minimale Verbindung, die aus `"data source=\<servername>"` besteht. Nach dem Herstellen einer Verbindung verwenden Sie die API, um mit Datenbanksammlungen und größeren Objekten zu arbeiten. AMO wird sowohl von SSDT als auch von SSMS verwendet, um eine Verbindung mit einer Analysis Services-Instanz herzustellen.  
+ AMO ist eine verwaltete Clientbibliothek, die für die Serververwaltung und Datendefinition verwendet wird. Sie wird von Tools und Clientanwendungen installiert und genutzt. Für SQL Server Management Studio (SSMS) wird AMO beispielsweise zum Herstellen einer Verbindung mit Analysis Services genutzt. Eine Verbindung, für die AMO genutzt wird, ist meist eine minimale Verbindung, die aus `"data source=\<servername>"` besteht. Nach dem Herstellen einer Verbindung verwenden Sie die API, um mit Datenbanksammlungen und größeren Objekten zu arbeiten. AMO wird sowohl von Visual Studio als auch von SSMS verwendet, um eine Verbindung mit einer Analysis Services-Instanz herzustellen.  
 
   
 ### <a name="adomd"></a>ADOMD

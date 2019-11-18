@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720114"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73669091"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -219,7 +219,7 @@ Sie können das Aufwärmverhalten ferner mithilfe folgender [App-Einstellungen](
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Gültige HTTP-Antwortcodes für den Aufwärmvorgang. Fügen Sie diese App-Einstellung mit einer durch Trennzeichen getrennten Liste mit HTTP-Codes hinzu. Beispiel: `200,202`. Ist der zurückgegebene Statuscode nicht in der Liste enthalten, werden die Vorbereitungs- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig.
 
 > [!NOTE]
-> `<applicationInitialization>` ist Teil jedes App-Starts, während diese zwei App-Einstellungen nur für den Slotaustausch gelten.
+> Das `<applicationInitialization>`-Konfigurationselement ist Teil jeder App-Startseite, während die beiden App-Einstellungen für das Aufwärmverhalten nur für den Slotaustausch gelten.
 
 Informationen zur Problembehandlung finden Sie bei Bedarf unter [Behandeln von Problemen beim Austausch](#troubleshoot-swaps).
 
@@ -334,7 +334,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-arm-templates"></a>Automatisieren mit Resource Manager-Vorlagen
 
-[Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
+[Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) sind deklarative JSON-Dateien, die zur Automatisierung der Bereitstellung und Konfiguration von Azure-Ressourcen verwendet werden. Zum Austauschen von Slots mithilfe von Resource Manager-Vorlagen legen Sie zwei Eigenschaften für die Ressourcen *Microsoft.Web/sites/slots* und *Microsoft.Web/sites* fest:
 
 - `buildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die die aktuelle Version der im Slot bereitgestellten App darstellt. Beispiele: „v1“, „1.0.0.1“ oder „2019-09-20T11:53:25.2887393-07:00“.
 - `targetBuildVersion`: Dies ist eine Zeichenfolgeneigenschaft, die angibt, welche `buildVersion` der Slot enthalten soll. Wenn targetBuildVersion nicht mit der aktuellen `buildVersion` identisch ist, wird der Austauschvorgang dadurch ausgelöst, dass der Slot mit der angegebenen `buildVersion` ermittelt wird.

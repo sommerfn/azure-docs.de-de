@@ -4,15 +4,16 @@ description: Konfigurieren einer Testversion für ein Azure-Anwendungsangebot im
 services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 42e533cdcedfb47a46934f77714d61a640a8d7d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3855c600fe35c37ac15783995551a769e00532be
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942863"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826121"
 ---
 # <a name="azure-applications-test-drive-tab"></a>Registerkarte „Testversion“ für Azure-Anwendungen
 

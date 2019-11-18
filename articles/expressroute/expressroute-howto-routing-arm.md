@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e2f38671910be2c7300f39fcbca32e8a1ccd9891
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 813263442bc82254d0cb5ea9e9f7e8a265de5b4a
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64716140"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73748202"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von PowerShell
 
@@ -46,7 +46,7 @@ Sie können eine, zwei oder alle drei Peerings (Azure privat, Azure öffentlich 
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -120,6 +120,13 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    * Optional:
      * Kunden-ASN: Wenn Sie Präfixe ankündigen, die nicht für die Peering-AS-Nummer registriert sind, können Sie die AS-Nummer angeben, unter der sie registriert sind.
      * Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
+
+> [!IMPORTANT]
+> Microsoft überprüft, ob Ihnen die angegebenen „Angekündigten öffentlichen Präfixe“ und „Peer-ASN" (oder „Kunden-ASN“) in der Internet Routing Registry zugewiesen werden. Wenn Sie die öffentlichen Präfixe aus einer anderen Entität erhalten und die Zuweisung nicht mit der Routing Registry aufgezeichnet wird, wird die automatische Überprüfung nicht durchgeführt, sodass eine manuelle Überprüfung erforderlich ist. Wenn bei der automatischen Überprüfung ein Fehler auftritt, wird für AdvertisedPublicPrefixesState in der Ausgabe von Get-AzExpressRouteCircuitPeeringConfig die Meldung „Überprüfung erforderlich“ angezeigt (siehe „So rufen Sie Microsoft-Peering-Details ab“ weiter unten). 
+> 
+> Wenn die Meldung „Überprüfung erforderlich“ angezeigt wird, sammeln Sie die Dokumente, in denen die öffentlichen Präfixe angezeigt werden, die Ihrer Organisation von der Entität zugewiesen wurden, die als Besitzer der Präfixe in der Routing Registry aufgeführt ist, und senden Sie diese Dokumente durch Öffnen eines Supporttickets zur manuellen Überprüfung, wie unten gezeigt. 
+> 
+>
 
    Verwenden Sie das folgende Beispiel, um das Microsoft-Peering für Ihre Verbindung zu konfigurieren:
 

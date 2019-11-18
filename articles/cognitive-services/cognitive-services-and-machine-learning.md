@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
+ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982326"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795830"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -117,9 +117,9 @@ In den folgenden Punkten ist jeder Dienst entsprechend der Art von Daten kategor
  
 Die Dienste können in jeder Anwendung verwendet werden, in der REST-API- oder SDK-Aufrufe ausgeführt werden können. Beispiele für Anwendungen sind Websites, Bots, Anwendungen für virtuelle Realität oder Mixed reality sowie Desktop- und mobile Anwendungen. 
 
-## <a name="how-is-cognitive-search-related-to-cognitive-services"></a>Wie hängen kognitive Suche und Cognitive Services zusammen?
+## <a name="how-is-azure-cognitive-search-related-to-cognitive-services"></a>Wie hängen Azure Cognitive Search und Cognitive Services zusammen?
 
-[Azure Search](../search/search-what-is-azure-search.md) verwendet Cognitive Services, um diese Funktionalität bereitzustellen. Cognitive Services wird in Azure Search über [integrierte Fähigkeiten](../search/cognitive-search-predefined-skills.md) verfügbar gemacht, die einzelne APIs einschließen. Sie können eine kostenlose Ressource für exemplarische Vorgehensweisen verwenden, aber planen Sie für größere Volumen das Erstellen und Zuordnen einer [abrechenbaren Ressource](../search/cognitive-search-attach-cognitive-services.md) ein.
+[Azure Cognitive Search ](../search/search-what-is-azure-search.md) ist ein separater Cloudsuchdienst, der optional Cognitive Services verwendet, um die Indizierung von Workloads mit der Verarbeitung von Bildern und natürlicher Sprache zu ergänzen. Cognitive Services wird in Azure Cognitive Search über [integrierte Fähigkeiten](../search/cognitive-search-predefined-skills.md) verfügbar gemacht, die einzelne APIs einschließen. Sie können eine kostenlose Ressource für exemplarische Vorgehensweisen verwenden, aber planen Sie für größere Volumen das Erstellen und Zuordnen einer [abrechenbaren Ressource](../search/cognitive-search-attach-cognitive-services.md) ein.
 
 ## <a name="how-can-you-use-cognitive-services"></a>Wie können Sie Cognitive Services verwenden?
 

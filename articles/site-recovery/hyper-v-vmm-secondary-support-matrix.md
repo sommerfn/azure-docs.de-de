@@ -1,18 +1,18 @@
 ---
-title: Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Standort mit Azure Site Recovery
+title: Unterstützungsmatrix für die Hyper-V-Notfallwiederherstellung in einem sekundären VMM-Standort mit Azure Site Recovery
 description: Fasst Informationen zur Unterstützung für die Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery zusammen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 7711ebaaddccd68d4322c1d3ebdd049a57bc709b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813624"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686166"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
@@ -21,7 +21,9 @@ In diesem Artikel wird zusammengefasst, was unterstützt wird, wenn Sie den [Azu
 > [!NOTE]
 > Eine Replikation an einen sekundären Standort ist nur möglich, wenn die Hyper-V-Hosts in VMM-Clouds verwaltet werden.
 
-  
+> [!WARNING]
+> Beachten Sie, dass die ASR-Unterstützung für die Verwendung der SCVMM-Konfiguration in Kürze veraltet ist. Darum sollten Sie die Informationen zur [Veraltung](scvmm-site-recovery-deprecation.md) lesen, bevor Sie fortfahren.
+
 
 ## <a name="host-servers"></a>Hostserver
 

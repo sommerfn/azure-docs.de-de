@@ -1,7 +1,7 @@
 ---
 title: 'Beispiel: Hinzufügen von Gesichtern zu einer PersonGroup: Gesichtserkennungs-API'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Gesichtserkennungs-API Bildern Gesichter hinzufügen.
+description: Diese Anleitung veranschaulicht das Hinzufügen einer großen Anzahl von Personen und Gesichtern zu einem PersonGroup-Objekt mit der Gesichtserkennungs-API von Azure Cognitive Services.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0415dcae08c188c1758150c4b8b0df4dee014ce6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2f8a6272b02aea5948be79ddf72d105c4f72bb33
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448604"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73744240"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Hinzufügen von Gesichtern zu einer PersonGroup
 

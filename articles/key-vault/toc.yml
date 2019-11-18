@@ -58,8 +58,6 @@
       href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
     - name: Einrichten von Schlüsselrotation und Überwachung
       href: key-vault-key-rotation-log-monitoring.md
-    - name: Überwachen von Key Vault-Ereignissen mit Event Grid
-      href: event-grid-overview.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -114,6 +112,8 @@
           href: key-vault-group-permissions-for-apps.md
     - name: Weiterleiten von Key Vault-Benachrichtigungen mit Event Grid
       href: event-grid-tutorial.md
+    - name: Empfangen von Benachrichtigungen über Event Grid und Logic Apps
+      href: event-grid-logicapps.md
     - name: Integrieren in Azure Policy
       href: azure-policy.md
     - name: Azure Key Vault-Protokollierung

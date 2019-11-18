@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 11/05/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bc4ac68cb415a43ac34d36afc2adc30307e6d37c
+ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178455"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73795265"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -26,6 +26,12 @@ ms.locfileid: "67178455"
 | webhooks | 2 | 10 | 100 |
 | Georeplikation | – | – | [Unterstützt][geo-replication] |
 | Inhaltsvertrauensstellung | – | – | [Unterstützt][content-trust] |
+| Zugriff auf das virtuelle Netzwerk | – | – | [Vorschau][vnet] |
+| Repositorybezogene Berechtigungen | – | – | [Vorschau][token]|
+| &bull; Token | – | – | 20.000 |
+| &bull; Bereichszuordnungen | – | – | 20.000 |
+| &bull; Repositorys pro Bereichszuordnung | – | – | 500 |
+
 
 <sup>1</sup> Die angegebenen Speichergrenzen beziehen sich auf die Größe des *inbegriffenen* Speichers für jeden Tarif. Für Imagespeicher, der diese Grenzen überschreitet, wird Ihnen ein zusätzlicher Tagestarif pro GiB in Rechnung gestellt. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing].
 
@@ -41,3 +47,5 @@ ms.locfileid: "67178455"
 <!-- LINKS - Internal -->
 [geo-replication]: ../articles/container-registry/container-registry-geo-replication.md
 [content-trust]: ../articles/container-registry/container-registry-content-trust.md
+[vnet]: ../articles/container-registry/container-registry-vnet.md
+[token]: ../articles/container-registry/container-registry-repository-scoped-permissions.md

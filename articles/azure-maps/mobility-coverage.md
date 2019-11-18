@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 11ebaec75b1220f39fe059ea7825cdccafda2f5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fcad7d3d0cc45f0cfdc0d6523d5fdbc8f573fe2
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735875"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73576996"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Mobilitätsabdeckung in Azure Maps
 
@@ -42,7 +42,7 @@ In der folgenden Tabelle finden Sie Informationen zum Mobility Service von Azure
 | Ecuador | Cuenca, Guayaquil, Manta|
 | Mexiko | Aguascalientes, Mexiko-Stadt, Guadalajara, Lion, Merida, Monterrey, Puebla, Querétaro, San Luis Potosi|
 | Nicaragua | Managua | 
-| Panamá | Panamá*| 
+| Panama | Panama*| 
 | Peru | Cusco, Lima |
 | Puerto Rico | San Juan |
 | Uruguay | Montevideo, Punta del Este |
@@ -56,8 +56,8 @@ In der folgenden Tabelle finden Sie Informationen zum Mobility Service von Azure
 |--------|---------|
 | Australien      | <p>Adelaide, Alice Springs, Bowen, Brisbane, Bundaberg QLD, Burnie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Magnetic Island, Maryborough-Hervey Bay, Melbourne, New South Wales, Perth, RockHampton, South East Queensland, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | China | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Shanghai, Peking, Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hongkong (SAR) | Hongkong*|
-| Macau (SAR) | Macau*|
+| Hongkong (SAR) | Hongkong (SAR)*|
+| Macau (SAR) | Macau (SAR)*|
 | Indien | Ahmedabad, Bengaluru, Delhi, Mumbai, Mysuru|
 | Indonesien | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
 | Japan | Präfektur Shizuoka, Tokio, Wakkanai, Präfektur Yamanashi |
@@ -108,7 +108,7 @@ In der folgenden Tabelle finden Sie Informationen zum Mobility Service von Azure
 | Norwegen | Norwegen* | 
 | Polen | <p>Białystok, Bydgoszcz, Elbląg, Gorzow, Kętrzyna, Krakau, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Posen, Rzeszów, Sanok, Starachowice, Świnoujście, Stettin, Dreistadt, Warschau, Wodzisław Śląski, Breslau, Zakopane</p> |
 | Portugal | Bragança, Coimbra, Funchal, Leiria, Lissabon, Portimao, Porto|
-| Republik Malta | Malta* | 
+| Malta | Malta* | 
 | Rumänien | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukarest, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoara, Tulcea, Zalau</p> | 
 | Russland  | Rostow am Don, Wolgograd, Jekaterinburg, Kasan, Kirow, Krasnodar, Moskau, Naltschik, Nischni Nowgorod, Nowosibirsk, Nojabrsk, Omsk, Perm, Sankt Petersburg, Twer, Tomsk |
 | Serbien  | Belgrad, Kragujevac, Niš, Novi Sad, Valjevo, Subotica | 
@@ -140,7 +140,7 @@ In der folgenden Tabelle finden Sie Informationen zum Mobility Service von Azure
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich, wie Sie mithilfe des Mobility Service Daten zu öffentlichen Verkehrsmitteln bzw. Routen anfordern:
+Informieren Sie sich, wie Sie mithilfe von Mobility Service Daten zu öffentlichen Verkehrsmitteln bzw. Routen anfordern:
 
 > [!div class="nextstepaction"]
 > [Anfordern von Daten zu öffentlichen Verkehrsmitteln bzw. Routen](how-to-request-transit-data.md)

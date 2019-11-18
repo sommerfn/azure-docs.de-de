@@ -8,18 +8,20 @@ manager: jeconnoc
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, Compute, serverlose Architektur
 ms.service: azure-functions
 ms.topic: quickstart
-ms.date: 07/19/2019
+ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1579a4dfbab1ec9d9aa6bb3995bd88d948d6d5e2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
+ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933968"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73615008"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
 *Durable Functions* ist eine Erweiterung von [Azure Functions](../functions-overview.md), mit der Sie zustandsbehaftete Funktionen in einer serverlosen Umgebung schreiben können. Die Erweiterung verwaltet Status, Prüfpunkte und Neustarts für Sie.
+
+[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Visual Studio 2019 verwenden, um eine dauerhafte Funktion vom Typ „hello world“ lokal zu erstellen und zu testen.  Mit dieser Funktion werden Aufrufe anderer Funktionen orchestriert und miteinander verkettet. Anschließend veröffentlichen Sie den Funktionscode in Azure. Diese Tools sind als Teil der Azure-Entwicklungsworkload in Visual Studio 2019 verfügbar.
 
@@ -53,7 +55,7 @@ Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktion
 
     | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                      |
     | ------------ |  ------- |----------------------------------------- |
-    | **Version** | Azure Functions 2.x <br />(.NET Core) | Erstellt ein Funktionsprojekt mit Version 2.x der Runtime von Azure Functions, die .NET Core unterstützt. Azure Functions 1.x unterstützt .NET Framework. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](../functions-versions.md).   |
+    | **Version** | Azure Functions 2.0 <br />(.NET Core) | Erstellt ein Funktionsprojekt mit Version 2.0 der Runtime von Azure Functions, die .NET Core unterstützt. Azure Functions 1.0 unterstützt .NET Framework. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](../functions-versions.md).   |
     | **Vorlage** | Leer | Erstellt eine leere Funktions-App. |
     | **Speicherkonto**  | Speicheremulator | Für die Zustandsverwaltung für dauerhafte Funktionen ist ein Speicherkonto erforderlich. |
 
@@ -73,12 +75,15 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
 
     ![Auswählen der Vorlage für dauerhafte Funktionen](./media/durable-functions-create-first-csharp/functions-vs-select-template.png)  
 
+> [!NOTE]
+> Diese Vorlage erstellt derzeit eine dauerhafte Funktion mit einer älteren 1.x-Version der Erweiterung. Im Artikel [Übersicht zu Versionen von Durable Functions](durable-functions-versions.md) finden Sie Informationen zum Upgrade auf die neueren 2.x-Versionen von Durable Functions.
+
 Der App wird eine neue dauerhafte Funktion hinzugefügt.  Öffnen Sie die neue CS-Datei, um den Inhalt anzuzeigen. Diese dauerhafte Funktion ist ein einfaches Beispiel für eine Funktionsverkettung mit den folgenden Methoden:  
 
 | Methode | FunctionName | BESCHREIBUNG |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Verwaltet die dauerhafte Orchestrierung. In diesem Fall wird die Orchestrierung gestartet, es wird eine Liste erstellt, und das Ergebnis der drei Funktionsaufrufe wird der Liste hinzugefügt.  Wenn die drei Funktionsaufrufe abgeschlossen sind, wird die Liste zurückgegeben. |
-| **`SayHello`** | `<file-name>_Hello` | Die Funktion gibt „Hello“ zurück. Dies ist die Funktion mit der Geschäftslogik, die orchestriert wird. |
+| **`SayHello`** | `<file-name>_Hello` | Die Funktion gibt „Hello“ zurück. Es ist die Funktion mit der Geschäftslogik, die orchestriert wird. |
 | **`HttpStart`** | `<file-name>_HttpStart` | Eine [per HTTP ausgelöste Funktion](../functions-bindings-http-webhook.md), mit der eine Instanz der Orchestrierung gestartet und eine Antwort zur Überprüfung des Status zurückgegeben wird. |
 
 Nachdem Sie nun Ihr Funktionsprojekt und eine dauerhafte Funktion erstellt haben, können Sie sie auf Ihrem lokalen Computer testen.
@@ -101,7 +106,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
 
 4. Kopieren Sie den URL-Wert für `statusQueryGetUri`, und fügen Sie ihn in die Adressleiste des Browsers ein. Führen Sie die Anforderung anschließend aus.
 
-    Mit der Anforderung wird für die Orchestrierungsinstanz der Status abgefragt. Sie sollten schließlich eine Antwort erhalten, die wie unten angegeben aussieht.  Sie zeigt, dass die Instanz abgeschlossen wurde, und enthält die Ausgaben bzw. Ergebnisse der dauerhaften Funktion.
+    Mit der Anforderung wird für die Orchestrierungsinstanz der Status abgefragt. Sie sollten schließlich eine Antwort erhalten, die wie unten angegeben aussieht.  Diese Ausgabe zeigt, dass die Instanz abgeschlossen wurde, und enthält die Ausgaben bzw. Ergebnisse der dauerhaften Funktion.
 
     ```json
     {
@@ -114,8 +119,8 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
             "Hello Seattle!",
             "Hello London!"
         ],
-        "createdTime": "2018-11-08T07:07:40Z",
-        "lastUpdatedTime": "2018-11-08T07:07:52Z"
+        "createdTime": "2019-11-02T07:07:40Z",
+        "lastUpdatedTime": "2019-11-02T07:07:52Z"
     }
     ```
 

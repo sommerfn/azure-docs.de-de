@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Sie Daten aus einer Tabelle auf einer Webseite mithilfe von Azure Data Factory verschieben.
 services: data-factory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b84e49bac35ef8fc9a6c8c7ca90bfd6048dc1c4
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 957b47244744f161ad9cc8019a411e2e59c29418
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839592"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73682301"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Verschieben von Daten aus einer Webtabelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

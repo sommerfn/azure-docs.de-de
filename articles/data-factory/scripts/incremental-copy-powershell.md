@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-Skript: Inkrementelles Laden von Daten mithilfe von Azure Data Factory | Microsoft-Dokumentation'
+title: 'PowerShell-Skript: Inkrementelles Laden von Daten mithilfe von Azure Data Factory '
 description: Dieses PowerShell-Skript veranschaulicht, wie Sie Azure Data Factory zum inkrementellen Kopieren von Daten aus einer Azure SQL-Datenbank in eine Azure Blob Storage-Instanz verwenden.
 services: data-factory
 author: linda33wj
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 5ae6d6ed06aa5734dc601e6e72ba55ec8ddf7bcf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ef7b00172f0371e09d6462ed357744166b5fb08a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160639"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73684334"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell-Skript: Inkrementelles Laden von Daten mithilfe von Azure Data Factory
 Dieses PowerShell-Beispielskript lädt nach der vollständigen Erstkopie von Daten aus der Quelle in die Senke nur neue oder aktualisierte Datensätze aus einem Quelldatenspeicher in einen Senkendatenspeicher.  

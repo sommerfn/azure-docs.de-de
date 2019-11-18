@@ -4,15 +4,16 @@ description: Enthält Informationen zu Änderungen an den Verkäufer-Insights.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
+ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/3/2019
 ms.author: pabutler
-ms.openlocfilehash: c6e9e4fe672c7e171ed4b1cd60655f9e71a562e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4f7e461241793b27d838c04311509f43932df291
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943124"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73808960"
 ---
 # <a name="seller-insights-release-notes"></a>Verkäufer-Insights – Anmerkungen zu dieser Version 
 

@@ -1,19 +1,19 @@
 ---
-title: Architektur der Azure-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Einrichten der Notfallwiederherstellung zwischen Azure-Regionen für virtuelle Azure-Computer mit dem Azure Site Recovery-Dienst verwendet werden.
+title: Architektur der Notfallwiederherstellung von Azure zu Azure in Azure Site Recovery
+description: Überblick über die Architektur, die beim Einrichten der Notfallwiederherstellung zwischen Azure-Regionen für virtuelle Azure-Computer mit dem Azure Site Recovery-Dienst verwendet wird.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e83c14e5ce337e8a3c4c119acc2397b98afd5b56
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231456"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621119"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 

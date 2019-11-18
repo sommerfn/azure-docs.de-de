@@ -1,5 +1,5 @@
 ---
-title: Schützen von Azure-Daten und Speicherdiensten in Azure Security Center | Microsoft-Dokumentation
+title: Daten- und Speicherempfehlungen – Azure Security Center
 description: Dieses Dokument behandelt Empfehlungen in Azure Security Center, die zum Schutz Ihrer Daten und des Azure SQL-Diensts sowie zur Einhaltung von Sicherheitsrichtlinien beitragen.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: memildin
-ms.openlocfilehash: 80611fe0c37af7dfd27b561186f3e967ad3159b4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21da7c49b158345894ee7fdc164d205bcefe1640
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201038"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663891"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Schützen von Azure-Daten und Speicherdiensten in Azure Security Center
 In diesem Thema erfahren Sie, wie Sie Sicherheitsempfehlungen für Daten und Speicherressourcen anzeigen und implementieren. Azure Security Center hat diese Empfehlungen bei der Analyse des Sicherheitsstatus Ihrer Azure-Ressourcen erkannt.
@@ -27,16 +27,16 @@ In diesem Thema erfahren Sie, wie Sie Sicherheitsempfehlungen für Daten und Spe
 
 1. Klicken Sie im Abschnitt **Resource security hygiene** (Ressourcensicherheit) auf **Data and storage resources** (Daten- und Speicherressourcen).
 
-   ![Daten- und Speicherressourcen](./media/security-center-monitoring/click-data.png)
+    ![Daten- und Speicherressourcen](./media/security-center-monitoring/click-data.png)
 
     Die Seite **Data security** (Datensicherheit) wird mit Empfehlungen für Datenressourcen geöffnet.
 
-     ![Datenressourcen](./media/security-center-monitoring/sql-overview.png)
+    ![Datenressourcen](./media/security-center-monitoring/sql-overview.png)
 
-Auf der Seite haben Sie folgende Möglichkeiten:
+    Auf der Seite haben Sie folgende Möglichkeiten:
 
-* Wenn Sie auf die Registerkarte **Übersicht** klicken, werden alle zu bereinigenden Empfehlungen zu Datenressourcen aufgelistet. 
-* Klicken Sie auf jede Registerkarte, und lassen Sie die Empfehlungen je nach Ressourcentyp anzeigen.
+    * Wenn Sie auf die Registerkarte **Übersicht** klicken, werden alle zu bereinigenden Empfehlungen zu Datenressourcen aufgelistet. 
+    * Klicken Sie auf jede Registerkarte, und lassen Sie die Empfehlungen je nach Ressourcentyp anzeigen.
 
     > [!NOTE]
     > Weitere Informationen zur Speicherverschlüsselung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).

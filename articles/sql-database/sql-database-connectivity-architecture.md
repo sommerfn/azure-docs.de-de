@@ -1,22 +1,23 @@
 ---
-title: Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse | Microsoft-Dokumentation
+title: Verbindungsarchitektur
 description: In diesem Artikel wird die Azure SQL-Verbindungsarchitektur für interne und externe Datenbankverbindungen von Azure erläutert.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
+ms.custom: fasttrack-edit
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.devlang: ''
 ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: f15fb46568f4ad062605b51600d3c61870b48645
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828853"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826907"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
@@ -38,7 +39,7 @@ In den folgenden Schritten wird das Herstellen einer Verbindung mit einer Azure 
 
 Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbindungsrichtlinie für einen SQL-Datenbank-Server:
 
-- **Umleiten (empfohlen):** Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region mithilfe von Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 11999 zulassen – nicht nur für IP-Adressen des Azure SQL-Datenbankgateways an Port 1433. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
+- **Umleiten (empfohlen):** Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region mithilfe von Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 11999 zulassen – nicht nur für IP-Adressen des Azure SQL-Datenbank-Gateways an Port 1433. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
 - **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbank-Gateways hergestellt. Zum Aktivieren der Konnektivität müssen Clients über ausgehende Firewallregeln verfügen, die nur die IP-Adressen des Azure SQL-Datenbank-Gateways zulassen (i. d. R. zwei IP-Adressen pro Region). Dieser Modus kann je nach Workload höhere Latenzen und geringeren Durchsatz verursachen. Es wird empfohlen, die Verbindungsrichtlinie `Redirect` statt der Verbindungsrichtlinie `Proxy` zu verwenden, um die niedrigste Latenz und den höchsten Durchsatz zu erzielen.
 - **Standard:** Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in `Proxy` oder `Redirect`. Die effektive Richtlinie hängt davon ab, ob Verbindungen innerhalb von Azure (`Redirect`) oder außerhalb von Azure (`Proxy`) hergestellt werden.
 

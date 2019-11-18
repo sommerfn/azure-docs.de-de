@@ -1,5 +1,5 @@
 ---
-title: Verwenden von PowerShell zum Integrieren von Azure Security Center und zum Schützen Ihres Netzwerks | Microsoft-Dokumentation
+title: Integration von Azure Security Center mit PowerShell
 description: In diesem Dokument wird der Vorgang zum Integrieren von Azure Security Center mithilfe von PowerShell-Cmdlets erläutert.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 8e2f7b87efe89166175748cec310f24575b7f102
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b20b3c1e4216fe8065fbc8ac24c7d8097903fc5a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201227"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73686373"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
 
@@ -31,13 +31,13 @@ Dieser Artikel enthält ein PowerShell-Beispielskript, das zur abonnementübergr
 
 In diesem Beispiel aktivieren Sie Security Center für ein Abonnement mit der ID d07c0080-170c-4c24-861d-9c817742786c und wenden die empfohlenen Einstellungen für hohen Schutz an. Dazu implementieren Sie den Standard-Tarif von Security Center, der erweiterte Funktionen für Bedrohungsschutz und Erkennung bietet:
 
-1. Legen Sie die [Schutzstufe „Standard“ von ASC](https://azure.microsoft.com/pricing/details/security-center/) fest. 
+1. Legen Sie die [Schutzstufe „Standard“ von Security Center](https://azure.microsoft.com/pricing/details/security-center/) fest. 
  
 2. Legen Sie den Log Analytics-Arbeitsbereich fest, an den Microsoft Monitoring Agent die Daten sendet, die auf den mit dem Abonnement verknüpften virtuellen Computern erfasst werden. In diesem Beispiel wird ein vorhandener benutzerdefinierter Arbeitsbereich (myWorkspace) verwendet.
 
 3. Aktivieren Sie die automatische Agent-Bereitstellung von Security Center, bei der auch [Microsoft Monitoring Agent bereitgestellt](security-center-enable-data-collection.md#auto-provision-mma) wird.
 
-5. Legen Sie den [CISO der Organisation als Sicherheitskontakt für ASC-Warnungen und relevante Ereignisse](security-center-provide-security-contact-details.md) fest.
+5. Legen Sie den [CISO der Organisation als Sicherheitskontakt für Security Center-Warnungen und relevante Ereignisse](security-center-provide-security-contact-details.md) fest.
 
 6. Weisen Sie die [Standardsicherheitsrichtlinien](tutorial-security-policy.md) von Security Center zu.
 

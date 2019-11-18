@@ -1,41 +1,42 @@
 ---
 title: Herstellen einer Verbindung mit der API für MongoDB von Azure Cosmos DB mithilfe von Studio 3T
-titleSuffix: Azure Cosmos DB
-description: Erfahren Sie, wie eine Verbindung mit Cosmos DB mithilfe von Studio 3T und der API für MongoDB von Azure Cosmos DB herstellen.
+description: Erfahren Sie, wie Sie eine Verbindung mit einer Azure Cosmos DB-API für MongoDB mithilfe von Studio 3T herstellen.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 11/01/2019
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 46cac6720bbef133d6b3f7a269cf97a81cddd0c5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c9be9893d28439fdcff9f33f0303a816bd94c7b8
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062122"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73584424"
 ---
-# <a name="connect-to-cosmos-account-using-studio-3t"></a>Herstellen einer Verbindung mit einem Cosmos-Konto mithilfe von Studio 3T
+# <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Herstellen einer Verbindung mit einem Azure Cosmos-Konto mithilfe von Studio 3T
 
-Um eine Verbindung mit einem Cosmos-Konto mit der API für MongoDB von Azure Cosmos DB herstellen zu können, müssen Sie die folgenden Aktionen ausführen:
+Um eine Verbindung mit einer Azure Cosmos DB-API für MongoDB mithilfe von Studio 3T herzustellen, müssen Sie:
 
-* Herunterladen und Installieren von [Studio 3T](https://studio3t.com/)
-* Abrufen der Informationen zur Cosmos DB-[Verbindungszeichenfolge](connect-mongodb-account.md)
+* [Studio 3T](https://studio3t.com/) herunterladen und installieren.
+* Rufen Sie die Informationen zur [Verbindungszeichenfolge](connect-mongodb-account.md) für Ihr Azure Cosmos-Konto ab.
 
 > [!NOTE]
-> Zurzeit werden Robo 3T v 1.2 und niedriger mit der Cosmos DB-API für MongoDB unterstützt. 
+> Zurzeit werden Robo 3T v1.2 und niedrigere Versionen mit der Cosmos DB-API für MongoDB unterstützt.
 
 ## <a name="create-the-connection-in-studio-3t"></a>Sie müssen die Verbindung in Studio 3T herstellen
-Führen Sie die folgenden Schritte aus, um dem Studio 3T-Verbindungs-Manager Ihr Cosmos-Konto hinzuzufügen:
 
-1. Rufen Sie die Verbindungsinformationen für Ihr Cosmos-Konto ab, das mit der API für MongoDB von Azure Cosmos DB konfiguriert wurde. Verwenden Sie dazu die Anweisungen im Artikel [Herstellen einer Verbindung zwischen einer MongoDB-Anwendung und Azure Cosmos DB](connect-mongodb-account.md).
+Führen Sie die folgenden Schritte aus, um dem Studio 3T-Verbindungs-Manager Ihrem Azure Cosmos-Konto hinzuzufügen:
+
+1. Rufen Sie die Verbindungsinformationen Ihrer Azure Cosmos DB-API für das MongoDB-Konto ab, indem Sie den Anweisungen im Artikel [Verbinden einer MongoDB-Anwendung mit Azure Cosmos DB](connect-mongodb-account.md) folgen.
 
     ![Screenshot der Seite „Verbindungszeichenfolge“](./media/mongodb-mongochef/ConnectionStringBlade.png)
+
 2. Klicken Sie auf **Connect** (Verbinden), um den Verbindungs-Manager zu öffnen, und klicken Sie anschließend auf **New Connection** (Neue Verbindung).
 
     ![Screenshot des Verbindungs-Managers von Studio 3T](./media/mongodb-mongochef/ConnectionManager.png)
-3. Geben Sie im Fenster **Neue Verbindung** auf der Registerkarte **Server** den HOST (FQDN) des Azure Cosmos DB-Kontos sowie den Port ein.
+3. Geben Sie im Fenster **Neue Verbindung** auf der Registerkarte **Server** den HOST (FQDN) des Azure Cosmos-Kontos sowie den PORT ein.
 
     ![Screenshot der Serverregisterkarte im Verbindungs-Manager von Studio 3T](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
 4. Wählen Sie im Fenster **New Connection** (Neue Verbindung) auf der Registerkarte **Authentication** (Authentifizierung) den Authentifizierungsmodus **Standard (MONGODB-CR or SCARM-SHA-1)** (Standard [MONGODB-CR oder SCARM-SHA-1]) aus, und geben Sie Benutzername und Kennwort ein.  Übernehmen Sie den Standardwert für Authentifizierungs-DB („admin“), oder geben Sie einen eigenen Wert ein.

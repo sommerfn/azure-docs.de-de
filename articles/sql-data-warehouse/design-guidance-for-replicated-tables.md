@@ -1,5 +1,5 @@
 ---
-title: Entwurfsleitfaden für replizierte Tabellen – Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Entwurfsleitfaden für replizierte Tabellen
 description: Empfehlungen für das Entwerfen von replizierten Tabellen im Azure SQL Data Warehouse-Schema. 
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: c622edc6c3a37b2bc71323cf0e2c155f7aec6e33
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 18577cb729c9f17a112979cd1ebb763af38b9ca2
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479315"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73693045"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Entwurfsleitfaden für die Verwendung von replizierten Tabellen in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen für das Entwerfen von replizierten Tabellen im SQL Data Warehouse-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.

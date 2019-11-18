@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/18/2019
+ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: 842392ab425628a1c82a39e25a65066064747211
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675767"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73580223"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Tutorial: Nachverfolgen der Nutzung eines Labs in Azure Lab Services
 In diesem Tutorial wird gezeigt, wie ein Lab-Ersteller/-Besitzer die Nutzung eines Labs nachverfolgen kann.
@@ -41,6 +41,8 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
     ![Registrierte Benutzer](../media/tutorial-track-usage/registered-users.png)
 
+    Weitere Informationen zum Hinzufügen und Verwalten von Benutzern für das Lab finden Sie unter [Hinzufügen und Verwalten von Labbenutzern](how-to-configure-student-usage.md).
+
 ## <a name="view-the-usage-of-vms-in-the-lab"></a>Anzeigen der Nutzung der virtuellen Computer im Lab 
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus. 
@@ -49,12 +51,11 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
     ![VM-Nutzung](../media/tutorial-track-usage/vm-usage.png)
 
 ## <a name="manage-student-vms"></a>Verwalten von Studenten-VMs 
-Auf dieser Seite können Sie mithilfe der Dropdownliste in der Spalte **Status** oder über Schaltflächen auf der Symbolleiste die virtuellen Computer der Kursteilnehmer starten, beenden oder zurücksetzen. 
+Auf dieser Seite können Sie mithilfe der Steuerelemente in der Spalte **Status** oder auf der Symbolleiste die virtuellen Computer der Kursteilnehmer starten, beenden oder zurücksetzen.
 
 ![Steuerelemente für virtuelle Computer](../media/tutorial-track-usage/vm-controls.png)
 
-Sie können auch die Symbolleistenschaltflächen verwenden, um einen virtuellen Computer zu starten, zu beenden oder zu löschen. 
-
+Weitere Informationen zum Verwalten des VM-Pools für das Lab finden Sie unter [Einrichten und Verwalten eines VM-Pools](how-to-set-virtual-machine-passwords.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Classroom-Labs finden Sie in den Artikeln unter [Anleitungen](how-to-manage-lab-accounts.md).

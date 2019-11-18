@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: bed3402de83984cae9134fe44058980ec18861b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88698a7a0f78987dc96bf7f39831ec1a7560a359
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413938"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73815861"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Bedarfsgesteuerte Sicherung in Azure Service Fabric
 
@@ -111,6 +111,17 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 Sie können mit der [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress)-API die Nachverfolgung des [Fortschritts der bedarfsgesteuerten Sicherung](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress) einrichten.
 
+### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+Stellen Sie sicher, dass der erweiterte Modus in den Service Fabric Explorer-Einstellungen aktiviert wurde.
+1. Wählen Sie die gewünschten Partitionen aus, und klicken Sie auf „Aktionen“. 
+2. Wählen Sie die Option zum Auslösen der Sicherung von Partitionen aus, und füllen Sie die Informationen für Azure aus:
+
+    ![Partitionssicherung auslösen][0]
+
+    oder FileShare:
+
+    ![Partitionssicherung auslösen FileShare][1]
+
 ## <a name="tracking-on-demand-backup-progress"></a>Nachverfolgung des Prozesses der bedarfsgesteuerten Sicherung
 
 Eine Partition eines zuverlässigen zustandsbehafteten Diensts oder Reliable Actor-Diensts akzeptiert nur eine Anforderung für die bedarfsgesteuerte Sicherung auf einmal. Eine andere Anforderung kann nur akzeptiert werden, wenn die aktuelle Anforderung der bedarfsgesteuerten Sicherung abgeschlossen ist.
@@ -183,3 +194,6 @@ Anforderungen der bedarfsgesteuerten Sicherung können die folgenden Zustände a
 
 - [Grundlegendes zur Konfiguration der regelmäßigen Sicherung](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [BackupRestore-REST-API-Referenz](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+
+[0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
+[1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

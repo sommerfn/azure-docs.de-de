@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231131"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73685096"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -129,7 +129,7 @@ Hostdetails pro VM | ((HostSystem)container).VM
 > [!NOTE]
 > Die von der Azure Migrate-Appliance ermittelten Metadaten werden verwendet, damit Sie Ihre Anwendungen bei der Migration zu Azure richtig skalieren können. Außerdem sollen sie bei der Durchführung von Azure-Eignungsanalysen, Analysen der Anwendungsabhängigkeit und bei der Kostenplanung helfen. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
 
-Nachstehend finden Sie die VMware-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
+Nachstehend finden Sie die Hyper-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
 
 **Leistungsindikatorklasse** | **Leistungsindikator** | **Auswirkungen auf die Bewertung**
 --- | --- | ---
@@ -197,7 +197,7 @@ Die Appliance kommuniziert mit vCenter-Servern und Hyper-V-Hosts/Clustern über 
 4. **Bewerten und Migrieren**: Sie können nun mit der Azure Migrate-Serverbewertung aus den von der Appliance gesammelten Metadaten Bewertungen erstellen. Darüber hinaus können Sie auch mit der Migration von VMware-VMs mit der Azure Migrate-Servermigration beginnen, um die VM-Replikation ohne Agent zu organisieren.
 
 
-![Architektur](./media/migrate-appliance/architecture.png)
+![Architecture](./media/migrate-appliance/architecture.png)
 
 
 ## <a name="appliance-upgrades"></a>Appliance-Upgrades

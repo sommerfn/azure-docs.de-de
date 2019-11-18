@@ -2,19 +2,17 @@
 title: 'Ändern einer ExpressRoute-Verbindung: PowerShell: klassisches Azure-Modell | Microsoft-Dokumentation'
 description: In diesem Artikel werden die Schritte beschrieben, die zum Überprüfen des Status, Aktualisieren oder Löschen und erneuten Bereitstellen Ihrer ExpressRoute-Verbindung mit klassischem Bereitstellungsmodell ausgeführt werden müssen.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: ganesr
-ms.reviewer: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 7468338e7bc39128564e71831abe61bb1714ff72
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.date: 11/05/2019
+ms.author: cherylmc
+ms.openlocfilehash: 9f1c05b85fac6dd0168d9c2b2944326800e90493
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849241"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643673"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Ändern einer ExpressRoute-Verbindung mit PowerShell (klassisch)
 
@@ -35,39 +33,18 @@ In diesem Artikel werden die Schritte beschrieben, die zum Überprüfen des Stat
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung und das ExpressRoute-Modul.  Beachten Sie bei Verwendung des folgenden Beispiels, dass sich die Versionsnummer (hier: 5.1.1) ändert, wenn neuere Versionen der Cmdlets veröffentlicht werden.
+Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung und das ExpressRoute-Modul. Sie können die Azure Cloud Shell-Umgebung nicht zum Ausführen von SM-Modulen verwenden.
 
-```powershell
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
-Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
-```
-
-Weitere Informationen zu PowerShell und eine ausführliche Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/overview).
-
-Verwenden Sie das folgende Beispiel, um sich bei Ihrem Azure-Konto anzumelden:
-
-1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+1. Befolgen Sie die Anweisungen im Artikel [Installieren des Azure PowerShell-Dienstverwaltungsmoduls](/powershell/azure/servicemanagement/install-azure-ps), um das Azure-Dienstverwaltungsmodul zu installieren. Wenn Sie das Az- oder RM-Modul bereits installiert haben, achten Sie darauf, „-AllowClobber“ zu verwenden.
+2. Importieren Sie die installierten Module. Wenn Sie das folgende Beispiel verwenden, passen Sie den Pfad an, um den Speicherort der installierten PowerShell-Module widerzuspiegeln.
 
    ```powershell
-   Connect-AzAccount
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
+   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
    ```
-2. Überprüfen Sie die Abonnements für das Konto.
-
-   ```powershell
-   Get-AzSubscription
-   ```
-3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
+3. Melden Sie sich bei Ihrem Azure-Konto an, öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung mit dem Dienstverwaltungsmodul herzustellen:
 
    ```powershell
    Add-AzureAccount

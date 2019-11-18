@@ -1,17 +1,17 @@
 ---
-title: Hinzufügen von Speicher zu einem Azure HPC Cache (Vorschauversion)
+title: Hinzufügen von Speicher zu einem Azure HPC Cache
 description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokales NFS-System oder Azure-Blobcontainer für die langfristige Speicherung von Dateien verwenden kann
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
+ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024563"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "73621464"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -74,7 +74,7 @@ Schritte zum Hinzufügen der RBAC-Rollen:
 1. Suchen Sie im Feld **Auswählen** nach „hpc“.  Diese Zeichenfolge sollte mit einem Dienstprinzipal mit dem Namen "HPC Cache-Ressourcenanbieter" übereinstimmen. Klicken Sie auf diesen Prinzipal, um ihn auszuwählen.
 
    > [!NOTE]
-   > Wenn eine Suche nach „hpc“ nicht funktioniert, versuchen Sie stattdessen, die Zeichenfolge „storagecache“ zu verwenden. Benutzer, die frühzeitig an der Vorschau teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
+   > Wenn eine Suche nach „hpc“ nicht funktioniert, versuchen Sie stattdessen, die Zeichenfolge „storagecache“ zu verwenden. Benutzer, die (vor der allgemeinen Verfügbarkeit) an der Vorschau teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
 
 1. Klicken Sie auf die Schaltfläche **Speichern**, um dem Speicherkonto die Rollenzuweisung hinzuzufügen.
 
@@ -134,3 +134,5 @@ Ziehen Sie nach dem Erstellen von Speicherzielen eine dieser Aufgaben in Erwägu
 
 * [Einbinden der Azure HPC Cache-Instanz](hpc-cache-mount.md)
 * [Daten in Azure-Blobspeicher verschieben](hpc-cache-ingest.md)
+
+Wenn Sie ein Speicherziel ändern müssen, lesen Sie [Bearbeiten von Speicherzielen](hpc-cache-edit-storage.md), um sich zu informieren.

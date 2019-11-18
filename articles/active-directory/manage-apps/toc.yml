@@ -70,10 +70,10 @@
               href: end-user-experiences.md
     - name: Anwendungsbereitstellung (SCIM)
       items:
-        - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
-          href: use-scim-to-provision-users-and-groups.md
         - name: Planen einer automatischen Benutzerbereitstellung
           href: plan-auto-user-provisioning.md
+        - name: Manuelle und automatische Bereitstellung
+          href: application-provisioning-config-how-to.md
     - name: Anwendungsproxy für lokale Apps
       items:
         - name: Anwendungsproxy
@@ -227,28 +227,40 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Anwendungsbereitstellung (SCIM)
       items:
-        - name: Benutzerbereitstellung konfigurieren
+        - name: Konfigurieren der App-Bereitstellung
           items:
-            - name: Manuelle und automatische Bereitstellung
-              href: application-provisioning-config-how-to.md
             - name: Konfigurieren der automatischen Benutzerbereitstellung
               href: configure-automatic-user-provisioning-portal.md
+            - name: Verwenden von SCIM für die automatische Bereitstellung
+              href: use-scim-to-provision-users-and-groups.md
             - name: Anpassen von Attributzuordnungen
               href: Customize-application-attributes.md
+            - name: Schreiben von Ausdrücken für Attributzuordnungen
+              href: functions-for-customizing-application-data.md
             - name: Definieren des Benutzer- oder Gruppenbereichs für die Bereitstellung
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
               href: skip-out-of-scope-deletions.md
             - name: Überwachen des Bereitstellungsstatus und der Leistung
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Berichte zur automatischen Benutzerbereitstellung
+            - name: Berichterstellung zur App-Bereitstellung
               href: check-status-user-account-provisioning.md
             - name: Exportieren und Importieren Ihrer Konfiguration
               href: export-import-provisioning-configuration.md
+            - name: Automatisieren der Konfiguration mit MS Graph
+              href: application-provisioning-configure-api.md
         - name: Problembehandlung bei der Benutzerbereitstellung
           items:
-            - name: Problembehandlung bei der Benutzerbereitstellung
+            - name: Problembehandlung bei der App-Bereitstellung
               href: application-provisioning-config-problem.md
+            - name: Quarantänestatus
+              href: application-provisioning-quarantine-status.md
+            - name: Bereitstellungsprotokolle
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: 'Dauert Stunden: Katalog-App'
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Problem mit der Autorisierung (Administratoranmeldeinformationen können nicht gespeichert werden)
               href: application-provisioning-config-problem-storage-limit.md
             - name: Benutzer werden nicht bereitgestellt.

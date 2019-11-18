@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/03/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075499"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73569870"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -114,6 +114,8 @@ Konfigurieren Sie hier E-Mail-Adressen für Benutzer, die E-Mails mit Betrugswar
 
 >[!NOTE]
 >Wenn Multi-Factor Authentication-Anrufe über das öffentliche Telefonnetz geleitet werden, laufen sie manchmal über einen Betreiber, der Anrufer-IDs nicht unterstützt. Aus diesem Grund ist die Anrufer-ID nicht garantiert, obwohl das Multi-Factor Authentication-System sie immer sendet.
+
+Wenn Sie in den USA nicht die MFA-Anrufer-ID konfiguriert haben, stammen Anrufe von Microsoft von folgenden Telefonnummern: + 1 (866) 539 4191, + 1 (855) 330 8653 und + 1 (877) 668 6536. Wenn Sie Spamfilter verwenden, stellen Sie sicher, dass diese Nummern ausgeschlossen werden.
 
 ### <a name="custom-voice-messages"></a>Benutzerdefinierte Sprachnachrichten
 
@@ -296,7 +298,7 @@ Wenn Ihre Organisation die NPS-Erweiterung bereitstellt, um MFA für lokale Anwe
 
 | Azure AD-Mandantentyp | Optionen des Features „Vertrauenswürdige IPs“ |
 |:--- |:--- |
-| Verwaltet |**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können.|
+| Verwaltet |**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. Es können maximal 50 vertrauenswürdige IP-Adressbereiche konfiguriert werden.|
 | Im Verbund |**Alle Verbundbenutzer**: Alle Verbundbenutzer, die sich von innerhalb der Organisation aus anmelden, können die zweistufige Überprüfung umgehen. Die Benutzer umgehen die Überprüfung mithilfe eines durch Active Directory-Verbunddienste (AD FS) ausgestellten Anspruchs.<br/>**Bestimmter Bereich von IP-Adressen**: Administratoren geben einen Bereich von IP-Adressen an, die die zweistufige Überprüfung für Benutzer, die sich über das Intranet des Unternehmens anmelden, umgehen können. |
 
 Die Umgehung über vertrauenswürdige IPs funktioniert nur innerhalb des Intranets eines Unternehmens. Wenn Sie die Option **Alle Verbundbenutzer** ausgewählt haben und sich ein Benutzer von außerhalb des Unternehmensintranets anmeldet, muss sich der Benutzer mit der zweistufigen Überprüfung authentifizieren. Dies ist auch der Fall, wenn der Benutzer einen AD FS-Anspruch vorweisen kann. 
@@ -368,8 +370,8 @@ Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrier
 |:--- |:--- |
 | Auf Telefon anrufen |Startet einen automatisierten Sprachanruf. Der Benutzer nimmt den Anruf an und drückt die #-Taste auf der Telefontastatur, um sich zu authentifizieren. Die Telefonnummer wird nicht mit dem lokalen Active Directory synchronisiert. |
 | Textnachricht an Telefon |Sendet eine Textnachricht mit einem Überprüfungscode. Der Benutzer wird über die Anmeldeoberfläche zur Eingabe des Prüfcodes aufgefordert. Dieser Vorgang wird als „unidirektionale SMS“ bezeichnet. Bei einer bidirektionalen SMS muss der Benutzer einen bestimmten Code per SMS zurücksenden. Die Funktion für bidirektionale SMS ist veraltet und wird ab dem 14. November 2018 nicht mehr unterstützt. Benutzer, die für die Verwendung bidirektionaler SMS konfiguriert sind, werden dann automatisch auf die Überprüfungsoption _Auf Telefon anrufen_ umgestellt.|
-| Benachrichtigung über mobile App |Sendet eine Pushbenachrichtigung an Ihr Telefon oder registriertes Gerät. Der Benutzer zeigt die Benachrichtigung an und wählt **Überprüfen**, um die Überprüfung abzuschließen. Die Microsoft Authenticator-App ist für [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
-| Prüfcode aus mobiler App oder Hardwaretoken |Die Microsoft Authenticator-App generiert alle 30 Sekunden einen neuen OATH-Überprüfungscode. Der Benutzer gibt den Überprüfungscode auf der Anmeldeoberfläche ein. Die Microsoft Authenticator-App ist für [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
+| Benachrichtigung über mobile App |Sendet eine Pushbenachrichtigung an Ihr Telefon oder registriertes Gerät. Der Benutzer zeigt die Benachrichtigung an und wählt **Überprüfen**, um die Überprüfung abzuschließen. Die Microsoft Authenticator-App ist für [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
+| Prüfcode aus mobiler App oder Hardwaretoken |Die Microsoft Authenticator-App generiert alle 30 Sekunden einen neuen OATH-Überprüfungscode. Der Benutzer gibt den Überprüfungscode auf der Anmeldeoberfläche ein. Die Microsoft Authenticator-App ist für [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
 
 ### <a name="enable-and-disable-verification-methods"></a>Aktivieren und Deaktivieren von Überprüfungsmethoden
 
@@ -387,7 +389,7 @@ Weitere Informationen zur Verwendung von Authentifizierungsmethoden und finden S
 Das Feature _Multi-Factor Authentication speichern_ für Geräte und Browser, die Benutzer als vertrauenswürdig einstufen, ist ein kostenloses Feature für alle Benutzer von Multi-Factor Authentication. Benutzer können nachfolgende Überprüfungen für eine angegebene Anzahl von Tagen umgehen, nachdem sie sich mithilfe von Multi-Factor Authentication erfolgreich bei einem Gerät angemeldet haben. Bei Verwendung dieses Features wird die Benutzerfreundlichkeit verbessert, indem der Benutzer auf einem Gerät seltener eine zweistufige Überprüfung durchführen muss.
 
 >[!IMPORTANT]
->Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie die [Multi-Factor Authentication auf allen Geräten wiederherstellen](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
+>Wenn ein Konto oder Gerät gefährdet ist, kann das Speichern von Multi-Factor Authentication für vertrauenswürdige Geräte die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie [MFA-Sitzungen widerrufen](howto-mfa-userdevicesettings.md).
 >
 >Durch die Wiederherstellungsaktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die zweistufige Überprüfung ausführen. Sie können Ihre Benutzer auch anweisen, Multi-Factor Authentication auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device) wiederherzustellen.
 

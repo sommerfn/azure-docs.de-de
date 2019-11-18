@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2aa2ed6fe4d8218737c42bb3d76084c5d677623f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a221d55d942e6140c12f2ebfb64428b8ec7be74b
+ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71826947"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73643570"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Azure Active Directory-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -47,7 +47,7 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
 
 1. Wählen Sie **Registrieren**. Notieren Sie sich die **Anwendungs-ID (Client)** zur Verwendung in einem späteren Schritt.
 1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus.
-1. Geben Sie eine **Beschreibung** für das Geheimnis ein, wählen Sie ein Ablaufdatum aus, und wählen Sie dann **Hinzufügen** aus. Notieren Sie sich den **WERT** des Geheimnisses zur Verwendung in einem späteren Schritt.
+1. Geben Sie eine **Beschreibung** für das Geheimnis ein, wählen Sie ein Ablaufdatum aus, und wählen Sie dann **Hinzufügen** aus. Notieren Sie sich den **Wert** des Geheimnisses zur Verwendung in einem späteren Schritt.
 
 ## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
@@ -190,7 +190,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
 1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Kopie der Datei *SignUpOrSignIn.xml*, und benennen Sie sie um. Benennen Sie die Datei z. B. in *SignUpSignInContoso.xml* um.
 1. Öffnen Sie die neue Datei, und aktualisieren Sie den Wert des Attributs **PolicyId** für **TrustFrameworkPolicy** mit einem eindeutigen Wert. Beispiel: `SignUpSignInContoso`.
 1. Aktualisieren Sie den Wert von **PublicPolicyUri** mit dem URI für die Richtlinie. Beispiel: `http://contoso.com/B2C_1A_signup_signin_contoso`.
-1. Ändern Sie den Wert des **ReferenceId**-Attributs im **DefaultUserJourney**-Element so, dass er der ID der zuvor erstellten User Journey entspricht, beispielsweise *SignUpSignInContoso*.
+1. Aktualisieren Sie den Wert des Attributs **ReferenceId** im Element**DefaultUserJourney**,damit dieser der Kennung der User Journey entspricht, die Sie zuvor erstellt haben. Beispielsweise *SignUpSignInContoso*.
 1. Speichern Sie die Änderungen, und laden Sie die Datei hoch.
 1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die neue Richtlinie in der Liste aus.
 1. Wählen Sie in der Dropdownliste **Anwendung auswählen** die Azure AD B2C-Anwendung aus, die Sie zuvor erstellt haben. Zum Beispiel *testapp1*.

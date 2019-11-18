@@ -1,9 +1,10 @@
 ---
-title: Verwenden der mehrstufigen Authentifizierung von AAD mit Azure SQL-Datenbank und Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Verwendung von Multi-Factor AAD Authentication
 description: Azure SQL-Datenbank und Azure SQL Data Warehouse unterstützen Verbindungen aus SQL Server Management Studio (SSMS) mithilfe der universellen Active Directory-Authentifizierung.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
+titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/08/2018
-ms.openlocfilehash: c648e038cd063524aa2e69ed6d934519aa0e76e6
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7183193f3639ea809c6e7aa19af7844bd134111e
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019168"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73820900"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>Verwenden der mehrstufigen Authentifizierung von AAD mit Azure SQL-Datenbank und Azure SQL Data Warehouse (SSMS-Unterstützung für MFA)
 Azure SQL-Datenbank und Azure SQL Data Warehouse unterstützen Verbindungen aus SQL Server Management Studio (SSMS) mithilfe der *universellen Active Directory-Authentifizierung*. In diesem Artikel werden die Unterschiede zwischen den verschiedenen Authentifizierungsoptionen sowie die Einschränkungen bei Verwendung der universellen Authentifizierung erörtert. 
@@ -26,7 +27,7 @@ Azure SQL-Datenbank und Azure SQL Data Warehouse unterstützen Verbindungen aus 
 
 Verwenden Sie für alle Features in diesem Artikel mindestens die Version 17.2 vom Juli 2017.  Das letzte Verbindungsdialogfeld sollte ungefähr wie folgt aussehen:
  
-  ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "Füllt das Feld für den Benutzernamen aus.")  
+  ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "Füllen Sie das Feld „Benutzername“ aus.")  
 
 ## <a name="the-five-authentication-options"></a>Die fünf Authentifizierungsoptionen  
 

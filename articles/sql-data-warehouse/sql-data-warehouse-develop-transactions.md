@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Transaktionen in Azure SQL Data Warehouse | Microsoft-Dokumentation
+title: Verwenden von Transaktionen
 description: Tipps zum Implementieren von Transaktionen in Azure SQL Data Warehouse zum Entwickeln von Lösungen
 services: sql-data-warehouse
 author: XiaoyuMSFT
@@ -10,12 +10,13 @@ ms.subservice: development
 ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f00f8a25d0abf3af6d76b372b44145546a79879
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 09fc0f7cee38f799322a1914848a5176e9a223a1
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479612"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73692776"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Verwenden von Transaktionen in SQL Data Warehouse
 Tipps zum Implementieren von Transaktionen in Azure SQL Data Warehouse zum Entwickeln von Lösungen
@@ -175,7 +176,7 @@ Jetzt werden Sie das erwartete Verhalten feststellen. Der Fehler in der Transakt
 
 Die einzige Änderung besteht darin, dass die ROLLBACK-Ausführung für die Transaktion vor dem Lesen der Fehlerinformationen im CATCH-Block erfolgen muss.
 
-## <a name="errorline-function"></a>Error_Line()-Funktion
+## <a name="error_line-function"></a>Error_Line()-Funktion
 Es ist auch erwähnenswert, dass SQL Data Warehouse die ERROR_LINE()-Funktion nicht implementiert oder unterstützt. Wenn diese in Ihrem Code enthalten ist, müssen Sie sie entfernen, um die Kompatibilität mit SQL Data Warehouse zu gewährleisten. Verwenden Sie stattdessen Abfragebezeichnungen in Ihrem Code, um entsprechende Funktionalität zu implementieren. Weitere Details finden Sie im Artikel [LABEL](sql-data-warehouse-develop-label.md).
 
 ## <a name="using-throw-and-raiserror"></a>Verwenden von THROW und RAISERROR

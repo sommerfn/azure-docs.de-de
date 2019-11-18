@@ -1,17 +1,17 @@
 ---
 title: Aktualisieren von Azure Analysis Services-Modellen mit Logic Apps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie die asynchrone Aktualisierung mit Azure Logic Apps programmieren.
+description: In diesem Artikel wird beschrieben, wie Sie die asynchrone Aktualisierung für Azure Analysis Services mithilfe von Azure Logic Apps codieren.
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a44aa5b355bea675f5d99761d97b8876a9b2a7d7
+ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294617"
+ms.lasthandoff: 11/04/2019
+ms.locfileid: "73572340"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualisieren mit Logic Apps
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 081e1db4df0d77fa600e132a5585172d44f1196a
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814539"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73663023"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Einrichten der Notfallwiederherstellung für Azure-VMs nach der Migration in Azure 
 
@@ -30,7 +30,7 @@ Bevor Sie die Notfallwiederherstellung einrichten, stellen Sie sicher, dass die 
 Auf jedem virtuellen Azure-Computer muss der [Azure-VM-Agent](../virtual-machines/extensions/agent-windows.md) installiert sein. Zum Replizieren von virtuellen Azure-Computern installiert Azure Site Recovery eine Erweiterung auf dem Agent.
 
 - Wird auf dem Computer Version 9.7.0.0 oder höher des Site Recovery Mobility-Diensts ausgeführt, wird der Azure-VM-Agent vom Mobility-Dienst automatisch auf den virtuellen Windows-Computern installiert. Bei früheren Versionen des Mobility-Diensts müssen Sie den Agent manuell installieren.
-- Bei virtuellen Linux-Computern müssen Sie den Azure-VM-Agent manuell installieren. Dies ist jedoch nur dann erforderlich, wenn der auf dem migrierten Computer installierte Mobility-Dienst die Version 9.6 oder niedriger hat.
+- Bei virtuellen Linux-Computern müssen Sie den Azure-VM-Agent manuell installieren. Sie müssen den Azure-VM-Agent nur dann installieren, wenn der auf dem migrierten Computer installierte Mobility-Dienst die Version 9.6 oder früher hat.
 
 
 ### <a name="install-the-agent-on-windows-vms"></a>Installieren des Agents auf virtuellen Windows-Computern

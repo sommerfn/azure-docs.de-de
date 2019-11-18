@@ -7,13 +7,13 @@ ms.service: logic-apps
 ms.topic: include
 ms.author: estfan
 ms.custom: include file
-ms.date: 05/15/2018
-ms.openlocfilehash: aa1001661d8fe03855e1a28b882f674bee3606b2
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.date: 11/08/2019
+ms.openlocfilehash: 0be29f6f541aa58e57eb665ebaf29e35f42865e4
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311998"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73826321"
 ---
 * Wenn Sie Azure SQL-Datenbank verwenden, führen Sie die Schritte unter [Herstellen einer Verbindung mit Azure SQL-Datenbank](#connect-azure-sql-db) aus.
 
@@ -34,7 +34,7 @@ Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsi
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![Erstellen einer Azure SQL-Datenbank-Verbindung](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+   ![Herstellen einer Verbindung mit Azure SQL-Datenbank](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
 1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
@@ -44,7 +44,9 @@ Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsi
 
 ### <a name="connect-to-sql-server"></a>Herstellen einer Verbindung mit SQL Server
 
-Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsinformationen anzugeben, befolgen Sie diese Schritte, die sowohl für Trigger als auch für Aktionen gelten. Bevor Sie beginnen, sollten Sie jedoch sicherstellen, dass Sie bereits [Ihr lokales Datengateway eingerichtet](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection) haben. Andernfalls wird Ihr Gateway bei der Erstellung der Verbindung nicht in der Gatewayliste angezeigt.
+Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsinformationen anzugeben, befolgen Sie diese Schritte, die sowohl für Trigger als auch für Aktionen gelten. Für Szenarien, die die Installation des [lokalen Datengateways](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-install) auf einem lokalen Computer und [Erstellen der Azure-Datengatewayressource](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection) erfordern, stellen Sie sicher, dass Sie zuerst diese Anforderungen erfüllen. Andernfalls wird Ihre Gatewayressource bei der Erstellung der Verbindung nicht in der Gatewayliste angezeigt.
+
+Auch wenn Sie Windows-Authentifizierung mit dem SQL Server-Connector in einer [Integrationsdienstumgebung (ISE)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview) verwenden möchten, verwenden Sie die Nicht-ISE-Version des Connectors und das lokale Datengateway. Die Version mit der Bezeichnung „ISE“ unterstützt keine Windows-Authentifizierung.
 
 1. Erstellen Sie für **Verbindungsname** einen Namen für Ihre Verbindung.
 
@@ -59,7 +61,7 @@ Wenn Sie durch den SQL-Trigger oder die Aktion aufgefordert werden, Verbindungsi
    * `User ID=<your-user-name>`
    * `Password=<your-password>`
 
-   ![Erstellen einer SQL Server-Verbindung](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
+   ![Herstellen der Verbindung mit SQL Server](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
 
 1. Wenn auf dem SQL Server Windows- oder Standardauthentifizierung verwendet wird, wählen Sie den **Authentifizierungstyp** aus.
 
