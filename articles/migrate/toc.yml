@@ -32,10 +32,16 @@
           href: tutorial-migrate-hyper-v.md
     - name: Bewerten und Migrieren physischer Server
       items:
-        - name: Vorbereiten von physischen Servern für die Migration
+        - name: Vorbereiten der Bewertung und Migration physischer Server
           href: tutorial-prepare-physical.md
+        - name: Bewerten physischer Server
+          href: tutorial-assess-physical.md
         - name: Migrieren physischer Server
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: Bewerten importierter Server für die Migration
+      items:
+        - name: Bewerten importierter Server für die Migration
+          href: tutorial-assess-import.md
 - name: Konzepte
   items:
     - name: Häufig gestellte Fragen
@@ -74,6 +80,8 @@
       href: how-to-set-up-appliance-hyper-v.md
     - name: Bereitstellen einer physischen Serverappliance
       href: how-to-set-up-appliance-physical.md
+    - name: Erkunden von Anwendungen/Rollen/Features
+      href: how-to-discover-applications.md
     - name: Erstmaliges Hinzufügen eines Tools
       href: how-to-add-tool-first-time.md
     - name: Hinzufügen von Bewertungstools
@@ -82,6 +90,8 @@
       href: how-to-create-a-group.md
     - name: Gruppieren von Computern mithilfe der Visualisierung von Abhängigkeiten
       href: how-to-create-group-machine-dependencies.md
+    - name: Gruppieren von Computern mithilfe der Visualisierung von Abhängigkeiten ohne Agent
+      href: how-to-create-group-machine-dependencies-agentless.md
     - name: Erstellen einer Bewertung
       href: how-to-create-assessment.md
     - name: "Bewerten einer SQL\_Server-Datenbank"

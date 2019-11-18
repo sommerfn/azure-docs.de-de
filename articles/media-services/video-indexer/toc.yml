@@ -15,10 +15,6 @@
   items:
     - name: Verwenden der Video Indexer-API
       href: video-indexer-use-apis.md
-- name: Beispiele
-  items:
-    - name: Livestreamanalyse
-      href: live-stream-analysis.md
 - name: Konzepte
   items:
     - name: Übersicht
@@ -29,6 +25,8 @@
       href: manage-multiple-tenants.md
     - name: Modell zur Sprachenerkennung
       href: language-identification-model.md
+    - name: Livestreamanalyse
+      href: live-stream-analysis.md
     - name: Anpassen von Inhaltsmodellen
       items:
         - name: Übersicht
